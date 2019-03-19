@@ -14,12 +14,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855cf81dbf24b0662048f69061ca85b72ff5f670
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12e36c49d8c4db60302d4b72dfa81ea4aceec77b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171247"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107389"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
 Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát együtt, ellenőrizze, hogy könnyen tud alkalmazásproxy használatával a Qlik Sense-telepítés a távelérés biztosítása.  
@@ -41,13 +41,13 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 2. Válassza ki **Azure Active Directory** > **vállalati alkalmazások**. 
 3. Válassza ki **Hozzáadás** a panel tetején. 
 4. Válassza ki **helyszíni alkalmazás**. 
-5.       Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkat. A következő útmutatást használhatja a beállításokat: 
-    - **Belső URL-cím**: Az alkalmazásnak tartalmaznia kell egy belső URL-CÍMÉT, amely önmagában QlikSense URL-címe. Ha például **https&#58;//demo.qlikemm.com:4244** 
-    - **Az előhitelesítési módszer**: Az Azure Active Directory (de nem ajánlott) 
-1.       Válassza ki **Hozzáadás** a panel alján. Az alkalmazás kerül, és megnyílik a gyors üzembe helyezési menü. 
-2.       A gyors üzembe helyezési menüben válassza ki a **felhasználó hozzárendelése teszteléshez**, és legalább egy felhasználót az alkalmazáshoz. Ellenőrizze, hogy a teszt a helyszíni alkalmazás hozzáféréssel rendelkezik. 
-3.       Válassza ki **hozzárendelése** a teszt felhasználó-hozzárendelés mentése. 
-4.       (Nem kötelező) Az alkalmazás felügyeleti panelen válassza ki az egyszeri bejelentkezés. Válasszon **Kerberos által korlátozott delegálás** a legördülő menüből, majd töltse ki a kötelező mezőket, a Qlik konfiguráció alapján. Kattintson a **Mentés** gombra. 
+5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkat. A következő útmutatást használhatja a beállításokat: 
+   - **Belső URL-cím**: Az alkalmazásnak tartalmaznia kell egy belső URL-CÍMÉT, amely önmagában QlikSense URL-címe. Ha például **https&#58;//demo.qlikemm.com:4244** 
+   - **Az előhitelesítési módszer**: Az Azure Active Directory (de nem ajánlott) 
+1. Válassza ki **Hozzáadás** a panel alján. Az alkalmazás kerül, és megnyílik a gyors üzembe helyezési menü. 
+2. A gyors üzembe helyezési menüben válassza ki a **felhasználó hozzárendelése teszteléshez**, és legalább egy felhasználót az alkalmazáshoz. Ellenőrizze, hogy a teszt a helyszíni alkalmazás hozzáféréssel rendelkezik. 
+3. Válassza ki **hozzárendelése** a teszt felhasználó-hozzárendelés mentése. 
+4. (Nem kötelező) Az alkalmazás felügyeleti panelen válassza ki az egyszeri bejelentkezés. Válasszon **Kerberos által korlátozott delegálás** a legördülő menüből, majd töltse ki a kötelező mezőket, a Qlik konfiguráció alapján. Kattintson a **Mentés** gombra. 
 
 ### <a name="application-2"></a>#2. alkalmazás: 
 Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel: 

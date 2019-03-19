@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120397"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Cisco Spark konfigurálása a felhasználók automatikus átadása
 
@@ -113,28 +113,28 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
     *   Az a **titkos jogkivonat** mezőben a titkos kulcs Token feltöltéséhez, 6. lépésben leírtak szerint.
 
 1. A **Bérlőazonosító** és **titkos jogkivonat** a Cisco Spark fiókkal bejelentkezve találhatók a [Cisco Spark fejlesztői webhely](https://developer.webex.com/) rendszergazdai fiókkal. Bejelentkezve egyszer -
-    * Nyissa meg a [első lépések lap](https://developer.webex.com/getting-started.html)
-    * Görgessen le a [hitelesítés szakaszban](https://developer.webex.com/getting-started.html#authentication)
-    ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * A mezőbe a alfanumerikus karakterlánc a **titkos jogkivonat**. Ez a token másolása a vágólapra
-    * Nyissa meg a [első saját saját részletei lap](https://developer.webex.com/endpoint-people-me-get.html)
-        * Győződjön meg arról, hogy vizsgálati üzemmód be Kapcsolva
-        * Írja be a "Tulajdonos" és egy szóközt szót, majd illessze be az engedélyezési mező a jogkivonat titkos kulcs ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
-        * Kattintson a Futtatás
-    * A jobb oldalon, a válasz szövegben a **Bérlőazonosító** "orgId" néven jelenik meg:
+   * Nyissa meg a [első lépések lap](https://developer.webex.com/getting-started.html)
+   * Görgessen le a [hitelesítés szakaszban](https://developer.webex.com/getting-started.html#authentication)
+     ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+   * A mezőbe a alfanumerikus karakterlánc a **titkos jogkivonat**. Ez a token másolása a vágólapra
+   * Nyissa meg a [első saját saját részletei lap](https://developer.webex.com/endpoint-people-me-get.html)
+       * Győződjön meg arról, hogy vizsgálati üzemmód be Kapcsolva
+       * Írja be a "Tulajdonos" és egy szóközt szót, majd illessze be az engedélyezési mező a jogkivonat titkos kulcs ![Cisco Spark hitelesítési Token](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+       * Kattintson a Futtatás
+   * A jobb oldalon, a válasz szövegben a **Bérlőazonosító** "orgId" néven jelenik meg:
 
-    ```json
-    {
-        "id": "(...)",
-        "emails": [
-            "admin.user@contoso.com"
-        ],
-        "displayName": "John Smith",
-        "nickName": "John",
-        "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        (...)
-    }
-    ```
+     ```json
+     {
+       "id": "(...)",
+       "emails": [
+           "admin.user@contoso.com"
+       ],
+       "displayName": "John Smith",
+       "nickName": "John",
+       "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       (...)
+     }
+     ```
 
 1. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Cisco Spark csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a Cisco Spark fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 

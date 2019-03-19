@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 37d7b1d44c2a4b2f3cd2fd3ac881b106d5056279
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a91c42ca32fb356b418dcd412c0690b01ff85789
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38726134"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908136"
 ---
 Az Azure Portal Adatkezelő eszközét mostantól adatbázis és tábla létrehozására is használhatja. 
 
@@ -28,11 +28,10 @@ Az Azure Portal Adatkezelő eszközét mostantól adatbázis és tábla létreho
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
     Táblaazonosító|minta tábla|Az új tábla azonosítója. A táblák nevére ugyanazok a korlátozások vonatkoznak, mint az adatbázis-azonosítókra. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
-    Tárkapacitás| Rögzített méretű (10 GB)|Használja az alapértelmezett **Rögzített méretű (10 GB)** értéket. Ez az érték az adatbázis tárkapacitása.
     Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
 
-    Kattintson az **OK** gombra.
+3. Kattintson az **OK** gombra.
 
-    Az Adatkezelő megjeleníti az új adatbázist és táblát.
+4. Az Adatkezelő megjeleníti az új adatbázist és táblát.
 
-    ![Az Azure Portal Adatkezelője, az új adatbázissal és gyűjteménnyel](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)
+   ![Az Azure Portal Adatkezelője, az új adatbázissal és gyűjteménnyel](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)

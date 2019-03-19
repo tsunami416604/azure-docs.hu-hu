@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d9bce32e87984193938099b96a358cc4495fd0c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119733"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 
@@ -26,10 +26,10 @@ Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegráci
 
 Az Azure Data Factory a Data Lake Storage Gen1 adatok betöltését az alábbi előnyöket biztosítja:
 
-* **Könnyű beállítás**: 5-lépés egy intuitív varázslóval telepítheti nem parancsfájl-szükséges.
-* **Sokrétű támogatás adattároló**: a helyszíni és felhőalapú adattárak számos beépített támogatása. Részletes listáját, tekintse meg a fenti táblázat [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute keresztül továbbított adatok. A szolgáltatás globális jelenlét biztosítja, hogy az adatok a földrajzi határ sosem hagyja el.
-* **Nagy teljesítményű**: legfeljebb 1 GB/s Adatbetöltési sebességét, a Data Lake Storage Gen1. További információkért lásd: [másolási tevékenység](copy-activity-performance.md).
+* **Könnyű beállítás**: Egy intuitív 5-lépés varázsló nem parancsfájl-szükséges.
+* **Számos adattároló támogatási**: A helyszíni és felhőalapú adattárak számos beépített támogatása. Részletes listáját, tekintse meg a fenti táblázat [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Biztonságos és megfelelő**: HTTPS- vagy ExpressRoute adatokat továbbítja. A szolgáltatás globális jelenlét biztosítja, hogy az adatok a földrajzi határ sosem hagyja el.
+* **Nagy teljesítményű**: Legfeljebb 1 GB/s adatok betöltési sebesség Data Lake Storage Gen1 be. További információkért lásd: [másolási tevékenység](copy-activity-performance.md).
 
 Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása eszköz _adatok betöltése az Amazon S3 az Data Lake Storage Gen1_. Adatok másolása a más típusú adattárakban hasonló lépéseket követheti.
 
@@ -38,9 +38,9 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+* Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * Data Lake Storage Gen1 fiók: Ha a Data Lake Storage Gen1 fiók nem rendelkezik, tekintse meg a következő témakör utasításait [hozzon létre egy Data Lake Storage Gen1 fiókot](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
-* Az Amazon S3: Ez a cikk bemutatja, hogyan másolhat adatokat egy Amazon S3-ból. Hasonló lépéseket követve más adattárakban is használhatja.
+* Amazon S3: Ez a cikk bemutatja, hogyan másolhat adatokat az Amazon S3-ból. Hasonló lépéseket követve más adattárakban is használhatja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -52,10 +52,10 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    ![Új adat-előállító lap](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
     * **Név**: Adja meg az Azure data factory egy globálisan egyedi nevet. Ha a hibaüzenetet kapja "adat-előállító nevét \"LoadADLSG1Demo\" nem érhető el" adja meg a data Factory egy másik nevet. Például használhatja a név  _**sajátneve**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállító. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés**: válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
-    * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió**: válasszon **V2**.
-    * **Hely**: válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. Ezek adattárak közé tartozik az Azure Data Lake Storage Gen1, az Azure Storage, Azure SQL Database és így tovább.
+    * **Előfizetés**: Válassza ki az Azure-előfizetés, amelyben az adat-előállító létrehozásához. 
+    * **Erőforráscsoport**: A legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **új létrehozása** lehetőséget, majd adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió**: Válassza ki **V2**.
+    * **Hely**: Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. Ezek adattárak közé tartozik az Azure Data Lake Storage Gen1, az Azure Storage, Azure SQL Database és így tovább.
 
 3. Kattintson a **Létrehozás** gombra.
 4. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon: 
@@ -85,7 +85,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    2. Adja meg a **titkos elérési kulcsát** értéket.
    3. Válassza a **Finish** (Befejezés) elemet.
    
-     ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Megjelenik egy új kapcsolatot. Kattintson a **Tovább** gombra.
    

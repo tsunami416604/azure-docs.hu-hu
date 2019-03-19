@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2977286fd76bd2e1f71c53aaede2fd07009d2f3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Az Azure Active Directory integrációja az Adobe Sign
 
@@ -128,7 +128,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Sign, hajtsa végre a
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Az Adobe Sign egyszeri bejelentkezés konfigurálása
 
-7. Mielőtt konfigurációs, lépjen kapcsolatba a [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) az engedélyezési listára saját tartományt az Adobe Sign az. Íme a tartomány hozzáadása:
+1. Mielőtt konfigurációs, lépjen kapcsolatba a [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) az engedélyezési listára saját tartományt az Adobe Sign az. Íme a tartomány hozzáadása:
 
     a. A [az Adobe Sign ügyfél-támogatási csapatának](https://helpx.adobe.com/in/contact/support.html) küld Önnek egy véletlenszerűen létrehozott tokent. A tartomány a jogkivonat az alábbihoz hasonló lesz: **adobe-bejelentkezés-ellenőrző = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
@@ -147,33 +147,33 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az Adobe Sign, hajtsa végre a
     * Adjon hozzá egy txt típusú rekordot a teljes token Adobe által megadott értékkel.
     * Mentse a módosításokat.
 
-8. Egy másik böngészőablakban jelentkezzen be az Adobe Sign vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be az Adobe Sign vállalati hely rendszergazdaként.
 
-9. A SAML menüben válassza ki a **fiókbeállításokat** > **SAML-beállítások**.
+1. A SAML menüben válassza ki a **fiókbeállításokat** > **SAML-beállítások**.
    
     ![Képernyőkép az Adobe Sign SAML-beállítások oldal](./media/adobe-echosign-tutorial/ic789520.png "fiók")
 
-10. Az a **SAML-beállítások** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **SAML-beállítások** szakaszban, hajtsa végre az alábbi lépéseket:
   
-    ![Képernyőkép a SAML-beállítások](./media/adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
+   ![Képernyőkép a SAML-beállítások](./media/adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
    
-    ![Képernyőkép a SAML-beállítások](./media/adobe-echosign-tutorial/ic789522.png "SAML-beállítások")
+   ![Képernyőkép a SAML-beállítások](./media/adobe-echosign-tutorial/ic789522.png "SAML-beállítások")
 
-    a. A **SAML mód**válassza **SAML kötelező**.
+   a. A **SAML mód**válassza **SAML kötelező**.
    
-    b. Válassza ki **Echosign Fiókrendszergazdák engedélyezése Echosign hitelesítő adataival bejelentkezni**.
+   b. Válassza ki **Echosign Fiókrendszergazdák engedélyezése Echosign hitelesítő adataival bejelentkezni**.
    
-    c. A **felhasználó létrehozása**válassza **elvégezte a hitelesítést SAML felhasználóinak automatikus hozzáadása**.
+   c. A **felhasználó létrehozása**válassza **elvégezte a hitelesítést SAML felhasználóinak automatikus hozzáadása**.
 
-    d. Beillesztés **Azure Ad-azonosító**, azokat az Azure Portalról másolt a **identitásszolgáltató Entitásazonosító** szövegmező.
+   d. Beillesztés **Azure Ad-azonosító**, azokat az Azure Portalról másolt a **identitásszolgáltató Entitásazonosító** szövegmező.
     
-    e. Beillesztés **bejelentkezési URL-cím**, az Azure Portalról másolt a **identitásszolgáltató bejelentkezési URL-cím** szövegmezőben.
+   e. Beillesztés **bejelentkezési URL-cím**, az Azure Portalról másolt a **identitásszolgáltató bejelentkezési URL-cím** szövegmezőben.
    
-    f. Beillesztés **kijelentkezési URL-címe**, az Azure Portalról másolt a **identitásszolgáltató kijelentkezési URL-címe** szövegmezőben.
+   f. Beillesztés **kijelentkezési URL-címe**, az Azure Portalról másolt a **identitásszolgáltató kijelentkezési URL-címe** szövegmezőben.
 
-    g. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben. A tartalmát a vágólapra másolja és illessze be azt a **identitásszolgáltató tanúsítvány** szövegmezőben.
+   g. Nyissa meg a letöltött **Certificate(Base64)** fájlt a Jegyzettömbben. A tartalmát a vágólapra másolja és illessze be azt a **identitásszolgáltató tanúsítvány** szövegmezőben.
 
-    h. Válassza ki **módosítások mentése**.
+   h. Válassza ki **módosítások mentése**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -193,7 +193,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

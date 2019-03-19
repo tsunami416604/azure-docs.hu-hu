@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120805"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Az Active Directory replikációs állapot figyelése az Azure Monitor szolgáltatással
 
@@ -45,8 +45,8 @@ Ha nem szeretné a tartományvezérlők bármelyikét közvetlenül csatlakozhat
 
    > [!NOTE]
    > Ezek a változások életbe csak az újraindítás a Microsoft Monitoring Agent szolgáltatása (HealthService.exe).
-### <a name="install-solution"></a>Megoldás telepítése
-Kövesse az ismertetett folyamatot [figyelési megoldás telepítése](solutions.md#install-a-monitoring-solution) hozzáadása a **Active Directory replikációs állapota** megoldás a Log Analytics-munkaterületre. Nincs szükség további konfigurációra.
+   > ### <a name="install-solution"></a>Megoldás telepítése
+   > Kövesse az ismertetett folyamatot [figyelési megoldás telepítése](solutions.md#install-a-monitoring-solution) hozzáadása a **Active Directory replikációs állapota** megoldás a Log Analytics-munkaterületre. Nincs szükség további konfigurációra.
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: b-juche
-ms.openlocfilehash: dc24165d3a5ee4d72c259753edd4028752828dce
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772291"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122335"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 Mielőtt Azure NetApp fájlokat használ, a NetApp fájlokat az Azure szolgáltatásban regisztrálni kérelmet kell benyújtania.  A regisztráció után, majd regisztrálja a szolgáltatás használatához.
@@ -61,7 +61,7 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
     
         az provider show --namespace Microsoft.NetApp
 
-  A parancs kimenete a következőképpen jelenik meg:
+   A parancs kimenete a következőképpen jelenik meg:
    
         {
         "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",

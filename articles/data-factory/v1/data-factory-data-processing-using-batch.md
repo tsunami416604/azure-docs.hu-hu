@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548472"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124150"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -802,8 +802,8 @@ Ebben a lépésben létrehoz egy folyamatot egy tevékenységgel, a korábban l�
    * A **linkedServiceName** tulajdonság az egyéni tevékenység **AzureBatchLinkedService**, amely tájékoztatja, hogy a Data Factory, az egyéni tevékenység Batch futtatásához szükséges.
    * A **egyidejűségi** beállítás fontos. Ha használja az alapértelmezett érték, amely 1, még akkor is, ha kettő vagy több készlet számítási csomópontjain a Batch, a szeletek feldolgozása után. Ezért azt nem kihasználhatja a párhuzamos feldolgozási képesség a Batch. Ha **egyidejűségi** értéke, például: 2, az azt jelenti, hogy a két szeleteket (felel meg a két feladatot a Batch szolgáltatásban) egy időben feldolgozható. Ebben az esetben is a virtuális gépek a Batch-készlet használ. Állítsa be megfelelően az egyidejűségi tulajdonság.
    * Csak egy feladat (szelet) végrehajtása a virtuális gép bármikor alapértelmezés szerint. Alapértelmezés szerint **virtuális gépenkénti feladatok maximális** a Batch-készlet 1 értékre van állítva. Az Előfeltételek részeként létrehozott készlet Ez a tulajdonság értéke 2. Ezért két data factory szeletek is futtathatja a virtuális gép egyszerre.
-    - A **isPaused** tulajdonsága hamis értékre van beállítva, alapértelmezés szerint. A folyamat azonnal fut ebben a példában, mivel a szeletek indítsa el a múltban. És ez a tulajdonság megadható **igaz** szüneteltetni a folyamat és a készlet, biztonsági **hamis** újraindításához.
-    -   A **start** és **záró** értendő öt órára egymástól. A szeletek előállítása óránként, így öt szelet előállítása a folyamat.
+     - A **isPaused** tulajdonsága hamis értékre van beállítva, alapértelmezés szerint. A folyamat azonnal fut ebben a példában, mivel a szeletek indítsa el a múltban. És ez a tulajdonság megadható **igaz** szüneteltetni a folyamat és a készlet, biztonsági **hamis** újraindításához.
+     -   A **start** és **záró** értendő öt órára egymástól. A szeletek előállítása óránként, így öt szelet előállítása a folyamat.
 
 1. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
 

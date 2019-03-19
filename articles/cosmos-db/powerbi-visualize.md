@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: f6ba66aa37b4a1902f98d2a1fcf5f542fa6476d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043651"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137674"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 
@@ -122,7 +122,7 @@ Fogja a Mexikói adatok lekérését az Azure Cosmos DB-fiókot és egy interakt
 8. Adjon meg egy nevet az új oszlop, például LatLong.
 9. Ezután adja meg az egyéni képlet az új oszlop számára.  . A példa kedvéért azt lesz összefűzhet a szélességi és hosszúsági értékeket vesszővel elválasztva, ahogy az alábbi, az alábbi képlettel: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Kattintson az **OK** gombra.
    
-    További információt a Data Analysis Expressions (DAX) többek között a DAX-függvények, [a Power BI Desktopban a DAX alapszintű](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
+    További információt a Data Analysis Expressions (DAX) többek között a DAX-függvények, [DAX alapszintű használata a Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
     ![A Power BI oktatóanyag az Azure Cosmos DB a Power BI-összekötő – egyéni oszlop hozzáadása](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 

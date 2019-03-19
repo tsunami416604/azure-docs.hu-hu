@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 5f77857c82846fe9c3d2ad4f5f82572d18401691
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c2c722331c95e72bae5605606564a2083e2802e3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075032"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>A Video Indexer API-kkal nyelvi modell testreszabása
 
@@ -306,7 +306,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileId|sztring|Igen|A fájl, amely frissítés alatt áll (jönnek létre, ha a fájl nem feltöltött a létrehozáskor vagy a nyelvi modell frissítése) azonosítója|
 |hozzáférési tokent|sztring|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 |fileName|sztring|Nem|Frissítse a fájl nevét, a neve|
-|engedélyezése|logikai|Nem|Ez a fájl-e (igaz) engedélyezve van, vagy le van tiltva (hamis), a nyelvi modell||
+|engedélyezése|logikai|Nem|Ez a fájl-e (igaz) engedélyezve van, vagy le van tiltva (hamis), a nyelvi modell|
 
 ### <a name="request-body"></a>A kérés törzse
 

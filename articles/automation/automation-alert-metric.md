@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170190"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Figyelési forgatókönyvek az metrikákhoz kapcsolódó riasztások
 
@@ -36,6 +36,9 @@ Az Azure Portalon lépjen az Automation-fiók. A **figyelés**válassza **riaszt
 2. A **jellogika konfigurálása** lap, ahol megadhatja a logikát, amely aktiválja a riasztást. A korábbi grafikon, lehetősége lesz két dimenzió alatt **Runbook neve** és **állapot**. Dimenzió egy metrikát, szűrheti az eredményeket használható különböző tulajdonságai áll. A **Runbook neve**, válassza ki a riasztás, vagy hagyja üresen a riasztás a runbookok összes runbookot. A **állapot**, a figyelni kívánt legördülő listából válassza ki az állapotot. A runbook nevét és állapotát a legördülő listában megjelenő értékei csak a múlt héten futtatott feladatokhoz.
 
    Ha szeretne riasztást az állapot vagy a runbookot, amely nem jelenik meg a legördülő listában, kattintson a **\+** mellett a dimenzió. Ezzel megnyílik egy párbeszédpanel, amely lehetővé teszi, hogy az egyéni érték, amely nem ehhez a dimenzióhoz nemrégiben kibocsátott adja meg. Ha megad egy értéket, amely a riasztás nem aktiválódik, a tulajdonság nem létezik.
+
+   > [!NOTE]
+   > Ha nem alkalmaz egy nevet a **RunbookName** dimenzió, a runbookokat, amelyek megfelelnek az állapot által rejtett rendszer runbookokat tartalmazó esetén riasztást kap.
 
 3. A **riasztási logika**, meghatározott feltétel és a riasztás küszöbértéke. A megadott feltétel előnézete alatt jelenik meg.
 

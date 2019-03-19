@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: bd1cb101a3bf9a4da9c681169d2a5c999e56b1b3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c4db658db3d32905368390826e5531ca31525486
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438414"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133127"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Az Azure Data Explorer adatbetöltés
 
@@ -53,7 +53,7 @@ Az Azure Data Explorer jelenleg támogatja:
 
 ### <a name="ingestion-using-integration-services"></a>Adatbetöltési integrációs szolgáltatások használata
 
-* Az Azure Data Factory (ADF), egy teljes körűen felügyelt adatintegrációs szolgáltatás az Azure-ban, az adatok másolásához, és az Azure Data Explorer elemzési számítási feladatokhoz. További információkért lásd: [másolja az adatokat, vagy Azure Data Factory használatával az Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer).
+* Az Azure Data Factory (ADF), egy teljes körűen felügyelt adatintegrációs szolgáltatás az adatelemzési számítási feladatokhoz az Azure-ban, az adatok másolásához, és az Azure Data Explorer használatával [támogatott adattárak és formátumok](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). További információkért lásd: [másolja az adatokat, vagy Azure Data Factory használatával az Azure Data Explorer](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Programozott adatfeldolgozást
 

@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 04ec95e891b4e9333949a3a0f40dcc9df88e49e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 015a2d344b066bd7b65c3228a2795c3395793f2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097030"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Gyors útmutató: A Bing Entity Search SDK-val keresési kérés küldése a node.js-ben
 
@@ -53,7 +53,7 @@ A Bing Entity Search SDK telepítése:
 
 ## <a name="send-a-request-and-receive-a-response"></a>A kéréseket küldeni és fogadni a választ
 
-2. Az entitások keresési kérelem küldése `entitiesOperations.search()`. Miután kapott választ, nyomtassa ki a `queryContext`kapott találatok közül, és az első eredmény leírása számát.
+1. Az entitások keresési kérelem küldése `entitiesOperations.search()`. Miután kapott választ, nyomtassa ki a `queryContext`kapott találatok közül, és az első eredmény leírása számát.
       
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {

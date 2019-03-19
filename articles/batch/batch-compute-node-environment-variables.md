@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 02/07/2019
 ms.author: lahugh
-ms.openlocfilehash: 734c16111ab859b55d87525cdc8a644c8114f6d2
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429039"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874761"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Az Azure Batch számítási csomópont környezeti változói
 
@@ -62,7 +62,6 @@ A feladatok által futtatott parancsokat a számítási csomópontok csak akkor 
 | AZ_BATCH_TASK_DIR               | A teljes elérési útját a [tevékenység könyvtárának] [ files_dirs] a csomóponton. Ez a könyvtár tartalmazza a `stdout.txt` és `stderr.txt` a tevékenységhez, és a AZ_BATCH_TASK_WORKING_DIR. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | Az aktuális tevékenység azonosítója. | Minden olyan feladat, kivéve az indítási tevékenység. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | A könyvtár elérési útja, amely azonos az elsődleges feladat, és minden alfeladat, egy [többpéldányos tevékenység][multi_instance]. Az elérési út létezik minden csomóponton, amelyen a többpéldányos tevékenység lefut, és elérhető-e a leállt csomóponton a feladat parancsokat olvasási/írási (mind a [koordináció parancs] [ coord_cmd] és a [ alkalmazás parancs][app_cmd]). Altevékenységek vagy a többi csomóponton végrehajtott elsődleges feladat nem rendelkezik távoli hozzáférés a címtárhoz (már nem egy "megosztott" hálózati könyvtár). | Többpéldányos elsődleges és részfeladatok gyakran. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
-| AZ_BATCH_TASK_SHARED_DIR        | Egy közös könyvtár adatainak tárolására szolgáló két felhőtípus között a feladatok a csomóponton. | Minden feladat. | C:\user\tasks\shared |
 | AZ_BATCH_TASK_WORKING_DIR       | A teljes elérési útját a [tevékenység munkakönyvtárának] [ files_dirs] a csomóponton. A jelenleg futó feladat Ez a könyvtár olvasási/írási hozzáféréssel rendelkezik. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | A csomópontok és magok száma csomópontonként kiosztott listáját egy [többpéldányos tevékenység][multi_instance]. Csomópontok és magok a formátum szerepel `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát követ egy vagy több csomópont IP-címek és a magok számát az egyes. |  Többpéldányos elsődleges és részfeladatok gyakran. |`2 10.0.0.4 1 10.0.0.5 1` |
 

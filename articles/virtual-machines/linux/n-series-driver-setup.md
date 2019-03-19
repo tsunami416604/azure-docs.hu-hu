@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df78852e309054bb5c27a779b37bb2310d9f7a01
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015010"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Az N sorozatú virtuális gépeken Linux rendszert futtató NVIDIA GPU-illesztők telepítése
 
@@ -38,7 +38,7 @@ Az N sorozatú virtuális gépek adatait tartalmazza, tárolókapacitást és le
 Az alábbiakban a CUDA az NVIDIA CUDA-eszközkészlet az N sorozatú virtuális gépeken való telepítésének lépéseit. 
 
 
-C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhat létre. További információkért lásd: a [CUDA telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhat létre. További információkért lásd: a [CUDA telepítési útmutató](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 CUDA illesztőprogramok telepíteni, győződjön meg arról, az SSH-kapcsolatot minden egyes virtuális géphez. Győződjön meg arról, hogy a rendszer a CUDA-kompatibilis GPU rendelkezik-e, futtassa a következő parancsot:
 
@@ -54,30 +54,30 @@ Ezután a disztribúció adott futtatási telepítési parancsokat.
 ### <a name="ubuntu"></a>Ubuntu 
 
 1. Töltse le és telepítse a CUDA-illesztőprogramokat a NVIDIA webhelyről. Ha például az Ubuntu 16.04 LTS:
-  ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+   ```bash
+   CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
-  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
+   sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
+   sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo apt-get update
+   sudo apt-get update
 
-  sudo apt-get install cuda-drivers
+   sudo apt-get install cuda-drivers
 
-  ```
+   ```
 
-  A telepítés több percig is eltarthat.
+   A telepítés több percig is eltarthat.
 
 2. Szükség esetén telepíti a teljes CUDA-eszközkészlet, írja be:
 
-  ```bash
-  sudo apt-get install cuda
-  ```
+   ```bash
+   sudo apt-get install cuda
+   ```
 
 3. A virtuális gépet, és ellenőrizheti a telepítést.
 
@@ -101,50 +101,50 @@ sudo reboot
 
 1. Frissítse a kernel (ajánlott). Ha nem szeretné frissíteni a kernel, ellenőrizze, hogy a verziói `kernel-devel` és `dkms` a kernel megfelelő.
 
-  ```
-  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+   ```
+   sudo yum install kernel kernel-tools kernel-headers kernel-devel
   
-  sudo reboot
+   sudo reboot
 
 2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
 
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
  
-  tar xvzf lis
+   tar xvzf lis
  
-  cd LISISO
+   cd LISISO
  
-  sudo ./install.sh
+   sudo ./install.sh
  
-  sudo reboot
-  ```
+   sudo reboot
+   ```
  
 3. A virtuális Géphez csatlakozni, és folytathatja a telepítést a következő parancsokat:
 
-  ```bash
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   ```bash
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-  sudo yum install dkms
+   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
+   CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
-  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+   sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
-  rm -f /tmp/${CUDA_REPO_PKG}
+   rm -f /tmp/${CUDA_REPO_PKG}
 
-  sudo yum install cuda-drivers
-  ```
+   sudo yum install cuda-drivers
+   ```
 
-  A telepítés több percig is eltarthat. 
+   A telepítés több percig is eltarthat. 
 
 4. Szükség esetén telepíti a teljes CUDA-eszközkészlet, írja be:
 
-  ```bash
-  sudo yum install cuda
-  ```
+   ```bash
+   sudo yum install cuda
+   ```
 
 5. A virtuális gépet, és ellenőrizheti a telepítést.
 
@@ -180,53 +180,53 @@ Telepítheti az NVIDIA GRID illesztőprogramok NV vagy NVv2-sorozat virtuális g
 
 2. Telepítse a frissítéseket.
 
-  ```bash
-  sudo apt-get update
+   ```bash
+   sudo apt-get update
 
-  sudo apt-get upgrade -y
+   sudo apt-get upgrade -y
 
-  sudo apt-get dist-upgrade -y
+   sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
+   sudo apt-get install build-essential ubuntu-desktop -y
+   ```
 3. Tiltsa le a Nouveau kernel-illesztőprogram, ami nem kompatibilis az NVIDIA illesztőprogram. (Csak a NVIDIA illesztőprogram használata NV vagy NVv2 virtuális gépeken.) Ehhez hozzon létre egy fájlt a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
 
 
 4. A virtuális gépet, és csatlakoztassa újra. Kilépés X-kiszolgáló:
 
-  ```bash
-  sudo systemctl stop lightdm.service
-  ```
+   ```bash
+   sudo systemctl stop lightdm.service
+   ```
 
 5. Töltse le és telepítse a rács illesztőprogramot:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 
 6. Amikor megkérdezi, hogy szeretné-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
 
 7. A telepítés befejezése után egy új fájl gridd.conf, helye/etc/nvidia/másolja /etc/nvidia/gridd.conf.template
 
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
 
 8. Adja hozzá a következőt `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. A virtuális gépet, és ellenőrizheti a telepítést.
 
 
@@ -234,63 +234,63 @@ Telepítheti az NVIDIA GRID illesztőprogramok NV vagy NVv2-sorozat virtuális g
 
 1. Frissítse a kernel és DKMS (ajánlott). Ha nem szeretné frissíteni a kernel, ellenőrizze, hogy a verziói `kernel-devel` és `dkms` a kernel megfelelő.
  
-  ```bash  
-  sudo yum update
+   ```bash  
+   sudo yum update
  
-  sudo yum install kernel-devel
+   sudo yum install kernel-devel
  
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
-  sudo yum install dkms
-  ```
+   sudo yum install dkms
+   ```
 
 2. Tiltsa le a Nouveau kernel-illesztőprogram, ami nem kompatibilis az NVIDIA illesztőprogram. (Csak a NVIDIA illesztőprogram használata NV vagy NV2 virtuális gépeken.) Ehhez hozzon létre egy fájlt a `/etc/modprobe.d `nevű `nouveau.conf` a következő tartalommal:
 
-  ```
-  blacklist nouveau
+   ```
+   blacklist nouveau
 
-  blacklist lbm-nouveau
-  ```
+   blacklist lbm-nouveau
+   ```
  
 3. A virtuális gépet, csatlakoztassa újra, és telepítse a legújabb [a Hyper-V és az Azure Linux Integration Services](https://www.microsoft.com/download/details.aspx?id=55106).
  
-  ```bash
-  wget https://aka.ms/lis
+   ```bash
+   wget https://aka.ms/lis
 
-  tar xvzf lis
+   tar xvzf lis
 
-  cd LISISO
+   cd LISISO
 
-  sudo ./install.sh
+   sudo ./install.sh
 
-  sudo reboot
+   sudo reboot
 
-  ```
+   ```
  
 4. A virtuális gép, és futtassa újra csatlakozni a `lspci` parancsot. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártyák láthatók, a PCI-eszközök.
  
 5. Töltse le és telepítse a rács illesztőprogramot:
 
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
+   ```bash
+   wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
-  chmod +x NVIDIA-Linux-x86_64-grid.run
+   chmod +x NVIDIA-Linux-x86_64-grid.run
 
-  sudo ./NVIDIA-Linux-x86_64-grid.run
-  ``` 
+   sudo ./NVIDIA-Linux-x86_64-grid.run
+   ``` 
 6. Amikor megkérdezi, hogy szeretné-e frissíteni a X-konfigurációs fájlt, jelölje be a nvidia-xconfig segédprogram futtatásához **Igen**.
 
 7. A telepítés befejezése után egy új fájl gridd.conf, helye/etc/nvidia/másolja /etc/nvidia/gridd.conf.template
   
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
+   ```bash
+   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+   ```
   
 8. Adja hozzá a következőt `/etc/nvidia/gridd.conf`:
  
-  ```
-  IgnoreSP=FALSE
-  ```
+   ```
+   IgnoreSP=FALSE
+   ```
 9. A virtuális gépet, és ellenőrizheti a telepítést.
 
 ### <a name="verify-driver-installation"></a>Ellenőrizze az illesztőprogram telepítése

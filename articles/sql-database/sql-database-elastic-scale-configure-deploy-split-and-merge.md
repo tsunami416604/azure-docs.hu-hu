@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995827"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Szilánkokra osztott adatbázisok közötti felosztási-egyesítési szolgáltatás üzembe helyezése
 
 A felosztási-egyesítési eszközének szilánkokra osztott adatbázisok közötti adatáthelyezés teszi lehetővé. Lásd: [adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>A szétválasztás és egyesítés-csomagok letöltése
-1. Töltse le a legújabb NuGet verziót [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
+1. Töltse le a legújabb NuGet verziót [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
 2. Nyisson meg egy parancssort, és lépjen abba a könyvtárba, amelybe letöltötte a nuget.exe. A letöltés a PowerShell-parancsokat is tartalmaz.
 3. Töltse le a legújabb felosztási-egyesítési csomagot ebbe a könyvtárba az az alábbi parancsot:
    ```

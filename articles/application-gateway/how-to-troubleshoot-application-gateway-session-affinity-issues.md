@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: c98328342eec7fa59a56fbcc70da8cdd7a8fabf1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 157cbd9b05f7f2af58df732a1ca0329926a200da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880886"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123215"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitási problémák elhárítása
 
@@ -40,11 +40,11 @@ Egyes esetekben a munkamenet-affinitási problémák fordulhatnak elő, ha elfel
 
 3. Válassza ki **HTTP-beállítások** lapjára **beállítások**.
 
-   ![troubleshoot-session-affinity-issues-1](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-1.png)
+   ![troubleshoot-session-affinity-issues-1](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-1.png)
 
 4. Kattintson a **appGatewayBackendHttpSettings** meg, hogy ellenőrizze a jobb oldalon **engedélyezve** Cookie-alapú affinitás.
 
-   ![troubleshoot-session-affinity-issues-2](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-2.jpg)
+   ![troubleshoot-session-affinity-issues-2](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-2.jpg)
 
 
 
@@ -81,9 +81,9 @@ A probléma azonosításához, kövesse az utasításokat:
 2. Ellenőrizze, és a munkamenet-naplók, annak megállapításához, hogy a cookie-kat, az ügyfél által biztosított rendelkezik-e ARRAffinity részleteinek elemzése. Ha nem találja meg a ARRAffinity részleteit, például a "**ARRAffinity =** *ARRAffinityValue*", amely azt jelenti, hogy az ügyfél nem válaszol a elrendezése cookie-k által biztosított cookie-k meghatározott belül a Application Gateway.
     Példa:
 
-    ![troubleshoot-session-affinity-issues-3](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-3.png)
+    ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-4.png)
+        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 Az alkalmazás továbbra is a cookie-t beállítani minden kérelemnél, amíg nem kap választ.
 
@@ -111,25 +111,25 @@ Naplózás engedélyezése az Azure Portalon
 
 2. Adatok gyűjtésére indításához kattintson **diagnosztika bekapcsolása**.
 
-   ![troubleshoot-session-affinity-issues-5](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-5.png)
+   ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
 3. A **diagnosztikai beállítások** panel biztosít a diagnosztikai naplók beállításait. Ebben a példában a Log Analytics tárolja a naplókat. Kattintson a **konfigurálása** alatt **Log Analytics** beállításához a munkaterületen. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
 
-   ![troubleshoot-session-affinity-issues-6](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-6.png)
+   ![troubleshoot-session-affinity-issues-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
 4. Hagyja jóvá a beállításokat, és kattintson a **mentése**.
 
-   ![troubleshoot-session-affinity-issues-7](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-7.png)
+   ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
 #### <a name="view-and-analyze-the-application-gateway-access-logs"></a>Az Application Gateway hozzáférési naplók megtekintése és elemzése
 
 1. Az Application Gateway erőforrás nézet alatt az Azure Portalon, válassza ki a **diagnosztikai naplók** a a **figyelés** szakaszban.
 
-   ![troubleshoot-session-affinity-issues-8](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-8.png)
+   ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
 2. A jobb oldalon válassza ki a "**ApplicationGatewayAccessLog**" alatt a legördülő listában **kategóriába jelentkezzen.**  
 
-   ![troubleshoot-session-affinity-issues-9](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-9.png)
+   ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
 3. Az Application Gateway – hozzáférési napló listában kattintson a napló elemzése és exportálni szeretne, és majd exportálja a JSON-fájlt.
 
@@ -145,7 +145,7 @@ Naplózás engedélyezése az Azure Portalon
 
   - **A KISZOLGÁLÓÁLLAPOT**: HTTP-válaszkód, az Application Gateway a háttérrendszer cégtől kapott.
 
-  ![troubleshoot-session-affinity-issues-11](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-11.png)
+  ![troubleshoot-session-affinity-issues-11](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
 Ha a két elem érkező Ügyfélip és az ügyfél-portot, és a rendszer elküldte őket az ugyanazt a háttér-kiszolgálót, ez azt jelenti, az Application Gateway megfelelően konfigurálva.
 
@@ -164,23 +164,23 @@ A webes hibakeresővel tetszőleges. Ebben a példában használjuk a Fiddler r�
 
 2. Kattintson a jobb gombbal a telepítés végrehajtható fájlt, és a Futtatás rendszergazdaként telepítéséhez.
 
-            ![troubleshoot-session-affinity-issues-12](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-12.png)
+            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Amikor megnyitja a Fiddler, azt automatikusan el kell (figyelje meg a bal alsó sarokban lévő rögzítése) forgalom rögzítése. Nyomja le az F12 billentyűt a indítása vagy leállítása forgalom rögzítése.
 
-        ![troubleshoot-session-affinity-issues-13](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-13.png)
+        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. Nagy valószínűséggel fogja visszafejtett HTTPS-forgalom iránt, és kiválasztásával engedélyezheti a HTTPS-visszafejtési **eszközök** > **Fiddler beállítások**, és jelölje be " **visszafejtése HTTPS-forgalom**".
 
-        ![troubleshoot-session-affinity-issues-14](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-14.png)
+        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. A korábbi független munkamenetekben előtt a probléma lejátszás gombra kattintva eltávolíthatja **X** (icon) > **távolítsa el az összes** végrehajtásával képernyőképet van: 
 
-        ![troubleshoot-session-affinity-issues-15](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-15.png)
+        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. Ha a probléma reprodukálása, mentse a fájlt, tekintse át a kiválasztásával **fájl** > **mentése** > **minden munkamenet...** . 
 
-        ![troubleshoot-session-affinity-issues-16](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-16.png)
+        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. Ellenőrizze, és elemezheti a munkamenet-naplókat a probléma meghatározásához.
 
@@ -191,11 +191,11 @@ A webes hibakeresővel tetszőleges. Ebben a példában használjuk a Fiddler r�
    > [!NOTE]
    > Ez ARRAffinity értéke a cookie-azonosítóhoz, az Application Gateway az ügyfél egy adott háttérkiszolgálón küldendő állítja.
 
-    ![troubleshoot-session-affinity-issues-17](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-17.png)
+    ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Példa a "b"** A következő munkamenet-naplózás az egyik, az ügyfél válaszol vissza az Application Gatewayhez, amelyet a ARRAAFFINITY meg az előző követ. Ha megfelel a ARRAffinity cookie-azonosító, a csomagot küldeni kell ugyanazon háttér-kiszolgálóra, amelyet korábban használt. Ellenőrizze a következő több sornyi lásd: e megváltoztatja az ügyfél ARRAffinity cookie-k http-kommunikációt.
 
-    ![troubleshoot-session-affinity-issues-18](.\media\how-to-troubleshoot-application-gateway-session-affinity-issues\troubleshoot-session-affinity-issues-18.png)
+    ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > Az azonos kommunikációs munkamenet cookie-t kell megváltoztatni. Ellenőrizze a felső mezőbe a jobb oldalon, és válassza a "Cookie-k" lapján megtekintheti, hogy az ügyfél a cookie-k használatával, és vissza az Application Gateway felé. Ha nem, akkor az ügyfél böngészője nem tartja és beszélgetés a cookie-k használatával. Az ügyfél egyes esetekben előfordulhat, hogy közé eshet.

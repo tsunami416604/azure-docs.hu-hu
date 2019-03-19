@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694499"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118391"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso áttelepítése: Helyszíni alkalmazás újbóli üzembe helyezése Azure-beli virtuális gépeken
 
@@ -168,10 +168,10 @@ Hogy ezek az alábbiak szerint állíthatja:
     - Az alkalmazás-adatbázis VM (SQLVM) az adatbázis-alhálózathoz (ÉLES-DB-EUS2), telepítse át az éles hálózati környezetben található.
 
 2. Egy storage-fiók-Contoso beállítása az Azure storage-fiók (contosovmsacc20180528) az elsődleges régióban hoz létre.
-    - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
-    - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
+   - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
+   - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
 
-    ![Site Recovery-tároló](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery-tároló](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. Egy tároló az a hálózat és tárfiók létrehozása helyben, a Contoso most létrehoz egy Recovery Services-tároló (ContosoMigrationVault), és elhelyezi a ContosoFailoverRG erőforráscsoportban az USA keleti RÉGIÓJA 2 elsődleges régióban.
 
@@ -221,15 +221,15 @@ A feladatátvételt követően a Contoso biztosítani szeretné az Azure virtuá
 
 1. Az interneten keresztüli eléréshez azokat:
 
- - Engedélyezze az RDP-t a helyszíni virtuális Gépet a feladatátvétel előtt.
- - Győződjön meg arról, hogy a TCP és UDP-szabályokat a adják a **nyilvános** profilt.
- - Ellenőrizze, hogy az RDP engedélyezve van-e **Windows tűzfal** > **engedélyezett alkalmazások** az összes profil számára.
+   - Engedélyezze az RDP-t a helyszíni virtuális Gépet a feladatátvétel előtt.
+   - Győződjön meg arról, hogy a TCP és UDP-szabályokat a adják a **nyilvános** profilt.
+   - Ellenőrizze, hogy az RDP engedélyezve van-e **Windows tűzfal** > **engedélyezett alkalmazások** az összes profil számára.
 
 2. Site-to-site VPN, keresztüli eléréshez azokat:
 
- - Engedélyezze az RDP a helyszíni gépen.
- - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és privát** hálózatok.
- - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális gép **OnlineAll**.
+   - Engedélyezze az RDP a helyszíni gépen.
+   - Az RDP engedélyezése a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **tartomány és privát** hálózatok.
+   - Az operációs rendszer TÁROLÓHÁLÓZATI szabályzatát állítsa a helyszíni virtuális gép **OnlineAll**.
 
 Emellett a feladatátvétel futtatásakor szükségük ellenőrizze az alábbiakat:
 
@@ -341,10 +341,10 @@ Minden helyen, a Contoso-rendszergazdák mostantól engedélyezheti a virtuális
 
 4. Kiválasztják **WebVM** a replikáció, ellenőrizze a replikációs házirendet, és engedélyezze a replikációt.
 
-    - Ebben a szakaszban azokat csak kiválasztja WEBVM mert virtuális hálózatot és alhálózatot kell kijelölni, és az alkalmazás virtuális gépek külön alhálózatokon kerülnek.
-    - Ha a replikáció engedélyezve van a Site Recovery automatikusan telepíti a mobilitási szolgáltatást a virtuális gépen.
+   - Ebben a szakaszban azokat csak kiválasztja WEBVM mert virtuális hálózatot és alhálózatot kell kijelölni, és az alkalmazás virtuális gépek külön alhálózatokon kerülnek.
+   - Ha a replikáció engedélyezve van a Site Recovery automatikusan telepíti a mobilitási szolgáltatást a virtuális gépen.
 
-    ![A replikáció engedélyezése](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![A replikáció engedélyezése](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 6. A **Essentials** az Azure Portalon meghatározhatják, hogy a struktúra a virtuális gépek replikálása Azure-bA.

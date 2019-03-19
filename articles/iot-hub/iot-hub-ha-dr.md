@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 308d9a04e52572e00e1cbed24548e5f09adda571
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ac47ad10f394eaf31a9f7c12d7a2a03ea23283f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092650"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT Hub magas rendelkezésre állás és vészhelyreállítás helyreállítási
 
@@ -128,7 +128,7 @@ Ebben a lépésben leegyszerűsítése idempotens műveleteket kell használnia.
 Az alábbiakban egy magas rendelkezésre ÁLLÁS/Vészhelyreállítás beállítások összesítését jelenik meg ebben a cikkben, válassza ki a megfelelő megoldás, amely a megoldás működik, mint egy hivatkozási használható.
 
 | HA/DR-beállítás | RTO | Helyreállítási időkorlát | Manuális beavatkozásra van szükség? | Megvalósítás összetettségét | További költségek gyakorolt hatás|
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | A Microsoft által kezdeményezett feladatátvétel |2 – 26 óra|Tekintse meg a fenti RPO-táblázat|Nem|None|None|
 | Manuális feladatátvétel |10 perc – 2 óra|Tekintse meg a fenti RPO-táblázat|Igen|Nagyon alacsony. Csak kell elindítani a műveletet a portálról.|None|
 | Adatbázisközi régióban a magas rendelkezésre ÁLLÁS |< 1 perc|A replikálási gyakoriságot az egyéni magas rendelkezésre ÁLLÁSÚ megoldás függ|Nem|Magas|> 1 x 1, az IoT hub költsége|

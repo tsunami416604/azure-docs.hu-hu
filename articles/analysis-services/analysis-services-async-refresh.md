@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168017"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API-val aszinkron Adatfrissítés
 
@@ -57,7 +57,7 @@ Például használhatja a POST művelet a frissítések gyűjtemény egy frissí
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Összes hívás az engedélyezési fejléc érvényes Azure Active Directory (OAuth 2) tokennel kell hitelesíteni, és az alábbi követelményeknek kell megfelelnie:
 
@@ -98,20 +98,20 @@ A szervezet előfordulhat, hogy a következőhöz hasonlóan:
 
 Paraméterek megadása nem kötelező. Alapértelmezés szerint a rendszer alkalmazza.
 
-|Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
-|---------|---------|---------|---------|
-|Típus     |  Enum       |  A típus feldolgozástípus meghatározásához. A típusok összhangban legyenek a TMSL [a refresh parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: teljes, clearValues, kiszámíthatja, dataOnly, automatikus, és töredezettségének. Adja hozzá a típus nem támogatott.      |   Automatikus      |
-|CommitMode     |  Enum       |  Azt határozza meg, ha objektumok lesznek véglegesítve, és kötegekben, vagy csak ha végzett. Módok közé tartozik: alapértelmezett, tranzakciós partialBatch.  |  tranzakciós       |
-|MaxParallelism     |   Int      |  Ez az érték a párhuzamos feldolgozás parancsok futtatására szálak maximális száma határozza meg. Ez az érték a TMSL beállítható MaxParallelism tulajdonság igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
-|RetryCount    |    Int     |   Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
-|Objektumok     |   Tömb      |   A feldolgozásra objektumok egy tömbjét. Minden objektumot tartalmazza: "table" feldolgozásakor a teljes táblázatot vagy a "table" és "partíció" partíció feldolgozása során. Ha nincs objektum meg van adva, a teljes modellt frissülnek. |   A teljes modell feldolgozása      |
+| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
+|------------------|-------|--------------|---------|
+| `Type`           | Enum  | A típus feldolgozástípus meghatározásához. A típusok összhangban legyenek a TMSL [a refresh parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: teljes, clearValues, kiszámíthatja, dataOnly, automatikus, és töredezettségének. Adja hozzá a típus nem támogatott.      |   Automatikus      |
+| `CommitMode`     | Enum  | Azt határozza meg, ha objektumok lesznek véglegesítve, és kötegekben, vagy csak ha végzett. Módok közé tartozik: alapértelmezett, tranzakciós partialBatch.  |  tranzakciós       |
+| `MaxParallelism` | Int   | Ez az érték a párhuzamos feldolgozás parancsok futtatására szálak maximális száma határozza meg. Ez az érték a TMSL beállítható MaxParallelism tulajdonság igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
+| `RetryCount`     | Int   | Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
+| `Objects`        | Tömb | A feldolgozásra objektumok egy tömbjét. Minden objektumot tartalmazza: "table" feldolgozásakor a teljes táblázatot vagy a "table" és "partíció" partíció feldolgozása során. Ha nincs objektum meg van adva, a teljes modellt frissülnek. |   A teljes modell feldolgozása      |
 
 CommitMode partialBatch megegyezik. Szolgál, amely során egy kezdeti betöltése a nagyméretű adathalmazok óráig is eltarthat. A frissítési művelet nem sikerül, egy vagy több köteg sikeresen véglegesítése után, ha sikeresen véglegesítve köteg véglegesített marad (ez nem állítja vissza sikeresen véglegesítve kötegek).
 
 > [!NOTE]
 > Írásának időpontjában a Köteg mérete a MaxParallelism érték, de ez az érték módosítása sikerült.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId >
+## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
 A frissítési művelet állapotának ellenőrzéséhez használja a GET-verb a frissítés azonosítóját. Íme egy példa a válasz törzse. Ha a művelet van folyamatban, **inProgress** állapotát adja vissza.
 
@@ -137,7 +137,7 @@ A frissítési művelet állapotának ellenőrzéséhez használja a GET-verb a 
 }
 ```
 
-## <a name="get-refreshes"></a>/Refreshes beolvasása
+## <a name="get-refreshes"></a>GET /refreshes
 
 Modellhez tartozó korábbi frissítési műveletek listáját, amelyet a GET-verb a /refreshes gyűjteményen. Íme egy példa a válasz törzse. 
 
@@ -161,11 +161,11 @@ Modellhez tartozó korábbi frissítési műveletek listáját, amelyet a GET-ve
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>TÖRLÉS /refreshes/\<refreshId >
+## <a name="delete-refreshesrefreshid"></a>DELETE /refreshes/\<refreshId>
 
 Egy folyamatban lévő frissítési művelet visszavonására, használja a DELETE utasítás a frissítés azonosítóját.
 
-## <a name="post-sync"></a>POST/Sync
+## <a name="post-sync"></a>POST /sync
 
 Adatfrissítési műveletek elvégzése, akkor lehet szükség az új adatok szinkronizálását lekérdezés horizontális felskálázás replikái. A szinkronizálási művelet egy modell használja a POST műveletet a/Sync függvény. A válasz Location fejlécébe magában foglalja a szinkronizálási művelet azonosítója.
 

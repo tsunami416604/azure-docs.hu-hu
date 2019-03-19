@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 7f3d5caf1d8fb03e989181bb13bcce274816baa7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441543"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097940"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>A Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópulton eredmények
 
@@ -180,7 +180,7 @@ Az utolsó lépés egy kimeneti fogadó megadása a feladatnak, ahová az átala
 3. Válassza a **+ Hozzáadás** > **Power BI** lehetőséget. Töltse ki az űrlapot a következő értékekkel, majd válassza az **Engedélyezés** lehetőséget:
 
    |**Beállítás**  |**Ajánlott érték**  |
-   |---------|---------|---------|
+   |---------|---------|
    |Kimeneti alias  |  MyPBIoutput  |
    |Adatkészlet neve  |   ASAdataset  |
    |Tábla neve |  ASATable  |

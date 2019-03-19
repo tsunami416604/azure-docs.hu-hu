@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: cf4ee8b1b9d96ad4d32a0ac8b1682968b90653f9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074896"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -120,17 +120,17 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
 
 3. A **regisztrációs csoport hozzáadásához**, adja meg a következőket, majd kattintson a **mentése** gombra.
 
-    - **Csoport neve**: Adja meg **mylegacydevices**.
+   - **Csoport neve**: Adja meg **mylegacydevices**.
 
-    - **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
+   - **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
 
-    - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
+   - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
 
-    - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **statikus konfiguráció** így hozzárendelhet egy adott hubhoz.
+   - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **statikus konfiguráció** így hozzárendelhet egy adott hubhoz.
 
-    - **Válassza ki az IoT-központok ennek a csoportnak rendelhetők**: Válassza ki a hub egyikét.
+   - **Válassza ki az IoT-központok ennek a csoportnak rendelhetők**: Válassza ki a hub egyikét.
 
-    ![Adja hozzá a szimmetrikus kulcsát a kulcsigazoláshoz regisztrációs csoportot](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Adja hozzá a szimmetrikus kulcsát a kulcsigazoláshoz regisztrációs csoportot](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. Megjelenik a szimmetrikus kulcs regisztrációs csoportot **mylegacydevices** alatt a *csoportnév* oszlopa a *regisztrációs csoportok* fülre. 
 

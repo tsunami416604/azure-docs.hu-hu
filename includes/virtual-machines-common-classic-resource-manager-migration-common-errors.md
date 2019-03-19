@@ -4,17 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: aa58890f74c7c667189fa10c009769de043227c4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f00da12519f21410f773afb96a5e9a83c56166d9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457812"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58051600"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Gyakran előforduló hibák a klasszikusból Azure Resource Manager-alapú környezetbe való migrálás során
 Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből Azure Resource Manager verembe történő migrálása során leggyakrabban előforduló hibákat és kezelési lehetőségeiket.
 
 ## <a name="list-of-errors"></a>Hibalista
+
 | Hibasztring | Kezelés |
 | --- | --- |
 | Belső kiszolgálóhiba |Bizonyos esetekben ez egy átmeneti hiba, ami újbóli próbálkozással megszűnik. Ha továbbra is fennáll, [vegye fel a kapcsolatot az Azure ügyfélszolgálatával](../articles/azure-supportability/how-to-create-azure-support-request.md), mivel a platformnaplók vizsgálata szükséges. <br><br> **MEGJEGYZÉS:** Miután az incidens követi nyomon a támogatási csoporthoz, ne próbálkozzon intézkedésekkel, előfordulhat, hogy ez az adott környezet nem kívánt következményekkel. |

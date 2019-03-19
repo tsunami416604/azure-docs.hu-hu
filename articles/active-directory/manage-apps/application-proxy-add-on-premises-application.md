@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d03efe2f8f8c3cad9ab37ea100b050a6e13aafc
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 5fb504e7c2f76f2edd0921cae0fb02ea0849ff4b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878346"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -93,7 +93,7 @@ A következő URL-hozzáférés engedélyezése:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Az összekötő és az alkalmazásproxy-felhőszolgáltatás közötti kommunikáció |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure az alábbi URL-címek segítségével tanúsítványok |
-| login.windows.net<br>login.microsoftonline.com | Az összekötő URL-használ a regisztrációs folyamat során. |
+| login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | Az összekötő URL-használ a regisztrációs folyamat során. |
 
 Ha a tűzfal vagy proxy lehetővé teszi a DNS-engedélyezési, engedélyezett kapcsolatokat is \*. msappproxy.net és \*. servicebus.windows.net. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
 
@@ -149,7 +149,7 @@ Az összekötő telepítve és regisztrálva megfelelően ellenőrzése:
    - a **Microsoft AAD alkalmazásproxy-összekötő** a kapcsolódást engedélyezi;
    - **A Microsoft AAD Alkalmazásproxyösszekötő** egy automatikus frissítési szolgáltatás. A frissítési ellenőrzi, hogy az összekötő újabb verziója, és szükség szerint frissíti.
 
-    ![Az alkalmazásproxy összekötőjének szolgáltatásai – képernyőfelvétel](./media/application-proxy-enable/app_proxy_services.png)
+     ![Az alkalmazásproxy összekötőjének szolgáltatásai – képernyőfelvétel](./media/application-proxy-enable/app_proxy_services.png)
 
 3. Ha a szolgáltatás állapota nem **futó**, kattintson a jobb gombbal az egyes szolgáltatásokhoz, és válassza a **start**. 
 
@@ -173,7 +173,7 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
     | Mező | Leírás |
     | :---- | :---------- |
     | **Name (Név)** | Az alkalmazás a hozzáférési panelen és az Azure Portalon megjelenő nevére. |
-    | **Belső URL-cím** | URL-cím a magánhálózaton belülről történő alkalmazás eléréséhez. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Ily módon a közzététele ugyanarra a kiszolgálóra, mint a különböző alkalmazások különböző helyeken, és mindegyikhez adjon a saját nevet és hozzáférési szabályokat.<br><br>Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például, ha az alkalmazás https://yourapp/app és helyen található képeket használ https://yourapp/media, majd tegyen közzé https://yourapp/ mert az elérési út. A belső URL-cím nem kell lennie a kezdőlapját, megjelennek a felhasználók számára. További információkért lásd: [beállítása egy egyéni kezdőlapja közzétett alkalmazások](application-proxy-configure-custom-home-page.md). |
+    | **Belső URL-cím** | URL-cím a magánhálózaton belülről történő alkalmazás eléréséhez. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Ily módon a közzététele ugyanarra a kiszolgálóra, mint a különböző alkalmazások különböző helyeken, és mindegyikhez adjon a saját nevet és hozzáférési szabályokat.<br><br>Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Például, ha az alkalmazás <https://yourapp/app> és helyen található képeket használ <https://yourapp/media>, majd tegyen közzé <https://yourapp/> mert az elérési út. A belső URL-cím nem kell lennie a kezdőlapját, megjelennek a felhasználók számára. További információkért lásd: [beállítása egy egyéni kezdőlapja közzétett alkalmazások](application-proxy-configure-custom-home-page.md). |
     | **Külső URL-cím** | A felhasználók számára hozzáférést a hálózaton kívülről az alkalmazás címe. Ha nem szeretné az alapértelmezett alkalmazásproxy tartományát szeretné használni, olvassa el [egyéni tartományok az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md).|
     | **Előhitelesítés** | Az alkalmazásproxy hogyan az alkalmazás hozzáférés engedélyezése előtt ellenőrzi a felhasználót.<br><br>**Az Azure Active Directory** – az alkalmazásproxy átirányítja a felhasználókat az Azure ad-vel, amely hitelesíti a címtár és az alkalmazás vonatkozó való bejelentkezési. Javasoljuk, hogy a beállítás az alapértelmezett, így az Azure AD biztonsági funkciókkal, például a feltételes hozzáférés és a multi-factor Authentication szolgáltatás előnyeit élvezheti. **Az Azure Active Directory** szükség az alkalmazások és a Microsoft Cloud Application Security figyelésére.<br><br>**Csatlakoztatott** -felhasználók nem rendelkeznek hitelesítése az Azure Active Directory, az alkalmazás eléréséhez. Továbbra is beállíthatja a háttérkiszolgálón hitelesítési követelmények. |
     | **Összekötőcsoport** | Összekötők dolgozza fel az alkalmazáshoz való távoli hozzáférést és összekötőcsoportok segít rendszerezni a összekötők és a régiót, hálózati vagy célú alkalmazások. Ha nincs még létrehozva összekötő csoportnak sem, az alkalmazás hozzá van rendelve **alapértelmezett**.<br><br>Ha az alkalmazás való csatlakozáshoz használja a websockets protokoll, a csoportban lévő összes összekötőt kell 1.5.612.0 verzió vagy újabb.|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c16e3ed140284422f3b62669fed1f8fb4dd681f8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872239"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors megvalósítása biztonsági mentése és visszaállítása
 
@@ -123,7 +123,7 @@ Reliable actors – további információért olvassa el a következő cikkeket:
 * [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
 * [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

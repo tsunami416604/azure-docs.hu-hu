@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 3/6/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 26b0370af900e1c29bf11606339487cf27f88039
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 41ff32f840b7a0e9e5fa5d8f7bf25a93fa679955
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098695"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -72,7 +72,7 @@ VMware virtuális gépek replikálásához:
 12. Engedélyezése **több virtuális gépre kiterjedő konzisztencia** Ha szeretne gyűjteni a gépek egy replikációs csoporthoz. Adja meg a csoport nevét, és kattintson **OK**. 
 
     > [!NOTE]
-
+    > 
     >    * Egy replikációs csoportban található gépek replikálása együtt, és amikor meghiúsulnak keresztül megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokat.
     >    * Virtuális gépek és fizikai kiszolgálók gyűjtsön össze, hogy látni lehessen a számítási feladatokat. Több virtuális gépre kiterjedő konzisztencia engedélyezése hatással lehet a számítási feladatok teljesítményére. Csak akkor, ha a gépek ugyanazt a számítási feladatot futtat, és konzisztencia kell használni.
 
@@ -87,17 +87,17 @@ Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure 
 1. Kattintson a **beállítások** > **replikált elemek** >, majd válassza ki a gépet. A **Essentials** lap gép beállításaira és állapotára vonatkozó információkat jeleníti meg.
 2. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.
 3. A **számítás és hálózat** > **számítási tulajdonságok**, több virtuális gép propoerties módosíthatja:
-    * Az Azure virtuális gép neve – a nevét, hogy megfeleljenek az Azure követelményeinek, szükség esetén módosítása
-    * Virtuális célgép méretét vagy a virtuális gép típusa – az alapértelmezett Virtuálisgép-méret van kiválasztva alapján a forrás virtuális gép méretét. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és csak azok a feladatátvétel után módosult. Ismerje meg, további, a lemezméretek és az iops-érték a [lemezek skálázási célértékei](../virtual-machines/windows/disk-scalability-targets.md) cikk.
+   * Az Azure virtuális gép neve – a nevét, hogy megfeleljenek az Azure követelményeinek, szükség esetén módosítása
+   * Virtuális célgép méretét vagy a virtuális gép típusa – az alapértelmezett Virtuálisgép-méret van kiválasztva alapján a forrás virtuális gép méretét. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és csak azok a feladatátvétel után módosult. Ismerje meg, további, a lemezméretek és az iops-érték a [lemezek skálázási célértékei](../virtual-machines/windows/disk-scalability-targets.md) cikk.
 
-    ![Számítás és hálózat tulajdonságai](./media/vmware-azure-enable-replication/vmproperties.png)
+     ![Számítás és hálózat tulajdonságai](./media/vmware-azure-enable-replication/vmproperties.png)
 
-    *  Erőforráscsoport – választhat egy [erőforráscsoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) , amely egy gép részévé válik a feladatátvétel után. Ezt a beállítást, a feladatátvétel előtt bármikor módosíthatja. Közzététele a feladatátvétel, ha a gép telepít át egy másik erőforráscsoportban található, a gép break védelmi beállításait.
-    * Rendelkezésre állási csoport – választhat egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Ha a gép van szüksége lehet egy feladatátvétel után része. Bár a rendelkezésre állási választjuk, vegye figyelembe, hogy:
+   * Erőforráscsoport – választhat egy [erőforráscsoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) , amely egy gép részévé válik a feladatátvétel után. Ezt a beállítást, a feladatátvétel előtt bármikor módosíthatja. Közzététele a feladatátvétel, ha a gép telepít át egy másik erőforráscsoportban található, a gép break védelmi beállításait.
+   * Rendelkezésre állási csoport – választhat egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Ha a gép van szüksége lehet egy feladatátvétel után része. Bár a rendelkezésre állási választjuk, vegye figyelembe, hogy:
 
-        * Csak a megadott erőforrás-csoportba tartozó rendelkezésre állási csoportok jelennek meg.  
-        * Gépek más virtuális hálózatokkal nem lehet az azonos rendelkezésre állási csoport része.
-        * Csak az azonos méretű virtuális gépeket egy rendelkezésre állási csoport részeként is szerepelhetnek.
+       * Csak a megadott erőforrás-csoportba tartozó rendelkezésre állási csoportok jelennek meg.  
+       * Gépek más virtuális hálózatokkal nem lehet az azonos rendelkezésre állási csoport része.
+       * Csak az azonos méretű virtuális gépeket egy rendelkezésre állási csoport részeként is szerepelhetnek.
 4. Megtekintheti, és adja hozzá a célként megadott hálózat, alhálózat és az Azure virtuális Géphez rendelt IP-cím kapcsolatos információkat.
 5. A **lemezek**, az operációs rendszer és az adatlemezek láthatja a replikálandó virtuális Gépen.
 

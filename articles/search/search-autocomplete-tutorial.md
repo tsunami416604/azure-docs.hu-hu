@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b66e5201de2c01aaf6a579d3b71b085dd14b1b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997164"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900896"
 ---
 # <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Oktatóanyag: A keresőmezőbe, az Azure Search használatával ad hozzá az automatikus kiegészítés
 
@@ -35,7 +35,7 @@ A következő feladatokat fogja elvégezni:
 > * Keresési szolgáltatás információinak hozzáadása alkalmazásbeállításokhoz
 > * Keresésbeviteli mező megvalósítása
 > * Az automatikus kiegészítés lista, amely lekéri az távoli forrásból történő támogatása 
-> * Javaslatok és az automatikus kiegészítés használata a .net SDK-t és a REST API
+> * Javaslatok és az automatikus kiegészítés használata a .NET SDK-t és a REST API
 > * Ügyféloldali gyorsítótárazás támogatása a hatékonyabb működés érdekében 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -65,7 +65,7 @@ Kövesse a jelen szakasz lépéseit, ha a saját indexébe szeretné importálni
 
 ### <a name="running-the-sample"></a>A minta futtatása
 
-Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség meghívja a HomeController elemet a böngészőből, és az Azure Search .Net SDK-val lekéri az eredményeket.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezt a beállítást általában észrevehetően jobb teljesítmény érdekében fog rendelkezni, mivel a tartományvezérlő a folyamat nem vesz igénybe.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Nincs olyan automatikus kiegészítés néhány példa a lapon minden egyes útmutatása alapján.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
+Most már készen áll az oktatóanyag mintaalkalmazásának futtatására.  Nyissa meg az AutocompleteTutorial.sln megoldásfájlt a Visual Studióban az oktatóanyag futtatásához.  A megoldás egy ASP.NET MVC-projektet tartalmaz.  A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.  A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét.  A C# lehetőség a böngészőből a HomeController hívások és eredmények lekérése az Azure Search .NET SDK használatával.  A JavaScript lehetőség közvetlenül a böngészőből hívja be az Azure Search REST API-t.  Ezt a beállítást általában észrevehetően jobb teljesítmény érdekében fog rendelkezni, mivel a tartományvezérlő a folyamat nem vesz igénybe.  Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget.  Nincs olyan automatikus kiegészítés néhány példa a lapon minden egyes útmutatása alapján.  Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
 
 ## <a name="how-this-works-in-code"></a>Ennek működése kódban
 
@@ -213,11 +213,11 @@ Ha összehasonlítja ezt a kezdőlapvezérlőt meghívó fenti példával, több
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag bemutatja az alapvető lépéseken, amellyel egy keresőmező, amely támogatja az automatikus kiegészítés és javaslatokat.  Látta, hogyan készíthet ASP.NET MVC-alkalmazást, és hogyan használhatja az Azure Search .Net SDK-t vagy a REST API-t a javaslatok lekéréséhez.
+Ez az oktatóanyag bemutatja az alapvető lépéseken, amellyel egy keresőmező, amely támogatja az automatikus kiegészítés és javaslatokat.  Bemutatta, hogyan sikerült az ASP.NET MVC alkalmazás létrehozását, és javaslatokat beolvasni az Azure Search .NET SDK vagy a REST API használatával.
 
 ## <a name="next-steps"></a>További lépések
 
-Javaslatok és az automatikus kiegészítés integrálása a keresési funkciót.  Annak megfontolása, hogy a .Net SDK vagy a REST API közvetlen használata hogyan segíthet abban, hogy gépelés közben biztosítsa az Azure Search funkcióit a felhasználóknak a hatékonyabb munka érdekében.
+Javaslatok és az automatikus kiegészítés integrálása a keresési funkciót.  Fontolja meg, hogyan segíthet a .NET SDK-t vagy a REST API segítségével közvetlenül révén alkalmazása részesülhet az Azure Search a felhasználók számára, így hatékonyabbá beírása.
 
 > [!div class="nextstepaction"]
 > [Automatikus kitöltés REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

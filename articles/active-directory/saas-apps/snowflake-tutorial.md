@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69b68e5e29d972f95742a28250e07ba69e6a681f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 617a01fdce71e76cf4783ee6a274ee428b0b3b57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Oktatóanyag: A Snowflake és az Azure Active Directory-integráció
 
@@ -134,29 +134,29 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Snowflake, hajtsa v�
 
 ### <a name="configure-snowflake-single-sign-on"></a>Snowflake egyszeri bejelentkezés konfigurálása
 
-8. Egy másik böngészőablakban, jelentkezzen be a Snowflake-Security-rendszergazdaként.
+1. Egy másik böngészőablakban, jelentkezzen be a Snowflake-Security-rendszergazdaként.
 
-9. **Váltson a szerepkör** való **ACCOUNTADMIN**, kattintva **profil** a jobb felső oldalán található.
+1. **Váltson a szerepkör** való **ACCOUNTADMIN**, kattintva **profil** a jobb felső oldalán található.
 
     > [!NOTE]
     > Ez nem azonos azzal a jobb felső sarokban a felhasználónév alatt kiválasztott környezet
     
     ![A Snowflake-rendszergazda](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-10. Nyissa meg a **letöltött tanúsítvány Base 64** a Jegyzettömbben. Másolja a "----BEGIN CERTIFICATE---" közötti értéket és a "----END CERTIFICATE---", és illessze be ezt az idézőjelek közé a **tanúsítvány** alatt. Az a **ssoUrl**, illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték. Válassza ki a **az összes lekérdezés** kattintson **futtatása**.
+1. Nyissa meg a **letöltött tanúsítvány Base 64** a Jegyzettömbben. Másolja a "----BEGIN CERTIFICATE---" közötti értéket és a "----END CERTIFICATE---", és illessze be ezt az idézőjelek közé a **tanúsítvány** alatt. Az a **ssoUrl**, illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték. Válassza ki a **az összes lekérdezés** kattintson **futtatása**.
 
-    ![Snowflake-sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
+   ![Snowflake-sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
-    ```
-    use role accountadmin;
-    alter account set saml_identity_provider = '{
-    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
-    "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
-    "type":"custom",
-    "label":"AzureAD"
-    }';
-    alter account set sso_login_page = TRUE;
-    ```
+   ```
+   use role accountadmin;
+   alter account set saml_identity_provider = '{
+   "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+   "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
+   "type":"custom",
+   "label":"AzureAD"
+   }';
+   alter account set sso_login_page = TRUE;
+   ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -176,7 +176,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

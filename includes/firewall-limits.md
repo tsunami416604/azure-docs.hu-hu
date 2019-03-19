@@ -5,19 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 2/4/2019
+ms.date: 3/14/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: c3bb0c7eb6effeb5165eace565a9db5dac1d39d6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3e6bde63c5f759ec711b243fc25fa0ed8bde634a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58016468"
 ---
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Feldolgozott adatok |1000 TB/tűzfal/hó. <sup>1</sup> |
+| Átviteli adatok |30 GB/s<sup>1</sup> |
 |Szabályok|10 000-et, az összes szabály típusa kombinált.|
 |Globális társviszony-létesítés|Nem támogatott. Rendelkeznie kell legalább egy tűzfal központi telepítési régiónként.|
 |Minimális AzureFirewallSubnet mérete |/26|

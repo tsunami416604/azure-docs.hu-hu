@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 320a23e425ecb11e36af3efe988b25e598948132
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3b302c60aefec1c4cd37a7dde82a2f11a9eeed33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862862"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a key vault
 
@@ -28,7 +28,7 @@ Az Azure Key Vault egy felhőszolgáltatás, amely megvédi a titkosítási kulc
 
 ## <a name="access-model-overview"></a>Hozzáférés modell áttekintése
 
-A key vault hozzáférésének két felületen: a *felügyeleti sík* és a *adatsík*. A felügyeleti sík, amellyel kezelheti a Key Vault magát. Az adatsík-műveletek közé tartozik a létrehozása és törlése a kulcstartók, a Key Vault tulajdonságainak beolvasása és a hozzáférési szabályzatainak frissítése. Az adatsík, ahol dolgozik a key vaultban tárolt adatokat. Hozzáadhat, törlése és módosítása a kulcsok, titkos kódok és tanúsítványok.
+A key vault hozzáférésének két felületen: a **felügyeleti sík** és a **adatsík**. A felügyeleti sík, amellyel kezelheti a Key Vault magát. Az adatsík-műveletek közé tartozik a létrehozása és törlése a kulcstartók, a Key Vault tulajdonságainak beolvasása és a hozzáférési szabályzatainak frissítése. Az adatsík, ahol dolgozik a key vaultban tárolt adatokat. Hozzáadhat, törlése és módosítása a kulcsok, titkos kódok és tanúsítványok.
 
 Mindkét sík a key vault eléréséhez valamennyi hívót (felhasználók vagy alkalmazások) megfelelő hitelesítésre és engedélyezésre kell rendelkeznie. Hitelesítés a hívó azonosítását hoz létre. Engedélyezési meghatározza, hogy melyik a hívó hajthat végre műveleteket. 
 
@@ -62,7 +62,7 @@ Az alábbi táblázat a végpontok a felügyeleti és az adatok síkot jelenti.
 
 ## <a name="management-plane-and-rbac"></a>Felügyeleti sík és az RBAC
 
-A felügyeleti sík RBAC használhatja a hívó hajthat végre műveletek engedélyezéséhez. Az RBAC-modellben minden egyes Azure-előfizetés van az Azure AD példányát. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak a címtárból. Hozzáférés az Azure-előfizetés az Azure Resource Manager-alapú üzemi modellt használó erőforrásainak kezeléséhez. Szeretne hozzáférést biztosítani, használja a [az Azure portal](https://portal.azure.com/), a [Azure CLI-vel](../cli-install-nodejs.md), [Azure PowerShell-lel](/powershell/azureps-cmdlets-docs), vagy a [Azure Resource Manager REST API-k](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+A felügyeleti sík RBAC (szerepkör alapján hozzáférés-vezérlés) használhatja a hívó hajthat végre műveletek engedélyezéséhez. Az RBAC-modellben minden egyes Azure-előfizetés van az Azure AD példányát. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak a címtárból. Hozzáférés az Azure-előfizetés az Azure Resource Manager-alapú üzemi modellt használó erőforrásainak kezeléséhez. Szeretne hozzáférést biztosítani, használja a [az Azure portal](https://portal.azure.com/), a [Azure CLI-vel](../cli-install-nodejs.md), [Azure PowerShell-lel](/powershell/azureps-cmdlets-docs), vagy a [Azure Resource Manager REST API-k](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
 Key vault létrehozása egy erőforráscsoportban, és hozzáférés kezelése az Azure AD használatával. Biztosítson a felhasználók vagy csoportok lehetővé teszi az erőforráscsoport kulcstartóit kezeljék. Hozzáférést biztosít az egy adott hatókör szintjén rendelhet a megfelelő RBAC-szerepkörökhöz. Hozzáférést biztosítani egy felhasználónak kulcstartóit kezeljék, hozzárendeli egy előre meghatározott `key vault Contributor` szerepkört a felhasználóhoz egy adott hatókörnél. A következő hatókörök szintek hozzárendelheti az RBAC-szerepkör:
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104437"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Az SQL Server Integration Services (SSIS) használatával U-SQL-feladatok ütemezése
 
@@ -93,16 +93,16 @@ SSIS-csomag Tervező nézetben, adjon hozzá egy **Azure Data Lake Store rendsze
     
     Ez a kapcsolat létrehozása:
 
-    1. Válasszon **<New Connection...>** FileConnection beállításban.
-    2. Állítsa be **használati típust** való **létező fájl**, és állítsa be a **fájl** , bármely meglévő fájlok fájl elérési útját.
+   1. Válasszon **<New Connection...>** FileConnection beállításban.
+   2. Állítsa be **használati típust** való **létező fájl**, és állítsa be a **fájl** , bármely meglévő fájlok fájl elérési útját.
 
-        ![Foreach ciklus tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Foreach ciklus tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. A **kezelők** megtekintéséhez, kattintson a jobb gombbal a fájl kapcsolat csak most hozta létre, és válassza a **tulajdonságok**.
+   3. A **kezelők** megtekintéséhez, kattintson a jobb gombbal a fájl kapcsolat csak most hozta létre, és válassza a **tulajdonságok**.
 
-    4. Az a **tulajdonságok** ablakában bontsa ki a **kifejezések**, és állítsa be **ConnectionString** a Foreach ciklus tárolóban, például definiált változó `@[User::FileName]`.
+   4. Az a **tulajdonságok** ablakában bontsa ki a **kifejezések**, és állítsa be **ConnectionString** a Foreach ciklus tárolóban, például definiált változó `@[User::FileName]`.
 
-        ![Foreach ciklus tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Foreach ciklus tároló konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. Állítsa be **AzureDataLakeAnalyticsConnection** küldhetők be feladatok a kívánt Azure Data Lake Analytics-fiókhoz. Tudjon meg többet [Azure Data Lake Analytics Csatlakozáskezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 

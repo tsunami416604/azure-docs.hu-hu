@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 66410a0586fcdd10f7c350bd4bad5211be61a79a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669346"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085813"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Eszköz webalkalmazások az Application Insights Állapotfigyelőt futásidejű
 
@@ -98,14 +98,14 @@ Ezek a néhány lépést is végrehajthat, győződjön meg arról, hogy a telep
 - Győződjön meg arról, hogy az applicationInsights.config fájlt a cél alkalmazás könyvtárban található, és tartalmazza a rendszerállapotkulcsot.
 
 - Ha azt gyanítja, hogy az adatok hiányzik egy egyszerű lekérdezést futtathatja [Analytics](../log-query/get-started-portal.md) minden jelenleg a telemetriai adatokat küldenek a felhőalapú szerepkörök listáját.
-```Kusto
-union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-```
+  ```Kusto
+  union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+  ```
 
 - Ha meg kell erősítenie, hogy van-e az Application Insights sikeresen csatolta futtathatja [Sysinternals leíró](https://docs.microsoft.com/sysinternals/downloads/handle) egy IIS-ablakban győződjön meg arról, hogy applicationinsights.dll betöltötte.
-```cmd
-handle.exe /p w3wp.exe
-```
+  ```cmd
+  handle.exe /p w3wp.exe
+  ```
 
 
 ### <a name="cant-connect-no-telemetry"></a>Nem tud csatlakozni? Nem működik a telemetria?

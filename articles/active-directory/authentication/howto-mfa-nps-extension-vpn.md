@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117880"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
 
@@ -30,20 +30,20 @@ Hálózati házirend- és elérési szolgáltatások révén a szervezetek lehet
 
 * Rendelje hozzá a felügyeleti és a hálózati kérelmek, adja meg a vezérlő egy központi helyen:
 
-    * Kapcsolódást 
+  * Kapcsolódást 
     
-    * Milyen alkalommal nap-kapcsolatok engedélyezettek. 
+  * Milyen alkalommal nap-kapcsolatok engedélyezettek. 
     
-    * A kapcsolatok időtartama
+  * A kapcsolatok időtartama
     
-    * Biztonság, hogy az ügyfelek csatlakozni kell használnia.
+  * Biztonság, hogy az ügyfelek csatlakozni kell használnia.
 
     Helyett adja meg a szabályzatok minden VPN- vagy a távoli asztali átjáró kiszolgálón, ezt követően egy központi helyen jelenleg. A RADIUS protokollal segítségével adja meg, központosított hitelesítési, engedélyezési és nyilvántartási (AAA). 
 
 * Hozzon létre, és érvényesíti a hálózatvédelem (NAP) ügyfél állapotházirendeket, amelyek meghatározzák, hogy eszközök, amelyekhez hozzáférést korlátozás nélküli vagy korlátozott a hálózati erőforrásokhoz.
 
 * Kényelmesen kényszerítése hitelesítését és engedélyezését a hozzáférést a 802.1 x-kompatibilis vezeték nélküli hozzáférési pontok és Ethernet-kapcsolók.   
-További információkért lásd: [hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
+  További információkért lásd: [hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
 
 Növelje a biztonságot, és adja meg a megfelelőség magas szintű, szervezetek integrálható hálózati házirend-kiszolgáló az Azure multi-factor Authentication szolgáltatást, győződjön meg arról, hogy a felhasználók a kétlépéses ellenőrzést szeretne csatlakozni a virtuális port a VPN-kiszolgálón használja. A felhasználók számára hozzáférést biztosítani a felhasználónév és jelszó kombináció és egyéb információkat, amelyek az általuk kell adnia. Ezeket az információkat megbízható legyen, és nem nehezen másolható. A mobiltelefonszámát, mobiltelefonra szám vagy egy alkalmazást a mobileszközökön is alkalmas.
 

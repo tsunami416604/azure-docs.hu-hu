@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392856"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118135"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-szintaxis
 
@@ -108,7 +108,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
 "Contoso & Northwind"  
 ```  
   
-## <a name="pattern"></a>A minta  
+## <a name="pattern"></a>pattern  
   
 ```  
 <pattern> ::=  
@@ -119,7 +119,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
   
 `<pattern>` egy kifejezés, amely abban az esetben minősül karakterláncnak kell lennie. A LIKE operátor szerepel a mintaként szolgál.      A következő helyettesítő karaktereket tartalmazhat:  
   
--   `%`: Nulla vagy több karaktert bármilyen karakterlánc.  
+-   `%`:  Tetszőleges karakterlánc nulla vagy több.  
   
 -   `_`: Bármely egy karakter.  
   
@@ -223,29 +223,29 @@ Vegye figyelembe a következőket [SqlFilter](/dotnet/api/microsoft.servicebus.m
   
 ### <a name="property-evaluation-semantics"></a>Értékelés szemantika tulajdonság  
   
--   Kísérlet egy nem létező rendszertulajdonság kiértékelheti, hogy jelez egy [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) kivétel.  
+- Kísérlet egy nem létező rendszertulajdonság kiértékelheti, hogy jelez egy [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) kivétel.  
   
--   Egy nem létező tulajdonságot belsőleg abban az esetben minősül **ismeretlen**.  
+- Egy nem létező tulajdonságot belsőleg abban az esetben minősül **ismeretlen**.  
   
- Ismeretlen értékelése az aritmetikai operátor:  
+  Ismeretlen értékelése az aritmetikai operátor:  
   
--   Binární operátory, ha a bal oldalon, illetve a operandusok jobb oldalán a **ismeretlen**, akkor az eredmény **ismeretlen**.  
+- Binární operátory, ha a bal oldalon, illetve a operandusok jobb oldalán a **ismeretlen**, akkor az eredmény **ismeretlen**.  
   
--   Az egyoperandusú operátorokat, ha egy operandus **ismeretlen**, akkor az eredmény **ismeretlen**.  
+- Az egyoperandusú operátorokat, ha egy operandus **ismeretlen**, akkor az eredmény **ismeretlen**.  
   
- A bináris összehasonlító operátorok ismeretlen értékelése:  
+  A bináris összehasonlító operátorok ismeretlen értékelése:  
   
--   Ha a bal oldalon, illetve a jobb oldalán található operandusok **ismeretlen**, akkor az eredmény **ismeretlen**.  
+- Ha a bal oldalon, illetve a jobb oldalán található operandusok **ismeretlen**, akkor az eredmény **ismeretlen**.  
   
- Az ismeretlen értékelési `[NOT] LIKE`:  
+  Az ismeretlen értékelési `[NOT] LIKE`:  
   
--   Ha bármely operand **ismeretlen**, akkor az eredmény **ismeretlen**.  
+- Ha bármely operand **ismeretlen**, akkor az eredmény **ismeretlen**.  
   
- Az ismeretlen értékelési `[NOT] IN`:  
+  Az ismeretlen értékelési `[NOT] IN`:  
   
--   Ha a bal oldali operandusához **ismeretlen**, akkor az eredmény **ismeretlen**.  
+- Ha a bal oldali operandusához **ismeretlen**, akkor az eredmény **ismeretlen**.  
   
- Az ismeretlen értékelési **és** operátor:  
+  Az ismeretlen értékelési **és** operátor:  
   
 ```  
 +---+---+---+---+  
@@ -283,4 +283,4 @@ Vegye figyelembe a következőket [SqlFilter](/dotnet/api/microsoft.servicebus.m
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction osztályban](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction class](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

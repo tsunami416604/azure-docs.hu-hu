@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. A jelen példában szereplő QnA Maker-tudásbázist egy egyszerű, gyakori kérdéseket tartalmazó weblap alapján hozzuk létre, a BitLocker-kulcsok helyreállításával kapcsolatos kérdések megválaszolásához.
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f7b24af3d48075150ae7c192ccf421b928a7aa3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113699"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
 
@@ -53,7 +54,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 10. Kattintson a jobb felső sarokban az **Add QnA pair** (Kérdés-válasz pár hozzáadása) lehetőségre, amely hozzáad egy új sort a tudásbázis **Editorial** (Szerkesztői) szakaszához. A **Question** (Kérdés) területen adja meg: **Üdv.** Az **Answer** (Válasz) területen adja meg: **Üdvözlöm. Tegyen fel kérdéseket a BitLockerről.**
 
-   ![Kérdés-válasz pár hozzáadása](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![Kérdés-válasz pár hozzáadása](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 11. Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás) elemre, amely menti a módosításokat és betanítja a QnA Maker-modellt. A rendszer a módosításokat csak akkor őrzi meg, ha menti őket.
 
@@ -61,7 +62,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 13. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A tesztablakban tesztelheti a tudásbázis módosításait, mielőtt közzétenné azokat.
 
-   ![Teszt panel](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Teszt panel](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
 14. Válassza ismét a **Test** (Tesztelés) gombot a **Test** (Tesztelés) előugró ablak bezárásához.
 
@@ -69,7 +70,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 16. Ezzel a QnA Maker-szolgáltatás sikeresen közzé lett téve. Mostantól használhatja a végpontot az alkalmazásában vagy robotkódjában.
 
-   ![Közzététel](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Közzététel](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>További lépések
 

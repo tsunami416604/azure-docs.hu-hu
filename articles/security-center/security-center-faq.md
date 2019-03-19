@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: e42deed992496cc28bdf92c01934d74361f2de6f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ad676070bb684e459c0dae648443318199f77b6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444021"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091528"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -184,18 +184,18 @@ Manuálisan távolítsa el a Microsoft Monitoring Agent. Ez nem ajánlott, mivel
 
 Az ügynök manuális eltávolításához:
 
-1.  Nyissa meg a portálon **Log Analytics**.
-2.  A Log Analytics panelen válasszon ki egy munkaterületet:
-3.  Válasszon ki minden egyes virtuális Gépet, amelyet szeretne figyelni, és válassza ki **Disconnect**.
+1. Nyissa meg a portálon **Log Analytics**.
+2. A Log Analytics panelen válasszon ki egy munkaterületet:
+3. Válasszon ki minden egyes virtuális Gépet, amelyet szeretne figyelni, és válassza ki **Disconnect**.
 
    ![Az ügynök eltávolítása][3]
 
 > [!NOTE]
 > Ha Linux rendszerű virtuális gép már nem bővítmény OMS-ügynök, a bővítmény eltávolítása, valamint az ügynök és az ügyfél rendelkezik, telepítse újra.
->
->
-### <a name="how-do-i-disable-data-collection"></a>Hogyan tilthatom le az adatgyűjtést?
-Alapértelmezés szerint az Automatikus kiépítés le van. Letilthatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. Az Automatikus kiépítés erősen ajánlott biztonsági riasztások és javaslatok Rendszerfrissítések, az operációs rendszer biztonsági rések és az endpoint protection információk lekérése érdekében.
+> 
+> 
+> ### <a name="how-do-i-disable-data-collection"></a>Hogyan tilthatom le az adatgyűjtést?
+> Alapértelmezés szerint az Automatikus kiépítés le van. Letilthatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. Az Automatikus kiépítés erősen ajánlott biztonsági riasztások és javaslatok Rendszerfrissítések, az operációs rendszer biztonsági rések és az endpoint protection információk lekérése érdekében.
 
 Tiltsa le az adatgyűjtést, hogy [jelentkezzen be az Azure Portalon](https://portal.azure.com), jelölje be **Tallózás**, jelölje be **a Security Center**, válassza ki **válassza ki a szabályzat**. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést. Amikor kiválaszt egy előfizetés **biztonsági szabályzat – adatgyűjtés** nyílik meg. A **automatikus kiépítés**válassza **ki**.
 

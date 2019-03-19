@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 53859f5a81cf1d797ec93e83d75df5a329590dce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051632"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087482"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Fejlesztés Python, R és a C# nyelv, a Visual Studio Code-ban az Azure Data Lake Analytics U-SQL
 Írhat a Python használata a Visual Studio Code (VSCode), az R- és C# code mögött az U-SQL és a feladatok az Azure Data Lake-szolgáltatásokba való elküldéséhez. VSCode-Azure Data Lake Tools kapcsolatos további információkért lásd: [használata az Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -30,10 +30,10 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
 3. Válassza ki **U-SQL-bővítmények telepítése**. 
 4. Megerősítő üzenet jelenik meg a U-SQL-bővítmények telepítése után. 
 
-  ![A python és az R környezet beállítása](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![A python és az R környezet beállítása](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
-  > [!Note]
-  > A Python és az R nyelv szolgáltatás a lehető legjobb élményt telepítse a VSCode Python- és R-bővítményt. 
+   > [!Note]
+   > A Python és az R nyelv szolgáltatás a lehető legjobb élményt telepítse a VSCode Python- és R-bővítményt. 
 
 ## <a name="develop-python-file"></a>Fejlesztés Python-fájlt
 1. Kattintson a **új fájl** a munkaterületén.
@@ -58,7 +58,7 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
         USING Outputters.Csv();
     ```
     
-3. Kattintson a jobb gombbal egy olyan parancsfájlt, és válassza **ADL: Python mögött kódfájl létrehozása**. 
+3. Kattintson a jobb gombbal egy olyan parancsfájlt, és válassza **ADL: Készítése a Python fájl mögötti kódban**. 
 4. A **xxx.usql.py** fájl jön létre a munkamappában. A kód írása a Python-fájlt. Az alábbiakban látható mintakódot.
 
     ```Python
@@ -115,7 +115,7 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: R mögött kódfájl létrehozása**. 
+3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: Fájl mögötti R-kód előállítása**. 
 4. A **xxx.usql.r** fájl jön létre a munkamappában. A kód írása az R-fájlban. Az alábbiakban látható mintakódot.
 
     ```R
@@ -125,7 +125,7 @@ Python és az R bővítmények szerelvényeket az ADL-fiók regisztrálása.
 5. Kattintson a jobb gombbal a **USQL** fájlt, kattintson **összeállítása parancsfájl** vagy **feladat elküldése** futó feladat.
 
 ## <a name="develop-c-file"></a>Fejlesztés C# fájlban
-A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált parancsfájl UDO, UDA, UDT és UDF-ben a háttérkód-fájlban definiálhat. A UDO, UDA, UDT és UDF-ben használható közvetlenül a szkriptben a szerelvény először regisztrálása nélkül. A háttérkód fájlt helyezni, a társviszony-létesítési U-SQL parancsfájl ugyanabban a mappában. Ha a parancsfájl xxx.usql neve, a háttérkód xxx.usql.cs, neve. Ha manuálisan törli a háttérkód-fájlt, a háttérkód funkció le van tiltva a társított U-SQL parancsfájl. Ügyfél-kódot a U-SQL parancsfájl kapcsolatos további információkért lásd: [írása és a U-SQL egyéni kód használatával: felhasználó által megadott függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált parancsfájl UDO, UDA, UDT és UDF-ben a háttérkód-fájlban definiálhat. A UDO, UDA, UDT és UDF-ben használható közvetlenül a szkriptben a szerelvény először regisztrálása nélkül. A háttérkód fájlt helyezni, a társviszony-létesítési U-SQL parancsfájl ugyanabban a mappában. Ha a parancsfájl xxx.usql neve, a háttérkód xxx.usql.cs, neve. Ha manuálisan törli a háttérkód-fájlt, a háttérkód funkció le van tiltva a társított U-SQL parancsfájl. További információ az ügyfél kódot a U-SQL-szkript: [írása és a U-SQL egyéni kód használatával: Felhasználó által definiált függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Kattintson a **új fájl** a munkaterületén.
 2. A kód írása a U-SQL-fájlban. Az alábbiakban látható mintakódot.
@@ -157,7 +157,7 @@ A háttérkód-fájl egy U-SQL parancsfájl társított C# fájlban. Dedikált p
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: CS mögött kódfájl létrehozása**. 
+3. Kattintson a jobb gombbal a **USQL** fájlt, és válassza ki **ADL: Hozzon létre a fájl mögötti kódban CS**. 
 4. A **xxx.usql.cs** fájl jön létre a munkamappában. A kód írása a CS-fájlban. Az alábbiakban látható mintakódot.
 
     ```CS

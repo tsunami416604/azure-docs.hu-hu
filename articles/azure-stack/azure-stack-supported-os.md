@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 171beb432a2c49f1896dc13208a3df1b922828c0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245692"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119003"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 
@@ -32,7 +32,7 @@ ms.locfileid: "57245692"
 Az Azure Stack támogatja az alábbi táblázatban felsorolt Windows vendég operációs rendszerek:
 
 | Operációs rendszer | Leírás | A Marketplace-en elérhető |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | A Windows Server 1709-es verzió | 64 bites | A tárolók Core |
 | Windows Server 2016 | 64 bites |  Datacenter, Datacenter mag, Datacenter tárolókkal |
 | Windows Server 2012 R2 | 64 bites |  Adatközpont |
@@ -58,7 +58,7 @@ Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a sz
 > [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 
 | Disztribúció | Leírás | Közzétevő | Piactér |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | CentOS-alapú 6.9. | 64 bites | Rogue Wave | Igen |
 | CentOS-alapú 7.4 | 64 bites | Rogue Wave | Igen |
 | ClearLinux | 64 bites | ClearLinux.org | Igen |

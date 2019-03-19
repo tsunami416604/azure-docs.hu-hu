@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a242e2419c64b0b80665aa2a8859f73143210bab
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552197"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102400"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: Egyetlen AD-erdővel rendelkező környezet összevonása a felhővel
 
@@ -83,7 +83,7 @@ A virtuális gép kiépítésének befejezéséhez, kell az operációs rendszer
 
 1. Hyper-V kezelőjében, kattintson duplán a virtuális gépen
 2. Kattintson a Start gombra.
-3.  A rendszer bekéri "Nyomja le bármelyik billentyűt CD vagy DVD-ről". Lépjen tovább, és ehhez.
+3. A rendszer bekéri "Nyomja le bármelyik billentyűt CD vagy DVD-ről". Lépjen tovább, és ehhez.
 4. A Windows Server indítási képernyő válassza ki a nyelvet, és kattintson a **tovább**.
 5. Kattintson a **telepítse most**.
 6. Adja meg a licenckulcsot, és kattintson a **tovább**.
@@ -281,9 +281,9 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be az új bérlő létrehozott felhasználói fiókkal.  Kell jelentkezzen be a következő formátumban: (user@domain.onmicrosoft.com). A felhasználó által használt a bejelentkezéshez ugyanazt a jelszót a helyszínen.
-![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)
+   ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)
 
 Most már sikeresen befejeződött a telepítő egy hibrid identitás környezet, amellyel tesztelheti, és ismerje meg az Azure által biztosított lehetőségeket.
 

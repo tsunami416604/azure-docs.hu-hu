@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 240895f4e8567426fec8e270b96b9e6528392a46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103077"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Azure IoT Hub használata a Power BI valós idejű érzékelői adatainak megjelenítése
 
@@ -37,11 +37,11 @@ Ismerteti az Azure IoT hub által fogadott Power BI használatával valós idej�
 
 ## <a name="what-you-need"></a>Mi szükséges
 
- * Az oktatóanyag [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) fejeződött be, amely magában foglalja az alábbi követelményeknek:
-
-   * Aktív Azure-előfizetés.
-   * Az Azure IoT hub az előfizetéséhez.
-   * Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub.
+* Az oktatóanyag [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) fejeződött be, amely magában foglalja az alábbi követelményeknek:
+  
+  * Aktív Azure-előfizetés.
+  * Az Azure IoT hub az előfizetéséhez.
+  * Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub.
 
 * Egy Power BI-fiók. ([Próbálja ki ingyenesen a Power BI](https://powerbi.microsoft.com/))
 

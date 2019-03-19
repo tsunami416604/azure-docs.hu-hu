@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec05c513d89dc8a590cbd0f586f382d699edc5e3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122520"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -29,7 +29,7 @@ Az alábbiakban néhány gyakori problémák az Azure Active Directory (Azure AD
 Azokban az esetekben, ahol a külső felhasználók nem kerülnek be a listát az objektum replikálása néhány percig is eltarthat.
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B-Vendég felhasználó nem jelenik meg a SharePoint Online és onedrive vállalati verzió személy kijelölése 
- 
+ 
 Keresse meg a SharePoint online-hoz (SPO) személy kijelölése a meglévő vendégfelhasználókat lehetővé teszi örökölt viselkedés megfelelően alapértelmezés szerint ki.
 
 Ez a funkció a bérlő és a hely gyűjtemény szintjén "ShowPeoplePickerSuggestionsForGuestUsers" beállítás használatával engedélyezheti. A funkciót, a Set-SPOTenant és Set-SPOSite parancsmagok, amelyek lehetővé teszik a Keresés az összes meglévő vendégfelhasználókat a címtár tagjai használatával állíthatja be. A bérlői hatókörben módosítása nem érinti a már üzembe helyezett SPO-helyek.

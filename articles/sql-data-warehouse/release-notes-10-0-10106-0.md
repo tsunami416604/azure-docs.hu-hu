@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0b0d302dcd86f18eef6bf7600dd93878d0d9bd99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455585"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902688"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). A cikk nem közvetlenül kapcsolódó kiadására, de az időkeretből közzétett jelentős tartalomfrissítéseket is megjeleníti. Más Azure-szolgáltatások fejlesztései, lásd: [szolgáltatási hírek](https://azure.microsoft.com/updates)
@@ -44,7 +44,7 @@ Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiad
 - [Blog – az Azure SQL Data warehouse-bA](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Az ügyféltanácsadói csapat blogjai](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [Stack Overflow-fórum](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Azure szószedet](../azure-glossary-cloud-terminology.md)

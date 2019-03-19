@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1f1fbc49a42ec9b72ebe74a96ee099630d7416b1
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570651"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087397"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>A szűrők és az Azure Search szolgáltatásban az order by záradékok OData-kifejezések szintaxisa
 
@@ -55,62 +55,62 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ### <a name="filter-operators"></a>Szűrési operátorokhoz  
 
--   Logikai operátorok (és, vagy sem).  
+- Logikai operátorok (és, vagy sem).  
 
--   Összehasonlítási kifejezésekben (`eq, ne, gt, lt, ge, le`). A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket.  
+- Összehasonlítási kifejezésekben (`eq, ne, gt, lt, ge, le`). A sztring-összehasonlítások megkülönböztetik a kis- és nagybetűket.  
 
--   Támogatott állandók [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) típusok (lásd: [által támogatott adattípusokkal &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) támogatott típusok listája). Gyűjtemény típusú állandók használata nem támogatott.  
+- Támogatott állandók [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM) típusok (lásd: [által támogatott adattípusokkal &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) támogatott típusok listája). Gyűjtemény típusú állandók használata nem támogatott.  
 
--   Mező nevére hivatkozik. Csak `filterable` mezőt a szűrőkifejezésekben is használható.  
+- Mező nevére hivatkozik. Csak `filterable` mezőt a szűrőkifejezésekben is használható.  
 
--   `any` Paraméterek nélkül. Ez teszteli, hogy típusú mező `Collection(Edm.String)` elemeket tartalmaz.  
+- `any` Paraméterek nélkül. Ez teszteli, hogy típusú mező `Collection(Edm.String)` elemeket tartalmaz.  
 
--   `any` és `all` korlátozott lambda kifejezés támogatásával. 
+- `any` és `all` korlátozott lambda kifejezés támogatásával. 
     
-    -   `any/all` támogatottak a típusú mezők `Collection(Edm.String)`. 
+  -   `any/all` támogatottak a típusú mezők `Collection(Edm.String)`. 
     
-    -   `any` csak akkor használható, az egyszerű egyenlőségi kifejezés vagy egy `search.in` függvény. Egyszerű kifejezések például állhat egyetlen mezőt és a egy konstans érték összehasonlítását `Title eq 'Magna Carta'`.
+  -   `any` csak akkor használható, az egyszerű egyenlőségi kifejezés vagy egy `search.in` függvény. Egyszerű kifejezések például állhat egyetlen mezőt és a egy konstans érték összehasonlítását `Title eq 'Magna Carta'`.
     
-    -   `all` csak akkor használható, az egyszerű egyenlótlenség kifejezések vagy egy `not search.in`.   
+  -   `all` csak akkor használható, az egyszerű egyenlótlenség kifejezések vagy egy `not search.in`.   
 
--   A térinformatikai függvények `geo.distance` és `geo.intersects`. A `geo.distance` függvényt ad vissza a távolságot adja meg kilométerben két pont között, egy egy mezőt, és a egy folyamatban van egy állandó átadott szűrő részeként. A `geo.intersects` függvény igaz értéket ad vissza egy adott időpontra van egy adott sokszög belül, amelyben a pont egy mezőt, és a sokszög egy szűrő részeként átadott konstansként van megadva.  
+- A térinformatikai függvények `geo.distance` és `geo.intersects`. A `geo.distance` függvényt ad vissza a távolságot adja meg kilométerben két pont között, egy egy mezőt, és a egy folyamatban van egy állandó átadott szűrő részeként. A `geo.intersects` függvény igaz értéket ad vissza egy adott időpontra van egy adott sokszög belül, amelyben a pont egy mezőt, és a sokszög egy szűrő részeként átadott konstansként van megadva.  
 
-    A sokszög az egy kétdimenziós felület tárolt pontok sorozataként meghatározása egy határoló csörögni (lásd az alábbi példát). A sokszög kell zárni, tehát az első és utolsó pont csoportok azonosnak kell lennie. [Egy sokszög pontjainak járásával sorrendben kell](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+  A sokszög az egy kétdimenziós felület tárolt pontok sorozataként meghatározása egy határoló csörögni (lásd az alábbi példát). A sokszög kell zárni, tehát az első és utolsó pont csoportok azonosnak kell lennie. [Egy sokszög pontjainak járásával sorrendben kell](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-    `geo.distance` az Azure Search kilométerben távolságot adja vissza. Ez eltér más szolgáltatásokkal, amelyek támogatják az OData térinformatikai műveleteket, amelyeket általában mérőszámok távolságot adja vissza.  
+  `geo.distance` az Azure Search kilométerben távolságot adja vissza. Ez eltér más szolgáltatásokkal, amelyek támogatják az OData térinformatikai műveleteket, amelyeket általában mérőszámok távolságot adja vissza.  
 
-    > [!NOTE]  
-    >  Ha geo.distance szűrőt használ, a távolság egy állandó használatakor a függvény által visszaadott össze kell hasonlítania `lt`, `le`, `gt`, vagy `ge`. Az operátorok `eq` és `ne` távokat összehasonlítása nem támogatott. Például ez az egy megfelelő használatának geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
+  > [!NOTE]  
+  >  Ha geo.distance szűrőt használ, a távolság egy állandó használatakor a függvény által visszaadott össze kell hasonlítania `lt`, `le`, `gt`, vagy `ge`. Az operátorok `eq` és `ne` távokat összehasonlítása nem támogatott. Például ez az egy megfelelő használatának geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
 
--   A `search.in` függvény azt teszteli-e egy adott karakterlánc típusú megegyezik egy adott értékek listáját. Azt is segítségével bármely vagy összes gyűjtemény karakterlánc típusú értékeket az adott listáját egyetlen érték összehasonlítására. A mező és a lista minden egyes érték közötti egyenlőségi határozza meg a kis-és nagybetűket módon, ugyanúgy mint a `eq` operátor. Ezért, például egy kifejezést `search.in(myfield, 'a, b, c')` egyenértékű `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, azzal a különbséggel, hogy `search.in` sokkal jobb teljesítményt eredményez. 
+- A `search.in` függvény azt teszteli-e egy adott karakterlánc típusú megegyezik egy adott értékek listáját. Azt is segítségével bármely vagy összes gyűjtemény karakterlánc típusú értékeket az adott listáját egyetlen érték összehasonlítására. A mező és a lista minden egyes érték közötti egyenlőségi határozza meg a kis-és nagybetűket módon, ugyanúgy mint a `eq` operátor. Ezért, például egy kifejezést `search.in(myfield, 'a, b, c')` egyenértékű `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, azzal a különbséggel, hogy `search.in` sokkal jobb teljesítményt eredményez. 
 
-    Az első paraméterként a `search.in` függvény a sztring mezőhivatkozásnak (vagy egy karakterlánc-gyűjtemény mezők abban az esetben tartomány változó ahol `search.in` használnak egy `any` vagy `all` kifejezés). A második paraméter megadása az értékek, szóközöket és/vagy a vesszővel elválasztott listáját tartalmazó karakterlánc. Eltérő szóközöket és vesszőket elválasztók használható, mert a tartalmazzák-e ezeket a karaktereket kell, ha egy nem kötelező harmadik paramétert is megadhat `search.in`. 
+  Az első paraméterként a `search.in` függvény a sztring mezőhivatkozásnak (vagy egy karakterlánc-gyűjtemény mezők abban az esetben tartomány változó ahol `search.in` használnak egy `any` vagy `all` kifejezés). A második paraméter megadása az értékek, szóközöket és/vagy a vesszővel elválasztott listáját tartalmazó karakterlánc. Eltérő szóközöket és vesszőket elválasztók használható, mert a tartalmazzák-e ezeket a karaktereket kell, ha egy nem kötelező harmadik paramétert is megadhat `search.in`. 
 
-    A harmadik paramétere egy karakterláncot, ahol minden karaktert a karakterlánc, vagy ez a karakterlánc részét úgy viselkedik, mint az elválasztó elemzésekor a második paraméterben szereplő értékek listáját.
+  A harmadik paramétere egy karakterláncot, ahol minden karaktert a karakterlánc, vagy ez a karakterlánc részét úgy viselkedik, mint az elválasztó elemzésekor a második paraméterben szereplő értékek listáját.
 
-    > [!NOTE]   
-    > Bizonyos helyzetekben szükséges összehasonlítása egy mezőt egy állandó értékek nagy számú ellen. Például biztonsági elrejtés végrehajtása szűrőkkel szükség lehet összehasonlítása a dokumentum azonosító mező ellen, amelyhez a kérelmező felhasználó van olvasási hozzáférést azonosítók listáját. Ilyen esetekben erősen javasoljuk a `search.in` függvényt egy bonyolultabb vagy műveletet egyenlőség kifejezések helyett. Például `search.in(Id, '123, 456, ...')` helyett `Id eq 123 or Id eq 456 or ....`. 
-    >
-    > Ha `search.in`, várható másodperc törtrésze válaszideje, amikor a második paraméter több száz vagy ezer értékek listáját tartalmazza. Ne feledje, hogy van-e explicit adhat át elemek száma korlátlan `search.in`, bár továbbra is korlátozza a kérelem maximális méretét. Azonban a késési értékek számának növekedésével növekszik.
+  > [!NOTE]   
+  > Bizonyos helyzetekben szükséges összehasonlítása egy mezőt egy állandó értékek nagy számú ellen. Például biztonsági elrejtés végrehajtása szűrőkkel szükség lehet összehasonlítása a dokumentum azonosító mező ellen, amelyhez a kérelmező felhasználó van olvasási hozzáférést azonosítók listáját. Ilyen esetekben erősen javasoljuk a `search.in` függvényt egy bonyolultabb vagy műveletet egyenlőség kifejezések helyett. Például `search.in(Id, '123, 456, ...')` helyett `Id eq 123 or Id eq 456 or ....`. 
+  >
+  > Ha `search.in`, várható másodperc törtrésze válaszideje, amikor a második paraméter több száz vagy ezer értékek listáját tartalmazza. Ne feledje, hogy van-e explicit adhat át elemek száma korlátlan `search.in`, bár továbbra is korlátozza a kérelem maximális méretét. Azonban a késési értékek számának növekedésével növekszik.
 
--   A `search.ismatch` függvény kiértékeli a keresési lekérdezésnek egy szűrőkifejezés részeként. Az eredményhalmaz a dokumentumokat, a keresési lekérdezésnek megfelelő lesznek visszaadva. Ez a függvény a következő túlterhelésekkel érhetők el:
-    - `search.ismatch(search)`
-    - `search.ismatch(search, searchFields)`
-    - `search.ismatch(search, searchFields, queryType, searchMode)`
+- A `search.ismatch` függvény kiértékeli a keresési lekérdezésnek egy szűrőkifejezés részeként. Az eredményhalmaz a dokumentumokat, a keresési lekérdezésnek megfelelő lesznek visszaadva. Ez a függvény a következő túlterhelésekkel érhetők el:
+  - `search.ismatch(search)`
+  - `search.ismatch(search, searchFields)`
+  - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-    Ahol: 
+  Ahol: 
   
-    - `search`: a keresési lekérdezés (akár [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezés szintaxisa). 
-    - `queryType`: "egyszerű" vagy "teljes", alapértelmezett értéke "Simple". Itt adhatja meg, milyen lekérdezési nyelv használták a `search` paraméter.
-    - `searchFields`: a keresés, kereshető mezőket vesszővel elválasztott listája alapértelmezés szerint az összes kereshető mezőt az indexben.    
-    - `searchMode`: "bármely" vagy "all", az alapértelmezett érték "bármely". Azt jelzi, hogy a keresési feltételeket egy részének vagy egészének egyeztetni annak érdekében, hogy a dokumentum, amely száma.
+  - `search`: a keresési lekérdezés (akár [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezés szintaxisa). 
+  - `queryType`: "egyszerű" vagy "teljes", alapértelmezett értéke "Simple". Itt adhatja meg, milyen lekérdezési nyelv használták a `search` paraméter.
+  - `searchFields`: a keresés, kereshető mezőket vesszővel elválasztott listája alapértelmezés szerint az összes kereshető mezőt az indexben.    
+  - `searchMode`: "bármely" vagy "all", az alapértelmezett érték "bármely". Azt jelzi, hogy a keresési feltételeket egy részének vagy egészének egyeztetni annak érdekében, hogy a dokumentum, amely száma.
 
-    A fenti paraméterek egyenértékűek a megfelelő [keresse a kérelem paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+  A fenti paraméterek egyenértékűek a megfelelő [keresse a kérelem paramétereinek](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
--   A `search.ismatchscoring` működni, mint a `search.ismatch` működik, dokumentumok, amely megfelel a keresési lekérdezés paraméterként igaz értéket ad vissza. Az egymás közötti különbség, hogy a relevancia alapján pontszámot rendelni az egyező dokumentumok a `search.ismatchscoring` lekérdezés hozzájárul a teljes dokumentum pontszám, a kis-és `search.ismatch`, a dokumentumok pontszámát nem módosítható. Ez a függvény a következő túlterhelésekkel érhetők el paraméterek azonosak `search.ismatch`:
-    - `search.ismatchscoring(search)`
-    - `search.ismatchscoring(search, searchFields)`
-    - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
+- A `search.ismatchscoring` működni, mint a `search.ismatch` működik, dokumentumok, amely megfelel a keresési lekérdezés paraméterként igaz értéket ad vissza. Az egymás közötti különbség, hogy a relevancia alapján pontszámot rendelni az egyező dokumentumok a `search.ismatchscoring` lekérdezés hozzájárul a teljes dokumentum pontszám, a kis-és `search.ismatch`, a dokumentumok pontszámát nem módosítható. Ez a függvény a következő túlterhelésekkel érhetők el paraméterek azonosak `search.ismatch`:
+  - `search.ismatchscoring(search)`
+  - `search.ismatchscoring(search, searchFields)`
+  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
   A `search.ismatch` és `search.ismatchscoring` funkciók egymással, és a többi a szűrő algebra teljes merőleges. Ez azt jelenti, hogy mindkét függvény is használható ugyanazon a szűrőkifejezést. 
 

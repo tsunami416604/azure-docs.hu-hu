@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 72238db8322132f42e14656c106b82d8604af21f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107814"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Az automatikus központi IoT Edge egy eszközök vagy ipari méretekben ismertetése
 
@@ -32,7 +32,7 @@ Ez a cikk a konfiguráció koncentrál, és figyelési eszközök, flottái szak
 2. Az IoT Hub szolgáltatás az összes megcélzott eszköz konfigurálhatja azokat a kívánt modulok kommunikál. 
 3. Az IoT Hub szolgáltatás állapota lekéri az IoT Edge-eszközök, és elérhetővé teszi azokat az operátor.  Az operátornak láthatja például, amikor egy Edge-eszköz nem történik meg sikeresen, vagy ha egy modul sikertelen futtatás ideje alatt. 
 4. Bármikor új IoT Edge-eszközök, amelyek megfelelnek a célcsoport-kezelési feltételek a központi telepítés vannak konfigurálva. Például a Washington állam minden IoT Edge-eszközök automatikusan célzó központi telepítés egy új IoT Edge-eszköz konfigurálása kiépítve, és hozzáadja a Washington állam eszköz csoporthoz. 
- 
+ 
 Ez a cikk ismerteti az egyes összetevők konfigurálása és figyelése a központi telepítés. Létrehozása és frissítése a központi telepítés leírását lásd: [üzembe helyezése és figyelése a nagy mennyiségű IoT Edge-modulok](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Környezet

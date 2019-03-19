@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8cbe391f756dab35abda411c3a6c943a51eae302
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117850"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatokat az Azure Security Centerben
 Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. Felhasználói adatok kezelése lehetőség eléréséhez, törléséhez vagy exportálhat adatokat.
@@ -68,25 +68,25 @@ A Security Center felhasználó olvasó, a tulajdonos, közreműködő szerepkö
 
 - A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 A Security Center a fiók rendszergazdája szerepkörrel exportálhatják a [csak az idő házirendek](security-center-just-in-time.md) tartalmazó IP-címeinek:
 
 - A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 Egy fiók rendszergazdája által a riasztási adatok exportálásához:
 
 - A másolási végrehajtása az Azure Portalról
 - Az Azure REST API-hívás, GET HTTP végrehajtása:
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 Lásd: [lekérése a biztonsági riasztások (gyűjtemény beolvasása)](https://msdn.microsoft.com/library/mt704050.aspx) további információt.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e39bdcde896bca094b60b87308127a6ea01f1dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169735"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező IriusRisk
 
@@ -164,7 +164,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-iriusrisk-test-user"></a>IriusRisk tesztfelhasználó létrehozása
+### <a name="create-an-iriusrisk-test-user"></a>Hozzon létre egy IriusRisk tesztfelhasználó számára
 
 Ez a szakasz célja IriusRisk Britta Simon nevű felhasználó létrehozásához. IriusRisk támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az IriusRisk elérésére, ha még nem létezik tett kísérlet során.
 

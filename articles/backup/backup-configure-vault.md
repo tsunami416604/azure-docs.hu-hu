@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 3700ffe0a2b0e0d3ec69bce3a11cdc36d28d9145
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4aff7c486762d9ea7bd38ae152d169968432307e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569110"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898958"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Az Azure Backup MARS-ügynökkel rendelkező Windows-gépek biztonsági mentése
 
@@ -43,7 +43,7 @@ Milyen biztonsági másolatot készíthet attól függ, ahová az agent telepít
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- [Ismerje meg, hogyan](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) Azure Backup és a MARS-ügynök Windows-gépek biztonsági mentését.
+- [Ismerje meg, hogyan](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders) Azure Backup és a MARS-ügynök Windows-gépek biztonsági mentését.
 - [Ismerje meg](backup-architecture.md#architecture-back-up-to-dpmmabs) a biztonsági mentési architektúra a MARS-ügynök fut egy másodlagos MABS vagy a DPM-kiszolgálón.
 - [Felülvizsgálat](backup-support-matrix-mars-agent.md) mit támogat, és milyen biztonsági mentésre alkalmas, a MARS-ügynökkel.
 - Ellenőrizze a készíteni kívánt gépek internet-hozzáféréssel.
@@ -53,7 +53,7 @@ Milyen biztonsági másolatot készíthet attól függ, ahová az agent telepít
 
 Ha a gép korlátozott internet-hozzáféréssel, győződjön meg arról, hogy a gépen, vagy a proxy tűzfal beállításai engedélyezik ezek URL-címek:
 
-- www.msftncsi.com
+- www\.msftncsi.com
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
@@ -72,15 +72,20 @@ Recovery Services-tároló tárolja a biztonsági mentéseket és helyreállít�
 
     ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez. Írjon be egy 2–50 karakter hosszúságú nevet. Ennek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
+4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához.
+
+   - A névnek egyedinek kell lennie az Azure-előfizetéshez.
+   - 2 – 50 karaktert tartalmazhat.
+   - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
 
 5. Válassza ki az Azure-előfizetést, erőforráscsoportot és a földrajzi régióban, amelyben a tároló kell létrehozni. Biztonsági mentési adatok összmennyiségét zajlik. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
     ![Recovery Services-tároló létrehozása – 3. lépés](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-A tároló létrehozása több percet is igénybe vehet. A portálon figyelje. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listája. Ha néhány perc múlva a tároló nem látja, kattintson a **frissítése**.
+   - A tároló létrehozása egy ideig is eltarthat.
+   - Figyelje a jobb felső területén, a portál. Ha néhány perc múlva a tároló nem látja, kattintson a **frissítése**.
 
-![Kattintson a Frissítés gombra](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
+     ![Kattintson a Frissítés gombra](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)
 
 ### <a name="set-storage-redundancy"></a>Tárhely-redundancia beállítása
 
@@ -129,17 +134,17 @@ Töltse le a MARS-ügynök telepítéséhez a kívánt gépekre történő bizto
 
 1. Futtassa a **MARSagentinstaller.exe** fájlt a kívánt gépekre történő biztonsági mentéséhez.
 2. A MARS Agent varázslóban > **telepítési beállítások**, adja meg, amelyre telepíteni az ügynököt, és egy helyet a gyorsítótár használatára. Ezután kattintson a **Next** (Tovább) gombra.
-    - Az Azure Backup adat-pillanatképek tárolására az Azure-ba való elküldés előtt használja a gyorsítótár.
-    - A gyorsítótár helyét kell rendelkeznie az adatok biztonsági mentése a méretének legalább 5 %-ával egyenlő szabad terület.
+   - Az Azure Backup adat-pillanatképek tárolására az Azure-ba való elküldés előtt használja a gyorsítótár.
+   - A gyorsítótár helyét kell rendelkeznie az adatok biztonsági mentése a méretének legalább 5 %-ával egyenlő szabad terület.
 
-    ![A MARS varázsló telepítési beállításai](./media/backup-configure-vault/mars1.png)
+     ![A MARS varázsló telepítési beállításai](./media/backup-configure-vault/mars1.png)
 
 2. A **proxykonfiguráció**, adja meg, hogyan csatlakozzon az internethez az a Windows-gépen futó ügynök. Ezután kattintson a **Next** (Tovább) gombra.
 
-    - Ha egyéni használ proxy adja meg a proxybeállításokat, és a hitelesítő adatokat, ha szükséges.
-    - Ne feledje, hogy az ügynök hozzá kell férnie [ezen URL-címek](#verify-internet-access).
+   - Ha egyéni használ proxy adja meg a proxybeállításokat, és a hitelesítő adatokat, ha szükséges.
+   - Ne feledje, hogy az ügynök hozzá kell férnie [ezen URL-címek](#verify-internet-access).
 
-    ![A MARS varázsló internet-hozzáférés](./media/backup-configure-vault/mars2.png)
+     ![A MARS varázsló internet-hozzáférés](./media/backup-configure-vault/mars2.png)
 
 3. A **telepítési** tekintse át az Előfeltételek ellenőrzése, és kattintson a **telepítése**.
 4. Az ügynök telepítése után kattintson a **továbblépni a regisztrációra**.

@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633742"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085150"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -88,15 +88,16 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön me
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Eseményforrás nevének | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
+    | Eseményforrás neve | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
     | Forrás | **IoT Hub** |
     | Importálási beállítás | **Az IoT Hub használata a rendelkezésre álló előfizetések közül** |
     | Előfizetés azonosítója | Válassza ki saját Azure-előfizetését a legördülő menüből. |
-    | IOT hub nevét | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
-    | IOT hub házirend neve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
-    | IOT hub házirendjének kulcsa | Ez a mező automatikusan fel van töltve. |
-    | IOT hub fogyasztói csoport | **timeseriesinsights** |
-    | Eseményszerializációs formátum | **JSON**     | Időbélyegző-tulajdonság neve | Hagyja üresen |
+    | Iot hub neve | **contosorma57a6**. A távoli figyelési megoldás az IoT-központ nevét használja. |
+    | Iot hub szabályzatneve | **iothubowner** győződjön meg, hogy a használt szabályzat egy tulajdonos házirend. |
+    | Iot hub szabályzatkulcsa | Ez a mező automatikusan fel van töltve. |
+    | Iot hub fogyasztói csoport | **timeseriesinsights** |
+    | Eseményszerializációs formátum | **JSON**     | 
+    | Időbélyeg-tulajdonság neve | Hagyja üresen |
 
     ![Eseményforrás létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 

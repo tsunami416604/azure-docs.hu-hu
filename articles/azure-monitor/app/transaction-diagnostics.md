@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028446"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903623"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített összetevőt tranzakció diagnosztikája
 
@@ -50,7 +50,7 @@ A diagram vízszintes sávokkal ütemterv és -függőségek időtartamára kül
 * Válassza ki az összes sort, hogy a [részletei a jobb oldali](#details-of-the-selected-telemetry). 
 
 > [!NOTE]
-Az összetevőinek hívásaihoz két sor: egy sort képvisel a kimenő hívás (függőségek) a hívó összetevőtől, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. A vezető ikon és a időtartama sávok különböző stílusának segít megkülönböztetni őket.
+> Az összetevőinek hívásaihoz két sor: egy sort képvisel a kimenő hívás (függőségek) a hívó összetevőtől, és a többi sor felel meg a bejövő kérelem, a hívott összetevő. A vezető ikon és a időtartama sávok különböző stílusának segít megkülönböztetni őket.
 
 ## <a name="all-telemetry-with-this-operation-id"></a>Ez a művelet az azonosító az összes telemetriai adat
 
@@ -74,9 +74,9 @@ Az összecsukható panel megjeleníti az eredményeket, a szűrési feltételekn
 
 [Az Application Insights profiler](../../azure-monitor/app/profiler.md) vagy [pillanatkép-hibakereső](snapshot-debugger.md) súgó a kód szintű diagnosztikáról, teljesítmény és meghibásodási problémákra. A felhasználói élményét láthatja a profiler hívásláncai, vagy kattintson az egyes összetevőkre egyetlen pillanatképeket.
 
-Ha nem sikerült a Profiler működik, lépjen kapcsolatba **serviceprofilerhelp@microsoft.com**
+Ha nem sikerült a Profiler működik, lépjen kapcsolatba **serviceprofilerhelp\@microsoft.com**
 
-Ha nem sikerült a pillanatkép-hibakereső működik, lépjen kapcsolatba **snapshothelp@microsoft.com**
+Ha nem sikerült a pillanatkép-hibakereső működő, lépjen kapcsolatba **snapshothelp\@microsoft.com**
 
 ![Profiler-integráció](media/transaction-diagnostics/profilerTraces.png)
 

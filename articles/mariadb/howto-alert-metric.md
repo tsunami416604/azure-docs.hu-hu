@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122715"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Riasztásokat állíthat be mérőszámok az Azure Database for MariaDB az Azure portal használatával
 
@@ -60,21 +60,21 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 
 10. Konfigurálja egy **e-mailek és SMS és leküldéses/Hangvétel** művelet típusa.
     
-   Válassza az "E-mailt az Azure Resource Manager szerepkör" jelölje be az előfizetés-tulajdonosokat, közreműködőknek és olvasóknak értesítések fogadásához.
+    Válassza az "E-mailt az Azure Resource Manager szerepkör" jelölje be az előfizetés-tulajdonosokat, közreműködőknek és olvasóknak értesítések fogadásához.
    
-   Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
+    Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
 
-   Válassza ki **OK** befejezésekor.
+    Válassza ki **OK** befejezésekor.
 
-   ![Műveletcsoport](./media/howto-alert-metric/10-action-group-type.png)
+    ![Műveletcsoport](./media/howto-alert-metric/10-action-group-type.png)
 
 11. Adjon meg egy riasztási szabály neve, leírása és súlyosság.
 
-   ![Műveletcsoport](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Műveletcsoport](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Válassza ki **riasztási szabály létrehozása** a riasztás létrehozásához.
 
-   Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
+    Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése
 Miután létrehozta a riasztást, válassza ki, és hajtsa végre a következőket:

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e25da238648b32edcbfaefbdcf1a6240df97916f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728319"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855299"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>A Media Services-eszközök kezelése több tárfiókban  
 
@@ -42,7 +42,7 @@ Több tárfiók csatolásához a Media Services-fiók, a következő szempontoka
 
 Egyéb szempontok:
 
-A Media Services értékét használja a **IAssetFile.Name** URL-címek létrehozását, a streamelési tartalom (például http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ tulajdonság streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
+A Media Services értékét használja a **IAssetFile.Name** URL-címek létrehozását, a streamelési tartalom (például http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ tulajdonság streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
 
 ## <a name="to-attach-storage-accounts"></a>Csatlakoztassa a storage-fiókok  
 

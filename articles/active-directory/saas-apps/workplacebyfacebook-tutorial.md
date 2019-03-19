@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0dac2bee3c7aff77e782cc167898534ae40cfd3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 27173c8beeecf2be43e80f59df8907952734c06b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Oktatóanyag: Az Azure Active Directory-integráció a Facebook által munkahelyi
 
@@ -162,9 +162,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Facebook a munkahely
 
     d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **SAML-tanúsítvány** szövegmezőbe.
 
-    e. Másolás a **célközönség URL-cím** a példány, és illessze be a **azonosító (entityid)** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    e. Másolás a **célközönség URL-cím** a példány, és illessze be a **azonosító (entityid)** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    f. Másolás a **címzett URL-cím** a példány, és illessze be a **bejelentkezési URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    f. Másolás a **címzett URL-cím** a példány, és illessze be a **bejelentkezési URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
     g. A szakasz alján, és kattintson a **teszt SSO** gombra. Az eredmények egy felugró ablakban jelenik meg az Azure AD bejelentkezési oldal jelenik meg. Adja meg a hitelesítő adatait a hitelesítést a szokásos módon.
 
@@ -205,7 +205,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

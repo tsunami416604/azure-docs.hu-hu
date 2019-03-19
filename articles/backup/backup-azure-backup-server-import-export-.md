@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818557"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094973"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>A DPM és az Azure Backup Server offline biztonsági mentés munkafolyamata
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Az Azure Backup tömöríti a kezdeti biztonsági mentés. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható a tömörített kezdeti biztonsági mentési adatok offline feltöltése az Azure-bA.
@@ -55,7 +55,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek-e, mielőt
 
 * Egy Azure Storage-fiókkal *klasszikus* üzemi modell létrehozása az előfizetésben, ahonnan letöltötte a közzétételi beállítási fájl alább látható módon: 
 
- ![Egy klasszikus tárfiók létrehozása](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Egy klasszikus tárfiók létrehozása](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * Egy előkészítési helyet, amely lehet egy hálózati megosztásra vagy bármely további meghajtó a számítógépen, belső vagy külső, a kezdeti másolat tárolásához elegendő lemezterület a jön létre. Például egy 500 GB-os fájlt kiszolgálóról biztonsági mentést próbál, ha arról, hogy az átmeneti területen legalább 500 GB-os. (A tömörítés miatt kisebb használt.)
 * Érdemes az Azure-bA küldendő lemezeket győződjön meg arról, amelyek csak 2,5 hüvelyk SSD vagy 2,5-es vagy 3,5 hüvelykes SATA II. és III belső merevlemez-meghajtókat használ. Használhatja a merevlemez-meghajtók legfeljebb 10 TB. Ellenőrizze a [Azure Import/Export szolgáltatás dokumentációja](../storage/common/storage-import-export-requirements.md#supported-hardware) meghajtó, amely a szolgáltatás támogatja a legújabb csoporton.
@@ -74,12 +74,12 @@ Ebben a szakaszban található információk segítségével végezze el az offl
 
     A leírás a bemeneti adatok a következőképpen történik:
 
-    * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
-    * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA.
-    * **Az Azure közzétételi beállítások**: Adja meg a közzétételi beállítások fájljának helyi elérési útja.
-    * **Azure-előfizetés azonosítója**: Az előfizetés regisztrációját az Azure közzétételi beállítási fájl letöltött Azure előfizetés-azonosítója. 
-    * **Azure Storage Account**: Az Azure-előfizetésben az Azure közzétételi beállítási fájl társított storage-fiók neve.
-    * **Az Azure Storage-tároló**: Az Azure storage-fiók, amelybe importálják a biztonsági mentési adatokat a rendeltetési tárolási BLOB neve.
+   * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
+   * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA.
+   * **Az Azure közzétételi beállítások**: Adja meg a közzétételi beállítások fájljának helyi elérési útja.
+   * **Azure-előfizetés azonosítója**: Az előfizetés regisztrációját az Azure közzétételi beállítási fájl letöltött Azure előfizetés-azonosítója. 
+   * **Azure Storage Account**: Az Azure-előfizetésben az Azure közzétételi beállítási fájl társított storage-fiók neve.
+   * **Az Azure Storage-tároló**: Az Azure storage-fiók, amelybe importálják a biztonsági mentési adatokat a rendeltetési tárolási BLOB neve.
 
      Mentse a *előkészítési helyét* és a *Azure importálási feladat nevének* , a lemezek előkészítéséhez szükség van a megadott.  
      
@@ -102,14 +102,14 @@ A *AzureOfflineBackupDiskPrep* segédprogram a SATA meghajtókat a legközelebbi
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** másolási számítógépre, amelyen a SATA meghajtókat, készüljön fel a csatlakoztatott mappa. Ellenőrizze, hogy a másolási számítógép meg a következőket:
 
-    * A másolási számítógép érhető el az előkészítési hely offline áttöltést munkafolyamat hálózati elérési útját lett megadva a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat.
-    * A BitLocker engedélyezve van a Másolás számítógépen.
-    * A másolási számítógép hozzáférhessen az Azure Portalon.
+   * A másolási számítógép érhető el az előkészítési hely offline áttöltést munkafolyamat hálózati elérési útját lett megadva a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat.
+   * A BitLocker engedélyezve van a Másolás számítógépen.
+   * A másolási számítógép hozzáférhessen az Azure Portalon.
 
-    Szükség esetén a másolási számítógép lehet ugyanaz, mint a forrásszámítógépen. 
+     Szükség esetén a másolási számítógép lehet ugyanaz, mint a forrásszámítógépen. 
     
-    > [!IMPORTANT] 
-    > Ha a forrásoldali számítógép egy virtuális gépet, majd azt megadása kötelező a másolási számítógépen egy másik fizikai kiszolgáló vagy ügyfélgép használandó.
+     > [!IMPORTANT] 
+     > Ha a forrásoldali számítógép egy virtuális gépet, majd azt megadása kötelező a másolási számítógépen egy másik fizikai kiszolgáló vagy ügyfélgép használandó.
     
     
 2. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen, amelyen a *AzureOfflineBackupDiskPrep* segédprogram könyvtárba az aktuális könyvtárban, majd futtassa a következő parancsot:

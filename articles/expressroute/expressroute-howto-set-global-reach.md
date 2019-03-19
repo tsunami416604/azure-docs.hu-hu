@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 171bf94bbccd45b9be995977c9ec2a26a75d9602
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403481"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082024"
 ---
 # <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 
@@ -38,11 +38,11 @@ Mielőtt elkezdené a konfigurációt, ellenőrizze az alábbiakat:
 
 1. A konfiguráció indításához jelentkezzen be az Azure-fiókjával, és válassza ki a használni kívánt előfizetést.
 
-  [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
+   [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 2. A kívánt ExpressRoute-Kapcsolatcsoportok azonosításához. Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressRoute-Kapcsolatcsoportok között mindaddig, amíg Ön található a támogatott országok és a létrehozásuk másik társviszony-létesítési helyszínek. 
 
-  * Ha az előfizetés tulajdonosa mindkét Kapcsolatcsoportok, vagy futtassa a konfigurációt az alábbi szakaszok a kapcsolatcsoport választhat.
-  * Ha a két kapcsolatcsoporttal az Azure-előfizetések, szüksége van egy Azure-előfizetésből engedélyezési. Ezután adja át az engedélyezési kulcsot a többi Azure-előfizetésben a konfigurációs parancs futtatásakor.
+   * Ha az előfizetés tulajdonosa mindkét Kapcsolatcsoportok, vagy futtassa a konfigurációt az alábbi szakaszok a kapcsolatcsoport választhat.
+   * Ha a két kapcsolatcsoporttal az Azure-előfizetések, szüksége van egy Azure-előfizetésből engedélyezési. Ezután adja át az engedélyezési kulcsot a többi Azure-előfizetésben a konfigurációs parancs futtatásakor.
 
 ## <a name="enable-connectivity"></a>Kapcsolat engedélyezése
 
@@ -52,27 +52,27 @@ Engedélyezze a kapcsolatot a helyszíni hálózat között. Nincsenek külön c
 
 1. Kapcsolatcsoport 1 és 2 kapcsolatcsoport beolvasásához használja a következő parancsokat. A két Kapcsolatcsoportok találhatók ugyanabban az előfizetésben.
 
-  ```azurepowershell-interactive
-  $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
-  $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
-  ```
+   ```azurepowershell-interactive
+   $ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+   $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
+   ```
 2. Futtassa a következő parancsot a kapcsolatcsoport 1 szemben, és a privát társviszony-létesítési kör 2 Azonosítóját adja át. Ha a következő parancs futtatásával, vegye figyelembe a következőket:
 
-  * A privát társviszony-létesítési azonosítója a következő példához hasonlóan néz ki: 
+   * A privát társviszony-létesítési azonosítója a következő példához hasonlóan néz ki: 
 
-    ```
-    /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
-    ```
-  * *-AddressPrefix* kell lennie egy/29 IPv4 alhálózati, például a "10.0.0.0/29". IP-cím az alhálózat, a két ExpressRoute-Kapcsolatcsoportok közötti kapcsolatot létesíteni használjuk. Ez az alhálózat, ne használja a címeket, az Azure virtuális hálózataihoz, illetve a helyszíni hálózat.
+     ```
+     /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
+     ```
+   * *-AddressPrefix* kell lennie egy/29 IPv4 alhálózati, például a "10.0.0.0/29". IP-cím az alhálózat, a két ExpressRoute-Kapcsolatcsoportok közötti kapcsolatot létesíteni használjuk. Ez az alhálózat, ne használja a címeket, az Azure virtuális hálózataihoz, illetve a helyszíni hálózat.
 
-    ```azurepowershell-interactive
-    Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
-    ```
+     ```azurepowershell-interactive
+     Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
+     ```
 3. A konfiguráció mentéséhez kapcsolatcsoport 1 a következőképpen:
 
-  ```azurepowershell-interactive
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
-  ```
+   ```azurepowershell-interactive
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
+   ```
 
 Az előző művelet befejezéséről, elérhetőséget keresztül a két ExpressRoute-Kapcsolatcsoportok mindkét oldalon az a helyszíni hálózat között.
 
@@ -82,23 +82,23 @@ Ha a két Kapcsolatcsoportok nem az Azure-előfizetéshez, engedélyt kell. A k�
 
 1. Hitelesítési kulcs létrehozásához.
 
-  ```azurepowershell-interactive
-  $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
-  Add-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $ckt_2 -Name "Name_for_auth_key"
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
-  ```
+   ```azurepowershell-interactive
+   $ckt_2 = Get-AzExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
+   Add-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $ckt_2 -Name "Name_for_auth_key"
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_2
+   ```
 
-  Jegyezze fel a kapcsolatcsoport 2, valamint a hitelesítési kulcs privát társviszony-létesítési azonosítója.
+   Jegyezze fel a kapcsolatcsoport 2, valamint a hitelesítési kulcs privát társviszony-létesítési azonosítója.
 2. Futtassa a következő parancsot a kapcsolatcsoport 1 ellen. 2. és a hitelesítési kulcs adja át a privát társviszony-létesítési kör Azonosítóját.
 
-  ```azurepowershell-interactive
-  Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
-  ```
+   ```azurepowershell-interactive
+   Add-AzExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering "circuit_2_private_peering_id" -AddressPrefix '__.__.__.__/29' -AuthorizationKey '########-####-####-####-############'
+   ```
 3. A kapcsolatcsoport 1 a konfiguráció mentéséhez.
 
-  ```azurepowershell-interactive
-  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
-  ```
+   ```azurepowershell-interactive
+   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
+   ```
 
 Az előző művelet befejezéséről, elérhetőséget keresztül a két ExpressRoute-Kapcsolatcsoportok mindkét oldalon az a helyszíni hálózat között.
 

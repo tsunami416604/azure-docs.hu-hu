@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 246580d7c93677859c5800cdc9394c1603c4c36b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776972"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901525"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -26,12 +26,8 @@ Ezek a műveletek a migrálás során kell végrehajtani:
 * Minden áttelepített betanítások, amelyek nem az üzembe helyezett állapotú az áttelepített draft állapotba fog kerülni. Ebben az állapotban lesz lehetősége az áttelepített definíció modell képzési, de rendszeres képzési díjakat számolunk fel.
 * Bármikor, a BLEU pontszám átemelt képzés a modell a "Bleu pontszám MT hub" TrainingDetails lapján tekintheti meg a Hub fejléc.
 
->[!Note]
-Sikeres képzéshez egyéni fordító szükséges legalább 10 000 egyedi kinyert mondatokat. Egyéni a fordítót kevesebb képzési nem végez a [javasolt minimális](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
-
-## <a name="enable-account-migration"></a>Fiókáttelepítés engedélyezése
-
-Annak érdekében, hogy az áttelepítési eszköz használata, szüksége van a Hub fiókáttelepítés engedélyezve van. Ehhez az szükséges, e-mailben [ custommt@microsoft.com ](mailto:custommt@microsoft.com) az összes live ID azonosító fiókok listáját, amelyet engedélyezve van. Ezeket a fiókokat kell jelentkeznie az e-mail-címek.
+> [!Note]
+> Sikeres képzéshez egyéni fordító szükséges legalább 10 000 egyedi kinyert mondatokat. Egyéni a fordítót kevesebb képzési nem végez a [javasolt minimális](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Keresse meg az egyéni a fordítót a munkaterület-azonosító
 

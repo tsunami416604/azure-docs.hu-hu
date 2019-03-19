@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6d2d83e24b5e42af5f4322021eebfe9bf09494
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2eb395b4f3d922aa116e01c5de080a54d81e10ff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551258"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118646"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
@@ -111,15 +111,15 @@ Ugyanabban a nézetben az összes gráf látni fogja a teljesítmény, a tárol�
 
 3. Kattintson az adatok > Windows-teljesítményszámlálók (Data > Linux rendszerű gépek Linux-teljesítményszámlálók) elindításához a Log Analytics-ügynökön keresztül a csomópontok specifikus számlálókat gyűjti össze. Példa a formátum számlálók hozzáadása
 
-    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
-    * `Processor(_Total)\\% Processor Time`
+   * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
+   * `Processor(_Total)\\% Processor Time`
 
-    A rövid útmutatóban VotingData és VotingWeb a folyamat nevét használja, így ezek a számlálók követési láthatóhoz hasonló
+     A rövid útmutatóban VotingData és VotingWeb a folyamat nevét használja, így ezek a számlálók követési láthatóhoz hasonló
 
-    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
-    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
+   * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![Log Analytics gyűjthető Teljesítményszámlálókra](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Log Analytics gyűjthető Teljesítményszámlálókra](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
 4. Ezzel lehetővé teszi az infrastruktúra hogyan kezeli a számítási feladatokat, és erőforrás-használat alapján vonatkozó riasztásokat állíthat be. Például – érdemes riasztást állít be, ha a teljes processzorhasználat 5 % alatti vagy feletti 90 %-os megfelelően. Ehhez használja a számláló neve "%-ban a processzoron." Sikerült ezt úgy teheti meg az alábbi lekérdezés a riasztási szabály létrehozása:
 

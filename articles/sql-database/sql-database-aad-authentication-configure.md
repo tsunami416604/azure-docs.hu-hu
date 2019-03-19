@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: e4ccb9be5d13ea72086fbaae2ffb2ec63ad55786
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f3c485659bc686efbb4101879e5cd24e7bb3db46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340320"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905103"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL
 
@@ -29,12 +29,14 @@ Ez a cikk bemutatja, hogyan hozhat létre és töltse fel az Azure ad-ben, és m
 > Egy Azure virtuális gépeken futó SQL Serverhez való csatlakozáshoz nem támogatott az Azure Active Directory-fiók használatával. Használja helyette a tartomány Active Directory-fiókot.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 ## <a name="create-and-populate-an-azure-ad"></a>Létrehozása és feltöltése az Azure ad-ben
 
 Hozzon létre egy Azure ad-ben, és a felhasználók és csoportok való feltöltéséhez. Az Azure AD lehetnek a kezdeti Azure ad-ben felügyelt tartományhoz. Az Azure AD lehetnek egy helyszíni Active Directory tartományi szolgáltatások, amelyek össze van vonva az Azure AD-vel is.
 
-További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/hybrid/whatis-hybrid-identity.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md).
+További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/hybrid/whatis-hybrid-identity.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz
 
@@ -240,6 +242,7 @@ Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthet
 ### <a name="cli"></a>parancssori felület  
 
 Azure AD-rendszergazdát a következő CLI-parancsok meghívásával is kiépíthetők:
+
 | Parancs | Leírás |
 | --- | --- |
 |[az sql server-ad-rendszergazda létrehozása](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
@@ -349,7 +352,7 @@ Ezt a módszert használja, amikor egy Azure AD-szolgáltatásnevet, az Azure AD
 Ezt a módszert használja a hitelesítéshez, az SQL DB/DW natív Azure AD-vel vagy összevont felhasználók Azure ad-ben. Egy natív felhasználói explicit módon az Azure AD-ben létrehozott-használ felhasználónevét és jelszavát, amíg egy összevont felhasználó egy Windows felhasználói tartományok össze van vonva az Azure ad-ben. Az utóbbi módszerhez (a felhasználó & jelszó használatával) használható, amikor egy felhasználó azt szeretné, a windows hitelesítő adatok használatára, de a helyi számítógép nem csatlakozik tartományhoz, azzal a tartománnyal (például egy távoli elérés). Ebben az esetben egy Windows felhasználói adhatja meg, a tartományi fiókot és jelszót, és az SQL DB/DW összevont hitelesítő adatokkal hitelesítheti.
 
 1. Indítsa el a Management Studio vagy a Data-eszközök és a **kapcsolódás a kiszolgálóhoz** (vagy **kapcsolódás az adatbázismotorhoz**) párbeszédpanel a **hitelesítési** jelölje ki  **Az Active Directory - jelszó**.
-2. Az a **felhasználónév** a következő formátumban írja be az Azure Active Directory felhasználónevet **username@domain.com**. Felhasználó nevének kell lennie az Azure Active Directory-fiók, vagy egy fiókot a tartomány összevonása az Azure Active Directoryval.
+2. Az a **felhasználónév** a következő formátumban írja be az Azure Active Directory felhasználónevet **felhasználónév\@tartomány.com**. Felhasználó nevének kell lennie az Azure Active Directory-fiók, vagy egy fiókot a tartomány összevonása az Azure Active Directoryval.
 3. Az a **jelszó** mezőbe írja be a felhasználó jelszavát az Azure Active Directory-fiók vagy összevont tartományi fiókot.
 
     ![Válassza ki az AD jelszó-hitelesítés][12]

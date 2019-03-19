@@ -15,12 +15,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443aef1a7396dc637b656a805b758a62bcfac41d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45f48b6d8ef29d14606f18d4ccee77bd742a670a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175998"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Megismerheti, hogyan több Azure Active Directory-bérlő használatához.
 
@@ -47,7 +47,7 @@ Konfigurálhatja az egyes Azure AD-bérlők egymástól függetlenül a követke
 Az Azure Portalon az Azure AD-bérlő hozzáadásához jelentkezzen be [az Azure Portalon](https://portal.azure.com) egy olyan fiókkal, amely az Azure AD globális rendszergazda, és a bal oldalon található, válassza ki a **új**.
 
 > [!NOTE]
-> Más Azure-erőforrástól eltérően a bérlők nem tartoznak gyermekerőforrásait Azure-előfizetés. Ha az Azure-előfizetésében meg lett szakítva, vagy lejárt, a bérlő adatainak Azure PowerShell-lel, az Azure Graph API vagy az Office 365 felügyeleti központ használatával továbbra is elérheti. Emellett [más előfizetéseket társíthat a bérlő](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Más Azure-erőforrástól eltérően a bérlők nem tartoznak gyermekerőforrásait Azure-előfizetés. Ha az Azure-előfizetésében meg lett szakítva, vagy lejárt, a bérlő adatainak Azure PowerShell-lel, az Azure Graph API vagy a Microsoft 365 felügyeleti központ használatával továbbra is elérheti. Emellett [más előfizetéseket társíthat a bérlő](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>További lépések
