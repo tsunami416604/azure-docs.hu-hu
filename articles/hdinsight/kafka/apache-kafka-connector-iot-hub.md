@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093388"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Használat Apache Kafka on HDInsight az Azure IoT hubbal
 
@@ -168,32 +168,32 @@ Az összekötő által használt IoT hub információk lekéréséhez használja
 
 1. Töltse le az Event Hub-kompatibilis végpont és az IoT hub Event Hub-kompatibilis végpont neve. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
-    * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
+   * __Az a [az Azure portal](https://portal.azure.com/)__, kövesse az alábbi lépéseket:
 
-        1. Keresse meg az IoT hubot és jelölje ki __végpontok__.
-        2. A __beépített végpontokról__válassza __események__.
-        3. A __tulajdonságok__, másolja a következő mezők értékét:
+     1. Keresse meg az IoT hubot és jelölje ki __végpontok__.
+     2. A __beépített végpontokról__válassza __események__.
+     3. A __tulajdonságok__, másolja a következő mezők értékét:
 
-            * __Event Hub-compatible name__
-            * __Event Hub-compatible endpoint__
-            * __Partíciók__
+         * __Event Hub-compatible name__
+         * __Event Hub-compatible endpoint__
+         * __Partíciók__
 
         > [!IMPORTANT]  
         > A végpont értékét a Portalról, amely ebben a példában nincs szükség további szöveg tartalmazhat. Csomagolja ki, amely megfelel ennek a mintának a szöveg `sb://<randomnamespace>.servicebus.windows.net/`.
 
-    * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
+   * __Az a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, használja a következő parancsot:
 
-        ```azure-cli
-        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
-        ```
+       ```azure-cli
+       az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
+       ```
 
-        Cserélje le `myhubname` az IoT hub nevét. A válasz az alábbi szöveghez hasonlít:
+       Cserélje le `myhubname` az IoT hub nevét. A válasz az alábbi szöveghez hasonlít:
 
-        ```json
-        "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
-        "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
-        "Partitions": 2
-        ```
+       ```json
+       "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
+       "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
+       "Partitions": 2
+       ```
 
 2. Első a __megosztott hozzáférési szabályzat__ és __kulcs__. Ebben a példában használja a __szolgáltatás__ kulcsot. Ezek az információk lekéréséhez használja a következő módszerek egyikét:
 
@@ -239,16 +239,16 @@ A forrás az IoT hubbal való konfigurálásához hajtsa végre az SSH-kapcsolat
 
     A szerkesztőben keresse meg és módosíthatja az alábbi bejegyzéseket:
 
-    * `Kafka.Topic=PLACEHOLDER`: Cserélje le a  elemet a `iotin` kérdésre. Az IoT hub felől fogadott üzenetek kerülnek a `iotin` témakör.
-    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Cserélje le `PLACEHOLDER` Event Hub-kompatibilis névvel.
-    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az Event Hub-kompatibilis végponthoz.
-    * `IotHub.Partitions=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az előző lépésekben a partíciók számát.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: Cserélje le a  elemet a `service` kérdésre.
-    * `IotHub.AccessKeyValue=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az elsődleges kulccsal rendelkező a `service` házirend.
-    * `IotHub.StartType=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az UTC-dátum. Dátum, az üzenetek ellenőrzése az összekötő indításakor. A dátum formátuma `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: Cserélje le a  elemet a `5` kérdésre. Ez a változás az után, ha öt új üzeneteket az IoT hub üzenetek olvasásához, a Kafka-összekötő okoz.
+   * `Kafka.Topic=PLACEHOLDER`: Cserélje le a  elemet a `iotin` kérdésre. Az IoT hub felől fogadott üzenetek kerülnek a `iotin` témakör.
+   * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Cserélje le `PLACEHOLDER` Event Hub-kompatibilis névvel.
+   * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az Event Hub-kompatibilis végponthoz.
+   * `IotHub.Partitions=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az előző lépésekben a partíciók számát.
+   * `IotHub.AccessKeyName=PLACEHOLDER`: Cserélje le a  elemet a `service` kérdésre.
+   * `IotHub.AccessKeyValue=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az elsődleges kulccsal rendelkező a `service` házirend.
+   * `IotHub.StartType=PLACEHOLDER`: Cserélje le `PLACEHOLDER` az UTC-dátum. Dátum, az üzenetek ellenőrzése az összekötő indításakor. A dátum formátuma `yyyy-mm-ddThh:mm:ssZ`.
+   * `BatchSize=100`: Cserélje le a  elemet a `5` kérdésre. Ez a változás az után, ha öt új üzeneteket az IoT hub üzenetek olvasásához, a Kafka-összekötő okoz.
 
-    Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
+     Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
 3. A módosítások mentéséhez használja __Ctrl + X__, __Y__, majd __Enter__.
 
@@ -272,10 +272,10 @@ A fogadó csatlakozási az IoT hubbal való konfigurálásához hajtsa végre az
 
     A szerkesztőben keresse meg és módosíthatja az alábbi bejegyzéseket:
 
-    * `topics=PLACEHOLDER`: Cserélje le a  elemet a `iotout` kérdésre. Üzenetek `iotout` a témakör a rendszer továbbítja az IoT hubnak.
-    * `IotHub.ConnectionString=PLACEHOLDER`: Cserélje le `PLACEHOLDER` kapcsolati karakterláncára az `service` házirend.
+   * `topics=PLACEHOLDER`: Cserélje le a  elemet a `iotout` kérdésre. Üzenetek `iotout` a témakör a rendszer továbbítja az IoT hubnak.
+   * `IotHub.ConnectionString=PLACEHOLDER`: Cserélje le `PLACEHOLDER` kapcsolati karakterláncára az `service` házirend.
 
-    Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+     Egy példa konfiguráció látható, lásd: [ https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md ](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 3. A módosítások mentéséhez használja __Ctrl + X__, __Y__, majd __Enter__.
 
