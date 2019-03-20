@@ -1,21 +1,21 @@
 ---
-title: 'Hibaelhárítás: Hozzon létre, csatlakozás egy Machine Learning Studio-munkaterülethez'
+title: A munkaterület hibaelhárítása
 titleSuffix: Azure Machine Learning Studio
 description: Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f7b5bdbbf322a0d7ea290f2543af07d5b11f439a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7cc825daa29a0398793f3c6fc5ce8ee426ad79e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884195"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: Létrehozás és csatlakozás az Azure Machine Learning Studio-munkaterülethez
 Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.

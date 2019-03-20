@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 13156b3419d961850c8e4e408a9cf565a5f957ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312991"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086394"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -96,7 +96,7 @@ Ez akkor fordulhat elő, ha a frissítési token nem lett frissítve. Próbálja
 1. Jelentkezzen be az Azure Portalra, és győződjön meg arról, hogy az erőforrás eléréséhez.
 2. Próbálja meg frissíteni a hitelesítő adatok az irányítópulton.
 
- Ha rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson egy támogatási jegyet.
+   Ha rendelkezik hozzáféréssel, és a hitelesítő adatok frissítése nem működik, nyisson egy támogatási jegyet.
 
 ### <a name="bad-gateway-502"></a>Hibás átjáró (502)
 Ez általában okozza az Analytics-lekérdezések, amelyek túl sok adatot adja vissza. Próbáljon kisebb időtartományt a lekérdezés. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ec90c230674799d9b2f56f1659d61032d0eb834c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848677"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
 
@@ -132,8 +132,8 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 5. Ezután vegyen fel Azure Notification Hubs-kódtárakat. Az alkalmazás `Build.Gradle` fájljában adja hozzá az alábbi sorokat a dependencies (függőségek) szakaszhoz.
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     A dependencies (függőségek) szakasz után vegye fel az alábbi tárhelyet.
@@ -141,7 +141,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. Töltse le és csomagolja ki a [Baidu Push Android SDK-t](http://push.baidu.com/doc/android/api). Másolja a `pushservice-x.y.z jar` fájlt a libs mappába. Ezután másolja a `.so` fájlokat az Android alkalmazás `src/main/jniLibs` (hozzon létre egy új mappát) mappáiba.
+6. Töltse le és csomagolja ki a [Baidu Push Android SDK-t](https://push.baidu.com/doc/android/api). Másolja a `pushservice-x.y.z jar` fájlt a libs mappába. Ezután másolja a `.so` fájlokat az Android alkalmazás `src/main/jniLibs` (hozzon létre egy új mappát) mappáiba.
 
     ![Azure Notification Hubs – Baidu SDK kódtárak](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -497,7 +497,7 @@ Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küld
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomaggal](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+    Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomaggal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ Tesztértesítést az [Azure Portal] hibakeresési lapjáról küldhet. Ha a .NE
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
-[Baidu portál]: http://www.baidu.com/
+[Baidu portál]: https://www.baidu.com/

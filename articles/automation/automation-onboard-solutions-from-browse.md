@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 84b66605939abd0f676625a5959f4a31ef1774db
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855350"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -28,7 +28,7 @@ Jelentkezzen be az Azure-ba a https://portal.azure.com címen
 
 Az Azure Portalon lépjen **virtuális gépek**.
 
-Használja a jelölőnégyzeteket, válassza ki a virtuális gépek felvétele a Change Tracking és Inventory vagy az Update Management pedig kíván. Bevezetési egyszerre akár három különböző erőforráscsoportokban érhető el.
+Használja a jelölőnégyzeteket, válassza ki a virtuális gépek felvétele a Change Tracking és Inventory vagy az Update Management pedig kíván. Bevezetési egyszerre akár három különböző erőforráscsoportokban érhető el. Az Azure virtuális gépek létezhet bármelyik régióban, függetlenül attól, hogy az Automation-fiók helye.
 
 ![Virtuális gépek listája](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -68,14 +68,19 @@ Az alábbi táblázat bemutatja a támogatott leképezések:
 |Délkelet-Ausztrália|Délkelet-Ausztrália|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|USA keleti régiója<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
+
+> [!NOTE]
+> Igény szerint, mert a régió nem lehet elérhető az Automation-fiók vagy a Log Analytics-munkaterület létrehozásakor.  Ha ez a helyzet, győződjön meg arról, használja az előző táblázatban, amely az erőforrásokat hozhat létre egy régiót.
 
 Kapcsolja ki bármelyik virtuális gépet, amely nem szeretné engedélyezni, jelölőnégyzetét. Virtuális gépek, amelyek nem lehet engedélyezni a rendszer már sincs kijelölve.
 

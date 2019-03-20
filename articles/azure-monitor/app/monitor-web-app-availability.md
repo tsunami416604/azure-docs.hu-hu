@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: b5bca3b4c9f5fbe4c9d7dd917b4e2f0767abf145
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9b04ca359a0c71a04e762452fa33345201f37e84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341017"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124320"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -92,7 +92,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
     ![A Visual Studio Enterprise kiadásban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
- * *Nem jelenik meg a webes teljesítmény- és terheléstesztelés sablonja?* – Zárja be a Visual Studio Enterprise-t. Nyissa meg a **Visual Studio telepítőjét** a Visual Studio Enterprise-telepítés módosításához. Az **Individual Components** (Egyedi összetevők) területen válassza a **Web Performance and load testing tools** (Webes teljesítmény- és terheléstesztelési eszközök) lehetőséget.
+   * *Nem jelenik meg a webes teljesítmény- és terheléstesztelés sablonja?* – Zárja be a Visual Studio Enterprise-t. Nyissa meg a **Visual Studio telepítőjét** a Visual Studio Enterprise-telepítés módosításához. Az **Individual Components** (Egyedi összetevők) területen válassza a **Web Performance and load testing tools** (Webes teljesítmény- és terheléstesztelési eszközök) lehetőséget.
 
 2. Nyissa meg a .webtest fájlt, és kezdje meg a rögzítést.
 
