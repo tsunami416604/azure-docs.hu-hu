@@ -64,6 +64,12 @@ items:
       href: quickstart-scale-compute-powershell.md
     - name: T-SQL
       href: quickstart-scale-compute-tsql.md
+  - name: Számítási feladatok kezelése
+    items:
+    - name: Számításifeladat-osztályozó létrehozása (előzetes verzió)
+      items:
+      - name: T-SQL
+        href: quickstart-create-a-workload-classifier-tsql.md
   expanded: true
 - name: Alapelvek
   items:
@@ -155,6 +161,10 @@ items:
     items:
     - name: Erőforrásosztályok és számítási feladatok kezelése
       href: resource-classes-for-workload-management.md
+    - name: Számítási feladat osztályozása (előzetes verzió)
+      href: sql-data-warehouse-workload-classification.md
+    - name: Számítási feladat fontossága (előzetes verzió)
+      href: sql-data-warehouse-workload-importance.md
     - name: Memória- és egyidejűségi korlátok
       href: memory-and-concurrency-limits.md
   - name: Kezelhetőség és monitorozás
@@ -169,8 +179,6 @@ items:
       href: backup-and-restore.md
     - name: Javaslatok
       href: sql-data-warehouse-concept-recommendations.md
-    - name: Karbantartási ütemezés
-      href: service-maintenance.md
     - name: Hibaelhárítás
       href: sql-data-warehouse-troubleshoot.md
   - name: Karbantartási ütemezések
@@ -311,9 +319,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Adatkezelés
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: fb1b3751d398af947eb6dad1a40699104280bc21
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 70ad58128b088a44f2e95626e6883645a947e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730670"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884693"

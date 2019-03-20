@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575392"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848161"
 documentType: LandingData
 title: Az Azure Data Factory dokumentációja
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: Adatok átalakítása a virtuális hálózatban – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
     - html: Elágaztatás és láncolás hozzáadása – <a href="/azure/data-factory/tutorial-control-flow-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
     - html: SSIS-csomagok futtatása az Azure-ban – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryben – <a href="/azure/data-factory/continuous-integration-deployment">A Data Factory felhasználói felülete</a>
 - title: Példák
   items:
   - type: paragraph

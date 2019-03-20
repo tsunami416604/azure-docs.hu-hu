@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c782f003903fd8eeb33067ce1d85c6a8ecef6e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883644"
 documentType: LandingData
 title: Az Azure Databricks dokumentációja
 metadata:
-  title: Az Azure Databricks dokumentációja – Oktatóanyagok
+  title: Az Azure Databricks dokumentációja
   description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
   services: azure-databricks
   author: mamccrea
@@ -17,7 +17,7 @@ metadata:
   ms.date: 03/19/2018
   ms.author: mamccrea
 abstract:
-  description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform. Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés.
+  description: Ismerkedjen meg az Azure Databricks egyetlen kattintással beállítható Apache Spark-alapú elemzési platform használatával, amely zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés. A rövid útmutatók és oktatóanyagok bemutatják az Azure Databricks használatának első lépéseit és más Azure-szolgáltatásokkal való integrálását.
   aside:
     image:
       alt: 

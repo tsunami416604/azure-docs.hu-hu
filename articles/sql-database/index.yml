@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ba32f17ac596a21614c1e18a01f622defb069a8e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: dad3d16ad6d630bd57e6e5d196d16d45692935d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167966"
 documentType: LandingData
 title: Az Azure SQL Database dokumentációja
 metadata:
@@ -65,7 +65,7 @@ sections:
         src: media/index/i_elasticpool.svg
       title: Rugalmas készletek
     - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>A felügyelt példánnyal a helyszíni adatbázisait egyszerűen a teljes körűen felügyelt Azure PaaS adatbázis-szolgáltatásba migrálhatja minimális adatbáziskód-módosítás mellett.</p>
+      html: <p>A felügyelt példánnyal hozzájuthat az Azure-felhőben működő SQL Server-adatbázismotor egy teljes körűen felügyelt példányához. Így a kód minimális módosításával vagy akár kódváltoztatás nélkül is migrálhat a helyszíni adatbázisokról.</p>
       image:
         src: media/index/i_mi.svg
       title: Felügyelt példány
@@ -129,7 +129,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Ismerje meg az <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">egyszeres adatbázisok</a> és a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">felügyelt példányok</a> használatát a rövid útmutatóinkból.
+    - html: Első lépésként ismerkedjen meg az <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">önálló adatbázisok</a> és a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">felügyelt példányok</a> használatával a rövid útmutatók alapján.
     - html: Új önálló adatbázis sémájának létrehozása és megtervezése az <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> vagy a <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> használatával
     - html: Létező adatbázis migrálása az Azure-ba egy <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív SQL Server biztonságimásolat-fájl</a> vagy a <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> használatával, illetve egy <a href="/azure/sql-database/sql-database-import">BACPAC-fájl importálásával</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL Database adatbázis védelme</a>

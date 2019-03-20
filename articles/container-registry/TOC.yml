@@ -62,26 +62,29 @@ items:
       href: container-registry-image-lock.md
     - name: Tárolórendszerképek törlése
       href: container-registry-delete.md
-    - name: Tartalom-megbízhatóság (előzetes verzió)
-      href: container-registry-content-trust.md
     - name: Klasszikus beállításjegyzék frissítése
       href: container-registry-upgrade.md
     - name: ACR-webhookok használata
       href: container-registry-webhook.md
     - name: Helm-diagramtárak (előzetes verzió)
       href: container-registry-helm-repos.md
-  - name: Hitelesítés
+  - name: Biztonság és hitelesítés
     items:
+    - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
+      href: container-registry-vnet.md
     - name: A hitelesítés áttekintése
       href: container-registry-authentication.md
-    - name: Egyszerű szolgáltatásnév hitelesítése
-      href: container-registry-auth-service-principal.md
-    - name: Felügyelt identitás hitelesítése
-      href: container-registry-authentication-managed-identity.md
-    - name: Azure Container Instances
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes Service (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: Egyszerű szolgáltatásnév hitelesítése
+        href: container-registry-auth-service-principal.md
+      - name: Felügyelt identitás hitelesítése
+        href: container-registry-authentication-managed-identity.md
+      - name: Hitelesítés az Azure Container Instancesből
+        href: container-registry-auth-aci.md
+      - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
+        href: container-registry-auth-aks.md
+    - name: Tartalom-megbízhatóság (előzetes verzió)
+      href: container-registry-content-trust.md
   - name: Létrehozás és javítás
     items:
     - name: ACR-feladatok
@@ -137,9 +140,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: ef8f6b64129f9dd2f2959c89e93c34b9d90a62f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 732c0f878df9b5d722571bf45e4afd76a3180ebb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541949"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137994"

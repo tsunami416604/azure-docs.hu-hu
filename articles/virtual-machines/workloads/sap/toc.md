@@ -78,6 +78,7 @@
 #### [Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [Magas rendelkezésre állás Windows rendszeren SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-guide-wsfc-file-share.md)
 #### [Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz](high-availability-guide-suse.md)
+#### [Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz Azure NetApp Files szolgáltatással](high-availability-guide-suse-netapp-files.md)
 #### [Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz](high-availability-guide-rhel.md)
 ### Az Azure infrastruktúra előkészítése
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -90,6 +91,7 @@
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-installation-wsfc-file-share.md)
 #### [SUSE Linux NFS-sel (A)SCS példányhoz](high-availability-guide-suse.md)
+#### [SUSE Linux NFS-sel (A)SCS példányhoz Azure NetApp Files szolgáltatással](high-availability-guide-suse-netapp-files.md)
 #### [Magas rendelkezésre állás SAP NetWeaverhez Red Hat Enterprise Linuxon](high-availability-guide-rhel.md)
 ### SAP több biztonsági azonosítóval
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)

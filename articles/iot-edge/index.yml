@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f0d4a689e783f8c460ee54b3613ac0fe432b59ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464024"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862790"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/30/2019
+  ms.date: 03/13/2019
   ms.author: kgremban
 abstract:
   description: Az Azure IoT Edge egy eszközök internetes hálózata (IoT) típusú szolgáltatás, amely az IoT Hubra épül. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis „a peremhálózaton”, nem a felhőben. A számítási feladat egy részének a peremhálózatra helyezése révén az eszközök kevesebb időt töltenek a felhőbe történő üzenetküldéssel, és gyorsabban reagálhatnak az állapotváltozásokra.
@@ -32,7 +32,7 @@ sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'Az első IoT Edge-modul üzembe helyezése és az adatok feldolgozása szimulált eszközön:'
+    text: 'Azure-beli virtuális gép létrehozása, konfigurálása IoT Edge-eszközként való futtatáshoz, és kód telepítése a gépen:'
   - type: list
     style: icon48
     items:

@@ -8,7 +8,7 @@ items:
     expanded: true
 - name: Gyors útmutatók
   items:
-  - name: Első lépések
+  - name: A Content Moderator kipróbálása az interneten
     href: quick-start.md
   - name: Az ügyfél-SDK használata
     items:
@@ -26,6 +26,10 @@ items:
   items:
   - name: E-kereskedelmi képek moderálása
     href: ecommerce-retail-catalog-moderation.md
+  - name: Facebook-tartalmak moderálása
+    href: facebook-post-moderation.md
+  - name: Videók és átiratok moderálása
+    href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: Alapelvek
   items:
   - name: Képmoderálás
@@ -104,12 +108,6 @@ items:
       href: Review-Tool-User-Guide/Workflows.md
     - name: Az irányítópult megtekintése
       href: Review-Tool-User-Guide/View-Dashboard.md
-  - name: Első Content Moderator-alkalmazások
-    items:
-    - name: Facebook-tartalom moderálása
-      href: facebook-post-moderation.md
-    - name: Videók és átiratok moderálása
-      href: video-transcript-moderation-review-tutorial-dotnet.md
   - name: Fiókadatok exportálása vagy törlése
     href: ./export-delete-data.md
   - name: Azure webinárium-sorozat
@@ -160,9 +158,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: c9f43e8598afc6e9fa68c24313ef862072d48e75
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cee9e6c585dfa65ccee5c0f4631b5efc81dde760
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215371"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900709"

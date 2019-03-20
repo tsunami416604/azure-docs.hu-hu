@@ -32,15 +32,17 @@ items:
 - name: Alapelvek
   items:
   - name: Feladatok bemenettípusai
-    href: stream-analytics-add-inputs.md
     items:
+    - name: Bemenetek áttekintése
+      href: stream-analytics-add-inputs.md
     - name: Streamadat típusú bemenetek
       href: stream-analytics-define-inputs.md
     - name: Referenciaadat típusú bemenetek
       href: stream-analytics-use-reference-data.md
   - name: Feladatok kimenettípusai
-    href: stream-analytics-define-outputs.md
     items:
+    - name: Kimenetek áttekintése
+      href: stream-analytics-define-outputs.md
     - name: Kimenet a Cosmos DB-be
       href: stream-analytics-documentdb-output.md
     - name: Kimenet az Azure SQL DB-be
@@ -122,9 +124,10 @@ items:
     items:
     - name: Skálázás streamelési egységekkel
       href: stream-analytics-streaming-unit-consumption.md
-    - name: Skálázás párhuzamos lekérdezési folyamatokkal
-      href: stream-analytics-parallelization.md
+    - name: Skálázás párhuzamosítással
       items:
+      - name: Lekérdezések párhuzamosítása
+        href: stream-analytics-parallelization.md
       - name: Az átviteli sebesség növelése
         href: stream-analytics-scale-jobs.md
     - name: Skálázás Machine Learning-függvényekkel
@@ -428,16 +431,16 @@ items:
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: Ügyféleset-tanulmányok
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Tanulmány – Valós idejű eseményfeldolgozás
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 24c475fcbe1bda825693ee04f9381922c46633ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853009"
