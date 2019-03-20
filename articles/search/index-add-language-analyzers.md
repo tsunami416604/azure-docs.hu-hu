@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328293"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085677"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők az Azure Search-index hozzáadása
 
@@ -46,8 +46,8 @@ Az alapértelmezett elemző a Standard Lucene, amely jól az angol nyelvű táj�
 
 + A Microsoft angol nyelvű analyzer morfológiai helyett, amely szerint végzi. Ez azt jelenti, hogy sokkal jobban mi eredményez több megfelelő keresési eredmények ragozott és szabálytalan word űrlapok képes kezelni 
 
- > [!Tip]
- > A [keresési Analyzer bemutató](https://alice.unearth.ai/) biztosít a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor által előállított eredmények összehasonlítása egymás mellett. Az egyes keresési feltétele alapján ad meg, minden egyes analyzer eredményeinek szomszédos ablaktáblán jelennek meg.
+  > [!Tip]
+  > A [keresési Analyzer bemutató](https://alice.unearth.ai/) biztosít a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor által előállított eredmények összehasonlítása egymás mellett. Az egyes keresési feltétele alapján ad meg, minden egyes analyzer eredményeinek szomszédos ablaktáblán jelennek meg.
 
 ## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1f65d7711c57930886ac9826bb105b6bc4931268
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 158f22ec2ab07bfc2f893d4b0c55d862e0b19de0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106661"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Fontos szempontok: Szolgáltatások használatával, vagy alkalmazások készítéséhez az Azure Stackhez
 
@@ -76,8 +76,8 @@ Az Azure Stack az Azure PowerShell és az Azure-szolgáltatás API-k adott verzi
 
 Győződjön meg arról, hogy az Azure PowerShell megfelelő verzióját használja, használja a [API-verzióprofilok](azure-stack-version-profiles.md). Annak megállapításához, a legújabb API verzió-profilt, amelyet használhat, megtudhatja a build, az Azure Stack használata esetén. Ezt az információt kaphat az Azure Stack rendszergazdájától.
 
->[!NOTE]
- Ha az Azure Stack fejlesztői készletet használ, és rendelkezik rendszergazdai hozzáféréssel, tekintse meg a [határozza meg a jelenlegi verzió](../azure-stack-updates.md#determine-the-current-version) szakaszban határozza meg az Azure Stack hozhat létre.
+> [!NOTE]
+>  Ha az Azure Stack fejlesztői készletet használ, és rendelkezik rendszergazdai hozzáféréssel, tekintse meg a [határozza meg a jelenlegi verzió](../azure-stack-updates.md#determine-the-current-version) szakaszban határozza meg az Azure Stack hozhat létre.
 
 A más API-k futtassa a következő PowerShell-parancsot a kimenetben a névterek, erőforrástípusok és API-verziók által támogatott az Azure Stack-előfizetéssel. Vegye figyelembe, hogy továbbra is lehet különbségek tulajdonság szinten. Ez a parancs működéséhez rendelkeznie kell már [telepített](azure-stack-powershell-install.md) és [konfigurált](azure-stack-powershell-configure-user.md) PowerShell az Azure Stack-környezet. Ajánlat az Azure Stack-előfizetést is rendelkeznie kell.
 
@@ -94,4 +94,4 @@ Szolgáltatási szinten különbségek kapcsolatos részletesebb információké
 
 * [Szempontok a virtuális gépek az Azure Stackben](azure-stack-vm-considerations.md)
 * [Az Azure Stackben tárolási szempontjai](azure-stack-acs-differences.md)
-* [Azure Stack hálózati szempontjai](azure-stack-network-differences.md)
+* [Az Azure Stack-hálózatkezelés szempontjai](azure-stack-network-differences.md)

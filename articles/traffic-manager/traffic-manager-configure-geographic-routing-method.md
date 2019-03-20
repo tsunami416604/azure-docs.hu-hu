@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8b47d57d21043de97e17b256a39ef88d73fbb1c1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010078"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>A földrajzi forgalom-útválasztási módszer használatával a Traffic Manager konfigurálása
 
@@ -23,7 +23,7 @@ A földrajzi forgalom-útválasztási módszer lehetővé teszi, hogy a forgalma
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** lehetőségre.
 4. Az a **Traffic Manager-profil létrehozása**:
     1. Adja meg a profil nevét. Ez a név egyedinek kell lennie a trafficmanager.net zónában. A Traffic Manager-profil eléréséhez használja a DNS-név <profilename>. trafficmanager.net.

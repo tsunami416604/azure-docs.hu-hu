@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 1805d54e66187a97bf598734801f0d94895e7490
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099035"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag:  Vélemények az utterance (kifejezés) beolvasása
 
@@ -61,9 +61,9 @@ Mivel ez közzétételi beállítás, a szándékok vagy az entitások oldalán 
 
 1. Adja meg a következő entitást előre összeállított entitások listájából, majd válassza ki **kész**:
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-    ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
 
 ## <a name="create-an-intent-to-determine-employee-feedback"></a>Egy alkalmazott visszajelzés meghatározásához leképezésének létrehozása
 

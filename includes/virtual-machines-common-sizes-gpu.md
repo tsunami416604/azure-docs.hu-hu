@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: bbf619f27c9239ea1b42287c7e81f23da1d43fcb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c2908ef5c67665b5ba48879626370f977634dc83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57350506"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190671"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva. 
 
@@ -37,10 +37,10 @@ NC sorozat virtuális gépei működteti a [NVIDIA Tesla K80](https://www.nvidia
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU-memóriával: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
-| Standard_NC6 |6 |56 | 340 | 1 | 8 | 24 | 1 |
-| Standard_NC12 |12 |112 | 680 | 2 | 16 | 48 | 2 |
-| Standard_NC24 |24 |224 | 1440 | 4 | 32 | 64 | 4 |
-| Standard_NC24r* |24 |224 | 1440 | 4 | 32 | 64 | 4 |
+| Standard_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
+| Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
+| Standard_NC24 |24 |224 | 1440 | 4 | 48 | 64 | 4 |
+| Standard_NC24r* |24 |224 | 1440 | 4 | 48 | 64 | 4 |
 
 1 GPU = fél K80-kártya.
 
@@ -52,7 +52,7 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-NCv2 sorozatú virtuális gépek működteti [NVIDIA Tesla P100](https://www.nvidia.com/data-center/tesla-p100/) gpu-kkal. Az gpu-k biztosíthat az NC sorozat számítási teljesítményének több mint 2. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A NC24rs v2 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
+NCv2 sorozatú virtuális gépek működteti [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-center/tesla-p100/) gpu-kkal. Az gpu-k biztosíthat az NC sorozat számítási teljesítményének több mint 2. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A NC24rs v2 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
 
 > [!IMPORTANT]
 > Az ezen virtuálisgépméret-családhoz az előfizetés vCPU-(mag-) kvóta kezdetben értéke 0 minden régióban. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).
@@ -75,7 +75,7 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/Volta-Datasheet.pdf) gpu-kkal. Az gpu-k 1,5 x az NCv2 sorozat számítási teljesítményt tud biztosítani. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A NC24rs v3 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
+Az NCv3 sorozatú virtuális gépek működteti [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) gpu-kkal. Az gpu-k 1,5 x az NCv2 sorozat számítási teljesítményt tud biztosítani. Ügyfelek kihasználhatja az frissített gpu-k hagyományos HPC számítási feladatokhoz, például a olajfúrás-modellezés, DNS-sel szekvenálás, fehérjeanalízis, Monte Carlo-szimulációk és mások. A NC24rs v3 konfiguráció egy alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert szorosan összefüggő párhuzamos számítási feladatokhoz biztosít.
 
 > [!IMPORTANT]
 > Az ezen virtuálisgépméret-családhoz az előfizetés vCPU-(mag-) kvóta kezdetben értéke 0 minden régióban. [Egy vCPU-kvóta növelésére](../articles/azure-supportability/resource-manager-core-quotas-request.md) a termékcsalád az az [elérhető régióban](https://azure.microsoft.com/regions/services/).

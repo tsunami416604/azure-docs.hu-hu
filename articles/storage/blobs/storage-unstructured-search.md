@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011315"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Oktatóanyag: Strukturálatlan adatok keresése felhőalapú tárolóban
 
@@ -32,14 +32,14 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Egy keresési szolgáltatás csatlakoztatása tárfiókhoz
 > * Adatforrás létrehozása
 > * Az index konfigurálása
-> * Hozzon létre egy indexelőt
+> * Indexelő létrehozása
 > * A keresési szolgáltatás használata tároló keresésére
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. Amikor létrehoz egy tárfiókot, lehetősége van, vagy hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot. Ebben az oktatóanyagban létrehoz egy új erőforráscsoportot.
 
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ Ebben az oktatóanyagban egyetlen tárolót használunk a clinicaltrials.gov web
 
 5. A tároló létrehozásához válassza az **OK** gombot.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/storageactinfo.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>A példaadatok feltöltése
 
@@ -77,7 +77,7 @@ Most, hogy már rendelkezik tárolóval, feltöltheti abba a példaadatokat.
 
 4. Válassza a **Feltöltés** elemet a feltöltési folyamat megkezdéséhez.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/upload.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/upload.png)
 
 A feltöltési folyamat néhány percet is igénybe vehet.
 
@@ -107,7 +107,7 @@ Ebben az oktatóanyagban a keresési szolgáltatás clinicaltrials.gov származ�
 
 8. A keresési szolgáltatás létrehozásához kattintson a **Létrehozás** elemre.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/createsearch2.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>Keresési szolgáltatás csatlakoztatása a tárolóhoz
 
@@ -127,13 +127,13 @@ Most, hogy már rendelkezik keresési szolgáltatással, csatlakoztathatja azt a
 
 2. Mivel a blobokat használ szöveges fájlok, állítsa be **elemzés mód** való **szöveg**.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/datasources.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/datasources.png)
 
 3. A **Tároló** kiválasztásával listázhatja a rendelkezésre álló tárfiókokat.
 
 4. Válassza ki a tárfiókját, és válassza ki a korábban létrehozott tároló.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/datacontainer.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/datacontainer.png)
 
 5. Kattintson a **kiválasztása** való visszatéréshez **új adatforrás**, és válassza ki **OK** folytatásához.
 
@@ -147,7 +147,7 @@ Most, hogy már rendelkezik keresési szolgáltatással, csatlakoztathatja azt a
 
 3. Válassza ki a **lekérhető** attribútum jelölőnégyzet jelölését a **metadata_storage_name**.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/valuestoselect.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/valuestoselect.png)
 
 4. Válassza ki **OK**, amely kimenetei **hozzon létre egy indexelőt**.
 
@@ -172,7 +172,7 @@ A **MEZŐ NEVE** oszlop tartalmazza a paramétereket. Az alábbi táblázat a re
 
 1. Írjon be egy nevet a **Név** mezőbe, majd válassza az **OK** elemet.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/exindexer.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/exindexer.png)
 
 2. Hogy rendszer milyen közeli állapotba **adatok importálása**. Válassza ki **OK** a kapcsolódási folyamat befejezéséhez.
 
@@ -186,19 +186,19 @@ Az alábbi lépések megmutatják a keresési ablak helyét, és tartalmaznak n�
 
 1. Nyissa meg az összes erőforrás, és keresse meg az újonnan létrehozott keresési szolgáltatás.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/exampleurl.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/exampleurl.png)
 
 2. Válassza ki a megnyitásához az index.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/overview.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/overview.png)
 
 3. Válassza ki **keresési ablak** teszi lehetővé az élő lekérdezésekre az adatokon, a keresési ablak megnyitásához.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/indexespane.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/indexespane.png)
 
 4. Válassza a **Keresés** elemet úgy, hogy a lekérdezési karakterlánc mezője üres legyen. Az üres lekérdezés a blobok *összes* adatát adja vissza.
 
-  ![Strukturálatlan keresés](media/storage-unstructured-search/emptySearch.png)
+   ![Strukturálatlan keresés](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>A teljes szöveges keresés végrehajtása
 

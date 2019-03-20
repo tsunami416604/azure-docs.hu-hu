@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2187d0e986a173e1b8dc37fd0abdfa3bfd9e9505
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64aebaedd9221b2570b66bdb8550bff36b54492c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168987"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SpringCM
 
@@ -212,9 +212,9 @@ Ahhoz, hogy az Azure Active Directory-felhasználók SpringCM jelentkezzen be, a
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-  >[!NOTE]
-  >Bármely más SpringCM felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését SpringCM által biztosított API-k.  
-  > 
+   >[!NOTE]
+   >Bármely más SpringCM felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését SpringCM által biztosított API-k.  
+   > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -249,7 +249,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
- 
+ 
 Ha a hozzáférési panelen a SpringCM csempére kattint, meg kell lekérése automatikusan bejelentkezett az SpringCM alkalmazáshoz.
 
 A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 

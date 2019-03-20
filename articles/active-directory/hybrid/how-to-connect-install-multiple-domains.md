@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00cde6f9d17eb44fefae10d8694a89abf51540a5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098678"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Többtartományos támogatás az Azure AD összevonási szolgáltatásához
 Az alábbi dokumentáció használata több legfelső szintű tartományt és altartományt, ha az Office 365 vagy Azure AD-tartomány összevonása nyújt útmutatást.
@@ -69,7 +69,7 @@ Még egy dolog, amely `-SupportMultipleDomain` does, hogy azt biztosítja, hogy 
 
 Így az Azure AD-hitelesítés során, vagy Office 365, a felhasználói jogkivonat IssuerUri elemében használatos keresse meg a tartományt az Azure ad-ben.  Ha nem talál egyezést, a hitelesítés sikertelen lesz.
 
-Például ha egy felhasználó egyszerű Felhasználónevét, bsimon@bmcontoso.com, állítja be a jogkivonatot, az AD FS-problémák, IssuerUri elemében http://bmcontoso.com/adfs/services/trust. Ez az elem egyezni fog az Azure AD-konfigurációjának, és a hitelesítés sikeres lesz.
+Például ha egy felhasználó egyszerű Felhasználónevét, bsimon@bmcontoso.com, állítja be a jogkivonatot, az AD FS-problémák, IssuerUri elemében <http://bmcontoso.com/adfs/services/trust>. Ez az elem egyezni fog az Azure AD-konfigurációjának, és a hitelesítés sikeres lesz.
 
 Az alábbiakban látható a logikát megvalósító egyéni jogcímszabály:
 

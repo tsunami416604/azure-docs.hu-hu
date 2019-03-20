@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56246915"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125294"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
 
@@ -182,11 +182,11 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 | **Összetevő** | **Fenyegetés** | **Kockázatcsökkentés** | **Kockázat** | **Megvalósítása** |
 | --- | --- | --- | --- | --- |
 | Eszköz |S |Identitás hozzárendelése az eszköz és az eszköz hitelesítéséhez |Eszköz vagy az eszköz részét cserélje le egy másik eszköz. Honnan tudhatja meg a megfelelő eszközökre kiindulásként? |Az eszköz, a Transport Layer Security (TLS) vagy az IPSec protokollt használó hitelesítéséhez. Infrastruktúra támogatnia kell a előre megosztott kulcs (PSK) használatával, amely nem tudja kezelni a teljes aszimmetrikus titkosítási ezeken az eszközökön. Mindemellett az Azure AD [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TRID |Tamperproof mechanizmusok az eszközön, például alkalmazni így nehéz a kulcsok és más kriptográfiai elemeit kicsomagolja az eszközön lévő nem lehetséges. |A kockázat esetén, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogy biztosan, az eszköz nem módosították. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a speciális a lapkával áramkört, amelyből a kulcsok nem lehet olvasni, de csak akkor használható, amelyek a kulcsot használják, de soha nem adjuk ki a kulcsot a titkosítási műveletek kulcsok tárolásához. Az eszköz titkosítása memória. Az eszköz kulcskezelés. A kód aláírása. | |
-|| E |Az eszköz hozzáférés-vezérlés kellene. Engedélyezési séma. |Az eszköz lehetővé teszi, hogy az egyes műveleteket kell elvégezni a külső forrásnak, vagy akár feltört érzékelők parancsait alapján, ha lehetővé teszi a támadás műveletek végrehajtása egyéb módon nem érhető el. |Az eszköz engedélyezési séma kellene | |
+|| TRID |Tamperproof mechanizmusok az eszközön, például alkalmazni így nehéz a kulcsok és más kriptográfiai elemeit kicsomagolja az eszközön lévő nem lehetséges. |A kockázat esetén, ha valaki van illetéktelen módosítását az eszköz (fizikai zavaró tényező). Hogy biztosan, az eszköz nem módosították. |A leghatékonyabb megoldás egy platformmegbízhatósági modul (TPM) képesség, amely lehetővé teszi a speciális a lapkával áramkört, amelyből a kulcsok nem lehet olvasni, de csak akkor használható, amelyek a kulcsot használják, de soha nem adjuk ki a kulcsot a titkosítási műveletek kulcsok tárolásához. Az eszköz titkosítása memória. Az eszköz kulcskezelés. A kód aláírása. |
+|| E |Az eszköz hozzáférés-vezérlés kellene. Engedélyezési séma. |Az eszköz lehetővé teszi, hogy az egyes műveleteket kell elvégezni a külső forrásnak, vagy akár feltört érzékelők parancsait alapján, ha lehetővé teszi a támadás műveletek végrehajtása egyéb módon nem érhető el. |Az eszköz engedélyezési séma kellene |
 | Helyszíni átjáró |S |A helyszíni átjáró felhőátjárónak hitelesítése (például a tanúsítvány alapú, PSK, vagy jogcím alapján.) |Ha valaki meghamisítását is a helyszíni átjáró, majd azt is jelenthet magát, bármilyen eszközön. |A TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Ugyanazokat az eszközök általában – tárolási és a tanúkiszolgáló fontos problémákkal legjobb esetben van TPM használatát. Az IPSec támogatja a vezeték nélküli érzékelő hálózatok (WSN) bővítmény 6LowPAN. |
-|| TRID |A helyszíni átjáró (TPM?) illetéktelen módosítással szembeni védelme |Információfelfedés és az adatok illetéktelen módosításának hamisításra épülő támadásoknak, amely a felhasználót: a felhőbeli átjáró terhelése, a helyszíni átjáró beszél okozhat |Memória titkosítás, a TPM a, hitelesítés. | |
-|| E |Helyszíni átjáró hozzáférés-vezérlési mechanizmus | | | |
+|| TRID |A helyszíni átjáró (TPM?) illetéktelen módosítással szembeni védelme |Információfelfedés és az adatok illetéktelen módosításának hamisításra épülő támadásoknak, amely a felhasználót: a felhőbeli átjáró terhelése, a helyszíni átjáró beszél okozhat |Memória titkosítás, a TPM a, hitelesítés. |
+|| E |Helyszíni átjáró hozzáférés-vezérlési mechanizmus | | |
 
 Íme néhány példa a fenyegetések ebbe a kategóriába:
 

@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: 9a461f84577997ff976956b7f2f50500e9b3d323
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548064"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861289"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
@@ -50,7 +50,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |Felügyelt példány támogatása továbbfejlesztett útvonaltáblák| További információkért lásd: [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
 |Adatbázis átnevezése támogatja a felügyelt példány | További részletekért tekintse meg a [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) és [sp_rename szintaxis](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) szintaxist.|
 |SQL-adatbázis a Stream Analytics referenciaadatok forrásaként. | További információkért lásd: [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
-|Data Migration Assistant felügyelt példányt támogat. |További információkért lásd: [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|Data Migration Assistant felügyelt példányt támogat. |További információkért lásd: [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
 |Az SQL Server Migration Assistant szolgáltatást támogat a felügyelt példány cél readiness assessment. | További információkért lásd: [SQL Server Migration Assistant](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
 |Adatok áttelepítése szolgáltatás támogatja az Amazon RDS felügyelt példányába történő migrálás | További információkért lásd: [oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
 | &nbsp; |
@@ -60,7 +60,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
 |A felügyelt példány üzembe helyezési lehetőség magyarázata|Frissítve azzal a pontosítással önálló adatbázis, a rugalmas készlet és a felügyelt példány üzembe helyezési beállítások alkalmazhatósági cikkeket. |
-|DTU-alapú vásárlási modell frissített tempdb méretei | További információkért lásd: [Tempdb-adatbázis az SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|DTU-alapú vásárlási modell frissített tempdb méretei | További információkért lásd: [Tempdb-adatbázis az SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 |Frissített importálása és exportálása a felügyelt példány támogatás bacpac-fájlba| További információkért lásd: [importálás BACPAC a](sql-database-import.md) és [exportálása BACPAC](sql-database-export.md). |
 | &nbsp; |
 
@@ -97,4 +97,4 @@ Az Azure SQL dokumentációját nyílt forráskódú lesz. Nyílt használata t�
 - Nyílt forrású adattáraknál tekintse át a nyílt, hogy az már az első kiadásban a leghasznosabb tartalom közzététele.
 - Nyílt forrású adattáraknál a frissítés nyílt, hogy egyszerűbb legyen a tartalom folyamatos javítása.
 
-Hozzájárul az Azure SQL Database-dokumentáció tartalmát, tekintse meg a [Microsoft Docs-közreműködői útmutató – áttekintés](https://docs.microsoft.com/en-us/contribute/). A felhasználói élmény a [docs.microsoft.com](https://docs.microsoft.com/) integrálható [GitHub](https://github.com/) munkafolyamatok közvetlen ezt még egyszerűbbé. Első lépésként [megtekintett dokumentum szerkesztésével](https://docs.microsoft.com/en-us/contribute/#quick-edits-to-existing-documents). Vagy segítsen [új témakörök áttekintésével](https://docs.microsoft.com/en-us/contribute/#review-open-prs), vagy [minőségi problémák](https://docs.microsoft.com/en-us/contribute/#create-quality-issues).
+Hozzájárul az Azure SQL Database-dokumentáció tartalmát, tekintse meg a [Microsoft Docs-közreműködői útmutató – áttekintés](https://docs.microsoft.com/contribute/). A felhasználói élmény a [docs.microsoft.com](https://docs.microsoft.com/) integrálható [GitHub](https://github.com/) munkafolyamatok közvetlen ezt még egyszerűbbé. Első lépésként [megtekintett dokumentum szerkesztésével](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents). Vagy segítsen [új témakörök áttekintésével](https://docs.microsoft.com/contribute/#review-open-prs), vagy [minőségi problémák](https://docs.microsoft.com/contribute/#create-quality-issues).

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 6fa22d57a693a9d3dceee5f697f3f4d2eb0e394c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2d011dffa4db68a0cdf6ac3415ff1316906a4e87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309655"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884001"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>A kérdésekre adott válaszok a a Tudásbázis beolvasásaC#
 
@@ -37,7 +37,7 @@ Ez a rövid útmutató kódja megtalálható a [ https://github.com/Azure-Sample
 ## <a name="create-a-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
 1. Nyissa meg a Visual Studio 2017 Community Editiont.
-1. Hozzon létre egy új Konzolalkalmazás (.Net Core) projektre, és adja a projektnek QnaMakerQuickstart. Fogadja el az alapértelmezett értékeket a többi beállításnál.
+1. Hozzon létre egy új Konzolalkalmazás (.NET Core) projektet és neve a projekt QnaMakerQuickstart. Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-the-required-dependencies"></a>A szükséges függőségek hozzáadása
 

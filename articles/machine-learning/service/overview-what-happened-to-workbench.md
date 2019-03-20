@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890746"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -60,7 +60,7 @@ Futtatási előzményeket viselő **kísérletek**. A modell kísérletek össze
 
 A portál munkaterület irányítópult csak a Microsoft Edge, Chrome és a Firefox böngésző esetében támogatott:
 
-[![Online portálon](./media/overview-what-happened-to-workbench/image001.png)] (. / media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Online portálon](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 Indítsa el a modellek betanítása és nyomon követése a futtatási előzményeket az új parancssori felület és SDK-val. Megtudhatja, hogyan az a [oktatóanyag: modellek Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md).
 
@@ -68,7 +68,7 @@ Indítsa el a modellek betanítása és nyomon követése a futtatási előzmén
 
 A már meglévő adatfájlok előkészítése nem a legújabb verziót a hordozható, mert a Machine Learning Workbench már nincs. De továbbra is előkészítheti bármilyen méretű készlet a modellezési.   
 
-A méretüktől adatkészletekhez a segítségével a [az Azure Machine Learning Data Prep SDK](http://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
+A méretüktől adatkészletekhez a segítségével a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
 
 Követheti [ebben az oktatóanyagban](tutorial-data-prep.md) tudhat meg többet az Azure Machine Learning Data Prep SDK használatával.
 
@@ -84,7 +84,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 Ismerje meg, hogyan kezdheti el [Python és a fő SDK](quickstart-create-workspace-with-python.md) vagy [az Azure portal](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellek és lemezképek?
- 
+
 Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. A modellek migrálása, töltse le a modelleket, és újból regisztrálja őket az új munkaterületet. 
 
 A rendszerképeket, amelyet a régi rendszerkép-regisztrációs adatbázisban hozott létre, újra létre kell hozni az új munkaterületen, hogy továbbra is használhassa őket. Ezek a lemezképek a következő újra létrehozhatja a [konfigurálása és a rendszerkép létrehozása](how-to-deploy-and-where.md#configureimage) szakaszok. 
@@ -109,7 +109,7 @@ A legújabb verziót az új Python SDK használatával bármilyen Python-környe
 
 Ebben a legújabb kiadásban a bővítményt a Visual Studio Code az Azure Machine Learning átnevezte kibontva és továbbfejlesztve, hogy a fenti új funkciók.
 
-[![A Visual Studio Code az azure Machine Learning](./media/overview-what-happened-to-workbench/vscode.png)] (. / media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![A Visual Studio Code az Azure Machine Learning](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Mi a helyzet a tartománycsomagokkal?
 

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4768e96b9f29983e07edd4449bc24131cc3206ad
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 51f057a1dd0da866a50a0219574c70c3c805882e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008458"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000002"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Automatikus kiegészítés API frissítési útmutató
 
@@ -25,7 +25,7 @@ A frissítési útmutató 5-ös verzió és a Bing Autosuggest API 7-es verziój
 
 ### <a name="endpoints"></a>Végpontok
 
-- A végpont verziószám V5-ös verziója megváltozott a 7-es verziója. Ha például https://api.cognitive.microsoft.com/bing/\ * \*v7.0 ** / javaslatokat.
+- A végpont verziószám V5-ös verziója megváltozott a 7-es verziója. Ha például https:\//api.cognitive.microsoft.com/bing/\*\*v7.0 ** / javaslatokat.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hiba történt a válasz objektumok és hibakódok
 

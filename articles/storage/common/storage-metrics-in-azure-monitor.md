@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899026"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -23,7 +23,7 @@ Az Azure Monitor egységes felhasználói felületet biztosít a különböző A
 
 ## <a name="access-metrics"></a>Access-metrikák
 
-Az Azure Monitor hozzáférés metrikák több módot is biztosít. Is elérhesse azokat a [az Azure portal](https://portal.azure.com), az Azure Monitor API-k (REST és .net) és elemzési megoldásokkal, például az Event Hubs. További információkért lásd: [Azure Monitor-metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Az Azure Monitor hozzáférés metrikák több módot is biztosít. Is elérhesse azokat a [az Azure portal](https://portal.azure.com), az Azure Monitor API-k (REST és .NET) és elemzési megoldásokkal, például az Event Hubs. További információkért lásd: [Azure Monitor-metrikák](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az elmúlt 93 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md) az Azure monitorban.
 
@@ -134,13 +134,13 @@ A következő választ metrikaértékek JSON formátumban tartalmazza:
 
 ```
 
-### <a name="access-metrics-with-the-net-sdk"></a>A .net SDK-Access-metrikák
+### <a name="access-metrics-with-the-net-sdk"></a>A .NET SDK használatával hozzáférés-metrikák
 
-Az Azure Monitor biztosítja [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) metrikai meghatározásainak és értékek olvasását. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) bemutatja, hogyan használhatja az SDK-t eltérő paraméterekkel rendelkező. Kell használnia `0.18.0-preview` vagy újabb verzióját, a storage-mérőszámok. Erőforrás-azonosító szerepel a .net SDK-t. További információkért olvassa el erőforrás-azonosító, a tárolási szolgáltatások ismertetése.
+Az Azure Monitor biztosítja [.NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) metrikai meghatározásainak és értékek olvasását. A [mintakód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) bemutatja, hogyan használhatja az SDK-t eltérő paraméterekkel rendelkező. Kell használnia `0.18.0-preview` vagy újabb verzióját, a storage-mérőszámok. Erőforrás-azonosító szerepel a .NET SDK-t. További információkért olvassa el erőforrás-azonosító, a tárolási szolgáltatások ismertetése.
 
-Az alábbi példa bemutatja, hogyan olvassa el a storage-mérőszámok az Azure Monitor .net SDK használatával.
+Az alábbi példa bemutatja, hogyan olvassa el a storage-mérőszámok az Azure Monitor .NET SDK használatával.
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>A .net SDK-metrikai meghatározásainak szintű fiók listázása
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Fiók szintű metrika definíciója a .NET SDK használatával
 
 Az alábbi példa bemutatja, hogyan listázhatja a fiók szintjén metrika definíciója:
 
@@ -177,7 +177,7 @@ Az alábbi példa bemutatja, hogyan listázhatja a fiók szintjén metrika defin
 
 Ha szeretné a metrikadefinícióinak beolvasása a blob, table, fájl vagy üzenetsor listázása, meg kell adnia különböző erőforrás-azonosítók az egyes szolgáltatások az API-val.
 
-#### <a name="read-metric-values-with-the-net-sdk"></a>A .net SDK-t a metrikaértékek olvasása
+#### <a name="read-metric-values-with-the-net-sdk"></a>Olvassa el a metrikaértékek a .NET SDK használatával
 
 Az alábbi példa bemutatja, hogyan olvashatja be `UsedCapacity` fiók szintjén adatokat:
 
@@ -227,7 +227,7 @@ Az alábbi példa bemutatja, hogyan olvashatja be `UsedCapacity` fiók szintjén
 
 A fenti példa, ha metrikaértékek blob, table, fájl vagy üzenetsor, az olvasni kívánt meg kell adnia különböző erőforrás-azonosítók az egyes szolgáltatások az API-val.
 
-#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>A .net SDK-t a többdimenziós metrikaértékek olvasása
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>A .NET SDK-val többdimenziós metrikaértékek olvasása
 
 Többdimenziós metrikák esetén szüksége meta data szűrő meghatározásához, ha azt szeretné, az adott dimenzióérték metrikaadatok olvasni.
 
@@ -380,7 +380,7 @@ Az Azure Storage a következő tranzakció-mérőszámot az Azure monitorban biz
 | Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. Minden nem várt hiba a társzolgáltatás vagy a megadott API-művelet romlik a rendelkezésre állás eredményez. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
+| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 
@@ -389,10 +389,10 @@ Az Azure Storage támogatja a következő dimenziókat a metrikák az Azure moni
 | Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
 | BlobType | A Blob metrikák csak a blob típusa. A támogatott értékek a következők **BlockBlob** és **PageBlob**. Hozzáfűző Blob egy BlockBlob szerepel. |
-| ResponseType | Tranzakció válasz típusa. Az elérhető értékek a következők: <br/><br/> <li>ServerOtherError: Minden kiszolgálóoldali hiba leírt meglévőket, kivéve </li> <li> ServerBusyError: Hitelesített kéréshez, amely egy HTTP 503-as állapotkódot adott vissza. </li> <li> ServerTimeoutError: Időtúllépés történt, hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Az időtúllépés történt a kiszolgáló hibája miatt. </li> <li> AuthorizationError: Hitelesített kérelmeket, amelyek jogosulatlan hozzáférést vagy engedélyezési hiba miatt nem sikerült. </li> <li> NetworkError: Hitelesített kérelmeket, amelyek hálózati hibák miatt nem sikerült. Leggyakrabban akkor fordul elő egy ügyfél túl korán bezárása után a kapcsolat időkorlát lejárta előtt. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Időtúllépés történt, hitelesített kéréshez, amely egy HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időtúllépés vagy az egyes kérelmek időkorlátját, mint a társzolgáltatás által várt alacsonyabb értékre van állítva, egy várt időkorlátja. Ellenkező esetben azt az elvártnak megfelelően egy ServerTimeoutError. </li> <li> ClientOtherError: Összes ügyféloldali hiba kivételével az itt ismertetett azokat. </li> <li> Sikeres művelet: Sikeres kérelem|
+| ResponseType | Tranzakció válasz típusa. Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>ServerOtherError: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li> ServerBusyError: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li> ServerTimeoutError: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li> AuthorizationError: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li> NetworkError: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li> ClientOtherError: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li> Sikeres művelet: Sikeres kérés|
 | GeoType | A tranzakció elsődleges vagy másodlagos fürtből. Az elérhető értékek a következők: elsődleges és másodlagos. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
 | ApiName | Művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | A tranzakciók használt hitelesítés típusa. Az elérhető értékek a következők: <br/> <li>AccountKey: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>SAS: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>OAuth: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>Névtelen: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
+| Authentication | A tranzakciók használt hitelesítés típusa. Az elérhető értékek közé a következők tartoznak: <br/> <li>AccountKey: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>SAS: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>OAuth: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>Névtelen: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
 
 A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok értékeit a dimenzió értéket kell. Például, ha megtekinti **tranzakciók** értéket a sikeres válaszok szűrése kell a **ResponseType** dimenzió **sikeres**. Vagy ha megtekinti **BlobCount** érték Blokkblob, meg kell szűrni a **BlobType** dimenzió **BlockBlob**.
 

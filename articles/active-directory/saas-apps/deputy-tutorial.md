@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45ee818a444f31a8d2c20151f7e7f015e13cb3b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440335"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Helyettes az Azure Active Directory-integráció
 
@@ -106,6 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés helyettes, hajtsa v�
     ![Helyettes tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     |  |
     | ----|
     | `https://<subdomain>.<region>.au.deputy.com` |
@@ -125,6 +126,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés helyettes, hajtsa v�
     | `https://<subdomain>.<region>.deputy.com` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |----|
     | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
@@ -209,7 +211,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102112"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway sávszélesség-ütemezési beállításait az Azure Portalon keresztül kezelheti  
 
@@ -43,13 +43,13 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
 
 3. Az **Ütemezés hozzáadása** területen: 
 
-    1. Adja meg az ütemezés **Kezdő nap**, **Záró nap**, **Kezdés** és **Befejezés** paramétereinek értékeit. 
-    2. Ha az adott ütemezés az egész napra vonatkozik, jelölje be az **Egész nap** jelölőnégyzetet. 
-    3. A **Sávszélesség** az eszköz által felhasznált sávszélesség Mb/s-ban kifejezett értéke a felhőműveletek (fel- és letöltés egyaránt) esetében. Ebben a mezőben 1–1000 közötti értéket adjon meg. 
-    4. Ha nem kívánja korlátozni a fel- és letöltéseket, válassza a **Korlátlan** sávszélesség-beállítást. 
-    5. Kattintson a **Hozzáadás** parancsra.
+   1. Adja meg az ütemezés **Kezdő nap**, **Záró nap**, **Kezdés** és **Befejezés** paramétereinek értékeit. 
+   2. Ha az adott ütemezés az egész napra vonatkozik, jelölje be az **Egész nap** jelölőnégyzetet. 
+   3. A **Sávszélesség** az eszköz által felhasznált sávszélesség Mb/s-ban kifejezett értéke a felhőműveletek (fel- és letöltés egyaránt) esetében. Ebben a mezőben 1–1000 közötti értéket adjon meg. 
+   4. Ha nem kívánja korlátozni a fel- és letöltéseket, válassza a **Korlátlan** sávszélesség-beállítást. 
+   5. Kattintson a **Hozzáadás** parancsra.
 
-    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Ekkor létrejön egy ütemezés a megadott paraméterekkel. Az ütemezés ezután megjelenik a portálon is, a sávszélesség-ütemezések listájában.
 

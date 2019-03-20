@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: c9c0fd8bf7dc893ce07a6e3ce9cb392fc652a560
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178067"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -24,6 +24,8 @@ CloudEvents együttműködési leegyszerűsíti egy közös eseménysémája az�
 CloudEvents létrehozása folyamatban van a több [közreműködők](https://github.com/cloudevents/spec/blob/master/community/contributors.md), Microsoft, beleértve a [Felhőbeli natív számítási Foundation](https://www.cncf.io/). Jelenleg a 0,1 verzióként érhető el.
 
 Ez a cikk ismerteti a CloudEvents-séma használata az Event GRID használatával.
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
 

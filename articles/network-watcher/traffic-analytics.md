@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: bc738dd93a43a1a3610323b9dd05abfd5b5c0091
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408802"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081066"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -201,7 +201,7 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
 - A letiltott forgalom statisztikája.
     - Miért nem blokkolja a gazdagép jóindulatú forgalom jelentős mennyiségű? Ez a viselkedés igényel további vizsgálat, és valószínűleg optimalizálási konfiguráció
 - Az engedélyezett/letiltott rosszindulatú forgalom statisztika
-    - Miért érdemes egy gazdagép fogad rosszindulatú forgalom van, és miért rosszindulatú forrásból folyamatok? Ez a viselkedés a vizsgálat, és valószínűleg optimalizálási konfiguráció további szükséges.
+  - Miért érdemes egy gazdagép fogad rosszindulatú forgalom van, és miért rosszindulatú forrásból folyamatok? Ez a viselkedés a vizsgálat, és valószínűleg optimalizálási konfiguráció további szükséges.
 
     Válassza ki **összes**alatt **gazdagép**, ahogy az alábbi képen is látható:
 
@@ -260,8 +260,8 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
 **keresni**
 
 - Az adatforgalom eloszlása a adatközpontban és a felső alkalmazásprotokollok szolgáltatásprogram szolgáltatásprogram felső engedélyezetlen hálózatok forgalomnak egy adatközpontban, a leggyakoribb források például adatközpontonként.
-    - Megfigyelte az adatközpontban további terhelése, ha a forgalom hatékony elosztása is megtervezheti.
-    - Ha rosszindulatú hálózatokat az adatközpontban vannak szolgáltatásprogram, majd javítsa ki a letiltja az NSG-szabályok.
+  - Megfigyelte az adatközpontban további terhelése, ha a forgalom hatékony elosztása is megtervezheti.
+  - Ha rosszindulatú hálózatokat az adatközpontban vannak szolgáltatásprogram, majd javítsa ki a letiltja az NSG-szabályok.
 
     Válassza ki **térkép megtekintése** alatt **a környezet**, ahogy az alábbi képen is látható:
 
@@ -282,8 +282,8 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
 **keresni**
 
 - Forgalom megoszlása / virtuális hálózat, a Kiszolgálótopológia, a leggyakoribb források forgalmat a virtuális hálózathoz, a virtuális hálózathoz, a szolgáltatásprogram alkalmazásprotokollok felső szolgáltatásprogram felső engedélyezetlen hálózatok.
-    - Azt a virtuális hálózatot, hogy melyik virtuális hálózathoz szolgáltatásprogram. Ha nem várt a beszélgetést, javítható.
-    - Rosszindulatú hálózatok vannak szolgáltatásprogram egy virtuális hálózathoz, ha az NSG-szabályok blokkolja a rosszindulatú hálózatok javíthatja.
+  - Azt a virtuális hálózatot, hogy melyik virtuális hálózathoz szolgáltatásprogram. Ha nem várt a beszélgetést, javítható.
+  - Rosszindulatú hálózatok vannak szolgáltatásprogram egy virtuális hálózathoz, ha az NSG-szabályok blokkolja a rosszindulatú hálózatok javíthatja.
  
     Válassza ki **nézet virtuális hálózatok** alatt **a környezet**, ahogy az alábbi képen is látható:
 
@@ -323,7 +323,7 @@ Az Application gateway és a Load Balancer, a topológia forgalom megoszlása, f
 **keresni**
 
 - Nyitott portok vannak szolgáltatásprogram az interneten keresztül?
-    - Ha váratlan portok nyitva talál, javíthatja a konfigurációt:
+  - Ha váratlan portok nyitva talál, javíthatja a konfigurációt:
 
     ![Irányítópult, amely portok fogadását, és az internetre forgalmat továbbító](./media/traffic-analytics/dashboard-showcasing-ports-receiving-and-sending-traffic-to-the-internet.png)
 
@@ -347,9 +347,9 @@ Rendelkezik a rosszindulatú adatforgalom a környezetében? Hol van, a származ
 
 - Az alábbi képek idő megjelenítése a találatok NSG-szabályok és a forrás-cél foly. Részl. egy hálózati biztonsági csoportra vonatkozó trendelemzés:
 
-    - Gyors észlelése, mely az NSG-k és NSG-t szabályok vannak áthaladó rosszindulatú folyamatok, és melyek a leggyakoribb rosszindulatú IP-címek a felhőbeli környezethez hozzáférő
-    - Azonosítsa, mely NSG-t vagy NSG-szabályok vannak így/jelentős hálózati forgalom blokkolása
-    - Válassza a felső szűri az NSG-t vagy NSG-t a részletes ellenőrzés szabályok
+  - Gyors észlelése, mely az NSG-k és NSG-t szabályok vannak áthaladó rosszindulatú folyamatok, és melyek a leggyakoribb rosszindulatú IP-címek a felhőbeli környezethez hozzáférő
+  - Azonosítsa, mely NSG-t vagy NSG-szabályok vannak így/jelentős hálózati forgalom blokkolása
+  - Válassza a felső szűri az NSG-t vagy NSG-t a részletes ellenőrzés szabályok
 
     ![NSG-szabályok találatai és a leggyakoribb NSG-szabályok népszerű listanézetben láthatók idő](./media/traffic-analytics/showcasing-time-trending-for-nsg-rule-hits-and-top-nsg-rules.png)
 

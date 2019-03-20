@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270334"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137827"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
 
@@ -34,13 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy Azure Search szolgáltatást](search-create-service-portal.md), vagy keressen egy meglévő szolgáltatást az aktuális előfizetés alatt.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg az Azure Search szolgáltatás irányítópultját. Ha nem rögzítette a szolgáltatás csempéjét az irányítópulton, az alábbi módon találhatja meg azt:
-
-   * Az ugrósávon kattintson a bal oldali navigációs panelen található **Minden szolgáltatás** elemre.
-   * Az előfizetéséhez elérhető kereséssel kapcsolatos szolgáltatások listájának lekéréséhez írja be a keresőmezőbe a *search* kifejezést. Kattintson a **Keresési szolgáltatások** elemre. A keresett szolgáltatásnak meg kell jelennie a listában.
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
 
 ### <a name="check-for-space"></a>Szabad terület ellenőrzése
 

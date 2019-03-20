@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312256"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887119"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Az adatbázis-kiszolgálók virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -175,58 +175,60 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
 #### <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
  
 #### <a name="steps"></a>Lépések
-1.  A PowerShellben **az SQL Database-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
+1. A PowerShellben **az SQL Database-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
 
-    ```powershell
-    Connect-AzAccount
-    Select-AzSubscription -SubscriptionId your-subscriptionId
-    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
-    > [!NOTE]
-    > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-    > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > [!NOTE]
+   > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör az SQL Database-kiszolgálóhoz.
+1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör az SQL Database-kiszolgálóhoz.
 
-    > [!NOTE] 
-    > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > [!NOTE] 
+   > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
-1.  **A Polybase-kapcsolat az Azure Storage-fiókba:**
+1. **A Polybase-kapcsolat az Azure Storage-fiókba:**
 
-    1. Hozzon létre egy adatbázist **[főkulcs](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Ha még nem egy korábban létrehozott:
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. Hozzon létre egy adatbázist **[főkulcs](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** Ha még nem egy korábban létrehozott:
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. Az adatbázishoz kötődő hitelesítő adatok létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"**:
+   1. Az adatbázishoz kötődő hitelesítő adatok létrehozása **azonosító = "Felügyeltszolgáltatás-identitást"**:
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - Adjon meg titkos kulcsot az Azure Storage-hozzáférési kulcsot, mert ezt a mechanizmust használ, nem kell [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a háttérben.
-        > - SZOLGÁLTATÁSIDENTITÁS neve legyen **Managed Service Identity** a PolyBase csatlakozást dolgozhat Azure Storage-fiók védett virtuális hálózathoz.    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - Adjon meg titkos kulcsot az Azure Storage-hozzáférési kulcsot, mert ezt a mechanizmust használ, nem kell [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a háttérben.
+       > - SZOLGÁLTATÁSIDENTITÁS neve legyen **Managed Service Identity** a PolyBase csatlakozást dolgozhat Azure Storage-fiók védett virtuális hálózathoz.    
     
-    1. Külső adatforrás létrehozása abfss: / / az általános célú v2-tárfiók a PolyBase való kapcsolódáshoz séma:
+   1. Külső adatforrás létrehozása abfss: / / az általános célú v2-tárfiók a PolyBase való kapcsolódáshoz séma:
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - Ha már rendelkezik külső táblák társított, általános célú v1- vagy blob storage-fiók, előbb dobja el a külső táblák, és ezután dobja el a megfelelő külső adatforrást. Végül létrehozhatja külső adatforrás abfss: / / séma, általános célú v2-tárfiók a fenti csatlakozik, és hozza létre újból az új külső adatforrást használó külső táblák. Használhat [létrehozása és közzététele parancsfájlok varázsló](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) varázslójától létrehozása – a külső táblák megkönnyítése érdekében.
-        > - További információ a abfss: / / séma, ebben [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-        > - CREATE EXTERNAL DATA SOURCE további információkért tekintse meg a [útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - Ha már rendelkezik külső táblák társított, általános célú v1- vagy blob storage-fiók, előbb dobja el a külső táblák, és ezután dobja el a megfelelő külső adatforrást. Végül létrehozhatja külső adatforrás abfss: / / séma, általános célú v2-tárfiók a fenti csatlakozik, és hozza létre újból az új külső adatforrást használó külső táblák. Használhat [létrehozása és közzététele parancsfájlok varázsló](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) varázslójától létrehozása – a külső táblák megkönnyítése érdekében.
+       > - További információ a abfss: / / séma, ebben [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+       > - CREATE EXTERNAL DATA SOURCE további információkért tekintse meg a [útmutató](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
         
-    1. Lekérdezés a normál használatával [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Lekérdezés a normál használatával [külső táblák](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Az Azure SQL Database Blobnaplózás
 
@@ -256,7 +258,7 @@ Kapcsolódási hiba 40914 vonatkozik *virtuális hálózati szabályok*, a tűzf
 
 *Üzenet szövege:* Nem nyitható meg a kiszolgáló "{0}" a bejelentkezés által kért. Ügyfél IP-címmel rendelkező{1}"nem engedélyezett a kiszolgálóhoz való hozzáféréshez.
 
-*Hiba leírása:* Az ügyfél IP-címek, amelyek nem jogosult az Azure SQL Database-kiszolgálóhoz való csatlakozáshoz csatlakozni próbál. A kiszolgáló tűzfalának nincs IP-cím szabály, amely lehetővé teszi, hogy egy ügyfél való kommunikációhoz megadott IP-címről az SQL Database rendelkezik.
+*Hiba leírása:* Az ügyfél IP-címek, amelyek nem jogosult az Azure SQL Database-kiszolgálóhoz való csatlakozáshoz csatlakozni próbál. A kiszolgáló tűzfalán nincs olyan IP-cím-szabály, amely engedélyezné, hogy az adott IP-címről ügyfelek kommunikáljanak az SQL Database-zel.
 
 *Hiba történt. megoldás:* Adja meg az ügyfél IP-címét egy IP-szabályt. Ezt úgy teheti meg a tűzfal panel az Azure Portalon.
 

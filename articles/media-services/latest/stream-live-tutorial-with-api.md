@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3500463cc57fb236de2a591181a5dc7054780404
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863763"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Oktatóanyag: A Media Services v3 élő Stream .NET használatával
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > [!div class="checklist"]
 > * A témakörben ismertetett mintaalkalmazás letöltése
 > * Az élő streamelést végrehajtó kód vizsgálata
-> * Az esemény megtekintése az [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) használatával az http://ampdemo.azureedge.net címen
+> * Az esemény megtekintése az [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) használatával az https://ampdemo.azureedge.net címen
 > * Az erőforrások eltávolítása
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -166,7 +166,7 @@ A következő kód bemutatja, hogyan megtisztítani a fiók az összes élő ese
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 
-Esemény megtekintése, másolása a streamelési URL-cím, a kód futtatásakor ismertetett létrehozása a Streamelési lokátor, és egy tetszőleges player használja. A stream kipróbálásához használhatja az [Azure Media Playert](http://amp.azure.net/libs/amp/latest/docs/index.html) a http://ampdemo.azureedge.net címen. 
+Esemény megtekintése, másolása a streamelési URL-cím, a kód futtatásakor ismertetett létrehozása a Streamelési lokátor, és egy tetszőleges player használja. A stream kipróbálásához használhatja az [Azure Media Playert](https://amp.azure.net/libs/amp/latest/docs/index.html) a https://ampdemo.azureedge.net címen. 
 
 Élő esemény automatikusan átalakítja az eseményeket igény szerinti tartalommá. Ha már leállította és törölte is az eseményt, a felhasználók igény szerinti videóként le tudják játszani az archivált tartalmat mindaddig, amíg az objektumot nem törli. Olyan objektumot nem lehet törölni, amelyet használ egy esemény. Először az eseményt kell törölni. 
 

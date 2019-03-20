@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 390421c2805bf242b8f931200c8b8981cb7116c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875000"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Gyors útmutató: A Device Provisioning Service használatával X.509-eszközök regisztrálásaC#
 
@@ -34,7 +34,7 @@ Bár a cikkben ismertetett lépések Windows és Linux rendszerű gépeken egyar
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a [Visual Studio 2017](https://www.visualstudio.com/vs/)-et.
-* Telepítse a [.NET Core SDK](https://www.microsoft.com/net/download/windows)-t.
+* Telepítés [a .NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Telepítse a [Git](https://git-scm.com/download/) szoftvert.
 
 

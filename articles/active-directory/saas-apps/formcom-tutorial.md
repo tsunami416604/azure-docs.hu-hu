@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f2c7a5ca84b3a96b570ca57da326ea6ebc2071b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1ed8dac90527de396e0b7ae59e5d19939a4a36be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767923"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Form.com
 
@@ -109,6 +109,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Form.com, hajtsa vé
     b. Az a **azonosító** mezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.form.com`
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
@@ -153,7 +154,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

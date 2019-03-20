@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 543135db8df69db7e0e6182c9d52b9c956ee80b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228181"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996977"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Fenntartott IP-címek (klasszikus üzembe helyezési modell)
 
@@ -28,7 +28,7 @@ ms.locfileid: "51228181"
 Megakadályozni IP-címek módosítása, IP-cím tartható fenn. Fenntartott IP-címek csak egy virtuális IP-CÍMEK, biztosítva, hogy a felhőszolgáltatás IP-címe ugyanaz marad, még akkor is, mint az erőforrások állítsa le vagy leállítva (felszabadítva) használható. Emellett átválthat a meglévő dinamikus IP-címek fenntartott IP-címet a virtuális IP-címhez használja.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan foglaljon le egy statikus nyilvános IP cím használatával a [Resource Manager üzemi modell](virtual-network-ip-addresses-overview-arm.md).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan foglaljon le egy statikus nyilvános IP cím használatával a [Resource Manager üzemi modell](virtual-network-ip-addresses-overview-arm.md).
 
 Az Azure-beli IP-címek kapcsolatos további információkért olvassa el a [IP-címek](virtual-network-ip-addresses-overview-classic.md) cikk.
 
@@ -83,7 +83,7 @@ Várt kimenet:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Ha egy fenntartott IP-cím létrehozása a PowerShell használatával, egy erőforráscsoportot, amelybe a fenntartott IP-cím létrehozása nem adható meg. Helyezzen egy erőforráscsoportban, nevű Azure helyek *alapértelmezett hálózati* automatikusan. Ha hoz létre a fenntartott IP-használatával a [az Azure portal](http://portal.azure.com), megadhatja, hogy bármely erőforráscsoport választja. Más, az erőforráscsoport létrehozásakor a fenntartott IP-cím *alapértelmezett hálózati* azonban minden alkalommal, amikor hivatkozik a foglalt IP-cím parancsok például `Get-AzureReservedIP` és `Remove-AzureReservedIP`, a nevet kell hivatkozni  *Csoport erőforráscsoportnevet szolgáltatás számára fenntartott ip-neve*.  Például, ha létrehoz egy fenntartott IP-cím nevű *myReservedIP* nevű erőforráscsoportból *myResourceGroup*, hivatkoznia kell a neve, a fenntartott IP-cím *myResourceGroup erőforráscsoport myReservedIP*.   
+>Ha egy fenntartott IP-cím létrehozása a PowerShell használatával, egy erőforráscsoportot, amelybe a fenntartott IP-cím létrehozása nem adható meg. Helyezzen egy erőforráscsoportban, nevű Azure helyek *alapértelmezett hálózati* automatikusan. Ha hoz létre a fenntartott IP-használatával a [az Azure portal](https://portal.azure.com), megadhatja, hogy bármely erőforráscsoport választja. Más, az erőforráscsoport létrehozásakor a fenntartott IP-cím *alapértelmezett hálózati* azonban minden alkalommal, amikor hivatkozik a foglalt IP-cím parancsok például `Get-AzureReservedIP` és `Remove-AzureReservedIP`, a nevet kell hivatkozni  *Csoport erőforráscsoportnevet szolgáltatás számára fenntartott ip-neve*.  Például, ha létrehoz egy fenntartott IP-cím nevű *myReservedIP* nevű erőforráscsoportból *myResourceGroup*, hivatkoznia kell a neve, a fenntartott IP-cím *myResourceGroup erőforráscsoport myReservedIP*.   
 
 
 Miután egy IP-cím van fenntartva, továbbra is az előfizetéshez társított amíg nem törli azokat. Törölje a következő fenntartott IP-cím:

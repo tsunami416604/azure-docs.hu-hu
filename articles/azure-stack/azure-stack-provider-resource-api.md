@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 4392dc0ab53304c172bbf4c29a50a64757ec9b77
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 34159d059b976043fac415470421970056320acc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760443"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996496"
 ---
 # <a name="provider-resource-usage-api"></a>Szolgáltatói erőforrás-használati API
 
@@ -39,6 +39,7 @@ A használati API, a szolgáltató API-t, így a hívó egy a szolgáltatót az 
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId {sub1.1} = & api-version = 2015-06-01-preview & continuationtoken argumentumot használja = {token-value} |
 
 ### <a name="arguments"></a>Argumentumok
+
 | **Argumentum** | **Leírás** |
 | --- | --- |
 | *armendpoint* |Az Azure Stack-környezet az Azure Resource Manager végpontját. Az Azure Stack egyezmény, hogy az Azure Resource Manager-végpont neve a következő formátumban van-e `https://adminmanagement.{domain-name}`. Például a development Kitet, ha a tartománynév *local.azurestack.external*, majd a Resource Manager-végpont `https://adminmanagement.local.azurestack.external`. |
@@ -80,6 +81,7 @@ meterID1",
 ```
 
 ### <a name="response-details"></a>Válasz részletei
+
 | **Argumentum** | **Leírás** |
 | --- | --- |
 | *id* |A használati összesítés egyedi azonosítója. |
@@ -102,9 +104,10 @@ A használati adatok létrehozásához, erőforrások, amelyek fut, és használ
 1. [Az Azure Stack PowerShell telepítése.](azure-stack-powershell-install.md)
 2. [Az Azure Stack-felhasználó konfigurálása](user/azure-stack-powershell-configure-user.md) vagy a [Azure Stack-operátorokról](azure-stack-powershell-configure-admin.md) PowerShell-környezet 
 3. A használati adatok lekéréséhez használja a [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell-parancsmagot:
-```powershell
-Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
-```
+   ```powershell
+   Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+   ```
+
 ### <a name="rest-api"></a>REST API
 
 Törölt előfizetésekre vonatkozó használati adatokat gyűjthet a Microsoft.Commerce.Admin szolgáltatás meghívásával. 

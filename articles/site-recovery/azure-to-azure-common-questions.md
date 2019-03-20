@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: c251a159ec28d7fb03009ebcdc84056da739f937
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008653"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -26,6 +26,7 @@ Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése 
 1.  **[Több virtuális gépre kiterjedő konzisztencia](#multi-vm-consistency)** 
 1.  **[Helyreállítási terv](#recovery-plan)** 
 1.  **[Ismételt védelem és a feladat-visszavétel](#reprotection-and-failback)** 
+2.  **[Kapacitás](#capacity)**
 1.  **[Biztonsági](#security)** 
 
 
@@ -35,7 +36,7 @@ Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése 
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) részleteit.
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Mit jelent az Azure Site Recovery szolgáltatás esetében az ingyenes szint?
 Az Azure Site Recovery szolgáltatás által védett példányok a védelem első 31 napja során díjmentesek. A 32. naptól kezdődően a példányokra vonatkozó védelem díjának felszámítása a fenti díjszabás alapján történik.
-###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
 Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintetében díjmentes az első 31 nap során, az Azure Storage szolgáltatás, a tárolási tranzakciók és az adatforgalom díjkötelesek lehetnek. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján. Kész részletek a díjszabási [Itt](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Mik azok a Site Recovery konfigurálása az Azure virtuális gépekhez ajánlott eljárásai?
@@ -105,7 +106,7 @@ Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb met�
 Alkalmazáskonzisztens helyreállítási pontok összes adatot a memória és a folyamat rögzíti a mérlegeli igényel a keretrendszert, például VSS letiltásától az alkalmazás windows rendszeren. Ha nagyon gyakran meg lehet a teljesítményt, ha a számítási feladat már nagyon elfoglalt. Általában javasolt nem 1 óra használata kevésbé gyakori alkalmazáskonzisztens helyreállítási pontok adatbázis-számítási feladatokhoz és adatbázis-munkaterhelés esetén is elegendő. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mi az a minimális gyakoriságot a alkalmazáskonzisztens helyreállítási pont létrehozásakor?
-A Site Recovery segítségével hoz létre egy alkalmazáskonzisztens helyreállítási pont egy minimális gyakoriság (1 óra).
+A Site Recovery segítségével hoz létre egy alkalmazáskonzisztens helyreállítási pont a minimális gyakoriság (1 óra).
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Hogyan helyreállítási pontok létrehozott és mentett?
 Szeretné megtudni, hogyan hoz létre a Site Recovery helyreállítási pontok, vessünk egy példát egy replikációs szabályzatot, amely a helyreállítási pontok adatmegőrzési időtartam 24 óra és a egy alkalmazás-konzisztens gyakoriság pillanatkép 1 óra.
@@ -117,7 +118,7 @@ Az alábbi képernyőfelvételen látható a példa szemlélteti. A képernyők�
 1. Ideje kevesebb, mint az elmúlt 1 óra vannak a helyreállítási pontok, 5 perces gyakorisággal.
 2. Ideje meghaladja az elmúlt 1 óra a Site Recovery biztosítja, hogy csak 1 helyreállítási pont.
 
-  ![A létrehozott helyreállítási pontok listája](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+   ![A létrehozott helyreállítási pontok listája](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 
 ### <a name="how-far-back-can-i-recover"></a>Milyen biztonsági állíthatja helyre?
@@ -220,7 +221,12 @@ Azt az adott helyzettől függ. Például ha a forrásrégióban virtuális gép
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Mennyi idő mindezt végezze el a feladat-visszavételt?
 Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba. 
 
-## <a name="a-namesecuritysecurity"></a><a name="security">Biztonsági
+## <a name="capacity"></a>Kapacitás
+### <a name="does-site-recovery-work-with-reserved-instance"></a>A fenntartott példány működik a Site Recovery?
+Igen, akkor is vásárolható [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) a DR régióban, és automatikus feladatátvételi műveletek fogja használni őket. </br> További konfiguráció nélkül nem szükséges, hogy az ügyfeleknek.
+
+
+## <a name="security"></a>Biztonsági
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?
 Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik a virtuális gépeken futó bármilyen információ. A Site Recovery szolgáltatás csak a replikáció és a feladatátvétel levezényléséhez szükséges metaadatokat kapja meg.  
 Site Recovery szolgáltatás ISO 27001:2013, 27018, a HIPAA, DPA hitelesített, és SOC2 és FedRAMP JAB folyamatban van.

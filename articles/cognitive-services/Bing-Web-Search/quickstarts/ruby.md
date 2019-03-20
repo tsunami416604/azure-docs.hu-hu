@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 2/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 117271b0a952090bf8af2416206652972ae274ff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210829"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858830"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Gyors útmutató: A Ruby használatával a Bing Web Search API meghívása  
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Ruby-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Ruby-alkalmazás egy keresési kérelmet küld az API-t, és bemutatja a választ. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [Ruby 2.4-es vagy újabb verziója](https://www.ruby-lang.org/en/downloads/)

@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079714"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések küldése a Traffic Manager a Visual Studio Mobile Center
 
@@ -33,22 +33,22 @@ Valós felhasználói mérések konfigurálásához szüksége a az csomag az al
 A mérési igénybe vehet, és a Traffic Manager, az ügyfélalkalmazás által küldött azonosítja a szolgáltatást egy egyedi karakterlánccá, neve a valós felhasználói mérések (RUM) kulcs használatával. Az Azure portal, a REST API használatával az kulcs kap vagy a PowerShell használatával / parancssori felületek.
 
 Az Azure Portalon a következő eljárással RUM kulcs beszerzése:
-   1. Egy böngészőben jelentkezzen be az Azure Portalon. Ha még nincs fiókja, akkor regisztráljon egy ingyenes egy hónapos próbaidőszak.
-   2. A portál keresősávjában keressen a Traffic Manager-profil neve, amelyet módosítani szeretne, majd kattintson az eredményeket a Traffic Manager-profilt, amely jelenik meg.
-   3. A Traffic Manager-profil oldalon kattintson **valós felhasználói mérések** alatt **beállítások**.
-   4. Kattintson a **kulcs létrehozása** RUM új kulcs létrehozásához.
+1. Egy böngészőben jelentkezzen be az Azure Portalon. Ha még nincs fiókja, akkor regisztráljon egy ingyenes egy hónapos próbaidőszak.
+2. A portál keresősávjában keressen a Traffic Manager-profil neve, amelyet módosítani szeretne, majd kattintson az eredményeket a Traffic Manager-profilt, amely jelenik meg.
+3. A Traffic Manager-profil oldalon kattintson **valós felhasználói mérések** alatt **beállítások**.
+4. Kattintson a **kulcs létrehozása** RUM új kulcs létrehozásához.
         
    ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **1. ábra: Valós Felhasználóiélmény-mérések kulcs létrehozása**
 
-   5.   A lap megjeleníti a RUM kulcs, amely akkor jön létre, és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető.
+5. A lap megjeleníti a RUM kulcs, amely akkor jön létre, és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető.
  
    ![Valós felhasználói mérések kulcsát a JavaScript-kódot](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
    **2. ábra: Valós felhasználói mérések kulcsának és a mérési JavaScript**
  
-   6. Kattintson a **másolási** gombra, hogy a RUM kulcsot. 
+6. Kattintson a **másolási** gombra, hogy a RUM kulcsot. 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: A Mobile Center SDK-t, az csomag az alkalmazás tagolását
 

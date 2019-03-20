@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4be3787df0c914762e02a2fa7ead870cbf945452
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455496"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897078"
 ---
 # <a name="heading"></a>Mintaadatok az SQL Server az Azure-ban
 
 Ez a cikk bemutatja az Azure-on futó SQL Serverben tárolt adatokat az SQL vagy a Python-programozási nyelv használatával. Azt is bemutatja a mintavételezett adatok áthelyezése az Azure Machine Learningbe fájlba történő mentése, Azure-blobba feltölteni és majd olvasása az Azure Machine Learning studióba.
 
-A Python-mintavételt használ a [pyodbc](https://code.google.com/p/pyodbc/) ODBC-könyvtár az Azure SQL-kiszolgálóhoz való csatlakozáshoz és a [Pandas](http://pandas.pydata.org/) kódtárat a mintavételt.
+A Python-mintavételt használ a [pyodbc](https://code.google.com/p/pyodbc/) ODBC-könyvtár az Azure SQL-kiszolgálóhoz való csatlakozáshoz és a [Pandas](https://pandas.pydata.org/) kódtárat a mintavételt.
 
 > [!NOTE]
 > Az SQL-mintakódot a dokumentum azt feltételezi, hogy az adatokat egy SQL Server az Azure-ban. Ha nem érhető el, [adatok áthelyezése az Azure-ban az SQL Server](move-sql-server-virtual-machine.md) cikkben útmutatást találhat az SQL Server az adatok áthelyezése az Azure-ban.
@@ -71,7 +71,7 @@ Ez a szakasz használatát mutatja be a [pyodbc könyvtár](https://code.google.
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-A [Pandas](http://pandas.pydata.org/) Python kódtár biztosít széles választékának datové struktury és adatelemző eszközökkel adatkezelés Python programozáshoz. A következő kódot az adatok 0,1 % minta olvas a Pandas adatokat nyerhet ki az Azure SQL database egyik táblájába:
+A [Pandas](https://pandas.pydata.org/) Python kódtár biztosít széles választékának datové struktury és adatelemző eszközökkel adatkezelés Python programozáshoz. A következő kódot az adatok 0,1 % minta olvas a Pandas adatokat nyerhet ki az Azure SQL database egyik táblájába:
 
     import pandas as pd
 

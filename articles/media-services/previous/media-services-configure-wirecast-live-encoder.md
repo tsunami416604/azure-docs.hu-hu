@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890049"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Használja a Wirecast kódoló egyféle sávszélességű élő adatfolyamot küldeni 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "55998569"
 >
 >
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) élőadás-kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet az élő kódolás engedélyezve vannak.  További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja a [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) élőadás-kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet az élő kódolás engedélyezve vannak.  További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux rendszeren, az Azure portal használatával hozzon létre [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
 
@@ -109,7 +109,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
    * Profil: Elsődleges
    * Kulcs keret minden: 60 keretek
 
-    **Audio**
+     **Audio**
 
    * Cél átviteli sebesség: 192 Kbit/s
    * Mintavételi gyakoriság: 44.100 kHz
@@ -134,7 +134,7 @@ Ebben az oktatóanyagban a következő kimeneti beállításokat használják. E
 1. Kattintson az **OK** gombra.
 2. A fő **Wirecast** képernyőjén ellenőrizze a bemeneti forrás a videó és hang készen áll, majd nyomja le az **Stream** bal felső sarokban.
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > Gombra való kattintás előtt **Stream**, hogy **kell** győződjön meg arról, hogy készen áll-e a csatornát.

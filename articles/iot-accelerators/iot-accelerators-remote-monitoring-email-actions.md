@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3e9d7191af3a870f60b40311be03e0ef9d9bf7ad
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108103"
 ---
 # <a name="add-an-email-action"></a>E-mail-művelet hozzáadása
 
@@ -128,7 +128,7 @@ A következő lépések segítségével jelentkezzen be, és állítsa be az e-m
 
 1. Ide kattintva jelentkezzen be az Outlook. Ekkor átkerül az Azure Portalon:
 
-  ![Jelentkezzen be az Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
+   ![Jelentkezzen be az Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
 1. Kattintson a **engedélyezése**. Kéri, hogy jelentkezzen be. A bejelentkezéshez használt fióknak kell lennie az e-mail-cím az alkalmazás használatával küldjön értesítő:
 
@@ -136,7 +136,7 @@ A következő lépések segítségével jelentkezzen be, és állítsa be az e-m
 
 1. Az e-mail-értesítés sikeresen konfigurálta, a következő üzenet jelenik meg:
 
-  ![A sikeres Outlook jelentkezzen be](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
+   ![A sikeres Outlook jelentkezzen be](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
 ## Testre szabhatja az e-mail HTML <a name="htmledit"></a>
 

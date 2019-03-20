@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 61bec775fc8be963ee6fd0768a297420e6eb7ab2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095211"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v3
 
@@ -90,12 +90,12 @@ A robot válaszol "állítsa be QnAKnowledgebaseId és QnASubscriptionKey az alk
 
 1. A Tudásbázis Azonosítóját, gazdagép URL-cím és a végpont kulcs beszerzése a Tudásbázis a QnA Maker portál beállítások lapján.
 
-    - Jelentkezzen be a [a QnA Maker](https://qnamaker.ai)
-    - Nyissa meg a Tudásbázis
-    - Válassza ki a **beállítások** lap
-    - **Közzététel** a Tudásbázis, ha még nem tette
+   - Jelentkezzen be a [a QnA Maker](https://qnamaker.ai)
+   - Nyissa meg a Tudásbázis
+   - Válassza ki a **beállítások** lap
+   - **Közzététel** a Tudásbázis, ha még nem tette
 
-    ![A QnA Maker értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+     ![A QnA Maker értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>A robot tesztelése
 

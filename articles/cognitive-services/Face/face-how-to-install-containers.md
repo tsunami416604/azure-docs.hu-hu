@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/18/2019
 ms.author: diberry
-ms.openlocfilehash: 96040d6caeb1541eec78e57973dd9089b5a107ed
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a52c5bf1a52a4d598986664c41e80273e0b26788
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671845"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014104"
 ---
-# <a name="install-and-run-containers"></a>Tárolók telepítése és futtatása
+# <a name="install-and-run-face-containers"></a>Telepítse és futtassa a Face tárolók
 
 Face Docker, arc, amely észleli az emberi arcok a képeken, és azonosítja az attribútumokat, (például noses és szemek) arcrészek, gender, életkor és egyéb gép – előre meghatározott arcfelismerés nevű egy szabványosított Linux-tárolót biztosít. Észlelési, mellett Face is ellenőrizze, hogy két arc ugyanazt a lemezképet vagy különböző képek egy megbízhatósági pontszám használatával azonosak, vagy olyan adatbázison annak ellenőrzéséhez, hogy a hasonló megjelenésű arcokat összehasonlítása vagy azonos face már létezik. Azt is is csoportokba rendezheti a hasonló arcokat keres, közös visual tulajdonságok használatával.
 
@@ -117,7 +117,7 @@ További [példák](./face-resource-container-config.md#example-docker-run-comma
 
 A tároló REST-alapú lekérdezési előrejelzési végpontot API-kat biztosít. 
 
-Használja a gazdagép https://localhost:5000, API-k tároló.
+Használja a gazdagép `https://localhost:5000`, API-k tároló.
 
 ## <a name="stop-the-container"></a>Állítsa le a tároló
 

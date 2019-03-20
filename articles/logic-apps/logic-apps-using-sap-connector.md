@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391282"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887085"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás az Azure Logic Apps a SAP-rendszerek
 
-Ez a cikk azt ismerteti, hogyan férhet hozzá a helyszíni SAP erőforrásokat belül egy logikai alkalmazást az SAP ERP központi összetevő (ECC)-összekötő használatával. Az SAP ECC összekötő üzenet vagy adatok integráció az SAP Netweaver-alapú rendszerek köztes dokumentum (az idoc-hoz) vagy az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) vagy a távoli függvény hívása (RFC) keresztül támogatja.
+Ez a cikk azt ismerteti, hogyan férhet hozzá a helyszíni SAP erőforrásokat belül egy logikai alkalmazást az SAP ERP központi összetevő (ECC)-összekötő használatával. Az összekötő ECC- és S/4 HANA rendszerek működik a helyszíni. Az SAP ECC összekötő üzenet vagy adatok integráció az SAP Netweaver-alapú rendszerek köztes dokumentum (az idoc-hoz) vagy az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) vagy a távoli függvény hívása (RFC) keresztül támogatja.
 
-Az SAP ECC-összekötőt használja a <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net (Ice) összekötő könyvtár</a> , és ezek a műveletek vagy műveleteket biztosít:
+Az SAP ECC-összekötőt használja a <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET-összekötő (Ice) könyvtár</a> , és ezek a műveletek vagy műveleteket biztosít:
 
 - **SAP küldése**: Küldjön az idoc-hoz, vagy hívja a BAPI-funkciók tRFC keresztül az SAP-rendszereinket.
 - **SAP fogadjon**: Az idoc-hoz vagy BAPI függvényhívások kapnak az SAP-rendszereinket tRFC keresztül.

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895855"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
 
@@ -25,7 +25,7 @@ Bár az Azure Logic Apps biztosít [100 + beépített összekötők](../connecto
 * Segíthet az ügyfeleknek használni a szolgáltatást, professional vagy személyes feladatait.
 * Bontsa ki az elérhetőséget, felfedezhetősége és a szolgáltatás használatát.
 
-Alapvetően az összekötők a webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](http://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. Mivel az összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az összekötők készítéséhez is használhatja. Az API-k a is üzemeltethető [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely biztosítja a legjobb, legegyszerűbb és leggyakrabban méretezhető módon API üzemeltetéséhez. 
+Alapvetően az összekötők a webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](https://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. Mivel az összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az összekötők készítéséhez is használhatja. Az API-k a is üzemeltethető [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely biztosítja a legjobb, legegyszerűbb és leggyakrabban méretezhető módon API üzemeltetéséhez. 
 
 Az egyéni API-k a logic apps szolgáltatással működik, az API-t biztosíthat [ *műveletek* ](./logic-apps-overview.md#logic-app-concepts) , amely adott feladatokat a logic app-munkafolyamatokba. Az API-t is működhet, egy [ *eseményindító* ](./logic-apps-overview.md#logic-app-concepts) , amely egy logikai alkalmazás munkafolyamatának elindul, amikor új adatokat és a egy esemény megfelel-e a megadott feltételnek. Ez a témakör ismerteti a gyakori minták, amelyekkel műveletek és eseményindítók az API-hoz, az API-t adja meg a kívánt viselkedés alapján.
 
@@ -41,11 +41,11 @@ Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a pla
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> A logic apps beépített API-alkalmazás minták, látogasson el a [Azure Logic Apps GitHub-adattár](http://github.com/logicappsio) vagy [blog](https://aka.ms/logicappsblog).
+> A logic apps beépített API-alkalmazás minták, látogasson el a [Azure Logic Apps GitHub-adattár](https://github.com/logicappsio) vagy [blog](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Hogyan térnek el egyéni API-k az egyéni összekötők?
 
-Egyéni API-k és [egyéni összekötők](../logic-apps/custom-connector-overview.md) vannak webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](http://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. És mivel ezen API-k és összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az egyéni API-k és összekötők használhatja.
+Egyéni API-k és [egyéni összekötők](../logic-apps/custom-connector-overview.md) vannak webes API-kat használó REST csatlakoztatható adapterek [Swagger-metaadatok formátum](https://swagger.io/specification/) dokumentáció, és JSON-ban, az adatcsere-formátumot. És mivel ezen API-k és összekötők REST API-k HTTP-végpontokon keresztül kommunikáló, bármilyen nyelv, .NET, Java vagy node.js nyelven, például az egyéni API-k és összekötők használhatja.
 
 Egyéni API-k lehetővé teszik az API-kat, amelyek nem összekötőket, és adja meg a végpontokat, amelyeket meghívhat HTTP + Swagger, Azure API Management vagy App Services. Egyéni összekötők működik, mint az egyéni API-kat, de ezek az attribútumok is rendelkezik:
 
@@ -63,7 +63,7 @@ Egyéni összekötőkkel kapcsolatos további információkért lásd:
 
 ## <a name="helpful-tools"></a>Hasznos eszközök
 
-Egyéni API-k optimális működéséhez a logic apps szolgáltatással is rendelkezik az API-t egy [Swagger-dokumentumok](http://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le.
+Egyéni API-k optimális működéséhez a logic apps szolgáltatással is rendelkezik az API-t egy [Swagger-dokumentumok](https://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le.
 Számos kódtár, például [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle), automatikusan hozhat létre a Swagger-fájl az Ön számára. Jegyzettel láthatja el a Swagger-fájl a megjelenített neveket, tulajdonságtípus, és így tovább, akkor is használható [TRex](https://github.com/nihaue/TRex) úgy, hogy a Swagger-fájl is a logic apps szolgáltatással működik.
 
 <a name="actions"></a>
@@ -167,8 +167,8 @@ Az alábbiakban egy lekérdezési eseményindító, az API-k szempontból leírt
 
 | Új adatokat és az esemény található?  | API-válasz | 
 | ------------------------- | ------------ |
-| Található | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
-| Nincs találat | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
+| Találat | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
+| Nem található | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
 ||| 
 
 Például a szolgáltatás új fájlok rendszeres időnként ellenőrzik, felépíthet egy lekérdezési eseményindítói viselkedést:

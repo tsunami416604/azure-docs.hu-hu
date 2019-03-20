@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2fd06a2164761489af6ee84d56806ef858e3b5d8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782683"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081440"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -59,15 +59,15 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Igény szerint is beállíthat **száma** , **összesítési** , és adja meg a megfelelő küszöbértéket.
 
-    - Nélkül összesítés, a szabály aktiválásakor adatpontok esemény, amely megfelel a feltételnek. Például, ha a szabály feltétel az indítási feltétel egy **ventilátor Motor hiba** esemény következik be, akkor a szabály gondoskodik arról, szinte azonnal amikor az eszköz jelenti a kapcsolódó eseményre.
-    - Száma aggregátumfüggvényt használja, akkor meg kell adnia egy **küszöbérték** és a egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Ebben az esetben az események száma összesített értéket jelenít meg, és csak akkor, ha az összesített száma a küszöbérték megegyezik a szabály aktiválásakor.
+   - Nélkül összesítés, a szabály aktiválásakor adatpontok esemény, amely megfelel a feltételnek. Például, ha a szabály feltétel az indítási feltétel egy **ventilátor Motor hiba** esemény következik be, akkor a szabály gondoskodik arról, szinte azonnal amikor az eszköz jelenti a kapcsolódó eseményre.
+   - Száma aggregátumfüggvényt használja, akkor meg kell adnia egy **küszöbérték** és a egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Ebben az esetben az események száma összesített értéket jelenít meg, és csak akkor, ha az összesített száma a küszöbérték megegyezik a szabály aktiválásakor.
 
-    Például ha azt szeretné, a riasztás, ha háromnál több eszköz események 5 percen belül, válassza ki az esemény, és állítsa "count", az aggregate függvényt, operátort, "nagyobb, mint" és "küszöbértéket" 3. Állítsa be a "Összesítési időszak", "5 perc". A szabály akkor aktiválódik, ha több mint három eseménynek az eszköz által küldött 5 percen belül. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
+     Például ha azt szeretné, a riasztás, ha háromnál több eszköz események 5 percen belül, válassza ki az esemény, és állítsa "count", az aggregate függvényt, operátort, "nagyobb, mint" és "küszöbértéket" 3. Állítsa be a "Összesítési időszak", "5 perc". A szabály akkor aktiválódik, ha több mint három eseménynek az eszköz által küldött 5 percen belül. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
 
-    ![Feltétel hozzáadása](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+     ![Feltétel hozzáadása](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE]
-    >Egynél több esemény mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes feltétel lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
+     >[!NOTE]
+     >Egynél több esemény mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes feltétel lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
 
 ### <a name="configure-actions"></a>Művelet konfigurálása
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 2625b4807d98359b3534b8406182cd7bed194746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882403"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122403"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -37,7 +37,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   <th>Leírás</th>
   <tr>
     <td>API-verzió</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
+    <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
     <td>scope</td>
@@ -232,7 +232,7 @@ A támogatott nyelvek listája nem változik gyakran. Spórolhat a sávszéless�
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>az eTag</td>
+    <td>ETag</td>
     <td>A támogatott nyelvek a kért csoportok entitáscímkéje aktuális értéke. Ahhoz, hogy hatékonyabb szeretnének hozzáférni, az ügyfél küldhet a `ETag` értékét egy `If-None-Match` fejlécmezőt.
     </td>
   </tr>

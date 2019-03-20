@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168243"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894087"
 ---
 <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 ====================================
@@ -77,7 +77,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
 >[!IMPORTANT]
 >Annak érdekében, hogy az ajánlat létrehozásának és üzembe helyezésének különböző fázisait halad, el kell végeznie az alábbi fejlesztői profil összetevőket.
 
-| Fejlesztői profil     | Vázlat indítása    | Fájlok másolása folyamatban       | Ingyenes közzététele és megoldássablon   | Kereskedelmi közzététele   |
+| Fejlesztői profil     | Vázlat indítása    | Előkészítés       | Ingyenes közzététele és megoldássablon   | Kereskedelmi közzététele   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
 | Céges regisztráció  | Rendelkeznie kell         | Rendelkeznie kell     | Rendelkeznie kell                             | Rendelkeznie kell             |
 | Adózási profil azonosítója        | Optional          | Optional      | Optional                              | Rendelkeznie kell             |
@@ -90,7 +90,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
 
 1. Nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenet, győződjön meg arról, hogy Ön nincs bejelentkezve a személyes fiókkal.
 
-2. Nyissa meg a [Windows Dev Center](http://dev.windows.com/registration?accountprogram=azure) eladó el. Folytatás előtt olvassa el az alábbi fontos megjegyzést.
+2. Nyissa meg a [Windows Dev Center](https://dev.windows.com/registration?accountprogram=azure) eladó el. Folytatás előtt olvassa el az alábbi fontos megjegyzést.
 
    ![A Microsoft-fiók ellenőrzése](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
@@ -157,7 +157,7 @@ Beszerzési kereskedelmi ajánlatokat a közzétételhez meg kell hozzáadása k
 
 **Banki információk**
 
-1.  Jelentkezzen be a [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával.
+1.  Jelentkezzen be a [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával.
 2.  Válassza ki **küldenie jóváhagyásra cége kifizetési fiók** bal oldali menüben lévő alatt **fizetési módszer**, jelölje be **bankszámla** vagy **PayPal**.
 
     >[!NOTE]
@@ -173,7 +173,7 @@ Beszerzési kereskedelmi ajánlatokat a közzétételhez meg kell hozzáadása k
 
 **Adózási információk**
 
-1.  Jelentkezzen be a [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával (ha szükséges).
+1.  Jelentkezzen be a [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával (ha szükséges).
 2.  A bal oldali menüben válassza ki a **profil adó**.
 3.  Az a **állítsa be a kitöltésére** oldalon:
     - Válassza ki az országot vagy régiót, ahol az állandó helyével rendelkezik.

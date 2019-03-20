@@ -8,18 +8,18 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 4dd425b827f5518ff4809f4878a5f3c752b9f50e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5f7f9641e8fc7cd4c0e8dd153b350b9dd876b004
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244553"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168690"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Azure biztonsági és megfelelőségi terv: IaaS Web Application for UK NHS
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure biztonsági és megfelelőségi terv a referencia-architektúra és webalkalmazásként szolgáltatás (IaaS) a gyűjtemény, tárolási és egészségügyi adatok lekérésének alkalmas infrastruktúra útmutatást biztosít. Ez a megoldás bemutatja, amelyben ügyfelek eleget tud útmutató módon a [Cloud Security jó gyakorlat útmutató](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) által közzétett [NHS digitális](https://digital.nhs.uk/), egy partnert a Nagy-Britannia (Egyesült Királyság) Department of Health és közösségi ellátása (DHSC). A Felhőbeli biztonsági jó gyakorlat útmutató alapján a 14 [Felhőbiztonsági irányelveinek](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) közzétett által az Egyesült Királyság nemzeti Kibertámadások biztonsági központ (NCSC).
+Az Azure biztonsági és megfelelőségi terv a referencia-architektúra és webalkalmazásként szolgáltatás (IaaS) alkalmasak a gyűjtemény, tárolási és egészségügyi adatok lekérésének infrastruktúrához útmutatást biztosít. Ez a megoldás bemutatja, amelyben ügyfelek eleget tud útmutató módon a [Cloud Security jó gyakorlat útmutató](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) által közzétett [NHS digitális](https://digital.nhs.uk/), egy partnert a Nagy-Britannia (Egyesült Királyság) Department of Health és közösségi ellátása (DHSC). A Felhőbeli biztonsági jó gyakorlat útmutató alapján a 14 [Felhőbiztonsági irányelveinek](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) közzétett által az Egyesült Királyság nemzeti Kibertámadások biztonsági központ (NCSC).
 
 Ez a referencia-architektúra, megvalósítási útmutató és veszélyforrások elleni modellje célja, hogy az ügyfelek számára az adott követelményekhez beállítása alapjaként szolgálja ki, és nem használható-további konfiguráció nélkül éles környezetben van. Ügyfelek végző megfelelő biztonsági és megfelelőségi értékelést bármely megoldás használatával létrehozott ebben az architektúrában követelmények eltérőek lehetnek, hogy milyen ügyről van minden ügyfél megvalósítása alapján.
 

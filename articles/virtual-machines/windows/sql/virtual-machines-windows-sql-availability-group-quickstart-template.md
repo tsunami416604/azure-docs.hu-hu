@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5390885ccb4bbc3e1552d3f5e80c1b451b7bee38
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4b4527bfaacc592c13552e362de0cba620314cd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570164"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122046"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
@@ -76,8 +76,8 @@ Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtu
 1. Ha elfogadja a feltételeket és kikötéseket, jelölje be a jelölőnégyzetet a **elfogadom a feltételeket és a fenti feltételeket** válassza **beszerzési** a rövid útmutató sablon telepítésének véglegesítéséhez. 
 1. Az üzemelő példány monitorozásához válassza a központi telepítést a **értesítések** harang ikonra a felső navigációs fejléc, vagy navigáljon arra a **erőforráscsoport** az Azure Portalon válassza ki a  **Központi telepítések** a a **beállítások** mezőben, majd válassza a "Microsoft.Template" központi telepítés. 
 
-  >[!NOTE]
-  > Sablon üzembe helyezése során megadott hitelesítő adatok a rendszer csak az üzemelő példány a megadott ideig tárolja. Üzembe helyezés befejezése után a rendszer eltávolítja ezeket a jelszavakat, és meg kell adnia, adja meg őket újra kell további SQL Server virtuális gépeket ad hozzá a fürtöt. 
+   >[!NOTE]
+   > Sablon üzembe helyezése során megadott hitelesítő adatok a rendszer csak az üzemelő példány a megadott ideig tárolja. Üzembe helyezés befejezése után a rendszer eltávolítja ezeket a jelszavakat, és meg kell adnia, adja meg őket újra kell további SQL Server virtuális gépeket ad hozzá a fürtöt. 
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>2. lépés – a rendelkezésre állási csoport kézi létrehozása 
@@ -150,8 +150,8 @@ Konfigurálja az ILB, és a rendelkezésre állási csoport figyelőjének létr
 1. Ha elfogadja a feltételeket és kikötéseket, jelölje be a jelölőnégyzetet a **elfogadom a feltételeket és a fenti feltételeket** válassza **beszerzési** a rövid útmutató sablon telepítésének véglegesítéséhez. 
 1. Az üzemelő példány monitorozásához válassza a központi telepítést a **értesítések** harang ikonra a felső navigációs fejléc, vagy navigáljon arra a **erőforráscsoport** az Azure Portalon válassza ki a  **Központi telepítések** a a **beállítások** mezőben, majd válassza a "Microsoft.Template" központi telepítés. 
 
-  >[!NOTE]
-  >Ha az üzembe helyezés sikertelen felénél keresztül, kell manuálisan [távolítsa el az újonnan létrehozott figyelőt](#remove-availability-group-listener) ismételt üzembe helyezése előtt a PowerShell használatával a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon. 
+   >[!NOTE]
+   >Ha az üzembe helyezés sikertelen felénél keresztül, kell manuálisan [távolítsa el az újonnan létrehozott figyelőt](#remove-availability-group-listener) ismételt üzembe helyezése előtt a PowerShell használatával a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon. 
 
 ## <a name="remove-availability-group-listener"></a>Távolítsa el a rendelkezésre állási csoport figyelője
 Ha később el szeretné eltávolítani a rendelkezésre állási csoport figyelőjének a sablon által konfigurált, haladjon végig az SQL virtuális gép erőforrás-szolgáltató. A figyelő keresztül az SQL virtuális gép erőforrás-szolgáltató regisztrálva van, mivel annak csak SQL Server Management Studio segítségével törlése nem elegendő. Valóban törölni kell a PowerShell-lel SQL virtuális gép erőforrás-szolgáltatón keresztül. Ezzel a rendelkezésre állási csoport figyelőjének metaadatok távolít el az SQL virtuális gép erőforrás-szolgáltató, és fizikailag törli a figyelőt a rendelkezésre állási csoportból. 
@@ -183,17 +183,17 @@ Ez a hiba két okok valamelyike okozhatja. A megadott tartományi fiók valóban
 
  Győződjön meg arról, hogy a fiók létezik-e. Ha igen, a előfordulhat, hogy fut, a második helyzet be. A probléma megoldásához tegye a következőket:
 
- 1. A tartományvezérlőn nyissa meg a **Active Directory – felhasználók és számítógépek** ablakot a **eszközök** beállítást **Kiszolgálókezelő**. 
- 2. Lépjen a fiók kiválasztásával **felhasználók** a bal oldali panelen.
- 3. Kattintson a jobb gombbal a kívánt fiókot, és válassza ki **tulajdonságok**.
- 4. Válassza ki a **fiók** lapra, és győződjön meg arról, ha a **felhasználói bejelentkezési név** üres. Ha igen, ez az a hiba okát. 
+1. A tartományvezérlőn nyissa meg a **Active Directory – felhasználók és számítógépek** ablakot a **eszközök** beállítást **Kiszolgálókezelő**. 
+2. Lépjen a fiók kiválasztásával **felhasználók** a bal oldali panelen.
+3. Kattintson a jobb gombbal a kívánt fiókot, és válassza ki **tulajdonságok**.
+4. Válassza ki a **fiók** lapra, és győződjön meg arról, ha a **felhasználói bejelentkezési név** üres. Ha igen, ez az a hiba okát. 
 
-     ![Üres felhasználói fiók azt jelzi, hogy hiányzó egyszerű felhasználónév](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+    ![Üres felhasználói fiók azt jelzi, hogy hiányzó egyszerű felhasználónév](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
- 5. Töltse ki a **felhasználói bejelentkezési név** megfelelően annak a felhasználónak a nevére, majd a megfelelő tartományt a legördülő listából válassza a lefelé. 
- 6. Válassza ki **alkalmaz** mentse a módosításokat, és zárja be a párbeszédpanelt kiválasztásával **OK**. 
+5. Töltse ki a **felhasználói bejelentkezési név** megfelelően annak a felhasználónak a nevére, majd a megfelelő tartományt a legördülő listából válassza a lefelé. 
+6. Válassza ki **alkalmaz** mentse a módosításokat, és zárja be a párbeszédpanelt kiválasztásával **OK**. 
 
- Ha ezeket a módosításokat, próbálja meg még egyszer üzembe helyezése az Azure gyorsindítási sablon. 
+   Ha ezeket a módosításokat, próbálja meg még egyszer üzembe helyezése az Azure gyorsindítási sablon. 
 
 
 

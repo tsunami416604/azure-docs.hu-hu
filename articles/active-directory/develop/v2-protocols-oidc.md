@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d94e64af362ef9698350b8231718cc841731f7e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112704"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
 
@@ -105,7 +105,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a böngésző átirányítja https://localhost/myapp/, egy azonosító jogkivonat címet a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
+> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a böngésző átirányítja `https://localhost/myapp/`, egy azonosító jogkivonat címet a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` (bemutatási célokra csak). Javasoljuk, hogy használjon `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Paraméter | Állapot | Leírás |
@@ -178,7 +178,7 @@ A következő táblázat ismerteti azokat a hibakódokat, a visszaadható a `err
 
 Id_token érkező azonban nem hitelesíti a felhasználót; kell érvényesíteni az aláírást a id_token, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja a v2.0-végpont [JSON webes jogkivonatainak (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
 
-Ha szeretné ellenőrizni a `id_token` ügyfél kódot, de általános gyakorlat az, hogy küldjön a `id_token` háttérkiszolgálóhoz, és végezze el az érvényesítési hiba. A id_token aláírásának ellenőrzése után, ha nincsenek néhány jogcímek ellenőrzéséhez meg kell adni. Tekintse meg a [ `id_token` referencia](id-tokens.md) további információért többek között [jogkivonatok érvényesítése](id-tokens.md#validating-an-idtoken) és [fontos információkat kapcsolatos aláíró kulcs váltása](active-directory-signing-key-rollover.md). Javasoljuk, hogy a jogkivonatok használata a tár elemzés és ellenőrzése – nincs legalább egy elérhető a legtöbb nyelvekhez és platformokhoz.
+Ha szeretné ellenőrizni a `id_token` ügyfél kódot, de általános gyakorlat az, hogy küldjön a `id_token` háttérkiszolgálóhoz, és végezze el az érvényesítési hiba. A id_token aláírásának ellenőrzése után, ha nincsenek néhány jogcímek ellenőrzéséhez meg kell adni. Tekintse meg a [ `id_token` referencia](id-tokens.md) további információért többek között [jogkivonatok érvényesítése](id-tokens.md#validating-an-id_token) és [fontos információkat kapcsolatos aláíró kulcs váltása](active-directory-signing-key-rollover.md). Javasoljuk, hogy a jogkivonatok használata a tár elemzés és ellenőrzése – nincs legalább egy elérhető a legtöbb nyelvekhez és platformokhoz.
 <!--TODO: Improve the information on this-->
 
 Érdemes ellenőrizni a forgatókönyvtől függően további jogcímek is. Néhány gyakori ellenőrzések a következők:
@@ -235,7 +235,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 ```
 
 > [!TIP]
-> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a rendszer átirányítja a böngésző https://localhost/myapp/, egy azonosító jogkivonat és a egy kód a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` csak bemutató célokra. Javasoljuk, hogy használjon `response_mode=form_post`.
+> Kattintson az alábbi hivatkozásra a kérelem végrehajtásához. Miután bejelentkezett, a rendszer átirányítja a böngésző `https://localhost/myapp/`, egy azonosító jogkivonat és a egy kód a címsorba. Vegye figyelembe, hogy a kérelem használ `response_mode=fragment` csak bemutató célokra. Javasoljuk, hogy használjon `response_mode=form_post`.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 > 
 > 
@@ -279,4 +279,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Egy lehetséges hibakódok és ajánlott ügyfél válaszok ismertetését lásd: [hibakódok hitelesítési végpont hibák](#error-codes-for-authorization-endpoint-errors).
 
-Ha az engedélyezési kódot, és a egy azonosító jogkivonat, jelentkezzen be a felhasználó, és hozzáférési tokenek beszerzése a felhasználók nevében. A felhasználó a aláírásához, ellenőrizni kell az azonosító jogkivonat [leírtak szerint pontosan](id-tokens.md#validating-an-idtoken). Hozzáférési jogkivonatok beszerzéséhez kövesse a leírt lépéseket követve [OAuth kód flow dokumentáció](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Ha az engedélyezési kódot, és a egy azonosító jogkivonat, jelentkezzen be a felhasználó, és hozzáférési tokenek beszerzése a felhasználók nevében. A felhasználó a aláírásához, ellenőrizni kell az azonosító jogkivonat [leírtak szerint pontosan](id-tokens.md#validating-an-id_token). Hozzáférési jogkivonatok beszerzéséhez kövesse a leírt lépéseket követve [OAuth kód flow dokumentáció](v2-oauth2-auth-code-flow.md#request-an-access-token).
