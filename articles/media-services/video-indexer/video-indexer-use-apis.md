@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988051"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862719"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -23,7 +23,7 @@ ms.locfileid: "55988051"
 
 A Video Indexer számos, a Microsoft által kínált audió- és videótartalmakkal kapcsolatos mesterséges intelligenciai (MI) technológiát egyesít egy integrált szolgáltatásban, megkönnyítve ezzel a fejlesztést. Az API-k úgy lettek kialakítva, hogy a fejlesztők a médiával kapcsolatos MI-technológiák felhasználására összpontosíthassanak, és ne kelljen a felhőplatform skálázása, globális elérhetősége, rendelkezésre állása és megbízhatósága miatt aggódniuk. Az API segítségével feltöltheti a fájljait, részletes videóelemzéseket kérhet, megkaphatja az elemzés és a lejátszóvezérlők URL-címét, hogy beágyazhassa őket az alkalmazásba, valamint egyéb feladatokat is végezhet.
 
-A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki. 
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki. 
 
 Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Indexer API](https://api-portal.videoindexer.ai/) előnyeit.
 
@@ -33,10 +33,10 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
     
     ![Bejelentkezés](./media/video-indexer-use-apis/video-indexer-api01.png)
 
-    > [!Important]
-    > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
-    > * A személyes Google-fiókok és Microsoft- (outlook-/live-) fiókok csak a próbafiókokhoz használhatók. Az Azure-hoz kapcsolódó fiókokhoz Azure AD-ra van szükség.
-    > * Egy e-mail-címhez csak egy aktív fiók tartozhat. Ha egy felhasználó megpróbál bejelentkezni a LinkedIn-re a user@gmail.com címmel, majd később a Google-re ugyanazzal a user@gmail.com címmel, akkor az utóbbi megjelenít egy hibaüzenetet, amely szerint a felhasználó már létezik.
+   > [!Important]
+   > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
+   > * A személyes Google-fiókok és Microsoft- (outlook-/live-) fiókok csak a próbafiókokhoz használhatók. Az Azure-hoz kapcsolódó fiókokhoz Azure AD-ra van szükség.
+   > * Egy e-mail-címhez csak egy aktív fiók tartozhat. Ha egy felhasználó megpróbál bejelentkezni a LinkedIn-re a user@gmail.com címmel, majd később a Google-re ugyanazzal a user@gmail.com címmel, akkor az utóbbi megjelenít egy hibaüzenetet, amely szerint a felhasználó már létezik.
 
 2. Iratkozzon fel.
 
@@ -72,7 +72,7 @@ A művelet leegyszerűsítése érdekében használhatja az **Engedélyezési** 
 
 A hozzáférési jogkivonatok 1 óráig érvényesek. A Műveleti API használata előtt ellenőrizze, hogy érvényes-e a hozzáférési jogkivonata. Ha lejárt, hívja meg az Engedélyezési API-t ismét egy új hozzáférési jogkivonat kéréséhez.
  
-Készen áll az API integrálásának megkezdésére. Itt megtalálhatja [az egyes Video Indexer REST API-k részletes leírását](http://api-portal.videoindexer.ai/).
+Készen áll az API integrálásának megkezdésére. Itt megtalálhatja [az egyes Video Indexer REST API-k részletes leírását](https://api-portal.videoindexer.ai/).
 
 ## <a name="location"></a>Hely
 

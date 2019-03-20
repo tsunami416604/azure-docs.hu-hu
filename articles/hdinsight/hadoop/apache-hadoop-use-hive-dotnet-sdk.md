@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200463"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK használatával, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -139,7 +139,6 @@ Ebben a cikkben, hogyan hozhat létre HDInsight-fürtöt többféleképpen. Tov�
 
 * [Az Azure HDInsight – első lépések](apache-hadoop-linux-tutorial-get-started.md)
 * [A HDInsight Apache Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
-* [A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával](../hdinsight-administer-use-management-portal.md)
 * [HDInsight .NET SDK-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
 * [A HDInsight Apache Sqoop használata](apache-hadoop-use-sqoop-mac-linux.md)

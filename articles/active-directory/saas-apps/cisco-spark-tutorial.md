@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5d72961fdbb5a0cfd349adc83e6cd90b6a06493
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eb64495d727429ff4dcfc233adee7dd5c60aaa8d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441219"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Oktatóanyag: Cisco Webex az Azure Active Directory-integráció
 
@@ -192,7 +192,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -245,7 +245,7 @@ Ebben a szakaszban egy Cisco Webex Britta Simon nevű felhasználói hoz létre.
 
     b. Az a **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
 
-    c. Az a **E-mail-cím** szövegmezőbe felhasználó e-mail címét írja be például a **britta.simon@contoso.com**.
+    c. Az a **E-mail-cím** szövegmezőbe felhasználó e-mail címét írja be például a **britta.simon\@contoso.com**.
 
 5. Kattintson a plusz jelre Britta Simon hozzáadásához. Ezután kattintson a **Tovább** gombra.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 12c0ee08435ca4b3077bc3a8c28b217ebaf70e08
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310046"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993319"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
 
@@ -98,7 +98,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://docs.micro
 
 **Módszer**: GET
 
-**Request URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{a(z) resourceGroupName}*/szolgáltatók/*{resourceProviderNamespace}* / *{a(z) resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{} apiVersion}*
 
 Ha például lekérdezheti az Azure Storage-fiókhoz tartozó metrikadefiníciók, a kérelem lenne a következőképpen jelenik meg:
 
@@ -242,7 +242,7 @@ A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérel
 
 **Módszer**: GET
 
-**Kérés URI-ja**: https://management.azure.com/subscriptions/ *{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/szolgáltatók/*{erőforrás-szolgáltató – namespace}* / *{erőforrástípus}*/*{erőforrás neve}*/providers/microsoft.insights/metrics?metricnames=*{metrika}*& időtartam =*{starttime és endtime}*& $filter =*{szűrő}*& resultType = metaadatok & api-version =*{apiVersion}*
+**Kérés URI-ja**: https\://management.azure.com/subscriptions/*{előfizetés azonosítója}*/resourceGroups/*{erőforrás-csoport-neve}*/szolgáltatók/*{} erőforrás-szolgáltató – namespace}*/*{erőforrástípus}*/*{erőforrás neve}*/providers/microsoft.insights/metrics? metricnames =*{metrika}*& timespan =*{starttime és endtime}*& $filter =*{szűrő}*& resultType = metaadatok & api-version = *{apiVersion}*
 
 Például lettek kibocsátva a "API-név dimenzió" a "Tranzakció" metrika ahol dimenzió értékek listájának beolvasása a GeoType dimenzió = "Elsődleges" a megadott időtartományban a kérés a következő lenne:
 
@@ -394,7 +394,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://msdn.micro
 
 **Módszer**: GET
 
-**Request URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**Kérés URI-ja**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{a(z) resourceGroupName}*/szolgáltatók/*{resourceProviderNamespace}* / *{a(z) resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{} apiVersion}*
 
 Például egy Azure Logic App metrikadefinícióinak lekéréséhez a kérelem lenne a következőképpen jelenik meg:
 

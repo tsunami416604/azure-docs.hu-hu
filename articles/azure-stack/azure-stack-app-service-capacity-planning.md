@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: jeffgilb
+ms.date: 03/13/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 06bafbcf3e668ba17b1245b9352e942e02569997
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774593"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852365"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben kapacitástervezése
 
@@ -93,9 +93,17 @@ Amikor eldönti, megosztott webes feldolgozói szerepkörök száma használatá
 
    Feldolgozópéldányok további adásával kapcsolatos információkért lásd: [további feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md).
 
+### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>A frissítés és karbantartás során dedikált dolgozó további szempontok
+
+A frissítés és karbantartás a munkavállalók során Azure App Service az Azure Stacken végrehajtják a karbantartási a 20 %-át az egyes feldolgozói réteg egyidejűleg.  Felhőszolgáltatás-rendszergazdák emiatt mindig kell karbantartása nem lefoglalt feldolgozók száma feldolgozói réteg biztosítása a bérlőik számára nem tapasztalnak semmilyen szolgáltatáskimaradást frissítés és karbantartás során a 20 %-os készletét.  Például ha 10 feldolgozók található olyan feldolgozói réteg biztosítania kell, hogy 2 le nem foglalt, hogy a frissítés és karbantartás, ha a teljes 10 feldolgozók lesznek lefoglalva, kell növelheti a feldolgozói réteg nem lefoglalt feldolgozók készletét fenntartásához. A frissítés és karbantartás során az Azure App Service kerül át számítási feladatok nem lefoglalt Worker annak érdekében, hogy a számítási feladatokhoz továbbra is működik, azonban ha nem szabad során rendelkezésre álló feldolgozók frissítése majd van bérlői számítási feladatot a lehetséges lesz állásidő.  Megosztott feldolgozó tartományállapot ügyfeleknek nem kell további feldolgozók kiépítéséhez, mivel a szolgáltatás foglal le bérlői alkalmazások rendelkezésre álló feldolgozók belül automatikusan, azonban nincs magas rendelkezésre állású minimális követelmény két az adminisztratív munkatársak számára a jelen csomag.
+
+Felhő-rendszergazdák figyelhetik a feldolgozói réteg felosztására, az App Service felügyeleti területen, az Azure Stack felügyeleti portálon.  Navigáljon az App Service-ben, és válassza ki a feldolgozói rétegek a bal oldali ablaktáblán.  A feldolgozói rétegek táblázat feldolgozói réteg neve, a mérete, a használt lemezképet, a rendelkezésre álló feldolgozók száma (szabad), az egyes szintek feldolgozók száma összesen és a feldolgozói réteg általános állapotát.
+
+![Az App Service felügyeleti - feldolgozói rétegek][1]
+
 ## <a name="file-server-role"></a>Fájlkiszolgálói szerepkör
 
-A fájlkiszolgáló szerepkört használhatja a különálló fájlkiszolgáló fejlesztési és tesztelési; például az Azure App Service-ben a az Azure Stack Development Kit (ASDK) telepítésekor használhatja ezt a sablont: https://aka.ms/appsvconmasdkfstemplate. Termelési célra egy előre konfigurált Windows-fájlkiszolgáló, vagy egy előre konfigurált nem Windows fájlkiszolgáló kell használnia.
+A fájlkiszolgáló szerepkört használhatja a különálló fájlkiszolgáló fejlesztési és tesztelési; Ha például az Azure App Service-ben a az Azure Stack Development Kit (ASDK) üzembe helyezésekor ezzel [sablon](https://aka.ms/appsvconmasdkfstemplate).  Termelési célra egy előre konfigurált Windows-fájlkiszolgáló, vagy egy előre konfigurált nem Windows fájlkiszolgáló kell használnia.
 
 Éles környezetben a fájlkiszolgáló szerepkört teljesen intenzív lemez i/o. Kezelőkód összes tartalom és alkalmazás fájlt a felhasználó-webhelyekhez, mert előre konfigurálnia kell egy ehhez a szerepkörhöz a következő forrásanyagokat:
 
@@ -105,10 +113,13 @@ A fájlkiszolgáló szerepkört használhatja a különálló fájlkiszolgáló 
 - Nem-Windows-fájlkiszolgálói fürt
 - (Hálózati tárolóeszközök) NAS-eszközök
 
-További információkért lásd: [fájlkiszolgáló üzembe helyezése](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
+A következő cikkben talál további információt [fájlkiszolgáló üzembe helyezése](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a következő cikkben talál:
 
 [Mielőtt elkezdené, az Azure Stack App Service-szel](azure-stack-app-service-before-you-get-started.md)
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

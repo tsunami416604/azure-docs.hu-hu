@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abdfc377c40e37f01fbbbbd695e949671d40a51
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1c93716d5c8d0c9a74e2cb14a35637faa029c156
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820127"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226181"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy Azure-beli Virtuálisgép-sablonok használatával
 
@@ -64,35 +64,10 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a virtuális 
    },
    ```
 
-3. (Nem kötelező) A virtuális gép felügyelt identitások, Azure-erőforrás-bővítmény hozzáadása egy `resources` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
+> [!NOTE]
+> Akkor lehet, hogy is üzembe helyezheti a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény megadásával, mint egy `resources` elem a sablonban. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
-   >[!NOTE] 
-   > Az alábbi példa feltételezi, hogy Windows VM-bővítmény (`ManagedIdentityExtensionForWindows`) lesz üzembe helyezve. Beállíthatja a Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket. A Virtuálisgép-bővítmény elavult a január 2019 tervezünk.
-   >
-
-   ```JSON
-   { 
-       "type": "Microsoft.Compute/virtualMachines/extensions",
-       "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-       "apiVersion": "2018-06-01",
-       "location": "[resourceGroup().location]",
-       "dependsOn": [
-           "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-       ],
-       "properties": {
-           "publisher": "Microsoft.ManagedIdentity",
-           "type": "ManagedIdentityExtensionForWindows",
-           "typeHandlerVersion": "1.0",
-           "autoUpgradeMinorVersion": true,
-           "settings": {
-               "port": 50342
-           },
-           "protectedSettings": {}
-       }
-   }
-   ```
-
-4. Ha elkészült, a következő szakaszok kell hozzáadni a `resource` a sablont, és azt a következőképpen kell kinéznie:
+3. Ha elkészült, a következő szakaszok kell hozzáadni a `resource` a sablont, és azt a következőképpen kell kinéznie:
 
    ```JSON
    "resources": [
@@ -106,6 +81,8 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a virtuális 
                 "type": "SystemAssigned",
                 },
             },
+        
+            //The following appears only if you provisioned the optional VM extension (to be deprecated)
             {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -253,29 +230,6 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    }
    ```
        
-
-2. (Nem kötelező) A következő a `resources` elemben adja hozzá a következő bejegyzést a felügyelt identitás bővítmény hozzárendelése a virtuális gép (tervezett elavult a január 2019 esetében). Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok. Az alábbi szintaxissal:
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-    
 3. Ha elkészült, a következő szakaszok kell hozzáadni a `resource` a sablont, és azt a következőképpen kell kinéznie:
    
    **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachines**    
@@ -295,6 +249,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
                 }
             }
         },
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                  
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
@@ -332,6 +287,8 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
                 ]
             }
         },
+                 
+        //The following appears only if you provisioned the optional VM extension (to be deprecated)                   
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",

@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: becd91b3539ef992289a4032283be64fbf9d123d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 551b884f032eaba3f052fcb7571ba907038152ff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729358"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226844"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET keretrendszerre épülő alkalmazás az Azure-alkalmazás konfigurációja
 
-Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Ez lehetővé teszi, hogy könnyedén tárolhatja és kezelheti a kódot egy helyet, amely választja el az alkalmazás beállításait. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást az asztali Windows .NET-keretrendszer-alapú konzolalkalmazást.
+Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Könnyedén tárolhatja, és a egy helyet, amely választja el az alkalmazás beállításait kezelheti a kódból használhatja azt. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást az asztali Windows .NET-keretrendszer-alapú konzolalkalmazást.
 
-![Rövid útmutató – teljes helyi](./media/quickstarts/dotnet-fx-app-run.png)
+![A rövid útmutató teljes helyi](./media/quickstarts/dotnet-fx-app-run.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visualstudio.microsoft.com/vs) és [.NET-keretrendszer 4.7.1](https://dotnet.microsoft.com/download) vagy újabb, ha még nem tette.
+Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visualstudio.microsoft.com/vs) és [.NET-keretrendszer 4.7.1](https://dotnet.microsoft.com/download) vagy újabb, ha még nem tette.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,17 +41,17 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 1. Indítsa el a Visual Studiót, és válassza ki **fájl** > **új** > **projekt**.
 
-2. Az a **új projekt** párbeszédablakban válassza **telepített**, bontsa ki a **Visual C#**   >  **Windows asztali**, kiválasztása **Console App (.NET Framework)**, adjon meg egy **neve** válassza ki a projekthez, **.NET-keretrendszer 4.7.1** vagy beállítása, és kattintson a **OK**.
+2. A **új projekt**válassza **telepített** > **Visual C#**   >  **Windows asztali**. Válassza ki **Console App (.NET Framework)**, és adja meg a projekt nevét. Válassza ki **.NET-keretrendszer 4.7.1** vagy felfelé, és válassza ki **OK**.
 
-## <a name="connect-to-app-configuration-store"></a>Csatlakozhat az alkalmazás a konfigurációs adattároló
+## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
 
-1. Kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése...** . Az a **Tallózás** lapon, keresése és a projekthez adja hozzá az alábbi NuGet-csomagok (Ellenőrizze a **előzetes verzió** jelölőnégyzetet, ha nem látja őket).
+1. Kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**. Az a **Tallózás** lapon, keresése és a következő NuGet-csomagok hozzáadása a projekthez. Ha nem látja őket, válassza ki a **előzetes verzió** jelölőnégyzetet.
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
     ```
 
-2. Frissítés a *App.config* fájlt a projekt a következőképpen:
+2. Frissítés a *App.config* fájlt a projekt az alábbiak szerint:
 
     ```xml
     <configSections>
@@ -71,9 +71,9 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
     </appSettings>
     ```
 
-   Ne feledje, hogy lesz kell olvasásakor, az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterláncot a környezeti változó `ConnectionString`, fontos, hogy adja hozzá a `Environment` konfigurációs builder előtt a `MyConfigStore` a a `configBuilders` tulajdonságát a `appSettings` szakaszban.
+   Az alkalmazás konfigurációs tár a kapcsolati karakterláncot a környezeti változóból olvasható `ConnectionString`. Adja hozzá a `Environment` konfigurációs builder előtt a `MyConfigStore` a a `configBuilders` tulajdonságát a `appSettings` szakaszban.
 
-3. Nyissa meg *Program.cs* és frissítheti a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt `ConfigurationManager`.
+3. Nyissa meg *Program.cs*, és frissítse a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
@@ -86,15 +86,15 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 ## <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
 
-1. Nevű környezeti változó értéke **ConnectionString** az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterláncot. Ha Windows-parancssort használja, hajtsa végre a következő parancsot:
+1. Nevű környezeti változó értéke **ConnectionString** az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterláncot. Ha a Windows-parancssort használja, futtassa a következő parancsot:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Ha a Windows Powershellt használ, hajtsa végre a következő parancsot:
+    Windows PowerShell használatakor a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Indítsa újra a módosítás érvénybe lépéséhez, majd nyomja le a Visual Studio **Ctrl + F5** a billentyűzeten hozhat létre és futtassa a konzolalkalmazást.
+2. Indítsa újra a Visual Studióban, hogy a módosítás érvénybe léptetéséhez. Nyomja le a Ctrl + F5 billentyűkombinációt hozhat létre és futtassa a konzolalkalmazást.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -102,7 +102,7 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy új alkalmazás-konfigurációs adattároló létrehozta és a .NET-keretrendszer konzolalkalmazást használta azt. Alkalmazáskonfiguráció használatával kapcsolatos további információkért folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
+Ez a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és a .NET-keretrendszer konzolalkalmazást használta. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
 > [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)

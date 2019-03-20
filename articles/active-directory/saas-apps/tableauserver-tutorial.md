@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0a8f6ce325dd087aec5e055e09e20e7de62a40
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1b48d3bced2061dbe7e8ba26e2c6738e44ba4b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204831"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: A Tableau Server az Azure Active Directory-integráció
 
@@ -171,7 +171,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     b. A jelölőnégyzet bejelölésével **SAML-hitelesítés engedélyezése a kiszolgáló**.
 
-    c. A tableau Server visszatérési URL-cím – a Tableau Server felhasználók érik el, mint például az URL-cím http://tableau_server. Használatával http://localhost nem ajánlott. Egy URL-cím használatával záró perjellel (például http://tableau_server/) nem támogatott. Másolás **Tableau Server visszatérési URL-cím** , és illessze be az Azure AD **bejelentkezési URL-** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
+    c. A tableau Server visszatérési URL-cím – a Tableau Server felhasználók érik el, mint például az URL-cím <http://tableau_server>. Használatával `http://localhost` nem ajánlott. Egy URL-cím használatával záró perjellel (például `http://tableau_server/`) nem támogatott. Másolás **Tableau Server visszatérési URL-cím** , és illessze be az Azure AD **bejelentkezési URL-** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
 
     d. SAML-entitás azonosítója – az entitás azonosítója egyedileg azonosítja az identitásszolgáltató a Tableau Server telepítése. Adhatja meg a Tableau Server URL-CÍMÉT újra itt, ha szeretné, de nem rendelkezik a Tableau Server URL-címét. Másolás **SAML Entitásazonosító** , és illessze be az Azure AD **azonosító** szövegmezőjébe **Tableau Server tartomány és URL-címek** szakaszban.
 
@@ -205,7 +205,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

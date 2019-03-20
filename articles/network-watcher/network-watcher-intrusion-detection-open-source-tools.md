@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901270"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hajtsa végre a hálózati behatolás felderítése a Network Watcher és a nyílt forráskódú eszközökkel
 
@@ -39,7 +39,7 @@ Mindkét nyílt forráskódú eszközöket beállíthatja egy Azure virtuális g
 
 ### <a name="install-suricata"></a>Suricata telepítése
 
-Minden más módszerrel telepítés keresse fel http://suricata.readthedocs.io/en/latest/install.html
+Minden más módszerrel telepítés keresse fel https://suricata.readthedocs.io/en/latest/install.html
 
 1. A virtuális gép a parancssori terminálban futtassa a következő parancsokat:
 
@@ -58,7 +58,7 @@ Ezen a ponton nincs Suricata futtatásához a szabályokat. A saját szabályoka
 Töltse le a szabálykészlet, és másolja őket abba a könyvtárba:
 
 ```
-wget http://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
+wget https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
 tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```
@@ -261,7 +261,7 @@ A minta-irányítópult több Vizualizációk Suricata riasztási naplóját biz
 
 1. Az első 10 riasztások – a 10 leggyakoribb aktivált riasztások és azok leírását. Egyéni riasztást kattintva szűri le, hogy az adott riasztásra vonatkozó információk az irányítópulton.
 
-    ![Kép: 4][4]
+    ![image 4][4]
 
 1. A riasztások – számát a szabálykészletben által aktivált riasztások száma
 
@@ -269,7 +269,7 @@ A minta-irányítópult több Vizualizációk Suricata riasztási naplóját biz
 
 1. Felső 20 forrás és a cél IP-címek és portok – a tortadiagramok a legnépszerűbb 20 IP-címek és portok a riasztások megjelenítése a váltotta ki. Szűrhet az adott IP-címek és portok megtekintéséhez, hogy hány és milyen típusú riasztások le vannak aktiválása.
 
-    ![a kép 6][6]
+    ![image 6][6]
 
 1. Riasztási összegzés – egy tábla minden egyes riasztás részletes összegzése. Ez a táblázat többi paraméter a lényeges az egyes riasztások megjelenítéséhez testre szabhatja.
 

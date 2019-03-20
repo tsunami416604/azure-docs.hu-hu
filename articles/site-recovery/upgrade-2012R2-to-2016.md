@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853273"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Frissítés a Windows Server 2012 R2-állomások, SCVMM 2012 R2-ben konfigurált az Azure Site Recovery a Windows Server 2016 és az SCVMM 2016-ban
 
@@ -50,8 +50,8 @@ Mielőtt frissít, vegye figyelembe a következőket:-
     - Győződjön meg arról, hogy az új SCVMMs a fürthöz hozzáadni kívánt, ugyanazokat a neveket, mielőtt volt. 
 
 - Ha két, több minkét SCVMMs által kezelt webhely közötti replikál, győződjön meg arról, hogy frissítsen a helyreállítási oldalon először az elsődleges oldal frissítése előtt.
-> [!WARNING]
-> Az SCVMM 2012 R2 rendszerben elosztott kulcskezelés, a frissítés során válassza ki a **tárolni a titkosítási kulcsokat az Active Directory**. A szolgáltatásfiók és az elosztott kulcskezelés beállításait körültekintően válassza. A választott beállítás alapján a titkosított adatok, például a sablonokban található jelszavak előfordulhat, hogy nem érhető el a frissítés után el, és esetleg a befolyásolja az Azure Site Recovery replikációs
+  > [!WARNING]
+  > Az SCVMM 2012 R2 rendszerben elosztott kulcskezelés, a frissítés során válassza ki a **tárolni a titkosítási kulcsokat az Active Directory**. A szolgáltatásfiók és az elosztott kulcskezelés beállításait körültekintően válassza. A választott beállítás alapján a titkosított adatok, például a sablonokban található jelszavak előfordulhat, hogy nem érhető el a frissítés után el, és esetleg a befolyásolja az Azure Site Recovery replikációs
 
 > [!IMPORTANT]
 > Tekintse meg a részletes SCVMM dokumentációját [Előfeltételek](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)
@@ -79,8 +79,8 @@ Mielőtt frissít a Windows Server 2012 R2-állomások, frissítenie az SCVMM 20
 
 4. [Telepítse a VMM 2016-ban](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Indítsa el az SCVMM, és minden gazdagépre állapotának ellenőrzéséhez **hálók** fülre. Kattintson a **frissítése** beolvasni a legfrissebb állapotát. Megtekintheti az állapotát, a "Figyelmet". 
-17. Telepítse a legújabb [a Microsoft Azure Site Recovery Provider](http://aka.ms/downloaddra) az SCVMM a.
-16. Telepítse a legújabb [a Microsoft Azure Recovery Service (MARS) ügynöke](http://aka.ms/latestmarsagent) a fürt minden gazdagépen. Annak biztosítása érdekében, SCVMM sikerül lekérdeznie a gazdagépek frissítése.
+17. Telepítse a legújabb [a Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra) az SCVMM a.
+16. Telepítse a legújabb [a Microsoft Azure Recovery Service (MARS) ügynöke](https://aka.ms/latestmarsagent) a fürt minden gazdagépen. Annak biztosítása érdekében, SCVMM sikerül lekérdeznie a gazdagépek frissítése.
 
 **Frissítés a Windows Server 2012 R2-állomások a Windows Server 2016-ra**
 
@@ -97,8 +97,8 @@ Mielőtt frissít a Windows Server 2012 R2-állomások, frissítenie az SCVMM 20
 1.  Eltávolítás az ASR-szolgáltató navigáljon a Vezérlőpult -> Programok -> Programok és szolgáltatások -> Microsoft Azure Site Recovery, és kattintson az Eltávolítás
 2. Kövesse a lépéseket [Itt](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) a végrehajtani kívánt frissítési módtól függ.
 3. Indítsa el az SCVMM-konzolon, és minden gazdagépre állapotának ellenőrzéséhez **hálók** fülre. Kattintson a **frissítése** beolvasni a legfrissebb állapotát. Megtekintheti az állapotát, a "Figyelmet".
-4. Telepítse a legújabb [a Microsoft Azure Site Recovery Provider](http://aka.ms/downloaddra) az SCVMM a.
-5. A legújabb frissítés [a Microsoft Azure Recovery Service (MARS) ügynöke](http://aka.ms/latestmarsagent) a fürt minden gazdagépen. Annak érdekében, SC a VMM nem tudja lekérdezni a gazdagépek frissítése.
+4. Telepítse a legújabb [a Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra) az SCVMM a.
+5. A legújabb frissítés [a Microsoft Azure Recovery Service (MARS) ügynöke](https://aka.ms/latestmarsagent) a fürt minden gazdagépen. Annak érdekében, SC a VMM nem tudja lekérdezni a gazdagépek frissítése.
 
 
 **Frissítés a Windows Server 2012 R2-állomások a Windows Server 2016-ra**

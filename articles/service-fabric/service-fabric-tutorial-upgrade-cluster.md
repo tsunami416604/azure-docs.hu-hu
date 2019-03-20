@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e34856704b474ac1b7d25d589be5f98be2b113cc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 02f973af71f0ee7e1fd1bcf712a08e001ec41667
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671556"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224957"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Az Azure Service Fabric-fürt futtatókörnyezetének frissítése
 
-Ez az oktatóanyag a sorozat harmadik része, és egy Azure Service Fabric-fürtön található Service Fabric-futtatókörnyezet frissítését mutatja be. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtökhöz készült, és nem vonatkozik a különálló Service Fabric-fürtökre.
+Ez az oktatóanyag része, amely egy sorozat negyedik, és bemutatja, hogyan frissítse a Service Fabric-futtatókörnyezet, az Azure Service Fabric-fürtön. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtökhöz készült, és nem vonatkozik a különálló Service Fabric-fürtökre.
 
 > [!WARNING]
 > Az oktatóanyag jelen részéhez PowerShell szükséges. Az Azure CLI-eszközök még nem támogatják a fürt-futtatókörnyezet frissítésének támogatását. Másik lehetőségként a fürt a portálon is frissíthető. További információkért lásd az [Azure Service Fabric-fürt frissítését](service-fabric-cluster-upgrade.md).
@@ -40,6 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
+> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * Fürt futtatókörnyezetének frissítése
 > * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)

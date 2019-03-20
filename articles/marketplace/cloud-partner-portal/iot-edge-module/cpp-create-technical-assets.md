@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 877e42dc8d6e69834cf989122f855ada560b813c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2ed4826eb47ab2fb13d312860475f9ec9b323bf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201244"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884154"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Az IoT Edge-modul technikai eszközök előkészítése
 
@@ -40,12 +40,12 @@ A következő műszaki követelményeknek teljesülniük kell ahhoz, hogy az IoT
 
 Az IoT Edge-modul támogatnia kell a platform alábbi lehetőségek közül.
 
-#### <a name="tier-1-platforms-supported-by-iot-edge"></a>1. rétegbeli rendszerek IoT Edge által támogatott
+#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Tier 1 platforms supported by IoT Edge
 
 Támogatja az IoT Edge által támogatott összes 1. rétegbeli rendszerek (feljegyzett [Azure IoT Edge-támogatás](https://docs.microsoft.com/azure/iot-edge/support)). Ez a beállítás azt javasoljuk, mert a felhasználói élményt biztosít. Ezen feltételeknek megfelelő modulok felhőkompetenciáit kell lesz. Egy modul ezt a platform lehetőséget kell:
 
 - Adjon meg egy `latest` címke és a egy verzió címkéje (például `1.0.1`), amelyek a GitHub beépített jegyzékfájl címkék [jegyzékfájl-eszköz](https://github.com/estesp/manifest-tool).
-- Használja a [a Marketplace-en lapon](./cpp-marketplace-tab.md) mutató hivatkozás hozzáadása [hitelesített eszközöket kompatibilis IoT Edge](https://aka.ms/iot-edge-certified). Ez a hivatkozás mutat `http://aka.ms/iot-edge-certified`, egy webhely, ahol az ügyfelek tallózása vagy keresése hitelesített eszközöket. Ezen a webhelyen van, más néven a [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) eszközkatalógus.
+- Használja a [a Marketplace-en lapon](./cpp-marketplace-tab.md) mutató hivatkozás hozzáadása [hitelesített eszközöket kompatibilis IoT Edge](https://aka.ms/iot-edge-certified). Ez a hivatkozás mutat `https://aka.ms/iot-edge-certified`, egy webhely, ahol az ügyfelek tallózása vagy keresése hitelesített eszközöket. Ezen a webhelyen van, más néven a [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) eszközkatalógus.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Egy IoT Edge által támogatott 1. rétegbeli rendszerek részét
   
@@ -61,9 +61,9 @@ Megcélzott IoT Edge-eszközökön IoT Edge-modul dimenziók (CPU/RAM/Storage/GP
 - A modul kell **munkahelyi legalább egy IoT Edge-minősítéssel rendelkező** az eszköz a [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) eszközkatalógus.
 - A **minimális hardverkövetelmények** dokumentálni kell, a legutóbbi tartalmi kivonatként az ajánlat leírása (alatt a [piactér lapján](./cpp-marketplace-tab.md)). Igény szerint is listázhatja az ajánlott hardverkövetelményeknek ha jelentősen eltérnek. Például adja hozzá a következő szakasz végén található az ajánlat leírása:
 
- ```html
+  ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
- ```
+  ```
 
 ### <a name="configuration"></a>Konfiguráció
 
@@ -119,7 +119,7 @@ Az modulokat, amelyek nem használják az IoT-modul SDK-t, a kevésbé pontos in
 
 IoT Edge-modulok a gazdagép, a lehető legalacsonyabb jogosultsági szintű hozzáférést kell kérnie. [Az emelt szintű modulok](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) el kell kerülni.
 
-### <a name="module-iot-sdk"></a>A modul IoT SDK-val
+### <a name="module-iot-sdk"></a>Module IoT SDK
 
 Minősítési előfeltétele többek között az IoT-modul SDK-t nem. Azonban például az IoT-modul SDK-val rendelkezhetnek jobb felhasználói élményt. Ha például útválasztást, vagy üzeneteket küld a felhő támogatásához.
 
@@ -128,10 +128,11 @@ Az IoT-modul SDK modul példányai számával kapcsolatos telemetriai adataihoz 
 
 ## <a name="recertification-process"></a>Tanúsításra folyamat
 
-<!-- Add legal time windows--> Partnerek értesítést kap, amely hatással van a modulokat, például a használhatatlanná tévő változást történik:
+<!-- Add legal time windows-->
+Partnerek értesítést kap, amely hatással van a modulokat, például a használhatatlanná tévő változást történik:
 
 - IoT Edge által támogatott szint 1 operációs rendszer/arch támogatási mátrix
-- IoT-modul SDK-t
+- IoT Module SDK
 - IoT Edge-futtatókörnyezet
 - Az IoT Edge-modul hitelesítő irányelvek
 

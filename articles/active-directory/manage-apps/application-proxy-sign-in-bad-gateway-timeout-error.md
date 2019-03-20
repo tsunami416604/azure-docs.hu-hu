@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 995f9d2bc0ad0a6b985790d75a63866a3a2d55bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f8db5552ad81a1a47db72a5372e643a6fc167888
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091205"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -75,19 +75,19 @@ Első gyors lépésben ellenőrizze és javítsa ki a belső URL-cím megnyitás
 
 Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsoport:
 
-1.  Nyissa meg az alkalmazás a portálon a **Azure Active Directory**, kattintson a **vállalati alkalmazások**, majd **összes alkalmazáshoz.** Nyissa meg az alkalmazást, majd válassza ki **alkalmazásproxy** a bal oldali menüből.
+1. Nyissa meg az alkalmazás a portálon a **Azure Active Directory**, kattintson a **vállalati alkalmazások**, majd **összes alkalmazáshoz.** Nyissa meg az alkalmazást, majd válassza ki **alkalmazásproxy** a bal oldali menüből.
 
-2.  Tekintse meg a Összekötőcsoport mező. Ha a csoport nincs aktív összekötő, megjelenik egy figyelmeztetés. Ha nem látja a figyelmeztetéseket, helyezze át a "Ellenőrizze-e minden szükséges port szerepel az engedélyezési listán".
+2. Tekintse meg a Összekötőcsoport mező. Ha a csoport nincs aktív összekötő, megjelenik egy figyelmeztetés. Ha nem látja a figyelmeztetéseket, helyezze át a "Ellenőrizze-e minden szükséges port szerepel az engedélyezési listán".
 
-3.  Ha nem a megfelelő Összekötőcsoport jelennek meg, használatával a listából válassza ki a megfelelő csoportot, majd erősítse meg, nem lesznek láthatók a figyelmeztetéseket. Ha az importálni kívánt Összekötőcsoport jelenik-e meg, kattintson a figyelmeztető üzenetet, nyissa meg a-összekötő felügyeleti.
+3. Ha nem a megfelelő Összekötőcsoport jelennek meg, használatával a listából válassza ki a megfelelő csoportot, majd erősítse meg, nem lesznek láthatók a figyelmeztetéseket. Ha az importálni kívánt Összekötőcsoport jelenik-e meg, kattintson a figyelmeztető üzenetet, nyissa meg a-összekötő felügyeleti.
 
-4.  Itt van néhány módon lehet további:
+4. Itt van néhány módon lehet további:
 
-  * Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, továbbléphet az összekötő a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
+   * Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, továbbléphet az összekötő a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
 
-  * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Általában az összekötő telepítve van az alkalmazás ugyanazon a kiszolgálón. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
+   * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Általában az összekötő telepítve van az alkalmazás ugyanazon a kiszolgálón. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
 
-  * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
+   * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
 
 Használata után ezeket a lépéseket, az alkalmazás hozzá van rendelve egy csoport használata összekötők, hogy tesztelje újból az alkalmazást. Ha nem továbbra is működik, továbbra is a következő szakaszban.
 

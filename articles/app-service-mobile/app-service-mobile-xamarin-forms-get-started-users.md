@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1bbd481218128c482769cd6a28910e135c1ce16d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063774"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001034"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hitelesítés hozzáadása a Xamarin Forms-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -132,7 +132,7 @@ Ez a szakasz bemutatja, hogyan valósíthat meg a **IAuthenticate** az Android-a
         public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
 5. Frissítés a **MainActivity** hozzáadásával osztály egy **MobileServiceUser** mezőt és a egy **hitelesítés** módszer, amelyek szükségesek a **IAuthenticate** felület, a következő:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -192,7 +192,7 @@ Ez a szakasz bemutatja, hogyan valósíthat meg a **IAuthenticate** az Android-a
 
 **Az alkalmazás az összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-Bizonyos esetekben ütközik a támogatási csomagok, csak a Visual studio, de ehhez a kivételhez futásidőben az alkalmazás-összeomlásokat figyelmeztetés jelenik meg. Ebben az esetben kell győződjön meg arról, hogy a projekt hivatkozott összes támogatási csomag verziójával rendelkezik-e. A [Azure Mobile Apps NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) rendelkezik `Xamarin.Android.Support.CustomTabs` függőséget az Android platformhoz, így ha a projekt újabb használja a támogatási csomagok, a csomag telepítéséhez szükséges verziójú ütközések elkerülése érdekében közvetlenül kell.
+Bizonyos esetekben ütközik a támogatási csomagok, csak a Visual studio, de ehhez a kivételhez futásidőben az alkalmazás-összeomlásokat figyelmeztetés jelenik meg. Ebben az esetben kell győződjön meg arról, hogy a projekt hivatkozott összes támogatási csomag verziójával rendelkezik-e. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 ## <a name="add-authentication-to-the-ios-app"></a>Hitelesítés hozzáadása az iOS-alkalmazás
 Ez a szakasz bemutatja, hogyan valósíthat meg a **IAuthenticate** felületének az iOS-alkalmazás projekt. Kihagyhatja ezt a szakaszt, ha nem támogatja az iOS-eszközök.
@@ -208,7 +208,7 @@ Ez a szakasz bemutatja, hogyan valósíthat meg a **IAuthenticate** felületéne
         public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 5. Frissítés a **AppDelegate** hozzáadásával osztály egy **MobileServiceUser** mezőt és a egy **hitelesítés** módszer, amelyek szükségesek a **IAuthenticate** felület, a következő:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()
@@ -279,7 +279,7 @@ Ez a szakasz bemutatja, hogyan valósíthat meg a **IAuthenticate** felület a W
         public sealed partial class MainPage : IAuthenticate
 5. Frissítés a **MainPage** hozzáadásával osztály egy **MobileServiceUser** mezőt és a egy **hitelesítés** módszer, amelyek szükségesek a **IAuthenticate**felület, a következő:
 
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
 
         public async Task<bool> Authenticate()

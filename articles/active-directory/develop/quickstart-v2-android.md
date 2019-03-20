@@ -3,8 +3,8 @@ title: Azure AD v2 Android – rövid útmutató | Microsoft Docs
 description: Megtudhatja, hogy hívnak meg Android-alkalmazások olyan API-kat, amelyek az Azure Active Directory 2.0 végpontjáról származó hozzáférési jogkivonatokat igényelnek
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227f8691e65e588d4eb274fd11f76ebd01bb7834
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35cf0f7ffe118a3c878e14e4a81793d18a646fa9
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202892"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
@@ -30,7 +30,7 @@ ms.locfileid: "56207313"
 
 A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud egy Android-alkalmazás bejelentkezni személyes, munkahelyi vagy iskolai fiókokba, lekérni egy hozzáférési jogkivonatot, és meghívni a Microsoft Graph API-t.
 
-![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-android/android-intro.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-android/android-intro-updated.png)
 
 > [!NOTE]
 > **Előfeltételek**

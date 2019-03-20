@@ -3,23 +3,23 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: bc439cbe5e690077213b5d7953a4e74488988c3b
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 5a1ff10901d10fb274a6fa1418f04e1f20113cb7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203599"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -31,7 +31,7 @@ Ez az útmutató végén az alkalmazás fogja tudni fogadja el a bejelentkezése
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Az útmutató működése](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.png)
+![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral-updated.png)
 
 Ez az útmutató által létrehozott alkalmazás a forgatókönyvet, amelyben egy felhasználó használ kér egy bejelentkezés gombot-on keresztül hitelesítendő felhasználó egy ASP.NET-webhely eléréséhez a böngészőben alapul. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
 
@@ -39,7 +39,7 @@ Ez az útmutató által létrehozott alkalmazás a forgatókönyvet, amelyben eg
 
 Ez az útmutató a következő kódtárakra használja:
 
-|Erőforrástár|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenet fenntartását cookie-k segítségével|

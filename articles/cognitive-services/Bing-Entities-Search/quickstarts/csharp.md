@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 1d25e9c5abce36665827c87e1a05908e61d6338b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861451"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API használatávalC#
 
@@ -28,6 +28,11 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
+    * A NuGet-csomag telepítése a Visual studióban:
+        1. Kattintson a jobb gombbal a megoldás-kezelő
+        2. Kattintson a **NuGet-csomagok kezelése...**
+        3. Keresse meg **newtonsoft.json** és telepítse a csomagot
+
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
 
@@ -38,6 +43,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 1. Hozzon létre egy új C# konzol megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
     
     ```csharp
+    using Newtonsoft.Json;
     using System;
     using System.Net.Http;
     using System.Text;
@@ -68,25 +74,26 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 
 1. Az osztályon belül hozzon létre egy függvényt, nevű `Search()`. Hozzon létre egy új `HttpClient` objektumot, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
-    1. A gazdagép és az elérési út egyesítésével hozhatnak létre a kérés URI Azonosítóját. Majd adja hozzá a piaci, és URL-kódolása a lekérdezést.
-    2. Await `client.GetAsync()` és a egy HTTP-válaszának lekérdezése majd tárolni a json-választ vár `ReadAsStringAsync()`.
-    3. Nyomtassa ki a karakterlánc a konzolhoz.
+   1. A gazdagép és az elérési út egyesítésével hozhatnak létre a kérés URI Azonosítóját. Majd adja hozzá a piaci, és URL-kódolása a lekérdezést.
+   2. Await `client.GetAsync()` és a egy HTTP-válaszának lekérdezése majd tárolni a json-választ vár `ReadAsStringAsync()`.
+   3. A JSON-karakterláncot formázni `JsonConvert.DeserializeObject()` és kinyomtathatja a konzolhoz.
 
-    ```csharp
-    async static void Search()
-    {
-        //...
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+      ```csharp
+      async static void Search()
+      {
+       //...
+       HttpClient client = new HttpClient();
+       client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
+       string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
 
-        HttpResponseMessage response = await client.GetAsync(uri);
+       HttpResponseMessage response = await client.GetAsync(uri);
 
-        string contentString = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(JsonPrettyPrint(contentString));
-    }
-    ```
+       string contentString = await response.Content.ReadAsStringAsync();
+       dynamic parsedJson = JsonConvert.DeserializeObject(contentString);
+       Console.WriteLine(parsedJson);
+      }
+      ```
 
 2. Az alkalmazás fő metódust, hívja a `Search()` függvény.
     

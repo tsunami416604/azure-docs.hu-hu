@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 50ed230993f1df07b463297605a144830476803d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540262"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076139"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -40,7 +40,7 @@ Konfigurálja a végpontot, figyelés, a következő beállításokat kell megad
 
 ## <a name="how-endpoint-monitoring-works"></a>Végpont-monitorozás működése
 
-A monitorozási protokoll HTTP vagy HTTPS van beállítva, ha az ellenőrzési Traffic Manager-ügynök a végpontra a protokoll, port és a megadott relatív elérési úton a GET kérelmet küld. Ha visszakap egy 200-OK válasz, vagy a válaszok bármelyikét konfigurált a ** várt állapotkód: * címtartományok **, majd, hogy a végpont kifogástalan számít. Ha a válasz egy másik értéket, vagy ha nem kap választ adva, majd a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés az időkorláton belül. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont, nem kifogástalannak van jelölve. 
+A monitorozási protokoll HTTP vagy HTTPS van beállítva, ha az ellenőrzési Traffic Manager-ügynök a végpontra a protokoll, port és a megadott relatív elérési úton a GET kérelmet küld. Ha visszakap egy 200-OK válasz, vagy a válaszok bármelyikét konfigurált a **várt állapotkód \*címtartományok**, akkor számít, hogy, hogy a végpont kifogástalan állapotú. Ha a válasz egy másik értéket, vagy ha nem kap választ adva, majd a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés az időkorláton belül. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont, nem kifogástalannak van jelölve. 
 
 Ha a monitorozási protokoll TCP, az ellenőrzési Traffic Manager-ügynök használatával a megadott port TCP-kapcsolati kérelmekre indítja el. Ha a végpont válaszol a kérésre választ ad a kapcsolat létrehozásához, adott állapot-ellenőrzése sikeres van megjelölve, és az ellenőrzési Traffic Manager-ügynök alaphelyzetbe állítja a TCP-kapcsolatot. Ha a válasz egy másik értéket, vagy ha nem érkezik válasz a határidőn belül megadva, a Traffic Manager-ügynököt újra megkísérli a hibák száma megengedhető (nincs újból megkísérli történik, ha a beállítás értéke 0) megfelelően tesztelés. Ha egymást követő hibák száma nagyobb, mint a hibák száma megengedhető beállítást, majd, hogy a végpont nem kifogástalannak van jelölve.
 

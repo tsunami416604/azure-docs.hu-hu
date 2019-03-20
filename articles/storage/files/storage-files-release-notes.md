@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: f2f109b6861e54cc613fd06f26983897f7c1a9bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118612"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -55,7 +55,7 @@ Az alábbi kibocsátási megjegyzések olyan verziójára 5.0.2.0 az Azure File 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Megoldott problémák és fejlesztései
 
 - Azure Government-felhőbeli támogatása
-    - Előzetes verziós támogatást az Azure Government cloud hozzáadtuk. Ehhez egy fehér felsorolt előfizetéssel, és a egy speciális ügynök letöltése a Microsoft. Az előzetes verzió eléréséhez, írjon e-mailt küldjön közvetlenül [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
+  - Előzetes verziós támogatást az Azure Government cloud hozzáadtuk. Ehhez egy fehér felsorolt előfizetéssel, és a egy speciális ügynök letöltése a Microsoft. Az előzetes verzió eléréséhez, írjon e-mailt küldjön közvetlenül [ AzureFiles@microsoft.com ](mailto:AzureFiles@microsoft.com).
 - Adatdeduplikáció támogatása
     - Az Adatdeduplikáció teljes mértékben mostantól támogatott a felhőbeli rétegezés engedélyezve van a Windows Server 2016 és Windows Server 2019. Egy köteten, a deduplikáció engedélyezése a felhőbeli rétegezés engedélyezett lehetővé teszi további fájlok a helyi gyorsítótár több tároló üzembe helyezése nélkül.
 - A kapcsolat nélküli adatátvitel (pl. keresztül Data Box) támogatása

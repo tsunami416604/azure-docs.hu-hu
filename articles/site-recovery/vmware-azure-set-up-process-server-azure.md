@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 099576b1a4c5c28aab7672aaeb9274bc0beb96bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105641"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Állítsa be a folyamatkiszolgáló, az Azure-ban feladat-visszavételhez
 
@@ -33,7 +33,7 @@ Tudjon meg többet a [ismételt védelem](vmware-azure-reprotect.md) és [felada
 3. A **Hozzáadás folyamatkiszolgáló** lapot, és válassza a folyamatkiszolgáló az Azure-beli üzembe helyezéséhez.
 4. Adja meg az Azure beállításait, például feladatátvételi, egy erőforráscsoportot és az Azure-régiót használ a feladatátvétel és a virtuális hálózatot, amelyben az Azure virtuális gépek találhatók használt előfizetés. Ha több Azure-hálózatok használta, a folyamatkiszolgáló egyes kell.
 
-  ![Folyamat kiszolgáló a gyűjteményelem hozzáadása](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![Folyamat kiszolgáló a gyűjteményelem hozzáadása](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. A **kiszolgálónév**, **felhasználónév**, és **jelszó**, adjon meg egy nevet a folyamatkiszolgáló és a hitelesítő adatokat, amelyek a kiszolgálón rendszergazdai engedélyekkel hozzá lesz rendelve.
 5. A kiszolgáló Virtuálisgép-lemezek az alhálózatot, amelyben kerülnek a folyamatkiszolgáló virtuális gép és a kiszolgáló IP-címe, amely hozzá lesz rendelve a virtuális gép indításakor használandó tárfiókot adjon meg.

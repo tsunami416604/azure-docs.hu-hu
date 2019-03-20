@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan a JavaScript-alkalmazások hívhatják egy API,
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694eb49244afb6761ce274572f15273ccef6cbb5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203047"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Gyors útmutató: A felhasználók és a egy JavaScript-alkalmazását a hozzáférési jogkivonat beszerzése
 
@@ -29,7 +29,7 @@ ms.locfileid: "57195030"
 
 Ebben a rövid útmutatóban fog megtudhatja, hogyan használhat egy kódmintát, amely bemutatja, hogyan egyoldalas alkalmazás (SPA) is jelentkezzen be a személyes fiókokat, munkahelyi és iskolai fiókok, a Microsoft Graph API vagy minden olyan webes API hívása hozzáférési jogkivonatot kapjon a JavaScript.
 
-![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-javascript/javascriptspa-intro.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Regisztráljon, és letöltheti a rövid útmutató

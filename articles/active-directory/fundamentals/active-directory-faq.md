@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e1f96ce6114b46d9523e29fe3000b7e9c612ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f602b5f9809e5bbe0b1efb52cfa66877a31a2170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183339"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directoryval kapcsolatos gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -29,7 +29,7 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 ## <a name="access-azure-and-azure-active-directory"></a>Az Azure és az Azure Active Directory elérése
 **K: Miért kapok "nem találhatók előfizetések" Amikor megpróbálom elérni az Azure Portalon az Azure AD?**
 
-**VÁLASZ:** Az Azure portal eléréséhez, minden egyes felhasználói engedélyre van szüksége az Azure-előfizetéssel. Ha fizetős Office 365- vagy Azure AD előfizetéssel rendelkezik, látogasson el a [https://aka.ms/accessAAD](https://aka.ms/accessAAD) címre egy egyszeri aktiváláshoz. Egyébként aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést.
+**V:** Az Azure portal eléréséhez, minden egyes felhasználói engedélyre van szüksége az Azure-előfizetéssel. Ha fizetős Office 365- vagy Azure AD előfizetéssel rendelkezik, látogasson el a [https://aka.ms/accessAAD](https://aka.ms/accessAAD) címre egy egyszeri aktiváláshoz. Egyébként aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést.
 
 További információkért lásd:
 
@@ -38,7 +38,7 @@ További információkért lásd:
 - - -
 **K: Mi az Azure AD közötti kapcsolat az Office 365 és az Azure?**
 
-**VÁLASZ:** Az Azure AD-az összes webes szolgáltatáshoz közös identitás- és hozzáférési képességeket nyújt. Akár az Office 365, a Microsoft Azure, az Intune vagy más rendszert használ, már használja az Azure AD-t a bejelentkezés és a hozzáférés-kezelés bekapcsolásához ezen szolgáltatások mindegyikéhez.
+**V:** Az Azure AD-az összes webes szolgáltatáshoz közös identitás- és hozzáférési képességeket nyújt. Akár az Office 365, a Microsoft Azure, az Intune vagy más rendszert használ, már használja az Azure AD-t a bejelentkezés és a hozzáférés-kezelés bekapcsolásához ezen szolgáltatások mindegyikéhez.
 
 A webes szolgáltatások használatához beállított összes felhasználó felhasználói fiókként van meghatározva egy vagy több Azure AD-példányban. Beállíthatja ezeket a fiókokat az ingyenes Azure AD-képességekhez, például a felhőalkalmazások eléréséhez.
 
@@ -48,7 +48,7 @@ A fizetős Azure AD szolgáltatások, például az Enterprise Mobility + Securit
 
 **K:  Mik a tulajdonos és a globális rendszergazda közötti különbségekről?**
 
-**VÁLASZ:** Alapértelmezés szerint a személy, aki Azure-előfizetésre regisztrál az Azure-erőforrások tulajdonosi szerepkör van rendelve. Egy olyan tulajdonost Microsoft-fiók vagy a címtárból, amelyhez az Azure-előfizetés társítva van egy munkahelyi vagy iskolai fiókot használhat.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
+**V:** Alapértelmezés szerint a személy, aki Azure-előfizetésre regisztrál az Azure-erőforrások tulajdonosi szerepkör van rendelve. Egy olyan tulajdonost Microsoft-fiók vagy a címtárból, amelyhez az Azure-előfizetés társítva van egy munkahelyi vagy iskolai fiókot használhat.  Ez a szerepkör jogosult szolgáltatások kezelésére az Azure Portalon.
 
 Ha másoknak is kell bejelentkezniük és elérniük a szolgáltatásokat az ugyanahhoz az előfizetéshez, hozzárendelheti azokat a megfelelő [beépített szerepkör](../../role-based-access-control/built-in-roles.md). További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
@@ -59,7 +59,7 @@ Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobili
 - - -
 **K: Van egy jelentést, amely bemutatja, hogy mikor fog lejárni a saját Azure AD-felhasználói licenceket?**
 
-**VÁLASZ:** Nem.  Ez jelenleg nem érhető el.
+**V:** Nem.  Ez jelenleg nem érhető el.
 
 - - -
 
@@ -68,18 +68,18 @@ Ezenkívül a fizetős Azure AD szolgáltatások, például az Enterprise Mobili
 
 **K: Hogyan hagyja meg a bérlőt, amikor közreműködőként vagyok hozzáadva?**
 
-**VÁLASZ:** Amikor közreműködőként más szervezet bérlőjéhez van hozzáadva, a jobb felső sarokban lévő "bérlőváltó" is használhatja a válthat a bérlők között.  Jelenleg nem hagyhatja el a meghívó szervezetet, és a Microsoft dolgozik ezen a funkción.  A funkció eléréséig megkérheti a meghívó szervezetet, hogy távolítsa el Önt a bérlők közül.
+**V:** Amikor közreműködőként más szervezet bérlőjéhez van hozzáadva, a jobb felső sarokban lévő "bérlőváltó" is használhatja a válthat a bérlők között.  Jelenleg nem hagyhatja el a meghívó szervezetet, és a Microsoft dolgozik ezen a funkción.  A funkció eléréséig megkérheti a meghívó szervezetet, hogy távolítsa el Önt a bérlők közül.
 - - -
 **K: Hogyan csatlakoztathatom a helyszíni címtár Azure ad-val?**
 
-**VÁLASZ:** Kapcsolódás a helyszíni címtár Azure ad-ben az Azure AD Connect használatával.
+**V:** Kapcsolódás a helyszíni címtár Azure ad-ben az Azure AD Connect használatával.
 
 További információkért lásd: [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md).
 
 - - -
 **K: Hogyan tegye állíthatok be egyszeri Bejelentkezést a helyszíni címtár és a felhőalkalmazásaim között?**
 
-**VÁLASZ:** Csak akkor kell beállítani az egyszeri bejelentkezés (SSO) a helyszíni címtár és az Azure AD között. Amíg az Azure AD-n keresztül éri el a felhőalkalmazásokat, a szolgáltatás automatikusan átirányítja a felhasználókat, hogy megfelelően hitelesíteni tudják magukat a helyszíni hitelesítő adataikkal.
+**V:** Csak akkor kell beállítani az egyszeri bejelentkezés (SSO) a helyszíni címtár és az Azure AD között. Amíg az Azure AD-n keresztül éri el a felhőalkalmazásokat, a szolgáltatás automatikusan átirányítja a felhasználókat, hogy megfelelően hitelesíteni tudják magukat a helyszíni hitelesítő adataikkal.
 
 Az egyszeri bejelentkezés helyszínről végzett implementálása könnyen elérhető olyan összevonási megoldásokkal, mint az Active Directory összevonási szolgáltatások (AD FS), illetve a jelszókivonat-szinkronizálás konfigurálásával. Könnyedén telepítheti mindkét lehetőséget az Azure AD Connect konfigurációs varázslójával.
 
@@ -88,14 +88,14 @@ További információkért lásd: [Helyszíni identitások integrálása az Azur
 - - -
 **K: Biztosítja az Azure AD önkiszolgáló portál a szervezetemben lévő felhasználók számára?**
 
-**VÁLASZ:** Igen, az Azure AD biztosítja a [Azure AD hozzáférési Panel](https://myapps.microsoft.com) a felhasználóknak az önkiszolgáló és az alkalmazások elérését. Ha Ön Office 365-felhasználó, észreveheti, hogy számos képesség megegyezik az Office 365 portál képességeivel.
+**V:** Igen, az Azure AD biztosítja a [Azure AD hozzáférési Panel](https://myapps.microsoft.com) a felhasználóknak az önkiszolgáló és az alkalmazások elérését. Ha Ön Office 365-felhasználó, annak számos, a ugyanazokat a képességeket a [Office 365-portál](https://portal.office.com).
 
 További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 - - -
 **K: Nem az Azure AD segít a helyszíni infrastruktúrám kezelésében?**
 
-**VÁLASZ:** Igen. Az Azure AD Premium Edition tartalmazza az Azure AD Connect Health eszközt. Az Azure AD Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe.  
+**V:** Igen. Az Azure AD Premium Edition tartalmazza az Azure AD Connect Health eszközt. Az Azure AD Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe.  
 
 További információkért lásd: [A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben](../hybrid/whatis-hybrid-identity-health.md).  
 
@@ -103,25 +103,25 @@ További információkért lásd: [A helyszíni identitás-infrastruktúra és a
 ## <a name="password-management"></a>Jelszókezelés
 **K: Használható az Azure AD jelszóvisszaírást jelszó-szinkronizálás nélkül? (Ebben az esetben használhatom az Azure AD önkiszolgáló jelszó-visszaállítást (SSP) jelszóvisszaírással úgy, hogy nem a felhőben tárolom a jelszavaimat?)**
 
-**VÁLASZ:** Nem kell szinkronizálni az Active Directory-jelszavakat az Azure AD-visszaírás engedélyezéséhez. Összevont környezetben az Azure AD egyszeri bejelentkezés (SSO) a helyszíni címtárra támaszkodik a felhasználó hitelesítéséhez. Ehhez a forgatókönyvhöz nem kell nyomon követni a helyszíni jelszót az Azure AD-ben.
+**V:** Nem kell szinkronizálni az Active Directory-jelszavakat az Azure AD-visszaírás engedélyezéséhez. Összevont környezetben az Azure AD egyszeri bejelentkezés (SSO) a helyszíni címtárra támaszkodik a felhasználó hitelesítéséhez. Ehhez a forgatókönyvhöz nem kell nyomon követni a helyszíni jelszót az Azure AD-ben.
 
 - - -
 **K: Mennyi ideig tart a jelszavak visszaírását a helyszíni Active Directory?**
 
-**VÁLASZ:** Jelszó visszaírása valós időben.
+**V:** Jelszó visszaírása valós időben.
 
 További részletekért lásd: [A jelszókezelés első lépései](../authentication/quickstart-sspr.md).
 
 - - -
 **K: Használhatok jelszóvisszaírást rendszergazda által kezelt jelszavakhoz?**
 
-**VÁLASZ:** Igen, ha engedélyezve van a késleltetve visszaírt jelszó, a rendszergazdai jelszó jelszóműveleteket a rendszer visszaírja a helyszíni környezetben.  
+**V:** Igen, ha engedélyezve van a késleltetve visszaírt jelszó, a rendszergazdai jelszó jelszóműveleteket a rendszer visszaírja a helyszíni környezetben.  
 
 A jelszavakkal kapcsolatos kérdésekre adott további válaszokért lásd: [Jelszókezelés – gyakori kérdések](../authentication/active-directory-passwords-faq.md).
 - - -
 **K:  Mi a teendő, ha a jelszó megváltoztatása közben nem emlékszem a meglévő Office 365 vagy az Azure AD jelszó?**
 
-**VÁLASZ:** Az ilyen típusú helyzet van több lehetőség közül választhat.  Használjon önkiszolgáló jelszó-visszaállítást (SSPR), ha elérhető.  Az SSPR konfigurációjától függ, hogy működik-e.  További információkért lásd: [A jelszó-visszaállítási portál működése](../authentication/howto-sspr-deployment.md).
+**V:** Az ilyen típusú helyzet van több lehetőség közül választhat.  Használjon önkiszolgáló jelszó-visszaállítást (SSPR), ha elérhető.  Az SSPR konfigurációjától függ, hogy működik-e.  További információkért lásd: [A jelszó-visszaállítási portál működése](../authentication/howto-sspr-deployment.md).
 
 Office 365-felhasználók esetében a rendszergazda alaphelyzetbe állíthatja a jelszót a [Felhasználói jelszavak átállítása](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US) szakaszban ismertetett lépések segítségével.
 
@@ -149,14 +149,14 @@ Az átjárónk szűri a kéréseket és bizonyos fokú védelmet biztosít a bot
 
 **K: Hol találok az Azure ad-vel előre integrált alkalmazások listáját és azok képességeinek?**
 
-**VÁLASZ:** Az Azure AD a Microsoft, az alkalmazásszolgáltatók és a partnerek több mint 2,600 előre integrált alkalmazások rendelkezik. Mindegyik előre integrált alkalmazás támogatja az egyszeri bejelentkezést (SSO). Az egyszeri bejelentkezéssel a szervezeti hitelesítő adatokkal érheti el az alkalmazásokat. Néhány alkalmazás az automatikus üzembe helyezést és megszüntetést is támogatja.
+**V:** Az Azure AD a Microsoft, az alkalmazásszolgáltatók és a partnerek több mint 2,600 előre integrált alkalmazások rendelkezik. Mindegyik előre integrált alkalmazás támogatja az egyszeri bejelentkezést (SSO). Az egyszeri bejelentkezéssel a szervezeti hitelesítő adatokkal érheti el az alkalmazásokat. Néhány alkalmazás az automatikus üzembe helyezést és megszüntetést is támogatja.
 
 Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
 - - -
 **K: Mi történik, ha van szükségem az alkalmazás nem szerepel az Azure AD Marketplace-en?**
 
-**VÁLASZ:** Az Azure AD Premium szolgáltatással adja hozzá, és konfigurálja a kívánt bármely alkalmazás. Az alkalmazás képességeitől és a beállításaitól függően konfigurálhat egyszeri bejelentkezést és automatikus üzembe helyezést.  
+**V:** Az Azure AD Premium szolgáltatással adja hozzá, és konfigurálja a kívánt bármely alkalmazás. Az alkalmazás képességeitől és a beállításaitól függően konfigurálhat egyszeri bejelentkezést és automatikus üzembe helyezést.  
 
 További információkért lásd:
 
@@ -166,7 +166,7 @@ További információkért lásd:
 - - -
 **K: Hogyan jelentkeznek felhasználók alkalmazások Azure AD-vel?**
 
-**VÁLASZ:** Az Azure AD több módot nyújt a felhasználók megtekinthessék és elérhessék az alkalmazásaikat, például:
+**V:** Az Azure AD több módot nyújt a felhasználók megtekinthessék és elérhessék az alkalmazásaikat, például:
 
 * Azure AD Hozzáférési panel
 * Office 365 alkalmazásindító
@@ -178,7 +178,7 @@ További információkért lásd: [alkalmazások felhasználói élményének](.
 - - -
 **K: Milyen Azure AD különböző módokon teszi lehetővé a hitelesítést és egyszeri bejelentkezés alkalmazásokhoz?**
 
-**VÁLASZ:** Az Azure AD számos szabványos protokollt támogat a hitelesítéshez és engedélyezéshez, például ilyen a SAML 2.0, OpenID Connect, az OAuth 2.0 és WS-Federation. Az Azure AD a jelszótárolást és az automatikus bejelentkezési képességeket is támogatja olyan alkalmazásoknál, amelyek csak az űrlapalapú hitelesítést támogatják.  
+**V:** Az Azure AD számos szabványos protokollt támogat a hitelesítéshez és engedélyezéshez, például ilyen a SAML 2.0, OpenID Connect, az OAuth 2.0 és WS-Federation. Az Azure AD a jelszótárolást és az automatikus bejelentkezési képességeket is támogatja olyan alkalmazásoknál, amelyek csak az űrlapalapú hitelesítést támogatják.  
 
 További információkért lásd:
 
@@ -189,25 +189,25 @@ További információkért lásd:
 - - -
 **K: A helyszíni futtatok alkalmazásokat adhat hozzá?**
 
-**VÁLASZ:** Az Azure AD-alkalmazásproxy egyszerű és biztonságos hozzáférést, Ön által választott helyszíni webalkalmazásokhoz biztosít. Ezeket az alkalmazásokat ugyanúgy érheti el, ahogyan a szolgáltatott szoftverek (SaaS) alkalmazásokat az Azure AD-ben. Nincs szükség VPN-re vagy a hálózati infrastruktúra módosítására.  
+**V:** Az Azure AD-alkalmazásproxy egyszerű és biztonságos hozzáférést, Ön által választott helyszíni webalkalmazásokhoz biztosít. Ezeket az alkalmazásokat ugyanúgy érheti el, ahogyan a szolgáltatott szoftverek (SaaS) alkalmazásokat az Azure AD-ben. Nincs szükség VPN-re vagy a hálózati infrastruktúra módosítására.  
 
 További információért lásd: [Helyszíni alkalmazások biztonságos távoli elérése](../manage-apps/application-proxy.md).
 
 - - -
 **K: Hogyan követelhetem meg a multi-factor authentication szolgáltatás egy adott alkalmazásokhoz hozzáféréssel rendelkező felhasználók számára?**
 
-**VÁLASZ:** Az Azure AD feltételes hozzáférésével minden alkalmazáshoz egyedi hozzáférési házirendet rendelhet. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
+**V:** Az Azure AD feltételes hozzáférésével minden alkalmazáshoz egyedi hozzáférési házirendet rendelhet. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
 
 További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](../active-directory-conditional-access-azure-portal.md).
 
 - - -
 **K: Mi az automatizált felhasználókiépítése SaaS-alkalmazások?**
 
-**VÁLASZ:** Az Azure AD használatával automatizálhatja a létrehozását, karbantartási és eltávolítását számos népszerű felhőalapú SaaS-alkalmazások felhasználói identitásokat.
+**V:** Az Azure AD használatával automatizálhatja a létrehozását, karbantartási és eltávolítását számos népszerű felhőalapú SaaS-alkalmazások felhasználói identitásokat.
 
 További információ: [A felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
 
 - - -
 **K:  Állítható be a biztonságos LDAP-kapcsolatot az Azure ad-vel?**
 
-**VÁLASZ:**  Nem. Az Azure AD nem támogatja az LDAP protokollt. A secure LDAP azonban konfigurálhatja az Azure AD tartományi szolgáltatásokkal.
+**V:**  Nem. Az Azure AD nem támogatja az LDAP protokollt. A secure LDAP azonban konfigurálhatja az Azure AD tartományi szolgáltatásokkal.

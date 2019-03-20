@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 75a3f8e6c872e0bbb9fde8c5776d99ba0cf2c3d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116596"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Korábbi Java Service Fabric-alkalmazások frissítése a Java-kódtárak a Mavenből történő lekérésére
 Nemrégiben áthelyeztük a Service Fabric Java bináris fájlokat a Service Fabric Java SDK-ból a Mavenen futó tárakba. A **mavencentral** paranccsal mostantól lekérheti a legújabb Service Fabric Java-függőségeket. Ennek a gyors üzembehelyezési útmutatónak a segítségével Yeoman-sablonok vagy az Eclipse használatával frissítheti a korábban a Service Fabric Java SDK-val való használatra létrehozott meglévő Java-alkalmazásait, hogy a Maven-alapú build kompatibilis legyen azokkal.
@@ -27,17 +27,17 @@ Nemrégiben áthelyeztük a Service Fabric Java bináris fájlokat a Service Fab
 ## <a name="prerequisites"></a>Előfeltételek
 1. Először is el kell távolítania a meglévő Java SDK-t.
 
-  ```bash
-  sudo dpkg -r servicefabricsdkjava
-  ```
+   ```bash
+   sudo dpkg -r servicefabricsdkjava
+   ```
 2. Telepítse a legújabb Service Fabric parancssori felületet az [itt](service-fabric-cli.md) leírt lépések végrehajtásával.
 
 3. A Service Fabric Java-alkalmazások létrehozásához és szerkesztéséhez mindenképp telepíteni kell a JDK 1.8-at és a Gradle-t. Ha a JDK 1.8 (openjdk-8-jdk) és a Gradle még nincsenek telepítve, a következő futtatásával telepítheti azokat –
 
- ```bash
- sudo apt-get install openjdk-8-jdk-headless
- sudo apt-get install gradle
- ```
+   ```bash
+   sudo apt-get install openjdk-8-jdk-headless
+   sudo apt-get install gradle
+   ```
 4. Az [itt](service-fabric-application-lifecycle-sfctl.md) leírt lépések végrehajtásával frissítse az alkalmazás telepítési/eltávolítási szkriptjeit, hogy azok az új Service Fabric parancssori felületet használják. Referenciaként tekintse meg az első lépéseket bemutató [példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 >[!TIP]

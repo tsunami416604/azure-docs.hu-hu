@@ -3,8 +3,8 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 167fccd8e0546bc8f5ac1b24489cae68cc14191f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2b9d696ca896d0c8f0801f055000b9763d65d7ff
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843235"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203613"
 ---
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Bejelentkezési és kijelentkezési kérések kezelésére vezérlő hozzáadása
 
@@ -122,7 +122,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
 1.  Kattintson a jobb gombbal a `Controllers` mappa: `Add` > `Controller`
 2.  Válassza a(z) `MVC {version} Controller – Empty` lehetőséget.
 3.  Kattintson a *hozzáadása*
-4.  Adja neki a `ClaimsController` nevet
+4.  Adja neki a `ClaimsController` nevet.
 5.  Cserélje le a kódot a vezérlő osztályhoz az alábbi - kód Ez hozzáadja a `[Authorize]` attribútumot az osztályra:
 
     ```csharp

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: f809644d4b94ea5facebba45b921485c739eb047
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774897"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078811"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -149,7 +149,7 @@ A fürt létrehozását követően a Blob storage hozzáadásához kövesse az a
    * Beállíthatja **titkosítási típus** való **None**.  Az Azure Storage alapértelmezés szerint titkosítva van.
    * Kattintson a **Filer hozzáadása**.
 
-  Részletes információkat, olvassa el a [hozzáadása egy új felhőalapú core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) a fürt konfiguráció Avere útmutatóban. 
+   Részletes információkat, olvassa el a [hozzáadása egy új felhőalapú core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) a fürt konfiguráció Avere útmutatóban. 
 
 Az oldal frissül, vagy frissítheti a lap az új core filer megjelenítéséhez.
 

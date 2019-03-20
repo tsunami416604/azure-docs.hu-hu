@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a84b87a3577d3b88d49040d309f48083d494879
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5c2f85e6417c3185df58e757f9831ef171e39add
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730851"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181894"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Gyors útmutató: Szavak keresése a kétnyelvű szótárban, a Java használatával
 
@@ -74,7 +74,7 @@ Jegyezze fel, hogy ez a minta a HTTP-kéréseket OkHttp és Gson kezelni, és JS
 Hozzunk létre egy mappát a mintaalkalmazást. Futtassa a munkakönyvtárban:
 
 ```console
-mkdir -p src/main/java
+mkdir -p src\main\java
 ```
 
 Ezt követően ebben a mappában hozzon létre egy fájlt `AltTranslation.java`.

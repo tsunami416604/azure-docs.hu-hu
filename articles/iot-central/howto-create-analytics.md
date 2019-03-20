@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 19dbddc635041d0e5cf617cbe20713abc07cefaf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 05915e2059e45c002a9dfa71a538ed6391caa157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775747"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078329"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Az adatok elemzéséhez analytics használata
 
@@ -30,7 +30,7 @@ Választania kell egy **eszköz beállítása**, adja hozzá egy **szűrő** (ne
 * **Szűrők:** Igény szerint hozzáadhat szűrők a keresést, hogy az adatok alaposabb vizsgálatát. Egyszerre legfeljebb 10 szűrőket is hozzáadhat. Például Oakland az összes hűtőszekrények belül található, amelyek hőmérséklet kellett volna nyissa meg a fenti 60 fok.
 * **Időszak:** Alapértelmezés szerint azt fogja lekérdezni az adatok az elmúlt 10 percben. Egy előre meghatározott időpontra tartományok módosítani ezt az értéket, vagy válasszon egy egyéni időszakot.
 
- ![Analytics-lekérdezés](media/howto-create-analytics/analytics-query.png)
+  ![Analytics-lekérdezés](media/howto-create-analytics/analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Az adatok megjelenítése
 
@@ -51,7 +51,7 @@ Számos lehetőséget kínál a lekérdezési eredmények képi megjelenítés i
 * **Rács megjelenítése:** Az eredmények táblázatos formátumban, lehetővé téve a megtekintheti az egyes konkrét értékét érhetők el. Ez a nézet is megfelel az akadálymentességi sztenderdeknek.
 * **Diagram megjelenítése:** Az eredmények megjelennek egy sor formátuma segít azonosítani felfelé vagy lefelé trendeket és rendellenességeket.
 
- ![A rácsnézet elemzési megjelenítése](media/howto-create-analytics/analytics-showgrid.png)
+  ![A rácsnézet elemzési megjelenítése](media/howto-create-analytics/analytics-showgrid.png)
 
 Nagyítás teszi lehetővé az adatokon a kezdőlapjára. Ha azt tapasztalja, hogy egy adott időszakban, összpontosítson az eredményhalmaz belül szeretné, használja a kurzort megnyitása a terület, amelyeket szeretne nagyítása, és a rendelkezésre álló vezérlők segítségével hajtsa végre az alábbi műveletek egyikét:
 
@@ -59,7 +59,7 @@ Nagyítás teszi lehetővé az adatokon a kezdőlapjára. Ha azt tapasztalja, ho
 * **Kicsinyítés:** Ez a vezérlő lehetővé teszi, hogy az utolsó nagyítás kicsinyítés egy szinttel. Például nagyítás, ha az az adatokhoz háromszor lép kicsinyítés biztonsági egy lépéssel egyszerre.
 * **Nagyítás alaphelyzetbe állítása:** Nagyítás különböző szintjeit végzett el, miután a Nagyítás visszaállítási vezérlő használatával térjen vissza az eredeti eredményhalmaz.
 
- ![Hajtsa végre az adatokon a Nagyítás](media/howto-create-analytics/analytics-zoom.png)
+  ![Hajtsa végre az adatokon a Nagyítás](media/howto-create-analytics/analytics-zoom.png)
 
 A vonal stílusának igény szerint módosíthatja. Négy lehetőségek állnak rendelkezésére:
 
@@ -68,7 +68,7 @@ A vonal stílusának igény szerint módosíthatja. Négy lehetőségek állnak 
 * **. Lépés:** A diagramon minden pont közötti sor esetében egy lépésben.
 * **Pontdiagram:** Minden pont a diagram ábrázolási őket sorok nélkül.
 
- ![Különböző típusa érhető el az Analytics](media/howto-create-analytics/analytics-linetypes.png)
+  ![Különböző típusa érhető el az Analytics](media/howto-create-analytics/analytics-linetypes.png)
 
 Végül, mi számít az adatok között az y tengely kiválasztásával három mód közül:
 
@@ -76,7 +76,7 @@ Végül, mi számít az adatok között az y tengely kiválasztásával három m
 * **Trendvonalat:** Minden mérték grafikon egyik y tengely van korrelálnak, de az y tengely értékei változnak a kijelölt mérték alapján. Trendvonalat diagramok akkor hasznos, ha átfedő több mértéket, és szeretné látni a minták között ezek az intézkedések ugyanazon időtartományra.
 * **Megosztott y tengely:** Összes gráf megoszthatja az azonos y tengely, és ne módosítsa az értékeket a tengelyen. Megosztott y tengely diagramok akkor hasznos, ha egyetlen tekintse meg az adatokat a felosztás által szeletelés közben szeretne.
 
- ![Az adatok elrendezése y tengely között a különböző vizualizációs módok](media/howto-create-analytics/analytics-yaxis.png)
+  ![Az adatok elrendezése y tengely között a különböző vizualizációs módok](media/howto-create-analytics/analytics-yaxis.png)
 
 ## <a name="next-steps"></a>További lépések
 

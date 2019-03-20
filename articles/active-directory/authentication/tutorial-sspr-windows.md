@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200870"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224651"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
@@ -33,8 +33,10 @@ Ebben az oktatóanyagban engedélyezi, hogy a felhasználók új jelszót kérje
    * [Az Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy
    * [Hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md), a hálózati kapcsolat egy tartományvezérlőhöz.
 * Engedélyeznie kell az Azure AD önkiszolgáló jelszó-visszaállítás.
-* Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` a HTTPS-forgalom (a 443-as port) engedélyezett URL-címek listájához.
+* Ha a Windows 10 rendszerű eszközök proxykiszolgálót vagy tűzfal mögé, hozzá kell adnia az URL-címeket, `passwordreset.microsoftonline.com` és `ajax.aspnetcdn.com` a HTTPS-forgalom (a 443-as porton) engedélyezett az URL-címei listáján.
+* Az SSPR Windows 10-es gép szintű proxyk csak támogatott
 * Tekintse át az alábbi korlátozások előtt ez a funkció a környezetben.
+* Ha egy rendszerkép használatával, a sysprep előtt győződjön meg arról, hogy a webes gyorsítótár nincs bejelölve a beépített rendszergazda a profilmásolási lépés végrehajtása előtt. További információ található a támogatási cikk [egyéni alapértelmezett felhasználói profil használata esetén a teljesítmény gyenge](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Jelszó-visszaállítási hivatkozás konfigurálása az Intune használatával
 

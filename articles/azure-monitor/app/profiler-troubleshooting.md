@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855673"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -36,11 +36,11 @@ Profiler ír nyomkövetési üzenetek és egyéni eseményeket az Application In
     ```
     Az alábbi képen keresések két AI-erőforrások két példa látható: 
     
-    * Bal oldalán az alkalmazás nem kap kéréseket Profiler futása közben. Az üzenet tájékoztatja, hogy a feltöltés nem volt tevékenység miatt megszakadt. 
+   * Bal oldalán az alkalmazás nem kap kéréseket Profiler futása közben. Az üzenet tájékoztatja, hogy a feltöltés nem volt tevékenység miatt megszakadt. 
 
-    * Jobb Profiler elindult, és egyéni eseményeket, amikor azt észlelte, hogy Profiler futása közben történt kérelmeket küldeni. Ha a ServiceProfilerSample egyéni esemény jelenik meg, az azt jelenti, hogy a Profiler nyomkövetési csatlakozik egy kérelmet, és megtekintheti a nyomkövetés a a **Application Insights teljesítmény** ablaktáblán.
+   * Jobb Profiler elindult, és egyéni eseményeket, amikor azt észlelte, hogy Profiler futása közben történt kérelmeket küldeni. Ha a ServiceProfilerSample egyéni esemény jelenik meg, az azt jelenti, hogy a Profiler nyomkövetési csatlakozik egy kérelmet, és megtekintheti a nyomkövetés a a **Application Insights teljesítmény** ablaktáblán.
 
-    Ha nem működik a telemetria megjelenik, Profiler nem fut. A hibaelhárításhoz tekintse meg a hibaelhárítási szakaszok az adott alkalmazás típusának, a cikk későbbi részében.  
+     Ha nem működik a telemetria megjelenik, Profiler nem fut. A hibaelhárításhoz tekintse meg a hibaelhárítási szakaszok az adott alkalmazás típusának, a cikk későbbi részében.  
 
      ![Profiler telemetria keresése][profiler-search-telemetry]
 
@@ -90,7 +90,7 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 
 1. Az a **webes alkalmazás-vezérlő** ablaktáblán nyissa meg **beállítások**.
 
-1. Állítsa be **.Net Framework version** való **v4.6**.
+1. Állítsa be **.NET-keretrendszer verziója** való **v4.6**.
 
 1. Állítsa be **Always On** való **a**.
 
@@ -124,7 +124,7 @@ A webalkalmazás a folyamatos webjobs-feladatként futó Profiler. Megnyithatja 
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler és az Azure Diagnostics-problémák hibaelhárítása
 
-  >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja.
+  >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja. Ha alacsonyabb szolgáltatásszintre váltásához az App Insights SDK verziója a Visual Studio használ, előfordulhat, hogy hibaüzenetet egy kötés átirányítási futásidőben. Ennek oka az, a "newVersion" Microsoft.ApplicationInsights web.config fájljában "2.7.2.0" értékre kell állítani az AI SDK-t, de alacsonyabb verziójúra változtatása nem frissíti automatikusan után.
 
 Ha szeretné látni, hogy a Profiler megfelelően van-e konfigurálva az Azure Diagnostics által, tegye a következőket három: 
 1. Először ellenőrizze, hogy az Azure Diagnostics konfigurálása a tartalmát, üzembe helyezett vannak-e a vártaknak. 

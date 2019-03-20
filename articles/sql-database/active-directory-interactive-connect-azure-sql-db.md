@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: cb892ddf6414b270d891042c9849137f1e2fdb35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834597"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Csatlakozás az Azure SQL Database és az Active Directory MFA
 
@@ -99,7 +99,7 @@ Az Azure SQL Database az Azure AD-rendszergazdák és felhasználók kapcsolatos
 
 Egy SQL Database-kiszolgálóhoz az Azure AD-rendszergazdát futtathatja a C# példaprogram. Azure AD-felhasználót is futtassa a programot, ha vannak az adatbázisban. Az Azure AD SQL-rendszergazda vagy egy Azure AD-felhasználó, aki már létezik az adatbázisban, és rendelkezik a `ALTER ANY USER` engedéllyel is hozzáadhat egy felhasználót.
 
-Az adatbázis az SQL-lel is hozzáadhat egy felhasználó [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=sql-server-2017) parancsot. Például: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
+Az adatbázis az SQL-lel is hozzáadhat egy felhasználó [ `Create User` ](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) parancsot. Például: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
 További információkért lásd: [használata az Azure Active Directory-hitelesítés az SQL Database felügyelt példányába vagy az SQL Data Warehouse-hitelesítéshez](sql-database-aad-authentication.md).
 
@@ -126,7 +126,7 @@ Az a C# programot sikeresen futtatni kell, hogy a statikus mezők rendelje hozz�
 | Statikus mező neve | Példaérték | Ha az Azure Portalon |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **SQL Server-kiszolgálók** > **Szűrés név alapján** |
-| AzureAD_UserID | „auser@abc.onmicrosoft.com” | **Az Azure Active Directory** > **felhasználói** > **új vendégfelhasználó** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Az Azure Active Directory** > **felhasználói** > **új vendégfelhasználó** |
 | Initial_DatabaseName | "myDatabase." | **SQL Server-kiszolgálók** > **SQL-adatbázisok** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > **alkalmazás azonosítója** |
 | RedirectUri | új Uri ("https://mywebserver.com/") | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > *[Your-alkalmazás-Regisz]*  >  **Beállítások** > **RedirectURIs**<br /><br />Ebben a cikkben minden olyan érvényes érték nem okoz gondot az RedirectUri, itt nem használ. |
@@ -342,5 +342,7 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 - [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 1f31189a83b6659371fcd0b34423f2fb681526c2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ec382217bfa32da19c0b98e656f3782739b26cc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148062"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125058"
 ---
 ## <a name="download-the-source-code"></a>Letöltheti a forráskódot
 
@@ -53,16 +53,16 @@ Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lép
     ```
 
 1. Futtassa a **start.cmd** parancsfájlt. A parancsfájl kérni fogja, hogy a következő információkat:
-    * A megoldás nevét.
-    * A használandó előfizetés.
-    * Használata az Azure-adatközpont helyét.
+   * A megoldás nevét.
+   * A használandó előfizetés.
+   * Használata az Azure-adatközpont helyét.
 
-    A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja. Ez az erőforráscsoport már nincs szüksége a megfelelő erőforrások után törölheti.
+     A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja. Ez az erőforráscsoport már nincs szüksége a megfelelő erőforrások után törölheti.
 
-    A parancsfájl is hozzáad egy előtaggal rendelkező környezeti változók készletét **számítógépek** a helyi gépen. Ha elindítja a Docker-tárolók vagy helyileg mikroszolgáltatás-projektek, a konfigurációs értékeket, olvassa az ezeket a környezeti változókat.
+     A parancsfájl is hozzáad egy előtaggal rendelkező környezeti változók készletét **számítógépek** a helyi gépen. Ha elindítja a Docker-tárolók vagy helyileg mikroszolgáltatás-projektek, a konfigurációs értékeket, olvassa az ezeket a környezeti változókat.
 
-    > [!TIP]
-    > Miután a parancsfájl futása befejeződött, azt is menti a környezeti változók nevű fájlba  **\<a kezdőmappa\>\\.pcs\\\<megoldásnevet\>.env** . A jövőbeli megoldás megoldásgyorsító központi telepítések használhatja őket. Vegye figyelembe, hogy a helyi gépen állítsa be a környezeti változók felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
+     > [!TIP]
+     > Miután a parancsfájl futása befejeződött, azt is menti a környezeti változók nevű fájlba  **\<a kezdőmappa\>\\.pcs\\\<megoldásnevet\>.env** . A jövőbeli megoldás megoldásgyorsító központi telepítések használhatja őket. Vegye figyelembe, hogy a helyi gépen állítsa be a környezeti változók felülbírálási értékeket a **szolgáltatások\\parancsfájlok\\helyi\\.env** fájl futtatásakor **docker-compose**.
 
 1. Lépjen ki a parancssori környezetből.
 

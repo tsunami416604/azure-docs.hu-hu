@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114620"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104675"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek felvétele az Azure Security Centerben
 Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.
@@ -37,7 +37,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
 2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
- ![Security Center – Áttekintés][2]
+   ![Security Center – Áttekintés][2]
 
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
 4. Válassza a **Bevezetés** lapot. ![Bevezetés][3]
@@ -46,16 +46,16 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
     ![Nem Azure-beli számítógép hozzáadása](./media/quick-onboard-linux-computer/non-azure.png)
 
-6.  A **Közvetlen ügynök** lapon a **LINUX-ÜGYNÖK LETÖLTÉSE ÉS FELVÉTELE** területen kattintson a **Másolás** gombra a *wget* parancs másolásához.
+6. A **Közvetlen ügynök** lapon a **LINUX-ÜGYNÖK LETÖLTÉSE ÉS FELVÉTELE** területen kattintson a **Másolás** gombra a *wget* parancs másolásához.
 
-7.  Nyissa meg a Jegyzettömböt, és illessze be a parancsot. Olyan helyre mentse a fájlt, amelyet el lehet érni a Linux rendszerű számítógépről.
+7. Nyissa meg a Jegyzettömböt, és illessze be a parancsot. Olyan helyre mentse a fájlt, amelyet el lehet érni a Linux rendszerű számítógépről.
 
 ## <a name="install-the-agent"></a>Az ügynök telepítése
 
-1.  A Linux rendszerű számítógépen nyissa meg a korábban mentett fájlt. Jelölje ki a teljes tartalmát, másolja, nyisson meg egy terminálkonzolt, majd illessze be a parancsot.
-2.  Amikor a telepítés befejeződött, a *pgrep* parancs futtatásával ellenőrizheti, hogy az *omsagent* telepítve lett-e. A parancs visszaadja az *omsagent* folyamatazonosítóját az alább látható módon:
+1. A Linux rendszerű számítógépen nyissa meg a korábban mentett fájlt. Jelölje ki a teljes tartalmát, másolja, nyisson meg egy terminálkonzolt, majd illessze be a parancsot.
+2. Amikor a telepítés befejeződött, a *pgrep* parancs futtatásával ellenőrizheti, hogy az *omsagent* telepítve lett-e. A parancs visszaadja az *omsagent* folyamatazonosítóját az alább látható módon:
 
-  ![Az ügynök telepítése][5]
+   ![Az ügynök telepítése][5]
 
 A Linuxhoz készült Security Center-ügynök naplói a következő helyen találhatók: */var/opt/microsoft/omsagent/<workspace id>/log/*
 

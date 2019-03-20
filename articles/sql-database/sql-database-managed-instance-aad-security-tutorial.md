@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 59971454af4fa2b43d24df1d5876b30524d65d4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903988"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226215"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Oktatóanyag: Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használata Azure SQL Database felügyelt példány biztonsági
 
@@ -207,10 +207,10 @@ Miután az Azure ad-ben kiszolgálói tag (bejelentkezés) létrehozott, és a m
 1. A **Object Explorer**, kattintson a jobb gombbal a kiszolgáló, és válassza a **új lekérdezés** az új kapcsolat.
 1. Az újonnan létrehozott kiszolgáló engedélyeinek ellenőrzése az Azure AD kiszolgálói tag (bejelentkezés) a következő parancs végrehajtásával:
 
-     ```sql
-     SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-     GO
-     ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > Azure AD-vendég felhasználók támogatja a felügyelt példány bejelentkezéseket, csak akkor, ha az Azure AD-csoport részeként hozzá. Egy Azure ad-ben vendégfelhasználó egy fiók, amely az Azure ad-ben a következő felügyelt példányt tartozó, egy másik Azure AD-ből a cégbe. Ha például joe@contoso.com (Azure AD-fiókot) vagy steve@outlook.com (MSA-fiók) is hozzáadhatók az Azure ad-ben aadsqlmi csoporthoz. A felhasználók egy csoportba kerülnek, amint egy bejelentkezési hozhat létre a felügyelt példány **fő** adatbázis csoportot használó a **CREATE LOGIN** szintaxis. Ez a csoport tagjai vendégfelhasználók csatlakozhat a felügyelt példány az aktuális bejelentkezési adatok használata (például joe@contoso.com vagy steve@outlook.com).

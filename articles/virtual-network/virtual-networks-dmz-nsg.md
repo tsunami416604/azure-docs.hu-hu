@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 68655ea03f53fe7100f67d111fcd3c8595bdf4c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052393"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109392"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>1 – példa egy egyszerű Szegélyhálózat NSG-k használata az Azure Resource Manager-sablon létrehozása
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -97,14 +97,14 @@ Minden egyes szabály a következő tárgyalja részletesen:
     ``` 
 
 2. Ebben a példában az első szabály lehetővé teszi, hogy a DNS-forgalmat a háttérbeli alhálózat DNS-kiszolgálóra az összes belső hálózatok között. A szabály néhány fontos paraméterekkel rendelkezik:
-  * "destinationAddressPrefix" - célcím-előtagjában értéke "10.0.2.4 cím", hogy a DNS-forgalom engedélyezett, a DNS-kiszolgáló eléréséhez.
-  * "Iránya" azt jelzi, hogy a forgalom iránya a szabály lép érvénybe. Irányát az alhálózatot, vagy a virtuális gép szempontjából (attól függően, ahol ez az NSG van kötve) van. Így ha iránya "Inbound" és a forgalom lépjen be az alhálózat, a szabály csak akkor vonatkozik és az alhálózatot elhagyó forgalomra nem érinti ez a szabály.
-  * "Prioritás" állítja be, hogy a sorrendet, amelyben az adott ki lesz értékelve. Minél kisebb számra annál magasabb a prioritás. A szabály vonatkozik egy adott adatforgalmat, ha nincsenek további szabályok feldolgozása. Így ha egy 1-es prioritású szabály engedélyezi a forgalmat, és 2-es prioritású szabály megtagadja a forgalmat, és a forgalmi szabályokat is vonatkoznak majd melyeken engedélyezett a forgalom áramlását (mivel az 1. számú szabály kellett egy magasabb prioritású ideig tartott-e érvénybe, és nincsenek további szabályok alkalmazott).
-  * "Hozzáférés" jelzi, ha ez a szabály által érintett forgalom lesz-e a letiltott ("Elutasítás") vagy az engedélyezett ("Engedélyezés").
+   * "destinationAddressPrefix" - célcím-előtagjában értéke "10.0.2.4 cím", hogy a DNS-forgalom engedélyezett, a DNS-kiszolgáló eléréséhez.
+   * "Iránya" azt jelzi, hogy a forgalom iránya a szabály lép érvénybe. Irányát az alhálózatot, vagy a virtuális gép szempontjából (attól függően, ahol ez az NSG van kötve) van. Így ha iránya "Inbound" és a forgalom lépjen be az alhálózat, a szabály csak akkor vonatkozik és az alhálózatot elhagyó forgalomra nem érinti ez a szabály.
+   * "Prioritás" állítja be, hogy a sorrendet, amelyben az adott ki lesz értékelve. Minél kisebb számra annál magasabb a prioritás. A szabály vonatkozik egy adott adatforgalmat, ha nincsenek további szabályok feldolgozása. Így ha egy 1-es prioritású szabály engedélyezi a forgalmat, és 2-es prioritású szabály megtagadja a forgalmat, és a forgalmi szabályokat is vonatkoznak majd melyeken engedélyezett a forgalom áramlását (mivel az 1. számú szabály kellett egy magasabb prioritású ideig tartott-e érvénybe, és nincsenek további szabályok alkalmazott).
+   * "Hozzáférés" jelzi, ha ez a szabály által érintett forgalom lesz-e a letiltott ("Elutasítás") vagy az engedélyezett ("Engedélyezés").
 
-    ```JSON
-    "properties": {
-    "securityRules": [
+     ```JSON
+     "properties": {
+     "securityRules": [
       {
         "name": "enable_dns_rule",
         "properties": {
@@ -119,7 +119,7 @@ Minden egyes szabály a következő tárgyalja részletesen:
           "direction": "Inbound"
         }
       },
-    ```
+     ```
 
 3. Ez a szabály lehetővé teszi, hogy az RDP-forgalom áramlását az internetről érkező RDP-portjára kötött az alhálózaton bármelyik kiszolgálón. 
 
@@ -221,23 +221,23 @@ Minden egyes szabály a következő tárgyalja részletesen:
 1. Az internetes felhasználó egy HTTP-lap kér a hálózati Adaptert a IIS01 hálózati Adapterhez társított nyilvános IP-címe
 2. A nyilvános IP-cím forgalmat továbbítja a VNet felé IIS01 (webkiszolgáló)
 3. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
-  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
-  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
-  3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
 4. Forgalom eléri a belső IP-címét a webkiszolgáló IIS01 (10.0.1.5)
 5. IIS01 figyeli a webes forgalmat, ezt a kérelmet kap, és elindítja a kérés feldolgozása
 6. IIS01 kéri az SQL Server a AppVM01 információk
 7. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
 8. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
-  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
-  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
-  3. NSG 3. szabály (Internet tűzfalhoz) nem vonatkoznak, helyezze át a következő szabály
-  4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (Internet tűzfalhoz) nem vonatkoznak, helyezze át a következő szabály
+   4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
 9. AppVM01 az SQL-lekérdezést kap, és válaszol
 10. Nincsenek kimenő szabályok a háttérbeli alhálózat, mivel engedélyezve van-e a válasz
 11. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
-  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
-  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+    1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+    2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
 12. Az IIS-kiszolgálón az SQL-válasz fogadása és befejezése a HTTP-válasz és küld a kérelmező
 13. Mivel nincsenek kimenő szabályok az előtérbeli alhálózat, a válasz engedélyezve van, és az internetes felhasználó kapja meg a kért weblap.
 
@@ -245,8 +245,8 @@ Minden egyes szabály a következő tárgyalja részletesen:
 1. Egy kiszolgáló-rendszergazdai interneten kér egy RDP-munkamenetet a IIS01 a nyilvános IP-címét a hálózati Adapterhez megadott IIS01 hálózati adapter (a nyilvános IP-cím található a portál vagy a PowerShell használatával)
 2. A nyilvános IP-cím forgalmat továbbítja a VNet felé IIS01 (webkiszolgáló)
 3. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
-  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
-  2. NSG-szabály 2 (RDP) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
 4. Kimenő szabályok, az alapértelmezett szabályok a alkalmazni, és a visszatérő forgalom engedélyezve van
 5. RDP-munkamenet engedélyezve van
 6. IIS01 kérni fogja a felhasználónevet és jelszót
@@ -261,7 +261,7 @@ Minden egyes szabály a következő tárgyalja részletesen:
 2. A hálózati konfigurációt a virtuális hálózatok közötti listák DNS01 (a háttérbeli alhálózat 10.0.2.4 cím), az elsődleges DNS-kiszolgáló, IIS01 küld a DNS-kérelem DNS01
 3. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
 4. Háttérbeli alhálózatot bejövő szabály feldolgozása kezdődik:
-  * NSG-szabály 1 (DNS) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+   * NSG-szabály 1 (DNS) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
 5. DNS-kiszolgáló a kérést kap
 6. DNS-kiszolgáló nem rendelkezik a címmel a gyorsítótárba, és az interneten egy DNS-gyökérkiszolgáló kéri
 7. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
@@ -269,23 +269,23 @@ Minden egyes szabály a következő tárgyalja részletesen:
 9. DNS-kiszolgáló gyorsítótárazza a választ, és reagáljon a biztonsági IIS01 irányuló első kérelem
 10. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
 11. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
-  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
-  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van
+    1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+    2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van
 12. IIS01 DNS01 kap a válasz
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Engedélyezett*) kiszolgáló-hozzáférés fájlt AppVM01
 1. IIS01 AppVM01 fájlt kéri
 2. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
 3. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
-  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
-  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
-  3. NSG 3. szabály (az internethez való IIS01) nem vonatkoznak, helyezze át a következő szabály
-  4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (az internethez való IIS01) nem vonatkoznak, helyezze át a következő szabály
+   4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
 4. AppVM01 dokumentálásáért fájllal (feltéve, hogy a hozzáférés engedélyezett), és a kérést kap
 5. Nincsenek kimenő szabályok a háttérbeli alhálózat, mivel engedélyezve van-e a válasz
 6. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
-  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
-  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+   1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+   2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
 7. Az IIS-kiszolgáló fogadja a fájl
 
 #### <a name="denied-rdp-to-backend"></a>(*Megtagadva*) háttérrendszer RDP-vel
@@ -312,9 +312,9 @@ Minden egyes szabály a következő tárgyalja részletesen:
 1. Az internetes felhasználó SQL adatokat kér IIS01
 2. Mivel ebben az esetben nem a hálózati adapter kiszolgálókhoz társított nyilvános IP-címek, a forgalmat soha ne adjon meg a virtuális hálózathoz, és a kiszolgáló nem érhető el.
 3. Ha valamilyen okból engedélyezve lett a nyilvános IP-cím, az előtér-alhálózatot a bejövő szabály feldolgozása kezdődik:
-  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
-  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
-  3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+   1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+   2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+   3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
 4. Forgalom eléri a IIS01 belső IP-címét (10.0.1.5)
 5. IIS01 1433-as porton, így nincs válasz a kérésre nem figyel.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f5d47d75e80a583b6613eb36fd3da9c61d707
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 28b6732745947043847ce944243bc87398e159fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761480"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892147"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Fájlok feltöltése Media Services-fiókba az Azure Aspera Server On Demand szolgáltatásával 
 
@@ -89,44 +89,44 @@ Ha bejelentkezett az Azure Marketplace-re, hajtsa végre ezeket az alapvető lé
 
     Az alábbi képernyőképen a hozzáférés létrehozása látható. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     Az alábbi képernyőképen a használatra vonatkozó jelentések készítéséhez szükséges felületek láthatók. 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>Fájlok feltöltése az Asperával
 
 1. Töltse le és telepítse az Aspera-ügyfélszoftvert:
     
-    * [Böngészőbővítmény](http://downloads.asperasoft.com/connect2/)
-    * [Funkciógazdag ügyfél](http://downloads.asperasoft.com/en/downloads/2)
+    * [Böngészőbővítmény](https://downloads.asperasoft.com/connect2/)
+    * [Funkciógazdag ügyfél](https://downloads.asperasoft.com/en/downloads/2)
 
 2. Hajtsa végre az első átvitelt. Az Aspera-ügyfelet a következő lépések végrehajtása után használhatja átvitelre az Aspera átviteli szolgáltatással: 
 
-    1. Hozzon létre egy hozzáférési kulcsot az Aspera portálon.  
-    2. Töltse le, telepítse, és licencelje az Aspera-ügyfelet (a szoftver az Aspera portálról érhető el).  
+   1. Hozzon létre egy hozzáférési kulcsot az Aspera portálon.  
+   2. Töltse le, telepítse, és licencelje az Aspera-ügyfelet (a szoftver az Aspera portálról érhető el).  
 
-    >[!NOTE]
-    >A konfigurációs információkért olvassa el az Aspera-ügyfél útmutatóját.
+      >[!NOTE]
+      >A konfigurációs információkért olvassa el az Aspera-ügyfél útmutatóját.
     
-    3. Kérdezze le az Azure Media Accounthoz társított tárfiók adatait az [Azure Portal](https://portal.azure.com/) segítségével. Egészen pontosan a nevet és a kulcsot, valamint annak a Storage-blobtárolónak a nevét, ahová a tartalmat helyezni szeretné. 
+   3. Kérdezze le az Azure Media Accounthoz társított tárfiók adatait az [Azure Portal](https://portal.azure.com/) segítségével. Egészen pontosan a nevet és a kulcsot, valamint annak a Storage-blobtárolónak a nevét, ahová a tartalmat helyezni szeretné. 
 
-        * Tárolóadatok lekérdezése a portálról: keresse meg a tárfiókot, kattintson a hozzáférési kulcsokra, és másolja a fiók nevét és kulcsát.
-        * A tároló nevének lekérdezése: keresse meg a tárfiókot, válassza a **Blobok** lehetőséget, majd annak a tárolónak a nevét, ahová a tartalmat fel kívánja tölteni. 
+       * Tárolóadatok lekérdezése a portálról: keresse meg a tárfiókot, kattintson a hozzáférési kulcsokra, és másolja a fiók nevét és kulcsát.
+       * A tároló nevének lekérdezése: keresse meg a tárfiókot, válassza a **Blobok** lehetőséget, majd annak a tárolónak a nevét, ahová a tartalmat fel kívánja tölteni. 
 
-    Az alábbi képernyőképen az Aspera-ügyfél **Csatlakozáskezelője** látható, ahol meg kell adnia az Azure Storage-szolgáltatástípust, a hitelesítő adatokat, valamint a blobtárolót.
+      Az alábbi képernyőképen az Aspera-ügyfél **Csatlakozáskezelője** látható, ahol meg kell adnia az Azure Storage-szolgáltatástípust, a hitelesítő adatokat, valamint a blobtárolót.
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>További források
 
 A következő források vannak megemlítve ebben a cikkben. 
 
-* [Böngészőbővítmény csatlakoztatása](http://downloads.asperasoft.com/connect2/)
-* [Csatlakoztatási útmutató](http://downloads.asperasoft.com/en/documentation/8)
-* [Aspera-ügyfél](http://downloads.asperasoft.com/en/downloads/2)
-* [Ügyfélútmutató](http://downloads.asperasoft.com/en/documentation/2)
+* [Böngészőbővítmény csatlakoztatása](https://downloads.asperasoft.com/connect2/)
+* [Csatlakoztatási útmutató](https://downloads.asperasoft.com/en/documentation/8)
+* [Aspera-ügyfél](https://downloads.asperasoft.com/en/downloads/2)
+* [Ügyfélútmutató](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>További lépések
 

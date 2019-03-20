@@ -5,29 +5,45 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6a6fc9df2b102fd16bba03f26df4e24a1c946875
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5c6e69e05eaa036e140d7275b4e66930a3e5be7a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409992"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225297"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
-Az Azure Virtual WAN egy olyan hálózati szolgáltatás, amely optimalizált és automatizált ágak közötti kapcsolódást biztosít az Azure-on keresztül. A Virtual WAN segítségével ágeszközöket csatlakoztathat és konfigurálhat az Azure-ral való kommunikációra. Ez elvégezhető manuálisan vagy egy virtuális WAN-partneren keresztül partner eszközök használatával. Partner eszközökkel, könnyen használható, kapcsolat és a konfigurációkezelés egyszerűsítése lehetővé teszi. További információkért lásd: a [helyek és partnerek](virtual-wan-locations-partners.md) cikk. Emellett az Azure-WAN beépített Irányítópult segítségével azonnal képet kaphat hibaelhárítási, amelyek segítségével időt takarít meg, és a egy legegyszerűbb módja nagy méretű kapcsolat biztosít.
+Az Azure virtuális WAN egy hálózati szolgáltatás, amely optimalizált és automatizált ág kapcsolat, és az Azure-on keresztül. Azure-régióban, amely akkor is csatlakozhat az elágazásokhoz a hubs szolgál. Az ágak a csatlakozás után az Azure gerinchálózatra ág közötti és a fiókiroda ágba irányuló kapcsolat létrehozásához használhatja.
 
-![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan.png)
+Az Azure virtuális WAN egyesíti az Azure-felhőben számos szolgáltatás például Site-to-Site VPN (általánosan elérhető), az ExpressRoute (előzetes verzió), pont – hely felhasználói (előzetes verzió) VPN egyetlen operatív felületen. Azure-alapú virtuális hálózatokhoz kapcsolat jött létre a virtuális hálózati kapcsolatok.
 
-A cikk gyors betekintést biztosít az Azure-beli és nem Azure-beli számítási feladatok hálózati kapcsolataiba. A Virtual WAN a következő előnyöket biztosítja:
+![A Virtual WAN ábrája](./media/virtual-wan-about/vwangraphic.png)
+
+Ez a cikk a hálózati kapcsolatot az Azure virtuális WAN gyors betekintést biztosít. A Virtual WAN a következő előnyöket biztosítja:
 
 * **Küllős topológiájú integrált kapcsolat megoldások:** Automatizálhatja a Site-to-Site konfiguráció és a helyszíni hely és a egy Azure-központ közötti kapcsolat.
 * **Automatizált küllő beállítás és konfiguráció:** A virtuális hálózatok és a számítási feladatok Azure hubon zökkenőmentesen kapcsolódik.
 * **Intuitív hibaelhárítási:** Tekintse meg a teljes körű folyamatot az Azure-ban, és a szükséges műveletekre ezen információk használatával.
 
+## <a name="partner-region"></a>Partnerek és helyek
+
+További információkért lásd: a [virtuális WAN-partnerek és helyek](virtual-wan-locations-partners.md) cikk.
+
+### <a name="partner"></a>Partnerek
+
+[!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
+
+### <a name="locations"></a>helyek
+
+[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
+
 ## <a name="s2s"></a>Helyek közötti kapcsolatok
+
+![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan.png)
 
 Ha helyek közötti kapcsolatot szeretne létrehozni a Virtual WAN használatával, ezt megteheti egy [Virtual WAN-partneren](virtual-wan-locations-partners.md) keresztül vagy manuálisan is.
 
@@ -67,20 +83,10 @@ Végpontok közötti virtuális WAN konfigurálásához a következő erőforrá
 
 * **Hub útválasztási táblázatot:**  Hozzon létre egy virtuális központ útvonalat, és a virtuális központ útválasztási táblázatot az útvonal vonatkozik. A virtuális központ útválasztási táblázatán több útvonalat is alkalmazhat.
 
-## <a name="partner-region"></a>Partnerek és helyek
-
-### <a name="partner"></a>Partnerek
-
-[!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
-
-### <a name="locations"></a>helyek
-
-[!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
-
 ## <a name="faq"></a>GYIK
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Nézet a [virtuális WAN-partnerek és helyek](virtual-wan-locations-partners.md) lapot.
+Nézet a [virtuális WAN-partnerek és helyek](virtual-wan-locations-partners.md) további információ a virtuális WAN-partnerek és a helyek lapot.

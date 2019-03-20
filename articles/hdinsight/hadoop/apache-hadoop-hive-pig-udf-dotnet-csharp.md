@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 139fe946b013b1c86404bdef6ed06314af349c89
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.openlocfilehash: 08910cbae9f370dde7b8718ca4868dc7b3510f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108899"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
 
@@ -172,13 +172,13 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 
 6. Az .exe fájlok feltöltéséhez használja a következő módszerek egyikét:
 
-    * Ha használja egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappát a **HiveCSharp** projekt. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **Ok**.
+   * Ha használja egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappát a **HiveCSharp** projekt. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **Ok**.
 
-        ![ikon feltöltése](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![ikon feltöltése](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Ha használ __Azure Data Lake Storage__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **nyílt**.
+   * Ha használ __Azure Data Lake Storage__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **HiveCSharp.exe** fájlt, és kattintson a **nyílt**.
 
-    Miután a __HiveCSharp.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __PigUDF.exe__ fájl.
+     Miután a __HiveCSharp.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __PigUDF.exe__ fájl.
 
 ## <a name="run-an-apache-hive-query"></a>Az Apache Hive-lekérdezés futtatása
 

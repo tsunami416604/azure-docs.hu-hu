@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: fca14eb5a51799e6d3c0e4f96cb956e4e6886cdb
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: aa9cdbaece2714dd4869268f394e6840fe42edda
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844823"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225399"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres élcsomópontok használata a HDInsight Apache Hadoop-fürtök
 
@@ -91,7 +91,7 @@ Ebben a szakaszban a Resource Manager-sablonnal egy meglévő HDInsight-fürt eg
 > Ellenőrizze, hogy válassza ki az Azure-erőforráscsoportot a meglévő HDInsight-fürt.  Ellenkező esetben a következő üzenet jelenik "nem hajtható végre, a beágyazott erőforrás kért műveletet. Szülőerőforrás "&lt;ClusterName >" nem található. "
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Adja hozzá az élcsomóponthoz, a fürt létrehozásakor
-Ebben a szakaszban egy Resource Manager-sablon a HDInsight-fürt létrehozása a élcsomópontot használja.  A Resource Manager-sablon megtalálható a [Azure gyorsindítási sablonok katalógusában](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). A Resource Manager-sablon meghívja a helyen található szkriptműveletet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablonnal hívó parancsfájlművelet bemutatásához.
+Ebben a szakaszban egy Resource Manager-sablon a HDInsight-fürt létrehozása a élcsomópontot használja.  A Resource Manager-sablon megtalálható a [az Azure-gyorssablonok katalógusába](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). A Resource Manager-sablon meghívja a helyen található szkriptműveletet https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. A parancsfájl nem más műveletet végrehajtani.  A Resource Manager-sablonnal hívó parancsfájlművelet bemutatásához.
 
 **Az élcsomópont egy HDInsight-fürt létrehozása**
 

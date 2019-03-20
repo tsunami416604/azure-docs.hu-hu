@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: c882907ef2763f13a3806c335dabf330d35a0831
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 08eb7171249c42348877afedc80c6c6338265422
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861730"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -56,8 +56,7 @@ Az alábbi táblázat az IoT Hub-üzenetek a rendszer tulajdonságai készletét
 | iothub-enqueuedtime |Dátum és idő a [felhőből az eszközre](iot-hub-devguide-c2d-guidance.md) által az IoT Hub-üzenet érkezett. | A nem C2D üzenetek; Ellenkező esetben igen. |
 | korrelációs azonosító |A válaszüzenetben általában az üzenetazonosító, a kérelem, a kérés-válasz mintákat tartalmazó karakterlánc típusú tulajdonság. | Igen |
 | felhasználói azonosító |Adja meg a forrás, az üzenetek használt azonosító. Az IoT Hub által előállított üzeneteket, ha van-e állítva `{iot hub name}`. | Nem |
-| iothub-ack |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. 
-<!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Igen |
+| iothub-ack |Egy visszajelzés üzenet generátort. Ez a tulajdonság használják a felhőből az eszközre irányuló üzenetek létrehozni az üzenet a használatalapú eredményeként visszajelzés üzeneteket az IoT Hub kérése az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet fejeződött be, **negatív**: kap egy visszajelzési üzenetek anélkül, hogy az eszköz végzi üzenet lejárt (vagy kézbesítések maximális száma elérte a) Ha vagy **teljes**: pozitív és negatív. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Igen |
 | iothub-connection-device-id |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **deviceId** az eszköz, amely elküldte az üzenetet. | A nem D2C-messages; Ellenkező esetben igen. |
 | iothub-connection-auth-generation-id |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok](iot-hub-devguide-identity-registry.md#device-identity-properties)) az eszköz, amely elküldte az üzenetet. | A nem D2C-messages; Ellenkező esetben igen. |
 | iothub-connection-auth-method |Az eszköz a felhőbe irányuló üzeneteket az IoT Hub által beállított hitelesítési módszert. Ez a tulajdonság az üzenet elküldésekor az eszköz hitelesítésére használt hitelesítési módszert kapcsolatos információt tartalmazza. <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | A nem D2C-messages; Ellenkező esetben igen. |

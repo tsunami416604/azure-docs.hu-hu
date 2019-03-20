@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: da7556b909ec4eb544a6b4e4fab7af4a0919a158
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308176"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090814"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -27,13 +27,13 @@ Ezek a riasztások az Azure-erőforrásokhoz, van egy Azure Resource Manager-sab
 ## <a name="azure-portal"></a>Azure Portal
 
 > [!NOTE]
-
+> 
 >  A riasztási szabályok létrehozásakor a következőket biztosítja:
-
+> 
 > - A hatókör előfizetés különbözik nem az előfizetés ahol a riasztás létrejött.
-- Feltételek kell lennie a szint/állapot/hívó / erőforráscsoport vagy erőforrás-azonosító / erőforrás típusa / az eseménykategóriát, amelyen a riasztás úgy van konfigurálva.
-- Nem "anyOf" feltétel vagy a beágyazott feltételeknek a riasztás konfigurálásakor JSON (alapvetően csak egy allOf esetén megengedett semmilyen további allOf anyOf).
-- Ha a kategória: "rendszergazda". A fenti feltételek legalább egyikének a riasztásban szereplő adjon meg. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
+> - Feltételek kell lennie a szint/állapot/hívó / erőforráscsoport vagy erőforrás-azonosító / erőforrás típusa / az eseménykategóriát, amelyen a riasztás úgy van konfigurálva.
+> - Nem "anyOf" feltétel vagy a beágyazott feltételeknek a riasztás konfigurálásakor JSON (alapvetően csak egy allOf esetén megengedett semmilyen további allOf anyOf).
+> - Ha a kategória: "rendszergazda". A fenti feltételek legalább egyikének a riasztásban szereplő adjon meg. Nem hozható létre egy riasztást, amely minden alkalommal, amikor létrejön egy esemény a Tevékenységnaplókban aktiválja.
 
 ### <a name="create-with-azure-portal"></a>Hozzon létre az Azure Portalon
 
@@ -50,35 +50,36 @@ Kövesse az alábbi eljárást:
 
 3. **Adja meg a riasztási feltétel alapján** adja meg a következő adatokat, és kattintson a **kész**.
 
-    - **Riasztási cél:** Megtekintheti, és jelölje ki a cél az új riasztás, használja a **előfizetés-szűrő** / **szűrés erőforrástípus szerint** és az erőforrás vagy erőforráscsoport kijelölhet a listában jelenik meg.
+   - **Riasztási cél:** Megtekintheti, és jelölje ki a cél az új riasztás, használja a **előfizetés-szűrő** / **szűrés erőforrástípus szerint** és az erőforrás vagy erőforráscsoport kijelölhet a listában jelenik meg.
 
-    > [!NOTE]
+     > [!NOTE]
+     > 
+     > kiválaszthatja, hogy egy erőforrás, erőforráscsoport vagy egy tevékenységnaplóbeli a teljes előfizetés.
 
-    > kiválaszthatja, hogy egy erőforrás, erőforráscsoport vagy egy tevékenységnaplóbeli a teljes előfizetés.
+     **Riasztás cél minta nézet**
+     ![cél kiválasztása](media/alerts-activity-log/select-target.png)
 
-    **Riasztás cél minta nézet** ![cél kiválasztása](media/alerts-activity-log/select-target.png)
+   - A **cél feltételek**, kattintson a **adja meg a feltételeket** és a cél az összes rendelkezésre álló jelek jelennek meg, beleértve azokat a különböző kategóriák **tevékenységnapló**; eszközkategória-név hozzáfűzi a **Monitor Service** nevét.
 
-    - A **cél feltételek**, kattintson a **adja meg a feltételeket** és a cél az összes rendelkezésre álló jelek jelennek meg, beleértve azokat a különböző kategóriák **tevékenységnapló**; eszközkategória-név hozzáfűzi a **Monitor Service** nevét.
+   - A jel kijelölhet a listában megjelenik a különböző típusú lehetséges műveletek **tevékenységnapló**.
 
-    - A jel kijelölhet a listában megjelenik a különböző típusú lehetséges műveletek **tevékenységnapló**.
+     A naplózási előzmények ütemterv és a cél jel a megfelelő riasztási logika választhatja ki:
 
-    A naplózási előzmények ütemterv és a cél jel a megfelelő riasztási logika választhatja ki:
+     **Feltételek képernyő hozzáadása**
 
-    **Feltételek képernyő hozzáadása**
+     ![feltételek hozzáadása](media/alerts-activity-log/add-criteria.png)
 
-    ![feltételek hozzáadása](media/alerts-activity-log/add-criteria.png)
+     **Előzmények idő**: A kiválasztott művelet elérhető események algoritmus keresztül az elmúlt 6 és 12 vagy 24 óra (vagy) az elmúlt héten.
 
-    **Előzmények idő**: A kiválasztott művelet elérhető események algoritmus keresztül az elmúlt 6 és 12 vagy 24 óra (vagy) az elmúlt héten.
-
-    **Riasztási logika**:
+     **Riasztási logika**:
 
      - **Eseményszint**-esemény súlyossági szintje. _Részletes_, _tájékoztató_, _figyelmeztetés_, _hiba_, vagy _kritikus_.
      - **Állapot**: Az esemény állapota. _Lépések_, _sikertelen_, vagy _sikeres_.
      - **Esemény kezdeményezője**: Más néven a hívó; Az e-mail címet vagy az Azure Active Directory a műveletet végrehajtó felhasználó azonosítója.
 
-        Minta jel gráf riasztási logika a alkalmazni:
+       Minta jel gráf riasztási logika a alkalmazni:
 
-        ![ kijelölt feltétel](media/alerts-activity-log/criteria-selected.png)
+       ![ kijelölt feltétel](media/alerts-activity-log/criteria-selected.png)
 
 4. A **riasztási szabályok részletei**, adja meg a következő adatokat:
 
@@ -115,15 +116,15 @@ Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken ri
 
     A rendelkezésre álló szűrők - _előfizetés_, _erőforráscsoport_, _erőforrás_, _jeltípus_, vagy _állapota_  a szerkeszteni kívánt tevékenység szabály található.
 
-    > [!NOTE]
+   > [!NOTE]
+   > 
+   > Csak akkor szerkeszthető **leírás** , **feltételek cél** és **Műveletcsoportok**.
 
-    > Csak akkor szerkeszthető **leírás** , **feltételek cél** és **Műveletcsoportok**.
+3. Válassza ki a szabályt, és kattintson duplán a szabály beállítások szerkesztéséhez. Végezze el a szükséges módosításokat, és kattintson a **mentése**.
 
-3.  Válassza ki a szabályt, és kattintson duplán a szabály beállítások szerkesztéséhez. Végezze el a szükséges módosításokat, és kattintson a **mentése**.
+   ![ Riasztási szabályok kezelése](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
-    ![ Riasztási szabályok kezelése](media/alerts-activity-log/activity-log-rule-edit-page.png)
-
-4.  Letiltása, engedélyezése vagy egy szabály törlése. Válassza ki a 2. lépésben leírtaknak megfelelően a szabály kiválasztása után a megfelelő lehetőséget az ablak tetején.
+4. Letiltása, engedélyezése vagy egy szabály törlése. Válassza ki a 2. lépésben leírtaknak megfelelően a szabály kiválasztása után a megfelelő lehetőséget az ablak tetején.
 
 
 ## <a name="azure-resource-template"></a>Azure Resource Template

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: e0f4506afee134f2f6453ea1b1298925ff00084c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189784"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
@@ -297,7 +297,7 @@ A dinamikus becsomagolást is MP4-fájlokat (és a csak hangfájlt tartalmazó M
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-    <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+    <smil xmlns="https://www.w3.org/2001/SMIL20/Language">
       <head>
         <meta name="formats" content="mp4" />
       </head>
@@ -947,7 +947,7 @@ Az az alábbi egyszerű guard záradék esetében lehet ellenőrizze, hogy a tis
 
 [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
 
-[Minta munkafolyamat-fájlok](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
+[Minta munkafolyamat-fájlok](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
 [Az Azure Media Services Explorer eszköz](https://aka.ms/amse)
 

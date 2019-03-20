@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 167c8b4dff2e6f392dd6608d20d8924d446f95aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991968"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS parancssori felület használatával a Data Lake Storage Gen2
 
-Az Azure Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). E van csatlakoztatva, vagy egy Azure Databricks használatával egy Azure Storage-fiókban tárolt adatokon végrehajtandó analytics Apache Spark-feladatok futtatása egy HDInsight-fürt, parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra.
+Az Azure Data Lake Storage Gen2 lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). E van csatlakoztatva, vagy egy Azure Databricks használatával egy Azure Storage-fiókban tárolt adatokon végrehajtandó analytics Apache Spark-feladatok futtatása egy HDInsight-fürt, parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS CLI-t a HDInsight
 

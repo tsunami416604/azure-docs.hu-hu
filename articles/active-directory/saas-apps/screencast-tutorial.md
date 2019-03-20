@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 941a02ef9ab3d623d34c8dc6996040f6d9e44859
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190823"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>Oktatóanyag: Képernyőfelvétel-O-értéket az Azure Active Directory-integráció
 
@@ -133,17 +133,17 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 9. Az a **telepítő lapot**, hajtsa végre az alábbi lépéseket:
 
-    * A **URL-CÍMEN** szakaszban, a megadott szövegmezőbe írja be a példánynév.
+   * A **URL-CÍMEN** szakaszban, a megadott szövegmezőbe írja be a példánynév.
 
-    ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_access.png)
+     ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * Válassza ki **szükséges tartományi felhasználó** alatt **SAML felhasználói korlátozása (nem kötelező)** szakaszban.
+   * Válassza ki **szükséges tartományi felhasználó** alatt **SAML felhasználói korlátozása (nem kötelező)** szakaszban.
 
-    * A **Identitásszolgáltató metaadatainak XML-fájl feltöltése**, kattintson a **fájl kiválasztása** feltölteni a metaadatokat, amelyek már letöltötte az Azure Portalról.
+   * A **Identitásszolgáltató metaadatainak XML-fájl feltöltése**, kattintson a **fájl kiválasztása** feltölteni a metaadatokat, amelyek már letöltötte az Azure Portalról.
 
-    * Kattintson az **OK** gombra. 
+   * Kattintson az **OK** gombra. 
 
-    ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_save.png)
+     ![A hozzáférés](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

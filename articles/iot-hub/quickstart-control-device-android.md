@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: d42bf11f97d7ba532ea41350522e3a8c71ff7f86
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: a9e5b00ad84a57f49303f2e6f9389b4791fd0f60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727110"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58166946"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Android)
 
@@ -91,7 +91,7 @@ Is szükség van egy _szolgáltatáskapcsolati karakterláncra_ a háttérszolg�
 **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --output table
 ```
 
 Jegyezze fel a szolgáltatáskapcsolati sztringet, amely a következőképpen néz ki:

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az Azure által felügyelt identitások integrálása |} A Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja, hogyan használják az Azure által felügyelt identitásokat hitelesítve magukat hozzáférést az Azure-alkalmazások konfigurálása
+title: Az oktatóanyag az Azure-ral való integrálásához felügyelt identitások |} A Microsoft Docs
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan használhatja az Azure által felügyelt identitásokat hitelesítve magukat hozzáférést az Azure-alkalmazások konfigurálása
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -13,67 +13,69 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 874522b6b4ca3739e0736d4f70f76bb82cad25f9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: be19d37900acb8201922fa61fda61cc884d4c933
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957351"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226011"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>Oktatóanyag: Az Azure felügyelt identitások integrálása
+# <a name="tutorial-integrate-with-azure-managed-identities"></a>Oktatóanyag: Integrálása az Azure által felügyelt identitások
 
-Az Azure Active Directory [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) egyszerűsíti a felhőbeli alkalmazások titkos kódok kezelése. Felügyelt identitással állíthat be a kódot már létrehozott egyszerű szolgáltatás használata az Azure számítási szolgáltatás díjait, külön hitelesítő adatokat az Azure Key Vault vagy a helyi kapcsolati karakterlánc helyett. Az Azure konfigurálása és a .NET Core, .NET és Java Spring klienskódtárak beépített MSI támogatási kapható. Bár nem kötelező használni, MSI kiküszöböli a hozzáférési jogkivonatot, amely tartalmazza a titkos kulcsok. A kód csak akkor férhet hozzá, az alkalmazás a konfigurációs adattárolónál a szolgáltatásvégpontot tudni van, és a veszélye, hogy az összes titkos kód nélkül, közvetlenül a kódba ágyazható be az URL-címet.
+Az Azure Active Directory [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) leegyszerűsíti a felhőbeli alkalmazások titkos kódok kezelése. Felügyelt identitással állíthat be a kódot a létrehozott egyszerű szolgáltatás használata az Azure számítási szolgáltatás díjait. Egy külön hitelesítő adatot az Azure Key Vault vagy a helyi kapcsolati karakterlánc helyett használhat egy felügyelt identitás. 
 
-Ez az oktatóanyag bemutatja, hogyan igénybe veheti az MSI konfigurálása eléréséhez. A web app, a rövid útmutatók rendszerben bevezetett épül. Teljes [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első, a folytatás előtt.
+Az Azure konfigurálása és a .NET Core, a .NET és a Java Spring klienskódtárak felügyeltszolgáltatás-identitás (MSI) támogatás beépített kapható. Bár nem kell használni, MSI kiküszöböli a hozzáférési jogkivonatot, amely tartalmazza a titkos kulcsok. A kód rendelkezik tudni, hogy csak a szolgáltatásvégpont-alkalmazás konfigurálásának azt elérése érdekében tárolja. Az URL-címet a veszélye, hogy az összes titkos kód nélkül, közvetlenül a kódba ágyazhatók be.
 
-Ez az oktatóanyag lépéseinek végrehajtásához használhatja a bármely Kódszerkesztő. A [Visual Studio Code](https://code.visualstudio.com/) például jó választás lehet, és Windows, macOS és Linux platformokon is használható.
+Ez az oktatóanyag bemutatja, hogyan igénybe veheti az MSI konfigurálása eléréséhez. A web app, a rövid útmutatók rendszerben bevezetett épül. A folytatás előtt Befejezés [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első.
+
+Bármely Kódszerkesztő segítségével hajtsa végre a lépéseket ebben az oktatóanyagban. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Egy felügyelt identitás hozzáférést biztosítani az alkalmazások konfigurálása
-> * Az alkalmazás egy felügyelt identitás konfigurálása való csatlakozáskor használandó konfigurálása
+> * Egy felügyelt identitás hozzáférést az Alkalmazáskonfigurációt.
+> * Az alkalmazás egy felügyelt identitás konfigurálása való csatlakozáskor használandó konfigurálása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez szüksége lesz:
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Konfigurált Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [Az Azure Cloud Shell konfigurált](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="add-a-managed-identity"></a>Adjon hozzá egy felügyelt identitás
 
-A portálon egy felügyelt identitás beállításához először létrehoz egy alkalmazás a szokásos módon, és ezután engedélyezze a szolgáltatást.
+A portálon egy felügyelt identitás beállításához először hozzon létre egy alkalmazás a szokásos módon, és ezután engedélyezze a szolgáltatást.
 
-1. Az alkalmazás létrehozása a [az Azure portal](https://aka.ms/azconfig/portal) ahogy azt szokásosan tenné. Keresse meg azt a portálon.
+1. Az alkalmazás létrehozása a [az Azure portal](https://aka.ms/azconfig/portal) szokásos módon. Nyissa meg azt a portálon.
 
-2. Görgessen le a **beállítások** a bal oldali navigációs csoportot, és válassza ki **identitás**.
+2. Görgessen le a **beállítások** csoportot a bal oldali panelen, és válassza **identitás**.
 
-3. Belül a **rendszerhez rendelt** fülre, váltson **állapot** való **a** kattintson **mentése**.
+3. A a **rendszerhez rendelt** fülre, váltson **állapota** való **a** válassza **mentése**.
 
     ![Felügyelt identitás beállításához az App Service-ben](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Hozzáférést biztosít alkalmazások konfigurálása
 
-1. Az a [az Azure portal](https://aka.ms/azconfig/portal), kattintson a **összes erőforrás** és az alkalmazás a konfigurációs adattárolónál a rövid útmutatóban létrehozott.
+1. Az a [az Azure portal](https://aka.ms/azconfig/portal)válassza **összes erőforrás** , és válassza ki az alkalmazás a konfigurációs adattárolónál a rövid útmutatóban létrehozott.
 
 2. Válassza ki **hozzáférés-vezérlés (IAM)**.
 
-3. Belül a **hozzáférés ellenőrzése** lapra, majd **Hozzáadás** a a **egy szerepkör-hozzárendelés hozzáadása** felhasználói felület kártyát.
+3. Az a **hozzáférés ellenőrzése** lapon jelölje be **Hozzáadás** a a **szerepkör-hozzárendelés hozzáadása** felhasználói felület kártya.
 
-4. Állítsa be **szerepkör** kell *közreműködői* és **rendelhet hozzáféréseket** kell *App Service-ben* (alatt *rendszerhez rendelt felügyelt identitás*).
+4. A **szerepkör**válassza **közreműködői**. Alatt **rendelhet hozzáféréseket**válassza **App Service-ben** alatt **rendszer hozzárendelt felügyelt identitás**.
 
-5. Állítsa be **előfizetés** az Azure-előfizetést, és válassza az App Service erőforrás alkalmazáshoz.
+5. A **előfizetés**, válassza ki az Azure-előfizetésében. Válassza ki az alkalmazás az App Service-erőforrást.
 
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
-    ![Adja hozzá a felügyelt identitás](./media/add-managed-identity.png)
+    ![Adjon hozzá egy felügyelt identitás](./media/add-managed-identity.png)
 
 ## <a name="use-a-managed-identity"></a>Felügyelt identitás használata
 
-1. Nyissa meg *appsettings.json*, adja hozzá a következőket, és cserélje le *< service_endpoint >* (beleértve a zárójeleket is) az alkalmazás a konfigurációs adattároló URL-címét:
+1. Nyissa meg *appsettings.json*, és adja hozzá a következő szkriptet. Cserélje le *< service_endpoint >*, beleértve a zárójeleket, az alkalmazás a konfigurációs adattároló URL-címét:
 
     ```json
     "AppConfig": {
@@ -81,7 +83,7 @@ A portálon egy felügyelt identitás beállításához először létrehoz egy 
     }
     ```
 
-2. Nyissa meg *Program.cs* és frissítheti a `CreateWebHostBuilder` metódus lecserélésével a `config.AddAzureAppConfiguration()` metódust.
+2. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus lecserélésével a `config.AddAzureAppConfiguration()` metódust.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -100,7 +102,7 @@ A portálon egy felügyelt identitás beállításához először létrehoz egy 
 
 ## <a name="deploy-from-local-git"></a>Üzembe helyezés a helyi Gitből
 
-Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezése a legegyszerűbb módja, hogy a Cloud Shellt használja.
+A helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezése legegyszerűbben az Azure Cloud Shell használatához.
 
 ### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
 
@@ -108,19 +110,19 @@ Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló en
 
 ### <a name="enable-local-git-with-kudu"></a>Engedélyezi a helyi Git, a kudu használatával
 
-Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) a Cloud shellben.
+Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) a Cloud Shellben.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-Ehelyett egy Git-kompatibilis alkalmazások létrehozásához futtassa [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) az a Cloud shellben a `--deployment-local-git` paraméter.
+Ehelyett egy Git-kompatibilis alkalmazások létrehozásához futtassa [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) a Cloud shellben a `--deployment-local-git` paraméter.
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-A `az webapp create` parancs adjon meg a következő kimenethez hasonló:
+A `az webapp create` parancsot biztosítja a következő kimenethez hasonló:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -146,29 +148,29 @@ A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a
 git remote add azure <url>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a rendszer jelszót kér, ügyeljen arra, hogy az [Üzembe helyező felhasználó konfigurálása](#configure-a-deployment-user) szakaszban létrehozott jelszót adja meg, ne azt, amelyet az Azure Portalra való bejelentkezéshez használ.
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor jelszót kér, adja meg a jelszót, amelyet a [üzembe helyező felhasználó konfigurálása](#configure-a-deployment-user). Ne használja az Azure Portalra való bejelentkezéshez használt jelszó.
 
 ```bash
 git push azure master
 ```
 
-A kimenetben, például az ASP.NET, MSBuild futtatókörnyezet-specifikus automation látni `npm install` a node.js-ben, és `pip install` Pythonhoz készült.
+Előfordulhat, hogy a kimenetben, például az ASP.NET, MSBuild futtatókörnyezet-specifikus automation látható `npm install` a node.js-ben, és `pip install` Pythonhoz készült.
 
 ### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
 
-Keresse meg a webalkalmazás egy böngészővel ellenőrizze, hogy telepítve van-e a tartalmat.
+Keresse meg a webalkalmazást egy böngészővel ellenőrizze, hogy telepítve van-e a tartalmat.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-![App Service-ben futó alkalmazás](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
+![az App Service-ben futó alkalmazás](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
 ## <a name="use-managed-identity-in-other-languages"></a>Más nyelveken felügyelt identitás használata
 
-A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók is beépített támogatást nyújt a felügyelt identitás. Ebben az esetben egyszerűen használhatja az alkalmazás konfigurációs áruházbeli URL-végpontjának helyett a teljes kapcsolati karakterlánc egy szolgáltató konfigurálásakor. Például a .NET-keretrendszer-konzolalkalmazást a rövid útmutatóban létrehozott, akkor adja meg a következő beállításokat a *App.config* fájlt:
+A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók is beépített támogatást nyújt a felügyelt identitás. Ezekben az esetekben használja az alkalmazás konfigurációs áruházbeli URL-végpontot a teljes kapcsolati karakterlánc helyett, ha a szolgáltató konfigurálása. Ha például a .NET-keretrendszer-konzolalkalmazást a rövid útmutatóban létrehozott, adja meg a következő beállításokat a *App.config* fájlt:
 
-    ```xml
+```xml
     <configSections>
         <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
     </configSections>
@@ -184,7 +186,7 @@ A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók 
         <add key="AppName" value="Console App Demo" />
         <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
     </appSettings>
-    ```
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -192,7 +194,7 @@ A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure hozzáadott felügyeltszolgáltatás-identitás leegyszerűsítheti az Alkalmazáskonfigurációt hozzá, és az alkalmazás hitelesítőadat-kezelés javítására. Alkalmazáskonfiguráció használatával kapcsolatos további információkért folytassa az Azure CLI-minták.
+Ebben az oktatóanyagban egy Azure hozzáadott felügyeltszolgáltatás-identitás leegyszerűsítheti az Alkalmazáskonfigurációt hozzá, és az alkalmazás hitelesítőadat-kezelés javítására. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa az Azure CLI-minták.
 
 > [!div class="nextstepaction"]
 > [CLI-minták](./cli-samples.md)

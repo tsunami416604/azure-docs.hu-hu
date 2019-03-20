@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: f81e7a0008c015c033d30045970fe1bd67597ff9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075612"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
@@ -231,16 +231,16 @@ A következő szakaszok ismertetik az ügyfélszámítógépek védelmi ügynök
 
 2. A kijelzőpanelen válassza ki az ügyfélszámítógépek, amelynek meg szeretné frissíteni a védelmi ügynök.
 
-  > [!NOTE]
-  > A **Ügynökfrissítések** oszlopban látható, ha a védelmi ügynök frissítése elérhető minden védett számítógépen. Az a **műveletek** panelen a **frissítés** művelet érhető el, csak ha egy védett számítógép van kiválasztva, és frissítések érhetők el.
-  >
-  >
+   > [!NOTE]
+   > A **Ügynökfrissítések** oszlopban látható, ha a védelmi ügynök frissítése elérhető minden védett számítógépen. Az a **műveletek** panelen a **frissítés** művelet érhető el, csak ha egy védett számítógép van kiválasztva, és frissítések érhetők el.
+   >
+   >
 
 3. A kiválasztott számítógépeken a frissített védelmi ügynök telepítése a **műveletek** ablaktáblán válassza előbb **frissítés**.
 
 4. Az ügyfélszámítógép, amely nem csatlakozik a hálózathoz, amíg a számítógép csatlakozik a hálózathoz a **ügynök állapota** az oszlopban látható egy állapotát **frissítés függőben**.
 
-  Miután egy ügyfélszámítógép csatlakozik a hálózathoz, a **Ügynökfrissítések** az ügyfélszámítógép az oszlopban látható egy állapotát **Updating**.
+   Miután egy ügyfélszámítógép csatlakozik a hálózathoz, a **Ügynökfrissítések** az ügyfélszámítógép az oszlopban látható egy állapotát **Updating**.
 
 ## <a name="move-mabs-to-a-new-server"></a>Helyezze át a MABS egy új kiszolgálóra
 
@@ -262,10 +262,11 @@ Ha át kell helyeznie a MABS egy új kiszolgálóra a tároló megőrzése az al
 9. Az SQL állítsa vissza a dpmdb-t
 10. A rendszergazdai parancssorból az új kiszolgáló cd, a Microsoft Azure Backup telepítése a hely és a bin mappa
 
-Elérési útját. példa: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-az Azure backup futtassa a DPMSYNC-SYNC
+    Elérési útját. példa: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) Futtassa a DPMSYNC-SYNC Megjegyzés felvett új lemezeket a DPM tárolókészlethez áthelyezése a régiek helyett majd futtassa a DPMSYNC - reallocatereplica parancsot
+11. Az Azure Backup szolgáltatásban, futtassa a DPMSYNC-SYNC
+
+    Ha áthelyezi a régiek helyett a DPM tárolókészlethez hozzáadott új lemezeket, majd futtassa a DPMSYNC - reallocatereplica parancsot
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 Az Azure Backup Server az Azure Backup szolgáltatás a termék sikeres működéséhez kapcsolat szükséges. Ellenőrizze, hogy a gépe képes az Azure-ba, használja a ```Get-DPMCloudConnection``` parancsmagot az Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete értéke igaz, akkor a kapcsolat létezik, ellenkező esetben nincs kapcsolat.
@@ -306,33 +307,33 @@ Az alábbi eljárásokat követve frissíthet a MABS.
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>Frissítés a MABS V2 a V3
 
 > [!NOTE]
-
+> 
 > MABS V2 nem áll a MABS V3 telepítésének előfeltétele. Azonban frissítheti a MABS V3 csak a MABS V2.
 
 A következő lépések segítségével frissítse a MABS:
 
 1. Frissítse MABS V2 MABS v3-as, frissítse az operációs rendszer Windows Server 2016 vagy Windows Server 2019 szükség esetén.
 
-2.  Frissítse a kiszolgálót. A lépések hasonlóak [telepítési](#install-and-upgrade-azure-backup-server). Az SQL-beállítások, kap egy beállítást, az SQL-példány frissítése SQL 2017-ben a, vagy használja a saját példányát az SQL server 2017.
+2. Frissítse a kiszolgálót. A lépések hasonlóak [telepítési](#install-and-upgrade-azure-backup-server). Az SQL-beállítások, kap egy beállítást, az SQL-példány frissítése SQL 2017-ben a, vagy használja a saját példányát az SQL server 2017.
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > Ne lépjen ki az SQL-példány frissítés alatt áll, kilép fogja eltávolítani az SQL-jelentéskészítési példány, és ezért újból frissíteni a MABS tett kísérlet sikertelen lesz.
 
-  > Ne lépjen ki az SQL-példány frissítés alatt áll, kilép fogja eltávolítani az SQL-jelentéskészítési példány, és ezért újból frissíteni a MABS tett kísérlet sikertelen lesz.
+   Nagyon fontos szempont, vegye figyelembe:
 
-  Nagyon fontos szempont, vegye figyelembe:
-
-  > [!IMPORTANT]
-
-  >  SQL 2017-verziófrissítés részeként a Microsoft SQL titkosítási kulcsok biztonsági mentése, és távolítsa el a jelentéskészítési szolgáltatási. Az SQL server frissítése után jelentéskészítési service(14.0.6827.4788) telepítve van, és a titkosítási kulcsok vissza vannak állítva.
-
- > SQL 2017 manuális konfigurálásához, tekintse meg *SQL 2017 SSRS-konfiguráció* szakasz alatt telepítési útmutatást.
+   > [!IMPORTANT]
+   > 
+   >  SQL 2017-verziófrissítés részeként a Microsoft SQL titkosítási kulcsok biztonsági mentése, és távolítsa el a jelentéskészítési szolgáltatási. Az SQL server frissítése után jelentéskészítési service(14.0.6827.4788) telepítve van, és a titkosítási kulcsok vissza vannak állítva.
+   > 
+   > SQL 2017 manuális konfigurálásához, tekintse meg *SQL 2017 SSRS-konfiguráció* szakasz alatt telepítési útmutatást.
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. Biztonsági mentések továbbra is az üzemi kiszolgálók újraindítása nélkül.
 5. Megkezdheti az adatok védelmének most. Ha frissít a Modern Backup Storage védelmét, miközben azt is beállíthatja a köteteken lévő biztonsági másolatok tárolására, és keressen kiosztott terület alatt szeretné. [További információk](backup-mabs-add-storage.md).
 
 > [!NOTE]
-
+> 
 > Ha frissít a MABS V1, V2, győződjön meg arról, hogy az operációs rendszer Windows Server 2016 vagy Windows Server 2012 R2. Kihasználhatja az új funkciók, például a System Center 2016 Data Protection Manager Modern biztonsági mentési tár, Backup Server V2 telepíteni kell a Windows Server 2016-ban. Előtt, frissítsen, vagy telepítse a Backup Server V2, olvassa el a [telepítésének előfeltételei](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) a MABS vonatkozik.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

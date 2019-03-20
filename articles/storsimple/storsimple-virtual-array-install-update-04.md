@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: cd3fdec0e50d64af28306034e6e1086e67526b7d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251053"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007321"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>A 0.4 telepítse a StorSimple Virtual Array
 
@@ -48,7 +48,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
+1. Indítsa el az Internet Explorert és keresse meg [ https://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Ha most használja először a Microsoft Update katalógust ezen a számítógépen, kattintson a **Telepítés** gombra, amikor a rendszer a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 

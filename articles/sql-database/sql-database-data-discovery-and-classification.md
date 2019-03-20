@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 8417b849ad7589ce6a770eb805c38a13e3c672dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202979"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Az Azure SQL Database adatfelderítés és besorolás
 
@@ -145,6 +145,13 @@ REST API-k használatával programozott módon kezelheti a besorolásokat. A kö
 - [Első](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) – lekérdezi a érzékenységi címkét egy adott oszlop
 - [Aktuális által adatbázis listában](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) -lekérdezi az aktuális érzékenységi címkék egy adott adatbázis
 - [Adatbázis által ajánlott listában](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – egy adott adatbázis a javasolt érzékenységi címkék beolvasása
+
+## <a name="permissions"></a>Engedélyek
+A következő beépített szerepkörök olvashatja az Azure SQL-adatbázis az adatok besorolását: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` és `User Access Administrator`.
+
+A következő beépített szerepkörök módosíthatja az adatok besorolását, egy Azure SQL Database: `Owner`, `Contributor`, `SQL Security Manager`.
+
+Tudjon meg többet [RBAC az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a id="subheading-5"></a>Következő lépések
 

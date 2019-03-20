@@ -4,12 +4,12 @@ ms.service: azure-powershell
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sewhee
-ms.openlocfilehash: b93722147959881dfbffbb47b7a3e4b140044525
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5440555c11d98fb89f8594eec1d4b7e74ea8667
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891342"
 ---
 ## <a name="setting-up-powershell-for-resource-manager-templates"></a>PowerShell beállítása a Resource Manager-sablonok
 Azure PowerShell Resource Managerrel használható, mielőtt szüksége lesz a jobb Windows PowerShell és az Azure PowerShell-verziókat.
@@ -63,5 +63,4 @@ Az aktuális Azure-előfizetést is megadhat a parancsok futtatása az Azure Pow
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-További információ az Azure-előfizetések és fiókok: [hogyan: Csatlakozzon az előfizetéséhez](/powershell/azureps-cmdlets-docs).
-
+További információ az Azure-előfizetések és fiókok: [hogyan: Csatlakozzon az előfizetéséhez](/powershell/azureps-cmdlets-docs#step-3-connect).

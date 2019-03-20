@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ab6da597457fa94c171a1e2547c1d48cf35cd0f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893050"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -51,7 +51,7 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 Egy Azure-beli integrációs modul a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak között
-- A nyilvános hálózatban az alábbi átalakítási tevékenységek küldése: HDInsight Hive-tevékenység, HDInsight Pig-tevékenység, HDInsight MapReduce-tevékenység, HDInsight Spark-tevékenység, HDInsight Streaming-tevékenység, Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység Data Lake Analytics U-SQL-tevékenység, egyéni .net-tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- A nyilvános hálózatban az alábbi átalakítási tevékenységek küldése: HDInsight Hive-tevékenység, HDInsight Pig-tevékenység, HDInsight MapReduce-tevékenység, HDInsight Spark-tevékenység, HDInsight Streaming-tevékenység, Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység Data Lake Analytics U-SQL-tevékenység, egyéni .NET-tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
 Az Azure-beli integrációs modul támogatja az adattárak és számítási szolgáltatások összekapcsolását a nyilvános hálózatban nyilvánosan hozzáférhető végpontokkal. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
@@ -69,7 +69,7 @@ Az Azure integrációs modulok létrehozásáról és konfigurálásáról az Az
 Egy saját üzemeltetésű IR a következőkre képes:
 
 - Másolási tevékenység futtatása felhőalapú adattárak és egy magánhálózaton lévő adattár között.
-- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC Bring Your saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .net-tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- Az alábbi átalakítási tevékenységek számítási erőforrásokon, a helyszíni vagy Azure Virtual Network zahájeno: HDInsight Hive-tevékenység (BYOC Bring Your saját fürt), HDInsight Pig-tevékenység (BYOC), HDInsight MapReduce-tevékenység (BYOC), HDInsight Spark-tevékenység (BYOC), HDInsight Streaming-tevékenység (BYOC), Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .NET-tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 > [!NOTE] 
 > Saját üzemeltetésű integrációs modullal támogathat saját illesztőt igénylő adattárakat (például SAP Hana, MySQL stb.).  További információk: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

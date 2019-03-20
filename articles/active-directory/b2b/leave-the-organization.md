@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d8183f7fa55a410b44d33295ad24f0f07adb145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185927"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005668"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Egy szervezet meg vendégként
 
@@ -24,13 +24,17 @@ Egy Azure Active Directory (Azure AD) B2B vendégfelhasználó dönt, hogy egy s
 
 ## <a name="leave-an-organization"></a>Szervezet elhagyása
 
-Egy szervezet felhasználóként jelentkezett be, hogy a [hozzáférési Panel](https://myapps.microsoft.com), tegye a következőket:
+Hogy egy szervezet, kövesse az alábbi lépéseket.
 
-1. Ha még nem jelentkezett elhagyja a szervezet, a jobb felső sarokban válassza ki a nevét, majd kattintson a elhagyja a szervezetet.
-2. A jobb felső sarokban válassza ki a nevét.
-3. A **szervezetek**, válassza a beállítások (fogaskerék) ikonra.
+1. Nyissa meg a hozzáférési Panel profilja oldalát az alábbi módszerek valamelyikével:
+   
+   - Az a [az Azure portal](https://portal.azure.com), kattintson a jobb felső sarokban a nevére, és válassza ki **fiók megtekintése**.
+   - Nyissa meg a [hozzáférési Panel](https://myapps.microsoft.com), kattintson a nevére, jobbra, és a Tovább gombra a felső **szervezetek**, válassza a beállítások (fogaskerék) ikonra.
  
    ![Képernyőfelvétel a hozzáférési panelen felhasználói beállításokat:](media/leave-the-organization/UserSettings.png) 
+
+   > [!NOTE]
+   > Ha Ön még nem tette a szervezet szeretné-e hagyni, a **szervezetek**, kattintson a **jelentkezzen be a szervezet** hivatkozást a szervezet neve mellett. Miután bejelentkezett, kattintson a nevére, ismét a jobb felső sarokban, és a **szervezetek**, válassza a beállítások (fogaskerék) ikonra.
 
 3. A **szervezetek**, keresse meg a szervezet, amely hagyja, és válassza ki a kívánt **szervezet**.
 

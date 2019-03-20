@@ -11,29 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990710"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226399"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
+# <a name="manage-azure-stack-storage-accounts"></a>Azure Stack tárfiókok kezelése
 
-Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez.
+Útmutató: Azure Stack tárfiókok kezelését. Keresse meg, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez.
 
 ## <a name="find-a-storage-account"></a>Tárfiók keresése
+
 A tárfiókok listája, a régióban az Azure Stackben által tekinthet meg:
 
 1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
 
-2. Válassza ki **minden szolgáltatás** > **tárfiókok**.
+2. Válassza ki **minden szolgáltatás** > **tárolási** > **tárfiókok**.
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Az Azure Stack tárfiókok](media/azure-stack-manage-storage-accounts/image4.png)
 
 Alapértelmezés szerint az első 10 fiókok jelennek meg. Ha szeretné beolvasni a több kattintva a **Továbbiak betöltése** hivatkozásra a lista alján.
 
@@ -46,16 +47,17 @@ Ha érdekli az adott storage-fiók – **szűrése, és a megfelelő fiókok beo
 
 1. Válassza ki **szűrő** a panel tetején.
 2. A szűrő panelen lehetővé teszi, hogy adja meg **fióknév**, **előfizetés-azonosító**, vagy **állapot** a tárfiókok listája, megjelenítendő finomhangolásához. Használja őket.
-3. Válassza ki **frissítés**. Ennek megfelelően frissül, a listában.
+3. Írja be, mivel a lista automatikusan alkalmazza a szűrőt.  .
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Azure Stack tárfiókok szűréséhez](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. A szűrő alaphelyzetbe: válasszon **szűrő**, tisztítsa meg a beállításokat és frissíthet.
 
 A keresőmezőbe (felső részén a lista ablaktáblájában storage fiókok) lehetővé teszi a kijelölt szöveg fiókok listájában jelölje ki. Ezzel amikor teljes neve vagy azonosítója nem érhető el egyszerűen.
 
 Itt a szabad szöveges segítségével megkeresheti az Önt érdeklő fiók.
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![Azure Stack tárfiókok keresése](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Tekintse meg fiók adatai
 Ha megtalálta a számlák megtekintése érdekli, kiválaszthatja az adott fiók bizonyos részleteinek megtekintéséhez. Egy új panel nyílik meg a fiók adatainak például: a típus a fiók létrehozásának időpontja, helye, stb.
@@ -97,9 +99,8 @@ A megőrzési időszak beállítása lehetővé teszi, hogy a felhő üzemeltet�
 
 1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
 2. Válassza ki **minden szolgáltatás** > **régiók kezelése** alatt **felügyeleti**.
-3. Válassza ki **tárolási** származó a **erőforrás-szolgáltatók** listája.
-4. Válassza ki **beállítások** megnyílik a beállítás panel tetején.
-5. Válassza ki **konfigurációs** majd szerkessze a megőrzési időtartam értéket.
+3. Válassza ki **erőforrás-szolgáltatók** > **tárolási** > **beállítások**. Az elérési út Kezdőlap > *régió* – erőforrás-szolgáltatók > tároló.
+4. Válassza ki **konfigurációs** majd szerkessze a megőrzési időtartam értéket.
 
    A napok számának megadása, és mentse azt.
    

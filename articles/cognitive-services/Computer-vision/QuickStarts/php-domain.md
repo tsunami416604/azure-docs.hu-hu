@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6e0705841b9dca08bab1526e0df34c819406b91d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877020"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Gyors útmutató: Ismeri fel a tartomány-specifikus tartalmait, a REST API-t és PHP használata a Computer Vision
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa a következő parancsot:
+   1. Futtassa az alábbi parancsot:
 
       ```console
       pear install HTTP_Request2
@@ -144,7 +144,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely elem
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa a következő parancsot:
+2. Futtassa az alábbi parancsot:
 
    ```console
    pear uninstall HTTP_Request2

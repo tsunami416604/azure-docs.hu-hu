@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c2b0343ff472fe380750152712ca88d9ebb404e2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aae3ec8ff713959c5cc2485951aba025a6f89a1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782785"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113282"
 ---
 # <a name="validate-oem-packages"></a>OEM-csomagok érvényesítése
 
@@ -185,30 +185,30 @@ A következő ellenőrzés szükség az OEM csomag érvényességének ellenőrz
 
     OEM kiterjesztésű csomag ellenőrzési van felosztva, amelyek két manuális lépéseket: Az Azure Stack-frissítést, és az OEM frissítése.
 
-    1. **Válassza ki** "Futtatás" a felhasználói felületen, hajtsa végre a precheck parancsfájlt. Ez az egy automatizált tesztelés elvégzése körülbelül 5 percet vesz igénybe, és nincs szükség felhasználói beavatkozásra.
+   1. **Válassza ki** "Futtatás" a felhasználói felületen, hajtsa végre a precheck parancsfájlt. Ez az egy automatizált tesztelés elvégzése körülbelül 5 percet vesz igénybe, és nincs szükség felhasználói beavatkozásra.
 
-    1. A precheck parancsprogram befejezését követően hajtsa végre a manuális lépés: **telepítése** a legújabb elérhető az Azure Stack frissítés az Azure Stack portal használatával.
+   1. A precheck parancsprogram befejezését követően hajtsa végre a manuális lépés: **telepítése** a legújabb elérhető az Azure Stack frissítés az Azure Stack portal használatával.
 
-    1. **Futtatás** Test-AzureStack a blokkban. Hibák lépnek fel, ha nem folytatja a vizsgálati és kapcsolattartó [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
+   1. **Futtatás** Test-AzureStack a blokkban. Hibák lépnek fel, ha nem folytatja a vizsgálati és kapcsolattartó [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
 
-        A Test-AzureStack parancs futtatásával kapcsolatos további információkért lásd: [rendszerállapotának ellenőrzése az Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+       A Test-AzureStack parancs futtatásával kapcsolatos további információkért lásd: [rendszerállapotának ellenőrzése az Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
 
-    1. **Válassza ki** hajtsa végre a postcheck parancsfájlt a "Tovább gombra". Ez egy automatizált tesztelés és az Azure Stack-frissítési folyamat végét jelöli.
+   1. **Válassza ki** hajtsa végre a postcheck parancsfájlt a "Tovább gombra". Ez egy automatizált tesztelés és az Azure Stack-frissítési folyamat végét jelöli.
 
-    1. **Válassza ki** "Futtatás" OEM frissítése a precheck parancsfájl végrehajtására.
+   1. **Válassza ki** "Futtatás" OEM frissítése a precheck parancsfájl végrehajtására.
 
-    1. Az előzetesen ellenőrizni befejezését követően hajtsa végre a manuális lépés: **telepítése** az OEM-kiterjesztés csomagjának a portálon keresztül.
+   1. Az előzetesen ellenőrizni befejezését követően hajtsa végre a manuális lépés: **telepítése** az OEM-kiterjesztés csomagjának a portálon keresztül.
 
-    1. **Futtatás** Test-AzureStack a blokkban.
+   1. **Futtatás** Test-AzureStack a blokkban.
 
-        > [!NOTE]
-        > Mint korábban, ne folytassa a vizsgálati és kapcsolattartó [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Ha sikertelen. Ez a lépés nem kritikus, mivel, menti egy újbóli üzembe helyezés.
+      > [!NOTE]
+      > Mint korábban, ne folytassa a vizsgálati és kapcsolattartó [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) Ha sikertelen. Ez a lépés nem kritikus, mivel, menti egy újbóli üzembe helyezés.
 
-    1. **Válassza ki** hajtsa végre a postcheck parancsfájlt a "Tovább gombra". Ez az OEM frissítése lépés végét jelöli.
+   1. **Válassza ki** hajtsa végre a postcheck parancsfájlt a "Tovább gombra". Ez az OEM frissítése lépés végét jelöli.
 
-    1. Bármely egyéb kérdésre fennmaradó a vizsgálat végén és **kiválasztása** "Küldés".
+   1. Bármely egyéb kérdésre fennmaradó a vizsgálat végén és **kiválasztása** "Küldés".
 
-    1. Ez az interaktív vizsgálati végét jelöli.
+   1. Ez az interaktív vizsgálati végét jelöli.
 
 5. Tekintse át az eredmény az OEM kiterjesztésű csomag ellenőrzése. Ha a teszt sikeres volt, ütemezése végrehajtási felhőalapú szimulációs összetevő.
 

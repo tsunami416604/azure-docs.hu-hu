@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 3/12/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cb70dd30d2c3218ac0ad6ef4bd7b71108845f8cb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476444"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109491"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzések a hangalapú, SMS, e-mailek, az Azure-alkalmazások leküldéses értesítései és webhook korlátozása
 Az értesítések, amelyek akkor fordul elő, ha túl sok küld egy adott telefonszám, e-mail címét vagy eszköz felfüggesztés sebességkorlátozással. Sebességkorlátozással biztosítja, hogy riasztások kezelhető, és a gyakorlatban is használható.
 
 A sebesség korlát küszöbértékek a következők:
 
- - **SMS**: Az SMS 5 percenként legfeljebb 1.
- - **Beszédfelismerési**: Legfeljebb 1 hanghívás 5 percenként.
- - **e-mailek**: Legfeljebb 100 e-mailek egy órán belül.
+- **SMS**: Az SMS 5 percenként legfeljebb 1.
+- **Beszédfelismerési**: Legfeljebb 1 hanghívás 5 percenként.
+- **e-mailek**: Legfeljebb 100 e-mailek egy órán belül.
  
- Egyéb műveletek nem korlátozott sebességű el.
+  Egyéb műveletek nem korlátozott sebességű el.
 
 ## <a name="rate-limit-rules"></a>Forgalmi korlát szabályok
 - Egy adott telefonszámot vagy e-mail sebessége korlátozott, ha az a küszöbérték engedélyezettnél több üzenetet kap.

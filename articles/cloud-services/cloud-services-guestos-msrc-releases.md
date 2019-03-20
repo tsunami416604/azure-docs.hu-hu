@@ -11,22 +11,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/20/2019
+ms.date: 3/14/2019
 ms.author: raiye
-ms.openlocfilehash: 9a54a7676b874eee601ac2b673021bb7ff161ba8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ec50cff2a2d3323b988632fd7ee96b73f60117b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532950"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887289"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
-## <a name="february-2019-guest-os"></a>2019. február vendég operációs rendszer
-
 >[!NOTE]
->A február vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A február vendég operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+>A március vendég operációs rendszer jelenleg tesszük elérhetővé a megtörténik az automatikus frissítések, a Cloud Service virtuális gépeken. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A március operációs rendszer a következő javításokat tartalmazza. Ez a lista a változhat.
+
+
+## <a name="march-2019-guest-os"></a>Március 2019 vendég operációs rendszer
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 2019. március 12. |
+| Rel 19-03 | [4489907] | Flash | 3.71, 4.64, 5.29, 6.5 | 2019. március 12. |
+| Rel 19-03 | [4489885] | Windows biztonsági | 2.84 | 2019. március 12. |
+| Rel 19-03 | [4489884] | Windows biztonsági | 3.71 | 2019. március 12. |
+| Rel 19-03 | [4489883] | Windows biztonsági | 4.64 | 2019. március 12. |
+| Rel 19-03 | [4489882] | A Windows 10 biztonsági | 5.29 | 2019. március 12. |
+| Rel 19-03 | [4489899] | A Windows 10 biztonsági | 6.5 | 2019. március 12. |
+| Rel 19-03 | [4486563] | Február nem – a biztonság összegzése | 2.84 | 2019. február 12. |
+| Rel 19-03 | [4483458] | Február nem biztonsági kumulatív .NET 3.x | 2.84 | 2019. február 12. |
+| Rel 19-03 | [4483455] | Február nem biztonsági kumulatív .NET 4.x | 2.84 | 2019. február 12. |
+| Rel 19-03 | [4487025] | Február nem – a biztonság összegzése | 3.71 | 2019. február 12. |
+| Rel 19-03 | [4483456] | Február nem biztonsági kumulatív .NET 3.x | 3.71 | 2019. február 12. |
+| Rel 19-03 | [4483454] | Február nem biztonsági kumulatív .NET 4.x | 3.71 | 2019. február 12. |
+| Rel 19-03 | [4487000] | Február nem – a biztonság összegzése | 4.64 | 2019. február 12. |
+| Rel 19-03 | [4483459] | Február nem biztonsági kumulatív .NET 3.x | 4.64 | 2019. február 12. |
+| Rel 19-03 | [4483453] | Február nem biztonsági kumulatív .NET 4.x | 4.64 | 2019. február 12. |
+| Rel 19-03 | [4485447] | Február karbantartási frissítését | 5.29 | 2019. február 12. |
+| Rel 19-03 | [4486459] | Időzóna frissítése | 2.84, 3.71, 4.64 | 2019. február 12. |
+
+[4489873]: https://support.microsoft.com/kb/4489873
+[4489907]: https://support.microsoft.com/kb/4489907
+[4489885]: https://support.microsoft.com/kb/4489885
+[4489884]: https://support.microsoft.com/kb/4489884
+[4489883]: https://support.microsoft.com/kb/4489883
+[4489882]: https://support.microsoft.com/kb/4489882
+[4489899]: https://support.microsoft.com/kb/4489899
+[4486563]: https://support.microsoft.com/kb/4486563
+[4483458]: https://support.microsoft.com/kb/4483458
+[4483455]: https://support.microsoft.com/kb/4483455
+[4487025]: https://support.microsoft.com/kb/4487025
+[4483456]: https://support.microsoft.com/kb/4483456
+[4483454]: https://support.microsoft.com/kb/4483454
+[4487000]: https://support.microsoft.com/kb/4487000
+[4483459]: https://support.microsoft.com/kb/4483459
+[4483453]: https://support.microsoft.com/kb/4483453
+[4485447]: https://support.microsoft.com/kb/4485447
+[4486459]: https://support.microsoft.com/kb/4486459
+
+## <a name="february-2019-guest-os"></a>2019. február vendég operációs rendszer
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
@@ -520,7 +563,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-05-rel | [4010323] |SHA1 tanácsadás |2.62, 4.42, 5.7 | 2017. május 9. |
 | 17-05-rel | [4022344] |Microsoft Security Advisory |5.7 | 2017. május 9. |
 | 17-05-rel | [4022345] |Microsoft Security Advisory |5.7 | 2017. május 9. |
-| 17-05-rel | [4021279] |.Net /ASP.Net Core Advisory |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
+| 17-05-rel | [4021279] |.NET /ASP.NET Core Advisory |2.62, 3.49, 4.42, 5.7 | 2017. május 9. |
 | – | [4012864] |Időzóna frissítése |2.62, 3.49, 4.42 | 2017. május 9. |
 | – | [4014565] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |
 | – | [4014559] |Április .NET nem a biztonság összegzése |2.62 | 2017. április 11. |

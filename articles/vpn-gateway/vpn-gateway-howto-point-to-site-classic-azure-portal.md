@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: e71999e9c5b118fbf31d0d735d03cddb321b0065
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773418"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000934"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása a Tanúsítványalapú hitelesítés (klasszikus) használatával
 
@@ -69,9 +69,9 @@ A következő értékek használatával létrehozhat egy tesztkörnyezetet, vagy
    - **Erőforráscsoport**: Adja meg *TestRG*. Válassza ki **új létrehozása**, ha az erőforráscsoport nem létezik.
    - **Hely**: Válassza ki **USA keleti Régiójában** a listából.
 
- - **VPN-beállításokat**
-   - **Kapcsolat típusa**: Válassza ki **pont – hely**.
-   - **Ügyfélcímtér**: Adja meg *172.16.201.0/24*. A pont – hely kapcsolat használatával csatlakoznak a virtuális hálózathoz a VPN-ügyfelek a megadott címkészletből kapnak IP-címet.
+  - **VPN-beállításokat**
+    - **Kapcsolat típusa**: Válassza ki **pont – hely**.
+    - **Ügyfélcímtér**: Adja meg *172.16.201.0/24*. A pont – hely kapcsolat használatával csatlakoznak a virtuális hálózathoz a VPN-ügyfelek a megadott címkészletből kapnak IP-címet.
 
 - **Átjáró alhálózati beállítások**
    - **Név**: A Autofilled *GatewaySubnet*.
@@ -89,7 +89,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy egy Azure-előfizetést. Ha m
 
 Ha már nincs virtuális hálózat (VNet), hozzon létre egyet. A képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. Az alábbi lépésekkel hozhat létre virtuális hálózatokat az Azure portállal:
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) válassza **erőforrás létrehozása**. A **új** lap megnyitásakor. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) válassza **erőforrás létrehozása**. A **új** lap megnyitásakor. 
 
 2. Az a **keresés a piactéren** írja be a következőt *virtuális hálózat* válassza **virtuális hálózati** a visszaadott listában. A **virtuális hálózati** lap megnyitásakor.
 
@@ -121,26 +121,26 @@ Ebben a lépésben egy átjáró-alhálózatot és egy dinamikus útválasztás�
 
 2. Válassza ki a lapon a virtuális hálózat **áttekintése**, majd a a **VPN-kapcsolatok** szakaszban jelölje be **átjáró**.
 
-  ![Válassza ki az átjáró létrehozása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
+   ![Válassza ki az átjáró létrehozása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/beforegw125.png)
 3. A **Új VPN-kapcsolat** lapon válassza a **Pont–hely** beállítást.
 
-  ![Pont–hely kapcsolat típusa](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
+   ![Pont–hely kapcsolat típusa](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/newvpnconnect.png)
 4. A **Ügyfélcímtér**, adja hozzá az IP-címtartományt, amelyből a VPN-ügyfelek IP-címet kapnak, kapcsolódáskor. A helyszíni hellyel, amelyről csatlakozik, vagy a virtuális hálózattal, hogy csatlakozni, használja a magánhálózati IP-címtartományt, amely nincs átfedésben. A magánhálózati IP-címtartományt, amelyet használni szeretne a autofilled tartomány is felülírása. Ez a példa bemutatja a autofilled tartományt. 
 
-  ![Ügyfélcímtér](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
+   ![Ügyfélcímtér](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clientaddress.png)
 5. Válassza ki **átjáró azonnali létrehozása**, majd válassza ki **átjáró opcionális konfigurálása** megnyitásához a **átjárókonfiguráció** lapot.
 
-  ![Válassza ki az átjáró opcionális konfigurálása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
+   ![Válassza ki az átjáró opcionális konfigurálása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/optsubnet125.png)
 
 6. Az a **átjárókonfiguráció** lapon jelölje be **alhálózati** az átjáró-alhálózat hozzáadása. Létrehozható átjáróalhálózat kisebb, akár/29 méretű legyen. Azt javasoljuk azonban, hogy a, több címet tartalmazó legalább/28-as vagy/27-eset kiválasztásával nagyobb alhálózat létrehozását. Így lehetővé teheti elegendő címet, amelyet érdemes a jövőben lehetséges további konfigurációk megvalósításához. Amikor átjáró-alhálózatokkal dolgozik, kerülje a hálózati biztonsági csoportok (NSG) társítását az átjáró-alhálózathoz. Egy hálózati biztonsági csoportot az alhálózathoz társítja, előfordulhat, hogy a VPN gateway nem az elvárt módon működnek. Válassza ki **OK** Ez a beállítás mentéséhez.
 
-  ![Átjáró-alhálózat hozzáadása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
+   ![Átjáró-alhálózat hozzáadása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
 7. Válassza ki az átjáró **méretét**. A méret a virtuális hálózati átjáró termékváltozata. Az Azure Portalon, az az alapértelmezett Termékváltozat érték **alapértelmezett**. Átjáró-Termékváltozatokkal kapcsolatos további információkért lásd: [tudnivalók a VPN gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-  ![Az átjáró mérete](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
+   ![Az átjáró mérete](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
 8. Válassza ki az átjáró **útválasztási típusát**. A pont–hely konfigurációhoz a **Dynamic** (Dinamikus) útválasztási típusra van szükség. Válassza ki **OK** amikor befejezte a lap konfigurálását.
 
-  ![Az útválasztási típus konfigurálása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
+   ![Az útválasztási típus konfigurálása](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/routingtype125.png)
 
 9. Az a **új VPN-kapcsolat** lapon jelölje be **OK** a virtuális hálózati átjáró létrehozásához a lap alján. Egy VPN-átjárót az átjáró Termékváltozatától függően akár 45 percet is igénybe vehet.
  
@@ -164,11 +164,11 @@ Az átjáró létrehozása után töltse fel a .cer fájlt (amely a nyilvános k
 
 1. Az a **VPN-kapcsolatok** szakaszban a virtuális hálózat lapjának, válassza ki az ügyfél ábrára a **pont – hely VPN kapcsolat** lapot.
 
-  ![Ügyfelek](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
+   ![Ügyfelek](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/clients125.png)
 
 2. Az a **pont – hely VPN kapcsolat** lapon jelölje be **szükséges tanúsítvány kezelése** megnyitásához a **tanúsítványok** lap.
 
-  ![Tanúsítványok lap](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
+   ![Tanúsítványok lap](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/ptsmanage.png)
 
 1. Az a **tanúsítványok** lapon jelölje be **feltöltése** megnyitásához a **tanúsítvány feltöltése** lap.
 
@@ -176,7 +176,7 @@ Az átjáró létrehozása után töltse fel a .cer fájlt (amely a nyilvános k
 
 4. Válassza ki a mappa ábrára a .cer fájl. Válassza ki a fájlt, majd válassza ki **OK**. A feltöltött tanúsítvány megjelenik-e a **tanúsítványok** lapot.
 
-  ![Tanúsítvány feltöltése](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
+   ![Tanúsítvány feltöltése](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/upload.png)
 
 
 ## <a name="configure-the-client"></a>Az ügyfél konfigurálása
@@ -191,10 +191,10 @@ Használhatja a VPN-ügyfél azonos konfigurációs csomagját minden ügyfélsz
 
 2. Az a **pont – hely VPN kapcsolat** lapon, válassza ki a letöltési csomagra, amely megfelel az ügyfél operációs rendszerét, amelyre telepítve van:
 
-  * 64 bites ügyfelek esetén válassza a **VPN Client (64-bit)** (VPN-ügyfél (64 bit)) lehetőséget.
-  * 32 bites ügyfelek esetén válassza a **VPN Client (32-bit)** (VPN-ügyfél (32 bit)) lehetőséget.
+   * 64 bites ügyfelek esetén válassza a **VPN Client (64-bit)** (VPN-ügyfél (64 bit)) lehetőséget.
+   * 32 bites ügyfelek esetén válassza a **VPN Client (32-bit)** (VPN-ügyfél (32 bit)) lehetőséget.
 
-  ![A VPN-ügyfél konfigurációs csomagjának letöltése](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
+   ![A VPN-ügyfél konfigurációs csomagjának letöltése](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/dlclient.png)
 
 3. Miután a csomag állít elő, töltse le, és telepítse az ügyfélszámítógépen. Ha egy SmartScreen előugró ablak jelenik meg, válassza ki a **szűrőfüggvénnyel**, majd **Futtatás mindenképpen**. A csomagot mentheti is, így más ügyfélszámítógépekre is telepítheti.
 
@@ -226,7 +226,7 @@ A P2S-kapcsolat létrehozása a különböző ügyfél-számítógépen fut, a h
 1. Ellenőrizze, hogy a VPN-kapcsolat aktív-e. Nyisson meg egy rendszergazda jogú parancssort az ügyfélszámítógépen, és futtassa **ipconfig/all**.
 2. Tekintse meg az eredményeket. A kapott IP-cím a virtuális hálózat létrehozásakor megadott pont–hely kapcsolati címtartományba tartozó valamelyik cím. Az eredmények a következő példához hasonlóak:
 
-  ```
+   ```
     PPP adapter VNet1:
         Connection-specific DNS Suffix .:
         Description.....................: VNet1
@@ -237,7 +237,7 @@ A P2S-kapcsolat létrehozása a különböző ügyfél-számítógépen fut, a h
         Subnet Mask.....................: 255.255.255.255
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connect-to-a-virtual-machine"></a>Csatlakozás virtuális géphez
 

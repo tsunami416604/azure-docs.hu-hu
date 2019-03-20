@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b298836070a511421f9df25155ff1ee4422e61dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 05c6f1cbf5f7f20745fa837accdaa95e6c186b8b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994368"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226616"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
@@ -44,7 +44,7 @@ Probléma azonosítása érdekében vegye figyelembe a következő kérdéseket:
 * Ha adott probléma először fordulnak elő? Milyen gyakran ez történt óta?
 * Változott, a saját fürtkonfiguráció?
 
-### <a name="cluster-details"></a>Fürt részletes adatai
+### <a name="cluster-details"></a>Fürt adatai
 
 Fürt fontos információkat tartalmazza:
 
@@ -265,8 +265,8 @@ Segítségével diagnosztizálhatja a fürt hiba forrását. Indítsa el az új 
 
 ## <a name="next-steps"></a>További lépések
 
-* [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)
-* [Hozzáférés az Apache Hadoop YARN napló a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Hozzáférés az Apache Hadoop YARN alkalmazás HDInsight Linux-alapú bejelentkezés](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Ismert problémák a HDInsight az Apache Spark-fürt](hdinsight-apache-spark-known-issues.md)

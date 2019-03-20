@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d092b6dfbd453d5583fed8d993da6aec633ac1b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 013902927e0b59e5c1723868f7a3b3d553412000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183067"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Gyors útmutató: A node.js használatával a támogatott nyelvek listáját a Translator Text API használatával
 
@@ -88,6 +88,8 @@ node get-languages.js
 Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).
 
 ## <a name="sample-response"></a>Mintaválasz
+
+Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 A mintát csonkoltuk, hogy az eredményeknek csak egy részletét mutassa:
 

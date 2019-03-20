@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865875"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877293"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: Kivételek kezelése |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -71,7 +71,7 @@ Tiltsa le a hibakeresési információkat a szolgáltatásban. A eltávolítás�
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC 5, MVC 6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [ASP.NET webes API-k kivételkezelés](http://www.asp.net/web-api/overview/error-handling/exception-handling), [modell érvényesítése az ASP.NET webes API-k](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Hivatkozások**              | [ASP.NET webes API-k kivételkezelés](https://www.asp.net/web-api/overview/error-handling/exception-handling), [modell érvényesítése az ASP.NET webes API-k](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Lépések** | Alapértelmezés szerint az ASP.NET webes API-t a legtöbb nem kezelt kivételek fordítja HTTP-választ, állapotkód: `500, Internal Server Error`|
 
 ### <a name="example"></a>Példa
@@ -179,7 +179,7 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások szakaszban található hivatkozásokat és a modell érvényesítése az ASP.Net Web API 
+Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások szakaszban található hivatkozásokat és a modell érvényesítése az ASP.NET Web API 
 
 ## <a id="messages"></a>Nem teszik elérhetővé a hibaüzeneteket biztonsági részletei
 

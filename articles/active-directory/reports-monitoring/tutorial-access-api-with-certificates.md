@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b6fcdb117033e69db82d8f9bb083891794ed72
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8706414b27969efd6aa26085370f8a0b1f891d69
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187083"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095194"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával
 
@@ -87,15 +87,15 @@ Ebben az oktatóanyagban elsajátíthatja egy tesztcélú tanúsítvánnyal az M
   
 7. Most hozzáférési jogkivonatot az MS Graph API használatával lekérheti ezt a tanúsítványt. Használja a **Get-MSCloudIdMSGraphAccessTokenFromCert** parancsmagot a MSCloudIdUtils PowerShell-modult, ad át az Alkalmazásazonosítót és az előző lépésben beszerzett ujjlenyomatát. 
 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. A Powershell-parancsfájlt a hozzáférési jogkivonat segítségével lekérdezése a Graph API-t. Használja a **Invoke-MSCloudIdMSGraphQuery** számbavétele a bejelentkezések és directoryAudits végpont a MSCloudIDUtils parancsmagjával. Ez a parancsmag kezeli a többlapos eredményeket, és elküldi őket a PowerShell-adatcsatorna.
 
 9. A lekérdezés a directoryAudits végpontot, hogy a naplók beolvasása. 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. A lekérdezés a bejelentkezések végpontot, hogy a bejelentkezési naplók begyűjtéséről.
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Ezután eldöntheti, exportálhatja ezeket az adatokat egy CSV-fájlba, és mentheti egy SIEM-rendszerbe. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
 

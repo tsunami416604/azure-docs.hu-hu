@@ -1,21 +1,21 @@
 ---
-title: Az API Management segítségével a Machine Learning Studio-webszolgáltatások kezelése
+title: Az API Management segítségével a webszolgáltatások kezelése
 titleSuffix: Azure Machine Learning Studio
 description: Az API Management használatával AzureML webszolgáltatások kezelése bemutató útmutató. A REST API-végpontokon kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d4029d7f15918ea75ebcb10bfa8f8f7657eb11ca
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852883"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
 ## <a name="overview"></a>Áttekintés
@@ -182,11 +182,11 @@ Nevezze át, hogy **SimpleFeatureHashingExperiment**. Bontsa ki a **mentett adat
 
 Bontsa ki a **adatátalakítás** és **adatkezelési** , és húzza **Select Columns in Dataset** alakzatot a kísérlet során. Csatlakozás **felülvizsgálatok lefoglalja az Amazon** való **oszlopok kiválasztása az adathalmaz**.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![A könyv felülvizsgálatok adatkészlet modul összekötése a Projektoszlopok modullal](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás indítása** válassza **Col2**. Kattintson a pipa jelre a módosítások alkalmazásához.
 
-![select-columns](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Válassza ki az oszlopnevek használatával oszlopok](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Bontsa ki a **Szövegelemzés** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
 

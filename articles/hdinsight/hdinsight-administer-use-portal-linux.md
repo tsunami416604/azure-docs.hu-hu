@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8fccf82371225acd5839537f7629ffe7df138d43
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201007"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -56,7 +56,7 @@ Válassza ki a fürt nevét, a [ **HDInsight-fürtök** oldal](#showClusters).  
     - **Eszközök**: Információk a HDInsight kapcsolódó eszközök.
 
 - **Beállítások menü**  
-  - **Fürt mérete**: Ellenőrizze, növelheti és csökkentheti a fürt munkavégző csomópontok számát. Lásd: [fürtök méretezése](hdinsight-administer-use-management-portal.md#scale-clusters).
+  - **Fürt mérete**: Ellenőrizze, növelheti és csökkentheti a fürt munkavégző csomópontok számát. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).
   - **Magkvóta korlátozásának**: A használt és elérhető az előfizetéshez tartozó magok jelennek meg.
   - **SSH + fürtbe való bejelentkezésekor**: Az utasításokat követve csatlakozhat a fürthöz Secure Shell (SSH)-kapcsolat használatával jeleníti meg. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
   - **Data Lake Storage Gen1**: Data Lake Storage Gen1 hozzáférés konfigurálásához.  Lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
@@ -186,7 +186,7 @@ Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek
 Számos módon meg a program a folyamatot:
 
 * Az Azure Data Factory felhasználói. Lásd: [létrehozása igény szerinti Linux-alapú Apache Hadoop-fürtök az Azure Data Factory használatával HDInsight](hdinsight-hadoop-create-linux-clusters-adf.md) létrehozásához igény szerinti HDInsight társított szolgáltatás.
-* Az Azure PowerShell-lel.  Lásd: [repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data.md).
+* Az Azure PowerShell-lel.  Lásd: [repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data-linux.md).
 * Klasszikus Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök használatával a klasszikus Azure CLI](hdinsight-administer-use-command-line.md).
 * HDInsight .NET SDK használata. Lásd: [küldje el az Apache Hadoop-feladatok](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

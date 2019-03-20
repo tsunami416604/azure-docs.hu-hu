@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: f59a871297189cfd5082b55a3dbdfd3156a4e501
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079605"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-hitelesítés
 
@@ -66,9 +66,9 @@ Hozzon létre a VPN-ügyfél konfigurációs fájljainak felhasználóneves és 
 ```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
- 
+ 
 A következő parancs futtatásával adja vissza egy hivatkozást. Másolja és illessze be a hivatkozásra kattintva töltheti le egy webes böngésző **VpnClientConfiguration.zip**. Bontsa ki a fájlt, a következő mappák megtekintése: 
- 
+ 
 * **WindowsAmd64** és **WindowsX86**: Ezeket a mappákat a Windows 64 bites és 32 bites installer csomagokat, illetve tartalmaznak. 
 * **Általános**: Ez a mappa hozhat létre a saját VPN-ügyfél konfigurációja általános adatokat tartalmaz. Ez a mappa felhasználóneves és jelszavas hitelesítési konfigurációk esetén nem szükséges.
 * **Mac**: Ha úgy állította be az IKEv2, a virtuális hálózati átjáró létrehozásakor, akkor egy nevű mappát láthatnak **Mac** , amely tartalmaz egy **mobileconfig** fájlt. Ez a fájl segítségével konfigurálhatja a Mac-ügyfél.
@@ -88,7 +88,7 @@ A következő VPN-ügyfelek konfigurálhatja:
 * [Windows](#adwincli)
 * [Mac (OS X)](#admaccli)
 * [Linux rendszerű strongSwan használatával](#adlinuxcli)
- 
+ 
 #### <a name="adwincli"></a>Windows VPN-ügyfél telepítése
 
 Használhatja az azonos VPN-ügyfélkonfigurációs csomagot minden Windows ügyfélszámítógépen, mindaddig, amíg a verzió megegyezik az architektúra az ügyfél. A támogatott ügyfél operációs rendszerek listáját lásd: a [– gyakori kérdések](vpn-gateway-vpn-faq.md#P2S).
@@ -109,7 +109,7 @@ A következő lépések használatával konfigurálja a natív Windows VPN-ügyf
 
 3. Nem kötelező lépés – Ha azt szeretné, adja meg egy egyéni DNS, adja hozzá a következő sorokat a **mobileconfig** fájlt:
 
-  ```xml
+   ```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -121,7 +121,7 @@ A következő lépések használatával konfigurálja a natív Windows VPN-ügyf
             <string>TestDomain.com</string>
         </array>
     </dict> 
-  ```
+   ```
 4. Kattintson duplán a profilt telepítheti, és válassza ki az **Folytatás**. A profil neve megegyezik a virtuális hálózat nevét.
 
    ![Telepítés üzenet](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
@@ -142,10 +142,10 @@ A következő lépések használatával konfigurálja a natív Windows VPN-ügyf
    ![A rendszerbeállítások ikonok](./media/point-to-site-vpn-client-configuration-radius/adnetwork.png)
 10. A VPN-kapcsolat autópéldány **IkeV2 VPN**. A nevet módosíthatja frissítésével a **mobileconfig** fájlt.
 
-   ![A VPN-kapcsolat részletei](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
+    ![A VPN-kapcsolat részletei](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Válassza ki **hitelesítési beállítások**. Válassza ki **felhasználónév** a listában, és adja meg a hitelesítő adatait. Ha a megadott hitelesítő adatokat, majd **felhasználónév** automatikusan a listában, és a felhasználónevet és jelszót a kiválasztott vannak töltve. Válassza ki **OK** a beállítások mentéséhez.
 
-   ![Hitelesítési beállítások](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Hitelesítési beállítások](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Térjen vissza a **hálózati** párbeszédpanelen jelölje ki **alkalmaz** menti a módosításokat. Válassza ki a kapcsolat létrehozására, **Connect**.
 
 #### <a name="adlinuxcli"></a>Keresztül strongSwan Linux VPN-ügyfél telepítése
@@ -178,7 +178,7 @@ Az alábbi utasítások alapján létrehozott strongSwan 5.5.1 Ubuntu 17.0.4 ren
    ![A hálózatkezelő "VPN Radius" kapcsolat](./media/point-to-site-vpn-client-configuration-radius/ConnectRADIUS.png)
 
 ## <a name="certeap"></a>Tanúsítványalapú hitelesítés
- 
+ 
 Létrehozhat VPN-ügyfél konfigurációs fájljait az EAP-TLS protokollt használó RADIUS tanúsítványalapú hitelesítése. Egy vállalati által kiállított tanúsítvány általában VPN-hez a felhasználó hitelesítésére szolgál. Győződjön meg arról, hogy az összes csatlakozó felhasználók rendelkeznek-e az eszközökön telepített tanúsítvány, és, hogy a RADIUS-kiszolgáló képes-e a tanúsítvány érvényesítéséhez.
 
 >[!NOTE]
@@ -194,7 +194,7 @@ Minden egyes VPN-ügyfél eszköz egy telepített ügyfél-tanúsítványt igén
 ### <a name="certfiles"></a>1. VPN-ügyfél konfigurációs fájljainak létrehozása
 
 Hozzon létre a VPN-ügyfél konfigurációs fájljainak a Tanúsítványalapú hitelesítés segítségével. A VPN-ügyfélkonfigurációs fájlok a következő parancs használatával is létrehozhat:
- 
+ 
 ```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
@@ -211,7 +211,7 @@ Korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez használj
 ```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
- 
+ 
 ### <a name="setupusername"></a> 2. A VPN-ügyfelek konfigurálása
 
 A következő VPN-ügyfelek konfigurálhatja:
@@ -271,7 +271,7 @@ Egy másik hitelesítési típus (például OTP) használatára, vagy egy másik
 1. Használja a `Get-AzVpnClientConfiguration` parancsmag segítségével hozzon létre a VPN-ügyfél konfigurációja a EapMSChapv2.
 
 2. Bontsa ki a VpnClientConfiguration.zip fájlt, és keresse meg a **GenericDevice** mappát. Hagyja figyelmen kívül a Windows 64 bites és 32 bites architektúrák telepítőinek tartalmazó mappához.
- 
+ 
 3. A **GenericDevice** mappa tartalmaz egy XML-fájl nevű **VpnSettings**. Ez a fájl tartalmazza a szükséges adatokat:
 
    * **VpnServer**: Az Azure VPN gateway teljes Tartományneve. Ez az a cím, amely az ügyfél csatlakozik.

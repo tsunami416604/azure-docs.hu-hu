@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6da0511456f413924eee9d4cf622f50125b15833
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075151"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -125,84 +125,84 @@ A példákban a következő értékeket használjuk:
 
 1. Ellenőrizze az előfizetés beállításait.
 
-  Csatlakozzon a fiókjához, ha futtatja a Powershellt helyileg a számítógépen. Ha az Azure Cloud Shellt használja, akkor automatikusan csatlakoznak.
+   Csatlakozzon a fiókjához, ha futtatja a Powershellt helyileg a számítógépen. Ha az Azure Cloud Shellt használja, akkor automatikusan csatlakoznak.
 
-  ```azurepowershell-interactive
-  Connect-AzAccount
-  ```
+   ```azurepowershell-interactive
+   Connect-AzAccount
+   ```
 
-  Keresse meg a fiókot az előfizetésekben.
+   Keresse meg a fiókot az előfizetésekben.
 
-  ```azurepowershell-interactive
-  Get-AzSubscription
-  ```
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-  Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
+   Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
-  ```azurepowershell-interactive
-  Select-AzSubscription -SubscriptionName nameofsubscription
-  ```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName nameofsubscription
+   ```
 2. Deklarálja a változókat. Ez a példa a gyakorlathoz használt értékekkel deklarálja a változókat. A legtöbb esetben ezeket az értékeket a saját értékeire kell lecserélnie. Ezeket a változókat akkor használhatja, ha azért hajtja végre a lépéseket, hogy megismerje ezt a konfigurációtípust. Ha szükséges, módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
 
-  ```azurepowershell-interactive
-  $RG1 = "TestRG1"
-  $Location1 = "East US"
-  $VNetName1 = "TestVNet1"
-  $FESubName1 = "FrontEnd"
-  $BESubName1 = "Backend"
-  $GWSubName1 = "GatewaySubnet"
-  $VNetPrefix11 = "10.11.0.0/16"
-  $VNetPrefix12 = "10.12.0.0/16"
-  $FESubPrefix1 = "10.11.0.0/24"
-  $BESubPrefix1 = "10.12.0.0/24"
-  $GWSubPrefix1 = "10.12.255.0/27"
-  $GWName1 = "VNet1GW"
-  $GWIPName1 = "VNet1GWIP"
-  $GWIPconfName1 = "gwipconf1"
-  $Connection14 = "VNet1toVNet4"
-  $Connection15 = "VNet1toVNet5"
-  ```
+   ```azurepowershell-interactive
+   $RG1 = "TestRG1"
+   $Location1 = "East US"
+   $VNetName1 = "TestVNet1"
+   $FESubName1 = "FrontEnd"
+   $BESubName1 = "Backend"
+   $GWSubName1 = "GatewaySubnet"
+   $VNetPrefix11 = "10.11.0.0/16"
+   $VNetPrefix12 = "10.12.0.0/16"
+   $FESubPrefix1 = "10.11.0.0/24"
+   $BESubPrefix1 = "10.12.0.0/24"
+   $GWSubPrefix1 = "10.12.255.0/27"
+   $GWName1 = "VNet1GW"
+   $GWIPName1 = "VNet1GWIP"
+   $GWIPconfName1 = "gwipconf1"
+   $Connection14 = "VNet1toVNet4"
+   $Connection15 = "VNet1toVNet5"
+   ```
 3. Hozzon létre egy erőforráscsoportot.
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG1 -Location $Location1
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG1 -Location $Location1
+   ```
 4. Hozza létre a TestVNet1 alhálózat-konfigurációit. Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és három alhálózatot, amelyek neve a következő: GatewaySubnet, FrontEnd és Backend. Az értékek behelyettesítésekor fontos, hogy az átjáróalhálózat neve mindenképp GatewaySubnet legyen. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul.
 
-  A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít az esetleges későbbi konfigurációkhoz.
+   A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít az esetleges későbbi konfigurációkhoz.
 
-  ```azurepowershell-interactive
-  $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
-  $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
-  $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
-  ```
+   ```azurepowershell-interactive
+   $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
+   $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
+   $gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix $GWSubPrefix1
+   ```
 5. Hozza létre a TestVNet1-et.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
+   ```
 6. Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Vegye figyelembe, hogy az AllocationMethod értéke Dynamic. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
 
-  ```azurepowershell-interactive
-  $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip1 = New-AzPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -AllocationMethod Dynamic
+   ```
 7. Hozza létre az átjáró konfigurációját. Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. A példa használatával hozza létre az átjáró konfigurációját.
 
-  ```azurepowershell-interactive
-  $vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
-  $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
-  $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
-  -Subnet $subnet1 -PublicIpAddress $gwpip1
-  ```
+   ```azurepowershell-interactive
+   $vnet1 = Get-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
+   $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+   $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
+   -Subnet $subnet1 -PublicIpAddress $gwpip1
+   ```
 8. Hozza létre a TestVNet1 átjáróját. Ebben a lépésben a TestVNet1 virtuális hálózati átjáróját fogja létrehozni. A virtuális hálózatok közötti konfigurációkhoz a VpnType paraméternek RouteBased értékűnek kell lennie. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
-  -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
-  -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
+   -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn `
+   -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 Miután elvégezte a parancsok, az átjáró létrehozása akár 45 percet vesz igénybe. Azure Cloud Shellt használja, ha a munkamenetet. Ehhez kattintson a felső sarokban marad a Cloud Shell terminál cloud Shell újraindítása, majd a TestVNet4 konfigurálásához. Nem kell várnia, amíg befejeződik a TestVNet1-átjárót.
 
@@ -212,61 +212,61 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
 
 1. Csatlakozás és deklarálja a változókat. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni.
 
-  ```azurepowershell-interactive
-  $RG4 = "TestRG4"
-  $Location4 = "West US"
-  $VnetName4 = "TestVNet4"
-  $FESubName4 = "FrontEnd"
-  $BESubName4 = "Backend"
-  $GWSubName4 = "GatewaySubnet"
-  $VnetPrefix41 = "10.41.0.0/16"
-  $VnetPrefix42 = "10.42.0.0/16"
-  $FESubPrefix4 = "10.41.0.0/24"
-  $BESubPrefix4 = "10.42.0.0/24"
-  $GWSubPrefix4 = "10.42.255.0/27"
-  $GWName4 = "VNet4GW"
-  $GWIPName4 = "VNet4GWIP"
-  $GWIPconfName4 = "gwipconf4"
-  $Connection41 = "VNet4toVNet1"
-  ```
+   ```azurepowershell-interactive
+   $RG4 = "TestRG4"
+   $Location4 = "West US"
+   $VnetName4 = "TestVNet4"
+   $FESubName4 = "FrontEnd"
+   $BESubName4 = "Backend"
+   $GWSubName4 = "GatewaySubnet"
+   $VnetPrefix41 = "10.41.0.0/16"
+   $VnetPrefix42 = "10.42.0.0/16"
+   $FESubPrefix4 = "10.41.0.0/24"
+   $BESubPrefix4 = "10.42.0.0/24"
+   $GWSubPrefix4 = "10.42.255.0/27"
+   $GWName4 = "VNet4GW"
+   $GWIPName4 = "VNet4GWIP"
+   $GWIPconfName4 = "gwipconf4"
+   $Connection41 = "VNet4toVNet1"
+   ```
 2. Hozzon létre egy erőforráscsoportot.
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG4 -Location $Location4
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG4 -Location $Location4
+   ```
 3. Hozza létre a TestVNet4 alhálózat-konfigurációit.
 
-  ```azurepowershell-interactive
-  $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
-  $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
-  $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
-  ```
+   ```azurepowershell-interactive
+   $fesub4 = New-AzVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
+   $besub4 = New-AzVirtualNetworkSubnetConfig -Name $BESubName4 -AddressPrefix $BESubPrefix4
+   $gwsub4 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName4 -AddressPrefix $GWSubPrefix4
+   ```
 4. Hozza létre a TestVNet4-et.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -AddressPrefix $VnetPrefix41,$VnetPrefix42 -Subnet $fesub4,$besub4,$gwsub4
+   ```
 5. Kérjen egy nyilvános IP-címet.
 
-  ```azurepowershell-interactive
-  $gwpip4 = New-AzPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip4 = New-AzPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -AllocationMethod Dynamic
+   ```
 6. Hozza létre az átjáró konfigurációját.
 
-  ```azurepowershell-interactive
-  $vnet4 = Get-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
-  $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
-  $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
-  ```
+   ```azurepowershell-interactive
+   $vnet4 = Get-AzVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
+   $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
+   $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
+   ```
 7. A TestVNet4 átjárójának létrehozása Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
-  -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
-  -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
+   -Location $Location4 -IpConfigurations $gwipconf4 -GatewayType Vpn `
+   -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 ### <a name="step-4---create-the-connections"></a>4. lépés – A kapcsolatok létrehozása
 
@@ -274,24 +274,24 @@ Várjon, amíg az átjárók végezhető el. Indítsa újra az Azure Cloud Shell
 
 1. Hozza létre a virtuális hálózati átjárókat.
 
-  ```azurepowershell-interactive
-  $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-  $vnet4gw = Get-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+   $vnet4gw = Get-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
+   ```
 2. Hozza létre a TestVNet1–TestVNet4 kapcsolatot. Ebben a lépésben a TestVNet1 felől a TestVNet4 felé irányuló kapcsolatot hozza létre. A példák egy megosztott kulcsra is hivatkoznak. A megosztott kulcshoz használhatja a saját értékeit. Fontos, hogy a megosztott kulcs azonos legyen mindkét kapcsolathoz. A kapcsolat létrehozása egy kis időt vehet igénybe.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
-  -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
-  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
+   -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
+   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 3. Hozza létre a TestVNet4–TestVNet1 kapcsolatot. Ez a lépés az előzőhöz hasonló. A különbség annyi, hogy ezúttal a TestVNet4 felől a TestVNet1 felé irányuló kapcsolatot hozza létre. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek. A kapcsolat néhány perc alatt létrejön.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
-  -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
-  -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
+   -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
+   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 4. Ellenőrizze a kapcsolatot. Tekintse meg [A kapcsolat ellenőrzése](#verify) című szakaszt.
 
 ## <a name="difsub"></a>Különböző előfizetésben található virtuális hálózatok összekapcsolása
@@ -331,78 +331,78 @@ Ezt a lépést az új előfizetés környezetében kell elvégezni. Ezt a részt
 
 1. Deklarálja a változókat. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni.
 
-  ```azurepowershell-interactive
-  $Sub5 = "Replace_With_the_New_Subscription_Name"
-  $RG5 = "TestRG5"
-  $Location5 = "Japan East"
-  $VnetName5 = "TestVNet5"
-  $FESubName5 = "FrontEnd"
-  $BESubName5 = "Backend"
-  $GWSubName5 = "GatewaySubnet"
-  $VnetPrefix51 = "10.51.0.0/16"
-  $VnetPrefix52 = "10.52.0.0/16"
-  $FESubPrefix5 = "10.51.0.0/24"
-  $BESubPrefix5 = "10.52.0.0/24"
-  $GWSubPrefix5 = "10.52.255.0/27"
-  $GWName5 = "VNet5GW"
-  $GWIPName5 = "VNet5GWIP"
-  $GWIPconfName5 = "gwipconf5"
-  $Connection51 = "VNet5toVNet1"
-  ```
+   ```azurepowershell-interactive
+   $Sub5 = "Replace_With_the_New_Subscription_Name"
+   $RG5 = "TestRG5"
+   $Location5 = "Japan East"
+   $VnetName5 = "TestVNet5"
+   $FESubName5 = "FrontEnd"
+   $BESubName5 = "Backend"
+   $GWSubName5 = "GatewaySubnet"
+   $VnetPrefix51 = "10.51.0.0/16"
+   $VnetPrefix52 = "10.52.0.0/16"
+   $FESubPrefix5 = "10.51.0.0/24"
+   $BESubPrefix5 = "10.52.0.0/24"
+   $GWSubPrefix5 = "10.52.255.0/27"
+   $GWName5 = "VNet5GW"
+   $GWIPName5 = "VNet5GWIP"
+   $GWIPconfName5 = "gwipconf5"
+   $Connection51 = "VNet5toVNet1"
+   ```
 2. Csatlakozzon az 5. előfizetéshez. Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. A következő minta segíthet a kapcsolódásban:
 
-  ```azurepowershell-interactive
-  Connect-AzAccount
-  ```
+   ```azurepowershell-interactive
+   Connect-AzAccount
+   ```
 
-  Keresse meg a fiókot az előfizetésekben.
+   Keresse meg a fiókot az előfizetésekben.
 
-  ```azurepowershell-interactive
-  Get-AzSubscription
-  ```
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-  Válassza ki a használni kívánt előfizetést.
+   Válassza ki a használni kívánt előfizetést.
 
-  ```azurepowershell-interactive
-  Select-AzSubscription -SubscriptionName $Sub5
-  ```
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName $Sub5
+   ```
 3. Hozzon létre egy új erőforráscsoportot.
 
-  ```azurepowershell-interactive
-  New-AzResourceGroup -Name $RG5 -Location $Location5
-  ```
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $RG5 -Location $Location5
+   ```
 4. Hozza létre a TestVNet5 alhálózat-konfigurációit.
 
-  ```azurepowershell-interactive
-  $fesub5 = New-AzVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
-  $besub5 = New-AzVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
-  $gwsub5 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
-  ```
+   ```azurepowershell-interactive
+   $fesub5 = New-AzVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
+   $besub5 = New-AzVirtualNetworkSubnetConfig -Name $BESubName5 -AddressPrefix $BESubPrefix5
+   $gwsub5 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName5 -AddressPrefix $GWSubPrefix5
+   ```
 5. Hozza létre a TestVNet5-öt.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
-  -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5 -Location $Location5 `
+   -AddressPrefix $VnetPrefix51,$VnetPrefix52 -Subnet $fesub5,$besub5,$gwsub5
+   ```
 6. Kérjen egy nyilvános IP-címet.
 
-  ```azurepowershell-interactive
-  $gwpip5 = New-AzPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
-  -Location $Location5 -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $gwpip5 = New-AzPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
+   -Location $Location5 -AllocationMethod Dynamic
+   ```
 7. Hozza létre az átjáró konfigurációját.
 
-  ```azurepowershell-interactive
-  $vnet5 = Get-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
-  $subnet5  = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-  $gwipconf5 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
-  ```
+   ```azurepowershell-interactive
+   $vnet5 = Get-AzVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
+   $subnet5  = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
+   $gwipconf5 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
+   ```
 8. Hozza létre a TestVNet5 átjáróját.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
-  -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
+   -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
+   ```
 
 ### <a name="step-8---create-the-connections"></a>8. lépés – A kapcsolatok létrehozása
 
@@ -410,68 +410,68 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 1. **[1. előfizetés]** Szerezze be az 1. előfizetés virtuális hálózati átjáróját. Jelentkezzen be, és csatlakozzon az 1. előfizetéshez az alábbi példa futtatása előtt:
 
-  ```azurepowershell-interactive
-  $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
+   ```
 
-  Másolja a következő elemek kimenetét, és küldje el a másolatokat az 5. előfizetés rendszergazdájának e-mailben vagy egyéb módon.
+   Másolja a következő elemek kimenetét, és küldje el a másolatokat az 5. előfizetés rendszergazdájának e-mailben vagy egyéb módon.
 
-  ```azurepowershell-interactive
-  $vnet1gw.Name
-  $vnet1gw.Id
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw.Name
+   $vnet1gw.Id
+   ```
 
-  Ez a két elem hasonló értékekkel fog rendelkezni, mint a következő kimeneti példában látható értékek:
+   Ez a két elem hasonló értékekkel fog rendelkezni, mint a következő kimeneti példában látható értékek:
 
-  ```
-  PS D:\> $vnet1gw.Name
-  VNet1GW
-  PS D:\> $vnet1gw.Id
-  /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
-  ```
+   ```
+   PS D:\> $vnet1gw.Name
+   VNet1GW
+   PS D:\> $vnet1gw.Id
+   /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
+   ```
 2. **[5. előfizetés]** Szerezze be az 5. előfizetés virtuális hálózati átjáróját. Jelentkezzen be, és csatlakozzon az 5. előfizetéshez az alábbi példa futtatása előtt:
 
-  ```azurepowershell-interactive
-  $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
+   ```
 
-  Másolja a következő elemek kimenetét, és küldje el a másolatokat az 1. előfizetés rendszergazdájának e-mailben vagy egyéb módon.
+   Másolja a következő elemek kimenetét, és küldje el a másolatokat az 1. előfizetés rendszergazdájának e-mailben vagy egyéb módon.
 
-  ```azurepowershell-interactive
-  $vnet5gw.Name
-  $vnet5gw.Id
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw.Name
+   $vnet5gw.Id
+   ```
 
-  Ez a két elem hasonló értékekkel fog rendelkezni, mint a következő kimeneti példában látható értékek:
+   Ez a két elem hasonló értékekkel fog rendelkezni, mint a következő kimeneti példában látható értékek:
 
-  ```
-  PS C:\> $vnet5gw.Name
-  VNet5GW
-  PS C:\> $vnet5gw.Id
-  /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
-  ```
+   ```
+   PS C:\> $vnet5gw.Name
+   VNet5GW
+   PS C:\> $vnet5gw.Id
+   /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
+   ```
 3. **[1. előfizetés]** Hozza létre a TestVNet1–TestVNet5 kapcsolatot. Ebben a lépésben a TestVNet1 felől a TestVNet5 felé irányuló kapcsolatot hozza létre. A különbség itt az, hogy a $vnet5gw nem szerezhető be közvetlenül, mert másik előfizetésben található. Ehhez létre kell hoznia egy új PowerShell-objektumot a fenti lépésekben az 1. előfizetésből átküldött értékekkel. Használja az alábbi példát. Cserélje le a nevet, az azonosítót és a megosztott kulcsot a saját értékeire. Fontos, hogy a megosztott kulcs azonos legyen mindkét kapcsolathoz. A kapcsolat létrehozása egy kis időt vehet igénybe.
 
-  Csatlakozzon az 1. előfizetéshez az alábbi példa futtatása előtt:
+   Csatlakozzon az 1. előfizetéshez az alábbi példa futtatása előtt:
 
-  ```azurepowershell-interactive
-  $vnet5gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-  $vnet5gw.Name = "VNet5GW"
-  $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
-  $Connection15 = "VNet1toVNet5"
-  New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   $vnet5gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+   $vnet5gw.Name = "VNet5GW"
+   $vnet5gw.Id   = "/subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW"
+   $Connection15 = "VNet1toVNet5"
+   New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 4. **[5. előfizetés]** Hozza létre a TestVNet5–TestVNet1 kapcsolatot. Ez a lépés az előzőhöz hasonló. A különbség annyi, hogy ezúttal a TestVNet5 felől a TestVNet1 felé irányuló kapcsolatot hozza létre. Itt ugyanúgy egy PowerShell-objektumot kell létrehozni az 1. előfizetésből szerzett értékek alapján. Ügyeljen arra, hogy a megosztott kulcsok megegyezzenek ebben a lépésben.
 
-  Csatlakozzon az 5. előfizetéshez az alábbi példa futtatása előtt:
+   Csatlakozzon az 5. előfizetéshez az alábbi példa futtatása előtt:
 
-  ```azurepowershell-interactive
-  $vnet1gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-  $vnet1gw.Name = "VNet1GW"
-  $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
-  $Connection51 = "VNet5toVNet1"
-  New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
-  ```
+   ```azurepowershell-interactive
+   $vnet1gw = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+   $vnet1gw.Name = "VNet1GW"
+   $vnet1gw.Id = "/subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW "
+   $Connection51 = "VNet5toVNet1"
+   New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
+   ```
 
 ## <a name="verify"></a>A kapcsolat ellenőrzése
 

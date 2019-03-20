@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e799c1728175431f94f720ec57b6332147741b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ab72c78f66a324159d802369aa1dea545b77549c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194478"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904116"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
 
@@ -35,15 +35,15 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-A csoportok elévülési idejének beállításához globális rendszergazdának vagy a felhasználói fiók adminisztrátorának kell lennie a bérlőben.
+Egy globális rendszergazdai vagy a felhasználói csoport lejárati beállítása a szervezet kell lennie.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Felhasználói létrehozás bekapcsolása a csoportokhoz
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája vagy a felhasználói fiók adminisztrátora.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy felhasználói rendszergazda a szervezet számára.
 
 2. Válassza a **Csoportok**, majd az **Általános** elemet.
   
-  ![Önkiszolgáló csoport beállításai](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Önkiszolgáló csoport beállításai](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Állítsa **A felhasználók létrehozhatnak Office 365-csoportokat** elemet **Igen** értékűre.
 
@@ -53,7 +53,7 @@ A csoportok elévülési idejének beállításához globális rendszergazdának
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** > **Csoportok** >  **Elévülés** lehetőséget az elévülési beállítások megnyitásához.
   
-  ![Elévülési beállítások](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![Elévülési beállítások](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Állítsa be az elévülési intervallumot. Válasszon ki egy előre beállított értéket, vagy adjon meg egy 31 napon túli egyéni értéket. 
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 8cf07c5213652ecedce7cd49a1de745c7fe8aa0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122267"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226335"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
@@ -26,7 +26,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > - A replikáció, többek között a replikációs szabályzat beállítása. A vCenter-kiszolgáló hozzáadása, és a virtuális gépek felderítéséhez. 
 > - VCenter-kiszolgáló hozzáadása és felderítése 
 > - Replikációs adatok tárolásához a storage-fiókok létrehozásához, és a virtuális gépek replikálása.
-> - Feladatátvétel végrehajtása. Feladatátvétel-beállítások konfigurálása, egy e beállítások végrehajtani a virtuális gépek replikálásához.
+> - Feladatátvétel végrehajtása. Feladatátvétel-beállítások konfigurálása, hajtsa végre a beállításokat a virtuális gépek replikálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

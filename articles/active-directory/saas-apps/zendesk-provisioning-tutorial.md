@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097991"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Zendesk konfigurálása
 
@@ -111,12 +111,12 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **rendszergazdai felhasználónév**, **titkos jogkivonat**, és **tartomány** , a Zendesk-fiókjába. Példák a következő értékek a következők:
 
-    *   Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók, a Zendesk-bérlő felhasználóneve. Példa: admin@contoso.com.
+   * Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók, a Zendesk-bérlő felhasználóneve. Példa: admin@contoso.com.
 
-    *   Az a **titkos jogkivonat** mezőben töltse fel a titkos jogkivonat, 6. lépésben leírtak szerint.
+   * Az a **titkos jogkivonat** mezőben töltse fel a titkos jogkivonat, 6. lépésben leírtak szerint.
 
-    *   Az a **tartomány** mezőt, a Zendesk-bérlőjének altartomány feltöltéséhez.
-    Példa: A bérlői URL-címet egy olyan fiók https://my-tenant.zendesk.com, az altartomány lenne **saját bérlő**.
+   * Az a **tartomány** mezőt, a Zendesk-bérlőjének altartomány feltöltéséhez.
+     Példa: A bérlői URL-címet egy olyan fiók https://my-tenant.zendesk.com, az altartomány lenne **saját bérlő**.
 
 6. A **titkos jogkivonat** a Zendesk fiók találhatók **Admin > API > Beállítások**.
    Ügyeljen arra, hogy **hozzáférés a jogkivonatokhoz** értékre van állítva **engedélyezve**.

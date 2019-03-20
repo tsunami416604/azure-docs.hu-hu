@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 85480a098dc5ef70938a5ec4cd7a31105496df6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123300"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás Műveletcsoportok viselkedés
 ## <a name="overview"></a>Áttekintés ##
@@ -28,7 +28,7 @@ Ez a cikk ismerteti az SMS-riasztások viselkedésének és a válasz műveletek
 ## <a name="receiving-an-sms-alert"></a>Az SMS-riasztás fogadásakor
 Az SMS-fogadó műveletcsoport tagja SMS kap, amikor a riasztás aktiválódik. Az SMS a következő információkat tartalmazza:
 * A műveletcsoport küldte el ezt a riasztást a gazdagépnév
-- A riasztás címe
+* A riasztás címe
 
 | VÁLASZ | Leírás |
 | ----- | ----------- |

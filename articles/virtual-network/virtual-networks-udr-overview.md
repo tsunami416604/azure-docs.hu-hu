@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: a09d880a1a17e429692dcb8e542657f416de7b30
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 90ca35ec899d71578a7da4061ca7842d13769072
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823535"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123572"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -48,8 +48,8 @@ Az előző táblában szereplő következő ugrástípusok azt jelölik, hogyan 
 - **Internetes**: Az interneten a címelőtag által meghatározott forgalmat irányítja. A rendszer alapértelmezett útvonala a 0.0.0.0/0 címelőtagot határozza meg. Ha nem bírálja felül az Azure alapértelmezett útvonalait, az Azure az internetre irányítja a virtuális hálózaton címtartomány által nem meghatározott összes cím forgalmát, egy kivétellel. Ha a cél címe egy Azure-szolgáltatáshoz tartozik, az Azure közvetlenül a szolgáltatásra irányítja a forgalmat az Azure gerinchálózatán keresztül, nem pedig az internetre. Az Azure-szolgáltatások közötti forgalom attól függetlenül sem halad át az interneten, hogy melyik Azure-régióban van a virtuális hálózat, vagy hogy mely Azure-régióban van üzembe helyezve az Azure-szolgáltatás példánya. Az Azure 0.0.0.0/0 címelőtaghoz tartozó alapértelmezett rendszerútvonalát felülbírálhatja egy [egyéni útvonallal](#custom-routes).
 
 - **Nincs**: Kapcsolódó forgalom például a **nincs** következő ugrási típus eldobott ahelyett, irányítja az alhálózaton kívülre. Az Azure automatikusan alapértelmezett útvonalakat hoz létre a következő címelőtagokhoz:
-    - **10.0.0.0/8, 172.16.0.0/12 és 192.168.0.0/16**: Magánjellegű használatra fenntartva az RFC 1918-ban.
-    - **100.64.0.0/10**: Fenntartva az RFC 6598-ban.
+  - **10.0.0.0/8, 172.16.0.0/12 és 192.168.0.0/16**: Magánjellegű használatra fenntartva az RFC 1918-ban.
+  - **100.64.0.0/10**: Fenntartva az RFC 6598-ban.
 
     Ha az előző címtartományok valamelyikét egy virtuális hálózat címteréhez rendeli, az Azure **Nincs** értékről automatikusan **Virtuális hálózat** értékre módosítja az útvonal következő ugrási típusát. Ha egy olyan címtartományt rendel egy virtuális hálózat címteréhez, amely tartalmazza a négy fenntartott címelőtag egyikét, de nem egyezik meg velük, az Azure eltávolítja az előtag útvonalát, és hozzáadja az Ön által hozzáadott címelőtag útvonalát a **Virtuális hálózat** következő ugrási típussal.
 
@@ -82,12 +82,12 @@ Felhasználó által megadott útvonal létrehozásakor az alábbi következő u
 
 - **Virtuális berendezés**: A virtuális készülék valójában egy virtuális gépet, amely általában egy hálózati alkalmazás, például a tűzfalak. A virtuális hálózaton üzembe helyezhető különböző előre konfigurált hálózati virtuális berendezésekről az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) talál további információt. Amikor létrehoz egy **virtuális berendezés** ugrástípusú útvonalat, a következő ugrás IP-címét is meghatározza. Az IP-cím a következő lehet:
 
-    - Egy virtuális géphez csatolt hálózati adapter [magánhálózati IP-címe](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses). Minden olyan, virtuális géphez csatolt hálózati adapterhez, amely nem a saját címére továbbít hálózati forgalmat, engedélyezve kell lennie az Azure *IP-továbbításnak*. A beállítás letiltja a hálózati adapter forrásának és céljának az Azure által végzett ellenőrzését. További információ [a hálózati adapterek IP-továbbításának engedélyezéséről](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Az *IP-továbbítás engedélyezése* az Azure beállítása, azonban lehet, hogy a virtuális gép operációs rendszerén is engedélyeznie kell az IP-továbbítást, hogy a berendezés továbbítani tudja a forgalmat az Azure hálózati adaptereihez rendelt magánhálózati IP-címek között. Ha a berendezés kénytelen nyilvános IP-címre irányítani a forgalmat, ezt vagy proxykapcsolaton keresztül kell megtennie, vagy a forrás magánhálózati IP-címét a saját magánhálózati IP-címére kell fordítania, amelyet ezt követően az Azure nyilvános IP-címre fordít, mielőtt a forgalmat továbbküldené az internetre. A virtuális gépen belüli kötelező beállítások meghatározásához tekintse meg az operációs rendszer vagy a hálózati alkalmazás dokumentációját. Az Azure kimenő kapcsolatainak ismertetéséhez lásd a [Kimenő kapcsolatok áttekintése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört.
+  - Egy virtuális géphez csatolt hálózati adapter [magánhálózati IP-címe](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses). Minden olyan, virtuális géphez csatolt hálózati adapterhez, amely nem a saját címére továbbít hálózati forgalmat, engedélyezve kell lennie az Azure *IP-továbbításnak*. A beállítás letiltja a hálózati adapter forrásának és céljának az Azure által végzett ellenőrzését. További információ [a hálózati adapterek IP-továbbításának engedélyezéséről](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Az *IP-továbbítás engedélyezése* az Azure beállítása, azonban lehet, hogy a virtuális gép operációs rendszerén is engedélyeznie kell az IP-továbbítást, hogy a berendezés továbbítani tudja a forgalmat az Azure hálózati adaptereihez rendelt magánhálózati IP-címek között. Ha a berendezés kénytelen nyilvános IP-címre irányítani a forgalmat, ezt vagy proxykapcsolaton keresztül kell megtennie, vagy a forrás magánhálózati IP-címét a saját magánhálózati IP-címére kell fordítania, amelyet ezt követően az Azure nyilvános IP-címre fordít, mielőtt a forgalmat továbbküldené az internetre. A virtuális gépen belüli kötelező beállítások meghatározásához tekintse meg az operációs rendszer vagy a hálózati alkalmazás dokumentációját. Az Azure kimenő kapcsolatainak ismertetéséhez lásd a [Kimenő kapcsolatok áttekintése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című témakört.
 
-      > [!NOTE]
-      > A virtuális berendezéseket ne azon az alhálózaton helyezze üzembe, amelyen a virtuális berendezések keresztül irányított erőforrások üzemelnek. Ha a virtuális berendezést ugyanazon az alhálózaton helyezi üzembe, és útvonaltáblát alkalmaz az alhálózatra, amely a virtuális berendezésen keresztül irányítja a forgalmat, útválasztási hurkok alakulnak ki, és a forgalom soha nem hagyja el az alhálózatot.
+    > [!NOTE]
+    > A virtuális berendezéseket ne azon az alhálózaton helyezze üzembe, amelyen a virtuális berendezések keresztül irányított erőforrások üzemelnek. Ha a virtuális berendezést ugyanazon az alhálózaton helyezi üzembe, és útvonaltáblát alkalmaz az alhálózatra, amely a virtuális berendezésen keresztül irányítja a forgalmat, útválasztási hurkok alakulnak ki, és a forgalom soha nem hagyja el az alhálózatot.
 
-    - Azure-beli [belső terheléselosztó](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) magánhálózati IP-címe. A terheléselosztókat gyakran használják [a hálózati virtuális berendezések magas rendelkezésre állási stratégiájának](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json) részeként.
+  - Azure-beli [belső terheléselosztó](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) magánhálózati IP-címe. A terheléselosztókat gyakran használják [a hálózati virtuális berendezések magas rendelkezésre állási stratégiájának](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json) részeként.
 
     Meghatározhat egy útvonalat a 0.0.0.0/0 címelőtaggal és a virtuális berendezés következő ugrási típussal, így a berendezés megvizsgálhatja a forgalmat, és meghatározhatja, hogy továbbítja vagy eldobja-e. Ha felhasználó által megadott, a 0.0.0.0/0 címelőtagot tartalmazó útvonalat kíván létrehozni, olvassa el először a [0.0.0.0/0 címelőtag](#default-route) témakört.
 
@@ -217,7 +217,7 @@ A képen látható *Subnet1* alhálózat útvonaltáblája a következő útvona
 |8   |Alapértelmezett|Érvénytelen|10.10.0.0/16        |Virtuális hálózati átjáró|[X.X.X.X]          |              |
 |9   |Felhasználó   |Aktív |10.10.0.0/16        |Virtuális berendezés      |10.0.100.4         |A helyszínire    |
 |10  |Alapértelmezett|Aktív |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
-|11  |Alapértelmezett|Érvénytelen|0.0.0.0/0           |Internet|              |                   |              |
+|11  |Alapértelmezett|Érvénytelen|0.0.0.0/0           |Internet               |                   |              |
 |12  |Felhasználó   |Aktív |0.0.0.0/0           |Virtuális berendezés      |10.0.100.4         |Alapértelmezett-NVA   |
 
 Az egyes útvonal-azonosítók magyarázata:

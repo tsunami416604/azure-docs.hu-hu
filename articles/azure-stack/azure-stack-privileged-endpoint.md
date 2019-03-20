@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: ff7513f197b3035b88748e2e73c38789d9010d9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251316"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082670"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>A kiemelt jogosultságú végpont használata az Azure Stackben
 
@@ -60,52 +60,52 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
-    - Az integrált rendszereken:
-      ```PowerShell
-        $cred = Get-Credential
+   - Az integrált rendszereken:
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
-    - Ha a ASDK futtatja:
+       Enter-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
+   - Ha a ASDK futtatja:
      
-      ```PowerShell
-        $cred = Get-Credential
+     ```PowerShell
+       $cred = Get-Credential
 
-        Enter-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Amikor a rendszer kéri, használja a következő hitelesítő adatok:
+       Enter-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Amikor a rendszer kéri, használja a következő hitelesítő adatok:
 
-      - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
-      - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
+     - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
+     - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
 
-    > [!NOTE]
-    > Ha Ön nem lehet kapcsolódni a ERCS végpont, próbálja meg első és második szintén egy ERCS virtuális Gépet, amelyhez Ön még nem már csatlakozni próbált, IP-címét a lépést.
+     > [!NOTE]
+     > Ha Ön nem lehet kapcsolódni a ERCS végpont, próbálja meg első és második szintén egy ERCS virtuális Gépet, amelyhez Ön még nem már csatlakozni próbált, IP-címét a lépést.
 
-3.  A csatlakozás után a rendszer kéri változik **[*IP-cím vagy ERCS virtuális gép neve*]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezetben. Futtatás innen `Get-Command` elérhető parancsmagjainak listájának megtekintéséhez.
+3. A csatlakozás után a rendszer kéri változik **[*IP-cím vagy ERCS virtuális gép neve*]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezetben. Futtatás innen `Get-Command` elérhető parancsmagjainak listájának megtekintéséhez.
 
-    Ezek a parancsmagok számos szánt csak integrált rendszer környezetekben (például az Adatközpont-integrációval kapcsolatos parancsmagok). Az a ASDK ellenőrzése a következő parancsmagokat:
+   Ezek a parancsmagok számos szánt csak integrált rendszer környezetekben (például az Adatközpont-integrációval kapcsolatos parancsmagok). Az a ASDK ellenőrzése a következő parancsmagokat:
 
-    - Clear-Host
-    - Close-PrivilegedEndpoint
-    - Kilépés-PSSession
-    - Get-AzureStackLog
-    - Get-AzureStackStampInformation
-    - Get-Command
-    - Get-FormatData
-    - Get-Help
-    - Get-ThirdPartyNotices
-    - Mérték-Object
-    - New-CloudAdminUser
-    - Out-Default
-    - Remove-CloudAdminUser
-    - Select-Object
-    - Set-CloudAdminUserPassword
-    - Test-AzureStack
-    - Stop-AzureStack
-    - Get-ClusterLog
+   - Clear-Host
+   - Close-PrivilegedEndpoint
+   - Kilépés-PSSession
+   - Get-AzureStackLog
+   - Get-AzureStackStampInformation
+   - Get-Command
+   - Get-FormatData
+   - Get-Help
+   - Get-ThirdPartyNotices
+   - Mérték-Object
+   - New-CloudAdminUser
+   - Out-Default
+   - Remove-CloudAdminUser
+   - Select-Object
+   - Set-CloudAdminUserPassword
+   - Test-AzureStack
+   - Stop-AzureStack
+   - Get-ClusterLog
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Tippek a kiemelt végponthoz 
 
@@ -132,26 +132,26 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
 
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
-    - Az integrált rendszereken:
-      ```PowerShell
-        $cred = Get-Credential
-
-        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```
-      A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
-    - Ha a ASDK futtatja:
-     
-      ```PowerShell
+   - Az integrált rendszereken:
+     ```PowerShell
        $cred = Get-Credential
 
-       $session = New-PSSession -ComputerName azs-ercs01 `
-          -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ``` 
-   Amikor a rendszer kéri, használja a következő hitelesítő adatok:
+       $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ```
+     A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
+   - Ha a ASDK futtatja:
+     
+     ```PowerShell
+      $cred = Get-Credential
 
-      - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
-      - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
+      $session = New-PSSession -ComputerName azs-ercs01 `
+         -ConfigurationName PrivilegedEndpoint -Credential $cred
+     ``` 
+     Amikor a rendszer kéri, használja a következő hitelesítő adatok:
+
+     - **Felhasználónév**: Adja meg a CloudAdmin fiók formátumban  **&lt; *Azure Stack-tartományhoz*&gt;\cloudadmin**. (ASDK, az a felhasználónév az **azurestack\cloudadmin**.)
+     - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
 
 3. A EGP munkamenet importálja a helyi gépen
     ```PowerShell 

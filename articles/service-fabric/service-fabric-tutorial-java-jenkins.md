@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880589"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: A Service Fabric Java-alkalmazás engedélyezése a CI/CD a Jenkins-környezet konfigurálása
 
@@ -72,15 +72,15 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
     * Az első bejelentkezés után létrehozhatja saját felhasználói fiókját, vagy maradhat a rendszergazdai fiók használata mellett.
 
 1. Állítsa be a GitHubot a Jenkins használatához az [új SSH-kulcs létrehozásával és SSH-ügynökhöz adásával](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) foglalkozó cikk lépéseit követve. Mivel a parancsok futtatása a Docker-tárolóból történik, kövesse a Linux-környezetre vonatkozó útmutatást.
-    * Kövesse a GitHub utasításait az SSH-kulcs létrehozásához. Ezután adja hozzá az SSH-kulcsot ahhoz a GitHub-fiókhoz, amely az adattárat üzemelteti.
-    * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
-    * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
+   * Kövesse a GitHub utasításait az SSH-kulcs létrehozásához. Ezután adja hozzá az SSH-kulcsot ahhoz a GitHub-fiókhoz, amely az adattárat üzemelteti.
+   * Futtassa a fenti hivatkozással elérhető parancsokat a Jenkins Docker-felületén (és ne a saját gazdagépén).
+   * Ahhoz, hogy a saját gazdagépéről jelentkezhessen be a Jenkinsbe, használja a következő parancsokat:
 
-    ```sh
-    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
-    ```
+     ```sh
+     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+     ```
 
-    Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendszerképe fut, nyilvános IP-címmel rendelkezik. A nyilvános IP-cím lehetővé teszi, hogy a Jenkins-példány megkapja a GitHub értesítéseit.
+     Győződjön meg arról, hogy a fürt vagy gép, ahol a Jenkins-tároló rendszerképe fut, nyilvános IP-címmel rendelkezik. A nyilvános IP-cím lehetővé teszi, hogy a Jenkins-példány megkapja a GitHub értesítéseit.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins-feladatok létrehozása és konfigurálása
 
@@ -146,7 +146,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
-    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
+    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
       <Description>Voting Application</Description>
       <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="2.0.0"/>

@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: aa9d03e40880dbc856045840499dba43b9d1aba9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201772"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
 
@@ -275,5 +275,5 @@ Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visua
 * [A Hadoop Hive használata a HDInsightban](hdinsight-use-hive.md)
 * [A HDInsight Apache Hadoop használatának első lépései](apache-hadoop-linux-tutorial-get-started.md)
 * [A HDInsight Apache Hadoop-feladatok elküldése](submit-apache-hadoop-jobs-programmatically.md)
-* [A HDInsight Apache Hadoop-keretrendszerrel Twitter-adatok elemzése](../hdinsight-analyze-twitter-data.md)
+* [A HDInsight Apache Hadoop-keretrendszerrel Twitter-adatok elemzése](../hdinsight-analyze-twitter-data-linux.md)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 912bc9fea7b721b9a74198572bbf916ee0ebe6cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007110"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező StatusPage
 
@@ -158,15 +158,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
    
-     ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-     ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-     a. Az a **SSO cél URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
+      a. Az a **SSO cél URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-     b. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőbe. 
+      b. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőbe. 
 
-     c. Kattintson a **konfiguráció mentése**.
+      c. Kattintson a **konfiguráció mentése**.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)

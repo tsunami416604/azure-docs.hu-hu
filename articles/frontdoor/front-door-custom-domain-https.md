@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b6e378263ac8bcd7cfee36209f70f26680988e6e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014117"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása egyéni tartományon bejárati ajtajának
 
@@ -141,7 +141,7 @@ A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön e
 
 | Name (Név)            | Típus  | Érték                 |
 |-----------------|-------|-----------------------|
-| www.contoso.com | CNAME | contoso.azurefd.net |
+| <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 A CNAME rekordokkal kapcsolatos további információért tekintse meg a [CNAME DNS-rekord létrehozását ismertető](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) részt.
 

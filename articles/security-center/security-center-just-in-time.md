@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/18/2019
 ms.author: monhaber
-ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199834"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -101,7 +101,7 @@ Válassza ki az engedélyezni kívánt virtuális gépek:
 
 
 > [!NOTE]
->Ha igény szerinti Virtuálisgép-hozzáférés engedélyezve van, az létrehoz egy virtuális Gépet, az Azure Security Center az összes bejövő forgalomra vonatkozó szabályokat a hálózati biztonsági csoportok társítva a kiválasztott portok tiltása. A szabályok lesznek a legmagasabb prioritást, a hálózati biztonsági csoportok, vagy már meglévő szabályoknál alacsonyabb prioritású. Ez attól függ, amely meghatározza, hogy a szabály biztonságos-e az Azure Security Center által végzett elemzés.
+>Igény szerinti Virtuálisgép-hozzáférés engedélyezve van a virtuális gép, amikor az Azure Security Center "minden bejövő forgalom Elutasítás" szabályokat a kiválasztott portok hoz létre a hálózati biztonsági csoportok társítva. Ha más szabályokat a kiválasztott portok létrehozott, majd a meglévő szabályok prioritást élveznek az új "az összes bejövő forgalmat Elutasítás" szabályok. Ha nincsenek meglévő szabályok a kijelölt porton, majd az új "az összes bejövő forgalmat Elutasítás" szabályokat a hálózati biztonsági csoportok legmagasabb prioritást igénybe vehet.
 >
 
 ### <a name="request-jit-access-to-a-vm"></a>Virtuális gépek igény szerinti hozzáférés kérése

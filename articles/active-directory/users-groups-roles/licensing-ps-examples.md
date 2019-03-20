@@ -1,6 +1,6 @@
 ---
-title: PowerShell és a Graph példák a Csoportalapú licencelés – Azure Active Directory |} A Microsoft Docs
-description: Az Azure Active Directory Csoportalapú licencelés PowerShell-forgatókönyvek
+title: Csoportok – Azure Active Directory licencelésének PowerShell és a Graph példák |} A Microsoft Docs
+description: PowerShell + Graph példák és forgatókönyvek az Azure Active Directory Csoportalapú licencelés
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -14,25 +14,27 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccf025e222448bde7705c548dac33403be33247
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9da6f85f194d9aebab22584f8cba8b227ed38a72
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183866"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223308"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
 
 A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és a PowerShell és a Microsoft Graph-támogatása jelenleg korlátozott. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és a Microsoft Graph. Ez a dokumentum mi minden lehetséges példákat.
 
 > [!NOTE]
-> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a bérlő először futtassa a `Connect-MsolService`  parancsmagot.
+> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a szervezet először futtassa a `Connect-MsolService`  parancsmagot.
 
 > [!WARNING]
 > Ez a kód biztosítunk példaként, bemutatási céllal. Ha szeretne használni, a környezetben, fontolja meg, vizsgálja, hogy először egy kisméretű, vagy külön tesztelési célú bérlői. Előfordulhat, hogy kell módosítania a kódot az adott környezet igényeinek kielégítése érdekében.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>A csoporthoz rendelt terméklicencek megtekintése
+
 A [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) parancsmag segítségével kérje le a csoport objektumot, és ellenőrizze a *licencek* tulajdonság: jelenleg a csoporthoz hozzárendelt összes terméklicencek listázza.
+
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
 | Select SkuPartNumber
@@ -48,7 +50,7 @@ EMSPREMIUM
 > [!NOTE]
 > Az adatok a termékinformációk (Termékváltozat) korlátozódik. Nincs lehetőség le van tiltva, a licenc service-csomagok listáját.
 
-Kövesse az alábbi ugyanazokat az adatokat beolvasni a Microsoft Graph szolgáltatásból
+A következő minta használatával lekérdezheti ugyanezen adatokat a Microsoft Graph szolgáltatásból.
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses

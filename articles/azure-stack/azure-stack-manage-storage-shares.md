@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 5e6a44018cde84067a4c16c9d3d62227733f6658
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075578"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225705"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -89,7 +89,7 @@ Felhő-felelősként, figyelemmel kísérheti a tárolási kapacitás, a PowerSh
 Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez használhatja a felügyeleti portálon.
 
 1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
-2. Válassza ki **minden szolgáltatás** > **tárolási** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához. 
+2. Válassza ki **minden szolgáltatás** > **tárolási** > **fájlmegosztások** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához. 
 
     ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
@@ -183,7 +183,7 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
    d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
    ```
 
-5. Használja a feladatazonosító az áttelepítési feladat állapotának ellenőrzése. Ha a tároló áttelepítése befejeződött, **MigrationStatus** értékre van állítva **Complete**.
+5. Használja a Feladatazonosító az áttelepítési feladat állapotának ellenőrzése. Ha a tároló áttelepítése befejeződött, **MigrationStatus** értékre van állítva **Complete**.
 
    ```PowerShell 
    Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name

@@ -64,12 +64,6 @@ items:
       - name: A HDInsight Tools for Visual Studio használata
         href: ../hadoop/apache-hadoop-use-hive-visual-studio.md
         maintainContext: true
-      - name: A Távoli asztal használata
-        href: ../hadoop/apache-hadoop-use-hive-remote-desktop.md
-        maintainContext: true
-      - name: A Lekérdezéskonzol használata
-        href: ../hadoop/apache-hadoop-use-hive-query-console.md
-        maintainContext: true
       maintainContext: true
     - name: Java UDF-használata az Apache Hive-val
       href: ../hadoop/apache-hadoop-hive-java-udf.md
@@ -110,17 +104,11 @@ items:
     - name: Kapcsolódás az Apache Hive JDBC-illesztővel
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
-    - name: Tárolt érzékelőadatok elemzése
-      href: ../hadoop/apache-hive-analyze-sensor-data.md
-      maintainContext: true
     - name: Tárolt tweetek elemzése
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Repülőjáratok késési adatainak elemzése
       href: ../hdinsight-analyze-flight-delay-data-linux.md
-      maintainContext: true
-    - name: Webhelynaplók elemzése az Apache Hive-val
-      href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: Fürtök kiterjesztése
     items:
@@ -395,9 +383,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3a687530afde6f24d1e264b289b7aaebf290c68f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 092c8909194b5f656c040dfd27ac721c587351c8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200191"

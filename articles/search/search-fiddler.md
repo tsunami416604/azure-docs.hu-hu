@@ -1,5 +1,5 @@
 ---
-title: A Postman vagy a Fiddler Protokol HTTP webu tesztelési eszközök – Azure Search REST API-k felfedezése
+title: Ismerje meg a Postman vagy a Fiddler - az Azure Search REST API-k
 description: Az Azure Search Postman vagy a Fiddler használatával HTTP-kérések és REST API-hívás.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ffa47a2e14ba49630aa8b7017a3b0c557421da57
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 946d8196fbe49e452dab8fa36e4c746a1bcaf490
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792072"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137623"
 ---
-# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Ismerkedés az Azure Search REST API-k Postman vagy a Fiddler
+# <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Gyors útmutató: Ismerkedés az Azure Search REST API-k Postman vagy a Fiddler
 
 Az egyik legegyszerűbb Fedezze fel a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) állítson össze a HTTP-kérelmekre, és vizsgálja meg a válaszok Postman vagy a Fiddler használatával. A megfelelő eszközökkel, ezeket az útmutatásokat követve már azelőtt küldhet kéréseket, és megtekintheti a válaszokat, hogy akár egyetlen sornyi kódot is írna.
 
@@ -42,11 +42,13 @@ A következő eszközöket széles körben használják a webes fejlesztéshez, 
 
 A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. Az Azure Portalon nyissa meg a Search szolgáltatás oldalát az irányítópultról, vagy [keresse meg a szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a szolgáltatások listájában.
-2. Kérje le az URL-végpontjának **áttekintése**. A végpontok például a következőképpen nézhetnek ki: `https://my-service-name.search.windows.net`.
-3. Az API-kulcsot a **Beállítások** > **Kulcsok** felületen kérheti le. Redundancia érdekében a rendszer két adminisztrációs kulcsot kínál, ha esetleg cserélni szeretné a kulcsokat. Az adminisztrációs kulcsok biztosítják a szolgáltatásra vonatkozó írási jogosultságot, amely az indexek létrehozásához és betöltéséhez szükséges. Az írási műveletekhez az elsődleges és a másodlagos kulcsot egyaránt használhatja.
+1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://my-service-name.search.windows.net`.
+
+2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
 ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+
+Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 
 ## <a name="configure-headers"></a>A fejlécek konfigurálása
@@ -83,7 +85,7 @@ A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból
 > [!Tip]
 > Kapcsolja ki a webes forgalom felesleges, nem kapcsolódó HTTP-tevékenység elrejtéséhez. A fiddler esetében a **fájl** menüben kapcsolja ki a **forgalom rögzítése**. 
 
-## <a name="1---create-the-index"></a>1 – az index létrehozása
+## <a name="1---create-an-index"></a>1 - index létrehozása
 
 A kérelem törzse tartalmazza az indexdefiníciót. A kérelemtörzs hozzáadása teszi teljessé az indexet létrehozó kérelmet.
 
@@ -217,7 +219,7 @@ Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tart
 
 ![Fiddler-kérelem hasznos adatai][9]
 
-## <a name="3---query-the-index"></a>3 – az index lekérdezése
+## <a name="3---search-an-index"></a>3 – keresés az indexekben
 Most, hogy az index és a dokumentumok is betöltődtek, számára küldhet lekérdezéseket az őket használó [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) REST API-t.
 
 + Ebben a lépésben a parancsot cserélje a **GET** parancsra.
@@ -260,9 +262,8 @@ A Fiddlerben kattintson az **Inspectors** (Vizsgálók), majd a **Headers** (Fej
 
 A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépésekért lásd az alábbi hivatkozásokat:
 
-+ [Index létrehozása (REST)](search-create-index-rest-api.md)
-+ [Adatok importálása (REST)](search-import-data-rest-api.md)
-+ [Keresés az indexekben (REST)](search-query-rest-api.md)
++ [Rövid útmutató: -Index létrehozása .NET SDK használatával](search-create-index-dotnet.md)
++ [Rövid útmutató: Hozzon létre az indexekben (REST) PowerShell-lel](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

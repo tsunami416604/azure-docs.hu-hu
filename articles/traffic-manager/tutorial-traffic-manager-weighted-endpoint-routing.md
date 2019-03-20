@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467332"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009757"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Oktatóanyag: Szabályozhatja a forgalom-útválasztást súlyozott végpontokkal rendelkező Traffic Manager használatával
 
@@ -60,6 +60,7 @@ Ebben a szakaszban két virtuális gépet hozhat létre az USA keleti régiója 
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a **myResourceGroupTM1** nevet.|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |||
+
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd válassza az **OK** elemet:
     
@@ -69,6 +70,7 @@ Ebben a szakaszban két virtuális gépet hozhat létre az USA keleti régiója 
     |Hálózati biztonsági csoport|Válassza az **Alapszintű** lehetőséget. A **Nyilvános bejövő portok kiválasztása** legördülő listában válassza a **HTTP** és az **RDP** lehetőséget. |
     |Rendszerindítási diagnosztika|Válassza a **Letiltva** lehetőséget.|
     |||
+
 6. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
 7. Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
@@ -80,6 +82,7 @@ Ebben a szakaszban két virtuális gépet hozhat létre az USA keleti régiója 
     |Virtuális gép neve | Írja be a **myIISVMWEurope** nevet.|
     |Virtuális hálózat | Válassza ki a **Virtuális hálózatot**. A **Virtuális hálózat létrehozása** terület **Név** mezőjébe írja be a **myVNet2** nevet. Az **Alhálózat** mezőnél válassza a **mySubnet** lehetőséget.|
     |||
+
 8. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a többi lépéssel, ha már mindkét virtuális gép létrejött.
 
 ![Virtuális gép létrehozása](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -137,6 +140,7 @@ Ebben a szakaszban egy új virtuális gépet hozhat létre *mVMEastUS* néven. E
 
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd válassza az **OK** elemet:
+
     |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| Válassza ki a **Virtuális hálózatot**. A **Virtuális hálózat létrehozása** terület **Név** mezőjébe írja be a **myVNet3** nevet. Alhálózatként válassza a **mySubnet** lehetőséget.|
@@ -173,7 +177,7 @@ Adja hozzá a két virtuális gép fut az IIS-kiszolgálók myIISVMEastUS és my
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Típus                    | Adja meg az Azure-végpontot.                                   |
+    | Typo                    | Adja meg az Azure-végpontot.                                   |
     | Name (Név)           | Adja meg a **myEastUSEndpoint** nevet.                                        |
     | Célerőforrás típusa           | Válassza a **Nyilvános IP-cím** elemet.                          |
     | Célerőforrás          | Válasszon egy nyilvános IP-címet, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a **myIISVMEastUS-ip** nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|

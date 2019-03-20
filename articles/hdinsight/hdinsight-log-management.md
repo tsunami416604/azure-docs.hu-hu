@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: c1618d3402b37e91b3cf17365d6ccbf1285f4847
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7b6f9ca914e9fed48463d2134eeba1cd4c103690
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993788"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225319"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -177,5 +177,5 @@ A naplók gyűjtését összes csomópontja egyetlen központi helyen, létrehoz
 ## <a name="next-steps"></a>További lépések
 
 * [Figyelés és naplózás HDInsight eljárás](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Hozzáférés az Apache Hadoop YARN napló a Linux-alapú HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Hozzáférés az Apache Hadoop YARN alkalmazás HDInsight Linux-alapú bejelentkezés](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Különböző Apache Hadoop-összetevők a naplófájlok méretét, vezérlése](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

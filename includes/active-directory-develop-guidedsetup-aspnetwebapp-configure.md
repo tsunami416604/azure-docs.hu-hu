@@ -3,8 +3,8 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 15db2192703971a8056df34343c427db11c8411a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cce0bb9d1a9317396d197d182a424a45c8448f1b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988507"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203608"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
 Regisztrálja az alkalmazást, és adja hozzá az alkalmazás regisztrációs adatok a megoldáshoz, két lehetősége van:
 
-### <a name="option-1-express-mode"></a>1. lehetőség: Expressz mód
+### <a name="option-1-express-mode"></a>Option 1: Az Expressz mód
 
 Az alkalmazás gyorsan regisztrálhatja az alábbiak szerint:
 
@@ -34,7 +34,7 @@ Az alkalmazás gyorsan regisztrálhatja az alábbiak szerint:
 3. Győződjön meg arról, hogy az interaktív telepítés esetén alkalmazott beállítás be van jelölve.
 4. Kövesse az utasításokat egy átirányítási URL-cím hozzáadása az alkalmazáshoz.
 
-### <a name="option-2-advanced-mode"></a>2. lehetőség: Speciális módban
+### <a name="option-2-advanced-mode"></a>Option 2: Speciális mód
 
 Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
 

@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan Azure Policy segítségével Vendég konfigurá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d97ac99cae963ddb9df4de06736c64d5d8ceafb5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187659"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -64,7 +64,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél. Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi. Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött. Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató. Ez az esemény hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése. Egy igény szerinti szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket. Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
+Új tartalom 5 percenként ellenőrzi a Vendég konfigurációs ügyfél. Miután egy Vendég-hozzárendelés érkezik, a beállításokat egy 15 perces időközönként ellenőrzi. Eredmények küldése a Vendég-konfigurációs erőforrás-szolgáltató, amint az ellenőrzés befejeződött. Ha egy szabályzat [értékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapotának írása a Vendég-konfigurációs erőforrás-szolgáltató. Ennek hatására az Azure Policy az Azure Resource Manager-tulajdonságok kiértékelése. Egy igény szerinti szabályzat-kiértékelés átveszi a Vendég-konfigurációs erőforrás-szolgáltató a legújabb értékeket. Azonban ez nem következik be egy új naplózási a konfiguráció a virtuális gépen.
 
 ### <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -74,22 +74,18 @@ Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek
 |-|-|-|
 |Canonical|Ubuntu Server|14.04-es, 16.04, 18.04|
 |credativ|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenterhez, a 2012 R2 Datacenter, a 2016-Datacenter|
+|Microsoft|Windows Server|2012 Datacenterhez, a 2012 R2 Datacenter, a 2016 Datacenter, a 2019 adatközpont|
+|Microsoft|Windows-ügyfél|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
 |Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
 |SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Vendég konfigurációs naplózhatók bármelyik támogatott operációs rendszert futtató kiszolgálót.  Ha szeretné naplózni a kiszolgálón, amely egy egyéni rendszerképet használja, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosítása a **Ha** című szakaszt a lemezkép tulajdonságainak.
+> Vendég konfigurációs van egy támogatott operációs rendszert futtató csomópontok naplózására.  Ha szeretné egy egyéni rendszerképet használó virtuális gépek naplózása, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosíthatja a **Ha** című szakaszt a lemezkép tulajdonságai.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
-Az alábbi táblázat a nem támogatott operációs rendszerek:
-
-|Operációs rendszer|Megjegyzések|
-|-|-|
-|Windows-ügyfél | Ügyféloldali operációs rendszerek (például Windows 7 és Windows 10-es) nem támogatottak.
-|A Windows Server 2016 Nano Server | Nem támogatott.|
+A Windows Server Nano Server bármelyik verziója nem támogatott.
 
 ### <a name="guest-configuration-extension-network-requirements"></a>Vendég Configuration bővítmény hálózati követelmények
 
@@ -123,15 +119,29 @@ Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók 
 > [!NOTE]
 > Minden egyes vendég konfigurációs definíciós mind a **DeployIfNotExists** és **naplózási** szabályzatdefiníciók léteznie kell.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* kezdeményezés 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **naplózási** szabályzat definíciója párok Windows és Linux-három pár.
-Minden a **DeployIfNotExists** [szabály](definition-structure.md#policy-rule) korlátozza a rendszer értékeli ki.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A beépített kezdeményezés nevű *[előzetes verzió]: Naplózási jelszó biztonsági beállítások a Linux és Windows virtuális gépeken belül* 18 szabályzatokat tartalmaz. Hat **DeployIfNotExists** és **naplózási** Windows és Linux-három pár párokat. Minden esetben a logika belül a definíció érvényesíti csak a cél operációs rendszer alapján értékeli ki a [felügyeletiházirend-szabálya](definition-structure.md#policy-rule) definíciója.
+
+## <a name="client-log-files"></a>Ügyfelek naplófájljai
+
+A Vendég Configuration bővítmény írja a naplófájlokat a következő helyekre:
+
+Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\1.10.0.0\dsc\logs\dsc.log`
+
+Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-1.8.0/GCAgent/logs/dsc.log`
+
+## <a name="guest-configuration-samples"></a>Vendég-konfigurációs minták
+
+Vendég Szabályzatkonfiguráció-minták az alábbi helyeken érhetők el:
+
+- [A minták index - Vendég-konfiguráció](../samples/index.md#guest-configuration)
+- [Az Azure Policy-minták GitHub-adattárat](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](definition-structure.md)
-- Felülvizsgálat [házirend hatások ismertetése](effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md)
-- Ismerje meg, hogyan [megfelelőségi adatok lekérése](../how-to/getting-compliance-data.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/index.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.
+- A [Szabályzatok hatásainak ismertetése](effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [megfelelőségi adatok](../how-to/getting-compliance-data.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/index.md).

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: bb701a33d4ebb1ffca19896f3b4ac0419f27d54f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875125"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
@@ -573,6 +573,14 @@ A **tömörítési** szakaszban két tulajdonságokkal rendelkezik:
 
 > [!NOTE]
 > Tömörítési beállítások nem támogatottak az adatok a **AvroFormat**, **OrcFormat**, vagy **ParquetFormat**. Ezek a formátumok a fájlok olvasásakor a Data Factory észleli, és a metaadatokban szereplő tömörítési kodeket használja. Ezek a formátumok fájlok írásakor a Data Factory úgy dönt, az alapértelmezett tömörítési kodeket azt a formátumot. Ha például ZLIB OrcFormat és ParquetFormat a SNAPPY.
+
+## <a name="unsupported-file-types-and-compression-formats"></a>Nem támogatott fájltípusok és tömörítési formátumok
+
+A bővítési funkciók az Azure Data Factory segítségével átalakíthatja a fájlokat, amelyek nem támogatottak. Két lehetőség Azure Functions és az egyéni tevékenységek közé tartozik az Azure Batch használatával.
+
+Láthatja, hogy egy Azure-függvényt használó minta [tar fájl tartalmának kibontásához](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). További információkért lásd: [Azure Functions-tevékenység](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+
+A funkció egy egyéni dotnet tevékenységi használatával is létrehozható. További információt [Itt](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>További lépések
 

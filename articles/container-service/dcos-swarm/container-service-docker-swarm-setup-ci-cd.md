@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096265"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(ELAVULT) A teljes CI/CD-folyamat egy többtárolós alkalmazást az Azure Container Service Docker Swarm használatával az Azure DevOps-szolgáltatásokkal való üzembe helyezéséhez
 
@@ -204,14 +204,14 @@ A kiadási munkafolyamat két feladatot a hozzáadott tevődik össze.
 
     A parancs végrehajtása a fő használatát a Docker parancssori felületén és a Docker-Compose CLI a következő feladatokat végezheti el:
 
-    - Jelentkezzen be az Azure container registrybe (három build variab'les meghatározott használ a **változók** lap)
-    - Adja meg a **DOCKER_HOST** változó dolgozhat a Swarm-végponthoz (: 2375-ös)
-    - Keresse meg a *üzembe helyezése* , amely az előző biztonságos másolási tevékenység által létrehozott és a docker-compose.yml fájlt tartalmazó mappa 
-    - Hajtsa végre `docker-compose` parancsok, amelyek az új rendszerképeket, állítsa le a szolgáltatásokat, távolítsa el a szolgáltatásokat, és a tárolók létrehozásához.
+   - Jelentkezzen be az Azure container registrybe (három build variab'les meghatározott használ a **változók** lap)
+   - Adja meg a **DOCKER_HOST** változó dolgozhat a Swarm-végponthoz (: 2375-ös)
+   - Keresse meg a *üzembe helyezése* , amely az előző biztonságos másolási tevékenység által létrehozott és a docker-compose.yml fájlt tartalmazó mappa 
+   - Hajtsa végre `docker-compose` parancsok, amelyek az új rendszerképeket, állítsa le a szolgáltatásokat, távolítsa el a szolgáltatásokat, és a tárolók létrehozásához.
 
-    >[!IMPORTANT]
-    > Ahogyan az előző képernyőn, hagyja a **STDERR-en sikertelen** jelölőnégyzet nincs bejelölve. Ez az egy fontos beállítást, mert `docker-compose` több diagnosztikai üzeneteket jelenít meg például tárolók leállítása vagy törlése, a standard hibakimenet. Jelölje be a jelölőnégyzetet, ha az Azure DevOps-szolgáltatásokkal jelenti, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
-    >
+     >[!IMPORTANT]
+     > Ahogyan az előző képernyőn, hagyja a **STDERR-en sikertelen** jelölőnégyzet nincs bejelölve. Ez az egy fontos beállítást, mert `docker-compose` több diagnosztikai üzeneteket jelenít meg például tárolók leállítása vagy törlése, a standard hibakimenet. Jelölje be a jelölőnégyzetet, ha az Azure DevOps-szolgáltatásokkal jelenti, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
+     >
 1. Mentse az új kiadási folyamatot.
 
 

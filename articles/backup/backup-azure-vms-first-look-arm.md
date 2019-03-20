@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16c7fe68e67094cef21d9efbffdccd614827ae6d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 2fe786d90612feff312983dbd25dc6d691be6e70
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089777"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>A virtuális gép beállításainak biztonsági mentése Azure virtuális gép
 
@@ -44,18 +44,18 @@ Annak érdekében, hogy az Azure virtuális gépek biztonsági mentése, az Azur
 3. A virtuális gépek listájából válassza ki a virtuális gép biztonsági.
 4. A virtuális gép menüben kattintson a **Backup**. 
 5. A **Recovery Services-tároló**, tegye a következőket:
-  - Ha már rendelkezik tárolóval, kattintson a **válasszon meglévő**, és válassza ki a tárolót.
-  - Ha nem rendelkezik egy tárolót, kattintson a **új létrehozása**. Adja meg a tároló nevét. Azonos régió és az erőforrás tartozik, mint a virtuális gép létrejön. Ezek a beállítások nem módosíthatók közvetlenül a virtuális gép beállításait a biztonsági mentésének engedélyezésekor.
+   - Ha már rendelkezik tárolóval, kattintson a **válasszon meglévő**, és válassza ki a tárolót.
+   - Ha nem rendelkezik egy tárolót, kattintson a **új létrehozása**. Adja meg a tároló nevét. Azonos régió és az erőforrás tartozik, mint a virtuális gép létrejön. Ezek a beállítások nem módosíthatók közvetlenül a virtuális gép beállításait a biztonsági mentésének engedélyezésekor.
 
-  ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+   ![Biztonsági mentés engedélyezése varázsló](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
 6. A **biztonsági mentési házirend kiválasztása**, tegye a következőket:
 
-  - Hagyja bejelölve az alapértelmezett szabályzat. Virtuális gép megadott időpontban naponta biztonsági mentését, és 30 napig őrzi meg a biztonsági másolatok a tárolóban.
-  - Ha rendelkezik ilyennel, válassza ki egy meglévő biztonsági mentési szabályzatot.
-  - Hozzon létre egy új szabályzatot, és a házirend-beállítások megadása.  
+   - Hagyja bejelölve az alapértelmezett szabályzat. Virtuális gép megadott időpontban naponta biztonsági mentését, és 30 napig őrzi meg a biztonsági másolatok a tárolóban.
+   - Ha rendelkezik ilyennel, válassza ki egy meglévő biztonsági mentési szabályzatot.
+   - Hozzon létre egy új szabályzatot, és a házirend-beállítások megadása.  
 
-  ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+   ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. Kattintson a **biztonsági mentés engedélyezése**. A biztonsági mentési házirendet társítja a virtuális Gépet. 
 
@@ -64,7 +64,7 @@ Annak érdekében, hogy az Azure virtuális gépek biztonsági mentése, az Azur
 8. A konfigurációs folyamat előrehaladását a portál értesítési a követheti nyomon.
 9. Miután a feladat befejeződik, a virtuális gép menüben kattintson **Backup**. Az oldal biztonsági mentési állapotát a virtuális gép, a helyreállítási pontok, a futó feladatok és a kiadott riasztások adatait jeleníti meg.
 
-  ![Biztonsági mentés állapota](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![Biztonsági mentés állapota](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. Miután engedélyezte a biztonsági mentés, egy kezdeti biztonsági mentés futtatása. A kezdeti biztonsági mentés azonnali indítása, vagy várjon, amíg a biztonsági mentési ütemezés szerint kezdődik.
     - A kezdeti biztonsági mentés befejezéséig az **legutóbbi biztonsági mentés állapota** állapota **figyelmeztetés (kezdeti biztonsági mentés folyamatban)**.

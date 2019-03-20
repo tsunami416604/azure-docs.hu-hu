@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 24792a0099d4e45e100fa6cf0b211c62fc8630de
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: adedc8bc1f574ae089f2a11033fab4f390c57a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087023"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Az Azure-on Előzetesben Sentinel-fenyegetések Hunt
 
@@ -128,19 +128,19 @@ Hozzon létre egy új vadászat lekérdezést:
 1. Kattintson a **új lekérdezés** válassza **mentése**.
 2. Az üres mezőket kitölteni, és válassza ki **mentése**.
 
- ![Új lekérdezés](./media/tutorial-hunting/new-query.png)
+   ![Új lekérdezés](./media/tutorial-hunting/new-query.png)
 
 Klónozza, és módosítsa a meglévő vadászat lekérdezést:
 
 1. Válassza ki a vadászat lekérdezést a módosítani kívánt tábla.
 2. Válassza ki a három pontra (...) a lekérdezés szeretné módosítani, és válassza a sor **lekérdezés klónozása**.
 
- ![lekérdezés klónozása](./media/tutorial-hunting/clone-query.png)
+   ![lekérdezés klónozása](./media/tutorial-hunting/clone-query.png)
  
 
-3.  Módosítsa a lekérdezést, és válasszon **létrehozás**.
+3. Módosítsa a lekérdezést, és válasszon **létrehozás**.
 
- ![Egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
+   ![Egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászat vizsgálat Sentinel-Azure. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:

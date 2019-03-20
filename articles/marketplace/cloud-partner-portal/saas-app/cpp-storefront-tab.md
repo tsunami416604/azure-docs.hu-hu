@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884768"
 ---
 # <a name="saas-application-storefront-details-tab"></a>SaaS-alkalmazás kirakat részletei lapon
 
@@ -37,7 +37,7 @@ A következő táblázat ismerteti, amelyek az ajánlat megadhat kirakat részle
 |  **Az ajánlat mezők**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
 |      Ajánlat-összefoglaló              |        Az ajánlat értékajánlat összefoglalása. Az ajánlat keresés lapon fog megjelenni. Legfeljebb 100 karakterből kell lennie.           |
-|      Az ajánlat leírása              |      A leírást, amely megjelenik az alkalmazások részletei lapon. Engedélyezett maximális hossza 1300 karakter lehet. Alapszintű HTML kódtípus címkék használatával formázhatja a tartalmat. Ha például &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, és &lt;li&gt;. Szeretné látni, hogyan fog kinézni a formázott leírását, például online valós idejű HTML eszköz használata http://htmledit.squarefree.com             |
+|      Az ajánlat leírása              |      A leírást, amely megjelenik az alkalmazások részletei lapon. Engedélyezett maximális hossza 1300 karakter lehet. Alapszintű HTML kódtípus címkék használatával formázhatja a tartalmat. Ha például &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;, és &lt;li&gt;. Szeretné látni, hogyan fog kinézni a formázott leírását, például online valós idejű HTML eszköz használata https://htmledit.squarefree.com             |
 |          Ágazatok          |        Válassza ki a legjobb igazított az ajánlat iparágak. Ha az alkalmazás több iparágban vonatkozik, maximum kettőt kiválaszthatja.           |
 |          Javasolt kategóriák (max. 3)         |        Válassza ki a kategóriákat, amelyek az ajánlat legjobb igazodik. Legfeljebb három kategóriák közül választhat.           |
 |           Az alkalmazás verziója         |        Adja meg az alkalmazás verziószáma.           |
@@ -94,4 +94,4 @@ Adja meg az alábbi információkat:
 
 ## <a name="next-steps"></a>További lépések
 
-[Ügyfelek lap](./cpp-contacts-tab.md)
+[Névjegyek lap](./cpp-contacts-tab.md)

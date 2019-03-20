@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a95b781d0d08cdca96cf4e98ac9dce43da535d13
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125018"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
@@ -35,7 +35,7 @@ ms.locfileid: "55889370"
    * **A hardverösszetevők állapotának ellenőrzései** annak ellenőrzéséhez, hogy a StorSimple eszközön lévő összes hardverösszetevő kifogástalan állapotú legyen.
    * **DATA 0 ellenőrzések** annak ellenőrzéséhez, hogy a DATA 0 engedélyezett legyen az eszközön. Ha ez az illesztőfelület nem engedélyezett, engedélyeznie kell, majd újra kell próbálkoznia.
 
-    A frissítés letöltését és telepítését, csak akkor, ha az összes ellenőrzés sikeresen befejeződik. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az Eszközfrissítések nem sikerül, majd kap az a hiba okait. Probléma megoldására, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
+     A frissítés letöltését és telepítését, csak akkor, ha az összes ellenőrzés sikeresen befejeződik. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az Eszközfrissítések nem sikerül, majd kap az a hiba okait. Probléma megoldására, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
 
 7. Az Eszközfrissítések sikeres elvégzése után létrejön egy frissítési feladat. A frissítési feladat sikeres létrehozásáról értesítést kap.
    
@@ -53,5 +53,5 @@ ms.locfileid: "55889370"
 
 10. A feladat befejezése után lépjen a **eszközbeállítások > Eszközfrissítések**. A szoftververzió most frissíteni kell.
 
-    ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![Frissítési feladat létrehozása](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

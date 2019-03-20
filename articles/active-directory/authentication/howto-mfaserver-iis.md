@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8326e7bc4b03c8e2828e74e13fc00d6a63f78e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35c268b5952f2276dc718df955c125c59c51d356
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211019"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014710"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Az Azure Multi-Factor Authentication-kiszolgáló konfigurálása IIS-webalkalmazásokhoz
 
@@ -30,7 +30,7 @@ Az Azure MFA-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és kon
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
 2. Kattintson az **Űrlapalapú fülre**.
 3. Kattintson a **Hozzáadás** parancsra.
-4. A felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-t (például https://localhost/contoso/auth/login.aspx)) az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, és kattintson az **OK** gombra.
+4. A felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címe (például `https://localhost/contoso/auth/login.aspx`) az űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, és kattintson **OK**.
 5. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 6. Ha az oldal változóit nem lehet automatikusan észlelni, kattintson a **Megadás manuálisan** lehetőségre az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen.
 7. Az Űrlapalapú webhely hozzáadása párbeszédpanelen adja meg a bejelentkezési oldal URL-címét a Küldési URL-cím mezőben, majd adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
@@ -39,9 +39,9 @@ Az Azure MFA-kiszolgáló IIS-hitelesítés szakaszában engedélyezheti és kon
 10. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 11. A **Speciális** gombra kattintva áttekintheti a következő speciális beállításokat:
 
-  - Egyéni elutasítási oldalfájl kiválasztása
-  - Sikeres hitelesítések gyorsítótárazása a webhelyre egy adott időtartamra cookie-k használatával
-  - Válassza ki, hogy az elsődleges hitelesítő adatokat Windows-tartományon, LDAP-címtáron vagy RADIUS-kiszolgálón hitelesíti.
+    - Egyéni elutasítási oldalfájl kiválasztása
+    - Sikeres hitelesítések gyorsítótárazása a webhelyre egy adott időtartamra cookie-k használatával
+    - Válassza ki, hogy az elsődleges hitelesítő adatokat Windows-tartományon, LDAP-címtáron vagy RADIUS-kiszolgálón hitelesíti.
 
 12. Az Űrlapalapú webhely hozzáadása párbeszédpanelre való visszatéréshez kattintson az **OK** gombra.
 13. Kattintson az **OK** gombra.
@@ -53,7 +53,7 @@ Integrált Windows HTTP-hitelesítést használó IIS-webalkalmazás védelméhe
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a bal oldali menüben lévő IIS-hitelesítés ikonra.
 2. Kattintson a **HTTP** fülre.
 3. Kattintson a **Hozzáadás** parancsra.
-4. Az Alap URL-cím hozzáadása párbeszédpanelen adja meg az URL-címét annak a webhelynek, amelyen a rendszer HTTP-hitelesítést végez (például http://localhost/owa)), és adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
+4. Az alap URL-cím hozzáadása párbeszédpanelen adja meg az URL-címet a webhelyhez, ahol a HTTP-hitelesítést végez (például <http://localhost/owa>), és adjon meg egy alkalmazásnevet (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 5. Módosítja az Üresjárati időkorlát és a Munkamenetek maximális időtartama értékét, ha az alapértelmezett értékek nem elégségesek.
 6. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a többtényezős hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 7. Szükség esetén jelölje be a **Cookie-gyorsítótár** jelölőnégyzetét.

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 7dee92ffd183b852d48bcb150ba3c1ba8d5d0380
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093553"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Távoli kapcsolat létrehozása egy Kubernetes-, DC/OS- vagy Docker Swarm-fürttel
 Miután létrehozott egy Azure Container Service-fürtöt, csatlakoznia kell hozzá a számítási feladatok üzembe helyezéséhez és felügyeletéhez. Ez a cikk leírja, hogyan csatlakozhat a fürt fő virtuális gépéhez egy távoli számítógépről. 
@@ -113,11 +113,11 @@ Amikor Linux vagy macOS rendszeren hoz létre SSH-alagutat, először meg kell k
     ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com
     ```
   
-  > [!NOTE]
-  > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
-  > 
+   > [!NOTE]
+   > Az SSH-kapcsolati port 2200, és nem a szokásos 22-es port. A több fő virtuális géppel rendelkező fürtökön ez az első fő virtuális gép kapcsolódási portja.
+   > 
 
-  A parancs nem ad vissza kimenetet.
+   A parancs nem ad vissza kimenetet.
 
 A DC/OS-re és a Swarmra vonatkozó példák a következő szakaszokban találhatók.    
 
@@ -181,16 +181,16 @@ Windows-rendszeren az SSH-alagutak többféleképpen is létrehozhatók. Ubuntu 
 
 5. Válassza az **SSH > Tunnels** (SSH > Alagutak) elemet, és konfigurálja az alábbi továbbított portokat:
 
-    * **Source port** (Forrásport): DC/OS esetén használja a 80-as, Swarm estén a 2375-ös portot.
-    * **Destination** (Cél): DC/OS esetén használja a localhost:80, Swarm esetén a localhost:2375 portot.
+   * **Forrásport:** Használja a 80-as a DC/OS vagy a 2375-ös swarm.
+   * **Cél:** Swarm használja DC/OS 2375 localhost:80.
 
-    Az alábbi példa DC/OS-re van konfigurálva, de Docker Swarm esetén is hasonló.
+     Az alábbi példa DC/OS-re van konfigurálva, de Docker Swarm esetén is hasonló.
 
-    > [!NOTE]
-    > Amikor ezt az alagutat létrehozza, a 80-as port nem lehet használatban.
-    > 
+     > [!NOTE]
+     > Amikor ezt az alagutat létrehozza, a 80-as port nem lehet használatban.
+     > 
 
-    ![A PuTTY-konfigurálásának 3. lépése](./media/container-service-connect/putty3.png)
+     ![A PuTTY-konfigurálásának 3. lépése](./media/container-service-connect/putty3.png)
 
 6. Amikor elkészült, a **Session > Save** (Munkamenet > Mentés) paranccsal mentse a kapcsolat konfigurációját.
 

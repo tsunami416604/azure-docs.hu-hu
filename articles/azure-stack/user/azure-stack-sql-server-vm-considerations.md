@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246762"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123402"
 ---
 # <a name="optimize-sql-server-performance"></a>Az SQL Server teljesítményének optimalizálásához
 
@@ -104,20 +104,20 @@ Azt javasoljuk, hogy az egyes adatlemezek biztosít az adatok akár 2,300 Lemeze
 
 - **Lemez szétosztottsága befolyásolhatja:** Nagyobb átviteli sebességet adjon hozzá további lemezeket, és használja a lemez szétosztottsága befolyásolhatja. A több adatlemez van szüksége, IOPS és sávszélesség szükséges a naplófájlok és az adatok és a TempDB-fájlok számának meghatározásához. Figyelje meg, hogy IOPS-korlátok egy adatlemezt a virtuális gép sorozatú alapul, és nem a virtuális gép mérete alapján. Hálózati sávszélesség-korlátozások, azonban a virtuális gép méretén alapulnak. Tekintse meg a táblák [virtuális gép méretét az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) további részleteket talál. Kövesse az alábbi irányelveket:
 
-    - Windows Server 2012 vagy újabb, illetve használjon [tárolóhelyek](https://technet.microsoft.com/library/hh831739.aspx) az alábbi útmutatókat:
+  - Windows Server 2012 vagy újabb, illetve használjon [tárolóhelyek](https://technet.microsoft.com/library/hh831739.aspx) az alábbi útmutatókat:
 
-        1.  64 KB-os (65 536 bájt) az online tranzakció-feldolgozási (OLTP) munkaterhelések és a 256 KB-os (262 144 bájt) az adattárházak munkaterhelése esetében a sávegységek miatt teljesítményromlás megelőzése érdekében a szektorszórás (stripe méret) értékre. Ez a PowerShell használatával kell beállítani.
+    1. 64 KB-os (65 536 bájt) az online tranzakció-feldolgozási (OLTP) munkaterhelések és a 256 KB-os (262 144 bájt) az adattárházak munkaterhelése esetében a sávegységek miatt teljesítményromlás megelőzése érdekében a szektorszórás (stripe méret) értékre. Ez a PowerShell használatával kell beállítani.
 
-        2.  Állítsa be az oszlopok száma = fizikai lemezek számát. PowerShell-lel való konfigurálásakor, legfeljebb nyolc lemezek (nem a Server Manager felhasználói felületén).
+    2. Állítsa be az oszlopok száma = fizikai lemezek számát. PowerShell-lel való konfigurálásakor, legfeljebb nyolc lemezek (nem a Server Manager felhasználói felületén).
 
-            Például a következő PowerShell-a szektorszórás mérete 64 KB és 2. az oszlopok száma egy új tárolókészletet hoz létre:
+       Például a következő PowerShell-a szektorszórás mérete 64 KB és 2. az oszlopok száma egy új tárolókészletet hoz létre:
 
-          ```PowerShell  
-          $PoolCount = Get-PhysicalDisk -CanPool $True
-          $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+       ```PowerShell  
+       $PoolCount = Get-PhysicalDisk -CanPool $True
+       $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
-          New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
-          ```
+       New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
+       ```
 
 - A betöltés elvárásainak alapuló tárolókészlet társított lemezek számát határozza meg. Ne feledje, hogy a különböző virtuálisgép-méretek lehetővé teszik a különböző számú csatlakoztatott adatlemezekkel. További információkért lásd: [virtuális gépek méretei az Azure Stackben támogatott](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Annak érdekében, hogy a lehetséges maximális IOPS adatlemezek lekéréséhez a javaslat által támogatott az adatlemezek maximális száma hozzáadandó a [virtuálisgép-méret](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) és lemez szétosztottsága befolyásolhatja.

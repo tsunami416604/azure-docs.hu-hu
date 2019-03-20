@@ -1,5 +1,5 @@
 ---
-title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: MakeCert: Azure |} A Microsoft Docs'
+title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: A MakeCert: Azure | Microsoft Docs'
 description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot, és létrehoz ügyféltanúsítványokat a MakeCert használatával.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102077"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>A MakeCert használatával, pont – hely kapcsolatokhoz a tanúsítványok létrehozása és exportálása
 
@@ -28,16 +28,16 @@ Bár javasoljuk a [Windows 10-es PowerShell-lépések](vpn-gateway-certificates-
 A következő lépések bemutatják, hogyan hozhat létre egy önaláírt tanúsítványt a MakeCert használatával. Ezeket a lépéseket nem üzemi specifikus el. Akkor érvényesek az erőforrás-kezelő és a klasszikus modellt.
 
 1. Töltse le és telepítse [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. A telepítés után általában megtalálható a makecert.exe segédprogramot a elérési úton: "C:\Program Files (x86) \Windows Kits\10\bin\<arch >". Bár, lehetséges, hogy egy másik helyre telepítve lett. Nyisson meg egy parancssort rendszergazdaként, és keresse meg a helyet, a MakeCert segédprogram. Használhatja a következő példában a megfelelő hely módosítása:
+2. A telepítés után általában megtalálható a makecert.exe segédprogramot a elérési úton: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. Bár, lehetséges, hogy egy másik helyre telepítve lett. Nyisson meg egy parancssort rendszergazdaként, és keresse meg a helyet, a MakeCert segédprogram. Használhatja a következő példában a megfelelő hely módosítása:
 
-  ```cmd
-  cd C:\Program Files (x86)\Windows Kits\10\bin\x64
-  ```
+   ```cmd
+   cd C:\Program Files (x86)\Windows Kits\10\bin\x64
+   ```
 3. Hozzon létre és telepítsen egy tanúsítványt a számítógép személyes tanúsítványtárolójába. Az alábbi példa létrehoz egy megfelelő *.cer* P2S konfigurálásakor az Azure-bA feltöltött fájl. "P2SRootCert" és "p2srootcert.cer nevet" cserélje le a tanúsítványhoz használni kívánt nevét. A tanúsítvány található a "tanúsítványok – aktuális felhasználó\személyes\tanúsítványok".
 
-  ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
-  ```
+   ```cmd
+   makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
+   ```
 
 ## <a name="cer"></a>Exportálja a nyilvános kulcsot (.cer)
 
@@ -61,14 +61,14 @@ A következő lépések végigvezetik egy önaláírt főtanúsítványból ügy
  
 1. Ugyanazon a számítógépen, amelyet az önaláírt tanúsítvány létrehozásához használt nyisson meg egy parancssort rendszergazdaként.
 2. Módosíthatja, és futtassa a mintát az ügyféltanúsítványokat.
-  * Változás *"P2SRootCert"* az önaláírt főtanúsítványok meg az ügyféltanúsítványt a létrehozó nevére. Ellenőrizze, hogy a legfelső szintű tanúsítvány, amely bármilyen nevét használja a "CN =" érték volt, amikor létrehozta az önaláírt főtanúsítványok megadott.
-  * Változás *P2SChildCert* kell ügyféltanúsítvány létrehozásához használni kívánt nevet.
+   * Változás *"P2SRootCert"* az önaláírt főtanúsítványok meg az ügyféltanúsítványt a létrehozó nevére. Ellenőrizze, hogy a legfelső szintű tanúsítvány, amely bármilyen nevét használja a "CN =" érték volt, amikor létrehozta az önaláírt főtanúsítványok megadott.
+   * Változás *P2SChildCert* kell ügyféltanúsítvány létrehozásához használni kívánt nevet.
 
-  Ha az alábbi példa azt módosítása nélkül futtatja, ez nevű P2SChildcert a személyes tanúsítványtárolójában P2SRootCert főtanúsítványból létrehozott ügyféltanúsítvány.
+   Ha az alábbi példa azt módosítása nélkül futtatja, ez nevű P2SChildcert a személyes tanúsítványtárolójában P2SRootCert főtanúsítványból létrehozott ügyféltanúsítvány.
 
-  ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
-  ```
+   ```cmd
+   makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
+   ```
 
 ### <a name="clientexport"></a>Ügyféltanúsítvány exportálásához
 

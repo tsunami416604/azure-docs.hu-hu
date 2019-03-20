@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 525de37ba1765ecc98d1b0d09362e0e5377967ff
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: d206d3f95f28fe058e836c3d0abbf0f270329657
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857317"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Naplózás és fenyegetésészlelés konfigurálása egy SQL Database-adatbázisban a PowerShell használatával
 
@@ -51,7 +51,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Egy SQL Database-kiszolgálót, amelyen egy önálló adatbázist vagy rugalmas készletet hoz létre. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Egy önálló adatbázis vagy a rugalmas készletet hoz létre. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Létrehoz egy tárfiókot. |
-| [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/set-azsqldatabaseauditingpolicy) | Beállítja egy adatbázis naplózási szabályzatát. |
+| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Beállítja egy adatbázis naplózási szabályzatát. |
 | [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Beállítja egy adatbázis fenyegetésészlelési szabályzatát. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||

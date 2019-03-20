@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/20/2019
+ms.date: 3/12/2019
 ms.author: raiye
-ms.openlocfilehash: bc96e5a6d5847401b843d5026549933dcf19d5cb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c5fdee4e5b1b9d2a283ef55ce99dffab0cb25873
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536334"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840844"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -43,6 +43,9 @@ A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [
 
 ## <a name="news-updates"></a>Hírek
 
+###### <a name="march-12-2019"></a>**2019. március 12.**
+A február vendég operációs rendszer jelent meg.
+
 ###### <a name="february-5-2019"></a>**2019. február 5.**
 A január vendég operációs rendszer jelent meg.
 
@@ -63,9 +66,6 @@ A szeptember vendég operációs rendszer jelent meg.
 
 ###### <a name="september-12-2018"></a>**2018. szeptember 12.**
 Az augusztusi vendég operációs rendszer jelent meg.
-
-###### <a name="august-3-2018"></a>**2018. augusztus 3.**
-A július vendég operációs rendszer jelent meg.
 
 ## <a name="releases"></a>Kiadások
 
@@ -89,8 +89,9 @@ A július vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-6.4_201902-01 |2019. március 12. |POST 6.6. |
 | WA-GUEST-OS-6.3_201901-01 |2019. február 5. |POST 6.5-ös |
-| WA-GUEST-OS-6.2_201812-01 |2019. január 24. |6.4 POST |
+|~~WA-GUEST-OS-6.2_201812-01~~|2019. január 24. |2019. március 12. |
 |~~WA-GUEST-OS-6.1_201811-01~~ |2019. január 24. |2019. február 5. |
 
 ## <a name="family-5-releases"></a>5. családba tartozó kiadások
@@ -105,13 +106,13 @@ A július vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.28_201902-01 |2019. március 12. |POST 5.30 |
 | WA-GUEST-OS-5.27_201901-01 |2019. február 5. |POST 5.29 |
-| WA-GUEST-OS-5.26_201812-01 |2019. január 7. |POST 5.28 |
+|~~WA-GUEST-OS-5.26_201812-01~~|2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-5.25_201811-01~~ |2018. december 14. |2019. február 5. |
 |~~WA-GUEST-OS-5.24_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-5.23_201809-01~~ |2018. október 12. |2018. december 14. |
 |~~WA-GUEST-OS-5.22_201808-01~~ |2018. szeptember 12. |2018. november 8. |
-|~~WA-GUEST-OS-5.21_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 
 ## <a name="family-4-releases"></a>Család 4-kiadások
 **Windows Server 2012 R2**
@@ -120,13 +121,13 @@ A július vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.63_201902-01 |2019. március 12. |POST 4.65 |
 | WA-GUEST-OS-4.62_201901-01 |2019. február 5. |POST 4.64 |
-| WA-GUEST-OS-4.61_201812-01 |2019. január 7. |POST 4.63 |
+|~~WA-GUEST-OS-4.61_201812-01~~|2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-4.60_201811-01~~ |2018. december 14. |2019. február 5. |
 |~~WA-GUEST-OS-4.59_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-4.58_201809-01~~ |2018. október 12. |2018. december 14. |
 |~~WA-GUEST-OS-4.57_201808-01~~ |2018. szeptember 12. |2018. november 8. |
-|~~WA-GUEST-OS-4.56_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 
 ## <a name="family-3-releases"></a>3-as család kiadások
 **Windows Server 2012**
@@ -135,13 +136,13 @@ A július vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.70_201902-01 |2019. március 12. |POST 3.72 |
 | WA-GUEST-OS-3.69_201901-01 |2019. február 5. |POST 3.71 |
-| WA-GUEST-OS-3.68_201812-01 |2019. január 7. |POST 3.70 |
+|~~WA-GUEST-OS-3.68_201812-01~~|2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-3.67_201811-01~~ |2018. december 14. |2019. február 5. |
 |~~WA-GUEST-OS-3.66_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-3.65_201809-01~~ |2018. október 12. |2018. december 14. |
 |~~WA-GUEST-OS-3.64_201808-01~~ |2018. szeptember 12. |2018. november 8. |
-|~~WA-GUEST-OS-3.63_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 
 ## <a name="family-2-releases"></a>2 család kiadások
 **Windows Server 2008 R2 SP1**
@@ -150,14 +151,13 @@ A július vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.83_201902-01 |2019. március 12. |POST 2.85 |
 | WA-GUEST-OS-2.82_201901-01 |2019. február 5. |POST 2.84 |
-| WA-GUEST-OS-2.81_201812-01 |2019. január 7. |POST 2.83 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-2.80_201811-01~~ |2018. december 14. |2019. február 5. |
 |~~WA-GUEST-OS-2.79_201810-01~~ |2018. november 8. |2019. január 7. |
 |~~WA-GUEST-OS-2.78_201809-01~~ |2018. október 12. |2018. december 14. |
 |~~WA-GUEST-OS-2.77_201808-01~~ |2018. szeptember 12. |2018. november 8. |
-|~~WA-GUEST-OS-2.76_201807-02~~ |2018. augusztus 3. |2018. október 12. |
-|~~WA-GUEST-OS-2.75_201806-01~~ |2018. július 3. |2018. szeptember 12. |
 
 ## <a name="msrc-patch-updates"></a>MSRC-javítás frissítések
 A lista minden egyes havi vendég operációs rendszer kiadása a javítások [Itt][patches].

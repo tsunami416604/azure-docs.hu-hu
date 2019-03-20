@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan egy .NET Core-folyamat hozzáférési jogkivona
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 1/11/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c63269630d0ed74d1b17edbc5cb9e787499604e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200515"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194444"
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan írhat olyan .NET Core-alkalmazást, amely ezután hívja meg a Microsoft Graph API megjelenítéséhez és az alkalmazás saját identitással hozzáférési jogkivonatot kapjon a [felhasználók listája](https://docs.microsoft.com/graph/api/user-list) a címtárban. Ebben a forgatókönyvben hasznos olyan esetekben, ahol távfelügyelt, a felügyelet nélküli feladat vagy egy windows-szolgáltatás futtatásához szükséges egy alkalmazás identitással helyett a felhasználó identitását.
 
-![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-netcore-daemon/netcore-daemon-intro-updated.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -198,7 +198,7 @@ var app = new ConfidentialClientApplication(
 > |---------|---------|
 > | `secret` | Az ügyfél titkos kulcsát az alkalmazás az Azure Portalon jön létre. |
 > | `clientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
-> | `Authority`    | (Nem kötelező) Az STS végpont a felhasználó hitelesítéséhez. Általában https://login.microsoftonline.com/{tenant} nyilvános felhő, {tenant} helyére a bérlő vagy a bérlő azonosítóját.|
+> | `Authority`    | (Nem kötelező) Az STS végpont a felhasználó hitelesítéséhez. Általában <https://login.microsoftonline.com/{tenant}> nyilvános felhő, {tenant} helyére a bérlő vagy a bérlő azonosítóját.|
 > | `redirectUri`  | URL-címe, ahol felhasználóknak legyenek elküldve a hitelesítés után. Ebben az esetben mivel ez egy konzol/nem interaktív alkalmazást, ez a paraméter nem használatos |
 > | `clientCredentials`  | A hitelesítő adatok ügyfélobjektumát, amely tartalmazza a titkos kulcsot vagy a tanúsítvány |
 > | `userTokenCache`  | A felhasználói jogkivonat a gyorsítótárban példánya. Ebben az esetben mivel ez az alkalmazás az alkalmazás, és nem a felhasználó környezetében fut, ez az érték null értékű|

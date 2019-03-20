@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13bb12c2c624bfd50933b624a28145172f521747
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427678"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226742"
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-runbookom
 
@@ -25,6 +25,9 @@ ms.locfileid: "54427678"
 > - [Python](automation-first-runbook-textual-python2.md)
 
 Ez az oktatóanyag végigvezeti a létrehozása egy [Python-alapú runbook](automation-runbook-types.md#python-runbooks) az Azure Automationben. Először egy egyszerű runbookot, tesztelése és közzététele. Ezután módosítja a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül akkor a runbook még robusztusabbá runbook-paramétereket adunk hozzá.
+
+> [!NOTE]
+> Python-runbook indítása egy webhook használatával nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,16 +81,16 @@ Ebben az esetben még nem rendelkezik egy közzétett verzió, mert az újonnan 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
 1. Ha balra görgetve megtekinti a forgatókönyvet a a **Runbookok** panelen most megjelenít egy **szerzői állapot** , **közzétett**.
 1. Görgessen vissza jobbra a panel megtekintéséhez **MyFirstRunbook-Python**.
-   A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
-1. El szeretné indítani a runbookot, tehát kattintson **Start** majd **Ok** amikor a Runbook indítása panel megnyílik.
-1. Egy feladatpanel a létrehozott runbook-feladathoz. Zárja be ezt a panelt, de ebben az esetben, nyitva hagyja, így megtekintheti a feladat előrehaladását.
+   A felül látható lehetőségekkel elindíthatjuk a runbook elindításához, megtekinti a forgatókönyvet, vagy ütemezhet egy későbbi időpontban kezdődik.
+2. El szeretné indítani a runbookot, tehát kattintson **Start** majd **Ok** amikor a Runbook indítása panel megnyílik.
+3. Egy feladatpanel a létrehozott runbook-feladathoz. Zárja be ezt a panelt, de ebben az esetben, nyitva hagyja, így megtekintheti a feladat előrehaladását.
 1. A feladat állapota a **feladat összegzése** és megegyezik-e az állapot, a tesztelt, amikor a runbook vonatkozott.
-1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A Kimenet panel megnyílik, és láthatja a *Hello World*.
-1. Zárja be a Kimenet panelt.
-1. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
-1. Zárja be a Streamek és a feladat panel, térjen vissza a MyFirstRunbook-Python panelen.
-1. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
-1. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
+2. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A Kimenet panel megnyílik, és láthatja a *Hello World*.
+3. Zárja be a Kimenet panelt.
+4. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
+5. Zárja be a Streamek és a feladat panel, térjen vissza a MyFirstRunbook-Python panelen.
+6. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
+7. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Hitelesítés hozzáadása Azure-erőforrások kezeléséhez
 

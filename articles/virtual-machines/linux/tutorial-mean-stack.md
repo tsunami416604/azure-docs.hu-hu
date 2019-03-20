@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237857"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009651"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Az Azure-ban Linux rendszerű virtuális gépen a MongoDB, Express, AngularJS és Node.js (mean) készlet-verem létrehozása
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>A MongoDB telepítése és a kiszolgáló beállítása
-A [MongoDB](http://www.mongodb.com) rugalmas, JSON-szerű dokumentumokban tárolja az adatokat. Az adatbázisok mezői dokumentumtól függően eltérőek lehetnek, az adatstruktúra pedig idővel változhat. A példaalkalmazás esetében könyvbejegyzéseket fogunk hozzáadni a MongoDB-hez, amelyek tartalmazzák a könyv nevét, ISBN-számát, szerzőjét és az oldalszámot. 
+A [MongoDB](https://www.mongodb.com) rugalmas, JSON-szerű dokumentumokban tárolja az adatokat. Az adatbázisok mezői dokumentumtól függően eltérőek lehetnek, az adatstruktúra pedig idővel változhat. A példaalkalmazás esetében könyvbejegyzéseket fogunk hozzáadni a MongoDB-hez, amelyek tartalmazzák a könyv nevét, ISBN-számát, szerzőjét és az oldalszámot. 
 
 1. A virtuális gépen állítsa be a MongoDB-kulcsot az SSH-val megnyitott bash-felületen.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. Frissítse a csomagkezelőt a kulccsal.
@@ -149,7 +149,7 @@ A [MongoDB](http://www.mongodb.com) rugalmas, JSON-szerű dokumentumokban tárol
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>Az Express telepítése és útvonalak beállítása a kiszolgálóhoz
 
-Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js webalkalmazási keretrendszer, amely különféle funkciókat biztosít a web- és mobilalkalmazások számára. Ebben az oktatóanyagban az Express használatával fogjuk továbbítani a könyvadatokat a MongoDB adatbázisból, illetve az adatbázis felé. A [Mongoose](http://mongoosejs.com) magától értetődő, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez. Ebben az oktatóanyagban a Mongoose használatával fogjuk megadni a könyv sémáját az adatbázis számára.
+Az [Express](https://expressjs.com) egy minimális igényű és rugalmas Node.js webalkalmazási keretrendszer, amely különféle funkciókat biztosít a web- és mobilalkalmazások számára. Ebben az oktatóanyagban az Express használatával fogjuk továbbítani a könyvadatokat a MongoDB adatbázisból, illetve az adatbázis felé. A [Mongoose](https://mongoosejs.com) magától értetődő, sémaalapú megoldást biztosít az alkalmazásadatok modellezéséhez. Ebben az oktatóanyagban a Mongoose használatával fogjuk megadni a könyv sémáját az adatbázis számára.
 
 1. Telepítse az Express és Mongoose szolgáltatásokat.
 

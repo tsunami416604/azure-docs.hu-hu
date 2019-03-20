@@ -1,17 +1,17 @@
 ---
 title: Az Azure Cosmos DB index görbék használata
 description: Az Azure Cosmos DB indexet-útvonalak áttekintése
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: c22d8d69284c546a4fccc86302672d81ce65b9e8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: d0fce763822ded374eab2f70c3f319aba0c89267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992832"
 ---
 # <a name="index-paths-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexet-útvonalak
 
@@ -25,12 +25,12 @@ Az alábbiakban a közös minta indexet-útvonalak megadása:
 
 | **Elérési út** | **Leírás és használati eset** |
 | ---------- | ------- |
-| /   | A gyűjtemény alapértelmezett elérési utat. A rekurzív, és a teljes dokumentum fa vonatkozik.|
-| / prop /?  | Index elérési út az alábbihoz hasonló-lekérdezések kiszolgálása érdekében szükséges (kivonatoló vagy tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop  |
-| / prop / *  | A megadott címke alatti összes elérési utat index elérési útja. A következő lekérdezéseket működik<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop.nextprop = "érték"<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop |
-| / Kellékek / [] /?  | Index kell felelni az iteráció és a JOIN lekérdezéseket az Pole binárních hodnot fejlécekké például ["a", "b", "c"] elérési útja:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE címke = "érték"<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props VÁLASSZA címke > 5 ahol címkézése  |
-| [] /subprop/ /props/? | Iteráció kiszolgálásához szükséges index elérési út és a JOIN lekérdezéseket az objektumok, tömbök, például [{subprop: "a"}, {subprop: "b"}]:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE tag.subprop = "érték"<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE tag.subprop = "érték" |
-| / prop/subprop /? | -Lekérdezések kiszolgálása érdekében szükség index elérési (kivonatoló vagy tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5  |
+| /          | A gyűjtemény alapértelmezett elérési utat. A rekurzív, és a teljes dokumentum fa vonatkozik.|
+| / prop /?    | Index elérési út az alábbihoz hasonló-lekérdezések kiszolgálása érdekében szükséges (tartomány típusú, illetve): <br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5 <br><br>Válassza ki a gyűjtemény c ORDER BY c.prop  |
+| / prop / *    | A megadott címke alatti összes elérési utat index elérési útja. A következő lekérdezéseket működik <br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop.nextprop = "érték"<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop |
+| /props/[]/?| Index kell felelni az iteráció és a JOIN lekérdezéseket az Pole binárních hodnot fejlécekké például ["a", "b", "c"] elérési útja:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE címke = "érték"<br><br>A gyűjtemény c ILLESZTÉSI címke IN c.props VÁLASSZA címke > 5 ahol címkézése |
+| /props/[]/subprop/? | Iteráció kiszolgálásához szükséges index elérési út és a JOIN lekérdezéseket az objektumok, tömbök, például [{subprop: "a"}, {subprop: "b"}]:<br><br>A címke a collection.props címkézése VÁLASSZA WHERE tag.subprop = "érték"<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE tag.subprop = "érték" |
+| / prop/subprop /? | Index elérési út-lekérdezések kiszolgálása érdekében szükséges (tartomány típusú, illetve):<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop.subprop > 5  |
 
 Amikor egyéni index elérési utak, módosítania kell a adja meg az alapértelmezett indexelési szabály a teljes elem, a speciális elérési kimaradásával `/*`.
 

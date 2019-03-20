@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 26ea184055f1496babf4f98f5d103b9af9c77ac0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 92eef714f651ef0ce4e58fcfbb8fad75a38c55c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121332"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Konfigurációs kiszolgáló követelményei a VMware-vészhelyreállításhoz az Azure-bA
 
@@ -58,7 +58,7 @@ IIS | – Nincs már létező alapértelmezett webhelye <br> – Nincs már lét
 **Összetevő** | **Követelmény** 
 --- | --- 
 IP-cím típusa | Statikus 
-Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége (közvetlenül vagy proxyn keresztül): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> – https:\//management.azure.com <br> -*. services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF is el kell érnie a következő URL-címek: <br> – https:\//login.microsoftonline.com <br> – https:\//secure.aadcdn.microsoftonline-p.com <br> – https:\//login.live.com  <br> – https:\//auth.gfx.ms <br> – https:\//graph.windows.net <br> – https:\//login.windows.net <br> – https:\//www.live.com <br> – https:\//www.microsoft.com <br> – https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
+Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége (közvetlenül vagy proxyn keresztül): <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> – https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF is el kell érnie a következő URL-címek: <br> – https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> – https:\//login.live.com  <br> – https:\//auth.gfx.ms <br> – https:\//graph.windows.net <br> – https:\//login.windows.net <br> – https:\//www.live.com <br> – https:\//www.microsoft.com <br> – https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
 Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel) 
 Hálózati adapter típusa | VMXNET3 (Ha a konfigurációs kiszolgáló VMware virtuális gép)
 
@@ -75,11 +75,12 @@ A következő táblázat összefoglalja a konfigurációs kiszolgáló követelm
 
 **Összetevő** | **Követelmény** 
 --- | ---
-**CPU** | **Memória** | **Gyorsítótárlemez** | **A módosult adatok aránya** | **Replikált gépek**
---- | --- | --- | --- | ---
-8 Vcpu<br/><br/> 2 sockets * 4 mag \@ 2,5 GHz-es | 16 GB | 300 GB | 500 GB vagy kevesebb | Les, mint 100 gépek
-12 vcpu-k<br/><br/> 2 socks * 6 magok \@ 2,5 GHz-es | 18 GB | 600 GB | 500 GB – 1 TB | 100-150 gépek
-16 vcpu-k<br/><br/> 2 socks * 8 magos \@ 2,5 GHz-es | 32 GB | 1 TB | 1 – 2 TB | 150 – 200 – gépek
+
+| **CPU** | **Memória** | **Gyorsítótárlemez** | **A módosult adatok aránya** | **Replikált gépek** |
+| --- | --- | --- | --- | --- |
+| 8 Vcpu<br/><br/> 2 sockets * 4 mag \@ 2,5 GHz-es | 16 GB | 300 GB | 500 GB vagy kevesebb | Les, mint 100 gépek |
+| 12 vcpu-k<br/><br/> 2 socks * 6 magok \@ 2,5 GHz-es | 18 GB | 600 GB | 500 GB-1 TB | 100-150 gépek |
+| 16 vcpu-k<br/><br/> 2 socks * 8 magos \@ 2,5 GHz-es | 32 GB | 1 TB | 1-2 TB | 150 – 200 – gépek | 
 
 
 

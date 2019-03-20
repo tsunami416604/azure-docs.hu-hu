@@ -16,12 +16,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: manayar
-ms.openlocfilehash: 5cd9593bba1e97f52bfa37467920959b1ef0f698
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1ace0ddd3b29f844488eb7579934541fa8273fa0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329609"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199902"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
 Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
@@ -46,7 +46,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
     - Az automatikus méretezés segít minimális szinten tartani az alkalmazást futtató virtuálisgép-példányok számát alacsony igényszint esetén, és elfogadható teljesítményt biztosít az ügyfeleknek további VM-példányok hozzáadásával, amikor igénynövekedés tapasztalható. Ez a képesség segít a költségek csökkentésében, és hatékony módon, csakis szükség esetén hoz létre Azure-erőforrásokat.
 
 - **Működtetés nagy léptékben**
-    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha saját VM-rendszerképeit hozza létre és tölti fel, legfeljebb 300 VM-példánya lehet.
+    - A méretezési csoportok akár 1000 virtuálisgép-példányt is tartalmazhatnak. Ha hoz létre, és a saját egyéni Virtuálisgép-rendszerképek feltöltése, a határértéke 600 Virtuálisgép-példányok.
     - A termelési számítási feladatokhoz a legjobb teljesítmény érdekében használjon [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md).
 
 

@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 09/25/2017
-ms.openlocfilehash: 3ca08f12e3f389265fd3a77b3aa82c086085a10a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092990"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault helyreállítható törlés áttekintése
 
@@ -44,9 +44,9 @@ Helyreállítható törlés egy nem kötelező a Key Vault-viselkedés, és **al
 ### <a name="purge-protection--flag"></a>Védelem jelző törlése
 Végleges törlése a védelem (**--purge-védelem engedélyezése** az Azure CLI) jelző alapértelmezés szerint ki van kapcsolva. Ha ez a jelző be van kapcsolva, a tároló vagy törölt állapotban objektum nem törölhető, amíg a 90 napos megőrzési időszak lejárt. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a jelző biztosítja, hogy egy tároló vagy egy objektumot is soha nem véglegesen törlődik mindaddig, amíg a megőrzési időszak letelte hozzáadott arra, hogy az ügyfelek. A végleges törlés védelmi jelző bekapcsolhatja, csak akkor, ha a helyreállítható törlés jelző be van kapcsolva, vagy a tároló létrehozásakor bekapcsolása mindkét helyreállítható törlés és a végleges törlése a védelem.
 
-> [!NOTE] 
-   A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés.
-A parancs az ehhez az Azure CLI 2
+> [!NOTE]
+>    A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés.
+> A parancs az ehhez az Azure CLI 2
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

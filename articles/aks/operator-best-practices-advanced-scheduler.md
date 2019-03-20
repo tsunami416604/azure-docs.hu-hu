@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434319"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175981"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a speciális scheduler funkciók az Azure Kubernetes Service (AKS)
 
@@ -39,10 +39,10 @@ A Kubernetes a scheduler használatával elkerülésére, valamint tolerations m
 Amikor telepít egy pod egy AKS-fürtöt, Kubernetes csak ütemezi csomópontokon podok, ahol egy toleration igazítva van-e a mellékíz. Tegyük fel fel, hogy az AKS-fürt csomópontok grafikus processzort tartalmaz egy nodepool, támogatja. Név, például meghatározhat *gpu*, majd ütemezés értékét. Ha ez az érték *NoSchedule*, a Kubernetes-ütemező nem lehet ütemezni a csomóponton podok, ha a pod nem adja meg a megfelelő toleration.
 
 ```console
-kubectl taint node aks-nodepool1 gpu:NoSchedule
+kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-A rendszer összes csomópontra alkalmazza a mellékíz majd egy toleration az meghatározott a pod szabvány, amely lehetővé teszi, hogy ütemezése a csomópontokon. Az alábbi példa meghatározza az `key: gpu` és `effect: NoSchedule` elviselni a alkalmazni a csomópontra az előző lépésben mellékíz:
+A rendszer összes csomópontra alkalmazza a mellékíz majd egy toleration az meghatározott a pod szabvány, amely lehetővé teszi, hogy ütemezése a csomópontokon. Az alábbi példa meghatározza az `sku: gpu` és `effect: NoSchedule` elviselni a alkalmazni a csomópontra az előző lépésben mellékíz:
 
 ```yaml
 kind: Pod
@@ -61,9 +61,9 @@ spec:
       cpu: 4.0
       memory: 16Gi
   tolerations:
-  - key: "gpu"
+  - key: "sku"
     operator: "Equal"
-    value: "value"
+    value: "gpu"
     effect: "NoSchedule"
 ```
 

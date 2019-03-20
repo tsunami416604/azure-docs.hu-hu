@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b431d1b739342c54cbc218efdfded1ee516ecaa7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586392"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849822"
 ---
-# <a name="quickstart-create-query-and-traverse-a-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Létrehozása, lekérdezése és bejárása a Gremlin-konzol Azure Cosmos DB gráfadatbázissal
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával egy Azure Cosmos DB-gráfadatbázis
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -81,13 +81,13 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 Ellenőrizze, hogy burkolása belül szögletes gazdagépek paraméter értékét. 
 
-3. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
-4. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
+1. A terminálban futtassa a `bin/gremlin.bat` vagy a `bin/gremlin.sh` parancsot a [Gremlin-konzol](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) elindításához.
+1. A terminálban futtassa a `:remote connect tinkerpop.server conf/remote-secure.yaml` parancsot az alkalmazásszolgáltatáshoz való csatlakozáshoz.
 
     > [!TIP]
     > Ha a rendszer `No appenders could be found for logger` hibát ad vissza, győződjön meg arról, hogy frissítette a szerializáló értékét a remote-secure.yaml fájlban a 2. lépésben leírtak szerint. 
 
-5. Ezután a(z) `:remote console` futtatásával irányítson át minden konzolparancsot a távoli kiszolgálóra.
+1. Ezután a(z) `:remote console` futtatásával irányítson át minden konzolparancsot a távoli kiszolgálóra.
 
    > [!NOTE]
    > Ha nem futtatja a `:remote console` parancsot, azonban minden konzolparancsot a távoli kiszolgálóra szeretne irányítani, a parancs elé helyezze a(z) `:>` előtagot, tehát például a következőhöz hasonlóképp futtassa a parancsot: `:> g.V().count()`. Ez az előtag a parancs része, és fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál. Az előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot. A(z) `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben az Azure Cosmos DB-n (a localhost emulátoron vagy egy Azure-példányon).

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 883e1c11e3485c0bf3441a67a3a191563ea3aed4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453178"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990786"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science virtuális gépen támogatott nyelvek 
 
@@ -222,7 +222,7 @@ Julia hely alapértelmezés szerint egy globális környezetben olvasható össz
 Nyissa meg a Terminálszolgáltatások és a csak futtatási `julia`. 
 * Egy IDE használatával
 
-Használat `Juno` telepíthető a dsvm-hez és az alkalmazás menü parancsikonja elérhető az Julia IDE.
+Használat `Juno` telepíthető a dsvm-hez és a egy alkalmazás menü parancsikonja elérhető az Julia IDE.
 
 * A Jupyter használatával
 

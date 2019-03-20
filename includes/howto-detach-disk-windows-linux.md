@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 343ffb8daf19711d6c2a61b819ece92448146446
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c97c94492417dcc87d34751908f1766393ad37ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102555"
 ---
 Ha már nincs szüksége egy virtuális géphez csatolt adatlemezre, könnyedén leválaszthatja. Ha leválaszt egy lemezt, azzal eltávolítja azt a virtuális gépről, de nem törli az Azure Storage-fiókból.
 
@@ -28,7 +28,7 @@ Ha nem tudja a lemez nevét, vagy szeretné ellenőrizni a leválasztás előtt,
 
 3. Kattintson a virtuális gép irányítópultjának bal szélén, a **Beállítások** területen a **Lemezek** elemre.
 
- A virtuális gép irányítópultja felsorolja a csatlakoztatott lemezek nevét és típusát. Ez a képernyő például egy virtuális gépet jelenít meg egy operációsrendszer-lemezzel és egy adatlemezzel:
+   A virtuális gép irányítópultja felsorolja a csatlakoztatott lemezek nevét és típusát. Ez a képernyő például egy virtuális gépet jelenít meg egy operációsrendszer-lemezzel és egy adatlemezzel:
 
     ![Adatlemez megkeresése](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
@@ -39,14 +39,14 @@ Ha nem tudja a lemez nevét, vagy szeretné ellenőrizni a leválasztás előtt,
 
 3. Kattintson a leválasztani kívánt lemezre.
 
-  ![A leválasztani kívánt lemez azonosítása](./media/howto-detach-disk-windows-linux/disklist.png)
+   ![A leválasztani kívánt lemez azonosítása](./media/howto-detach-disk-windows-linux/disklist.png)
 
 4. A parancssoron kattintson a **Leválasztás** elemre.
 
-  ![A leválasztási parancs megkeresése](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+   ![A leválasztási parancs megkeresése](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
 5. A megerősítés ablakban kattintson az **Igen** gombra a lemez leválasztásához.
 
-  ![A lemez leválasztásának megerősítése](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+   ![A lemez leválasztásának megerősítése](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
 A lemez a tárolóban marad, de már nincs virtuális géphez csatlakoztatva.

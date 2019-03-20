@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8254e3221fee3d76e2d27715f76c26397c309f08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863355"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 
 Ebben az oktatóanyagban ez útmutatást nyújt az Azure Cosmos DB tömeges végrehajtó Java-kódtár használatával importálása és frissítése az Azure Cosmos DB-dokumentumot. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [végrehajtó Ügyfélkódtár áttekintése tömeges](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban a Java-alkalmazás által generált, véletlenszerű dokumentumok létrehozása és tömegesen importálni egy Azure Cosmos DB-tárolóhoz. Az importálás után lesz tömeges frissítése néhány tulajdonságát egy dokumentumot. 
 
-Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak a Gremlin API-fiókok által támogatott. Ez a cikk ismerteti a tömeges végrehajtó .net-kódtár használata SQL API-fiókok. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
+Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak a Gremlin API-fiókok által támogatott. Ez a cikk ismerteti a tömeges végrehajtó .NET-kódtár használata SQL API-fiókok. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,13 +86,13 @@ A klónozott adattár tartalmazza a két minta "bulkimport" és "bulkupdate" a "
    // Set retries to 0 to pass complete control to bulk executor
    client.getConnectionPolicy().getRetryOptions().setMaxRetryWaitTimeInSeconds(0);
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
-```
+   ```
 
 4. Hívja meg a paraméter értéke importAll API, amely létrehoz egy Azure Cosmos DB-tárolón történő tömeges véletlenszerű dokumentumok. Beállíthatja, hogy a parancssor konfigurációk CmdLineConfiguration.java fájlon belül.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
-```
+   ```
    A tömeges importálási API elfogadja a JSON-szerializált dokumentumok gyűjteménye, és rendelkezik a következő szintaxist, további részletekért, lásd: a [API-dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java

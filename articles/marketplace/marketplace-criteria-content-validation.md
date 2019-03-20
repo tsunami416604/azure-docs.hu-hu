@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 145c6ac01cce9a70f3753b54a46638bf9d9c23b4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729746"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000402"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
 
@@ -72,16 +72,18 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 ----
 
 ## <a name="container-offer-requirements"></a>Tároló ajánlat követelményeinek
+
 |  | Elem listázása | Alap követelmények | Optimális követelmények | 
 |:--- |:--- |:--- |:--- |
 |1 |Ajánlat beállításai | <br>• Ajánlat azonosítója: Legfeljebb 50 karakter <br>• Publisher ID: Válassza ki a legördülő listából <br>• Neve: Max. 50 karakter lehet | Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek. | 
-| 2 | Termékváltozatok | Partner gombra kattint, az új termékváltozatokra| Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek.  |  |
+| 2 | Termékváltozatok | Partner gombra kattint, az új termékváltozatokra| Már elérhető a leírás - címében nem szeretné, a tükör hosszú címek.  |
 | 3 | Marketplace-összetevők | Emblémák hibásan jelennek meg |<br>• Embléma tartalmazza a "fő képet," a nagy formátumú képet, az Azure Portalon <br>• Emblémát: Kicsi (48 x 48) és a nagy (216 x 216) követelmények érvényesek. <br>• Hero a rendszerképre vonatkozó követelmények: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Képernyőkép (max. 5):  CPP feloldási 1280 x 720 között egy .png lemezkép szükséges.|
 | 4 | Felügyeleti vezethet |<br>• A felügyeleti nyújtják: Válassza ki az érdeklődőket a rendszer hol tárolja a rendszer. <br>• Megtudhatja, hogyan csatlakozhat a CRM-rendszerbe [Itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>Consulting ajánlatot követelmények
+
 |  | Elem listázása | Alap követelmények | Optimális követelmények |
 |:--- |:--- |:--- |:--- |
 | 1 | Az ajánlat címe  |  <br>• Egyértelműen kell tüntetniük a szolgáltatás típusa és időtartama a következő formátumban: NÉV: IDŐTARTAM TÍPUSÚ. (azaz a "Engagement kínálnak: 1 – hét Proof-of-Concept")  | <br>• Nem ismétli meg a közzétevő neve <br>• Tükrözi a cím már elérhető a leírásban stílust – nem szeretné, hosszú címek. | 

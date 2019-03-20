@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 62d19432cba431bce4485aaa2af3e0a23ad8b5f6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104097"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
 
@@ -95,10 +95,10 @@ A beépülő modul egy Kubernetes-fürt összes Azure-beli virtuális gépén va
 1. [A beépülő modul letöltése és telepítése](#download-and-install-the-plug-in).
 2. Előre foglaljon le egy virtuális hálózati IP-címkészletet minden egyes olyan virtuális gépen, amelyről IP-címeket fog a podokhoz rendelni. Minden Azure-beli virtuális gép rendelkezik egy elsődleges virtuális magánhálózati IP-címmel az összes hálózati adapterhez. A podok IP-címkészletében szereplő címek másodlagos címként (*ipconfig*) vannak megadva a virtuális gép hálózati adapterén, a következő lehetőségek egyikének használatával:
 
-   - **CLI**: [Több IP-cím hozzárendelése az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [Több IP-cím hozzárendelése a PowerShell használatával](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [Több IP-cím hozzárendelése az Azure Portal használatával](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager-sablon**: [Több IP-cím hozzárendelése sablonok használatával](virtual-network-multiple-ip-addresses-template.md)
+   - **Parancssori felület**: [több IP-címek az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [PowerShell használatával több IP-címek kiosztása](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portál**: [több IP-címek az Azure portal használatával](virtual-network-multiple-ip-addresses-portal.md)
+   - **Az Azure Resource Manager-sablon**: [-sablonokkal több IP-címek kiosztása](virtual-network-multiple-ip-addresses-template.md)
 
    Győződjön meg arról, hogy megfelelő számú IP-címet ad hozzá azon podok számára, amelyeket el szeretne indítani a virtuális gépen.
 
@@ -106,13 +106,13 @@ A beépülő modul egy Kubernetes-fürt összes Azure-beli virtuális gépén va
 4. Ha szeretné, hogy podjai elérjék az internetet, adja hozzá a következő *iptables* szabályt Linux rendszerű virtuális gépén az internetforgalom forráshálózati címfordításához. A következő példában a megadott IP-címtartomány a következő: 10.0.0.0/8.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
    A szabályok elvégzik azon forgalom hálózati címfordítását, amely nem a megadott IP-címtartományok felé tart. A rendszer azt feltételezi, hogy az előző tartományokon kívül eső teljes forgalom internetforgalom. Tetszés szerint megadhatja a virtuális gép virtuális hálózatának, a virtuális társhálózatok és a helyszíni hálózatok IP-címtartományát is.
 
-  A Windows rendszerű virtuális gépek automatikusan elvégzik annak a forgalomnak a forráshálózati címfordítását, amelynek a célja kívül esik azon az alhálózaton, amelyhez a virtuális gép tartozik. Egyéni IP-címtartományokat nem lehet megadni.
+   A Windows rendszerű virtuális gépek automatikusan elvégzik annak a forgalomnak a forráshálózati címfordítását, amelynek a célja kívül esik azon az alhálózaton, amelyhez a virtuális gép tartozik. Egyéni IP-címtartományokat nem lehet megadni.
 
 Az előző lépések végrehajtását követően a Kubernetes ügynök-virtuálisgépeken megjelenő podokhoz a rendszer automatikusan magánhálózati IP-címeket rendel a virtuális hálózatról.
 
@@ -157,12 +157,12 @@ A CNI hálózati konfigurációs fájlja JSON formátumban van megadva. Alapért
 
 #### <a name="settings-explanation"></a>Beállítások magyarázata
 
-- **cniVersion** (CNI verziója): Az Azure Virtual Network CNI beépülő moduljai a [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) 0.3.0-ás és 0.3.1-es verzióit támogatják.
-- **name** (név): A hálózat neve. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
-- **type** (típus): A hálózati beépülő modul neve. Állítsa az *azure-vnet* értékre.
-- **mode** (mód): Működési mód. A mező kitöltése nem kötelező. A „híd” az egyetlen támogatott mód. További információért tekintse meg a [működési módokról](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) szóló részt.
-- **bridge** (híd): Azon híd neve, amellyel a tárolók és a virtuális hálózatok össze lesznek kötve. A mező kitöltése nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
-- **ipam type** (IPAM típusa): Az IPAM beépülő modul neve. Mindig az *azure-vnet-ipam* értékre van állítva.
+- **cniVersion**: Azure virtuális hálózat CNI beépülő modulok 0.3.0 és a 0.3.1 verziója támogatja a [CNI specifikációja](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **Név**: A hálózat nevét. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
+- **Típus**: A beépülő modul hálózat nevét. Állítsa be *azure virtuális hálózatok közötti*.
+- **Mód**: Működési módja. A mező kitöltése nem kötelező. A „híd” az egyetlen támogatott mód. További információkért lásd: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **bridge**: A híd használandó tárolók kapcsolódni egy virtuális hálózat neve. A mező kitöltése nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
+- **az IPAM-típus**: Az IP-Címkezelő beépülő modul neve. Mindig *azure-vnet-IP-Címkezelő*.
 
 ## <a name="download-and-install-the-plug-in"></a>A beépülő modul letöltése és telepítése
 

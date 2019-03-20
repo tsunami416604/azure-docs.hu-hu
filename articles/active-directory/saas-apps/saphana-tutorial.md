@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bda6aff61b3060f23a3ac8ccf9a7933ad2a56a2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f8def13360bba2f82d5adf315503dc7d655f490d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP HANA
 
@@ -195,7 +195,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -248,8 +248,8 @@ Ha szeretné manuálisan hozzon létre egy felhasználót, tegye a következőke
 
 4. Adja hozzá a **külső azonosító** (ebben az esetben az BrittaSimon), vagy válasszon **bármely**. Ezután kattintson az **OK** gombra.
 
-    >[!Note]
-    >Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a felhasználó nevét, a HANA a felhasználói UPN-jét a tartományi utótag előtt neve pontosan egyeznie kell. (Például BrittaSimon@contoso.com Hana BrittaSimon válik.)
+   > [!Note]
+   > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a felhasználó nevét, a HANA a felhasználói UPN-jét a tartományi utótag előtt neve pontosan egyeznie kell. (Például BrittaSimon@contoso.com Hana BrittaSimon válik.)
 
 5. Tesztelési célokra az összes hozzárendelése **XS** a felhasználói szerepköröket.
 

@@ -4,17 +4,17 @@ description: Ismerje meg, melyik operációs rendszerek futtathatók az Azure Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e97983e1316476848eb4a051cd636339b8caff7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440964"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190005"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
 
@@ -31,27 +31,30 @@ Az Azure IoT Edge szüksége van egy tároló-motor modulok elindításához, mi
 
 <br>
 <center>
+
 ![Container modul, Moby](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Operációs rendszerek
-Az Azure IoT Edge, amelyek futtathatók tárolók; a legtöbb operációs rendszeren fut. azonban ezek mindegyikét nem egyaránt támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
-* 1. rétegbeli rendszerek tekinthető, hivatalosan támogatott. Ez azt jelenti, hogy a Microsoft:
+Az Azure IoT Edge, amelyek futtathatók tárolók; a legtöbb operációs rendszeren fut. azonban ezek a rendszerek nem egyaránt támogatottak. Operációs rendszerek számíthatnak támogatás szintjét képviselő szinten vannak csoportosítva.
+* 1. rétegbeli rendszerek tekinthető, hivatalosan támogatott. 1. rétegbeli rendszerek esetében a Microsoft:
     * Ez az operációs rendszer automatizált teszteket rendelkezik
     * biztosít a számukra a telepítési csomagok
-* 2. rétegbeli rendszerek szerint kompatibilis az Azure IoT Edge segítségével olyan, és viszonylag könnyen használható. Ez azt jelenti, hogy:
+* 2. rétegbeli rendszerek szerint kompatibilis az Azure IoT Edge segítségével olyan, és viszonylag könnyen használható. 2. rétegbeli rendszerek esetén:
     * A Microsoft alkalmi tesztelése a platformon végzett, vagy tudja, hogy sikeresen rendszeren történő futtatása az Azure IoT Edge egy partner
     * Más platformok telepítőcsomagok ezeken a platformokon is működhet.
     
-A operációsrendszer-család a gazda operációs rendszer mindig meg kell egyeznie a vendég operációs rendszer egy modul tárolóban használt összessége. Más szóval csak használhatja a linuxon futó Linux-tárolók és a Windows-tárolók Windows. Windows használata esetén csak a folyamat elkülönített tárolók is támogatott, nem a hyper-v elkülönített tárolókban.  
+A operációsrendszer-család a gazda operációs rendszer mindig meg kell egyeznie a vendég operációs rendszer egy modul tárolóban használt összessége. Más szóval csak használhatja a linuxon futó Linux-tárolók és a Windows-tárolók Windows. Windows, elkülönített tárolókban támogatottak, egyetlen folyamat használata esetén nem Hyper-V elkülönített tárolókat.  
 
 <br>
 <center>
+
 ![Gazda operációs rendszer megfelel a vendég operációs rendszer](./media/support/edge-on-device.png)
 </center>
 
 ### <a name="tier-1"></a>1. szint
 Általánosan elérhető
+
 | Operációs rendszer | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | A stretch Raspbian | Nem | Igen|
@@ -59,13 +62,14 @@ A operációsrendszer-család a gazda operációs rendszer mindig meg kell egyez
 | Ubuntu Server 18.04 | Igen | Nem |
 
 Nyilvános előzetes verzió
+
 | Operációs rendszer | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core build 17763 | Igen | Nem |
-| A Windows 10 IoT Enterprise build 17763 | Igen | Nem |
+| Windows 10 IoT Core, build 17763 | Igen | Nem |
+| A Windows 10 IoT Enterprise, a build 17763 | Igen | Nem |
 | Windows Server 2019 | Igen | Nem |
 
-A fenti Windows operációs eszközök, amelyek Windows-tárolókat futtathat Windows a követelmények vonatkoznak. Ez az éles környezetben az egyetlen támogatott konfiguráció. Windows Azure IoT Edge-telepítőcsomagok Windows; a Linux-tárolók használatának engedélyezése Ez azonban csak tesztelés és fejlesztés. A Windows Linux-tárolók használata nem támogatott konfiguráció éles üzemi környezetek részei. Az alkalmazásfejlesztési forgatókönyvet bármilyen Windows 10-es build 14393 vagy újabb verzió és a Windows Server 2016-os vagy újabb verzió használható.
+A Windows operációs rendszerek fent felsorolt Windows-tárolók a Windows rendszerű eszközök követelmények vonatkoznak. Ez a konfiguráció az egyetlen támogatott konfigurációkra vonatkozó üzemi. Windows Azure IoT Edge-telepítőcsomagok Windows; a Linux-tárolók használatának engedélyezése azonban ez a konfiguráció kizárólag fejlesztési és tesztelési szól. A Windows Linux-tárolók használata nem támogatott konfiguráció éles üzemi környezetek részei. Az alkalmazásfejlesztési forgatókönyvet bármilyen Windows 10-es build 14393 vagy újabb verzió és a Windows Server 2016-os vagy újabb verzió használható.
 
 ### <a name="tier-2"></a>2. szint
 
@@ -82,14 +86,23 @@ A fenti Windows operációs eszközök, amelyek Windows-tárolókat futtathat Wi
 
 
 ## <a name="virtual-machines"></a>Virtuális gépek
-Az Azure IoT Edge virtuális gépeken is futtatható. Ez a gyakori, ha ügyfeleket szeretne a peremhálózati intelligencia a meglévő infrastruktúra bővítésével. Az a gazdagép virtuális gép operációsrendszer-család egyeznie kell a vendég operációs rendszer egy modul tárolóban használt összessége. Ettől az ugyanilyen igényű helyrendszerszerepkörrel, az Azure IoT Edge futtatásakor közvetlenül az eszközön. Az Azure IoT Edge független a mögöttes virtualizációs technológia, és működteti, platformokon, például a Hyper-V- és vSphere-beli virtuális gépeken működik.
+Az Azure IoT Edge virtuális gépeken is futtatható. Virtuális gép, egy IoT Edge használatával eszköz esetén gyakori, mivel megvédi a peremhálózati intelligencia a meglévő infrastruktúra ügyfelei szeretnék. Az a gazdagép virtuális gép operációsrendszer-család egyeznie kell a vendég operációs rendszer egy modul tárolóban használt összessége. Ez a követelmény nem ugyanaz, mint az Azure IoT Edge futtatásakor közvetlenül az eszközön. Az Azure IoT Edge független a mögöttes virtualizációs technológia, és működteti, platformokon, például a Hyper-V- és vSphere-beli virtuális gépeken működik.
 
 <br>
 <center>
+
 ![Az Azure IoT Edge egy virtuális gépen](./media/support/edge-on-vm.png)
 </center>
 
 ## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelményei
-Az Azure IoT Edge kiválóan működjön az eszközök egy Raspberry Pi3 legyen a kiszolgáló szintű hardverre. A forgatókönyvnek megfelelő hardver kiválasztása a nagy mértékben függ a futtatni kívánt számítási feladatokat. Végső eszköz megugró lehet bonyolult; a hagyományos hordozható vagy asztali azonban prototípus-megoldás könnyedén elindíthatja.
+Az Azure IoT Edge kiválóan működjön az eszközök egy Raspberry Pi3 legyen a kiszolgáló szintű hardverre. A forgatókönyvnek megfelelő hardver kiválasztása attól függ, hogy a futtatni kívánt számítási feladatokat. Végső eszköz megugró lehet bonyolult; a hagyományos hordozható vagy asztali azonban prototípus-megoldás könnyedén elindíthatja.
 
-Felhasználói élményt, amíg prototípus-készítés végső eszköz választását útmutató segítségével. Kérdések, érdemes lehet tartalmazza: hány modult foglalja a számítási feladatok, a modulok tároló megosztás, milyen nyelven írt, mennyi adatot fog a modulok feldolgozni, a modulok rendszer hány rétegek do hajtsa végre a modulok kell semmilyen speciális a számítási feladatok felgyorsítása a hardver, Mik azok a kívánt teljesítményt nyújt, hogy a megoldás, mi az a hardver költségvetést?
+Felhasználói élményt, amíg prototípus-készítés végső eszköz választását útmutató segítségével. Érdemes lehet kérdések a következők: 
+
+* Hány modult az alkalmazások és szolgáltatások vannak?
+* Hány rétegek tegye meg a modulok tárolókat?
+* Milyen nyelven írták el a modulok? 
+* Mekkora mennyiségű adatot fog a modulok feldolgozni?
+* A modulok szükség van a speciális hardvereket felgyorsítása a számítási feladatok esetében?
+* Mik azok a kívánt teljesítményt nyújt, hogy a megoldás?
+* Mi az a hardver költségvetést?

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6d3bb9708c7bab41f87ad9c2b6ae18ac62849a2d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208350"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223920"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Felügyelt identitások az Azure-erőforrások konfigurálása-beli virtuális gépen az Azure CLI használatával
 
@@ -107,12 +107,8 @@ Ha egy virtuális gépet, amely a rendszer által hozzárendelt identitás már 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
-
-Távolítsa el a felügyelt identitását az Azure-erőforrások Virtuálisgép-bővítmény (tervezett elavult a január 2019 esetében), a felhasználó `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/):
-
-```azurecli-interactive
-az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
-```
+> [!NOTE]
+> Ha a felügyelt identitás (elavult) a Virtuálisgép-bővítmény Azure-erőforrások kiépítése, el kell távolítania a [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/). További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
@@ -135,7 +131,7 @@ Egy felhasználó által hozzárendelt identitással hozzárendelése egy virtu�
    ```azurecli-interactive
    az identity create -g myResourceGroup -n myUserAssignedIdentity
    ```
-   A válasz tartalmazza a létrehozott, az alábbihoz hasonló felügyelt felhasználó által hozzárendelt identitás részleteit. A felhasználó által hozzárendelt felügyelt identitás hozzárendelt erőforrás-azonosítójának értéke a következő lépésben szolgál.
+   A válasz tartalmazza a létrehozott, az alábbihoz hasonló felügyelt felhasználó által hozzárendelt identitás részleteit. A felhasználó által hozzárendelt felügyelt identitás hozzárendelt erőforrás-Azonosítójának értéke a következő lépésben szolgál.
 
    ```json
    {

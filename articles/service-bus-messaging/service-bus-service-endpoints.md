@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234067"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843567"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Service busszal
 
@@ -48,7 +48,7 @@ Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő S
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>Engedélyezze a szolgáltatásvégpontokat a Service busszal
 
-A Service Bus virtuális hálózati Szolgáltatásvégpontok használata esetén fontos szempont az, hogy ne engedélyezze ezeket a végpontokat az alkalmazásokat, amelyek vegyesen Standard és prémium szintű Service Bus-névterek. Standard szintű csomag nem támogatja a virtuális hálózatok, mert a végpont korlátozódik, csak a prémium szintű névteret. A virtuális hálózatok közötti forgalom a standard szintű névtér blokkolja.
+A Service Bus virtuális hálózati Szolgáltatásvégpontok használata esetén fontos szempont az, hogy ne engedélyezze ezeket a végpontokat az alkalmazásokat, amelyek vegyesen Standard és prémium szintű Service Bus-névterek. Standard szintű csomag nem támogatja a virtuális hálózatok, mert a végpont korlátozódik, csak a prémium szintű névteret.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 

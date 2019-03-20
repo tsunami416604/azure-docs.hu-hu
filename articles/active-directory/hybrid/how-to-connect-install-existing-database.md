@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34b416fd8c9e87006a0fe5d7a7e30521ef03e2b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9011a7b49aa4085c7ea05e0b320eba834b8da73d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193687"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004203"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
 Az Azure AD Connect adatok tárolásához SQL Server-adatbázis szükséges. Az alapértelmezett Azure AD connecttel telepített SQL Server 2012 Express LocalDB használata, vagy használja a saját SQL teljes verziójával. Korábban amikor telepítette az Azure AD Connect, az egy új adatbázist ADSync mindig létrejött. Az Azure AD Connect verziója 1.1.613.0 (vagy után) lehetősége van az Azure AD Connect telepítése meglévő ADSync-adatbázis jelzésével.
@@ -65,31 +65,31 @@ Fontos megjegyzések figyelembe vegye figyelembe a folytatás előtt:
 > A kapcsoló **/useexistingdatabase** csak ha az adatbázis már tartalmaz egy korábbi az Azure AD Connect telepítése adatait. Például ha helyez át egy helyi adatbázisból a teljes SQL Server-adatbázis, vagy ha az Azure AD Connect-kiszolgáló újraépítése, és visszaállította egy SQL az ADSync-adatbázis az Azure AD Connect egy korábbi telepítésből. Ha az adatbázis üres, azt jelenti, azt nem tartalmaz egy Azure AD Connect korábbi telepítésből származó adatokat, ezt a lépést kihagyhatja.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
-4.  Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
-![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db3.png)
-5.  **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
-![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db4.png)           
+1. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
+   ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db3.png)
+1. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
+   ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db4.png)           
 
-6.  A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
-![Kapcsolódás](./media/how-to-connect-install-existing-database/db5.png)
+1. A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
+   ![Kapcsolódás](./media/how-to-connect-install-existing-database/db5.png)
  
-7.  A **címtárak csatlakozására** szolgáló képernyőn a címtár-szinkronizáláshoz konfigurált meglévő AD-erdő mellett egy piros kereszt ikon látható. Helyszíni AD-erdőből származó módosítások szinkronizálásához AD DS-fiók szükséges. Az Azure AD Connect varázslója nem tudja lekérni az ADSync-adatbázisban tárolt AD DS-fiók hitelesítő adatait, mert azok titkosítva vannak, és a titkosítás kizárólag az előző Azure AD Connect-kiszolgálóval oldható fel. Kattintson a **hitelesítő adatok módosításának** lehetőségére az AD-erdőhöz tartozó AD DS-fiók megadásához.
-![Címtárak](./media/how-to-connect-install-existing-database/db6.png)
- 
- 
-8.  Az előugró párbeszédpanelen a következő lehetőségek közül választhat: (i) megad vállalati rendszergazdai hitelesítő adatokat, és engedi, hogy az Azure AD Connect hozza létre az AD DS-fiókot, vagy (ii) létrehozza az AD DS-fiókot, és megadja annak hitelesítő adatait az Azure AD Connectnek. Miután kiválasztotta az egyik lehetőséget és megadta a szükséges hitelesítő adatokat, kattintson az **OK** gombra az előugró párbeszédpanel bezáráshoz.
-![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db7.png)
+1. A **címtárak csatlakozására** szolgáló képernyőn a címtár-szinkronizáláshoz konfigurált meglévő AD-erdő mellett egy piros kereszt ikon látható. Helyszíni AD-erdőből származó módosítások szinkronizálásához AD DS-fiók szükséges. Az Azure AD Connect varázslója nem tudja lekérni az ADSync-adatbázisban tárolt AD DS-fiók hitelesítő adatait, mert azok titkosítva vannak, és a titkosítás kizárólag az előző Azure AD Connect-kiszolgálóval oldható fel. Kattintson a **hitelesítő adatok módosításának** lehetőségére az AD-erdőhöz tartozó AD DS-fiók megadásához.
+   ![Címtárak](./media/how-to-connect-install-existing-database/db6.png)
  
  
-9.  A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **tovább**.
-![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db8.png)
+1. Az előugró párbeszédpanelen a következő lehetőségek közül választhat: (i) megad vállalati rendszergazdai hitelesítő adatokat, és engedi, hogy az Azure AD Connect hozza létre az AD DS-fiókot, vagy (ii) létrehozza az AD DS-fiókot, és megadja annak hitelesítő adatait az Azure AD Connectnek. Miután kiválasztotta az egyik lehetőséget és megadta a szükséges hitelesítő adatokat, kattintson az **OK** gombra az előugró párbeszédpanel bezáráshoz.
+   ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db7.png)
  
  
-10. A **Ready to configure** (Konfigurálásra kész) képernyőn kattintson az **Install** (Telepítés) gombra.
-![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
+1. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **tovább**.
+   ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db8.png)
  
  
-11. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
+1. A **Ready to configure** (Konfigurálásra kész) képernyőn kattintson az **Install** (Telepítés) gombra.
+   ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
+ 
+ 
+1. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="post-installation-tasks"></a>Telepítés utáni feladatok
 Az Azure AD Connect 1.2.65.0 előtti verziójával létrehozott adatbázis biztonsági másolatának visszaállításakor az átmeneti kiszolgáló automatikusan kiválasztja a bejelentkezési módszer, **ne konfiguráljon**. A Jelszókivonat-szinkronizálás és jelszóvisszaíró jelszóbeállításait lesz visszaállítva, amíg a többi olyan szabályzat érvényben a aktív szinkronizálási kiszolgáló a megfelelő bejelentkezési módszer később módosítania kell.  Hiba a lépések elvégzéséhez megakadályozhatja a felhasználók bejelentkezésének a kell ezen a kiszolgálón aktívvá válik.  
@@ -102,6 +102,7 @@ Az alábbi táblázat segítségével ellenőrizheti a további lépések szüks
 |Összevonás az AD FS rendszerrel|Az Azure-hitelesítés továbbra is az aktív szinkronizálási kiszolgáló konfigurálása az AD FS-házirend használata.  Ha az Azure AD Connect használatával kezelheti az AD FS farmon, igény szerint módosíthatja a bejelentkezési módszer az aktív szinkronizálást példány váljon a készenléti kiszolgáló előkészítése az AD FS összevonási.   Ha eszközbeállítások az aktív szinkronizálást kiszolgálón engedélyezve vannak, állítsa be ezeket a beállításokat ezen a kiszolgálón a "Eszközbeállítások konfigurálása" feladat futtatásával.|
 |Az átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési módszert az aktív szinkronizálási kiszolgálón a konfigurációnak megfelelően.  Ha ez nem követi az elsődleges, átmenő hitelesítést, zökkenőmentes egyszeri bejelentkezést és a kiszolgáló előléptetése le lesz tiltva, és a bérlő előfordulhat, hogy tagadják, ha nem rendelkezik előtt, a Jelszókivonat-szinkronizálás, a biztonsági mentési beállítás jelentkezzen be. Azt is vegye figyelembe, hogy átmeneti módban átmenő hitelesítés engedélyezésekor egy új hitelesítési agent telepítve lesz, regisztrálja, és fog futni, és a egy magas rendelkezésre állású ügynök, amely bejelentkezési kéréseket fogad.|
 |Összevonás a PingFederate-tel|Az Azure-hitelesítés továbbra is használja a PingFederate-házirendet, az aktív szinkronizálási kiszolgáló konfigurálva.  A bejelentkezési módszer a PingFederate előkészítésekor a készenléti kiszolgáló váljon az aktív szinkronizálást példány igény szerint módosítható.  Ebben a lépésben elhalasztható, amíg nem kell vonni a pingfederate-tel további tartományokat.|
+
 ## <a name="next-steps"></a>További lépések
 
 - Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).

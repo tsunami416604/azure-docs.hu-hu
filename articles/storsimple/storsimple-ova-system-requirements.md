@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999503"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 ## <a name="overview"></a>Áttekintés
@@ -54,7 +54,7 @@ A szoftverkövetelményeknek tartalmazza az információkat a támogatott webbö
 | Minimális memória (RAM) |8 GB <br> Fájlkiszolgáló, 8 GB kevesebb mint 2 millió fájl-és 16 GB 2 – 4 millió fájlok|
 | Lemezterület<sup>1</sup> |Operációsrendszer-lemez – 80 GB <br></br>Adatlemez - 500 GB – 8 TB |
 | Hálózati adapter(ek) minimális száma |1 |
-| Internetes sávszélesség<sup>2</sup> |Szükséges minimális sávszélesség: 5 MB/s <br> Ajánlott sávszélesség: 100 Mbps <br> Adatok átvitele bevonásával, az internetes sávszélesség sebessége. Például a 100 GB adat átvitele: 5 MB/s, amely a biztonsági mentési hibák vezethet, mivel a napi biztonsági mentések nem szeretné befejezni egy nap alatt 2 napot vesz igénybe. 100 MB/s sávszélességű 100 GB adat 2,5 órában vihetők át.   |
+| Internet bandwidth<sup>2</sup> |Szükséges minimális sávszélesség: 5 MB/s <br> Ajánlott sávszélesség: 100 Mbps <br> Adatok átvitele bevonásával, az internetes sávszélesség sebessége. Például a 100 GB adat átvitele: 5 MB/s, amely a biztonsági mentési hibák vezethet, mivel a napi biztonsági mentések nem szeretné befejezni egy nap alatt 2 napot vesz igénybe. 100 MB/s sávszélességű 100 GB adat 2,5 órában vihetők át.   |
 
 <sup>1</sup> – dinamikusan kiosztott
 
@@ -72,7 +72,7 @@ A következő szoftverkövetelmények vonatkoznak az iSCSI-kezdeményezők, amel
 
 | **Támogatott operációs rendszerek** | **Szükséges verzió** | **További követelmények és megjegyzések** |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1, 2012, 2012 R2 |A StorSimple hozhat létre a dinamikusan kiosztott és teljesen kiosztott köteteket. Ez nem hozható létre részben kiosztott köteteket. A StorSimple az iSCSI-kötetet csak a támogatottak: <ul><li>Egyszerű köteteket a Windows alapszintű lemezeken.</li><li>A kötet formázása NTFS Windows.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |A StorSimple hozhat létre a dinamikusan kiosztott és teljesen kiosztott köteteket. Ez nem hozható létre részben kiosztott köteteket. A StorSimple az iSCSI-kötetet csak a támogatottak: <ul><li>Egyszerű köteteket a Windows alapszintű lemezeken.</li><li>A kötet formázása NTFS Windows.</li> |
 
 A következő szoftverkövetelmények vonatkoznak az SMB-ügyfelek, amelyek a StorSimple Virtual Array (fájlkiszolgálóként konfigurált) eléréséhez.
 
@@ -95,12 +95,12 @@ A következő táblázat sorolja fel a portot, amelyet meg kell nyitni a tűzfal
 | **Port száma<sup>1</sup>** | **És leskálázása** | **Port hatókör** | **Kötelező** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
 | TCP 80-AS (HTTP) |Ki |WAN |Nem |Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
-| A TCP 443 (HTTPS) |Ki |WAN |Igen |Kimenő port szolgál a felhőbeli adatok eléréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
+| TCP 443 (HTTPS) |Ki |WAN |Igen |Kimenő port szolgál a felhőbeli adatok eléréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
 | UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes DNS-kiszolgálót használ, a port szükség. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, helyi DNS-kiszolgáló használatával. |
 | UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Tekintse meg a megjegyzéseit. |Csak akkor, ha egy internetes NTP-kiszolgálót használ, a port szükség.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezésének, javasoljuk, hogy idő szinkronizálása az Active Directory-tartományvezérlők. |
 | TCP 80-AS (HTTP) |Eleme ennek |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület elérése HTTP protokollon keresztül automatikusan átirányítja a HTTPS. |
-| A TCP 443 (HTTPS) |Eleme ennek |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. |
-| TCP 3260-as (iSCSI) |Eleme ennek |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
+| TCP 443 (HTTPS) |Eleme ennek |LAN |Igen |Ez a helyi felhasználói felület a StorSimple eszközön a helyi felügyeleti a bejövő portot. |
+| TCP 3260 (iSCSI) |Eleme ennek |LAN |Nem |Ezen a porton keresztül iSCSI adatok elérésére szolgál. |
 
 <sup>1</sup> nincs bejövő portokat kell megnyitni a nyilvános interneten.
 
@@ -121,16 +121,16 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok alapuló StorSimple lib
 > 
 > 
 
-| Az URL-minta | Összetevő/funkció |
+| Az URL-minta | Component/Functionality |
 | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-eszközkezelő szolgáltatás<br>Access Control Service<br>Azure Service Bus<br>Hitelesítési szolgáltatás|
 | `http://*.backup.windowsazure.com` |Eszközregisztráció |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Tanúsítvány-visszavonás |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Az Azure storage-fiókok és figyelés |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |A Microsoft Update-kiszolgálók<br> |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |A Microsoft Update-kiszolgálók<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
-| `http://*.data.microsoft.com ` |A telemetriai szolgáltatás, a Windows, tekintse meg a [frissítés a felhasználói élmény és a telemetria diagnosztikája](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com ` |A telemetriai szolgáltatás, a Windows, tekintse meg a [frissítés a felhasználói élmény és a telemetria diagnosztikája](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>További lépések
 * [A StorSimple Virtual Array üzembe helyezéséhez a portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)

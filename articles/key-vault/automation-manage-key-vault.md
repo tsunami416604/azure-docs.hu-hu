@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 85a0c05719ba374ed213212db6f094d75e433183
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073440"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224873"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Azure Automation használatával az Azure Key Vault felügyelete
 
@@ -34,7 +34,7 @@ Csökkentheti üzemeltetési terheit és szabadítson fel informatikai és a fej
 
 ## <a name="how-can-azure-automation-help-manage-azure-key-vault"></a>Hogyan segít az Azure Automation kezelése az Azure Key Vault?
 
-A Key Vault segítségével kezelhetők az Azure Automationben a [AzureRM Key Vault-parancsmagok](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) és [Azure klasszikus Key Vault-parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Az Azure-modul klasszikus Key Vault kezeléséhez érhető el automatikusan az Azure Automationben, és importálhatja a [AzureRM-KeyVault modul](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) az Azure Automationbe, így számos, a Key Vault-felügyeleti feladatokat hajthat végre a szolgáltatásban. Ezek a parancsmagok az Azure Automation parancsmagjaival más Azure-szolgáltatások, az összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek párosítása is történik.
+A Key Vault segítségével kezelhetők az Azure Automationben a [AzureRM Key Vault-parancsmagok](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) és [Azure klasszikus Key Vault-parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Az Azure-modul klasszikus Key Vault kezeléséhez érhető el automatikusan az Azure Automationben, és importálhatja a [AzureRM-KeyVault modul](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) az Azure Automationbe, így számos, a Key Vault-felügyeleti feladatokat hajthat végre a szolgáltatásban. A modul importálása az Azure Automationbe kapcsolatos további információkért lásd: [kezelése az Azure Automationben modulokkal](../automation/shared-resources/modules.md) is állítja párba ezeket a parancsmagokat az Azure Automation parancsmagjaival más Azure-szolgáltatások, között összetett feladatok automatizálása Azure-szolgáltatások és a 3. fél rendszerek.
 
 Az Azure Key Vault parancsmagokban végezheti el ezeket a feladatokat, többek között: 
 

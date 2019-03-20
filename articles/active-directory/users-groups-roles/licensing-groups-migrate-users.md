@@ -1,5 +1,5 @@
 ---
-title: Felhasználók migrálása Csoportalapú licencelésre – Azure Active Directory |} A Microsoft Docs
+title: Külön-külön licenccel rendelkező felhasználók migrálása Csoportalapú licencelés – Azure Active Directory |} A Microsoft Docs
 description: Váltás az egyes felhasználói licencek az Azure Active Directoryval Csoportalapú licencelésre
 services: active-directory
 keywords: Az Azure AD licencelése
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199972"
 ---
-# <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>A licenccel rendelkező felhasználók felvétele egy csoportba licencelése az Azure Active Directory
+# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Hogyan adhat hozzá egyes licenccel rendelkező felhasználók migrálása csoportok licenckezeléshez
 
-Előfordulhat, hogy telepíti a felhasználók számára a "közvetlen hozzárendelés"; keresztül a szervezetek meglévő licencek PowerShell-szkriptekkel vagy más eszközökkel, használatával az egyes felhasználói licencek hozzárendelése. Ha szeretné elindítani a Csoportalapú licencelést használ a szervezet licencek kezeléséhez, szüksége lesz egy migrálási tervet, zökkenőmentesen lecseréli a meglévő megoldásokkal a Csoportalapú licenceléssel.
+Előfordulhat, hogy telepíti a felhasználók számára a "közvetlen hozzárendelés"; keresztül a szervezetek meglévő licencek PowerShell-szkriptekkel vagy más eszközökkel, használatával az egyes felhasználói licencek hozzárendelése. Mielőtt elkezdené, Csoportalapú licencelést használ a szervezet licencek kezeléséhez, ez a migrálási terv segítségével zökkenőmentesen cserélje le a meglévő megoldásokkal a Csoportalapú licenceléssel.
 
 A legfontosabb, amit figyelembe kell venni az, hogy egy olyan helyzetet, ahol migrálása Csoportalapú licencelésre fog eredményezni a jelenleg hozzárendelt licencek ideiglenesen elvesztése felhasználók kerülendő. Minden olyan folyamat, amelynek hatására a licencek eltávolítása el kell kerülni, távolítsa el a felhasználók, szolgáltatások és az adataik való hozzáférés elvesztése kockázatát.
 
@@ -69,18 +69,17 @@ Egy szervezet 1000 felhasználó rendelkezik. Az összes felhasználóknak szük
 
    - Ez az a várt felhasználói állapot áttelepítése során:
 
-      ![várt felhasználói állapot](./media/licensing-groups-migrate-users/expected-user-state.png)
+      ![a várt felhasználói állapot áttelepítése során](./media/licensing-groups-migrate-users/expected-user-state.png)
 
    Ezzel megerősíti, hogy a felhasználó rendelkezik-e közvetlen és az örökölt licenceket. Láthatjuk, hogy mindkét **EMS** és **E3** vannak hozzárendelve.
 
    - Válassza ki az egyes licencekhez az engedélyezett szolgáltatások részleteinek megjelenítéséhez. Ez használható ellenőrizheti, ha a direct- és licenceket engedélyezze a pontosan az azonos service-csomagok a felhasználó számára.
 
-      ![Ellenőrizze a service-csomagok](./media/licensing-groups-migrate-users/check-service-plans.png)
+      ![Ellenőrizze a felhasználó service-csomagok](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Miután meggyőződött arról, hogy közvetlen és a csoport licencek egyenértékűek, elindíthatja a felhasználók közvetlen licenceinek eltávolításával. Tesztelje az egyéni felhasználók számára a portál eltávolításával, és majd a tömeges eltávolítja őket az automatizálási szkriptek futtatásához. Íme egy példa ugyanaz a felhasználó eltávolítja a portálon keresztül közvetlen licencekkel. Figyelje meg, hogy a licenc állapotát változatlan marad, de már nem látható a közvetlen hozzárendelések.
 
-   ![a közvetlen licenc eltávolítása](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
-
+   ![Győződjön meg arról, hogy a rendszer eltávolítja a közvetlen licenc](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 ## <a name="next-steps"></a>További lépések
 

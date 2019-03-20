@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2c39e8f172283f512037e0d991b2c22eb816c8f6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5bed5dd19f6b736aca7ed2d551c8be0e6f03a810
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191329"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094541"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartomány konfigurációja érvénytelen egyszerű szolgáltatás hibaelhárítása
 
@@ -41,7 +41,7 @@ A következő lépések segítségével határozza meg, melyik szolgáltatás re
 3. A következő táblázat használatával, keresse meg a minden alkalmazás azonosítója, azonosítója beillesztése a keresési mezőbe, majd nyomja le az adja meg. Ha a keresési eredmények üresek, újra létre kell hoznia a "feloldás" oszlopban szereplő utasítások alapján az egyszerű szolgáltatás.
 
 | Alkalmazásazonosító | Megoldás: |
-| :--- | :--- | :--- |
+| :--- | :--- |
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hozza létre újra a hiányzó szolgáltatásnév a PowerShell-lel](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |

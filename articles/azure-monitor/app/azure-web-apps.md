@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 09084f71eda611c4b638a339d0d837e77e2639b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432311"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122165"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 Az a [az Azure portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -38,25 +38,25 @@ Jelenleg az Azure-ban futtatja egy app Service-ben, ha már kap bizonyos figyel�
 
    * Válassza ki, hozzon létre egy új erőforrást, kivéve, ha korábban már beállított egy Application Insights-erőforrást ehhez az alkalmazáshoz. 
 
-    > [!NOTE]
-    > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást az app service-ben is ezzel **újra kell indítani az app service-trigger**. 
+     > [!NOTE]
+     > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást az app service-ben is ezzel **újra kell indítani az app service-trigger**. 
 
-    ![Webapp kialakítása](./media/azure-web-apps/create-resource.png)
+     ![Webapp kialakítása](./media/azure-web-apps/create-resource.png)
 
 2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan szeretné az application insights a platformonként az alkalmazás adatainak gyűjtéséről. ASP.NET alkalmazás figyelésére szolgáló az alapértelmezés szerint a gyűjtemény két különböző szintű.
 
     ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options-new.png)
 
-    * .NET **alapszintű gyűjtemény** szint alapvető egypéldányos APM funkciókat kínál.
+   * .NET **alapszintű gyűjtemény** szint alapvető egypéldányos APM funkciókat kínál.
     
-    * .NET **gyűjtemény ajánlott** szintje:
-        * Hozzáadja a Processzor, memória és i/o-használati trendeket.
-        * Mikroszolgáltatások hátterében a kérelem/függőségi határokon.
-        * Gyűjti a használati trendeket, és lehetővé teszi, hogy a tranzakciók rendelkezésre állási eredmények korrelációs.
-        * A gazdagép által nem kezelt kivételek gyűjti.
-        * Mintavétel használatakor, javítja a APM metrikák pontosságot terhelés alatt.
+   * .NET **gyűjtemény ajánlott** szintje:
+       * Hozzáadja a Processzor, memória és i/o-használati trendeket.
+       * Mikroszolgáltatások hátterében a kérelem/függőségi határokon.
+       * Gyűjti a használati trendeket, és lehetővé teszi, hogy a tranzakciók rendelkezésre állási eredmények korrelációs.
+       * A gazdagép által nem kezelt kivételek gyűjti.
+       * Mintavétel használatakor, javítja a APM metrikák pontosságot terhelés alatt.
     
-    .NET core kínál **gyűjtemény ajánlott** vagy **letiltott** a .NET Core 2.0 és a 2.1-es verzióját.
+     .NET core kínál **gyűjtemény ajánlott** vagy **letiltott** a .NET Core 2.0 és a 2.1-es verzióját.
 
 3. **Alakítsa ki az app service** Application Insights telepítése után.
 
@@ -67,9 +67,9 @@ Jelenleg az Azure-ban futtatja egy app Service-ben, ha már kap bizonyos figyel�
    * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
    * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
 
-    Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    Érték: `true`
+     Érték: `true`
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
 
 4. Az alkalmazás figyelési adatok megismerése kattintva **beállítások** > **Application Insights** > **megtekintése további az Application Insights**.

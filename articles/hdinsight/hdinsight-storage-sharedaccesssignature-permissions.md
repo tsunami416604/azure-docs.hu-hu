@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202673"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférési aláírások használatával a HDInsight adatokhoz hozzáférésének korlátozása
 
@@ -163,7 +163,7 @@ Egy HDInsight-fürt által használt SAS létrehozása egy példát tartalmaz a 
     Connect-AzureRmAccount
     ```
 
-    Amikor a rendszer kéri, jelentkezzen be azzal a fiókkal az Azure-előfizetés.
+    Amikor a rendszer kéri, jelentkezzen be a fiók az Azure-előfizetésében.
 
     Ha a fiók több Azure-előfizetéssel társítva, szükség lehet használandó `Select-AzureRmSubscription` használni kívánt előfizetés kiválasztásához.
 
@@ -175,7 +175,7 @@ Egy HDInsight-fürt által használt SAS létrehozása egy példát tartalmaz a 
 
     A parancsfájl futása naplózza kimeneti a PowerShell-parancssorba, csoport és a storage-fiókok létrehozásakor az erőforrást. Adja meg a HTTP-felhasználót a HDInsight-fürt kéri. Ennek a fióknak a HTTP/s hozzáférést a fürt biztonságossá tételére szolgál.
 
-    Egy Linux-alapú fürt létrehozásakor egy SSH-felhasználói fiók nevét és a jelszó megerősítését. Ez a fiók segítségével távolról jelentkezzen be a fürthöz.
+    Egy Linux-alapú fürt létrehozásakor egy SSH-felhasználói fiók nevét és a jelszó megerősítését. Ez a fiók segítségével távolról jelentkeznek be a fürthöz.
 
    > [!IMPORTANT]  
    > Ha a HTTP/HTTPS vagy SSH-felhasználónevet és jelszót kér, meg kell adnia egy jelszót, amely megfelel a következő feltételeknek:
@@ -219,13 +219,7 @@ Ha rendelkezik meglévő Linux-alapú fürt, adhat hozzá az SAS a **hely** -kon
 
 ## <a name="test-restricted-access"></a>Korlátozott hozzáférés tesztelése
 
-Annak ellenőrzéséhez, hogy a hozzáférés korlátozottá, az alábbi módszerekkel:
-
-* A **Windows-alapú** HDInsight-fürtök esetén a távoli asztal használatával csatlakozhat a fürthöz. További információkért lásd: [csatlakozás az RDP-vel HDInsight](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
-
-    Ha csatlakoztatva van, használja a **Hadoop parancssori** ikonjára az asztalon, nyisson meg egy parancssort.
-
-* A **Linux-alapú** HDInsight-fürtök, SSH használatával csatlakozhat a fürthöz. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+Győződjön meg arról, hogy a hozzáférés korlátozottá, SSH használatával csatlakozhat a fürthöz. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Miután csatlakozott a fürthöz, a következő lépések segítségével győződjön meg arról, hogy a tárfiók SAS csak olvasási és a lista elemek is:
 
@@ -286,9 +280,9 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**OK**: Ez a hiba akkor fordulhat elő, ha az SSH-felhasználó használata egy jelszót a rendszergazdai/HTTP-felhasználó, a fürt számára, vagy (Linux-alapú fürtök).
+**Ok**: Ez a hiba akkor fordulhat elő, ha az SSH-felhasználó használata egy jelszót a rendszergazdai/HTTP-felhasználó, a fürt számára, vagy (Linux-alapú fürtök).
 
-**Feloldási**: Használjon olyan jelszót, amely megfelel a következő feltételeknek:
+**Megoldás**: Használjon olyan jelszót, amely megfelel a következő feltételeknek:
 
 * Legalább 10 karakter hosszúságúnak kell lennie.
 * Legalább egy számjegyet kell tartalmaznia.

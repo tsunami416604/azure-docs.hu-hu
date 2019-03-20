@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5db4387c2fd610313aaac032c122366aa45dc7f9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720186"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201313"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight Windows-alapú fürtök Parancsfájlműveletekkel-parancsfájlok fejlesztése
-Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).
+Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).
 
 
 > [!IMPORTANT]  
@@ -29,7 +29,7 @@ Parancsfájlművelet is használható, az Apache Hadoop-fürtön futó további 
 > [!NOTE]  
 > Ha a következő hibaüzenetet kapja:
 >
-> System.Management.Automation.CommandNotFoundException; ExceptionMessage: A "Mentés-HDIFile" kifejezés nem ismerhető fel egy parancsmag, a függvény, a parancsfájl vagy a működtethető program nevét. Ellenőrizze a helyesírást, a neve, vagy ha egy elérési út része, ellenőrizze, hogy az elérési út helyes, és próbálkozzon újra.
+> System.Management.Automation.CommandNotFoundException; ExceptionMessage : A "Mentés-HDIFile" kifejezés nem ismerhető fel egy parancsmag, a függvény, a parancsfájl vagy a működtethető program nevét. Ellenőrizze a helyesírást, a neve, vagy ha egy elérési út része, ellenőrizze, hogy az elérési út helyes, és próbálkozzon újra.
 > 
 > Ez azért, mert nem tartozik a segédmetódusokat.  Lásd: [egyéni parancsfájlok segédmetódusokat](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
 
@@ -95,12 +95,11 @@ HDInsight további összetevők telepíthetők a HDInsight-fürtök számos szkr
 | --- | --- |
 | **A Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata Apache Spark on HDInsight-fürtök][hdinsight-install-spark]. |
 | **Az R telepítése** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Lásd: [telepítése és az R használata a HDInsight-fürtökön](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **A Solr telepítése** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Lásd: [telepítése és használata a HDInsight Apache Solr fürtök](hdinsight-hadoop-solr-install.md). |
 | **A Giraph telepítése** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Lásd: [telepítése és használata az Apache Giraph a HDInsight-fürtök](hdinsight-hadoop-giraph-install.md). |
 | **Hive-kódtárak előzetes betöltése** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Lásd: [kódtárak hozzáadása az Apache Hive a HDInsight-fürtökön](hdinsight-hadoop-add-hive-libraries.md) |
 
 
-Parancsfájlművelet is telepíthető, az Azure Portalon, az Azure PowerShell-lel vagy a HDInsight .NET SDK használatával.  További információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel][hdinsight-cluster-customize].
+Parancsfájlművelet is telepíthető, az Azure Portalon, az Azure PowerShell-lel vagy a HDInsight .NET SDK használatával.  További információkért lásd: [HDInsight testreszabása Szkriptműveletek használatával fürtök] [hdinsight-fürt-testreszabása].
 
 > [!NOTE]  
 > Mintaszkriptek használata csak a HDInsight-fürt verziója 3.1-es vagy újabb. A HDInsight fürt verziókról további információkért lásd: [HDInsight fürtverziók](hdinsight-component-versioning.md).
@@ -291,13 +290,11 @@ Ez a napló nincs bejelölve, hogy a Spark-szkript művelet lett végrehajtva a 
 Abban az esetben, ha végrehajtási hiba történik, az azt leíró kimeneti is ez a naplófájl tartalmazza. Ezek a naplók a információk hasznosak, ha esetleg felmerülő problémákat parancsprogram-hibakeresés kell lennie.
 
 ## <a name="see-also"></a>Lásd még
-* [Szkriptműveletek használatával HDInsight-fürtök testre szabása][hdinsight-cluster-customize]
+* [A Script actionnel HDInsight-fürtök testre szabása] [a hdinsight-fürt-testreszabása]
 * [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]
-* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
 * [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [powershell-install-configure]: install-configure-powershell.md
 

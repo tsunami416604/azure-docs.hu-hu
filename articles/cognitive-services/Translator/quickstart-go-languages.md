@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 3bccf50d9236fb5b51b89f31ffc2ec9b0d2c74cd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181605"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Gyors útmutató: Go használata támogatott nyelvek listáját a Translator Text API használatával
 
@@ -29,7 +29,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével használatával új Go-projekt létrehozása. Ezután másolja a következő kódrészletet egy `get-languages.go` nevű fájlba a projektjében.
+Hozzon létre egy új Go-projekt használatával a kedvenc IDE vagy a szerkesztő vagy az új mappa az asztalon. Ezután másolja a projektmappára/nevű fájlba ez a kódrészlet `get-languages.go`.
 
 ```go
 package main
@@ -134,6 +134,8 @@ go run get-languages.go
 Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).
 
 ## <a name="sample-response"></a>Mintaválasz
+
+Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 

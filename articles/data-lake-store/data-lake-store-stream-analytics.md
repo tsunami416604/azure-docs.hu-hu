@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: e52cf99e3bdd1960ca361ccde50d85dfaa2209c0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1b18bd5aae398d2ec942120af5d96943636c346c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544920"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101111"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream-adatokat az Azure Storage-Blobból az Azure Data Lake Storage Gen1 Azure Stream Analytics használatával
 Ebben a cikkben, megtudhatja, hogyan használható az Azure Data Lake Storage Gen1 kimenetként Azure Stream Analytics-feladat. Ez a cikk bemutatja egy egyszerű forgatókönyvet, amely adatokat olvas be egy Azure Storage-blobot (bemenet) és az adatokat ír az Data Lake Storage Gen1 (kimenet).
@@ -54,17 +54,17 @@ Hozzon létre egy Stream Analytics-feladatot, amely tartalmaz egy bemeneti forr�
 
     ![Adjon hozzá egy a feladat bemenetének](./media/data-lake-store-stream-analytics/create.input.2.png "a feladat beviteli mód hozzáadása")
 
-    * A **bemeneti alias**, adjon meg egy egyedi nevet a feladat bemeneti.
-    * A **adatforrástípust**válassza **adatfolyam**.
-    * A **forrás**válassza **a Blob storage-**.
-    * A **előfizetés**válassza **a blob storage aktuális előfizetésből**.
-    * A **tárfiók**, válassza ki a létrehozott tárfiók az Előfeltételek részeként. 
-    * A **tároló**, válassza ki a tárolót, amelyet a kiválasztott tárfiók.
-    * A **eseményszerializációs formátum**válassza **CSV**.
-    * A **elválasztó**válassza **lapon**.
-    * A **kódolás**válassza **UTF-8**.
+   * A **bemeneti alias**, adjon meg egy egyedi nevet a feladat bemeneti.
+   * A **adatforrástípust**válassza **adatfolyam**.
+   * A **forrás**válassza **a Blob storage-**.
+   * A **előfizetés**válassza **a blob storage aktuális előfizetésből**.
+   * A **tárfiók**, válassza ki a létrehozott tárfiók az Előfeltételek részeként. 
+   * A **tároló**, válassza ki a tárolót, amelyet a kiválasztott tárfiók.
+   * A **eseményszerializációs formátum**válassza **CSV**.
+   * A **elválasztó**válassza **lapon**.
+   * A **kódolás**válassza **UTF-8**.
 
-    Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a bemeneti, és azt a kapcsolat tesztelése.
+     Kattintson a **Create** (Létrehozás) gombra. A portál most hozzáadja a bemeneti, és azt a kapcsolat tesztelése.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Hozzon létre egy Data Lake Storage Gen1 a feladat kimenete
@@ -84,15 +84,15 @@ Hozzon létre egy Stream Analytics-feladatot, amely tartalmaz egy bemeneti forr�
 
     ![Kimenet hozzáadása a feladathoz](./media/data-lake-store-stream-analytics/create.output.3.png "kimenet hozzáadása a feladathoz")
 
-    * A **fióknév**, válassza ki a Data Lake Storage Gen1 fiókot, hogy már létrehozott, ahol azt szeretné, hogy a feladat kimeneti kell küldeni.
-    * A **elérési út előtagmintája**, adjon meg egy fájlelérési utat a fájlokat a megadott Data Lake Storage Gen1 fiókban írásához használt.
-    * A **dátumformátum**, ha azon előtag elérési útja dátumtoken használta, kiválaszthatja a dátumformátum, amelyben a fájlok vannak rendszerezve.
-    * A **időformátum**, ha korábban egy idő-token azon előtag elérési útja, adja meg az időformátum, amelyben a fájlok vannak rendszerezve.
-    * A **eseményszerializációs formátum**válassza **CSV**.
-    * A **elválasztó**válassza **lapon**.
-    * A **kódolás**válassza **UTF-8**.
+   * A **fióknév**, válassza ki a Data Lake Storage Gen1 fiókot, hogy már létrehozott, ahol azt szeretné, hogy a feladat kimeneti kell küldeni.
+   * A **elérési út előtagmintája**, adjon meg egy fájlelérési utat a fájlokat a megadott Data Lake Storage Gen1 fiókban írásához használt.
+   * A **dátumformátum**, ha azon előtag elérési útja dátumtoken használta, kiválaszthatja a dátumformátum, amelyben a fájlok vannak rendszerezve.
+   * A **időformátum**, ha korábban egy idő-token azon előtag elérési útja, adja meg az időformátum, amelyben a fájlok vannak rendszerezve.
+   * A **eseményszerializációs formátum**válassza **CSV**.
+   * A **elválasztó**válassza **lapon**.
+   * A **kódolás**válassza **UTF-8**.
     
-    Kattintson a **Create** (Létrehozás) gombra. A portál most ad hozzá a kimenetet, és azt a kapcsolat tesztelése.
+     Kattintson a **Create** (Létrehozás) gombra. A portál most ad hozzá a kimenetet, és azt a kapcsolat tesztelése.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 

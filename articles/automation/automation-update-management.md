@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/04/2019
+ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b25c0caf71835ccb5a055956d73a713efa5da0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 77f18a80c094fbaf58cfb09df38e5fa1c924329a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541213"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856192"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
-A frissítéskezelési megoldás az Azure Automation segítségével operációs rendszer frissítéseinek kezelése az Azure-ban, a helyszíni környezetben vagy az egyéb felhőszolgáltatók üzembe helyezett Windows és Linux számítógépek. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
+A frissítéskezelési megoldás az Azure Automation segítségével operációs rendszer frissítéseinek kezelése az Azure-ban, a helyszíni környezetben vagy az egyéb felhőszolgáltatók Windows és Linux számítógépek. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 Az Update Management a virtuális gépek közvetlenül az Azure Automation-fiókjából engedélyezheti. Az Update Management engedélyezése a virtuális gépek az Automation-fiókjából kapcsolatban lásd: [több virtuális gép frissítéseinek kezelése](manage-update-multi.md). Az Update Management egy virtuális gép az Azure Portalon a virtuális gép oldaláról is engedélyezheti. Ebben a forgatókönyvben érhető el a [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépeket.
 
@@ -35,7 +35,7 @@ Update Management által felügyelt számítógépekre, hajtsa végre az érték
 
 Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését és adatfolyamait, hogy az a megoldás hogyan értékeli és alkalmazza a biztonsági frissítéseket az összes csatlakoztatott Windows Server és Linux rendszerű számítógépek egy adott munkaterület:
 
-![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
+![Frissítéskezelési folyamatdiagramja](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található.
 
@@ -295,7 +295,7 @@ sudo yum -q --security check-update
 
 Jelenleg nem támogatott metódus metódus natív osztályozás – adatok rendelkezésre állását, a CentOS engedélyezése. Jelenleg csak legjobb támogatás, akiknek előfordulhat, hogy engedélyezve van ez a saját áll rendelkezésre.
 
-## <a name="firstparty-predownload"></a>Belső a javításokat és előzetes letöltése
+## <a name="firstparty-predownload"></a>Speciális beállítások
 
 Az Update Management a Windows-frissítések letöltése és telepítése a Windows Update támaszkodik. Ennek eredményeképpen a Microsoft tiszteletben a használják a Windows Update beállításainak jelentős része. Ha nem Windows-frissítések engedélyezéséhez a beállításokat használja, az Update Management kezelik majd ezeket a frissítéseket. Szeretné engedélyezni, frissítés letöltése előtt frissítéstelepítés akkor fordul elő, ha a központi telepítések gyorsabban, és kevésbé valószínű haladhatja meg a karbantartási időszak.
 
@@ -311,9 +311,18 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
+### <a name="disable-automatic-installation"></a>Tiltsa le az automatikus telepítés
+
+Az Azure virtuális gépek alapértelmezés szerint engedélyezve van a frissítések automatikus telepítése a rendelkeznek. Emiatt frissítések ütemezett őket az Update Management általi telepítése előtt telepíteni kell. Ez a viselkedés állításával letilthatja a `NoAutoUpdate` beállításkulcsot `1`. Az alábbi PowerShell-kódrészlet bemutatja ennek egyik módja.
+
+```powershell
+$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
+Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
+```
+
 ### <a name="enable-updates-for-other-microsoft-products"></a>Engedélyezi a frissítéseket, más Microsoft-termékek
 
-Alapértelmezés szerint Windows Update csak frissítéseket kínál a Windows. Ha engedélyezi a **frissítéseinek fogadása más Microsoft-termékek Windows frissítésekor**, ilyen dolgot biztonsági javítások más termékek esetében, a frissítések megadott van többek között az SQL Server- vagy egyéb első helyezését. Ezt a beállítást a csoportházirend által nem konfigurálható. Futtassa az alábbi PowerShell-lel a rendszereken, engedélyezze a más gyártótól származó első javítást a kívánt, és az Update Management betartja ezt a beállítást.
+Alapértelmezés szerint Windows Update csak frissítéseket kínál a Windows. Ha engedélyezi a **frissítéseinek fogadása más Microsoft-termékek Windows frissítésekor**, más termékek esetében, a frissítések megadott van többek között biztonsági javításokat az SQL Server- vagy egyéb első helyezését. Ezt a beállítást a csoportházirend által nem konfigurálható. Futtassa az alábbi PowerShell-lel a rendszereken, engedélyezze a más gyártótól származó első javítást a kívánt, és az Update Management betartja ezt a beállítást.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -601,7 +610,7 @@ A Red Hat Enterprise Linux a kizárni kívánt nevét redhat – kiadás-server.
 
 Amikor frissítéseket telepít egy Linux rendszerű gép, kiválaszthatja a frissítési besorolásokat. Ezzel úgy szűri a frissítéseket, amelyek érvényesek a számítógépen, amely a megadott feltételeknek. A szűrő alkalmazása helyileg a számítógépen a frissítés telepítésekor.
 
-Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhány frissítést előfordulhat, hogy a megjelölni az Update Management jelentőségűként biztonsági, annak ellenére, hogy a helyi gép nem rendelkezik az információkat. Ennek eredményeképpen ha Linux rendszerű gép kritikus frissítéseket alkalmazza, előfordulhat frissítéseket, amelyek nincsenek megjelölve jelentőségűként biztonsági, hogy gép és a frissítések nem lesznek alkalmazva.
+Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhány frissítést lehet megjelölni az Update Management jelentőségűként biztonsági, annak ellenére, hogy a helyi gép nem rendelkezik az információkat. Ennek eredményeképpen ha Linux rendszerű gép kritikus frissítéseket alkalmazza, előfordulhat frissítéseket, amelyek nincsenek megjelölve jelentőségűként biztonsági, hogy gép és a frissítések nem lesznek alkalmazva.
 
 Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a gép, hogy a megfelelő frissítés további adatait, mert nem megfelelő.
 
@@ -614,10 +623,6 @@ Az Update Management egy virtuális gép eltávolítása:
 * A Log Analytics munkaterületén távolítsa el a virtuális gép számára a hatókör-konfigurációt a mentett keresés `MicrosoftDefaultScopeConfig-Updates`. Mentett keresések területen található **általános** a munkaterületén.
 * Távolítsa el a [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linuxhoz készült Log Analytics-ügynök](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Az Update Management hibaelhárítása kapcsolatban lásd: [az Update Management hibáinak elhárítása](troubleshoot/update-management.md)
-
 ## <a name="next-steps"></a>További lépések
 
 Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissítéseket a Windows virtuális gépek számára.
@@ -629,4 +634,4 @@ Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissít
 * [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) frissítés telepítési állapota.
 
 * Hogyan kezelheti az Update Management REST API-val kapcsolatban lásd: [szoftverkonfigurációjáról Update](/rest/api/automation/softwareupdateconfigurations)
-
+* Az Update Management hibaelhárítása kapcsolatban lásd: [az Update Management hibáinak elhárítása](troubleshoot/update-management.md)

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: b4778c87ca5da266858cd05c67e5f0a78af731bc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 11a8ef1974e8d930b0001ccfb445b0eee509356f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188951"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához a Go használatával 
 <a name="HOLTop"></a>
@@ -41,9 +41,9 @@ A Language Detection API a [Detect Language metódus](https://westus.dev.cogniti
 1. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 1. Cserélje le a `uriBase` helyét (jelenleg `westcentralus`) a regisztrált régióra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
-1. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-1. Állítsa össze a fájlt (például: „go build quickstart.go”).
-1. Futtassa a fájlt (például: „quickstart”).
+1. Nyissa meg egy parancssort a számítógépen, amelyen lépjen telepített abból a gyökérmappából.
+1. Állítsa össze a fájlt (például: `go build detect.go`).
+1. Futtassa a fájlt (például: `go run detect.go`).
 
 ```golang
 package main
@@ -177,16 +177,16 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="analyze-sentiment-request"></a>Analyze sentiment kérés
 
-A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
+A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) használatával. Hangulatelemzés segítségével ismerje meg, hogy alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével. Az alábbi példa a pontszámok biztosít két dokumentumot, egy angol nyelvű, míg a másik spanyol.
 
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
 1. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 1. Cserélje le a `uriBase` helyét (jelenleg `westcentralus`) a regisztrált régióra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
-1. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-1. Állítsa össze a fájlt (például: „go build quickstart.go”).
-1. Futtassa a fájlt (például: „quickstart”).
+1. Nyissa meg egy parancssort a számítógépen, amelyen lépjen telepített abból a gyökérmappából.
+1. Állítsa össze a fájlt (például: `go build sentiment.go`).
+1. Futtassa a fájlt (például: `go run sentiment.go`).
 
 ```golang
 package main
@@ -272,7 +272,8 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Analyze sentiment válasz
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+Az eredmény, ha azt sorolódik közelebb 1.0-s és a negatív közelebb van pontozását 0.0, ha pozitív mérjük.
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -294,7 +295,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="extract-key-phrases-request"></a>Extract key phrases kérés
 
-A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
+A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) használatával. Kulcskifejezések kinyerése segítségével gyorsan azonosíthatja a szöveg és a dokumentum a fő pontokat. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
@@ -302,8 +303,8 @@ A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumok
 1. Cserélje le a `uriBase` helyét (jelenleg `westcentralus`) a regisztrált régióra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
 1. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-1. Állítsa össze a fájlt (például: „go build quickstart.go”).
-1. Futtassa a fájlt (például: „quickstart”).
+1. Állítsa össze a fájlt (például: `go build key-phrases.go`).
+1. Futtassa a fájlt (például: `go run key-phrases.go`).
 
 ```golang
 package main
@@ -390,7 +391,7 @@ func main() {
 
 ## <a name="extract-key-phrases-response"></a>Extract key phrases válasz
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -430,9 +431,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="Entities"></a>
 
-## <a name="identify-entities-request"></a>Identify entities kérés
+## <a name="identify-entities"></a>Entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) használatával. Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) használatával. [Entitások](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) kinyerheti a szöveget, például a "Egyesült Államok", majd biztosítson a típusa és/vagy a Wikipédia-hivatkozás esetében a szavak. A típus az "Egyesült Államok" `location`, míg a Wikipedia hivatkozása `https://en.wikipedia.org/wiki/United_States`.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 1. Hozzon létre egy új Go-projektet a kedvenc kódszerkesztőjében.
 1. Adja hozzá az alábbi kódot.
@@ -440,8 +441,8 @@ Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az 
 1. Cserélje le a `uriBase` helyét (jelenleg `westcentralus`) a regisztrált régióra.
 1. Mentse a fájlt „.go” kiterjesztéssel.
 1. Nyisson meg parancssort egy számítógépen, amelyen a Go telepítve van.
-1. Állítsa össze a fájlt (például: „go build quickstart.go”).
-1. Futtassa a fájlt (például: „quickstart”).
+1. Állítsa össze a fájlt (például: `go build entities.go`).
+1. Futtassa a fájlt (például: `go run entities.go`).
 
 ```golang
 package main

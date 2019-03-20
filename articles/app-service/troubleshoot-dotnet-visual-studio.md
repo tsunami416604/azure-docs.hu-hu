@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876772"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996772"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
 ## <a name="overview"></a>Áttekintés
@@ -134,41 +134,41 @@ public ActionResult About()
 }
 ```
 
-4. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a a `ViewBag.Message` sor.
+1. [Állítson be egy töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a a `ViewBag.Message` sor.
 
-5. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, majd kattintson **közzététel**.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a projektre, majd kattintson **közzététel**.
 
-6. Az a **profil** legördülő listában válassza ugyanazt a használt profil [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md). Kattintson a beállítások.
+1. Az a **profil** legördülő listában válassza ugyanazt a használt profil [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md). Kattintson a beállítások.
 
-7. Az a **közzététel** párbeszédpanelen kattintson a **beállítások** lapra, és módosítsa **konfigurációs** való **Debug**, és kattintson a  **Mentés**.
+1. Az a **közzététel** párbeszédpanelen kattintson a **beállítások** lapra, és módosítsa **konfigurációs** való **Debug**, és kattintson a  **Mentés**.
 
     ![Hibakeresési módban közzététele](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. Kattintson a **Publish** (Közzététel) gombra. Üzembe helyezés után befejeződik, és a böngésző megnyitja az alkalmazás az Azure URL-címre, zárja be a böngészőt.
+1. Kattintson a **Publish** (Közzététel) gombra. Üzembe helyezés után befejeződik, és a böngésző megnyitja az alkalmazás az Azure URL-címre, zárja be a böngészőt.
 
-9. A **Server Explorer**, kattintson a jobb gombbal az alkalmazást, és kattintson **csatolja a hibakeresőt**.
+1. A **Server Explorer**, kattintson a jobb gombbal az alkalmazást, és kattintson **csatolja a hibakeresőt**.
 
     ![Hibakereső csatlakoztatása](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
-    A böngésző automatikusan megnyitja a kezdőlap, az Azure-ban futó. Előfordulhat, hogy 20 másodpercet várjon, amíg Azure állítja be a kiszolgáló a hibakereséshez. Ez a késleltetés akkor fordul elő az első futtatásakor hibakeresési módban egy alkalmazás egy 48 órás időszakban. Amikor újra ugyanarra az időszakra vonatkozóan a hibakeresés, nincs késleltetés.
+    A böngésző automatikusan megnyitja a kezdőlap, az Azure-ban futó. Előfordulhat, hogy 20 másodpercet várjon, amíg Azure állítja be a kiszolgáló a hibakereséshez. Ez a késleltetés akkor fordul elő az első futtatásakor hibakeresési módban egy 48 órás időszakban. Amikor újra ugyanarra az időszakra vonatkozóan a hibakeresés, nincs késleltetés.
 
     > [!NOTE] 
     > Ha bármilyen problémája indítása a hibakeresőt, próbálja meg úgy teheti **Cloud Explorer** helyett **Server Explorer**.
     >
 
-10. Kattintson a **kapcsolatos** menüjében.
+1. Kattintson a **kapcsolatos** menüjében.
 
-     A Visual Studio leállítja a töréspontot, és a kód futtatása az Azure-ban, nem a helyi számítógépen.
+    A Visual Studio leállítja a töréspontot, és a kód futtatása az Azure-ban, nem a helyi számítógépen.
 
-11. A kurzort a `currentTime` változó az idő értékének megtekintéséhez.
+1. A kurzort a `currentTime` változó az idő értékének megtekintéséhez.
 
-     ![Azure-ban futó hibakeresési módban a nézet változó](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![Azure-ban futó hibakeresési módban a nézet változó](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-     Az idő, megjelenik az Azure-kiszolgáló ideje, lehet, mint a helyi számítógépen egy másik időzónában.
+    Az idő, megjelenik az Azure-kiszolgáló ideje, lehet, mint a helyi számítógépen egy másik időzónában.
 
-12. Adjon meg új értéket a `currentTime` változó, például az "Az Azure-ban most már fut".
+1. Adjon meg új értéket a `currentTime` változó, például az "Az Azure-ban most már fut".
 
-13. Nyomja le az F5 billentyűt a folytatáshoz.
+1. Nyomja le az F5 billentyűt a folytatáshoz.
 
      Az Azure-ban futó névjegy oldal megjeleníti az új értéket, a currentTime változóhoz megadott.
 
@@ -311,7 +311,7 @@ public ActionResult Contact()
 }        
 ```
 
-2. Adjon hozzá egy `using System.Diagnostics;` utasítással a fájl elejéhez.
+1. Adjon hozzá egy `using System.Diagnostics;` utasítással a fájl elejéhez.
 
 ### <a name="view-the-tracing-output-locally"></a>A nyomon követési kimenetet helyileg megtekintése
 1. Nyomja le az F5 billentyűt az alkalmazás hibakeresési módban futtatja.
@@ -339,15 +339,15 @@ public ActionResult Contact()
 ```
 
 A `WebPageTraceListener` lehetővé teszi a megtekintését nyomkövetési kimeneti megkeresve `/trace.axd`.
-3. Adjon hozzá egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példában:
+1. Adjon hozzá egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példában:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 ```       
 
-4. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
-5. Adja hozzá a böngészőablak címsorában, *trace.axd* az URL-címet, és nyomja le az ENTER billentyűt (az URL-cím hasonlít a http://localhost:53370/trace.axd).
-6. Az a **Trasování Aplikace** kattintson **részleteinek megtekintése** az első sorban (nem a BrowserLink sor).
+1. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
+1. Adja hozzá a böngészőablak címsorában, *trace.axd* az URL-címet, és nyomja le az ENTER billentyűt (az URL-cím hasonlít a `http://localhost:53370/trace.axd`).
+1. Az a **Trasování Aplikace** kattintson **részleteinek megtekintése** az első sorban (nem a BrowserLink sor).
 
     ![Trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
@@ -477,7 +477,7 @@ Bármely figyelemmel kísérheti a naplók a **kimeneti** ablakban is letölthet
    * Webkiszolgáló-naplókkal szerepelnek *.log* található fájlokat a *LogFiles\http\RawLogs* mappát. Használhatja például egy eszköz [naplóelemző](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) megtekintésére és kezelésére, ezeket a fájlokat.
    * Részletes hibanaplókat üzenet szerepelnek *.html* található fájlokat a *LogFiles\DetailedErrors* mappát.
 
-    (A *központi telepítések* mappa a következő közzétételi; verziókövetés által létrehozott fájlok nem rendelkezik a Visual Studio közzététel kapcsolódó egyik elemet sem. A *Git* mappa van a forráskezelőhöz kapcsolódó nyomok közzétételt és a log fájl adatfolyam-szolgáltatást.)  
+     (A *központi telepítések* mappa a következő közzétételi; verziókövetés által létrehozott fájlok nem rendelkezik a Visual Studio közzététel kapcsolódó egyik elemet sem. A *Git* mappa van a forráskezelőhöz kapcsolódó nyomok közzétételt és a log fájl adatfolyam-szolgáltatást.)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.

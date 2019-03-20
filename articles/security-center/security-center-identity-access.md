@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098772"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -68,11 +68,11 @@ A **áttekintése**, nincs javaslat listája. Az első oszlop a javaslatokat sor
 
 1. Válasszon ki egy javaslatot. A javaslatban ablak nyílik meg, és megjeleníti:
 
-  - A javaslat leírása
-  - Nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját
-  - Lista, amelyek egy hibás értékelése miatt nem vizsgált erőforrások vagy erőforrás-előfizetéshez az ingyenes szinten fut, és nincs értékelve van
+   - A javaslat leírása
+   - Nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját
+   - Lista, amelyek egy hibás értékelése miatt nem vizsgált erőforrások vagy erőforrás-előfizetéshez az ingyenes szinten fut, és nincs értékelve van
 
-  ![A javaslat ablak][3]
+   ![A javaslat ablak][3]
 
 1. További részleteket talál a listában, válasszon ki egy előfizetést.
 
@@ -81,27 +81,27 @@ A **előfizetések**, nincs az előfizetések listáját. Az első oszlop az el�
 
 ![Az előfizetéshez tartozó lap][4]
 
-1.  Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
+1. Válasszon egy előfizetést. Összegzési nézetet megnyílik a három lappal:
 
-  - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
-  - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
-  - **Értékelések nem érhetők el**: list-vizsgálat futtatása egy hiba miatt sikertelen volt, vagy mert az előfizetés több mint 600 fiókkal rendelkezik.
+   - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
+   - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
+   - **Értékelések nem érhetők el**: list-vizsgálat futtatása egy hiba miatt sikertelen volt, vagy mert az előfizetés több mint 600 fiókkal rendelkezik.
 
-  A **javaslatok** minden javaslat súlyosságát és a kiválasztott előfizetéshez tartozó a javaslatok listája.
+   A **javaslatok** minden javaslat súlyosságát és a kiválasztott előfizetéshez tartozó a javaslatok listája.
 
-  ![Javaslatok az előfizetés kiválasztása][5]
+   ![Javaslatok az előfizetés kiválasztása][5]
 
 1. Válasszon ki egy javaslatot, egy leírást a javaslat, a nem megfelelő állapotú és kifogástalan állapotú előfizetések listáját és a nem vizsgált erőforrások listáját.
 
-  ![Javaslat leírása][6]
+   ![Javaslat leírása][6]
 
-  A **értékelések átadott** sikeres értékelések listája.  Ezek az értékelések súlyosságát, mindig zöld.
+   A **értékelések átadott** sikeres értékelések listája.  Ezek az értékelések súlyosságát, mindig zöld.
 
-  ![Sikeres értékelések][7]
+   ![Sikeres értékelések][7]
 
 1. Jelöljön ki egy átadott értékelés a lista az értékelés leírását és kifogástalan állapotú előfizetések listáját. Nincs egy nem megfelelő állapotú előfizetések szolgáló lap, amely felsorolja az összes olyan előfizetést, amely nem sikerült.
 
-  ![Sikeres értékelések][8]
+   ![Sikeres értékelések][8]
 
 ## <a name="recommendations"></a>Javaslatok
 Referenciaként az alábbi táblázat segítségével segítenek megérteni a rendelkezésre álló identitás és hozzáférés ajánlásokat, és mindegyik funkciója alkalmazásuk esetén.

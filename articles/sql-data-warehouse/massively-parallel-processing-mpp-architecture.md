@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 236009a3292f26d7fda73013c022f40535aa1ecb
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992328"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835033"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -51,7 +51,7 @@ A vezérlő csomópont a data warehouse az agy. Ez az az előtérbeli rendszer, 
 
 A számítási csomópontok a számítási teljesítményt nyújtanak. Számítási csomópontok feldolgozási disztribúciók térképet. További számítási erőforrásokat kell fizetnie, mint az SQL Data Warehouse újra leképezi a disztribúciók elérhető számítási csomópontjain. Számítási csomópontok tartomány 1 és 60, és határozza meg a szolgáltatási szint a data warehouse-hoz.
 
-Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer láthatók. A számítási csomópont-azonosító alapján keres a sys.pdw_nodes kezdődő rendszernézetek $node_id oszlopban megjelenik. Ezek rendszernézetek listáját lásd: [MPP rendszernézetek](http://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Minden számítási csomópont van egy csomópont-azonosító, amely a rendszer láthatók. A számítási csomópont-azonosító alapján keres a sys.pdw_nodes kezdődő rendszernézetek $node_id oszlopban megjelenik. Ezek rendszernézetek listáját lásd: [MPP rendszernézetek](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Az adatátviteli szolgáltatás (DMS) az, hogy koordinálja a számítási csomópontok közötti adatáthelyezés adatok átviteli technológiát. Néhány lekérdezés annak érdekében, hogy a párhuzamos lekérdezések pontos eredményeket adjon vissza adatáthelyezés van szükség. Amikor szükség az adatmozgatás, a DMS biztosítja, hogy a megfelelő adatokat lekérdezi a megfelelő helyre. 
@@ -124,9 +124,9 @@ Most, hogy jobban megismerte az SQL Data Warehouse szolgáltatást, tudjon meg t
 [Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN-fórum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
+[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858140"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -307,12 +307,8 @@ Az aláírt runbook neve lesz `<runbook name>.asc`.
 
 Az aláírt runbook most feltölthetők az Azure Automationt, és rendszeres runbook például hajthatók végre.
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Ha a runbook sikeresen elvégezte a nem, tekintse át a hibaelhárítási útmutató az [runbook végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-
 ## <a name="next-steps"></a>További lépések
 
 * A runbook indítása használható különböző módszerekkel kapcsolatos további tudnivalókért lásd: [Runbook elindítása az Azure Automationben](automation-starting-a-runbook.md).
 * A szöveges szerkesztő használatával az Azure Automation PowerShell-runbookok használata a különböző módokon ismertetése: [az Azure Automation Runbook szerkesztése](automation-edit-textual-runbook.md)
-
+* Ha a runbook sikeresen elvégezte a nem, tekintse át a hibaelhárítási útmutató az [runbook végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).

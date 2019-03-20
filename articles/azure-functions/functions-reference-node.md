@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807473"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226538"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -554,6 +554,16 @@ module.exports = myObj;
 ```
 
 Ebben a példában fontos megjegyezni, hogy az objektum exportálása folyamatban van, noha garanciát nem jelentenek for végrehajtások közötti állapot megőrzése.
+
+## <a name="local-debugging"></a>Helyi hibakeresés
+
+Amikor használatába a `--inspect` paramétert, a Node.js-folyamat figyeli a hibakeresési ügyfél a megadott porton. Az Azure Functions 2.x, megadhatja a Node.js folyamatba, a környezeti változó vagy Alkalmazásbeállítás hozzáadásával a kódot futtató argumentumokat `languageWorkers:node:arguments = <args>`. 
+
+Fejlesztőeszközzel, adjon hozzá `"languageWorkers:node:arguments": "--inspect=5858"` alatt `Values` a a [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) fájlt, majd csatoljon egy hibakeresőt port 5858.
+
+Amikor hibakeresése a VS Code-használatával a `--inspect` paraméter a rendszer automatikusan használja a `port` a projekt launch.json fájl értéket.
+
+A verzió 1.x, beállítás `languageWorkers:node:arguments` nem fog működni. A hibakeresési port a választható ki a [ `--nodeDebugPort` ](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) paramétert az Azure Functions Core Tools.
 
 ## <a name="typescript"></a>TypeScript
 

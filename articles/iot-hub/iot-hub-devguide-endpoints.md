@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201432"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
@@ -22,8 +22,6 @@ ms.locfileid: "57539547"
 ## <a name="iot-hub-names"></a>IoT Hub names
 
 Annak az állomásneve, amelyen a végpontok a hubhoz a portálon az IoT hub a **áttekintése** lapot. Alapértelmezés szerint a DNS-neve az IoT hub néz ki: `{your iot hub name}.azure-devices.net`.
-
-Az Azure DNS használatával hozzon létre egy egyéni DNS-nevet az IoT hub. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../dns/dns-custom-domain.md) ismertető cikkben talál.
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Beépített IoT Hub-végpontok listája
 

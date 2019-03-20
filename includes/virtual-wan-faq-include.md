@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/19/2019
+ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98ea4d78a473123708be6e371587252acad6ffcd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 931bc26e22db4bbf02a18d4824b9c846f1e66b18
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554660"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190653"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
-A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kifejlesztése során elsősorban az átviteli sebességet, a méretezhetőséget és a könnyű használatot tartották szem előtt. Az ExpressRoute és a pont-hely kapcsolati funkciók jelenleg csak előzetes verzióban érhetők el. A CPE-ágeszközök üzembe helyezése Azure Virtual WAN-hoz való csatlakozása automatikusan történik. Ezek az eszközök az SD-WAN- és a VPN-partnerek egyre bővülő körétől szerezhetők be. Lásd az [előnyben részesített partnerek listáját](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kifejlesztése során elsősorban az átviteli sebességet, a méretezhetőséget és a könnyű használatot tartották szem előtt. Az ExpressRoute és a pont-hely kapcsolati funkciók jelenleg csak előzetes verzióban érhetők el. CPE eszközök autoprovision ágban, és csatlakozzon az Azure virtuális WAN. Ezek az eszközök az SD-WAN- és a VPN-partnerek egyre bővülő körétől szerezhetők be. Tekintse meg a [előnyben részesített partnerek listája](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
-### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>A program indításakor mely eszközszolgáltatók (Virtual WAN-partnerek) támogatottak? 
+### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>A program indításakor mely eszközszolgáltatók (Virtual WAN-partnerek) támogatottak?
 
 Mostanra már számos partner támogatja a teljesen automatizált Virtual WAN-t. További információ: [Virtual WAN-partnerek](https://go.microsoft.com/fwlink/p/?linkid=2019615). 
 
@@ -69,7 +69,7 @@ Nem. Az NVA virtuális hálózatnak nem lehet virtuális hálózati átjárója,
 
 ### <a name="is-there-support-for-bgp"></a>Van BGP-támogatás?
 
-Igen, a BGP támogatott. Az NVA virtuális hálózat útvonalainak megfelelő meghirdetése érdekében a küllőknek le kell tiltaniuk a BGP-t, ha olyan NVA virtuális hálózathoz csatlakoznak, amely egy virtuális központhoz csatlakozik. A küllő virtuális hálózatokat mindenképpen csatlakoztassa a virtuális központhoz. Ezzel biztosítható, hogy a küllők virtuálishálózat-útvonalai a helyszíni rendszerekre legyenek propagálva.
+Igen, a BGP támogatott. Amikor létrehoz egy VPN-helyet, megadhatja azt a BGP paramétereket. Ez lesz jelenti azt, hogy a webhely esetében az Azure-ban létrehozott kapcsolatokat a BGP engedélyezve lesz. Ezenkívül ha az NVA virtuális hálózathoz, és az NVA virtuális hálózat egy virtuális WAN központ lett csatolva, annak érdekében, hogy gondoskodjon róla, hogy az NVA virtuális hálózatból útvonalak megfelelően, hirdesse meg NVA virtuális hálózathoz csatlakozó küllők le kell tiltania a BGP. Emellett csatlakozzon a helyszíni rendszerek ezek küllő virtuális hálózatok virtuális agyi küllő virtuális hálózatok közötti útvonalak biztosítása érdekében a rendszer propagálja a webhelyre.
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>A virtuális központban irányíthatom UDR-rel a forgalmat?
 
@@ -79,13 +79,21 @@ Igen, a virtuális központ útválasztási táblázatával átirányíthatja az
  
 Igen. Lásd a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-wan/) oldalt.
 
+### <a name="how-do-i-calculate-price-of-a-hub"></a>Hogyan kiszámítja a hub árát?
+ 
+A szolgáltatás az agyban kellene fizetnie. Például 10 ágak vagy a helyszíni eszközöket szeretne csatlakozni az Azure virtuális WAN lenne hasonló VPN végpontok az agyban csatlakozik. Lehetővé teszi, hogy tegyük fel, hogy 1 skálázási egységére VPN = 500 MB/s, a díjakat $0.361/ óra. Minden kapcsolat díja 0,08/óra. 10-kapcsolatok, a felszámított díj pedig a szolgáltatás/óra lenne $0.361 + $. 8 / hr. Adatforgalmi díjat elhagyó forgalom az azure a alkalmazni. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
 
 Küldjön egy e-mailt a következő címre: azurevirtualwan@microsoft.com. Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot.
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Mi történik, ha egy eszköz i használok nem szerepel a virtuális WAN partner? Továbbra is használható, Azure-beli virtuális WAN VPN csatlakozni?
+
+Igen, mindaddig, amíg az eszköz támogatja az IPsec IKEv1 vagy IKEv2. Virtuális WAN partnerek automatizálhatja az eszköz kapcsolat és az Azure VPN-végpontok. Ez azt jelenti, hogy automatizálhatja lépést, például a "ág információk feltöltése", "IPsec és konfigurációs" és "kapcsolat". Mivel az eszköz nem egy virtuális WAN partneri ökoszisztéma, szüksége lesz ehhez a munkából manuálisan az Azure konfigurálása és az IPsec-kapcsolat beállítása az eszköz frissítése. 
+
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Lehetséges Azure Virtual WAN létrehozása Resource Manager-sablon használatával?
 
-Az [Azure rövid útmutatók sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network) segítségével létrehozhat mintakonfigurációt egy virtuális WAN-nal, egy központtal és egy VPN-hellyel. A Virtual WAN-t elsősorban a REST-tel vagy a portálon lehet üzemeltetni.
+Az egyik virtuális WAN egy eseményközpont és a egy vpnsite hozható létre egy egyszerű konfigurálás egy [Azure gyorsindítási sablon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network). A Virtual WAN-t elsősorban a REST-tel vagy a portálon lehet üzemeltetni.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>A Virtual WAN-ban engedélyezett az ágak közötti kapcsolat?
 
@@ -99,6 +107,10 @@ Igen.
 
 A virtuális hálózati (VPN-) átjáró legfeljebb 30 alagutat támogat. Kapcsolatokhoz nagy mennyiségű VPN-forgalmat bonyolító Virtual WAN használata javasolt. A rendszer legfeljebb 1000 ágak közötti kapcsolatot támogat, és központonként 2 Gb/s sebességet biztosít a nyugati középső kivételével minden régióban. A nyugati középső régióban 20 Gb/s sebesség érhető el. A többi régióban a jövőben tervezzük bevezetni a 20 Gb/s-ot. A kapcsolatok aktív-aktív alagútnak minősülnek a helyszíni VPN-eszköz és a virtuális központ között. Régiónként egy központtal rendelkezhet, ami azt jelenti, hogy 1000-nél is több ágat csatlakoztathat a központok között.
 
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hogyan van virtuális WAN SD-WAN eszközök támogatására?
+
+Virtuális WAN partnerek automatizálhatja az Azure VPN-végpontok IPsec-kapcsolat. Ha a virtuális WAN partner SD-WAN-szolgáltatót, akkor implicit, hogy az SD-WAN tartományvezérlő kezeli az automation és az Azure VPN-végpontok IPsec-kapcsolat. Ha az SD-WAN eszköz igényel saját végpont helyett az Azure VPN olyan saját fejlesztésű SD-WAN-funkciót, a SD-WAN-végpontot egy Azure virtuális hálózat üzembe helyezése, és az Azure virtuális WAN és a.
+
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>A Virtual WAN minden egyes hely esetében igényli az ExpressRoute használatát?
 
 Nem, a Virtual WAN nem igényli minden hely esetében az ExpressRoute használatát. Internetes hivatkozásokon alapuló, szabványos IPsec helyek közötti kapcsolatot használ az eszköz és az Azure Virtual WAN-központ között. Előfordulhat, hogy a helyek ExpressRoute-kapcsolatcsoporttal csatlakoznak a szolgáltatói hálózathoz. Azon helyek esetében, amelyek ExpressRoute-kapcsolattal vannak csatlakoztatva egy virtuális központhoz (ez a megoldás előzetes verzióban érhető el), a helyek ágak közötti adatforgalmat bonyolíthatnak a VPN és az ExpressRoute között. 
@@ -109,12 +121,12 @@ Az ágak száma központonként/régiónként legfeljebb 1000 kapcsolat lehet, �
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>A Virtual WAN szolgáltatás lehetővé teszi a helyszíni eszközök számára több internetszolgáltató párhuzamos használatát, vagy egyszerre csak egy VPN-alagutat támogat?
 
-Igen, aktív–aktív alagutakat is használhat (2 alagút = 1 Azure Virtual WAN-kapcsolat) egy önálló ágból kiindulva az ágeszköztől függően.
+Virtuális WAN VPN érkező kapcsolatot mindig (az azonos hub/régión belüli rugalmasság) egy aktív-aktív alagutat használ elérhető hivatkozás, a fiókiroda. Ezt a hivatkozást lehet egy Internetszolgáltatói visszaválthat a helyszíni ágat. Virtuális WAN nem biztosít semmilyen különleges logikai; párhuzamosan több ISP beállítása kezeli a feladatátvételi Internetszolgáltató keresztül, a fiókiroda egy teljesen olyan fiókirodai-központú hálózati művelet. A kedvenc SD-WAN megoldás segítségével hajtsa végre az ág, elérési út kiválasztása.
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Hogyan történik a forgalom átirányítása az Azure gerinchálózatára?
 
-A forgalom a következő mintát követi: ágeszköz ->internetszolgáltató->Microsoft Edge->Microsoft DC->Microsoft Edge->internetszolgáltató->ágeszköz
+A forgalom a mintát követi: -> fiókiroda eszköz ISP -> a Microsoft edge -> Microsoft DC (agyi virtuális hálózat) -> a Microsoft edge -> ISP -> fiókiroda eszköz
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Ebben a modellben mire van szükség az egyes helyek esetében? Csupán internetkapcsolatra?
 
-Igen. Lehetőleg olyan internetkapcsolatra és fizikai eszközre, amely integrált [partnereink](https://go.microsoft.com/fwlink/p/?linkid=2019615) kínálatából származik. Ha szeretné, azt is megteheti, hogy manuálisan kezeli az Azure és a választott eszköz közötti konfigurációt és kapcsolatot.
+Igen. Az internetkapcsolat és a fizikai eszköz, amely támogatja az IPsec, lehetőleg a integrált [partnerek](https://go.microsoft.com/fwlink/p/?linkid=2019615). Ha szeretné, azt is megteheti, hogy manuálisan kezeli az Azure és a választott eszköz közötti konfigurációt és kapcsolatot.

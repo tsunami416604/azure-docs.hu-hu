@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2457ef2843b0d16359b7e47fc54c58e2ef5e6034
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125372"
 ---
 > [!NOTE]
 > Ezek a példák nem vonatkoznak a S2S/ExpressRoute párhuzamos telephelyközi konfigurációkat.
@@ -28,8 +28,8 @@ Amikor hozzáad egy átjárót egy virtuális hálózathoz a klasszikus erőforr
 1. Töltse le a hálózati konfigurációs fájlt a lépések használatával [hálózati konfigurációs fájlt](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) cikk. Nyissa meg a fájlt egy szövegszerkesztőben.
 2. Adja hozzá a fájlt egy helyi hálózati telephelyre. Használhat bármilyen érvényes cím előtagja. Bármilyen érvényes IP-címet a VPN-átjáró is hozzáadhat. Ebben a szakaszban szereplő címet értékek ExpressRoute műveletek nem használhatók, de a fájl érvényesítéséhez szükséges. A példában a "fiók1" a webhely nevét. Előfordulhat, hogy a másik nevet, de ügyeljen arra, hogy a fájl az átjáró szakaszban ugyanazt az értéket használja.
 
-  ```
-  <VirtualNetworkConfiguration>
+   ```
+   <VirtualNetworkConfiguration>
     <Dns />
     <LocalNetworkSites>
       <LocalNetworkSite name="branch1">
@@ -38,15 +38,15 @@ Amikor hozzáad egy átjárót egy virtuális hálózathoz a klasszikus erőforr
         </AddressSpace>
         <VPNGatewayAddress>3.2.1.4</VPNGatewayAddress>
     </LocalNetworkSite>
-  ```
+   ```
 3. Keresse meg a VirtualNetworkSites, és módosítsa a mezőket.
 
-  * Gondoskodjon arról, hogy az átjáró-alhálózatot a virtuális hálózat. Ha nem jelenik meg, hozzáadhat egyet most. A neve "GatewaySubnet" kell lennie.
-  * Ellenőrizze, hogy az átjáró a szakasz a fájl létezik-e. Ha nem, adja hozzá. Ez azért szükséges, a virtuális hálózat társítása a helyi hálózati telephely (amely jelöli, amely kapcsolódik a hálózathoz).
-  * Győződjön meg arról, hogy a kapcsolat típusa = dedikált. Ez azért szükséges, az ExpressRoute-kapcsolatok esetében.
+   * Gondoskodjon arról, hogy az átjáró-alhálózatot a virtuális hálózat. Ha nem jelenik meg, hozzáadhat egyet most. A neve "GatewaySubnet" kell lennie.
+   * Ellenőrizze, hogy az átjáró a szakasz a fájl létezik-e. Ha nem, adja hozzá. Ez azért szükséges, a virtuális hálózat társítása a helyi hálózati telephely (amely jelöli, amely kapcsolódik a hálózathoz).
+   * Győződjön meg arról, hogy a kapcsolat típusa = dedikált. Ez azért szükséges, az ExpressRoute-kapcsolatok esetében.
 
-  ```
-  </LocalNetworkSites>
+   ```
+   </LocalNetworkSites>
     <VirtualNetworkSites>
       <VirtualNetworkSite name="myAzureVNET" Location="East US">
         <AddressSpace>
@@ -69,9 +69,9 @@ Amikor hozzáad egy átjárót egy virtuális hálózathoz a klasszikus erőforr
         </Gateway>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
-  </VirtualNetworkConfiguration>
-  </NetworkConfiguration>
-  ```
+   </VirtualNetworkConfiguration>
+   </NetworkConfiguration>
+   ```
 4. Mentse a fájlt, és töltse fel az Azure-bA.
 
 ### <a name="create-the-gateway"></a>Az átjáró létrehozása

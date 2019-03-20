@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096707"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -181,7 +181,7 @@ Ebben a szakaszban a lépések segítségével hozza létre teszttanúsítványo
 
 Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa őket a láncban. Lánc fájlba helyezi el a tanúsítványokat is könnyedén telepítheti őket az IoT Edge-átjáróeszköz és alsóbb rétegbeli eszközök lehetővé teszi.  
 
-1.  Hozzon létre a tulajdonos Hitelesítésszolgáltatói tanúsítvány és a egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve  *\<WRKDIR >*.
+1. Hozzon létre a tulajdonos Hitelesítésszolgáltatói tanúsítvány és a egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve  *\<WRKDIR >*.
 
    ```bash
    ./certGen.sh create_root_and_intermediate
@@ -193,7 +193,7 @@ Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa �
    * `<WRKDIR>/private/azure-iot-test-only.root.ca.key.pem`
    * `<WRKDIR>/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  A peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványok és titkos kulcs létrehozása a következő paranccsal. Adjon meg egy nevet, az átjáró eszköz, amelyet használhat a fájlokat, és a tanúsítvány létrehozása során. 
+2. A peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványok és titkos kulcs létrehozása a következő paranccsal. Adjon meg egy nevet, az átjáró eszköz, amelyet használhat a fájlokat, és a tanúsítvány létrehozása során. 
 
    ```bash
    ./certGen.sh create_edge_device_certificate "<gateway name>"

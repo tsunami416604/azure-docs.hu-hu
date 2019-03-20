@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 7da765bda815e9112dac809d259fd417dc4d866e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: MT
+ms.openlocfilehash: 4b305087c0c755254d72811fb9275c509343c87e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878397"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
@@ -50,11 +50,14 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1, 1.0-s * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
 | Az Apache csúszka |-| 0.92.0 |-|-|-|-|-|-|
+
+> [!NOTE]
+> Rendszer teljesítménnyel kapcsolatos megfontolások miatt a Kafka 0.10-ás verzió támogatása elévült a március 2019.
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Hadoop-összetevő verzióinformációkat aktuális keresése
 
@@ -122,12 +125,12 @@ Vállalati biztonsági csomag egy nem kötelező, amelyeket hozzáadhat a HDInsi
 
 - Engedélyezési adatok
 
-    - Integráció az Apache Ranger Hive, a Spark SQL és a Yarn-várólisták engedélyezési.
-    - Beállíthatja a fájlokra és mappákra vonatkozó hozzáférés-vezérlés.
+  - Integráció az Apache Ranger Hive, a Spark SQL és a Yarn-várólisták engedélyezési.
+  - Beállíthatja a fájlokra és mappákra vonatkozó hozzáférés-vezérlés.
 
     További információkért lásd:
 
-    - [Az Apache Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
+  - [Az Apache Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
 
 - A vizsgálati naplók és a figyelő hozzáfér a konfigurált szabályzatok megtekintése. 
 

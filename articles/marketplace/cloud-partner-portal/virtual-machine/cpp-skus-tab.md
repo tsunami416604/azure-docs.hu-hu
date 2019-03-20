@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4ecc259d40cdcba93a484f27e27191e967f10ff1
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848090"
 ---
 # <a name="virtual-machine-skus-tab"></a>Virtuális gép termékváltozatok lap
 
@@ -56,14 +56,14 @@ A következő táblázat ismerteti a célja, a tartalmát, és ezek a mezők for
 | **Az egy privát Termékváltozat?** | Azt jelzi, hogy a Termékváltozat nyilvános vagy privát. Az alapértelmezett érték **nem** (nyilvános).  További információkért lásd: [nyilvános és privát termékváltozatok](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). |
 | **Elérhetőség ország/régió** | Meghatározza, hogy mely országok vagy régiók, a Termékváltozat lesz megvásárolható. Válassza ki legalább egy ország/régió. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Díjszabás*   |  |
-| **Licencelési modell**| Szabványos számlázási modellt használja.  Ha **havi használat alapú Termékváltozat számlázása**, egy accordion szakasz nyílik meg, hogy adja meg a részleteket magonként árképzési és a próbaidőszak alatt ingyenes ajánlat szeretné-e.  Ez a szakasz segítségével exportálja és importálja a díjszabási ütemezés Excel is. További információkért lásd: [számlázási lehetőségek az Azure Marketplace-en](../../billing-options-azure-marketplace.md). | 
+| **License Model**| Szabványos számlázási modellt használja.  Ha **havi használat alapú Termékváltozat számlázása**, egy accordion szakasz nyílik meg, hogy adja meg a részleteket magonként árképzési és a próbaidőszak alatt ingyenes ajánlat szeretné-e.  Ez a szakasz segítségével exportálja és importálja a díjszabási ütemezés Excel is. További információkért lásd: [számlázási lehetőségek az Azure Marketplace-en](../../billing-options-azure-marketplace.md). | 
 |  *Virtuálisgép-rendszerképek*   |  |
 | **Operációsrendszer-család** | Azt jelzi, hogy a megoldás virtuális gép Windows - vagy Linux-alapú. |
 | **Válassza ki az operációs rendszer típusa** | Adott gyártó vagy a megadott operációs rendszer kiadása. |
 | **Operációs rendszer rövid neve** | Operációs rendszer neve megjelenik az ügyfelek számára.  |
 | **Javasolt Virtuálisgép-méretek** | Lehetővé teszi, hogy legfeljebb hat javasolt Virtuálisgép-méretek egy szabványosított listából választott.  Bár ezek a javaslatok ezzel a beállítással hangsúlyosan jelennek meg a lehetséges ügyfelek, azok bármely Virtuálisgép-méret, amely kompatibilis a megoldás kép megadhat. | 
-| **Nyitott portok**| A portok megnyitásához, és támogatja a termékváltozat-protokollt.  Ezek a konfigurációk meg kell egyeznie a virtuális hálózatot, konfigurálta a hálózat VM-megoldás. Ezek a beállítások során a virtuális gép üzembe helyezésének lép érvénybe. Portbeállítások azonban módosítható egy Termékváltozat a közzététel után. További információkért lásd: [hogyan nyithat meg portokat a virtuális gép az Azure Portallal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózatleképezések kerülnek az összes virtuális gépre. &emsp; Windows: a 3389-es 3389-es TCP ->, az 5986-os 5986 TCP; -> &emsp; Linux: 22 -> 22-es, a TCP-(SSH). |
-| **Lemez verziója**  | Kapcsolódó megoldás virtuális Gépen lemez verziószám és lemez URL-cím által megadott. A lemez kell lennie a [sémantická verze](http://semver.org/) formátum: `<major>.<minor>.<patch>`.  Az URL-je a közös hozzáférésű jogosultságkód URI-t az operációs rendszer virtuális Merevlemeze számára létrehozott.  Bár a Termékváltozat száma nyolc lemez verziók adhat hozzá, csak a legmagasabb szintű lemez verziószám-termékváltozat jelennek meg az Azure Marketplace-en. Az egyéb verziói csak akkor látható, API-kon keresztül.  <!--TD: Add more specific link to API --> <br/> A **új adatlemez** accordion szakasz lehetővé teszi, hogy akár 15 adatlemezeket csatlakoztathat a virtuális gép.  Miután egy adott virtuális gép verzióját, és a társított adatlemezek Termékváltozat tesz közzé, amelyet ez a konfiguráció nem módosítható.  Ha további VM-verziók hozzáadja a termékváltozatra, azok azonos számú adatlemezeket is támogatnia kell. <br/> Ha nem hozott létre az Azure-alapú Virtuálisgép-rendszerképeket, hozzáadhat, később frissíteni ezt a mezőt.  A társított virtuális gép erőforrás létrehozásával kapcsolatos információkért lásd: a szakasz [hozzon létre virtuális gép technikai eszközök](./cpp-create-technical-assets.md).  
+| **Nyitott portok**| A portok megnyitásához, és támogatja a termékváltozat-protokollt.  Ezek a konfigurációk meg kell egyeznie a virtuális hálózatot, konfigurálta a hálózat VM-megoldás. Ezek a beállítások során a virtuális gép üzembe helyezésének lép érvénybe. Portbeállítások azonban módosítható egy Termékváltozat a közzététel után. További információkért lásd: [hogyan nyithat meg portokat a virtuális gép az Azure Portallal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózatleképezések kerülnek az összes virtuális gépre. &emsp; Windows: 3389-es 3389-es TCP ->, az 5986-os 5986-os TCP -> &emsp; Linux: 22 -&GT; 22-ES, A TCP-(SSH). |
+| **Lemez verziója**  | Kapcsolódó megoldás virtuális Gépen lemez verziószám és lemez URL-cím által megadott. A lemez kell lennie a [sémantická verze](https://semver.org/) formátum: `<major>.<minor>.<patch>`.  Az URL-je a közös hozzáférésű jogosultságkód URI-t az operációs rendszer virtuális Merevlemeze számára létrehozott.  Bár a Termékváltozat száma nyolc lemez verziók adhat hozzá, csak a legmagasabb szintű lemez verziószám-termékváltozat jelennek meg az Azure Marketplace-en. Az egyéb verziói csak akkor látható, API-kon keresztül.  <!--TD: Add more specific link to API --> <br/> A **új adatlemez** accordion szakasz lehetővé teszi, hogy akár 15 adatlemezeket csatlakoztathat a virtuális gép.  Miután egy adott virtuális gép verzióját, és a társított adatlemezek Termékváltozat tesz közzé, amelyet ez a konfiguráció nem módosítható.  Ha további VM-verziók hozzáadja a termékváltozatra, azok azonos számú adatlemezeket is támogatnia kell. <br/> Ha nem hozott létre az Azure-alapú Virtuálisgép-rendszerképeket, hozzáadhat, később frissíteni ezt a mezőt.  A társított virtuális gép erőforrás létrehozásával kapcsolatos információkért lásd: a szakasz [hozzon létre virtuális gép technikai eszközök](./cpp-create-technical-assets.md).  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 

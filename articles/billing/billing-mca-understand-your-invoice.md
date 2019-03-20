@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: c64c3bddd3bd2fc674e0444fba85a21c9d36404b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839729"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>A Microsoft Ügyfélszerződéséhez számla feltételeinek értelmezése
 
@@ -105,7 +105,7 @@ Ha külső szolgáltatások szerepel a számlán, nevét és címét, mindegyik 
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 

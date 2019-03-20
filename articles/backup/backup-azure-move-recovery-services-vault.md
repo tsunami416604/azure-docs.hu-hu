@@ -6,18 +6,21 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2019
+ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0eb19ba8278df2d77466e5be13731723557e85a8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199244"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és erőforráscsoportok (korlátozott nyilvános előzetes verzió)
 
 Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy másik erőforráscsoportba ugyanabban az előfizetésben az Azure Backup konfigurálása a Recovery Services-tároló. Az Azure portal vagy a PowerShell segítségével helyezze át egy Recovery Services-tárolót.
+
+> [!NOTE]
+> Recovery Services-tároló és az összes kapcsolódó erőforrás áthelyezése másik erőforráscsoportba, akkor először [a forrás-előfizetés regisztrálása](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Tároló áthelyezése előfeltételei
 
@@ -37,7 +40,7 @@ Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy 
 -   Ha egy tárolót tartalmazó virtuális gép biztonsági mentési adatokat, előfizetések, helyezze át a virtuális gépek ugyanahhoz az előfizetéshez, és az biztonsági mentések továbbra is az azonos céloldali erőforráscsoport segítségével.<br>
 
 > [!NOTE]
-> 
+>
 > Recovery Services-tárolók használata konfigurált **Azure Site Recovery** nem helyezhető át, még. Ha olyan virtuális gépek konfigurálása (Azure IaaS, Hyper-V, VMware) vagy a vész-helyreállítási a fizikai gépek a **Azure Site Recovery**, az áthelyezési művelet le lesz tiltva. A Site Recovery szolgáltatáshoz erőforrás áthelyezési funkció még nem érhető el.
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>A helyreállítási tár áthelyezése a forrás-előfizetés regisztrálása

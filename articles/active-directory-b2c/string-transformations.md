@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9504a710711ba10d72c3f87045f498b652cfea44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193437"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113027"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
 
@@ -78,10 +78,10 @@ Az önellenőrzött technikai profilban meghívja az érvényesítés **bejelent
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
- - Bemeneti paraméterek:
-    - **stringComparison**: ordinalIgnoreCase
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
+    - Bemeneti paraméterek:
+  - **stringComparison**: ordinalIgnoreCase
 - Eredmény: Hiba lépett fel
 
 ## <a name="changecase"></a>ChangeCase 
@@ -113,11 +113,11 @@ Bármilyen karakterlánc takar csökkentheti, vagy a nagybetűs módosításáho
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **e-mailek**: SomeOne@contoso.com
+  - **e-mailek**: SomeOne@contoso.com
 - Bemeneti paraméterek:
     - **toCase**: LOWER
 - Kimeneti jogcímek:
-    - **e-mailek**: someone@contoso.com
+  - **e-mailek**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim 
 
@@ -181,8 +181,8 @@ A jogcím-átalakítás annak ellenőrzéséhez, hogy a jogcím megegyezik egy m
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Bemeneti paraméterek:
     - **Operátor**:  NOT EQUAL
     - **ignoreCase**: igaz
@@ -321,7 +321,7 @@ Használja a jogcím-átalakítás bármelyik egy paraméterrel karakterlánc fo
 - Bemeneti paraméterek:
     - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - Kimeneti jogcímek:
-    - **kimeneti jogcím**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **kimeneti jogcím**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -494,7 +494,7 @@ Használja a jogcím-átalakítás elemzése után a tartomány nevét a @ karak
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **e-mail cím**: joe@outlook.com
+  - **e-mail cím**: joe@outlook.com
 - Kimeneti jogcímek:
     - **tartomány**: Outlook.com-os
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188611"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -52,7 +52,7 @@ A következő eszközök segítségével hozzon létre vagy a virtuális hálóz
 * A hálózat konfigurációs fájljában (a netcfg - csak a klasszikus virtuális hálózatok). Tekintse meg a [konfigurálása egy Vnethez a hálózati konfigurációs fájlt](virtual-networks-using-network-configuration-file.md) cikk.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Milyen címtartományok használható a saját virtuális hálózatokat?
-Minden IP-címtartomány meghatározott [RFC 1918](http://tools.ietf.org/html/rfc1918). Ha például a 10.0.0.0/16. Nem adhat hozzá a következő-címtartományokat:
+Minden IP-címtartomány meghatározott [RFC 1918](https://tools.ietf.org/html/rfc1918). Ha például a 10.0.0.0/16. Nem adhat hozzá a következő-címtartományokat:
 * 224.0.0.0/4 (csoportos küldés)
 * 255.255.255.255/32 (közvetítés)
 * 127.0.0.0/8 (visszacsatolás)
@@ -285,7 +285,7 @@ Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális
 ## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Mely Azure-régiók érhetők el a virtuális hálózati TAP?
-Fejlesztői előzetes verzióban a funkció érhető el az USA nyugati középső régiójában. A figyelt hálózati adapterek, a virtuális hálózati TAP erőforrás és a gyűjtő vagy analytics megoldás ugyanabban a régióban kell telepíteni.
+Virtuális hálózati TAP előzetes az összes Azure-régióban érhető el. A figyelt hálózati adapterek, a virtuális hálózati TAP erőforrás és a gyűjtő vagy analytics megoldás ugyanabban a régióban kell telepíteni.
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Virtuális hálózati TAP támogat bármilyen szűrési képességek a tükrözött csomagok?
 A virtuális hálózati TAP-előzetes verzió használata nem támogatott szűrési képességek. Amikor egy KOPPINTÁSSAL konfigurációt adnak hozzá egy hálózati adaptert a bejövő forgalom mély másolatát, és KOPPINTSON a célhelyre irányuló kimenő adatforgalmat a hálózati adapter adatfolyamként.
@@ -298,7 +298,7 @@ Igen. Az azonos virtuális hálózatban KOPPINTSON erőforrás az alábbiakra ha
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Vannak-e bármilyen teljesítménnyel kapcsolatos megfontolások az éles forgalmat, ha egy hálózati adapter egy virtuális hálózati TAP konfigurációját engedélyezni?
 
-Virtuális hálózati TAP van fejlesztői előzetes verzióban érhető el. Előzetes verzióban nem nincs szolgáltatásszint-szerződés. A funkció nem használható éles számítási feladatok esetében. Ha egy virtuális gép hálózati adapteréhez TAP-konfigurációval rendelkező engedélyezve van, ugyanazokat az erőforrásokat az Azure-beli gazdagépre a virtuális gép számára lefoglalt az éles forgalmat a tükrözési funkció végrehajtására és a tükrözött csomagok küldése szolgál. Válassza ki a megfelelő [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) annak érdekében, hogy elegendő erőforrással az éles és a tükrözött forgalom küldése a virtuális gép számára elérhető virtuálisgép-méretet.
+Virtuális hálózati TAP az előzetes verzióban. Előzetes verzióban nem nincs szolgáltatásszint-szerződés. A funkció nem használható éles számítási feladatok esetében. Ha egy virtuális gép hálózati adapteréhez TAP-konfigurációval rendelkező engedélyezve van, ugyanazokat az erőforrásokat az Azure-beli gazdagépre a virtuális gép számára lefoglalt az éles forgalmat a tükrözési funkció végrehajtására és a tükrözött csomagok küldése szolgál. Válassza ki a megfelelő [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) annak érdekében, hogy elegendő erőforrással az éles és a tükrözött forgalom küldése a virtuális gép számára elérhető virtuálisgép-méretet.
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelése [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows](create-vm-accelerated-networking-powershell.md) virtuális hálózati TAP támogatott?
 
@@ -370,7 +370,7 @@ Az Azure-szolgáltatási fiók törlését független művelet, és akkor is, ha
 Ha virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak, a forrás IP-címek az erőforrások a virtuális hálózat alhálózati vált az Azure virtuális hálózat privát IP-címeket nyilvános IPV4-címek használata Azure-szolgáltatás felé irányuló forgalom. Vegye figyelembe, hogy ez a konkrét IP-tűzfalon, nyilvános IPV4-cím a korábban beállított okozhat az Azure-szolgáltatások sikertelen lesz. 
 
 ### <a name="does-service-endpoint-route-always-take-precedence"></a>Nem szolgáltatásvégpont útvonala mindig elsőbbséget?
-Szolgáltatásvégpontok hozzáadása egy rendszer útvonalat, amely elsőbbséget élvez a BGP-útvonalak és optimális útválasztást biztosítanak a szolgáltatási végpont forgalomhoz. A Szolgáltatásvégpontok szolgáltatás forgalmát közvetlenül a virtuális hálózatról a szolgáltatás mindig a Microsoft Azure gerinchálózatán igénybe vehet. Hogyan választ útvonalat az Azure kapcsolatos további információkért lásd: [Azure-beli virtuális hálózat forgalmának útválasztása] (virtual-hálózatok-udr-overview.md).
+Szolgáltatásvégpontok hozzáadása egy rendszer útvonalat, amely elsőbbséget élvez a BGP-útvonalak és optimális útválasztást biztosítanak a szolgáltatási végpont forgalomhoz. A Szolgáltatásvégpontok szolgáltatás forgalmát közvetlenül a virtuális hálózatról a szolgáltatás mindig a Microsoft Azure gerinchálózatán igénybe vehet. Hogyan választ útvonalat az Azure kapcsolatos további információkért lásd: [Azure-beli virtuális hálózat forgalmának útválasztása](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hogyan működik a alhálózat NSG-t a Szolgáltatásvégpontok?
 Az Azure-szolgáltatás eléréséhez NSG-ket kell kimenő kapcsolatok engedélyezése. Ha az NSG-k elérhető minden kimenő internetforgalmat, majd a végpont forgalmának működnie kell. A szolgáltatás IP-címek a szolgáltatáscímkék csak a kimenő forgalmat is korlátozhatja.  

@@ -15,12 +15,12 @@ ms.date: 03/04/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ae4b19e9a4f11d84dddd7ec3b129cc5d575b75cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ccf3beaacd15ad7d3e9177614bb62b0050bd8d5c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767397"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109160"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -39,8 +39,8 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    - Az Azure Stack csak támogatja. generációs VM egy (1) a rögzített méretű lemezt VHD-t a formázása. A rögzített formátum szerkezet a logikai lemezt lineárisan fájlon belül, így a lemez eltolás X van tárolva X. A blob végén egy kis lábléc írja le a VHD tulajdonságait. Győződjön meg arról, ha a lemezt rögzített, használja a [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell-parancsot.  
 
-    > [!IMPORTANT]  
-    >  Az Azure Stack nem támogatja a dinamikus lemez VHD-k. Egy virtuális Géphez van csatlakoztatva dinamikus lemez átméretezése sikertelen állapotban hagyja a virtuális Gépet. A probléma megoldásához törölje a virtuális Gépet a virtuális gép lemezét, a VHD-blob storage-fiókban lévő törlése nélkül. A, a konvertálás a virtuális Merevlemezt a dinamikus lemezről egy rögzített méretű lemezt, és hozza létre újból a virtuális gép.
+     > [!IMPORTANT]  
+     >  Az Azure Stack nem támogatja a dinamikus lemez VHD-k. Egy virtuális Géphez van csatlakoztatva dinamikus lemez átméretezése sikertelen állapotban hagyja a virtuális Gépet. A probléma megoldásához törölje a virtuális Gépet a virtuális gép lemezét, a VHD-blob storage-fiókban lévő törlése nélkül. A, a konvertálás a virtuális Merevlemezt a dinamikus lemezről egy rögzített méretű lemezt, és hozza létre újból a virtuális gép.
 
    - Legyen hatékonyabb, ha egy rendszerkép feltöltése az Azure Stack blob storage-ba, mint az Azure blob storage-ban, mert a rendszerkép leküldése az Azure Stack lemezképtárban kevesebb időt vesz igénybe.
 
@@ -50,9 +50,9 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    - Ahhoz, hogy a blob névtelenül elérhető-e, nyissa meg a storage-fiók blob tárolót, a Virtuálisgép-lemezkép VHD feltöltése. Válassza ki **Blob**, majd válassza ki **hozzáférési szabályzat**. Igény szerint a tároló közös hozzáférésű jogosultságkód létrehozása, és adja meg a blob URI részeként. Ez a lépés biztosítja, hogy a blob hozzáadhatja ezt képként használandó érhető el. Ha a blob nem érhető el névtelenül, a Virtuálisgép-lemezkép létrejön a hibás állapotban.
 
-    ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
+     ![Ugrás a storage-fiók BLOB](./media/azure-stack-add-vm-image/image1.png)
 
-    ![A nyilvános blob-hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
+     ![A nyilvános blob-hozzáférés beállítása](./media/azure-stack-add-vm-image/image2.png)
 
 2. Jelentkezzen be az Azure Stack operátori. A menüben válassza ki a **minden szolgáltatás** > **lemezképek** alatt **számítási** > **Hozzáadás**.
 
@@ -83,42 +83,42 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 3. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ```
+   ```
 
-  A **Add-AzsPlatformimage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
-  - **publisher**  
-    Például:`Canonical`  
-    A közzétevő neve, a felhasználók használni, amikor a lemezképet Virtuálisgép-lemezkép szegmens. Például **Microsoft**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **offer**  
-    Például:`UbuntuServer`  
-    Az ajánlat neve, a felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép szegmens. Például **WindowsServer**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **sku**  
-    Például:`14.04.3-LTS`  
-    A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép Termékváltozat neve szegmens. Például **Datacenter2016**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **Verzió**  
-    Például:`1.0.0`  
-    A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép verziója. Ez a verzió a következő formátumban kell  *\#.\#. \#*. Például **1.0.0-s**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **osType**  
-    Például:`Linux`  
-    A kép a osType kell lennie, vagy **Windows** vagy **Linux**.  
-  - **OSUri**  
-    Például:`https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
-    A blob-tároló URI-t is megadhat a egy `osDisk`.  
+   A **Add-AzsPlatformimage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
+   - **publisher**  
+     Például:`Canonical`  
+     A közzétevő neve, a felhasználók használni, amikor a lemezképet Virtuálisgép-lemezkép szegmens. Például **Microsoft**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **offer**  
+     Például:`UbuntuServer`  
+     Az ajánlat neve, a felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép szegmens. Például **WindowsServer**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **sku**  
+     Például:`14.04.3-LTS`  
+     A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép Termékváltozat neve szegmens. Például **Datacenter2016**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **Verzió**  
+     Például:`1.0.0`  
+     A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép verziója. Ez a verzió a következő formátumban kell  *\#.\#. \#*. Például **1.0.0-s**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **osType**  
+     Például:`Linux`  
+     A kép a osType kell lennie, vagy **Windows** vagy **Linux**.  
+   - **OSUri**  
+     Például:`https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+     A blob-tároló URI-t is megadhat a egy `osDisk`.  
 
-    További információkért tekintse meg a PowerShell-referencia, az a [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) parancsmag és a [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) parancsmagot.
+     További információkért tekintse meg a PowerShell-referencia, az a [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) parancsmag és a [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) parancsmagot.
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Egyéni Virtuálisgép-rendszerkép hozzáadása a Marketplace-en a PowerShell-lel
  
 1. [Az Azure Stack PowerShell telepítése](azure-stack-powershell-install.md).
 
-  ```PowerShell  
+   ```PowerShell  
     # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
     Add-AzureRMEnvironment `
       -Name "AzureStackAdmin" `
@@ -135,19 +135,19 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ```
+   ```
 
 2. Ha használ **Active Directory összevonási szolgáltatások**, használja a következő parancsmagot:
 
-  ```PowerShell
-  # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
-  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+   ```PowerShell
+   # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-  # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
-  $GraphAudience = "<GraphAudience endpoint for your environment>"
+   # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAudience endpoint for your environment>"
 
-  # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-  Add-AzureRMEnvironment `
+   # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
     -ArmEndpoint $ArmEndpoint
     ```
@@ -158,24 +158,24 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
 5. Készítse elő a VHD formátum (nem VHDX) a Windows vagy Linux operációs rendszer lemezképét, a Rendszerkép feltöltése a storage-fiók és az URI-t, amelyben a Virtuálisgép-lemezkép lekérhetők a PowerShell első.  
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ```
+   ```
 
 6. (Opcionális) Az adatlemezeket a Virtuálisgép-lemezkép részeként tömbje tölthet fel. Az adatlemezeket, a New-DataDiskObject parancsmaggal hozzon létre. Nyissa meg a Powershellt egy rendszergazda jogú parancssorba, majd futtassa:
 
-  ```PowerShell  
+   ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ```
+   ```
 
 7. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ```PowerShell  
+   ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ```
+   ```
 
     Az Add-AzsPlatformimage parancsmag és a New-DataDiskObject parancsmaggal kapcsolatos további információkért lásd: a Microsoft PowerShell [Azure Stack-operátorokról modul dokumentációjában](https://docs.microsoft.com/powershell/module/).
 
@@ -189,28 +189,28 @@ Ha már nincs szüksége a virtuálisgép-lemezkép feltöltött, törölheti a 
 
 3. Nyissa meg a PowerShell egy rendszergazda jogú parancssort, és futtassa:
 
-  ```PowerShell  
-  Remove-AzsPlatformImage `
+   ```PowerShell  
+   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ```
-  A **Remove-AzsPlatformImage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
-  - **publisher**  
-    Például:`Canonical`  
-    A közzétevő neve, a felhasználók használni, amikor a lemezképet Virtuálisgép-lemezkép szegmens. Például **Microsoft**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **offer**  
-    Például:`UbuntuServer`  
-    Az ajánlat neve, a felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép szegmens. Például **WindowsServer**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **sku**  
-    Például:`14.04.3-LTS`  
-    A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép Termékváltozat neve szegmens. Például **Datacenter2016**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
-  - **Verzió**  
-    Például:`1.0.0`  
-    A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép verziója. Ez a verzió a következő formátumban kell  *\#.\#. \#*. Például **1.0.0-s**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   ```
+   A **Remove-AzsPlatformImage** parancsmag a Virtuálisgép-lemezkép hivatkozik az Azure Resource Manager-sablonok segítségével értékeket adja meg. Az értékek a következők:
+   - **publisher**  
+     Például:`Canonical`  
+     A közzétevő neve, a felhasználók használni, amikor a lemezképet Virtuálisgép-lemezkép szegmens. Például **Microsoft**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **offer**  
+     Például:`UbuntuServer`  
+     Az ajánlat neve, a felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép szegmens. Például **WindowsServer**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **sku**  
+     Például:`14.04.3-LTS`  
+     A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép Termékváltozat neve szegmens. Például **Datacenter2016**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
+   - **Verzió**  
+     Például:`1.0.0`  
+     A felhasználók használni, amikor azok a Virtuálisgép-rendszerkép üzembe helyezése Virtuálisgép-lemezkép verziója. Ez a verzió a következő formátumban kell  *\#.\#. \#*. Például **1.0.0-s**. Vegyen fel egy szóközt vagy speciális karaktereket ezt a mezőt.  
     
-    A Remove-AzsPlatformImage parancsmaggal kapcsolatos további információkért lásd: a Microsoft PowerShell [Azure Stack-operátorokról modul dokumentációjában](https://docs.microsoft.com/powershell/module/).
+     A Remove-AzsPlatformImage parancsmaggal kapcsolatos további információkért lásd: a Microsoft PowerShell [Azure Stack-operátorokról modul dokumentációjában](https://docs.microsoft.com/powershell/module/).
 
 ## <a name="next-steps"></a>További lépések
 

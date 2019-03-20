@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235835"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104522"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -179,16 +179,16 @@ Importálja a letöltött fájlt a vCenter Serverre.
 3. Az asztalon kattintson a **Gyűjtő futtatása** parancsikonra.
 4. Kattintson a **Frissítések keresése** lehetőségre a gyűjtő felhasználói felületének felső sávján, és ellenőrizze, hogy a gyűjtő legújabb verzióban fut-e. Ha nem, a hivatkozás használatával töltse le a legújabb frissítési csomagot, és frissítse a gyűjtőt.
 5. Az Azure Migrate Collectorban nyissa meg a **Set up prerequisites** (Előfeltételek megadása) felületet.
-    - Válassza ki az Azure-felhő, amelyhez (az Azure globális vagy az Azure Government) áttelepítését tervezi.
-    - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
-    - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
-    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector) a gyűjtő fér hozzá.
+   - Válassza ki az Azure-felhő, amelyhez (az Azure globális vagy az Azure Government) áttelepítését tervezi.
+   - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
+   - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
+   - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector) a gyűjtő fér hozzá.
 
-      > [!NOTE]
-      > A proxykiszolgáló címét http://ProxyIPAddress vagy http://ProxyFQDN formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
+     > [!NOTE]
+     > A proxykiszolgáló címét <http://ProxyIPAddress> vagy <http://ProxyFQDN> formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
 
-    - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
-    - Töltse le és telepítse a VMware PowerCLI-t.
+   - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
+   - Töltse le és telepítse a VMware PowerCLI-t.
 
 6. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a vCenter-kiszolgáló nevét (FQDN, teljes tartománynév) vagy IP-címét.

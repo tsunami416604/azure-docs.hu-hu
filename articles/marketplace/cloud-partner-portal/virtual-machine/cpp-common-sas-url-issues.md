@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b20b1506dfcd32ea7d5bfca0847393d1652afb78
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: cdee17185b7051220f66ede3b9da50a333409e6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119267"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Általános SAS URL-cím problémákat és javítások
 
@@ -27,7 +27,7 @@ A következő táblázat felsorolja (amely használata esetén azonosíthatja é
 
 | **A probléma** | **Hibaüzenet** | **Fix** | 
 | --------- | ------------------- | ------- | 
-| &emsp;  *Hiba történt a lemezképek másolása* |  |  |  |
+| &emsp;  *Hiba történt a lemezképek másolása* |  |  |
 | "?" nem található az SAS URL-címe | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítés az SAS URL-címet használó eszközök ajánlott. |
 | "st" és "se" paraméterek nem az SAS URL-címe | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Frissítse az SAS URL-cím megfelelő **Kezdődátum** és **Záródátum** értékeket. | 
 | "sp = rl" nem az SAS URL-címe | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Az SAS URL-cím frissítése engedéllyel rendelkező `Read` és `List`. | 

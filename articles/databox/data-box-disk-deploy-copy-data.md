@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6a008072fc88b9dc800b792c13a6c77c31b31e51
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106899"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása az Azure Data Box-lemezek és ellenőrzése
 
@@ -169,8 +169,8 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     A teljesítmény optimalizálása érdekében használja a következő Robocopy-paramétereket az adatok másolásához.
 
     |    Platform    |    Többnyire kis méretű fájlok < 512 kB                           |    Többnyire közepes méretű fájlok 512 kB – 1 MB                      |    Többnyire nagy méretű fájlok > 1 MB                             |   
-    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-    |    Data Box Disk        |    4 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |  |
+    |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
+    |    Data Box Disk        |    4 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |    2 Robocopy munkamenetek * <br> 16 szál munkamenetenként    |
     
     **Minden egyes Robocopy munkamenet legfeljebb 150 millió fájl és 7000 könyvtárak.*
     
@@ -209,10 +209,10 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
  
 5. Módosítsa a `SampleConfig.json` fájlt.
  
-    - Adja meg a feladat nevét. Ezzel létrehoz egy mappát a Data Box Diskben, amely a későbbiekben tárolóként fog szolgálni a lemezekhez társított Azure Storage-fiókban. A feladat nevének meg kell felelnie az Azure-tárolókra vonatkozó elnevezési konvencióknak. 
-    - Így jegyezze fel az elérési út formátuma a forrás elérési utat adja meg a `SampleConfigFile.json`. 
-    - Adja meg a céllemezeknek megfelelő meghajtóbetűjeleket. Ekkor elkezdődik a forrásadatok másolása a lemezekre.
-    - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint az aktuális könyvtár érkezik, a `.exe` található.
+   - Adja meg a feladat nevét. Ezzel létrehoz egy mappát a Data Box Diskben, amely a későbbiekben tárolóként fog szolgálni a lemezekhez társított Azure Storage-fiókban. A feladat nevének meg kell felelnie az Azure-tárolókra vonatkozó elnevezési konvencióknak. 
+   - Így jegyezze fel az elérési út formátuma a forrás elérési utat adja meg a `SampleConfigFile.json`. 
+   - Adja meg a céllemezeknek megfelelő meghajtóbetűjeleket. Ekkor elkezdődik a forrásadatok másolása a lemezekre.
+   - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint az aktuális könyvtár érkezik, a `.exe` található.
 
      ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
