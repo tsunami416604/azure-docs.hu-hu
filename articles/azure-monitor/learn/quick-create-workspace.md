@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f5bc5edaccf07f4840a2db329fb5c3a0c51b7a6d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a68e40b7b1caf184fabb5df62d8b461fa2fa11e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999436"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834472"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics-munkaterület létrehozása az Azure Portalon
 Használja a **Log Analytics-munkaterületek** menüre, és hozzon létre egy Log Analytics-munkaterületet az Azure portal használatával. Log Analytics-munkaterület olyan Azure Monitor naplóadatok egyedi környezet. Az egyes munkaterületeken saját adattár és a konfigurációs van, és tárolja az adatokat egy adott munkaterület az adatforrások és megoldások vannak konfigurálva. Ha azt tervezi, a következő forrásokból származó adatok gyűjtése a Log Analytics-munkaterület szükséges:
@@ -46,13 +46,13 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
   
 2. Kattintson a **Hozzáadás**, majd válassza ki az egyik lehetőséget a következő elemeknél:
 
-  * Adja meg az új **Log Analytics-munkaterület** nevét, például: *DefaultLAWorkspace*. 
-  * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
-  * A **erőforráscsoport**, használhat egy meglévő erőforrás már telepítő csoporthoz, vagy hozzon létre egy újat.  
-  * Válasszon egy elérhető **hely**.  További információkért tekintse meg [Log Analytics az elérhető régiók](https://azure.microsoft.com/regions/services/).
-  * Ha 2018. április 2. után létrehozott új előfizetésben hoz létre munkaterületet, az automatikusan a *GB-alapú* díjcsomagot használja, és a tarifacsomag kiválasztásának lehetősége nem érhető el.  Ha április 2. előtt, vagy egy meglévő nagyvállalati szerződés (EA)-regisztrációhoz kötött előfizetéshez létrehozott meglévő előfizetéshez hoz létre munkaterületet hoz létre, válassza ki a kívánt tarifacsomagot.  Az elérhető csomagokról kapcsolatos további információkért lásd: [Log Analytics részletes Díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/).
+   * Adja meg az új **Log Analytics-munkaterület** nevét, például: *DefaultLAWorkspace*. 
+   * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
+   * A **erőforráscsoport**, használhat egy meglévő erőforrás már telepítő csoporthoz, vagy hozzon létre egy újat.  
+   * Válasszon egy elérhető **hely**.  További információkért tekintse meg [Log Analytics az elérhető régiók](https://azure.microsoft.com/regions/services/) , és keresse meg az Azure Monitor az **keresse meg a termék** mező.  
+   * Ha 2018. április 2. után létrehozott új előfizetésben hoz létre munkaterületet, az automatikusan a *GB-alapú* díjcsomagot használja, és a tarifacsomag kiválasztásának lehetősége nem érhető el.  Ha április 2. előtt, vagy egy meglévő nagyvállalati szerződés (EA)-regisztrációhoz kötött előfizetéshez létrehozott meglévő előfizetéshez hoz létre munkaterületet hoz létre, válassza ki a kívánt tarifacsomagot.  Az elérhető csomagokról kapcsolatos további információkért lásd: [Log Analytics részletes Díjszabásában](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-        ![Create Log Analytics resource blade](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
+        ![A Log Analytics-erőforrás paneljének létrehozása](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
 3. Miután a **Log Analytics-munkaterület** panelen megadta a szükséges adatokat, kattintson az **OK** gombra.  
 

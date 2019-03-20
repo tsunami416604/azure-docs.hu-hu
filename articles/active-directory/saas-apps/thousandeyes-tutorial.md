@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa43d37099d69441a5dde47327e784d67fa9ac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5d85c4dbd3cc1c3d827a3f8324e63f75eb942425
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189446"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ThousandEyes
 
@@ -214,7 +214,7 @@ Ez a szakasz célja ThousandEyes Britta Simon nevű felhasználó létrehozásá
 
     a. A **neve** szövegmezőbe írja be a nevet a felhasználó például **Britta Simon**.
 
-    b. A **E-mail** szövegmezőbe írja be az e-mailt, felhasználó, például **brittasimon@contoso.com**.
+    b. A **E-mail** szövegmezőbe írja be az e-mailt, felhasználó, például **brittasimon\@contoso.com**.
 
     b. Kattintson a **új felhasználó hozzáadása a fiókhoz**.
 

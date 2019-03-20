@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 5fb8f54f50d821e53ec260c67ad5cf56c7f5671b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 82910f7b29789fa777f6deb2c185c57e847e1c88
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109256"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -82,16 +82,16 @@ A tartóssági szint, amelyek jelzik, hogy a rendszer a jogosultságokat, amely 
 
 > [!WARNING]
 > A csomóponttípusok a bronz tartóssági futó beszerzése _jogosultság nélküli_. Ez azt jelenti, hogy infrastruktúra feladatok, amelyek hatással az állapot nélküli munkaterhelés nem kell leállt vagy késleltetett, ami hatással lehet a számítási feladatokat. Csak az állapot nélküli számítási feladatokat futtató csomóponttípusok csak bronz használja. Az éles számítási feladatokhoz Silver vagy javasolt felett. 
-
+> 
 > Függetlenül bármely tartóssági szint [felszabadítási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) Virtuálisgép-méretezési művelet szüntesse meg a fürt
 
 **Silver vagy Gold tartóssági szint használatának előnyei**
- 
+ 
 - Szükséges lépéseket és a horizontális leskálázási művelet csökkenti (azt jelenti, csomópont inaktiválásra és a Remove-ServiceFabricNodeState neve automatikusan).
 - Csökkenti a egy ügyfél által kezdeményezett helyben a VM-Termékváltozatok módosítási művelet vagy az Azure-infrastruktúra működését okozta adatvesztés kockázatát.
 
 **Silver vagy Gold tartóssági szint használatának hátrányai**
- 
+ 
 - Központi telepítések a virtuálisgép-méretezési, állítsa be és más kapcsolódó Azure-erőforrások késhet, is időtúllépéssel fejeződött be, vagy teljes egészében a fürtben, vagy az infrastruktúra szintjén kapcsolatos problémák blokkolhatja. 
 - Növeli a számát [replika életciklusesemények](service-fabric-reliable-services-lifecycle.md) (például elsődleges cseréje) oka az, hogy automatikus csomópont deactivations Azure-infrastruktúra műveletek során.
 - Vesz igénybe a csomópontok időszakokra, miközben az Azure platform szoftverfrissítéseket és a hardver karbantartási tevékenységek nem működik. Ezek a tevékenységek során letiltása/letiltott állapotú csomópontok jelenhet meg. Ez a fürt kapacitásának ideiglenesen csökkenti, de nem érinti a fürt vagy az alkalmazások rendelkezésre állását.

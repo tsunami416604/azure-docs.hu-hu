@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 0e1232391ddf4b57b5dad5ade9776e9c7cfea9b4
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 44c8b331ebb258c39a003c91e0711e6dfb87cb12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727331"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076293"
 ---
 # <a name="application-gateway-components"></a>Application gateway összetevők
 
  Egy application gateway-ügyfelek a kapcsolódási pont szolgál. Az alkalmazások bejövő forgalmának több háttérkészletek, például az Azure virtuális gépek, a virtual machine scale sets, App Services vagy a helyszíni vagy külső kiszolgálók között osztja el. Ehhez használja az ebben a cikkben leírt több összetevőt.
 
-![application-gateway-components](.\media\application-gateway-components\application-gateway-components.png)
+![application-gateway-components](./media/application-gateway-components/application-gateway-components.png)
 
 ## <a name="frontend-ip-address"></a>Előtérbeli IP-cím
 

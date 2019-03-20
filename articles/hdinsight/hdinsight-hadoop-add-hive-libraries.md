@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 4eb4db9a4057d072f348de48bee2f746f77cbb84
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6001d291581dc317da89cadbf3891e334362062b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715341"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897588"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor
 
@@ -51,7 +51,7 @@ A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/s
 
 * A storage-fiókot tartalmazó jar-fájlok a könyvtárban **kell** csatolható a HDInsight-fürt létrehozása során. Azt kell az alapértelmezett tárfiókot, vagy egy fiók során hozzáadott __opcionális konfigurációs__.
 
-* A WASB-elérési út a tárolóhoz, a Script Action paraméterként kell megadni. Például, ha a JAR-fájlok kivételével nevű tárolóban tárolt **libs** a storage-fiók nevű **mystorage**, a paraméter lehet **wasb://libs@mystorage.blob.core.windows.net/**.
+* A WASB-elérési út a tárolóhoz, a Script Action paraméterként kell megadni. Például, ha a JAR-fájlok kivételével nevű tárolóban tárolt **libs** a storage-fiók nevű **mystorage**, a paraméter lehet **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/**.
 
   > [!NOTE]  
   > Jelen dokumentum céljából feltételezzük, hogy már létrehozott egy tárfiókot, a blob-tárolóba, és feltölti a fájlokat.
@@ -79,7 +79,7 @@ A **Windows-alapú fürtök**: [https://hdiconfigactions.blob.core.windows.net/s
 
    * **ZOOKEEPER**: Hagyja üresen.
 
-   * **PARAMÉTEREK**: Adja meg a WASB-cím a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Például: **wasb://libs@mystorage.blob.core.windows.net/**.
+   * **PARAMÉTEREK**: Adja meg a WASB-cím a tároló és a storage-fiókhoz, amely tartalmazza a JAR-fájlok kivételével. Ha például **wasb://libs\@mystorage.blob.core.windows.net/**.
 
 3. Alsó részén a **Parancsfájlműveletek**, használja a **kiválasztása** gombra a konfiguráció mentéséhez.
 

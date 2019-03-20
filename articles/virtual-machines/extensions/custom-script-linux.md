@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b8f343c2293df6a1dec808addf8881c27514fc06
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436648"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082041"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script bővítmény 2-es verzió használata Linux rendszerű virtuális gépek
 A Custom Script bővítmény 2-es verzió letölti és futtatja a parancsfájlokat, Azure-beli virtuális gépeken. A bővítmény az üzembe helyezés utáni konfigurációs, a szoftver telepítése vagy bármely egyéb konfigurációs/felügyeleti feladat hasznos. Parancsfájlokat tölthet le az Azure Storage vagy egy másik elérhető-e internet-helyre, vagy megadhatja azokat a bővítmény-futtatókörnyezet. 
@@ -124,7 +124,7 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei
 * `skipDos2Unix`: (nem kötelező, boolean) dos2unix átalakítás parancsfájlalapú fájl URL-címek vagy parancsfájl kihagyja.
 * `timestamp` Ebben a mezőben csak az a mező értékét módosítsa úgy a parancsprogram újra végre-trigger (nem kötelező, a 32 bites egész szám) használatát.  Minden olyan egész értéket az elfogadható; Ez csak különbözőnek kell lennie, mint a korábbi értéket.
- * `commandToExecute`: (**szükséges** , ha a parancsfájl nincs beállítva, string) végrehajtásához a BelépésiPont-szkriptet. Helyette használja ezt a mezőt, ha a parancs tartalmazza a titkos kulcsok, például jelszavakat.
+  * `commandToExecute`: (**szükséges** , ha a parancsfájl nincs beállítva, string) végrehajtásához a BelépésiPont-szkriptet. Helyette használja ezt a mezőt, ha a parancs tartalmazza a titkos kulcsok, például jelszavakat.
 * `script`: (**szükséges** Ha commandToExecute nincs beállítva, string) a base64-kódolású (és opcionálisan a gzip'ed) szkript által/bin/sh.
 * `fileUris`: (nem kötelező, csak karakterlánc-tömbben) fájl(ok) le kell tölteni az URL-címeket.
 * `storageAccountName`: (nem kötelező, string) a tárfiók nevére. Ha storage hitelesítő adatai, adja meg az összes `fileUris` URL-címeket kell lennie az Azure-Blobok.

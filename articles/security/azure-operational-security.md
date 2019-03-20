@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5a407db97803d3c3be898893b7da6c1cb4aa94bb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901508"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -57,7 +57,7 @@ Ez a tanulmány belül a Microsoft Azure felhőalapú platform a Microsoft Azure
 
 A Microsoft Azure Monitor naplóira az IT-felügyeleti megoldást kínál a hibrid felhő áll. Használható önmagában, vagy kiterjesztése a System Center-telepítéssel, az Azure Monitor naplóira a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
 
-![Az Azure Monitor naplóira](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Azure Monitor-naplók](./media/azure-operational-security/azure-operational-security-fig1.png)
 
 Az Azure Monitor naplóira kezelheti a felhőben, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány. A felhő-és felhőközpontú világ számára készült, az Azure Monitor naplóira új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
 
@@ -67,12 +67,12 @@ Az Azure Monitor naplóira központi funkcióit az Azure-ban futó szolgáltatá
 
 | Szolgáltatás  | Leírás|
 | :------------- | :-------------|
-| Az Azure Monitor naplóira | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
+| Azure Monitor-naplók | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
 |Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
 | Backup | Készítsen biztonsági másolatot, és a kritikus fontosságú adatok helyreállítását. |
 | Site Recovery | Biztosítja a kritikus fontosságú alkalmazások magas rendelkezésre állását. |
 
-### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
@@ -80,7 +80,7 @@ Az Azure Monitor naplóira központi funkcióit az Azure-ban futó szolgáltatá
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 
 
-![Az Azure Monitor naplóira](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Azure Monitor-naplók](./media/azure-operational-security/azure-operational-security-fig2.png)
 
 Az Azure Monitor szolgáltatás a felhőbeli adatok biztonságosan kezeli a következő módszerekkel:
 -   az adatok elkülönítése
@@ -149,7 +149,7 @@ Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fe
 
 -   **Az adatok elkülönítése**: Adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat szervezet szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes.
 
--   **Adatelérési**: Biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása, a Microsoft ezért felelős munkatársai gyűjtött információk érhetik el vagy Azure-szolgáltatások által elemzett összeomlási memóriaképekhez feldolgozni-létrehozási események, Virtuálisgép-lemez pillanatképeihez és összetevőihez, amelyek véletlenül tartalmazhatnak ügyféladatokat vagy személyes adatokat a virtuális gépekről. Betartjuk a [Microsoft Online szolgáltatások használati feltételeit és adatvédelmi nyilatkozatát](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), mely állapot, amely a Microsoft nem használja az ügyféladatokat, vagy a nyer információt azokból hirdetési vagy hasonló kereskedelmi célú.
+-   **Adatelérési**: Biztonsági javaslatok és a lehetséges biztonsági fenyegetések kivizsgálása, a Microsoft ezért felelős munkatársai gyűjtött információk érhetik el vagy Azure-szolgáltatások által elemzett összeomlási memóriaképekhez feldolgozni-létrehozási események, Virtuálisgép-lemez pillanatképeihez és összetevőihez, amelyek véletlenül tartalmazhatnak ügyféladatokat vagy személyes adatokat a virtuális gépekről. Betartjuk a [Microsoft Online szolgáltatások használati feltételeit és adatvédelmi nyilatkozatát](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31), mely állapot, amely a Microsoft nem használja az ügyféladatokat, vagy a nyer információt azokból hirdetési vagy hasonló kereskedelmi célú.
 
 -   **Adatok használatával**: A Microsoft minták és több bérlő különböző bérlőknél észlelt fenyegetésekkel kapcsolatos Tudásbázis alkalmaz a használatával javíthatja a megelőzési és észlelési funkcióihoz; ismertetett adatvédelmi kötelezettségeinek megfelelően tesszük a [adatvédelmi nyilatkozat](https://www.microsoft.com/en-us/privacystatement/OnlineServices/).
 
@@ -271,6 +271,7 @@ A következő típusú hitelesített és névtelen kérelmeket a rendszer napló
 | -Kérések egy közös hozzáférésű Jogosultságkód (SAS), beleértve a sikeres és sikertelen kérelmek |Az ügyfél és a kiszolgáló időkorlátja hibák |
 |   Elemzési adatok kérelmeket |    Sikertelen GET kérelmek 304 (nem módosított). Hibakód: |
 | Kérést hoz létre a Storage Analytics, például a napló a létrehozás vagy törlés, a program nem naplózza. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) és [Storage Analytics naplóformátum](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format) témaköröket. | Az összes többi sikertelen névtelen kérelmek nem jelentkezett. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-logged-operations-and-status-messages) és [Storage Analytics naplóformátum](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics-log-format). |
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
 Azure ad-ben is magában foglalja a teljes körű identitáskezelési képességeket, beleértve a multi-factor authentication, az eszköz regisztrálása, önkiszolgáló jelszókezelés, önkiszolgáló csoportfelügyelet, kiemelt jogosultságú fiókok kezelése, szerepköralapú hozzáférés vezérlő, Alkalmazáshasználat monitorozását, részletes naplózást, és biztonsági figyelés és riasztások.
@@ -293,7 +294,7 @@ A jelentések az esemény nevét, az aktor a célként megadott erőforrás éri
 |Bejelentkezések potenciálisan fertőzött eszközökről |Egyéni felhasználói tevékenység |   |
 |Rendellenes bejelentkezési tevékenységet mutató felhasználók |Csoporttevékenység-jelentés |   |
 | |Jelszó-visszaállítási regisztrációs tevékenységjelentés |   |
-| |Jelszó-visszaállítási tevékenység |   | |
+| |Jelszó-visszaállítási tevékenység |   |
 
 
 

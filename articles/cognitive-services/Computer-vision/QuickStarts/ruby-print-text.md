@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d2d9f9d333afaf134b7fd188d29ddde1bfc4960f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 738700a481da76d8ed6893fa1cc3276b2c5c814b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878833"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877513"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-ruby-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Ruby használatával a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
@@ -143,13 +143,9 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A minta elemzi és 
 }
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a fájlt.
-
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel a Computer Vision API kép elemzése, hírességek és tereptárgyak felismerése észleléséhez miniatűrök készülnek, és nyomtatott és kézzel írott szövegek kinyerése. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Tekintse át a Computer Vision API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

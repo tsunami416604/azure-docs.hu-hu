@@ -15,12 +15,12 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bf5ae22fe8bf06d29c8c812a18cffcef14865c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550804"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002048"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>A PIM saját Azure-erőforrás szerepkörök aktiválása
 
@@ -36,9 +36,13 @@ Amikor szüksége van egy Azure-erőforrás szerepkör, aktiválás segítségé
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**. A PIM-csempét az irányítópulton adásával kapcsolatos információkért lásd: [használatához a PIM](pim-getting-started.md).
 
-1. Kattintson a **saját szerepkörök** a jogosult listájának megtekintéséhez az Azure AD-címtárbeli szerepkörök és az Azure-erőforrások szerepköreihez.
+1. Kattintson a **saját szerepkörök**.
 
     ![Az Azure AD-címtárbeli szerepkörök és az Azure-erőforrások szerepköreihez – saját szerepkörök](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+
+1. Kattintson a **Azure-erőforrások szerepköreihez** a jogosult Azure-erőforrások szerepköreihez listájának megtekintéséhez.
+
+   ![Azure-erőforrásszerepkörök](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. Az a **Azure-erőforrásszerepkörök** list, keresse meg a szerepkör aktiválásához.
 

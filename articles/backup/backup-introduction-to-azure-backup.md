@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2888f291980b83b0c917e88f65d06ebaa6c8348e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544103"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994415"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -54,6 +54,7 @@ Az alábbi táblázatból megtudhatja, hogy az egyes Azure Backup-összetevők m
 | Azure IaaS virtuális gép biztonsági mentése |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Recovery Services-tároló</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Mik az egyes összetevők üzembe helyezési lehetőségei?
+
 | Összetevő | Üzembe helyezhető az Azure-ban? | Üzembe helyezhető a helyszínen? | A céltároló támogatott |
 | --- | --- | --- | --- |
 | Azure Backup (MARS) ügynöke |<p>**Igen**</p> <p>Az Azure Backup ügynöke az Azure-ban futó bármely Windows Server rendszerű virtuális gépre telepíthető.</p> |<p>**Igen**</p> <p>Az Azure Backup ügynöke bármely Windows Server rendszerű virtuális gépre vagy fizikai gépre telepíthető.</p> |<p>Recovery Services-tároló</p> |
@@ -114,6 +115,7 @@ Az Azure Backup lehetővé teszi teljes, felügyelt lemezes virtuális gépek vi
 A következő szakaszok táblázatai az egyes Azure Backup-összetevők különböző funkcióinak elérhetőségét vagy támogatottságát foglalják össze. A további támogatásra vagy részletekre vonatkozó információkat a táblázatok alatt találja.
 
 ### <a name="storage"></a>Storage
+
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Recovery Services-tároló |![Igen][green] |![Igen][green] |![Igen][green] |![Igen][green] |
@@ -121,7 +123,7 @@ A következő szakaszok táblázatai az egyes Azure Backup-összetevők különb
 | Szalagos tárolás | |![Igen][green] | | |
 | Tömörítés <br/>(a Recovery Services-tárolóban) |![Igen][green] |![Igen][green] |![Igen][green] | |
 | Növekményes biztonsági mentés |![Igen][green] |![Igen][green] |![Igen][green] |![Igen][green] |
-| Lemezdeduplikáció | |![Részlegesen][yellow] |![Részlegesen][yellow] | | |
+| Lemezdeduplikáció | |![Részlegesen][yellow] |![Részlegesen][yellow] | |
 
 ![tábla kulcsa](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -155,6 +157,7 @@ A **különbségi biztonsági mentés** kizárólag a kezdeti biztonsági menté
 A **növekményes biztonsági mentés** tárterület- és sávszélesség-kihasználása nagyon hatékony, mivel kizárólag azokat az adatblokkokat tárolja, amelyek az előző biztonsági mentés óta módosultak. A növekményes biztonsági mentés használata esetén nincs szükség rendszeres teljes biztonsági mentésekre. A példában teljes biztonsági mentés készül az első hónapban, az A2, A3, A4 és A9 blokkok meg lesznek jelölve módosítottként, és továbbítva lesznek a következő hónapra. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva. A kevesebb adat mozgatásával tárterület és hálózati erőforrások takaríthatóak meg, és így csökken a teljes birtoklási költség.
 
 ### <a name="security"></a>Biztonság
+
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Hálózati biztonság<br/> (az Azure-hoz) |![Igen][green] |![Igen][green] |![Igen][green] |![Igen][green] |
@@ -174,6 +177,7 @@ A kiszolgálókról a Recovery Services-tárolóba érkező minden biztonsági m
 Az Azure virtuális gépek biztonsági mentéséhez titkosítást kell beállítani a virtuális gépen *belül*. Az Azure Backup támogatja az Azure Disk Encryption szolgáltatást, amely a BitLockert használja Windows rendszerű virtuális gépeken és a **dm-crypt**-et Linux rendszerű virtuális gépeken. Az Azure Backup a háttérben az [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) használatával biztosít védelmet az inaktív adatok számára.
 
 ### <a name="network"></a>Network (Hálózat)
+
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Hálózati tömörítés <br/>(a **biztonsági mentési kiszolgálóhoz**) | |![Igen][green] |![Igen][green] | |

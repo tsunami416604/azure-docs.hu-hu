@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 44601d069f8c93e6101b5856e49ecf8c4b519e78
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4862377a8441d5ec920d6b52dbed8ad405144227
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857963"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Service Bus-üzenettémák és előfizetések használata PHP
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan használható a Service Bus-üzenettémák és előf
 A PHP-alkalmazás létrehozása, amely hozzáfér az Azure Blob service egyetlen követelménye, hogy az osztályok hivatkozhat a [php-hez készült Azure SDK-t](../php-download-sdk.md) származó a kódon belül. Bármely fejlesztői eszközök segítségével hozzon létre az alkalmazás vagy a Jegyzettömböt.
 
 > [!NOTE]
-> A PHP-telepítés is rendelkeznie kell a [OpenSSL bővítmény](http://php.net/openssl) telepítve és engedélyezve van.
+> A PHP-telepítés is rendelkeznie kell a [OpenSSL bővítmény](https://php.net/openssl) telepítve és engedélyezve van.
 > 
 > 
 
@@ -341,5 +341,5 @@ További információkért lásd: [üzenetsorok, témakörök és előfizetések
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
-[require-once]: http://php.net/require_once
+[require-once]: https://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md

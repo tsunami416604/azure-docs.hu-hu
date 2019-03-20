@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 228692ede47bd67b25bfc4bd23b90666a8505107
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26b3e2144094bfd9b10367a48226c836c6152b79
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező GetThere
 
@@ -105,12 +105,14 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GetThere, hajtsa vé
     ![GetThere tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be egy URL-címe:
+
     | |
     |--|
     | `getthere.com` |
     | `http://idp.getthere.com` |
 
     b. Az a **válasz URL-cím** szöveg egyikét sem írja be az alábbi URL-címek:
+    
     | |
     |--|
     | `https://wx1.getthere.net/login/saml/post.act` |
@@ -183,7 +185,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: c711ea3636a3ea045b4a145481f9da156b8c5bfc
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246984"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852204"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A helyi Azure Sentinel előzetes verzió
 
@@ -43,8 +43,9 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 - Közreműködői jogosultságokat a bérlő Azure Sentinel-engedélyezése
 
 - A bérlő globális vagy biztonsági rendszergazdai engedélyek
+ 
 
-## <a name="enable-azure-sentinel"></a>Az Azure Sentinel engedélyezése
+## Az Azure Sentinel engedélyezése <a name="enable"></a>
 
 1. Lépjen be az Azure Portalra.
 2. Győződjön meg arról, hogy az előfizetés, amelyben az Azure-Sentinel létrehozta, van-e kiválasztva. 
@@ -56,9 +57,10 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 
    ![keresés](./media/quickstart-onboard/choose-workspace.png)
 
-  >[!NOTE] 
-  > - **Munkaterület helye** fontos megérteni, hogy a kiválasztott munkaterület a földrajzi helyen tárolt, az Azure Sentinel-adatfolyam minden adat.  
-  > - Azure Security Center által létrehozott alapértelmezett munkaterület nem jelenik a lista; nem telepíthető az Azure-Sentinel őket.
+   >[!NOTE] 
+   > - **Munkaterület helye** fontos megérteni, hogy a kiválasztott munkaterület a földrajzi helyen tárolt, az Azure Sentinel-adatfolyam minden adat.  
+   > - Azure Security Center által létrehozott alapértelmezett munkaterület nem jelenik a lista; nem telepíthető az Azure-Sentinel őket.
+   > - Az Azure-Sentinel futtassa a következő régiók valamelyikében üzembe helyezett munkaterületek:  Délkelet-Ausztrália, közép-Kanada, közép-India, USA keleti RÉGIÓJA, USA 2. keleti régiója – EUAP (Kanári), kelet-japán, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati.
 
 6. Kattintson a **hozzáadása Azure Sentinel**.
   

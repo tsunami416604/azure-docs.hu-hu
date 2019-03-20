@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884120"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
 
@@ -29,7 +29,7 @@ Telemetria támogatja a standard szintű bővíthetőségi modell segítségéve
 
 A kérés neve a kérés feldolgozásához igénybe vett kódelérési út jelöli. Alacsony cardinality értéke, hogy jobban kérelmek csoportosítása. A HTTP-kérések azt jelöli, a HTTP-metódus és egy URL-cím elérési út sablont, például `GET /values/{id}` nélkül a tényleges `id` értéket.
 
-Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagybetűk meg. A felhasználói felület a csoportosítás akkor kis-és nagybetűket, `GET /Home/Index` külön számít a `GET /home/INDEX` annak ellenére, hogy milyen gyakran eredményeznek ugyanazon vezérlő és a művelet végrehajtását. Amelyek oka, hogy vannak-e az általános URL-címek [kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Tekintse meg, ha az összes érdemes `404` történt kisbetűvel írt URL-címek esetében. Több a kérés a tenantnév-gyűjtemény által az ASP.Net Web SDK-olvashat a [blogbejegyzés](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagybetűk meg. A felhasználói felület a csoportosítás akkor kis-és nagybetűket, `GET /Home/Index` külön számít a `GET /home/INDEX` annak ellenére, hogy milyen gyakran eredményeznek ugyanazon vezérlő és a művelet végrehajtását. Amelyek oka, hogy vannak-e az általános URL-címek [kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Tekintse meg, ha az összes érdemes `404` történt kisbetűvel írt URL-címek esetében. Több a kérés a tenantnév-gyűjtemény által az ASP.NET Web SDK-olvashat a [blogbejegyzés](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maximális hossz: 1024 karakternél
 

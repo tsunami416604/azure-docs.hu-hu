@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de83ddec2884d4bd10ea85f4708d534b8e3f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eff79b31e926d382d98416b585ca2af54b3e87d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872642"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs Node.js használatával
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan átalakítandó szöveg-hang transzformációs Node.js és a szöveg-hang transzformációs REST API használatával. Ebben az útmutatóban a kérelem törzsében van strukturálva, [Speech összefoglaló Markup Language (SSML)](speech-synthesis-markup.md), amely lehetővé teszi, hogy a válasz nyelv és válassza ki.
 
-Ez a rövid útmutatóhoz egy [Azure Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beszédszolgáltatás erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
+Ez a rövid útmutatóhoz egy [Azure Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beszédszolgáltatások erőforrással. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](get-started.md) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Node 8.12.x vagy újabb](https://nodejs.org/en/)
 * [A Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), vagy kedvenc szövegszerkesztőjével
-* A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Itt igényelhet ingyenesen! ](get-started.md).
+* Egy Azure-előfizetést a beszédszolgáltatások kulcs. [Itt igényelhet ingyenesen! ](get-started.md).
 
 ## <a name="create-a-project-and-require-dependencies"></a>Hozzon létre egy projektet, és a szükséges függőségek
 
@@ -53,9 +53,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-A szöveg-hang transzformációs REST API egy hozzáférési jogkivonatot a hitelesítéshez szükséges. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a függvény kicserél egy hozzáférési jogkivonatot a Speech Service előfizetői azonosítóját a `issueToken` végpont.
+A szöveg-hang transzformációs REST API egy hozzáférési jogkivonatot a hitelesítéshez szükséges. A hozzáférési jogkivonatot kapjon egy exchange szükség. Ez a függvény kicserél egy hozzáférési token használatával beszédszolgáltatások előfizetői azonosítóját a `issueToken` végpont.
 
-Ez a példa feltételezi, hogy a beszédfelismerési szolgáltatás előfizetését az USA nyugati régiójában. Ha egy másik régiót használ, módosítsa a `uri`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+Ez a minta azt feltételezi, hogy a Speech Services-előfizetés az USA nyugati régiójában. Ha egy másik régiót használ, módosítsa a `uri`. A teljes listát lásd: [régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Másolja a projektbe a következő kódot:
 
@@ -80,7 +80,7 @@ A következő szakaszban a függvény, amely az szöveg-hang transzformációs A
 
 ## <a name="make-a-request-and-save-the-response"></a>Kérés és a válasz mentése
 
-Ide fog a kérést a szöveg-hang transzformációs API és a speech válasz mentése. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `uri`. További információkért lásd: [beszédszolgáltatás régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Ide fog a kérést a szöveg-hang transzformációs API és a speech válasz mentése. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `uri`. További információkért lásd: [beszédszolgáltatások régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Következő lépésként hozzá kell a kéréshez szükséges fejlécek. Győződjön meg arról, hogy frissítenie `User-Agent` az erőforrás (az Azure Portalon található), és a készlet nevére `X-Microsoft-OutputFormat` , az előnyben részesített hangkimeneti. Kimeneti formátumok teljes listáját lásd: [hang kimenete](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs).
 

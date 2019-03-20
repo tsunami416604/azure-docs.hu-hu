@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bdc98a87a71dc7f8552f4bf869ec035409e0535e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843674"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Mit takar a tartalomkézbesítési hálózat az Azure-on?
 Egy tartalomkézbesítési hálózat (CDN) kiszolgálók olyan elosztott hálózata, amely hatékonyan kézbesíti a webes tartalmakat a felhasználóknak. A CDN-ek a késés minimalizálása érdekében gyorsítótárazott tartalmat tárolnak a végfelhasználók közelében lévő jelenléti pontok (POP) peremhálózati kiszolgálóin. 
@@ -59,7 +59,7 @@ Az egyes Azure-előfizetések alapértelmezett korlátokkal rendelkeznek a köve
  - A CDN-profilokban létrehozható végpontok száma. 
  - A végpontokra leképezhető egyéni tartományok száma.
 
-A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlátokkal](https://docs.microsoft.com/azure/azure-subscription-service-limits#cdn-limits) kapcsolatos szakaszt.
+A CDN-előfizetés korlátaival kapcsolatos információért lásd a [CDN-korlátokkal](https://docs.microsoft.com/azure/azure-subscription-service-limits) kapcsolatos szakaszt.
     
 ## <a name="azure-cdn-features"></a>Az Azure CDN szolgáltatásai
 Az Azure CDN az alábbi főbb szolgáltatásokat kínálja:
@@ -79,4 +79,3 @@ Az egyes Azure CDN termékek által támogatott szolgáltatások teljes listáj�
 - Ismerje meg, hogyan automatizálhatja az Azure CDN-t a [.NET](cdn-app-dev-net.md) vagy a [Node.js](cdn-app-dev-node.md) segítségével.
 - Ha szeretné megtekinteni az Azure CDN-t működés közben, nézze meg az [Azure CDN videóit](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest).
 - A legújabb Azure CDN-funkciókkal kapcsolatos információkért lásd: [Azure CDN blog](https://azure.microsoft.com/blog/tag/azure-cdn/).
-

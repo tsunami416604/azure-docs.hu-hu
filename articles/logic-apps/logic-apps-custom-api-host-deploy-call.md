@@ -10,18 +10,18 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880064"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Üzembe helyezése és munkafolyamataiból Azure Logic Apps egyéni API-k hívása
 
 Miután [egyéni API-k létrehozása](./logic-apps-create-api-app.md) használni a logikai alkalmazások munkafolyamataiba, telepítenie kell az API-k őket meghívása előtt. Telepítheti az API-k [webes alkalmazások](../app-service/overview.md), érdemes megfontolni az API-t, de [API-alkalmazások](../app-service/app-service-web-tutorial-rest-api.md), könnyebben ami a a feladatot, amikor készíthet, üzemeltethet és felhasználása a felhőben és helyszíni API-k. Nem kell minden olyan kódot az API-k – csupán telepítse kódját egy API-alkalmazásba. Az API-k is üzemeltethet [Azure App Service](../app-service/overview.md), a platform--szolgáltatásként (PaaS) kínál, amely a nagy mértékben skálázható, egyszerű API-t üzemeltető biztosít.
 
-Bár minden olyan API-t a legjobb élmény meghívhat egy logikai alkalmazást, a, adjon hozzá [OpenAPI (korábban Swagger) metaadat](http://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le. Az OpenAPI-fájl segítségével könnyebben integrálhatja, és a logic apps segítségével jobban használható az API.
+Bár minden olyan API-t a legjobb élmény meghívhat egy logikai alkalmazást, a, adjon hozzá [OpenAPI (korábban Swagger) metaadat](https://swagger.io/specification/) , amely az API műveleteit és paramétereit írja le. Az OpenAPI-fájl segítségével könnyebben integrálhatja, és a logic apps segítségével jobban használható az API.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Az API-webalkalmazás vagy API-alkalmazás üzembe helyezése
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 84f17b76f03c01d0b1441a50b9bcbddc1dfe2ef3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851313"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Gyermek runbookok az Azure Automationben
 
@@ -84,6 +84,9 @@ Ha ugyanazt az Automation-fiókon belül feladatok egynél több előfizetéssel
 Az alábbi példa egy gyermek runbookot indít paraméterekkel, és megvárja, amíg befejeződik a Start-AzureRmAutomationRunbook használatával-paramétert várja. Ha befejeződött, a kimenetét a gyermekrunbooktól érkező gyűjti. Használandó `Start-AzureRmAutomationRunbook`, hitelesítenie kell az Azure-előfizetéshez.
 
 ```azurepowershell-interactive
+# Ensures you do not inherit an AzureRMContext in your runbook
+Disable-AzureRmContextAutosave –Scope Process
+
 # Connect to Azure with RunAs account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
@@ -101,7 +104,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRMContext $AzureContext `
     –Parameters $params –wait
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 43f2694f597d99edaf127a6afd64376cca33dad2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107882"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban
 Ez a cikk bemutatja egy SQL Server Always On rendelkezésre állási csoport terheléselosztó létrehozása az Azure virtual machines szolgáltatásban, amely futtatja az Azure Resource Manager. Rendelkezésre állási csoport terheléselosztó van szükség, ha az SQL Server-példányok Azure-beli virtuális gépeken. A terheléselosztó IP-címét a rendelkezésre állási csoport figyelőjének tárolja. Ha egy rendelkezésre állási csoportban több régióban is kiterjed, minden egyes régió egy terheléselosztó van szüksége.
@@ -235,18 +235,18 @@ Az IP-címet ad hozzá egy terheléselosztó és az Azure portal, tegye a követ
 
 10. Adja meg az új terheléselosztási szabályt a következő beállításokkal:
 
-   |Beállítás |Érték
-   |:-----|:----
-   |**Name (Név)** |A terheléselosztási szabályt azonosító nevet. 
-   |**Előtérbeli IP-cím** |Válassza ki a létrehozott IP-cím. 
-   |**Protocol (Protokoll)** |TCP
-   |**Port** |Használhatja az SQL Server-példányok által használt portot. Egy alapértelmezett példány, 1433-as portot használja, változtatta meg. 
-   |**Háttérport** |Ugyanazt az értéket, **Port**.
-   |**Háttérkészlet** |A készlet, amely tartalmazza a virtuális gépek és az SQL Server-példányokat. 
-   |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet megőrzését** |None
-   |**Üresjárat időkorlátja (perc)** |Alapértelmezett (4)
-   |**Nem fix IP (közvetlen kiszolgálói válasz)** | Engedélyezve
+    |Beállítás |Érték
+    |:-----|:----
+    |**Name (Név)** |A terheléselosztási szabályt azonosító nevet. 
+    |**Előtérbeli IP-cím** |Válassza ki a létrehozott IP-cím. 
+    |**Protocol (Protokoll)** |TCP
+    |**Port** |Használhatja az SQL Server-példányok által használt portot. Egy alapértelmezett példány, 1433-as portot használja, változtatta meg. 
+    |**Háttérport** |Ugyanazt az értéket, **Port**.
+    |**Háttérkészlet** |A készlet, amely tartalmazza a virtuális gépek és az SQL Server-példányokat. 
+    |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
+    |**Munkamenet megőrzését** |None
+    |**Üresjárat időkorlátja (perc)** |Alapértelmezett (4)
+    |**Nem fix IP (közvetlen kiszolgálói válasz)** | Engedélyezve
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Az új IP-címet használja a rendelkezésre állási csoport konfigurálása
 

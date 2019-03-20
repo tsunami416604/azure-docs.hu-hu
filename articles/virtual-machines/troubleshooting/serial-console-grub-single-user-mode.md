@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814470"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106236"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeg egyesített Rendszerbetöltőt, ami valószínűleg a legfontosabb, láthatja, ha a gép. Megjeleníti az operációs rendszer megkezdése előtt, mert nem érhető el SSH-n keresztül. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
@@ -187,7 +187,7 @@ SLES GRUB-hozzáféréshez YaST rendszerbetöltőt konfiguráció szükséges. E
 1. Keresse meg a kernel sor azt kezdődik `linux`
 1. Hozzáfűzés `systemd.unit=emergency.target` a sor végére
 1. Indítsa újra ezeket a beállításokat, és írja be a vészhelyzeti rendszerhéj a Ctrl + X
-> Vegye figyelembe, hogy azt a rendszer eldobja a vészhelyzeti shellbe egy _csak olvasható_ fájlrendszer. Ha azt szeretné, hogy módosítani szeretné a fájlokat, szüksége lesz az olvasási és írási engedélyekkel fájlrendszer újbóli csatlakoztatásához. Ehhez adja meg a `mount -o remount,rw /` a rendszerhéjba van beépítve
+   > Vegye figyelembe, hogy azt a rendszer eldobja a vészhelyzeti shellbe egy _csak olvasható_ fájlrendszer. Ha azt szeretné, hogy módosítani szeretné a fájlokat, szüksége lesz az olvasási és írási engedélyekkel fájlrendszer újbóli csatlakoztatásához. Ehhez adja meg a `mount -o remount,rw /` a rendszerhéjba van beépítve
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux-hozzáférés
 Sokkal például a Red Hat Enterprise Linux, az Oracle Linux egyfelhasználós üzemmódban szükséges grub-HIBÁT, és a gyökér szintű felhasználó engedélyezni kell.

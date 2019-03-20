@@ -10,16 +10,30 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2e51bdd24f33789a95017c9fe5df88b0bb55de26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005506"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK kibocsátási megjegyzései
 
 A következő szakaszok lista módosul a legfrissebb verziókban.
+
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>A cognitive Services beszédfelismerő eszközök SDK 1.3.1: A 2019-március kiadás 
+
+* Frissítve a [beszéd SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) verzióra 1.3.1 összetevőt. További információkért lásd: a [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew). 
+*   Frissített ébresztési word kezelése, tekintse meg a használhatatlanná tévő változások.
+*   Mintaalkalmazás hozzáadása nyelvválasztás beszédfelismerés és a fordítás.
+
+**Használhatatlanná tévő változásai** 
+
+*   [Hálózati ébresztési szó telepítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) lett egyszerűsített, azt az alkalmazás részeként, és nem kell külön telepíteni az eszközön.
+*   Az ébresztési word felismerés megváltozott, és két események támogatottak.
+    - RecognizingKeyword, azt jelzi, a beszéd eredmény (nem ellenőrzött) kulcsszó szöveget tartalmaz.
+    - RecognizedKeyword, azt jelzi, hogy az adott kulcsszó FELISMERVE befejeződött kulcsszó felismerése.
+
 
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services Speech Devices SDK 1.1.0: 2018-november kiadás 
 

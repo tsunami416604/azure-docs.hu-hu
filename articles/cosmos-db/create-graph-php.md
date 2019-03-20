@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: e7ca026d47952721c7aa28de401738ef50b697c6
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: aace9b61ae7625f1d3bbed5181fd88e367ea8f12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082755"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Gráfadatbázis létrehozása a PHP és az Azure portal segítségével Azure Cosmos DB-ben
 
@@ -239,17 +239,17 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 12. Most már összekapcsolhatja a rakesh és az ashley elemet. Győződjön meg arról, hogy az **ashley** elem van kijelölve a **Találatok** listában, majd kattintson a jobb alsó sarokban, a **Célok** elem mellett lévő Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
 
-   ![Gráfcsúcspont céljának módosítása](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Gráfcsúcspont céljának módosítása](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. A **Cél** mezőbe írja be a *rakesh* nevet, az **Élcímke** mezőbe pedig a *knows* karakterláncot, majd jelölje be a jelölőnégyzetet.
 
-   ![ashley és rakesh közötti kapcsolat hozzáadása az Adatkezelőben](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+    ![ashley és rakesh közötti kapcsolat hozzáadása az Adatkezelőben](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Ezután válassza ki a **rakesh** elemet a találatok listájából. Láthatja, hogy az ashley és a rakesh elem össze van kapcsolva. 
 
-   ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+    ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   Ezzel befejezte a gyors útmutató erőforrások létrehozására vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
+    Ezzel befejezte a gyors útmutató erőforrások létrehozására vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

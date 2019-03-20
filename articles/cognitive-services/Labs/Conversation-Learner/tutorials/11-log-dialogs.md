@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9a819f94ae0cc90d86fdbdf4c9201f1d5a2df6ee
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213344"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170496"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Bejelentkezés párbeszédpanelek Beszélgetéstanuló modell
 
@@ -55,6 +55,8 @@ Ez a modell "city" nevű egy entitást tartalmaz, és az adott városban időjá
 9. Válassza ki a választ, a "Austin az időjárás valószínűleg napsütéses."
 10. A "Mentés másként Train párbeszédpanel" gombra.
     - Képzési azonnal megkezdődik
+
+![](../media/T11_logdialog.png)
 
 Utolsó megjegyzés. Üzleti szükségleteinek a beszélgetés naplózási funkció kikapcsolható úgy a beállításokat és az eszközhitelesítést "beszélgetések Log."
 

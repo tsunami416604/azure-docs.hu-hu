@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc04afead8742c9f384287ecb8d33c54770456b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447387"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994638"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Beszélgetéstanuló robotprogramok üzembe helyezése
 
@@ -45,7 +45,7 @@ A beszélgetés Learner felhasználói felületén kívül robotprogramok futtat
     npm run ui
     ```
 
-2. Nyissa meg böngészőben http://localhost:5050 
+2. Nyissa meg böngészőben `http://localhost:5050` 
 
 3. Kattintson a Beszélgetéstanuló modellel ismerkedhet meg azonosítója
 
@@ -109,20 +109,20 @@ Az alábbiakban lépésről lépésre ismerteti, hogyan telepíthető egy beszé
 
 3. Az Azure Portalon szerkesztheti az újonnan létrehozott Web App Bot erőforrás.
 
-    1. Kattintson az "Alkalmazás beállítások" nav elemet a bal oldalon
-    1. Görgessen le az "Alkalmazás beállítások" szakaszban
-    2. Adja hozzá ezeket a beállításokat:
+   1. Kattintson az "Alkalmazás beállítások" nav elemet a bal oldalon
+   1. Görgessen le az "Alkalmazás beállítások" szakaszban
+   2. Adja hozzá ezeket a beállításokat:
 
-        Környezeti változó | érték
-        --- | --- 
-        CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
-        CONVERSATION_LEARNER_MODEL_ID      | Alkalmazás-azonosító GUID, a beszélgetés Learner felhasználói felületen a "beállítások" modell szerzett >
-        LUIS_AUTHORING_KEY               | Ehhez a modellhez kulcs létrehozási LUIS
-        LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de a közzétett robotok kerülje a szerzői műveletek kvótájának ajánlott.
+       Környezeti változó | érték
+       --- | --- 
+       CONVERSATION_LEARNER_SERVICE_URI | „https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/”
+       CONVERSATION_LEARNER_MODEL_ID      | Alkalmazás-azonosító GUID, a beszélgetés Learner felhasználói felületen a "beállítások" modell szerzett >
+       LUIS_AUTHORING_KEY               | Ehhez a modellhez kulcs létrehozási LUIS
+       LUIS_SUBSCRIPTION_KEY            | Nem kötelező, de a közzétett robotok kerülje a szerzői műveletek kvótájának ajánlott.
     
-    4. Az oldal tetején a "Mentés" gombra
-    5. Nyissa meg a "Build" nav elemet a bal oldalon
-    6. Kattintson az "A folyamatos üzembe helyezés konfigurálása" 
-    7. Kattintson a "Telepítés" ikonra a központi telepítések
-    8. Kattintson a "Kötelező beállítások"
-    9. Válassza ki a forrás, amennyiben rendelkezésre áll-e a robot kód, és konfigurálja a forrás.
+   4. Az oldal tetején a "Mentés" gombra
+   5. Nyissa meg a "Build" nav elemet a bal oldalon
+   6. Kattintson az "A folyamatos üzembe helyezés konfigurálása" 
+   7. Kattintson a "Telepítés" ikonra a központi telepítések
+   8. Kattintson a "Kötelező beállítások"
+   9. Válassza ki a forrás, amennyiben rendelkezésre áll-e a robot kód, és konfigurálja a forrás.

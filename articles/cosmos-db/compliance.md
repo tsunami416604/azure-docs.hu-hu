@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f1be314db7bfc4cbdfcc809eb3b1d985583739a4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470144"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093262"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Az Azure Cosmos DB megfelelőség 
 
@@ -35,7 +35,7 @@ Felel meg a saját megfelelőségi kötelezettségeket szabályozott iparágakba
 Az Azure Cosmos DB folyamatosan bővíti a minősítési támogatását. Jelenleg az Azure Cosmos DB az alábbi tanúsítványokkal rendelkeznek:
 
 | **Globálisan érvényes** | **USA-beli államigazgatás** | **Adott iparági** | **Régió vagy adott ország** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | CSA STAR-minősítés<br/><br/>CSA STAR-igazolás<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1, 2, 3| DoD SRG Level 2<br/><br/>FedRAMP mérsékelt<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | Ausztrál IRAP nem besorolt<br/><br/>A Németországi C5 csomag<br/><br/>Szingapúri MTCS a 3. szintre<br/><br/>Spanyolország ENS magas|
 
 Minden egyes ezek megfelelőségi ajánlattal, és hogyan azok előnyeit kapcsolatos további információkért lásd: [áttekintése a Microsoft Azure-megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) lapot.

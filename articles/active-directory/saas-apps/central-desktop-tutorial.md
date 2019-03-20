@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c6c8c4739c7a2c3566a4f4882bd4a1177e10b56
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2e5ddc8a1190161d9492cd083a50120ca9d5fc5f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450107"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Oktatóanyag: Az Azure Active Directory-integráció központi desktoppal
 
@@ -108,6 +108,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a központi asztal, hajtsa v
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.centraldesktop.com`
 
     b. Az a **azonosító** mezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
@@ -185,7 +186,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

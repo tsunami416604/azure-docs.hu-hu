@@ -9,12 +9,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 99f5b09d0b5dfc144dca7f19efff3f0656a82b35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093245"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
@@ -77,16 +77,16 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
     ![Számítási feladat kiválasztása](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. A **Biztonsági mentési szabályzat** menü **Szabályzat neve** mezőjébe írja be a *Pénzügyi* kifejezést. Adja meg a következő értékeket a biztonsági mentési szabályzathoz:
-    - A **Biztonsági mentés gyakorisága** mezőben állítsa be az *amerikai középidő* időzónáját. Mivel a sportkomplexum Texasban van, a tulajdonos helyi időt szeretne használni. Hagyja a biztonsági mentés gyakoriságát a napi 3:30 értéken.
-    - **A napi biztonsági mentési pontok megőrzése** mezőben állítson be 90 napos időszakot.
-    - **A heti biztonsági mentési pontok megőrzése** mezőben használja a *Hétfő* visszaállítási pontot, és adjon meg egy 52 hetes megőrzési periódust.
-    - **A h biztonsági mentési pontok megőrzése** mezőben használja a hónap első vasárnapját visszaállítási pontként, és adjon meg egy 36 hónapos megőrzési periódust.
-    - Törölje **Az éves biztonsági mentési pontok megőrzése** kijelölését. A pénzügyi vezető nem szeretné 36 hónapnál hosszabb ideig megőrizni az adatokat.
-    - A biztonsági mentési szabályzat létrehozásához kattintson az **OK** gombra.
+   - A **Biztonsági mentés gyakorisága** mezőben állítsa be az *amerikai középidő* időzónáját. Mivel a sportkomplexum Texasban van, a tulajdonos helyi időt szeretne használni. Hagyja a biztonsági mentés gyakoriságát a napi 3:30 értéken.
+   - **A napi biztonsági mentési pontok megőrzése** mezőben állítson be 90 napos időszakot.
+   - **A heti biztonsági mentési pontok megőrzése** mezőben használja a *Hétfő* visszaállítási pontot, és adjon meg egy 52 hetes megőrzési periódust.
+   - **A h biztonsági mentési pontok megőrzése** mezőben használja a hónap első vasárnapját visszaállítási pontként, és adjon meg egy 36 hónapos megőrzési periódust.
+   - Törölje **Az éves biztonsági mentési pontok megőrzése** kijelölését. A pénzügyi vezető nem szeretné 36 hónapnál hosszabb ideig megőrizni az adatokat.
+   - A biztonsági mentési szabályzat létrehozásához kattintson az **OK** gombra.
 
-    ![Számítási feladat kiválasztása](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![Számítási feladat kiválasztása](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
-    A biztonsági mentési szabályzat létrehozása után társítsa a szabályzatot a virtuális gépekkel.
+     A biztonsági mentési szabályzat létrehozása után társítsa a szabályzatot a virtuális gépekkel.
 
 6. A **Virtuális gépek kijelölése** párbeszédpanelen válassza a *myVM* elemet, és kattintson az **OK** gombra, hogy a biztonsági mentési szabályzatot üzembe helyezze a virtuális gépeken.
 

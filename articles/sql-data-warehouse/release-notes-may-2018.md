@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 45a391f45d11d968818bafc97a705411a133b273
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57430849"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852610"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018. május 
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 május. 
@@ -44,7 +44,7 @@ Ajánlott eljárások és útmutatást, javasoljuk, hogy a beállítás `AUTO_CR
 Tekintse meg a [az ALTER DATABASE beállítása beállításai](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options) további részleteivel.
 
 ## <a name="rejected-row-support"></a>Elutasított sor támogatása
-Ügyfeleink gyakran használnak [(külső táblák) az adatok betöltése a PolyBase](design-elt-data-loading.md) az SQL Data Warehouse miatt a nagy teljesítményű, párhuzamos Adatbetöltési jellegét. PolyBase az alapértelmezett betöltése modellje keresztül adatok betöltése során [Azure Data Factory](http://azure.com/adf) is. 
+Ügyfeleink gyakran használnak [(külső táblák) az adatok betöltése a PolyBase](design-elt-data-loading.md) az SQL Data Warehouse miatt a nagy teljesítményű, párhuzamos Adatbetöltési jellegét. PolyBase az alapértelmezett betöltése modellje keresztül adatok betöltése során [Azure Data Factory](https://azure.com/adf) is. 
 
 Az SQL Data Warehouse definiálhat egy visszautasított sorok helye keresztül felveszi a `REJECTED_ROW_LOCATION` paraméterrel a [CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) utasítást. Végrehajtása után egy [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) a külső tábla, egy fájlt a közelében a forrás további vizsgálat azokat a sorokat, nem tölthető be kerülnek. 
 
@@ -144,7 +144,7 @@ Most, hogy jobban megismerte az SQL Data warehouse, megtudhatja, hogyan lehet gy
 [Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Ügyfelek sikertörténetei]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow-fórum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

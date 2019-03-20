@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298653"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005676"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Az SSH-kulcsok használata a Windows Azure-ban
 
@@ -37,9 +37,9 @@ Windows-számítógépek nem mindig rendelkezik telepített összehasonlítható
 
 Egyéb gyakori Windows SSH ügyfelek helyben is telepítheti a következő csomagokat tartalmazza:
 
-* [Putty-kapcsolaton keresztül](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [Putty-kapcsolaton keresztül](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git For Windows](https://git-for-windows.github.io/)
-* [MobaXterm](http://mobaxterm.mobatek.net/)
+* [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 A rendelkezésre álló bashben SSH segédprogramok is használhatja a [Azure Cloud Shell](../../cloud-shell/overview.md). 
@@ -62,7 +62,7 @@ További háttérinformációkért és információkat lásd: a [gyors](mac-crea
 
 ### <a name="create-ssh-keys-with-puttygen"></a>A PuTTYgen SSH-kulcsok létrehozása
 
-Ha inkább a GUI-alapú eszköz segítségével hozzon létre SSH-kulcsokat, a PuTTYgen key generator mellékelt használhatja a [PuTTY letöltőcsomag](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
+Ha inkább a GUI-alapú eszköz segítségével hozzon létre SSH-kulcsokat, a PuTTYgen key generator mellékelt használhatja a [PuTTY letöltőcsomag](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). 
 
 A PuTTYgen hozzon létre egy SSH-RSA-kulcspárt:
 
@@ -110,7 +110,7 @@ Ha a virtuális gép nem használja a just-in-time-hozzáférési házirend, hoz
 
 ### <a name="connect-with-putty"></a>Csatlakozzon a putty használatával
 
-Ha telepítette a [PuTTY letöltőcsomag](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) és a egy PuTTY titkos kulcs (.ppk) fájlt, korábban létrehozott egy Linux rendszerű virtuális gép a putty használatával csatlakozhat.
+Ha telepítette a [PuTTY letöltőcsomag](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) és a egy PuTTY titkos kulcs (.ppk) fájlt, korábban létrehozott egy Linux rendszerű virtuális gép a putty használatával csatlakozhat.
 
 1. Start PuTTy.
 

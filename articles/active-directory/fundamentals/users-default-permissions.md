@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1a3204e70fdde162d953c9c2241e9d71877cf78
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 26178066b2f5353cba99c5965bb2f3055556784c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894274"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusát áll a [szerepkör-hozzárendelések](active-directory-users-assign-role-azure-portal.md), és az egyes objektumok tulajdonjogának. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyek csak a felhasználói beállítások módosítható az Azure ad-ben.
@@ -49,8 +49,8 @@ A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi 
 
 Engedély | Magyarázat beállítása
 ---------- | ------------
-Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
-Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és a felhasználói fiókok rendszergazdái továbbra is létrehozhatnak majd Office 365-csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
+Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és felhasználói rendszergazdák is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
+Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és felhasználói rendszergazdák továbbra is képesek lesznek az Office 365-csoportok létrehozásához. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást nem megakadályozza, hogy a felhasználók hozzáférését az Azure Active Directoryban.
 Egyéb felhasználók olvasásának képessége | Ez a beállítás csak a PowerShellben érhető el. Ha e beállítás értéke $false, akkor a nem rendszergazda felhasználók nem olvashatják a címtárban található felhasználói adatokat. Ez nem jelenti azt, hogy ne olvashatnák egyéb Microsoft-szolgáltatások (például az Exchange Online) felhasználói adatait. Ez a beállítás speciális esetekben alkalmazandó, ajánlott értéke: $false.
 
@@ -65,7 +65,7 @@ When a user adds a new enterprise application, they are automatically added as a
 
 ### <a name="group-owner-permissions"></a>Csoporttulajdonosi engedélyek
 
-A csoportot létrehozó felhasználó automatikusan az adott csoport tulajdonosává válik. Tulajdonosként azokat is, például a nevét a csoport tulajdonságainak kezelése, valamint csoporttagság kezelése. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdáktól és a felhasználói fiókok rendszergazdáitól eltérően a tulajdonosok csak saját csoportjaikat kezelhetik. A csoporttulajdonosok hozzárendelésével kapcsolatban lásd: [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md).
+A csoportot létrehozó felhasználó automatikusan az adott csoport tulajdonosává válik. Tulajdonosként azokat is, például a nevét a csoport tulajdonságainak kezelése, valamint csoporttagság kezelése. A tulajdonosok ezen kívül eltávolíthatnak vagy hozzáadhatnak más tulajdonosokat. A globális rendszergazdák és felhasználói rendszergazdák eltérően tulajdonosai csak saját csoportok kezelésére. A csoporttulajdonosok hozzárendelésével kapcsolatban lásd: [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md).
 
 ## <a name="next-steps"></a>További lépések
 

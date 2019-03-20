@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544562"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225365"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -359,9 +359,9 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 - [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítménnyel kapcsolatos anomáliák észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
 ### <a name="azure-alerts"></a>Azure-riasztások
-- [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszi, hogy feltételeket konfiguráljon az adatok. Riasztások értesítések is biztosítanak, amikor egy riasztási feltétel megfelel a monitorozási adatok.
+- [Riasztások](/azure/azure-monitor/platform/alerts-metric) kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszi, hogy feltételeket konfiguráljon az adatok. Riasztások értesítések is biztosítanak, amikor egy riasztási feltétel megfelel a monitorozási adatok.
 
-### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 [Az Azure Monitor naplóira](/azure/operations-management-suite/operations-management-suite-overview) felügyeleti szolgáltatások gyűjteménye.
 
 -   Munkaterület engedélyezve van a Security Centerben

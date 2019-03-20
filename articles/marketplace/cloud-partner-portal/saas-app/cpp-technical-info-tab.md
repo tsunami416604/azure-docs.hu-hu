@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 383f65ea925a3575afd988e07784be643201c6b8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120754"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS-alkalmazás technikai információ lapon
 
@@ -44,7 +44,7 @@ A felhasználói élményt hozhat létre, konfigurálnia kell az alábbi adatokr
 - Az SaaS-szolgáltatás webhelyen csatlakozzon a Microsoft SaaS API-kkal. A [SaaS eladása, Azure-ban – API-k segítségével](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) a cikk azt ismerteti, hogyan hozhat létre a kapcsolatot.
 - Eladása, Cloud Partner portálra szóló Azure-on keresztül engedélyezi a műszaki konfigurációs képernyőn, és adja meg a szükséges információkat. Ez a számlázási modell, és hogyan megvalósított kapcsolatos további információkért lásd: [SaaS – értékesítheti Azure-on keresztül](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
- ![Értékesítsen rajuk keresztül Microsoft űrlap](./media/saas-techinfo-sellthrough-ms.png)
+  ![Értékesítsen rajuk keresztül Microsoft űrlap](./media/saas-techinfo-sellthrough-ms.png)
 
 A következő táblázat ismerteti a kötelező mezőket a Microsoft értékesítési.
 

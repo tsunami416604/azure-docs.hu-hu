@@ -11,12 +11,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 950ea04addb0c88d4c745d2de3d95df787885137
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 9a17f2722af187e88bebf217d56a5a80aba46bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876527"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
@@ -49,7 +49,7 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 > Ebben a cikkben kód szükséges Azure Machine Learning SDK verziója 1.0.2-es vagy újabb verzió 1.0.8 teszteltük és.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
@@ -57,6 +57,9 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 > Ha egy Azure adatelemzési virtuális gép vagy az Azure Databricks, kihagyhatja ezt a szakaszt.
 > * Az Azure Data Science Virtual Machines 2018. szeptember 27. után létrehozott származnak az előre telepített Python SDK-val.
 > * Az Azure Databricks a környezetben, használja a [Databricks telepítési lépéseket](how-to-configure-environment.md#azure-databricks) helyette.
+
+>[!NOTE]
+> Ezek az utasítások segítségével telepítheti és SDK-t a Jupyter Notebook használata a helyi számítógépen. Jupyter használata a távoli virtuális gépen, állítsa be egy távoli asztali vagy X terminál-munkamenetben. 
 
 Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elkülönített Python-környezetet. Bár ez a cikk [Miniconda](https://docs.conda.io/en/latest/miniconda.html), is használhatja teljes [Anaconda](https://www.anaconda.com/) telepítve vagy [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
@@ -113,7 +116,9 @@ Ebben a rövid útmutatóban található utasításokat a rövid útmutató és 
     ```
 
 > [!IMPORTANT]
-> Az egyes parancssori eszközök, előfordulhat, hogy hozzá kell idézőjelek közé a következő: * "azureml-sdk [notebookok]" * "azureml-sdk [automl]"
+> Az egyes parancssori eszközök előfordulhat, hogy hozzá kell idézőjelek közé a következő:
+> *  'azureml-sdk[notebooks]'
+> * "azureml-sdk [automl]"
 >
 
 

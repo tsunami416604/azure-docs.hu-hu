@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ee09f8defc7a10b153e910cb7208b0ddb21120b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891256"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -3325,6 +3325,7 @@ Az Azure data factory egy helyszíni fájlrendszer kapcsolat a **helyi fájlkisz
 | átjáró neve |Itt adhatja meg, amelyet a Data Factory a helyszíni fájl-kiszolgálóhoz való csatlakozáshoz használnia kell az átjárója nevére. |Igen |
 
 #### <a name="sample-folder-path-definitions"></a>Mintául szolgáló mappa elérési útja definíciók
+
 | Forgatókönyv | A társított szolgáltatás definíciójában üzemeltetése | Az adatkészlet-definícióban folderPath |
 | --- | --- | --- |
 | Helyi mappa adatkezelési átjárót a gépen: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\* |D:\\ \\ (a Data Management Gateway 2.0-s és újabb verziók) <br/><br/> a localhost (a Data Management Gateway 2.0, mint a korábbi verziók) |. \\ \\ vagy mappa\\\\almappát (a Data Management Gateway 2.0-s és újabb verziók) <br/><br/>D:\\ \\ vagy D:\\\\mappa\\\\almappát (az átjáró 2.0-s verzió) |
@@ -3496,6 +3497,7 @@ Adatok másolása fájlrendszerre, állítsa be a **fogadó típusa** a másolá
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | a copyBehavior |A másolási viselkedés határozza meg, ha a forrás BlobSource vagy fájlrendszer. |**PreserveHierarchy:** Megőrzi a hierarchiája a célmappában. Hogy a relatív elérési útját a forrásfájl, a megadott forrásmappához ugyanaz, mint a célmappában cél fájl relatív elérési útját.<br/><br/>**FlattenHierarchy:** Minden fájl a forrásmappából az első szintű célmappában jönnek létre. A cél fájlt hoz létre egy automatikusan létrehozott névvel.<br/><br/>**MergeFiles:** Egy fájl összes fájlt a forrásmappából egyesíti. A fájl neve és a blob neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben egy automatikusan létrehozott nevét. |Nem |
+
 automaticky
 
 #### <a name="example"></a>Példa
@@ -3863,7 +3865,7 @@ További információkért tekintse meg a HDFS összekötő cikket.
 Egy SFTP meghatározásához társított szolgáltatást, állítsa be a **típusa** a társított szolgáltatás **Sftp**, és adja meg az alábbi tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | gazdagép | Az SFTP-kiszolgáló neve vagy IP-címe. |Igen |
 | port |A port, amelyen az SFTP-kiszolgáló figyel. Az alapértelmezett érték a következő: 21 |Nem |
 | authenticationType |Adja meg a hitelesítés típusát. Megengedett értékek: **Alapszintű**, **SshPublicKey**. <br><br> Tekintse meg az egyszerű hitelesítés használata és [használatával SSH nyilvános kulcs alapú hitelesítés](#using-ssh-public-key-authentication) további tulajdonságok és JSON-minták részei. |Igen |
@@ -3877,7 +3879,7 @@ Egy SFTP meghatározásához társított szolgáltatást, állítsa be a **típu
 Alapszintű hitelesítés használatához állítsa `authenticationType` , `Basic`, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás | Szükséges |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó. |Igen |
 | jelszó | A felhasználó (felhasználónév) jelszavát. | Igen |
 
@@ -3926,7 +3928,7 @@ Alapszintű hitelesítés használatához állítsa `authenticationType` , `Basi
 Alapszintű hitelesítés használatához állítsa `authenticationType` , `SshPublicKey`, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás | Szükséges |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | felhasználónév |SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
 | privateKeyPath | Adja meg, hogy az átjáró hozzáférhet a titkos kulcs fájlját abszolút elérési útját. | Adja meg a `privateKeyPath` vagy `privateKeyContent`. <br><br> Csak akkor, ha az adatok másolása helyszíni SFTP-kiszolgálóra vonatkoznak. |
 | privateKeyContent | A titkos kulcs tartalmát, szerializált karakterlánc. A másolás varázsló olvashatja a titkos kulcs fájlját, és csomagolja ki automatikusan a titkos kulcs tartalmát. Ha bármilyen más eszköz/SDK-t használ, használja a privateKeyPath tulajdonságot. | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
@@ -5398,7 +5400,7 @@ Vegye figyelembe a következő szempontokat:
 A tevékenységgel kapcsolatos további információkért lásd: [Spark-tevékenység](data-factory-spark.md) cikk.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Machine Learning kötegelt végrehajtási tevékenység
-Az Azure Machine Learning studióban kötegelt végrehajtási tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLBatchExecution**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** tevékenység típusa AzureMLBatchExecution beállításakor. szakasz:
+Az Azure Machine Learning studióban kötegelt végrehajtási tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLBatchExecution**. Kell létrehozni az Azure Machine Learning először a társított szolgáltatás- és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** tevékenység típusa AzureMLBatchExecution beállításakor. szakasz:
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
@@ -5454,7 +5456,7 @@ A JSON a példában a telepített Azure Machine Learning Web service olvasási/�
 > Csak bemenetek és kimenetek AzureMLBatchExecution tevékenység argumentumként átadhatók paraméterek a webszolgáltatást. Ha például a fenti JSON-kódrészletben MLSqlInput a AzureMLBatchExecution tevékenység, amelyet a webszolgáltatás bemeneteként webServiceInput paraméteren keresztül egy bemeneti.
 
 ## <a name="machine-learning-update-resource-activity"></a>Machine Learning Update-erőforrástevékenység
-Az Azure Machine Learning studióban frissítés erőforrás tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLUpdateResource**. Kell az Azure Machine Learning először a társított szolgáltatás létrehozása és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** AzureMLUpdateResource tevékenység típusa beállításakor. szakasz:
+Az Azure Machine Learning studióban frissítés erőforrás tevékenység JSON-definíciót az alábbi tulajdonságokat is megadhat. A type tulajdonság a tevékenységhez kell lennie: **AzureMLUpdateResource**. Kell létrehozni az Azure Machine Learning először a társított szolgáltatás- és értékeként adja meg a nevét, a **linkedServiceName** tulajdonság. A következő tulajdonságok támogatottak a **typeProperties** AzureMLUpdateResource tevékenység típusa beállításakor. szakasz:
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------

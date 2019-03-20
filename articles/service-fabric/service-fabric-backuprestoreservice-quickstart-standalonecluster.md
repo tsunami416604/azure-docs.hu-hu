@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 84403729d6d31ef9dea82b228a1c21bfb847b0ce
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3a0651d3641a547722528fb33f688cce1913e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453439"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886643"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ A Service Fabric egy érhet el a következő funkciók kapcsolatos rendszeres bi
 ## <a name="prerequisites"></a>Előfeltételek
 * Service Fabric-fürtön a Fabric verziója 6.2 vagy újabb. A Windows Server létre kell hozni a fürtöt. Ebben [cikk](service-fabric-cluster-creation-for-windows-server.md) lépésekhez szükséges csomag letöltéséhez.
 * X.509-tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg [cikk](service-fabric-windows-cluster-x509-security.md) tudnia kell, hogyan beszerezni, vagy hozzon létre egy önaláírt X.509-tanúsítványt.
-* Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .net Core 2.0, az alkalmazás kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
+* Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .NET Core 2.0, kérelmet kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
 
 ## <a name="enabling-backup-and-restore-service"></a>Biztonsági mentés és visszaállítás szolgáltatás engedélyezése
 Először engedélyeznie kell a _biztonsági mentés és visszaállítás szolgáltatás_ a fürtben. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. Használhatja a [mintasablon](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Engedélyezze a _biztonsági mentés és visszaállítás szolgáltatás_ az alábbi lépéseket követve:

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c9be377dc74ac936aa3139d395b6a02f3b3192eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546721"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084361"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Oktatóanyag: hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stackben
 
@@ -152,12 +152,12 @@ Az alábbi lépések segítségével egy virtuális hálózati átjáró létreh
 3. A **virtuális hálózati átjáró**válassza **létrehozás** megnyitásához a **virtuális hálózati átjáró létrehozása** lap.
 4. A **virtuális hálózati átjáró létrehozása**, adja meg a hálózati átjáró értékeit, ahogyan az **oktatóanyag példaértékeket**, és az alábbi értékeket:
 
-    - **Termékváltozat**: alapszintű
-    - **Virtuális hálózat**: Válassza ki a korábban létrehozott virtuális hálózatot. A létrehozott átjáróalhálózat automatikusan ki van jelölve.
-    - **Első IP-konfiguráció**:  Ez a nyilvános IP-címe az átjárót.
-        - Válassza ki **átjáró IP-konfigurációjának létrehozása**, amely veszi, hogy a **nyilvános IP-cím választása** lapot.
-        - Válassza ki **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lapot.
-        - Adjon meg egy **neve** a nyilvános IP-cím. A Termékváltozatot hagyja **alapszintű**, majd válassza ki **OK** a módosítások mentéséhez.
+   - **Termékváltozat**: alapszintű
+   - **Virtuális hálózat**: Válassza ki a korábban létrehozott virtuális hálózatot. A létrehozott átjáróalhálózat automatikusan ki van jelölve.
+   - **Első IP-konfiguráció**:  Ez a nyilvános IP-címe az átjárót.
+     - Válassza ki **átjáró IP-konfigurációjának létrehozása**, amely veszi, hogy a **nyilvános IP-cím választása** lapot.
+     - Válassza ki **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lapot.
+     - Adjon meg egy **neve** a nyilvános IP-cím. A Termékváltozatot hagyja **alapszintű**, majd válassza ki **OK** a módosítások mentéséhez.
 
        > [!Note]
        > VPN Gateway jelenleg csak dinamikus nyilvános IP-cím lefoglalását támogatja. Ez azonban nem jelenti azt, hogy az IP-cím megváltozik, miután hozzá van rendelve a VPN-átjáró. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Átméretezés, alaphelyzetbe vagy más belső karbantartása/frissítése, a VPN-átjáró az IP-cím nem módosítható.

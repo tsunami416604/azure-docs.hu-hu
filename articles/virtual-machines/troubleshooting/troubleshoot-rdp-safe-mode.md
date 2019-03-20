@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316981"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095041"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nem hajtható végre egy virtuális gép RDP-vel, mert a virtuális gép csökkentett módban indul.
 
@@ -47,7 +47,7 @@ A probléma megoldásához, soros vezérlőelem segítségével konfigurálhatja
 ### <a name="use-serial-control"></a>Soros vezérlőelem használata
 
 1. Csatlakozás [soros konzolon és a nyílt CMD-példány](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Ha a soros konzol nincs engedélyezve a virtuális Gépen, [javítsa ki a virtuális Gépet offline](#repair-the-vm-offline).
+   ). Ha a soros konzol nincs engedélyezve a virtuális Gépen, [javítsa ki a virtuális Gépet offline](#repair-the-vm-offline).
 2. A rendszerindítási konfigurációs adatok ellenőrzése:
 
         bcdedit /enum
@@ -55,12 +55,12 @@ A probléma megoldásához, soros vezérlőelem segítségével konfigurálhatja
     Ha a virtuális gép úgy van beállítva. csökkentett módban indul, egy extra jelzőt alatt megjelenik a **Windows rendszertöltő** nevű szakaszt **csökkentett mód**. Ha nem látja a **csökkentett mód** jelző, a virtuális gép nem biztonságos módban van. Ez a cikk nem vonatkozik a forgatókönyvéhez.
 
     A **csökkentett mód** jelző sikerült jelennek meg a következő értékeket:
-    - Minimális
-    - Network (Hálózat)
+   - Minimális
+   - Network (Hálózat)
 
-    E két mód közül választhat RDP már nem indulnak el. A javítás ezért változatlan marad.
+     E két mód közül választhat RDP már nem indulnak el. A javítás ezért változatlan marad.
 
-    ![A csökkentett mód jelzőjét bemutató kép](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![A csökkentett mód jelzőjét bemutató kép](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. Törölje a **safemoade** jelzőt, így a virtuális gép normál üzemmódban fog elindulni:
 

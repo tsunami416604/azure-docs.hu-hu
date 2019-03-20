@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855095"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 
@@ -114,9 +114,6 @@ Az Azure Portalon során törölt adatbázis helyreállítása a [DTU-alapú mod
 
 A biztonsági mentésekből legutóbbi georeplikált állíthatja vissza egy SQL-adatbázis egyetlen kiszolgálón bármely Azure-régióban. A GEO-visszaállítás georedundáns biztonsági másolat használja forrásként, és segítségével helyreállíthat egy adatbázist, akkor is, ha az adatbázis vagy az Adatközpont-leállás miatt elérhetetlenné.
 
-> [!Note]
-> A GEO-visszaállítás a felügyelt példány nem érhető el.
-
 A GEO-visszaállítás az alapértelmezett helyreállítási lehetőséget arra esetén az adatbázist üzemeltető régióban incidens miatt nem érhető el az adatbázist. Ha egy nagy méretű incidens egy elérhetetlensége régió eredményez az adatbázis-alkalmazását, egy kiszolgálóhoz az összes adatbázis helyreállíthatja a georeplikált biztonsági másolatokból. Ha egy biztonsági mentés készül, és egy Azure georeplikált késleltetés van egy másik régióban található blob. Ez a késleltetés is lehet akár egy órát, tehát ha katasztrófa történik, is lehet másolatot az adatvesztést egy óra. Az alábbi ábrán látható az adatbázis helyreállítása egy másik régióban elérhető másolatból.
 
 ![A GEO-visszaállítás](./media/sql-database-geo-restore/geo-restore-2.png)
@@ -133,6 +130,9 @@ Időponthoz visszaállítást a geo-secondary jelenleg nem támogatott. Csak az 
 
 A geo-visszaállítás során az adatbázis a [DTU-alapú modell megőrzési időszak](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú modell megőrzési időszak](sql-database-service-tiers-vcore.md) az Azure portal használatával, nyissa meg az SQL Database-adatbázisok oldalt, és kattintson **hozzáadása** . Az a **forrás kiválasztása** szövegbeviteli mezőben válasszon **Backup**. Adja meg a biztonsági mentés, amelyből a helyreállításhoz a régióban, és a választott kiszolgálón.
 
+> [!Note]
+> A GEO-visszaállítás az Azure portal használatával a felügyelt példány nem érhető el. Használja helyette a PowerShell.
+
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programozott módon a helyreállítás biztonsági másolatokkal automatikus végrehajtása
 
 Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyreállításának programozott módon az Azure PowerShell-lel vagy a REST API használatával elvégezhető. Az alábbi táblázatok ismertetik az elérhető parancsok.
@@ -140,6 +140,8 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 - Önálló vagy készletezett adatbázis visszaállítása, lásd: [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -173,7 +175,7 @@ A REST API használatával egyetlen vagy készletezett adatbázisok visszaállí
 ### <a name="azure-cli"></a>Azure CLI
 
 - Azure CLI-vel önálló vagy készletezett adatbázisok visszaállítását, lásd: [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Felügyelt példányok Azure CLI-vel való visszaállításához, lásd: [az sql KÖZÉP2 visszaállítása](/cli/azure/sql/db#az-sql-midb-restore)
+- Felügyelt példányok Azure CLI-vel való visszaállításához, lásd: [az sql KÖZÉP2 visszaállítása](/cli/azure/sql/db)
 
 ## <a name="summary"></a>Összegzés
 

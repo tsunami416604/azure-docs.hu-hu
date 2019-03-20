@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075765"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Figyelés és az Azure Security Centerben a biztonsági események feldolgozása
 Az események irányítópultja egy áttekintést nyújt az idő függvényében, és a figyelmet igénylő jelentős események listája összegyűjtött biztonsági események száma.  
@@ -57,30 +57,30 @@ A **események irányítópultja** az események listája és a feldolgozott ese
 1. Alatt a **a Security Center** fő menüjéből válassza **események**.
 2. A **események irányítópultja** munkaterület-választójában jelenítse meg. Ha csak egy munkaterületet, a munkaterület-választó nem jelenik meg. Ha egynél több munkaterületet, akkor kell válasszon ki egy munkaterületet a feldolgozott esemény részleteinek megtekintése. Válasszon egy munkaterületet a listából, ha egynél több munkaterületet.
 
-  ![Munkaterület][3]
+   ![Munkaterület][3]
 
 3. A **események irányítópultja** megnyitása, amelyen látható a kijelölt munkaterületre vonatkozó esemény részleteit. A jelentős események és az összes esemény típus szerint tekintheti meg.  Ebben a példában a kiválasztott **jelentős események**.
 
-  ![Jelentős esemény][4]
+   ![Jelentős esemény][4]
 
 4. A munkaterület az adatok további esemény típusának kiválasztásával lekérdezhető. Ebben a példában a kiválasztott **SecurityEvent**.
 
-  ![Esemény típusának kiválasztása][5]
+   ![Esemény típusának kiválasztása][5]
 
 5. **Naplóbeli keresés** megnyílik a további részleteket az esemény típusa.
 
-  ![Naplókeresés][6]
+   ![Naplókeresés][6]
 
 ## <a name="add-a-notable-event"></a>Jelentős esemény hozzáadása
 A Security Center-a-beépített jelentős események biztosít. Jelentős események alapján saját lekérdezés használatával adhat hozzá a [Kusto-lekérdezés nyelvi](../log-analytics/log-analytics-search-reference.md). Még visszatérünk a **események irányítópultja** jelentős esemény hozzáadása.
 
 1. Válassza ki **jelentős esemény hozzáadása**.
 
-  ![Jelentős esemény hozzáadása][7]
+   ![Jelentős esemény hozzáadása][7]
 
 2. **Egyéni jelentős esemény hozzáadása** nyílik meg.  A **megjelenítendő név**, adjon meg egy nevet a jelentős eseményt. A **keresési lekérdezés**, írja be a lekérdezést az esemény.
 
-  ![Írja be a lekérdezést][8]
+   ![Írja be a lekérdezést][8]
 
 4. Kattintson az **OK** gombra.
 
@@ -104,19 +104,19 @@ Ha a munkaterület sor:
 1. Válasszon ki egy munkaterületet, amely **FRISSÍTÉST IGÉNYEL**.
 2. **Keresés a frissítés** nyílik meg. Válassza ki **Frissítsen most**.
 
-  ![Frissítsen most][10]
+   ![Frissítsen most][10]
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>A Security Center Standard csomagra
 1. Válasszon ki egy munkaterületet a **csomag frissítése**.
 2. **Események irányítópultja** nyílik meg. Válassza ki **próbálja események irányítópultja**.
 
-  ![Irányítópult kipróbálása][11]
+   ![Irányítópult kipróbálása][11]
 
 3. A **speciális biztonsági megoldás előkészítése**, válassza ki a frissíteni kívánt munkaterületet.
 4. A **díjszabási**válassza **Standard**.
 5. Kattintson a **Mentés** gombra.
 
-  ![Standard csomagra][12]
+   ![Standard csomagra][12]
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a Security Center esemény irányítópultján. Az irányítópult működésével kapcsolatos további, és a saját esemény lekérdezéseket írni, lásd:

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 86976263c54f40c370a2bc8cab426f3e413442f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849754"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(ELAVULT) Vázlat használata az Azure Container Service és az Azure Container Registry létrehozása és a Kubernetes-alkalmazás üzembe helyezése
 
@@ -31,7 +31,7 @@ A Draft bármely Docker-rendszerképjegyzékkel és Kubernetes-fürttel használ
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 Egyszerűen [hozzon létre egy új Azure Container Registryt](../../container-registry/container-registry-get-started-azure-cli.md) a következő lépésekkel:
 
-1. Hozzon létre egy Azure-erőforráscsoportot az ACR regisztrációs adatbázis és a Kubernetes-fürt kezeléséhez az ACS-ben.
+1. Hozzon létre egy Azure-erőforráscsoportot az ACR-beállításjegyzékbe és az ACS Kubernetes-fürt kezeléséhez.
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -106,11 +106,11 @@ Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kube
 1. Töltse le, a környezetének tervezet https://github.com/Azure/draft/releases és telepítheti az útvonalon, hogy a parancs segítségével.
 2. Töltse le a helm, a környezetnek https://github.com/kubernetes/helm/releases és [telepítheti az útvonalon, úgy, hogy a parancs segítségével](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Konfigurálja a Draftot a beállításjegyzék használatára, és hozzon létre altartományt minden általa létrehozott Helm-diagramhoz. A Draft konfigurálásához a következők szükségesek:
-  - Az Azure Container Registry neve (a példában `draftacsdemo`)
-  - A beállításkulcs vagy jelszó a következőből: `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
+   - Az Azure Container Registry neve (a példában `draftacsdemo`)
+   - A beállításkulcs vagy jelszó a következőből: `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
 
-  Hívás `draft init` és a konfigurációs folyamat bekéri a fenti értékeket; vegye figyelembe, hogy az URL-cím formátuma a beállításjegyzék URL-címe, a beállításjegyzék neve (ebben a példában `draftacsdemo`) plusz `.azurecr.io`. A felhasználónév önállóan a beállításjegyzék neve. A folyamat az első futtatáskor a következőhöz lesz hasonló.
- ```bash
+   Hívás `draft init` és a konfigurációs folyamat bekéri a fenti értékeket; vegye figyelembe, hogy az URL-cím formátuma a beállításjegyzék URL-címe, a beállításjegyzék neve (ebben a példában `draftacsdemo`) plusz `.azurecr.io`. A felhasználónév önállóan a beállításjegyzék neve. A folyamat az első futtatáskor a következőhöz lesz hasonló.
+   ```bash
     $ draft init
     Creating /home/ralph/.draft 
     Creating /home/ralph/.draft/plugins 
@@ -132,7 +132,7 @@ Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kube
     3. Enter your password: 
     Draft has been installed into your Kubernetes Cluster.
     Happy Sailing!
-```
+   ```
 
 Most már készen áll az alkalmazás üzembe helyezésére.
 
@@ -224,7 +224,7 @@ Saját tartományszolgáltatójának saját módszere van a DNS-kiszolgálók ho
     ```
 
 2. Hozzon létre DNS-zónát a tartományához.
-Használja az [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) parancsot a névkiszolgálók beszerzéséhez a tartomány DNS-vezérlésének az Azure DNS-be való delegálásához.
+   Használja az [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) parancsot a névkiszolgálók beszerzéséhez a tartomány DNS-vezérlésének az Azure DNS-be való delegálásához.
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -247,12 +247,12 @@ Használja az [az network dns zone create](/cli/azure/network/dns/zone#az-networ
     ```
 3. Adja hozzá a tartományszolgáltatónak megadott DNS-kiszolgálókat az üzembe helyezési tartományhoz, ami lehetővé teszi, hogy az Azure DNS szolgáltatással átirányíthassa tartományát, ahogy kívánja. Tartomány eltérő teheti ezt meg; [az Azure DNS a tartomány névkiszolgálóinak delegálására](../../dns/dns-delegate-domain-azure-dns.md) néhány látható, ha tisztában van a részleteket. 
 4. Miután a tartomány delegálva lett az Azure DNS-, hozzon létre az üzembe helyezési tartomány-hozzárendelés, A rekordhalmaz-bejegyzést a `ingress` IP az előző szakaszban szereplő 2. lépés.
-  ```azurecli
-  az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
-  ```
-A kimenet a következőhöz hasonló lesz:
-  ```json
-  {
+   ```azurecli
+   az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
+   ```
+   A kimenet a következőhöz hasonló lesz:
+   ```json
+   {
     "arecords": [
       {
         "ipv4Address": "13.64.108.240"
@@ -265,23 +265,23 @@ A kimenet a következőhöz hasonló lesz:
     "resourceGroup": "squillace.io",
     "ttl": 3600,
     "type": "Microsoft.Network/dnszones/A"
-  }
-  ```
+   }
+   ```
 5. Telepítse újra a **vázlat**
 
    1. Távolítsa el **draftd** írja be a fürtből `helm delete --purge draft`. 
    2. Telepítse újra a **draft** azonos használatával `draft-init` parancs, de a `--ingress-enabled` lehetőséget:
-    ```bash
-    draft init --ingress-enabled
-    ```
-   Fentiekkel először, kövesse a megjelenő utasításokat. Lehetősége van azonban egy további kérdésre válaszolni, a teljes tartománynevet a az Azure DNS-ben konfigurált elérési úton.
+      ```bash
+      draft init --ingress-enabled
+      ```
+      Fentiekkel először, kövesse a megjelenő utasításokat. Lehetősége van azonban egy további kérdésre válaszolni, a teljes tartománynevet a az Azure DNS-ben konfigurált elérési úton.
 
 6. Adja meg a legfelső szintű tartományt (például draft.example.com) bejövő forgalom: draft.squillace.io
 7. Meghívásakor `draft up` ezúttal fogja látni az alkalmazás (vagy `curl` ,) az űrlap URL-címen `<appname>.draft.<domain>.<top-level-domain>`. Ebben a példában esetén `http://handy-labradoodle.draft.squillace.io`. 
-```bash
-curl -s http://handy-labradoodle.draft.squillace.io
-Hello World, I'm Java!
-```
+   ```bash
+   curl -s http://handy-labradoodle.draft.squillace.io
+   Hello World, I'm Java!
+   ```
 
 
 ## <a name="next-steps"></a>További lépések

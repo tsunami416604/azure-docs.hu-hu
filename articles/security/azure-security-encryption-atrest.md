@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: d127a85b3caa5a4db2aa58966763fc8daf7746c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076904"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Az Azure Data Encryption inaktív
 
@@ -258,7 +258,7 @@ Kiszolgálói titkosítás támogatása jelenleg az SQL szolgáltatás transzpar
 |                                  |                    | **Modell titkosítás és kulcskezelés** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Kiszolgálóoldali szolgáltatás által felügyelt kulccsal**     | **Kiszolgálóoldali használata a Key Vault az ügyfél által felügyelt**             | **Ügyféloldali használatával az ügyfél által felügyelt**      |
-| **Tárolási és adatbázis**        |                    |                    |                    |                    |
+| **Tárolási és adatbázis**        |                    |                    |                    |
 | Disk (IaaS)                      | -                  | Igen, RSA 2048-bites  | -                  |
 | SQL Server (IaaS)                | Igen                | Igen, RSA 2048-bites  | Igen                |
 | Az Azure SQL-(adatbázis vagy adatraktár) | Igen                | Igen, RSA 2048-bites  | Igen                |

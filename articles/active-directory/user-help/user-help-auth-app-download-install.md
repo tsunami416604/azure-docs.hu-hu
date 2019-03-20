@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d0590215f92f7b3d1c2ad0bbbc509da31c2fd1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 67393e19a72777d105f1f35a16986c52f52133be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011624"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079808"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazás
 >[!Important]
@@ -34,13 +34,13 @@ Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használ
 
 - **Generování kódu.** Mint bármely más fiókok generátor kódu, amelyek támogatják az authenticator alkalmazásokhoz.
 
->[!Important]
->A Microsoft Authenticator alkalmazás együttműködik az olyan fiókot, amely kétfaktoros ellenőrzési használ, illetve támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
-
->A szervezet szükség lehet, hogy egy hitelesítő alkalmazást be- és a szervezeti adatok és dokumentumok eléréséhez. Bár az alkalmazás jelenhet meg a felhasználónevet, a fiók nincs ténylegesen beállítva egy ellenőrzési módszert funkcionálni, amíg a regisztráció befejezéséhez. További információkért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](user-help-auth-app-add-work-school-account.md).
-
->[!NOTE]
->Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
+> [!Important]
+> A Microsoft Authenticator alkalmazás együttműködik az olyan fiókot, amely kétfaktoros ellenőrzési használ, illetve támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
+> 
+> A szervezet szükség lehet, hogy egy hitelesítő alkalmazást be- és a szervezeti adatok és dokumentumok eléréséhez. Bár az alkalmazás jelenhet meg a felhasználónevet, a fiók nincs ténylegesen beállítva egy ellenőrzési módszert funkcionálni, amíg a regisztráció befejezéséhez. További információkért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](user-help-auth-app-add-work-school-account.md).
+> 
+> [!NOTE]
+> Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
 
 ## <a name="download-and-install-the-app"></a>Az alkalmazás letöltése és telepítése
 Telepítse a legújabb verzióját a Microsoft Authenticator alkalmazást, az operációs rendszer alapján:
@@ -49,7 +49,8 @@ Telepítse a legújabb verzióját a Microsoft Authenticator alkalmazást, az op
 
 - **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store a [töltse le és telepítse a Microsoft Authenticator alkalmazás](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
->[Fontos] Ha Ön nem jelenleg a mobileszközén, továbbra is használhatja a Microsoft Authenticator alkalmazás egy letöltési hivatkozást az küldhet magának a [Microsoft Authenticator lap](https://www.microsoft.com/en-us/account/authenticator).
+>[!Important]
+>Ha Ön nem jelenleg a mobileszközén, továbbra is használhatja a Microsoft Authenticator alkalmazás egy letöltési hivatkozást az küldhet magának a [Microsoft Authenticator lap](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>További lépések
 

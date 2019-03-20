@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453613"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904507"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>1. oktatóanyag: Hitelkockázat - Azure Machine Learning Studio előrejelzése
 
@@ -70,7 +70,7 @@ A munkaterület létrehozását követően nyissa meg a Machine Learning Studio 
 ## <a name="upload"></a>Meglévő adatok feltöltése
 
 A hitelkockázat kiszámításához prediktív modellek fejlesztése, adatok, amelyek segítségével betanítására és tesztelésére a modell van szükség. A jelen oktatóanyag esetében a "UCI Statlog (német adatokból) Data Set" fogja használni a UC Irvine Machine Learning-adattárból. Található itt:  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 A fájlt használni kívánt **german.data**. Töltse le a fájlt a merevlemez-meghajtóról.  
 
@@ -212,18 +212,18 @@ Használandó [metaadatainak szerkesztése][edit-metadata], először megadott o
 
 1. Térjen vissza a **tulajdonságok** ablaktáblán keresse meg a **új oszlopnevek** paraméter. Ebben a mezőben adja meg az adatkészlet, egymástól elválasztva és az oszlopok sorrendjét a 21-én oszlopok neveinek listáját. Az adatkészlet-dokumentáció a UCI webhelyen is kaphat oszlopainak neveit, vagy a kényelem másolja és illessze be az alábbi lista:  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  A Tulajdonságok panelen így néz ki:
+   A Tulajdonságok panelen így néz ki:
 
-  ![A Szerkesztés metaadatokat tulajdonságai](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![A Szerkesztés metaadatokat tulajdonságai](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > Ha szeretné ellenőrizni az oszlopfejléceket, futtassa a kísérletet (kattintson **futtatása** a kísérletvászon alatt). Amikor lejáratot követően újrainduljon (egy zöld pipa jelenik meg a [metaadatainak szerkesztése][edit-metadata]), a kimeneti portjára, kattintson a [metaadatainak szerkesztése] [ edit-metadata] modul Válassza ki **Visualize**. Bármely modul kimenetét az adatokat a kísérlet állapotának megtekintéséhez megegyező módon tekintheti meg.
-  > 
-  > 
+   > [!TIP]
+   > Ha szeretné ellenőrizni az oszlopfejléceket, futtassa a kísérletet (kattintson **futtatása** a kísérletvászon alatt). Amikor lejáratot követően újrainduljon (egy zöld pipa jelenik meg a [metaadatainak szerkesztése][edit-metadata]), a kimeneti portjára, kattintson a [metaadatainak szerkesztése] [ edit-metadata] modul Válassza ki **Visualize**. Bármely modul kimenetét az adatokat a kísérlet állapotának megtekintéséhez megegyező módon tekintheti meg.
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>Képzés és az adatkészletek
 

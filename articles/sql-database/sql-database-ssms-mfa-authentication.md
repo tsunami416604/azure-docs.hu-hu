@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
-ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 938d1b820bbc85824138d77b81b0f922fd494d0d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663740"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003379"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzális hitelesítéssel az SQL Database és az SQL Data Warehouse (többtényezős hitelesítés támogatása ssms-ben)
 Az Azure SQL Database és Azure SQL Data Warehouse támogatja az SQL Server Management Studio (SSMS) használatával érkező kapcsolatokat *Active Directory univerzális hitelesítéssel*. 
@@ -46,7 +46,7 @@ Azure AD-felhasználók Azure AD B2B-forgatókönyvekhez vendégként támogatot
 - SSMS verzió 17.2 DacFx varázsló támogatást nyújt exportálási/kivonat/üzembe helyezés adatok adatbázis. Miután egy adott felhasználó hitelesítését univerzális hitelesítéssel, a DacFx varázsló funkciókat hajtja végre az összes hitelesítési módszert ugyanúgy kezdeti hitelesítési párbeszédpanelen keresztül.
 - Az SSMS Táblatervező nem támogatja az univerzális hitelesítéssel.
 - Nem vonatkoznak további szoftverfrissítési követelmények az Active Directory univerzális hitelesítéssel azzal a különbséggel, hogy az ssms-ben támogatott verzióját kell használnia.  
-- A univerzális hitelesítéssel az Active Directory Authentication Library (ADAL) verzióra frissült a legújabb ADAL.dll 3.13.9 elérhető kiadott verzióját. Lásd: [Active Directory Authentication Library 3.14.1](http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- A univerzális hitelesítéssel az Active Directory Authentication Library (ADAL) verzióra frissült a legújabb ADAL.dll 3.13.9 elérhető kiadott verzióját. Lásd: [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 
 ## <a name="next-steps"></a>További lépések

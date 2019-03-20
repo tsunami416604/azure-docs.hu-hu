@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82c4bca1c72d5440385e3fda6208b1e74a5444a1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845338"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az Azure HDInsight Spark használatával adatelemzés áttekintése
 
 Ez az alkalmazáscsomag témakörök használatára a HDInsight Spark például adatbetöltést, funkciófejlesztési, modellezés és a modell értékelése a közös adatok adatelemzési feladatokat mutatja be. Használt adatokat egy minta az 2013 NYC taxi utazást és diszkont adatkészlet. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes. A témakörök a modellek tárolása az Azure blob storage (WASB) és a pontszám, és a prediktív teljesítmény kiértékelése is megjelennek. Speciális témakörök ismertetik, hogyan lehet a modellek tanítása az kereszt-ellenőrzési és a hyper-paraméter kezdik. Ez a témakör áttekintést is hivatkozik a témakörök, amelyek bemutatják, hogyan állítható be a Spark-fürt a megadott forgatókönyvek a lépések elvégzéséhez szükséges.
 
 ## <a name="spark-and-mllib"></a>Spark- és MLlib
-[A Spark](http://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozás big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. [MLlib](http://spark.apache.org/mllib/) van Spark skálázható gépi tanulási kódtár, amely a algoritmikus adatmodellezési képességekkel az elosztott környezetekben.
+[A Spark](https://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozás big data elemző alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességekkel teszik megfelelő választás az olyan a használt a machine learning és a graph számítások iteratív algoritmusaival együtt. [MLlib](https://spark.apache.org/mllib/) van Spark skálázható gépi tanulási kódtár, amely a algoritmikus adatmodellezési képességekkel az elosztott környezetekben.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) nyílt forráskódú Spark on Azure üzemeltetett ajánlat. Is támogatja a **Jupyter PySpark notebookok** futtatható Spark SQL interaktív lekérdezések átalakítása, szűréssel és az Azure Blobs (WASB) tárolt adatok vizualizációja a Spark-fürtön. PySpark a Python API Spark számára. A kódrészletek, amelyek a megoldásokat, és itt futtatása a Jupyter notebookok a Spark-fürtökön telepített adatok vizualizálásához megfelelő grafikon megjelenítése. Az alábbi témakörök a modellezési lépéseit, amely bemutatja, hogyan betanításához, kiértékelése, mentése és felhasználását a modell különböző típusú kódot tartalmaznak.
@@ -49,19 +49,17 @@ Ezeket a notebookokat futtatásához a Jupyter notebook Server pySpark3 kernel v
 
 > [!NOTE]
 > A légitársaság adatkészlet hozzá lett adva a Spark 2.0 notebookok jobban a besorolási algoritmusok használatát mutatja be. Lásd az alábbi hivatkozásokat légitársaság kapcsolatos információk időben indító adatkészletet és időjárási adatkészletet:
-
->- Légitársaság időben indító adatok: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
->
->
+> 
+> - Légitársaság időben indító adatok: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> 
+> - Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk.
+> A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk.
 
 <!-- -->
 
@@ -94,7 +92,7 @@ A következő eljárások a Spark 1.6-os kapcsolódnak. A Spark 2.0-s verziójá
 A NYC Taxi útadatok körülbelül 20 GB tömörített vesszővel elválasztott értékeket (CSV) fájl (~ 48 GB tömörítetlen), minden egyes út 173 milliónál egyes utak és a vitel magában foglaló fizetni. Minden egyes út rekord tartalmazza, a kiválasztják és dropoff hely és idő, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
 
 1. A "trip_data" CSV-fájlokat tartalmaz trip részleteit, például az utasok száma, folytattuk a munkát, és dropoff mutat, kivételre, időtartama és út hossza. Az alábbiakban néhány példa rekordokat:
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -102,7 +100,7 @@ A NYC Taxi útadatok körülbelül 20 GB tömörített vesszővel elválasztott 
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. A "trip_fare" CSV-fájlok az egyes út, például a fizetési típus, diszkont összeg, pótdíj és adók, tippek és útdíjak, fizetett diszkont és a teljes összeg fizetős tartalmaz. Az alábbiakban néhány példa rekordokat:
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7

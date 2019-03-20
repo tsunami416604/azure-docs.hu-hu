@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001704"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -49,7 +49,7 @@ A termelési forgatókönyvekhez használható Azure-beli Virtuálisgép-típuso
 További részletekért a virtuális gép konfigurációs és műveletek tekintse meg a dokumentum [SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
 Tekintse meg az SAP HANA magas rendelkezésre állás érdekében [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
-Ha egy SAP HANA-példány vagy S/4HANA vagy BW/4HANA rendszert üzembe helyezett nagyon gyors piacra tudásbázison, fontolja meg a használatát [SAP Cloud Appliance Library](http://cal.sap.com). Központi telepítésével kapcsolatos, például SAP CAL az Azure-on keresztül az S/4HANA rendszer dokumentációjában talál [Ez az útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Szeretné, hogy szüksége egy Azure-előfizetés és a egy SAP-felhasználó, az SAP Cloud Appliance Library regisztrált.
+Ha egy SAP HANA-példány vagy S/4HANA vagy BW/4HANA rendszert üzembe helyezett nagyon gyors piacra tudásbázison, fontolja meg a használatát [SAP Cloud Appliance Library](https://cal.sap.com). Központi telepítésével kapcsolatos, például SAP CAL az Azure-on keresztül az S/4HANA rendszer dokumentációjában talál [Ez az útmutató](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Szeretné, hogy szüksége egy Azure-előfizetés és a egy SAP-felhasználó, az SAP Cloud Appliance Library regisztrált.
 
 ## <a name="additional-resources"></a>További források
 ### <a name="sap-hana-backup"></a>SAP HANA biztonsági mentés
@@ -70,7 +70,7 @@ SAP HANA által támogatott operációs rendszerekkel kapcsolatos információk�
 További SAP dokumentációjában az SAP HANA és a különböző Linux operációs rendszert lásd:
 
 * [SAP támogatási Megjegyzés #171356 - a linuxon futó SAP-szoftvereket:  Általános információk](https://launchpad.support.sap.com/#/notes/1984787)
-* [SAP támogatási Megjegyzés #1944799 – SAP HANA irányelvek SLES operációs rendszer telepítése](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+* [SAP támogatási Megjegyzés #1944799 – SAP HANA irányelvek SLES operációs rendszer telepítése](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 * [SAP támogatási Megjegyzés #2205917 – SAP HANA-adatbázis ajánlott az operációs rendszer beállításait a SLES 12 SAP-alkalmazások](https://launchpad.support.sap.com/#/notes/2205917/E)
 * [SAP támogatási Megjegyzés #1984787 – SUSE Linux Enterprise Server 12:  Telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787)
 * [SAP támogatási Megjegyzés #1391070 - Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
@@ -195,7 +195,7 @@ Alapján a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sa
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-A javasolt lemez konfigurációját a HANA adatmennyiség és a naplózási kötet ugyanahhoz az adatkészlethez, a prémium szintű Azure storage-lemez LVM vagy MDADM csíkozott helyezni. Nem kell meghatározni a bármilyen RAID tárhelyredundancia-szint, mert az Azure Premium Storage tartja a redundancia biztosítása érdekében a lemezek három kép. Győződjön meg arról, hogy konfigurálja-e elegendő tárhely, tekintse meg a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Is vegye figyelembe a különböző Azure prémium szintű tárolólemezek különböző virtuális merevlemez (VHD) átviteli mennyiségű leírtak szerint [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](../../windows/disks-types.md). 
+A javasolt lemez konfigurációját a HANA adatmennyiség és a naplózási kötet ugyanahhoz az adatkészlethez, a prémium szintű Azure storage-lemez LVM vagy MDADM csíkozott helyezni. Nem kell meghatározni a bármilyen RAID tárhelyredundancia-szint, mert az Azure Premium Storage tartja a redundancia biztosítása érdekében a lemezek három kép. Győződjön meg arról, hogy konfigurálja-e elegendő tárhely, tekintse meg a [SAP HANA TDI tárhellyel kapcsolatos követelmények](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) és [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Is vegye figyelembe a különböző Azure prémium szintű tárolólemezek különböző virtuális merevlemez (VHD) átviteli mennyiségű leírtak szerint [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](../../windows/disks-types.md). 
 
 Hozzáadhat további prémium szintű tárolólemezeket a HANA DBMS virtuális gépekhez, adatbázisban vagy tranzakciónaplóban naplóalapú biztonsági mentések tárolásához.
 
@@ -251,7 +251,7 @@ Esetén nem kötelező, hogy megtervezhessük a fájlrendszerek ily módon. A le
 
 Kapcsolódó elemek az SAP HANA DB virtuális gép egy adatbázist a telepítés során SAPinst (SWPM) használatakor és a **tipikus** telepítésen, minden /hana és /usr/sap van telepítve. Az alapértelmezett hely a SAP HANA-naplók biztonsági mentése /usr/sap alatt áll. Újra mivel fontos, hogy megakadályozza, hogy a legfelső szintű fájlrendszer tárolóhely elfogyását, ellenőrizze, hogy nincs elég szabad hely a /hana és /usr/sap SWPM az SAP HANA telepítése előtt.
 
-Az SAP HANA standard fájlrendszer elrendezését, olvassa el a [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
+Az SAP HANA standard fájlrendszer elrendezését, olvassa el a [SAP HANA-kiszolgáló telepítési és frissítési útmutatójának](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm).
 
 ![Az SAP-alkalmazáskiszolgáló virtuális Géphez létrehozott további fájlrendszerek](./media/hana-get-started/image009.jpg)
 
@@ -403,7 +403,7 @@ A HANA HDBLCM eszközzel kapcsolatos további információkért lásd:
 
 * [A feladat a megfelelő SAP HANA HDBLCM kiválasztása](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)
 * [SAP HANA életciklus-felügyeleti eszközök](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)
-* [Az SAP HANA-kiszolgáló telepítési és frissítési útmutató](http://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
+* [Az SAP HANA-kiszolgáló telepítési és frissítési útmutató](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
 
 Az alapértelmezett csoport azonosítója beállítást a problémák elkerülése érdekében a `\<HANA SID\>adm user` (a HDBLCM eszközzel létrehozott), adjon meg egy új csoportot nevű `sapsys` Csoportazonosító használatával `1001` SAP HANA-n keresztül HDBLCM telepítése előtt:
 

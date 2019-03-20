@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7f8c410f368c5c63bd24bed25b9807b8061180be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189796"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993191"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
@@ -71,6 +71,7 @@ Szerepkörök és a felhasználók hozzáadása egy üzembe helyezett modellű a
 2. A **szerepkör létrehozása**, adja meg a szerepkör nevét és leírását.
 
 3. Válasszon egy engedélyt.
+
    |Engedély|Leírás|  
    |----------------|-----------------|  
    |**Teljes hozzáférés (rendszergazda)**|Tagjai módosíthatják az eszközmodell sémájának feldolgozásához, és lekérdezheti az összes adatot.| 
@@ -139,7 +140,7 @@ A megadott sort és a hozzá tartozó sorok Sorszűrők vonatkoznak. A tábla t�
   
 |Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
-|Régió|= Régió [Ország] = "USA"|  
+|Régió|=Region[Country]="USA"|  
 |ProductCategory|= ProductCategory [Name] = "Kerékpárokat"|  
 |Tranzakciók|=Transactions[Year]=2016|  
   

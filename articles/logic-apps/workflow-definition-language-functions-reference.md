@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 71d97481b4d3bff1ef93839f57939875ac9268ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450062"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189903"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -2938,7 +2938,7 @@ range(<startIndex>, <count>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Igen | Egész szám | Az egész szám, amely a indítja el a tömb első eleme |
+| <*startIndex*> | Igen | Egész szám | Egész szám, amely elindítja a tömb első elemeként |
 | <*Száma*> | Igen | Egész szám | A tömbben található egész számok száma |
 |||||
 
@@ -3333,7 +3333,7 @@ substring('<text>', <startIndex>, <length>)
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Igen | String | A karakterláncot, amelynek kívánt karakterek |
-| <*startIndex*> | Igen | Egész szám | A kezdő pozíció és az index értéke pozitív szám |
+| <*startIndex*> | Igen | Egész szám | Egy pozitív szám, amelyet szeretne használja, mint a kezdő pozíció vagy index érték 0-nál nagyobb vagy egyenlő |
 | <*Hossza*> | Igen | Egész szám | Pozitív szám, amelyet szeretne a substring karakter |
 |||||
 

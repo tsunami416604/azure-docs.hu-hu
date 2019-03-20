@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 0d20d147bc77698e97630ad3bd5e58348db45f5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866326"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Java használatával
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Java-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Java-alkalmazás egy keresési kérelmet küld az API-t, és bemutatja a választ. Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * [JDK 7 vagy 8](https://aka.ms/azure-jdks)
@@ -54,7 +55,7 @@ Ha Mavent használ, deklarálja a Gsont a `POM.xml` fájlban. Ha helyben telepí
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
-    <version>2.8.1</version>
+    <version>2.8.5</version>
 </dependency>
 ```
 
@@ -72,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
+Ez a kód adja meg a `subscriptionKey`, a `host`, a `path` és a `searchTerm` változót. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Adja hozzá a kódot a vágólapra a `BingWebSearch` osztály a fent leírt módon.
 
 ```java
 // Enter a valid subscription key.
@@ -184,8 +185,8 @@ class SearchResults{
 Az utolsó lépés a kód fordítása és futtatása. Íme a parancsok:
 
 ```powershell
-javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
-java -cp ./gson-2.8.1.jar BingWebSearch
+javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
+java -cp ./gson-2.8.5.jar BingWebSearch
 ```
 
 Ha szeretné összevetni a saját kódját a miénkkel, [a mintakódot megtekintheti a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).

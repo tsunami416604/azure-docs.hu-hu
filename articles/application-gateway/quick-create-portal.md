@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 49035bc94f0ed51abb5f7e7a4af8eb1a0b08cfe4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b474d3579a7c20c190a427f503d97ec7471a1b12
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539825"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091154"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal
 
@@ -37,10 +37,10 @@ Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy 
 
 1. Az a **alapjai** lap, adja meg ezeket az értékeket a következő application gateway beállításait:
 
-    - **Név**: Adja meg *myAppGateway* az application gateway neve.
-    - **Erőforráscsoport**: Válassza ki **myResourceGroupAG** az erőforráscsoportnak. Ha még nem létezik, válassza ki a **új létrehozása** létrehozásához.
+   - **Név**: Adja meg *myAppGateway* az application gateway neve.
+   - **Erőforráscsoport**: Válassza ki **myResourceGroupAG** az erőforráscsoportnak. Ha még nem létezik, válassza ki a **új létrehozása** létrehozásához.
 
-    ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
+     ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
 2. Az alapértelmezett értékeket a többi beállítás esetében fogadja el, majd **OK**.
 
@@ -50,15 +50,15 @@ Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy 
 
 2. Az a **válasszon egy virtuális hálózatot** lapon jelölje be **új létrehozása**, majd adja meg az értékeket a következő virtuális hálózati beállítások:
 
-    - **Név**: Adja meg *myVNet* a virtuális hálózat neve.
+   - **Név**: Adja meg *myVNet* a virtuális hálózat neve.
 
-    - **Címtér**: Adja meg *10.0.0.0/16* számára a virtuális hálózat címterét.
+   - **Címtér**: Adja meg *10.0.0.0/16* számára a virtuális hálózat címterét.
 
-    - **Alhálózat neve**: Adja meg *myAGSubnet* az alhálózat neve.<br>Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.
+   - **Alhálózat neve**: Adja meg *myAGSubnet* az alhálózat neve.<br>Az application gateway alhálózatának csak az application Gateway-átjárókon is tartalmazhat. Egyéb erőforrások nem engedélyezettek.
 
-    - **Alhálózati címtartomány**: Adja meg *10.0.0.0/24* -alhálózat címtartománya.
+   - **Alhálózati címtartomány**: Adja meg *10.0.0.0/24* -alhálózat címtartománya.
 
-    ![Virtuális hálózat létrehozása](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
 3. Válassza ki **OK** térjen vissza a **beállítások** lapot.
 

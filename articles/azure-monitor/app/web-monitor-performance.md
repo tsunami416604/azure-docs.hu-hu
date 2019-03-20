@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301774"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901168"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -112,7 +112,7 @@ Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, ria
 * Hasonlítsa össze más metrikákkal annak ellenőrzéséhez, hogy a kapcsolódó betöltése sikertelen vagy lassú válasz a kérések száma.
 * [Szúrjon be, és keresse meg a nyomkövetési utasításokat] [ diagnostic] segítségével azonosíthatja a problémákat a kódban.
 * A műveletet a webes alkalmazás figyelése [élő metrikák Stream][livestream].
-* A .net-alkalmazás az állapotát [Snapshot Debugger][snapshot].
+* A .NET-alkalmazás az állapotát [Snapshot Debugger][snapshot].
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Megkeresheti és kijavíthatja a teljesítmény szűk teljesítményvizsgálati felület
 

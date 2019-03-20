@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382a32d0ff9de0a7b372e3b7ff2de7170a791aab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339249"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085082"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Biztonsági adatok (előzetes verzió) beállítása telefonhívásokat használatára
 Ezekkel a lépésekkel adja hozzá a kétfaktoros ellenőrzést, és a jelszó alaphelyzetbe állítási metódus. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
@@ -26,10 +26,10 @@ Ha kéri, jelentkezzen be munkahelyi vagy iskolai fiókjával után azonnal beá
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
->[!Note]
->Biztonsági adatok használatával telefonos mellékek nem támogatja. Akkor is, ha a megfelelő formátumban ad hozzá, + 1 4255551234 X 12345, a bővítmények törlődnek, mielőtt a hívást kezdeményeznek.
-
->Ha nem látja a telefonos elrendezésre, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrzési telefonszám. Ebben az esetben kell válasszon egy másik módszert, vagy további segítségért forduljon a rendszergazdához.
+> [!Note]
+> Biztonsági adatok használatával telefonos mellékek nem támogatja. Akkor is, ha a megfelelő formátumban ad hozzá, + 1 4255551234 X 12345, a bővítmények törlődnek, mielőtt a hívást kezdeményeznek.
+> 
+> Ha nem látja a telefonos elrendezésre, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrzési telefonszám. Ebben az esetben kell válasszon egy másik módszert, vagy további segítségért forduljon a rendszergazdához.
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>A biztonsági adatok weblapját a telefonhívások beállítása
 Szervezeti beállítások, attól függően fogja tudni használni a telefonhívások, a biztonsági adatok módszerek közül az.

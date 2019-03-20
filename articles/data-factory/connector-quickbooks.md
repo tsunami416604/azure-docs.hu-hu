@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b6e9557503933dfc5271868692cf8546c785bc03
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8f5e3958588a597bde04ae1c8e4873006b281458
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021849"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992216"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-hoz az Azure Data Factory (előzetes verzió) használatával
 
@@ -94,6 +94,7 @@ Adatok másolása a QuickBooks online-hoz, állítsa be a type tulajdonság, az 
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **QuickBooksObject** | Igen |
 | tableName | A tábla neve. | Nem (Ha a tevékenység forrása az "query" van megadva) |
+
 **Példa**
 
 ```json

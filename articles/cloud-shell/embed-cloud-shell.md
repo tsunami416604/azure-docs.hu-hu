@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
-ms.openlocfilehash: 4cd6eeb37eb441528e411377cf175cd950d50b04
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245794"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995977"
 ---
 # <a name="embed-azure-cloud-shell"></a>Az Azure Cloud Shell beágyazása
 
@@ -49,6 +49,7 @@ Egy előugró ablak nem éri el a Cloud Shell beágyazása HTML:
 ## <a name="customize-experience"></a>Élmény testreszabása
 
 Állítsa be egy adott rendszerhéj-felület az URL-cím való bővítésével.
+
 |Felhasználói élményt   |URL-cím   |
 |---|---|
 |Legutóbb használt rendszerhéj   |[shell.azure.com](https://shell.azure.com)           |

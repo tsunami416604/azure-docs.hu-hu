@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 8c66b603bd8c974bcaa63ee2aad58f7fd8fe04e6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555123"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003682"
 ---
 # <a name="azure-signalr-service-authentication"></a>Az Azure SignalR Service-hitelesítés
 
@@ -61,9 +61,9 @@ Az oktatóanyag elvégzéséhez az alábbi előfeltételekkel kell rendelkeznie:
     | Beállítás neve | Ajánlott érték | Leírás |
     | ------------ | --------------- | ----------- |
     | Alkalmazásnév | *Azure SignalR Chat* | A GitHub felhasználói tudja majd felismerni és az alkalmazás végzik a hitelesítést a megbízhatósági kell lennie.   |
-    | Kezdőlap URL-címe | *http://localhost:5000/home* | |
+    | Kezdőlap URL-címe | `http://localhost:5000/home` | |
     | Alkalmazás leírása | *Az Azure SignalR Service segítségével a GitHub-hitelesítéssel csevegőszoba minta* | Az alkalmazás hasznos leírása, amely információkat nyújt az alkalmazás felhasználóinak az alkalmazott hitelesítés környezetéről. |
-    | Az engedélyezési visszahívás URL-címe | *http://localhost:5000/signin-github* | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
+    | Az engedélyezési visszahívás URL-címe | `http://localhost:5000/signin-github` | Ez az OAuth-alkalmazás legfontosabb beállítása. Ez az a visszahívási URL-cím, amelyet a GitHub a sikeres hitelesítés után visszaad a felhasználónak. Ebben az oktatóanyagban az *AspNet.Security.OAuth.GitHub* csomag alapértelmezett visszahívási URL-címét kell használnia: */signin-github*.  |
 
 4. Az új OAuth-alkalmazás regisztrálását követően adja hozzá az *Ügyfél-azonosítót* és a *Titkos ügyfélkulcsot* a Secret Managerhez az alábbi parancsokkal. Cserélje le a *Your_GitHub_Client_Id* és a *Your_GitHub_Client_Secret* elemeket az OAuth-alkalmazás értékeire.
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 961103b787cf42170fc3022fc33d8eb218b7a4bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ece621b18c15061ccb559baf9583677dcc848ca4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998339"
+ms.locfileid: "58201755"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a HDInsight Apache Oozie használata
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -631,7 +631,6 @@ Ebben az oktatóanyagban megtudhatta, hogyan lehet Apache Oozie-munkafolyamatokk
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md

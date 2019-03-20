@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850904"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid-események kezelése
 
@@ -24,26 +24,9 @@ Media Services-események lehetővé teszik a különböző események (példáu
 
 A Media Services-eseményekhez rendelkezésre állási vannak kötve, Event Grid [rendelkezésre állási](../../event-grid/overview.md) és Event Grid választókkal válnak más régiókban érhető el.  
 
-## <a name="available-media-services-events"></a>Elérhető Media Services-események
+## <a name="media-services-events-and-schemas"></a>Media Services-események és sémák
 
-Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára.  Media Services esemény-előfizetések jelenleg a következő események is tartalmazzák:  
-
-|Eseménynév|Leírás|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| Jelenik meg, ha a feladat módosítások állapotának bekéréséhez. |
-| Microsoft.Media.LiveEventConnectionRejected | Kódoló kapcsolatfelvételt. |
-| Microsoft.Media.LiveEventEncoderConnected | Kódoló az élő esemény kapcsolatot létesít. |
-| Microsoft.Media.LiveEventEncoderDisconnected | Kódoló leválasztása. |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | Kiszolgáló adathalmaz csökken, mert késő vagy egy átfedő timestamp (időbélyeg az új adatok adattömbök érték kisebb, mint az előző adathalmaz befejezési időpontja). |
-| Microsoft.Media.LiveEventIncomingStreamReceived | Media kiszolgáló egyes nyomon követése az első adathalmaz kap a streamben vagy a kapcsolat. |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-kiszolgáló észleli a hang és video-adatfolyamokat nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media-kiszolgáló észleli a külső kódoló érkező két video-adatfolyamokat bármelyikét nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését. |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | Kiszolgáló kihagyást észleli a bejövő nyomon követése. |
-
-## <a name="event-schema"></a>Eseményséma
-
-Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák.  A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik.
+Event grid használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák. A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik.
 
 További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
 

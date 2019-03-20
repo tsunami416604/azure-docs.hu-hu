@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d7fc01e0869462928e28c01e51c91ae93fa5a8e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e540eeecf49f8fb00df4a03de95c5063da360229
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171944"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124048"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A távoli asztali átjáró-infrastruktúra használata a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD integrálása
 
@@ -124,7 +124,7 @@ Az NPS-bővítményének konfigurációjának részeként meg kell megadnia az A
 1. Válassza ki **tulajdonságok**.
 1. A címtár-azonosító mellett a Tulajdonságok panelen kattintson a **másolási** ikonra, ahogy az alábbi, másolja vágólapra az Azonosítót a.
 
- ![Tulajdonságok](./media/howto-mfa-nps-extension-rdg/image1.png)
+   ![Tulajdonságok](./media/howto-mfa-nps-extension-rdg/image1.png)
 
 ### <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
 
@@ -139,11 +139,11 @@ Telepítse az NPS-bővítményt egy kiszolgálóra, amelyen telepítve van a há
 1. A hálózati házirend-kiszolgáló a duplán **NpsExtnForAzureMfaInstaller.exe**. Ha a rendszer kéri, kattintson a **futtatása**.
 1. A hálózati házirend-kiszolgáló kiterjesztése az Azure MFA beállítása párbeszédpanelen tekintse át a szoftverlicenc-feltételeket, ellenőrizze **elfogadom a szerződés és feltételek**, és kattintson a **telepítése**.
 
-  ![Az Azure MFA beállítása](./media/howto-mfa-nps-extension-rdg/image2.png)
+   ![Az Azure MFA beállítása](./media/howto-mfa-nps-extension-rdg/image2.png)
 
 1. A hálózati házirend-kiszolgáló kiterjesztése az Azure MFA beállítása párbeszédpanelen kattintson a **Bezárás**.
 
-  ![Az Azure MFA NPS-bővítmény](./media/howto-mfa-nps-extension-rdg/image3.png)
+   ![Az Azure MFA NPS-bővítmény](./media/howto-mfa-nps-extension-rdg/image3.png)
 
 ### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Az NPS-bővítményt egy PowerShell-szkripttel használt tanúsítványok konfigurálása
 
@@ -165,19 +165,19 @@ A szkript használatához adja meg a bővítmény az Azure AD rendszergazdai hit
 1. A PowerShell-parancssorba írja be a `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`, és nyomja le az **ENTER**.
 1. Típus `.\AzureMfaNpsExtnConfigSetup.ps1`, és nyomja le az **ENTER**. A parancsfájl ellenőrzi, hogy ha az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
-  ![Az Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![Az Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Miután a parancsfájl ellenőrzi a PowerShell-modul telepítését, az Azure Active Directory PowerShell modul párbeszédpanel jeleníti meg. A párbeszédpanelen adja meg az Azure AD rendszergazdai hitelesítő adatait és a jelszót, és kattintson a **bejelentkezés**.
 
-  ![Nyissa meg a Powershell-fiók](./media/howto-mfa-nps-extension-rdg/image5.png)
+   ![Nyissa meg a Powershell-fiók](./media/howto-mfa-nps-extension-rdg/image5.png)
 
 1. Amikor a rendszer kéri, illessze be a bérlő Azonosítóját, korábban kimásolt a vágólapra, és nyomja le az **ENTER**.
 
-  ![Adja meg a bérlő azonosítója](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Adja meg a bérlő azonosítója](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. A szkript létrehoz egy önaláírt tanúsítványt, és más konfigurációs módosításokat hajt végre. A kimenet az alábbi képhez hasonlóan kell lennie.
 
-  ![Önaláírt tanúsítvány](./media/howto-mfa-nps-extension-rdg/image7.png)
+   ![Önaláírt tanúsítvány](./media/howto-mfa-nps-extension-rdg/image7.png)
 
 ## <a name="configure-nps-components-on-remote-desktop-gateway"></a>A távoli asztali átjáró NPS összetevők konfigurálása
 
@@ -192,26 +192,26 @@ A távoli asztali kapcsolat engedélyezési házirendek (RD CAPs) adja meg a tá
 1. Nyissa meg az RD átjárókiszolgáló **Kiszolgálókezelő**.
 1. Kattintson a menü **eszközök**, mutasson a **távoli asztali szolgáltatások**, és kattintson a **távoli asztali átjárókezelő**.
 
-  ![Távoli asztali szolgáltatások](./media/howto-mfa-nps-extension-rdg/image8.png)
+   ![Távoli asztali szolgáltatások](./media/howto-mfa-nps-extension-rdg/image8.png)
 
 1. A távoli asztali átjáró Managerben, kattintson a jobb gombbal  **\[kiszolgálónév\] (helyi)**, és kattintson a **tulajdonságok**.
 
-  ![Kiszolgáló neve](./media/howto-mfa-nps-extension-rdg/image9.png)
+   ![Kiszolgáló neve](./media/howto-mfa-nps-extension-rdg/image9.png)
 
 1. A Tulajdonságok párbeszédpanelen válassza ki a **RD CAP Store** fülre.
 1. Válassza ki az RD CAP Store lapon **NPS-t futtató központi kiszolgáló**. 
 1. Az a **adja meg egy nevet vagy IP-címet a hálózati házirend-kiszolgáló** mezőbe írja be a kiszolgáló, amelyre telepítve van az NPS-bővítményének IP-cím vagy a kiszolgáló nevét.
 
-  ![Adja meg a nevét vagy IP-cím](./media/howto-mfa-nps-extension-rdg/image10.png)
+   ![Adja meg a nevét vagy IP-cím](./media/howto-mfa-nps-extension-rdg/image10.png)
   
 1. Kattintson a **Hozzáadás** parancsra.
 1. Az a **közös titkos kulcsot** párbeszédpanelen adja meg a közös titkos kulcsot, és kattintson **OK**. Győződjön meg arról, jegyezze fel a közös titkos kulcsot, és tárolja biztonságos helyen a rekordot.
 
- >[!NOTE]
- >Közös titkos kulcsot a RADIUS-kiszolgálók és ügyfelek közötti megbízhatósági kapcsolat létesítésére szolgál. A hosszú és összetett titkos kulcs létrehozása.
- >
+   >[!NOTE]
+   >Közös titkos kulcsot a RADIUS-kiszolgálók és ügyfelek közötti megbízhatósági kapcsolat létesítésére szolgál. A hosszú és összetett titkos kulcs létrehozása.
+   >
 
- ![Közös titok](./media/howto-mfa-nps-extension-rdg/image11.png)
+   ![Közös titok](./media/howto-mfa-nps-extension-rdg/image11.png)
 
 1. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 
@@ -222,23 +222,23 @@ Biztosítják, hogy a felhasználók hitelesítő adatainak ellenőrzésére, k�
 1. A távoli asztali átjáró kiszolgálón nyissa meg a Kiszolgálókezelőt. Kattintson a menü **eszközök**, és kattintson a **hálózati házirend-kiszolgáló**. 
 1. Az a **hálózati házirend-kiszolgáló (helyi)** konzolról, bontsa ki a **RADIUS-ügyfelek és kiszolgálók**, és válassza ki **távoli RADIUS-kiszolgáló**.
 
- ![Távoli RADIUS-kiszolgáló](./media/howto-mfa-nps-extension-rdg/image12.png)
+   ![Távoli RADIUS-kiszolgáló](./media/howto-mfa-nps-extension-rdg/image12.png)
 
 1. A részleteket tartalmazó ablaktáblán kattintson duplán a **TS GATEWAY SERVER GROUP**.
 
- >[!NOTE]
- >A RADIUS-kiszolgálócsoport konfigurálta az NPS-házirendek központi kiszolgáló hozott létre. A távoli asztali átjáró RADIUS üzeneteket ehhez a kiszolgálóhoz vagy a kiszolgálók, a csoport továbbít, ha egynél több, a csoportban.
- >
+   >[!NOTE]
+   >A RADIUS-kiszolgálócsoport konfigurálta az NPS-házirendek központi kiszolgáló hozott létre. A távoli asztali átjáró RADIUS üzeneteket ehhez a kiszolgálóhoz vagy a kiszolgálók, a csoport továbbít, ha egynél több, a csoportban.
+   >
 
 1. Az a **TS ÁTJÁRÓ kiszolgáló csoport tulajdonságai** párbeszédpanelen jelölje ki az IP-cím vagy a távoli asztali CAPs tárolja, és kattintson a konfigurált hálózati házirend-kiszolgáló neve **szerkesztése**. 
 
- ![TS Gateway Server Group](./media/howto-mfa-nps-extension-rdg/image13.png)
+   ![TS Gateway Server Group](./media/howto-mfa-nps-extension-rdg/image13.png)
 
 1. Az a **RADIUS-kiszolgáló szerkesztése** párbeszédpanelen válassza ki a **terheléselosztás** fülre.
 1. Az a **terheléselosztás** lap a **előtt válasz nélküli másodpercek száma** mezőben módosítsa az alapértelmezett érték a 3., 30 és 60 másodperc közötti értékre.
 1. Az a **kiszolgáló nyilvánítása kérelmek között eltelt másodpercek száma** mezőbe, majd az alapértelmezett érték 30 másodperc egy értéket, amely egyenlő vagy nagyobb, mint az előző lépésben megadott értéket.
 
- ![Radius-kiszolgáló szerkesztése](./media/howto-mfa-nps-extension-rdg/image14.png)
+   ![Radius-kiszolgáló szerkesztése](./media/howto-mfa-nps-extension-rdg/image14.png)
 
 1. Kattintson a **OK** kétszer a párbeszédpanelek bezárásához.
 
@@ -251,7 +251,7 @@ Alapértelmezés szerint egy központi házirend store használandó kapcsolat e
 1. Az a **TS GATEWAY AUTHORIZATION POLICY tulajdonságok** párbeszédpanelen kattintson a **beállítások** fülre.
 1. A **beállítások** lapon, a kérelem továbbítása a kapcsolatot, kattintson a **hitelesítési**. RADIUS-ügyfél hitelesítési kérelmek előre van konfigurálva.
 
- ![Hitelesítési beállítások](./media/howto-mfa-nps-extension-rdg/image15.png)
+   ![Hitelesítési beállítások](./media/howto-mfa-nps-extension-rdg/image15.png)
 
 1. Kattintson a **Mégse**.
 
@@ -268,7 +268,7 @@ Ebben a forgatókönyvben megfelelő működéséhez, az NPS-kiszolgáló regisz
 1. A hálózati házirend-kiszolgáló-konzolon kattintson a jobb gombbal **hálózati házirend-kiszolgáló (helyi)**, és kattintson a **kiszolgáló regisztrálása az Active Directoryban**.
 1. Kattintson a **OK** kétszer.
 
- ![Regisztrálja a kiszolgálót az ad-ben](./media/howto-mfa-nps-extension-rdg/image16.png)
+   ![Regisztrálja a kiszolgálót az ad-ben](./media/howto-mfa-nps-extension-rdg/image16.png)
 
 1. Hagyja nyitva a következő eljárással a konzolon.
 
@@ -278,12 +278,12 @@ A hálózati házirend-kiszolgáló RADIUS-ügyfélként konfigurálni kell a t�
 
 1. A hálózati házirend-kiszolgálón, ahol a hálózati házirend-bővítmény telepítve van, a a **hálózati házirend-kiszolgáló (helyi)** konzolon kattintson a jobb gombbal a **RADIUS-ügyfelek** kattintson **új**.
 
- ![Új RADIUS-ügyfelek](./media/howto-mfa-nps-extension-rdg/image17.png)
+   ![Új RADIUS-ügyfelek](./media/howto-mfa-nps-extension-rdg/image17.png)
 
 1. Az a **új RADIUS-ügyfél** párbeszédpanelen adja meg egy rövid nevet, például _átjáró_, és IP-címe vagy DNS-nevét a távoli asztali átjárókiszolgáló. 
 1. Az a **közös titkos kulcsot** és a **közös titok megerősítése** mezőknél adja meg a titkos kulcsot, amely a korábban használt.
 
- ![Nevét és címét](./media/howto-mfa-nps-extension-rdg/image18.png)
+   ![Nevét és címét](./media/howto-mfa-nps-extension-rdg/image18.png)
 
 1. Kattintson a **OK** az új RADIUS-ügyfél párbeszédpanel bezárásához.
 
@@ -294,28 +294,28 @@ Ne felejtse el, hogy az Azure MFA-bővítménnyel a hálózati házirend-kiszolg
 1. A hálózati házirend-kiszolgálón nyissa meg a hálózati házirend-kiszolgáló (helyi) konzolt, bontsa ki a **házirendek**, és kattintson a **hálózati házirendek**.
 1. Kattintson a jobb gombbal **más kiszolgálók eléréséhez kapcsolatok**, és kattintson a **házirend duplikálása**.
 
- ![Ismétlődő házirend](./media/howto-mfa-nps-extension-rdg/image19.png)
+   ![Ismétlődő házirend](./media/howto-mfa-nps-extension-rdg/image19.png)
 
 1. Kattintson a jobb gombbal **másolási kapcsolatok más kiszolgálók eléréséhez**, és kattintson a **tulajdonságok**.
 
- ![Hálózati tulajdonságok](./media/howto-mfa-nps-extension-rdg/image20.png)
+   ![Hálózati tulajdonságok](./media/howto-mfa-nps-extension-rdg/image20.png)
 
 1. Az a **másolási kapcsolatok más kiszolgálók eléréséhez** párbeszédpanel **házirendnév**, adjon meg egy megfelelő nevet, például _RDG_CAP_. Ellenőrizze **házirenddel**, és válassza ki **hozzáférést**. Szükség esetén a **hálózat-hozzáférési kiszolgáló típusa**válassza **távoli asztali átjáró**, vagy hagyhatja, **meghatározatlan**.
 
- ![A kapcsolatok másolása](./media/howto-mfa-nps-extension-rdg/image21.png)
+   ![A kapcsolatok másolása](./media/howto-mfa-nps-extension-rdg/image21.png)
 
 1. Kattintson a **megkötések** fülre, és ellenőrizze **engedélyezése az ügyfelek hitelesítési módszerként nélkül is kapcsolódhatnak**.
 
- ![Csatlakozás engedélyezése](./media/howto-mfa-nps-extension-rdg/image22.png)
+   ![Csatlakozás engedélyezése](./media/howto-mfa-nps-extension-rdg/image22.png)
 
 1. Másik lehetőségként kattinthat a **feltételek** lapra, és adja meg a kapcsolat, engedélyt kapjon, ha például egy adott Windows-csoport tagsága szükséges feltételeket.
 
- ![Feltételek](./media/howto-mfa-nps-extension-rdg/image23.png)
+   ![Feltételek](./media/howto-mfa-nps-extension-rdg/image23.png)
 
 1. Kattintson az **OK** gombra. Amikor a rendszer kéri, a hozzá tartozó súgó-témakör megtekintése, kattintson a **nem**.
 1. Győződjön meg arról, hogy az új szabályzat tetején található a listában, hogy a szabályzat engedélyezve van, és hozzáférést biztosít.
 
- ![Hálózati házirendek](./media/howto-mfa-nps-extension-rdg/image24.png)
+   ![Hálózati házirendek](./media/howto-mfa-nps-extension-rdg/image24.png)
 
 ## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 

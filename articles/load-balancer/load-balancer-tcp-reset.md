@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58132429"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
@@ -27,7 +27,7 @@ Használhat [Standard Load Balancer](load-balancer-standard-overview.md) hozhat 
 ![Load Balancer TCP alaphelyzetbe állítása](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->Load Balancer a TCP alaphelyzetbe állítása az üresjárati időkorlát funkcióiról jelenleg nyilvános előzetesként elérhető, és korlátozott számú elérhető [régiók](#regions). Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>A TCP Alaphelyzet üresjárati időkorlát funkciókat a terheléselosztó jelenleg nyilvános előzetes verzióként érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 Módosíthatja az alapértelmezett viselkedését és alaphelyzetbe állítja a TCP üresjárati időkorlát a bejövő NAT-szabályokat, a terheléselosztási szabályokat és küldése engedélyezése és [kimenő szabályok](https://aka.ms/lboutboundrules).  Egy szabályban engedélyezésekor a Load Balancer küld-e az ügyfél- és végpontok összes forgalommal egyező üresjárati időkorlát időpontjában kétirányú TCP alaphelyzetbe állítása (TCP ÜZE csomagok).
 

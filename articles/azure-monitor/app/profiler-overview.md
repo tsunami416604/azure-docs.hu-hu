@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850275"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles üzemi alkalmazások az Azure-ban az Application insights segítségével
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
@@ -30,6 +30,7 @@ Profiler együttműködik a telepített .NET-alkalmazások, a következő Azure-
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Az Azure virtuális gépek és virtuálisgép-méretezési csoportokban](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [**Előzetes verzió** ASP.NET Core Azure Linux-webalkalmazások](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 Ha engedélyezve van a Profiler, de nem kapta meg a nyomkövetéseket, ellenőrizze, hogy [hibaelhárítási útmutatója](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json).
 
@@ -93,6 +94,10 @@ Például módszerek **SqlCommand.Execute** azt jelzik, hogy a kód vár egy ada
 ### <a id="block"></a>Letiltott idő
 
 **BLOCKED_TIME** azt jelzi, hogy a kód vár egy másik erőforrás elérhető legyen. Például, előfordulhat, hogy lehet váró szinkronizálási objektumra, elérhető legyen egy adott hozzászóláslánccal kapcsolatban, vagy a kérés befejezéséhez.
+
+### <a name="unmanaged-async"></a>Unmanaged Async
+
+.NET-keretrendszer ETW eseményeket bocsát ki, és adja át a tevékenységazonosítók szálak között, hogy az aszinkron hívásokat szálakon követhető nyomon. Nem felügyelt kód (natív), és néhány régebbi stílusok aszinkron kód hiányoznak az ezen események és a tevékenységazonosítók, így a profiler nem állapítható meg, hogy milyen szál, és mi függvények futnak a szálon. "Nem felügyelt aszinkron" Ez van jelölve, a hívási veremben. Ha az ETW-fájl letöltéséhez, előfordulhat, hogy tudják használni [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) a részletesebb elemzéseket kaphat, hogy mi történik.
 
 ### <a id="cpu"></a>CPU-idő
 

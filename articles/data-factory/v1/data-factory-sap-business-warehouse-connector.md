@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e972ee64d60f0fc9703e766c3ab45c3057c32a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893254"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok áthelyezése az SAP Business Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -171,7 +171,7 @@ Gyakorisággal és időközzel tulajdonságait határozza meg az ütemezést. Eb
 
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
-Ez az adatkészlet határozza meg, hogy a kimenet az Azure Blob-adatkészlet. A tulajdonság beállítása az Azure Blobba. A typeProperties szakasz tartalmazza, az SAP BW-példány másolt adatokat tároló. Az adatok írása egy új blob minden órában (frequency: óra, interval: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Ez az adatkészlet határozza meg, hogy a kimenet az Azure Blob-adatkészlet. A tulajdonság beállítása az Azure Blobba. A typeProperties szakasz tartalmazza, az SAP BW-példány másolt adatokat tároló. Az adatok írása egy új blob minden órában (frequency: óra, interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -292,27 +292,27 @@ Ha az SAP BW helyez át adatokat, a következő hozzárendeléseket a rendszer S
 A ABAP szótárban adattípus | .NET-adattípus
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | Sztring
-CLNT | Sztring
-PÉNZNEM | Tizedes tört
-CUKY | Sztring
-DEC | Tizedes tört
-FLTP | Dupla
-INT1 | Bájt
+CHAR | String
+CLNT | String
+CURR | Decimal
+CUKY | String
+DEC | Decimal
+FLTP | Double
+INT1 | Byte
 INT2 | Int16
 INT4 | Int
-NYELV | Sztring
-LCHR | Sztring
-LRAW | Byte]
+NYELV | String
+LCHR | String
+LRAW | Byte[]
 PREC | Int16
-QUAN | Tizedes tört
-RAW | Byte]
-RAWSTRING | Byte]
-STRING | Sztring
-EGYSÉG | Sztring
-DATS | Sztring
-NUMC | Sztring
-TIMS | Sztring
+QUAN | Decimal
+RAW | Byte[]
+RAWSTRING | Byte[]
+STRING | String
+EGYSÉG | String
+DATS | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

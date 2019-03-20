@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b953d979fc5306372c1e751fbbb8942d19fed03f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648914"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104505"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése
 
@@ -97,9 +97,9 @@ A hiba elhárításához kövesse az alábbi lépéseket:
     - Ha a saját alkalmazások biztonságos bejelentkezési bővítménye telepítve van, az a **egyszeri bejelentkezés tesztelése** panelen kattintson a **letöltési SAML-válasz**.
     - Ha a bővítmény nincs telepítve, használja a eszközt például [Fiddler](https://www.telerik.com/fiddler) SAML-válasz lekéréséhez. 
 1. Figyelje meg ezeknek az elemeknek a SAML-válasz token:
-    - Felhasználó egyedi azonosítója, NameID-érték és formázása
-    - A jogkivonatban kiadott jogcímek
-    - A jogkivonat aláírásához használt tanúsítványt. 
+   - Felhasználó egyedi azonosítója, NameID-érték és formázása
+   - A jogkivonatban kiadott jogcímek
+   - A jogkivonat aláírásához használt tanúsítványt. 
 
      SAML-válasszal kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md).
 

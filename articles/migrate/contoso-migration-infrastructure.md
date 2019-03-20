@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 6ee05af0391311b4782211807f41ce099a6c24a2
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889936"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876680"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - áttelepítési infrastruktúra üzembe helyezése
 
@@ -101,10 +101,10 @@ Után kell fizetnie, az Azure-hoz, Contoso kell, hogyan lehet Azure-előfizetés
 - Az Azure nagyvállalati beléptetés határozza meg, hogyan egy vállalati alakzatokat és az Azure-szolgáltatásokat használ, és határozza meg a core irányítási szerkezete.
 - Első lépésként Contoso megállapítása szerint a struktúra (más néven egy enterprise scaffold a nagyvállalati beléptetés. A Contoso használt [Ez a cikk](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance) ismertetése, és a egy scaffold kialakítása érdekében.
 - Most a Contoso egy funkcionális módszer használatához az előfizetések kezeléséhez határozott meg.
-    - A vállalaton belüli fogja használni, amely az Azure-költségvetési szabályozza egy informatikai részleghez. Ez az előfizetés csak csoport lesz.
-    - Contoso úgy, hogy más vállalati csoportok csatlakozhat a nagyvállalati beléptetés a részlegek, a jövőben a rendszergazdákéval ebben a modellben.
-    - Az informatikai részleg belül Contoso két előfizetések, üzemi és fejlesztési van felépítve.
-    - Ha a Contoso van szüksége a jövőben további előfizetéseket, kell hozzáférést, a házirendek és a megfelelőséget ezen előfizetések kezelése. Contoso fogja megtenni bevezetésével [az Azure felügyeleti csoportok](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), mint a fenti előfizetések réteget.
+  - A vállalaton belüli fogja használni, amely az Azure-költségvetési szabályozza egy informatikai részleghez. Ez az előfizetés csak csoport lesz.
+  - Contoso úgy, hogy más vállalati csoportok csatlakozhat a nagyvállalati beléptetés a részlegek, a jövőben a rendszergazdákéval ebben a modellben.
+  - Az informatikai részleg belül Contoso két előfizetések, üzemi és fejlesztési van felépítve.
+  - Ha a Contoso van szüksége a jövőben további előfizetéseket, kell hozzáférést, a házirendek és a megfelelőséget ezen előfizetések kezelése. Contoso fogja megtenni bevezetésével [az Azure felügyeleti csoportok](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview), mint a fenti előfizetések réteget.
 
     ![Nagyvállalati struktúra](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ Használatával a fenntartott példányok adott virtuális gép üzemelő péld�
 
 Contoso az Azure AD ingyenes kiadásának mobilalkalmazásoknak része egy Azure-előfizetést használ. AD-címtárral az alábbiak szerint állíthatja a Contoso rendszergazdák:
 
-1. A a [az Azure portal](http://portal.azure.com/), akkor navigáljon a **erőforrás létrehozása** > **identitás** > **Azure Active Directory**.
+1. A a [az Azure portal](https://portal.azure.com/), akkor navigáljon a **erőforrás létrehozása** > **identitás** > **Azure Active Directory**.
 2. A **könyvtár létrehozása**, adja meg a könyvtár nevét, egy kezdeti tartománynevet és a régiót, amelyben az Azure AD-címtárban kell létrehozni.
 
     ![Hozzon létre az Azure ad-ben](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -581,18 +581,18 @@ Miután frissítette a hálózati beállítások, Contoso rendszergazdák épít
 
 1. Az Azure Portalon, a megfelelő virtuális hálózatot egy új Windows Server virtuális gép üzembe helyezése.
 2. Rendelkezésre állási csoportok az egyes helyeken a virtuális gép létrehozása azokat. A rendelkezésre állási csoportok tegye a következőket:
-    - Győződjön meg arról, hogy az Azure-hálót a virtuális gépek elkülöníti azokat különböző infrastruktúrákat az Azure-régióban. 
-    -  Lehetővé teszi, hogy a Contoso a 99,95 %-os SLA-t az Azure-beli virtuális gépek jogosult legyen.  [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
+   - Győződjön meg arról, hogy az Azure-hálót a virtuális gépek elkülöníti azokat különböző infrastruktúrákat az Azure-régióban. 
+   - Lehetővé teszi, hogy a Contoso a 99,95 %-os SLA-t az Azure-beli virtuális gépek jogosult legyen.  [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
-    ![Rendelkezésre állási csoport](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![Rendelkezésre állási csoport](./media/contoso-migration-infrastructure/availability-group.png) 
 3. A virtuális gép telepítése után, nyissa meg a hálózati adaptert a virtuális gép. Statikus magánhálózati IP-cím beállítva, és adjon meg egy érvényes címet.
 
     ![VIRTUÁLIS GÉP HÁLÓZATI ADAPTER](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. Most, akkor új adatlemez csatolása a virtuális géphez. Ezt a lemezt tartalmaz, az Active Directory-adatbázis és a sysvol-megosztás. 
-    - A lemez mérete határozza meg az iops-érték, amely támogatja a száma.
-    - Idővel a lemez mérete esetleg növelnie kell a környezet növekedésével.
-    - A meghajtó-állomás gyorsítótárazását az olvasási/írási nem állítható be. Az Active Directory-adatbázisok nem támogatják ezt.
+   - A lemez mérete határozza meg az iops-érték, amely támogatja a száma.
+   - Idővel a lemez mérete esetleg növelnie kell a környezet növekedésével.
+   - A meghajtó-állomás gyorsítótárazását az olvasási/írási nem állítható be. Az Active Directory-adatbázisok nem támogatják ezt.
 
      ![Az Active Directory-lemez](./media/contoso-migration-infrastructure/ad-disk.png)
 

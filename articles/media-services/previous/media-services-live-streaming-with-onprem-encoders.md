@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188356"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Többszörös átviteli sebességű élő streamet fogadjon helyszíni kódolókkal történő továbbítását csatornák használata
 
 > [!NOTE]
 > 2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
@@ -146,7 +146,7 @@ Csatorna előnézeti végpont (előzetes verzió URL-cím), amellyel és ellenő
 
 Az előnézeti URL-cím kérheti le a csatorna létrehozásakor. Meg az URL-Címének lekéréséhez a csatorna nem kell lennie a **futó** állapota. Adatok bevitele a csatorna indítása után megtekintheti a stream.
 
-Az előzetes verzió adatfolyam letöltéséhez jelenleg csak a darabolt MP4 (Smooth Streaming) formátumban, a megadott bemeneti típusától függetlenül. Használhatja a [Smooth Streaming állapotfigyelőjének](http://playready.directtaps.net/smoothstreaming/) lejátszó a smooth stream kipróbálásához. A stream megtekintése az Azure Portalon üzemeltetett játékos is használható.
+Az előzetes verzió adatfolyam letöltéséhez jelenleg csak a darabolt MP4 (Smooth Streaming) formátumban, a megadott bemeneti típusától függetlenül. Használhatja a [Smooth Streaming állapotfigyelőjének](https://playready.directtaps.net/smoothstreaming/) lejátszó a smooth stream kipróbálásához. A stream megtekintése az Azure Portalon üzemeltetett játékos is használható.
 
 #### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 Megadhatja, hogy az IP-címek, amelyek jogosultak az előzetes verzió végponthoz csatlakozik. Nincsenek IP-címek meg van adva, ha engedélyezett IP-címeket. Engedélyezett IP-címet a következők szerint adható meg:
@@ -185,7 +185,7 @@ A csatorna aktuális állapota lehetséges értékei a következők:
 Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében miként alakul a számlázási mód.
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Indítása** |**Indítása** |Nem (átmeneti állapot) |
 | **Fut** |**Kész** (nincs futó program)<p><p>vagy<p>**Streamelési** (legalább egy futó program) |Igen |
 | **Leállítása** |**Leállítása** |Nem (átmeneti állapot) |

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: c0dc67ddf0f1de9ca72fd14a9113219209a6bda0
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5b49db8d7e8360837dc209e98123eeccd5542769
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837745"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -53,8 +53,8 @@ Használhat egy [élő helyszíni kódolót](recommended-on-premises-live-encode
 1. Éles környezetben szüksége lesz egy Secure Token szolgáltatások (STS) (webszolgáltatás) amely JWT jogkivonatot egy HTTPS-kérés esetén. Tesztelési, használhatja a kód látható **GetTokenAsync** meghatározott metódus [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 2. Indítson egy, az STS-re, például egy jogkivonatot a felhasználó hitelesítése után, és rendelje hozzá a token értékeként Player kell. Használhatja a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 
-* Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ http://aka.ms/jwt ](https://aka.ms/jwt). 
-* Egy ilyen JWT-jogkivonat használatával az Azure Media Player-alapú Media Player egy példa: [ http://aka.ms/amtest ](https://aka.ms/amtest) (bontsa ki a "player_settings" hivatkozásra kattintva megtekintheti a token bemeneti).
+* Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ https://aka.ms/jwt ](https://aka.ms/jwt). 
+* Egy ilyen JWT-jogkivonat használatával az Azure Media Player-alapú Media Player egy példa: [ https://aka.ms/amtest ](https://aka.ms/amtest) (bontsa ki a "player_settings" hivatkozásra kattintva megtekintheti a token bemeneti).
 
 ### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hogyan engedélyezi, hogy kérelmeket a Videóknak az AES-titkosítás?
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7b5d9c85a790252b403a04439f326da1d9ea28c6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7c4a73c86245067a07dc253041c43ae6c17f7172
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782955"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096979"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan férhet hozzá az osztályterem-tesztkörnyezetekhez, hogyan csatlakozhat a tesztkörnyezetben található virtuális gépekhez, és hogyan állíthatja le a virtuális gépeket. 
@@ -47,9 +47,9 @@ Miután regisztrálta a labs, az osztályterem-tesztkörnyezetek tekintheti meg 
 1. A virtuális gép Ha még nem indult el, válassza ki a kezdési **Start** a csempére. 
 2. Válassza a **Csatlakozás** elemet azon a csempén, amely annak a tesztkörnyezetnek a virtuális gépét jelöli, amelyhez hozzá szeretne férni. 
 3. Hajtsa végre a következő lépések egyikét: 
-    1. A **Windows** virtuális gépeket, mentse a **RDP** a merevlemez-fájlt. Nyissa meg a virtuális géphez csatlakozni RDP-fájlt. Használja a **felhasználónév** és **jelszó** jelentkezzen be a gép az oktató/professzor kérhet. 
-    3. A **Linux** virtuális gépeket, másolja és menti az SSH-kapcsolati karakterláncot a **csatlakozhat a virtuális gép** párbeszédpanel bezárásához. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni.
-## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Virtuális gép leállítása osztályterem-tesztkörnyezetben
+   1. A **Windows** virtuális gépeket, mentse a **RDP** a merevlemez-fájlt. Nyissa meg a virtuális géphez csatlakozni RDP-fájlt. Használja a **felhasználónév** és **jelszó** jelentkezzen be a gép az oktató/professzor kérhet. 
+   3. A **Linux** virtuális gépeket, másolja és menti az SSH-kapcsolati karakterláncot a **csatlakozhat a virtuális gép** párbeszédpanel bezárásához. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni.
+      ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Virtuális gép leállítása osztályterem-tesztkörnyezetben
 
 A virtuális gép leállításához válassza ki **leállítása** a csempére. A virtuális gép leállítása után elérhetővé válik a csempén az **Indítás** gomb. 
 

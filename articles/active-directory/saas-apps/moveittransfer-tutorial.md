@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2cd63069a584ccef05236f925f99c3740c6a3402
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f6b9c85fa3462486a32cf55b10cb06bb84b0072
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Oktatóanyag: MOVEit átvitele – az Azure AD-integráció az Azure Active Directory-integráció
 
@@ -149,10 +149,10 @@ MOVEit átvitele – az Azure AD-integráció, az Azure AD egyszeri bejelentkez�
 
     ![Service Provider metaadatok URL-címe](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-    * Győződjön meg arról **entityID** megegyezik **azonosító** a a **alapszintű SAML-konfigurációja** szakaszban.
-    * Győződjön meg arról **AssertionConsumerService** hely URL-címe megegyezik **válasz URL-cím** a a **alapszintű SAML-konfigurációja** szakaszban.
+   * Győződjön meg arról **entityID** megegyezik **azonosító** a a **alapszintű SAML-konfigurációja** szakaszban.
+   * Győződjön meg arról **AssertionConsumerService** hely URL-címe megegyezik **válasz URL-cím** a a **alapszintű SAML-konfigurációja** szakaszban.
     
-    ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+     ![Egyszeri bejelentkezés az alkalmazás ügyféloldali konfigurálása](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
 5. Kattintson a **identitásszolgáltató hozzáadása** gombra kattintva adhat hozzá egy új összevont identitásszolgáltatót.
 
@@ -198,7 +198,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

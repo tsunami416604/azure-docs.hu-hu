@@ -17,7 +17,7 @@ ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57990628"

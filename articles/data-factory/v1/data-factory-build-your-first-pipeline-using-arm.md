@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ae162c6e0ced1021272f08e3e645596586d847d4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d0eda93855c3be66d4c733774a6cc1d5875a8394
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535759"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998302"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory használatával az Azure Resource Manager-sablon létrehozása
 > [!div class="op_single_selector"]
@@ -52,6 +52,7 @@ Ebben az oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: 
 * Az Azure Resource Manager-sablonokkal kapcsolatban az [Authoring Azure Resource Manager Templates](../../azure-resource-manager/resource-group-authoring-templates.md) (Azure Resource Manager-sablonok készítése) című cikkben tájékozódhat bővebben. 
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
+
 | Entitás | Leírás |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. |
@@ -317,17 +318,17 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 ## <a name="create-data-factory"></a>Data factory létrehozása
 1. Indítsa el az **Azure PowerShellt**, és futtassa az alábbi parancsot: 
    * Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
-    ```PowerShell
-    Connect-AzAccount
-    ```  
+     ```PowerShell
+     Connect-AzAccount
+     ```  
    * Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
-    ```PowerShell
-    Get-AzSubscription
-    ``` 
+     ```PowerShell
+     Get-AzSubscription
+     ``` 
    * Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Ennek az előfizetésnek egyeznie kell az Azure Portalon használt előfizetéssel.
-    ```
-    Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
-    ```   
+     ```
+     Get-AzSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzContext
+     ```   
 2. Futtassa a következő parancsot a Data Factory-entitásoknak az 1. lépésben létrehozott Resource Manager-sablonnal történő telepítéséhez. 
 
     ```PowerShell
@@ -621,6 +622,7 @@ Az itt látható, mintául szolgáló Resource Manager-sablonnal egy háttérben
 Ez a sablon nevű átjáróval GatewayUsingArmDF nevű data factoryt hoz létre: GatewayUsingARM. 
 
 ## <a name="see-also"></a>Lásd még:
+
 | Témakör | Leírás |
 |:--- |:--- |
 | [Folyamatok](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |

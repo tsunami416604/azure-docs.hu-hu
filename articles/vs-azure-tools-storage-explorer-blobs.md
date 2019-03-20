@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858167"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése a Storage Explorerben
 ## <a name="overview"></a>Áttekintés
@@ -30,7 +30,7 @@ A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 * [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com)
-* [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Csatlakozhat egy Azure storage-fiók vagy szolgáltatás](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Blobtároló létrehozása
 Minden BLOB egy blob-tárolóba, amely egyszerűen csak a blobok logikai csoportosítása kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat, és minden tároló korlátlan számú BLOB tárolhatja.
@@ -47,7 +47,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy blobtárolót a St
    ![Blob-tárolók beviteli mező létrehozása][1]
 5. Nyomja meg **Enter** billentyűt a blobtároló létrehozásához vagy **Esc** megszakítja. Ha a blob-tároló sikeresen létrejött, megjelenik a a **Blob-tárolók** a kiválasztott tárfiókhoz tartozó mappában.
 
-   ![Létrehozott BLOB-tárolóba][2]
+   ![Blob Container created][2]
 
 ## <a name="view-a-blob-containers-contents"></a>A blob-tároló tartalmának megtekintése
 BLOB-tárolók a blobok és mappák (blobok is tartalmazhat) tartalmaznak.
@@ -115,7 +115,7 @@ A következő lépések bemutatják, hogyan hozhat létre a blobtároló SAS:
 7. Egy második **közös hozzáférésű Jogosultságkód** párbeszédpanel majd jelenik meg, amely felsorolja a blob-tároló URL-cím és sorolva, használhatja a tárolási erőforrások eléréséhez.
    Válassza a **Másolás** parancsot a vágólapra másolni kívánt URL-cím mellett.
 
-   ![Másolja a SAS URL-címek][10]
+   ![Copy SAS URLs][10]
 8. Ha elkészült, válassza a **Bezárás** lehetőséget.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>A blob-tároló hozzáférési szabályzatainak kezelése

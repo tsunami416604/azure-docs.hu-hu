@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: eca1379c4f721a0201b01f149b581859c49c6540
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234373"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835452"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozhatósági útmutató
 
@@ -133,7 +133,7 @@ Ahogy korábban említettük, U-SQL kódot futtat egy 64 bites (x 64) formátumb
 
 Minden egyes feltöltött szerelvény dll-fájl és erőforrás-fájl, például egy másik modult, natív szerelvény vagy egy konfigurációs fájl legfeljebb 400 MB lehet. Üzembe helyezett erőforrásokat, vagy üzembe helyezése erőforrás vagy keresztül hivatkozások szerelvényeket és a további fájlokra, amelyek összméretén legfeljebb 3 GB-os lehet.
 
-Végül vegye figyelembe, hogy minden U-SQL-adatbázist csak egy verzióját minden olyan adott szerelvény is tartalmazhatja. Például ha 7-es verzió és a 8-as verzió NewtonSoft Json.Net-függvénytár, meg kell két külön adatbázis regisztrálja őket. Továbbá minden parancsprogram csak hivatkozhatnak egy adott szerelvény DLL egyik verziójának. Ebben a tekintetben a U-SQL C# szerelvény felügyeleti és verziókezelését szemantikáját követi.
+Végül vegye figyelembe, hogy minden U-SQL-adatbázist csak egy verzióját minden olyan adott szerelvény is tartalmazhatja. Például ha 7-es verzió és a 8-as verzió NewtonSoft Json.NET-függvénytár, meg kell két külön adatbázis regisztrálja őket. Továbbá minden parancsprogram csak hivatkozhatnak egy adott szerelvény DLL egyik verziójának. Ebben a tekintetben a U-SQL C# szerelvény felügyeleti és verziókezelését szemantikáját követi.
 
 ## <a name="use-user-defined-functions-udf"></a>Felhasználó által definiált függvények használata: UDF
 U-SQL-felhasználó által definiált függvények vagy UDF, vannak programozási rutinjait, amely fogad el paramétereket, egy műveletet (például egy összetett számítás) és egy értéket, a művelet eredményét adja vissza. Az UDF visszaadott értéke csak lehet egyetlen skaláris. U-SQL UDF a U-SQL alapvető szkriptet, mint bármely más C# skaláris függvény nem hívható meg.

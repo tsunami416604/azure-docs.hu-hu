@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859614"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844588"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
@@ -201,7 +201,7 @@ Ezek az előre összeállított entitások némelyike vannak meghatározva a ny�
 
 ## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
 
-Reguláris kifejezés ideális nyers utterance (kifejezés) szöveget. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza. Ha a reguláris kifejezés túl összetett, például sok zárójelben, Ön nem adhat hozzá a kifejezés a modellbe. Használja a része, de nem minden a [.Net reguláris kifejezés](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) könyvtár. 
+Reguláris kifejezés ideális nyers utterance (kifejezés) szöveget. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változat.  Reguláris kifejezések egyeztetésének szinten karaktert, nem a token szint helyesírás-ellenőrzésének átalakítás után alkalmazza. Ha a reguláris kifejezés túl összetett, például sok zárójelben, Ön nem adhat hozzá a kifejezés a modellbe. Használja a része, de nem minden a [.NET reguláris kifejezés](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) könyvtár. 
 
 Az entitás az a jó, mikor igazítása:
 

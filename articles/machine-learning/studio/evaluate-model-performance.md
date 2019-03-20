@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f5e7a923ed5eb692f5fb05082c73b969081c739b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891586"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Hogyan modellek teljesítményének kiértékelése az Azure Machine Learning Studióban
 
@@ -83,7 +83,7 @@ Miután a kísérletet, vizsgálhatja meg a kiértékelési eredményeket kattin
 4. ábra Kereszt-ellenőrzési eredmények a regressziós modell.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Egy bináris osztályozási modell értékelése
-A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, kiszámítja az Azure Machine Learning Studio metrikák és kimenetek kiválasztása. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](http://archive.ics.uci.edu/ml/datasets/Adult) adatkészlet Studio kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris osztályozó teljesítményének értékeléséhez.
+A bináris osztályozási forgatókönyvekben a célváltozó rendelkezik csak két lehetséges kimenetek, például: {0, 1} vagy {FALSE (hamis), true}, {negatív, pozitív}. Tegyük fel, kapnak egy adatkészlet néhány felnőtt az alkalmazottak demográfiai és alkalmazási változók és, hogy a rendszer felkéri a bevétel szintjét, azokra az értékekre bináris változó előrejelzése {"< = 50 K", "> 50 K"}. Más szóval a negatív osztály jelöli a személyeket, akik győződjön meg, legfeljebb 50 k évenként, és a pozitív osztály minden alkalmazott jelöli. Hasonlóan a regressziós a forgatókönyvben azt lenne a modell betanítását, bizonyos adatok pontozása és eredmények értékelése. A fő különbség az, kiszámítja az Azure Machine Learning Studio metrikák és kimenetek kiválasztása. A bevétel szintű előrejelzési forgatókönyvet mutatja be, ezzel a [felnőtt](https://archive.ics.uci.edu/ml/datasets/Adult) adatkészlet Studio kísérlet létrehozása és a egy két osztályú logisztikai regressziós modell, egy gyakran használt bináris osztályozó teljesítményének értékeléséhez.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Az Azure Machine Learning Studio-munkaterülethez adja hozzá a következő modulok:
@@ -133,7 +133,7 @@ A regressziós példához hasonlóan a keresztellenőrzési ismételten betanít
 9. ábra Bináris osztályozó kereszt-ellenőrzési eredményeit.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Többosztályos osztályozási modell értékelése
-Az ezzel a kísérlettel azt fogja használni a népszerű [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") 3 különböző típusú (osztály) az iris üzem példányait tartalmazó adatkészletet. 4 funkció értékek vannak (csészelevél hossza/szélességét és szirom hossza/szélessége) minden példány esetében. Az előző kísérletek hozunk betanított és a modellek az azonos adatkészleteket használó tesztelése. Itt, ezzel a [Split Data] [ split] létrehozása a data 2 részhalmazainak, az első, betanítását és pontozását és kiértékelheti a második modult. Az Írisz adatkészletet a rendszer a [UCI Machine Learning-tárház](http://archive.ics.uci.edu/ml/index.html), és segítségével lehet letölteni egy [adatok importálása] [ import-data] modul.
+Az ezzel a kísérlettel azt fogja használni a népszerű [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") 3 különböző típusú (osztály) az iris üzem példányait tartalmazó adatkészletet. 4 funkció értékek vannak (csészelevél hossza/szélességét és szirom hossza/szélessége) minden példány esetében. Az előző kísérletek hozunk betanított és a modellek az azonos adatkészleteket használó tesztelése. Itt, ezzel a [Split Data] [ split] létrehozása a data 2 részhalmazainak, az első, betanítását és pontozását és kiértékelheti a második modult. Az Írisz adatkészletet a rendszer a [UCI Machine Learning-tárház](https://archive.ics.uci.edu/ml/index.html), és segítségével lehet letölteni egy [adatok importálása] [ import-data] modul.
 
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
 Az Azure Machine Learning Studio-munkaterülethez adja hozzá a következő modulok:

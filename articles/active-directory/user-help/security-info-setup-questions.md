@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 831b17eefb971a5ed617e5cb30730ce23c87e374
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901882"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>Biztonsági adatok (előzetes verzió) beállítása a biztonsági kérdések használata
 Követheti a következő lépésekkel adhatja hozzá a jelszó-visszaállítási mód. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
@@ -31,10 +31,12 @@ Attól függően, a szervezet beállításait válassza ki, és néhány biztons
 
 Biztonsági kérdések használatakor javasoljuk egy másik módszerrel együtt használja őket. Biztonsági kérdések kevésbé biztonságos, mint más módszerekkel lehet, mivel vannak, akik előfordulhat, hogy a kérdésekre adott válaszokat.
 
->[!Note]
->Biztonsági kérdések a címtárban lévő felhasználói objektum a privát módon és biztonságosan tárolja, és csak választ, a regisztráció során. Nincs lehetőség a olvasni vagy módosítani a kérdések és válaszok a rendszergazdának.
-
->Ha a biztonsági kérdések beállítás nem jelenik meg, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző biztonsági kérdéseket. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+> [!Note]
+> Biztonsági kérdések a címtárban lévő felhasználói objektum a privát módon és biztonságosan tárolja, és csak választ, a regisztráció során. Nincs lehetőség a olvasni vagy módosítani a kérdések és válaszok a rendszergazdának.
+> 
+> Ha a biztonsági kérdések beállítás nem jelenik meg, lehetséges, hogy a szervezet nem engedélyezi, hogy az ellenőrző biztonsági kérdéseket. Ha ez a helyzet, szüksége lesz egy másik módszer kiválasztásához, vagy további segítségért forduljon a rendszergazdához.
+> 
+> Rendszergazdai fiókok nem engedélyezettek a biztonsági kérdések használatára, mert a jelszó-létrehozási módszer. Ha egy rendszergazda szintű fiókkal van bejelentkezve nem láthatja el ezeket a beállításokat.
 
 ### <a name="to-set-up-your-security-questions"></a>A biztonsági kérdések beállítása
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670893"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085320"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Az Azure Maps segítségével egy geokerítésen beállítása
 
@@ -25,11 +25,11 @@ Az Event Griddel kapcsolatos további információkért lásd: [Azure Event Grid
 Ebben az oktatóanyagban azt tekintjük át hogyan lehet:
 
 > [!div class="checklist"]
-* Töltse fel az Azure Maps, az adatok feltöltése API-val adatszolgáltatás geokerítésen területet.
-*   Állítsa be az Event Grid geokerítésen események kezeléséhez.
-*   A telepítő geokerítésen eseményeket kezelő.
-*   Riasztásokat állíthat be a Logic Apps használatával geokerítésen eseményeihez.
-*   Az Azure Maps geokerítésen szolgáltatás API-k segítségével nyomon követheti, akár a konstrukció eszköz a konstrukció helyen belül van, akár nem.
+> * Töltse fel az Azure Maps, az adatok feltöltése API-val adatszolgáltatás geokerítésen területet.
+> *   Állítsa be az Event Grid geokerítésen események kezeléséhez.
+> *   A telepítő geokerítésen eseményeket kezelő.
+> *   Riasztásokat állíthat be a Logic Apps használatával geokerítésen eseményeihez.
+> *   Az Azure Maps geokerítésen szolgáltatás API-k segítségével nyomon követheti, akár a konstrukció eszköz a konstrukció helyen belül van, akár nem.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -150,9 +150,9 @@ Nyissa meg a Postman alkalmazást, és kövesse az alábbi lépések végrehajt�
 
 5. Kattintson a Küldés gombra, és tekintse át a válaszfejlécben. A location fejlécet tartalmazza az URI-t eléréséhez, vagy töltse le az adatokat későbbi használatra. Emellett tartalmaz egy egyedi `udId` a feltöltött adatok.
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>Állítsa be az eseménykezelő
 
@@ -163,15 +163,15 @@ Láthatja az összes [eseménykezelők támogatott](https://docs.microsoft.com/a
 
 1. Logikai alkalmazás létrehozása az Azure Portalon
 
-  ![Logikai alkalmazások létrehozása](./media/tutorial-geofence/logic-app.png)
+   ![Logikai alkalmazások létrehozása](./media/tutorial-geofence/logic-app.png)
 
 2. Jelölje be a HTTP-kérelem típusú trigger és válassza az "e-mail küldése" műveletet az outlook-összekötőben
   
-  ![Logic Apps-séma](./media/tutorial-geofence/logic-app-schema.png)
+   ![Logic Apps-séma](./media/tutorial-geofence/logic-app-schema.png)
 
 3. Mentse a logikai alkalmazás a HTTP URL-végpontot létrehozni, és másolja a HTTP URL-címet.
 
-  ![Logic Apps-végpont](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps-végpont](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps esemény-előfizetés létrehozása
@@ -208,53 +208,53 @@ Az alábbiakban öt HTTP GET Geokerítések API-kérelem a különböző megfele
  
 1. 1. hely:
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![1 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![1 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query1.png)
 
-  A fenti válasz tekinti meg, ha negatív közötti távolságot a fő geokerítésen azt jelenti, hogy a berendezés a geokerítésen belül van, és a pozitív a alwebhely geokerítésen az azt jelenti, hogy a alwebhely geokerítésen kívül. 
+   A fenti válasz tekinti meg, ha negatív közötti távolságot a fő geokerítésen azt jelenti, hogy a berendezés a geokerítésen belül van, és a pozitív a alwebhely geokerítésen az azt jelenti, hogy a alwebhely geokerítésen kívül. 
 
 2. 2. hely: 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![Geokerítésen lekérdezés 2](./media/tutorial-geofence/geofence-query2.png)
+   ![Geokerítésen lekérdezés 2](./media/tutorial-geofence/geofence-query2.png)
 
-  Ha megtekinti a fenti JSON-válasz gondosan a készülék kívül esik a alwebhely, de a fő zárójel található. Ne indítsa el egy eseményt, és nem e-mailt küld.
+   Ha megtekinti a fenti JSON-válasz gondosan a készülék kívül esik a alwebhely, de a fő zárójel található. Ne indítsa el egy eseményt, és nem e-mailt küld.
 
 3. 3. hely: 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![3 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query3.png)
+   ![3 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query3.png)
 
-  Állapotváltozás történt, és most már a készülék belül két fő és alwebhely geokerítések. Ez közzétesz egy eseményt, és a egy értesítést e-mailt küld az Operations Manager.
+   Állapotváltozás történt, és most már a készülék belül két fő és alwebhely geokerítések. Ez közzétesz egy eseményt, és a egy értesítést e-mailt küld az Operations Manager.
 
 4. 4. hely: 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![4 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query4.png)
+   ![4 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query4.png)
 
    Gondosan figyelje a megfelelő választ, megtalálja, hogy nincs esemény lekérdezi az itt közzétett annak ellenére, hogy a berendezés kilépett a alwebhely geokerítésen. Ha a GET kérelem a felhasználó megadott időpontban, láthatja, hogy a alwebhely geokerítésen képest ez idő lejárt, és a készülék még mindig a fő geokerítésen. Emellett megtekintheti a alwebhely geokerítésen alatt geometriai azonosítója `expiredGeofenceGeometryId` a válasz törzsében.
 
 
 5. 5. hely:
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![5 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query5.png)
+   ![5 Geokerítésen lekérdezés](./media/tutorial-geofence/geofence-query5.png)
 
-  Láthatja, hogy a berendezés elhagyta a fő szerkezeti hely geokerítésen. Azt közzétesz egy eseményt, súlyos megsértést, és a egy kritikus riasztási e-mailt küld az Operations Manager.
+   Láthatja, hogy a berendezés elhagyta a fő szerkezeti hely geokerítésen. Azt közzétesz egy eseményt, súlyos megsértést, és a egy kritikus riasztási e-mailt küld az Operations Manager.
 
 ## <a name="next-steps"></a>További lépések
 

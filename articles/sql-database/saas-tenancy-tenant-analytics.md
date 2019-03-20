@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f7c482a0308d3c2b2583d99cf4079040065b80c0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890542"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  
@@ -93,7 +93,7 @@ A következő lépésekben az analytics tárolóba, amelyet üzembe **tenantanal
     - Az oszlop store az SQL database használatához állítsa **$DemoScenario** = **3**  
 3. Nyomja meg **F5** a bemutató-parancsfájl futtatása (amely meghívja a *üzembe helyezés – TenantAnalytics<XX>.ps1* parancsfájl) a bérlői analitikai tárolóban hoz létre, amely. 
 
-Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
+Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P\@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -175,7 +175,7 @@ Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott néz
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P\@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

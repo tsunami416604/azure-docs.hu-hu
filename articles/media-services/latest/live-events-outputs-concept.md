@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189359"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -150,5 +150,4 @@ További információkért lásd: [használatával egy felhőalapú DVR-Funkció
 
 ## <a name="next-steps"></a>További lépések
 
-- [Élő események streamelése](live-streaming-overview.md)
-- [Élő adatfolyam-továbbítási oktatóanyag](stream-live-tutorial-with-api.md)
+[Élő adatfolyam-továbbítási oktatóanyag](stream-live-tutorial-with-api.md)

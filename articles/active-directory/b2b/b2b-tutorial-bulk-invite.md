@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994613"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: Tömeges meghívása az Azure AD B2B együttműködés felhasználók
 
@@ -119,7 +119,7 @@ Annak ellenőrzésére, hogy a meghívott felhasználókat hozzáadták-e az Azu
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-A meghívott felhasználóknak szerepelniük kell a listán, egyszerű felhasználónévvel (UPN) a következő formátumban: *e-mail cím*#EXT #@*tartomány*. Például *lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a meghívót küldte.
+Megtekintheti a meghívott felhasználó szerepel a listában, egy egyszerű felhasználónévvel (UPN) a következő formátumban *emailaddress*EXT #\@*tartomány*. Ha például *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a Meghívók küldése.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

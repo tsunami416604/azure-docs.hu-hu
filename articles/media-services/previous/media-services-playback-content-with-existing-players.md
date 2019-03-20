@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 2083390c3d228e57151db8b165b876054d6c12cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876561"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A meglévő lejátszókkal tartalom lejátszása
 Az Azure Media Services számos népszerű formátumban, például a Smooth Streaming, HTTP Live Streaming és MPEG-Dash támogatja. Ez a témakör az adatfolyamok teszteléséhez használhatja meglévő lejátszók mutat.
@@ -31,12 +31,12 @@ Kattintson arra a kívánt videóra (Ellenőrizze, hogy volt [közzétett](media
 
 Vegye figyelembe a következőket:
 
-* A **MEDIA SERVICES CONTENT PLAYER** (Media Services tartalomlejátszó) az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, használjon másik lejátszót. Ha például [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* A **MEDIA SERVICES CONTENT PLAYER** (Media Services tartalomlejátszó) az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, használjon másik lejátszót. Ha például [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-Használat [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) történő a tartalom (törölje vagy védett), a következő formátumok egyikében:
+Használat [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) történő a tartalom (törölje vagy védett), a következő formátumok egyikében:
 
 * Smooth Streaming
 * MPEG DASH
@@ -45,17 +45,17 @@ Használat [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediapla
 
 ### <a name="flash-player"></a>Flash-lejátszó
 #### <a name="aes-encrypted-with-token"></a>AES titkosítású jogkivonat
-[http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
+[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 ### <a name="silverlight-players"></a>A Silverlight-lejátszók
 
 #### <a name="playready-with-token"></a>PlayReady-jogkivonat
-[http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)
+[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH-lejátszók
-[http://dashplayer.azurewebsites.net](http://dashplayer.azurewebsites.net)
+[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
-[http://dashif.org](http://dashif.org)
+[https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Egyéb
 HLS-URL-címeket is tesztelheti:

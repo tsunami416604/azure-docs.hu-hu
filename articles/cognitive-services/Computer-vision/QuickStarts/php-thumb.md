@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0a38372035554c294184c4f7a708ca0650684c7e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7239ae1bdad59b87f316d3ee27213420447fcc7e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869466"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839474"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>Gyors útmutató: A REST API-t és a PHP használ a Computer Vision miniatűrkép generálása
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse a PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa a következő parancsot:
+   1. Futtassa az alábbi parancsot:
 
       ```console
       pear install HTTP_Request2
@@ -123,7 +123,7 @@ A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa a következő parancsot:
+2. Futtassa az alábbi parancsot:
 
    ```console
    pear uninstall HTTP_Request2
@@ -133,7 +133,7 @@ Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTT
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Fedezze fel a Computer Vision API kép elemzése, hírességek és tereptárgyak felismerése észleléséhez miniatűrök készülnek, és nyomtatott és kézzel írott szövegek kinyerése. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Tekintse át a Computer Vision API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: dd06ae6046ab96d95cf1c1907c74d0b4d9a843bb
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214333"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010238"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -211,7 +211,7 @@ További információkért lásd: [SQL Database-riasztások létrehozása az Azu
 
   Umbraco az Azure SQL Database rugalmas készletek használatával gyorsan több ezer felhőalapú bérlők kiépítését és méretezését szolgáltatásokat.
 
-- [Daxko/CSI](http://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
 
   Daxko/CSI lerövidítsék a szoftverfejlesztési ciklusokat, és az ügyfélszolgálat és a teljesítmény javítása érdekében használja az Azure SQL Database rugalmas készleteket.
 

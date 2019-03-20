@@ -12,12 +12,12 @@ ms.date: 3/11/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 787c436261635376ff82e8762cbc1469f4375e6b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848728"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
@@ -76,37 +76,55 @@ Egy meglévő Azure AD-csoportot, vagy hozzon létre egy új Azure AD PowerShell
 
 Is [konfigurálása és kezelése az Azure AD-hitelesítés az SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) az alábbi lépéseket követve:
 
-1.  Az Azure Portalon, válassza ki a **minden szolgáltatás** -> **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
+1.  Az Azure Portalon, válassza ki a **minden szolgáltatás** -> **SQL Server-kiszolgálók** a bal oldali navigációs sávon.
 
 2.  Válassza ki az Azure SQL Database-kiszolgálóhoz kell konfigurálni az Azure AD-hitelesítés.
 
-3.  Az a **beállítások** a panel, válassza ki a szakasz **Active Directory-rendszergazda**.
+3.  Az a **beállítások** a panel, válassza ki a szakasz **Active Directory-rendszergazda**.
 
-4.  A parancssávon válassza ki a **rendszergazda beállítása**.
+4.  A parancssávon válassza ki a **rendszergazda beállítása**.
 
-5.  Válassza ki az Azure AD felhasználói fiók lehet végezni a kiszolgáló rendszergazdája, és válassza ki a **válassza ki.**
+5.  Válassza ki az Azure AD felhasználói fiók lehet végezni a kiszolgáló rendszergazdája, és válassza ki a **válassza ki.**
 
-6.  A parancssávon válassza ki a **mentéséhez.**
+6.  A parancssávon válassza ki a **mentéséhez.**
 
 ### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Egy felhasználó létrehozása az Azure SQL Database-kiszolgáló jelölő, az Azure AD-csoport
 
 A következő lépéshez szükséges [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-1.  SSMS elindításához.
+1. SSMS elindításához.
 
-2.  Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a az Azure SQL Database-kiszolgáló nevét a **kiszolgálónév** mező.
+2. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a az Azure SQL Database-kiszolgáló nevét a **kiszolgálónév** mező.
 
-3.  Az a **hitelesítési** mezőben válassza **Active Directory - Universal MFA-támogatással rendelkező** (is használhatja a másik két Active Directory hitelesítési típus, lásd: [ Konfigurálhatja és kezelheti az Azure AD-hitelesítés az SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
+3. Az a **hitelesítési** mezőben válassza **Active Directory - Universal MFA-támogatással rendelkező** (is használhatja a másik két Active Directory hitelesítési típus, lásd: [konfigurálása és kezelése SQL-lel az Azure AD-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
 
-4.  Az a **felhasználónév** mezőben adja meg az Ön által beállított kiszolgálói rendszergazdaként, például az Azure AD-fiók neve testuser@xxxonline.com.
+4. Az a **felhasználónév** mezőben adja meg az Ön által beállított kiszolgálói rendszergazdaként, például az Azure AD-fiók neve testuser@xxxonline.com.
 
-5.  Válassza ki **Connect** és a bejelentkezési folyamat befejezéséhez.
+5. Válassza ki **Connect** és a bejelentkezési folyamat befejezéséhez.
 
-6.  Az a **Object Explorer**, bontsa ki a **adatbázisok** -> **rendszeradatbázisok** mappát.
+6. Az a **Object Explorer**, bontsa ki a **adatbázisok** -> **rendszeradatbázisok** mappát.
 
-7.  Kattintson a jobb gombbal a **fő** adatbázisra, majd válassza **új lekérdezés**.
+7. Kattintson a jobb gombbal a **fő** adatbázisra, majd válassza **új lekérdezés**.
 
-8.  A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
+8. A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
+
+   ```sql
+   CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
+   ```
+
+   A parancs sikeresen befejeződik, egy felhasználó, amelyek a csoport létrehozása.
+
+9. A lekérdezési ablakban törölje, adja meg a következő T-SQL-parancsot, majd válassza **Execute** az eszköztáron.
+
+   ```sql
+   ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
+   ```
+
+   A parancs sikeresen befejeződik, a felhasználó jegykiadó képes létrehozni egy adatbázist (SSISDB).
+
+10. Ha az SSISDB SQL-hitelesítés használatával hozták létre, és szeretné állítani az Azure-SSIS integrációs modul az Azure AD-hitelesítés használata az eléréséhez, kattintson a jobb gombbal a **SSISDB** adatbázisra, majd válassza **új lekérdezés**.
+
+11. A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -114,25 +132,7 @@ A következő lépéshez szükséges [Microsoft SQL Server Management Studio](h
 
     A parancs sikeresen befejeződik, egy felhasználó, amelyek a csoport létrehozása.
 
-9.  A lekérdezési ablakban törölje, adja meg a következő T-SQL-parancsot, majd válassza **Execute** az eszköztáron.
-
-    ```sql
-    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
-    ```
-
-    A parancs sikeresen befejeződik, a felhasználó jegykiadó képes létrehozni egy adatbázist (SSISDB).
-
-10.  Ha az SSISDB SQL-hitelesítés használatával hozták létre, és szeretné állítani az Azure-SSIS integrációs modul az Azure AD-hitelesítés használata az eléréséhez, kattintson a jobb gombbal a **SSISDB** adatbázisra, majd válassza **új lekérdezés**.
-
-11.  A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
-
-    ```sql
-    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
-    ```
-
-    A parancs sikeresen befejeződik, egy felhasználó, amelyek a csoport létrehozása.
-
-12.  A lekérdezési ablakban törölje, adja meg a következő T-SQL-parancsot, majd válassza **Execute** az eszköztáron.
+12. A lekérdezési ablakban törölje, adja meg a következő T-SQL-parancsot, majd válassza **Execute** az eszköztáron.
 
     ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
@@ -191,9 +191,9 @@ A következő lépéshez szükséges [Microsoft SQL Server Management Studio](h
     
     A parancs sikeresen befejeződik, a felügyelt identitás biztosítása az ADF használatával hozzon létre egy adatbázist (SSISDB) lehetővé teszi a.
 
-8.  Ha az SSISDB SQL-hitelesítés használatával hozták létre, és szeretné állítani az Azure-SSIS integrációs modul az Azure AD-hitelesítés használata az eléréséhez, kattintson a jobb gombbal a **SSISDB** adatbázisra, majd válassza **új lekérdezés**.
+8.  Ha az SSISDB SQL-hitelesítés használatával hozták létre, és szeretné állítani az Azure-SSIS integrációs modul az Azure AD-hitelesítés használata az eléréséhez, kattintson a jobb gombbal a **SSISDB** adatbázisra, majd válassza **új lekérdezés**.
 
-9.  A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
+9.  A lekérdezési ablakban adja meg a következő T-SQL-parancsot, és válassza ki **Execute** az eszköztáron.
 
     ```sql
     CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo

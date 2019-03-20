@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 846fc5de6470326fbd51d19397503e4eee2ee15b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 8e01ac4efa3c310b17e88351383861cbdccb68e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171108"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Futtassa a Azure Data Factory SSIS-csomag végrehajtása tevékenysége egy SSIS-csomag
 Ez a cikk ismerteti, hogyan futtathat egy SSIS-csomag az Azure Data Factory (ADF) folyamat az SSIS-csomag végrehajtása tevékenységek segítségével. 
@@ -51,19 +51,19 @@ Ebben a lépésben a ADF felhasználói felületén vagy alkalmazás-folyamatok 
 
    ![Az Általános lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Az a **beállítások** SSIS-csomag végrehajtása tevékenység fülre, válassza ki az Azure-SSIS integrációs modul, amely van társítva az SSISDB-adatbázis, a csomag telepítése. Ha a csomag az 32 bites futtatókörnyezet futtatása van szüksége, ellenőrizze a **32 bites futtatókörnyezet** jelölőnégyzetet. A **naplózási szint**, válassza ki a csomag végrehajtása naplózásának előre meghatározott köre. Ellenőrizze a **testre szabott** jelölőnégyzetet, ha szeretné inkább adja meg a testre szabott naplózási nevét. Az Azure-SSIS integrációs modul futtatásakor, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, keresse meg és válassza ki a meglévő mappákat és projektek/csomagok/környezetek SSISDB. Kattintson a **frissítése** beolvasni az SSISDB, az újonnan hozzáadott mappák/projektek/csomagok/környezetek, így elérhetők tallózása és kiválasztása gombra. 
+4. Az a **beállítások** SSIS-csomag végrehajtása tevékenység fülre, válassza ki az Azure-SSIS integrációs modul, amely van társítva az SSISDB-adatbázis, a csomag telepítése. Ha a csomag való hozzáférést, Windows-hitelesítést használ, például SQL-kiszolgálók/fájlt oszt meg a helyszínen, az Azure Files, stb., ellenőrizze a **Windows-hitelesítés** jelölőnégyzetet, és írja be a tartomány/felhasználónév/jelszó a csomag a végrehajtás. Ha a csomag az 32 bites futtatókörnyezet futtatása van szüksége, ellenőrizze a **32 bites futtatókörnyezet** jelölőnégyzetet. A **naplózási szint**, válassza ki a csomag végrehajtása naplózásának előre meghatározott köre. Ellenőrizze a **testre szabott** jelölőnégyzetet, ha szeretné inkább adja meg a testre szabott naplózási nevét. Az Azure-SSIS integrációs modul futtatásakor, és a **manuális bejegyzések** jelölőnégyzet nincs bejelölve, keresse meg és válassza ki a meglévő mappákat és projektek/csomagok/környezetek SSISDB. Kattintson a **frissítése** beolvasni az SSISDB, az újonnan hozzáadott mappák/projektek/csomagok/környezetek, így elérhetők tallózása és kiválasztása gombra. 
 
    ![A beállítások lapon - automatikus tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Ha az Azure-SSIS integrációs modul helyének nem fut, vagy a **manuális bejegyzések** jelölőnégyzet be van jelölve, megadhatja az SSISDB a csomag és a környezet elérési útja a következő formátumok: `<folder name>/<project name>/<package name>.dtsx` és `<folder name>/<environment name>`.
+   Ha az Azure-SSIS integrációs modul helyének nem fut, vagy a **manuális bejegyzések** jelölőnégyzet be van jelölve, megadhatja a csomag és a környezet elérési utat az SSISDB közvetlenül a következő formátumok: `<folder name>/<project name>/<package name>.dtsx` és `<folder name>/<environment name>`.
 
    ![A beállítások lapon - manuális tulajdonságainak beállítása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. A a **SSIS paraméterek** lapon SSIS-csomag végrehajtása tevékenységeit, ha az Azure-SSIS integrációs modul fut, és a **manuális bejegyzések** jelölőnégyzetet **beállítások** lapon nincs bejelölve, a meglévő SSIS-paraméterek az SSISDB a kiválasztott projekt/csomag jelenik meg, hogy az értékek rendelhet hozzájuk. Ellenkező esetben adhatja őket egyenként az értéket rendelni őket manuálisan – ellenőrizze, hogy azok léteznek, és pontosan írja be a csomag végrehajtás sikeres. Dinamikus tartalom is értékekre kifejezések, functions, az ADF rendszerváltozók és ADF folyamat paraméterek és változók használatával adhat hozzá.
+5. A a **SSIS paraméterek** lapon SSIS-csomag végrehajtása tevékenységeit, ha az Azure-SSIS integrációs modul fut, és a **manuális bejegyzések** jelölőnégyzetet **beállítások** lapon nincs bejelölve, a meglévő SSIS-paraméterek az SSISDB a kiválasztott projekt/csomag jelenik meg, hogy az értékek rendelhet hozzájuk. Ellenkező esetben adhatja őket egyenként az értéket rendelni őket manuálisan – ellenőrizze, hogy azok léteznek, és pontosan írja be a csomag végrehajtás sikeres. Dinamikus tartalom azok használatával kifejezések, functions, az ADF rendszerváltozók és ADF folyamat paraméterek és változók értékeit is hozzáadhat. Másik lehetőségként használhatja a titkos kulcsok az Azure Key Vault (AKV) tárolt és azok értékeit. Ehhez kattintson a a **AZURE KEY VAULT** jelölőnégyzetét a megfelelő paramétereket, válassza ki és szerkeszteni a meglévő AKV társított szolgáltatás, vagy hozzon létre egy újat, és válassza a paraméter értéke a titkos kód neve/verziója.  Ön létrehozása/szerkesztése az AKV-beli társított szolgáltatás, is válassza ki és szerkeszteni a meglévő AKV vagy hozzon létre egy új, de kérjük ADF felügyelt identitás való hozzáférést biztosít az AKV Ha Ön még nem tette már. A titkos kulcsokat is megadhat közvetlenül a következő formátumban: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![Az SSIS-paraméterek lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-6. Az a **kezelők** lapon SSIS-csomag végrehajtása tevékenységeit, ha az Azure-SSIS integrációs modul fut, és a **manuális bejegyzések** jelölőnégyzetet **beállítások** lapon nincs bejelölve, a meglévő kezelők az SSISDB a kiválasztott projekt/csomag jelenik meg, hogy az értékek rendelhet hozzájuk. Ellenkező esetben adhatja őket egyenként az értéket rendelni őket manuálisan – ellenőrizze, hogy azok léteznek, és pontosan írja be a csomag végrehajtás sikeres. Dinamikus tartalom is értékekre kifejezések, functions, az ADF rendszerváltozók és ADF folyamat paraméterek és változók használatával adhat hozzá.
+6. Az a **kezelők** lapon SSIS-csomag végrehajtása tevékenységeit, ha az Azure-SSIS integrációs modul fut, és a **manuális bejegyzések** jelölőnégyzetet **beállítások** lapon nincs bejelölve, a meglévő kezelők az SSISDB a kiválasztott projekt/csomag jelenik meg, hogy értékeket rendel hozzájuk tartozó tulajdonságok. Ellenkező esetben adhatja őket egyenként, manuálisan értéket rendelni hozzájuk tartozó tulajdonságok – ellenőrizze, hogy azok léteznek, és pontosan írja be a csomag végrehajtása sikeres végrehajtásához az. A tulajdonságértékek kifejezések, functions, az ADF rendszerváltozók és ADF folyamat paraméterek és változók használatával dinamikus tartalmat adhat hozzá. Az Azure Key Vault (AKV) tárolt a tulajdonságértékeket és titkos kulcsok is használhatja. Ehhez kattintson a a **AZURE KEY VAULT** be a megfelelő tulajdonság melletti jelölőnégyzetet válassza ki és szerkeszteni a meglévő AKV társított szolgáltatás, vagy hozzon létre egy újat, és válassza a tulajdonság értéke a titkos kód neve/verziója.  Ön létrehozása/szerkesztése az AKV-beli társított szolgáltatás, is válassza ki és szerkeszteni a meglévő AKV vagy hozzon létre egy új, de kérjük ADF felügyelt identitás való hozzáférést biztosít az AKV Ha Ön még nem tette már. A titkos kulcsokat is megadhat közvetlenül a következő formátumban: `<AKV linked service name>/<secret name>/<secret version>`.
 
    ![A kezelők lapon tulajdonságainak megadása](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
@@ -139,6 +139,14 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
                        "referenceName": "myAzureSSISIR",
                        "type": "IntegrationRuntimeReference"
                    },
+                   "executionCredential": {
+                       "domain": "MyDomain",
+                       "userName": "MyUsername",
+                       "password": {
+                           "type": "SecureString",
+                           "value": "**********"
+                       }
+                   },
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
@@ -148,11 +156,27 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
                    "projectParameters": {
                        "project_param_1": {
                            "value": "123"
+                       },
+                       "project_param_2": {
+                           "value": {
+                               "value": "@pipeline().parameters.MyPipelineParameter",
+                               "type": "Expression"
+                           }
                        }
                    },
                    "packageParameters": {
                        "package_param_1": {
                            "value": "345"
+                       },
+                       "package_param_2": {
+                           "value": {
+                               "type": "AzureKeyVaultSecret",
+                               "store": {
+                                   "referenceName": "myAKV",
+                                   "type": "LinkedServiceReference"
+                               },
+                               "secretName": "MySecret"
+                           }
                        }
                    },
                    "projectConnectionManagers": {
@@ -171,12 +195,20 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
                    "packageConnectionManagers": {
                        "MyOledbCM": {
                            "userName": {
-                               "value": "sa"
+                               "value": {
+                                   "value": "@pipeline().parameters.MyUsername",
+                                   "type": "Expression"
+                               }
                            },
                            "passWord": {
                                "value": {
-                                   "type": "SecureString",
-                                   "value": "def"
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyPassword",
+                                   "secretVersion": "3a1b74e361bf4ef4a00e47053b872149"
                                }
                            }
                        }

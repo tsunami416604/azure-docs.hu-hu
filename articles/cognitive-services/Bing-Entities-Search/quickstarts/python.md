@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 14bd9a0bfbef15acdac5a2eddc88c72d3e142591
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b35fa32776fa449bf4f46479345a94e63fe28e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109576"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API Python használatával
 
@@ -53,18 +53,18 @@ Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszol
 ## <a name="send-a-request-and-get-a-response"></a>Kérés küldése és válaszol
 
 1. Hozzon létre egy függvényt, nevű `get_suggestions()`. Hajtsa végre az alábbi lépéseket.
-    1. Az előfizetési kulcs hozzáadása egy szótár `Ocp-Apim-Subscription-Key` kulcsként.
-    2. Használat `http.client.HTTPSConnection()` HTTPS ügyfél-objektumok létrehozására. Küldjön egy `GET` kérelem használatával `request()` elérési útja és a paraméterek, és a fejléc adataival.
-    3. A válaszban Store `getresponse()`, és vissza `response.read()`.
+   1. Az előfizetési kulcs hozzáadása egy szótár `Ocp-Apim-Subscription-Key` kulcsként.
+   2. Használat `http.client.HTTPSConnection()` HTTPS ügyfél-objektumok létrehozására. Küldjön egy `GET` kérelem használatával `request()` elérési útja és a paraméterek, és a fejléc adataival.
+   3. A válaszban Store `getresponse()`, és vissza `response.read()`.
 
-    ```python
-    def get_suggestions ():
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-        conn = http.client.HTTPSConnection (host)
-        conn.request ("GET", path + params, None, headers)
-        response = conn.getresponse ()
-        return response.read()
-    ```
+      ```python
+      def get_suggestions ():
+       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+       conn = http.client.HTTPSConnection (host)
+       conn.request ("GET", path + params, None, headers)
+       response = conn.getresponse ()
+       return response.read()
+      ```
 
 2. Hívás `get_suggestions()`, és nyomtassa ki a json-választ.
 

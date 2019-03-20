@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 50e1d3c894455f31513f7bcd1bff42a9329b329a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 360b822bc78d353e91612459a70334a0bf3a56e6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189631"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Helyszíni kódolók konfigurálása, többszörös átviteli sebességű Streamek létrehozása az Azure Media Services használata esetén
 Ez a témakör felsorolja a helyszíni élő kódolók képesek segítségével az élő események rögzítése és a egy egyféle sávszélességű élő adatfolyamot AMS csatornákra (élő kódolás engedélyezve) küldése további feldolgozás céljából. A témakör hivatkozásokat is tartalmaz, amelyek bemutatják a felsorolt kódolók konfigurálása az oktatóanyagokat.
@@ -28,19 +28,19 @@ Ez a témakör felsorolja a helyszíni élő kódolók képesek segítségével 
 > Streamelési RTMP-n keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő TCP-portok nyitva-e.
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live kódoló
-Információk konfigurálása a [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) a egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát lásd [konfigurálása FMLE](media-services-configure-fmle-live-encoder.md).
+Információk konfigurálása a [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) a egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát lásd [konfigurálása FMLE](media-services-configure-fmle-live-encoder.md).
 
 ## <a name="haivision-kb-encoder"></a>Haivision KB kódoló
 Információk konfigurálása a [Haivision KB kódoló](https://www.haivision.com/products/kb-series/) kódoló egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát, lásd: [Haivision KB kódoló konfigurálása](media-services-configure-kb-live-encoder.md).
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
-Információk konfigurálása a [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) kódoló egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát, lásd: [konfigurálása Wirecast](media-services-configure-wirecast-live-encoder.md).
+Információk konfigurálása a [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) kódoló egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát, lásd: [konfigurálása Wirecast](media-services-configure-wirecast-live-encoder.md).
 
 ## <a name="newtek-tricaster"></a>NewTek TriCaster
 Információk konfigurálása a [Tricaster](http://newtek.com/products/tricaster-40.html) kódoló egyféle sávszélességű élő adatfolyamot küldeni egy AMS-csatornát, lásd: [konfigurálása Tricaster](media-services-configure-tricaster-live-encoder.md).
 
 ## <a name="elemental-live"></a>Elemental Live
-További információkért lásd: [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live).
+További információkért lásd: [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

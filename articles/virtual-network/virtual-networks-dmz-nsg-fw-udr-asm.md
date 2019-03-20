@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: c3a5cb540843c5ec4ceaf8522e9148cc7171149c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9632bd339956aff7558461ed391cdd21c92f06ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456465"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995192"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Például: 3 – semleges egy tűzfal, az udr-t és az NSG-t a hálózatok védelme
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -486,7 +486,7 @@ Is az, hogy a hálózati biztonsági csoportok-e a helyi visszahívása az előt
 11. AppVM01 felkéri a felhasználónév jelszó
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(Engedélyezett) A DNS-kiszolgáló kiszolgálói DNS-címkeresés webes
-1. A Web Server, IIS01, egy adatcsatorna www.data.gov, igényeinek megfelelően, de igények címének feloldására.
+1. Webalkalmazás-kiszolgáló, IIS01, szükséges egy adatcsatorna: www\.data.gov, de igények címének feloldására.
 2. A hálózati konfigurációt a virtuális hálózatok közötti listák DNS01 (a háttérbeli alhálózat 10.0.2.4 cím), az elsődleges DNS-kiszolgáló, IIS01 küld a DNS-kérelem DNS01
 3. A következő ugrás UDR irányítja az a tűzfalon a kimenő forgalom
 4. Nincs kimenő NSG-szabályok az előtérben levő alhálózathoz vannak kötve, forgalom engedélyezve van
@@ -945,7 +945,7 @@ Ez a PowerShell-szkript kell futtatni a egy internethez csatlakoztatott számít
 Mentse az xml-fájlt a hely frissítve, és adja hozzá a hivatkozás ehhez a fájlhoz, a szkriptben $NetworkConfigFile változó.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

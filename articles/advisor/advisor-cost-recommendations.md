@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: cc5c4310d5f9886518bee6612113fba174130bec
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648716"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900726"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Az Azure Advisor használatával szolgáltatás költségek csökkentése
 
@@ -40,6 +40,10 @@ Az Advisor azonosítja a virtuális hálózat kapuk, amely rendelkezik több min
 Az Advisor fog tekintse át a virtuális gép használatát az elmúlt 30 napban, és határozza meg, ha pénzt menthető egy Azure foglalás megvásárlásával. Az Advisor bemutatja, a régiók és a méreteket, ahol potenciálisan rendelkezik a legtöbb megtakarítások és jelennek meg azt a becsült megtakarítások a foglalásokat vásárol. 
 
 Az Azure-foglalásokat akkor is előre történő kifizetését a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek az azonos méretű és régió szerint a foglalások automatikusan alkalmazza a kedvezményeket jelentenek. [További információ az Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Társítatlan nyilvános IP-címet törölni pénzt takaríthat meg
+
+Az Advisor azonosítja a nyilvános IP-címek, amelyek nem jelenleg tartoznak, mint például a Terheléselosztókról és a virtuális gépek Azure-erőforrásokhoz. A nyilvános IP-cím egy névleges díj címek jár. Ha nem tervezi használni őket, költségmegtakarítást törléssel eredményezhet.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Az Azure Advisor díjakkal kapcsolatos ajánlások elérése
 

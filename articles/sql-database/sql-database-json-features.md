@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 02cec7f3696a43e8effe9d551c1f3e3fddc25ec8
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 77f6125980c43817230b8a8d4beb32757f23e6c2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317203"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995489"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database-ben JSON-funkciókkal
-Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben. Az alábbi JSON-forgatókönyvek az Azure SQL Database-ben érhetők el:
+Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](https://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben. Az alábbi JSON-forgatókönyvek az Azure SQL Database-ben érhetők el:
 - [Relációs adatok JSON formátumban formázás](#formatting-relational-data-in-json-format) használatával `FOR JSON` záradékban.
 - [JSON-adatok használata](#working-with-json-data)
 - [JSON-adatok lekérdezése](#querying-json-data) JSON skaláris függvények használatával.
