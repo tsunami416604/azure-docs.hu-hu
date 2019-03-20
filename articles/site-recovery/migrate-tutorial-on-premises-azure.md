@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116167"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110307"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -36,6 +36,8 @@ Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag feltételezi,
 
 Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.md) vagy a [Hyper-V](hyper-v-azure-architecture.md) architektúrát az esetleges vészhelyreállítás megkönnyítése érdekében.
 
+> [!TIP]
+> VMware virtuális gépek áttelepítése az Azure-bA az ügynök nélküli kivételfigyelés megoldást keres? [Kattintson ide](https://aka.ms/migrateVMs-signup)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +56,6 @@ A paravirtualizált illesztőprogramok által exportált eszközök nem támogat
    ![Új tároló](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
-
 
 
 ## <a name="select-a-replication-goal"></a>Replikációs cél kiválasztása
@@ -112,10 +113,10 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 5. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
 6. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez a következőket teszi:
 
-    - Befejezi a migrálási folyamatot, az AWS virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
-    - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket.
+   - Befejezi a migrálási folyamatot, az AWS virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
+   - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket.
 
-    ![Az áttelepítés befejezése](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Az áttelepítés befejezése](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]

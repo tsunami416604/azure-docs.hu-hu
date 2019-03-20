@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813840"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119343"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk információkat biztosít az adatkezelési átjáró segítségével kapcsolatos hibák elhárítása.
@@ -169,8 +169,8 @@ Az alábbi hibát látja.
 Kövesse az alábbi lépéseket az átjáró online állapotba:
 
 1. IP-címének engedélyezéséhez az átjárót tartalmazó számítógépen, és a vállalati tűzfalon a kimenő szabályok. Annak IP-címek a Windows Eseménynapló (azonosítója == 401-es): Kísérlet történt olyan módon, a hozzáférési engedélyeket XX tiltott hozzáférés. XX. XX. XX:9350.
-* Proxybeállítások konfigurálása az átjárón. Tekintse meg a Proxy server szempontok című szakasz részletezi.
-* Engedélyezze a kimenő 5671 és 9350 – 9354-es mind a Windows tűzfal az átjárót tartalmazó számítógépen és a vállalati tűzfalon. A portok és a tűzfal részleteket a következő szakaszban talál. Ez a lépés nem kötelező, de ajánlott kiegészítője teljesítményének figyelembe veszi.
+1. Proxybeállítások konfigurálása az átjárón. Tekintse meg a Proxy server szempontok című szakasz részletezi.
+1. Engedélyezze a kimenő 5671 és 9350 – 9354-es mind a Windows tűzfal az átjárót tartalmazó számítógépen és a vállalati tűzfalon. A portok és a tűzfal részleteket a következő szakaszban talál. Ez a lépés nem kötelező, de ajánlott kiegészítője teljesítményének figyelembe veszi.
 
 ### <a name="3-problem"></a>3. Probléma
 Az alábbi hibát látja.
@@ -184,7 +184,7 @@ Az alábbi hibát látja.
 Kövesse az alábbi lépéseket az átjáró online állapotba:
 
 1. Várjon néhány percet, a kapcsolat a rendszer automatikusan helyreállítja a eltűnt a hiba esetén.
-* Ha a hiba továbbra is fennáll, indítsa újra az átjárószolgáltatást.
+1. Ha a hiba továbbra is fennáll, indítsa újra az átjárószolgáltatást.
 
 ## <a name="failed-to-author-linked-service"></a>Nem sikerült létrehozni a társított szolgáltatás
 ### <a name="problem"></a>Probléma
@@ -282,6 +282,6 @@ A Windows eseménynaplóiban annak részletes átjáró adatait.
 1. Indítsa el a Windows **Eseménynapló**.
 2. Keresse meg a naplókat a **alkalmazás- és szolgáltatásnaplók** > **adatkezelési átjáró** mappát.
 
- Átjáró kapcsolatos problémák elhárításakor van keressen hibaszintű eseményeket az eseménynaplóban megjelenítő.
+   Átjáró kapcsolatos problémák elhárításakor van keressen hibaszintű eseményeket az eseménynaplóban megjelenítő.
 
 ![Az eseménynaplóban naplózza az adatkezelési átjáró](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

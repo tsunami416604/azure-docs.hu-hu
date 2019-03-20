@@ -7,16 +7,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/25/2018
+ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 268efa35f63ac8b9e0c6ea3f22a71242a2984726
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180704"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: IoT-eszközszimuláció üzembe helyezése és futtatása
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Oktatóanyag: Hozzon létre és futtasson egy IoT-eszköz szimulálása
 
 Ebben az oktatóanyagban létrehozhat és futtathat egy új IoT-szimulációt az Eszközszimuláció, illetve egy vagy több szimulált eszköz használatával.
 

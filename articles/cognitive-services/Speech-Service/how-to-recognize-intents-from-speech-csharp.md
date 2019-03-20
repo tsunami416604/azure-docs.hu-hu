@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855724"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
 
@@ -45,9 +45,9 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie.
 
 ## <a name="luis-and-speech"></a>A LUIS és a beszéd
 
-A LUIS integrálható a Speech Service szolgáltatással a beszédből való szándékfelismerés céljából. Ehhez nincs szükség Speech Service-előfizetésre, csak a LUIS-ra.
+A LUIS integrálható a beszédszolgáltatások felismerni a speech leképezések. Csak a LUIS beszédszolgáltatások előfizetés, nem szükséges.
 
-A LUIS kétféle kulcsot kezel: 
+A LUIS kétféle kulcsot kezel:
 
 |Kulcs típusa|Cél|
 |--------|-------|
@@ -56,7 +56,7 @@ A LUIS kétféle kulcsot kezel:
 
 A jelen oktatóanyaghoz szükséges végpontkulcs a LUIS-kulcs lesz. Ebben az oktatóanyag az otthonautomatizálási LUIS-példaappot használjuk, amelyet az [Előre összeállított otthonautomatizálási alkalmazás használata](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) című rövid útmutató lépéseit követve hozhat létre. Ha saját LUIS-appot hozott létre, használja azt.
 
-A LUIS-app elkészítésekor a rendszer automatikusan létrehoz egy indítókulcsot, hogy szöveges lekérdezésekkel tesztelhesse az appot. Ez a kulcs nem teszi lehetővé a Speech Service szolgáltatás integrációját, és nem használható ebben az oktatóanyagban. Hozzon létre egy új LUIS-erőforrást az Azure-irányítópulton, és rendelje hozzá a LUIS-apphoz. Az oktatóanyaghoz használhatja az ingyenes előfizetési szintet. 
+A LUIS-app elkészítésekor a rendszer automatikusan létrehoz egy indítókulcsot, hogy szöveges lekérdezésekkel tesztelhesse az appot. Ezt a kulcsot nem engedélyezi a beszédfelismerési Services integrációja, és ebben az oktatóanyagban nem fog működni. Hozzon létre egy új LUIS-erőforrást az Azure-irányítópulton, és rendelje hozzá a LUIS-apphoz. Az oktatóanyaghoz használhatja az ingyenes előfizetési szintet.
 
 Miután létrehozta a LUIS-erőforrást az Azure-irányítópulton, jelentkezzen be a [LUIS portálra](https://www.luis.ai/home), válassza ki az alkalmazást a Saját alkalmazások oldalon, majd váltson az app Manage (Kezelés) oldalára. Végül kattintson a **Keys and Endpoints** (Kulcsok és végpontok) elemre az oldalsávon.
 
@@ -123,7 +123,7 @@ A kód ismertetése a következő szakaszokban szerepel.
 A beszédbeli szándékok felismerésének első lépése egy beszédkonfiguráció létrehozása a LUIS végpontkulcsából és a régióból. A beszédkonfigurációk használhatók a Speech SDK különféle képességeihez tartozó felismerők létrehozására. A beszédkonfigurációban többféle módon is megadható az előfizetés, amelyet használni szeretne. Jelen esetben a `FromSubscription` metódust használjuk, amely az előfizetés kulcsát és a régiót veszi fel.
 
 > [!NOTE]
-> Használja a LUIS-előfizetés kulcsát és régióját, a Speech Service előfizetés most nem használható.
+> A kulcs és a régiót, a LUIS-előfizetésbe, és nem egy beszédszolgáltatások előfizetést használja.
 
 A következő lépés egy szándékfelismerő létrehozása a `new IntentRecognizer(config)` metódus használatával. Mivel a konfigurációban már szerepel a használni kívánt előfizetés, a felismerő létrehozásakor nem kell ismét megadnia az előfizetési kulcsot és a végpontot.
 
@@ -174,7 +174,7 @@ Az alábbi kód szemlélteti a Speech SDK-val való szándékfelismerés két to
 
 A másik képesség a feldolgozandó beszédet tartalmazó hangfelvétel leolvasása egy WAV-fájlból. Ez magában foglalja egy olyan audiokonfiguráció létrehozását is, amely a szándékfelismerő létrehozásakor használható. A fájlnak egycsatornásnak (mono) kell lennie, 16 kHz-es mintavételi aránnyal.
 
-Az említett funkciók kipróbálásához cserélje le a `RecognizeIntentAsync()` metódus törzsét a következő kódra. 
+Az említett funkciók kipróbálásához cserélje le a `RecognizeIntentAsync()` metódus törzsét a következő kódra.
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 599372bccc7465bfea0387dedd8dfd63b8a61060
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100172"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Application gateway konfigurálása egy belső terheléselosztó (ILB) végponthoz
 
@@ -42,14 +42,14 @@ Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy 
    - 10.0.0.0/16* – a virtuális hálózat címterét.
    - Az alhálózat neve *myAGSubnet*.
    - Az alhálózat címtere *10.0.0.0/24*.  
-   ![private-frontendip-1](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-1.png)
+     ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Válassza ki az előtérbeli IP-konfiguráció: magánjellegű, és alapértelmezés szerint a dinamikus IP-cím hozzárendelése. Az első rendelkezésre álló címet a választott alhálózat előtérbeli IP-címet kap.
 8. Ha szeretne egy magánhálózati IP-cím az alhálózat címtartományán (statikus foglalási) közül választhat, jelölje be a **egy adott privát IP-cím választása** , és adja meg az IP-címet.
    > [!NOTE]
    > Miután lefoglalt, az IP-cím típusa (statikus vagy dinamikus) később nem módosítható.
 9. Válassza ki a figyelő konfigurációját tartalmazza a protokollt és a portot, a WAF konfigurálása (ha szükséges), és kattintson az OK gombra.
-    ![private-frontendip-2](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-2.png)
+    ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
 10. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az application gateway létrehozásához. Az application gateway hozhatók létre, várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
 ## <a name="add-backend-pool"></a>Háttérkészlet hozzáadása
@@ -78,7 +78,7 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 ### <a name="install-iis"></a>Az IIS telepítése
 
 1. Nyissa meg az interaktív felületet, és győződjön meg róla, hogy a **PowerShell** van beállítva.
-    ![private-frontendip-3](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-3.png)
+    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez:
 
    ```azurepowershell
@@ -107,13 +107,13 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 1. Click **All resources**, and then click **myAppGateway**.
 2. Click **Backend pools**. A default pool was automatically created with the application gateway. Click **appGatewayBackendPool**.
 3. Click **Add target** to add each virtual machine that you created to the backend pool.
-   ![private-frontendip-4](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-4.png)
+   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
 4. Click **Save.**
 
 ## Test the application gateway
 
 1. Check your frontend IP that got assigned by clicking the **Frontend IP Configurations** blade in the portal.
-    ![private-frontendip-5](.\media\configure-application-gateway-with-private-frontend-ip\private-frontendip-5.png)
+    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
 2. Copy the private IP address, and then paste it into the address bar of your browser of a VM in the same VNet or on-premises which has connectivity to this VNet and try to access the Application Gateway.
 
 ## Next steps

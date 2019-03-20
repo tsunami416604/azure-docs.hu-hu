@@ -6,21 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/19/2018
+ms.date: 03/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7f25f26ac1cefa0f2dc3b9b7e30f4a4fc2901c9f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436527"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996760"
 ---
-# <a name="restore-sql-server-databases-on-azure-vms"></a>Az Azure virtuális gépeken futó SQL Server-adatbázisok visszaállítása 
+# <a name="restore-sql-server-databases-on-azure-vms"></a>Az Azure virtuális gépeken futó SQL Server-adatbázisok visszaállítása
 
 Ez a cikk bemutatja, hogyan állíthatja vissza egy Azure virtuális gép (VM) számítógépen futó SQL Server-adatbázis, amely a [Azure Backup](backup-overview.md) szolgáltatás rendelkezik biztonsági mentése az Azure Backup helyreállítási tárat.
-
-> [!NOTE]
-> Az Azure Backup használó Azure virtuális Gépeken futó SQL Server-adatbázisok biztonsági mentése jelenleg nyilvános előzetes verzióban érhető el.
 
 Ez a cikk ismerteti, hogyan állíthatja vissza az SQL Server-adatbázisok. További információkért lásd: [biztonsági mentése Azure virtuális gépeken az SQL Server-adatbázisok](backup-azure-sql-database.md).
 
@@ -53,7 +50,7 @@ Mielőtt vissza tudná állítani egy adatbázist, vegye figyelembe a következ�
 * **Közreműködő (írás)** a forrás virtuális gép biztonsági mentésének elérésére.
 * **Közreműködő (írás)** a cél virtuális Gépen való hozzáférést:
     - Ha ugyanazon a virtuális Gépen történő visszaállításakor, akkor a forrás virtuális Gépen.
-    - Ha egy másodlagos helyre állítja vissza, akkor az új cél virtuális gép. 
+    - Ha egy másodlagos helyre állítja vissza, akkor az új cél virtuális gép.
 
 Állítsa vissza a következőképpen:
 1. Nyissa meg a tároló, amelyben az SQL Server rendszerű virtuális gép regisztrálva lett.
@@ -66,24 +63,24 @@ Mielőtt vissza tudná állítani egy adatbázist, vegye figyelembe a következ�
 
     ![Válassza ki a visszaállítandó adatbázis](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-5. Tekintse át az adatbázis menü. Ismerteti az adatbázis biztonsági másolata, többek között: 
+5. Tekintse át az adatbázis menü. Ismerteti az adatbázis biztonsági másolata, többek között:
 
     * A legrégebbi és a legújabb visszaállítási pontot.
     * A napló biztonsági mentésének állapota az elmúlt 24 órában, amelyek teljes és a tömegesen naplózott helyreállítási módban, és a tranzakciós napló biztonsági mentésekhez beállított adatbázisok.
 
-6. Válassza ki **Restore DB**. 
+6. Válassza ki **Restore DB**.
 
     ![Válassza ki a Restore DB](./media/backup-azure-sql-database/restore-db-button.png)
 
 7. A **konfiguráció visszaállítása**, hová szeretné visszaállítani az adatokat:
-    - **Másik helyre**: Állítsa vissza az adatbázist egy másik helyre, és tartsa az eredeti adatbázis.
-    - **Adatbázis felülírása**: Állítsa vissza az adatokat az eredeti forrás, ugyanazon SQL Server-példányon. Ez a beállítás felülírja az eredeti adatbázist.
+   - **Másik helyre**: Állítsa vissza az adatbázist egy másik helyre, és tartsa az eredeti adatbázis.
+   - **Adatbázis felülírása**: Állítsa vissza az adatokat az eredeti forrás, ugyanazon SQL Server-példányon. Ez a beállítás felülírja az eredeti adatbázist.
 
-    > [!Important]
-    > Ha a kijelölt adatbázis Always On rendelkezésre állási csoporthoz tartozik, az SQL Server felülírja az adatbázis nem teszi lehetővé. Csak **máshová** érhető el.
-    >
+     > [!Important]
+     > Ha a kijelölt adatbázis Always On rendelkezésre állási csoporthoz tartozik, az SQL Server felülírja az adatbázis nem teszi lehetővé. Csak **máshová** érhető el.
+     >
 
-    ![Visszaállítási konfiguráció menü](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
+     ![Visszaállítási konfiguráció menü](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)
 
 ### <a name="restore-to-an-alternate-location"></a>Visszaállítás másik helyre
 
@@ -98,7 +95,7 @@ Mielőtt vissza tudná állítani egy adatbázist, vegye figyelembe a következ�
 2. A **visszaállítási pont kiválasztása**válassza e [adott időpontra való visszaállítása](#restore-to-a-specific-point-in-time) vagy [egy adott helyreállítási pontra való visszaállítás](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
-    > A pont – történő visszaállítás csak a teljes és a tömegesen naplózott helyreállítási módban lévő adatbázisok naplóalapú biztonsági mentések esetén érhető el. 
+    > A pont – történő visszaállítás csak a teljes és a tömegesen naplózott helyreállítási módban lévő adatbázisok naplóalapú biztonsági mentések esetén érhető el.
 
 ### <a name="restore-and-overwrite"></a>Visszaállítás és felülírása
 
@@ -109,7 +106,7 @@ Mielőtt vissza tudná állítani egy adatbázist, vegye figyelembe a következ�
 2. A **visszaállítási pont kiválasztása**válassza **naplók (idő)** való [adott időpontra való visszaállítása](#restore-to-a-specific-point-in-time). Válassza ki vagy **teljes és különbségi** állíthatja vissza egy [adott helyreállítási pontot](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
-    > A pont – történő visszaállítás csak a teljes és a tömegesen naplózott helyreállítási módban lévő adatbázisok naplóalapú biztonsági mentések esetén érhető el. 
+    > A pont – történő visszaállítás csak a teljes és a tömegesen naplózott helyreállítási módban lévő adatbázisok naplóalapú biztonsági mentések esetén érhető el.
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Adott időpontra való visszaállítása
 
@@ -125,7 +122,7 @@ Ha a kiválasztott **naplók (idő)** visszaállítási típusként, tegye a kö
 
     ![Válassza ki a helyreállítás időpontját](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
- 
+
 1. Az a **speciális konfiguráció** menü, ha meg szeretné tartani az adatbázis működésképtelen a visszaállítás után engedélyezze **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL**.
 1. Ha szeretné a célkiszolgálón a visszaállítás helyének módosításához, adja meg az új cél elérési út.
 1. Kattintson az **OK** gombra.
@@ -144,9 +141,9 @@ Ha a kiválasztott **teljes és különbségi** visszaállítási típusként, t
 1. Válasszon ki egy helyreállítási pontot a listából, és válassza ki **OK** a visszaállítási pont eljárást.
 
     ![Válasszon egy teljes helyreállítási pontot](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
-        
+
 1. Az a **speciális konfiguráció** menü, ha meg szeretné tartani az adatbázis működésképtelen a visszaállítás után engedélyezze **visszaállítás a NORECOVERY BEÁLLÍTÁSSAL**.
-1. Ha szeretné a célkiszolgálón a visszaállítás helyének módosításához, adja meg az új cél elérési út. 
+1. Ha szeretné a célkiszolgálón a visszaállítás helyének módosításához, adja meg az új cél elérési út.
 1. Kattintson az **OK** gombra.
 
     ![Speciális konfigurációs menüje](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)

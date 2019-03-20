@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120550"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
 
@@ -64,7 +64,7 @@ Után az egyezési feltételek meg van adva, akkor lehet csatolni, mintavételi 
 > [!NOTE]
 > A port, a háttér-HTTP-beállítások ugyanazt a portot.
 
-Az alapértelmezett mintavétel úgy tűnik, csak http://127.0.0.1:\<port\> állapot meghatározásához. Az állapotminta nyissa meg egy egyéni URL-címet, vagy módosíthatja a további beállításokat konfigurálni kell, ha az egyéni minták kell használnia.
+Az alapértelmezett mintavétel csak http megvizsgálja:\//127.0.0.1:\<port\> állapot meghatározásához. Az állapotminta nyissa meg egy egyéni URL-címet, vagy módosíthatja a további beállításokat konfigurálni kell, ha az egyéni minták kell használnia.
 
 ### <a name="probe-intervals"></a>Mintavételi időköz
 

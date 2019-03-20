@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447829"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852963"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.
@@ -192,6 +192,9 @@ CheckForMS17-010
 **K: Miért van az AD FS naplózása nem hoz létre?**
 
 PowerShell-parancsmagot <i>Get-AdfsProperties - AuditLevel</i> annak biztosítása érdekében a vizsgálati naplók nem a Letiltva állapot. Tudjon meg többet [AD FS-naplók](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Figyelje meg a rendszer speciális leküldött az ADFS-kiszolgáló naplózási beállításait, ha az auditpol.exe módosításokat lesz-e felülírt (esemény Ha alkalmazás létrehozott nincs konfigurálva). Ebben az esetben állítsa be a helyi biztonsági házirend alkalmazás létrehozott hibák, illetve sikeres-e bejelentkezni.
+
+**K: Mikor lesz az ügynök tanúsítványának automatikus megújított előtt lejárati?**
+Az ügynök hitelesítő lesz az automatikus megújítása **6 hónap** a lejárati dátum előtt. Ha nem újítja meg, ellenőrizze, hogy a hálózati kapcsolat az ügynök nem stabil. Indítsa újra a házirendügynök szolgáltatásokat, vagy a legújabb verzióra való frissítés is előfordulhat, hogy a probléma megoldásához.
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások

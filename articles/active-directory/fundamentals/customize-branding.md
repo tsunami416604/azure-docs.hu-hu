@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807643146c4f2821cecf60499ea1985f56e9d251
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168595"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103060"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
@@ -29,7 +29,7 @@ A vállalat emblémája és egyéni színsémák használatával adjon meg egy e
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Az Azure AD bejelentkezési oldal testreszabása
 Testre szabhatja az Azure AD bejelentkezési lapok, amelyek jelenik meg, amikor a felhasználók bejelentkeznek a szervezet bérlő-specifikus alkalmazások, mint például [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), vagy egy, a tartomány változót, például a átadásakor[ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
-Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például www.office.com nyissa meg a felhasználók számára. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít.
+Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például www nyissa meg a felhasználók\.office.com. Ehelyett a felhasználók számára való bejelentkezés előtt jelenik meg a testre szabott védjegyzést biztosít.
 
 > [!NOTE]
 > Az összes márkajelzési elemek egyike sem kötelező. Ha nincs háttérkép-megad szalagcímemblémát, például a bejelentkezési oldal jeleníti meg az embléma a célhelyről (például Office 365) alapértelmezett háttérben történő rendszerképpel.<br><br>Ezenkívül arculat megjelenítése a bejelentkezési oldal nem jelenik meg személyes Microsoft-fiókok. Ha a felhasználók vagy a vendégek személyes Microsoft-fiókkal, a bejelentkezési oldal nem jelenik meg a céges arculatot a szervezet.
@@ -103,7 +103,7 @@ Miután létrehozta a egyéni márkajelzési beállításokat, lépjen vissza, �
 
 4. Kattintson a **Mentés** gombra.
 
-  A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
+   A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Nyelvspecifikus vállalati arculat hozzáadása a címtárhoz
 Az alapértelmezett nyelv, az eredeti konfiguráció nyelv nem módosítható. Ha más nyelven egy konfigurációs van szüksége, létrehozhat egy új konfigurációt.

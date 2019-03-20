@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177721"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>-Office 365 és az Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -36,7 +36,7 @@ Ez a cikk nyújt további információt a jogkivonat-aláíró tanúsítványok 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Az AD FS jogkivonat-aláíró tanúsítványok alapértelmezett konfigurációja
 A jogkivonat-aláíró és jogkivonat-visszafejtési tanúsítványokat általában önaláírt tanúsítványokat, és egy évig jó. Alapértelmezés szerint az AD FS tartalmaz egy automatikus megújítás nevű folyamat **AutoCertificateRollover**. Ha az AD FS 2.0-s vagy újabb verzióját használja, az Office 365 és az Azure AD automatikusan frissíti a tanúsítvány lejárata előtt.
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Az Office 365 portálon és a egy e-mailt a megújítási értesítés
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>A Microsoft 365 felügyeleti központban vagy az e-mailt a megújítási értesítés
 > [!NOTE]
 > Ha kapott e-mailben vagy rákérdez arra, hogy a tanúsítvány megújítása az Office, tekintse meg a portál értesítései [módosításával a jogkivonat-aláíró tanúsítványok](#managecerts) , ellenőrizze, hogy semmit sem kell. A Microsoft a egy lehetséges probléma, amely értesítéseket küld a rendszer, még akkor is, ha semmit nem kell a tanúsítvány megújításához vezethet.
 >
@@ -44,8 +44,8 @@ A jogkivonat-aláíró és jogkivonat-visszafejtési tanúsítványokat általá
 
 Az Azure AD megpróbálja az összevonási metaadatok monitorozása, és a jogkivonat-aláíró tanúsítványokat, amint azt a metaadatok frissítése. a jogkivonat-aláíró tanúsítványok lejárta előtt 30 nappal az Azure AD ellenőrzi, ha új tanúsítványok érhetők el az összevonási metaadatok lekérdezésével.
 
-* Ha sikerült lekérdezni az összevonási metaadatok és az új tanúsítványok lekérése, nem e-mail-értesítés vagy az Office 365 portálon figyelmeztetés a felhasználónak jelenik meg.
-* Ha nem tudja lekérni az új jogkivonat-aláíró tanúsítványokat, vagy az összevonási metaadatok nem érhető el, vagy nincs engedélyezve az automatikus tanúsítványváltást, mert az Azure AD kibocsát e-mailben értesítést és a egy figyelmeztetés, az Office 365-portálon.
+* Ha sikerült lekérdezni az összevonási metaadatok és az új tanúsítványok lekérése, nincs e-mail-értesítés vagy a Microsoft 365 felügyeleti központban figyelmeztetés a felhasználónak jelenik meg.
+* Ha nem tudja lekérni az új jogkivonat-aláíró tanúsítványokat, vagy az összevonási metaadatok nem érhető el, vagy nincs engedélyezve az automatikus tanúsítványváltást, mert az Azure AD kibocsát egy e-mail-értesítések és a egy figyelmeztetés a Microsoft 365 felügyeleti központban.
 
 ![Az Office 365 portál értesítései](./media/how-to-connect-fed-o365-certs/notification.png)
 

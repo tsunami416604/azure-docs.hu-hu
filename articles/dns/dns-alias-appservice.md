@@ -7,20 +7,20 @@ ms.service: dns
 ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
-ms.openlocfilehash: 2b14753237e118540da6306fa9f06816f3e58b71
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979779"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086326"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure-alapú webes alkalmazásokat üzemeltethet a zóna legfelső pontján
 
-A DNS protokoll megakadályozza, hogy az A vagy AAAA rekord a zóna legfelső pontján csakis a hozzárendelését. Egy példa zóna felső pontja a contoso.com. Ez a korlátozás az elosztott terhelésű alkalmazások Forgalomkezelő mögé rendelkező alkalmazástulajdonosok problémát jelent. Nem lehet a zóna felső pontja rekordból a Traffic Manager-profil mutassanak. Ennek eredményeképpen alkalmazástulajdonosok áthidaló kell használnia. Az ügyfélalkalmazási rétegben átirányítási kell átirányítási a zóna felső pontja a egy másik tartományba. Ilyen például, egy irányítja át a contoso.com www.contoso.com. Ezzel az elrendezéssel fokozott megjelenít egy átirányítási függvényéhez meghibásodási pont.
+A DNS protokoll megakadályozza, hogy az A vagy AAAA rekord a zóna legfelső pontján csakis a hozzárendelését. Egy példa zóna felső pontja a contoso.com. Ez a korlátozás az elosztott terhelésű alkalmazások Forgalomkezelő mögé rendelkező alkalmazástulajdonosok problémát jelent. Nem lehet a zóna felső pontja rekordból a Traffic Manager-profil mutassanak. Ennek eredményeképpen alkalmazástulajdonosok áthidaló kell használnia. Az ügyfélalkalmazási rétegben átirányítási kell átirányítási a zóna felső pontja a egy másik tartományba. Ilyen például, egy irányítja át a contoso.com www\.contoso.com. Ezzel az elrendezéssel fokozott megjelenít egy átirányítási függvényéhez meghibásodási pont.
 
 Alias rekordokat a probléma már nem létezik. Alkalmazástulajdonos most már rendelkezik külső végpontok Traffic Manager-profil is mutat a zóna felső pontja rekord. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat.
 
-Például a contoso.com és a www.contoso.com is mutasson a Traffic Manager-profilt. Ez a helyzet, amíg a Traffic Manager-profil csak külső végpontokkal konfigurálva van.
+Ha például a contoso.com és a www\.contoso.com is mutasson a Traffic Manager-profilt. Ez a helyzet, amíg a Traffic Manager-profil csak külső végpontokkal konfigurálva van.
 
 Ebből a cikkből megismerheti, hogyan hozzon létre egy alias a domain pontjánál rekordot, és a web apps számára a Traffic Manager profil végpontok konfigurálása.
 
@@ -28,11 +28,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Ez a tartomány teljes vezérlési jogosultsággal kell rendelkeznie. Teljes hozzáférés lehetővé teszi a névkiszolgáló (NS) rekordjait a tartomány beállítása magában foglalja.
+Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért lásd az [Oktatóanyag: A tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md).
+Üzemeltessen saját tartományt az Azure DNS-ben az utasításokért lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
 
-Az ebben az oktatóanyagban használt példa tartománya a contoso.com, de a saját tartománynevét használja.
+Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -45,8 +45,8 @@ Hozzon létre két Web App Service-csomagok az erőforráscsoportban, az alábbi
 
 |Name (Név)  |Operációs rendszer  |Hely  |Tarifacsomag  |
 |---------|---------|---------|---------|
-|AZ ASP-01     |Windows|USA keleti régiója|A D1-közös fejlesztés és tesztelés|
-|AZ ASP-02     |Windows|USA középső régiója|A D1-közös fejlesztés és tesztelés|
+|ASP-01     |Windows|USA keleti régiója|A D1-közös fejlesztés és tesztelés|
+|ASP-02     |Windows|USA középső régiója|A D1-közös fejlesztés és tesztelés|
 
 ## <a name="create-app-services"></a>Hozzon létre az App Services
 
@@ -58,10 +58,10 @@ Két webalkalmazást, egy, az egyes App Service-csomag létrehozása.
 4. Kattintson a **Create** (Létrehozás) gombra.
 5. Elfogadhatja az alapértelmezett beállításokat, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
 
-   |Name (Név)<br>(egyedinek kell lennie. azurewebsites.net)|Erőforráscsoport |Az App Service-csomag/hely
+   |Name (Név)<br>(egyedinek kell lennie. azurewebsites.net)|Erőforráscsoport |App Service Plan/Location
    |---------|---------|---------|
-   |Alkalmazás-01|Meglévő használata<br>Jelölje ki az erőforráscsoportot|Az ASP-01(East US)|
-   |Alkalmazás-02|Meglévő használata<br>Jelölje ki az erőforráscsoportot|Az ASP-02(Central US)|
+   |App-01|Meglévő használata<br>Jelölje ki az erőforráscsoportot|Az ASP-01(East US)|
+   |App-02|Meglévő használata<br>Jelölje ki az erőforráscsoportot|Az ASP-02(Central US)|
 
 ### <a name="gather-some-details"></a>Gyűjtse össze az egyes részletei
 
@@ -76,7 +76,7 @@ Most meg kell jegyezze fel az alkalmazások IP cím és a gazdagépcsoport nevé
 
 Traffic Manager-profil létrehozásához az erőforráscsoportban. Használja az alapértelmezett értékeket, és adjon meg egy egyedi nevet a trafficmanager.net névtéren belül.
 
-További információ a Traffic Manager-profil létrehozása: [a rövid útmutató: a Traffic Manager-profil egy magas rendelkezésre állású webes alkalmazás létrehozása](../traffic-manager/quickstart-create-traffic-manager-profile.md).
+További információ a Traffic Manager-profil létrehozása: [a rövid útmutató: Magas rendelkezésre állású webalkalmazás számára a Traffic Manager-profil létrehozása](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Végpontok létrehozása
 
@@ -87,14 +87,14 @@ Most már a végpontokat a két webalkalmazást hozhat létre.
 3. Kattintson a **Hozzáadás** parancsra.
 4. Használja az alábbi táblázat a végpontok konfigurálása:
 
-   |Típus  |Name (Név)  |Cél  |Hely  |Egyéni fejléc beállításai|
+   |Typo  |Name (Név)  |Cél  |Hely  |Egyéni fejléc beállításai|
    |---------|---------|---------|---------|---------|
-   |Külső végpont     |Záró-01|Az alkalmazás-01-es rögzített IP-cím|USA keleti régiója|gazdagép:\<az URL-cím, az alkalmazás-01-es rögzített\><br>Példa: **állomás: az alkalmazás-01.azurewebsites.net**|
-   |Külső végpont     |Záró-02|Az alkalmazás-02 rögzített IP-cím|USA középső régiója|gazdagép:\<az URL-cím, az alkalmazás-02 rögzített\><br>Példa: **állomás: az alkalmazás-02.azurewebsites.net**
+   |Külső végpont     |End-01|Az alkalmazás-01-es rögzített IP-cím|USA keleti régiója|gazdagép:\<az URL-cím, az alkalmazás-01-es rögzített\><br>Example: **host:app-01.azurewebsites.net**|
+   |Külső végpont     |End-02|Az alkalmazás-02 rögzített IP-cím|USA középső régiója|gazdagép:\<az URL-cím, az alkalmazás-02 rögzített\><br>Example: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zóna létrehozása
 
-Használhatja a meglévő DNS-zóna tesztelési, vagy létrehozhat egy új zóna. Hozzon létre, és a egy új DNS-zónát az Azure-ban delegálása, lásd: [oktatóanyag: üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
+Használhatja a meglévő DNS-zóna tesztelési, vagy létrehozhat egy új zóna. Hozzon létre, és a egy új DNS-zónát az Azure-ban delegálása, lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
 
 ### <a name="add-the-alias-record-set"></a>Az alias rekordhalmaz hozzáadása
 
@@ -104,7 +104,7 @@ Amikor készen áll a DNS-zónát, hozzáadhat egy aliast rekord a zóna felső 
 2. Kattintson a **Rekordhalmaz** gombra.
 3. Adja hozzá a rekord a következő táblázat használatával:
 
-   |Name (Név)  |Típus  |Alias rekordhalmaz  |Alias típusa  |Azure-erőforrás|
+   |Name (Név)  |Typo  |Alias rekordhalmaz  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
    |@     |A|Igen|Azure-erőforrás|A TRAFFIC Manager - profilját|
 
@@ -141,6 +141,6 @@ Most tesztelheti, hogy elérheti a webalkalmazást és a terhelés alatt álló 
 
 További információt az alias rekordok, tekintse meg a következő cikkeket:
 
-- [Oktatóanyag: Egy aliast rekord tekintse meg az Azure nyilvános IP-cím konfigurálása](tutorial-alias-pip.md)
-- [Oktatóanyag: Egy aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](tutorial-alias-tm.md)
+- [Oktatóanyag: Tekintse meg az Azure nyilvános IP-cím egy aliast rekord konfigurálása](tutorial-alias-pip.md)
+- [Oktatóanyag: -Aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](tutorial-alias-tm.md)
 - [DNS – gyakori kérdések](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

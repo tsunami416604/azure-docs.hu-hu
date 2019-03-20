@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: a7c29d1bfcc0737f76afc43cb8997d6a1d16c82b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731349"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223614"
 ---
 # <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
 
@@ -146,13 +146,16 @@ ds.download(target_path='your target path',
 
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Hozzáférés adattárainak betanítás során
-Egy adattár (például a képzés és az érvényesítési adatok) futtat egy távoli számítási célnak keresztül a Python SDK használatával egy betanítás során érheti el a [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) osztály.
 
-Többféleképpen is lehet elérhetővé tenni az adattár a távoli számítási.
+Miután elvégezte az adattár elérhető távoli számítási, hozzá tud férni a betanítási futtatás (például a képzés és az érvényesítési adatok) során egyszerűen adja át az elérési út azt a tanítási szkriptet paraméterként.
+
+A következő táblázat felsorolja a közös [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) mód(ok) adattárainak távoli számítási elérhetővé tett.
+
+# #
 
 Módja|Módszer|Leírás
 ----|-----|--------
-Csatlakoztatás| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Egy adattár csatlakoztatása a távoli számítási használatával.
+Csatlakoztatás| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Egy adattár csatlakoztatása a távoli számítási használatával. Adattárolók alapértelmezett módját.
 Letöltés|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Töltse le az adatokat a megadott helyen `path_on_compute` a távoli számítási az adattárban.
 Feltöltés|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| A megadott helyen tölthet fel adatokat az adattár gyökeréhez `path_on_compute`.
 
@@ -165,20 +168,22 @@ ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-### <a name="reference-filesfolders"></a>Referencia-fájlok és mappák
 Egy adott mappa vagy fájl az adattár a hivatkozik, használja az adattárhoz [ `path()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) függvény.
 
 ```Python
-#download the contents of the `./bar` directory from the datastore 
+#download the contents of the `./bar` directory from the datastore to the remote compute
 ds.path('./bar').as_download()
 ```
 
 
+
+> [!NOTE]
+> Bármely `ds` vagy `ds.path` objektumra mutat egy környezeti változó neve, a formátum `"$AZUREML_DATAREFERENCE_XXXX"` amelynek értéke a csatlakoztatási/letöltési út távoli számítási jelöli. Az adattároló elérési út távoli számítási nem lehet ugyanaz, mint a betanítási szkript végrehajtási útvonalát.
+
 ### <a name="examples"></a>Példák 
 
-Bármely `ds` vagy `ds.path` objektumra mutat egy környezeti változó neve, a formátum `"$AZUREML_DATAREFERENCE_XXXX"` amelynek értéke a csatlakoztatási/letöltési út távoli számítási jelöli. Az adattároló elérési út távoli számítási nem lehet ugyanaz, mint a szkript végrehajtási útvonalát.
+A következő vonatkozó példák bemutatják a [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztály betanítás során az adattár eléréséhez.
 
-Szeretné elérni az adattárhoz betanítás során, át azt a tanítási szkriptet keresztül parancssori argumentumként `script_params` származó a [ `Estimator` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztály.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -192,12 +197,13 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py')
 ```
-`as_mount()` egy adattár, alapértelmezett módja van, így közvetlenül is helyettesíthető `ds` , a `'--data_dir'` argumentum.
+
+Mivel `as_mount()` az alapértelmezett mód az adattárolót, akkor közvetlenül is helyettesíthető `ds` , a `'--data_dir'` argumentum.
 
 Vagy adattárainak listáját adja át a Estimator konstruktor `inputs` csatlakoztatni vagy és- tárolókról a datastore(s) másolása paramétert. Ez a Kódpélda:
 * Letölti az adattár összes tartalom `ds1` , mielőtt a tanítási szkriptet a távoli számítási `train.py` futtatása
 * A mappa letölti `'./foo'` az adattárhoz `ds2` , mielőtt a távoli számítási `train.py` futtatása
-* Feltölti a fájlt `'./bar.pkl'` , akár az adattárhoz távoli számítási `d3` a szkript futtatása után
+* Feltölti a fájlt `'./bar.pkl'` , akár az adattárhoz távoli számítási `ds3` a szkript futtatása után
 
 ```Python
 est = Estimator(source_directory='your code directory',

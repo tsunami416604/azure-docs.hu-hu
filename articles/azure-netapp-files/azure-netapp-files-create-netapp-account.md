@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ae42d8c0bec8c812d18e927dd450e5b5fc419ba3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774077"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113639"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
@@ -33,29 +33,29 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
 
 1. Jelentkezzen be az Azure portálra. 
 2. Az Azure NetApp Files panelt a következő módszerek egyikével érheti el:  
-  * Keressen rá az **Azure NetApp Files** kifejezésre az Azure Portal keresőmezőjében.  
-  * Kattintson a navigációs menü **Minden szolgáltatás** elemére, majd szűrjön az Azure NetApp Files kifejezésre.  
+   * Keressen rá az **Azure NetApp Files** kifejezésre az Azure Portal keresőmezőjében.  
+   * Kattintson a navigációs menü **Minden szolgáltatás** elemére, majd szűrjön az Azure NetApp Files kifejezésre.  
 
-  Az Azure NetApp Filest „kedvencnek is jelölheti” a mellette lévő csillag ikonra kattintva. 
+   Az Azure NetApp Filest „kedvencnek is jelölheti” a mellette lévő csillag ikonra kattintva. 
 
 3. Új NetApp-fiók létrehozásához kattintson a **+ Hozzáadás** gombra.  
-  Ekkor megjelenik az Új NetApp-fiók ablaka.  
+   Ekkor megjelenik az Új NetApp-fiók ablaka.  
 
 4. Adja meg az alábbi információkat a NetApp-fiókra vonatkozóan: 
-  * **Fióknév**  
-    Adja meg az előfizetés egyedi nevét.
-  *  **Előfizetés**  
-    Válasszon ki egyet a meglévő előfizetések közül.
-  * **Erőforráscsoport**   
-    Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
-  * **Hely**  
-    Válassza ki azt az Azure-régiót, ahol a fiókot és annak alárendelt erőforrásait létre szeretné hozni.  
+   * **Fióknév**  
+     Adja meg az előfizetés egyedi nevét.
+   * **Előfizetés**  
+     Válasszon ki egyet a meglévő előfizetések közül.
+   * **Erőforráscsoport**   
+     Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
+   * **Hely**  
+     Válassza ki azt az Azure-régiót, ahol a fiókot és annak alárendelt erőforrásait létre szeretné hozni.  
 
-    ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
+     ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
 5. Kattintson a **Create** (Létrehozás) gombra.     
-  A létrehozott NetApp-fiók megjelenik az Azure NetApp Files panelen. 
+   A létrehozott NetApp-fiók megjelenik az Azure NetApp Files panelen. 
 
 ## <a name="next-steps"></a>További lépések  
 

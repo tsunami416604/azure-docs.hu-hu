@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 8e8b9536c96b1f5ed899695a3715021b9f9875cf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 271e18d370068e0445f183af0c694b19f0da22f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440369"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102754"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure Web App és az Azure SQL Database-adatbázishoz a helyszíni alkalmazás újrabontása
 
@@ -244,9 +244,9 @@ Adatbázis-kezelő telepíti át, Contoso-rendszergazdák mostantól építhető
 
 Contoso cégnek szüksége van, fejlesztési és üzemeltetési infrastruktúra és az alkalmazás folyamatokat hozhat létre.  Ehhez Contoso rendszergazdák új DevOps-projekt létrehozása, importálása a kódot, majd állítsa be a build és folyamatok felszabadítása.
 
-1.   A Contoso Azure DevOps-fiókban lévő új projekt létrehozása (**ContosoSmartHotelRefactor**), és válassza ki **Git** verziókezeléshez.
+1. A Contoso Azure DevOps-fiókban lévő új projekt létrehozása (**ContosoSmartHotelRefactor**), és válassza ki **Git** verziókezeléshez.
 
-    ![Új projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
+   ![Új projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
 2. A Git-adattár, amely jelenleg rendelkezik az alkalmazás kódját importálja azokat. Van egy [nyilvános adattár](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) és töltheti le.
 
     ![Alkalmazáskód letöltése](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
@@ -306,8 +306,8 @@ Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végr
 
 6. A mappa **Drop** a build eredményeit tartalmazza.
 
-    - A két zip-fájlokat a csomagokat, amelyek tartalmazzák az alkalmazások.
-    - Ezek a fájlok használhatók a kibocsátási folyamat üzembe helyezés az Azure Web Appshez
+   - A két zip-fájlokat a csomagokat, amelyek tartalmazzák az alkalmazások.
+   - Ezek a fájlok használhatók a kibocsátási folyamat üzembe helyezés az Azure Web Appshez
 
      ![Összetevő](./media/contoso-migration-refactor-web-app-sql/pipeline6.png)
 
@@ -341,7 +341,7 @@ Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végr
 
 16. A folyamatos készregyártás eseményindítója értékre kell állítani **engedélyezve**.
 
-   ![Engedélyezve van a folyamatos üzembe helyezés](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
+    ![Engedélyezve van a folyamatos üzembe helyezés](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
 17. Most, lépjen vissza az 1. fázis feladat e feladatok, és kattintson **üzembe helyezése az Azure App Service**.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015522"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116809"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazásban szűrőtelemetria
 
@@ -186,12 +186,12 @@ Nyomkövetési naplók szűrők (használatával naplózza [TrackTrace()](../../
 ```
 
 * `FromSeverityLevel` Érvényes értékek a következők:
- *  KI - összes nyomkövetési kiszűréséhez
- *  NYOMKÖVETÉS - szűrés. Nyomkövetési szint egyenlő
- *  INFORMÁCIÓ - szűrő ki NYOMKÖVETÉSI szint
- *  FIGYELMEZTETÉS – ki információkat és a NYOMKÖVETÉSI szűrő
- *  HIBA – meg figyelmeztetés, információ a NYOMKÖVETÉSI szűrő
- *  KRITIKUS - szűrő, kivéve a kritikus fontosságú
+  *  KI - összes nyomkövetési kiszűréséhez
+  *  NYOMKÖVETÉS - szűrés. Nyomkövetési szint egyenlő
+  *  INFORMÁCIÓ - szűrő ki NYOMKÖVETÉSI szint
+  *  FIGYELMEZTETÉS – ki információkat és a NYOMKÖVETÉSI szűrő
+  *  HIBA – meg figyelmeztetés, információ a NYOMKÖVETÉSI szűrő
+  *  KRITIKUS - szűrő, kivéve a kritikus fontosságú
 
 
 ## <a name="custom-filters"></a>Egyéni szűrők
@@ -237,7 +237,7 @@ A kódban, hozzon létre egy osztályt, amely megvalósítja `TelemetryProcessor
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. A szűrő a konfigurációs fájl meghívása
 
-Az applicationinsights.xml fájlt:
+In ApplicationInsights.xml:
 
 ```XML
 

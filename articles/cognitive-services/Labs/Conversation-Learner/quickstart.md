@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 82738d6d97dc2c14c83ed483c4a1d76604d0cd91
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545320"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994373"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js használatával Beszélgetéstanuló modell létrehozása
 
@@ -78,35 +78,35 @@ Projekt Beszélgetéstanuló egy SDK-t ad hozzá a robot és a egy felhőalapú 
 
     Ez az általános üres bot fut `cl-bot-01/src/app.ts`.
 
-3. Nyissa meg böngészőben http://localhost:3978
+3. Nyissa meg böngészőben `http://localhost:3978`
 
 Beszélgetéstanuló most már használja és hozhat létre és Beszélgetéstanuló modell tanítása.  
 
 > [!NOTE]
-> Indításkor projekt Beszélgetéstanuló kapott meghívóval érhető el.  Ha http://localhost:3978/ui bemutatja egy olyan HTTP `403` hiba, ez azt jelenti, hogy a fiók nem kapott meghívót.  Adjon [meghívó igénylése](https://aka.ms/conversation-learner-request-invite).
+> Indításkor projekt Beszélgetéstanuló kapott meghívóval érhető el.  Ha `http://localhost:3978/ui` bemutatja egy olyan HTTP `403` hiba, ez azt jelenti, hogy a fiók nem kapott meghívót.  Adjon [meghívó igénylése](https://aka.ms/conversation-learner-request-invite).
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>Az oktatóanyagok, bemutatók és robotokat közötti váltás
 
 A fenti útmutatást az általános üres bot elindult.  Oktatóanyag futtatásához, vagy inkább bemutató bot:
 
-1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját http://localhost:3978/ui/home.
+1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját `http://localhost:3978/ui/home`.
     
 2. Ha egy másik bot fut (például `npm start` vagy `npm run demo-pizza`), állítsa le.  Nem kell a felhasználói felület folyamat leállítása, vagy zárja be a webböngészőt.
 
 3. A bemutató bot futtassa a parancssorból (2. lépés fent).  Bemutatók a következők:
 
-  ```bash
-  npm run tutorial-general
-  npm run tutorial-entity-detection
-  npm run tutorial-session-callbacks
-  npm run tutorial-api-calls
-  npm run tutorial-hybrid
-  npm run demo-password
-  npm run demo-pizza
-  npm run demo-storage
-  ```
+   ```bash
+   npm run tutorial-general
+   npm run tutorial-entity-detection
+   npm run tutorial-session-callbacks
+   npm run tutorial-api-calls
+   npm run tutorial-hybrid
+   npm run demo-password
+   npm run demo-pizza
+   npm run demo-storage
+   ```
 
-4. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével http://localhost:3978/ui/home. 
+4. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével `http://localhost:3978/ui/home`. 
 
 5. Kattintson a "Oktatóanyagokban importálása", és válassza ki a demo modellt a beszélgetés Learner felhasználói felületén, amely megfelel a bemutató-t elindította.
 
@@ -114,7 +114,7 @@ Forrásfájljainak a bemutatók szerepelnek `cl-bot-01/src/demos`
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Hozzon létre egy robot, amely háttér-kódot tartalmaz
 
-1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját http://localhost:3978/ui/home.
+1. Ha a felhasználói felület megnyitása Beszélgetéstanuló webes, térjen vissza a modellek listáját `http://localhost:3978/ui/home`.
     
 2. Ha egy robot fut (például `npm run demo-pizza`), állítsa le.  Nem kell a felhasználói felület folyamat leállítása, vagy zárja be a webböngészőt.
 
@@ -127,7 +127,7 @@ Forrásfájljainak a bemutatók szerepelnek `cl-bot-01/src/demos`
     npm start
     ```
 
-5. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével http://localhost:3978/ui/home. 
+5. Ha még nem tette, váltson a Beszélgetéstanuló webes felhasználói Felületére, a Chrome-ban betöltésével `http://localhost:3978/ui/home`. 
 
 6. Beszélgetéstanuló új modell létrehozása a felhasználói felületen, és indítsa el a tanítási.
 

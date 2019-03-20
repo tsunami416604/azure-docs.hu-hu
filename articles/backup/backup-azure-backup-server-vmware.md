@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 4b6c4af37211ede2cb2153afdd071c219178f2ba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b323836ff804d9e4af3765a2d4ea713a34bcf284
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882841"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226521"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek az Azure Backup Server biztonsági mentése
 
@@ -65,10 +65,10 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 4. Mentse a fájlt az Azure Backup Server gépen .zip kiterjesztésű.
 
 5. Kattintson a jobb gombbal **download.zip** > **az összes kibontása**. A zip-fájlt a tartalmát a kinyeri a **tanúsítványok** mappába, amely tartalmazza:
-    - A legfelső szintű.0 és ikonra.1 például egy számozott feladatütemezési kezdődő kiterjesztésű tanúsítványfájlt.
-    - A CRL-fájl kiterjesztése, amely egy feladatütemezési .r0 vagy .r1 hasonlóan kezdődik. A tanúsítvány CRL-fájlnak kapcsolódik.
+   - A legfelső szintű.0 és ikonra.1 például egy számozott feladatütemezési kezdődő kiterjesztésű tanúsítványfájlt.
+   - A CRL-fájl kiterjesztése, amely egy feladatütemezési .r0 vagy .r1 hasonlóan kezdődik. A tanúsítvány CRL-fájlnak kapcsolódik.
 
-    ![A letöltött tanúsítvány](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+     ![A letöltött tanúsítvány](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
 5. Az a **tanúsítványok** mappát, kattintson a jobb gombbal a legfelső szintű tanúsítványfájl > **átnevezése**.
 
@@ -85,7 +85,7 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 
 9. Az a **tanúsítvány Store** lapon jelölje be **minden tanúsítvány tárolása ebben a tárolóban**, és kattintson a **Tallózás** a tanúsítványtároló kiválasztása.
 
-    ![Tanúsítványtároló](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+     ![Tanúsítványtároló](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
 10. A **válassza tanúsítvány Store**, jelölje be **megbízható legfelső szintű hitelesítésszolgáltatók** a tanúsítványokat, és kattintson a célmappaként **OK**.
 
@@ -134,11 +134,11 @@ Az Azure Backup Server van szüksége a Vcenter-kiszolgáló elérésére jogosu
 4. A **szerepkör létrehozása** > **szerepkörnév**, adja meg *BackupAdminRole*. A szerepkör neve lehet bármire átnevezhető, de felismerhető a szerepkör célra kell lennie.
 
 5. Válassza ki a jogosultságokat, az alábbi táblázat foglalja össze, és kattintson a **OK**.  Az új szerepkör megjelenik a listán szereplő a **szerepkörök** panel.
-    - Bontsa ki a szülő és gyermek jogosultságok megtekintése a szülő címke melletti ikonra kattintva.
-    - Válassza ki a VirtualMachine jogosultságokat, a szülő-gyermek hierarchia több szinten fel kell.
-    - Válassza ki a szülő jogosultság belül az összes gyermek jogosultság nem kell.
+   - Bontsa ki a szülő és gyermek jogosultságok megtekintése a szülő címke melletti ikonra kattintva.
+   - Válassza ki a VirtualMachine jogosultságokat, a szülő-gyermek hierarchia több szinten fel kell.
+   - Válassza ki a szülő jogosultság belül az összes gyermek jogosultság nem kell.
 
-    ![Szülő-gyermek jogosultság hierarchiát](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+     ![Szülő-gyermek jogosultság hierarchiát](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
 **6.5/6.0** | **5.5**
@@ -265,7 +265,7 @@ A vCenter-kiszolgáló hozzáadása az Azure Backup Server.
 
 8. A beállítások ellenőrzése a **Befejezés** lapot.
 
-  ![A Befejezés lapon](./media/backup-azure-backup-server-vmware/summary-screen.png)
+   ![A Befejezés lapon](./media/backup-azure-backup-server-vmware/summary-screen.png)
 
 Ha nem a vCenter-kiszolgáló által felügyelt több ESXi-gazdagép rendelkezik, vagy ha a vCenter-kiszolgáló több példányát, futtassa újra a varázslót, a kiszolgálók hozzáadása szeretné.
 
@@ -281,77 +281,77 @@ Adja hozzá a VMware virtuális gépek biztonsági mentésének. Védelmi csopor
 
     ![Nyissa meg az új védelmi csoport létrehozása varázsló](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-2. Az a **új védelmi csoport létrehozása** varázsló kezdőlapján kattintson **tovább**.
+1. Az a **új védelmi csoport létrehozása** varázsló kezdőlapján kattintson **tovább**.
 
     ![Új védelmi csoport létrehozása varázsló párbeszédpanelje](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-3. Az a **válassza ki a védelmi csoport típusának** lapra, jelölje be **kiszolgálók** majd **tovább**. A **jelölje ki a csoporttagokat** lap jelenik meg.
+1. Az a **válassza ki a védelmi csoport típusának** lapra, jelölje be **kiszolgálók** majd **tovább**. A **jelölje ki a csoporttagokat** lap jelenik meg.
 
-3. A **jelölje ki a csoporttagokat** > Válassza ki a virtuális gépeket (vagy virtuális gép mappák), amelyet szeretne készíteni. Ezután kattintson a **Next** (Tovább) gombra.
+1. A **jelölje ki a csoporttagokat** > Válassza ki a virtuális gépeket (vagy virtuális gép mappák), amelyet szeretne készíteni. Ezután kattintson a **Next** (Tovább) gombra.
 
     - Amikor kijelöl egy mappát vagy virtuális gépek vagy a mappán belül mappákat is kiválasztva a biztonsági mentéshez. Mappák vagy virtuális gépek biztonsági mentése nem kívánja jelölését.
-- Ha egy virtuális gép vagy a mappa már készül biztonsági másolat, nem jelölhető ki. Ez biztosítja, hogy ismétlődő helyreállítási pontok nem hoz létre egy virtuális Gépet. .
+1. Ha egy virtuális gép vagy a mappa már készül biztonsági másolat, nem jelölhető ki. Ez biztosítja, hogy ismétlődő helyreállítási pontok nem hoz létre egy virtuális Gépet. .
 
-    ![Csoporttagok kiválasztása](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+     ![Csoporttagok kiválasztása](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 
-4. A **adatvédelmi módszer kiválasztása** területén adjon meg egy nevet a védelmi csoport, és a védelmi beállításokat. Vissza Azure-ban, állítsa a rövid távú védelemhez **lemez** és az online védelem. Ezután kattintson a **Next** (Tovább) gombra.
+1. A **adatvédelmi módszer kiválasztása** területén adjon meg egy nevet a védelmi csoport, és a védelmi beállításokat. Vissza Azure-ban, állítsa a rövid távú védelemhez **lemez** és az online védelem. Ezután kattintson a **Next** (Tovább) gombra.
 
     ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-5. A **rövid távú célok megadása**, adja meg, hogy mennyi ideig szeretné megőrizni a adatok biztonsági mentése lemezre.
-    - A **megőrzési**, adja meg, hány napig lemez-helyreállítási pontok kell tárolni.
-    - A **szinkronizálási gyakoriság**, adja meg, hogy milyen gyakran lemez-helyreállítási pontok.
-        - Ha nem szeretné beállítani a biztonsági mentés időköz ellenőrizheti **közvetlenül egy helyreállítási pont előtt** , hogy egy biztonsági mentése fut, minden egyes helyreállítási pontok ütemezése előtt.
-        - Rövid távú biztonsági mentések teljes biztonsági mentések, és nem fokozatos.
-        - Kattintson a **módosítás** módosítása az időpontok és dátumok rövid távú biztonsági mentések esetén.
+1. A **rövid távú célok megadása**, adja meg, hogy mennyi ideig szeretné megőrizni a adatok biztonsági mentése lemezre.
+   - A **megőrzési**, adja meg, hány napig lemez-helyreállítási pontok kell tárolni.
+   - A **szinkronizálási gyakoriság**, adja meg, hogy milyen gyakran lemez-helyreállítási pontok.
+       - Ha nem szeretné beállítani a biztonsági mentés időköz ellenőrizheti **közvetlenül egy helyreállítási pont előtt** , hogy egy biztonsági mentése fut, minden egyes helyreállítási pontok ütemezése előtt.
+       - Rövid távú biztonsági mentések teljes biztonsági mentések, és nem fokozatos.
+       - Kattintson a **módosítás** módosítása az időpontok és dátumok rövid távú biztonsági mentések esetén.
 
-    ![Rövid távú célok megadása](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+     ![Rövid távú célok megadása](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-6. A **tekintse át a lemezfoglalás**, ellenőrizze a megadott virtuális gép biztonsági mentésének lemezterületet. a virtuális gépek.
+1. A **tekintse át a lemezfoglalás**, ellenőrizze a megadott virtuális gép biztonsági mentésének lemezterületet. a virtuális gépek.
 
-    - A javasolt lemezfoglalásokat a megadott megőrzési tartomány, a munkaterhelés típusától és a védett adatok méretének alapulnak. Végezze el a szükséges módosításokat, és kattintson a **tovább**.
-    -  **Adatok mérete:** A védelmi csoportban található adatok méretét.
-    - **Lemezterület:** Az ajánlott mennyiségű lemezterületet a védelmi csoport számára. Ha azt szeretné, a beállítás módosításához, meg kell helyet lefoglalnia, valamivel nagyobb, mint az összeg, amely minden adatforrás növekszik becslései szerint.
-    - **A tartozó adatok közös elhelyezése:** Ha bekapcsolja a közös elhelyezést, több adatforrást a védelmi leképezheti egyetlen replika- és helyreállításipont-köteten. A közös elhelyezés minden számítási feladatok esetében nem támogatott.
-    - **Automatikus növekedés:** Ha bekapcsolja ezt a beállítást, ha a védelmi csoportban található adatok megnövelni a kezdeti lefoglalt, az Azure Backup Server próbálja meg a 25 %-kal növelni.
-    - **Tárolókészlet részletei:** A tárolókészlethez, beleértve a teljes és szabad lemezterülettel állapotát jeleníti meg.
+   - A javasolt lemezfoglalásokat a megadott megőrzési tartomány, a munkaterhelés típusától és a védett adatok méretének alapulnak. Végezze el a szükséges módosításokat, és kattintson a **tovább**.
+   - **Adatok mérete:** A védelmi csoportban található adatok méretét.
+   - **Lemezterület:** Az ajánlott mennyiségű lemezterületet a védelmi csoport számára. Ha azt szeretné, a beállítás módosításához, meg kell helyet lefoglalnia, valamivel nagyobb, mint az összeg, amely minden adatforrás növekszik becslései szerint.
+   - **A tartozó adatok közös elhelyezése:** Ha bekapcsolja a közös elhelyezést, több adatforrást a védelmi leképezheti egyetlen replika- és helyreállításipont-köteten. A közös elhelyezés minden számítási feladatok esetében nem támogatott.
+   - **Automatikus növekedés:** Ha bekapcsolja ezt a beállítást, ha a védelmi csoportban található adatok megnövelni a kezdeti lefoglalt, az Azure Backup Server próbálja meg a 25 %-kal növelni.
+   - **Tárolókészlet részletei:** A tárolókészlethez, beleértve a teljes és szabad lemezterülettel állapotát jeleníti meg.
 
-    ![Tekintse át a lemezkiosztást](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+     ![Tekintse át a lemezkiosztást](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-7. A **replika-létrehozási módszer kiválasztása** csoportjában adja meg, hogyan szeretné a kezdeti biztonsági mentés, és kattintson a **tovább**.
-    - Az alapértelmezett érték **automatikusan a hálózaton keresztül** és **most**.
-    - Ha használja az alapértelmezett, azt javasoljuk, hogy megad egy csúcsidőn kívüli időpont. Válasszon **később** és a egy napját és időpontját adja meg.
-    - Nagy mennyiségű adat- vagy kevésbé optimális hálózati körülmények fontolja meg a kapcsolat nélküli az adatok replikálását a cserélhető adathordozó használatával.
+1. A **replika-létrehozási módszer kiválasztása** csoportjában adja meg, hogyan szeretné a kezdeti biztonsági mentés, és kattintson a **tovább**.
+   - Az alapértelmezett érték **automatikusan a hálózaton keresztül** és **most**.
+   - Ha használja az alapértelmezett, azt javasoljuk, hogy megad egy csúcsidőn kívüli időpont. Válasszon **később** és a egy napját és időpontját adja meg.
+   - Nagy mennyiségű adat- vagy kevésbé optimális hálózati körülmények fontolja meg a kapcsolat nélküli az adatok replikálását a cserélhető adathordozó használatával.
 
-    ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-server-vmware/replica-creation.png)
+     ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-8. A **konzisztencia-ellenőrzési beállítások**, adja meg, hogyan és mikor érdemes automatizálni a konzisztencia-ellenőrzéseket. Ezután kattintson a **Next** (Tovább) gombra.
-    - Konzisztencia-ellenőrzéseket is futtathat, amikor a replikaadatok inkonzisztenssé válik, illetve egy beállított ütemezés szerint.
-    - Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, egy manuális ellenőrzést is futtathatja. Ehhez kattintson a jobb gombbal a védelmi csoport > **konzisztencia-ellenőrzés végrehajtása**.
+1. A **konzisztencia-ellenőrzési beállítások**, adja meg, hogyan és mikor érdemes automatizálni a konzisztencia-ellenőrzéseket. Ezután kattintson a **Next** (Tovább) gombra.
+      - Konzisztencia-ellenőrzéseket is futtathat, amikor a replikaadatok inkonzisztenssé válik, illetve egy beállított ütemezés szerint.
+      - Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, egy manuális ellenőrzést is futtathatja. Ehhez kattintson a jobb gombbal a védelmi csoport > **konzisztencia-ellenőrzés végrehajtása**.
 
-9. A **Online védelem adatainak megadása** lapra, jelölje be a virtuális gépek vagy a virtuális gép biztonsági mentéséhez használni kívánt mappákat. Válassza ki egyenként a tagokat, vagy kattintson **válassza ki az összes** minden tag kiválasztása. Ezután kattintson a **Next** (Tovább) gombra.
+1. A **Online védelem adatainak megadása** lapra, jelölje be a virtuális gépek vagy a virtuális gép biztonsági mentéséhez használni kívánt mappákat. Válassza ki egyenként a tagokat, vagy kattintson **válassza ki az összes** minden tag kiválasztása. Ezután kattintson a **Next** (Tovább) gombra.
 
-    ![Online védelem adatainak megadása](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+      ![Online védelem adatainak megadása](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-10. Az a **Online biztonsági mentési ütemezés megadása** csoportjában adja meg, hogy milyen gyakran kívánja a biztonsági másolatokat a helyi tárolóból az Azure-bA.
+1. Az a **Online biztonsági mentési ütemezés megadása** csoportjában adja meg, hogy milyen gyakran kívánja a biztonsági másolatokat a helyi tárolóból az Azure-bA.
 
     - Felhőbeli helyreállítási pontok az adatok jön létre, az ütemezés szerint. Ezután kattintson a **Next** (Tovább) gombra.
     - Miután a helyreállítási pont jön létre, a Recovery Services-tárolót az Azure-ban való átvitelig.
 
-    ![Online biztonsági mentés ütemezésének megadása](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+      ![Online biztonsági mentés ütemezésének megadása](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-11. Az a **Online adatmegőrzési szabály megadása** lap, adja meg, mennyi ideig szeretné megőrizni a az Azure-bA a napi/heti/havi/évi biztonsági mentésekből létrehozott helyreállítási pontokat. Kattintson a **tovább**.
+1. Az a **Online adatmegőrzési szabály megadása** lap, adja meg, mennyi ideig szeretné megőrizni a az Azure-bA a napi/heti/havi/évi biztonsági mentésekből létrehozott helyreállítási pontokat. Kattintson a **tovább**.
 
     - Nincs nincs határideje, mennyi ideig tárolhatja az adatokat az Azure-ban.
     - A csak határértéke, hogy nem rendelkezik a védett példányonkénti több mint 9999 helyreállítási pontot. Ebben a példában a védett példány a VMware-kiszolgáló.
 
-    ![Online megőrzési szabály megadása](./media/backup-azure-backup-server-vmware/retention-policy.png)
+      ![Online megőrzési szabály megadása](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 
-12. Az a **összefoglalás** lapon tekintse át a beállításokat, és kattintson a **csoport létrehozása**.
+1. Az a **összefoglalás** lapon tekintse át a beállításokat, és kattintson a **csoport létrehozása**.
 
-    ![A védelmi csoport tagja, és a beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+     ![A védelmi csoport tagja, és a beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>A VMWare vSphere 6.7
 

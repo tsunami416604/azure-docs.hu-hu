@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e773986d11a11c6cc84df367aa48ac1b01a9183e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121502"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Az Azure Portalon a StorSimple Data Manager szolgáltatás kezelése
 
@@ -46,19 +46,19 @@ A következő lépésekkel hozzon létre egy StorSimple Data Manager szolgáltat
 
 3. Az új szolgáltatás adja meg a következőket:
 
-    1. Adjon meg egy egyedi **szolgáltatásnév** a StorSimple Data Manager. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
+   1. Adjon meg egy egyedi **szolgáltatásnév** a StorSimple Data Manager. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
 
-    2. Válasszon egy **előfizetés** a legördülő listából. Az előfizetés az Ön számlázási fiókjához lesz társítva. A mező automatikusan ki van töltve (és nem választható) Ha csak egy előfizetéssel rendelkezik.
+   2. Válasszon egy **előfizetés** a legördülő listából. Az előfizetés az Ön számlázási fiókjához lesz társítva. A mező automatikusan ki van töltve (és nem választható) Ha csak egy előfizetéssel rendelkezik.
 
-    3. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-    4. Adja meg a **hely** környezetet tároló, a storage-fiókok és a StorSimple Data Manager szolgáltatás a szolgáltatás. A StorSimple-Eszközkezelő szolgáltatás Data Manager szolgáltatás és a társított storage-fiókban kell lenniük a támogatott régióban.
+   4. Adja meg a **hely** környezetet tároló, a storage-fiókok és a StorSimple Data Manager szolgáltatás a szolgáltatás. A StorSimple-Eszközkezelő szolgáltatás Data Manager szolgáltatás és a társított storage-fiókban kell lenniük a támogatott régióban.
     
-    5. Ez a szolgáltatás hivatkozás beszerzése az irányítópulton, válassza a **rögzítés az irányítópulton**.
+   5. Ez a szolgáltatás hivatkozás beszerzése az irányítópulton, válassza a **rögzítés az irányítópulton**.
     
-    6. Kattintson a **Create** (Létrehozás) gombra.
+   6. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![3. a StorSimple Data Manager szolgáltatás létrehozása](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![3. a StorSimple Data Manager szolgáltatás létrehozása](./media/storsimple-data-manager-ui/create-service-4.png)
 
 A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozása, és megjelenik az új szolgáltatás után megjelenik egy értesítés.
 
@@ -88,33 +88,33 @@ A következő lépésekkel hozzon létre egy feladat definíciója.
 
     ![Új adat-adattár hozzáadása](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-    1. Válasszon **a StorSimple 8000 sorozat Manager** a tárház adattípusú értékként.
+   1. Válasszon **a StorSimple 8000 sorozat Manager** a tárház adattípusú értékként.
     
-    2. Adjon meg egy rövid nevet a forrás adattár.
+   2. Adjon meg egy rövid nevet a forrás adattár.
     
-    3. A legördülő listából válasszon egy előfizetést, a StorSimple-Eszközkezelő szolgáltatással kapcsolatos.
+   3. A legördülő listából válasszon egy előfizetést, a StorSimple-Eszközkezelő szolgáltatással kapcsolatos.
     
-    4. Adja meg a nevét, a StorSimple Device Manager számára a **erőforrás**.
+   4. Adja meg a nevét, a StorSimple Device Manager számára a **erőforrás**.
 
-    5. Adja meg a **szolgáltatásadat-titkosítási** kulcsfontosságú a StorSimple-Eszközkezelő szolgáltatáshoz. 
+   5. Adja meg a **szolgáltatásadat-titkosítási** kulcsfontosságú a StorSimple-Eszközkezelő szolgáltatáshoz. 
 
-    ![Forrás adatainak tárház 1 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Forrás adatainak tárház 1 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-    Kattintson a **OK** végeztével. Ez menti az adattárat. A StorSimple-Eszközkezelő más definíciók újból ezeket a paramétereket újbóli megadása nélkül. Kattintás után néhány másodpercet vesz igénybe **OK** a legördülő listában jelenik meg az újonnan létrehozott forrás adattár számára.
+      Kattintson a **OK** végeztével. Ez menti az adattárat. A StorSimple-Eszközkezelő más definíciók újból ezeket a paramétereket újbóli megadása nélkül. Kattintás után néhány másodpercet vesz igénybe **OK** a legördülő listában jelenik meg az újonnan létrehozott forrás adattár számára.
 
 7. A legördülő listából a **adattár**, válassza ki a létrehozott adattár. 
 
-    1. Adja meg a StorSimple 8000 sorozatú eszköz, amely tartalmazza az Önt érdeklő adatok nevét.
+   1. Adja meg a StorSimple 8000 sorozatú eszköz, amely tartalmazza az Önt érdeklő adatok nevét.
 
-    2. Adja meg, amely rendelkezik az Önt érdeklő adatok StorSimple eszközön levő kötet nevével.
+   2. Adja meg, amely rendelkezik az Önt érdeklő adatok StorSimple eszközön levő kötet nevével.
 
-    3. Az a **szűrő** alszakaszt, adja meg a gyökérkönyvtárban, amely tartalmazza a az Önt érdeklő adatok _\MyRootDirectory\Data_ formátumban. Meghajtó-betűjelek, például _\C:\Data_ nem támogatottak. Bármely fájlszűrők is hozzáadhat.
+   3. Az a **szűrő** alszakaszt, adja meg a gyökérkönyvtárban, amely tartalmazza a az Önt érdeklő adatok _\MyRootDirectory\Data_ formátumban. Meghajtó-betűjelek, például _\C:\Data_ nem támogatottak. Bármely fájlszűrők is hozzáadhat.
 
-    4. A data transformation szolgáltatás működik, az adatokat az Azure-ban közzétett, a pillanatképek keresztül. Ez a feladat futtatásakor lehet váltani, készítsen biztonsági mentést, minden alkalommal, amikor a feladat fut (a legfrissebb adatokat dolgozhat) vagy a felhőben használja a legutóbbi meglévő biztonsági mentés (ha dolgozik, az archivált adatokat).
+   4. A data transformation szolgáltatás működik, az adatokat az Azure-ban közzétett, a pillanatképek keresztül. Ez a feladat futtatásakor lehet váltani, készítsen biztonsági mentést, minden alkalommal, amikor a feladat fut (a legfrissebb adatokat dolgozhat) vagy a felhőben használja a legutóbbi meglévő biztonsági mentés (ha dolgozik, az archivált adatokat).
 
-    5. Kattintson az **OK** gombra.
+   5. Kattintson az **OK** gombra.
 
-    ![Forrás adatainak tárház 2 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Forrás adatainak tárház 2 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
 8. Ezután a céladatbázisban adatokat kell megadni. Válassza ki az adott fiókban blobokba helyezi a fájlokat a storage-fiókok. A legördülő listában válassza ki a **új hozzáadása** , majd **beállításainak konfigurálása**.
 

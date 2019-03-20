@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 92cee8e95888d5084165413ce49d4c884e476e71
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571439"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874881"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: A Service Fabric-alkalmazások egy Java Web API kezelőfelületi szolgáltatás és a egy állapotalapú háttérszolgáltatás létrehozása
 
@@ -76,6 +76,7 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét. Felhaszn�
     ![Az Eclipse Package Explorer folytatja az alkalmazás létrehozását]( ./media/service-fabric-tutorial-create-java-app/eclipse-package-explorer.png)
 
 A táblázat röviden ismerteti az előző képernyőképen látható Package Explorer összes elemét. 
+
 | **Package Explorer-elem** | **Leírás** |
 | --- | --- |
 | PublishProfiles | A helyi és Azure-beli Service Fabric-fürtök profilrészleteit ismertető JSON-fájlokat tartalmazza. A fájlok tartalmát a beépülő modul használja az alkalmazás üzembe helyezésekor. |
@@ -103,7 +104,7 @@ Adja hozzá az állapotmentes szolgáltatás által renderelhető felhasználói
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <body>
 
@@ -911,7 +912,7 @@ Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön val�
 
 4. Az Eclipse Package Explorerében kattintson a jobb gombbal a **Voting** projektre, és kattintson a **Service Fabric -> Publish Application …** (Service Fabric -> Alkalmazás közzététele…) elemre. 
 5. A **Publish Application** (Alkalmazás közzététele) ablakban válassza ki a **Local.json** elemet a legördülő listából, és kattintson a **Publish** (Közzététel) elemre.
-6. Lépjen a webböngészőjébe, és nyissa meg a **http://localhost:8080** címet, ahol megtekintheti a helyi Service Fabric-fürtön futó alkalmazását. 
+6. Nyissa meg a webböngészőt és `http://localhost:8080` a helyi Service Fabric-fürt a futó alkalmazás megtekintéséhez. 
 
 ## <a name="next-steps"></a>További lépések
 

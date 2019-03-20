@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 8bfa9f2fcdc3047ed5541db058f670a4bc464164
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449903"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007179"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
 Ez a cikk a hibaelhárítási információk védelme érdekében az SQL Server virtuális gépek az Azure-ban (előzetes verzió).
 
-## <a name="public-preview-limitations"></a>Nyilvános előzetes verzió korlátozásai
+## <a name="feature-consideration-and-limitations"></a>A szolgáltatás szempontok és korlátozások
 
-Megtekintheti a nyilvános előzetes verzió korlátozásai, tekintse meg a cikket [az Azure-beli SQL Server-adatbázis biztonsági mentése](backup-azure-sql-database.md#preview-limitations).
+A szolgáltatás figyelmet megtekintése, tekintse meg a cikket [Azure virtuális gépeken futó SQL Server backup](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Az SQL Server engedélyei
 
@@ -37,7 +37,7 @@ Az alábbi táblázatokban szereplő információk segítségével hibaelhárít
 
 | Severity | Leírás | A lehetséges okok | Javasolt művelet |
 |---|---|---|---|
-| Figyelmeztetés | Ez az adatbázis jelenlegi beállításai nem támogatják bizonyos típusú biztonsági mentési típusok szerepelnek a tartozó házirend. | <li>**A master DB**: Csak a teljes adatbázis biztonsági mentési művelet hajtható végre a főadatbázisban; sem **különbözeti** biztonsági mentési, sem tranzakciós **naplók** biztonsági mentés is előfordulhatnak. </li> <li>Bármilyen adatbázishoz **egyszerű helyreállítási modellt** nem engedélyezi a tranzakció **naplók** kell venni a biztonsági mentés.</li> | Módosítsa az adatbázis beállításait, úgy, hogy a házirend az összes biztonsági mentési típusok támogatottak. Azt is megteheti módosítsa az aktuális házirend csak a támogatott biztonsági mentési típusok tartalmazza. Ellenkező esetben a nem támogatott biztonsági mentési típusok kihagyja az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat alkalmi biztonsági mentés sikertelen lesz.
+| Figyelmeztetés | Ez az adatbázis jelenlegi beállításai nem támogatják bizonyos típusú biztonsági mentési típusok szerepelnek a tartozó házirend. | <li>**A master DB**: Csak a teljes adatbázis biztonsági mentési művelet hajtható végre a főadatbázisban; sem **különbözeti** biztonsági mentési, sem tranzakciós **naplók** biztonsági mentésre lehetőség. </li> <li>Bármilyen adatbázishoz **egyszerű helyreállítási modellt** nem engedélyezi a tranzakció **naplók** kell venni a biztonsági mentés.</li> | Módosítsa az adatbázis beállításait, úgy, hogy a házirend az összes biztonsági mentési típusok támogatottak. Azt is megteheti módosítsa az aktuális házirend csak a támogatott biztonsági mentési típusok tartalmazza. Ellenkező esetben a nem támogatott biztonsági mentési típusok kihagyja az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat alkalmi biztonsági mentés sikertelen lesz.
 
 
 ## <a name="backup-failures"></a>Biztonsági mentési hibák
@@ -136,6 +136,35 @@ A következő hiba kód is konfigurálja biztonsági mentési hibák.
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Automatikus védelmi leképezésének vagy eltávolították, vagy nem több nem érvényes. | SQL-példány automatikus védelmének engedélyezésekor **biztonsági mentés konfigurálása** feladatok futtatása a példányon található összes adatbázis. Ha az automatikus védelem letiltásához, amíg a feladatok futnak, akkor a **folyamatban** feladatok törölve lesznek az erről a hibakódról. | Engedélyezze az automatikus védelem még egyszer, a fennmaradó adatbázisok védelméhez. |
+
+## <a name="re-registration-failures"></a>Újraregisztrálás hibák
+
+Egy vagy több keresése a [tünetek](#symptoms) a regisztrálja újra a művelet elindítása előtt.
+
+### <a name="symptoms"></a>Probléma
+
+* Minden művelet, mint a biztonsági mentés, visszaállítás, és konfigurálja a biztonsági mentés sikertelen a virtuális gépen a következő hibakódok egyikét: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**
+* A **biztonsági mentés állapota** a biztonsági mentés elem jelenik-e meg **nem érhető el**. Bár Ön kell zárja ki az összes a más okokból is eredményezhet egy:
+
+  * Nincs engedélye a virtuális gép biztonsági mentési kapcsolódó műveletek végrehajtásához  
+  * Virtuális gép le lett állítva miatt, amelyek biztonsági mentések nem kerül sor
+  * Hálózati problémák  
+
+    ![Regisztrálja újra a virtuális gép](./media/backup-azure-sql-database/re-register-vm.png)
+
+* Always on rendelkezésre állási csoport, esetén a biztonsági mentések kezdenek mutatkozni, után módosította a biztonsági mentési preferenciáját, vagy ha túl nagy volt a feladatátvétel
+
+### <a name="causes"></a>Okok
+Ezek a problémák merülhetnek fel a következő okok legalább egyike miatt:
+
+  * Kiterjesztés törölve lett vagy eltávolítása a portál 
+  * Bővítmény el lett távolítva a **Vezérlőpult** alatt a virtuális gép **programok módosítása vagy eltávolítása** felhasználói felület
+  * Virtuális gép időbeli helyben (eke) t visszaállítással vissza lett állítva
+  * Virtuális gép le lett állítva, ami miatt a bővítmény konfigurációja, lejárt hosszabb ideig
+  * Virtuális gép törölve lett, és a egy másik virtuális gép létrejött, ezzel a névvel, és ugyanazt az erőforráscsoportot, a törölt virtuális gép
+  * Az egyik rendelkezésre állási csoport csomópontot nem kapta meg a teljes biztonsági mentési konfiguráció, ez akkor fordulhat elő, vagy a rendelkezésre állási csoport regisztrációját, hogy a tároló időpontjában, vagy ha egy új csomópont hozzáadása  <br>
+    A fenti esetekben ajánlott művelet regisztrálja újra a virtuális gép indításához. Ez a beállítás csak Powershellen keresztül érhető el, és hamarosan az Azure Portalon elérhető lesz.
+
 
 ## <a name="next-steps"></a>További lépések
 

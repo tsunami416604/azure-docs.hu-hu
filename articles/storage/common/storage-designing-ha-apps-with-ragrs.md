@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 256d709ac976736715f441ecde5eee22a6d86fa6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009083"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225824"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
@@ -123,7 +123,7 @@ Alapvetően két forgatókönyv közül választhat, fontolja meg, hogyan reagá
 
     Ebben a forgatókönyvben nincs rendszer teljesítményét, mert az olvasási kéréseket fog próbálja meg először az elsődleges végpont, várjon, amíg az időkorlát lejár, majd váltson át a másodlagos végpontra.
 
-Ebben az esetben meg kell határoznia, amely nincs az elsődleges végpont folyamatos problémáját, és küldése közvetlenül a másodlagos végpontnak küldött kérelmek beállításával olvassa a **LocationMode** tulajdonságot **SecondaryOnly** . Jelenleg is módosítania kell az alkalmazás csak olvasható módban történő futtatására. Ezt a módszert nevezik a [áramkör-megszakító minta](https://msdn.microsoft.com/library/dn589784.aspx).
+Ebben az esetben meg kell határoznia, amely nincs az elsődleges végpont folyamatos problémáját, és küldése közvetlenül a másodlagos végpontnak küldött kérelmek beállításával olvassa a **LocationMode** tulajdonságot **SecondaryOnly** . Jelenleg is módosítania kell az alkalmazás csak olvasható módban történő futtatására. Ezt a módszert nevezik a [áramkör-megszakító minta](/azure/architecture/patterns/circuit-breaker).
 
 ### <a name="update-requests"></a>Szabályzatfrissítési kérések
 

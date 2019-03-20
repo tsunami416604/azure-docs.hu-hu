@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a2c416df849f59040985524394d2caa3399d910
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888706"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Brightidea
 
@@ -163,18 +163,18 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Brightidea, hajtsa v
     
     ![Brightidea konfiguráció](./media/brightidea-tutorial/configure4.png)
     
-     * Adja meg a **SAML profilnév** mint például: `Azure Ad SSO`
+   * Adja meg a **SAML profilnév** mint például: `Azure Ad SSO`
     
-     * A **metaadatok feltöltése**, kattintással válassza ki a fájlt, és az Azure-portálról letöltött metaadatfájl feltöltése.
+   * A **metaadatok feltöltése**, kattintással válassza ki a fájlt, és az Azure-portálról letöltött metaadatfájl feltöltése.
 
      > [!NOTE]
      > A metaadat-fájl, a többi mező feltöltése után **egyszeri bejelentkezési szolgáltatás, identitásszolgáltató kibocsátója, töltse fel nyilvános kulcs** automatikusan kitölti.
 
-     * Az a **E-mail** szövegmezőbe írja be az értéket, `mail`.
+   * Az a **E-mail** szövegmezőbe írja be az értéket, `mail`.
      
-     * Az a **képernyő nevét** szövegmezőbe írja be az értéket, `givenName`.
+   * Az a **képernyő nevét** szövegmezőbe írja be az értéket, `givenName`.
      
-     * Kattintson a **módosítások mentése**.  
+   * Kattintson a **módosítások mentése**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -194,7 +194,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -11,12 +11,12 @@ ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: fa156beba6d5eb1f7e10529d7f1287ab9a148024
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840562"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "57576565"
 3. **Helyezze üzembe webszolgáltatásként, amely**. A pontozó kísérlet során egy Azure-webszolgáltatásként teheti közzé. Adatokat küldeni a modell használatával a webes szolgáltatás végpontját, és az eredmény előrejelzéseket kap a modellből.
 
 ### <a name="data-factory-and-machine-learning-together"></a>A Data Factory és a gépi tanulás együtt
-Az Azure Data Factory lehetővé teszi, hogy könnyedén hozhat létre, melyek egy közzétett [az Azure Machine Learning] [azure-gépi tanulási] webes szolgáltatást prediktív elemzési folyamatok. Használatával a **kötegelt végrehajtási tevékenység** az Azure Data Factory-folyamatot, az Azure Machine Learning studio-webszolgáltatás, hogy előrejelzéseket végezzen az adatok a Batch szolgáltatásban lévő hívhatók meg.
+Az Azure Data Factory lehetővé teszi, hogy egyszerűen hozzon létre egy közzétett használó folyamatok [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning) webszolgáltatás prediktív elemzőeszközöket. Használatával a **kötegelt végrehajtási tevékenység** az Azure Data Factory-folyamatot, az Azure Machine Learning studio-webszolgáltatás, hogy előrejelzéseket végezzen az adatok a Batch szolgáltatásban lévő hívhatók meg.
 
 Az idő múlásával a prediktív modelleket a az Azure Machine Learning studio kísérletek pontozási kell kell retrained új bemeneti adatkészletek használatával. A következő lépések végrehajtásával egy modellt a Data Factory-folyamatok is újratanítása:
 

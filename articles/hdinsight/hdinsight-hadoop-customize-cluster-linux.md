@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313279"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200684"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Linux-alapú HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -157,7 +157,6 @@ HDInsight parancsprogramokkal történő telepítését a következő összetev�
 | Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Lásd: [további tárfiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
 | A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Lásd: [telepítése és használata a Hue HDInsight hadoop-fürtök](hdinsight-hadoop-hue-linux.md). |
 | A Presto telepítése |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Lásd: [telepítése és használata a HDInsight Hadoop-alapú Presto fürtök](hdinsight-hadoop-install-presto.md). |
-| A Solr telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh`. Lásd: [telepítése és használata az Apache Solr HDInsight hadoop-fürtök](hdinsight-hadoop-solr-install-linux.md). |
 | A Giraph telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Lásd: [Apache Giraph telepítése HDInsight hadoop-fürtök](hdinsight-hadoop-giraph-install-linux.md). |
 | Az előzetes betöltés Hive-kódtárak |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Lásd: [egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor](hdinsight-hadoop-add-hive-libraries.md). |
 | Mono telepítése vagy frissítése | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`. Lásd: [telepítése vagy frissítése a HDInsight Mono](hdinsight-hadoop-install-mono.md). |
@@ -410,9 +409,9 @@ Kétféle típusú nyílt forráskódú összetevők a HDInsight szolgáltatásb
 
 * **Beépített összetevők**. Ezeket az összetevőket a HDInsight-fürtökön az előtelepített, és adja meg a fürt fő funkciói. A következő összetevők ebbe a kategóriába tartoznak:
 
-    * [Az Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) erőforrás-kezelő.
-    * A Hive query language [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
-    * [Az Apache Mahout](https://mahout.apache.org/). 
+  * [Az Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) erőforrás-kezelő.
+  * A Hive query language [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+  * [Az Apache Mahout](https://mahout.apache.org/). 
     
     Kiszolgálófürt-összetevők teljes listája megtalálható [Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?](hdinsight-component-versioning.md)
 
@@ -524,7 +523,6 @@ Ez alól két kivétel van:
 ## <a name="next-steps"></a>További lépések
 
 * [Parancsfájl művelet-parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install-linux.md)
 * [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
 * [Adjon hozzá további tárterületet HDInsight-fürthöz](hdinsight-hadoop-add-storage.md)
 

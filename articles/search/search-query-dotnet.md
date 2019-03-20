@@ -1,28 +1,28 @@
 ---
 title: A kód a .NET SDK-t – Azure Search-index lekérdezése
 description: C#mintakód az Azure Search keresési lekérdezés létrehozásához. Keresési paraméterek hozzáadása a szűrés és rendezés a keresési eredmények.
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
 ms.custom: seodec2018
-ms.openlocfilehash: 5c89902da5e773c60c8e2694159ddeed874ecab2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 98a857ca0d3ecabc9deebcb177e3548ab02fd3b3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201449"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Az Azure Search-index lekérdezése a .NET SDK használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés](search-query-overview.md)
 > * [Portál](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
+> * [REST](search-create-index-rest-api.md)
 > 
 > 
 

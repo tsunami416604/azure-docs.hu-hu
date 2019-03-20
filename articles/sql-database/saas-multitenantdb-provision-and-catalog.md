@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562895"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835781"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Egy több-bérlős Azure SQL-szilánkokra osztott adatbázis használó SaaS-alkalmazás az új bérlők kiépítése és katalógusba
 
@@ -237,7 +237,7 @@ A bérlők és a megfelelő adatbázist, az egyes teljes listáját a katalógus
 - A bérlő nevét a bérlők tábla tárolódik.
 - Az adatbázis nevét a Szilánkkezelési táblákban tárolódnak.
 
-1. Az SQL Server Management Studio (SSMS), a bérlők kiszolgáló kapcsolódni **katalógus-MT\<felhasználói\>. database.windows.net**, bejelentkezéssel = **fejlesztői**, és a jelszó = **P@ssword1**
+1. Az SQL Server Management Studio (SSMS), a bérlők kiszolgáló kapcsolódni **katalógus-MT\<felhasználói\>. database.windows.net**, bejelentkezéssel = **fejlesztői**, és a jelszó =  **P\@ssword1**
 
     ![SSMS kapcsolat párbeszédpanel](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

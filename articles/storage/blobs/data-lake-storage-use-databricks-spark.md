@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 422bf9a3fb4e3168857a78f4f50ac771ef80c6a6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7f712bcf3e82005480d4960484cb0ea3ad51fbff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766461"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226759"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
@@ -38,16 +38,16 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 * Az AzCopy v10 telepítse. Lásd: [adatok áthelyezése az AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-*  Hozzon létre egy egyszerű szolgáltatást. Lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Hozzon létre egy egyszerű szolgáltatást. Lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-   Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
+  Van néhány adott tudnivaló, mivel ebben a cikkben hajtsa végre a lépéseket kell.
 
-   :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Storage-Blobadatok Közreműködője** szerepkört a szolgáltatásnévhez.
+  :heavy_check_mark: A lépések végrehajtásakor a [alkalmazások szerepkörhöz rendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszt a cikk, ügyeljen arra, hogy rendelje hozzá a **Storage-Blobadatok Közreműködője** szerepkört a szolgáltatásnévhez.
 
-   > [!IMPORTANT]
-   > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
+  > [!IMPORTANT]
+  > Ellenőrizze, hogy a szerepkört a Data Lake Storage Gen2 storage-fiók hatókörében. Szerepkör hozzárendelése a szülő erőforráscsoportba vagy előfizetésbe, de kap engedélyekkel kapcsolatos hibákat addig, amíg azokat a szerepkör-hozzárendeléseket a tárfiókhoz való propagálása.
 
-   :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
+  :heavy_check_mark: A lépések végrehajtásakor a [értékek beolvasása bejelentkezés](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában a cikk, illessze be a bérlő Azonosítóját, Alkalmazásazonosító és hitelesítési kulcs értékeit egy szövegfájlba. Kell azokat, hamarosan.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -147,12 +147,12 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
 
    * A `storage-account-name` az Azure Data Lake Storage Gen2 storage-fiók neve.
 
-    > [!NOTE]
-    > Éles környezetben, fontolja meg, a hitelesítési kulcs tárolása az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a hitelesítési kulcs helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.
+   > [!NOTE]
+   > Éles környezetben, fontolja meg, a hitelesítési kulcs tárolása az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a hitelesítési kulcs helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.
 
 19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 
-    Ez a jegyzetfüzet tartsa nyitva, mivel a hozzáadandó parancs azt később.
+   Ez a jegyzetfüzet tartsa nyitva, mivel a hozzáadandó parancs azt később.
 
 ## <a name="ingest-data"></a>Adatok betöltése
 
@@ -182,7 +182,7 @@ Az AzCopy használata adatokat másolni a *.csv* fájlt a Data Lake Storage Gen2
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>CSV konvertálása parquetté a Databricks-jegyzetfüzet használatával
 
-A korábban létrehozott jegyzetfüzet adjon hozzá egy új cellát, és illessze be a következő kódot a cella. Cserélje le a `storage-account-name` Ez a kódrészlet nevű mappa, a csv-fájlt, hogy mentette a helyőrző értékét.
+A korábban létrehozott jegyzetfüzet adjon hozzá egy új cellát, és illessze be a következő kódot a cella. 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -284,5 +284,5 @@ Amikor szükség van rájuk már nem, törölje az erőforráscsoportot és az �
 
 ## <a name="next-steps"></a>További lépések
 
-[!div class="nextstepaction"] 
+> [!div class="nextstepaction"] 
 > [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)

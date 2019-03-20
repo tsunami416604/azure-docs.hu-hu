@@ -3,8 +3,8 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203627"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -37,7 +37,7 @@ Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hiteles
 ## <a name="add-authentication-components"></a>Adja hozzá a hitelesítés összetevői
 
 1. A Visual Studióban: `Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Az *OWIN közbenső szoftver NuGet-csomagokat* hozzáadásához írja az alábbiakat a Package Manager Console (Csomagkezelő konzol) ablakba:
+2. Az *OWIN közbenső szoftver NuGet-csomagjai* hozzáadásához írja az alábbiakat a Package Manager Console (Csomagkezelő konzol) ablakba:
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -56,7 +56,7 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
 > [!TIP]
 > Ha a projekt gyökérmappája nem tartalmazza a `Startup.cs` fájlt:
 > 1. Kattintson a jobb gombbal a projektmappa gyökérkönyvtárába a: > `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Adja neki a `Startup.cs` nevet
+> 2. Adja neki a `Startup.cs` nevet.
 >
 >> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, és nem egy szabványos C#-osztály. Ehhez ellenőrizze, hogy látja-e a következőt a névtér fölött: `[assembly: OwinStartup(typeof({NameSpace}.Startup))]`.
 

@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451944"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850043"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
-Ez az útmutató bemutatja, hogyan lehet a csoportos adatelemzési folyamat használatához egy teljes körű egy forgatókönyvben egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) szeretné tárolni, ismerje meg, a visszafejtés funkciót, és le a mintaadatokat a nyilvánosan elérhető közül[ Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészletek. Az Azure Machine Learning használ a bináris osztályozási modell létrehozása az adatokon. Azt is bemutatja, hogyan tehet közzé egyet ezek a modellek webszolgáltatásként.
+Ez az útmutató bemutatja, hogyan lehet a csoportos adatelemzési folyamat használatához egy teljes körű egy forgatókönyvben egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) szeretné tárolni, ismerje meg, a visszafejtés funkciót, és le a mintaadatokat a nyilvánosan elérhető közül[ Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészletek. Az Azure Machine Learning használ a bináris osztályozási modell létrehozása az adatokon. Azt is bemutatja, hogyan tehet közzé egyet ezek a modellek webszolgáltatásként.
 
 Akkor is megjelenik ez az útmutató a feladatok elvégzését az IPython notebook használatával. Próbálja ki ezt a módszert szeretné felhasználók konzultáljon az [Hive ODBC-kapcsolattal Criteo forgatókönyv](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) témakör.
 
 ## <a name="dataset"></a>Criteo adatkészlet leírása
-Az adatok körülbelül 370 GB-os gzip formátumban tömörített TSV-fájlok (tömörítetlen ~1.3TB), egy kattintással előrejelzési adatkészlet Criteo 4.3 milliárdnál több rekordok pedig sorkulcsként. 24 napnyi származik által rendelkezésre bocsátott adatok kattintson [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/). Az adatszakértők kényelmi célokat szolgál a számunkra, hogy kísérletezzen a rendelkezésre álló adatok kicsomagolt lett.
+Az adatok körülbelül 370 GB-os gzip formátumban tömörített TSV-fájlok (tömörítetlen ~1.3TB), egy kattintással előrejelzési adatkészlet Criteo 4.3 milliárdnál több rekordok pedig sorkulcsként. 24 napnyi származik által rendelkezésre bocsátott adatok kattintson [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/). Az adatszakértők kényelmi célokat szolgál a számunkra, hogy kísérletezzen a rendelkezésre álló adatok kicsomagolt lett.
 
 Ez az adatkészlet minden rekord 40 oszlopokat tartalmazza:
 
@@ -68,7 +68,7 @@ A prediktív elemzési megoldások fejlesztése a HDInsight-fürtök három lép
 3. [Hozzon létre egy Azure Machine Learning studio-munkaterület](../studio/create-workspace.md): Az Azure Machine Learning-munkaterület szolgál a machine learning-modellek létrehozása után egy kezdeti adatfeltárás és a HDInsight-fürtön mintavételi le.
 
 ## <a name="getdata"></a>Első és a egy nyilvános forráskódú felhasználását
-A [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészlet sorrendvezérlése előtt a hivatkozásra kattint, elfogadja a használati feltételeket és a egy nevet. Erre pillanatkép itt jelenik meg:
+A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészlet sorrendvezérlése előtt a hivatkozásra kattint, elfogadja a használati feltételeket és a egy nevet. Erre pillanatkép itt jelenik meg:
 
 ![Criteo feltételek elfogadása](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
@@ -306,7 +306,7 @@ Ez eredményez:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Ne feledje, hogy Col15 19M egyedi értékeket! "Egy gyakori kódolási" naiv eljárások kódolása ilyen nagy dimenziós kategorikus változók használata nem megvalósítható. Különösen hatékony, robusztus technika nevű [tanulás az Counts](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) probléma hatékonyan amelyek ismertetése, és találja meg.
+Ne feledje, hogy Col15 19M egyedi értékeket! "Egy gyakori kódolási" naiv eljárások kódolása ilyen nagy dimenziós kategorikus változók használata nem megvalósítható. Különösen hatékony, robusztus technika nevű [tanulás az Counts](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) probléma hatékonyan amelyek ismertetése, és találja meg.
 
 Végül tekintse meg néhány más kategorikus oszlopok, valamint az egyedi értékek száma. A tartalmát [minta&#95;hive&#95;criteo&#95;egyedi&#95;értékek&#95;több&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) vannak:
 
@@ -405,10 +405,10 @@ Ez készen áll a lefelé a mintavételezett train használhatja, és tesztelje 
 Azure Machine Learning, amely kiterjed a count táblázat áthelyezése előtt van egy utolsó fontos összetevő. A következő alárendelt szakaszban a count táblázatban ismertetett néhány részletet.
 
 ## <a name="count"></a> Tömören összefoglalja a count táblán
-Láthatta, számos kategorikus változót kell egy nagyon nagy dimenziói. A forgatókönyv egy hatékony módszer nevű [tanulás az Counts](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) kódolása ezekre a változókra olyan hatékony, robusztus módon jelennek meg. További információt az ezzel a technikával a megadott hivatkozás van.
+Láthatta, számos kategorikus változót kell egy nagyon nagy dimenziói. A forgatókönyv egy hatékony módszer nevű [tanulás az Counts](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) kódolása ezekre a változókra olyan hatékony, robusztus módon jelennek meg. További információt az ezzel a technikával a megadott hivatkozás van.
 
 [!NOTE]
->Ez az útmutató célja nagy dimenziós kategorikus funkciók kompakt ábrázolását előállításához száma táblák használatával. Ez nem az egyetlen módszer kategorikus szolgáltatások kódolása További információ az egyéb technikák érdekelt felhasználók megtekinthet [egy-ritkáról gyakori elérésű-encoding](http://en.wikipedia.org/wiki/One-hot) és [szolgáltatáskivonatolás](http://en.wikipedia.org/wiki/Feature_hashing).
+>Ez az útmutató célja nagy dimenziós kategorikus funkciók kompakt ábrázolását előállításához száma táblák használatával. Ez nem az egyetlen módszer kategorikus szolgáltatások kódolása További információ az egyéb technikák érdekelt felhasználók megtekinthet [egy-ritkáról gyakori elérésű-encoding](https://en.wikipedia.org/wiki/One-hot) és [szolgáltatáskivonatolás](https://en.wikipedia.org/wiki/Feature_hashing).
 >
 
 A count adatok-összeállítási táblázatok száma, használja az adatok a mappa nyers és száma. A modellezés szakaszban felhasználó megjelenik, hogyan hozhat létre, előzmények nélküli kategorikus funkciók száma táblázatokra vagy másik lehetőségként egy előre elkészített száma tábla saját explorations használandó. A következőkben amikor a "beépített száma táblák" hivatkozunk, alatt azt értjük, amelyek adtak meg a count táblák használata. Ezek a táblázatok el részletes utasításokat a következő szakaszban találhatók.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100411"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az Azure virtuális Gépen RDP általános hiba elhárítása
 
@@ -65,7 +65,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 ### <a name="serial-console"></a>Soros konzol
 
-#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: Open CMD-példány a soros konzol
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>1. lépés: A soros konzol CMD példány megnyitása
 
 1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
 
@@ -77,7 +77,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
    ch -si 1
    ```
 
-#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. lépés: Ellenőrizze az értékeket az RDP-beállításkulcsokat:
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>2. lépés: Ellenőrizze az RDP-beállításkulcsok értékeit:
 
 1. Annak ellenőrzése, hogy az RDP által le van tiltva a szabályzatokat.
 
@@ -164,17 +164,17 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
 Ha a probléma továbbra is történik, helyezze át a 2. lépés.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: Távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
 
 További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: Új RDP-figyelő
+#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
 
 További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
 
 ### <a name="offline-repair"></a>Offline javítása
 
-#### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: Távoli asztali bekapcsolása
+#### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: Kapcsolja be a távoli asztal
 
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
 2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
@@ -229,16 +229,16 @@ További információkért lásd: [a távoli asztal gyakran leválasztja az Azur
 
       A házirend definitions\Windows összetevők\Távoli Desktop szolgáltatások\Távoli asztali munkamenet Host\Connections\Allow felhasználók távolról kapcsolódni a távoli asztali szolgáltatások használatával
   
-7. Válassza le a lemezt a virtuális gép mentési.
-8. [Hozzon létre egy új virtuális Gépet a lemezről](../windows/create-vm-specialized.md).
+1. Válassza le a lemezt a virtuális gép mentési.
+1. [Hozzon létre egy új virtuális Gépet a lemezről](../windows/create-vm-specialized.md).
 
 Ha a probléma továbbra is történik, helyezze át a 2. lépés.
 
-#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: Távoli asztali szolgáltatások engedélyezése
+#### <a name="step-2-enable-remote-desktop-services"></a>2. lépés: A távoli asztali szolgáltatások engedélyezése
 
 További információkért lásd: [távoli asztali szolgáltatások-beli virtuális gépen nem indítása](troubleshoot-remote-desktop-services-issues.md).
 
-#### <a name="step-3-reset-rdp-listener"></a>3. lépés: Új RDP-figyelő
+#### <a name="step-3-reset-rdp-listener"></a>3. lépés: RDP-figyelő alaphelyzetbe állítása
 
 További információkért lásd: [a távoli asztal gyakran leválasztja az Azure virtuális Gépen](troubleshoot-rdp-intermittent-connectivity.md).
 

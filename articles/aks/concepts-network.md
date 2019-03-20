@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 360caaec0033136ffa250d636864fbed8359b8ef
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175666"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -29,7 +29,7 @@ Ez a cikk az alapfogalmakat, az aks-ben az alkalmazások hálózati biztosító 
 
 Engedélyezi a hozzáférést az alkalmazások, illetve alkalmazás-összetevők kommunikálnak egymással, a Kubernetes virtuális hálózati absztrakciós réteget biztosít. Kubernetes-csomópontokon csatlakoztatva van egy virtuális hálózathoz, és megadhat podok bejövő és kimenő kapcsolat. A *kube-proxy* összetevő ezekre a hálózati funkciókat biztosít minden egyes csomóponton futnak.
 
-A Kubernetes *szolgáltatások* logikailag csoportosítják a podok lehetővé teszik a közvetlen hozzáférést egy IP-címe vagy DNS-nevet és a egy adott porton. Forgalom használatával is terjeszthető a *terheléselosztó*. Az alkalmazás forgalmának összetettebb útválasztását is elérhető a *bejövő tartományvezérlők*. Biztonság és a hálózati forgalmat a podok minden lehetséges a Kubernetes *hálózati házirendek*.
+A Kubernetes *szolgáltatások* logikailag csoportosítják a podok lehetővé teszik a közvetlen hozzáférést egy IP-címe vagy DNS-nevet és a egy adott porton. Forgalom használatával is terjeszthető a *terheléselosztó*. Az alkalmazás forgalmának összetettebb útválasztását is elérhető a *bejövő tartományvezérlők*. Biztonság és a hálózati forgalmat a podok minden lehetséges a Kubernetes *hálózati házirendek* (előzetes verzióban érhető el az aks-ben).
 
 Az Azure platform egyszerűbbé válik a virtuális hálózatkezelés az AKS-fürtök esetén is segít. Amikor létrehoz egy Kubernetes-terheléselosztó, az alapul szolgáló Azure load balancer erőforrás létrehozta és konfigurálta. Podok hálózati portok megnyitását, a megfelelő Azure-beli hálózati biztonsági csoport szabályai vannak konfigurálva. A HTTP-alkalmazások útválasztása, Azure is konfigurálhatja *külső DNS* új pontjaként konfiguráltak.
 
@@ -108,7 +108,7 @@ A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek esetébe
 
 Alapértelmezés szerint egy AKS-fürt összes podok küldhet és korlátozások nélkül forgalom fogadására. A nagyobb biztonság érdekében érdemes olyan szabályok, amelyek vezérlik a forgalmat. Háttéralkalmazásokhoz gyakran csak szükséges előtér-szolgáltatások érhetők el, vagy az adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
 
-A hálózati házirend egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. Hálózati biztonsági csoportok további nem podok AKS-csomópontok számára. A hálózati házirendek használata egy megfelelőbbek, natív módon a forgalom szabályozásához. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez.
+A hálózati házirend Kubernetes funkciója jelenleg előzetes verzióban érhető el az aks-ben, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. Hálózati biztonsági csoportok további nem podok AKS-csomópontok számára. A hálózati házirendek használata egy megfelelőbbek, natív módon a forgalom szabályozásához. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez.
 
 További információkért lásd: [podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom biztonságossá][use-network-policies].
 

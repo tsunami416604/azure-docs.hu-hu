@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3d9106fb682a370e18fc78d35ca31662bae44524
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310641"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080065"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -85,22 +85,22 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
 - IP cím vagy teljes Tartománynevét a proxykiszolgálóhoz meg kell *http://IPaddress* vagy *http://FQDN*.
 - Csak a HTTP-proxyk használata támogatott. A gyűjtő a HTTPS-alapú proxykiszolgálók nem támogatja.
 - Ha a proxykiszolgálóhoz, egy lehallgató proxy importálnia kell a proxy tanúsítvány a gyűjtő virtuális géphez.
-    1. A gyűjtő virtuális gép, lépjen a **Start menü** > **számítógép-tanúsítványok kezelése**.
-    2. A tanúsítványok eszközben alatt **tanúsítványok – helyi számítógép**, található **megbízható közzétevők** > **tanúsítványok**.
+  1. A gyűjtő virtuális gép, lépjen a **Start menü** > **számítógép-tanúsítványok kezelése**.
+  2. A tanúsítványok eszközben alatt **tanúsítványok – helyi számítógép**, található **megbízható közzétevők** > **tanúsítványok**.
 
-        ![Tanúsítványok eszköz](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![Tanúsítványok eszköz](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. A proxy tanúsítvány másolja a gyűjtő virtuális Gépen. Szüksége lehet szerzi be a hálózati rendszergazdával.
-    4. Dupla kattintással nyissa meg a tanúsítványt, és kattintson a **tanúsítvány telepítése**.
-    5. A Tanúsítványimportáló varázsló > Store helyét, válassza a **helyi gép**.
+  3. A proxy tanúsítvány másolja a gyűjtő virtuális Gépen. Szüksége lehet szerzi be a hálózati rendszergazdával.
+  4. Dupla kattintással nyissa meg a tanúsítványt, és kattintson a **tanúsítvány telepítése**.
+  5. A Tanúsítványimportáló varázsló > Store helyét, válassza a **helyi gép**.
 
-    ![Tanúsítványtár helye](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![Tanúsítványtár helye](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. Válassza ki **minden tanúsítvány tárolása ebben a tárolóban** > **Tallózás** > **megbízható közzétevők**. Kattintson a **Befejezés** importálhatja a tanúsítványt.
+  6. Válassza ki **minden tanúsítvány tárolása ebben a tárolóban** > **Tallózás** > **megbízható közzétevők**. Kattintson a **Befejezés** importálhatja a tanúsítványt.
 
-    ![Tanúsítványok tárolójában](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![Tanúsítványok tárolójában](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. Ellenőrizze, hogy a tanúsítvány importálása várt módon, és ellenőrizze, hogy az internetes kapcsolat az előfeltétel-ellenőrzés működik, a várt.
+  7. Ellenőrizze, hogy a tanúsítvány importálása várt módon, és ellenőrizze, hogy az internetes kapcsolat az előfeltétel-ellenőrzés működik, a várt.
 
 
 ### <a name="urls-for-connectivity"></a>URL-címeket a hálózati kapcsolatot

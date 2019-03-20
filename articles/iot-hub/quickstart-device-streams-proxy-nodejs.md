@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a737413f6692b4ee811d0590351a385552cc9a8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085575"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>Gyors útmutató: Az SSH vagy RDP keresztül az IoT Hub eszköz adatfolyamok használata a Node.js-proxyalkalmazást (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+A Microsoft Azure IoT Hub jelenleg támogatja az eszköz adatfolyamok, mint egy [előzetes verziójú funkció](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Az IoT Hub eszköz Streamek](./iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A rövid útmutató azt ismerteti, egy proxy futó Node.js alkalmazást Szolgáltatásoldali SSH és az RDP-t egy eszköz-adatfolyam felett az eszközre küldendő forgalom engedélyezéséhez végrehajtását. Lásd: [Itt](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp) áttekintését, a telepítés. A nyilvános előzetes verzióban Node.js SDK csak támogatja eszköz Streamek Szolgáltatásoldali. A rövid útmutató ennek eredményeképpen csak utasítások futtatásához a szolgáltatás helyi proxy terjed ki. Egy kísérő eszköz helyi proxy, amely kell futtatásakor [C rövid](./quickstart-device-streams-proxy-c.md) vagy [ C# rövid](./quickstart-device-streams-proxy-csharp.md) útmutatók.
 
@@ -32,6 +34,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+Előzetes verziójának eszköz Streamek jelenleg csak a az IoT-központok létrehozni a következő régiókban támogatott:
+
+  - **USA középső RÉGIÓJA**
+  - **USA középső RÉGIÓJA – EUAP**
 
 Ebben a rövid útmutatóban a szolgáltatás helyi alkalmazás futtatásához szükséges a Node.js 4.x.x vagy újabb verzióját a fejlesztői gépére.
 
@@ -75,7 +82,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     Jegyezze fel, a visszaadott érték, amely a következőhöz hasonló:
@@ -95,7 +102,7 @@ Ahogy korábban említettük, IoT Hub Node.js SDK-t csak támogatja az eszköz S
 Feltételezve, hogy a [eszköz helyi proxy](#run-the-device-local-proxy) van fut, az alábbi lépésekkel futtatása a Node.js-ben írt szolgáltatás helyi proxy.
 
 - A proxy, az eszközön futó környezeti változókként adja meg a szolgáltatás hitelesítő adatai, a cél eszköz azonosítója, ahol az SSH démon fut és a port számát.
-```
+  ```
   # In Linux
   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
   export STREAMING_TARGET_DEVICE="MyDevice"
@@ -105,11 +112,11 @@ Feltételezve, hogy a [eszköz helyi proxy](#run-the-device-local-proxy) van fut
   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
-```
-Az eszköz Azonosítóját és a kapcsolati karakterláncot a fenti értékek módosításához.
+  ```
+  Az eszköz Azonosítóját és a kapcsolati karakterláncot a fenti értékek módosításához.
 
 - Navigáljon a `Quickstarts/device-streams-service` a kicsomagolt projektet mappában, és futtassa a helyi szolgáltatási proxy.
-```
+  ```
   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
 
   # Install the preview service SDK, and other dependencies
@@ -118,7 +125,7 @@ Az eszköz Azonosítóját és a kapcsolati karakterláncot a fenti értékek m�
 
   # Run the service-local proxy application
   node proxy.js
-```
+  ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>Ssh-n keresztül az eszköz adatfolyamok az eszköz
 Linux rendszeren, SSH használatával futtassa `ssh $USER@localhost -p 2222` a terminálon. A Windows, használja a kedvenc SSH-ügyfél (például a putty. lépése).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 5687075b8b63755b8b04f8c8fd0d0706ec8e27bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774523"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200582"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -59,11 +59,12 @@ Minden virtuális hálózatnak – függetlenül attól, hogy társviszonyban á
 
 Ha a virtuális hálózatok mindkét összekapcsolási módszere konfigurálva van, a virtuális hálózatok közötti forgalom a társhálózati konfiguráción keresztül (vagyis az Azure gerinchálózatán keresztül) zajlik.
 
-Ha egyazon régióban lévő virtuális hálózatok között társhálózati viszony van, a virtuális társhálózatban működő átjáró is konfigurálható átviteli pontként a helyi hálózat felé. Ebben az esetben a távoli átjárót használó virtuális hálózatnak nem lehet saját átjáróra. Egy virtuális hálózatnak csak egy átjárója lehet. Az átjáró lehet helyi vagy távoli (virtuális társhálózatban működő), amint a következő képen látható:
+Ha két virtuális hálózat között társhálózati viszony van, a virtuális társhálózatban működő átjáró is konfigurálható átviteli pontként a helyi hálózat felé. Ebben az esetben a távoli átjárót használó virtuális hálózatnak nem lehet saját átjáróra. Egy virtuális hálózatnak csak egy átjárója lehet. Az átjáró lehet helyi vagy távoli (virtuális társhálózatban működő), amint a következő képen látható:
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/figure04.png)
 
-Az átjáróval történő adatátvitel nem támogatott, ha olyan virtuális hálózatok állnak egymással társviszonyban, amelyek eltérő régiókban lettek létrehozva. Ahhoz, hogy az átjáróval történő adatátvitel működjön, a társviszonyban álló virtuális hálózatoknak ugyanabban a régióban kell lenniük. (Resource Manager és Klasszikus modell), különböző üzembehelyezési modellel létrehozott virtuális hálózatok közötti átjárói átvitel akkor támogatott, csak ha az átjáró (VPN- vagy ExpressRoute) a virtuális hálózatban (Resource Manager). További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Átjárói átvitel virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének (előzetes verzió) is támogatott. Távoli átjárók használata, vagy átjárótranzit engedélyezése a globális virtuális társhálózatok előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el.
+Átjárói átvitel (Resource Manager és Klasszikus modell) különböző üzembehelyezési modellel létrehozott virtuális hálózatok között csak akkor, ha az átjáró a virtuális hálózatban (Resource Manager) nem támogatott. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Ha két, ugyanazon az Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatot állítanak társviszonyba, akkor a társhálózaton (vagyis az Azure gerinchálózatán) keresztül áramlik közöttük a forgalom. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Közös átjárót is használhat, és átvitel konfigurálásával létesíthet kapcsolatot a helyszíni rendszerrel.
 
@@ -78,8 +79,8 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
-- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatása mindkét, virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik. 
-- Nem használhat távoli átjárókat, és nem engedélyezheti az átjárói átvitelt. A távoli átjárók használatához vagy az átjárói átvitel engedélyezéséhez a társított virtuális hálózatoknak ugyanabban a régióban kell lenniük.
+- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatja a globális virtuális társhálózatok létesítésének létezik.
+- Távoli átjárók használata, vagy átjárótranzit engedélyezése a globális virtuális társhálózatok előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el.
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 

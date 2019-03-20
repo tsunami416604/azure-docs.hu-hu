@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f66101d9847c57c5e078c3484a243e7b38823f53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094426"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001785"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows virtuális gép az Amazon Web Services (AWS) Azure virtuális gép áthelyezése
 
@@ -46,7 +46,7 @@ Ez a cikk ismerteti, hogy egyetlen virtuális gép áthelyezése az AWS-től az 
 
 ## <a name="export-and-download-the-vhd"></a>Exportálás, és töltse le a VHD-t 
 
-Exportálja az EC2-példánynak az Amazon S3 gyűjtőt a virtuális merevlemez. Az Amazon dokumentációs cikk lépéseit követve [exportálása egy példányt, mint egy virtuális gép használata virtuális gép importálási/exportálási](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) EC2-példány egy VHD-fájl exportálása parancsot. 
+Exportálja az EC2-példánynak az Amazon S3 gyűjtőt a virtuális merevlemez. Az Amazon dokumentációs cikk lépéseit követve [exportálása egy példányt, mint egy virtuális gép használata virtuális gép importálási/exportálási](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) EC2-példány egy VHD-fájl exportálása parancsot. 
 
 A megadott Amazon S3 gyűjtő rendszer menti az exportált VHD-fájl. Az alapszintű szintaxistól exportálása a VHD-t az alábbi érték csak cserélje le a helyőrző szöveget <brackets> adataival.
 
@@ -55,7 +55,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Miután exportálta a VHD-t, kövesse a [Hogyan tölthetem le egy objektumot, egy S3 gyűjtőt?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) töltheti le a VHD-fájlt az S3 gyűjtőt. 
+Miután exportálta a VHD-t, kövesse a [Hogyan tölthetem le egy objektumot, egy S3 gyűjtőt?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) töltheti le a VHD-fájlt az S3 gyűjtőt. 
 
 > [!IMPORTANT]
 > Az AWS díjak adatátviteli díjak letöltéséhez a VHD-t. Lásd: [Amazon S3 díjszabás](https://aws.amazon.com/s3/pricing/) további információt.

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67cda814925c3e5b974e4580594724c890851f64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176205"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089233"
 ---
 # <a name="json-claims-transformations"></a>JSON-átalakításokat jogcímek
 
@@ -52,11 +52,11 @@ A következő példában a jogcímek átalakításáról ki kell olvasni az `ema
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Személy"}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Személy"}
 - A bemeneti paraméter:
     - **claimToExtract**: emailAddress
 - Kimeneti jogcímek: 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -100,18 +100,18 @@ A következő példában a jogcímek átalakításáról kinyeri a következő j
 ```    
 
 - A bemeneti jogcímek:
-    - **jsonSourceClaim**: [{"key": "email", "value": "someone@example.com"}, {"key": "displayName", "value": "Személy"}, {"key": "membershipNum", "value": 6353399}, {"key": "active", "value": true}, {"key": "születési", "value": "1980-09-23T00:0 [[[0:00Z"}]
+  - **jsonSourceClaim**: [{"key": "email", "value": "someone@example.com"}, {"key": "displayName", "value": "Személy"}, {"key": "membershipNum", "value": 6353399}, {"key": "active", "value": true}, {"key": "születési", "value": "1980-09-23T00:0 [[[0:00Z"}]
 - Bemeneti paraméterek:
     - **errorOnMissingClaims**: False (hamis)
     - **includeEmptyClaims**: False (hamis)
     - **jsonSourceKeyName**: key
     - **jsonSourceValueName**: value
 - Kimeneti jogcímek:
-    - **e-mailek**: "someone@example.com"
-    - **displayName**: "Személy"
-    - **membershipNum**: 6353399
-    - **aktív**: igaz
-    - **születési dátum**: 1980-09-23T00:00:00Z
+  - **e-mailek**: "someone@example.com"
+  - **displayName**: "Személy"
+  - **membershipNum**: 6353399
+  - **aktív**: igaz
+  - **születési dátum**: 1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -150,7 +150,7 @@ A következő példában a jogcímek átalakításáról kinyeri a `id` elem a J
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Személy", "id": 6353399}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Személy", "id": 6353399}
 - Bemeneti paraméterek
     - **claimToExtract**: azonosítója
 - Kimeneti jogcímek: 
@@ -181,9 +181,9 @@ A következő példában a jogcímek átalakításáról kinyeri az első elem (
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
+  - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
 - Kimeneti jogcímek: 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

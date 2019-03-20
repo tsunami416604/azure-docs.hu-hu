@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549221"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084623"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Beszéd Devices SDK-val a licencszerződést.
 
@@ -83,9 +83,9 @@ f) szoftvert kell használnia a Microsoft Azure Cognitive Services beszédszolg�
 (c) Németország és Ausztria.
 
 > (i) jótállás. A megfelelően licencelt szoftver a Microsoft-anyagokban a szoftverhez mellékelt leírtak szerint jelentősen elvégzi. A Microsoft biztosít, azonban nem szerződésben foglalt garanciát a licencelt szoftverek.
-
+> 
 > (ii) felelősség korlátozása. Szándékos magatartás, súlyos gondatlanság, alapján, hogy a termék felelősség korlátozására vonatkozó törvény, valamint haláleset, illetve személyes vagy fizikai sérülés esetén a Microsoft a törvényeknek megfelelően LIABILITY acten.
-
+> 
 > A fenti záradék (ii) vonatkoznak a Microsoft csak akkor felelősségre az enyhe gondatlanságokért-e a Microsoft az ilyen jelentős a teljesítése szerződéses kötelezettségek megsértésével, amelyek megkönnyítik a a jelen szerződés értelmében a megszegését volna esedékes teljesítményét veszélyeztetheti a jelen szerződés és a megfelelőség, amellyel egy lehetséges, hogy folyamatosan megbízhatóság (úgynevezett "kardinális kötelezettségek") a célja. Egyéb enyhe gondatlanságokkal esetben a Microsoft nem lesz felelősségre az enyhe gondatlanságokért.
 
 **15\. JOGI NYILATKOZAT GARANCIA KIZÁRÁSA. A SZOFTVER LICENCÉT ", AMI." FELELŐSSÉGÉRE HASZNÁLJA. A MICROSOFT BIZTOSÍT, NINCS SEMMILYEN KIFEJEZETT SZAVATOSSÁGOT, GARANCIÁT VAGY FELTÉTELEKET. A VONATKOZÓ JOGSZABÁLYOK SZERINT MEGENGEDETT MÉRTÉKBEN A MICROSOFT MINDEN VÉLELMEZETT GARANCIAVÁLLALÁSTÓL, BELEÉRTVE AZ ELADHATÓSÁGRA, EGY ADOTT CÉLRA, ÉS A JOGBITORLÁS-MENTESSÉGRE NEM TARTALMAZZA.**

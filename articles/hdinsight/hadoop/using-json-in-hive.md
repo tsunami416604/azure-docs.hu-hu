@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: b174b1279a2e93560932334c9ae1e926c1eeca3c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 31909d007727ca5b440343e3c5a035984399b77a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201738"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok elemzését az Azure HDInsight az Apache Hive használatával
 
@@ -57,7 +57,7 @@ Megtudhatja, hogyan dolgozza fel, és a JavaScript Object Notation (JSON) fájlo
 }
 ```
 
-A fájl található **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Apache Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
+A fájl található **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Apache Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
 
 Ebben az oktatóanyagban az Apache Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [használata az Apache Ambari az Apache hadooppal a HDInsight Hive-nézet](apache-hadoop-use-hive-ambari-view.md).
 
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-A nyers JSON-fájl **wasb://processjson@hditutorialdata.blob.core.windows.net/**. A **StudentsRaw** a nyers JSON-dokumentum, amely nem lett simítva, Hive-tábla pontokat.
+A nyers JSON-fájl **wasb://processjson\@hditutorialdata.blob.core.windows.net/**. A **StudentsRaw** a nyers JSON-dokumentum, amely nem lett simítva, Hive-tábla pontokat.
 
 A **StudentsOneLine** Hive-tábla tárolja az adatokat a HDInsight alapértelmezett fájlrendszer alatt a **/json/tanulók/** elérési útja.
 
@@ -153,8 +153,8 @@ Végezetül JSON operátor az Ön által választott Hive típusa a forgatókön
 Kapcsolódó cikkek lásd:
 
 * [Az Apache Hive és a HiveQL használata a HDInsight az Apache Hadoop Apache log4j mintafájl elemzéséhez](../hdinsight-use-hive.md)
-* [Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-flight-delay-data.md)
-* [Twitter-adatok elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-twitter-data.md)
+* [Repülőjáratok késési adatainak elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-flight-delay-data-linux.md)
+* [Twitter-adatok elemzése a HDInsight az Apache Hive használatával](../hdinsight-analyze-twitter-data-linux.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

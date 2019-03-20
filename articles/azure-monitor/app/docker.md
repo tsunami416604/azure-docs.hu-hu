@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c31d895c453a8272c337b78f01dc8342a4d0765
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672508"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996466"
 ---
-# <a name="monitor-docker-applications-in-application-insights"></a>Docker-alkalmazások figyelése az Application insights szolgáltatásban
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése az Application Insights (elavult)
+
+> [!NOTE]
+> Ez a megoldás elavult. További információ a meglévő befektetéseit,-tárolók monitorozása a javasoljuk a kivételkor [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 Életciklus-események és a teljesítmény származó teljesítményszámlálók [Docker](https://www.docker.com/) tárolók ábrázolható is kell Application Insights. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezkép a gazdagép és a egy tárolóban teljesítményszámlálók megjeleníti a gazdagép, valamint a további rendszerképeket.
 
@@ -30,9 +33,6 @@ Futtatásakor a [Application Insights-lemezkép](https://hub.docker.com/r/micros
 * Kapcsolatos futó összes tároló életciklus-telemetria a gazdagép - indítása, leállítása, és így tovább.
 * Teljesítményszámlálók a az összes tárolót. CPU, memória, hálózati használati és egyéb.
 * Ha Ön [Javához készült Application Insights SDK telepítése](../../azure-monitor/app/java-get-started.md) az alkalmazásokat, a tárolókban futó, ezek az alkalmazások összes telemetriai adat azonosítása a tároló és a gazdagépcsoport gép további tulajdonságokat is rendelkezik. Így például ha egynél több gazdagépen futó példánya, könnyen szűrheti az alkalmazás telemetriai adatainak a gazdagép által.
-
-> [!NOTE]
-> Ez a megoldás elavult. További információ a meglévő befektetéseit,-tárolók monitorozása a javasoljuk a kivételkor [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
 
 ## <a name="set-up-your-application-insights-resource"></a>Az Application Insights-erőforrás beállítása
 

@@ -3,69 +3,62 @@ title: 'Oktatóanyag: Mérsékelt videók és a .NET - Content Moderator szöveg
 titlesuffix: Azure Cognitive Services
 description: Ez az oktatóanyag segítségével megismerheti, hogyan hozhat létre egy teljes videó és a szöveges moderálás megoldás a gépi támogatású képmoderálás és emberi hurok felülvizsgálat létrehozása.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: e3578c08b78894c2f9a858e97c7cbe2d260731c5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/11/2019
+ms.author: pafarley
+ms.openlocfilehash: 504f79186eb69fb6e6c23c1a0cd9dfd7584bb128
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904337"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: A videó és a szöveges moderálása
 
-A Content Moderator video API-jaival az emberi vizsgálóeszközben moderálhat videókat és hozhat létre videoértékeléseket. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy teljes videó és a szöveges moderálás megoldás a gépi támogatású képmoderálás és emberi hurok felülvizsgálat létrehozása.
 
-Ez az oktatóanyag segítségével megismerheti, hogyan hozhat létre egy teljes videó és a szöveges moderálás megoldás a gépi támogatású képmoderálás és emberi hurok felülvizsgálat létrehozása.
+Ez az oktatóanyag a következőket mutatja be:
 
-Az oktatóanyaghoz töltse le a [C# konzolalkalmazást](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp). A konzolalkalmazás az SDK-val és a kapcsolódó csomagokkal végzi el a következő feladatokat:
-
-- A bemeneti videó(k) tömörítése gyorsabb feldolgozáshoz
-- A videó moderálása jelenetek és képkockák elemzéséhez
-- Miniatűrök (képek) létrehozása időbélyegekkel
-- Videoértékelések készítése időbélyegek és miniatűrök beküldésével
-- A videó szövegének írott szöveggé alakítása (átiratkészítés) a Media Indexer API-val
-- Az átirat moderálása a szövegmoderálási szolgáltatással
-- A moderált átiratok hozzáadása a videoértékeléshez
-
-## <a name="sample-program-outputs"></a>Programkimenetek mintái
-
-Mielőtt továbblép, a program a következő minta kimenetek vizsgáljuk meg:
-
-- [Konzolkimenet](#program-output)
-- [Videoértékelés](#video-review-default-view)
-- [Átiratértékelés](#video-review-transcript-view)
+> [!div class="checklist"]
+> - A bemeneti videó(k) tömörítése gyorsabb feldolgozáshoz
+> - A videó moderálása jelenetek és képkockák elemzéséhez
+> - Miniatűrök (képek) létrehozása időbélyegekkel
+> - Videoértékelések készítése időbélyegek és miniatűrök beküldésével
+> - A videó szövegének írott szöveggé alakítása (átiratkészítés) a Media Indexer API-val
+> - Az átirat moderálása a szövegmoderálási szolgáltatással
+> - A moderált átiratok hozzáadása a videoértékeléshez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhelyén, és [hozzon létre egyéni címkéket](Review-Tool-User-Guide/tags.md), amelyeket a C# konzolalkalmazás társít a kódból. Az alábbi képernyőfelvételen az egyéni címkék láthatók.
+- Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) webhely, és hozzon létre egyéni címkék. Lásd: [címkékkel](Review-Tool-User-Guide/tags.md) Ha ehhez a lépéshez segítségre van szüksége.
 
-  ![Videomoderálás – egyéni címkék](images/video-tutorial-custom-tags.png)
+    ![Képernyőkép a videó moderálás egyéni címkék](images/video-tutorial-custom-tags.png)
+- Futtassa a mintaalkalmazást, szüksége van egy Azure-fiókra, egy Azure Media Services-erőforrás, egy Azure Content Moderator erőforrás és az Azure Active Directorybeli hitelesítő adatokat. Ezek kapcsolatos utasításokért lásd: a [videó moderálási API](video-moderation-api.md) útmutató.
+- Töltse le a [videó felülvizsgálati Konzolalkalmazás](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a Githubon.
 
-1. A mintaalkalmazás futtatásához egy Azure-fiókra és egy Azure Media Services-fiókra lesz szüksége. Emellett hozzá kell tudnia férni a Content Moderator privát előzetes verziójához. Végezetül Azure Active Directory-hitelesítő adatokra lesz szüksége. További információt ezen adatok megszerzéséről a [Video Moderation API gyors útmutatójában](video-moderation-api.md) találhat.
+## <a name="enter-credentials"></a>Hitelesítő adatok megadása
 
-1. Szerkessze a fájlt (`App.config`), majd adja hozzá az Active Directory-bérlő nevét, a szolgáltatásvégpontokat, és a `#####` jellel jelölt előfizetési kulcsokat. A következő adatokra lesz szüksége:
+Szerkessze a `App.config` fájlt, és az Active Directory-bérlő nevét, a Szolgáltatásvégpontok és előfizetési kulcsok által jelzett `#####`. A következő adatokra lesz szüksége:
 
-|Kulcs|Leírás|
-|-|-|
-|`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
-|`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
-|`ClientId`|Az Azure Media Services ügyfélazonosítója|
-|`AzureAdTenantName`|A szervezetet képviselő Active Directory-bérlő neve|
-|`ContentModeratorReviewApiSubscriptionKey`|A Content Moderator felügyeleti API előfizetési kulcsa|
-|`ContentModeratorApiEndpoint`|A Content Moderator API végpontja|
-|`ContentModeratorTeamId`|A tartalommoderátori csapat azonosítója|
+    |Kulcs|Leírás|
+    |-|-|
+    |`AzureMediaServiceRestApiEndpoint`|Az Azure Media Services (AMS) API végpontja|
+    |`ClientSecret`|Az Azure Media Services előfizetési kulcsa|
+    |`ClientId`|Az Azure Media Services ügyfélazonosítója|
+    |`AzureAdTenantName`|A szervezetet képviselő Active Directory-bérlő neve|
+    |`ContentModeratorReviewApiSubscriptionKey`|A Content Moderator felügyeleti API előfizetési kulcsa|
+    |`ContentModeratorApiEndpoint`|A Content Moderator API végpontja|
+    |`ContentModeratorTeamId`|A tartalommoderátori csapat azonosítója|
 
-## <a name="getting-started"></a>Első lépések
+## <a name="examine-the-main-code"></a>A fő kódok vizsgálatát
 
 A `Program` osztály a `Program.cs` fájlban a videomoderálási alkalmazás fő belépési pontja.
 
-### <a name="methods-of-class-program"></a>A Program osztály metódusai
+### <a name="methods-of-program-class"></a>Program osztály metódusain
 
 |Módszer|Leírás|
 |-|-|
@@ -79,44 +72,7 @@ A `Program` osztály a `Program.cs` fájlban a videomoderálási alkalmazás fő
 
 A `Main()` a végrehajtás első fázisa, így a videomoderálási folyamat ismertetését is ezzel kezdjük.
 
-    static void Main(string[] args)
-    {
-        if (args.Length == 0)
-        {
-            string videoPath = string.Empty;
-            GetUserInputs(out videoPath);
-            Initialize();
-            AmsConfigurations.logFilePath = Path.Combine(Path.GetDirectoryName(videoPath), "log.txt");
-            try
-            {
-                ProcessVideo(videoPath).Wait();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        else
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(args[0]);
-            if (args.Length == 2)
-                bool.TryParse(args[1], out generateVtt);
-            Initialize();
-            AmsConfigurations.logFilePath = Path.Combine(args[0], "log.txt");
-            var files = directoryInfo.GetFiles("*.mp4", SearchOption.AllDirectories);
-            foreach (var file in files)
-            {
-                try
-                {
-                    ProcessVideo(file.FullName).Wait();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-        }
-    }
+[!code-csharp[Main](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=20-24,42-52,54-74)]
 
 A `Main()` a következő parancssori argumentumokat kezeli:
 
@@ -143,51 +99,7 @@ Ezekről az osztályokról (az `AMSConfigurations` osztályt leszámítva, amely
 
 A program a videofájlokat végül egyenként, a `ProcessVideo()` paranccsal dolgozza fel.
 
-    private static async Task ProcessVideo(string videoPath)
-    {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("\nVideo compression process started...");
-
-        var compressedVideoPath = amsComponent.CompressVideo(videoPath);
-        if (string.IsNullOrWhiteSpace(compressedVideoPath))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Video Compression failed.");
-        }
-
-        Console.WriteLine("\nVideo compression process completed...");
-
-        UploadVideoStreamRequest uploadVideoStreamRequest = CreateVideoStreamingRequest(compressedVideoPath);
-        UploadAssetResult uploadResult = new UploadAssetResult();
-
-        if (generateVtt)
-        {
-            uploadResult.GenerateVTT = generateVtt;
-        }
-        Console.WriteLine("\nVideo moderation process started...");
-
-        if (!videoModerator.CreateAzureMediaServicesJobToModerateVideo(uploadVideoStreamRequest, uploadResult))
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Video Review process failed.");
-        }
-
-        Console.WriteLine("\nVideo moderation process completed...");
-        Console.WriteLine("\nVideo review process started...");
-        string reviewId = await videoReviewApi.CreateVideoReviewInContentModerator(uploadResult);
-        Console.WriteLine("\nVideo review successfully completed...");
-        sw.Stop();
-        Console.WriteLine("\nTotal Elapsed Time: {0}", sw.Elapsed);
-        using (var stw = new StreamWriter(AmsConfigurations.logFilePath, true))
-        {
-            stw.WriteLine("Video File Name: " + Path.GetFileName(videoPath));
-            stw.WriteLine($"ReviewId: {reviewId}");
-            stw.WriteLine("Total Elapsed Time: {0}", sw.Elapsed);
-        }
-    }
-
+[!code-csharp[ProcessVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=76-118)]
 
 A `ProcessVideo()` metódus egyszerűen működik. A következő műveleteket hajtja végre, ebben a sorrendben:
 
@@ -198,7 +110,7 @@ A `ProcessVideo()` metódus egyszerűen működik. A következő műveleteket ha
 
 A következő szakaszok a `ProcessVideo()` által meghívott folyamatokat részletezik. 
 
-## <a name="compressing-the-video"></a>A videó tömörítése
+## <a name="compress-the-video"></a>A videó tömörítése
 
 A hálózati forgalom minimalizálása érdekében az alkalmazás H.264 (MPEG-4 AVC) formátumba konvertálja a videofájlokat, és 640 képpontos maximum szélességűre méretezi őket. A H.264 kodek rendkívül hatékony (magas tömörítési aránnyal bír), ezért javasolt a használata. A tömörítés az ingyenes `ffmpeg` parancssori eszközzel történik, amely a Visual Studio szolgáltatás `Lib` mappájában található. A bemeneti fájlok bármilyen, `ffmpeg` által támogatott formátumúak lehetnek, beleértve a leggyakrabban használt videoformátumokat és kodekeket.
 
@@ -207,35 +119,7 @@ A hálózati forgalom minimalizálása érdekében az alkalmazás H.264 (MPEG-4 
 
 Az egyetlen videofájlt tömörítő kód az `AMSComponent.cs` `AmsComponent` osztálya. Ezért a funkcióért a `CompressVideo()` metódus felelős, amely itt látható.
 
-    public string CompressVideo(string videoPath)
-    {
-        string ffmpegBlobUrl;
-        if (!ValidatePreRequisites())
-        {
-            Console.WriteLine("Configurations check failed. Please cross check the configurations!");
-            throw new Exception();
-        }
-
-        if (File.Exists(_configObj.FfmpegExecutablePath))
-        {
-            ffmpegBlobUrl = this._configObj.FfmpegExecutablePath;
-        }
-        else
-        {
-            Console.WriteLine("ffmpeg.exe is missing. Please check the Lib folder");
-            throw new Exception();
-        }
-
-        string videoFilePathCom = videoPath.Split('.')[0] + "_c.mp4";
-        ProcessStartInfo processStartInfo = new ProcessStartInfo();
-        processStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-        processStartInfo.FileName = ffmpegBlobUrl;
-        processStartInfo.Arguments = "-i \"" + videoPath + "\" -vcodec libx264 -n -crf 32 -preset veryfast -vf scale=640:-1 -c:a aac -aq 1 -ac 2 -threads 0 \"" + videoFilePathCom + "\"";
-        var process = Process.Start(processStartInfo);
-        process.WaitForExit();
-        process.Close();
-        return videoFilePathCom;
-    }
+[!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
 A kód a következő lépéseket hajtja végre:
 
@@ -251,41 +135,15 @@ A kód a következő lépéseket hajtja végre:
 
 A metódus visszaadja a tömörített kimeneti fájl fájlnevét.
 
-## <a name="uploading-and-moderating-the-video"></a>Videó feltöltése és moderálása
+## <a name="upload-and-moderate-the-video"></a>Fel- és közepes szintű a videót
 
 Ahhoz, hogy egy videót feldolgozhasson a Content Moderation szolgáltatással, az Azure Media Servicesben kell tárolni. A `Program.cs` `Program` osztály egy `CreateVideoStreamingRequest()` rövid metódust tartalmaz, amely a videó feltöltéséhez használt streamelési kérelmet képviselő objektumot adja vissza.
 
-    private static UploadVideoStreamRequest CreateVideoStreamingRequest(string compressedVideoFilePath)
-    {
-        return
-            new UploadVideoStreamRequest
-            {
-                VideoStream = File.ReadAllBytes(compressedVideoFilePath),
-                VideoName = Path.GetFileName(compressedVideoFilePath),
-                EncodingRequest = new EncodingRequest()
-                {
-                    EncodingBitrate = AmsEncoding.AdaptiveStreaming
-                },
-                VideoFilePath = compressedVideoFilePath
-            };
-    }
+[!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
 A létrejövő `UploadVideoStreamRequest` objektum az `UploadVideoStreamRequest.cs` fájlban van definiálva (a szülője, `UploadVideoRequest`, pedig az `UploadVideoRequest.cs` fájlban). Ezek az osztályok itt nem jelennek meg; rövidek, és egyetlen céljuk a tömörített videók adatainak tárolása. A feltöltési folyamat eredményeit egy másik kizárólag adatokat tároló osztály, az `UploadAssetResult` (`UploadAssetResult.cs`) tartalmazza. Most már képes értelmezni a `ProcessVideo()` sorait:
 
-    UploadVideoStreamRequest uploadVideoStreamRequest = CreateVideoStreamingRequest(compressedVideoPath);
-    UploadAssetResult uploadResult = new UploadAssetResult();
-
-    if (generateVtt)
-    {
-        uploadResult.GenerateVTT = generateVtt;
-    }
-    Console.WriteLine("\nVideo moderation process started...");
-
-    if (!videoModerator.CreateAzureMediaServicesJobToModerateVideo(uploadVideoStreamRequest, uploadResult))
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Video Review process failed.");
-    }
+[!code-csharp[ProcessVideoSnippet](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=91-104)]
 
 Ezek a sorok a következő feladatokat hajtják végre:
 
@@ -293,68 +151,11 @@ Ezek a sorok a következő feladatokat hajtják végre:
 - Beállítja a kérés `GenerateVTT` jelölőjét, ha a felhasználó szöveges átiratot kért
 - Az `CreateAzureMediaServicesJobToModerateVideo()` parancsot meghívva elvégzi a feltöltést és megkapja az eredményt
 
-## <a name="deep-dive-into-video-moderation"></a>A videomoderálás részletes ismertetése
+## <a name="examine-video-moderation-code"></a>Vizsgálja meg a kódot videomoderálás
 
 A `CreateAzureMediaServicesJobToModerateVideo()` metódus a `VideoModerator.cs` fájlban található, amely az Azure Media Services szolgáltatással kommunikáló kódok nagy részét tartalmazza. A metódus forráskódja a következő kivonatban látható.
 
-    public bool CreateAzureMediaServicesJobToModerateVideo(UploadVideoStreamRequest uploadVideoRequest, UploadAssetResult uploadResult)
-    {
-        asset = CreateAsset(uploadVideoRequest);
-        uploadResult.VideoName = uploadVideoRequest.VideoName;
-        // Encoding the asset , Moderating the asset, Generating transcript in parallel
-        IAsset encodedAsset = null;
-        //Creates the job for the tasks.
-        IJob job = this._mediaContext.Jobs.Create("AMS Review Job");
-
-        //Adding encoding task to job.
-        ConfigureEncodeAssetTask(uploadVideoRequest.EncodingRequest, job);
-
-        ConfigureContentModerationTask(job);
-
-        //adding transcript task to job.
-        if (uploadResult.GenerateVTT)
-        {
-            ConfigureTranscriptTask(job);
-        }
-
-        Stopwatch timer = new Stopwatch();
-        timer.Start();
-        //submit and execute job.
-        job.Submit();
-        job.GetExecutionProgressTask(new CancellationTokenSource().Token).Wait();
-        timer.Stop();
-        using (var sw = new StreamWriter(AmsConfigurations.logFilePath, true))
-        {
-            sw.WriteLine("AMS Job Elapsed Time: {0}", timer.Elapsed);
-        }
-
-        if (job.State == JobState.Error)
-        {
-            throw new Exception("Video moderation has failed due to AMS Job error.");
-        }
-
-        UploadAssetResult result = uploadResult;
-        encodedAsset = job.OutputMediaAssets[0];
-        result.ModeratedJson = GetCmDetail(job.OutputMediaAssets[1]);
-        // Check for valid Moderated JSON
-        var jsonModerateObject = JsonConvert.DeserializeObject<VideoModerationResult>(result.ModeratedJson);
-
-        if (jsonModerateObject == null)
-        {
-            return false;
-        }
-        if (uploadResult.GenerateVTT)
-        {
-            GenerateTranscript(job.OutputMediaAssets.Last());
-        }
-
-        uploadResult.StreamingUrlDetails = PublishAsset(encodedAsset);
-        string downloadUrl = GenerateDownloadUrl(asset, uploadVideoRequest.VideoName);
-        uploadResult.StreamingUrlDetails.DownloadUri = downloadUrl;
-        uploadResult.VideoName = uploadVideoRequest.VideoName;
-        uploadResult.VideoFilePath = uploadVideoRequest.VideoFilePath;
-        return true;
-    }
+[!code-csharp[CreateAzureMediaServicesJobToModerateVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=230-283)]
 
 A kód a következő feladatokat hajtja végre:
 
@@ -363,101 +164,72 @@ A kód a következő feladatokat hajtja végre:
 - Elküldi a feladatot, feltölti a fájlt és megkezdi a feldolgozást
 - Lekéri a moderálás eredményeit, a szöveges átiratot (amennyiben a felhasználó kérte), és egyéb adatokat
 
-## <a name="sample-video-moderation-response"></a>Videomoderálási válasz – minta
+## <a name="sample-video-moderation-output"></a>Videomoderálás kimeneti példa
 
 A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutatója](video-moderation-api.md)) egy JSON-adatstruktúra, amely a moderálás eredményeit tartalmazza. Az eredmények részletezik a videó töredékeit (jeleneteit), amelyek kulcskockákból álló, felülvizsgálatra megjelölt eseményeket (klipeket) tartalmaznak. A kulcskockák aszerint vannak pontozva, hogy milyen valószínűséggel tartalmaznak felnőtt vagy kényes tartalmat. A következő példa egy JSON-válasz:
 
+```json
+{
+    "version": 2,
+    "timescale": 90000,
+    "offset": 0,
+    "framerate": 50,
+    "width": 1280,
+    "height": 720,
+    "totalDuration": 18696321,
+    "fragments": [
     {
-        "version": 2,
-        "timescale": 90000,
-        "offset": 0,
-        "framerate": 50,
-        "width": 1280,
-        "height": 720,
-        "totalDuration": 18696321,
-        "fragments": [
+        "start": 0,
+        "duration": 18000
+    },
+    {
+        "start": 18000,
+        "duration": 3600,
+        "interval": 3600,
+        "events": [
+        [
         {
-            "start": 0,
-            "duration": 18000
-        },
+            "reviewRecommended": false,
+            "adultScore": 0.00001,
+            "racyScore": 0.03077,
+            "index": 5,
+            "timestamp": 18000,
+            "shotIndex": 0
+        }
+        ]
+    ]
+    },
+    {
+        "start": 18386372,
+        "duration": 119149,
+        "interval": 119149,
+        "events": [
+        [
         {
-            "start": 18000,
-            "duration": 3600,
-            "interval": 3600,
-            "events": [
-            [
-            {
-                "reviewRecommended": false,
-                "adultScore": 0.00001,
-                "racyScore": 0.03077,
-                "index": 5,
-                "timestamp": 18000,
-                "shotIndex": 0
-            }
-            ]
-        ]
-        },
-        {
-            "start": 18386372,
-            "duration": 119149,
-            "interval": 119149,
-            "events": [
-            [
-            {
-                "reviewRecommended": true,
-                "adultScore": 0.00000,
-                "racyScore": 0.91902,
-                "index": 5085,
-                "timestamp": 18386372,
-                "shotIndex": 62
-            }
-        ]
-        ]
+            "reviewRecommended": true,
+            "adultScore": 0.00000,
+            "racyScore": 0.91902,
+            "index": 5085,
+            "timestamp": 18386372,
+            "shotIndex": 62
         }
     ]
+    ]
     }
+]
+}
+```
 
 A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 > [!NOTE]
 > A konzolalkalmazás az [Azure Media Indexer API-val](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) átiratokat készít a feltöltött videó hangsávjából. Az eredmények WebVTT formátumban készülnek el. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
-
-## <a name="creating-the-human-in-the-loop-review"></a>Emberi tényezős értékelés létrehozása
+## <a name="create-a-the-human-in-the-loop-review"></a>Hozzon létre egy az emberi hurok áttekintése
 
 A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint a hangsávok átiratát. A következő lépés egy emberi moderátoroknak szóló értékelés elkészítése a Content Moderator felülvizsgálati eszközben. Ha visszatér a `Program.cs` `ProcessVideo()` metódusához, láthatja a `CreateVideoReviewInContentModerator()` metódus meghívását. Ez a metódus a `videoReviewApi` osztályba tartozik, amely a `VideoReviewAPI.cs` fájlban található, és itt látható.
 
-    public async Task<string> CreateVideoReviewInContentModerator(UploadAssetResult uploadAssetResult)
-    {
-    
-        string reviewId = string.Empty;
-        List<ProcessedFrameDetails> frameEntityList = framegenerator.CreateVideoFrames(uploadAssetResult);
-        string path = uploadAssetResult.GenerateVTT == true ? this._amsConfig.FfmpegFramesOutputPath + Path.GetFileNameWithoutExtension (uploadAssetResult.VideoName) + "_aud_SpReco.vtt" : "";
-        TranscriptScreenTextResult screenTextResult = new TranscriptScreenTextResult();
-        
-    if (File.Exists(path))
-        {
-            screenTextResult = await GenerateTextScreenProfanity(reviewId, path, frameEntityList);
-            uploadAssetResult.Category1TextScore = screenTextResult.Category1Score;
-            uploadAssetResult.Category2TextScore = screenTextResult.Category2Score;
-            uploadAssetResult.Category3TextScore = screenTextResult.Category3Score;
-            uploadAssetResult.Category1TextTag = screenTextResult.Category1Tag;
-            uploadAssetResult.Category2TextTag = screenTextResult.Category2Tag;
-            uploadAssetResult.Category3TextTag = screenTextResult.Category3Tag;
-        }
-        
-        var reviewVideoRequestJson = CreateReviewRequestObject(uploadAssetResult, frameEntityList);
-        if (string.IsNullOrWhiteSpace(reviewVideoRequestJson))
-        {
-            throw new Exception("Video review process failed in CreateVideoReviewInContentModerator");
-        }
-        
-        reviewId = JsonConvert.DeserializeObject<List<string>>(ExecuteCreateReviewApi(reviewVideoRequestJson).Result).FirstOrDefault();
-        frameEntityList = framegenerator.GenerateFrameImages(frameEntityList, uploadAssetResult, reviewId);
-        await CreateAndPublishReviewInContentModerator(uploadAssetResult, frameEntityList, reviewId, path, screenTextResult);
-        return reviewId;
-    
-    }
+[!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
 A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a következő feladatok elvégzéséhez:
 
@@ -470,13 +242,11 @@ A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a kö
 |Átvizsgálja a szöveges átiratot (amennyiben elérhető), és felnőtt vagy kényes hangtartalmat keres|`GenerateTextScreenProfanity()`| `VideoReviewAPI.cs`|
 |Előkészít és beküld egy videoértékelést emberi vizsgálatra|`CreateReviewRequestObject()`<br> `ExecuteCreateReviewApi()`<br>`CreateAndPublishReviewInContentModerator()`|`VideoReviewAPI.cs`|
 
-## <a name="video-review-default-view"></a>Videoértékelés – alapértelmezett nézet
-
 A következő kép egy az előző lépések eredményeit mutatja.
 
 ![Videoértékelés – alapértelmezett nézet](images/video-tutorial-default-view.PNG)
 
-## <a name="transcript-generation"></a>Átiratkészítés
+## <a name="process-the-transcript"></a>Az átirat folyamat
 
 Az oktatóanyagban használt kódok eddig a vizuális tartalmakhoz tartoztak. A beszédtartalom értékelése egy különálló (de nem kötelező) folyamat, amely – ahogyan korábban említettük – a hangsávból kinyert átiratot alkalmazza. Ideje megvizsgálnunk a szöveges átiratok készítési folyamatát, valamint azok felhasználását a felülvizsgálat során. Az átiratok készítése az [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content) szolgáltatás szerepköre.
 
@@ -494,16 +264,7 @@ Az alkalmazás a következő feladatokat hajtja végre:
 
 Kezdjük azonnal az átírási feladat hozzáadásával. A már ismertetett `CreateAzureMediaServicesJobToModerateVideo()` meghívja a `ConfigureTranscriptTask()` parancsot.
 
-    private void ConfigureTranscriptTask(IJob job)
-    {
-        string mediaProcessorName = _amsConfigurations.MediaIndexer2MediaProcessor;
-        IMediaProcessor processor = _mediaContext.MediaProcessors.GetLatestMediaProcessorByName(mediaProcessorName);
-
-        string configuration = File.ReadAllText(_amsConfigurations.MediaIndexerConfigurationJson);
-        ITask task = job.Tasks.AddNew("AudioIndexing Task", processor, configuration, TaskOptions.None);
-        task.InputAssets.Add(asset);
-        task.OutputAssets.AddNew("AudioIndexing Output Asset", AssetCreationOptions.None);
-    }
+[!code-csharp[ConfigureTranscriptTask](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=295-304)]
 
 A program az átírási feladat konfigurációját a `Lib` mappa `MediaIndexerConfig.json` fájljából olvassa be. Létrejönnek a konfigurációs fájl és az átírási folyamat kimenetének AMS-eszközei. Az AMS-feladat futása alatt a feladat létrehoz egy szöveges átiratot a videofájl hangsávjából.
 
@@ -514,32 +275,13 @@ A program az átírási feladat konfigurációját a `Lib` mappa `MediaIndexerCo
 
 Az átirat AMS-eszközként lesz közzétéve. Az átirat kifogásolható tartalmak utáni vizsgálatához az alkalmazás letölti az eszközt az Azure Media Services szolgáltatásból. A `CreateAzureMediaServicesJobToModerateVideo()` meghívja az itt látható `GenerateTranscript()` parancsot, hogy lekérje a fájlt.
 
-    public bool GenerateTranscript(IAsset asset)
-    {
-        try
-        {
-            var outputFolder = this._amsConfigurations.FfmpegFramesOutputPath;
-            IAsset outputAsset = asset;
-            IAccessPolicy policy = null;
-            ILocator locator = null;
-            policy = _mediaContext.AccessPolicies.Create("My 30 days readonly policy", TimeSpan.FromDays(360), AccessPermissions.Read);
-            locator = _mediaContext.Locators.CreateLocator(LocatorType.Sas, outputAsset, policy, DateTime.UtcNow.AddMinutes(-5));
-            DownloadAssetToLocal(outputAsset, outputFolder);
-            locator.Delete();
-            return true;
-        }
-        catch
-        {   //TODO:  Logging
-            Console.WriteLine("Exception occurred while generating index for video.");
-            throw;
-        }
-    }
+[!code-csharp[GenerateTranscript](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoModerator.cs?range=351-370)]
 
 Az AMS szükséges beállítása után a letöltést a `DownloadAssetToLocal()` parancs hívásával indíthatja el, amely egy általános, AMS-eszközöket egy helyi fájlba másoló függvény.
 
-## <a name="transcript-moderation"></a>Átiratmoderálás
+## <a name="moderate-the-transcript"></a>Az átirat mérsékelt
 
-A kész átiratokat beolvasva felhasználhatja őket az értékeléshez. Az értékelés létrehozása a `CreateVideoReviewInContentModerator()` parancs feladata, amely a `GenerateTextScreenProfanity()` parancsot hívja meg a feladathoz. Ez a metódus ezután a `TextScreen()` parancsot hívja meg, amely a legtöbb funkciót tartalmazza. 
+A kész átiratokat beolvasva felhasználhatja őket az értékeléshez. Az értékelés létrehozása a `CreateVideoReviewInContentModerator()` parancs feladata, amely a `GenerateTextScreenProfanity()` parancsot hívja meg a feladathoz. Ez a metódus ezután a `TextScreen()` parancsot hívja meg, amely a legtöbb funkciót tartalmazza.
 
 A `TextScreen()` a következő feladatokat hajtja végre:
 
@@ -553,177 +295,26 @@ Vizsgáljuk meg részletesebben ezeket a feladatokat:
 
 Első lépésként inicializálja az összes változót és gyűjteményt.
 
-    private async Task<TranscriptScreenTextResult> TextScreen(string filepath, List<ProcessedFrameDetails> frameEntityList)
-    {
-        List<TranscriptProfanity> profanityList = new List<TranscriptProfanity>();
-        string responseContent = string.Empty;
-        HttpResponseMessage response;
-        bool category1Tag = false;
-        bool category2Tag = false;
-        bool category3Tag = false;
-        double category1Score = 0;
-        double category2Score = 0;
-        double category3Score = 0;
-        List<string> vttLines = File.ReadAllLines(filepath).Where(line => !line.Contains("NOTE Confidence:") && line.Length > 0).ToList();
-        StringBuilder sb = new StringBuilder();
-        List<CaptionScreentextResult> csrList = new List<CaptionScreentextResult>();
-        CaptionScreentextResult captionScreentextResult = new CaptionScreentextResult() { Captions = new List<string>() };
-
-        // Code from the next sections in the tutorial
-    
+[!code-csharp[TextScreen](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=515-527)]
 
 ### <a name="parse-the-transcript-for-captions"></a>Az átirat elemzése feliratok kereséséhez
 
 Következő lépésként elemezze a VTT formátumú átiratot feliratok és időbélyegek kereséséhez. A felülvizsgálati eszköz ezeket a feliratokat a videoértékelési képernyő Átirat lapján jeleníti meg. Az időbélyegek a feliratok a megfelelő képkockákkal való szinkronizálását szolgálják.
 
-        // Code from the previous section(s) in the tutorial
-
-        //
-        // Parse the transcript
-        //
-        foreach (var line in vttLines.Skip(1))
-        {
-                if (line.Contains("-->"))
-                {
-                    if (sb.Length > 0)
-                    {
-                        captionScreentextResult.Captions.Add(sb.ToString());
-                        sb.Clear();
-                    }
-                    if (captionScreentextResult.Captions.Count > 0)
-                    {
-                        csrList.Add(captionScreentextResult);
-                        captionScreentextResult = new CaptionScreentextResult() { Captions = new List<string>() };
-                    }
-                    string[] times = line.Split(new string[] { "-->" }, StringSplitOptions.RemoveEmptyEntries);
-                    string startTimeString = times[0].Trim();
-                    string endTimeString = times[1].Trim();
-                    int startTime = (int)TimeSpan.ParseExact(startTimeString, @"hh\:mm\:ss\.fff", CultureInfo.InvariantCulture).TotalMilliseconds;
-                    int endTime = (int)TimeSpan.ParseExact(endTimeString, @"hh\:mm\:ss\.fff", CultureInfo.InvariantCulture).TotalMilliseconds;
-                    captionScreentextResult.StartTime = startTime;
-                    captionScreentextResult.EndTime = endTime;
-                }
-                else
-                {
-                    sb.Append(line);
-                }
-                if (sb.Length + line.Length > 1024)
-                {
-                    captionScreentextResult.Captions.Add(sb.ToString());
-                    sb.Clear();
-                }
-            }
-            if (sb.Length > 0)
-            {
-                captionScreentextResult.Captions.Add(sb.ToString());
-            }
-            if (captionScreentextResult.Captions.Count > 0)
-            {
-                csrList.Add(captionScreentextResult);
-            }
-
-            // Code from the following section in the quickstart
+[!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 
 ### <a name="moderate-captions-with-the-text-moderation-service"></a>Felirat moderálása a szövegmoderálási szolgáltatással
 
 Következő lépésként beolvassuk az elemzett szöveges feliratokat a Content Moderator szöveges API-jával.
 
 > [!NOTE]
-> A Content Moderator szolgáltatáskulcs egy másodpercenkénti kérelmekre (RPS-re) vonatkozó korláttal rendelkezik. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez. 
+> A Content Moderator szolgáltatáskulcs egy másodpercenkénti kérelmekre (RPS-re) vonatkozó korláttal rendelkezik. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez.
 >
-> Az ingyenes szint kulcsai egy RPS-korláttal bírnak.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
-    //
-    // Moderate the captions or cues
-    //
-    int waitTime = 1000;
-    foreach (var csr in csrList)
-    {
-                bool captionAdultTextTag = false;
-                bool captionRacyTextTag = false;
-                bool captionOffensiveTextTag = false;
-                bool retry = true;
+[!code-csharp[TextScreen3](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=568-653)]
 
-                foreach (var caption in csr.Captions)
-                {
-                    while (retry)
-                    {
-                        try
-                        {
-                            System.Threading.Thread.Sleep(waitTime);
-                            var lang = await CMClient.TextModeration.DetectLanguageAsync("text/plain", caption);
-                            var oRes = await CMClient.TextModeration.ScreenTextWithHttpMessagesAsync(lang.DetectedLanguageProperty, "text/plain", caption, null, null, null, true);
-                            response = oRes.Response;
-                            responseContent = await response.Content.ReadAsStringAsync();
-                            retry = false;
-                        }
-                        catch (Exception e)
-                        {
-                            if (e.Message.Contains("429"))
-                            {
-                                Console.WriteLine($"Moderation API call failed. Message: {e.Message}");
-                                waitTime = (int)(waitTime * 1.5);
-                                Console.WriteLine($"wait time: {waitTime}");
-                            }
-                            else
-                            {
-                                retry = false;
-                                Console.WriteLine($"Moderation API call failed. Message: {e.Message}");
-                            }
-                        }
-                    }
-                    var jsonTextScreen = JsonConvert.DeserializeObject<TextScreen>(responseContent);
-                    if (jsonTextScreen != null)
-                    {
-                        TranscriptProfanity transcriptProfanity = new TranscriptProfanity();
-                        transcriptProfanity.TimeStamp = "";
-                        List<Terms> transcriptTerm = new List<Terms>();
-                        if (jsonTextScreen.Terms != null)
-                        {
-                            foreach (var term in jsonTextScreen.Terms)
-                            {
-                                var profanityobject = new Terms
-                                {
-                                    Term = term.Term,
-                                    Index = term.Index
-                                };
-                                transcriptTerm.Add(profanityobject);
-                            }
-                            transcriptProfanity.Terms = transcriptTerm;
-                            profanityList.Add(transcriptProfanity);
-                        }
-                        if (jsonTextScreen.Classification.Category1.Score > _amsConfig.Category1TextThreshold) captionAdultTextTag = true;
-                        if (jsonTextScreen.Classification.Category2.Score > _amsConfig.Category2TextThreshold) captionRacyTextTag = true;
-                        if (jsonTextScreen.Classification.Category3.Score > _amsConfig.Category3TextThreshold) captionOffensiveTextTag = true;
-                        if (jsonTextScreen.Classification.Category1.Score > _amsConfig.Category1TextThreshold) category1Tag = true;
-                        if (jsonTextScreen.Classification.Category2.Score > _amsConfig.Category2TextThreshold) category2Tag = true;
-                        if (jsonTextScreen.Classification.Category3.Score > _amsConfig.Category3TextThreshold) category3Tag = true;
-                        category1Score = jsonTextScreen.Classification.Category1.Score > category1Score ? jsonTextScreen.Classification.Category1.Score : category1Score;
-                        category2Score = jsonTextScreen.Classification.Category2.Score > category2Score ? jsonTextScreen.Classification.Category2.Score : category2Score;
-                        category3Score = jsonTextScreen.Classification.Category3.Score > category3Score ? jsonTextScreen.Classification.Category3.Score : category3Score;
-                    }
-                    foreach (var frame in frameEntityList.Where(x => x.TimeStamp >= csr.StartTime && x.TimeStamp <= csr.EndTime))
-                    {
-                        frame.IsAdultTextContent = captionAdultTextTag;
-                        frame.IsRacyTextContent = captionRacyTextTag;
-                        frame.IsOffensiveTextContent = captionOffensiveTextTag;
-                    }
-                }
-            }
-            TranscriptScreenTextResult screenTextResult = new TranscriptScreenTextResult()
-            {
-                TranscriptProfanity = profanityList,
-                Category1Tag = category1Tag,
-                Category2Tag = category2Tag,
-                Category3Tag = category3Tag,
-                Category1Score = category1Score,
-                Category2Score = category2Score,
-                Category3Score = category3Score
-            };
-            return screenTextResult;
-    }
-
-### <a name="breaking-down-the-text-moderation-step"></a>A szövegmoderálás részletes ismertetése
+### <a name="text-moderation-breakdown"></a>Szöveg moderálása lebontása
 
 A `TextScreen()` egy összetett metódus, ezért részletesen ismertetjük.
 
@@ -736,8 +327,6 @@ A `TextScreen()` egy összetett metódus, ezért részletesen ismertetjük.
 1. Miután megkapja a Text Moderation szolgáltatás eredményeit, a metódus elemzi azokat, és megállapítja, hogy megfelelnek-e a megbízhatósági küszöbértékeknek. Ezek az értékek az `App.config` fájlban, a következőkként vannak meghatározva: `OffensiveTextThreshold`, `RacyTextThreshold` és `AdultTextThreshold`. A szolgáltatás végül tárolja magukat a kifogásolható kifejezéseket is. A jel időtartományán belül minden képkockát sértő, kényes és/vagy felnőtt szövegként jelöl meg.
 
 1. A `TextScreen()` egy `TranscriptScreenTextResult` példányt eredményez, amely a teljes videó szövegmoderálásának eredményét tartalmazza. Ez az objektum a különböző típusú kifogásolható tartalmak jelölőit és pontszámait tartalmazza, valamint az összes kifogásolható kifejezést. A hívó (`CreateVideoReviewInContentModerator()`) meghívja az `UploadScreenTextResult()` parancsot a fenti adatok az értékeléshez való csatolásához, hogy azok az emberi felülvizsgálat során is elérhetők legyenek.
- 
-## <a name="video-review-transcript-view"></a>Videoértékelés – átiratnézet
 
 A következő kép az átiratkészítés és a moderálási lépések eredményét jeleníti meg.
 
@@ -747,26 +336,30 @@ A következő kép az átiratkészítés és a moderálási lépések eredmény�
 
 A program következő parancssori kimenete a különböző végrehajtott feladatokat mutatja. Emellett a moderálás (JSON formátumú) eredménye és a beszédátirat is elérhető ugyanabban a könyvtárban, ahol az eredeti videofájlok.
 
-    Microsoft.ContentModerator.AMSComponentClient
-    Enter the fully qualified local path for Uploading the video :
-    "Your File Name.MP4"
-    Generate Video Transcript? [y/n] : y
-    
-    Video compression process started...
-    Video compression process completed...
-    
-    Video moderation process started...
-    Video moderation process completed...
-    
-    Video review process started...
-    Video Frames Creation inprogress...
-    Frames(83) created successfully.
-    Review Created Successfully and the review Id 201801va8ec2108d6e043229ba7a9e6373edec5
-    Video review successfully completed...
-    
-    Total Elapsed Time: 00:05:56.8420355
+```console
+Microsoft.ContentModerator.AMSComponentClient
+Enter the fully qualified local path for Uploading the video :
+"Your File Name.MP4"
+Generate Video Transcript? [y/n] : y
 
+Video compression process started...
+Video compression process completed...
+
+Video moderation process started...
+Video moderation process completed...
+
+Video review process started...
+Video Frames Creation inprogress...
+Frames(83) created successfully.
+Review Created Successfully and the review Id 201801va8ec2108d6e043229ba7a9e6373edec5
+Video review successfully completed...
+
+Total Elapsed Time: 00:05:56.8420355
+```
 
 ## <a name="next-steps"></a>További lépések
 
-[Töltse le a Visual Studio szolgáltatást](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) és az oktatóanyaghoz szükséges a mintafájlokat és könyvtárakat, és tegye meg az integráció első lépéseit.
+Ebben az oktatóanyagban beállította egy alkalmazás, amely módosítja a videóját&mdash;beleértve a szöveges tartalom&mdash;, és a vizsgálóeszközt felülvizsgálatok hoz létre. Ezután további információ a videomoderálás részleteit.
+
+> [!div class="nextstepaction"]
+> [Videomoderálás](./video-moderation-human-review.md)

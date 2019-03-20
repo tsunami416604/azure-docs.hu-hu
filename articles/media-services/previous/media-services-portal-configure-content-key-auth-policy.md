@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7dd056042b841e54c18ee1a667c44cfa11d77a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 71d24c827a5d3382c88b1131d8bc42983b9d5db5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164600"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877479"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>A tartalomkulcs-hitelesítési szabályzat konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -66,7 +66,7 @@ Amikor a jogkivonattal korlátozott szabályzatokat konfigurál, az elsődleges 
 ### <a name="playready"></a>PlayReady
 Amikor Ön tartalmai védelmét a PlayReady, a dolgokat, meg kell adnia az engedélyezési házirendben egyik XML-karakterlánc, amely meghatározza a PlayReady-licencsablon. Alapértelmezés szerint állítsa be a következő szabályzatot:
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
           <LicenseTemplates>
             <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
               <ContentKey i:type="ContentEncryptionKeyFromHeader" />

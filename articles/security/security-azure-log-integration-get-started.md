@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 7e43af7d749719c2f69df9b53766c5452931884b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 244b2d1764f30f790c3e51e23cd2fa0af6375960
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894376"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure Log Integration
 
@@ -113,37 +113,37 @@ Miután végzett az alapszintű, készen áll a telepítés utáni és ellenőrz
 1. Nyissa meg a PowerShellt rendszergazdaként. Ezután lépjen a C:\Program Files\Microsoft Azure Log Integration.
 2. Az Azure Log Integration-parancsmagok importálásához. A parancsmagok importálásához futtassa a szkriptet `LoadAzlogModule.ps1`. Adjon meg `.\LoadAzlogModule.ps1`, majd nyomja le az Enter (Figyeljük meg **.\\**  ebben a parancsban). Mi jelenik meg a következő ábra például kell megjelennie:
 
-  ![Képernyőkép a LoadAzlogModule.ps1 parancs kimenete](./media/security-azure-log-integration-get-started/loaded-modules.png)
+   ![Képernyőkép a LoadAzlogModule.ps1 parancs kimenete](./media/security-azure-log-integration-get-started/loaded-modules.png)
 3. Ezután konfigurálja az Azure Log Integration egy adott Azure-környezet használata. Egy *Azure-környezet* típusa, amelyet fel szeretne dolgozni az Azure felhőbeli adatközpontra. Bár vannak jelenleg több Azure-környezetek, a vonatkozó beállítások vagy **AzureCloud** vagy **AzureUSGovernment**. Futtatja a Powershellt rendszergazdaként, győződjön meg arról, hogy a C:\Program Files\Microsoft Azure Log Integration\ áll. Ezután futtassa a parancsot:
 
-  `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
+   `Set-AzlogAzureEnvironment -Name AzureCloud` (for **AzureCloud**)
   
-  Ha szeretné használni a US Government Azure-felhő, **AzureUSGovernment** a a **-név** változó. Más Azure-felhőket jelenleg nem támogatottak.  
+   Ha szeretné használni a US Government Azure-felhő, **AzureUSGovernment** a a **-név** változó. Más Azure-felhőket jelenleg nem támogatottak.  
 
-  > [!NOTE]
-  > Visszajelzés nem kapja meg, ha a parancs sikeres. 
+   > [!NOTE]
+   > Visszajelzés nem kapja meg, ha a parancs sikeres. 
 
 4. A rendszer nyomon követheti, meg kell az Azure Diagnostics használt tárfiók nevére. Az Azure Portalon lépjen a **virtuális gépek**. Keresse meg a Windows virtuális gép, amely figyelni fogja. Az a **tulajdonságok** szakaszban jelölje be **diagnosztikai beállítások**.  Ezután válassza ki **ügynök**. Jegyezze fel a megadott tárfiók neve. Szüksége lesz a fiók nevét egy későbbi lépésben.
 
-  ![Az Azure diagnosztikai beállítások panel képernyőképe](./media/security-azure-log-integration-get-started/storage-account-large.png) 
+   ![Az Azure diagnosztikai beállítások panel képernyőképe](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
-  ![Vendégszintű figyelés gomb engedélyezése képernyőképe](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
+   ![Vendégszintű figyelés gomb engedélyezése képernyőképe](./media/security-azure-log-integration-get-started/azure-monitoring-not-enabled-large.png)
 
-  > [!NOTE]
-  > Figyelés nem lett engedélyezve, a virtuális gép létrehozásakor, ha az előző képen látható módon engedélyezheti azt.
+   > [!NOTE]
+   > Figyelés nem lett engedélyezve, a virtuális gép létrehozásakor, ha az előző képen látható módon engedélyezheti azt.
 
 5. Most lépjen vissza az Azure Log Integration gép. Győződjön meg arról, hogy hozzáfér a tárfiókhoz a rendszerből, amelyre telepítette az Azure Log Integration. Az Azure Log Integration-szolgáltatást futtató számítógép kell az egyes figyelt rendszerekhez Azure Diagnostics által naplózott adatokat beolvasni a tárfiókhoz való hozzáférést. Kapcsolat meglétének ellenőrzéséhez: 
-  1. [Az Azure Storage Explorer letöltése](http://storageexplorer.com/).
-  2. A telepítés befejezéséhez.
-  3. Ha a telepítés befejeződött, válassza ki a **tovább**. Hagyja a **indítsa el a Microsoft Azure Storage Explorer** jelölőnégyzet be van jelölve.  
-  4. Jelentkezzen be az Azure-ba.
-  5. Győződjön meg arról, hogy a tárfiók, beállított Azure Diagnostics látja: 
+   1. [Az Azure Storage Explorer letöltése](https://storageexplorer.com/).
+   2. A telepítés befejezéséhez.
+   3. Ha a telepítés befejeződött, válassza ki a **tovább**. Hagyja a **indítsa el a Microsoft Azure Storage Explorer** jelölőnégyzet be van jelölve.  
+   4. Jelentkezzen be az Azure-ba.
+   5. Győződjön meg arról, hogy a tárfiók, beállított Azure Diagnostics látja: 
 
    ![Képernyőkép a storage-fiókok a Storage Explorerben](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
-  6. Néhány lehetőség a storage-fiókok jelennek meg. A **táblák**, megjelenik a következő táblába **WADWindowsEventLogsTable**.
+   1. Néhány lehetőség a storage-fiókok jelennek meg. A **táblák**, megjelenik a következő táblába **WADWindowsEventLogsTable**.
 
-  Figyelés nem lett engedélyezve, a virtuális gép létrehozásakor, ha engedélyezheti azt, a fentebb leírt módon.
+   Figyelés nem lett engedélyezve, a virtuális gép létrehozásakor, ha engedélyezheti azt, a fentebb leírt módon.
 
 
 ## <a name="integrate-windows-vm-logs"></a>Windows virtuális gépek naplóinak integrálása
@@ -156,36 +156,36 @@ Ez a lépés utolsó mozzanataként kell néhány dolgot:
 * **StorageKey tulajdonságát**: A tárkulcs a tárfiók a virtuális gép az Azure diagnosztikai adatok tárolására.  
 
 A storage-kulcs beszerzéséhez kövesse az alábbi lépéseket:
-1. Nyissa meg az [Azure Portal](http://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. A navigációs panelen válassza ki **minden szolgáltatás**.
 3. Az a **szűrő** mezőbe írja be **tárolási**. Ezután válassza ki **tárfiókok**.
 
-  ![Képernyőkép a storage-fiókokat az összes szolgáltatás](./media/security-azure-log-integration-get-started/filter.png)
+   ![Képernyőkép a storage-fiókokat az összes szolgáltatás](./media/security-azure-log-integration-get-started/filter.png)
 
 4. Storage-fiókok listája jelenik meg. Kattintson duplán a fiókot, amelyet a hozzárendelt tárolási bejelentkezni.
 
-  ![Képernyőkép a tárfiókok listája](./media/security-azure-log-integration-get-started/storage-accounts.png)
+   ![Képernyőkép a tárfiókok listája](./media/security-azure-log-integration-get-started/storage-accounts.png)
 
 5. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet.
 
-  ![A hozzáférési kulcs lehetőség, a menü képernyőkép](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
+   ![A hozzáférési kulcs lehetőség, a menü képernyőkép](./media/security-azure-log-integration-get-started/storage-account-access-keys.png)
 
 6. Másolás **key1**, és mentse egy biztonságos helyen, amely a következő lépés hozzáférhet.
 7. A kiszolgálón, amelyre telepítve van az Azure Log Integration nyissa meg rendszergazdaként egy parancssori ablakot. (Ügyeljen arra, nyisson meg egy parancssori ablakot rendszergazdaként, majd a PowerShell nem).
 8. Nyissa meg a C:\Program Files\Microsoft Azure-naplók integrációja.
 9. Futtassa a következő parancsot: `Azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>`.
  
-  Példa:
+   Példa:
   
-  `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
-  Ha azt szeretné, hogy az előfizetés-azonosító jelenik meg az XML, Hozzáfűzés az előfizetés-azonosító rövid nevet:
+   Ha azt szeretné, hogy az előfizetés-azonosító jelenik meg az XML, Hozzáfűzés az előfizetés-azonosító rövid nevet:
 
-  `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
+   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Példa:
+   Példa:
   
-  `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
+   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
 > [!NOTE]
 > Akár 60 percig várjon, és tekintse meg az eseményeket, a rendszer a tárfiókból lekért. Az Azure Log Integration az események megtekintéséhez jelölje ki **Eseménynapló** > **Windows-naplók** > **továbbított események**.
@@ -200,11 +200,11 @@ Ha az adatai nem jelennek meg a továbbított események mappában egy óra elte
 
 1. Ellenőrizze a gép, amely az Azure Log Integration szolgáltatás fut-e. Győződjön meg arról, hogy hozzá tudjon férni az Azure-e. Tesztelheti a kapcsolatot, egy böngészőben, próbálja ki ugorhat a [az Azure portal](https://portal.azure.com).
 2. Győződjön meg arról, hogy a felhasználói fiók Azlog rendelkezik írási engedéllyel a mappa users\Azlog.
-  1. Nyissa meg a Fájlkezelőt.
-  2. Ugrás a C:\users.
-  3. Kattintson a jobb gombbal C:\users\Azlog.
-  4. Válassza ki **biztonsági**.
-  5. Válassza ki **NT Service\Azlog**. Ellenőrizze a fiók engedélyeit. Ha a fiók nem szerepel ezen a lapon, vagy ha nem jelennek meg a megfelelő engedélyekkel, megadhatja az engedélyeket a fiókhoz az ezen a lapon.
+   1. Nyissa meg a Fájlkezelőt.
+   2. Ugrás a C:\users.
+   3. Kattintson a jobb gombbal C:\users\Azlog.
+   4. Válassza ki **biztonsági**.
+   5. Válassza ki **NT Service\Azlog**. Ellenőrizze a fiók engedélyeit. Ha a fiók nem szerepel ezen a lapon, vagy ha nem jelennek meg a megfelelő engedélyekkel, megadhatja az engedélyeket a fiókhoz az ezen a lapon.
 3. A parancs futtatásakor `Azlog source list`, győződjön meg arról, hogy a storage-fiók, amely a parancs hozzáadva `Azlog source add` a kimeneti szerepel-e.
 4. Ha bármilyen hibát jelentett az Azure Log Integration szolgáltatásból megtekintéséhez lépjen a **Eseménynapló** > **Windows-naplók** > **alkalmazás**.
 
@@ -224,15 +224,15 @@ Az Azure-tevékenységnapló egy előfizetési napló, amely az Azure-ban beköv
 2. Az alábbi paranccsal:  ```azlog createazureid```
 
     Ez a parancs az Azure bejelentkezési kéri. A parancs majd létrehoz egy Azure Active Directory egyszerű szolgáltatást az Azure AD-bérlőt, amelyek az Azure-előfizetést, amelyben a bejelentkezett felhasználó a rendszergazda, társ-rendszergazda vagy tulajdonos. A parancs sikertelen lesz, ha a bejelentkezett felhasználó csak az Azure AD-bérlő vendégfelhasználó. Hitelesítés az Azure-bA az Azure AD-n keresztül történik. Az Azure AD-identitásnak, hogy az Azure-előfizetésekből olvasási hozzáférést kap az Azure Log Integration egyszerű szolgáltatás létrehozása hoz létre.
-3.  A következő paranccsal történő hitelesítéséhez az Azure Log Integration a szolgáltatásnév létrejött az előző lépés hozzáférést az előfizetéshez tartozó olvassa el a tevékenységnapló található. Meg kell lennie az előfizetés tulajdonosa a parancs futtatásához.
+3. A következő paranccsal történő hitelesítéséhez az Azure Log Integration a szolgáltatásnév létrejött az előző lépés hozzáférést az előfizetéshez tartozó olvassa el a tevékenységnapló található. Meg kell lennie az előfizetés tulajdonosa a parancs futtatásához.
 
-    ```Azlog.exe authorize subscriptionId``` Példa:
+   ```Azlog.exe authorize subscriptionId``` Példa:
 
    ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
 
-4.  Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory naplózási log JSON-fájlok jönnek létre számukra:
-    - C:\Users\azlog\AzureResourceManagerJson
-    - C:\Users\azlog\AzureResourceManagerJsonLD
+4. Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory naplózási log JSON-fájlok jönnek létre számukra:
+   - C:\Users\azlog\AzureResourceManagerJson
+   - C:\Users\azlog\AzureResourceManagerJsonLD
 
 > [!NOTE]
 > További fejlesztéseket végzünk az adatokat a biztonsági információk és eseménykezelő (SIEM) rendszer JSON-fájljaiban szereplő információk arra vonatkozóan lépjen kapcsolatba a SIEM gyártójával.

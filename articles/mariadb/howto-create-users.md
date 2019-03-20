@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 189e122e04d56d28c1e1e94d328569647614a124
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 019c4eca564c503913a488a1d1ee5e4046ff320a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089879"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Felhasználók létrehozása az Azure Database for MariaDB 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for MariaDB.
@@ -80,7 +80,7 @@ Az Azure Database for MariaDB-kiszolgáló létrehozása után további felhaszn
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-Fiókkezeléssel kapcsolatos további információkért lásd: MariaDB dokumentációját [felhasználóifiók-kezelés](https://mariadb.com/kb/en/library/user-account-management/), [GRANT szintaxis](https://mariadb.com/kb/en/library/grant/), és [jogosultságokkal](https://mariadb.com/kb/en/library/grant/#privilege-levels).
+   Fiókkezeléssel kapcsolatos további információkért lásd: MariaDB dokumentációját [felhasználóifiók-kezelés](https://mariadb.com/kb/en/library/user-account-management/), [GRANT szintaxis](https://mariadb.com/kb/en/library/grant/), és [jogosultságokkal](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>További lépések
 Megnyitja a tűzfalat, hogy azok tudjanak csatlakozni az új felhasználók gépek IP-címek: [Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával](howto-manage-firewall-portal.md)  

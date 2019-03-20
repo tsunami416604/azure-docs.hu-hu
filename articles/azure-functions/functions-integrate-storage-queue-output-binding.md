@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106457"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -122,7 +122,7 @@ A Functions futtatókörnyezete egy **outqueue** nevű új üzenetsort hoz létr
 
 Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Explorert a jelen rövid útmutató során használt tárfiókhoz.
 
-2. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza ki a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** elemre.
+1. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza ki a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** elemre.
 
     ![Futtassa a Storage Account Explorer eszközt.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
  
 1. Az érték megjelenítéséhez kattintson a **Fiókkulcs** melletti megjelenítés/elrejtés ikonra, majd másolja ki a **Fiókkulcs** értékét, és illessze be a Storage Explorer **Fiókkulcs** mezőjébe.
   
-3. Válassza a **Tovább > Kapcsolódás** lehetőséget.
+1. Válassza a **Tovább > Kapcsolódás** lehetőséget.
 
    ![Illessze be a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 
-4. A Storage Explorerben válassza ki a jelen rövid útmutatóban használni kívánt tárfiókot.
+1. A Storage Explorerben válassza ki a jelen rövid útmutatóban használni kívánt tárfiókot.
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
@@ -154,7 +154,7 @@ Hagyja ki ezt a szakaszt, ha már telepítette és csatlakoztatta a Storage Expl
 
     ![A Storage Explorerben megjelenő üzenetsori üzenet](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. Ha újból futtatja a függvényt, egy új üzenet jelenik meg az üzenetsorban.  
+1. Ha újból futtatja a függvényt, egy új üzenet jelenik meg az üzenetsorban.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

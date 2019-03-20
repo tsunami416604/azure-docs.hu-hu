@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746303"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004943"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ Az ügyféloldali napló részletes információkat arról, hogyan az ügyfél e
 A Storage ügyféloldali kódtára ügyféloldali Teljesítménynapló-adatok az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt) a megadott helyen tárolja.
 
 ### <a name="collect-a-network-trace"></a>Hálózati nyomkövetési adatok gyűjtése
-Az Üzenetelemző használatával összegyűjtése egy HTTP/HTTPS hálózati nyomkövetést az ügyfélalkalmazás futtatása közben. A Message Analyzer használ [Fiddler](http://www.telerik.com/fiddler) a háttérben. A hálózati nyomkövetés gyűjthet, mielőtt azt javasoljuk, hogy a nem titkosított HTTPS-forgalom rögzítése a Fiddler konfigurálása:
+Az Üzenetelemző használatával összegyűjtése egy HTTP/HTTPS hálózati nyomkövetést az ügyfélalkalmazás futtatása közben. A Message Analyzer használ [Fiddler](https://www.telerik.com/fiddler) a háttérben. A hálózati nyomkövetés gyűjthet, mielőtt azt javasoljuk, hogy a nem titkosított HTTPS-forgalom rögzítése a Fiddler konfigurálása:
 
-1. Telepítés [Fiddler](http://www.telerik.com/download/fiddler).
+1. Telepítés [Fiddler](https://www.telerik.com/download/fiddler).
 2. A Fiddler elindítása.
 3. Válassza ki **eszközök |} Fiddler-beállítások**.
 4. A beállítások párbeszédpanelen ellenőrizze, hogy **rögzítése HTTPS csatlakozik** és **HTTPS-forgalom visszafejtése** mind van jelölve, ahogy az alábbi.

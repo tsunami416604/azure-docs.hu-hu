@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 67b9be6f7788acd44ac60fe0c71133d69a2c122e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889785"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database-feladatok telepítésének áttekintése
 
@@ -27,12 +27,12 @@ ms.locfileid: "57313837"
 
 [**Elastic Database-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell-lel vagy az Azure Portalon keresztül is telepíthető. Csak akkor, ha a PowerShell-csomag telepítése a PowerShell API-val feladatok létrehozása és kezelése a hozzáférést kaphatnak. Ezenkívül a PowerShell API-k jóval több funkciót kínál, mint a portál ezen a ponton az időben.
 
-Ha már telepített **rugalmas adatbázis-feladatok** egy meglévő a portálon keresztül **rugalmas készlet**, a Powershell legújabb előzetes verziót tartalmaz parancsprogramokat a meglévő telepítés frissítése. Erősen javasoljuk, hogy a telepítés frissítése a legújabb **rugalmas adatbázis-feladatok** összetevők a PowerShell API-kon keresztül új funkcióinak kihasználása érdekében.
+Ha már telepített **rugalmas adatbázis-feladatok** egy meglévő a portálon keresztül **rugalmas készlet**, a PowerShell legújabb előzetes verziót tartalmaz parancsprogramokat a meglévő telepítés frissítése. Erősen javasoljuk, hogy a telepítés frissítése a legújabb **rugalmas adatbázis-feladatok** összetevők a PowerShell API-kon keresztül új funkcióinak kihasználása érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Az ingyenes próbaverzióra, lásd: [az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
 * Azure PowerShell. Telepítse a legújabb verzióját használja a [Webplatform-telepítő](https://go.microsoft.com/fwlink/p/?linkid=320376). Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
-* [NuGet parancssori segédprogrammal](https://nuget.org/nuget.exe) az Elastic Database-feladatok csomag telepítéséhez használt. További információkért lásd: http://docs.nuget.org/docs/start-here/installing-nuget.
+* [NuGet parancssori segédprogrammal](https://nuget.org/nuget.exe) az Elastic Database-feladatok csomag telepítéséhez használt. További információkért lásd: https://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Töltse le és az Elastic Database-feladatok PowerShell csomag importálása
 1. Indítsa el a Microsoft Azure PowerShell-parancsablakot, és lépjen abba a könyvtárba, ahová letöltötte NuGet parancssori segédprogrammal (nuget.exe).
@@ -75,9 +75,7 @@ A következő minta hívással megadott paraméterek a kívánt beállítások m
     <td>Itt az Azure-erőforráscsoport neve létrehozni az újonnan létrehozott Azure-összetevőket tartalmazza. Ez a paraméter alapértelmezett értéke "__ElasticDatabaseJob". Ez az érték módosítása nem ajánlott.</td>
     </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ResourceGroupLocation</td>
     <td>Az Azure-helyen használható az újonnan létrehozott Azure-összetevőket tartalmaz. Ez a paraméter alapértelmezett értéke az USA középső RÉGIÓJA helyen.</td>
 </tr>
@@ -85,28 +83,24 @@ A következő minta hívással megadott paraméterek a kívánt beállítások m
 <tr>
     <td>ServiceWorkerCount</td>
     <td>Megadja a szolgáltatás feldolgozók telepítéséhez. Ez a paraméter alapértelmezett értéke 1. Feldolgozók száma is használható, a szolgáltatás horizontális és magas rendelkezésre állást biztosít. Javasoljuk, hogy használja a "2" központi telepítés, a szolgáltatás magas rendelkezésre állást igénylő.</td>
-    </tr>
-
 </tr>
-    <tr>
+
+<tr>
     <td>ServiceVmSize</td>
     <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. FO a feldolgozói szerepkör méretek, további információt talál [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerDatabaseSlo</td>
     <td>A számítási méret biztosít a Standard edition. Ez a paraméter alapértelmezett S0. A paraméter értékét... /.. /.. /.. / S9/S12 elfogadottak, amelyek miatt az Azure SQL Database használata a megfelelő számítási mérete. Az SQL-adatbázis számítási méretek további információkért lásd: [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorUserName</td>
     <td>Itt az újonnan létrehozott Azure SQL Database-kiszolgáló rendszergazdai felhasználóneve. Ha nincs megadva, egy PowerShell-hitelesítő adatok ablak megnyílik a hitelesítő adatok kérése.</td>
 </tr>
 
-</tr>
-    <tr>
+<tr>
     <td>SqlServerAdministratorPassword</td>
     <td>Az újonnan létrehozott Azure SQL Database-kiszolgálót biztosít a rendszergazdai jelszót. Ha nincs megadva, egy PowerShell-hitelesítő adatok ablak megnyílik a hitelesítő adatokat kérő.</td>
 </tr>
@@ -131,22 +125,17 @@ Telepítés Virtuálisgép-méretének frissítéséhez futtassa a következő s
   <th>Leírás</th>
 </tr>
 
-  <tr>
+<tr>
     <td>ResourceGroupName</td>
     <td>Azonosítja a használatos, ha az Elastic Database feladat összetevők is telepítve az Azure erőforráscsoport-név. Ez a paraméter alapértelmezett értéke "__ElasticDatabaseJob". Ez az érték módosítása nem ajánlott, mivel nem kell megadnia ezt a paramétert.</td>
-    </tr>
 </tr>
 
-</tr>
-
-  <tr>
+<tr>
     <td>ServiceWorkerCount</td>
     <td>Megadja a szolgáltatás feldolgozók telepítéséhez.  Ez a paraméter alapértelmezett értéke 1.  Feldolgozók száma is használható, a szolgáltatás horizontális és magas rendelkezésre állást biztosít.  Javasoljuk, hogy használja a "2" központi telepítés, a szolgáltatás magas rendelkezésre állást igénylő.</td>
 </tr>
 
-</tr>
-
-    <tr>
+<tr>
     <td>ServiceVmSize</td>
     <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. FO a feldolgozói szerepkör méretek, további információt talál [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>

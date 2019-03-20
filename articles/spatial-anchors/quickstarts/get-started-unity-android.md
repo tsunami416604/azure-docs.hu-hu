@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961009"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863117"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Gyors útmutató: Egy Android Unity-alkalmazás létrehozása az Azure térbeli horgonyok
 
@@ -35,7 +35,9 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- A gép egy Windows vagy MacOS rendszerű <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> és <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3-as</a> telepítve.
+- A gép egy Windows vagy MacOS rendszerű <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> és <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3-as</a>.
+  - Ha fut a Windows, is kell <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
+  - Ha macOS rendszeren fut, első keresztül a homebrew-val telepített Git. Adja meg a következő parancs a terminál egyetlen sorba: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">engedélyezve fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">képes ARCore</a> Android-eszközön.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -58,32 +60,12 @@ Mentse a jelenet kiválasztásával **fájl** -> **mentése**.
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Válassza ki **exportálása** egy párbeszédpanel megnyitásához. Ezután válasszon egy mappát az Android Studio project exportálása.
-
-Az Exportálás befejeződése után egy mappa megjelenik az exportált Android Studio-projektet tartalmazó nevű almappában **HelloAR U3D**.
-
-## <a name="deploy-the-android-application"></a>Az Android-alkalmazás üzembe helyezése
-
-Nyissa meg az Android Studiót, és válassza ki **Android Studio projekt megnyitása**. Ezután válassza ki a **HelloAR U3D** almappát a exportált Android Studio-projektet, és kattintson a **OK**.
-
-Megnyitás, alapján egy értesítés fog megjelenni a Gradle-burkoló használata kéri. Válassza ki **OK** a Gradle-burkoló használata, és nyissa meg a projektet.
-
-Az Android-eszközön Power, jelentkezzen be, és csatlakoztassa a Számítógépet, USB-kábel segítségével.
-
-Válassza ki **futtatása** az Android Studio eszköztáron.
-
-![Az Android Studio üzembe helyezése és futtatása](./media/get-started-unity-android/android-studio-deploy-run.png)
-
-Válassza ki az Androidos eszközt a **válassza ki a központi telepítési cél** párbeszédpanel, és válassza ki **OK** futtathatják az alkalmazást az Android-eszközön.
+Győződjön meg, hogy a **exportálása projekt** jelölőnégyzet nem rendelkezik a jelölőnégyzet be van jelölve. Kattintson a **létrehozásához és futtatásához**. Meg kell adnia menteni a `.apk` fájlt bármilyen nevet, kiválaszthatja.
 
 Kövesse az utasításokat az alkalmazásban kívánja helyezni horgonyra visszaírásához.
 
 > [!NOTE]
 > Az alkalmazás futtatásakor, ha nem látja a kamerát a háttérben (a példányt egy üres, kék helyette tekintse meg vagy más textúrákhoz), majd valószínűleg újra importálnia kell a Unity-nél eszközök. Állítsa le az alkalmazást. Válassza a felső menüben, a Unity-nél, **eszközök -> minden újraimportálása**. Ezután futtassa újra az alkalmazást.
-
-Állítsa le az alkalmazást kiválasztásával **leállítása** az Android Studio eszköztáron.
-
-![Android Studio Stop](./media/get-started-unity-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

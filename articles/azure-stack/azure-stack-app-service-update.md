@@ -11,16 +11,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/18/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c993322bdf4266939eab854e217cae6e90326d29
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 1ea079373edc9b9f1dde6038f1e02e3d7036e052
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991563"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890491"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Frissítse az Azure App Service az Azure Stackben
 
@@ -52,7 +52,7 @@ Ez a folyamat során a frissítés tartalma:
 
 Az App Service üzemelő példánya az Azure Stackben a frissítéshez kövesse az alábbi lépéseket:
 
-1. Töltse le a [az App Service-telepítő](https://aka.ms/appsvcupdate4installer)
+1. Töltse le a [az App Service-telepítő](https://aka.ms/appsvcupdate5installer)
 
 2. Appservice.exe futtassa rendszergazdaként
 
@@ -72,13 +72,13 @@ Az App Service üzemelő példánya az Azure Stackben a frissítéshez kövesse 
 
    1. Kattintson a **Connect** megjelenítő gombra a **Azure Stack-előfizetést** mezőbe.
         * Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Kattintson a **jelentkezzen be a**.
-        * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: *cloudadmin@azurestack.local*. Adja meg a jelszót, és kattintson a **bejelentkezés**.
+        * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Ha például *cloudadmin\@azurestack.local*. Adja meg a jelszót, és kattintson a **bejelentkezés**.
    2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
    3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
    4. Ha meglévő App Service-környezet észlel, majd az erőforrás és a tárfiókja fog használni feltöltve, szürkén jelenik meg.
    5. Kattintson a **tovább** , tekintse át a frissítési összefoglalót.
 
-    ![Az App Service-telepítést észlelt][3]
+      ![Az App Service-telepítést észlelt][3]
 
 8. Az összefoglalás lapon:
    1. Ellenőrizze a kiválasztott beállítások. Módosításához használja a **előző** gombok használatával keresse fel az előző lapokra.

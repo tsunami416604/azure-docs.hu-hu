@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af604dbabe9df56322342230eaec70548f53c927
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199494"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Bevezetés a HDInsight egy Apache HBase-példájába
 
@@ -33,7 +33,7 @@ Az alábbi HBase-példa kipróbálásához a következőkkel kell rendelkeznie:
 ## <a name="create-apache-hbase-cluster"></a>Az Apache HBase-fürt létrehozása
 Az alábbi eljárás egy Azure Resource Manager-sablont használ egy HBase-fürt és a függő Azure Storage-fiók létrehozására. Az eljárásban és egyéb fürtlétrehozási módszerekben használt paraméterek megértéséhez lásd: [Create Linux-based Hadoop clusters in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) (Linux-alapú Hadoop-fürtök létrehozása a HDInsightban). A Data Lake Storage Gen2 használatával további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablon az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) között található.
+1. Az alábbi képre kattintva megnyithatja a sablont az Azure Portalon. A sablonban található [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/).
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Az **Egyéni üzembe helyezés** panelen adja meg a következő értékeket:
@@ -111,7 +111,7 @@ A HBase (megvalósítását [felhőalapú BigTable](https://cloud.google.com/big
 
 A HBase több módszert tartalmaz az adatok táblába töltéséhez.  További információ: [Bulk loading](https://hbase.apache.org/book.html#arch.bulk.load) (Kötegelt betöltés).
 
-Egy minta adatfájl található a következő nyilvános blobtárolóban található: *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Az adatfájl tartalma a következő:
+Egy minta adatfájlt egy nyilvános blob-tárolóban található *wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt*.  Az adatfájl tartalma a következő:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -175,14 +175,14 @@ Használatával lekérdezheti a HBase táblákban lévő adatok [Apache Hive](ht
 
 A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Mindig biztonságos HTTP-n (HTTPS-en) keresztül kell kéréseket végeznie, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgálónak.
 
-2. Használja az alábbi parancsot a meglévő HBase-táblák listázásához:
+1. Használja az alábbi parancsot a meglévő HBase-táblák listázásához:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Használja az alábbi parancsot egy új, kétoszlopos családokkal rendelkező HBase-tábla létrehozásához:
+1. Használja az alábbi parancsot egy új, kétoszlopos családokkal rendelkező HBase-tábla létrehozásához:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -194,7 +194,7 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
     ```
 
     A séma a JSon formátumban van megadva.
-4. Használja az alábbi parancsot néhány adat beviteléhez:
+1. Használja az alábbi parancsot néhány adat beviteléhez:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -207,12 +207,12 @@ A REST API védelméről [alapszintű hitelesítés](https://en.wikipedia.org/wi
    
     A -d kapcsolóban megadott értékeket a base64 használatával kell kódolnia. A példában:
    
-   * MTAwMA ==: 1000
-   * UGVyc29uYWw6TmFtZQ ==: Személyes: név
+   * MTAwMA==: 1000
+   * UGVyc29uYWw6TmFtZQ==: Személyes: név
    * Sm9obiBEb2xl: John Dole
      
      A [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) lehetővé teszi több (kötegelt) érték beszúrását.
-5. Használja az alábbi parancsot egy sor lekéréséhez:
+1. Használja az alábbi parancsot egy sor lekéréséhez:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -243,19 +243,19 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 **A HBase mesterfelületének elérése**
 
-1. Jelentkezzen be az Ambari webes felhasználói Felületet a https://&lt;Clustername >. azurehdinsight.NET formátumban van.
+1. Sign into the Ambari Web UI at https://&lt;Clustername>.azurehdinsight.net.
 2. Kattintson a **HBase** elemre a bal oldali menüben.
 3. Kattintson a **Gyorshivatkozások** elemre a lap tetején, mutasson az aktív Zookeeper-csomópont hivatkozására, majd kattintson a **HBase-mesterfelület** elemre.  A felület egy új böngészőlapon nyílik meg:
 
-  ![HDInsight HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  A HBase-mesterfelület az alábbi részeket tartalmazza:
+   A HBase-mesterfelület az alábbi részeket tartalmazza:
 
-  - régiós kiszolgálók
-  - biztonsági mentési főkiszolgálók
-  - táblák
-  - feladatok
-  - szoftverattribútumok
+   - régiós kiszolgálók
+   - biztonsági mentési főkiszolgálók
+   - táblák
+   - feladatok
+   - szoftverattribútumok
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése előtt tiltsa le a HBase-táblákat.
@@ -272,8 +272,6 @@ Ebben a cikkben megtanulta, Apache HBase-fürt létrehozása és a táblák lét
 További tudnivalókért lásd:
 
 * [HDInsight HBase overview][hdinsight-hbase-overview]: Az Apache HBase egy Apache, nyílt forráskódú nosql-alapú adatbázis az Apache hadoop, amely véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatot.
-
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: https://hbase.apache.org/book.html#importtsv

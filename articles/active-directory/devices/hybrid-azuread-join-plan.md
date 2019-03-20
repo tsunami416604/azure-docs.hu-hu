@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a1d0dab08c4beb93d323bcd1a5f5b00a190daa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003812"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -41,6 +41,8 @@ Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni sze
 
 Ez a cikk feltételezi, hogy ismeri a [bemutatása az Eszközfelügyelet az Azure Active Directory](../device-management-introduction.md).
 
+>[!NOTE]
+>  A szükséges minimális működési tartomány és erdő működési szintjét a Windows 10-es hibrid Azure AD-csatlakozás Windows Server 2008 R2. Alsó-verzión a felhasználó nem tarozik elsődleges frissítési Token LSA problémák miatt a Windows-bejelentkezés során 
 
 ## <a name="plan-your-implementation"></a>A megvalósítás tervezése
 

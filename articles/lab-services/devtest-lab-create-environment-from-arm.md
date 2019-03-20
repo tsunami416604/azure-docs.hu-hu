@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f2bf811bfb0856b7ceb2fca2fd84c0d9830fb65d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebe5c65f701c0a1c7c02182800a35bfbeed5b0be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181384"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
@@ -109,10 +109,10 @@ Ha a labor létrehozása az Azure Resource Manager-sablon tárház lett konfigur
     > [!NOTE]
     > Nincsenek több paraméterértékeket – még akkor is, ha a megadott - jelennek meg, az üres értékeket. Ezért ha a felhasználók ezeket az értékeket rendel egy Azure Resource Manager-sablonban szereplő paraméterekkel, DevTest Labs nem jeleníti meg az értékeket. Ehelyett üres szövegbeviteli mezők jelennek meg, labor felhasználókat kell adnia egy értéket a környezet létrehozásakor.
     > 
-    > - ÁLTALÁNOS EGYEDI
-    > - ÁLTALÁNOS – EGYEDI – [N]
+    > - GEN-UNIQUE
+    > - GEN-UNIQUE-[N]
     > - GEN-SSH-PUB-KEY
-    > - ÁLTALÁNOS – JELSZÓ 
+    > - GEN-PASSWORD 
  
 1. Válassza ki **Hozzáadás** a környezet létrehozásához. A környezet elindul, azonnal az állapot megjelenítése a kiépítés a **a virtual machines** listája. Az Azure Resource Manager-sablonban definiált összes erőforrás kiépítéséhez a Lab automatikusan létrejön egy új erőforráscsoportot.
 1. A környezet létrehozása után válassza ki a környezetet a **a virtual machines** listában az erőforrás-csoport panel megnyitásához, és keresse meg a környezetben üzembe helyezett erőforrásokat.
@@ -127,10 +127,119 @@ Ha a labor létrehozása az Azure Resource Manager-sablon tárház lett konfigur
 
     ![Környezet műveletek](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
-## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>Virtuális gép létrehozása Resource Manager-sablon üzembe helyezése
-Miután mentése a Resource Manager-sablonnal, és igény szerint testreszabott, automatizálhatja a virtuális gép létrehozása használhatja. 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) ismerteti, hogyan lehet Azure PowerShell használatával a Resource Manager-sablonokkal helyezheti üzembe az erőforrásokat az Azure-bA. 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) ismerteti, hogyan lehet Azure CLI használatával a Resource Manager-sablonokkal helyezheti üzembe az erőforrásokat az Azure-bA.
+## <a name="automate-deployment-of-environments"></a>A környezetek üzembe helyezésének automatizálása
+Az Azure DevTest Labs lehetővé teszi a használatára egy [Azure Resource Management Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) olyan környezetet hozhat létre a tesztkörnyezetben erőforrások vannak beállítva. Ezekben a környezetekben, amelyek a Resource Manager-sablonok használatával lehet létrehozni Azure-erőforrások is tartalmazhat. DevTest Labs-környezetek engedélyezése a felhasználók számára könnyen központi telepítése összetett infrastruktúrák konzisztens módon belül a labor létrehozása. Jelenleg környezet hozzáadása egy laborhoz, az Azure portal használatával akkor megvalósítható, ha egyszer hozza létre, de egy fejlesztési és a egy tesztelési helyzetet, ahol több létrehozások fordulhat elő, az automatikus központi telepítési lehetővé teszi, hogy egy továbbfejlesztett felületet.
+
+Befejeződött a következő lépéseket a [konfigurálása saját sablon tárházak](#configure-your-own-template-repositories) szakaszt, mielőtt továbblépne: 
+
+1. A Resource Manager-sablon, amely meghatározza a létrehozott erőforrások létrehozásához. 
+2. Állítsa be a Resource Manager-sablon a Git-tárház. 
+3. A Git-tárház csatlakozhat a tesztkörnyezetben. 
+
+### <a name="powershell-script-to-deploy-the-resource-manager-template"></a>A Resource Manager-sablon üzembe helyezése a PowerShell-parancsprogram
+A PowerShell-parancsfájl mentése a következő szakaszban a merevlemezre (például: deployenv.ps1), és futtassa a szkriptet a SubscriptionId, ResourceGroupName, LabName, RepositoryName, az értékek megadása után TemplateName (mappa), a Git-tárházban, EnvironmentName.
+
+```powershell
+./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"  
+```
+
+#### <a name="sample-script"></a>Példaszkript
+Itt látható a minta parancsfájl olyan környezetet hozhat létre a tesztkörnyezetben. A megjegyzéseket, a parancsfájl segít jobban megérteni a parancsfájl. 
+
+```powershell
+#Requires -Version 3.0
+#Requires -Module AzureRM.Resources
+
+[CmdletBinding()]
+
+param (
+# ID of the Azure Subscription where the lab is created.
+[string] [Parameter(Mandatory=$true)] $SubscriptionId,
+
+# Name of the lab (existing) in which to create the environment.
+[string] [Parameter(Mandatory=$true)] $LabName,
+
+# Name of the connected repository in the lab. 
+[string] [Parameter(Mandatory=$true)] $RepositoryName,
+
+# Name of the template (folder name in the Git repository) based on which the environment will be created.
+[string] [Parameter(Mandatory=$true)] $TemplateName,
+
+# Name of the environment to be created in the lab.
+[string] [Parameter(Mandatory=$true)] $EnvironmentName,
+
+# The parameters to be passed to the template. Each parameter is prefixed with “-param_”. 
+# For example, if the template has a parameter named “TestVMName” with a value of “MyVMName”, the string in $Params will have the form: `-param_TestVMName MyVMName`. 
+# This convention allows the script to dynamically handle different templates.
+[Parameter(ValueFromRemainingArguments=$true)]
+    $Params
+)
+
+# Save this script as the deployenv.ps1 file
+# Run the script after you specify values for SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (folder) in the Git repo, EnvironmentName
+# ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"    
+
+# Comment this statement to completely automate the environment creation.    
+# Sign in to Azure. 
+Connect-AzureRmAccount
+
+# Select the subscription that has the lab.  
+Set-AzureRmContext -SubscriptionId $SubscriptionId | Out-Null
+
+# Get information about the user, specifically the user ID, which is used later in the script.  
+$UserId = $((Get-AzureRmADUser -UserPrincipalName (Get-AzureRmContext).Account).Id.Guid)
+        
+# Get information about the lab such as lab location. 
+$lab = Get-AzureRmResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
+if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
+    
+# Get information about the repository in the lab. 
+$repository = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
+    -ResourceName $LabName `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
+
+# Get information about the Resource Manager template based on which the environment will be created. 
+$template = Get-AzureRmResource -ResourceGroupName $lab.ResourceGroupName `
+    -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
+    -ResourceName "$LabName/$($repository.Name)" `
+    -ApiVersion 2016-05-15 `
+    | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
+    | Select-Object -First 1
+if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
+
+# Build the template parameters with parameter name and values.     
+$parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
+$templateParameters = @()
+
+# The custom parameters need to be extracted from $Params and formatted as name/value pairs.
+$Params | ForEach-Object {
+    if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
+        $name = $Matches[1]                
+    } elseif ( $name ) {
+        $templateParameters += @{ "name" = "$name"; "value" = "$_" }
+        $name = $null #reset name variable
+    }
+}
+
+# Once name/value pairs are isolated, create an object to hold the necessary template properties
+$templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
+
+# Now, create or deploy the environment in the lab by using the New-AzureRmResource command. 
+New-AzureRmResource -Location $Lab.Location `
+    -ResourceGroupName $lab.ResourceGroupName `
+    -Properties $templateProperties `
+    -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
+    -ResourceName "$LabName/$UserId/$EnvironmentName" `
+    -ApiVersion '2016-05-15' -Force 
+ 
+Write-Output "Environment $EnvironmentName completed."
+```
+
+Azure CLI segítségével is erőforrások Resource Manager-sablonok üzembe helyezése. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 > [!NOTE]
 > Csak egy tesztlabor tulajdonosi engedélyekkel rendelkező felhasználói virtuális gépeket hozhat létre a Resource Manager-sablon Azure PowerShell használatával. Ha szeretné automatizálni a virtuális gép létrehozása Resource Manager-sablon használatával, és csak felhasználói engedélyek, használhatja a [ **az lab vm létrehozása** parancsot a parancssori felületen](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create).

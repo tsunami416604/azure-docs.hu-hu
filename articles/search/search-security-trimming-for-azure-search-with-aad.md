@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099694"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102526"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Az Azure Active Directory-identitások használatával találatok vágást biztonsági szűrők
 
@@ -22,13 +22,13 @@ Ez a cikk bemutatja, hogyan használja az Azure Active Directory (AAD) biztonsá
 
 Ez a cikk a következő feladatokat mutatja be:
 > [!div class="checklist"]
-- AAD-csoportok és felhasználók létrehozása
-- Társítsa a felhasználót a létrehozott csoport
-- Az új csoportok gyorsítótárazása
-- Index dokumentumokhoz kapcsolódó csoportokkal együtt
-- Adjon ki egy keresési kérelmet csoport azonosítók szűrővel
-
->[!NOTE]
+> - AAD-csoportok és felhasználók létrehozása
+> - Társítsa a felhasználót a létrehozott csoport
+> - Az új csoportok gyorsítótárazása
+> - Index dokumentumokhoz kapcsolódó csoportokkal együtt
+> - Adjon ki egy keresési kérelmet csoport azonosítók szűrővel
+> 
+> [!NOTE]
 > Példa kódtöredékek ebben a cikkben C# nyelven íródtak. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek

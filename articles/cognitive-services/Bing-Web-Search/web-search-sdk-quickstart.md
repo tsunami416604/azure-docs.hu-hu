@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 848f319836e492e486bfdcb3c9080860144a7e68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3424137b36e4e277a8914ab04cdf7097660930e3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869398"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860754"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Gyors útmutató: A Bing webes keresés készült SDK használataC#
 
@@ -39,7 +39,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 > [!TIP]
 > Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége a konzolprojekt létrehozásához, tekintse meg a [Hello World – Az első saját programom](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) C#-programozási útmutatót. Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha a konzolt projekt beállításához segítségre van szüksége, tekintse meg [Hello World – az első programja (C# programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Projektszerkezet létrehozása
 
-Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A programnak a következőképp kell kinéznie:
+Amikor létrehozta az új konzolprojektet, létre kellett jönnie egy névtérnek és egy osztálynak az alkalmazásához. A program a példához hasonlóan kell kinéznie:
 
 ```csharp
 namespace WebSearchSDK
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-Most adjunk hozzá némi kódot a válasz elemzéséhez és az eredmények megjelenítéséhez. Az első weblap, kép, cikk és videó `name` és `url` értékét a rendszer megjeleníti, ha szerepel a válaszobjektumban.
+Most adjunk hozzá némi kódot a válasz elemzéséhez és az eredmények megjelenítéséhez. Az első weblap, kép, cikk és videó `Name` és `Url` értékét a rendszer megjeleníti, ha szerepel a válaszobjektumban.
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -234,9 +234,10 @@ Most, hogy létrehozta az első hívást a Bing Web Search API-ra, tekintsünk m
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>A Bing által visszaadott eredmények számának korlátozása
 
-Ebben a példában a `count` és az `offset` paramétert használjuk a „Best restaurants in Seattle” (Seattle legjobb éttermei) keresésre visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `URL` értékét a rendszer megjeleníti.
+Ebben a példában a `count` és az `offset` paramétert használjuk a „Best restaurants in Seattle” (Seattle legjobb éttermei) keresésre visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `Name` és `Url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a konzolprojekthez:
+
     ```csharp
     public static void WebResultsWithCountAndOffset(WebSearchAPI client)
     {
@@ -271,7 +272,9 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
         }
     }
     ```
+
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
+
     ```csharp
     static void Main(string[] args)
     {
@@ -285,13 +288,15 @@ Ebben a példában a `count` és az `offset` paramétert használjuk a „Best r
         Console.ReadKey();
     }
     ```
+
 3. Futtassa az alkalmazást.
 
 ### <a name="filter-for-news"></a>Hírek szűrése
 
-Ez a minta a `response_filter` paraméter segítségével szűri a keresési eredményeket. A visszaadott keresési eredmények a „Microsoft” kifejezésre visszaadott hírekre vannak korlátozva. Az első eredményhez tartozó `name` és `URL` értékét a rendszer megjeleníti.
+Ez a minta a `response_filter` paraméter segítségével szűri a keresési eredményeket. A visszaadott keresési eredmények a „Microsoft” kifejezésre visszaadott hírekre vannak korlátozva. Az első eredményhez tartozó `Name` és `Url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a konzolprojekthez:
+
     ```csharp
     public static void WebSearchWithResponseFilter(WebSearchAPI client)
     {
@@ -328,7 +333,9 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
         }
     }
     ```
+
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
+
     ```csharp
     static void Main(string[] args)
     {
@@ -344,13 +351,15 @@ Ez a minta a `response_filter` paraméter segítségével szűri a keresési ere
         Console.ReadKey();
     }
     ```
+
 3. Futtassa az alkalmazást.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>A biztonságos keresés, a válaszszám és az előléptetés szűrő használata
 
-Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segítségével szűri a „Music Videos” (Zenei videók) kifejezés keresési eredményeit. A kód megjeleníti az első eredmény `name` és `URL` értékét.
+Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segítségével szűri a „Music Videos” (Zenei videók) kifejezés keresési eredményeit. A kód megjeleníti az első eredmény `Name` és `ContentUrl` értékét.
 
 1. Adja hozzá ezt a kódot a konzolprojekthez:
+
     ```csharp
     public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
     {
@@ -386,7 +395,9 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
         }
     }
     ```
+
 2. A `main` metódushoz adja hozzá a következőt: `WebResultsWithCountAndOffset`.
+
     ```csharp
     static void Main(string[] args)
     {
@@ -404,6 +415,7 @@ Ez a példa az `answer_count`, a `promote` és a `safe_search` paraméter segít
         Console.ReadKey();
     }
     ```
+
 3. Futtassa az alkalmazást.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

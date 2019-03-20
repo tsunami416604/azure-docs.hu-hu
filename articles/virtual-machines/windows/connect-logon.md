@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978944"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990628"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Hogyan csatlakozhat, és jelentkezzen be az Azure Windows rendszerű virtuális gép
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális gépet, és jelentkezzen.
@@ -32,7 +32,7 @@ Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telep
 2. A bal oldali menüben válassza ki a **virtuális gépek**.
 3. Válassza ki a virtuális gépet a listából.
 4. A virtuális gép az oldal felső részén válassza ki a **Connect**.
-2. Az a **csatlakozhat a virtuális gép** lapon, válassza ki a megfelelő IP-címet és portot. A legtöbb esetben az alapértelmezett IP-címet és portot kell használni. Válassza ki **töltse le az RDP-fájl**töltse le az RDP-fájl **. Ha a virtuális gépen egy just-in-time-szabályzat beállítása, először válassza ki a **hozzáférés kérése** gombra kattintva kérhet hozzáférést az RDP-fájljának letöltése előtt. A just-in-time házirenddel kapcsolatos további információkért lásd: [kezelése virtuálisgép-hozzáférés az igény szerinti szabályzat](../../security-center/security-center-just-in-time.md).
+2. Az a **csatlakozhat a virtuális gép** lapon, válassza ki a megfelelő IP-címet és portot. A legtöbb esetben az alapértelmezett IP-címet és portot kell használni. Válassza az **RDP-fájl letöltése** parancsot. Ha a virtuális gépen egy just-in-time-szabályzat beállítása, először válassza ki a **hozzáférés kérése** gombra kattintva kérhet hozzáférést az RDP-fájljának letöltése előtt. A just-in-time házirenddel kapcsolatos további információkért lásd: [kezelése virtuálisgép-hozzáférés az igény szerinti szabályzat](../../security-center/security-center-just-in-time.md).
 2. Nyissa meg a letöltött RDP-fájlt, és válassza ki **Connect** amikor a rendszer kéri. 
 2. Egy figyelmeztetés fog megjelenni, amely a `.rdp` fájl közzétevője ismeretlen. Ez a várható eredmény. Az a **távoli asztali kapcsolat** ablakban válassza **Connect** folytatásához.
    

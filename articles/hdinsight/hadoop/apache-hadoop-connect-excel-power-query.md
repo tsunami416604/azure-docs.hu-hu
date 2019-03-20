@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 2ed866a0406de2421c5c98fc09849d0dfabaa464
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 687a9884c861b4cf72e51f9179e6c0b43968801d
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202905"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Az Apache hadoop Excel csatlakoztatása a Power Query használatával
 A Microsoft big-data megoldás egyik fontos szolgáltatása az integrációt a Microsoft üzleti intelligenciára épülő (BI) összetevők az Azure HDInsight az Apache Hadoop-fürtök. Egy elsődleges példája az Excel összekapcsolása a az Azure Storage-fiókot, amely tartalmazza az adatokat a Hadoop-fürt társított az Excel-bővítmény a Microsoft Power Query használatával lehetővé teszi. Ez a cikk ismerteti, hogyan beállítása és használata a Power Query használatával adatokat lekérdezni a HDInsight felügyelt Hadoop-fürt társított.
@@ -55,7 +55,7 @@ Excelhez készült Power Query beépülő megkönnyíti az adatok importálása 
        **Megjegyzés:** Ha nem látja a **Power Query** menüben nyissa meg **fájl** > **beállítások** > **bővítmények**, és válassza ki a  **COM-bővítmények** a legördülő listából **kezelés** be az oldal alján. Válassza ki a **Go...**  gombra, és győződjön meg arról, hogy a Power Query az Excel bővítmény be a ellenőrizte.
        
        **Megjegyzés:** Power Query is lehetővé teszi, hogy adatokat importáljon HDFS kattintva **egyéb forrásokból származó**.
-4. A **fióknév**, adja meg a fürthöz társított Azure Blob storage-fiók nevét, és kattintson **OK**. Ezt a fiókot kell a [alapértelmezett tárfiók](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account) vagy egy kapcsolt tárfiókot.  A formátum *https://&lt;StorageAccountName >.blob.core.windows.net/*.
+4. A **fióknév**, adja meg a fürthöz társított Azure Blob storage-fiók nevét, és kattintson **OK**. Ezt a fiókot az alapértelmezett tárfiókot, vagy egy társított storage-fiók lehet.  A formátum *https://&lt;StorageAccountName >.blob.core.windows.net/*.
 5. A **Fiókkulcs**, adja meg a Blob storage-fiók kulcsát, és kattintson **mentése**. (Kell adja meg a fiók csak az első információk ideje az áruház.)
 6. Az a **kezelő** a a Lekérdezésszerkesztő bal oldali ablaktáblán kattintson duplán a Blob storage-tároló nevének. Alapértelmezés szerint a tároló neve a neve megegyezik a fürt neve.
 7. Keresse meg **HiveSampleData.txt** a a **neve** oszlopban (a mappa elérési útja **... / hive/adatraktár-/ hivesampletable/**), és kattintson a **bináris** HiveSampleData.txt, a bal oldalon. A fürt összes HiveSampleData.txt tartalmaz. Ha szeretné a saját fájlt is használhat.

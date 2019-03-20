@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997273"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004988"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) PowerShell-lel
 
@@ -151,7 +151,7 @@ A konfigurációs paraméterek a következők:
 |Paraméter|Leírás|
 |---|---|
 |**Name (Név)** |Egyéni mintavétel hivatkozás neve. |
-* **protokoll** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
+| **Protocol (Protokoll)** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
 | **Gazdagép** és **elérési útja** | Teljes URL-cím, amelyeket az application gateway-példány állapotának hívnak. Például, ha rendelkezik a webhellyel http://contoso.com/, majd az egyéni mintavétel állítható be "http://contoso.com/path/custompath.htm" a mintavétel ellenőrzi, hogy rendelkezik egy sikeres HTTP-választ.|
 | **Intervallum** | Konfigurálja a mintavételező időköz másodpercben.|
 | **Időtúllépés** | Határozza meg a mintavétel időkorlátja egy HTTP-válasz ellenőrzés.|
@@ -161,18 +161,18 @@ A mintavétel nevének hivatkozik a \<BackendHttpSettings\> konfigurációját, 
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Egyéni mintavétel hozzáadása egy meglévő application gateway
 
-Az application gateway az aktuális konfiguráció módosításának három lépésre van szükség: az aktuális konfigurációs XML-fájl első módosítani szeretne egyéni mintát és az application gateway konfigurálása XML új beállításokkal.
+Az application gateway az aktuális konfiguráció módosításának három lépésből áll: Az aktuális XML konfigurációs fájl beolvasása, egy egyéni mintát kell módosítani, és az application gateway konfigurálása XML új beállításokkal.
 
 1. Az XML-fájl első használatával `Get-AzureApplicationGatewayConfig`. Ez a parancsmag exportálja a konfigurációs XML módosítani kell, hogy adjon hozzá egy mintavételi beállítást.
 
-  ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-  ```
+   ```powershell
+   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+   ```
 
 1. Nyissa meg az XML-fájlt egy szövegszerkesztőben. Adjon hozzá egy `<probe>` szakasz után `<frontendport>`.
 
-  ```xml
-<Probes>
+   ```xml
+   <Probes>
     <Probe>
         <Name>Probe01</Name>
         <Protocol>Http</Protocol>
@@ -182,12 +182,12 @@ Az application gateway az aktuális konfiguráció módosításának három lép
         <Timeout>15</Timeout>
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
-</Probes>
-  ```
+   </Probes>
+   ```
 
-  XML-kód a backendHttpSettings területen adja hozzá a mintavétel nevének, a következő példában látható módon:
+   XML-kód a backendHttpSettings területen adja hozzá a mintavétel nevének, a következő példában látható módon:
 
-  ```xml
+   ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -196,9 +196,9 @@ Az application gateway az aktuális konfiguráció módosításának három lép
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-  ```
+   ```
 
-  Mentse az XML-fájlt.
+   Mentse az XML-fájlt.
 
 1. Frissítse az application gateway-konfigurációt az új XML-fájl használatával `Set-AzureApplicationGatewayConfig`. Ez a parancsmag frissíti az application gateway az új konfigurációt.
 

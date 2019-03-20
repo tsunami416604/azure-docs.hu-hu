@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077768"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -27,9 +27,9 @@ ms.locfileid: "56961550"
 
 A Microsoft Authenticator alkalmazás biztonsági másolatot készít a fiók hitelesítő adatait, és a kapcsolódó alkalmazás beállításait, például a fiókok sorrendje a felhőbe. Biztonsági mentés, után használhatja az alkalmazás használatával állítsa helyre a információkat egy új eszközön, potenciálisan elkerülve az első zárolva ki vagy hozza létre újra a fiókok kellene.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Szükség van egy személyes Microsoft-fiók és a egy iCloud-fiókjával minden egyes biztonsági mentési tárhelyet. De a tárolási helyen készíthet biztonsági mentést különböző fiókok. Ha például egy személyes fiók, egy iskolai fiókot és egy külső fiók például Facebook, Google, és így tovább.
-
+> 
 > Csak a személyes, mind a 3. fél fiók hitelesítő adatai találhatók, amely tartalmazza a felhasználónevet és a fiók a személyazonossága igazolásához szükséges ellenőrző kódot. A fiókok, beleértve az e-mailek vagy fájlok társított minden olyan információt nem tároljuk. Azt is nem hozzárendelése vagy megoszthatja a fiókok bármilyen módon vagy a termék vagy szolgáltatás. És végül a rendszergazda nem ezeket a fiókokat bármelyikét semmilyen információt.
 
 ## <a name="back-up-your-account-credentials"></a>Készítsen biztonsági másolatot a hitelesítő adatait

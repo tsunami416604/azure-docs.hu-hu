@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117744"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -44,11 +44,11 @@ A Data Box nagy mennyiségű adat az Azure-ba való átvitelére szolgál, és m
 - **Sebesség** – A Data Box 1 Gb/s vagy 10 Gb/s sebességű hálózati adaptert használ az akár 80 TB méretű adatok az Azure-ba való feltöltéséhez.
 
 - **Biztonság** – A Data Box beépített védelmet biztosít az eszköz, az adatok és a szolgáltatás számára.
-    - Az eszköz biztonsági tokkal rendelkezik illetéktelen hozzáférést gátló csavarokkal és az illetéktelen hozzáférést jelző matricákkal. 
-    - Az eszközön lévő adatokat minden pillanatban 256 bites AES-titkosítás védi.
-    - Az eszköz zárolása csak az Azure Portalon megadott jelszóval oldható fel.
-    - A szolgáltatást az Azure biztonsági funkciói védik.
-    - Az adatok az Azure-ba való feltöltését követően az eszköz lemezeinek tartalmát az NIST 800-88r1 szabványoknak megfelelően töröljük.
+  - Az eszköz biztonsági tokkal rendelkezik illetéktelen hozzáférést gátló csavarokkal és az illetéktelen hozzáférést jelző matricákkal. 
+  - Az eszközön lévő adatokat minden pillanatban 256 bites AES-titkosítás védi.
+  - Az eszköz zárolása csak az Azure Portalon megadott jelszóval oldható fel.
+  - A szolgáltatást az Azure biztonsági funkciói védik.
+  - Az adatok az Azure-ba való feltöltését követően az eszköz lemezeinek tartalmát az NIST 800-88r1 szabványoknak megfelelően töröljük.
     
     További információt [az Azure Data Box biztonsági és adatvédelmi szolgáltatásait](data-box-security.md) ismertető cikkben talál.
 

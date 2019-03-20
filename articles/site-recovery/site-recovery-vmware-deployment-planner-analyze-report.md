@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: 460bb6b9c7c5700d2c59dbe88d3089be64bb3a31
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: cd486fa504ac819684d8c547e7a0f740b3eed4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216441"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109627"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery Deployment Planner jelentés elemzése
 
@@ -41,6 +41,9 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt arról a VMware-körn
 **Megfigyelt átlagos adatváltozás naponta (GB)**: Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
 ## <a name="recommendations"></a>Javaslatok
+
+>[!Note]
+>A felügyelt lemezek esetében, amelyek közvetlenül, ha figyelmen kívül a javaslat a tárfiókok száma.
 
 A VMware – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
 
@@ -155,6 +158,9 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 ![Elérhető RPO 500 Mbps sávszélességhez](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>Virtuálisgép-tároló elhelyezése
+
+>[!Note]
+>A felügyelt lemezek esetében, amelyek közvetlenül, ha nem kell aggódnia a tárfiókok száma. A storage szolgáltatás esetében használja csak a javaslat a tárolótípus (Standard vagy prémium). Az azonos típusú alkalmazható a felügyelt lemezek.
 
 ![Virtuálisgép-tároló elhelyezése](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 

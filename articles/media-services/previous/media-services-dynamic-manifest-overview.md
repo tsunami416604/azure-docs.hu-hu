@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000008"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894019"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
 
@@ -34,7 +34,7 @@ Ez a témakör ismerteti a gyakori forgatókönyvek, amelyben szűrők használa
 ## <a name="overview"></a>Áttekintés
 Az ügyfelek számára (élő eseményeket vagy igény szerinti videó streaming) tartalomtovábbításkor a cél, egy jó minőségű videót biztosításához a különböző eszközökre, különböző hálózati körülmények között. A cél tegye a következők eléréséhez:
 
-* a stream többszörös átviteli sebességű kódolás ([adaptív sávszélességű](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) video-adatfolyamot (Ez gondoskodik a minőségi és hálózati feltételek), és 
+* a stream többszörös átviteli sebességű kódolás ([adaptív sávszélességű](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) video-adatfolyamot (Ez gondoskodik a minőségi és hálózati feltételek), és 
 * használja a Media Services [dinamikus csomagolási](media-services-dynamic-packaging-overview.md) dinamikusan csomagolni a stream a különböző protokollok (Ez gondoskodik a különböző eszközökön streaming). Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG DASH. 
 
 ### <a name="manifest-files"></a>Jegyzékfájlok
@@ -72,7 +72,7 @@ Ha Ön kódolása az adaptív bitsebességű folyamatos átvitel, egy **manifest
 
     </SmoothStreamingMedia>
 
-### <a name="dynamic-manifests"></a>A dinamikus jegyzékek
+### <a name="dynamic-manifests"></a>Dinamikus jegyzékek
 Nincsenek [forgatókönyvek](media-services-dynamic-manifest-overview.md#scenarios) Ha később az ügyfél az alapértelmezett eszköz jegyzékfájl leírtnál nagyobb rugalmasságot igények. Példa:
 
 * Adott eszköz: csak a megadott beállításkészletben és/vagy a megadott nyelv nyomon követi az eszköz, amellyel a tartalmat ("megjelenítésszűrés") által támogatott kézbesítéséhez. 

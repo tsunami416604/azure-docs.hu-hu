@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: a13e8d7b97fcca95c0d90b9dd283b9bafbb4a21f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541966"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226232"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Oktatóanyag: Hozzon létre egy pont – hely kapcsolattal az Azure virtuális WAN (előzetes verzió)
 
@@ -69,7 +69,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2S
 Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
-Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
+Miután regisztrált, regisztrálja az előfizetést a Microsoft.Network névtérbe állapota a szolgáltatást.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -103,11 +103,11 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 4. Kattintson az oldal tetején található **+Pont-hely konfiguráció hozzáadása** elemre az **Új pont-hely konfiguráció létrehozása** lap megnyitásához.
 5. Az **Új pont-hely konfiguráció létrehozása** lapon töltse ki az alábbi mezőket:
 
-  *  **Konfiguráció neve** – Ez az a név, amellyel hivatkozni szeretne a konfigurációra.
-  *  **Alagút típusa** – Az alagúthoz használni kívánt protokoll.
-  *  **Címkészlet** – Ez az IP-címkészlet, amelyből a rendszer IP-címeket rendel az ügyfelekhez.
-  *  **Főtanúsítvány neve** – A tanúsítvány leíró neve.
-  *  **Főtanúsítvány adatai** – Az X.509-tanúsítvány Base-64-kódolású adatai.
+   *  **Konfiguráció neve** – Ez az a név, amellyel hivatkozni szeretne a konfigurációra.
+   *  **Alagút típusa** – Az alagúthoz használni kívánt protokoll.
+   *  **Címkészlet** – Ez az IP-címkészlet, amelyből a rendszer IP-címeket rendel az ügyfelekhez.
+   *  **Főtanúsítvány neve** – A tanúsítvány leíró neve.
+   *  **Főtanúsítvány adatai** – Az X.509-tanúsítvány Base-64-kódolású adatai.
 
 6. Kattintson a **Létrehozás** elemre a konfiguráció létrehozásához.
 

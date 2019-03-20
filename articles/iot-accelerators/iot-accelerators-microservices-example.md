@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95bec451c556ff9f3c5bcccee68f900543639733
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004108"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Mikroszolgáltatás testreszabása és ismételt üzembe helyezése
 
@@ -44,7 +44,7 @@ Ez a rész az alapértelmezett IoT hub manager mikroszolgáltatás API hívható
 
 1. Győződjön meg arról, hogy a távoli figyelési megoldás helyben fut a gépen.
 2. Keresse meg a letöltött Postman, és nyissa meg.
-3. A Postman adja meg a következő GET: http://localhost:8080/iothubmanager/v1/status.
+3. A Postman adja meg a következő GET: `http://localhost:8080/iothubmanager/v1/status`.
 4. A visszaadandó megtekintése, és megjelenik, "Állapot": "OK: tartási és jól".
 
     ![Tartási és jól Postman-üzenet](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Végül újbóli üzembe helyezés a távoli figyelési megoldás helyi példán
     ```
 
 3. Keresse meg a letöltött Postman, és nyissa meg.
-4. A Postman adja meg a következő GET kérelmet: http://localhost:8080/iothubmanager/v1/status. Meg kell jelennie, "Állapot": "OK: Új, az itt végzett módosítások! ".
+4. A Postman adja meg a következő GET kérelmet: `http://localhost:8080/iothubmanager/v1/status`. Meg kell jelennie, "Állapot": "OK: Új, az itt végzett módosítások! ".
 
 ![Új szerkesztése Itt a végrehajtott postman üzenet](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
@@ -197,6 +197,6 @@ Próbálkozzon a következő lépésben hozzunk [a távoli figyelési megoldásb
 
 A távoli figyelési megoldás fejlesztői ismertetését lásd:
 
-* [Fejlesztői útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
+* [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 <!-- Next tutorials in the sequence -->
 

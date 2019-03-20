@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 133e617cd6bac1155ba22276887cf0790221e9de
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.openlocfilehash: 722712d1e38efa3e1accc41abca5c9d88b3c1229
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095925"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 A meglévő befektetéseit a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) és kiterjesztett képességek használata a Log Analytics, az Operations Manager integrálása a Log Analytics-munkaterületre. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -132,7 +132,7 @@ Hajtsa végre az alábbi lépéseket, ha egy belső proxykiszolgáló a felügye
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki a Microsoft Operations Management Suite elemet, majd kattintson a **Kapcsolatok** gombra.
 1. Az OMS Connection (OMS-kapcsolat) nézetben kattintson a **Configure Proxy Server** (Proxykiszolgáló konfigurálása) lehetőségre.
-1. A **Operations Management Suite varázslója: Proxykiszolgáló** lapon jelölje be **proxykiszolgáló használata az Operations Management Suite eléréséhez**, majd írja be például a port számát, az URL-CÍMÉT http://corpproxy:80 majd **Befejezés** .
+1. A **Operations Management Suite varázslója: Proxykiszolgáló** lapon jelölje be **proxykiszolgáló használata az Operations Management Suite eléréséhez**, majd írja be például a port számát, az URL-CÍMÉT <http://corpproxy:80> majd **Befejezés** .
 
 Ha a proxykiszolgáló hitelesítést igényel, hajtsa végre az alábbi lépések végrehajtásával konfigurálhatja a hitelesítő adatokat és beállításokat, amelyeket a felügyelt számítógépekre, amelyek a felügyeleti csoportban a Log Analytics szolgáltatásba jelentések propagálni kell.
 

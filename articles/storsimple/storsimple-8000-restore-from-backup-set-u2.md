@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082806"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>StorSimple-kötet visszaállítása a biztonságimásolat-készlet
 
@@ -110,9 +110,9 @@ Használhatja a **biztonságimásolat-katalógus** a StorSimple-kötet biztonsá
    3. A legördülő listában válassza ki a biztonsági mentés, amelyet szeretne, válassza ki a kötet vagy a biztonsági mentési szabályzat.
    4. Kattintson a **alkalmaz** a lekérdezés végrehajtásához.
 
-    A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési szabályzat meg kell jelennie a biztonságimásolat-készletek listájában.
+      A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési szabályzat meg kell jelennie a biztonságimásolat-készletek listájában.
    
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Biztonságimásolat-készlet listája](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. Bontsa ki a biztonságimásolat-készletet a társított kötetek megtekintéséhez. Ezeket a köteteket kell tenni a gazdagép és az eszköz offline állapotú, mielőtt azokat helyreállíthatja. A kötetek elérését a a **kötetek** paneljén látható az eszközt, és kövesse a lépéseket a [egy kötetet offline állapotba](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) offline állapotba.
    
@@ -127,9 +127,9 @@ Használhatja a **biztonságimásolat-katalógus** a StorSimple-kötet biztonsá
    
     ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Kattintson a **visszaállítása**. Ez elindít egy visszaállítási feladat, amely elérésével megtekintheti a **feladatok** lapot.
+7. Kattintson a **visszaállítása**. Ez elindít egy visszaállítási feladat, amely elérésével megtekintheti a **feladatok** lapot.
 
-    ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. A visszaállítás befejezése után ellenőrizze, hogy a köteteken helyébe kötetek a biztonsági mentésből.
 

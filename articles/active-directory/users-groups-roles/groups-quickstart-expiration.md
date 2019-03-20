@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab72c78f66a324159d802369aa1dea545b77549c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904116"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199307"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
 
@@ -43,7 +43,7 @@ Egy globális rendszergazdai vagy a felhasználói csoport lejárati beállítá
 
 2. Válassza a **Csoportok**, majd az **Általános** elemet.
   
-   ![Önkiszolgáló csoport beállításai](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Önkiszolgáló csoport-beállítások lap](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Állítsa **A felhasználók létrehozhatnak Office 365-csoportokat** elemet **Igen** értékűre.
 
@@ -51,9 +51,9 @@ Egy globális rendszergazdai vagy a felhasználói csoport lejárati beállítá
 
 ## <a name="set-group-expiration"></a>Csoportok elévülésének beállítása
 
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** > **Csoportok** >  **Elévülés** lehetőséget az elévülési beállítások megnyitásához.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory** > **csoportok** > **lejárati** , Nyissa meg a lejárati beállítások.
   
-   ![Elévülési beállítások](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![Csoport lejárati beállítások lap](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Állítsa be az elévülési intervallumot. Válasszon ki egy előre beállított értéket, vagy adjon meg egy 31 napon túli egyéni értéket. 
 
@@ -67,13 +67,13 @@ Ennyi az egész! Ebben a rövid útmutatóban sikeresen beállította az elévü
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-**Az elévülési szabályzat eltávolítása**
+### <a name="to-remove-the-expiration-policy"></a>Az elévülési szabályzat eltávolítása
 
 1. Győződjön meg arról, hogy be van jelentkezve az [Azure Portalra](https://portal.azure.com) a bérlő globális rendszergazdai fiókjával.
 2. Válassza az **Azure Active Directory** > **Csoportok** > **Elévülés** elemet.
 3. Állítsa az **Elévülési idő engedélyezése ezekhez az Office 365-csoportokhoz** elemet **Egyik sem** értékűre.
 
-**Felhasználói létrehozás kikapcsolása a csoportokhoz**
+### <a name="to-turn-off-user-creation-for-groups"></a>Felhasználó létrehozása a csoportok kikapcsolása
 
 1. Válassza az **Azure Active Directory** > **Csoportok** > **Általános** elemet. 
 2. Állítsa be **A felhasználók létrehozhatnak Office 365-csoportokat az Azure-portálokon** elemet **Nem**értékűre.

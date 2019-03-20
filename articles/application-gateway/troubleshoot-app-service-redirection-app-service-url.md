@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: cd15e139b2bcd0046d2cfbd7603809936adf1cfc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123181"
 ---
 # <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>App Service-szel rendelkező Application Gateway hibaelhárítása – átirányítás az App Service URL-címére
 
@@ -42,7 +42,7 @@ Egy App Service-ben csak elérhetők, a konfigurált gazdanév található az eg
 
 Ennek az Application Gatewayen érdekében, hogy használata a kapcsoló "Válasszon állomásnév a címet" a HTTP-beállítások és a mintavétel, "Válasszon állomásnév a HTTP-háttérbeállítások" használjuk a mintavételi konfigurációban.
 
-![appservice-1](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-1.png)
+![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
 Miatt, ez az alkalmazás szolgáltatásnak nincs a mappaátirányítás, használja az állomásnevet a Location fejlécet "example.azurewebsites.net" helyett az eredeti hostname, kivéve, ha másként van konfigurálva. A példa-kérelmek és válaszfejlécek alább megtekinthető.
 ```
@@ -78,7 +78,7 @@ Ennek érdekében kell egy egyéni tartománnyal, és kövesse az alábbi folyam
 
 - Regisztrálja a tartomány az App Service egyéni tartománnyal listájához. Ehhez egy olyan CNAME REKORDOT kell rendelkeznie az App Service teljes Tartományneve mutató egyéni tartomány. További információkért lásd: [meglévő egyéni DNS-név leképezése az Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
 
-![appservice-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
+![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
 - Miután ez megtörtént, fogadja el a "www.contoso.com" állomásnév készen áll az App Service. Módosítsa a CNAME bejegyzést, hogy az Application Gateway FQDN vissza a DNS-ben. Például "appgw.eastus.cloudapp.azure.com."
 
@@ -94,7 +94,7 @@ Ennek érdekében kell egy egyéni tartománnyal, és kövesse az alábbi folyam
 - Társítsa az egyéni mintavétel a háttérbeli HTTP-beállításokra, és ellenőrizze a háttérrendszer állapota, ha kifogástalan.
 
 - Miután ez megtörtént, az Application Gateway az azonos állomásnévvel "www.contoso.com" most továbbítani kell az App Service-ben, és az átirányítás úgy történik, az azonos állomásnévvel a. A példa-kérelmek és válaszfejlécek alább megtekinthető.
-```
+  ```
   ## Request headers to Application Gateway:
 
   Request URL: http://www.contoso.com/path
@@ -114,7 +114,7 @@ Ennek érdekében kell egy egyéni tartománnyal, és kövesse az alábbi folyam
   Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=www.contoso.com
 
   X-Powered-By: ASP.NET
-```
-## <a name="next-steps"></a>További lépések
+  ```
+  ## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem a probléma megoldásához nyissa meg a [támogatási jegyet](https://azure.microsoft.com/support/options/).

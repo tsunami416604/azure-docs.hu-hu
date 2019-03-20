@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf73708be8a8bc597b70d0cb50fc337efa72906
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211682"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199601"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Az Azure Active Directory dinamikus statikus csoport tagságának módosítása
 
@@ -33,7 +33,7 @@ Módosíthatja a csoporttagságot statikusról dinamikus (vagy fordítva) az Azu
 
 ## <a name="change-the-membership-type-for-a-group"></a>Módosítsa egy csoport tagsági típusa
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy egy felhasználói fiók rendszergazdája a bérlőben.
+1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy a felhasználó rendszergazda a bérlőben.
 2. Válassza ki **csoportok**.
 3. Az a **összes csoport** list, nyissa meg a csoportot, amelyet módosítani szeretne.
 4. Válassza ki **tulajdonságok**.
@@ -47,14 +47,13 @@ A következő lépéseket kell egy példa egy csoport módosítása statikusról
   
 2. Válassza ki **dinamikus lekérdezés hozzáadása**, majd adja meg a szabály.
   
-   ![Adja meg a szabály](./media/groups-change-type/enter-rule.png)
+   ![Adja meg a szabály a dinamikus csoport](./media/groups-change-type/enter-rule.png)
   
 3. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** az oldal alján.
 4. Válassza ki **mentése** a a **tulajdonságok** lap a csoport a módosítások mentéséhez. A **tagságtípusának** a csoport azonnal frissül a listájából.
 
 > [!TIP]
 > Csoport konvertálása sikertelen lehet, ha a megadott tagsági szabály helytelen volt. A benne található annak magyarázatát, miért érdemes a szabályt nem fogadja el a rendszer a portál jobb felső sarkában megjelenik egy értesítés. Olvassa el, hogy alaposan megismerheti, hogyan módosíthatja a szabályt, hogy érvényes. A szabály szintaxisra vonatkozó példákat és a támogatott tulajdonságok, operátorok és a tagsági szabály értékeinek teljes listáját lásd: [dinamikus tagsági szabályok az Azure Active Directoryban csoportok](groups-dynamic-membership.md).
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>Tagság típusa (PowerShell) csoport módosítása
 
@@ -63,7 +62,7 @@ A következő lépéseket kell egy példa egy csoport módosítása statikusról
 
 Íme egy példa, amely egy meglévő csoportot a tagsági felügyeleti kapcsoló funkciók. Ebben a példában van ügyelni arra, hogy megfelelően GroupTypes tulajdonság módosítására, és megőrizheti azokat az értékeket, a dinamikus tagsági kapcsolódnak.
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -107,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 Egy csoport statikus tétele:
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 A csoport dinamikus tétele:
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

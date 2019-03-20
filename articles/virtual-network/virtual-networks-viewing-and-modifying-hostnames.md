@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250186"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887459"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Megtekintése és módosítása az állomásnevek
 Ahhoz, hogy a szerepkörpéldány állomásnév szerint lehet hivatkozni, állítsa az értékét az állomásnév a szolgáltatáskonfigurációs fájlban az egyes szerepkörökhöz. Ezt teheti, hogy adja hozzá a kívánt állomás nevét a **vmName** attribútuma a **szerepkör** elemet. Értékét a **vmName** attribútuma minden egyes szerepkör-példány állomásneve szolgál alapul. Például ha **vmName** van *webrole* , de az adott szerepkör három példányban, a gazdagép-nevek a példányok lesznek *webrole0*, *webrole1*, és *webrole2*. Nem kell megadnia egy virtuálisgép-nevet a konfigurációs fájlban, mert a virtuális gép az állomásnév a virtuális gép neve alapján van feltöltve. Microsoft Azure-szolgáltatás konfigurálásával kapcsolatos további információkért lásd: [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -40,9 +40,9 @@ Miután engedélyezte a távoli asztal (Windows), Windows PowerShell távoli elj
 ### <a name="azure-service-management-rest-api"></a>Az Azure Service Management REST API
 A REST-ügyféllel kövesse az alábbi utasításokat:
 
-1. Győződjön meg arról, hogy rendelkezik-e csatlakozni az Azure Portalon egy ügyféltanúsítványt. Szerezzen be ügyféltanúsítványt, kövesse a megjelenő lépéseket [hogyan: letöltési és a közzétételi beállítások importálása és az előfizetési adatok](https://msdn.microsoft.com/library/dn385850.aspx). 
+1. Győződjön meg arról, hogy rendelkezik-e csatlakozni az Azure Portalon egy ügyféltanúsítványt. Szerezzen be ügyféltanúsítványt, kövesse a megjelenő lépéseket [hogyan: Letöltése és importálása közzétételi beállítások és az előfizetési adatok](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Állítsa be egy x-ms-version értéke az 2013-11-01 nevű fejléc-bejegyzést.
-3. Kérés küldése a következő formátumban: https://management.core.windows.net/\<subscrition-id\>/services/hostedservices/\<service-name\>?embed-detail=true
+3. Kérés küldése a következő formátumban: https:\//management.core.windows.net/\<az előfizetés-azonosító\>/services/hostedservices/\<szolgáltatásnév\>?-részletek beágyazása = true
 4. Keresse meg a **állomásnév** minden elem **RoleInstance** elemet.
 
 > [!WARNING]

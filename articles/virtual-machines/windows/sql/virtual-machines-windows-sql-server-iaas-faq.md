@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: f308b814da06598b95337708f7a8c84d506eed78
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113265"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -75,65 +75,65 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 ## <a name="licensing"></a>Licencek
 
-1. **Hogyan telepíthetem saját licenccel rendelkező példány az SQL Server-beli virtuális gépen?**
+1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
-   Ehhez két módja van. Egyik kioszthatja a [virtuálisgép-lemezképek, amely támogatja a licencek](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), amely bring-your-saját licenc (használata BYOL) is nevezik. Egy másik lehetőség, hogy egy Windows Server rendszerű virtuális gép az SQL Server telepítési adathordozóról másolja, majd telepítse az SQL Server virtuális gépen. Azonban ha manuálisan telepíti az SQL Server, nincs portál integrációjához és az SQL Server IaaS-ügynök bővítmény nem támogatott, így például automatikus biztonsági mentés és az automatikus javítás nem fog működni ebben a forgatókönyvben. Ebből kifolyólag javasoljuk a katalógus BYOL-rendszerképek egyikét. Egy Azure-beli virtuális gépen (BYOL) és a saját SQL Server-adathordozó használatához rendelkeznie kell [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/). További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+   Ezt kétféleképpen teheti meg. Helyezze üzembe az egyik olyan [virtuálisgép-rendszerképet, amely támogatja a licencek használatát](virtual-machines-windows-sql-server-iaas-overview.md#BYOL). Ez a módszer saját licenc használata (BYOL) néven is ismert. Másik lehetőségként másolja át az SQL Server telepítési adathordozóját egy Windows Server rendszerű virtuális gépre, majd telepítse az SQL Servert a virtuális gépre. Azonban ha manuálisan telepíti az SQL Servert, nem lesz elérhető a portálintegráció, és az SQL Server IaaS-ügynök bővítménye nem lesz támogatott, így néhány funkció, például az automatikus biztonsági mentés és az automatikus javítás nem fog működni ebben a forgatókönyvben. Ezért a BYOL-katalógusból származó egyik rendszerkép használatát javasoljuk. Egy Azure-beli virtuális gépen (BYOL) és a saját SQL Server-adathordozó használatához rendelkeznie kell [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/). További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 
-1. **Rendelkeznie kell fizetnie, ha csak van használatban a készenléti/feladatátvételi az licenc SQL Server-beli virtuális gépen?**
+1. **Fizetnem kell az SQL Server licenceléséért egy Azure-beli virtuális gépen, ha csak készenlétben tartom vagy feladatátvételre használom?**
 
-   Ha rendelkezik frissítési garanciával, és használják a Licenchordozhatósági programot leírtak szerint [virtuális gép licencelés – gyakori kérdések](https://azure.microsoft.com/pricing/licensing-faq/), akkor nem kell fizetnie egy magas rendelkezésre ÁLLÁSÚ telepítésben passzív másodlagos másodpéldányként részt vevő egy SQL Server licencelése. Ellenkező esetben kell fizetnie, licenceket.
+   Ha rendelkezik frissítési garanciával, és használják a Licenchordozhatósági programot leírtak szerint [virtuális gép licencelés – gyakori kérdések](https://azure.microsoft.com/pricing/licensing-faq/), akkor nem kell fizetnie egy magas rendelkezésre ÁLLÁSÚ telepítésben passzív másodlagos másodpéldányként részt vevő egy SQL Server licencelése. Egyéb esetben fizetnie kell a licencért.
 
-1. **Módosíthatja a saját SQL Server-licencét használja, ha létrehozták a használatalapú fizetéses katalógus rendszerképek közül egy virtuális Gépet?**
+1. **Módosíthatok egy virtuális gépet, hogy a saját SQL Server-licencemet használja, ha az a használatalapú fizetéses katalógus egyik rendszerképéből lett létrehozva?**
 
-   Igen. Könnyedén áthelyezheti áthelyezése a két licencelési modell között, ha eredetileg indult el, egy használatalapú fizetéses katalógus-lemezkép. Azonban nem tud váltani a licencét a használatalapú fizetéses, ha kezdetben lépések egy BYOL-lemezképet. További információkért lásd: [módosítása egy SQL Server rendszerű virtuális gép licencelési modelljét](virtual-machines-windows-sql-ahb.md).
+   Igen. Könnyedén áthelyezheti áthelyezése a két licencelési modell között, ha eredetileg indult el, egy használatalapú fizetéses katalógus-lemezkép. Ha azonban eredetileg a BYOL-rendszerképet használta, nem tudja átváltani a licencet használatalapú fizetéses licencre. További információkért lásd: [módosítása egy SQL Server rendszerű virtuális gép licencelési modelljét](virtual-machines-windows-sql-ahb.md).
 
    > [!Note]
    > Ez a lehetőség jelenleg csak a nyilvános felhőben ügyfelek számára érhető el.
 
-1. **BYOL-lemezképeknek vagy használjak SQL virtuális gép RP hozhat létre új SQL virtuális gép?**
+1. **BYOL-rendszerképet vagy SQL VM RP-t használjak egy új SQL-alapú virtuális gép létrehozásához?**
 
-   Bring-your-saját licenc (használata BYOL) lemezképek csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhető el. Más ügyfelek, akik rendelkezik frissítési garanciával rendelkező SQL virtuális gép létrehozása kell használnia az SQL virtuális gép erőforrás-szolgáltató [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
+   A saját licenc használatát (BYOL) lehetővé tevő rendszerképek csak nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Más ügyfelek, akik rendelkezik frissítési garanciával rendelkező SQL virtuális gép létrehozása kell használnia az SQL virtuális gép erőforrás-szolgáltató [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
 
-1. **Váltása licencmodellek szükségesek üzemszünetre lesz szükség minden olyan SQL Server?**
+1. **A licencelési modell módosítása során az SQL Server le fog állni?**
 
-   Nem. [Licencelési modelljének megváltoztatása](virtual-machines-windows-sql-ahb.md) nem igényel tapasztalnak állásidőt az SQL Server, a módosítás azonnali érvényben, és nem igényel a virtuális gép újraindítását. Azonban, hogy regisztrálja az SQL virtuális gép erőforrás-szolgáltató az SQL Server virtuális gép a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md) előfeltétel, és újraindítja az SQL Server szolgáltatást, az SQL IaaS-bővítmény telepítése. Mint ilyen Ha az SQL IaaS-bővítményt kell telepíteni, majd el kell végezni a karbantartási időszak alatt. 
+   Nem. [Licencelési modelljének megváltoztatása](virtual-machines-windows-sql-ahb.md) nem igényel tapasztalnak állásidőt az SQL Server, a módosítás azonnali érvényben, és nem igényel a virtuális gép újraindítását. Azonban, hogy regisztrálja az SQL virtuális gép erőforrás-szolgáltató az SQL Server virtuális gép a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md) előfeltétel, és újraindítja az SQL Server szolgáltatást, az SQL IaaS-bővítmény telepítése. Ha telepíteni kell az SQL IaaS-bővítményt, ezt egy karbantartási időszakban kell megtenni. 
 
 1. **Aktiválhatja a CSP-előfizetések az Azure Hybrid Benefit?**
 
    Igen, az Azure Hybrid Benefit a CSP-előfizetésekben érhető el. CSP-ügyfeleinek először üzembe kell helyeznie egy használatalapú fizetéses lemezképet, majd [módosítani a licencelési modellt](virtual-machines-windows-sql-ahb.md) a bring-your-saját licenc.  
 
-1. **Az új SQL virtuális gép erőforrás-szolgáltató regisztrálása a virtuális gépem tartalomtérkép érhető el további költségek?**
+1. **Ha regisztrálom a virtuális gépemet az új SQL VM-erőforrásszolgáltatóba, további költségek merülnek fel?**
 
-   Nem. Az SQL virtuális gép erőforrás-szolgáltató csak lehetővé teszi, hogy további kezelhetőségi az SQL Server Azure virtuális gépen az nem vonatkozik külön díj. 
+   Nem. Az SQL VM-erőforrásszolgáltató további költségek nélkül teszi lehetővé az SQL Server további kezelhetőségét az Azure-beli virtuális gépen. 
 
-1. **Az SQL virtuális gép erőforrás-szolgáltató érhető el minden ügyfél számára?**
+1. **Az SQL VM-erőforrásszolgáltató minden ügyfél számára elérhető?**
  
-   Igen. Minden ügyfél tudnak az új SQL virtuális gép erőforrás-szolgáltató regisztrálásához. Azonban csak a frissítési garancia-juttatás rendelkező ügyfelek is aktiválhatja a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (vagy BYOL) SQL Server virtuális gépen. 
+   Igen. Minden ügyfél regisztrálhat az új SQL VM-erőforrásszolgáltatóba. Azonban csak a frissítési garancia-juttatás rendelkező ügyfelek is aktiválhatja a [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (vagy BYOL) SQL Server virtuális gépen. 
 
-1. **Mi történik az _* Microsoft.SqlVirtualMachine_* erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
+1. **Mi történik a _Microsoft.SqlVirtualMachine_ erőforrások áthelyezésekor a VM-erőforrás vagy kihagyott?** 
 
    Ha a Microsoft.Compute/VirtualMachine erőforrás eldobott vagy áthelyezték, akkor a társított Microsoft.SqlVirtualMachine erőforrás a művelet aszinkron módon replikálja értesítést kap.
 
-1. **Mi történik a virtuális géphez, ha az _* Microsoft.SqlVirtualMachine_* erőforrás már nincs használatban?**
+1. **Mi történik a virtuális géphez, ha a _Microsoft.SqlVirtualMachine_ erőforrás már nincs használatban?**
 
-   Amikor a rendszer eldobja a Microsoft.SqlVirtualMachine erőforrás Microsoft.Compute/VirtualMachine erőforrás nem változik. Azonban a licencelési módosítások alapértelmezés szerint a kép eredeti forrást. 
+    Amikor a rendszer eldobja a Microsoft.SqlVirtualMachine erőforrás Microsoft.Compute/VirtualMachine erőforrás nem változik. Azonban a licencelési módosítások alapértelmezés szerint a kép eredeti forrást. 
 
-1. **Az lehet az SQL virtuális gép erőforrás-szolgáltató a saját telepített SQL Server virtuális gépek regisztrálni?**
+1. **Regisztrálhatok saját magam által üzembe helyezett SQL Servert futtató virtuális gépet az SQL VM-erőforrásszolgáltatóba?**
 
-   Igen. Ha a saját adathordozóról SQL-kiszolgálót helyezett üzembe, és telepítve van az SQL Server virtuális gép regisztrálhatja kihasználni a kezelhetőségi biztosítják az SQL IaaS-bővítményt az erőforrás-szolgáltató az SQL IaaS-bővítményt. Azonban Ön nem alakítható át a saját telepített SQL virtuális gépek használatalapú fizetéses előfizetésre.
+    Igen. Ha a saját adathordozóról SQL-kiszolgálót helyezett üzembe, és telepítve van az SQL Server virtuális gép regisztrálhatja kihasználni a kezelhetőségi biztosítják az SQL IaaS-bővítményt az erőforrás-szolgáltató az SQL IaaS-bővítményt. Azonban a saját maga által üzembe helyezett SQL-alapú virtuális gép nem alakítható át használatalapú fizetéses modell használatára.
 
 ## <a name="administration"></a>Adminisztráció
 
-1. **Telepíthetem egy második példányt az SQL Server ugyanazon a virtuális Gépen? Módosíthatja a telepített szolgáltatások az alapértelmezett példány?**
+1. **Telepíthetek egy második SQL Server-példányt ugyanazon a virtuális gépen? Módosíthatom az alapértelmezett példány telepített szolgáltatásainak körét?**
 
    Igen. Az SQL Server telepítési adathordozóján található egy mappában található a **C** meghajtó. Futtatás **Setup.exe** arról a helyről az új SQL Server-példányok hozzáadása vagy módosítása másik telepített funkciók az SQL Server a gépen. Vegye figyelembe, hogy egyes funkciók, például az automatikus biztonsági mentés, automatikus javítás és az Azure Key Vault-integráció, csak az alapértelmezett példány működik, vagy egy nevesített példányt, amely megfelelően lett konfigurálva (lásd a 3 kérdés). 
 
-1. **Eltávolíthatja az SQL Server alapértelmezett példányát?**
+1. **Eltávolíthatom az SQL Server alapértelmezett példányát?**
 
-   Igen, de van néhány szempontot. Amint azt az előző választ, vannak-e a használó szolgáltatások a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).  Ha az IaaS-bővítményt is eltávolítása nélkül távolítja el az alapértelmezett példány, a bővítmény továbbra is fennáll, akkor a keresett és Eseménynapló hibák léphetnek fel. Ezeket a hibákat a következő két forrásból származnak: **A Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. A hibák egyike az alábbihoz hasonló lehet:
+   Igen, de bizonyos szempontokat figyelembe kell venni. Amint azt az előző választ, vannak-e a használó szolgáltatások a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).  Ha az IaaS-bővítményt is eltávolítása nélkül távolítja el az alapértelmezett példány, a bővítmény továbbra is fennáll, akkor a keresett és Eseménynapló hibák léphetnek fel. E hibáknak két forrása lehet: **A Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. Az egyik hiba a következőhöz hasonló lehet:
 
-      A hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Server-kapcsolat létrehozásakor. A kiszolgáló nem található vagy nem érhető el.
+      Hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL Serverhez való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el.
 
    Ha úgy dönt, az alapértelmezett példány eltávolítása, is eltávolítja a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) is.
 
@@ -146,9 +146,9 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
     1. Telepítse az SQL Server nevesített példánnyal. 
     1. Az IaaS-bővítményének telepítése. 
 
-1. **Eltávolítható az SQL Server teljesen az SQL virtuális gép?**
+1. **Eltávolíthatom teljesen az SQL Servert egy SQL-alapú virtuális gépről?**
 
-   Igen, de továbbra is az SQL virtuális gép kell fizetnie, leírtak szerint [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md). Ha már nincs szüksége az SQL Server, az új virtuális gépek üzembe helyezése, és az adatai és alkalmazásai számára az új virtuális gép áttelepítése. Az SQL Server virtuális gép távolíthatja el.
+   Igen, de továbbra is az SQL virtuális gép kell fizetnie, leírtak szerint [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md). Ha már nincs szüksége az SQL Serverre, üzembe helyezhet egy új virtuális gépet, majd oda migrálhatja az adatokat és az alkalmazásokat. Ezt követően már eltávolíthatja az SQL Servert futtató virtuális gépet.
    
 ## <a name="updating-and-patching"></a>Frissítések és javítások
 

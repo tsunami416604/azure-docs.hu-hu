@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 920d6ee9b584e908885cf661d32aa700e655c3f8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816419"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224891"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -22,6 +22,9 @@ A *webhook* lehetővé teszi, hogy indíthat adott runbookokat az Azure Automati
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Egyéb módszerek runbook elindítása webhookok összehasonlíthatja [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
+
+> [!NOTE]
+> Python-runbook indítása egy webhook használatával nem támogatott.
 
 ## <a name="details-of-a-webhook"></a>Webhook részletei
 

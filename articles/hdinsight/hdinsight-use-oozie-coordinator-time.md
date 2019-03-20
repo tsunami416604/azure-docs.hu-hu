@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 000f8de4d40fda39f183b0824bea6a09605e6e9d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a47a30995f651204782325a9f984086fdf382a03
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977609"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202197"
 ---
 # <a name="use-time-based-apache-oozie-coordinator-with-apache-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Időalapú Apache Oozie-koordinátor használata a HDInsight Apache hadoop-keretrendszer határozza meg a munkafolyamatok, és a feladatok koordinálása
 Ebből a cikkből megtudhatja, hogy hogyan munkafolyamatok és koordinátorok meghatározásához, és hogy miként indítható el a koordinátor feladatok, ideje alapján. Hasznos lehet haladhat végig [Apache Oozie használata a HDInsight-] [ hdinsight-use-oozie] Ez a cikk elolvasása előtt. Oozie, mellett is ütemezhet feladatokat az Azure Data Factory. Azure Data Factory kapcsolatban lásd: [Apache Pig használata és az Apache Hive, a Data Factory](../data-factory/transform-data.md).
@@ -192,7 +192,7 @@ A Hive-művelet a munkafolyamat meghívja a HiveQL-parancsfájlt. A parancsfájl
     |Munkafolyamat-változók|Leírás|
     |---|---|
     |${jobTracker}|Adja meg a Hadoop-feladat tracker URL-CÍMÉT. Használat **jobtrackerhost:9010** HDInsight fürtön, 3.0-s és 2.0-s verzióját.|
-    |${nameNode}|Adja meg a Hadoop neve csomópont URL-CÍMÉT. Használja az alapértelmezett fájl rendszer wasb: / / cím, például *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+    |${nameNode}|Adja meg a Hadoop neve csomópont URL-CÍMÉT. Használja az alapértelmezett fájl rendszer wasb: / / cím, például *wasb: / /&lt;containerName&gt;\@&lt;storageAccountName&gt;. blob.core.windows.net*.|
     |${queueName}|Megadja, hogy a feladat a rendszer elküldi a várólista nevét. Használat **alapértelmezett**.|
 
     Hive-művelet változói
@@ -655,15 +655,15 @@ Az Azure PowerShell jelenleg nem biztosít semmilyen parancsmagok Oozie feladato
 
 Távolítsa el a # jelentkezik, ha szeretné futtatni a további funkciók.
 
-9. Ha a HDinsight-fürt 2.1-es verzió, cserélje le a "https://$clusterName.azurehdinsight.net:443/oozie/v2/" a "https://$clusterName.azurehdinsight.net:443/oozie/v1/". HDInsight fürt 2.1-es verziója nem támogatja a 2-es verziója a webes szolgáltatások nem.
-10. Kattintson a **parancsfájl futtatása** vagy nyomja le az **F5** a parancsfájl futtatásához. A kimenet hasonló lesz:
+1. Ha a HDInsight-fürt 2.1-es verzió, cserélje le a "https://$clusterName.azurehdinsight.net:443/oozie/v2/" a "https://$clusterName.azurehdinsight.net:443/oozie/v1/". HDInsight fürt 2.1-es verziója nem támogatja a 2-es verziója a webes szolgáltatások nem.
+1. Kattintson a **parancsfájl futtatása** vagy nyomja le az **F5** a parancsfájl futtatásához. A kimenet hasonló lesz:
 
-     ![Az oktatóanyag futtatásához a munkafolyamat kimenete][img-runworkflow-output]
-11. Csatlakozás az SQL Database, az exportált adatok megtekintéséhez.
+    ![Az oktatóanyag futtatásához a munkafolyamat kimenete][img-runworkflow-output]
+1. Csatlakozás az SQL Database, az exportált adatok megtekintéséhez.
 
 **Ellenőrizze a feladat-hibanapló**
 
-Egy munkafolyamat hibaelhárítása, az Oozie-naplófájl fürtpéldány C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log az átjárócsomóponthoz való. RDP kapcsolatos tudnivalókat lásd: [felügyelete a HDInsight-fürtök az Azure portal használatával][hdinsight-admin-portal].
+Egy munkafolyamat hibaelhárítása, az Oozie-naplófájl fürtpéldány C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log az átjárócsomóponthoz való. RDP kapcsolatos tudnivalókat lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](hdinsight-administer-use-portal-linux.md).
 
 **Az oktatóanyag újrafuttatása**
 
@@ -719,7 +719,6 @@ Ebben az oktatóanyagban megtudhatta, hogyan adhat meg, az Oozie-munkafolyamatok
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

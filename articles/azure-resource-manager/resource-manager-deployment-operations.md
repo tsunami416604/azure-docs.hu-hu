@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9bb6491565f685e8ca3d7a6271747a5df3629e81
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9ff6388c72c631dad870a4f52f86749bfd744d85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085618"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Üzembehelyezési műveletek megtekintése az Azure Resource Managerrel
 
@@ -58,118 +58,118 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
 ## <a name="powershell"></a>PowerShell
 1. A központi telepítés összesített állapotát lekéréséhez használja a **Get-AzResourceGroupDeployment** parancsot. 
 
-  ```powershell
-  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
-  ```
+   ```powershell
+   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
+   ```
 
    Vagy csak ezen központi telepítések, melyeket nem sikerült az eredményeket szűrheti.
 
-  ```powershell
-  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
-  ```
+   ```powershell
+   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+   ```
    
 2. A korrelációs Azonosítót használja:
 
-  ```powershell
-  (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
-  ```
+   ```powershell
+   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+   ```
 
 3. Minden üzembe helyezés több műveleteit tartalmazza. Minden művelet egy lépése az üzembe helyezési folyamat jelöli. Fedezze fel Mi történt egy központi telepítést, általában kell az üzembe helyezési műveletek részleteinek megtekintéséhez. Láthatja, hogy a műveletek állapotának **Get-AzResourceGroupDeploymentOperation**.
 
-  ```powershell 
-  Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
-  ```
+   ```powershell 
+   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
+   ```
 
     Több műveletet a következő formátumban mindegyikhez ad vissza:
 
-  ```powershell
-  Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
-  OperationId    : A3EB2DA598E0A780
-  Properties     : @{provisioningOperation=Create; provisioningState=Succeeded; timestamp=2016-06-14T21:55:15.0156208Z;
+   ```powershell
+   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
+   OperationId    : A3EB2DA598E0A780
+   Properties     : @{provisioningOperation=Create; provisioningState=Succeeded; timestamp=2016-06-14T21:55:15.0156208Z;
                    duration=PT23.0227078S; trackingId=11d376e8-5d6d-4da8-847e-6f23c6443fbf;
                    serviceRequestId=0196828d-8559-4bf6-b6b8-8b9057cb0e23; statusCode=OK; targetResource=}
-  PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisioningState:Succeeded,
+   PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisioningState:Succeeded,
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
-  ```
+   ```
 
 4. Sikertelen műveletek kapcsolatos további információért a műveletek a tulajdonságainak lekérése **sikertelen** állapota.
 
-  ```powershell
-  (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
-  ```
+   ```powershell
+   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+   ```
    
     A sikertelen műveletek mindegyikhez a következő formátumban ad vissza:
 
-  ```powershell
-  provisioningOperation : Create
-  provisioningState     : Failed
-  timestamp             : 2016-06-14T21:54:55.1468068Z
-  duration              : PT3.1449887S
-  trackingId            : f4ed72f8-4203-43dc-958a-15d041e8c233
-  serviceRequestId      : a426f689-5d5a-448d-a2f0-9784d14c900a
-  statusCode            : BadRequest
-  statusMessage         : @{error=}
-  targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/providers/
+   ```powershell
+   provisioningOperation : Create
+   provisioningState     : Failed
+   timestamp             : 2016-06-14T21:54:55.1468068Z
+   duration              : PT3.1449887S
+   trackingId            : f4ed72f8-4203-43dc-958a-15d041e8c233
+   serviceRequestId      : a426f689-5d5a-448d-a2f0-9784d14c900a
+   statusCode            : BadRequest
+   statusMessage         : @{error=}
+   targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/providers/
                           Microsoft.Network/publicIPAddresses/myPublicIP;
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
-  ```
+   ```
 
     Vegye figyelembe a serviceRequestId és a követési azonosítót a művelethez. A serviceRequestId az használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos. Egy adott művelet összpontosíthat a következő lépésben fogja használni a követési azonosító.
 5. Az állapotüzenet egy adott sikertelen művelet lekéréséhez használja a következő parancsot:
 
-  ```powershell
-  ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
-  ```
+   ```powershell
+   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
+   ```
 
     Amely értéket ad vissza:
 
-  ```powershell
-  code           message                                                                        details
-  ----           -------                                                                        -------
-  DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
-  ```
+   ```powershell
+   code           message                                                                        details
+   ----           -------                                                                        -------
+   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
+   ```
 6. Minden központi telepítési műveletet az Azure-ban a kérések és válaszok tartalmát tartalmazza. A kérelem tartalma az Ön által küldött az Azure-ban üzembe helyezés során (például hozzon létre egy virtuális gép operációsrendszer-lemez és az egyéb erőforrásokat). A válasz tartalma az Azure által küldött vissza a telepítési kérelemből. A telepítés során használhat **DeploymentDebugLogLevel** paraméterrel megadhatja, hogy a kérelem és/vagy a válasz megmaradnak a naplóban. 
 
-  Ezt az információt kérhet a naplót, és mentse helyileg a következő PowerShell-parancsok használatával:
+   Ezt az információt kérhet a naplót, és mentse helyileg a következő PowerShell-parancsok használatával:
 
-  ```powershell
-  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+   ```powershell
+   (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
 
-  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
-  ```
+   (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+   ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
 1. Általános állapotát a telepítésben a **azure csoport deployment show** parancsot.
 
-  ```azurecli
-  az group deployment show -g ExampleGroup -n ExampleDeployment
-  ```
+   ```azurecli
+   az group deployment show -g ExampleGroup -n ExampleDeployment
+   ```
   
 2. A visszaadott értékek egyike a **correlationId**. Ez az érték a kapcsolódó események nyomon követésére szolgál, és használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos.
 
-  ```azurecli
-  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
-  ```
+   ```azurecli
+   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
+   ```
 
 3. A műveletek esetében egy központi telepítést használja:
 
-  ```azurecli
-  az group deployment operation list -g ExampleGroup -n ExampleDeployment
-  ```
+   ```azurecli
+   az group deployment operation list -g ExampleGroup -n ExampleDeployment
+   ```
 
 ## <a name="rest"></a>REST
 
 1. A központi telepítés adatainak lekérése a [-sablonalapú telepítéssel kapcsolatos információk lekérése](https://docs.microsoft.com/rest/api/resources/deployments) műveletet.
 
-  ```http
-  GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
-  ```
+   ```http
+   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
+   ```
 
     A válaszban Megjegyzés különösen a **provisioningState**, **correlationId**, és **hiba** elemeket. A **correlationId** kapcsolódó események nyomon követésére szolgál, és használata a technikai támogatáshoz a központi telepítés hibaelhárítása során lehet hasznos.
 
-  ```json
-  { 
+   ```json
+   { 
     ...
     "properties": {
       "provisioningState":"Failed",
@@ -180,19 +180,19 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
         "details":[{"code":"Conflict","message":"{\r\n  \"error\": {\r\n    \"message\": \"Conflict\",\r\n    \"code\": \"Conflict\"\r\n  }\r\n}"}]
       }  
     }
-  }
-  ```
+   }
+   ```
 
 2. A központi telepítések adatainak lekérése [összes sablon telepítési művelet listázására](https://docs.microsoft.com/rest/api/resources/deployments). 
 
-  ```http
-  GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
-  ```
+   ```http
+   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
+   ```
    
     A válasz alapján a megadott kérelem és/vagy a válasz információkat tartalmaz a **debugSetting** tulajdonság üzembe helyezés során.
 
-  ```json
-  {
+   ```json
+   {
     ...
     "properties": 
     {
@@ -213,8 +213,8 @@ Az üzembe helyezési műveletek megtekintéséhez használja az alábbi lépés
         }
       }
     }
-  }
-  ```
+   }
+   ```
 
 
 ## <a name="next-steps"></a>További lépések

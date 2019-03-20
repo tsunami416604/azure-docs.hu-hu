@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64e5e78f93488b2c375c617e8857c84ba2171f00
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880038"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli horgonyok
 
@@ -33,6 +33,8 @@ A következőket fogja megtanulni:
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - A gép egy Windows vagy MacOS rendszerű <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3-as</a>.
+  - Ha fut a Windows, is kell <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
+  - Ha macOS rendszeren fut, első keresztül a homebrew-val telepített Git. Adja meg a következő parancs a terminál egyetlen sorba: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
   - A Szünettel minta létrehozása, is kell az Android Studióban a Szünettel és a CMake 3.6-os SDK Tools telepítése.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">engedélyezve fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">képes ARCore</a> Android-eszközön.
 - Az alkalmazás kell céloznia ARCore 1.5-ös (ARCore 1.6-os + támogatása hamarosan elérhető lesz)
@@ -59,7 +61,7 @@ Válassza ki **Android Studio projekt megnyitása** , és válassza ki a projekt
 
 ## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcsának konfigurálása
 
-A következő lépés, hogy a fiók azonosítóját és a térbeli horgonyok erőforrás beállításakor korábban rögzített fiókkulcs az alkalmazás konfigurálásához.
+A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás konfigurálása. Másolja őket egy szövegszerkesztőbe, amikor [beállítása a térbeli horgonyok erőforrás](#create-a-spatial-anchors-resource).
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 

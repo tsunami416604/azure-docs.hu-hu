@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649679"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097457"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -221,7 +221,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
 
 1. Nyissa meg a WebsiteSqlDeploy.json fájlt, és adja hozzá a következő JSON-t a tárfiók-erőforrás után, de még az erőforrásszakasz záró `]` jele előtt.
 
-  ```json
+   ```json
     ,{
       "properties": {
         "lenses": {
@@ -296,7 +296,7 @@ Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat haszn
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  ```
+   ```
 
 2. Helyezze ismét üzembe az erőforráscsoportot. Figyelje meg az Azure Portalon lévő irányítópulton, hogy a megosztott irányítópult bekerült a választási lehetőségek listájába.
 

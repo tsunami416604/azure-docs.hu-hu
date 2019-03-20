@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 596bc86033fdeaf872f1facfebbf47780893b7d2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455938"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082840"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -44,11 +44,11 @@ A megoldás együttműködik a Microsoft System Center 2012 Operations Manager S
 
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
- - A Health Check megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. Telepítse a megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+- A Health Check megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. Telepítse a megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
- - A munkaterületet, a megoldás hozzáadását követően a **System Center Operations Manager állapotának ellenőrzése** az irányítópulton lévő csempe további konfiguráció szükséges üzenetet jeleníti meg. Kattintson a csempére, és kövesse a lapon szereplő konfigurációs lépéseket
+- A munkaterületet, a megoldás hozzáadását követően a **System Center Operations Manager állapotának ellenőrzése** az irányítópulton lévő csempe további konfiguráció szükséges üzenetet jeleníti meg. Kattintson a csempére, és kövesse a lapon szereplő konfigurációs lépéseket
 
- ![A System Center Operations Manager irányítópult-csempe](./media/scom-assessment/scom-configrequired-tile.png)
+  ![A System Center Operations Manager irányítópult-csempe](./media/scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
 > A System Center Operations Manager konfigurációs teheti meg a megoldás a Log Analytics konfiguráció lapján szereplő lépéseket követve parancsfájl használatával.

@@ -1,7 +1,7 @@
 ---
 title: V1-v2 API-k áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Az 1-es verziójú végpont és az Authoring Tool API-k elavulttá váltak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
+description: Az 1-es verziójú végpont és -készítés Lanugage hangfelismerési API-k elavultak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859872"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087924"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
 
 ## <a name="new-azure-regions"></a>Új Azure-régió
-A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS régiócsoportok biztosít egy másik webhelyre. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.
+A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS régiócsoportok egy másik portált biztosít. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.
 
 ## <a name="authoring-route-changes"></a>Módosítások. útvonal szerzői műveletekhez részben.
 Az Authoring Tool API útvonal változása: használja a **programazonosítója** útvonal használatával az **api** útvonalat.

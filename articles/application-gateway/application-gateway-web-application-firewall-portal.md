@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: d89e5d6fd21fdc37bffcc730fb20bae30ecc4f7c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074964"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Az Azure portal használatával egy webalkalmazási tűzfallal rendelkező application gateway létrehozása
 
@@ -45,21 +45,21 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - Az alkalmazásátjáró neve *myAppGateway*.
-    - Az új erőforráscsoport *myResourceGroupAG*.
-    - Válassza ki *WAF* az application gateway szintjéhez.
+   - Az alkalmazásátjáró neve *myAppGateway*.
+   - Az új erőforráscsoport *myResourceGroupAG*.
+   - Válassza ki *WAF* az application gateway szintjéhez.
 
-    ![Új alkalmazásátjáró létrehozása](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+     ![Új alkalmazásátjáró létrehozása](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
 4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - A virtuális hálózat neve *myVNet*.
-    - A virtuális hálózat címtere *10.0.0.0/16*.
-    - Az alhálózat neve *myAGSubnet*.
-    - Az alhálózat címtere *10.0.0.0/24*.
+   - A virtuális hálózat neve *myVNet*.
+   - A virtuális hálózat címtere *10.0.0.0/16*.
+   - Az alhálózat neve *myAGSubnet*.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
-    ![Virtuális hálózat létrehozása](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.

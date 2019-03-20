@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631498"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089318"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -66,7 +66,7 @@ A Barracuda WAF konfigurálásához adja hozzá a felügyeleti végpontot, ahogy
 
 ![Felügyeleti végpont hozzáadása][AddManagementEndpoint]
 
-Egy böngészővel tallózzon felhőszolgáltatása felügyeleti végpontjába. Ha a Felhőszolgáltatás neve test.cloudapp.net, a végpontot a http://test.cloudapp.net:8000 helyre tallózva érheti el. Az alábbi képen láthatóhoz hasonló bejelentkező oldalt kell látnia, amelyen bejelentkezhet a WAF VM beállítása során megadott bejelentkezési adatokkal.
+Egy böngészővel tallózzon felhőszolgáltatása felügyeleti végpontjába. Ha a Felhőszolgáltatás neve test.cloudapp.net, a végpontot a `http://test.cloudapp.net:8000` helyre tallózva érheti el. Az alábbi képen láthatóhoz hasonló bejelentkező oldalt kell látnia, amelyen bejelentkezhet a WAF VM beállítása során megadott bejelentkezési adatokkal.
 
 ![Felügyeleti bejelentkezési oldal][ManagementLoginPage]
 

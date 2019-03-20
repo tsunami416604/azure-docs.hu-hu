@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093769"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Oktatóanyag: Telepítse az Azure Data Box Edge (előzetes verzió)
 
@@ -94,15 +94,15 @@ Az eszköz egy standard szintű 19 hüvelyk rack kell telepíteni. Használja az
     ![Állványra szerelhető sínek felszerelése](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. Telepítse a külső rails rack kabinet függőleges tagokat. Annak érdekében, a tájolás, a sín diák lesznek megjelölve **előtér**, és ennek a ház előre fel.    
-    1. Keresse meg a sín csapjait a sínszerelvény elülső és hátsó végénél. Húzza ki úgy a sínt, hogy illeszkedjen a szekrény oszlopai közé. Először a külső sínt illessze a szekrény hátuljához. Állítsa be a zárójelet, helyezze a hátsó rack csatlakoztatást lyuk csatlakoztatási hátsó.   
+   1. Keresse meg a sín csapjait a sínszerelvény elülső és hátsó végénél. Húzza ki úgy a sínt, hogy illeszkedjen a szekrény oszlopai közé. Először a külső sínt illessze a szekrény hátuljához. Állítsa be a zárójelet, helyezze a hátsó rack csatlakoztatást lyuk csatlakoztatási hátsó.   
 
-    2. Nyomja be és tartsa lenyomva a hátsó keret kioldóját, hogy láthatók legyenek a fémkampók. Igazítás, és a háttérrendszer zárójelet beszúrása a csatlakoztatáshoz szükséges lyukakba, majd engedje fel az eseményindító.
+   2. Nyomja be és tartsa lenyomva a hátsó keret kioldóját, hogy láthatók legyenek a fémkampók. Igazítás, és a háttérrendszer zárójelet beszúrása a csatlakoztatáshoz szükséges lyukakba, majd engedje fel az eseményindító.
 
-    3. Illessze az elülső keretet a rögzítőnyíláshoz.
+   3. Illessze az elülső keretet a rögzítőnyíláshoz.
 
-    4. Az első zárójel most rögzíteni kell a az állványra szerelt. Szükség esetén X 10L csavart M5 biztonságossá tételéhez a rails bejegyzések és szükség esetén használható. 
+   4. Az első zárójel most rögzíteni kell a az állványra szerelt. Szükség esetén X 10L csavart M5 biztonságossá tételéhez a rails bejegyzések és szükség esetén használható. 
 
-    ![Állványra szerelhető sínek felszerelése](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![Állványra szerelhető sínek felszerelése](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. Csatolja a belső sín a a váz, győződjön meg róla, hogy a keyhole nyílás, az a belső sín összhangban legyenek a váz oldalán az helyének meghatározásával PIN-kód. Ügyeljen arra, hogy a burkolat rögzítőcsapjainak feje kitüremkedjen a belső sín nyílásain keresztül. Húzza a sínt a burkolat eleje felé, amíg a sín hallható kattanással nem rögzül a helyén. Ezt ismételje meg a másik belső sínnél is. Nyomja a burkolatot a belső sínnel együtt a szekrénybe az állványra szerelés befejezéséhez.
 

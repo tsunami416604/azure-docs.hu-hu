@@ -7,22 +7,26 @@ documentationcenter: ''
 author: willzhan
 manager: steveng
 editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/12/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 710ec72e9867ad180afcae8273a093f48933112a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: 290e3aba89cf4add46debc399c06cc136a13771b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991497"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852970"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [3-as verzió](../latest/offline-fairplay-for-ios.md)
+> * [2-es verzió](media-services-protect-hls-with-offline-fairplay.md)
+
  Az Azure Media Services jól megtervezett készletét nyújtja [content protection szolgáltatás](https://azure.microsoft.com/services/media-services/content-protection/) pontosan rögzítik:
 
 - A Microsoft PlayReady
@@ -211,7 +215,7 @@ A következő gyakori kérdések hibaelhárítási segítséget nyújtanak:
 Boot.xml mintafájl:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
   <Version>1.0</Version>
   <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
   <Streams>

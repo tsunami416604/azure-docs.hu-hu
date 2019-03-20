@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5668c3fa43130ee1a0271d6040b1989ee8ab79
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242632"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199681"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és állapotának ellenőrzése
 
@@ -34,15 +34,15 @@ A szintaxis, támogatott tulajdonságok, operátorok és a tagsági szabály ér
 2. Válassza ki **csoportok**.
 3. Válassza ki **összes csoport**, és válassza ki **új csoport**.
 
-   ![Új csoport hozzáadása](./media/groups-create-rule/new-group-creation.png)
+   ![Válassza ki a parancsot az új csoport hozzáadásához](./media/groups-create-rule/new-group-creation.png)
 
 4. Az a **csoport** lap, adja meg egy nevet és leírást az új csoport. Válassza ki a **tagságtípusának** felhasználók vagy eszközök, és válassza ki a **dinamikus lekérdezés hozzáadása**. A szabály builder segítségével hozhat létre egy egyszerű szabályt vagy [saját magának egy tagsági szabály írása](groups-dynamic-membership.md).
 
-   ![Dinamikus tagsági szabály hozzáadása](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Dinamikus csoport tagsági szabály hozzáadása](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 5. A tagsági lekérdezést rendelkezésre álló egyéni bővítmény tulajdonságok megtekintéséhez
-  1. Válassza ki **egyéni bővítménytulajdonság lekérése**
-  2. Adja meg az Alkalmazásazonosítót, és válassza ki **tulajdonságainak frissítése**. 
+   1. Válassza ki **egyéni bővítménytulajdonság lekérése**
+   2. Adja meg az Alkalmazásazonosítót, és válassza ki **tulajdonságainak frissítése**. 
 6. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** a panel alján.
 7. Válassza ki **létrehozás** a a **csoport** panelen a csoport létrehozásához.
 
@@ -74,7 +74,7 @@ A következő állapotüzeneteket is látható, a **tagság utolsó frissítés*
 
 Az egy adott csoport tagsági szabály feldolgozása során hiba történik, ha egy riasztás tetején látható a **áttekintőlapján** a csoporthoz. Ha nincs függőben van a dinamikus tagsági frissítések feldolgozási az a bérlőn belüli összes csoportra további majd 24 órán keresztül, egy riasztás jelenik meg tetején **összes csoport**.
 
-![Hiba történt az üzenet feldolgozásakor](./media/groups-create-rule/processing-error.png)
+![a hibajelzések üzenet feldolgozása](./media/groups-create-rule/processing-error.png)
 
 E cikkekben további információk az Azure Active Directory-csoportokon.
 

@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 keywords: az Apache storm, az apache storm-példa, a storm java, a storm-topológia példa
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/20/2018
+ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 6044c0e565a4e321b57789f51e01473933f63d44
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2c1c144899189e2320d1388fca848fa3d7ec2257
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122080"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 
-Ismerje meg, hogyan hozhat létre egy Java-alapú topológia [Apache Storm](https://storm.apache.org/). Létrehozhat Storm-topológia, amely megvalósítja a word-count alkalmazások. Használhat [Apache Maven](https://maven.apache.org/) felépítéséhez és becsomagolásához a projektet. Ezt követően megismerheti, hogyan meghatározásához a topológia a fluxus keretrendszer használatával.
+Ismerje meg, hogyan hozhat létre egy Java-alapú topológia [Apache Storm](https://storm.apache.org/). Itt hozzon létre egy word-count alkalmazás megvalósító Storm-topológia. Használhat [Apache Maven](https://maven.apache.org/) felépítéséhez és becsomagolásához a projektet. Ezután megtudhatja, hogyan határozza meg a topológia használatával a [Apache Storm fluxus](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) keretrendszer.
 
 Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az Apache Storm on HDInsight.
 
@@ -30,53 +30,55 @@ Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az
 
 * [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 
-* [Az Apache Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven egy projektet a Java-projektek rendszert hozhat létre.
+* [Az Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepített](https://maven.apache.org/install.html) Apache megfelelően.  Maven egy projektet a Java-projektek rendszert hozhat létre.
 
-* Egy szövegszerkesztőben, vagy IDE.
+## <a name="test-environment"></a>Tesztkörnyezet
+Az ebben a cikkben használt környezet a Windows 10 rendszerű számítógép volt.  A parancsok végrehajtódtak parancsot, és a különböző fájlok is szerkeszthetők a Jegyzettömb alkalmazásban.
 
-## <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
+Egy parancssorból adja meg a munkakörnyezet létrehozásához az alábbi parancsokat:
 
-Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beállítani. Érdemes azonban ellenőriznie, hogy a fentiek léteznek-e, és a rendszer számára megfelelő értékeket tartalmaznak-e.
-
-* **JAVA_HOME** -kell mutatnia a könyvtárban, ahol a Java-futtatókörnyezet (JRE) telepítve van. Ha például Unix vagy Linux-disztribúciót, nem rendelkezhet a következőhöz hasonló érték `/usr/lib/jvm/java-8-oracle`. Windows, a következőhöz hasonló érték kellene `c:\Program Files (x86)\Java\jre1.8`
-
-* **Elérési út** – tartalmaznia kell a következő elérési utakhoz:
-
-  * **JAVA_HOME** (vagy ezzel egyenértékű elérési útja)
-
-  * **JAVA_HOME\bin** (vagy ezzel egyenértékű elérési útja)
-
-  * A könyvtárban, ahol telepítve van a maven használatával
+```cmd
+mkdir C:\HDI
+cd C:\HDI
+```
 
 ## <a name="create-a-maven-project"></a>Hozzon létre egy Maven-projektet
 
-A parancssorból a következő parancs használatával hozzon létre egy Maven-projektet nevű **WordCount**:
+Adja meg a következő parancsot egy nevű Maven-projekt létrehozása **WordCount**:
 
-```bash
+```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
+
+cd WordCount
+mkdir resources
 ```
 
-> [!NOTE]  
-> Ha a Powershellt használ, kell jelenjen a`-D` paramétereket, az idézőjelekkel együtt.
->
-> `mvn archetype:generate "-DarchetypeArtifactId=maven-archetype-quickstart" "-DgroupId=com.microsoft.example" "-DartifactId=WordCount" "-DinteractiveMode=false"`
-
-Ez a parancs létrehoz egy könyvtárat nevű `WordCount` az aktuális helyen, amely tartalmaz egy alapszintű Maven-projektet. A `WordCount` könyvtár a következő elemeket tartalmazza:
+Ez a parancs létrehoz egy könyvtárat nevű `WordCount` az aktuális helyen, amely tartalmaz egy alapszintű Maven-projektet. A második parancs módosítja a jelen munkakönyvtárból abba `WordCount`. A harmadik parancs létrehoz egy új könyvtárat `resources`, amelyek később fogja használni.  A `WordCount` könyvtár a következő elemeket tartalmazza:
 
 * `pom.xml`: A Maven-projektet tartalmazza.
 * `src\main\java\com\microsoft\example`: Az alkalmazás kódját tartalmazza.
-* `src\test\java\com\microsoft\example`: Az alkalmazás tesztek tartalmazza. 
+* `src\test\java\com\microsoft\example`: Az alkalmazás tesztek tartalmazza.  
 
 ### <a name="remove-the-generated-example-code"></a>Távolítsa el a generált példakód
 
-Törölje a létrehozott teszt és az alkalmazás fájljai:
+Törölje a létrehozott tesztelési és alkalmazásfájlok `AppTest.java`, és `App.java` írja be az alábbi parancsokat:
 
-* **src\test\java\com\microsoft\example\AppTest.java**
-* **src\main\java\com\microsoft\example\App.java**
+```cmd
+DEL src\main\java\com\microsoft\example\App.java
+DEL src\test\java\com\microsoft\example\AppTest.java
+```
 
 ## <a name="add-maven-repositories"></a>Adja hozzá a Maven-adattárak
 
-HDInsight alapul a a Hortonworks Data Platform (HDP), ezért javasoljuk, hogy a Hortonworks tárház használatával töltse le az Apache Storm-projektek függőségeit. Az a __pom.xml__ fájlban adja hozzá a következő XML formátumú után a `<url> https://maven.apache.org</url>` sor:
+HDInsight alapul a a Hortonworks Data Platform (HDP), ezért javasoljuk, hogy a Hortonworks tárház használatával töltse le az Apache Storm-projektek függőségeit.  
+
+Nyissa meg `pom.xml` az alábbi parancs beírásával:
+
+```cmd
+notepad pom.xml
+```
+
+Majd adja hozzá a következő XML formátumú után a `<url> https://maven.apache.org</url>` sor:
 
 ```xml
 <repositories>
@@ -117,7 +119,7 @@ HDInsight alapul a a Hortonworks Data Platform (HDP), ezért javasoljuk, hogy a 
 
 ## <a name="add-properties"></a>Tulajdonságok hozzáadása
 
-Maven megadhatók tulajdonságok nevű projekt szintű értékeket. Az a __pom.xml__, hozzáadása után a következő szöveget a `</repositories>` sor:
+Maven megadhatók tulajdonságok nevű projekt szintű értékeket. A `pom.xml`, hozzáadása után a következő szöveget a `</repositories>` sor:
 
 ```xml
 <properties>
@@ -133,7 +135,7 @@ Mostantól használhatja ezt az értéket a többi szakasza a `pom.xml`. Példá
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-Adjon hozzá egy függőségi Storm-összetevőket. Nyissa meg a `pom.xml` fájlt, és adja hozzá a következő kódot a `<dependencies>` szakaszban:
+Adjon hozzá egy függőségi Storm-összetevőket. A `pom.xml`, adja hozzá a következő szöveget a `<dependencies>` szakaszban:
 
 ```xml
 <dependency>
@@ -152,7 +154,7 @@ A fordítás során, Maven ezen információk segítségével kereshet `storm-co
 
 ## <a name="build-configuration"></a>Konfigurace buildu
 
-Maven beépülő modulok lehetővé teszik a project build fázisa testreszabása. Például módját a projekt fordítását, vagy hogyan Becsomagolhatja azt egy JAR-fájlba. Nyissa meg a `pom.xml` fájlt, és adja hozzá a következő kódot közvetlenül a fenti a `</project>` sor.
+Maven beépülő modulok lehetővé teszik a project build fázisa testreszabása. Például módját a projekt fordítását, vagy hogyan Becsomagolhatja azt egy JAR-fájlba. A `pom.xml`, adja hozzá a következő szöveget a fenti közvetlenül a `</project>` sor.
 
 ```xml
 <build>
@@ -163,58 +165,62 @@ Maven beépülő modulok lehetővé teszik a project build fázisa testreszabás
 </build>
 ```
 
-Ez a szakasz segítségével adja hozzá a beépülő modulok, erőforrások és más build-konfigurációs beállítások. A teljes hivatkozás a **pom.xml** fájlt [ https://maven.apache.org/pom.html ](https://maven.apache.org/pom.html).
+Ez a szakasz segítségével adja hozzá a beépülő modulok, erőforrások és más build-konfigurációs beállítások. A teljes hivatkozás a `pom.xml` fájlt [ https://maven.apache.org/pom.html ](https://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Beépülő modulok hozzáadása
 
-Az Apache Storm-topológiák megvalósítva a Java a [Exec Maven bővítménnyel](https://www.mojohaus.org/exec-maven-plugin/) akkor hasznos, mert lehetővé teszi, hogy a topológia egyszerűen helyileg történő futtatása a fejlesztési környezetet. Adja hozzá a következőt a `<plugins>` szakaszában a `pom.xml` a Exec Maven bővítménnyel-fájl:
+* **Exec Maven bővítménnyel**
 
-```xml
-<plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>1.5.0</version>
-    <executions>
-        <execution>
-        <goals>
-            <goal>exec</goal>
-        </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <executable>java</executable>
-        <includeProjectDependencies>true</includeProjectDependencies>
-        <includePluginDependencies>false</includePluginDependencies>
-        <classpathScope>compile</classpathScope>
-        <mainClass>${storm.topology}</mainClass>
-        <cleanupDaemonThreads>false</cleanupDaemonThreads> 
-    </configuration>
-</plugin>
-```
+    Az Apache Storm-topológiák megvalósítva a Java a [Exec Maven bővítménnyel](https://www.mojohaus.org/exec-maven-plugin/) akkor hasznos, mert lehetővé teszi, hogy a topológia egyszerűen helyileg történő futtatása a fejlesztési környezetet. Adja hozzá a következőt a `<plugins>` szakaszában a `pom.xml` a Exec Maven bővítménnyel-fájl:
+    
+    ```xml
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+            <execution>
+            <goals>
+                <goal>exec</goal>
+            </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <executable>java</executable>
+            <includeProjectDependencies>true</includeProjectDependencies>
+            <includePluginDependencies>false</includePluginDependencies>
+            <classpathScope>compile</classpathScope>
+            <mainClass>${storm.topology}</mainClass>
+            <cleanupDaemonThreads>false</cleanupDaemonThreads> 
+        </configuration>
+    </plugin>
+    ```
 
-Egy másik hasznos beépülő modul a [Apache Maven fordító beépülő modul](https://maven.apache.org/plugins/maven-compiler-plugin/), amely fordítási beállításainak módosítására szolgál. A módosítások a Java, amely Mavent használ a forrás- és az alkalmazás verziója.
+* **Az Apache Maven fordító beépülő modul**
 
-* A HDInsight __3.4-es vagy korábbi__, állítsa be a forrás és cél a Java-verzió __1.7-es__.
-
-* A HDInsight __3.5__, állítsa be a forrás és cél a Java-verzió __1.8-as__.
-
-Adja hozzá a következő szöveget a `<plugins>` szakaszában a `pom.xml` -fájl az Apache Maven fordító beépülő modult. Ebben a példában 1.8-as, adja meg, így a célverzió HDInsight 3.5-ös verzióját.
-
-```xml
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.3</version>
-    <configuration>
-    <source>1.8</source>
-    <target>1.8</target>
-    </configuration>
-</plugin>
-```
+    Egy másik hasznos beépülő modul a [Apache Maven fordító beépülő modul](https://maven.apache.org/plugins/maven-compiler-plugin/), amely fordítási beállításainak módosítására szolgál. Módosítsa a Mavent használja a forrás- és az alkalmazás a Java-verzió.
+    
+  * A HDInsight __3.4-es vagy korábbi__, állítsa be a forrás és cél a Java-verzió __1.7-es__.
+    
+  * A HDInsight __3.5__, állítsa be a forrás és cél a Java-verzió __1.8-as__.
+    
+    Adja hozzá a következő szöveget a `<plugins>` szakaszában a `pom.xml` -fájl az Apache Maven fordító beépülő modult. Ebben a példában 1.8-as, adja meg, így a célverzió HDInsight 3.5-ös verzióját.
+    
+    ```xml
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.3</version>
+      <configuration>
+      <source>1.8</source>
+      <target>1.8</target>
+      </configuration>
+    </plugin>
+    ```
 
 ### <a name="configure-resources"></a>Erőforrások konfigurálása
 
-Az erőforrás szakasz lehetővé teszi nem kód erőforrások, például az összetevőket a topológia számára szükséges konfigurációs fájlokat. Ebben a példában adja hozzá a következő szöveget a `<resources>` szakaszában a "pom.xml fájlt.
+Az erőforrás szakasz lehetővé teszi nem kód erőforrások, például az összetevőket a topológia számára szükséges konfigurációs fájlokat. Ebben a példában adja hozzá a következő szöveget a `<resources>` szakaszában a `pom.xml` fájlt.
 
 ```xml
 <resource>
@@ -240,15 +246,15 @@ Java-alapú Apache Storm-topológia áll mindhárom összetevő, amely kell lét
 
 ### <a name="create-the-spout"></a>A spout létrehozása
 
-Külső adatforrások beállításával kapcsolatos követelmények csökkentése érdekében a következő spout egyszerűen véletlenszerű mondatokat bocsát ki. A spout-biztosított egy módosított verziója a [Storm-Starter példák](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).
+Külső adatforrások beállításával kapcsolatos követelmények csökkentése érdekében a következő spout egyszerűen véletlenszerű mondatokat bocsát ki. A spout-biztosított egy módosított verziója a [Storm-Starter példák](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  Bár ez a topológia csak egy spout, mások előfordulhat, hogy több különböző forrásokból származó adatok hírcsatorna-a topológia be.
 
-> [!NOTE]  
-> Példa egy spout, amely beolvas egy külső adatforrásból tekintse meg az alábbi példák egyikét:
->
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Egy példa spout, amely beolvassa a Twitteren.
-> * [A Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): A spout, amely beolvassa a Kafka.
+Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `RandomSentenceSpout.java`:
 
-Hozzon létre egy fájlt a spout `RandomSentenceSpout.java` a a `src\main\java\com\microsoft\example` könyvtárra, és használja a következő Java-kód, a tartalma:
+```cmd
+notepad src\main\java\com\microsoft\example\RandomSentenceSpout.java
+```
+
+Ezután másolja és illessze be az alábbi java-kódot az új fájlt.  Zárja be a fájlt.
 
 ```java
 package com.microsoft.example;
@@ -313,22 +319,30 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]  
-> Bár ez a topológia csak egy spout, mások előfordulhat, hogy több különböző forrásokból származó adatok hírcsatorna-a topológia be.
+> Példa egy spout, amely beolvas egy külső adatforrásból tekintse meg az alábbi példák egyikét:
+>
+> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Egy példa spout, amely beolvassa a Twitteren.
+> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): A spout, amely beolvassa a Kafka.
+
 
 ### <a name="create-the-bolts"></a>A boltok létrehozása
 
-A boltok az adatfeldolgozás kezelni. Ez a topológia két boltok használja:
+A boltok az adatfeldolgozás kezelni. A boltok bármit, például számítási, adatmegőrzés vagy külső összetevők folytatott kommunikációra. Ez a topológia két boltok használja:
 
 * **SplitSentence**: Felosztja a mondatok projektsablon által kibocsátott **RandomSentenceSpout** az egyes szavak.
 
 * **WordCount**: Számít, hogy hányszor történt minden szó.
 
-> [!NOTE]  
-> A boltok bármit, például számítási, adatmegőrzés vagy külső összetevők folytatott kommunikációra.
-
-Hozzon létre két új fájl `SplitSentence.java` és `WordCount.java` a a `src\main\java\com\microsoft\example` könyvtár. A fájlok tartalmát használja a következő szöveget:
 
 #### <a name="splitsentence"></a>SplitSentence
+
+Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `SplitSentence.java`:
+
+```cmd
+notepad src\main\java\com\microsoft\example\SplitSentence.java
+```
+
+Ezután másolja és illessze be az alábbi java-kódot az új fájlt.  Zárja be a fájlt.
 
 ```java
 package com.microsoft.example;
@@ -378,6 +392,14 @@ public class SplitSentence extends BaseBasicBolt {
 ```
 
 #### <a name="wordcount"></a>WordCount
+
+Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `WordCount.java`:
+
+```cmd
+notepad src\main\java\com\microsoft\example\WordCount.java
+```
+
+Ezután másolja és illessze be az alábbi java-kódot az új fájlt.  Zárja be a fájlt.
 
 ```java
 package com.microsoft.example;
@@ -468,7 +490,13 @@ Az alábbi képen a gráf ebben a topológiában az összetevők egy egyszerű d
 
 ![spoutok és boltok elrendezésének bemutató ábra.](./media/apache-storm-develop-java-topology/wordcount-topology.png)
 
-A topológia implementálása, hozzon létre egy fájlt `WordCountTopology.java` a a `src\main\java\com\microsoft\example` könyvtár. A fájl tartalmát a következő Java-kódot használja:
+A topológia implementálása, adja meg a hozhat létre, és nyisson meg egy új fájlt az alábbi parancs `WordCountTopology.java`:
+
+```cmd
+notepad src\main\java\com\microsoft\example\WordCountTopology.java
+```
+
+Ezután másolja és illessze be az alábbi java-kódot az új fájlt.  Zárja be a fájlt.
 
 ```java
 package com.microsoft.example;
@@ -534,7 +562,13 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Naplózás konfigurálása
 
-Használja a Storm [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) naplózza az adatokat. Ha nem konfigurálja a naplózást, a topológia diagnosztikai adatokat bocsát ki. Szabályozhatja, hogy mi a naplózására akkor kerül sor, hozzon létre egy fájlt `log4j2.xml` a a `resources` könyvtár. Használja a következő XML-kódot a fájl tartalmát.
+Használja a Storm [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) naplózza az adatokat. Ha nem konfigurálja a naplózást, a topológia diagnosztikai adatokat bocsát ki. Szabályozhatja, hogy mi a naplózására akkor kerül sor, hozzon létre egy fájlt `log4j2.xml` a a `resources` könyvtárat, az alábbi parancs beírásával:
+
+```cmd
+notepad resources\log4j2.xml
+```
+
+Ezután másolja és illessze be az alábbi XML-szöveget az új fájlt.  Zárja be a fájlt.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -568,7 +602,7 @@ Log4j 2 naplózásának konfigurálásáról további információkért lásd: [
 
 Után mentse a fájlokat, használja a következő parancsot helyileg a topológia teszteléséhez.
 
-```bash
+```cmd
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
@@ -597,9 +631,19 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
 > [!WARNING]  
 > Oka az, hogy egy [bug (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) a Storm 1.0.1, előfordulhat, hogy telepítenie kell egy [Storm fejlesztési környezet](https://storm.apache.org/releases/current/Setting-up-development-environment.html) fluxus topológiák helyi futtatásához.
 
-1. Helyezze át a `WordCountTopology.java` fájl ki a projektet. Ez a fájl korábban, a topológia definiált, de fluxus nem szükséges.
+1. Korábban a `WordCountTopology.java` a topológia definiálva, de nem szükséges fluxus. Törölje a fájlt a következő paranccsal:
 
-2. Az a `resources` könyvtárban hozzon létre egy fájlt `topology.yaml`. Használja a következő szöveget a fájl tartalmát.
+    ```cmd
+    DEL src\main\java\com\microsoft\example\WordCountTopology.java
+    ```
+
+2. Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `topology.yaml`:
+
+    ```cmd
+    notepad resources\topology.yaml
+    ```
+
+    Ezután másolja és illessze be az alábbi szöveget egy új fájlba.  Zárja be a fájlt.
 
     ```yaml
     name: "wordcount"       # friendly name for the topology
@@ -638,10 +682,14 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
         args: ["word"]           # field(s) to group on
     ```
 
-3. A következő módosításokat a `pom.xml` fájlt.
-   
+3. Adja meg az alábbi parancsot megnyitásához `pom.xml` , hogy az alább ismertetett változatok:
+
+    ```cmd
+    notepad pom.xml
+    ```
+
    * Adja hozzá a következő új függőséget a `<dependencies>` szakaszban:
-     
+
         ```xml
         <!-- Add a dependency on the Flux framework -->
         <dependency>
@@ -650,14 +698,15 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
             <version>${storm.version}</version>
         </dependency>
         ```
+
    * Adja hozzá a következő beépülő modult a `<plugins>` szakaszban. Ez a beépülő modul egy csomagot (jar-fájl), a projekt létrehozásának kezeli, és meghatározott átalakítások fluxus érvényes, ha a csomag létrehozása.
-     
+
         ```xml
         <!-- build an uber jar -->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
-            <version>2.3</version>
+            <version>3.2.1</version>
             <configuration>
                 <transformers>
                     <!-- Keep us from getting a "can't overwrite file error" -->
@@ -691,9 +740,9 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
         </plugin>
         ```
 
-   * Az a **exec-maven-bővítménnyel** `<configuration>` területen módosítsa az értéket a `<mainClass>` való `org.apache.storm.flux.Flux`. Ezzel a beállítással fluxus a topológia helyben fut a fejlesztési kezelésére.
+   * Az a **exec-maven-bővítménnyel** `<configuration>` területen módosítsa az értéket a `<mainClass>` a `${storm.topology}` való `org.apache.storm.flux.Flux`. Ezzel a beállítással fluxus a topológia helyben fut a fejlesztési kezelésére.
 
-   * Az a `<resources>` szakaszban, a következőt adja hozzá a `<includes>`. Az XML tartalmazza a YAML-fájlt, amely meghatározza a topológia a projekt részeként.
+   * Az a `<resources>` területen adja hozzá a következőt `<includes>`. Az XML tartalmazza a YAML-fájlt, amely meghatározza a topológia a projekt részeként.
 
         ```xml
         <include>topology.yaml</include>
@@ -701,16 +750,10 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
 
 ## <a name="test-the-flux-topology-locally"></a>Tesztelje helyben a fluxus topológia
 
-1. Fordítsa le, és hajtsa végre a Maven használatával szeretné fluxus topológia a következő használatával:
+1. Adja meg a fordításához és a Maven használatával szeretné fluxus topológia hajtsa végre a következő parancsot:
 
-    ```bash
+    ```cmd
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
-    ```
-
-    Ha a Powershellt használ, használja a következő parancsot:
-
-    ```bash
-    mvn compile exec:java "-Dexec.args=--local -R /topology.yaml"
     ```
 
     > [!WARNING]  
@@ -718,7 +761,7 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
     >
     > Ha rendelkezik [Storm a fejlesztési környezetben telepített](https://storm.apache.org/releases/current/Setting-up-development-environment.html), használhatja helyette az alábbi parancsokat:
     >
-    > ```bash
+    > ```cmd
     > mvn compile package
     > storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     > ```
@@ -736,31 +779,41 @@ Fluxus további információkért lásd: [fluxus keretrendszer (https://storm.ap
 
     Van egy 10 másodperces késleltetést kötegek naplózott adatok között.
 
-2. Készítsen másolatot a `topology.yaml` fájlt a projektből. Nevezze el az új fájl `newtopology.yaml`. Az a `newtopology.yaml` fájlt, keresse meg a következő szakaszban, és módosítsa az értéket a `10` való `5`. Ez a módosítás kibocsátását váró word száma 10 másodperc és 5 közötti időtartam változik.
+2. Hozzon létre egy új topológia yaml a projektből.
+ 
+    a. Adja meg az alábbi parancsot megnyitásához `topology.xml`:
+
+    ```cmd
+    notepad resources\topology.yaml
+    ```
+
+    b. Keresse meg a következő szakaszban, és módosítsa az értékét `10` való `5`. Ez a módosítás kibocsátását váró word száma 10 másodperc és 5 közötti időtartam változik.  
 
     ```yaml
     - id: "counter-bolt"
-    className: "com.microsoft.example.WordCount"
-    constructorArgs:
-    - 5
-    parallelism: 1
-    ```yaml
+      className: "com.microsoft.example.WordCount"
+      constructorArgs:
+        - 5
+      parallelism: 1  
+    ```  
 
-3. To run the topology, use the following command:
+    c. Fájl mentése másként `newtopology.yaml`.
 
-    ```bash
-    mvn exec:java -Dexec.args="--local /path/to/newtopology.yaml"
+3. A topológia futtatásához adja meg a következő parancsot:
+
+    ```cmd
+    mvn exec:java -Dexec.args="--local resources/newtopology.yaml"
     ```
 
     Vagy, ha a fejlesztési környezetet a Storm rendelkezik:
 
-    ```bash
-    storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local /path/to/newtopology.yaml
+    ```cmd
+    storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-    Módosítsa a `/path/to/newtopology.yaml` elérési útját az előző lépésben létrehozott newtopology.yaml fájlt. Ez a parancs a newtopology.yaml használja, mint a topológia definíciójának. Mivel nem tartalmazza a `compile` paramétert, a Maven az előző lépésekben létrehozott projekt a verzióját használja.
+     Ez a parancs a `newtopology.yaml` , a topológiadefiníció. Mivel nem tartalmazza a `compile` paramétert, a Maven az előző lépésekben létrehozott projekt a verzióját használja.
 
-    A topológia megkezdéséről kell tapasztalnia, hogy a kibocsátott kötegek közötti idő newtopology.yaml értékének megfelelően módosult. Így láthatja, hogy módosíthatja a konfigurációt keresztül egy YAML-fájlt a topológia újrafordítottuk nélkül.
+    A topológia megkezdéséről kell tapasztalnia, hogy a kibocsátott kötegek közötti idő értékének megfelelően módosult `newtopology.yaml`. Így láthatja, hogy módosíthatja a konfigurációt keresztül egy YAML-fájlt a topológia újrafordítottuk nélkül.
 
 Ezeket és más szolgáltatások fluxus keretrendszer további információkért lásd: [fluxus (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
@@ -781,4 +834,3 @@ Megtanulhatta, hogyan lehet az Apache Storm-topológia létrehozása Java haszn�
 * [Az Apache Storm on HDInsight Visual Studio használatával C#-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
 
 Annak további példa az Apache Storm-topológiák funkcionáló [a HDInsight Apache Storm példatopológiái](apache-storm-example-topology.md).
-

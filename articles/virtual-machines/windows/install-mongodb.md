@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a45d6a6064173cea7ed15065ab3464718cc8578e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888821"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998497"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Telepítse és konfigurálja a MongoDB egy Windows virtuális gépen az Azure-ban
-[MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk végigvezeti telepítése és konfigurálása a mongodb-hez a Windows Server 2016 virtuális gépen (VM) az Azure-ban. Emellett [a MongoDB telepítése az Azure-beli Linuxos virtuális gép](../linux/install-mongodb.md).
+[MongoDB](https://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk végigvezeti telepítése és konfigurálása a mongodb-hez a Windows Server 2016 virtuális gépen (VM) az Azure-ban. Emellett [a MongoDB telepítése az Azure-beli Linuxos virtuális gép](../linux/install-mongodb.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt telepítése és konfigurálása a MongoDB, hozzon létre egy virtuális Gépet, és ideális, adatlemez hozzáadása, szüksége. Hozzon létre egy virtuális Gépet, és adjon hozzá egy adatlemezt a következő cikkekben talál:
@@ -34,7 +34,7 @@ Telepítése és konfigurálása a MongoDB, a kezdéshez [jelentkezzen be a Wind
 
 ## <a name="install-mongodb"></a>A MongoDB telepítése
 > [!IMPORTANT]
-> MongoDB biztonsági funkciói, például a hitelesítést és az IP-cím kötés, alapértelmezés szerint nem engedélyezettek. Biztonsági funkciókat engedélyezni kell a mongodb-hez a éles környezetben való üzembe helyezés előtt. További információkért lásd: [MongoDB biztonság és hitelesítés](http://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> MongoDB biztonsági funkciói, például a hitelesítést és az IP-cím kötés, alapértelmezés szerint nem engedélyezettek. Biztonsági funkciókat engedélyezni kell a mongodb-hez a éles környezetben való üzembe helyezés előtt. További információkért lásd: [MongoDB biztonság és hitelesítés](https://www.mongodb.org/display/DOCS/Security+and+Authentication).
 
 
 1. Miután csatlakozott a virtuális géphez távoli asztali kapcsolattal, nyissa meg az Internet Explorer a tálcáról.
@@ -46,7 +46,7 @@ Telepítése és konfigurálása a MongoDB, a kezdéshez [jelentkezzen be a Wind
    * Kattintson a **helyek** gombra. Adjon hozzá *https://\*. mongodb.com* a listához, és a megbízható helyek, majd zárja be a párbeszédpanelt.
      
      ![Az Internet Explorer biztonsági beállítások konfigurálása](./media/install-mongodb/configure-internet-explorer-security.png)
-4. Keresse meg a [MongoDB - letöltések](http://www.mongodb.com/downloads) lap (http://www.mongodb.com/downloads).
+4. Keresse meg a [MongoDB - letöltések](https://www.mongodb.com/downloads) lap (https://www.mongodb.com/downloads).
 5. Ha szükséges, válassza ki a **Community Server** edition, és válassza ki a legújabb aktuális stabil kibocsátási*Windows Server 2008 R2 64 bites és újabb verziók*. A telepítő letöltéséhez kattintson **letöltése (msi)**.
    
     ![Töltse le a MongoDB-telepítő](./media/install-mongodb/download-mongodb.png)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce82775b65316fc646b45b4749a6b1719ed6e59f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c24cbf8ad21c7dd5875a71532a5278e313774e66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883967"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian
 
@@ -106,6 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     ![dmarcian tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
@@ -113,6 +114,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
@@ -124,6 +126,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
     ![dmarcian tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
@@ -186,7 +189,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -239,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók dmarcian bejelentkezni, akkor ki kell ép
 
     ![Az új felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Az a **új felhasználó e-mail-címe** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    a. Az a **új felhasználó e-mail-címe** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
 
     b. Ha azt szeretné, hogy a felhasználó rendszergazdai jogokat, válassza ki a **győződjön meg arról, felhasználói rendszergazda**.
 

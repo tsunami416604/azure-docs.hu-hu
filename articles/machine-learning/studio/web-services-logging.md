@@ -3,7 +3,7 @@ title: Webalkalmazás-szolgáltatás-naplózás – Azure Machine Learning Studi
 description: Ismerje meg, a Machine Learning Studio-webszolgáltatások naplózásának engedélyezése. Naplózás nyújt további információt talál az API-k hibaelhárítása.
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 23a160ee15547bea7d5ee832cd1032b2e899966b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857555"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Az Azure Machine Learning Studio-webszolgáltatások naplózásának engedélyezése
 Ez a dokumentum információt nyújt a Machine Learning Studio-webszolgáltatások naplózási képesség. Naplózás további információt, csak egy hiba száma és a egy üzenet, amely segíthet a hívásokat a Machine Learning Studio API-k hibaelhárítása tartalmaz.  
@@ -57,7 +57,7 @@ A naplózás engedélyezése a [Azure Machine Learning Studio-webszolgáltatáso
 
    3. Ha a tároló **ml-diagnosztika** nem létezik, kattintson a **+ tároló**, adjon a tárolót a neve "ml-diagnosztika", és válassza ki a **típus eléréséhez** mint "Blob". Kattintson az **OK** gombra.
 
-      ![Válassza ki a naplózási szint](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Hozzon létre egy új tárolót, a diagnosztikai naplók tárolásához](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >

@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103400"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel csatlakoztatása egy Azure SQL Database-adatbázis és a egy jelentés létrehozása
 
@@ -43,10 +43,10 @@ Az Excelnek is telepítve kell lennie. Ebben a cikkben a [Microsoft Excel 2016](
 
 4. Az a **SQL Server-adatbázis** párbeszédpanelen jelölje ki **adatbázis** a bal oldali oldalán, és írja be a a **felhasználónév** és **jelszó** a a SQL Database-kiszolgáló, amelyhez csatlakozni kíván. Válassza ki **Connect** megnyitásához a **kezelő**. 
 
-  ![Kiszolgálónév és hitelesítő adatok megadása](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Kiszolgálónév és hitelesítő adatok megadása](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > A hálózati környezettől függően előfordulhat, hogy nem tud csatlakozni, vagy megszakad a kapcsolat, ha az SQL Database-kiszolgáló nem engedélyezi az ügyfél IP-címről érkező forgalmat. Lépjen az [Azure Portalhoz](https://portal.azure.com/), kattintson az SQL Server-példányok lehetőségre, majd a saját kiszolgálójára, ezután a beállítások alatt a tűzfalra, és adja hozzá ügyfél IP-címét. A részleteket a [Tűzfal beállításainak konfigurálása](sql-database-configure-firewall-settings.md) részben találja meg.
+   > [!TIP]
+   > A hálózati környezettől függően előfordulhat, hogy nem tud csatlakozni, vagy megszakad a kapcsolat, ha az SQL Database-kiszolgáló nem engedélyezi az ügyfél IP-címről érkező forgalmat. Lépjen az [Azure Portalhoz](https://portal.azure.com/), kattintson az SQL Server-példányok lehetőségre, majd a saját kiszolgálójára, ezután a beállítások alatt a tűzfalra, és adja hozzá ügyfél IP-címét. A részleteket a [Tűzfal beállításainak konfigurálása](sql-database-configure-firewall-settings.md) részben találja meg.
 
 5. Az a **kezelő**, jelölje be az adatbázis működik együtt a listából válassza ki a táblák vagy nézetek dolgozni szeretne (választottuk **vGetAllCategories**), majd válassza ki **terhelés**, helyezze át az adatokat az adatbázisból az Excel-táblázatban.
 
@@ -75,17 +75,17 @@ Most, hogy létrehozta a kapcsolatot, több lehetőség közül választhat más
 A kapcsolat adatai véglegesen mentéséhez .odc fájl létrehozása és a kapcsolat egyik lehetősége a **meglévő kapcsolatok** párbeszédpanel bezárásához. 
 
 1. Az oldal felső menüsávban válassza a **adatok** lapra, és válassza ki **meglévő kapcsolatok** elindításához a **meglévő kapcsolatok** párbeszédpanel bezárásához. 
-    1. Válassza ki **Továbbiak keresése** megnyitásához a **adatforrás kiválasztása** párbeszédpanel bezárásához.   
-    2. Válassza ki a **+NewSqlServerConnection.odc** fájlt, és válassza ki **nyissa meg a** megnyitásához a **Adatkapcsolat varázsló**.
+   1. Válassza ki **Továbbiak keresése** megnyitásához a **adatforrás kiválasztása** párbeszédpanel bezárásához.   
+   2. Válassza ki a **+NewSqlServerConnection.odc** fájlt, és válassza ki **nyissa meg a** megnyitásához a **Adatkapcsolat varázsló**.
 
-    ![Új kapcsolat](media/sql-database-connect-excel/new-connection.png)
+      ![Új kapcsolat](media/sql-database-connect-excel/new-connection.png)
 
 2. Az a **Adatkapcsolat varázsló**, írja be a kiszolgáló nevét és az SQL-adatbázis hitelesítő adatait. Kattintson a **Tovább** gombra. 
-    1. Válassza ki a legördülő menüből az adatokat tartalmazó adatbázisban. 
-    2. Válassza ki a tábla vagy nézet érdekli. VGetAllCategories választottuk.
-    3. Kattintson a **Tovább** gombra. 
+   1. Válassza ki a legördülő menüből az adatokat tartalmazó adatbázisban. 
+   2. Válassza ki a tábla vagy nézet érdekli. VGetAllCategories választottuk.
+   3. Kattintson a **Tovább** gombra. 
 
-    ![Adatkapcsolat varázsló](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![Adatkapcsolat varázsló](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. Válassza ki a fájl helyét a **Fájlnév**, és a **rövid név** az Adatkapcsolat varázsló a következő képernyőn. Azt is beállíthatja a jelszó mentéséhez a fájlban, azonban ez potenciálisan felfedheti az adatok nem kívánt hozzáférésnek. Válassza ki **Befejezés** Ha készen áll. 
 

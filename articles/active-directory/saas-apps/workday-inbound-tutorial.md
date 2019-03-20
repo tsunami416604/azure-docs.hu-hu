@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73c921df493eeda25c50047e861d3d30e6dc52a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897622"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -257,13 +257,13 @@ Ebben a lépésben létrehoz egy korlátozás nélküli vagy korlátozott integr
     ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity csoport")
 2. Végezze el a **biztonsági csoport létrehozása** feladat. 
 
-  * A Workday a biztonsági csoportok két típusa van:
-    * **Nem korlátozott:** A biztonsági csoport minden tagja hozzáférhet a biztonsági csoport által védett minden adat-példányok.
-    * **Korlátozott:** Biztonsági csoport összes tagját hozzáférése környezetfüggő adatok-példányok (sorok) férhet hozzá a biztonsági csoport egy részhalmazát.
-  * Tekintse meg a Workday integrációs partnerrel válassza ki a megfelelő biztonsági csoport való integrációhoz.
-  * Ha már tudja, hogy a csoport típusának, válassza ki a **integrációs rendszer biztonsági csoport (nem korlátozott lehetőséget választja)** vagy **integrációs rendszer biztonsági csoport (Constrained)** származó a **írja be a Bérlős biztonsági csoport**  legördülő listából.
+   * A Workday a biztonsági csoportok két típusa van:
+     * **Nem korlátozott:** A biztonsági csoport minden tagja hozzáférhet a biztonsági csoport által védett minden adat-példányok.
+     * **Korlátozott:** Biztonsági csoport összes tagját hozzáférése környezetfüggő adatok-példányok (sorok) férhet hozzá a biztonsági csoport egy részhalmazát.
+   * Tekintse meg a Workday integrációs partnerrel válassza ki a megfelelő biztonsági csoport való integrációhoz.
+   * Ha már tudja, hogy a csoport típusának, válassza ki a **integrációs rendszer biztonsági csoport (nem korlátozott lehetőséget választja)** vagy **integrációs rendszer biztonsági csoport (Constrained)** származó a **írja be a Bérlős biztonsági csoport**  legördülő listából.
 
-    ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity csoport")
+     ![CreateSecurity csoport](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity csoport")
 
 3. A sikeres biztonsági csoport létrehozása után megjelenik egy oldal, ahol hozzárendelheti a biztonsági csoport tagjai. Adja hozzá az új integrációs rendszer felhasználó e biztonsági csoporthoz az előző lépésben létrehozott. Ha használ *korlátozott* biztonsági csoport is szüksége lesz a megfelelő szervezeti hatókör kiválasztása.
 
@@ -286,11 +286,11 @@ Ebben a lépésben, fog "tartományi biztonság" szabályzat engedélyek megadá
    * *Feldolgozó adatok: Aktuális személyzeti információk*
    * *Feldolgozó adatok: A feldolgozó profil üzleti címe*
 
-    ![Tartományi biztonsági szabályzatok](./media/workday-inbound-tutorial/wd_isu_07.png "tartományi biztonsági szabályzatok")  
+     ![Tartományi biztonsági szabályzatok](./media/workday-inbound-tutorial/wd_isu_07.png "tartományi biztonsági szabályzatok")  
 
-    ![Tartományi biztonsági szabályzatok](./media/workday-inbound-tutorial/wd_isu_08.png "tartományi biztonsági szabályzatok") 
+     ![Tartományi biztonsági szabályzatok](./media/workday-inbound-tutorial/wd_isu_08.png "tartományi biztonsági szabályzatok") 
 
-    Kattintson az **OK** gombra.
+     Kattintson az **OK** gombra.
 
 3. A jelentésben, hogy megjelenik-e, válassza a három pontra (...), amely mellett megjelenik **külső fiók üzembe helyezésének** , majd kattintson a menüre **tartomány -> biztonsági szabályzat engedélyeinek szerkesztése**
 
@@ -428,7 +428,7 @@ Miután telepítette a .NET 4.7.1+, letöltheti a **[helyszíni Itt a kiépíté
 
 8. Végezze el a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
-   * **Rendszergazdai felhasználónév** – adja meg a Workday integrációs rendszer fiók felhasználóneve a hozzáfűzi a bérlő tartományneve. Következőhöz hasonlóan kell kinéznie: **username@tenant_name**
+   * **Rendszergazdai felhasználónév** – adja meg a Workday integrációs rendszer fiók felhasználóneve a hozzáfűzi a bérlő tartományneve. Következőhöz hasonlóan kell kinéznie: **felhasználónév\@bérlő_neve**
 
    * **Rendszergazdai jelszó –** adja meg a jelszót a Workday-integrációs rendszer fiók
 
@@ -438,8 +438,8 @@ Miután telepítette a .NET 4.7.1+, letöltheti a **[helyszíni Itt a kiépíté
 
    * **Active Directory-tároló -** adja meg a tároló megkülönböztető Nevet, amelyen az ügynök kell felhasználói fiókokat hozhat létre alapértelmezés szerint.
         Példa: *Szervezeti egység általános jogú felhasználók, OU = = Users, DC = contoso, DC = test*
-> [!NOTE]
-> Ez a beállítás csak kerülnek Play áruházban a felhasználói fiók létrehozása, ha a *parentDistinguishedName* attribútum nem történik meg az attribútum-leképezéshez. Ezt a beállítást nem használja a felhasználó keresése vagy frissítési műveletek. A teljes sub tartományfa a keresési műveletet hatálya alá esik.
+     > [!NOTE]
+     > Ez a beállítás csak kerülnek Play áruházban a felhasználói fiók létrehozása, ha a *parentDistinguishedName* attribútum nem történik meg az attribútum-leképezéshez. Ezt a beállítást nem használja a felhasználó keresése vagy frissítési műveletek. A teljes sub tartományfa a keresési műveletet hatálya alá esik.
 
    * **Értesítő e-mailt –** adja meg az e-mail-címét, és jelölje be az "e-mail küldése a hiba akkor fordul elő, ha" jelölőnégyzetet.
 
@@ -477,11 +477,11 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 > [!TIP]
 > Amikor először konfigurálja a kiépítési alkalmazást, szüksége lesz a tesztelési és az attribútumleképezések és kifejezések, győződjön meg arról, hogy ez lehetővé teszi a kívánt eredményt. A Microsoft azt javasolja, alapján szűri hatókörére használatával **Forrásobjektum hatóköre** a leképezéseket a Workday-ből néhány tesztfelhasználók teszteléséhez. Miután ellenőrizte, hogy a leképezések használata, majd távolítsa el a szűrőt vagy fokozatosan bontsa ki, hogy további felhasználókat tartalmazzák.
 
-3. Az a **célobjektum-műveletek** mezőbe globálisan szűrheti az Active Directory mely műveletek mennek végbe. **Hozzon létre** és **frissítés** legtöbb.
+1. Az a **célobjektum-műveletek** mezőbe globálisan szűrheti az Active Directory mely műveletek mennek végbe. **Hozzon létre** és **frissítés** legtöbb.
 
-4. Az a **attribútum-leképezések** területen megadhat egyes Workday attribútumok leképezése az Active Directory-attribútumok.
+1. Az a **attribútum-leképezések** területen megadhat egyes Workday attribútumok leképezése az Active Directory-attribútumok.
 
-5. Kattintson a frissíteni egy meglévő attribútumleképzés, vagy kattintson a **új megfeleltetés hozzáadása** új leképezéseket hozzáadásához a képernyő alján. Az egyes attribútumleképezés támogatja ezeket a tulajdonságokat:
+1. Kattintson a frissíteni egy meglévő attribútumleképzés, vagy kattintson a **új megfeleltetés hozzáadása** új leképezéseket hozzáadásához a képernyő alján. Az egyes attribútumleképezés támogatja ezeket a tulajdonságokat:
 
       * **Leképezés típusa**
 
@@ -508,7 +508,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
          * **Csak a létrehozásakor** -leképezés alkalmazása csak a felhasználó-létrehozási műveletek
 
-6. A hozzárendelések mentéséhez kattintson az **mentése** az attribútum-hozzárendelési szakasz elején.
+1. A hozzárendelések mentéséhez kattintson az **mentése** az attribútum-hozzárendelési szakasz elején.
 
    ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozáskor |
 | **PreferredNameData**    |  CN    |   |   Írt csak létrehozáskor |
-| **SelectUniqueValue (Csatlakozás ("@", csatlakozzon (".", \[FirstName\], \[LastName\]), "contoso.com"), csatlakozás ("@", csatlakozzon (".", a Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), csatlakozás ("@", csatlakozzon (".", a Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Írt csak létrehozáskor 
-| **Cserélje le(Mid(cseréljele(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozáskor |
+| **SelectUniqueValue (Csatlakozás ("\@", csatlakozzon (".", \[FirstName\], \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozzon (".", a Mid (\[FirstName\], 1, 1 ()), \[LastName\]), "contoso.com"), csatlakozás ("\@", csatlakozzon (".", a Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Írt csak létrehozáskor 
+| **Cserélje le(Mid(cseréljele(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\ \\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozáskor |
 | **Switch (\[aktív\], "0", "True", "1", "False")** |  accountDisabled      |     | Létrehozás + frissítése |
 | **Keresztnév**   | givenName       |     |    Létrehozás + frissítése |
 | **Vezetéknév**   |   sorozatszám   |     |  Létrehozás + frissítése |
@@ -677,7 +677,7 @@ Kövesse az alábbi utasításokat a felhasználó e-mail-címek az Azure Active
 
 8. Végezze el a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
-   * **Rendszergazdai felhasználónév** – adja meg a Workday integrációs rendszer fiók felhasználóneve a hozzáfűzi a bérlő tartományneve. Hasonlóan kell kinéznie: *username@contoso4*
+   * **Rendszergazdai felhasználónév** – adja meg a Workday integrációs rendszer fiók felhasználóneve a hozzáfűzi a bérlő tartományneve. Hasonlóan kell kinéznie: *felhasználónév\@contoso4*
 
    * **Rendszergazdai jelszó –** adja meg a jelszót a Workday-integrációs rendszer fiók
 
@@ -1226,7 +1226,7 @@ Ez a módosítás végrehajtásához kell használnia [Workday Studio](https://c
 
 7. Állítsa be **művelet** való **Get_Workers**
 
-8.  Kattintson a kis **konfigurálása** a Workday hitelesítő adatok beállítása a kérelem/válasz ablaktábla alatti hivatkozásra. Ellenőrizze **hitelesítési**, majd adja meg a felhasználónevet és jelszót a Workday-integrációs system fiók. Ügyeljen arra, hogy a felhasználó nevét, name@tenant, és a továbbiakban hagyja a **WS-biztonsági UsernameToken** lehetőség van kijelölve.
+8.  Kattintson a kis **konfigurálása** a Workday hitelesítő adatok beállítása a kérelem/válasz ablaktábla alatti hivatkozásra. Ellenőrizze **hitelesítési**, majd adja meg a felhasználónevet és jelszót a Workday-integrációs system fiók. Ügyeljen arra, hogy a felhasználó nevét neveként\@bérlőben, és hagyja a **WS-biztonsági UsernameToken** lehetőség van kijelölve.
 
     ![Munkanapi Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

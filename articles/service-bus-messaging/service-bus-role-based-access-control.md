@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: a4d1c143b7d3277715386b43511ac908a36f85f0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844857"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845001"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -57,7 +57,7 @@ A felhasználói fiókot most már hozzáférhet a Service Bus-névteret, és az
 
 A mintaalkalmazás futtatása előtt az Azure ad-ben regisztrálja, és hagyja jóvá a beleegyezést kérő üzenetet, amely lehetővé teszi az alkalmazás Azure Service Bus eléréséhez nyújtsanak a nevében.
 
-Mivel a mintaalkalmazás egy konzolalkalmazást, kell regisztrálni egy natív alkalmazást és API-hozzáférés biztosítása a **Microsoft.ServiceBus** a "szükséges engedélyek" csoporthoz. Natív alkalmazások is kell egy **átirányítási URI** szolgál a azonosítóként; Azure AD-ben az URI-t kell lennie egy hálózati cél. Használat `http://servicebus.microsoft.com` ebben a példában, mivel már kód a minta az URI-ra.
+Mivel a mintaalkalmazás egy konzolalkalmazást, kell regisztrálni egy natív alkalmazást és API-hozzáférés biztosítása a **Microsoft.ServiceBus** a "szükséges engedélyek" csoporthoz. Natív alkalmazások is kell egy **átirányítási URI** szolgál a azonosítóként; Azure AD-ben az URI-t kell lennie egy hálózati cél. Használat `https://servicebus.microsoft.com` ebben a példában, mivel már kód a minta az URI-ra.
 
 A részletes regisztrációs lépéseket mutatjuk be [ebben az oktatóanyagban](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Kövesse a lépéseket a regisztráció egy **natív** alkalmazást, majd kövesse a frissítés utasításokat hozzáadása a **Microsoft.ServiceBus** API-t a szükséges engedélyekkel. A lépéseket, jegyezze fel a **TenantId** és a **ApplicationId**, mert szüksége lesz ezekre az értékekre, az alkalmazás futtatásához.
 

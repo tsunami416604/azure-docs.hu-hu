@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 361d0ce5091d80198d47e4ad164f7cba8e21a55d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099513"
 ---
 Az *egyéni* virtuális gép egyszerűen egy olyan virtuális gép, amelyet a **Marketplace** egy **kiemelt alkalmazásával** hoz létre, mert elvégzi a munka oroszlánrészét Ön helyett. Emellett továbbra is több konfigurációs lehetőség közül választhat. Ezek többek között a következők:
 
@@ -28,11 +28,9 @@ Az *egyéni* virtuális gép egyszerűen egy olyan virtuális gép, amelyet a **
 
 > [!IMPORTANT]
 > Ha azt szeretné, hogy a virtuális gép virtuális hálózatot használjon, ügyeljen rá, hogy megadja a virtuális hálózatot a virtuális gép létrehozásakor.
-
+> 
 > * A virtuális hálózatok használatának két előnye, hogy közvetlenül csatlakozhat a virtuális géphez, valamint hogy létesítmények közötti kapcsolatokat is beállíthat.
-
+> 
 > * A virtuális gépek csak a létrehozásuk során konfigurálhatók virtuális hálózathoz való csatlakozásra. A virtuális hálózatokkal kapcsolatos további információk: [Az Azure Virtual Network áttekintése](../articles/virtual-network/virtual-networks-overview.md).
->
->
 
 ## <a name="to-create-the-virtual-machine"></a>A virtuális gép létrehozása

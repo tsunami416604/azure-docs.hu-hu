@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 285c8a9c34d13b6c2696481e813d27943169e559
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: eabc30b28ec6c32295c5eeff0f19b31fba622056
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214911"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095619"
 ---
 # <a name="quickstart-self-service-password-reset"></a>Gyors útmutató: Új jelszó önkiszolgáló kérése
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban az önkiszolgáló jelszó-visszaállítás (SSPR) konf
       * **Mobilalkalmazás-kód (előzetes verzió)**
    * Kattintson a **Save** (Mentés) gombra.
 
-    ![Hitelesítés][Authentication]
+     ![Hitelesítés][Authentication]
 
 4. A **Regisztráció** lapon adja meg a következő beállításokat:
    * Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor: **Igen**

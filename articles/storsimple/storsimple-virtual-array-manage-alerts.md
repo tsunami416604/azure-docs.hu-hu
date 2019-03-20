@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447224"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895464"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Riasztások kezelése a StorSimple Virtual Array az a StorSimple Eszközkezelő
 
@@ -39,7 +39,7 @@ Kiválaszthatja, hogy szeretné-e a StorSimple Virtual Arrayt minden riasztási 
 > [!NOTE]
 > Megadhat egy legfeljebb 20 e-mail-címek száma virtuális tömb.
 
-Miután engedélyezte a virtuális tömb kapcsolódó e-mail értesítések, a notification lista tagjainak minden alkalommal, amikor egy kritikus riasztás esetén e-mail üzenetet fog kapni. Az üzenetek küldését *storsimple-alerts-noreply@mail.windowsazure.com* és leírja a riasztási feltételt. Rákattinthat a címzettek **Unsubscribe** eltávolítása magukat az e-mail értesítési listája.
+Miután engedélyezte a virtuális tömb kapcsolódó e-mail értesítések, a notification lista tagjainak minden alkalommal, amikor egy kritikus riasztás esetén e-mail üzenetet fog kapni. Az üzeneteket küld a *storsimple-riasztások-noreply\@mail.windowsazure.com* és leírja a riasztási feltételt. Rákattinthat a címzettek **Unsubscribe** eltávolítása magukat az e-mail értesítési listája.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>Riasztásokhoz kapcsolódó e-mail értesítések engedélyezése
 
@@ -53,7 +53,7 @@ Miután engedélyezte a virtuális tömb kapcsolódó e-mail értesítések, a n
    
    1. Az a **e-mail értesítő engedélyezése** mezőben válassza **Igen**.
    2. Az a **E-mail-szolgáltatás-rendszergazdák** mezőben válassza **Igen** Ha azt szeretné, hogy a szolgáltatás-rendszergazda, és az összes többi rendszergazda is megkapja a riasztási értesítéseket.
-   3. Az a **e-mail további címzettjei** mezőbe írja be annak az összes többi címzett, akiknek meg kell kapniuk a riasztási értesítéseket. A következő formátumban adja meg a neveket *someone@somewhere.com*. Az e-mail címeket pontosvesszővel. Beállíthatja, hogy egy legfeljebb 20 e-mail-címek száma virtuális eszközt.
+   3. Az a **e-mail további címzettjei** mezőbe írja be annak az összes többi címzett, akiknek meg kell kapniuk a riasztási értesítéseket. A következő formátumban adja meg a neveket *valaki\@somewhere.com*. Az e-mail címeket pontosvesszővel. Beállíthatja, hogy egy legfeljebb 20 e-mail-címek száma virtuális eszközt.
       
        ![riasztások értesítési konfigurációja](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Egy teszt e-mail értesítés küldése, kattintson a **tesztelő e-mail küldése**. A StorSimple-Eszközkezelő szolgáltatás állapotüzenetek jelenik meg, akkor továbbítja a tesztértesítés.
@@ -147,6 +147,7 @@ Az alábbi táblázatok sorolják fel, amelyek akkor fordulhatnak, valamint a to
 | Klónozás forrása: <*eszköznév* \> nem sikerült végrehajtani. |Klónozza a feladat sikertelen. |Nem sikerült létrehozni a klónt. Vegye figyelembe az alábbi lehetőségek közül:<ul><li>A biztonsági mentési lista nem lehet érvényes. Ellenőrizze, hogy továbbra is érvényes a lista frissítéséhez.</li><li>Kapcsolódási problémák akadályozzák meg a Klónozási művelet sikeres befejeződését. Győződjön meg arról, hogy nincsenek kapcsolódási problémák.</li><li>Elérte a rendelkezésre álló tár határértéket. Szabadítson fel lemezterületet, érdemes a törlése minden biztonsági már nem szükséges.</li></ul>A problémák megoldásához, törölje a riasztást, és próbálja megismételni a műveletet. |
 
 ### <a name="networking-alerts"></a>Hálózatkezelés riasztások
+
 | Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
 | Nem sikerült csatlakozni a hitelesítési szolgáltatást. |DataPath hiba |A hitelesítéshez használt URL-cím nem érhető el. Győződjön meg arról, hogy a tűzfalszabályokban szerepel-e a StorSimple eszközhöz megadott URL-mintával. További információ az Azure Portalon URL-minta, nyissa meg [StorSimple Virtual Array hálózati követelményei](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).|

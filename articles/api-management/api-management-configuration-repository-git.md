@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961009"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851346"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -53,9 +53,9 @@ Megtekintheti, és a Git-konfigurációs beállítások konfigurálása, kattint
 ![A GIT engedélyezése][api-management-enable-git]
 
 > [!IMPORTANT]
-> Nem definiált tulajdonságok a tárházban fogja tárolni, és a kapcsolódó előzmények marad, amíg ki nem titkos kulcsok tiltsa le, majd engedélyezze újra a Git-hozzáférés. Tulajdonságok kezelése állandó karakterlánc értékeit, így nem kell tárolni őket közvetlenül a házirend-utasítások API konfigurálása és a házirendeket, titkos adatait, beleértve biztonságos helyet biztosítanak. További információkért lásd: [tulajdonságok használata az Azure API Management házirendek](api-management-howto-properties.md).
-> 
-> 
+> Nem definiált nevű értékekként titkos kulcsok az adattárban tárolja, és annak előzményeit marad mindaddig, amíg tiltsa le, és engedélyezze újra a Git-hozzáférés. Névvel ellátott értékek állandó karakterlánc értékeit, így nem kell tárolni őket közvetlenül a házirend-utasítások API konfigurálása és a házirendeket, titkos adatait, beleértve kezelése biztonságos helyet biztosítanak. További információkért lásd: [nevű értékek használata az Azure API Management házirendek](api-management-howto-properties.md).
+>
+>
 
 Engedélyezés vagy letiltás Git-hozzáférés REST API használatával kapcsolatos információkért lásd: [engedélyezheti vagy letilthatja a REST API használatával Git hozzáférését](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
@@ -73,13 +73,13 @@ Információ a REST API használatával a művelet végrehajtása: [véglegesít
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>A helyi gépen a tárház klónozásához
 
-A tárház klónozása, kell az URL-cím a tárház, egy felhasználónevet és jelszót. Felhasználónév- és egyéb hitelesítő adatok lekéréséhez kattintson a **hozzáférési hitelesítő adatokat** az oldal tetején.  
- 
+A tárház klónozása, kell az URL-cím a tárház, egy felhasználónevet és jelszót. Felhasználónév- és egyéb hitelesítő adatok lekéréséhez kattintson a **hozzáférési hitelesítő adatokat** az oldal tetején.
+
 Jelszót létrehozni, először győződjön meg arról, hogy a **lejárati** állítsa be a kívánt lejárati dátumát és idejét, és kattintson a **Generate**.
 
 > [!IMPORTANT]
 > Jegyezze fel ezt a jelszót. Ha elhagyja az oldalt a jelszó nem jelennek újra.
-> 
+>
 
 A következő példákban a Git Bash eszközt [Git for Windows](https://www.git-scm.com/downloads) , de bármilyen ismeri a Git-eszközt is használhatja.
 
@@ -164,7 +164,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és olykor egy vagy több mapp�
 | Fájltípus | Cél |
 | --- | --- |
 | JSON |Konfigurációs információkat az adott entitás |
-| HTML |Entitás, a fejlesztői portál gyakran megjelenik leírásai |
+| html |Entitás, a fejlesztői portál gyakran megjelenik leírásai |
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portál testreszabása stíluslapok |
 
@@ -172,14 +172,14 @@ Ezeket a fájlokat létrehozása, törlése, szerkeszteni és a helyi fájlrends
 
 > [!NOTE]
 > A következő entitásokat nem találhatók meg a Git-tárházban, és a Git használatával nem konfigurálható.
-> 
-> * Felhasználók
-> * Előfizetések
-> * Tulajdonságok
+>
+> * [Felhasználók](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [Előfizetések](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [Névvel ellátott értékek](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * Fejlesztői portál entitások eltérő stílusok
-> 
+>
 
-### <a name="root-api-management-folder"></a>api-felügyeleti gyökérmappa
+### <a name="root-api-management-folder"></a>Root api-management folder
 A legfelső szintű `api-management` mappa tartalmaz egy `configuration.json` fájlt, amely a szolgáltatás-példánya a következő formátumban legfelső szintű információkat tartalmaz.
 
 ```json
@@ -223,7 +223,7 @@ A végső beállítás `$ref-policy`, leképezi a globális szabályzat utasít�
 ### <a name="apis-folder"></a>API-k mappa
 A `apis` mappa tartalmaz egy mappát az egyes API-t a szolgáltatás példánya, amely a következő elemeket tartalmazza.
 
-* `apis\<api name>\configuration.json` – Ez a konfiguráció az API-hoz és a háttérkiszolgáló URL-címe és a műveletek tartalmaz információkat. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása [beolvasása egy adott API](https://docs.microsoft.com/rest/api/apimanagement/api/get) a `export=true` a `application/json` formátumban.
+* `apis\<api name>\configuration.json` – Ez a konfiguráció az API-hoz és a háttérkiszolgáló URL-címe és a műveletek tartalmaz információkat. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása [beolvasása egy adott API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) a `export=true` a `application/json` formátumban.
 * `apis\<api name>\api.description.html` – Ez az API-t leírása, amely megfelel a `description` tulajdonságát a [API-entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
 * `apis\<api name>\operations\` – Ez a mappa tartalmaz `<operation name>.description.html` fájlok, amelyek leképezik a műveletek az API-ban. Minden fájl tartalmaz, amely az API-ban egyetlen művelet leírása a `description` tulajdonságát a [művelet entitás](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) a REST API-ban.
 

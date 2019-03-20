@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6266ec1f01a50756f745c3e8185c9fe34e102b4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196195"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078703"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Gyors útmutató: Integrálható a Microsoft bejelentkezési Xamarin-alkalmazás készítése
 
@@ -59,11 +59,12 @@ Ahhoz, hogy az alkalmazásnak, hogy a jogkivonatok lekérésére, akkor előszö
 3. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
 4. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
 5. Hozzon létre egy új **natív ügyfélalkalmazás**, kövesse az utasításokat.
-  * **Név** ismerteti az alkalmazást a felhasználók számára.
-  * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy értéket (például http://DirectorySearcher).
+   * **Név** ismerteti az alkalmazást a felhasználók számára.
+   * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy értéket (például `http://DirectorySearcher`).
 6. Regisztráció befejezése után az Azure AD rendeli az alkalmazást egy alkalmazás egyedi azonosítója. Másolja az értéket a **alkalmazás** lapon, mert később szüksége.
 7. Az a **beállítások** lapon jelölje be **szükséges engedélyek**, majd válassza ki **Hozzáadás**.
-8. Válassza ki **Microsoft Graph** az API-ként. A **delegált engedélyek**, adja hozzá a **címtáradatok olvasása** engedéllyel. Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezéséhez.
+8. Válassza ki **Microsoft Graph** az API-ként. A **delegált engedélyek**, adja hozzá a **címtáradatok olvasása** engedéllyel. 
+   Ez a művelet lehetővé teszi az alkalmazásnak, hogy a felhasználók számára a Graph API lekérdezéséhez.
 
 ## <a name="step-3-install-and-configure-adal"></a>3. lépés: Telepítse és konfigurálja az adal-t
 
@@ -95,9 +96,9 @@ Most, hogy egy alkalmazást az Azure ad-ben, telepítheti az adal-t és az ident
 2. A DirectorySearcherLib projektben nyissa meg a DirectorySearcher.cs.
 3. Az osztály tag értékeket cserélje le az értékeket, amelyeket az Azure Portalon megadott. A kód hivatkozik, amikor az adal-t használja ezeket az értékeket.
 
-  * A *bérlői* a tartomány az Azure AD-bérlő (például contoso.onmicrosoft.com).
-  * A *clientId* az alkalmazás, amely a portálról kimásolt ügyfél-azonosítója.
-  * A *returnUri* az átirányítási URI-t, amely a portálon megadott (például http://DirectorySearcher).
+   * A *bérlői* a tartomány az Azure AD-bérlő (például contoso.onmicrosoft.com).
+   * A *clientId* az alkalmazás, amely a portálról kimásolt ügyfél-azonosítója.
+   * A *returnUri* az átirányítási URI-t, amely a portálon megadott (például `http://DirectorySearcher`).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Adal-t használó tokenekhez Azure AD-ből való
 

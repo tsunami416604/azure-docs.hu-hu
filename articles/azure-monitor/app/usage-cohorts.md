@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 810ccae08b540c417a0e7dfecb6ad5a8b110cd7b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108525"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -105,16 +105,16 @@ Az előző két kohorszok legördülő listák használatával lettek definiálv
     ![Üres felhasználók kohorsz](./media/usage-cohorts/001.png)
 
     Nincsenek három szakaszra osztható:
-    * A Markdown szöveg szakaszban, ahol meg kell adni a kohorsz részletesebben mások a csapata.
+   * A Markdown szöveg szakaszban, ahol meg kell adni a kohorsz részletesebben mások a csapata.
 
-    * A Paraméterek szakaszban, ahol választja ki a saját paraméterek, például **tevékenységek** és egyéb legördülő listák az előző két példákban.
+   * A Paraméterek szakaszban, ahol választja ki a saját paraméterek, például **tevékenységek** és egyéb legördülő listák az előző két példákban.
 
-    * Lekérdezés szakaszban, ahol megadhatja a kohorsz analytics-lekérdezések használatával.
+   * Lekérdezés szakaszban, ahol megadhatja a kohorsz analytics-lekérdezések használatával.
 
-    A lekérdezés szakaszban Ön [analytics-lekérdezések írása](/azure/kusto/query). A lekérdezés kijelöli az egyes sorok, amelyek ismertetik a kohorsz szeretne meghatározni. A Kohorszok eszközzel implicit módon hozzáad egy "|} a lekérdezés összegzés szempontja a USER_ID paraméter értékét"záradékot. Ezek az adatok megtekintésekor alatt a lekérdezés egy táblázatban, így biztos lehet benne, a lekérdezési eredményeket adja vissza.
+     A lekérdezés szakaszban Ön [analytics-lekérdezések írása](/azure/kusto/query). A lekérdezés kijelöli az egyes sorok, amelyek ismertetik a kohorsz szeretne meghatározni. A Kohorszok eszközzel implicit módon hozzáad egy "|} a lekérdezés összegzés szempontja a USER_ID paraméter értékét"záradékot. Ezek az adatok megtekintésekor alatt a lekérdezés egy táblázatban, így biztos lehet benne, a lekérdezési eredményeket adja vissza.
 
-    > [!NOTE]
-    > Ha nem látja a lekérdezést, és próbálja ki a szakaszt, hogy magasabb, és a lekérdezés felfedheti átméretezése. Az animált .gif, ez a szakasz elején átméretezési működését mutatja be.
+     > [!NOTE]
+     > Ha nem látja a lekérdezést, és próbálja ki a szakaszt, hogy magasabb, és a lekérdezés felfedheti átméretezése. Az animált .gif, ez a szakasz elején átméretezési működését mutatja be.
 
 2. Másolja és illessze be a következő szöveget a Lekérdezésszerkesztő:
 

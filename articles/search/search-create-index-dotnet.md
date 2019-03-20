@@ -8,53 +8,67 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/22/2017
+ms.date: 03/14/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e0aa7dce0b3cc4609a995097d8e70f8ec4336809
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312595"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226368"
 ---
-# <a name="create-an-azure-search-index-using-the-net-sdk"></a>Azure Search-index létrehozása .NET SDK használatával
+# <a name="quickstart-create-load-and-query-an-azure-search-index-using-the-net-sdk"></a>Gyors útmutató: Hozzon létre, betöltését és a .NET SDK használatával egy Azure Search-index lekérdezése
 > [!div class="op_single_selector"]
-> * [Áttekintés](search-what-is-an-index.md)
+> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [Postman (REST)](search-fiddler.md)
 > * [Portál](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
 > 
 
-Ez a cikk végigvezeti az Azure Search-[index](https://docs.microsoft.com/rest/api/searchservice/Create-Index) [Azure Search .NET SDK](https://aka.ms/search-sdk) használatával történő létrehozásának folyamatán.
-
-Már az útmutató követése és az index létrehozása előtt [létre kell hoznia egy Azure Search szolgáltatást](search-create-service-portal.md).
+Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése az Azure Search [index](search-what-is-an-index.md) használatával a [Azure Search .NET SDK](https://aka.ms/search-sdk).
 
 > [!NOTE]
 > A cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. Az [Azure Search .NET SDK](search-howto-dotnet-sdk.md) leírásában részletesebb útmutatást kaphat a példakóddal kapcsolatban.
 
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="identify-your-azure-search-services-admin-api-key"></a>Azonosítsa az Azure Search szolgáltatás rendszergazdai API-kulcsát
-Most, hogy létrehozta az Azure Search szolgáltatást, csaknem készen áll arra, hogy a .NET SDK használatával kérelmeket bocsásson ki a szolgáltatásvégponton. Először meg kell szereznie a létrehozott keresőszolgáltatáshoz generált adminisztrációs API-kulcsok egyikét. A .NET SDK minden kérelemnél elküldi ezt az API-kulcsot a szolgáltatásának. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md). Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
-1. A szolgáltatás API-kulcsainak megkereséséhez jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Nyissa meg az Azure Search szolgáltatáspaneljét
-3. Kattintson a „Kulcsok” ikonra
++ [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
-A szolgáltatás *rendszergazdai kulcsokkal* és *lekérdezési kulcsokkal* fog rendelkezni.
++ URL-végpontot, és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-* Az elsődleges és másodlagos *rendszergazdai kulcsok* teljes jogosultságot biztosítanak az összes művelethez, beleértve a szolgáltatás felügyeletének, valamint az indexek, indexelők és adatforrások létrehozásának és törlésének képességét. Két kulcs létezi, tehát ha az elsődleges kulcs újbóli létrehozása mellett dönt, a másodlagos kulcsot továbbra is használhatja (ez fordítva is igaz).
-* A *lekérdezési kulcsok* csak olvasási hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások kapják meg őket.
+  1. Az Azure Portalon [keresse meg a szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a szolgáltatások listájában.
 
-Index létrehozása céljából az elsődleges és a másodlagos adminisztrációs kulcsot is használhatja.
+  2. A **áttekintése**, URL-címére. A végpontok például a következőképpen nézhetnek ki: `https://my-service-name.search.windows.net`.
+
+  3. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. A kérés használhatja akár az elsődleges vagy másodlagos kulcsot.
+
+     ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+
+     Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+
+## <a name="1---create-a-new-project"></a>1 – új projekt létrehozása
+
+A Visual Studióban hozzon létre egy új Vizualizációt C# projekt. Ebben a rövid útmutatóban egy jó sablon a Vizualizáció C# > első lépések > webes alkalmazás. Ez a sablon lehetővé teszi az appsettings.json fájlt.  
+
+Az appSettings.JSON fájl, cserélje le a tartalmat az alábbi példa a alapértelmezett, és adja meg a szolgáltatás nevét és a felügyeleti api-kulcsát. A szolgáltatásnév számára a név csak kell. Például, ha az URL-cím https://mydemo.search.windows.net, adjon hozzá `mydemo` a JSON-fájlba.
+
+
+```json
+{
+    "SearchServiceName": "Put your search service name here",
+    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+}
+```
 
 <a name="CreateSearchServiceClient"></a>
 
-## <a name="create-an-instance-of-the-searchserviceclient-class"></a>A SearchServiceClient osztály példányának létrehozása
+## <a name="2---create-an-instance-of-the-searchserviceclient-class"></a>2 – a SearchServiceClient osztály példányának létrehozása
 Az Azure Search .NET SDK használatához létre kell hoznia a `SearchServiceClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
 
-Az alábbi kód egy új `SearchServiceClient`-példányt hoz létre a keresőszolgáltatás nevének, valamint az API-kulcsnak az alkalmazás konfigurációs fájljában (a [mintaalkalmazás](https://aka.ms/search-dotnet-howto) esetében az `appsettings.json` fájlban) tárolt értékének a felhasználásával:
+Másolja a következő kódot a Program.cs fájlba. Az alábbi kód létrehoz egy új `SearchServiceClient` a search-szolgáltatásnév és api-kulcsot, az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékekkel.
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -76,10 +90,11 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 <a name="DefineIndex"></a>
 
-## <a name="define-your-azure-search-index"></a>Az Azure Search-index meghatározása
+## <a name="3---define-an-index-schema"></a>3 – az indexsémát definiálása
 A `Indexes.Create` módszer egyetlen meghívása létrehozza az indexet. Ez a módszer egy `Index` objektumot használ paraméterként, amely meghatározza az Azure Search-indexet. Létre kell hoznia és inicializálnia kell egy `Index` objektumot az alábbiak szerint:
 
 1. Állítsa be az `Index` objektum `Name` tulajdonságát az index nevének.
+
 2. Állítsa be az `Index` objektum `Fields` tulajdonságát a `Field` objektumok tömbjének. A `Field` objektumok létrehozásának legegyszerűbb módja az, ha meghívja a `FieldBuilder.BuildForType` metódust, és a típus paraméternél egy modellosztályt ad meg. A modellosztály olyan tulajdonságokkal rendelkezik, amelyek az index mezőire mutatnak. Ez lehetővé teszi a keresési indexben található dokumentumok modellosztály-példányokhoz kötését is.
 
 > [!NOTE]
@@ -166,7 +181,7 @@ var definition = new Index()
 };
 ```
 
-## <a name="create-the-index"></a>Az index létrehozása
+## <a name="4---create-the-index-on-the-service"></a>4 – hozza létre az indexet a szolgáltatásban
 Most, hogy már rendelkezik egy inicializált `Index` objektummal, a `SearchServiceClient` objektumon lévő `Indexes.Create` meghívásával egyszerűen létrehozhatja az indexet:
 
 ```csharp
@@ -185,6 +200,7 @@ serviceClient.Indexes.Delete("hotels");
 > Ebben a cikkben a példakód az egyszerűség érdekében az Azure Search .NET SDK szinkron módszereit használja. Azt javasoljuk, hogy a méretezhetőség és a gyors válaszadás érdekében használja saját alkalmazásaiban az aszinkron módszereket. Például a fenti esetekben használhatja a `CreateAsync` és a `DeleteAsync` módszert a `Create` és a `Delete` helyett.
 > 
 > 
+
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Search-index létrehozása után készen áll arra, hogy [feltöltse a tartalmát az indexbe](search-what-is-data-import.md), és megkezdje az adatok keresését.

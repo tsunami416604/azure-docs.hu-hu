@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963862"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990766"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Az Azure App Service helyi gyorsítótár – áttekintés
 
@@ -35,7 +35,7 @@ Azure App Service-tartalom az Azure Storage tárolja, és az illesztett be, a ta
 * A tartalom közösen használja az alkalmazást több virtuális gép (VM) példányát.
 * A tartalom tartós, és a futó alkalmazások által módosíthatók.
 * Naplófájlok és a diagnosztikai adatok fájlok az azonos megosztott tartalmat tartalmazó mappa alatt érhetők el.
-* Új tartalom közzététele közvetlenül frissíti a tartalmat tartalmazó mappa. Azonnal megtekintheti ugyanahhoz a tartalomhoz az SCM webhely és a futó alkalmazás (általában néhány technológiák, például az ASP.NET, a kezdeményezheti a alkalmazás újraindítása, néhány fájl módosításait a legújabb tartalmának beolvasása a).
+* Új tartalom közzététele közvetlenül frissíti a tartalmat tartalmazó mappa. Azonnal megtekintheti ugyanahhoz a tartalomhoz az SCM webhely és a futó alkalmazás (általában néhány technológiák, például az ASP.NET, a kezdeményezni az alkalmazás újraindítása, néhány fájl módosításait a legújabb tartalmának beolvasása a).
 
 Számos alkalmazás használja legalább az összes funkciót, míg egyes alkalmazások egyszerűen nagy teljesítményű, csak olvasható tartalomtárhoz konvertál, amely a magas rendelkezésre állású futtathatják. Ezek az alkalmazások is kihasználhatják a Virtuálisgép-példány egy adott helyi gyorsítótár.
 

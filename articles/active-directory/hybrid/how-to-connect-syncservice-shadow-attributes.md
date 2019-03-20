@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564a0948d09e4726800d19858b4c23924fc56973
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187338"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839168"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Az Azure AD Connect szinkronizálási szolgáltatás árnyékmásolat attribútumok
 A legtöbb attribútumok ugyanúgy szerepelnek az Azure ad-ben az, ha azok a helyszíni Active Directoryban. De néhány attribútumokhoz néhány speciális kezelést, és lehet, hogy az Azure ad-attribútum értéke eltér az Azure AD Connect szinkronizálja.
@@ -58,7 +58,7 @@ Postaláda-felhasználónak, a helyszínen vagy az Exchange online-ban csak elle
 | a helyszíni proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-Ebben az esetben **smtp:abbie.spencer@fabrikam.com** el lett távolítva, mivel az adott tartomány nem ellenőriztük. Azonban az Exchange is hozzá **SIP:abbie.spencer@fabrikamonline.com**. Fabrikam nem használt helyszíni Lync vagy a Skype, de az Azure ad-ben, és hozzá tartozó Exchange online-hoz készítse elő.
+Ebben az esetben **smtp:abbie.spencer\@fabrikam.com** el lett távolítva, mivel az adott tartomány nem ellenőriztük. Azonban az Exchange is hozzá **SIP:abbie.spencer\@fabrikamonline.com**. Fabrikam nem használt helyszíni Lync vagy a Skype, de az Azure ad-ben, és hozzá tartozó Exchange online-hoz készítse elő.
 
 A logikai a proxyAddresses nevezzük **ProxyCalc**. ProxyCalc minden módosítást, a felhasználó meghívása során:
 

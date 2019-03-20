@@ -11,23 +11,23 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: dd307e4abf4145bad9e0be79d261abf98d7bb3b7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102162"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: Használatával C#, hozzon létre alapszintű majd kapcsolatos kérdésére választ kaphat
 
 Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon történő létrehozásának és közzétételének, majd egy ügyféltől származó kérdés a tudásbázisból való megválaszolásának folyamatán. 
 
 > [!div class="checklist"]
-* Tudásbázis létrehozása 
-* Létrehozás állapotának ellenőrzése
-* A tudásbázis betanítása és közzététele
-* A végpont információinak lekérése
-* CURL használata a tudásbázis lekérdezéséhez
+> * Tudásbázis létrehozása 
+> * Létrehozás állapotának ellenőrzése
+> * A tudásbázis betanítása és közzététele
+> * A végpont információinak lekérése
+> * CURL használata a tudásbázis lekérdezéséhez
 
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:

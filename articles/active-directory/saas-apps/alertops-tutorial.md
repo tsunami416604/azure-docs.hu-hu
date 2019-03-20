@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36da69b61ffd4df6d4093023e69887b27dbae243
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405283"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AlertOps
 
@@ -176,7 +176,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -227,7 +227,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     a. Az a **bejelentkezési név** szövegmezőbe írja be a felhasználónevet, a felhasználó például **Brittasimon**.
 
-    b. Az a **hivatalos E-mail** szövegmezőbe írja be például a felhasználó e-mail-címe **Brittasimon@contoso.com**.
+    b. Az a **hivatalos E-mail** szövegmezőbe írja be például a felhasználó e-mail-címe **Brittasimon\@contoso.com**.
 
     c. Az a **Utónév** szövegmezőbe írja be például a felhasználó utónevét **Britta**.
 

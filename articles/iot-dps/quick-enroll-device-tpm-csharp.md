@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 48409fec8a9edd8a56f6e0664e1451e9677c4281
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: e3b0aeeacadc918d9b17e1cd873170c73eced510
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834761"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>TPM-eszköz regisztrálása az IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
 
@@ -27,7 +27,7 @@ Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt TPM-e
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
 1. Győződjön meg arról, hogy a [Visual Studio 2017](https://www.visualstudio.com/vs/) telepítve van a számítógépre. 
-2. Győződjön meg arról, hogy a [.NET Core SDK](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
+2. Ellenőrizze, hogy a [.NET Core SDK](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
 3. A folytatás előtt végezze el az [IoT Hub Device Provisioning Service az Azure Portallal való beállítását ismertető](./quick-setup-auto-provision.md) szakasz lépéseit.
 4. (Nem kötelező) Ha a rövid útmutató végén szeretne regisztrálni egy szimulált eszközt, kövesse a [Szimulált TPM-eszköz létrehozása és regisztrálása C# eszközoldali SDK-val](quick-create-simulated-device-tpm-csharp.md) című rész lépéseit addig a pontig, ahol megkapja az ellenőrzőkulcsot az eszközhöz. Jegyezze fel az ellenőrzőkulcsot, a regisztrációs azonosítót és az eszközazonosítót (az utóbbi nem kötelező), mert az útmutató későbbi részében szüksége lesz rájuk. **Ne kövesse az egyéni regisztráció Azure Portallal való létrehozásának lépéseit.**
 

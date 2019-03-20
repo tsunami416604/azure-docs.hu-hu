@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8569cae1-87dd-4c40-9bbb-527ac80d6a96
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6e4bf95489a584a9f882ce616a6aef297b0a53e5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d58da4781a7c5c93d897e0efd7cf3d5aee612d78
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782241"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Figma
 
@@ -130,6 +131,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Figma, hajtsa végre
     | Name (Név) | Adatforrás-attribútum|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
+    | `displayName` | `user.displayname` |
+    | `title` | `user.jobtitle` |
+    | `emailaddress` | `user.mail` |
     | `familyName` | `user.surname` |
     | `givenName` | `givenName` |
     | `userName` | `user.userprincipalname` |
@@ -158,23 +162,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Figma, hajtsa végre
   
 ### <a name="configure-figma-single-sign-on"></a>Figma egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban, nyissa meg a Figma [Itt](https://goo.gl/forms/XkRB1z5ed4eVUzXn2) rendszergazdaként.
-
-2. Az a **Figma SAML SSO-konfigurációja** lapon, a következő lépésekkel:
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/figma-tutorial/configure01.png)
-
-    a. A **E-mail-cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
-
-    b. A **saját neve** szöveget adja meg például a felhasználó nevét **Brittasimon**.
-
-    c. Válassza ki a lehetőséget, Figma szervezet szerint.
-
-    d. A **a cég nevére a Figma** szövegmezőbe írja be a szervezet neve.
-
-    e. A **Identity Provider (IDP) metaadatok URL-címe** szövegmezőjébe illessze be a **alkalmazás összevonási metaadatainak URL-címe** az Azure Portalról másolt.
-
-    f. Kattintson a **KÜLDÉS**.
+Figma oldalán konfigurálása egyszeri bejelentkezéshez, akkor kövesse a cikk a Figma [konfigurálása Azure Active Directory SAML SSO folyamat](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -194,7 +182,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342190"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013043"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -53,7 +53,9 @@ Engedélyek hozzárendelése a Cost Management adataihoz kapcsolatos további in
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Költségvetés létrehozása az Azure Portalon
 
-Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A navigációs tartalom az Azure Portalon határozza meg, hogy költségvetés-előfizetéssel, vagy egy erőforráscsoport létrehozása. Ha például az Azure Portalon lépjen **előfizetések** &gt; válasszon ki egy előfizetést &gt; **költségvetése**. Ebben a példában a költségvetést, hoz létre a kiválasztott előfizetéshez van. Ha azt szeretné, hozzon létre egy erőforráscsoportot a költségvetést, lépjen **erőforráscsoportok** > Válasszon ki egy erőforráscsoportot > **költségvetése**...
+Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A navigációs tartalom az Azure Portalon határozza meg, hogy költségvetés-előfizetéssel, vagy egy felügyeleti csoport létrehozása.
+
+Hozzon létre vagy költségvetési megtekintéséhez nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **költségvetése** menüjében. Például keresse meg **előfizetések**, és válasszon ki egy előfizetést a listából, majd válassza ki **költségvetése** menüjében. Használja a **hatókör** váltson át egy másik hatókört, például a felügyeleti csoportban, költségvetések megszámlálásához. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
 Után a költségvetés hoz létre, azok őket az aktuális költségeket az egyszerű nézet jelenik meg.
 

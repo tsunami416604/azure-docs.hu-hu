@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4998084ed15e6ed455789689674e134c6cd9d0a8
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012222"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Munka karakterláncokkal az Azure Monitor log-lekérdezések
 
@@ -64,9 +64,9 @@ Művelet       |Leírás                         |Case-Sensitive|Példa (poskytn
 `hasprefix_cs`    |Oldali jobb oldali bal kifejezés előtag         |Igen            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Oldali jobb oldali bal kifejezés előtag nem     |Igen            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Oldali jobb oldali bal oldalon található kifejezés utótag         |Nem            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Oldali jobb oldali bal oldalon található kifejezés utótag nem     |Nem            |A(z) "Észak-Amerika"! "americ" hassuffix
+`!hassuffix`   |Oldali jobb oldali bal oldalon található kifejezés utótag nem     |Nem            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Oldali jobb oldali bal oldalon található kifejezés utótag         |Igen            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Oldali jobb oldali bal oldalon található kifejezés utótag nem     |Igen            |A(z) "Észak-Amerika"! "icA" hassuffix_cs
+`!hassuffix_cs`   |Oldali jobb oldali bal oldalon található kifejezés utótag nem     |Igen            |`"North America" !hassuffix_cs "icA"`
 `contains`     |Oldali jobb oldali bal oldalon, a későbbi mint történik  |Nem            |`"FabriKam" contains "BRik"`
 `!contains`    |A oldali bal oldali jobb nem következik be           |Nem            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Oldali jobb oldali bal oldalon, a későbbi mint történik  |Igen           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 A következő eredményeket veheti fel:
+
 Tevékenység                                        |cseréje
 ------------------------------------------------|----------------------------------------------------------
 4663 – kísérlet történt egy olyan objektumot  |4663. Tevékenységazonosító: Kísérlet történt egy olyan objektumot.

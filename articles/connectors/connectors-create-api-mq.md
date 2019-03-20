@@ -1,8 +1,7 @@
 ---
 title: Csatlakozás az MQ-kiszolgálóhoz - Azure Logic Apps |} A Microsoft Docs
 description: Elküldhetők és beolvashatók az Azure Logic Apps és az Azure vagy a helyszíni MQ server üzenetek
-author: valthom
-manager: jeconnoc
+author: valrobb
 ms.author: valthom
 ms.date: 06/01/2017
 ms.topic: article
@@ -11,12 +10,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 59ef41b6d7bfcf8831eaa7d8d7e6af4ea279e415
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167881"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>A logic apps az MQ-összekötővel csatlakozhat az IBM MQ server kiszolgálóhoz
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211087"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224148"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: A G Suite konfigurálása a felhasználók automatikus átadása
 
@@ -53,7 +53,7 @@ Beállítása, és a kiépítési szolgáltatás engedélyezése előtt kell dö
 
 > [!IMPORTANT]
 > Javasoljuk, hogy egyetlen Azure AD-felhasználó rendelhető G Suite-hoz, az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is hozzárendelhet.
-
+> 
 > Amikor egy felhasználó rendel a G Suite, válassza ki a **felhasználói** vagy **csoport** szerepkör-hozzárendelés párbeszédpanel. A **alapértelmezett hozzáférési** szerepkör üzembe helyezés nem működik.
 
 ## <a name="enable-automated-user-provisioning"></a>Az automatikus felhasználó-kiépítés engedélyezése
@@ -80,8 +80,8 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
    
     ![Válassza ki az API-referencia.][16]
 
-    > [!IMPORTANT]
-    > Minden felhasználó, amelyet meg kíván kiépíteni a G Suite-hoz, a felhasználónév az Azure Active Directoryban *kell* időpontjától egyéni tartományhoz. Például a felhasználói neveket, hogy néz ki bob@contoso.onmicrosoft.com nem fogadja el a G Suite. Másrészről bob@contoso.com elfogadható. A tulajdonságok módosítása az Azure ad-ben módosíthatja egy meglévő felhasználó tartománya. Egyéni tartomány beállítása az Azure Active Directory és a G Suite a következő lépések útmutatást bővítettük.
+   > [!IMPORTANT]
+   > Minden felhasználó, amelyet meg kíván kiépíteni a G Suite-hoz, a felhasználónév az Azure Active Directoryban *kell* időpontjától egyéni tartományhoz. Például a felhasználói neveket, hogy néz ki bob@contoso.onmicrosoft.com nem fogadja el a G Suite. Másrészről bob@contoso.com elfogadható. A tulajdonságok módosítása az Azure ad-ben módosíthatja egy meglévő felhasználó tartománya. Egyéni tartomány beállítása az Azure Active Directory és a G Suite a következő lépések útmutatást bővítettük.
       
 1. Ha egy egyéni tartománynév még az Azure Active Directoryban még nincs hozzáadva, majd tegye a következőket:
   
@@ -105,8 +105,8 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
     e. Ismételje meg a fenti lépéseket minden olyan tartományban, amelyet hozzá kíván adni a könyvtárhoz.
 
-    > [!NOTE]
-    A felhasználók átadása, az egyéni tartomány meg kell egyeznie a forrás az Azure AD tartománynevét. Ha nem egyeznek, előfordulhat, a probléma megoldásához attribútum leképezés testreszabás implementálásával.
+   > [!NOTE]
+   >  A felhasználók átadása, az egyéni tartomány meg kell egyeznie a forrás az Azure AD tartománynevét. Ha nem egyeznek, előfordulhat, a probléma megoldásához attribútum leképezés testreszabás implementálásával.
 
 
 1. Most, hogy az összes tartományt, az Azure AD ellenőrizte, ellenőriznie kell őket újra a Google Apps. Minden egyes tartományhoz, amely még nincs regisztrálva a Google a következő lépéseket:
@@ -149,13 +149,13 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás a felhasználói fiók kiép�
 
 1. Állítsa be a **Kiépítési mód** való **automatikus**. 
 
-     ![Kiépítés](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. Alatt a **rendszergazdai hitelesítő adataival** szakaszban jelölje be **engedélyezés**. Egy Google-engedélyezési párbeszédpanel egy új böngészőablakban nyílik meg.
 
 1. Győződjön meg arról, hogy szeretné-e el a G Suite-bérlő Azure Active Directory engedélyt. Válassza ki az **Elfogadás** lehetőséget.
     
-     ![Ellenőrizze az engedélyeket.][28]
+       ![Confirm permissions.][28]
 
 1. Az Azure Portalon válassza ki a **kapcsolat tesztelése** annak érdekében, hogy az Azure AD az alkalmazás képes csatlakozni. Ha a kapcsolódás sikertelen, győződjön meg arról, hogy a G Suite-fiókjától csapat rendszergazdai engedélyekkel rendelkező. Ismételje meg a **engedélyezés** lépés újra.
 

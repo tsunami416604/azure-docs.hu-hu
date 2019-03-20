@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190517"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124069"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Ismert problémák és megoldásaik az SCIM 2.0 protokoll megfelelőség az Azure AD-felhasználó kiépítési szolgáltatás
 
@@ -59,36 +59,36 @@ Igen. Ha már használja az alkalmazáspéldány egyszeri bejelentkezést, és s
  
 1. Jelentkezzen be az Azure Portalra a https://portal.azure.com.
 2. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban az Azure Portalon keresse meg és válassza ki a meglévő SCIM-alkalmazást.
-3.  Az a **tulajdonságok** szakaszában a meglévő SCIM-alkalmazás, példány a **Objektumazonosító**.
-4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
+3. Az a **tulajdonságok** szakaszában a meglévő SCIM-alkalmazás, példány a **Objektumazonosító**.
+4. Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
 5. A Graph Explorer keresse meg az üzembe helyezési feladat Azonosítóját az alábbi parancs futtatásával. Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![Első feladatok](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "feladatok beolvasása") 
+   ![Első feladatok](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "feladatok beolvasása") 
 
 
 6. Az eredmények között másolja a teljes "ID" karakterlánccal kezdődik "customappsso" vagy "scim".
 7. Futtassa az alábbi parancsot a attribútumleképezés konfiguráció, lekérése érdekében, hogy biztonsági mentést. A azonos [-objektumazonosító], mielőtt használja, és cserélje le az előző lépésben másolt kiépítési Feladatazonosítót [feladatazonosító].
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![Séma beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "séma beolvasása") 
+   ![Séma beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "séma beolvasása") 
 
 8. Másolja az utolsó lépés a JSON-kimenetet, és mentse egy szövegfájlba. Ez tartalmazza a bármely egyéni attribútum-leképezések, hogy a régi alkalmazáshoz hozzáadott, és körülbelül több ezer sornyi JSON kell lennie.
 9. Futtassa az alábbi parancsot az üzembe helyezési feladat törléséhez:
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. Futtassa az alábbi parancsot egy új létesítési feladat létrehozása, amely rendelkezik a szolgáltatás legújabb javításokkal.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. Az utolsó lépés az eredmények között másolja a teljes "ID" karakterlánccal kezdődik "scim". Igény szerint alkalmazza újra a régi attribútumleképezések az alábbi [Új – feladat-id] cserélje le az imént másolt új feladat azonosítója, és írja be a JSON kimenete kérelemtörzsként való #7. lépés: a parancs futtatásával.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. Az első böngészőablakban adja vissza, és válassza ki a **kiépítési** az alkalmazás lapon.
 13. Ellenőrizze a konfigurációt, és indítsa el az üzembe helyezési feladat. 
@@ -97,15 +97,15 @@ Igen. Ha már használja az alkalmazáspéldány egyszeri bejelentkezést, és s
 
 Igen. Ha az alkalmazás régi viselkedés előtti a javításokat, és üzembe helyezése egy új példányát kell kellett kódolni, kövesse az alábbi utasításokat. Ez az eljárás ismerteti, hogyan lehet egy, a régi viselkedés érvényes kiépítési SCIM-feladat létrehozása a Microsoft Graph API és a Microsoft Graph API explorer használatával.
  
-1.  Jelentkezzen be az Azure Portalra a https://portal.azure.com.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com.
 2. az a **Azure Active Directory > Vállalati alkalmazások > alkalmazás létrehozása** szakaszban az Azure Portal, hozzon létre egy új **katalógusban nem szereplő** alkalmazás.
-3.  Az a **tulajdonságok** az új egyéni alkalmazás, példány szakaszában a **Objektumazonosító**.
-4.  Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
+3. Az a **tulajdonságok** az új egyéni alkalmazás, példány szakaszában a **Objektumazonosító**.
+4. Egy új böngészőablakban, lépjen a https://developer.microsoft.com/graph/graph-explorer , és jelentkezzen be az Azure AD-bérlővel, ahol az alkalmazás bekerül a rendszergazdájaként.
 5. A Graph Explorer futtassa az alábbi parancsot az alkalmazás kiépítési konfigurációjának inicializálása.
-Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
+   Cserélje le a szolgáltatást a harmadik lépésben másolt résztvevő-azonosító (objektumazonosító:) "[object-id]".
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. Az első böngészőablakban adja vissza, és válassza ki a **kiépítési** az alkalmazás lapon.
 7. Fejezze be a felhasználó konfigurációs kiépítése, ahogy azt szokásosan tenné.

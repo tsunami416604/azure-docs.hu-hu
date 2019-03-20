@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: fd1e49a8bab3b6133a476bbafaa45e0e61fe1f1b
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 58117bce8de667c9750b2e0c19992b99716945cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124201"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -63,12 +63,12 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 - A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
-   - A probléma javított melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt:  *Nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: A kért művelet nem hajtható végre, mert a Virtuálisgép-méret nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
+  - A probléma javított melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt:  *Nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: A kért művelet nem hajtható végre, mert a Virtuálisgép-méret nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
    
-   - A felügyelt lemezes virtuális gép használatával történő létrehozásának **createOption**: **Csatolása** a következő hibaüzenettel meghiúsul: *Hosszú ideig futó művelet sikertelen volt a "Sikertelen" állapotú. További információ: "belső végrehajtási hiba történt."*
-   Hibakód: InternalExecutionError ErrorMessage: Belső végrehajtási hiba történt.
+  - A felügyelt lemezes virtuális gép használatával történő létrehozásának **createOption**: **Csatolása** a következő hibaüzenettel meghiúsul: *Hosszú ideig futó művelet sikertelen volt a "Sikertelen" állapotú. További információ: "belső végrehajtási hiba történt."*
+    Hibakód: InternalExecutionError ErrorMessage: Belső végrehajtási hiba történt.
    
-   Most már megoldódott a probléma.
+    Most már megoldódott a probléma.
 
 - <!-- 2702741 -  IS, ASDK --> Kijavítva a hiba melyik nyilvános IP-címek, amelyek a dinamikus kiosztási használatával lettek telepítve a metódus nem garantált, hogy egy állítsa le és vonja vissza kiadása után megőrzi. Most már megmaradnak.
 
@@ -297,10 +297,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- TBD - IS ASDK --> 
 - Frissítse a 1809 alkalmazása után, a következő problémák léphetnek a felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezésekor:
 
-   - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
-      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
-      2. Lépjen egy előfizetésen belül **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy a **AzureStack-DiskRP-ügyfél** szerepkör szerepel a listán.
-   2. Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
+  - Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
+     1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
+     2. Lépjen egy előfizetésen belül **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy a **AzureStack-DiskRP-ügyfél** szerepkör szerepel a listán.
+  - Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használjon Virtuálisgép-hozzáférés a Linux-bővítmény kiépítése után SSH-kulcsok megvalósításához, vagy jelszóalapú hitelesítés használatára.
 

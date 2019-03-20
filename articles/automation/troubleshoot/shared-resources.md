@@ -4,16 +4,16 @@ description: Ismerje meg az Azure Automation megosztott erőforrásokkal kapcsol
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902824"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Megosztott erőforrásokkal kapcsolatos hibák elhárítása
 
@@ -55,7 +55,7 @@ Frissítése az AzureRM-modulokat: Automation-fiók, amely egy erőforráscsopor
 
 #### <a name="resolution"></a>Megoldás:
 
-Az Azure-modulokat: Automation-fiók frissítéséhez, amelynek a neve alfanumerikus erőforráscsoportban kell lennie. Erőforráscsoportok 0-tól induló numerikus nevek nem tudnak AzureRM-modulok frissítése most.
+Az Azure-modulokat: Automation-fiók frissítéséhez egy alfanumerikus nevű erőforráscsoportban kell lennie. Erőforráscsoportok 0-tól induló numerikus nevek nem tudnak AzureRM-modulok frissítése most.
 
 ### <a name="module-fails-to-import"></a>Forgatókönyv: Modul importálása sikertelen, vagy a parancsmagok nem hajtható végre, az importálás után
 
@@ -137,6 +137,30 @@ Nem kell az engedélyeket kell létrehozni vagy frissíteni a futtató fiókot, 
 Létrehozása vagy frissítése egy futtató fiókot, akkor a különböző erőforrások használják a futtató fiók megfelelő engedélyeket kell rendelkeznie. Létrehozni vagy frissíteni a futtató fiók szükséges engedélyekkel kapcsolatos további információkért lásd: [Futtatás mint fiók engedélyek](../manage-runas-account.md#permissions).
 
 Ha a probléma miatt a zárolást, ellenőrizze, hogy a zárolást az ok gombra. Távolítsa el azt. Az erőforrás zárolva van, majd keresse meg, kattintson a jobb gombbal a zárolást, és válassza a **törlése** , távolítsa el a zárolást.
+
+### <a name="iphelper"></a>Forgatókönyv: Ha a "Nem található a belépési pont"GetPerAdapterInfo"DLL-ben"iplpapi.dll"nevű" hibaüzenetet kapja egy runbook futtatását.
+
+#### <a name="issue"></a>Probléma
+
+Runbook végrehajtása során a következő kivétel:
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba oka valószínűleg egy helytelenül konfigurált által okozott [futtató fiók](../manage-runas-account.md).
+
+#### <a name="resolution"></a>Megoldás:
+
+Győződjön meg arról, hogy a [futtató fiók](../manage-runas-account.md) megfelelően van konfigurálva. Ha megfelelően van konfigurálva, győződjön meg arról, hogy a megfelelő kódot a runbookban, Azure-hitelesítésre. Az alábbi példa bemutatja egy kódrészletet az Azure-bA egy runbook egy futtató fiókkal hitelesítést.
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>További lépések
 

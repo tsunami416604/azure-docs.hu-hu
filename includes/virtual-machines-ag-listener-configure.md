@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e24ed3921872a4c754967841634ebab23b972e59
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9c7c6d31b9443ee09539d4882a9e8f4c4332763b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736101"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124640"
 ---
 A rendelkezésre állási csoport figyelőjének egy IP-cím és hálózati nevet, amelyet az SQL Server rendelkezésre állási csoport figyel. A rendelkezésre állási csoport figyelőjének létrehozásához tegye a következőket:
 
@@ -86,27 +86,27 @@ A rendelkezésre állási csoport figyelőjének egy IP-cím és hálózati neve
 
 1. <a name="setparam"></a>Állítsa a fürt paramétereit a PowerShellben.
 
-  a. Másolja a következő PowerShell-parancsfájl egy SQL Server-példányon. Frissítse a változókat, az adott környezetben.
+   a. Másolja a következő PowerShell-parancsfájl egy SQL Server-példányon. Frissítse a változókat, az adott környezetben.
 
-  - `$ListenerILBIP` az IP-cím, amelyet a rendelkezésre állási csoport figyelője az Azure load balancer a létrehozott van.
+   - `$ListenerILBIP` az IP-cím, amelyet a rendelkezésre állási csoport figyelője az Azure load balancer a létrehozott van.
     
-  - `$ListenerProbePort` Ez a port a rendelkezésre állási csoport figyelője az Azure load balancer a konfigurált.
+   - `$ListenerProbePort` Ez a port a rendelkezésre állási csoport figyelője az Azure load balancer a konfigurált.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<IPResourceName>" # the IP Address resource name
-  $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ListenerProbePort = <nnnnn>
+   ```PowerShell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<IPResourceName>" # the IP Address resource name
+   $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ListenerProbePort = <nnnnn>
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
 
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. A fürt paraméterek beállítása a PowerShell-parancsprogram futtatásával egy, a fürtcsomópontok.  
+   b. A fürt paraméterek beállítása a PowerShell-parancsprogram futtatásával egy, a fürtcsomópontok.  
 
-  > [!NOTE]
-  > Ha az SQL Server-példányok külön régiókban, kétszer a PowerShell-parancsfájl futtatásához szükséges. Az első alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` első régióban. A második alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` második régióban. A fürt hálózati és a fürt IP-erőforrás neve minden egyes régióban is eltérőek.
+   > [!NOTE]
+   > Ha az SQL Server-példányok külön régiókban, kétszer a PowerShell-parancsfájl futtatásához szükséges. Az első alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` első régióban. A második alkalommal használja a `$ListenerILBIP` és `$ListenerProbePort` második régióban. A fürt hálózati és a fürt IP-erőforrás neve minden egyes régióban is eltérőek.
 
 1. A rendelkezésre állási csoport fürtszerepkör online állapotba. A **Feladatátvevőfürt-kezelőben** alatt **szerepkörök**, kattintson a jobb gombbal a szerepkört, és válassza ki **szerepkör indítása**.
 
@@ -120,24 +120,24 @@ Ha szükséges, ismételje meg a fenti lépéseket, és állítsa be a fürt par
 
 1. <a name="setwsfcparam"></a>Állítsa a fürt paramétereit a PowerShellben.
   
-  a. Másolja a következő PowerShell-parancsfájl egy SQL Server-példányon. Frissítse a változókat, az adott környezetben.
+   a. Másolja a következő PowerShell-parancsfájl egy SQL Server-példányon. Frissítse a változókat, az adott környezetben.
 
-  - `$ClusterCoreIP` az az IP-cím az Azure load balancer a WSFC-core fürterőforrás amelyiken létrehozta. Ez különbözik a rendelkezésre állási csoport figyelőjének IP-címét.
+   - `$ClusterCoreIP` az az IP-cím az Azure load balancer a WSFC-core fürterőforrás amelyiken létrehozta. Ez különbözik a rendelkezésre állási csoport figyelőjének IP-címét.
 
-  - `$ClusterProbePort` a port, az Azure load balancer for a WSFC állapotadat-mintavétel konfigurálva van. Eltér a mintavételi modul a rendelkezésre állási csoport figyelője.
+   - `$ClusterProbePort` a port, az Azure load balancer for a WSFC állapotadat-mintavétel konfigurálva van. Eltér a mintavételi modul a rendelkezésre állási csoport figyelője.
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
-  $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
+   ```PowerShell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
   
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. A fürt paraméterek beállítása a PowerShell-parancsprogram futtatásával egy, a fürtcsomópontok.  
+   b. A fürt paraméterek beállítása a PowerShell-parancsprogram futtatásával egy, a fürtcsomópontok.  
 
 >[!WARNING]
 >A rendelkezésre állási csoport figyelőjének állapotát mintavételi portot nem lehet a fürt core IP-cím egészségügyi mintavételi port különbözik. Ezekben a példákban a figyelőjének portszámára 59999 pedig a fürt alapvető IP-cím 58888. Mindkét portnak szükséges egy engedélyezési bejövő tűzfalszabályt.

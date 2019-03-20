@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 610b140fd6049842b993c17fd53bebf799f83f5c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006497"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatelemző virtuális gép](https://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](https://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding.
@@ -218,8 +218,7 @@ A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webb
 | Hogyan van azt konfigurálni / telepíteni a dsvm-hez?  | PyTorch telepítve van a [Python 3.5-ös](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
 | A minták mutató hivatkozások      | Mintául szolgáló Jupyter notebookok megtalálhatók, és minták /dsvm/samples/pytorch is található.      |
 | A dsvm-hez kapcsolódó eszközök      | Torch      |
-| Hogyan futtathatja / használata |
-* A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Csatlakozás [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a mintákat a PyTorch könyvtárban.  |
+| Hogyan futtathatja / használata |* A parancsot egy terminálban: aktiválja a megfelelő környezetet, majd futtassa a Python. <br/> * A Jupyter: Csatlakozás [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), majd nyissa meg a mintákat a PyTorch könyvtárban.  |
 
 ## <a name="mxnet-model-server"></a>MXNet Model Server
 

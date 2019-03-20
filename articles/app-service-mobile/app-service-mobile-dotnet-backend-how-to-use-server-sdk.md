@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078788"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -240,10 +240,10 @@ Is használhatja a `UseDefaultConfiguration()` bővítmény metódusa `MapApiCon
 ## <a name="how-to-work-with-authentication"></a>Útmutató: Hitelesítés használata
 Az Azure Mobile Apps használja az App Service-hitelesítés / engedélyezés a mobil háttérmodul védelme az.  Ez a szakasz bemutatja, hogyan hajtsa végre a következő hitelesítési feladatok a .NET-háttérrendszer kiszolgálói projektet:
 
-* [kézikönyv: Hitelesítés hozzáadása a kiszolgálói projekt](#add-auth)
-* [kézikönyv: Az alkalmazás egyéni hitelesítés használata](#custom-auth)
-* [kézikönyv: Hitelesített felhasználói adatok beolvasása](#user-info)
-* [kézikönyv: A jogosult felhasználók adatokhoz való hozzáférést](#authorize)
+* [Útmutató: Hitelesítés hozzáadása a kiszolgálói projekt](#add-auth)
+* [Útmutató: Az alkalmazás egyéni hitelesítés használata](#custom-auth)
+* [Útmutató: Hitelesített felhasználói adatok beolvasása](#user-info)
+* [Útmutató: A jogosult felhasználók adatokhoz való hozzáférést](#authorize)
 
 ### <a name="add-auth"></a>kézikönyv: Hitelesítés hozzáadása a kiszolgálói projekt
 Hozzáadhat hitelesítési a kiszolgálói projektet által bővítése a **MobileAppConfiguration** objektum és az OWIN közbenső szoftver konfigurálása. Amikor telepíti a [Microsoft.Azure.Mobile.Server.Quickstart] csomagot, és hívja a **UseDefaultConfiguration** metódust, továbbléphet a 3. lépés.
@@ -263,7 +263,7 @@ Hogyan hitelesítheti az ügyfelek számára, hogy a Mobile Apps-háttéralkalma
 > Annak érdekében, hogy egyéni hitelesítés engedélyezéséhez először engedélyeznie kell App Service-hitelesítés anélkül, hogy egy szolgáltató az App Service az Azure Portalon. Ez lehetővé teszi a WEBSITE_AUTH_SIGNING_KEY környezeti változót, ha ezek üzemelnek.
 > 
 > 
-Ha nem szeretne használni az App Service hitelesítés/engedélyezés egyik, a saját bejelentkezési rendszer valósíthat meg. Telepítse a [Microsoft.Azure.Mobile.Server.Login] csomag, amelyek segítik a hitelesítési jogkivonat létrehozása.  Adja meg a saját kódját felhasználó hitelesítő adatainak ellenőrzése. Például megkereshet egy adatbázisban sózott és kivonatolt jelszavak ellen. Az alábbi példában a `isValidAssertion()` (máshol megadott) módszer felelős ezeket az ellenőrzéseket.
+> Ha nem szeretne használni az App Service hitelesítés/engedélyezés egyik, a saját bejelentkezési rendszer valósíthat meg. Telepítse a [Microsoft.Azure.Mobile.Server.Login] csomag, amelyek segítik a hitelesítési jogkivonat létrehozása.  Adja meg a saját kódját felhasználó hitelesítő adatainak ellenőrzése. Például megkereshet egy adatbázisban sózott és kivonatolt jelszavak ellen. Az alábbi példában a `isValidAssertion()` (máshol megadott) módszer felelős ezeket az ellenőrzéseket.
 
 Az egyéni hitelesítési tesz elérhetővé egy ApiController létrehozása és adatokhoz hozzáférést biztosító `register` és `login` műveleteket. Az ügyfélnek, az adatokat gyűjt a felhasználó egy egyéni felhasználói használnia kell.  Az információkat ezután az egy normál HTTP POST-hívás az API-hoz. Miután a kiszolgáló ellenőrzi a helyességi feltétel, a jogkivonat használatával kiadott a `AppServiceLoginHandler.CreateToken()` metódust.  A ApiController **nem** használja a `[MobileAppController]` attribútum.
 

@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091834"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Egy application gateway konfigurálása SSL-lezárást az Azure portal használatával
 
@@ -78,12 +78,12 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - A virtuális hálózat neve *myVNet*.
-    - A virtuális hálózat címtere *10.0.0.0/16*.
-    - Az alhálózat neve *myAGSubnet*.
-    - Az alhálózat címtere *10.0.0.0/24*.
+   - A virtuális hálózat neve *myVNet*.
+   - A virtuális hálózat címtere *10.0.0.0/16*.
+   - Az alhálózat neve *myAGSubnet*.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
-    ![Virtuális hálózat létrehozása](./media/create-ssl-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/create-ssl-portal/application-gateway-vnet.png)
 
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
@@ -149,13 +149,13 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 
-3. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
-4. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson az **appGatewayBackendPool** lehetőségre.
-5. Kattintson a **Hozzáadás cél** minden Ön által létrehozott virtuális gép hozzáadásához a háttérkészlethez.
+1. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
+1. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson az **appGatewayBackendPool** lehetőségre.
+1. Kattintson a **Hozzáadás cél** minden Ön által létrehozott virtuális gép hozzáadásához a háttérkészlethez.
 
     ![Háttérkiszolgálók hozzáadása](./media/create-ssl-portal/application-gateway-backend.png)
 
-6. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 

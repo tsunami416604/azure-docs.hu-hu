@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: 4b6ad06f50962dd2e29caf9543d82912de338fd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 6f8cf8a597bc50bb52818968c6f6ea0e7a6941a4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875821"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225324"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -51,8 +51,8 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 - **1809**: [KB 4481548 – az Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: Nincs elérhető aktuális gyorsjavítást.
-- **1901**: Nincs elérhető aktuális gyorsjavítást.
-- **1902**: Nincs elérhető aktuális gyorsjavítást.
+- **1901**: [KB 4481548 – az Azure Stack gyorsjavítás 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1902**: [KB 4481548 – az Azure Stack gyorsjavítás 1.1902.2.73](https://support.microsoft.com/help/4494719)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -161,7 +161,6 @@ Ez a frissítés a következő biztonsági frissítéseket telepíti:
 - [CVE-2019-0660](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0660)
 - [CVE-2019-0662](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0662)
 - [CVE-2019-0663](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0663)
-
 
 További információ a biztonsági rések, kattintson a fenti hivatkozásokat a, vagy tekintse meg a Microsoft Tudásbázis cikkei [4487006](https://support.microsoft.com/en-us/help/4487006).
 

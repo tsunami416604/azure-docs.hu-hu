@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902875"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -61,7 +61,7 @@ Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőfo
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>A Visual Studio Code az Azure Stream Analytics szolgáltatáshoz
 
-A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre. Privát előzetes verziójú funkciók eszköztámogatás hozzáférés, lépjen kapcsolatba *ASAToolsfeedback@microsoft.com*.
+A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre. Privát előzetes verziójú funkciók eszköztámogatás hozzáférés, lépjen kapcsolatba *ASAToolsfeedback\@microsoft.com*.
 
 ## <a name="next-steps"></a>További lépések
 

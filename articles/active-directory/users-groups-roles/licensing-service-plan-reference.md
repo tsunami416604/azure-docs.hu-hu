@@ -1,6 +1,6 @@
 ---
 title: Termékek neveit és a szolgáltatás licencelési - azonosítók megtervezése az Azure AD |} A Microsoft Docs
-description: Kezelheti az Azure Active Directory licencelése az Azure Portalon, az Office 365-portálra, a PowerShell vagy a Microsoft Graph az azonosító térkép
+description: Kezelheti az Azure Active Directory licencelése az Azure Portalon, a Microsoft 365 felügyeleti központban, PowerShell vagy a Microsoft Graph azonosító térkép
 services: active-directory
 keywords: Az Azure Active Directory licencelése service-csomagok
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f0308905ab33cd18160389dfe50a0ed8bb5152
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fc4580b4f600b06fc89e3fc8760679028765e03e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176425"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Termékek neveit és szolgáltatási csomag azonosítók licencelése
 
-Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) , vagy az Office 365 portálon látható, amely a következőhöz hasonló terméknevek *Office 365 nagyvállalati E3 csomag*. 1.0-s verzió PowerShell-parancsmagok használata esetén a termék azonosított konkrét, de kevésbé felhasználóbarát név használatával: *ENTERPRISEPACK*. A PowerShell 2.0-s verziójú parancsmagok vagy a Microsoft Graph, amikor a termék azonosított GUID értéket: *6fd2c87f-b296-42f0-b197-1e91e994b900*. A következő táblázat a leggyakrabban használt Microsoft online service termékek és különböző azonosító értékekre. Ezek a táblák kitöltését és pontos csak kezdődően ez a cikk utolsó frissítésének dátuma. A Microsoft nem kívánja frissíteni őket az újonnan felvett szolgáltatások rendszeres időközönként.
+Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vagy a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com), láthatja, hogy a termék nevét, amely a következőhöz hasonló *Office 365 nagyvállalati E3 csomag*. 1.0-s verzió PowerShell-parancsmagok használata esetén a termék azonosított konkrét, de kevésbé felhasználóbarát név használatával: *ENTERPRISEPACK*. A PowerShell 2.0-s verziójú parancsmagok vagy a Microsoft Graph, amikor a termék azonosított GUID értéket: *6fd2c87f-b296-42f0-b197-1e91e994b900*. A következő táblázat a leggyakrabban használt Microsoft online service termékek és különböző azonosító értékekre. Ezek a táblák kitöltését és pontos csak kezdődően ez a cikk utolsó frissítésének dátuma. A Microsoft nem kívánja frissíteni őket az újonnan felvett szolgáltatások rendszeres időközönként.
 
 - **Terméknév**: A felügyeleti portálokat használt
 - **Karakterlánc-azonosító**: 1.0-s verzió PowerShell-parancsmagokat használják, amikor műveleteket hajt végre a licenceket

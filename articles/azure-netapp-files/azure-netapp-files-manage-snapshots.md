@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 8bc2d655f7c6b20cabfadbf9dffca8622a24674f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9154add96084142ca1f93ad61c6418e3b487fb83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090916"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure Files-NetApp használatával
 
@@ -77,9 +77,9 @@ Visszaállíthatja a pillanatkép jelenleg csak az új kötetet.
     * **Alhálózat**  
         Adja meg az alhálózatot, amelyet a kötet használni kívánt.  
         Az alhálózatot, adja meg az Azure NetApp Files szolgáltatásba kell delegálható. Létrehozhat egy új alhálózatot kiválasztásával **új létrehozása** alhálózat mező alatti.  
-<!--
+   <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
--->
+   -->
 
 5. Kattintson az **OK** gombra.   
     Az új kötetet, amelyhez a pillanatkép visszaállítása a kötetek panel jelenik meg.

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f574c85252614fd24734657affe3264d72130dd3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9ec8f8f1c6e1d1b806c5d965d3c2287027885c44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901584"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C# eszközoldali SDK-val
 
@@ -27,8 +27,8 @@ A mintakód a Windows TPM-szimulátort használja az eszköz [Hardveres biztons�
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -37,7 +37,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Ellenőrizze, hogy a [a .net Core SDK 2.1-es vagy újabb](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
+1. Ellenőrizze, hogy a [.NET Core SDK-t 2.1-es vagy újabb](https://www.microsoft.com/net/download/windows) telepítve van a gépén. 
 
 1. Győződjön meg arról, hogy a(z) `git` telepítve van a gépen, és a parancsablakból elérhető környezeti változókhoz van adva. A [Software Freedom Conservancy's Git ügyfél eszközeiben](https://git-scm.com/download/) találja a telepíteni kívánt `git` eszközök legújabb verzióját, amely tartalmazza a **Git Bash** eszközt, azt a parancssori alkalmazást, amellyel kommunikálhat a helyi Git-adattárral. 
 
@@ -78,14 +78,14 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 4. Az Azure Portal Device Provisioning Service összefoglalási panelén válassza a **Regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
 5. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
-    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-    - Adja meg a *regisztrációs azonosító* és *ellenőrzőkulcsot* a TPM-eszköz, amelyet korábban feljegyzett.
-    - Kiválaszthatja a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
-    - Adjon meg egy egyedi eszközazonosítót. Beírhatja a mintakimenetben javasolt eszközazonosítót, vagy megadhat egy saját értéket. Ha saját azonosítót használ, ne adjon meg bizalmas adatokat az eszköz elnevezésekor. 
-    - Szükség esetén frissítse a **eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával együtt.
-    - Ha végzett, kattintson a **Mentés** gombra. 
+   - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
+   - Adja meg a *regisztrációs azonosító* és *ellenőrzőkulcsot* a TPM-eszköz, amelyet korábban feljegyzett.
+   - Kiválaszthatja a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
+   - Adjon meg egy egyedi eszközazonosítót. Beírhatja a mintakimenetben javasolt eszközazonosítót, vagy megadhat egy saját értéket. Ha saját azonosítót használ, ne adjon meg bizalmas adatokat az eszköz elnevezésekor. 
+   - Szükség esetén frissítse a **eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával együtt.
+   - Ha végzett, kattintson a **Mentés** gombra. 
 
-    ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
+     ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni beléptetések* lapon lévő listában. 
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 05af196d115376d744df1976c6a3d9fe9cab74e0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9dcb79e7f4ebd43da3f6c6fd35fa0707898d7ec8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958898"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111004"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés az Azure Database for MySQL-hez
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MySQL-hez különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
@@ -23,7 +23,7 @@ Az összes Azure-metrikagyűjtéshez rendelkezik egy egy perces gyakoriságot, �
 Ezek a metrikák érhetők el az Azure Database for MySQL-hez:
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Százalékos Processzorhasználat|Százalék|Processzorhasználat százalékos használja.|
 |memory_percent|Memória százalékos aránya|Százalék|Használt memória aránya.|
 |io_consumption_percent|I/o-százalék|Százalék|Százalékos i/o-használja.|
@@ -36,8 +36,8 @@ Ezek a metrikák érhetők el az Azure Database for MySQL-hez:
 |active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
 |connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |seconds_behind_master|Replikációs késés másodpercben|Darabszám|Az adatbázisreplika-kiszolgálót a fő kiszolgálón van elmaradt másodpercek számát.|
-|network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
-|network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Hálózati az aktív kapcsolatok között.|
+|network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
+|network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók

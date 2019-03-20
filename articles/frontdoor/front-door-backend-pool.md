@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 14cc87e8691c859274495a13cc0b73fa29ad22df
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 228ed5c54a382db7b47d19adacf9e5db398c53ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726889"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123691"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Háttérrendszerek és a háttérkiszolgáló készletek Azure bejárati ajtajának Service-ben
 Ez a cikk ismerteti a különböző hogyan leképezhet az alkalmazás központi telepítésének a bejárati ajtajának kapcsolatban. Is ismertetjük a különböző használati elöl ajtó alkalmazás háttér-konfigurációt jelentését.
@@ -62,7 +62,7 @@ Ha a háttérrendszer a bejárati ajtó háttérkészlet ad hozzá, szüksége l
 A háttérrendszernek bejárati ajtajának által továbbított kérések rendelkezik egy gazdagép fejlécmezőt, amely a háttéralkalmazás használja a célként megadott erőforrás lekérése. Ez a mező értéke általában a háttérrendszer URI származik, és állomás és port. Ha például kérelem `www.contoso.com` fog rendelkezni az állomásfejléc `www.contoso.com`. Az Azure portal használatával háttérszolgáltatás használatára konfigurál, ha az alapértelmezett érték, amely tölti fel a rendszer a mező a háttérrendszer állomásneve. Például, ha a háttérrendszer `contoso-westus.azurewebsites.net`, akkor az Azure Portalon automatikusan kitölti háttérrendszer állomásfejléc értéke lesz `contoso-westus.azurewebsites.net`. 
 </br>Azonban ha a Resource Manager-sablonok használata vagy más módszerrel, és nem állítja ezt a mezőt explicit módon ezután bejárati ajtajának elküldi a bejövő állomásnév állomásfejléc értéke. Például, ha a kérést intéztek `www.contoso.com`, és a háttérrendszer `contoso-westus.azurewebsites.net` gazdagép üresként fejléc háttérrendszer mezővel, majd bejárati ajtajának állítja, az állomásfejléc `www.contoso.com`.
 
-A legtöbb háttérkomponensei (például a Web Apps, a Blob Storage és a Cloud Services) az állomásfejlécnek egyeznie a háttérrendszer tartományát. Azonban a frontend gazdagép, amely a háttérbeli irányítja rendelkezik mint www.contoso.azurefd.net eltérő állomásnévvel. Ha a háttérrendszer állítja be az állomásfejlécnek egyeznie kell a gazdagép nevével, a háttérrendszer igényel, győződjön meg róla, hogy a "háttér-állomásfejléc" is rendelkezik-e a háttérrendszer állomásneve.
+A legtöbb háttérkomponensei (például a Web Apps, a Blob Storage és a Cloud Services) az állomásfejlécnek egyeznie a háttérrendszer tartományát. Azonban a frontend gazdagép, amely a háttérbeli irányítja kell például a www eltérő állomásnévvel\.contoso.azurefd.net. Ha a háttérrendszer állítja be az állomásfejlécnek egyeznie kell a gazdagép nevével, a háttérrendszer igényel, győződjön meg róla, hogy a "háttér-állomásfejléc" is rendelkezik-e a háttérrendszer állomásneve.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>A háttérrendszer a háttérrendszer állomásfejlécét konfigurálása
 A "Háttér állomásfejléc" mező a háttérrendszernek a háttérbeli címkészlet szakaszban konfigurálhatók.

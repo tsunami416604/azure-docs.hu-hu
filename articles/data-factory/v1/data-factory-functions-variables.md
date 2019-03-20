@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a82d871ea232b31b31cfc24585af672141617d88
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57976776"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - függvények és rendszerváltozók
 > [!NOTE]
@@ -27,6 +27,7 @@ ms.locfileid: "54353010"
 Ez a cikk a functions és az Azure Data Factory által támogatott változók kapcsolatos információkat.
 
 ## <a name="data-factory-system-variables"></a>Data Factory rendszerváltozók
+
 | Változó neve | Leírás | Forrásobjektum hatóköre | JSON-hatókör és alkalmazási helyzetek |
 | --- | --- | --- | --- |
 | WindowStart |Időtartam a jelenlegi művelet futtatása ablak kezdete |tevékenység |<ol><li>Adja meg az adatkijelölési lekérdezésekben. Tekintse meg a hivatkozott összekötő cikkeket a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk.</li> |
@@ -94,7 +95,7 @@ Az alábbi táblázatok sorolják fel az Azure Data Factoryban összes funkció 
 | Dátum |EndOfDay(X) |X: DateTime |Lekérdezi a nap (napi összetevő) x záró dátuma és időpontja.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Dátum |EndOfMonth(X) |X: DateTime |A hónap összetevőjét X paraméter által jelölt hónap végén kapja. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (dátum és időpont, szeptember hónap végét jelölő) |
 | Dátum |StartOfDay(X) |X: DateTime |Lekérdezi a nap összetevőt X paraméter által jelölt nap kezdete.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |FROM(X) |X: Karakterlánc |Egy dátum-idő X karakterláncot elemezni. |
+| DateTime |FROM(X) |X: String |Egy dátum-idő X karakterláncot elemezni. |
 | DateTime |Ticks(X) |X: DateTime |Lekérdezi a órajel során végbemenő X paraméter tulajdonságát. Egy osztásjelek 100 nanoszekundumban egyenlő. Ez a tulajdonság értékét a számát, amely 12:00:00 éjféltől. január 1. óta eltelt 0001 jelöli. |
 | Szöveg |Format(X) |X: Karakterlánc-változóhoz |Formázza a szöveget (használata `\\'` escape-kombinációt `'` karakter).|
 

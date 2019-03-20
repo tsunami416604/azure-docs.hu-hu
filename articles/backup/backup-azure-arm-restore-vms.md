@@ -7,18 +7,23 @@ manager: vijayts
 keywords: biztonsági másolatának visszaállítása hogyan lehet visszaállítani; helyreállítási pont;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 0140cbc440e6098290a81f7ae61aa99e36da7d80
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312035"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202588"
 ---
 # <a name="restore-azure-vms"></a>Azure-beli virtuális gépek visszaállítása
 
 Ez a cikk ismerteti az Azure-beli Virtuálisgép-adatok visszaállítása a tárolt helyreállítási pontok [Azure Backup](backup-overview.md) Recovery Services-tárolók.
+
+Visszaállítása egy virtuális gép győződjön meg arról, hogy rendelkezik a szükséges [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) engedéllyel.
+
+> [!NOTE]
+> Ha nem rendelkezik [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) engedély hajthat végre [lemez visszaállítása](backup-azure-arm-restore-vms.md#create-new-restore-disks) , és hozzon létre virtuális gépet [-sablon telepítése](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkció.
 
 ### <a name="restore-options"></a>Visszaállítási beállítások
 
@@ -101,11 +106,11 @@ A lemez visszaállítása után a sablon segítségével létrehozott a visszaá
     - [További](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) erőforrások egyéni sablonból való telepítéséről.
     - [További](../azure-resource-manager/resource-group-authoring-templates.md) kapcsolatos sablonok készítése.
 
-  ![Sablonalapú telepítés betöltése](./media/backup-azure-arm-restore-vms/edit-template1.png)
+   ![Sablonalapú telepítés betöltése](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
 4. Adja meg az egyéni értékek a virtuális gép, és fogadja el a **feltételek és kikötések** kattintson **beszerzési**.
 
-  ![Küldje el a sablon telepítése](./media/backup-azure-arm-restore-vms/submitting-template1.png)
+   ![Küldje el a sablon telepítése](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
 
 ## <a name="replace-existing-disks"></a>Cserélje le a meglévő lemezek

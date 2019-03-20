@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 59f4dffb64b0e72e8847f0b1baf947ad1d732063
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766573"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167983"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Az Azure IoT Central application (új felhasználói felület tervezése) lévő mobileszközök felügyelete
 
@@ -23,7 +23,6 @@ Ez a cikk azt ismerteti, hogyan kezelőként Eszközkezelés az Azure IoT Centra
 - Az eszköz naprakész készletnyilvántartás.
 - Az eszköz metaadatait az eszköztulajdonságok tárolt értékek módosításával tartsa naprakészen a.
 - Az eszközök viselkedését vezérlő egy beállítást egy adott eszköz frissítésével a **beállítások** lapot.
-
 
 ## <a name="view-your-devices"></a>Eszközök megtekintése
 
@@ -104,7 +103,7 @@ Eszközök regisztrálása az importálás alatt elindításával **nincs társ�
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
-Egy valós eszköz csatlakoztatása az IoT-központ, a kapcsolati karakterláncot kell. Exportálhatja az eszközadatok tömeges kapcsolati karakterláncok és egyéb tulajdonságokat. Az exportálási folyamat létrehoz egy CSV-fájlt az eszközidentitás, eszköz nevét és minden kiválasztott eszköz elsődleges kapcsolati karakterláncára.
+Egy valós eszköz csatlakoztatása az IoT-központ, a kapcsolati karakterláncot kell. Eszközadatok az eszköz kapcsolati karakterláncok létre kell információkat tömeges exportálhatja. Az exportálási folyamat CSV-fájlból hoz létre a eszközidentitás, az eszköz neve és a kulcsok a kiválasztott eszközökhöz.
 
 Tömeges exportálása eszközök az alkalmazásból:
 
@@ -130,8 +129,10 @@ Tömeges exportálása eszközök az alkalmazásból:
     * IOTC_DEVICENAME
     * IOTC_SASKEY_PRIMARY
     * IOTC_SASKEY_SECONDARY
-    * IOTC_X509THUMBPRINT_PRIMARY   
+    * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
+
+Lásd: [eszköz csatlakoztatása az Azure IoT Central](concepts-connectivity.md), további információ a kapcsolati karakterláncok és a kapcsolódó valódi eszközön, az IoT Central alkalmazáshoz.
 
 ## <a name="delete-a-device"></a>Eszköz törlése
 

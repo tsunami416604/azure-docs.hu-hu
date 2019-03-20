@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1585eb460cc5f8ae437ee59a596dc7a854a108e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 98f793b7d94cd554d426a0eec30d8bb4553d3d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105403"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról
 Engedélyezze az infrastruktúra Backup szolgáltatás a felügyeleti portálon keresztül, úgy, hogy az Azure Stack infrastruktúrájának biztonsági mentéseket hozhat létre. A hardver partner ezeket a biztonsági másolatokat segítségével visszaállíthatja az-környezet a felhőbeli helyreállítási [végzetes hiba](./azure-stack-backup-recover-data.md). A felhőbeli helyreállítási célja, hogy győződjön meg arról, hogy az operátorok és a felhasználók is jelentkezzen be újra a portál recovery befejeződése után. Felhasználók visszaállítása, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti csomagok, ajánlatok, és a korábban meghatározott számítási, tárolási, hálózati kvóták, és a Key Vault titkos megszűnni lesz.
@@ -67,12 +67,15 @@ A rendszergazdák és felhasználók felelőssége biztonsági mentése és viss
             -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
-    > [!Note]  
-    > **1901 és a fenti**: Az Azure Stack infrastruktúrájának biztonsági mentési adatok titkosításához tanúsítvány fogad el. Ellenőrizze, hogy a tanúsítványt tárolja biztonságos helyen a nyilvános és titkos kulccsal. Biztonsági okokból nem ajánlott, hogy a tanúsítványt használ a nyilvános és titkos kulcsok biztonsági mentési beállítások konfigurálása. Ez a tanúsítvány életciklusának kezeléséről további információkért lásd: [infrastruktúra biztonsági mentési szolgáltatás ajánlott eljárások](azure-stack-backup-best-practices.md).
+   > [!Note]
+   > **1901 és a fenti**: Az Azure Stack infrastruktúrájának biztonsági mentési adatok titkosításához tanúsítvány fogad el. Ellenőrizze, hogy a tanúsítványt tárolja biztonságos helyen a nyilvános és titkos kulccsal. Biztonsági okokból nem ajánlott, hogy a tanúsítványt használ a nyilvános és titkos kulcsok biztonsági mentési beállítások konfigurálása. Ez a tanúsítvány életciklusának kezeléséről további információkért lásd: [infrastruktúra biztonsági mentési szolgáltatás ajánlott eljárások](azure-stack-backup-best-practices.md).
+   > 
+   > **1811 vagy korábbi**: Az Azure Stack infrastruktúra az adatok biztonsági másolatának titkosításához szimmetrikus kulcs fogad el. Használja a [New-AzsEncryptionKey64 parancsmaggal hozzon létre egy kulcsot](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). Amikor frissít a 1811 1901, biztonsági mentési beállítások megőrzik a titkosítási kulcs. Ajánljuk, hogy a tanúsítvány használata a biztonsági mentési beállításainak frissítése. Titkosítási kulcs támogatása elavult. Tanúsítvány-beállítások frissítése legalább 3 kiadások kell. 
 
 10. Válassza ki **OK** a biztonsági mentés vezérlő beállítások mentéséhez.
 
 ![Az Azure Stack - biztonsági mentést vezérlő beállítások](media/azure-stack-backup/backup-controller-settings-certificate.png)
+
 
 ## <a name="start-backup"></a>Biztonsági mentés indítása
 A biztonsági mentés indításához kattintson a **biztonsági mentés** egy igény szerinti biztonsági mentés elindításához. Egy igény szerinti biztonsági mentés nem módosítják a következő ütemezett biztonsági mentés időpontját. A feladat befejezése után ellenőrizheti a beállítások **Essentials**:
@@ -115,7 +118,7 @@ Az adatok biztonsági másolatának titkosításához használt tanúsítvány f
 ![Az Azure Stack - nézet tanúsítvány ujjlenyomata](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>Visszamenőleges kompatibilitási mód
-Ha konfigurálta a biztonsági mentés 1901 frissítése előtt, a beállítások átkerülnek a a működésében nincs változás. Ebben az esetben titkosítási kulcs támogatott a visszamenőleges kompatibilitás. Lehetősége van a titkosítási kulcs frissítése vagy váltás tanúsítvány használatára. A titkosítási kulcs frissítésének folytatásához három kiadások kell. Hogy való áttérés egy tanúsítványt használja. 
+Ha konfigurálta a biztonsági mentés 1901 frissítése előtt, a beállítások átkerülnek a a működésében nincs változás. Ebben az esetben titkosítási kulcs támogatott a visszamenőleges kompatibilitás. Lehetősége van a titkosítási kulcs frissítése vagy váltás tanúsítvány használatára. A titkosítási kulcs frissítésének folytatásához legalább három kiadások kell. Hogy való áttérés egy tanúsítványt használja. Hozhat létre egy új titkosítási kulcs használatát a [New-AzsEncryptionKeyBase64 parancsmag](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Az Azure Stack - titkosítási kulcs az előző verziókkal való kompatibilitási módban](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

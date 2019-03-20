@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105056"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -58,7 +58,7 @@ Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelke
 
 Ez a probléma alias rekordok használatával kell megoldani. Ellentétben a CNAME-rekordokat alias-rekord zóna felső pontjánál hozható létre, és alkalmazástulajdonosok használhatja a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat.
 
-Például a contoso.com és a www.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
+Ha például a contoso.com és a www\.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
 
 ## <a name="next-steps"></a>További lépések
 

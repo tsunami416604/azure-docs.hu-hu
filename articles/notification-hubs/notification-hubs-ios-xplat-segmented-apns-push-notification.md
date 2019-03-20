@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 8b37f86706e47e3998a4ba85e4416ce1a8a44c22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834217"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése az adott iOS-eszközök Azure Notification Hubs használatával
 
@@ -49,14 +49,14 @@ Az első lépés, hogy a felhasználói felületi elemeket ad hozzá a meglévő
 
 1. Az a **MainStoryboard_iPhone.storyboard** adja hozzá a következő összetevőket az objektumtárból:
 
-    * Egy "Híreket használhatatlanná tévő" szövegű felirat
-    * "A World", "Politika", "Vállalati", "Technológia", "Adatelemzési", "Sport", kategória szövegeket tartalmazó feliratok
-    * Egy kategória, egy hat kapcsolók beállítása minden kapcsoló **állapot** kell **ki** alapértelmezés szerint.
-    * Egy gomb "Subscribe" címkével
+   * Egy "Híreket használhatatlanná tévő" szövegű felirat
+   * "A World", "Politika", "Vállalati", "Technológia", "Adatelemzési", "Sport", kategória szövegeket tartalmazó feliratok
+   * Egy kategória, egy hat kapcsolók beállítása minden kapcsoló **állapot** kell **ki** alapértelmezés szerint.
+   * Egy gomb "Subscribe" címkével
 
-    A storyboard fájlt definiál az alábbihoz hasonlóan kell kinéznie:
+     A storyboard fájlt definiál az alábbihoz hasonlóan kell kinéznie:
 
-    ![Xcode felület jelentéskészítő][3]
+     ![Xcode felület jelentéskészítő][3]
 
 2. A Segéd-szerkesztőben létrehozása tartalomválogatást összes olyan kapcsolón, és hívja meg őket "WorldSwitch", "PoliticsSwitch", "BusinessSwitch", "TechnologySwitch", "ScienceSwitch", "SportsSwitch"
 3. Hozzon létre egy műveletet a nevű gomb `subscribe`; a `ViewController.h` tartalmaznia kell a következő kódot:
@@ -359,11 +359,11 @@ Ebben az oktatóanyagban, értesítéseket küldött az adott iOS-eszközök ál
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
+[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Azure Portal]: https://portal.azure.com
