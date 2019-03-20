@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8caeb6ad79f82ecb86da313cca901cb3a16b6d5c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199869"
 documentType: LandingData
 title: Azure Search-dokumentáció
 metadata:
@@ -57,12 +57,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">A kognitív képességeket tartalmazó REST API-k megismerése</a>
+    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexelés mesterséges intelligenciával (Cognitive Services)</a>
     - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
     - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
     - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
-    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Szinonimák felvétele az egyenértékű kifejezések eredményeinek visszaadásához</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">Automatikus kitöltés hozzáadása keresőmezőhöz .NET-tel</a>
     - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
 - title: Referencia
   items:

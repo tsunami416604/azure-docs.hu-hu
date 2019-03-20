@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a8b9bde79e811805fc692628c2b9d718da8408c8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e9ec024387f635457f6d8f651cf3a8444ce50440
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547350"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226589"
 documentType: LandingData
 title: Az Azure App Configuration (előzetes verzió) dokumentációja
 metadata:
   title: Az Azure App Configuration dokumentációja – oktatóanyagok és API-referencia
-  meta.description: Azure App Configuration is an Azure managed service that helps developers centralize their application configurations simply and securely.
+  meta.description: Azure App Configuration is a managed service that helps developers centralize their application configurations simply and securely.
   services: azure-app-configuration
   author: yegu-ms
   manager: balans
@@ -20,9 +20,9 @@ metadata:
   ms.date: 02/24/2019
   ms.author: yegu
 abstract:
-  description: Az Azure App Configuration egy olyan, Azure által felügyelt szolgáltatás, amely segítségével a fejlesztők egyszerűen és biztonságosan központosíthatják az alkalmazáskonfigurációikat.
+  description: Az Azure App Configuration egy olyan szolgáltatás, amellyel a fejlesztők egyszerűen és biztonságosan központosíthatják az alkalmazáskonfigurációikat.
 sections:
-- title: 5 perces gyors útmutatók
+- title: 5 perces rövid útmutatók
   items:
   - type: paragraph
     text: 'Megtudhatja, hogyan fejlesztheti első webalkalmazását az Azure App Configurationnel:'

@@ -40,6 +40,9 @@ items:
   - name: Tárolási lehetőségek összehasonlítása
     href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
+  - name: Felhasználó által hozzárendelt felügyelt identitások kezelése
+    href: ../hdinsight-managed-identities.md
+    maintainContext: true
 - name: Útmutató
   items:
   - name: Apache Hadoop-tesztkörnyezet használata
@@ -75,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: A .NET SDK használata
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: A Távoli asztal használata
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: A Lekérdezéskonzol használata
-        href: apache-hadoop-use-hive-query-console.md
     - name: Java UDF-használata a Hive-val
       href: apache-hadoop-hive-java-udf.md
     - name: A MapReduce használata az Apache Hadooppal
@@ -159,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: Kapcsolódás az Apache Hive JDBC-illesztővel
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: Tárolt érzékelőadatok elemzése
-      href: apache-hive-analyze-sensor-data.md
     - name: Tárolt tweetek elemzése
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Javaslatok létrehozása az Apache Mahout használatával
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Webhelynaplók elemzése az Apache Hive-val
-      href: apache-hive-analyze-website-log.md
     - name: Application Insights-telemetrianaplók elemzése
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -207,9 +202,6 @@ items:
       maintainContext: true
     - name: A Hue használata
       href: ../hdinsight-hadoop-hue-linux.md
-      maintainContext: true
-    - name: Az Apache Solr használata
-      href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Az Apache Zeppelin használata
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
@@ -321,8 +313,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: HDInsight-fürt méretezése
+    - name: Fürt manuális skálázása
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: Fürtök automatikus skálázása
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: Külső metaadat-tárolók használata
       href: ../hdinsight-use-external-metadata-stores.md
@@ -495,9 +490,6 @@ items:
     - name: Apache Hadoop MapReduce-minták futtatása
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: Az Apache Solr használata fürtökön
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: Az Apache Giraph használata nagyméretű gráfok feldolgozásához
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
@@ -510,26 +502,14 @@ items:
     - name: Az Apache Maven használata Java-alkalmazások létrehozásához
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Testreszabás szkriptműveletekkel
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Apache Hadoop YARN-alkalmazásnaplók elérése
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Filmajánlók létrehozása az Apache Mahout használatával
       href: ../hdinsight-mahout.md
       maintainContext: true
-    - name: Repülőjáratok késési adatainak elemzése
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
     - name: Szkriptműveletek fejlesztése
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Twitter-adatok elemzése
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: Fürtök felügyelete az Azure Portalon
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Fürtök figyelése az Apache Ambari API-val
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -556,9 +536,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c679970484666a6087b33276eb545304a3b2793c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c2272c9ae3b5f26dc1c83b7af5850a44aed6abdc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887029"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224396"
