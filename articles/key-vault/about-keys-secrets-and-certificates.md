@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842566"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -42,7 +42,7 @@ A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titko
 -   [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON webes aláírás (KMH)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON webes aláírás (KMH)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Adattípusok
 
@@ -112,7 +112,7 @@ A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e
 #### <a name="curve-types"></a>Görbe típusok
 
 -   **P-256** -p-256, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** -SECP256K1, meg van határozva az mp-görbe [2 mp-ben: Ajánlott az elliptikus görbe alapú Domain paramétereket](http://www.secg.org/sec2-v2.pdf).
+-   **P-256_K** -SECP256K1, meg van határozva az mp-görbe [2 mp-ben: Ajánlott az elliptikus görbe alapú Domain paramétereket](https://www.secg.org/sec2-v2.pdf).
 -   **P-384** -p-384, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521** -p-521, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -409,10 +409,10 @@ Tanúsítványpartnerek tartalmazhat elérhetőségi adatait a tanúsítvány é
 
 Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítva, majd egy értesítés érkezik a következő események.  
 
--   Igényelje a tanúsítvány
--   Tanúsítványmegújítás figyelmezteti, ha a tanúsítvány megújítása sikeres volt, vagy hiba történt, ha a tanúsítvány manuális megújítás igénylő után.  
+- Igényelje a tanúsítvány
+- Tanúsítványmegújítás figyelmezteti, ha a tanúsítvány megújítása sikeres volt, vagy hiba történt, ha a tanúsítvány manuális megújítás igénylő után.  
 
- A tanúsítási szabályzat, amely manuálisan kell megújítani (csak az e-mailekhez), amikor egy értesítés érkezik, amikor a tanúsítvány megújításához.  
+  A tanúsítási szabályzat, amely manuálisan kell megújítani (csak az e-mailekhez), amikor egy értesítés érkezik, amikor a tanúsítvány megújításához.  
 
 ### <a name="certificate-access-control"></a>Tanúsítvány hozzáférés-vezérlés
 

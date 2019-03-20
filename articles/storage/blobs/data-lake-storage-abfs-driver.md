@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962434"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011071"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): Egy dedikált Azure Storage-illesztőprogram a Hadoophoz
 
@@ -21,7 +21,7 @@ Az egyik az adatok Azure Data Lake Storage Gen2 elsődleges hozzáférési metó
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Előzetes funkció: A Windows Azure Storage-Blob-illesztőprogram
 
-A Windows Azure Storage-Blobba illesztőprogram vagy [WASB illesztőprogram](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) megadott eredeti támogatást biztosít az Azure Blob Storage. Az illesztőprogram végre (mint a Hadoop-fájlrendszer felület által előírt) szemantikáját, hogy az objektum, amely tárolja a stílus felület az Azure Blob Storage által elérhetővé tett leképezés fájlrendszer összetett feladat. Az illesztőprogram továbbra is támogatja a nagy teljesítményű, blobokban tárolt adatokat villámgyors ebben a modellben, de jelentős részét a leképezést, így nehéz végrehajtása kódot tartalmaz. Emellett bizonyos műveleteket, mint például [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) címtárakhoz alkalmazásakor hatalmas számos művelet (mert az objektum tárolók nem végrehajtásához az illesztőprogram megkövetelése könyvtárak támogatása), amely gyakran vezet a teljesítmény csökkenését. A ABFS illesztőprogram úgy lett kialakítva, hogy a WASB rejlő hiányosságait.
+A Windows Azure Storage-Blobba illesztőprogram vagy [WASB illesztőprogram](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) megadott eredeti támogatást biztosít az Azure Blob Storage. Az illesztőprogram végre (mint a Hadoop-fájlrendszer felület által előírt) szemantikáját, hogy az objektum, amely tárolja a stílus felület az Azure Blob Storage által elérhetővé tett leképezés fájlrendszer összetett feladat. Az illesztőprogram továbbra is támogatja a nagy teljesítményű, blobokban tárolt adatokat villámgyors ebben a modellben, de jelentős részét a leképezést, így nehéz végrehajtása kódot tartalmaz. Emellett bizonyos műveleteket, mint például [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) címtárakhoz alkalmazásakor hatalmas számos művelet (mert az objektum tárolók nem végrehajtásához az illesztőprogram megkövetelése könyvtárak támogatása), amely gyakran vezet a teljesítmény csökkenését. A ABFS illesztőprogram úgy lett kialakítva, hogy a WASB rejlő hiányosságait.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Az Azure Blob fájlrendszer illesztőprogramja
 
@@ -52,13 +52,13 @@ A ABFS illesztőprogram hitelesítési két formáját támogatja, így a Hadoop
 
 ### <a name="configuration"></a>Konfiguráció
 
-Minden konfiguráció a ABFS illesztőprogram tárolja a <code>core-site.xml</code> konfigurációs fájlt. Hadoop-disztribúciókon keresőmotorját [Ambari](http://ambari.apache.org/), is felügyelheti a konfigurációt a webes portálon vagy az Ambari REST API használatával.
+Minden konfiguráció a ABFS illesztőprogram tárolja a <code>core-site.xml</code> konfigurációs fájlt. Hadoop-disztribúciókon keresőmotorját [Ambari](https://ambari.apache.org/), is felügyelheti a konfigurációt a webes portálon vagy az Ambari REST API használatával.
 
-Az összes támogatott konfigurációs részletek vannak megadva a [hivatalos Hadoop-dokumentáció](http://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Az összes támogatott konfigurációs részletek vannak megadva a [hivatalos Hadoop-dokumentáció](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
 
 ### <a name="hadoop-documentation"></a>Hadoop-dokumentáció
 
-A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dokumentáció](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)
+A ABFS illesztőprogram teljes leírása itt található a [hivatalos Hadoop-dokumentáció](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)
 
 ## <a name="next-steps"></a>További lépések
 

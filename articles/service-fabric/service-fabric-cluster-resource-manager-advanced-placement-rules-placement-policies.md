@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2858628874dc9955db5084ef5732d85acd6e7fc1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 985d41d3a00974e25c9abc4709c5bf5e662f7a50
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729788"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086037"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A service fabric-szolgáltatások elhelyezési házirendek
 Elhelyezési házirendeket, amelyek segítségével szabályozhatja az egyes konkrét, kevésbé-közös forgatókönyvekben a szolgáltatások elhelyezését további szabályok. Néhány példa, illetve a forgatókönyvek a következők:
@@ -44,6 +44,7 @@ Az alábbi vezérlők a legtöbb csomópont-tulajdonságok és elhelyezési korl
 A **InvalidDomain** elhelyezési házirend lehetővé teszi, hogy egy adott tartalék tartomány érvénytelen adott szolgáltatásokhoz. Ez a házirend biztosítja, hogy egy adott szolgáltatás egy bizonyos területen, például a geopolitikai vagy vállalati házirendek miatt soha ne fusson. Érvénytelen több tartomány segítségével különböző házirendeket lehet megadni.
 
 <center>
+
 ![Érvénytelen tartomány – példa][Image1]
 </center>
 
@@ -64,6 +65,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 A szükséges tartományi elhelyezési házirend megköveteli, hogy megtalálható-e a szolgáltatás csak a megadott tartományban. Több kötelező tartomány különböző házirendeket keresztül adható meg.
 
 <center>
+
 ![Kötelező: Példa][Image2]
 </center>
 
@@ -85,6 +87,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 Az előnyben részesített elsődleges tartomány elhelyezése az elsődleges, a tartalék tartományának megadása. Az elsődleges fejeződik be a tartomány minden kifogástalan esetén. Ha a tartomány vagy az elsődleges replika meghibásodik, vagy leáll, az elsődleges áthelyezi egy másik helyre, ideális ugyanabban a tartományban. Ha az új hely nem előnyben részesített a tartományban, a fürterőforrás-kezelő tér vissza az elsődleges tartomány minél hamarabb. Természetesen ez a beállítás csak értelme az állapotalapú szolgáltatások esetében. Ez a szabályzat akkor a leghasznosabb, amely az Azure-régióban vannak felölelt fürtök, vagy több adatközpont, de a szolgáltatások, amelyek inkább az elhelyezési bizonyos helyen vannak. Elsődleges tartja a felhasználók vagy más szolgáltatások közelében biztosít a kisebb késés, különösen az olvasási, amely alapértelmezés szerint elsődleges kezeli.
 
 <center>
+
 ![Előnyben részesített elsődleges tartományok és feladatátvétel][Image3]
 </center>
 

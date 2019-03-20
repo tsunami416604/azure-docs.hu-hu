@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 046d00eec9fd5a406a1e8bf78e48d4dd913b83fd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870146"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -401,13 +401,13 @@ A fenti folyamat academic és iparági elsajátításához számos módon van me
 
 Ahogyan korábban hangsúlyoztuk, a PdM modell operacionalizálás eltér a társaktól. Rendellenességek észlelése és a hibaészlelés általában érintő forgatókönyvek megvalósítása _online pontozási_ (más néven _valós idejű pontozási_). Itt, a modell _pontszámok_ minden bejövő rekordot, és előrejelzést. A rendellenességek észlelése, az előrejelzési azt jelzi, hogy történt-e egy rendellenességet (például: One-Class SVM). A hibák észlelése a típus vagy hiba az osztály lenne.
 
-Ezzel szemben az magában foglalja a PdM _kötegelt pontozási_. Felelnek meg a modell aláírás, az új adatokat az a funkciók a betanítási adatok az azonos módon fejthetők vissza. Jellemző, az új adatok nagy adatkészleteknél funkciók összesített értéket jelenít meg időt a windows és pontozunk a Batch szolgáltatásban. Kötegelt pontozási általában történik az elosztott rendszerek [Spark](http://spark.apache.org/) vagy [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Van néhány alternatívák - mindkét optimálisnál:
+Ezzel szemben az magában foglalja a PdM _kötegelt pontozási_. Felelnek meg a modell aláírás, az új adatokat az a funkciók a betanítási adatok az azonos módon fejthetők vissza. Jellemző, az új adatok nagy adatkészleteknél funkciók összesített értéket jelenít meg időt a windows és pontozunk a Batch szolgáltatásban. Kötegelt pontozási általában történik az elosztott rendszerek [Spark](https://spark.apache.org/) vagy [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Van néhány alternatívák - mindkét optimálisnál:
 - Streamelési adatmotort támogatja az aggregálást keresztül a windows a memóriában. Így sikerült állították, azok támogatási online pontozási. Azonban ezekben a rendszerekben kiválóan alkalmasak a, vagy a ritka elemek keskeny windows sűrű adatok szélesebb körű windows keresztül. Előfordulhat, hogy nem méretezni őket a sűrű adatok számára is szélesebb körű időtartományok keresztül PdM forgatókönyvek látható módon.
 - Ha a kötegelt pontozás nem érhető el, a megoldás az, kisebb kötegekben új adatok kezelésének egyszerre online pontozási igazítani.
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>A prediktív karbantartási megoldás sablonok
 
-Ez az útmutató az utolsó szakaszában PdM megoldássablonokkal, oktatóanyagok és az Azure-ban megvalósított kísérletek listáját tartalmazza. Ezek az alkalmazások PdM is telepíthető az Azure-előfizetés bizonyos esetekben percen belül. Mint proof-of-concept bemutatókat láthat, próbakörnyezetbe lehetőségeket, vagy tényleges éles megvalósításokhoz gyorsítók kísérletezhet lefordítja használható. Ezek a sablonok találhatók a [Azure AI-katalógusban](http://gallery.azure.ai) vagy [Azure GitHub](https://github.com/Azure). Ezek a különböző minták idővel Ez a megoldássablon be lesz állítva.
+Ez az útmutató az utolsó szakaszában PdM megoldássablonokkal, oktatóanyagok és az Azure-ban megvalósított kísérletek listáját tartalmazza. Ezek az alkalmazások PdM is telepíthető az Azure-előfizetés bizonyos esetekben percen belül. Mint proof-of-concept bemutatókat láthat, próbakörnyezetbe lehetőségeket, vagy tényleges éles megvalósításokhoz gyorsítók kísérletezhet lefordítja használható. Ezek a sablonok találhatók a [Azure AI-katalógusban](https://gallery.azure.ai) vagy [Azure GitHub](https://github.com/Azure). Ezek a különböző minták idővel Ez a megoldássablon be lesz állítva.
 
 | # | Beosztás | Leírás |
 |--:|:------|-------------|
@@ -431,9 +431,9 @@ A Microsoft Azure képzési tervek az alapfogalmakat ismertet, PdM technikák, t
 | [AI-fejlesztés az Azure-ban](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Nyilvános |
 | [A Microsoft AI iskolai](https://aischool.microsoft.com/learning-paths) | Nyilvános |
 | [Az Azure AI-tanulás a Githubról](https://github.com/Azure/connectthedots/blob/master/readme.md) | Nyilvános |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | Nyilvános |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | Nyilvános |
 | [A Microsoft AI YouTube-Webináriumok](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
-| [A Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
+| [A Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partnerek |
 | [A Microsoft Partner Network](https://learningportal.microsoft.com) | Partnerek |
 

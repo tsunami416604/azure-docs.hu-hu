@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 74274d6f901a2c02fb526a9bdce85771a9764f53
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839814"
 ---
-# <a name="view-and-download-your-microsoft-azure-invoice"></a>Megtekintheti, és a Microsoft Azure-számla letöltése
+# <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
 A legtöbb előfizetés esetén töltse le a számla a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy e-mailben küldött nincs. Ha Ön Azure-ügyfelek a nagyvállalati szerződés (EA-ügyfél), nem lehet letölteni a szervezet számlákat. Számlák küldése a személy, aki be van állítva a beléptetési számlákat fogadásához.
 
@@ -32,7 +32,7 @@ Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#Check-your-access-to-a-
 
 ## <a name="download-your-azure-invoices-pdf"></a>Töltse le az Azure-számlák (.pdf)
 
-A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg [számlázási profilok számlák letöltésének](#download-invoices-for-a-billing-profile).
+A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg a letöltési számlázási profilhoz tartozó számlákat.
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Egy adott előfizetéshez tartozó számla letöltése
 
@@ -69,7 +69,7 @@ Ha számla alapján az előző elszámolási időszakban nem látja, tekintse me
 
 ## <a name="get-your-invoice-in-email-pdf"></a>A számla kapni e-mailben (.pdf)
 
-Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el. Ha a Microsoft Customer szerződéssel rendelkezik, tekintse meg [kapni a számlázási profil számlákat e-mailben](#get-your-billing-profile-invoices-in-email).
+Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el. Ha egy Microsoft Customer szerződéssel rendelkezik, tekintse meg a számlázási profilja számlák e-mailt a Get.
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Az előfizetéshez tartozó számlákat kapni e-mailben
 
@@ -89,7 +89,7 @@ Ha a lépések végrehajtása után nem kap egy e-mailt, győződjön meg arról
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Tilthatják le az első az előfizetéshez tartozó számlákat e-mailben
 
-Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **tilthatják le az e-mailben elküldött számlákhoz**. Ez a beállítás eltávolítja minden olyan e-mail-címeket úgy, hogy fogadják a számlákat e-mailben. Amennyiben vissza a címzettek újrakonfigurálhatja az.
+Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **tilthatják le az e-mailben elküldött számlákhoz**. Ez a beállítás eltávolít minden olyan e-mail-címet, amelyre be volt állítva a számlák küldése e-mailben. Amennyiben vissza a címzettek újrakonfigurálhatja az.
 
  ![A letiltási folyamat bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
@@ -129,7 +129,7 @@ Számos oka lehet annak, hogy nem jelenik meg számla:
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,16 +10,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 53c816ee8fa670c8a4dde3212325524a17d25aab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 85113a5007a171459b831684f584773ba4328b94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079946"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Application gateway létrehozása több hely üzemeltetése az Azure portal használatával
 
-Az Azure Portalon való konfigurálásához használható [, több webhely üzemeltetése](application-gateway-multi-site-overview.md) létrehozásakor egy [az application gateway](application-gateway-introduction.md). Ebben az oktatóanyagban háttérkészletek virtuálisgép-méretezési csoportok használatával hoz létre. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
+Az Azure Portalon való konfigurálásához használható [, több webhely üzemeltetése](application-gateway-multi-site-overview.md) létrehozásakor egy [az application gateway](application-gateway-introduction.md). Ebben az oktatóanyagban háttérkészletek virtuálisgép-méretezési csoportok használatával hoz létre. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy a saját több tartományok és felhasználási mintái *www\.contoso.com* és *www\.fabrikam.com*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -46,20 +46,20 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - Az alkalmazásátjáró neve *myAppGateway*.
-    - Az új erőforráscsoport *myResourceGroupAG*.
+   - Az alkalmazásátjáró neve *myAppGateway*.
+   - Az új erőforráscsoport *myResourceGroupAG*.
 
-    ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
+     ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
 4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - A virtuális hálózat neve *myVNet*.
-    - A virtuális hálózat címtere *10.0.0.0/16*.
-    - Az alhálózat neve *myAGSubnet*.
-    - Az alhálózat címtere *10.0.0.0/24*.
+   - A virtuális hálózat neve *myVNet*.
+   - A virtuális hálózat címtere *10.0.0.0/16*.
+   - Az alhálózat neve *myAGSubnet*.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
-    ![Virtuális hálózat létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
@@ -136,11 +136,11 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 1. Kattintson a **figyelői** majd **többhelyes**.
 2. Adja meg a figyelő ezeket az értékeket:
     
-    - *contosoListener* - a figyelő nevét.
-    - *www.contoso.com* -cserélje le a gazdagép neve példa a tartomány nevére.
+   - *contosoListener* - a figyelő nevét.
+   - *www\.contoso.com* -cserélje le a gazdagép neve példa a tartomány nevére.
 
 3. Kattintson az **OK** gombra.
-4. Hozzon létre egy második figyelő neve használatával *fabrikamListener* és használja a második tartomány nevét. Ebben a példában *www.fabrikam.com* szolgál.
+4. Hozzon létre egy második figyelő neve használatával *fabrikamListener* és használja a második tartomány nevét. Ebben a példában *www\.fabrikam.com* szolgál.
 
 A szabályok a felsorolásuk sorrendjében vannak feldolgozva, és a forgalom az első egyező szabály alapján lesz átirányítva, függetlenül annak sajátlagosságától. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
