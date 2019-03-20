@@ -4,16 +4,16 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 8f7eae06947a40117f3952a0a5624c22df750b34
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 926fb3e9a2c09d30da549330842d8b7e185674ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165859"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908455"
 ---
-* A **vCenter hozzáadása** területen adjon meg egy rövid nevet a vSphere-gazdagép vagy a vCenter-kiszolgáló számára, majd adja meg a kiszolgáló IP-címét vagy teljes tartománynevét. A 443-as portot csak akkor módosítsa, ha a VMware-kiszolgálók úgy vannak konfigurálva, hogy más porton figyeljék a kéréseket. Válassza ki a VMware vCenter- vagy vSphere ESXi-kiszolgálóhoz csatlakoztatni kívánt fiókot. Kattintson az **OK** gombra.
+A **vCenter hozzáadása** területen adjon meg egy rövid nevet a vSphere-gazdagép vagy a vCenter-kiszolgáló számára, majd adja meg a kiszolgáló IP-címét vagy teljes tartománynevét. A 443-as portot csak akkor módosítsa, ha a VMware-kiszolgálók úgy vannak konfigurálva, hogy más porton figyeljék a kéréseket. Válassza ki a VMware vCenter- vagy vSphere ESXi-kiszolgálóhoz csatlakoztatni kívánt fiókot. Kattintson az **OK** gombra.
 
     ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)
 
    > [!NOTE]
-   > Ha egy olyan fiókkal adja hozzá a VMware vCenter-kiszolgálót vagy VMware vSphere-gazdagépet, amely nem rendelkezik rendszergazdai jogosultsággal a vCenter- vagy a gazdagép-kiszolgálón, győződjön meg róla, hogy a fiókon engedélyezve vannak a következő jogosultságok: Adatközpont, Adattár, Mappa, Gazdagép, Hálózat, Erőforrás, Virtuális gép és vSphere elosztott kapcsoló. Emellett a VMware vCenter-kiszolgálón engedélyeznie kell a Storage-nézetek jogosultságot.
+   > Ha a VMware vCenter-kiszolgáló vagy a VMware vSphere-gazdagép egy olyan fiókkal, amely nem rendelkezik rendszergazdai jogokkal a vCenter- vagy gazdagép-kiszolgálón, győződjön meg arról, hogy a fiók rendelkezik ezeket a jogosultságokat engedélyezve: Adatközpont, adattár, mappa, gazdagép, hálózati, erőforrás, virtuális gép és vSphere elosztott kapcsoló. Emellett a VMware vCenter-kiszolgálón engedélyeznie kell a Storage-nézetek jogosultságot.

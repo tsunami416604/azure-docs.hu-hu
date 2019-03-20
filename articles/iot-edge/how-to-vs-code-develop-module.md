@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9a7d83070caad86d7d66b62a9592dbb1e0017f97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884239"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -154,7 +154,7 @@ A fejlesztői gépen megkezdheti az IoT Edge szimulátor helyett az IoT Edge biz
 
 1. Előkészítik a környezetét a hibakeresés, a fejlesztői nyelvek követelményeinek megfelelően, állítson be egy töréspontot a modult, és válassza ki a hibakeresési konfigurációt használni:
    - **C#**
-     - A Visual Studio Code integrált terminálon lépjen be a ***&lt;a modulnév&gt;*** mappát, és futtassa a következő parancsot hozhat létre a .net Core-alkalmazás.
+     - A Visual Studio Code integrált terminálon lépjen be a ***&lt;a modulnév&gt;*** mappát, és futtassa a következő parancsot a .NET Core-alkalmazás létrehozásához.
 
        ```cmd
        dotnet build
@@ -165,7 +165,7 @@ A fejlesztői gépen megkezdheti az IoT Edge szimulátor helyett az IoT Edge biz
      - Keresse meg a Visual Studio Code hibakereső nézet kiválasztásával **Nézet > Debug**. Válassza ki a hibakeresési konfigurációt  ***&lt;a modulnév&gt;* helyi hibakeresés (.NET Core)** a legördülő listából.
 
         > [!NOTE]
-        > Ha a .net Core `TargetFramework` replikája nem konzisztens a program elérési útja a `launch.json`, manuálisan frissítheti a program elérési útja a kell `launch.json` megfelelően a `TargetFramework` úgy, hogy a Visual Studio Code sikeresen indíthatják el ezt a .csproj fájlban a program.
+        > Ha a .NET Core `TargetFramework` replikája nem konzisztens a program elérési útja a `launch.json`, manuálisan frissítheti a program elérési útja a kell `launch.json` megfelelően a `TargetFramework` úgy, hogy a Visual Studio Code sikeresen indíthatják el ezt a .csproj fájlban a program.
 
    - **Node.js**
      - A Visual Studio Code integrált terminálon lépjen be a ***&lt;a modulnév&gt;*** mappát, és futtassa a következő parancsot a Node-csomagok telepítéséhez

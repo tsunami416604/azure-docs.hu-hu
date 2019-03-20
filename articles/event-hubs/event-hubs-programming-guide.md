@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ab067d09d1e161e463922eeae90fe3b46e887150
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544290"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835435"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -26,7 +26,6 @@ Eseményeket küldeni egy eseményközpontba, vagy a HTTP POST használatával v
 A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számára történő közzétételére szolgáló elsődleges szerkezetek az [EventHubClient][] és az [EventData][] osztály. [EventHubClient][] biztosít, amelyben az események küldhetők az event hubs AMQP kommunikációs csatornát. A [EventData][] osztály egy eseményt képvisel, és az üzeneteknek az eseményközpontba való közzétételéhez használható. Ez az osztály az esemény törzsét, bizonyos metaadatait és fejléc-információit tartalmazza. Egyéb tulajdonságokkal is bővül, a [EventData][] objektumot, ahogy keresztülhalad az eseményközpontba.
 
 ## <a name="get-started"></a>Bevezetés
-
 A .NET-osztályok támogató az Event Hubs szerepelnek a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet-csomagot. Telepítheti a Visual Studio Solution explorer használatával vagy a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a Visual Studióban. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
 
 ```shell
@@ -99,7 +98,6 @@ Az egy kötegben nem haladhatja meg a 1 Megabájtos korlátot, ha az eseményeke
 Eseményeket küldeni egy eseményközpontba aszinkron módon történik. Az aszinkron küldés növeli az, amikor egy ügyfél az üzenetküldési sebességét. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) adja vissza egy [feladat](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objektum. Használhatja a [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) osztály vezérlő ügyfélnek az ügyfél újrapróbálkozási beállítások megadása.
 
 ## <a name="event-consumers"></a>Eseményfelhasználók
-
 Az [EventProcessorHost][] osztály az eseményközpontokból származó adatokat dolgozza fel. Akkor használja ezt a megvalósítást, ha a .NET platformon hoz létre eseményolvasókat. Az [EventProcessorHost][] egy szálbiztos, több folyamatot lehetővé tevő, biztonságos futtatókörnyezetet biztosít az eseményfeldolgozói megvalósításokhoz, ami lehetővé teszi az ellenőrzőpontok használatát és a partícióbérlés-kezelést is.
 
 Az [EventProcessorHost][] osztály használatához megvalósítható az [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor). Ez az interfész négy metódust tartalmaz:
@@ -110,6 +108,9 @@ Az [EventProcessorHost][] osztály használatához megvalósítható az [IEventP
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
 Az események feldolgozásának indításához példányosítható [EventProcessorHost][], így a megfelelő paramétereket az eseményközpont. Példa:
+
+> [!NOTE]
+> EventProcessorHost és a kapcsolódó osztályok szerepelnek a **Microsoft.Azure.EventHubs.Processor** csomagot. Adja hozzá a csomagot a Visual Studio-projektben található utasításokat követve [Ez a cikk](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package) vagy a következő parancsot a a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablak:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

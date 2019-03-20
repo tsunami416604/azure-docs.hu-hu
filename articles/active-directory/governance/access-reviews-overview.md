@@ -16,12 +16,12 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5fa81e564cf28f8b5478abe9ec5bb63d0f11bd3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845154"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -84,7 +84,7 @@ Ha készen áll a szervezet a hozzáférési felülvizsgálatok üzembe helyezé
 
 A hozzáférési felülvizsgálatok engedélyezéséhez kövesse az alábbi lépéseket.
 
-1. Egy globális rendszergazdai vagy a felhasználóifiók-adminisztrátor, jelentkezzen be a [az Azure portal](https://portal.azure.com) ahol hozzáférés használni kívánt ellenőrzi.
+1. Globális rendszergazda vagy felhasználói rendszergazda, jelentkezzen be a [az Azure portal](https://portal.azure.com) ahol hozzáférés használni kívánt ellenőrzi.
 
 1. Kattintson a **minden szolgáltatás** és keresse meg a hozzáférési felülvizsgálatok szolgáltatás.
 

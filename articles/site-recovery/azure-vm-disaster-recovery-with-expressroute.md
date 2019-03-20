@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087873"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -91,11 +91,11 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
     - **Forrás vNet2**: 10.2.0.0/24.
     - Minden küllő virtuális hálózat csatlakozik **agyi virtuális hálózat**.
 - **Agyi virtuális hálózat**. Van egy agyi virtuális hálózat **forrás agyi virtuális hálózat**: 10.10.10.0/24.
-    - Az agyi virtuális hálózat a forgalomirányító szerepét.
-    - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
- - Hub Vnetet alhálózatokra **. Az agyi virtuális hálózat két alhálózattal rendelkezik:
-     - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
-     - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
+  - Az agyi virtuális hálózat a forgalomirányító szerepét.
+  - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
+    - Hub Vnetet alhálózatokra **. Az agyi virtuális hálózat két alhálózattal rendelkezik:
+    - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
+    - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
 - A helyszíni adatközponthoz egy ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy partner edge Hongkong (KKT) rendelkezik.
 - Minden útválasztás (UDR) Azure útválasztási táblázatban szabályozza.
 - Virtuális hálózat között, vagy a helyszíni adatközpontba minden kimenő forgalom útválasztása az nva-n keresztül történik.

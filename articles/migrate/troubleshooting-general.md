@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730422"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119173"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -53,28 +53,28 @@ Ha nem tudja az értékelési jelentés exportálása a portálról, próbálkoz
 
 1. Telepítés *armclient* a számítógépen (Ha még nincs telepítve):
 
-  a. Egy rendszergazdai parancssort futtassa a következő parancsot: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+   a. Egy rendszergazdai parancssort futtassa a következő parancsot: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-  b. Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```choco install armclient```
+   b. Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```choco install armclient```
 
-2.  A letöltési URL-cím lekérése az Azure Migrate REST API használatával az értékelési jelentéshez tartozó
+2. A letöltési URL-cím lekérése az Azure Migrate REST API használatával az értékelési jelentéshez tartozó
 
-  a.    Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```armclient login```
+   a.    Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```armclient login```
 
-  Ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
+   Ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
 
-  b.    Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
+   b.    Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-       Mintakérelem és kimenet:
+      Mintakérelem és kimenet:
 
-       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-018_12_16_21/downloadUrl?api-version=2018-02-02
-{
-  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+   018_12_16_21/downloadUrl?api-version=2018-02-02
+   {
+   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Másolja az URL-címet a válaszból, és nyissa meg böngészőben az értékelési jelentés letöltése.
 
@@ -97,9 +97,9 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a következő [cikket](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonatérték ellenőrzéséhez. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
 2. Ha továbbra is sikertelen, és a VMware vSphere-ügyfelet használja az OVF telepítéséhez, próbálja meg a vSphere webes ügyfélen keresztül telepíteni. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
 3. Az OVA közvetlenül az ESXi-gazdagép telepítése a következő próbálja vSphere webes ügyféllel, és szeretné telepíteni, a vCenter Server 6.5-ös vagy 6.7, ha az alábbi lépéseket:
-  - Közvetlenül (vCenter-kiszolgáló) helyett az ESXi-gazdagép csatlakozik a webes ügyfél használata (https:// <*gazdagép IP-cím*> /ui)
-  - Lépjen a kezdőlapra > leltár
-  - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
+   - Közvetlenül (vCenter-kiszolgáló) helyett az ESXi-gazdagép csatlakozik a webes ügyfél használata (https:// <*gazdagép IP-cím*> /ui)
+   - Lépjen a kezdőlapra > leltár
+   - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon az ügyfélszolgálathoz az Azure Migrate.
 
 
@@ -301,15 +301,15 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 1. Nyissa meg a böngészőt, és keresse meg, és jelentkezzen be [a Portal](https://portal.azure.com).
 2. Nyomja le az F12 billentyűt a fejlesztői eszközök elindítása. Ha szükséges, törölje a jelet a beállítás **navigációs bejegyzések törlése**.
 3. Kattintson a **hálózati** lapra, és indítsa el a hálózati forgalom rögzítése:
- - Válassza ki a Chrome-ban, **Preserve log**. A rögzítés automatikusan elindul. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha nem jelenik meg, kattintson a fekete körre indítása
- - A Microsoft Edge/IE, a rögzítés automatikusan elindul. Ha nem, kattintson a zöld lejátszás gombra.
+   - Válassza ki a Chrome-ban, **Preserve log**. A rögzítés automatikusan elindul. A piros kör azt jelzi, hogy a forgalom rögzítése folyamatban van. Ha nem jelenik meg, kattintson a fekete körre indítása
+   - A Microsoft Edge/IE, a rögzítés automatikusan elindul. Ha nem, kattintson a zöld lejátszás gombra.
 4. Próbálja meg reprodukálni a hibát.
 5. Korábban észlelt rögzítése közben a hiba, miután Rögzítés leállítása, és mentse a rögzített tevékenység másolatát:
- - A Chrome-ban, kattintson a jobb gombbal, és kattintson a **Mentés másként HAR tartalommal**. Ez zips alkalmazást, és exportálja a naplók .har fájl.
- - A Microsoft Edge/IE, kattintson a **exportálási rögzített forgalom** ikonra. Ez tömörít, és exportálja a naplót.
+   - A Chrome-ban, kattintson a jobb gombbal, és kattintson a **Mentés másként HAR tartalommal**. Ez zips alkalmazást, és exportálja a naplók .har fájl.
+   - A Microsoft Edge/IE, kattintson a **exportálási rögzített forgalom** ikonra. Ez tömörít, és exportálja a naplót.
 6. Keresse meg a **konzol** lapot, és ellenőrizze az összes figyelmeztetést és hibát. A konzol naplófájljának mentése:
- - A Chrome-ban kattintson a jobb gombbal bárhol a konzol naplóban. Válassza ki **Mentés másként**, hogy az exportálás és a napló zip.
- - A Microsoft Edge/IE, kattintson a jobb gombbal a hibákat, és válassza **másolhatja az összes**.
+   - A Chrome-ban kattintson a jobb gombbal bárhol a konzol naplóban. Válassza ki **Mentés másként**, hogy az exportálás és a napló zip.
+   - A Microsoft Edge/IE, kattintson a jobb gombbal a hibákat, és válassza **másolhatja az összes**.
 7. Zárja be a fejlesztői eszközöket.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Gyűjtő hibakódok és ajánlott műveletek

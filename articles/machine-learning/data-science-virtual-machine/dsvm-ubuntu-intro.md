@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 206e50107e52d631cb33b7cb8dcc03474dd27e64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456414"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884676"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
 Az adatelemző virtuális gép Linux Ubuntu-alapú virtuálisgép-lemezkép, amely megkönnyíti a machine learninggel, többek között a deep learning, az Azure-ban – első lépések. Deep learning eszközök a következők:
 
-  * [Caffe](http://caffe.berkeleyvision.org/): Gyorsabb, expressivity és modularitás készült deep learning keretrendszer
+  * [Caffe](https://caffe.berkeleyvision.org/): Gyorsabb, expressivity és modularitás készült deep learning keretrendszer
   * [Caffe2](https://github.com/caffe2/caffe2): A Caffe többplatformos verziója
   * [A Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): A Microsoft Research szoftver eszközkészlet mélytanulási
   * [H2O](https://www.h2o.ai/): Egy nyílt forráskódú big data platform és a grafikus felhasználói felületen
   * [Keras](https://keras.io/): Egy magas szintű Neurális hálózat API TensorFlow, a Microsoft Cognitive Toolkit és Theano pythonban
-  * [MXNet](http://mxnet.io/): Egy rugalmas, hatékony deep learning-kódtár számos nyelvi kötéseket az
+  * [MXNet](https://mxnet.io/): Egy rugalmas, hatékony deep learning-kódtár számos nyelvi kötéseket az
   * [NVIDIA SZÁMJEGYEK](https://developer.nvidia.com/digits): Egy grafikus rendszer, amely leegyszerűsíti az általános mélytanulási feladatok
-  * [PyTorch](http://pytorch.org/): Egy magas szintű Python-kódtár dinamikus hálózatok támogatása
+  * [PyTorch](https://pytorch.org/): Egy magas szintű Python-kódtár dinamikus hálózatok támogatása
   * [TensorFlow](https://www.tensorflow.org/): Egy nyílt forráskódú kódtár, a Google rendszeréből gépi intelligenciával
   * [Theano](http://deeplearning.net/software/theano/): Egy Python-kódtár a meghatározása, optimalizálás, és hatékonyan a többdimenziós tömbök tartalmazó matematikai kifejezések kiértékelése
   * [Torch](http://torch.ch/): Széles körű támogatásával, gépi tanulási algoritmusok tudományos számítási keretrendszer
@@ -120,7 +120,7 @@ Az Ubuntu DSVM három módszerrel érhető el:
 
 ### <a name="ssh"></a>SSH
 
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](http://www.putty.org)). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](https://www.putty.org)). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint továbbítási tesztelés X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
@@ -130,7 +130,7 @@ Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A f
 ### <a name="x2go"></a>X2Go
 A Linux rendszerű virtuális gép már kiépített X2Go kiszolgálóval, és készen áll kapcsolatok fogadására. Ha csatlakozni szeretne a Linuxos virtuális gép grafikus asztali, az alábbi eljárással az ügyfélen:
 
-1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Futtassa a X2Go ügyfél, és válassza a **új munkamenet**. Több lap egy konfigurációs ablaka nyílik. Adja meg az alábbi konfigurációs paramétereket:
    * **Munkamenet lapon**:
      * **Gazdagép**: A gazdagép neve vagy a Linux rendszerű adatelemző virtuális gép IP-címét.
@@ -205,7 +205,7 @@ Az R a legnépszerűbb nyelvek adatok elemzési és gépi tanulás. Ha szeretné
 
 Az R modul indításához konzolon, egyszerűen írja be **R** a rendszerhéj. Ekkor megjelenik egy interaktív környezetet. Az R-program fejlesztéséhez, általában egy szerkesztővel például Emacs vagy vi, és futtassa az r parancsfájlok Az RStudio hogy egy teljes grafikus IDE környezet az R-programot fejlesszen.
 
-Emellett van egy R-szkriptet, hogy telepítse a [felső 20 R-csomagok](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) Ha azt szeretné. Ez a szkript futtatása után lehetséges a R interaktív felület, amely lehet megadni (ahogy említettük) írja be a **R** a rendszerhéj.  
+Emellett van egy R-szkriptet, hogy telepítse a [felső 20 R-csomagok](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) Ha azt szeretné. Ez a szkript futtatása után lehetséges a R interaktív felület, amely lehet megadni (ahogy említettük) írja be a **R** a rendszerhéj.  
 
 ### <a name="python"></a>Python
 Anaconda Python a Python 2.7-es és 3.5-ös környezetben van telepítve. A 2.7-es környezetben nevezzük _legfelső szintű_, és a 3.5-ös környezetben nevezzük _py35_. Ehhez a terjesztéshez körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python tartalmazza. 
@@ -276,7 +276,7 @@ Mielőtt futtatná a Microsoft R Server Spark-környezetben, kell tennie a telep
 ### <a name="ides-and-editors"></a>Ide-ket és a szerkesztőknek
 Van néhány kódot szerkesztők közül választhat. Ez magában foglalja a vi vagy VIM Emacs, Notebookshoz, az RStudio és IntelliJ. Intellij-vel, az RStudio és a PyCharm grafikus szerkesztők, és meg kell adnia használhatja őket a grafikus asztali bejelentkezett. Ezek a szerkesztők rendelkezik, asztali és az alkalmazás menüből parancsikonokat indíthassák el azokat.
 
-**VIM** és **Emacs** szöveges szerkesztők vannak. Emacs, a-bővítménycsomagot Emacs beszél statisztika (cím), amely megkönnyíti az R használata belül a Emacs szerkesztő nevű telepítette azt. További információ található [REJTÉSE](http://ess.r-project.org/).
+**VIM** és **Emacs** szöveges szerkesztők vannak. Emacs, a-bővítménycsomagot Emacs beszél statisztika (cím), amely megkönnyíti az R használata belül a Emacs szerkesztő nevű telepítette azt. További információ található [REJTÉSE](https://ess.r-project.org/).
 
 **LaTex** a texlive package és a egy Emacs bővítmény keresztül van telepítve, [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) csomagot, amely egyszerűbbé teszi a szerzői műveletek a Emacs LaTex dokumentumokon.  
 

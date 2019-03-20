@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fe4134d322c87c199f24cbd7966a8d6fca7256d9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538867"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852491"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Egyéni összetevők és a Resource Manager-sablonok tárolása a Git-adattár hozzáadása
 
@@ -30,7 +30,7 @@ Biztosítunk egy [GitHub-adattár az összetevők](https://github.com/Azure/azur
 Amikor létrehoz egy virtuális Gépet, a Resource Manager-sablon mentése, testre szabni, ha szeretné, és, amellyel később további virtuális gépeket hozhat létre. Létre kell hoznia a saját privát tárházban az egyéni Resource Manager-sablonok.  
 
 * Ismerje meg, hogyan hozhat létre egy GitHub-adattárból, lásd: [GitHub alapképzés](https://help.github.com/categories/bootcamp/).
-* Ismerje meg, hogyan hozhat létre, amely rendelkezik egy Git-tárházat az Azure DevOps-szolgáltatásokkal projekt, lásd: [csatlakozhat az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
+* Ismerje meg, hogyan hozhat létre az Azure DevOps-szolgáltatásokkal projekt, amely rendelkezik egy Git-tárház, lásd: [csatlakozhat az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
 Az alábbi ábra egy példát, hogyan nézhet ki egy adattár, amely rendelkezik az összetevők a GitHub:  
 
@@ -78,13 +78,13 @@ A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat a
 
     ![Adattár hozzáadása gombbal](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. A második **Tárházak** csoportjában adja meg a következő információkat:
-  1. **Név**. Adja meg a tárház nevét.
-  2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
-  3. **Ág**. A definíciók lekéréséhez adja meg az ágat.
-  4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
-  5. **Mappa elérési útjának**. Adjon meg legalább egy mappa elérési útja a clone URL-cím, amely tartalmazza az összetevő vagy a Resource Manager-sablon definíciók viszonyítva. Alkönyvtár megadásakor ellenőrizze, hogy a perjel szerepel a mappa elérési útját.
+   1. **Név**. Adja meg a tárház nevét.
+   2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
+   3. **Ág**. A definíciók lekéréséhez adja meg az ágat.
+   4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
+   5. **Mappa elérési útjának**. Adjon meg legalább egy mappa elérési útja a clone URL-cím, amely tartalmazza az összetevő vagy a Resource Manager-sablon definíciók viszonyítva. Alkönyvtár megadásakor ellenőrizze, hogy a perjel szerepel a mappa elérési útját.
 
-     ![Tárházak terület](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+      ![Tárházak terület](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Kattintson a **Mentés** gombra.
 
 ### <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések

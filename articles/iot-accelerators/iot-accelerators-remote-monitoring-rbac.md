@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 08/06/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180755"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító a szerepköralapú hozzáférés-vezérlés konfigurálása
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti a szerepköralapú hozzáférés-vezérlés konfigurálása 
 
 ## <a name="default-settings"></a>Alapértelmezett beállítások
 
-Ha először telepíti a távoli figyelési megoldás, vannak-e két szerepkör: **rendszergazdai** és **csak olvasható**.
+Ha először telepíti a távoli figyelési megoldás, olyan két szerepkör is létezik: **Rendszergazdai** és **csak olvasható**.
 
 A felhasználói a **rendszergazdai** szerepkör a megoldáshoz, többek között a következő engedélyeket az alábbi teljes hozzáféréssel rendelkezik. A felhasználó a **csak olvasható** szerepkör csak lesz hozzáférése a megoldás megtekintéséhez.
 

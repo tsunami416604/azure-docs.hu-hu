@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: be2eee7e9951ac1975adfacc63d982a4fb4eabbd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 94686d62e8019bfc5dba1ccd4a00142512930c0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782428"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Az Azure Active Directory-integráció Periscope adatokkal
 
@@ -105,6 +105,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Periscope adatokkal, h
     ![Periscope adatok tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
     a. Az a **bejelentkezési URL-cím** szöveg írja be az URL-címek valamelyikét:
+    
     | |
     |--|
     | `https://app.periscopedata.com/` |
@@ -165,7 +166,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -218,7 +219,7 @@ Ahhoz, hogy jelentkezzen be a Periscope-adatokat az Azure AD-felhasználók, akk
 
     b. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
 
-    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
+    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
 
     d. Kattintson a **hozzáadása**.
 

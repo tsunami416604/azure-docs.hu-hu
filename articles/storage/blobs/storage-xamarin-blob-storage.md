@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: cac889b83bb0e7a7aab12ff4097556abf60663b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b9c707dcc1628f685661f88aaed29612465a5469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010069"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>A Xamarin Blob Storage használata
 
@@ -168,7 +168,7 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
@@ -231,7 +231,7 @@ namespace XamarinApp.WinPhone
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 Most már futtathatja az alkalmazás egy Android vagy Windows Phone-emulátoron. Ez az alkalmazás egy iOS-emulátorban is futtathatja, de ehhez az szükséges, Mac Az információk arra vonatkozóan, hogyan teheti ezt, kérjük, olvassa el a dokumentációban [egy Mac számítógéphez való csatlakoztatásával a Visual Studio](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-Az alkalmazás futtatása után, hozza létre a tároló `mycontainer` a Storage-fiókban. Tartalmaznia kell a blob `myblob`, a szöveg, amelynek `Hello, world!`. Ennek segítségével ellenőrizheti a [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Az alkalmazás futtatása után, hozza létre a tároló `mycontainer` a Storage-fiókban. Tartalmaznia kell a blob `myblob`, a szöveg, amelynek `Hello, world!`. Ennek segítségével ellenőrizheti a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, hogyan az Azure Storage, Blob Storage-ban egy forgatókönyv kifejezetten összpontosító használó Xamarin többplatformos alkalmazások létrehozásához. Azonban megteheti sokkal nem csak Blob Storage-tárolókat, hanem a Table, File és Queue Storage. Tekintse meg a további a következő cikkeket:

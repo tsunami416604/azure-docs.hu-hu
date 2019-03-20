@@ -11,18 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062655"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009372"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre és telepíthet a Time Series Insights-erőforrások Azure Resource Manager-sablonok, a PowerShell és a Time Series Insights erőforrás-szolgáltató.
 
 A Time Series Insights támogatja az alábbi forrásanyagokat:
+
    | Erőforrás | Leírás |
    | --- | --- |
    | Környezet | Egy Time Series Insights-környezet logikus csoportosításai események, amelyek eseményszervezőként olvasni, tárolja, és elérhetővé vált a lekérdezést. További információ: [az Azure Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md) |
@@ -65,7 +66,7 @@ Hozzon létre egy paramétereket tartalmazó fájlt, másolja át a [201-timeser
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "eventHubNamespaceName": {
@@ -116,7 +117,7 @@ Tegyük fel a következő paramétereket tartalmazó fájlt szeretne használhat
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "eventHubNamespaceName": {
@@ -268,7 +269,7 @@ Outputs                 :
 A gyorsindítási sablon kezdőlapja a GitHub is tartalmaz egy **üzembe helyezés az Azure** gombra. Egy egyéni üzembe helyezés lap kattint, megnyílik az Azure Portalon. Ezen az oldalon adja meg vagy válassza ki az értékeket minden, a paraméterek a [szükséges paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) vagy [választható paraméterek](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) táblákat. A beállítások gombra kattintva mezőinek kitöltése után a **beszerzési** gombra a sablon telepítése megkezdődik.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>További lépések

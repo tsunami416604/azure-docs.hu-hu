@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994338"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -38,29 +38,44 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Az Azure Monitor-adatszolgáltató: diagnosztikai és Tevékenységnaplók
 
-Megtekintheti, és megismerheti az Azure Monitor diagnosztikai és a tevékenység naplók által megadott adatok. Az Adatbetöltési folyamat ezen adatsémák alapján hozunk létre.
+Megtekintheti, és megismerheti az adatokat az Azure Monitor diagnosztikai és a tevékenység naplók az alábbi által biztosított. Az Adatbetöltési folyamat ezen adatsémák alapján hozunk létre. Ne feledje, hogy a napló minden egyes esemény egy rekordokból álló tömbbel. A rekordokból álló tömbbel szét lesznek osztva az oktatóanyag későbbi részében.
 
 ### <a name="diagnostic-logs-example"></a>A példában a diagnosztikai naplók
 
-Az Azure diagnosztikai naplók az Azure-szolgáltatások által kibocsátott metrikák, a művelet az adott szolgáltatás vonatkozó adatokkal szolgálnak. Adatok és a egy 1 perces időfelbontási összesítve. A diagnosztikai naplóban szereplő minden egyes esemény egy bejegyzést tartalmaz. Íme egy példa egy Azure Data Explorer metrika eseménysémája meg lekérdezések időtartama:
+Az Azure diagnosztikai naplók az Azure-szolgáltatások által kibocsátott metrikák, a művelet az adott szolgáltatás vonatkozó adatokkal szolgálnak. Adatok és a egy 1 perces időfelbontási összesítve. Íme egy példa egy Azure Data Explorer metrika eseménysémája meg lekérdezések időtartama:
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>Tevékenység naplók példa
 
-Azure-Tevékenységnaplók olyan előfizetési szintű naplók, amelyek tartalmazzák a rekordok gyűjteményei. A naplók nyújtanak az előfizetéséhez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. Diagnosztikai naplókkal ellentétben egy tevékenységnapló szereplő minden esemény van egy rekordokból álló tömbbel. Meg kell osztani a rekordokból álló tömböt, az oktatóanyag későbbi részében. Íme egy példa egy tevékenységnapló eseményt hozzáférés ellenőrzése:
+Azure-Tevékenységnaplók olyan előfizetési szintű naplók az előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk találhatók meg. Íme egy példa egy tevékenységnapló eseményt hozzáférés ellenőrzése:
 
 ```json
 {
@@ -129,6 +144,8 @@ Az Azure Data Explorer *TestDatabase* adatbázisra, válassza **lekérdezés** a
 
 ### <a name="create-the-target-tables"></a>A céloldali tábla létrehozásához
 
+Az Azure Monitor naplóira szerkezete nem táblázatos. Az adatok módosítását, és bontsa ki minden egyes esemény egy vagy több rekordot. A nyers adatokat fog kell egy köztes nevű táblát betöltött *ActivityLogsRawRecords* tevékenységi naplóit, és *DiagnosticLogsRawRecords* a diagnosztikai naplók számára. Ugyanakkor az adatok kezelhetők és kibontva. Egy frissítési szabályzatot használja, a kibontott adatok lesz majd kell betöltődnek az *ActivityLogsRecords* tábla tevékenységi naplóit, és *DiagnosticLogsRecords* a diagnosztikai naplók számára. Ez azt jelenti, hogy kell két külön táblák létrehozása a fürtjét a tevékenységnaplókat, és a fürtjét a diagnosztikai naplók két külön táblákban.
+
 Az Azure Data Explorer webes felhasználói felülete segítségével a cél táblák létrehozása az Azure Data Explorer adatbázisban.
 
 #### <a name="the-diagnostic-logs-table"></a>A diagnosztikai naplók tábla
@@ -143,9 +160,13 @@ Az Azure Data Explorer webes felhasználói felülete segítségével a cél tá
 
     ![A lekérdezés futtatása](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>A Tevékenységnaplók táblák
+1. A köztes adatok nevű táblát hozzon létre *DiagnosticLogsRawRecords* a a *TestDatabase* adatkezelés, használja a következő lekérdezést az adatbázist. Válassza ki **futtatása** a tábla létrehozásához.
 
-Tevékenységeket tartalmazó naplók a struktúra nem táblázatos, mert szüksége lesz az adatok feldolgozására, és bontsa ki minden egyes esemény egy vagy több rekordot. A nyers adatokat fog kell egy köztes nevű táblát betöltött *ActivityLogsRawRecords*. Ugyanakkor az adatok kezelhetők és kibontva. A kibontott adatok be majd lesz töltve a *ActivityLogsRecords* tábla egy frissítési szabályzattal. Ez azt jelenti, hogy kell két külön táblák létrehozása a tevékenységnaplókat tölt.
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>A Tevékenységnaplók táblák
 
 1. Hozzon létre egy táblát nevű *ActivityLogsRecords* a a *TestDatabase* adatbázis tevékenység naplórekordok fogadásához. A tábla létrehozásához futtassa a következő Azure adatkezelő lekérdezés:
 
@@ -174,7 +195,7 @@ Tevékenységeket tartalmazó naplók a struktúra nem táblázatos, mert szüks
 A diagnosztikai naplók adatok leképezése a táblában, használja a következő lekérdezést:
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>A következő tevékenységeket tartalmazó naplók tábla hozzárendelése
@@ -185,9 +206,11 @@ A vizsgálati naplók adatok leképezése a táblában, használja a következő
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>A vizsgálati naplók adatok frissítési szabályzat létrehozása
+### <a name="create-the-update-policy-for-log-data"></a>Naplóadatok a frissítési szabályzat létrehozása
 
-1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibontja a rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+#### <a name="activity-log-data-update-policy"></a>Tevékenységnapló adatainak szabályzat frissítése
+
+1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a tevékenység log-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ A vizsgálati naplók adatok leképezése a táblában, használja a következő
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>Diagnosztikai naplóadatokat szabályzat frissítése
+
+1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a diagnosztikai napló-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. Adja hozzá a [szabályzat frissítése](/azure/kusto/concepts/updatepolicy) céltáblába. Ez a szabályzat automatikusan az a lekérdezés futtatása az újonnan betöltött adatokat a *DiagnosticLogsRawRecords* köztes adatok táblát, és az eredmények betöltési a *DiagnosticLogsRecords* tábla:
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Az Azure Event Hubs-névtér létrehozása
@@ -252,12 +301,12 @@ Válasszon ki egy erőforrást, ahonnan a metrikák exportálása. Többféle er
     ![Diagnosztikai beállítások](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. A **diagnosztikai beállítások** panel nyílik meg. Az alábbi lépéseket:
-    1. Adjon a diagnosztikai naplóadatokat neve *ADXExportedData*.
-    1. A **METRIKA**, jelölje be a **AllMetrics** (nem kötelező) jelölőnégyzetet.
-    1. Válassza ki a **Stream egy eseményközpontba** jelölőnégyzetet.
-    1. Válassza ki **konfigurálása**.
+   1. Adjon a diagnosztikai naplóadatokat neve *ADXExportedData*.
+   1. A **METRIKA**, jelölje be a **AllMetrics** (nem kötelező) jelölőnégyzetet.
+   1. Válassza ki a **Stream egy eseményközpontba** jelölőnégyzetet.
+   1. Válassza ki **konfigurálása**.
 
-    ![Diagnosztikai beállítások panel](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Diagnosztikai beállítások panel](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. Az a **válassza ki az eseményközpont** ablaktáblán adatainak exportálása a diagnosztikai naplók az event hubs létrehozott konfigurálása:
     1. Az a **eseményközpont névterének kijelölése** listájáról válassza ki a *AzureMonitoringData*.
@@ -330,7 +379,7 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Tábla** | *DiagnosticLogsRecords* | A létrehozott tábla a *TestDatabase* adatbázis. |
+    | **Tábla** | *DiagnosticLogsRawRecords* | A létrehozott tábla a *TestDatabase* adatbázis. |
     | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
     | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *TestDatabase* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRecords* tábla.|
     | | |
@@ -400,6 +449,7 @@ ActivityLogsRecords
 ```
 
 Lekérdezés eredményei:
+
 |   |   |
 | --- | --- |
 |   |  avg(DurationMs) |

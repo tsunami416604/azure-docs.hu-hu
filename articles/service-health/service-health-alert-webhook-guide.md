@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 898f2eca0b6cc115f56bcae195c58c6eef190694
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838069"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Meglévő problémát felügyeleti rendszerek egy webhook használatával állapotára vonatkozó értesítések konfigurálása
 
@@ -59,7 +59,7 @@ A legmagasabb súlyossági legalacsonyabb súlyosságot a `level` az adattartalo
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Az érintett szolgáltatások teljes körét az incidens megértéséhez-elemzés
 Service health-riasztások segítségével azonosítható, hogy problémák több régióban és szolgáltatásokat. A teljes információért értékét elemezni kell `impactedServices`.
-A tartalom belül egy [JSON-feloldójelekkel](http://json.org/) string, amikor unescaped, tartalmaz egy másik JSON-objektum, amely rendszeresen elemzi.
+A tartalom belül egy [JSON-feloldójelekkel](https://json.org/) string, amikor unescaped, tartalmaz egy másik JSON-objektum, amely rendszeresen elemzi.
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}

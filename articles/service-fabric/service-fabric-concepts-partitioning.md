@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 492afcdd5143aa5a6597ba8c296d15059f9c7d64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852748"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
 Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása alapvető fogalmait. A cikkben használt forráskódja is elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -113,7 +113,7 @@ Fontos része annak a kivonatolás kijelölése a kivonatoló algoritmus. Veszi 
 
 Egy jó kivonatoló algoritmusa mutatókat, hogy könnyen kiszámítása, van néhány ütközések, és egyenlően osztja el a kulcsokat. Egy hatékony kivonatoló algoritmus jó példa a [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) kivonatoló algoritmust.
 
-A leghasznosabb általános kivonatoló kódot algoritmus választásokhoz van a [Wikipédia-oldal kivonatoló függvényeket a](http://en.wikipedia.org/wiki/Hash_function).
+A leghasznosabb általános kivonatoló kódot algoritmus választásokhoz van a [Wikipédia-oldal kivonatoló függvényeket a](https://en.wikipedia.org/wiki/Hash_function).
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>Több partíciót az állapotalapú szolgáltatás készítése
 Hozzuk létre az első megbízható állapotalapú szolgáltatás több partícióval. Ebben a példában egy nagyon egyszerű alkalmazás, hol szeretné tárolni a ugyanazon a partíción ugyanazon betűvel kezdődő összes Vezetéknév fog létrehozni.

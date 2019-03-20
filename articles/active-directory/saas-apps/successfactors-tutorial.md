@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bc0c801feb787861af480c60af4345103f5325
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781782"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57846922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SuccessFactors
 
@@ -106,6 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
     ![SuccessFactors tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier-reply.png)
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -114,6 +115,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
     | `https://<companyname>.sapsf.eu`|
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | |
     |--|
     | `https://www.successfactors.com/<companyname>`|
@@ -127,6 +129,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SuccessFactors, hajt
     | `https://www.successfactors.cn/<companyname>`|
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -242,7 +245,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

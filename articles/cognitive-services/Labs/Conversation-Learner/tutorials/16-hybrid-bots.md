@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219362"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117438"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Beszélgetéstanuló használata más bot technológiák létrehozásához
 
@@ -119,11 +119,11 @@ Egyetlen beszélgetés Leaner modell robotokat eltérően azonosra, csak láthat
 2. Adja meg a "hello".  Mivel `isOpen` érték nincs megadva, a bot tudatja Önnel "Vagyok Sajnáljuk, hogy már lezárt" és a munkamenet befejezéséhez.
 
 #### <a name="scenario-2-store-is-open"></a>2. forgatókönyv: Store nyitva.
-3. Adja meg a "áruház megnyitásához".  Ez a `isOpen` igaz értékre.
-4. Adja meg a "üzemi".
-5. Adja meg a "hello".  Mivel `isOpen` értéke igaz, a bot jelenik meg: "Mi szeretne vásárolni?"
-6. Adja meg a "vezeti. "chair" menti a rendszer CL memóriába a entitásként `purchaseItem`. A teljes munkamenet visszahívás meghívásainak ezt az értéket másolja a beszélgetés áruházra mutató.
-7. Adja meg a "előzményei".  A robot meg fog jelenni "Vásárolta chair", ez volt az előző `purchaseItem`.
+1. Adja meg a "áruház megnyitásához".  Ez a `isOpen` igaz értékre.
+1. Adja meg a "üzemi".
+1. Adja meg a "hello".  Mivel `isOpen` értéke igaz, a bot jelenik meg: "Mi szeretne vásárolni?"
+1. Adja meg a "vezeti. "chair" menti a rendszer CL memóriába a entitásként `purchaseItem`. A teljes munkamenet visszahívás meghívásainak ezt az értéket másolja a beszélgetés áruházra mutató.
+1. Adja meg a "előzményei".  A robot meg fog jelenni "Vásárolta chair", ez volt az előző `purchaseItem`.
 
 ## <a name="conclusion"></a>Összegzés
 

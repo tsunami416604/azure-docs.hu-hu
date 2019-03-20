@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: dwgeo
-ms.openlocfilehash: b4bcc1bbed732e09f4c4d915342a422ce6c36901
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6fc13010d5dd888f28b5634b1f70aaa3326e54cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002071"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837507"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek jogkivonatok átadása az Azure Media Services kulcskézbesítési szolgáltatásba
 Ügyfeleink gyakran kérdezik, hogyan játékos is jogkivonatok átadása ellenőrzése az Azure Media Services kulcskézbesítési szolgáltatáshoz, a Windows Media player szerezheti be a kulcsot. A Media Services a simple web Tokens (SWT) és a JSON webes jogkivonat (JWT) formátumokat támogatja. Jogkivonat-hitelesítés bármilyen típusú kulcsot, függetlenül attól, hogy használja vagy közös Advanced Encryption Standard (AES) boríték-titkosítást a rendszer alkalmazza a rendszer.
@@ -29,7 +29,7 @@ ms.locfileid: "56002071"
 
 - – A HTTP-engedélyeztetési fejléc.
     > [!NOTE]
-    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](http://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)**. A token via az engedélyezési fejléc lett átadva.
+    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](https://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)**. A token via az engedélyezési fejléc lett átadva.
 
 - Egy URL-cím hozzáadása keresztül lekérdezési paraméter "token = tokenvalue."  
     > [!NOTE]

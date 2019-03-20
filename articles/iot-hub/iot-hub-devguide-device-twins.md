@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4cbb8e389f403aeb149998acc21956ebce40be78
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 4ad75a7ba4e2f6060824f3cf1c87a42f8fa32843
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011500"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113138"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Megismerheti és ikereszközök használata az IoT hubban
 
@@ -180,44 +180,44 @@ A megoldás háttérrendszere az ikereszközök használatával a következő at
 
 * **Ikereszköz-értesítések fogadása**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere az ikereszköz módosításakor értesülni kívánnak. Ehhez az IoT-megoldás van szüksége, hozzon létre egy útvonalat és beállíthatja az adatforrás egyenlő *twinChangeEvents*. Alapértelmezés szerint nincs ilyen útvonal előre létezik, ezért nem ikereszköz értesítések lesznek küldve. Ha túl magas a változási gyakoriság, vagy más okból, például a belső hibákat, az IoT Hub küldhet csak egy értesítést, amely tartalmazza az összes módosítást. Ezért ha az alkalmazásnak megbízható vizsgálati és naplózási összes köztes állapotok, használjon eszköz – felhő üzeneteket. Ikereszköz üzenet tulajdonságait és a törzs tartalmaz.
 
-   - Tulajdonságok
+  - Tulajdonságok
 
-   | Name (Név) | Érték |
-   | --- | --- |
-   $content-type | application/json |
-   $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
-   $iothub-message-source | twinChangeEvents |
-   $content-encoding | utf-8 |
-   deviceId | Az eszköz azonosítója |
-   HubName | Name of IoT Hub |
-   operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyegző-művelet |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | "replaceTwin" vagy "updateTwin" |
+    | Name (Név) | Érték |
+    | --- | --- |
+    $content-type | application/json |
+    $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
+    deviceId | Az eszköz azonosítója |
+    HubName | Name of IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyegző-művelet |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" vagy "updateTwin" |
 
-   Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szimbólum.
+    Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szimbólum.
 
-   - Törzs
+  - Törzs
         
-   Ebben a szakaszban egy JSON-formátumban ikereszköz módosításokat tartalmazza. Ugyanazt a formátumot használja a javítások, azzal a különbséggel, hogy minden ikereszköz szakasz tartalmazhat: címkék, properties.reported, properties.desired és, hogy a "$metadata" elemeket tartalmazza. Például:
+    Ebben a szakaszban egy JSON-formátumban ikereszköz módosításokat tartalmazza. Ugyanazt a formátumot használja a javítások, azzal a különbséggel, hogy minden ikereszköz szakasz tartalmazhat: címkék, properties.reported, properties.desired és, hogy a "$metadata" elemeket tartalmazza. Például:
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 A fenti műveletek támogatásához [optimista egyidejűséget](iot-hub-devguide-device-twins.md#optimistic-concurrency) és szükséges a **ServiceConnect** engedéllyel, ahogyan az az [férhet hozzá az IoT Hub](iot-hub-devguide-security.md).
 

@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079162"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>A figyelő és az Azure Application Insights alkalmazásállapot-riasztás
 
@@ -69,18 +69,18 @@ Az Application Insights rendelkezésre állási tesztek automatikusan tesztelhet
 ## <a name="create-an-alert-from-metrics"></a>Hozzon létre egy riasztást a metrikák
 Mellett küldhetők értesítések a rendelkezésre állási teszt, létrehozhat egy riasztást bármely alatt gyűjtött teljesítmény-mérőszámok az alkalmazáshoz.
 
-2. Válassza ki **riasztások** származó a **konfigurálása** menü.  Ekkor megnyílik az Azure Alerts panel.  Előfordulhat, hogy más riasztási szabályok az itt konfigurált más szolgáltatásokhoz.
-3. Kattintson a **metrikariasztás hozzáadása**.  Ekkor megnyílik egy új riasztási szabály létrehozása a panelen.
+1. Válassza ki **riasztások** származó a **konfigurálása** menü.  Ekkor megnyílik az Azure Alerts panel.  Előfordulhat, hogy más riasztási szabályok az itt konfigurált más szolgáltatásokhoz.
+1. Kattintson a **metrikariasztás hozzáadása**.  Ekkor megnyílik egy új riasztási szabály létrehozása a panelen.
 
     ![Metrikariasztás hozzáadása](media/tutorial-alert/add-metric-alert.png)
 
-4. Írja be egy **neve** a riasztáshoz tartozó szabályt, és a legördülő menüből válassza ki az alkalmazását **erőforrás**.
-5. Válassza ki a **metrika** mintát.  Gráf az elmúlt 24 óra során ezt a kérelmet értékét jelzi jelenik meg.  Ez a metrika a feltétel beállítása segítséget nyújt.
+1. Írja be egy **neve** a riasztáshoz tartozó szabályt, és a legördülő menüből válassza ki az alkalmazását **erőforrás**.
+1. Válassza ki a **metrika** mintát.  Gráf az elmúlt 24 óra során ezt a kérelmet értékét jelzi jelenik meg.  Ez a metrika a feltétel beállítása segítséget nyújt.
 
     ![Riasztási szabály felvétele](media/tutorial-alert/add-alert-01.png)
 
-6. Adjon meg egy **feltétel** és **küszöbérték** a riasztás. Ez a száma, amelyet a metrika egy riasztás hozható létre. 
-6. A **értesítés ezen keresztül** ellenőrizze a **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak** jelölőnégyzetet, hogy egy üzenetet küldeni a felhasználóknak, ha a riasztási feltétel teljesül, és adja hozzá az összes további címzett e-mail-címét.  Megadhat egy webhookot vagy egy logikai alkalmazást itt, amelyen a feltétel teljesülése esetén is.  Ezek próbál meg a probléma megoldásához felhasználható vagy 
+1. Adjon meg egy **feltétel** és **küszöbérték** a riasztás. Ez a száma, amelyet a metrika egy riasztás hozható létre. 
+1. A **értesítés ezen keresztül** ellenőrizze a **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak** jelölőnégyzetet, hogy egy üzenetet küldeni a felhasználóknak, ha a riasztási feltétel teljesül, és adja hozzá az összes további címzett e-mail-címét.  Megadhat egy webhookot vagy egy logikai alkalmazást itt, amelyen a feltétel teljesülése esetén is.  Ezek próbál meg a probléma megoldásához felhasználható vagy 
 
     ![Riasztási szabály felvétele](media/tutorial-alert/add-alert-02.png)
 

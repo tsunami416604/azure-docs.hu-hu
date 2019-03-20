@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 150f2b9155d5e920a7394e2fa55ce28701497868
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113197"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -45,10 +45,10 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
 
 1. Adjon hozzá egy **valós eszköz** Device Explorer, jelölje ki **+ új > valós** valós eszköz hozzáadásához.
 
-    * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
-    * Adja meg az eszköz nevét, vagy használja a javasolt név
+   * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
+   * Adja meg az eszköz nevét, vagy használja a javasolt név
 
-    ![Eszköz hozzáadása](media/howto-connect-devkit/add-device.png)
+     ![Eszköz hozzáadása](media/howto-connect-devkit/add-device.png)
 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** a hozzáadott eszköz kiválasztásával **Connect** az eszköz oldalon.
 

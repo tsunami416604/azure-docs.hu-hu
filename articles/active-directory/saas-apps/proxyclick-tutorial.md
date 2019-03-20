@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52d3e058c7e604a31493bf3b1972b39c9922fd90
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5ce628716e9e8d0094f678c3d67dcfad9e24ada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163515"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Proxyclick
 
@@ -214,7 +214,7 @@ Ahhoz, hogy az Azure AD-felhasználók Proxyclick jelentkezzen be, akkor ki kell
 
     ![Alkalmazott hozzáadása](./media/proxyclick-tutorial/user3.png)
 
-    a. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például **brittasimon@contoso.com**.
+    a. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például **brittasimon\@contoso.com**.
 
     b. Az a **Utónév** szövegmezőbe írja be az első felhasználóneve Britta például.
 

@@ -3,23 +3,23 @@ title: Fájlintegritási monitorozás az Azure Security Centerben |} A Microsoft
 description: " Ismerje meg, hogyan engedélyezheti a fájlintegritási Monitorozás az Azure Security Centerben. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
-editor: ''
+editor: monhaber
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
-ms.author: rkarlin
-ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 03/13/2019
+ms.author: monhaber
+ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901583"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -36,15 +36,12 @@ A Security Center a fájlintegritási Monitorozás ellenőrzi a Windows-fájlok,
 Könnyen engedélyezheti a FIM az entitás figyelése, a Security Center javasolja. Megadhatja a saját FIM házirendek vagy entitások figyelése is. Ez az útmutató bemutatja, hogyan.
 
 > [!NOTE]
-> A fájl fájlintegritási Monitorozás (FIM) szolgáltatás Windows és Linux rendszerű számítógépek és virtuális gépek esetében működik, és a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
-FIM feltölti az adatokat a Log Analytics-munkaterületre. Adatok díjak vonatkoznak, a feltöltött adatok mennyisége alapján. Lásd: [log analytics díjszabásáról](https://azure.microsoft.com/pricing/details/log-analytics/) további.
->
->
+> A fájl fájlintegritási Monitorozás (FIM) szolgáltatás Windows és Linux rendszerű számítógépek és virtuális gépek esetében működik, és a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). FIM feltölti az adatokat a Log Analytics-munkaterületre. Adatok díjak vonatkoznak, a feltöltött adatok mennyisége alapján. Lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/) további.
+
+FIM az Azure Change Tracking megoldásával követi és azonosítja a környezet változásainak használ. Ha a fájlintegritási Monitorozás engedélyezve van, akkor egy **Change Tracking** típusú erőforrás **megoldás**. Adatok gyűjtése frequency részletek: [változáskövetési adatok gyűjtemény részleteinek](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) a Azure Change Tracking megoldásba.
 
 > [!NOTE]
-> FIM az Azure Change Tracking megoldásával követi és azonosítja a környezet változásainak használ. Ha a fájlintegritási Monitorozás engedélyezve van, akkor egy **Change Tracking** megoldás típusú erőforrás. Ha eltávolítja a **Change Tracking** erőforrás, letiltja a fájlintegritási figyelése a Security Center szolgáltatás.
->
->
+> Ha eltávolítja a **Change Tracking** erőforrás, szolgáltatás letiltása a fájlintegritási figyelése a Security Center szolgáltatás.
 
 ## <a name="which-files-should-i-monitor"></a>Mely fájlokat kell figyelése?
 Meg kell gondolja át a fájlokat, amelyek kritikus fontosságú a rendszer és alkalmazások, amikor kiválasztja, hogy mely fájlok figyelésére. Vegye figyelembe a tervezés nélkül módosítása nem várt fájlok kiválasztása. Gyakran változnak az alkalmazások vagy az operációs rendszer (például a naplófájlok és a szöveges fájlok) lehetőséget választva fájlok zaj, ami megnehezíti az azonosíthatjuk a támadást rengeteg hozzon létre.
@@ -134,15 +131,15 @@ A **módosítások** (lásd alább) lapon látható a munkaterület összes mód
 
 1. Lépjen vissza a **fájlintegritási Monitorozás irányítópultját** válassza **beállítások**.
 
-  ![Beállítások][11]
+   ![Beállítások][11]
 
-  **Munkaterület-konfiguráció** megnyílik a Megjelenítés a három lappal: **Windows beállításjegyzék**, **Windows fájlok**, és **Linux-fájlok**. Minden lap, Ön által szerkeszthető, amelynek-entitásokat sorolja fel. Minden entitás szerepel, a Security Center azonosítja a FIM-e (igaz) engedélyezve van, vagy nincs engedélyezve az (hamis).  Az entitás szerkesztését teszi lehetővé engedélyezheti vagy tilthatja le a FIM.
+   **Munkaterület-konfiguráció** megnyílik a Megjelenítés a három lappal: **Windows beállításjegyzék**, **Windows fájlok**, és **Linux-fájlok**. Minden lap, Ön által szerkeszthető, amelynek-entitásokat sorolja fel. Minden entitás szerepel, a Security Center azonosítja a FIM-e (igaz) engedélyezve van, vagy nincs engedélyezve az (hamis).  Az entitás szerkesztését teszi lehetővé engedélyezheti vagy tilthatja le a FIM.
 
-  ![Munkaterület konfigurálása][12]
+   ![Munkaterület konfigurálása][12]
 
-2. Válasszon egy identityprotection. Ebben a példában egy elem, a Windows beállításjegyzék kiválasztott. **A Change Tracking megoldásba szerkesztése** nyílik meg.
+2. Válassza ki az identity protection. Ebben a példában egy elem, a Windows beállításjegyzék kiválasztott. **A Change Tracking megoldásba szerkesztése** nyílik meg.
 
-  ![Szerkesztheti, vagy a változáskövetés][13]
+   ![Szerkesztheti, vagy a változáskövetés][13]
 
 A **szerkesztése a Change Tracking megoldásba** is:
 
@@ -155,11 +152,11 @@ A **szerkesztése a Change Tracking megoldásba** is:
 1. Lépjen vissza a **fájlintegritási monitorozás irányítópult** válassza **beállítások** tetején. **Munkaterület-konfiguráció** nyílik meg.
 2. A **munkaterület-konfiguráció**, válassza ki a lapon, hogy a hozzáadni kívánt entitás típusa: Windows beállításjegyzék, a Windows-fájlokat vagy a Linux-fájlok. Ebben a példában a kiválasztott **Linux-fájlok**.
 
-  ![Adjon hozzá egy új elem figyelése][14]
+   ![Adjon hozzá egy új elem figyelése][14]
 
 3. Válassza a **Hozzáadás** lehetőséget. **Adja hozzá a Change Tracking megoldásba** nyílik meg.
 
-  ![Adja meg a kért adatokat][15]
+   ![Adja meg a kért adatokat][15]
 
 4. Az a **Hozzáadás** lapon írja be a kért adatokat, és válassza **mentése**.
 
@@ -167,19 +164,19 @@ A **szerkesztése a Change Tracking megoldásba** is:
 1. Lépjen vissza a **a fájlintegritási Monitorozás** irányítópultot.
 2. Válasszon egy munkaterületet, ahol jelenleg engedélyezve van a FIM. A munkaterület a FIM engedélyezve van, ha hiányzik az Engedélyezés gombra vagy a csomag frissítése gombra.
 
-  ![Válasszon ki egy munkaterületet, ahol engedélyezve van-e az FIM][16]
+   ![Válasszon ki egy munkaterületet, ahol engedélyezve van-e az FIM][16]
 
 3. A fájlintegritási Monitorozás, válassza a **beállítások**.
 
-  ![beállítások kiválasztása][17]
+   ![beállítások kiválasztása][17]
 
 4. Alatt **munkaterület-konfiguráció**, válasszon ki egy csoportot, **engedélyezve** értéke igaz.
 
-  ![Munkaterület konfigurálása][18]
+   ![Munkaterület konfigurálása][18]
 
 5. A **szerkesztése a Change Tracking megoldásba** ablak set **engedélyezve** hamis értékre.
 
-  ![Hamis értékre beállított engedélyezve][19]
+   ![Hamis értékre beállított engedélyezve][19]
 
 6. Kattintson a **Mentés** gombra.
 
@@ -198,7 +195,7 @@ FIM letilthatja. FIM az Azure Change Tracking megoldásával követi és azonos�
 2. Jelöljön ki egy munkaterületet.
 3. A **a fájlintegritási Monitorozás**válassza **letiltása**.
 
-  ![FIM letiltása][20]
+   ![FIM letiltása][20]
 
 4. Válassza ki **eltávolítása** letiltása.
 

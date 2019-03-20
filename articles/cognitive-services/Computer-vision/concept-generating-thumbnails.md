@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8881a0c5e809dc75d1b9f4b6f6bd3af7142333cb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884630"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876799"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>A Computer Vision intelligens csonkolva miniatűrök létrehozása
 
 A miniatűr kép csökkentett méretű reprezentációját. Miniatűr képeket és egyéb adatokat képviselő gazdaságosabb, elrendezés mobilbarát lehetővé szolgálnak. A Computer Vision API használatával intelligens levágás, a kép átméretezése együtt egy adott rendszerképhez intuitív miniatűrök létrehozása.
 
 A Computer Vision, miniatűrkép-generálás algoritmus a következőképpen működik:
+
 1. A lemezképből eltávolíthatja a zavaró elemeket, és azonosíthatja a _érdeklődési körét_&mdash;a terület a fő objektumok jelenik meg a kép.
 1. Az azonosított alapján a kép levágása _érdeklődési körét_.
 1. A cél miniatűr dimenziók igazítás oldalarányának módosítása.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005480"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ Ha egy helyszíni megoldás a Trend Micro érvényes előfizetéssel rendelkezik
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>A Deep Security Agent telepítése egy új virtuális Gépre
 
-A [az Azure portal](http://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, a lemezkép használatakor a **Marketplace** a virtuális gép létrehozásához. Ha egy virtuális gépen hoz létre, könnyen adhat védelmet a Trend Micro a portál használatával.
+A [az Azure portal](https://portal.azure.com) lehetővé teszi a Trend Micro biztonsági bővítmény telepítését, a lemezkép használatakor a **Marketplace** a virtuális gép létrehozásához. Ha egy virtuális gépen hoz létre, könnyen adhat védelmet a Trend Micro a portál használatával.
 
 Használatával egy bejegyzést a **Marketplace** megnyílik egy varázsló, amely segítséget nyújt a virtuális gép beállítása. Használja a **beállítások** panelen, a harmadik panelen, a varázsló, a Trend Micro biztonsági bővítmény telepítéséhez.  Általános útmutatás: [létrehozása az Azure Portalon Windows rendszerű virtuális gép](../windows/classic/tutorial.md).
 
@@ -94,4 +94,4 @@ Az ügynök indítsa el a telepítés néhány percet vesz igénybe. Ezt követ�
 
 <!-- Link references -->
 [Hogyan lehet bejelentkezni a Windows Server rendszerű virtuális gép]:../windows/classic/connect-logon.md
-[Az Azure Virtuálisgép-bővítmények és szolgáltatások]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Az Azure Virtuálisgép-bővítmények és szolgáltatások]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

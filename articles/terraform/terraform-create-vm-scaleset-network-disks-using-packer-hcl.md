@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: b9c7c20b6b3bbad8731dc00e2c6e3d88f92936df
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765407"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001994"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal egy egyéni Packer-rendszerképből
 
@@ -180,7 +180,7 @@ Ebben a lépésben a következő erőforrásokat hozza létre a korábban üzemb
 - Egy Azure-háttércímkészlet és annak hozzárendelése a terheléselosztóhoz 
 - A terheléselosztón konfigurált és az alkalmazás által használt állapotminta portja 
 - A korábban üzembe helyezett virtuális hálózaton futó terheléselosztó mögötti virtuálisgép-méretezési csoport
-- [Nginx](http://nginx.org/) az egyéni rendszerképből telepített virtuálisgép-méretezési csoport csomópontjain
+- [Nginx](https://nginx.org/) az egyéni rendszerképből telepített virtuálisgép-méretezési csoport csomópontjain
 
 
 Adja hozzá az alábbi kódot a `vmss.tf` fájl végéhez.

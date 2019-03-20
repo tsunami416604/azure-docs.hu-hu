@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3b3a4b6767855fa2f7ba595072b187b7a8bff400
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215999"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167133"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service
 
@@ -67,7 +67,7 @@ Ezeket a lépéseket jelennek meg az Azure App Service-tárházban, [például](
         && echo "root:Docker!" | chpasswd
     ```
 
-2. Adjon hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) , a docker-fájl másolása egy [sshd_config](https://man.openbsd.org/sshd_config) fájlt a */etc/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az sshd_config fájlban, az Azure-App-Service GitHub-adattárában [Itt](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+2. Adjon hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) , a docker-fájl másolása egy [sshd_config](https://man.openbsd.org/sshd_config) fájlt a */etc/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az sshd_config fájlban, az Azure-App-Service GitHub-adattárában [Itt](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config).
 
     > [!NOTE]
     > A *sshd_config* fájlnak tartalmaznia kell a következő vagy a kapcsolat hibája esetén: 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: aljo, anmola
-ms.openlocfilehash: f5e31c6cf08ab455b835231f54b564a3e4ed8dad
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079826"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és Reliable Actors Windows a tárolóba
 
@@ -38,9 +38,9 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
 
 3. Minden kódcsomaghoz szeretné a tárolóba, inicializálja a betöltőt, a program belépési pont. Adja hozzá a statikus konstruktort, a program belépési pont fájlt az alábbi kódrészlet látható.
 
-  ```csharp
-  namespace MyApplication
-  {
+   ```csharp
+   namespace MyApplication
+   {
       internal static class Program
       {
           static Program()
@@ -53,7 +53,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
           /// </summary>
           private static void Main()
           {
-  ```
+   ```
 
 4. Hozhat létre és [csomag](service-fabric-package-apps.md#Package-App) a projekthez. Hozhat létre, és hozzon létre egy csomagot, kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki a **csomag** parancsot.
 
@@ -79,49 +79,49 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
 
 7. Módosítsa az ApplicationManifest.xml és a ServiceManifest.xml a tárolórendszerképet, adattár információit, beállításjegyzék-hitelesítést és port-gazdagép leképezés hozzáadása. A jegyzékek módosítása, lásd: [egy Azure Service Fabric-tárolóalkalmazás létrehozása](service-fabric-get-started-containers.md). A kód Csomagdefiníció szolgáltatásjegyzékben kell írni a megfelelő tárolórendszerképet. Ellenőrizze, hogy módosítsa a belépési pont ContainerHost típusra.
 
-  ```xml
-<!-- Code package is your service executable. -->
-<CodePackage Name="Code" Version="1.0.0">
-  <EntryPoint>
+   ```xml
+   <!-- Code package is your service executable. -->
+   <CodePackage Name="Code" Version="1.0.0">
+   <EntryPoint>
     <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
     <ContainerHost>
       <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
     </ContainerHost>
-  </EntryPoint>
-  <!-- Pass environment variables to your container: -->
-</CodePackage>
-  ```
+   </EntryPoint>
+   <!-- Pass environment variables to your container: -->
+   </CodePackage>
+   ```
 
 8. A port-gazdagép-leképezés a replikátor és egy szolgáltatásvégpont hozzáadása. Mindkét ezeket a portokat a Service Fabric által kiosztott futásidőben, mivel a ContainerPort értéke nulla esetén pedig a hozzárendelt port használatára való hozzárendelésére.
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code">
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code">
     <PortBinding ContainerPort="0" EndpointRef="ServiceEndpoint"/>
     <PortBinding ContainerPort="0" EndpointRef="ReplicatorEndpoint"/>
-  </ContainerHostPolicies>
-</Policies>
- ```
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 9. Tároló elkülönítési mód konfigurálása, lásd: [elkülönítési mód konfigurálása]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek bemutatják, hogyan az elkülönítési mód az Alkalmazásjegyzék-fájl megadott.
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
-  ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 10. Ez az alkalmazás teszteléséhez szüksége telepíteni kell egy fürtöt, amely 5.7-es vagy újabb verziót futtat. A futtatókörnyezet 6.1-es vagy alacsonyabb verziók kell szerkesztése és az előzetes verziójú funkció engedélyezéséhez a fürt beállításainak frissítése. Kövesse a jelen [cikk](service-fabric-cluster-fabric-settings.md) a következő beállítás hozzáadásához.
-```
+    ```
       {
         "name": "Hosting",
         "parameters": [
@@ -131,7 +131,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
           }
         ]
       }
-```
+    ```
 
 11. Tovább [üzembe helyezése](service-fabric-deploy-remove-applications.md) a szerkesztett alkalmazáscsomagot a fürt.
 

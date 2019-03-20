@@ -11,12 +11,12 @@ author: msmimart
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be337e0a49d88fad13b9bf9df4efb76ad6976866
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854449"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Gyors útmutató: Vendégfelhasználó hozzáadása PowerShell-lel
 
@@ -74,7 +74,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
 
 ## <a name="send-an-invitation"></a>Meghívó küldése
 
-1. A teszt e-mail fiókba meghívó küldéséhez, futtassa a következő PowerShell-parancsot (a **„Sanda”** és **sanda@fabrikam.com** helyett írja be a saját e-mail fiókjához tartozó nevet és e-mail címet): 
+1. Teszt e-mail fiókja meghívó küldése, futtassa a következő PowerShell-parancsot (cserélje le **"Sanda"** és **sanda\@fabrikam.com** és a teszt e-mail fiók nevét és e-mail cím): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -90,7 +90,7 @@ Amikor a rendszer erre kéri, adja meg a hitelesítő adatait.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Ellenőrizze, hogy a meghívott felhasználó szerepel-e a listán, egyszerű felhasználónévvel (UPN) a következő formátumban: *e-mail cím*#EXT #@*tartomány*. Például *sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a meghívót küldte.
+3. Ellenőrizze, hogy a meghívott felhasználó egy egyszerű felhasználónévvel (UPN) a következő formátumban szerepel, a kimeneti *emailaddress*EXT #\@*tartomány*. Ha például *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com a szervezet, ahonnan a Meghívók küldése.
 
    ![A vendégfelhasználó felvételét mutató PowerShell kimenet](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

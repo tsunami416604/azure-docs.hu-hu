@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244944"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074505"
 ---
 # <a name="azure-security-center-search"></a>Az Azure Security Center keresési
 Használja az Azure Security Center [Azure Monitor naplózza a keresési](../log-analytics/log-analytics-log-searches.md) lekérésére és a biztonsági adatok elemzéséhez. Az Azure Monitor naplóira lekérdezési nyelv segítségével gyorsan és vonhat össze adatokat tartalmaz. A Security Centerből kihasználhatja az Azure Monitor naplók keresési lekérdezéseket hozhat létre, és elemezheti az összegyűjtött adatokat.
@@ -35,19 +35,19 @@ Keresés az ingyenes szint és a Standard szintű Security Centerben érhető el
 ## <a name="access-search"></a>Access-keresés
 1. A Security Center főmenüjében válassza **keresési**.
 
-  ![Válassza ki a naplók keresése][1]
+   ![Válassza ki a naplók keresése][1]
 
 2. A Security Center az összes munkaterület alatt az Azure-előfizetések sorolja fel. Jelöljön ki egy munkaterületet. (Ha csak egy munkaterületet, a munkaterület-választó nem jelenik meg.)
 
-  ![Válasszon munkaterületet][2]
+   ![Válasszon munkaterületet][2]
 
 3. **Naplóbeli keresés** nyílik meg. A kijelölt munkaterület alatt további adatokat kérhet, adja meg a példa lekérdezés:
 
-  SecurityEvent |} ahol eseményazonosító 4625-ös számú == |} count() by TargetAccount összefoglalója
+   SecurityEvent |} ahol eseményazonosító 4625-ös számú == |} count() by TargetAccount összefoglalója
 
-  Eredmény látható összes fiókot, amely nem sikerült a bejelentkezés (4625-ös számú esemény).
+   Eredmény látható összes fiókot, amely nem sikerült a bejelentkezés (4625-ös számú esemény).
 
-  ![Keresési eredmények][3]
+   ![Keresési eredmények][3]
 
 Lásd: [Kusto-lekérdezés nyelvi](../log-analytics/log-analytics-search-reference.md) lekérdezési adatok a kijelölt munkaterület alatt módjáról további információt.
 

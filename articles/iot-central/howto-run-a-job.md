@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 02/04/2019
+ms.date: 03/18/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 142881e0a72ef9db7397276f092a4b7502b61fed
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: bb5eb2904ae969c3ffcd4ee8e365a51853add2fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781442"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182234"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Hozzon létre és futtathat feladatokat az Azure IoT központi alkalmazás
 
@@ -31,24 +31,24 @@ Ez a szakasz bemutatja, hogyan hozhat létre és futtathat feladatokat. Az egyes
 
 1. Adjon meg egy nevet és leírást, amely segít azonosítani a feladat létrehozásakor.
 
-1. Válassza ki az eszköz beállítása azt szeretné, hogy a feladat a alkalmazni lehessen. Miután az eszköz kiválasztásával, látni fogja a jobb oldalán adja meg az eszközök a kiválasztott eszköz csoporton belül. Ha egy hibás eszköz set, eszközöket nem jelenik meg, és megjelenik egy üzenet tájékoztatja, hogy az eszköz beállítása megszakad.
+1. Válassza ki az eszköz beállítása azt szeretné, hogy a feladat a alkalmazni lehessen. Miután az eszköz kiválasztásával, lásd: jobb oldalán adja meg az eszközök a kiválasztott eszköz csoporton belül. Ha egy hibás eszköz set, nincsenek eszközök megjelenítéséhez, és megjelenik egy üzenet tájékoztatja, hogy az eszköz beállítása megszakad.
 
-1. Következő lépésként válassza ki, milyen típusú feladatot, amely lesz meghatározva (a beállítás, tulajdonság vagy parancsot). Válassza ki **+** mellett milyen típusú feladatot kiválasztva, és adja hozzá a kívánt műveleteket.
+1. Ezután válassza ki a feladat (a beállítás, tulajdonság vagy parancs) meghatározására. Válassza ki **+** mellett milyen típusú feladatot kiválasztva, és adja hozzá a kívánt műveleteket.
 
     ![Feladat konfigurálása](./media/howto-run-a-job/configurejob.png)
 
-1. A jobb oldalon kiválasztani, az eszközök, amelyet szeretne futtatni a feladatot. A felső jelölőnégyzet bejelölésével, minden eszköz ki van jelölve, a teljes eszköz csoportba. Közel nevét a jelölőnégyzet bejelölésével, az aktuális oldalon lévő összes eszköz ki van jelölve.
+1. A jobb oldalon kiválasztani, az eszközök, amelyet szeretne futtatni a feladatot. A felső jelölőnégyzet bejelölésével, minden eszköz ki van jelölve, a teljes eszköz csoportba. A jelölőnégyzet bejelölésével közel **neve**, az aktuális oldalon lévő összes eszköz ki van jelölve.
 
-1. A kívánt eszközök kiválasztása után válassza ki a **futtatása**. A feladat most már megjelenik a fő **feladatok** lapot. Az ebben a nézetben megtekintheti az éppen futó feladat és a korábban a feladatok futtatása tetszőleges előzmények áll. A futó feladat mindig a lista tetején fog megjelenni.
+1. Miután az eszközök, válassza ki a **futtatása** vagy **mentése**. A feladat most már megjelenik a fő **feladatok** lapot. Ebben a nézetben megtekintheti az éppen futó feladat és a korábban a feladatok futtatása tetszőleges előzmények. A futó feladat mindig megjelenik-e a lista tetején. A mentett feladat segítségével lehet megnyitni, bármikor újból folytathatja a szerkesztést vagy futtatásához.
 
     ![Feladat megtekintése](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
-    > Megtekintheti a korábban futtatott feladatok előzményeit legfeljebb 30 napig fogja.
+    > Megtekintheti a korábban futtatott feladatok előzményeit legfeljebb 30 napig.
 
-1. A feladat áttekintésére, válassza a listában megtekinteni kívánt feladat nevét. Ez az Áttekintés a feladat részletei, az eszközök és az eszközök állapotának tartalmazza.
+1. A feladat áttekintésére, válassza a listában megtekinteni kívánt feladat nevét. Ez az Áttekintés a feladat részleteit, eszközök és eszköz állapota értékeket tartalmazza. Ez az Áttekintés is kiválaszthatja **töltse le a feladat részletei** , a feladat részletei, beleértve az eszközök és az állapot értékei .csv-fájl letöltésére. Ez az információ akkor lehet hasznos, a hibaelhárításhoz.
 
-    ![Eszközállapot megtekintése](./media/howto-run-a-job/viewdevicestatus.png)
+    ![Eszközállapot megtekintése](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Egy futó feladat leállítása
 
@@ -58,13 +58,19 @@ Szeretné a jelenleg futó feladat leállítása, ha válassza ki, amelyeket sze
 
 ### <a name="run-a-stopped-job"></a>A leállt feladat futtatása
 
-Ha szeretne futtatni egy feladatot, amely jelenleg le van állítva, válassza ki a leállt feladatot, amely a futtatni kívánt nevét. Válassza ki a **futtatása** gombra a panel. Látni fogja, hogy a feladat állapota módosult-e, hogy fut a feladat most ismét megfelelően.
+Szeretne futtatni egy feladatot, amely jelenleg le van állítva, válassza ki a leállt feladatot, amely a futtatni kívánt nevét. Válassza ki a **futtatása** gombra a panel. A feladat állapotát, hogy fut a feladat most ismét megfelelően módosul.
 
    ![Feladat folytatása](./media/howto-run-a-job/resumejob.png)
 
+## <a name="copy-a-job"></a>Egy feladat másolása
+
+Létrehozott egy meglévő feladat másolásához válassza ki a legfontosabb feladatok lapján, és válassza **másolási**. Ekkor megnyílik egy új példányát szerkesztését a feladat konfigurációját. Mentse, vagy az új feladat futtatása. Ha a kiválasztott eszköz csoport bármely módosultak, azokat a szerkesztését a másolt feladat is megjelennek.
+
+   ![Másolási feladat](./media/howto-run-a-job/copyjob.png)
+
 ## <a name="view-the-job-status"></a>A feladat állapotának megtekintéséhez
 
-Egy feladat létrehozása után a **állapot** oszlop a rendszer ekkor frissíti a feladat legfrissebb állapotüzenet. Az állapotüzenetek a következőket jelentik:
+Egy feladat létrehozását követően a **állapot** oszlop frissítések a feladat legfrissebb állapotának üzenettel. Az állapotüzenetek a következőket jelentik:
 
 | Állapotüzenet       | Állapot jelentése                                          |
 | -------------------- | ------------------------------------------------------- |
@@ -83,16 +89,16 @@ Az állapotüzenet az eszközök a feladaton belül áttekintést követ. Ezek a
 
 ### <a name="view-the-device-status"></a>Az eszköz állapotának megtekintése
 
-Annak érdekében, hogy a feladat minden egyes eszköz állapotának megtekintéséhez válassza ki a feladat nevét. Itt megjelenik a feladat és az eszközök, az adott feladatot egy részét képező összes részleteit. Minden egyes eszköz neve mellett a következő állapotüzeneteket egyik láthatja:
+A feladat minden egyes eszköz állapotának megtekintéséhez válassza ki a feladat nevét. A feladat és összes egy részét képező eszköz részleteit láthatja. Választhat **feladat részleteinek letöltése** a feladat részleteit, az eszközöket és azok állapot értékeit tartalmazó .csv-fájl letöltésére. Minden egyes eszköz neve mellett jelenik meg az alábbi állapot üzenetek:
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
 | Befejezve            | A feladat végrehajtva az eszközön.                                     |
-| Meghiúsult               | A feladat nem sikerült végrehajtani ezen az eszközön. További információt a hibaüzenetben jelennek meg.  |
+| Meghiúsult               | A feladat nem sikerült végrehajtani ezen az eszközön. A hibaüzenetben további információkat jelenít meg.  |
 | Függőben              | A feladat nem rendelkezik még végrehajtani ezen az eszközön.                                  |
 
 > [!NOTE]
-> Eszköz törölve lett, akkor az eszközt, és jeleníti meg, mert törölték az eszköz azonosítójával. a
+> Ha egy eszköz törölve lett, nem választhat ki az eszközt, és azt jeleníti meg, mert törölték az eszköz azonosítójával. a
 
 ## <a name="next-steps"></a>További lépések
 

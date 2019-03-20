@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fa07ebf3dbf3e5d3e5f4e96cdf4b77a3710c1d1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888587"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítési |} Megoldások 
+
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Webalkalmazás**    | <ul><li>[Fontolja meg a standard hitelesítési mechanizmust webes alkalmazásba való hitelesítéséhez](#standard-authn-web-app)</li><li>[Alkalmazások biztonságos módon kell kezelnie a sikertelen hitelesítési forgatókönyvek](#handle-failed-authn)</li><li>[Enable lépés felfelé vagy adaptív hitelesítés](#step-up-adaptive-authn)</li><li>[Győződjön meg arról, hogy a felügyeleti felületek megfelelően zárolva lefelé](#admin-interface-lockdown)</li><li>[Megvalósítása biztonságosan elfelejtett jelszó funkciói](#forgot-pword-fxn)</li><li>[Győződjön meg arról, hogy a jelszó- és házirend vannak megvalósítva](#pword-account-policy)</li><li>[Alkalmazzon-vezérlést, hogy a felhasználónév-enumerálás](#controls-username-enum)</li></ul> |
@@ -338,7 +339,7 @@ A `<netMsmqBinding/>` elem a WCF konfigurációs fájl az alábbi arra utasítja
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Hitelesítés és engedélyezés az ASP.NET webes API-k](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [külső hitelesítési szolgáltatások az ASP.NET webes API-k (C#)](http://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **Hivatkozások**              | [Hitelesítés és engedélyezés az ASP.NET webes API-k](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [külső hitelesítési szolgáltatások az ASP.NET webes API-k (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **Lépések** | <p>Hitelesítés az a folyamat, ha egy entitás igazolja a identitását, általában hitelesítő adatokat, például egy felhasználónév és jelszó használatával. Nincsenek több hitelesítési protokollok érhető el lehet tekinteni. Ezek közül néhányat az alábbiakban olvashatók:</p><ul><li>Ügyféltanúsítványok</li><li>Windows-alapú</li><li>Űrlap alapú</li><li>Összevonás - ADFS</li><li>Összevonási – Azure ad-ben</li><li>Összevonás - Identitáskiszolgálók</li></ul><p>A hivatkozások szakaszban található hivatkozások hogyan a hitelesítési sémákat mindegyike kialakítható egy webes API biztonságossá tétele a adja meg a részleteket.</p>|
 
 ## <a id="authn-aad"></a>Használja az Azure Active Directory által támogatott szabványos hitelesítési forgatókönyvek
@@ -475,7 +476,7 @@ await deviceClient.SendEventAsync(message);
 ### <a name="example"></a>Példa
 **Node.JS: Hitelesítés**
 #### <a name="symmetric-key"></a>Szimmetrikus kulcs
-* Egy IoT hub létrehozása az Azure-ban
+* IoT hub létrehozása az Azure-ban
 * Hozzon létre egy bejegyzést az eszközidentitás-jegyzékben lévő
     ```javascript
     var device = new iothub.Device(null);
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>SAS-jogkivonat
+  #### <a name="sas-token"></a>SAS-jogkivonat
 * Lekérdezi a szimmetrikus kulcs de használata esetén belsőleg generáltak hoz létre, és explicit módon is használhatják
 * Adja meg a protokoll: `var Http = require('azure-iot-device-http').Http;`
 * Hozzon létre egy sas-token:
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>Tanúsítványok
+  #### <a name="certificates"></a>Tanúsítványok
 * Hozzon létre egy saját aláírt X509 tanúsítványok bármilyen eszközre, például a OpenSSL használatával egy .cert és .key fájlokat rendre tárolja a tanúsítvány és a kulcs létrehozásához
 * Tanúsítványok használatával biztonságos kapcsolatot fogadó-eszköz kiépítése.
     ```javascript

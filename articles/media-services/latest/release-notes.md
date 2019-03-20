@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343995"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877360"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -180,9 +180,9 @@ Ha a hozott eszközök vagy Fiókszűrők 09/28 és 10 közötti/12, a Media Ser
 
 ## <a name="may-2018---preview"></a>2018 május – előzetes verzió
 
-### <a name="net-sdk"></a>.Net SDK
+### <a name="net-sdk"></a>.NET SDK
 
-A .net SDK-t a következő funkciók találhatók:
+A következő funkciók válnak elérhetővé a .NET SDK-ban:
 
 * **Átalakítások** és **feladatok** kódolásához, vagy a médiatartalmak elemzése. Példák: [fájlok Stream](stream-files-tutorial-with-api.md) és [elemzés](analyze-videos-tutorial-with-api.md).
 * **A streamelési Lokátorok** közzétételéhez és a végfelhasználói eszközökön tartalmak online lejátszásához

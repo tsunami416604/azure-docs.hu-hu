@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb8e5074d0cd99f5c7cb2130e6f9181eb5382015
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809810"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120295"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>Hogyan kell kitölteni a műszaki adatok képernyő
 ===========================================
@@ -36,9 +36,9 @@ ms.locfileid: "48809810"
 
 -   **Alkalmazás tesztelése Automation** --szükséges – a VS kódolt teszt csomagot, amelyet létre kell hoznia, automatizált tesztelés-bővítmények.
 
-2.  Az a **további információt a bővítmény** szakaszt, és töltse fel a kiterjesztés vonatkozó további információkat. Ezt az információt használja érvényesítése során.
+1. Az a **további információt a bővítmény** szakaszt, és töltse fel a kiterjesztés vonatkozó további információkat. Ezt az információt használja érvényesítése során.
 
-    ![További információk az app-bővítmény űrlap](./media/d365-financials/image016.png)
+   ![További információk az app-bővítmény űrlap](./media/d365-financials/image016.png)
 
 
 -   **URL-címe a termék dokumentációja** --szükséges – URL-címet a bővítmény dokumentációját.

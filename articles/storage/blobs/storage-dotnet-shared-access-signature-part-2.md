@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244912"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012552"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-Blob-tárolóval
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban két konzolalkalmazást, amelyek bemutatják, létrehoz
 **2 alkalmazás**: Az ügyfélalkalmazás. Hozzáfér tároló és blobnév erőforrásokat a létrehozott az első alkalmazás közös hozzáférési aláírások használatával. Csak a közös hozzáférésű jogosultságkódok hozzáférés tároló és a blob-erőforrások – használja ezt *nem* tartalmazzák a tárfiók hozzáférési kulcsát.
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>1. rész: Hozzon létre egy konzolalkalmazást, hogy közös hozzáférésű jogosultságkódok létrehozása
-Először is győződjön meg arról, hogy rendelkezik-e az Azure Storage ügyféloldali kódtára a .NET-hez telepítve. Telepítheti a [NuGet-csomag](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet-csomag") az ügyféloldali kódtár a legfrissebb szerelvényeket tartalmazó. Ez az az ajánlott módszer annak biztosítására, hogy rendelkezik-e a legújabb javításokat. Az ügyféloldali kódtár legújabb verziójának részeként is letöltheti a [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
+Először is győződjön meg arról, hogy rendelkezik-e az Azure Storage ügyféloldali kódtára a .NET-hez telepítve. Telepítheti a [NuGet-csomag](https://nuget.org/packages/WindowsAzure.Storage/ "NuGet-csomag") az ügyféloldali kódtár a legfrissebb szerelvényeket tartalmazó. Ez az az ajánlott módszer annak biztosítására, hogy rendelkezik-e a legújabb javításokat. Az ügyféloldali kódtár legújabb verziójának részeként is letöltheti a [Azure SDK for .NET](https://azure.microsoft.com/downloads/).
 
 A Visual Studióban hozzon létre egy új Windows-konzolalkalmazást, és adja neki **GenerateSharedAccessSignatures**. Adja hozzá hivatkozásokat [Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) és [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) a következő megközelítések egyikének használatával:
 

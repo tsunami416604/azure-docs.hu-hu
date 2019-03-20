@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf55cef00c0600963f8363e617c24fdc9113eae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543865"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122977"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Módosítsa az alapértelmezett konfiguráció
 Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) Connect-szinkronizálás az alapértelmezett konfiguráció módosításához. Néhány gyakori helyzet biztosítja a lépéseket. A Tudásbázis a képes egyszerű módosítja a saját konfigurációjával, a saját üzleti szabályok alapján kell lennie.
@@ -349,8 +349,8 @@ A következő lépések segítségével ellenőrizheti a módosításokat a lép
    3. A megjelenő párbeszédpanelen jelölje ki **teljes importálást** majd **OK**.
    4. Várjon, amíg a művelet befejeződik.
 
-    > [!NOTE]
-    > Teljes importálást kihagyhatja a helyszíni AD-összekötő az adatforrás-attribútum már szerepel a listában, ha importált attribútumok. Más szóval, nem rendelkezett során módosításokat [2. lépés: Az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+      > [!NOTE]
+      > Teljes importálást kihagyhatja a helyszíni AD-összekötő az adatforrás-attribútum már szerepel a listában, ha importált attribútumok. Más szóval, nem rendelkezett során módosításokat [2. lépés: Az adatforrás-attribútum hozzáadása a helyszíni AD-összekötő séma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Futtassa a **teljes importálást** a a **Azure AD-összekötő**:
 

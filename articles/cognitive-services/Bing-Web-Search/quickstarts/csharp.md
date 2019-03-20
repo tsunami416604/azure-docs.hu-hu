@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20416a4b761496ec65c6911f3e4de18111b663a1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551223"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842073"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API használatával, ésC#
 
-
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. Ez C# alkalmazás egy keresési kérelmet küld az API-t, és megjeleníti a választ. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. Ez C# alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
@@ -31,7 +31,6 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * Egy előfizetői azonosító
 
 A példaprogram csak a .NET Core osztályait használja.
-
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -63,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-Mielőtt folytatnánk, meg kell adni néhány változót. Győződjön meg arról, hogy érvényes az `uriBase`, és cserélje le az `accessKey` értéket egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével.
+Mielőtt folytatnánk, meg kell adni néhány változót. Győződjön meg arról, hogy érvényes az `uriBase`, és cserélje le az `accessKey` értéket egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `searchTerm` értékének lecserélésével. Adja hozzá a kódot a vágólapra a `Program` osztály a fent leírt módon.
 
 ```csharp
 // Enter a valid subscription key.
@@ -79,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>A fő metódus deklarálása
 
-A `Main()` kötelező, és ezt a metódust hívja meg elsőként a program indításakor. Ebben az alkalmazásban a fő metódus érvényesíti az `accessKey` értékét, indítja a kérést, majd megjeleníti a JSON-választ.
+A `Main()` metódus szükséges, és az első módszer meghívni, amikor a program elindult. Ebben az alkalmazásban a fő metódus érvényesíti az `accessKey` értékét, indítja a kérést, majd megjeleníti a JSON-választ.
 
 Tartsa észben, hogy a `main()` a következő néhány szakaszban létrehozott metódusoktól függ.
 
@@ -110,7 +109,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Struktúra létrehozása a keresési eredményekhez
 
-Ez a struktúra keresési eredményeket ad vissza a vonatkozó fejlécekkel. A rendszer akkor hívja meg, amikor egy eredményobjektum létrehozására vonatkozó kérést küld a Bing Web Search API-nak.
+Ez a struktúra keresési eredményeket ad vissza a vonatkozó fejlécekkel. Azt nevezzük, amikor egy kérés a Bing Web Search API-eredmény objektum létrehozása.
 
 ```csharp
 // Returns search results with headers.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 22d4a18ad1c6e80baa6e798be399ab2cd4836fbc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094660"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Az Azure Log Integration-oktatóanyag: Az Azure Key Vault események feldolgozása az Event Hubs használatával
 
@@ -30,8 +30,8 @@ Az előnyben részesített módja az Azure-naplók integrálása a SIEM gyártó
  
 Ebben az oktatóanyagban használatával leckén keresztül az Azure Log Integration és az Event Hubs együttműködésének példa lépések, és hogyan támogatja az egyes lépések a a megoldás ismertetése. Kipróbálhatja a tanultak Itt hozhat létre a saját vállalata egyedi igényeinek támogatásához lépéseket.
 
->[!WARNING]
-A lépéseket, és ebben az oktatóanyagban szereplő parancsok nem tartozhat másolni és beilleszteni. Még csak példák. Az élő környezetben ne használja az "adott állapotában" PowerShell-parancsokat. Kell testre szabnia egyedi környezete alapján.
+> [!WARNING]
+> A lépéseket, és ebben az oktatóanyagban szereplő parancsok nem tartozhat másolni és beilleszteni. Még csak példák. Az élő környezetben ne használja az "adott állapotában" PowerShell-parancsokat. Kell testre szabnia egyedi környezete alapján.
 
 
 Ez az oktatóanyag végigvezeti egy eseményközpontba naplózza az Azure Key Vault tevékenység elkészítéséhez, és elérhetővé JSON-fájlok formájában a SIEM rendszerhez. Konfigurálhatja a SIEM-rendszerbe, a JSON-fájlok feldolgozására.

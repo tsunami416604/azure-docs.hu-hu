@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b8b157b890bcdda8c06a0dd1b208a82f7f9058
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3642bea878ca4d1582319e5e1d964dfa43ff061
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209132"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Oktatóanyag: Az Azure Active Directory-integráció jelenlét felügyeleti szolgáltatásaival
 
@@ -206,7 +206,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelenlét felügyeleti szolgáltatásokba
 
     ![Alkalmazott hozzáadása](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. Az a **OBCiD** szövegmezőbe írja be az e-mailt, felhasználó, például **BrittaSimon@contoso.com**.
+    a. Az a **OBCiD** szövegmezőbe írja be az e-mailt, felhasználó, például **BrittaSimon\@contoso.com**.
 
     b. Az a **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

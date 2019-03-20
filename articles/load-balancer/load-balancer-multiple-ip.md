@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0fd865a6890721d3889fc5cef39d9888fe1fb689
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0cf5aa45e1e8a28dfcdadac0ea32658e5993d06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191815"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856120"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>A terheléselosztás több IP-konfiguráció az Azure portal használatával
 
@@ -62,7 +62,7 @@ Fejezze be a következő lépésekkel érhető el a következő cikkben ismertet
 
 Az egyes virtuális Gépekhez a virtuális hálózaton adja hozzá a másodlagos hálózati adapter IP-konfiguráció:  
 
-1. Tallózással keresse meg az Azure portal: http://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Tallózással keresse meg az Azure portal: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
 
 2. A képernyő bal felső sarokban válassza ki a **erőforráscsoport** ikonra. Válassza ki az erőforráscsoportot, amelyben a virtuális gépek találhatók (például **contosofabrikam**). A **erőforráscsoportok** ablaktábla megjeleníti az összes az erőforrások és a hálózati adapter a virtuális gépek számára.
 
@@ -86,7 +86,7 @@ A második IP-konfiguráció után a másodlagos hálózati adapter van végzett
 
 A terheléselosztó a konfiguráció létrehozása:
 
-1. Tallózással keresse meg az Azure portal: http://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
+1. Tallózással keresse meg az Azure portal: https://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
 
 2. A képernyő bal felső sarokban válassza **erőforrás létrehozása** > **hálózatkezelés** > **terheléselosztó**. Majd **létrehozás**.
 
@@ -106,15 +106,15 @@ Minden olyan webhelyhez (contoso.com és fabrikam.com) adja meg a terheléselosz
 
 2. Két nyilvános IP-címek konfigurálása (**PublicIP1** és **PublicIP2**) tartozó mindkét webhely (a contoso.com és fabrikam.com):
 
-    1. Adjon meg egy nevet az előtér-IP-cím.
+   1. Adjon meg egy nevet az előtér-IP-cím.
 
-    2. A **erőforráscsoport**, válassza ki a meglévő erőforráscsoportot a virtuális gépek számára (például **contosofabrikam**).
+   2. A **erőforráscsoport**, válassza ki a meglévő erőforráscsoportot a virtuális gépek számára (például **contosofabrikam**).
 
-    3. A **hely**, mert a virtuális gépek ugyanazt a helyet kiválasztani.
+   3. A **hely**, mert a virtuális gépek ugyanazt a helyet kiválasztani.
 
-    4. Kattintson az **OK** gombra.
+   4. Kattintson az **OK** gombra.
 
-    A nyilvános IP-címek létrehozása után azokat területen megjelenített a **nyilvános IP-cím** címeket.
+      A nyilvános IP-címek létrehozása után azokat területen megjelenített a **nyilvános IP-cím** címeket.
 
 3. <a name="step3-3"></a>Válassza a portál **további szolgáltatások**. Írja be a Szűrő mezőbe **terheléselosztó** majd **Load Balancer**. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d1e896aee4ba699704ce01e0cff8210d53700993
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265028"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899808"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
@@ -37,7 +37,7 @@ Ha szeretné, gyűjtése:
 * Előre definiált operációs rendszer teljesítményszámlálók és az eseménynaplókat, vagy amelyek gyűjtésére is megadhat. 
 * Összes kérelem és/vagy egy IIS-webkiszolgálón a sikertelen kérelmek
 * .NET-alkalmazás nyomkövetési kimeneti naplók
-* Esemény-nyomkövetés Windows (ETW)-események 
+* Windows esemény-nyomkövetés (ETW) eseményei 
 * Alkalmazásnapló-események gyűjtése a syslog  
 * összeomlási memóriaképek, 
 
@@ -52,7 +52,7 @@ Az Azure Diagnostics-ügynök használata, ha azt szeretné, hogy:
 * Metrikák importálhatja, és a Cloud Services, a klasszikus virtuális gépeket, gyűjtött adatok Log Analytics konfigurálása és a egy Azure storage-fiókban tárolt Service Fabric csomópontjaival.
 
 ## <a name="log-analytics-agent"></a>Log Analytics-ügynököket
-Speciális monitorozás kell több mint gyűjtenek, metrikák és naplók egy részét, a Log Analytics-ügynököket Windows és Linux rendszerhez készült szükség. A Log Analytics-ügynököket kifejlesztett átfogó felügyeletét nyújtja a helyszíni fizikai és virtuális gépek, a System Center Operations Manager által felügyelt számítógépek, és más felhőkben futó virtuális gépeket. A Windows és Linux-ügynökök gyűjtéséhez monitorozási megoldás-alapú adatok és is egyéni azokat az adatforrásokat, konfigurálhat egy Log Analytics-munkaterület csatlakozni.
+Speciális monitorozás kell több mint gyűjtenek, metrikák és naplók egy részét, a Log Analytics-ügynököket (is hivatkoznak, mint a Microsoft Monitoring Agent (MMA)) Windows és Linux rendszerhez készült szükség. A Log Analytics-ügynököket kifejlesztett átfogó felügyeletét nyújtja a helyszíni fizikai és virtuális gépek, a System Center Operations Manager által felügyelt számítógépek, és más felhőkben futó virtuális gépeket. A Windows és Linux-ügynökök gyűjtéséhez monitorozási megoldás-alapú adatok és is egyéni azokat az adatforrásokat, konfigurálhat egy Log Analytics-munkaterület csatlakozni.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

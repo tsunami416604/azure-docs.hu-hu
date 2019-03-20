@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 137429fc21bc71f0273029ca6578596b64001823
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: feb34ab8d811d813e751b25c2a6b6d4bf0397f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coralogix
 
@@ -108,6 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coralogix, hajtsa v�
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.coralogix.com`
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe:
+
     | |
     |--|
     | `https://api.coralogix.com/saml/metadata.xml` |
@@ -170,7 +171,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

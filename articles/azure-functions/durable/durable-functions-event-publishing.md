@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.author: glenga
-ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338107"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136361"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions közzétételét az Azure Event Grid (előzetes verzió)
 
@@ -35,16 +35,16 @@ Az alábbiakban néhány olyan forgatókönyvekben, ahol ez a funkció hasznos:
 * Telepítés [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/common/storage-use-emulator).
 * Telepítés [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
 
-## <a name="create-a-custom-event-grid-topic"></a>Egy egyéni Event Grid-témakör létrehozása
+## <a name="create-a-custom-event-grid-topic"></a>Egy egyéni event grid-témakör létrehozása
 
-Hozzon létre egy Event Grid-témakör Durable Functions származó események küldéséhez. Az alábbi utasításokat a témakör létrehozásához az Azure CLI-vel szemléltetik. Megtudhatja, hogyan teheti a PowerShell vagy az Azure portal használatával kapcsolatos információkért tekintse meg a következő cikkeket:
+Hozzon létre egy event grid-témakör Durable Functions származó események küldéséhez. Az alábbi utasításokat a témakör létrehozásához az Azure CLI-vel szemléltetik. Megtudhatja, hogyan teheti a PowerShell vagy az Azure portal használatával kapcsolatos információkért tekintse meg a következő cikkeket:
 
 * [EventGrid Gyorsútmutatók: Egyéni esemény létrehozása – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
 * [EventGrid Gyorsútmutatók: Egyéni esemény létrehozása – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Event Grid áttekintése](https://docs.microsoft.com/azure/event-grid/overview).
+Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. Azure Event Grid jelenleg nem támogatja az összes régióban. Információ arról, hogy mely régiókban érhető el: a [Azure Event Grid áttekintése](https://docs.microsoft.com/azure/event-grid/overview).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -52,7 +52,7 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Egy Event Grid-témakört, amelyben közzéteheti az esemény felhasználó által meghatározott végpontot biztosít. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés lesz.
+Az event grid-témakör, amelybe elküldheti az esemény felhasználó által meghatározott végpontot biztosít. A `<topic_name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés lesz.
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
@@ -78,25 +78,18 @@ Most már küldhet eseményeket a témakörbe.
 
 Az Durable Functions-projektben keresse meg a `host.json` fájlt.
 
-Adjon hozzá `EventGridTopicEndpoint` és `EventGridKeySettingName` a egy `durableTask` tulajdonság.
+Adjon hozzá `eventGridTopicEndpoint` és `eventGridKeySettingName` a egy `durableTask` tulajdonság.
 
 ```json
 {
     "durableTask": {
-        "EventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "EventGridKeySettingName": "EventGridKey"
+        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+        "eventGridKeySettingName": "EventGridKey"
     }
 }
 ```
 
-Az Azure Event Grid lehetséges konfigurációs tulajdonságai a következők:
-
-* **EventGridTopicEndpoint** -végpontja: az Event Grid-témakör. A *AppSettingName %* szintaxis segítségével oldja meg ezt az értéket az alkalmazásbeállítások és a környezeti változókat.
-* **EventGridKeySettingName** – az Azure-függvény meg az Alkalmazásbeállítás kulcsát. Durable Functions az Event Grid-témakör kulcs le az értéket.
-* **EventGridPublishRetryCount** – [nem kötelező] Ha közzétételét az Event Grid-témakör újrapróbálkozások száma sikertelen lesz.
-* **EventGridPublishRetryInterval** -[opcionális] a Event Grid közzététele az újrapróbálkozási időköznek a *óó* formátumban. Ha nincs megadva, az alapértelmezett újrapróbálkozási időköz értéke 5 perc.
-
-Miután beállította a `host.json` fájlt, a Durable Functions-projekt elindul, és életciklus-események küldése az Event Grid-témakör. Ez a módszer a függvényalkalmazáshoz, és helyi futtatása futtatásakor.
+Az Azure Event Grid lehetséges konfigurációs tulajdonságok található a [host.json dokumentáció](../functions-host-json.md#durabletask). Miután konfigurálta a `host.json` fájlt, a függvényalkalmazás küld életciklussal kapcsolatos események az event grid-témakör. Ez akkor működik, ha a függvényalkalmazás futtatása helyileg és az Azure-ban. ""
 
 A témakör kulcsot az Alkalmazásbeállítás beállítása a függvényalkalmazáshoz és `local.setting.json`. A következő JSON-ja mintát a `local.settings.json` helyi hibakereséshez. Cserélje le `<topic_key>` a témakör a kulccsal.  
 
@@ -115,9 +108,9 @@ Győződjön meg arról, hogy [Storage Emulator](https://docs.microsoft.com/azur
 
 ## <a name="create-functions-that-listen-for-events"></a>Az események függvények létrehozása
 
-Hozzon létre egy Függvényalkalmazást. Érdemes úgy elhelyezni, az Event Grid-témakör ugyanabban a régióban.
+Hozzon létre egy Függvényalkalmazást. Érdemes úgy elhelyezni, az event grid-témakör ugyanabban a régióban.
 
-### <a name="create-an-event-grid-trigger-function"></a>Event Grid eseményindító függvényének létrehozása
+### <a name="create-an-event-grid-trigger-function"></a>Event grid eseményindító függvényének létrehozása
 
 Hozzon létre egy függvényt az életciklus-események fogadására. Válassza ki **egyéni függvény**.
 
@@ -145,11 +138,11 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet hozzáad egy Event Grid-előfizetést, az Ön által létrehozott Event Grid-témakör. További információkért lásd: [az Azure Event Griddel kapcsolatos fogalmak](https://docs.microsoft.com/azure/event-grid/concepts)
+Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet hozzáad egy event grid-előfizetés az Ön által létrehozott event grid-témakör. További információkért lásd: [az Azure Event Griddel kapcsolatos fogalmak](https://docs.microsoft.com/azure/event-grid/concepts)
 
 ![Válassza ki az Event Grid-Trigger hivatkozásra.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-Válassza ki `Event Grid Topics` a **témakörtípus**. Válassza ki az erőforráscsoportot, amelyet létrehozott az Event Grid-témakör. Ezután válassza ki az Event Grid-témakör példányát. Nyomja meg `Create`.
+Válassza ki `Event Grid Topics` a **témakörtípus**. Válassza ki az erőforráscsoportot, amelyet létrehozott az event grid-témakör. Ezután válassza ki az event grid-témakör példányát. Nyomja meg `Create`.
 
 ![Event Grid-előfizetés létrehozása.](./media/durable-functions-event-publishing/eventsubscription.png)
 
@@ -171,7 +164,6 @@ using Microsoft.Extensions.Logging;
 namespace LifeCycleEventSpike
 {
     public static class Sample
-    {
     {
         [FunctionName("Sample")]
         public static async Task<List<string>> RunOrchestrator(
@@ -258,19 +250,19 @@ Tekintse meg a naplókat, a függvény, amely az Azure Portalon létrehozott.
 
 Az alábbi lista ismerteti az életciklus-események séma:
 
-* **ID**: Az Event Grid-esemény egyedi azonosítója.
-* **Tulajdonos**: Az esemény tárgya elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
-* **Adatok**: Durable Functions-specifikus paramétereket.
-  * **hubName**: [TaskHub](durable-functions-task-hubs.md) nevét.
-  * **Függvénynév**: Az orchestrator függvény neve.
-  * **instanceId**: Durable Functions instanceId.
-  * **OK**: A követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](durable-functions-diagnostics.md)
-  * **runtimeStatus**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva.
-* **esemény típusa**: "orchestratorEvent"
-* **eventTime**: Esemény időpontja (UTC).
-* **dataVersion**: Az életciklus-esemény séma verziója.
-* **metadataVersion**:  A metaadatok verziója.
-* **a témakör**: A témakör EventGrid erőforrás.
+* **`id`**: Az event grid-esemény egyedi azonosítója.
+* **`subject`**: Az esemény tárgya elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` lesz `Running`, `Completed`, `Failed`, és `Terminated`.  
+* **`data`**: Durable Functions-specifikus paramétereket.
+  * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) nevét.
+  * **`functionName`**: Az orchestrator függvény neve.
+  * **`instanceId`**: Durable Functions instanceId.
+  * **`reason`**: A követési esemény társított további adatokat. További információkért lásd: [(az Azure Functions) Durable Functions-diagnosztika](durable-functions-diagnostics.md)
+  * **`runtimeStatus`**: Vezénylési futásidejű állapot. Fut, befejezett, sikertelen, meg lett szakítva.
+* **`eventType`**: "orchestratorEvent"
+* **`eventTime`**: Esemény időpontja (UTC).
+* **`dataVersion`**: Az életciklus-esemény séma verziója.
+* **`metadataVersion`**:  A metaadatok verziója.
+* **`topic`**: Event grid témakör erőforrás.
 
 ## <a name="how-to-test-locally"></a>Helyi tesztelése
 

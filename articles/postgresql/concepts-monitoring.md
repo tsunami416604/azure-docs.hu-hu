@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: bdfeb41c7881bfbd577cdf1a9190617e09979a7f
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098491"
 ---
 # <a name="monitor-and-tune"></a>Figyelés és hangolás
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for PostgreSQL nyújt betekintést a kiszolgáló viselkedését a különböző megfigyelési lehetőségeket biztosít.
@@ -23,7 +23,7 @@ Azure Database for postgresql-hez különböző mérőszámokat, amelyek a Postg
 Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Leírás|
-|---|---|---|---|---|
+|---|---|---|---|
 |cpu_percent|Százalékos Processzorhasználat|Százalék|Processzorhasználat százalékos használja.|
 |memory_percent|Memória százalékos aránya|Százalék|Használt memória aránya.|
 |io_consumption_percent|I/o-százalék|Százalék|Százalékos i/o-használja.|
@@ -35,8 +35,8 @@ Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
 |active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
 |connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
-|network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
-|network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Hálózati az aktív kapcsolatok között.|
+|network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
+|network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók

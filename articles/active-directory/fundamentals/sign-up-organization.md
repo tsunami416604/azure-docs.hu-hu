@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937f53ecd60d6bbcc8fbd02f978974ac34f77c00
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101363"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Jelentkezzen be a szervezete Azure Active Directory használata
 Regisztráljon az Azure Active Directory (Azure AD) vagy egy új Microsoft Azure-előfizetést, a használatával:
@@ -27,8 +27,8 @@ Regisztráljon az Azure Active Directory (Azure AD) vagy egy új Microsoft Azure
 
 - **Munkahelyi vagy iskolai fiókjával.** Használja a munkahelyi vagy iskolai fiókkal hozzáférhet a kis, közepes és nagyvállalati a cloud services a Microsoft, például Azure, Microsoft Intune vagy Office 365-höz. A regisztrációt követően az egyik szolgáltatásba szervezetként, az Azure AD automatikusan látja el egy felhőalapú címtár, amely a szervezet jelöli. További információkért lásd: [kezelése az Azure AD-címtár](active-directory-administer.md).
 
-    >[!Note]
-    Azt javasoljuk, hogy használja a munkahelyi vagy iskolai fiókjával, ha már rendelkezik hozzáféréssel az Azure ad-hez. Azonban használjon bármely típusú fiókkal társítva az Azure-előfizetésében.
+  > [!Note]
+  >   Azt javasoljuk, hogy használja a munkahelyi vagy iskolai fiókjával, ha már rendelkezik hozzáféréssel az Azure ad-hez. Azonban használjon bármely típusú fiókkal társítva az Azure-előfizetésében.
 
 ## <a name="next-steps"></a>További lépések
 

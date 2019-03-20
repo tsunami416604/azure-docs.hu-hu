@@ -12,22 +12,28 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fcfe8ed0bc132377fbaefaccb03e1d6a9374b8d6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312474"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854840"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
-Az Azure SQL Database-ben a memóriabeli technológiák lehetővé teszi az alkalmazás teljesítményének javítása érdekében, és potenciálisan költségcsökkentés az adatbázis. Memóriabeli technológiákat az Azure SQL Database használatával érheti el a különböző számítási feladatokat a teljesítménnyel kapcsolatos fejlesztések:
+Az Azure SQL Database-ben a memóriabeli technológiák lehetővé teszi az alkalmazás teljesítményének javítása érdekében, és potenciálisan költségcsökkentés az adatbázis. 
+
+## <a name="when-to-use-in-memory-technologies"></a>Mikor érdemes használni, memóriabeli technológiákat
+
+Memóriabeli technológiákat az Azure SQL Database használatával érheti el a különböző számítási feladatokat a teljesítménnyel kapcsolatos fejlesztések:
 
 - **Tranzakciós** (online tranzakciófeldolgozás (OLTP)), a kérések többségét olvasni, vagy kisebb adatkészletet (például CRUD-műveletek) frissítése.
 - **Elemzési** (online analitikus feldolgozási (OLAP)), amelyekben az lekérdezések nagy részénél rendelkezik összetett számításokat a jelentéskészítés céljából, az adott számú lekérdezéseket, amelyek betöltése és adatok hozzáfűzése a meglévő táblák (tehát tömeges betöltési is nevezik), vagy törölje a a táblák adatait. 
 - **Vegyes** (hibrid tranzakció/analitikus feldolgozás (HTAP)) ahol egyaránt OLTP és OLAP típusú lekérdezések végrehajtásakor az adatok ugyanahhoz az adatkészlethez.
 
-Memóriabeli technológiákat javíthatja a teljesítményt a munkaterhelések tartja az adatokat a memóriába, a lekérdezések összeállítását natív használatával fel kell dolgozni, vagy feldolgozási ilyen speciális, kötegelt feldolgozási és elérhető SIMD utasításokat a az alapul szolgáló hardver.
+Memóriabeli technológiákat javíthatja a teljesítményt a munkaterhelések tartja az adatokat a memóriába, a lekérdezések összeállítását natív használatával fel kell dolgozni, vagy feldolgozási ilyen speciális, kötegelt feldolgozási és elérhető SIMD utasításokat a az alapul szolgáló hardver. 
+
+## <a name="overview"></a>Áttekintés
 
 Az Azure SQL Database In-Memory technologies alábbi rendelkezik:
 - *[Memóriabeli OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)*  tranzakciók másodpercenkénti száma növekszik, és csökkenti a késést, tranzakció-feldolgozás. Memóriabeli OLTP előnyeit kihasználó forgatókönyvek: nagy átviteli sebességű tranzakció-feldolgozási, például a kereskedelmi és a játékok, adatbetöltést események vagy IoT-eszközök, gyorsítótárazás, az adatok betöltése, és az ideiglenes tábla és a tábla változó forgatókönyvek.

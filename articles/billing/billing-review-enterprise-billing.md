@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 5cb26b98f5969032bcff95e4408fcf685399d6da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114501"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898703"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Tekintse át a vállalati beléptetési számlázási REST API-k használatával
 
@@ -78,7 +78,7 @@ Ez a példa bemutatja egy szinkron hívás, amely az aktuális elszámolási id�
 }
 ```  
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [számlázási fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/listbybillingaccount) minden válasz mező és a hibakezelés részletes ismertetése.
+Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [számlázási fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
 
 ## <a name="department-billing"></a>Részleg számlázás 
 
@@ -134,7 +134,7 @@ Az alábbi példa bemutatja a REST API-val részleg kimenete `1234`.
 }
 ```  
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [felhasználási részletek beolvasása Intézet](/rest/api/consumption/usagedetails/listbydepartment) minden válasz mező és a hibakezelés részletes ismertetése.
+Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [felhasználási részletek beolvasása Intézet](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
 
 ## <a name="enrollment-account-billing"></a>Regisztrációs fiók számlázás
 
@@ -187,7 +187,7 @@ Az alábbi példa bemutatja a REST API, a nagyvállalati beléptetés kimenete `
 }
 ``` 
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [regisztrációs fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/listbyenrollmentaccount) minden válasz mező és a hibakezelés részletes ismertetése.
+Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [regisztrációs fiók részletes használati adatok lekérése](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) minden válasz mező és a hibakezelés részletes ismertetése.
 
 ## <a name="next-steps"></a>További lépések 
 - Felülvizsgálat [Enterprise reporting áttekintése](https://docs.microsoft.com/azure/billing/billing-enterprise-api)

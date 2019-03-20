@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Riskware
 
@@ -110,6 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Riskware tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | Környezet| Az URL-minta|
     |--|--|
     | Felhasználói tesztelés|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
@@ -118,6 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     |||
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be egy URL-címe:
+    
     | Környezet| Az URL-minta|
     |--|--|
     | Felhasználói tesztelés| `https://riskcloud.net/uat` |
@@ -247,7 +249,7 @@ Ahhoz, hogy az Azure AD-felhasználók Riskware bejelentkezni, akkor ki kell ép
 
     a. A **hitelesítési** szakaszban jelölje be a **hitelesítési** üzemmódot, amely rendelkezik beállítása AZURE-konfiguráció, például egyszeri bejelentkezéshez.
 
-    b. Alatt **bejelentkezési adatait** ebben a szakaszban a **felhasználói azonosító** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    b. Alatt **bejelentkezési adatait** ebben a szakaszban a **felhasználói azonosító** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
 
     c. Az a **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

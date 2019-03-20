@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 408d8ec1c14174fe0536681afcb8f646481b851b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b16502528818e67e1377f47fa51504a2a7863e28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193908"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123521"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken 
 
@@ -228,13 +228,13 @@ Biztonsági mentési szabályzat létrehozása:
 3. A **házirendnév**, adja meg az új házirend nevét. 
 4. A **teljes biztonsági mentés házirend**, jelölje be a **biztonsági mentés gyakorisága**, válassza a **napi** vagy **heti**.
 
-    - A **napi**, válasszon ki és az időzónát, amikor megkezdődik a biztonsági mentési feladat.
-    - Egy teljes biztonsági mentést kell futtatásakor, nem kapcsolhatja ki az **teljes biztonsági mentésre** lehetőséget.
-    - Kattintson a **teljes biztonsági mentés** a szabályzat megtekintéséhez. 
-    - Különbségi biztonsági mentés napi teljes biztonsági mentések esetén nem hozható létre.
-    - A **heti**, amikor megkezdődik a biztonsági mentési feladatot, válassza ki a nap, hét, óra és időzóna.
+   - A **napi**, válasszon ki és az időzónát, amikor megkezdődik a biztonsági mentési feladat.
+   - Egy teljes biztonsági mentést kell futtatásakor, nem kapcsolhatja ki az **teljes biztonsági mentésre** lehetőséget.
+   - Kattintson a **teljes biztonsági mentés** a szabályzat megtekintéséhez. 
+   - Különbségi biztonsági mentés napi teljes biztonsági mentések esetén nem hozható létre.
+   - A **heti**, amikor megkezdődik a biztonsági mentési feladatot, válassza ki a nap, hét, óra és időzóna.
 
-    ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/full-backup-policy.png)  
+     ![új biztonsági mentési szabályzat mezők](./media/backup-azure-sql-database/full-backup-policy.png)  
 
 5. A **megőrzési**, alapértelmezés szerint minden lehetőség ki van jelölve. Törölje minden olyan nemkívánatos adatmegőrzési tartomány korlátok nem kívánja használni, és állítsa be a használandó időközt. 
 
@@ -263,7 +263,7 @@ Biztonsági mentési szabályzat létrehozása:
 11. A **Naplóalapú biztonsági mentés**válassza **engedélyezése**, majd állítsa be a gyakoriság és megőrzési szabályozza. Naplóalapú biztonsági mentések fordulhat elő, mint 15 perces gyakorisággal, és akár 35 napig lehet megtartani.
 12. Válassza ki **OK** mentse a szabályzatot, és térjen vissza a fő **biztonsági mentési szabályzat** menü.
 
-   ![A napló biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+    ![A napló biztonsági mentési szabályzat szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
 13. Az a **biztonsági mentési szabályzat** menüben válassza ki, hogy engedélyezi-e **SQL biztonsági másolat tömörítése**.
     - A tömörítés alapértelmezés szerint le van tiltva.

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 725580a01c8dd60003cfc11910a3e5183624b1b1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437538"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878431"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -233,7 +233,7 @@ New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Lo
 # Set your current working storage account
 Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-# Create a Azure File Service Share
+# Create an Azure File Service Share
 $s = New-AzureStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
 New-AzureStorageDirectory -Share $s -Path <directory name>
@@ -279,7 +279,7 @@ Az Azure blob egy megbízható, gazdaságos felhőalapú tárolás, a kis- és b
 ![A Storage-fiók létrehozását az Azure Portal képernyőképe](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Győződjön meg arról, hogy az előre telepített parancssori AzCopy eszköz a következő címen található ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. A könyvtárra, amelyben az azcopy.exe már szerepel a PATH környezeti változóba, ha nem szeretné beírni a parancs teljes elérési útja, ez az eszköz futtatásakor. További információ az AzCopy eszközt, tekintse meg [AzCopy dokumentációját](../../storage/common/storage-use-azcopy.md)
-* Az Azure Storage Explorer eszköz elindításához. Le is tölthetők: [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
+* Az Azure Storage Explorer eszköz elindításához. Le is tölthetők: [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 
 ![Képernyőkép az Azure Storage Explorer egy Storage-fiók elérése során](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -296,7 +296,7 @@ Cserélje le **C:\myfolder** a elérési utat, ahová a fájlt tárolja, **mysto
 AzCopy-parancs futtatása, a PowerShellben vagy a parancssorból. Íme néhány példa a használatra az AzCopy-parancsot:
 
 ```powershell
-# Copy *.sql from local machine to a Azure Blob
+# Copy *.sql from local machine to an Azure Blob
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
 # Copy back all files from Azure Blob container to Local machine

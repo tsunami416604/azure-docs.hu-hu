@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872566"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Gyors útmutató: Ismeri fel a beszédfelismerés, beszédfelismerési SDK for Unity (bétaverzió)
 
@@ -65,7 +65,7 @@ Hozzáadunk egy minimális felhasználói felület, a jelenet álló egy gombot,
 * Az a [hierarchia ablak](https://docs.unity3d.com/Manual/Hierarchy.html) (alapértelmezés szerint a bal oldalon), egy minta jelenet jelenik meg, hogy a Unity-az új projekt létrehozása.
 * Kattintson a **létrehozás** gombra hierarchia ablak tetején, és válassza **felhasználói felület** > **gomb**.
 * Ez hoz létre, amelyek a hierarchia ablakban látható három játék objektum: egy **gomb** objektum ágyazott egy **Vászonalapú** objektumot, és a egy **EventSystem** objektum.
-* [Keresse meg a jelenet nézet](https://docs.unity3d.com/Manual/SceneViewNavigation.html) , egy megfelelő választás a vászonalapú és a gombra a megtekintése, a [jelenet nézet](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
+* [Keresse meg a jelenet nézet](https://docs.unity3d.com/Manual/SceneViewNavigation.html) , a vászonalapú és a gombra a megfelelő rálátással rendelkezik a [jelenet nézet](https://docs.unity3d.com/Manual/UsingTheSceneView.html).
 * Kattintson a **gomb** a hierarchia ablakának megnyitásával megjelenítheti annak beállításait az objektumot a [vizsgáló ablak](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon).
 * Állítsa be a **Pos X** és **Pos Y** tulajdonságok **0**, így a gombot a vászon közepén közepén.
 * Kattintson a **létrehozás** gombra hierarchia ablak tetején, és válassza **felhasználói felület** > **szöveg** hozhat létre egy szövegmezőt.
@@ -82,14 +82,14 @@ Ha elkészült, a felhasználói felület alábbi képernyőképhez hasonlóan k
 
 1. Szerkessze a szkriptet a dupla kattintással.
 
-  > [!NOTE]
-  > Beállíthatja, hogy melyik Kódszerkesztő elindul a **szerkesztése** > **beállítások**, tekintse meg a [Unity felhasználói kézikönyv](https://docs.unity3d.com/Manual/Preferences.html).
+   > [!NOTE]
+   > Beállíthatja, hogy melyik Kódszerkesztő elindul a **szerkesztése** > **beállítások**, tekintse meg a [Unity felhasználói kézikönyv](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Cserélje le az összes kód a következőket:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Keresse meg és cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
+1. Keresse meg és cserélje le a karakterláncot `YourSubscriptionKey` az beszédszolgáltatások előfizetési kulccsal végzett.
 
 1. Keresse meg és cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md). Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
 
@@ -97,19 +97,19 @@ Ha elkészült, a felhasználói felület alábbi képernyőképhez hasonlóan k
 
 1. Vissza a Unity-szerkesztőben, a parancsfájl hozzá kell adnia egy összetevő, a játék objektumok egyikének.
 
-  * Kattintson a **Vászonalapú** objektum a hierarchia ablakban. Ez a beállítás a megnyílik a [vizsgáló ablak](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldali).
-  * Kattintson a **összetevő felvétele** vizsgáló ablakban, majd keresse meg a HelloWorld parancsfájl hozunk létre felett, és adja hozzá a gombra.
-  * Vegye figyelembe, hogy rendelkezik-e a "Hello World" összetevőt nem inicializált tulajdonságok **szöveget** és **Start helyreállítási gomb**, amely megfelel a nyilvános tulajdonságainak a `HelloWorld` osztály.
-    Őket beállítani, kattintson az Objektumválasztóban (a kis kör ikon tulajdonság jobbra), és válassza ki a korábban létrehozott szöveg és a gomb objektumokat.
+   * Kattintson a **Vászonalapú** objektum a hierarchia ablakban. Ez a beállítás az megnyílik a [vizsgáló ablak](https://docs.unity3d.com/Manual/UsingTheInspector.html) (alapértelmezés szerint a jobb oldalon).
+   * Kattintson a **összetevő felvétele** vizsgáló ablakban, majd keresse meg a HelloWorld parancsfájl hozunk létre felett, és adja hozzá a gombra.
+   * Vegye figyelembe, hogy rendelkezik-e a "Hello World" összetevőt nem inicializált tulajdonságok **szöveget** és **Start helyreállítási gomb**, amely megfelel a nyilvános tulajdonságainak a `HelloWorld` osztály.
+     Őket beállítani, kattintson az Objektumválasztóban (a kis kör ikon tulajdonság jobbra), és válassza ki a korábban létrehozott szöveg és a gomb objektumokat.
 
-    > [!NOTE]
-    > A gomb is van egy beágyazott szöveg objektumot. Győződjön meg arról, hogy ne véletlenül foglalkozzon azt szöveges kimenet (vagy nevezze át egy szöveges-objektum neve mező használatával a vizsgáló ablakban kavarodás elkerülése érdekében).
+     > [!NOTE]
+     > A gomb is van egy beágyazott szöveg objektumot. Győződjön meg arról, hogy ne véletlenül foglalkozzon azt szöveges kimenet (vagy nevezze át egy szöveges-objektum neve mező használatával a vizsgáló ablakban kavarodás elkerülése érdekében).
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Futtassa az alkalmazást a Unity-szerkesztő
 
 * Nyomja le az **lejátszása** a Unity eszköztáron (alább a menüsoron) gombra.
 
-* Az alkalmazás indításakor, miután a gombra, és a egy angol nyelvű kifejezést vagy mondat beszéljen a számítógép mikrofon. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
+* Az alkalmazás indításakor, miután a gombra, és a egy angol nyelvű kifejezést vagy mondat beszéljen a számítógép mikrofon. A beszéd továbbítani a beszédszolgáltatások, és a megjelenített érzéseket szöveg, amely megjelenik az ablakban.
 
   [![A futó rövid útmutatóban a Unity-játék ablak képernyőképe](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 

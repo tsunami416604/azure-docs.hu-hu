@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ff0a70d8b370655df1eef55dac68804a1db406b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f83ee40c97e49add539a44a6ba764024a8e47bfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082146"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081491"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Létrehozása és kezelése az Azure DevTest Labs szolgáltatásban igényelhető virtuális gépek
 Igényelhető virtuális gép egy laborhoz hasonló módon, hogy miként hozzáadása, [standard virtuális gép hozzáadása](devtest-lab-add-vm.md) – egy *alap* , amely vagy egy [egyéni rendszerkép](devtest-lab-create-template.md), [képlet](devtest-lab-manage-formulas.md) , vagy [Piactéri lemezképhez](devtest-lab-configure-marketplace-images.md). Ez az oktatóanyag végigvezeti a DevTest Labs szolgáltatásban létrehozott tesztkörnyezet igényelhető virtuális gép hozzáadása az Azure portal használatával, és bemutatja a folyamatok, a felhasználó követi, és a virtuális gép mintaszkript.
@@ -64,12 +64,12 @@ A felhasználó igényelhet bármely virtuális Gépet a listából a "Igényelh
 
 * "Igényelhető virtuális gépnek" a labor "Áttekintés" panel alján a listából, kattintson a jobb gombbal a virtuális gépek, a lista egyik, és válassza a **jogcím gép**.
 
- ![A kérelem egy adott igényelhető virtuális gép.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
+  ![A kérelem egy adott igényelhető virtuális gép.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
 * Válassza az "Áttekintés" panel tetején lévő **minden jogcím**. Egy véletlenszerű virtuális gépnek kioszt igényelhető virtuális gépek listájából.
 
- ![Igényelhető virtuális Gépeket kérelmet.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Igényelhető virtuális Gépeket kérelmet.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
 Után egy felhasználói jogcímek egy virtuális Gépet, a "Saját virtuális gépnek" listájába kerül, és már nem igényelhető, amelyet semmilyen más felhasználó.

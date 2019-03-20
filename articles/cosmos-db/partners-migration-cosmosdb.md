@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 748f4562e1efd613b87dd5ab44a83d3d50171f67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3126be88e272ab3891caa94ee15b622b0dfbdbdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539921"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860499"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
 
@@ -32,10 +32,10 @@ A nosql-alapú áttelepítés alkalmazásfejlesztés közül választhat külön
 |![Altoros fejlesztési LLC][3]    |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |   Egyesült Államok, Norvégia, Finnország, Belarusz, Argentína |  [Webhely](https://www.altoros.com/)     |
 |![Attunix Redapt][4]     |   Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez      |    USA     |  [Webhely](https://www.attunix.com/)       |
 | ![Avanade][26] | Új alkalmazások fejlesztését, <br/> Alkalmazásfejlesztés (meglévő alkalmazások) | Ausztria, Németország, Svájc, Olaszország, Norvégia, Spanyolország, Egyesült Királyság | [Webhely](https://www.avanade.com/)
-|![Bluemetal Architects-nek][5]     |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    Észak-Amerikában, Ázsiában és csendes-óceáni     |  [Webhely](http://www.bluemetal.com/)       |
+|![Bluemetal Architects-nek][5]     |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    Észak-Amerikában, Ázsiában és csendes-óceáni     |  [Webhely](https://www.bluemetal.com/)       |
 |![Capax globális LLC][6]     |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez       |    USA     |  [Webhely](https://www.capaxglobal.com/)       |
 | ![Szolgáltatást valamennyi][14] | Nosql-alapú áttelepítés; Alkalmazásfejlesztés (meglévő alkalmazások); Új alkalmazások fejlesztéséhez | Egyesült Államok, Franciaország, Egyesült Királyság, Németország, Finnország  | [Webhely](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |    Egyesült Királyság     |  [Webhely](http://www.coeo.com/)       |
+|![Coeo][7]     |   Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |    Egyesült Királyság     |  [Webhely](https://www.coeo.com/)       |
 | ![Cognizant][15] | Nosql-alapú áttelepítés |Egyesült Államok, Kanada, Egyesült Királyság, Dánia, Hollandia, Svájc, Ausztrália, japán | [Webhely](https://www.cognizant.com/)|
 |![Infosys][8]     |  Nosql-alapú áttelepítés       |    Globális     |  [Webhely](https://www.infosys.com/)       |
 | ![Lagash][16] | Nosql-alapú áttelepítés <br/> Új alkalmazások fejlesztéséhez | Argentína, Chile, Kolumbia, Mexikó| [Webhely](https://www.lagash.com/)|

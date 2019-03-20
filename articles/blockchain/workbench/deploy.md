@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fcba3aef29e1566f9dfb2b151c15fe683be94fdb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7fead05e7404e042d923631f4ba745553085943a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098110"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -108,20 +108,20 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
 
     A *meglévő* beállítás lehetővé teszi az Ethereum koncepció jogosultság (PoA) blockchain-hálózat megadása. Végpontok az alábbi követelményekkel rendelkezik.
 
-    * A végpont egy Ethereum koncepció jogosultság (PoA) blockchain hálózaton kell lennie.
-    * A végpont nyilvánosan elérhetőnek kell lennie a hálózaton keresztül.
-    * A blockchain PoA hálózati nastavena nA hodnotu nula gáz ár rendelkeznie kell konfigurálni.
+   * A végpont egy Ethereum koncepció jogosultság (PoA) blockchain hálózaton kell lennie.
+   * A végpont nyilvánosan elérhetőnek kell lennie a hálózaton keresztül.
+   * A blockchain PoA hálózati nastavena nA hodnotu nula gáz ár rendelkeznie kell konfigurálni.
 
-    > [!NOTE]
-    > Blockchain Workbenchet fiókok vannak nem támogatott. Ha alapok szükség, a tranzakciók sikertelenek.
+     > [!NOTE]
+     > Blockchain Workbenchet fiókok vannak nem támogatott. Ha alapok szükség, a tranzakciók sikertelenek.
 
-    ![Meglévő blockchain-hálózat speciális beállításai](media/deploy/advanced-blockchain-settings-existing.png)
+     ![Meglévő blockchain-hálózat speciális beállításai](media/deploy/advanced-blockchain-settings-existing.png)
 
-    | Beállítás | Leírás  |
-    |---------|--------------|
-    | RPC Ethereum-végpont | Adjon meg egy létező PoA blockchain-hálózat RPC-végpont. A végpont https:// vagy a http:// előtaggal kezdődik, és a egy portszámot végződik. Például: `http<s>://<network-url>:<port>` |
-    | Az Azure Active Directory-beállítások | Válasszon **hozzáadását a későbbiekben**.</br>Megjegyzés: Ha úgy döntött, hogy [előre konfigurálhatja az Azure ad-ben](#azure-ad-configuration) vagy újbóli üzembe helyezés, válassza ki a *felvétele most*. |
-    | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. |
+     | Beállítás | Leírás  |
+     |---------|--------------|
+     | RPC Ethereum-végpont | Adjon meg egy létező PoA blockchain-hálózat RPC-végpont. A végpont https:// vagy a http:// előtaggal kezdődik, és a egy portszámot végződik. Például: `http<s>://<network-url>:<port>` |
+     | Az Azure Active Directory-beállítások | Válasszon **hozzáadását a későbbiekben**.</br>Megjegyzés: Ha úgy döntött, hogy [előre konfigurálhatja az Azure ad-ben](#azure-ad-configuration) vagy újbóli üzembe helyezés, válassza ki a *felvétele most*. |
+     | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. |
 
 9. Válassza ki **OK** speciális beállítások befejezéséhez.
 
@@ -223,18 +223,18 @@ Ezután meg kell módosítania a jegyzékfájl az alkalmazás-szerepkörök hasz
 
     ``` json
     "appRoles": [
-         {
-           "allowedMemberTypes": [
-             "User",
-             "Application"
-           ],
-           "displayName": "Administrator",
-           "id": "<A unique GUID>",
-           "isEnabled": true,
-           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
-           "value": "Administrator"
-         }
-       ],
+         {
+           "allowedMemberTypes": [
+             "User",
+             "Application"
+           ],
+           "displayName": "Administrator",
+           "id": "<A unique GUID>",
+           "isEnabled": true,
+           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
+           "value": "Administrator"
+         }
+       ],
     ```
 
     > [!IMPORTANT]

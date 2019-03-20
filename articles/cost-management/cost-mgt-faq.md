@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011805"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
@@ -75,7 +75,7 @@ Miután elvégezte az előző lépéseket, megtekintheti a optimalizáló javasl
 Először tekintsük át azokat a leggyakoribb forgatókönyvet, amelynek hatására a felhasználói fiókok beolvasásához *initiallySuspended*.
 
 > Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A szervezet készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. Regisztrálja a Cloudyn szolgáltatás és a jelentkezik be a Cloudyn portálra személynek, ő válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portált használja, akkor létrehozása az Azure-fiókok és állít be egy entitáshierarchiára. Rendszergazda1 Admin2, egy Bérlői rendszergazda, amely regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portálon kell figyelmeztet.
-
+> 
 > Admin2 regisztrálja az Azure Portalon keresztül. Azonban ha ő próbál bejelentkezni a Cloudyn portálon, kapjuk fiókját próbálnak hiba **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
 
 
@@ -126,9 +126,9 @@ A Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénz
 
 A Cloudyn rendelkezik a következő adatok frissítési ütemtervet:
 
-- **Kezdeti**: Miután beállította, költségadatok megtekintéséhez a Cloudyn akár 24 órát is igénybe vehet. A Cloudyn elegendő adatgyűjtéshez méretezési javaslatok megjelenítése akár 10 nap is is igénybe vehet.
-- **Napi**: a tizedik naponta vagy minden hónap végén, a Cloudyn jelenít meg az adatokat az előző nap után UTC + 3 kapcsolatban a következő nap naprakész.
-- **Havi**: a tizedik nap minden hónap első napjától kezdve a Cloudyn megjelenítése előfordulhat, hogy az adatok csak az előző hónap végéig.
+- **Kezdeti**: Miután beállítása költségadatok megtekintéséhez a Cloudyn akár 24 órát is igénybe vehet. A Cloudyn elegendő adatgyűjtéshez méretezési javaslatok megjelenítése akár 10 nap is is igénybe vehet.
+- **Napi**: A tizedik naponta vagy minden hónap végén a Cloudyn jelenít meg az adatokat az előző nap után UTC + 3 kapcsolatban a következő nap naprakész.
+- **Havi**: A tizedik nap minden hónap első napjától kezdve a Cloudyn megjelenítése előfordulhat, hogy az adatok csak az előző hónap végéig.
 
 A Cloudyn feldolgozza az adatokat az előző napi, amikor az előző nap adatainak teljes elérhetőnek kell lennie. Az előző nap adatainak a Cloudyn által kapcsolatos UTC + 3 általában érhető el minden nap. Egyes adatok, például címkék, feldolgozni további 24 órát is igénybe vehet.
 

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208176"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088927"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre támogatási mátrix
 
@@ -110,10 +110,10 @@ Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések
 
 A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók vagy fizikai kiszolgálók és a másodlagos hely közötti replikációt. Replikációs beállításakor győződjön meg arról, hogy a mobilitási szolgáltatást, és más összetevők a legújabb verzióval rendelkezik.
 
-**Update** | **Részletek** 
---- | --- 
-Scout frissítések | [Ismerje meg, és töltse le](vmware-physical-secondary-disaster-recovery.md#updates) Scout legújabb frissítései | Scout frissítések összesítettek.
-Összetevő-frissítései | Scout frissítések összetevők, például a RX server, konfigurációs kiszolgáló, folyamat és a fő célkiszolgálókat, vContinuum-kiszolgáló, és védeni kívánt adatforrás-kiszolgálók frissítést is tartalmaznak.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).
+| **Update** | **Részletek** |
+| --- | --- |
+|Scout frissítések | Scout frissítések összesítettek. <br/><br/> [Ismerje meg, és töltse le](vmware-physical-secondary-disaster-recovery.md#updates) Scout legújabb frissítései |
+|Összetevő-frissítései | Scout frissítések összetevők, például a RX server, konfigurációs kiszolgáló, folyamat és a fő célkiszolgálókat, vContinuum-kiszolgáló, és védeni kívánt adatforrás-kiszolgálók frissítést is tartalmaznak.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>További lépések

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e9bf06ba058078fc5012410bdd75ef90ff6c93d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976800"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899009"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Állítsa be a konfigurációs kiszolgáló, valamint fizikai kiszolgálók Azure-bA
 
@@ -22,7 +22,7 @@ Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fiz
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk feltételezi, hogy már rendelkezik:
-- A Recovery Services-tároló az a [az Azure portal](http://portal.azure.com "az Azure portal").
+- A Recovery Services-tároló az a [az Azure portal](https://portal.azure.com "az Azure portal").
 - Fizikai számítógép, amelyen a konfigurációs kiszolgáló telepítése.
 - Ha, le lett tiltva a TLS 1.0-t a gépen, amelyen a konfigurációs kiszolgálót telepít, ellenőrizze, hogy engedélyezve van-e a TLs 1.2-es és, hogy a .NET-keretrendszer 4.6-os vagy újabb verziója telepítve van a számítógépen (az erős titkosítás le van tiltva). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
@@ -47,7 +47,7 @@ A következő táblázat felsorolja a minimális hardver-, szoftver, és a konfi
 
 1. A **forrás előkészítése**, ha nem rendelkezik a konfigurációs kiszolgáló, kattintson a **+ konfigurációs kiszolgáló** kattintva felvehet egyet.
 
-  ![A forrás beállítása](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![A forrás beállítása](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. Az a **-kiszolgáló hozzáadása** panelen ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
 4. A Site Recovery egyesített telepítőjének telepítőfájl letöltéséhez.
 5. Töltse le a tároló regisztrációs kulcsát. A regisztrációs kulcs egyesített telepítő futtatásakor kell. A kulcs a generálásától számított öt napig érvényes.

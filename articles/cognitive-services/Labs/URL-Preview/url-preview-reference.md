@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: da23d8037f37174826a2b9662c39bb507367a6ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104709"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -56,7 +56,7 @@ Engedélyezett használatát és a megjelenített eredmények kapcsolatos inform
 > Néhány kérelemfejlécek jelentős más keresési API-k nem befolyásolják a következő URL-cím előnézete
 > - Direktiva pragma – a hívó nem rendelkezik URL-cím előnézete használ-e gyorsítótár felett
 > - Felhasználói ügynök – egyelőre előzetes API Url nem biztosít különböző válaszokat ad a Közösségtől származó PC, hordozható számítógép vagy mobileszköz hívásokat.
-
+> 
 > Is néhány paraméter nem jelenleg jelentéssel bíró URL-cím előzetes API-hoz, de a jövőben a továbbfejlesztett globalizációs használhatók.
 
 ## <a name="headers"></a>Fejlécek

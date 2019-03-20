@@ -7,18 +7,18 @@ ms.topic: overview
 ms.author: jmartens
 author: j-martens
 ms.date: 2/28/2019
-ms.openlocfilehash: 5bc01ad6811cc5661d74770ce36281c9acba8912
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e495ed06c640601c0500d14b42070a264fd687a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196263"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862114"
 ---
 # <a name="migrating-from-batch-ai-to-azure-machine-learning-service"></a>Batch AI-ről az Azure Machine Learning szolgáltatáshoz
 
 **Az Azure Batch AI szolgáltatás márciusi kivonás alatt áll.** Az ipari méretekben tanítási és pontozási a Batch AI képességeit már elérhetők [Azure Machine Learning szolgáltatás](../machine-learning/service/overview-what-is-azure-ml.md), amely óta általánosan elérhető 2018. December 4.
 
-Sok más gépi tanulási funkciókat, valamint az Azure Machine Learning szolgáltatás tartalmaz egy felhőalapú, felügyelt számítási célt képzés, üzembe helyezése és pontozás a machine learning-modellek. A számítási célnak nevezzük [Azure Machine Learning Compute](../machine-learning/service/how-to-set-up-training-targets.md#amlcompute). [Indítsa el a migrálást, és jelenleg is használó](#migrate). Az Azure Machine Learning szolgáltatás segítségével kezelheti a [Python SDK-k](../machine-learning/service/quickstart-create-workspace-with-python.md), parancssori felületet, és a [az Azure portal](../machine-learning/service/quickstart-get-started.md).
+Sok más gépi tanulási funkciókat, valamint az Azure Machine Learning szolgáltatás tartalmaz egy felhőalapú, felügyelt számítási célt képzés, üzembe helyezése és pontozás a machine learning-modellek. A számítási célnak nevezzük [Azure Machine Learning Compute](../machine-learning/service/how-to-set-up-training-targets.md#amlcompute). Indítsa el a migrálást, és jelenleg használ. Az Azure Machine Learning szolgáltatás segítségével kezelheti a [Python SDK-k](../machine-learning/service/quickstart-create-workspace-with-python.md), parancssori felületet, és a [az Azure portal](../machine-learning/service/quickstart-get-started.md).
 
 Az előzetes verzió a Batch AI verzióról a GA'ed Azure Machine Learning szolgáltatáshoz biztosít révén könnyebben használható, például Estimators és adattárainak fogalmakat jobb felhasználói élményt. Általánosan elérhető Azure-szolgáltatási szintű SLA-k és az ügyfél-támogatási is garantálja.
 
@@ -87,7 +87,7 @@ További információ az Azure Machine Learning-munkaterület osztály a [SDK-fo
 
 
 ## <a name="create-compute-clusters"></a>Számítási fürtök létrehozása
-Az Azure Machine Learning támogatja több számítási célnak, amelyek némelyike kezeli a szolgáltatás és mások csatolható a munkaterülethez (például) Egy HDInsight-fürtöt, vagy egy távoli virtuális Gépen. További információ a különböző [számítási céljainak](../machine-learning/service/how-to-set-up-training-targets.md). A számítási fürt képezi le egy AmlCompute fürt létrehozása az Azure Machine Learning szolgáltatás létrehozása egy Azure Batch AI fogalma. A Amlcompute létrehozása eltarthat hogyan adja át a paramétereket az Azure Batch AI hasonló számítási konfigurációban. Megjegyzés: az egyik dolog, hogy az automatikus skálázás alapértelmezés szerint engedélyezve van a AmlCompute fürtön mivel ki van kapcsolva az Azure Batch AI alapértelmezés szerint.
+Az Azure Machine Learning támogatja több számítási célnak, amelyek némelyike kezeli a szolgáltatás és mások csatolható a munkaterülethez (például) Egy HDInsight-fürtöt, vagy egy távoli virtuális Gépen. További információ a különböző [számítási céljainak](../machine-learning/service/how-to-set-up-training-targets.md). A számítási fürt képezi le egy AmlCompute fürt létrehozása az Azure Machine Learning szolgáltatás létrehozása az Azure Batch AI fogalma. A Amlcompute létrehozása eltarthat hogyan adja át a paramétereket az Azure Batch AI hasonló számítási konfigurációban. Megjegyzés: az egyik dolog, hogy az automatikus skálázás alapértelmezés szerint engedélyezve van a AmlCompute fürtön mivel ki van kapcsolva az Azure Batch AI alapértelmezés szerint.
 
 A **Batch AI**, így kész is:
 

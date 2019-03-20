@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8544d63f38f88a0e623dff343bf8b5133931b70b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 07550ed9c78aa584e55403d225eef4bcff33b057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167422"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Beszélgetéstanuló modell többértékű entitások használata
 Ez az oktatóanyag bemutatja az entitások a többértékű tulajdonság.
@@ -25,7 +25,7 @@ Ez az oktatóanyag bemutatja az entitások a többértékű tulajdonság.
 [![Többértékű entitások oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_MultiValued_Preview)](https://aka.ms/cl_Tutorial_v3_MultiValued)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz, hogy az általános oktatóanyag Bot fut.
 
     npm run tutorial-general
 
@@ -36,65 +36,65 @@ Entitások megjelölt többértékű egyes ismert példányok az entitás egy li
 
 ## <a name="steps"></a>Lépések
 
+Indítsa el a kezdőlapon a webes felhasználói felületen.
+
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az "új Model" kifejezésekre.
-2. A "Name" mezőben írja be a "MultiValueEntities" és az enter.
-3. A "Létrehozás" gombra.
+1. Válassza ki **új modell**.
+2. Adja meg **MultiValueEntities** a **neve**.
+3. Kattintson a **Létrehozás** gombra.
 
 ### <a name="entity-creation"></a>Entitás létrehozása
 
-1. A bal oldali panelen kattintson a "Entitás", majd az "Új entitás" gombra.
-2. Válassza ki a "Custom betanított" a "entitástípus."
-3. Írja be a "toppings" a "entitás neve."
-4. Jelölje be a "Többértékű" jelölőnégyzetet.
-    - Többértékű entitások gyűlnek az entitás egy vagy több értéket.
-5. Jelölje be a "Negatable" jelölőnégyzetet.
-    - A "Negatable" tulajdonság egy másik oktatóanyagban vonatkozik.
-6. A "Létrehozás" gombra.
+1. Válassza ki **entitások** a bal oldali panelen, majd **új entitás**.
+2. Válassza ki **betanított egyéni** a **entitástípus**.
+3. Adja meg **toppings** a **entitásnév**.
+4. Ellenőrizze **többértékű** ahhoz, hogy az entitás egy vagy több értéket összeadódhatnak.
+5. Ellenőrizze **negálható**.
+6. Kattintson a **Létrehozás** gombra.
 
-![](../media/tutorial6_entities.PNG)
+![](../media/T07_entity_create.png)
 
 ### <a name="create-the-first-action"></a>Az első művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "az alábbiakban a toppings: $toppings"
-    - A vezető dollárjel azt jelzi, hogy az entitások bemutatása
-3. A "Létrehozás" gombra.
+1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
+2. Adja meg **az alábbiakban a toppings: $toppings** a **robot a válasz...** . A vezető dollárjel entitáshivatkozás jelzi.
+3. Kattintson a **Létrehozás** gombra.
+
+![](../media/T07_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>A második művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "milyen toppings szeretné használni?"
-3. A "Kizárásának feljogosítja a" mezőbe írja be a "toppings."
-4. A "Létrehozás" gombra.
+1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
+2. Adja meg **milyen toppings szeretné használni?** a **robot a válasz...** .
+3. Adja meg **toppings** a **kizárásának feljogosítja a**.
+4. Kattintson a **Létrehozás** gombra.
 
 Most már két műveletet.
 
-![](../media/tutorial6_actions.PNG)
+![](../media/T07_action_create_2.png)
 
 ### <a name="train-the-model"></a>A modell betanítását
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", típus a "hi."
-3. A "Score műveletek" gombra.
-4. Válassza ki a választ, a "milyen toppings szeretné?"
-    - A PERCENTILIS 100 %-os megegyezik az egyetlen érvényes művelet a korlátok alapján.
-5. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "sajtok iránti szenvedélyének és gomba" típusra
-6. Kattintson a "sajtok iránti szenvedélyének", és válassza ki a címke "+ toppings"
-7. Kattintson a "gomba", és válassza ki a címke "+ toppings"
-8. A "Score műveletek" gombra.
-9. Válassza ki a választ, "az alábbiakban a toppings: $toppings"
-10. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "add bors" típusa
-11. Kattintson a "bors", és válassza ki a címke "+ toppings"
-12. A "Score műveletek" gombra.
-13. Válassza ki a választ, "az alábbiakban a toppings: $toppings"
-14. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", írja be a "remove sajtok iránti szenvedélyének"
-15. Kattintson a "sajtok iránti szenvedélyének", és válassza ki a címke "-toppings"
-16. A "Score műveletek" gombra.
-17. Válassza ki a választ, "az alábbiakban a toppings: $toppings"
+1. Válassza ki **Train-párbeszédpanelekhez** a bal oldali panelen, majd **új Train párbeszédpanel**.
+2. Adja meg **üdv mindenkinek** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
+3. Válassza ki **műveletek pontozása**.
+4. Válassza ki **milyen toppings szeretné használni?** a a műveletek listájáról. A PERCENTILIS 100 %-os, mint az egyetlen érvényes művelet a korlátok alapján.
+5. Adja meg **sajtok iránti szenvedélyének és gomba** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
+6. Jelöljön ki **sajtok iránti szenvedélyének** majd **+ toppings**.
+7. Jelöljön ki **gomba** majd **+ toppings**.
+8. Válassza ki **műveletek pontozása**.
+9. Válassza ki **az alábbiakban a toppings: $toppings** a a műveletek listájáról.
+10. Adja meg **Peppert** a következő utterance a felhasználó a csevegési bal oldali panelen.
+11. Jelöljön ki **bors** majd **+ toppings**.
+12. Válassza ki **műveletek pontozása**.
+13. Válassza ki **az alábbiakban a toppings: $toppings** a a műveletek listájáról.
+14. Adja meg **sajtok iránti szenvedélyének eltávolítása** az a felhasználó harmadik utterance (kifejezés) a bal oldali Csevegés panelen.
+15. Jelöljön ki **sajtok iránti szenvedélyének** majd **-toppings**.
+16. Válassza ki **műveletek pontozása**.
+17. Válassza ki **az alábbiakban a toppings: $toppings** a a műveletek listájáról.
 
-![](../media/tutorial5_dialogs.PNG)
+![](../media/T07_training.png)
 
 ## <a name="next-steps"></a>További lépések
 

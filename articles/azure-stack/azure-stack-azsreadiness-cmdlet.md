@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992320"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker parancsmag-referencia
 
@@ -299,6 +299,7 @@ Ebben a példában az üzembe helyezés vagy a támogatási csapat ügyfelektől
 > -RegionName
 
 Az Azure Stack üzembe helyezés régió nevét adja meg.
+
 |  |  |
 |----------------------------|--------------|
 |Típus:                       |String        |
@@ -310,6 +311,7 @@ Az Azure Stack üzembe helyezés régió nevét adja meg.
 > -FQDN
 
 Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is ExternalFQDN és ExternalDomainName aliasneve.
+
 |  |  |
 |----------------------------|--------------|
 |Típus:                       |String        |
@@ -321,6 +323,7 @@ Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is Exte
 > -IdentitySystem
 
 Megadja az Azure Stack üzemelő példányához Identitásrendszer érvényes értékek, az AAD vagy az ADFS, Azure Active Directory és az Active Directory összevonási szolgáltatásokat jelölik.
+
 |  |  |
 |----------------------------|--------------|
 |Típus:                       |String        |
@@ -333,6 +336,7 @@ Megadja az Azure Stack üzemelő példányához Identitásrendszer érvényes é
 > -PfxPassword
 
 Adja meg a tanúsítvány PFX-fájlok társított jelszót.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |SecureString |
@@ -344,6 +348,7 @@ Adja meg a tanúsítvány PFX-fájlok társított jelszót.
 > -PaaSCertificates
 
 Az elérési utak és a jelszavakat a PaaS-tanúsítványokat tartalmazó kivonattáblát határozza meg.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |Kivonattábla |
@@ -355,6 +360,7 @@ Az elérési utak és a jelszavakat a PaaS-tanúsítványokat tartalmazó kivona
 > -DeploymentDataJSONPath
 
 Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs fájlt. Ez a fájl jön létre a központi telepítés.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -366,6 +372,7 @@ Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs f�
 > -PfxPath
 
 Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány érvényesítése aszinkronitást igénylő problémát észlel tanúsítvány elérési útja.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -377,6 +384,7 @@ Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány
 > -ExportPFXPath  
 
 Itt adhatja meg az importálási/exportálási rutin eredő PFX-fájljának elérési utat.  
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -388,6 +396,7 @@ Itt adhatja meg az importálási/exportálási rutin eredő PFX-fájljának elé
 > -Tulajdonos
 
 A tanúsítvány-kérelem létrehozása egy rendezett szótár, az e-mail tárgyát határozza meg.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |OrderedDictionary   |
@@ -415,6 +424,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 > -OutputRequestPath
 
 A cél elérési útját adja meg a tanúsítvány kérést fájlok esetében könyvtár már léteznie kell.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -426,6 +436,7 @@ A cél elérési útját adja meg a tanúsítvány kérést fájlok esetében k�
 > -AADServiceAdministrator
 
 Adja meg az Azure Active Directory szolgáltatás rendszergazdáját az Azure Stack üzembe helyezéshez használható.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |PSCredential   |
@@ -437,6 +448,7 @@ Adja meg az Azure Active Directory szolgáltatás rendszergazdáját az Azure St
 > -AADDirectoryTenantName
 
 Azure Stack központi telepítéshez használt adja meg az Azure Active Directoryban.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -448,6 +460,7 @@ Azure Stack központi telepítéshez használt adja meg az Azure Active Director
 > -AzureEnvironment
 
 Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizetések Azure Stack üzembe helyezésére és regisztrációjára használható példányát határozza meg.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -460,6 +473,7 @@ Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizeté
 > -RegistrationAccount
 
 Megadja, hogy a regisztráció az Azure Stack-regisztráció használandó.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -471,6 +485,7 @@ Megadja, hogy a regisztráció az Azure Stack-regisztráció használandó.
 > -RegistrationSubscriptionID
 
 Itt adhatja meg a regisztrációs előfizetés-azonosító használható az Azure Stack-regisztráció.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |Guid     |
@@ -482,6 +497,7 @@ Itt adhatja meg a regisztrációs előfizetés-azonosító használható az Azur
 > -ReportPath
 
 Alapértelmezés szerint az aktuális címtár és az alapértelmezett a jelentés nevét, adja meg a elérési útja a készültségi jelentést.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -527,6 +543,7 @@ Itt adhatja meg, ha a PaaS szolgáltatások/állomásnevek kell adni a tanúsít
 > -ReportSections
 
 Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az áttekinthetőség kedvéért kihagyja részletei.
+
 |  |  |
 |----------------------------|---------|
 |Típus:                       |String   |
@@ -539,6 +556,7 @@ Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az átte
 > -Összefoglaló
 
 Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az áttekinthetőség kedvéért kihagyja részletei.
+
 |  |  |
 |----------------------------|------------------|
 |Típus:                       |SwitchParameter   |
@@ -550,6 +568,7 @@ Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az átte
 > -CleanReport
 
 Eltávolítja az előző végrehajtás és érvényesítési előzmények, és a egy új jelentés ellenőrzések írja.
+
 |  |  |
 |----------------------------|------------------|
 |Típus:                       |SwitchParameter   |
@@ -574,6 +593,7 @@ Itt adható meg egyéni elérési út készültségi JSON-jelentés és a részl
 > -Confirm
 
 A parancsmag futtatása előtt megerősítést kér.
+
 |  |  |
 |----------------------------|------------------|
 |Típus:                       |SwitchParameter   |
@@ -586,6 +606,7 @@ A parancsmag futtatása előtt megerősítést kér.
 > -WhatIf
 
 Megmutatja, hogy mi történne a parancsmag futtatásakor. A parancsmag nem fut.
+
 |  |  |
 |----------------------------|------------------|
 |Típus:                       |SwitchParameter   |
@@ -594,3 +615,4 @@ Megmutatja, hogy mi történne a parancsmag futtatásakor. A parancsmag nem fut.
 |Alapértelmezett érték:              |False (Hamis)             |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)             |
 |Helyettesítő karakterek elfogadása: |False (Hamis)             |
+

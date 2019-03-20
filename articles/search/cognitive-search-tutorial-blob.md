@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fe0fc5aa6bdb217a5e7a8ecb8b1898fd8d3ecf8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075850"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg, hogyan hívhat meg kognitív API-k (előzetes verzió)
 
@@ -59,7 +59,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot az oktatóanyag során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután az oktatóanyag végére ért.
 
-1. A helyen, válasszon egyet az a [támogatott régiók](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions) Cognitive search.
+1. A helyen javasoljuk, hogy egy közeli régiót, az adatok és más felhőalapú alkalmazáshoz kiválasztása.
 
 1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
 
@@ -89,7 +89,7 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
 1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati karakterláncot a Blob Storage-hoz. Ezt megteheti úgy is, ha megkeresi a tárfiókját az Azure Portalon. Lépjen az **Elérési kulcsokhoz**, majd másolja ki a **Kapcsolati karakterlánc** mező tartalmát.
 
-  A kapcsolati karakterláncnak a következő példához hasonló URL-címnek kell lennie:
+   A kapcsolati karakterláncnak a következő példához hasonló URL-címnek kell lennie:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
@@ -256,7 +256,7 @@ Ebben a szakaszban egy indexsémát határoz meg a kereshető indexben szereplő
 
 A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
-| mezőnevek: | id       | content   | languageCode | keyPhrases         | organizations     |
+| mezőnevek: | `id`       | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | mezőtípusok: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -443,7 +443,7 @@ Content-Type: application/json
 
 Ismételje meg a műveletet a gyakorlatban szereplő content (tartalom), language (nyelv), keyphrases (kulcskifejezések) és organizations (szervezetek) mezővel. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
-A lekérdezési karakterlánc összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](https://docs.microsoft.com/azure/search/search-query-rest-api).
+A lekérdezési karakterlánc összetettségétől és hosszától függően használhatja a GET vagy a POST metódust. További információkért lásd: [Lekérdezés a REST API-val](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="access-enriched-document"></a>
 

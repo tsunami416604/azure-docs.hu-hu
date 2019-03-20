@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: ea7b5b087a5cfb2a3eefaef7336de4a6acf7f116
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777532"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009289"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -29,7 +29,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>Felhőszolgáltatás- vagy App Service-végpont hozzáadása Traffic Manager-profilhoz
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre.
 4. A megjelenő **Végpontok** panelen kattintson a **Hozzáadás** gombra.
@@ -49,7 +49,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 
 ## <a name="to-disable-an-endpoint"></a>A végpontok letiltása
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
 4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.
@@ -58,7 +58,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 
 ## <a name="to-enable-an-endpoint"></a>A végpontok engedélyezése
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
 4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.
@@ -67,7 +67,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 
 ## <a name="to-delete-an-endpoint"></a>Végpont törlése
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok** elemre. 
 4. Kattintson a letiltani kívánt végpontra, majd a megjelenő **Végpont** panelen a **Szerkesztés** gombra.

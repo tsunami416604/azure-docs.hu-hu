@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 73b13dcea84ba322072217c3feacebdefb3bf1e6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052039"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896704"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Mik azok a Power BI munkaterületi gyűjtemények?
 
@@ -84,7 +84,7 @@ Most már szerkesztheti a meglévő jelentéseket, vagy hozzon létre új jelent
 [Jelentés beágyazása](embed-report.md)  
 [Hitelesítés és engedélyezés a Power BI-munkaterületcsoportok használatával](app-token-flow.md)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[A Power bi-CSharp Git-adattár](https://github.com/Microsoft/PowerBI-CSharp)  
-[A Power bi-csomópont Git-adattár](https://github.com/Microsoft/PowerBI-Node)  
+[PowerBI-CSharp Git Repo](https://github.com/Microsoft/PowerBI-CSharp)  
+[PowerBI-Node Git Repo](https://github.com/Microsoft/PowerBI-Node)  
 
-További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)
+További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)

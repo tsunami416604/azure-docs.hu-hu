@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e940d7593b6760a81a781fd72c0bb45347b00c2a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 912bc9fea7b721b9a74198572bbf916ee0ebe6cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező StatusPage
 
@@ -114,23 +114,25 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > Lépjen kapcsolatba a StatusPage támogatási csapatának [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)metaadatait az egyszeri bejelentkezés konfigurálásához szükséges. 
-    >
-    >a. A metaadatok, másolja a kibocsátó értékét, és illessze be azt a **azonosító** szövegmezőbe.
-    >
-    >b. A metaadatok, másolja a válasz URL-címet, és illessze be azt a **válasz URL-cím** szövegmezőbe.
+   > [!NOTE]
+   > Lépjen kapcsolatba a StatusPage támogatási csapatának [ SupportTeam@statuspage.io ](mailto:SupportTeam@statuspage.io)metaadatait az egyszeri bejelentkezés konfigurálásához szükséges. 
+   > 
+   > a. A metaadatok, másolja a kibocsátó értékét, és illessze be azt a **azonosító** szövegmezőbe.
+   > 
+   > b. A metaadatok, másolja a válasz URL-címet, és illessze be azt a **válasz URL-cím** szövegmezőbe.
 
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
@@ -156,15 +158,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az egyszeri bejelentkezés beállítása lapon hajtsa végre a következő lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+     ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+     ![Egyszeri bejelentkezés konfigurálása](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. Az a **SSO cél URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
+     a. Az a **SSO cél URL-cím** szövegmezőbe, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    b. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőbe. 
+     b. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőbe. 
 
-    c. Kattintson a **konfiguráció mentése**.
+     c. Kattintson a **konfiguráció mentése**.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)

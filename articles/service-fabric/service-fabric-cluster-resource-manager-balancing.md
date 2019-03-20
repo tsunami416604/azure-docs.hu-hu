@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 534a9584427efd15b8119f8421fb041199b97fbf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a124bd9a52e22c359fb771e4d4c8714bd1dbe2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123232"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Terheléselosztás a service fabric-fürt
 A Service Fabric-fürt Resource Manager támogatja a dinamikus terhelésének változásaihoz igazodik, bővítésekkel vagy a csomópontok vagy szolgáltatások eltávolítására való reagálás. Automatikusan kijavítja a megkötés megsértésének, és proaktív módon rebalances a fürtöt. De gyakoriságát. Ezek a műveletek megnyílik, és mi elindítja őket?
@@ -122,6 +122,7 @@ az önálló verziója telepítéseinek ClusterConfig.json vagy Template.json az
 ```
 
 <center>
+
 ![Terheléselosztási küszöbérték példa][Image1]
 </center>
 
@@ -130,6 +131,7 @@ Ebben a példában minden egyes szolgáltatás néhány metrika egy egységet is
 Az utolsó példában egy csomópont maximális terhelése 10, pedig legalább két, öt-es eredményez. 5 akkor nagyobb, mint az adott metrika három terheléselosztási küszöbértéket. Ennek eredményeképpen egy újraegyensúlyozása futtatása lesz akkor következik be, a terheléselosztási időzítő ütemezett legközelebb. Egy ilyen helyzetben bizonyos betöltés általában csomópont3 terjesztése. A Service Fabric fürterőforrás-kezelő nem használ a mohó megközelítést, mert néhány terhelés is csomópont2 juttatni. 
 
 <center>
+
 ![Terheléselosztási küszöbérték példa műveletek][Image2]
 </center>
 
@@ -145,6 +147,7 @@ Néha, bár a csomópontok viszonylag imbalanced a *teljes* mennyiségű terhel�
 Tegyük fel, hogy azt megőrizni három a mérőszám a terheléselosztás küszöbértéket. Is tegyük fel, van egy tevékenység 1536 küszöbértéket. Az első esetben imbalanced száma a terheléselosztás küszöbérték nincs a fürt pedig nem csomópont megfelel-e a tevékenység küszöbérték, semmi nem történik. Az utolsó példában csomópont1 van, a tevékenység meghaladja a küszöbértéket. Mivel a terheléselosztás küszöbérték és a tevékenység a metrika küszöbértéke túllépve, terheléselosztási van ütemezve. Példaként nézzük meg a következő ábra: 
 
 <center>
+
 ![Tevékenységi küszöbérték példa][Image3]
 </center>
 
@@ -194,6 +197,7 @@ Esetenként azonban semmi ok, egy szolgáltatás, amelynek nem magát imbalanced
 Minden bizonnyal, láthatja, ahol most be fogjuk itt: A láncban van! Nem igazán kell, hogy független a négy szolgáltatáshoz, három kapcsolódó szolgáltatásokat el, amely önállóan ki van kapcsolva.
 
 <center>
+
 ![Terheléselosztás a szolgáltatások együtt][Image4]
 </center>
 
@@ -202,6 +206,7 @@ A tanúsítványlánc miatt lehetséges, hogy a metrikák 1 és 4 közötti egye
 A fürterőforrás-kezelő automatikusan kitalálja, hogy mely szolgáltatások tartoznak. Hozzáadása, eltávolítása vagy módosítása a szolgáltatások mérőszámait hatással lehet a kapcsolatok. Ha például Service2 terheléselosztási két futtatásai között előfordulhat, hogy frissítve lett-e Metric2 eltávolítása. Ez megszünteti a lánc Service1 és Service2 között. Most már két csoportját a kapcsolódó szolgáltatások helyett háromféle:
 
 <center>
+
 ![Terheléselosztás a szolgáltatások együtt][Image5]
 </center>
 

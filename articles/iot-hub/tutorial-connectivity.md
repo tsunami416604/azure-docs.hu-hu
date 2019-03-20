@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 19f46392232ade83f0f111494f2b7f80e40fb14c
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008202"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077564"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT hub-kapcsolat tesztelése
 
@@ -135,7 +135,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 Jegyezze fel a létrehozott SAS-jogkivonat teljes szövegét. A SAS-jogkivonatok a következőképpen néznek ki: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Tutorials\ConnectivityTests\simulated-device** mappára.
+A fejlesztői gépen egy terminálablakban keresse meg a letöltött Node.js-mintaprojekt gyökérmappáját. Keresse meg a **iot-hub\Tutorials\ConnectivityTests** mappát.
 
 Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához:
 
@@ -176,7 +176,7 @@ Először kérje le a szimulált eszköz aktuális kapcsolati sztringjét a köv
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Egy üzeneteket küldő szimulált eszköz futtatásához nyissa meg az **iot-hub\Tutorials\ConnectivityTests\simulated-device** mappát a letöltött kódban.
+Egy szimulált eszközt, amely üzeneteket küld futtatja, lépjen a **iot-hub\Tutorials\ConnectivityTests** mappát a letöltött kód.
 
 Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához:
 

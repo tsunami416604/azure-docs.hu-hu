@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: fedd83276a0182ecf2d39e43382bc264c6f88de5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761685"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000840"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: A helyszíni virtuális hálózat létrehozása terraform az Azure-ban
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Egy helyszíni hálózat a szimulálásához hozzon létre egy Azure virtuális hálózatra. A bemutató a virtuális hálózat egy tényleges privát a helyszíni hálózat történik. Ehhez a meglévő helyszíni hálózattal, képezze le a megfelelő IP-címek az alhálózatokon.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 

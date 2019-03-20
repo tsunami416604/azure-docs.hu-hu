@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: ec7221837145db73386f146aa839b83ee23c1510
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863899"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Gyors útmutató: A Bing Web Search SDK Pythonhoz készült használata
 
@@ -81,7 +81,9 @@ Most, hogy beállítottuk a virtuális környezetet, és telepítettük a függ�
 Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer mindegyikből megjeleníti az elsőt.
 
 1. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
-2. Másolja ezt a mintakódot a projektbe:  
+
+1. Másolja ezt a mintakódot a projektbe:  
+
     ```python
     # Import required modules.
     from azure.cognitiveservices.search.websearch import WebSearchAPI
@@ -161,19 +163,22 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
     else:
         print("Didn't find any videos...")
     ```
-3. Cserélje le a `subscription_key` értékét egy érvényes előfizetői azonosítóra.
-4. Futtassa a programot. Például: `python your_program.py`.
+
+1. Cserélje le a `subscription_key` értékét egy érvényes előfizetői azonosítóra.
+
+1. Futtassa a programot. Például: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Függvények definiálása és az eredmények szűrése
 
-Most, hogy létrehozta az első hívást a Bing Web Search API-ra, tekintsünk meg néhány függvényt, amelyek jól példázzák az SDK lekérdezéseket pontosító és eredményeket szűrő funkcióját. Minden függvény hozzáadható az előző szakaszban létrehozott Python-alkalmazásához.
+Most, hogy létrehozta az első hívás a Bing Web Search API, tekintsük át néhány funkciók. A következő szakaszok kiemelnek SDK funkciókat lekérdezések pontosítását és szűrés eredményei. A Python program, az előző szakaszban létrehozott minden egyes függvény is hozzáadhatók.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>A Bing által visszaadott eredmények számának korlátozása
 
-Ebben a példában a `count` és az `offset` paramétert használjuk az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `URL` értékét a rendszer megjeleníti.
+Ebben a példában a `count` és az `offset` paramétert használjuk az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott eredmények számának korlátozására. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
-    ```python
+
+   ```python
     # Declare the function.
     def web_results_with_count_and_offset(subscription_key):
         client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
@@ -203,13 +208,15 @@ Ebben a példában a `count` és az `offset` paramétert használjuk az SDK [`se
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. Futtassa a programot.
+
+1. Futtassa a programot.
 
 ### <a name="filter-for-news-and-freshness"></a>Hírek és frissesség szűrése
 
-Ez a példa a `response_filter` és a `freshness` paraméter segítségével szűri az SDK [`search` metódusa](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) által visszaadott keresési eredményeket. A visszaadott keresési eredmények a sajtóhírekre, azon belül pedig a Bing által az elmúlt 24 órában észlelt oldalakra van korlátozva. Az első eredményhez tartozó `name` és `URL` értékét a rendszer megjeleníti.
+Ez a példa a `response_filter` és a `freshness` paraméter segítségével szűri az SDK [`search` metódusa](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations) által visszaadott keresési eredményeket. A visszaadott keresési eredmények a sajtóhírekre, azon belül pedig a Bing által az elmúlt 24 órában észlelt oldalakra van korlátozva. Az első eredményhez tartozó `name` és `url` értékét a rendszer megjeleníti.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
+
     ```python
     # Declare the function.
     def web_search_with_response_filter(subscription_key):
@@ -251,13 +258,15 @@ Ez a példa a `response_filter` és a `freshness` paraméter segítségével sz�
     # Call the function.
     web_search_with_response_filter(subscription_key)
     ```
-2. Futtassa a programot.
+
+1. Futtassa a programot.
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>A biztonságos keresés, a válaszszám és az előléptetés szűrő használata
 
-Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segítségével szűri az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott keresési eredményeket. A kód megjeleníti az első eredmény `name` és `URL` értékét.
+Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segítségével szűri az SDK [`search` metódusa](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) által visszaadott keresési eredményeket. A kód megjeleníti az első eredmény `name` és `url` értékét.
 
 1. Adja hozzá ezt a kódot a Python-projekthez:
+
     ```python
     # Declare the function.
     def web_search_with_answer_count_promote_and_safe_search(subscription_key):
@@ -294,7 +303,8 @@ Ez a példa a `answer_count`, a `promote` és a `safe_search` paraméter segíts
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. Futtassa a programot.
+
+1. Futtassa a programot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

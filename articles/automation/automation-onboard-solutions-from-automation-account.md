@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c020d3c7513efda93d7ac5d3bdd79f21f8bc77dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818476"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843623"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -41,14 +41,19 @@ Az alábbi táblázat bemutatja a támogatott leképezések:
 |Délkelet-Ausztrália|Délkelet-Ausztrália|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|USA keleti régiója<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |WestEurope|WestEurope|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
+
+> [!NOTE]
+> Igény szerint, mert a régió nem lehet elérhető az Automation-fiók vagy a Log Analytics-munkaterület létrehozásakor.  Ha ez a helyzet, győződjön meg arról, használja az előző táblázatban, amely az erőforrásokat hozhat létre egy régiót.
 
 A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
 
@@ -91,7 +96,7 @@ Válassza ki vagy mentett keresést a lekérdezés a csoport feltöltéséhez ha
 
 Az Automation a fiókot válassza **készlet** vagy **a Change tracking** alatt **konfigurációkezelés**, vagy **frissítéskezelés** a **az UPDATE MANAGEMENT**.
 
-Kattintson a **+ Azure-beli virtuális gépek hozzáadása**, válasszon ki egy vagy több virtuális gépet a listából. Virtuális gépek, amelyek nem lehet engedélyezni, szürkén jelennek meg lejárt, ezért nem tudja, ki kell jelölni. Az a **Update Management engedélyezése** kattintson **engedélyezése**. Ez a művelet a kijelölt virtuális gépek hozzáadása a számítógép (csoport)-beli mentett keresés a megoldáshoz.
+Kattintson a **+ Azure-beli virtuális gépek hozzáadása**, válasszon ki egy vagy több virtuális gépet a listából. Virtuális gépek, amelyek nem lehet engedélyezni, szürkén jelennek meg lejárt, ezért nem tudja, ki kell jelölni. Az Azure virtuális gépek létezhet bármelyik régióban, függetlenül attól, hogy az Automation-fiók helye. Az a **Update Management engedélyezése** kattintson **engedélyezése**. Ez a művelet a kijelölt virtuális gépek hozzáadása a számítógép (csoport)-beli mentett keresés a megoldáshoz.
 
 ![Az Azure virtuális gépek engedélyezése](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 

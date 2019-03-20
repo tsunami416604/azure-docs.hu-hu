@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f1eca7f76f45966ba43c15b3d8b92203c8199bfe
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732075"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854252"
 ---
-# <a name="azure-data-factory-mapping-data-flow-unpivot-transformation"></a>Az Azure Data Factory leképezés adatfolyam átalakítása kifejtése
+# <a name="azure-data-factory-unpivot-transformation"></a>Az Azure Data Factory az Adatátalakítási kifejtése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +51,7 @@ A "Normál" oszlop elrendezésének beállítása fog egy csoportba összes elfo
 ![Elemi értékekre bontása átalakítási](media/data-flow//unpivot7.png "elemi értékekre bontása 5 beállításai")
 
 A végső elemi értékekre bontva adatok eredmény set bemutatja a oszlopösszegzések most elemi értékekre bontva külön sorban értékekké.
+
+## <a name="next-steps"></a>További lépések
+
+Használja a [átalakítási forgáspont](data-flow-pivot.md) pivot sorok, oszlopok.

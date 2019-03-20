@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975491"
 ---
 # <a name="interpret-method"></a>Módszer értelmezése
 
@@ -37,9 +37,11 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 **count**    | Szám | Nem<br>Alapértelmezés: 10 | Maximális száma értelmezéseket ad vissza.         
 **eltolás**   | Szám | Nem<br>Alapértelmezés: 0  | Az első értelmezése index való visszatéréshez. Ha például *száma = 2 & eltolás = 0* 0 és 1 értelmezéseket ad vissza. *Count = 2 & eltolás = 2* 2. és 3 értelmezéseket ad vissza.       
 **Időtúllépés**  | Szám | Nem<br>alapértelmezett: 1000 | Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
+
 <br>
   
 ## <a name="response-json"></a>Válasz (JSON)
+
 Name (Név)     | Leírás
 ---------|---------
 **Lekérdezés** |A *lekérdezés* paraméter a kérelemből.
@@ -54,6 +56,7 @@ Name (Név)     | Leírás
 **aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 <br>
+
 #### <a name="example"></a>Példa:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

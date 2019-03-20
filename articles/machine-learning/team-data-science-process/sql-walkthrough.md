@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 953f2cdac41dcd610afbde39a318c0237b0b9099
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890851"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
-Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
+Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
 
 ## <a name="dataset"></a>NYC Taxi léptető adatkészlet leírása
 A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömörítetlen), minden egyes út 173 milliónál egyes utak és a vitel magában foglaló fizetni. Minden egyes út rekord tartalmazza a begyűjtést és dropoff hely és idő, anonimizált feltörés (illesztőprogramok) licencszám és medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
@@ -82,7 +82,7 @@ Az Azure Data Science környezet beállításához:
 Az adatkészlet méretét, adatforrás helye és a célként kiválasztott Azure-környezet alapján, ez a forgatókönyv hasonlít a [forgatókönyv \#5: Nagy méretű adathalmazt a helyi fájlok a cél SQL Server Azure-beli virtuális gépen](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Beolvassa az adatokat nyilvános forráskódú
-Az első a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet a nyilvános helyéről, előfordulhat, hogy használja ismertetett módszerek valamelyikét [áthelyezése adat- és az Azure Blob Storage-ból](move-azure-blob.md) az adatok másolása az új virtuális gépet.
+Az első a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet a nyilvános helyéről, előfordulhat, hogy használja ismertetett módszerek valamelyikét [áthelyezése adat- és az Azure Blob Storage-ból](move-azure-blob.md) az adatok másolása az új virtuális gépet.
 
 Az AzCopy használatával adatok másolása:
 
@@ -622,8 +622,8 @@ A recap, ez a forgatókönyv az oktatóanyag egy Azure adatelemzési környezete
 Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ### <a name="references"></a>Referencia
-• [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Útadatok taxiköltség Chris Whong szerint](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [Andrés Monroy NYC Taxi lelassítja letöltési oldala](https://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC Útadatok taxiköltség Chris Whong szerint](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sql-walkthrough/sql-walkthrough_26_1.png

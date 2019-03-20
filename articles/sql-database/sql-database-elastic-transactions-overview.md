@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 65940aa07c532ae3bc708d475b2d6ac60cf8d636
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901916"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 
@@ -127,6 +127,8 @@ Vegye figyelembe, hogy a .NET 4.6.1 a telepítő az Azure cloud services, mint a
 ## <a name="transactions-across-multiple-servers"></a>Tranzakciók több kiszolgáló között
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Rugalmas adatbázis-tranzakciók több különböző SQL Database-kiszolgálók az Azure SQL Database-ben is támogatott. Tranzakciók adatbázisközi SQL Database server határokat, amikor a programban részt vevő kiszolgálók először kölcsönös kommunikációs kapcsolat adható meg. A kommunikációs kapcsolat létrejöttét követően a két kiszolgáló bármelyik adatbázisához rugalmas tranzakciók az adatbázis a kiszolgálótól vehet részt. Tranzakciók több mint két SQL Database-kiszolgálók átfedés, az kommunikációs kapcsolat kell lennie a helyen az SQL Database-kiszolgálók bármely virtuálisgép-pár.
 

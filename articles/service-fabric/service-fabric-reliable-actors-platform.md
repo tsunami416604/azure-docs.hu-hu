@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 82818df267fc08bf200178fda2c8d621bdd832ca
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f6594ccaa4d11361c3aacb8f774327600d3ffdde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889250"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
 Ez a cikk bemutatja, hogyan Reliable Actors működnek az Azure Service Fabric-platformon. A Reliable Actors futtatása egy keretrendszer, amely egy állapotalapú reliable Services megvalósítását üzemeltetett nevű a *aktorszolgáltatás*. Aktorszolgáltatás életciklus és a szereplők az elküldési üzenet kezeléséhez szükséges összes összetevőt tartalmazza:
@@ -101,7 +101,7 @@ GUID-ok/az UUID azonosítók és karakterláncokat használ, az értékek Int64 
 * [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
 * [Aktorok API dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
 * [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

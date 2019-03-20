@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: e8028bc9a4a6f3245dca61d6dd30db22dc295a7f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d66254cdad596e3b10482b2c937326162e2e075d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886830"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -44,13 +44,13 @@ A felhasználók számára biztosíthat web- és API-alkalmazások létrehozása
 
 Az App Service erőforrás-szolgáltató telepítése szükséges legalább egy órát. Szükséges idő hossza attól függ, hogy hány szerepkör példányai, üzembe helyezése. A telepítő a telepítés során fut, a következő feladatokat:
 
- - Hozzon létre egy blobtárolót a megadott Azure Stack-tárfiókban.
- - DNS-zóna és -bejegyzések létrehozása App Service-hez.
- - Az App Service erőforrás-szolgáltató regisztrálásához.
- - Az App Service-katalóguselemek regisztrálása.
+- Hozzon létre egy blobtárolót a megadott Azure Stack-tárfiókban.
+- DNS-zóna és -bejegyzések létrehozása App Service-hez.
+- Az App Service erőforrás-szolgáltató regisztrálásához.
+- Az App Service-katalóguselemek regisztrálása.
 
- > [!IMPORTANT]
- > Az erőforrás-szolgáltató üzembe helyezése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
+  > [!IMPORTANT]
+  > Az erőforrás-szolgáltató üzembe helyezése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
 
 Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alábbi lépéseket:
 
@@ -74,8 +74,8 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     a. Válassza ki **Connect** mellett a **Azure Stack-előfizetést**.
 
-     - Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Válassza ki **jelentkezzen be a**.
-     - Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Adja meg a jelszót, és válassza ki **bejelentkezés**.
+   - Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Válassza ki **jelentkezzen be a**.
+   - Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Adja meg a jelszót, és válassza ki **bejelentkezés**.
 
    b. A **Azure Stack-előfizetést**, jelölje be a **szolgáltatói előfizetés alapértelmezett**.
 
@@ -243,7 +243,7 @@ Hozzon létre egy webes tesztalkalmazás, kövesse az alábbi lépéseket:
 
 1. Válassza ki az Azure Stack-bérlői portálon **+** nyissa meg az Azure Marketplace-en, Django-webhely üzembe helyezése, és ezután Várjon, amíg az üzembe helyezés befejeződik. A Django webes platform file system-alapú adatbázist használ. Nincs szükség semmilyen további erőforrás-szolgáltatók, például az SQL vagy MySQL.
 
-2. Ha is üzembe helyezett MySQL erőforrás-szolgáltató, telepíthet egy WordPress-webhely létrehozása a piactérről. Amikor adatbázis paraméterek kéri, adja meg a felhasználónevet, *User1@Server1*, a felhasználónév és a kívánt kiszolgáló nevét.
+2. Ha is üzembe helyezett MySQL erőforrás-szolgáltató, telepíthet egy WordPress-webhely létrehozása a piactérről. Amikor adatbázis paraméterek kéri, adja meg a felhasználónevet, *User1\@kiszolgáló1*, a felhasználónév és a kívánt kiszolgáló nevét.
 
 3. Ha telepítette az SQL Server erőforrás-szolgáltató is, telepíthet egy DNN-webhely a piactérről. Adatbázis-paraméterek kér, amikor az adatbázis kiválasztása, amely csatlakozik az erőforrás-szolgáltató SQL Servert futtató számítógépen.
 

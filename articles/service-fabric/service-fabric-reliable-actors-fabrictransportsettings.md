@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e3d07401e60e64c2cbec4aa47a55c573ec4b2aaa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8bfeebb882d1252e21c800f7b65120878bb3af93
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729304"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834590"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
@@ -83,7 +83,7 @@ Ha az ügyfél nem fut a szolgáltatás részeként, létrehozhat egy "&lt;Exe �
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
-  <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
     <Section Name="TransportSettings">
       <Parameter Name="SecurityCredentialsType" Value="X509" />
       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
@@ -99,41 +99,41 @@ Ha az ügyfél nem fut a szolgáltatás részeként, létrehozhat egy "&lt;Exe �
   </Settings>
    ```
 
-  * Másodlagos tanúsítvány biztonságos Aktor szolgáltatás vagy ügyfél FabricTransport beállításainak konfigurálása.
+* Másodlagos tanúsítvány biztonságos Aktor szolgáltatás vagy ügyfél FabricTransport beállításainak konfigurálása.
   Másodlagos tanúsítvány adatait is hozzáadhatók CertificateFindValuebySecondary paraméter hozzáadásával.
   Az alábbi, a példában a figyelő TransportSettings számára.
 
-    ```xml
-    <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-     Az alábbiakban egy példa az ügyfél TransportSettings számára.
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+   Az alábbiakban egy példa az ügyfél TransportSettings számára.
 
-    ```xml
-   <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-    * FabricTransport beállításainak konfigurálása az Aktor szolgáltatás vagy ügyfél tulajdonosnév használatával biztonságossá tételéhez.
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+  * FabricTransport beállításainak konfigurálása az Aktor szolgáltatás vagy ügyfél tulajdonosnév használatával biztonságossá tételéhez.
     Felhasználói kell findType FindBySubjectName, adja meg, adjon hozzá CertificateIssuerThumbprints és CertificateRemoteCommonNames értékeket.
-  Az alábbi, a példában a figyelő TransportSettings számára.
+    Az alábbi, a példában a figyelő TransportSettings számára.
 
-     ```xml
+    ```xml
     <Section Name="TransportSettings">
     <Parameter Name="SecurityCredentialsType" Value="X509" />
     <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
@@ -145,16 +145,16 @@ Ha az ügyfél nem fut a szolgáltatás részeként, létrehozhat egy "&lt;Exe �
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Az alábbiakban egy példa az ügyfél TransportSettings számára.
+    Az alábbiakban egy példa az ügyfél TransportSettings számára.
 
-    ```xml
-     <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
-    <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
+  ```xml
+   <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
+  <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```

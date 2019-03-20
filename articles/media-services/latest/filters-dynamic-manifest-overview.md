@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: juliako
-ms.openlocfilehash: 5290901348bb139140f1ad6d2ee50b9ddd88b297
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 57007674e11271e6a3d5bdf660531d01b1eff82c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214435"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861434"
 ---
 # <a name="dynamic-manifests"></a>Dinamikus jegyzékek
 
@@ -52,7 +52,7 @@ A REST-példa: [feltöltése, kódolása és streamelése a fájlokat a REST seg
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>Az átviteli sebesség, video-adatfolyamot figyelése
 
-Használhatja a [Azure Media Player demó lap](http://aka.ms/amp) figyelése az átviteli sebesség, video-adatfolyamot. A bemutató lap megjeleníti a diagnosztikai információ a **diagnosztikai** lapon:
+Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) figyelése az átviteli sebesség, video-adatfolyamot. A bemutató lap megjeleníti a diagnosztikai információ a **diagnosztikai** lapon:
 
 ![Az Azure Media Player diagnostics][amp_diagnostics]
 

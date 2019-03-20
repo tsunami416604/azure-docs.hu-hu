@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b6950e3445f2320f2e3a45f55726befd7077119a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835909"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató hozzáadása az AD FS által védett kapcsolat nélküli Azure Stack-környezet
 
@@ -82,28 +82,28 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     ![Az App Service-telepítő][3]
 
 7. A következő oldalon:
-    1. Kattintson a **Connect** megjelenítő gombra a **Azure Stack-előfizetést** mezőbe.
-        - Adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Adja meg a jelszót, és kattintson a **bejelentkezés**.
-    2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
+   1. Kattintson a **Connect** megjelenítő gombra a **Azure Stack-előfizetést** mezőbe.
+      - Adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Adja meg a jelszót, és kattintson a **bejelentkezés**.
+   2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
     
-    > [!NOTE]
-    > App Service-ben csak lesz üzembe helyezve a **szolgáltatói előfizetés alapértelmezett**.
-    >
+      > [!NOTE]
+      > App Service-ben csak lesz üzembe helyezve a **szolgáltatói előfizetés alapértelmezett**.
+      >
     
-    3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
-    4. Kattintson a **tovább**.
+   3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
+   4. Kattintson a **tovább**.
 
-    ![Az App Service-telepítő][4]
+      ![Az App Service-telepítő][4]
 
 8. Most már rendelkezik konfigurált lépéseit egy meglévő virtuális hálózatban telepíteni [Itt](azure-stack-app-service-before-you-get-started.md#virtual-network), vagy engedélyezheti az App Service-ben telepítő hozhat létre virtuális hálózat és a társított alhálózatokat.
-    1. Válassza ki **virtuális hálózat létrehozása az alapértelmezett beállításokkal**, fogadja el az alapértelmezett beállításokat, és kattintson **tovább**, vagy;
-    2. Válassza ki **használja a meglévő virtuális hálózat és alhálózatok**.
-        1. Válassza ki a **erőforráscsoport** , amely tartalmazza a virtuális hálózat;
-        2. Válassza ki a megfelelő **virtuális hálózat** ; üzembe helyezése a kívánt nevét
-        3. Válassza ki a megfelelő **alhálózati** értékek mind a szükséges szerepkör-alhálózatok;
-        4. Kattintson a **Tovább** gombra
+   1. Válassza ki **virtuális hálózat létrehozása az alapértelmezett beállításokkal**, fogadja el az alapértelmezett beállításokat, és kattintson **tovább**, vagy;
+   2. Válassza ki **használja a meglévő virtuális hálózat és alhálózatok**.
+       1. Válassza ki a **erőforráscsoport** , amely tartalmazza a virtuális hálózat;
+       2. Válassza ki a megfelelő **virtuális hálózat** ; üzembe helyezése a kívánt nevét
+       3. Válassza ki a megfelelő **alhálózati** értékek mind a szükséges szerepkör-alhálózatok;
+       4. Kattintson a **Tovább** gombra
 
-    ![Az App Service-telepítő][5]
+      ![Az App Service-telepítő][5]
 
 9. Adja meg a fájlmegosztás az adatokat, és kattintson a **tovább**. A cím a fájlmegosztás a teljes tartománynév, vagy a fájlkiszolgáló IP-címet kell használnia. Ha például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.  Ha használ egy fájlkiszolgálón, amely tartományhoz van csatlakoztatva, meg kell adnia a teljes felhasználónevet, többek között a tartományhoz, például myfileserverdomain\FileShareOwner.
 
@@ -152,7 +152,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     > ```
     > Tekintse meg a [kibocsátási megjegyzések az Azure App Service az Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) további részletekért.
    
-   ![Az App Service-telepítő][12]
+    ![Az App Service-telepítő][12]
 
 13. Tekintse át a szerepkörpéldányhoz, és a Termékváltozat-beállításokat. Az alapértelmezett beállításokat a rendszer kitölti a minimális számú példányok és a minimális Termékváltozat-ASDK telepítés minden egyes szerepkörhöz. VCPU-és memória összegzést érdekében az üzembe helyezésének megtervezése. Kattintson a kiválasztás után **tovább**.
 
@@ -172,7 +172,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     ![Az App Service-telepítő][14]
 
     > [!NOTE]
-    > **A Windows Server 2016 Core nem támogatott platform rendszerképe az Azure App Service az Azure Stacken használható.  Ne használjon értékelési rendszerképek éles környezetekben üzemelő példányok.  Az Azure App Service az Azure Stacken szükséges, hogy az 3.5.1 SP1 Microsoft.Net aktiválva van-e a központi telepítéshez használt lemezkép.   Hírcsatorna-piactéren a Windows Server 2016 lemezképek nem rendelkezik a szolgáltatás nincs engedélyezve, ezért kell létrehozni, és a Windows Server 2016-rendszerkép használata az előre engedélyezett.**
+    > **A Windows Server 2016 Core nem támogatott platform rendszerképe az Azure App Service az Azure Stacken használható.  Ne használjon értékelési rendszerképek éles környezetekben üzemelő példányok.  Az Azure App Service az Azure Stacken szükséges, hogy az 3.5.1 SP1 Microsoft.NET aktiválva van-e a központi telepítéshez használt lemezkép.   Hírcsatorna-piactéren a Windows Server 2016 lemezképek nem rendelkezik a szolgáltatás nincs engedélyezve, ezért kell létrehozni, és a Windows Server 2016-rendszerkép használata az előre engedélyezett.**
 
 14. Az a **Platformlemezkép kiválasztása** válassza ki a központi telepítés a Windows Server 2016 virtuális gép rendszerképének azoktól, akik az App Service-felhő számítási erőforrás-szolgáltató érhető el. Kattintson a **tovább**.
 
@@ -210,7 +210,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
-> Ha úgy döntött, hogy egy meglévő virtuális hálózatot és a egy belső IP-címet szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+> Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
 > * Forrás: Bármelyik
 > * Forrás porttartomány: *
 > * Cél: IP-címek
@@ -253,7 +253,7 @@ Miután telepíti és regisztrálja az App Service erőforrás-szolgáltatót, t
 
 1. Az Azure Stack-bérlői portálon kattintson a **+** nyissa meg az Azure Marketplace-en, Django-webhely üzembe helyezése, és várjon, amíg a művelet sikeresen befejeződött. A Django webes platform file system-alapú adatbázist használ. Nincs szükség semmilyen további erőforrás-szolgáltatók, például az SQL vagy MySQL.
 
-2. Ha is üzembe helyezett MySQL erőforrás-szolgáltató, telepíthet egy WordPress-webhely létrehozása a piactérről. Amikor adatbázis paraméterek kéri, adja meg a felhasználónevet, *User1@Server1*, a felhasználónév és a kívánt kiszolgáló nevét.
+2. Ha is üzembe helyezett MySQL erőforrás-szolgáltató, telepíthet egy WordPress-webhely létrehozása a piactérről. Amikor adatbázis paraméterek kéri, adja meg a felhasználónevet, *User1\@kiszolgáló1*, a felhasználónév és a kívánt kiszolgáló nevét.
 
 3. Ha telepítette az SQL Server erőforrás-szolgáltató is, telepíthet egy DNN-webhely a piactérről. Adatbázis-paraméterek kér, amikor az adatbázis kiválasztása, amely csatlakozik az erőforrás-szolgáltató SQL Servert futtató számítógépen.
 

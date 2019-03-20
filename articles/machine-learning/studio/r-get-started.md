@@ -1,21 +1,21 @@
 ---
-title: Az R programozási nyelv – első lépések
+title: R – első lépések
 titleSuffix: Azure Machine Learning Studio
 description: Az R programozási oktatóanyag segítségével első lépések az R nyelv használata az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: c18de2efff0f867213cad56b6012bb8ee6ed52bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875515"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>– Első lépések az R programozási nyelv, az Azure Machine Learning Studióban
 
@@ -131,7 +131,7 @@ Ha ez a kód utolsó sora jelenleg nem ismeri, akkor Olvasson tovább. Ez a cikk
 
 Az RStudio egy széles körben használt IDE az r segítségével Az RStudio szerkesztését, teszteléséhez és a hibakeresés néhány ebben az útmutatóban használt R-kód fogja használni. Után az R-kód tesztelt, és készen áll a is egyszerűen kimásolni, majd illessze be a RStudio szerkesztőből egy Machine Learning studióba [R-szkript végrehajtása] [ execute-r-script] modul.  
 
-Ha nem rendelkezik az R programozási nyelv, telepítve van a asztali gépén, javasolni tudom, tegye meg most. Ingyenes, nyílt forráskódú R nyelvvel érhető el, a átfogó R Archive Network (CRAN), [ http://www.r-project.org/ ](http://www.r-project.org/). Nincsenek elérhető Windows, Mac OS és a Linux-/ UNIX letöltéseket. Válasszon egy közeli tükrözött, és kövesse a letöltési utasításokat. Emellett a CRAN rengeteg hasznos elemzési és adatkezelési csomagokat tartalmazza.
+Ha nem rendelkezik az R programozási nyelv, telepítve van a asztali gépén, javasolni tudom, tegye meg most. Ingyenes, nyílt forráskódú R nyelvvel érhető el, a átfogó R Archive Network (CRAN), [ https://www.r-project.org/ ](https://www.r-project.org/). Nincsenek elérhető Windows, Mac OS és a Linux-/ UNIX letöltéseket. Válasszon egy közeli tükrözött, és kövesse a letöltési utasításokat. Emellett a CRAN rengeteg hasznos elemzési és adatkezelési csomagokat tartalmazza.
 
 Ha most ismerkedik az RStudio, töltse le és telepítse az asztali verziót. Az RStudio letölti a Windows, Mac OS és a Linux-/ UNIX címen található http://www.rstudio.com/products/RStudio/. Kövesse az utasításokat az RStudio telepítése asztali gépén.  
 
@@ -1312,18 +1312,18 @@ Az RStudio meglehetősen megfelelően legyen dokumentálva. Íme néhány haszno
 
 Az R programozási oktatóanyag kell az R nyelv használata az Azure Machine Learning Studio alapjait ismerteti. Ha nem ismeri a R, a CRAN két tudnivalókra érhetők el:
 
-* [R kezdőknek](http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis által van egy nagyszerű hely az induláshoz.  
-* [R bemutató](http://cran.r-project.org/doc/manuals/R-intro.html) l. n Venables et. al. egy kicsit részletesebben hiányzóra változik.
+* [R kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis által van egy nagyszerű hely az induláshoz.  
+* [R bemutató](https://cran.r-project.org/doc/manuals/R-intro.html) l. n Venables et. al. egy kicsit részletesebben hiányzóra változik.
 
 Nincsenek számos könyvek R, amelyek segíthetnek a kezdéshez. Íme néhány hasznos találhatók:
 
 * A **Art az R programozási: A bemutató a statisztikai szoftver terv** Norman Matloff szerint van az r programozási kiváló bemutatása  
 * **R Cookbook** Paul Teetor által probléma és a megoldás r segítségével módszert biztosít a  
-* **A művelet R** Robert Kabacoff által van egy másik hasznos bevezető címjegyzék-alkalmazásával. A kiegészítő [gyors R webhely](http://www.statmethods.net/) egy hasznos forrás.
+* **A művelet R** Robert Kabacoff által van egy másik hasznos bevezető címjegyzék-alkalmazásával. A kiegészítő [gyors R webhely](https://www.statmethods.net/) egy hasznos forrás.
 * **R Inferno** szerint Patrick Burns a meglepően szorult könyvet, hogy kezelje a számos bonyolult és nehezen észlelt is, ha az r programozási témakörök A könyv érhető el ingyenesen [az R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/).
 * Ha azt szeretné, hogy az R haladó témakörök részletes bemutatása, rendelkezik egy pillantást a könyv **speciális R** Hadley Wickham szerint. Ingyenesen érhető el az online változata annak a könyv [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
 
-R-time series csomagok katalógusában található [CRAN feladat megtekintése: Time Series elemzési](http://cran.r-project.org/web/views/TimeSeries.html). Adatsorozat objektum csomagok meghatározott időre szóló információ hivatkozzon az adott csomag dokumentációjában.
+R-time series csomagok katalógusában található [CRAN feladat megtekintése: Time Series elemzési](https://cran.r-project.org/web/views/TimeSeries.html). Adatsorozat objektum csomagok meghatározott időre szóló információ hivatkozzon az adott csomag dokumentációjában.
 
 A könyv **bevezető Time Series** Paul Cowpertwait és Andrew Metcalfe r bevezetést nyújt az idősoros elemzés az R használatával. Számos további elméleti szövegek R példákat biztosítanak.
 
@@ -1331,8 +1331,8 @@ A könyv **bevezető Time Series** Paul Cowpertwait és Andrew Metcalfe r beveze
 
 * DataCamp R a böngészőjében az videó leckékben és kódolási gyakorlatok kényelmes azzal foglalkozunk. Nincsenek interaktív oktatóanyagok a legújabb R technikák és csomagokat. Igénybe az ingyenes [R interaktív oktatóanyag](https://www.datacamp.com/courses/introduction-to-r).
 * [Ismerje meg, az R programozási, a végleges útmutató](https://www.programiz.com/r-programming) Programiz a.
-* Gyors [R oktatóanyag](http://www.cyclismo.org/tutorial/R/) által Tibor fekete Clarkson egyetemen.
-* Nincsenek 60 R erőforrások webhelyen felsorolt [felső R nyelv erőforrásokat az adatok képességek javításához](http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* Gyors [R oktatóanyag](https://www.cyclismo.org/tutorial/R/) által Tibor fekete Clarkson egyetemen.
+* Nincsenek 60 R erőforrások webhelyen felsorolt [felső R nyelv erőforrásokat az adatok képességek javításához](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

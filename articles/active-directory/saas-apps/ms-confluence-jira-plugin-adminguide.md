@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109137"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Az Azure Active Directory Atlassian Jira és való összefolyás felett rendszergazdai útmutatója
 
@@ -110,33 +110,33 @@ Az alábbi képen látható Jira és való összefolyás felett is a következő
 
 ![Beépülő modul konfigurációs képernyőjén](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Metaadatok URL-címe**: Az Azure AD összevonási metaadatok beolvasása az URL-címe.
+* **Metaadatok URL-címe**: Az Azure AD összevonási metaadatok beolvasása az URL-címe.
 
-*   **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/.
+* **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/.
 
-*   **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+* **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
 
-*   **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+* **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
 
-*   **Identitásszolgáltató Entitásazonosító**: Az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
+* **Identitásszolgáltató Entitásazonosító**: Az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
 
-*   **Bejelentkezési URL-cím**: A bejelentkezési URL-cím az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **Bejelentkezési URL-cím**: A bejelentkezési URL-cím az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **Kijelentkezési URL-címe**: A kijelentkezési URL-címe az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **Kijelentkezési URL-címe**: A kijelentkezési URL-címe az identitásszolgáltató. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **X.509-tanúsítvány**: Az IdP X.509-tanúsítvány. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
+* **X.509-tanúsítvány**: Az IdP X.509-tanúsítvány. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe az Azure AD-ből.
 
-*   **Bejelentkezési gomb neve**: A bejelentkezés gombot, amely a szervezet azt szeretné, a bejelentkezési lapon látható, hogy a felhasználók neve.
+* **Bejelentkezési gomb neve**: A bejelentkezés gombot, amely a szervezet azt szeretné, a bejelentkezési lapon látható, hogy a felhasználók neve.
 
-*   **SAML-felhasználói azonosító helyek**: A hely, ahol a Jira vagy való összefolyás felett felhasználói azonosítónak a SAML-válasz. Is lehet **NameID** vagy egy egyéni attribútum nevében.
+* **SAML-felhasználói azonosító helyek**: A hely, ahol a Jira vagy való összefolyás felett felhasználói azonosítónak a SAML-válasz. Is lehet **NameID** vagy egy egyéni attribútum nevében.
 
-*   **Attribútum neve**: A nevét, ahol a felhasználói azonosítónak.
+* **Attribútum neve**: A nevét, ahol a felhasználói azonosítónak.
 
-*   **A Kezdőtartomány felderítésének engedélyezése kezdőlap**: A kijelölést, győződjön meg arról, ha a vállalat használ az Active Directory összevonási szolgáltatások (AD FS) - alapú bejelentkezést - a.
+* **A Kezdőtartomány felderítésének engedélyezése kezdőlap**: A kijelölést, győződjön meg arról, ha a vállalat használ az Active Directory összevonási szolgáltatások (AD FS) - alapú bejelentkezést - a.
 
-*   **Tartománynév**: A tartománynév, ha be-e az AD FS-alapú.
+* **Tartománynév**: A tartománynév, ha be-e az AD FS-alapú.
 
-*   **Engedélyezze az egyszeri Kijelentkezés**: Győződjön meg arról, ha azt szeretné, jelentkezzen ki, amikor egy felhasználó kijelentkezik a Jira vagy való összefolyás felett az Azure AD-ből a kijelölést.
+* **Engedélyezze az egyszeri Kijelentkezés**: Győződjön meg arról, ha azt szeretné, jelentkezzen ki, amikor egy felhasználó kijelentkezik a Jira vagy való összefolyás felett az Azure AD-ből a kijelölést.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 498dc3f81968b60deb4f6f70466938026ac48f6a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9ce236748c1ca4f5e166fe1d7574f6a635d6204b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855886"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
 
@@ -65,10 +65,9 @@ Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás az Azure-
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
 
 Egy vagy több virtuális gépet kell egy vagy több önálló vagy fürtözött Hyper-V-gazdagépeken futó. A System Center Virtual Machine Manager (VMM) által felügyelt gazdagépeken futó virtuális gépeket is replikálhat.
-    - Ha a VMM-ben, a Site Recovery üzembe helyezése során nem futtatja, gyűjtse össze a Hyper-V-gazdagépek és fürtök Hyper-V helyek be. A Site Recovery-ügynökök (az Azure Site Recovery Provider és Recovery Services agent) minden egyes Hyper-V gazdagépen telepítenie.
-    - Ha a Hyper-V-gazdagépek VMM-felhőben található, akkor koordinálhatja a replikálást, a VMM-ben. A Site Recovery Providert a VMM-kiszolgáló és a Recovery Services-ügynököt minden Hyper-V gazdagépre telepíti. Képezze le a VMM logikai és Virtuálisgép-hálózatok és az Azure virtuális hálózatok között.
-    - 
-[További](hyper-v-azure-architecture.md) Hyper-V Azure-ra architektúra kapcsolatban.
+- Ha a VMM-ben, a Site Recovery üzembe helyezése során nem futtatja, gyűjtse össze a Hyper-V-gazdagépek és fürtök Hyper-V helyek be. A Site Recovery-ügynökök (az Azure Site Recovery Provider és Recovery Services agent) minden egyes Hyper-V gazdagépen telepítenie.
+- Ha a Hyper-V-gazdagépek VMM-felhőben található, akkor koordinálhatja a replikálást, a VMM-ben. A Site Recovery Providert a VMM-kiszolgáló és a Recovery Services-ügynököt minden Hyper-V gazdagépre telepíti. Képezze le a VMM logikai és Virtuálisgép-hálózatok és az Azure virtuális hálózatok között.
+- [További](hyper-v-azure-architecture.md) Hyper-V Azure-ra architektúra kapcsolatban.
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>A Hyper-V fürtön elhelyezkedő virtuális gépeket lehet replikálni?
 
@@ -139,11 +138,11 @@ A replikáció a Hyper-V virtuális gép futnia kell egy támogatott operációs
 
 A Hyper-V virtuális gépek replikálhatók (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc.
 
-###<a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
-A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
+A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Használhatom az offline kezdeti replikációt?
-Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
 Igen, kizárhat lemezeket a replikációból. 

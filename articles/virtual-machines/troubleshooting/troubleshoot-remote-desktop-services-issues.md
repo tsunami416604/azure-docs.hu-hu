@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215116"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003137"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások-beli virtuális gépen nem indítása
 
@@ -58,7 +58,7 @@ A probléma oka, hogy a távoli asztali szolgáltatások nem fut a virtuális g�
 
 - A TermService szolgáltatás **letiltott**. 
 - A TermService szolgáltatás összeomlik, vagy a függő. 
-- A TermService miatt nem indul a helytelen konfiguráció.
+- A TermService miatt nem indítja el a nem megfelelő konfiguráció.
 
 ## <a name="solution"></a>Megoldás
 
@@ -99,7 +99,8 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
 
     |  Hiba |  Javaslat |
     |---|---|
-    |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |  
+    |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |  
     |1058 - ERROR_SERVICE_DISABLED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs).  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.|
     |1067 - ERROR_PROCESS_ABORTED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs).  |
@@ -108,7 +109,7 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
     |1070 - ERROR_SERVICE_START_HANG   | Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs). |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében. |
-    |1753   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.   |   |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    |1753   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt
 
@@ -205,7 +206,7 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
 
 1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
 2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot. Győződjön meg arról, hogy a csatlakoztatott lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
-3.  Nyissa meg a rendszergazda jogú parancssort (**Futtatás rendszergazdaként**). Ezután futtassa az alábbi parancsfájlt. Feltételezzük, hogy van-e a meghajtóbetűjelet, a csatlakoztatott operációsrendszer-lemez rendelt **F**. Cserélje le a megfelelő értéket a virtuális gépen. 
+3. Nyissa meg a rendszergazda jogú parancssort (**Futtatás rendszergazdaként**). Ezután futtassa az alábbi parancsfájlt. Feltételezzük, hogy van-e a meghajtóbetűjelet, a csatlakoztatott operációsrendszer-lemez rendelt **F**. Cserélje le a megfelelő értéket a virtuális gépen. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

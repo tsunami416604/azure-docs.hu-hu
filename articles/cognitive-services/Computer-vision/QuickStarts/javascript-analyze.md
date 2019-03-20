@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9befe2c5ddad4ba38458279bde8d3184746f9f02
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 246122881baa4cfdbc4508ff732d217a551034d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543100"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897367"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Gyors útmutató: A Computer Vision a REST API-t és a JavaScript használatával egy távoli kép elemzése
 
@@ -209,10 +209,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a fájlt.
 
 ## <a name="next-steps"></a>További lépések
 

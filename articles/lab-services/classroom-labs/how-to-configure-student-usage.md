@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181622"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -38,9 +38,22 @@ Ha rendelkezik a **hozzáférés korlátozása** felhasználók (e-mail cím) be
 
     ![Felhasználók listája](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="send-registration-link-to-students"></a>Regisztrációs hivatkozás küldése a diákoknak
-Az alábbi eljárás lépéseit egy regisztrációs hivatkozás küldése felhasználóknak rendelkezik. Ha a **hozzáférés korlátozása** a tesztkörnyezethez engedélyezve van, csak a felhasználók a listán szereplő felhasználók rögzítheti a regisztráció hivatkozásra a tesztkörnyezethez. 
+## <a name="share-registration-link-with-students"></a>A diákok regisztráció hivatkozás megosztása
+A regisztrációs hivatkozást küld diákok, használja az alábbi módszerek egyikét. Az első módszer bemutatja, hogyan e-mailek küldése a regisztráció hivatkozásra, és a egy üzenetet a tanulók számára. A második módszer bemutatja, hogyan tehet szert a regisztráció hivatkozásra, amelyet megoszthat másokkal tetszés. 
 
+Ha a **hozzáférés korlátozása** a tesztkörnyezethez engedélyezve van, csak a felhasználók a listán szereplő felhasználók rögzítheti a regisztráció hivatkozásra a tesztkörnyezethez. Ez a beállítás alapértelmezés szerint engedélyezve van. 
+
+### <a name="send-email-to-users"></a>E-mail küldése a felhasználóknak
+1. Váltson a **felhasználók** megtekintheti, ha nem az oldalon már. 
+2. Válassza ki a specifikus vagy minden felhasználó a listán. Meghatározott felhasználóknak kínált, jelölje be a jelölőnégyzeteket a lista első oszlopában. Minden felhasználó kijelöléséhez jelölje be az első oszlop a cím elé (**neve**), vagy válassza ki az összes felhasználó számára az összes jelölőnégyzetet a listából.
+3. Válassza ki **meghívó küldése** az eszköztáron. Vigye az egérmutatót egy diák nevét a listában, és elküldeni az e-mailek ikon is. 
+
+    ![Regisztráció hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
+4. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon, kövesse az alábbi lépéseket: 
+    1. Írja be egy **üzenetet** , amely elküldi a tanulók számára. Az e-mail automatikusan a regisztrációs hivatkozást tartalmaz. 
+    2. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon jelölje be **küldése**. 
+
+## <a name="get-registration-link"></a>Regisztráció hivatkozás beszerzése
 1. Váltson a **felhasználók** nézet kiválasztásával **felhasználók** a bal oldali menüben. 
 2. Válassza ki **Get-regisztrációs hivatkozást** csempére.
 
@@ -49,11 +62,7 @@ Az alábbi eljárás lépéseit egy regisztrációs hivatkozás küldése felhas
 
     ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Bezárás** gombra. 
-4. Ossza meg a regisztrációs hivatkozást egy diákkal, hogy a diák regisztrálhasson az osztályba. Ha rendelkezik a **korlátozása beállítást** beállítás engedélyezve van, és felhasználók listája szerepel a listában, a következő műveleteket hajthatja végre:
-    1. Válassza ki a **e-mail-cím** a felhasználó a listán. 
-    2. Megjelenik egy ablak az alapértelmezett e-mail programból, az a **TO** cím kitölti a rendszer. 
-    3. Illessze be a **regisztrációs URL-cím** korábban vágólapra másolt. 
-    4. Küldés a **e-mail**. 
+4. Megosztás a **regisztrációs hivatkozást** együtt tanuló, hogy az osztály a tanulói regisztrálhatnak. 
 
 ## <a name="view-users-registered-with-the-lab"></a>A tesztkörnyezetben regisztrált felhasználók megtekintése
 

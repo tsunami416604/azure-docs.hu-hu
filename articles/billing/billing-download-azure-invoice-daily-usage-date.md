@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: b03b787e245129e5e51304a2bcc8740ebf3f6196
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 59d63efbf261813c8519b03d3e1630cf24d868d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406147"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835926"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 
@@ -30,13 +30,13 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek vagy rendelkezik egy [Mic
 
 Csak egyes szerepkörök első számlázási számlák és használati adatokat, például az a fiók rendszergazdája vagy vállalati rendszergazdai jogosultsága. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#Check-your-access-to-a-Microsoft-Customer-Agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és a számlához manager számlázási és használati adatok megtekintéséhez. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+A Microsoft vevői szerződéssel rendelkezik, ha csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és a számlához manager számlázási és használati adatok megtekintéséhez. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="download-your-azure-invoices-pdf"></a>Töltse le az Azure-számlák (.pdf)
 
-A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg [számlázási profilok számlák letöltésének](#download-invoices-for-a-billing-profile).
+A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg a letöltési számlázási profilhoz tartozó számlákat.
 
 ### <a name="download-invoices-for-an-individual-subscription"></a>Egy adott előfizetéshez tartozó számla letöltése
 
@@ -80,7 +80,7 @@ Számos oka lehet annak, hogy nem jelenik meg számla:
 
 ## <a name="get-your-invoice-in-email-pdf"></a>A számla kapni e-mailben (.pdf)
 
-Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el. Ha a Microsoft Customer szerződéssel rendelkezik, tekintse meg [kapni a számlázási profil számlákat e-mailben](#get-your-billing-profile-invoices-in-email).
+Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el. Ha egy Microsoft Customer szerződéssel rendelkezik, tekintse meg a számlázási profilja számlák e-mailt a Get.
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>Az előfizetéshez tartozó számlákat kapni e-mailben
 
@@ -189,7 +189,7 @@ Is letöltheti hónap elejétől számított használati az aktuális elszámol�
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 

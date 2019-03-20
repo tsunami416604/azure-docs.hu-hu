@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722906"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999549"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan használatának első lépései az Azure Queue s
 
 Ez a cikk a C#-mintakódot biztosít, amelyek bemutatják az Azure WebJobs SDK-verzió használatához az Azure Queue storage szolgáltatással 1.x.
 
-Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat. Lásd: [Ismerkedés az Azure Queue Storage .NET-tel](../storage/queues/storage-dotnet-how-to-use-queues.md) további információt. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](http://www.asp.net).
+Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat. Lásd: [Ismerkedés az Azure Queue Storage .NET-tel](../storage/queues/storage-dotnet-how-to-use-queues.md) további információt. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Hogyan aktiválja a függvényt, üzenetsori üzenet fogadásakor.
 Függvény, amely a WebJobs SDK meghívja az üzenetsori üzenet fogadásakor. használja a **QueueTrigger** attribútum. Az attribútum konstruktorának paramétereként egy karakterlánc-paramétert, amely meghatározza a lekérdezni kívánt üzenetsor neve. Az üzenetsor neve dinamikusan beállítása megtekintéséhez tekintse meg [konfigurációs beállításainak megadása](#how-to-set-configuration-options).
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Mellett **karakterlánc**, az lehet, hogy egy bájttömböt egy **CloudQueueMessage** objektumot, vagy egy Ön által meghatározott POCO.
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 A következő példában az üzenetsorban található üzenet a JSON-t tartalmaz egy **BlobInformation** objektum, amely tartalmaz egy **BlobName** tulajdonság. Az SDK automatikusan deserializes az objektumot.
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](http://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
+Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](https://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Az aszinkron funkciókat is igénybe vehet egy [megszakítás jogkivonat](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), ahogyan az a következő példának, amely egy blobot másol. (Ismertetése a **queueTrigger** helyőrző, tekintse meg a [Blobok](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) szakaszban.)
+Az aszinkron funkciókat is igénybe vehet egy [megszakítás jogkivonat](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), ahogyan az a következő példának, amely egy blobot másol. (Ismertetése a **queueTrigger** helyőrző, tekintse meg a [Blobok](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) szakaszban.)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 Amely tartalmazza a karakterláncot, hanem egy POCO üzenetsori üzenet létrehozására, át kell adnia a POCO típus a kimeneti paraméterként a **várólista** attribútumok konstruktorában.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(egyszerű régi CLR-beli objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) várólista-üzenetek
 Egy POCO az üzenetsorban található üzenet JSON-fájlként tárolja, használhatja ezt a nevet az objektum tulajdonságainak helyőrzőket a **várólista** attribútum **blobPath** paraméter. Üzenetsor metaadatai a tulajdonságnevek helyőrzőket is használhatja. Lásd: [várólista vagy üzenetsor üzenetet metaadatok lekérése](#get-queue-or-queue-message-metadata).
 
 Az alábbi példában egy blobot egy másik kiterjesztésű új blob másolja. Az üzenetsorban található üzenet van egy **BlobInformation** , amely tartalmazza az objektum **BlobName** és **BlobNameWithoutExtension** tulajdonságait. A tulajdonságnevek helyőrzőként a blob elérési útja a **Blob** attribútumok.
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](http://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
+Az SDK-t használ a [Newtonsoft.Json NuGet-csomag](https://www.nuget.org/packages/Newtonsoft.Json) szerializálható és deszerializálható üzeneteket. Ha üzenetsorbeli üzenetek számára hoz létre egy programot, amely nem használja a WebJobs SDK-val, írhat kódot, amely az SDK szolgáltatás elemezni tudja POCO üzenetsori üzenet létrehozására, az alábbi példához hasonlóan.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
@@ -329,9 +329,9 @@ A **Blob** attribútum is használható a következők:
 * **TextWriter**
 * **karakterlánc** (olvasás)
 * **karakterlánc ki** (írás, egy blobot hoz létre, csak akkor, ha a karakterlánc-paraméter esetén nem null értékű függvény)
-* POCO (olvasás)
+* POCO (read)
 * POCO meg (írási; mindig létrehoz egy blobot, NULL értékű objektum hoz létre, ha POCO paraméter null értékű, ha a visszatérési érték)
-* **CloudBlobStream** (írás)
+* **CloudBlobStream** (write)
 * **ICloudBlob** (olvasása vagy írása)
 * **CloudBlockBlob** (olvasása vagy írása)
 * **CloudPageBlob** (olvasása vagy írása)
@@ -442,7 +442,7 @@ static void Main(string[] args)
 ### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Értékek a WebJobs SDK-val konstruktor paraméterek beállítása a code-ban
 Néha szeretne hozzáadni egy üzenetsor neve, a blob nevét vagy a tároló, vagy egy Táblanév rögzítse szoftveresen helyett a kód azt. Például előfordulhat, hogy az üzenetsor nevének megadásához szeretné **QueueTrigger** egy konfigurációs fájlban vagy környezeti változóban.
 
-Úgy teheti meg, amely megadásának egy **NameResolver** az objektum a **JobHostConfiguration** típusa. Ön százalékjel (%) jelentkezik be a WebJobs SDK-val attribútum konstruktor paraméterek körülvett speciális helyőrzőket tartalmaznak, és a **NameResolver** kód határozza meg a tényleges értékek ezeket a helyőrzők helyett használható.
+Úgy teheti meg, amely megadásának egy **NameResolver** az objektum a **JobHostConfiguration** típusa. Ön százalékjel (%) foglalt speciális helyőrzőket tartalmaznak bejelentkezik a WebJobs SDK-val attribútum konstruktor paramétereket, és a **NameResolver** kód határozza meg a tényleges értékek ezeket a helyőrzők helyett használható.
 
 Tegyük fel például, egy üzenetsorba, a tesztelési környezetben logqueuetest és a egy elnevezett logqueueprod éles környezetben használni kívánt. A paraméterfájlokban várólista neve helyett adja meg a nevét, egy bejegyzés szeretné a **appSettings** gyűjteményt, amely a tényleges üzenetsor neve lenne. Ha a **appSettings** kulcs logqueue, a függvény az alábbi példához hasonlóan rákeresve.
 

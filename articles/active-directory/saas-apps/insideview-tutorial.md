@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a315933dcd438c68a1326d2b656c2353e4185f12
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező InsideView
 
@@ -91,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés az InsideView tesztelése és konfigurálás
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[InsideView tesztfelhasználó létrehozása](#creating-a-insideview-test-user)**  – egy megfelelője a Britta Simon InsideView, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Egy InsideView tesztfelhasználó létrehozása](#creating-a-insideview-test-user)**  – egy megfelelője a Britta Simon InsideView, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
@@ -191,7 +191,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="creating-a-insideview-test-user"></a>InsideView tesztfelhasználó létrehozása
+### <a name="creating-an-insideview-test-user"></a>Egy InsideView tesztfelhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók InsideView jelentkezzen be, akkor ki kell építenie a InsideView. InsideView, esetén kiépítése a manuális feladat.
 

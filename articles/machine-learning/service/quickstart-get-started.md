@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
-ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dabc331b13bc53a6d8e94d69c64b87c7f175c24
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7665066a28343f1d2ca46d5210b210f8f103abd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896670"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával
 
@@ -37,7 +36,7 @@ A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkat
 
 Az Ön által létrehozott erőforrások előfeltételként is használhatók a Machine Learning más szolgáltatási oktatóanyagaiban vagy útmutatóiban. A többi Azure-szolgáltatáshoz hasonlóan a Machine Learninghez társított egyes erőforrások korlátozva vannak. Ilyen például, a számítási fürt méretét. Tudjon meg többet a [alapértelmezett korlátok és a kvóta növelése](how-to-manage-quotas.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása 
@@ -65,11 +64,11 @@ Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozot
 
 1. A munkaterület oldalán válassza **Fedezze fel az Azure Machine Learning szolgáltatás munkaterület**.
 
- ![Ismerje meg a munkaterület](./media/quickstart-get-started/explore_aml.png)
+   ![Ismerje meg a munkaterület](./media/quickstart-get-started/explore_aml.png)
 
 1. Válassza ki **nyissa meg az Azure-jegyzetfüzetek** szeretné kipróbálni az első kísérlet az Azure-jegyzetfüzeteket.  Az Azure notebookok egy külön szolgáltatás, amely lehetővé teszi, hogy a futtatása a Jupyter notebooks ingyenes a felhőben.  Erre a hivatkozásra a szolgáltatás használata esetén a munkaterülethez csatlakoztassa információ felveszi a notebookok Azure-ban létrehozott könyvtárba.
 
- ![Az Azure Notebooks megnyitása](./media/quickstart-get-started/explore_ws.png)
+   ![Az Azure Notebooks megnyitása](./media/quickstart-get-started/explore_ws.png)
 
 1. Jelentkezzen be az Azure-jegyzetfüzeteket.  Ellenőrizze, hogy ugyanazt a fiókot, amellyel jelentkezzen be az Azure Portalra jelentkezik. A cég vagy az intézmény a bejelentkezéshez [rendszergazdai hozzájárulást](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) írhat elő.
 
@@ -79,7 +78,7 @@ Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozot
 
 1. Válassza ki **Klónozás**.
 
- ![Klónozza a tár](./media/quickstart-get-started/clone.png)
+   ![Klónozza a tár](./media/quickstart-get-started/clone.png)
 
 1. Ha látja, hogy a projekt állapot Leállítva, kattintson a **ingyenes számítógépen futtassa** az ingyenes notebook server használatához.
 

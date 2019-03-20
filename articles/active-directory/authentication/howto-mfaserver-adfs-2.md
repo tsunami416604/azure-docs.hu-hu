@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3064b3eb5f29e2b2d1ff8516dce97bbb3fb8062
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09ff573683ef681a053f2bcd37325d48b3823371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100819"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS 2.0-val való használathoz
 
@@ -32,7 +32,9 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
 2. Kattintson az **Űrlapalapú fülre**.
 3. Kattintson a **Hozzáadás** parancsra.
 
-   <center>![Telepítés](./media/howto-mfaserver-adfs-2/setup1.png)</center>
+   <center>
+   
+   ![Telepítés](./media/howto-mfaserver-adfs-2/setup1.png)</center>
 
 4. A felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-t (például https://sso.contoso.com/adfs/ls)) az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, és kattintson az **OK** gombra.
 5. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
@@ -41,7 +43,9 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
 8. A kérelmet állítsa **POST vagy GET** formátumúra.
 9. Adja meg a Felhasználónév változót (ctl00$ContentPlaceHolder1$UsernameTextBox) és a Jelszó változót (ctl00$ContentPlaceHolder1$PasswordTextBox). Ha az űrlapalapú bejelentkezési oldalon egy tartomány szövegmező jelenik meg, írja be a Tartomány változót is. A bejelentkezési lapon megjelenő beviteli mezők nevének a megtekintéséhez nyissa meg a bejelentkezési lapot egy webböngészőben, majd a kattintson a jobb gombbal a **Forrás megtekintése** parancsra.
 10. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
-    <center>![Telepítés](./media/howto-mfaserver-adfs-2/manual.png)</center>
+    <center>
+    
+    ![Telepítés](./media/howto-mfaserver-adfs-2/manual.png)</center>
 11. Kattintson a **Speciális...** elemre a speciális beállítások áttekintéséhez. A konfigurálható beállítások közé tartoznak az alábbiak:
 
     - Egyéni elutasítási oldalfájl kiválasztása
@@ -63,13 +67,17 @@ Engedélyezte az IIS-hitelesítést, de az Active Directory (AD) LDAP-n kereszt�
 1. Kattintson a **Címtárintegrálás** ikonra.
 2. A Beállítások lapon jelölje be a **Megadott LDAP-konfiguráció használata** választógombot.
 
-   <center>![Telepítés](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
+   <center>
+    
+   ![Telepítés](./media/howto-mfaserver-adfs-2/ldap1.png)</center>
 
 3. Kattintson a **Szerkesztés** gombra.
 4. Az LDAP-konfiguráció szerkesztése párbeszédpanelen adja meg az AD tartományvezérlőhöz való kapcsolódáshoz szükséges adatokat a mezőkben. A mezők leírását az Azure Multi-Factor Authentication-kiszolgáló súgófájljában találja.
 5. Tesztelje az LDAP-kapcsolatot a **Tesztelés** gombra kattintva.
 
-   <center>![Telepítés](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
+   <center>
+    
+   ![Telepítés](./media/howto-mfaserver-adfs-2/ldap2.png)</center>
 
 6. Ha az LDAP-kapcsolat tesztelése sikeres volt, kattintson az **OK** gombra.
 
@@ -81,7 +89,9 @@ Engedélyezte az IIS-hitelesítést, de az Active Directory (AD) LDAP-n kereszt�
 
 Győződjön meg arról, hogy importálta a felhasználókat az Active Directoryból a kiszolgálóra. Tekintse meg a [Megbízható IP-címek szakaszt](#trusted-ips), ha a belső IP-címeket engedélyezési listára szeretné helyezni, hogy a kétlépcsős hitelesítés végrehajtása ne legyen kötelező, amikor ezekről a helyszínekről jelentkezik be a webhelyre.
 
-<center>![Telepítés](./media/howto-mfaserver-adfs-2/reg.png)</center>
+<center>
+
+![Telepítés](./media/howto-mfaserver-adfs-2/reg.png)</center>
 
 ## <a name="ad-fs-20-direct-without-a-proxy"></a>AD FS 2.0 Direct proxy nélkül
 Az AD FS védelmét akkor is biztosíthatja, ha az AD FS-proxy nincs használatban. Telepítse az Azure Multi-Factor Authentication-kiszolgálót az AD FS-kiszolgálóra, és konfigurálja a kiszolgálót az alábbi lépések szerint:
@@ -94,7 +104,9 @@ Az AD FS védelmét akkor is biztosíthatja, ha az AD FS-proxy nincs használatb
 6. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 7. Szükség esetén jelölje be a cookie-gyorsítótár jelölőnégyzetét.
 
-   <center>![Telepítés](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
+   <center>
+   
+   ![Telepítés](./media/howto-mfaserver-adfs-2/noproxy.png)</center>
 
 8. Kattintson az **OK** gombra.
 9. Kattintson a **Natív modul** fülre, és jelölje ki a kiszolgálót, a webhelyet (például az „Alapértelmezett webhelyet”) vagy az AD FS-alkalmazást (például az „adfs” alatta található „Is”-t) az IIS beépülő modul kívánt szinten való engedélyezéséhez.
@@ -113,4 +125,6 @@ A Megbízható IP-címek segítségével a felhasználók adott IP-címekről va
 3. A Megbízható IP-címek hozzáadása párbeszédpanel megjelenésekor válassza az **Egyetlen IP-cím**, az **IP-címtartomány** vagy az **Alhálózat** választógombot.
 4. Adja meg az engedélyezési listához hozzáadni kívánt IP-címet, IP-címtartományt vagy alhálózatot. Ha alhálózatot ad meg, válassza ki a megfelelő hálózati maszkot, és kattintson az **OK** gombra. A rendszer hozzáadta a megbízható IP-címet.
 
-<center>![Telepítés](./media/howto-mfaserver-adfs-2/trusted.png)</center>
+<center>
+
+![Telepítés](./media/howto-mfaserver-adfs-2/trusted.png)</center>

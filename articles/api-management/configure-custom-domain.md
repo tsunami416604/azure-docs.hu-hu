@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: cb7ccc665cdf9867232580fd8b687b344e43116d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079792"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 
@@ -45,22 +45,22 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 1. Válassza ki **egyéni tartományok és SSL**.
     
     Nincsenek számos végpontot, amelyhez hozzárendelhet egy egyéni tartomány nevét. Jelenleg az alábbi végpontok érhetők el: 
-    + **Proxy** (alapértelmezett érték: `<apim-service-name>.azure-api.net`), 
-    + **Portál** (alapértelmezett érték: `<apim-service-name>.portal.azure-api.net`),     
-    + **Felügyeleti** (alapértelmezett érték: `<apim-service-name>.management.azure-api.net`), 
-    + **SCM** (alapértelmezett érték: `<apim-service-name>.scm.azure-api.net`).
+   + **Proxy** (alapértelmezett érték: `<apim-service-name>.azure-api.net`), 
+   + **Portál** (alapértelmezett érték: `<apim-service-name>.portal.azure-api.net`),     
+   + **Felügyeleti** (alapértelmezett érték: `<apim-service-name>.management.azure-api.net`), 
+   + **SCM** (alapértelmezett érték: `<apim-service-name>.scm.azure-api.net`).
 
-    >[!NOTE]
-    > A végpontok egy része vagy azokat frissítheti. Gyakran, az ügyfelek frissítéséhez **Proxy** (az URL-cím segítségével az API Management szolgáltatáson keresztül közzétett API-t) és **portál** (a fejlesztői portál URL-cím). **Felügyeleti** és **SCM** végpontok belsőleg az APIM-ügyfelek, és így kevésbé gyakran hozzárendelt egy egyéni tartomány nevét.
+     >[!NOTE]
+     > A végpontok egy része vagy azokat frissítheti. Gyakran, az ügyfelek frissítéséhez **Proxy** (az URL-cím segítségével az API Management szolgáltatáson keresztül közzétett API-t) és **portál** (a fejlesztői portál URL-cím). **Felügyeleti** és **SCM** végpontok belsőleg az APIM-ügyfelek, és így kevésbé gyakran hozzárendelt egy egyéni tartomány nevét.
 
 1. Válassza ki a frissíteni kívánt végpontot. 
 1. Kattintson a jobb oldali ablakban **egyéni**.
 
-    + Az a **egyéni tartománynév**, adja meg a használni kívánt nevét. Például: `api.contoso.com`. Helyettesítő karaktereket tartalmazó tartománynevek (például *. tartomány.com) is támogatottak.
-    + Az a **tanúsítvány**, válasszon ki egy tanúsítványt a Key Vaultból. Emellett feltölthet egy érvényes. PFX fájlt, és adja meg a **jelszó**, ha a tanúsítvány jelszóval védett.
+   + Az a **egyéni tartománynév**, adja meg a használni kívánt nevét. Például: `api.contoso.com`. Helyettesítő karaktereket tartalmazó tartománynevek (például *. tartomány.com) is támogatottak.
+   + Az a **tanúsítvány**, válasszon ki egy tanúsítványt a Key Vaultból. Emellett feltölthet egy érvényes. PFX fájlt, és adja meg a **jelszó**, ha a tanúsítvány jelszóval védett.
 
-    > [!TIP]
-    > Ha az Azure Key Vault használatával kezelheti az egyéni tartomány SSL-tanúsítványt, ellenőrizze, hogy a tanúsítvány szúr be a Key Vault [, egy *tanúsítvány*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem egy *titkos*. A tanúsítvány autorotate értékre van állítva, ha az API Management automatikusan felveszi a legújabb verzióra.
+     > [!TIP]
+     > Ha az Azure Key Vault használatával kezelheti az egyéni tartomány SSL-tanúsítványt, ellenőrizze, hogy a tanúsítvány szúr be a Key Vault [, egy *tanúsítvány*](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem egy *titkos*. A tanúsítvány autorotate értékre van állítva, ha az API Management automatikusan felveszi a legújabb verzióra.
 
 1. Kattintson a alkalmazni.
 

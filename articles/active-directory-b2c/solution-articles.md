@@ -8,12 +8,12 @@ ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb4789773ae9f1cd29f4a8e3ae415d450707a17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009727"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és az Azure Active Directory B2C-oktatás
 
@@ -28,3 +28,4 @@ Az Azure Active Directory (Azure AD) B2C lehetővé teszi a szervezetek számár
 | [Hibrid környezetben az Azure AD B2C áttelepítése alkalmazás hitelesítése](https://aka.ms/MigratetoAADB2C) | A mai modern szervezetek digitális átalakítást, és a felhőbe való áthelyezés történik, fázisában, hibrid identitás környezetben legalább ideiglenesen működik a legtöbb szervezet igénylő.<br><br>Ez az útmutató elsősorban a migrálási tervet, az Azure AD B2C-vel az első alkalmazás létrehozása, és ennek az egy hibrid identitáskezelési környezetet a szempontokat ismerteti. |
 | [Általános adatvédelmi rendelet (GDPR) rendelkező ügyfélalkalmazások kapcsolatos szempontok](https://aka.ms/AADB2CandGDPR) | Minden ügyfél alkalmazásokat üzemeltethetnek GDPR kell figyelembe kell venni szerint minden olyan szervezetnek, amely a személyes adatok tárolásához, és az EU állampolgárok szolgálnak, projektek folyamatokról.<br><br>Ez a megoldási útmutató foglalkozik az Azure AD B2C segítségével hogyan biztosítható a teljes GDPR megfelelőségi megközelítéssel, beleértve a hogyan Azure AD B2C-összetevők támogatják a kulcs GDPR jogokat minden egyes egyéni felhasználók számára egy rugalmas összetevőjeként. |
 | Egyéni házirendek használata:<br><ul><li>[Egyéni házirendek bemutatása](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Introduction.pdf)</li><li>[Használja ki a bérlő egyéni szabályzatok](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Leveraging%20Custom%20Policies%20for%20your%20Tenant.pdf)</li><li>[Struktúra házirendek és kulcsok kezelése](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Structuring%20Policies%20and%20Managing%20Keys.pdf)</li><li>[Saját identitás használata és a felhasználók migrálása](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Bring-your-own-identity%20and%20Migrating%20Users.pdf)</li><li>[Szabályzatokkal kapcsolatos problémák elhárítása és -hozzáférés naplózása](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Troubleshooting%20Policies%20and%20Auditing.pdf)</li><li>[Az egyéni házirend séma részletes bemutatása](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Deep%20Dive%20on%20Custom%20Policy%20Schema.pdf)</li><br>| A dokumentumok sorozatát biztosít egy teljes körű világába az Azure AD B2C-ben lévő egyéni szabályzatok részletes bemutatása a leggyakoribb fejlett identitás-helyzetekben.<br><br> Ez magában foglalja a megvalósítása és kezelése az ilyen feladatokhoz szükséges egyéni házirendek és a rendelkezésre álló eszközökkel diagnosztizálása őket. Emellett biztosítja közelebbről is megismerheti, hogyan egyéni szabályzatok munkahelyi és a részletek hogyan finomhangolásához őket, hogy megfeleljen a saját konkrét követelmények. |
+

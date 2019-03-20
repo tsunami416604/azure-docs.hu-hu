@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100445"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Nyisson egy támogatási jegyet az Azure Data Box 
 
@@ -55,14 +55,14 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
 
 4. A **új támogatási kérelem**, kattintson a **lépés 3 elérhetőségi adatok**. A **kapcsolattartási adatok**, tegye a következőket:
 
-    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-    2. Az a **kapcsolattartási adatok**, adja meg a nevét, e-mail, ügyfél nem kötelező, ország. Válassza ki **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez**.
-    3. Kattintson a **Create** (Létrehozás) gombra.
+   1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
+   2. Az a **kapcsolattartási adatok**, adja meg a nevét, e-mail, ügyfél nem kötelező, ország. Válassza ki **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez**.
+   3. Kattintson a **Create** (Létrehozás) gombra.
    
-        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-    A Microsoft Support ezen információk segítségével kapcsolatos további információkat, a diagnosztikai és a megoldási Önnel.
-Miután elküldte a kérést, a támogatási szakember felveszi a kapcsolatot, amint lehetséges, hogy a kérés folytatásához.
+      A Microsoft Support ezen információk segítségével kapcsolatos további információkat, a diagnosztikai és a megoldási Önnel.
+      Miután elküldte a kérést, a támogatási szakember felveszi a kapcsolatot, amint lehetséges, hogy a kérés folytatásához.
 
 ## <a name="manage-a-support-request"></a>Egy támogatási jegy kezelése
 

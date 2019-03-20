@@ -10,16 +10,19 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: 6c020fec5e94967a841e03a44f6174a3b7867258
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 02f93b86bc53b482127bdd6df963f75680242bcd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007132"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: A TensorFlow modell futtatása a Pythonban
 
 Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) a Custom Vision Service-ből, ez a rövid útmutató azt fogja bemutatni, hogyan használhatja a modellt képek helyi besorolására.
+
+> [!NOTE]
+> Ebben az oktatóanyagban csak a modellek exportál lemezképet besorolási projektek vonatkozik.
 
 ## <a name="install-required-components"></a>Szükséges összetevők telepítése
 
@@ -55,7 +58,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.FastGFile(filename, 'rb') as f:
+with tf.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -180,8 +183,12 @@ output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
 with tf.Session() as sess:
-    prob_tensor = sess.graph.get_tensor_by_name(output_layer)
-    predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })
+    try:
+        prob_tensor = sess.graph.get_tensor_by_name(output_layer)
+    except KeyError:
+        print ("Couldn't find classification output layer: " + output_layer + ".")
+        print ("Verify this a model exported from an Object Detection project.")
+        exit(-1)
 ```
 
 ## <a name="view-the-results"></a>Eredmények megtekintése
@@ -196,7 +203,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
 
     # Or you can print out all of the results mapping labels to probabilities.
     label_index = 0
-    for p in predictions[0]:
+    for p in predictions:
         truncated_probablity = np.float64(np.round(p,8))
         print (labels[label_index], truncated_probablity)
         label_index += 1

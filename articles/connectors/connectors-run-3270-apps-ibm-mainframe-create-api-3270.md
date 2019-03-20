@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: fb61935c7e7b45699d4142293f31bbfe39e4cb78
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878380"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>IBM Nagyszámítógépek 3270 képernyő adatvezérelt alkalmazások integrálása az Azure-ral IBM 3270 és az Azure Logic Apps-összekötő használatával
 
@@ -410,7 +410,7 @@ Amikor befejezte az ezeket a lépéseket, a művelettel a logikai alkalmazást, 
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek eseményindítók, műveleteket és korlátot, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/<*replace-with-api-topic-file-name*>).
+További technikai részletek eseményindítók, műveleteket és korlátot, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő referencialapja: [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/).
 
 ## <a name="get-support"></a>Támogatás kérése
 
