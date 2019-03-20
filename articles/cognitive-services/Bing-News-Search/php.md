@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 16717bbbb8974a1adb740c8fee5a5ba06043f53e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090525"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a PHP és a Bing News Search REST API használatával hírkeresés
 
@@ -200,4 +200,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-[Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

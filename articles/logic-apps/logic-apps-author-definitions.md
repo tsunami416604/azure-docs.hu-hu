@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 5c51fe4e3d8b432e80a2d437c299b33af557d936
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: daeb900abc3f24a408fc1b5f6e989e5181f2a463
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245813"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862743"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Létrehozásához, szerkesztéséhez vagy JSON kiterjesztése a logikai alkalmazás definícióiról az Azure Logic Appsben
 
@@ -191,7 +191,7 @@ A Logic Apps rendelkezik a különböző funkciók karakterláncokkal való munk
       "type": "Http",
       "inputs": {
         "method": "GET",
-        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
+        "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
       }
     }
   },
@@ -202,7 +202,7 @@ A Logic Apps rendelkezik a különböző funkciók karakterláncokkal való munk
 Ezek a lépések bemutatják, miként dolgozza fel a ebben a példában ez a karakterlánc, a belső dolgozunk azon, hogy a külső:
 
 ```
-"uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
+"uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
 1. Első a [ `length()` ](../logic-apps/logic-apps-workflow-definition-language.md) a vállalat neve, így kap karakterek száma.
@@ -244,7 +244,7 @@ Például a munkafolyamat paramétereket és a egy térképet, amely megfelel eg
     },
     "destinationMap": {
       "defaultValue": {
-        "science": "http://www.nasa.gov",
+        "science": "https://www.nasa.gov",
         "microsoft": "https://www.microsoft.com/en-us/default.aspx",
         "google": "https://www.google.com",
         "robots": "https://en.wikipedia.org/wiki/Robot",
@@ -264,7 +264,7 @@ Például a munkafolyamat paramétereket és a egy térképet, amely megfelel eg
       "type": "Http",
       "inputs": {
         "method": "GET",
-        "uri": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.wired.com/wired/index"
+        "uri": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=https://feeds.wired.com/wired/index"
       }
     },
     "forEachArticle": {
@@ -341,7 +341,7 @@ Formázhatja a dátumokat, karakterlánc formázót is használhatja. Ha példá
       "type": "Http",
       "inputs": {
         "method": "GET",
-        "uri": "http://www.example.com/?id=@{parameters('order').id}"
+        "uri": "https://www.example.com/?id=@{parameters('order').id}"
       }
     },
     "ifTimingWarning": {
@@ -352,7 +352,7 @@ Formázhatja a dátumokat, karakterlánc formázót is használhatja. Ha példá
           "type": "Http",
           "inputs": {
             "method": "GET",
-            "uri": "http://www.example.com/?recordLongOrderTime=@{parameters('order').id}&currentTime=@{utcNow('r')}"
+            "uri": "https://www.example.com/?recordLongOrderTime=@{parameters('order').id}&currentTime=@{utcNow('r')}"
           }
         }
       },

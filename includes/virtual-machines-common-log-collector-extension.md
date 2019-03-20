@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ed9d9fd020bb14db7e1d171a32c25239d7ee802
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0171b3ae2f45d46769b13ac0849593944c6a6209
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736145"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125069"
 ---
 Egy Microsoft Azure felhőalapú szolgáltatással kapcsolatos problémák diagnosztizálásához szükséges virtuális gépeken a szolgáltatás-naplófájl összegyűjtése, a hibák bekövetkezésekor. A AzureLogCollector bővítmény igény szerinti segítségével hajtsa végre a naplók egyszeri gyűjtemény egy vagy több Felhőbeli szolgáltatás virtuális gépek (a webes és feldolgozói szerepkörök), és az összegyűjtött fájlok átvitele az Azure storage-fiók – bármely távoli bejelentkezés nélkül a virtuális gépek.
 
@@ -93,37 +93,37 @@ A AzureLogCollector hozzá egy vagy több példány egy felhőalapú szolgáltat
 1. Kövesse az utasításokat az Azure PowerShell-lel csatlakozzon az előfizetéséhez.
 2. Adja meg, amelyhez hozzá szeretné adja hozzá, és engedélyezi a AzureLogCollector bővítményt szolgáltatáspéldány nevét, a tárolóhely, a szerepkörök és a szerepkör.
 
-  ```powershell
-  #Specify your cloud service name
-  $ServiceName = 'extensiontest2'
+   ```powershell
+   #Specify your cloud service name
+   $ServiceName = 'extensiontest2'
 
-  #Specify the slot. 'Production' or 'Staging'
-  $slot = 'Production'
+   #Specify the slot. 'Production' or 'Staging'
+   $slot = 'Production'
 
-  #Specified the roles on which the extension will be installed and enabled
-  $roles = @("WorkerRole1","WebRole1")
+   #Specified the roles on which the extension will be installed and enabled
+   $roles = @("WorkerRole1","WebRole1")
 
-  #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
-  $instances = @("*")
+   #Specify the instances on which extension will be installed and enabled.  Use wildcard * for all instances
+   $instances = @("*")
 
-  #Specify the collection mode, "Full" or "GA"
-  $mode = "GA"
-  ```
+   #Specify the collection mode, "Full" or "GA"
+   $mode = "GA"
+   ```
 
 3. Adja meg a további adatok mappát, amelynek gyűjtendő fájlok (Ez a lépés nem kötelező).
 
-  ```powershell
-  #add one location
-  $a1 = New-Object PSObject
+   ```powershell
+   #add one location
+   $a1 = New-Object PSObject
 
-  $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
-  $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
-  $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
-  $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
+   $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
+   $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
 
-  $AdditionalDataList+= $a1
-  #more locations can be added....
-  ```
+   $AdditionalDataList+= $a1
+   #more locations can be added....
+   ```
 
    > [!NOTE]
    > Használhatja a jogkivonat `%roleroot%` , adja meg a szerepkör legfelső szintű meghajtót, mivel nem használ rögzített meghajtóra.
@@ -131,16 +131,16 @@ A AzureLogCollector hozzá egy vagy több példány egy felhőalapú szolgáltat
    > 
 4. Adja meg az Azure storage-fiók neve és kulcsa, amelyhez gyűjtött fájl lesz feltöltve.
 
-  ```powershell
-  $StorageAccountName = 'YourStorageAccountName'
-  $StorageAccountKey  = 'YourStorageAccountKey'
-  ```
+   ```powershell
+   $StorageAccountName = 'YourStorageAccountName'
+   $StorageAccountKey  = 'YourStorageAccountKey'
+   ```
 
 5. A SetAzureServiceLogCollector.ps1 (a cikk végén található része) a következő hívása a AzureLogCollector bővítmény engedélyezése egy Felhőszolgáltatás számára. A végrehajtás befejezése után annak a feltöltött fájl alapján `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 
-  ```powershell
-  .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
-  ```
+   ```powershell
+   .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
+   ```
 
 A parancsfájlnak átadott paraméterek definícióját a következő: (Ez lesz átmásolva alatt is.)
 
@@ -197,36 +197,36 @@ Kövesse az utasításokat az Azure PowerShell-lel csatlakozzon az előfizetés�
 
 1. Adja meg a szolgáltatás nevét, virtuális gép és a gyűjtemény használati módját.
 
-  ```powershell
-  #Specify your cloud service name
-  $ServiceName = 'YourCloudServiceName'
+   ```powershell
+   #Specify your cloud service name
+   $ServiceName = 'YourCloudServiceName'
 
-  #Specify the VM name
-  $VMName = "'YourVMName'"
+   #Specify the VM name
+   $VMName = "'YourVMName'"
 
-  #Specify the collection mode, "Full" or "GA"
-  $mode = "GA"
+   #Specify the collection mode, "Full" or "GA"
+   $mode = "GA"
 
-  Specify the additional data folder for which files will be collected (this step is optional).
+   Specify the additional data folder for which files will be collected (this step is optional).
 
-  #add one location
-  $a1 = New-Object PSObject
+   #add one location
+   $a1 = New-Object PSObject
 
-  $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
-  $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
-  $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
-  $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Name" -Value "StorageData"
+   $a1 | Add-Member -MemberType NoteProperty -Name "SearchPattern" -Value "*"
+   $a1 | Add-Member -MemberType NoteProperty -Name "Location" -Value "%roleroot%storage"  #%roleroot% is normally E: or F: drive
+   $a1 | Add-Member -MemberType NoteProperty -Name "Recursive" -Value "true"
 
-  $AdditionalDataList+= $a1
+   $AdditionalDataList+= $a1
         #more locations can be added....
-  ```
+   ```
   
 2. Adja meg az Azure storage-fiók neve és kulcsa, amelyhez gyűjtött fájl lesz feltöltve.
 
-  ```powershell
-  $StorageAccountName = 'YourStorageAccountName'
-  $StorageAccountKey  = 'YourStorageAccountKey'
-  ```
+   ```powershell
+   $StorageAccountName = 'YourStorageAccountName'
+   $StorageAccountKey  = 'YourStorageAccountKey'
+   ```
 
 3. A SetAzureVMLogCollector.ps1 (a cikk végén található része) a következő hívása a AzureLogCollector bővítmény engedélyezése egy Felhőszolgáltatás számára. A végrehajtás befejezése után annak a feltöltött fájl alapján `https://YourStorageAccountName.blob.core.windows.net/vmlogs`
 

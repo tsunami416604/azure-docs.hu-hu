@@ -1,110 +1,91 @@
 ---
-title: Mi az a Speech Service?
+title: Mik az Azure Speech Services?
 titleSuffix: Azure Cognitive Services
-description: 'A Speech Service, Azure Cognitive Services részeként több beszédszolgáltatások, amely korábban elérhető volt külön-külön több egység: Bing Speech (amely magában foglalja, beszédfelismerés, és a szöveg-beszéd átalakítás), egyéni beszédfelismerési és beszédalapú fordítási.'
+description: Az Azure Speech Services hang-szöveg transzformációs, szöveg-hang transzformációs és beszédalapú fordítási egy Azure-előfizetéssel való egyesítése is. Könnyedén adhat hozzá a beszédfelismerési, az alkalmazások, eszközök és -eszközök a Speech SDK, a beszéd Devices SDK-val vagy a REST API-k. Beszéd funkciók hozzáadása egy meglévő csevegőrobot, szöveg-hang transzformációs egy fordítási alkalmazásban konvertálni vagy nagy adatmennyiségek hívás center lefényképezze.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 9beab6f30d42a7fd2c424971d602a581732eb946
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871643"
 ---
-# <a name="what-is-speech-services"></a>Mi az beszédszolgáltatások?
+# <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
-Hasonlóan a többi Azure speech services beszédszolgáltatások beszédfelismerési technológiák, például a Cortana és a Microsoft Office-termékekben használt vannak működteti.
+Az Azure Speech Services egy Azure-előfizetéssel egyesíti a hang-szöveg transzformációs, szöveg-hang transzformációs és tolmácsolás –. Beszéd könnyen engedélyezése az alkalmazások, eszközök és az eszközök a [beszéd SDK](speech-sdk-reference.md), [Speech Devices SDK-val](speech-devices-sdk-qsg.md), vagy [REST API-k](rest-apis.md).
 
-A beszédszolgáltatások korábban keresztül elérhető Azure beszédszolgáltatások egyesítése a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Beszédfordító](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [egyéni beszédfelismerési](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home), és [egyéni Beszédfelismerési](https://customvoice.ai/) szolgáltatások. Mostantól egyetlen előfizetéssel hozzáférhet az összes funkcióhoz.
+> [!IMPORTANT]
+> Beszédszolgáltatások átvették a Bing Speech API, a Translator Speech és a Custom Speech. Lásd: *útmutató végigvezeti a > áttelepítési* áttelepítési utasításokért.
 
-## <a name="main-speech-services-functions"></a>Beszédszolgáltatások fő funkciók
+Ezeket a funkciókat az Azure Speech Services alkotják. Ebben a táblázatban hivatkozások segítségével tudjon meg többet a gyakori alkalmazási helyzetek az egyes szolgáltatásokhoz, vagy tallózással keresse meg az API-referencia.
 
-A beszédszolgáltatások elsődleges funkciói a következők: hang-szöveg transzformációs (is nevezik beszédfelismerés vagy beszédátírási), a szöveg-hang transzformációs (beszédszintézishez) és a beszédalapú fordítási.
+| Szolgáltatás | Szolgáltatás | Leírás | SDK | REST |
+|---------|---------|-------------|-----|------|
+| [Speech-to-Text](speech-to-text.md) | Diktálás | Hang-szöveg transzformációs transcribes audio-adatfolyamokat valós idejű, amelyek az alkalmazások, eszközök és eszközök használata vagy megjelenítendő szöveg. Használja a hang-szöveg transzformációs a [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) átírt beszéd- és hangparancsokra reagálás származtassa felhasználói szándékot. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [A Batch Beszédátírási](batch-transcription.md) | Batch beszédátírási lehetővé teszi nagy mennyiségű adatot az aszinkron hang-szöveg transzformációs beszédátírási. Ez az egy REST-alapú szolgáltatás, amely ugyanazon végpontot használja, mint a Testreszabás és a modellkezelési. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
+| | [Testreszabás](#customize-your-speech-experience) | Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
+| [Text-to-Speech](text-to-speech.md) | Szövegfelolvasás | Szöveg-hang transzformációs emberszerű szintetizált alakítja át a bemeneti szöveg. Válasszon a standard szintű beszédhangot és Neurális beszédhangot (lásd: [nyelvi támogatás](language-support.md)). | Nem | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Testreszabás](#customize-your-speech-experience) | Hozzon létre egyéni hangtípust egyedi a márkáról vagy termék. | Nem | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Beszédfordítás](speech-translation.md) | Beszédfordítás | Beszédalapú fordítási lehetővé teszi az alkalmazások, eszközök és eszközök beszéd valós idejű, többnyelvű fordítás. A beszédfelismerés beszéd és hang-szöveg transzformációs fordítási szolgáltatás segítségével. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nem |
 
-|Függvény|Szolgáltatások|
-|-|-|
-|[Beszédfelismerés](speech-to-text.md)| <li>Folyamatos, valós idejű beszédet szöveggé alakít.<li>A hangfelvételekről képes egyszerre több beszédforrást is szöveggé alakítani. <li>Támogatja a köztes eredményeket, a beszéd végének észlelését, az automatikus szövegformázást és a profanitás kitakarását. <li>A [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) szolgáltatásra támaszkodva a szöveggé alakított beszédből képes kikövetkeztetni a felhasználói szándékot.\*|
-|[Text-to-Speech](text-to-speech.md)| <li>**ÚJ**: Itt Neurális szöveg-hang transzformációs beszédhangot szinte megkülönböztetni emberi speech (angol nyelven). <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |
-|[Tolmácsolás](speech-translation.md)| <li>Streamelt hangtartalmakat fordít közel valós időben.<li> Felvett beszédet is képes feldolgozni.<li>Az eredményeket szövegként vagy szintetizált beszédként biztosítja. |
+## <a name="news-and-updates"></a>Hírek és frissítések
 
+Ismerje meg, mi az az Azure Speech Services új.
 
-## <a name="customize-speech-features"></a>Beszédfunkciók testreszabása
+* Február a 2019 - kiadott beszéd SDK 1.3.0 támogatása [Unity (bétaverzió)](quickstart-csharp-unity.md). Támogatása hozzáadva a `AudioInput` osztály, amely lehetővé teszi a streamelési forrás Audio kiválasztását. Fejlesztések és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
+* December 2018 - kiadott beszéd SDK 1.2.0-s vagy annál újabb támogatása [Python](quickstart-python.md) és [Node.js](quickstart-js-node.md), valamint Ubuntu 18.04 LTS. További információkért lásd: [kibocsátási megjegyzések](releasenotes.md).
+* 2018. december – a szöveg-hang transzformációs útmutatóink hozzáadott [.NET Core](quickstart-dotnet-text-to-speech.md), [Python](quickstart-python-text-to-speech.md), [Node.js](quickstart-nodejs-text-to-speech.md). További minták érhetők el a [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http).
 
-Használhatja a saját adatait a Speech Service diktálási és szövegfelolvasási funkcióit működtető modellek betanításához.
+## <a name="try-speech-services"></a>Próbálja ki a beszédszolgáltatások
 
-|Szolgáltatás|Modell|Cél|
-|-|-|-|
-|Speech-to-text|[Akusztikai modell](how-to-customize-acoustic-models.md)|Adott beszélők és környezetek (például autók vagy gyárak) átírásához használható.|
-||[Nyelvi modell](how-to-customize-language-model.md)|Adott szakterülethez tartozó szókincs és nyelvtan (például orvosi vagy informatikai szakzsargon) átírásához használható.|
-||[Kiejtési modell](how-to-customize-pronunciation.md)|Rövidítések és mozaikszavak átírásához használható (például BKK, ami „bé ká ká”). |
-|Szövegfelolvasás|[Hangtípusok](how-to-customize-voice-font.md)|Saját hangot biztosíthat az alkalmazásának, ha emberi beszédből vett mintákkal tanítja be a modellt.|
+Útmutatók a népszerű programozási nyelvek, minden egyes, a kód futtatása kevesebb mint 10 perc múlva úgy tervezték, hogy biztosítunk. Ez a táblázat tartalmazza a legnépszerűbb rövid útmutatók, az egyes szolgáltatásokhoz. A bal oldali navigációs használatával további nyelvek és platformok.
 
-Az egyéni modelleket bárhol használhatja, ahol az alkalmazás a diktálási vagy a szövegfelolvasási funkcióhoz a standard modelleket használná.
+| Speech-to-text (SDK) | Translation (SDK) | Szöveg-hang transzformációs (REST) |
+|-------------------|-------------------|-----------------------|
+| [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) | [Python (Windows, Linux, macOS)](quickstart-python-text-to-speech.md) |
+| [JavaScript (böngésző)](quickstart-js-browser.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#, .NET Core (Windows, Linux, macOS)](quickstart-dotnet-text-to-speech.md) |
+| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C#, .NET-keretrendszer (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js (Windows, Linux, macOS)](quickstart-nodejs-text-to-speech.md) |
+| [Java (Windows, Linux)](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
 
-## <a name="use-the-speech-service"></a>A Speech Service használata
+Miután már kellett, hogy egy alkalommal a beszédszolgáltatások használatát, a jelen oktatóanyagban, amely bemutatja, hogyan ismerhetik fel a szándék fog vonatkozni, a beszéd, a beszéd SDK és a LUIS segítségével próbálja meg.
 
-A beszédalapú alkalmazások fejlesztésének megkönnyítése céljából a Microsoft a Speech Service-hez biztosítja a [Beszéd SDK](speech-sdk.md) használatát. A Beszéd SDK egységes, natív diktálási és beszédfordítási API-kat biztosít a C#, a C++ és a Java programnyelvekhez. Ha Ön ezen nyelvek valamelyikével fejleszt, a Beszéd SDK megkönnyíti a fejlesztést a hálózati részletek kezelésével.
+* [Oktatóanyag: A beszédfelismerés SDK és a LUIS, beszédfelismerés, szándék felismeréseC#](how-to-recognize-intents-from-speech-csharp.md)
 
-A beszédfelismerési szolgáltatás is rendelkezik egy [REST API-val](rest-apis.md) , amely együttműködik minden programozási nyelvet használhat, amelyek HTTP-kérelmekre. A REST-felület nem rendelkezik az SDK valós idejű, streamelési funkciójával.
+## <a name="get-sample-code"></a>Mintakód letöltése
 
-|<br>Módszer|Beszéd<br>tálás|Szöveg-<br>Beszéd|Beszéd<br>Fordítás|<br>Leírás|
-|-|-|-|-|-|
-|[Beszéd SDK](speech-sdk.md)|Igen|Nem|Igen|Fejlesztést megkönnyítő, natív API-k a C#, C++ és Java programnyelvhez.|
-|[REST API-k](rest-apis.md)|Igen|Igen|Nem|Egy egyszerű, HTTP-alapú API, amellyel könnyedén adhat beszédet alkalmazásaihoz.|
+Mintakód az Azure Speech Services mindegyike elérhető a Githubon. Ezek a minták például egy fájlhoz vagy adatfolyamhoz, folyamatos és egylépéses felismerés, a hang olvasásakor és egyéni modellek használata gyakori forgatókönyveket fednek le. Ezek a hivatkozások segítségével megtekintheti SDK-t és a REST-minták:
 
-### <a name="websockets"></a>WebSocketek
+* [Hang-szöveg és beszéd fordítási minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [A Batch beszédátírási minták (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+* [Szöveg-hang transzformációs minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-A beszédszolgáltatások is protokoly WebSocket streamelési hang-szöveg transzformációs és beszédalapú fordítási. A Beszéd SDK-k ezekkel a protokollokkal kommunikálnak a Speech service-szel. A Speech Service-szel a Beszéd SDK-t használja, és ne saját WebSocket-kommunikációt próbáljon implementálni.
+## <a name="customize-your-speech-experience"></a>A beszédfelismerés testreszabásához
 
-Ha már rendelkezik kódokat, amelyek a Bing Speech vagy Websocketek használatával Translator Speech, frissítheti úgy, hogy a beszédszolgáltatások használja. A WebSocket protokoll kompatibilisek, azonban a végpontok különböző.
+Az Azure Speech Services nagyszerűen működik a beépített modellek, azonban érdemes lehet további testre szabhatja és finomhangolása a termék vagy a környezet élményét. Testreszabási lehetőségek köre, a akusztikai modell finomhangolása a saját márkáját az egyedi hangtípusokkal. Miután létrehozott egy egyéni modell, használhatja az Azure Speech Services bármelyikével.
 
-### <a name="speech-devices-sdk"></a>Beszédeszközök SDK
+| Beszédszolgáltatás | Modell | Leírás |
+|----------------|-------|-------------|
+| Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Alkalmazások, eszközök, egy egyéni akusztikai modell létrehozásához vagy eszközöket, amelyek a megadott többek között az autó vagy gyárban, mindegyike adott felvétel feltételek. Ilyenek például a ékezetes speech, adott háttér egy olyan vagy a rögzítés adott mikrofon segítségével. |
+| | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modell, mező-specifikus szóhasználatának és nyelvtani, például terminológiát vagy informatikai szakkifejezéseivel beszédátírási javítása érdekében. |
+| | [Kiejtési modell](how-to-customize-pronunciation.md) | Egy egyéni írásmódja modellel meghatározhatja fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
+| Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Egyéni hangtípust lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját. Csak egy kis mennyiségű adatot a kezdéshez vesz igénybe. Minél több adatot ad meg, a további természetes és az emberi intelligenciára hasonlító elemeket az hangtípusú fog hang-, hogy. |
 
-A [Beszédeszközök SDK](speech-devices-sdk.md) egy integrált hardver- és szoftverplatform beszédalapú eszközök fejlesztői számára. Hardverpartnerünk referenciaterveket és fejlesztési egységeket biztosít. A Microsoft egy olyan eszközre optimalizált SDK-t nyújt, amely teljes körűen kihasználja a hardver képességeit.
+## <a name="reference-docs"></a>Segédanyagok
 
-
-## <a name="speech-scenarios"></a>Beszédforgatókönyvek
-
-Beszédszolgáltatások alkalmazási helyzeteit a következők:
-
-> [!div class="checklist"]
-> * Hanggal aktiválható alkalmazások létrehozása
-> * Telefonos ügyfélszolgálati felvételek átírása
-> * Hangrobotok implementálása
-
-### <a name="voice-user-interface"></a>Hangalapú felhasználói felület
-
-A hangbevitel nagyszerű eszköz arra, hogy egy rugalmas, manuális beavatkozás nélküli, gyorsan használható alkalmazást hozzon létre. A hangalapú alkalmazásokban a felhasználók egyszerűen rákérdezhetnek a szükséges információkra.
-
-Ha alkalmazását a nyilvánosságnak szánja, használhatja az alapértelmezett beszédfelismerési modelleket. Ezek a modellek számos különféle beszélőt képesek felismerni a gyakori környezetekben.
-
-Ha alkalmazását egy adott szakterületen kívánja használni (például orvostudományi vagy informatikai területen), létrehozhat egy [nyelvi modellt](how-to-customize-language-model.md). Ez a modell, akik az információ a speciális, az alkalmazás által használt terminológia beszédszolgáltatások használhatja.
-
-Ha alkalmazását zajos környezetben, például gyárban fogják használni, létrehozhat egy egyéni [akusztikai modellt](how-to-customize-acoustic-models.md). Ez a modell segítségével az beszédszolgáltatások beszédfelismerési megkülönböztetni a háttérzaj.
-
-### <a name="call-center-transcription"></a>Telefonos ügyfélszolgálati felvételek átírása
-
-A telefonos ügyfélszolgálati felvételeket gyakran csak akkor hallgatják meg, ha probléma merül fel egy hívással kapcsolatban. A Speech service-szel minden felvétel könnyedén átírható szöveggé. A szöveget ezután könnyedén indexelheti [teljes szöveges kereséshez](https://docs.microsoft.com/azure/search/search-what-is-azure-search), vagy [szövegelemzést](https://docs.microsoft.com/azure/cognitive-services/Text-Analytics/) végezhet a hangulat, a nyelv vagy a kulcsszavak meghatározásához.
-
-Ha a hívás center felvételek olyan speciális terminológiát, például termékneveket vagy informatikai beszédben, létrehozhat egy [nyelvi modell](how-to-customize-language-model.md) , akik a beszédszolgáltatások az a szöveg szóhasználati. Egyéni [akusztikai modell](how-to-customize-acoustic-models.md) is segítséget a beszédszolgáltatások kevésbé optimális telefonos kapcsolatok ismertetése.
-
-Ha többet szeretne tudni erről a forgatókönyvről, olvassa el a részletes tájékoztatót a Speech service-szel végzett [kötegelt átírásról](batch-transcription.md).
-
-### <a name="voice-bots"></a>Hangrobotok
-
-A [robotok](https://dev.botframework.com/) népszerű módot kínálnak a felhasználók és az őket érdeklő információk, vagy az ügyfelek és kedvenc vállalkozásaik összekötésére. Ha a webhelyét vagy alkalmazását beszélgetésre szánt felhasználói felülettel egészíti ki, a funkciói könnyebben megtalálhatóak és gyorsabban elérhetőek lesznek. A Speech service-szel a beszélgetés még gördülékenyebb lehet, mivel a szóbeli kérdésekre ugyanúgy szóban válaszol.
-
-Ha egyedi személyiséget szeretne adni hangalapú robotjának, saját hangot adhat neki. Az egyéni hang készítése kétlépéses folyamat. Első lépésként [készítsen felvételeket](record-custom-voice-samples.md) arról a hangról, amelyet használni szeretne. Ezután [küldje el ezeket a felvételeket](how-to-customize-voice-font.md) (a szöveges átirattal együtt) a Speech Service [hangtestreszabási portáljára](https://cris.ai/Home/CustomVoice), amely elvégzi a többit. Miután létrehozta az egyéni hangot, egyszerűen használhatja az alkalmazásában.
+* [Beszéd SDK](speech-sdk-reference.md)
+* [Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések
 
-Szerezze be a beszédszolgáltatások egy előfizetési kulcsot.
-
 > [!div class="nextstepaction"]
-> [A Speech Services ingyenes kipróbálása](get-started.md)
+> [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)

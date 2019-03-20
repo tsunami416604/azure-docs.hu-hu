@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005817"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
 
@@ -78,11 +78,11 @@ A **alapjai**, adja meg minden olyan központi telepítés standard paraméterek
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Erőforrás-előtag**| A telepítés részeként üzembe helyezett erőforrások-előtagja |6 karakter vagy kevesebb |
-**Felhasználónév**| A felhasználónév, a rendszergazda minden ehhez a taghoz telepített virtuális gépekhez |1 – 64 karakter |
-**Hitelesítés típusa**| A módszert a virtuális géphez |Jelszó vagy SSH nyilvános kulcs|
-**Jelszó (hitelesítési típus = jelszó)**|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 speciális karakter<br /><br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után a jelszó megváltoztatásához|12 – 72 karakter|
-**SSH-kulcs (hitelesítési típus = a nyilvános SSH-kulcs)**|A secure shell-kulcsot a távoli bejelentkezéshez használt ||
+**Erőforrás-előtag** | A telepítés részeként üzembe helyezett erőforrások-előtagja |6 karakter vagy kevesebb |
+**Felhasználónév** | A felhasználónév, a rendszergazda minden ehhez a taghoz telepített virtuális gépekhez |1 – 64 karakter |
+**Hitelesítés típusa** | A módszert a virtuális géphez |Jelszó vagy SSH nyilvános kulcs|
+**Jelszó (hitelesítési típus = jelszó)** |Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 speciális karakter<br /><br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után a jelszó megváltoztatásához|12 – 72 karakter|
+**SSH-kulcs (hitelesítési típus = a nyilvános SSH-kulcs)** |A secure shell-kulcsot a távoli bejelentkezéshez használt ||
 **Előfizetés** |Az előfizetés, melyben szeretné üzembe helyezni ||
 **Erőforráscsoport** |Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network ||
 **Hely** |Az Azure-régió, melyben szeretné üzembe helyezni az első tag ||
@@ -97,10 +97,10 @@ A **hálózati beállítások**, adja meg a bemenetek létrehozása vagy csatlak
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Hálózati konfiguráció**|Választhat, hozzon létre egy új hálózatot, vagy egy meglévő csatlakozhat. Ha úgy dönt, *csatlakozzon a meglévő*, meg kell adnia értékeket. |Új hálózati <br/> Csatlakozás a meglévő |
-**HLF hitelesítésszolgáltató jelszó**|A hitelesítésszolgáltatók, a telepítés részeként létrehozott által létrehozott tanúsítványokat használt jelszó. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter.<br /><br />Míg az összes virtuális gép kezdetben ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|1 - 25 karakternél |
-**A telepítő szervezet** |Testre szabhatja a szervezet és a tanúsítvány, vagy a használt alapértelmezett értékek találhatók.|Alapértelmezett <br/> Extra szintű |
-**VPN-hálózati beállítások**| VPN-alagút átjáró fér hozzá a virtuális gépek kiépítése | Igen <br/> Nem |
+**Hálózati konfiguráció** |Választhat, hozzon létre egy új hálózatot, vagy egy meglévő csatlakozhat. Ha úgy dönt, *csatlakozzon a meglévő*, meg kell adnia értékeket. |Új hálózati <br/> Csatlakozás a meglévő |
+**HLF hitelesítésszolgáltató jelszó** |A hitelesítésszolgáltatók, a telepítés részeként létrehozott által létrehozott tanúsítványokat használt jelszó. A jelszónak tartalmaznia kell hármat a következő karakterek közül: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter.<br /><br />Míg az összes virtuális gép kezdetben ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|1 - 25 karakternél |
+**A telepítő szervezet** |Testre szabhatja a szervezet és a tanúsítvány, vagy a használt alapértelmezett értékek találhatók.|Alapértelmezett <br/> Speciális |
+**VPN-hálózati beállítások** | VPN-alagút átjáró fér hozzá a virtuális gépek kiépítése | Igen <br/> Nem |
 
 Kattintson az **OK** gombra.
 
@@ -112,8 +112,8 @@ A **Fabric konfigurációs**, hálózati méretének és teljesítményének meg
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**Lépték típusa**|A központi telepítési típus több tárolót egyetlen virtuális gép vagy egy több virtuális gép egy horizontális felskálázási modellben.|Egyetlen virtuális Gépet vagy virtuális gépre kiterjedő |
-**Virtuálisgép-lemez típusa**|A tárolás, a üzembe helyezett csomópontok biztonsági típusát. <br/> A rendelkezésre álló szabad típusaival kapcsolatos további tudnivalókért látogasson el a [válassza ki a lemez típusát](../../virtual-machines/windows/disks-types.md).|Standard SSD <br/> Prémium SSD |
+**Lépték típusa** |A központi telepítési típus több tárolót egyetlen virtuális gép vagy egy több virtuális gép egy horizontális felskálázási modellben.|Egyetlen virtuális Gépet vagy virtuális gépre kiterjedő |
+**Virtuálisgép-lemez típusa** |A tárolás, a üzembe helyezett csomópontok biztonsági típusát. <br/> A rendelkezésre álló szabad típusaival kapcsolatos további tudnivalókért látogasson el a [válassza ki a lemez típusát](../../virtual-machines/windows/disks-types.md).|Standard SSD <br/> Prémium SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Több virtuális gép üzembe helyezése (további beállításokat)
 
@@ -123,8 +123,8 @@ A **Fabric konfigurációs**, hálózati méretének és teljesítményének meg
 |---|---|---|
 **Megrendelő csomópontok száma** |A rendelés csomópontok száma (rendszerezése) egy tranzakciókat. <br />A rendelési szolgáltatás további információért látogasson el a Hyperledger [dokumentációja](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1 – 4 |
 **Megrendelő csomópont virtuális gépének mérete** |A használt megrendelő csomópontjai a hálózaton lévő virtuális gép mérete|Szabványos Bs<br />Standard DS-ben<br />Standard FS |
-**A társ-csomópontok száma**| Tranzakciók végrehajtása, és az állapot és a egy példányát a Főkönyv karbantartása consortium tagokat tulajdonában lévő csomópontokat.<br />A rendelési szolgáltatás további információért látogasson el a Hyperledger [dokumentáció](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
-**Csomópont-állapot megőrzését** |Az adatmegőrzés motor a társ csomópontja használ. Ez a motor társ csomópontonként konfigurálhatja. Tekintse meg több egyenrangú csomópontok részleteit alább olvashatja.|CouchDB </br>LevelDB |
+**A társ-csomópontok száma** | Tranzakciók végrehajtása, és az állapot és a egy példányát a Főkönyv karbantartása consortium tagokat tulajdonában lévő csomópontokat.<br />A rendelési szolgáltatás további információért látogasson el a Hyperledger [dokumentáció](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
+**Csomópont-állapot megőrzését** |Az adatmegőrzés motor a társ csomópontja használ. Ez a motor társ csomópontonként konfigurálhatja. Tekintse meg több egyenrangú csomópontok részleteit alább olvashatja.|CouchDB <br />LevelDB |
 **Társ csomópont virtuális gépének mérete** |A hálózaton lévő összes csomópont használt virtuálisgép-méret|Szabványos Bs<br />Standard DS-ben<br />Standard FS |
 
 ### <a name="multiple-peer-node-configuration"></a>Társ több csomópont-konfiguráció

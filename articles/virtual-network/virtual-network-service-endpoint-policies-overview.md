@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: a5df9215aec0b6c774b37f17b699e91ef813754d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771073"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104488"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
 
@@ -158,11 +158,11 @@ Szolgáltatásvégpont-szabályzatokhoz a központi naplózás nem érhető el. 
 - A végpontszabályzatokban szereplő fiókokhoz való hozzáférés meg van tagadva
   - A hálózati biztonsági csoportok vagy a tűzfalak használatával történő szűrés blokkolhatja a hozzáférést
   - Ha a szabályzat eltávolítása/újbóli életbe léptetése miatt megszűnik a kapcsolat:
-   - Ellenőrizze, hogy az Azure-szolgáltatás úgy van-e konfigurálva, hogy engedélyezze a virtuális hálózatokról való hozzáférést a végpontokon keresztül, illetve hogy az erőforrás alapértelmezett szabályzatában az *összes engedélyezésének* lehetősége van-e megadva.
+    - Ellenőrizze, hogy az Azure-szolgáltatás úgy van-e konfigurálva, hogy engedélyezze a virtuális hálózatokról való hozzáférést a végpontokon keresztül, illetve hogy az erőforrás alapértelmezett szabályzatában az *összes engedélyezésének* lehetősége van-e megadva.
       > [!NOTE]      
       > A szolgáltatás-erőforrásokat virtuális hálózatokhoz kell kötni, hogy hozzáférést lehessen biztosítani a végpontszabályzatokkal. Biztonságra vonatkozó ajánlott eljárásként azt javasoljuk, hogy a szolgáltatás-erőforrásokat a megbízható hálózataihoz, például az Azure-beli virtuális hálózatokhoz a végpontokon keresztül kösse le, vagy a helyszínen egy IP-tűzfalon keresztül.
   
-   - Ellenőrizze, hogy a szolgáltatásdiagnosztika megjeleníti-e a végpontokon átmenő forgalmat.
+    - Ellenőrizze, hogy a szolgáltatásdiagnosztika megjeleníti-e a végpontokon átmenő forgalmat.
     - Ellenőrizze, hogy a hálózati biztonsági csoport forgalmának naplói és a tárolási naplók a várakozásoknak megfelelően a végpontokon keresztül történő hozzáférést mutatják-e.
     - Forduljon az Azure ügyfélszolgálatához.
 - A szolgáltatásvégpont-szabályzatokban nem szereplő fiókok hozzáférése meg van tagadva

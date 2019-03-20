@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8e9208981dd54fef1f56ee552d34bab78210b96d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 29db8c8b51082016d413c66c6abfdb1c518c9329
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117965"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -72,9 +72,9 @@ Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** 
 **Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Bármely más riasztástípus figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
-   - azure-noreply@microsoft.com
-   - azureemail-noreply@microsoft.com
-   - alerts-noreply@mail.windowsazure.com
+- azure-noreply@microsoft.com
+- azureemail-noreply@microsoft.com
+- alerts-noreply@mail.windowsazure.com
 
 Előfordulhat, hogy e-mailes műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk
 

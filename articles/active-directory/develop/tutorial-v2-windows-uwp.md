@@ -4,7 +4,7 @@ description: Hozzáférési jogkivonatok hogyan univerzális Windows-Platformos 
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: b00a4f9ee561e8e9356b36d4a14b4bcb4f9a3357
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202860"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>A Microsoft Graph API meghívása (XAML) az univerzális Windows Platform-alkalmazásból
 
@@ -37,7 +37,7 @@ Ez az útmutató végén az alkalmazás meghívja a védett API személyes fiók
 
 ## <a name="how-this-guide-works"></a>Az útmutató működése
 
-![Hogyan működik ez az útmutató a graph](./media/tutorial-v2-windows-uwp/uwp-intro.png)
+![A mintaalkalmazás által ebben az oktatóanyagban létrehozott működését mutatja](./media/tutorial-v2-windows-uwp/uwp-intro-updated.png)
 
 Ez az útmutató létrehoz egy minta UWP-alkalmazás, amely a Microsoft Graph API vagy egy webes API-t, amely az Azure Active Directory v2.0-végpont származó jogkivonatokat fogad el. Ebben a forgatókönyvben egy token hozzá az engedélyezési fejléc via HTTP-kérelmekre. A Microsoft-hitelesítési tár (MSAL) token beszerzését és a megújítások kezeli.
 

@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6dd1dd0ce2395e2b06d80385ffd299835a280526
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002034"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>A cloud-init támogatása az Azure virtual machines
 Ez a cikk ismerteti, hogy létezik a támogatási [a cloud-init](https://cloudinit.readthedocs.io) konfigurálása a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS) kiépítés ideje az Azure-ban. Ezen a cloud-init parancsfájlok futtatása az első rendszerindításkor az Azure-ban kiépített erőforrások után.  
 
 ## <a name="cloud-init-overview"></a>A cloud-init áttekintése
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. A cloud-init nevezzük az első rendszerindítás során, mert nincsenek további lépéseket vagy szükséges ügynökök a alkalmazni a konfigurációt.  További információt a megfelelő formázása a `#cloud-config` fájlokat, tekintse meg a [a cloud-init dokumentációs oldalának](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveges fájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
@@ -92,7 +92,7 @@ A virtuális gép van kiépítve, a cloud-init modult keresztül fog futni, és 
 > [!NOTE]
 > Nem minden modul hibája eredményezi egy végzetes a cloud-init általános konfigurációs hiba. Például a `runcmd` modult, ha a parancsfájl futása sikertelen, a cloud-init továbbra is jelentést kiépítés sikeres volt, mert a runcmd modul végrehajtása.
 
-A cloud-init naplózási további részletekért tekintse meg a [a cloud-init-dokumentáció](http://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
+A cloud-init naplózási további részletekért tekintse meg a [a cloud-init-dokumentáció](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) 
 
 ## <a name="next-steps"></a>További lépések
 A cloud-init konfigurációs módosítások példákat az alábbi dokumentumokban talál:

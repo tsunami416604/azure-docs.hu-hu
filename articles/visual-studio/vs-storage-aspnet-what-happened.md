@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a6e05d706d54d63695861b03cd9de0e65ebdd8bb
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e0e065b23581f297ee4ae2288a6e437da461a19f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061388"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998351"
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>Mi történt az ASP.NET-projektemmel (a Visual Studio Azure Storage szolgáltatás csatlakozik)?
 ## <a name="references-added"></a>Hivatkozás
@@ -36,5 +36,5 @@ Ez a csomag hozzáadja a következő .NET hivatkozásokat:
 ## <a name="connection-string-for-azure-storage-added"></a>Hozzáadva az Azure Storage kapcsolati karakterlánc
 A web.config fájlban a projekt egy elem létrejött, a kiválasztott tárfiók kapcsolati karakterláncot, illetve kulcsára.
 
-További információkért lásd: [ASP.NET](http://www.asp.net).
+További információkért lásd: [ASP.NET](https://www.asp.net).
 

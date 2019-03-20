@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417448"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896262"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>A Windows adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -44,7 +44,7 @@ A következő eszközök szerepelnek a dsvm-hez:
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) – gyors machine learning-rendszer, amely támogatja az online kivonatoláshoz, allreduce, csökkentésének, learning2search és aktív és interaktív tanulási eljárások
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) -egy eszköz, gyors és pontos gyorsított fa végrehajtása
   * [Rattle](https://togaware.com/rattle/) – az R analitikai eszközt, amely megkönnyíti az adatok elemzési és gépi tanulási az r használatába Ez magában foglalja a GUI-alapú adatáttekintés és modellezés az R-kód automatikus generálása.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) -visual adatbányászat és a machine learning-szoftver Java nyelven
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) -visual adatbányászat és a machine learning-szoftver Java nyelven
   * [Apache Drill](https://drill.apache.org/) -séma nélküli SQL lekérdezési motorja Apache Hadoop, a nosql-alapú és a felhőalapú tárolást. A nosql-alapú, és a standard szintű BI eszközök, Power BI, a Microsoft Excel és a Tableau fájlok ODBC, JDBC és felületek támogatja.
 * Az R és Python for kódtárak használata az Azure Machine Learning és más Azure-szolgáltatások
 * A Git, beleértve a Git bash eszközt, például a GitHub és az Azure DevOps forráskódtárházak dolgozhat. A Git nyújt számos népszerű Linux parancssor eszközök, amelyek elérhetők mind a Git Bash és a egy parancssort. Példák awk, a csökkentésének, a perl, a grep, a keresés, a wget és a curl.
@@ -71,7 +71,7 @@ Nincsenek szoftvereket díjmentesen használható a data science Virtuálisgép-
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-A Microsoft adatelemző virtuális gép létrehozásához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása](http://azure.com/free).
+A Microsoft adatelemző virtuális gép létrehozásához Azure-előfizetéssel kell rendelkeznie. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.com/free).
 
 ## <a name="create-your-dsvm"></a>A dsvm-hez létrehozása
 
@@ -229,4 +229,4 @@ Használhatja a [Microsoft Webplatform-telepítő](https://www.microsoft.com/web
 * A Fájlkezelőben keresse meg **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** , amely a RevoScaleR kódtára, amely támogatja az adatelemzés, a nagyvállalati szintű R a minták.  
 * A cikk a [tíz dolog, amire alkalmas az adatelemző virtuális gép](https://aka.ms/dsvmtenthings).
 * Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
-* Látogasson el a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. Is biztosítunk egy ikont a tárban lévő a **Start** menüjében és asztalán a virtuális gép.
+* Látogasson el a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. Is biztosítunk egy ikont a tárban lévő a **Start** menüjében és asztalán a virtuális gép.

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako;
-ms.openlocfilehash: eee0d5365c515f8a7764b9d5636ae3d1b34cb934
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188254"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics arcok szereplők 
 ## <a name="overview"></a>Áttekintés
@@ -41,10 +41,10 @@ Ez hoz létre egy kivonatosan mp4 automatikusan szükséges bemeneti manuális n
 | Kimeneti adategység |foo_redacted.mp4 |Videókat a alkalmazni felismerhetetlenné |
 
 #### <a name="input-example"></a>A bemeneti. példa:
-[Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[Ez a videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>Példa a kimenetre:
-[Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
+[Ez a videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>Mód elemzése
 A **elemzése** pass a két-pass munkafolyamat vesz igénybe egy videó bemeneti hoz létre egy JSON-fájlt, a face helyek és a jpg-lemezképek az egyes észlelhető oldallal.
@@ -125,7 +125,7 @@ Az elemzési fázis kimenete nem tartalmazza az eredeti videó. A videó a Redac
 #### <a name="example-output"></a>Példa a kimenetre
 Ez az egy kiválasztott egy azonosítójú IDList kimenete.
 
-[Ez a videó megtekintése](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
+[Ez a videó megtekintése](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
 Példa foo_IDList.txt
  
@@ -373,5 +373,5 @@ namespace FaceRedaction
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 [Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
-[Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Az Azure Médiaelemzés bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

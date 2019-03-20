@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 7631ec91b70e781b2818e99012e59e2aeafb3614
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 87db25bbfd68aea1b8835211d7b51dfddcd43038
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899383"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Az Azure SQL database tranzakciós szempontból konzisztens másolatot másolása
 
@@ -49,6 +49,8 @@ Adatbázis másolása az Azure portal használatával, nyissa meg az adatbázish
 ## <a name="copy-a-database-by-using-powershell"></a>Adatbázis másolása egy PowerShell-lel
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Adatbázis másolása egy PowerShell-lel, használja a [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) parancsmagot. 
 

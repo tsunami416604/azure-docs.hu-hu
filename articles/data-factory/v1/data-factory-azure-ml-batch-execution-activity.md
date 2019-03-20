@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6c71956bf43a0147d5abff4b708be93f62fe34fa
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122063"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 
@@ -261,8 +261,8 @@ Azt javasoljuk, hogy mindenképpen haladjon végig a [Data Factory használatán
       >
       >
 
-    ```JSON
-    {
+      ```JSON
+      {
         "name": "PredictivePipeline",
         "properties": {
             "description": "use AzureML model",
@@ -300,8 +300,8 @@ Azt javasoljuk, hogy mindenképpen haladjon végig a [Data Factory használatán
             "start": "2016-02-13T00:00:00Z",
             "end": "2016-02-14T00:00:00Z"
         }
-    }
-    ```
+      }
+      ```
 
       Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 

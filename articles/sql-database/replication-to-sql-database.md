@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860703"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Egyetlen vagy készletezett adatbázisok SQL-adatbázis-replikáció
 
@@ -40,7 +40,7 @@ SQL Server-replikáció beállítható úgy, hogy egyetlen vagy készletezett ad
 - Az SQL Server 2014 (12.x) RTM CU10
 - Az SQL Server 2012 (11.x) SP2 CU8 vagy SP3
 - Próbál egy régebbi verzióját használja, a replikáció konfigurálása számának MSSQL_REPL20084 (a folyamat nem tudott kapcsolódni előfizető.) és MSSQL_REPL40532 hibát eredményez (nem nyitható meg a kiszolgáló \<név > a bejelentkezés által kért. A bejelentkezés sikertelen volt.).  
-- Azure SQL Database összes funkciójának használatához kell használnia a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).  
+- Azure SQL Database összes funkciójának használatához kell használnia a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Megjegyzések
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 778897e1a146abd0655d76ef157f64522681cb0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444616"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889675"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása a REST API hívásait használja, az Azure virtuális Gépekhez
 
@@ -63,7 +63,7 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+3. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
 
    ```azurecli-interactive
    az account get-access-token
@@ -80,6 +80,7 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
    ```
    
    **Kérelem fejlécei**
+   
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
@@ -168,6 +169,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **Kérelem fejlécei**
+
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
@@ -239,6 +241,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    |---------|---------|
    |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.        | 
+
    **Kérelem törzse**
 
    ```JSON
@@ -314,7 +317,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
+3. A tulajdonosi hozzáférési jogkivonatot, amely a virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással az engedélyezési fejléc a következő lépésben használni fogja lekérni.
 
    ```azurecli-interactive
    az account get-access-token
@@ -507,6 +510,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **Kérelem fejlécei**
+
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.
@@ -675,6 +679,7 @@ Egy felhasználó által hozzárendelt identitással virtuális Géphez való el
    ```
 
    **Kérelem fejlécei**
+
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
    |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |

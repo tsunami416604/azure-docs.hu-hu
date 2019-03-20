@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 02/25/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6473b8d15d09251d22386036285019c3b55e4cb1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201086"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
 
@@ -41,7 +41,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 
 4. A **minden termék**, válassza ki az Office 365 nagyvállalati E5 csomag és a Enterprise Mobility + Security E3 terméknevek kiválasztásával. A hozzárendelés megkezdéséhez válasszon **hozzárendelése** a panel tetején.
 
-   ![Minden termék licenc hozzárendelése](./media/licensing-groups-assign/all-products-assign.png)
+   ![Válassza ki a termékeket a licencek hozzárendelése](./media/licensing-groups-assign/all-products-assign.png)
   
 5. Az a **licenc hozzárendelése** ablaktáblán válassza előbb **felhasználók és csoportok** felhasználók és csoportok listájának megnyitásához.
 
@@ -49,7 +49,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 
 7. Az a **licenc hozzárendelése** ablaktáblán kattintson a **hozzárendelési beállítások**, megjeleníti a két termék, amely a korábban kiválasztott szereplő minden szolgáltatáscsomag. Keresse meg **Yammer vállalati** kapcsolja **ki** , hogy a termék licence a szolgáltatás letiltása. Gombra kattintva erősítse meg **OK** alján **beállítások licenc**.
 
-   ![Hozzárendelési beállítások](./media/licensing-groups-assign/assignment-options.png)
+   ![Válassza ki a licencek service-csomagok](./media/licensing-groups-assign/assignment-options.png)
   
 8. A hozzárendelés véglegesítéséhez kattintson a **Licenc hozzárendelése** panelen a lap alján található **Hozzárendelés** gombra.
 
@@ -69,7 +69,7 @@ Ha licenceket hozzárendelni a csoporthoz, az Azure AD dolgozza fel az adott cso
 
    - Felhasználók, akik hibás állapotú, mert nem sikerült hozzárendelni a licencet rájuk vonatkozó adatokat.
 
-   ![Hozzárendelési beállítások](./media/licensing-groups-assign/assignment-errors.png)
+   ![licencelési hibák és licencállapot](./media/licensing-groups-assign/assignment-errors.png)
 
 3. Részletesebb információ a feldolgozás alatt licenc **Azure Active Directory** > **felhasználók és csoportok** > *csoportnév*  >  **Auditnaplók**. Vegye figyelembe a következő tevékenységeket:
 
@@ -85,15 +85,15 @@ Ha licenceket hozzárendelni a csoporthoz, az Azure AD dolgozza fel az adott cso
 2. A csoport panelen válassza ki a **licencek**. Az értesítés a panel tetején látható, hogy 10 olyan felhasználót, hogy nem sikerült hozzárendelni a licencet. Nyissa meg a csoport licencelési hibás állapotú felhasználók listájának megtekintéséhez.
 3. A **sikertelen hozzárendelések** oszlop tudatja velünk, hogy mindkét termékhez licenccel nem sikerült hozzárendelni a felhasználók számára. A **hiba okát az első** oszlop tartalmazza a hiba okát. Ebben az esetben van **ütköző szolgáltatási csomagok**.
 
-   ![Sikertelen hozzárendelések](./media/licensing-groups-assign/failed-assignments.png)
+   ![nem sikerült hozzárendelni licencek](./media/licensing-groups-assign/failed-assignments.png)
 
 4. Válassza ki a felhasználót, hogy nyissa meg a **licencek** ablaktáblán. Ezen a panelen látható minden olyan licenc, amely már hozzá vannak rendelve a felhasználóhoz. Ebben a példában a felhasználó rendelkezik Office 365 nagyvállalati E1 csomag licenc, amely öröklődött a **teljes képernyős felhasználók** csoport. Ez a E3-licenc, amely a rendszer megpróbálta alkalmazni a ütközik a **HR részleg** csoport. Ennek eredményeképpen a licenceket a csoport egyik sem lett hozzárendelve a felhasználóhoz.
 
-   ![Egy felhasználó licencek megtekintése](./media/licensing-groups-assign/user-license-view.png)
+   ![Egy felhasználó összes licenc ütközéseket](./media/licensing-groups-assign/user-license-view.png)
 
 5. Az ütközés elhárításához távolítsa el a felhasználót a **teljes képernyős felhasználók** csoport. Az Azure AD-folyamatok a váltás után a **HR részleg** licencek megfelelően vannak hozzárendelve.
 
-   ![Megfelelő licenccel](./media/licensing-groups-assign/license-correctly-assigned.png)
+   ![Itt megfelelően hozzárendelt licencek](./media/licensing-groups-assign/license-correctly-assigned.png)
 
 ## <a name="next-steps"></a>További lépések
 

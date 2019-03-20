@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864468"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57977411"
 ---
 # <a name="graph-search-method"></a>Graph keresési módszer
 
@@ -29,6 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>A kérés paraméterei  
+
 Name (Név)     | Érték | Kötelező?  | Leírás
 -----------|-----------|---------|--------
 **mód**       | Szöveges karakterlánc | Igen | A használni kívánt módot neve. Az érték kisebb, mint *json* vagy *lambda*.
@@ -45,7 +46,9 @@ Az a *json* search, a bejegyzés törzse egy JSON-objektum. A JSON-objektum egy 
 Az a *lambda* keresési, a bejegyzés törzse egy olyan egyszerű szöveges karakterlánc. A bejegyzés törzse egy LIKQ lambda lekérdezési karakterláncot, amely egy C#-utasítás (lásd a [specifikáció lekérdezési karakterláncot](LambdaSearchSyntax.md) a *lambda* keresési). 
 
 <br>
+
 ## <a name="response-json"></a>Válasz (JSON)
+
 Name (Név) | Leírás
 -------|-----   
 **Eredmények** | Egy tömb, 0, illetve további entitásokat, amelyek megfelelnek a lekérdezési kifejezésben. Minden entitás tartalmazza a kért attribútumokhoz értékét. Ez a mező jelen, ha a kérés feldolgozása sikeresen megtörtént.
@@ -55,6 +58,7 @@ Name (Név) | Leírás
 Ha a lekérdezés nem dolgozható fel belül _800 ms_, amely egy _időtúllépési_ hiba adja vissza. 
 
 <br>
+
 #### <a name="example"></a>Példa:
 
 ##### <a name="json-search"></a>JSON keresési

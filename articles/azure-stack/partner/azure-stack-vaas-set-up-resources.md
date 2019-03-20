@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081763"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Oktatóanyag: A szolgáltatás érvényesítése erőforrások beállítása
 
@@ -56,13 +56,13 @@ Hozzon létre egy bérlőt, amelyet a szervezet VaaS szolgáltatások elérésé
 
     Ha a szerepköröket a **Azure Stack érvényesítési Service** alkalmazás:
 
-    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-    2. Válassza ki **minden szolgáltatás** > **Azure Active Directory** alatt a **identitás** szakaszban.
-    3. Válassza ki **vállalati alkalmazások** > **Azure Stack érvényesítési Service** alkalmazás.
-    4. Válassza a **Felhasználók és csoportok** elemet. A **Azure Stack érvényesítési Service – felhasználók és csoportok** panel felsorolja a felhasználók számára a engedélyt az alkalmazás használatára.
-    5. Válassza ki **+ Hozzáadás felhasználó** felhasználó hozzáadása a bérlőről és rendelhet egy szerepkört.
+   1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+   2. Válassza ki **minden szolgáltatás** > **Azure Active Directory** alatt a **identitás** szakaszban.
+   3. Válassza ki **vállalati alkalmazások** > **Azure Stack érvényesítési Service** alkalmazás.
+   4. Válassza a **Felhasználók és csoportok** elemet. A **Azure Stack érvényesítési Service – felhasználók és csoportok** panel felsorolja a felhasználók számára a engedélyt az alkalmazás használatára.
+   5. Válassza ki **+ Hozzáadás felhasználó** felhasználó hozzáadása a bérlőről és rendelhet egy szerepkört.
 
-    Ha szeretné elkülöníteni a VaaS erőforráshoz és művelethez egy szervezeten belül különböző csoportokkal, az Azure AD-bérlő több címtárat is létrehozhat.
+      Ha szeretné elkülöníteni a VaaS erőforráshoz és művelethez egy szervezeten belül különböző csoportokkal, az Azure AD-bérlő több címtárat is létrehozhat.
 
 ### <a name="register-your-tenant"></a>A bérlő regisztrálásához
 

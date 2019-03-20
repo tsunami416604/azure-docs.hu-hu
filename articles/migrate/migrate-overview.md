@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bbb3e4f319584740f165b64948e1fd4dca2722b0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729520"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999969"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -30,12 +30,13 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Csak a helyszíni VMware virtuális gépeket értékelheti ki az Azure-beli virtuális gépekre való migráláshoz. A VMware virtuális gépeket (verziójú 5.5-ös, 6.0-s, 6.5-ös vagy 6.7) vCenter Servernek kell felügyelnie.
-- Támogatja a Hyper-V szolgáltatás jelenleg előzetes verzióban a termelési támogatásával, ha szeretné kipróbálni szeretné azt, a regisztráljon [itt.](http://aka.ms/migratefuture)
+- Támogatja a Hyper-V szolgáltatás jelenleg előzetes verzióban a termelési támogatásával, ha szeretné kipróbálni szeretné azt, a regisztráljon [itt.](https://aka.ms/migratefuture)
 - A fizikai kiszolgálók értékeléséhez, kihasználhatja az [eszközök partneri](https://azure.microsoft.com/migration/partners/).
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 -  Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban ez nem korlátozza az értékelések más létrehozásának lehetősége cél Azure-helyen.
+
     **Régiócsoport** | **Tárolási hely**
     --- | ---
     Azure Government | USA-beli államigazgatás – Virginia
@@ -73,27 +74,27 @@ Az értékelési beállítások az adott igényekhez szabhatók. Az értékelés
 
 ## <a name="how-does-azure-migrate-work"></a>Hogyan működik az Azure Migrate?
 
-1.  Hozzon létre egy Azure Migrate projektet.
-2.  Az Azure Migrate egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet használ a helyszíni gépek adatainak felderítésére. A berendezés létrehozásához töltse le a telepítőfájlt Open Virtualization Appliance (.ova) formátumban, majd importálja virtuális gépként a helyszíni vCenter Serverre.
+1. Hozzon létre egy Azure Migrate projektet.
+2. Az Azure Migrate egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet használ a helyszíni gépek adatainak felderítésére. A berendezés létrehozásához töltse le a telepítőfájlt Open Virtualization Appliance (.ova) formátumban, majd importálja virtuális gépként a helyszíni vCenter Serverre.
 3. Csatlakozzon a virtuális géphez a vCenter Serverről, és csatlakozás közben adjon meg hozzá egy új jelszót.
 4. Futtassa a gyűjtőt a virtuális gépen a felderítés elindításához.
 5. A gyűjtő a VMware PowerCLI-parancsmagok segítségével összegyűjti a virtuális gépek metaadatait. A felderítés ügynök nélkül történik, és nem telepít semmit a VMware-gazdagépekre vagy a virtuális gépekre. Az összegyűjtött metaadatok a virtuális gépek adatait is tartalmazzák (magok, memória, lemezek, lemezméretek és hálózati adapterek). A gyűjtő ezenkívül a virtuális gépek teljesítményadatait is gyűjti, például a processzor- és memóriahasználatot, a lemez IOPS-t, a lemezek átviteli sebességét (MB/s) és a hálózati kimenetet (MB/s).
-5.  A rendszer továbbítja a metaadatokat az Azure Migrate projektnek. Ezeket az Azure Portalon tekintheti meg.
-6.  Csoportokba rendezheti a felderített virtuális gépeket az értékeléshez. Például egy csoportba helyezheti az azonos alkalmazást futtató virtuális gépeket. A még pontosabb csoportosítás érdekében megtekintheti egy adott géphez vagy egy csoport gépeihez tartozó függőségeket, illetve a csoportok összes gépéhez tartozókat és pontosíthatja a csoportot.
-7.  A csoport meghatározását követően hozzon létre hozzá egy értékelést.
-8.  Az értékelés befejeződése után megtekintheti azt a portálon, vagy letöltheti Excel-formátumban.
+5. A rendszer továbbítja a metaadatokat az Azure Migrate projektnek. Ezeket az Azure Portalon tekintheti meg.
+6. Csoportokba rendezheti a felderített virtuális gépeket az értékeléshez. Például egy csoportba helyezheti az azonos alkalmazást futtató virtuális gépeket. A még pontosabb csoportosítás érdekében megtekintheti egy adott géphez vagy egy csoport gépeihez tartozó függőségeket, illetve a csoportok összes gépéhez tartozókat és pontosíthatja a csoportot.
+7. A csoport meghatározását követően hozzon létre hozzá egy értékelést.
+8. Az értékelés befejeződése után megtekintheti azt a portálon, vagy letöltheti Excel-formátumban.
 
-  ![Az Azure Migrate architektúrája](./media/migration-planner-overview/overview-1.png)
+   ![Az Azure Migrate architektúrája](./media/migration-planner-overview/overview-1.png)
 
 ## <a name="what-are-the-port-requirements"></a>Milyen követelmények vonatkoznak a portokra?
 
 A táblázat összefoglalja az Azure Migrate kommunikációjához szükséges portokat.
 
-Összetevő | Kommunikációs cél |  Részletek
---- | --- |---
-Gyűjtő  | Azure Migrate szolgáltatás | A gyűjtő a 443-as SSL-porton keresztül csatlakozik a szolgáltatáshoz.
-Gyűjtő | vCenter Server | Alapértelmezés szerint a gyűjtő a 443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen.
-Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) szeretne csatlakozni az Azure Monitor naplóira 443-as TCP-portot használja. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre.
+| Összetevő | Kommunikációs cél |  Részletek |
+| --- | --- |--- |
+|Gyűjtő  | Azure Migrate szolgáltatás | A gyűjtő a 443-as SSL-porton keresztül csatlakozik a szolgáltatáshoz.|
+|Gyűjtő | vCenter Server | Alapértelmezés szerint a gyűjtő a 443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen.|
+|Helyszíni virtuális gép | Log Analytics-munkaterület | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) szeretne csatlakozni az Azure Monitor naplóira 443-as TCP-portot használja. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre.|
 
 
 ## <a name="what-happens-after-assessment"></a>Mi történik az értékelés után?

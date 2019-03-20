@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: dee0f55d816cae3b178990a432c37d3082d26de3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 195c39562e36000597d04bb760741ec7f40203c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775764"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844673"
 ---
 # <a name="data-filtering"></a>Adatszűrés
 
@@ -45,7 +45,7 @@ Egyéni a fordítót eltávolítja a mondatokat, amelyek szerepelnek a teszt- é
 Cserélje le a egyetlen példánya több mondat záró elválasztó karaktereket.  
 
 ## <a name="japanese-character-normalization"></a>Japán normalizálást karakter
-Ismétlődő japán karakterek normalizálása: Átalakítás félszélességűvé tétele teljes szélesség karakter hosszúságú lehet.
+Konvertálja a teljes szélesség betűket és számokat fél szélességű karakter hosszúságú lehet.
 
 ## <a name="unescaped-xml-tags"></a>Unescaped XML-címkék
 Szűrés átalakítások unescaped címkék escape-karakterrel megjelölt címkék:
@@ -53,7 +53,7 @@ Szűrés átalakítások unescaped címkék escape-karakterrel megjelölt címk�
 * `&gt;` válik `&amp;gt;`
 * `&amp;` válik `&amp;amp;`
 
-## <a name="invalid-characters"></a>Érvénytelen karakter
+## <a name="invalid-characters"></a>Érvénytelen karakterek
 Egyéni a fordítót eltávolítja a mondatokat, amelyek U + FFFD Unicode-karaktert tartalmazhat. A következő karaktert: U + FFFD sikertelen kódolási konverzió jelzi.
 
 ## <a name="next-steps"></a>További lépések

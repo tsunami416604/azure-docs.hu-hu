@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 24c47acd028aa767d1f02dd7c4119692eeac479a
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587021"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119207"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Gyors útmutató: Azure Cosmos DB API használatával a mongodb-hez a Python-alkalmazás létrehozása
 
@@ -37,10 +37,10 @@ Ez a rövid útmutató használja a következő [Flask példát](https://github.
 - Ha még nincs telepítve a Visual Studio Code, gyorsan telepítheti a [VS Code-ot](https://code.visualstudio.com/Download) a platformján (Windows, Mac, Linux).
 
 - Az egyik népszerű Python bővítmény telepítésével adja hozzá a Python nyelv támogatását.
-    1. Válassza ki a bővítményt.
-    2. Telepítse a bővítményt a `Ctrl+Shift+P` parancskatalógusban az `ext install` parancs beírásával.
+  1. Válassza ki a bővítményt.
+  2. Telepítse a bővítményt a `Ctrl+Shift+P` parancskatalógusban az `ext install` parancs beírásával.
 
-    A dokumentumban szereplő példák Don Jayamanne népszerű és minden funkcióval ellátott [Python bővítményét](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) használja.
+     A dokumentumban szereplő példák Don Jayamanne népszerű és minden funkcióval ellátott [Python bővítményét](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) használja.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 

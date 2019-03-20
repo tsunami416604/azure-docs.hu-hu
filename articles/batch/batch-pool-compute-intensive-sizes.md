@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: d3152eb4b2512e05cad60772f8c4c75dd929758a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535586"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975559"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Rdma-t vagy a GPU-példányt használja a Batch-készletekben
 
@@ -48,6 +48,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, vagy<br/>CentOS-alapú HPC<br/>(Az azure Marketplace-en) | Az Intel MPI 5<br/><br/>Linuxos RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő által, az NCv2, az NCv3, NDv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | Ubuntu 16.04 LTS, vagy<br/>CentOS 7.3 vagy 7.4<br/>(Az azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok | – | 
 | [NV, NVv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS, vagy<br/>CentOS 7.3.<br/>(Az azure Marketplace-en) | Az NVIDIA GRID illesztőprogramok | – |
+
 <sup>*</sup>RDMA-kompatibilis N-sorozat méretei is tartalmazhat az NVIDIA Tesla gpu-k
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-készletek – virtuálisgép-konfiguráció
@@ -57,6 +58,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | A Windows Server 2016-ban, 2012 R2-ben, vagy<br/>2012 (az azure Marketplace-en) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/> Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő, NCv2, az NCv3, ND, NDv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | A Windows Server 2016-ban, vagy <br/>2012 R2 (az Azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok| – | 
 | [NV, NVv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | A Windows Server 2016-ban, vagy<br/>2012 R2 (az Azure Marketplace-en) | Az NVIDIA GRID illesztőprogramok | – |
+
 <sup>*</sup>RDMA-kompatibilis N-sorozat méretei is tartalmazhat az NVIDIA Tesla gpu-k
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows-készletek – Cloud services-konfiguráció

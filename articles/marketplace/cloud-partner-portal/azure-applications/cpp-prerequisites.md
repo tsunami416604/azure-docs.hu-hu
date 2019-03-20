@@ -3,7 +3,7 @@ title: Az Azure Application ajánlat előfeltételei |} A Microsoft Docs
 description: Az előfeltételek az Azure-alkalmazások közzététele az Azure Marketplace-en kínálnak.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097790"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007157"
 ---
 # <a name="azure-application-prerequisites"></a>Az Azure application Előfeltételek
 
-Ez a cikk egy kezelt alkalmazásra vonatkozó ajánlat az Azure piactér közzétételi technikai és üzleti előfeltételeit ismerteti.  Ha még nem tette meg, tekintse meg a videó [létrehozása Megoldássablonokkal, és a felügyelt alkalmazások az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+Ez a cikk egy kezelt alkalmazásra vonatkozó ajánlat az Azure piactér közzétételi technikai és üzleti előfeltételeit ismerteti.  Ha még nem tette meg, tekintse át az alábbi információforrásokat:
+- Attól függően, hogy a Termékváltozatának típusa vagy [Azure-alkalmazások: A Megoldássablon ajánlat közzétételi útmutató](../../marketplace-solution-templates.md) vagy [az Azure-alkalmazások: Felügyelt alkalmazás az ajánlat közzétételi útmutató](../../marketplace-managed-apps.md)
+- [Megoldássablonok, és a felügyelt alkalmazások készítése az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603) videó
 
 
 ## <a name="technical-requirements"></a>Technikai követelmények
@@ -43,7 +45,7 @@ További információkért lásd: [létrehozása az Azure portal felhasználói 
 
 Az üzleti követelmények a következők a következő eljárási, és a jogi szerződéses kötelezettségek:
 
-* Regisztrált Felhőbeli piactér kiadói kell lennie. Ha nem regisztrált, kövesse a cikkben legyen a Felhőbeli piactér kiadói.
+* Regisztrált Felhőbeli piactér kiadói kell lennie. Ha nem regisztrált, kövesse a cikkben található lépéseket [válnak a Felhőbeli piactér kiadói](../../become-publisher.md).
 
 >[!NOTE]
 >A Cloud Partner portálra való bejelentkezéshez ugyanazt a Microsoft Developer Center regisztrációs fiókot kell használnia. Az Azure piactér-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Ez a fiók nem lehet adott egyes szolgáltatásokat vagy ajánlatokat.
@@ -65,8 +67,8 @@ Egy új Azure-alkalmazás-ajánlat közzétételéhez a következő előfeltéte
   * Cím
   * Egy leírást (HTML formátumban)
   * Emblémakép (PNG formátumban), valamint ezek a rögzített lemezkép mérete: 40 x 40 képpont, 90 x 90 képpont, 115 x 115 képpont és 255 x 115 képpont.
-* A *használati feltételeket tartalmazó fájl* és a egy *adatvédelmi szabályzat*
-* Dokumentáció
+* A *használati* és a egy *adatvédelmi szabályzat* dokumentumok
+* Alkalmazás-dokumentáció
 * Támogatási kapcsolattartók
 
 

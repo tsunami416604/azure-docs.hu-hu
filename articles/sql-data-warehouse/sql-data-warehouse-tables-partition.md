@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 60f475afd8e9d599d3771b875f15a29e8a082fb7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d3557be2fd8fdb459571d2c792302963e17e4471
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189393"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse Táblák particionálása
 Javaslatok és a példák az Azure SQL Data Warehouse táblapartíciók.
@@ -109,27 +109,6 @@ GROUP BY    s.[name]
 ;
 ```
 
-## <a name="workload-management"></a>Számítási feladatok kezelése
-Egy utolsó szempont a tábla partíciós határozat figyelembe vennie, [számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Az SQL Data Warehouse a számítási feladatok kezeléséhez az elsősorban a memória és az egyidejűség kezelése. Az SQL Data Warehouse a lekérdezés-végrehajtás során minden egyes terjesztési számára lefoglalt maximális memória erőforrásosztályok szabályozza. Ideális esetben a partíciók mérete más tényezőktől, például a fürtözött oszloptár-indexek létrehozásához memóriaigényét figyelembe véve. Fürtözött oszlopcentrikus indexek benefit jelentősen, több memória kiosztása során. Ezért érdemes győződjön meg arról, hogy a partíció indexkészítés nem fogy ki a memória. A lekérdezés számára elérhető memória mennyiségének növelését érhető el az alapértelmezett szerepkörből, smallrc, egy largerc például a más szerepkörök között.
-
-A lefoglalt memóriát információkat az erőforrás-vezérlő dinamikus felügyeleti nézetek lekérdezésével érhető el. A valóságban a végzett a memóriabeli ideiglenes kisebb, mint a következő lekérdezés eredményeit. Azonban ez a lekérdezés biztosít útmutató osztályozás, a partíciók az adatkezelési műveletekhez használható. Próbálja ki az extra nagy erőforrásosztály által biztosított memóriaengedélyt partíciószám méretezési elkerülése érdekében. A partíciók Ez az ábra túli növekszik, ha futtatja a rendelkezésre álló memória mennyisége, ami viszont kevésbé optimális tömörítés kockázatát.
-
-```sql
-SELECT  rp.[name]                                AS [pool_name]
-,       rp.[max_memory_kb]                        AS [max_memory_kb]
-,       rp.[max_memory_kb]/1024                    AS [max_memory_mb]
-,       rp.[max_memory_kb]/1048576                AS [mex_memory_gb]
-,       rp.[max_memory_percent]                    AS [max_memory_percent]
-,       wg.[name]                                AS [group_name]
-,       wg.[importance]                            AS [group_importance]
-,       wg.[request_max_memory_grant_percent]    AS [request_max_memory_grant_percent]
-FROM    sys.dm_pdw_nodes_resource_governor_workload_groups    wg
-JOIN    sys.dm_pdw_nodes_resource_governor_resource_pools    rp ON wg.[pool_id] = rp.[pool_id]
-WHERE   wg.[name] like 'SloDWGroup%'
-AND     rp.[name]    = 'SloDWPool'
-;
-```
-
 ## <a name="partition-switching"></a>Partíció váltása
 Az SQL Data Warehouse felosztása, egyesítése és a Váltás partíció támogatja. Ezek közül minden függvény végrehajtása használatával a [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) utasítást.
 
@@ -166,15 +145,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,19990101,1,1,1,1,1,1);
 INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
-
-
-CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSales(OrderDateKey);
 ```
-
-> [!NOTE]
-> A statisztika objektum létrehozásával a tábla metaadatainak pontosabb. Statisztikai paraméter kihagyása esetén az SQL Data Warehouse alapértelmezett értékeket fogja használni. A statisztika részletes ismertetéséért tekintse át [statisztika](sql-data-warehouse-tables-statistics.md).
-> 
-> 
 
 A következő lekérdezés segítségével keresi meg a sorok száma a `sys.partitions` katalógus megtekintése:
 
@@ -252,6 +223,31 @@ Miután befejezte az adatok áthelyezését, célszerű a céltábla a statiszti
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
+```
+
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Új adatok betöltése az egyetlen lépésben adatokat tartalmazó partíciók
+Adatok betöltése a partíció váltás partíciókra van kényelmesen új adatok előkészítéséhez egy táblázatban, amely nem látható a felhasználók számára a kapcsoló az új adatok.  Foglalt rendszereken foglalkozni a zárolási versenyt partíció közötti váltás társított nehézkes lehet.  Törölje a meglévő adatai egy partíció- `ALTER TABLE` kell váltani a adatai segítségével.  Egy másik `ALTER TABLE` váltson az új adatok szükséges.  Az SQL Data Warehouse a `TRUNCATE_TARGET` beállítás használata támogatott a `ALTER TABLE` parancsot.  A `TRUNCATE_TARGET` a `ALTER TABLE` parancs felülírja a partíció-ben meglévő adatok új adatokkal.  Az alábbi példában, amely használja, `CTAS` új tábla létrehozása a meglévő adatokkal szúrja be az új adatokat, majd kapcsolók összes adat vissza a célként megadott táblába, felülírva a meglévő adatokat.
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales_NewSales]
+    WITH    (   DISTRIBUTION = HASH([ProductKey])
+            ,   CLUSTERED COLUMNSTORE INDEX
+            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                                (20000101,20010101
+                                )
+                            )
+            )
+AS
+SELECT  *
+FROM    [dbo].[FactInternetSales]
+WHERE   [OrderDateKey] >= 20000101
+AND     [OrderDateKey] <  20010101
+;
+
+INSERT INTO dbo.FactInternetSales_NewSales
+VALUES (1,20000101,2,2,2,2,2,2);
+
+ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ### <a name="table-partitioning-source-control"></a>Tábla particionálása verziókövetés

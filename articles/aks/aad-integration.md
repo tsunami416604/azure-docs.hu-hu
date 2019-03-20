@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087533"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -40,47 +40,47 @@ Az első Azure AD-alkalmazást az Azure AD-felhasználók csoport tagságának e
 
 1. Válassza az **Azure Active Directory** > **Alkalmazásregisztrációk** > **Új alkalmazás regisztrálása** lehetőséget.
 
-  Adja meg az alkalmazás nevét, válassza ki **webalkalmazás / API** az alkalmazás típusához, és adja meg a formázott URI érték **bejelentkezési URL-**. Válassza ki **létrehozás** végeztével.
+   Adja meg az alkalmazás nevét, válassza ki **webalkalmazás / API** az alkalmazás típusához, és adja meg a formázott URI érték **bejelentkezési URL-**. Válassza ki **létrehozás** végeztével.
 
-  ![Azure AD-regisztrációs létrehozása](media/aad-integration/app-registration.png)
+   ![Azure AD-regisztrációs létrehozása](media/aad-integration/app-registration.png)
 
 2. Válassza ki **Manifest** és szerkesztheti a `groupMembershipClaims` értéket a következőre `"All"`.
 
-  Miután elkészült a frissítések mentése.
+   Miután elkészült a frissítések mentése.
 
-  ![Az összes frissíteni a csoporttagságot](media/aad-integration/edit-manifest.png)
+   ![Az összes frissíteni a csoporttagságot](media/aad-integration/edit-manifest.png)
 
 3. Vissza az Azure AD-alkalmazást, válassza ki **beállítások** > **kulcsok**.
 
-  Adjon hozzá egy kulcs leírása, egy lejárati határidőt, válassza ki és **mentése**. Jegyezze fel a kulcs értékét. Ha az AKS-fürt üzembe helyezése az Azure AD engedélyezve, ez az érték a neve a `Server application secret`.
+   Adjon hozzá egy kulcs leírása, egy lejárati határidőt, válassza ki és **mentése**. Jegyezze fel a kulcs értékét. Ha az AKS-fürt üzembe helyezése az Azure AD engedélyezve, ez az érték a neve a `Server application secret`.
 
-  ![Az alkalmazás titkos kulcs lekérése](media/aad-integration/application-key.png)
+   ![Az alkalmazás titkos kulcs lekérése](media/aad-integration/application-key.png)
 
 4. Térjen vissza az Azure AD alkalmazást, jelölje be **beállítások** > **szükséges engedélyek** > **Hozzáadás**  >   **API kiválasztása** > **Microsoft Graph** > **kiválasztása**.
 
-  ![Válassza ki a graph API-val](media/aad-integration/graph-api.png)
+   ![Válassza ki a graph API-val](media/aad-integration/graph-api.png)
 
 5. A **ALKALMAZÁSENGEDÉLYEK** melletti négyzetet **címtáradatok olvasása**.
 
-  ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/read-directory.png)
+   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/read-directory.png)
 
 6. A **DELEGÁLT engedélyek**, melletti négyzetet **jelentkezzen be a felhasználói profil olvasása és** és **címtáradatok olvasása**. Miután befejezte a frissítések mentése.
 
-  ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/delegated-permissions.png)
+   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/delegated-permissions.png)
 
-  Válassza a **Done** (Kész) lehetőséget.
+   Válassza a **Done** (Kész) lehetőséget.
 
 7. Válasszon *Microsoft Graph* API-t, majd válassza ki a listáról **engedélyek megadása**. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda.
 
-  ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/grant-permissions.png)
+   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/grant-permissions.png)
 
-  Ha az engedélyek sikeresen kapott, a portálon a következő értesítés jelenik meg:
+   Ha az engedélyek sikeresen kapott, a portálon a következő értesítés jelenik meg:
 
-  ![Értesítés a sikeres jogosultságaitól](media/aad-integration/permissions-granted.png)
+   ![Értesítés a sikeres jogosultságaitól](media/aad-integration/permissions-granted.png)
 
 8. Térjen vissza az alkalmazást, és jegyezze fel a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS-fürt üzembe helyezésekor, ezt az értéket a neve a `Server application ID`.
 
-  ![Alkalmazásazonosító beszerzése](media/aad-integration/application-id.png)
+   ![Alkalmazásazonosító beszerzése](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>Ügyfélalkalmazás létrehozása
 
@@ -88,27 +88,27 @@ A második Azure AD-alkalmazást használja történő bejelentkezéskor a Kuber
 
 1. Válassza az **Azure Active Directory** > **Alkalmazásregisztrációk** > **Új alkalmazás regisztrálása** lehetőséget.
 
-  Adja meg az alkalmazás nevét, válassza ki **natív** az alkalmazás típusához, és adja meg a formázott URI érték **átirányítási URI-t**. Válassza ki **létrehozás** végeztével.
+   Adja meg az alkalmazás nevét, válassza ki **natív** az alkalmazás típusához, és adja meg a formázott URI érték **átirányítási URI-t**. Válassza ki **létrehozás** végeztével.
 
-  ![Hozzon létre az AAD-regisztráció](media/aad-integration/app-registration-client.png)
+   ![Hozzon létre az AAD-regisztráció](media/aad-integration/app-registration-client.png)
 
 2. Válassza ki az Azure AD-alkalmazás **beállítások** > **szükséges engedélyek** > **Hozzáadás** > **válassza egy API** , és keresse meg a jelen dokumentum az előző lépésben létrehozott kiszolgálói alkalmazás nevére.
 
-  ![Alkalmazás-engedélyek konfigurálása](media/aad-integration/select-api.png)
+   ![Alkalmazás-engedélyek konfigurálása](media/aad-integration/select-api.png)
 
 3. Jelölje be a mellett az alkalmazásra, majd **kiválasztása**.
 
-  ![Válassza ki az AKS AAD alkalmazás kiszolgálóvégpontok](media/aad-integration/select-server-app.png)
+   ![Válassza ki az AKS AAD alkalmazás kiszolgálóvégpontok](media/aad-integration/select-server-app.png)
 
-  Válassza ki **kész**
+   Válassza ki **kész**
 
 4. Válassza ki a kiszolgáló API-t a listából, és válassza a **engedélyek megadása**:
 
-  ![Engedélyek megadása](media/aad-integration/grant-permissions-client.png)
+   ![Engedélyek megadása](media/aad-integration/grant-permissions-client.png)
 
 5. Vissza az AD-alkalmazásra, jegyezze fel a **Alkalmazásazonosító**. Az Azure AD-kompatibilis AKS-fürt üzembe helyezésekor, ezt az értéket a neve a `Client application ID`.
 
-  ![Az Alkalmazásazonosító beszerzése](media/aad-integration/application-id-client.png)
+   ![Az Alkalmazásazonosító beszerzése](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>A bérlőazonosító beszerzése
 

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822680"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203064"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop-naplók elemzése
 
-Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése az Apache Hadoop-fürtök a HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). A naplók megőrzése a tárfiókban, a fürt törlése után is.
+Minden egyes Azure HDInsight az Apache Hadoop-fürtöt az alapértelmezett fájlrendszerként használt Azure storage-fiókkal rendelkezik. A storage-fiókot az alapértelmezett tárfiók neve. Fürt használja az Azure Table storage és a Blob storage az alapértelmezett tárfiókot a naplók tárolásához.  Az alapértelmezett tárfiókot, a fürt számára, lásd: [kezelése az Apache Hadoop-fürtök a HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). A naplók megőrzése a tárfiókban, a fürt törlése után is.
 
 ## <a name="logs-written-to-azure-tables"></a>Azure-beli táblák írt naplók
 
@@ -317,4 +317,4 @@ Bizonyos hibaüzenetek sikerült is látható az Azure Portalon kezelheti a HDIn
 
 * [Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez](../hdinsight-debug-ambari-tez-view.md)
 * [A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md)
+* [HDInsight-fürtök kezelése az Apache Ambari webes felületével](../hdinsight-hadoop-manage-ambari.md)

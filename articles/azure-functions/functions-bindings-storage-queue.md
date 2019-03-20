@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: f54bec9c328893d1d579bff3313f126dbc1178de
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fbb95f6b92944b0f07ad17eb3094f9b30480144c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200973"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 
@@ -176,7 +176,7 @@ A [használati](#trigger---usage) szakasz ismerteti, `myQueueItem`, amelyek neve
 ### <a name="trigger---java-example"></a>Eseményindító - Java-példában
 
 A következő Java-példa bemutatja egy storage-üzenetsor eseményindító függvények, amely az aktivált üzenet üzenetsorba helyezi `myqueuename`.
- 
+
  ```java
  @FunctionName("queueprocessor")
  public void run(
@@ -190,7 +190,7 @@ A következő Java-példa bemutatja egy storage-üzenetsor eseményindító füg
  ```
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
- 
+
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumok egy üzenetsor eseményindító konfigurálása:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
@@ -218,7 +218,7 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
       ....
   }
   ```
- 
+
   Egy teljes példa: [eseményindító – C#-példa](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
@@ -253,14 +253,14 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type** | n/a| Meg kell `queueTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction**| n/a | Az a *function.json* csak fájl. Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a |A függvénykódot a várólista elem adattartalom tartalmazó változó neve.  | 
-|**queueName** | **queueName**| A lekérdezéshez az üzenetsor neve. | 
+|**name** | n/a |A függvénykódot a várólista elem adattartalom tartalmazó változó neve.  |
+|**queueName** | **queueName**| A lekérdezéshez az üzenetsor neve. |
 |**kapcsolat** | **kapcsolat** |A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
- 
+
 A C# és a C#-szkript, eléréséhez az állapotüzenet-adatokat egy metódus-paramétert használatával `string paramName`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. A következő típusok kell kötni:
 
 * Az objektum – a Functions futtatókörnyezete deserializes egy JSON-adattartalom be egy tetszőleges, a kód meghatározott osztály egy példányát. 
@@ -306,9 +306,7 @@ Az üzenetsor eseményindító automatikusan megakadályozza, hogy egy függvén
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
-A [host.json](functions-host-json.md#queues) fájl üzenetsor eseményindító viselkedését vezérlő beállításokat tartalmaz.
-
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+A [host.json](functions-host-json.md#queues) fájl üzenetsor eseményindító viselkedését vezérlő beállításokat tartalmaz. Tekintse meg a [host.json beállítások](#hostjson-settings) rendelkezésre álló beállítások részletei szakaszban.
 
 ## <a name="output"></a>Kimenet
 
@@ -370,7 +368,7 @@ Az alábbi példa bemutatja egy kötelező HTTP-eseményindító egy *function.j
     }
   ]
 }
-``` 
+```
 
 A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
@@ -431,7 +429,7 @@ Az alábbi példa bemutatja egy kötelező HTTP-eseményindító egy *function.j
     }
   ]
 }
-``` 
+```
 
 A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
 
@@ -466,13 +464,13 @@ module.exports = function(context) {
        result.setValue(message + " has been added.");
        return message;
  }
- ```
+```
 
 Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@QueueOutput` paraméterek, amelynek értéke a Queue storage tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
 
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
- 
+
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
 Az attribútum vonatkozik egy `out` paraméter vagy a függvény visszatérési értéke. Az attribútum konstruktorának az üzenetsor nevére a következő példában látható módon:
@@ -509,14 +507,14 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type** | n/a | Meg kell `queue`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell `out`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | A függvény kódját a várólistájára változó neve. Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.| 
-|**queueName** |**queueName** | Az üzenetsor neve. | 
+|**name** | n/a | A függvény kódját a várólistájára változó neve. Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
+|**queueName** |**queueName** | Az üzenetsor neve. |
 |**kapcsolat** | **kapcsolat** |A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Kimenet – használat
- 
+
 A C# és a C#-szkript, írhat egy metódus-paramétert használatával egyetlen üzenetsor `out T paramName`. A C#-szkript `paramName` az értéket a megadott a `name` tulajdonsága *function.json*. A metódus visszatérési típus helyett használhat egy `out` paramétert, és `T` a következők egyike lehet:
 
 * Az objektum szerializálható JSON-fájlként
@@ -564,16 +562,16 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
         }
     }
 }
-```  
+```
 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------| 
-|maxPollingInterval|00:00:02|Lekérdezi a várólista közötti maximális időtartam. Minimális érték 00:00:00.100 (100 ms). | 
-|visibilityTimeout|00:00:00|Az üzenet feldolgozása során az újrapróbálkozások közötti időintervallum sikertelen lesz. | 
-|batchSize|16|A Functions futtatókörnyezete egy időben kéri le, és párhuzamosan dolgozza fel üzenetsorbeli üzenetek száma. Ha a feldolgozás alatt szám lekérdezi le a a `newBatchThreshold`, a modul egy másik köteg lekérdezi, és elindítja a feldolgozási ezeket az üzeneteket. A függvény feldolgozott egyidejű üzenetek maximális száma így `batchSize` plusz `newBatchThreshold`. Ez a korlátozás külön-külön mindegyik üzenetsor által aktivált függvény vonatkozik. <br><br>Ha el szeretné kerülni a párhuzamos végrehajtása egy üzenetsorban fogadott üzenetek, beállíthat `batchSize` 1-re. Azonban ez a beállítás használata esetén nem egyidejűségi csak, feltéve, hogy a függvényalkalmazás futtatása egyetlen virtuális gépen (VM). Ha több virtuális gépre méretezhető a függvényalkalmazás, minden virtuális gép futhat egy példányát minden egyes üzenetsor által aktivált függvény.<br><br>A maximális `batchSize` 32. | 
-|maxDequeueCount|5|A hányszor próbálkozzon, egy üzenet feldolgozása az ártalmas üzenetsor áthelyezés előtt.| 
-|newBatchThreshold|batchSize/2|Minden alkalommal, amikor ez a szám a lekérdezi az egyidejűleg feldolgozott üzenetek száma, a modul egy másik köteg kérdezi le.| 
+|---------|---------|---------|
+|maxPollingInterval|00:00:02|Lekérdezi a várólista közötti maximális időtartam. Minimális érték 00:00:00.100 (100 ms). |
+|visibilityTimeout|00:00:00|Az üzenet feldolgozása során az újrapróbálkozások közötti időintervallum sikertelen lesz. |
+|batchSize|16|A Functions futtatókörnyezete egy időben kéri le, és párhuzamosan dolgozza fel üzenetsorbeli üzenetek száma. Ha a feldolgozás alatt szám lekérdezi le a a `newBatchThreshold`, a modul egy másik köteg lekérdezi, és elindítja a feldolgozási ezeket az üzeneteket. A függvény feldolgozott egyidejű üzenetek maximális száma így `batchSize` plusz `newBatchThreshold`. Ez a korlátozás külön-külön mindegyik üzenetsor által aktivált függvény vonatkozik. <br><br>Ha el szeretné kerülni a párhuzamos végrehajtása egy üzenetsorban fogadott üzenetek, beállíthat `batchSize` 1-re. Azonban ez a beállítás használata esetén nem egyidejűségi csak, feltéve, hogy a függvényalkalmazás futtatása egyetlen virtuális gépen (VM). Ha több virtuális gépre méretezhető a függvényalkalmazás, minden virtuális gép futhat egy példányát minden egyes üzenetsor által aktivált függvény.<br><br>A maximális `batchSize` 32. |
+|maxDequeueCount|5|A hányszor próbálkozzon, egy üzenet feldolgozása az ártalmas üzenetsor áthelyezés előtt.|
+|newBatchThreshold|batchSize/2|Minden alkalommal, amikor ez a szám a lekérdezi az egyidejűleg feldolgozott üzenetek száma, a modul egy másik köteg kérdezi le.|
 
 ## <a name="next-steps"></a>További lépések
 

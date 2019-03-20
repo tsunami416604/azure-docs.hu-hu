@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ffac79209f998f1ef042ed5fcb4d8c6a45de2c2e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 03374f63345bd6c9e4f2b603443a1448493e1cdc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447037"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894614"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítéseket Chrome-alkalmazásokba az Azure Notification hubs használatával
 
@@ -266,7 +266,7 @@ A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztőv
         sendNHRegistrationRequest();
     }
 
-    // From http://msdn.microsoft.com/library/dn495627.aspx
+    // From https://msdn.microsoft.com/library/dn495627.aspx
     function splitConnectionString()
     {
         var parts = connectionString.split(';');
@@ -361,17 +361,17 @@ A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztőv
 
     A szkript a következő fő paraméterekkel rendelkezik:
 
-    * `window.onload` határozza meg, a két gomb kattintási eseményeit a felhasználói felületen. Az egyik gombkattintási eseménykezelő a GCM-ben regisztrál, a másik pedig a másik a GCM-regisztráció után visszaadott regisztrációs azonosítót az Azure Notification Hubs-regisztrációra használja.
-    * `updateLog` a függvény, amely lehetővé teszi a kód adatokat naplózzon van.
-    * `registerWithGCM` az első kattintáskezelő, ami lehetővé teszi az van a `chrome.gcm.register` hívást a GCM felé az aktuális Chrome App-példány regisztrálásához.
-    * `registerCallback` a visszahívási függvény meghívása megtörténik, amikor a GCM-regisztrációs hívás adja vissza.
-    * `registerWithNH` a második kattintáskezelő, amely a Notification hubs használatával regisztrálja van. Lekéri a `hubName` és (a felhasználó által megadott ) `connectionString` paramétereket, valamint létrehozza a Notification Hubs-regisztrációs REST API-hívást.
-    * `splitConnectionString` és `generateSaSToken` olyan segítők, amelyek egy SaS jogkivonat létrehozási folyamata, minden REST API-hívások használandó JavaScript végrehajtására. További információk: [Általánosan használt fogalmak](https://msdn.microsoft.com/library/dn495627.aspx).
-    * `sendNHRegistrationRequest` a rendszer a függvényt egy HTTP REST hívás által az Azure Notification hubs használatával.
-    * `registrationPayload` határozza meg a regisztrációs XML hasznos adatait. További információk: [Regisztrációs NH REST API létrehozása]. Frissítse a benne található regisztrációs azonosítót a GCM-től kapott értékkel.
-    * `client` egy példánya `XMLHttpRequest` , hogy az alkalmazás használ-e a HTTP POST-kérés. Frissítse az `Authorization` fejlécet a következővel: `sasToken`. A hívás sikeres végrehajtása regisztrálja a Chrome-alkalmazás ezen példányát az Azure Notification Hubsban.
+   * `window.onload` határozza meg, a két gomb kattintási eseményeit a felhasználói felületen. Az egyik gombkattintási eseménykezelő a GCM-ben regisztrál, a másik pedig a másik a GCM-regisztráció után visszaadott regisztrációs azonosítót az Azure Notification Hubs-regisztrációra használja.
+   * `updateLog` a függvény, amely lehetővé teszi a kód adatokat naplózzon van.
+   * `registerWithGCM` az első kattintáskezelő, ami lehetővé teszi az van a `chrome.gcm.register` hívást a GCM felé az aktuális Chrome App-példány regisztrálásához.
+   * `registerCallback` a visszahívási függvény meghívása megtörténik, amikor a GCM-regisztrációs hívás adja vissza.
+   * `registerWithNH` a második kattintáskezelő, amely a Notification hubs használatával regisztrálja van. Lekéri a `hubName` és (a felhasználó által megadott ) `connectionString` paramétereket, valamint létrehozza a Notification Hubs-regisztrációs REST API-hívást.
+   * `splitConnectionString` és `generateSaSToken` olyan segítők, amelyek egy SaS jogkivonat létrehozási folyamata, minden REST API-hívások használandó JavaScript végrehajtására. További információk: [Általánosan használt fogalmak](https://msdn.microsoft.com/library/dn495627.aspx).
+   * `sendNHRegistrationRequest` a rendszer a függvényt egy HTTP REST hívás által az Azure Notification hubs használatával.
+   * `registrationPayload` határozza meg a regisztrációs XML hasznos adatait. További információk: [Regisztrációs NH REST API létrehozása]. Frissítse a benne található regisztrációs azonosítót a GCM-től kapott értékkel.
+   * `client` egy példánya `XMLHttpRequest` , hogy az alkalmazás használ-e a HTTP POST-kérés. Frissítse az `Authorization` fejlécet a következővel: `sasToken`. A hívás sikeres végrehajtása regisztrálja a Chrome-alkalmazás ezen példányát az Azure Notification Hubsban.
 
-    A projekt általános mappastruktúra például az alábbi struktúrával kell lennie:  ![Google Chrome-alkalmazás – mappastruktúra][21]
+     A projekt általános mappastruktúra például az alábbi struktúrával kell lennie: ![Google Chrome-alkalmazás – mappastruktúra][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>A Chrome-alkalmazás beállítása és tesztelése
 
@@ -406,7 +406,7 @@ Tesztelési célból küldjön leküldéses Chrome-értesítéseket egy .NET-kon
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-   Az Azure Service Bus SDK-val egy hivatkozást a [WindowsAzure.ServiceBus NuGet-csomag automatikusan hozzáadódik a projekt](http://nuget.org/packages/WindowsAzure.ServiceBus/).
+   Az Azure Service Bus SDK-val egy hivatkozást a [WindowsAzure.ServiceBus NuGet-csomag automatikusan hozzáadódik a projekt](https://nuget.org/packages/WindowsAzure.ServiceBus/).
 4. Nyissa meg a `Program.cs` elemet, majd adja hozzá a következő `using` utasítást:
 
     ```csharp
@@ -481,8 +481,8 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Chrome-alkalmazások GCM-mintáján]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [Chrome-alkalmazások mobileszközökön]: https://developer.chrome.com/apps/chrome_apps_on_mobile
-[Regisztrációs NH REST API létrehozása]: http://msdn.microsoft.com/library/azure/dn223265.aspx
-[crypto-js kódtárat]: http://code.google.com/p/crypto-js/
+[Regisztrációs NH REST API létrehozása]: https://msdn.microsoft.com/library/azure/dn223265.aspx
+[crypto-js kódtárat]: https://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
 [Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

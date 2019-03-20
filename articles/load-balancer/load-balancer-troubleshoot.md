@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 26f60a6f1796b080df3294737ce93bfb43029bf1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108831"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -128,7 +128,7 @@ Ha egy belső terheléselosztó van konfigurálva, egy virtuális hálózaton be
 Ha úgy dönt, hogy nyisson meg egy támogatási esetet, gyorsabb megoldást a következő adatainak összegyűjtése. Válassza ki az egyetlen olyan háttérszolgáltatással virtuális Gépet a következő ellenőrzés végrehajtásához:
 - A háttérrendszer a virtuális hálózaton belüli virtuális gépek közül a Psping eszköz használata a mintavételi portot válasz tesztelése (Példa: psping 10.0.0.4:3389), és jegyezze fel az eredményeket. 
 - Ha nem érkezik válasz ping a vizsgálatok, futtassa egy egyidejű Netsh trace a háttérbeli virtuális Gépről, és a VNet tesztelési virtuális gép során, futtassa a PsPing, majd állítsa le a Netsh trace. 
-  
+  
 ## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem a probléma megoldásához nyissa meg a [támogatási jegyet](https://azure.microsoft.com/support/options/).

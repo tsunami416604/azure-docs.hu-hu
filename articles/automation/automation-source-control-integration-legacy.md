@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434869"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901542"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Verziókövetés integrálása az Azure Automation – régi
 
@@ -66,22 +66,22 @@ Ha már rendelkezik egy GitHub-fiók és a egy Azure Automation mutató hivatkoz
      | **A paraméter** | **Érték** |
      |:--- |:--- |
      | Name (Név) |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Típus |Karakterlánc |
+     | Typo |String |
      | Érték |{"Ág":\<*az ág nevének*>, "RunbookFolderPath":\<*forgatókönyvek mappájának elérési útja*>, "Szolgáltatótípus":\<*1 értékkel rendelkezik GitHub*>, "Tárház":\<*a tárház nevét*>, "Felhasználónév":\<*a GitHub felhasználói név*>} |
 
-    * A változó **Microsoft.Azure.Automation.SourceControl.OAuthToken**, az OAuthToken biztonságos titkosított értékét tartalmazza.  
+     * A változó **Microsoft.Azure.Automation.SourceControl.OAuthToken**, az OAuthToken biztonságos titkosított értékét tartalmazza.  
 
-    |**A paraméter**            |**Érték** |
-    |:---|:---|
-    | Name (Név)  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | Típus | Unknown(Encrypted) |
-    | Érték | <*Titkosított OAuthToken*> |  
+     |**A paraméter**            |**Érték** |
+     |:---|:---|
+     | Name (Név)  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | Typo | Unknown(Encrypted) |
+     | Érték | <*Titkosított OAuthToken*> |  
 
-    ![Változók](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
+     ![Változók](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automation Source-Control** kerülnek be a GitHub-fiók engedéllyel rendelkező alkalmazások. Az alkalmazás megtekintéséhez: A GitHub kezdőlapján nyissa meg a **profil** > **beállítások** > **alkalmazások**. Ez az alkalmazás lehetővé teszi, hogy az Azure Automation és a egy Automation-fiókot a GitHub-adattárban szinkronizálása.  
+     * **Automation Source-Control** kerülnek be a GitHub-fiók engedéllyel rendelkező alkalmazások. Az alkalmazás megtekintéséhez: A GitHub kezdőlapján nyissa meg a **profil** > **beállítások** > **alkalmazások**. Ez az alkalmazás lehetővé teszi, hogy az Azure Automation és a egy Automation-fiókot a GitHub-adattárban szinkronizálása.  
 
-    ![Git-alkalmazás](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
+     ![Git-alkalmazás](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
 
 ## <a name="using-source-control-in-automation"></a>Verziókövetés Automation használatával
@@ -124,10 +124,6 @@ A tárház-szinkronizálás oldalon a szinkronizálás gomb lehetővé teszi a f
 
     > [!NOTE] 
     > A verziókövetésből szinkronizálást felülírja a runbookokat, amelyek az Automation-fiókban a jelenleg létező vázlatverzióját **összes** runbookokat, amelyek jelenleg a verziókövetés. A Git egyenértékű parancssori utasítás szinkronizálni **git lekéréses**
-
-
-## <a name="troubleshooting-source-control-problems"></a>Forrás-ellenőrzési problémák hibaelhárítása
-Ha esetleges hibák be- vagy a szinkronizálási feladat, ezért célszerű felfüggeszteni a feladat állapotát, és megtekintheti a hibával kapcsolatos további részleteket a feladat oldalát.  A **az összes napló** része azt mutatja be, a feladathoz hozzárendelt összes PowerShell-adatfolyamot. Ezzel biztosítható az szükséges, javítsa ki az ellenőrzéssel a probléma vagy szinkronizálás részleteit. Bemutatja azt is, amely történt szinkronizálás, vagy egy runbook-ellenőrzési műveletek sorrendjét.  
 
 ![AllLogs kép](media/automation-source-control-integration-legacy/automation_13_AllLogs.png)
 

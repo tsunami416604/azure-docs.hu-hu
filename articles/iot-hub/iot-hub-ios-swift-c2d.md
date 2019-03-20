@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 882c2f7d9abfa40ddafbba4f98292c3f8f44c459
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7e8d12af92a566753d8f3d7baf5019bae44de2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548711"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163517"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT Hub (iOS) a felhőből az eszközre irányuló üzenetek küldése
 
@@ -128,7 +128,7 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
 1. Az IoT hub szolgáltatás kapcsolati karakterláncára lekéréséhez. Másolhatja a karakterláncot, a [az Azure portal](https://portal.azure.com) származó a **iothubowner** szabályzat a **megosztott elérési házirendek** panelen vagy lekérni a következő CLI-paranccsal:  
 
     ```azurecli-interactive
-    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
+    az iot hub show-connection-string --name {YourIoTHubName} --output table
     ```
 
 2. Nyissa meg a minta munkaterületet az XCode-ban.

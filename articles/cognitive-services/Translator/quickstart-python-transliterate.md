@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 2022971d24f7ac8a24986f45031f568a86fc31d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b30fa9bb0af8da7b3c72fef7aa2ecd18a8f759e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726363"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862845"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveg Python használatával
 
@@ -32,7 +32,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `transliterate-text.py` nevű fájlba a projektjében.
+Hozzon létre egy új projektet egy fájlt a kedvenc IDE- vagy szerkesztő, vagy egy új mappát használata `transliterate-text.py` az asztalon. Ez a kódrészlet majd másolja a projektfájlban:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -135,7 +135,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

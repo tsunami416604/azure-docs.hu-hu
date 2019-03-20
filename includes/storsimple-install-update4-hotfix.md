@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 46cf3b01a3c5e653d5588e463f26540fef15f4e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889499"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125334"
 ---
 #### <a name="to-download-hotfixes"></a>Gyorsjavítások letöltése
 
@@ -99,12 +99,12 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
     A következő verziónak kell megjelennie:
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17820`
+   * `HcsSoftwareVersion: 6.3.9600.17820`
    
-    Ha a verziószám nem változik a frissítés telepítését követően, ez azt jelzi, hogy a gyorsjavítás nem lett telepítve. Ha ezt látja, további segítségért forduljon a [Microsoft támogatási szolgálatához](../articles/storsimple/storsimple-contact-microsoft-support.md).
+     Ha a verziószám nem változik a frissítés telepítését követően, ez azt jelzi, hogy a gyorsjavítás nem lett telepítve. Ha ezt látja, további segítségért forduljon a [Microsoft támogatási szolgálatához](../articles/storsimple/storsimple-contact-microsoft-support.md).
      
-    > [!IMPORTANT]
-    > Újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmag a következő frissítés alkalmazása előtt.
+     > [!IMPORTANT]
+     > Újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmag a következő frissítés alkalmazása előtt.
      
 7. Ismételje meg a 3-5 letöltött Cis/MDS-ügynök telepítése a _FirstOrderUpdate_ mappát. 
 8. A másodrendű frissítések telepítéséhez hajtsa ismét végre a 3–5. lépést. **A másodrendű frissítések, egyszerre több frissítést is telepíthető egyszerűen futtassa a `Start-HcsHotfix cmdlet` mutató a mappát, ahol a másodrendű frissítések találhatók. A parancsmag az összes rendelkezésre álló frissítések végrehajtja a mappában.** Ha valamely frissítés már telepítve lett, a frissítési logika észleli ezt, és nem alkalmazza újra az adott frissítést. 

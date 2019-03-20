@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 39864b629d41f0921c80736042ca5f8938376297
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c51cb797ff4465f4efcbc526444cddeb5b923262
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650994"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225261"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése Azure HDInsight platformon
 
@@ -36,7 +36,7 @@ HDInsight-alkalmazások fürt létrehozása közben vagy egy meglévő HDInsight
 
 Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
-* [azuredeploy.JSON](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): A HDInsight-alkalmazás telepítésére szolgáló Resource Manager-sablon. Lásd: [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx) saját Resource Manager-sablon fejlesztéséhez.
+* [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): A HDInsight-alkalmazás telepítésére szolgáló Resource Manager-sablon. Lásd: [MSDN: Egy HDInsight-alkalmazás telepítése](https://msdn.microsoft.com/library/mt706515.aspx) saját Resource Manager-sablon fejlesztéséhez.
 * [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): Az élcsomópont konfigurálásához a Resource Manager-sablon által meghívott parancsfájlművelet.
 * [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): A hue bináris fájl hui-install_v0.sh fájlból meghívott.
 * [hue-bináris fájlok-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): A hue bináris fájl hui-install_v0.sh fájlból meghívott.
@@ -44,7 +44,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
 **A Hue telepítése meglévő HDInsight-fürtre**
 
-1. Az alábbi képre kattintva beléphet az Azure szolgáltatásba, és megnyithatja a Resource Manager-sablont az Azure Portalon.
+1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -59,7 +59,7 @@ Az alkalmazás üzembe helyezéséhez szükséges fájlok (Hue esetén):
 
 **A Hue telepítése fürt létrehozása közben**
 
-1. Az alábbi képre kattintva beléphet az Azure szolgáltatásba, és megnyithatja a Resource Manager-sablont az Azure Portalon.
+1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -95,7 +95,7 @@ Ha az alkalmazás telepítése sikertelen, a következő három helyen tekinthet
     A Settings (Beállítások) panelen kattintson a Script Action (Parancsfájlművelet) elemre. A hibaüzeneteket megjelenítő parancsfájlművelet-előzmény
 
     ![hdinsight applications script action error](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
-* Az Ambari webes felhasználói felületen: Ha a telepítési parancsfájl volt a hiba okát, tekintse meg a telepítési szkriptek teljes naplókat az Ambari webes felhasználói felület használatával.
+* Ambari Web UI: Ha a telepítési parancsfájl volt a hiba okát, tekintse meg a telepítési szkriptek teljes naplókat az Ambari webes felhasználói felület használatával.
 
     További információk: [Hibaelhárítás](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 

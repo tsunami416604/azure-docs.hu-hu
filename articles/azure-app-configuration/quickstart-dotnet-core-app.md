@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: cd4115aaeec15d14d48dcb71cbdc75212c6dc2db
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5501e92b9a9d977f74bf4ed028b3cd3de4e56133
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960672"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225382"
 ---
-# <a name="quickstart-create-an-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
-Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Ez lehetővé teszi, hogy könnyedén tárolhatja és kezelheti a kódot egy helyet, amely választja el az alkalmazás beállításait. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást egy .NET Core-konzolalkalmazást az.
+Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Könnyedén tárolhatja, és a egy helyet, amely választja el az alkalmazás beállításait kezelheti a kódból használhatja azt. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást egy .NET Core-konzolalkalmazást az.
 
-A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A [Visual Studio Code](https://code.visualstudio.com/) például jó választás lehet, és Windows, macOS és Linux platformokon is használható.
+Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download).
+Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,25 +39,25 @@ A rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotnet.
 
 ## <a name="create-a-net-core-console-app"></a>Hozzon létre egy .NET Core-Konzolalkalmazás
 
-Használhatja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) hozhat létre egy új .NET Core Konzolalkalmazás-projektet. A .NET Core CLI előnye a Visual Studióval szemben az, hogy Windows, macOS és Linux platformokon is használható.
+Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/tools/) , hozzon létre egy új .NET Core console app projektet. A .NET Core parancssori felület a Visual Studio-val előnye, hogy legyen elérhető a Windows, macOS és Linux rendszerek között.
 
 1. Hozzon létre egy új mappát a projekthez.
 
-2. Az új mappában hozzon létre egy új ASP.NET Core MVC webalkalmazás-projektet a következő paranccsal:
+2. Az új mappára futtassa a következő parancsot egy új ASP.NET Core MVC webalkalmazás-projektet létrehozása:
 
         dotnet new console
 
-## <a name="connect-to-app-configuration-store"></a>Csatlakozhat az alkalmazás a konfigurációs adattároló
+## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
 
-1. Adjon hozzá egy, a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
+1. Vegyen fel egy hivatkozást a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a következő parancs futtatásával:
 
         dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
 
-2. A projekt csomagjainak visszaállításához futtassa a következő parancsot.
+2. Futtassa a következő parancsot a projekt-csomagok visszaállítására szolgáló:
 
         dotnet restore
 
-3. Nyissa meg *Program.cs* és frissítheti a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt az `builder.AddAzureAppConfiguration()` metódust.
+3. Nyissa meg *Program.cs*, és frissítse a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt az `builder.AddAzureAppConfiguration()` metódust.
 
     ```csharp
     static void Main(string[] args)
@@ -72,15 +72,15 @@ Használhatja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.co
 
 ## <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
 
-1. Nevű környezeti változó értéke **ConnectionString** , és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha Windows-parancssort használja, hajtsa végre a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
+1. Nevű környezeti változó értéke **ConnectionString**, és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha használja a Windows-parancssort, futtassa a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Ha a Windows Powershellt használ, hajtsa végre a következő parancsot:
+    Windows PowerShell használatakor a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Ha macOS vagy Linux használ, hajtsa végre a következő parancsot:
+    Ha macOS vagy Linux használ, futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
@@ -88,7 +88,7 @@ Használhatja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.co
 
         dotnet build
 
-3. A build sikeres befejeződése után hajtsa végre a következő parancsot az alkalmazás helyi futtatásához:
+3. A build sikeres befejezése után futtassa a következő parancsot az alkalmazás helyi futtatásához:
 
         dotnet run
 
@@ -100,7 +100,7 @@ Használhatja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.co
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban egy új alkalmazás-konfigurációs adattároló létrehozta és egy .NET Core-konzolalkalmazást az használta azt. Alkalmazáskonfiguráció használatával kapcsolatos további információkért folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
+Ez a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló és a egy .NET Core-konzolalkalmazást az használta. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
 > [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)

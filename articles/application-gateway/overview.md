@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 1/22/2019
+ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: c574e3ab82f97f5fffc7c834a53d19df93fc426f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448942"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225535"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -70,11 +70,15 @@ A webalkalmazási tűzfal (WAF) az Application Gateway egyik szolgáltatása, am
 
 A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának számos rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
+További információkért lásd: [Application Gateway webalkalmazási tűzfala (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview)).
+
 ## <a name="url-based-routing"></a>URL-alapú útválasztás
 
 Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-cím alapján irányítsa a forgalmat a háttér-kiszolgálókészlethez. Az egyik lehetőség az, hogy a különböző típusú tartalmakra vonatkozó kéréseket különböző készletekhez irányítja.
 
 Például `http://contoso.com/video/*` iránti kérelmek VideoServerPoolba, míg a `http://contoso.com/images/*` felé irányuló kérelmek az ImageServerPoolba vannak továbbítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+
+További információkért lásd: [az Application Gateway URL-cím-alapú útválasztás](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
 
 ## <a name="multiple-site-hosting"></a>Több hely üzemeltetése
 
@@ -83,6 +87,8 @@ A többhelyes üzemeltetéssel egynél több webhelyet konfigurálhat ugyanazon 
 A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
 Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon Application Gateway-telepítésről üzemeltetheti. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett `http://blog.contoso.com` és `http://app.contoso.com`.
+
+További információkért lásd: [több helyen üzemeltetése az Application Gatewayen](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
 
 ## <a name="redirection"></a>Átirányítás
 
@@ -96,6 +102,8 @@ Az Application Gateway átirányítási támogatása a következő funkciókat n
 - Útvonalalapú átirányítás. Ez a fajta átirányítás csak a megadott webhelyrészen engedélyezi a HTTP–HTTPS átirányítást, például egy `/cart/*` kifejezéssel jelzett bevásárlókosár részen.
 - Átirányítás külső helyre.
 
+További információkért lásd: [adatforgalmat](https://docs.microsoft.com/azure/application-gateway/redirect-overview) az Application Gateway szolgáltatással.
+
 ## <a name="session-affinity"></a>Munkamenet-affinitás
 
 A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munkamenetet egy adott kiszolgálón szeretne tartani. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a kiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a kiszolgálón.
@@ -105,6 +113,8 @@ A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munka
 Az Application Gateway natív támogatást nyújt a Websocket- és HTTP/2-protokollok számára. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik.
 
 A WebSocket és a HTTP/2 protokollok teljes körű duplex kommunikációt tesznek lehetővé egy kiszolgáló és egy ügyfél között egy hosszú ideig futó TCP-kapcsolaton. Ez interaktívabb kommunikációt eredményez a webkiszolgáló és az ügyél között, amely anélkül marad kétirányú, hogy a HTTP-alapú implementációkban kötelező lekérdezésekre lenne szükség. A HTTP-vel ellentétben ezek a protokollok alacsony többletterheléssel bírnak, és több kérelem/válasz típusú forgalomhoz is használhatják ugyanazt a TCP-kapcsolatot, ami az erőforrások hatékonyabb kihasználását eredményezi. Ezek a protokollok a hagyományos, 80-as és 443-as HTTP-portokon működnek.
+
+További információkért lásd: [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [HTTP/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support). 
 
 ## <a name="rewrite-http-headers-public-preview"></a>Újraírási HTTP-fejléceket (nyilvános előzetes verzió)
 

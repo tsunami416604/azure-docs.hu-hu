@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 033b853537ade927e4bb7e47c92efe1acff226d9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864949"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Gyors útmutató: Machine Learning-szolgáltatások (az r nyelv) használata az Azure SQL Database (előzetes verzió)
 
@@ -158,7 +158,7 @@ Egyelőre foglalkozzunk csak az sp_execute_external_script alapértelmezett beme
 
     ![Egy R-szkript kimenete, amely adatokat ad vissza egy táblából](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
-3. Módosítsa a bemeneti vagy kimeneti változók nevét. A fenti szkript az alapértelmezett bemeneti és kimeneti változóneveket (_InputDataSet_ és _OutputDataSet_) használta. Az _InputDataSet_ változóhoz tartozó bemeneti adatok meghatározásához használja az *@input_data_1* változót.
+3. Módosítsa a bemeneti vagy kimeneti változók nevét. A fenti szkript az alapértelmezett bemeneti és kimeneti változóneveket (_InputDataSet_ és _OutputDataSet_) használta. A bemeneti adatok társított meghatározásához _InputDatSet_, használja a  *\@input_data_1* változó.
 
     Ebben a szkriptben a tárolt eljárás bemeneti és kimeneti változói *SQL_out* és *SQL_in* értékre lettek módosítva:
 
@@ -174,7 +174,7 @@ Egyelőre foglalkozzunk csak az sp_execute_external_script alapértelmezett beme
 
     Vegye figyelembe, hogy az R megkülönbözteti a kis-és nagybetűket, ezért az `@input_data_1_name` és az `@output_data_1_name` kimeneti és bemeneti változóinak egyeznie kell az `@script` R-kódjában szereplő változókkal. 
 
-    Emellett a paraméterek sorrendje is fontos. Először meg kell adnia a szükséges *@input_data_1* és *@output_data_1* paramétereket, hogy használhassa az *@input_data_1_name* és *@output_data_1_name* választható változókat.
+    Emellett a paraméterek sorrendje is fontos. Meg kell adnia a szükséges paraméterek  *\@input_data_1* és  *\@output_data_1* első, a választható paraméterek használatához  *\@ input_data_1_name* és  *\@output_data_1_name*.
 
     Csak egy bemeneti adathalmaz továbbítható paraméterként, és csak egy adathalmaz adható vissza. Azonban az R-kódból más adathalmazokat is meghívhat, és az adathalmaz mellett más típusú kimeneteket is visszaadhat. Az OUTPUT kulcsszó hozzáadásával az eredmények között bármely paramétert visszaadhatja. 
 
@@ -275,34 +275,34 @@ Betaníthat egy modellt az R használatával, és mentheti egy SQL-adatbázisban
 
     A lineáris modell követelményei a következők:
 
-    - Határozzon meg egy képletet, amely leírja a `speed` függő változó és a `distance` független változó közötti összefüggést.
+   - Határozzon meg egy képletet, amely leírja a `speed` függő változó és a `distance` független változó közötti összefüggést.
 
-    - Adja meg a modell betanításához használni kívánt bemeneti adatokat.
+   - Adja meg a modell betanításához használni kívánt bemeneti adatokat.
 
-    > [!TIP]
-    > Ha a lineáris modell frissítő van szüksége, javasoljuk, hogy ebben az oktatóanyagban egy modell használatával rxLinMod igyekeznek folyamatát ismerteti: [Méretezés lineáris modellt](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+     > [!TIP]
+     > Ha a lineáris modell frissítő van szüksége, javasoljuk, hogy ebben az oktatóanyagban egy modell használatával rxLinMod igyekeznek folyamatát ismerteti: [Méretezés lineáris modellt](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-    A modell létrehozásához adja meg a képletet az R-kódban, majd továbbítsa az adatokat bemeneti paraméterként.
+     A modell létrehozásához adja meg a képletet az R-kódban, majd továbbítsa az adatokat bemeneti paraméterként.
 
-    ```sql
-    DROP PROCEDURE IF EXISTS generate_linear_model;
-    GO
-    CREATE PROCEDURE generate_linear_model
-    AS
-    BEGIN
-        EXEC sp_execute_external_script
-        @language = N'R'
-        , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
-            trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
-        , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
-        , @input_data_1_name = N'CarsData'
-        , @output_data_1_name = N'trained_model'
-        WITH RESULT SETS ((model VARBINARY(max)));
-    END;
-    GO
-    ```
+     ```sql
+     DROP PROCEDURE IF EXISTS generate_linear_model;
+     GO
+     CREATE PROCEDURE generate_linear_model
+     AS
+     BEGIN
+       EXEC sp_execute_external_script
+       @language = N'R'
+       , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
+           trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
+       , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
+       , @input_data_1_name = N'CarsData'
+       , @output_data_1_name = N'trained_model'
+       WITH RESULT SETS ((model VARBINARY(max)));
+     END;
+     GO
+     ```
 
-    Az rxLinMod függvény első argumentuma a *képlet* paraméter, amely a távolságot a sebesség függvényében határozza meg. A bemeneti adatok a `CarsData` változóban tárolódnak, amelyet az SQL-lekérdezés tölt ki. Ha nem rendel konkrét nevet a bemeneti adatokhoz, akkor a változó alapértelmezett neve _InputDataSet_ lesz.
+     Az rxLinMod függvény első argumentuma a *képlet* paraméter, amely a távolságot a sebesség függvényében határozza meg. A bemeneti adatok a `CarsData` változóban tárolódnak, amelyet az SQL-lekérdezés tölt ki. Ha nem rendel konkrét nevet a bemeneti adatokhoz, akkor a változó alapértelmezett neve _InputDataSet_ lesz.
 
 2. Ezután hozzon létre egy táblát a modell tárolásához újbóli betanítás vagy előrejelzés céljából. Egy modellt létrehozó R-csomag kimenete általában egy **bináris objektum**. Ezért a táblában szerepelnie kell egy **VARBINARY(max)** típusú oszlopnak.
 
@@ -401,23 +401,23 @@ Az előző szakaszban létrehozott modell használatával pontozhatja az új ada
 
     A fenti szkript a következő lépéseket hajtja végre:
 
-    + Egy SELECT utasítás használatával kérjen le egy modellt a táblából, és továbbítsa bemeneti paraméterként.
+   + Egy SELECT utasítás használatával kérjen le egy modellt a táblából, és továbbítsa bemeneti paraméterként.
 
-    + Miután lekérte a modellt a táblából, hívja a meg az `unserialize` függvényt a modellhez.
+   + Miután lekérte a modellt a táblából, hívja a meg az `unserialize` függvényt a modellhez.
 
-        > [!TIP] 
-        > Emellett tekintse meg a RevoScaleR által biztosított új [szerializálási függvényeket](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) is, amelyek támogatják a valós idejű pontozást.
-    + Alkalmazza a modellre az `rxPredict` függvényt a megfelelő argumentumokkal, és adja meg az új bemeneti adatokat.
+       > [!TIP] 
+       > Emellett tekintse meg a RevoScaleR által biztosított új [szerializálási függvényeket](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) is, amelyek támogatják a valós idejű pontozást.
+   + Alkalmazza a modellre az `rxPredict` függvényt a megfelelő argumentumokkal, és adja meg az új bemeneti adatokat.
 
-    + A példában az `str` függvényt adjuk hozzá a tesztelési fázisban, hogy ellenőrizzük az R-ből visszaadott adatok sémáját. Az utasítást később eltávolíthatja.
+   + A példában az `str` függvényt adjuk hozzá a tesztelési fázisban, hogy ellenőrizzük az R-ből visszaadott adatok sémáját. Az utasítást később eltávolíthatja.
 
-    + Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Ebben az esetben a WITH RESULTS záradékot használtuk új oszlopnevek meghatározásához.
+   + Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Ebben az esetben a WITH RESULTS záradékot használtuk új oszlopnevek meghatározásához.
 
-    **Results**
+     **Results**
 
-    ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+     ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
-    A [Transact-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) elemét is használhatja az előrejelzett érték vagy pontszám tárolt eljárás alapján való létrehozásához.
+     A [Transact-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) elemét is használhatja az előrejelzett érték vagy pontszám tárolt eljárás alapján való létrehozásához.
 
 <a name="add-package"></a>
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901135"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -36,19 +36,19 @@ A két-kezdő szabályzat adatokra van szükség két hitelesítési adatok, pé
   * Számlázási rendszergazda
   * 1. szintű partnertámogatás
   * 2. szintű partnertámogatás
-  * Exchange-szolgáltatások rendszergazdája
-  * Lync-szolgáltatások rendszergazdája
-  * Felhasználóifiók-adminisztrátor
+  * Exchange-rendszergazda
+  * Skype Vállalati verzió-rendszergazda
+  * Felhasználói adminisztrátor
   * Címtárírók
   * Globális rendszergazda vagy a vállalati rendszergazda
-  * A SharePoint szolgáltatás-rendszergazda
+  * SharePoint-rendszergazda
   * Szabályozási ügyintéző
   * Alkalmazás-rendszergazda
   * Biztonsági rendszergazda
   * Kiemelt szerepkörű rendszergazda
-  * A Microsoft Intune-szolgáltatásadminisztrátor
+  * Intune-rendszergazda
   * Alkalmazásproxy szolgáltatásadminisztrátora
-  * CRM-szolgáltatásadminisztrátor
+  * Dynamics 365-rendszergazda
   * A Power BI-szolgáltatásadminisztrátor
   * Hitelesítési rendszergazda
   * A kiemelt hitelesítést rendszergazda
@@ -81,7 +81,7 @@ A következő táblázat ismerteti a felhasználói fiókok létrehozása és fe
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
+| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
 | Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li>Tárolóhelyek.</li><li> A pont karakter nem tartalmazhat "." közvetlenül a "\@ \" szimbólum".</li></ul> |
 | Jelszó-korlátozások |<ul><li>Legalább 8 karakter és legfeljebb 16 karakter.</li><li>Az alábbi három közül négy van szükség:<ul><li>Kisbetűs karaktert.</li><li>Nagybetűs karaktereket.</li><li>Számok (0 – 9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozásai).</li></ul></li></ul> |
 | Jelszó lejárati időtartama |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Azure Active Directory modul a Windows PowerShell parancsmagot.</li></ul> |
@@ -110,7 +110,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
 1. Hajtsa végre a következő parancsok egyikét:
 
-   * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr\@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Megtekintheti a **jelszó sohasem jár le** beállítás az összes felhasználó számára, futtassa a következő parancsmagot: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>Állítsa be a jelszó lejár

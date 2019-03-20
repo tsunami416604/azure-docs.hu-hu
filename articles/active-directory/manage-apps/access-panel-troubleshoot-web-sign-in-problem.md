@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204525"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090457"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>A probléma jelentkezik be a hozzáférési panel webhelyére
 
@@ -168,23 +168,23 @@ A jelszó alaphelyzetbe állítása, kövesse az alábbi lépéseket:
 
 A felhasználó a multi-factor authentication szolgáltatás állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **felhasználók és csoportok** a navigációs menü.
+4. Kattintson a **felhasználók és csoportok** a navigációs menü.
 
-5.  Kattintson a **minden felhasználó**.
+5. Kattintson a **minden felhasználó**.
 
-6.  Kattintson a **multi-factor Authentication** gombra a panel tetején.
+6. Kattintson a **multi-factor Authentication** gombra a panel tetején.
 
-7.  Egyszer a **multi-factor Authentication felügyeleti portál** terhelés esetén ellenőrizze, hogy az a **felhasználók** fülre.
+7. Egyszer a **multi-factor Authentication felügyeleti portál** terhelés esetén ellenőrizze, hogy az a **felhasználók** fülre.
 
-8.  A kiválasztott felhasználók által keresése, szűrése és rendezése a felhasználó található.
+8. A kiválasztott felhasználók által keresése, szűrése és rendezése a felhasználó található.
 
-9.  A felhasználók listájából válassza ki a felhasználót és **engedélyezése**, **letiltása**, vagy **érvényesítése** a multi-factor authentication igény szerint.
+9. A felhasználók listájából válassza ki a felhasználót és **engedélyezése**, **letiltása**, vagy **érvényesítése** a multi-factor authentication igény szerint.
 
    >[!NOTE]
    >Ha egy felhasználó egy **kényszerített** állapotba, előfordulhat, hogy beállította azokat **letiltott** ideiglenesen ahhoz, hogy azokat vissza a fiókba. Vissza a k, módosíthatja az állapotuk **engedélyezve** újra a megköveteli tőlük, hogy regisztrálja újra a kapcsolattartási adatait a következő bejelentkezés során. Azt is megteheti, követheti a lépések a [ellenőrizze a felhasználó hitelesítési kapcsolattartási adatok](#check-a-users-authentication-contact-info) ellenőrizze vagy állítsa be ezeket az adatokat a számukra.

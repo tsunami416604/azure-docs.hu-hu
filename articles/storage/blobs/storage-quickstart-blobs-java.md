@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999927"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Hogyan feltöltése, letöltése és a Java 7-es verzióját az ügyféloldali kódtár használatával blobok listázása
 
@@ -34,7 +34,7 @@ Győződjön meg arról, hogy a következő előfeltételek vonatkoznak:
 
 * Másik lehetőségként telepítse és konfigurálja a Mavent a parancssorból való működésre.
 
-Ez az útmutató használ [Eclipse](http://www.eclipse.org/downloads/) az "Eclipse IDE for Java Developers" konfigurációval.
+Ez az útmutató használ [Eclipse](https://www.eclipse.org/downloads/) az "Eclipse IDE for Java Developers" konfigurációval.
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
@@ -87,7 +87,7 @@ Deleting the source, and downloaded files
 A folytatás előtt ellenőrizze a mintafájlt az alapértelmezett könyvtárban (Windows-felhasználók esetén ez a *C:\Users\<felhasználó>\AppData\Local\Temp* könyvtár). Másolja ki a blob URL-címét a konzolablakból, és másolja be egy böngészőbe a fájl tartalmának blobtárolóban való megtekintéséhez. Ha összehasonlítja a könyvtárban lévő mintafájlt és a Blob Storage-ben tárolt tartalmakat, azt tapasztalja, hogy ezek megegyeznek. 
 
   >[!NOTE]
-  >Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha szeretné a fájlt megtekinteni a blobtárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
+  >Az [Azure Storage Explorert](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha szeretné a fájlt megtekinteni a blobtárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat.
 
 A fájlok ellenőrzése után nyomja le az **Enter** billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tudja, hogy működik a minta, nyissa meg az **AzureApp.java** fájlt, és tekintse meg a kódot. 
 

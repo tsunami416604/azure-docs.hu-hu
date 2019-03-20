@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 942b30ab9949a28c42949913d90e7448c22b658f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa3b7be6ac7cc398685bf5ad7d21173bcb072b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206276"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118408"
 ---
 # <a name="create-and-use-moderation-tags"></a>Hozzon létre, és a moderálás címkék használata
 
@@ -23,15 +23,15 @@ A két alapértelmezett címkék mellett **isadult** (**egy**) és **isracy** (*
 
 ## <a name="create-tags"></a>Címkék létrehozása
 
-1.  Címkék kiválasztása a beállítások lapról.
+1. Címkék kiválasztása a beállítások lapról.
 
-  ![Tartalom-jóváhagyás címkék](images/tags-1.png)
+   ![Tartalom-jóváhagyás címkék](images/tags-1.png)
 
-2.  Adja meg a címke a kétbetűs rövid kód.
-3.  Adja meg a címke nevét. Tartsa rövid és informatív nevét. Ha például **isbullying**.
-4.  Adjon meg egy leírást.
-5.  Kattintson az Add (Hozzáadás) parancsra.
-6.  Amikor elkészült, a címkék létrehozása, kattintson a Mentés gombra.
+2. Adja meg a címke a kétbetűs rövid kód.
+3. Adja meg a címke nevét. Tartsa rövid és informatív nevét. Ha például **isbullying**.
+4. Adjon meg egy leírást.
+5. Kattintson az Add (Hozzáadás) parancsra.
+6. Amikor elkészült, a címkék létrehozása, kattintson a Mentés gombra.
 
 ![Tartalom-jóváhagyás címkék meghatározása](images/tags-2-define.png)
 

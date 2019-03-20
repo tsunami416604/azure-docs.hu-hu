@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098646"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58175167"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,14 +97,14 @@ Riasztások automatikusan értesíti a résztvevőket kiadások rendellenessége
 
 Ez a példa a **tényleges időalapú költségeket tartalmazó** jelentés értesítés küldése, amikor egy Azure-beli virtuális gépen a kiadások érvényessége a teljes költségvetést. Ebben a forgatókönyvben 20 000 teljes költségvetése rendelkezik, és értesítést kaphat, ha a költségek hamarosan eléri a költségvetést, $9000 és további riasztás fele amikor a költségek elérik a 10 000 dollárt szeretné.
 
-1. A Cloudyn portál tetején lévő menüben válassza ki a **költségek** > **költségelemzés** > **tényleges időalapú költségeket tartalmazó**. 
-2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget. 
+1. A Cloudyn portál tetején lévő menüben válassza ki a **költségek** > **költségelemzés** > **tényleges időalapú költségeket tartalmazó**.
+2. A **Groups** (Csoportok) alatt állítsa be a **Service** (Szolgáltatás), a **Filter on the service** (Szűrés a következő szolgáltatásra) alatt pedig az **Azure/VM** (Azure/virtuális gép) lehetőséget.
 3. Felső válassza ki a jelentést, jobb **műveletek** majd **jelentés ütemezése**.
-4. Használatával küldjön saját magának egy e-mailt a jelentés ütemezett időközönként, válassza ki a **ütemezés** lapján a **menteni vagy ütemezheti** jelentés párbeszédpanel. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Minden olyan címkék, csoportosítás és a szűrés, az e-mailben elküldött jelentésben szereplő használja. 
-5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget. 
-   1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000. 
-   2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000. 
-   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat. 
+4. Használatával küldjön saját magának egy e-mailt a jelentés ütemezett időközönként, válassza ki a **ütemezés** lapján a **menteni vagy ütemezheti** jelentés párbeszédpanel. Ügyeljen arra, hogy a **Send via email** (Küldés e-mailben) beállítás legyen kiválasztva. Minden olyan címkék, csoportosítás és a szűrés, az e-mailben elküldött jelentésben szereplő használja.
+5. Válassza ki a **küszöbérték** lapot, majd **Actual Cost vs. Threshold** (Tényleges költségek a küszöbértékhez képest) lehetőséget.
+   1. Az a **vörös színű riasztásra** küszöbérték mezőbe írja be a 10000.
+   2. Az a **sárga riasztást** küszöbérték mezőbe írja be a 9000.
+   3. Az a **egymást követő riasztások számát** fogadásához egymást követő riasztások számát adja meg. Ha a riasztások száma eléri a megadott számot, a rendszer nem küld további riasztásokat.
 6. Kattintson a **Mentés** gombra.
 
 ![A példában a költségkeret-beállítási küszöbértékek alapján piros, sárga és riasztások megjelenítése](./media/tutorial-review-usage/schedule-alert01.png)

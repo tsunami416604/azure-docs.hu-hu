@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: d409d451385ba1f88189b12cf372845e70a87429
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112109"
 ---
 # <a name="monitoring-metrics-for-front-door"></a>Figyelési metrikák bejárati ajtajának
 
@@ -31,7 +31,7 @@ Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, ahol megtekintheti 
 
 | Metrika | Metrika megjelenített neve | Unit (Egység) | Dimenziók | Leírás |
 | --- | --- | --- | --- | --- |
-| RequestCount | A kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Bejárati ajtajának által kiszolgált ügyfélkérések száma.  |
+| RequestCount | Kérelmek száma | Darabszám | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Bejárati ajtajának által kiszolgált ügyfélkérések száma.  |
 | RequestSize | Kérés mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek által az bejárati ajtajának kérések küldött bájtok száma. |
 | ResponseSize | Válasz mérete | Bájt | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az ügyfelek számára a bejárati ajtajának válaszokat, küldött bájtok száma. |
 | TotalLatency | Teljes késés | Ezredmásodperc | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Az az időpont alapján számítja ki, amikor az ügyfél kérést kapott bejárati ajtajának mindaddig, amíg az ügyfél arra vonatkozik, a bejárati ajtajának válasz utolsó bájtját. |
@@ -59,7 +59,7 @@ A tevékenységnaplók megtekintése:
 3. Válassza ki a kívánt szűrési hatókört, és kattintson az **Alkalmaz** elemre.
 
 ## <a name="diagnostic-logging"></a>Diagnosztikai naplók
-A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg. Tudjon meg többet [diagnosztikai naplók az Azure Monitor](..\azure-monitor\platform\diagnostic-logs-overview.md). 
+A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg. Tudjon meg többet [diagnosztikai naplók az Azure Monitor](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 Diagnosztikai naplók számára a bejárati ajtajának konfigurálása:
 

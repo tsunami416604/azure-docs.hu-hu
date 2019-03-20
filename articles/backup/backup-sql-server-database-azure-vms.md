@@ -10,7 +10,7 @@ ms.date: 03/19/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 75e85ae15ded81faf372ba018829a185e8badd60
 ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2019
 ms.locfileid: "58224617"

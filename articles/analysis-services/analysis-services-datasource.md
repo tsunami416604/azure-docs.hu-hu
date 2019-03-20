@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: eeb3b2098cf477004ba7ad85a903f1a8e2267392
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117829"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -52,14 +52,14 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 |  --- | --- | --- |
 | SQL Server |Az SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET-keretrendszer adatszolgáltatója az SQL Server | .NET-keretrendszer adatszolgáltatója az SQL Server |
 | Az SQL Server Data Warehouse |Az SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET-keretrendszer adatszolgáltatója az SQL Server | .NET-keretrendszer adatszolgáltatója az SQL Server |
-| Oracle |Microsoft OLE DB Provider Pro Oracle, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez | |
-| Teradata |OLE DB-szolgáltató a teradata rendszerhez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez | |
+| Oracle |Microsoft OLE DB Provider Pro Oracle, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
+| Teradata |OLE DB-szolgáltató a teradata rendszerhez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez |
 | | | |
 
 ### <a name="in-memory-only"></a>A memóriában csak
 
 |Adatforrás  |  
-|---------|---------|
+|---------|
 |Access-adatbázis     |  
 |Az Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
@@ -83,7 +83,7 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 |SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase-adatbázis     |  
 |XML-táblázatok<sup>[1](#tab1400b)</sup>    |  
-|||
+||
  
 <a name="tab1400b">1</a> táblázatos 1400-as és újabb modellek csak.
 

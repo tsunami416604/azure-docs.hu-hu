@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104267"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Oktatóanyag: Tárolószolgáltatások Service Fabrickel történő feladatátvételének és méretezésének bemutatása
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Oktatóanyag: Feladatátvétel alatt és a Service Fabric-tároló szolgáltatások méretezési bemutatása
 
 Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag bemutatja a feladatátvételek kezelését Service Fabric-tárolóalkalmazásokban. Emellett megismerheti a tárolók méretezésének módját is. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -63,8 +63,8 @@ A webes előtér méretezéséhez hajtsa végre a következő lépéseket:
 
 Most már méretezheti a webes előtér példányainak számát.
 
-3. Módosítsa a számot **2**-re, és kattintson a **Szolgáltatás méretezése** gombra.
-4. Kattintson a **fabric:/TestContainer/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
+1. Módosítsa a számot **2**-re, és kattintson a **Szolgáltatás méretezése** gombra.
+1. Kattintson a **fabric:/TestContainer/azurevotefront** csomópontra a fanézetben, és bontsa ki a partíciós csomópontot (egy GUID jelöli).
 
 ![sfxscaledone][sfxscaledone]
 

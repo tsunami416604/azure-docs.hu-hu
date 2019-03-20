@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38ba8ccad63120d33ce06faf39439bb58706e78d
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 690e0da160042b7ac432b1a36c024a8a8f439823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56660116"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125151"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
 Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat. Az ellenőrzőpontok használatához az Event Processor Hostnak tárfiókra van szüksége. Az alábbi példa bemutatja, hogyan hozhat létre tárfiókot és hogyan szerezheti be a hozzáférési kulcsokat:
@@ -26,13 +26,13 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
 
 3. A **Tárfiók létrehozása** oldalon hajtsa végre az alábbi lépéseket: 
 
-    1. Adja meg a tárfiók nevét. 
-    2. Válassza ki az eseményközpontot tartalmazó Azure-előfizetést.
-    3. Válassza ki az eseményközpontot tartalmazó erőforráscsoportot.
-    4. Válasszon ki egy helyet az erőforrás létrehozásához. 
-    5. Ezután kattintson a **Felülvizsgálat + létrehozás** elemre.
+   1. Adja meg a tárfiók nevét. 
+   2. Válassza ki az eseményközpontot tartalmazó Azure-előfizetést.
+   3. Válassza ki az eseményközpontot tartalmazó erőforráscsoportot.
+   4. Válasszon ki egy helyet az erőforrás létrehozásához. 
+   5. Ezután kattintson a **Felülvizsgálat + létrehozás** elemre.
    
-    ![Tárfiók létrehozása – oldal](./media/event-hubs-create-storage/create-storage2.png)
+      ![Tárfiók létrehozása – oldal](./media/event-hubs-create-storage/create-storage2.png)
 
 4. A **Felülvizsgálat + létrehozás** oldalon tekintse át az értékeket, majd kattintson a **Létrehozás** lehetőségre. 
 

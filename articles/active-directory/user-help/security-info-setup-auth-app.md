@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 336b30a8e8687b3a2bdd05a17e558f44905f135e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338841"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102383"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Állítsa be a biztonsági adatok (előzetes verzió) használata egy hitelesítő alkalmazást
 Ezekkel a lépésekkel adja hozzá a kétfaktoros ellenőrzést, és a jelszó alaphelyzetbe állítási metódus. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.
@@ -52,10 +52,10 @@ Szervezeti beállítások, függően hitelesítési alkalmazás használhatja a 
 
     ![Az oldal első lépésként](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >Ha szeretne egy hitelesítő alkalmazást a Microsoft Authenticator alkalmazástól használni, válassza ki a **egy másik hitelesítő alkalmazást használni kívánt** hivatkozásra.
-    
-    >Ha vállalata engedélyezi, hogy az authenticator alkalmazás mellett eltérő módszer kiválasztása, kiválaszthatja a **más módszert kapcsolat beállításához szeretnék**.
+   > [!Note]
+   > Ha szeretne egy hitelesítő alkalmazást a Microsoft Authenticator alkalmazástól használni, válassza ki a **egy másik hitelesítő alkalmazást használni kívánt** hivatkozásra.
+   > 
+   > Ha vállalata engedélyezi, hogy az authenticator alkalmazás mellett eltérő módszer kiválasztása, kiválaszthatja a **más módszert kapcsolat beállításához szeretnék**.
 
 5. Továbbra is a **a fiók beállítása** oldalon, állítsa be a Microsoft Authenticator alkalmazást a mobileszközén.
 
@@ -81,9 +81,9 @@ Szervezeti beállítások, függően hitelesítési alkalmazás használhatja a 
 
 8. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, és válassza ki **tovább**.
 
-    ![Sikeres címtármódosítást jelző értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Sikeres címtármódosítást jelző értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    A biztonsági adatok frissül, és a Microsoft Authenticator alkalmazással igazolhatja a személyazonosságát a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása használatakor alapértelmezés szerint.
+     A biztonsági adatok frissül, és a Microsoft Authenticator alkalmazással igazolhatja a személyazonosságát a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása használatakor alapértelmezés szerint.
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Törölje a hitelesítő alkalmazás a biztonsági adatok módszerek
 Ha már nem szeretné a hitelesítő alkalmazás a biztonsági adatok módszerként használhatják, eltávolíthatja azt a **biztonsági adatok** lapot. Ez a módszer az összes authenticator alkalmazásba, nem csak a Microsoft Authenticator alkalmazást. Az alkalmazás törlését követően kell belépni az authenticator alkalmazás a mobileszközén, és törölje a fiókot.

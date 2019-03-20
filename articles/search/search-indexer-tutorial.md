@@ -1,32 +1,31 @@
 ---
 title: Az oktatóanyag az Azure SQL-adatbázisok Azure portal – Azure Search az indexeléshez
-description: Ebben az oktatóanyagban feltérképezi az Azure SQL Database-adatbázist a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
+description: Ebben az oktatóanyagban az Azure SQL database csatlakoztatásához, kereshető adatok kinyeréséhez és betöltése, az Azure Search-index.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201398"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Oktatóanyag: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
-Ez az oktatóanyag az indexelő konfigurálását mutatja be kereshető adatok kinyeréséhez egy minta Azure SQL-adatbázisból. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Az Azure SQL-adatbázis indexelője mind közül a legszélesebb körben használt indexelő. 
+Ismerje meg, hogyan konfigurálhatja az indexelőket kereshető adatok kinyeréséhez egy minta Azure SQL database. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Mind az indexelő az Azure SQL Database a leggyakrabban használt. 
 
 Azért hasznos jártasságot szerezni az indexelők konfigurálásában, mert egyszerűbbé teszi a kódok megírását és fenntartását. Séma-kompatibilis JSON adatkészletek előkészítése és leküldése helyett indexelőt kapcsolhat az adatforráshoz, az indexelővel adatokat nyerhet ki, majd beszúrhatja azokat az indexbe, valamint opcionálisan ismétlődő ütemezés szerint is futtathatja az indexelőt a mögöttes forrás módosításainak életbe léptetéséhez.
 
-Ebben az oktatóanyagban az [Azure Search .NET-ügyfélkönyvtárak](https://aka.ms/search-sdk) és egy .NET Core-konzolalkalmazás használatával a következő feladatokat fogja elvégezni:
+Ebben az oktatóanyagban használja a [Azure Search .NET-ügyfélkönyvtárak](https://aka.ms/search-sdk) és a egy .NET Core-konzolalkalmazást a következő feladatok elvégzéséhez:
 
 > [!div class="checklist"]
-> * A megoldás letöltése és konfigurálása
 > * Keresési szolgáltatás információinak hozzáadása alkalmazásbeállításokhoz
 > * Külső adatkészlet előkészítése az Azure SQL-adatbázisban 
 > * Az index és az indexelő-meghatározások áttekintése a mintakódban
@@ -38,16 +37,16 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure Search-szolgáltatás. A beállításhoz itt talál segítséget: [Keresési szolgáltatás létrehozása](search-create-service-portal.md).
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
 
-* Az indexelő által használt külső adatforrást biztosító Azure SQL-adatbázis. A minta megoldás biztosítja a tábla létrehozásához szükséges SQL-adatfájlt.
+* Egy [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a az indexelő által használt külső adatforrást biztosít. A minta megoldás biztosítja a tábla létrehozásához szükséges SQL-adatfájlt.
 
-* Visual Studio 2017. Használhatja az ingyenes [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t is. 
+* + [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
 > [!Note]
 > Az ingyenes Azure Search-szolgáltatás használata három indexre, három indexelőre és három adatforrásra korlátozódik. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Ellenőrizze, hogy a szolgáltatás elegendő hellyel rendelkezik-e az új erőforrások fogadásához.
 
-## <a name="download-the-solution"></a>A megoldás letöltése
+### <a name="download-the-solution"></a>A megoldás letöltése
 
 A jelen oktatóanyagban használt indexelő az egyetlen letöltéssel elérhető Azure Search-minták gyűjteményéből való. A jelen oktatóanyag esetében használt megoldás: *DotNetHowToIndexers*.
 
@@ -63,7 +62,7 @@ A jelen oktatóanyagban használt indexelő az egyetlen letöltéssel elérhető
 
 6. A **Megoldáskezelőben** kattintson a jobb gombbal a legfelső csomópont szülő megoldására, majd kattintson a **NuGet-csomagok visszaállítása** lehetőségre.
 
-## <a name="set-up-connections"></a>Kapcsolatok beállítása
+### <a name="set-up-connections"></a>Kapcsolatok beállítása
 A szükséges szolgáltatásokhoz tartozó kapcsolódási adatok a megoldás **appsettings.json** fájljában vannak megadva. 
 
 A Megoldáskezelőben nyissa meg az **appsettings.json** fájlt az egyes beállítások feltöltéséhez a jelen oktatóanyagban szereplő utasítások segítségével.  
@@ -90,22 +89,22 @@ A keresési szolgáltatás végpontját és kulcsát a portálon találja. A szo
 
 4. Másolja és illessze be első bejegyzésként az **appsettings.json** fájlba a Visual Studióban.
 
-  > [!Note]
-  > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://your-service-name.search.windows.net
+   > [!Note]
+   > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://your-service-name.search.windows.net
 
 5. A bal oldalon másolja az egyik rendszergazdai kulcsot a **Beállítások** > **Kulcsok** területről, majd illessze be azt második bejegyzésként az **appsettings.json** fájlba. A kulcsok olyan alfanumerikus sztringek, amelyeket a rendszer a kiépítés során hoz létre a szolgáltatás számára, és amelyekre a szolgáltatási műveletekhez történő engedélyezett hozzáféréshez van szükség. 
 
-  A két beállítás hozzáadását követően a fájlnak a következő példához hasonlóan kell kinéznie:
+   A két beállítás hozzáadását követően a fájlnak a következő példához hasonlóan kell kinéznie:
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
-## <a name="prepare-an-external-data-source"></a>Külső adatforrás előkészítése
+## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
 
 Ebben a lépésben egy olyan külső adatforrást fog létrehozni, amelyet az indexelő fel tud térképezni. Az oktatóanyaghoz tartozó adatfájl a *hotels.sql*, amely a \DotNetHowToIndexers mappában található. 
 
@@ -125,7 +124,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
 4. Nyissa meg az új adatbázishoz tartozó SQL Database oldalt, ha még nincs megnyitva. Az erőforrás neve legyen *SQL database*, és ne *SQL Server*.
 
-  ![SQL-adatbázis oldal](./media/search-indexer-tutorial/hotels-db.png)
+   ![SQL-adatbázis oldal](./media/search-indexer-tutorial/hotels-db.png)
 
 4. A parancssávon kattintson az **Eszközök** > **Lekérdezésszerkesztő** lehetőségre.
 
@@ -135,24 +134,24 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
 7. Jelölje ki a fájlt, és kattintson a **Megnyitás** lehetőségre. A szkriptnek az alábbi képernyőfelvételhez hasonlóan kell kinéznie:
 
-  ![SQL-szkript](./media/search-indexer-tutorial/sql-script.png)
+   ![SQL-szkript](./media/search-indexer-tutorial/sql-script.png)
 
 8. Kattintson a **Futtatás** gombra a lekérdezés végrehajtásához. Az Eredmények ablaktáblán a „Sikeres lekérdezés” üzenetnek kell megjelennie 3 sorra vonatkozóan.
 
 9. A jelen táblából származó sorhalmaz visszaadásához hajtsa végre a következő lekérdezést ellenőrzési lépésként:
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. A további lekérdezhető oszlopok listájának megtekintéséhez futtassa a következő utasítást: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. A további lekérdezhető oszlopok listájának megtekintéséhez futtassa a következő utasítást: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Most, hogy már rendelkezik külső adatkészlettel, másolja ki az adatbázishoz tartozó ADO.NET kapcsolati sztringet. Az adatbázis SQL Database oldalának **Beállítások** > **Kapcsolati sztringek** területéről másolja az ADO.NET kapcsolati sztringet.
  
-  Az érvényes adatbázisnév, felhasználónév és jelszó használatának megfelelően módosított ADO.NET kapcsolati sztring az alábbi példához hasonlóan fog kinézni.
+    Az érvényes adatbázisnév, felhasználónév és jelszó használatának megfelelően módosított ADO.NET kapcsolati sztring az alábbi példához hasonlóan fog kinézni.
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. Az **appsettings.json** harmadik bejegyzéseként illessze be a kapcsolati sztringet az „AzureSqlConnectionString” részbe a Visual Studióban.
 
     ```json
@@ -250,15 +249,15 @@ Az Azure Portalon, a keresési szolgáltatás Áttekintés oldalán kattintson a
 
 2. Kattintson a **Keresés** gombra egy üres keresés futtatásához. 
 
-  A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
+   A rendszer az indexben lévő három bejegyzést JSON-dokumentumként adja vissza. A keresési ablak a dokumentumokat JSON-formátumban adja vissza, így a teljes struktúra megtekinthető.
 
 3. A következő lépésben adja meg ezt a keresési sztringet: `search=river&$count=true`. 
 
-  Ez a lekérdezés teljes szöveges keresést indít a `river` kifejezésre, az eredmény pedig tartalmazza az egyező dokumentumok darabszámát. Az egyező dokumentumok darabszámának visszaadása hasznos lehet az olyan forgatókönyvek tesztelése esetében, amelyekben több ezer vagy több millió dokumentumot tartalmazó, nagy méretű indexszel rendelkezik. Ebben az esetben a lekérdezésnek csak egy dokumentum felel meg.
+   Ez a lekérdezés teljes szöveges keresést indít a `river` kifejezésre, az eredmény pedig tartalmazza az egyező dokumentumok darabszámát. Az egyező dokumentumok darabszámának visszaadása hasznos lehet az olyan forgatókönyvek tesztelése esetében, amelyekben több ezer vagy több millió dokumentumot tartalmazó, nagy méretű indexszel rendelkezik. Ebben az esetben a lekérdezésnek csak egy dokumentum felel meg.
 
 4. Végül adjon meg egy olyan keresési sztringet, amely a JSON-kimeneteket a kívánt mezőkre korlátozza: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
-  A lekérdezési válasz csak a kiválasztott mezőket tartalmazza, így a kimenet tömörebb lesz.
+   A lekérdezési válasz csak a kiválasztott mezőket tartalmazza, így a kimenet tömörebb lesz.
 
 ## <a name="view-indexer-configuration"></a>Az indexelő konfigurációjának megtekintése
 
@@ -268,7 +267,7 @@ A portálon fel van sorolva az összes indexelő, így az imént programozott m�
 2. Görgessen lefelé az **indexelők** és az **adatforrások** csempéinek megkereséséhez.
 3. Kattintson egy csempére az egyes erőforrások listájának megnyitásához. Kiválaszthat egyedi indexelőket vagy adatforrásokat a konfigurációs beállítások megtekintéséhez vagy módosításához.
 
-  ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
+   ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

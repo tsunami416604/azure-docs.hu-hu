@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 84d98d6b3af884c959e8f0e4d9c117192af32d3a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106307"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095568"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -96,11 +96,11 @@ A Snapshot Debugger az alkalmazásában leggyakrabban előforduló kivételekrő
 ## <a name="use-analytics-data"></a>Elemzési adatok használata
 Az Application Insights által gyűjtött minden adatot az Azure Log Analytics tárol, amely egy részletes lekérdezési nyelvet biztosít, lehetővé téve az adatok különféle módon történő elemzését.  Arra használhatjuk ezeket az adatokat, hogy elemezzük azokat a kéréseket, amelyek a vizsgált kivételt létrehozták. 
 
-8. Kattintson a CodeLens információra a kód felett az Application Insights által biztosított telemetria megtekintéséhez.
+1. Kattintson a CodeLens információra a kód felett az Application Insights által biztosított telemetria megtekintéséhez.
 
     ![Kód](media/tutorial-runtime-exceptions/codelens.png)
 
-9. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Munkaelem hozzáadása
 Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, például az Azure DevOpshoz vagy a GitHubhoz, létrehozhat egy munkaelemet közvetlenül az Application Insightsból.

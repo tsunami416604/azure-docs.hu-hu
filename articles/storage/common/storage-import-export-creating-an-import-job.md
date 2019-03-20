@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 42246a5d2c8515c26ed399f041476c8ad70decfe
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442137"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102179"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
 A Microsoft Azure Import/Export szolgáltatás REST API használatával importálási feladat létrehozása az alábbi lépésekből áll:
 
--   Felkészülés az Azure Import/Export eszközzel rendelkező meghajtókat.
+- Felkészülés az Azure Import/Export eszközzel rendelkező meghajtókat.
 
--   A hely, amelyhez a meghajtó szállításra való beszerzéséről.
+- A hely, amelyhez a meghajtó szállításra való beszerzéséről.
 
--   Az importálási feladat létrehozása.
+- Az importálási feladat létrehozása.
 
--   A szállítási a Microsoftnak a meghajtók támogatott szolgáltató szolgáltatáson keresztül.
+- A szállítási a Microsoftnak a meghajtók támogatott szolgáltató szolgáltatáson keresztül.
 
--   Az importálási feladat frissítése a a szállítás részleteiről.
+- Az importálási feladat frissítése a a szállítás részleteiről.
 
- Lásd: [adatok átvitele a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](storage-import-export-service.md) áttekintését, az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com/) hozhat létre és importálási kezelése és a feladatok exportálása.
+  Lásd: [adatok átvitele a Blob Storage a Microsoft Azure Import/Export szolgáltatás használata](storage-import-export-service.md) áttekintését, az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használható a [az Azure portal](https://portal.azure.com/) hozhat létre és importálási kezelése és a feladatok exportálása.
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Az Azure Import/Export eszközzel együtt meghajtók előkészítése
 
@@ -39,21 +39,21 @@ Az alábbi, a meghajtó előkészítése rövid áttekintése. Tekintse meg a [A
 
 A meghajtó előkészítése foglalja magában:
 
--   Az importálandó adatok azonosítása.
+- Az importálandó adatok azonosítása.
 
--   A cél a Windows Azure Storage blobok azonosítása.
+- A cél a Windows Azure Storage blobok azonosítása.
 
--   Az Azure Import/Export eszköz használata az adatok másolása egy vagy több merevlemez-meghajtókat.
+- Az Azure Import/Export eszköz használata az adatok másolása egy vagy több merevlemez-meghajtókat.
 
- Az Azure Import/Export eszköz is generál a jegyzékfájlt a meghajtókhoz, az előkészítés során. A jegyzékfájlt tartalmaz:
+  Az Azure Import/Export eszköz is generál a jegyzékfájlt a meghajtókhoz, az előkészítés során. A jegyzékfájlt tartalmaz:
 
--   Egy enumerálás feltöltési és a blobokhoz az érintett fájlok a leképezések az összes fájlt.
+- Egy enumerálás feltöltési és a blobokhoz az érintett fájlok a leképezések az összes fájlt.
 
--   Az egyes fájlok szegmenseinek ellenőrzőösszegek.
+- Az egyes fájlok szegmenseinek ellenőrzőösszegek.
 
--   A metaadat- és tulajdonságfájljainak minden egyes blob társítandó vonatkozó adatokat.
+- A metaadat- és tulajdonságfájljainak minden egyes blob társítandó vonatkozó adatokat.
 
--   Ha egy blob feltöltése folyamatban van, a neve megegyezik egy meglévő blobot a tárolóban elvégzendő listája. A lehetséges értékek: a) a blob felülírja a fájlt a, b) tartani a meglévő blobra, majd feltölti a skip, c) hozzáfűzése egy utótagot a nevét, hogy más fájlok nem ütköznek.
+- Ha egy blob feltöltése folyamatban van, a neve megegyezik egy meglévő blobot a tárolóban elvégzendő listája. A lehetséges értékek: a) a blob felülírja a fájlt a, b) tartani a meglévő blobra, majd feltölti a skip, c) hozzáfűzése egy utótagot a nevét, hogy más fájlok nem ütköznek.
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
 

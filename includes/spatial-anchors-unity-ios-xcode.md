@@ -4,16 +4,19 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 8047ed27c732cabf92f53b4b70c22471ecb848aa
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
-ms.translationtype: MT
+ms.openlocfilehash: 6768b1b8e0f5d7d3644779268025551c4e1aef9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57588134"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964171"
 ---
 Válassza ki **összeállítása** egy párbeszédpanel megnyitásához. Ezután válassza ki egy mappát, amelybe exportálni az Xcode-projektben.
 
 Az Exportálás befejeződése után egy mappa jelenik meg amely tartalmazza az exportált Xcode-projektben.
+
+> [!NOTE]
+> Ha egy párbeszédpanel rákérdez, hogy felugró **cserélje le** vagy **Hozzáfűzés**, **Hozzáfűzés** használata javasolt, mivel ez gyorsabb. Csak akkor kell végrehajtani egy **cseréje** Ha eszközök változnak a jelenet (Hozzáadás, eltávolítás, módosítása a szülő-gyermek kapcsolat, a Tulajdonságok hozzáadása/eltávolítása/módosítása, stb). Ha csak forrás kódmódosítás szükséges, **Hozzáfűzés** el kell érnie.
 
 ### <a name="open-the-xcode-project"></a>Nyissa meg az Xcode-projektben
 
@@ -34,7 +37,7 @@ open ./Unity-iPhone.xcworkspace
 
 Válassza ki a legfelső szintű **Unity-iPhone** megtekintése a Projektbeállítások között, és válassza a csomópontot a **általános** fülre.
 
-A **aláírás**válassza **aláírás automatikus kezelése**. Válassza ki **engedélyezze az automatikus** alaphelyzetbe állítja a megjelenő párbeszédpanelen összeállítási beállítások.
+A **aláírás**, ellenőrizze, hogy **aláírás automatikus kezelése** engedélyezve van. Ha nem, az aktiválást, és válassza **engedélyezze az automatikus** alaphelyzetbe állítja a megjelenő párbeszédpanelen összeállítási beállítások.
 
 Alatt **üzembe helyezési adatok**, győződjön meg arról, hogy a **telepítési cél** értékre van állítva `11.0`.
 

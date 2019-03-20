@@ -12,60 +12,60 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 851a8705b3cfa9c88e369af7b961a653dee8fd7a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 846472e00bc048de906ee8e14f6de38e366f3571
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959850"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225229"
 ---
-# <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása és exportálása
+# <a name="import-or-export-configuration-data"></a>Konfigurációs adatok importálása vagy exportálása
 
-Alkalmazáskonfiguráció támogatja az Azure data importálhatja, és exportálási műveletet. Ezek lehetővé teszik, hogy a konfigurációs adatok tömeges, valamint az alkalmazáskonfiguráció közötti exchange-adatok tárolására, és a projekt code használata. Például beállíthatja egy alkalmazás konfigurációs adattároló teszteléshez és a egy másikat az éles környezetben, és másolja Alkalmazásbeállítások közöttük a beágyazandó fájlra, hogy nem kell kétszer megadnia az adatokat.
+Alkalmazáskonfiguráció támogatja az Azure data importálhatja, és exportálási műveletet. Ezek a műveletek használható a konfigurációs adatok tömeges és az exchange-adatok az alkalmazás a konfigurációs adattároló és kód között projekt. Például beállíthatja egy alkalmazás konfigurációs adattároló tesztelési és a egy másikat az éles környezetben. Majd másolhatja az alkalmazásbeállítások között egy fájlra, hogy nem kell kétszer adja meg az adatokat.
 
 Ez a cikk egy útmutatót biztosít az alkalmazás konfigurációs adatok importálása és exportálása.
 
 ## <a name="import-data"></a>Adatok importálása
 
-Importálási alkalmazás konfigurációs adatokat tárolhatja őket manuálisan megadása helyett egy meglévő forrásból konfigurációs elérhetővé teszi. Az importálás funkció segítségével az alkalmazás a konfigurációs adattároló vagy összesített adatokat a különböző forrásokból származó adatokat áttelepíteni. Alkalmazás konfigurációja támogatja a JSON, YAML vagy tulajdonságok fájlból.
+Importálása biztosítható konfigurációs egy alkalmazás-konfigurációs adatokat tárolni egy meglévő forrásból, azt manuálisan megadása helyett. Az importálás funkció segítségével az alkalmazás a konfigurációs adattároló vagy összesített adatokat a különböző forrásokból származó adatokat áttelepíteni. Alkalmazás a konfiguráció támogatja a JSON, YAML vagy tulajdonságok fájlból.
 
-Adatok használatával importálhatja a [az Azure portal](https://aka.ms/azconfig/portal) vagy [Azure CLI-vel](./scripts/cli-import.md). Az Azure Portalról kövesse az alábbi lépéseket:
+Adatok importálása a használatával a [az Azure portal](https://aka.ms/azconfig/portal) vagy a [Azure CLI-vel](./scripts/cli-import.md). Az Azure Portalról kövesse az alábbi lépéseket:
 
-1. Keresse meg az alkalmazás a konfigurációs adattároló, és kattintson a **Import/Export**.
+1. Keresse meg az alkalmazás a konfigurációs adattároló, és válassza ki **Import/Export**.
 
-2. Az a **importálás** lapra, majd **szolgáltatás forrás** és **konfigurációs fájl**.
+2. Az a **importálás** lapon jelölje be **szolgáltatás forrás** > **konfigurációs fájl**.
 
-3. Válasszon **nyelv** és **Fájltípus**.
+3. Válassza ki **nyelv** > **Fájltípus**.
 
-4. Kattintson a **mappa** ikonra, és keresse meg az importálandó fájl.
+4. Válassza ki a **mappa** ikonra, és keresse meg az importálandó fájl.
 
     ![Fájl importálása](./media/import-file.png)
 
-5. Válasszon egy **elválasztó** és igény szerint adjon meg egy **előtag** importált kulcsnevek használandó.
+5. Válassza ki a **elválasztó**, és igény szerint adjon meg egy **előtag** importált kulcsnevek használandó.
 
-6. Opcionálisan válassza ki a **címke**.
+6. Kiválaszthat egy **címke**.
 
-7. Kattintson a **alkalmaz** az importálás befejeződik.
+7. Válassza ki **alkalmaz** az importálás befejezésére.
 
     ![Fájl importálása befejeződött](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>Adatok exportálása
 
-Exportálás ír egy másik célhelyre Alkalmazáskonfiguráció tárolt konfigurációs adatait. Az exportálási funkció használata, például egy alkalmazás a konfigurációs adattároló egy fájlba, a rendszer beágyazza az alkalmazáskódban az üzembe helyezés során az adatok mentéséhez.
+Exportálás ír egy másik célhelyre Alkalmazáskonfiguráció tárolt konfigurációs adatait. Exportálás funkció segítségével, például egy alkalmazás a konfigurációs adattároló egy fájlba, az üzembe helyezés során az alkalmazás kódjában beágyazott adatok mentéséhez.
 
-Adatok segítségével exportálhatja a [az Azure portal](https://aka.ms/azconfig/portal) vagy [Azure CLI-vel](./scripts/cli-export.md). Az Azure Portalról kövesse az alábbi lépéseket:
+Adatok exportálása akár a [az Azure portal](https://aka.ms/azconfig/portal) vagy a [Azure CLI-vel](./scripts/cli-export.md). Az Azure Portalról kövesse az alábbi lépéseket:
 
-1. Keresse meg az alkalmazás a konfigurációs adattároló, és kattintson a **Import/Export**.
+1. Keresse meg az alkalmazás a konfigurációs adattároló, és válassza ki **Import/Export**.
 
-2. Az a **exportálása** lapra, majd **szolgáltatási cél** és **konfigurációs fájl**.
+2. Az a **exportálása** lapon jelölje be **szolgáltatási cél** > **konfigurációs fájl**.
 
-3. Igény szerint adjon meg egy **előtag** , és válassza a **címke** és a egy-időponthoz kulcsok exportálható.
+3. Igény szerint adjon meg egy **előtag** , és válassza ki a **címke** és a egy-időponthoz kulcs exportálható.
 
-4. Válasszon egy **Fájltípus** és **elválasztó**.
+4. Válassza ki a **Fájltípus** > **elválasztó**.
 
-5. Kattintson a **alkalmaz** az Exportálás befejeződik.
+5. Válassza ki **alkalmaz** az Exportálás befejeződik.
 
-    ![Teljes fájl exportálása](./media/export-file-complete.png)
+    ![Befejezett fájl exportálása](./media/export-file-complete.png)
 
 ## <a name="next-steps"></a>További lépések
 

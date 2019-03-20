@@ -3,8 +3,8 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,27 +12,27 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 7ff04789a4ba5e5a689b3d3815852bc0fbcdc6a7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2b30f95e050887130db1b2395f51e543a50e25d0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988348"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203729"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
 Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak szerint.
 
-### <a name="option-1-express"></a>1. lehetőség: expressz
+### <a name="option-1-express"></a>Option 1: Express
 
 1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
 2. A **alkalmazásnév**, adjon meg egy nevet az alkalmazásnak.
 3. Ügyeljen arra, hogy a **interaktív telepítés** kiválasztott, és adja meg a jelölőnégyzet nincs **létrehozás**.
 4. Kövesse az utasításokat az Alkalmazásazonosító beszerzése, és illessze be a kódot.
 
-### <a name="option-2-advanced"></a>2. lehetőség: speciális
+### <a name="option-2-advanced"></a>Option 2: Speciális
 
 1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
 2. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását.
@@ -44,7 +44,7 @@ Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak
     ```java
     final static String CLIENT_ID = "[Enter the application Id here]";
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 7. A **alkalmazás** > **jegyzékfájlok**, nyissa meg a *AndroidManifest.xml* fájlt.
 8. Az a `manifest\application`, adja hozzá a következő tevékenységet. A `BrowserTabActivity` tevékenységgel, amely lehetővé teszi a Microsoft visszahívja az alkalmazáshoz, a hitelesítés befejezése után:
 
@@ -64,5 +64,5 @@ Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak
         </intent-filter>
     </activity>
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 9. Az a `BrowserTabActivity`, cserélje le `[Enter the application Id here]` az alkalmazás / ügyfél-azonosító.

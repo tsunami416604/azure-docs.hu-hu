@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5d0b53590e901cfa1686a71c3f0dda7fb771b56b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a3c0e94e213b861714bfc5f38e20e4d9a1de3a19
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990305"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107916"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -94,18 +94,18 @@ Miután a csoport összes gépen telepített ügynökök, a függőségeket, a c
 1. Az Azure Migrate-projektben alatt **kezelés**, kattintson a **csoportok**, és válassza ki azt a csoportot.
 2. A csoport lapján, kattintson a **függőségek megtekintése**, a csoport függőségi térkép megnyitásához.
 3. A függőségi térkép a csoport a következő részleteket tartalmazza:
-    - (Ügyfelek) a bejövő és kimenő (kiszolgálók) TCP-kapcsolatok és- tárolókról a csoport részét képező összes gép
-        - A függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök portszámok szerint vannak csoportosítva
-        - Az MMA és a függőségi ügynök telepítve van a függő gépek külön mezőkben jelennek meg
-    - A gépen futó folyamatokat, bővítheti, minden gép, ha azt szeretné, hogy a folyamatok megtekintése
-    - Például a teljes tartománynév, az operációs rendszer, az egyes gépek MAC-cím stb tulajdonságait, kattintson a minden gép, ha azt szeretné, hogy ezek a részletek megtekintéséhez
+   - (Ügyfelek) a bejövő és kimenő (kiszolgálók) TCP-kapcsolatok és- tárolókról a csoport részét képező összes gép
+       - A függő gépek, amelyeken nincs telepítve az MMA és a függőségi ügynök portszámok szerint vannak csoportosítva
+       - Az MMA és a függőségi ügynök telepítve van a függő gépek külön mezőkben jelennek meg
+   - A gépen futó folyamatokat, bővítheti, minden gép, ha azt szeretné, hogy a folyamatok megtekintése
+   - Például a teljes tartománynév, az operációs rendszer, az egyes gépek MAC-cím stb tulajdonságait, kattintson a minden gép, ha azt szeretné, hogy ezek a részletek megtekintéséhez
 
      ![Csoportos függőségek megtekintése](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. A függőségek részletesebb megtekintéséhez kattintson az időtartományt, módosíthatja azt. Alapértelmezés szerint a tartománya egy órán keresztül. Módosíthatja az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
 
-    > [!NOTE]
-      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. Naplók használata az Azure Monitor [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) hosszabb ideig keresztül.
+   > [!NOTE]
+   >    A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. Naplók használata az Azure Monitor [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-a-group) hosszabb ideig keresztül.
 
 4. Ellenőrizze a függő gépek, a folyamat minden gépen futó, és azonosítja azokat a gépeket kell hozzáadott vagy eltávolított a csoportból.
 5. Ctrl + kattintás segítségével válassza ki a gépet a térképen hozzáadása vagy eltávolítása a csoportból.

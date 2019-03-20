@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847983"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Mi az a Bing Web Search API?
 
-A Bing Web Search API egy RESTful szolgáltatás, amely azonnali választ ad a felhasználói lekérdezésekre. A keresés könnyen konfigurálható, hogy weboldalakra, képekre, videókra, hírekre, fordításokra és egyéb találatokra is kiterjedjen. A találatok JSON formátumban érkeznek, és a keresési relevancia, valamint a Bing Web Search-előfizetései alapján állnak össze.
+A Bing Web Search API egy RESTful szolgáltatás, amely azonnali választ ad a felhasználói lekérdezésekre. A keresés könnyen konfigurálható, hogy weboldalakra, képekre, videókra, hírekre, fordításokra és egyéb találatokra is kiterjedjen. A Bing Web Search az eredményeket JSON-keresés relevancia alapján végzett és a Bing webes keresés előfizetés alapján biztosít.
 
 Ez az API optimális az olyan alkalmazásokhoz, amelyek hozzáférést biztosítanak a felhasználók keresési lekérdezései szempontjából releváns tartalmakhoz. Ha olyan alkalmazást fejleszt, amelyhez csak a találatok adott típusa szükséges, érdemes lehet inkább a [Bing Image Search API-t](../Bing-Image-Search/overview.md), a [Bing Video Search API-t](../Bing-Video-Search/search-the-web.md) vagy a [Bing News Search API-t](../Bing-News-Search/search-the-web.md) használnia. A Bing Search API-k teljes listájáért lásd a [Cognitive Services API-kat](https://docs.microsoft.com/azure/cognitive-services) ismertető témakört.
 
@@ -28,9 +28,9 @@ Szeretné látni működés közben? Próbálja ki a [Bing Web Search API bemuta
 
 ## <a name="features"></a>Szolgáltatások  
 
-Az azonnali válaszok mellett a Bing Web Search további szolgáltatásokat és funkciókat is biztosít, amelyekkel testre szabhatja a keresések eredményeit a felhasználók számára.
+Bing – internetes keresés csak nem ad hozzáférést, azonnali választ. További szolgáltatások és funkciók, amelyek segítségével testre szabhatja a keresési eredmények a felhasználók számára is biztosít.
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 |---------|-------------|
 | [Keresési kifejezések valós idejű felkínálása](../bing-autosuggest/get-suggested-search-terms.md) | A Bing Autosuggest API a begépelés során javaslatokat tesz a keresési kifejezésekre, így könnyebbé teszi az alkalmazások használatát. |
 | [Találatok szűrése és korlátozása a tartalom típusa alapján](filter-answers.md) | Keresési eredmények szűrőkkel és lekérdezési paraméterekkel történő testre szabása és finomítása a weboldalakra, képekre, videókra, a biztonságos keresésre és egyebekre vonatkozóan. |
@@ -40,7 +40,7 @@ Az azonnali válaszok mellett a Bing Web Search további szolgáltatásokat és 
 
 ## <a name="workflow"></a>Munkafolyamat
 
-A Bing Web Search API bármely olyan programnyelvből meghívható, amely képes HTTP-lekérdezéseket kezelni és JSON-válaszokat elemezni. A szolgáltatás a [REST API-n](quickstarts/python.md) vagy a [Bing Web Search SDK-kon](web-sdk-python-quickstart.md) keresztül érhető el.  
+A Bing Web Search API bármely olyan programnyelvből meghívható, amely képes HTTP-lekérdezéseket kezelni és JSON-válaszokat elemezni. A szolgáltatás a [REST API-n](quickstarts/python.md) vagy a [Bing Web Search SDK-kon](web-sdk-python-quickstart.md) keresztül érhető el.
 
 1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
 2. Küldjön egy [kérést a Bing Web Search API-ra](quickstarts/python.md).

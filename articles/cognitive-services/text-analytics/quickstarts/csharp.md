@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189648"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Használatával C# a Text Analytics kognitív szolgáltatás hívásához
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcsfontosságú kifejezéseket, használja a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C#. A kód .Net Core-alkalmazásban való használatra lett tervezve, és minimálisan hivatkozik külső kódtárakra, ezért Linux vagy MacOS rendszeren is futtatható.
+Ez a cikk bemutatja, hogyan nyelv felismerése, vélemények elemzése és kinyerheti a kulcsfontosságú kifejezéseket, használja a [Text Analytics API-k](//go.microsoft.com/fwlink/?LinkID=759711) a C#. A kód írása volt működik a .NET Core-alkalmazást, minimális hivatkozó külső kódtáraiban, így a Linux vagy MacOS rendszeren is futhat.
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -30,26 +30,25 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
 
-
 ## <a name="install-the-nuget-sdk-package"></a>Az NuGet SDK-csomag telepítése
 1. Hozzon létre egy új konzolmegoldást a Visual Studióban.
 1. Kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) parancsra.
 1. Jelölje be az **Include Prerelease** (Előzetes verzió is) jelölőnégyzetet.
 1. Válassza ki a **Browse** (Tallózás) lapot, majd keressen rá a **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** szövegre.
-1. Válassza ki a NuGet-csomagot, és telepítse.
+1. Válassza ki a NuGet-csomagot, és telepítse. Szükség lehet a v2.8.0 most (3-18-2019), és nem a v3.0.0, amíg a szoftver egy hiba kijavítása.
 
 > [!Tip]
 >  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül C#-ból is meg lehet hívni, a Microsoft.Azure.CognitiveServices.Language SDK jelentősen megkönnyíti a szolgáltatás meghívását, mivel nem kell a JSON szerializálásával és deszerializálásával foglalkozni.
 >
 > Néhány fontos hivatkozás:
-> - [SDK Nuget oldal](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK Nuget oldal](<https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics>)
 > - [SDK-kód](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
-
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>A Text Analytics API meghívása az SDK használatával
+
 1. Cserélje le a Program.cs fájl tartalmát az alábbi kódra. Ez a program a szövegelemzési API három szakaszra (nyelv kinyerés, kulcs-kifejezések kinyerése és hangulatelemzés) képességeit mutatja be.
 1. Az `Ocp-Apim-Subscription-Key` fejléc értékét cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-1. Cserélje le az `Endpoint` helyét a regisztrált végpontra. A végpontot Azure-portál erőforrás található. A végpont általában "https://[region].api.cognitive.microsoft.com" előtaggal kezdődik, és itt csak tartalmazza a protokollt és az állomásnév.
+1. Cserélje le a régiónként `Endpoint`. A Text Analytics erőforrás áttekintés szakaszában találhatja meg a végpont a [az Azure portal](<https://ms.portal.azure.com>). Csak ezen a végpontra részét tartalmazza: "https://[region].api.cognitive.microsoft.com".
 1. Futtassa a programot.
 
 ```csharp

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: e7230e9c4d97c1c3ba8f0cf20d32f5a59ea2219b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034522"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081100"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
 Az Azure Cosmos DB támogatja az [Apache TinkerPop](https://tinkerpop.apache.org) gráfbejárási nyelvét, a [Gremlint](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), amely egy Gremlin API a gráfentitások létrehozásához és gráflekérdezési műveletek végrehajtásához. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
@@ -181,7 +181,7 @@ Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépése
 | `range` | A megadott értéktartományra szűr.| [range lépés](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
 | `repeat` | Megismétli a lépést a megadott számú alkalommal. Ismétlődések beállítására szolgál. | [repeat lépés](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
 | `sample` | Mintát vesz a bejárás eredményeiből. | [sample lépés](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Megjeleníti a bejárás eredményeit. |  [select lépés](https://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `select` | Megjeleníti a bejárás eredményeit. |  [select lépés](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
 | `store` | Nem blokkoló összesítéseket hajt végre a bejárásból. | [store lépés](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
 | `tree` | Egy fában összesíti a csúcspontból induló útvonalakat. | [tree lépés](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
 | `unfold` | Visszaalakít egy iterátort egy lépésként.| [unfold lépés](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |

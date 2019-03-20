@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 10565839148eae0db4bb374939eb3725f6262e60
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110545"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés: az Azure Cosmos DB: Gremlin API
 
@@ -49,31 +49,31 @@ Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja
 
 * Rugalmasan méretezhető átviteli sebesség és tárterület
 
- A valós életben a gráfokat egyetlen kiszolgáló kapacitásán felül kell tudni méretezni. Az Azure Cosmos DB segítségével a gráfok zökkenőmentesen méretezhetők akár több kiszolgálóra is. Emellett a gráfok teljesítménye függetlenül méretezhető a hozzáférési mintáknak megfelelően. Az Azure Cosmos DB által támogatott gráfadatbázisok szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak.
+  A valós életben a gráfokat egyetlen kiszolgáló kapacitásán felül kell tudni méretezni. Az Azure Cosmos DB segítségével a gráfok zökkenőmentesen méretezhetők akár több kiszolgálóra is. Emellett a gráfok teljesítménye függetlenül méretezhető a hozzáférési mintáknak megfelelően. Az Azure Cosmos DB által támogatott gráfadatbázisok szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak.
 
 * Többrégiós replikáció
 
- Az Azure Cosmos DB transzparensen replikálja a gráfadatokat a fiókhoz társított összes régióba. A replikáció lehetővé teszi a globális adathozzáférést igénylő alkalmazások fejlesztését. Vannak azonban hátrányai a konzisztencia, a rendelkezésre állás és a teljesítmény, valamint a megfelelő garanciák terén. Az Azure Cosmos DB transzparens regionális feladatátvételt kínál többkiszolgálós API-k segítségével. A teljesítmény és a tárterület globális szinten rugalmasan méretezhető.
+  Az Azure Cosmos DB transzparensen replikálja a gráfadatokat a fiókhoz társított összes régióba. A replikáció lehetővé teszi a globális adathozzáférést igénylő alkalmazások fejlesztését. Vannak azonban hátrányai a konzisztencia, a rendelkezésre állás és a teljesítmény, valamint a megfelelő garanciák terén. Az Azure Cosmos DB transzparens regionális feladatátvételt kínál többkiszolgálós API-k segítségével. A teljesítmény és a tárterület globális szinten rugalmasan méretezhető.
 
 * Gyors lekérdezések és bejárások a már ismert Gremlin-szintaxissal
 
- Heterogén csúcsokat és éleket tárolhat, és a már ismerős Gremlin-szintaxis használatával kérdezheti le ezeket a dokumentumokat. Az Azure Cosmos DB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a teljes tartalom indexeléséhez. Ez a képesség részletes, valós idejű lekérdezéseket és bejárásokat tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [Gráfok lekérdezése a Gremlin használatával](gremlin-support.md).
+  Heterogén csúcsokat és éleket tárolhat, és a már ismerős Gremlin-szintaxis használatával kérdezheti le ezeket a dokumentumokat. Az Azure Cosmos DB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a teljes tartalom indexeléséhez. Ez a képesség részletes, valós idejű lekérdezéseket és bejárásokat tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [Gráfok lekérdezése a Gremlin használatával](gremlin-support.md).
 
 * Teljes körű felügyelet
 
- Az Azure Cosmos DB használatával nincs szükség az adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként nincs szükség virtuális gépek kezelésére, szoftverek telepítésére és konfigurálására, a méretezés kezelésére vagy az összetett adatrétegek frissítésére. Minden gráfról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Könnyedén elvégezheti egy Azure Cosmos DB-fiók hozzáadását és a kapacitás szükség szerinti kiosztását, így az adatbázis üzemeltetése és kezelése helyett az alkalmazásra összpontosíthat.
+  Az Azure Cosmos DB használatával nincs szükség az adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként nincs szükség virtuális gépek kezelésére, szoftverek telepítésére és konfigurálására, a méretezés kezelésére vagy az összetett adatrétegek frissítésére. Minden gráfról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Könnyedén elvégezheti egy Azure Cosmos DB-fiók hozzáadását és a kapacitás szükség szerinti kiosztását, így az adatbázis üzemeltetése és kezelése helyett az alkalmazásra összpontosíthat.
 
 * Automatikus indexelés
 
- Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a gráf csúcsain és élein található összes tulajdonságot, és nem vár vagy igényel semmilyen sémát, valamint nem szükséges másodlagos indexek létrehozása sem.
+  Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a gráf csúcsain és élein található összes tulajdonságot, és nem vár vagy igényel semmilyen sémát, valamint nem szükséges másodlagos indexek létrehozása sem.
 
 * Kompatibilitás az Apache TinkerPoppal
 
- Az Azure Cosmos DB natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és integrálható más TinkerPop-kompatibilis rendszerekkel. Így egyszerűen válthat más gráfadatbázisokról (például Titan vagy Neo4j), vagy használhatja az Azure Cosmos DB-t különféle gráfelemző keretrendszerekkel (például Apache Spark GraphX).
+  Az Azure Cosmos DB natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és integrálható más TinkerPop-kompatibilis rendszerekkel. Így egyszerűen válthat más gráfadatbázisokról (például Titan vagy Neo4j), vagy használhatja az Azure Cosmos DB-t különféle gráfelemző keretrendszerekkel (például Apache Spark GraphX).
 
 * Beállítható konzisztenciaszintek
 
- Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](consistency-levels.md).
+  Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](consistency-levels.md).
 
 Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumtárolók használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
 
@@ -123,19 +123,19 @@ Vegyük például az alábbi gráfszerkezetet:
 
 * Közösségi hálózatok
 
- Az ügyfeleivel és ügyfeleinek más személyekkel való interakcióival kapcsolatos adatok kombinálásával személyre szabott élményeket dolgozhat ki, előre jelezheti az ügyfelek viselkedését, vagy összekötheti a hasonló érdeklődési körű személyeket. Az Azure Cosmos DB használatával felügyelhetők a közösségi hálózatok, és nyomon követhetők az ügyfelek preferenciái és adatai.
+  Az ügyfeleivel és ügyfeleinek más személyekkel való interakcióival kapcsolatos adatok kombinálásával személyre szabott élményeket dolgozhat ki, előre jelezheti az ügyfelek viselkedését, vagy összekötheti a hasonló érdeklődési körű személyeket. Az Azure Cosmos DB használatával felügyelhetők a közösségi hálózatok, és nyomon követhetők az ügyfelek preferenciái és adatai.
 
 * Javaslati motorok
 
- Ezt a forgatókönyvet gyakran alkalmazzák a kiskereskedelemben. A termékekkel, a felhasználókkal és a felhasználók interakcióival (például vásárlások, böngészés vagy az egyes cikkek értékelése) kapcsolatos információk kombinálásával testre szabott javaslatokat állíthat össze. Az Azure Cosmos DB kis késleltetésű, rugalmasan méretezhető és natív gráftámogatása ideális ezeknek az interakcióknak a modellezéséhez.
+  Ezt a forgatókönyvet gyakran alkalmazzák a kiskereskedelemben. A termékekkel, a felhasználókkal és a felhasználók interakcióival (például vásárlások, böngészés vagy az egyes cikkek értékelése) kapcsolatos információk kombinálásával testre szabott javaslatokat állíthat össze. Az Azure Cosmos DB kis késleltetésű, rugalmasan méretezhető és natív gráftámogatása ideális ezeknek az interakcióknak a modellezéséhez.
 
 * Térinformatikai
 
- Számos távközlési, logisztikai és utazástervezési alkalmazásban van szükség az egyes helyszínek egy területen belül való megkeresésére, vagy a két helyszín közötti legrövidebb/optimális útvonal megállapítására. Az Azure Cosmos DB természetes választás az ilyen problémákhoz.
+  Számos távközlési, logisztikai és utazástervezési alkalmazásban van szükség az egyes helyszínek egy területen belül való megkeresésére, vagy a két helyszín közötti legrövidebb/optimális útvonal megállapítására. Az Azure Cosmos DB természetes választás az ilyen problémákhoz.
 
 * Eszközök internetes hálózata
 
- Ha a hálózatot és az IoT-eszközök közötti kapcsolatot gráfként modellezi, jobban megértheti az eszközök és adategységek állapotát. Azt is megértheti, hogy a hálózat egyes részeinek módosítása milyen potenciális hatással lehet a többi részre.
+  Ha a hálózatot és az IoT-eszközök közötti kapcsolatot gráfként modellezi, jobban megértheti az eszközök és adategységek állapotát. Azt is megértheti, hogy a hálózat egyes részeinek módosítása milyen potenciális hatással lehet a többi részre.
 
 ## <a name="next-steps"></a>További lépések
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:

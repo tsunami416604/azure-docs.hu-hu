@@ -1,21 +1,21 @@
 ---
 title: .NET SDK-t – Azure Search használatával az adatok feltöltése
 description: Ismerje meg, hogyan tölthet fel adatokat az Azure Search-kereshető teljes szöveges index C# példa kód és a .NET SDK-t.
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
 ms.custom: seodec2018
-ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
+ms.openlocfilehash: 2b0b9d2f2030346c5201d006459ebe752aa532af
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202027"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Adatfeltöltés az Azure Search szolgáltatásba, a .NET SDK használatával
 > [!div class="op_single_selector"]

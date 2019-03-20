@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076734"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0 metaadatok támogatása az Azure Functions (előzetes verzió)
 OpenAPI 2.0 (korábbi nevén Swagger) metaadatok támogatása az Azure Functions egy előzetes verziójú funkció, amely segítségével írhat egy OpenAPI 2.0-definíció függvényalkalmazás belül. Ezt a fájlt majd a függvényalkalmazás használatával is üzemeltethet.
@@ -59,7 +59,7 @@ A generált Swagger vázat van leképezve, az alábbi táblázat a Azure-portál
 |[Elérési utak](https://swagger.io/specification/#paths-object-29)|**Integráció** > **kiválasztott HTTP-metódusok**|Kötések: Útválasztás
 |[Elem elérési útja](https://swagger.io/specification/#path-item-object-32)|**Integráció** > **útvonalsablon**|Kötések: Metódusok
 |[Biztonság](https://swagger.io/specification/#security-scheme-object-112)|**kulcsok**|*Nincs jelen*|
-|operationID*|**Útvonal + engedélyezett műveletek**|Útvonal + engedélyezett műveletek|
+|operationID*|**Útvonal + engedélyezett műveletek**|Route + Allowed Verbs|
 
 \*A művelet azonosítója csak a PowerApps és Flow integrálása megadása kötelező.
 > [!NOTE]
@@ -72,9 +72,9 @@ A generált Swagger vázat van leképezve, az alábbi táblázat a Azure-portál
  API-definíció a portál üzemeltetési verziókövetés a forráskezelőből az API-definíció módosítása engedélyezése előtt engedélyeznie kell. Kövesse az alábbi utasításokat:
 
 1. Keresse meg a **API-definíció (előzetes verzió)** a a függvényalkalmazás-beállításokat.
-  1. Állítsa be **API-definíció forrása** való **függvény**.
-  1. Kattintson a **létrehozása API-definíciósablon** , majd **mentése** később módosítása a Sablondefiníció létrehozásához.
-  1. Megjegyzés: az API-definíció URL-címe és a kulcs.
+   1. Állítsa be **API-definíció forrása** való **függvény**.
+   1. Kattintson a **létrehozása API-definíciósablon** , majd **mentése** később módosítása a Sablondefiníció létrehozásához.
+   1. Megjegyzés: az API-definíció URL-címe és a kulcs.
 1. [Folyamatos integráció/folyamatos üzembe helyezés (CI/CD) beállítása](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
 2. \Site\wwwroot, verziókövetési rendszerben swagger.json módosítása\.azurefunctions\swagger\swagger.json.
 

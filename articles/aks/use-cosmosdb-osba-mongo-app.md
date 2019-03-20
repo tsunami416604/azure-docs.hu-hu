@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: A cosmos DB, nyissa meg a Service Brokert, az Open Service Broker for Azure
-ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991982"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrálható meglévő MongoDB-alkalmazások Azure Cosmos DB API a mongodb-hez és az Open Service Broker for Azure (OSBA)
 
@@ -81,7 +81,7 @@ Indítsa el az alkalmazást, és mondja el, hogy használja a *mongodb* profil:
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-Navigáljon a http://localhost:8080 a böngészőben.
+Navigáljon a `http://localhost:8080` a böngészőben.
 
 ![Spring Music alkalmazás alapértelmezett adatokkal.](media/music-app.png)
 
@@ -184,7 +184,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 Figyelje meg, hogy az alkalmazás továbbra is használja a *mongodb* profil és a egy URI-t, amely a következővel kezdődik: *mongodb: / /* a Cosmos DB-adatbázishoz való csatlakozáshoz. A [Azure Cosmos DB MongoDB API-](../cosmos-db/mongodb-introduction.md) a kompatibilitást biztosít. Lehetővé teszi az alkalmazás továbbra is működnek, mintha egy MongoDB-adatbázist használ, de a Cosmos DB ténylegesen használ.
 
-Navigáljon a http://localhost:8080 a böngészőben. Figyelje meg, hogy a program visszaállította az alapértelmezett adatokat. Dolgozzon vele törlésével néhány meglévő albumokat és néhány újakat hozna létre. Ellenőrizheti, hogy az alkalmazás leállítása, újraindítása, és lépjen vissza a böngészőben, a módosítások megmaradnak. Figyelje meg, hogy a módosítások vannak-e továbbra is. A módosítások megmaradnak a létrehozott Open Service Broker for Azure Cosmos DB-hez.
+Navigáljon a `http://localhost:8080` a böngészőben. Figyelje meg, hogy a program visszaállította az alapértelmezett adatokat. Dolgozzon vele törlésével néhány meglévő albumokat és néhány újakat hozna létre. Ellenőrizheti, hogy az alkalmazás leállítása, újraindítása, és lépjen vissza a böngészőben, a módosítások megmaradnak. Figyelje meg, hogy a módosítások vannak-e továbbra is. A módosítások megmaradnak a létrehozott Open Service Broker for Azure Cosmos DB-hez.
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Futtassa az alkalmazást a az AKS-fürt

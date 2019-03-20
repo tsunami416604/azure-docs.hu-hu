@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: asteen
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df034264e54d7d421d9508fb3c08cc6675cb10d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 47c624a9f1d3989e9146f7c32745ca892f6467e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451994"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113808"
 ---
 # <a name="what-is-the-myapps-portal"></a>Mi az a MyApps portálról?
 
@@ -82,11 +82,11 @@ A jelszóalapú egyszeri bejelentkezés, a kiterjesztést kell használnia. A b�
 
 > [!NOTE]
 > További funkciók csak a Microsoft Edge, Chrome és a Firefox érhetők el.
->
-A bővítmény letöltheti közvetlenül a következő helyekről:
-- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
+> 
+> A bővítmény letöltheti közvetlenül a következő helyekről:
+> - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+> - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+> - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Ha nem használ egy saját alkalmazások URL-cím `https://myapps.microsoft.com`, az alapértelmezett URL-cím konfigurálása a következő tevékenységek végrehajtásával:
 1. Amíg nem *nem* bejelentkezett a bővítményt, kattintson a bővítmény ikonra a jobb gombbal.

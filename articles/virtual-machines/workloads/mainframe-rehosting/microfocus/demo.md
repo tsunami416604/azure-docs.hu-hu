@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2a29b484b58b887981b1879ceba5bf7426bb6c2e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192004"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099467"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
 
@@ -69,9 +69,9 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 
 7. A **funkciók**, ellenőrizze **a Microsoft .NET-keretrendszer 4.6**, majd ellenőrizze a következőket:
 
-    - Nevesített cső aktiválása
-    - TCP-aktiválás
-    - TCP-Port megosztása
+   - Nevesített cső aktiválása
+   - TCP-aktiválás
+   - TCP-Port megosztása
 
      ![Szerepkörök és szolgáltatások hozzáadása varázsló: Szerepkör-szolgáltatások](media/01-demo-roles.png)
 

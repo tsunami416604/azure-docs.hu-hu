@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4d2e1ac749c2985ada04e0de050c97f027a205af
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791851"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58133059"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -92,31 +92,9 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
 
-**1. lépés: [Az Azure Search-erőforrás létrehozásához](search-create-service-portal.md) egy régióban, így az API-k** 
+**1. lépés: [Az Azure Search-erőforrás létrehozásához](search-create-service-portal.md)** 
 
-+ USA nyugati középső régiója
-+ USA déli középső régiója
-+ USA északi középső régiója
-+ USA keleti régiója
-+ USA 2. keleti régiója
-+ USA nyugati régiója
-+ USA nyugati régiója, 2.
-+ USA középső régiója
-+ Közép-Kanada
-+ Nyugat-Európa
-+ Észak-Európa
-+ Az Egyesült Királyság déli régiója
-+ Közép-Franciaország
-+ Dél-Brazília
-+ Kelet-Ázsia
-+ Délkelet-Ázsia
-+ Közép-India
-+ Nyugat-Japán
-+ Kelet-Japán
-+ Korea középső régiója
-+ Kelet-Ausztrália
-
-**2. lépés: Gyakorlati tapasztalatokat szakértőjévé válhat a munkafolyamat**
+**2. lépés: Próbálja meg néhány gyorsútmutatókat és gyakorlati tapasztalatokat példáit**
 
 + [Rövid útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Az oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)

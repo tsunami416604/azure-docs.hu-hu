@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4fc1b4d4d0d7f215f8fee1de01e171c3fdc5aae5
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308788"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893271"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
@@ -77,11 +77,11 @@ A kiszolgálószintű tűzfalszabályok beállítása:
 
 1. Az a **áttekintése** lapon jelölje be **kiszolgálótűzfal beállítása**. A **tűzfalbeállítások** megnyílik az adatbázis-kiszolgáló.
 
-    1. Válassza ki **ügyfél IP-cím hozzáadása** az aktuális IP-cím hozzáadása egy új tűzfalszabályt az eszköztáron. A szabály a 1433-as porton az egyetlen IP-címet vagy egy IP-címtartományt is megnyithatja. Kattintson a **Mentés** gombra.
+   1. Válassza ki **ügyfél IP-cím hozzáadása** az aktuális IP-cím hozzáadása egy új tűzfalszabályt az eszköztáron. A szabály a 1433-as porton az egyetlen IP-címet vagy egy IP-címtartományt is megnyithatja. Kattintson a **Mentés** gombra.
 
-    ![kiszolgálótűzfal-szabály beállítása](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+      ![kiszolgálótűzfal-szabály beállítása](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
-    1. Válassza ki **OK** és zárja be a **tűzfalbeállítások** lapot.
+   1. Válassza ki **OK** és zárja be a **tűzfalbeállítások** lapot.
 
 Mostantól a kiszolgáló bármelyik adatbázisához csatlakozhat a megadott IP-címmel vagy IP-címtartománnyal.
 
@@ -248,11 +248,11 @@ Speciális biztonsági engedélyezése:
 
 1. Az a **az SQL server** lapon, keresse meg a **biztonsági** szakaszt, és válassza **adatok biztonságú**.
 
-    1. Válassza ki **ON** alatt **adatok biztonságú** a funkció engedélyezéséhez. Válasszon egy tárfiókot a sebezhetőségi felmérés eredmények mentése. Ezután válassza a **Save** (Mentés) lehetőséget.
+   1. Válassza ki **ON** alatt **adatok biztonságú** a funkció engedélyezéséhez. Válasszon egy tárfiókot a sebezhetőségi felmérés eredmények mentése. Ezután válassza a **Save** (Mentés) lehetőséget.
 
-    ![Navigációs ablaktábla](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Navigációs ablaktábla](./media/sql-database-security-tutorial/threat-settings.png)
 
-    Beállíthatja, hogy a biztonsági riasztások, és a tárolási adatok és a fenyegetéstípusok észlelési e-maileket.
+      Beállíthatja, hogy a biztonsági riasztások, és a tárolási adatok és a fenyegetéstípusok észlelési e-maileket.
 
 1. Lépjen vissza a **SQL-adatbázisok** az adatbázisról, és válassza a lap **adatok biztonságú** alatt a **biztonsági** szakaszban. Itt találja a különböző biztonsági mutatók érhető el az adatbázis.
 
@@ -274,25 +274,25 @@ A naplózás engedélyezéséhez:
 
 1. A **naplózási** beállításait, állítsa be a következő értékeket:
 
-    1. Állítsa be **naplózás** való **ON**.
+   1. Állítsa be **naplózás** való **ON**.
 
-    1. Válassza ki **naplózási naplócél** mint bármelyik, a következőket:
+   1. Válassza ki **naplózási naplócél** mint bármelyik, a következőket:
 
-        - **Tárolási**, ahol biztonságiesemény-naplóinak lesznek mentve, és mint tölthető le egy Azure storage-fiók *.xel* fájlok
+       - **Tárolási**, ahol biztonságiesemény-naplóinak lesznek mentve, és mint tölthető le egy Azure storage-fiók *.xel* fájlok
 
-           > [!TIP]
-           > Használja ugyanazt a tárfiókot az összes naplózott adatbázishoz jelentéssablont naplózás a legjobban.
+          > [!TIP]
+          > Használja ugyanazt a tárfiókot az összes naplózott adatbázishoz jelentéssablont naplózás a legjobban.
 
-        - **Log Analytics**, amely automatikusan tárolja az eseményeket lekérdezés vagy a további elemzés céljából
+       - **Log Analytics**, amely automatikusan tárolja az eseményeket lekérdezés vagy a további elemzés céljából
 
-            > [!NOTE]
-            > A **Log Analytics-munkaterület** elemzéseket, az egyéni riasztási szabályok és az Excel- vagy Power BI exportálási speciális szolgáltatások támogatásához szükség. Egy munkaterület nélkül csak a Lekérdezésszerkesztő érhető el.
+           > [!NOTE]
+           > A **Log Analytics-munkaterület** elemzéseket, az egyéni riasztási szabályok és az Excel- vagy Power BI exportálási speciális szolgáltatások támogatásához szükség. Egy munkaterület nélkül csak a Lekérdezésszerkesztő érhető el.
 
-        - **Event Hubs**, amely lehetővé teszi, hogy az eseményeket az átirányíthatók más alkalmazások használatra
+       - **Event Hubs**, amely lehetővé teszi, hogy az eseményeket az átirányíthatók más alkalmazások használatra
 
-    1. Kattintson a **Mentés** gombra.
+   1. Kattintson a **Mentés** gombra.
 
-    ![Naplózási beállítások](./media/sql-database-security-tutorial/audit-settings.png)
+      ![Naplózási beállítások](./media/sql-database-security-tutorial/audit-settings.png)
 
 1. Most kiválaszthatja **naplók megtekintése** adatbázis események adatainak megtekintéséhez.
 
@@ -334,7 +334,7 @@ Engedélyezheti vagy titkosítási ellenőrzése:
     ![Transzparens adattitkosítás](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Titkosítás állapotának megtekintéséhez csatlakoznia kell az adatbázis használatával [SSMS](./sql-database-connect-query-ssms.md) és lekérdezése az `encryption_state` oszlopa a [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) megtekintése. Egy állapotát `3` azt jelzi, hogy az adatbázis titkosított.
+> Titkosítás állapotának megtekintéséhez csatlakoznia kell az adatbázis használatával [SSMS](./sql-database-connect-query-ssms.md) és lekérdezése az `encryption_state` oszlopa a [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) megtekintése. Egy állapotát `3` azt jelzi, hogy az adatbázis titkosított.
 
 ## <a name="next-steps"></a>További lépések
 

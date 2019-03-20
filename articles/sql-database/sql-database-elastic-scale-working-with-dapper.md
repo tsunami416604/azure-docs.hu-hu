@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: c6ca7637c8e251fa29781503ffc18227c51bb4da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002291"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Elastic database-ügyfélkódtár használata a dapperrel
 Alkalmazásokat hozhat létre Dapper támaszkodik, de is szeretné kihasználni a fejlesztők számára van ez a dokumentum [elastic database tooling](sql-database-elastic-scale-introduction.md) , alkalmazzon horizontális skálázási horizontális felskálázási méretezhetik alkalmazások létrehozásához.  Ez a dokumentum a Dapper-alapú alkalmazások integrálása az elastic database-eszközökkel való szükséges változásokat mutatja be. A fókusz a rugalmas adatbázis szilánkkezelési és Adatfüggő útválasztásnak dapperrel összeállítása be van kapcsolva. 
@@ -35,7 +35,7 @@ DapperExtensions használatakor nem kell többé biztosít az SQL-utasításokka
 
 Egy másik Dapper, és DapperExtensions előnye, hogy az alkalmazás szabályozza-e az adatbázis-kapcsolat létrehozását. Ez segít az elastic database-ügyfélkódtár közvetítők adatbázis-kapcsolatok alapján shardlet adatbázisokhoz való hozzárendelését, amely együttműködik.
 
-A Dapper szerelvényeket lekéréséhez lásd: [Dapper dot net](http://www.nuget.org/packages/Dapper/). A Dapper bővítmények, lásd: [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
+A Dapper szerelvényeket lekéréséhez lásd: [Dapper dot net](https://www.nuget.org/packages/Dapper/). A Dapper bővítmények, lásd: [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>Az elastic database ügyfélkódtár gyors áttekintése
 Az elastic database-ügyfélkódtár a partíciók az alkalmazásadatok nevű definiálása *shardlet*, megfeleltet az adatbázisokat, és azonosítsa azokat a *horizontális skálázási kulcsok*. Tetszőleges számú adatbázist kell, és ezeknek az adatbázisoknak a shardlet szét rendelkezhet. Horizontális skálázási kulcs értékeit az adatbázisokhoz való hozzárendelését az erőforrástár-API-k által biztosított szegmenstérképek által tárolódik. Ez a funkció neve **szilánkleképezés-kezelés**. A horizontális skálázási térképet az adatbázis-kapcsolatok a kéréseket, amelyek olyan szegmenskulcsot átvitelszervezőként is szolgál. Ez a funkció nevezzük **Adatfüggő útválasztásnak**.

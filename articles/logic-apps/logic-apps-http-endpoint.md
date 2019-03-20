@@ -16,12 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230488"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904371"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása
 
@@ -71,7 +71,7 @@ Hozzon létre egy HTTP-végpontot, adja hozzá egy eseményindítót, amely kép
 
     > [!TIP]
     > 
-    > Egy eszköz, például a sémát a JSON hasznosadat-minta is létrehozhat [jsonschema.net](http://jsonschema.net/), vagy a **kérelem** eseményindító kiválasztásával **Mintaadat használata séma létrehozásához**. 
+    > Egy eszköz, például a sémát a JSON hasznosadat-minta is létrehozhat [jsonschema.net](https://jsonschema.net/), vagy a **kérelem** eseményindító kiválasztásával **Mintaadat használata séma létrehozásához**. 
     > Adja meg a hasznosadat-minta, és válassza a **kész**.
 
     Ha például a hasznosadat-minta:
@@ -247,7 +247,7 @@ Válaszok rendelkezik, ezeket a tulajdonságokat:
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Állapotkód |Itt adhatja meg a bejövő kérelem válaszol a HTTP-állapotkódot. Ez a kód bármilyen érvényes állapotkód: 2xx, 4xx vagy 5xx kezdetű is lehet. Azonban 3xx állapotkódok használata nem engedélyezett. |
+| statusCode |Itt adhatja meg a bejövő kérelem válaszol a HTTP-állapotkódot. Ez a kód bármilyen érvényes állapotkód: 2xx, 4xx vagy 5xx kezdetű is lehet. Azonban 3xx állapotkódok használata nem engedélyezett. |
 | A fejlécek |A válasz tartalmazza a fejlécek tetszőleges számú határozza meg. |
 | törzs |Megadja egy szervezet objektum, amely egy karakterlánc lehet, egy JSON-objektum, vagy akár bináris tartalom hivatkozni az előző lépésben. |
 
@@ -277,7 +277,7 @@ Itt látható a JSON-sémája néz ki most a **válasz** művelet:
 
 #### <a name="q-what-about-url-security"></a>K: Mi a helyzet biztonsági URL-cím?
 
-V: az azure biztonságos készítésére szolgál a logikai alkalmazás visszahívási URL egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az aláírás halad keresztül, mint egy lekérdezési paraméter, és ellenőrizni kell, mielőtt a logikai alkalmazás aktiválódik is. Az Azure az aláírást, valamint a logikai alkalmazást, az eseményindító neve és a végrehajtandó műveletet egy titkos kulcs egyedi együttes használatával hoz létre. Ezért, ha valaki hozzáfér a titkos logic app-kulcs, azok nem hoznak létre érvényes aláírással.
+V: Az Azure biztonságos készítésére szolgál a logic app visszahívási URL egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az aláírás halad keresztül, mint egy lekérdezési paraméter, és ellenőrizni kell, mielőtt a logikai alkalmazás aktiválódik is. Az Azure az aláírást, valamint a logikai alkalmazást, az eseményindító neve és a végrehajtandó műveletet egy titkos kulcs egyedi együttes használatával hoz létre. Ezért, ha valaki hozzáfér a titkos logic app-kulcs, azok nem hoznak létre érvényes aláírással.
 
    > [!IMPORTANT]
    > Az éles és biztonságos rendszerek javasoljuk, hogy ellen a logikai alkalmazás meghívása közvetlenül a böngészőből, mivel:
@@ -285,7 +285,7 @@ V: az azure biztonságos készítésére szolgál a logikai alkalmazás visszah�
    > * A közös hozzáférési kulcs az URL-cím jelenik meg.
    > * Biztonságos tartalomszabályzat megosztott tartományok miatt nem kezelheti a logikai alkalmazás ügyfelek között.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>K: további HTTP-végpontok konfigurálása?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>K: Konfigurálhatja a további HTTP-végpontokat?
 
 V: Igen, támogatja a HTTP-végpontokat a Speciális konfiguráció keresztül [ **az API Management**](../api-management/api-management-key-concepts.md). Ez a szolgáltatás is lehetőséget nyújt a, hogy egységesen kezelheti minden API-k, beleértve a logic apps, egyéni tartománynevek beállítása, használja a további hitelesítési módszereket, és egyéb, például:
 
@@ -294,7 +294,7 @@ V: Igen, támogatja a HTTP-végpontokat a Speciális konfiguráció keresztül [
 * Az API Management tartományok beállítása a [az Azure portal](https://portal.azure.com/ "Azure Portalon")
 * Állítsa be a szabályzatot, az egyszerű hitelesítés ellenőrzése
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>K: Mi változott, a 2014. December 1-én előzetes való migrálásakor a séma?
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>K: Mi változott a 2014. December 1-én előzetes való migrálásakor a séma?
 
 V: Itt található egy összefoglaló változásokkal kapcsolatban:
 

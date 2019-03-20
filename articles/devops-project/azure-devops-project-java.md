@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4f3f82f329e3ac8774978f6116629a4928c142ad
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 38be92a006ae6dbb7a550d2d91d886df820fb883
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093565"
 ---
 # <a name="create-a-cicd-pipeline-for-java-with-azure-devops-projects"></a>Java CI/CD-folyamat létrehozása az Azure DevOps Projects segítségével
 
@@ -65,7 +65,7 @@ A Java-minták esetén több alkalmazási keretrendszer közül választhat.
 
     ![Irányítópult nézet](_img/azure-devops-project-java/dashboardnopreview.png) 
     
- A DevOps Projects automatikusan konfigurálja a CI-build és kiadás eseményindító.  Most már készen áll, hogy egy csapattal közösen dolgozzon a Java-alkalmazáson egy olyan CI-/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkáját a webhelyen.
+   A DevOps Projects automatikusan konfigurálja a CI-build és kiadás eseményindító.  Most már készen áll, hogy egy csapattal közösen dolgozzon a Java-alkalmazáson egy olyan CI-/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkáját a webhelyen.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
 

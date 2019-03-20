@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a4b6bc8f6e621cda921d599b5368c6a671defcc2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548609"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113299"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -682,7 +682,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 ### <a name="latency-metrics"></a>Késés metrikák
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Használat |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | ReplicationLatency    | Replikáció késése|  Ideje ezredmásodpercben|   Minimum,Maximum,Average | Fiók geo-kompatibilis a forrás- és régiók közötti P99 replikáció késése| SourceRegion, TargetRegion| Összes | Egy georeplikált fiók bármely két régió között P99 replikációs késésétől figyelésére használható. |
 
 ### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
@@ -694,7 +694,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 ### <a name="cassandra-api-metrics"></a>Cassandra API-metrikák
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók| Idő granularitással| Használat |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | CassandraRequests | Cassandra Requests |  Darabszám|  Darabszám|  Cassandra API-kérelmek száma|  DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType|   Összes| Jelenleg egy perces pontossággal Cassandra kérelmek figyelésére használható. A kérelmek másodpercenkénti átlagos száma az összesítés használatát perc, és nullával való osztás 60.|
 | CassandraRequestCharges|  Cassandra-kérelem díjak| Darabszám|   Sum, Min, Max, Avg| Cassandra API-kérések által felhasznált kérelemegységek|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Összes| Kérelemegység / perc a Cassandra API-fiók által használt figyelésére használható.|
 | CassandraConnectionClosures   | Cassandra-kapcsolat szünnapok |Darabszám| Darabszám   |Lezárt Cassandra-kapcsolatok száma|    ClosureReason, régió|  Összes | Az ügyfélszámítógépek és az Azure Cosmos DB Cassandra API közötti kapcsolatok figyelésére használható.|
@@ -1072,7 +1072,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|RequestCount|A kérelmek száma|Darabszám|Összes|A HTTP-vagy Https-proxy által kiszolgált ügyfélkérelmek száma|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
+|RequestCount|Kérelmek száma|Darabszám|Összes|A HTTP-vagy Https-proxy által kiszolgált ügyfélkérelmek száma|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |RequestSize|Kérés mérete|Bájt|Összes|A HTTP-vagy Https-proxyval ügyfelektől érkező kérések küldött bájtok száma|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |ResponseSize|Válasz mérete|Bájt|Összes|HTTP-vagy Https-proxy által az ügyfelek, válaszok küldött bájtok száma|HttpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendRequestCount|Háttér-kérések száma|Darabszám|Összes|A HTTP-vagy Https-proxy háttérkomponenseinek küldött kérelmek száma|Válaszállapotok összege HTTP, HttpStatusGroup, háttér|
@@ -1296,7 +1296,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs dimenzió|
 |physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
-|log_write_percent|Napló i/o-százaléka|Százalék|Átlag|Napló i/o-százaléka|Nincs dimenzió|
+|log_write_percent|Naplózási IO százalékos aránya|Százalék|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
 |tárterület|Adatbázis teljes mérete|Bájt|Maximum|Adatbázis teljes mérete|Nincs dimenzió|
 |connection_successful|Sikeres kapcsolatok|Darabszám|Összes|Sikeres kapcsolatok|Nincs dimenzió|
@@ -1321,7 +1321,7 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincs dimenzió|
 |physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincs dimenzió|
-|log_write_percent|Napló i/o-százaléka|Százalék|Átlag|Napló i/o-százaléka|Nincs dimenzió|
+|log_write_percent|Naplózási IO százalékos aránya|Százalék|Átlag|Naplózási IO százalékos aránya|Nincs dimenzió|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
 |storage_percent|Tárolási százalékos aránya|Százalék|Átlag|Tárolási százalékos aránya|Nincs dimenzió|
 |workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 4a7da4a6e7b4b395063f7e4c9a3e97d610492ef6
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882663"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885181"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
 
@@ -93,7 +93,7 @@ Miután rákattintott egy jelentés, a **EmbedSample** webalkalmazás kell kiné
 
 ## <a name="explore-the-sample-code"></a>Áttekintjük a mintakódot
 
-A **a Microsoft Power BI-Munkaterületcsoportok** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható a **Power BI** jelentéseket az alkalmazásba. A Model-View-Controller (MVC) tervezési minta használatával ajánlott eljárásokat mutatnak be. Ez a szakasz kiemeli a mintakód belül tárgyaljuk is részei a **Power bi embedded** webes alkalmazás megoldás. A Model-View-Controller (MVC) minta elkülöníti a modellezést, a tartományhoz, a bemutató és a felhasználói bevitel három különálló osztályokba alapján műveleteket: Modell, megtekintése és vezérlés. MVC kapcsolatos további információkért lásd: [megismerheti az ASP.NET kapcsolatos](http://www.asp.net/mvc).
+A **a Microsoft Power BI-Munkaterületcsoportok** minta egy példa-webalkalmazást, amely bemutatja, hogyan integrálható a **Power BI** jelentéseket az alkalmazásba. A Model-View-Controller (MVC) tervezési minta használatával ajánlott eljárásokat mutatnak be. Ez a szakasz kiemeli a mintakód belül tárgyaljuk is részei a **Power bi embedded** webes alkalmazás megoldás. A Model-View-Controller (MVC) minta elkülöníti a modellezést, a tartományhoz, a bemutató és a felhasználói bevitel három különálló osztályokba alapján műveleteket: Modell, megtekintése és vezérlés. MVC kapcsolatos további információkért lásd: [megismerheti az ASP.NET kapcsolatos](https://www.asp.net/mvc).
 
 A **a Microsoft Power BI-Munkaterületcsoportok** mintakód a következő választja el. Minden szakasz a fájl nevét, hogy könnyen találhatja meg a kód a minta a Power bi-embedded.sln megoldás tartalmazza.
 
@@ -270,4 +270,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)
+További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)

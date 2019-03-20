@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c97a24be4b8ee88f76b46af8136445740c2906de
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781238"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>Oktatóanyag: PureCloud Genesys által az Azure Active Directory-integráció
 
@@ -105,6 +105,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
     ![PureCloud által Genesys tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be egy URL-címet a régió alapján:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -114,6 +115,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
     | `https://login.mypurecloud.au/saml` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címet a régió alapján:
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -127,6 +129,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Genesys PureC
     ![PureCloud által Genesys tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a régió alapján:
+    
     | |
     |--|
     | `https://login.mypurecloud.com` |
@@ -220,7 +223,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -275,7 +278,7 @@ Ahhoz, hogy az Azure AD-felhasználók által Genesys PureCloud jelentkezzen be,
 
     a. A **teljes fájlvisszaállítási név** szöveget adja meg például a felhasználó nevét **Brittasimon**.
 
-    b. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
+    b. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
     
     c. Kattintson a **Create** (Létrehozás) gombra.
 

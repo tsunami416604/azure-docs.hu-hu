@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f35010b5072c89779b8030055a2d37beb58b0d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 80a35182af3c4a7992ef416fcee038240e2bdfca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200441"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074947"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
 
@@ -46,21 +46,29 @@ Mielőtt megkezdi a műveletet, vegye figyelembe az alábbi információkat:
 3. Kapcsolja be a további funkciókat, amelyekre vállalatának szüksége van.
 4. Kattintson az **AD FS-adapter telepítése** gombra.
    
-   <center>![Felhő](./media/howto-mfaserver-adfs-2012/server.png)</center>
+   <center>
+   
+   ![Felhő](./media/howto-mfaserver-adfs-2012/server.png)</center>
 
 5. Ha az Active Directory ablak jelenik meg, ez két dolgot jelent. A számítógép tartományhoz csatlakozik, és az AD FS-adapter és a Multi-Factor Authentication szolgáltatás közötti kommunikáció védelmét biztosító Active Directory-konfiguráció hiányos. Kattintson a **Tovább** gombra a konfiguráció automatikus elvégzéséhez, vagy jelölje be **Az Active Directory automatikus konfigurálásának kihagyása és a beállítások manuális megadása** jelölőnégyzetet. Kattintson a **tovább**.
 6. Ha a Helyi csoport ablak jelenik meg, ez két dolgot jelent. A számítógép nem csatlakozik tartományhoz, és az AD FS-adapter és a Multi-Factor Authentication szolgáltatás közötti kommunikáció védelmét biztosító helyi csoport konfigurációja hiányos. Kattintson a **Tovább** gombra a konfiguráció automatikus elvégzéséhez, vagy jelölje be **A helyi csoport automatikus konfigurálásának kihagyása és a beállítások manuális megadása** jelölőnégyzetet. Kattintson a **tovább**.
 7. A telepítővarázslóban kattintson a **Tovább** gombra. Az Azure Multi-Factor Authentication-kiszolgáló létrehozza a PhoneFactor-adminisztrátorok csoportot, és hozzáadja az AD FS-szolgáltatásfiókot a PhoneFactor-adminisztrátorok csoporthoz.
-   <center>![Felhő](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
+   <center>
+   
+   ![Felhő](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
 8. A **Telepítő indítása** lapon kattintson a **Tovább** gombra.
 9. A Multi-Factor Authentication AD FS-adapter telepítőjében kattintson a **Tovább** gombra.
 10. Amikor a telepítés befejeződött, kattintson a **Bezárás** gombra.
 11. Ha befejeződött az adapter telepítése, regisztrálnia kell azt az AD FS-sel. Indítsa el a Windows PowerShellt, és futtassa az alábbi parancsot:<br>
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
-    <center>![Felhő](./media/howto-mfaserver-adfs-2012/pshell.png)</center>
+    <center>
+    
+    ![Felhő](./media/howto-mfaserver-adfs-2012/pshell.png)</center>
 12. Az újonnan regisztrált adapter használatához módosítsa a globális hitelesítési szabályzatot az AD FS-ben. Az AD FS felügyeleti konzoljában nyissa meg a **Hitelesítési házirendek** csomópontot. A **Többtényezős hitelesítés** résznél kattintson a **Globális beállítások** mellett található **Szerkesztés** hivatkozásra. A **Globális hitelesítési házirend szerkesztése** ablakban válassza a **Többtényezős hitelesítés** lehetőséget további hitelesítési módszerként, majd kattintson az **OK** gombra. Lezajlik az adapter regisztrálása WindowsAzureMultiFactorAuthentication néven. A regisztráció érvénybe léptetéséhez indítsa újra az AD FS szolgáltatást.
 
-<center>![Felhő](./media/howto-mfaserver-adfs-2012/global.png)</center>
+<center>
+
+![Felhő](./media/howto-mfaserver-adfs-2012/global.png)</center>
 
 Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy van beállítva, hogy további hitelesítésszolgáltatóként működjön az AD FS szolgáltatásokhoz.
 
@@ -80,7 +88,7 @@ Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy va
 A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse az alábbi lépéseket:
 
 1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
-2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például:  *https://contoso.com/&lt; certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx*, ahol *certificatename* van a tanúsítvány nevét jelöli.  
+2. Állítsa a **WebServiceSdkUrl** értékét a Multi-Factor Authentication-webszolgáltatás SDK URL-címére. Például: *<https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx>*, ahol *certificatename* van a tanúsítvány nevét jelöli.  
 3. Szerkessze a Register-MultiFactorAuthenticationAdfsAdapter.ps1 szkriptet: adja hozzá a `-ConfigurationFilePath &lt;path&gt;` értéket a `Register-AdfsAuthenticationProvider` parancs végéhez. A *&lt;path&gt;* helyére írja be a MultiFactorAuthenticationAdfsAdapter.config fájl teljes elérési útját.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>A Web Service SDK konfigurálása felhasználónévvel és jelszóval

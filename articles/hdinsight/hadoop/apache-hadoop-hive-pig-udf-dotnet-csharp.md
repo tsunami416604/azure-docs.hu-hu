@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 08910cbae9f370dde7b8718ca4868dc7b3510f8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202707"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
 
@@ -216,11 +216,7 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 
 ## <a name="run-an-apache-pig-job"></a>Az Apache Pig-feladat futtatása
 
-1. A HDInsight-fürthöz való csatlakozáshoz használja a következő módszerek egyikét:
-
-    * Ha használ egy __Linux-alapú__ HDInsight-fürt, az SSH-val. Például: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. További információkért lásd: [az SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
-    
-    * Ha használ olyan __Windows-alapú__ HDInsight-fürt [csatlakozás a fürthöz, a távoli asztal használata](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+1. Az SSH használata a HDInsight-fürthöz való csatlakozáshoz. Például: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. További információkért lásd: [az SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. Egyet a következő paranccsal a Pig parancssor elindításához:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff9d025980f80cb77246ea12dbf2e9bcedd73f86
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e5efe0516d1b2dd387532d31a0a6654e6651fe41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705884"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011739"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Az Azure portal használatával virtuális gép magánhálózati IP-címek konfigurálása
 
@@ -49,7 +49,7 @@ Statikus magánhálózati IP-cím nem állítható a Resource Manager üzembe he
 
 Nevű virtuális gép létrehozása *DNS01* a a *előtérbeli* nevű virtuális hálózat alhálózatának *TestVNet*, kövesse az alábbi lépéseket:
 
-1. Egy böngészőből keresse fel a(z) http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel a(z) https://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 2. Kattintson a **erőforrás létrehozása** > **számítási** > **Windows Server 2012 R2 Datacenter**, vegye figyelembe, hogy a **jelölje ki a telepítést modell** listájában már **Resource Manager**, és kattintson a **létrehozás**, az alábbi ábrán látható módon.
    
     ![Virtuális gép létrehozása az Azure Portalon](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
@@ -67,7 +67,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtérbeli* nevű virtuális 
     -**Storage-fiók**: *vnetstorage*
    
    * **Hálózati**: *TestVNet*
-   * **Alhálózat**: *FrontEnd*
+   * **Alhálózat**: *Előtér*
      
      ![Válassza ki a méret panel](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
 7. Az a **összefoglalás** ablaktáblán kattintson a **OK**. Figyelje meg a következő csempét az irányítópulton jelenik meg.

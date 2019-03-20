@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197032"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880279"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Hozzon létre egy új SaaS-alkalmazásra vonatkozó ajánlat
 
@@ -34,6 +34,7 @@ A következő ábrán egy SaaS-alkalmazás ajánlat létrehozásának folyamatá
 ## <a name="offer-components"></a>Az ajánlat összetevők
 
 Az SaaS-alkalmazás az ajánlat az alábbi táblázatban ismertetett öt szakaszokban áll:
+
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
 |    Ajánlat beállításai  |  Segítségével konfigurálhatja a SaaS-alkalmazás egyedi azonosítóval.                 |
@@ -45,7 +46,7 @@ Az SaaS-alkalmazás az ajánlat az alábbi táblázatban ismertetett öt szakasz
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Válassza ki az új ajánlat menü **SaaS-alkalmazások** jeleníti meg az új ajánlat űrlapot, és indítsa el az eszközöket egy új SaaS-alkalmazás ajánlat meghatározása.
+Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Válassza ki az új ajánlat menü **SaaS-alkalmazások** jeleníti meg az új ajánlat űrlapot, és indítsa el az eszközöket egy új SaaS-alkalmazás ajánlat meghatározása.
 
 ![Az SaaS-alkalmazásokhoz új ajánlat menü](./media/azure-new-saas-offer.png)
 
@@ -54,8 +55,8 @@ Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), majd
 Az ajánlat SaaS típusú az új ajánlat oldal nyújt lapokat és az űrlap mezőit, amelyek segítségével hozzon létre egy új ajánlatot. Az alábbi cikkekben egyes használatát ismerteti a lapon adható meg az eszközintelligencia-csoportok és az új ajánlat segítő szolgáltatás.
 
 - [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
-- [Technikai információ lap](./cpp-technical-info-tab.md)
-- [Csatorna adatai lap](./cpp-channel-info-tab.md)
+- [Technikai információs lap](./cpp-technical-info-tab.md)
+- [Csatornainformációs lap](./cpp-channel-info-tab.md)
 - [Tesztverzió lap](./cpp-testdrive-tab.md)
-- [Storefront részletei lapon](./cpp-storefront-tab.md)
-- [Ügyfelek lap](./cpp-contacts-tab.md)
+- [Áruház részletei lap](./cpp-storefront-tab.md)
+- [Névjegyek lap](./cpp-contacts-tab.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 52bfc73ad586bb3852e30a850d4ba50a113183d3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 66c5bd9390d6fe0f26af66e18aed22c07a7da3e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140417"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003110"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Prioritás forgalom-útválasztási módszert a Traffic Manager konfigurálása
 
@@ -26,7 +26,7 @@ A szolgáltatás feladatátvételének egyik küldeni a forgalmat a szolgáltat�
 
 ## <a name="to-configure-the-priority-traffic-routing-method"></a>A prioritás forgalom-útválasztási módszer konfigurálása
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
 2. A portál keresősávjában keressen a **Traffic Manager-profilok** és kattintson a profil nevét, amelyet szeretne az útválasztási módszer konfigurálása.
 3. Az a **Traffic Manager-profil** panelen ellenőrizze, hogy a cloud services és a webhelyeket, amelyeket fel szeretne venni a konfiguráció jelen.
 4. Az a **beállítások** területén kattintson **konfigurációs**, majd a a **konfigurációs** panelen adja meg a következőket:

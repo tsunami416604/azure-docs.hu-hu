@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 9c82ad04b22a29f4a548b79b9b46a08d46de24ca
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 789657e53f8575b4e001fd3ec2629aaefe1a2d8b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284313"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082007"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Ismertetése és használati ikermodulokkal az IoT hubon
 
@@ -174,43 +174,43 @@ A megoldás háttérrendszere az ikermodul használatával a következő atomi m
 
 * **Ikereszköz-értesítések fogadása**. Ez a művelet lehetővé teszi, hogy a megoldás háttérrendszere az ikereszköz módosításakor értesülni kívánnak. Ehhez az IoT-megoldás van szüksége, hozzon létre egy útvonalat és beállíthatja az adatforrás egyenlő *twinChangeEvents*. Alapértelmezés szerint nincs ikereszköz értesítések lesznek küldve, ez azt jelenti, hogy nincs ilyen útvonal már léteznie kell. Ha túl magas a változási gyakoriság, vagy más okból, például a belső hibákat, az IoT Hub küldhet csak egy értesítést, amely tartalmazza az összes módosítást. Ezért ha az alkalmazásnak megbízható vizsgálati és naplózási összes köztes állapotok, használjon eszköz – felhő üzeneteket. Ikereszköz üzenet tulajdonságait és a törzs tartalmaz.
 
-    - Tulajdonságok
+  - Tulajdonságok
 
     | Name (Név) | Érték |
     | --- | --- |
-    $content-típus | application/json |
+    $content-type | application/json |
     $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
-    $iothub-üzenet-forrás | twinChangeEvents |
-    $content-kódolás | utf-8 |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | utf-8 |
     deviceId | Az eszköz azonosítója |
     moduleId | A modul azonosítója |
-    HubName | IoT Hub nevét |
+    HubName | Name of IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) időbélyegző-művelet |
     iothub-message-schema | deviceLifecycleNotification |
     opType | "replaceTwin" vagy "updateTwin" |
 
     Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szimbólum.
 
-    - Törzs
+  - Törzs
         
     Ebben a szakaszban egy JSON-formátumban ikereszköz módosításokat tartalmazza. Ugyanazt a formátumot használja a javítások, azzal a különbséggel, hogy minden ikereszköz szakasz tartalmazhat: címkék, properties.reported, properties.desired és, hogy a "$metadata" elemeket tartalmazza. Például:
 
     ```json
     {
-        "properties": {
-            "desired": {
-                "$metadata": {
-                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
-                },
-                "$version": 1
-            },
-            "reported": {
-                "$metadata": {
-                    "$lastUpdated": "2016-02-30T16:24:48.789Z"
-                },
-                "$version": 1
-            }
-        }
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
     }
     ```
 

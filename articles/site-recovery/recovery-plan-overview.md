@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 053d400a9986d0997344b2be09140d8afb0e1faf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996367"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -29,7 +29,7 @@ A helyreállítási terv segít egy rendszeres helyreállítási folyamat meghat
 
 * A modell egy alkalmazás körül annak függőségeit.
 * RTO csökkentése érdekében a helyreállítási feladatok automatizálására.
-- Győződjön meg arról, hogy Ön még az áttelepítési vagy katasztrófa utáni helyreállítás által készített meggyőződött arról, hogy alkalmazásait egy helyreállítási terv részeként.
+* Győződjön meg arról, hogy Ön még az áttelepítési vagy katasztrófa utáni helyreállítás által készített meggyőződött arról, hogy alkalmazásait egy helyreállítási terv részeként.
 * A helyreállítási terv feladatátvételi tesztet futtatni, annak biztosítása érdekében a vész-helyreállítási vagy az áttelepítés a várt módon működik.
 
 
@@ -42,10 +42,10 @@ Tervezhet és alkalmazás-specifikus tulajdonságok rögzítése helyreállítá
     - Ez a sorrend biztosítja, hogy amikor a közbenső szoftver elindul, és megpróbál csatlakozni az SQL Server réteget, az SQL Server-csomag már fut. 
     - Ebben a sorrendben is segít, győződjön meg arról, hogy az előtér-kiszolgáló utolsó elindul, úgy, hogy a felhasználók nem csatlakoznak az alkalmazás URL-címe, előtt minden be és fut, és az alkalmazás készen áll a kérelmek fogadásához.
 
-Szeretne létrehozni ebben a sorrendben, csoportokat hozzáadni a helyreállítási csoporthoz, és hozzáadni azokat a csoportokat. 
-    - A megadott sorrendben, ahol alkalmazás-előkészítés szolgál. Adott esetben az alkalmazás RTO-helyreállítás javítása érdekében a műveletek párhuzamosan futnak.
-    - Párhuzamos feladatátvételt egyetlen csoportban lévő gépek.
-    - Gépek különféle csoportokba átadja a feladatokat csoport sorrendben, hogy a csoport 2 gépek a feladatátvétel indítása, csak az 1. csoport összes gép feladatátvétele és lépések után.
+Szeretne létrehozni ebben a sorrendben, csoportokat hozzáadni a helyreállítási csoporthoz, és hozzáadni azokat a csoportokat.
+- A megadott sorrendben, ahol alkalmazás-előkészítés szolgál. Adott esetben az alkalmazás RTO-helyreállítás javítása érdekében a műveletek párhuzamosan futnak.
+- Párhuzamos feladatátvételt egyetlen csoportban lévő gépek.
+- Gépek különféle csoportokba átadja a feladatokat csoport sorrendben, hogy a csoport 2 gépek a feladatátvétel indítása, csak az 1. csoport összes gép feladatátvétele és lépések után.
 
     ![A példában a helyreállítási terv](./media/recovery-plan-overview/rp.png)
 
@@ -93,4 +93,4 @@ Videó gyors példában kattintson a feladatátvétel egy kétrétegű WordPress
 ## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre](site-recovery-create-recovery-plans.md) a helyreállítási terv.
-* Ismerje meg [futó feladatátvételi teszteket](site-recovery-failover.md).  
+- Ismerje meg [futó feladatátvételi teszteket](site-recovery-failover.md).  

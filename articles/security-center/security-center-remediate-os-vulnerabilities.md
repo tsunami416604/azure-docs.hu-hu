@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f4558c6fdb1e5e4f0ffb7a4b4fdb1ab62eb4cfa9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121281"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Centerben a biztonsági konfigurációk javítása
 Az Azure Security Center naponta elemzi az operációs rendszer (OS) a virtuális gépek (VM) és a egy konfigurációjához, amely a teheti a virtuális gépek és számítógépek támadásokkal szemben. Biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik a javasolt biztonsági konfigurációs szabályok, és ezek a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat javasolja a Security Center javasolja.
@@ -31,34 +31,34 @@ Az Azure Security Center naponta elemzi az operációs rendszer (OS) a virtuáli
 
 Ebben a példában magában foglalja a "Biztonsági konfigurációk javítása" Javaslat alatt **számítás és alkalmazások**.
 1. A Security Centerben, a bal oldali panelén válassza **számítás és alkalmazások**.  
-  A **számítás és alkalmazások** ablak nyílik meg.
+   A **számítás és alkalmazások** ablak nyílik meg.
 
    ![Biztonsági konfigurációk javítása][1]
 
 2. Válassza ki **biztonsági konfigurációk javítása**.  
-  A **biztonsági konfigurációk** ablak nyílik meg.
+   A **biztonsági konfigurációk** ablak nyílik meg.
 
    ![A "Biztonsági konfigurációk" ablak][2]
 
-  Az irányítópult megjeleníti felső részén:
+   Az irányítópult megjeleníti felső részén:
 
-  - **Nem teljesített szabályok súlyosság szerint**: A szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és számítógépek, súlyosság szerint bontottuk ki teljes száma.
-  - **Nem teljesített szabályok típus szerinti**: A szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és számítógépek, típus szerint bontottuk ki teljes száma.
-  - **Nem sikerült a Windows szabályok**: Nem sikerült a Windows operációs rendszer beállításai alapján szabályok teljes száma.
-  - **Sikertelen Linuxos szabályok**: Nem sikerült a Linux operációsrendszer-konfigurációk szabályok teljes száma.
+   - **Nem teljesített szabályok súlyosság szerint**: A szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és számítógépek, súlyosság szerint bontottuk ki teljes száma.
+   - **Nem teljesített szabályok típus szerinti**: A szabályokat, hogy az operációs rendszer konfigurációja sikertelen volt a virtuális gépek és számítógépek, típus szerint bontottuk ki teljes száma.
+   - **Nem sikerült a Windows szabályok**: Nem sikerült a Windows operációs rendszer beállításai alapján szabályok teljes száma.
+   - **Sikertelen Linuxos szabályok**: Nem sikerült a Linux operációsrendszer-konfigurációk szabályok teljes száma.
 
-  Az irányítópult alsó részén felsorolja az összes sikertelen szabályok a virtuális gépek és számítógépek és a hiányzó frissítés súlyosságát. A listán a következő elemeket tartalmazza:
+   Az irányítópult alsó részén felsorolja az összes sikertelen szabályok a virtuális gépek és számítógépek és a hiányzó frissítés súlyosságát. A listán a következő elemeket tartalmazza:
 
-  - **CCEID**: CCE egyedi azonosítója a szabályhoz. A Security Center egyedi azonosítók hozzárendelése a konfigurációs szabályok Common Configuration Enumeration (CCE) használja.
-  - **Név**: A nem teljesített szabály neve.
-  - **Szabály típusa**: A *beállításkulcs*, *biztonsági házirend*, *naplózási házirend*, vagy *IIS* szabály típusa.
-  - **nem. virtuális gépek és számítógépek**: A virtuális gépek és a sikertelen szabályt alkalmazó számítógépek teljes száma.
-  - **Súlyosság szabály**: A CCE érték *kritikus*, *fontos*, vagy *figyelmeztetés*.
-  - **állapot**: A javaslat aktuális állapota:
+   - **CCEID**: CCE egyedi azonosítója a szabályhoz. A Security Center egyedi azonosítók hozzárendelése a konfigurációs szabályok Common Configuration Enumeration (CCE) használja.
+   - **Név**: A nem teljesített szabály neve.
+   - **Szabály típusa**: A *beállításkulcs*, *biztonsági házirend*, *naplózási házirend*, vagy *IIS* szabály típusa.
+   - **nem. virtuális gépek és számítógépek**: A virtuális gépek és a sikertelen szabályt alkalmazó számítógépek teljes száma.
+   - **Súlyosság szabály**: A CCE érték *kritikus*, *fontos*, vagy *figyelmeztetés*.
+   - **állapot**: A javaslat aktuális állapota:
 
-    - **Nyissa meg**: Az ajánlás még nem foglalkoztak.
-    - **Folyamatban lévő**: Az ajánlás jelenleg alkalmaznak az erőforrásokhoz, és ilyenkor Ön nem szükséges.
-    - **Megoldott**: Az ajánlás alkalmazásának. Ha a probléma megoldódott, a bejegyzés halványan jelenik meg.
+     - **Nyissa meg**: Az ajánlás még nem foglalkoztak.
+     - **Folyamatban lévő**: Az ajánlás jelenleg alkalmaznak az erőforrásokhoz, és ilyenkor Ön nem szükséges.
+     - **Megoldott**: Az ajánlás alkalmazásának. Ha a probléma megoldódott, a bejegyzés halványan jelenik meg.
 
 3. Nem teljesített szabály részleteinek megtekintéséhez válassza ki a listából.
 
@@ -79,17 +79,17 @@ Ebben a példában magában foglalja a "Biztonsági konfigurációk javítása" 
    - **A művelet szabály**: A szabály műveletet, amelyet a Security Center ellen a szabály a virtuális gép operációsrendszer-konfiguráció elemzése során.
 
 4. A részletes nézet ablak tetején válassza **keresési**.  
-  Keresés megnyitása a munkaterületeket, amelyeken virtuális gépek és a kiválasztott biztonsági konfigurációkat eltérő rendelkező számítógépek listáját. A munkaterület kiválasztása látható csak ha a kiválasztott szabály több virtuális gép különböző munkaterületekhez kapcsolódó vonatkozik.
+   Keresés megnyitása a munkaterületeket, amelyeken virtuális gépek és a kiválasztott biztonsági konfigurációkat eltérő rendelkező számítógépek listáját. A munkaterület kiválasztása látható csak ha a kiválasztott szabály több virtuális gép különböző munkaterületekhez kapcsolódó vonatkozik.
 
    ![Felsorolt munkaterületek][4]
 
 5. Jelöljön ki egy munkaterületet.  
-  Az Azure Monitor naplók keresési lekérdezés megnyitja a munkaterületet a biztonsági konfigurációk eltérés a szűrt.
+   Az Azure Monitor naplók keresési lekérdezés megnyitja a munkaterületet a biztonsági konfigurációk eltérés a szűrt.
 
    ![Az operációs rendszer biztonsági rése munkaterület][5]
 
 6. Válasszon ki egy számítógépet a listában.  
-  Csak az adott számítógépen a szűrt adatokat egy új keresési eredmény nyílik meg.
+   Csak az adott számítógépen a szűrt adatokat egy új keresési eredmény nyílik meg.
 
    ![A kiválasztott számítógép kapcsolatos részletes információk][6]
 

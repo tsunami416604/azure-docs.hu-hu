@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454215"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083198"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -26,7 +26,7 @@ Javascriptben tárolt eljárások, eseményindítók és felhasználó által de
 
 * **Elemi tranzakciókat:** Az Azure Cosmos DB garantálja, hogy egyetlen tárolt eljárás vagy eseményindító belül végzett adatbázis-műveletek elemiek. A atomi funkció lehetővé teszi, hogy egy alkalmazás az egy kötegben kapcsolódó műveletek egyesíteni, hogy minden művelet sikeres legyen, vagy egyiket sem sikerült.
 
-- **Teljesítmény:** A JSON-adatokat a JavaScript nyelvű típus rendszer belsőleg képeződik le. Ez a leképezés optimalizálások Lusta materialization a pufferkészletben és az így elérhető igény szerinti a végrehajtó kód JSON-dokumentumok, például számos tesz lehetővé. Vannak más üzleti logikát az adatbázis, amely tartalmazza a szállítási társított teljesítmény előnyeit:
+* **Teljesítmény:** A JSON-adatokat a JavaScript nyelvű típus rendszer belsőleg képeződik le. Ez a leképezés optimalizálások Lusta materialization a pufferkészletben és az így elérhető igény szerinti a végrehajtó kód JSON-dokumentumok, például számos tesz lehetővé. Vannak más üzleti logikát az adatbázis, amely tartalmazza a szállítási társított teljesítmény előnyeit:
 
    * *Kötegelés:* Csoport műveletek, mint a beszúrások, és küldheti el ezeket a tömegesen. A hálózati forgalom késés költségeket és a tároló terhelését a létrehozott különálló tranzakciók jelentősen csökken.
 
@@ -34,7 +34,7 @@ Javascriptben tárolt eljárások, eseményindítók és felhasználó által de
 
    * *Alkalmazás-előkészítés:* Műveletek igények egy eseményindító mechanizmust, amely végrehajthat egyet vagy az adatok további frissítései. Atomitást kívül is teljesítménybeli előnyök a kiszolgáló oldalán végrehajtása közben.
 
-- **Beágyazás:** Tárolt eljárások segítségével egy helyen logikai csoportosítása. Beágyazás hozzáad egy olyan absztrakciós réteget az adatokat, ami lehetővé teszi a való összpontosításnak köszönhetően az alkalmazások egymástól függetlenül az adatok felett. Absztrakciós réteg akkor hasznos, ha az adatok séma nélküli, és nem kell további logikát hozzáadása közvetlenül az alkalmazásba való kezeléséhez. Az absztrakciós lehetővé teszi, hogy az adatok biztonságos egyszerűsítheti a parancsfájlokat a hozzáférést a megtartása.
+* **Beágyazás:** Tárolt eljárások segítségével egy helyen logikai csoportosítása. Beágyazás hozzáad egy olyan absztrakciós réteget az adatokat, ami lehetővé teszi a való összpontosításnak köszönhetően az alkalmazások egymástól függetlenül az adatok felett. Absztrakciós réteg akkor hasznos, ha az adatok séma nélküli, és nem kell további logikát hozzáadása közvetlenül az alkalmazásba való kezeléséhez. Az absztrakciós lehetővé teszi, hogy az adatok biztonságos egyszerűsítheti a parancsfájlokat a hozzáférést a megtartása.
 
 > [!TIP]
 > Tárolt eljárások leginkább alkalmasak arra, hogy vannak (nagy erőforrásigényű) írási műveleteket. Elhelyezésekor tárolt eljárások, optimalizálhatja körül fejlécbe foglalja az írások lehetséges maximális számát. Általánosan fogalmazva a tárolt eljárások nem állnak a lehető leghatékonyabb módon a batch nagy mennyiségű olvasási tárolt eljárások használatával térjen vissza az ügyfél nem eredményez, a kívánt juttatás nagy számú olvasási műveleteket végezni.

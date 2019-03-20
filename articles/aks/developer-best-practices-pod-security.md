@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: d48a1a1c9e220690649bbf60e9909a38d575c156
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c2c8522e796fa43f08bf8ad2d61e70a8205d77b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183526"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) pod biztonsági védelmének bevált gyakorlata
 
@@ -74,6 +74,8 @@ A következő [társított AKS nyílt forráskódú projektek] [ aks-associated-
 
 * Felügyelt identitások az Azure-erőforrásokhoz, és
 * Az Azure Key Vault FlexVol illesztőprogram
+
+Társított AKS nyílt forráskódú projektek nem támogatottak az Azure műszaki támogatást. A biztosított gyűjthet visszajelzéseket és a hibák kapcsolódóan a Közösség részéről. Ezek a projektek nem ajánlottak éles környezetben való használatra.
 
 ### <a name="use-pod-managed-identities"></a>Használat pod felügyelt identitások
 

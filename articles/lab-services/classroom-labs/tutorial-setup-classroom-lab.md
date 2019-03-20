@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6816c21d30ff5340441d58aff202c271eb1c836a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649586"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090321"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -69,9 +69,9 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Az a **konfigurálása sablon** lapon, tegye a következőket: Ezeknek a lépéseknek **választható** -t az oktatóanyaghoz.
-    2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. 
-    3. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon.     
-    5. Adja meg a sablon **leírását**.
+   1. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. 
+   1. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon.     
+   1. Adja meg a sablon **leírását**.
 9. Válassza ki a **Tovább** gombot a sablon oldalán. 
 10. A **Sablon közzététele** oldalon tegye az alábbiakat. 
     1. A sablon azonnali közzétételének, és válassza ki **közzététel**.  
@@ -89,10 +89,10 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
     ![Sablon sikeres közzététele](../media/tutorial-setup-classroom-lab/publish-success.png)
 1. A rendszer megjeleníti a tesztkörnyezet **irányítópultját**. 
     
-    ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
+     ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 4. Váltson a **virtuális gépek** oldalán válassza a bal oldali menüben lévő virtuális gépek vagy a virtuális gépek csempe kiválasztásával. Győződjön meg arról, hogy a virtuális gépeket **nincs hozzárendelve** állapota. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
 
-    ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
 ## <a name="add-users-to-the-lab"></a>Felhasználók hozzáadása a labor létrehozása
 

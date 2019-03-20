@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 895499865fb1d47669fcca2aeaa571b2fb79237b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438720"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100462"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
@@ -52,7 +52,7 @@ Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni 
 
        Eltávolít egy végpontot, hogy törölje a szolgáltatást el kívánja távolítani a szolgáltatásvégpontot. A Szolgáltatásvégpontok és a szolgáltatások is engedélyezhető a kapcsolatos további tudnivalókért lásd: [virtuális hálózati Szolgáltatásvégpontok áttekintése](virtual-network-service-endpoints-overview.md). Miután engedélyezte egy végpontot a szolgáltatáshoz, az IP-alhálózatot a szolgáltatással létrehozott erőforrások hálózati hozzáférésének is engedélyeznie kell. Például, ha engedélyezi a szolgáltatás végpontját *Microsoft.Storage*, is engedélyeznie kell az összes Azure Storage-fiókok, hálózati hozzáférést szeretne való hálózati hozzáférés. További információ az alhálózatokra, amelyek a szolgáltatásvégpont engedélyezve van a hálózati hozzáférés engedélyezése, az adott szolgáltatás dokumentációjában talál engedélyezve van a szolgáltatásvégpontot.
 
-    Ellenőrizze, hogy a szolgáltatásvégpont engedélyezve van-e egy alhálózathoz, tekintse meg a [érvényes útvonalak](diagnose-network-routing-problem.md) az alhálózat bármely hálózati interfész. Ha a végpont konfigurálva van, megjelenik egy *alapértelmezett* útvonal a címelőtagokat a szolgáltatás és a egy a nexthoptype elem **VirtualNetworkServiceEndpoint**. További információ az útválasztásról, lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
+     Ellenőrizze, hogy a szolgáltatásvégpont engedélyezve van-e egy alhálózathoz, tekintse meg a [érvényes útvonalak](diagnose-network-routing-problem.md) az alhálózat bármely hálózati interfész. Ha a végpont konfigurálva van, megjelenik egy *alapértelmezett* útvonal a címelőtagokat a szolgáltatás és a egy a nexthoptype elem **VirtualNetworkServiceEndpoint**. További információ az útválasztásról, lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
 6. Az alhálózat hozzáadása a kiválasztott virtuális hálózat, válassza ki a **OK**.
 
 **Parancsok**

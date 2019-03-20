@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101465"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Értékelések készítése az API-konzol
 
@@ -33,35 +33,35 @@ Próbálhatják ki őket az API-t az online konzol használatával, meg kell adn
 
 A legegyszerűbb módszer a tesztelési konzol eléréséhez, az a **hitelesítő adatok** ablak.
 
-1.  Az a **hitelesítő adatok** ablakban válassza [felülvizsgálati API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+1. Az a **hitelesítő adatok** ablakban válassza [felülvizsgálati API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-  A **áttekintése – létrehozása** lap megnyitásakor.
+   A **áttekintése – létrehozása** lap megnyitásakor.
 
-2.  A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti.
+2. A **Open API tesztelési konzollal**, válassza ki a régiót, amelyben leginkább a tartózkodási ismerteti.
 
-  ![Tekintse át, – létrehozása lap régió kiválasztása](images/test-drive-region.png)
+   ![Tekintse át, – létrehozása lap régió kiválasztása](images/test-drive-region.png)
 
-  A **áttekintése – létrehozása** API-konzol megnyitása.
+   A **áttekintése – létrehozása** API-konzol megnyitása.
   
-3.  Adja meg a szükséges lekérdezési paramétereket, tartalom típusa és az előfizetési kulcs értékét. Az a **kérelem törzse** adja meg a tartalom (például lemezkép helyét), a metaadatok és az egyéb a tartalommal kapcsolatos információkat.
+3. Adja meg a szükséges lekérdezési paramétereket, tartalom típusa és az előfizetési kulcs értékét. Az a **kérelem törzse** adja meg a tartalom (például lemezkép helyét), a metaadatok és az egyéb a tartalommal kapcsolatos információkat.
 
-  ![Tekintse át,-konzol lekérdezési paramétereket, fejléceket és kérelem törzse mezőbe létrehozása](images/test-drive-review-1.PNG)
+   ![Tekintse át,-konzol lekérdezési paramétereket, fejléceket és kérelem törzse mezőbe létrehozása](images/test-drive-review-1.PNG)
   
-4.  Kattintson a **Küldés** gombra. A felülvizsgálati ID jön létre. Másolja ezt az Azonosítót a következő lépésekben használni.
+4. Kattintson a **Küldés** gombra. A felülvizsgálati ID jön létre. Másolja ezt az Azonosítót a következő lépésekben használni.
 
-  ![Tekintse át,-konzol válasz content jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-review-2.PNG)
+   ![Tekintse át,-konzol válasz content jelenít meg a felülvizsgálati azonosító létrehozása](images/test-drive-review-2.PNG)
   
-5.  Válassza ki **első**, majd nyissa meg az API-t, amely megfelel az Ön régiójában gomb kiválasztásával. Az eredményül kapott lapon adja meg a **teamName**, **ReviewID**, és **előfizetési kulcs**. Válassza ki a **küldése** gombra a lapon. 
+5. Válassza ki **első**, majd nyissa meg az API-t, amely megfelel az Ön régiójában gomb kiválasztásával. Az eredményül kapott lapon adja meg a **teamName**, **ReviewID**, és **előfizetési kulcs**. Válassza ki a **küldése** gombra a lapon. 
 
-  ![Tekintse át – a Get-eredményeket hozhatnak létre a konzol](images/test-drive-review-3.PNG)
+   ![Tekintse át – a Get-eredményeket hozhatnak létre a konzol](images/test-drive-review-3.PNG)
   
-6.  Látni fogja a vizsgálat eredményeit.
+6. Látni fogja a vizsgálat eredményeit.
 
-  ![Tekintse át – a konzol válasz tartalom mező létrehozása](images/test-drive-review-4.PNG)
+   ![Tekintse át – a konzol válasz tartalom mező létrehozása](images/test-drive-review-4.PNG)
   
-7.  A Content Moderator irányítópultján válassza ki a **felülvizsgálati** > **lemezkép**. A vizsgált kép akkor jelenik meg, emberi felülvizsgálati kész.
+7. A Content Moderator irányítópultján válassza ki a **felülvizsgálati** > **lemezkép**. A vizsgált kép akkor jelenik meg, emberi felülvizsgálati kész.
 
-  ![Tekintse át a foci golyó eszköz képe](images/test-drive-review-5.PNG)
+   ![Tekintse át a foci golyó eszköz képe](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>További lépések
 

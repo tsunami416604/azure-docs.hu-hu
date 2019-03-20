@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 4739308d301291bf88e8ae547ba85f9648339c4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991359"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118459"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -159,15 +159,15 @@ Most a Contoso futtathatja a helyszíni SQL Server-adatbázis a SmartHotel360 al
 
     ![Data Migration Assistant – forrás kiválasztása](./media/contoso-migration-assessment/dma-assessment-1.png)
 
-    > [!NOTE]
-      Jelenleg Data Migration Assistant nem támogatja a felmérés az Azure SQL Database felügyelt példányába történő áttelepítéséhez. Áthidaló megoldásként Contoso az SQL Server-beli virtuális gépen feltételezett célként az értékelés.
+   > [!NOTE]
+   >    Jelenleg Data Migration Assistant nem támogatja a felmérés az Azure SQL Database felügyelt példányába történő áttelepítéséhez. Áthidaló megoldásként Contoso az SQL Server-beli virtuális gépen feltételezett célként az értékelés.
 
 3. A **cél verziójának kiválasztása**, Contoso az SQL Server 2017-ben a célverzió, választja ki. Ezt a verziót választja, a verziót, amelyet az SQL Database felügyelt példányát, mert a Contoso cégnek szüksége van.
 4. Contoso lehetőséget választja, jelentések, tudjon meg többet a kompatibilitási és az új funkciók segítik:
-    - **Kompatibilitási problémák** vegye figyelembe, amely meghiúsulhat a migrálás, vagy egy kisebb beállítások áttelepítése előtt igénylő módosításokat. Ez a jelentés megtartja a Contoso szerez tudomást bármely elavult funkciók jelenleg használatban van. A problémák kompatibilitási szint szerint vannak rendezve.
-    - **Új szolgáltatásokra vonatkozó javaslat** megjegyzések az áttelepítés után az adatbázis használható SQL Server célplatformon új funkciói. Új szolgáltatási javaslatok a pontok alapján vannak rendezve **teljesítmény**, **biztonsági**, és **tárolási**.
+   - **Kompatibilitási problémák** vegye figyelembe, amely meghiúsulhat a migrálás, vagy egy kisebb beállítások áttelepítése előtt igénylő módosításokat. Ez a jelentés megtartja a Contoso szerez tudomást bármely elavult funkciók jelenleg használatban van. A problémák kompatibilitási szint szerint vannak rendezve.
+   - **Új szolgáltatásokra vonatkozó javaslat** megjegyzések az áttelepítés után az adatbázis használható SQL Server célplatformon új funkciói. Új szolgáltatási javaslatok a pontok alapján vannak rendezve **teljesítmény**, **biztonsági**, és **tárolási**.
 
-    ![Data Migration Assistant - kompatibilitási problémák és az új funkciók](./media/contoso-migration-assessment/dma-assessment-2.png)
+     ![Data Migration Assistant - kompatibilitási problémák és az új funkciók](./media/contoso-migration-assessment/dma-assessment-2.png)
 
 2. A **Kapcsolódás kiszolgálóhoz**, Contoso beírja a nevét, a virtuális gép, amelyen fut az adatbázis és a hozzáférési hitelesítő adatokat. Contoso kiválasztja **megbízható kiszolgálói tanúsítvány** , hogy a virtuális gép hozzáférhet az SQL Server. Ezután kiválasztja a Contoso **Connect**.
 
@@ -186,13 +186,13 @@ Eredmények jelennek meg, amint azok elérhetők. Ha Contoso hibákat javít, ak
 
 1. Az a **kompatibilitási problémák** jelentésében a Contoso ellenőrzi az esetleges problémákat az egyes kompatibilitási szinten. A kompatibilitási szintek a következőképpen feleltethetők meg az SQL Server-verzióknak:
 
-    - 100: SQL Server 2008/Azure SQL Database
-    - 110: SQL Server 2012/Azure SQL Database
-    - 120: SQL Server 2014/Azure SQL Database
-    - 130: SQL Server 2016/Azure SQL Database
-    - 140: SQL Server 2017/Azure SQL Database
+   - 100: SQL Server 2008/Azure SQL Database
+   - 110: SQL Server 2012/Azure SQL Database
+   - 120: SQL Server 2014/Azure SQL Database
+   - 130: SQL Server 2016/Azure SQL Database
+   - 140: SQL Server 2017/Azure SQL Database
 
-    ![Data Migration Assistant - kompatibilitási problémák jelentés](./media/contoso-migration-assessment/dma-assessment-5.png)
+     ![Data Migration Assistant - kompatibilitási problémák jelentés](./media/contoso-migration-assessment/dma-assessment-5.png)
 
 2. Az a **Szolgáltatásjavaslatok** jelentésében a Contoso megtekinti a teljesítmény, biztonság és tárolási szolgáltatások, amelyek az értékelés szerint az áttelepítés után. Számos különböző funkció használata akkor javasolt, többek között a In-Memory OLTP, az oszlopcentrikus indexek, Stretch Database, Always Encrypted, a dinamikus adatmaszkolás és transzparens adattitkosítás.
 
@@ -403,14 +403,14 @@ Contoso futtatja a telepítést az egyes virtuális Gépeken.
 
     `sudo -i`
 3. Contoso telepíti az MMA:
-    - Contoso kerül, a parancsban a munkaterület Azonosítójára és kulcsára.
-    - A 64 bites parancsai.
-    - A munkaterület-Azonosítót és elsődleges kulcsot a Log Analytics-munkaterületet az Azure Portalon található. Válassza ki **beállítások**, majd válassza ki a **csatlakoztatott források** fülre.
-    - Töltse le a Log Analytics-ügynököket, a ellenőrzőösszegének ellenőrzése, és telepítse a következő parancsokat, és előkészítheti az ügynököt:
+   - Contoso kerül, a parancsban a munkaterület Azonosítójára és kulcsára.
+   - A 64 bites parancsai.
+   - A munkaterület-Azonosítót és elsődleges kulcsot a Log Analytics-munkaterületet az Azure Portalon található. Válassza ki **beállítások**, majd válassza ki a **csatlakoztatott források** fülre.
+   - Töltse le a Log Analytics-ügynököket, a ellenőrzőösszegének ellenőrzése, és telepítse a következő parancsokat, és előkészítheti az ügynököt:
 
-    ```
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
-    ```
+     ```
+     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==
+     ```
 
 #### <a name="install-the-dependency-agent-on-linux-vms"></a>A függőségi ügynök telepítése Linux rendszerű virtuális gépeken
 

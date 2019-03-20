@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9ee0abdf722d3dc6d0d332f3894943bd3a03a877
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: MT
+ms.openlocfilehash: e29d4c0a4279ae44a45b082c5a36b471af3cb12a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671914"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110188"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing beszédfelismerés REST API használata
 
@@ -67,7 +67,7 @@ Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
 | Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
 |---|---|---|---|
 | `interactive` | pt-BR | Alapértelmezett | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | Részletes |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `conversation` | en-US | Részletes | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | FR-FR | Egyszerű | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]

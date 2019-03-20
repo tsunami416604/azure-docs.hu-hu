@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 012a352b00de2e2d1bf64fd18125ddd10faba5cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122807"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -118,14 +118,14 @@ A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virt
 
    Az okok, az alábbiakban a vannak vonatkozóan miért értékelés kérhetők le egy alacsony megbízhatósági minősítés:
 
-   - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például létrehoz egy teljesítményértékelést 1 napra állított időtartammal, akkor a felderítés indítását követően legalább egy napot várnia kell arra, hogy az összes adatpont be legyen gyűjtve.
+- Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például létrehoz egy teljesítményértékelést 1 napra állított időtartammal, akkor a felderítés indítását követően legalább egy napot várnia kell arra, hogy az összes adatpont be legyen gyűjtve.
 
-   - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamelyik virtuális gép egy ideig ki volt kapcsolva, nem fogjuk tudni begyűjteni az adott időszak teljesítményadatait.
+- Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamelyik virtuális gép egy ideig ki volt kapcsolva, nem fogjuk tudni begyűjteni az adott időszak teljesítményadatait.
 
-   - Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.
+- Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.
 
-   > [!NOTE]
-   > Ha valamely értékelés megbízhatósági minősítése 5 csillag alatt van, azt javasoljuk, hogy Várjon, amíg legalább egy napot a berendezés-profil a környezetre, majd *újraszámítása* az értékelést. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
+  > [!NOTE]
+  > Ha valamely értékelés megbízhatósági minősítése 5 csillag alatt van, azt javasoljuk, hogy Várjon, amíg legalább egy napot a berendezés-profil a környezetre, majd *újraszámítása* az értékelést. Ha ez nem végezhető el, akkor lehet, hogy a teljesítményalapú méretezés nem megbízható, és azt javasoljuk, hogy az értékelés tulajdonságainak módosításával váltson *helyszíni méretezésre*.
 
 ## <a name="monthly-cost-estimation"></a>Havi Költségbecslés
 

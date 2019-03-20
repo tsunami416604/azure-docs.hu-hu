@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79104895e91dc2143a0f4a592878ecc5e2df61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172824"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085779"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -39,9 +39,9 @@ A RADIUS-hitelesítés konfigurálásához telepítse az Azure Multi-Factor Auth
 4. Kattintson a **Hozzáadás** parancsra.
 5. Adja meg az Azure Multi-Factor Authentication-kiszolgálón hitelesítendő készülék/kiszolgáló IP-címét, egy alkalmazásnevet (nem kötelező) és egy közös titkos kulcsot.
 
-  Az alkalmazásnév megjelenik a jelentésekben, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
+   Az alkalmazásnév megjelenik a jelentésekben, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 
-  A közös titkos kulcsnak azonosnak kell lennie az Azure Multi-Factor Authentication-kiszolgálón és a készüléken/kiszolgálón.
+   A közös titkos kulcsnak azonosnak kell lennie az Azure Multi-Factor Authentication-kiszolgálón és a készüléken/kiszolgálón.
 
 6. Jelölje be a **Multi-Factor Authentication felhasználói egyeztetés megkövetelése** jelölőnégyzetet, ha az összes felhasználót importálta a kiszolgálóra, és többtényezős hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra vagy mentesül a kétlépéses ellenőrzés alól, ne jelölje be a jelölőnégyzetet.
 7. Jelölje be a **Tartalék OATH token engedélyezése** jelölőnégyzetet, ha mobil hitelesítő alkalmazásokból származó OATH PIN-kódokat szeretné biztonsági mentési módszerként használni.

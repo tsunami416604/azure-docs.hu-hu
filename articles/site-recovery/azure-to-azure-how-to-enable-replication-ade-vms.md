@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456231"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117455"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Az Azure disk encryption (ADE) engedélyezve van a virtuális gépek replikálása másik Azure-régióba
 
@@ -123,8 +123,8 @@ A Site Recovery által használt alapértelmezett célbeállítások módosítha
 
 
 2. Kattintson a **testreszabása:** melletti "Titkosítási beállítások" módosítása az alapértelmezett beállításokat alább:
-    - A **cél lemez titkosítása a key vault**, válassza ki a cél lemez titkosítása a key vault a célként megadott helyen az előfizetés összes kulcstárolójának listájából.
-  - A **cél kulcs titkosítása a key vault**, válassza ki a cél kulcs titkosítása a key vault a célként megadott helyen az előfizetés összes kulcstárolójának listájából.
+   - A **cél lemez titkosítása a key vault**, válassza ki a cél lemez titkosítása a key vault a célként megadott helyen az előfizetés összes kulcstárolójának listájából.
+     - A **cél kulcs titkosítása a key vault**, válassza ki a cél kulcs titkosítása a key vault a célként megadott helyen az előfizetés összes kulcstárolójának listájából.
 
 3. Kattintson a **célként megadott erőforrás létrehozása** > **replikáció engedélyezése**.
 4. Után a replikáció engedélyezve vannak a virtuális gépek, virtuális gép állapota alapján állapotát ellenőrizheti **replikált elemek**

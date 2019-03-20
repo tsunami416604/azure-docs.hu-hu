@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: 88bb87dea4508ba41ee97a127fc60c531f2bfcab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5b76d7393e78b464227e93a4c7c8a3f22ccc169e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092531"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Gráfadatbázis létrehozása a Python és az Azure portal segítségével Azure Cosmos DB-ben
 
@@ -222,17 +222,17 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 12. Most már összekapcsolhatjuk a rakesh és az ashley elemet. Győződjön meg arról, hogy az **ashley** elem van kijelölve a **Találatok** listában, majd kattintson a jobb alsó sarokban, a **Célok** elem mellett lévő Szerkesztés gombra. Előfordulhat, hogy szélesebbre kell állítania az ablakot a **Tulajdonságok** terület megjelenítéséhez.
 
-   ![Gráfcsúcspont céljának módosítása](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Gráfcsúcspont céljának módosítása](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. A **Cél** mezőbe írja be a *rakesh* nevet, az **Élcímke** mezőbe pedig a *knows* karakterláncot, majd jelölje be a jelölőnégyzetet.
 
-   ![ashley és rakesh közötti kapcsolat hozzáadása az Adatkezelőben](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    ![ashley és rakesh közötti kapcsolat hozzáadása az Adatkezelőben](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Ezután válassza ki a **rakesh** elemet a találatok listájából. Láthatja, hogy az ashley és a rakesh elem össze van kapcsolva. 
 
-   ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    ![Két összekapcsolt csúcspont az Adatkezelőben](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
 
-   Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
+    Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét. A gráfhoz továbbra is hozzáadhat csúcspontokat, módosíthatja a meglévő csúcspontokat, és megváltoztathatja a lekérdezéseket. Most pedig tekintsük át az Azure Cosmos DB által biztosított mérőszámokat, majd távolítsuk el az erőforrásokat. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

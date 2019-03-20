@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856260"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -64,7 +64,7 @@ Használja a _letilthatók és feloldhatók felhasználók_ funkció meg, hogy a
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
 2. Keresse meg a **Azure Active Directory** > **MFA** > **felhasználó blokkolása/feloldása**.
 3. Válassza ki **Hozzáadás** a felhasználó blokkolását.
-4. Válassza ki a **replikációs csoport**. Adja meg a felhasználónevet a letiltott felhasználó **username@domain.com**. Adja meg a megjegyzést a **OK** mező.
+4. Válassza ki a **replikációs csoport**. Adja meg a felhasználónevet a letiltott felhasználó **felhasználónév\@tartomány.com**. Adja meg a megjegyzést a **OK** mező.
 5. Válassza ki **Hozzáadás** a felhasználó letiltásának befejezéséhez.
 
 ### <a name="unblock-a-user"></a>Felhasználó blokkolásának feloldása
@@ -154,7 +154,7 @@ A _egyszeri Mellőzés_ funkció lehetővé teszi, hogy a felhasználó egy alka
 2. Keresse meg a **Azure Active Directory** > **MFA** > **egyszeri Mellőzés**.
 3. Válassza a **Hozzáadás** lehetőséget.
 4. Ha szükséges, válassza ki a replikációs csoport a Mellőzés.
-5. Adja meg a felhasználónevét, **username@domain.com**. Adja meg a Mellőzés kell utolsó másodpercek számát. Adja meg a mellőzés okát.
+5. Adja meg a felhasználónevét, **felhasználónév\@tartomány.com**. Adja meg a Mellőzés kell utolsó másodpercek számát. Adja meg a mellőzés okát.
 6. Válassza a **Hozzáadás** lehetőséget. Az időkorlát azonnal érvénybe lép. A felhasználónak kell bejelentkezni, mielőtt az egyszeri Mellőzés lejár.
 
 ### <a name="view-the-one-time-bypass-report"></a>Az egyszeri Mellőzés jelentés megtekintése
@@ -252,7 +252,7 @@ Alapértelmezés szerint a felhasználók az alkalmazásjelszavak nem hozható l
 
 Felhasználók hozhatnak létre alkalmazásjelszókat a kezdeti regisztráció során. A felhasználók számára a regisztrációs folyamat végén az alkalmazásjelszavak létrehozásának lehetősége.
 
-Felhasználók is hozhatnak létre alkalmazásjelszókat regisztráció után. Az alkalmazásjelszavak módosíthatja a beállításokat az Azure portal vagy az Office 365 portálon keresztül. További információk és részletes lépéseket a felhasználók számára: [Mik az Azure multi-factor Authentication alkalmazásjelszókat?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+Felhasználók is hozhatnak létre alkalmazásjelszókat regisztráció után. További információk és részletes lépéseket a felhasználók számára: [Mik az Azure multi-factor Authentication alkalmazásjelszókat?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
 ## <a name="trusted-ips"></a>Megbízható IP-címek
 

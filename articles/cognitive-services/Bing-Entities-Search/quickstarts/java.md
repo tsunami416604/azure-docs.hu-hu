@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 4a8f4fb3605f254bb48005e944a49fe45395aaec
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d9001a10afdb92e2ebe469e3beb080c667e8559b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542522"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097337"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API Java használatával
 
@@ -35,25 +35,25 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
 
 1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
 
-  ```java
-  import java.io.*;
-  import java.net.*;
-  import java.util.*;
-  import javax.net.ssl.HttpsURLConnection;
-  import com.google.gson.Gson;
-  import com.google.gson.GsonBuilder;
-  import com.google.gson.JsonObject;
-  import com.google.gson.JsonParser;
-  import com.google.gson.Gson;
-  import com.google.gson.GsonBuilder;
-  import com.google.gson.JsonObject;
-  import com.google.gson.JsonParser;
-  ```
+   ```java
+   import java.io.*;
+   import java.net.*;
+   import java.util.*;
+   import javax.net.ssl.HttpsURLConnection;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   import com.google.gson.Gson;
+   import com.google.gson.GsonBuilder;
+   import com.google.gson.JsonObject;
+   import com.google.gson.JsonParser;
+   ```
 
 2. Hozzon létre egy új osztályt, változókat, az API-végpont, az előfizetési kulcs és a egy keresési lekérdezést.
 
-  ```java
-  public class EntitySearch {
+   ```java
+   public class EntitySearch {
 
       static String subscriptionKey = "ENTER KEY HERE";
     
@@ -62,9 +62,9 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
     
         static String mkt = "en-US";
         static String query = "italian restaurant near me";
-  //...
+   //...
     
-  ```
+   ```
 
 ## <a name="construct-a-search-request-string"></a>Egy keresési kérelmet karakterlánc létrehozása
 
@@ -123,16 +123,16 @@ Bár ez az alkalmazás Java nyelven lett íródott, az API egy RESTful-webszolg�
 
 2. A Gson könyvtár segítségével hozzon létre egy új `GsonBuilder()`, és használja `setPrettyPrinting().create()` a json formázását. Majd vissza.    
   
-  ```java
-  //...
-  public static String prettify (String json_text) {
+   ```java
+   //...
+   public static String prettify (String json_text) {
     JsonParser parser = new JsonParser();
     JsonObject json = parser.parse(json_text).getAsJsonObject();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     return gson.toJson(json);
-  }
-  //...
-  ```
+   }
+   //...
+   ```
 
 ## <a name="call-the-search-function"></a>A search függvény hívása
 

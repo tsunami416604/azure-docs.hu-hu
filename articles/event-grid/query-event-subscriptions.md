@@ -8,16 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: spelluru
-ms.openlocfilehash: ac43b85858451149ceabf87c77b42d40fbd4eac4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470978"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181690"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid-előfizetések lekérdezése 
 
 Ez a cikk ismerteti, hogyan kell felsorolni az Event Grid-előfizetések az Azure-előfizetésében. A meglévő Event Grid-előfizetések lekérdezése, esetén fontos tudni, hogy a különböző típusú előfizetések. A lekérdezni kívánt előfizetés alapján különböző paraméterek adnia.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-groups-and-azure-subscriptions"></a>Erőforráscsoport- és Azure-előfizetések
 
@@ -35,8 +37,8 @@ az eventgrid event-subscription list
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Set-AzureRmContext -Subscription "My Azure Subscription"
-Get-AzureRmEventGridSubscription
+Set-AzContext -Subscription "My Azure Subscription"
+Get-AzEventGridSubscription
 ```
 
 Event grid-előfizetések Azure-előfizetés beszerzéséhez adja meg a témakörtípus **Microsoft.Resources.Subscriptions**.
@@ -50,7 +52,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subs
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
 Event grid-előfizetések az Azure-előfizetésen belüli összes erőforráscsoport lekéréséhez adja meg a témakörtípus **Microsoft.Resources.ResourceGroups**.
@@ -64,7 +66,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Reso
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
 Event grid-előfizetések a meghatározott erőforráscsoportban lekéréséhez adja meg az erőforráscsoport nevét paraméterként.
@@ -78,7 +80,7 @@ az eventgrid event-subscription list --resource-group myResourceGroup
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="custom-topics-and-azure-resources"></a>Egyéni témaköröket és az Azure-erőforrások
@@ -96,7 +98,7 @@ az eventgrid event-subscription list --location westus2
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -Location westus2
+Get-AzEventGridSubscription -Location westus2
 ```
 
 Egyéni témakörök, előfizetések beolvasása egy adott helyre vonatkozóan, adja meg a hely és a témakörtípus **Microsoft.EventGrid.Topics**.
@@ -110,7 +112,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.EventGrid.Topi
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
 Storage-fiókok, előfizetések beolvasása egy adott helyre vonatkozóan, adja meg a hely és a témakörtípus **Microsoft.Storage.StorageAccounts**.
@@ -124,7 +126,7 @@ az eventgrid event-subscription list --topic-type "Microsoft.Storage.StorageAcco
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
 Event grid-előfizetések egy egyéni témakör lekéréséhez adja meg az egyéni témakör nevét és az erőforráscsoport nevét.
@@ -138,7 +140,7 @@ az eventgrid event-subscription list --topic-name myCustomTopic --resource-group
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
 Event grid-előfizetések egy adott erőforráshoz lekéréséhez adja meg az erőforrás-azonosítója.
@@ -153,8 +155,8 @@ az eventgrid event-subscription list --resource-id $resourceid
 PowerShell esetén használja az alábbi parancsot:
 
 ```azurepowershell-interactive
-$resourceid = (Get-AzureRmResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
-Get-AzureRmEventGridSubscription -ResourceId $resourceid
+$resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
+Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
 ## <a name="next-steps"></a>További lépések

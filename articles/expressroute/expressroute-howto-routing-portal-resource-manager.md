@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0cc0068f9e1d836800aa77b3057815962581d47b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 401827f3fa5eb6d364d0f133d8cd672cf8968031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103179"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
@@ -57,37 +57,37 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a Microsoft társviszony-létesítés, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
 
-  ![Microsoft társviszony-létesítés listázása](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![Microsoft társviszony-létesítés listázása](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
 
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
-  * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
-  * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-  * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha azt tervezi, az előtagok megadni, küldhet egy vesszővel tagolt lista. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
-  * **Nem kötelező –** ügyfél ASN-ként: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak.
-  * Útválasztási jegyzék neve: Megadhatja az RIR / IRR jegyzék nevét, amely az AS-szám és az előtagok regisztrálva vannak.
-  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
+   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
+   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
+   * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha azt tervezi, az előtagok megadni, küldhet egy vesszővel tagolt lista. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
+   * **Nem kötelező –** ügyfél ASN-ként: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak.
+   * Útválasztási jegyzék neve: Megadhatja az RIR / IRR jegyzék nevét, amely az AS-szám és az előtagok regisztrálva vannak.
+   * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 3. Kiválaszthatja, hogy a társviszonyt szeretne beállítani, az alábbi példában látható módon. Válassza ki a Microsoft társviszony-létesítés sorát.
 
-  ![Válassza ki a Microsoft társviszony-létesítés sort](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
+   ![Válassza ki a Microsoft társviszony-létesítés sort](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
 4. Konfigurálja a Microsoft társviszony-beállítást. Az alábbi kép egy példakonfigurációt mutat be:
 
-  ![Konfigurálja a Microsoft társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
+   ![Konfigurálja a Microsoft társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
 5. Mentse a konfigurációt, miután megadta az összes paramétert.
 
-  Ha a kapcsolatcsoport lekérdezi a "Érvényesítését szükséges" állapotba (ahogy az ábrán látható), meg kell nyitnia egy támogatási jegyet az ügyfélszolgálati csapatunkhoz az előtagok tulajdonjogának megvalósíthatósági megjelenítéséhez.
+   Ha a kapcsolatcsoport lekérdezi a "Érvényesítését szükséges" állapotba (ahogy az ábrán látható), meg kell nyitnia egy támogatási jegyet az ügyfélszolgálati csapatunkhoz az előtagok tulajdonjogának megvalósíthatósági megjelenítéséhez.
 
-  ![A Microsoft társviszony-létesítési konfigurációjának mentése](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![A Microsoft társviszony-létesítési konfigurációjának mentése](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-  Közvetlenül a portálról, nyithat egy támogatási jegyet, az alábbi példában látható módon:
+   Közvetlenül a portálról, nyithat egy támogatási jegyet, az alábbi példában látható módon:
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
 1. Miután a konfiguráció sikeres elfogadása, hasonló az alábbi képen láthatja:
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
 ### <a name="getmsft"></a>A Microsoft társviszony-létesítés részleteinek megtekintése
 
@@ -115,23 +115,23 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure privát társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
 
-  ![lista](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![lista](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
 
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
-  * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
-  * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Használhat privát AS-szám a társviszony a 65515 – 65520, szám kivételével szélsőértékeket is beleértve.
-  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
+   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
+   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Használhat privát AS-szám a társviszony a 65515 – 65520, szám kivételével szélsőértékeket is beleértve.
+   * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 3. Válassza ki az Azure-beli privát társviszony-létesítés sort, az alábbi példában látható módon:
 
-  ![privát](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
+   ![privát](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
 4. Konfigurálja a privát társviszony-létesítést. Az alábbi kép egy példakonfigurációt mutat be:
 
-  ![Konfigurálja a privát társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+   ![Konfigurálja a privát társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
 5. Mentse a konfigurációt, miután megadta az összes paramétert. Miután a konfiguráció sikeres elfogadása, megjelenik az alábbi példához hasonló:
 
-  ![Mentse a privát társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![Mentse a privát társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
 ### <a name="getprivate"></a>Az Azure privát társviszony-létesítés részleteinek megtekintése
 
@@ -164,23 +164,23 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure nyilvános társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
 
-  ![nyilvános társviszony-létesítés listázása](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![nyilvános társviszony-létesítés listázása](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
 
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó. 
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
-  * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
-  * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó. 
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie. Ez az alhálózat a rendel az első gyakorlatot IP-címet az útválasztó, a Microsoft használ a második gyakorlatot IP-címet az útválasztó.
+   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos hivatkozásokat kell használnia az ugyanazon VLAN-azonosítót.
+   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
+   * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 3. Válassza ki az Azure nyilvános társviszony-létesítés sort, az alábbi képen látható módon:
 
-  ![Válassza ki a nyilvános társviszony-létesítés sort](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
+   ![Válassza ki a nyilvános társviszony-létesítés sort](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
 4. Konfigurálja a nyilvános társviszony-létesítést. Az alábbi kép egy példakonfigurációt mutat be:
 
-  ![Konfigurálja a nyilvános társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+   ![Konfigurálja a nyilvános társviszony-létesítés](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
 5. Mentse a konfigurációt, miután megadta az összes paramétert. Miután a konfiguráció sikeres elfogadása, megjelenik az alábbi példához hasonló:
 
-  ![Nyilvános társviszony-létesítési konfigurációjának mentése](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+   ![Nyilvános társviszony-létesítési konfigurációjának mentése](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
 ### <a name="getpublic"></a>Az Azure nyilvános társviszony-létesítés részleteinek megtekintése
 

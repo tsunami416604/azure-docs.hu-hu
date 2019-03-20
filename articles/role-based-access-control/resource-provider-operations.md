@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb22594ba240f9e7b790dbef0bd1e091c30c82b9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b400af524d303fe4fbcbc8e34a394b286a048cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456550"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008808"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -3398,7 +3398,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | A pillanatkép-erőforrás írása. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write | Egy kötet erőforrás ír. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/capacityPools/write | Egy készlet erőforrás ír. |
-> | Műveletek | Microsoft.NetApp/netAppAccounts/delete | A tárfiók típusú erőforrást törli. |
+> | Műveletek | Microsoft.NetApp/netAppAccounts/delete | Egy tárfiók típusú erőforrást törli. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/read | Olvassa be a tárfiók típusú erőforrást. |
 > | Műveletek | Microsoft.NetApp/netAppAccounts/write | Ír egy tárfiók típusú erőforrást. |
 > | Műveletek | Microsoft.NetApp/Operations/read | Egy művelet erőforrások beolvasása. |
@@ -4153,15 +4153,15 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Portal/consoles/delete | A Cloud Shell-példány eltávolítása. |
-> | Műveletek | Microsoft.Portal/consoles/write | Egy Cloud Shell-példány létrehozása vagy frissítése. |
+> | Műveletek | Microsoft.Portal/consoles/delete | Eltávolítja a cloud shell-példány. |
+> | Műveletek | Microsoft.Portal/consoles/write | Hozzon létre vagy nem frissíthető a cloud shell példány. |
 > | Műveletek | Microsoft.Portal/dashboards/delete | Az irányítópult eltávolítása az előfizetésből. |
 > | Műveletek | Microsoft.Portal/dashboards/read | Az előfizetéshez tartozó irányítópultok beolvasása. |
 > | Műveletek | Microsoft.Portal/dashboards/write | Irányítópult felvétele vagy átalakítása előfizetéssé. |
 > | Műveletek | Microsoft.Portal/register/action | Regisztrálás portálon |
-> | Műveletek | Microsoft.Portal/usersettings/delete | A Cloud Shell felhasználói beállításainak eltávolítása. |
-> | Műveletek | Microsoft.Portal/usersettings/read | A Cloud Shell felhasználói beállításainak beolvasása. |
-> | Műveletek | Microsoft.Portal/usersettings/write | Cloud Shell-felhasználói beállítások létrehozása vagy frissítése. |
+> | Műveletek | Microsoft.Portal/usersettings/delete | Eltávolítja a cloud shell felhasználói beállításokat. |
+> | Műveletek | Microsoft.Portal/usersettings/read | A cloud shell felhasználói beállítások beolvasása. |
+> | Műveletek | Microsoft.Portal/usersettings/write | Hozzon létre, vagy frissíteni a cloud shell felhasználói beállítást. |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
@@ -4739,7 +4739,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Sql/locations/instanceFailoverGroups/failover/action | Tervezett feladatátvétel végrehajtása létező példány feladatátvételi csoportba. |
 > | Műveletek | Microsoft.Sql/locations/instanceFailoverGroups/forceFailoverAllowDataLoss/action | Kényszerített feladatátvétel futtatják a meglévő példány feladatátvételi csoporthoz. |
 > | Műveletek | Microsoft.Sql/locations/instanceFailoverGroups/read | A példány feladatátvételi csoportokat vagy a megadott példány feladatátvételi csoport tulajdonságainak lekérése adja vissza. |
-> | Műveletek | Microsoft.Sql/locations/instanceFailoverGroups/write | Egy példány feladatátvételi csoportot hoz létre a megadott paramétereket, vagy a Tulajdonságok vagy címkék a megadott példány feladatátvételi csoport frissítése. |
+> | Műveletek | Microsoft.Sql/locations/instanceFailoverGroups/write | Egy példány feladatátvételi csoportot hoz létre a megadott paraméterekkel, vagy a Tulajdonságok vagy címkék a megadott példány feladatátvételi csoport frissítése. |
 > | Műveletek | Microsoft.Sql/locations/instancePoolAzureAsyncOperation/read | Egy példány készlet művelet állapotát olvassa be. |
 > | Műveletek | Microsoft.Sql/locations/instancePoolOperationResults/read | Egy példány készlet művelet eredményének beolvasása. |
 > | Műveletek | Microsoft.Sql/locations/interfaceEndpointProfileAzureAsyncOperation/read | Egy adott illesztő végpont Azure aszinkron művelet adatai |
@@ -5001,7 +5001,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Sql/servers/importExportOperationResults/read | Lekérdezi a folyamatban lévő importálási/exportálási műveleteket |
 > | Műveletek | Microsoft.Sql/servers/interfaceEndpointProfiles/delete | A megadott kapcsolat végpontja profil törlése |
 > | Műveletek | Microsoft.Sql/servers/interfaceEndpointProfiles/read | A megadott kapcsolat végpontja profil tulajdonságainak beolvasása |
-> | Műveletek | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Kapcsolat végpontja profilt hoz létre a megadott paraméterekkel, vagy a Tulajdonságok vagy címkék a megadott kapcsolat végpont frissítése |
+> | Műveletek | Microsoft.Sql/servers/interfaceEndpointProfiles/write | Egy kapcsolat végpontja profilt hoz létre a megadott paraméterekkel, vagy a Tulajdonságok vagy címkék a megadott kapcsolat végpont frissítése |
 > | Műveletek | Microsoft.Sql/servers/jobAgents/delete | Egy Azure SQL DB feladatügynök törlése |
 > | Műveletek | Microsoft.Sql/servers/jobAgents/read | Lekérdezi egy Azure SQL DB feladatügynök |
 > | Műveletek | Microsoft.Sql/servers/jobAgents/write | Létrehoz vagy frissít egy Azure SQL DB feladatügynök |

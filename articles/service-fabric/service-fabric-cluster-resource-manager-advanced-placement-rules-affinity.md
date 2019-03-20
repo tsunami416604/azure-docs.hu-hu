@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b12328c8283c9a626a3dcfc45dfd682a5e628d07
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085694"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálása és a szolgáltatási affinitás használata a Service Fabricben
 Kapcsolat az elsősorban biztosított a vezérlőelem megkönnyítése érdekében a Váltás nagyobb monolitikus alkalmazások, a felhő- és mikroszolgáltatás-alapú világ segítségével. Szolgáltatások teljesítményének növelése, bár ezt egy optimalizálási mellékhatása is van, mivel is használható.
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 Affinitás jelölt keresztül több korrelációs rendszerek egyikét, és két különböző módot támogat. A leggyakoribb affinitási módja úgynevezett NonAlignedAffinity. NonAlignedAffinity a replikákat vagy a példányok a különböző szolgáltatások ugyanazon a csomóponton elhelyezett. A másik módra AlignedAffinity. Igazított kapcsolat akkor hasznos, csak az állapotalapú szolgáltatásokkal. A kapcsolat van igazítva két állapotalapú szolgáltatások konfigurálása biztosítja, hogy ezeket a szolgáltatásokat eredményezi, egymással azonos csomópontokon vannak elhelyezve. Ezeket a szolgáltatásokat a azonos csomópontokon elhelyezni kívánt másodlagos párjaihoz is okoz. Lehetőség arra is (bár kevésbé gyakori) NonAlignedAffinity konfigurálása az állapotalapú szolgáltatások esetében. A NonAlignedAffinity a két állapotalapú szolgáltatások különböző replikába futtatná a ugyanazon a csomóponton, de az elsődleges sikerült végül a különböző csomópontokon.
 
 <center>
+
 ![Affinitás módok és hatásuk][Image1]
 </center>
 
@@ -69,6 +70,7 @@ Egy kapcsolat a lehető legjobb. Elhelyezés és megbízhatóságáról, amelyek
 Ma a fürterőforrás-kezelő nem tud modell láncok affinitás kapcsolatok. Ez azt jelenti, hogy egy szolgáltatás, amely egy kapcsolat a gyermek nem lehet szülője egy másik kapcsolat. Ha kíván ilyen kapcsolatban modellezheti, hatékonyan modell, a lánc helyett egy csillag rendelkezik. Szeretne áthelyezni egy láncból egy csillag, a legalsó gyermek lenne kell szülőjének első gyermek-szülő helyette. A szolgáltatások elhelyezkedését, attól függően előfordulhat, ezt többször tennie. Ha természetes szülő szolgáltatás nincs, akkor előfordulhat, hogy hozzon létre egyet, amely egy helyőrző. A követelményeitől függően akkor is érdemes megvizsgáljuk [alkalmazáscsoportok](service-fabric-cluster-resource-manager-application-groups.md).
 
 <center>
+
 ![Láncok vs. Kapcsolat kapcsolatok kontextusában csillagok][Image2]
 </center>
 

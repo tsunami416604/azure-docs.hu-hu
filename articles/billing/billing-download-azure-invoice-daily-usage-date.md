@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 59d63efbf261813c8519b03d3e1630cf24d868d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 52e227b933533bf60a474d0417c57e4b75c7978f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835926"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224634"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 
@@ -56,7 +56,7 @@ A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kap
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Töltse le a Microsoft Ügyfélszerződéséhez számlák
 
-Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md#understand-billing-profiles) a Microsoft ügyfél-szerződés. Számlázási profil tulajdonos, közreműködő, olvasó, vagy a számlához manager számlákat letölteni az Azure Portalról. 
+Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md#understand-billing-profiles) a Microsoft ügyfél-szerződés. Számlázási profil tulajdonos, közreműködő, olvasó, vagy a számlához manager számlákat letölteni az Azure Portalról.
 
 1. A Keresés **Cost Management és számlázás**.
 2. Válassza ki a számlázási profilt.
@@ -91,7 +91,7 @@ Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címz
 2. Kattintson a **engedélyezve van a hibajelentések** és fogadja el a feltételeket.
 
     ![Képernyőkép a választható flow 2. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
- 
+
 3. Ha Ön már elfogadta a szerződést, további címzetteket is beállíthatja. Amikor eltávolít egy címzettet, az e-mail-cím már nem tárolja. Ha meggondolja magát, újra hozzá kell őket.
 
     ![Képernyőkép a választható folyamat 3. lépés](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
@@ -106,7 +106,7 @@ Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvég
 
 ### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>A Microsoft Ügyfélszerződéséhez számlákat kapni e-mailben
 
-Ha egy Microsoft Ügyfélszerződéséhez, kérheti a, a számla kapni egy e-mailben. Számlázási profil tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők a számlát fog kapni e-mailben. Olvasói az e-mailek számla szabályozó nem lehet frissíteni. 
+Ha egy Microsoft Ügyfélszerződéséhez, kérheti a, a számla kapni egy e-mailben. Számlázási profil tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők a számlát fog kapni e-mailben. Olvasói az e-mailek számla szabályozó nem lehet frissíteni.
 
 1. A Keresés **Cost Management és számlázás**.
 1. Válassza ki a számlázási profilt.
@@ -121,7 +121,7 @@ Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvég
 
 ## <a name="download-usage"></a>Használati adatok letöltése
 
- A legtöbb előfizetésekhez, keresse meg a napi használati fájlt a [Azure Account Center](https://account.azure.com/Subscriptions). Ha nagyvállalati szerződéssel rendelkező ügyfelek vagy a Microsoft vevői szerződéssel rendelkezik, a használati letöltheti a [az Azure portal](https://portal.azure.com/). <!--tegye: frissítése Használatalapú élmény az Ibiza után letöltésként érhető el >
+ A legtöbb előfizetésekhez, keresse meg a napi használati fájlt a [Azure Account Center](https://account.azure.com/Subscriptions). Ha nagyvállalati szerződéssel rendelkező ügyfelek vagy a Microsoft vevői szerződéssel rendelkezik, a használati letöltheti a [az Azure portal](https://portal.azure.com/). <!-- TO DO: update PayG experience to Ibiza once it ships-->
 
 ### <a name="download-usage-from-the-account-center-csv"></a>Az Account Center webhelyen (.csv) a használati adatok letöltése
 

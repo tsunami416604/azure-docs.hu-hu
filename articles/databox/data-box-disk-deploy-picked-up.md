@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c723ade885474f07d025b10e075edab0383b82e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439944"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108375"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box-lemezek, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -70,22 +70,22 @@ Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt töröl
 
 - Az Azure Storage-fiókok. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 
-    - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-    - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
 - A felügyelt lemez erőforráscsoport(ok). Felügyelt lemezek létrehozásakor a virtuális merevlemezeket lapblobként feltöltött és majd a felügyelt lemezekké való konvertálása. A felügyelt lemezek vannak csatolva az erőforráscsoportok, a megadott sorrendben létrehozásának időpontjában.
 
-    - Ha a példány az Azure-ban felügyelt lemezekre sikeres volt, megnyithatja a **rendelés részletei** az Azure Portalon, és jegyezze fel az erőforráscsoport a megadott felügyelt lemezek esetén ellenőrizze.
+  - Ha a példány az Azure-ban felügyelt lemezekre sikeres volt, megnyithatja a **rendelés részletei** az Azure Portalon, és jegyezze fel az erőforráscsoport a megadott felügyelt lemezek esetén ellenőrizze.
 
-        ![Rendelés részleteinek megtekintése](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
+      ![Rendelés részleteinek megtekintése](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
 
     Nyissa meg a feljegyzett erőforráscsoportot, és keresse meg a felügyelt lemezek.
 
-        ![Resource group for managed disks](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
+      ![Felügyelt lemezek erőforráscsoport](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-    - Ha egy dinamikus vagy különbséglemez VHD vagy vhdx-fájlt másolja, majd a VHDX-/ VHD töltenek fel az előkészítési tárfiókból blokkblobként. Nyissa meg az átmeneti **tárfiók > Blobok** , és válassza ki a megfelelő tárolót - StandardSSD, StandardHDD vagy PremiumSSD. A VHDX vagy VHD-k kell jelennek meg az átmeneti tárfiók blokkblobok formájában.
+  - Ha egy dinamikus vagy különbséglemez VHD vagy vhdx-fájlt másolja, majd a VHDX-/ VHD töltenek fel az előkészítési tárfiókból blokkblobként. Nyissa meg az átmeneti **tárfiók > Blobok** , és válassza ki a megfelelő tárolót - StandardSSD, StandardHDD vagy PremiumSSD. A VHDX vagy VHD-k kell jelennek meg az átmeneti tárfiók blokkblobok formájában.
 
 Az adatok Azure-ba történő feltöltését az alábbi lépésekkel ellenőrizheti:
 

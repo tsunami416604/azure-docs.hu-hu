@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 176e6804e6c98a1b9e9ffe4af04f02748c80928b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310905"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119292"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
@@ -22,8 +22,8 @@ HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vag
 
 Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valamint a kimenő HTTP-válaszok fejlécek újraírási képessége. Lesz hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek, amíg a kérelem/válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Mind a standard szintű, valamint az olyan nem szabványos üzenetfejlécének mezői is újraírása.
 
-> [!NOTE] 
->
+> [!NOTE]
+> 
 > A HTTP-fejléc újraírási támogatás érhető el csak a [új Termékváltozat [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
 Application Gateway fejléc újraírási támogatási kínálja:

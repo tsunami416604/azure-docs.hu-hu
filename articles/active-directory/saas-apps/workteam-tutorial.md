@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workteam
 
@@ -200,7 +200,7 @@ Ahhoz, hogy a bejelentkezés Workteam az Azure AD-felhasználók, akkor ki kell 
 
     a. Az a **neve** szöveget adja meg például a felhasználó utónevét **Brittasimon**.
 
-    b. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+    b. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon\@contoso.com**.
 
     c. Kattintson az **OK** gombra.
 

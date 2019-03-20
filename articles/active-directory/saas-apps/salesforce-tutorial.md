@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cec93af806710a6e32ddca8673722de11b00df4f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 239298959efa5c17d2f3d0c0aa5c4c30853c076f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761225"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-szal
 
@@ -206,7 +206,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -257,4 +257,4 @@ Ha a hozzáférési panel a Salesforce csempére kattint, akkor kell automatikus
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Felhasználók átadásának konfigurálása](salesforce-provisioning-tutorial.md)
+- [Felhasználók átadásának konfigurálása](salesforce-provisioning-tutorial.md)

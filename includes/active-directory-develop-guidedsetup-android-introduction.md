@@ -3,23 +3,23 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/13/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 9bc8f30d2bbf6a084ad680306da9b1e330d488e3
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 33e2ac136ae68ee0c0ce0109a6f6934727d3a6c5
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988334"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203701"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>A felhasználók és a Microsoft Graph hívása Androidos alkalmazásokból
 
@@ -29,7 +29,7 @@ Az útmutató befejezése után, az alkalmazás fogad a bejelentkezések a szem�
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Ez a minta működése](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
+![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-android-intro/android-intro-updated.png)
 
 Ebben a példában az alkalmazás a felhasználók, és a adatok beolvasása a felhasználók nevében.  Ezeket az adatokat fogják elérni egy távoli API-val (ebben az esetben a Microsoft Graph API), amely engedélyt igényel, és Microsoft identitásplatformja is védi.
 
@@ -48,10 +48,10 @@ Ebben a példában a Microsoft Authentication library for Android (MSAL) összeh
 * 21-én vagy újabb Android megadása kötelező (25 + ajánlott).
 * Google Chrome vagy egy webes böngésző által használt egyéni lapok szükség, az Android az MSAL ezen verziójához.
 
-## <a name="library"></a>Erőforrástár
+## <a name="library"></a>Kódtár
 
 Ez az útmutató a következő hitelesítési tárat használja:
 
-|Erőforrástár|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|A Microsoft-hitelesítési tár (MSAL)|

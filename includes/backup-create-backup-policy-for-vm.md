@@ -4,12 +4,12 @@ ms.service: backup
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: raynew
-ms.openlocfilehash: b589c88e5b5c5991db43a9f3c10003e17094b2e1
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3631d2e9beaa7c0d9ee018a32981a278381a7d86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108496"
 ---
 ## <a name="defining-a-backup-policy"></a>Biztonsági mentési házirend meghatározása
 A biztonsági mentési házirend egy mátrixot határoz meg ahhoz, hogy mikor készüljön pillanatkép az adatokról, és mennyi ideig őrizze meg a rendszer a pillanatképeket. Virtuális gépek biztonsági mentéséről szóló házirend meghatározása esetén *naponta egyszer* indíthat el biztonsági mentési feladatot. Az újonnan létrehozott házirendek a tárolón érvényesülnek. A biztonsági mentési házirendek felülete a következőképpen néz ki:
@@ -32,13 +32,11 @@ Házirend létrehozása:
     A havi és éves megőrzési időtartamok lehetővé teszik a heti vagy napi növekményes pillanatképek megadását.
 
    > [!NOTE]
-   >
-  - A virtuális gépek védelméhez a rendszer naponta egyszer készít biztonsági mentést. A biztonsági mentés futtatásának ideje minden megőrzési időtartam esetén ugyanaz.
-  - A dátum és idő, amikor a biztonsági mentés pillanatképének befejeződött függetlenül attól, amikor a biztonsági mentési feladat ütemezés volt a helyreállítási pont jön létre.
-    - Pl. Ha a biztonsági mentés gyakorisága: 11:30 = 1997031213 van ütemezve, és bármilyen probléma miatt pillanatkép befejeződött, 12:01-kor, majd a helyreállítási pont jön a dátumot és 12:01-kor.
-  - Havi biztonsági mentés esetén ha a biztonsági mentés futtatása minden hónap első napján van beállítva, és a pillanatkép befejezése néhány probléma miatt a következő napon majd a helyreállítási pont létrehozása a havonkénti biztonsági mentés címkével fog rendelkezni a következő napra (vagyis) második az adott hónap).
-   >
-   >
+   > 
+   > - A virtuális gépek védelméhez a rendszer naponta egyszer készít biztonsági mentést. A biztonsági mentés futtatásának ideje minden megőrzési időtartam esetén ugyanaz.
+   > - A dátum és idő, amikor a biztonsági mentés pillanatképének befejeződött függetlenül attól, amikor a biztonsági mentési feladat ütemezés volt a helyreállítási pont jön létre.
+   >   - Pl. Ha a biztonsági mentés gyakorisága: 11:30 = 1997031213 van ütemezve, és bármilyen probléma miatt pillanatkép befejeződött, 12:01-kor, majd a helyreállítási pont jön a dátumot és 12:01-kor.
+   > - Havi biztonsági mentés esetén ha a biztonsági mentés futtatása minden hónap első napján van beállítva, és a pillanatkép befejezése néhány probléma miatt a következő napon majd a helyreállítási pont létrehozása a havonkénti biztonsági mentés címkével fog rendelkezni a következő napra (vagyis) második az adott hónap).
 
 
 4. A házirend beállításainak megadása után kattintson a panel tetején található **Mentés** gombra.

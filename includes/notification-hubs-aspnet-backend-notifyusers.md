@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125295"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
@@ -55,7 +55,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
     * Válassza ki a korábban létrehozott App Service-csomagot.
     * Válassza a **Create a new app service plan** (Új App Service-csomag létrehozása) lehetőséget is, és hozzon létre egy új csomagot.
 
-  Az oktatóanyag elvégzéséhez nincs szükség adatbázisra. Az App Service-csomag kiválasztása után kattintson az **OK** gombra a projekt létrehozásához.
+   Az oktatóanyag elvégzéséhez nincs szükség adatbázisra. Az App Service-csomag kiválasztása után kattintson az **OK** gombra a projekt létrehozásához.
 
     ![A Configure Microsoft Azure Web App (Microsoft Azure-webalkalmazás konfigurálása) ablak][B5]
 
@@ -84,9 +84,9 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
    * A kérés *alapszintű* hitelesítést használ.
    * A felhasználónév és a jelszó sztring azonos.
 
-  Ellenkező esetben a kérést a rendszer elutasítja. Ez nem egy valós hitelesítési és engedélyezési megközelítés, csak egy egyszerű példa ehhez az oktatóanyaghoz.
+   Ellenkező esetben a kérést a rendszer elutasítja. Ez nem egy valós hitelesítési és engedélyezési megközelítés, csak egy egyszerű példa ehhez az oktatóanyaghoz.
 
-  Ha az `AuthenticationTestHandler` hitelesíti és engedélyezi a kérésüzenetet, az alapszintű hitelesítést használó felhasználót a rendszer hozzákapcsolja az aktuális kéréshez a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) felületén. A HttpContext felhasználói adatait a későbbiekben egy másik vezérlő (RegisterController) fogja használni egy [címke](https://msdn.microsoft.com/library/azure/dn530749.aspx) az értesítésregisztrációs kéréshez való hozzáadásához.
+   Ha az `AuthenticationTestHandler` hitelesíti és engedélyezi a kérésüzenetet, az alapszintű hitelesítést használó felhasználót a rendszer hozzákapcsolja az aktuális kéréshez a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) felületén. A HttpContext felhasználói adatait a későbbiekben egy másik vezérlő (RegisterController) fogja használni egy [címke](https://msdn.microsoft.com/library/azure/dn530749.aspx) az értesítésregisztrációs kéréshez való hozzáadásához.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

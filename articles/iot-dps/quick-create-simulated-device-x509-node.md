@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: aeeab619ac2366796a1039bf85cc71f89a10b83c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: cc0d004a20aa5497c40b07e04e0eeae7758a9826
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158499"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085252"
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -25,8 +25,8 @@ Ezek a lépések bemutatják, hogyan hozhat létre regisztrációs bejegyzést a
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -80,17 +80,17 @@ Az [Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node.git) 
 5. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
 6. A **Regisztráció hozzáadása** panelen adja meg a következő információkat:
-    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-    - Az *Elsődleges tanúsítvány (.pem vagy .cer)* területen kattintson a *Fájl kiválasztása* elemre, hogy kijelölje az előző lépésekben létrehozott **{tanúsítványnév}_cert.pem** tanúsítványfájlt.  
-    - Ha kívánja, megadhatja az alábbi információkat is:
-      - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
-      - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
-      - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-   - Ha végzett, kattintson a **Mentés** gombra. 
+   - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
+   - Az *Elsődleges tanúsítvány (.pem vagy .cer)* területen kattintson a *Fájl kiválasztása* elemre, hogy kijelölje az előző lépésekben létrehozott **{tanúsítványnév}_cert.pem** tanúsítványfájlt.  
+   - Ha kívánja, megadhatja az alábbi információkat is:
+     - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
+     - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
+     - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
+     - Ha végzett, kattintson a **Mentés** gombra. 
 
-    [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-    Sikeres regisztráció esetén az X.509-eszköz **{tanúsítványnév}** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban, az *Egyéni regisztrációk* lapon. Jegyezze fel ezt az értéket későbbi használatra.
+     Sikeres regisztráció esetén az X.509-eszköz **{tanúsítványnév}** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban, az *Egyéni regisztrációk* lapon. Jegyezze fel ezt az értéket későbbi használatra.
 
 ## <a name="simulate-the-device"></a>Az eszköz szimulálása
 

@@ -9,29 +9,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2da89e674b967287150b2e8f3a98fc25df2af81e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fe653d36b2c527391a2f6d4ce33b89ba8dd648ac
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878261"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202792"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Bootstrap használatával HDInsight-fürtök testre szabása
 
 Egyes esetekben szeretné konfigurálni a konfigurációs fájlokat, többek között:
 
 * clusterIdentity.xml
-* Core-site.xml
-* Gateway.XML
+* core-site.xml
+* gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
-* Hive-env.xml
-* Hive-site.xml
+* hive-env.xml
+* hive-site.xml
 * mapred-hely
-* az oozie-site.xml
-* az oozie-env.xml
-* a Storm-site.xml
+* oozie-site.xml
+* oozie-env.xml
+* storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml
@@ -131,7 +131,6 @@ Rendszerindítási használhatja a Resource Manager-sablon:
 * [A HDInsight Apache Hadoop-fürtök létrehozása] [ hdinsight-provision-cluster] útmutatás egy HDInsight-fürt létrehozása más egyéni beállításai használatával.
 * [Parancsfájlművelet-parancsfájlok fejlesztése a HDInsight][hdinsight-write-script]
 * [Telepítse, és az Apache Spark használata a HDInsight-fürtökön][hdinsight-install-spark]
-* [Telepítse és Apache Solr használata a HDInsight-fürtökön](hdinsight-hadoop-solr-install.md).
 * [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md

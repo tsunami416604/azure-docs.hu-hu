@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e8a28634e554ee75eea79e69c0b73e8adec3447
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700536"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117319"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Azure natív tanúsítványalapú hitelesítésének használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: Azure Portal
 
@@ -94,17 +94,17 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
 
 1. Miután létrehozta a virtuális hálózati átjárót, navigáljon a virtuális hálózati átjáró lapjának **Beállítások** részéhez. A **Beállítások** szakaszban kattintson a **Pont-hely konfiguráció** elemre.
 
-  ![Pont–hely lap](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
+   ![Pont–hely lap](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png) 
 2. Kattintson a **Konfigurálás most** elemre a konfigurációs lap megnyitásához.
 
-  ![Konfigurálás most](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
+   ![Konfigurálás most](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. A **Pont–hely** konfigurációs lapján írja be a **Címkészlet** mezőbe a magánhálózati IP-címtartományt, amelyet használni szeretne. A VPN-ügyfelek dinamikusan kapnak egy IP-címet a megadott tartományból. Kattintson a **Mentés** gombra a beállítás érvényesítéséhez és mentéséhez.
 
-  ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![Ügyfélcímkészlet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
-  >[!NOTE]
-  >Ha a portál e lapján nem jelenik meg az Alagúttípus vagy a Hitelesítés típusa, akkor az átjáró az alapszintű termékváltozatot használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
-  >
+   >[!NOTE]
+   >Ha a portál e lapján nem jelenik meg az Alagúttípus vagy a Hitelesítés típusa, akkor az átjáró az alapszintű termékváltozatot használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
+   >
 
 ## <a name="tunneltype"></a>7. Alagúttípus konfigurálása
 
@@ -126,13 +126,13 @@ További megbízható főtanúsítványokat is feltölthet (legfeljebb 20-at). M
 2. Győződjön meg arról, hogy Base-64 kódolású X.509 (.cer) fájlként exportálta a főtanúsítványt. Ebben a formátumban kell exportálnia a tanúsítványt, hogy szövegszerkesztővel meg tudja azt nyitni.
 3. Nyissa megy a tanúsítványt egy szövegszerkesztővel, például a Jegyzettömbbel. A tanúsítványadatok másolásakor a szöveget egy folyamatos sorként másolja kocsivissza vagy új sor nélkül. A kocsivisszák és az új sorok megjelenítéséhez lehet, hogy módosítania kell a nézetet a szövegszerkesztőben a „Szimbólum megjelenítése/Minden karakter megjelenítése” beállításra. Csak a következő szakaszt másolja egy folyamatos sorként:
 
-  ![Tanúsítványadatok](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
+   ![Tanúsítványadatok](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
 4. Illessze be a tanúsítványadatokat a **Nyilvános tanúsítványadatok** mezőbe. **Nevezze el** a tanúsítványt, majd a kattintson a **Mentés** gombra. Legfeljebb 20 megbízható főtanúsítványt adhat hozzá.
 
-  ![Tanúsítvány feltöltése](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
+   ![Tanúsítvány feltöltése](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. A konfiguráció beállításainak mentéséhez kattintson az oldal tetején található **Mentés** gombra.
 
-  ![Mentés](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
+   ![Mentés](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
 ## <a name="installclientcert"></a>10. Exportált ügyféltanúsítvány telepítése
 
@@ -159,10 +159,10 @@ A VPN-ügyfél konfigurációs fájljai tartalmazzák az eszközök azon beáll�
 
 2. A csatlakozás megkezdéséhez a **Kapcsolat** állapotlapon kattintson a **Csatlakozás** gombra. Ha megjelenik a **Tanúsítvány kiválasztása** képernyő, ellenőrizze, hogy az a csatlakozáshoz használni kívánt ügyféltanúsítványt mutatja-e. Ha nem, kattintson a legördülő nyílra, válassza ki a helyes tanúsítványt, majd kattintson az **OK** gombra.
 
-  ![A VPN-ügyfél az Azure-hoz csatlakozik](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
+   ![A VPN-ügyfél az Azure-hoz csatlakozik](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
 3. A kapcsolat létrejött.
 
-  ![A kapcsolat létrejött](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
+   ![A kapcsolat létrejött](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png)
 
 #### <a name="troubleshoot-windows-p2s-connections"></a>Windows pont–hely kapcsolatok hibaelhárítása
 
@@ -183,8 +183,8 @@ Ezek az utasítások Windows-ügyfelekre érvényesek.
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
 2. Tekintse meg az eredményeket. Figyelje meg, hogy a kapott IP-cím azok közül a címek közül való, amelyeket a pont–hely VPN-ügyfél konfigurációjának címkészletében megadott. Az eredmények az alábbi példában szereplőkhöz hasonlóak:
 
-  ```
-  PPP adapter VNet1:
+   ```
+   PPP adapter VNet1:
       Connection-specific DNS Suffix .:
       Description.....................: VNet1
       Physical Address................:
@@ -194,7 +194,7 @@ Ezek az utasítások Windows-ügyfelekre érvényesek.
       Subnet Mask.....................: 255.255.255.255
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
-  ```
+   ```
 
 ## <a name="connectVM"></a>Csatlakozás virtuális géphez
 

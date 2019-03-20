@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 859cd6cfd3db68dad2607f1dc8905facb43dd290
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ed53f9bf2e22e1d69a4e00de1e8d71291a5be46d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108712"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy tárolt eljárási tevékenység használatával az Azure Data Factory SSIS-csomagok meghívásához
 Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
@@ -54,20 +54,20 @@ Első lépés az adat-előállító létrehozása az Azure portal használatáva
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
      
-      - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
-      - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
+   - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
+   - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. Válassza ki **V1** számára a **verzió**.
 5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
-    ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
+     ![adat-előállító üzembe helyezése csempe](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
-    ![Data factory kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+     ![Data factory kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kattintson a **készítése és üzembe helyezése** csempére kattintva indítsa el a Data Factory Editor.
 
     ![A Data Factory szerkesztője](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
@@ -304,13 +304,13 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
 
 ### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-2. Futtatás **Get-AzDataFactorySlice** részletes információkat az összes szelet részleteit a kimeneti adatkészlet **, amely a folyamat kimeneti táblája.
+1. Futtatás **Get-AzDataFactorySlice** részletes információkat az összes szelet részleteit a kimeneti adatkészlet **, amely a folyamat kimeneti táblája.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Megfigyelheti, hogy a StartDateTime itt megadott értéke megegyezik a folyamat JSON-fájljában megadott kezdési idővel. 
-3. Futtatás **Get-AzDataFactoryRun** részleteit a tevékenység futtatása egy adott szeletre.
+1. Futtatás **Get-AzDataFactoryRun** részleteit a tevékenység futtatása egy adott szeletre.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

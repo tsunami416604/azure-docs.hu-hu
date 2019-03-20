@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: ef360fd56c3530a49c2f36846db34b29ca1cf444
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 3890283f70bfd922d0c436f76b38d7f81d7b8c6f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788018"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107018"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Átadása és visszavétele Hyper-V virtuális gépek replikálása a másodlagos helyszíni helyre
 
@@ -49,7 +49,7 @@ A Hyper-V virtuális gépek rendszeres vagy tervezett feladatátvételt futtatha
 - Egy normál feladatátvevő használata a váratlan leállásokat. A feladatátvétel futtatásakor a Site Recovery létrehoz egy virtuális Gépet a másodlagos helyen, és használja azt fel. Adatvesztés fordulhat elő, attól függően, függőben lévő adatokat, amelyek még nem lett szinkronizálva.
 - Egy tervezett feladatátvételt a karbantartás, illetve várt leállás során használható. Ezt a beállítást itt nincs adatvesztés. Egy tervezett feladatátvételt akkor aktiválódik, ha a forrásoldali virtuális gép leállt. Nem szinkronizált adatok szinkronizálása, és akkor indul el, a feladatátvételt. 
 - 
-Ez az eljárás ismerteti, hogyan futtathat egy normál feladatátvevő.
+  Ez az eljárás ismerteti, hogyan futtathat egy normál feladatátvevő.
 
 
 1. A **Beállítások** > **Replikált elemek** területen kattintson a virtuális gépre > **Feladatátvétel** ikonra.

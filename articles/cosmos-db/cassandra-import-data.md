@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: b12e7aad5fbdf65a8936b943f5053eda76dbd883
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c9f7ec5009c9299e317d9b10f857e326d25fa005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037480"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120108"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Az adatok áttelepítése az Azure Cosmos DB Cassandra API-fiók
 
@@ -35,31 +35,31 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 * **Becsülni az átviteli sebességet van szüksége:** Mielőtt adatokat telepít át a Cassandra API-fiók az Azure Cosmos DB, a számítási feladatok átviteli igényeit kell becslései szerint. Általában ajánlott a CRUD-műveletekhez szükséges átlagos átviteli sebességgel kezdeni, majd ezt kiegészíteni a kinyerési, átalakítási és betöltési (ETL-) vagy a csúcsidejű műveletekhez szükséges további sebességgel. A migrálás megtervezéséhez a következő adatokra lesz szükség: 
 
-   * **Meglévő adatok mérete vagy adatok becsült mérete:** Határozza meg a minimálisan szükséges adatbázis mérete és az átviteli sebesség követelménynek. Ha egy új alkalmazás adatmennyiségét becsüli fel, feltételezheti, hogy az adatok egyenletesen oszlanak majd el a sorok között, és az értéket az adatok méretét felszorozva kaphatja meg. 
+  * **Meglévő adatok mérete vagy adatok becsült mérete:** Határozza meg a minimálisan szükséges adatbázis mérete és az átviteli sebesség követelménynek. Ha egy új alkalmazás adatmennyiségét becsüli fel, feltételezheti, hogy az adatok egyenletesen oszlanak majd el a sorok között, és az értéket az adatok méretét felszorozva kaphatja meg. 
 
-   * **Átviteli sebességgel:** (Lekérdezés/get) becsült olvasási és írási (update/delete/insert) átviteli sebességet. Erre az értékre a szükséges kérelemegység-mennyiség állandó adatmennyiség melletti kiszámításához van szükség.  
+  * **Átviteli sebességgel:** (Lekérdezés/get) becsült olvasási és írási (update/delete/insert) átviteli sebességet. Erre az értékre a szükséges kérelemegység-mennyiség állandó adatmennyiség melletti kiszámításához van szükség.  
 
-   * **A séma:** A meglévő Cassandra-fürtöt cqlsh keresztül csatlakozik, és exportálja a sémát a Cassandra: 
+  * **A séma:** A meglévő Cassandra-fürtöt cqlsh keresztül csatlakozik, és exportálja a sémát a Cassandra: 
 
-     ```bash
-     cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
-     ```
+    ```bash
+    cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+    ```
 
-   Miután azonosította a meglévő számítási feladatok követelményeit, hozzunk létre egy Azure Cosmos-fiók, adatbázis és tárolók az összegyűjtött átviteli követelményeinek megfelelően.  
+    Miután azonosította a meglévő számítási feladatok követelményeit, hozzunk létre egy Azure Cosmos-fiók, adatbázis és tárolók az összegyűjtött átviteli követelményeinek megfelelően.  
 
-   * **Határozza meg egy művelet RU ingyenesen:** Megadhatja, hogy a kérelemegység a Cassandra API által támogatott SDK-k egyikével. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be.
+  * **Határozza meg egy művelet RU ingyenesen:** Megadhatja, hogy a kérelemegység a Cassandra API által támogatott SDK-k egyikével. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be.
 
-     ```csharp
-     var tableInsertStatement = table.Insert(sampleEntity);
-     var insertResult = await tableInsertStatement.ExecuteAsync();
+    ```csharp
+    var tableInsertStatement = table.Insert(sampleEntity);
+    var insertResult = await tableInsertStatement.ExecuteAsync();
 
-     foreach (string key in insertResult.Info.IncomingPayload)
-       {
-          byte[] valueInBytes = customPayload[key];
-          string value = Encoding.UTF8.GetString(valueInBytes);
-          Console.WriteLine($"CustomPayload:  {key}: {value}");
-       }
-     ```
+    foreach (string key in insertResult.Info.IncomingPayload)
+      {
+         byte[] valueInBytes = customPayload[key];
+         string value = Encoding.UTF8.GetString(valueInBytes);
+         Console.WriteLine($"CustomPayload:  {key}: {value}");
+      }
+    ```
 
 * **Társítsa az átviteli sebességgel:** Az Azure Cosmos DB is automatikusan skálázható a tárolás és átviteli sebesség a követelmények növekedésével. A szükséges átviteli sebességet az [Azure Cosmos DB kérelemegység-kalkulátorával](https://www.documentdb.com/capacityplanner) számíthatja ki. 
 

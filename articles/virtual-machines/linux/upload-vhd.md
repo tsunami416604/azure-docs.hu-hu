@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6483fa8737ee3de6a60c4e4646fefec30ae702b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821558"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006648"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egy egyéni lemezről az Azure CLI-vel
 
@@ -48,7 +48,7 @@ A következő lépések elvégzéséhez szüksége lesz:
 
 * Linux rendszerű virtuális gép, amely az Azure-beli használatra készült. A [készítse elő a virtuális gép](#prepare-the-vm) szakaszban Ez a cikk bemutatja, hogyan disztribúció-specifikus információkat az Azure Linux-ügynök (waagent), szükség van egy virtuális gép SSH-n keresztül kapcsolódhat az telepítésével.
 * Egy meglévő VHD-fájl [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (vagy [kapcsolatos tudnivalók nem támogatott disztribúciókkal](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) a VHD formátumú virtuális lemezre. Több eszköz létezik, hozzon létre egy virtuális gép és a virtuális merevlemez:
-  * Telepítse és konfigurálja [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) vagy [KVM](http://www.linux-kvm.org/page/RunningKVM), ügyelve arra, hogy a VHD-t használja, mint a kép formátuma. Ha szükséges, [kép konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a `qemu-img convert`.
+  * Telepítse és konfigurálja [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) vagy [KVM](https://www.linux-kvm.org/page/RunningKVM), ügyelve arra, hogy a VHD-t használja, mint a kép formátuma. Ha szükséges, [kép konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a `qemu-img convert`.
   * Is használhatja a Hyper-V [a Windows 10-es](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [a Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]

@@ -3,23 +3,23 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ace6c36f1bc4582b3210c049a4ff8cb1f770bf88
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988260"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203508"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>A Microsoft Graph API meghívása iOS-alkalmazásból
 
@@ -34,7 +34,7 @@ Miután végzett az útmutatóban szereplő gyakorlatok, az alkalmazás meghívh
 
 ## <a name="how-this-guide-works"></a>Az útmutató működése
 
-![Az útmutató működése](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-ios-introduction/iosintro-updated.png)
 
 Ebben az útmutatóban a mintaalkalmazás lehetővé teszi az IOS-es alkalmazás lekérdezése a Microsoft Graph API vagy a webes API-t, amely az Azure AD v2.0-végpont származó jogkivonatokat fogad el. Ebben a forgatókönyvben egy jogkivonatot a HTTP-kérelmekre szolgáltatással hozzáadott a **engedélyezési** fejléc. Token beszerzése és megújítása a Microsoft hitelesítési tár (MSAL) kezeli.
 
@@ -50,6 +50,6 @@ Az MSAL gyorsítótárazását és hozzáférési jogkivonatok, frissíteni, íg
 
 Ez az útmutató használja a következő könyvtárban:
 
-|Erőforrástár|Leírás|
+|Kódtár|Leírás|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|IOS-hez készült Microsoft hitelesítési tár előzetes verzióját|

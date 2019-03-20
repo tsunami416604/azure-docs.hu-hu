@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ad683af5597be746524a360d438a06b2e429b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2bed701f8948b27d4a242c6bb0af8ecf939db409
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847256"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223478"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Felügyelt identitások az Azure-erőforrások konfigurálása az Azure virtuálisgép-méretezési csoport, egy sablon használatával
 
@@ -71,29 +71,9 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a felügyelt rendszer által ho
    }
    ```
 
-3. (Nem kötelező) A virtuálisgép-méretezési csoport állítsa be a felügyelt identitásokból, Azure-erőforrás-bővítmény hozzáadása egy `extensionsProfile` elemet. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás használatával, valamint a jogkivonatok.  Az alábbi szintaxissal:
+> [!NOTE]
+> Előfordulhat, hogy igény szerint üzembe helyezi a felügyelt identitások az Azure-erőforrások virtuális gép méretezési csoport bővítményének megadásával, a a `extensionProfile` elem a sablon. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
-   >[!NOTE] 
-   > Az alábbi példa azt feltételezi, hogy egy Windows virtuális gép méretezési csoport bővítményének (`ManagedIdentityExtensionForWindows`) lesz üzembe helyezve. Beállíthatja a Linux használatával `ManagedIdentityExtensionForLinux` ehelyett a `"name"` és `"type"` elemeket.
-   >
-
-   ```json
-   "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
-            }
-   ```
 
 4. Ha elkészült, a következő szakaszok kell hozzáadni a sablon erőforrás szakaszába, és a következőket kell hasonlítania:
 
@@ -112,6 +92,7 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a felügyelt rendszer által ho
                 //other resource provider properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)
                     "extensionProfile": {
                         "extensions": [
                             {
@@ -214,26 +195,8 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
 
    }
    ``` 
-
-2. (Nem kötelező) Adja hozzá a következő bejegyzés alatt a `extensionProfile` elem hozzárendelése az Azure-erőforrás-kiterjesztés felügyelt identitások a vmss-hez. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok. Az alábbi szintaxissal:
-   
-    ```JSON
-       "extensionProfile": {
-            "extensions": [
-                {
-                    "name": "ManagedIdentityWindowsExtension",
-                    "properties": {
-                        "publisher": "Microsoft.ManagedIdentity",
-                        "type": "ManagedIdentityExtensionForWindows",
-                        "typeHandlerVersion": "1.0",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "port": 50342
-                        },
-                        "protectedSettings": {}
-                    }
-                }
-    ```
+> [!NOTE]
+> Előfordulhat, hogy igény szerint üzembe helyezi a felügyelt identitások az Azure-erőforrások virtuális gép méretezési csoport bővítményének megadásával, a a `extensionProfile` elem a sablon. Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.  További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
 3. Amikor elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
    
@@ -257,6 +220,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
                 //other virtual machine properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)
                     "extensionProfile": {
                         "extensions": [
                             {
@@ -299,6 +263,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
                 //other virtual machine properties...
                 "virtualMachineProfile": {
                     //other virtual machine profile properties...
+                    //The following appears only if you provisioned the optional virtual machine scale set extension (to be deprecated)    
                     "extensionProfile": {
                         "extensions": [
                             {

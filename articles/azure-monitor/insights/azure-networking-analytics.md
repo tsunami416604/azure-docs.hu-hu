@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 5412fd2357a6848dae0cd5230546ff13cd1a6054
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b1bcaa3a6246a97f15cbd249040844602f03a7b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107559"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>A Log Analytics megoldások monitorozása az Azure-hálózatok
 
@@ -217,18 +217,18 @@ A frissített megoldások használata:
 2. [Diagnosztika az Azure hálózati biztonsági csoportok közvetlenül a Log Analyticshez való küldésének konfigurálása](#enable-azure-network-security-group-diagnostics-in-the-portal)
 2. Engedélyezze a *Azure Application Gateway Analytics* és a *Azure hálózati biztonsági csoport Analytics* leírt folyamatot követve megoldás [adja hozzá a Log Analytics-megoldások a a Megoldástárából](../../azure-monitor/insights/solutions.md)
 3. Bármely mentett lekérdezések, az irányítópultok vagy a riasztások az új adattípus használandó frissítése
-  + Típus: AzureDiagnostics való. Az erőforrástípus használhatja az Azure hálózati naplók szűrése.
+   + Típus: AzureDiagnostics való. Az erőforrástípus használhatja az Azure hálózati naplók szűrése.
 
-    | ahelyett, hogy: | Használat: |
-    | --- | --- |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
-    | NetworkSecuritygroups | AzureDiagnostics &#124; ahol ResourceType == "NETWORKSECURITYGROUPS" |
+     | ahelyett, hogy: | Használat: |
+     | --- | --- |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=ApplicationGatewayPerformance |
+     | NetworkSecuritygroups | AzureDiagnostics &#124; ahol ResourceType == "NETWORKSECURITYGROUPS" |
 
    + Bármely mező, amely rendelkezik, amik utótagja \_s, \_d, vagy \_a nevét, a g módosítása az első karakter kisbetűsre
    + Bármely mező, amely rendelkezik, amik utótagja \_o a neve, az adatok az egyes mezők a beágyazott mezők neve alapján van felosztva.
 4. Távolítsa el a *Azure Networking Analytics (elavult)* megoldás.
-  + Ha a Powershellt használ, használja a `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Ha a Powershellt használ, használja a `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Összegyűjtött adatok, mielőtt a változás nem jelenik meg az új megoldásba. Továbbra is a régi típusú és a mezőnevek ezen adatok lekérdezéséhez.
 

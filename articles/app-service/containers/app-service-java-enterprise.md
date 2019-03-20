@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: ee39d2d2cf85b8de52804ac764b17db348a053e0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 98e00eb382962d2364adda93b1a5b24fdef832eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538221"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101771"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
@@ -44,7 +44,7 @@ Webes alkalmazás példányai állapot nélküli, így minden egyes új példán
 - Üzenetkezelési-szolgáltatók konfigurálása
 - Más modulok és a függőségek hozzáadása a Wildfly kiszolgáló konfigurációját.
 
- A parancsfájl Wildfly működik-e, de az alkalmazás indítása előtt lefut. A parancsfájlt kell használnia a [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z `/opt/jboss/wildfly/bin/jboss-cli.sh` bármely konfigurációs vagy a kiszolgáló újraindítása után szükséges változtatásokat a kiszolgáló konfigurálása. 
+  A parancsfájl Wildfly működik-e, de az alkalmazás indítása előtt lefut. A parancsfájlt kell használnia a [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z `/opt/jboss/wildfly/bin/jboss-cli.sh` bármely konfigurációs vagy a kiszolgáló újraindítása után szükséges változtatásokat a kiszolgáló konfigurálása. 
 
 Ne használja az interaktív mód a parancssori felület Wildfly konfigurálásához. Helyette megadhat egy parancsfájlt a parancsok JBoss CLI használatával az `--file` parancsot, például:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: cd29fb968bd73e09c2e3b60e62a478b4e577146d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 40ff2339ad34a72079109317bf0a89dfbc6458e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098122"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -63,9 +63,9 @@ További információ a meglévő virtuális gépek Premium Storage-ba való mig
 
     A Premium Storage használatának megkezdéséhez hozzon létre a nem felügyelt lemezek prémium szintű tárfiókot. Az a [az Azure portal](https://portal.azure.com), a prémium szintű storage-fiók létrehozása, válassza ki a **prémium** teljesítményszint. Válassza ki a **helyileg redundáns tárolás (LRS)** replikációs beállítás. Is létrehozhat prémium szintű tárfiók úgy, hogy a teljesítményszint **Premium_LRS**. A teljesítmény szint módosításához használja a következő módszerek egyikét:
      
-    - [PowerShell az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
-    - [Az Azure CLI az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
-    - [Az Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manageren alapuló üzemelő példányok) vagy az Azure Storage erőforrás-szolgáltatói ügyfélkódtárak valamelyik
+  - [PowerShell az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+  - [Az Azure CLI az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+  - [Az Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manageren alapuló üzemelő példányok) vagy az Azure Storage erőforrás-szolgáltatói ügyfélkódtárak valamelyik
 
     Prémium szintű tárfiókok korlátai kapcsolatos további információkért lásd: [méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
 

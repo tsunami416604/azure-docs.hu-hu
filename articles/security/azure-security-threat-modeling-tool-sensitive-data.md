@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905222"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](https://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](https://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](https://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](https://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Lépések** | Az automatikus kiegészítés attribútum megadja e űrlap automatikus kiegészítés kell rendelkeznie, és ki. Az automatikus kiegészítés esetén a böngésző automatikus elvégzéséhez, mielőtt a felhasználó megadott értékek alapján értékeket. Például ha egy új nevet és jelszót szerepel egy űrlapot, és az űrlap elküldésekor, a böngésző kéri Ha a jelszó mentéséhez. Ezt követően amikor a képernyő jelenik meg, a név és jelszó automatikusan kitölti, vagy végezhető el, ahogy a neve van megadva. Helyi hozzáféréssel rendelkező támadó a tiszta szöveges jelszó a böngésző gyorsítótárából szerezze be. Alapértelmezés szerint engedélyezve van az automatikus kiegészítés, és explicit módon le lesz tiltva. |
 
 ### <a name="example"></a>Példa
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Jelszó Hashing .NET kriptográfiai API-k használatával](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **Hivatkozások**              | [Jelszó Hashing .NET kriptográfiai API-k használatával](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **Lépések** | Egyéni felhasználói store adatbázisban nem kell tárolja a jelszavakat. Jelszókivonatokat inkább védőérték értékekkel kell tárolni. Ellenőrizze, hogy a felhasználó a védőérték mindig egyedi és b-crypt, s-crypt vagy PBKDF2 alkalmazza, a jelszót, és 150 000 bővítheti, így lehetősége találgatásos kényszerítése minimális munkahelyi tényező iteráció számával együtt való tárolás előtt.| 
 
 ## <a id="db-encrypted"></a>Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van
@@ -399,7 +399,7 @@ Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keys
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Titkosítási rejtjelezésre utaló jeleket, a .NET-hez](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **Hivatkozások**              | [Titkosítási rejtjelezésre utaló jeleket, a .NET-hez](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **Lépések** | Létrehozott bináris fájljait (apk belül szerelvények) kell lennie rejtjelezett leállítani a visszafejtés sestavení. Eszközök, például a `CryptoObfuscator` erre a célra használhatók. |
 
 ## <a id="cert"></a>ClientCredentialType tanúsítvány vagy a Windows beállítása
@@ -429,7 +429,7 @@ Tanúsítvány vagy Windows clientCredentialType beállítva.
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, .NET-keretrendszer 3 |
 | **Attribútumok**              | Biztonsági mód - átvitel, biztonsági üzemmód - üzenet |
-| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF biztonsági alapok CoDe magazin](http://www.codemag.com/article/0611051) |
+| **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [WCF biztonsági alapok CoDe magazin](https://www.codemag.com/article/0611051) |
 | **Lépések** | Nincs átvitele vagy üzenet biztonsági intézkedések lettek megadva. Alkalmazások, amelyek üzenetek nélkül az átviteli vagy a biztonsági nem garantálja a kódintegritási vagy az üzenetek titkosságát üzenet továbbítását. Ha WCF biztonsági kötés None értékre van állítva, átviteli és üzenet biztonsági le vannak tiltva. |
 
 ### <a name="example"></a>Példa
@@ -453,8 +453,8 @@ Biztonsági mód között van az összes szolgáltatáskötések öt lehetséges
 * Mindkettő. Adja meg az átvitel és a (csak az MSMQ támogatja ezt) üzenet-szintű biztonsági beállításait teszi lehetővé. 
 * TransportWithMessageCredential. Az üzenet és az üzenet védelmi átadott hitelesítő adatokat, és a szállítási réteg által biztosított kiszolgálói hitelesítés. 
 * TransportCredentialOnly. Ügyfél-hitelesítő adatok lesznek átadva a szállítási réteg a, és nem jelenik a védelem akkor lép életbe. Szállítási és üzenet biztonsági védhetők az integritásra és üzenetek titkosságát. Az alábbi konfigurációval arról tájékoztatja, hogy a szolgáltatás használatára transport security üzenet hitelesítő adataival.
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ Biztonsági mód között van az összes szolgáltatáskötések öt lehetséges
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

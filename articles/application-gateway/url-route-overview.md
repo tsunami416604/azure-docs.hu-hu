@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895583"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Az Azure Application Gateway URL-címalapú útválasztás áttekintése
 
@@ -29,7 +29,7 @@ A következő példában az Application Gateway szolgálja ki a három háttér 
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-A http://contoso.com/video/* URL-hez kapcsolódó kérések a VideoServerPool, a http://contoso.com/images/* URL-hez kapcsolódóak pedig az ImageServerPool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
+A kérelmek <http://contoso.com/video/*> kérések a videoserverpool, és <http://contoso.com/images/*> kapcsolódóak pedig az imageserverpool készlethez lesznek átirányítva. Ha a kérés egyik elérésiút-kategóriába sem sorolható, a DefaultServerPool az alapértelmezett kiszolgáló.
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.

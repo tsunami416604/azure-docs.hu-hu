@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860584"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
@@ -135,7 +135,7 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid CI/CD b
 
 1. **Jelentkezzen be Azure-folyamatok** buildelési definíciókat létrehozására megerősítéséhez.
 
-2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
+2. Adjon hozzá **- r win10-x64** kódot. Ez azért szükséges, egy önálló telepítés a .NET Core használatával aktiválásához.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -154,9 +154,9 @@ Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurá
 
 ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  Válassza ki a **plusz** gombra kattintva adhat hozzá egy új kiadása alatt a **kiadások lapra** a Build és kiadás oldalon, a Visual Studio Online (VSO).
+1. Válassza ki a **plusz** gombra kattintva adhat hozzá egy új kiadása alatt a **kiadások lapra** a Build és kiadás oldalon, a Visual Studio Online (VSO).
 
-    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Alkalmazza a **Azure App Service üzembe helyezési** sablont.
 
@@ -210,7 +210,7 @@ Az Azure DevOps és az Azure DevOps-kiszolgáló adja meg hatékonyan konfigurá
 
 14. Válassza ki a **előfizetés** az Azure Stack-végpont.
 
-  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Állítsa be az Azure Stack webes alkalmazás neve, a **App service neve**.
 
@@ -299,11 +299,11 @@ A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat péld�
 
 ![DNS-rekordokat tartalmazó oldal példája](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  A tartománynév Regisztrálójánál, válassza ki **hozzáadása vagy a létrehozás** rekord létrehozásához. Egyes szolgáltatók eltérő hivatkozásokat használnak a különböző rekordtípusok hozzáadásához. A szolgáltató dokumentációjában talál.
+1. A tartománynév Regisztrálójánál, válassza ki **hozzáadása vagy a létrehozás** rekord létrehozásához. Egyes szolgáltatók eltérő hivatkozásokat használnak a különböző rekordtípusok hozzáadásához. A szolgáltató dokumentációjában talál.
 
-2.  Adjon hozzá egy CNAME-rekordot le egy altartományt az alkalmazás alapértelmezett gazdagépnevére.
+2. Adjon hozzá egy CNAME-rekordot le egy altartományt az alkalmazás alapértelmezett gazdagépnevére.
 
-  A www.northwindcloud.com tartomány például vegyen fel egy CNAME-rekordot, amely leképezi a neve < alkalmazás\_neve >. azurewebsites.NET webhelyet.
+   A www.northwindcloud.com tartomány például vegyen fel egy CNAME-rekordot, amely leképezi a neve < alkalmazás\_neve >. azurewebsites.NET webhelyet.
 
 Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példához hasonlóan néz ki:
 
@@ -311,47 +311,47 @@ Miután hozzáadta a CNAME REKORDOT, a DNS-rekordok oldala a következő példá
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>A CNAME rekord hozzárendelésének engedélyezése az Azure-ban
 
-1.  Egy új lap jelentkezzen be az Azure Portalon
+1. Egy új lap jelentkezzen be az Azure Portalon
 
-2.  Keresse meg az App Servicesbe való.
+2. Keresse meg az App Servicesbe való.
 
-3.  Válassza ki a webalkalmazást.
+3. Válassza ki a webalkalmazást.
 
-4.  Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet.
+4. Az Azure Portal bal oldali navigációs sávján válassza ki az **Egyéni tartományok** elemet.
 
-5.  Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
+5. Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
 
-1.  Írja be például a teljesen minősített tartománynevét `www.northwindcloud.com`.
+1. Írja be például a teljesen minősített tartománynevét `www.northwindcloud.com`.
 
-2.  Válassza az **Érvényesítés** lehetőséget.
+2. Válassza az **Érvényesítés** lehetőséget.
 
-3.  Jelzi, ha más típusú további rekordok hozzáadása (`A` vagy `TXT`) a tartomány nevét regisztráló szervezetek DNS-rekordok. Az Azure biztosít az értékeket, és ezeket a rekordokat típusát:
+3. Jelzi, ha más típusú további rekordok hozzáadása (`A` vagy `TXT`) a tartomány nevét regisztráló szervezetek DNS-rekordok. Az Azure biztosít az értékeket, és ezeket a rekordokat típusát:
 
-    a.  egy **A** rekordra, amelyet leképezhet az alkalmazás IP-címére.
+   a.  egy **A** rekordra, amelyet leképezhet az alkalmazás IP-címére.
 
-    b.  A **TXT** rekordra, amelyet leképezhet az alkalmazás alapértelmezett gazdagépnevére < alkalmazás_neve >. azurewebsites.NET webhelyet. App Service-ben ezt a rekordot csak a konfiguráláskor használja egyéni tartomány tulajdonjogának ellenőrzéséhez. Ellenőrzés után a TXT-rekord törlése.
+   b.  A **TXT** rekordra, amelyet leképezhet az alkalmazás alapértelmezett gazdagépnevére < alkalmazás_neve >. azurewebsites.NET webhelyet. App Service-ben ezt a rekordot csak a konfiguráláskor használja egyéni tartomány tulajdonjogának ellenőrzéséhez. Ellenőrzés után a TXT-rekord törlése.
 
-4.  Befejezheti a feladatot a tartomány regisztráló lapon, és kísérelje meg újra amíg érvényesítését a **gazdagépnév hozzáadása** gomb aktívvá válik.
+4. Befejezheti a feladatot a tartomány regisztráló lapon, és kísérelje meg újra amíg érvényesítését a **gazdagépnév hozzáadása** gomb aktívvá válik.
 
-5.  Győződjön meg arról, hogy ** gazdagépnév rekordtípusa értékre van állítva **CNAME (www.example.com vagy bármely altartomány)**.
+5. Győződjön meg arról, hogy ** gazdagépnév rekordtípusa értékre van állítva **CNAME (www.example.com vagy bármely altartomány)**.
 
-6.  Válassza a **Gazdagépnév hozzáadása** lehetőséget.
+6. Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
-7.  Írja be például a teljesen minősített tartománynevét `northwindcloud.com`.
+7. Írja be például a teljesen minősített tartománynevét `northwindcloud.com`.
 
-8.  Válassza az **Érvényesítés** lehetőséget.
+8. Válassza az **Érvényesítés** lehetőséget.
 
-9.  A **Hozzáadás** aktiválva van.
+9. A **Hozzáadás** aktiválva van.
 
 10. Győződjön meg arról, hogy ** gazdagépnév rekordtípusa értékre van állítva **A rekord (example.com)**.
 
 11. **Gazdagépnév hozzáadása**.
 
-  Az új gazdanév megjelenik az alkalmazás egy kis ideig eltarthat **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
+    Az új gazdanév megjelenik az alkalmazás egy kis ideig eltarthat **egyéni tartományok** lapot. Próbálja meg frissíteni a böngészőt az adatok frissítéséhez.
   
-  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  Egy hiba esetén egy ellenőrzési hiba értesítést az oldal alján jelenik meg. ![Ellenőrzési hiba](media/azure-stack-solution-geo-distributed/image32.png)
+    Egy hiba esetén egy ellenőrzési hiba értesítést az oldal alján jelenik meg. ![Ellenőrzési hiba](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  A fenti lépéseket is meg lehet ismételni a helyettesítő karaktert tartalmazó tartomány hozzárendelése (\*. northwindcloud.com)... Ez lehetővé teszi az app Service-ben további altartományok hozzáadását, mindegyikhez külön CNAME rekord létrehozása nélkül. A regisztráló utasítások szerint a beállítás megadásához.
@@ -482,15 +482,15 @@ Amikor az IIS vagy **Certreq.exe** szolgálnak a tanúsítványkérelem létreho
 
 #### <a name="upload-the-ssl-certificate"></a>Az SSL-tanúsítvány feltöltése
 
-1.  Válassza ki **SSL-beállítások** a webalkalmazás bal oldali navigációs.
+1. Válassza ki **SSL-beállítások** a webalkalmazás bal oldali navigációs.
 
-2.  Válassza ki **-tanúsítvány feltöltése**.
+2. Válassza ki **-tanúsítvány feltöltése**.
 
-3.  A **PFX tanúsítványfájl**válassza PFX-fájlt.
+3. A **PFX tanúsítványfájl**válassza PFX-fájlt.
 
-4.  4. A **tanúsítvány jelszava**, írja be a PFX-fájl exportálásakor létrehozott jelszót.
+4. 1. A **tanúsítvány jelszava**, írja be a PFX-fájl exportálásakor létrehozott jelszót.
 
-5.  Válassza a **Feltöltés** lehetőséget.
+5. Válassza a **Feltöltés** lehetőséget.
 
 ![Tanúsítvány feltöltése](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -588,23 +588,23 @@ Az alkalmazás lehetővé teszi, hogy [TLS](https://wikipedia.org/wiki/Transport
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
-1.  A portálok keresősávba keresse meg a ** Traffic Manager-profil ** létrehozott a fenti szakaszban, és válassza ki az eredményeket a traffic manager-profil nevét, amely jelenik meg.
+1. A portálok keresősávba keresse meg a ** Traffic Manager-profil ** létrehozott a fenti szakaszban, és válassza ki az eredményeket a traffic manager-profil nevét, amely jelenik meg.
 
-2.  A **Traffic Manager-profil**, a a **beállítások** szakaszban jelölje be **végpontok**.
+2. A **Traffic Manager-profil**, a a **beállítások** szakaszban jelölje be **végpontok**.
 
-3.  Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a **Hozzáadás** lehetőséget.
 
-4.  Az Azure Stack-végpont hozzáadása.
+4. Az Azure Stack-végpont hozzáadása.
 
-5.  A **típus**válassza **külső végpont**.
+5. A **típus**válassza **külső végpont**.
 
-6.  Adjon meg egy **neve** ezen a végponton, ideális esetben az Azure Stack nevét.
+6. Adjon meg egy **neve** ezen a végponton, ideális esetben az Azure Stack nevét.
 
-7.  A teljes tartománynév (**FQDN**), a külső URL-címe az Azure Stack Web App for.
+7. A teljes tartománynév (**FQDN**), a külső URL-címe az Azure Stack Web App for.
 
-8.  A földrajzi hozzárendelés, válassza a régió/kontinens, ahol az erőforrás megtalálható, például **Európa.**
+8. A földrajzi hozzárendelés, válassza a régió/kontinens, ahol az erőforrás megtalálható, például **Európa.**
 
-9.  Az ország/régió listából, amely akkor jelenik meg, válassza az ország, érvényes ehhez a végponthoz, például **Németország**.
+9. Az ország/régió listából, amely akkor jelenik meg, válassza az ország, érvényes ehhez a végponthoz, például **Németország**.
 
 10. A **Beállítás letiltottként** jelölőnégyzetet ne jelölje ki.
 
@@ -628,12 +628,12 @@ Az alkalmazás lehetővé teszi, hogy [TLS](https://wikipedia.org/wiki/Transport
 
 16. Kattintson az **OK** gombra.
 
-  > [!Note]  
-  >  Hozzon létre legalább egy végpontot az összes (globális) az alapértelmezett végpont az erőforrás egyikükön földrajzi területét.
+    > [!Note]  
+    >  Hozzon létre legalább egy végpontot az összes (globális) az alapértelmezett végpont az erőforrás egyikükön földrajzi területét.
 
-1.  Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
+1. Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
-  ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globális vállalati Azure Geo-eloszlás képességeket támaszkodik.**
 

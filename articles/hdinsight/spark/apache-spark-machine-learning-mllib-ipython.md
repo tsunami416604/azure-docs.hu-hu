@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: bf29fd8d9b707636fb5965669ad800517a6cf58f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075561"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Az Apache Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
 
@@ -200,16 +200,16 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
 
     Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **Sikertelen** és **átadni**:
 
-    - Sikeres
-        - Sikeres
-        - Feltételek használatával adja át
-    - Sikertelen
-        - Sikertelen
-    - Elvetés
-        - Nem találhatók üzleti
-        - Üzleti kívül
+   - Sikeres
+       - Sikeres
+       - Feltételek használatával adja át
+   - Sikertelen
+       - Sikertelen
+   - Elvetés
+       - Nem találhatók üzleti
+       - Üzleti kívül
 
-    Az eredmények ("Üzleti nem található" vagy "kívüli üzleti") az adatok nem hasznos, és ezek alkotják az eredmények nagyon kis százalékát ennek ellenére.
+     Az eredmények ("Üzleti nem található" vagy "kívüli üzleti") az adatok nem hasznos, és ezek alkotják az eredmények nagyon kis százalékát ennek ellenére.
 
 4. Futtassa a következő kódot a meglévő dataframe átalakítása (`df`) egy új, ahol minden egyes ellenőrzés jelenik meg egy címkét-szabálysértések pár dataframe-be. Az ebben az esetben címkét, `0.0` hiba, a címke jelöli `1.0` sikeres és a címkét, `-1.0` egyes eredményeket e két mellett jelöli. 
 

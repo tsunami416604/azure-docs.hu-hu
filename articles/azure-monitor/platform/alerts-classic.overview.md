@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993040"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -80,10 +80,10 @@ Azonban a régebbi metrikákhoz kapcsolódó riasztások nem Műveletcsoportok h
 - Egy webhookot, amely lehetővé teszi további automation műveletek elindításához hívja meg.
 
 Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például használatával:
-    - Azure Automation-runbook
-    - Azure-függvény
-    - Azure Logic App
-    - Egy külső szolgáltatás
+- Azure Automation-runbook
+- Azure-függvény
+- Azure Logic App
+- Egy külső szolgáltatás
 
 ## <a name="next-steps"></a>További lépések
 Riasztási szabályok, és konfigurálja őket az adatainak beolvasása:

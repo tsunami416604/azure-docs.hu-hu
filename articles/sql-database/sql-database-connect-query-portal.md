@@ -13,12 +13,12 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234577"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105794"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Gyors útmutató: Csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával
 
@@ -65,8 +65,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 Az Active Directory (AD) rendszergazda konfigurálása lehetővé teszi, hogy egyetlen identitással jelentkezzen be az Azure portal és az SQL-adatbázis. Az SQL Server egy AD-rendszergazda konfigurálása az alábbi lépésekkel.
 
 > [!NOTE]
-* E-mail-fiókok (például outlook.com, gmail.com, yahoo.com és így tovább) még nem támogatottak az AD-rendszergazdaként. Ellenőrizze, hogy válassza ki a felhasználó vagy natív módon az Azure AD-ben létrehozott, vagy összevonták az Azure ad-ben.
-* Jelentkezzen be az Azure AD-rendszergazda nem működik olyan fiókokkal, amelyeken 2 többtényezős hitelesítés engedélyezve van.
+> * E-mail-fiókok (például outlook.com, gmail.com, yahoo.com és így tovább) még nem támogatottak az AD-rendszergazdaként. Ellenőrizze, hogy válassza ki a felhasználó vagy natív módon az Azure AD-ben létrehozott, vagy összevonták az Azure ad-ben.
+> * Jelentkezzen be az Azure AD-rendszergazda nem működik olyan fiókokkal, amelyeken 2 többtényezős hitelesítés engedélyezve van.
 
 1. Válassza ki **összes erőforrás** elemet a bal oldali menüben, majd az SQL Serverhez.
 

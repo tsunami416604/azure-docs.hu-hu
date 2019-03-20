@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198422"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101227"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>A Time Series Insights-környezethez az Azure portal használatával egy referencia-adatkészlet létrehozása
 
@@ -82,19 +82,19 @@ Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Ez azt jelent
  
 13. Az adatkészlet neve kitöltésével a **adatkészlet neve** mezőt az adatrácsban felett.
 
-   ![Az adatkészlet nevét.](media/add-reference-data-set/name_reference_dataset.png)
+    ![Az adatkészlet nevét.](media/add-reference-data-set/name_reference_dataset.png)
 
 14. Adja meg a **elsődleges kulcs** az adatkészlet kiválasztásával a legördülő fent az adatrácsban oszlopa.
 
-   ![Válassza ki a fő oszlopoknak.](media/add-reference-data-set/set_primary_key.png)
+    ![Válassza ki a fő oszlopoknak.](media/add-reference-data-set/set_primary_key.png)
 
-   Választhatja a **+** gombra kattintva adhat hozzá egy másodlagos kulcs oszlop egy összetett elsődleges kulcsként. A kijelölés visszavonása van szüksége, ha eltávolítja a másodlagos kulcsot a legördülő listából válassza ki az üres érték.
+    Választhatja a **+** gombra kattintva adhat hozzá egy másodlagos kulcs oszlop egy összetett elsődleges kulcsként. A kijelölés visszavonása van szüksége, ha eltávolítja a másodlagos kulcsot a legördülő listából válassza ki az üres érték.
 
-15.  Töltse fel az adatokat, válassza a **sorok feltöltése** gombra.
+15. Töltse fel az adatokat, válassza a **sorok feltöltése** gombra.
 
-   ![Feltöltés](media/add-reference-data-set/upload_rows.png)
+    ![Feltöltés](media/add-reference-data-set/upload_rows.png)
 
-   Az oldal megerősíti, hogy a befejezett feltöltése és az üzenet megjelenítéséhez **sikeresen feltöltve az adatkészlet**.
+    Az oldal megerősíti, hogy a befejezett feltöltése és az üzenet megjelenítéséhez **sikeresen feltöltve az adatkészlet**.
 
 ## <a name="next-steps"></a>További lépések
 * [Referencia-adatok kezelése](time-series-insights-manage-reference-data-csharp.md) programozott módon.

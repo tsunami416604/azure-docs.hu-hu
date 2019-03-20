@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462834"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000241"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -29,7 +29,7 @@ Adatok átviteléhez az Azure Blob Storage-bA importálási feladat létrehozás
     - Információk a storage-tárolóba, [hozzon létre egy storage-tárolóba](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
 - A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems). 
-- Engedélyezi a Bitlockert a Windows rendszeren. Lásd: [BitLocker engedélyezésének módja](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- Engedélyezi a Bitlockert a Windows rendszeren. Lásd: [BitLocker engedélyezésének módja](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Töltse le az 1. verziójának WAImportExport](https://aka.ms/waiev1) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexportv1`. Például: `C:\WaImportExportV1`.
 - FedEx/DHL fiókkal rendelkeznie.  
     - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
@@ -47,7 +47,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 
 1.  A lemezmeghajtók kapcsolódni a Windows rendszer SATA-összekötők használatával.
 1.  Hozzon létre egy NTFS-kötetet egyes meghajtókon. A kötet rendeljen hozzá meghajtóbetűjelet. Ne használjon akkor csatlakozási.
-2.  A BitLocker titkosítást az NTFS-köteten. Ha a Windows Server rendszert használ, kövesse az utasításokat a [hogyan engedélyezheti a Bitlockert a Windows Server 2012 R2](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+2.  A BitLocker titkosítást az NTFS-köteten. Ha a Windows Server rendszert használ, kövesse az utasításokat a [hogyan engedélyezheti a Bitlockert a Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 3.  Adatok másolása a titkosított kötetek. Húzza és dobja el vagy a Robocopy vagy bármely ilyen fájlmásoló eszközt használja.
 4.  Nyissa meg a PowerShell vagy a parancssori ablakot rendszergazdai jogosultságokkal. A kicsomagolt mappába könyvtár módosításához futtassa a következő parancsot:
     
@@ -94,14 +94,14 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
 4. A **alapjai**:
 
-    - Válassza ki **Azure-ba való importálásuk**.
-    - Adjon meg egy leíró nevet az importálási feladatot. A név használatával a feladatok előrehaladását úgy követheti nyomon.
-        - A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
-        - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-    - Válasszon egy előfizetést.
-    - Adja meg, vagy válasszon ki egy erőforráscsoportot.  
+   - Válassza ki **Azure-ba való importálásuk**.
+   - Adjon meg egy leíró nevet az importálási feladatot. A név használatával a feladatok előrehaladását úgy követheti nyomon.
+       - A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
+       - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
+   - Válasszon egy előfizetést.
+   - Adja meg, vagy válasszon ki egy erőforráscsoportot.  
 
-    ![Importálási feladat létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Importálási feladat létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. A **feladat részletei**:
 
@@ -113,21 +113,21 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
 4. A **szállítási adatok visszaadása**:
 
-    - A legördülő listából válassza ki a szolgáltató.
-    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. Ha nincs egy fiók száma, hozzon létre egy [FedEx](http://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) Szállítmányozói fiókjára.
-    - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió. 
+   - A legördülő listából válassza ki a szolgáltató.
+   - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. Ha nincs egy fiók száma, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](http://www.dhl.com/) Szállítmányozói fiókjára.
+   - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió. 
         
-        > [!TIP] 
-        > Helyett adjon meg egy e-mail címet, egy-egy felhasználóhoz, adjon meg egy csoport e-mail-címet. Ez biztosítja, értesítések fogadására, még akkor is, ha egy rendszergazda hagyja.
+       > [!TIP] 
+       > Helyett adjon meg egy e-mail címet, egy-egy felhasználóhoz, adjon meg egy csoport e-mail-címet. Ez biztosítja, értesítések fogadására, még akkor is, ha egy rendszergazda hagyja.
 
-    ![Importálási feladat létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Importálási feladat létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. Az a **összefoglalás**:
 
-    - Tekintse át az összefoglalást a feladat információk. Jegyezze fel a feladat neve és a szállítási cím tehetnek a lemezeket az Azure-bA az Azure-adatközpontba. Ez az információ később használják a szállítási címkét.
-    - Kattintson a **OK** az importálási feladat létrehozása.
+   - Tekintse át az összefoglalást a feladat információk. Jegyezze fel a feladat neve és a szállítási cím tehetnek a lemezeket az Azure-bA az Azure-adatközpontba. Ez az információ később használják a szállítási címkét.
+   - Kattintson a **OK** az importálási feladat létrehozása.
 
-    ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Importálási feladat létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>3. lépés: A meghajtók szállításra 
 

@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009188"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992352"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -89,7 +89,7 @@ Ha még nem ismeri a device explorer eszközzel, az alábbi eljárás ismerteti,
 
 1. Futtassa a programot, ha ez az interfész jelenik meg:
 
-  ![Device Explorer Ikereszköz képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
+   ![Device Explorer Ikereszköz képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
 1. Adja meg a **IoT Hub kapcsolati karakterláncra** az első mezőt, és kattintson a **frissítés**. Ebben a lépésben konfigurálja az eszközt, úgy, hogy képes legyen kommunikálni az IoT Hub. 
 
@@ -97,17 +97,17 @@ A **kapcsolati karakterlánc** területen található **IoT Hub szolgáltatás**
 
 1. Ha az IoT Hub kapcsolati karakterláncra van konfigurálva, kattintson a **felügyeleti** lapon:
 
-  ![Device Explorer Ikereszköz / felügyeleti képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
+   ![Device Explorer Ikereszköz / felügyeleti képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 A rendszer ezen a lapon kezelheti az IoT hub-ben regisztrált eszközök.
 
 1. Kattintva olyan eszközt hoz létre a **létrehozás** gombra. Egy párbeszédpanel jelenik meg az olyan előre összeállított kulcsokat (elsődleges és másodlagos). Adjon meg egy **Eszközazonosító** majd **létrehozás**.
 
-  ![Hozzon létre az eszköz képernyőfelvétel](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
+   ![Hozzon létre az eszköz képernyőfelvétel](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
 1. Ha az eszköz jön létre, az eszközök frissítések és a regisztrált eszközök, beleértve a most létrehozott egy listája. Ha a jobb gombbal az új eszközt, ez a menü jelenik meg:
 
-  ![Device Explorer Ikereszköz kattintson a jobb gombbal eredménye](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
+   ![Device Explorer Ikereszköz kattintson a jobb gombbal eredménye](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
 1. Ha úgy dönt, **kijelölt eszközhöz tartozó kapcsolati karakterlánc másolása**, az eszköz kapcsolati karakterláncának másolja a vágólapra. Tartsa meg az eszköz kapcsolati karakterláncának másolatát. Meg kell futtatásakor a következő szakaszok ismertetik a mintaalkalmazásokat.
 
@@ -351,7 +351,7 @@ Csakúgy, mint az előző mintától, ez egy több NuGet-csomagot tartalmazza:
 
 A legtöbb ezeket a csomagokat az előző példában láthatta, de **Microsoft.Azure.IoTHub.Serializer** jelent meg. Ezt a csomagot kötelező, ha használja a **szerializáló** könyvtár.
 
-A mintaalkalmazáshoz végrehajtásának annak a ***iothub_client\_minták\_iothub_convenience_sample** fájlt.
+A mintaalkalmazáshoz végrehajtásának annak a **iothub_client\_minták\_iothub_convenience_sample** fájlt.
 
 A következő szakaszok végigvezetik a minta fő részét.
 

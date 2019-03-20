@@ -11,12 +11,12 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 01f4cca8e177d8f9c9325a7920eb7e72c005bbd6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760938"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078057"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -73,8 +73,8 @@ Nincsenek három szükséges argumentumok:
                 Bases Processed : 1,348,613,600 (1 GBase)
         ```
 
- > [!NOTE]
- >  Másik megoldásként közvetlenül az az URL-cím és a kulcs megadása helyett a konfigurációs fájl elérési útját is megadhat. Ha ezek az argumentumok adja meg a parancssort, valamint a konfigurációs fájlban, a parancssori argumentumok elsőbbséget élvez.  
+  > [!NOTE]
+  >  Másik megoldásként közvetlenül az az URL-cím és a kulcs megadása helyett a konfigurációs fájl elérési útját is megadhat. Ha ezek az argumentumok adja meg a parancssort, valamint a konfigurációs fájlban, a parancssori argumentumok elsőbbséget élvez.  
 
 A munkafolyamat azonosítója 1001, és a végrehajtható fájl elérési útja megegyezik a msgen kerülnek, a config.txt fájlhoz a parancs a következőképpen jelenik meg:
 
@@ -116,7 +116,7 @@ Ezek a hibák a gyakorlatban hasznosítható felhasználói. Fájl és hibakód 
 
 | Fájltípus | Hibakód | Hibaüzenet                                                                           | Javasolt hibaelhárítási lépések                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Bármelyik          | 701        | Olvassa el [readId] [numberOfBases] bázisok rendelkezik, de a korlát [maxReadLength]           | Ez a hiba leggyakoribb oka két olvasási összefűzésén vezető fájl sérülése. Ellenőrizze a bemeneti fájlokat. |                                |
+| Bármelyik          | 701        | Olvassa el [readId] [numberOfBases] bázisok rendelkezik, de a korlát [maxReadLength]           | Ez a hiba leggyakoribb oka két olvasási összefűzésén vezető fájl sérülése. Ellenőrizze a bemeneti fájlokat. |
 | BAM          | 200        |   Nem sikerült beolvasni a fájlt a(z) "[yourFileName]".                                                                                       | Ellenőrizze a BAM-fájl formátumát. Küldje el a munkafolyamat újra egy megfelelően formázott fájllal.                                                                           |
 | BAM          | 201        |  Nem sikerült beolvasni a BAM-fájlból [fájlnév].                                                                                      |Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
 | BAM          | 202        | Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Túl kicsi és a hiányzó fejléc.                                                                                        | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |

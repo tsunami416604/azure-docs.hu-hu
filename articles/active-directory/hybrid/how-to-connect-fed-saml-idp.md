@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b82c2261e949c724b1310ee43c6f3fe29766945
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096945"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
 
@@ -30,16 +30,16 @@ Ez a dokumentum információkat tartalmaz az identitásszolgáltatóval SAML 2.0
 
 A Microsoft támogatja a bejelentkezést egy Microsoft felhőszolgáltatásra, például az Office 365, a megfelelően konfigurált SAML 2.0-s profil-alapú IdP-integrációja. SAML 2.0 identitásszolgáltató harmadik féltől származó termékekre, és ezért a Microsoft nem biztosít támogatást az üzembe helyezés, konfigurálása, a hibaelhárítási ezekkel kapcsolatos ajánlott eljárásokat. Egyszer megfelelően konfigurálva, a SAML 2.0 identitásszolgáltató használatával a Microsoft-kapcsolat Analyzer eszközt, amely modellről további részleteket az alábbi megfelelő konfiguráció is tesztelve az integrációt. Az SAML 2.0-s SP-Lite, profil-alapú identitásszolgáltató kapcsolatos további részletekért kérje meg a szervezet, amely a megadott azt.
 
->[!IMPORTANT]
->Csak korlátozott számú ügyféllel esetünkben bejelentkezéshez a SAML 2.0 identitásszolgáltató érhető el, ez a következőket tartalmazza:
-
->- Web-alapú ügyfelekről, például az Outlook Web Access és a SharePoint online-hoz
-- E-mailek funkciókban gazdag ügyfél, amely használja az egyszerű hitelesítés és a egy támogatott az Exchange hozzáférési módszer IMAP, a jelenléti pontra Irányíthatja, Active Sync, a MAPI, stb. (Enhanced ügyfél protokoll végpontját kötelező telepíteni), például többek között:
-    - A Microsoft Outlook 2010 vagy az Outlook 2013/Outlook 2016, az Apple iPhone (különböző IOS-es verzió)
-    - Különféle Google Android-eszközökhöz
-    - Windows Phone 7, Windows Phone 7,8 és Windows Phone 8.0-s
-    - Levelezőprogramján Windows 8 és Windows 8.1 Levelezőprogramján
-    - A Windows 10-es Mail ügyfél
+> [!IMPORTANT]
+> Csak korlátozott számú ügyféllel esetünkben bejelentkezéshez a SAML 2.0 identitásszolgáltató érhető el, ez a következőket tartalmazza:
+> 
+> - Web-alapú ügyfelekről, például az Outlook Web Access és a SharePoint online-hoz
+> - E-mailek funkciókban gazdag ügyfél, amely használja az egyszerű hitelesítés és a egy támogatott az Exchange hozzáférési módszer IMAP, a jelenléti pontra Irányíthatja, Active Sync, a MAPI, stb. (Enhanced ügyfél protokoll végpontját kötelező telepíteni), például többek között:
+>     - A Microsoft Outlook 2010 vagy az Outlook 2013/Outlook 2016, az Apple iPhone (különböző IOS-es verzió)
+>     - Különféle Google Android-eszközökhöz
+>     - Windows Phone 7, Windows Phone 7,8 és Windows Phone 8.0-s
+>     - Levelezőprogramján Windows 8 és Windows 8.1 Levelezőprogramján
+>     - A Windows 10-es Mail ügyfél
 
 Bejelentkezés a példánkban a SAML 2.0 identitásszolgáltató a más ügyfelek számára nem érhetők el. Például nem sikerül bejelentkezni a szolgáltatásba a SAML 2.0 identitásszolgáltató van konfigurálva, az egyszeri bejelentkezés az a Lync 2010 asztali ügyfélhez.
 
@@ -194,7 +194,7 @@ Az alábbi eljárás végigvezeti egy meglévő standard szintű tartomány áta
 A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [ https://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Használat kell futtatásakor "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" csak akkor, ha az identitásszolgáltató ECP bővítmény beállítása. Az Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a POST-alapú aktív végpontot. Ha a SAML 2.0 STS valósít meg egy aktív végpontot egy aktív végpontot a Shibboleth ECP megvalósítása hasonló lehet az ezek olyan funkciógazdag ügyfeleket kommunikáljon az Exchange Online szolgáltatáshoz.
+>Használat kell futtatásakor `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` csak akkor, ha az identitásszolgáltató ECP bővítmény beállítása. Az Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a POST-alapú aktív végpontot. Ha a SAML 2.0 STS valósít meg egy aktív végpontot egy aktív végpontot a Shibboleth ECP megvalósítása hasonló lehet az ezek olyan funkciógazdag ügyfeleket kommunikáljon az Exchange Online szolgáltatáshoz.
 
 Összevonás konfigurálása után válthat vissza a "nem összevont" (vagy "felügyelt"), azonban ez a módosítás végrehajtásához akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőbeli bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "felügyeltnek" fiókdíjat bizonyos esetekben hiba a beállítások alaphelyzetbe állítása. A tartomány átalakítás további információk:: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 

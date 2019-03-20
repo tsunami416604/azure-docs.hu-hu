@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 58f448646efc4cac9298d5dc4ec7a99e0e39bddc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080167"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Hozzon létre, és több webhely üzemeltetése az Azure Portalon az application gateway konfigurálása
 
@@ -44,20 +44,20 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - Az alkalmazásátjáró neve *myAppGateway*.
-    - Az új erőforráscsoport *myResourceGroupAG*.
+   - Az alkalmazásátjáró neve *myAppGateway*.
+   - Az új erőforráscsoport *myResourceGroupAG*.
 
-    ![Új alkalmazásátjáró létrehozása](./media/create-multiple-sites-portal/application-gateway-create.png)
+     ![Új alkalmazásátjáró létrehozása](./media/create-multiple-sites-portal/application-gateway-create.png)
 
 4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - A virtuális hálózat neve *myVNet*.
-    - A virtuális hálózat címtere *10.0.0.0/16*.
-    - Az alhálózat neve *myAGSubnet*.
-    - Az alhálózat címtere *10.0.0.0/24*.
+   - A virtuális hálózat neve *myVNet*.
+   - A virtuális hálózat címtere *10.0.0.0/16*.
+   - Az alhálózat neve *myAGSubnet*.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
-    ![Virtuális hálózat létrehozása](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/create-multiple-sites-portal/application-gateway-vnet.png)
 
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
@@ -134,8 +134,8 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 1. Kattintson a **figyelői** majd **többhelyes**.
 2. Adja meg a figyelő ezeket az értékeket:
     
-    - *contosoListener* - a figyelő nevét.
-    - *www.contoso.com* -cserélje le a gazdagép neve példa a tartomány nevére.
+   - *contosoListener* - a figyelő nevét.
+   - *www.contoso.com* -cserélje le a gazdagép neve példa a tartomány nevére.
 
 3. Kattintson az **OK** gombra.
 4. Hozzon létre egy második figyelő neve használatával *fabrikamListener* és használja a második tartomány nevét. Ebben a példában *www.fabrikam.com* szolgál.

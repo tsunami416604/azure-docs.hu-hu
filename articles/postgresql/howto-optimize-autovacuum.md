@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815217"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993425"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Egy Azure Database for PostgreSQL-kiszolgáló a autovacuum optimalizálása 
 Ez a cikk ismerteti egy Azure Database for PostgreSQL-kiszolgáló a autovacuum hatékonyan optimalizálása.
@@ -43,6 +43,7 @@ A konfigurációs paramétereket, amelyek vezérlik a autovacuum alapuló két l
 - Mennyit kell azt tiszta elindítása után?
 
 Az alábbiakban néhány autovacuum konfigurációs paramétereket, frissítheti a fenti kérdések, valamint útmutatást alapján.
+
 Paraméter|Leírás|Alapértelmezett érték
 ---|---|---
 autovacuum_vacuum_threshold|A frissített vagy törölt rekordok egy táblában vákuumos műveletet aktiválásához szükséges minimális számát határozza meg. Az alapértelmezett érték 50 rekordokat. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|50
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|Automatikus vákuumos műveletekben használt költ
 autovacuum_vacuum_cost_delay|Az automatikus vákuumos műveletekben használt költség késleltetés értéket ad meg. Ha meg van adva a -1, a rendszeres vacuum_cost_delay érték szolgál. Az alapértelmezett érték: 20 ezredmásodperc. A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból. Egyedi táblák a beállításának felülbírálása, módosítsa a table storage paramétereket.|20 ms
 autovacuum_nap_time|Adja meg a minimális késleltetési autovacuum közötti bármely adott adatbázist futtat. Mindegyik ciklikus a démon megvizsgálja az adatbázist, és problémák VÁKUUM és elemzés parancsok szükség szerint az adott adatbázisban lévő táblák. A késleltetés idejének mérése másodpercben történik, és az alapértelmezett érték egy perc (1 perc). A paraméter értéke csak a postgresql.conf fájlban vagy a kiszolgáló parancssorból.|15 s
 autovacuum_max_workers|Itt adható meg autovacuum folyamatok, a autovacuum indítója, egyidejűleg futtatható eltérő maximális számát. Az alapértelmezett érték három. A paraméter értéke csak a kiszolgáló indításakor.|3
+
 Bírálja felül az egyes táblák beállításait, módosítsa a table storage paramétereket. 
 
 ## <a name="autovacuum-cost"></a>Autovacuum költség

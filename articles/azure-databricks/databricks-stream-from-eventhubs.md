@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 006286b492b7431ca15b8a2dc9ac5b4116f7d1b1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc712885169730aa9cbbd8de35b96e645ff1cea2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087125"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -39,6 +39,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Tweetek beolvasása az Event Hubsról
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+
+> [!Note]
+> Ebben az oktatóanyagban nem lehet elvégezni használatával **Azure ingyenes próba-előfizetést**.
+> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,11 +100,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
-    * Adjon egy nevet a fürtnek.
-    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
-    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Adjon egy nevet a fürtnek.
+   * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
+   * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-    Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -124,16 +128,16 @@ Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi r
 
 Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. A következőkben megtudhatja, hogyan adhatja hozzá a kódtárat a munkaterület **Megosztott** mappájához.
 
-1.  Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben kattintson a **Létrehozás** > **Kódtár** parancsra.
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben kattintson a **Létrehozás** > **Kódtár** parancsra.
 
-    ![Kódtár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
+   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-stream-from-eventhubs/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
 2. Az Új kódtár oldalon a **Forrás** listából válassza a **Maven-koordináta** lehetőséget. A **Koordináta** mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
-    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
-    * Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
+   * Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![Maven-koordináták megadása](./media/databricks-stream-from-eventhubs/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
+     ![Maven-koordináták megadása](./media/databricks-stream-from-eventhubs/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
 
 3. Válassza a **Kódtár létrehozása** lehetőséget.
 

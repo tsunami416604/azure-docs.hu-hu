@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0e2980b48a5d9b1f2e9d75e59a27bfceb0d1180
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6221fb7575fc267030929b449cba48cff8563f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122554"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Gyors útmutató: Alkalmazás regisztrálása az Azure Active Directory v2.0-végpont
 
@@ -61,4 +61,4 @@ A 2.0-s verziójú végpont nem minden Azure AD-forgatókönyvet és -funkciót 
 
 Most, hogy már rendelkezik Microsoft-alkalmazással, elvégezheti valamelyik 2.0-s verziójú rövid útmutatót. Az alábbiakban néhány javaslatot olvashat:
 
-[!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
+[!INCLUDE [active-directory-v2-quickstart-table](~/includes/active-directory-v2-quickstart-table.md)]

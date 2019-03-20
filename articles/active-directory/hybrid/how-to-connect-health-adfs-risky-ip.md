@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d1af8d7e10bd62819909c87c8e54fcbce6b7fe6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170802"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP jelentés (nyilvános előzetes verzió)
 Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -44,7 +44,7 @@ A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a siker
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
-| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4- vagy IPv6-cím is. |
+| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4 vagy IPv6-címet. |
 | Helytelen jelszó típusú hibák száma | Az IP-címről előforduló helytelen jelszó típusú hibák száma az észlelési időszakban. A helytelen jelszó típusú hiba többször is előfordulhat az egyes felhasználók esetében. Fontos: a lejárt jelszó miatti sikertelen bejelentkezések nem tartoznak ide. |
 | Extranet zárolási hibák száma | Az IP-címről előforduló extranet zárolási hibák száma az észlelési időszakban. Extranet zárolási hibák többször is előfordulhatnak az egyes felhasználók esetében. Ez csak akkor jelenik meg, ha az AD FS-ben konfigurálta az extranet zárolást (a 2012 R2-es és újabb verziókban). <b>Megjegyzés:</b> Ha a jelszóalapú extranet bejelentkezés engedélyezve van, erősen ajánlott bekapcsolni ezt a funkciót. |
 | Megkísérelt egyedi felhasználók | Azon egyedi felhasználói fiókok száma, amelyekbe megkíséreltek bejelentkezni az IP-címről az észlelési időszakban. Ez segíthet megkülönböztetni az egy és a több felhasználó elleni támadásokat.  |

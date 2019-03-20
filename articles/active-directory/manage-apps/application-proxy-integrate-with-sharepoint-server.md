@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f0d7907fa755483ef5a92b3376c18d54467cc7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7dc80b78bbba369e0ddb5c2c1e9fd90834dc0148
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191197"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120414"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -50,7 +50,7 @@ Egy SharePoint-kiszolgáló beállítása a kcd Szolgáltatáshoz, az eljáráso
 Első lépésként ellenőrizze, hogy a SharePoint-webalkalmazás fut-e egy tartományi fiókkal – nem helyi, helyi vagy hálózati szolgáltatást. Ehhez úgy, hogy az egyszerű szolgáltatásnevek (SPN) csatlakoztathat ezt a fiókot. SPN-EK, hogyan azonosítja a Kerberos protokoll a különböző szolgáltatásokat. És a használatával konfigurálja a Kerberos-fiók szükséges.
 
 > [!NOTE]
-Szüksége lesz egy korábban létrehozott Azure AD-fiókot a szolgáltatáshoz. Javasoljuk, hogy engedélyezze az automatikus jelszóváltoztatáshoz. Azokat a lépéseket és a hibaelhárítási problémák teljes kapcsolatos további információkért lásd: [jelszavának automatikus módosítását konfigurálása a SharePoint](https://technet.microsoft.com/library/ff724280.aspx).
+> Szüksége lesz egy korábban létrehozott Azure AD-fiókot a szolgáltatáshoz. Javasoljuk, hogy engedélyezze az automatikus jelszóváltoztatáshoz. Azokat a lépéseket és a hibaelhárítási problémák teljes kapcsolatos további információkért lásd: [jelszavának automatikus módosítását konfigurálása a SharePoint](https://technet.microsoft.com/library/ff724280.aspx).
 
 Győződjön meg arról, hogy a helyek egy meghatározott szolgáltatás fiók alatt futnak, hajtsa végre az alábbi lépéseket:
 
@@ -58,7 +58,7 @@ Győződjön meg arról, hogy a helyek egy meghatározott szolgáltatás fiók a
 2. Lépjen a **biztonsági** válassza **szolgáltatásfiókok konfigurálása**.
 3. Válassza ki **webalkalmazás-készlet - SharePoint – 80-as**. A beállítások némileg eltérőek lehetnek a webalkalmazás-készlet neve alapján, vagy ha a webes készletet használja az SSL-alapértelmezés szerint.
 
-  ![Lehetőségek a szolgáltatásfiók konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
+   ![Lehetőségek a szolgáltatásfiók konfigurálása](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. Ha **válassza ki a fiókot ehhez az összetevőhöz** mező értéke **helyi szolgáltatás** vagy **hálózati szolgáltatás**, hozzon létre egy fiókot kell. Ha nem, akkor ezzel végzett, és áthelyezheti a következő szakaszra.
 5. Válassza ki **új felügyelt fiók regisztrálása**. Miután létrehozta a fiókot, be kell állítania **webes alkalmazáskészlet** a fiók használata előtt.
@@ -108,7 +108,7 @@ Konfigurálja a Kerberos, minden összekötő géphez ismételje meg a következ
 6. SPN-ek listájában válassza ki a korábban létrehozott szolgáltatásfiók.
 7. Kattintson az **OK** gombra. Kattintson a **OK** újra, hogy a módosítások mentéséhez.
   
-  ![A delegálási beállítások](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
+   ![A delegálási beállítások](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
 ## <a name="step-2-configure-azure-ad-proxy"></a>2. lépés: Az Azure AD-Proxy konfigurálása
 
@@ -142,18 +142,18 @@ Következő lépés, hogy a SharePoint webalkalmazás új zónához, Kerberos é
 1. Indítsa el a **SharePoint felügyeleti rendszerhéj**.
 2. Futtassa a következő szkriptet a webalkalmazás extranetes zóna kiterjesztése és a Kerberos-hitelesítés engedélyezése:
 
-  ```powershell
-  # Replace "http://spsites/" with the URL of your web application
-  # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
-  $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
-  Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
-  ```
+   ```powershell
+   # Replace "http://spsites/" with the URL of your web application
+   # Replace "https://sharepoint-f128.msappproxy.net/" with the External URL in your Azure AD proxy application
+   $winAp = New-SPAuthenticationProvider -UseWindowsIntegratedAuthentication -DisableKerberos:$false
+   Get-SPWebApplication "http://spsites/" | New-SPWebApplicationExtension -Name "SharePoint - AAD Proxy" -SecureSocketsLayer -Zone "Extranet" -Url "https://sharepoint-f128.msappproxy.net/" -AuthenticationProvider $winAp
+   ```
 
 3. Nyissa meg a **SharePoint központi felügyelet** hely.
 4. A **rendszerbeállítások**válassza **konfigurálása másodlagos címek leképezése**. Megnyílik a másodlagos címek leképezése mezőbe.
 5. Válassza ki a helyet, például **SharePoint – 80-as**. Egyelőre extranetes zóna nincs megfelelően beállítva még belső URL-cím:
 
-  ![Másodlagos címek leképezése mezőbe](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
+   ![Másodlagos címek leképezése mezőbe](./media/application-proxy-integrate-with-sharepoint-server/alternate-access1.png)
 
 6. Kattintson a **adja hozzá a belső URL-címek**.
 7. A **protokoll, a gazdagép és a port URL-cím** szövegmezőbe írja be a **belső URL-cím** konfigurált Azure AD-proxyval, például <https://SharePoint/>.
@@ -161,7 +161,7 @@ Következő lépés, hogy a SharePoint webalkalmazás új zónához, Kerberos é
 9. Kattintson a **Save** (Mentés) gombra.
 10. A másodlagos címek leképezése most így kell kinéznie:
 
-  ![Javítsa ki a másodlagos címek leképezése](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
+    ![Javítsa ki a másodlagos címek leképezése](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)
 
 ## <a name="step-4-ensure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>4. lépés: Győződjön meg arról, hogy egy HTTPS-tanúsítványt az IIS-webhely, az extranetes zóna konfigurálása
 
@@ -170,13 +170,13 @@ A SharePoint konfigurációs van most már befejeződött, de mivel a belső URL
 1. Nyissa meg a Windows PowerShell-konzolt.
 2. Futtassa a következő parancsfájlt, és létrehozhat egy önaláírt tanúsítványt, és adja hozzá a számítógép saját tárolóban:
 
-  ```powershell
-  # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
-  New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
-  ```
+   ```powershell
+   # Replace "SharePoint" with the actual hostname of the Internal URL of your Azure AD proxy application
+   New-SelfSignedCertificate -DnsName "SharePoint" -CertStoreLocation "cert:\LocalMachine\My"
+   ```
 
-  > [!NOTE]
-  Önaláírt tanúsítványok csak tesztelési célra alkalmasak. Éles környezetben erősen ajánlott, ehelyett egy hitelesítésszolgáltató által kibocsátott tanúsítványokat használ.
+   > [!NOTE]
+   > Önaláírt tanúsítványok csak tesztelési célra alkalmasak. Éles környezetben erősen ajánlott, ehelyett egy hitelesítésszolgáltató által kibocsátott tanúsítványokat használ.
 
 3. Nyissa meg az "Internet Information Services kezelő" konzolt.
 4. Bontsa ki a kiszolgálót, a fanézetben bontsa ki a "Hely", válassza ki a következő helyen: "A SharePoint – AAD Proxyszolgáltató", kattintson a **kötések**.

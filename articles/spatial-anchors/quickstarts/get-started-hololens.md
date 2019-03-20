@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 854f6a9273e66c2202e036754ca763786279b07a
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 42528038b5744f001422620031a1e5300bb4146d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726226"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898261"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása a C + Azure térbeli horgonyok +/ WinRT és DirectX segítségével
 
@@ -32,7 +32,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatok és a **Windows 10 SDK (10.0.17763.0 vagy újabb)** összetevő.
+- Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatok és a **Windows 10 SDK (10.0.17763.0 vagy újabb)** az összetevőt, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
 - A [C + +/ WinRT Visual Studio bővítmény (VSIX)](https://aka.ms/cppwinrt/vsix) a Visual Studióban telepítenie kell a a [Visual Studio-piactér](https://marketplace.visualstudio.com/).
 - HoloLens eszköz [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. Ez a cikk a HoloLens eszköz van szükség a [Windows 2018. október 10. frissítés](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (más néven RS5). A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza a **frissítések keresése** gombra.
 - Az alkalmazás be kell állítani a **spatialPerception** funkció az AppX-jegyzékfájlban.
@@ -47,7 +47,7 @@ Nyissa meg `HoloLens\DirectX\SampleHoloLens.sln` a Visual Studióban.
 
 ## <a name="configure-account-identifier-and-key"></a>Fiókazonosító és kulcsának konfigurálása
 
-A következő lépés, hogy a fiók azonosítóját és a térbeli horgonyok erőforrás beállításakor korábban rögzített fiókkulcs az alkalmazás konfigurálásához.
+A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás konfigurálása. Másolja őket egy szövegszerkesztőbe, amikor [beállítása a térbeli horgonyok erőforrás](#create-a-spatial-anchors-resource).
 
 Nyissa meg `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 

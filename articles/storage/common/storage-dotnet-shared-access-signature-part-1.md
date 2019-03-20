@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bee2a715e9e9b163af342b70c4cdd63d24ccee3b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450039"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001582"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -40,11 +40,11 @@ Egy gyakori forgatókönyv, ahol egy SAS hasznos egy olyan szolgáltatás, ahol 
 
 1. Az ügyfelek töltse fel, és töltse le az adatokat egy előtér-proxy szolgáltatással, amely végrehajtja a hitelesítést. Az előtér-proxyszolgáltatás az előnnyel jár, hogy az üzleti szabályok érvényesítési, de a nagy mennyiségű adatok vagy nagy mennyiségű tranzakciók, amelyek egyeznek igény szerint méretezhető szolgáltatás létrehozása lehet költséges vagy nehézkes.
 
-  ![A forgatókönyv diagramja: Előtér-proxyszolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
+   ![A forgatókönyv diagramja: Előtér-proxyszolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png)   
 
 1. Egy egyszerű szolgáltatás hitelesíti az ügyfelet, igény szerint, és ezután létrehoz egy SAS-kódot. Miután az ügyfél megkapta a SAS kódot, hozzáférhet a tárfiók erőforrásainak közvetlenül a SAS által és a SAS által engedélyezett alatt meghatározott engedélyekkel. A SAS-útválasztási minden adatot az előtér-proxy szolgáltatáson keresztül kell csökkenti.
 
-  ![A forgatókönyv diagramja: SAS-szolgáltató szolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
+   ![A forgatókönyv diagramja: SAS-szolgáltató szolgáltatás](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
 
 A két megközelítést hibrid számos valós szolgáltatás használhatja. Például bizonyos adatok feldolgozása előfordulhat, hogy, és ellenőrzi az előtér-proxyn keresztül, míg egyéb adatok mentése és/vagy olvassa el, közvetlenül a SAS használatával.
 
@@ -230,8 +230,8 @@ Az alábbiakban néhány példa a közös hozzáférésű jogosultságkódok, a 
 
 Ezekben a példákban a C# futtatásához kell hivatkoznia a projektben a következő NuGet-csomagok:
 
-* [Az Azure Storage ügyféloldali kódtára a .NET-hez](http://www.nuget.org/packages/WindowsAzure.Storage), verzió 6.x vagy újabb (használja a fiók SAS).
-* [Azure Configuration Manager](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Az Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage), verzió 6.x vagy újabb (használja a fiók SAS).
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
 További példák azt mutatják be, hogyan hozhat létre és tesztelhet egy SAS [Azure Storage-Kódminták](https://azure.microsoft.com/documentation/samples/?service=storage).
 

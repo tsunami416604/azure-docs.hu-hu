@@ -4,19 +4,19 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 8146489a913ce863cee7534331231a248a3ea7ac
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f4ba467b6d80c9ccafba0a91c1f04152b92cf869
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890987"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125366"
 ---
 1. Látogasson el az [Azure Portalra] Mac gépéről. Kattintson az **Összes szolgáltatás** > **Alkalmazásszolgáltatások** lehetőségre, majd az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban válassza ki a kívánt nyelvet:
 
-    - Objective-C&ndash; **Gyorsindítás** > **iOS (Objective-C)**
-    - Swift&ndash; **Gyorsindítás** > **iOS (Swift)**
+   - Objective-C&ndash; **Gyorsindítás** > **iOS (Objective-C)**
+   - Swift&ndash; **Gyorsindítás** > **iOS (Swift)**
 
-    A **3. Ügyfélalkalmazás konfigurálása** menüben kattintson a **Letöltés** elemre. Ez letölt egy teljes Xcode-projektet, amely előre konfigurálva van a háttérrendszerhez való csatlakozáshoz. Nyissa meg a projektet az Xcode használatával.
+     A **3. Ügyfélalkalmazás konfigurálása** menüben kattintson a **Letöltés** elemre. Ez letölt egy teljes Xcode-projektet, amely előre konfigurálva van a háttérrendszerhez való csatlakozáshoz. Nyissa meg a projektet az Xcode használatával.
 
 1. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás iOS-szimulátorban történő elindításához.
 

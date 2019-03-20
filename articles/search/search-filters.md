@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 539a7fc5b9d3038424059f1ee599c6966a968781
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629596"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079145"
 ---
 # <a name="filters-in-azure-search"></a>Szűrők az Azure Search szolgáltatásban 
 
@@ -32,17 +32,17 @@ Példaforgatókönyvek a következők:
 
 1. Szűrő használatával szeletelheti az indexben lévő az index alapján. Adja meg egy séma a város, a lakáshelyzet típusa és az eszközök, létrehozhat egy szűrőt, hogy explicit módon válassza ki a dokumentumok, amelyek megfelelnek a feltételeknek (a budapesti, a condos, az i partszakasz). 
 
-  A teljes szöveges keresés az ugyanazokkal a be gyakran a hasonló eredményt ad, de szűrő pontosabb abban, hogy pontos egyezés az indexben lévő tartalom szűrési kifejezés van szükség. 
+   A teljes szöveges keresés az ugyanazokkal a be gyakran a hasonló eredményt ad, de szűrő pontosabb abban, hogy pontos egyezés az indexben lévő tartalom szűrési kifejezés van szükség. 
 
 2. Használjon szűrőt, ha a keresési funkciót tartalmaz, a szűrő követelmény:
 
- * [Jellemzőalapú navigáció](search-faceted-navigation.md) át vissza a felhasználó által kiválasztott értékkorlátozás kategória szűrőt használ.
- * Földrajzi keresés szűrőt használ a "Keresés a közelben" az aktuális hely koordinátái alkalmazások át. 
- * Biztonsági szűrők adja át a biztonsági azonosítók szűrőfeltételeket, mint ahol az egyezés az indexben a hozzáférési jogosultsága ahhoz, hogy a dokumentum-proxyként funkcionál.
+   * [Jellemzőalapú navigáció](search-faceted-navigation.md) át vissza a felhasználó által kiválasztott értékkorlátozás kategória szűrőt használ.
+   * Földrajzi keresés szűrőt használ a "Keresés a közelben" az aktuális hely koordinátái alkalmazások át. 
+   * Biztonsági szűrők adja át a biztonsági azonosítók szűrőfeltételeket, mint ahol az egyezés az indexben a hozzáférési jogosultsága ahhoz, hogy a dokumentum-proxyként funkcionál.
 
 3. Használjon szűrőt, ha azt szeretné, hogy a keresési feltételeknek, egy numerikus mezőben. 
 
-  Numerikus mező lekérhető a dokumentum, és a keresési eredmények között szerepelhetnek, de ez nem kereshető (függvényében a teljes szöveges keresés) külön-külön. Ha kiválasztási feltételek numerikus adatokon alapuló, használjon szűrőt.
+   Numerikus mező lekérhető a dokumentum, és a keresési eredmények között szerepelhetnek, de ez nem kereshető (függvényében a teljes szöveges keresés) külön-külön. Ha kiválasztási feltételek numerikus adatokon alapuló, használjon szűrőt.
 
 ### <a name="alternative-methods-for-reducing-scope"></a>Alternatív módszerek az hatókör csökkentése
 
@@ -141,10 +141,8 @@ A .NET SDK-ban, a szűrhető van *ki* alapértelmezés szerint. Az API a szűrhe
 
 Ha egy mező nem szűrhető, és azt szeretné, hogy szűrhető legyen, akkor adjon hozzá egy új mezőt, és építse újra a meglévő mező. Egy mező definíció módosítása megváltoztatja az index fizikai struktúráját. Az Azure Search szolgáltatásban az összes engedélyezett elérési utak kibővítése a lekérdezési sebessége, ami szükségessé teszi a adatstruktúrák újjáépítést Meződefiníciók változásakor vannak indexelve. 
 
-Egyes mezők újraépítése egy kis hatás művelet, csak egy küldi el a meglévő dokumentum kulcs és a hozzájuk társított értékeket az indexbe, minden egyes dokumentum további része érintetlenül merge műveletet igénylő lehet. Ha Újraépítés követelmény, tekintse meg az utasításokat az alábbi hivatkozásokat:
+Egyes mezők újraépítése egy kis hatás művelet, csak egy küldi el a meglévő dokumentum kulcs és a hozzájuk társított értékeket az indexbe, minden egyes dokumentum további része érintetlenül merge műveletet igénylő lehet. Ha Újraépítés követelmény hibát tapasztal, tekintse meg [indexelési műveleteket (feltöltés, egyesítés, mergeOrUpload, Törlés)](search-what-is-data-import.md#indexing-actions) beállítások listáját.
 
- + [Indexelési műveleteket a .NET SDK használatával](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [Indexelési műveletet a REST API használatával](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>Szöveges szűrő – alapok
 
@@ -157,8 +155,8 @@ Karakterlánc csak kis-és nagybetűket. Nincs alsó – kis-és felső Case ala
 
 | A módszer | Leírás | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvényt, így egy adott mező karakterláncok vesszővel tagolt listája. A karakterláncok alkotják a szűrési feltételt, amely érvénybe lépnek minden mező a lekérdezés hatókörébe. <br/><br/>`search.in(f, ‘a, b, c’)` szemantikailag egyenértékűnek `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy végrehajtása sokkal gyorsabb, ha az értékek nagy.<br/><br/>Javasoljuk, hogy a **javításával** működőképesek [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők egyezést kell keresni egy adott mező a nyers szöveg tevődik össze. Ez a megközelítés sebesség lett tervezve. Több száz értékek ezer subsecond válaszideje várható. Bár nem explicit a függvénynek átadható elemek száma korlátozott, a késés növekedése adnia karakterláncok száma arányos. | 
-| [Search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresés műveleteit kizárólag logikai típusú szűrő az azonos szűrőkifejezésben kombinálhatók. Egyetlen kérelem több lekérdezésszűrő kombináció lehetővé teszi. Használhatja azt egy *tartalmaz* szűrőt a részleges karakterlánc nagyobb karakterláncon belül. |  
+| [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy függvényt, így egy adott mező karakterláncok vesszővel tagolt listája. A karakterláncok alkotják a szűrési feltételt, amely érvénybe lépnek minden mező a lekérdezés hatókörébe. <br/><br/>`search.in(f, ‘a, b, c’)` szemantikailag egyenértékűnek `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`, azzal a különbséggel, hogy végrehajtása sokkal gyorsabb, ha az értékek nagy.<br/><br/>Javasoljuk, hogy a **javításával** működőképesek [biztonsági szűrők](search-security-trimming-for-azure-search.md) és a szűrők egyezést kell keresni egy adott mező a nyers szöveg tevődik össze. Ez a megközelítés sebesség lett tervezve. Több száz értékek ezer subsecond válaszideje várható. Bár nem explicit a függvénynek átadható elemek száma korlátozott, a késés növekedése adnia karakterláncok száma arányos. | 
+| [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresés műveleteit kizárólag logikai típusú szűrő az azonos szűrőkifejezésben kombinálhatók. Egyetlen kérelem több lekérdezésszűrő kombináció lehetővé teszi. Használhatja azt egy *tartalmaz* szűrőt a részleges karakterlánc nagyobb karakterláncon belül. |  
 | [$filter = mező operátor karakterlánc](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Egy felhasználó által definiált kifejezés tevődik össze mezőket, operátorokat és értékeket. | 
 
 ## <a name="numeric-filter-fundamentals"></a>Numerikus szűrő – alapok

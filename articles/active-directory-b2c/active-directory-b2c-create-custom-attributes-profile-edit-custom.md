@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094626"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Egyéni attribútumok használata egyéni profil szabályzat szerkesztése
 
@@ -260,20 +260,20 @@ Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az �
 
 1. Adja hozzá az új jogcímet a flow a közösségi fiókok jelentkezzen be a következő módosításával **TechnicalProfiles**. Közösségi és összevont fiókok használatára két **TechnicalProfiles** való bejelentkezéshez. Írási és a felhasználói adatok olvasása a használatával a **alternativeSecurityId** , a felhasználói objektum fájlkeresője.
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. Használja ugyanazt a bővítményattribútumok beépített és egyéni szabályzatok között. Bővítmény, vagy egyéni, attribútumok keresztül a portál felülete hozzáadásakor ezek az attribútumok használatával regisztrált a **b2c-kiterjesztések alkalmazását** minden B2C-bérlőben található. Az alábbi lépéseket a bővítményattribútumok használatához az egyéni házirendek:
 
-  a. A B2C-bérlő a Portal.Azure.com címen, Ugrás **Azure Active Directory** válassza **alkalmazásregisztrációk**.  
-  b. Keresse meg a **b2c-kiterjesztések alkalmazását** , és jelölje ki.  
-  c. A **Essentials**, adja meg a **Alkalmazásazonosító** és a **Objektumazonosító**.  
-  d. Foglalja bele őket a **AAD-közös** TechnicalProfile metaadatok:  
+   a. A B2C-bérlő a Portal.Azure.com címen, Ugrás **Azure Active Directory** válassza **alkalmazásregisztrációk**.  
+   b. Keresse meg a **b2c-kiterjesztések alkalmazását** , és jelölje ki.  
+   c. A **Essentials**, adja meg a **Alkalmazásazonosító** és a **Objektumazonosító**.  
+   d. Foglalja bele őket a **AAD-közös** TechnicalProfile metaadatok:  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,14 +285,14 @@ Az azonosító jogkivonat küldi vissza az alkalmazásnak magában foglalja az �
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. A portál felülete konzisztens marad. Ezek az attribútumok létrehozása a portál felhasználói felületének használatával, a egyéni szabályzatait a használatba vétel előtt. Amikor létrehoz egy attribútum **ActivationStatus** a portálon, akkor kell hivatkoznia, a következő:
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>Leírások
 

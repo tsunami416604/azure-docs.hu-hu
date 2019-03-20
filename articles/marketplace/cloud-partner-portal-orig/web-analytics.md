@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 20a4e24800b2fa05990d294cb374841c50c4f79b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809744"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097474"
 ---
 <a name="web-analytics"></a>Webes elemzés
 =============
@@ -49,11 +49,11 @@ Kétféleképpen saját kampány létrehozásához.
 
 Például használhatja: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-2. (Speciális): az URL-címben a támogatott, általános kampány azonosítók egyikével. Szeretnénk kell használnia, így a konvenciókhoz, és ismeri fel automatikusan ezeket további címkékkel is nyújtunk támogatást további ref címkékkel kell elhelyezésére:
+1. (Advanced): Az URL-címben a támogatott, általános kampány azonosítók egyikét használhatja. Szeretnénk kell használnia, így a konvenciókhoz, és ismeri fel automatikusan ezeket további címkékkel is nyújtunk támogatást további ref címkékkel kell elhelyezésére:
     
     1. **UTM\_kampány**
     2. **UTM\_forrás**
-    3. **REF**
+    3. **ref**
     4. **src**
 
 Például használhatja: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>

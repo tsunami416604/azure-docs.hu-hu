@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201670"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök
 Ismerje meg, hogyan használható [Apache Phoenix](https://phoenix.apache.org/) az Azure HDInsight és az SQLLine használata. A Phoenix kapcsolatos további információkért lásd: [kevesebb mint 15 perc alatt az Apache Phoenix](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). A Phoenix szintaxis megtekintéséhez [Apache Phoenix nyelvtani](https://phoenix.apache.org/language/index.html).
@@ -39,7 +39,7 @@ HBase-fürt való csatlakozáskor kapcsolódnia kell a [Apache ZooKeeper](https:
 1. Nyissa meg [Apache Ambari](https://ambari.apache.org/) megkeresve **https://\<fürtnév\>. azurehdinsight.net**.
 2. Jelentkezzen be, adja meg a HTTP (fürt) felhasználónevét és jelszavát.
 3. A bal oldali menüben válassza ki a **ZooKeeper**. Három **ZooKeeper Server** példányok szerepelnek.
-4. Válassza ki az egyik a **ZooKeeper Server** példányok. Az a **összefoglalás** ablaktáblán keresse meg a **állomásnév**. Ez hasonlít *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
+4. Válassza ki az egyik a **ZooKeeper Server** példányok. Az a **összefoglalás** ablaktáblán keresse meg a **állomásnév**. It looks similar to *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
 **Az SQLLine használata**
 
@@ -47,7 +47,7 @@ HBase-fürt való csatlakozáskor kapcsolódnia kell a [Apache ZooKeeper](https:
 
 2. Az ssh-t a következő parancsok használatával futtassa az SQLLine:
 
-        cd /usr/hdp/2.2.9.1-7/phoenix/bin
+        cd /usr/hdp/current/phoenix/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. Egy HBase tábla létrehozásához és adatok beszúrása, futtassa a következő parancsokat:
 
@@ -76,7 +76,6 @@ Ebben a cikkben megismerkedett az Apache Phoenix használata a HDInsight. Továb
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 

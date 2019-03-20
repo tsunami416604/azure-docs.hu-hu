@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087208"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099137"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 
@@ -25,8 +25,8 @@ Ezek a lépések bemutatják, hogyan hozhat létre szimulált eszközt egy Windo
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. A folytatás előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -72,25 +72,25 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 1. Telepítse a következő csomagokat, amelyek a regisztráció során használt összetevőket tartalmazzák:
 
-    - TPM-mel együttműködő biztonsági ügyfél: `azure-iot-security-tpm`
-    - átviteli összetevő, amellyel az eszköz csatlakozhat az eszközkiépítési szolgáltatáshoz: `azure-iot-provisioning-device-http` vagy `azure-iot-provisioning-device-amqp`
-    - ügyfél az átvitel és a biztonsági ügyfél használatához: `azure-iot-provisioning-device`
+   - TPM-mel együttműködő biztonsági ügyfél: `azure-iot-security-tpm`
+   - átviteli összetevő, amellyel az eszköz csatlakozhat az eszközkiépítési szolgáltatáshoz: `azure-iot-provisioning-device-http` vagy `azure-iot-provisioning-device-amqp`
+   - ügyfél az átvitel és a biztonsági ügyfél használatához: `azure-iot-provisioning-device`
 
-    Miután megtörtént az eszköz regisztrálása, a szokásos IoT Hub eszközügyfél-csomagokkal csatlakoztathatja az eszközt a regisztráció során megadott hitelesítő adatok használatával. A következőkre lesz szükség:
+     Miután megtörtént az eszköz regisztrálása, a szokásos IoT Hub eszközügyfél-csomagokkal csatlakoztathatja az eszközt a regisztráció során megadott hitelesítő adatok használatával. A következőkre lesz szükség:
 
-    - az eszközügyfél: `azure-iot-device`
-    - átviteli összetevő: `azure-iot-device-amqp`, `azure-iot-device-mqtt` vagy `azure-iot-device-http`
-    - a már telepített biztonsági ügyfél: `azure-iot-security-tpm`
+   - az eszközügyfél: `azure-iot-device`
+   - átviteli összetevő: `azure-iot-device-amqp`, `azure-iot-device-mqtt` vagy `azure-iot-device-http`
+   - a már telepített biztonsági ügyfél: `azure-iot-security-tpm`
 
-    > [!NOTE]
-    > Az alábbi minták az `azure-iot-provisioning-device-http` és az `azure-iot-device-mqtt` átviteli összetevőket használják.
-    > 
+     > [!NOTE]
+     > Az alábbi minták az `azure-iot-provisioning-device-http` és az `azure-iot-device-mqtt` átviteli összetevőket használják.
+     > 
 
-    A következő parancs parancssorbeli futtatásával egyszerre telepítheti ezen csomagok mindegyikét a **registerdevice** mappába:
+     A következő parancs parancssorbeli futtatásával egyszerre telepítheti ezen csomagok mindegyikét a **registerdevice** mappába:
 
-        ```cmd/sh
-        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
-        ```
+       ```cmd/sh
+       npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
+       ```
 
 1. Egy szövegszerkesztővel hozzon létre egy új **ExtractDevice.js** fájlt a **registerdevice** mappában.
 
@@ -141,15 +141,15 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 1. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
 1. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
-    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-    - Írja be a TPM-eszköz *Regisztrációs azonosítóját* és *Ellenőrzőkulcsát*.
-    - Ha kívánja, megadhatja az alábbi információkat is:
-        - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
-        - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor.
-        - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-    - Ha végzett, kattintson a **Mentés** gombra. 
+   - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
+   - Írja be a TPM-eszköz *Regisztrációs azonosítóját* és *Ellenőrzőkulcsát*.
+   - Ha kívánja, megadhatja az alábbi információkat is:
+       - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
+       - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor.
+       - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
+   - Ha végzett, kattintson a **Mentés** gombra. 
 
-    ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+     ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni regisztrációk* lapon lévő listában. 
 

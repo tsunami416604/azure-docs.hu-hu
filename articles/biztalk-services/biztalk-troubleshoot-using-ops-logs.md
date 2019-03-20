@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: f69035202a3358af38ebaf8e94abdd3b030e633f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108256"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Hibaelhárítás a műveletnaplók használatával
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="what-are-the-operation-logs"></a>Mik azok a műveleti naplói
@@ -39,7 +39,7 @@ A műveletnaplók szolgáltatások funkciója lehetővé teszi, hogy az Azure-sz
 ## <a name="view-biztalk-services-operation-logs"></a>A BizTalk Services műveletnaplók megtekintése
 1. Válassza a portál **szolgáltatások**, majd válassza ki a **műveletnaplók** fülre.
 2. A naplók előfizetés, dátumtartomány, szolgáltatás típusa (pl. a BizTalk Services), szolgáltatásnév vagy a művelet (sikeres, sikertelen) állapotának különböző paraméterek alapján szűrhetők.
-3. Kattintson a pipa, megtekintheti a szűrt lista. Az alábbi képen látható testbiztalkservice kapcsolódó tevékenységek: ![művelet naplóinak megtekintése][ViewLogs] 
+3. Kattintson a pipa, megtekintheti a szűrt lista. Az alábbi képen látható testbiztalkservice kapcsolatos tevékenységeket: ![A művelet naplók megtekintése][ViewLogs] 
 4. Tovább egy adott művelet, válassza ki a, és kattintson a **részletek** alján a tálcán.
 
 ## <a name="bizops"></a>Az Azure Management Services segítségével nyomon műveletek
@@ -64,14 +64,14 @@ A következő táblázat felsorolja a műveleteket, a rendszer nyomon követi az
 | PurgeBackupBizTalkService |A művelet véglegesen törölni a biztonsági mentés a megőrzési időszak kívül a BizTalk szolgáltatás |
 
 ## <a name="see-also"></a>Lásd még:
-* [Biztonsági mentési BizTalk-szolgáltatás](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [BizTalk-szolgáltatás a biztonsági másolatból](https://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [A BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [A BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [A BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [A BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [A BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [A BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png

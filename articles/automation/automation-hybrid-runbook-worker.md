@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0e38e921121f9b44356a33641bea4c2666412cca
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456193"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852919"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -149,11 +149,8 @@ Felül a standard szintű címek és a hibrid Runbook-feldolgozó által igénye
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibrid Runbook-feldolgozók hibáinak elhárítása](troubleshoot/hybrid-runbook-worker.md#general)
-
 ## <a name="next-steps"></a>További lépések
 
-A runbookok automatizálhatja a folyamatokat a helyszíni adatközpont vagy egyéb felhőalapú környezetbe történő konfigurálásával kapcsolatban lásd: [runbookok futtatása hibrid Runbook-feldolgozók](automation-hrw-run-runbooks.md).
+* A runbookok automatizálhatja a folyamatokat a helyszíni adatközpont vagy egyéb felhőalapú környezetbe történő konfigurálásával kapcsolatban lásd: [runbookok futtatása hibrid Runbook-feldolgozók](automation-hrw-run-runbooks.md).
+* Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibrid Runbook-feldolgozók hibáinak elhárítása](troubleshoot/hybrid-runbook-worker.md#general)
 

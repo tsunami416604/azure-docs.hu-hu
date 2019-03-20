@@ -1,5 +1,5 @@
 ---
-title: Az oktatóanyag a cognitive search API-k – Azure Search hívása
+title: Az oktatóanyag a Cognitive Services API-k hívása egy indexelési folyamat – Azure Search
 description: Ez az oktatóanyag részletesen bemutat egy példát adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
 manager: pablocas
 author: luiscabrer
@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 410e5d618e1deb1887329bea41e2cd3c6d795e58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a68d33d44e5edfb53f34f8a58b590dfdd25bc050
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075850"
+ms.locfileid: "58201789"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg, hogyan hívhat meg kognitív API-k (előzetes verzió)
+# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Oktatóanyag: Cognitive Services API-k hívja meg az Azure Search folyamat (előzetes verzió) indexelése
 
-Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. A kognitív képességek olyan természetes nyelvi feldolgozási (NLP) és képfeldolgozási műveletek, amelyek kinyerik egy kép szövegeit vagy szöveges ábrázolásait, észlelik a nyelvet, az entitásokat, a kulcskifejezéseket stb. Ennek a végeredménye egy kognitív keresésindexelési folyamat által létrehozott, további tartalmakban gazdag Azure Search-index. 
+Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. Képességek természetes nyelvi feldolgozást (NLP) és a lemezkép elemzési képességeket biztosítanak a Cognitive Services élvezik. Képességcsoport összeállítás és konfigurációja kibonthatja a szöveget, és képet vagy beolvasott dokumentum fájl szöveges ábrázolását. Nyelv, az entitások, kulcskifejezéseket és további is felismeri. A végeredmény gazdag további Azure Search-index, mesterséges Intelligencia által működtetett indexelése folyamat által létrehozott tartalom. 
 
 Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végrehajtásához:
 
@@ -59,7 +59,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
 
 1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot az oktatóanyag során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután az oktatóanyag végére ért.
 
-1. A helyen javasoljuk, hogy egy közeli régiót, az adatok és más felhőalapú alkalmazáshoz kiválasztása.
+1. A helyen válasszon egy közeli régiót, az adatok és más felhőalapú alkalmazáshoz.
 
 1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
 

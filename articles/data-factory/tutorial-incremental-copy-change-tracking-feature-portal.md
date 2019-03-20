@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: ce4002ff37de3fcc96b86bcfb8ee9b0239212ef3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a5a364c2065a7f4b9607eb4b078456324f261ce8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760817"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121876"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -372,29 +372,29 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     ![Keresési tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. Váltson a **Beállítások** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
 
-    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél.
-    2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
-    3. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést. 
+   1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél.
+   2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
+   3. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést. 
 
-        ```sql
-        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
-        ```
+       ```sql
+       SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
+       ```
 
-    ![Keresési tevékenység – beállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Keresési tevékenység – beállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet, és húzza át a **Másolás** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **IncrementalCopyActivity**. Ez a tevékenység átmásolja az utolsó és az aktuális változáskövetési verzió közötti adatokat a céladattárba. 
 
     ![Másolási tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. Váltson a **Forrás** lapra a **tulajdonságok** ablakában, és hajtsa végre a következő lépéseket:
 
-    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
-    2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
-    3. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést. 
+   1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
+   2. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
+   3. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést. 
 
-        ```sql
-        select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
-        ```
+       ```sql
+       select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}
+       ```
     
-    ![Másolási tevékenység – forrás beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
+      ![Másolási tevékenység – forrás beállításai](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
 9. Váltson a **Fogadó** lapra, és válassza a **SinkDataset** lehetőséget a **Fogadó adatkészlet** mezőnél. 
 
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
@@ -425,9 +425,9 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 15. Kattintson az **Érvényesítés** elemre az eszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **>>** gombra kattintva zárja be a **folyamatérvényesítési jelentés** ablakát. 
 
     ![Érvényesítés gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** gombra kattintva teheti közzé a Data Factory szolgáltatásban. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. 
+16. Az entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) az **Összes közzététele** gombra kattintva teheti közzé a Data Factory szolgáltatásban. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. 
 
-        ![Közzététel gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Közzététel gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>A növekményes másolási folyamat futtatása
 1. Kattintson az **Aktiválás** gombra a folyamat eszköztárán, majd az **Aktiválás most** elemre. 

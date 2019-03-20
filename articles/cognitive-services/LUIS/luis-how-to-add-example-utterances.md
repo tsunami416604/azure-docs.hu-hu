@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 16bff038b21658d29f3ab5a4b135af7f8a9e640c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593930"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096690"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -165,7 +165,7 @@ Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utteranc
 
 ### <a name="add-patternany-entity"></a>Pattern.any entitás hozzáadása
 
-Pattern.any entitásokat ad hozzá a LUIS-alkalmazás, ha meg nem címkét az entitásokhoz kimondott szöveg. Csak azok a minták érvényes. Adja hozzá őket, illetve pattern.any entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-patternany-entities).
+Pattern.any entitásokat ad hozzá a LUIS-alkalmazás, ha meg nem címkét az entitásokhoz kimondott szöveg. Csak azok a minták érvényes. Adja hozzá őket, illetve pattern.any entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
 ## <a name="train-your-app-after-changing-model-with-utterances"></a>Beszédmódok modell módosítása után az alkalmazás betanítása
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: af5a261ba57c406335fb75260d6af797af70a1b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101448"
+ms.locfileid: "58199528"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight az Apache HBase-fürtök létrehozása
 Ismerje meg, hogyan hozhat létre az Azure HDInsight az Apache HBase-fürtök egy [Azure Virtual Network][1].
@@ -64,7 +64,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürt létrehozása az Azure vi
    * **Elfogadom a feltételeket és a fenti feltételeket**: (Válasszon)
 3. Kattintson a **Purchase** (Vásárlás) gombra. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. Miután a fürt létrejött, kattintson a portálon nyissa meg a fürt paneljén.
 
-Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével az utasításokért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-management-portal.md#delete-clusters).
+Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésével az utasításokért lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](../hdinsight-administer-use-portal-linux.md#delete-clusters).
 
 Az új HBase-fürt használatának megkezdése előtt, használhatja a található eljárások [Apache hadooppal a HDInsight Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md).
 

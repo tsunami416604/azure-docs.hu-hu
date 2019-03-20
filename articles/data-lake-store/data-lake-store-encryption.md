@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: df89f8fd4dd5c7690d858009e250a474f702f1a8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098134"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok titkosítása
 
@@ -21,7 +21,7 @@ Titkosítás az Azure Data Lake Storage Gen1 segít az adatok védelme, vállala
 
 Data Lake Storage Gen1 támogatja a titkosítást, inaktív és átvitel közben is. Az inaktív adatok, Data Lake Storage Gen1 támogatja a "a alapértelmezés szerint" átlátható titkosítást. Kicsit részletesebben kifejtve ez az alábbiakat jelenti:
 
-* **Az alapértelmezés szerint**: egy új Data Lake Storage Gen1 fiók létrehozásakor az alapértelmezés szerinti beállítás engedélyezi-e a titkosítás. Ezután a Data Lake Storage Gen1 tárolt adatok rendszer mindig titkosítja, mielőtt állandó adathordozón tárolná. Minden adatnál ez lesz a viselkedés, és ez nem módosítható egy fiók létrehozása után.
+* **Az alapértelmezés szerint**: Amikor létrehoz egy új Data Lake Storage Gen1 fiókot, az alapértelmezett beállítás engedélyezi a titkosítást. Ezután a Data Lake Storage Gen1 tárolt adatok rendszer mindig titkosítja, mielőtt állandó adathordozón tárolná. Minden adatnál ez lesz a viselkedés, és ez nem módosítható egy fiók létrehozása után.
 * **Transzparens**: Data Lake Storage Gen1 automatikusan titkosítja az adatokat, és mindig visszafejti az adatokat lekérés előtt. A titkosítás konfigurált, és a egy rendszergazda felügyeli a Data Lake Storage Gen1 fiók szintjén. Az adathozzáférési API-k nem módosulnak. Így nem kell módosítania a alkalmazásokat és szolgáltatásokat, amelyek a titkosítás miatt a Data Lake Storage Gen1 interakciót.
 
 Átvitt adatok (más néven mozgásban lévő adatok) is mindig titkosítva, a Data Lake Storage Gen1. Amellett, hogy az adatok titkosítása az állandó adathordozón való tárolás előtt történik meg, az átvitt adatok is mindig titkosítva vannak HTTPS segítségével. HTTPS az egyetlen olyan protokoll, amely támogatott a Data Lake Storage Gen1 REST-felületeihez. Az alábbi ábrán látható, hogyan titkosítja az adatokat a Data Lake Storage Gen1:
@@ -74,7 +74,7 @@ A titkosítási főkulcsok kezelési módjának megválasztásakor fontos szem e
 
 Az adattitkosítás során háromféle kulcsot használunk. A következő táblázat az összefoglalást tartalmazza:
 
-| Kulcs                   | Rövidítés | Társítva ezzel: | Tárolási hely                             | Típus       | Megjegyzések                                                                                                   |
+| Kulcs                   | Rövidítés | Társítva ezzel: | Tárolási hely                             | Typo       | Megjegyzések                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Titkosítási főkulcs | MEK          | A Data Lake Storage Gen1 fiók | Key Vault                              | Aszimmetrikus | Data Lake Storage Gen1 vagy az Ön által kezelhető.                                                              |
 | Adattitkosítási kulcs   | DEK          | A Data Lake Storage Gen1 fiók | Tartós tároláshoz, a Data Lake Storage Gen1 szolgáltatás által kezelt | Szimmetrikus  | A DEK titkosítását a MEK végzi. A szolgáltatás a titkosított DEK-et tárolja az állandó adathordozón. |
@@ -120,17 +120,17 @@ Vegye figyelembe, hogy az alapértelmezett beállítások használata titkosít�
 
     ![Képernyőkép a Key Vaultról](./media/data-lake-store-encryption/keyvault.png)
 
-3.  Válassza ki a Data Lake Storage Gen1 fiókhoz társított kulcsot, és hozzon létre egy új verzióját. Vegye figyelembe, hogy Data Lake Storage Gen1 jelenleg csak támogatja a kulcs új verziója. A más kulcsra történő kulcsrotálás nem támogatott.
+3. Válassza ki a Data Lake Storage Gen1 fiókhoz társított kulcsot, és hozzon létre egy új verzióját. Vegye figyelembe, hogy Data Lake Storage Gen1 jelenleg csak támogatja a kulcs új verziója. A más kulcsra történő kulcsrotálás nem támogatott.
 
    ![Képernyőkép a Kulcsok ablakról, amelyen az Új verzió elem van kiemelve](./media/data-lake-store-encryption/keynewversion.png)
 
-4.  Keresse meg a Data Lake Storage Gen1 fiókot, és válassza ki **titkosítási**.
+4. Keresse meg a Data Lake Storage Gen1 fiókot, és válassza ki **titkosítási**.
 
-    ![A Data Lake Storage Gen1 képernyőkép ablakról, amelyen a titkosítás van kiemelve](./media/data-lake-store-encryption/select-encryption.png)
+   ![A Data Lake Storage Gen1 képernyőkép ablakról, amelyen a titkosítás van kiemelve](./media/data-lake-store-encryption/select-encryption.png)
 
-5.  Megjelenik egy tájékoztató üzenet arról, hogy a kulcs egy új verziója érhető el. A kulcs új verzióra történő frissítéséhez kattintson a **Kulcs rotálása** lehetőségre.
+5. Megjelenik egy tájékoztató üzenet arról, hogy a kulcs egy új verziója érhető el. A kulcs új verzióra történő frissítéséhez kattintson a **Kulcs rotálása** lehetőségre.
 
-    ![A Data Lake Storage Gen1 képernyőkép ablak az üzenetet, és a kulcs rotálása van kiemelve](./media/data-lake-store-encryption/rotatekey.png)
+   ![A Data Lake Storage Gen1 képernyőkép ablak az üzenetet, és a kulcs rotálása van kiemelve](./media/data-lake-store-encryption/rotatekey.png)
 
 Ez a művelet kevesebb mint két percet vehet igénybe, és a kulcsrotálás nem jár várt leállással. A művelet befejezését követően a kulcs új verziója lesz használatban.
 

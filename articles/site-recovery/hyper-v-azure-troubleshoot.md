@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 703bf7425962ddcb5e7566f99c461ca37d237b68
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 14d763126cccadf8042da79b20d15e5c93a8ce62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094177"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
@@ -28,9 +28,9 @@ Ha a Hyper-V virtuális gépek védelmének engedélyezésekor problémákat tap
 3. Ellenőrizze, hogy a Hyper-V Virtuálisgép-kezelő szolgáltatás fut-e a Hyper-V-gazdagépek.
 4. Ellenőrizze a problémákra, amelyek a Hyper-V-VMMS\Admin jelentkezzen be a virtuális gép jelennek meg. Ez a napló található **alkalmazások és szolgáltatásnaplók** > **Microsoft** > **Windows**.
 5. A Vendég virtuális Gépen ellenőrizze, hogy a WMI engedélyezve van, és elérhető-e.
-  - [Ismerje meg](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) Alapszintű ellenőrzés WMI.
-  - [Hibaelhárítás](https://aka.ms/WMiTshooting) WMI.
-  - [Hibaelhárítás](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI-parancsfájlok és a szolgáltatásokkal kapcsolatos problémák.
+   - [Ismerje meg](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) Alapszintű ellenőrzés WMI.
+   - [Hibaelhárítás](https://aka.ms/WMiTshooting) WMI.
+   - [Hibaelhárítás](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI-parancsfájlok és a szolgáltatásokkal kapcsolatos problémák.
 6. A Vendég virtuális Gépen győződjön meg arról, hogy fut-e a legújabb integrációs szolgáltatásokat.
     - [Ellenőrizze](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , hogy rendelkezik-e a legújabb verzióra.
     - [Tartsa](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) integrációs szolgáltatások naprakész.
@@ -41,9 +41,9 @@ Kezdeti és folyamatos replikálási hibáinak elhárítása a következőképpe
 
 1. Ellenőrizze, hogy futtatja a [legújabb verzió](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx) a Site Recovery Services.
 2. Győződjön meg arról, hogy a replikáció szünetel:
-  - Ellenőrizze a virtuális gép működési állapota a Hyper-V Manager konzolon.
-  - Ha fontos, kattintson a jobb gombbal a virtuális gép > **replikációs** > **replikálás állapotának megtekintése**.
-  - Ha a replikáció szünetel, kattintson a **replikálás folytatása**.
+   - Ellenőrizze a virtuális gép működési állapota a Hyper-V Manager konzolon.
+   - Ha fontos, kattintson a jobb gombbal a virtuális gép > **replikációs** > **replikálás állapotának megtekintése**.
+   - Ha a replikáció szünetel, kattintson a **replikálás folytatása**.
 3. Ellenőrizze, hogy a szükséges szolgáltatások futnak-e. Ha nem, indítsa újra őket.
     - Ha Hyper-V VMM nélkül replikál, ellenőrizze, hogy ezek a szolgáltatások futnak-e a Hyper-V-gazdagépen:
         - Virtuálisgép-kezelő szolgáltatás
@@ -65,10 +65,10 @@ Hálózati sávszélesség-korlátozások hatással lehet a replikáció. Hibael
 2. Futtassa a [Deployment Planner a profiler](hyper-v-deployment-planner-run.md).
 3. A Profilkészítő futtatása, után hajtsa végre a [sávszélesség](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) és [tárolási](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) javaslatok.
 4. Ellenőrizze [adatváltozása korlátozások](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits). Ha magas data churn egy virtuális gépen, tegye a következőket:
-  - Ellenőrizze, hogy ha a virtuális Gépet újraszinkronizálásra van megjelölve.
-  - Hajtsa végre a [ezeket a lépéseket](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) , a forgalom forrását.
-  - Forgalom akkor fordulhat elő, amikor HRL naplófájlok meghaladja az 50 %-a szabad lemezterület. Ha a probléma, üzembe helyezése több tárhely az összes virtuális gép, amelyen a probléma akkor fordul elő.
-  - Ellenőrizze, hogy a replikáció nincs leállítva. Ha igen, továbbra is a módosítások írása a hrl fájlt, ami növelheti a nagyobb méretű.
+   - Ellenőrizze, hogy ha a virtuális Gépet újraszinkronizálásra van megjelölve.
+   - Hajtsa végre a [ezeket a lépéseket](https://blogs.technet.microsoft.com/virtualization/2014/02/02/hyper-v-replica-debugging-why-are-very-large-log-files-generated/) , a forgalom forrását.
+   - Forgalom akkor fordulhat elő, amikor HRL naplófájlok meghaladja az 50 %-a szabad lemezterület. Ha a probléma, üzembe helyezése több tárhely az összes virtuális gép, amelyen a probléma akkor fordul elő.
+   - Ellenőrizze, hogy a replikáció nincs leállítva. Ha igen, továbbra is a módosítások írása a hrl fájlt, ami növelheti a nagyobb méretű.
  
 
 ## <a name="critical-replication-state-issues"></a>Kritikus fontosságú replikáció állapotával kapcsolatos problémák megoldásáról
@@ -91,17 +91,17 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 1. Ellenőrizze, hogy a legújabb integrációs szolgáltatások telepítve és fut-e.  Ellenőrizze, hogy ha egy frissítés érhető el a következő parancs futtatásával egy rendszergazda jogú PowerShell-parancssorba a Hyper-V-gazdagépen: **get-vm |} válassza a neve, állam, IntegrationServicesState**.
 2. Ellenőrizze, hogy VSS-szolgáltatás fut, és megfelelő állapotú:
-    - A szolgáltatások ellenőrzéséhez jelentkezzen be a Vendég virtuális Gépen. Ezután nyisson meg egy rendszergazdai parancssort, és ellenőrizze, hogy kifogástalan állapotban-e a VSS-író a következő parancsokat.
-        - **Vssadmin list writers**
-        - **Vssadmin list shadows**
-        - **Vssadmin list-szolgáltatók**
-    - A kimenet ellenőrzése. Ha az író hibás állapotban van, tegye a következőket:
-        - Ellenőrizze a virtuális gépen a VSS-művelet hibákat az alkalmazások eseménynaplójában.
-    - Próbálja ki ezeket a sikertelen író társított szolgáltatások újraindítása:
-        - Kötet árnyékmásolata
-         - Az Azure Site Recovery VSS Provider
-    - Ezt követően, várjon néhány óra múlva megtekintheti, ha alkalmazáskonzisztens pillanatképek létrehozása sikerült.
-    - Végső megoldásként próbálja ki, a virtuális gép újraindítása. Ez előfordulhat, hogy oldja meg a szolgáltatások, amelyek nem válaszoló állapotban van.
+   - A szolgáltatások ellenőrzéséhez jelentkezzen be a Vendég virtuális Gépen. Ezután nyisson meg egy rendszergazdai parancssort, és ellenőrizze, hogy kifogástalan állapotban-e a VSS-író a következő parancsokat.
+       - **Vssadmin list writers**
+       - **Vssadmin list shadows**
+       - **Vssadmin list-szolgáltatók**
+   - A kimenet ellenőrzése. Ha az író hibás állapotban van, tegye a következőket:
+       - Ellenőrizze a virtuális gépen a VSS-művelet hibákat az alkalmazások eseménynaplójában.
+   - Próbálja ki ezeket a sikertelen író társított szolgáltatások újraindítása:
+     - Kötet árnyékmásolata
+       - Az Azure Site Recovery VSS Provider
+   - Ezt követően, várjon néhány óra múlva megtekintheti, ha alkalmazáskonzisztens pillanatképek létrehozása sikerült.
+   - Végső megoldásként próbálja ki, a virtuális gép újraindítása. Ez előfordulhat, hogy oldja meg a szolgáltatások, amelyek nem válaszoló állapotban van.
 3. Ellenőrizze, hogy a virtuális gépen nem kell a dinamikus lemezeket. Ez az alkalmazáskonzisztens pillanatképek nem támogatott. Ellenőrizheti, a Lemezkezelés (diskmgmt.msc).
 
     ![Dinamikus lemez](media/hyper-v-azure-troubleshoot/dynamic-disk.png)

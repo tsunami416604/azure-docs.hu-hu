@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c7a6edab1bc63d8cb1ae6f7de43372304e21ed1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089947"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Alkalmazás lapján nem jelennek meg megfelelően az alkalmazásproxy-alkalmazáshoz
 
@@ -31,7 +31,7 @@ Amikor közzétesz egy alkalmazásproxy-alkalmazást, csak a legfelső szintű a
 
 Hiányzó erőforrás-e a problémát a hálózati tracker megnyitásával ellenőrizheti (például a Fiddler vagy F12 eszközök Internet Explorer és Microsoft Edge-ben), az oldal betöltése és 404-es hibát keres. Azt jelzi, az oldalak jelenleg nem találhatók, és van szükség, ha közzétesszük őket.
 
-Ebben az esetben a példaként tegyük fel, a belső URL-címet használó költségek alkalmazások közzétételét http://myapps/expenses, de az alkalmazás használ a stíluslap http://myapps/style.css. Ebben az esetben a stíluslap nincs közzétéve az alkalmazásban, így a költségek alkalmazás betöltése throw 404-es hiba style.css betöltése közben. Ebben a példában a probléma megoldódott, tegye közzé az alkalmazást a belső URL-címének http://myapp/.
+Ebben az esetben a példaként tegyük fel, a belső URL-címet használó költségek alkalmazások közzétételét `http://myapps/expenses`, de az alkalmazás használ a stíluslap `http://myapps/style.css`. Ebben az esetben a stíluslap nincs közzétéve az alkalmazásban, így a költségek alkalmazás betöltése throw 404-es hiba style.css betöltése közben. Ebben a példában a probléma megoldódott, tegye közzé az alkalmazást a belső URL-címének `http://myapp/`.
 
 ## <a name="problems-with-publishing-as-one-application"></a>Egy alkalmazás közzétételi kapcsolatos problémák
 

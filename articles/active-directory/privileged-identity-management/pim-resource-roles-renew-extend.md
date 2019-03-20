@@ -16,12 +16,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cec018eec6e298e27329c03964dccf5809c1791
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190636"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004226"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendelések az PIM-ben
 
@@ -49,7 +49,7 @@ Szerepkör-hozzárendelés tagjai lejáró közvetlenül a szerepkör-hozzárend
 
 Ha a hozzárendelés záró dátum és időpont van 14 napon belül, a gombra kattintva **kiterjesztése** válik, az aktív kapcsolat a felhasználói felületen. A következő példában az aktuális dátum későbbi, március 27 feltételezik.
 
-![A "Kiterjesztése" gomb](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![Gomb kiterjesztése](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
 Hosszabbítsa meg a szerepkör-hozzárendelés, jelölje be **kiterjesztése** az űrlap megnyitásához.
 
@@ -64,11 +64,11 @@ Az eredeti hozzárendelés kapcsolatos információk megtekintéséhez bontsa ki
 
 Csupán néhány másodpercet erőforrás-rendszergazdák kap egy e-mailben értesítést kér, akkor tekintse át a bővítmény kérelem. Ha egy kiterjesztésére vonatkozó kérelem már megtörtént, egy bejelentési értesítést, amely elmagyarázza a hibát az Azure portal tetején jelenik meg.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
+![Értesítés tájékoztatja a hiba](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
 Nyissa meg a **függőben lévő kérések** lapon a kérelem állapotának megtekintéséhez, vagy szakítsa meg a bal oldali panelen.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
+![Függőben lévő kérések](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>Rendszergazda jóváhagyhatja
 
@@ -80,7 +80,7 @@ A hivatkozásra az e-mailt a következő használatán rendszergazdák jóváhag
 
 Ha a rendszergazda itt **jóváhagyás** vagy **Megtagadás**, a kérelem részletei jelennek meg, és a egy mezőt a naplókhoz a bejelentkezésétől indokolniuk.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![Szerepkör-hozzárendelési kérelem jóváhagyása](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
 Ha egy szerepkör-hozzárendelés kiterjesztésére vonatkozó kérelem jóváhagyása, erőforrás-rendszergazdák kiválaszthatják, egy új kezdő dátum, a záró dátum és a hozzárendelés-típus. Hozzárendelés-típus módosítása szükséges, ha a rendszergazda szeretne korlátozottan hozzáférhetővé, hogy egy adott feladat (egy nap, a példában) lehet. Ebben a példában a rendszergazda módosíthatja a hozzárendelés a **jogosult** való **aktív**. Ez azt jelenti, de nem aktiválja a kérelmezőnek hozzáférést is nyújtanak.
 
@@ -100,7 +100,7 @@ A folyamat egy bővítmény kérelmezési tárolókéhoz hasonló, amíg a folya
 
 Akár 30 napon lejárt hozzárendelési előzményei tagjai, akik már nem tud hozzáférni az erőforrásokhoz férhet hozzá. Ehhez a megkeresését **saját szerepkörök** a bal oldali panelen, és válassza ki a a **lejárt szerepkörök** lap az Azure-erőforrás szerepkörök szakaszban.
 
-![A "Lejárt szerepkörök" lap](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
+![Lejárt szerepkörök lap](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
 Az alapértelmezett érték látható szerepkörök listájának **jogosult szerepkörök**. A legördülő menü használatával jogosult és aktív hozzárendelt szerepkörök között.
 

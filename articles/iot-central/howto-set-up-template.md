@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f8c99bd6bc9edb78a7af241f1eee2669c955a040
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767311"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58167439"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Állítson be egy eszköz sablont (új felhasználói felület tervezése)
 
@@ -44,11 +44,13 @@ Eszköz sablonból, az operátornak hozhat létre és valódi ventilátor eszkö
 
 1. Keresse meg a **eszközsablonok** lapot.
 
-2. Hozzon létre egy üres sablont, válassza a **+**, majd írjon be egy nevet, például és **hűtőszekrények** az új eszköz sablon. Válassza ki **létrehozás**:
+2. Hozzon létre egy sablont, első lépésként válassza ki **+ új**.
 
-   !["Hűtőszekrények" a sablon nevét az eszköz részleteit tartalmazó oldalra](./media/howto-set-up-template/devicedetailspage.png)
+3. Első lépésként gyorsan a meglévő, előre elkészített sablonok közül választhat. Ellenkező esetben válassza **egyéni**, adjon meg egy nevet, majd kattintson **létrehozás** teljesen új saját sablon létrehozásához.
 
-4. Most már használ a **eszközadatok** lapot egy új eszköz sablon. IoT-központ automatikusan hozza létre a szimulált eszköz, amikor egy eszköz sablont hoz létre. Szimulált eszköz lehetővé teszi a az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt.
+   ![Eszköz könyvtár](./media/howto-set-up-template/newtemplate.png)
+
+4. Amikor létrehoz egy egyéni sablont, láthatja a **eszközadatok** lap az új eszköz sablon. IoT-központ automatikusan hozza létre a szimulált eszköz, amikor egy eszköz sablont hoz létre. Szimulált eszköz lehetővé teszi a az alkalmazás viselkedésének valós eszköz csatlakoztatása előtt.
 
 Az alábbi szakaszok ismertetik a különböző lapokra a **eszköz sablon** lapot.
 

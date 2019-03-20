@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: dcfe744cc8ca6f3b3cd201898a79fcce3f24f8d5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c21fa3cf819f48dcda46f2d444ed52bc2eb9ae3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113520"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A Virtuálisgép-lemezkép közös hozzáférésű jogosultságkód URI Azonosítójának lekérése
 
@@ -44,33 +44,33 @@ Az SAS URL-cím a következő eszközökkel közös kétféleképpen hozható l�
 
 Az alábbi lépések segítségével hozzon létre egy SAS URI-t az Azure CLI használatával.
 
-1.  Töltse le és telepítse a [a Microsoft Azure CLI-vel](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  A Windows, macOS és Linux-különböző disztribúciók verziói érhetők el. 
-2.  Hozzon létre egy PowerShell-fájlt (`.ps1` kiterjesztése), másolja az alábbi kódot, majd a helyileg menteni.
+1. Töltse le és telepítse a [a Microsoft Azure CLI-vel](https://azure.microsoft.com/documentation/articles/xplat-cli-install/).  A Windows, macOS és Linux-különböző disztribúciók verziói érhetők el. 
+2. Hozzon létre egy PowerShell-fájlt (`.ps1` kiterjesztése), másolja az alábbi kódot, majd a helyileg menteni.
 
-    ``` powershell
-    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
-    ```
+   ``` powershell
+   az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
+   ```
     
-3.  Szerkessze a fájlt a következő paraméterértékek megadásához.  Dátumok meg kell adni az UTC-dátum és idő formátumban, például `10-25-2016T00:00:00Z`.
-    - `<account-name>` -A az Azure storage-fiók neve
-    - `<account-key>` -A az Azure storage-fiókkulcs
-    - `<vhd-name>` – A virtuális merevlemez neve
-    - `<start-date>` -Virtuális merevlemez hozzáférés permission kezdete. Adjon meg egy az aktuális dátum előtt egy nappal korábbi dátum. 
-    - `<expiry-date>` -Engedély lejárati dátuma a VHD-hozzáféréshez.  Adjon meg egy dátumot legalább három héttel az aktuális dátumnál. 
+3. Szerkessze a fájlt a következő paraméterértékek megadásához.  Dátumok meg kell adni az UTC-dátum és idő formátumban, például `10-25-2016T00:00:00Z`.
+   - `<account-name>` -A az Azure storage-fiók neve
+   - `<account-key>` -A az Azure storage-fiókkulcs
+   - `<vhd-name>` – A virtuális merevlemez neve
+   - `<start-date>` -Virtuális merevlemez hozzáférés permission kezdete. Adjon meg egy az aktuális dátum előtt egy nappal korábbi dátum. 
+   - `<expiry-date>` -Engedély lejárati dátuma a VHD-hozzáféréshez.  Adjon meg egy dátumot legalább három héttel az aktuális dátumnál. 
  
-    Az alábbi példa bemutatja a megfelelő paraméter értékét (a cikk írásának időpontjában).
+   Az alábbi példa bemutatja a megfelelő paraméter értékét (a cikk írásának időpontjában).
 
-    ``` powershell
-        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
-    ```
+   ``` powershell
+       az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
+   ```
  
 4. Mentse a módosításokat a PowerShell-szkript.
 5. Futtassa ezt a szkriptet, rendszergazdai jogosultságokkal használatával létrehozni egy *SAS kapcsolati karakterlánc* tároló szint eléréshez.  Két alapvető módszerét használhatja:
-    - Futtassa a szkriptet a konzolon.  Például Windows, az írási kattintással a parancsfájlt, majd válassza a **Futtatás rendszergazdaként**.
-    - Futtassa a parancsfájlt a PowerShell parancsprogram-szerkesztő, például a [Windows PowerShell ISE-ben](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise), rendszergazdai jogosultságokkal. 
-  A következő azt mutatja be a szerkesztő belül létrehozott SAS kapcsolati karakterláncot. 
+   - Futtassa a szkriptet a konzolon.  Például Windows, az írási kattintással a parancsfájlt, majd válassza a **Futtatás rendszergazdaként**.
+   - Futtassa a parancsfájlt a PowerShell parancsprogram-szerkesztő, például a [Windows PowerShell ISE-ben](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise), rendszergazdai jogosultságokkal. 
+     A következő azt mutatja be a szerkesztő belül létrehozott SAS kapcsolati karakterláncot. 
 
-    ![SAS URI létrehozása a PowerShell ISE-ben](./media/publishvm_032.png)
+     ![SAS URI létrehozása a PowerShell ISE-ben](./media/publishvm_032.png)
 
 6. Másolja az eredményül kapott SAS-kapcsolati karakterláncot, és mentse a fájlt egy biztonságos helyre.  Ez a karakterlánc hozzáadása a társított virtuális merevlemez helyre vonatkozó adatokat, hogy a végső SAS URI létrehozása fog szerkesztése. 
 7. Az Azure Portalon lépjen a blob Storage, amely tartalmazza a virtuális Merevlemezhez társított az újonnan létrehozott URI.
@@ -102,11 +102,11 @@ A következő lépések segítségével hozzon létre egy SAS URI-t az a Microso
     ![Az Azure Explorer SAS-elem lekérése](./media/publishvm_034.png)
 
 6. A **közös hozzáférésű Jogosultságkód** párbeszédpanel jelenik meg. Adja meg az értékeket a következő mezőket:
-    - **Kezdési idő** -engedély kezdő dátuma a VHD-hozzáféréshez. Adja meg, amely egy nappal az aktuális dátum előtt dátumát.
-    - **Lejárati idő** -engedély lejárati dátuma a VHD-hozzáféréshez.  Adjon meg egy dátumot legalább három héttel az aktuális dátumnál.
-    - **Engedélyek** – válassza ki a `Read` és `List` engedélyeket. 
+   - **Kezdési idő** -engedély kezdő dátuma a VHD-hozzáféréshez. Adja meg, amely egy nappal az aktuális dátum előtt dátumát.
+   - **Lejárati idő** -engedély lejárati dátuma a VHD-hozzáféréshez.  Adjon meg egy dátumot legalább három héttel az aktuális dátumnál.
+   - **Engedélyek** – válassza ki a `Read` és `List` engedélyeket. 
 
-    ![Az Azure Explorer SAS párbeszédpanel](./media/publishvm_035.png)
+     ![Az Azure Explorer SAS párbeszédpanel](./media/publishvm_035.png)
 
 7. Kattintson a **létrehozás** ehhez a virtuális merevlemezhez tartozó SAS URI létrehozásához.  A párbeszédpanel most Ez a művelet részleteit jeleníti meg. 
 8. Másolás a **URL-cím** értékét, és mentse a fájlt egy biztonságos helyre. 

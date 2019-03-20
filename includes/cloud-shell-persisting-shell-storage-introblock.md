@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246921"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051810"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Az Azure Cloud Shellben fájlok megtartása
 A cloud Shell az Azure File storage segítségével a fájlok munkamenetek közötti megtartása használja. Az első indítás a Cloud Shell kéri, hogy társíthatja egy új vagy meglévő fájlmegosztást a fájlok munkamenetek közötti megtartása.
@@ -48,6 +48,7 @@ A storage-telepítő használatával megjelenésekor válassza **speciális beá
 Kapcsolódó Azure storage-fiókok és a Cloud Shell-gép, hogy van-e csatlakoztatni őket ugyanabban a régióban kell lennie. Keresse meg a jelenlegi régióban is futtathatja a `env` a Bash, és keresse meg a változó `ACC_LOCATION`. Fájlmegosztások kap egy 5 GB-os rendszerképet, megőrizheti a létrehozott a `$Home` könyvtár.
 
 Cloud Shell gépek létezik a következő régióban:
+
 |Terület|Régió|
 |---|---|
 |Amerika|USA keleti RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA|

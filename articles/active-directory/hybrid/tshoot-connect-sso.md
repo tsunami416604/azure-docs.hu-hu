@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415646"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095898"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibaelhárítása
 
@@ -120,8 +120,8 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 
 1. Hívás `$creds = Get-Credential`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 
-    >[!NOTE]
-    >A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
+   > [!NOTE]
+   > A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
 
 2. Hívás `Disable-AzureADSSOForest -OnPremCredentials $creds`. Ezzel a paranccsal eltávolítható az `AZUREADSSOACC` az adott erdő Active Directory a helyszíni tartományvezérlő számítógépfiókja.
 3. Ismételje meg a fenti lépéseket minden egyes Active Directory-erdőben, amennyiben beállította a szolgáltatást.
@@ -130,8 +130,8 @@ Hibaelhárítási oldották meg, ha manuálisan alaphelyzetbe állíthatja a fun
 
 1. Hívás `Enable-AzureADSSOForest`. Amikor a rendszer kéri, adja meg a tartományi rendszergazda hitelesítő adatai a megfelelő Active Directory-erdőben.
 
-   >[!NOTE]
-   >A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
+   > [!NOTE]
+   > A tartományi rendszergazda felhasználónév, a felhasználó egyszerű neve (UPN) a megadott használjuk (johndoe@contoso.com) vagy a tartomány minősített sam-fiók neve (contoso\budaipeter vagy contoso.com\johndoe) formátumban, a megfelelő AD-erdőben található. Ha minősített sam-fiók tartománynevet használ, a felhasználónevet, tartományt jelölő része használjuk [keresse meg a tartományvezérlő, a tartományi rendszergazda DNS-sel](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Ha Ehelyett használjon egyszerű felhasználónév azt [lefordíthatja minősített sam-fiók tartománynevét](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) előtt a megfelelő tartományvezérlő keresésekor.
 
 2. Ismételje meg az előző lépést minden egyes Active Directory-erdőben, ahol szeretné beállítani a szolgáltatást.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d08b1f3889136fadee68b3aa95d879b0495bddb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Oktatóanyag: Yonyx interaktív útmutatók az Azure Active Directory-integráció
 
@@ -174,8 +174,8 @@ Ez a szakasz célja egy interaktív útmutatók Yonyx Britta Simon nevű felhasz
 
 Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Yonyx interaktív útmutatók elérésére, ha még nem létezik tett kísérlet során.
 
->[!NOTE]
->Ha szeretné manuálisan hozzon létre egy felhasználót, szeretné-e a Yonyx interaktív útmutatók támogatási csapat <mailto:support@yonyx.com>. 
+> [!NOTE]
+> Ha szeretné manuálisan hozzon létre egy felhasználót, szeretné-e a Yonyx interaktív útmutatók támogatási csapat <mailto:support@yonyx.com>. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
