@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 7e0dea82614363883bbfb4a34894a2248faeb176
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769659"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842753"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -74,7 +74,7 @@ Rendelkeznie kell a következő technológiákat működési megismerése:
 - [Windows-fürttechnológiák](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server feladatátvevő fürt példányok](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Egy fontos különbség az, hogy az Azure IaaS virtuális gépek Vendég feladatátvevő fürtöt, javasoljuk, hogy egyik hálózati Adapterre (fürtcsomópont) kiszolgáló és a egy önálló alhálózati száma. Az Azure-hálózatok rendelkezik fizikai redundanciát, így további hálózati adapterek és alhálózatok a szükségtelen az Azure IaaS virtuális gépek Vendég-fürtön. A fürt ellenőrzési jelentésében figyelmeztetést ad, hogy a csomópontok használata csak egyetlen hálózaton elérhető legyen, bár ez a figyelmeztetés figyelmen kívül hagyhatja biztonságosan Azure IaaS virtuális gépek Vendég feladatátvevő fürtökön. 
+Egy fontos különbség az, hogy az Azure IaaS virtuális gépek Vendég feladatátvevő fürtön, javasoljuk, hogy egyik hálózati Adapterre (fürtcsomópont) kiszolgáló és a egy önálló alhálózati száma. Az Azure-hálózatok rendelkezik fizikai redundanciát, így további hálózati adapterek és alhálózatok a szükségtelen az Azure IaaS virtuális gépek Vendég-fürtön. A fürt ellenőrzési jelentésében figyelmeztetést ad, hogy a csomópontok használata csak egyetlen hálózaton elérhető legyen, bár ez a figyelmeztetés figyelmen kívül hagyhatja biztonságosan Azure IaaS virtuális gépek Vendég feladatátvevő fürtökön. 
 
 Emellett rendelkeznie kell a következő technológiákat egy általános ismertetése:
 
@@ -101,7 +101,7 @@ Ezek az előfeltételek teljesülnek folytathatja a feladatátvevő fürt létre
 
 ## <a name="step-1-create-virtual-machines"></a>1. lépés: Virtuális gépek létrehozása
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com) az előfizetéséhez.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) az előfizetéséhez.
 
 1. [Hozzon létre egy Azure rendelkezésre állási csoport](../tutorial-availability-sets.md).
 

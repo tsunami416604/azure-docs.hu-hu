@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: MT
+ms.openlocfilehash: 256d709ac976736715f441ecde5eee22a6d86fa6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512244"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009083"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
@@ -203,7 +203,7 @@ Az alábbi táblázat egy példát, hogy mi történne, ha tagként számára eg
 | T0       | Tranzakció válasz: <br> Alkalmazott beszúrása <br> az elsődleges entitás |                                   |                    | Elsődleges – beszúrni egy tranzakció<br> még nem replikált. |
 | T1       |                                                            | A tranzakció <br> replikálja a<br> másodlagos | T1 | Tranzakciós A másodlagos replikálja. <br>Utolsó szinkronizálás időpontja frissítve.    |
 | T2       | "B" tranzakció<br>Frissítés<br> Alkalmazott entitás<br> az elsődleges  |                                | T1                 | Tranzakció írt elsődleges, a B<br> még nem replikált.  |
-| T3       | Transaction C:<br> Frissítés <br>Rendszergazda<br>a szerepkör-entitás<br>elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
+| T3       | Transaction C:<br> Frissítés <br>rendszergazda<br>a szerepkör-entitás<br>elsődleges |                    | T1                 | Tranzakció írt elsődleges, C<br> még nem replikált.  |
 | *T4*     |                                                       | Tranzakció C <br>replikálja a<br> másodlagos | T1         | Tranzakció replikálja a másodlagos C.<br>Nincs frissítve, mert LastSyncTime <br>tranzakció B még nem replikálódott.|
 | *T5*     | Entitások olvasása <br>a másodlagos                           |                                  | T1                 | A régi értéket alkalmazott <br> entitás, mert a tranzakció B nem <br> még replikált. Az új értéket kap<br> rendszergazdai szerepkör entitás mert C<br> replikálja. Utolsó szinkronizálás időpontja még nem.<br> lett frissítve, mert a tranzakció B<br> még nem replikálódnak. Azt is megadhatja, hogy a<br>rendszergazdai szerepkör entitás nem konzisztens <br>mivel az entitás dátum/idő után <br>a legutóbbi szinkronizálás időpontja. |
 | *T6*     |                                                      | B tranzakció<br> replikálja a<br> másodlagos | T6                 | *T6* – C keresztül minden tranzakciónak kell <br>lettek replikálva, a legutóbbi szinkronizálás időpontja<br> frissül. |
@@ -216,7 +216,7 @@ Ismeri fel, hogy esetleg ellentmondásos adatok rendelkezik, az ügyfél által 
 
 Fontos, hogy az alkalmazás működését – Újrapróbálkozást lehetővé tevő hiba várt teszteléséhez. Például szeretné tesztelni, hogy az alkalmazás-kapcsolók és a csak olvasható módban, ha problémát észlel, és átvált a másodlagos biztonsági, amikor az elsődleges régió újra lesz elérhető. Ehhez meg kell egy újrapróbálkozást lehetővé tevő hiba és milyen gyakran előforduló vezérlő szimulálásához.
 
-Használhat [Fiddler](http://www.telerik.com/fiddler) elfogására és a egy parancsfájlban HTTP-válaszok módosítása. Ez a szkript is azonosítsa az elsődleges végpontra érkező válaszokat, és módosítsa a HTTP-állapotkód, hogy a Storage ügyféloldali kódtára – Újrapróbálkozást lehetővé tevő hiba felismeri. Ez a kódrészlet bemutatja egy egyszerű példa, amely elfogja a választ olvassa el a kérelmeket a Fiddler parancsfájlra a **employeedata** tábla visszatérési 502 állapotot:
+Használhat [Fiddler](https://www.telerik.com/fiddler) elfogására és a egy parancsfájlban HTTP-válaszok módosítása. Ez a szkript is azonosítsa az elsődleges végpontra érkező válaszokat, és módosítsa a HTTP-állapotkód, hogy a Storage ügyféloldali kódtára – Újrapróbálkozást lehetővé tevő hiba felismeri. Ez a kódrészlet bemutatja egy egyszerű példa, amely elfogja a választ olvassa el a kérelmeket a Fiddler parancsfájlra a **employeedata** tábla visszatérési 502 állapotot:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -228,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Ebben a példában intercept kérelmek szélesebb köre, és csak módosítása lehetett bővíteni a **responseCode** egyes jobban szimulálja a valós életből vett helyzet. Fiddler-parancsfájlok testreszabásával kapcsolatos további információkért lásd: [kérés módosítása](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) a Fiddler dokumentációjában.
+Ebben a példában intercept kérelmek szélesebb köre, és csak módosítása lehetett bővíteni a **responseCode** egyes jobban szimulálja a valós életből vett helyzet. Fiddler-parancsfájlok testreszabásával kapcsolatos további információkért lásd: [kérés módosítása](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) a Fiddler dokumentációjában.
 
 Ha végzett az alkalmazás konfigurálható csak olvasható módra váltáshoz a küszöbértékeket, tesztelje a viselkedés nem éles tranzakció kötetek könnyebb lesz.
 

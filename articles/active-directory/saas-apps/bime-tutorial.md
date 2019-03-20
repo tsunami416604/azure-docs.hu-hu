@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5820bb1af496e309aa97b690af1146365a33766b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c0d595bcd96bb38021a2128138f7ee49f9b8354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Bime
 
@@ -168,7 +168,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -225,7 +225,7 @@ Ahhoz, hogy az Azure AD-felhasználók Bime jelentkezzen be, akkor ki kell épí
 
     b. Az a **Vezetéknév** szövegmezőbe írja be például a felhasználó vezetékneve **Simon**.
 
-    c. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    c. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
 
     d. Kattintson a **Save** (Mentés) gombra.
 

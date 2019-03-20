@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce1fe33bb2c44a6f3acf365a24de0df81ac8a70
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 656a1d387a345d9ffcc549c19a131de758e18c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730757"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57879990"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Felhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatok
 
@@ -45,7 +45,7 @@ A hozzáférési felülvizsgálatokban egy vagy több felhasználó is szerepelh
 
 2. Döntse el, hogy minden felhasználó a saját hozzáférését vizsgálja-e felül, vagy inkább kijelöl egy vagy több felhasználót a többiek hozzáférésének felülvizsgálatára.
 
-3. Globális rendszergazdaként vagy felhasználói fiók adminisztrátoraként nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. Globális rendszergazda vagy felhasználói rendszergazda, nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. A hozzáférési felülvizsgálat létrehozása. További információkért lásd: [csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása](create-access-review.md).
 

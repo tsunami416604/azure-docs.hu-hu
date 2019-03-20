@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 5a9638a18b8b5b046d66a6a95ef223220d05d550
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819343"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856115"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Az ügyfél az Azure Machine Learning Studio használatával változásainak elemzése
 ## <a name="overview"></a>Áttekintés
@@ -25,7 +25,7 @@ Ez a cikk bemutatja egy referenciaimplementációt, egy ügyfél lemorzsolódás
 Ez a kísérlet fejlesztette ki és tesztelte Serge Berger egyszerű Adattudós, a Microsoft és Roger Barga, a Microsoft Azure Machine Learning Studio korábban Termékmenedzsere. Az Azure dokumentációs csapata köszönetet mondani a segítségükért összpontosíthassák nyugtázza, és Köszönjük Ez a tanulmány megosztása.
 
 > [!NOTE]
-> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Hogyan hozhat létre egy gépi tanulási modellt lemorzsolódásának elemzése a példát talál: [Kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](http://gallery.azure.ai/)
+> Ehhez a kísérlethez használt adatokat nem nyilvánosan érhető. Hogyan hozhat létre egy gépi tanulási modellt lemorzsolódásának elemzése a példát talál: [Kiskereskedelmi vásárlói lemorzsolódás folyamatmodell-sablont](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) a [Azure AI-katalógusban](https://gallery.azure.ai/)
 > 
 > 
 
@@ -106,7 +106,7 @@ Az alábbi ábrák bemutatják a használt adatok.
  
 
 > Vegye figyelembe, hogy ezek az adatok személyes, és ezért a modell és az adatok nem oszthatók meg.
-> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](http://gallery.azure.ai/): [Ügyfeleinek Lemorzsolódása](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Azonban egy hasonló modell, nyilvánosan elérhető adatok használatával, lásd: Ez a minta Kísérletezgessen egy kicsit a [Azure AI-katalógusban](https://gallery.azure.ai/): [Ügyfeleinek Lemorzsolódása](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Többet szeretne megtudni, hogyan implementálható a Cortana Intelligence Suite segítségével lemorzsolódási elemzési modell, azt is javasoljuk [ebben a videóban](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) vezető Programmenedzsere hétköznapon Hyong Tok szerint. 
 > 
@@ -213,13 +213,13 @@ Ez a tanulmány azt ismerteti, hogy észszerű megközelítése problémájának
 ## <a name="references"></a>Referencia
 [1] prediktív elemzési: Túl az előrejelzéseket, Nyugat McKnight, információk kezelése, a p.18 – 20 2011. júliusi/augusztus.  
 
-[2] Wikipedia-cikk: [Pontosság és a pontosság](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia-cikk: [Pontosság és a pontosság](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: Részletes adatok adatbányászati útmutatója](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Részletes adatok adatbányászati útmutatója](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [big Data típusú adatok Marketing: Az ügyfelek hatékonyabb megszólítása és a meghajtó érték](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [telekommunikációs churn folyamatmodell-sablont](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](http://gallery.azure.ai/) 
+[5] [telekommunikációs churn folyamatmodell-sablont](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) a [Azure AI-katalógusban](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Függelék
