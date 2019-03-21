@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c873587a640bb36e9fa43e314bf789a207956ae0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854840"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226980"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
@@ -83,7 +83,7 @@ A memóriában tárolt OLTP-k technológia rendkívül gyors adatelérési műve
 
 - **Memóriára optimalizált sortárindex** formátumot, ahol minden sor egy külön memóriabeli objektum. Ez a klasszikus In-Memory OLTP formátum optimalizált nagy teljesítményű OLTP számítási feladatokhoz. Memóriaoptimalizált táblákhoz, a memóriára optimalizált sortárindex formátumban is használható két típusa van:
   - *Tartós táblák* (SCHEMA_AND_DATA), a memória a sor megmaradnak a kiszolgáló újraindítása után. Táblák az ilyen típusú úgy viselkedik, mint egy hagyományos sortárindex táblázat további előnyeinek memóriabeli optimalizálás.
-  - *Nem tartós táblák* (SCEMA_ONLY) hol tárolja a sorokat a rendszer nem őrződnek meg az újraindítás után. Ez a tábla típusú ideiglenes adatokat (például az ideiglenes táblák csere) lett tervezve, vagy táblákat, ahol meg kell gyorsan adatok betöltése előtt helyezze át néhány megőrzött tábla (tehát nevű előkészítési táblák).
+  - *Nem tartós táblák* (SCHEMA_ONLY) hol tárolja a sorokat a rendszer nem őrződnek meg az újraindítás után. Ez a tábla típusú ideiglenes adatokat (például az ideiglenes táblák csere) lett tervezve, vagy táblákat, ahol meg kell gyorsan adatok betöltése előtt helyezze át néhány megőrzött tábla (tehát nevű előkészítési táblák).
 - **Memóriára optimalizált oszlopcentrikus** hol vannak rendszerezve Oszlopalapú formátumú formátumban. Ez a struktúra HTAP forgatókönyvek, ahol kell elemzési lekérdezések futtatása a ugyanazzal az adatszerkezettel az OLTP típusú számítási feladatokat futtató lett tervezve.
 
 > [!Note]

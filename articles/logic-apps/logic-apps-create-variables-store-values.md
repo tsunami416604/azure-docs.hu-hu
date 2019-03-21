@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063216"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075714"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Mentés és kezelése az Azure Logic Appsben értékek változók létrehozása
 
@@ -76,7 +76,7 @@ Hozzon létre egy változót, és az adattípus és a kezdeti érték – egy m�
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
    | Typo | Igen | <*változó-típus*> | A változó adattípusa | 
-   | Value | Nem | <*Start-érték*> | A változó kezdeti értéke <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, a kezdő érték a változó. | 
+   | Value | Nem | <*start-value*> | A változó kezdeti értéke <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, a kezdő érték a változó. | 
    ||||| 
 
    ![Változó inicializálása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -211,7 +211,7 @@ Növelheti vagy *növekmény* egy változót egy állandó értékkel adja hozz�
    | Tulajdonság | Szükséges | Value |  Leírás |
    |----------|----------|-------|--------------|
    | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
-   | Value | Nem | <*növekmény-érték*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
+   | Value | Nem | <*increment-value*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
    |||| 
 
    Példa: 
@@ -331,7 +331,7 @@ Az alábbiakban a tulajdonságokat a **változó értékének csökkentése** m�
 | Tulajdonság | Szükséges | Value |  Leírás |
 |----------|----------|-------|--------------|
 | Name (Név) | Igen | <*a változó neve*> | Csökkentenie kell a változó neve | 
-| Value | Nem | <*növekmény-érték*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
+| Value | Nem | <*increment-value*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
 ||||| 
 
 Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó értékének csökkentése** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.
@@ -366,7 +366,7 @@ Az alábbiakban a tulajdonságokat a **változó beállítása** művelet:
 | Tulajdonság | Szükséges | Value |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
-| Value | Igen | <*új érték*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
+| Value | Igen | <*new-value*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
 ||||| 
 
 > [!NOTE]
@@ -414,17 +414,18 @@ Változók karakterláncok vagy a tömb tároló beszúrhatja vagy *hozzáfűzé
 
 1. Keresse meg és válassza ki az egyik ilyen művelet, a változó e karakterlánc vagy egy tömb alapján: 
 
-  * **Változók – hozzáfűzni kívánt karakterlánc-változóhoz**
-  * **Változók – Hozzáfűzés tömbváltozóhoz** 
+   * **Változók – hozzáfűzni kívánt karakterlánc-változóhoz**
+   * **Változók – Hozzáfűzés tömbváltozóhoz** 
 
-2. Adja meg a tömb vagy karakterlánc utolsó elemként hozzáfűzni kívánt értékét. Kötelezően megadandó érték. 
+2. Adja meg a tömb vagy karakterlánc utolsó elemként hozzáfűzni kívánt értékét. 
+   Kötelezően megadandó érték. 
 
 Az alábbiakban a tulajdonságokat a **hozzáfűzése...**  műveletek:
 
 | Tulajdonság | Szükséges | Value |  Leírás | 
 |----------|----------|-------|--------------| 
 | Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
-| Value | Igen | <*Hozzáfűzés-érték*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 
+| Value | Igen | <*append-value*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 
 |||||  
 
 Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **Hozzáfűzés tömbváltozóhoz** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.

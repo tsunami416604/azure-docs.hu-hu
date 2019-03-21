@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: ecdb6d7a225d3a2f2c5bbf90a36b91367faf04b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003346"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189852"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -31,7 +31,7 @@ Az Azure Media Services (AMS), egy **csatorna** élőben közvetített tartalmak
 
 * A helyszíni élő kódoló egy egyféle sávszélességű adatfolyamot küld a csatorna, amelyen engedélyezve van a valós idejű kódolás a Media Services a következő formátumok egyikében: RTMP vagy Smooth Streaming-(darabolt MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 * A helyszíni élő kódoló küld egy többszörös sávszélességű **RTMP** vagy **Smooth Streaming** (töredékes MP4) a csatornát, amely a valós idejű kódolás az AMS nincs engedélyezve. A feldolgozott adatfolyamok haladnak keresztül **csatorna**s további feldolgozás nélkül. Ezt a metódust meghívják **átmenő**. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók RTMP-kimenetre: Az Adobe Flash Media Live Encoder (FMLE), Haivision, Telestream Wirecast, Teradek és Tricaster kódolókkal történő továbbítását.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-  
+
   > [!NOTE]
   > Valamely áteresztő módszer használata a leggazdaságosabb élő közvetítést végezni.
   > 
@@ -50,7 +50,7 @@ A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megad
 > 
 
 ## <a name="billing-implications"></a>Számlázás – következmények
-Élő kódolás csatornát kezdődik a számlázás, amint az API-n keresztül állapotváltásra "Fut" értékre.   Megtekintheti az állapotát az Azure Portalon vagy az Azure Media Services Explorer eszköz (http://aka.ms/amse).
+Élő kódolás csatornát kezdődik a számlázás, amint az API-n keresztül állapotváltásra "Fut" értékre.   Megtekintheti az állapotát az Azure Portalon vagy az Azure Media Services Explorer eszköz (https://aka.ms/amse).
 
 Az alábbi táblázat bemutatja, hogyan csatornaállapotok számlázási állapotok az API-t és az Azure Portalon. Az állapotok a kissé eltérő, az API-t és a portál UX között Amint egy csatornát a "Fut" állapotban az API-n keresztül, vagy az Azure Portalon "Kész" vagy "Folyamatos átvitel" állapotban van, a számlázás aktív lesz.
 Leállítja a csatornát, a számlázási, tovább, akkor leállítja a csatornát, az API-n keresztül vagy az Azure Portalon.
@@ -89,29 +89,27 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 
 > [!NOTE]
 > Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen. Ez egy számlázási hatással az élő kódolás és kell ne feledje, hogy egy élő kódolás csatorna és a "Fut" állapotban számlázási óránkénti díjat számolunk.  Javasoljuk, hogy azonnal leállítja a futó csatornák az élő adatfolyam-továbbítási esemény nagyon óránkénti díjak elkerülése érdekében befejeződése után. 
-> 
-> 
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. Indítsa el, és konfigurálja, amelyek kimenete is a helyszíni élő kódoló egy **egyetlen** sávszélességű adatfolyamot, a következő protokoll: RTMP vagy Smooth Streaming. 
-   
+
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 2. Hozzon létre és indítson el egy csatornát. 
 3. Kérje le a csatorna feldolgozó URL-címét. 
-   
+
     Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 4. Kérje le a csatorna előnézeti URL-címét. 
-   
+
     Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 5. Hozzon létre egy programot. 
-   
+
     Ha az Azure portal használatával létrehozhat egy programot egy objektumot is létrehoz. 
-   
+
     .NET SDK-t vagy a REST használata esetén hozzon létre egy objektumot, és adja meg, hogy az objektum használja, ha a Program létrehozása szüksége. 
 6. Tegye közzé a programhoz társított adategységet.   
-   
+
     >[!NOTE]
     >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom-továbbításhoz használt streamvégpontnak **Fut** állapotban kell lennie. 
-    
+
 7. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
 8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
 9. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
@@ -217,6 +215,7 @@ Vegye figyelembe, hogy ha egyéni előbeállításokat van szüksége, forduljon
 **Default720p** lesz a videó kódolandó a következő 6 rétegek.
 
 #### <a name="output-video-stream"></a>Kimeneti videót Stream
+
 | Átviteli sebesség | Szélesség | Magasság | MaxFPS | Profil | Kimeneti Stream neve |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
@@ -357,7 +356,7 @@ Tekintse át a Media Services képzési terveket.
 [Valós idejű kódolás egy konfigurált replikához sávszélességű a .NET SDK használatával adaptív sávszélességű streamformátumba csatornák létrehozása](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [Kezeléséhez csatornákat REST API-val](https://docs.microsoft.com/rest/api/media/operations/channel)
- 
+
 [A Media Services alapfogalmai](media-services-concepts.md)
 
 [Specifikáció: darabolt MP4 élő Azure Media Services feldolgozása](media-services-fmp4-live-ingest-overview.md)

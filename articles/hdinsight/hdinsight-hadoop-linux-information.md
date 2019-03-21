@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: fd1c130e9228f334889668f66927dece2425b39f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090678"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202452"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -249,7 +249,7 @@ A HDInsight-fürt méretezéssel kapcsolatos információkért lásd:
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hogyan kell telepíteni a Hue (vagy más Hadoop-összetevők)?
 
-HDInsight egy olyan felügyelt szolgáltatás. Azure-hoz a fürt probléma, ha, előfordulhat, hogy törölje a hibás csomópontot, és cserélje le a csomópontot hozhat létre. Ha manuálisan telepíti a fürtön dolog, azok nem megmaradnak a művelet esetén. Ehelyett használjon [HDInsight Parancsfájlműveletek](hdinsight-hadoop-customize-cluster.md). Szkriptműveletet használható a következő módosításokat:
+HDInsight egy olyan felügyelt szolgáltatás. Azure-hoz a fürt probléma, ha, előfordulhat, hogy törölje a hibás csomópontot, és cserélje le a csomópontot hozhat létre. Ha manuálisan telepíti a fürtön dolog, azok nem megmaradnak a művelet esetén. Ehelyett használjon [HDInsight Parancsfájlműveletek](hdinsight-hadoop-customize-cluster-linux.md). Szkriptműveletet használható a következő módosításokat:
 
 * Telepítsen és konfiguráljon egy szolgáltatás vagy a webhelyet.
 * Telepítsen és konfiguráljon egy összetevő, amely a szükséges konfigurációs módosítások a fürtben több csomóponton.
@@ -257,7 +257,6 @@ HDInsight egy olyan felügyelt szolgáltatás. Azure-hoz a fürt probléma, ha, 
 A Szkriptműveletek olyan Bash-szkriptek. A szkriptek a fürt létrehozásakor futtassa, és telepítse és konfigurálja a további összetevők szolgálnak. A következő összetevők telepítéséhez parancsfájlpéldákat biztosítja:
 
 * [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 
 Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információkért lásd: [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Parancsfájlműveletek fejlesztése a HDInsighttal).
 

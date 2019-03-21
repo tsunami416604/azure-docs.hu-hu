@@ -1,6 +1,6 @@
 ---
-title: Az oktatóanyag az Azure Cosmos DB-vel egy ASP.NET MVC webalkalmazás fejlesztése .net SDK-előzetes verzió használatával.
-description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy ASP .net MVC-webalkalmazás Azure Cosmos DB használatával. Fogja tárolni, és JSON-adatok elérése az Azure-ban tárolt teendőkezelő alkalmazásból.
+title: Oktatóanyag fejleszthet ASP.NET MVC webalkalmazás az Azure Cosmos DB .NET-keretrendszerrel előzetes SDK-t.
+description: Az oktatóanyag azt ismerteti, hogy egy ASP .NET MVC-webalkalmazás létrehozása Azure Cosmos DB használatával. Fogja tárolni, és JSON-adatok elérése az Azure-ban tárolt teendőkezelő alkalmazásból.
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: fa2657fbc4e5fe734b8e026494351fef2aea1c2a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bf1da7e8a1041b15076ebda6eeac9b0a75c567c0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857164"
 ---
-# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Oktatóanyag: Az Azure Cosmos DB az ASP.NET MVC webalkalmazás fejlesztése .net SDK-előzetes verzió használatával 
+# <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>Oktatóanyag: Az Azure Cosmos DB az ASP.NET MVC webalkalmazás fejlesztése .NET SDK-előzetes verzió használatával 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -26,7 +26,7 @@ ms.locfileid: "57454204"
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
 
-Ez az oktatóanyag bemutatja, hogyan Azure Cosmos DB használatával tárolhatja és érheti el adatait üzemeltetett ASP.NET MVC alkalmazásnak az Azure-ban. Ebben az oktatóanyagban használja a .net SDK v3-as, amely jelenleg előzetes verziójú. Az alábbi képen látható a weblap, amelyen ez a cikk a minta használatával fog létrehozni:
+Ez az oktatóanyag bemutatja, hogyan Azure Cosmos DB használatával tárolhatja és érheti el adatait üzemeltetett ASP.NET MVC alkalmazásnak az Azure-ban. Ebben az oktatóanyagban használja a .NET SDK V3, amely jelenleg előzetes verzióban érhető el. Az alábbi képen látható a weblap, amelyen ez a cikk a minta használatával fog létrehozni:
  
 ![Az MVC-webalkalmazás oktatóanyag – ASP NET MVC oktatóprogram lépésről lépésre során létrehozott teendőlista képernyőképe](./media/sql-api-dotnet-application-preview/asp-net-mvc-tutorial-image01.png)
 
@@ -77,7 +77,7 @@ A következő szakaszban hozzon létre egy új ASP.NET MVC-alkalmazás.
 
 3. A **Name** (Név) szövegmezőbe írja be a projekt nevét. Ez az oktatóprogram a „todo” (teendők) nevet használja. Ha más nevet, majd ez az oktatóanyag ismerteti a teendőlista-névteret, ahol szükség esetén módosítsa a megadott kódmintákat úgy, hogy használja az alkalmazást. 
 
-4. Válassza ki **Tallózás** lépjen abba a mappába, ahol szeretné a projekt létrehozásához, és válassza a **.Net-keretrendszer 4.6.1-es** vagy újabb verziója. Kattintson az **OK** gombra. 
+4. Válassza ki **Tallózás** lépjen abba a mappába, ahol szeretné a projekt létrehozásához, és válassza a **.NET-keretrendszer 4.6.1-es** vagy újabb verziója. Kattintson az **OK** gombra. 
 
 5. Megjelenik a **Új ASP.NET-webalkalmazás** párbeszédpanel. A sablonok panelén válassza az **MVC** elemet.
 
@@ -235,7 +235,7 @@ Itt először is, adjon hozzá egy osztályt, amely tartalmazza a logika csatlak
    defaults: new { controller = "Item", action = "Index", id = UrlParameter.Optional }
    ```
 
-  Ez a kód most közli az ASP.NET MVC, ha nem adott meg egy értéket az URL-címben az útválasztási viselkedés vezérlő helyett **kezdőlap**, használ **elem** , a vezérlő és **Index**nézetként.
+   Ez a kód most közli az ASP.NET MVC, ha nem adott meg egy értéket az URL-címben az útválasztási viselkedés vezérlő helyett **kezdőlap**, használ **elem** , a vezérlő és **Index**nézetként.
 
 Most futtatja az alkalmazást, ha meghívja-e be a **ItemController** , amely a GetItems olyan módszereket hív meg, amelyeket a következő szakaszban TodoItemService osztályhoz. 
 

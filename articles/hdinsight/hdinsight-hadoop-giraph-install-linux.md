@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201721"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Telepítse az Apache Giraph HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
 
@@ -59,7 +59,7 @@ Ez a szakasz útmutatást az Azure portal használatával a fürt létrehozásak
 > Az alábbi módszerek bármelyikével szkriptműveletet lehet alkalmazni:
 > * Azure PowerShell
 > * Az Azure klasszikus parancssori felület
-> * A HDInsight .NET SDK-val
+> * The HDInsight .NET SDK
 > * Azure Resource Manager-sablonok
 > 
 > Már fut a fürtök parancsfájlműveletekkel is alkalmazhat. További információkért lásd: [testreszabása HDInsight fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
@@ -171,5 +171,3 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
 ## <a name="next-steps"></a>További lépések
 
 * [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md).
-
-* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install-linux.md).

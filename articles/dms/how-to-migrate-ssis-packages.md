@@ -3,20 +3,20 @@ title: Az SQL Server Integration Services-csomagok áttelepítése az Azure-bA |
 description: Ismerje meg, hogyan telepítheti át SQL Server Integration Services-csomagok az Azure-bA.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 1113e203f92c2362d0a7a5da002179a8c3ebb793
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 884af4624c1e92ee765353c90fd189220664381d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183424"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>Az SQL Server Integration Services-csomagok áttelepítése az Azure-bA
 Ha az SQL Server Integration Services (SSIS) használ, és az SSIS-projektek/csomagok áttelepítése a forráskiszolgálóról a cél Azure SQL Database-kiszolgáló vagy az Azure SQL Database felügyelt példánya által üzemeltetett SSISDB SQL-kiszolgáló által üzemeltetett SSISDB szeretne, akkor is újból üzembe helyezheti őket az integrációs szolgáltatások telepítése varázsló használatával. A varázsló az SQL Server Management Studio (SSMS) belül el is indíthatja.

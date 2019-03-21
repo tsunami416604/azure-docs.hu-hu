@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48811188"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878647"
 ---
 <a name="api-prerequisites"></a>API-Előfeltételek
 ================
@@ -55,7 +55,7 @@ Az alábbi lépések segítségével hozzáadása a szolgáltatásnévhez:
 
      ![Adjon hozzá egy felügyelt alkalmazást a portálra](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. Kattintson a **Hozzáadás** az egyszerű szolgáltatás hozzáadása a fiókjához.
+1. Kattintson a **Hozzáadás** az egyszerű szolgáltatás hozzáadása a fiókjához.
 
    ![Szolgáltatásnév hozzáadása](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ Az alábbi lépések segítségével hozzáadása a szolgáltatásnévhez:
 A Cloud Partner Portal API-k hitelesítés során a következő eszközöket és protokollokat használja:
 
 - A JSON webes jogkivonat (JWT) tulajdonosi jogkivonat erőforrásokhoz való hozzáférés igénylése
-- A [OpenID Connect](http://openid.net/connect/) (OIDC) protokoll személyazonosságát
+- A [OpenID Connect](https://openid.net/connect/) (OIDC) protokoll személyazonosságát
 - [Az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) az identitás-szolgáltatóként
 
 Nincsenek alapvetően két módszer a JWT-token beszerzése a programozott módon:

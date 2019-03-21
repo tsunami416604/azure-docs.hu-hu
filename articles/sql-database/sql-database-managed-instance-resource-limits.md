@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: 7a4158987f606d2b96baac365fce4b6e09cf8a65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888621"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223818"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -55,8 +55,8 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
-| Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines)| 11-K – 110 K (1,375 / virtuális mag) |
-|Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Maximális száma 48 MB/s-példányonként|
+| Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11-K – 110 K (1,375 / virtuális mag) |
+| Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Maximális száma 48 MB/s-példányonként|
 | A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s / virtuális mag |
 | IO-késés (becsült) | 5-10 ms | 1-2 ms |
 | Max. tempDB mérete | 192 - 1,920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |
@@ -100,7 +100,7 @@ Az alábbi táblázatban láthatók a támogatott előfizetések alapértelmezet
 |Utólagos, használatalapú fizetés|1*|4*|4*|1*|
 |CSP |1*|4*|4*|1*|
 |Fejlesztés/tesztelés használatalapú fizetéssel|1*|4*|4*|1*|
-|Nagyvállalati Szerződés – Fejlesztés és tesztelés|1*|4*|4*|1*|
+|Enterprise Dev/Test|1*|4*|4*|1*|
 |Nagyvállalati szerződés|3**|12**|12**|3**|
 
 \* Vagy telepítheti 1 BC vagy az egyik alhálózat 4 GP-példány, hogy az alhálózat "példány egységek" száma soha nem meghaladja a 4.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: bfc80318eb43992e292159a0cd99a9b2f4a3c041
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d5a411e227704eb80b0020f68fad072491576f18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883797"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Power BI-jelentések kezelése a JavaScript API használatával
 
@@ -43,29 +43,29 @@ A JavaScript API segítségével jelentéseket kezelhet, a jelentések adott lap
 ### <a name="manage-reports"></a>Jelentések kezelése
 A JavaScript API-val az alábbi jelentés- és lapszintű viselkedések kezelhetők:
 
-* Adott Power BI-jelentés biztonságos beágyazása az alkalmazásba – próbálja ki a [beágyazási bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario1)
+* Adott Power BI-jelentés biztonságos beágyazása az alkalmazásba – próbálja ki a [beágyazási bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
   * Hozzáférési jogkivonat beállítása
 * A jelentés konfigurálása
-  * A szűrőpanel és a lapnavigációs panel engedélyezése és letiltása – próbálja ki a [beállításfrissítési bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario6)
-  * Alapértelmezett beállítások megadása a lapok és a szűrők számára – próbálja ki az [alapértelmezett értékek megadására szolgáló bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario5)
+  * A szűrőpanel és a lapnavigációs panel engedélyezése és letiltása – próbálja ki a [beállításfrissítési bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
+  * Alapértelmezett beállítások megadása a lapok és a szűrők számára – próbálja ki az [alapértelmezett értékek megadására szolgáló bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
 * Teljes képernyős mód vagy kilépés a teljes képernyős módból
 
 [További információ jelentések beágyazásáról](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embedding-Basics)
 
 ### <a name="navigate-to-pages-in-a-report"></a>Navigálás egy jelentés adott lapjaira
-A JavaScript API segítségével a jelentések összes lapját áttekintheti, és beállíthatja az aktuális lapot. Próbálja ki a [navigációs bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario3).
+A JavaScript API segítségével a jelentések összes lapját áttekintheti, és beállíthatja az aktuális lapot. Próbálja ki a [navigációs bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario3).
 
 [További információ a lapok közötti navigálásról](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Page-Navigation)
 
 ### <a name="filter-a-report"></a>Jelentés szűrése
-A JavaScript API a beágyazott jelentésekhez és azok lapjaihoz alapszintű és speciális szűrési képességeket biztosít. Próbálja ki a [szűrési bemutatóalkalmazást](http://azure-samples.github.io/powerbi-angular-client/#/scenario4), és tekintsen át néhány bevezető jellegű kódot.
+A JavaScript API a beágyazott jelentésekhez és azok lapjaihoz alapszintű és speciális szűrési képességeket biztosít. Próbálja ki a [szűrési bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario4), és tekintsen át néhány bevezető jellegű kódot.
 
 #### <a name="basic-filters"></a>Alapszintű szűrők
 Az alapszintű szűrők oszlop- vagy hierarchiaszinten vannak elhelyezve, és tartalmazzák a felvenni vagy kizárni kívánt értékek listáját.
 
 ```typescript
 const basicFilter: pbi.models.IBasicFilter = {
-  $schema: "http://powerbi.com/product/schema#basic",
+  $schema: "https://powerbi.com/product/schema#basic",
   target: {
     table: "Store",
     column: "Count"
@@ -94,7 +94,7 @@ A speciális szűrők AND vagy OR logikai operátorokat használnak, és egy vag
 
 ```typescript
 const advancedFilter: pbi.models.IAdvancedFilter = {
-  $schema: "http://powerbi.com/product/schema#advanced",
+  $schema: "https://powerbi.com/product/schema#advanced",
   target: {
     table: "Store",
     column: "Name"

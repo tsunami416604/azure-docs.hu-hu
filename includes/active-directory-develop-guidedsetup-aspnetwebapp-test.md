@@ -3,8 +3,8 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203634"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -48,7 +48,7 @@ A vezérlő nézetben keresse meg, miután egy táblát, amely tartalmazza a fel
 |**Name (Név)** |A felhasználó teljes neve | A felhasználó vezetékneve és nevét.
 |**Felhasználónév** |Felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználó a weben.|
-|**Bérlő azonosítója** |GUID | A **guid** , amely a felhasználó Azure ad-ben szervezete egyedi jelöli.|
+|**Bérlő azonosítója** |Guid | A **guid** , amely a felhasználó Azure ad-ben szervezete egyedi jelöli.|
 
 Emellett megtekintheti az egy táblázat minden jogcím található a hitelesítési kérelmet. További információkért lásd: a [listája, amelyeket egy Azure AD-azonosító jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -80,14 +80,14 @@ Alapértelmezés szerint ez az útmutató által létrehozott alkalmazás kész�
 
 Az alkalmazás felhasználói bejelentkezési hozzáférés korlátozása, több lehetőség is elérhető:
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1. lehetőség: A felhasználók korlátozása a szervezet csak egy Active Directory-példányból, jelentkezzen be az alkalmazás (egybérlős)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Csak egy adott szervezet Active Directory-példányának felhasználói jelentkezhetnek be az alkalmazásba (egybérlős)
 
-Ez a beállítás akkor gyakran előfordul *LOB-alkalmazások*: szeretné-e az alkalmazás csak egy adott Azure Active Directory-példányhoz tartozó számlák történő bejelentkezések fogadására (beleértve a *vendégfiókok*az adott példány) tegye a következőket:
+Ez a beállítás akkor gyakran előfordul *LOB-alkalmazások*: Szeretné-e az alkalmazás csak egy adott Azure Active Directory-példányhoz tartozó számlák történő bejelentkezések fogadására (beleértve a *vendégfiókok* az adott példány) tegye a következőket:
 
 1. Az a **web.config** fájl, módosítsa az értéket a a `Tenant` paramétert `Common` a szervezet bérlőjének a nevével, például `contoso.onmicrosoft.com`.
 2. Az a [OWIN indítási osztályt](#configure-the-authentication-pipeline)állítsa be a `ValidateIssuer` argumentumának `true`.
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>2. lehetőség: Az alkalmazás a szervezetek a felhasználók számára egy adott listában való hozzáférés korlátozása
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>Option 2: Az alkalmazás a szervezetek a felhasználók számára egy adott listában való hozzáférés korlátozása
 
 Jelentkezzen be a hozzáférés csak felhasználói fiókok, egy Azure AD-szervezethez, amely szerepel a listán az engedélyezett szervezetek korlátozhatja:
 1. Az a [OWIN indítási osztályt](#configure-the-authentication-pipeline)állítsa be a `ValidateIssuer` argumentumának `true`.

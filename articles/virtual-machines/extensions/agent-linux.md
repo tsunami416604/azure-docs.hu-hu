@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1defa08b0eb9ede2adec3b7ac12c873522dd6c37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243879"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011592"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux-ügynök
 
@@ -73,7 +73,7 @@ Az ügynök a platformról információáramlás két csatornákon keresztül t�
 A következő rendszerek teszteltük, és ismert, hogy az Azure Linux-ügynök használata:
 
 > [!NOTE]
-> Ez a lista eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt leírtak szerint: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Ez a lista eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt leírtak szerint: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -93,8 +93,8 @@ Egyéb támogatott rendszerek:
 A Linux-ügynök megfelelő működéséhez néhány rendszer csomag függ:
 
 * Python 2.6
-* OpenSSL 1.0 +
-* Az OpenSSH 5.3 +
+* OpenSSL 1.0+
+* OpenSSH 5.3+
 * Fájlrendszer segédprogramok: sfdisk, fdisk, mkfs, válogatottak
 * Jelszó-eszközök: chpasswd, sudo
 * Eszközök szövegfeldolgozást: csökkentésének, a grep
@@ -108,12 +108,12 @@ A dokumentáció a [Azure Linux-ügynök adattárat a Githubon](https://github.c
 
 ## <a name="command-line-options"></a>Parancssori kapcsolók
 ### <a name="flags"></a>Jelölők
-* részletes: növelése a megadott parancs
-* kényszerített: hagyja ki az egyes parancsok interaktív megerősítése
+* részletes: Növelése a megadott parancs
+* kényszerített: Hagyja ki az egyes parancsok interaktív megerősítése
 
 ### <a name="commands"></a>Parancsok
-* Súgó: a támogatott parancsok és jelzők sorolja fel.
-* megszüntetési: próbál meg törölni a rendszer, és adja meg a megfelelő reprovisioning. A következő művelet törlése:
+* segítség: A támogatott parancsok és jelzők sorolja fel.
+* megszüntetése: Próbálja meg törölni a rendszer, és adja meg a megfelelő reprovisioning. A következő művelet törlése:
   
   * Az összes SSH állomáskulcsok (ha Provisioning.RegenerateSshHostKeyPair "y", a konfigurációs fájlban)
   * Az /etc/resolv.conf névkiszolgáló-konfiguráció
@@ -126,11 +126,11 @@ A dokumentáció a [Azure Linux-ügynök adattárat a Githubon](https://github.c
 > 
 > 
 
-* megszüntetési + felhasználó: hajt végre minden - megszüntetési (feljebb) és is törli az utoljára kiépített felhasználói fiókot (/var/lib/waagent szerzett) és a kapcsolódó adatokat. Ezt a paramétert akkor, ha a megszüntetést olyan lemezképet, amely korábban az Azure-ban kiépítés volt, előfordulhat, hogy lehet rögzíteni és újra felhasználható.
-* verzió: waagent verzióját jeleníti meg
-* serialconsole: konfigurálja a grub-HIBÁT való megjelöléséhez ttyS0 (az első soros port), a rendszerindító konzol. Ez biztosítja, hogy a rendszermag rendszerindítási naplók küldött a soros port és a hibakereséshez elérhetővé.
-* démon: waagent futtató démon a platformmal való kezeléséhez. Ennek az argumentumnak a waagent a waagent init parancsfájl van megadva.
-* Indítsa el: waagent futtatása háttérfolyamatként
+* megszüntetési + felhasználó: Hajt végre minden - megszüntetési (feljebb) és is törli az utoljára kiépített felhasználói fiókot (/var/lib/waagent szerzett) és a kapcsolódó adatokat. Ezt a paramétert akkor, ha a megszüntetést olyan lemezképet, amely korábban az Azure-ban kiépítés volt, előfordulhat, hogy lehet rögzíteni és újra felhasználható.
+* Verzió: Waagent verzióját jeleníti meg
+* serialconsole: Konfigurálja a grub-HIBÁT való megjelöléséhez ttyS0 (az első soros port), a rendszerindító konzol. Ez biztosítja, hogy a rendszermag rendszerindítási naplók küldött a soros port és a hibakereséshez elérhetővé.
+* démon: Waagent futtató démon a platformmal való kezeléséhez. Ennek az argumentumnak a waagent a waagent init parancsfájl van megadva.
+* Indítás: Waagent futtatása háttérfolyamatként
 
 ## <a name="configuration"></a>Konfiguráció
 Egy konfigurációs fájl (/ etc/waagent.conf) waagent műveleteket szabályozza. Az alábbiakban látható egy minta konfigurációs fájlt:
@@ -270,7 +270,7 @@ Megadja az elérési utat, amelyen az erőforrás-lemez csatlakoztatva van. Az e
 Type: String  
 Default: None
 ```
-Megadja a lemez csatlakoztatási beállítások történő átadása a mount -o parancsot. Például ez az értékek vesszővel elválasztott listáját. "nodev, nosuid". Tekintse meg a részleteket mount(8).
+Megadja a lemez csatlakoztatási beállítások történő átadása a mount -o parancsot. Például ez az értékek vesszővel elválasztott listáját. 'nodev,nosuid'. Tekintse meg a részleteket mount(8).
 
 **ResourceDisk.EnableSwap:**  
 ```
@@ -300,7 +300,7 @@ Default: n
 ```
 Ha a beállított, az ügynök megpróbálja telepíteni, és töltsön be egy RDMA kernel-illesztőprogram, amely megfelel az alapul szolgáló hardver belső vezérlőprogramjának verzióját.
 
-**AZ OPERÁCIÓS RENDSZER. RootDeviceScsiTimeout:**  
+**OS.RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
@@ -330,7 +330,7 @@ Engedélyezi vagy letiltja az automatikus frissítés feldolgozása; cél állap
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu felhő-rendszerképek
+## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
 Ubuntu felhő-rendszerképek használatához [a cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) számos, ellenkező esetben lenne az Azure Linux-ügynök által felügyelt konfigurációs feladatok végrehajtásához. Az alábbi eltérések a alkalmazni:
 
 * **Provisioning.Enabled** , az alapértelmezett érték "n" Ubuntu felhő-rendszerképek, amely a cloud-init használatával üzembe helyezési feladatok végrehajtására.
@@ -344,6 +344,6 @@ Ubuntu felhő-rendszerképek használatához [a cloud-init](https://launchpad.ne
 
 * További információkért tekintse meg az erőforrás-lemez csatlakoztatási pont konfigurálása és üzembe helyezés során a felhő-rendszerképek Ubuntu lapozófájl az alábbi forrásanyagokat:
   
-  * [Ubuntu Wiki: A lapozófájl-kapacitás-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: Lapozófájl-kapacitás-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Egyéni adatok betöltése az Azure virtuális gépként](../windows/classic/inject-custom-data.md)
 

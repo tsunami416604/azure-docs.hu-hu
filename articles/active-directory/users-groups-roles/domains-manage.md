@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194733"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201846"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 
@@ -33,11 +33,11 @@ Ha a címtár létrejött, a kezdeti tartománynevet, például "contoso.onmicro
 2. Válassza az **Azure Active Directory** elemet.
 3. Válassza az **Egyéni tartománynevek** elemet.
   
-   ![Felhasználókezelés megnyitása](./media/domains-manage/add-custom-domain.png)
+   ![Nyissa meg a felhasználókezelési oldalra.](./media/domains-manage/add-custom-domain.png)
 4. Válassza ki a tartományt, érdemes az elsődleges tartomány nevét.
 5. Válassza ki a **elsődlegessé** parancsot. Erősítse meg választását, amikor a rendszer kéri.
   
-   ![Tartománynév elsődlegessé alakítás](./media/domains-manage/make-primary-domain.png)
+   ![Győződjön meg arról, nevezze el az elsődleges tartomány](./media/domains-manage/make-primary-domain.png)
 
 Módosíthatja a át minden olyan ellenőrzött egyéni tartománynak, amely nincs összevonva az elsődleges tartomány nevét. Az elsődleges tartomány a címtár módosítása minden olyan meglévő felhasználók számára a felhasználónév nem változnak.
 
@@ -88,13 +88,13 @@ Hibát ad vissza mikor:
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Miért sikertelen egy hiba, amely arról tájékoztatja, hogy a tartománynév van kezelt Exchange-csoportok a tartomány törlés?** <br>
-**VÁLASZ:** Még ma, bizonyos csoportok, például a postafiókhoz biztonsági csoportok és elosztott listák az Exchange által kiépített, és a manuálisan törölni kell [az Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Nem lehet, hogy lehet fennmaradó ProxyAddresses, amely az egyéni tartománynév támaszkodjon, és a egy másik tartománynevet manuálisan frissíteni kell. 
+**V:** Még ma, bizonyos csoportok, például a postafiókhoz biztonsági csoportok és elosztott listák az Exchange által kiépített, és a manuálisan törölni kell [az Exchange felügyeleti központban (EAC)](https://outlook.office365.com/ecp/). Nem lehet, hogy lehet fennmaradó ProxyAddresses, amely az egyéni tartománynév támaszkodjon, és a egy másik tartománynevet manuálisan frissíteni kell. 
 
-**K: E vagyok jelentkezve admin@contoso.com , de nem lehet törölni a tartomány neve "contoso.com"?**<br>
-**VÁLASZ:** Az egyéni tartománynevet szeretne törölni a felhasználói fiók nevében nem lehet hivatkozni. Győződjön meg arról, hogy a globális rendszergazdai fiókot használ a kezdeti alapértelmezett tartománynévnek (. onmicrosoft.com) például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiók, amely például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynevet, például a "fabrikam.com" az fióknak admin@fabrikam.com.
+**K: E vagyok jelentkezve rendszergazdai\@contoso.com de nem lehet törölni a tartomány neve "contoso.com"?**<br>
+**V:** Az egyéni tartománynevet szeretne törölni a felhasználói fiók nevében nem lehet hivatkozni. Győződjön meg arról, hogy a globális rendszergazdai fiókot használ a kezdeti alapértelmezett tartománynévnek (. onmicrosoft.com) például admin@contoso.onmicrosoft.com. Jelentkezzen be egy másik globális rendszergazdai fiók, amely például admin@contoso.onmicrosoft.com vagy egy másik egyéni tartománynevet, például a "fabrikam.com" az fióknak admin@fabrikam.com.
 
 **K: A Delete tartomány gombra, és tekintse meg gombra kattintás után `In Progress` a törlési művelet állapotát. Mennyi időt vesz igénybe? Mi történik, ha a sikertelen?**<br>
-**VÁLASZ:** A törlés tartomány művelet egy aszinkron háttérfeladat átnevezi is tartománynév mutató összes hivatkozást. Egy percen belül teljesítéséhez. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nem rendelkezik:
+**V:** A törlés tartomány művelet egy aszinkron háttérfeladat átnevezi is tartománynév mutató összes hivatkozást. Egy percen belül teljesítéséhez. Ha a tartomány törlése sikertelen, győződjön meg arról, hogy nem rendelkezik:
 
 * A tartománynevet a appIdentifierURI konfigurált alkalmazások
 * Az egyéni tartománynév hivatkozó levelezési csoport
