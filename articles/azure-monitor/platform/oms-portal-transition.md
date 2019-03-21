@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886626"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -26,7 +26,7 @@ ms.locfileid: "54214001"
 
 Az Azure Portalon a központ, Azure-szolgáltatásokhoz, és a egy gazdag felügyeleti funkciókat biztosítanak, mint az irányítópultokat a erőforrások, az intelligens keresési eredmény erőforrások és a resource Management-környezetet kínál. Összefogása és egyszerűsíthetők a figyelési és felügyeleti munkafolyamat, hogy elindult az OMS-portál funkciókkal be az Azure Portalra. Az a Funkciók, az OMS-portál most már az Azure Portalon részét képezik. Sőt az új funkciók, például a Traffic Analytics némelyike csak az Azure Portalon érhető el. Mindent az OMS-portálon az Azure Portalon, és további csinált elérnie fogja. Ha ezt még nem tette meg, először érdemes az Azure portal használatát még ma!
 
-**Az OMS-portálon hivatalosan jén kivonjuk a forgalomból 2019. január 15** Azure kereskedelmi felhőben és az Azure US Government felhő, az OMS-portálon **2019. március 30-án hivatalosan megszűnik.** Az Azure Portalra, és hatással vannak a Váltás könnyen izgatottak vagyunk. De tisztában vagyunk azzal módosítások nehéz és zavart okozhatnak. Esetleges kérdéseivel, visszajelzés, és a Küldés **LAUpgradeFeedback@microsoft.com**. Ez a cikk a főbb forgatókönyvek megvalósítását, és az átállás ütemterv keresztül haladnak.
+**Az OMS-portálon hivatalosan jén kivonjuk a forgalomból 2019. január 15** Azure kereskedelmi felhőben és az Azure US Government felhő, az OMS-portálon **2019. március 30-án hivatalosan megszűnik.** Az Azure Portalra, és hatással vannak a Váltás könnyen izgatottak vagyunk. De tisztában vagyunk azzal módosítások nehéz és zavart okozhatnak. Esetleges kérdéseivel, visszajelzés, és a Küldés **LAUpgradeFeedback\@microsoft.com**. Ez a cikk a főbb forgatókönyvek megvalósítását, és az átállás ütemterv keresztül haladnak.
 
 ## <a name="what-is-changing"></a>Mi változik? 
 A következő módosításokat vannak alatt bejelentette, az OMS-portálon elavulása. Ezek a változások leírását az alábbi szakaszokban részletesebben.
@@ -47,7 +47,7 @@ Bár a legtöbb funkciót továbbra is működni bármilyen migrálás végrehaj
 - Kell [áttelepíteni a felhasználói engedélyek](#user-access-and-role-migration) az Azure Portalra.
 - Lásd: [Azure-bA Migrálhatja az OMS Frissítéstelepítések](../../automation/migrate-oms-update-deployments.md) az Update Management megoldás transitioning részleteiért.
 
-Tekintse meg [gyakori kérdések a Log Analytics-felhasználók az Azure Portalon OMS-portálon való váltás](oms-portal-faq.md) az Azure Portalon való áttéréssel kapcsolatos információkat. Küldése a olyan visszajelzést, kérdéseket vagy problémákat **LAUpgradeFeedback@microsoft.com**.
+Tekintse meg [gyakori kérdések a Log Analytics-felhasználók az Azure Portalon OMS-portálon való váltás](oms-portal-faq.md) az Azure Portalon való áttéréssel kapcsolatos információkat. Küldése a olyan visszajelzést, kérdéseket vagy problémákat **LAUpgradeFeedback\@microsoft.com**.
 
 ## <a name="user-access-and-role-migration"></a>Felhasználói hozzáférés és a szerepkör áttelepítése
 Az Azure portal hozzáférés-kezelés gazdagabb és hatékonyabb, mint a hozzáférés-kezelés az OMS-portálon. Lásd: [munkaterületeinek kezeléséhez](manage-access.md#manage-accounts-and-users) részletes hozzáférés-kezelés a Log Analyticsben.
@@ -62,7 +62,7 @@ Előfordulhat, hogy már rendelkezik megfelelő hozzáféréssel az Azure Portal
  
 Mindkét ezekben az esetekben a rendszergazdának manuálisan, a megfelelő szerepkör hozzárendelése a következő táblázatból. Azt javasoljuk, hogy hozzárendelje ezt a szerepkört az erőforrás-csoportba vagy előfizetésbe szinten.  Több előírásszerű útmutató hamarosan mindkét esetben biztosítjuk.
 
-| OMS-portál engedély | Azure-szerepkörök |
+| OMS-portál engedély | Azure Role |
 |:---|:---|
 | ReadOnly | Log Analytics olvasó |
 | Közreműködő | Log Analytics közreműködő |
@@ -88,7 +88,7 @@ A riasztási felügyeleti megoldás továbbra is elérhető legyen, azt javasolj
 
 A riasztási felügyeleti megoldások (riasztás típussal rendelkező rekordok) által gyűjtött adatok továbbra is a Log Analytics mindaddig, amíg a megoldás telepítve van-e a munkaterületen. 
 
-## <a name="oms-mobile-app"></a>OMS mobilalkalmazást
+## <a name="oms-mobile-app"></a>OMS Mobile App
 Az OMS mobilalkalmazást lesz sunsetted együtt az OMS-portálon. Helyett az OMS mobilalkalmazást az informatikai infrastruktúra, irányítópultok és mentett lekérdezések eléréséhez keresztül elérhető az Azure Portalon közvetlenül a böngészőből a mobil eszközére. Értesítéseket kaphat, konfigurálnia kell [Azure Action Groups általi](../../azure-monitor/platform/action-groups.md) értesítések fogadásához, SMS vagy hanghívás formájában
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-összekötő és megoldás

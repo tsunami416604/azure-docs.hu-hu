@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766316"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089896"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>A Jenkins használata a fejleszthetők és helyezhetők üzembe Linuxos alkalmazások
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -253,24 +253,24 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan konfigurálhatja a 
       ```
    
    * **A jenkins fut a fürtön kívül:** Kövesse az alábbi lépéseket a fürt tanúsítvány másolatára a tároló:
-      1. A tanúsítvány PEM formátumban kell lennie. Ha nem rendelkezik egy PEM-fájlt, létrehozhat egyet a tanúsítvány PFX-fájlból. Ha nem jelszóval védett PFX-fájlt, futtassa a következő parancsot a gazdagépről:
+     1. A tanúsítvány PEM formátumban kell lennie. Ha nem rendelkezik egy PEM-fájlt, létrehozhat egyet a tanúsítvány PFX-fájlból. Ha nem jelszóval védett PFX-fájlt, futtassa a következő parancsot a gazdagépről:
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
+        ``` 
 
-      Ha jelszóval védett PFX-fájl, például a jelszót a `-passin` paraméter. Példa:
+        Ha jelszóval védett PFX-fájl, például a jelszót a `-passin` paraméter. Példa:
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
+        ``` 
 
-      1. A Jenkins-tárolót a tárolót azonosító lekéréséhez futtassa `docker ps` a gazdagépről.
-      1. Másolja a PEM-fájl az a következő paranccsal Docker-tároló:
+     1. A Jenkins-tárolót a tárolót azonosító lekéréséhez futtassa `docker ps` a gazdagépről.
+     1. Másolja a PEM-fájl az a következő paranccsal Docker-tároló:
     
-         ```sh
-         docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
-         ``` 
+        ```sh
+        docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
+        ``` 
 
 Majdnem kész! Ne zárja be a Jenkins-feladatot. Csak a többi feladat, hogy az alkalmazás a Service Fabric-fürt üzembe helyezéséhez a felépítés utáni lépéseket konfigurálja:
 

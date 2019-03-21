@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26520e3ff8f5bb97866015d3148b4c8b8813b319
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182952"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168570"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Indítsa el a Visual Studio 2015 vagy Visual Studio 2017-rendszergazdaként, és
 
 ![Az új projekt párbeszédpanel segítségével új Service Fabric-alkalmazás létrehozása](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-Ezután hozzon létre egy állapotmentes szolgáltatás projektet **.Net Core 2.0** nevű *HelloWorldStateless*:
+Ezután hozzon létre egy állapotmentes szolgáltatás projektet **.NET Core 2.0** nevű *HelloWorldStateless*:
 
 ![A második párbeszédpanelen állapotmentes szolgáltatás projekt létrehozása](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -127,7 +127,7 @@ Az egyazon *HelloWorld* alkalmazás, hozzáadhat egy új szolgáltatás és a sz
 
 ![Szolgáltatás hozzáadása a Service Fabric-alkalmazás](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-Válassza ki **.Net Core 2.0 -> állapotalapú szolgáltatás** , és nevezze el *HelloWorldStateful*. Kattintson az **OK** gombra.
+Válassza ki **.NET Core 2.0 -> állapotalapú szolgáltatás** , és nevezze el *HelloWorldStateful*. Kattintson az **OK** gombra.
 
 ![Az új projekt párbeszédpanel segítségével hozzon létre egy új Service Fabric állapotalapú szolgáltatás](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 

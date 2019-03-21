@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 77e4500b20be844dfad31db284a9c77ad7ec6bb7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a2acf602252ee4319f9a5eccef53a25d8e2dd7f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014265"
 ---
 # <a name="migrate-your-data"></a>Az adatok áttelepítése
 Adatok különböző forrásokból származó áthelyezhetők a különböző eszközök, az SQL Data Warehouse szolgáltatásba.  ADF-példány, az SSIS és a bcp az összes használható e cél eléréséhez. Azonban adatokat nő a mennyisége, gondolja bontásához, az áttelepítési folyamat lépésekre. Ez végrehajtható optimalizálható a teljesítmény és rugalmasság zökkenőmentes áttelepítés biztosítása érdekében az egyes lépések lehetőséget.
@@ -191,11 +191,11 @@ További fejlesztési tippek: [fejlesztői áttekintés][development overview].
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure Data Factory]: http://azure.microsoft.com/services/data-factory/
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
-[ExpressRoute documentation]: http://azure.microsoft.com/documentation/services/expressroute/
+[Azure Data Factory]: https://azure.microsoft.com/services/data-factory/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
+[ExpressRoute documentation]: https://azure.microsoft.com/documentation/services/expressroute/
 
-[production version]: http://aka.ms/downloadazcopy/
-[preview version]: http://aka.ms/downloadazcopypr/
+[production version]: https://aka.ms/downloadazcopy/
+[preview version]: https://aka.ms/downloadazcopypr/
 [ADO.NET destination adapter]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS documentation]: https://msdn.microsoft.com/library/ms141026.aspx
