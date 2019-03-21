@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5bb5993ea47bfcaca96662fbb3d34341e137b929
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2576a0489ad62aba0a85a45f110acb8ac220847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107185"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -65,13 +65,13 @@ További példák: [Lucene lekérdezési szintaxis példái létrehozásához az
 ##  <a name="bkmk_fields"></a> A mező-hatáskörű lekérdezések  
  Megadhat egy `fieldname:searchterm` konstrukció fielded lekérdezési műveletet, ha a mező kitöltése egyetlen szó, és a keresési kifejezést is egy szót vagy kifejezést, igény szerint a logikai operátorokkal együtt meghatározásához. Néhány példa a következők:  
 
--   Műfaj: jazz nem előzmények  
+- Műfaj: jazz nem előzmények  
 
--   előadók: ("mérföld is" "John Coltrane")
+- előadók: ("mérföld is" "John Coltrane")
 
- Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
+  Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
 
- A megadott mező `fieldname:searchterm` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
+  A megadott mező `fieldname:searchterm` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
 
 ##  <a name="bkmk_fuzzy"></a> intelligens keresést  
  Egy intelligens keresés egyezések megkeresi, hogy rendelkezik egy hasonló konstrukció. / [Lucene dokumentáció](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), az intelligens keresés alapján [Damerau-Levenshtein távolság](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).  

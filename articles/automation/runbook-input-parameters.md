@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef0dfafce33837a80ec00ba58e6be99784e652a2
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117200"
 ---
 # <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
 
@@ -338,10 +338,10 @@ Futtassa a következő PowerShell-parancsokat:
    Connect-AzureRmAccount
    ```
 
-  Adja meg Azure hitelesítő adatait kéri.
+   Adja meg Azure hitelesítő adatait kéri.
 
-  > [!IMPORTANT]
-  > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha a Keresés a szalagtár elemmel, ha nem látja, akkor **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti az a modulokat az Automation-fiókban.
 
 1. A JSON-fájl tartalmát, és alakíthatja át egy karakterlánc:
 

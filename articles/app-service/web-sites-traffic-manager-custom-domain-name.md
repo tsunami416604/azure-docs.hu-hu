@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b207d9e3123245e5cb7dddb625f7488886591ae5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089862"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Webes alkalmazás egy egyéni tartománynév konfigurálása az Azure App Service, Traffic Manager használatával
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -56,11 +56,9 @@ Az egyéni tartomány hozzárendelése egy webalkalmazást az Azure App Service-
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
 Minden tartomány szolgáltató tulajdonságairól eltérőek lehetnek, amíg leképezése *a* az egyéni tartomány nevét (például **contoso.com**) *való* a Traffic Manager szolgáltatásbeli tartománynévre ( **contoso.trafficmanager.NET**), amely integrálva van a webalkalmazás.
-   
+
 > [!NOTE]
-> Ha a rekord már használatban van, és előrelátó módon kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Például előrelátó módon kötési **www.contoso.com** a webalkalmazást, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. A webes alkalmazás a "www" CNAME-rekord módosítása nélkül Ezután hozzáadhatja "www.contoso.com". További információkért lásd: [-webalkalmazás létrehozása az egyéni tartomány létrehozása DNS-rekordok][CREATEDNS].
-> 
-> 
+> Ha a rekord már használatban van, és előrelátó módon kötni az alkalmazások azt szeretné, egy további CNAME-rekordot is létrehozhat. Például előrelátó módon kötési **www\.contoso.com** a webalkalmazást, hozzon létre egy CNAME rekordot a **awverify.www** való **contoso.trafficmanager.net**. Ezután hozzáadhatja "www\.contoso.com" a "www" CNAME-rekord módosítása nélkül a webalkalmazáshoz. További információkért lásd: [-webalkalmazás létrehozása az egyéni tartomány létrehozása DNS-rekordok][CREATEDNS].
 
 Miután befejezte a hozzáadásával vagy módosításával a tartományszolgáltatója DNS-rekordokat, a módosítások mentéséhez.
 

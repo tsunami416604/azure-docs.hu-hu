@@ -15,12 +15,12 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca27e89ad67b0f0755a7dda50572f3dcd857189
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733929"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847382"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatok csoportokat vagy alkalmazásokat a hozzáférési felülvizsgálat létrehozása
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [A hozzáférési felülvizsgálatok engedélyezve](access-reviews-overview.md)
-- Globális rendszergazda vagy a felhasználói fiók
+- Globális rendszergazda vagy felhasználói rendszergazda
 
 ## <a name="create-one-or-more-access-reviews"></a>Hozzon létre egy vagy több hozzáférési felülvizsgálatok
 
@@ -53,7 +53,7 @@ Ez a cikk ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvi
 
 1. Ahhoz, hogy a hozzáférési felülvizsgálat ismétlődési, módosítsa a **gyakorisága** beállítást **egyszer** való **heti**, **havi**,  **Negyedéves** vagy **évente**, és használja a **időtartama** csúszka vagy beviteli mező határozza meg, hány napig lesz az ismétlődő sorozatának kritika nyissa meg a felülvizsgálók a bemenetet. Például a maximális időtartam, amely lehet a havi felülvizsgálat 27 nap, kerülje az átfedésben lévő értékelések.
 
-1. Használja a **záró** a beállítás határozza meg az ismétlődő hozzáférés befejezése tekintse át a sorozat. A sorozat fejezheti be háromféleképpen: folyamatosan felülvizsgálatok határozatlan ideig, amíg egy adott dátumot, vagy egy meghatározott előfordulások száma befejezése után el futtatja. Azt, egy másik felhasználóifiók-adminisztrátor vagy egy másik globális rendszergazda állíthatja le a sorozat létrehozása után a dátumot a módosításával **beállítások**, így az adott dátumon végződik.
+1. Használja a **záró** a beállítás határozza meg az ismétlődő hozzáférés befejezése tekintse át a sorozat. A sorozat fejezheti be háromféleképpen: folyamatosan felülvizsgálatok határozatlan ideig, amíg egy adott dátumot, vagy egy meghatározott előfordulások száma befejezése után el futtatja. Azt, egy másik felhasználó rendszergazda vagy egy másik globális rendszergazda állíthatja le a sorozat létrehozása után a dátumot a módosításával **beállítások**, így az adott dátumon végződik.
 
 1. Az a **felhasználók** területén adja meg a felhasználók, a hozzáférési felülvizsgálat vonatkozik. A hozzáférési felülvizsgálatok lehet a felhasználók számára, akik hozzá lett rendelve egy alkalmazás vagy egy csoport tagjai számára. A hozzáférés tekintse át a felülvizsgálati csak a vendégfelhasználók akik tagjai (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy tekintse át az összes felhasználó számára a tagja, vagy hozzáférni az alkalmazáshoz rendelkező további körét.
 

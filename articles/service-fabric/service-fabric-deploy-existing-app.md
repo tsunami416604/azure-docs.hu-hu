@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
-ms.openlocfilehash: 2035ee27aecdf2ec1ab8bf1166f667b5595a7cbb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5831a21225b80e613f713a516d2f000f8b33f096
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853154"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Csomagolása és üzembe helyezése egy meglévő végrehajtható fájlt a Service Fabric
 Amikor csomagolására, meglévő végrehajtható egy [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction.md), választhat egy Visual Studio-projektsablont használja, vagy [hozza létre manuálisan az alkalmazáscsomag](#manually). A Visual Studiót használja, az alkalmazás-csomag szerkezete és a jegyzékfájlok hozza létre az új webesprojekt-sablon az Ön számára.
@@ -96,7 +96,7 @@ Az alábbiakban egy példát a egy `ServiceManifest.xml` fájlt:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ServiceManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
       <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true"/>
    </ServiceTypes>
@@ -207,7 +207,7 @@ Miután konfigurálta a `Servicemanifest.xml` fájlt kell néhány módosítást
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="NodeApp" ServiceManifestVersion="1.0.0.0" />
    </ServiceManifestImport>

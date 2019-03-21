@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d7888fd52495f7d2a195b729fae6d0411cfbd64c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587956"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838315"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
@@ -194,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 Alapértelmezés szerint csak a hatókörön belüli előfizetéshez hozzárendelések jelenik meg. Erőforrás vagy egy csoport hatóköre hozzárendelések megtekintéséhez használja `--all`.
 
-Az alábbi példa felsorolja a közvetlenül hozzárendelt szerepkör-hozzárendeléseket a *patlong@contoso.com* felhasználói:
+Az alábbi példa felsorolja a közvetlenül hozzárendelt szerepkör-hozzárendeléseket a *patlong\@contoso.com* felhasználói:
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -252,7 +252,7 @@ Az erőforrás-csoport hatókörben egy felhasználó szerepkör-hozzárendelés
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Az alábbi példa a *virtuális gépek Közreműködője* szerepkör *patlong@contoso.com* felhasználója a *pharma – értékesítés-projectforecast* erőforrás csoport hatóköre:
+Az alábbi példa a *virtuális gépek Közreműködője* szerepkör *patlong\@contoso.com* felhasználója a *pharma – értékesítés-projectforecast* erőforrás-csoport hatóköre:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -300,7 +300,7 @@ RBAC, a hozzáférést, akkor egy szerepkör-hozzárendelés eltávolítása has
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-A következő példában eltávolítjuk a *virtuális gépek Közreműködője* a szerepkör-hozzárendelés a *patlong@contoso.com* felhasználója a *pharma – értékesítés-projectforecast* erőforrás csoport:
+A következő példában eltávolítjuk a *virtuális gépek Közreműködője* a szerepkör-hozzárendelés a *patlong\@contoso.com* felhasználója a *pharma – értékesítés-projectforecast* erőforráscsoportot:
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cbb144cc8aac6dc8e90d196147b0c154471b7239
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102060"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Vlastní zdroje dat az Application Insights-adatok korrelálásához
 
@@ -44,7 +44,7 @@ Hogy napló adatokat küldjön az Azure Monitor szolgáltatásba. Több lehetős
 
 - A szinkron mechanizmust, vagy közvetlenül meghívhatja a [adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) vagy a logikai alkalmazás-összekötő használata – egyszerűen csak "Az Azure Log Analytics" keresse meg és válassza ki az "Adatok küldése" lehetőséget:
 
- ![Képernyőkép – válassza ki, és a művelet](./media/custom-data-correlation/01-logic-app-connector.png)  
+  ![Képernyőkép – válassza ki, és a művelet](./media/custom-data-correlation/01-logic-app-connector.png)  
 
 - Egy aszinkron lehetőséggel az adatgyűjtő API használatával hozhat létre egy feldolgozási folyamat. Lásd: [Ez a cikk](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) részleteiről.
 

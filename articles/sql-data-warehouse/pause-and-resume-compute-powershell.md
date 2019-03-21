@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f1b4caba48f0637e76840f921513f1f03ce9c56f
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 1aebe3086704c3823bcde470640f547de2beaaee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884196"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Gyors útmutató: Szünet és folytatás compute az Azure SQL Data Warehouse a PowerShell-lel
 
@@ -37,13 +37,13 @@ Az Azure-előfizetés használatával jelentkezzen be a [Connect-AzAccount](/pow
 Connect-AzAccount
 ```
 
-Melyik használt előfizetés megtekintéséhez futtassa [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Melyik használt előfizetés megtekintéséhez futtassa [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"

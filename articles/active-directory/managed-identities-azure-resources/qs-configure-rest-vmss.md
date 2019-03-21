@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d208cab8b39b777fea7809be418613f17751b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b35470daf8ef037a72516690c75980a6d07e8e29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097166"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuálisgép-méretezési csoportot a REST API-hívások
 
@@ -72,7 +72,7 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+3. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
 
    ```azurecli-interactive
    az account get-access-token
@@ -81,23 +81,23 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
 4. Hozzon létre egy virtuálisgép-méretezési csoportba a CURL használatával az Azure Resource Manager REST-végpont meghívására. Az alábbi példa létrehoz egy virtuálisgép-méretezési csoport nevű *myVMSS* a a *myResourceGroup* a rendszer által hozzárendelt felügyelt identitást, a kérelem törzsében szereplő értéke által meghatározott `"identity":{"type":"SystemAssigned"}`. Cserélje le `<ACCESS TOKEN>` értékkel az előző lépés során kapott egy tulajdonosi jogkivonatot kért és a `<SUBSCRIPTION ID>` válasszon a környezetének megfelelő értékét.
 
    ```bash   
-  curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-  ```
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-  **Kérelem fejlécei**
+   **Kérelem fejlécei**
 
-  |Kérelem fejléce  |Leírás  |
-  |---------|---------|
-  |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
-  |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
+   |Kérelem fejléce  |Leírás  |
+   |---------|---------|
+   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-  **Kérelem törzse**
+   **Kérelem törzse**
 
-  ```JSON
+   ```JSON
     {
        "sku":{
           "tier":"Standard",
@@ -158,7 +158,7 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
           }
        }
     }  
-  ```  
+   ```  
 
 ### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>Egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése
 
@@ -313,7 +313,7 @@ Egy rendszer által hozzárendelt identitással egy meglévő virtuálisgép-mé
 
    Egy virtuális gép méretezési csoportot, amelynek a felhasználó által hozzárendelt felügyelt identitások felügyelt identitás alapértelmezett eltávolításához távolítsa el `SystemAssigned` származó a `{"identity":{"type:" "}}` értéket, miközben megtartja a `UserAssigned` érték és a `userAssignedIdentities` szótár értékkel, használ **API-verzió a 2018-06-01**. Ha használ **API 2017-12-01-es verzió** vagy korábbi, hagyja a `identityIds` tömb.
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhasználó által hozzárendelt felügyelt identitás a CURL használatával az Azure Resource Manager REST-végponton való meghíváshoz virtuálisgép-méretezési csoportot.
 
@@ -331,7 +331,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
+3. Hozzáférés tulajdonosi jogkivonattal, amelyek alapján, az engedélyezési fejléc a következő lépésben hozzon létre egy felügyelt identitás rendszer által hozzárendelt virtuális gép méretezési lekéréséhez.
 
    ```azurecli-interactive
    az account get-access-token

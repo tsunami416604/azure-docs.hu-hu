@@ -8,19 +8,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fee8604bece0ae7249b0735f6952bfa35a4590fb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 81bf41dd183944a43d9558d0aec0c416d30620b2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202571"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Törölt Office 365-csoport visszaállítása az Azure Active Directoryban
+
 Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma szükség esetén visszaállítható legyen. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén.
 
 > [!NOTE]
@@ -30,22 +31,22 @@ A csoportok visszaállításához szükséges engedély az alábbiak bármelyike
 
 Szerepkör | Engedélyek
 --------- | ---------
-Vállalati rendszergazda, a Partner 2. rétegbeli támogatása és az Intune Szolgáltatásadminisztrátorai | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
-Felhasználói fiókok rendszergazdája és 1. szintű partnerek támogatása | Minden törölt Office 365-csoportot, kivéve azokat, a vállalati rendszergazda szerepkörrel is helyreállíthatja.
-Felhasználó | A korábban a tulajdonában álló törölt Office 365-csoportokat állíthatja vissza.
+Globális rendszergazda, a Partner 2. rétegbeli támogatása és az Intune-rendszergazda | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
+Felhasználói rendszergazda és a partnerek 1. rétegbeli támogatása | Minden törölt Office 365-csoportot, kivéve azokat, a vállalati rendszergazda szerepkörrel is helyreállíthatja.
+Felhasználó | Minden törölt Office 365-csoport saját is helyreállíthatja.
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Megtekintheti, és elérhető a visszaállítandó törölt Office 365-csoportok kezelése
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai fiókkal.
+1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai felhasználói fiókkal.
 
 2. Válassza ki **csoportok**, majd **törölt csoportok** elérhető visszaállítani a törölt csoportok megtekintése.
 
-    ![Törölt csoportok panel](media/groups-lifecycle/deleted-groups3.png)
+    ![Állítsa vissza a rendelkezésre álló csoportok megtekintése](media/groups-lifecycle/deleted-groups3.png)
 
 3. Az a **törölt csoportok** panelen is:
 
-  - Állítsa vissza a törölt csoportban és annak tartalma kiválasztásával **csoport visszaállítása**.
-  - Végleg eltávolítani a törölt csoportban kiválasztásával **véglegesen törli a**. Csoport végleges eltávolításához rendszergazdának kell lennie.
+   - Állítsa vissza a törölt csoportban és annak tartalma kiválasztásával **csoport visszaállítása**.
+   - Végleg eltávolítani a törölt csoportban kiválasztásával **véglegesen törli a**. Csoport végleges eltávolításához rendszergazdának kell lennie.
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Elérhető a Powershell segítségével történő visszaállításhoz törölt Office 365-csoportok megtekintése
 Az alábbi parancsmagokkal tekintheti meg a törölt csoportokat annak ellenőrzéséhez, hogy a kívánt csoport vagy csoportok végleges törlése nem történt-e még meg. A parancsmagok az [Azure AD PowerShell-modul](https://www.powershellgallery.com/packages/AzureAD/) részét képezik. A modullal kapcsolatban az [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0) ismertető cikkben tekinthet meg további információt.

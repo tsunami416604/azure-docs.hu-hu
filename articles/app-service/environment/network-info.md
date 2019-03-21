@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191598"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124133"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -43,7 +43,7 @@ Ha rendelkezik külső ASE környezetben, a nyilvános virtuális IP-cím is a v
 * A webes telepítése.
 * Távoli hibakeresés.
 
-![ILB ASE KÖRNYEZETBEN][2]
+![ILB ASE][2]
 
 Az ILB ASE rendelkezik, a cím az ilb-e a végpont HTTP-vagy Https, FTP/S, webes telepítési és távoli hibakeresés.
 
@@ -54,6 +54,7 @@ A szokásos alkalmazások hozzáférési portok a következők:
 |  HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
 |  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4020, 4022, 4024 |
+|  Webszolgáltatás üzembe helyezése | Felhasználó által konfigurálható | 8172 |
 
 Ez akkor igaz, ha Ön a külső ASE vagy ILB ASE környezetben. Ha Ön a külső ASE környezetben, ezeket a portokat a nyilvános VIP-címet a eléri. Ha Ön az ILB ASE, nyomja le az ILB meg ezeket a portokat. 443-as porton zárolását, ha a portálon elérhető egyes funkciók hatással lehet. További információkért lásd: [portál függőségek](#portaldep).
 
@@ -74,7 +75,7 @@ Az ASE bejövő hozzáférést függőségei vannak:
 
 | Használat | Ettől: | Művelet |
 |-----|------|----|
-| Kezelés | App Service felügyeleti címek | ASE alhálózat: a 454, 455 |
+| Kezelés | App Service management addresses | ASE alhálózat: 454, 455 |
 |  Belső ASE-kommunikáció | ASE alhálózat: Minden port | ASE alhálózat: Minden port
 |  Lehetővé teszi az Azure load balancer bejövő | Azure Load Balancer | ASE alhálózat: Minden port
 |  Az alkalmazás IP-címek | Alkalmazás-címek | ASE alhálózat: Minden port
@@ -95,7 +96,7 @@ A kimenő hozzáféréshez az ASE több külső rendszerek függ. Ezeket a rends
 
 Kimenő függőségek teljes listáját, amely leírja a dokumentumban felsorolt [App Service Environment-környezet kimenő forgalom meghatározott sémákra kelljen](./firewall-integration.md). Ha az ASE elveszítette a hozzáférését annak függőségeit, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve. 
 
-### <a name="customer-dns"></a>Ügyfél DNS ###
+### <a name="customer-dns"></a>Customer DNS ###
 
 Ha egy felhasználó által meghatározott DNS-kiszolgáló a virtuális hálózaton van beállítva, a bérlők munkaterheléseihez használhatja. Az ASE-t továbbra is az Azure DNS használata felügyeleti célokra közötti kommunikációhoz szükséges. 
 
@@ -133,9 +134,9 @@ Ha az ILB ASE tartománynév *contoso.net* és az alkalmazás neve *testapp*, az
 
 Funkciók és a webes feladatok az SCM helyet függ, de akkor is, ha alkalmazásait az ILB ASE, mindaddig, amíg a böngésző elérheti az SCM helyet a portál használata támogatott.  Ha önaláírt tanúsítványt használ az ILB ASE környezetnek, szüksége lesz ahhoz, hogy a böngészőben, hogy bízzon meg a tanúsítvány.  Az Internet Explorer és Microsoft Edge, amely azt jelenti, hogy a tanúsítvány nem megbízható számítógép tárolójában lehet.  Ha a Chrome böngészőt használ, akkor azt jelenti, hogy Ön elfogadta a tanúsítványt a böngészőben korábban elvileg lenyomásával közvetlenül az scm helyet.  A legjobb megoldás, ha szerepel a böngészője megbízhatósági láncának egyik kereskedelmi tanúsítványát használja.  
 
-## <a name="ase-ip-addresses"></a>ASE IP-címek ##
+## <a name="ase-ip-addresses"></a>ASE IP addresses ##
 
-Az ASE érdemes figyelembe vennie néhány IP-címmel rendelkezik. Ezek a következők:
+An ASE has a few IP addresses to be aware of. Ezek a következők:
 
 - **Nyilvános bejövő IP-cím**: Külső ASE app-forgalom és felügyeleti forgalom külső ASE környezetben és a egy ILB ASE környezetben is használható.
 - **Kimenő nyilvános IP-cím**: Használja a kimenő kapcsolatok számára az ASE-ről, amely a virtuális hálózathoz, hagyja le a VPN nem irányítja, amely a "feladó" IP-cím.
@@ -149,7 +150,7 @@ Ezen IP-címek az Azure Portalon az ASEv2 jól látható, az ASE felhasználói 
 
 ![IP-címek][3]
 
-### <a name="app-assigned-ip-addresses"></a>Alkalmazás által kiosztott IP-címek ###
+### <a name="app-assigned-ip-addresses"></a>App-assigned IP addresses ###
 
 Külső ASE környezetben, az IP-címeket rendelhet az egyes alkalmazások. ILB ASE környezetben, nem tudja megtenni. Az alkalmazás a saját IP-cím konfigurálása a további információkért lásd: [meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-](../app-service-web-tutorial-custom-ssl.md).
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985988"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899546"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónában belül a Standard Load Balancer az Azure portal használatával
 
@@ -41,7 +41,7 @@ Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zona
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>Nyilvános Standard Load Balancer-példány létrehozása
 
@@ -63,7 +63,7 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
     |Rendelkezésre állási zóna| Válassza az **1** lehetőséget.    |
 3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
 
- ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+   ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebben zónában (azaz az 1. zónában) lévő virtuális gépet is létrehoz hata régió számára, hogy hozzáadja a terheléselosztója háttérkészletéhez. Ezután a virtuális gépeken telepítheti az IIS-t a zónaredundáns terheléselosztó teszteléséhez. Ha az egyik virtuális gép meghiúsul, az azonos zónában lévő virtuális gép állapot-ellenőrzése is meghiúsul. A forgalmat továbbra is a zónában található más virtuális gépek szolgáltatják.
 
@@ -80,8 +80,8 @@ Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebbe
 
 1. A képernyő bal felső sarkában kattintson az **Erőforrás létrehozása** elemre. A keresőmezőbe írja be a **Network Security csoport** kifejezést. A hálózati biztonsági csoport oldalon válassza a **Létrehozás** elemet.
 2. A **Hálózati biztonsági csoport létrehozása** lapon adja meg a következő értékeket:
-    - A hálózati biztonsági csoport neve: **myNetworkSecurityGroup**.
-    - A létező erőforráscsoport neve: **myResourceGroupBAZ**.
+   - A hálózati biztonsági csoport neve: **myNetworkSecurityGroup**.
+   - A létező erőforráscsoport neve: **myResourceGroupBAZ**.
    
      ![Hálózati biztonsági csoport létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 

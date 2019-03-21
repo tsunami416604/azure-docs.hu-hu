@@ -1,6 +1,6 @@
 ---
-title: Dinamikus DNS segítségével hostnames regisztrálása az Azure-ban |} Microsoft Docs
-description: 'Útmutató: a dinamikus DNS állomásnevek regisztrálja a saját DNS-kiszolgálók beállítása.'
+title: Dinamikus DNS használata a gazdagépek regisztrálásához az Azure-ban |} A Microsoft Docs
+description: Ismerje meg, hogyan állíthatja be a dinamikus DNS-gazdagépek regisztrálásához a saját DNS-kiszolgálókat.
 services: dns
 documentationcenter: na
 author: subsarma
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: bbbce45b7c321fd4934374c76f2a4421b125d46f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994689"
 ---
-# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>A DNS dinamikus segítségével hostnames regisztrálni a saját DNS-kiszolgáló
+# <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgáló
 
-[Azure biztosít névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md) a virtuális gépeket (VM) és a szerepkörpéldányok. Ha a névfeloldás haladhatja meg az Azure alapértelmezett DNS által biztosított képességek, megadhatja a saját DNS-kiszolgálók. A saját DNS-kiszolgálókkal lehetőséget nyújt a saját igényeinek megfelelően a DNS-megoldást alakíthatja. Például szükség lehet keresztül férnek hozzá a helyszíni erőforrásokhoz az Active Directory-tartományvezérlőhöz.
+[Az Azure biztosít a névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md) (VM) virtuális gépek és szerepkörpéldányok. Ha a névfeloldás haladhatja meg az Azure alapértelmezett DNS által biztosított képességek, megadhatja a saját DNS-kiszolgálók. A saját DNS-kiszolgálók használatával teszi lehetővé, a DNS-megoldása, a saját igényeinek megfelelően. Például szükség lehet hozzáférni a helyszíni erőforrások elérése az Active Directory-tartományvezérlőhöz.
 
-Az egyéni DNS-kiszolgálók működtetnek, Azure virtuális gépeken, ha ugyanazt a virtuális hálózatot az állomásnév lekérdezések továbbíthatja az Azure állomásnevek megoldásához. Ha nem szeretné ezt a beállítást használja, a virtuális gép állomásnevek regisztrálhatja a DNS-kiszolgáló, a dinamikus DNS (DDNS) használatával. Azure nem rendelkezik közvetlenül bejegyzéseket létrehozni a DNS-kiszolgálók, így alternatív megoldások gyakran szükséges a hitelesítő adatokat. Hajtsa végre az olyan gyakori forgatókönyveket tartalmaz, lehetőségeket:
+Ha az egyéni DNS-kiszolgálókat az Azure virtuális gépként futnak, az Azure-bA a gazdanév feloldása is továbbíthatja, állomásnév lekérdezések ugyanahhoz a virtuális hálózathoz. Ha nem szeretné ezt a beállítást használja, a virtuális gép állomásnevek regisztrálhatja a DNS-kiszolgáló, a dinamikus DNS (DDNS) használatával. Az Azure nem rendelkezik közvetlenül hozzon létre rekordokat a DNS-kiszolgálók, így alternatív megoldások gyakran van szükség a hitelesítő adatokat. Néhány általános esetben, alternatívákkal hajtsa végre:
 
-## <a name="windows-clients"></a>Windows-ügyfelek
-A nem tartományhoz csatlakoztatott Windows-ügyfelek nem biztonságos DDNS frissítések történt kísérlet, ha indulnak, vagy ha megváltoztatja az IP-címet. A DNS-neve az állomásnév és az elsődleges DNS-utótag. Azure az elsődleges DNS-utótag üresen hagyja, de beállíthatja a virtuális gép utótag keresztül a [felhasználói felület](https://technet.microsoft.com/library/cc794784.aspx) vagy [PowerShell](/powershell/module/dnsclient/set-dnsclient).
+## <a name="windows-clients"></a>Windows ügyfelek
+A nem tartományhoz csatlakoztatott Windows-ügyfelek nem biztonságos DDNS frissítések próbálja meg, ha azok rendszerindító, vagy ha az IP-cím megváltozik. A DNS-név az állomásnév és az elsődleges DNS-utótag. Az Azure az elsődleges DNS-utótag üresen hagyja, de beállíthatja a virtuális gépen, az utótag-n keresztül a [felhasználói felület](https://technet.microsoft.com/library/cc794784.aspx) vagy [PowerShell](/powershell/module/dnsclient/set-dnsclient).
 
-A tartományhoz csatlakoztatott Windows-ügyfelek regisztrálja az IP-címét a tartományvezérlő biztonságos DDNS használatával. A tartományhoz való csatlakozást folyamat az ügyfél az elsődleges DNS-utótag be és hoz létre, és a megbízhatósági kapcsolatot tart fenn.
+Tartományhoz csatlakoztatott Windows-ügyfelek IP-címeket a tartományvezérlő biztonságos DDNS használatával regisztrálja. A tartományhoz való csatlakozás folyamat állítja be az elsődleges DNS-utótag az ügyfélen, és hoz létre és tart fenn a megbízhatósági kapcsolat.
 
 ## <a name="linux-clients"></a>Linux-ügyfelek
-Linux-ügyfelek általában nem regisztrálják magukat a DNS-kiszolgálóval a következő indításakor, akkor azt feltételezik, hogy a DHCP-kiszolgáló minderre. Azure DHCP-kiszolgálók a rekordokat a DNS-kiszolgáló regisztrálása a hitelesítő adatok nem rendelkeznek. Használhatja a nevű eszköz `nsupdate`, amely a Bind csomagban található, DDNS küldendő frissíti. Mivel a DDNS protokoll szabványosított, használhatja `nsupdate` még ha nem a kötés a DNS-kiszolgálón.
+Linux-ügyfelek általában nem regisztrálják magukat a DNS-kiszolgáló indításakor, elvégzi a DHCP-kiszolgáló azt feltételezik. Az Azure DHCP-kiszolgálók nem rendelkeznek a rekordokat a DNS-kiszolgáló regisztrálása a hitelesítő adatokat. Egy nevű eszközzel `nsupdate`, amely tartalmazza a kötés csomagban, DDNS-t küldeni a frissítések. Mivel a DDNS protokoll szabványosított, használhatja `nsupdate` még ha nem használ kötési a DNS-kiszolgálón.
 
-A hurkok hozhatja létre és kezelheti a gazdagépnév-bejegyzés, a DNS-kiszolgáló a DHCP-ügyfél által biztosított is használhatja. A DHCP ciklus során az ügyfél végrehajtja a parancsfájlok */etc/dhcp/dhclient-exit-hooks.d/*. A hurkok használatával regisztráljon az új IP cím `nsupdate`. Példa:
+A hurkok a hostname-bejegyzést a DNS-kiszolgáló létrehozásához és kezeléséhez a DHCP-ügyfél által biztosított is használhatja. A DHCP ciklus során az ügyfél a parancsfájlok végrehajtása */etc/dhcp/dhclient-exit-hooks.d/*. A hurkok használatával regisztrálja az új IP cím használatával `nsupdate`. Példa:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Használhatja a `nsupdate` biztonságos DDNS végrehajtandó parancs frissíti. Például egy kötés DNS-kiszolgálót használ, egy nyilvános-titkos kulcsból álló kulcspárt esetén [generált](http://linux.yyz.us/nsupdate/). A DNS-kiszolgáló [konfigurált](http://linux.yyz.us/dns/ddns-server.html) a nyilvános kulcs része, és úgy, hogy az informatikai ellenőrizheti a kérelmek aláírása. Arra, hogy-kulcspár `nsupdate`, használja a `-k` beállítást, a DDNS frissítés kérelem kell aláírni.
+Is használhatja a `nsupdate` biztonságos DDNS végrehajtásához parancs frissíti. Például amikor egy kötés DNS-kiszolgálót használ, egy nyilvános-titkos kulcspárt, [generált](http://linux.yyz.us/nsupdate/). A DNS-kiszolgáló [konfigurált](http://linux.yyz.us/dns/ddns-server.html) a nyilvános kulcs része, és úgy, hogy az informatikai ellenőrizheti a kérelem aláírása. Adja meg a-kulcspárt a `nsupdate`, használja a `-k` beállítás, a DDNS frissítés csak az aláírt kérelmek.
 
-Windows DNS-kiszolgáló használata, ha a Kerberos-hitelesítést használhatja a `-g` paraméterének `nsupdate`, de nem érhető el a Windows-verzión `nsupdate`. Kerberos használatához `kinit` tölthető be a hitelesítő adatokat. A hitelesítő adatok betöltése for example, egy [keytab fájl](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), majd `nsupdate -g` szerzi be a hitelesítő adatokat, a gyorsítótárból.
+Windows DNS-kiszolgálót használ, ha a Kerberos-hitelesítést is használhatja a `-g` paraméter `nsupdate`, azonban nem érhető el a Windows verziójában `nsupdate`. A Kerberos használatához `kinit` betölteni a hitelesítő adatokat. A hitelesítő adatok betöltése for example, egy [kulcstábla használatát fájl](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), majd `nsupdate -g` szerzi be a hitelesítő adatokat a gyorsítótárból.
 
-Ha szükséges, hozzáadhat egy DNS-keresési utótagot a virtuális gépek. A DNS-utótag van megadva a */etc/resolv.conf* fájlt. A legtöbb Linux disztribúciókkal automatikusan kezeli a tartalmát a fájl, ezért általában nem szerkeszthető. Azonban a DHCP-ügyfél segítségével felülírhatja az utótag `supersede` parancsot. Bírálja felül az utótagot, vegye fel a következő sort a */etc/dhcp/dhclient.conf* fájlt:
+Ha szükséges, a virtuális gépek is hozzáadhat egy DNS-keresési utótagot. A DNS-utótag van megadva a */etc/resolv.conf* fájlt. A legtöbb Linux-disztribúciók automatikusan kezelheti a tartalmakat a fájl, ezért általában nem szerkeszthető. Azonban a DHCP-ügyfél használatával felülírhatja az utótag `supersede` parancsot. Bírálja felül az utótagot, adja hozzá a következő sort a */etc/dhcp/dhclient.conf* fájlt:
 
 ```
 supersede domain-name <required-dns-suffix>;

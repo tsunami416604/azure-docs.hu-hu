@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079997"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Oktatóanyag: Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése a Logic Apps használatával
 
@@ -162,14 +162,14 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
    ![Új esemény-előfizetés létrehozása](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
-    * **Esemény típusa**: Törölje a jelet az előfizetés az összes eseménytípusra, és válassza ki **létre az eszköz** a menüből.
-    * **Végpont részletei**: Válassza ki a végpont típusa szerint **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
+   * **Esemény típusa**: Törölje a jelet az előfizetés az összes eseménytípusra, és válassza ki **létre az eszköz** a menüből.
+   * **Végpont részletei**: Válassza ki a végpont típusa szerint **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
 
-    ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
+     ![végpont url-jének kiválasztása](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **Esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid-séma**
+   * **Esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid-séma**
 
-  Amikor elkészült, az űrlapnak az alábbi példához hasonlóan kell kinéznie: 
+   Amikor elkészült, az űrlapnak az alábbi példához hasonlóan kell kinéznie: 
 
     ![Esemény-előfizetési űrlapminta](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
@@ -177,8 +177,8 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
 6. Hozza létre a következő szűrőket:
 
-  * **Tulajdonos kezdődik**: Adja meg `devices/Building1_` . épület 1 eszköz események szűréséhez.
-  * **Tulajdonos végződik**: Adja meg `_Temperature` hőmérséklet kapcsolódó eszköz-események szűréséhez.
+   * **Tulajdonos kezdődik**: Adja meg `devices/Building1_` . épület 1 eszköz események szűréséhez.
+   * **Tulajdonos végződik**: Adja meg `_Temperature` hőmérséklet kapcsolódó eszköz-események szűréséhez.
 
 5. Kattintson a **Létrehozás** gombra az esemény-előfizetés mentéséhez.
 

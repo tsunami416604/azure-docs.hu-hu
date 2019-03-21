@@ -1,5 +1,5 @@
 ---
-title: 'Több VPN-átjáró helyek közötti kapcsolat hozzáadása virtuális hálózathoz: Azure Portal: erőforrás-kezelő |} A Microsoft Docs'
+title: 'Adja hozzá a VPN-átjáró több helyek közötti kapcsolatok egy virtuális hálózathoz: Azure Portal: Resource Manager| Microsoft Docs'
 description: Többhelyes S2S kapcsolat hozzáadása VPN-átjáró, amely rendelkezik egy meglévő kapcsolat
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: a814834be3225764c3b6f237bd515ca087f975a7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873121"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998832"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása virtuális hálózathoz meglévő VPN gateway-kapcsolattal
 
@@ -52,7 +52,7 @@ Ellenőrizze a következő elemeket:
 * Egy kifelé irányuló, nyilvános IP-cím a VPN-eszköz tartozik. Ez az IP-cím nem lehet NAT mögötti.
 
 ## <a name="part1"></a>1. rész – a kapcsolat konfigurálása
-1. Egy böngészőből keresse fel az [Azure portált](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
+1. Egy böngészőből keresse fel az [Azure portált](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával, ha szükséges.
 2. Kattintson a **összes erőforrás** , és keresse meg a **virtuális hálózati átjáró** az erőforrások listájából, és kattintson rá.
 3. Az a **virtuális hálózati átjáró** kattintson **kapcsolatok**.
    
@@ -62,8 +62,8 @@ Ellenőrizze a következő elemeket:
     ![Hozzáadás kapcsolat gomb](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Hozzáadás kapcsolat gomb")<br>
 5. Az a **kapcsolat hozzáadása** lap, adja meg a következő mezőket:
    
-   * **Name:** kíván adni a helynek a neve hoz létre a kapcsolatot.
-   * **Kapcsolat típusa:** kiválasztása **Site-to-site (IPsec)**.
+   * **név:** A kapcsolat létrehozásakor a helyhez hozzárendelni kívánt nevét.
+   * **Kapcsolat típusa:** Válassza ki **Site-to-site (IPsec)**.
      
      ![Hozzáadás kapcsolódási oldalán](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "hozzáadása kapcsolat lap")<br>
 
@@ -76,9 +76,9 @@ Ellenőrizze a következő elemeket:
     ![Létrehozás helyi hálózati átjáró oldalának](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "helyi hálózati átjáró létrehozása")<br>
 3. Az a **helyi hálózati átjáró létrehozása** lap, adja meg a következő mezőket:
    
-   * **Name:** kíván adni a helyi hálózati átjáró erőforrás nevét.
-   * **IP-cím:** a helyet, amelyhez csatlakozni szeretne a VPN-eszköz nyilvános IP-címét.
-   * **Címtér:** lesznek irányítva az új helyi hálózati telephely kívánt címtér.
+   * **név:** Kíván adni a helyi hálózati átjáró erőforrás neve.
+   * **IP-cím:** A helyet, amelyhez csatlakozni szeretne a VPN-eszköz nyilvános IP-címét.
+   * **Címtér:** A címtér lesznek irányítva az új helyi hálózati telephely kívánt.
 4. Kattintson a **OK** a a **helyi hálózati átjáró létrehozása** lapon a módosítások mentéséhez.
 
 ## <a name="part3"></a>3. rész – adja meg a megosztott kulcsot, és a kapcsolat létrehozása

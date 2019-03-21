@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7523eef4e3dc25929616f1d151ab22841db13993
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781986"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: A Palo Alto hálózatok függő Portal Azure Active Directory-integráció
 
@@ -105,12 +105,12 @@ Első lépésként engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Palo Alto hálózatok függő portál alapszintű SAML-konfigurációja panel](common/idp-intiated.png)
 
-    1. A **azonosító**, adja meg a következő mintának `https://<customer_firewall_host_name>/SAML20/SP`.
+   1. A **azonosító**, adja meg a következő mintának `https://<customer_firewall_host_name>/SAML20/SP`.
 
-    2. A **válasz URL-cím**, adja meg a következő mintának `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
+   2. A **válasz URL-cím**, adja meg a következő mintának `https://<customer_firewall_host_name>/SAML20/SP/ACS`.
 
-    > [!NOTE]
-    > Frissítse a helyőrző értékeket az ebben a lépésben a tényleges azonosítóval, és a válasz URL. A tényleges értékek beszerzéséhez forduljon [Palo Alto hálózatok függő portál ügyfél-támogatási csapatának](https://support.paloaltonetworks.com/support).
+      > [!NOTE]
+      > Frissítse a helyőrző értékeket az ebben a lépésben a tényleges azonosítóval, és a válasz URL. A tényleges értékek beszerzéséhez forduljon [Palo Alto hálózatok függő portál ügyfél-támogatási csapatának](https://support.paloaltonetworks.com/support).
 
 5. Az a **SAML-aláíró tanúsítvány** részben, a **összevonási metaadatainak XML**válassza **letöltése**. Mentse a letöltött fájlt a számítógépen.
 
@@ -158,7 +158,7 @@ Ezután hozzon létre egy tesztfelhasználót nevű *Britta Simon* az Azure Port
 
     1. A **neve**, adja meg **BrittaSimon**.
   
-    2. A **felhasználónév**, adja meg **BrittaSimon @\<your_company_domain\>**. Például: **BrittaSimon@contoso.com**.
+    2. A **felhasználónév**, adja meg **BrittaSimon\@\<your_company_domain\>**. Ha például **BrittaSimon\@contoso.com**.
 
     3. A **jelszó**, adjon meg egy jelszót. Azt javasoljuk, hogy Ön tárolja a megadott jelszó. Kiválaszthatja a **jelszó megjelenítése** melletti jelölőnégyzetet, hogy a jelszó megjelenítéséhez.
 
