@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768912"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105284"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -289,13 +289,13 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 
 > [!IMPORTANT]
 >  Vegye figyelembe, hogy az üzenet használatakor alapértelmezés szerint törzs használatával `context.Request.Body` vagy `context.Response.Body`, az eredeti üzenet törzsének elvész, és állítsa vissza a következő kifejezést a szervezetnek felismerésével. A szervezet tartalom megőrzésére, állítsa be a `preserveContent` paramétert `true` az üzenet elérésekor. Ha `preserveContent` értékre van állítva `true` és a egy másik szervezet által visszaadott a kifejezést, a visszaadott törzse lesz.
->
+> 
 >  Használata esetén vegye figyelembe az alábbiakat a `set-body` házirend.
->
->  -   Ha használja a `set-body` vissza egy új vagy frissített törzse nem kell beállítani a házirend `preserveContent` való `true` mivel kifejezetten megadja az új törzsének tartalmát.
-> -   Megőrzi a bejövő folyamat válasz tartalma nem értelme, mert nem érkezik válasz, még.
-> -   Megőrzi a kimenő folyamat kérelem tartalma nem értelme, mert a kérelem már küldte a háttérrendszer ezen a ponton.
-> -   Ha ezt a szabályzatot használja, amikor nincs üzenet szövegét, például egy bejövő GET, a függvény kivételt vált ki.
+> 
+> - Ha használja a `set-body` vissza egy új vagy frissített törzse nem kell beállítani a házirend `preserveContent` való `true` mivel kifejezetten megadja az új törzsének tartalmát.
+>   -   Megőrzi a bejövő folyamat válasz tartalma nem értelme, mert nem érkezik válasz, még.
+>   -   Megőrzi a kimenő folyamat kérelem tartalma nem értelme, mert a kérelem már küldte a háttérrendszer ezen a ponton.
+>   -   Ha ezt a szabályzatot használja, amikor nincs üzenet szövegét, például egy bejövő GET, a függvény kivételt vált ki.
 
  További információkért lásd: a `context.Request.Body`, `context.Response.Body`, és a `IMessage` szakaszát a [környezeti változó](api-management-policy-expressions.md#ContextVariables) tábla.
 
@@ -586,11 +586,11 @@ OriginalUrl.
 ##  <a name="RewriteURL"></a> URL-cím újraírása
  A `rewrite-uri` házirend alakítja át a kérelem URL-CÍMÉT a nyilvános űrlap az űrlap a webszolgáltatás által várt a következő példában látható módon.
 
--   Nyilvános URL- `http://api.example.com/storenumber/ordernumber`
+- Nyilvános URL- `http://api.example.com/storenumber/ordernumber`
 
--   Kérelem URL- `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- Kérelem URL- `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
- Ez a szabályzat is használható, ha egy emberi és/vagy böngészőt mobilbarát URL-címet kell lesz átalakítva a webszolgáltatás által várt URL-cím formátumra alakítja. Ez a szabályzat csak akkor érvényesíthetők, ha egy másik URL-cím formátumban, például tiszta URL-címek, REST-alapú URL-címek, felhasználóbarát URL-címek vagy tisztán szerkezeti URL-címek, amely nem tartalmazza a lekérdezési karakterlánc, és inkább csak az elérési útját az erőforrás (SEO-barát URL-címeket is közzéteheti a van szüksége Miután a rendszer és a szolgáltató). Ez gyakran történik esztétikai, használhatóságát és keresőmotor-optimalizálás (SEO) céljából.
+  Ez a szabályzat is használható, ha egy emberi és/vagy böngészőt mobilbarát URL-címet kell lesz átalakítva a webszolgáltatás által várt URL-cím formátumra alakítja. Ez a szabályzat csak akkor érvényesíthetők, ha egy másik URL-cím formátumban, például tiszta URL-címek, REST-alapú URL-címek, felhasználóbarát URL-címek vagy tisztán szerkezeti URL-címek, amely nem tartalmazza a lekérdezési karakterlánc, és inkább csak az elérési útját az erőforrás (SEO-barát URL-címeket is közzéteheti a van szüksége Miután a rendszer és a szolgáltató). Ez gyakran történik esztétikai, használhatóságát és keresőmotor-optimalizálás (SEO) céljából.
 
 > [!NOTE]
 >  Csak a lekérdezési karakterlánc paraméterei a csoportházirend használatával adhat hozzá. URL-újraírási nem adhat hozzá további sablon elérési út paramétereihez.

@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 927781c61a9ca2a1ef23db47294468dad7140dff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885351"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225433"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
 
 Beszédszolgáltatások különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
 
-## <a name="speech-to-text"></a>Speech-to-text
+## <a name="speech-to-text"></a>Diktálás
 
 A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egyes nyelvekhez testreszabás szinteken érhetők el.
 
@@ -76,13 +76,18 @@ Győződjön meg arról, látás- és a virtuális asszisztensek interakció ter
 Neurális beszédhangot és a régiónkénti rendelkezésre állás teljes listáját lásd: [régiók](regions.md#neural-voices).
 
 | Területi beállítás | Nyelv | Nem | A felhasználónév-leképezés|
-|--------|----------|---------|--------------------|
+|--------|----------|--------|---------------------|
+| de-DE | német (Németország) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (de-DE, KatjaNeural)" |
 | en-US | Angol (Egyesült Államok) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (en-US, GuyNeural)" |
 | en-US | Angol (Egyesült Államok) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, JessaNeural)" |
+| it-IT | olasz (Olaszország) | Nő | "A Microsoft Server beszéd szöveg Speech Voice (it-IT, ElsaNeural)" |
 | zh-CN | kínai | Nő | "A Microsoft Server beszéd szöveg Speech Voice (zh-CN, XiaoxiaoNeural)" |
 
 > [!IMPORTANT]
 > A Microsoft Server hang-szöveg Speech szövegfelolvasás (zh-CN, XiaoxiaoNeural) csak a Délkelet-Ázsia végponton keresztül érhető el: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
+
+> [!IMPORTANT]
+> A Microsoft Server hang-szöveg Speech szövegfelolvasás (de-DE, KatjaNeural) és a Microsoft Server hang-szöveg Speech szövegfelolvasás (it-IT, ElsaNeural) csak keresztül érhető el a Nyugat-Európa-végpont: https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standard beszédhangot
 
@@ -181,7 +186,7 @@ Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), fr
 > [!NOTE]
 > Francia, német és olasz hangalapú képzési egy be, mint 2000 utterances kezdődik. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
 
-## <a name="speech-translation"></a>Tolmácsolás
+## <a name="speech-translation"></a>Beszédfordítás
 
 A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig a hang-szöveg transzformációs nyelvi táblából kell származnia. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget. Bejövő speech be, előfordulhat, hogy fordítása több mint [60 nyelvet](https://www.microsoft.com/translator/business/languages/). Ezek egy részét érhetők el a [beszédszintézishez](language-support.md#text-languages).
 

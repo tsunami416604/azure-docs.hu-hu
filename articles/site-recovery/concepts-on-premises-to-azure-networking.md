@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108848"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Az IP-címkezelés Azure virtuális géphez való kapcsolódásra a feladatátvételt követően
 
@@ -49,8 +49,8 @@ Lássunk erre egy példát feladatátvételi az Azure-ban egy fiktív vállalat,
 - A Woodgrove Bank futtat egy helyszíni hely üzleti alkalmazások. Az Azure-ban a mobilalkalmazások üzemeltetheti azokat.
 - Nincs VPN hely – hely kapcsolat a helyszíni peremhálózati hálózat és az Azure virtuális hálózat között. A VPN-kapcsolat miatt a virtuális hálózat az Azure-ban a helyszíni hálózat kiterjesztése jelenik meg.
 - A Woodgrove szeretné az Azure-bA a Site Recovery a helyszíni számítási feladatok replikálására.
- - A Woodgrove rendelkezik változtatható IP-címek, így azok kell megőrizni az alkalmazásokat, IP-címek az Azure-bA a feladatátvételt követően függő alkalmazásokat.
- - Az Azure-ban futó erőforrásokat használja az IP cím tartományt 172.16.1.0/24 172.16.2.0/24.
+  - A Woodgrove rendelkezik változtatható IP-címek, így azok kell megőrizni az alkalmazásokat, IP-címek az Azure-bA a feladatátvételt követően függő alkalmazásokat.
+  - Az Azure-ban futó erőforrásokat használja az IP cím tartományt 172.16.1.0/24 172.16.2.0/24.
 
 ![Alhálózat a feladatátvétel előtt](./media/site-recovery-network-design/network-design7.png)
 

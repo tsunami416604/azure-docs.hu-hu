@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075a50802a05a9b8254ff6ab1e0a38f43baca970
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105624"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
 
@@ -48,7 +48,7 @@ A bérlőn belüli összes alkalmazás megjelenítéséhez kell használnia a **
 
 Ha a szűrt **minden alkalmazás**, a **minden alkalmazás** **lista** jeleníti meg minden szolgáltatásnév-objektumot a bérlőben. Egyszerű szolgáltatási objektumok ebben a listában, a különböző módon jelenhetnek meg:
 
-1.  Bármely alkalmazás hozzáadása az alkalmazáskatalógusból, ha többek között:
+1. Bármely alkalmazás hozzáadása az alkalmazáskatalógusból, ha többek között:
 
    1. **Az Azure AD-katalógusban alkalmazások** –, az egyszeri bejelentkezés az Azure ad-vel előre integrált alkalmazás
 
@@ -58,21 +58,21 @@ Ha a szűrt **minden alkalmazás**, a **minden alkalmazás** **lista** jeleníti
 
    4. **Katalógusban nem szereplő alkalmazások** – saját alkalmazások importálása! Összes webes hivatkozás szeretne, vagy egy felhasználónév és jelszó mezőt megjelenítő alkalmazás támogatja az SAML- vagy OpenID Connect protokollok, vagy az egyszeri bejelentkezés az Azure ad-vel integrálni kívánt SCIM támogatja.
 
-2.  Ha regisztrál a, vagy egy 3-ra bejelentkezés<sup>távoli asztali</sup> gyártótól származó alkalmazás az Azure Active Directoryval integrált. Ez egy [Smartsheet](https://app.smartsheet.com/b/home) vagy [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
+2. Ha regisztrál a, vagy egy 3-ra bejelentkezés<sup>távoli asztali</sup> gyártótól származó alkalmazás az Azure Active Directoryval integrált. Ez egy [Smartsheet](https://app.smartsheet.com/b/home) vagy [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Amikor a regisztrációt, vagy licencet ad hozzá egy felhasználó vagy csoport első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
+3. Amikor a regisztrációt, vagy licencet ad hozzá egy felhasználó vagy csoport első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
 
-4.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [alkalmazás beállításjegyzékében](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
+4. Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [alkalmazás beállításjegyzékében](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
+5. Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6.  Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6. Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
-7.  Amikor hoz létre egy szolgáltatás rendszerbiztonsági tag típusú objektumot használ a [Azure AD PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Amikor hoz létre egy szolgáltatás rendszerbiztonsági tag típusú objektumot használ a [Azure AD PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Ha Ön [járul hozzá az alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben rendszergazdaként
+8. Ha Ön [járul hozzá az alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben rendszergazdaként
 
-9.  Ha egy [felhasználó jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben
+9. Ha egy [felhasználó jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) adatok használata a bérlőben
 
 10. Amikor engedélyezi bizonyos szolgáltatásokat, amelyek adatokat tárolnak a bérlőben. Ez egy jelszó-visszaállítás, amely szerint egy egyszerű szolgáltatást a jelszó tárolásához új kérésére vonatkozó szabályzat van modellezve biztonságosan.
 
@@ -90,21 +90,21 @@ Egy felhasználó vagy csoport-hozzárendelés alkalmazáshoz való eltávolít�
 
 A **törölhető az alkalmazás**, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki a törölni kívánt alkalmazást.
+6. Válassza ki a törölni kívánt alkalmazást.
 
-7.  Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
+7. Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
 

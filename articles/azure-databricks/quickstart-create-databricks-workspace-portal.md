@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1e0e5deea8602b3da16074155e69c952227b8609
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117676"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Gyors útmutató: Spark-feladatok futtatása Azure databricksen az Azure portal használatával
 
@@ -74,11 +74,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
-    * Adjon egy nevet a fürtnek.
-    * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
-    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Adjon egy nevet a fürtnek.
+   * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
+   * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
-    Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 További információt a fürtök létrehozásáról a [Spark-fürtök az Azure Databricks használatával történő létrehozását](https://docs.azuredatabricks.net/user-guide/clusters/create.html) ismertető szakaszban talál.
 
@@ -89,12 +89,12 @@ Töltsön le egy JSON-mintaadatfájlt, és mentse az Azure Blob Storage-ban.
 1. Töltse le a JSON [a Githubról](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) a helyi számítógépére. Kattintson a jobb gombbal, és a Mentés másként paranccsal mentse a fájlt helyileg.
 
 2. Ha még nem rendelkezik tárfiókkal, akkor hozzon létre egyet.
-    - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.
-    - Adjon meg egy egyedi nevet a tárfióknak.
-    - Válassza ki **fióktípus**: **Blob Storage**
-    - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
+   - Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. Válassza ki a **Tároló** kategóriát, majd a **Tárfiókok** lehetőséget.
+   - Adjon meg egy egyedi nevet a tárfióknak.
+   - Válassza ki **fióktípus**: **Blob Storage**
+   - Adja meg az **Erőforráscsoport** nevét. Használja ugyanazt az erőforráscsoportot, mint amelyben a Databricks-munkaterületet létrehozta.
     
-    További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.
+     További információkért lásd az [Azure Blob Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 
 3. Hozzon létre egy tárolót a Blob Storage-fiókban, és töltse fel a JSON-mintafájlt a tárolóba. A fájlfeltöltéshez használhatja az Azure Portalt vagy a [Microsoft Azure Storage Explorert](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
@@ -130,21 +130,21 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
     A következő kódtöredékben cserélje le a `{YOUR CONTAINER NAME}`, `{YOUR STORAGE ACCOUNT NAME}` és `{YOUR STORAGE ACCOUNT ACCESS KEY}` értékeket az Azure Storage-fiókjának megfelelő értékekre. Illessze be a kódtöredéket a notebook egyik üres cellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot a kódcella futtatásához.
 
-    * **A tárfiók csatlakoztatása DBFS-szel (ajánlott)**. Ebben a kódtöredékben az Azure Storage-fiók útvonala a következőhöz van csatlakoztatva: `/mnt/mypath`. Így a jövőben az Azure Storage-fiók hozzáférésekor nem kell megadnia a teljes útvonalat. Egyszerűen használhatja a következőt: `/mnt/mypath`.
+   * **A tárfiók csatlakoztatása DBFS-szel (ajánlott)**. Ebben a kódtöredékben az Azure Storage-fiók útvonala a következőhöz van csatlakoztatva: `/mnt/mypath`. Így a jövőben az Azure Storage-fiók hozzáférésekor nem kell megadnia a teljes útvonalat. Egyszerűen használhatja a következőt: `/mnt/mypath`.
 
-          dbutils.fs.mount(
-            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
-            mountPoint = "/mnt/mypath",
-            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+         dbutils.fs.mount(
+           source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+           mountPoint = "/mnt/mypath",
+           extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
 
-    * **A tárfiók közvetlen hozzáférése**
+   * **A tárfiók közvetlen hozzáférése**
 
-          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+         spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    A tárfiók elérési kulcsának lekérésével kapcsolatos útmutatásért olvassa el [a tárelérési kulcsok kezelését](../storage/common/storage-account-manage.md#access-keys) ismertető cikket.
+     A tárfiók elérési kulcsának lekérésével kapcsolatos útmutatásért olvassa el [a tárelérési kulcsok kezelését](../storage/common/storage-account-manage.md#access-keys) ismertető cikket.
 
-    > [!NOTE]
-    > Olyan Spark-fürtöt is létrehozhat, amely az Azure Data Lake Store-t használja az Azure Databricksszel. Útmutatásért lásd [a Data Lake Store és az Azure Databricks együttes használatát](https://go.microsoft.com/fwlink/?linkid=864084) ismertető cikket.
+     > [!NOTE]
+     > Olyan Spark-fürtöt is létrehozhat, amely az Azure Data Lake Store-t használja az Azure Databricksszel. Útmutatásért lásd [a Data Lake Store és az Azure Databricks együttes használatát](https://go.microsoft.com/fwlink/?linkid=864084) ismertető cikket.
 
 4. SQL-utasítás futtatásával hozzon létre egy ideiglenes táblát a JSON-mintaadatfájl, a **small_radio_json.json** adataiból. Az alábbi kódtöredékben cserélje le a helyőrzőket a tároló és a tárfiók nevére. Illessze be a kódtöredéket a notebook egyik kódcellájába, majd nyomja le a SHIFT + ENTER billentyűparancsot. A kódtöredék `path` eleme jelöli annak a JSON-mintafájlnak a helyét, amelyet korábban feltöltött Azure Storage-fiókjába.
 
@@ -183,12 +183,12 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
     ![Oszlopdiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Oszlopdiagram testreszabása")
 
-    * A **Kulcsok** mezőben adja meg a **gender** értéket.
-    * Az **Adatsorozat-csoportok** mezőben adja meg a **level** értéket.
-    * Az **Értékek** mezőben adja meg a **level** értéket.
-    * Az **Összesítés** mezőben adja meg a **COUNT** értéket.
+   * A **Kulcsok** mezőben adja meg a **gender** értéket.
+   * Az **Adatsorozat-csoportok** mezőben adja meg a **level** értéket.
+   * Az **Értékek** mezőben adja meg a **level** értéket.
+   * Az **Összesítés** mezőben adja meg a **COUNT** értéket.
 
-    Kattintson az **Alkalmaz** gombra.
+     Kattintson az **Alkalmaz** gombra.
 
 9. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 

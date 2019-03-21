@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: 1e8e9365567c19400b86dc60d966eb965b83591d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281751"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110817"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Fájlok visszaállítása Windows az Azure Resource Manager-alapú üzemi modell használatával
 
@@ -51,11 +51,11 @@ Ha véletlenül törölte a fájlt, és visszaállítja azt (, amelyről a bizto
 4. Az a **helyreállítási mód kiválasztása** lapon a **egyes fájlok és mappák** > **tovább**.
 
     ![Képernyőkép a helyreállítás adatok varázsló helyreállítási mód kiválasztása lap](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
-  > [!IMPORTANT]
-  > Az egyes fájlok és mappák visszaállítása beállítást igényel a .NET-keretrendszer 4.5.2-es vagy újabb. Ha nem látja a **egyes fájlok és mappák** lehetőséget, frissítenie kell .NET-keretrendszer 4.5.2-es vagy újabb, illetve, és próbálkozzon újra.
+   > [!IMPORTANT]
+   > Az egyes fájlok és mappák visszaállítása beállítást igényel a .NET-keretrendszer 4.5.2-es vagy újabb. Ha nem látja a **egyes fájlok és mappák** lehetőséget, frissítenie kell .NET-keretrendszer 4.5.2-es vagy újabb, illetve, és próbálkozzon újra.
 
-  > [!TIP]
-  > A **egyes fájlok és mappák** beállítás lehetővé teszi a helyreállítási pont adataiban gyors eléréséhez. Ideális választás az egyes fájlok helyreállításához összesen nem lehet hosszabb 80 GB méretű, és átvitel kínál, vagy a példány legfeljebb 6 MB/s lerövidíti a helyreállítás során. A **kötet** beállítást egy adott kötet összes biztonsági másolatok állítja helyre. Ezt a beállítást biztosít gyorsabb átviteli sebessége (akár 60 MB/s), amely ideális a nagy méretű adatok vagy a teljes kötet visszaállítása.
+   > [!TIP]
+   > A **egyes fájlok és mappák** beállítás lehetővé teszi a helyreállítási pont adataiban gyors eléréséhez. Ideális választás az egyes fájlok helyreállításához összesen nem lehet hosszabb 80 GB méretű, és átvitel kínál, vagy a példány legfeljebb 6 MB/s lerövidíti a helyreállítás során. A **kötet** beállítást egy adott kötet összes biztonsági másolatok állítja helyre. Ezt a beállítást biztosít gyorsabb átviteli sebessége (akár 60 MB/s), amely ideális a nagy méretű adatok vagy a teljes kötet visszaállítása.
 
 5. Az a **kötet és dátum kiválasztása** lapra, jelölje be a fájlok és a visszaállítani kívánt mappákat tartalmazó kötetet.
 

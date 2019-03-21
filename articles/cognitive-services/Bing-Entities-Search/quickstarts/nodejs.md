@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: eff9375919fa946bc74fa6db15cddbebff348717
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104369"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API a Node.js használata
 
@@ -87,24 +87,24 @@ Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú 
 
 1. Hozzon létre egy függvényt, nevű `Search` egy keresési kérelmet küldeni. Hajtsa végre az alábbi lépéseket.
 
-    1. A kérelem paramétereit tartalmazó JSON-objektum létrehozása: használata `Get` módban, és adja hozzá a gazdagépet és az elérési út adatait. Az előfizetési kulcs hozzáadása a `Ocp-Apim-Subscription-Key` fejléc. 
-    2. Használat `https.request()` a korábban létrehozott válasz kezelő és a keresési paraméterek a kérelem elküldéséhez.
+   1. A kérelem paramétereit tartalmazó JSON-objektum létrehozása: használata `Get` módban, és adja hozzá a gazdagépet és az elérési út adatait. Az előfizetési kulcs hozzáadása a `Ocp-Apim-Subscription-Key` fejléc. 
+   2. Használat `https.request()` a korábban létrehozott válasz kezelő és a keresési paraméterek a kérelem elküldéséhez.
     
-    ```javascript
-    let Search = function () {
-        let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + query,
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
+      ```javascript
+      let Search = function () {
+       let request_params = {
+           method : 'GET',
+           hostname : host,
+           path : path + query,
+           headers : {
+               'Ocp-Apim-Subscription-Key' : subscriptionKey,
+           }
+       };
     
-        let req = https.request (request_params, response_handler);
-        req.end ();
-    }
-    ```
+       let req = https.request (request_params, response_handler);
+       req.end ();
+      }
+      ```
 
 2. Hívja a `Search()` függvény.
 

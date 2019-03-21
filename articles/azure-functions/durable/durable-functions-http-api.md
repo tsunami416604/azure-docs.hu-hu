@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215405"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137708"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -44,13 +44,13 @@ A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-e
 
 Ezek a függvények példa elő a következő JSON-adatokat. Az összes mező adattípusa `string`.
 
-| Mező             |Leírás                           |
-|-------------------|--------------------------------------|
-| id                |Az orchestration-példány azonosítója. |
-| statusQueryGetUri |Az orchestration-példány állapota URL-címe |
-| sendEventPostUri  |A vezénylési példány "raise esemény" URL-címe |
-| terminatePostUri  |A "le" példány URL-címét a vezénylési. |
-| rewindPostUri     |A vezénylési példány "visszatekerés" URL-címe |
+| Mező                   |Leírás                           |
+|-------------------------|--------------------------------------|
+| **`id`**                |Az orchestration-példány azonosítója. |
+| **`statusQueryGetUri`** |Az orchestration-példány állapota URL-címe |
+| **`sendEventPostUri`**  |A vezénylési példány "raise esemény" URL-címe |
+| **`terminatePostUri`**  |A "le" példány URL-címét a vezénylési. |
+| **`rewindPostUri`**     |A vezénylési példány "visszatekerés" URL-címe |
 
 Íme egy példa választ:
 
@@ -90,19 +90,11 @@ Ez a protokoll lehetővé teszi a hosszú futású folyamatok, a külső ügyfel
 
 Minden HTTP API-k megvalósítva a végezze el a bővítményt a következő paramétereket. Az összes paraméter adattípusa `string`.
 
-| Paraméter  | Paraméter típusa  | Leírás |
-|------------|-----------------|-------------|
-| instanceId | URL-cím             | Az orchestration-példány azonosítója. |
-| taskHub    | Lekérdezési sztring    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, a rendszer feltételezi a jelenlegi függvényalkalmazás feladat eseményközpont neve. |
-| kapcsolat | Lekérdezési sztring    | A **neve** a tárfiók kapcsolati karakterlánca. Ha nincs megadva, a rendszer feltételezi a függvényalkalmazás alapértelmezett kapcsolati karakterláncára. |
-| systemKey  | Lekérdezési sztring    | A hitelesítési kulcs az API meghívásához szükséges. |
-| showInput  | Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `false`, a végrehajtás nem fog szerepelni a válasz-adattartalomra adjon meg.|
-| showHistory| Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
-| showHistoryOutput| Lekérdezési sztring    | Nem kötelező paraméter; csak egy példányban – a kérést. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.|
-| createdTimeFrom  | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
-| createdTimeTo    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
-| runtimeStatus    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott-példányok listájának alapján szűri a futásidejű állapot. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
-| felső    | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén oldalak ossza fel a lekérdezés eredményeit, és korlátozza az eredmények száma oldalanként maximális számát. |
+| Paraméter        | Paraméter típusa  | Leírás |
+|------------------|-----------------|-------------|
+| **`taskHub`**    | Lekérdezési sztring    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, a rendszer feltételezi a jelenlegi függvényalkalmazás feladat eseményközpont neve. |
+| **`connection`** | Lekérdezési sztring    | A **neve** a tárfiók kapcsolati karakterlánca. Ha nincs megadva, a rendszer feltételezi a függvényalkalmazás alapértelmezett kapcsolati karakterláncára. |
+| **`systemKey`**  | Lekérdezési sztring    | A hitelesítési kulcs az API meghívásához szükséges. |
 
 `systemKey` az Azure Functions-állomás által automatikusan létrehozott van egy engedélyezési kulcsot. Kifejezetten hozzáférést biztosít a tartós feladat bővítmény API-k és azonos módon felügyelhetők [más hitelesítési kulcsok](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Fedezze fel a legegyszerűbb módszer a `systemKey` érték használatával a `CreateCheckStatusResponse` API azt korábban említettük.
 
@@ -114,17 +106,41 @@ Egy megadott vezénylési példány állapotát olvassa be.
 
 #### <a name="request"></a>Kérés
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
+    ?taskHub={taskHub
+    &connection={connectionName}
+    &code={systemKey}
+    &showHistory=[true|false]
+    &showHistoryOutput=[true|false]
+    &showInput=[true|false]
 ```
 
-A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &showHistory=[true|false]
+    &showHistoryOutput=[true|false]
+    &showInput=[true|false]
 ```
+
+A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
+
+| Mező                   | Paraméter típusa  | Leírás |
+|-------------------------|-----------------|-------------|
+| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`showInput`**         | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
+| **`showHistory`**       | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
+| **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
+| **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
+| **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
+| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott-példányok listájának alapján szűri a futásidejű állapot. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
 
 #### <a name="response"></a>Válasz
 
@@ -138,15 +154,15 @@ Számos lehetséges állapota kódértékek adhatók vissza.
 
 A válasz-adattartalomra vonatkozó a **HTTP 200** és **HTTP 202** esetben egy JSON-objektum a következő mezőket:
 
-| Mező           | Adattípus | Leírás |
-|-----------------|-----------|-------------|
-| runtimeStatus   | sztring    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
-| bemenet           | JSON      | A példány inicializálásához használt JSON-adatokat. Ez a mező `null` Ha a `showInput` lekérdezési karakterlánc paraméterének értéke `false`.|
-| customStatus    | JSON      | Egyéni vezénylési állapot használt JSON-adatokat. Ez a mező `null` Ha nincs beállítva. |
-| output          | JSON      | A példány JSON-kimenetét. Ez a mező `null` , ha a példány nem egy befejezett állapotban van. |
-| createdTime     | sztring    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
-| lastUpdatedTime | sztring    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
-| historyEvents   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`. |
+| Mező                 | Adattípus | Leírás |
+|-----------------------|-----------|-------------|
+| **`runtimeStatus`**   | sztring    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
+| **`input`**           | JSON      | A példány inicializálásához használt JSON-adatokat. Ez a mező `null` Ha a `showInput` lekérdezési karakterlánc paraméterének értéke `false`.|
+| **`customStatus`**    | JSON      | Egyéni vezénylési állapot használt JSON-adatokat. Ez a mező `null` Ha nincs beállítva. |
+| **`output`**          | JSON      | A példány JSON-kimenetét. Ez a mező `null` , ha a példány nem egy befejezett állapotban van. |
+| **`createdTime`**     | sztring    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`lastUpdatedTime`** | sztring    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`historyEvents`**   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`. |
 
 Íme egy példa válasz a tartalmat, beleértve a vezénylési futtatási előzmények és tevékenység kimenetek (az olvashatóság érdekében formázva):
 
@@ -207,40 +223,53 @@ A **HTTP 202** válasz is tartalmaz egy **hely** válaszfejléc, amely az URL-C�
 
 ### <a name="get-all-instances-status"></a>Az összes példány állapotának beolvasása
 
-Minden példány állapota is lekérdezheti. Távolítsa el a `instanceId` a "Get-példány állapota" kérelemből. A paraméterek ugyanazok, mint a "Get példány állapota."
+Minden példány állapotának eltávolításával is lekérdezheti a `instanceId` a "Get-példány állapota" kérelemből. Ebben az esetben a alapszintű paraméterek nem ugyanaz, mint a "Get instance status". Lekérdezési karakterlánc paraméterei szűréshez is támogatottak.
 
 Ne feledje, hogy az egyik dolog, hogy `connection` és `code` megadása nem kötelező. Ha a függvény a névtelen hitelesítés kód nincs szükség.
-Ha nem szeretne egy nem definiált AzureWebJobsStorage Alkalmazásbeállítás különböző blobtárolóhoz tartozó kapcsolati karakterláncot, majd biztonságosan figyelmen kívül hagyhatja a kapcsolat lekérdezésisztring-paraméter.
+Ha nem szeretné használni a különböző tárolási kapcsolati karakterlánc nem definiált AzureWebJobsStorage Alkalmazásbeállítás, majd biztonságosan figyelmen kívül hagyhatja a kapcsolat lekérdezésisztring-paraméter.
 
 #### <a name="request"></a>Kérés
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /admin/extensions/DurableTaskExtension/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+    &showInput=[true|false]
+    &top={integer}
 ```
 
-A Functions 2.0 formátum ugyanazokat egy némileg különböző URL-előtagot azonban paraméterekkel rendelkezik:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durableTask/instances?
+    taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+    &showInput=[true|false]
+    &top={integer}
 ```
 
-#### <a name="request-with-filters"></a>A szűrők kérése
+A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
 
-Szűrheti a kérelmet.
-
-A Functions 1.0 a kérés formátuma a következőképpen történik:
-
-```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
-```
-
-A Functions 2.0 formátum ugyanazokat egy némileg különböző URL-előtagot azonban paraméterekkel rendelkezik:
-
-```http
-GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}&showInput={showInput}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
-```
+| Mező                   | Paraméter típusa  | Leírás |
+|-------------------------|-----------------|-------------|
+| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`showInput`**         | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
+| **`showHistory`**       | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
+| **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
+| **`createdTimeFrom`**   | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
+| **`createdTimeTo`**     | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott, vagy a megadott időbélyegnél ISO8601 létrehozott példányok listájának szűrése.|
+| **`runtimeStatus`**     | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a visszaadott-példányok listájának alapján szűri a futásidejű állapot. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
+| **`top`**               | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a lekérdezés által visszaadott példányok számát korlátozza. |
 
 #### <a name="response"></a>Válasz
 
@@ -299,25 +328,124 @@ GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={conne
 > Ez a művelet teljesítményigényesek lehetnek Azure tárolási i/o-tekintetében van-e nagy mennyiségű a példányok táblában lévő sorokat. Példány táblán további részletek találhatók a [teljesítményt és méretet (az Azure Functions) Durable Functions](durable-functions-perf-and-scale.md#instances-table) dokumentációját.
 >
 
-#### <a name="request-with-paging"></a>Lapozófájl-kérést
+Ha további találatok létezik, a válasz fejléce a folytatási kód adja vissza.  A fejléc neve `x-ms-continuation-token`.
 
-Beállíthatja a `top` paraméter oldalak ossza fel a lekérdezés eredményeit.
+Ha a folytatási token értékét állítja be a következő kérés fejlécében, beszerezheti a következő lapra az eredmények. A kérelem fejlécét, ez a név egyben `x-ms-continuation-token`.
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+### <a name="purge-single-instance-history"></a>Egypéldányos előzmények törlése
+
+Törli az előzmények és a egy megadott vezénylési példányhoz kapcsolódó összetevők felhasználásával.
+
+#### <a name="request"></a>Kérés
+
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connection}
+    &code={systemKey}
 ```
 
-A Functions 2.0 formátum ugyanazokat egy némileg különböző URL-előtagot azonban paraméterekkel rendelkezik:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+DELETE /runtime/webhooks/durabletask/instances/{instanceId}
+    ?taskHub={taskHub}
+    &connection={connection}
+    &code={systemKey}
 ```
 
-Ha létezik a következő oldalon, a válasz fejléce a folytatási kód adja vissza.  A fejléc neve `x-ms-continuation-token`.
+A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
 
-Ha a folytatási token értékét állítja be a következő kérés fejlécében, beszerezheti a következő lapra.  Ez a kulcs a kérelem fejlécében `x-ms-continuation-token`.
+| Mező             | Paraméter típusa  | Leírás |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+
+#### <a name="response"></a>Válasz
+
+A következő HTTP-állapot kód értékek adhatók vissza.
+
+* **HTTP 200 (OK)**: Példány előzményeinek törlése sikeresen megtörtént.
+* **A HTTP 404 (nem található)**: A megadott példány nem létezik.
+
+A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a következő mezőt:
+
+| Mező                  | Adattípus | Leírás |
+|------------------------|-----------|-------------|
+| **`instancesDeleted`** | egész szám   | A törölt példányok száma. Az Egypéldányos esetben ez az érték mindig kell `1`. |
+
+Íme egy példa válasz-adattartalomra (az olvashatóság érdekében formázva):
+
+```json
+{
+    "instancesDeleted": 1
+}
+```
+
+### <a name="purge-multiple-instance-history"></a>Több példány előzményeinek törlése
+
+Törölheti is az előzmények és a egy feladat központ belül több példány esetén kapcsolódó összetevők eltávolításával a `{instanceId}` a "Egypéldányos előzmények törlése" kérelemből. Szelektív törlése példány előzményei, használja a "Get minden példány állapota" kérelem ismertetett ugyanazokat a szűrőket.
+
+#### <a name="request"></a>Kérés
+
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
+
+```http
+DELETE /admin/extensions/DurableTaskExtension/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+```
+
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
+
+```http
+DELETE /runtime/webhooks/durabletask/instances
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &createdTimeFrom={timestamp}
+    &createdTimeTo={timestamp}
+    &runtimeStatus={runtimeStatus1,runtimeStatus2,...}
+```
+
+A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
+
+| Mező                 | Paraméter típusa  | Leírás |
+|-----------------------|-----------------|-------------|
+| **`createdTimeFrom`** | Lekérdezési sztring    | Nem kötelező paraméter. Adja meg, amikor a példányok törlődnek, vagy a megadott időbélyegnél ISO8601 létrehozott listájának szűrése.|
+| **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező paraméter. Adja meg, amikor a példányok törlődnek, vagy a megadott időbélyegnél ISO8601 létrehozott listájának szűrése.|
+| **`runtimeStatus`**   | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a példányok törlődnek a lista alapján szűri futásidejű állapotát. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
+
+Ha nincsenek paraméterek meg van adva, a feladat hub szereplő összes példányt lesz kiürítve.
+
+> [!NOTE]
+> Ez a művelet teljesítményigényesek lehetnek Azure tárolási i/o-tekintetében van-e sokkal azoknak a soroknak a példányok és/vagy előzmények táblák. Ezek a táblák a további részletek találhatók a [teljesítményt és méretet (az Azure Functions) Durable Functions](durable-functions-perf-and-scale.md#instances-table) dokumentációját.
+
+#### <a name="response"></a>Válasz
+
+A következő HTTP-állapot kód értékek adhatók vissza.
+
+* **HTTP 200 (OK)**: Példány előzményeinek törlése sikeresen megtörtént.
+* **A HTTP 404 (nem található)**: Példány sem található, amely megfelel a szűrőkifejezést.
+
+A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a következő mezőt:
+
+| Mező                   | Adattípus | Leírás |
+|-------------------------|-----------|-------------|
+| **`instancesDeleted`**  | egész szám   | A törölt példányok száma. |
+
+Íme egy példa válasz-adattartalomra (az olvashatóság érdekében formázva):
+
+```json
+{
+    "instancesDeleted": 250
+}
+```
 
 ### <a name="raise-event"></a>Esemény előléptetése
 
@@ -325,24 +453,31 @@ Egy esemény értesítési üzenetet küld egy futó vezénylési példány.
 
 #### <a name="request"></a>Kérés
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
 ```
 
-A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
 ```
 
 A kérelem paraméterekkel az API az alapértelmezett készlet korábban már említettük, valamint az alábbi egyedi paramétereket tartalmazza:
 
-| Mező       | Paraméter típusa  | Adatok tType | Leírás |
-|-------------|-----------------|-----------|-------------|
-| EventName   | URL-cím             | sztring    | Az eseményt, amely a célpéldány vezénylési vár a neve. |
-| {tartalom}   | Tartalomkérelem | JSON      | A JSON-formátumú eseménytartalom. |
+| Mező             | Paraméter típusa  | Leírás |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`eventName`**   | URL-cím             | Az eseményt, amely a célpéldány vezénylési vár a neve. |
+| **`{content}`**   | Tartalomkérelem | A JSON-formátumú eseménytartalom. |
 
 #### <a name="response"></a>Válasz
 
@@ -355,7 +490,7 @@ Számos lehetséges állapota kódértékek adhatók vissza.
 
 Íme egy példa kérelmet, amely a JSON-karakterlánc küld `"incr"` egy példánnyal, hogy egy adott esemény nevű **művelet**:
 
-```
+```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 Content-Type: application/json
 Content-Length: 6
@@ -371,23 +506,32 @@ Egy futó vezénylési példány leáll.
 
 #### <a name="request"></a>Kérés
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
-A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
 Kérelem, az API paraméternek számít a korábban már említettük, valamint a következő egyedi paraméter alapértelmezett beállítása.
 
-| Mező       | Paraméter típusa  | Adattípus | Leírás |
-|-------------|-----------------|-----------|-------------|
-| reason      | Lekérdezési sztring    | sztring    | Választható. Az orchestration-példány leállításához okát. |
+| Mező             | Paraméter típusa  | Leírás |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`reason`**      | Lekérdezési sztring    | Választható. Az orchestration-példány leállításához okát. |
 
 #### <a name="response"></a>Válasz
 
@@ -411,23 +555,32 @@ A futtatási állapot egy sikertelen vezénylési példány visszaállítja a le
 
 ### <a name="request"></a>Kérés
 
-A Functions 1.0 a kérés formátuma a következőképpen történik:
+A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
 ```http
-POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
-A Functions 2.0 formátum ugyanazokat paraméterekkel rendelkezik, de egy némileg különböző URL-cím előtagja:
+A verzió 2.x verzióját a Functions-futtatókörnyezet, az URL-formátum ugyanazokat paraméterekkel rendelkezik, de egy kis mértékben eltérő előtagot:
 
 ```http
-POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &reason={text}
 ```
 
 Kérelem, az API paraméternek számít a korábban már említettük, valamint a következő egyedi paraméter alapértelmezett beállítása.
 
-| Mező       | Paraméter típusa  | Adattípus | Leírás |
-|-------------|-----------------|-----------|-------------|
-| reason      | Lekérdezési sztring    | sztring    | Választható. A vezénylési példány visszatekerése okát. |
+| Mező             | Paraméter típusa  | Leírás |
+|-------------------|-----------------|-------------|
+| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`reason`**      | Lekérdezési sztring    | Választható. A vezénylési példány visszatekerése okát. |
 
 ### <a name="response"></a>Válasz
 
@@ -439,7 +592,7 @@ Számos lehetséges állapota kódértékek adhatók vissza.
 
 Íme egy példa kérelmet, amely gyors visszatekerés a hibás szolgáltatáspéldányt, és adja meg az okot **rögzített**:
 
-```
+```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 

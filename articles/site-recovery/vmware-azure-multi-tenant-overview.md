@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723926"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104454"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>VMware-vészhelyreállításhoz az Azure CSP-bA több-bérlős támogatásának áttekintése
 
@@ -75,17 +75,17 @@ A konfigurációs kiszolgáló konfigurálása egy olyan fiókkal, amely egy hoz
 1. Új szerepkör létrehozása a klónozásával az előre meghatározott *csak olvasható* szerepkört, majd adjon meg egy kényelmes nevet (például Azure_Site_Recovery, ahogyan az ebben a példában), és.
 2. A következő engedélyek hozzárendelése ehhez a szerepkörhöz:
 
-    * **Adattároló**: Foglaljon le helyet, Tallózás datastore, alacsony szintű fájlműveletek, fájl, a frissítés virtuálisgép-fájlok eltávolítása
-    * **Hálózati**: Hálózat hozzárendelése
-    * **Erőforrás**: Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép áttelepítése, bekapcsolt virtuális gép áttelepítése
-    * **Feladatok**: A feladat, a frissítési feladat létrehozása
-    * **Virtuálisgép - konfiguráció**: Összes
-    - **Virtuálisgép - kapcsolati** > választ a kérdésre, eszközkapcsolat, CD konfigurálása a media, konfigurálás hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése
-    - **Virtuálisgép - készlet** > Létrehozás meglévőből, létrehozhat új, Regisztrálás, regisztráció törlése
-    - **VM - kiépítés** > virtuális gép letöltésének, engedélyezése a virtuális gép fájlok feltöltése
-    - **VM - pillanatkép kezelése** > pillanatképek eltávolítása
+   * **Adattároló**: Foglaljon le helyet, Tallózás datastore, alacsony szintű fájlműveletek, fájl, a frissítés virtuálisgép-fájlok eltávolítása
+   * **Hálózati**: Hálózat hozzárendelése
+   * **Erőforrás**: Virtuális gép hozzárendelése az erőforráskészlethez, kikapcsolt virtuális gép áttelepítése, bekapcsolt virtuális gép áttelepítése
+   * **Feladatok**: A feladat, a frissítési feladat létrehozása
+   * **Virtuálisgép - konfiguráció**: Összes
+   * **Virtuálisgép - kapcsolati** > választ a kérdésre, eszközkapcsolat, CD konfigurálása a media, konfigurálás hajlékonylemezes adathordozó, kikapcsolás, bekapcsolás, VMware-eszközök telepítése
+   * **Virtuálisgép - készlet** > Létrehozás meglévőből, létrehozhat új, Regisztrálás, regisztráció törlése
+   * **VM - kiépítés** > virtuális gép letöltésének, engedélyezése a virtuális gép fájlok feltöltése
+   * **VM - pillanatkép kezelése** > pillanatképek eltávolítása
 
-        ![A szerepkör szerkesztése párbeszédpanel](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![A szerepkör szerkesztése párbeszédpanel](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. Rendelje hozzá hozzáférési szintekkel, a vCenter-fióknak (a bérlő konfigurációs kiszolgálón használt) különböző objektumok, a következő:
 

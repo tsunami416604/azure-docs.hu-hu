@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f49b8ed592422927288e24b164a04645e2e37744
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301383"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112024"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
@@ -38,32 +38,32 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
 
 1. Ha nem rendelkezik egy meglévő erőforráscsoportot, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés-Azonosítóját, nevét az új erőforráscsoport és a helyre, amely a megoldáshoz szükséges. További információkért lásd: [hozzon létre egy erőforráscsoportot](/rest/api/resources/resourcegroups/createorupdate).
 
-  ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
+   ```
 
-  A hasonló kéréstörzset:
-  ```json
-  {
+   A hasonló kéréstörzset:
+   ```json
+   {
     "location": "West US",
     "tags": {
       "tagname1": "tagvalue1"
     }
-  }
-  ```
+   }
+   ```
 
 1. A telepítés előtt futtatnia kell a futtatásával ellenőrizze a [egy sablon telepítésének ellenőrzésére](/rest/api/resources/deployments/validate) műveletet. A központi telepítés tesztelésekor paramétereket megadnia, pontosan, mint az üzemelő példány (a következő lépésben látható) végrehajtása közben.
 
 1. Központi telepítés létrehozása. Adja meg az előfizetés-azonosító, az erőforráscsoport nevét, az üzembe helyezés, valamint egy hivatkozás, a sablon nevét. A sablonfájl kapcsolatos információkért lásd: [paraméterfájl](#parameter-file). Hozzon létre egy erőforráscsoportot a REST API-val kapcsolatos további információkért lásd: [sablon üzembe helyezése](/rest/api/resources/deployments/createorupdate). Figyelje meg a **mód** értékre van állítva **növekményes**. A teljes üzembe helyezés, állítsuk be **mód** való **Complete**. Ügyeljen arra, hogy a teljes mód használatakor, ha véletlenül is törli, amelyek nem szerepelnek a sablon erőforrások.
 
-  ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   ```
 
-  A hasonló kéréstörzset:
+   A hasonló kéréstörzset:
 
    ```json
-  {
+   {
     "properties": {
       "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
@@ -75,13 +75,13 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
         "contentVersion": "1.0.0.0"
       }
     }
-  }
-  ```
+   }
+   ```
 
     Ha azt szeretné, válasz tartalma, a kérelem tartalma vagy mindkettő bejelentkezni, például **debugSetting** a kérésben.
 
-  ```json
-  {
+   ```json
+   {
     "properties": {
       "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
@@ -96,15 +96,15 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
         "detailLevel": "requestContent, responseContent"
       }
     }
-  }
-  ```
+   }
+   ```
 
     A storage-fiók beállítása egy közös hozzáférésű jogosultságkód (SAS) használata. További információkért lásd: [hozzáférés delegálása közös hozzáférésű Jogosultságkód](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
 1. Ahelyett, hogy a sablon és paraméterek összekapcsolása, hozzáadhatja őket a kérelem törzsében.
 
-  ```json
-  {
+   ```json
+   {
       "properties": {
       "mode": "Incremental",
       "template": {
@@ -161,14 +161,14 @@ Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatko
         }
       }
     }
-  }
-  ```
+   }
+   ```
 
 5. A sablon központi telepítés állapotának lekéréséhez. További információkért lásd: [-sablonalapú telepítéssel kapcsolatos információk lekérése](/rest/api/resources/deployments/get).
 
-  ```HTTP
-  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   ```
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 

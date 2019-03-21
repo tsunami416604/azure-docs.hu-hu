@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: f4b42ff2639bf7e6a982f7c21b6ac4f2a8c84c5e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 29d0dc032bd14161674c58d6e502ad77c3bf75e5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108780"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Gyors útmutató: Keresse meg a Bing Video Search REST API használatával kíván videókat ésC#
 
@@ -52,7 +52,7 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
 
 ### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Hozzon létre egy struct, formázhatja a Bing Videókeresési API-válasz
 
-3. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
+1. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
 
     ```csharp
     struct SearchResult

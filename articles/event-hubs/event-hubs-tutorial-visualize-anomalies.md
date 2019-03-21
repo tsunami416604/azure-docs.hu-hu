@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888661"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123045"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag: Valós idejű események az Azure Event hubs szolgáltatásba küldött adatok protokollmegvalósításokat megjelenítése
 
@@ -328,10 +328,10 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
     > Ha futtatja a mintaalkalmazást, és az adatok streamelése az event hubs, erre a csempére a szám gyorsan (másodpercenként) változik. Mivel a Stream Analytics-lekérdezés ténylegesen frissíti az értéket **másodpercenként**. A 3 perces átfedésmentes ablak az elmúlt néhány perc alatt az összeg megjelenítéséhez frissítse a lekérdezést. 
 11. Adjon hozzá egy másik vizualizációt. Ismételje meg az első néhány lépést:
 
-   * Kattintson a **Csempe hozzáadása** elemre.
-   * Válassza az **Egyedi streamelési adatok** lehetőséget. 
-   * Kattintson a **Tovább** gombra.
-   * Válassza ki az adatkészletét, majd kattintson a **Tovább** gombra. 
+    * Kattintson a **Csempe hozzáadása** elemre.
+    * Válassza az **Egyedi streamelési adatok** lehetőséget. 
+    * Kattintson a **Tovább** gombra.
+    * Válassza ki az adatkészletét, majd kattintson a **Tovább** gombra. 
 
 12. A **Vizualizáció típusa** területen válassza a **Vonaldiagram** lehetőséget.
 

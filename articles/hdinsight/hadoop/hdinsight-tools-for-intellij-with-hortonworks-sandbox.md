@@ -1,7 +1,7 @@
 ---
 title: With hortonworks – tesztkörnyezet IntelliJ-hez készült Azure-eszközkészlet használata
 description: Ismerje meg a HDInsight Tools with hortonworks – tesztkörnyezet IntelliJ-hez készült Azure-eszközkészlet használata.
-keywords: hadoop-eszközök, hive-lekérdezés, intellij-vel, hortonworks – tesztkörnyezet, intellij-hez készült azure-eszközkészlet
+keywords: hadoop tools,hive query,intellij,hortonworks sandbox,azure toolkit for intellij
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635663"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118323"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>HDInsight Tools for IntelliJ with hortonworks – tesztkörnyezet használata
 
@@ -53,20 +53,20 @@ Ebben a szakaszban az IntelliJ IDEA használatával hoz létre egy mintaprojekte
    1. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
    2. Az a **buildelőeszköze** listában válasszon a következő, a forgatókönyv alapján:
 
-    * **Maven**: Scala project-létrehozási varázsló támogatás.
-    * **SBT**: A függőségek kezelése, és a Scala-projekt létrehozásához.
+      * **Maven**: Scala project-létrehozási varázsló támogatás.
+      * **SBT**: A függőségek kezelése, és a Scala-projekt létrehozásához.
 
    ![A New project (Új projekt) párbeszédablak.](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Kattintson a **Tovább** gombra.
 3. A következő **új projekt** párbeszédpanelen töltse ki az alábbi lépéseket:
 
-    1. Az a **projektnév** adja meg a projekt nevét.
-    2. Az a **projekt helyét** adja meg a projekt helyére.
-    3. Mellett a **projekt SDK** legördülő listában válassza **új**válassza **JDK**, majd adja meg a mappa a Java JDK 1.7 vagy újabb verziója. Válassza ki **Java 1.8-as** 2.x Spark-fürt. Válassza ki **Java 1.7-es** 1.x Spark-fürt. Az alapértelmezett hely a C:\Program Files\Java\jdk1.8.x_xxx.
-    4. Az a **Spark-verzió** legördülő listából válassza ki, a Scala-projekt létrehozása varázsló együttműködik a megfelelő verzió az SDK a Spark és a Scala SDK. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a Spark 1.6.2-es verzióján (Scala 2.10.5) használja. Győződjön meg arról, hogy használ-e megjelölve a tárház **Scala 2.10.x**. Ne használja a tárház Scala megjelölve 2.11.x.
+   1. Az a **projektnév** adja meg a projekt nevét.
+   2. Az a **projekt helyét** adja meg a projekt helyére.
+   3. Mellett a **projekt SDK** legördülő listában válassza **új**válassza **JDK**, majd adja meg a mappa a Java JDK 1.7 vagy újabb verziója. Válassza ki **Java 1.8-as** 2.x Spark-fürt. Válassza ki **Java 1.7-es** 1.x Spark-fürt. The default location is C:\Program Files\Java\jdk1.8.x_xxx.
+   4. Az a **Spark-verzió** legördülő listából válassza ki, a Scala-projekt létrehozása varázsló együttműködik a megfelelő verzió az SDK a Spark és a Scala SDK. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a Spark 1.6.2-es verzióján (Scala 2.10.5) használja. Győződjön meg arról, hogy használ-e megjelölve a tárház **Scala 2.10.x**. Ne használja a tárház Scala megjelölve 2.11.x.
     
-    ![IntelliJ Scala project-tulajdonságok létrehozása](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![Create IntelliJ Scala project properties](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. Válassza a **Finish** (Befejezés) elemet.
