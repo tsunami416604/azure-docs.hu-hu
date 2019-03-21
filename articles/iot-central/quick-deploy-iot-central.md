@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0844737288abeb8d6ab1043b4c55ba5ef1c4883c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5df798f0f5f9588b1f2cd792e99d6409e565337e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098076"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -29,10 +29,10 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 Új Azure IoT Central-alkalmazás létrehozása:
 
 1. Válassza ki a fizetési konstrukciót:
-    - A **próbaalkalmazások** 7 napig ingyenesek, azután lejárnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá.
-    - A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
+   - A **próbaalkalmazások** 7 napig ingyenesek, azután lejárnak. A lejárat előtt bármikor átalakíthatók használatalapú fizetéses alkalmazássá.
+   - A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
 
-    További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
+     További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
 
 1. Válasszon egy rövid alkalmazásnevet, például a **Contoso IoT** nevet. Az Azure IoT Central létrehoz egy egyéni URL-előtagot. Ezt az URL-előtagot egy könnyebben megjegyezhető előtagra módosíthatja.
 
@@ -46,14 +46,14 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 
 1. Ha **használatalapú fizetéses** alkalmazást hoz létre, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *régiót*. 
 
-    - *Directory* van az Azure Active Directory (AD) az alkalmazás létrehozásához. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha nem rendelkezik egy Azure ad-ben, egy jön létre az Ön számára egy Azure-előfizetés létrehozásakor.
+   - *Directory* van az Azure Active Directory (AD) az alkalmazás létrehozásához. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha nem rendelkezik egy Azure ad-ben, egy jön létre az Ön számára egy Azure-előfizetés létrehozásakor.
 
-    - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. Az előfizetésben lévő erőforrásokat az IoT Central osztja ki. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
+   - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. Az előfizetésben lévő erőforrásokat az IoT Central osztja ki. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 
-    - A *régió* az a fizikai hely, ahol létre szeretné hozni az alkalmazást. Általában olyan régiót érdemes választani, amely fizikailag a legközelebb található az eszközökhöz, hogy azok optimális teljesítményt nyújtsanak. Azon régiók listája, amelyekben elérhető az Azure IoT Central a [Régiónként elérhető termékek](https://azure.microsoft.com/regions/services/) oldalon található.
+   - A *régió* az a fizikai hely, ahol létre szeretné hozni az alkalmazást. Általában olyan régiót érdemes választani, amely fizikailag a legközelebb található az eszközökhöz, hogy azok optimális teljesítményt nyújtsanak. Azon régiók listája, amelyekben elérhető az Azure IoT Central a [Régiónként elérhető termékek](https://azure.microsoft.com/regions/services/) oldalon található.
 
-    > [!Note]
-    > Ha kiválasztott egy régiót, később nem helyezheti át az alkalmazást egy másik régióba.
+     > [!Note]
+     > Ha kiválasztott egy régiót, később nem helyezheti át az alkalmazást egy másik régióba.
 
 1. Kattintson a **Létrehozás** gombra.
 

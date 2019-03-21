@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240454"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090967"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek az Azure Stackben
 
@@ -42,15 +42,15 @@ Egy adott skálázási egység állapotának megtekintéséhez:
 3. Az eredmények közül válassza ki a skálázási egység.
 4. A bal oldali alatt **általános**válassza **csomópontok**.
 
-  A következő információk megtekintése:
+   A következő információk megtekintése:
 
-  - Az egyes csomópontok listája
-  - Működési állapot (lásd alább)
-  - Kiemelt állapotát (fut vagy Leállítva)
-  - kiszolgáló-modell
-  - Az alaplapi felügyeleti vezérlőnek (BMC) IP-címe
-  - Magok teljes száma
-  - teljes memóriamennyiség
+   - Az egyes csomópontok listája
+   - Működési állapot (lásd alább)
+   - Kiemelt állapotát (fut vagy Leállítva)
+   - kiszolgáló-modell
+   - Az alaplapi felügyeleti vezérlőnek (BMC) IP-címe
+   - Magok teljes száma
+   - teljes memóriamennyiség
 
 ![a skálázási egység állapota](media/azure-stack-node-actions/multinodeactions.png)
 

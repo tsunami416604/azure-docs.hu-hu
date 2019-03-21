@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cb984bcbe79b69c0614579d66a3b853cd38a7e12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099086"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure container és az Azure SQL Database a helyszíni alkalmazás újratervezése
 
@@ -183,7 +183,7 @@ Contoso rendszergazdák üzembe helyezése egy Azure SQL database.
 
 
 
-## <a name="step-2-create-an-acr-and-provision-an-azure-container"></a>2. lépés: Hozzon létre egy ACR-t és a egy Azure-tároló üzembe helyezése
+## <a name="step-2-create-an-acr-and-provision-an-azure-container"></a>2. lépés: Hozzon létre egy ACR-t és a egy Azure-tároló üzembe helyezése
 
 Az Azure container jön létre a webkiszolgáló virtuális gépről az exportált fájlok használatával. A tároló az Azure Container Registry (ACR) részeként.
 
@@ -402,10 +402,10 @@ Contoso rendszergazdák konvertálja az alkalmazás egy tároló használatával
 4. Ezek ismételje meg a folyamatot SmartHotel.Registration.WCF alkalmazást.
 5. Most akkor ellenőrizze, hogyan változott meg a megoldás.
 
-    - Az új alkalmazás **SmartHotel.RegistrationApplication/**
-    - Két szolgáltatást tartalmazza: **SmartHotel.Registration.WCF** és **SmartHotel.Registration.Web**.
+   - Az új alkalmazás **SmartHotel.RegistrationApplication/**
+   - Két szolgáltatást tartalmazza: **SmartHotel.Registration.WCF** és **SmartHotel.Registration.Web**.
 
-    ![Tároló](./media/contoso-migration-rearchitect-container-sql/container4.png)
+     ![Tároló](./media/contoso-migration-rearchitect-container-sql/container4.png)
 
 6. A Visual Studio a Docker-fájlban létrehozott, és helyileg lekért le a szükséges képeket, a fejlesztői gépen.
 
@@ -488,7 +488,7 @@ Contoso-rendszergazdák mostantól konfigurálásához hajtsa végre a build és
 
 16. Ezenkívül vegye figyelembe, hogy engedélyezve van-e a folyamatos készregyártás eseményindítója.
 
-   ![Engedélyezve van a folyamatos üzembe helyezés](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
+    ![Engedélyezve van a folyamatos üzembe helyezés](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
 
 17. Kattintanak **mentése** > **hozzon létre egy kiadási**.
 

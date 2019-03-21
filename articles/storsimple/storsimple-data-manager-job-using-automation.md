@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086020"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automationnel elindítható egy feladat
 
@@ -53,20 +53,20 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 
 3. Az a **Automation hozzáadása**:
 
-    1. Adja meg a **neve** az automation-fiók.
-    2. Válassza ki a **előfizetés** a StorSimple Data Manager szolgáltatáshoz csatolt.
-    3. Hozzon létre egy új erőforráscsoportot, vagy jelöljön ki egy meglévő erőforráscsoportot.
-    4. Válasszon ki egy **helyet**.
-    5. Hagyja meg az alapértelmezett **futtató fiók létrehozása** lehetőség van kijelölve.
-    6. Szerezzen be egy hivatkozást az irányítópulton a gyors hozzáférés céljából, ellenőrizze a következőket **rögzítés az irányítópulton**. Kattintson a **Create** (Létrehozás) gombra.
+   1. Adja meg a **neve** az automation-fiók.
+   2. Válassza ki a **előfizetés** a StorSimple Data Manager szolgáltatáshoz csatolt.
+   3. Hozzon létre egy új erőforráscsoportot, vagy jelöljön ki egy meglévő erőforráscsoportot.
+   4. Válasszon ki egy **helyet**.
+   5. Hagyja meg az alapértelmezett **futtató fiók létrehozása** lehetőség van kijelölve.
+   6. Szerezzen be egy hivatkozást az irányítópulton a gyors hozzáférés céljából, ellenőrizze a következőket **rögzítés az irányítópulton**. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![Futtató automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Futtató automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    Miután az automation-fiók sikeresen létrejött, értesítést kap.
+      Miután az automation-fiók sikeresen létrejött, értesítést kap.
     
-    ![Automation-fiók üzembe helyezéshez értesítés](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Automation-fiók üzembe helyezéshez értesítés](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    További információért ugorjon [hozzon létre egy futtató fiókot](../automation/automation-create-runas-account.md).
+      További információért ugorjon [hozzon létre egy futtató fiókot](../automation/automation-create-runas-account.md).
 
 3. Az újonnan létrehozott fiók, lépjen a **megosztott erőforrások > modulok** kattintson **+ Hozzáadás modul**.
 

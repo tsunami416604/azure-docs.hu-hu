@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471215"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087839"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Gyors útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -34,7 +34,7 @@ Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal tört�
 
 1. Válassza az **Erőforrás létrehozása** > **Számítás** > **Batch szolgáltatás** lehetőséget. 
 
-  ![Batch a Piactéren][marketplace_portal]
+   ![Batch a Piactéren][marketplace_portal]
 
 2. Adjon meg értéket a **Fiók neve** és az **Erőforráscsoport** mezőben. A fiók nevének egyedinek kell lennie a kiválasztott Azure-**helyen**, csak kisbetűket vagy számokat, illetve 3–24 karaktert tartalmazhat. 
 
@@ -42,7 +42,7 @@ Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal tört�
 
 4. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és válassza a **Létrehozás** gombot a fiók létrehozásához.
 
-  ![Batch-fiók létrehozása][account_portal]  
+   ![Batch-fiók létrehozása][account_portal]  
 
 Amikor megjelenik az **Üzembe helyezés sikeres** üzenet, lépjen a Batch-fiókba a portálon.
 
@@ -57,23 +57,23 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
 
 3. Az **Operációs rendszer** területen válassza ki az alábbi beállításokat (más beállításokat is kipróbálhat).
   
-  |Beállítás  |Érték  |
-  |---------|---------|
-  |**Rendszerkép típusa**|Marketplace (Linux/Windows)|
-  |**Közzétevő**     |MicrosoftWindowsServer|
-  |**Ajánlat**     |WindowsServer|
-  |**Termékváltozat**     |2012-R2-Datacenter-smalldisk|
+   |Beállítás  |Érték  |
+   |---------|---------|
+   |**Rendszerkép típusa**|Marketplace (Linux/Windows)|
+   |**Közzétevő**     |MicrosoftWindowsServer|
+   |**Ajánlat**     |WindowsServer|
+   |**Termékváltozat**     |2012-R2-Datacenter-smalldisk|
 
-  ![Készlet operációs rendszerének kiválasztása][pool_os] 
+   ![Készlet operációs rendszerének kiválasztása][pool_os] 
 
 4. Görgessen le a **Csomópontméret** és a **Méretezés** beállítás megadásához. A javasolt csomópontméret jó teljesítmény/költség arányt kínál a jelen rövid példában.
   
-  |Beállítás  |Érték  |
-  |---------|---------|
-  |**Csomópont tarifacsomagja**     |Standard_A1|
-  |**Dedikált célcsomópontok**     |2|
+   |Beállítás  |Érték  |
+   |---------|---------|
+   |**Csomópont tarifacsomagja**     |Standard_A1|
+   |**Dedikált célcsomópontok**     |2|
 
-  ![Készletméret kiválasztása][pool_size] 
+   ![Készletméret kiválasztása][pool_size] 
 
 5. Hagyja meg az alapértelmezett értéket a többi beállításnál, és válassza az **OK** lehetőséget a készlet létrehozásához.
 
@@ -91,7 +91,7 @@ Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet az
 
 2. Adja meg a következő **feladatazonosítót**: *myjob*. A **Készlet** mezőben válassza a *mypool* lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 
-  ![Feladat létrehozása][job_create]
+   ![Feladat létrehozása][job_create]
 
 A feladat létrehozása után megnyílik a **Tevékenységek** lap.
 
@@ -109,7 +109,7 @@ Az első tevékenység létrehozása:
 
 3. A **parancssorban** adja meg a következő parancsot: `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 
-  ![Tevékenység létrehozása][task_create]
+   ![Tevékenység létrehozása][task_create]
 
 Tevékenység létrehozása után a Batch várólistára helyezi azt a készleten való futtatáshoz. Amint egy csomópont készen áll a futtatásra, a rendszer futtatja a tevékenységet.
 

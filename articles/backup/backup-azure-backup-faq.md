@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 914dcd02f2d35d56b50169967ca1f5c251a6e6f3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993383"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -93,7 +93,7 @@ Igen.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Milyen operációs rendszereket támogat a biztonsági mentés?
 Az Azure Backup biztonsági mentését a fájlok és mappák és az Azure Backup Server és a DPM által védett alkalmazások ezeket az operációs rendszereket támogatja.
 
-**OS**| **Termékváltozat** |**Részletek**
+**OS** | **Termékváltozat** | **Részletek**
 --- | --- | ---
 Munkaállomás | |
 Windows 10 64 bit | Enterprise, Pro, Home | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
@@ -118,7 +118,7 @@ Linux-alapú Azure virtuális gép biztonsági mentése, az Azure Backup támoga
 Méretek korlátok a következők:
 
 Az operációs rendszer/gép | Adatforrás maximális mérete
---- | --- | ---
+--- | --- 
 Windows 8 vagy újabb | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 vagy újabb | 54 400 GB

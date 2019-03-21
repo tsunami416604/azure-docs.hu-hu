@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3f3c7523bfc800a74da56b1b3241ac5756c68d14
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: 44efe3482e9e1657125cc28441819ea173c982ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861944"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -280,7 +280,7 @@ Ha segítségre van szüksége a Marketplace-en bevezetési és/vagy az ügyfél
    - Válassza ki a társítás kapcsolatos használati **más**.
    - Hozzáférési problémák az Azure Marketplace-en CPP, válasszon **hozzáférési probléma**.
    
-    ![Válassza ki a probléma kategóriát](media/marketplace-publishers-guide/lu-article-incident.png)
+     ![Válassza ki a probléma kategóriát](media/marketplace-publishers-guide/lu-article-incident.png)
 
 1. Válassza ki **indítására vonatkozó kérés**.
 
@@ -299,7 +299,7 @@ Technikai útmutató a Microsoft partneri technikai tanácsadó műszaki vásár
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Hogyan műszaki konzultáció kérelem küldése
 
-1. Látogasson el [ http://aka.ms/TechnicalJourney ](http://aka.ms/TechnicalJourney).
+1. Látogasson el [ https://aka.ms/TechnicalJourney ](https://aka.ms/TechnicalJourney).
 1. Válassza ki a felhőalapú infrastruktúra és a felügyeleti és a egy új oldalt megnyílik a technikai foglalkozás megtekintéséhez.
 1. A központi telepítési szolgáltatások területen kattintson a küldési kérelem gomb
 1. Jelentkezzen be az MSA-(MPN-fiókjába) vagy az aad-ben (Partner irányítópult-fiók); a bejelentkezési hitelesítő adatok alapján, ekkor megnyílik az online űrlapot: 
@@ -308,7 +308,7 @@ Technikai útmutató a Microsoft partneri technikai tanácsadó műszaki vásár
     * Adja meg egy címet és a probléma leírása (adja meg a lehető legtöbb részletet lehető).
 1. Kattintson a Küldés gombra
 
-Képernyőképeket, részletes útmutató megtekintéséhez [ http://aka.ms/TechConsultInstructions ](http://aka.ms/TechConsultInstructions).
+Képernyőképeket, részletes útmutató megtekintéséhez [ https://aka.ms/TechConsultInstructions ](https://aka.ms/TechConsultInstructions).
 
 ### <a name="whats-next"></a>Mit tartogat a jövő
 

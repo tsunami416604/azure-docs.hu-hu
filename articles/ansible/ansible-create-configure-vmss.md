@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 1b2949aef14b3c8550cef90a18641a3df7d8cd41
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1176987ab318a97a7db6a12e619e7b7db06ad2da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791698"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097889"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Virtuálisgép-méretezési csoportok létrehozása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuálisgép-méretezési csoportokat (VMSS) az Azure-ban, ahogy azt bármely más Azure-erőforrással tenné. Ebből a cikkből megtudhatja, hogyan hozhat létre és skálázhat fel horizontálisan virtuálisgép-méretezési csoportokat az Ansible használatával. 
@@ -276,5 +276,5 @@ A parancs Cloud Shell-beli futtatásának eredménye azt jelzi, hogy jelenleg h�
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
 > [Virtuális gép méretezési csoportok használata az Ansible-alkalmazások központi telepítése](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
-
+> 
 > [Az Ansible használatával virtuálisgép-méretezési csoport automatikus méretezése](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)
