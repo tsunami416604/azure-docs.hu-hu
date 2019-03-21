@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 002a3e3817b663807154fab595489a6fb640105d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472602"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175585"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Gyors útmutató: Események átirányítása egyéni webes végpontra a PowerShell és az Event Grid
 
@@ -24,20 +24,22 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ![Eredmények megtekintése](./media/custom-event-quickstart-powershell/view-result.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-Ehhez a cikkhez az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps).
+Ehhez a cikkhez az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot.
 
 A következő példában létrehozunk egy *gridResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
 ```powershell-interactive
-New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
+New-AzResourceGroup -Name gridResourceGroup -Location westus2
 ```
 
 [!INCLUDE [event-grid-register-provider-powershell.md](../../includes/event-grid-register-provider-powershell.md)]
@@ -49,7 +51,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 ```powershell-interactive
 $topicname="<your-topic-name>"
 
-New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name $topicname
+New-AzEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name $topicname
 ```
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
@@ -61,7 +63,7 @@ A `<your-site-name>` elemet a webalkalmazás egyedi nevére cserélje le. A weba
 ```powershell-interactive
 $sitename="<your-site-name>"
 
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -ResourceGroupName gridResourceGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" `
   -siteName $sitename `
@@ -81,7 +83,7 @@ A webalkalmazás végpontjának az `/api/updates/` utótagot kell tartalmaznia.
 ```powershell-interactive
 $endpoint="https://$sitename.azurewebsites.net/api/updates"
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName demoViewerSub `
   -Endpoint $endpoint `
   -ResourceGroupName gridResourceGroup `
@@ -97,8 +99,8 @@ Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfize
 Aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Először szükségünk lesz a témakör URL-címére és kulcsára.
 
 ```powershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicname).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicname
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicname).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicname
 ```
 
 A folyamat leegyszerűsítése érdekében hozzunk létre mintául szolgáló eseményadatokat, amelyeket elküldhetünk az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. Az alábbi példában az eseményadatok összeállítása egy kivonattáblával történik (`htbody`), majd megfelelően formázott JSON hasznosadat-objektumokká (`$body`) lesznek alakítva:
@@ -158,7 +160,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 Ha tovább kívánja használni az eseményt vagy az eseménynapló alkalmazást, akkor ne törölje a cikkben létrehozott erőforrásokat. Ellenkező esetben a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name gridResourceGroup
+Remove-AzResourceGroup -Name gridResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések

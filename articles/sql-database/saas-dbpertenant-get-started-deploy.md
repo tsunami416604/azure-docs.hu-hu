@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453671"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000208"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Üzembe helyezése és megismerése a több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database szolgáltatással
 
@@ -56,7 +56,7 @@ Most válassza ki a nevét, és írja le.
 
 1. A Wingtip Tickets SaaS bérlőnkénti adatbázis központi telepítési sablon megnyitásához az Azure Portalon válassza **üzembe helyezés az Azure**.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Adja meg a szükséges paramétereket a sablonban értékeket.
 
@@ -186,9 +186,9 @@ Ha azt szeretné, vezérlése és figyelése a háttérben futó feladatok, hasz
 
 4. Ha `$OneTime = $false`, a terhelésgenerátor a háttérben futó feladatok elindul, és ezután továbbra is fusson. Minden olyan új bérlők üzembe helyezett figyeli 10 másodpercenként. Ha `$OneTime = $true`, a LoadGenerator a háttérben futó feladatok elindul, és akkor az az előtérben futó lejár. Ebben az oktatóanyagban hagyja `$OneTime = $false`.
 
-  Ha szeretné leállítani, vagy indítsa újra a terhelésgenerátor, használja a Ctrl-C vagy leállítása műveletet a Ctrl-Break.
+   Ha szeretné leállítani, vagy indítsa újra a terhelésgenerátor, használja a Ctrl-C vagy leállítása műveletet a Ctrl-Break.
 
-  Ha üresen hagyja a terhelésgenerátort az előtérben futó, használja a PowerShell ISE-t egy másik példány más PowerShell-parancsfájlok futtatásához.
+   Ha üresen hagyja a terhelésgenerátort az előtérben futó, használja a PowerShell ISE-t egy másik példány más PowerShell-parancsfájlok futtatásához.
 
 &nbsp;
 
@@ -221,7 +221,7 @@ Frissítse az Eseményközpontot, hogy az új bérlő szerepel a listában.
 
 Most, hogy Ön már elkezdte a bérlők ellen, nézzük meg egyes üzembe helyezett erőforrások.
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az SQL Server-kiszolgálók listája. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt;** kiszolgáló.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az SQL Server-kiszolgálók listája. Nyissa meg a **katalógus-dpt -&lt;felhasználói&gt;** kiszolgáló.
     - A katalóguskiszolgáló két adatbázist tartalmaz **tenantcatalog** és **basetenantdb** (a sablon adatbázis létrehozása az új bérlők másolt).
 
    ![Adatbázisok](./media/saas-dbpertenant-get-started-deploy/databases.png)

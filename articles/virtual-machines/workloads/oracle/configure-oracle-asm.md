@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8cf977f9c5bbf10c6a4d862a29fda98d3ce71844
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998957"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM beállítása Azure Linux virtuális gépen  
 
@@ -90,7 +90,7 @@ ssh <publicIpAddress>
 
 Oracle ASM telepítéséhez kövesse az alábbi lépéseket. 
 
-Oracle ASM telepítésével kapcsolatos további információkért lásd: [Oracle ASMLib letölti az Oracle Linux 6](http://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
+Oracle ASM telepítésével kapcsolatos további információkért lásd: [Oracle ASMLib letölti az Oracle Linux 6](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
 
 1. Jelentkezzen be gyökér szintű ASM telepítésének folytatásához kell megadnia:
 
@@ -104,7 +104,7 @@ Oracle ASM telepítésével kapcsolatos további információkért lásd: [Oracl
     yum list | grep oracleasm 
     yum -y install kmod-oracleasm.x86_64 
     yum -y install oracleasm-support.x86_64 
-    wget http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
+    wget https://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     yum -y install oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     rm -f oracleasmlib-2.0.12-1.el6.x86_64.rpm
    ```
@@ -336,24 +336,24 @@ Ebben az oktatóanyagban az alapértelmezett felhasználó van *rács* és az al
 
 10. A mappa engedély módosítása:
 
-   ```bash
-   chmod -R 775 /opt 
-   chown grid:oinstall /opt 
-   chown oracle:oinstall /dev/sdc1 
-   chown oracle:oinstall /dev/sdd1 
-   chown oracle:oinstall /dev/sde1 
-   chown oracle:oinstall /dev/sdf1 
-   chmod 600 /dev/sdc1 
-   chmod 600 /dev/sdd1 
-   chmod 600 /dev/sde1 
-   chmod 600 /dev/sdf1
-   ```
+    ```bash
+    chmod -R 775 /opt 
+    chown grid:oinstall /opt 
+    chown oracle:oinstall /dev/sdc1 
+    chown oracle:oinstall /dev/sdd1 
+    chown oracle:oinstall /dev/sde1 
+    chown oracle:oinstall /dev/sdf1 
+    chmod 600 /dev/sdc1 
+    chmod 600 /dev/sdd1 
+    chmod 600 /dev/sde1 
+    chmod 600 /dev/sdf1
+    ```
 
 ## <a name="download-and-prepare-oracle-grid-infrastructure"></a>Töltse le és Oracle rács infrastruktúra előkészítése
 
 Töltse le, és készítse elő a Grid infrastruktúrájának Oracle-szoftver, hajtsa végre az alábbi lépéseket:
 
-1. Oracle Grid infrastruktúrájának töltse le a [Oracle ASM letöltési oldal](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Oracle Grid infrastruktúrájának töltse le a [Oracle ASM letöltési oldal](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
 
    A letöltés címe alatt **Oracle Database 12c Release 1 Grid infrastruktúrájának (12.1.0.2.0) Linux x86-64**, töltse le a két .zip-fájlt.
 
@@ -402,7 +402,7 @@ Töltse le, és készítse elő a Grid infrastruktúrájának Oracle-szoftver, h
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>A helyi ügyfél és a virtuális gép futtatásához x11 előkészítése
 Oracle ASM konfigurálása szükséges a telepítés és konfiguráció befejezéséhez grafikus felület. Használjuk a x11 protokoll a telepítés megkönnyítése érdekében. Ha egy ügyfél system (Mac vagy Linux), amely már rendelkezik X11 használ képességek engedélyezve és konfigurálva – ugorjon a konfigurációs és a beállítási kizárólagos Windows gépekre. 
 
-1. [Töltse le a PuTTY](http://www.putty.org/) és [Xming letöltése](https://xming.en.softonic.com/) a Windows-számítógépre. Szüksége lesz, ezeknek az alkalmazásoknak az alapértelmezett értékeket, a folytatás előtt mindkettő a telepítés befejezéséhez.
+1. [Töltse le a PuTTY](https://www.putty.org/) és [Xming letöltése](https://xming.en.softonic.com/) a Windows-számítógépre. Szüksége lesz, ezeknek az alkalmazásoknak az alapértelmezett értékeket, a folytatás előtt mindkettő a telepítés befejezéséhez.
 
 2. Miután telepítette a putty-kapcsolaton keresztül, nyisson meg egy parancssort, a PuTTY mappába (például C:\Program Files\PuTTY) módosítása és futtatása `puttygen.exe` annak érdekében, hogy hozzon létre egy kulcsot.
 

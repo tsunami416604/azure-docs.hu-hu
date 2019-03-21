@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a549a46912b0d60f878a18cae1e70a763afc0243
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874698"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122369"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -139,16 +139,16 @@ Egy állandó Azure Machine Learning COMPUTE számítási feladatok felhasználh
     * **vm_size**: A hozott létre az Azure Machine Learning COMPUTE számítási csomópontok Virtuálisgép-család.
     * **max_nodes**: Az automatikus méretezés akár amikor futtat egy feladatot az Azure Machine Learning COMPUTE számítási csomópontok maximális száma.
     
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-  Néhány speciális tulajdonságok konfigurálhatja az Azure Machine Learning Compute létrehozásakor is. A tulajdonságok lehetővé teszik a rögzített méretű, vagy egy meglévő Azure virtuális hálózaton belül állandó fürt létrehozása az előfizetésében.  Tekintse meg a [AmlCompute osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   Néhány speciális tulajdonságok konfigurálhatja az Azure Machine Learning Compute létrehozásakor is. A tulajdonságok lehetővé teszik a rögzített méretű, vagy egy meglévő Azure virtuális hálózaton belül állandó fürt létrehozása az előfizetésében.  Tekintse meg a [AmlCompute osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) részleteiről.
     
- Vagy hozzon létre és a egy állandó Azure Machine Learning COMPUTE számítási erőforrás csatolása [az Azure Portalon](#portal-create).
+   Vagy hozzon létre és a egy állandó Azure Machine Learning COMPUTE számítási erőforrás csatolása [az Azure Portalon](#portal-create).
 
 1. **Konfigurálása**: Hozzon létre egy futtatási konfigurációt az állandó számítási célnak számára.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Most, hogy a számítási csatolva, és konfigurálni a Futtatás, a következő lépés, hogy [küldje el a betanítási Futtatás](#submit).
 
@@ -168,34 +168,34 @@ Az Azure adatelemzési virtuális gép (DSVM) az Azure virtuális gépként vál
 
 1. **Csatolása**: Egy számítási célnak egy meglévő virtuális géphez csatolni kell adnia a teljesen minősített tartománynevét (FQDN), a felhasználónév és a jelszót a virtuális gép. Cserélje le a példában \<teljesen minősített tartományneve > az a virtuális gép vagy a nyilvános IP-cím nyilvános teljes Tartománynevét. Cserélje le \<username > és \<jelszó > SSH-felhasználónevet és jelszót a virtuális gép.
 
- ```python
- from azureml.core.compute import RemoteCompute, ComputeTarget
+   ```python
+   from azureml.core.compute import RemoteCompute, ComputeTarget
 
- # Create the compute config 
- compute_target_name = "attach-dsvm"
- attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   # Create the compute config 
+   compute_target_name = "attach-dsvm"
+   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
 
- # If you authenticate with SSH keys instead, use this code:
- #                                                  ssh_port=22,
- #                                                  username='<username>',
- #                                                  password=None,
- #                                                  private_key_file="<path-to-file>",
- #                                                  private_key_passphrase="<passphrase>")
+   # If you authenticate with SSH keys instead, use this code:
+   #                                                  ssh_port=22,
+   #                                                  username='<username>',
+   #                                                  password=None,
+   #                                                  private_key_file="<path-to-file>",
+   #                                                  private_key_passphrase="<passphrase>")
 
- # Attach the compute
- compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
+   # Attach the compute
+   compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
 
- compute.wait_for_completion(show_output=True)
- ```
+   compute.wait_for_completion(show_output=True)
+   ```
 
- A DSVM csatlakoztathat a munkaterület vagy [az Azure portal használatával](#portal-reuse).
+   A DSVM csatlakoztathat a munkaterület vagy [az Azure portal használatával](#portal-reuse).
 
 1. **Konfigurálása**: Hozzon létre egy futtatási konfigurációt a DSVM számítási célnak számára. A docker és a conda létrehozása és a képzési környezet konfigurálása a DSVM szolgálnak.
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 Most, hogy a számítási csatolva, és konfigurálni a Futtatás, a következő lépés, hogy [küldje el a betanítási Futtatás](#submit).
@@ -212,11 +212,11 @@ Az Azure HDInsight egy népszerű big-data elemzési platform. A platform az Apa
 
 1. **Csatolása**: Egy HDInsight-fürt egy számítási célnak csatolásához kell megadnia az állomásnevet, felhasználónév és jelszó a HDInsight-fürt. Az alábbi példa egy fürt csatlakoztatása a munkaterület az SDK-t használja. Cserélje le a példában \<clustername > az a fürt nevére. Cserélje le \<username > és \<jelszó > az SSH-felhasználónév és a fürthöz tartozó jelszót.
 
-  ```python
- from azureml.core.compute import ComputeTarget, HDInsightCompute
- from azureml.exceptions import ComputeTargetException
+   ```python
+   from azureml.core.compute import ComputeTarget, HDInsightCompute
+   from azureml.exceptions import ComputeTargetException
 
- try:
+   try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
     attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
                                                           ssh_port=22, 
@@ -226,17 +226,17 @@ Az Azure HDInsight egy népszerű big-data elemzési platform. A platform az Apa
                                        name='myhdi', 
                                        attach_configuration=attach_config)
 
- except ComputeTargetException as e:
+   except ComputeTargetException as e:
     print("Caught = {}".format(e.message))
 
- hdi_compute.wait_for_completion(show_output=True)
-  ```
+   hdi_compute.wait_for_completion(show_output=True)
+   ```
 
-  Vagy a HDInsight-fürt csatlakoztathat a munkaterület [az Azure portal használatával](#portal-reuse).
+   Vagy a HDInsight-fürt csatlakoztathat a munkaterület [az Azure portal használatával](#portal-reuse).
 
 1. **Konfigurálása**: Hozzon létre egy futtatási konfigurációt a HDI számítási célnak számára. 
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
 Most, hogy a számítási csatolva, és konfigurálni a Futtatás, a következő lépés, hogy [küldje el a betanítási Futtatás](#submit).

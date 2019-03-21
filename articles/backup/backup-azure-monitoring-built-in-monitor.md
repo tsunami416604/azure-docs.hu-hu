@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 50d766eed5800c58d0b0258b2be6637f139c542a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730970"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112500"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Az Azure Backup figyelési feladatok
 
@@ -92,9 +92,9 @@ Amikor értesítés van konfigurálva, egy üdvözlő vagy bevezető e-mailt fog
 Ha gyakoriságát az óránkénti összefoglaló értékre lett beállítva, és riasztást kiváltott és a egy órán belül fog állni, nem lesz a közelgő óránkénti összefoglaló része.
 
 > [!NOTE]
->
-* Ha például egy destruktív művelet **állítsa le a védelmi adatok törlésével** van hajtja végre, riasztást hoz létre, és a egy e-mailt küld az előfizetés-tulajdonosokat, rendszergazdák és társrendszergazdák akkor is, ha a helyreállítás szolgáltatáshoz nem állíthatók be értesítéseket tároló.
-* A sikeres feladatokra használja az értesítések konfigurálásával [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+> 
+> * Ha például egy destruktív művelet **állítsa le a védelmi adatok törlésével** van hajtja végre, riasztást hoz létre, és a egy e-mailt küld az előfizetés-tulajdonosokat, rendszergazdák és társrendszergazdák akkor is, ha a helyreállítás szolgáltatáshoz nem állíthatók be értesítéseket tároló.
+> * A sikeres feladatokra használja az értesítések konfigurálásával [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="next-steps"></a>További lépések
 

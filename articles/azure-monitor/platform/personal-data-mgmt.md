@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810270"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121349"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és az Application Insights tárolt személyes adatok
 
@@ -53,7 +53,7 @@ A log Analytics egy rugalmas tárolja, ami előíró egy sémát az adatokhoz, m
     ```
     search "[username goes here]"
     ```
-Keresse meg a nemcsak a természetes nyelven olvasható felhasználónevek, hanem közvetlenül visszakövethető egy adott felhasználó GUID-azonosítói. ne felejtse el!
+  Keresse meg a nemcsak a természetes nyelven olvasható felhasználónevek, hanem közvetlenül visszakövethető egy adott felhasználó GUID-azonosítói. ne felejtse el!
 * *Az eszközazonosítókat*: Felhasználói azonosítókat, például az eszközazonosítókat néha minősülnek "privát". Használja ugyanazt a megközelítést felhasználói azonosítók a fent felsorolt azonosítja, ha ez egy potenciálisan veszélyes lehet. 
 * *Egyéni adatok*: A log Analytics lehetővé teszi, hogy a különböző módszereiről ad a gyűjteményhez: egyéni naplók és az egyéni mezők a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) , és egyéni adatokat gyűjteni a rendszer eseménynaplóit részeként. Ezek mindegyikét ki van téve a titkos adatokat tartalmazó, és ellenőrizze, hogy létezik-e ilyen jellegű adatokat meg kell vizsgálni.
 * *Megoldás rögzített adatoknak*: Mivel a megoldás mechanizmus egy nyílt, javasoljuk, hogy a megfelelőség biztosítása megoldások által létrehozott összes táblák áttekintésével.

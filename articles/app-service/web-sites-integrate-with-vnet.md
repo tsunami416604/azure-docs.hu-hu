@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766878"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112619"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -284,13 +284,13 @@ Az új funkció használatához:
 
 1. Nyissa meg a hálózat felhasználói felület a portálon. Ha az alkalmazás tudja használni az új szolgáltatást, majd látni fogja használni az új előzetes verziójú funkció teszi lehetővé.  
 
- ![Válassza ki az új előzetes verziójú VNet-integráció][6]
+   ![Válassza ki az új előzetes verziójú VNet-integráció][6]
 
 1. Válassza ki **hozzáadása virtuális hálózathoz (előzetes verzió)**.  
 
 1. Válassza ki a Resource Manager virtuális hálózattal, szeretné integrálni és majd hozzon létre egy új alhálózatot vagy válasszon ki egy meglévő üres alhálózatot. Az integráció végrehajtásához kevesebb mint egy percet vesz igénybe. Az integráció során az alkalmazás újraindul.  Integráció befejezése után látni fogja részletek integrálva van a virtuális hálózatok közötti és a egy módosíthatóvá tájékoztatja, hogy a funkció előzetes verzióban érhető el.
 
- ![Válassza ki a virtuális hálózat és alhálózat][7]
+   ![Válassza ki a virtuális hálózat és alhálózat][7]
 
 Ahhoz, hogy az alkalmazást, amelynek része a virtuális hálózat DNS-kiszolgáló használatához, hozzon létre egy alkalmazásbeállítást az alkalmazás, ahol a név WEBSITE_DNS_SERVER, értéke pedig a kiszolgáló IP-címét.  Ha rendelkezik egy másodlagos DNS-kiszolgálót, majd hozzon létre egy másik, ahol a név WEBSITE_DNS_ALT_SERVER Alkalmazásbeállítás értéke pedig a kiszolgáló IP-címét. 
 

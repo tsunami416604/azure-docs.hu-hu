@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9edd243c47c7c0eeeff3b875fccede01806862a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452677"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888110"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>A Spark használatával összeállított gépi tanulási modellek üzembe helyezése
 
@@ -190,9 +190,9 @@ Ez a szakasz bemutatja, hogyan index, kódolása és készítse elő azokat a be
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Átalakítás funkció: index és a bemeneti pontozó modellekbe kategorikus funkciók kódolása
 Ez a szakasz bemutatja, hogyan kategorikus adatok indexelése egy `StringIndexer` és a funkciókat kódolása `OneHotEncoder` a modellek bemeneteként.
 
-A [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) kódol, egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, felirat indexek címkék. Az indexek címke gyakoriságok szerint vannak rendezve. 
+A [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) kódol, egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, felirat indexek címkék. Az indexek címke gyakoriságok szerint vannak rendezve. 
 
-A [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) címke indexek oszlop képez le egy oszlop bináris vektorok legfeljebb egyetlen one-értékkel. Ehhez a kódoláshoz lehetővé teszi a folyamatos értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
+A [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) címke indexek oszlop képez le egy oszlop bináris vektorok legfeljebb egyetlen one-értékkel. Ehhez a kódoláshoz lehetővé teszi a folyamatos értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ A [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.prepr
 Cella fent végrehajtásához felhasznált idő: 5.37 másodperc
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>A modellek be szolgáltatás-tömböket RDD-objektumok létrehozása
-Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan RDD-objektumként kategorikus szöveges adatok indexelése és a egy gyakori kódolása, így betanítására és MLlib logisztikai regressziós és -fa-alapú modell teszteléséhez használható. Az indexelt adatokat tárolja [rugalmas elosztott adatkészlet (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objektumokat. Ezek a Spark az alapszintű absztrakció. Az RDD-objektum egy nem módosítható, particionált elemek gyűjteménye, amelyek a Spark párhuzamosan is üzemeltetett jelöli.
+Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan RDD-objektumként kategorikus szöveges adatok indexelése és a egy gyakori kódolása, így betanítására és MLlib logisztikai regressziós és -fa-alapú modell teszteléséhez használható. Az indexelt adatokat tárolja [rugalmas elosztott adatkészlet (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objektumokat. Ezek a Spark az alapszintű absztrakció. Az RDD-objektum egy nem módosítható, particionált elemek gyűjteménye, amelyek a Spark párhuzamosan is üzemeltetett jelöli.
 
 Kód, amely bemutatja, hogyan méretezzünk át az adatokat is tartalmaz a `StandardScalar` MLlib által előírt lineáris regressziós a Sztochasztikus átmenetes Grádiens (SGD), számos machine learning-modellek betanításához egy népszerű algoritmus használatát. A [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) egység eltérése a szolgáltatások méretezése szolgál. A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, hogy funkciók széles körben folyósított értékekkel van nem adott túlzott mérjük a cél függvényben. 
 
@@ -397,9 +397,9 @@ Cella fent végrehajtásához felhasznált idő: 16.63 másodperc
 ## <a name="score-classification-and-regression-random-forest-models"></a>Besorolási és regressziós véletlenszerű erdő modellek pontozása
 Ebben a szakaszban a kód bemutatja, hogyan betölteni a mentett besorolási és regressziós véletlenszerű erdő modellek mentése az Azure blob storage-ban, a standard szintű osztályozó és regressziós mértékek teljesítményük, és mentse az eredményeket a blob storage-ba való.
 
-[Véletlenszerű erdők](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők képes kezelni a kategorikus funkciók bővítése a többosztályos osztályozási beállításait, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
+[Véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők képes kezelni a kategorikus funkciók bővítése a többosztályos osztályozási beállításait, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
 
-[Spark.mllib](http://spark.apache.org/mllib/) támogatja az erdők véletlenszerű bináris és többosztályos osztályozási regressziós, mind a folyamatos, mind a kategorikus funkciók használatával. 
+[Spark.mllib](https://spark.apache.org/mllib/) támogatja az erdők véletlenszerű bináris és többosztályos osztályozási regressziós, mind a folyamatos, mind a kategorikus funkciók használatával. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ Ebben a szakaszban a kód bemutatja, hogyan besorolási és regressziós átmene
 
 **Spark.mllib** GBTs támogatja a bináris osztályozási és regressziós, mind a folyamatos, mind a kategorikus funkciók használatával. 
 
-[Színátmenet kiemelési fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
+[Színátmenet kiemelési fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

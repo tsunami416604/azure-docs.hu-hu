@@ -8,18 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 639ccb2a0680793b50af52dc16c6d06505d5079b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497910"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899536"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell használatával a DPM-kiszolgáló Azure Backup telepítőjét, és kezelheti a biztonsági mentés és helyreállítás.
 
 ## <a name="setting-up-the-powershell-environment"></a>A PowerShell-környezet beállítása
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 PowerShell használatával a Data Protection Manager biztonsági másolatainak kezelése az Azure-ba, mielőtt szüksége a megfelelő környezet van a PowerShellben. A PowerShell-munkamenet elején győződjön meg arról, hogy importálja a megfelelő modulokat, és megfelelően hivatkoznak a DPM-parancsmagok lehetővé teszik a következő parancsot futtatja:
 
@@ -37,14 +36,10 @@ Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## <a name="setup-and-registration"></a>Beállítása és regisztrálása
-A kezdéshez:
 
-1. [Töltse le a legújabb PowerShell](https://github.com/Azure/azure-powershell/releases) (szükséges minimális verziója: 1.0.0)
-2. Engedélyezze az Azure Backup parancsmagok átvált a *AzureResourceManager* módból a **Switch-AzureMode** parancsmagot:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-```
-PS C:\> Switch-AzureMode AzureResourceManager
-```
+Első lépésként [töltse le a legújabb Azure PowerShell](/powershell/azure/install-az-ps).
 
 A PowerShell használatával automatizálható a következő beállítása és regisztrálása feladatokat:
 
@@ -57,20 +52,20 @@ A PowerShell használatával automatizálható a következő beállítása és r
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 A következő lépések végigvezetik Önt a Recovery Services-tároló létrehozása. Recovery Services-tároló nem egyezik egy biztonsági mentési tárolót.
 
-1. Az Azure Backup használatakor az első alkalommal kell használnia a **Register-AzureRMResourceProvider** parancsmagot, hogy regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
+1. Az Azure Backup használatakor az első alkalommal kell használnia a **Register-AzResourceProvider** parancsmagot, hogy regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. A Recovery Services-tároló egy ARM-erőforrás, ezért elhelyezi egy erőforráscsoporton belül kell. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Amikor egy új erőforráscsoportot hoz létre, adja meg a nevét és az erőforráscsoport helyét.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "West US"
     ```
-3. Használja a **New-AzureRmRecoveryServicesVault** parancsmaggal hozzon létre egy új tárolót. Mindenképpen adja meg a tároló ugyanazon a helyen, mint az erőforráscsoport.
+3. Használja a **New-AzRecoveryServicesVault** parancsmaggal hozzon létre egy új tárolót. Mindenképpen adja meg a tároló ugyanazon a helyen, mint az erőforráscsoport.
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 4. Adja meg a használandó; tárhely-redundancia típusát használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [Georedundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa bemutatja, hogy a - BackupStorageRedundancy beállítás a testVault GeoRedundant értékre van állítva.
 
@@ -80,17 +75,17 @@ A következő lépések végigvezetik Önt a Recovery Services-tároló létreho
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>A tárolók megtekintheti az előfizetéshez
-Használat **Get-AzureRmRecoveryServicesVault** összes tárolók listájának megtekintéséhez az aktuális előfizetésben. Ezt a parancsot használhatja, ellenőrizze, hogy az új tároló létrejött, vagy tekintse meg, milyen tárolók érhetők el az előfizetésben.
+Használat **Get-AzRecoveryServicesVault** összes tárolók listájának megtekintéséhez az aktuális előfizetésben. Ezt a parancsot használhatja, ellenőrizze, hogy az új tároló létrejött, vagy tekintse meg, milyen tárolók érhetők el az előfizetésben.
 
-Futtassa a parancsot, a Get-AzureRmRecoveryServicesVault, és az előfizetés összes tárolók fel vannak sorolva.
+Futtassa a parancsot, a Get-AzRecoveryServicesVault, és az előfizetés összes tárolók fel vannak sorolva.
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -143,7 +138,7 @@ A Recovery Services-tároló létrehozása után töltse le a legújabb ügynök
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 PS C:\> $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
@@ -252,7 +247,7 @@ Amelyen a DPM-ügynök telepítve van, és a DPM-kiszolgáló által kezelt kisz
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”}
 ```
 
-Most már beolvasni az adatforrások listáját a ```$server``` használatával a [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) parancsmagot. Ebben a példában azt szűrést végez a kötet * D:\* , amelyet meg szeretnénk biztonsági mentésének konfigurálásához. Ez az adatforrás majd adnak hozzá a védelmi csoport használatával a [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) parancsmagot. Ne feledje, használhatja a *módosíthatóvá* védelmi csoport objektum ```$MPG``` , hogy a kiegészítéseit.
+Most már beolvasni az adatforrások listáját a ```$server``` használatával a [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) parancsmagot. Ebben a példában azt szűrést végez a kötet *D:\\*  , amelyet meg szeretnénk biztonsági mentésének konfigurálásához. Ez az adatforrás majd adnak hozzá a védelmi csoport használatával a [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) parancsmagot. Ne feledje, használhatja a *módosíthatóvá* védelmi csoport objektum ```$MPG``` , hogy a kiegészítéseit.
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }

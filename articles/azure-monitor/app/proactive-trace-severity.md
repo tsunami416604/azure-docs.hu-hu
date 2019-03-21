@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001227"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Csökkenés a következőben nyomkövetési súlyossági arány (előzetes verzió)
 
@@ -26,7 +26,7 @@ Nyomkövetési széles körben használt alkalmazások esetén, segít a törté
 Ez a funkció nem speciális beállítás, az alkalmazás nyomkövetési adatainak naplózása konfigurálása nem szükséges (lásd: how to egy nyomkövetési napló figyelő konfigurálása [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) vagy [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)). Ez akkor aktív, ha az alkalmazása elég kivételtelemetria hoz létre.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Ha szeretné be intelligens detektálás értesítést az ilyen típusú?
-Ez az értesítés típusát fordulhatnak elő, ha a "good" nyomkövetési aránya (szintű naplózott nyomkövetési *Info* vagy *részletes*) és a "rossz" nyomkövetési (szintű naplózott nyomkövetési *Figyelmeztetés*, * Hiba, vagy *végzetes*) egy adott nap, az előző hét nap vetítve alapkonfigurációhoz képest van gyorsítótárazhatók.
+Ez az értesítés típusát fordulhatnak elő, ha a "good" nyomkövetési aránya (szintű naplózott nyomkövetési *Info* vagy *részletes*) és a "rossz" nyomkövetési (szintű naplózott nyomkövetési *Figyelmeztetés*, *Hiba*, vagy *végzetes*) egy adott nap, az előző hét nap vetítve alapkonfigurációhoz képest van gyorsítótárazhatók.
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>Saját alkalmazás mindenképp rendelkezik a probléma?
 Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp van probléma. Egy "jó" és "rossz" nyomkövetési aránya csökkenése alkalmazás esetleg utalhatnak, bár előfordulhat, hogy ez a változtatás arány jóindulatú. Például a növekedés lehet egy új folyamatot, az alkalmazás úgy, mint a meglévő folyamatok további "rossz" nyomkövetési miatt).

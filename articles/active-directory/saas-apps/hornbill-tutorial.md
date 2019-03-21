@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49cd5bf96233dd941dc2fbf10a6bb5561644a15
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 271161dd29bc1b31989775f3223bc30840346aed
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező szarvascsőrűmadár
 
@@ -173,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

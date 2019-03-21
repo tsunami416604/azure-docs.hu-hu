@@ -1,6 +1,6 @@
 ---
 title: Hozzon létre egy egyéni beszédfelismerési végpontot a Speech szolgáltatással az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy egyéni hang-szöveg transzformációs végpontot a Cognitive Services a Speech szolgáltatással.
+description: Ismerje meg, hogyan hozhat létre egy egyéni hang-szöveg transzformációs végpont Azure Speech Services használatával.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,19 +9,19 @@ ms.subservice: custom-speech
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: panosper
-ms.openlocfilehash: 63d2c15c14340b0d7407b0144a8b8c75a2634e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1f7a84d187ba6279caad4926d54bfc56254152af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220246"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862998"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Egyéni beszédfelismerési végpont létrehozása
 
-Miután létrehozta a testreszabott akusztikai modell vagy nyelvi modell, egy egyéni hang-szöveg transzformációs végpontját telepíthetné őket. 
+Miután létrehozta a testreszabott akusztikai modell vagy nyelvi modell, egy egyéni hang-szöveg transzformációs végpontját telepíthetné őket.
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
-Új egyéni végpont létrehozásához válassza **végpontok** a a **Custom Speech** az oldal tetején lévő menüben. Ez a művelet eltarthat, hogy a **végpontok** oldal, amely tartalmazza a jelenlegi egyéni végpontok. Ha még nem hozott olyan végpontok, a tábla je prázdná. A tábla címe az aktuális területi beállítást mutatja. 
+Új egyéni végpont létrehozásához válassza **végpontok** a a **Custom Speech** az oldal tetején lévő menüben. Ez a művelet eltarthat, hogy a **végpontok** oldal, amely tartalmazza a jelenlegi egyéni végpontok. Ha még nem hozott olyan végpontok, a tábla je prázdná. A tábla címe az aktuális területi beállítást mutatja.
 
 Hozzon létre egy másik nyelven üzemelő példánya, válassza a **módosítása területi beállítás**. További információ a támogatott nyelveket.
 
@@ -44,6 +44,6 @@ Amikor készen áll az üzembe helyezés, a végpont neve lesz a hivatkozást. A
 ## <a name="next-steps"></a>További lépések
 
 További oktatóanyagokban talál:
-- [Speech Service próba-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [Próbaverziós Speech Services-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Importálni akusztikai modell létrehozása](how-to-customize-acoustic-models.md)
 - [Testreszabott nyelvi modell létrehozása](how-to-customize-language-model.md)
