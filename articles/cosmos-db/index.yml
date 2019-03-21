@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a94039b70ceb1cffabe90df09282f840f45f7d32
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 43740118c4379c3b30843575840a000e89cd820b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033502"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294994"
 documentType: LandingData
 title: Azure Cosmos DB-dokumentáció
 metadata:
@@ -35,11 +35,11 @@ sections:
     columns: 3
     items:
     - href: /azure/cosmos-db/distribute-data-globally/
-      html: <p>A globális terjesztés, a particionálás, az indexelés és az Azure Cosmos DB API-kra vonatkozó egyéb fogalmak ismertetése.</p>
+      html: <p>A globális terjesztés, a particionálás, a kiépített átviteli sebesség, az indexelés és az Azure Cosmos DB API-kra vonatkozó egyéb fogalmak ismertetése.</p>
       image:
         src: media/index/azure-cosmos-db-icon.png
       title: Alapelvek
-    - href: /azure/cosmos-db/sql-api-introduction/
+    - href: /azure/cosmos-db/sql-api-query-reference/
       html: <p>Ha új, nem relációs dokumentum-adatbázist kíván létrehozni, és ismerős SQL-szintaxissal kíván lekérdezéseket végrehajtani, használja az SQL API-t.</p>
       image:
         src: media/index/sql-api.svg
@@ -102,7 +102,7 @@ sections:
       - href: 
       - href: 
       - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
-    - title: MongoDB-hez készült Azure Cosmos DB API
+    - title: API a MongoDB-hez
       values:
       - href: /azure/cosmos-db/create-mongodb-java
       - href: /azure/cosmos-db/create-mongodb-dotnet
@@ -157,12 +157,12 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " Skálázható Azure Cosmos DB-adatbázis létrehozása"
+    - title: " Skálázható Azure Cosmos-adatbázis létrehozása"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg
         href: /learn/modules/create-cosmos-db-for-scale/
-    - title: Adatok beszúrása és lekérdezése az Azure Cosmos DB-adatbázisban
+    - title: Adatok beszúrása és lekérdezése az Azure Cosmos-adatbázisban
       href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
       image:
         src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg

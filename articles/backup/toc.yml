@@ -180,6 +180,8 @@ items:
       href: backup-client-automation.md
     - name: Azure-fájlmegosztások az Azure Portalon
       href: backup-azure-afs-automation.md
+    - name: SQL az Azure-beli virtuális gépek biztonsági mentésein
+      href: backup-azure-sql-automation.md
   - name: Az Azure Backup REST API használata
     items:
     - name: Helyreállítási tár létrehozása
@@ -195,7 +197,7 @@ items:
   - name: SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
     items:
     - name: Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
-      href: backup-sql-server-azure-vms.md
+      href: backup-azure-sql-database.md
     - name: SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
       href: backup-sql-server-database-azure-vms.md
     - name: SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
@@ -278,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 033235611271b00275a0ef759af80f2c8c9a2474
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb58460b2331ab867e064235d5a2536809b28021
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014657"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284969"

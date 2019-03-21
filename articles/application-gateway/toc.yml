@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: Gyors útmutatók
   items:
-  - name: Webes forgalom kezelése – Portal
+  - name: Alkalmazásátjáró létrehozása – Portál
     href: quick-create-portal.md
-  - name: Webes forgalom kezelése – PowerShell
+  - name: Alkalmazásátjáró létrehozása – PowerShell
     href: quick-create-powershell.md
-  - name: Webes forgalom kezelése – Azure CLI
+  - name: Alkalmazásátjáró létrehozása – Azure CLI
     href: quick-create-cli.md
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Webes forgalom kezelése
+  - name: Egy webhely üzemeltetése
     href: tutorial-manage-web-traffic-cli.md
   - name: Webalkalmazási tűzfal engedélyezése
     href: tutorial-restrict-web-traffic-cli.md
@@ -40,12 +40,26 @@ items:
     href: cli-samples.md
 - name: Alapelvek
   items:
-  - name: Hogyan működik az Application Gateway?
-    href: how-application-gateway-works.md
-  - name: Az Application Gateway összetevői
-    href: application-gateway-components.md
-  - name: Konfiguráció áttekintése
-    href: configuration-overview.md
+  - name: Alapvető beállítások
+    items:
+    - name: Hogyan működik az Application Gateway?
+      href: how-application-gateway-works.md
+    - name: Az Application Gateway összetevői
+      href: application-gateway-components.md
+    - name: Konfiguráció áttekintése
+      href: configuration-overview.md
+  - name: Útválasztás
+    items:
+    - name: Több webhely üzemeltetése
+      href: multiple-site-overview.md
+    - name: URL-útválasztás
+      href: url-route-overview.md
+    - name: Átirányítás
+      href: redirect-overview.md
+    - name: HTTP-fejlécek átírása
+      href: rewrite-http-headers.md
+    - name: Egyéni hibalapok
+      href: custom-error.md
   - name: SSL
     items:
     - name: SSL-szabályzatok áttekintése
@@ -58,20 +72,16 @@ items:
       href: waf-overview.md
     - name: WAF-konfiguráció
       href: application-gateway-waf-configuration.md
-  - name: URL-útválasztás
-    href: url-route-overview.md
-  - name: Több webhely üzemeltetése
-    href: multiple-site-overview.md
+  - name: Állapotfigyelés
+    items:
+    - name: Állapotadat-mintavétel
+      href: application-gateway-probe-overview.md
+    - name: Diagnosztika
+      href: application-gateway-diagnostics.md
   - name: Automatikus skálázás és zónaredundancia
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: Átirányítási támogatás
-    href: redirect-overview.md
-  - name: HTTP-fejlécek átírása
-    href: rewrite-http-headers.md
   - name: App Service-webalkalmazások és több-bérlős támogatás
     href: application-gateway-web-app-overview.md
-  - name: Állapotfigyelés
-    href: application-gateway-probe-overview.md
   - name: WebSocket támogatás
     href: application-gateway-websocket.md
   - name: GYIK
@@ -96,8 +106,12 @@ items:
       href: create-ssl-portal.md
     - name: SSL leállítása – PowerShell
       href: tutorial-ssl-powershell.md
+    - name: Végpontok közötti SSL – Portál
+      href: end-to-end-ssl-portal.md
     - name: Végpontok közötti SSL – PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
+    - name: Tanúsítványok létrehozása az engedélyezési listához – háttérrendszer
+      href: certificates-for-backend-authentication.md
     - name: Tanúsítványok megújítása
       href: renew-certificates.md
     - name: Az SSL-szabályzatok konfigurálása
@@ -108,7 +122,7 @@ items:
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: WAF-szabályok testreszabása
+  - name: WAF-szabálykészletek konfigurálása
     items:
     - name: Azure Portal
       href: application-gateway-customize-waf-rules-portal.md
@@ -180,10 +194,6 @@ items:
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
     - name: Hibás átjáróval kapcsolatos hibák (502)
       href: application-gateway-troubleshooting-502.md
-    - name: Diagnosztika
-      href: application-gateway-diagnostics.md
-  - name: Egyéni hibalapok
-    href: custom-error.md
 - name: Referencia
   items:
   - name: CRS-szabályok
@@ -218,9 +228,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: bd544dc507be3caade81ee45c3a5d704392c5694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68264afadd3d05e4d11c6b4b98cd7375886e4d20
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170326"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286956"

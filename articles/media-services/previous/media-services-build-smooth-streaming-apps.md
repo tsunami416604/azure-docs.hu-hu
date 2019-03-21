@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57882726"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása  
 
-A Smooth Streaming Client SDK for Windows 8 lehetővé teszi a fejlesztők számára a Windows Store-alkalmazások építéséhez igény szerinti és élő Smooth Streaming-tartalmat is próbálhatja. A Smooth Streaming-tartalmat alapszintű lejátszás, az SDK-t is nyújt gazdag funkciók, például a Microsoft PlayReady-védelmet, minőségi szintű korlátozás, élő DVR-, hang stream közötti váltás, a figyelő állapotának frissítése (például a minőségi szintű módosítások), és Hiba történt eseményeket, és így tovább. A támogatott szolgáltatások további információkért lásd: a [kibocsátási megjegyzések](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). További információkért lásd: [Player keretrendszer Windows 8](http://playerframework.codeplex.com/). 
+A Smooth Streaming Client SDK for Windows 8 lehetővé teszi a fejlesztők számára a Windows Store-alkalmazások építéséhez igény szerinti és élő Smooth Streaming-tartalmat is próbálhatja. A Smooth Streaming-tartalmat alapszintű lejátszás, az SDK-t is nyújt gazdag funkciók, például a Microsoft PlayReady-védelmet, minőségi szintű korlátozás, élő DVR-, hang stream közötti váltás, a figyelő állapotának frissítése (például a minőségi szintű módosítások), és Hiba történt eseményeket, és így tovább. A támogatott szolgáltatások további információkért lásd: a [kibocsátási megjegyzések](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). További információkért lásd: [Player keretrendszer Windows 8](https://playerframework.codeplex.com/). 
 
 Ebben az oktatóanyagban négy leckéket tartalmazza:
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyagban négy leckéket tartalmazza:
 
 * Windows 8 32 bites vagy 64 bites.
 * A Visual Studio-verziók 2012 2015 segítségével.
-* [A Microsoft Smooth Streaming Client SDK Windows 8 rendszeren futó](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
+* [A Microsoft Smooth Streaming Client SDK Windows 8 rendszeren futó](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
 
 A kész megoldás minden lecke a letölthető MSDN fejlesztői Kódminták (Kódgaléria): 
 
@@ -107,7 +107,7 @@ Miután hozzáadta a hivatkozásokat, ki kell választania a megcélzott platfor
 
          <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
             <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
-            <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
+            <TextBox x:Name="txtMediaSource" Text="https://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
             <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
             <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
             <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
@@ -203,7 +203,7 @@ A XAML fájlban néhány eseménykezelők kapcsolódnak a vezérlőkkel.  Meg ke
          }
          # endregion
    ```
-A sliderProgress_PointerPressed eseménykezelő itt van definiálva.  Nincsenek működéséhez, ehhez további működik, amely ebben az oktatóanyagban a következő leckében tárgyalja.
+   A sliderProgress_PointerPressed eseménykezelő itt van definiálva.  Nincsenek működéséhez, ehhez további működik, amely ebben az oktatóanyagban a következő leckében tárgyalja.
 6. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
 A kész fájl mögötti kódban kell kinéznie:
@@ -807,7 +807,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             changeStreams(selectedStreams);
         }
    ```
-**Fordítsa le és az alkalmazás tesztelése**
+   **Fordítsa le és az alkalmazás tesztelése**
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
@@ -1009,7 +1009,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
             changeStreams(selectedStreams);
          }
    ```
-**Fordítsa le és az alkalmazás tesztelése**
+   **Fordítsa le és az alkalmazás tesztelése**
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
@@ -1026,8 +1026,8 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Egyéb erőforrások:
-* [Hogyan lehet speciális funkciókkal Smooth Streaming Windows 8 JavaScript-alkalmazás létrehozása](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-* [Smooth Streaming technikai áttekintése](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+* [Hogyan lehet speciális funkciókkal Smooth Streaming Windows 8 JavaScript-alkalmazás létrehozása](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Smooth Streaming technikai áttekintése](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
