@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 3/06/2019
-ms.openlocfilehash: b2ad701115a69520658c2aa9cea53dbda90cf868
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.date: 3/14/2019
+ms.openlocfilehash: d8aaf51c836a8e88c4e9b92798067167cd044e72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015367"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet erőforrások skálázása
 
@@ -26,7 +26,6 @@ Ez a cikk ismerteti az Azure SQL Database rugalmas készletek és a készletezet
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Módosítsa a számítási erőforrásokat (virtuális magok vagy dtu-k)
 
 Miután kiválasztotta a virtuális magok vagy edtu-k számát, skálázhatja rugalmas készlet felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), a [Azure CLI-vel ](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
-
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Szolgáltatási szint vagy átméretezésekor számítási méret módosításának hatása
 
@@ -71,6 +70,9 @@ A késést, módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázi
 Számlázása óránként, a legmagasabb szolgáltatási szintet létezik adatbázis + compute-méretet, létezése alatt, hogy egy óránál kevesebb ideig volt az adatbázis aktív függetlenül. Például ha egy önálló adatbázis létrehozása, és öt perc múlva törli azt a számla egy adatbázisóráért díját tükrözi.
 
 ## <a name="change-elastic-pool-storage-size"></a>Rugalmas készlet tárolási méretének módosítása
+
+> [!IMPORTANT]
+> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 

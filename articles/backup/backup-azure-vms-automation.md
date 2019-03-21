@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: b50dcfc21ce6b8d4fc1becd178bf8469870740b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a3fd89ee67b495d3ca1173faa9381ceba117ef63
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839678"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259312"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
@@ -299,7 +299,7 @@ A következő ábra az objektumhierarchia a RecoveryServicesVault le a BackupRec
 
 ![Recovery Services objektumhierarchia BackupContainer megjelenítése](./media/backup-azure-vms-arm-automation/backuprecoverypoint-only.png)
 
-Biztonsági másolat adatainak visszaállítása, állapítsa meg a biztonsági másolat elemet, és a helyreállítási pont a időponthoz adatokat tartalmazó tárban. Használat [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) adatok visszaállítása a tárból a fiókjához.
+Biztonsági másolat adatainak visszaállítása, állapítsa meg a biztonsági másolat elemet, és a helyreállítási pont a időponthoz adatokat tartalmazó tárban. Használat [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) adatok visszaállítása a tárból a fiókjához.
 
 Az Azure virtuális gép visszaállítása alapvető lépések a következők:
 
@@ -348,7 +348,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>A lemezek visszaállítása
 
-Használja a **[Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) parancsmagot, hogy a biztonsági másolati elem adatot és konfigurációs visszaállítása egy helyreállítási pontot. Ha azonosította a helyreállítási pont, használjon, értékeként a **- RecoveryPoint** paraméter. A fenti mintában **$rp [0]** volt a helyreállítási pontot. A következő mintakód **$rp [0]** van a lemez visszaállításához használni kívánt helyreállítási pontot.
+Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) parancsmagot, hogy a biztonsági másolati elem adatot és konfigurációs visszaállítása egy helyreállítási pontot. Ha azonosította a helyreállítási pont, használjon, értékeként a **- RecoveryPoint** paraméter. A fenti mintában **$rp [0]** volt a helyreállítási pontot. A következő mintakód **$rp [0]** van a lemez visszaállításához használni kívánt helyreállítási pontot.
 
 A lemezek és a konfigurációs adatok visszaállításához:
 

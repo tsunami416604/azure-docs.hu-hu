@@ -5,22 +5,22 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 702101039c03b30bb8883ef0308fe68c5567a0c4
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: MT
+ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733215"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285838"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
 Az Application gateway lehet megvalósítani a különböző helyzetekhez különböző módon konfigurálható több összetevőből áll. Ez a cikk végigvezeti hogyan minden összetevője kell konfigurálni.
 
-![application-gateway-components](.\media\configuration-overview\configuration-overview1.png)
+![application-gateway-components](./media/configuration-overview/configuration-overview1.png)
 
-A fenti példaképen alkalmazás 3 figyelők konfigurációját mutatja be. Első többhelyes figyelővel a kettő http://acme.com/* és http://fabrikam.com/*, illetve. Mindkét figyelik a 80-as porton. A harmadik figyelő végpontok közötti SSL-lezárást az alapszintű figyelő. 
+A fenti példaképen alkalmazás 3 figyelők konfigurációját mutatja be. Első többhelyes figyelővel a kettő `http://acme.com/*` és `http://fabrikam.com/*`, illetve. Mindkét figyelik a 80-as porton. A harmadik figyelő végpontok közötti SSL-lezárást az alapszintű figyelő. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,9 @@ Application gateway-példány dedikált központi telepítés a virtuális hál�
 
 #### <a name="size-of-the-subnet"></a>Az alhálózat mérete
 
-Esetén a v1 Termékváltozatot application Gateway felhasznál egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-cím Ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra. Ha például egy application gateway beállítása három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat szükséges. Ebben az esetben az application gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
+Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra. Például ha egy application gateway három példányban, és nincs magánhálózati előtérbeli IP-címet, majd legalább nyolc IP-címek szükség lesz az alhálózat - öt IP-cím belső használatra, és három IP-címek az application gateway három-példányai számára. Ezért a jelen esetben egy/29 méretű vagy nagyobb alhálózat van szükség. Ha három példányban és IP-címet a magánhálózati előtérbeli IP-konfiguráció kilenc IP-cím lesz szükséges – az application Gateway három példányban három IP-címek magánhálózati előtérbeli és öt IP-Címek egy IP-címet szünteti meg belső használatra. Ezért, jelen esetben a 28 méretet, vagy nagyobb alhálózat van szükség.
+
+Ajánlott eljárásként használja legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatott az Application Gateway-alhálózatot a hálózati biztonsági csoportok
 
@@ -41,7 +43,7 @@ Hálózati biztonsági csoportok (NSG-k) az Application Gateway-alhálózat a k�
 
 - Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók kihasználására nem képes a végpontokra módosításokat kezdeményezni.
 
-- Kimenő internetkapcsolattal nem lehet blokkolni.
+- Kimenő internetkapcsolattal nem lehet blokkolni. Alapértelmezett kimenő szabályokat az NSG-ben már engedélyezéséhez. Azt javasoljuk, hogy ne távolítsa el az alapértelmezett kimenő szabályok és, hogy ne hozzon létre más kimenő szabályok, amelyek a megtagadási kimenő internetkapcsolattal.
 
 - Az AzureLoadBalancer címkét a forgalmat engedélyezni kell.
 
@@ -57,11 +59,12 @@ Ebben a forgatókönyvben teheti meg az application gateway alhálózatának az 
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Felhasználó által megadott útvonalakat támogatja az Application Gateway-alhálózat
 
-Felhasználó által megadott útvonalak (udr-EK), a v1-Termékváltozat esetén támogatottak a az application gateway alhálózatának mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció.
-
-Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
+Felhasználó által megadott útvonalak (udr-EK), a v1-Termékváltozat esetén támogatottak a az application gateway alhálózatának mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció. Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
 
 V2 esetén Termékváltozat, az application gateway alhálózatának az udr-EK nem támogatottak. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+
+> [!NOTE]
+> Az állapot ellenőrzése az udr-EK használata az application gateway alhálózatának a hatására a [háttérrendszer állapotának megtekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) jelennek meg **ismeretlen** és az application gateway-naplók generációja failue is eredményez, és metrikák. Javasoljuk, ne használja udr-EK az application gateway alhálózatának megtekintheti a háttérrendszer állapota, naplók és mérőszámok.
 
 ## <a name="frontend-ip"></a>Előtérbeli IP-címet
 
@@ -85,13 +88,13 @@ Választhat [alap- vagy többhelyes figyelő](https://docs.microsoft.com/azure/a
 
 - Ha egy Application gateway mögött egyetlen hely üzemelteti, válassza ki az alapszintű figyelő. Ismerje meg, [hogyan hozhat létre egy application gateway az alapszintű figyelő](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Ha egynél több webalkalmazást vagy konfigurálásakor, ugyanazon szülőtartomány több altartománnyal ugyanazon application gateway-példányon, majd válassza ki a többhelyes figyelő. A többhelyes figyelő továbbá kell adjon meg egy állomásnevet. Ennek az oka az Application Gateway a HTTP 1.1-állomásfejlécek segítségével az ugyanazon nyilvános IP-cím és port egynél több webhely üzemeltetése támaszkodik.![1551057450710](C:\Users\absha\AppData\Roaming\Typora\typora-user-images\1551057450710.png)
+- Ha egynél több webalkalmazást vagy konfigurálásakor, ugyanazon szülőtartomány több altartománnyal ugyanazon application gateway-példányon, majd válassza ki a többhelyes figyelő. A többhelyes figyelő továbbá kell adjon meg egy állomásnevet. Ennek az oka az Application Gateway a HTTP 1.1-állomásfejlécek segítségével az ugyanazon nyilvános IP-cím és port egynél több webhely üzemeltetése támaszkodik.
 
+#### <a name="order-of-processing-listeners"></a>A figyelők feldolgozási sorrendje
 
-> [!NOTE]
-> V1 termékváltozatot, esetén figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszintű figyelő megfelel egy bejövő kérésnek feldolgozza a először. Ezért többhelyes figyelőket konfigurálni kell egy alapszintű figyelő annak biztosítása érdekében az adatforgalmat a megfelelő háttér előtt.
->
-> V2 SKU-k esetén többhelyes figyelővel dolgozza fel előbb alapszintű figyelők.
+V1 termékváltozatot, esetén figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszintű figyelő megfelel egy bejövő kérésnek feldolgozza a először. Ezért többhelyes figyelőket konfigurálni kell egy alapszintű figyelő annak biztosítása érdekében az adatforgalmat a megfelelő háttér előtt.
+
+V2 SKU-k esetén többhelyes figyelővel dolgozza fel előbb alapszintű figyelők.
 
 ### <a name="frontend-ip"></a>Előtérbeli IP-címet
 
@@ -111,9 +114,9 @@ Kell a HTTP és HTTPS protokoll közül választhat.
 
   Konfigurálja a Secure Sockets Layer (SSL)-lezárások és teljes körű SSL-titkosítást, a tanúsítvány vehető fel a figyelővel, lehetővé téve az Application Gateway, hogy a szimmetrikus kulcs megfelelően az SSL protokoll-meghatározása szükséges. A szimmetrikus kulcs titkosításához és visszafejtéséhez az átjáró küldött forgalmat majd szolgál. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé. 
 
-#### <a name="supported-certs"></a>Támogatott tanúsítványok
+#### <a name="supported-certificates"></a>Támogatott tanúsítványok
 
-Önaláírt tanúsítványok, a CA-tanúsítványok, a helyettesítő tanúsítványok és a Bővített-tanúsítványok használata támogatott.
+Lásd: [tanúsítványokat az SSL-lezárást támogatott](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
 
 ### <a name="additional-protocol-support"></a>További protokollok támogatása
 
@@ -161,11 +164,11 @@ Választhat [alap- vagy útvonalalapú szabály](https://docs.microsoft.com/azur
 - Válassza ki a figyelő-alapú, ha szeretné átirányítani kéréseket a meghatározott háttérkészletek az adott URL-cím. Az elérési út mintája csak az elérési utat az URL-cím, hogy a lekérdezési paraméterek nem érvényes.
 
 
-> [!NOTE]
->
-> V1 termékváltozatot, esetén egyező minta a bejövő kérelem feldolgozása a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel. Éppen ezért, ha a kérelem megfelel a mintának a két vagy több útvonal létezik az az URL-Címtérkép, majd az elérési utat, amely szerepel a listán előbb található, karakterként lesz, és a rendszer továbbítja a kérést társított azt az elérési utat a háttérkiszolgálón.
->
-> V2 SKU-k esetén pontos egyezést keresztül, amelyben az elérési utakat az URL-Címtérkép szereplő sorrendben tárolja a magasabb prioritású. Az adott ok, ha a kérelem megfelel a mintának két vagy több elérési útvonalat, a akkor a rendszer továbbítja a kérést a háttérrendszer társított, az elérési útvonalat, amely pontosan megegyezik a kérés. Az elérési utat a bejövő kérelem nem egyezik az URL-Címtérkép bármely elérési út, ha a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel majd egyező minta a bejövő kérelem feldolgozása.
+#### <a name="order-of-processing-rules"></a>A szabályok feldolgozása sorrendben
+
+V1 termékváltozatot, esetén egyező minta a bejövő kérelem feldolgozása a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel. Éppen ezért, ha a kérelem megfelel a mintának a két vagy több útvonal létezik az az URL-Címtérkép, majd az elérési utat, amely szerepel a listán előbb található, karakterként lesz, és a rendszer továbbítja a kérést társított azt az elérési utat a háttérkiszolgálón.
+
+V2 SKU-k esetén pontos egyezést keresztül, amelyben az elérési utakat az URL-Címtérkép szereplő sorrendben tárolja a magasabb prioritású. Az adott ok, ha a kérelem megfelel a mintának két vagy több elérési útvonalat, a akkor a rendszer továbbítja a kérést a háttérrendszer társított, az elérési útvonalat, amely pontosan megegyezik a kérés. Az elérési utat a bejövő kérelem nem egyezik az URL-Címtérkép bármely elérési út, ha a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel majd egyező minta a bejövő kérelem feldolgozása.
 
 ### <a name="associated-listener"></a>Kapcsolódó figyelő
 
@@ -177,7 +180,7 @@ A háttérkészlet, a háttérbeli célokat szolgálnak majd a kérelmek, a figy
 
 ### <a name="associated-backend-http-setting"></a>Társított háttérbeli HTTP-beállítás
 
-Adjon hozzá minden egyes szabály egy háttérbeli HTTP-beállítás. A kérelmeket fogja átirányítani az Alkalmazásátjáró háttérbeli célelemein kerüljön a portszám, protokoll és más ebben a beállításban megadott beállítások használatával. Egy egyszerű szabályt esetén csak egy háttérbeli HTTP-beállítás engedélyezett, mert a a kapcsolódó figyelőt a kérelmeket a rendszer továbbítja a megfelelő háttér célokat a HTTP-beállítás használatával. Útvonalalapú szabály esetén adjon hozzá több háttérbeli HTTP-beállítások minden egyes URL-cím megfelelő. A megfelelő háttér célokat, az egyes URL-cím megfelelő HTTP-beállítások használatával a rendszer továbbítja a kérelmeket, amelyek egyeznek az itt megadott URL-címet. Továbbá adja hozzá egy alapértelmezett HTTP-beállítások, mivel a rendszer továbbítja a kérelmeket, amelyek bármely ebben a szabályban megadott URL-cím nem egyezik az alapértelmezett háttérkészlet használata az alapértelmezett HTTP-beállítások.
+Adjon hozzá minden egyes szabály egy háttérbeli HTTP-beállítás. A kérelmeket fogja átirányítani az Alkalmazásátjáró háttérbeli célelemein kerüljön a portszám, protokoll és más ebben a beállításban megadott beállítások használatával. Egy egyszerű szabályt esetén csak egy háttérbeli HTTP-beállítás engedélyezett, mert a a kapcsolódó figyelőt a kérelmeket a rendszer továbbítja a megfelelő háttér célokat a HTTP-beállítás használatával. Útvonalalapú szabály esetén adjon hozzá több háttérbeli HTTP-beállítások minden egyes URL-cím megfelelő. A megfelelő háttér célokat, az egyes URL-cím megfelelő HTTP-beállítások használatával a rendszer továbbítja a kérelmeket, amelyek egyeznek az itt megadott URL-címet. Továbbá adja hozzá egy alapértelmezett HTTP-beállítás, mivel a rendszer továbbítja a kérelmeket, amelyek nem felelnek meg az összes ebben a szabályban megadott URL-cím használatával az alapértelmezett HTTP-beállítás alapértelmezett háttérkészlet.
 
 ### <a name="redirection-setting"></a>Átirányítási beállítás
 
@@ -187,7 +190,7 @@ Az átirányítás képesség kapcsolatos információkért lásd: [mappaátirá
 
 - #### <a name="redirection-type"></a>Átirányítás típusa
 
-  Válassza ki a szükséges átirányítás típusát: Állandó, ideiglenes, található, vagy mások megtekintése.
+  Válassza ki a szükséges átirányítás típusát: Permanent(301), Temporary(307), Found(302) vagy lásd other(303).
 
 - #### <a name="redirection-target"></a>Átirányítás célhelye
 
@@ -195,7 +198,7 @@ Az átirányítás képesség kapcsolatos információkért lásd: [mappaátirá
 
   - ##### <a name="listener"></a>Figyelő
 
-    Átirányítási céljaként lehetőséget választva figyelő segít egy figyelő átirányítása egy másik figyelő az átjárón. A beállítás akkor szükséges, ha engedélyezi a HTTP – HTTPS átirányításról, azaz a átirányítási forgalmat a forrás figyelőt a bejövő HTTP-kérések ellenőrzése a bejövő HTTPS-kéréseket a cél-figyelővel ellenőrzése. Azt is beállíthatja a lekérdezési karakterlánc és elérési útját a szerepeltetni a átirányítás célhelyre továbbítja a kérést küldött eredeti kéréssel.![application-gateway-components](.\media\configuration-overview\configure-redirection.png)
+    Átirányítási céljaként lehetőséget választva figyelő segít egy figyelő átirányítása egy másik figyelő az átjárón. A beállítás akkor szükséges, ha engedélyezi a HTTP – HTTPS átirányításról, azaz a átirányítási forgalmat a forrás figyelőt a bejövő HTTP-kérések ellenőrzése a bejövő HTTPS-kéréseket a cél-figyelővel ellenőrzése. Azt is beállíthatja a lekérdezési karakterlánc és elérési útját a szerepeltetni a átirányítás célhelyre továbbítja a kérést küldött eredeti kéréssel.![application-gateway-components](./media/configuration-overview/configure-redirection.png)
 
     További részletekért a HTTP – HTTPS átirányításról, tekintse meg a [portállal HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal), [PowerShell-lel HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell), [parancssori felület használatával a HTTP, HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
@@ -237,14 +240,14 @@ Az application gateway háttérkészlet válasz érkezik egy "Kapcsolat időkorl
 
 Ezzel a beállítással konfigurálhatja egy választható egyéni továbbítási elérési útját használja, ha a rendszer továbbítja a kérést a háttérkiszolgálóra. Ez bármely részét a bejövő, amely megfelel a megadott egyéni elérési út, másolja a **bírálja felül a háttérszolgáltatás elérési útja** mezőt a továbbított elérési utat. A funkció működésének megismerése az alábbi táblázatban talál.
 
-- Amikor a HTTP-beállítások kapcsolódik egy egyszerű kérelem-útválasztási szabály:
+- Amikor a HTTP-beállítás kapcsolódik egy egyszerű kérelem-útválasztási szabály:
 
   | Eredeti kérést  | Háttéralkalmazás elérési útjának felülbírálása | Továbbított háttérrendszeréhez kérelem |
   | ----------------- | --------------------- | ---------------------------- |
   | /Home/            | /override/            | / / home/felülbírálása              |
   | / home/secondhome / | /override/            | / felülbírálás/home/secondhome /   |
 
-- Amikor a HTTP-beállítások kapcsolódik egy kérelem-alapú útválasztási szabályt:
+- Amikor a HTTP-beállítás kapcsolódik egy kérelem-alapú útválasztási szabályt:
 
   | Eredeti kérést           | Elérésiút-szabály       | Háttéralkalmazás elérési útjának felülbírálása | Továbbított háttérrendszeréhez kérelem |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |
@@ -277,7 +280,7 @@ Ha egy egyéni tartománnyal, és a meglévő egyéni DNS-név van leképezve az
 
 ### <a name="host-name-override"></a>Gazdagép nevének felülbírálása
 
-Ez a lehetőség váltja fel a *gazdagép* a bejövő kérelem, az application gateway az itt megadott állomás nevét a fejlécet. Például, ha a www.contoso.com a következőként van megadva a **állomásnév** állítja, az eredeti kérést https://appgw.eastus.cloudapp.net/path1 változik https://www.contoso.com/path1 amikor rendszer továbbítja a kérést a háttérkiszolgálóra. 
+Ez a lehetőség váltja fel a *gazdagép* a bejövő kérelem, az application gateway az itt megadott állomás nevét a fejlécet. Például ha www\.contoso.com a következőként van megadva a **állomásnév** állítja, az eredeti kérést https://appgw.eastus.cloudapp.net/path1 változik https://www.contoso.com/path1 amikor rendszer továbbítja a kérést a háttérkiszolgálóra. 
 
 ## <a name="backend-pool"></a>Háttérkészlet
 

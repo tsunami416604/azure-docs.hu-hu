@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd93845fbb3362641c2c2620c98e35e00e58642d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ae59e6820214d1f3291f4d95a0bc7094f8b488d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Oktatóanyag: A Palo Alto Networks - GlobalProtect az Azure Active Directory-integráció
 
@@ -196,7 +196,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

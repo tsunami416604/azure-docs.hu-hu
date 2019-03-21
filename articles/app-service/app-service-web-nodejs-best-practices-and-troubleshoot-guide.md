@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898856"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
@@ -118,7 +118,7 @@ Az alapértelmezett értéke FALSE (hamis). Ha értéke igaz, az iisnode megjele
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (ne engedélyezze az éles helyet)
 
-Ez a beállítás szabályozza a hibakeresési funkció. Az Iisnode integrálva van a node-inspector. Ez a beállítás engedélyezése esetén engedélyezi a node-alkalmazás a hibakeresés. A beállítás engedélyezése esetén az iisnode "debuggerVirtualDir" könyvtárában, a node-alkalmazás hibakeresési első kérés a node-inspector fájlokat hoz létre. A node-inspector betöltheti irányuló kérelem küldésével http://yoursite/server.js/debug. A hibakeresési URL-szegmenst "debuggerPathSegment" beállítással szabályozhatja. Alapértelmezésben a debuggerPathSegment = "debug". Beállíthat `debuggerPathSegment` GUID, például úgy, hogy az informatikai nehezebb a mások által felderíteni.
+Ez a beállítás szabályozza a hibakeresési funkció. Az Iisnode integrálva van a node-inspector. Ez a beállítás engedélyezése esetén engedélyezi a node-alkalmazás a hibakeresés. A beállítás engedélyezése esetén az iisnode "debuggerVirtualDir" könyvtárában, a node-alkalmazás hibakeresési első kérés a node-inspector fájlokat hoz létre. A node-inspector betöltheti irányuló kérelem küldésével `http://yoursite/server.js/debug`. A hibakeresési URL-szegmenst "debuggerPathSegment" beállítással szabályozhatja. Alapértelmezésben a debuggerPathSegment = "debug". Beállíthat `debuggerPathSegment` GUID, például úgy, hogy az informatikai nehezebb a mások által felderíteni.
 
 Olvasási [Debug a node.js-alkalmazások a Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) hibakeresés további részleteiért.
 
@@ -133,7 +133,7 @@ A agentkeepalive modul biztosítja, hogy sockets újra felhasználhatók az Azur
 Példa [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfiguráció:
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ Ha úgy véli, hogy az alkalmazás túl sok CPU is használja, és miért nem ma
 Például tegyük fel, hogy a hello world alkalmazás, amelyet szeretne profil a következőképpen:
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Látogasson el a hibakeresési konzolt https://yoursite.scm.azurewebsites.net/DebugConsole
+Látogasson el a hibakeresési konzolt `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Nyissa meg a site/wwwroot könyvtárba. Az alábbi példában látható módon jelenik meg egy parancssort:
 
@@ -185,12 +185,12 @@ Ez a parancs telepíti a csomópont alatt v8-profiler\_modulok könyvtárat és 
 Most szerkessze a server.js az alkalmazás profilját.
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }

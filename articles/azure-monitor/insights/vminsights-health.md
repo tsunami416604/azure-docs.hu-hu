@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 7eecd7f5da2b20cb80d8a04d105460baaf9ed4a2
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076819"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  Felügyelheti az Azure Monitor használatával különböző feltételeket, míg úgy nem lett kialakítva, hogy modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -29,22 +29,22 @@ Ez a cikk segítséget nyújt a megtudhatja, hogyan mérheti fel gyorsan, kivizs
 
 A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md).
 
->[!NOTE]
->2019. február 11 indítása megkezdjük, az aktuális állapotközpontú modellről az Azure monitorban a virtuális gépek állapotfigyelő szolgáltatást, amely akkor látható, ha használja-e az állapot diagnosztikai élmény még ma, egy új verziójára a állapotmodell-ről. A frissítés javítja a állapotának összesítése feldolgozása, és a egy diagnosztikai állapot nézetében megjelenő finomított állapotmodell tartalmazza. 
->
->Az új modell állapotának összesítését, szülőentitás/szintű állapotára vonatkozó feltételek, alárendelt állapotára vonatkozó feltételek lesz gyorsabban, és ennek eredményeképpen a kívánt vagy célzott állapot kisebb késést biztosítanak a szülő-frissítések állapotát. A állapotára vonatkozó feltételek alapján is szűrheti a **teljesítmény** és **rendelkezésre állási** ellentétben az előző lapon-alapú metódus jelölje ki a nézetben vagy kategória kategóriák.
->
->Egészségügyi diagnosztikai funkciókkal kapcsolatos további részletekért tekintse meg a Health diagnosztikai [szakasz](#health-diagnostics) ebben a cikkben. 
->
->Ez a frissítés javulni fog a következőket: 
->
->- Állapotának összesítése az alacsonyabb késésű feldolgozása  
->- Állapotfigyelők állapotváltozásai gyorsabb riasztásai 
->- Az összes virtuális gép összesített virtuális gép nézetben állapot gyorsabban frissítése 
->
->Nincs olyan funkciókat, ma kiadásaiban az állapotfigyelő szolgáltatás Azure monitor-beli virtuális gépek nem regressziós.
-
->Ebből a változásból két megközelítés az egészségügyi diagnostics érintett - állapot módosítási előzményeinek alaphelyzetbe állnak, és korábbi állapotára vonatkozó feltételek állapotváltozásait nem lesz elérhető, tekintse át a Állapotváltozási oszlopban található a Health diagnosztika lapot. Ha érdekli a korábbi adatok bármelyik üzleti szempontból alapvető kritikus fontosságú virtuális Gépet, akkor is igénybe vehet a feltételek-állapotadatok és a megfelelő állapotváltozások képernyőkép referenciaként. 
+> [!NOTE]
+> 2019. február 11 indítása megkezdjük, az aktuális állapotközpontú modellről az Azure monitorban a virtuális gépek állapotfigyelő szolgáltatást, amely akkor látható, ha használja-e az állapot diagnosztikai élmény még ma, egy új verziójára a állapotmodell-ről. A frissítés javítja a állapotának összesítése feldolgozása, és a egy diagnosztikai állapot nézetében megjelenő finomított állapotmodell tartalmazza. 
+> 
+> Az új modell állapotának összesítését, szülőentitás/szintű állapotára vonatkozó feltételek, alárendelt állapotára vonatkozó feltételek lesz gyorsabban, és ennek eredményeképpen a kívánt vagy célzott állapot kisebb késést biztosítanak a szülő-frissítések állapotát. A állapotára vonatkozó feltételek alapján is szűrheti a **teljesítmény** és **rendelkezésre állási** ellentétben az előző lapon-alapú metódus jelölje ki a nézetben vagy kategória kategóriák.
+> 
+> Egészségügyi diagnosztikai funkciókkal kapcsolatos további részletekért tekintse meg a Health diagnosztikai [szakasz](#health-diagnostics) ebben a cikkben. 
+> 
+> Ez a frissítés javulni fog a következőket: 
+> 
+> - Állapotának összesítése az alacsonyabb késésű feldolgozása  
+> - Állapotfigyelők állapotváltozásai gyorsabb riasztásai 
+> - Az összes virtuális gép összesített virtuális gép nézetben állapot gyorsabban frissítése 
+> 
+> Nincs olyan funkciókat, ma kiadásaiban az állapotfigyelő szolgáltatás Azure monitor-beli virtuális gépek nem regressziós.
+> 
+> Ebből a változásból két megközelítés az egészségügyi diagnostics érintett - állapot módosítási előzményeinek alaphelyzetbe állnak, és korábbi állapotára vonatkozó feltételek állapotváltozásait nem lesz elérhető, tekintse át a Állapotváltozási oszlopban található a Health diagnosztika lapot. Ha érdekli a korábbi adatok bármelyik üzleti szempontból alapvető kritikus fontosságú virtuális Gépet, akkor is igénybe vehet a feltételek-állapotadatok és a megfelelő állapotváltozások képernyőkép referenciaként. 
 
 ## <a name="monitoring-configuration-details"></a>Figyelési konfiguráció részletei
 Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek figyelése meghatározott alapértelmezett állapotára vonatkozó feltételek. Az összes állapotára vonatkozó feltételek riasztás előre konfigurálva, a nem megfelelő állapotú feltétel teljesülése esetén. 

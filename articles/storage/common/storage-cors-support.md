@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473765"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002947"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
-2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](http://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](http://www.w3.org/TR/cors/) CORS részleteiért.
+2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](https://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](https://www.w3.org/TR/cors/) CORS részleteiért.
 
 Beállíthatja a CORS-szabályok külön-külön az egyes, a storage-szolgáltatás, meghívásával [állítsa Blob szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452235.aspx), [állítsa be a Queue szolgáltatás tulajdonságai](https://msdn.microsoft.com/library/hh452232.aspx), és [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx). Miután beállította a CORS-szabályok a szolgáltatáshoz, majd más tartományokból a szolgáltatás megfelelő engedéllyel rendelkező kérelem kiértékelendő meghatározni, hogy engedélyezett-e a megadott szabályok alapján.
 
@@ -29,7 +29,7 @@ Beállíthatja a CORS-szabályok külön-külön az egyes, a storage-szolgáltat
 ## <a name="understanding-cors-requests"></a>CORS-kérések ismertetése
 A CORS-kéréshez egy forrástartomány a két külön kérelmet állhat:
 
-* Előzetes kérése, amely lekérdezi a CORS a szolgáltatás korlátozásai. Az ellenőrzési kérés megadása kötelező, kivéve, ha a kérelmi metódust egy [egyszerű módszer](http://www.w3.org/TR/cors/), ami azt jelenti, GET, HEAD vagy POST.
+* Előzetes kérése, amely lekérdezi a CORS a szolgáltatás korlátozásai. Az ellenőrzési kérés megadása kötelező, kivéve, ha a kérelmi metódust egy [egyszerű módszer](https://www.w3.org/TR/cors/), ami azt jelenti, GET, HEAD vagy POST.
 * A tényleges kérést, szemben a kívánt erőforrást.
 
 ### <a name="preflight-request"></a>Ellenőrzési kérés
@@ -129,7 +129,7 @@ Ezután vegye figyelembe a következő CORS-kérések:
 
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
-| **Metódus** |**Forrás** |**Kérelem fejlécei** |**A szabály egyezés** |**Eredmény** |
+| **Metódus** |**Forrás** |**Kérelemfejlécek** |**A szabály egyezés** |**Eredmény** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
@@ -146,7 +146,7 @@ A harmadik kérelem megegyezik a forrástartomány és módot, a második szabá
 > 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>Hogyan van beállítva a változtatás fejléc ismertetése
-A *változtatás* fejléc kérés üzenetfejlécének mezői, amely a böngészőben vagy a felhasználói ügynök a feltételeket, amelyek a kérelem feldolgozását a kiszolgáló által kiválasztott kapcsolatos tanácsadás, amely szabványos HTTP/1.1 fejléc. A *változtatás* fejléc főleg proxyk, a böngésző és a CDN, amelyek segítségével határozza meg, hogyan érdemes gyorsítótárazni a válasz-gyorsítótárazás használható. További információkért lásd: a-specifikációt az [változtatás fejléc](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+A *változtatás* fejléc kérés üzenetfejlécének mezői, amely a böngészőben vagy a felhasználói ügynök a feltételeket, amelyek a kérelem feldolgozását a kiszolgáló által kiválasztott kapcsolatos tanácsadás, amely szabványos HTTP/1.1 fejléc. A *változtatás* fejléc főleg proxyk, a böngésző és a CDN, amelyek segítségével határozza meg, hogyan érdemes gyorsítótárazni a válasz-gyorsítótárazás használható. További információkért lásd: a-specifikációt az [változtatás fejléc](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Ha a böngészőben vagy egy másik felhasználói ügynök gyorsítótárazza a CORS-kérést kapott választ, a forrástartomány engedélyezett származási gyorsítótárazza. Ha egy másik tartomány kiad egy tárolási erőforrás a kérésben, amíg a gyorsítótár nem aktív, a felhasználói ügynök a gyorsítótárazott forrástartomány kérdezi le. A második tartomány nem felel meg a gyorsítótárazott tartományban, ezért a kérelem meghiúsul, ha egyébként járnak. Bizonyos esetekben az Azure Storage állítja be a változtatás fejléc **forrás** arra utasítani a felhasználói ügynököt az ezt követő CORS kérést küldhet a szolgáltatás, ha a kérelmező tartomány eltér a gyorsítótárazott forrás.
 
@@ -162,7 +162,7 @@ Vegye figyelembe, hogy lépéseire GET/HEAD-kérések számára, a tárolási sz
 Az alábbi táblázat azt jelzi, hogy az Azure storage GET/HEAD-kérések a korábban említett esetek alapján fog válaszolni:
 
 | Kérés | Fiók beállítását és a szabály kiértékelés eredménye |  |  | Válasz |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **Jelen a kérelem származási fejléc** |**Ez a szolgáltatás számára megadott CORS-szabály** |**Egyeztetési szabályt, amely lehetővé teszi az összes origins(*) létezik** |**Egyező szabálya létezik forrás pontos egyezés** |**Válasz tartalmazza a változtatás fejléc forrás beállítása** |**Válasz tartalmazza a hozzáférés-vezérlés – engedélyezett-forrás: "*"** |**Response includes Access-Control-Exposed-Headers** |
 | Nem |Nem |Nem |Nem |Nem |Nem |Nem |
 | Nem |Igen |Nem |Nem |Igen |Nem |Nem |
@@ -184,5 +184,5 @@ Sikertelen ellenőrzés kérelmek nem számítjuk fel.
 
 [Table Service tulajdonságainak megadása](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[W3C eltérő eredetű erőforrások megosztása specifikáció](http://www.w3.org/TR/cors/)
+[W3C eltérő eredetű erőforrások megosztása specifikáció](https://www.w3.org/TR/cors/)
 

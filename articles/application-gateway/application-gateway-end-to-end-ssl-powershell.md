@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/10/2019
 ms.author: victorh
-ms.openlocfilehash: 7006d7ed56c58858e4b7c053af3ba1101455928c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101550"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
@@ -53,21 +53,21 @@ A konfigurációs folyamat a következő szakaszokban ismertetett.
 Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az application gateway létrehozása.
 
 
-   1. Jelentkezzen be Azure-fiókjába.
+1. Jelentkezzen be Azure-fiókjába.
 
    ```powershell
    Connect-AzAccount
    ```
 
 
-   2. Válassza ki a ebben a forgatókönyvben használni kívánt előfizetést.
+2. Válassza ki a ebben a forgatókönyvben használni kívánt előfizetést.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
 
 
-   3. Hozzon létre egy erőforráscsoportot. (Hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ.)
+3. Hozzon létre egy erőforráscsoportot. (Hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ.)
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location "West US"
@@ -78,7 +78,7 @@ Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az applicati
 Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. Egy alhálózatot az application gateway tárolásához. A másik alhálózatot a háttérrendszerek, amelyek a webalkalmazás üzemeltetéséhez.
 
 
-   1. Rendeljen hozzá egy használható az application gateway az alhálózat-címtartományt.
+1. Rendeljen hozzá egy használható az application gateway az alhálózat-címtartományt.
 
    ```powershell
    $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 10.0.0.0/24
@@ -89,19 +89,19 @@ Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. E
    > 
    > 
 
-   2. A háttér-címkészletet kell használni egy olyan címtartományt rendel.
+2. A háttér-címkészletet kell használni egy olyan címtartományt rendel.
 
    ```powershell
    $nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
    ```
 
-   3. Hozzon létre egy virtuális hálózatot az előző lépések során meghatározott alhálózatot.
+3. Hozzon létre egy virtuális hálózatot az előző lépések során meghatározott alhálózatot.
 
    ```powershell
    $vnet = New-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
    ```
 
-   4. A virtuális hálózat és alhálózat erőforrást a következő lépések használhatók lekéréséhez.
+4. A virtuális hálózat és alhálózat erőforrást a következő lépések használhatók lekéréséhez.
 
    ```powershell
    $vnet = Get-AzvirtualNetwork -Name 'appgwvnet' -ResourceGroupName appgw-rg
@@ -173,7 +173,7 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
 
    > [!NOTE]
    > Az alapértelmezett mintavétel lekérdezi a nyilvános kulcs a a *alapértelmezett* SSL-kötés van a háttérbeli IP-címet, és összehasonlítja a nyilvános kulcs értékét, kap, a nyilvános kulcs értékét Ön adja meg itt. 
-   
+   > 
    > Állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben használja, ha a lekért nyilvános kulcs nem lehet a kívánt helyet, hogy melyik adatforgalmi folyamatokat. Ha kétségei vannak, látogasson el a https://127.0.0.1/ győződjön meg arról, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötés létrehozásához. A kérelemből a nyilvános kulcsot használja az ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem jelenik meg egy válasz és a tanúsítvány manuális böngésző kérést a https://127.0.0.1/ a háttér-kiszolgálókon be kell állítania egy alapértelmezett SSL-kötés van a számukra. Ha ezt nem teszi meg, a sikertelen mintavételek és a háttér nem szerepel az engedélyezési listán.
 
    ```powershell
@@ -218,17 +218,17 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
 
 11. Az application gateway esetében használható SSL-szabályzat konfigurálása. Az Application Gateway támogatja a minimális verziója az SSL-protokollverziók megadására.
 
-   A következő értékek közül, amelyek az protokollverziók listája:
+    A következő értékek közül, amelyek az protokollverziók listája:
 
     - **TLSV1_0**
     - **TLSV1_1**
     - **TLSV1_2**
     
-   Az alábbi példa állítja a minimális protokoll verziója **TLSv1_2** , és lehetővé teszi **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak.
+    Az alábbi példa állítja a minimális protokoll verziója **TLSv1_2** , és lehetővé teszi **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak.
 
-   ```powershell
-   $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-   ```
+    ```powershell
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
@@ -242,20 +242,20 @@ $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -Resou
 
 Az előző lépések végrehajtásának egy alkalmazás létrehozásának teljes körű SSL-lel, és bizonyos SSL-protokollverziók letiltása. A következő példa letiltja az egyes SSL-szabályzatokat egy meglévő alkalmazásátjárón.
 
-   1. Az Alkalmazásátjáró frissítése lekéréséhez.
+1. Az Alkalmazásátjáró frissítése lekéréséhez.
 
    ```powershell
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-   2. Egy SSL-szabályzat meghatározása. A következő példában **TLSv1.0** és **TLSv1.1** le van tiltva, és a titkosító csomagok **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak kiépítettektől engedélyezett.
+2. Egy SSL-szabályzat meghatározása. A következő példában **TLSv1.0** és **TLSv1.1** le van tiltva, és a titkosító csomagok **TLS\_ECDHE\_ECDSA\_WITH\_ AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak kiépítettektől engedélyezett.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-   3. Végül frissítse az átjárót. Az utolsó lépéseként egy hosszan futó feladatot. Amikor kész van, az application gateway teljes körű SSL van konfigurálva.
+3. Végül frissítse az átjárót. Az utolsó lépéseként egy hosszan futó feladatot. Amikor kész van, az application gateway teljes körű SSL van konfigurálva.
 
    ```powershell
    $gw | Set-AzApplicationGateway

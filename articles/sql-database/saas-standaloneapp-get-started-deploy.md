@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567213"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012671"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése az Azure SQL-adatbázist használó önálló egybérlős alkalmazás
 
@@ -76,11 +76,11 @@ Az alkalmazás események üzemeltető helyszínek bemutatja.  A helyszínek a b
 
 1. A három külön böngészőlapokon bérlők mindegyike esetében nyissa meg az események lapról:
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    (Egyes URL-címben cserélje le a &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)
+     (Egyes URL-címben cserélje le a &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)
 
    ![Események](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ Minden bérlői adatbázis **hely** az a megfelelő telepített alkalmazások be
 
 Nézzük, egyes üzembe helyezett erőforrások:
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg a azon erőforráscsoportok listája.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg a azon erőforráscsoportok listája.
 2. A három bérlői erőforrás-csoportok kell megjelennie.
 3. Nyissa meg a **wingtip-sa-fabrikam -&lt;felhasználói&gt;**  a Fabrikam Jazz Club központi telepítés az erőforrásokat tartalmazó erőforráscsoportot.  A **fabrikamjazzclub -&lt;felhasználói&gt;**  kiszolgáló tartalmazza a **fabrikamjazzclub** adatbázis.
 

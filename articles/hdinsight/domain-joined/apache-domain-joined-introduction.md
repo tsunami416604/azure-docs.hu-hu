@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913144"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225059"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
 Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: helyi rendszergazdaként. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Ahogy az Apache Hadoop-alapú számítási feladatok nagyobb népszerűségre tettek a vállalati szektorban, szükség van a nagyvállalati szintű szolgáltatásokat, például az Active Directory-alapú hitelesítéshez, többfelhasználós támogatja, és a szerepköralapú hozzáférés-vezérlés egyre inkább fontosabbá váltak. 
 
-Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely egy Active Directory-tartományhoz csatlakozik. Konfigurálhatja a vállalati alkalmazottak, akik hitelesíthetnek az Azure Active Directoryban való bejelentkezéshez a HDInsight-fürt listáját. Egyetlen a vállalaton kívülre jelentkezzen be, vagy a HDInsight-fürt eléréséhez. 
+Létrehozhat egy HDInsight-fürtöt a vállalati biztonsági csomag (ESP), amely egy Active Directory-tartományhoz csatlakozik. Konfigurálhatja a vállalati alkalmazottak, akik hitelesíthetnek az Azure Active Directoryban való bejelentkezéshez a HDInsight-fürt listáját. Egyetlen a vállalaton kívülre bejelentkezés vagy a HDInsight-fürt eléréséhez. 
 
 A vállalati rendszergazda konfigurálhatja szerepköralapú hozzáférés-vezérlés (RBAC) az Apache Hive-biztonsághoz használatával [Apache Ranger](https://hortonworks.com/apache/ranger/). RBAC konfigurálása korlátozza az adatok elérése csak akkor szükséges. Végül a rendszergazda naplózhatja az alkalmazottak és bármely változtatást a hozzáférés-vezérlési házirendeket adatelérési. A rendszergazda egy magas szintű a vállalati erőforrásokat, majd érheti el.
 
@@ -36,10 +36,10 @@ A HDInsight szegélyhálózat-alapú biztonság virtuális hálózatok és az Az
 
 Szegélyhálózat-alapú biztonsági réteget a VPN-átjáró szolgáltatáson keresztül érhető el. Az átjáró védelmet biztosít a HDInsight-fürthöz érkező bármely kérés az első sorában funkcionál. Azt fogadja a kéréseket, ellenőrzi, és csak ezután lehetővé teszi, hogy a kérelem átadása a fürt más csomópontjaira. Ezzel a módszerrel az átjáró biztosítja a fürt más név- és adatcsomópontok szegélyhálózat-alapú biztonságát.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 Vállalati rendszergazda és az ESP hozhat létre egy HDInsight-fürtöt egy [virtuális hálózat](https://azure.microsoft.com/services/virtual-network/). A HDInsight-fürt összes csomópontján csatlakozott a tartományhoz, a vállalat által kezelt. Ez a gazdafájlon keresztül a [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
-Ezzel a beállítással vállalat alkalmazottai bejelentkezhet a fürtcsomópontok tartományi hitelesítő adataik használatával. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például az Apache Ambari Views, ODBC, JDBC, PowerShell és REST API-k kommunikáljanak a fürttel való hitelesítéshez szolgáltatást is alkalmazhatja. A rendszergazda teljes mértékben vezérelheti a felhasználók száma, akik a fürt ezen végpontokon keresztül kommunikálhat.
+Ezzel a beállítással a vállalat alkalmazottai jelentkezhetnek be a fürtcsomópontok tartományi hitelesítő adataik használatával. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például az Apache Ambari Views, ODBC, JDBC, PowerShell és REST API-k kommunikáljanak a fürttel való hitelesítéshez szolgáltatást is alkalmazhatja. A rendszergazda teljes mértékben vezérelheti a felhasználók száma, akik a fürt ezen végpontokon keresztül kommunikálhat.
 
 ## <a name="authorization"></a>Engedélyezés
 Amely a legtöbb vállalat kövesse az ajánlott eljárás, hogy így arról, hogy nem minden alkalmazott rendelkezik-e az összes vállalati erőforrásokhoz való hozzáférést. Hasonlóképpen a rendszergazda meghatározhatja a szerepköralapú hozzáférés-vezérlési házirendeket, a fürt erőforrásaihoz. 

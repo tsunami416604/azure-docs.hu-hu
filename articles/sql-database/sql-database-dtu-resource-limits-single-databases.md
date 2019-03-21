@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/14/2019
-ms.openlocfilehash: 37dcde3d55ce704c7a5dbb6d7757420ba8c393f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/20/2019
+ms.openlocfilehash: 7c35c1f3568ab98bdd3c7fba8acd3aa958aa795b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885101"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285133"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -73,12 +73,14 @@ Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrá
 | **Számítási mérete** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | DTU-k maximális száma | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
-| Maximális tárolási lehetőségeket (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
+| Belefoglalt tárterület (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
+| Maximális tárolási lehetőségeket (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Memóriában tárolt OLTP-k maximális tárterülete (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Egyidejű feldolgozók (kérelmek) maximális| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
+
+\* 1024 GB-tól 256 GB-os lépésekben maximum 4096 GB
 
 > [!IMPORTANT]
 > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: P11 – P15 – aktuális korlátozások.  

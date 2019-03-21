@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d9d2b58ff249e765620e2fbae5c9677e9412f1ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432056"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861893"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -38,37 +38,37 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
    * Közvetlen mód
 
-     Közvetlen mód támogatja a TCP- és HTTPS protokollok keresztüli kapcsolat. A legújabb .net SDK-t használ, ha közvetlen kapcsolódás módban támogatott a .NET Standard 2.0 és a .net-keretrendszer. Közvetlen mód használatakor kétféle protokoll érhető el:
+     Közvetlen mód támogatja a TCP- és HTTPS protokollok keresztüli kapcsolat. A legújabb .NET SDK-t használ, ha közvetlen kapcsolódás módban támogatott a .NET Standard 2.0 és a .NET-keretrendszer. Közvetlen mód használatakor kétféle protokoll érhető el:
 
-    * TCP
-    * HTTPS
+     * TCP
+     * HTTPS
 
-    Átjáró mód használatakor a Cosmos DB 443-as porton és portokat használja, 10250, 10255 és 10256 mongodb-hez készült Azure Cosmos DB API használatakor. A georeplikáció és a MongoDB-példányban georeplikációs funkciókkal 10255/10256 portok leképezés nélkül egy alapértelmezett MongoDB-példányban 10250 port leképezések. Ha használ TCP közvetlen üzemmódban átjáró portokon kívül, gondoskodnia kell arról, a port 10000 és 20000 közötti nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitott, és próbálja meg használni, a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. A következő táblázat különböző API-k és a portok felhasználói rendelkezésre álló csatlakozási módot mutatja az egyes API:
+     Átjáró mód használatakor a Cosmos DB 443-as porton és portokat használja, 10250, 10255 és 10256 mongodb-hez készült Azure Cosmos DB API használatakor. A georeplikáció és a MongoDB-példányban georeplikációs funkciókkal 10255/10256 portok leképezés nélkül egy alapértelmezett MongoDB-példányban 10250 port leképezések. Ha használ TCP közvetlen üzemmódban átjáró portokon kívül, gondoskodnia kell arról, a port 10000 és 20000 közötti nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitott, és próbálja meg használni, a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. A következő táblázat különböző API-k és a portok felhasználói rendelkezésre álló csatlakozási módot mutatja az egyes API:
 
-    |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
-    |---------|---------|---------|---------|
-    |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-    |Közvetlen    |    HTTPS     |  .Net and Java SDK    |   10 000-20 000 tartományon belüli portok    |
-    |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
+     |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
+     |---------|---------|---------|---------|
+     |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
+     |Közvetlen    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
+     |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 
-    Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.
+     Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.
 
-    A csatlakozási mód a DocumentClient példányának a ConnectionPolicy paramétere a konstrukció során van konfigurálva. Ha a közvetlen üzemmódban használja, a protokoll is megadható belül ConnectionPolicy paramétere.
+     A csatlakozási mód a DocumentClient példányának a ConnectionPolicy paramétere a konstrukció során van konfigurálva. Ha a közvetlen üzemmódban használja, a protokoll is megadható belül ConnectionPolicy paramétere.
 
-    ```csharp
-    var serviceEndpoint = new Uri("https://contoso.documents.net");
-    var authKey = new "your authKey from the Azure portal";
-    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-    new ConnectionPolicy
-    {
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = new "your authKey from the Azure portal";
+     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+     new ConnectionPolicy
+     {
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp
-    });
-    ```
+     });
+     ```
 
-    TCP átjáró mód használata esetén csak akkor támogatott a közvetlen módban, mert a HTTPS protokollt mindig közötti kommunikációra szolgál az átjáróval, és a ConnectionPolicy protokoll értékét a rendszer figyelmen kívül hagyja.
+     TCP átjáró mód használata esetén csak akkor támogatott a közvetlen módban, mert a HTTPS protokollt mindig közötti kommunikációra szolgál az átjáróval, és a ConnectionPolicy protokoll értékét a rendszer figyelmen kívül hagyja.
 
-    ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips/connection-policy.png)
+     ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips/connection-policy.png)
 
 2. **Első kérésre indítási késleltetés elkerülése érdekében OpenAsync hívása**
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 822b36fd105618acdb0f6627cae694187335ca34
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0a2c66eba95f286dfa7a84c05c66c14768629312
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768843"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877904"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Fieldglass
 
@@ -108,6 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Fieldglass, hajtsa v
     a. Az a **azonosító** szövegmezőbe írjon be egy URL-cím `https://www.fieldglass.com` vagy a mintát követik: `https://<company name>.fgvms.com`
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://www.fieldglass.net/<company name>`|
@@ -152,7 +153,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

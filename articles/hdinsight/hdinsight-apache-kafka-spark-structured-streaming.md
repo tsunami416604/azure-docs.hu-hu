@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652864"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078363"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált Stream használata a Apache Kafka on HDInsight használata
 
@@ -131,12 +131,12 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
     Ez a sablon a következő erőforrásokat hozza létre:
 
-    * Egy Kafka on HDInsight 3.6-fürt.
-    * Egy Spark 2.2.0 on HDInsight 3.6-fürt.
-    * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
+   * Egy Kafka on HDInsight 3.6-fürt.
+   * Egy Spark 2.2.0 on HDInsight 3.6-fürt.
+   * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
-    > [!IMPORTANT]  
-    > Az oktatóanyagban alkalmazott strukturált stream használatához a Spark 2.2.0 on HDInsight 3.6 szükséges. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
+     > [!IMPORTANT]  
+     > Az oktatóanyagban alkalmazott strukturált stream használatához a Spark 2.2.0 on HDInsight 3.6 szükséges. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3165adf09281f4ad35b77c2e0fbb89e40c04c631
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604531"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120958"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -31,21 +31,21 @@ RTVS bővíti az R-munkafolyamat eszközök felajánlásával a [R Interaktivní
 2. Válassza ki a *adatelemzési és analitikai alkalmazások* számítási feladatot, majd válassza ki a **R nyelv támogatása**, **futásidő-támogatás az R-fejlesztéshez**, és  **A Microsoft R Client** beállítások.
 
 3. Szüksége lesz az SSH-hitelesítésre szolgáló nyilvános és titkos kulcsokat.
-<!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
+   <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
 4. Telepítés [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) a gépen. Machine Learning-kiszolgáló biztosítja az [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) és `RxSpark` funkciók.
 
 5. Telepítse [PuTTY](https://www.putty.org/) biztosít számítási környezetek használatával futtassa `RevoScaleR` függvények a helyi ügyfélről a HDInsight-fürthöz.
 
 6. Lehetősége van az adatok adatelemzési beállítások alkalmazásához, amellyel az új elrendezéssel bővültek a munkaterület az R tools for Visual Studio környezetében.
-    1. A jelenlegi Visual Studio-beállítások mentéséhez használja a **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kijelölt környezeti beállítások exportálása** , és adjon meg egy fájlnevet. Ezek a beállítások visszaállításához használja ugyanazt a parancsot, és válassza ki **importálás kiválasztott környezeti beállítások**.
+   1. A jelenlegi Visual Studio-beállítások mentéséhez használja a **eszközök > importálási és exportálási beállítások** parancsot, majd válassza a **kijelölt környezeti beállítások exportálása** , és adjon meg egy fájlnevet. Ezek a beállítások visszaállításához használja ugyanazt a parancsot, és válassza ki **importálás kiválasztott környezeti beállítások**.
 
-    2. Nyissa meg a **R Tools** menüben, majd válassza ki **Data Science beállítások...** .
+   2. Nyissa meg a **R Tools** menüben, majd válassza ki **Data Science beállítások...** .
 
-        ![Data Science beállítások...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Data Science beállítások...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]  
-    > A megközelítéssel az 1. lépésben, is mentheti, és állítsa vissza a személyre szabott adatokat adatszakértő elrendezés helyett a **Data Science beállítások** parancsot.
+      > [!NOTE]  
+      > A megközelítéssel az 1. lépésben, is mentheti, és állítsa vissza a személyre szabott adatokat adatszakértő elrendezés helyett a **Data Science beállítások** parancsot.
 
 ## <a name="execute-local-r-methods"></a>Hajtsa végre a helyi R-metódusok
 

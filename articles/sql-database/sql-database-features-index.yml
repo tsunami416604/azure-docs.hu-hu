@@ -1,0 +1,56 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 18be472dfc6a9928b8ceea72fe1b277d77311a63
+ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57909143"
+documentType: LandingData
+title: Az Azure SQL Database - funkciók
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Az Azure SQL Database - funkciók
+  meta.description: Learn about the features in Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 02/06/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Az Azure SQL Database egy több mint egy hagyományos relációsadatbázis-motorján, amely lehetővé teszi SQL nyelv használatával adatokat lekérdezni. Az Azure SQL Database adatbázis-szolgáltatások lehetővé teszik több powerfull műveleteket, és összetett esetek megvalósításában.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Memóriabeli technológiák
+      href: /azure/sql-database/sql-database-in-memory
+      html: <p>Nagy teljesítményű alkalmazások, memóriabeli technológiákat használatával hajtja végre.</p>
+    - title: Többmodelles képességek
+      href: /azure/sql-database/sql-database-multi-model-features
+      html: <p>További információ a Graph, JSON, XML, az Azure SQL Database térbeli szolgáltatásainak.</p>
+    - title: Tranzakciós replikáció
+      href: /azure/sql-database/sql-database-managed-instance-transactional-replication
+      html: <p>Az adatok replikálása az Azure SQL Database és az SQL Server táblák között.</p>
+    - title: Adatszinkronizálás
+      href: /azure/sql-database/sql-database-sync-data
+      html: <p>Szinkronizálja az adatokat több SQL-adatbázisok és SQL Server-példányokat.</p>
+    - title: Feladat automatizálása
+      href: /azure/sql-database/sql-database-job-automation-overview
+      html: <p>SQL-ügynök és a rugalmas feladatok használatával ismétlődő feladatok ütemezését.</p>
+    - title: Historikus táblák
+      href: /azure/sql-database/sql-database-temporal-tables
+      html: <p>Nyomon követheti és elemezheti a teljes előzménylistáját, amikor az adatok változásait.</p>
+- title: További erőforrások
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: További információ a <a href="/azure/sql-database/sql-database-features">eltérései az SQL Server és az Azure SQL adatbázis szolgáltatásainak</a>.
+    - html: Ismerje meg, hogyan használhatja ezeket a funkciókat az <a href="/azure/sql-database/sql-database-howto">Howto útmutatók</a>.

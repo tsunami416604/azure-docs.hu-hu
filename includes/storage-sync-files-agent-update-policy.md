@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051793"
 ---
 Az Azure File Sync ügynök rendszeresen adhat hozzá új funkciókat, és problémák megoldására frissül. Azt javasoljuk, hogy konfigurálja a Microsoft Update elérhető az Azure File Sync ügynök le a frissítéseket.
 
 #### <a name="major-vs-minor-agent-versions"></a>Nagyobb vagy kisebb ügynökverziók
-* Fő ügynökverziók gyakran új szolgáltatásokat tartalmaznak, és egyre több rendelkezik, mint a verziószám első része. Példa: *2.\*.\**
-* Kisebb ügynökverziók "javítások" is nevezik, és a főbb verziók gyakrabban kiadott. Hibajavítások és a kisebb fejlesztések, de nincs tervben új szolgáltatások gyakran tartalmaznak. Például:  *\*.3.\**
+* Fő ügynökverziók gyakran új szolgáltatásokat tartalmaznak, és egyre több rendelkezik, mint a verziószám első része. Példa: \*2.\*.\*\*
+* Kisebb ügynökverziók "javítások" is nevezik, és a főbb verziók gyakrabban kiadott. Hibajavítások és a kisebb fejlesztések, de nincs tervben új szolgáltatások gyakran tartalmaznak. Például: \* \*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Frissítési útvonalak
 Négy jóváhagyott és tesztelt módon az Azure File Sync ügynök frissítéseinek telepítéséhez. 

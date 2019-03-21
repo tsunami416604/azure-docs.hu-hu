@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: cf16f27a8d39871491b7cf46a509b9714a669667
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873814"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086615"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Oktatóanyag: Közös szándékok és entitások azonosítása
 
@@ -55,13 +55,13 @@ A LUIS számos előre összeállított szándékot biztosít, amelyek segítenek
 
 1. Válassza ki a következő szándékokat, majd a **Done** (Kész) lehetőséget: 
 
-    * Utilities.Cancel
-    * Utilities.Confirm
-    * Utilities.Help
-    * Utilities.StartOver
-    * Utilities.Stop
+   * Utilities.Cancel
+   * Utilities.Confirm
+   * Utilities.Help
+   * Utilities.StartOver
+   * Utilities.Stop
 
-    Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. 
+     Ezek a szándék hasznosak meghatározhatja a beszélgetést, ha a felhasználó van, és mi azok arra kérjük, hajtsa végre. 
 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Gyakori típus adatkinyerés kiküszöbölni előre összeállított entitások hozzáadása
@@ -74,12 +74,12 @@ A LUIS számos előre összeállított entitást biztosít a gyakori adatok kiny
 
 1. Válassza ki a következő entitásokat előre összeállított entitások listájából, majd válassza ki **kész**:
 
-    * **[PersonName](luis-reference-prebuilt-person.md)** 
-    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
+   * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-    ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
+     ![Képernyőkép: számválasztó az előre összeállított entitások párbeszédpanelen](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-    Ezek az entitások neve és helye felismerés ad hozzá az ügyfélalkalmazás nyújt segítséget.
+     Ezek az entitások neve és helye felismerés ad hozzá az ügyfélalkalmazás nyújt segítséget.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
 

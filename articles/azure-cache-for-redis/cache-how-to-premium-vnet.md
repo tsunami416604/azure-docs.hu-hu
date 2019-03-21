@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994389"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network támogatása a prémium szintű Azure Cache Redis konfigurálása
 Az Azure Cache redis rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatásait, beleértve a Prémiumszintű funkciókkal, például a fürtözés, az adatmegőrzés és a virtuálishálózat-támogatást is nyújt. Virtuális hálózat egy magánhálózat a felhőben. Ha az Azure Cache Redis-példányt a virtuális hálózathoz van konfigurálva, még nem nyilvánosan címezhető és a virtuális gépek és az alkalmazások a virtuális hálózaton belül csak érhetők el. Ez a cikk ismerteti, hogyan kell egy prémium szintű Azure Cache Redis-példányt a virtuális hálózat támogatásának konfigurálása.
@@ -106,7 +106,7 @@ Azure Cache redis egy virtuális hálózaton jöhet szóba, ha a rendszer az al�
 
 Hét kimenő port követelmény vonatkozik.
 
-- Ha a kívánt, az összes kimenő kapcsolatok az interneten keresztül lehet tenni az ügyfél helyszíni naplózási eszköz.
+- Az összes kimenő kapcsolatok az interneten keresztül egy ügyfél lehet tenni eszköz naplózás a helyszínen.
 - A portok három irányítják a forgalmat a karbantartás az Azure Storage és az Azure DNS Azure-beli.
 - A fennmaradó alkalmazásport-tartományok és a belső Redis alhálózati kommunikációhoz. Nincs alhálózat NSG-szabályok a Redis-alhálózat belső kommunikációs szükségesek.
 

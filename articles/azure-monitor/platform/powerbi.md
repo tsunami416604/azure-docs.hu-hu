@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 623968467da775c55adf006a84a16ba46bd21d1d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887454"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110171"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Az Azure Monitor log-adatok importálása a Power BI-bA
 
@@ -60,11 +60,11 @@ A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy hozzon 
 ## <a name="publish-to-power-bi"></a>Közzététel a Power bi-bA
 Ha közzéteszi a Power bi-ba, létrejön egy adatkészlet és a egy jelentést.  Ha létrehoz egy jelentést a Power BI Desktopban, majd ez teszi közzé az adatokkal.  Ha nem, majd jön létre egy üres jelentésből.  A jelentés a Power bi-ban, vagy hozzon létre egy új adatkészlet alapján.
 
-8. Hozzon létre egy jelentést, az adatok alapján.  Használat [Power BI Desktop-dokumentáció](https://docs.microsoft.com/power-bi/desktop-report-view) Ha még nem ismeri azt.  Amikor készen áll a Power bi-bA küldendő, kattintson az **közzététel**.  Amikor a rendszer kéri, válassza ki a célhelyet a Power BI-fiók.  Kivéve, ha egy adott cél szem előtt, használjon **saját munkaterület**.
+1. Hozzon létre egy jelentést, az adatok alapján.  Használat [Power BI Desktop-dokumentáció](https://docs.microsoft.com/power-bi/desktop-report-view) Ha még nem ismeri azt.  Amikor készen áll a Power bi-bA küldendő, kattintson az **közzététel**.  Amikor a rendszer kéri, válassza ki a célhelyet a Power BI-fiók.  Kivéve, ha egy adott cél szem előtt, használjon **saját munkaterület**.
 
     ![A Power BI Desktop közzététel](media/powerbi/desktop-publish.png)
 
-3. A közzététel befejezése után kattintson **nyissa meg a Power BI-ban** , nyissa meg az új adatkészlet a Power bi-ban.
+1. A közzététel befejezése után kattintson **nyissa meg a Power BI-ban** , nyissa meg az új adatkészlet a Power bi-ban.
 
 
 ### <a name="configure-scheduled-refresh"></a>Az ütemezett frissítés konfigurálása

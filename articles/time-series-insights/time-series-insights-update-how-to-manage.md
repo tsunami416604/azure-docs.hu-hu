@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 099c7a456e67eae981b2e68e73e2bed7557c7372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632399"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094854"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Üzembe helyezése és kezelése az Azure Time Series Insights előzetes verziója
 
@@ -67,7 +67,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre az Azure Time Series Insi
      > [!TIP]
      > Az üzenet sorba helyezésekor nem feltétlenül a legjobb konfigurált beállítást, a batch-esemény vagy előzményadatokat forgatókönyvek feltöltés. Ellenőrizze, hogy ellenőrizze a döntést, vagy használjon egy időbélyeg-tulajdonság az ezekben az esetekben.
 
-    ![Esemény (forrás) lapot][2]
+     ![Esemény (forrás) lapot][2]
 
 1. Győződjön meg arról, hogy a környezet van kiépítve a kívánt beállításokat.
 

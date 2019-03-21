@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d16076a3d995ecccd06591278b330652d960d8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189013"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227014"
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszköz kiépítése IoT Hubra az Azure IoT Hub Device Provisioning Service használatával
 
@@ -43,7 +43,7 @@ Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevői
       [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
-    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer eszközönkénti *aláíró tanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt* kell használni. 
+    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) *.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz kell használnia az eszközönkénti *önaláírt tanúsítvány* az X.509 rendszer regisztrációs csoportok esetén kell használnia a *főtanúsítvány*. 
 
       [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2924a45ae8851095944131b6fb1598775247f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fbdeef7c591221756ad206bf2f3dd78ac3d26c4f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194002"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885317"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnosztizálásához és elhárításához a duplikált attribútummal szinkronizálási hibák
 
@@ -33,7 +33,7 @@ Az Azure AD kapcsolatos további információkért lásd: [identitás identitás
 
 ## <a name="problems"></a>Problémák
 ### <a name="a-common-scenario"></a>Egy általános forgatókönyv
-Amikor **QuarantinedAttributeValueMustBeUnique** és **AttributeValueMustBeUnique** szinkronizálási hiba fordulhat elő, gyakori, hogy egy **UserPrincipalName** vagy **Proxycímeket** ütközés az Azure ad-ben. A szinkronizálási hibák megoldhatja az ütköző adatforrás-objektum a helyszíni oldalról frissítésével. A szinkronizálási hiba történt a következő szinkronizálás után fel lesz oldva. Például a lemezkép azt jelzi, hogy két felhasználók rendelkeznek-e az ütközés az **UserPrincipalName**. Mindkettő **Joe.J@contoso.com**. Az ütköző objektumok karanténba helyezve az Azure ad-ben.
+Amikor **QuarantinedAttributeValueMustBeUnique** és **AttributeValueMustBeUnique** szinkronizálási hiba fordulhat elő, gyakori, hogy egy **UserPrincipalName** vagy **Proxycímeket** ütközés az Azure ad-ben. A szinkronizálási hibák megoldhatja az ütköző adatforrás-objektum a helyszíni oldalról frissítésével. A szinkronizálási hiba történt a következő szinkronizálás után fel lesz oldva. Például a lemezkép azt jelzi, hogy két felhasználók rendelkeznek-e az ütközés az **UserPrincipalName**. Mindkettő **Joe.J\@contoso.com**. Az ütköző objektumok karanténba helyezve az Azure ad-ben.
 
 ![Szinkronizálási hiba gyakori forgatókönyv diagnosztizálása](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -66,32 +66,34 @@ Kövesse a lépéseket leszűkíteni a szinkronizálási hiba részletes adatait
 
 Az Azure Portalról lépéseket néhány meghatározott kezelhető helyzetek azonosításához:  
 1.  Ellenőrizze a **állapotának diagnosztizálása** oszlop. Az állapot mutatja, hogy van-e egy lehetséges megoldást az egy szinkronizálási hiba közvetlenül az Azure Active Directoryból. Más szóval a hibaelhárítási folyamat, amely létezik is a hibaesetét szűkítéséhez és potenciálisan javítást.
+
 | status | Mit jelent? |
 | ------------------ | -----------------|
 | Nincs elindítva | A diagnosztikai folyamat még nem járt. A diagnosztikai eredményei függően egy lehetséges megoldást az közvetlenül a portálról a szinkronizálási hiba van. |
 | Manuális javítás szükséges | A hiba nem fér el a feltételeket a portálon elérhető javításokat. Mindkét ütköző típusú objektumokat nem a felhasználók, vagy már a diagnosztikai lépések végrehajtása, és a javítás megoldás nem érhető el a portálról. Az utóbbi esetben a javítás, ahonnan a helyszíni még mindig megoldás egyikét. [Tudjon meg többet a helyszíni javításokat](https://support.microsoft.com/help/2647098). | 
 | Folyamatban lévő szinkronizálás | Egy javítást alkalmaztak. A portál vár, hogy törölje a hiba a következő szinkronizálási ciklus. |
+
   >[!IMPORTANT]
   > A diagnosztikai állapot oszlop minden egyes szinkronizálási ciklust követően alaphelyzetbe állnak. 
   >
 
-2.  Válassza ki a **diagnosztizálása** gomb a hiba részletei alapján. Fog válaszolni néhány kérdést, és azonosíthatja a szinkronizálási hiba részletes adatait. A kérdésekre adott válaszok azonosíthatja, hogy az árva objektumra eset.
+1. Válassza ki a **diagnosztizálása** gomb a hiba részletei alapján. Fog válaszolni néhány kérdést, és azonosíthatja a szinkronizálási hiba részletes adatait. A kérdésekre adott válaszok azonosíthatja, hogy az árva objektumra eset.
 
-3.  Ha egy **Bezárás** gomb jelenik meg a diagnosztikai végén érhető nincs gyorsjavítás a portálról, a válaszok alapján. Tekintse meg az utolsó lépés látható a megoldás. A helyszíni javításokat azok továbbra is a megoldások. Válassza ki a **Bezárás** gombra. A jelenlegi szinkronizálási hiba állapotának vált, amennyiben az **manuális javítás szükséges**. Az állapot marad, a jelenlegi szinkronizálási ciklus során.
+1. Ha egy **Bezárás** gomb jelenik meg a diagnosztikai végén érhető nincs gyorsjavítás a portálról, a válaszok alapján. Tekintse meg az utolsó lépés látható a megoldás. A helyszíni javításokat azok továbbra is a megoldások. Válassza ki a **Bezárás** gombra. A jelenlegi szinkronizálási hiba állapotának vált, amennyiben az **manuális javítás szükséges**. Az állapot marad, a jelenlegi szinkronizálási ciklus során.
 
-4.  Azután egy árva objektumra eset, oldható meg a duplikált attribútumok szinkronizálási hibák közvetlenül a portálról. A folyamat indításához válassza ki a **javítás alkalmazása** gombra. A jelenlegi szinkronizálási hiba frissítések állapotának **függőben lévő szinkronizálás**.
+1. Azután egy árva objektumra eset, oldható meg a duplikált attribútumok szinkronizálási hibák közvetlenül a portálról. A folyamat indításához válassza ki a **javítás alkalmazása** gombra. A jelenlegi szinkronizálási hiba frissítések állapotának **függőben lévő szinkronizálás**.
 
-5.  A következő szinkronizálási ciklus után a hibát el kell távolítani a listából.
+1. A következő szinkronizálási ciklus után a hibát el kell távolítani a listából.
 
 ## <a name="how-to-answer-the-diagnosis-questions"></a>Hogyan lehet a diagnózis kérdésre 
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>A felhasználó létezik a helyszíni Active Directoryban?
 
 Azonosítsa az adatforrás-objektum a helyszíni Active Directoryból a meglévő felhasználó megpróbálja ezt a kérdést.  
-1.  Ellenőrzi, hogy az Azure Active Directory tartalmazza-e a megadott objektum **UserPrincipalName**. Ha nem, akkor válaszoljon **nem**.
-2.  Ha igen, ellenőrizze, hogy az objektum még a szinkronizálás hatókörében.  
-  - Keresés az Azure ad-ben összekötőtérben a DN-t.
-  - Ha az objektum megtalálható a **folyamatban lévő** állapotban van, választ **nem**. Az Azure AD Connect nem tud csatlakozni az objektumot a megfelelő Azure AD-objektum.
-  - Ha az objektum nem található választ **Igen**.
+1. Ellenőrzi, hogy az Azure Active Directory tartalmazza-e a megadott objektum **UserPrincipalName**. Ha nem, akkor válaszoljon **nem**.
+2. Ha igen, ellenőrizze, hogy az objektum még a szinkronizálás hatókörében.  
+   - Keresés az Azure ad-ben összekötőtérben a DN-t.
+   - Ha az objektum megtalálható a **folyamatban lévő** állapotban van, választ **nem**. Az Azure AD Connect nem tud csatlakozni az objektumot a megfelelő Azure AD-objektum.
+   - Ha az objektum nem található választ **Igen**.
 
 Ezekben a példákban a kérdés megpróbálja azonosítani e **Joe Jackson** továbbra is a helyszíni Active Directoryban.
 Az a **gyakori forgatókönyv**, mindkét felhasználók **Joe Johnson** és **Joe Jackson** jelen a helyszíni Active Directoryban. A karanténba helyezett objektumok két különböző felhasználók közül.
@@ -104,11 +106,11 @@ Az a **árva objektumra mutat a forgatókönyv**, csak egyetlen felhasználó **
 
 ### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Hajtsa végre ezeket a fiókokat mindkét tartozik ugyanahhoz a felhasználóhoz?
 Ezt a kérdést ellenőrzi egy bejövő ütköző felhasználót és a meglévő felhasználói objektum megjelenítéséhez, ha ugyanazon felhasználó tartoznak az Azure AD-ben.  
-1.  Az ütköző objektumot az Azure Active Directoryban újonnan szinkronizálva van. Hasonlítsa össze az objektumok attribútumok:  
-  - Megjelenítendő név
-  - Felhasználó egyszerű neve
-  - Objektumazonosító
-2.  Ha az Azure AD nem tudja őket összehasonlítani, ellenőrizze, hogy az Active Directory rendelkezik-e a megadott objektum **objektum megtalálható, nemmel**. Válasz **nem** Ha is talál.
+1. Az ütköző objektumot az Azure Active Directoryban újonnan szinkronizálva van. Hasonlítsa össze az objektumok attribútumok:  
+   - Megjelenítendő név
+   - Felhasználó egyszerű neve
+   - Objektumazonosító
+2. Ha az Azure AD nem tudja őket összehasonlítani, ellenőrizze, hogy az Active Directory rendelkezik-e a megadott objektum **objektum megtalálható, nemmel**. Válasz **nem** Ha is talál.
 
 A következő példában a két objektum tartozik ugyanahhoz a felhasználóhoz **Joe Johnson**.
 

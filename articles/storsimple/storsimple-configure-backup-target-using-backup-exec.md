@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011142"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>A biztonsági mentési Exec a StorSimple mint biztonsági mentési cél
 
@@ -94,6 +94,7 @@ Az alábbi táblázatokban a modell-architektúra kezdeti útmutató eszközök.
 |------------------------|---------------|-----------------|
 | Helyi tárolási kapacitás | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Felhőalapú tárolási kapacitás | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Tárméret azt feltételezi, nem a deduplikáció és a tömörítést.
 
 **A StorSimple kapacitások elsődleges és másodlagos biztonsági mentések tiltása**
@@ -206,16 +207,16 @@ Ebben a szakaszban bemutatjuk, hogyan konfigurációs példákat. A következő 
 
 ### <a name="operating-system-best-practices"></a>Operációs rendszer ajánlott eljárások
 
--   Tiltsa le a Windows Server titkosítás és az adatdeduplikáció az NTFS fájlrendszerhez.
--   Tiltsa le a StorSimple-köteteket a Windows Server töredezettségmentesítése.
--   A StorSimple-köteteket a Windows Server-indexelés letiltása.
--   (Nem a StorSimple-kötetek) szemben a forrás gazdagép víruskeresést futtatni.
--   Kapcsolja ki az alapértelmezett [Windows Server karbantartási](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) a Feladatkezelő. Ehhez a következő módszerek valamelyikével:
-   - Kapcsolja ki a karbantartási konfiguráló a Windows Feladatütemező.
-   - Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) a Windows Sysinternals. PsExec a letöltés után futtató Azure Powershellt rendszergazdaként, majd írja be:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Tiltsa le a Windows Server titkosítás és az adatdeduplikáció az NTFS fájlrendszerhez.
+- Tiltsa le a StorSimple-köteteket a Windows Server töredezettségmentesítése.
+- A StorSimple-köteteket a Windows Server-indexelés letiltása.
+- (Nem a StorSimple-kötetek) szemben a forrás gazdagép víruskeresést futtatni.
+- Kapcsolja ki az alapértelmezett [Windows Server karbantartási](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) a Feladatkezelő. Ehhez a következő módszerek valamelyikével:
+  - Kapcsolja ki a karbantartási konfiguráló a Windows Feladatütemező.
+  - Töltse le [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) a Windows Sysinternals. PsExec a letöltés után futtató Azure Powershellt rendszergazdaként, majd írja be:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>A StorSimple-ajánlott eljárások
 
@@ -259,6 +260,7 @@ Az előző Előfeltevések alapján hozzon létre egy 26-TiB StorSimple rétegze
 | Éves teljes | 1  | 10 | 10 |
 | GFS követelmény |   | 38 |   |
 | További kvótát  | 4  |   | 42 teljes GFS követelmény  |
+
 \* GFS szorzó példányszám történő védelme, és a biztonsági mentési szabályzat követelményeinek szüksége.
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Execkel tárolás beállítása
@@ -311,8 +313,8 @@ Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzáren
 | Gyakorisága, illetve biztonsági mentési típusa | Korlátlan | Növekményes (1-5 nap)  |   
 |---|---|---|
 | Heti (1 – 4 hét) | Szombat | Hétfőtől péntekig |
-| Havi  | Szombat  |   |
-| Évente | Szombat  |   |   |
+| Havonta  | Szombat  |   |
+| Évente | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-kötetek hozzárendelése egy biztonsági mentési Exec biztonsági mentési feladat
@@ -373,6 +375,7 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 | Teljes havi |A StorSimple-lemez (hosszú távú) | 1 | 12 | 12 |
 | Éves teljes |A StorSimple-lemez (hosszú távú) | 1 | 1 | 1 |
 |GFS kötetek méretkövetelményt |  |  |  | 18*|
+
 \* Teljes kapacitás 17 Tib-ra a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
 
 
@@ -384,8 +387,8 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 | 2 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 3 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
 | 4 hét | A StorSimple hét 2 – 4 |   |   |   |   |   |
-| Havi | A StorSimple havi |   |   |   |   |   |
-| Évente | StorSimple évente  |   |   |   |   |   |   |
+| Havonta | A StorSimple havi |   |   |   |   |   |
+| Évente | StorSimple évente  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>StorSimple-kötetek hozzárendelése egy Backup Execkel archive, és a deduplikációs feladat
@@ -445,15 +448,15 @@ Az alábbi szakasz elindításához és a StorSimple a felhőbeli pillanatképek
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Indítsa el, vagy a felhőbeli pillanatkép törlése
 
-1.  [Telepítse az Azure PowerShellt](/powershell/azure/overview).
+1. [Telepítse az Azure PowerShellt](/powershell/azure/overview).
 2. Letöltési és telepítési [kezelés – CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell-parancsfájlt.
 3. A kiszolgálón, amely futtatja a szkriptet, futtassa a Powershellt rendszergazdaként. Győződjön meg arról, hogy a parancsfájl futtatása a `-WhatIf $true` győződjön meg, mi változik a parancsfájlt. Az érvényesítés befejezése után át `-WhatIf $false`. Futtassa az alábbi parancsot:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Adja hozzá a parancsfájlt a biztonsági mentési feladat a biztonsági mentési Exec előfeldolgozásához a biztonsági mentési Exec feladat beállítások szerkesztésével, és utáni parancsok feldolgozásakor.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Adja hozzá a parancsfájlt a biztonsági mentési feladat a biztonsági mentési Exec előfeldolgozásához a biztonsági mentési Exec feladat beállítások szerkesztésével, és utáni parancsok feldolgozásakor.
 
-    ![Biztonsági mentés Exec konzol, a biztonsági mentés, előzetes és utólagos feldolgozási parancsok lap](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
+   ![Biztonsági mentés Exec konzol, a biztonsági mentés, előzetes és utólagos feldolgozási parancsok lap](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
 > Azt javasoljuk, hogy a StorSimple felhőalapú pillanatkép biztonsági mentési szabályzat utófeldolgozási parancsfájlként a napi biztonsági mentési feladat végén. Biztonsági mentése és visszaállítása a biztonsági mentést végző alkalmazás környezet segítséget nyújtanak az RPO és RTO kapcsolatos további információkért tekintse meg a biztonsági mentési mérnök együtt.

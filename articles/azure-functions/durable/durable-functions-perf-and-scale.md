@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138116"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286380"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -60,7 +60,7 @@ Maximális lekérdezési késleltetési idő legyen konfigurálhatók a `maxQueu
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
-Az üzenetsorok, táblák és blobok Durable Functions által használt hozza létre a konfigurált Azure Storage-fiókban. A használni kívánt fiók használatával adható meg a `durableTask/azureStorageConnectionStringName` beállításával **host.json** fájlt.
+Az üzenetsorok, táblák és blobok Durable Functions által használt jönnek létre a konfigurált Azure Storage-fiókban. A használni kívánt fiók használatával adható meg a `durableTask/azureStorageConnectionStringName` beállításával **host.json** fájlt.
 
 ### <a name="functions-1x"></a>Functions 1.x
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0fa3638ef47fb8cb1d0237a2ab9530ab76d316dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993095"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS-alkalmazás Tesztverziós lapon
 
@@ -47,6 +47,7 @@ A test Drive hozzáadásának a fő közzétételi lépései a következők:
 ## <a name="setting-up-a-test-drive"></a>A test drive beállítása
 
 Nincsenek elérhető Tesztverzió négy különböző típusú, minden egyes termék, a forgatókönyv és a piactér típusa alapján.
+
 |  **Típus**          |  **Leírás**  |  **Telepítési utasítások**  |
 |  ---------------   |  ---------------  |  ---------------  |
 |     Azure Resource Manager               |    Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Termékek, amelyek illeszkednek a Test Drive az ilyen típusú, amelyekről csak Azure-erőforrások használatához.               |       [Azure Resource Manager – Tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |

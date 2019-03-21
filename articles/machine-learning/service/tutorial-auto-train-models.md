@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f9265567ea23b7a3f47c995474ee1328ebaae2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878414"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295810"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -112,7 +112,7 @@ import os
 
 ### <a name="configure-workspace"></a>Munkaterület konfigurálása
 
-Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py) egy osztály, amely fogadja a az Azure-előfizetésben és erőforráscsoportban információkat. Is létrehoz egy felhőalapú erőforrás figyeléséhez és nyomon követéséhez a modell futtatások.
+Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy osztály, amely fogadja a az Azure-előfizetésben és erőforráscsoportban információkat. Is létrehoz egy felhőalapú erőforrás figyeléséhez és nyomon követéséhez a modell futtatások.
 
 A `Workspace.from_config()` beolvassa az **aml_config/config.json** fájlt, és betölti a részleteket a `ws` nevű objektumba.  A `ws` a kód további részében használható ebben az oktatóanyagban.
 

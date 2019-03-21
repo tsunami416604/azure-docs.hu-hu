@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739549"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005311"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Automatikus méretezés hibaelhárítása a Virtual Machine Scale Sets
 **A probléma** – létrehozta az automatikus skálázás infrastruktúrát az Azure Resource Manager használatával a virtual machine scale sets – például egy sablont ehhez hasonló telepítésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a skálázási szabályok definiálva van, és nagyszerű, kivéve nem működik számít, hogy mennyi terhelik meg a virtuális gépeken, nem támogatja az automatikus méretezés.
@@ -52,7 +52,7 @@ Szempontokat kell figyelembe venni a következők:
     Az Azure erőforrás-kezelő rendszer elengedhetetlen hibaelhárítási eszköz, amely bemutatja, az Azure Resource Manager-erőforrások állapotát. Kattintson az előfizetésre, és tekintse meg az erőforráscsoport a hibaelhárítást. A számítási erőforrás-szolgáltató alapján tekintse meg a virtuális gép méretezési csoportot hoztunk létre, és ellenőrizze a példányait tartalmazó nézetet, amely jelzi, hogy egy központi telepítésének állapotát. Emellett ellenőrizze a virtuálisgép-méretezési csoportban lévő virtuális gépek példányait tartalmazó nézetet. Ezután lépjen be a Microsoft.Insights erőforrás-szolgáltató, és ellenőrizze, hogy az automatikus skálázási szabályok megfelelően jelenik meg.
 * A diagnosztikai bővítmény használata és teljesítményadatokat kibocsátó?
   
-    **Frissítés:** a gazdagépalapú mérőszámok folyamatot, amely már nem szükséges telepíteni a diagnosztikai bővítmény használata az Azure automatikus méretezési bővült. A következő bekezdésekben már nem érvényesek, ha létrehoz egy automatikus méretezést végző alkalmazást az új adatcsatorna használatával. Azure-sablonok használata a gazdagép folyamat konvertált például a rendelkezésre álló itt: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Frissítés:** Az Azure automatikus méretezési bővült a gazdagépalapú mérőszámok folyamatot, amely már nem szükséges telepíteni a diagnosztikai bővítmény használatához. A következő bekezdésekben már nem érvényesek, ha létrehoz egy automatikus méretezést végző alkalmazást az új adatcsatorna használatával. Azure-sablonok használata a gazdagép folyamat konvertált például a rendelkezésre álló itt: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
     Az automatikus skálázás gazdagépalapú mérőszámok használatával célszerűbb a következő okok miatt:
   
@@ -72,14 +72,14 @@ Szempontokat kell figyelembe venni a következők:
     
     ![Cloud Explorer][explorer]
     
-   Láthatja, hogy sok tábla minden egyes virtuális gépek adatainak tárolására. Linux és a CPU-metrika, például, tekintse meg a legutóbbi sorok. A Visual Studio cloud explorer egy lekérdezési nyelvet támogat, a lekérdezés futtatásához. Például futtathatja egy lekérdezést a "Timestamp gt dátum és idő" 2016-02-02T21:20:00Z'", győződjön meg arról, hogy biztosan hozzáférhessen a részleteiket megőrző legutóbbi események. Az időzóna UTC felel meg. Nem jelenik meg nem felel meg a skálázási szabályok beállítása az adatok? A következő példában a Processzor, a gép 20 elindult, növelje a 100 % az elmúlt öt percben.
+    Láthatja, hogy sok tábla minden egyes virtuális gépek adatainak tárolására. Linux és a CPU-metrika, például, tekintse meg a legutóbbi sorok. A Visual Studio cloud explorer egy lekérdezési nyelvet támogat, a lekérdezés futtatásához. Például futtathatja egy lekérdezést a "Timestamp gt dátum és idő" 2016-02-02T21:20:00Z'", győződjön meg arról, hogy biztosan hozzáférhessen a részleteiket megőrző legutóbbi események. Az időzóna UTC felel meg. Nem jelenik meg nem felel meg a skálázási szabályok beállítása az adatok? A következő példában a Processzor, a gép 20 elindult, növelje a 100 % az elmúlt öt percben.
     
     ![Storage-táblák][tables]
     
     Ha az adatok nem létezik, a probléma van a diagnosztikai bővítményt a virtuális gépeken futó utal. Ha az adatok van, ez arra utalhat, vagy probléma a skálázási szabályok, vagy az Insights szolgáltatással. Ellenőrizze [az Azure állapota](https://azure.microsoft.com/status/).
     
     Követően, hogy a fenti lépéseket, ha továbbra is az automatikus méretezés problémák merültek fel, próbálkozzon az alábbi forrásanyagokat: 
-    * A fórumok olvasása a [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), vagy [Stack overflow-n](http://stackoverflow.com/questions/tagged/azure) 
+    * A fórumok olvasása a [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), vagy [Stack overflow-n](https://stackoverflow.com/questions/tagged/azure) 
     * A támogatási hívás naplózása. Lehet megosztani a sablont és a teljesítményadatokat nézetével előkészített.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

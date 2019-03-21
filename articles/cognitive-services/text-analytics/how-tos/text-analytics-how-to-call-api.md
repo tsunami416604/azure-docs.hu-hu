@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886877"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122875"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
 
@@ -58,7 +58,7 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
    + Illessze be a végpont a portál oldala fájlból kimásolt.
    + Hozzáfűzése erőforrás.
 
-  Erőforrás-végpontok a következők az alábbiak szerint (a saját régiójában eltérhetnek):
+   Erőforrás-végpontok a következők az alábbiak szerint (a saját régiójában eltérhetnek):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
@@ -71,7 +71,7 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
    + `Content-Type`: az application/json.
    + `Accept`: az application/json.
 
-  A kérelem az alábbi képernyőfelvételhez hasonlóan kell kinéznie feltéve, hogy egy **/keyPhrases** erőforrás.
+   A kérelem az alábbi képernyőfelvételhez hasonlóan kell kinéznie feltéve, hogy egy **/keyPhrases** erőforrás.
 
    ![A végpont és a fejlécek kérelem képernyőképe](../media/postman-request-keyphrase-1.png)
 
@@ -81,15 +81,15 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
 
 5. Illessze be néhány JSON-dokumentumot, amely az importálni kívánt elemzés érvényes formátumban. Egy adott elemzés kapcsolatos további információkért lásd az alábbi témakörök:
 
-  + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
-  + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
-  + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
-  + [Entitások felismerése (előzetes verzió)](text-analytics-how-to-entity-linking.md)  
+   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
+   + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
+   + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
+   + [Entitások felismerése (előzetes verzió)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kattintson a **küldése** a kérelmet küldeni. Percenkénti kérések legfeljebb 100 küldhet. 
 
-  A Postman a válasz megjelenik a következő időszakban, a JSON-dokumentumként egyetlen, az egyes dokumentumazonosító a kérésben megadott egy elemét.
+   A Postman a válasz megjelenik a következő időszakban, a JSON-dokumentumként egyetlen, az egyes dokumentumazonosító a kérésben megadott egy elemét.
 
 ## <a name="see-also"></a>Lásd még 
 

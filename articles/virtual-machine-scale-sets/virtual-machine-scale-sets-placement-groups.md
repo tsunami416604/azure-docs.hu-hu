@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: 1ec1ec0fab6947f7f07b3c387f4c8af4a0f666cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 98032291d9b9d1b0885e7442b882a7f62f9ccd59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123436"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -83,7 +83,7 @@ A nagyméretű méretezésicsoport-sablon teljes példájáért lásd: [https://
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Meglévő méretezési csoportok konvertálása, hogy több elhelyezési csoportra terjedjenek ki
 Ahhoz, hogy egy már meglévő virtuálisgép-méretezési csoport több mint 100 virtuális géphez skálázódhasson, a _singlePlacementGroup_ tulajdonságot _false_ értékre kell állítania a méretezésicsoport-modellben. Az [Azure Resource Explorerrel](https://resources.azure.com/) tesztelheti ennek a tulajdonságnak a módosítását. Keressen egy már létező méretezési csoportot, válassza a _Szerkesztés_ lehetőséget, majd módosítsa a _singlePlacementGroup_ tulajdonságot. Ha nem látja ezt a tulajdonságot, előfordulhat, hogy a Microsoft.Compute API egy régebbi változatával tekinti meg a méretezési csoportot.
 
->[!NOTE] 
-Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival.
+> [!NOTE]
+> Módosíthat egy méretezési csoportot, hogy ne csak (az alapértelmezett működés szerinti) egy, hanem több elhelyezési csoportot támogasson, de ennek fordítottjára nincs lehetőség. Ezért a konvertálás előtt győződjön meg róla, hogy tisztában van a nagyméretű méretezési csoportok tulajdonságaival.
 
 

@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: MT
+ms.openlocfilehash: 63bdbeb08872988fb043413f8233281d22423731
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984548"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284748"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Előzetes verzió: Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
-
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
 
 ## <a name="general-questions"></a>Általános kérdések
 
@@ -86,6 +81,10 @@ Nem. Mivel a proxy server állapot nélküli, akkor nem számít mely adott prox
 **K: Rendben van az Azure AD-jelszó védelmi proxyszolgáltatás tartalomcsomagjai más szolgáltatások, például az Azure AD Connect telepítése?**
 
 Igen. Az Azure AD-jelszó védelme Proxy szolgáltatás és az Azure AD Connect kell soha nem közvetlenül egymással ütköző.
+
+**K: Milyen sorrendben kell a tartományvezérlő-ügynökök és a proxyk telepítését és regisztrálását?**
+
+Bármely Proxy ügynök telepítése, ügynök telepítése DC, erdő regisztrációs és Proxy regisztrációs rendezése támogatott.
 
 **K: Kell fordítani a a teljesítményt a tartományvezérlők, ez a szolgáltatás üzembe helyezése a?**
 

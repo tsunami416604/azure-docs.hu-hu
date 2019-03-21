@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/04/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340348"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841123"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -72,6 +72,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
     * Élő esemény cserél csatorna.<br/>Élő események élő csatorna mérőszámok alapján számoljuk. További információkért lásd: [számlázási](live-event-states-billing.md) és [díjszabás](https://azure.microsoft.com/pricing/details/media-services/).
     * Élő kimeneti Program váltja fel.
 * Élő kimenetek nem kell explicit módon kell elindítani, a létrehozás indítása és leállítása, ha törli. Programok dolgoztam eltérően a v2 API-k, kellett arra, hogy létrehozása után indítható.
+*  Információt szeretne kapni egy feladatot, akkor ismernie kell a átalakító neve, amelyben a feladat létrehozása. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>A szolgáltatás hézagok megállapodást v2 API-k
 
@@ -98,6 +99,7 @@ Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
 |Hozzon létre egy objektumot, és a egy fájl feltöltése |[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Feladat elküldése|[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Először hozzon létre egy-egy átalakítási és majd a feladat elküldése mutatja.|
 |Teszi közzé az objektumot az AES-titkosítás |1. Create ContentKeyAuthorizationPolicyOption<br/>2. Create ContentKeyAuthorizationPolicy<br/>3. Create AssetDeliveryPolicy<br/>4. Eszköz létrehozása és töltse fel a feladat vagy terjeszt tartalmat, és használja a kimeneti adategység<br/>5. Az Eszközintelligencia AssetDeliveryPolicy társítása<br/>6. ContentKey létrehozása<br/>7. Az Eszközintelligencia ContentKey csatolása<br/>8. Create AccessPolicy<br/>9. Kereső létrehozása<br/><br/>[v2 .NET example](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tartalmi kulcs szabályzat létrehozása<br/>2. Eszköz létrehozása<br/>3. Tartalom feltöltése, vagy JobOutput eszköz használata<br/>4. A Streamelési Lokátorok létrehozásához<br/><br/>[v3 .NET example](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Lekérhet feladatadatokat és feladatok kezelése |[A v2 feladatok kezelése](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[V3-feladatok kezelése](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Ismert problémák
 

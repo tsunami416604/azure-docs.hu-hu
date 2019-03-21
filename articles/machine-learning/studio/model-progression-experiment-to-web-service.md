@@ -1,23 +1,23 @@
 ---
-title: Hogyan válik, egy gépi tanulási modell egy webszolgáltatás
+title: Hogyan válik, a modell egy webszolgáltatás
 titleSuffix: Azure Machine Learning Studio
-description: Beállítás esetén hogyan az Azure Machine Learning Studio modell különböző fázisokon halad a fejlesztési experiment-szolgáltatáscsomagot Web Service áttekintése.
+description: Beállítás esetén hogyan az Azure Machine Learning Studio modell különböző fázisokon halad a fejlesztési kísérletezhet a Web Service áttekintése.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823399"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835122"
 ---
-# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
+# <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
 
 * A bemeneti adatokat a kísérletbe
@@ -32,7 +32,7 @@ Ha már elégedett is futtathatja a kísérletet, telepítheti azt egy ***klassz
 Ez a cikk a idejéről hogyan-szolgáltatáscsomagot webszolgáltatás a gépi tanulási modell különböző fázisokon halad a fejlesztési kísérletezést áttekintést ad a.
 
 > [!NOTE]
-> Egyéb módon fejleszthet és helyezhet üzembe a machine learning-modellek, de ez a cikk a Machine Learning Studio használatának összpontosít. Például egy klasszikus prediktív webszolgáltatás létrehozása az r nyelv leírása olvasható, tekintse meg a következő blogbejegyzésben: [Build & üzembe prediktív Web Apps használatával RStudio és az Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Egyéb módon fejleszthet és helyezhet üzembe a machine learning-modellek, de ez a cikk a Machine Learning Studio használatának összpontosít. Például egy klasszikus prediktív webszolgáltatás létrehozása az r nyelv leírása olvasható, tekintse meg a következő blogbejegyzésben: [Build & üzembe prediktív Web Apps használatával RStudio és az Azure Machine Learning studio](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
 >
 >
 

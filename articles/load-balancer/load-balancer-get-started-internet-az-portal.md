@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 2b898a9228e251003a049b2d82c0b1039eb54114
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 448ae5f8a615a526460ac92eaaf6c7d16761aec2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247435"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845496"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Standard Load Balancer létrehozása az Azure portal használatával, a zónaredundáns frontend
 
@@ -28,7 +28,7 @@ Ez a cikk végigvezeti egy nyilvános létrehozása [Standard Load Balancer](htt
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE]
- A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, és melyik Azure-erőforrások, régiók, és próbálja meg a rendelkezésre állási zónák a virtuális gép méretcsaládjai, lásd: [a rendelkezésre állási zónákat áttekintő](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+>  A rendelkezésre állási zónák támogatása az Azure-erőforrásokhoz, és a régiók és a virtuális gép méretcsaládjai érhető el. További információ az első lépésekről, és melyik Azure-erőforrások, régiók, és próbálja meg a rendelkezésre állási zónák a virtuális gép méretcsaládjai, lásd: [a rendelkezésre állási zónákat áttekintő](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="create-a-zone-redundant-load-balancer"></a>Zóna zónaredundáns load balancer létrehozása
 
-1. Egy böngészőből keresse fel az Azure portal: [ http://portal.azure.com ](http://portal.azure.com) és az Azure-fiókjával jelentkezzen be.
+1. Egy böngészőből keresse fel az Azure portal: [ https://portal.azure.com ](https://portal.azure.com) és az Azure-fiókjával jelentkezzen be.
 2. A képernyő bal felső sarkában válassza **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancert.**
 3. Az a **terheléselosztó létrehozása** lap **neve** típus **myLoadBalancer**.
 4. A **Típus** alatt válassza ki a **Nyilvános** elemet.

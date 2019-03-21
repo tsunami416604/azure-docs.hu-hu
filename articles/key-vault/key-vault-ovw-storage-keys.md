@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: dc743f7e8ebaebf2b253a1c2c199133bc4266dd5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c2107e501affd5e3dd22e0fbc83d078b51d414a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841140"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
@@ -40,6 +40,7 @@ A felügyelt tárfiókok fiók kulcsfontosságú funkció használatakor:
 - **Kezelheti a tárfiók kulcsait a Key Vault engedélyezése csak.** Ne kísérelje meg saját maga is kezelheti őket, meg fogjuk zavarják a Key Vault folyamatokat.
 - **Nem engedélyezi a tárfiók kulcsait a Key Vault egynél több objektum által felügyelendő**.
 - **Manuálisan nem újragenerálni a tárfiókkulcsokat**. Azt javasoljuk, hogy a Key Vault-n keresztül újragenerálása.
+- A tárfiók kezelése a Key Vault kéri hajtható végre most egy egyszerű, és nem egy egyszerű szolgáltatás
 
 Az alábbi példa bemutatja, hogyan kezelheti a tárfiók kulcsait a Key Vault teszi lehetővé.
 
@@ -124,7 +125,7 @@ Ha ez a művelet sikeresen lefutott, lent látható módon a hasonló kimenetnek
    "se=2020-01-01&sp=***"
 ```
 
-2. Ebben a lépésben használjuk az előállított kimeneti adatokat ($sasToken) feletti hozzon létre egy SAS-definíciót. További dokumentáció olvasási [Itt](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
+1. Ebben a lépésben használjuk az előállított kimeneti adatokat ($sasToken) feletti hozzon létre egy SAS-definíciót. További dokumentáció olvasási [Itt](https://docs.microsoft.com/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#required-parameters)   
 
 ```
 az keyvault storage sas-definition create --vault-name <YourVaultName> --account-name <YourStorageAccountName> -n <NameOfSasDefinitionYouWantToGive> --validity-period P2D --sas-type account --template-uri $sastoken
@@ -134,12 +135,11 @@ az keyvault storage sas-definition create --vault-name <YourVaultName> --account
  > [!NOTE] 
  > Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
 
-    ```
-    az ad user show --upn-or-object-id "developer@contoso.com"
+ ```
+ az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
-    
-    ```
+ az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+ ```
     
 ## <a name="fetch-sas-tokens-in-code"></a>SAS-tokeneket kód beolvasása
 
@@ -147,8 +147,8 @@ Ebben a szakaszban ismertetjük, hogyan elvégezhető műveletek a tárfiók a b
 
 Az az alábbi szakaszban bemutatjuk, hogyan SAS-tokeneket beolvasni egy SAS-definíciója, ahogyan fentebb létrehozása után.
 
-> [!NOTE] 
-  Hitelesítés a Key Vaultba, mert olvashat 3 módon a [alapvető fogalmai](key-vault-whatis.md#basic-concepts)
+> [!NOTE]
+>   Hitelesítés a Key Vaultba, mert olvashat 3 módon a [alapvető fogalmai](key-vault-whatis.md#basic-concepts)
 > - Felügyeltszolgáltatás-identitás (ajánlott) használatával
 > - Egyszerű szolgáltatás és a tanúsítvány használatával 
 > - Egyszerű szolgáltatás és a jelszóval (nem ajánlott)

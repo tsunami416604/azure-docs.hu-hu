@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894002"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -40,7 +40,7 @@ A prediktív elemzési modell összeállításához nincs szükség programozás
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Töltse le a Machine Learning Studio áttekintési diagramját
 Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagramot, hogy egy átfogó képet kapjon a Machine Learning Studio képességeiről. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
 
-**Töltse le a diagramot innen: [Microsoft Azure Machine Learning Studio képességeinek áttekintése](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**Töltse le a diagramot innen: [Microsoft Azure Machine Learning Studio képességeinek áttekintése](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 ![Microsoft Azure Machine Learning Studio képességeinek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
@@ -61,7 +61,7 @@ Kattintson a **Studio** elemre, és megnyílik az **Azure Machine Learning Studi
 * **BEÁLLÍTÁSOK** – A fiók és az erőforrások konfigurálására szolgáló beállítások gyűjteménye
 
 ### <a name="gallery"></a>Katalógus
-Kattintson a **Katalógus** elemre, és megnyílik az **[Azure AI-katalógus](http://gallery.azure.ai/)**. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
+Kattintson a **Katalógus** elemre, és megnyílik az **[Azure AI-katalógus](https://gallery.azure.ai/)**. A Gallery olyan hely, ahol az adatelemzők és fejlesztők közössége megoszthatja a Cortana Intelligence Suite összetevői használatával létrehozott megoldásokat.
 
 Erről további információkat a [Megoldások megosztása és felfedezése az Azure AI-katalógusban](gallery-how-to-use-contribute-publish.md) című cikkben talál.
 

@@ -17,12 +17,12 @@ ms.date: 10/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecc7eb45b439140cf9d1de048a6d4a7db48c34c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204413"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014077"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása
 Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása esetén a szinkronizálási szolgáltatás nem lesz képes kezdő megfelelően mindaddig, amíg a titkosítási kulcs hagyva, és az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának újrainicializálva. 
@@ -46,7 +46,7 @@ Második bizonyos körülmények között, ha frissítik a jelszót, a szinkroni
 Hibák például jelenik meg:
 
 - A Windows szolgáltatásvezérlőben, ha a szinkronizálási szolgáltatás indításakor, és nem tudja lekérni a titkosítási kulcs, sikertelen, és "<strong>Windows nem tudta elindítani a Microsoft Azure AD Sync a helyi számítógépen. További információkért tekintse át a rendszer-eseménynaplójában. Ha ez egy nem Microsoft-szolgáltatás, a szállítót, és a szolgáltatásspecifikus hibakódhoz-21451857952</strong>. "
-- A Windows eseménynaplót, az alkalmazás eseménynaplója tartalmaz hibát **Event ID 6028** és hibaüzenet *"**a kiszolgáló titkosítási kulcs nem érhető el.**"*
+- A Windows eseménynaplót, az alkalmazás eseménynaplója tartalmaz hibát **Event ID 6028** és hibaüzenet *"a kiszolgáló titkosítási kulcs nem lehet elérni."*
 
 Győződjön meg arról, hogy nem jelenik meg ezeket a hibákat, kövesse az ismertetett [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs megszakítása](#abandoning-the-azure-ad-connect-sync-encryption-key) a jelszó módosításakor.
  

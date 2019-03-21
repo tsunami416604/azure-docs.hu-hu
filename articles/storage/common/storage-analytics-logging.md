@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 8137e59de7ad33ea806fcc2be36bb778448c9adc
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
-ms.translationtype: HT
+ms.openlocfilehash: ab235c67e3a0e60999a0348d03a6e938944f7030
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58077275"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260186"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage analytics naplózása
 
@@ -37,7 +37,7 @@ A Storage Analytics naplók sikeres és sikertelen kérések kapcsolatos részle
 - A közös hozzáférésű Jogosultságkód (SAS) vagy az OAuth, beleértve a sikeres és sikertelen kérések-kérések
 - Elemzési adatok kérelmeket
 
-  Kérést hoz létre a Storage Analytics, például a napló a létrehozás vagy törlés, a program nem naplózza. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md) témaköröket.
+  Kérést hoz létre a Storage Analytics, például a napló a létrehozás vagy törlés, a program nem naplózza. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format) témaköröket.
 
 ### <a name="logging-anonymous-requests"></a>Névtelen kérések naplózása
 
@@ -48,7 +48,7 @@ A Storage Analytics naplók sikeres és sikertelen kérések kapcsolatos részle
 - Az ügyfél és kiszolgáló egyaránt időtúllépési hibákat
 - Sikertelen GET kérelmek 304 (nem módosított). Hibakód:
 
-  Az összes többi sikertelen névtelen kérelmek nem jelentkezett. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md) témaköröket.
+  Az összes többi sikertelen névtelen kérelmek nem jelentkezett. A naplózott adatok teljes listáját leírása itt található a [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format) témaköröket.
 
 ## <a name="how-logs-are-stored"></a>Naplók tárolási módját
 
@@ -200,9 +200,9 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
 
  Példa bemutatja, hogyan töltse le a naplózási adatokat programozott módon, a következő blogbejegyzésben:: [Windows Azure Storage-naplózás: Tárolási kérelmek nyomon követése a naplók segítségével](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) , és keresse meg az oldalon a "DumpLogs" szó.  
 
- Ha letöltötte a naplózási adatokat, megtekintheti a naplóbejegyzéseket a fájlokat. Ezek a naplófájlok elválasztójellel tagolt szöveges formátum használata számú naplófájl olvasása eszközök képesek elemezni, többek között a Microsoft Message Analyzer (további információkért lásd: Útmutató a [figyelés felismerése és hibáinak elhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök eltérő berendezések a formázást, szűrése, rendezése, a Keresés a naplófájlok tartalmát ad rendelkezik. A Storage naplózási naplófájlformátum és a tartalom kapcsolatos további információkért lásd: [Storage Analytics naplóformátum](storage-analytics-logging.md) és [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md).
+ Ha letöltötte a naplózási adatokat, megtekintheti a naplóbejegyzéseket a fájlokat. Ezek a naplófájlok elválasztójellel tagolt szöveges formátum használata számú naplófájl olvasása eszközök képesek elemezni, többek között a Microsoft Message Analyzer (további információkért lásd: Útmutató a [figyelés felismerése és hibáinak elhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök eltérő berendezések a formázást, szűrése, rendezése, a Keresés a naplófájlok tartalmát ad rendelkezik. A Storage naplózási naplófájlformátum és a tartalom kapcsolatos további információkért lásd: [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>További lépések
-* [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md)
-* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)
+* [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format)
+* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Storage Analytics Metrics (klasszikus)](storage-analytics-metrics.md)

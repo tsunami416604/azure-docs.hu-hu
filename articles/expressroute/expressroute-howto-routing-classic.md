@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: b7ac8c0f5c45382dd3beb943699efb198a94e0eb
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5542d61c5e615361ca96f911cfe11540fcd09037
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402342"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103825"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute-kapcsolatcsoport (klasszikus) társviszony létesítése és módosítása
 > [!div class="op_single_selector"]
@@ -58,25 +58,25 @@ Jelentkezzen be az Azure-fiókjába, használja az alábbi példák:
 
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához.
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. Keresse meg a fiókot az előfizetésekben.
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="azure-private-peering"></a>Azure privát társviszony-létesítés
 
@@ -86,59 +86,59 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure privát társvis
 
 1. **Hozzon létre egy ExpressRoute-kapcsolatcsoportot.**
 
-  Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
+   Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
 2. **Ellenőrizze, hogy ki van építve az ExpressRoute-kapcsolatcsoporthoz.**
    
-  Ellenőrizze, hogy ha a az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett.
+   Ellenőrizze, hogy ha a az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Adja vissza:
+   Adja vissza:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
+   Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoporthoz.**
 
-  Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
+   Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
    
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Ez nem képezheti semmilyen, virtuális hálózatok számára lefoglalt címtér részét.
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Ez nem képezheti semmilyen, virtuális hálózatok számára lefoglalt címtér részét.
-  * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg arról, hogy nincs másik társviszony-létesítés a kapcsolatcsoport használja az ugyanazon VLAN-azonosítót.
-  * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társviszony-létesítéshez használhat privát AS-számokat is. Győződjön meg arról, hogy 65515 nem használ.
-  * Egy MD5-kivonat, ha használni kívánja. **Választható**.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ez nem képezheti semmilyen, virtuális hálózatok számára lefoglalt címtér részét.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ez nem képezheti semmilyen, virtuális hálózatok számára lefoglalt címtér részét.
+   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg arról, hogy nincs másik társviszony-létesítés a kapcsolatcsoport használja az ugyanazon VLAN-azonosítót.
+   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társviszony-létesítéshez használhat privát AS-számokat is. Győződjön meg arról, hogy 65515 nem használ.
+   * Egy MD5-kivonat, ha használni kívánja. **Választható**.
      
-  Az alábbi példa segítségével a konfigurálása az Azure privát társviszony-létesítést a kapcsolatcsoporthoz.:
+   Az alábbi példa segítségével a konfigurálása az Azure privát társviszony-létesítést a kapcsolatcsoporthoz.:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
-  ```    
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100
+   ```    
 
-  Egy MD5-kivonat használni kívánt, ha az alábbi példa használatával konfigurálja a privát társviszony-létesítést a kapcsolatcsoporthoz.:
+   Egy MD5-kivonat használni kívánt, ha az alábbi példa használatával konfigurálja a privát társviszony-létesítést a kapcsolatcsoporthoz.:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Private -ServiceKey "*********************************" -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAsn 1234 -VlanId 100 -SharedKey "A1B2C3D4"
+   ```
      
-  > [!IMPORTANT]
-  > Győződjön meg arról, hogy társviszony-létesítési ASN-t, ne ügyfél ASN-t, adja meg az AS-számot.
-  > 
+   > [!IMPORTANT]
+   > Győződjön meg arról, hogy társviszony-létesítési ASN-t, ne ügyfél ASN-t, adja meg az AS-számot.
+   > 
 
 ### <a name="to-view-azure-private-peering-details"></a>Azure privát társviszony-létesítés részleteinek megtekintése
 
@@ -189,59 +189,59 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Azure nyilvános társ
 
 1. **ExpressRoute-kapcsolatcsoport létrehozása**
 
-  Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure nyilvános társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
+   Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure nyilvános társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
 2. **Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy annak kiépítése**
 
-  Először ellenőrizze, hogy az ExpressRoute-kapcsolatcsoport Kiosztott és Engedélyezett állapotban van-e.
+   Először ellenőrizze, hogy az ExpressRoute-kapcsolatcsoport Kiosztott és Engedélyezett állapotban van-e.
 
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Adja vissza:
+   Adja vissza:
 
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
+   Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 4. **Az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz konfigurálása**
    
-  Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt továbblépne:
+   Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt továbblépne:
    
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
-  * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg arról, hogy nincs másik társviszony-létesítés a kapcsolatcsoport használja az ugyanazon VLAN-azonosítót.
-  * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-  * Egy MD5-kivonat, ha használni kívánja. **Választható**.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
+   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg arról, hogy nincs másik társviszony-létesítés a kapcsolatcsoport használja az ugyanazon VLAN-azonosítót.
+   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
+   * Egy MD5-kivonat, ha használni kívánja. **Választható**.
 
-  > [!IMPORTANT]
-  > Győződjön meg arról, hogy társviszony-létesítési ASN-t, és ne ügyfél ASN-t, adja meg az AS-számot.
-  >  
+   > [!IMPORTANT]
+   > Győződjön meg arról, hogy társviszony-létesítési ASN-t, és ne ügyfél ASN-t, adja meg az AS-számot.
+   >  
      
-  Az alábbi példa segítségével a konfigurálása az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz.:
+   Az alábbi példa segítségével a konfigurálása az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz.:
 
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200
+   ```
      
-  Ha szeretné használni egy MD5-kivonat, használja a következő példát a kapcsolatcsoport konfigurálása:
+   Ha szeretné használni egy MD5-kivonat, használja a következő példát a kapcsolatcsoport konfigurálása:
      
-  ```powershell
-  New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 200 -SharedKey "A1B2C3D4"
+   ```
      
 ### <a name="to-view-azure-public-peering-details"></a>Azure nyilvános társviszony-létesítés részleteinek megtekintése
 
@@ -293,34 +293,34 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
 
 1. **ExpressRoute-kapcsolatcsoport létrehozása**
   
-  Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
+   Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, igényelheti tőle, hogy engedélyezze Önnek az Azure privát társviszony-létesítést. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Ha azonban a kapcsolatszolgáltató felügyeli az útválasztást Ön helyett, a kör létrehozása után kövesse az alábbi utasításokat.
 2. **Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy annak kiépítése**
 
-  Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. 
+   Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. 
    
-  ```powershell
-  Get-AzureDedicatedCircuit -ServiceKey "*********************************"
-  ```
+   ```powershell
+   Get-AzureDedicatedCircuit -ServiceKey "*********************************"
+   ```
 
-  Adja vissza:
+   Adja vissza:
    
-  ```powershell
-  Bandwidth                        : 200
-  CircuitName                      : MyTestCircuit
-  Location                         : Silicon Valley
-  ServiceKey                       : *********************************
-  ServiceProviderName              : equinix
-  ServiceProviderProvisioningState : Provisioned
-  Sku                              : Standard
-  Status                           : Enabled
-  ```
+   ```powershell
+   Bandwidth                        : 200
+   CircuitName                      : MyTestCircuit
+   Location                         : Silicon Valley
+   ServiceKey                       : *********************************
+   ServiceProviderName              : equinix
+   ServiceProviderProvisioningState : Provisioned
+   Sku                              : Standard
+   Status                           : Enabled
+   ```
    
-  Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
+   Győződjön meg arról, hogy a kapcsolatcsoport kiosztott és engedélyezett jeleníti meg. Ha nem, beolvasni a szükséges állapot és az állapot a kapcsolatcsoport a kapcsolatszolgáltató együttműködve.
 
-  ```powershell
-  ServiceProviderProvisioningState : Provisioned
-  Status                           : Enabled
-  ```
+   ```powershell
+   ServiceProviderProvisioningState : Provisioned
+   Status                           : Enabled
+   ```
 3. **Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz**
    
     Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
@@ -334,11 +334,11 @@ Ez a szakasz tartalmazza az ExpressRoute-kapcsolatcsoport Microsoft társviszony
    * Útválasztási jegyzék neve: Megadhatja az RIR / IRR jegyzék nevét, amely az AS-szám és az előtagok regisztrálva vannak.
    * Egy MD5-kivonat, ha használni kívánja. **Nem kötelező.**
      
-  A következő parancsmag futtatásával konfigurálhatja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz:
+   A következő parancsmag futtatásával konfigurálhatja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz:
  
-  ```powershell
-  New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
-  ```
+   ```powershell
+   New-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -VlanId 300 -PeerAsn 1234 -CustomerAsn 2245 -AdvertisedPublicPrefixes "123.0.0.0/30" -RoutingRegistryName "ARIN" -SharedKey "A1B2C3D4"
+   ```
 
 ### <a name="to-view-microsoft-peering-details"></a>Microsoft társviszony-létesítés részleteinek megtekintése
 

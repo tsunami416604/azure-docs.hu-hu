@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4947977fbed2b4fe4bd47adcc4de6516090573ad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661309"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260140"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Térkép vezérlők hozzáadása az Azure Maps
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan térképvezérlőket hozzáadása egy térképen. Az
 
 Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A nagyítási vezérlő leehetővé a térkép adataikkal nagyítás. A második kódblokk objektumot hoz létre nagyítási vezérlő használatával a atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a nagyítási vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+A nagyítási vezérlő leehetővé a térkép adataikkal nagyítás. A második kódblokk objektumot hoz létre nagyítási vezérlő használatával a atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a nagyítási vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
 
 ## <a name="add-pitch-control"></a>Lényegét vezérlőelem felvétele
 
@@ -35,7 +35,7 @@ A nagyítási vezérlő leehetővé a térkép adataikkal nagyítás. A második
 
 Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-Lényegét vezérlő leehetővé a térkép a térköz módosítása. A második kódblokkot objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a terv lényegét vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+Lényegét vezérlő leehetővé a térkép a térköz módosítása. A második kódblokkot objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a terv lényegét vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
 
 ## <a name="add-compass-control"></a>Iránytűn vezérlőelem felvétele
 
@@ -44,7 +44,7 @@ Lényegét vezérlő leehetővé a térkép a térköz módosítása. A második
 
 Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokkot objektumot hoz létre Compass vezérlőelem használatával a atlas [Compass vezérlő](/javascript/api/azure-maps-control/atlas.controls.compasscontrol). Hozzáadja a iránytűn vezérlő a térkép segítségével térképhez [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a Compass vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
+A második kódblokkot objektumot hoz létre Compass vezérlőelem használatával a atlas [Compass vezérlő](/javascript/api/azure-maps-control/atlas.control.compasscontrol). Hozzáadja a iránytűn vezérlő a térkép segítségével térképhez [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. A térkép belül van a Compass vezérlő **eseményfigyelő** után a térkép teljes betölti a változóból biztosításához.
 
 ## <a name="a-map-with-all-controls"></a>A térkép összes vezérlőkkel
 
@@ -53,13 +53,13 @@ A második kódblokkot objektumot hoz létre Compass vezérlőelem használatáv
 
 Az első kódblokkot beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kódblokk objektumot hoz létre Compass vezérlőelem használatával a atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+A második kódblokk objektumot hoz létre Compass vezérlőelem használatával a atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
 
-A harmadik kódblokkot az atlas használatával nagyítás objektumot hoz létre [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+A harmadik kódblokkot az atlas használatával nagyítás objektumot hoz létre [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
 
-A negyedik kódblokk objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
+A negyedik kódblokk objektumot hoz létre Felébresztve vezérlőelem használatával a atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust.
 
-A legutóbbi kódblokkot objektumot hoz létre stílus kiválasztása a atlas használatával [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. Az összes vezérlő objektum kerülnek, a térkép belül **eseményfigyelő** annak érdekében, hogy betöltése után a térkép teljes tölti be.
+A legutóbbi kódblokkot objektumot hoz létre stílus kiválasztása a atlas használatával [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) , és hozzáadja a térkép segítségével térkép [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) metódust. Az összes vezérlő objektum kerülnek, a térkép belül **eseményfigyelő** annak érdekében, hogy betöltése után a térkép teljes tölti be.
 
 A parancsfájl a vezérlő objektumok sorrendje előírja a sorrendben jelenjenek meg a térképen. A térkép vezérlőelem sorrendjének módosításához a szkriptben sorrendjét módosíthatja.
 

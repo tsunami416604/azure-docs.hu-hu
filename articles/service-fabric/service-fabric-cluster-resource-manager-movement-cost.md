@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 58147f5c0c3c7203aa6978e284cf5bdc90fa6971
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a4431f1d2e9a63ee7797100cc1092244d9a8b880
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101516"
 ---
 # <a name="service-movement-cost"></a>Szolgáltatás a mozgás költsége
 A Service Fabric fürterőforrás-kezelő úgy ítéli meg, amikor megpróbálja meghatározni, hogy mi változik a fürt tényezővel mennyibe kerül a módosításokat. "Cost" fogalma forog ki ellen, hogy mekkora a fürt javítása érdekében. Költség Beleszámítja a terheléselosztást, töredezettségmentesítése és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy megfeleljen a követelményeknek a legkevésbé zavart okozó vagy költséges módon. 
@@ -79,6 +79,7 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 MoveCost négy szintje van: Nulla, alacsony, közepes és nagy. MoveCosts vannak egymással, viszonyított nulla kivételével. Áthelyezés díjmentesen azt jelenti, hogy a adatátviteli ingyenes, és nem kell csökkentik a pontszámot a megoldás. Az áthelyezés magas does költség beállítás *nem* garantálja, hogy a replika egy helyen tárolhatja.
 
 <center>
+
 ![Helyezze át a költség tényezőként adatátviteli replikái kiválasztása][Image1]
 </center>
 

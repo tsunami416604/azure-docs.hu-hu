@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2979f64934b2ea4517800f5bf0a17e96a1b238dc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170105"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Az Azure Cosmos DB Gremlin API-fiók használata .NET-keretrendszer vagy Core-alkalmazás létrehozása
 
@@ -160,7 +160,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) keresse meg a gráfadatbázis-fiókot. Az **Áttekintés** lapon két végpontot lát: 
  
-   **.Net SDK URI** – Ezt az értéket akkor használja, ha Microsoft.Azure.Graphs-kódtárral kapcsolódik a gráffiókhoz. 
+   **.NET SDK URI** – ezt az értéket használja, amikor Microsoft.Azure.Graphs kódtár használatával csatlakozik a gráfadatbázis-fiók. 
 
    **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 

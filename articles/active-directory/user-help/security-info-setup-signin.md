@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123606"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Állítsa be a biztonsági adatok (előzetes verzió) a bejelentkezési oldal használatával
 Ezeket a lépéseket követheti, ha az kéri, jelentkezzen be munkahelyi vagy iskolai fiókjával után azonnal a biztonsági adatok beállításához.
@@ -39,10 +39,10 @@ Kövesse az alábbi lépéseket a biztonsági adatok a munkahelyi vagy iskolai f
 
 1. Kiválasztása után **tovább** a parancssorból egy **tartsa a fiók biztonságos varázsló** megjelenik, és az első módszert a rendszergazda és a szervezet kell beállítani. Ebben a példában a Microsoft Authenticator alkalmazás esetén.
 
-    >[!Note]
-    >Ha szeretne egy hitelesítő alkalmazást a Microsoft Authenticator alkalmazástól használni, válassza ki a **egy másik hitelesítő alkalmazást használni kívánt** hivatkozásra.
-    
-    >Ha vállalata engedélyezi, hogy az authenticator alkalmazás mellett eltérő módszer kiválasztása, kiválaszthatja a **más módszert kapcsolat beállításához szeretnék**.
+   > [!Note]
+   > Ha szeretne egy hitelesítő alkalmazást a Microsoft Authenticator alkalmazástól használni, válassza ki a **egy másik hitelesítő alkalmazást használni kívánt** hivatkozásra.
+   > 
+   > Ha vállalata engedélyezi, hogy az authenticator alkalmazás mellett eltérő módszer kiválasztása, kiválaszthatja a **más módszert kapcsolat beállításához szeretnék**.
 
     ![Tartsa meg a fiók biztonságos varázsló, a hitelesítés alkalmazás letöltési oldal megjelenítése](media/security-info/securityinfo-prompt-get-auth-app.png)
 

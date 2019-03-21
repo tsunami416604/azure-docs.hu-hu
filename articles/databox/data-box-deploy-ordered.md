@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 16a3fab1fe2338611823a9ab559826302bd06d13
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834268"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box sorrend
 
@@ -61,6 +61,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 3. Kattintson a **Create** (Létrehozás) gombra.
 
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre. 
+
     |Beállítás  |Érték  |
     |---------|---------|
     |Előfizetés     | Válassza ki az EA, CSP vagy az Azure sponsorship-előfizetést a Data Box szolgáltatás. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |

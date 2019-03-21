@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03b8dd9bd0a7acc63fdae66330904142384429a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: MT
+ms.openlocfilehash: ead2b83fb7bf505fe4cbb5a09a383598617066a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794209"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104046"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Az Azure-ba replikált Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele
 
@@ -49,13 +49,13 @@ A feladatátvétel előtt ellenőrizze a virtuális gép tulajdonságait, és gy
 
 A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetőségre.
 
-2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
+1. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
 
-3. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a [rendelkezésre állási csoportot](../virtual-machines/windows/tutorial-availability-sets.md) és a felügyelt lemez beállításait.
+1. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a [rendelkezésre állási csoportot](../virtual-machines/windows/tutorial-availability-sets.md) és a felügyelt lemez beállításait.
 
-4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
+1. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
 
-5. A **Lemezek** résznél láthatja a virtuális gépen lévő operációsrendszer- és adatlemezekkel kapcsolatos információkat.
+1. A **Lemezek** résznél láthatja a virtuális gépen lévő operációsrendszer- és adatlemezekkel kapcsolatos információkat.
 
 ## <a name="failover-to-azure"></a>Feladatátvétel az Azure-ba
 

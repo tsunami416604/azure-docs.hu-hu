@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5be28e817942ee1ba3c75ea53c3df9ea04d9a3c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 632ae913214794a114bc12019d92b6902172fca7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Oktatóanyag: Az Azure Active Directory integrációja az Birst Agilis üzleti elemzés céljából
 
@@ -109,12 +109,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Birst Agilis üzleti
 
     Az URL-címe attól függ, hogy az adatközpontban, hogy megtalálható-e a Birst fiókja:
 
-    * Egyesült Államokbeli adatközpontok használatra a minta a következő: `https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
+   * Egyesült Államokbeli adatközpontok használatra a minta a következő: `https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
-    * Európai adatközpontok használja a következő mintának: `https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
+   * Európai adatközpontok használja a következő mintának: `https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
-    > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Birst Agilis üzleti elemzési ügyfél-támogatási csapatának](mailto:info@birst.com) a gépkulcsengedélyek értékének.
+     > [!NOTE]
+     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Birst Agilis üzleti elemzési ügyfél-támogatási csapatának](mailto:info@birst.com) a gépkulcsengedélyek értékének.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -155,7 +155,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

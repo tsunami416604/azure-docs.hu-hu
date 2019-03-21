@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 176cf31d7a87b08755ee2acb94aea23684647213
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750392"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996570"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportok Azure-sablonnal
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -115,7 +115,7 @@ Ne zárja be a böngészőt, hogy megtekinthesse a frissített verziót a követ
 
 
 ## <a name="update-app-deployment"></a>Alkalmazástelepítés frissítése
-A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Amikor az előző lépésben létrehozta a méretezési csoportot, az *upgradePolicy` tulajdonság *Automatic* (Automatikus) értékre volt állítva. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
+A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha az előző lépésben létrehozta a méretezési csoportot a *upgradePolicy* úgy állították be *automatikus*. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
 
 Az egyéni szkriptbővítmény definíciójának frissítéséhez módosítsa a sablont úgy, hogy az egy új telepítési szkriptre hivatkozzon. Ahhoz, hogy az egyéni szkriptbővítmény felismerje a módosítást, új fájlnevet kell használnia. Az egyéni szkriptbővítmény nem vizsgálja át a szkript tartalmát, hogy történt-e benne változás. Az alábbi definíció egy frissített telepítési szkriptet használt, amelynek a neve ki lett egészítve a *_v2* kifejezéssel:
 

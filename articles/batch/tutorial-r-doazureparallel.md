@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c682d35872587aa238ca9d76ade3d58654963628
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551738"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106440"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: Párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 
@@ -260,7 +260,7 @@ stopCluster(cluster)
 Ebben az oktatóanyagban a következőket sajátította el:
 
 > [!div class="checklist"]
-A doAzureParallel telepítése és konfigurálása a Batch- és tárfiókok eléréséhez
+> A doAzureParallel telepítése és konfigurálása a Batch- és tárfiókok eléréséhez
 > * Batch-készlet létrehozása párhuzamos háttérként az R-munkamenethez
 > * Párhuzamos mintaszimuláció futtatása a készleten
 

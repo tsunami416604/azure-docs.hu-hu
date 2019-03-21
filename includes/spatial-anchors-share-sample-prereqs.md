@@ -4,23 +4,24 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 13ce6b91d57f95f252b707b44fd716c148db640f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 63c145bf20999145d4edb3bb85766e7251360411
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752138"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305092"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
-* Olyan Windows-gépeken, <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **ASP.NET és webfejlesztési** számítási feladatot.
+* Egy Windows-számítógépen, amelyre <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> vagy később együtt települ a **ASP.NET és webfejlesztési** számítási feladatot.
 * A [a .NET Core 2.2 SDK](https://dotnet.microsoft.com/download).
-* Egy vagy több eszközön (iOS vagy Android) üzembe helyezéséhez és futtatásához.
-  * Android használatánál:
-    * <a href="https://developer.android.com/studio/" target="_blank">Az Android Studio 3.3-as</a> és <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> telepítve van a Windows-gépen.
-    * A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">engedélyezve fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">képes ARCore</a> Android-eszközön.
-  * Ha iOS-es:
-    * Olyan macOS-gépeken, <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10 +</a>, <a href="https://cocoapods.org" target="_blank">CocoaPods</a> és <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> telepítve.
-    * A fejlesztő engedélyezve <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit kompatibilis</a> iOS-eszközön.
+* Egy vagy több eszközön (iOS vagy Android), amelyen helyezhet üzembe és futtathat egy alkalmazást.
+  * Android használja, ha szüksége van:
+    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3</a> vagy újabb, illetve <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb, és <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> telepítve a Windows-számítógépen.
+    * A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">developer-kompatibilis</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore képességgel</a> Android-eszközön.
+  * IOS-es használja, ha szüksége van:
+    * A macOS-számítógépre, amelyen <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> vagy újabb, illetve <a href="https://cocoapods.org" target="_blank">CocoaPods</a>, és <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb van telepítve.
+    * Egy fejlesztői-kompatibilis <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> iOS-eszközön.
+    * A Git telepítve van a Homebrew-n keresztül. Adja meg a következő parancsot a terminálon ugyanabban a sorban: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` Ezután futtassa `brew install git`.

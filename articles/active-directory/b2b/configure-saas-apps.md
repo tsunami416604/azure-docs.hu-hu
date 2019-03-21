@@ -9,14 +9,15 @@ ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7a652ab4283321c5934b32fdc5478bb5d79e4a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096911"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293130"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B-együttműködés a SaaS-alkalmazások konfigurálása
 
@@ -53,7 +54,7 @@ Ahhoz, hogy a felhasználók számára, hogy jelentkezzen be a szervezeti fiókj
 
 5. Jelentkezzen be a bejelentkezési URL-címet a Dropbox a **egyszeri bejelentkezési** lapot.
 
-   ![A Dropbox bejelentkezési oldala](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![Képernyőfelvétel: a Dropbox bejelentkezési oldala](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. Válassza a menü **felügyeleti konzol**.
 
@@ -78,7 +79,7 @@ Engedélyezheti a felhasználók be vendég felhasználók hitelesítése az Azu
 
 2. Egyszeri bejelentkezés konfigurálásához a következő sorrendben:
 
-   ![Box egyszeri bejelentkezés konfigurálása](media/configure-saas-apps/configure-box-sso.png)
+   ![Az egyszeri bejelentkezés beállításainak beállításait bemutató képernyőkép](media/configure-saas-apps/configure-box-sso.png)
 
    a. Az a **bejelentkezési URL-cím** ellenőrizze, hogy, hogy a bejelentkezési URL-cím van beállítva megfelelően be az Azure Portalon. Az URL-címet a Box.com-bérlői URL-címe. Azt az elnevezési konvenciót kell követniük *https://.box.com*.  
    A **azonosító** nem vonatkozik az alkalmazáshoz, de is megjelenik a kötelező mező.

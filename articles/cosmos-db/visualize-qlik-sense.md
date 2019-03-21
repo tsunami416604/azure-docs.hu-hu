@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044467"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258775"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Az Azure Cosmos DB csatlakoztatása a Qlik Sense és -adatok megjelenítése
 
@@ -42,9 +42,9 @@ Mielőtt Ez a cikk utasításait követve ellenőrizze, hogy készen áll a köv
 
 * Töltse le a [videojátékok adatok](https://www.kaggle.com/gregorut/videogamesales), a CSV formátumban van ezekkel a mintaadatokkal. Ön az adatok tárolásához a Cosmos DB-fiókban, és Qlik Sense megjelenítheti.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [hozzon létre egy fiókot](create-sql-api-dotnet.md#create-a-database-account) a rövid útmutató című szakaszban.
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [hozzon létre egy fiókot](create-sql-api-dotnet.md#create-account) a rövid útmutató című szakaszban.
 
-* [Hozzon létre egy adatbázis és gyűjtemény](create-sql-api-dotnet.md#add-a-collection) –, használati érték között állítható be a gyűjtemény átviteli 1000 RU/s. 
+* [Hozzon létre egy adatbázis és gyűjtemény](create-sql-api-dotnet.md#create-collection-database) –, használati érték között állítható be a gyűjtemény átviteli 1000 RU/s. 
 
 * A videó játék értékesítési mintaadatok betöltése a Cosmos DB-fiók. Azure Cosmos DB adatáttelepítési eszköz használatával importálhatja az adatokat, megteheti egy [szekvenciális](import-data.md#SQLSeqTarget) vagy egy [tömeges importálás](import-data.md#SQLBulkTarget) az adatok. Az adatok importálása a Cosmos DB-fiók körülbelül 3 – 5 percet vesz igénybe.
 

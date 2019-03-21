@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244570"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121587"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -90,7 +90,7 @@ Kapcsolódás virtuális hálózatok egymáshoz, erőforrások kommunikálhassan
 
 - **Társviszony-létesítés:** Lehetővé teszi az erőforrások különböző Azure vnetekhez csatlakoztatni az azonos Azure-helyen belül kommunikálni egymással. A sávszélességet és a virtuális hálózatok közötti késés megegyezik, mintha az erőforrásokat ugyanabban a Vnetben csatlakoztatva. Társviszony-létesítés kapcsolatos további információkért olvassa el [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
- ![Társviszony-létesítés](media/azure-network-security/azure-network-security-fig-3.png)
+  ![Társviszony-létesítés](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **VNet – VNet kapcsolat:** Lehetővé teszi az erőforrások különböző Azure a vneten belül az azonos vagy eltérő Azure-helyen. Társviszony-létesítéshez, ellentétben a sávszélesség azért virtuális hálózatok közötti adatforgalom kell egy Azure VPN Gatewayen keresztül.
 
@@ -318,19 +318,19 @@ Kényszerített bújtatás az Azure-beli virtuális hálózati felhasználó ál
 
 A következő szakaszban azok az Azure Virtual Network az útválasztási tábla-és útvonalak a jelenlegi korlátozás:
 
--   Minden egyes virtuális hálózat alhálózatához rendelkezik egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási tábla az útvonalak a következő három csoport rendelkezik:
+- Minden egyes virtuális hálózat alhálózatához rendelkezik egy beépített, rendszer-útválasztási táblázatához. A rendszer útválasztási tábla az útvonalak a következő három csoport rendelkezik:
 
- -  **Helyi VNet-útvonal:** Közvetlenül az a cél virtuális gépek ugyanazon a virtuális hálózaton
+  -  **Helyi VNet-útvonal:** Közvetlenül az a cél virtuális gépek ugyanazon a virtuális hálózaton
 
- - **A helyi útvonalak:** Az Azure VPN gatewayhez
+  - **A helyi útvonalak:** Az Azure VPN gatewayhez
 
- -  **Alapértelmezett útvonal:** Közvetlenül a az interneten. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
+  -  **Alapértelmezett útvonal:** Közvetlenül a az interneten. Nem fedi le az előző két útvonalak privát IP-címekre irányuló csomagokat a rendszer elveti.
 
--   Felhasználó által megadott útvonalak kiadása hozzon létre egy útválasztási táblázatot, adjon hozzá egy alapértelmezett útvonalat, és majd társítsa az útválasztási táblázatban az ezekhez az alhálózatokhoz kényszerített bújtatás engedélyezése a virtuális hálózat alhálózatához.
+- Felhasználó által megadott útvonalak kiadása hozzon létre egy útválasztási táblázatot, adjon hozzá egy alapértelmezett útvonalat, és majd társítsa az útválasztási táblázatban az ezekhez az alhálózatokhoz kényszerített bújtatás engedélyezése a virtuális hálózat alhálózatához.
 
--   Meg kell állítania egy "alapértelmezett webhely" a létesítmények közötti helyek között a virtuális hálózathoz csatlakozik.
+- Meg kell állítania egy "alapértelmezett webhely" a létesítmények közötti helyek között a virtuális hálózathoz csatlakozik.
 
--   Kényszerített bújtatás kell rendelni egy virtuális hálózattal, amely dinamikus útválasztási VPN-átjáró (nem a statikus átjárók) rendelkezik.
+- Kényszerített bújtatás kell rendelni egy virtuális hálózattal, amely dinamikus útválasztási VPN-átjáró (nem a statikus átjárók) rendelkezik.
 
 - Kényszerített bújtatás ExpressRoute nincs konfigurálva ez a mechanizmus keresztül, de ehelyett szerint engedélyezve van a társviszony-létesítési ExpressRoute BGP-munkamenetek használatával egy alapértelmezett útvonalat hirdet.
 
@@ -507,7 +507,7 @@ Az Azure a figyelése, megelőzését, észlelését és válaszadás a biztons�
 
 -   Hálózati erőforrások szintű monitorozása
 
--   Az Azure Monitor naplóira
+-   Azure Monitor-naplók
 
 ### <a name="network-watcher"></a>Hálózati figyelő
 
@@ -603,7 +603,7 @@ Diagnosztikai naplók érhetők el [terheléselosztó](https://docs.microsoft.co
 
 A Network Watcher biztosít a diagnosztikai naplók megtekintése. Ez a nézet az összes hálózati erőforrások, amelyek támogatják a diagnosztikai naplózás tartalmazza. Ebben a nézetben engedélyezheti és letilthatja a hálózati erőforrásokat, gyorsan és kényelmesen.
 
-### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) egy szolgáltatás az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
 

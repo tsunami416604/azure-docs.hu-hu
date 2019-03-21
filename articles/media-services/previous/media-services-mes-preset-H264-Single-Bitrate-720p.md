@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fa325f2e8d1941e590094ba15ff937e413d8a8a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d43b78b83ca1dcb60dc6afb17424354975681494
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839270"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260162"
 ---
 # <a name="h264-single-bitrate-720p"></a>H264 Egyféle sávszélességű 720p
 `Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
