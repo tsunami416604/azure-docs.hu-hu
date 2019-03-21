@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2aabe3d1fa8a6034c2dab38c8d6fa6da4b00ac1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247188"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080339"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -61,8 +61,8 @@ Az Azure számos különböző típusú hálózati hozzáférés-vezérlés, min
 
 Minden biztonságos telepítéséhez van szükség egy adott mérték hálózati hozzáférés-vezérlést. A hálózati hozzáférés-vezérlés célja, hogy korlátozni a virtuális gép kommunikációt a szükséges rendszereken. Más kommunikációs kísérlet le vannak tiltva.
 
->[!NOTE]
-A Storage-tűzfalak terjed ki a [az Azure storage biztonsági áttekintése](security-storage-overview.md) cikk
+> [!NOTE]
+> A Storage-tűzfalak terjed ki a [az Azure storage biztonsági áttekintése](security-storage-overview.md) cikk
 
 #### <a name="network-security-rules-nsgs"></a>Hálózati biztonsági szabályok (NSG-k)
 
@@ -365,8 +365,8 @@ Az Azure Network Watcher segíthet a hiba elhárításához és a egy teljesen �
 
 További információ a Network Watcher és tesztelése a funkciók némelyike a gyakorlatot elindítása: [Figyelés áttekintése az Azure network watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
->[!NOTE]
-A legfrissebb értesítésekért rendelkezésre állás és a szolgáltatás állapotát, ellenőrizze a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=network-watcher).
+> [!NOTE]
+> A legfrissebb értesítésekért rendelkezésre állás és a szolgáltatás állapotát, ellenőrizze a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=network-watcher).
 
 ### <a name="azure-security-center"></a>Azure Security Center
 

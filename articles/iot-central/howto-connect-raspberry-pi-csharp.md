@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108358"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -68,13 +68,13 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 
 1. A .NET projekt inicializálása, és adja hozzá a szükséges NuGet-csomagok, futtassa a következő parancsokat:
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. Nyissa meg a `pisample` mappát a Visual Studio Code-ban. Nyissa meg a **pisample.csproj** soubor projektu. Adja hozzá a `<RuntimeIdentifiers>` címke az alábbi kódrészletben látható módon:
 
@@ -281,10 +281,10 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
 
 1. Futtassa a következő parancsot a parancssori környezetben:
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. Másolás a `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` mappát a Raspberry Pi-eszközre. Használhatja a **scp** parancs használatával másolja ki a fájlokat, például:
 
@@ -313,13 +313,13 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
 
 1. Az Azure IoT Central-alkalmazás láthatja, hogy a kód a Raspberry Pi-on futó hogyan működjön együtt az alkalmazás:
 
-    * Az a **mérések** lap a valós eszközhöz, tekintse meg a telemetriát.
-    * Az a **tulajdonságok** lapon láthatja a jelentett értékét **Die szám** tulajdonság.
-    * Az a **beállítások** lapon módosíthatja a Raspberry Pi feszültség és ventilátor sebesség például a különböző beállításait.
+   * Az a **mérések** lap a valós eszközhöz, tekintse meg a telemetriát.
+   * Az a **tulajdonságok** lapon láthatja a jelentett értékét **Die szám** tulajdonság.
+   * Az a **beállítások** lapon módosíthatja a Raspberry Pi feszültség és ventilátor sebesség például a különböző beállításait.
 
-    Az alábbi képernyőfelvételen a Raspberry Pi fogad beállítás változása:
+     Az alábbi képernyőfelvételen a Raspberry Pi fogad beállítás változása:
 
-    ![Raspberry Pi fogad beállítás változása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry Pi fogad beállítás változása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI eszköz sablon részletei

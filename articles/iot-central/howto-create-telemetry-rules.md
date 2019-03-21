@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4668ffd30742f81552cd29f6cdba4c0f82549687
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5f6bc30c318e2f5511b352f1a52f0a5360e4b6f1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773503"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081559"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -56,13 +56,13 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 
 1. Következő lépésként válassza ki **összesítési**, **operátor**, és adjon meg egy **küszöbérték** érték.
-    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például ha a szabályt úgy eseményindító, ha hőmérséklete meghaladja a 80-as és a szabály aktiválásakor szinte azonnal mikor jelentett hőmérséklet > 80-as.
-    - Ha például az átlagos, minimális és maximális összesítő függvényben, Count van kiválasztva, majd a felhasználónak meg kell adnia egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Például ha pedig "5 perc" időszak és a szabály keres átlaghőmérséklet 80-as, a szabály akkor aktiválódik, ha az átlaghőmérséklet legalább 5 percnek a 80-as fölött van. fent. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
+   - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például ha a szabályt úgy eseményindító, ha hőmérséklete meghaladja a 80-as és a szabály aktiválásakor szinte azonnal mikor jelentett hőmérséklet > 80-as.
+   - Ha például az átlagos, minimális és maximális összesítő függvényben, Count van kiválasztva, majd a felhasználónak meg kell adnia egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Például ha pedig "5 perc" időszak és a szabály keres átlaghőmérséklet 80-as, a szabály akkor aktiválódik, ha az átlaghőmérséklet legalább 5 percnek a 80-as fölött van. fent. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
 
-    ![Állapot](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+     ![Állapot](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE]
-    >Egynél több telemetria mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
+     >[!NOTE]
+     >Egynél több telemetria mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
 
 ### <a name="configure-actions"></a>Művelet konfigurálása
 

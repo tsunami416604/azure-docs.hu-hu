@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Oktatóanyag: A Zscaler három Azure Active Directory-integráció
 
@@ -159,43 +159,43 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Zscaler három egyszeri bejelentkezés konfigurálása
 
-9. Egy másik böngészőablakban jelentkezzen be a Zscaler három vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Zscaler három vállalati hely rendszergazdaként.
 
-10. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
+1. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
    
-    ![Felügyeleti](./media/zscaler-three-tutorial/ic800206.png "felügyelete")
+   ![Felügyeleti](./media/zscaler-three-tutorial/ic800206.png "felügyelete")
 
-    a. Hitelesítés típusa alatt válassza ki a **SAML**.
+   a. Hitelesítés típusa alatt válassza ki a **SAML**.
 
-    b. Kattintson a **SAML konfigurálása**.
+   b. Kattintson a **SAML konfigurálása**.
 
-11. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
+1. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
             
-    ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-three-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
+   ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-three-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
     
-    a. Az a **SAML portál URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** Azure Portalról másolt.
+   a. Az a **SAML portál URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    b. Az a **bejelentkezési név attribútum** szövegmezőbe írja be **NameID**.
+   b. Az a **bejelentkezési név attribútum** szövegmezőbe írja be **NameID**.
 
-    c. Kattintson a **feltöltése**töltheti fel az Azure SAML aláíró tanúsítvány az Azure Portalról letöltött a **nyilvános SSL-tanúsítvány**.
+   c. Kattintson a **feltöltése**töltheti fel az Azure SAML aláíró tanúsítvány az Azure Portalról letöltött a **nyilvános SSL-tanúsítvány**.
 
-    d. Váltás a **SAML automatikus kiépítés engedélyezése**.
+   d. Váltás a **SAML automatikus kiépítés engedélyezése**.
 
-    e. Az a **felhasználói megjelenítési név attribútum** szövegmezőbe írja be **displayName** szeretné engedélyezni a SAML automatikus kiépítés displayName attribútumok esetén, ha.
+   e. Az a **felhasználói megjelenítési név attribútum** szövegmezőbe írja be **displayName** szeretné engedélyezni a SAML automatikus kiépítés displayName attribútumok esetén, ha.
 
-    f. Az a **csoport neve attribútum** szövegmezőbe írja be **tagja(Pénzügy)** szeretné engedélyezni a SAML automatikus kiépítés tagja(Pénzügy) attribútumok esetén, ha.
+   f. Az a **csoport neve attribútum** szövegmezőbe írja be **tagja(Pénzügy)** szeretné engedélyezni a SAML automatikus kiépítés tagja(Pénzügy) attribútumok esetén, ha.
 
-    g. Az a **részleg neve attribútum** Enter **részleg** Ha engedélyezi a SAML automatikus kiépítés részleg attribútumokat.
+   g. Az a **részleg neve attribútum** Enter **részleg** Ha engedélyezi a SAML automatikus kiépítés részleg attribútumokat.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+   i. Kattintson a **Save** (Mentés) gombra.
 
-12. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
+1. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
 
-    ![Adminisztráció](./media/zscaler-three-tutorial/ic800207.png)
+   ![Adminisztráció](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. A kurzort a **aktiválási** menüjének bal alsó.
+   a. A kurzort a **aktiválási** menüjének bal alsó.
 
-    b. Kattintson a **aktiválása**.
+   b. Kattintson a **aktiválása**.
 
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>A Proxybeállítások konfigurálása az Internet Explorerben
@@ -246,7 +246,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

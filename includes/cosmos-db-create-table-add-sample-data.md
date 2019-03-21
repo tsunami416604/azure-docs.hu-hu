@@ -8,18 +8,19 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 620e9aa829c5894d5269dbee52809dcd004f07ff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 4341d06f09c60933bfc0512f54e024b35a19d8dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38726099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908149"
 ---
 Az Adatkezelő segítségével adatokat adhat hozzá az új táblához.
 
 1. Az Adatkezelőben bontsa ki a **minta tábla** pontot, és kattintson az **Entitások**, ezután pedig az **Entitás hozzáadása** lehetőségre.
 
    ![Új dokumentumok létrehozása az Azure Portal Adatkezelőjében](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
+
 2. Adja meg a PartitionKey és a RowKey mező adatait és kattintson az **Entitás hozzáadása** lehetőségre.
 
    ![A partíciókulcs és a sorkulcs beállítása új entitások számára](./media/cosmos-db-create-table-add-sample-data/azure-cosmosdb-data-explorer-new-entity.png)

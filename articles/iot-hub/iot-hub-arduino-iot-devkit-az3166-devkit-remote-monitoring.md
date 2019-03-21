@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 5a36a1e955bf79654ae9e5cc01564a47e1a13a05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100785"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Az MXChip IoT DevKit csatlakoztatása az Azure IoT távoli figyelési megoldásgyorsító
 
@@ -76,8 +76,8 @@ Aktív Azure-előfizetés. Ha nem rendelkezik egy, a két módszer egyikével ke
 
 3. A fejlesztői készlet csatlakoztatása a számítógéphez. A VS Code automatikusan észleli a DevKit, és megnyílik a következő lapokon:
 
-  * A fejlesztői készlet bevezetés oldalt.
-  * Arduino példák: Gyakorlati példák DevKit használatának megkezdéséhez.
+   * A fejlesztői készlet bevezetés oldalt.
+   * Arduino példák: Gyakorlati példák DevKit használatának megkezdéséhez.
 
 4. Bontsa ki a bal oldali **ARDUINO példák** területén keresse meg a **példák az MXCHIP AZ3166 > AzureIoT**, és válassza ki **RemoteMonitoring**. Egy új VS Code-ablak nyílik, a projektmappa.
 

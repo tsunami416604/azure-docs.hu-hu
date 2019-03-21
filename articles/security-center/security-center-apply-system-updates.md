@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9c2d6c48b9bf51062181886c8a9ef789b1c2b359
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240830"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099001"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Az Azure Security Center rendszerfrissítések alkalmazása
 Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeken (VM) és a hiányzó operációsrendszer-frissítések a számítógépeken. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), függően szolgáltatás van konfigurálva, egy Windows-számítógépen. A Security Center is ellenőrzi a legújabb frissítéseket Linux rendszerekben. Ha a virtuális gép vagy a számítógép egy rendszer frissítés hiányzik, a Security Center javasolni fogja, hogy a rendszerfrissítések alkalmazása.
@@ -43,7 +43,7 @@ Ebben a példában használjuk **számítási**.
     - A virtuális gépek és számítógépek hiányzó kritikus frissítések teljes száma.
     - A virtuális gépek és számítógépek hiányzó biztonsági frissítések teljes száma.
 
-  Az irányítópult alján felsorolja az összes hiányzó frissítések a virtuális gépek és számítógépek és a hiányzó frissítés súlyosságát.  A lista a következőket tartalmazza:
+   Az irányítópult alján felsorolja az összes hiányzó frissítések a virtuális gépek és számítógépek és a hiányzó frissítés súlyosságát.  A lista a következőket tartalmazza:
 
     - NÉV: A hiányzó frissítés nevére.
     - NEM. Virtuális gépek és számítógépek: Virtuális gépek és számítógépek, amelyekről frissítések hiányoznak a frissítés teljes száma.

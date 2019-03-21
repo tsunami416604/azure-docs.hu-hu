@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 7c47e6df1e8b92d122dcc6bed55506f2fccf9e89
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: 969821c8b83b8ef554c67f99e3a16e827b53e647
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845120"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
 
@@ -194,7 +194,7 @@ A jobb teljesítmény érdekében a következő szempontokat vegye figyelembe, t
       </listeners>
     </trace>
   </system.diagnostics>
-```
+  ```
 
 ## <a name="next-steps"></a>További lépések
-* Kibocsátási megjegyzések tömeges végrehajtó .net könyvtár és Nuget csomag részletes ismertetése:[végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 
+* Kibocsátási megjegyzések tömeges végrehajtó .NET könyvtár és Nuget csomag részletes ismertetése:[végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 

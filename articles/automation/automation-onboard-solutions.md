@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
-ms.translationtype: HT
+ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918899"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082194"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
 
@@ -81,7 +81,7 @@ Most, hogy engedélyezte a megoldásokat, hozzáadhat egy Azure-beli virtuális 
    ![Az Update megoldás engedélyezése a virtuális gépen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Ha nem várja meg, amíg elkészül a másik megoldás, a következő megoldás engedélyezésekor a következő üzenet jelenik meg: *Egy másik megoldás telepítése folyamatban van ezen a virtuális gépen vagy egy másikon. Amikor a telepítés befejeződik, az Engedélyezés gomb újra aktívvá válik, és kérheti a megoldás telepítését ezen a virtuális gépen.*
+> Ha nem várja meg a másik megoldás hajtsa végre a következő megoldás engedélyezésekor a következő üzenetet kapja: *Ez vagy egy másik virtuális gépet folyamatban van egy másik megoldás telepítése. Amikor a telepítés befejeződik, az Engedélyezés gomb újra aktívvá válik, és kérheti a megoldás telepítését ezen a virtuális gépen.*
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
@@ -105,7 +105,7 @@ A **Modulok** lapon a modulkatalógus megnyitásához kattintson a **Böngészé
 1. Kattintson a **Böngészés a katalógusban** gombra.
 1. Keressen az **update and change tracking** kifejezésre, kattintson a runbookra, majd a **Forrás megtekintése** lapon válassza az **Importálás** lehetőséget. Kattintson az **OK** gombra a runbook az Automation-fiókba importálásához.
 
-  ![Előkészítési runbook importálása](media/automation-onboard-solutions/import-from-gallery.png)
+   ![Előkészítési runbook importálása](media/automation-onboard-solutions/import-from-gallery.png)
 
 1. A **Runbook** lapon kattintson a **Szerkesztés**, majd a **Közzététel** lehetőségre. A **Runbook közzététele** párbeszédpanelen kattintson az **Igen** gombra a runbook közzétételéhez.
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d0332e44b76cc3b883fd0472567f74cfde21b2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7c34d8de3dfd06540dd50542ab19da0c1d9b1567
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079741"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés
 
@@ -53,8 +53,8 @@ Közvetlen egyszeri bejelentkezés kombinálva, vagy a [Jelszókivonat-szinkroni
 
 - Bejelentkezési felhasználónév vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy egy másik attribútum konfigurálva az Azure AD Connectben (`Alternate ID`). Mindkét esetben munkahelyi használható, mert a zökkenőmentes egyszeri Bejelentkezést használ az `securityIdentifier` keresse ki a megfelelő felhasználói objektum az Azure AD-ben a Kerberos-jegy jogcím.
 - Közvetlen egyszeri bejelentkezés az alkalmi szolgáltatása. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény kerül vissza a normál viselkedési – azaz, a felhasználó kell a jelszavát adja meg a bejelentkezési oldalon.
-- Ha egy alkalmazás (például https://myapps.microsoft.com/contoso.com) továbbítja egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter – a bérlői azonosító vagy `login_hint` paraméter – a felhasználói azonosító az Azure AD bejelentkezési kérés esetén a felhasználók vannak automatikusan megtörténik a őket belépés felhasználónevek vagy jelszavak nélkül.
-- A felhasználók is kapnak a beavatkozás nélküli bejelentkezést, ha egy alkalmazás (például https://contoso.sharepoint.com) bejelentkezési kéréseket küld a bérlők – vagyis állíthatja be az Azure AD-végpontokra irányuló https://login.microsoftonline.com/contoso.com/<..> vagy https://login.microsoftonline.com/<tenant_ID>/<..> – helyett az Azure AD közös végpont – vagyis https://login.microsoftonline.com/common/<...>.
+- Ha egy alkalmazás (például `https://myapps.microsoft.com/contoso.com`) továbbítja egy `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter – a bérlői azonosító vagy `login_hint` paraméter – a felhasználói azonosító az Azure AD bejelentkezési kérés esetén a felhasználók vannak automatikusan megtörténik a őket belépés felhasználónevek vagy jelszavak nélkül.
+- A felhasználók is kapnak a beavatkozás nélküli bejelentkezést, ha egy alkalmazás (például `https://contoso.sharepoint.com`) bejelentkezési kéréseket küld a bérlők – vagyis állíthatja be az Azure AD-végpontokra irányuló `https://login.microsoftonline.com/contoso.com/<..>` vagy `https://login.microsoftonline.com/<tenant_ID>/<..>` – helyett az Azure AD közös végpont – vagyis `https://login.microsoftonline.com/common/<...>` .
 - Jelentkezzen ki támogatott. Ez lehetővé teszi a felhasználók kiválaszthatják a bejelentkezéshez, automatikus bejelentkezés folyamatban közvetlen egyszeri bejelentkezés használatával automatikusan helyett egy másik Azure AD-fiókot.
 - Office 365 Win32-ügyfelek (Outlook, Word, Excel és mások) vagy újabb verzió 16.0.8730.xxxx rendelkező nem interaktív folyamat használatával támogatott. A onedrive-on, aktiválnia kell a [OneDrive csendes config funkció](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) csendes bejelentkezési élményt.
 - Az Azure AD Connect használatával engedélyezhető.

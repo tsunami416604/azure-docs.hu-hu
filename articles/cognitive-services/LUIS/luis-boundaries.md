@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897513"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -27,7 +27,7 @@ A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-
 Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja meg egy [LUIS dispatch](luis-concept-enterprise.md#dispatch-tool-and-model) alkalmazás vagy a használatával egy [LUIS tároló](luis-container-howto.md). 
 
 |Terület|Korlát|
-|--|:--|--|
+|--|:--|
 | [Alkalmazás neve][luis-get-started-create-app] | * Maximális alapértelmezett karakter |
 | [Batch-tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
@@ -41,7 +41,7 @@ Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja m
 | [Reguláris kifejezés entitások](./luis-concept-entity-types.md)|20 entitások<br>maximum 500 karakter. egy entitás mintával|
 | [Szerepkörök](luis-concept-roles.md)|300 szerepkörök alkalmazásonként. 10 szerepkörök / entitás|
 | [Utterance (kifejezés)][utterances] | 500 karakternél|
-| [Kimondott szöveg][utterances] | 15 000 alkalmazásonként|
+| [Kimondott szöveg][utterances] | 15 000 - alkalmazásonként nem a szándék szerint kimondott szöveg száma nincs korlátozva|
 | [Verziók](luis-concept-version.md)| korlátlan |
 | [Verziónév][luis-how-to-manage-versions] | 10 karakter hosszúságú alfanumerikus karaktereket, illetve időszak korlátozódik (.) |
 

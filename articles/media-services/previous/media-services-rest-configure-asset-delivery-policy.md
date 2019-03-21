@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 8fd523b50ec5d7161da5d9d778386914136097dc
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: MT
+ms.openlocfilehash: 08da3a003fae0ba21af45fef9f98329cf12f97ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880194"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Adategység-kézbesítési házirendek konfigurálása
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -258,7 +258,7 @@ Kérés:
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Ha a tartalom a Widevine DRM-mel védeni kívánt, frissítse a AssetDeliveryConfiguration WidevineLicenseAcquisitionUrl (amely 7 érték szerepel-e) használata, és adja meg az URL-címét egy szolgáltatásra vonatkozó. Widevine-licencek biztosításához a következő AMS-partnereket is használja: [Az Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/).
+Ha a tartalom a Widevine DRM-mel védeni kívánt, frissítse a AssetDeliveryConfiguration WidevineLicenseAcquisitionUrl (amely 7 érték szerepel-e) használata, és adja meg az URL-címét egy szolgáltatásra vonatkozó. Widevine-licencek biztosításához a következő AMS-partnereket is használja: [Az Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Példa: 
 

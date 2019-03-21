@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0601ad9b644c389ff37d37deab96ebf4e110ddd3
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 8ab647a7d97ace0d0f67fa462ada06901184933f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102992"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -67,7 +67,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 3. Hozzon létre egy **hivescripts** nevű mappát.
 4. Töltse fel a **hivescript.hql** fájlt a **hivescripts** almappába.
 
- 
+  
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 

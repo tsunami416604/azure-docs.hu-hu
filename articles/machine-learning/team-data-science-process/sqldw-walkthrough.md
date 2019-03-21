@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8d9e59a11957e8d108ae86ebba157a06129efa58
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111543"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838884"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
-Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
+Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
 
 Az eljárást követi a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) munkafolyamat. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet az adatok betöltése az SQL dw-vel, és hogyan használhatja az SQL DW, vagy egy IPython Notebook Fedezze fel az adatokat és a visszafejtés modell funkciói. Ezután bemutatjuk, hogyan készíthet és helyezhet üzembe az Azure Machine Learning-modell.
 
@@ -881,7 +881,7 @@ Recap, amit eddig még ebben az oktatóanyagban a forgatókönyv, hogy létrehoz
 Ez a minta forgatókönyv és a kísérő parancsfájlok és IPython notebook(s) osztanak meg a Microsoft mellett az MIT-licenccel. Ellenőrizze a LICENSE.txt fájlt a könyvtárban mintakódot a Githubon további részletekért.
 
 ## <a name="references"></a>Referencia
-• [Andrés Monroy NYC Taxi lelassítja letöltési oldalát](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Útadatok taxiköltség által Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+• [Andrés Monroy NYC Taxi lelassítja letöltési oldalát](https://www.andresmh.com/nyctaxitrips/) • [FOILing NYC Útadatok taxiköltség által Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/) • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

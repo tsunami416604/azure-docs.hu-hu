@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: fac56117c4c70e2735580abb52d05e008d660003
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: be86287f8341b6b86064e51f8a26a8c7f97e867e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089415"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100802"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programozott módon létrehozhat egy Stream Analytics-feladat figyelése
 
@@ -142,8 +142,8 @@ A következő kódot a szükséges változók és a felügyeleti ügyfeleket ál
 
 A következő kód lehetővé teszi a figyelést egy **meglévő** Stream Analytics-feladatot. A kód első része egy GET kérelmet a Stream Analytics szolgáltatás az adott Stream Analytics-feladat adatainak beolvasásához hajt végre. Használja a *azonosító* paraméterként a Put metódust a második fele a kódra, amely elküld egy PUT kérelmet a Insights szolgáltatásnak engedélyezze a monitorozást az a Stream Analytics-feladat számára (a GET-kérés lekért) tulajdonság.
 
->[!WARNING]
->Ha korábban engedélyezte a figyelést egy másik Stream Analytics-feladatot, vagy az Azure Portalon vagy programozott módon keresztül az alábbi kód, **javasoljuk, hogy adja meg az azonos tárfióknevet, amelyek akkor használhatók, ha előzőleg engedélyezni a figyelést.**
+> [!WARNING]
+> Ha korábban engedélyezte a figyelést egy másik Stream Analytics-feladatot, vagy az Azure Portalon vagy programozott módon keresztül az alábbi kód, **javasoljuk, hogy adja meg az azonos tárfióknevet, amelyek akkor használhatók, ha előzőleg engedélyezni a figyelést.**
 > 
 > A storage-fiók van csatolva a régióban létrehozott a Stream Analytics-feladat, nem kifejezetten az magát a feladatot.
 > 
@@ -152,13 +152,13 @@ A következő kód lehetővé teszi a figyelést egy **meglévő** Stream Analyt
 > A tárfiók nevét, amellyel cseréje `<YOUR STORAGE ACCOUNT NAME>` az alábbi kódot a storage-fiók, amely a Stream Analytics-feladat, amely engedélyezi a figyelést az azonos előfizetésben kell lennie.
 > 
 > 
-```csharp
-    // Get an existing Stream Analytics job
-    JobGetParameters jobGetParameters = new JobGetParameters()
-    {
-        PropertiesToExpand = "inputs,transformation,outputs"
-    };
-    JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+> ```csharp
+>     // Get an existing Stream Analytics job
+>     JobGetParameters jobGetParameters = new JobGetParameters()
+>     {
+>         PropertiesToExpand = "inputs,transformation,outputs"
+>     };
+>     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
 
     // Enable monitoring
     ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
@@ -172,15 +172,15 @@ A következő kód lehetővé teszi a figyelést egy **meglévő** Stream Analyt
 ```
 
 
-## <a name="get-support"></a>Támogatás kérése
+## Get support
 
-További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>További lépések
+## Next steps
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
-* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Introduction to Azure Stream Analytics](stream-analytics-introduction.md)
+* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics Management REST API Reference](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

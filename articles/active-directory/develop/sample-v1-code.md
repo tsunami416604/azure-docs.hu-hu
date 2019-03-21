@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05b1885871c83da79839448fce2814016f0c082
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64c199df2012e6ce3b3de5f34989cf5cbc135fdc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194563"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101023"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Az Azure Active Directory-Kódminták (1.0-s verziójú végpont)
 
@@ -45,7 +45,7 @@ Az alapszintű forgatókönyv az egyes minta ismertetése: [hitelesítési forga
 Ez a példa bemutatja, hogyan írhat az Azure ad-vel védett egy egyoldalas alkalmazás.
 
  Platform | A saját API-hívások | Egy másik webes API-hívások
- -------- |  --------------------- | ------------------ | ----------------
+ -------- |  --------------------- | ------------------ 
 ![JavaScript](media/sample-v2-code/logo_js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![Angular JS](media/sample-v2-code/logo_angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
@@ -67,8 +67,8 @@ A következő példák bemutatják, felhasználók aláírási webes alkalmazás
 
 A következő példák bemutatják, hogyan szerepköralapú hozzáférés-vezérlés (RBAC) megvalósításához. Az RBAC korlátozni a hozzáférést bizonyos funkciók, egy webalkalmazás, az egyes felhasználók szolgál. A felhasználók jogosultak attól függően, hogy tartoznak egy **Azure AD-csoport** vagy egy adott alkalmazás **szerepkör**.
 
-Platform | Sample
- -------- | -------------------
+Platform | Sample |
+ -------- | ------------------- |
 ![ASP.NET 4.5](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) <p/>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Az Azure AD használó .NET 4.5-ös MVC webalkalmazás **szerepkörök** használ a hitelesítéshez
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Asztali és mobil verziójának nyilvános ügyfélalkalmazások számára a Microsoft Graph vagy egy webes API hívása
@@ -88,14 +88,14 @@ Mobile (Android)           | ![Android / Java](media/sample-v2-code/logo_Android
 Mobile (iOS)           | ![iOS / Objective-C vagy SWIFT nyelven](media/sample-v2-code/logo_iOS.png) | Interaktív |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 Asztal (konzol)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Felhasználónév / jelszó </p>  Integrált Windows-hitelesítés | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Asztal (konzol)          | ![Java-konzol](media/sample-v2-code/logo_Java.png) | Felhasználónév / jelszó | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Asztal (konzol)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Eszköz kódfolyamat | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Asztal (konzol)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Eszközkód folyamata | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Démon alkalmazások (webes API-k elérése az Alkalmazásidentitás)
 
 A következő példák bemutatják asztali vagy webes alkalmazást, hogy a Microsoft Graph vagy webes API-k (együtt az alkalmazás azonosítója) nélkül felhasználóval.
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | Egy ASP.NET- vagy ASP.NET Core 2.0-s webes API-hívások
------------------- | -------- | ---------- | -------------------- | -------------------------
+------------------ | -------- | ---------- | -------------------- 
 Démon alkalmazások (konzol)          | ![.NET](media/sample-v2-code/logo_NETframework.png) | Ügyfél-hitelesítő adatok titkos Alkalmazáskulcs vagy tanúsítvány | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Démon alkalmazások (konzol)         | ![.NET](media/sample-v2-code/logo_NETcore.png) | Ügyfél-hitelesítő adatok tanúsítvánnyal| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
 ASP.NET Web App  | ![.NET](media/sample-v2-code/logo_NETframework.png) | Ügyfél-hitelesítő adatok | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)

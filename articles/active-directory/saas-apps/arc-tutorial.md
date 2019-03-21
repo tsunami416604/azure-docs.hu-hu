@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cca37de70733c8350f97f464ef041af255f41b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8eec05507cd66e2b856e3110bfb60f24c87dfdf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406796"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Oktatóanyag: Ív közzétételi – egyszeri bejelentkezés az Azure Active Directory-integráció
 
@@ -154,11 +154,11 @@ Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Az
     > [!NOTE]
     > Itt a **csoportok** attribútum van leképezve a **user.assignedroles**. Ezek a leképezéséhez a csoportnevek vissza az alkalmazás Azure AD-ben létrehozott egyéni szerepkörök. További útmutatás található [Itt](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) egyéni szerepkörök létrehozásával az Azure ad-ben. 
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-9. Az a **ív közzétételi – egyszeri bejelentkezés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az a **ív közzétételi – egyszeri bejelentkezés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -190,7 +190,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

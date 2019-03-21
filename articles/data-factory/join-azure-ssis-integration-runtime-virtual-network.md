@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 24e2d7be0dfc32e499bc864f2fdf7e2b1c108969
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107797"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -26,7 +26,7 @@ Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Network
 
 - Az SQL Server Integration Services (SSIS) katalógust adatbázis az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance üzemeltet. 
 
- Az Azure Data Factory használatával csatlakoztathatja az Azure-SSIS integrációs modult a klasszikus üzemi modellel vagy az Azure Resource Manager üzemi modell használatával létrehozott virtuális hálózatban. 
+  Az Azure Data Factory használatával csatlakoztathatja az Azure-SSIS integrációs modult a klasszikus üzemi modellel vagy az Azure Resource Manager üzemi modell használatával létrehozott virtuális hálózatban. 
 
 > [!IMPORTANT]
 > A klasszikus virtuális hálózat jelenleg elavult, ezért az Azure Resource Manager-virtuális hálózathoz helyette.  Ha a klasszikus virtuális hálózat már használ, váltson minél hamarabb használja az Azure Resource Manager virtuális hálózatot.

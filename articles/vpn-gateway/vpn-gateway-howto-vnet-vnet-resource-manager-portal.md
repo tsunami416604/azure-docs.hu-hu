@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: f2327d5a2d10653f73c17fbbd1bc9f61487bb21b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778042"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090100"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>A virtuális hálózatok közötti VPN gateway-kapcsolat konfigurálása az Azure portal használatával
 
@@ -172,10 +172,10 @@ Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának
 
 1. Az Azure Portalon válassza ki a **összes erőforrás**, adja meg *virtuális hálózati átjáró* keresési mezőbe, majd navigáljon arra a virtuális hálózati átjáró a virtuális hálózat számára. Például: **TestVNet1GW**. Ezt választva nyithatja meg a **virtuális hálózati átjáró** lapot.
 
-  ![Kapcsolatok oldal](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Kapcsolatok oldal")
+   ![Kapcsolatok oldal](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Kapcsolatok oldal")
 2. Alatt **beállítások**, jelölje be **kapcsolatok**, majd válassza ki **Hozzáadás** megnyitásához a **kapcsolat hozzáadása** lap.
 
-  ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Kapcsolat hozzáadása")
+   ![Kapcsolat hozzáadása](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Kapcsolat hozzáadása")
 3. Az a **kapcsolat hozzáadása** lap, adja meg a kapcsolathoz tartozó értékeket:
 
    - **Név**: Adja meg a kapcsolat nevét. Például: *TestVNet1toTestVNet4*.
@@ -186,11 +186,11 @@ Miután mind a TestVNet1, mind a TestVNet4 virtuális hálózati átjárójának
 
    - **Második virtuális hálózati átjáró**: Ez a mező a virtuális hálózattal, hozzon létre egy kapcsolatot szeretne a virtuális hálózati átjáróját. Válassza ki **egy másik virtuális hálózati átjáró kiválasztása** megnyitásához a **virtuális hálózati átjáró kiválasztása** lapot.
 
-    - Tekintse át az oldalon felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha szeretne kapcsolódni egy virtuális hálózati átjáró, amely nem az előfizetésében, használja a [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
+     - Tekintse át az oldalon felsorolt virtuális hálózati átjárók listáját. Csak azok a virtuális hálózati átjárók jelennek meg, amelyek az előfizetésében szerepelnek. Ha szeretne kapcsolódni egy virtuális hálózati átjáró, amely nem az előfizetésében, használja a [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
-    - Válassza ki a virtuális hálózati átjárót, amelyhez szeretné csatlakoztatni.
+     - Válassza ki a virtuális hálózati átjárót, amelyhez szeretné csatlakoztatni.
 
-    - **Megosztott kulcs (PSK)**: Ebben a mezőben adjon meg egy megosztott kulcsot a kapcsolat. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Helyek közötti kapcsolaton keresztül a kulcs megegyezik a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatának. A fogalom itt is hasonló, kivéve, hanem egy VPN-eszközre, a másik virtuális hálózati átjáró csatlakozik.
+     - **Megosztott kulcs (PSK)**: Ebben a mezőben adjon meg egy megosztott kulcsot a kapcsolat. A kulcsot generálhatja, vagy saját maga is létrehozhatja. Helyek közötti kapcsolaton keresztül a kulcs megegyezik a helyszíni eszközhöz és a virtuális hálózati átjáró kapcsolatának. A fogalom itt is hasonló, kivéve, hanem egy VPN-eszközre, a másik virtuális hálózati átjáró csatlakozik.
     
 4. Válassza ki **OK** a módosítások mentéséhez.
 

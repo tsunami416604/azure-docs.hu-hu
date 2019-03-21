@@ -4,244 +4,197 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 64c7ee45-ee8a-42f7-bf04-fd0e00833ea9
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/06/2017
+ms.topic: tutorial
+ms.date: 03/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89ef8f6cba049f606f78c1d41a4005a708ae62a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 901abdcc45bcac2c9b912e28386f80ab59a1c520
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166725"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Inkling
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Inkling integrálása az Azure Active Directory (Azure AD).
-
 Inkling integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá Inkling Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Inkling (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
+* Szabályozhatja, ki férhet hozzá Inkling Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Inkling (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Inkling az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Inkling egyszeri bejelentkezéses engedélyezett előfizetés
-
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Az éles környezetben ne használjon, ha erre szükség.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
-
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Inkling egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Inkling hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
+* Támogatja a inkling **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-inkling-from-the-gallery"></a>Inkling hozzáadása a katalógusból
+
 Az Azure AD integrálása a Inkling konfigurálásához hozzá kell Inkling a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **Inkling hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Inkling**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/tutorial_inkling_001.png)
+4. A Keresés mezőbe írja be a **Inkling**válassza **Inkling** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-1. Az eredmények panelen válassza ki a **Inkling**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+     ![Az eredmények listájában inkling](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/tutorial_inkling_0001.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Inkling a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Inkling mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Inkling hivatkozás kapcsolata kell létrehozni.
-
-Ez a hivatkozás-kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** Inkling a.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Inkling nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Inkling hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az Inkling tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Egy Inkling tesztfelhasználó létrehozása](#creating-an-inkling-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure ad-ben ábrázolása őt Inkling.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Inkling egyszeri bejelentkezés konfigurálása](#configure-inkling-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Inkling tesztfelhasználót](#create-inkling-test-user)**  – egy megfelelője a Britta Simon Inkling, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és Inkling alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Inkling, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Inkling, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure felügyeleti portálon a a **Inkling** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Inkling** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_general_300.png)
-    
-1. Az a **Inkling tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_inkling_01.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://api.inkling.com/saml/v2/metadata/<user-id>`
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://api.inkling.com/saml/v2/acs/<user-id>`
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    > [!NOTE] 
-    > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. Az értékeket módosítsa a tényleges azonosítója és a válasz URL-címet kell. Kapcsolattartó [Inkling támogatási csapatának](mailto:press@inkling.com) beolvasni ezeket az értékeket.
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **új tanúsítvány létrehozása**.
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_general_400.png)  
+    ![Inkling tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-1. Az a **új tanúsítvány létrehozása** párbeszédpanelen kattintson a naptár ikonra, és válassza ki egy **lejárati dátuma**. Kattintson a **mentése** gombra.
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://api.inkling.com/saml/v2/metadata/<user-id>`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_general_500.png)
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://api.inkling.com/saml/v2/acs/<user-id>`
 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **új tanúsítvány aktívvá** kattintson **mentése** gombra.
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Inkling ügyfél-támogatási csapatának](mailto:press@inkling.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_inkling_02.png)
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-1. Az előugró **helyettesítő tanúsítvány** ablakban kattintson a **OK**.
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_general_600.png)
+6. Az a **Inkling beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_inkling_03.png) 
+    a. Bejelentkezési URL
 
-1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [Inkling támogatási csapatának](mailto:press@inkling.com) , és adja meg azokat a letöltött **metaadatok**. 
+    b. Azure AD-azonosító
 
+    c. Kijelentkezési URL
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
+### <a name="configure-inkling-single-sign-on"></a>Inkling egyszeri bejelentkezés konfigurálása
 
-![Az Azure AD-felhasználó létrehozása][100]
+Az egyszeri bejelentkezés konfigurálása **Inkling** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Inkling támogatási csapatának](mailto:press@inkling.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
-1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/create_aaduser_01.png) 
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/create_aaduser_02.png) 
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/create_aaduser_03.png) 
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/inkling-tutorial/create_aaduser_04.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    d. Kattintson a **Create** (Létrehozás) gombra. 
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-### <a name="creating-an-inkling-test-user"></a>Egy Inkling tesztfelhasználó létrehozása
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Inkling Azure egyszeri bejelentkezés használatára.
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Inkling hoz létre. Együttműködve [Inkling támogatási csapatának](mailto:press@inkling.com) a felhasználók hozzáadása az Inkling platformon.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Inkling**.
 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+2. Az alkalmazások listájában jelölje ki a **Inkling**.
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés Inkling saját hozzáférésének engedélyezésére használja.
+    ![Az alkalmazások listáját a Inkling hivatkozásra](common/all-applications.png)
 
-![Felhasználó hozzárendelése][200] 
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-**Britta Simon rendel Inkling, hajtsa végre az alábbi lépéseket:**
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Az alkalmazások listájában jelölje ki a **Inkling**.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/inkling-tutorial/tutorial_inkling_50.png) 
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-    ![Felhasználó hozzárendelése][202] 
+### <a name="create-inkling-test-user"></a>Inkling tesztfelhasználó létrehozása
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Inkling hoz létre. Együttműködve [Inkling támogatási csapatának](mailto:press@inkling.com) a felhasználók hozzáadása az Inkling platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-
-
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Inkling csempére kattint, meg kell lekérése automatikusan bejelentkezett az Inkling alkalmazáshoz.
-
+Ha a hozzáférési panelen a Inkling csempére kattint, meg kell lehet automatikusan bejelentkezett a Inkling, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/inkling-tutorial/tutorial_general_01.png
-[2]: ./media/inkling-tutorial/tutorial_general_02.png
-[3]: ./media/inkling-tutorial/tutorial_general_03.png
-[4]: ./media/inkling-tutorial/tutorial_general_04.png
-
-[100]: ./media/inkling-tutorial/tutorial_general_100.png
-
-[200]: ./media/inkling-tutorial/tutorial_general_200.png
-[201]: ./media/inkling-tutorial/tutorial_general_201.png
-[202]: ./media/inkling-tutorial/tutorial_general_202.png
-[203]: ./media/inkling-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

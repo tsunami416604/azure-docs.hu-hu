@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 5b80dcfa5cef116bb2558f154a54d343e467ae83
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546653"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881129"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -229,9 +229,9 @@ Felügyeleti megoldások használatával egy számos különböző módon képes
 
 Telepíthet figyelési megoldások Azure marketplace-ről kiválasztásával a **Letöltés most** hivatkozás az egyes megoldások a lap alján.
 
-### <a name="add-a-azure-monitor-cdn-monitoring-solution"></a>Figyelési megoldás az Azure Monitor CDN hozzáadása
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>Az Azure Monitor CDN figyelési megoldás hozzáadása
 
-Adjon hozzá egy figyelési megoldás az Azure Monitor az alábbi lépéseket követve:
+Kövesse az alábbi lépéseket az Azure Monitor figyelési megoldás hozzáadása:
 
 1.   Az Azure Portalon az Azure-előfizetés használatával jelentkezzen be, és nyissa meg az irányítópultot.
     ![Azure-irányítópulton](./media/cdn-diagnostics-log/13_Azure-dashboard.png)

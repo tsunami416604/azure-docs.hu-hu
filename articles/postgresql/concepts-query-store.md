@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 8cd4cf12390ff29754b55d2827ea4750e7123a27
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730489"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005908"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>A Query Store teljesítmény figyelése
 
@@ -36,8 +36,8 @@ Query Store az választható szolgáltatása, így azt nem aktív, alapértelmez
 4. Állítsa az értékét `TOP` és **mentése**.
 
 Várja meg a statisztika a Query Store engedélyezése: 
-5. Keresse meg a `pgms_wait_sampling.query_capture_mode` paraméter.
-6. Állítsa az értékét `ALL` és **mentése**.
+1. Keresse meg a `pgms_wait_sampling.query_capture_mode` paraméter.
+1. Állítsa az értékét `ALL` és **mentése**.
 
 
 Másik megoldásként ezeket a paramétereket az Azure CLI használatával is beállíthatja.
@@ -87,6 +87,7 @@ Az alábbiakban néhány példát, hogyan szerezhet a számítási feladatokhoz,
 Ha engedélyezve van a Query Store a 15 perces összesítési windows rendszerben legfeljebb 500 különböző lekérdezések száma ablak menti adatokat. 
 
 A következő beállítások konfigurálásához a Query Store paraméterek érhetők el.
+
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | Megadja, hogy melyik utasításokat követi. | nincs | nincs, az első, az összes |
@@ -95,6 +96,7 @@ A következő beállítások konfigurálásához a Query Store paraméterek érh
 | pg_qs.track_utility | Megadja, hogy segédprogram parancsokat a rendszer nyomon követi-e | be | bekapcsolt kikapcsolt |
 
 A következő beállítások kifejezetten statisztika várjon vonatkoznak.
+
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Címtartomány**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Utasítások nyomon követi a csoportok várjon statisztikák. | nincs | nincs, az összes|

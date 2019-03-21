@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b35060aec8d9d040777fda247c798a42533b2ea4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091477"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -119,9 +119,9 @@ Miután a felhasználó hitelesítése az Azure AD-vel, fontos értékelheti ki 
 
 Minden interakció x. ábra bemutatta a diagram egy szerint az Azure AD hozzáférési adatvezérlési forgatókönyvek jelöli. Az alábbiakban az egyes forgatókönyvek leírását rendelkezik:
 
-  1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen üzemeltetett: Regisztrált eszközök hozzáférési házirendekkel használható alkalmazásokhoz, amelyek a Windows Server 2012 R2 AD FS használatára vannak konfigurálva.
+1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen üzemeltetett: Regisztrált eszközök hozzáférési házirendekkel használható alkalmazásokhoz, amelyek a Windows Server 2012 R2 AD FS használatára vannak konfigurálva.
 
-  2. Hozzáférés-vezérlés az Azure Portalra:  Az Azure emellett lehetővé teszi a portálon való hozzáférés vezérlése szerepköralapú hozzáférés-vezérlés (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat, amely az Azure Portalon teheti meg egy egyéni műveletek számának korlátozására. Az RBAC használatával férhet hozzá a portálon, a rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat a hozzáférést:
+2. Hozzáférés-vezérlés az Azure Portalra:  Az Azure emellett lehetővé teszi a portálon való hozzáférés vezérlése szerepköralapú hozzáférés-vezérlés (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat, amely az Azure Portalon teheti meg egy egyéni műveletek számának korlátozására. Az RBAC használatával férhet hozzá a portálon, a rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat a hozzáférést:
 
    - Csoport alapú szerepkör-hozzárendelés: Hozzáférés a helyi Active Directoryból hozzárendelheti az Azure AD-csoportokat, ingyeneseket szinkronizálja. Ez lehetővé teszi a meglévő befektetések által a szervezet tett eszközök és csoportok kezelése a folyamatok. Prémium szintű Azure AD a delegált csoport felügyeleti funkciót is használhatja.
    - Használja a beépített szerepkörök az Azure-ban: Három szerepkört is használhatja – tulajdonos, közreműködő és olvasó, győződjön meg arról, hogy felhasználók és csoportok engedélye csak a feladataik elvégzéséhez szükséges feladatokat végezheti el.
@@ -131,9 +131,9 @@ Minden interakció x. ábra bemutatta a diagram egy szerint az Azure AD hozzáf�
    > Ha alkalmazásokat fejleszt, és testre szeretne szabni a hozzáférés-vezérlést a számukra, akkor is az Azure AD alkalmazás-szerepkörök használata a hitelesítéshez. Tekintse át ezt [WebApp-RoleClaims-DotNet-példa](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) hogyan hozhat létre az alkalmazást, ez a funkció használatához.
 
 
-  3. Feltételes hozzáférés az Office 365-alkalmazások a Microsoft Intune-nal:  IT-rendszergazdák feltételes hozzáférési szabályzatok biztonságossá tétele a vállalati erőforrásokhoz, lehetővé téve az információkkal dolgozó szakemberek a megfelelő eszközök hozzáférését a szolgáltatásokat helyezhet üzembe. 
+3. Feltételes hozzáférés az Office 365-alkalmazások a Microsoft Intune-nal:  IT-rendszergazdák feltételes hozzáférési szabályzatok biztonságossá tétele a vállalati erőforrásokhoz, lehetővé téve az információkkal dolgozó szakemberek a megfelelő eszközök hozzáférését a szolgáltatásokat helyezhet üzembe. 
   
-  4. Feltételes hozzáférés a Saas-alkalmazások: [Ez a funkció](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi, hogy konfigurálja a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton lévő felhasználók hozzáférésének blokkolása. A multi-factor authentication szolgáltatás szabályokat alkalmazhat az alkalmazáshoz, vagy csak a megadott biztonsági csoportokban lévő felhasználók rendelt valamennyi felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás IP-címek, hogy a szervezeten belüli hálózati érnek el.
+4. Feltételes hozzáférés a Saas-alkalmazások: [Ez a funkció](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi, hogy konfigurálja a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton lévő felhasználók hozzáférésének blokkolása. A multi-factor authentication szolgáltatás szabályokat alkalmazhat az alkalmazáshoz, vagy csak a megadott biztonsági csoportokban lévő felhasználók rendelt valamennyi felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás IP-címek, hogy a szervezeten belüli hálózati érnek el.
 
 A hozzáférés-vezérlés beállításai a többrétegű megközelítést használni, mivel ezek a lehetőségek összehasonlítása nem vonatkoznak erre a célra. Győződjön meg arról, hogy vannak-e támaszkodva minden egyes forgatókönyv, amely megköveteli, hogy az erőforrásokhoz való hozzáférésének rendelkezésre álló lehetőségek.
 

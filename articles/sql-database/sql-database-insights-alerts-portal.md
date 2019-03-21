@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: dea9a73d7ac868e45d3abf2ee3ff8366fc7b65cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855588"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -59,7 +59,7 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítő e-mailek is megjeleníti.
 5. Válassza ki a **metrika** figyelheti, majd kattintson a kívánt egy **feltétel** és **küszöbérték** a mérőszám értéke. Is kiválaszthatják a **időszak** , ameddig a metrikaszabály riasztási triggerek előtt teljesülniük kell. Így például, ha az időszak "PT5M" használja, és a riasztás 80 % fölötti keres CPU, a riasztás aktiválásakor mikor a **átlagos** CPU 80 % fölötti 5 perc volt. Akkor fordul elő, az első eseményindító, ha azt újra aktivál, ha az átlagos Processzorhasználat nem éri a 80 %-kal több mint 5 perc. A CPU-mérték 1 percenként történik. Tekintse át az alábbi táblázat a támogatott idő windows és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos értéket használja.   
 6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy elküldhetők e-mailben a riasztás akkor aktiválódik, amikor a rendszergazdák és a társadminisztrátorok.
-7. Ha azt szeretné, további e-mail értesítést kapnak, ha a riasztás akkor aktiválódik, adja hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek -  *email@contoso.com;email2@contoso.com*
+7. Ha azt szeretné, további e-mail értesítést kapnak, ha a riasztás akkor aktiválódik, adja hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek - *e-mail\@contoso.com;email2\@contoso.com*
 8. Egy érvényes URI-t a PUT a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
 9. Válassza ki **OK** Ha ezzel elkészült, a riasztás létrehozásához.   
 
@@ -79,7 +79,7 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 | --- | --- | --- | --- | --- |
 | SQL-adatbázis | cpu_percent | Processzorhasználat (%) | Átlag | 5 perc |
 | SQL-adatbázis | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 5 perc |
-| SQL-adatbázis | log_write_percent | Napló i/o-százaléka | Átlag | 5 perc |
+| SQL-adatbázis | log_write_percent | Naplózási IO százalékos aránya | Átlag | 5 perc |
 | SQL-adatbázis | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 5 perc |
 | SQL-adatbázis | tárterület | Adatbázis teljes mérete | Maximum | 30 perc |
 | SQL-adatbázis | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
@@ -95,7 +95,7 @@ Miután létrehozta a riasztást, is kiválaszthatja, és:
 ||||||
 | Rugalmas készlet | cpu_percent | Processzorhasználat (%) | Átlag | 10 perc |
 | Rugalmas készlet | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
-| Rugalmas készlet | log_write_percent | Napló i/o-százaléka | Átlag | 10 perc |
+| Rugalmas készlet | log_write_percent | Naplózási IO százalékos aránya | Átlag | 10 perc |
 | Rugalmas készlet | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 10 perc |
 | Rugalmas készlet | storage_percent | Tárolási százalékos aránya | Átlag | 10 perc |
 | Rugalmas készlet | workers_percent | Feldolgozók százalékos aránya | Átlag | 10 perc |

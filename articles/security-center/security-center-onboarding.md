@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: ab99116cabc14c70698a962c803adb87394e1796
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651104"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100070"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Ingyenes Standard próbálhatja ki. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -65,11 +65,11 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 1. Lépjen vissza **bevezetés**.   
 2. Válassza a **Bevezetés** lapot.
 
-  ![Nem Azure](./media/security-center-onboarding/non-azure.png)
+   ![Nem Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
-  ![Nem Azure-beli számítógép hozzáadása][7]
+   ![Nem Azure-beli számítógép hozzáadása][7]
 
 Ha rendelkezik meglévő munkaterületek, alatt vannak felsorolva **új nem Azure-beli számítógépek hozzáadása**. Számítógépek hozzáadása egy meglévő munkaterületet, vagy hozzon létre egy új munkaterületet. Hozzon létre egy új munkaterületet, jelölje be a hivatkozás **adjon hozzá egy új munkaterületet**.
 
@@ -82,8 +82,8 @@ Ha rendelkezik meglévő munkaterületek, alatt vannak felsorolva **új nem Azur
    ![Adjon hozzá újat][4]
 
 2. A **biztonsági és auditálási**válassza **OMS-munkaterület** hozhat létre egy új munkaterületet.
-> [!NOTE]
-> Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
+   > [!NOTE]
+   > Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
 3. A **OMS-munkaterület**, írja be a munkaterület adatait.
 4. A **OMS-munkaterület**válassza **OK**.  Után kattintson az OK gombra, kap egy Windows vagy Linux-ügynököt és a kulcsok letöltési hivatkozást tartalmaz az ügynök konfigurálásához használja a munkaterület-azonosító.
 5. A **biztonsági és auditálási**válassza **OK**.
@@ -105,7 +105,7 @@ A munkafolyamat a következő is hozzáadhat egy számítógép **bevezetési**,
 
    ![Számítógépek hozzáadása][7]
 
- A **közvetlen ügynök** panel egy hivatkozást kínál letöltésével egy Windows vagy Linux-ügynököt, valamint a munkaterület-Azonosítót és kulcsok használata az ügynök telepítése.   
+   A **közvetlen ügynök** panel egy hivatkozást kínál letöltésével egy Windows vagy Linux-ügynököt, valamint a munkaterület-Azonosítót és kulcsok használata az ügynök telepítése.   
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan előkészítése az Azure és annak érdekében, hogy a Security Center fejlett biztonsági kihasználhatják a nem Azure-erőforrások.  A regisztrált erőforrás lásd: a további lehetőségek

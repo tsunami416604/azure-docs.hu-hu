@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: MT
+ms.openlocfilehash: 5a4ed93bee091bf0a40718a47ffb7cd97a85147c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669005"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993495"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Oktatóanyag: Többtényezős hitelesítés B2B vendégfelhasználó
 
@@ -139,5 +139,6 @@ Ha már nincs szüksége rá, távolítsa el a tesztfelhasználót és a tesztel
 5.  A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 6.  A **Biztonsági** alatt válassza a **Feltételes hozzáférés** lehetőséget.
 7.  A **Szabályzatnév** listában válassza a tesztszabályzathoz tartozó helyi menüt (...), majd kattintson a **Törlés** lehetőségre. Válassza az **Igen** lehetőséget a megerősítéshez.
+
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy a vendégfelhasználók MFA használatával jelentkezzenek be a felhőalkalmazásokba. Az együttműködő vendégfelhasználók hozzáadásáról további tudnivalók: [Azure Active Directory B2B együttműködő felhasználók hozzáadása az Azure portálon](add-users-administrator.md).

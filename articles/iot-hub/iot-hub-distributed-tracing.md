@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0a2027e3ae0fb40058b5bdbfd212687697877076
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100360"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Elosztott nyomkövetést (előzetes verzió) az Azure IoT eszköz – felhő üzenetek nyomon követése
 
@@ -269,7 +269,7 @@ A naplók különböző típusú ismertetése: [Azure IoT Hub-diagnosztikai napl
 A folyamat az IoT-üzenetek megjelenítése, állítsa be az alkalmazás-hozzárendelés mintaalkalmazást. A mintaalkalmazás küldi az elosztott nyomkövetést bejegyzéseit, amelyek [Alkalmazástérkép](../application-insights/app-insights-app-map.md) használatával egy Azure-függvényt, és a egy Eseményközpontba.
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GET, a minta a Githubon</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GET, a minta a Githubon</a>
 
 Ez az alábbi képen látható elosztott nyomkövetést az Alkalmazástérkép három útválasztási végpontok:
 
