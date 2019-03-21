@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 64259d029ce67ecfd5db4b97fc165be0ee391ab8
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 7fea9b0d00d92c63bb4c8bbdadada9e8eb6a05fe
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008073"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202503"
 ---
 # <a name="deploy-the-azure-blueprints-iso-27001-shared-services-blueprint-sample"></a>Az Azure tervezetek ISO 27001 megosztott szolgáltatások tervezet-minta üzembe helyezése
 
@@ -97,7 +97,7 @@ Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előf
 
      A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. A teljes listát vagy összetevő paraméterek és ezek leírását: [összetevő paramétereket tartalmazó](#artifact-parameters-table).
 
-1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján.
+1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján. A tervezet-hozzárendelést jön létre, és összetevő telepítési kezdődik. Üzembe helyezés eltarthat nagyjából egy óra. Üzembe helyezés állapotának ellenőrzéséhez nyissa meg a tervezet-hozzárendelést.
 
 > [!WARNING]
 > Az Azure-tervek szolgáltatás és a beépített tervezet minták **díjmentes**. Az Azure-erőforrások [termék díjszabása](https://azure.microsoft.com/en-us/pricing/). Használja a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) a tervezet minta által üzembe helyezett erőforrások futtatásával járó költségeket megbecsülheti.
@@ -165,10 +165,10 @@ Most, hogy áttekintette az ISO 27001, a megosztott szolgáltatások tervezet-mi
 > [ISO 27001, a megosztott szolgáltatások tervezet - áttekintés](./index.md)
 > [ISO 27001, a megosztott szolgáltatások tervezet - vezérlő leképezés](./control-mapping.md)
 
-Tervezetek és a használatukkal kapcsolatos cikkek hozzáadása:
+További cikkek a tervekről és azok használatáról:
 
-- További információ a [életciklus-tervezetet](../../concepts/lifecycle.md).
-- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](../../concepts/parameters.md).
-- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](../../concepts/sequencing-order.md).
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](../../concepts/resource-locking.md).
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../../how-to/update-existing-assignments.md).
+- Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../../how-to/update-existing-assignments.md) elsajátítása.
