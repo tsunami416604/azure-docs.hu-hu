@@ -15,18 +15,18 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 32d00a1c0daf383d41d6bbc7c9fe105b3a2a6ab1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ab867af76821f90c6a87c08d42affdef8192e201
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774915"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258139"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>IDN formátumú tartománynevek az Azure Stack bemutatása
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-iDNS az Azure Stack hálózati szolgáltatása, amely lehetővé teszi, hogy külső DNS-neveket (például https://www.bing.com.) azt is lehetővé teszi, hogy kell regisztrálni a belső virtuális hálózat nevét. Ezzel a módszerrel oldhatja meg virtuális gépek ugyanazon a virtuális hálózaton lévő IP-címet, hanem nevét. Ez a megközelítés hogy meg kell adni az egyéni DNS-kiszolgálói bejegyzésekkel eltávolítja. a DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintését](https://docs.microsoft.com/azure/dns/dns-overview).
+iDNS az Azure Stack hálózati szolgáltatása, amely lehetővé teszi, hogy külső DNS-neveket (például https:\//www.bing.com.) Azt is lehetővé teszi, hogy kell regisztrálni a belső virtuális hálózat nevét. Ezzel a módszerrel oldhatja meg virtuális gépek ugyanazon a virtuális hálózaton lévő IP-címet, hanem nevét. Ez a megközelítés hogy meg kell adni az egyéni DNS-kiszolgálói bejegyzésekkel eltávolítja. a DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintését](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## <a name="what-does-idns-do"></a>Mire IDN formátumú tartománynevek?
 

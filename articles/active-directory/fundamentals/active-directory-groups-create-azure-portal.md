@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2887badb9a72cc94321263196d02dfab47229b7c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78e83f4a1aea04bbaea12181419de6c5c06034f2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078295"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287077"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot és az Azure Active Directoryval tagok hozzáadása
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../users-groups-roles/index.yml).
@@ -31,7 +31,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 2. Válassza az **Azure Active Directory** a **Csoportok**, majd az **Új csoport** lehetőséget.
 
-    ![Az Azure AD-csoportok megjelenítése](media/active-directory-groups-create-azure-portal/group-full-screen.png)
+    ![Az Azure AD-oldala, amelyen a csoportok megjelenítése](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
 3. A **csoport** lapon, adja meg a szükséges adatokat.
 

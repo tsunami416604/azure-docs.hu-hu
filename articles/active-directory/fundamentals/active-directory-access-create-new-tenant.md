@@ -12,14 +12,14 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a5ef9d929899ac5e66c5a0e342040fc3c5074b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b294163a4486ab1db0590f39ca9235ae46ef1dfe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194818"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286992"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Hozzon létre egy új bérlőt az Azure Active Directoryban
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Új bérlő létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
 
 Ebből a rövid útmutatóból megtudhatja, hogyan érheti el az Azure portált és az Azure Active Directory-t, és megtudhatja, hogyan hozhat létre alapszintű bérlőt a szervezete számára.
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/) globális rendszergazdai fiókkal.
 
-![Azure portál képernyő](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+![Az Azure portal képernyő, és az Azure AD lehetőséget](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Új bérlő létrehozása a szervezetén belül
 Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szervezet számára. Az új bérlő a szervezetét képviseli és segíti a Microsoft felhőszolgáltatások konkrét példányának kezelését a belső és külső felhasználók számára.
@@ -60,7 +60,7 @@ Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő l�
 
     A bérlő és a hozzá kapcsolódó információk törlődnek.
 
-    ![Címtár oldal létrehozása](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    ![Directory lap létrehozása a mintául szolgáló adatokkal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
 ## <a name="next-steps"></a>További lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)

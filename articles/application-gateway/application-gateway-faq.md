@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/13/2019
+ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: 96bd9e679e1766e87a0bb807204df744bb3cca95
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897707"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286193"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -31,7 +31,7 @@ Az Application Gateway támogatja az automatikus skálázás, SSL-kiürítés é
 
 ### <a name="what-is-the-difference-between-application-gateway-and-azure-load-balancer"></a>Mi a különbség az Application Gateway és az Azure Load Balancer?
 
-Az Application Gateway egy 7. rétegbeli terheléselosztó, ami azt jelenti, és együttműködik a csak internetes forgalmat (HTTP/HTTPS/WebSocket). Támogatja a képességek, például SSL lezárást, cookie-alapú munkamenet-affinitást és Ciklikus időszeleteléses terheléselosztás a adatforgalom. Töltse be a terheléselosztó terhelés jóváírásokat összefoglaló balances forgalom rétegben 4 (TCP/UDP).
+Az Application Gateway egy 7. rétegbeli terheléselosztó, ami azt jelenti, és együttműködik a csak internetes forgalmat (HTTP/HTTPS/WebSocket/HTTP/2). Támogatja a képességek, például SSL lezárást, cookie-alapú munkamenet-affinitást és Ciklikus időszeleteléses terheléselosztás a adatforgalom. Töltse be a terheléselosztó terhelés jóváírásokat összefoglaló balances forgalom rétegben 4 (TCP/UDP).
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Milyen protokollokat támogat az Application Gateway?
 
@@ -39,19 +39,11 @@ Az Application Gateway támogatja a HTTP, HTTPS, HTTP/2 és WebSocket.
 
 ### <a name="how-does-application-gateway-support-http2"></a>Hogyan támogatja az Application Gateway a HTTP/2?
 
-HTTP/2 protokoll támogatása az application gateway figyelői-ügyfelekhez érhető el. A háttér-kiszolgálókészlethez kommunikációs HTTP/1.1 felett van. 
-
-Alapértelmezés szerint a HTTP/2-támogatás le van tiltva. A következő Azure PowerShell-lel kódrészlet példakód bemutatja, hogyan tehető lehetővé, hogy:
-
-```azurepowershell
-$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
-$gw.EnableHttp2 = $true
-Set-AzApplicationGateway -ApplicationGateway $gw
-```
+Lásd: [HTTP/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support) megtudhatja, hogyan támogatja az Application gateway a HTTP/2 protokoll.
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Milyen erőforrások jelenleg háttérkészlet részeként támogatottak?
 
-Háttérkészletek összeállítható a hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure App Service-ben. Application Gateway háttérkészlet érintett tagjai nem egy rendelkezésre állási csoporthoz vannak társítva. Háttérkészletek tagjai lehetnek, fürtök és adatközpontok között, vagy Azure-on kívül mindaddig, amíg az IP-kapcsolattal rendelkeznek.
+Lásd: [háttérerőforrásokhoz támogatott](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool) további erőforrások az Application gateway által támogatott.
 
 ### <a name="what-regions-is-the-service-available-in"></a>Mely régiókban érhető el a szolgáltatást?
 
@@ -104,9 +96,7 @@ Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózato
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Az Application Gateway támogatja az x-továbbított – a fejlécek?
 
-Igen, az Application Gateway x – továbbított – a x továbbított protokollverzió és x továbbított port fejlécek szúr be a háttérrendszere továbbítja a kérelmet. Az x-továbbított – a fejléc formátuma IP:Port vesszővel tagolt listája. Az x továbbított proto érvényes értékei a következők: http vagy HTTPS protokollt. X továbbított port portot határozza meg, amelyen a kérelem eléri az application gatewayben.
-
-Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalmazza az eredeti állomásfejlécet, amelyhez a kérés érkezett. Ezt a fejlécet hasznos olyan szituációkra, mint az Azure-webhely-integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló.
+Igen. Lásd: [kérelem módosításai](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request) további információ az Application Gateway által támogatott x – továbbított – a fejlécek.
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-does-my-application-gateway-still-work-when-being-updated"></a>Mennyi ideig tart egy Application Gateway üzembe helyezéséhez? Az Application Gateway továbbra is működik, ha a frissítés alatt?
 
@@ -114,15 +104,47 @@ Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalm
 
 V2 szintű Termékváltozatot központi telepítések kiépítése körülbelül 5-6 percig is eltarthat.
 
+### <a name="can-exchange-server-be-used-as-backend-with-application-gateway"></a>Az Alkalmazásátjáró háttérbeli használhatók az Exchange server?
+
+Nem, az Application Gateway nem támogatja e-mail-protokollok, mint például az SMTP-, IMAP- és POP3. 
+
+## <a name="performance"></a>Teljesítmény
+
+### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>Hogyan támogatja a Application Gateway a magas rendelkezésre állás és méretezhetőség?
+
+Az Application Gateway v1 Termékváltozatot támogatja a magas rendelkezésre állás elérésére, ha két vagy több példánya van. Azure ezek a példányok győződjön meg arról, hogy minden példány nem egy időben, frissítési és a tartalék tartomány között osztja el. A v1 Termékváltozatot támogatja a méretezhetőség átjáróhoz megosztani a terhelés több példánya hozzáadásával.
+
+A v2 szintű Termékváltozatot automatikusan biztosítja, hogy az új példányok vannak elosztva a tartalék tartományok és frissítési tartományok. Ha ki van választva a zone redudancy, az a legújabb példányok is vannak elosztva a zónaszintű hiba rugalmasságot kínálnak a rendelkezésre állási zónák.
+
+### <a name="how-do-i-achieve-dr-scenario-across-data-centers-with-application-gateway"></a>Hogyan válhatok Vészhelyreállítási forgatókönyvhöz rendelkező Application Gateway adatközpontokon?
+
+Ügyfeleink a Traffic Manager használatával elosztani a forgalmat több Application Gateway átjárók különböző adatközpontokban.
+
+### <a name="is-autoscaling-supported"></a>Az automatikus skálázás támogatott?
+
+Igen, az Application Gateway v2 szintű Termékváltozatot támogatja az automatikus skálázás. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md).
+
+### <a name="does-manual-scale-updown-cause-downtime"></a>Manuális skálázás történik, felfelé és lefelé OK állásidő?
+
+Nem jár. Példányok frissítési és tartalék tartományok között oszlanak meg.
+
+### <a name="does-application-gateway-support-connection-draining"></a>Az Application Gateway támogatja a kapcsolat kiürítése?
+
+Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a háttérkészlet megszakítása nélkül is beállíthatja. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy egy konfigurálható időkorlát lejár. Aktuális szükségszerű kapcsolatok végrehajtásához megvárja, amíg a kapcsolat csak kiürítése. Az Application Gateway még nem ismeri az alkalmazás munkamenet-állapot.
+
+### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Módosítható példány mérete a közepes és nagy megszakítása nélkül?
+
+Igen, az Azure elosztja példányok, győződjön meg arról, hogy minden példány nem egy időben a frissítés és a tartalék tartományok között. Az Application Gateway támogatja a méretezés több példányát megosztani a terhelés átjáróhoz hozzáadásával.
+
 ## <a name="configuration"></a>Konfiguráció
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Az Application Gateway mindig telepítve van a virtuális hálózaton?
 
-Igen, az Application Gateway mindig helyezünk üzembe a virtuális hálózat alhálózatán. Ez az alhálózat csak az Application Gateway átjárók tartalmazhat.
+Igen, az Application Gateway mindig helyezünk üzembe a virtuális hálózat alhálózatán. Ez az alhálózat csak az Application Gateway átjárók tartalmazhat. Lásd: [virtuális hálózatot és alhálózatot követelmények](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet) alhálózatot az Application Gateway szempontok megismerése.
 
-### <a name="can-application-gateway-communicate-with-instances-outside-its-virtual-network"></a>Az Application Gateway kommunikálhatnak a virtuális hálózatán kívüli példányok?
+### <a name="can-application-gateway-communicate-with-instances-outside-of-the-virtual-network-it-is-in-or-outside-of-the-subscription-it-is-in"></a>Az Application Gateway kommunikálhatnak példányok van a virtuális hálózaton kívül, vagy kívül található az előfizetés?
 
-Az Application Gateway mindaddig, amíg nincs IP-kapcsolatot, hogy a virtuális hálózaton kívüli példányok kommunikálhat. Háttérkészlet-tagként belső IP-címek használatát tervezi, akkor a szükséges [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) vagy [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Az Application Gateway az, hogy a virtuális hálózaton kívüli vagy kívül van, az előfizetés példányok kommunikálhatnak, mindaddig, amíg nincs IP-kapcsolat. Háttérkészlet-tagként belső IP-címek használatát tervezi, akkor a szükséges [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) vagy [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Üzembe helyezhetem az application gateway alhálózatának megkezdéséhez?
 
@@ -140,11 +162,7 @@ Hálózati biztonsági csoportok (NSG-k) az application gateway alhálózatának
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>Felhasználó által megadott útvonalakat az application gateway alhálózatának támogatottak?
 
-Mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció az application gateway alhálózatának, felhasználó által megadott útvonalak (udr-EK) támogatottak.
-
-Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
-
-Az application gateway alhálózatának az udr-EK vannak **nem** a v2 termékváltozat esetén támogatott. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md#known-issues-and-limitations).
+Lásd: [felhasználó által megadott útvonalak korlátozások](https://docs.microsoft.com/azure/application-gateway/configuration-overview#user-defined-routes-supported-on-the-application-gateway-subnet) további információ a felhasználó által megadott útvonalakat az application gateway alhálózatának támogatott.
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Mik azok a korlátok Application Gateway-en? Növelheti ezeket a korlátokat?
 
@@ -180,51 +198,13 @@ A gazdagép mező a neve a mintavétel való küldéséhez. Alkalmazható csak a
 
 ### <a name="can-i-whitelist-application-gateway-access-to-a-few-source-ips"></a>Application Gateway hozzáférés néhány forrás IP-címek engedélyezési lehetőségeket?
 
-Ebben a forgatókönyvben teheti meg az application gateway alhálózatának az NSG-k használatával. Az alábbi korlátozásokat kell elhelyezni az alhálózat prioritás a listában szereplő sorrendben:
-
-* Engedélyezik a bejövő forgalmat a forrás IP-/ IP-címtartományt.
-
-* Lehetővé teszi minden forrás 65503 – 65534 portokat a beérkező kérések [háttérrendszer állapotának kommunikációs](application-gateway-diagnostics.md). Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
-
-* Lehetővé teszi a bejövő Azure Load Balancer vizsgálatok (AzureLoadBalancer címke) és a bejövő virtuális hálózati forgalom (VirtualNetwork címke) a a [NSG](../virtual-network/security-overview.md).
-
-* Minden egyéb bejövő forgalmat egy megtagadási az összes szabály letiltása.
-
-* Az összes célhelyre az internetre irányuló kimenő forgalom engedélyezése.
+Igen. Lásd: [korlátozza a hozzáférést a megadott forrás IP-címek](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips) való győződjön meg arról, hogy csak engedélyezett forrásoldali IP-címek az Application Gateway hozzáférhet.
 
 ### <a name="can-the-same-port-be-used-for-both-public-and-private-facing-listeners"></a>Használhatja ugyanazt a portot a nyilvános és privát irányuló figyelői?
 
 Nem, ez nem lehetséges.
 
-## <a name="performance"></a>Teljesítmény
-
-### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>Hogyan támogatja a Application Gateway a magas rendelkezésre állás és méretezhetőség?
-
-Az Application Gateway v1 Termékváltozatot támogatja a magas rendelkezésre állás elérésére, ha két vagy több példánya van. Azure ezek a példányok győződjön meg arról, hogy minden példány nem egy időben, frissítési és a tartalék tartomány között osztja el. A v1 Termékváltozatot támogatja a méretezhetőség átjáróhoz megosztani a terhelés több példánya hozzáadásával.
-
-A v2 szintű Termékváltozatot automatikusan biztosítja, hogy az új példányok vannak elosztva a tartalék tartományok és frissítési tartományok. Ha ki van választva a zone redudancy, az a legújabb példányok is vannak elosztva a zónaszintű hiba rugalmasságot kínálnak a rendelkezésre állási zónák.
-
-### <a name="how-do-i-achieve-dr-scenario-across-data-centers-with-application-gateway"></a>Hogyan válhatok Vészhelyreállítási forgatókönyvhöz rendelkező Application Gateway adatközpontokon?
-
-Ügyfeleink a Traffic Manager használatával elosztani a forgalmat több Application Gateway átjárók különböző adatközpontokban.
-
-### <a name="is-autoscaling-supported"></a>Az automatikus skálázás támogatott?
-
-Igen, az Application Gateway v2 szintű Termékváltozatot támogatja az automatikus skálázás. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md).
-
-### <a name="does-manual-scale-updown-cause-downtime"></a>Manuális skálázás történik, felfelé és lefelé OK állásidő?
-
-Nem jár. Példányok frissítési és tartalék tartományok között oszlanak meg.
-
-### <a name="does-application-gateway-support-connection-draining"></a>Az Application Gateway támogatja a kapcsolat kiürítése?
-
-Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a háttérkészlet megszakítása nélkül is beállíthatja. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy egy konfigurálható időkorlát lejár. Aktuális szükségszerű kapcsolatok végrehajtásához megvárja, amíg a kapcsolat csak kiürítése. Az Application Gateway még nem ismeri az alkalmazás munkamenet-állapot.
-
-### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Módosítható példány mérete a közepes és nagy megszakítása nélkül?
-
-Igen, az Azure elosztja példányok, győződjön meg arról, hogy minden példány nem egy időben a frissítés és a tartalék tartományok között. Az Application Gateway támogatja a méretezés több példányát megosztani a terhelés átjáróhoz hozzáadásával.
-
-## <a name="ssl-configuration"></a>SSL konfigurálása
+## <a name="configuration---ssl"></a>Konfiguráció – SSL
 
 ### <a name="what-certificates-are-supported-on-application-gateway"></a>Milyen tanúsítványok az Application Gatewayen támogatottak?
 
@@ -294,7 +274,11 @@ Legfeljebb 10 hitelesítési tanúsítványokat a rendszer az alapértelmezett 5
 
 Nem, nincs integrálva van az Azure Key Vault.
 
-## <a name="web-application-firewall-waf-configuration"></a>Webes alkalmazás tűzfal (WAF) konfigurálása
+### <a name="how-to-configure-https-listeners-for-com-and-net-sites"></a>Hogyan konfigurálható a HTTPS-figyelőként .com-és .net? 
+
+Több tartományi (gazdagép-alapú) útválasztás, létrehozhat többhelyes figyelőket, válassza ki a HTTPS protokoll figyelő konfigurációban és a figyelők társítása az útválasztási szabályokat. További részletekért lásd: [az Application Gateway több hely üzemeltetése](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview). 
+
+## <a name="configuration---web-application-firewall-waf"></a>Konfiguráció – a webalkalmazási tűzfal (WAF)
 
 ### <a name="does-the-waf-sku-offer-all-the-features-available-with-the-standard-sku"></a>A WAF Termékváltozat kínál a standard szintű Termékváltozat érhető el minden funkció?
 

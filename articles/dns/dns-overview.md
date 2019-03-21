@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893494"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294314"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
@@ -38,6 +38,8 @@ Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hál
 
 További információkat a [DNS-zónák és -rekordok védelmével](dns-protect-zones-recordsets.md) kapcsolatos témakörben olvashat. 
 
+## <a name="dnssec"></a>DNSSEC
+Az Azure DNS jelenleg nem támogatja a DNSSEC. A legtöbb esetben szükség DNSSEC csökkentheti az alkalmazások, HTTPS és a TLS következetesen használatával. Kritikus fontosságú követelmény a DNS-zónák DNSSEC esetén ezek a zónák a harmadik féltől származó DNS-szolgáltatók is üzemeltethet.
 
 ## <a name="ease-of-use"></a>Könnyű használat
 

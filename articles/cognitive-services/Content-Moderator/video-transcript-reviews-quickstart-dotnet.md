@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864094"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113733"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Hozzon létre videóátiratot felülvizsgálatok .NET használatával
 
@@ -246,10 +246,10 @@ Egy szöveges videót felülvizsgálatok hozzáadásán is hozzáadhat moderál�
 1. A Content Moderator csoport neve.
 1. A videó felülvizsgálat azonosítója által visszaadott **CreateVideoReviews**.
 1. IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** tulajdonságai a következők:
-- **Feltételek**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** tulajdonságai a következők:
-- **Index**. A kifejezés a nulla alapú indexét.
-- **Kifejezés**. Az előfizetési időszak tartalmazó karakterlánc.
-- **Időbélyeg**. Tartalmazó, (másodpercben), az idő, amikor a használati találhatók a szöveges karakterláncot.
+1. **Feltételek**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** tulajdonságai a következők:
+1. **Index**. A kifejezés a nulla alapú indexét.
+1. **Kifejezés**. Az előfizetési időszak tartalmazó karakterlánc.
+1. **Időbélyeg**. Tartalmazó, (másodpercben), az idő, amikor a használati találhatók a szöveges karakterláncot.
 
 Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó szöveg nyomon követi a formátum](https://www.w3.org/TR/webvtt1/).
 

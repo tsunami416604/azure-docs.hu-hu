@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d29608ded920b14af1be6d4d68ab1d77c3c8cb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630160"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099154"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Az Apache Spark strukturált Stream az Apache Kafka és Azure Cosmos DB használata
 
@@ -52,19 +52,19 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
     Ez a sablon a következő erőforrásokat hozza létre:
 
-    * Egy Kafka on HDInsight 3.6-fürt.
+   * Egy Kafka on HDInsight 3.6-fürt.
 
-    * A Spark on HDInsight 3.6-fürt.
+   * A Spark on HDInsight 3.6-fürt.
 
-    * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
+   * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
-        > [!NOTE]  
-        > A sablon által létrehozott virtuális hálózat a 10.0.0.0/16 címteret használja.
+       > [!NOTE]  
+       > A sablon által létrehozott virtuális hálózat a 10.0.0.0/16 címteret használja.
 
-    * Egy Azure Cosmos DB SQL API-adatbázis.
+   * Egy Azure Cosmos DB SQL API-adatbázis.
 
-    > [!IMPORTANT]  
-    > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
+     > [!IMPORTANT]  
+     > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. Az alábbi információk segítségével feltöltik a a **egyéni üzembe helyezés** szakaszban:
    

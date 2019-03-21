@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 0f444a4ce41a700af4c55795bca95dbbf95003a4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105250"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Egy IoT DevKit eszköz csatlakoztatása a távoli figyelési megoldásgyorsító
 
@@ -40,7 +40,7 @@ A távoli figyelési minta megnyitása a VS Code-ban:
 
 1. Keresés **távoli figyelési** kattintson **nyílt minta**. Egy új VS Code-ablak nyílik meg, a projektmappa fájllistájának megjelenítése:
 
-  ![IoT Workbench, válassza a távoli figyelési példa](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![IoT Workbench, válassza a távoli figyelési példa](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>Az eszköz konfigurálása
 
@@ -99,11 +99,11 @@ A fejlesztői készlet LED-ek valamelyikét színét módosításához használj
 
 1. A feladatok a következő értékek használatával konfigurálja, és kattintson a **alkalmaz**:
 
-    * Válassza ki a feladatot: **Futtatási mód**
-    * Metódus neve: **LedColor**
-    * Feladat neve: **ChangeLedColor**
+   * Válassza ki a feladatot: **Futtatási mód**
+   * Metódus neve: **LedColor**
+   * Feladat neve: **ChangeLedColor**
 
-    ![Feladatbeállítások](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![Feladatbeállítások](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. Néhány másodperc elteltével a RGB LED (alább a gomb A) a DevKit módosított színe:
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c70c6187672c47a9f6dc09e1ccb8e6eadeff6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187680"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287060"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Regisztráljon az Azure Active Directory Premium-kiadások
 Vásárol, és a prémium szintű Azure Active Directory (Azure AD) kiadások társítása az Azure-előfizetés. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
@@ -65,17 +65,17 @@ Ha új Azure AD licenccsomaggal regisztrált, akkor a vásárlás után kapott v
 ### <a name="to-activate-your-license-plan"></a>A licenccsomag aktiválása
 - Nyissa meg a Microsofttól a regisztráció után kapott megerősítő e-mailt, majd vagy a **Bejelentkezésre** vagy a **Regisztrációra** kattintson.
    
-    ![Bejelentkezés](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![Bejelentkezési megerősítő e-mailt és a hivatkozások](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **Bejelentkezés.** Ezt a hivatkozást válassza, ha rendelkezik meglévő bérlővel, majd a meglévő rendszergazdai fiókjával jelentkezzen be. A bérlő globális rendszergazdai kell, ahol a licenceket aktiválása vannak folyamatban.
 
     - **Regisztráció.** Ezt a hivatkozást válassza, ha új Azure AD-bérlőt szeretne aktiválni a licenccsomaghoz a **Fiókprofil létrehozása** párbeszédpanel megnyitásával.
 
-        ![Fiókprofil létrehozása](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![Hozzon létre a fiók profil oldalon minta adatokkal](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 Ha elkészült, a bérlő számára a licenccsomag aktiválását megköszönő megerősítő ablakot fog látni.
 
-![Megerősítés](media/active-directory-get-started-premium/MOLSThankYou.png)
+![Köszönjük, hogy a jóváhagyó mezőről](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Az Azure AD-hozzáférés aktiválása
 Ha új Prémium szintű Azure AD-licenceket ad már létező előfizetéshez, akkor az Azure AD-hozzáférés már valószínűleg aktív. Más esetekben aktiválnia kell az **üdvözlő e-mail** fogadása után.  
@@ -89,11 +89,11 @@ Miután a megvásárolt licencek érvénybe lépnek a címtárban, kapni fog egy
 
 1. Nyissa meg a **üdvözlő e-mailt**, és kattintson a **bejelentkezésre**.
    
-    ![Üdvözlő e-mail](media/active-directory-get-started-premium/AADEmail.png)
+    ![Üdvözlő e-mailt, a kijelölt bejelentkezési hivatkozásra](media/active-directory-get-started-premium/AADEmail.png)
 
 2. Sikeres bejelentkezés után, mobileszköz használatával kétlépéses ellenőrzésen megy keresztül.
    
-    ![Mobileszközös ellenőrzés](media/active-directory-get-started-premium/SignUppage.png)
+    ![A kétlépéses ellenőrzési lapot a mobileszközös ellenőrzés](media/active-directory-get-started-premium/SignUppage.png)
 
 Az aktiválási folyamat jellemzően csak néhány percet vesz igénybe, és ezután már használhatja az Azure AD-bérlővel. 
 

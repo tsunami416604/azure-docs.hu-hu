@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 35abc43b60f31d94e8c4221137ad5437366b3489
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108865"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager működése
 
@@ -39,8 +39,8 @@ Contoso vállalat kidolgoztunk egy új partner portálra. A portál URL-címe ht
 Ez a konfiguráció eléréséhez, kövesse az alábbi lépéseket:
 
 1. A szolgáltatás három példány üzemeltethető. A DNS-nevek központi "contoso-us.cloudapp .net", "contoso-eu.cloudapp .net" és "contoso-asia.cloudapp .net".
-2. Nevű, "contoso.trafficmanager.net", Traffic Manager-profil létrehozása és konfigurálása, hogy a "Teljesítmény" forgalom-útválasztási módszert használja a három végpontok között.
-* Állítsa be a saját személyes tartomány nevét, a "partners.contoso.com", "contoso.trafficmanager.net", egy DNS CNAME rekord használatával átirányítása.
+1. Nevű, "contoso.trafficmanager.net", Traffic Manager-profil létrehozása és konfigurálása, hogy a "Teljesítmény" forgalom-útválasztási módszert használja a három végpontok között.
+1. Állítsa be a saját személyes tartomány nevét, a "partners.contoso.com", "contoso.trafficmanager.net", egy DNS CNAME rekord használatával átirányítása.
 
 ![A TRAFFIC Manager DNS-konfiguráció][1]
 

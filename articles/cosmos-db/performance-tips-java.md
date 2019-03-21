@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 747f58ba5062bd8bcc3995bbfa73cea49e8ddc4b
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a3f194150d1ce452f79db273266d3c9d77e560fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094735"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a javát a teljesítménnyel kapcsolatos tippek
 
@@ -36,25 +36,25 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
    1. [Átjáró (alapértelmezett)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
    2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionmode)
 
-    Átjáró mód az összes SDK-platformon támogatott, és a konfigurált alapértelmezett.  Ha az alkalmazás fut a vállalati hálózaton belül szigorú tűzfal korlátozásokkal, az átjáró az a legjobb választás, mivel a szabványos HTTPS-port és a egy végpontot használja. A teljesítményre vonatkozóan kompromisszumot jelent, azonban nem, hogy az átjáró mód érint egy további hálózati Ugrás minden alkalommal, amikor adatokat olvasni vagy írni az Azure Cosmos DB. Emiatt DirectHttps mód miatt kevesebb hálózati útválasztók ugrásainak jobb teljesítményt nyújt. 
+      Átjáró mód az összes SDK-platformon támogatott, és a konfigurált alapértelmezett.  Ha az alkalmazás fut a vállalati hálózaton belül szigorú tűzfal korlátozásokkal, az átjáró az a legjobb választás, mivel a szabványos HTTPS-port és a egy végpontot használja. A teljesítményre vonatkozóan kompromisszumot jelent, azonban nem, hogy az átjáró mód érint egy további hálózati Ugrás minden alkalommal, amikor adatokat olvasni vagy írni az Azure Cosmos DB. Emiatt DirectHttps mód miatt kevesebb hálózati útválasztók ugrásainak jobb teljesítményt nyújt. 
 
-    A Java SDK átviteli protokollként HTTPS PROTOKOLLT használ. HTTPS kezdeti hitelesítésre és a forgalom titkosításához használja az SSL. A Java SDK használata esetén csak HTTPS-port 443-as kell nyitva lenniük. 
+      A Java SDK átviteli protokollként HTTPS PROTOKOLLT használ. HTTPS kezdeti hitelesítésre és a forgalom titkosításához használja az SSL. A Java SDK használata esetén csak HTTPS-port 443-as kell nyitva lenniük. 
 
-    A ConnectionMode ConnectionPolicy paramétere a DocumentClient példányának a konstrukció során van konfigurálva. 
+      A ConnectionMode ConnectionPolicy paramétere a DocumentClient példányának a konstrukció során van konfigurálva. 
 
-    ```Java
-    public ConnectionPolicy getConnectionPolicy() {
+      ```Java
+      public ConnectionPolicy getConnectionPolicy() {
         ConnectionPolicy policy = new ConnectionPolicy();
         policy.setConnectionMode(ConnectionMode.DirectHttps);
         policy.setMaxPoolSize(1000);
         return policy;
-    }
+      }
         
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
-    ```
+      ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+      DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
+      ```
 
-    ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips-java/connection-policy.png)
+      ![Az Azure Cosmos DB kapcsolati házirend ábrája](./media/performance-tips-java/connection-policy.png)
 
    <a id="same-region"></a>
 2. **A teljesítmény Fájlmegosztáséval azonos régióban lévő ügyfelek elhelyezésének engedélyezése**
@@ -147,7 +147,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
     ```             
 
     A kérelem díja a fejléc adja vissza a kiosztott átviteli sebesség töredéke alatt. Például ha 2000 RU/s kiosztott, és ha az előző lekérdezés 1000 1KB-dokumentumokat ad vissza, a költség, a művelet 1000. Emiatt a belül egy második, a kiszolgáló figyelembe veszi előtt sebességével későbbi kérelmeket csak két ilyen kérelmeket. További információkért lásd: [Kérelemegységek](request-units.md) és a [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
-<a id="429"></a>
+   <a id="429"></a>
 1. **Kezeli a sebesség korlátozása/kérelmek arányának túl nagy**
 
     Amikor az ügyfél meghaladja a fenntartott átviteli sebesség egy olyan fiók, nincs teljesítmény csökkenése nélkül működhet a kiszolgálón, és felül a fenntartott átviteli kapacitás használatának tilalma. A kiszolgáló előrelátó módon RequestRateTooLarge (HTTP-állapotkódot 429-es) a kérelem befejezése, és adja vissza a [x-ms-újrapróbálkozási-után – az ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) jelző idő ezredmásodpercben, amely a felhasználónak várakoznia kell, mielőtt újrapróbálkozni azoknál a fejléc a kérelmet.

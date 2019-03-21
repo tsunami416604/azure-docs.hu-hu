@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: bd59a9584f6993d768a9aeb790470a1d978c78ae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ab050a683913e62c6671bf01397e76311a08952b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006789"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -82,7 +82,7 @@ public static SignalRConnectionInfo Negotiate(
 
 #### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/Overview-Authentication-Authorization.MD).
+A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
 
 App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `UserId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
@@ -127,7 +127,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 #### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/Overview-Authentication-Authorization.MD).
+A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
 
 App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `userId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`. 
 
@@ -174,7 +174,7 @@ public SignalRConnectionInfo negotiate(
 
 #### <a name="authenticated-tokens"></a>Hitelesített jogkivonatok
 
-A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhatja az hitelesítési egy függvényalkalmazáshoz használatával [App Service-hitelesítés] (.. /App-Service/Overview-Authentication-Authorization.MD).
+A függvény egy hitelesített ügyfél akkor aktiválódik, ha egy felhasználói azonosító jogcím a generált token is hozzáadhat. Egyszerűen hozzáadhat hitelesítési egy függvény használatával [App Service-hitelesítés](../app-service/overview-authentication-authorization.md).
 
 App Service-hitelesítés beállítása nevű HTTP-fejlécek `x-ms-client-principal-id` és `x-ms-client-principal-name` tartalmaznak, a hitelesített felhasználó egyszerű ügyfél-Azonosítóját és nevét, illetve. Beállíthatja a `UserId` tulajdonság értéke kötésének vagy fejléc használatával egy [kifejezés kötés](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` vagy `{headers.x-ms-client-principal-name}`.
 
@@ -260,7 +260,7 @@ public static Task SendMessage(
     return signalRMessages.AddAsync(
         new SignalRMessage
         {
-            // the message will only be sent to this user ID
+            // the message will be sent to the group with this name
             GroupName = "myGroup",
             Target = "newMessage",
             Arguments = new [] { message }

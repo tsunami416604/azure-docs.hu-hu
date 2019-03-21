@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098627"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási recovery az Azure Kubernetes Service (AKS)
 
@@ -21,11 +21,11 @@ Kezelheti a fürtöket az Azure Kubernetes Service (AKS), az alkalmazások haszn
 A gyakorlati tanácsok cikk összpontosít, amelyek segítségével szempontok tervezése az üzleti folytonossági és vészhelyreállítási helyreállítási az aks-ben. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-* Több régióban az AKS-fürtök tervezése
-* Az Azure Traffic Managerrel több fürt közötti
-* A kép tárolójegyzékek georeplikációs használata
-* Alkalmazás állapota, között több fürt tervezése
-* Tároló replikálása több régióban
+> * Több régióban az AKS-fürtök tervezése
+> * Az Azure Traffic Managerrel több fürt közötti
+> * A kép tárolójegyzékek georeplikációs használata
+> * Alkalmazás állapota, között több fürt tervezése
+> * Tároló replikálása több régióban
 
 ## <a name="plan-for-multi-region-deployment"></a>Többrégiós üzembe helyezés tervezése
 
@@ -62,7 +62,7 @@ A végpontok és útválasztási, lásd: útmutatást [a földrajzi forgalom-út
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>7. rétegbeli alkalmazás útválasztás az Azure bejárati ajtó
 
-Az Azure Traffic Manager DNS (3. réteg) alakzat forgalom használ. [Az Azure bejárati ajtajának (előzetes verzió)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. További bejárati ajtó jellemzők SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás.
+Az Azure Traffic Manager DNS (3. réteg) alakzat forgalom használ. [(Jelenleg előzetes verzióban érhető el) az Azure bejárati ajtajának](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. További bejárati ajtó jellemzők SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás.
 
 Tekintse át, melyik megoldás a legmegfelelőbb van az alkalmazás forgalmának igényeit.
 

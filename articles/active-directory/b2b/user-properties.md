@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45e9553a3af8a09a6630efa771294661702feef5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670700"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294654"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
@@ -32,7 +33,7 @@ A meghívó szervezetet szükségleteinek egy Azure AD B2B együttműködés fel
 
 - 4. állapot: A gazdagép a szervezet Azure-ban tárolt AD a UserType = Vendég és hitelesítő adatokat, amelyeket a gazdagép szervezet felügyeli.
 
-  ![Megjelenítés a meghívót küldő személy monogramja](media/user-properties/redemption-diagram.png)
+  ![A négy felhasználói állapotok ábrázoló diagram](media/user-properties/redemption-diagram.png)
 
 
 Most nézzük meg, az Azure AD B2B együttműködés felhasználói néz ki az Azure ad-ben.
@@ -41,7 +42,7 @@ Most nézzük meg, az Azure AD B2B együttműködés felhasználói néz ki az A
 
 Állapot: 1 és 2. állapot fiókok olyan vendégfelhasználók működhet a vendég felhasználók saját hitelesítő adataival eredményét. A meghívó a Vendég felhasználó először küld, amikor egy fiókot a címtárban jön létre. Ez a fiók nem rendelkezik, mert a vendégfelhasználó identitásszolgáltató hitelesítés történik tartozó hitelesítő adatokat. A **forrás** a Vendég felhasználói fiókhoz a címtár tulajdonsága **Invited felhasználói**. 
 
-![Az ajánlat visszaváltás előtt](media/user-properties/before-redemption.png)
+![Képernyőfelvétel: az ajánlat visszaváltás előtt a felhasználó tulajdonságai](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>Meghívó beváltása után
 
@@ -87,7 +88,7 @@ Ez a tulajdonság azt jelzi, hogy a felhasználó bejelentkezik.
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>A vendégfelhasználók számára a címtárban szűrése
 
-![Vendég felhasználók szűrése](media/user-properties/filter-guest-users.png)
+![Képernyőfelvétel: a szűrő a vendégfelhasználók számára](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Konvertálja a UserType
 Átalakítása UserType tag Vendég, és ez fordítva PowerShell használatával lehetőség. Azonban a UserType tulajdonság jelöli a felhasználói kapcsolat a szervezet számára. Ezért módosítania kell a tulajdonság csak akkor, ha a kapcsolat a felhasználó a szervezet módosítások. Ha a kapcsolat a felhasználó módosítja, az egyszerű felhasználónév (UPN) módosítani kell? A felhasználó továbbra is ugyanazokhoz az erőforrásokhoz való hozzáférése? Postaláda hozzárendelve? PowerShell-lel atomi tevékenységként a UserType módosítása nem ajánlott. Is abban az esetben ez a tulajdonság nem módosítható válik PowerShell-lel, nem ajánlott ezt az értéket a függőség véve.
@@ -97,7 +98,7 @@ Előfordulhatnak olyan esetekben, ahol kíván adni a vendégfelhasználót maga
 
 Akkor lehet, hogy a vállalat címtárából vendégfelhasználó jogosult tag felhasználóként az alapértelmezett határérték kikapcsolása.
 
-![Távolítsa el a Vendég felhasználói korlátozások](media/user-properties/remove-guest-limitations.png)
+![Képernyőfelvétel: a külső felhasználók beállítás a felhasználói beállítások](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Készíthetek vendégfelhasználók látható az Exchange globális címlista?
 Igen. Alapértelmezés szerint Vendég objektumok nem látható a szervezet globális címlista, de használhatja az Azure Active Directory PowerShell láthatóvá tegye őket. További információkért lásd: **lehet Vendég objektumok a globális címlista látható?** a [vendégfelhasználói hozzáférés az Office 365-csoportok felügyelete](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 

@@ -12,12 +12,12 @@ ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03e91726dd8f37fb2c3b8ffe2c8e89762e8d3dd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2281bc451a5acf9e4e634a124161a3e8b0734deb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546381"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090508"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Oktatóanyag:  Beállítása nál biztonsági az AD FS az Azure AD Connectben
 
@@ -60,9 +60,9 @@ Most hogy bemutatja, hogyan vált át a Jelszókivonat-szinkronizálás. Mielőt
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be egy felhasználói fiókot, amely az új bérlőt létrehozták.  Jelentkezzen be a következő formátumban kell: (user@domain.onmicrosoft.com). A felhasználó által használt helyszíni bejelentkezéshez ugyanazt a jelszót használja.</br>
-![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="next-steps"></a>További lépések
 

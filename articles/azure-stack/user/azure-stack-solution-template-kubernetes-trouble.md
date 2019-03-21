@@ -5,21 +5,21 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabvrigg
+ms.date: 03/20/2019
 ms.reviewer: waltero
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002064"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293787"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
@@ -66,8 +66,8 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 
     A szkript a következő feladatokat hajtja végre:
     - Telepíti a etcd, a Docker és a Kubernetes erőforrások, például kubelet. etcd egy elosztott kulcs-érték tároló, amely lehetővé teszi a számítógépfürtökön tárolja adatait. Docker tárolók néven operációs csontot operációsrendszer-szintű virtualizations támogatja. Kubelet a csomóponti ügynök, amely a Kubernetes-csomópontokon.
-    - Beállítja a etcd szolgáltatás.
-    - Beállítja a kubelet szolgáltatás.
+    - Beállítja a **etcd** szolgáltatás.
+    - Beállítja a **kubelet** szolgáltatás.
     - Kubelet elindul. Ez a feladat az alábbi lépésekből áll:
         1. Elindítja az API-szolgáltatást.
         2. A hálózativezérlő-szolgáltatás elindul.
@@ -77,8 +77,8 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 7. Töltse le és futtassa az egyéni szkriptek futtatására szolgáló bővítmény.
 
 7. Futtassa az ügynök parancsfájlt. Az ügynök egyéni szkript a következő feladatokat hajtja végre:
-    - Etcd telepíti.
-    - Beállítja a kubelet szolgáltatás
+    - Telepíti a **etcd**.
+    - Beállítja a **kubelet** szolgáltatás.
     - A Kubernetes-fürthöz csatlakozik.
 
 ## <a name="steps-for-troubleshooting"></a>Hibaelhárítási lépések
@@ -119,66 +119,52 @@ Ha a Kubernetes-fürtöt telepít, a telepítés állapota minden olyan problém
 
     Minden elem, zöld vagy a piros állapot ikonja van.
 
-## <a name="get-logs-from-a-vm"></a>Virtuális gép naplók lekérése
+## <a name="review-deployment-logs"></a>Tekintse át a telepítési naplók
 
-A naplófájlokat hoznak létre, meg főcsomóponthoz való kapcsolódáshoz a virtuális Gépet a fürthöz, nyisson meg egy bash-parancssort, és futtassa a parancsfájlt. A fő virtuális gép tekintheti meg az erőforráscsoportot és az nevű `k8s-master-<sequence-of-numbers>`. 
+Ha az Azure Stack portal nem biztosít elég információt ahhoz, hogy az üzembe helyezési hibák leküzdeni vagy hibák elhárítása, a következő lépésre, és elemezhetik a fürt naplóit. A telepítési naplók manuális lekéréséhez általában kell egyet a fürt fő virtuális gépek csatlakozni. Egyszerűbb kereteit lenne, töltse le és futtassa a következő [Bash-szkript](https://aka.ms/AzsK8sLogCollectorScript) biztosított az Azure Stack fejlesztőcsapatának. Ez a szkript a DVM és a fürt virtuális gépek csatlakozik, megfelelő rendszer és a fürt naplóit gyűjti, és letölti azokat vissza a munkaállomáson.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Kell egy bash parancssor, amellyel kezelheti az Azure Stack a gépen. A bash használatával futtassa a szkripteket, amelyek a naplók elérése. Egy Windows-gépen használhatja a bash parancssorban, amely a Git segítségével telepítve van. A git legújabb verziójának beszerzéséhez, lásd: [Git letöltési](https://git-scm.com/downloads).
+Szüksége lesz a gép kezelheti az Azure Stack egy Bash-parancssort. Egy Windows-gépen, kap egy Bash parancssor telepítésével [Git for Windows](https://git-scm.com/downloads). Hely telepítése után a _a Git Bash_ a start menüben.
 
-### <a name="get-logs"></a>Naplók lekérése
+### <a name="retrieving-the-logs"></a>A naplók beolvasása
 
-Naplók lekérése, hajtsa végre az alábbi lépéseket:
+Kövesse az alábbi lépéseket gyűjtése és a fürt naplók letöltéséhez:
 
-1. Nyissa meg a bash parancssorban. Git használja egy Windows-gépen, ha egy bash-parancssort megnyithatja az a következő elérési úton: `c:\programfiles\git\bin\bash.exe`.
-2. Futtassa az alábbi bash-parancsokat:
+1. Nyissa meg a Bash parancssorban. Nyisson meg egy Windows-gépről _a Git Bash_ vagy futtatása: `C:\Program Files\Git\git-bash.exe`.
+
+2. A naplózási gyűjtő szkript letöltése a Bash-parancssorban a következő parancsok futtatásával:
 
     ```Bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
     curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    sudo chmod 744 getkuberneteslogs.sh
+    chmod 744 getkuberneteslogs.sh
     ```
 
-    > [!Note]  
-    > A Windows, nem kell futtatni `sudo`. Ehelyett egyszerűen használhatja `chmod 744 getkuberneteslogs.sh`.
-
-3. Ugyanabban a munkamenetben futtassa a következő parancsot a frissítve, hogy a környezet megfelelő paraméterekkel:
-
-    ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
-    ```
-
-4. Tekintse át a paramétereket, és állítsa az értékeket az adott környezet alapján.
+3. Keresse meg a parancsfájlhoz szükséges adatokat, és futtassa:
 
     | Paraméter           | Leírás                                                                                                      | Példa                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP-cím: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
-    | -f, --force | Ne jelenjen meg újra a titkos kulcs feltöltése előtt. | |
-    | -i – identitás-fájlja | Az RSA titkos kulcs fájlját a Kubernetes fő virtuális gép csatlakozni. A kulcs a kezdéshez: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
-    | -h, --help  | A parancs használatát, a nyomtatási `getkuberneteslogs.sh` parancsfájlt. | |
-    | -m, --master-host          | A nyilvános IP-cím vagy a Kubernetes-fürt fő virtuális gép teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`.                       | IP-cím: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u: – a felhasználó          | A Kubernetes-fürt fő virtuális gép felhasználóneve. A Piactéri elem konfigurálásakor beállíthatja ezt a nevet.                                                                    | azureuser                                                                     |
+    | -d, --vmd-host      | A nyilvános IP-cím vagy a DVM teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `vmd-`. | IP-cím: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -h, --help  | Nyomtatási parancs használata. | |
+    | -i – identitás-fájlja | A Kubernetes-fürt létrehozásakor a Piactéri elem átadása az RSA titkos kulcs fájlját. Szükséges a távoli, a Kubernetes-csomópontokon. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -m, --master-host   | A nyilvános IP-cím vagy a fő Kubernetes csomópont teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`. | IP-cím: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -u: – a felhasználó          | A Kubernetes-fürt létrehozásakor a Piactéri elem átadása a felhasználó nevét. A Kubernetes-csomópontokon a távoli szükséges | azureuser (alapértelmezett érték) |
 
 
-
-
-   Amikor hozzáadja a paraméterértékeket, lehet például a következő kódot:
+   Amikor hozzáadja a paraméterértékeket, a parancs előfordulhat, hogy a következőhöz hasonló:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-    Sikeres futtatás a naplókat hoz létre.
+4. Néhány perc múlva a parancsfájl kimenete nevű könyvtárat a gyűjtött naplók `KubernetesLogs_{{time-stamp}}`. Hiba található egy könyvtárat a fürthöz tartozó egyes virtuális gépekhez.
 
-    ![Generált naplók](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
+    A naplózási gyűjtő parancsfájlt is keressen hibákat a naplófájlokban, és tartalmazzák a hibaelhárítási lépések, ha akkor fordul elő, egy ismert probléma található. Győződjön meg arról, hogy a legújabb verzióra, szoftver-és ismert problémák keresése növelését parancsfájl futtatásakor.
 
-
-1. A mappák, a parancs által létrehozott a naplók begyűjtéséről. A parancs létrehozza az új mappák és időbélyegzői őket.
-    - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
-        - Dvmlogs
-        - Acsengine-kubernetes-dvm.log
+> [!Note]  
+> Tekintse meg a GitHub [tárház](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) a naplózási gyűjtő parancsfájllal kapcsolatos további részleteket.
 
 ## <a name="next-steps"></a>További lépések
 

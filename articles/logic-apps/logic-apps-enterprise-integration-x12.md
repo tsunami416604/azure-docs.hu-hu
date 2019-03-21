@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: c4ee56f4ddcccb1fc4ddd84aa1c1b16dea9754d9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842138"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack Exchange X12 üzenete
 
@@ -36,9 +36,10 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
 ## <a name="create-an-x12-agreement"></a>Hozzon létre X12 szerződés
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") 
 
-2. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.  
+2. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
+   A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.  
 
    ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -49,7 +50,8 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
    ![Integrációs fiók hová hozza létre a szerződés kiválasztása](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Válassza ki **áttekintése**, majd válassza ki a **szerződések** csempére. Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét. 
+4. Válassza ki **áttekintése**, majd válassza ki a **szerződések** csempére. 
+   Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét. 
 
    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
@@ -57,14 +59,17 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
    ![Válassza az "Add"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
-6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. A szerződés típusának kiválasztása **X12**. Válassza ki a **Gazdagéppartner**, **gazdagép-identitás**, **Vendégpartner**, és **Vendégidentitás** esetében a szerződés hatálya alá. Tulajdonság kapcsolatos további információkért lásd az ebben a lépésben a táblában.
+6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. 
+   A szerződés típusának kiválasztása **X12**. 
+   Válassza ki a **Gazdagéppartner**, **gazdagép-identitás**, **Vendégpartner**, és **Vendégidentitás** esetében a szerződés hatálya alá. 
+   Tulajdonság kapcsolatos további információkért lásd az ebben a lépésben a táblában.
 
     ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
     | Tulajdonság | Leírás |
     | --- | --- |
     | Name (Név) |A Szerződés neve |
-    | Szerződés típusa | X12 kell lennie. |
+    | Egyezmény típusa | X12 kell lennie. |
     | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
     | Gazdagép-identitás |A gazdagéppartner azonosítója |
     | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
@@ -72,8 +77,8 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
     | Fogadási beállítások |Ezek a tulajdonságok vonatkoznak az összes, a szerződés által fogadott üzeneteket. |
     | Küldési beállítások |Ezek a tulajdonságok a szerződés által küldött összes üzenet vonatkozik. |  
 
-  > [!NOTE]
-  > Szerződés attól függ, a feladó minősítője és azonosítója, és a címzett minősítője és a partnerek és a bejövő üzenet meghatározott azonosító megfelelő X12 feloldása. Ha ezeket az értékeket módosítsa a partner, frissítse túl a megállapodás.
+   > [!NOTE]
+   > Szerződés attól függ, a feladó minősítője és azonosítója, és a címzett minősítője és a partnerek és a bejövő üzenet meghatározott azonosító megfelelő X12 feloldása. Ha ezeket az értékeket módosítsa a partner, frissítse túl a megállapodás.
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Hogyan fogadja a szerződés kezeli az üzenetek konfigurálása
 
@@ -82,7 +87,7 @@ Most, hogy beállította a megállapodás tulajdonságai, konfigurálhatja, hogy
 1.  A **Hozzáadás**válassza **fogadási beállítások**.
 Konfigurálja ezeket a tulajdonságokat a partnerrel, amely az üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
 
-    **Beállítások** van szakaszokba rendeztük: azonosítók, visszaigazoló, sémákat, borítékok, Ellenőrzőszámok, ellenőrzés és belső beállítások.
+    **Beállítások** van szakaszokba rendeztük: Azonosítók, nyugtázása, sémákat, borítékok, Ellenőrzőszámok, ellenőrzés és belső beállítások.
 
 2. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
 
@@ -178,7 +183,7 @@ Beállíthatja, hogyan azonosítja a jelen szerződés, és kezeli a partner a j
 1.  A **Hozzáadás**válassza **küldési beállítások**.
 Konfigurálja ezeket a tulajdonságokat a partnerrel, aki adatcseréihez használható üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
 
-    **Küldési beállítások** van szakaszokba rendeztük: azonosítók, visszaigazoló, sémákat, borítékok, karakterkészletek és elválasztók, Ellenőrzőszámok és érvényesítési.
+    **Küldési beállítások** van szakaszokba rendeztük: Azonosítók, visszaigazoló, sémákat, borítékok, karakterkészletek és elválasztók, Ellenőrzőszámok és érvényesítési.
 
 2. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
 
@@ -213,7 +218,7 @@ Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválas
 | --- | --- |
 | Verzió |Válassza ki a X12 verzió |
 | Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
-| SÉMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. Ha először válassza ki a sémát, a rendszer automatikusan beállítja verziója és a tranzakció típusa  |
+| SCHEMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. Ha először válassza ki a sémát, a rendszer automatikusan beállítja verziója és a tranzakció típusa  |
 
 > [!NOTE]
 > Konfigurálja a szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) töltenek fel, amely a [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md).

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 990e6b4d869df030bfddfeb2d60f0ca0e23ea8ca
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: b1467550ac84c57eaad9178d32fdcfaf14d84ae8
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902263"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260230"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -149,7 +149,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
-|Több-AZ|–|N/A|N/A|N/A|N/A|–|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -173,7 +173,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű bejelentkezések maximális száma (kérelmek)|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
-|Több-AZ|–|N/A|N/A|N/A|N/A|–|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -198,7 +198,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
+|Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Üzleti kritikus fontosságú szolgáltatási szint: 5. generáció számítási platform (2. rész)
@@ -222,7 +222,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
+|Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
 ## <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)

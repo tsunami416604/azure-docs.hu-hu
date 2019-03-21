@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c79becfda84e1a7d65399c7211bdc3b98a28696f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079111"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések csatlakozik
 
@@ -101,7 +101,7 @@ Vegye figyelembe az optimális teljesítmény érdekében a következőket:
 
 - Minden tábla idő szűrő használatával csökkentheti a rekordokat, amelyek a join kell kiértékelni.
 - Használat `where` és `project` csökkentése érdekében a sorok és a csatlakozás előtt a bemeneti tábla oszlopainak számát.
-* Ha egy tábla minden esetben kisebb, mint a másik, az legyen az illesztés bal oldalán.
+- Ha egy tábla minden esetben kisebb, mint a másik, az legyen az illesztés bal oldalán.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 19206278f838b77954c28e95e9171a857ba1338a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670651"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295572"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -46,15 +46,14 @@ A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie:
 
 Ez a tároló minimális és ajánlott értékek a beállításokat támogatja:
 
-|Beállítás| Minimális | Ajánlott |
-|-----------|---------|-------------|
-|Processzormagok<BR>`--cpus`|1 mag|1 mag|
-|Memory (Memória)<BR>`--memory`|2 GB|4 GB|
-|Másodpercenkénti tranzakciók<BR>(TPS)|20 TPS|40 TPS|
+|Tároló| Minimális | Ajánlott | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|LUIS|1 mag, 2 GB memória|1 mag, 4 GB memória|20,40|
 
-Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* TPS - tranzakció / másodperc
 
-A `--cpus` és `--memory` részeként beállításokat használják a `docker run` parancsot.
+Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
 
@@ -102,8 +101,8 @@ A bemeneti csatlakoztatási könyvtár is tartalmaz a **éles**, **átmeneti**, 
 
 |Csomag típusa|Lekérdezési API-végpont|Lekérdezés rendelkezésre állása|Alkalmazáscsomag fájlnév formátuma|
 |--|--|--|--|
-|Betanított|GET, Post|Csak a tároló|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Fájlok másolása folyamatban|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
+|Betanítva|GET, Post|Csak a tároló|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Előkészítés|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_STAGING.gz`|
 |Production|GET, Post|Az Azure és a tároló|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -259,7 +258,7 @@ Használja a gazdagép `https://localhost:5000`, API-k tároló.
 |Csomag típusa|Módszer|Útválasztás|Lekérdezési paraméterek|
 |--|--|--|--|
 |Közzétéve|[Első](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>& előkészítés<br>[&timezoneOffset]<br>[& részletes]<br>[& log]<br>|
-|Betanított|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
+|Betanítva|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[& részletes]<br>[& log]|
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 

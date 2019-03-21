@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5d9f973926a46e61d83cba6fb52a543bddf26f99
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 10bc4e4c440e5495afd820f588270b7990108b68
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315860"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259261"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy application gateway-alapú útválasztási szabályok az Azure portal használatával
 
@@ -48,20 +48,20 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - Az alkalmazásátjáró neve *myAppGateway*.
-    - Az új erőforráscsoport *myResourceGroupAG*.
+   - Az alkalmazásátjáró neve *myAppGateway*.
+   - Az új erőforráscsoport *myResourceGroupAG*.
 
-    ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
+     ![Új alkalmazásátjáró létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
 
 4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
-    - A virtuális hálózat neve *myVNet*.
-    - A virtuális hálózat címtere *10.0.0.0/16*.
-    - Az alhálózat neve *myAGSubnet*.
-    - Az alhálózat címtere *10.0.0.0/24*.
+   - A virtuális hálózat neve *myVNet*.
+   - A virtuális hálózat címtere *10.0.0.0/16*.
+   - Az alhálózat neve *myAGSubnet*.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
-    ![Virtuális hálózat létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
+     ![Virtuális hálózat létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
 6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
 7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
@@ -156,7 +156,7 @@ Ebben a példában az application gateway használható háttérkiszolgálóiké
 
     ![Alkalmazásátjáró nyilvános IP-címének rögzítése](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: http:// http://40.121.222.19.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például http:\//40.121.222.19.
 
     ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

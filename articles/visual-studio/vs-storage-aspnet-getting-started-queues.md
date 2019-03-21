@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: ac36502a67f9deddf14b5eeae64df6f799d25e97
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3f3a649308449a8ba4e1dbaebd4db4afbf731c5b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446078"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105760"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure queue storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 
@@ -62,7 +62,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET az Azure queue storag
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Queue;
     ```
-## <a name="create-a-queue"></a>Üzenetsor létrehozása
+   ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
 A következő lépések bemutatják, hogyan hozhat létre egy várólista:
 

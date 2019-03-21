@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185145"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294825"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -35,11 +36,11 @@ Ez a funkció jelenleg elérhető előzetes verzióban (lásd: [az előzetes ver
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény a kapott egyszer használatos jelszót vendégfelhasználók számára
 Egyszeri jelszó hitelesítéssel a vendégfelhasználó beválthatja a meghívást közvetlen hivatkozására kattintva, vagy a meghívó e-mail használatával. Mindkét esetben a böngészőben egy üzenet azt jelzi, hogy egy kódot küldeni a Vendég felhasználó e-mail címét. A Vendég felhasználó **kód küldése**:
  
-   ![Hozzáférési Paneljein alkalmazás kezelése](media/one-time-passcode/otp-send-code.png)
+   ![Képernyőfelvétel a kód küldése gombra:](media/one-time-passcode/otp-send-code.png)
  
 PIN-kód kerül a felhasználó e-mail címét. A felhasználó a PIN-kód beolvassa az e-mailt, és megadja azt a böngészőablakban:
  
-   ![Hozzáférési Paneljein alkalmazás kezelése](media/one-time-passcode/otp-enter-code.png)
+   ![Képernyőfelvétel: a Enter znaková stránka](media/one-time-passcode/otp-enter-code.png)
  
 A Vendég felhasználói most már hitelesítve van, és tekintse meg a megosztott erőforrás vagy továbbra is jelentkezik be. 
 
@@ -57,7 +58,7 @@ A meghívó időpontjában a rendszer nem jelzi, hogy az Ön figyelmét felhaszn
 
 Megtekintheti a vendégfelhasználók számára az Azure Portalon egyszeri PIN-kódok a hitelesítéshez **Azure Active Directory** > **szervezeti kapcsolatok**  >   **Más szervezetek**.
 
-![Az Azure Portalon, ahol a forrás értéke egyszeri Jelszavas egyszeri jelszót felhasználóinak megtekintése](media/one-time-passcode/otp-users.png)
+![Képernyőfelvétel: az adatforrás-értéke az egyszeri Jelszavas egyszeri jelszó felhasználó](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > Ha egy felhasználó visszaváltja egy egyszeri jelszót, és később beszerzi az MSA, az Azure AD-fiókot vagy más összevont fiók, azok továbbra is hitelesíthető egy egyszeri jelszót. Ha meg szeretné frissíteni a hitelesítési módszert, a Vendég felhasználói fiókhoz törölheti, és újra meg kell hívnia, azokat.

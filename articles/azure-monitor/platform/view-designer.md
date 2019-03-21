@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887904"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286567"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása az Azure monitorban adatforrásnézet-tervezőből használatával
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
@@ -43,6 +43,9 @@ Az adatforrásnézet-tervezőből létrehozott nézeteket az alábbi táblázatb
 | Mozaik elrendezés | Az Azure Monitor megjelenő **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
 | Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Egyes nézetek egy vagy több Vizualizáció részt tartalmaz. |
 | Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [lekérdezések naplózását](../log-query/log-query-overview.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. Elemek a rész-napló lekérdezést, amely a rekordok részleteit itt választhatja ki. |
+
+## <a name="required-permissions"></a>Szükséges engedélyek
+Legalább szükséges [közreműködője szintű engedélyek](manage-access.md#manage-accounts-and-users) a Log Analytics-munkaterületen a nézetek létrehozásával vagy módosításával. Ha nem rendelkezik ezzel az engedéllyel, majd az adatforrásnézet-tervezőből beállítás nem jelennek meg a menüben.
 
 
 ## <a name="work-with-an-existing-view"></a>Meglévő nézet használata

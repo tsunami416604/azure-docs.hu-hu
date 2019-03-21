@@ -5,24 +5,71 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/12/2019
+ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 16ba6b73dd0c64298f319d4b18750d753f166987
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849380"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258395"
 ---
-# <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
+# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>SSL-lezárások és teljes körű SSL-Titkosítást az Application Gateway – áttekintés
 
-Az Application Gateway támogatja az SSL-lezárást az átjárónál, mely a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz után. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Akadnak azonban ügyfelek, akiknek a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás. A titkosítatlan kommunikáció okai lehetnek biztonsági követelmények, megfelelőségi előírások, vagy az, hogy az alkalmazás csak biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az Application Gateway támogatja a teljes körű SSL-titkosítást.
+Secure Sockets Layer (SSL) a szokásos biztonsági technológia lehessen létesíteni egy titkosított hivatkozásra a webalkalmazás-kiszolgáló és a böngésző között. Ez a hivatkozás biztosítja, hogy az összes adat a webkiszolgáló és a böngészők között átadott továbbra is a privát, titkosított csatornákon történik. Az Application gateway támogatja mindkét SSL-lezárást az átjáróhoz, valamint a végpontok közötti SSL-titkosítást.
+
+## <a name="ssl-termination"></a>SSL leállítása
+
+Az Application Gateway támogatja az SSL-lezárást az átjárónál, mely a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz után. Nincsenek számos előnnyel jár SSL-lezárást az application gatewayben állapotát:
+
+- **Továbbfejlesztett teljesítmény** – a legnagyobb teljesítményt SSL visszafejtési esetén a kezdeti kézfogás. A teljesítmény javítása érdekében a kiszolgáló ezzel a visszafejtési SSL munkamenet-azonosítók gyorsítótárazza, és TLS-munkamenet jegyeket. Ha ez történik, az application gatewayben, az ugyanazon ügyféltől érkező kérések a gyorsítótárazott értékeket is használhat. Ha kész van a háttérkiszolgálókon lévő minden alkalommal, amikor az ügyfélkérelmek egy másik kiszolgálóra, nyissa meg az ügyfél az re‑authenticate fel. A TLS-jegyek használata segíthet a probléma megoldásához, de nem támogatottak az összes ügyfél és a nehéz lehet, konfigurálhatja és kezelheti.
+- **A háttérkiszolgálók kihasználtsági jobb** – SSL/TLS-feldolgozási nagyon CPU-igényes, és egyre több nagy számításigényű, ahogy kulcsméretek növelése. Ezt a munkát eltávolítását a háttérkiszolgálók lehetővé teszi, hogy Mik ezek leghatékonyabb összpontosítani: tartalom jusson el.
+- **Intelligens útválasztás** – visszafejti a forgalmat, az application gateway férhet hozzá a kérelem tartalma, például fejlécek, URI és így tovább, és a kérelmeket a tárolt adatok.
+- **Tanúsítványkezelés az** – csak vásárolható meg, és az application gateway és a nem az összes háttér-kiszolgálókon telepítve kell tanúsítványokat. Ezzel takaríthat meg időt és pénzt takarít.
+
+SSL-tanúsítvány konfigurálása SSL-lezárást, a figyelőt, hogy engedélyezze az application gateway, hogy a szimmetrikus kulcs az SSL protokoll-meghatározása megfelelően hozzáadandó szükséges. A szimmetrikus kulcs titkosításához és visszafejtéséhez az átjáró küldött forgalmat majd szolgál. Az SSL-tanúsítványnak kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé.
+
+> [!NOTE] 
+>
+> Az Application gateway nem biztosít minden képességét, hogy hozzon létre egy új tanúsítványt, vagy egy hitelesítésszolgáltató-tanúsítvány kérés küldése.
+
+Az SSL-kapcsolathoz működik győződjön meg arról, hogy az SSL-tanúsítvány megfelel-e a következő feltételek kell:
+
+- A "Érvényesség kezdete" és "a" dátum közötti a tanúsítványon belül, amely az aktuális dátum és idő van.
+- Hogy a tanúsítvány "Common Name" (CN) megegyezik a kérelemben szereplő állomás fejlécével. Például, ha az ügyfelet, hogy így kérést `https://www.contoso.com/`, akkor a CN kell `www.contoso.com`.
+
+### <a name="certificates-supported-for-ssl-termination"></a>SSL-lezárást támogatott tanúsítványok
+
+Az Application gateway támogatja a következő típusú tanúsítványt:
+
+- (Hitelesítésszolgáltató) hitelesítésszolgáltató tanúsítványa: A Hitelesítésszolgáltatói tanúsítvány, amely hitelesítésszolgáltató (CA) által kiadott digitális tanúsítványt
+- Bővített (bővített ellenőrzés)-tanúsítvány: Egy Bővített tanúsítvány, amely az iparági szabványos tanúsítvány irányelveket. Ezzel kíséretében zöld színre vált a böngésző kereső sávon és közzé, valamint a vállalat neve.
+- A helyettesítő tanúsítvány: Ez a tanúsítvány támogatja altartományok alapján tetszőleges számú *. site.com, ahol az altartomány lecserélné a *. Azt azonban nem, támogatja a site.com, abban az esetben, ha a felhasználó a "www" vezető beírása nélkül éri el a webhelyet, a helyettesítő tanúsítvány nem vonatkozik, amelyek így.
+- Önaláírt tanúsítványok: Ügyfél böngészők nem bízik meg ezeket a tanúsítványokat, és figyelmezteti a felhasználót, hogy a virtuális service-tanúsítvány nem szerepel egy megbízhatósági láncában. Önaláírt tanúsítványok jók tesztelési vagy környezetekben, ahol a rendszergazdák az ügyfelek vezérlőelemet, és biztonságosan elkerülheti a böngésző biztonsági riasztásokat. Éles számítási feladatok soha ne használjon önaláírt tanúsítványokat.
+
+További információkért lásd: [az application gateway konfigurálása SSL-lezárást](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+## <a name="end-to-end-ssl-encryption"></a>A teljes körű SSL-titkosítás
+
+Egyes ügyfeleink előfordulhat, hogy nem igényel a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció. Ennek okai lehetnek biztonsági és megfelelőségi előírások, vagy az, hogy az alkalmazás kizárólag biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az Application Gateway támogatja a teljes körű SSL-titkosítást.
 
 Teljes körű SSL lehetővé teszi, hogy küldheti a bizalmas adatokat a háttérkiszolgálók felé, titkosított, miközben továbbra is kihasználhatja a 7. rétegbeli terheléselosztási funkciókat előnyeit kiaknázhatja az Alkalmazásátjáró biztosít. Ilyen például a cookie-alapú munkamenet-affinitás, az URL-cím-alapú útválasztás, a helyalapú útválasztás támogatása vagy az XForwarded-* fejlécek beszúrása.
 
-Ha teljes körű SSL-kommunikációs üzemmóddal van konfigurálva, az Application Gateway leállítja az SSL-munkamenetet az átjárónál, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Az Application Gateway ekkor új SSL-kapcsolatot kezdeményez a háttérkiszolgálóval, és mielőtt a kérést továbbítaná, a háttérkiszolgáló nyilvánoskulcs-tanúsítványával újratitkosítja az adatokat. Teljes körű SSL akkor engedélyezett, a protokoll beállítása **BackendHTTPSetting** , HTTPS, amely majd érvényben van a háttérkészlethez. A biztonságos kommunikációhoz tanúsítványt kell konfigurálni a teljes körű SSL-lel engedélyezett háttérkészlet minden egyes háttérkiszolgálójához.
+Ha teljes körű SSL-kommunikációs üzemmóddal van konfigurálva, az Application Gateway leállítja az SSL-munkamenetet az átjárónál, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Az Application Gateway ekkor új SSL-kapcsolatot kezdeményez a háttérkiszolgálóval, és mielőtt a kérést továbbítaná, a háttérkiszolgáló nyilvánoskulcs-tanúsítványával újratitkosítja az adatokat. A webkiszolgáló esetleges válasza ugyanilyen módon jut el a végfelhasználóhoz. Teljes körű SSL akkor engedélyezett, protokoll beállítása [háttérbeli HTTP-beállítás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) , HTTPS, amely majd érvényben van a háttérkészlethez.
 
 Előtér- és háttérportokat forgalmat az SSL-szabályzat vonatkozik. Az előtérben az Application Gateway a kiszolgálóként működik, és érvénybe lépteti a szabályzatot. A háttérben az Application Gateway az ügyfél funkcionál, és a protokoll/titkosítási adatokat küld a beállítást az SSL-kézfogás során.
+
+Az Application gateway csak kommunikál mindkét alkalmazásátjárónál háttérrendszer logikailemez tanúsítványa az Alkalmazásátjáró, vagy amelyek tanúsítványa alá a jól ismert hitelesítésszolgáltató hatóságok, ahol a tanúsítvány CN-neve egyezik-e az állomásnév a http háttér beállításokat. Ezek közé tartozik például az Azure App service web apps szolgáltatásban és az Azure API Management a megbízható Azure-szolgáltatásokat.
+
+Ha a háttérkiszolgáló-készlet azon tagjait, a tanúsítványok nem írta alá a jól ismert hitelesítésszolgáltató hatóságok, majd a háttérkészletben teljes körű SSL engedélyezve van az egyes példányok kell konfigurálni a biztonságos kommunikációhoz tanúsítványt. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
+
+> [!NOTE] 
+>
+> Hitelesítési tanúsítvány beállítása, nem szükséges, például az Azure App service web apps szolgáltatásban és az Azure API Management megbízható Azure-szolgáltatásokhoz.
+
+> [!NOTE] 
+>
+> A tanúsítvány hozzá **háttérbeli HTTP-beállítás** hitelesítéséhez a háttérbeli kiszolgálók lehet ugyanaz, mint a tanúsítvány hozzá a **figyelő** az SSL-lezárások application gatewayben vagy más-más fokozott biztonságot.
 
 ![Teljes körű ssl eset][1]
 

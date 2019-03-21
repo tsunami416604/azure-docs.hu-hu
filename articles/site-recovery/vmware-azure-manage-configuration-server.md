@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109163"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086955"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gépek vészhelyreállítására használt konfigurációs kiszolgáló kezelése
 
@@ -93,25 +93,25 @@ A nyílt virtualizációs formátum (OVF) sablont a konfigurációs kiszolgáló
 Ha szeretne újraregisztrálásához a konfigurációs kiszolgáló az ugyanahhoz a tárolóhoz. Ha az alapértelmezett folyamatkiszolgáló a konfigurációs kiszolgáló gépen futó mellett egy további kiszolgáló gép regisztrálja újra a gépeket is.
 
 
-  1. Nyissa meg a tároló **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
-  2. A **kiszolgálók**válassza **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
-  3. Jelentkezzen be a konfigurációs kiszolgáló gép.
-  4. A **%ProgramData%\ASR\home\svsystems\bin**, nyissa meg **cspsconfigtool.exe**.
-  5. Az a **tár regisztrálása** lapon jelölje be **Tallózás**, és keresse meg a tároló hitelesítőadat-fájlja letöltött.
-  6. Ha szükséges, adja meg a proxykiszolgáló adatai. Ezután kattintson a **Regisztrálás** elemre.
-  7. Nyisson meg egy rendszergazdai PowerShell-parancsablakot, és futtassa a következő parancsot:
+1. Nyissa meg a tároló **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
+2. A **kiszolgálók**válassza **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
+3. Jelentkezzen be a konfigurációs kiszolgáló gép.
+4. A **%ProgramData%\ASR\home\svsystems\bin**, nyissa meg **cspsconfigtool.exe**.
+5. Az a **tár regisztrálása** lapon jelölje be **Tallózás**, és keresse meg a tároló hitelesítőadat-fájlja letöltött.
+6. Ha szükséges, adja meg a proxykiszolgáló adatai. Ezután kattintson a **Regisztrálás** elemre.
+7. Nyisson meg egy rendszergazdai PowerShell-parancsablakot, és futtassa a következő parancsot:
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >Annak érdekében, hogy **kérje le a legújabb tanúsítványokat** horizontális felskálázási folyamatkiszolgáló a konfigurációs kiszolgálóról végrehajtani a parancsot *"< telepítési Drive\Microsoft Azure webhely Recovery\agent\cdpcli.exe >"--registermt parancsot*
+    >[!NOTE]
+    >Annak érdekében, hogy **kérje le a legújabb tanúsítványokat** horizontális felskálázási folyamatkiszolgáló a konfigurációs kiszolgálóról végrehajtani a parancsot *"< telepítési Drive\Microsoft Azure webhely Recovery\agent\cdpcli.exe >"--registermt parancsot*
 
-  8. Végezetül indítsa újra az obengine futtassa az alábbi parancsot.
-  ```
-          net stop obengine
-          net start obengine
+8. Végezetül indítsa újra az obengine futtassa az alábbi parancsot.
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 

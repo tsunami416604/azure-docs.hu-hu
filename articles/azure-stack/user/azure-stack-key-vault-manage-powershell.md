@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b5c43215ce1800ac162c8b5d19ba4d4c987a3bac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445806"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258751"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Kezelése a Key Vault az Azure Stack PowerShell-lel
 
@@ -92,7 +92,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ![Új kulcstartó](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-Ez a parancs kimenetét mutatja az Ön által létrehozott kulcstartó tulajdonságait. Ha egy alkalmazás hozzáfér az ebben a tárban, azt kell használnia a **Vault URI** tulajdonság, amely "https://vault01.vault.local.azurestack.external" Ebben a példában.
+Ez a parancs kimenetét mutatja az Ön által létrehozott kulcstartó tulajdonságait. Ha egy alkalmazás hozzáfér az ebben a tárban, azt kell használnia a **Vault URI** tulajdonság, amely "https:\//vault01.vault.local.azurestack.external" Ebben a példában.
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Az Active Directory összevonási szolgáltatások (AD FS) központi telepítés
 
@@ -127,8 +127,8 @@ A **cél** paraméter adja meg, hogy a kulcs által védett szoftver használhat
 
 A létrehozott kulcsot az URI használatával hivatkozhat. Hozzon létre vagy importálhat egy kulcsot, amelynek neve megegyezik egy meglévő kulcsot, ha az eredeti kulcs frissül az új kulcs megadott értékeket. Elérheti az előző verzió verzióspecifikus URI-ját a kulcs használatával. Példa:
 
-* Használat "https://vault10.vault.local.azurestack.external:443/keys/key01", mindig letöltheti a legfrissebb verziót.
-* Használat "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" lekérni ezt a verziót.
+* Használat "https:\//vault10.vault.local.azurestack.external:443/keys/key01", mindig letöltheti a legfrissebb verziót.
+* Használat "https:\//vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" lekérni ezt a verziót.
 
 ### <a name="get-a-key"></a>Kulcs lekérése
 

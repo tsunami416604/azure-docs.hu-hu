@@ -1,49 +1,77 @@
 ---
-title: Tolmácsolás – beszédszolgáltatások kapcsolatban
+title: Az Azure Speech Services tolmácsolás
 titlesuffix: Azure Cognitive Services
-description: A Speech Service API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
+description: A beszédszolgáltatások lehetővé teszik az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzá. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e77bfcdf2e037c7f6221b6761df708dac01924dd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879241"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890471"
 ---
-# <a name="about-the-speech-translation-api"></a>Tudnivalók a beszédalapú fordítási API
+# <a name="what-is-speech-translation"></a>Mit jelent a beszédalapú fordítási?
 
-A Speech Service API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
+Az Azure beszédszolgáltatások, tolmácsolás lehetővé teszi, hogy a valós idejű, többnyelvű speech beszéd és hang-szöveg fordítása audiostreamek lejátszásával. A beszédfelismerés SDK-val az alkalmazások, eszközök és eszközök hozzáférése forrás beszédátírás díjjal, míg a fordítási kimenetek megadott Audio. Beszéd észlel, és a döntő eredmények létrehozható szintetizált, a rendszer ideiglenes beszédátírási és fordítási eredményeket ad.
 
-A Translator Speech API-val ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredményeket. Ezeket az eredményeket a felismert szöveget tartalmazó az forrás és cél nyelven a fordítás. Ideiglenes fordítások használható befejezéséig az utterance (kifejezés), hogy mely végső fordítás biztosítja.
+A Microsoft fordítási motor működteti, két különböző megközelítést: statisztikai gépi fordítási (SMT) és a Neurális gépi fordítás (NMT). SMT speciális statisztikai elemzésekhez használja becslésére a legjobb lehetséges fordításokat, adott néhány szó a környezetben. NMT, a Neurális hálózatok szolgálnak mondatokat teljes kontextusában szó lefordítandó használatával pontosabb és természetes hangzó fordítások.
 
-Szükség esetén a végső fordítás szintetizált hang verzióját is kell készíteni, igaz speech-az-beszédalapú fordítási engedélyezése.
+Jelenleg a Microsoft NMT való legnépszerűbb nyelvek használja. Az összes [speech tolmácsolás elérhető nyelvek](language-support.md#speech-translation) NMT működteti. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. A Célnyelv NMT támogatja, a teljes fordítás esetén NMT-alapú. A Célnyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "kimutatást" angol között a két nyelv használatával.
 
-A Speech Translation API egy WebSockets protokollt használ az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatorna. De nem kell foglalkozni a websockets protokoll; a beszédfelismerés SDK kezeli, amely az Ön számára.
+## <a name="core-features"></a>Alapfunkciók
 
-A Speech Translation API, melyek különböző Microsoft-termékek és szolgáltatások technológiákat alkalmaz. Ez a szolgáltatás már használatban van számos vállalkozás világszerte, az alkalmazások és munkafolyamatok.
+Íme a Speech SDK és a REST API-kon keresztül elérhető szolgáltatások:
 
-## <a name="about-the-technology"></a>A technológiával kapcsolatos
+| Használati eset | SDK | REST |
+|----------|-----|------|
+| Hang-szöveg fordítását felismerési eredményeket. | Igen | Nem |
+| Beszéd-az-beszédalapú fordítási. | Igen | Nem |
+| Ideiglenes felismerése és fordítási eredményeket. | Igen | Nem |
 
-Az alapul szolgáló Microsoft fordítási motor két többféle módon is: statisztikai gépi fordítási (SMT) és a Neurális gépi fordítás (NMT). Az utóbbi, mesterséges intelligenciát használó megközelítést alkalmazó Neurális hálózatok, a gépi fordítás korszerűbb módja. NMT jobb fordítások biztosítja – nem csupán pontosabb, de is több fluent és természetes. Ez a gördülékenység elsősorban annak köszönhető, hogy az NMT a mondat teljes kontextusát használja a szavak lefordításához.
+## <a name="get-started-with-speech-translation"></a>Tolmácsolás – első lépések
 
-Jelenleg Microsoft lett migrálva, NMT a legnépszerűbb nyelvek SMT alkalmazó csak a kevésbé használt nyelvet. Az összes [speech tolmácsolás elérhető nyelvek](language-support.md#speech-translation) NMT működteti. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. Abban az esetben, ha a célnyelvet az NMT támogatja, a teljes fordítás NMT-alapú. A Célnyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "kimutatást" angol között a két nyelv használatával.
+Rövid útmutatók, kevesebb mint 10 perc múlva a kódot futtató úgy tervezték, hogy biztosítunk. Ez a táblázat tartalma speech fordítási útmutatóink nyelv szerint vannak rendezve.
 
-A fordítási motor modell közti különbségekkel csomópontokba. A végfelhasználók csak a továbbfejlesztett fordítási minőség, különösen a kínai, japán és arab figyelje meg.
+| Első lépések | Platform | API-referencia |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET-keretrendszer](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](quickstart-translate-speech-uwp.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/cppref)|
+| [Java](quickstart-translate-speech-java-jre.md) | Windows | [Tallózás](https://aka.ms/csspeech/javaref) |
 
-> [!NOTE]
-> Szeretne többet megtudni a Microsoft fordítási motor mögöttes technológia? Lásd: [gépi fordítás](https://www.microsoft.com/en-us/translator/mt.aspx).
+## <a name="sample-code"></a>Mintakód
+
+Mintakód a Speech SDK a Githubon érhető el. Ezek a minták például egy fájlhoz vagy adatfolyamhoz, folyamatos és egylépéses felismerése és fordítási való olvasás hang és egyéni modellek használata gyakori forgatókönyveket fednek le.
+
+* [Hang-szöveg és a fordítás minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+## <a name="migration-guides"></a>Áttelepítési útmutatók
+
+> [!WARNING]
+> Fordítói beszéd elvesznek a 2019. október 15.
+
+Ha az alkalmazásokat, eszközöket és termékeket használ a Translator Speech, létrehoztuk útmutatók segítséget nyújtanak a beszédszolgáltatások át.
+
+* [A Translator Speech API áttelepít a beszédszolgáltatások](how-to-migrate-from-translator-speech-api.md)
+
+## <a name="reference-docs"></a>Segédanyagok
+
+* [Beszéd SDK](speech-sdk-reference.md)
+* [Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Lefordítja a beszéd, a C#-ban való használatáról](how-to-translate-speech-csharp.md)
-* [Lásd: how to speech, a C++ fordítása](how-to-translate-speech-cpp.md)
-* [Lásd: how to speech javában fordítása](how-to-translate-speech-java.md)
+* [Ingyenes beszédszolgáltatások előfizetési kulcs lekérése](get-started.md)
+* [A beszédfelismerés SDK beszerzése](speech-sdk.md)

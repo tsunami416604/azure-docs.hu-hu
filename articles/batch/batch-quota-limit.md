@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/20/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f8941f84e85f330713cb4b263f2154acb80b520c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532399"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295266"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -65,6 +65,7 @@ Ha beállítása készletlefoglalási móddal létrehozott Batch-fiók **felhasz
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) számítási csomópontok | csomópont-magok száma 4 x |
 | [Alkalmazások](batch-application-packages.md) Batch-fiókonként | 20 |
 | Alkalmazáscsomagok alkalmazásonként | 40 |
+| Az alkalmazáscsomagok száma készletenként | 10 |
 | A tevékenység maximális élettartama | 180 nap<sup>1</sup> |
 
 <sup>1</sup> egy feladatot, amikor megjelenik a feladat befejezését követően a maximális élettartama 180 nap. Befejezett feladatok megőrzése 7 nap során. a maximális élettartamon belül nem befejezett tevékenységek adatai nem érhető el.

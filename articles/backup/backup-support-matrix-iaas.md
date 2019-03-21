@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 264f10be1ecb22b6261a14f7185f88b101242d36
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 512e07f2892f9c4adf47956d3a5b07debf870e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440777"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849907"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -40,7 +40,7 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 
 **Művelet** | **Támogatás**
 --- | ---
-Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 SP1
+Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
 Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3<br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 A virtuális gép biztonsági másolatának hogy leállítás/kapcsolat/kérő VM | Támogatott.<br/><br/> Pillanatkép az összeomlás-konzisztens csak, nem alkalmazáskonzisztens.
 Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
@@ -61,7 +61,7 @@ A következő táblázat összefoglalja a támogatott operációs rendszerek, am
 
 **Forgatókönyv** | **Operációsrendszer-támogatást**
 --- | ---
-Biztonsági mentés az Azure-beli Virtuálisgép-ügynök bővítmény | Windows-ügyfél: Nem támogatott<br/><br/> Windows Server: A Windows Server 2008 R2 vagy újabb
+Biztonsági mentés az Azure-beli Virtuálisgép-ügynök bővítmény | Windows-ügyfél: Nem támogatott<br/><br/> A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
 A MARS-ügynök biztonsági mentése | [Támogatott](backup-support-matrix-mars-agent.md#support-for-direct-backups) operációs rendszereket.
 Biztonsági mentés a DPM/MABS | Biztonsági mentés a támogatott operációs rendszerek [MABS](backup-mabs-protection-matrix.md) és [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 

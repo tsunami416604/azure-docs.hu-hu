@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: 10275b2938ce66a2816b1d4a5589a5e88ee22e80
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093918"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259737"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Az Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal vezérlése
 
@@ -27,13 +27,13 @@ ms.locfileid: "49093918"
  
 Az Azure Content Delivery Network (CDN) szabályozhatja, hogy a gyorsítótárba két lehetőséget kínál: 
 
-- Gyorsítótár-szabályokkal: Ez a cikk azt ismerteti, hogyan használható content delivery network (CDN) gyorsítótár-szabályokkal vagy módosíthatja az alapértelmezett gyorsítótár lejárati viselkedés globálisan és az egyéni feltételek, például egy URL-cím elérési út és fájlnév kiterjesztéssel. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:
+- Gyorsítótárazási szabályok: Ez a cikk ismerteti, hogy használatáról tartalomkézbesítési hálózat (CDN) gyorsítótár-szabályokkal vagy módosíthatja az alapértelmezett gyorsítótár lejárati viselkedés globálisan és az egyéni feltételek, például egy URL-cím elérési út és fájlnév kiterjesztéssel. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:
 
-   - Globális gyorsítótárazási szabályok: Beállíthat egy globális gyorsítótárazási szabályt mindegyik végponthoz a profiljában, amely a végpontra küldött összes kérelmet érinti. A globális gyorsítótárazási szabály felülbírálja az összes HTTP-gyorsítótárazási irányelv fejlécét, ha be van állítva.
+   - Globális gyorsítótárazási szabályokat: A profilt, amely hatással van a végpont érkező összes kérés a végpontok egy globális gyorsítótárazási szabály állíthatja be. A globális gyorsítótárazási szabály felülbírálja az összes HTTP-gyorsítótárazási irányelv fejlécét, ha be van állítva.
 
-   - Egyéni gyorsítótárazási szabályok: Beállíthat egy vagy több globális gyorsítótárazási szabályt minden egyes végponthoz a profiljában. Az egyéni gyorsítótárazási szabályok meghatározott elérési utaknak és fájlkiterjesztéseknek felelnek meg, a feldolgozásuk sorrendben történik, és felülbírálják a globális gyorsítótárazási szabályt, ha az be van állítva. 
+   - Egyéni gyorsítótárszabályok: A profil egy vagy több egyéni gyorsítótárszabályok végpontok állíthatja be. Az egyéni gyorsítótárazási szabályok meghatározott elérési utaknak és fájlkiterjesztéseknek felelnek meg, a feldolgozásuk sorrendben történik, és felülbírálják a globális gyorsítótárazási szabályt, ha az be van állítva. 
 
-- Lekérdezési karakterláncok gyorsítótárazása: hogyan kezeli az Azure CDN a lekérdezési karakterláncot tartalmazó kérelmek gyorsítótárazási módosíthatja. További információ: [Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal vezérlése](cdn-query-string.md). Ha a fájl nem gyorsítótárazható, a lekérdezési karakterlánc gyorsítótárazási beállítás nem befolyásolja, gyorsítótárazási szabályokat és a CDN alapértelmezett viselkedés alapján.
+- Lekérdezési karakterláncok gyorsítótárazása: Hogyan kezeli az Azure CDN a lekérdezési karakterláncot tartalmazó kérelmek gyorsítótárazási módosíthatja. További információ: [Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal vezérlése](cdn-query-string.md). Ha a fájl nem gyorsítótárazható, a lekérdezési karakterlánc gyorsítótárazási beállítás nem befolyásolja, gyorsítótárazási szabályokat és a CDN alapértelmezett viselkedés alapján.
 
 Alapértelmezett gyorsítótárazási viselkedésének és gyorsítótárazás irányelv fejlécek kapcsolatos információkért lásd: [gyorsítótárazás működése](cdn-how-caching-works.md). 
 
@@ -54,11 +54,11 @@ Alapértelmezett gyorsítótárazási viselkedésének és gyorsítótárazás i
 ## <a name="caching-behavior-settings"></a>Gyorsítótárazási viselkedés beállítások
 A globális és egyéni gyorsítótárszabályok, adja meg a következő **gyorsítótárazási viselkedésének** beállítások:
 
-- **Gyorsítótár megkerülése**: nem gyorsítótárazzák, és figyelmen kívül hagyja a forrás által biztosított gyorsítótárirányelv-fejlécek.
+- **Gyorsítótár megkerülése**: Nem gyorsítótárazzák, és figyelmen kívül hagyja a forrás által biztosított gyorsítótárirányelv-fejlécek.
 
-- **Felülbírálás**: hagyja figyelmen kívül a forrás által biztosított gyorsítótárirányelv-fejlécek; helyette használja a megadott gyorsítótárazás időtartama.
+- **Felülbírálás**: Hagyja figyelmen kívül a forrás által biztosított gyorsítótárazás időtartama; használja helyette a megadott gyorsítótárazás időtartama. Ez nem bírálja felül a cache-control: no-cache.
 
-- **Beállítás hiányzó érték esetén**: Honor forrás által biztosított gyorsítótárirányelv-fejlécek, ha azok léteznek; ellenkező esetben használja a megadott gyorsítótárazás időtartama.
+- **Beállítás hiányzó érték esetén**: Fogadja el a forrás által biztosított gyorsítótárirányelv-fejlécek, ha vannak ilyenek; Ellenkező esetben használja a megadott gyorsítótárazás időtartama.
 
 ![Globális gyorsítótárszabályok](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
@@ -77,7 +77,7 @@ Egyéni gyorsítótárazási szabályok két egyezési feltételei érhetők el:
  
 - **Elérési út**: Ez az állapot megegyezik az elérési útját az URL-címet, kivéve a tartomány nevét, és támogatja a helyettesítő karakter és szimbólum (\*). Ha például _/myfile.html_, _/saját/mappa / *_, és _/my/images/*.jpg_. A hossza legfeljebb 260 karakter hosszúságú lehet.
 
-- **Bővítmény**: Ez a feltétel egyezik a kért fájl fájlkiterjesztése. Megadhatja azon fájlkiterjesztések vesszővel elválasztott megfelelően listáját. Ha például _.jpg_, _.mp3_, vagy _.png_. Bővítmények maximális száma érték az 50, a bővítmény karakterek maximális száma pedig 16. 
+- **Bővítmény**: Ez az állapot a kért fájl kiterjesztése megegyezik. Megadhatja azon fájlkiterjesztések vesszővel elválasztott megfelelően listáját. Ha például _.jpg_, _.mp3_, vagy _.png_. Bővítmények maximális száma érték az 50, a bővítmény karakterek maximális száma pedig 16. 
 
 ## <a name="global-and-custom-rule-processing-order"></a>A globális és egyéni szabály feldolgozási sorrendben
 A globális és egyéni gyorsítótárazási szabályok feldolgozása a következő sorrendben:
@@ -88,22 +88,22 @@ A globális és egyéni gyorsítótárazási szabályok feldolgozása a követke
 
 **Példa**:
 - Globális gyorsítótárazási szabály: 
-   - Gyorsítótárazási viselkedésének: **felülbírálása**
+   - A gyorsítótárazási viselkedés: **felülbírálás**
    - Gyorsítótár elévülési ideje: 1 nap
 
 - Az egyéni szabály #1 gyorsítótárazást:
-   - Az állapotot meg: **elérési útja**
+   - Az állapotot meg: **Elérési út**
    - Érték egyezik:   _/home / *_
-   - Gyorsítótárazási viselkedésének: **felülbírálása**
+   - A gyorsítótárazási viselkedés: **felülbírálás**
    - Gyorsítótár elévülési ideje: 2 nap
 
 - Egyéni gyorsítótárazási #2. szabály:
-   - Az állapotot meg: **bővítmény**
+   - Az állapotot meg: **Extension**
    - Érték egyezik: _.html_
-   - Gyorsítótárazási viselkedésének: **beállítás hiányzó érték esetén**
+   - A gyorsítótárazási viselkedés: **Beállítás hiányzó érték esetén**
    - Gyorsítótár elévülési ideje: 3 nap
 
-Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont gazdaneve&gt;_.azureedge.net/home/index.html eseményindítók egyedi gyorsítótárazás szabály #2, amely van beállítva: **beállítás hiányzó érték esetén** és 3 nap. Ezért ha a *index.html* fájl `Cache-Control` vagy `Expires` HTTP-fejléceket, figyelembe véve azok; ellenkező esetben, ha nincsenek beállítva ezek a fejlécek, a fájl tárolja a rendszer 3 napig.
+Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont gazdaneve&gt;_.azureedge.net/home/index.html eseményindítók egyedi gyorsítótárazás szabály #2, amely van beállítva: **Beállítás hiányzó érték esetén** és három napon belül. Ezért ha a *index.html* fájl `Cache-Control` vagy `Expires` HTTP-fejléceket, figyelembe véve azok; ellenkező esetben, ha nincsenek beállítva ezek a fejlécek, a fájl tárolja a rendszer 3 napig.
 
 > [!NOTE] 
 > Fájlok, amelyek lettek gyorsítótárazva, mielőtt a szabályt úgy módosítják a forrás cache időtartama beállítás karbantartása. A gyorsítótár időtartamok alaphelyzetbe állításához kell [végleges törlése a fájl](cdn-purge-endpoint.md). 
@@ -116,4 +116,4 @@ Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont gazdaneve&gt;
 ## <a name="see-also"></a>Lásd még
 
 - [A gyorsítótárazás működése](cdn-how-caching-works.md)
-- [Oktatóanyag: Azure CDN gyorsítótárazási szabályainak beállítása](cdn-caching-rules-tutorial.md)
+- [Oktatóanyag: Azure CDN gyorsítótárazási szabályok beállítása](cdn-caching-rules-tutorial.md)

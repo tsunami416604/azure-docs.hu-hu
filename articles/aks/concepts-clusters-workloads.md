@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181350"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Kubernetes az gyorsan fejlődő platform, amely tárolóalapú alkalmazások és
 
 Nyílt platformon, mint a Kubernetes lehetővé teszi a preferált programozási nyelv, az operációs rendszer, kódtárakat vagy üzenetküldési bus az alkalmazások létrehozási. A meglévő folyamatos integráció és folyamatos készregyártás (CI/CD) eszközei integrálhatók a kubernetes használatával történő ütemezésére és üzembe helyezése a kiadások.
 
-Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes szolgáltatás, amely egyszerűbbé teheti az üzembe helyezés és az alapvető felügyeleti feladatokat, beleértve a koordinációt frissítéseket biztosít. Az Azure platform kezeli az AKS-fürt főkiszolgálót, és csak kell fizetnie az AKS-csomópontok, amelyek az alkalmazások futtatásához. Az AKS a nyílt forráskódú Azure Kubernetes Service-motor-(aks-motor) épül.
+Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes szolgáltatás, amely egyszerűbbé teheti az üzembe helyezés és az alapvető felügyeleti feladatokat, beleértve a koordinációt frissítéseket biztosít. Az Azure platform kezeli az AKS-fürt főkiszolgálót, és csak kell fizetnie az AKS-csomópontok, amelyek az alkalmazások futtatásához. Az AKS épül a nyílt forráskódú Azure Kubernetes Service-motor ([aks-motor][aks-engine]).
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes-fürt architektúra
 

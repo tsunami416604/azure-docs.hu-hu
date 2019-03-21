@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ba5f803f59263f9bfebfd4ec8635d5cdd6d90a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cfb56ea81abeeba83bee73356c682b3e9fae866f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171774"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292912"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nem találhatók adatok az Azure Active Directory-tevékenységnaplókban letöltöttem
 
@@ -34,11 +34,11 @@ Letöltöttem a tevékenységnaplókat (audit vagy bejelentkezési), és nem lá
  
 ## <a name="cause"></a>Ok
 
-Az Azure Portalon tevékenységnaplókat tölt le, amikor azt korlátozza a méretezési csoport 5000 rekordot legutóbbi van legelöl szerint rendezve. 
+Az Azure Portalon tevékenységnaplókat tölt le, amikor azt korlátozza a méretezési csoport 250 000 rekordot legutóbbi van legelöl szerint rendezve. 
 
 ## <a name="resolution"></a>Megoldás:
 
-Az [Azure AD Reporting API-kkal](concept-reporting-api.md) akár egymillió rekordot is lekérdezhet. Az ajánlott módszer az, hogy [parancsfájl futtatása ütemezés szerint](tutorial-signin-logs-download-script.md) , amely meghívja a jelentéskészítő API-kat növekményes módon kérdezzék bejegyzések beolvasása egy időszakon belül (például naponta vagy hetente). 
+Az [Azure AD Reporting API-kkal](concept-reporting-api.md) akár egymillió rekordot is lekérdezhet.
 
 ## <a name="next-steps"></a>További lépések
 

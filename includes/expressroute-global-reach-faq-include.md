@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235980"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305188"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Mi az az ExpressRoute globális elérhetőségű?
 
@@ -49,7 +49,7 @@ Nem. Ahhoz, hogy minden második része a helyszíni hálózatok közötti kapcs
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Mi az a hálózat átviteli sebessége várt lehet után engedélyezhető az ExpressRoute globális elérhetőségű saját helyszíni hálózat között?
 
-A hálózat átviteli sebessége, a helyszíni hálózatok között, az ExpressRoute globális elérhetőségű, engedélyezte a két ExpressRoute-Kapcsolatcsoportok kisebb maximumon.
+A hálózat átviteli sebessége, a helyszíni hálózatok között, az ExpressRoute globális elérhetőségű, engedélyezte a két ExpressRoute-Kapcsolatcsoportok kisebb maximumon. Helyszíni – Azure és helyszíni – helyszíni forgalom megoszthatja az ugyanazon kapcsolatcsoport, és ugyanazt a sávszélesség napi korlát vonatkozik. 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Az ExpressRoute globális elérhetőségű melyek korlátait I meghirdethet útvonalak számát, valamint a fog kapott útvonalak száma?
 

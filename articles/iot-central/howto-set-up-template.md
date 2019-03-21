@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff73982b706fa2d353be818f5022de8fbfec42fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167439"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259856"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Állítson be egy eszköz sablont (új felhasználói felület tervezése)
 
@@ -78,6 +78,8 @@ Például egy új hőmérsékleti telemetria mérték is hozzáadhat:
 !["A telemetriai adatok létrehozása" űrlapján hőmérséklet mérési adatait](./media/howto-set-up-template/measurementsform.png)
 
 Kiválasztása után **mentése**, a **hőmérséklet** mérési mérések listájában jelenik meg. Egy rövid ideig a szimulált eszközről érkező hőmérsékleti adatok a Vizualizáció látható.
+
+Telemetria megjelenítése, ha az alábbi összesítési lehetőségek közül választhat: Átlagos, minimális, maximális, Sum és száma. **Átlagos** van kiválasztva az alapértelmezett összesítés a diagramra. 
 
 > [!NOTE]
 > A telemetriai adatok mérték adattípusa lebegőpontos szám.

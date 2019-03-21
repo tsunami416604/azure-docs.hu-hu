@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812998"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893016"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel 
 
@@ -29,7 +29,7 @@ Tervezése és létrehozása a digitális jogkezelési (DRM) alrendszer egy over
 
 Ebben a dokumentumban a megcélzott olvasók mérnökeitől, akik a DRM-alrendszer OTT vagy online streamelés/grafikus; megoldások, illetve olvasók, akik DRM-alrendszer. Feltételezzük, hogy olvasók ismeri a DRM-technológiák a piacon, például a PlayReady, Widevine, FairPlay vagy az Adobe hozzáférés legalább egyike.
 
-A témakörben ismertetettek szempontjából a többplatformos DRM által tartalmazza az Azure Media Services által támogatott 3 DRMs: Általános titkosítás (CENC) a PlayReady és Widevine FairPlay, valamint az AES-128 titkosítatlan kulcs titkosítás. Online streamelés és OTT iparág fő a tendencia, hogy natív DRMs ügyfél különböző platformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
+A témakörben ismertetettek szempontjából a többplatformos DRM által tartalmazza az Azure Media Services által támogatott 3 DRMs: Általános titkosítás (CENC) a PlayReady és Widevine FairPlay, valamint az AES-128 titkosítatlan kulcs titkosítás. Online streamelés és OTT iparág fő a tendencia, hogy natív DRMs ügyfél különböző platformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
 
 A következők, hogy a natív tartalomtovábbítás többplatformos DRM használatával a content protection előnyei:
 
@@ -49,7 +49,7 @@ Ez a cikk célja a következők:
 Az alábbi táblázat foglalja össze a különböző platformokon a natív DRM-támogatása és a különböző böngészők EME támogatást.
 
 | **Ügyfélplatform** | **Natív DRM** | **AZ EME** |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Okostévére vezérléséhez** | A PlayReady, Widevine és/vagy egyéb | Beágyazott böngésző/EME a PlayReady és/vagy Widevine|
 | **Windows 10** | PlayReady | Microsoft Edge/IE11 for PlayReady|
 | **Android-eszközök (telefonon, táblagépen, TV)** |Widevine |A Widevine Chrome |
@@ -145,7 +145,7 @@ Az alábbi táblázat a leképezést.
 | **Kulcskezelés** |Nincs szükség referenciaimplementáció |
 | **Tartalomkezelés** |C# Konzolalkalmazás |
 
-Más szóval Identitásszolgáltató és az STS által biztosított Azure ad-ben. A [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. Az Azure Media Services és az Azure Media Player támogathatóak CENC DASH, a FairPlay HLS keresztül, a PlayReady smooth streaming, valamint a DASH, HLS vagy smooth AES-128 titkosítást.
+Más szóval Identitásszolgáltató és az STS által biztosított Azure ad-ben. A [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. Az Azure Media Services és az Azure Media Player támogathatóak CENC DASH, a FairPlay HLS keresztül, a PlayReady smooth streaming, valamint a DASH, HLS vagy smooth AES-128 titkosítást.
 
 Az alábbi ábrán látható a teljes struktúra és korábbi technológiai hozzárendelési folyamat:
 
@@ -199,7 +199,7 @@ Végrehajtása a következő lépésekből áll:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Hozzon létre egy player használatával a [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
+8. Hozzon létre egy player használatával a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
 
 9. Az alábbi táblázat a teszt mátrix.
 
@@ -365,7 +365,7 @@ Biztonsági kulcsok két típusa van:
 
 > [!NOTE]
 > Ha .NET-keretrendszer / C#, a fejlesztési platform, a X509 az aszimmetrikus kulcs használt tanúsítványnak rendelkeznie kell legalább 2048 bites kulcshosszt használ. Ez az osztály a .NET-keretrendszer System.IdentityModel.Tokens.X509AsymmetricSecurityKey mindenképpen szükséges. Ellenkező esetben a következő kivétel történt:
-
+> 
 > IDX10630: Az aláíráshoz "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" nem lehet kisebb, mint "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>A befejezett rendszer és a teszt

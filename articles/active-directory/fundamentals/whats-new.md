@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c34cd59a5f4636eeca395fde49e45beb1a49752
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: eda145f43c9268e5f6b291a767ed51249804f87d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408887"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286448"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
->Értesítést kaphat arról, hogy a másolás és beillesztés, az URL-cím szerint nyissa meg újra ezt oldal frissítések mikor: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` be a ![RSS ikon](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasó.
+>Értesítést kaphat arról, hogy a másolás és beillesztés, az URL-cím szerint nyissa meg újra ezt oldal frissítések mikor: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` be a ![RSS-hírcsatorna olvasó ikon](./media/whats-new/feed-icon-16x16.png) hírcsatorna-olvasó.
 
 Az Azure AD folyamatosan fejlesztései kap. Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
@@ -40,7 +40,7 @@ Ezen a lapon havonta frissül, így rendszeresen ellenőrizni. Ha a keresett ele
 ---
 ## <a name="february-2019"></a>2019. február
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurálható az Azure AD SAML-jogkivonat titkosítása (nyilvános előzetes verzió) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Konfigurálható Azure AD SAML-jogkivonattitkosítás (nyilvános előzetes verzió) 
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Vállalati alkalmazások  
@@ -52,7 +52,7 @@ Az SAML-jogkivonat titkosítása konfigurálásával kapcsolatos további inform
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>A csoportok és alkalmazások az Azure AD hozzáférési felülvizsgálatok használatával hozzáférési felülvizsgálat létrehozása
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Hozzáférési felülvizsgálat létrehozása csoportokhoz vagy alkalmazásokhoz az Azure AD-beli hozzáférési felülvizsgálattal
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
@@ -64,7 +64,7 @@ További információ az Azure AD hozzáférési felülvizsgálatok segítségé
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény - 2019. február
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában – 2019. február
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Vállalati alkalmazások  
@@ -78,7 +78,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>Továbbfejlesztett kombinált MFA/az SSPR-regisztráció
+### <a name="enhanced-combined-mfasspr-registration"></a>Bővített kombinált MFA/SSPR-regisztráció
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Önkiszolgáló jelszóátállítás  
@@ -106,7 +106,7 @@ Továbbfejlesztett regisztrációs funkciókkal kapcsolatos további informáci�
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Frissített szabályzatot kezelést biztosít a felhasználói folyamatok
+### <a name="updated-policy-management-experience-for-user-flows"></a>Frissített szabályzatkezelési felület a Felhasználókövetéshez
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** B2C - fogyasztói identitások kezelése  
@@ -120,7 +120,7 @@ További visszajelzések és javaslatok biztosítása a mosoly használatával, 
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Válassza ki az Azure AD B2C által biztosított adott oldal elem verziók
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Az Azure AD B2C által biztosított, meghatározott oldalelem-verziók választása
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** B2C - fogyasztói identitások kezelése  
@@ -144,7 +144,7 @@ Jelszó bonyolultsága követelmény konfigurálásával kapcsolatos további in
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Új egyéni vállalati arculattal hitelesítési folyamattal alapértelmezett sablonok
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Új alapértelmezett sablonok egyéni márkaneves hitelesítési felületekhez
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** B2C - fogyasztói identitások kezelése  
@@ -158,7 +158,7 @@ A sablonok használatával kapcsolatos további információkért lásd: [Azure 
 
 ## <a name="january-2019"></a>2019. január
 
-### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Egyszeri jelszó-hitelesítés (nyilvános előzetes verzió) használatával az Active Directory B2B-együttműködés
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Active Directory B2B-együttműködés egyszeri PIN-kódos hitelesítéssel (nyilvános előzetes verzió)
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** B2B  
@@ -168,7 +168,7 @@ Egyszeri jelszó-hitelesítés (OTP) jelentettük B2B vendégfelhasználó, aki 
 
 További információkért lásd: [e-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) és a blogon [Azure AD-ban megosztási és együttműködési zökkenőmentes bármely felhasználó bármilyen fiókkal](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-makes-sharing-and-collaboration-seamless-for-any-user/ba-p/325949).
 
-### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Új Application Proxyval kapcsolatos cookie-beállítások az Azure AD-ben
+### <a name="new-azure-ad-application-proxy-cookie-settings"></a>Új Azure AD-alkalmazásproxy cookie beállításai
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Alkalmazásproxy  
@@ -390,7 +390,7 @@ További információkért lásd: a [feltételek hozzáadása az Azure Active Di
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>A rendszergazdák konfigurálhatják a használati feltételeket a felhasználók ütemezés alapján lejár
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>A rendszergazdák az egyes felhasználók ütemezése alapján konfigurálhatják a Használati feltételek elévülését
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Használati feltételek  
@@ -516,11 +516,11 @@ Azt már megtörtént egy probléma javítása, adott rendszergazdai szerepkör�
 
 A szerepkörök a következők:
 
-- Globális rendszergazda vagy a vállalati író
+- Globális rendszergazda
 
-- Intune szolgáltatás rendszergazdája
+- Intune-rendszergazda
 
-- Felhasználóifiók-adminisztrátor
+- Felhasználói adminisztrátor
 
 További információkért lásd: [állapotának ellenőrzése és a egy dinamikus csoport létrehozása](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
 
@@ -577,7 +577,7 @@ További információkért lásd: [Mi az a saját alkalmazások portál?](https:
 
 Az új **hibaelhárítás és támogatás** lapján a **bejelentkezések** oldal az Azure portal, ismerteti, hogy a rendszergazdák és a támogatási szakértők az Azure AD bejelentkezési kapcsolatos problémák elhárítása. Ezen a lapon biztosítja a hibakódot, hibaüzenet jelenik meg, és korrigálási javaslatokat tesz (ha van ilyen) a probléma megoldásához. Ha nem sikerül a probléma megoldásához, azt is meg kell adni, hozzon létre egy támogatási jegyet az új módon a **példányt vágólapra** észlel, amely feltölti a **Kérelemazonosító** és **dátuma (UTC)** meg a naplófájlt a támogatási jegy mezőket.  
 
-![Jelentkezzen be az új lap naplók](media/whats-new/troubleshooting-and-support.png)
+![Bejelentkezési naplók megjelenítése az új lap](media/whats-new/troubleshooting-and-support.png)
 
 ---
 

@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 14b51f109ca76661ac10c99d42002dda45bc0500
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 700e8e9fe0dac182d71df8ca66800fa03cf25a2e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318695"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295793"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
 *Ez a témakör a rendszergazdák vonatkozik.*
 
-Ez a cikk ismertetőinken részletesebben ismerteti, hogyan lehet a folyamatos exportálás funkció használata az Azure IoT Central exportálhatja az adatokat a saját **Azure Event Hubs**, és **Azure Service Bus** példányok. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** saját célra a meleg folyamatból információkhoz és elemzésekhez juthat. Ez magában foglalja a elindítása az Azure Stream Analytics szolgáltatásban az egyéni szabályok, egyéni munkafolyamatokat az Azure Logic Appsben, elindítása vagy az adatok átalakítása és azt továbbítja az Azure Functions. 
+Ez a cikk bemutatja, hogyan használható a folyamatos exportálás funkció az Azure IoT Central exportálhatja az adatokat a saját **Azure Event Hubs**, és **Azure Service Bus** példányok. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** saját célra a meleg folyamatból információkhoz és elemzésekhez juthat. Ez magában foglalja a elindítása az Azure Stream Analytics szolgáltatásban az egyéni szabályok, egyéni munkafolyamatokat az Azure Logic Appsben, elindítása vagy az adatok átalakítása és azt továbbítja az Azure Functions. 
 
 > [!Note]
 > Ismét bekapcsolja a folyamatos exportálás, kap csak az adatok ettől a pillanattól kezdve. Jelenleg adatokat nem lehet beolvasni egy alkalommal, amikor folyamatos adatexportálás ki volt kapcsolva. További korábbi adatok megőrzése, kapcsolja be a folyamatos exportálás korai.
@@ -28,6 +28,77 @@ Ez a cikk ismertetőinken részletesebben ismerteti, hogyan lehet a folyamatos e
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
+
+## <a name="set-up-export-destination"></a>Exportálási cél beállítása
+
+Ha nem rendelkezik egy meglévő Event Hubs és a Service Bus exportálása, kövesse az alábbi lépéseket:
+
+## <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
+
+1. Hozzon létre egy [új Event Hubs-névtér az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.EventHub). További a [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+2. Válasszon előfizetést. 
+
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+3. Az Event Hubs-névtér az eseményközpont létrehozásához. Lépjen a névteréhez, majd válassza **+ Event Hub** felső hozhat létre egy event hubs-példánnyal.
+
+## <a name="create-service-bus-namespace"></a>A Service Bus-névtér létrehozása
+
+1. Hozzon létre egy [új Service Bus-névteret, az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . További a [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+2. Válasszon előfizetést. 
+
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+
+3. Nyissa meg a Service Bus-névteret, és válassza ki **+ üzenetsor** vagy **+ témakör** hozhat létre egy üzenetsorba vagy témakörbe történő exportálása tetején.
+
+
+## <a name="set-up-continuous-data-export"></a>Állítsa be a folyamatos exportálás
+
+Most, hogy az adatok exportálása az Event Hubs és a Service Bus cél, az alábbi lépésekkel állítsa be a folyamatos exportálás. 
+
+1. Jelentkezzen be az IoT Central alkalmazáshoz.
+
+2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
+
+    > [!Note]
+    > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
+
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
+
+3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Event Hubs** vagy **Azure Service Bus** az exportálás céljaként. 
+
+    > [!NOTE] 
+    > Export alkalmazásonként maximális száma öt. 
+
+    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new.PNG)
+
+4. A legördülő listában jelölje ki a **az Event Hubs-névtér/Service Bus-névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
+
+    > [!NOTE] 
+    > Storage-fiókok és az Event Hubs névterekben/Service Bus-névterek az csak akkor jelenik meg a **megegyező előfizetésben, az IoT-központ alkalmazás**. Ha szeretne exportálni egy célhelyre kívül ehhez az előfizetéshez, válasszon **adjon meg egy kapcsolati karakterláncot** , és tekintse meg az 5. lépés.
+
+    > [!NOTE] 
+    > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
+
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_create.PNG)
+
+5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
+    - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
+        - A **beállítások**válassza **megosztott hozzáférési házirendek**
+        - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
+        - Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
+ 
+6. A legördülő listából válassza ki a Event hub/üzenetsor vagy témakör.
+
+7. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
+
+6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
+
+  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list.PNG)
+
+7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
+
 
 ## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Az Azure Event Hubs és Azure Service Bus exportálása
 

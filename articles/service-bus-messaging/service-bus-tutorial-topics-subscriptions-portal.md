@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886434"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079843"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése
 
@@ -88,7 +88,7 @@ A kód futtatásához tegye a következőt:
    - Végrehajtás 2: saját szűrők hozzáadása.
    - Végrehajtás 3: igény szerint a saját szűrők eltávolítása. Vegye figyelembe, hogy az alapértelmezett szűrők így nem jönnek létre újra.
 
-    ![2 kimenetének megjelenítése](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+     ![2 kimenetének megjelenítése](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. A szűrők létrehozása után üzeneteket küldhet. Nyomja le a 4-es billentyűt, és figyelje meg 10 üzenetet küldését a témakörnek:
 

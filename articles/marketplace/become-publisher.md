@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2970ef58e177d10eac80d46825f3fb985b98af61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842448"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -49,14 +49,14 @@ A regisztrálás után jegyezze fel a Microsoft Partner Network-Azonosítóját 
 
 ## <a name="2-create-a-microsoft-account"></a>2. Microsoft-fiók létrehozása  
 | 15 perc |}  
-A Microsoft-fiók, pl. *@outlook.com vagy @live.com*, használható számos Microsoft-eszközök és szolgáltatások eléréséhez. Kötelező megadni, Azure Marketplace-en transact ajánlatok, és annak használatára azt javasoljuk, hogy minden felhő gyártó. További információ az előnyei és felhasználási területei egy Microsoft-fiók [megnyitják az oldalt](https://account.microsoft.com/account/). A Cloud Partner portálra eléréséhez használandó személyes Microsoft-fiókkal, a közzétételi platform létrehozásához és a piactér-beli kezeléséhez használt kínál. 
+A Microsoft-fiók, pl.  *\@Outlook.com-os vagy \@live.com*, használható számos Microsoft-eszközök és szolgáltatások eléréséhez. Kötelező megadni, Azure Marketplace-en transact ajánlatok, és annak használatára azt javasoljuk, hogy minden felhő gyártó. További információ az előnyei és felhasználási területei egy Microsoft-fiók [megnyitják az oldalt](https://account.microsoft.com/account/). A Cloud Partner portálra eléréséhez használandó személyes Microsoft-fiókkal, a közzétételi platform létrehozásához és a piactér-beli kezeléséhez használt kínál. 
 
 [! [Fontos a] megjegyezni, hogy a munkahelyi e-mail-címmel társított Microsoft-fiók nem teszi lehetővé, hogy a portál eléréséhez.
 
->[!Note]
->Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) meghatározni, ha akkor is használható a piactér közzétételre. 
-
->Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
+> [!Note]
+> Ha már rendelkezik Microsoft-fiókkal, tekintse át a [irányelvek létrehozásához a marketplace-fiók kezelése a Microsoft ID](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) meghatározni, ha akkor is használható a piactér közzétételre. 
+> 
+> Olvassa el az Azure Active Directory összevont céges fiókkal rendelkező felhasználók [Ez a cikk](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) létrehozása vagy meglévő Microsoft-Account megkísérlése előtt.
 
 *   Segítségre van szüksége vagy kezeléséről a Microsoft-fiókját, látogasson el a [Microsoft fiók támogatási súgóoldalak](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 

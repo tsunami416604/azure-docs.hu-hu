@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: cd2eb3ba1d3207f4f210aa259e938bb42b44d37a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535450"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077071"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Canary kiadás mikroszolgáltatások vamppel az Azure Container Service DC/OS-fürtön
 
@@ -62,12 +62,12 @@ Vamp igényel az Elasticsearch metrikák gyűjtési és összesítésének megad
 
 2. Válassza ki **JSON üzemmódot** származó a **új szolgáltatás telepítése** előugró.
 
-  ![Válassza ki a JSON-mód](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![Válassza ki a JSON-mód](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
 3. Illessze be a következő JSON-fájlban. Ez a konfiguráció a tárolóban fut, 1 GB RAM és a egy alapszintű állapot-ellenőrzést az Elasticsearch-port.
   
-  ```JSON
-  {
+   ```JSON
+   {
     "id": "elasticsearch",
     "instances": 1,
     "cpus": 0.2,
@@ -89,40 +89,40 @@ Vamp igényel az Elasticsearch metrikák gyűjtési és összesítésének megad
         "maxConsecutiveFailures": 0
       }
     ]
-  }
-  ```
+   }
+   ```
   
 
 3. Kattintson a **üzembe helyezése**.
 
-  DC/OS az Elasticsearch-tárolót üzembe helyezi. Követheti a folyamat állapotát a **szolgáltatások** lapot.  
+   DC/OS az Elasticsearch-tárolót üzembe helyezi. Követheti a folyamat állapotát a **szolgáltatások** lapot.  
 
-  ![e üzembe? Az Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![e üzembe? Az Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
 ### <a name="deploy-vamp"></a>Vamp üzembe helyezése
 
 Miután az Elasticsearch kiderítheti **futtató**, a DC/OS Universe Vamp csomag is hozzáadhat. 
 
 1. Lépjen a **Universe** és keressen rá a **vamp**. 
-  ![A DC/OS universe rendszerben vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+   ![A DC/OS universe rendszerben vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
 2. Kattintson a **telepítése** mellett a vamp csomagot, majd válassza a **speciális telepítési**.
 
 3. Görgessen lefelé, és adja meg a következő elasticsearch-url: `http://elasticsearch.marathon.mesos:9200`. 
 
-  ![Adja meg az Elasticsearch URL-címe](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
+   ![Adja meg az Elasticsearch URL-címe](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
 4. Kattintson a **áttekintés és telepítés**, majd kattintson a **telepítése** a üzembe helyezésének megkezdéséhez.  
 
-  DC/OS Vamp összes szükséges összetevőt telepít. Követheti a folyamat állapotát a **szolgáltatások** lapot.
+   DC/OS Vamp összes szükséges összetevőt telepít. Követheti a folyamat állapotát a **szolgáltatások** lapot.
   
-  ![Üzembe helyezése Vamp universe csomagként](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Üzembe helyezése Vamp universe csomagként](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
 5. Üzembe helyezés befejeztével a Vamp felhasználói felület érhető el:
 
-  ![A DC/OS vamp szolgáltatás](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![A DC/OS vamp szolgáltatás](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-  ![Felhasználói felület vamp](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Felhasználói felület vamp](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>Az első szolgáltatás üzembe helyezése
@@ -139,11 +139,11 @@ Ebben a példában egy monolitikus mintaalkalmazás nevű [ **Száva**](https://
 
 3. Illessze be a következő YAML tervezet. Ez a megoldás csak egy szolgáltatás másik változata, amely egy későbbi lépésben módosítjuk az egyik fürtről tartalmazza:
 
-  ```YAML
-  name: sava                        # deployment name
-  gateways:
+   ```YAML
+   name: sava                        # deployment name
+   gateways:
     9050: sava_cluster/webport      # stable endpoint
-  clusters:
+   clusters:
     sava_cluster:               # cluster to create
      services:
         -
@@ -152,7 +152,7 @@ Ebben a példában egy monolitikus mintaalkalmazás nevű [ **Száva**](https://
             deployable: magneticio/sava:1.0.0
             ports:
               webport: 8080/http # cluster endpoint, used for canary releasing
-  ```
+   ```
 
 4. Kattintson a **Save** (Mentés) gombra. Vamp kezdeményezi a központi telepítést.
 
@@ -202,9 +202,9 @@ Egyesíteni az új Száva 1.1 szolgáltatásába az üzemelő példányban:
 
 2. Kattintson a **Hozzáadás** , és illessze be a következő YAML tervezetben: Ez a megoldás egy új szolgáltatás variant (Száva: 1.1.0-s) telepítéséhez a meglévő fürtben (sava_cluster) ismerteti.
 
-  ```YAML
-  name: sava:1.1.0      # blueprint name
-  clusters:
+   ```YAML
+   name: sava:1.1.0      # blueprint name
+   clusters:
     sava_cluster:       # cluster to update
       services:
         -
@@ -213,17 +213,17 @@ Egyesíteni az új Száva 1.1 szolgáltatásába az üzemelő példányban:
             deployable: magneticio/sava:1.1.0    
             ports:
               webport: 8080/http # cluster endpoint to update
-  ```
+   ```
   
 3. Kattintson a **Save** (Mentés) gombra. A tervezet tárolja, és felkerülhet a **tervezetek** lapot.
 
 4. Nyissa meg a művelet menüjében a Száva: 1.1-es tervezet, és kattintson a **Egyesítés**.
 
-  ![UI - tervek vamp](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![UI - tervek vamp](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
 5. Válassza ki a **Száva** üzembe helyezés, és kattintson **egyesítése**.
 
-  ![UI - egyesítési tervezet üzemelő vamp](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![UI - egyesítési tervezet üzemelő vamp](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
 Vamp telepíti az új Száva: 1.1.0-s szolgáltatás változat Száva: 1.0.0 a mellett a tervezet ismertetett a **sava_cluster** az üzemelő példányban. 
 
@@ -241,11 +241,11 @@ Mindkét ugyanabban a fürtben üzembe helyezett Száva verzióival, módosítsa
 
 2. 50 % vagy 50 %-át, majd kattintson a súlyozások elosztása beállítása **mentése**.
 
-  ![Felhasználói felület – átjáró súly csúszka vamp](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Felhasználói felület – átjáró súly csúszka vamp](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
 3. Lépjen vissza a böngészőhöz, és frissítse a Száva oldalt még néhányszor. Most már az Száva alkalmazás ekkor átvált egy Száva: 1.0 oldal és a egy Száva: 1.1-es oldal között.
 
-  ![váltakozó sava1.0 és sava1.1 szolgáltatások](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![váltakozó sava1.0 és sava1.1 szolgáltatások](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
@@ -264,23 +264,23 @@ Olyan feltétellel, hogy minden Firefox felhasználók szűrése és a régi Sz�
 
 2. Adja meg a feltétel **felhasználói ügynök == Firefox** kattintson ![Vamp UI - mentése](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
 
-  Vamp hozzáadja azt a feltételt, egy alapértelmezett erőssége a 0 %-os. A szűrési forgalom, a feltétel erőssége módosítani kell.
+   Vamp hozzáadja azt a feltételt, egy alapértelmezett erőssége a 0 %-os. A szűrési forgalom, a feltétel erőssége módosítani kell.
 
 3. Kattintson a ![Vamp UI - szerkesztése](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) módosítása a **erőssége** a alkalmazni a feltételnek.
  
 4. Állítsa be a **erőssége** 100 %-os, majd kattintson ![Vamp UI - mentése](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) mentéséhez.
 
-  Vamp most már a (minden felhasználó a Firefox) Száva: 1.0.0 a feltételnek megfelelő összes forgalmat küld ki.
+   Vamp most már a (minden felhasználó a Firefox) Száva: 1.0.0 a feltételnek megfelelő összes forgalmat küld ki.
 
-  ![Felhasználói felület vamp – átjáró feltétel alkalmazása](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Felhasználói felület vamp – átjáró feltétel alkalmazása](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
 5. Emellett módosíthatja az összes többi forgalmat (az összes a Firefox felhasználó) és az új Száva: 1.1.0-s küldendő átjáró súlyát. Kattintson a ![Vamp UI - szerkesztése](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) melletti **súly** és állítsa be a súlyozások elosztása, ezért az útvonal sava/sava_cluster/sava:1.1.0/webport 100 %-át van irányítva.
 
-  A feltétel nem szűrt minden forgalmat az új Száva: 1.1.0-s most már van átirányítva.
+   A feltétel nem szűrt minden forgalmat az új Száva: 1.1.0-s most már van átirányítva.
 
 6. A szűrő működés közben látni, nyissa meg a két különböző böngészők (egy a Firefox és a egy másik böngészőben), és a Száva szolgáltatás elérésére is. Összes Firefox kérés küldése a Száva: 1.0.0, míg minden más böngészők Száva: 1.1.0-s irányítja.
 
-  ![UI - forgalom szűrésére vamp](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![UI - forgalom szűrésére vamp](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
 ## <a name="summing-up"></a>Összegzése
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 197d7529a52b400cd078ead79bbb6db5f5849ee6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093177"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -62,12 +62,12 @@ Az Azure Portalon egy Azure Automation-fiók létrehozásához hajtsa végre az 
 
 1. A következő képernyőn válassza ki a **létrehozás**.
 
-  ![Automation-fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+   ![Automation-fiók hozzáadása](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
-  > [!NOTE]
-  > Ha az alábbi üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán, a fiók nem tagja az előfizetés-Adminisztrátorok szerepkörnek, és a egy coadministrator az előfizetés.
-  >
-  > ![Automation-fiók figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-without-perms.png)
+   > [!NOTE]
+   > Ha az alábbi üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán, a fiók nem tagja az előfizetés-Adminisztrátorok szerepkörnek, és a egy coadministrator az előfizetés.
+   >
+   > ![Automation-fiók figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-without-perms.png)
 
 1. Az a **Automation-fiók hozzáadása** ablaktáblán, a a **neve** adjon meg egy nevet az új Automation-fiók. Ez a név nem módosítható, miután akkor kell kiválasztani. *Automation-fióknevek minden régióban és erőforráscsoportban egyedi. Törölt Automation-fiókok nevei nem lehet azonnal elérhetővé válik.*
 1. Ha több előfizetéssel rendelkezik, a a **előfizetés** mezőben adja meg az új fiókhoz használni kívánt előfizetést.
@@ -75,13 +75,13 @@ Az Azure Portalon egy Azure Automation-fiók létrehozásához hajtsa végre az 
 1. A **hely**, válasszon ki egy Azure-adatközpontot.
 1. Az a **létrehozása Azure-beli futtató fiók** lehetőséget, győződjön meg arról, hogy **Igen** kiválasztott, és adja meg a **létrehozás**.
 
-  > [!NOTE]
-  > Ha nem kíván létrehozni a futtató fiók kiválasztásával **nem** a **létrehozása Azure-beli futtató fiók**, egy üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán. Bár a fiók létrehozása az Azure Portalon, a fióknak nincs megfelelő hitelesítési identitást a klasszikus üzemi modell előfizetés vagy az Azure Resource Manager-előfizetés címtárszolgáltatásában. Ezért az Automation-fiók nem rendelkezik az erőforrásokhoz való hozzáférés az előfizetésben. Ez megakadályozza, hogy a hitelesítéshez és az ezekben az üzemi modellekben található erőforrások feladatokat végezzen el erre a fiókra hivatkozó forgatókönyveket.
-  >
-  > ![Automation-fiók figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
-  >
-  > Ha nem hozott létre szolgáltatásnevet, a közreműködő szerepkör nincs hozzárendelve.
-  >
+   > [!NOTE]
+   > Ha nem kíván létrehozni a futtató fiók kiválasztásával **nem** a **létrehozása Azure-beli futtató fiók**, egy üzenet jelenik meg a **Automation-fiók hozzáadása** ablaktáblán. Bár a fiók létrehozása az Azure Portalon, a fióknak nincs megfelelő hitelesítési identitást a klasszikus üzemi modell előfizetés vagy az Azure Resource Manager-előfizetés címtárszolgáltatásában. Ezért az Automation-fiók nem rendelkezik az erőforrásokhoz való hozzáférés az előfizetésben. Ez megakadályozza, hogy a hitelesítéshez és az ezekben az üzemi modellekben található erőforrások feladatokat végezzen el erre a fiókra hivatkozó forgatókönyveket.
+   >
+   > ![Automation-fiók figyelmeztetés hozzáadása](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   >
+   > Ha nem hozott létre szolgáltatásnevet, a közreműködő szerepkör nincs hozzárendelve.
+   >
 
 1. Válassza ki az Automation-fiók létrehozása, a menüben az előrehaladását úgy követheti nyomon a **értesítések**.
 

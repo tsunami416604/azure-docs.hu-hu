@@ -8,12 +8,12 @@ ms.workload: storage-backup-recovery
 ms.date: 3/3/2019
 ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: cf5b994146d84d92cae4591c042ed1cfbb042dee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437615"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002888"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Lemezek kizárása a VMware virtuális gépek replikálása az Azure-bA
 
@@ -80,7 +80,7 @@ A forrás virtuális gépen lévő lemezek a következők:
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
 DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (a lemez ki lett zárva a védelemből) | Disk2 | E:\ | Ideiglenes fájlok
-DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) </br /> </br />a feladatátvétel előtt írja le a mappa elérési útját.
+DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) <br /> <br />Jegyezze fel a mappa elérési útját a feladatátvétel előtt.
 DB-Disk4 | Disk4 |G:\ |2. felhasználói adatbázis
 
 Mivel a virtuális gép két lemezén ideiglenes az adatváltozás, a SalesDB virtuális gép védelme során zárja ki a Disk2 és a Disk3 lemezt a replikációból. Az Azure Site Recovery nem replikálja ezeket a lemezeket. A feladatátvétel során ezek a lemezek nem lesznek jelen a feladatátvételi virtuális gépen az Azure-ban.
@@ -90,7 +90,7 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
@@ -154,7 +154,7 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
@@ -193,7 +193,7 @@ A virtuális gép VMware–Azure feladatátvétele után az Azure-beli virtuáli
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
@@ -220,10 +220,10 @@ Itt láthatja a helyszíni virtuális gép lapozófájl-beállításait:
 
 A virtuális gép VMware–Azure feladatátvétele után az Azure-beli virtuális gépen található lemezek a következők:
 
-**Lemez neve**| **Vendég operációsrendszer-lemez száma**| **Meghajtó betűjele** | **A lemez adattípusa**
+**Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 

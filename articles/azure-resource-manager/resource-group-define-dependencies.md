@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 91325b7884eae4c6f4c85c142b1e81cf2121c039
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727802"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295334"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>A rendelés üzembe erőforrásokat az Azure Resource Manager-sablonok meghatározása
 Egy adott erőforráshoz lehet más erőforrások, amelyek már léteznie kell az erőforrás üzembe van helyezve. Például egy SQL server léteznie kell az SQL-adatbázis üzembe helyezése előtt. Ezt a kapcsolatot definiálhat egy erőforrást, mint a többi erőforrástól függ-e megjelölésével. A függőséget határoz meg a **dependsOn** elem, vagy a **referencia** függvény. 
@@ -65,7 +65,7 @@ Függőségek definiálása, amikor az erőforrás-szolgáltató névtere és a 
 Bár előfordulhat, hogy kódolni, dependsOn segítségével az erőforrások közötti kapcsolatok leképezése, fontos tudni, miért végez. Dokumentálása, hogyan vannak összekapcsolva erőforrások, például a dependsOn nem a megfelelő módszer. Nem lehet lekérdezni, mely erőforrásokat üzembe helyezés után a dependsOn elemben meghatározott. DependsOn használatával, potenciálisan hatással üzembe helyezési időt, mert a párhuzamos két erőforrások, amelyek nem üzembe helyezni a Resource Manager. 
 
 ## <a name="child-resources"></a>Gyermek-erőforrás
-Az erőforrás-tulajdonság az erőforrás definiált kapcsolódó gyermekerőforrásait megadását teszi lehetővé. Gyermekerőforrásait meghatározott öt szintnél mélyebb csak lehet. Fontos megjegyezni, hogy a nem egy gyermek-erőforrás és a szülő erőforrás között jön létre az implicit függ. A gyermek-erőforrás után a szülő erőforrás üzembe helyezni van szüksége, a dependsOn tulajdonság függőséget explicit módon meg kell adni. 
+Az erőforrás-tulajdonság az erőforrás definiált kapcsolódó gyermekerőforrásait megadását teszi lehetővé. Gyermekerőforrásait meghatározott öt szintnél mélyebb csak lehet. Fontos megjegyezni, hogy a nem egy gyermek-erőforrás és a szülő erőforrás között jön létre az implicit telepítési függ. A gyermek-erőforrás után a szülő erőforrás üzembe helyezni van szüksége, a dependsOn tulajdonság függőséget explicit módon meg kell adni. 
 
 Minden egyes szülőerőforrás csak bizonyos erőforrástípusok gyermek erőforrásként fogad el. Az elfogadott erőforrástípusok vannak megadva a [sablonséma](https://github.com/Azure/azure-resource-manager-schemas) a szülő erőforrás. A gyermek erőforrástípus neve szerepel a szülő erőforrástípus neve például **Microsoft.Web/sites/config** és **Microsoft.Web/sites/extensions** forrásanyag mindkét a gyermek**Microsoft.Web/sites**.
 
@@ -149,7 +149,7 @@ További tudnivalókért lásd: [függvényre](resource-group-template-functions
 
 Erőforrás-kezelő körkörös függőségi azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely megállapítja, hogy létezik-e körkörös függőséget, értékelje ki a sablont, hogy függőségek nem szükségesek, és el kell távolítani. Ha eltávolítja a függőségek nem működik, elkerülheti a körkörös függőségi szerint bizonyos üzembe helyezési műveletek helyezi át az erőforrásokat, a rendszer körkörös függőséget után üzembe helyezett gyermekerőforrásait. Tegyük fel például, hogy két virtuális gépet telepít, de a tulajdonságai az egyes hivatkozni, a másik be kell. A következő sorrendben telepíthetők:
 
-1. a vm1
+1. vm1
 2. vm2
 3. A vm1 futtatására szolgáló bővítmény a vm1, vm2 és függ. A bővítmény a vm1, vm2 olvas, adja meg az értékeket.
 4. A vm2 bővítmény a vm1, vm2 és függ. A bővítmény lekéri a vm1, vm2 értékek beállítása.

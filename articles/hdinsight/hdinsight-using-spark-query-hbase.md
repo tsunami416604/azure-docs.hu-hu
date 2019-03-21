@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ba61dc266add48577c3a382465ecb2cec9d2a05
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 200691f7af16e82d554d0e1e019b6a4e5c75949f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188033"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260128"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Az Apache Spark használata Apache HBase-adatok írására és olvasására
 
@@ -25,7 +25,7 @@ Az Apache HBase jellemzően az alacsony szintű API (vizsgálatokat, lekérdezi 
 * Legalább két különálló a HDInsight-fürtökkel, a egy HBase és a egy Spark-és Spark 2.1-es (HDInsight 3.6) telepítve van.
 * A Spark-fürt közvetlenül kommunikálhat a HBase-fürt minimális késéssel, így az ajánlott konfiguráció az azonos virtuális hálózatba mindkét fürt üzembe helyezése kell. További információkért lásd: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
 * Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
-* A [URI-séma](/hdinsight-hadoop-linux-information#URI-and-scheme.md) a fürtök elsődleges tárhelyeként. Ez akkor lehet wasb: / / az Azure Blob Storage, abfs: / / az Azure Data Lake Storage Gen2 vagy adl: / / az Azure Data Lake Storage Gen1. Biztonságos átvitel engedélyezve van a Blob Storage vagy a Data Lake Storage Gen2, ha az URI a wasbs lesz: / / vagy abfss: / /, illetve lásd még a [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md).
+* A [URI-séma](hdinsight-hadoop-linux-information.md#URI-and-scheme) a fürtök elsődleges tárhelyeként. Ez akkor lehet wasb: / / az Azure Blob Storage, abfs: / / az Azure Data Lake Storage Gen2 vagy adl: / / az Azure Data Lake Storage Gen1. Biztonságos átvitel engedélyezve van a Blob Storage vagy a Data Lake Storage Gen2, ha az URI a wasbs lesz: / / vagy abfss: / /, illetve lásd még a [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md).
 
 
 ## <a name="overall-process"></a>Általános folyamata

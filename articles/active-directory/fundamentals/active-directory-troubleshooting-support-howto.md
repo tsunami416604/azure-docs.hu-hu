@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb89d3eee87c0796bcd21914e719784756bc288e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165739"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285094"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Segítség keresése, és nyisson egy támogatási jegyet az Azure Active Directory
 A Microsoft globális műszaki, értékesítés előtti, számlázási és előfizetés-támogatás az Azure Active Directory (Azure AD) biztosít. Támogatás online és telefonon a fizetős Microsoft Azure és a próba-előfizetések is érhető el. Telefonos és online számlázási támogatás más nyelveken érhetők el. 
@@ -31,7 +31,7 @@ Támogatási jegy létrehozása előtt tekintse meg az alábbi forrásanyagokat 
 
 * A tartalmat, például útmutató információkat vagy a kódmintákban informatikai szakemberek és fejlesztők számára, tekintse meg a [technikai dokumentációja a docs.microsoft.com webhelyen közzétett](https://docs.microsoft.com/azure/active-directory/).
 
-* A [a Microsoft technikai Közösség](https://techcommunity.microsoft.com/) az IT pro partnereink és ügyfeleink az együttműködést, megosztást és helyet. A [Microsoft Tech Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) bejelentések, blogbejegyzések, kérje-velem – bármely (AMA) interakciók szakértőivel és egyéb szolgál. Emellett [csatlakozás a Közösséghez a ötleteket szeretne elküldeni](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
+* A [Microsoft technikai Közösség](https://techcommunity.microsoft.com/) az IT pro partnereink és ügyfeleink az együttműködést, megosztást és helyet. A [Microsoft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) bejelentések, blogbejegyzések, kérje-velem – bármely (AMA) interakciók szakértőivel és egyéb szolgál. Emellett [csatlakozás a Közösséghez a ötleteket szeretne elküldeni](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
 
 
 ## <a name="open-a-support-ticket"></a>Hozzon létre egy támogatási jegyet
@@ -41,7 +41,7 @@ Ha nem találja a választ önsegítő erőforrások segítségével, online tá
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Hogyan nyithat egy támogatási jegyet az Azure Portalon az Azure AD-hez
 
 > [!NOTE]
-> A számlázással vagy előfizetéssel kapcsolatos kell használnia [az Office 365 felügyeleti központban](https://portal.office.com).
+> A számlázással vagy előfizetéssel kapcsolatos kell használnia a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com).
 > 
 
 1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com) , és nyissa meg **Azure Active Directory**.
@@ -61,22 +61,20 @@ Ha nem találja a választ önsegítő erőforrások segítségével, online tá
 8. Adja meg kapcsolattartási adatait, és válassza ki **létrehozás**.
   ![probléma kategóriája önsegítő képernyőképe](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-office-365-portal"></a>Hogyan nyithat egy támogatási jegyet az Office 365 portálon az Azure AD-hez
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Hogyan nyithat egy támogatási jegyet az Azure ad a Microsoft 365 felügyeleti központban
 
 > [!NOTE]
-> Az Azure AD támogatása az Office 365 felügyeleti központjában csak rendszergazdák számára érhető el.
-> 
+> Az Azure AD-t a támogatása a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) csak rendszergazdák számára érhető el. 
 
-1. Jelentkezzen be a [az Office 365 felügyeleti központban](https://portal.office.com) egy olyan fiókkal, amely egy Enterprise Mobility + Security (EMS) licenccel rendelkezik.
+1. Jelentkezzen be a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) egy olyan fiókkal, amely egy Enterprise Mobility + Security (EMS) licenccel rendelkezik.
 
-2. Az a **támogatási** csempéről válassza **új szolgáltatáskérés**: ![Az Office 365-portál képernyőképe](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. Az a **támogatási** csempéről válassza **új szolgáltatáskérés**:
 
-3. Az a **a terméktámogatás áttekintése** lapon jelölje be **Identitáskezelés** vagy **felhasználó-és tartományi**: ![Az Azure AD támogatási kategóriák képernyőképe](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. Az a **a terméktámogatás áttekintése** lapon jelölje be **Identitáskezelés** vagy **felhasználó-és tartományi**:
 
 4. A **funkció**, válassza ki az Azure AD-funkció, amelynek támogatási kívánja.
 
 5. A **tünet**, egy megfelelő tünet, foglalja össze a problémát és adja meg az érintett adatokat, majd válassza ki és **tovább**.
-  ![a szolgáltatás és a jelenséget önsegítő képernyőképe](./media/active-directory-troubleshooting-support-howto/open-service-request.png)
 
 6. Válassza ki a felajánlott önsegítő erőforrások közül, vagy válasszon **Igen, továbbra is** vagy **nem, a kérelem visszavonása**.
 

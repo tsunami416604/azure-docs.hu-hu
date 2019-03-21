@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 6ac9fce9a6903b95156f43f41cea7bffdb1a072d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402842"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842945"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: Azure virtuális WAN (előzetes verzió) használatával egy ExpressRoute-társítás létrehozása
 
@@ -43,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="register"></a>A funkció regisztrálása
 
-A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az előzetes verzióban. Máskülönben nem használhatja a Virtual WAN-t a portálon. Ehhez küldjön egy e-mailt a következő címre az előfizetés azonosítójával: **azurevirtualwan@microsoft.com**. Az előfizetés regisztrációja után egy e-mailt fog kapni.
+A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az előzetes verzióban. Máskülönben nem használhatja a Virtual WAN-t a portálon. E-mail küldése a regisztrációhoz **azurevirtualwan\@microsoft.com** az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni.
 
 **Előzetes verzióval kapcsolatos szempontok:**
 
@@ -71,15 +71,15 @@ Egy böngészőből lépjen az [Azure Portalra (előzetes verzió)](https://aka.
 ## <a name="hub"></a>4. Egy kapcsolatcsoport keresése és társítása a központhoz
 
 1. Válassza ki a virtuális WAN-t, majd a **Virtuális WAN-architektúra** területen válassza az **ExpressRoute-kapcsolatcsoportok** lehetőséget.
-2. Ha az ExpressRoute-kapcsolatcsoport ugyanabban az előfizetésben van, mint a virtuális WAN, kattintson az **ExpressRoute-kapcsolatcsoport kiválasztása** elemre az előfizetés(ek)ből. 
-3. A legördülő használ, válassza ki az ExpressRoute, amelyet szeretne hozzárendelni a hub.
-4. Ha az ExpressRoute-kapcsolatcsoport nem ugyanabban az előfizetésben, vagy hogy adtak meg [hitelesítési kulcsot és a társ azonosító](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)válassza **váltja be egy engedélyezési kulcsot expressroute-kapcsolatcsoporthoz keresése**
-5. Adja meg a következő részleteket:
-* **Hitelesítési kulcs** – A kapcsolatcsoport tulajdonosa hozza létre a fent leírt módon
-* **Társ-kapcsolatcsoport URI** – A kapcsolatcsoport URI-je, amelyet a kapcsolatcsoport tulajdonosa ad meg, és a kapcsolatcsoport egyedi azonosítójaként szolgál.
-* **Útválasztás súly** - [útválasztás súly](../expressroute/expressroute-optimize-routing.md) lehetővé teszi, hogy inkább az egyes elérési utakat, több Kapcsolatcsoportok társviszony-létesítési különböző helyekről ugyanahhoz a hubhoz csatlakoztatott
-6. Kattintson a **Kapcsolatcsoport keresése** elemre, és ha a rendszer megtalálta a kapcsolatcsoportot, válassza ki.
-7. A legördülő listából válasszon ki egy vagy több központot, majd kattintson a **Mentés** elemre.
+1. Ha az ExpressRoute-kapcsolatcsoport ugyanabban az előfizetésben van, mint a virtuális WAN, kattintson az **ExpressRoute-kapcsolatcsoport kiválasztása** elemre az előfizetés(ek)ből. 
+1. A legördülő használ, válassza ki az ExpressRoute, amelyet szeretne hozzárendelni a hub.
+1. Ha az ExpressRoute-kapcsolatcsoport nem ugyanabban az előfizetésben, vagy hogy adtak meg [hitelesítési kulcsot és a társ azonosító](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)válassza **váltja be egy engedélyezési kulcsot expressroute-kapcsolatcsoporthoz keresése**
+1. Adja meg a következő részleteket:
+1. **Hitelesítési kulcs** – A kapcsolatcsoport tulajdonosa hozza létre a fent leírt módon
+1. **Társ-kapcsolatcsoport URI** – A kapcsolatcsoport URI-je, amelyet a kapcsolatcsoport tulajdonosa ad meg, és a kapcsolatcsoport egyedi azonosítójaként szolgál.
+1. **Útválasztás súly** - [útválasztás súly](../expressroute/expressroute-optimize-routing.md) lehetővé teszi, hogy inkább az egyes elérési utakat, több Kapcsolatcsoportok társviszony-létesítési különböző helyekről ugyanahhoz a hubhoz csatlakoztatott
+1. Kattintson a **Kapcsolatcsoport keresése** elemre, és ha a rendszer megtalálta a kapcsolatcsoportot, válassza ki.
+1. A legördülő listából válasszon ki egy vagy több központot, majd kattintson a **Mentés** elemre.
 
 ## <a name="vnet"></a>5. A virtuális hálózat csatlakoztatása egy elosztóhoz
 

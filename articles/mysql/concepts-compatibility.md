@@ -1,17 +1,17 @@
 ---
-title: MySQL-illesztőprogramok és a felügyeleti eszközök kompatibilitása
+title: Azure Database for MySQL-illesztőprogramok és a felügyeleti eszközök kompatibilitása
 description: Ez a cikk ismerteti a MySQL-illesztőprogramok és a felügyeleti eszközöket, amelyek kompatibilisek az Azure Database for MySQL-hez.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 46f2ac9114ac1191ea85b428711cb25d8557a61a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: 05f48145973777052590f8d10e1a2ce1fd22ec7a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837575"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258105"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-illesztőprogramok és a felügyeleti eszközök, Azure Database for MySQL-kompatibilis
 Ez a cikk ismerteti az illesztőprogramok és a felügyeleti eszközöket, amelyek kompatibilisek az Azure Database for MySQL-hez.
@@ -25,7 +25,7 @@ Azure Database for MySQL a világ legnépszerűbb közösségi kiadásának MySQ
 | .NET | [MySqlConnector on GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Nuget csomag telepítését](https://www.nuget.org/packages/MySqlConnector/) | 0.27 és után | 0.26.5 és előtt | |
 | MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Egy kódolási hiba okozhatja a kapcsolódás meghiúsulását bizonyos UTF8 Windows rendszereken. |
 | Nodejs |  [MySQLjs on GitHub](https://github.com/mysqljs/mysql/) <br> Az npm-ből telepítőcsomagot:<br> Futtatás `npm install mysql` az npm-ből | 2.15 | 2.14.1 és előtt | |
-| UGRÁS | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2-es és előtt | Használja a allowNativePasswords = true, a kapcsolati karakterlánc |
+| UGRÁS | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2-es és előtt | Használat `allowNativePasswords=true` 1.3-as verzió esetében a kapcsolati karakterláncban. 1.4-es verziójának javítást tartalmaz, és `allowNativePasswords=true` már nem szükséges. |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 és előtt | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 és előtt | |
 
@@ -42,3 +42,7 @@ Kompatibilitási előnye az adatbázis-kezelő eszközét is kiterjeszti. A megl
 | Biztonsági mentés és visszaállítás |  | X |  |
 | Kiszolgáló paramétereinek megjelenítéséhez | X | X | X |
 | Kapcsolatok megjelenítése | X | X | X |
+
+## <a name="next-steps"></a>További lépések
+
+- [Az Azure Database for MySQL csatlakoztatási hibáinak elhárítása](howto-troubleshoot-common-connection-issues.md)

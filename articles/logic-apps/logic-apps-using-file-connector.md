@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b58059727a383e978691bfbbee77a1f6b04692ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: MT
+ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870994"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozhat a helyszíni fájlrendszereket az Azure Logic Apps
 
@@ -34,15 +34,15 @@ Kövesse a példát, ezek az elemek szükségesek:
 
 * A logic apps csatlakozhat a helyszíni rendszerek, például a fájlkiszolgáló-rendszer, mielőtt kell [telepítése és beállítása egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Ezzel a módszerrel megadhatja, hogy az átjáró telepítése használja, a logikai alkalmazás a file system-kapcsolat létrehozásakor.
 
-* A [Drobox fiók](https://www.dropbox.com/) és a fiók hitelesítő adatait. A dropbox szolgáltatásbeli hitelesítő adatokat a logikai alkalmazás és a Drobox-fiók közötti kapcsolat létrehozásához szükségesek. 
+* A [Dropbox-fiókjának](https://www.dropbox.com/), amely feliratkozhat az ingyenes. A fiók hitelesítő adatai szükségesek a logikai alkalmazás és a Dropbox-fiókjában közötti kapcsolat létrehozásához. 
 
-* A fióknak a hitelesítő adatait a számítógép, amelyen a fájlrendszer el szeretne érni. Például ha a fájlrendszer ugyanazon a számítógépen telepíti az átjárót, majd szüksége a fiók hitelesítő adatait az adott számítógépen. 
+* A számítógép, amelyen a fájlrendszer is használni szeretné a hozzáférést. Például ha a fájlrendszer ugyanazon a számítógépen telepíti az átjárót, szüksége a fiók hitelesítő adatait az adott számítógépen. 
 
 * A szolgáltatói, például az Office 365 Outlook, Outlook.com vagy Gmail a Logic Apps által támogatott e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a logikai alkalmazás Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet. 
 
 * Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ebben a példában szüksége lesz egy üres logikai alkalmazás.
 
-## <a name="add-trigger"></a>Trigger hozzáadása
+## <a name="add-trigger"></a>Eseményindító hozzáadása
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -68,7 +68,7 @@ Kövesse a példát, ezek az elemek szükségesek:
 
    ![Kapcsolat létrehozása](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Tulajdonság | Szükséges | Érték | Leírás | 
+   | Tulajdonság | Szükséges | Value | Leírás | 
    | -------- | -------- | ----- | ----------- | 
    | **Kapcsolat neve** | Igen | <*kapcsolat neve*> | A kapcsolat nevét | 
    | **Gyökérmappa** | Igen | <*root-folder-name*> | A fájlrendszer, például ha telepítette a helyszíni adatátjárót, például egy helyi mappába a számítógépen, ahol a helyszíni átjáró telepítve van, amely a gyökérmappában található vagy a mappát a számítógép által elérhető hálózati megosztásra. <p>Például:`\\PublicShare\\DropboxFiles` <p>A legfelső szintű mappa nem a fő szülőmappa, amely relatív elérési utakat az összes fájl kapcsolatos műveletekhez használható. | 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996944"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259074"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
  Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 
@@ -71,7 +71,7 @@ A Widevine-licencsablon, amelyen engedélyezve van a funkciót a Widevine-licenc
 ### <a name="basic"></a>Alapszintű
 Ha bejelöli **alapszintű**, a sablon jön létre minden alapértelmezett értékekkel.
 
-### <a name="advanced"></a>Extra szintű
+### <a name="advanced"></a>Speciális
 A Widevine jogosultsági sablon kapcsolatos további információkért lásd: a [Widevine-licencsablon áttekintése](media-services-widevine-license-template-overview.md).
 
 ![A content protection speciális](./media/media-services-portal-content-protection/media-services-content-protection005.png)

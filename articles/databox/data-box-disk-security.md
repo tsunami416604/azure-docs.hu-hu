@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093456"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Az Azure Data Box-lemezek biztonsági és adatvédelmi
 
@@ -71,17 +71,17 @@ Az Azure Data Box Disk a szolgáltatás alábbi főbb példányaiban gyűjt és 
 
 - **Megrendelés részletei** – miután létrejött a megrendelés, a felhasználók szállítási címét, e-mail-címét és kapcsolattartási adatait az Azure Portal tárolja. A mentett információk a következők:
 
-    - Kapcsolattartó neve
-    - Telefonszám
-    - E-mail
-    - Utca, házszám
-    - Város
-    - Irányítószám
-    - Állapot
-    - Ország/tartomány/régió
-    - Meghajtóazonosító
-    - Szállítmányozó fiókszáma
-    - Szállítmány nyomkövetési száma
+  - Kapcsolattartó neve
+  - Telefonszám
+  - E-mail
+  - Utca, házszám
+  - Város
+  - Irányítószám
+  - Állapot
+  - Ország/tartomány/régió
+  - Meghajtóazonosító
+  - Szállítmányozó fiókszáma
+  - Szállítmány nyomkövetési száma
 
     A Data Box a feladat befejezésekor vagy törlésekor törli a rendelés részleteit.
 

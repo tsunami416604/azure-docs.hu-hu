@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 4370cc5e39b7d1b9a50e8fc8af9f7bfc58f6356a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 05df154db27dcf1b07506c6bf9c2a681408de61e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602749"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091817"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Eclipse-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -141,12 +141,12 @@ Kapcsolat egy normál fürt kezelése az Ambari felhasználónév használatáva
    a. A Package Explorerben kattintson a jobb gombbal a projekt nevét, és válassza **Spark-alkalmazás elküldéséhez HDInsight**.        
    b. Az a **Spark küldésének** párbeszédpanelen adja meg az alábbi értékeket, és válassza **küldés**:
       
-      * A **fürtnév**, válassza ki a HDInsight Spark-fürtöt, amelyen szeretné, az alkalmazás futtatásához.
-      * Válasszon ki egy összetevőt az Eclipse-projektet, vagy válasszon egyet a merevlemez-meghajtóról. Az alapértelmezett érték, amely a Package Explorerben kattintson jobb gombbal az elem függ.
-      * Az a **Main osztály neve** legördülő listából válassza ki, a beküldési varázsló megjeleníti az összes objektum nevét a projektből. Válassza ki, vagy adjon meg egy másikat, amelyet futtatni szeretne. Ha egy összetevő egy merevlemez-meghajtóról, a fő osztálynév manuálisan kell megadnia. 
-      * Mivel ebben a példában az alkalmazás kódja nem igényel parancssori argumentumokat vagy hivatkozás JAR-fájlok kivételével, vagy a fájlokat, akkor a többi mezőbe üresen hagyhatja.
+   * A **fürtnév**, válassza ki a HDInsight Spark-fürtöt, amelyen szeretné, az alkalmazás futtatásához.
+   * Válasszon ki egy összetevőt az Eclipse-projektet, vagy válasszon egyet a merevlemez-meghajtóról. Az alapértelmezett érték, amely a Package Explorerben kattintson jobb gombbal az elem függ.
+   * Az a **Main osztály neve** legördülő listából válassza ki, a beküldési varázsló megjeleníti az összes objektum nevét a projektből. Válassza ki, vagy adjon meg egy másikat, amelyet futtatni szeretne. Ha egy összetevő egy merevlemez-meghajtóról, a fő osztálynév manuálisan kell megadnia. 
+   * Mivel ebben a példában az alkalmazás kódja nem igényel parancssori argumentumokat vagy hivatkozás JAR-fájlok kivételével, vagy a fájlokat, akkor a többi mezőbe üresen hagyhatja.
         
-      ![A Spark küldésének párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
+     ![A Spark küldésének párbeszédpanel](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
 1. A **Spark küldésének** lapon el kell indulnia, megjelenítés, a folyamat állapotát. A piros gombra kattintva leállíthatja az alkalmazás a **Spark küldésének** ablak. A naplók az adott alkalmazás futtatásához a (a kék mezőben az a képen kimaradásával) földgömb ikon kiválasztásával is megtekintheti.
       
    ![A Spark küldésének ablak](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)

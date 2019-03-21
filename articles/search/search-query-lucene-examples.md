@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631838"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136546"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Példák Lucene szintaxisú lekérdezésekre, amellyel az Azure Search speciális lekérdezések
 Lekérdezések az Azure Search létrehozásánál lecserélheti az alapértelmezett [egyszerű lekérdezéselemzőt](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) szélesebb körben alkalmazhatóvá vált a [Lucene lekérdezéselemző az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) határozhatja meg a speciális és speciális lekérdezés definíciók. 
@@ -172,7 +172,7 @@ Fontolja meg a relevanciaprofil, amely serkenti az megfelel egy bizonyos mezőbe
 Authentication beállítását a, minél nagyobb a boost tényező, több megfelelő kifejezés lesznek más keresési feltételek viszonyítva. Alapértelmezés szerint a boost tényező: 1. Bár a boost tényező pozitívnak kell lennie, 1-nél kisebb (például 0.2-es) lehet.
 
 
-## <a name="example-6-regex"></a>6. példa: reguláris kifejezés
+## <a name="example-6-regex"></a>6. példa: Regex
 
 Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
 
@@ -206,7 +206,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Adja meg a Lucene lekérdezéselemző az a kód. Az alábbi hivatkozások azt ismertetik, hogyan állítható be a keresési lekérdezések a .NET-hez és a REST API-t. A hivatkozások az alapértelmezett egyszerű szintaxist használ, így a megismert információk adja meg, hogy ez a cikk a alkalmazni kell a **queryType**.
 
 * [A .NET SDK használatával az Azure Search-Index lekérdezése](search-query-dotnet.md)
-* [A REST API használatával az Azure Search-Index lekérdezése](search-query-rest-api.md)
+* [A REST API használatával az Azure Search-Index lekérdezése](search-create-index-rest-api.md)
 
 Az alábbi hivatkozásokra kattintva további keresésiszintaxis-referencia, lekérdezés-architektúra és példák találhatók:
 

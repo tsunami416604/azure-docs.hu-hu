@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 262f46b3d0b61923352f3ff98b08cb5e4f6d5e75
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993899"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285006"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -62,11 +62,10 @@ Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie a
 
     A címtár megváltozott az előfizetés, és megjelenik a sikert jelző üzenet.
 
-    ![Sikeres műveletről tájékoztató üzenet](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+    ![Sikert jelző üzenettel kapcsolatos címtár módosítása](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
+4. Használja a **Directory környezetválasztó** , nyissa meg az új címtárban. Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.
 
-4. A címtárváltóval lépjen az új címtárban. Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.
-
-    ![Környezetválasztó könyvtárlap](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+    ![Környezetválasztó könyvtárlap, mintául szolgáló adatokkal](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 Az előfizetés címtárának módosítása egy szolgáltatásiszint-művelet, így ez nincs hatással az előfizetés számlázási tulajdonjogát. A fiók rendszergazdája továbbra is módosíthatja a szolgáltatás-rendszergazda, a [Account Center](https://account.azure.com/subscriptions). Törli az eredeti címtárat, át kell adnia az előfizetés számlázási tulajdonjogának átadása egy új fiókrendszergazdának. További információ a számlázási tulajdonjog átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../billing/billing-subscription-transfer.md). 
 

@@ -1,7 +1,7 @@
 ---
-title: A Speech Service képzéshez beszédátírási irányelvek
+title: Beszédszolgáltatások modellek betanítása beszédátírási irányelvek
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan készíti elő az akusztikai és nyelvi modelleket és hangtípust testreszabása a beszédfelismerési szolgáltatás szöveg.
+description: Ismerje meg, hogyan készíti elő az akusztikai és nyelvi modelleket és beszédhangot testreszabása a beszédszolgáltatások szöveg.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d7508ed9cf1807fa05c57a1d60c804af7d2244f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857175"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897214"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>A beszédfelismerési szolgáltatás beszédátírási irányelvek
 
 Testreszabásához **Speech to Text** vagy **szöveg-beszéd átalakítás**, meg kell adnia a szöveg és beszéd. A szövegben minden sor egy egyetlen utterance (kifejezés) felel meg. A szöveg, lehető legközelebb egyeznie kell a speech. A szöveg egy *átirat*, és a egy meghatározott formátumban kell létrehoznia.
 
-A beszédfelismerési szolgáltatás Normalizálja a bemeneti szöveg konzisztens. 
+A beszédfelismerés szolgáltatások a bemeneti szöveg konzisztens normalizálása.
 
 Ez a cikk normalizations mindkét típusát ismerteti. Az irányelvek különböző nyelveken némileg eltérőek lehetnek.
 
@@ -39,7 +39,7 @@ Kerülje a kiterjesztett (Latin-1) vagy Unicode írásjeleket használatát. Eze
 
 ### <a name="text-normalization-rules-for-english"></a>Szöveg normalizálási szabályok az angol nyelvű tájékoztatáshoz
 
-A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok:
+A beszédszolgáltatások végzi az alábbi normalizálási szabályok:
 
 * Kisbetűk használata a teljes szöveg
 * A word-belső aposztrófot kivételével az összes írásjelek eltávolítása
@@ -64,7 +64,7 @@ A szöveg szövegekben az alábbi normalizálási vonatkoznak:
 * (Például bizonyos dátum vagy számlázási űrlapok) nem szabványos numerikus karakterláncok betűvel kell írni.
 * Szavak vegyes alfanumerikus karakterek vagy nem alfabetikus karaktereket kell megjelenített érzéseket, mivel ejtsd.
 * Rövidítéseket, amelyek a rendszer ejtsd: szavakat változatlanul hagyja (például "sugárdiagram", "lézernyomtatási," "RAM" vagy "NATO").
-* Írási rövidítéseket, amelyek szerint külön vannak ejtsd betűket, szóközzel elválasztva meghajtóbetűjellel rendelkező (például "IBM," "Processzor", "FBI", "Nem végleges" vagy "NaN"). 
+* Írási rövidítéseket, amelyek szerint külön vannak ejtsd betűket, szóközzel elválasztva meghajtóbetűjellel rendelkező (például "IBM," "Processzor", "FBI", "Nem végleges" vagy "NaN").
 
 Néhány példa:
 
@@ -83,7 +83,7 @@ Néhány példa:
 
 ## <a name="chinese-zh-cn"></a>Kínai (zh-cn)
 
-A Custom Speech Service feltöltött, szöveges adatok egy bájtsorrendjelző jelölő az UTF-8 kódolást kell használniuk. A fájl minden sorában egy utterance (kifejezés) kell írni.
+A Custom Speech Services feltöltött, szöveges adatok egy bájtsorrendjelző jelölő az UTF-8 kódolást kell használniuk. A fájl minden sorában egy utterance (kifejezés) kell írni.
 
 Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a karakterek szerepelhetnek véletlenül scrape weblapok adatait vagy a az adatelőkészítés egy szövegszerkesztő programban. Cserélje le azokat megfelelő teljes szélességű helyettesítések. Példa:
 
@@ -94,7 +94,7 @@ Kerülje a teljes szélességű írásjelek karakterek használatát. Ezek a kar
 
 ### <a name="text-normalization-rules-for-chinese"></a>Kínai szöveg normalizálási szabályok
 
-A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok:
+A beszédszolgáltatások végzi az alábbi normalizálási szabályok:
 
 * Az összes írásjelek eltávolítása
 * Használja a beszélt űrlap növekvő számok
@@ -134,7 +134,7 @@ Szöveges adatot feltölteni a **Speech to Text** szolgáltatást kell használn
 
 ### <a name="text-normalization-rules-for-german"></a>Szöveg normalizálási szabályok német
 
-A beszédfelismerési szolgáltatás hajtja végre az alábbi normalizálási szabályok:
+A beszédszolgáltatások végzi az alábbi normalizálási szabályok:
 
 * Kisbetűk használata a teljes szöveg
 * Eltávolítása az összes írásjelek, beleértve a különböző típusú idézőjelek ("teszt", "teszt", "teszt" és "teszt" olyan OK)
@@ -162,13 +162,13 @@ Mielőtt importálja a szöveg, alkalmaz rá az alábbi normalizálási:
 
 Néhány példa:
 
-| Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után
+| Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után |
 |--------  | ----- | -------- |
 | Es Izraeli normál idő szerint 12.23 Uhr | Es Izraeli normál idő szerint 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf ||
+| {12.45} | {12,45} | zwölf komma vier fünf |
 | 2 + 3 - 4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
 
 ## <a name="next-steps"></a>További lépések
 
-- [Speech Service próba-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [Próbaverziós Speech Services-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Beszéd felismerése C# nyelven](quickstart-csharp-dotnet-windows.md)

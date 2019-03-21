@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452013"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295453"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -30,6 +30,8 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 
 > [!NOTE]
 > Ezek az információk előzetesek, még változhatnak. Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg [fejlesztők támogatás és súgó lehetőségei](active-directory-develop-help-support.md) egyéb módjaival kapcsolatos kaphat, és támogatja.
+>
+> Ezt a dokumentációt a fejlesztői és felügyeleti útmutatást biztosítunk, de soha nem használható az ügyfél maga. Hibakódok módosulhatnak, bármikor annak érdekében, hogy a részletes hibaüzeneteket, amelyek segítenek a fejlesztő az alkalmazás elkészítése során. A szöveges vagy hiba kódja számok függőséget alkalmazások idővel működésképtelen lesz.  
 
 ## <a name="aadsts-error-codes"></a>AADSTS hibakódok
 

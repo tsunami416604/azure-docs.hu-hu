@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6c5e0e47f006c6be170bdbf6fee431bfd3b6df0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105056"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295640"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -59,6 +59,13 @@ Ez a korlátozás problémát jelent, a kérelmek terheléselosztással rendelke
 Ez a probléma alias rekordok használatával kell megoldani. Ellentétben a CNAME-rekordokat alias-rekord zóna felső pontjánál hozható létre, és alkalmazástulajdonosok használhatja a zóna felső pontja rekord átirányítása egy Traffic Manager-profil, amely rendelkezik a külső végpontokat. Alkalmazástulajdonos más tartományban a DNS-zóna használt azonos Traffic Manager-profilt is mutat.
 
 Ha például a contoso.com és a www\.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Mutasson a zóna felső pontja az Azure CDN-végpontok
+Csakúgy, mint a Traffic Manager-profil is használhatja alias rekordokat a DNS-zóna felső pontja átirányítása az Azure CDN-végpontok. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására. A webhely előtag-Beillesztés "www", a DNS-név nélkül elérheti.
+
+Például www.contoso.com a statikus webhely neve, a felhasználók számára a webhely használatával nincs szükség a contoso.com DNS-nevének www illesztenie hozzáférhet.
+
+Az előzőekben leírtaknak CNAME-rekordokat nem támogatottak a zóna legfelső pontján. Tehát contoso.com átirányítása a CDN-végpontra egy CNAME rekord nem használható. Ehelyett egy aliasrekordot használatával közvetlenül a zóna felső pontja átirányítása egy CDN-végponthoz.
 
 ## <a name="next-steps"></a>További lépések
 

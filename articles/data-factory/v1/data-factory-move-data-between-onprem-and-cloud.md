@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995893"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -359,7 +359,7 @@ Ebben a lépésben hozzon létre egy **folyamat** egy **másolási tevékenység
 
    * A tevékenységek szakaszban csak tevékenység van amelynek **típus** értékre van állítva **másolási**.
    * **Bemeneti** a tevékenység bemenetének beállítása **EmpOnPremSQLTable** és **kimeneti** a tevékenység bemenetének beállítása **OutputBlobTable**.
-   * Az a **typeProperties** szakaszban **SqlSource** a következőként van megadva a **adatforrástípust** és ** BlobSink ** a következőként van megadva a **fogadó típusa**.
+   * Az a **typeProperties** szakaszban **SqlSource** a következőként van megadva a **adatforrástípust** és **BlobSink** van megadva a **fogadó típusa**.
    * SQL-lekérdezés `select * from emp` van megadva a **sqlReaderQuery** tulajdonsága **SqlSource**.
 
    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Példa: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.

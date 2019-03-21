@@ -11,13 +11,13 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 2b31b13ac0667680ace37e5ee688844e8dccb08a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/13/2019
+ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315248"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840817"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
@@ -37,32 +37,34 @@ Ebben az oktatóanyagban megismerkedhet a lekérdezések több adatbázisban tö
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+A frissített rugalmas adatbázis-feladatok használata PowerShell-parancsmagok új készletét rendelkezik áttelepítés során. A parancsmagok átvinni az összes meglévő feladat hitelesítő adatait, célozza meg (például adatbázisok, kiszolgálók, egyéni gyűjtemények), feladat eseményindítók, a feladatok ütemezését, a feladat tartalma és a feladatok keresztül, egy új feladatügynök.
+
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>A legújabb Elastic Jobs-parancsmagjainak telepítése
 
 Ha még nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladat megkezdése előtt.
 
-- Telepítse az **AzureRM.Sql** 4.8.1-preview modult a legújabb rugalmasfeladat-parancsmagok beszerzéséhez. Futtassa az alábbi parancsokat a PowerShell rendszergazdai hozzáféréssel.
+Telepítse a **Az.Sql** 1.1.1-preview modult a legújabb rugalmas feladat parancsmagok beolvasása. Futtassa az alábbi parancsokat a PowerShellben rendszergazdai jogosultsággal.
 
-  ```powershell
-  # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
-  Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
-  
-  # Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
-  Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
-  
-  # Restart your powershell session with administrative access
-  
-  # Places AzureRM.Sql preview cmdlets side by side with existing AzureRM.Sql version
-  Install-Module -Name AzureRM.Sql -AllowPrerelease -RequiredVersion 4.8.1-preview -Force
-  
-  # Import the AzureRM.Sql 4.8.1 module
-  Import-Module AzureRM.Sql -RequiredVersion 4.8.1
-  
-  # Confirm if module successfully imported - if the imported version is 4.8.1, then continue
-  Get-Module AzureRM.Sql
-  ```
+```powershell
+# Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
+Find-Package PackageManagement -RequiredVersion 1.1.7.2 | Install-Package -Force
 
-- Mellett a **azurerm.SQL-hez** 4.8.1-preview modult, ebben az oktatóanyagban is szükséges a *sqlserver* PowerShell-modult. További információkért lásd: [SQL Server PowerShell-modul telepítését](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
+# Installs the latest PowershellGet module which adds the -AllowPrerelease flag to Install-Module
+Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
+
+# Restart your powershell session with administrative access
+
+# Places Az.Sql preview cmdlets side by side with existing Az.Sql version
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
+
+# Import the Az.Sql module
+Import-Module Az.Sql -RequiredVersion 1.1.1
+
+# Confirm if module successfully imported - if the imported version is 1.1.1, then continue
+Get-Module Az.Sql
+```
+
+- Mellett a **Az.Sql** 1.1.1-preview modult, ebben az oktatóanyagban is szükséges a *sqlserver* PowerShell-modult. További információkért lásd: [SQL Server PowerShell-modul telepítését](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
 
 
 ## <a name="create-required-resources"></a>A szükséges erőforrások létrehozása

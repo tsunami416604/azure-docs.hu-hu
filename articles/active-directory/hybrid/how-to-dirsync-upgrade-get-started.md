@@ -16,19 +16,19 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce4ad48a81d5f3b3b8574237b8d8685ad9b141ec
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194201"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852955"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Frissítés a DirSync szolgáltatásról
 Az Azure AD Connect a DirSync utóda. A DirSync szolgáltatásról való frissítés lehetőségeit találja meg ebben a témakörben. Ezek lépések nem használhatóak az Azure AD Connect másik kiadásáról vagy az Azure AD Syncről való frissítéshez.
 
 Az Azure AD Connect telepítése előtt győződjön meg arról, hogy [töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) és befejeződött a témakörben leírt lépéseket [az Azure AD Connect: Hardverkövetelmények és előfeltételek](how-to-connect-install-prerequisites.md). Különösen, ha a következőkről kíván olvasni, mivel ezek a területek különböznek a DirSynctől:
 
-* A .Net és a PowerShell szükséges verziója. A kiszolgálón újabb verzióknak kell lenniük, mint amelyek a DirSynchez szükségesek.
+* A .NET-keretrendszer és a PowerShell szükséges verziója. A kiszolgálón újabb verzióknak kell lenniük, mint amelyek a DirSynchez szükségesek.
 * A proxyiszolgáló konfigurálása. A frissítés előtt konfigurálnia kell ezt a beállítást, ha proxykiszolgálóval csatlakozik az internethez. A DirSnyc mindig a telepítést végző felhasználóhoz konfigurált proxykiszolgálót használta, de az Azure AD Connect ehelyett a gép beállításait használja.
 * Az URL-eket a proxykiszolgálón keresztül kell megnyitni. A DirSync által is támogatott alapszintű forgatókönyvekben a követelmények ugyanezek. Ha az Azure AD Connectben található új szolgáltatások valamelyikét szeretné használni, néhány új URL címet kell megnyitnia.
 
@@ -41,7 +41,7 @@ Ha nem a Dirsync szolgáltatásról frissít, az egyéb forgatókönyvek kapcsol
 A DirSync jelenleg aktív üzemelő példányától függően több lehetőség is létezik a frissítésre. Ha a várt frissítési idő kevesebb mint három óra, akkor a helyben történő frissítés javasolt. Ha a várt frissítési idő több mint három óra, akkor a párhuzamos üzembe helyezés javasolt egy másik kiszolgálón. A becslések szerint 50 000-nél több objektum esetén a frissítés több mint három órát vesz igénybe.
 
 | Forgatókönyv |
-| --- | --- |
+| --- |
 | [Frissítés helyben](#in-place-upgrade) |
 | [Párhuzamos üzembe helyezés](#parallel-deployment) |
 

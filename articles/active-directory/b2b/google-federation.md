@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1d6f541123a3f31c22352d646d701c37356e51
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d61f233b2eb901bcf1e6b5b4ff147893f918e8f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088315"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293311"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -31,32 +32,32 @@ Egy Google Gmail felhasználói meghívót küld, ha a vendégfelhasználó hozz
 
 Ha a Vendég felhasználó egy "túl hosszú fejléc" hibát látja, próbálkozhatnak, törölje a cookie-kat, vagy nyisson meg egy privát vagy inkognitó ablakot, és próbálja meg újra bejelentkezni.
 
-![Bejelentkezés Google-fiókkal](media/google-federation/google-sign-in.png)
+![Képernyőfelvétel: a Google bejelentkezési oldalán](media/google-federation/google-sign-in.png)
 
 ## <a name="step-1-configure-a-google-developer-project"></a>1. lépés: Egy Google developer-projekt konfigurálása
 Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyfél azonosítója és a egy ügyfélkulcsot, amely a későbbiekben is hozzáadhat az Azure AD. 
 1. Nyissa meg a Google API-k, https://console.developers.google.com, és jelentkezzen be a Google-fiókját. Azt javasoljuk, hogy használja-e egy megosztott csapat Google-fiók.
 2. Új projekt létrehozása: Az irányítópulton, válassza ki a **projekt létrehozása**, majd válassza ki **létrehozás**. Az új projekt lapon adjon meg egy **projektnév**, majd válassza ki **létrehozása**.
    
-   ![Új Google-projekt](media/google-federation/google-new-project.png)
+   ![A Google egy új projekt lapot ábrázoló képernyőfelvétel](media/google-federation/google-new-project.png)
 
 3. Győződjön meg arról, hogy az új projekt ki van jelölve, a projekt menüben. Ezután nyissa meg a menüt a bal felső sarokban, és válassza ki **API-k és szolgáltatások** > **hitelesítő adatok**.
 
-   ![A Google API hitelesítő adatai](media/google-federation/google-api.png)
+   ![Képernyőfelvétel: a Google API hitelesítő adatai lehetőség](media/google-federation/google-api.png)
  
 4. Válassza ki a **OAuth-hozzájárulási képernyő** lapra, és adjon meg egy **alkalmazásnév**. (A többi beállítást hagyja.)
 
-   ![Google OAuth-hozzájárulási képernyő](media/google-federation/google-oauth-consent-screen.png)
+   ![A Google OAuth-hozzájárulási képernyő lehetőséget mutató képernyőkép](media/google-federation/google-oauth-consent-screen.png)
 
 5. Görgessen a **tartományok jogosult** szakaszt, és adja meg a microsoftonline.com.
 
-   ![Jogosult tartományok szakaszban](media/google-federation/google-oauth-authorized-domains.png)
+   ![Képernyőfelvétel a jogosult tartományok szakaszban:](media/google-federation/google-oauth-authorized-domains.png)
 
 6. Kattintson a **Mentés** gombra.
 
 7. Válassza ki a **hitelesítő adatok** fülre. Az a **hitelesítő adatok létrehozása** menüben válassza a **OAuth-Ügyfélazonosító**.
 
-   ![A Google API hitelesítő adatai](media/google-federation/google-api-credentials.png)
+   ![Képernyőfelvétel: a Google API-k létrehozása a hitelesítő adatai lehetőség](media/google-federation/google-api-credentials.png)
 
 8. Alatt **alkalmazástípus**, válassza a **webes alkalmazás**, majd a **jogosult átirányítási URI-k**, adja meg a következő URI-k:
    - `https://login.microsoftonline.com` 
@@ -65,11 +66,11 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
      > [!NOTE]
      > A könyvtár Azonosítójának megkereséséhez lépjen https://portal.azure.com, majd a **Azure Active Directory**, válassza a **tulajdonságok** , és másolja a **címtár-azonosító**.
 
-   ![Hozzon létre az OAuth-Ügyfélazonosító](media/google-federation/google-create-oauth-client-id.png)
+   ![Képernyőfelvétel: a jogosult átirányítási URI-k szakasza](media/google-federation/google-create-oauth-client-id.png)
 
 9. Kattintson a **Létrehozás** gombra. Az ügyfél-azonosító és titkos ügyfélkódként fogjuk használni, amikor hozzáadja az identitásszolgáltató az Azure AD-portálra másolja.
 
-   ![OAuth-Azonosítót és titkos Ügyfélkód](media/google-federation/google-auth-client-id-secret.png)
+   ![Képernyőfelvétel: az OAuth-ügyfél-Azonosítót és a titkos kulcs](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>2. lépés: Google-összevonás konfigurálása az Azure ad-ben 
 Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, az Azure AD portálon megadásával vagy a PowerShell használatával. Győződjön meg arról, Gmail-címet használó és a kísérlet beváltani a meghívót a meghívott Google-fiókkal való meghívása saját maga által a Google-összevonási konfiguráció tesztelése. 
@@ -80,7 +81,7 @@ Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, 
 3. Válassza ki **Identitásszolgáltatók**, majd kattintson a **Google** gombra.
 4. Adjon meg egy nevet. Majd adja meg az ügyfél-azonosító és titkos Ügyfélkód korábban szerzett be. Kattintson a **Mentés** gombra. 
 
-   ![Google-identitásszolgáltató hozzáadása](media/google-federation/google-identity-provider.png)
+   ![Képernyőfelvétel: a szolgáltató lap hozzáadása Google identitás](media/google-federation/google-identity-provider.png)
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>A Google-összevonás konfigurálása a PowerShell használatával
 1. Telepítse a legújabb verziót az Azure AD PowerShell modul a Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
@@ -102,7 +103,7 @@ A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég fel
 3. Válassza ki **Identitásszolgáltatók**.
 4. Az a **Google** . sor, válassza ki a helyi menüt (**...** ), majd **törlése**. 
    
-   ![A közösségi identitásszolgáltató törölve](media/google-federation/google-social-identity-providers.png)
+   ![Képernyőkép a törlési lehetőséget a közösségi identitásszolgáltató](media/google-federation/google-social-identity-providers.png)
 
 1. Válassza ki **Igen** a törlés megerősítéséhez. 
 

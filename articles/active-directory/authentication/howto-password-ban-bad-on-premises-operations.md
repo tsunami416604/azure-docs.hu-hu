@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD jelszóvédelem előzetes műveletei és jelentéskészítés
-description: Az Azure AD jelszóvédelem előzetes üzembe helyezés utáni műveleteket, és jelentéskészítés
+title: Az Azure AD jelszóvédelem műveletek és jelentéskészítés
+description: Az Azure AD jelszóvédelem üzembe helyezés utáni műveleteket, és jelentéskészítés
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175242"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285802"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>Előzetes verzió: Az Azure AD jelszóvédelem eljárások
-
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszóvédelem eljárások
 
 Befejezése után a [telepítése az Azure AD jelszóvédelem](howto-password-ban-bad-on-premises-deploy.md) a helyszínen, van néhány elemet, amely az Azure Portalon kell konfigurálni.
 
@@ -33,7 +28,7 @@ Kövesse a cikk útmutatást [konfigurálása a letiltott jelszavak egyéni list
 
 ## <a name="enable-password-protection"></a>Jelszavas védelem engedélyezése
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem (előzetes verzió)**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem**.
 1. Állítsa be **engedélyezése a Windows Server Active Directory jelszavas védelem** való **Igen**
 1. Említetteknek megfelelően az [üzembe helyezési útmutató](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), javasoljuk, hogy először állítsa a **mód** való **naplózási**
    * Ha elégedett a szolgáltatással, válthat a **mód** való **kényszerített**

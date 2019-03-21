@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 13156b3419d961850c8e4e408a9cf565a5f957ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086394"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260060"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](https://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -105,8 +105,8 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
 
 1. Hozzon létre egy [API-kulcs](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Frissítse a Power BI M szkriptet, és cserélje le az Azure Resource Manager URL-címet az Application Insights API által exportált Analytics.
-   * Cserélje le  **https://management.azure.com/subscriptions/...**
-   *  **https://api.applicationinsights.io/beta/apps/...**
+   * Cserélje le **https:\//management.azure.com/subscriptions/...**
+   * with, **https:\//api.applicationinsights.io/beta/apps/...**
 3. Végül frissítse a hitelesítő adatok alapszintű, és az API-kulcsot használja.
 
 **Meglévő parancsfájl**

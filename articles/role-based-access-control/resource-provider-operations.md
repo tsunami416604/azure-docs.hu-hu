@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b400af524d303fe4fbcbc8e34a394b286a048cc4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: db0bebb49007059cfe3b8b9b416c4a148c3756fc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008808"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287332"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -2247,7 +2247,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | Esemény-előfizetések diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/write | Az esemény-előfizetésekhez diagnosztikai beállításának létrehozása vagy frissítése |
 > | Műveletek | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/metricDefinitions/read | EventSubscriptions elérhető metrikáinak beolvasása |
-> | Műveletek | Microsoft.EventGrid/eventSubscriptions/read | Olvassa el a eventSubscription |
+> | Műveletek | Microsoft.EventGrid/eventSubscriptions/read | Egy eventSubscription olvasása |
 > | Műveletek | Microsoft.EventGrid/eventSubscriptions/write | Létrehozás vagy frissítés egy eventSubscription |
 > | Műveletek | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/read | A témakörök diagnosztikai beállításának beolvasása |
 > | Műveletek | Microsoft.EventGrid/extensionTopics/providers/Microsoft.Insights/diagnosticSettings/write | A témakörök diagnosztikai beállításának létrehozása vagy frissítése |
@@ -2734,8 +2734,8 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Az adatok kapcsolatok erőforrás ír. |
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | Adatbázis-adatkapcsolat érvényesíti. |
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/delete | Egy adatbázis-erőforrás törlése. |
-> | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Törli az Event Hubs-kapcsolatok erőforrást. |
-> | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Event Hub kapcsolatok erőforrás beolvasása. |
+> | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Az Event Hubs-kapcsolatok erőforrás törlése. |
+> | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Az Event Hubs-kapcsolatok erőforrás beolvasása. |
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | Az Event Hubs-kapcsolatok erőforrás ír. |
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/EventHubConnectionValidation/action | Adatbázis Event Hub-kapcsolat ellenőrzése. |
 > | Műveletek | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | Az adatbázis rendszerbiztonsági tagok listája. |

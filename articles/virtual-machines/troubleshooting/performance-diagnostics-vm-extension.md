@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002731"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
@@ -89,7 +89,7 @@ A következő JSON-ra a séma Azure teljesítménydiagnosztikai Virtuálisgép-b
 
 Kövesse ezeket az utasításokat a bővítmény telepíthető Windows virtuális gépek:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a virtuális gép, ahol szeretné telepíteni a bővítményt.
 
     ![Képernyőkép az Azure portal, a virtuális gépek vannak kiemelve](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Kövesse ezeket az utasításokat a bővítmény telepíthető Windows virtuáli
 ## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
 Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com), válassza ki a virtuális gépet, ahonnan a távolítsa el a bővítményt, majd válassza a **bővítmények** panelen. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), válassza ki a virtuális gépet, ahonnan a távolítsa el a bővítményt, majd válassza a **bővítmények** panelen. 
 2. Válassza ki a (**...** ) a teljesítmény a diagnosztikai bővítmény bejegyzést a listából, és válassza ki a **Eltávolítás**.
 
     ![Képernyőkép a bővítmények panelről, eltávolítás kiemelésével](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -125,7 +125,7 @@ Az Azure virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 
 ```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {

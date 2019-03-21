@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004415"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293393"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -50,14 +50,14 @@ Szöveg felismerése tárolók használata előtt a következő előfeltételekn
 
 A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az egyes szöveg felismerése tárolók.
 
-| Tároló | Minimális | Ajánlott |
-|-----------|---------|-------------|
-|Szövegének felismerése|1 mag, 8 GB memória, 0,5 TPS|2 cores, 8 GB memory, 1 TPS|
+| Tároló | Minimális | Ajánlott |TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Szövegének felismerése|1 mag, 8 GB memória, 0,5 TPS|2 cores, 8 GB memory, 1 TPS|0.5, 1|
 
-Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* TPS - tranzakció / másodperc
 
 Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
 

@@ -9,14 +9,15 @@ ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad4872f9bc32a1978de47a52cea23d6bb2742a1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 5763a7e5f122702ddaf86246fbfbd18326878146
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673613"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294195"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Naplózás és jelentéskészítés a B2B-együttműködés felhasználói
 Vendégfelhasználók rendelkező tagfelhasználó naplózás hasonló képességeket. 
@@ -28,11 +29,11 @@ A hozzáférési felülvizsgálatok segítségével rendszeres időközönként 
 
 Az Azure AD naplózási naplókat a rendszer és a felhasználó tevékenységeket, beleértve a vendég felhasználók által kezdeményezett tevékenységek rekordjait tartalmazzák. A naplók eléréséhez **Azure Active Directory**alatt **figyelés**, jelölje be **Auditnaplók**. Íme egy példa az ajánlati és érvényesítési előzményeit meghívott Sam Oogle:
 
-![napló](./media/auditing-and-reporting/audit-log.png)
+![Képernyőfelvétel: és a naplózási – példa napló kimeneti](./media/auditing-and-reporting/audit-log.png)
 
 Akkor is ismerje meg, minden egyes ezek az események részletes információkkal szolgál. Például tekintsük át azokat elfogadó részleteit.
 
-![Tevékenység részletei](./media/auditing-and-reporting/activity-details.png)
+![Tevékenység részletei kimeneti példa és ábrázoló képernyőfelvétel](./media/auditing-and-reporting/activity-details.png)
 
 Ezek a naplók exportálása az Azure ad-ből, és a választott jelentéskészítési eszköz segítségével testre szabott jelentések lekérése is.
 

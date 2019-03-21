@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 136f9912e5a296629f76998e5843d6cccd81d3e3
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: f44a6b825f9e8871bb7d7877ebd1821038b45f65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570572"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004873"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Gyors útmutató: Feltöltése, letöltése és a Java Storage SDK V10 használatával blobok listázása
 
@@ -25,7 +25,7 @@ A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK 
 
 Győződjön meg arról, hogy telepítve van a következő további Előfeltételek:
 
-* [Maven](http://maven.apache.org/download.cgi) a parancssorból, vagy bármely Java integrált fejlesztői környezet, amely igény szerint működjön.
+* [Maven](https://maven.apache.org/download.cgi) a parancssorból, vagy bármely Java integrált fejlesztői környezet, amely igény szerint működjön.
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
@@ -100,7 +100,7 @@ Cleaning up the sample and exiting!
 
 A mintát a felhasználó vezérli, így parancsokat kell megadnia a kód futtatásához. A bemenetek esetében különbözőnek számítanak a kis- és nagybetűk.
 
-Az [Azure Storage Explorert](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha meg szeretné tekinteni a fájlt a Blob Storage-ban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amely hozzáférést biztosít a tárfiókjával kapcsolatos információkhoz. 
+Az [Azure Storage Explorert](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy egy ahhoz hasonló eszközt is használhat, ha meg szeretné tekinteni a fájlt a Blob Storage-ban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amely hozzáférést biztosít a tárfiókjával kapcsolatos információkhoz. 
 
 Ellenőrizze a fájlokat. Ezután nyomja le az **E**, majd az **Enter** billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg a **Quickstart.java** fájlt, és tekintse meg a kódot. 
 
@@ -166,11 +166,11 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 1. Egy fájl adott blobba való feltöltéséhez szerezze be a blob céltárolón belüli hivatkozását. 
 2. Ha beszerezte a blobhivatkozást, feltölthet rá egy fájlt a következő API-k egyikével:
 
-    * Alacsony szintű API-k. Ilyen például a **BlockBlobURL** példányban található [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_), más néven PutBlob és a [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable), más néven PutBLock. 
+   * Alacsony szintű API-k. Ilyen például a **BlockBlobURL** példányban található [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_), más néven PutBlob és a [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable), más néven PutBLock. 
 
-    * A [TransferManager osztály](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable) által biztosított magas szintű API-k. Ilyen például a [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable) metódus. 
+   * A [TransferManager osztály](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable) által biztosított magas szintű API-k. Ilyen például a [TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable) metódus. 
 
-    Ez az eljárás létrehozza a blobot, ha az még nem létezik. Ha már létezik a blob, akkor felülírja.
+     Ez az eljárás létrehozza a blobot, ha az még nem létezik. Ha már létezik a blob, akkor felülírja.
 
 A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, **sourceFile** néven tárolja a feltölteni kívánt fájlt, és a **blob** helyen tárolja a blob URL-címét. A következő példa feltölti a fájlt a **quickstart** nevű tárolóba.
 

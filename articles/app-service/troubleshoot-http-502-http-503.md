@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5a4b8b2fd3e232d7b42b2f510075c3964ca50531
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652574"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899128"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" az Azure App Service-ben HTTP-hibáinak elhárítása
 "502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" gyakori hibák az alkalmazásban lévő üzemeltetett [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a cikk segít a hibák elhárítása.
@@ -109,7 +109,7 @@ Emellett kiválaszthatja az alkalmazás futtatásához egynél több példányon
 Beállíthatja, hogy manuális vagy automatikus skálázása.
 
 #### <a name="use-autoheal"></a>Használja az autoheal funkciót
-Automatikus javítás funkció újrahasznosítja a munkavégző folyamat az alkalmazáshoz (például a konfigurációs módosítások, kérelmek, memória-alapú korlátok vagy a kérés végrehajtásához szükséges idő) kiválasztott beállítások alapján. Az esetek többségében a folyamat újraindítása a leggyorsabban úgy tudja elhárítani a problémát. Bár mindig újraindíthatja az alkalmazást közvetlenül az Azure Portalon, automatikus javítás funkció el automatikusan az Ön számára. Ehhez szüksége néhány eseményindítók hozzáadása az alkalmazáshoz a legfelső szintű web.config. Vegye figyelembe, hogy működne-e ezek a beállítások azonos módon, még ha az alkalmazás nem az egyik .net.
+Automatikus javítás funkció újrahasznosítja a munkavégző folyamat az alkalmazáshoz (például a konfigurációs módosítások, kérelmek, memória-alapú korlátok vagy a kérés végrehajtásához szükséges idő) kiválasztott beállítások alapján. Az esetek többségében a folyamat újraindítása a leggyorsabban úgy tudja elhárítani a problémát. Bár mindig újraindíthatja az alkalmazást közvetlenül az Azure Portalon, automatikus javítás funkció el automatikusan az Ön számára. Ehhez szüksége néhány eseményindítók hozzáadása az alkalmazáshoz a legfelső szintű web.config. Vegye figyelembe, hogy működne-e ezek a beállítások azonos módon, még ha az alkalmazás nem az egyik .NET.
 
 További információkért lásd: [Azure-webhelyek automatikus javításáról](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

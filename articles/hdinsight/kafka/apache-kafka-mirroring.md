@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079639"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a Kafka on HDInsight az Apache Kafka-témakörökhöz replikáláshoz
 
@@ -258,7 +258,7 @@ Bár létrehozhat Azure-beli virtuális hálózathoz, és a Kafka-fürtök manu�
 
     * **--num.streams**: Hozzon létre felhasználói szálak számát.
 
- Az Indítás Mirrormakerrel hasonló információt ad vissza a következő szöveget:
+   Az Indítás Mirrormakerrel hasonló információt ad vissza a következő szöveget:
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}
@@ -297,7 +297,7 @@ Mivel a jelen dokumentumban leírt lépések az Azure-erőforráscsoport mindké
 
 Ebben a dokumentumban megtudhatta, hogyan használható [Mirrormakerrel](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a replika létrehozásához egy [Apache Kafka](https://kafka.apache.org/) fürt. Az alábbi hivatkozások segítségével Fedezzen fel más módokat a Kafka használata:
 
-* [Az Apache Kafka Mirrormakerrel dokumentáció](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) cwiki.apache.org címen.
+* [Apache Kafka MirrorMaker documentation](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) at cwiki.apache.org.
 * [A HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md)
 * [Az Apache Kafka on HDInsight az Apache Spark használata](../hdinsight-apache-spark-with-kafka.md)
 * [Az Apache Kafka on HDInsight az Apache Storm használata](../hdinsight-apache-storm-with-kafka.md)

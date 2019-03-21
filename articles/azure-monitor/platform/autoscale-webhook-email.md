@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463311"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259295"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
 Ez a cikk bemutatja, hogyan lehet beállítani eseményindítók, hogy hívás meghatározott webes URL-címek, vagy küldjön e-mailek automatikus skálázási műveletek az Azure-ban alapján.  
@@ -59,6 +59,7 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
       }
     ]
 ```
+
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | művelet |igen |Az értéknek kell lennie a "Méretezés" |
@@ -70,7 +71,7 @@ A REST API vagy a Resource Manager-sablon használatakor közé tartozik az ért
 | properties |igen |értéknek üresnek kell lennie {} vagy kulcs-érték párok |
 
 ## <a name="authentication-in-webhooks"></a>Hitelesítés a webhookok
-A webhook hitelesítheti a mentési helyét a webhook URI-lekérdezési paraméterként egy jogkivonat-azonosító jogkivonat-alapú hitelesítés használatával. Például: https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+A webhook hitelesítheti a mentési helyét a webhook URI-lekérdezési paraméterként egy jogkivonat-azonosító jogkivonat-alapú hitelesítés használatával. Például https: \/ /mysamplealert/webcallback? tokenid sometokenid & someparameter = érték1 =
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Automatikus skálázási értesítések adattartalom webhookséma
 Ha az automatikus skálázási értesítés jön létre, a webhook hasznos adatai a következő metaadatokat tartalmazza:

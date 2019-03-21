@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d2aa05d6648a76b02e09c660d7e6f6f30988db53
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 180cbb9c31d14c36679bb84f92b3c9892ee3602d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011157"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -62,7 +62,7 @@ Hajtsa végre következő [futtatása docker](https://docs.docker.com/engine/ref
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Keresse meg a [ http://localhost:8080 ](http://localhost:8080) megtekintéséhez a kiszolgálása az internetszolgáltatójuk által a futó tárolót az Nginx alapértelmezett weblapot. Egy oldal az alábbihoz hasonlóan kell megjelennie:
+Keresse meg a `http://localhost:8080` megtekintéséhez a kiszolgálása az internetszolgáltatójuk által a futó tárolót az Nginx alapértelmezett weblapot. Egy oldal az alábbihoz hasonlóan kell megjelennie:
 
 ![Nginx egy helyi számítógépen](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -104,7 +104,7 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/run/) 
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Keresse meg a [ http://localhost:8080 ](http://localhost:8080) a futó tároló megtekintéséhez.
+Keresse meg a `http://localhost:8080` a futó tároló megtekintéséhez.
 
 Állítsa le, és távolítsa el a tároló, nyomja le az `Control` + `C`.
 

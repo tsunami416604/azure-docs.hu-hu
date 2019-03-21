@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e291072f7eb075adeff9efb37f1f7dffc72d714c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093524"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286295"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -59,7 +59,7 @@ További információ az SQL virtuális gépek automatikus biztonsági mentés k
 - **SQL Server 2016/2017**: [Azure-beli virtuális gépek automatikus biztonsági mentés v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [Automatikus biztonsági mentés az SQL Server 2014 virtuális gépek](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Az Azure Backup az SQL virtuális gépek (nyilvános előzetes verzió)
+## <a id="azbackup"></a> Az Azure Backup az SQL virtuális gépek
 
 [Az Azure Backup](/azure/backup/) egy vállalati osztály biztonsági mentési lehetőséget nyújt az Azure-beli virtuális gépeken futó SQL Serverhez. Minden biztonsági mentés tárolja és kezeli a Recovery Services-tárolóba. Van több előnye is van, amely ezt a megoldást biztosít, különösen a nagyvállalatok számára:
 
@@ -76,9 +76,9 @@ További információ az SQL virtuális gépek automatikus biztonsági mentés k
 
 Röviden, hogyan működik együtt egy bemutatót tekintse meg a következő videót:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2dNbw]
+> [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-Az Azure Backup megoldás az SQL virtuális gépek jelenleg nyilvános előzetes verzióban érhető el. További információkért lásd: [az Azure SQL Server-adatbázis biztonsági mentése](../../../backup/backup-azure-sql-database.md).
+Az Azure Backup megoldás az SQL virtuális gépek szolgáltatás általánosan elérhető. További információkért lásd: [az Azure SQL Server-adatbázis biztonsági mentése](../../../backup/backup-azure-sql-database.md).
 
 ## <a id="manual"></a> Manuális biztonsági mentés
 

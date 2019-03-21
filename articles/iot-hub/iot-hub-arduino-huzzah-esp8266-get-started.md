@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ae123638e26c9fb6c82666efddabf06874c7b7a8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085099"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
@@ -180,15 +180,15 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
 12. Kattintson a **telepítése** esp8266 gombra.
 
-   Tanácsok Manager azt jelzi, hogy telepítve van-e a ESP8266 és a egy 2.2.0 vagy újabb verziója.
+    Tanácsok Manager azt jelzi, hogy telepítve van-e a ESP8266 és a egy 2.2.0 vagy újabb verziója.
 
-   ![Az esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
+    ![Az esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
 13. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Board Config**.
 
 14. Jelölje be a **kijelölt táblához:** , és írja be **esp8266**, majd **Adafruit HUZZAH ESP8266 (esp8266)**.
 
-   ![Esp8266 tábla kiválasztása](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
+    ![Esp8266 tábla kiválasztása](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>Szükséges kódtárak telepítése
 

@@ -5,45 +5,43 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/26/2018
-ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/18/2019
+ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106868"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294416"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális terjesztés, az Azure Cosmos DB - áttekintés
 
 A napjaink alkalmazásai válaszidejű, és mindig online szükségesek. Alacsony késéssel és magas rendelkezésre állás elérése érdekében ezeket az alkalmazásokat példányát kell üzembe helyezni a felhasználók közelében lévő adatközpontokban. Ezek az alkalmazások általában több adatközpontban telepített, és globálisan elosztott nevezzük. Globálisan elosztott alkalmazások egy globálisan elosztott adatbázis, amely átláthatóan képes replikálni az adatokat az alkalmazások az adatokat, amely a felhasználók közel van a művelethez használandó a világ bármely pontján található kell. 
 
-Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely közel valós idejű, rugalmasan méretezhető az átviteli sebesség, jól definiált szemantikát nyújt, és a magas rendelkezésre állású tervezték, hogy a. Röviden Ha az alkalmazás kell gyors garantált válaszidő bárhol a világon, ha ez szükséges, hogy mindig online, és korlátlan és rugalmas méretezhetőséget átviteli sebesség és tárterület van szüksége, fontolja meg alkalmazások Azure Cosmos DB használatával.
+Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely közel valós idejű, rugalmasan méretezhető az átviteli sebesség, jól definiált szemantikát nyújt, és a magas rendelkezésre állású tervezték, hogy a. Ha az alkalmazás kell gyors garantált válaszidő bárhol a világon, ha ez szükséges, hogy mindig online, és szüksége van az átviteli sebesség és tárterület korlátlan és rugalmas méretezhetőséget, röviden, kell az Azure Cosmos DB-alkalmazás létrehozása.
 
-Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze el az adatok közelebb, ahol a felhasználók is. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. Az Azure Cosmos DB transzparensen replikálja az adatokat a fiókon belül a fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. 
+Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen bármelyik Azure-régiót. Csökkentheti a késést, helyezze el az adatok hol találhatók a felhasználók közel. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. A cosmos DB transzparensen replikálja az adatokat a Cosmos-fiókjához társított összes régióba. A globálisan elosztott Azure Cosmos-adatbázis és a tárolók, amelyek az alkalmazás olvashat és írhat a helyi egyetlen rendszerképet biztosít. 
 
-Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régió nem szükséges. Továbbra is magas rendelkezésre állású folyamatosan miatt a többhelyűségével képességeket, amelyek a szolgáltatás biztosítja.
+Az Azure Cosmos DB adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régió nem szükséges. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatást natív módon biztosít a többkiszolgálós képességekkel.
 
 ![Magas rendelkezésre állású telepítés topológiája](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>Fő előnyei a globális terjesztés
 
-**Globális aktív-aktív alkalmazásokat készíthet.** Több főkiszolgálós szolgáltatással minden régióban egy írási régióba. Emellett akkor is olvasható. A több főkiszolgálós funkciót is biztosítja:
+**Globális aktív-aktív alkalmazásokat készíthet.** Az új több főkiszolgálós replikációs protokoll minden régióban írások és olvasások is támogatja. A több főkiszolgálós funkció is lehetővé teszi:
 
-- Korlátlan, rugalmas írás méretezhetősége. 
+- Korlátlan számú rugalmas írhat, és olvassa el a méretezhetőséget. 
 - 99,999 %-os írási és olvasási a világ minden tájáról.
 - Garantált olvasási és írási 99 százalékon kevesebb mint 10 ezredmásodperc szolgálja ki.
 
-Az Azure Cosmos DB többhelyűség API-k használatával az alkalmazás kompatibilis a legközelebbi régió. Majd kéréseket küldhetnek adott régióban. A legközelebbi régió azonosított konfigurációs módosítások nélkül. Adja hozzá vagy távolít el a régióban az Azure Cosmos DB-fiókja, az alkalmazás újbóli üzembe helyezéséhez nem szükséges. Az alkalmazás továbbra is magas rendelkezésre állású legyen.
+Használatával az Azure Cosmos DB többkiszolgálós API-k, az alkalmazás kompatibilis a legközelebbi régió és kéréseket küldhet adott régióban. A legközelebbi régió azonosított konfigurációs módosítások nélkül. Adjon hozzá vagy távolít el a régióban, és az Azure Cosmos-fiókjából, az alkalmazás nem kell helyeznie, vagy fel van függesztve, továbbra is fennáll, mindig rendelkezésre állású legyen.
 
-**Reagáló alkalmazásokat készíthet.** Az alkalmazás is könnyedén úgy, hogy közel valós idejű olvasások és írások. Az adatbázis számára is választott minden régióban ellen egyszámjegyű ezredmásodperces késéseket képes használni. Az Azure Cosmos DB belsőleg kezeli az adatreplikációt a régiók között. Ennek eredményeképpen a konzisztencia szintjét, az Azure Cosmos DB-fiók kijelölt garantált.
+**Reagáló alkalmazásokat készíthet.** Az alkalmazás végezhet közel valós idejű olvasási és az adatbázis kiválasztott minden régióban írására. Az Azure Cosmos DB belsőleg kezeli az adatreplikációt a kiválasztott szint szintű biztosítaná a régiók között.
 
-Számos alkalmazás kihasználhatják a teljesítményt érintő továbbfejlesztés, amely lehetővé teszi az többrégiós (helyi) írási műveletek végrehajtásához származnak. Tölcsér összes írási művelet egyetlen régióban történő inkább néhány konzisztenciát igénylő alkalmazásokhoz. Ezekhez az alkalmazásokhoz az Azure Cosmos DB támogatja az egyrégiós és többrégiós konfigurációkat.
+**Magas rendelkezésre állású alkalmazásokat készíthet.** A rendelkezésre állási adatbázis egy adatbázis világszerte több régióban működő nő. Ha egy régió elérhetetlenné válik, más régiókban automatikusan kezelik az alkalmazásokra irányuló kérések. Az Azure Cosmos DB kínál 99,999 %-os írási és olvasási többrégiós adatbázisok rendelkezésre állását.
 
-**Magas rendelkezésre állású alkalmazásokat készíthet.** Egy adatbázis több régióban üzemelő növeli az adatbázis rendelkezésre állását. Ha egy régió elérhetetlenné válik, más régiókban automatikusan kezelik az alkalmazásokra irányuló kérések. Az Azure Cosmos DB kínál 99,999 %-os írási és olvasási többrégiós adatbázisok rendelkezésre állását.
+**Üzletmenet-folytonossági karbantartása során a regionális üzemkimaradások utáni helyreállításon.** Az Azure Cosmos DB támogatja a [automatikus feladatátvétel](how-to-manage-database-account.md#automatic-failover) egy regionális kimaradás során. Egy regionális kimaradás során az Azure Cosmos DB SLA-k a késés, a rendelkezésre állási, a konzisztencia és az átviteli sebesség fenntartása érdekében továbbra is. Annak érdekében, ügyeljen arra, hogy a teljes alkalmazás magas rendelkezésre állású, a Cosmos DB kínál a manuális feladatátvételt egy regionális kimaradás szimulálásához API. Ez az API használatával is végrehajthasson rendszeres üzleti folytonossági gyakorlatokat.
 
-**Üzletmenet-folytonossági karbantartása során a regionális üzemkimaradások utáni helyreállításon.** Az Azure Cosmos DB támogatja a [automatikus feladatátvétel](how-to-manage-database-account.md#automatic-failover) egy regionális kimaradás során. Egy regionális kimaradás során az Azure Cosmos DB SLA-k a késés, a rendelkezésre állási, a konzisztencia és az átviteli sebesség fenntartása érdekében továbbra is. Annak érdekében, ügyeljen arra, hogy a teljes alkalmazás magas rendelkezésre állású, az Azure Cosmos DB manuális feladatátvételt egy regionális kimaradás szimulálásához API kínál. Ez az API használatával is végrehajthasson rendszeres üzleti folytonossági gyakorlatokat.
-
-**Méretezés és globálisan olvasási átviteli sebességet.** Több főkiszolgálós szolgáltatással rugalmasan skálázhatja olvasása és írása az átviteli sebesség a világ minden tájáról. A több főkiszolgálós funkció garantálja, hogy az átviteli sebességet, hogy az alkalmazás konfigurálása egy Azure Cosmos DB adatbázison, vagy egy tároló kézbesíti a rendszer minden régióban. Az átviteli sebességet is védi [pénzügyileg támogatott SLA-k](https://aka.ms/acdbsla).
+**Méretezés és globálisan olvasási átviteli sebességet.** Minden régióhoz, írható és olvasási és írási rugalmasan skálázhatja a világ minden tájáról engedélyezheti. Az átviteli sebességet, amely az alkalmazás egy Azure Cosmos-adatbázis vagy egy tároló konfigurálja garantáltan kézbesítéséhez az Azure Cosmos-fiókhoz társított összes régióban. A kiosztott átviteli sebesség által van garantált [pénzügyileg támogatott SLA-k](https://aka.ms/acdbsla).
 
 **Több jól definiált konzisztenciamodellekkel közül választhat.** Az Azure Cosmos DB replikációs protokoll öt jól meghatározott, és intuitív konzisztenciamodelleket kínál. Minden modell a konzisztencia és a teljesítmény magával rendelkezik. Ezek konzisztenciamodell használatával hozhat létre globálisan elosztott alkalmazások létrehozását.
 

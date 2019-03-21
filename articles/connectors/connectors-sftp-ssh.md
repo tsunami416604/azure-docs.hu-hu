@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: 807a99a8cac7326648ff4aa91b9fcdeb35de196a
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886663"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Figyelheti, létrehozása és kezelése az SFTP-fájlok az SSH és az Azure Logic Apps használatával
 
@@ -54,7 +54,7 @@ Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, 
 
 * Itt a **fájl átnevezése tevékenység** művelet, amely az SFTP-kiszolgáló egy fájlt nevez át.
 
-* A kapcsolat az SFTP-kiszolgáló gyorsítótárazza *a legfeljebb 1 óra*, amely javítja a teljesítményt, és csökkenti a kiszolgálóhoz való kapcsolódás kísérletek számát. Ez az időtartam beállítása a gyorsítótárazási viselkedésének, szerkessze a <a href="http://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> tulajdonság frissítése az SSH-konfigurációja az SFTP-kiszolgálón. 
+* A kapcsolat az SFTP-kiszolgáló gyorsítótárazza *a legfeljebb 1 óra*, amely javítja a teljesítményt, és csökkenti a kiszolgálóhoz való kapcsolódás kísérletek számát. Ez az időtartam beállítása a gyorsítótárazási viselkedésének, szerkessze a <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> tulajdonság frissítése az SSH-konfigurációja az SFTP-kiszolgálón. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

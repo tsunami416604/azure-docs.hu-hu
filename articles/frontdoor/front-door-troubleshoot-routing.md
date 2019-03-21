@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 78370b004d18f70ae4d485f3ad7cfd910e6dd70a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100309"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Útválasztási gyakori hibák elhárítása
 Ez a cikk ismerteti az Azure bejárati ajtajának szolgáltatás konfigurációjában fellépő leggyakoribb útválasztási problémák elhárítása. 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti az Azure bejárati ajtajának szolgáltatás konfigurációj
 ### <a name="symptom"></a>Jelenség
 - Létrehozott egy bejárati ajtajának, de az előtér-állomás kérelem egy 400-as HTTP-állapotkódot adja vissza.
 
- - Létrehozott egy DNS egy egyéni tartomány leképezése a frontend gazdagép konfigurálta. Azonban az egyéni tartomány állomásneve kérést egy 400-as HTTP-állapotkódot adja vissza, és nem jelenik meg a backend(s) átirányítása a konfigurált.
+  - Létrehozott egy DNS egy egyéni tartomány leképezése a frontend gazdagép konfigurálta. Azonban az egyéni tartomány állomásneve kérést egy 400-as HTTP-állapotkódot adja vissza, és nem jelenik meg a backend(s) átirányítása a konfigurált.
 
 ### <a name="cause"></a>Ok
 - A probléma akkor fordulhat elő, ha nem konfigurálta az egyéni tartomány előtér-gazdagépként hozzáadott útválasztási szabályainak. Útválasztási szabályt hozzá kell adnia kifejezetten adott előtérbeli gazdagép, még akkor is, ha egy már konfigurálva van a frontend gazdagép alatt a bejárati ajtajának altartomány (*. azurefd.net), hogy az egyéni tartomány rendelkezik egy, a DNS-hozzárendelést.
@@ -54,11 +54,11 @@ Van a probléma lehetséges okai:
     - Győződjön meg arról, hogy Ön várakoztak ~ 10 percet a konfiguráció üzembe helyezni.
 
 2. Ellenőrizze a háttér beállításokat
-     - Keresse meg a háttérkészlet (függ, hogy rendelkezik a konfigurált útválasztási szabályt) útválasztás a kérelmet, és ellenőrizze, hogy a _háttérrendszer gazdagéptípusokkal_ és háttér-gazdagép neve helyes. Ha a háttérrendszer egy egyéni gazdagépet, győződjön meg arról, hogy Ön rendelkezik helyesen írta be azt. 
+   - Keresse meg a háttérkészlet (függ, hogy rendelkezik a konfigurált útválasztási szabályt) útválasztás a kérelmet, és ellenőrizze, hogy a _háttérrendszer gazdagéptípusokkal_ és háttér-gazdagép neve helyes. Ha a háttérrendszer egy egyéni gazdagépet, győződjön meg arról, hogy Ön rendelkezik helyesen írta be azt. 
 
-     - Ellenőrizze a HTTP és HTTPS-porton. A legtöbb esetben 80-as és 443-as (megfelelő) megfelelő és nem lesz szükség. Van azonban arra, hogy a háttérrendszer ezzel a módszerrel nincs konfigurálva, és a egy másik porton figyel.
+   - Ellenőrizze a HTTP és HTTPS-porton. A legtöbb esetben 80-as és 443-as (megfelelő) megfelelő és nem lesz szükség. Van azonban arra, hogy a háttérrendszer ezzel a módszerrel nincs konfigurálva, és a egy másik porton figyel.
 
-    - Ellenőrizze a _háttérrendszer állomásfejléc_ a a háttérrendszerek, amely a Frontend gazdagép útválasztást kell konfigurálni. A legtöbb esetben ez a fejléc lehet ugyanaz, mint a _háttérrendszer állomásnév_. Helytelen értéket okozhat azonban különböző HTTP 4xx állapotkódú, ha a háttérrendszer más vár. A háttérbeli IP-címének adjon meg, ha szüksége lehet beállítani a _háttérrendszer állomásfejléc_ , a háttérrendszer állomásnevét.
+     - Ellenőrizze a _háttérrendszer állomásfejléc_ a a háttérrendszerek, amely a Frontend gazdagép útválasztást kell konfigurálni. A legtöbb esetben ez a fejléc lehet ugyanaz, mint a _háttérrendszer állomásnév_. Helytelen értéket okozhat azonban különböző HTTP 4xx állapotkódú, ha a háttérrendszer más vár. A háttérbeli IP-címének adjon meg, ha szüksége lehet beállítani a _háttérrendszer állomásfejléc_ , a háttérrendszer állomásnevét.
 
 
 3. Az útválasztási szabály beállításainak ellenőrzése

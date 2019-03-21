@@ -1,5 +1,5 @@
 ---
-title: Hozzáadása nélkül egy meghívót hivatkozás vagy e-mail-cím – Azure Active Directory B2B együttműködési felhasználókat |} A Microsoft Docs
+title: Anélkül, hogy egy meghívót hivatkozás vagy e-mail-cím – Azure Active Directory B2B-Vendégek hozzáadása |} A Microsoft Docs
 description: Engedélyezheti, a vendégfelhasználó más vendég felhasználók hozzáadása az Azure ad nélkül váltja be az Azure Active Directory B2B együttműködés meghívót.
 services: active-directory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1dca03f84b821d20ee6fecbaec24a1aa840836b5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337668"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294977"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B együttműködés egy meghívót hivatkozás vagy e-mailek nélküli vendégfelhasználók hozzáadása
 
@@ -33,7 +33,7 @@ Az eredeti módszer továbbra is működik. Van azonban egy kis eltérés viselk
 
 A könyvtár felhasználó meghívása, ha a vendégfelhasználó kell-e az erőforrás bérlőspecifikus Azure portal eléréséhez közvetlen URL-címe (például https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) megtekintéséhez, és fogadja el az adatvédelmi szabályzat feltételeit.
 
-### <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)
 - [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md)

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 10dbf7e8cf67ab721cf525d4a1e7594473592bd4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005267"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295170"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés időzített metaadatok jelzése az élő Streamelés 
 
@@ -120,6 +120,7 @@ A "moov" mezőben tartalmaznia kell egy **TrackHeaderBox (tkhd)** mezőben defin
 | **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
 | időtartam       | 64 bites, előjel nélküli egész | Szükséges      | 0, kell lennie, mivel a nyomon követése be nulla mintákat, és a minták a nyomon követése a boxban teljes időtartamát 0. |
+
 -------------------------------------
 
 A "moov" mezőben tartalmaznia kell egy **HandlerBox (hdlr)** [ISO-14496 – 12] a következő korlátozások meghatározottak szerint:
@@ -127,6 +128,7 @@ A "moov" mezőben tartalmaznia kell egy **HandlerBox (hdlr)** [ISO-14496 – 12]
 | **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**   |
 |----------------|-------------------------|---------------|-------------------|
 | handler_type   | 32 bites, előjel nélküli egész | Szükséges      | 'Meta' kell lennie. |
+
 -------------------------------------
 
 A "stsd" mezőben tartalmaznia kell egy MetaDataSampleEntry kódolási név mezőt, a [ISO-14496 – 12].  SCTE – 35 üzenetek például a kódolási név legyen "scte".
@@ -225,7 +227,7 @@ A Szegmens-lista egy egyéni M3U címkében időzített metaadatok az Apple HTTP
 
 | **Attribútum neve** | **Típus**                      | **Kötelező?**                             | **Leírás**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| KÖTEG                | Idézett karakterlánc                 | Szükséges                                  | Az ismertetett módon Base64 kódolású karakterláncként kódolt üzenet [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). [SCTE – 35] üzeneteket ez nem a base64-kódolású splice_info_section().                                                                                                |
+| KÖTEG                | Idézett karakterlánc                 | Szükséges                                  | Az ismertetett módon Base64 kódolású karakterláncként kódolt üzenet [IETF RFC 4648](https://tools.ietf.org/html/rfc4648). [SCTE – 35] üzeneteket ez nem a base64-kódolású splice_info_section().                                                                                                |
 | TÍPUS               | Idézett karakterlánc                 | Szükséges                                  | URN vagy URL-cím az üzenet rendszer azonosítása. [SCTE – 35] üzenetek esetében a típus a speciális értéket "scte35" vesz fel.                                                                                                                                |
 | ID (Azonosító)                 | Idézett karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
 | IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték lehet 0. Egységek factional másodpercek alatt.                                                                                                                                                                                           |
@@ -292,7 +294,7 @@ Nulla vagy több esemény elemek találhatók meg az EventStream elemben találh
 | presentation_time   | 64 bites, előjel nélküli egész | Optional      | Időnek kell lennie az adathordozó bemutató képest az időszak kezdete esemény. A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12]. |
 | időtartam            | 32 bites, előjel nélküli egész | Optional      | Az esemény időtartamát. Ez az időtartam ismeretlen esetén kell hagyni.                                                                                                                                                 |
 | id                  | 32 bites, előjel nélküli egész | Optional      | Ez az üzenet példányát azonosítja. Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.             |
-| Esemény elemének értéke | sztring                  | Szükséges      | Az eseményüzenet Base64 kódolású karakterláncként leírtak szerint [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
+| Esemény elemének értéke | sztring                  | Szükséges      | Az eseményüzenet Base64 kódolású karakterláncként leírtak szerint [IETF RFC 4648](https://tools.ietf.org/html/rfc4648).                                                                                                                   |
 
 #### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>XML-szintaxist és példát a DASH (MPD) Signaling manifest
 
@@ -396,7 +398,7 @@ Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tar
 
 **[MS-SSTR]**  ["A Microsoft Smooth Streaming protokoll", 2014. május 15.](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
-**[AMF0]**  ["Művelet üzenet formátuma AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
+**[AMF0]**  ["Művelet üzenet formátuma AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
 **[LIVE-FMP4]**  [Specifikáció: darabolt MP4 élő azure Media Services feldolgozása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 

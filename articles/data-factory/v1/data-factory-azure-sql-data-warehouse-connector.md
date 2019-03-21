@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4c431b149edb0677585da3c84e37d64873478ccf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432736"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116198"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Data Warehouse az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -197,28 +197,28 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **az egyszerű szolgáltatásnév hitelesítése AzureDataLakeStore**.
 2. A **bemeneti adatkészlet** típusa: **Azure BLOB** vagy **AzureDataLakeStore**, és írja be a format `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat** az alábbi konfigurációkkal:
 
-    1. `rowDelimiter` meg kell **\n**.
-    2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értékre van állítva **igaz**.
-    3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
-    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
-    5. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
+   1. `rowDelimiter` meg kell **\n**.
+   2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értékre van állítva **igaz**.
+   3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
+   4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
+   5. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
-    ```JSON
-    "typeProperties": {
-        "folderPath": "<blobpath>",
-        "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "<any delimiter>",
-            "rowDelimiter": "\n",
-            "nullValue": "",
-            "encodingName": "utf-8"
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
-        }
-    },
-    ```
+      ```JSON
+      "typeProperties": {
+       "folderPath": "<blobpath>",
+       "format": {
+           "type": "TextFormat",
+           "columnDelimiter": "<any delimiter>",
+           "rowDelimiter": "\n",
+           "nullValue": "",
+           "encodingName": "utf-8"
+       },
+       "compression": {
+           "type": "GZip",
+           "level": "Optimal"
+       }
+      },
+      ```
 
 3. Nincs nem `skipHeaderLineCount` menüpont **BlobSource** vagy **AzureDataLakeStore** a folyamat másolási tevékenysége számára.
 4. Nincs nem `sliceIdentifierColumnName` menüpont **SqlDWSink** a folyamat másolási tevékenysége számára. (A PolyBase garantálja, hogy az összes adatainak frissítése, vagy semmi sem egyetlen futtatással módosul. Eléréséhez **ismételhetőség**, használhat `sqlWriterCleanupScript`).
@@ -329,7 +329,7 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | NChar | NChar |
 | VarChar | VarChar (legfeljebb 8000-es) |
 | NVarChar | NVarChar (legfeljebb 4000-es) |
-| Xml | Varchar (legfeljebb 8000-es) |
+| XML | Varchar (legfeljebb 8000-es) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -376,7 +376,7 @@ A leképezés megegyezik a [SQL Server adattípus-leképezés az ADO.NET](https:
 | UniqueIdentifier |GUID |
 | varbinary |Byte] |
 | varchar |Karakterlánc, Char] |
-| xml |Xml |
+| xml |XML |
 
 A másolási tevékenységhez tartozó definíció a fogadó-adatkészlet-oszlop a forrásadatkészlet oszlopok is leképezheti. További információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 

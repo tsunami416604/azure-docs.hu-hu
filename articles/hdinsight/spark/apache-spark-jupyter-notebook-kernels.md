@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791814"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084098"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight az Apache Spark-fürtök 
 
@@ -59,15 +59,15 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
 
 - **Környezetek előbeállítást**. A **PySpark**, **PySpark3**, vagy a **Spark** kernelekkel, nem kell explicit módon beállítva a Spark- vagy Hive-környezetek, az alkalmazások használatának megkezdése előtt. Ezeket a rendszer alapértelmezés szerint elérhető. Ezek a környezetek a következők:
    
-   * **sc** – a Spark környezet
-   * **kontext sqlContext** – struktúráját környezethez.
+  * **sc** – a Spark környezet
+  * **kontext sqlContext** – struktúráját környezethez.
    
-   Így nem kell a környezetek beállítása a következőhöz hasonló utasításokat:
+    Így nem kell a környezetek beállítása a következőhöz hasonló utasításokat:
    
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+         sc = SparkContext('yarn-client')
+         sqlContext = HiveContext(sc)
    
-   Ehelyett közvetlenül használhatja az előre beállított környezetekről az alkalmazásban.
+    Ehelyett közvetlenül használhatja az előre beállított környezetekről az alkalmazásban.
 
 - **Cella magics**. A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a `%%` (például `%%MAGIC` <args>). A varázsparancs kell lennie az első szótól egy kódcellába, és lehetővé teszik a tartalom több sornyi. Magic szót kell lennie az első szótól a cellában. Hozzáadása a Magic Quadrant, még akkor is, a megjegyzéseket, mielőtt bármi hibát okoz.     Magics további információkért lásd: [Itt](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
@@ -87,7 +87,7 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
    > [!NOTE]  
    > A magics hozzáadta a PySpark kernel, mellett is használhatja a [beépített IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), többek között `%%sh`. Használhatja a `%%sh` futtathat szkripteket és kódblokkot az a fürt átjárócsomópontjával Magic Quadrant.
 
-2. **Vizualizáció automatikus**. A **Pyspark** kernel automatikusan megjeleníti a Hive- és SQL-lekérdezések kimenetének. Választhat a különböző típusú megjelenítések, beleértve a tábla, torta, vonal, terület, sávon.
+1. **Vizualizáció automatikus**. A **Pyspark** kernel automatikusan megjeleníti a Hive- és SQL-lekérdezések kimenetének. Választhat a különböző típusú megjelenítések, beleértve a tábla, torta, vonal, terület, sávon.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>A támogatott paraméterek a %% sql Magic Quadrant
 A `%%sql` Magic Quadrant támogatja a különböző paraméterek, amelyek segítségével szabályozhatja, amelyet a lekérdezések futtatásakor kapott kimenetre típusa. A következő táblázat felsorolja a kimenetet.

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997183"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993053"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>A távoli figyelési megoldásgyorsító helyileg – a Docker üzembe helyezése
 
@@ -96,7 +96,7 @@ Kövesse az alábbi lépéseket a Stream Analytics-feladat indítása:
 
 ### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
 
-A távoli figyelési megoldás irányítópultján eléréséhez keresse meg [ http://localhost:8080 ](http://localhost:8080) a böngészőben. Mostantól használhatja a webes felhasználói felület és a helyi mikroszolgáltatások.
+A távoli figyelési megoldás irányítópultján eléréséhez keresse meg `http://localhost:8080` a böngészőben. Mostantól használhatja a webes felhasználói felület és a helyi mikroszolgáltatások.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 192ecf0cf4f97a709808fa04f676035e8a672b79
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 74087a6d1ce00293c968837e72c636847081e39e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976946"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285980"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell használatával
 
@@ -65,7 +65,7 @@ A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet p
 
 A rendszerkép létrehozásához a virtuális gépet fel kell szabadítani, és az Azure-ban általánosként kell megjelölni.
 
-A virtuális Gépet az felszabadítása [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Szabadítsa fel a virtuális Gépet az [Stop-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -162,7 +162,7 @@ Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet.
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan hozhat létre magas rendelkezésre állású virtuális gépeket.
 
 > [!div class="nextstepaction"]
 > [Magas rendelkezésre állású virtuális gépek létrehozása](tutorial-availability-sets.md)

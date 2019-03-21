@@ -15,24 +15,19 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 50b3499a52ac646b6c896dd79b2191651c5b277e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 3/19/2018
+ms.openlocfilehash: de57ebbf0c0c4e8a18c955200d1692ea4ae9afae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782938"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295011"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Az Azure Stack üzembe helyezett virtuális gépek védelme
 
 Ez a cikk egy útmutató, amellyel a virtuális gépek (VM), hogy a felhasználók az Azure Stacken védelméhez tervet használhatja.
 
-Az adatvesztést, és nem tervezett üzemkimaradások elleni védelme érdekében szüksége felhasználói alkalmazások és az adataik biztonsági mentési-helyreállítási vagy vész-helyreállítási terv megvalósításához. Ez a csomag Előfordulhat, hogy minden alkalmazáshoz egyedi, de egy a szervezet átfogó üzleti folytonossági és vészhelyreállítási stratégia (BC/DR) által meghatározott keretek követi. Van egy jó kiindulási pont [rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency), amely nyújt általános minták és gyakorlatok rendelkezésre állásának és rugalmasság szempontjából.
-
->[!IMPORTANT]
-> A backup-helyreállítás és a vész-helyreállítási tervek folyamatosan teszteléséhez. Ez annak érdekében, hogy kell tennie:
-> * A csomagok használata
-> * A csomagok továbbra is az igényeihez lettek tervezve.
+Az adatvesztést, és nem tervezett üzemkimaradások elleni védelme érdekében szüksége felhasználói alkalmazások és az adataik biztonsági mentési-helyreállítási vagy vész-helyreállítási terv megvalósításához. Ez a csomag Előfordulhat, hogy minden alkalmazáshoz egyedi, de egy a szervezet átfogó üzleti folytonossági és vészhelyreállítási stratégia (BC/DR) által meghatározott keretek követi. Van egy jó kiindulási pont [Azure Stack: Üzleti folytonosság és vészhelyreállítás helyreállítási szempontjai](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Az Azure Stack-infrastruktúra recovery
 
@@ -47,6 +42,9 @@ Ha hosszabb ideig offline állapotban az Azure Stack-felhőben, vagy véglegesen
 * Lehetővé teszi az alkalmazások folyamatosan a felhasználói kérések karbantartásába
 
 Az Azure Stack-felhő üzemeltetője feladata a mögöttes Azure Stack-infrastruktúra és a szolgáltatások helyreállítási terv létrehozására. További tudnivalókért olvassa el a cikket [végzetes adatvesztés utáni helyreállítás](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+
+## <a name="considerations-for-iaas-vms"></a>IaaS virtuális gépek szempontjai
+Az IaaS-beli virtuális gépen telepített operációs rendszer korlátozza az adatok védelmére használható termékeket tartalmaz. Windows-alapú IaaS virtuális gépek, használhatja a Microsoft és partnerei termékek adatok védelme érdekében. Az IaaS virtuális gépek Linux-alapú, az egyetlen lehetőség partnerek termékei használatára. Tekintse meg [az Azure Stackhez készült ellenőrzött termékek BC/DR-partnerek számára a adatlap](https://aka.ms/azurestackbcdrpartners).
 
 ## <a name="sourcetarget-combinations"></a>Forrás/cél kombinációk
 

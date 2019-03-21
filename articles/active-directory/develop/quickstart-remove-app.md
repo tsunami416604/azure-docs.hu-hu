@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71489194422a785ee98ec70a07c765c3d686808
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182612"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093194"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Gyors útmutató: Regisztrálva a Microsoft identity platform (előzetes verzió) az alkalmazás eltávolítása
 
@@ -52,8 +52,8 @@ A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmaz
 4. Az **Áttekintés** lapon válassza a **Törlés** elemet.
 5. Kattintson az **Igen** gombra az alkalmazás törlésének megerősítéséhez.
 
-  > [!NOTE]
-  > Az alkalmazás törléséhez az alkalmazás tulajdonosaként kell szerepelnie, vagy rendszergazdai jogosultságokkal kell rendelkeznie.
+   > [!NOTE]
+   > Az alkalmazás törléséhez az alkalmazás tulajdonosaként kell szerepelnie, vagy rendszergazdai jogosultságokkal kell rendelkeznie.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Más szervezet által fejlesztett alkalmazás eltávolítása
 

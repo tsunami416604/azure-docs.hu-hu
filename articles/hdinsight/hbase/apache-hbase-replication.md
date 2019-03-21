@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444905"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112534"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -288,15 +288,15 @@ A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlm�
 4. A lap tetején válassza **új küldése**.
 5. Válassza ki vagy adja meg a következőket:
 
-  1. **Név**: Adja meg **engedélyezze a replikációt**.
-  2. **Bash-szkript URL-cím**: Adja meg **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **A fő**: Győződjön meg arról, ez van kiválasztva. A csomóponttípusok törölje.
-  4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és majd átmásolhatja a kiindulási fürt a célfürt az összes adat:
+   1. **Név**: Adja meg **engedélyezze a replikációt**.
+   2. **Bash-szkript URL-cím**: Adja meg **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   3. **A fő**: Győződjön meg arról, ez van kiválasztva. A csomóponttípusok törölje.
+   4. **Paraméterek**: A következő minta paraméterek összes meglévő tábla a replikáció engedélyezése, és majd átmásolhatja a kiindulási fürt a célfürt az összes adat:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    > [!NOTE]
-    > Állomásnév helyett a teljes Tartománynevet használja a forrás- és a fürt DNS-név.
+      > [!NOTE]
+      > Állomásnév helyett a teljes Tartománynevet használja a forrás- és a fürt DNS-név.
 
 6. Kattintson a **Létrehozás** gombra. A parancsfájl eltarthat egy ideig, futtatásához, különösen ha használja a **- copydata** argumentum.
 

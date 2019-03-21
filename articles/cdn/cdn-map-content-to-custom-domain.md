@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b9bcba78600e90c28f95c4ea842bf4b25b1c0da7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c5eb69ddd9c621024799b940ef58c34e7caaa3ff
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722788"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294025"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -45,10 +45,12 @@ Ha az Azure-t használja a [DNS-tartományai](https://docs.microsoft.com/azure/d
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS-rekord létrehozása
 
-Mielőtt használhatna egy egyéni tartományt egy Azure CDN-végponttal, a tartományszolgáltatójával létre kell hoznia egy kanonikusnév- (CNAME) rekordot, amely a CDN-végpontra mutat. A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure CDN esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a CDN-végpontja gazdaneve. Miután az Azure CDN jóváhagyja a létrehozott CNAME rekordot, a forrásul szolgáló egyéni tartományhoz (pl. contoso.com) címzett forgalom a megadott CDN-végpont gazdanevéhez (pl. contoso.azureedge.net) lesz irányítva. 
+Mielőtt használhatna egy egyéni tartományt egy Azure CDN-végponttal, a tartományszolgáltatójával létre kell hoznia egy kanonikusnév- (CNAME) rekordot, amely a CDN-végpontra mutat. A CNAME rekord egy olyan DNS-rekordtípus, amellyel egy forrástartománynév leképezhető egy céltartománynévre. Az Azure CDN esetében a forrástartománynév az Ön egyéni tartományneve, a céltartománynév pedig a CDN-végpontja gazdaneve. Miután az Azure CDN ellenőrzi, hogy a CNAME REKORDOT, amely rögzíti hoz létre, az egyéni forrástartomány címzett forgalom (például a www\.contoso.com) a megadott célpartícióra CDN-végpont gazdanevére (pl. contoso.azureedge.net) lesz irányítva. 
 
 Egy egyéni tartománynév és annak altartománya egyszerre csak egy végponttal társítható. Azonban lehetséges egy egyéni tartomány több altartományának használata különböző Azure-szolgáltatásvégpontokhoz. Ezt több CNAME rekord használatával teheti meg. Emellett leképezhet egy több altartománnyal rendelkező egyéni tartományt is ugyanarra a CDN-végpontra.
 
+> [!NOTE]
+> Bármely alias rekordtípus használható egyéni tartományok használata az Azure DNS a tartomány-szolgáltatóként. Ez az útmutató a CNAME rekordtípust használja. Ha használ A vagy AAAA típusú rekord típust csak ugyanabban az alábbi lépések során CNAME cserélje le a kiválasztott rekord típusát. Ha szeretné engedélyezni az SSL-aliasrekordot gyökértartomány hozzáadása egy egyéni tartományt használ, manuális érvényesítésre leírtak szerint kell használnia [Itt](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Az ideiglenes cdnverify altartomány leképezése
 
@@ -64,11 +66,11 @@ CNAME rekord létrehozása a cdnverify altartománnyal:
 
 3. Hozzon létre egy CNAME-rekordbejegyzést az egyéni tartományához, és töltse ki a mezőket a következő táblázatban látható módon (a mezők nevei eltérhetnek):
 
-    | Forrás                    | Típus  | Cél                     |
+    | Forrás                    | Typo  | Cél                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Forrás: Adja meg az egyéni tartomány nevét, a cdnverify altartománnyal együtt, beleértve a következő formátumban: cdnverify. _&lt;egyéni tartománynév&gt;. Például: cdnverify.www.contoso.com.
+    - Forrás: Adja meg az egyéni tartomány nevét, a cdnverify altartománnyal együtt, beleértve a következő formátumban: cdnverify. &lt;egyéni tartománynév&gt;. Például: cdnverify.www.contoso.com.
 
     - Típus: Adja meg *CNAME*.
 
@@ -94,9 +96,9 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Gazdagép: Adja meg az egyéni tartományt szeretne használni, beleértve a cdnverify altartomány nevével együtt. Például: cdnverify.www.
 
-    - Szempontok: Adja meg a gazdagép nevét a CDN-végpont gazdanevét a cdnverify altartomány nevével együtt. Például: cdnverify.contoso.azureedge.net. 
+    - Points to: Adja meg a gazdagép nevét a CDN-végpont gazdanevét a cdnverify altartomány nevével együtt. Például: cdnverify.contoso.azureedge.net. 
 
-    - ÉLETTARTAM: Hagyja *1 óra* kiválasztott.
+    - TTL: Hagyja *1 óra* kiválasztott.
 
 6. Kattintson a **Mentés** gombra.
  
@@ -123,7 +125,7 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
 
 4. A **Végpont gazdaneve** mezőben a CNAME rekord céltartományaként használandó végpont gazdaneve előre ki van töltve, és a CDN-végponti URL-címből van származtatva: *&lt;végpont gazdagépneve&gt;*.azureedge.net. A név nem módosítható.
 
-5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például www.contoso.com vagy cdn.contoso.com. A cdnverify altartománynevet ne használja.
+5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például: www\.contoso.com vagy cdn.contoso.com. A cdnverify altartománynevet ne használja.
 
    ![CDN – egyéni tartomány párbeszédpanel](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
@@ -158,15 +160,15 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
 3. Hozzon létre egy CNAME-rekordbejegyzést az egyéni tartományához, és töltse ki a mezőket a következő táblázatban látható módon (a mezők nevei eltérhetnek):
 
-    | Forrás          | Típus  | Cél           |
+    | Forrás          | Typo  | Cél           |
     |-----------------|-------|-----------------------|
-    | www.contoso.com | CNAME | contoso.azureedge.net |
+    | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
-    - Forrás: Adja meg az egyéni tartomány nevét (például www.contoso.com).
+   - Forrás: Adja meg az egyéni tartomány nevét (például: www\.contoso.com).
 
-    - Típus: Adja meg *CNAME*.
+   - Típus: Adja meg *CNAME*.
 
-    - Cél: Adja meg a CDN-végpont gazdanevét. Ennek az alábbi formátumban kell lennie:_&lt;végpont neve&gt;_.azureedge.net. Például: contoso.azureedge.net.
+   - Cél: Adja meg a CDN-végpont gazdanevét. Ennek az alábbi formátumban kell lennie:_&lt;végpont neve&gt;_.azureedge.net. Például: contoso.azureedge.net.
 
 4. Mentse a módosításokat.
 
@@ -192,9 +194,9 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - Gazdagép: Adja meg az egyéni tartománya altartományát. Például: www vagy cdn.
 
-    - Szempontok: Adja meg a CDN-végpont állomásneve. Például: contoso.azureedge.net. 
+    - Points to: Adja meg a CDN-végpont állomásneve. Például: contoso.azureedge.net. 
 
-    - ÉLETTARTAM: Hagyja *1 óra* kiválasztott.
+    - TTL: Hagyja *1 óra* kiválasztott.
 
 6. Kattintson a **Mentés** gombra.
  

@@ -1,6 +1,6 @@
 ---
-title: A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése |} A Microsoft Docs
-description: Ismerje meg az Azure AD Privileged Identity Management (PIM) az Azure AD-címtárbeli szerepkörök hozzárendelése.
+title: Rendelje hozzá az Azure AD rendszergazdai szerepkörei – Privileged Identity Management |} A Microsoft Docs
+description: Útmutató az Azure Active Directory rendszergazdai szerepkörök hozzárendelése az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,22 +13,22 @@ ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acabd4b583766ac730558fd07c424ce97a1299a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3c8a7fb7a94dbca7b0e63ddaf756a536fbd0600
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000629"
 ---
-# <a name="assign-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése
+# <a name="assign-azure-ad-administrator-roles-in-pim"></a>A PIM az Azure AD-rendszergazdai szerepkörök hozzárendelése
 
-Az Azure Active Directory (Azure AD), a globális rendszergazdák kezdeményezhetik **állandó** directory szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések hozható létre a [az Azure portal](../users-groups-roles/directory-assign-admin-roles.md) vagy [PowerShell-parancsok](/powershell/module/azuread#directory_roles).
+Az Azure Active Directory (Azure AD), a globális rendszergazdák kezdeményezhetik **állandó** az Azure AD-rendszergazdai szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések hozható létre a [az Azure portal](../users-groups-roles/directory-assign-admin-roles.md) vagy [PowerShell-parancsok](/powershell/module/azuread#directory_roles).
 
-Az Azure AD Privileged Identity Management (PIM) szolgáltatás lehetővé teszi, hogy a szerepkör-hozzárendelések állandó directory kiemelt szerepkörű rendszergazdákhoz. Ezenkívül a kiemelt szerepkörű rendszergazdák felhasználókat tehet **jogosult** -címtárbeli szerepkörökhöz tartozó. A jogosult rendszergazda aktiválhatja a szerepkört, amikor szükségük van rá, majd rájuk vonatkozó engedélyek lejárnak, amint kész is van.
+Az Azure AD Privileged Identity Management (PIM) szolgáltatást is lehetővé teszi a kiemelt szerepkörű rendszergazdákhoz, hogy az állandó rendszergazdai szerepkör-hozzárendeléseket. Ezenkívül a kiemelt szerepkörű rendszergazdák felhasználókat tehet **jogosult** az Azure AD rendszergazdai szerepkörökhöz. A jogosult rendszergazda aktiválhatja a szerepkört, amikor szükségük van rá, majd rájuk vonatkozó engedélyek lejárnak, amint kész is van.
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Győződjön meg arról, a felhasználó jogosult szerepkör
 
-Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-címtár szerepkörhöz.
+Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-rendszergazdai szerepkörhöz.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználóval, amely tagja a [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkör.
 
@@ -68,7 +68,7 @@ Kövesse az alábbi lépéseket, hogy egy felhasználó jogosult az Azure AD-cí
 
 ## <a name="make-a-role-assignment-permanent"></a>Állandóvá tétel szerepkör-hozzárendelés
 
-Alapértelmezés szerint az új felhasználók jogosultak csak olyan címtárbeli szerepkörrel. Ha azt szeretné, hogy a szerepkör-hozzárendelés véglegessé, kövesse az alábbi lépéseket.
+Alapértelmezés szerint az új felhasználók jogosultak csak az Azure AD-rendszergazdai szerepkörhöz. Ha azt szeretné, hogy a szerepkör-hozzárendelés véglegessé, kövesse az alábbi lépéseket.
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
@@ -92,7 +92,7 @@ Alapértelmezés szerint az új felhasználók jogosultak csak olyan címtárbel
 
 Felhasználók eltávolítása a szerepkör-hozzárendeléseket, de győződjön meg arról, hogy mindig van legalább egy felhasználót, aki egy állandó globális rendszergazda. Ha nem biztos abban, hogy mely felhasználók továbbra is szükséges a szerepkör-hozzárendeléseket, [a szerepkörhöz tartozó hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md).
 
-Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása a címtárbeli szerepkört.
+Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása Azure AD-rendszergazdai szerepkörhöz.
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
@@ -116,7 +116,7 @@ Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása a címt�
 
 ## <a name="authorization-error-when-assigning-roles"></a>Engedélyezési hiba a szerepkörök hozzárendelése
 
-Ha nemrég engedélyezte a PIM-előfizetéssel, és meg, hogy olyan címtárbeli szerepkörrel jogosult felhasználó hitelesítési hibaüzenetet kap, lehet, mert az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz még nem rendelkezik megfelelő engedélyekkel. Az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz kell rendelkeznie a [felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör más szerepkörök hozzárendelése. Várnia, amíg az MS-PIM hozzá van rendelve a felhasználói hozzáférés rendszergazdájának szerepköre, rendelheti hozzá kézzel.
+Ha nemrég engedélyezte a PIM-előfizetéssel, és hitelesítési hibaüzenetet kap meg, hogy egy felhasználó jogosult az Azure AD-Rendszergazda szerepkörhöz, mivel az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz még nem rendelkezik megfelelő jogosultsággal lehet. Az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz kell rendelkeznie a [felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör más szerepkörök hozzárendelése. Várnia, amíg az MS-PIM hozzá van rendelve a felhasználói hozzáférés rendszergazdájának szerepköre, rendelheti hozzá kézzel.
 
 Kövesse az alábbi lépéseket a felhasználói hozzáférés rendszergazdája szerepkör hozzárendelése az előfizetéshez tartozó egyszerű MS-PIM szolgáltatás.
 
@@ -151,5 +151,5 @@ Kövesse az alábbi lépéseket a felhasználói hozzáférés rendszergazdája 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [A PIM az Azure AD-rendszergazdai szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
 - [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)

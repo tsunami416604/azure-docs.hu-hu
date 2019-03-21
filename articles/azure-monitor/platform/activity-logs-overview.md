@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ad3b672a2db9bccaf5124d4bc897e85806966255
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312800"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088672"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -118,10 +118,10 @@ A tevékenységnapló streamelése az Eseményközpontba, vagy a "Exportálás a
 
     ![A portál Exportálás gomb](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
 3. A megjelenő panelen választhatja:  
-  * régiók, amelynek szeretné exportálni az események
-  * a Storage-fiókot, amelyhez szeretné menteni az események
-  * nap meg szeretné őrizni a storage-ban ezek az események száma. 0 napra beállítását örökre megőrzi a naplókat.
-  * a Service Bus Namespace, amelyben szeretné létrehozni a streamelési ezeket az eseményeket egy Eseményközpontba.
+   * régiók, amelynek szeretné exportálni az események
+   * a Storage-fiókot, amelyhez szeretné menteni az események
+   * nap meg szeretné őrizni a storage-ban ezek az események száma. 0 napra beállítását örökre megőrzi a naplókat.
+   * a Service Bus Namespace, amelyben szeretné létrehozni a streamelési ezeket az eseményeket egy Eseményközpontba.
 
      ![Tevékenységnapló panel exportálása](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 4. Kattintson a **mentése** ezek a beállítások mentéséhez. A rendszer azonnal alkalmazni fogja a beállításokat az előfizetésére.

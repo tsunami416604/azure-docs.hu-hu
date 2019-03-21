@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b35b069f05f117b227a2edbf5595f2682b7f6e86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997267"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Infrastruktúra biztonsági mentési szolgáltatás leírása
 
@@ -89,17 +89,20 @@ A követelmények a következők:
 Igény szerinti biztonsági mentést vezérlő infrastruktúra biztonsági másolatot adatokat. A javaslat, hogy készítsen biztonsági másolatot legalább két alkalommal napját és tarthatja a biztonsági mentések legfeljebb hét nap. 
 
 **1811 és azt követően**
+
 | Környezeti-skála | A biztonsági másolat méretének becsült teljesítményigényeken | Szükséges lemezterület mennyisége összesen |
 |-------------------|--------------------------|--------------------------------|
 | 4 – 16 csomópontok        | 20 GB                    | 280 GB                        |
 | ASDK              | 10 GB                    | 140 GB                        |
 
 **Pre-1811**
+
 | Környezeti-skála | A biztonsági másolat méretének becsült teljesítményigényeken | Szükséges lemezterület mennyisége összesen |
 |-------------------|--------------------------|--------------------------------|
 | 4 – 16 csomópontok, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
 | Tárolási hely                                                                 | Részletek                                                                                                                                                                                 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | A megbízható hálózati környezetben tárolóeszközön üzemeltetett SMB-fájlmegosztás | 445-ös port megadása kötelező, ha az Azure Stack-példány a tűzfallal ellátott környezetben található. Infrastruktúra biztonsági mentést vezérlő az SMB-fájlkiszolgáló kapcsolatot kezdeményez a 445-ös porton keresztül. |
@@ -131,6 +134,7 @@ A titkos kulccsal rendelkező felhőalapú helyreállítás során használt tan
 Ezek a korlátok megfontolnia tervezése, telepítése és üzemeltetése a Microsoft Azure Stack-példányok. A következő táblázat ismerteti ezeket a korlátokat.
 
 ### <a name="infrastructure-backup-limits"></a>Korlátozza az infrastruktúra biztonsági mentése
+
 | Korlátazonosító                                                 | Korlát        | Megjegyzések                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Biztonsági mentés típusa                                                      | Csak teljes    | Infrastruktúra biztonsági mentést vezérlő csak a teljes biztonsági mentést támogatja. Nem támogatja a növekményes biztonsági mentéseket.                                          |

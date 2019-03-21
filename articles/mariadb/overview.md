@@ -6,17 +6,17 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/03/2018
-ms.openlocfilehash: 7fecc280d4e92df88f5f8e9b9e571273328d2458
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/20/2019
+ms.openlocfilehash: a5d00c24531099e66afcb6ccf07cfdf99abd28d1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352312"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295147"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Mi az Azure Database for MariaDB?
 
-Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft Cloudban. Azure Database for MariaDB alapul a [MariaDB community Edition kiadását](https://mariadb.org/download/) database engine, a verzió 10.2.
+Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft Cloudban. Azure Database for MariaDB alapul a [MariaDB community Edition kiadását](https://mariadb.org/download/) (a GPLv2 licenc érhető el) adatbázis-kezelő, a verzió 10.2.
 
 Az Azure Database for MariaDB szolgáltatás a következőket nyújtja:
 

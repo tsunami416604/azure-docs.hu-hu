@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8981f6a2b2d42627530fb8bf820ff8373e8f50b0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5c0fe0921446dde12771bacf096f806701b90444
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971665"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117999"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>A HDInsight-alapú Apache Storm rendszer használatának első lépései Storm Starter-példákkal
 
@@ -124,26 +124,26 @@ Kövesse az alábbi lépéseket a topológia a Storm felhasználói felületéve
 
     Ezen a lapon az alábbi információk találhatóak meg:
 
-    * **Topológiastatisztikák** – Alapszintű információkat tartalmaz a topológia teljesítményével kapcsolatban, időtartományokba rendezve.
+   * **Topológiastatisztikák** – Alapszintű információkat tartalmaz a topológia teljesítményével kapcsolatban, időtartományokba rendezve.
 
-        > [!NOTE]  
-        > Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.
+       > [!NOTE]  
+       > Egy adott időtartományt kiválasztva a lap más szakaszaiban található információk időtartománya megváltozik.
 
-    * **Spoutok** – Alapszintű információkat tartalmaz a spoutokkal kapcsolatban, beleértve az egyes spoutok által visszaadott legutóbbi hibaüzenetet is.
+   * **Spoutok** – Alapszintű információkat tartalmaz a spoutokkal kapcsolatban, beleértve az egyes spoutok által visszaadott legutóbbi hibaüzenetet is.
 
-    * **Boltok** – Alapszintű információkat tartalmaz a boltokkal kapcsolatban.
+   * **Boltok** – Alapszintű információkat tartalmaz a boltokkal kapcsolatban.
 
-    * **Topológiakonfiguráció** – Részletes információkat tartalmaz a topológia konfigurációjával kapcsolatban.
+   * **Topológiakonfiguráció** – Részletes információkat tartalmaz a topológia konfigurációjával kapcsolatban.
 
-    Ezen a lapon a következő topológiaműveletek szerepelnek:
+     Ezen a lapon a következő topológiaműveletek szerepelnek:
 
-    * **Aktiválás** – Folytatja az inaktivált topológia feldolgozását.
+   * **Aktiválás** – Folytatja az inaktivált topológia feldolgozását.
 
-    * **Inaktiválás** – Megszakítja a futó topológiát.
+   * **Inaktiválás** – Megszakítja a futó topológiát.
 
-    * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+   * **Visszaegyensúlyozás** – Beállítja a topológia párhuzamosságát. A fürtben található csomópontok számának megváltoztatását követően újra ki kell egyensúlyozni a futó topológiákat. Az újraegyensúlyozás beállítja a párhuzamosságot a fürtben található csomópontok számának növekedése/csökkenése kiegyensúlyozása érdekében. További információkért lásd: [ismertetése az Apache Storm-topológia párhuzamosságát](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-    * **Törlés** – A Storm-topológia leállítása bizonyos időtúllépést követően.
+   * **Törlés** – A Storm-topológia leállítása bizonyos időtúllépést követően.
 
 3. Válassza ki a jelen lapon található **Spoutok** vagy **Boltok** szakaszok bejegyzéseinek egyikét. Ekkor információk jelennek meg a kiválasztott összetevővel kapcsolatban.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fe0e325543d245e4415fea925fcdade32eb00614
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570504"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259924"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps-hitelesítés kezelése
 
@@ -32,7 +32,7 @@ A hitelesítési adatait az Azure Portalon tekintheti meg. Lépjen a fiók, és 
 
 Miután létrehozott egy Azure Maps-fiók, kell létesítenie az Azure AD-bérlő és az Azure Maps-erőforrások közötti kapcsolat.
 
-1. Az Azure AD paneljéről, és hozzon létre egy alkalmazás regisztrációját. Adjon meg egy nevet, a regisztráció. Az a **bejelentkezési URL-** adja meg a kezdőlapon a webalkalmazás / API-t (például https://localhost/). Ha már rendelkezik egy regisztrált alkalmazást, folytassa a 2. lépés.
+1. Az Azure AD paneljéről, és hozzon létre egy alkalmazás regisztrációját. Adjon meg egy nevet, a regisztráció. Az a **bejelentkezési URL-** adja meg a kezdőlapon a webalkalmazás / API-t (például https:\//localhost/). Ha már rendelkezik egy regisztrált alkalmazást, folytassa a 2. lépés.
 
     ![Appok regisztrálása](./media/how-to-manage-authentication/app-registration.png)
 

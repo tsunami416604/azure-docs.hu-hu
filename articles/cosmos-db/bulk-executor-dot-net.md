@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 969821c8b83b8ef554c67f99e3a16e827b53e647
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845120"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258462"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
 
@@ -30,7 +30,7 @@ Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak
 
 * Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Vagy használhatja a [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) együtt a `https://localhost:8081` végpont. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
 
-* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-a-database-account) .NET rövid cikkének. 
+* Hozzon létre egy Azure Cosmos DB SQL API-fiókot az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-account) .NET rövid cikkének. 
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
@@ -72,7 +72,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    connectionPolicy)
    ```
 
-4. A BulkExecutor objektum inicializálása egy nagy újrapróbálkozási értéket a várakozási idő, és a kérelmek szabályozva. És ezután azok értéke 0 BulkExecutor élettartamuk a torlódásszabályozás átadása.  
+4. A BulkExecutor objektum magas újrapróbálkozási értékkel a várakozási idő inicializálva van, és a kérelmek szabályozva. És ezután azok értéke 0 BulkExecutor élettartamuk a torlódásszabályozás átadása.  
 
    ```csharp
    // Set retry options high during initialization (default values).
@@ -102,7 +102,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    
    |**A paraméter**  |**Leírás** |
    |---------|---------|
-   |enableUpsert    |   Ahhoz, hogy a dokumentumok upsert jelző. Ha egy dokumentumot a megadott azonosító már létezik, frissül. Alapértelmezés szerint azt értéke hamis.      |
+   |enableUpsert    |   Ahhoz, hogy a dokumentumok upserts jelző. Ha egy dokumentumot a megadott azonosító már létezik, frissül. Alapértelmezés szerint azt értéke hamis.      |
    |disableAutomaticIdGeneration    |    Azt a jelzőt, automatikus generálása azonosítójának letiltása Alapértelmezés szerint az értéke igaz.     |
    |maxConcurrencyPerPartitionKeyRange    | A partíciókulcs-tartományonként párhuzamosság maximális párhuzamossági, NULL beállítás alapértelmezett értéke 20 használandó szalagtárat okozhat. |
    |maxInMemorySortingBatchSize     |  A dokumentum enumeráló modulja, amely az API-nak átadott lekért dokumentumok maximális száma az egyes fázisokban hívja.  A memórián belüli előfeldolgozási rendezési fázisban tömeges importálás előtt beállítás NULL okozhat könyvtár perc (documents.count 1000000) alapértelmezett értéket használja.       |
@@ -173,7 +173,7 @@ A jobb teljesítmény érdekében a következő szempontokat vegye figyelembe, t
 
 * Javasoljuk, hogy a teljes alkalmazáshoz egyetlen virtuális gép megfelelő egy adott Cosmos DB-tárolón belül egyetlen BulkExecutor objektumot hozza létre.  
 
-* Mivel egy egyszeri tömeges API művelet végrehajtása egy nagy szövegrészletet, az ügyfél gépének Processzor- és hálózati i/o használ fel. Több feladat indítja belsőleg szerint ez történik, elkerülheti, hogy az alkalmazás folyamatának minden tömeges műveletet végrehajtó API-hívások belül több egyidejű feladat indítja. Nem lehet felhasználni a teljes tárolót átviteli egyetlen virtuális gépen futó egyetlen tömeges művelet API hívás esetén (Ha a tároló átviteli > 1 millió RU/s), ezért célszerű egyidejűleg hajtsa végre a tömeges különálló virtuális gépet hoz létre a művelet API-hívások száma.  
+* Mivel egy egyszeri tömeges API művelet végrehajtása egy nagy szövegrészletet, az ügyfél gépének Processzor- és hálózati i/o használ fel. Több feladat indítja belsőleg szerint ez történik, elkerülheti, hogy az alkalmazás folyamatának minden tömeges műveletet végrehajtó API-hívások belül több egyidejű feladat indítja. Nem lehet felhasználni a teljes tárolót átviteli egyetlen virtuális gépen futó egyetlen tömeges művelet API hívás esetén (Ha a tároló átviteli > 1 millió RU/s), előnyösebb egyidejűleg hajtsa végre a különálló virtuális gépek létrehozása tömeges művelet API-hívások száma.  
 
 * Győződjön meg arról, InitializeAsync() meghívása után a BulkExecutor objektum beolvasni a cél Cosmos DB-tároló partíciótérképen hárítható el.  
 

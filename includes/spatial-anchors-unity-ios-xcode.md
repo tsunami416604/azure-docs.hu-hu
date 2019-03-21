@@ -4,40 +4,40 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 6768b1b8e0f5d7d3644779268025551c4e1aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964171"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305251"
 ---
-Válassza ki **összeállítása** egy párbeszédpanel megnyitásához. Ezután válassza ki egy mappát, amelybe exportálni az Xcode-projektben.
+Válassza ki **összeállítása**. A megnyíló párbeszédpanelen válassza ki a mappa az Xcode-projektben való exportálásához.
 
-Az Exportálás befejeződése után egy mappa jelenik meg amely tartalmazza az exportált Xcode-projektben.
+Az Exportálás befejeződése után megjelenik egy mappa, amely tartalmazza az exportált Xcode-projektben.
 
 > [!NOTE]
-> Ha egy párbeszédpanel rákérdez, hogy felugró **cserélje le** vagy **Hozzáfűzés**, **Hozzáfűzés** használata javasolt, mivel ez gyorsabb. Csak akkor kell végrehajtani egy **cseréje** Ha eszközök változnak a jelenet (Hozzáadás, eltávolítás, módosítása a szülő-gyermek kapcsolat, a Tulajdonságok hozzáadása/eltávolítása/módosítása, stb). Ha csak forrás kódmódosítás szükséges, **Hozzáfűzés** el kell érnie.
+> Ha megjelenik egy ablak, amely felkéri, ha szeretné-e cserélje le- és hozzáfűző, azt javasoljuk, hogy bejelölte **Hozzáfűzés** , gyorsabb, mert. Csak akkor kell kiválasztásához **cseréje** eszközök módosítása a jelenet. (Ha például hozzáadása, eltávolítása, vagy a szülő-gyermek kapcsolat módosítása vagy hozzáadása, eltávolítása vagy módosítása a tulajdonságok.) Ha csak forrás kódmódosítás szükséges, **Hozzáfűzés** el kell érnie.
 
 ### <a name="open-the-xcode-project"></a>Nyissa meg az Xcode-projektben
 
-Az exportált Xcode projekt mappában futtassa a következő parancsot a terminálon a projekthez szükséges CocoaPods telepítéséhez:
+Az exportált Xcode projekt mappában futtassa ezt a parancsot a terminálon a projekthez szükséges CocoaPods telepítéséhez:
 
 ```bash
 pod install --repo-update
 ```
 
-Most is nyissa meg a `Unity-iPhone.xcworkspace` megnyitja a projektet az xcode-ban:
+Most megnyithatja `Unity-iPhone.xcworkspace` megnyitja a projektet az xcode-ban:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Ha megjelenik egy `library not found for -lPods-Unity-iPhone` hiba történt, valószínűleg nyitotta meg a `.xcodeproj` fájl helyett a `.xcworkspace`. Nyissa meg a `.xcworkspace` , és próbálkozzon újra.
+> Ha megjelenik egy `library not found for -lPods-Unity-iPhone` hiba történt, valószínűleg nyitotta meg a `.xcodeproj` fájl helyett a `.xcworkspace` fájlt. 
 
-Válassza ki a legfelső szintű **Unity-iPhone** megtekintése a Projektbeállítások között, és válassza a csomópontot a **általános** fülre.
+Válassza ki a legfelső szintű **Unity-iPhone** megtekintheti a projekt beállításokat, és válassza a csomópontot a **általános** fülre.
 
-A **aláírás**, ellenőrizze, hogy **aláírás automatikus kezelése** engedélyezve van. Ha nem, az aktiválást, és válassza **engedélyezze az automatikus** alaphelyzetbe állítja a megjelenő párbeszédpanelen összeállítási beállítások.
+A **aláírás**, győződjön meg arról, hogy **aláírás automatikus kezelése** engedélyezve van. Ha nem, az engedélyezéshez, és válassza **engedélyezze az automatikus** a build beállításainak visszaállítása a megjelenő párbeszédpanelen.
 
 Alatt **üzembe helyezési adatok**, győződjön meg arról, hogy a **telepítési cél** értékre van állítva `11.0`.
 

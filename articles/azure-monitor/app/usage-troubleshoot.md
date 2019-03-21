@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7c903390af54d1771bce1b6aff96e9bb54397189
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045893"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258776"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Felhasználói viselkedés elemzési eszközök az Application Insights – hibaelhárítás
 Kapcsolatos kérdése van a [felhasználói viselkedés elemzési eszközök az Application Insights](usage-overview.md): [Felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [felhasználói folyamatok](usage-flows.md), [megőrzési](usage-retention.md), vagy a Kohorszok? Az alábbiakban néhány válasz.
@@ -39,7 +39,7 @@ A felhasználói viselkedés elemzési eszközök jelenleg nem támogatják a fe
 ## <a name="naming-events"></a>Elnevezési események
 **Az alkalmazás több ezer különböző lapmegtekintés és egyéni események neve van. Nehéz megkülönböztetni őket, és a felhasználói viselkedés elemzőeszközök gyakran nem válaszol. Hogyan javíthatom elnevezési problémák?**
 
-Lapmegtekintés és egyéni esemény nevének során a felhasználói viselkedés elemzési eszközök használhatók. Események és elnevezési, kritikus fontosságú, ki ezeket az eszközöket. A cél közötti egyensúly, hogy túl kevés, túl általános neveket ("gombra való kattintás"), és a túl sok, túlságosan egyedi neveket ("Szerkesztés gombra kattint, a http://www.contoso.com/index").
+Lapmegtekintés és egyéni esemény nevének során a felhasználói viselkedés elemzési eszközök használhatók. Események és elnevezési, kritikus fontosságú, ki ezeket az eszközöket. A cél közötti egyensúly, hogy túl kevés, túl általános neveket ("gombra való kattintás"), és a túl sok, túlságosan egyedi neveket ("Szerkesztés gombra kattint, a http:\//www.contoso.com/index").
 
 Végezze el a módosításokat a lapmegtekintés és egyéni események neve, az alkalmazás által küldött, hogy módosítani szeretné az alkalmazás forráskódja és ismételt üzembe helyezése. **Az összes telemetriát az Application Insights adatait 90 napig tárolja, és nem lehet törölni**, így az események neve módosítás 90 nap teljes mértékben manifest vesz igénybe. Név módosítások elvégzése után 90 napig is a régi és új események neve lesz a telemetriai adatok megjelennek, úgy állítsa be a lekérdezések, és közölje belül munkatársait, ennek megfelelően.
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 32720669ae9d8941abce4429471c13608a18cbc5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549017"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294892"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -149,7 +149,7 @@ Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatik
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
 
-Is [töltse le a bejelentkezési adatokat](quickstart-download-sign-in-report.md) Ha azt szeretné használni az Azure Portalon kívül. Kattintson a **letöltése** lehetővé teszi egy CSV- vagy JSCON fájlt a legutóbbi 250 000 rekord létrehozásához.  
+Is [töltse le a bejelentkezési adatokat](quickstart-download-sign-in-report.md) Ha azt szeretné használni az Azure Portalon kívül. Kattintson a **letöltése** teszi lehetővé a legutóbbi 250 000 rekordot CSV vagy JSON-fájl létrehozásához.  
 
 ![Letöltés](./media/concept-sign-ins/71.png "Letöltés")
 
@@ -168,7 +168,7 @@ Azure AD-ben mellett az Azure portal nyújt a bejelentkezési adatokat a tovább
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>Felhasználók bejelentkezési adatokat az Identitásbiztonság védelmének
 
-A felhasználók bejelentkezési grafikonjával kezdheti a a **Identitásbiztonság védelmének** áttekintése lapon megjelenik a bejelentkezési összesítését ábrázolja az egy adott időszakban az összes felhasználó bejelentkezéseinek. Az alapértelmezett időszak 30 nap.
+A felhasználók bejelentkezési grafikonjával kezdheti a a **Identitásbiztonság védelmének** áttekintése lapon megjelenik az összes felhasználó bejelentkezéseinek összesítését ábrázolja egy adott időszakban. Az alapértelmezett időszak 30 nap.
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/06.png "Sign-in activity")
 
@@ -214,7 +214,7 @@ Az adatok megtekintését a szervezet az elmúlt 30 nap alatt legnépszerűbb 3 
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/10.png "Sign-in activity")
 
-A 3 legnépszerűbb alkalmazásba való bejelentkezések heti összesítő grafikonja egy adott időszak során. Az alapértelmezett időszak 30 nap.
+Az alkalmazás használati graph összesítését ábrázolja egy adott időszakban a 3 leggyakoribb alkalmazások bejelentkezések. Az alapértelmezett időszak 30 nap.
 
 ![Bejelentkezési tevékenység](./media/concept-sign-ins/47.png "Sign-in activity")
 
@@ -230,7 +230,7 @@ A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési esem
 
 ## <a name="office-365-activity-logs"></a>Az Office 365-Tevékenységnaplók
 
-Az Office 365-Tevékenységnaplók is megtekintheti a [Office 365 felügyeleti központ](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, csak az Office 365 felügyeleti központban az Office 365-Tevékenységnaplók teljes nézetét jeleníti meg. 
+Az Office 365-Tevékenységnaplók is megtekintheti a [Microsoft 365 felügyeleti központban](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, csak a Microsoft 365 felügyeleti központban az Office 365-Tevékenységnaplók teljes nézetét jeleníti meg. 
 
 Az Office 365 tevékenységeket tartalmazó naplók programozott módon használatával is elérheti a [Office 365 felügyeleti API-k](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 52bdbd1f7fb02c33e9cd6eef862d5be299bf1dad
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792344"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012557"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Az Azure SignalR Service – hitelesítés az Azure Functions használatával
 
@@ -74,12 +74,12 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 1. Egy új VS Code ablak `File > Open Folder` menüpontjában hozzon létre és nyisson meg egy üres mappát egy alkalmas helyen. Ez lesz a létrehozni kívánt alkalmazás fő projektmappája.
 
 1. A VS Code-ban az Azure Functions bővítmény segítségével inicializáljon egy függvényalkalmazást a fő projektmappában.
-    1. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet) > Command Palette (Parancskatalógus)** elemet (billentyűparancs: `Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
-    1. Keresse meg a **az Azure Functions: Új projekt létrehozása** parancsot, és válassza ki azt.
-    1. Megjelenik a projekt főmappája. Válassza ki (vagy keresse meg tallózással).
-    1. Amikor a szoftver megkérdezi, hogy melyik nyelvet kívánja használni, válassza a **JavaScript** lehetőséget.
+   1. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet) > Command Palette (Parancskatalógus)** elemet (billentyűparancs: `Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
+   1. Keresse meg a **az Azure Functions: Új projekt létrehozása** parancsot, és válassza ki azt.
+   1. Megjelenik a projekt főmappája. Válassza ki (vagy keresse meg tallózással).
+   1. Amikor a szoftver megkérdezi, hogy melyik nyelvet kívánja használni, válassza a **JavaScript** lehetőséget.
 
-    ![Függvényalkalmazás létrehozása](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
+      ![Függvényalkalmazás létrehozása](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
 
 ### <a name="install-function-app-extensions"></a>A függvényalkalmazás-bővítmények telepítése
 
@@ -119,14 +119,14 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
     }
     ```
 
-    * Adja meg az Azure SignalR Service kapcsolati sztringjét az `AzureSignalRConnectionString` beállítás értékeként. Ezt az értéket az Azure Portalon, az Azure SignalR Service erőforrás **Kulcsok** lapján találja meg. Az elsődleges és a másodlagos kapcsolati sztringek közül bármelyiket használhatja.
-    * A `WEBSITE_NODE_DEFAULT_VERSION` beállítást a rendszer a helyi futtatás során nem használja. Akkor van rá szükség, amikor az Azure-ban végez üzembe helyezést.
-    * A `Host` szakasz a helyi Functions-gazdagép port- és CORS-beállításait konfigurálja (Azure-beli futtatáskor nincs hatása).
+   * Adja meg az Azure SignalR Service kapcsolati sztringjét az `AzureSignalRConnectionString` beállítás értékeként. Ezt az értéket az Azure Portalon, az Azure SignalR Service erőforrás **Kulcsok** lapján találja meg. Az elsődleges és a másodlagos kapcsolati sztringek közül bármelyiket használhatja.
+   * A `WEBSITE_NODE_DEFAULT_VERSION` beállítást a rendszer a helyi futtatás során nem használja. Akkor van rá szükség, amikor az Azure-ban végez üzembe helyezést.
+   * A `Host` szakasz a helyi Functions-gazdagép port- és CORS-beállításait konfigurálja (Azure-beli futtatáskor nincs hatása).
 
-        > [!NOTE]
-        > Élő kiszolgáló jellemzően van konfigurálva a tartalom továbbítása http://127.0.0.1:5500. Ha látja, hogy egy másik URL-címet használ, vagy használja egy másik HTTP-kiszolgálót, módosítsa a `CORS` beállítást, hogy a megfelelő forrás.
+       > [!NOTE]
+       > Élő kiszolgáló jellemzően van konfigurálva a tartalom továbbítása `http://127.0.0.1:5500`. Ha látja, hogy egy másik URL-címet használ, vagy használja egy másik HTTP-kiszolgálót, módosítsa a `CORS` beállítást, hogy a megfelelő forrás.
 
-    ![SignalR Service-kulcs megkeresése](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
+     ![SignalR Service-kulcs megkeresése](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
 1. Mentse a fájlt.
 

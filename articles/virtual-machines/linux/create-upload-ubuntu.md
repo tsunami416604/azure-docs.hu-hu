@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 62d17670a068304e0764c85d49da0aa9a736c477
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444433"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004897"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="official-ubuntu-cloud-images"></a>Felhő hivatalos Ubuntu-rendszerképek
-Ubuntu most tesz közzé a hivatalos Azure VHD letölthető innen [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). A saját specializált Ubuntu-rendszerkép létrehozásához az Azure-ban van szüksége, ha inkább kövesse az alábbi manuális eljárást, mint ajánlott indítsa el az ilyen virtuális merevlemezek használata ismert, és igény szerint testreszabhatja. A rendszerkép legújabb kiadásaihoz mindig az alábbi helyeken találhatók:
+Ubuntu most tesz közzé a hivatalos Azure VHD letölthető innen [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/). A saját specializált Ubuntu-rendszerkép létrehozásához az Azure-ban van szüksége, ha inkább kövesse az alábbi manuális eljárást, mint ajánlott indítsa el az ilyen virtuális merevlemezek használata ismert, és igény szerint testreszabhatja. A rendszerkép legújabb kiadásaihoz mindig az alábbi helyeken találhatók:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
-* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](http://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 18.04/Bionic: [bionic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vhd.zip)
+* Ubuntu 18.10/Cosmic: [cosmic-server-cloudimg-amd64.vhd.zip](https://cloud-images.ubuntu.com/cosmic/current/cosmic-server-cloudimg-amd64.vhd.zip)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rendszer virtuális merevlemezre. Több eszköz létezik a .vhd fájlokat, például például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](https://technet.microsoft.com/library/hh846766.aspx).
@@ -47,7 +47,7 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
 
 ## <a name="manual-steps"></a>Manuális lépések
 > [!NOTE]
-> Mielőtt megkísérelné a saját egyéni Ubuntu-rendszerkép létrehozása az Azure-hoz, fontolja meg az előre elkészített és tesztelt rendszerképekből [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) helyette.
+> Mielőtt megkísérelné a saját egyéni Ubuntu-rendszerkép létrehozása az Azure-hoz, fontolja meg az előre elkészített és tesztelt rendszerképekből [ https://cloud-images.ubuntu.com/ ](https://cloud-images.ubuntu.com/) helyette.
 > 
 > 
 
@@ -122,8 +122,8 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
         # sudo apt-get update
         # sudo apt-get install walinuxagent
 
-    >[!Note]
-    A `walinuxagent` csomagot eltávolíthatja a `NetworkManager` és `NetworkManager-gnome` a csomagokat, ha telepítve vannak.
+   > [!Note]
+   >  A `walinuxagent` csomagot eltávolíthatja a `NetworkManager` és `NetworkManager-gnome` a csomagokat, ha telepítve vannak.
 
 Ubuntu 18.04/18.10, frissítse az Azure-adatforrás, ez szerkesztése: /etc/cloud/cloud.cfg.d/90-azure.cfg, adja hozzá a kódot a fájl végén:
 
@@ -135,13 +135,13 @@ datasource:
      agent_command: [service, walinuxagent, start]
 ```
 
-8. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
+1. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-9. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
+1. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 ## <a name="references"></a>Referencia
 [Ubuntu hardver lehetővé tétele (HWE) kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)

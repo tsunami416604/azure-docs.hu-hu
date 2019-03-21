@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 1f172035acceb75e4dc37d2f6e7e80d439f7e837
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240558"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226572"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
 A rendelkezésre állási zónák a magas rendelkezésre állást kínál, amely megvédi alkalmazásait és adatait az adatközpontok meghibásodásai. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása adatközpont meghibásodása ellen védi az alkalmazásokat és adatokat. Zónaredundáns szolgáltatásokat az alkalmazások és adatok replikálása single-pontok-az-hibákkal szembeni rendelkezésre állási zónák között. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
@@ -67,6 +67,8 @@ Az Azure-szolgáltatások, amelyek támogatják a rendelkezésre állási zóná
 - ExpressRoute
 - Az Application Gateway (előzetes verzió)
 
+## <a name="services-resiliency"></a>Szolgáltatások rugalmasság
+Minden Azure management szolgáltatás kihasználására tervezett is ellenáll a terület-szint hibák után. Hibák a különböző rendelkezésre állási zónában egy vagy több hiba egy adott régión belül egy teljes régióra hibát képest kisebb hiba radius rendelkezik. Az Azure felügyeleti szolgáltatások a régión belül a zónaszintű meghibásodása vagy egy másik Azure-régióból állíthatja helyre. Az Azure legfontosabb karbantartási egy zóna ugyanabban a régióban, egy adott régión belül a rendelkezésre állási zónában üzembe helyezett ügyfélerőforrásait érintő hibák elkerülése érdekében egyszerre hajtja végre.
 
 ## <a name="pricing"></a>Díjszabás
 Nincs rendelkezésre állási zónában üzembe helyezett virtuális gépeken további költség nélkül. 99,99 %-os virtuális gép SLA érhető el, ha két vagy több virtuális gép két vagy több rendelkezésre állási zónában az Azure-régióban vannak telepítve. További közötti rendelkezésre állási zóna virtuális Gépeken adatátviteli díjak lesznek. További információkért tekintse át a [sávszélesség díjszabás](https://azure.microsoft.com/pricing/details/bandwidth/) lapot.

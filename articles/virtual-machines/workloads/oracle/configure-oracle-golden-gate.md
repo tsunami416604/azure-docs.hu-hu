@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: b21d9fe7c92edef13e717399c1f7a2b0e704e583
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433484"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011552"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
 
@@ -45,7 +45,7 @@ Az alábbiakban látható a környezet konfigurációjának összefoglalása:
 > | **Operációs rendszer** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **Replikációs séma** |TEST|TEST |
-> | **Tulajdonos/replikálás Golden kapu** |C ##GGADMIN |REPUSER |
+> | **Tulajdonos/replikálás Golden kapu** |C##GGADMIN |REPUSER |
 > | **Folyamat Golden kapu** |EXTORA |REPORA|
 
 
@@ -349,79 +349,79 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Golden kapu szoftver letöltése
 Töltse le, és készítse elő a Golden kapu Oracle-szoftver, hajtsa végre az alábbi lépéseket:
 
-1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt a [Oracle Golden kapu letöltési oldal](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési címe **Oracle GoldenGate 12.x.x.x az Oracle Linux x86 – 64**, töltse le a .zip fájlokat kell lennie.
+1. Töltse le a **fbo_ggs_Linux_x64_shiphome.zip** fájlt a [Oracle Golden kapu letöltési oldal](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). A letöltési címe **Oracle GoldenGate 12.x.x.x az Oracle Linux x86 – 64**, töltse le a .zip fájlokat kell lennie.
 
 2. Miután letöltötte a .zip fájlokat az ügyfélszámítógépre, a biztonságos másolás protokoll (SCP) használatával másolja a fájlokat a virtuális géphez:
 
-  ```bash
-  $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
-  ```
+   ```bash
+   $ scp fbo_ggs_Linux_x64_shiphome.zip <publicIpAddress>:<folder>
+   ```
 
 3. A .zip fájlokat, és helyezze át a **/ opt** mappát. Ezután módosítsa a fájlok tulajdonosa az alábbiak szerint:
 
-  ```bash
-  $ sudo su -
-  # mv <folder>/*.zip /opt
-  ```
+   ```bash
+   $ sudo su -
+   # mv <folder>/*.zip /opt
+   ```
 
 4. Csomagolja ki a fájlokat (telepítés a Linuxos csomagolja ki segédprogram ha van még nem telepítette):
 
-  ```bash
-  # yum install unzip
-  # cd /opt
-  # unzip fbo_ggs_Linux_x64_shiphome.zip
-  ```
+   ```bash
+   # yum install unzip
+   # cd /opt
+   # unzip fbo_ggs_Linux_x64_shiphome.zip
+   ```
 
 5. Engedélyek módosítása:
 
-  ```bash
-  # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
-  ```
+   ```bash
+   # chown -R oracle:oinstall /opt/fbo_ggs_Linux_x64_shiphome
+   ```
 
 ### <a name="prepare-the-client-and-vm-to-run-x11-for-windows-clients-only"></a>Az ügyfél és a virtuális gép számára való futás x11 (csak Windows-ügyfelek) előkészítése
 Ez az egy választható lépés. Ezt a lépést kihagyhatja, ha már rendelkezik x11 vagy használ egy Linux-ügyfél beállítása.
 
 1. A Windows-számítógépre töltse le a putty-t és Xming:
 
-  * [Töltse le a putty-kapcsolaton keresztül](http://www.putty.org/)
-  * [Töltse le a Xming](https://xming.en.softonic.com/)
+   * [Töltse le a putty-kapcsolaton keresztül](https://www.putty.org/)
+   * [Töltse le a Xming](https://xming.en.softonic.com/)
 
-2.  Miután telepítette a putty-kapcsolaton keresztül, a PuTTY mappában (például C:\Program Files\PuTTY), futtassa a puttygen.exe (PuTTY Key Generator).
+2. Miután telepítette a putty-kapcsolaton keresztül, a PuTTY mappában (például C:\Program Files\PuTTY), futtassa a puttygen.exe (PuTTY Key Generator).
 
-3.  A PuTTY Key Generator:
+3. A PuTTY Key Generator:
 
-  - Hozzon létre egy kulcsot, jelölje be a **Generate** gombra.
-  - Másolja a tartalmat, a kulcs (**Ctrl + C**).
-  - Válassza ki a **titkos kulcs mentése** gombra.
-  - Figyelmen kívül hagyhatja a figyelmeztetést, amely akkor jelenik meg, és válassza ki **OK**.
+   - Hozzon létre egy kulcsot, jelölje be a **Generate** gombra.
+   - Másolja a tartalmat, a kulcs (**Ctrl + C**).
+   - Válassza ki a **titkos kulcs mentése** gombra.
+   - Figyelmen kívül hagyhatja a figyelmeztetést, amely akkor jelenik meg, és válassza ki **OK**.
 
-    ![A PuTTY key generator oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttykeygen.png)
+   ![A PuTTY key generator oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttykeygen.png)
 
-4.  A virtuális gépen futtassa a következő parancsokat:
+4. A virtuális gépen futtassa a következő parancsokat:
 
-  ```bash
-  # sudo su - oracle
-  $ mkdir .ssh (if not already created)
-  $ cd .ssh
-  ```
+   ```bash
+   # sudo su - oracle
+   $ mkdir .ssh (if not already created)
+   $ cd .ssh
+   ```
 
 5. Hozzon létre egy fájlt **authorized_keys**. Ebben a fájlban illessze be a kulcs tartalmát, és mentse a fájlt.
 
-  > [!NOTE]
-  > A kulcsot kell tartalmaznia a karakterlánc `ssh-rsa`. Ezenkívül a kulcs a tartalmát egy egysoros szöveg kell lennie.
-  >  
+   > [!NOTE]
+   > A kulcsot kell tartalmaznia a karakterlánc `ssh-rsa`. Ezenkívül a kulcs a tartalmát egy egysoros szöveg kell lennie.
+   >  
 
 6. Indítsa el a PuTTY alkalmazást. Az a **kategória** ablaktáblán válassza előbb **kapcsolat** > **SSH** > **Auth**. Az a **titkos kulcs fájlját a hitelesítéshez** mezőben tallózással keresse meg a korábban létrehozott kulcsot.
 
-  ![A titkos kulcs beállítása oldalát bemutató képernyőkép](./media/oracle-golden-gate/setprivatekey.png)
+   ![A titkos kulcs beállítása oldalát bemutató képernyőkép](./media/oracle-golden-gate/setprivatekey.png)
 
 7. Az a **kategória** ablaktáblán válassza előbb **kapcsolat** > **SSH** > **X11**. Válassza ki a **engedélyezése X11 továbbítási** mezőbe.
 
-  ![Az engedélyezés X11 oldalát bemutató képernyőkép](./media/oracle-golden-gate/enablex11.png)
+   ![Az engedélyezés X11 oldalát bemutató képernyőkép](./media/oracle-golden-gate/enablex11.png)
 
 8. Az a **kategória** panelen lépjen a **munkamenet**. Adja meg a gazdagép adatait, és válassza ki **nyílt**.
 
-  ![A munkamenet oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttysession.png)
+   ![A munkamenet oldalát bemutató képernyőkép](./media/oracle-golden-gate/puttysession.png)
 
 ### <a name="install-golden-gate-software"></a>Golden kapu szoftver telepítése
 
@@ -429,43 +429,43 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be, mint az oracle. (Kell jelszó megadása nélkül jelentkezhet be.) Győződjön meg arról, hogy a Xming fut-e, a telepítés megkezdése előtt.
  
-  ```bash
-  $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
-  $ ./runInstaller
-  ```
+   ```bash
+   $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
+   $ ./runInstaller
+   ```
 2. Válassza ki az "Oracle GoldenGate az Oracle Database 12c". Válassza ki **tovább** folytatásához.
 
-  ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_01.png)
+   ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_01.png)
 
 3. Módosíthatja a szoftver helyét. Válassza ki a **Start Manager** mezőbe, majd adja meg az adatbázis helyét. A folytatáshoz kattintson a **Tovább** gombra.
 
-  ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_02.png)
+   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_02.png)
 
 4. Módosítsa a készlet könyvtárat, és válassza ki **tovább** folytatásához.
 
-  ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Az a **összefoglalás** képernyőn válassza ki **telepítése** folytatásához.
 
-  ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![A telepítő telepítési kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. "Root", parancsfájllal kérheti. Ha igen, nyissa meg egy külön munkamenetben ssh a virtuális géphez, a sudo legfelső szintű, és futtassa a szkriptet. Válassza ki **OK** továbbra is.
 
-  ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Ha a telepítés befejeződött, válassza ki a **Bezárás** a folyamat befejezéséhez.
 
-  ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Állítsa be a szolgáltatást a myVM1 (elsődleges)
 
 1. Hozzon létre vagy frissíti a tnsnames.ora fájlt:
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -478,7 +478,7 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -490,13 +490,13 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. A Golden kapu tulajdonosi és felhasználói fiókokat hozhat létre.
 
-  > [!NOTE]
-  > A tulajdonos fiókja C# előtaggal kell rendelkeznie.
-  >
+   > [!NOTE]
+   > A tulajdonos fiókja C# előtaggal kell rendelkeznie.
+   >
 
     ```bash
     $ sqlplus / as sysdba
@@ -510,124 +510,124 @@ Oracle Golden kapu telepítéséhez kövesse az alábbi lépéseket:
 
 3. Hozzon létre a Golden kapu tesztfelhasználói fiókja:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> @demo_ora_insert
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> @demo_ora_insert
+   SQL> EXIT;
+   ```
 
 4. Konfigurálja a kinyerési alkalmazásparaméter-fájlt.
 
- Indítsa el a hamisított Kerberos kapu parancssori felület (ggsci):
+   Indítsa el a hamisított Kerberos kapu parancssori felület (ggsci):
 
-  ```bash
-  $ sudo su - oracle
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
-  Successfully logged into database  pdb1
-  GGSCI>  ADD SCHEMATRANDATA pdb1.test
-  2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
-  2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
+   ```bash
+   $ sudo su - oracle
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> DBLOGIN USERID test@pdb1, PASSWORD test
+   Successfully logged into database  pdb1
+   GGSCI>  ADD SCHEMATRANDATA pdb1.test
+   2017-05-23 15:44:25  INFO    OGG-01788  SCHEMATRANDATA has been added on schema test.
+   2017-05-23 15:44:25  INFO    OGG-01976  SCHEMATRANDATA for scheduling columns has been added on schema test.
 
-  GGSCI> EDIT PARAMS EXTORA
-  ```
+   GGSCI> EDIT PARAMS EXTORA
+   ```
 5. Adja hozzá a következőket a KINYERÉSI alkalmazásparaméter-fájlt (vi parancsok használatával). Nyomja le az Esc billentyűt, ': wq! " fájl mentéséhez. 
 
-  ```bash
-  EXTRACT EXTORA
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTRAIL ./dirdat/rt  
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT 
-  LOGALLSUPCOLS
-  UPDATERECORDFORMAT COMPACT
-  TABLE pdb1.test.TCUSTMER;
-  TABLE pdb1.test.TCUSTORD;
-  ```
+   ```bash
+   EXTRACT EXTORA
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTRAIL ./dirdat/rt  
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT 
+   LOGALLSUPCOLS
+   UPDATERECORDFORMAT COMPACT
+   TABLE pdb1.test.TCUSTMER;
+   TABLE pdb1.test.TCUSTORD;
+   ```
 6. Regisztráció nyerje ki – integrált kivonat:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
 
-  GGSCI> dblogin userid C##GGADMIN, password ggadmin
-  Successfully logged into database CDB$ROOT.
+   GGSCI> dblogin userid C##GGADMIN, password ggadmin
+   Successfully logged into database CDB$ROOT.
 
-  GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
+   GGSCI> REGISTER EXTRACT EXTORA DATABASE CONTAINER(pdb1)
 
-  2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
+   2017-05-23 15:58:34  INFO    OGG-02003  Extract EXTORA successfully registered with database at SCN 1821260.
 
-  GGSCI> exit
-  ```
+   GGSCI> exit
+   ```
 7. Állítsa be a kinyerési ellenőrzőpontokat, és indítsa el a valós idejű kivonat:
 
-  ```bash
-  $ ./ggsci
-  GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
-  EXTRACT (Integrated) added.
+   ```bash
+   $ ./ggsci
+   GGSCI>  ADD EXTRACT EXTORA, INTEGRATED TRANLOG, BEGIN NOW
+   EXTRACT (Integrated) added.
 
-  GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
-  RMTTRAIL added.
+   GGSCI>  ADD RMTTRAIL ./dirdat/rt, EXTRACT EXTORA, MEGABYTES 10
+   RMTTRAIL added.
 
-  GGSCI>  START EXTRACT EXTORA
+   GGSCI>  START EXTRACT EXTORA
 
-  Sending START request to MANAGER ...
-  EXTRACT EXTORA starting
+   Sending START request to MANAGER ...
+   EXTRACT EXTORA starting
 
-  GGSCI > info all
+   GGSCI > info all
 
-  Program     Status      Group       Lag at Chkpt  Time Since Chkpt
+   Program     Status      Group       Lag at Chkpt  Time Since Chkpt
 
-  MANAGER     RUNNING
-  EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
-  ```
-Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja használni, a másik szakaszban talál:
+   MANAGER     RUNNING
+   EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
+   ```
+   Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja használni, a másik szakaszban talál:
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> SELECT current_scn from v$database;
-  CURRENT_SCN
-  -----------
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> SELECT current_scn from v$database;
+   CURRENT_SCN
+   -----------
       1857887
-  SQL> EXIT;
-  ```
+   SQL> EXIT;
+   ```
 
-  ```bash
-  $ ./ggsci
-  GGSCI> EDIT PARAMS INITEXT
-  ```
+   ```bash
+   $ ./ggsci
+   GGSCI> EDIT PARAMS INITEXT
+   ```
 
-  ```bash
-  EXTRACT INITEXT
-  USERID C##GGADMIN, PASSWORD ggadmin
-  RMTHOST 10.0.0.5, MGRPORT 7809
-  RMTTASK REPLICAT, GROUP INITREP
-  TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
-  ```
+   ```bash
+   EXTRACT INITEXT
+   USERID C##GGADMIN, PASSWORD ggadmin
+   RMTHOST 10.0.0.5, MGRPORT 7809
+   RMTTASK REPLICAT, GROUP INITREP
+   TABLE pdb1.test.*, SQLPREDICATE 'AS OF SCN 1857887'; 
+   ```
 
-  ```bash
-  GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
-  ```
+   ```bash
+   GGSCI> ADD EXTRACT INITEXT, SOURCEISTABLE
+   ```
 
 ### <a name="set-up-service-on-myvm2-replicate"></a>Állítsa be a szolgáltatást a myVM2 (replikáció)
 
 
 1. Hozzon létre vagy frissíti a tnsnames.ora fájlt:
 
-  ```bash
-  $ cd $ORACLE_HOME/network/admin
-  $ vi tnsnames.ora
+   ```bash
+   $ cd $ORACLE_HOME/network/admin
+   $ vi tnsnames.ora
 
-  cdb1=
+   cdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -640,7 +640,7 @@ Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja hasz
       )
     )
 
-  pdb1=
+   pdb1=
     (DESCRIPTION=
       (ADDRESS=
         (PROTOCOL=TCP)
@@ -652,72 +652,72 @@ Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja hasz
         (SERVICE_NAME=pdb1)
       )
     )
-  ```
+   ```
 
 2. Hozzon létre egy párhuzamos fiókot:
 
-  ```bash
-  $ sqlplus / as sysdba
-  SQL> alter session set container = pdb1;
-  SQL> create user repuser identified by rep_pass container=current;
-  SQL> grant dba to repuser;
-  SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
-  SQL> connect repuser/rep_pass@pdb1 
-  SQL> EXIT;
-  ```
+   ```bash
+   $ sqlplus / as sysdba
+   SQL> alter session set container = pdb1;
+   SQL> create user repuser identified by rep_pass container=current;
+   SQL> grant dba to repuser;
+   SQL> exec dbms_goldengate_auth.grant_admin_privilege('REPUSER',container=>'PDB1');
+   SQL> connect repuser/rep_pass@pdb1 
+   SQL> EXIT;
+   ```
 
 3. Hozzon létre egy Golden kapu tesztfelhasználói fiókja:
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ sqlplus system/OraPasswd1@pdb1
-  SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-  SQL> GRANT connect, resource, dba TO test;
-  SQL> ALTER USER test QUOTA 100M on USERS;
-  SQL> connect test/test@pdb1
-  SQL> @demo_ora_create
-  SQL> EXIT;
-  ```
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ sqlplus system/OraPasswd1@pdb1
+   SQL> CREATE USER test identified by test DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+   SQL> GRANT connect, resource, dba TO test;
+   SQL> ALTER USER test QUOTA 100M on USERS;
+   SQL> connect test/test@pdb1
+   SQL> @demo_ora_create
+   SQL> EXIT;
+   ```
 
 4. A paraméterfájl REPLICAT replikálni a módosításokat: 
 
-  ```bash
-  $ cd /u01/app/oracle/product/12.1.0/oggcore_1
-  $ ./ggsci
-  GGSCI> EDIT PARAMS REPORA  
-  ```
-  REPORA paraméter fájl tartalma:
+   ```bash
+   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
+   $ ./ggsci
+   GGSCI> EDIT PARAMS REPORA  
+   ```
+   REPORA paraméter fájl tartalma:
 
-  ```bash
-  REPLICAT REPORA
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
-  DDL INCLUDE MAPPED
-  DDLOPTIONS REPORT
-  DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;
-  ```
+   ```bash
+   REPLICAT REPORA
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/repora.dsc, PURGE, MEGABYTES 100
+   DDL INCLUDE MAPPED
+   DDLOPTIONS REPORT
+   DBOPTIONS INTEGRATEDPARAMS(parallelism 6)
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;
+   ```
 
 5. Replikálás ellenőrzőpont beállítása:
 
-  ```bash
-  GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
-  GGSCI> EDIT PARAMS INITREP
+   ```bash
+   GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt
+   GGSCI> EDIT PARAMS INITREP
 
-  ```
+   ```
 
-  ```bash
-  REPLICAT INITREP
-  ASSUMETARGETDEFS
-  DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
-  USERID repuser@pdb1, PASSWORD rep_pass
-  MAP pdb1.test.*, TARGET pdb1.test.*;   
-  ```
+   ```bash
+   REPLICAT INITREP
+   ASSUMETARGETDEFS
+   DISCARDFILE ./dirrpt/tcustmer.dsc, APPEND
+   USERID repuser@pdb1, PASSWORD rep_pass
+   MAP pdb1.test.*, TARGET pdb1.test.*;   
+   ```
 
-  ```bash
-  GGSCI> ADD REPLICAT INITREP, SPECIALRUN
-  ```
+   ```bash
+   GGSCI> ADD REPLICAT INITREP, SPECIALRUN
+   ```
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>A replikáció (myVM1 és myVM2) beállítása
 

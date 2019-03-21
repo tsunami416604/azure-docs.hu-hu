@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455592"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008674"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Horizontális felskálázás meglévő adatbázisok migrálása
 Könnyedén kezelheti a meglévő horizontálisan skálázott horizontálisan felskálázott adatbázisok Azure SQL Database-adatbázis eszközök segítségével (mint például a [Elastic Database-ügyfélkódtár](sql-database-elastic-database-client-library.md)). Egy meglévő készlethez adatbázisok használatához először konvertálja a [szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md). 
@@ -30,7 +30,7 @@ Egy meglévő, szilánkokra osztott adatbázis áttelepítése:
 3. Készítse elő az egyes szegmensekben.  
 4. Leképezések hozzáadása a horizontális skálázási térképet.
 
-Ezek a technológiák segítségével valósítható meg vagy a [.NET-keretrendszer ügyféloldali kódtár](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), vagy a PowerShell-parancsfájlok címen található [Azure SQL Database – rugalmas adatbázis eszközök parancsfájlok](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Az itt szereplő példák a PowerShell-parancsfájlokat használja.
+Ezek a technológiák segítségével valósítható meg vagy a [.NET-keretrendszer ügyféloldali kódtár](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), vagy a PowerShell-parancsfájlok címen található [Azure SQL Database – rugalmas adatbázis eszközök parancsfájlok](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Az itt szereplő példák a PowerShell-parancsfájlokat használja.
 
 A ShardMapManager kapcsolatos további információkért lásd: [Szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md). A rugalmas Adatbáziseszközök áttekintését lásd: [Elastic Database funkcióit áttekintő](sql-database-elastic-scale-introduction.md).
 

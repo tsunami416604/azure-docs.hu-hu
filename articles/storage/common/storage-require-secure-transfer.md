@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ec5949438ef179ecef17c65e91138ed4dcde9906
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e75cd873b780f514b24ee254dd491b6aa779c420
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467084"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101924"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Az Azure Storage-ban biztonságos átvitel megkövetelése
 
@@ -35,7 +35,7 @@ A "biztonságos átvitelre van szükség" beállítás a tárfiók létrehozása
 1. Nyissa meg a **storage-fiók létrehozása** panel az Azure Portalon.
 1. A **biztonságos átvitelre van szükség**válassza **engedélyezve**.
 
-  ![Tárfiók panel létrehozása](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+   ![Tárfiók panel létrehozása](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>Egy meglévő tárfiókot a biztonságos átvitel megkövetelése
 
@@ -43,7 +43,7 @@ A "biztonságos átvitelre van szükség" beállítás a tárfiók létrehozása
 1. A Storage-fiók menü ablaktáblán alatt **beállítások**válassza **konfigurációs**.
 1. A **biztonságos átvitelre van szükség**válassza **engedélyezve**.
 
-  ![Tárolási fiók menü panel](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+   ![Tárolási fiók menü panel](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>Engedélyezze a "Biztonságos átvitelre van szükség" programozott módon
 

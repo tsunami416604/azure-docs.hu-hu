@@ -2,19 +2,19 @@
 title: Egy HDInsight-fürt – Azure HDInsight naplóinak kezelése
 description: A típusok, méretek és a HDInsight-tevékenység naplófájlokon adatmegőrzési házirendek meghatározása.
 services: hdinsight
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: ashishth
-ms.openlocfilehash: 7b6f9ca914e9fed48463d2134eeba1cd4c103690
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 03/19/2019
+ms.author: hrasheed
+ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225319"
+ms.locfileid: "58294909"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -43,13 +43,12 @@ A következő fürt részletes adatai hasznosak lehetnek abban, hogy a napló-ke
 * Fürt állapota, beleértve az utolsó állapotváltozás részleteit
 * A master, a core és a feladat csomópontok megadott HDInsight-példányok száma és típusa
 
-A legtöbb a legfelső szintű adatokat az Azure portal használatával kérheti le.  A klasszikus Azure CLI segítségével azt is megteheti, információ jelenik meg a HDInsight-fürt:
+A legtöbb a legfelső szintű adatokat az Azure portal használatával kérheti le.  Másik lehetőségként használhatja [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a HDInsight-fürt információt szeretne kapni:
 
+```azurecli
+    az hdinsight list --resource-group <ResourceGroup>
+    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
-    azure hdinsight cluster list
-    azure hdinsight cluster show <ClusterName>
-```
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 PowerShell használatával ezt az információt.  További információkért lásd: [Apache kezelése Hadoop-fürtök HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 
@@ -77,7 +76,7 @@ Egy tipikus HDInsight-fürtöt használ, több szolgáltatást és a nyílt forr
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Az Ambari felhasználói felületén, a nézet fürtbeállítások
 
-Az Apache Ambari leegyszerűsíti a felügyeleti, beállítást és megfigyelést a HDInsight-fürt azáltal, hogy egy webes felhasználói felület és a egy REST API-t. A Linux-alapú HDInsight-fürtök az Ambari tartalmazza. Válassza ki a **fürt irányítópultja** panel az Azure Portalon HDInsight lap megnyitásához a**fürt irányítópultjai** hivatkozási lapja.  Ezután válassza ki a **HDInsight-fürt irányítópultja** ablaktáblán nyissa meg az Ambari felhasználói felületén.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
+Az Apache Ambari leegyszerűsíti a felügyeleti, beállítást és megfigyelést a HDInsight-fürt azáltal, hogy egy webes felhasználói felület és a egy REST API-t. A Linux-alapú HDInsight-fürtök az Ambari tartalmazza. Válassza ki a **fürt irányítópultja** panel az Azure Portalon HDInsight lap megnyitásához a **fürt irányítópultjai** hivatkozási lapja.  Ezután válassza ki a **HDInsight-fürt irányítópultja** ablaktáblán nyissa meg az Ambari felhasználói felületén.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
 
 Szolgáltatás nézetek listájának megnyitásához válassza a **Ambari-nézetek** for HDInsight az Azure portal oldalán található panelen.  Ez a lista függ attól függően, hogy mely könyvtárak telepítette.  Láthatja például, az üzenetsor-kezelő YARN, Hive-nézet és a Tez nézet.  Kattintson bármely szolgáltatás konfigurációs és szolgáltatási adatokat.  Az Ambari felhasználói felületén **verem és verzió** oldal nyújt információkat a fürtszolgáltatások konfigurációs és szolgáltatási korábbi verziók. Az ebben a szakaszban az Ambari felhasználói felületén, válassza a **rendszergazdai** menüben, majd **platformok és verziók**.  Válassza ki a **verziók** lapján megtekintheti a fájlverzió-információkat.
 
@@ -99,7 +98,7 @@ A következő lépés a feladat végrehajtási naplófájlokat a különböző s
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop naplófájljait
 
-HDInsight tárolja a naplófájlokat, a fürt fájlrendszerben és az Azure storage-ban is. Nyissa meg a fürthöz az SSH-kapcsolatot, és a fájlrendszer-böngészés, vagy a fő csomópontot távoli kiszolgálón a Hadoop YARN állapotát a portál használatával ellenőrizheti a naplófájlokat a fürtben. A naplófájlok, az Azure BLOB storage, az eszközöket, amelyek hozzáférhetnek, és töltse le az adatokat az Azure storage-ból bármelyikével ellenőrizheti. Példák az AZCopy CloudXplorer és a Visual Studio Server Explorerben. A PowerShell és az Azure Storage ügyfélkódtáraival vagy az Azure .NET SDK-k használatával is az Azure blob storage-adatok eléréséhez.
+HDInsight tárolja a naplófájlokat, a fürt fájlrendszerben és az Azure storage-ban is. A fürt naplófájlok megnyitásával ellenőrizheti egy [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) kapcsolat, a fürt és a fájlrendszer-böngészés, vagy a fő csomópontot távoli kiszolgálón a Hadoop YARN állapot-portál használatával. A naplófájlok, az Azure BLOB storage, az eszközöket, amelyek hozzáférhetnek, és töltse le az adatokat az Azure storage-ból bármelyikével ellenőrizheti. Példa [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer), és a Visual Studio Server Explorerben. A PowerShell és az Azure Storage ügyfélkódtáraival vagy az Azure .NET SDK-k használatával is az Azure blob storage-adatok eléréséhez.
 
 Hadoop fut, a feladatok munkájának *kísérletek feladat* a különböző csomópontokhoz a fürtben. HDInsight kezdeményezhet spekulatív feladat kísérletek, bármely más feladat, kísérletek nem fejeződnek be először lezárja. Ez létrehoz, a rendszer naplózza a vezérlőket, stderr és syslog log fájl a működés közbeni jelentős tevékenység. Emellett tett kísérletet feladat fut egyidejűleg, de egy naplófájlt is csak eredmények megjelenítéséhez lineárisan.
 
@@ -168,9 +167,9 @@ Megőrzött fájlok száma és mérete szabályozására, a következő tulajdon
 
 ### <a name="other-log-management-techniques"></a>Egyéb log management technikák
 
-Nincs elég szabad lemezterület futó elkerülése érdekében bizonyos operációs rendszer eszközöket használhat például `logrotate` kezelését a naplófájlok kezelésére. Konfigurálható `logrotate` futtatni naponta, tömörítés naplófájl fájlokat és eltávolítani a régieket. A módszer a követelményeitől függ, például mennyi ideig tartani a logfiles helyi csomóponton. 
+Nincs elég szabad lemezterület futó elkerülése érdekében bizonyos operációs rendszer eszközöket használhat például [logrotate](https://linux.die.net/man/8/logrotate) kezelését a naplófájlok kezelésére. Konfigurálható `logrotate` futtatni naponta, tömörítés naplófájl fájlokat és eltávolítani a régieket. A módszer a követelményeitől függ, például mennyi ideig tartani a logfiles helyi csomóponton.  
 
-A hibakeresési naplózás engedélyezve van-e az egy vagy több szolgáltatást, ami jelentősen növeli a kimeneti napló mérete is ellenőrizheti. 
+A hibakeresési naplózás engedélyezve van-e az egy vagy több szolgáltatást, ami jelentősen növeli a kimeneti napló mérete is ellenőrizheti.  
 
 A naplók gyűjtését összes csomópontja egyetlen központi helyen, létrehozhat egy adatfolyamot, például az összes naplóbejegyzés, Solr fürtjét.
 

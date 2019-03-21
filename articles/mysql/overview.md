@@ -6,16 +6,17 @@ author: ajlam
 ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 11/14/2018
-ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 03/20/2019
+ms.openlocfilehash: 2852cab05fab8e15b7e60a22f54cc866d2f0f178
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353328"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295402"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL-hez?
-Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft cloud alapján a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor, 5.6-os és 5.7-es verziója. Azure Database for MySQL a következőket nyújtja:
+
+Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft cloud alapján a [MySQL Community Edition](https://www.mysql.com/products/community/) (a GPLv2 licenc érhető el) adatbázismotor, 5.6-os és 5.7-es verziója. Azure Database for MySQL a következőket nyújtja:
 
 - Beépített magas rendelkezésre állás további költség nélkül.
 - Kiszámítható teljesítmény, használatalapú díjszabással.
@@ -29,10 +30,12 @@ Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik 
 ![Azure Database for MySQL fogalmi diagramja](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
 Ez a cikk az Azure Database for MySQL alapfogalmait és a teljesítmény, méretezhetőség és kezelhetőség, amely további részletes ismertetőkre mutató hivatkozásokat tartalmaz a kapcsolódó szolgáltatások bemutatása. Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
+
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure CLI használatával](quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Több Azure CLI-mintát talál itt:
+
 - [Az Azure CLI-minták az Azure Database for MySQL-hez](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
@@ -55,12 +58,14 @@ Alapértelmezés szerint az Azure Database for MySQL-szolgáltatás van konfigur
 Esetleges kérdéseivel és lehetséges, hogy működik az Azure Database for MySQL, kapcsolatos javaslatok e-mail küldése az Azure database for MySQL csapata számára ([ @Ask MySQL-hez készült Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ne feledje, hogy ez nem műszaki támogatás.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
+
 - Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy bemutatása az Azure Database for MySQL-hez, és a "Mi van az Azure Database for MySQL?" kérdésre válaszolni, készen áll:
+
 - Tekintse meg az árképzést ismertető oldalt a költségek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/mysql/)
 - Első lépésként hozza létre első kiszolgálóját. [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
 - Hozza létre első alkalmazását az előnyben részesített nyelvek használatával: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [go](./connect-go.md)

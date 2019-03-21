@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000398"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Kezelheti és elemezheti a hálózati biztonsági csoportok folyamatnaplóit a Network Watcher és a Grafana használatával
 
@@ -35,7 +35,7 @@ Számos NSG-k csoportforgalom naplózása engedélyezve van a használhat a hál
 
 NSG-Folyamatnaplók használatával a Network Watcher engedélyezve vannak, és az Azure blob storage szolgáltatásban tárolódnak. A Logstash beépülő modul csatlakoztatása és dolgozza fel a Folyamatnaplók blob storage-ból, és elküldeni őket az Elasticsearchbe szolgál.  Miután a folyamat-naplók találhatók, az ElasticSearch, azok elemzése és személyre szabott irányítópultok a Grafana az ábrázolt.
 
-![NSG-t Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
+![NSG Network Watcher Grafana](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig1.png)
 
 ## <a name="installation-steps"></a>Telepítési lépések
 
@@ -182,7 +182,7 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-További telepítési információk: [telepítés debian / Ubuntu](http://docs.grafana.org/installation/debian/).
+További telepítési információk: [telepítés debian / Ubuntu](https://docs.grafana.org/installation/debian/).
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>Az ElasticSearch-kiszolgáló hozzáadása adatforrásként
 

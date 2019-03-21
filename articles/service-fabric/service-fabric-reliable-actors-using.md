@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 89161f3dad68c4b208f4badc548e2057c7ed58c1
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5ab967cbd630447132300b22da5c5deb31fd50e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852357"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Szolgáltatásszintű funkciók megvalósítása az aktor service-ben
 
@@ -160,13 +160,13 @@ A távoli eljáráshívás V2 (csatoló kompatibilis, más néven V2_1) stack re
 
 A következő módosítások szükségesek a távoli eljáráshívás V2_1 verem használata:
 
- 1. Adja hozzá a következő szerelvény attribútumot az aktorok.
+1. Adja hozzá a következő szerelvény attribútumot az aktorok.
   
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. Hozhat létre, és frissítse az aktorszolgáltatás és az ügyfél aktorprojektek a V2-verem használatának megkezdéséhez.
+2. Hozhat létre, és frissítse az aktorszolgáltatás és az ügyfél aktorprojektek a V2-verem használatának megkezdéséhez.
 
 ### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>Aktor szolgáltatás frissítése távoli eljáráshívás V2 (interface-kompatibilis) stack anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása
 
@@ -174,12 +174,12 @@ Ez a módosítás egy kétlépéses frissítése. Kövesse az itt látható sorr
 
 1. Adja hozzá a következő szerelvény attribútumot az aktorok. Ez az attribútum elindít két figyelői aktorszolgáltatás, V1 (meglévő) és a V2_1 figyelő. Ez a változás az aktorszolgáltatás frissítése.
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+   ```
 
 2. Az aktor ügyfelek frissítése, az előző frissítés befejezése után.
-Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2_1 stack.
+   Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2_1 stack.
 
 3. Ez a lépés nem kötelező. Módosítsa az előző attribútum távolítsa el a V1-figyelőt.
 
@@ -193,13 +193,13 @@ A 2.8-as verziója NuGet-csomagot, a felhasználók most már használhatja a t�
 
 A következő módosítások szükségesek a távoli eljáráshívás V2 verem használata.
 
- 1. Adja hozzá a következő szerelvény attribútumot az aktorok.
+1. Adja hozzá a következő szerelvény attribútumot az aktorok.
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
- 2. Hozhat létre, és frissítse az aktorszolgáltatás és aktorprojektek ügyfél használatához a V2-vermet.
+2. Hozhat létre, és frissítse az aktorszolgáltatás és aktorprojektek ügyfél használatához a V2-vermet.
 
 ### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>A távoli eljáráshívás V2 verem az aktorszolgáltatás frissíteni anélkül, hogy befolyásolná a szolgáltatás rendelkezésre állása
 
@@ -207,12 +207,12 @@ Ez a módosítás egy kétlépéses frissítése. Kövesse az itt látható sorr
 
 1. Adja hozzá a következő szerelvény attribútumot az aktorok. Ez az attribútum elindít két figyelői aktorszolgáltatás, V1 (meglévő) és a V2-figyelő. Ez a változás az aktorszolgáltatás frissítése.
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 2. Az aktor ügyfelek frissítése, az előző frissítés befejezése után.
-Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2 stack.
+   Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli eljáráshívás V2 stack.
 
 3. Ez a lépés nem kötelező. Módosítsa az előző attribútum távolítsa el a V1-figyelőt.
 
@@ -226,7 +226,7 @@ Ebben a lépésben gondoskodik arról, hogy az aktor proxyt használ-e a távoli
 * [Actors-életciklus-kezelés és szemétgyűjtés gyűjtemény](service-fabric-reliable-actors-lifecycle.md)
 * [Aktorok API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189047"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000868"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -104,7 +104,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>Az objektum Active Directory tartományi szolgáltatások engedélyeinek megtekintése 
-Az alábbi parancsmagot használhatja a DistinguishedName azáltal, hogy egy Active Directory-objektum jelenleg beállított engedélyek listájának megtekintéséhez: 
+Az alábbi parancsmag segítségével azáltal, hogy a DistinguishedName Active Directory-objektum jelenleg beállított engedélyek listájának megtekintése: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -158,7 +158,7 @@ Ez a parancsmag állítja a következő engedélyekkel:
 
 |Typo |Name (Név) |Hozzáférés |Erre vonatkozik|
 |-----|-----|-----|-----| 
-|Engedélyezés|AD DS-összekötő fiók|Olvasási/írási tulajdonság|MS-DS-Consistency-Guid|Felhasználói a gyermekobjektumokat|
+|Engedélyezés|AD DS-összekötő fiók|Olvasási/írási tulajdonság|Felhasználói a gyermekobjektumokat|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>Jelszókivonat-szinkronizálási engedélyekkel 
 A Jelszókivonat-szinkronizálás használata esetén az AD DS-összekötő fiókhoz tartozó engedélyek beállításához futtassa: 
@@ -271,7 +271,7 @@ A PowerShell-szkript fog elősegíti a megerősítését a paraméterként AD-ö
 - A megadott objektum öröklődés letiltása 
 - Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE, szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA. 
  
- A paraméter - ADConnectorAccountDN az AD-fiókot, amelynek engedélyeket kell megfeszíteni kell. Ez általában az a MSOL_nnnnnnnnnnnn tartományi fiók, amely az AD DS-összekötő konfigurálva van (lásd a állapítsa meg az AD DS-összekötő fiókot). A - Credential paraméter adja meg a rendszergazdai fiók, amely rendelkezik a szükséges jogosultságokkal a célobjektum AD az Active Directory-engedélyek korlátozása szükség. Ez általában az a vállalati vagy a tartományi rendszergazda.  
+  A paraméter - ADConnectorAccountDN az AD-fiókot, amelynek engedélyeket kell megfeszíteni kell. Ez általában az a MSOL_nnnnnnnnnnnn tartományi fiók, amely az AD DS-összekötő konfigurálva van (lásd a állapítsa meg az AD DS-összekötő fiókot). A - Credential paraméter adja meg a rendszergazdai fiók, amely rendelkezik a szükséges jogosultságokkal a célobjektum AD az Active Directory-engedélyek korlátozása szükség. Ez általában az a vállalati vagy a tartományi rendszergazda.  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 

@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: ef8f66cda7e80ffdafefbbac5de24d45f01401af
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175132"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286930"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>A letiltott jelszavak egyéni lista konfigurálása
-
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
 
 Számos szervezet található, a felhasználók létre közös helyi szavakat, például egy iskolai, focicsapata vagy híres személy, így könnyen kitalálható jelszavakat. A Microsoft egyéni letiltott jelszavak lista lehetővé teszi a szervezetek számára, hogy adja hozzá a karakterláncok kiértékelése és letiltására, mellett a globális le van tiltva jelszólista, ha a felhasználók és rendszergazdák próbál módosítani vagy a jelszó alaphelyzetbe állítása.
 
@@ -31,7 +26,7 @@ Számos szervezet található, a felhasználók létre közös helyi szavakat, p
 
 A letiltott jelszavak egyéni lista konfigurálása egy Azure Active Directory Premium P1 vagy P2-licenc szükséges. Részletes információkat az Azure Active Directory licenceléssel kapcsolatos, tekintse meg a [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/). |}
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem (előzetes verzió)**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory**, **hitelesítési módszerek**, majd **jelszavas védelem**.
 1. A beállítás **érvényesítése egyéni lista**, az **Igen**.
 1. Adja hozzá a karakterláncok a **egyéni le van tiltva a jelszó lista**, soronként egy karakterlánc
    * A letiltott jelszavak egyéni lista legfeljebb 1000 szavakat is tartalmazhat.

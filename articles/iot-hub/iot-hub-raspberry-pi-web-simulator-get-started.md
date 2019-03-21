@@ -3,19 +3,19 @@ title: Raspberry Pi szimulált felhőbe (Node.js) – csatlakozás Raspberry Pi-
 description: Raspberry Pi-webszimulátor csatlakozhat az Azure IoT Hub használata a Raspberry Pi adatokat küldeni az Azure-felhőben.
 author: rangv
 manager: ''
-keywords: Raspberry pi szimulátor, az azure iot raspberry pi, raspberry pi az iot hub, raspberry pi send adatait a felhőbe, a felhőbe a raspberry pi
+keywords: raspberry pi simulator, azure iot raspberry pi, raspberry pi iot hub, raspberry pi send data to cloud, raspberry pi to cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113782"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Online szimulátor Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
@@ -56,7 +56,7 @@ Szimulált Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután meg 
 Kattintson a gombra kattintva indítsa el a Raspberry Pi online szimulátor.
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Indítsa el a Raspberry Pi-szimulátor</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Indítsa el a Raspberry Pi-szimulátor</a>
 
 Három olyan terület a webalkalmazás-szimulátorban történő.
 
@@ -70,8 +70,8 @@ Három olyan terület a webalkalmazás-szimulátorban történő.
    * **Alaphelyzetbe** – a kódolási terület visszaállítása az alapértelmezett mintaalkalmazáshoz.
    * **Modellrészek/Kibontás** – a jobb oldalon van egy gombot, hogy a konzolablakban modellrészek/bontsa ki.
 
-> [!NOTE] 
-A Raspberry Pi-webszimulátor jelenleg előzetes verzióban érhető el. A Hangminta hallani szeretnénk a [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). A forráskódja a nyilvános [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
+> [!NOTE]
+> A Raspberry Pi-webszimulátor jelenleg előzetes verzióban érhető el. A Hangminta hallani szeretnénk a [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). A forráskódja a nyilvános [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
 ![Online szimulátor Pi áttekintése](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 

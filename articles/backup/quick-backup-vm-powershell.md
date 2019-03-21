@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 42c981aa585d35e1d78718b4dee51d450b45e241
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aa637571ca11ea294b1f95df49855d7ee81b3001
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852253"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258870"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
@@ -83,13 +83,13 @@ Biztonsági mentés engedélyezése egy Azure virtuális gép, és adjon meg egy
 
 Biztonsági mentés engedélyezése a következőképpen:
 
-1. Először állítsa be az alapértelmezett házirendet a [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupProtectionPolicy):
+1. Először állítsa be az alapértelmezett házirendet a [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy):
 
     ```powershell
     $policy = Get-AzRecoveryServicesBackupProtectionPolicy     -Name "DefaultPolicy"
     ```
 
-2. A virtuális gép biztonsági mentésének engedélyezése [engedélyezése – AzRecoveryServicesBackupProtection](/powershell/module/Az.RecoveryServices.Backup/Enable-AzRecoveryServicesBackupProtection). Adja meg a szabályzatot, az erőforráscsoportot és a virtuális gép nevét.
+2. A virtuális gép biztonsági mentésének engedélyezése [engedélyezése – AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). Adja meg a szabályzatot, az erőforráscsoportot és a virtuális gép nevét.
 
     ```powershell
     Enable-AzRecoveryServicesBackupProtection `
@@ -107,9 +107,9 @@ Biztonsági másolatok a biztonsági mentési szabályzatban meghatározott üte
 - A kezdeti biztonsági mentés után biztonsági mentési feladatok növekményes helyreállítási pontokat hoz létre.
 - A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
-Egy ad-hoc biztonsági mentés végrehajtásához használja a[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
-- Egy tárolót határozhat meg a tároló, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
-- A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
+Egy ad-hoc biztonsági mentés végrehajtásához használja a[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+- Egy tárolót határozhat meg a tároló, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
+- A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
 Egy ad-hoc biztonsági mentési feladat futtatása a következő:
 
@@ -132,7 +132,7 @@ Egy ad-hoc biztonsági mentési feladat futtatása a következő:
 
 ## <a name="monitor-the-backup-job"></a>A biztonsági mentési feladat monitorozása
 
-1. Futtatás [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupjob) a feladat állapotának monitorozásához.
+1. Futtatás [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) a feladat állapotának monitorozásához.
 
     ```powershell
     Get-AzRecoveryservicesBackupJob

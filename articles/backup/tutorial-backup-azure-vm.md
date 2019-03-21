@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f923589d0ca000e7dfa8d28b1cbeeb8c6e07f25c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835401"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258377"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Biztonsági mentése Azure virtuális gépeken a PowerShell-lel
 
@@ -87,9 +87,9 @@ Biztonsági másolatok a biztonsági mentési szabályzatban meghatározott üte
 
 Engedélyezi, és ebben az oktatóanyagban a mentése az Azure virtuális gép biztonsági mentése, hogy tegye a következőket:
 
-1. Adjon meg egy tárolót a tárolóban, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
-2. Minden virtuális gép biztonsági mentésének egy elemet. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
-3. Egy ad-hoc biztonsági mentés futtatása[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
+1. Adjon meg egy tárolót a tárolóban, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Minden virtuális gép biztonsági mentésének egy elemet. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+3. Egy ad-hoc biztonsági mentés futtatása[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem). 
     - Az első kezdeti biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot.
     - A kezdeti biztonsági mentés után biztonsági mentési feladatok növekményes helyreállítási pontokat hoz létre.
     - A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991243"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295130"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Tartalmak továbbítása igény szerint REST használatával  
 
@@ -41,7 +41,7 @@ A Media Services REST API-kkal a fejlesztés megkezdése a következő előfelt�
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
 * Megismerheti, hogyan hozhat létre Media Services REST API-val. További információkért lásd: [Media Services REST API – áttekintés](media-services-rest-how-to-use.md).
-* A választott HTTP-kérések és válaszok küldő alkalmazás. Ebben az oktatóanyagban [Fiddler](http://www.telerik.com/download/fiddler).
+* A választott HTTP-kérések és válaszok küldő alkalmazás. Ebben az oktatóanyagban [Fiddler](https://www.telerik.com/download/fiddler).
 
 Ebben a rövid útmutatóban a következő feladatok jelennek meg.
 
@@ -331,7 +331,7 @@ Ha ez sikeres, a következő választ adja vissza:
 Miután a AccessPolicy és kereső beállítása, a tényleges fájlt töltenek fel az Azure blob storage-tárolókat az Azure Storage REST API-k használatával. Blokkblobok formájában, fel kell tölteni a fájlokat. A lapblobok az Azure Media Services által nem támogatottak.  
 
 > [!NOTE]
-> A lokátor feltölteni kívánt fájl nevét hozzá kell adnia **elérési út** érték érkezett az előző szakaszban. Például: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> A lokátor feltölteni kívánt fájl nevét hozzá kell adnia **elérési út** érték érkezett az előző szakaszban. Például: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
@@ -459,7 +459,7 @@ A következő kódot kér a kódoló azonosítója.
     }
 
 ### <a name="create-a-job"></a>Feladat létrehozása
-Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó tevékenységeket a két módszer egyikével: Feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat vagy OData kötegelt feldolgozás révén definiálva van soron belül. A Media Services SDK-t használ a kötegelt feldolgozás. Az ebben a cikkben szereplő példák az olvashatóság érdekében, azonban a feladatok is definiálva van soron belül. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó tevékenységeket a két módszer egyikével: Feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat vagy OData kötegelt feldolgozás révén definiálva van soron belül. A Media Services SDK-t használ a kötegelt feldolgozás. Az ebben a cikkben szereplő példák az olvashatóság érdekében, azonban a feladatok is definiálva van soron belül. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Az alábbi példa bemutatja, hogyan hozhat létre, és a egy feladatot egy feladat beállítása egy adott feloldási és minőségi videó kódolásához közzététele. A következő dokumentáció tartalmazza az összes a [készletek feladat](https://msdn.microsoft.com/library/mt269960) a Media Encoder Standard-feldolgozó által támogatott.  
 
@@ -817,8 +817,6 @@ Miután a AccessPolicy és kereső beállítása, letöltheti a fájlt az Azure 
 
 > [!NOTE]
 > Töltse le a lokátor kívánt fájl nevét hozzá kell adnia **elérési út** érték érkezett az előző szakaszban. Például: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
->
->
 
 Az Azure storage-blobokkal való használatáról további információkért lásd: [Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
@@ -912,7 +910,7 @@ Adatfolyam-MPEG DASH, a hozzáfűző (formátum = mpd-time-csf) után a "/ jegyz
 
 
 ## <a id="play"></a>Tartalom lejátszása
-A videótovábbításhoz használja az [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszót.
+A videótovábbításhoz használja az [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszót.
 
 Progresszív letöltés teszteléséhez, illessze be egy URL-címet egy böngészőben (például Internet Explorer, Chrome, a Safari).
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: f9020cd6d35c59e9293e6e8a96b09319f9f8bb00
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225679"
+ms.locfileid: "58284578"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Egy Azure virtuális gépek biztonsági mentésének futó SQL Server-adatbázisok – gyakori kérdések
 
@@ -66,7 +66,7 @@ Nem. A sikeres biztonsági mentési feladatok ne készítsen riasztásokat. Csak
 A **biztonsági mentési feladat** menü csak akkor jelenik meg az ad hoc biztonsági mentési feladatok. Ütemezett feladatot használni [figyelése az Azure Monitor használatával](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Jövőbeli adatbázisok automatikusan hozzáadódnak a biztonsági mentés?
-Igen, akkor érhető el ez a funkció a [automatikus védelem](backup-azure-sql-database.md#enable-auto-protection).  
+Igen, akkor érhető el ez a funkció a [automatikus védelem](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Ha egy adatbázist egy autoprotected-példányból, mi történik a biztonsági mentéseket?
 Ha egy adatbázist egy autoprotected példányból megszakad, a az adatbázis biztonsági mentéséhez továbbra is történt kísérlet. Ez azt jelenti, hogy a törölt adatbázisok alatt állapotúként jelenik meg kezdődik-e **biztonsági másolati elemek** , és továbbra is védve van.
@@ -84,7 +84,7 @@ Egy új adatbázist újra elnevezett adatbázist kell kezelni. Ezért a szolgál
 Kiválaszthatja az adatbázis, amely lett nevezve, és konfigurálja a védelmet, a. Abban az esetben az automatikus védelme a példányon engedélyezve van, az átnevezett adatbázis lehet automatikusan észleli és védett.
 
 ##  <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Miért nem látom, hogy egy hozzáadott adatbázisait autoprotected példányt?
-Egy adatbázis-, amikor [hozzáadása egy autoprotected példányhoz](backup-azure-sql-database.md#enable-auto-protection) előfordulhat, hogy nem jelenik meg azonnal a védett elemek. Ennek oka az, a felderítés általában 8 óránként futtatja. Azonban felderítése, és azonnal védelme új adatbázisokat, abban az esetben, ha a felderítést kiválasztásával manuális futtatása **adatbázisok helyreállításához**, ahogy az alábbi képen látható.
+Egy adatbázis-, amikor [hozzáadása egy autoprotected példányhoz](backup-sql-server-database-azure-vms.md#enable-auto-protection) előfordulhat, hogy nem jelenik meg azonnal a védett elemek. Ennek oka az, a felderítés általában 8 óránként futtatja. Azonban felderítése, és azonnal védelme új adatbázisokat, abban az esetben, ha a felderítést kiválasztásával manuális futtatása **adatbázisok helyreállításához**, ahogy az alábbi képen látható.
 
   ![Egy újonnan hozzáadott adatbázisait manuálisan felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
 

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: d75048cb53dd1a5ebaba6322228af6137d0f3b96
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894631"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -45,7 +45,7 @@ Olvassa el a diagram elérési útja és algoritmus címkéinek "a  *&lt;görbe 
 Néha egyikük sem tökéletes választás. Arra szolgálnak, hogy a szabály az USB javaslatok, így nem kell aggódnia, hogy pontos lehet.
 Beszéltünk az említett, amelyek több az adatszakértők a csak arról a legjobb algoritmus található módja kipróbálni az összes őket.
 
-Íme egy példa a a [Azure AI-katalógusban](http://gallery.azure.ai/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
+Íme egy példa a a [Azure AI-katalógusban](https://gallery.azure.ai/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](https://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Machine learning alapjait kapcsolatos gyakori machine learning kérdésre népszerű algoritmusok könnyen érthető szemléltető ábra áttekintést tölthető le: [Machine learning alapjai algoritmuspéldákkal](basics-infographic-with-algorithm-examples.md).
@@ -180,7 +180,7 @@ Döntési erdő ([regressziós](/azure/machine-learning/studio-module-reference/
 
 Szolgáltatás szóközzel önkényesen kis régiók osztható meg, mert könnyedék tegyük fel, hogy elég osztani egy adatpontot kell régiónként. Ez a overfitting szélsőséges példát. Ennek elkerülése érdekében rengeteg fák kialakítani, matematikai gondosan biztosítják a fák algoritmus nem közötti kapcsolatot. A "döntési erdő" átlagát egy fa, amelyek kiküszöbölik az overfitting. Döntési erdő sok memóriát használhat. Decision jungle algoritmust, amely rovására képzési valamivel hosszabb ideig kevesebb memóriát használ fel variant.
 
-Gyorsított döntési fák algoritmus overfitting tovább lehet futtatásainak számát, és hogyan néhány adatpontot az egyes régiókban engedélyezett korlátozásával elkerülése érdekében. Az algoritmus fák, sorozata, amelyeken a hiba előtt a fa által hátrahagyott kompenzálják megtanulja hoz létre. Ez egy nagyon pontos learner, amely általában sok memóriát használja. Teljes műszaki leírásáért tekintse meg [Friedman az eredeti tanulmány](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Gyorsított döntési fák algoritmus overfitting tovább lehet futtatásainak számát, és hogyan néhány adatpontot az egyes régiókban engedélyezett korlátozásával elkerülése érdekében. Az algoritmus fák, sorozata, amelyeken a hiba előtt a fa által hátrahagyott kompenzálják megtanulja hoz létre. Ez egy nagyon pontos learner, amely általában sok memóriát használja. Teljes műszaki leírásáért tekintse meg [Friedman az eredeti tanulmány](https://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
 [Erdő ki osztóérték regressziós gyors](/azure/machine-learning/studio-module-reference/fast-forest-quantile-regression) a döntési fák az különleges esetet, ahol szeretné tudni, hogy nem csak a tipikus (közepes) értéket a Data-régió, hanem quantiles formájában a terjesztési egy változata.
 
@@ -215,7 +215,7 @@ Egy nem lineáris SVMs ötletes bővítményének használatával a [egy szintű
 Bayes módszerek rendelkezik, célszerű lenne minőségi: azok a overfitting elkerülése érdekében. Erre azáltal, hogy néhány feltételezéseket előre valószínűleg elosztása a választ. Egy másik byproduct erre a megközelítésre arról, hogy rendelkezik-e nagyon kevés paramétert. Az Azure Machine Learning Studio tartalmaz Bayes algoritmus mindkét besorolási ([két osztályú Bayes pontozó gépet](/azure/machine-learning/studio-module-reference/two-class-bayes-point-machine)) és regressziós ([Bayes lineáris regressziós](/azure/machine-learning/studio-module-reference/bayesian-linear-regression)).
 Vegye figyelembe, hogy ezek feltételezik, hogy az adatokat fel vagy egy egyenes vonallal illeszkednek.
 
-Egy korábbi megjegyzés, a Microsoft Research Bayes' pont gépek fejlesztett. Van néhány kivételesen, gyönyörű elméleti munkahelyi mögöttük. Az érdekelt tanulói van irányítva az [JMLR eredeti cikkében](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) és a egy [által Chris Bishop szemléletes blog](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Egy korábbi megjegyzés, a Microsoft Research Bayes' pont gépek fejlesztett. Van néhány kivételesen, gyönyörű elméleti munkahelyi mögöttük. Az érdekelt tanulói van irányítva az [JMLR eredeti cikkében](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) és a egy [által Chris Bishop szemléletes blog](https://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
 ### <a name="specialized-algorithms"></a>Speciális algoritmusok
 Ha lehet, vonulással kapcsolatos adatokat tartalmazó nagyon adott cél. Az Azure Machine Learning Studio-gyűjteményekben vannak specializáltak algoritmusokat használnak:

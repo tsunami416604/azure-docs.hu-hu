@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 159ce1b565068e2cfdb3cb1cb2e5b5f72ff6848f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089165"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>A Linux és Windows Chef Virtuálisgép-bővítmény
 
@@ -69,7 +69,7 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 ### <a name="core-property-values"></a>Core tulajdonságértékek
 
 | Name (Név) | Érték és példa | Adattípus
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
@@ -79,9 +79,9 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
-| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (url) | I |
-| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
-| beállítások/runlist | `recipe[mycookbook::default]` | sztring | I |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (url) | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| settings/runlist | `recipe[mycookbook::default]` | sztring | I |
 
 ### <a name="protected-settings"></a>Védett beállításai
 

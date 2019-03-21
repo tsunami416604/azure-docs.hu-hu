@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 884f9025f4152c391b4b59384bc94b2136daa916
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240745"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257967"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Tartalom közzététele az Azure Portalon  
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Jelölje ki a videót, majd válassza ki a **Lejátszás** gombot.
 Vegye figyelembe a következőket:
 
 * Ellenőrizze, hogy közzétette-e a videót.
-* Az Azure Portal médialejátszója az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, jelölje ki és másolja ki az URL-címet, és illessze be azt egy másik lejátszóba. Az [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszón is tesztelheti például a videót.
+* Az Azure Portal médialejátszója az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, jelölje ki és másolja ki az URL-címet, és illessze be azt egy másik lejátszóba. Az [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszón is tesztelheti például a videót.
 * A streamvégpontra, amelyről streamelési kell futnia.  
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

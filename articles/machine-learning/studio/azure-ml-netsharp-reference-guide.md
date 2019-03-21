@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 13ec97a8356bb24fbbc2098f1249ae8fa5b6e3ce
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905154"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -216,17 +216,16 @@ Nincsenek két készletnyi kitöltési, a folyamatban, egymást kölcsönösen k
 + **UpperPad** és **LowerPad**: (nem kötelező) adjon meg nagyobb mértékben vezérelheti a használandó található Kitöltés mennyisége. **Fontos:** Lehet, hogy ezek az attribútumok meghatározott if, és csak akkor, ha a **Padding** fenti tulajdonság ***nem*** definiálva. Az értékek egész értékű rekordokat, amelyek a csomagot a arity hosszúságú lehet. Ha ezek az attribútumok meg van adva, a bemeneti réteg minden dimenzió az alsó és felső végén "üres" csomópontokat ad hozzá. Minden dimenzió az alsó és felső célból hozzáadott csomópontok száma határozza meg **LowerPad**[i] és **UpperPad**[i] jelölik.
 
     Győződjön meg arról, hogy a kernelt csak "valódi" csomópontok és a "üres" csomópontok megfelelnek-e, hogy a következő feltételeknek kell teljesülniük:
-      - Minden egyes összetevője **LowerPad** kell feltétlenül kevesebb mint `KernelShape[d]/2`.
-      - Minden egyes összetevője **UpperPad** nem lehet nagyobb, mint `KernelShape[d]/2`.
-      - Ezek az attribútumok alapértelmezett értéke egy rekord összes összetevőkkel 0 egyenlő.
+  - Minden egyes összetevője **LowerPad** kell feltétlenül kevesebb mint `KernelShape[d]/2`.
+  - Minden egyes összetevője **UpperPad** nem lehet nagyobb, mint `KernelShape[d]/2`.
+  - Ezek az attribútumok alapértelmezett értéke egy rekord összes összetevőkkel 0 egyenlő.
 
     A beállítás **Padding** = true lehetővé teszi, hogy a lehető kitöltési, hogy a "center" kerneljének belül a "valódi" bemeneti van szükség szerint. Ez módosítja egy kicsit a számítástechnika a kimeneti mérete helyett a számításokat. A kimeneti mérete általában *D* számítja ki, hogy `D = (I - K) / S + 1`, ahol `I` bemeneti mérete, `K` a kernel mérete `S` van a stride és `/` szám (Forduló nullához van ). Ha UpperPad = [1, 1], a bemeneti méret `I` lényegében 29, és így `D = (29 - 5) / 2 + 1 = 13`. Azonban, hogy amikor **Padding** = true, lényegében `I` lekérdezi bumped által `K - 1`; ezért `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Az értékek megadásával **UpperPad** és **LowerPad** kap, ha csak állít be, mint a kitöltési több ellenőrzést **Padding** = true.
 
 Konvolúciós hálózatokat és azok alkalmazásokkal kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>Csomagok készletezési
 
@@ -252,13 +251,13 @@ hidden P1 [5, 12, 12]
 
 Készletezésével rétegek kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (A szakaszban 3.4-es)
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (A szakaszban 3.4-es)
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>Válasz normalizálási kötegek
 
-**Válasz normalizálási** egy helyi normalizálási séma Geoffrey Hinton, először bevezetett és mások a tanulmány [épít besorolás Konvolúciós Neurális hálózatokat és](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Válasz normalizálási** egy helyi normalizálási séma Geoffrey Hinton, először bevezetett és mások a tanulmány [épít besorolás Konvolúciós Neurális hálózatokat és](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
 Válasz normalizálási, ezzel elősegítve a Neurális hálózatokkal általánossá szolgál. Egy idegsejt aktiválási nagyon magas szintű ez, ha egy helyi válasz normalizálási réteg elrejti a környező idegsejtek csoportjának viselkedését aktiválási szintjét. Ez a három paraméter használatával történik (`α`, `β`, és `k`) és a egy konvolúciós struktúra (vagy hálózatok alakzat). A cél-réteg minden idegsejt **y** idegsejt megfelel **x** a forrás-rétegben. Aktiválási szintjét **y** adja meg a következő képletet, ahol `f` idegsejt, az aktiválási szint és `Nx` a kernel (vagy a készlet, amely tartalmazza a idegsejtek csoportjának viselkedését a helyek, a **x**), a következő konvolúciós struktúra által meghatározott módon:
 
@@ -463,4 +462,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>Nyugták
 
-A Net # nyelv Neurális hálózati architektúrájának testreszabásához fejlesztette Microsoft Shon Katzenberger (mérnök, Machine Learning), és ALEKSZEJ Kamenev (Szoftvermérnök, a Microsoft Research). Machine learning-projektek és az alkalmazások és a lemezkép észlelési text analytics belsőleg használatos. További információkért lásd: [az Azure Machine Learning studio - Bevezetés a Net # Neurális hálózatokkal](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+A Net # nyelv Neurális hálózati architektúrájának testreszabásához fejlesztette Microsoft Shon Katzenberger (mérnök, Machine Learning), és ALEKSZEJ Kamenev (Szoftvermérnök, a Microsoft Research). Machine learning-projektek és az alkalmazások és a lemezkép észlelési text analytics belsőleg használatos. További információkért lásd: [az Azure Machine Learning studio - Bevezetés a Net # Neurális hálózatokkal](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

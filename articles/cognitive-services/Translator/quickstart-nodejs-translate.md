@@ -10,19 +10,18 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e89593e33dd7330ce64c46c826c9d0437c4c27d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 08dca771050f1b62cd85208a4b8f3d39340fb97d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834290"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével lefordítani egy karakterlánc, a node.js használatával
 
 Ebben a rövid útmutatóban megtudhatja, hogyan fordíthat le egy szöveges sztringet angolról olasz és német nyelvre a Node.js és a Translator Text REST API használatával.
 
 Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +32,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `translate-text.js` nevű fájlba a projektjében.
+Hozzon létre egy új projektet egy fájlt a kedvenc IDE- vagy szerkesztő, vagy egy új mappát használata `translate-text.js` az asztalon. Ez a kódrészlet majd másolja a projektfájlban:
 
 ```javascript
 const request = require('request');

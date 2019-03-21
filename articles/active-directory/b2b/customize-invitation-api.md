@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbeffd012d2d2445d4a9a927981728e1bbe43e97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670570"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111310"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és testreszabás
 
@@ -44,7 +44,7 @@ Az API-t a következő lehetőségeket biztosítja:
     "sendInvitationMessage": true
     ```
 
-  egy üzenet, amely testre szabható címzettnek
+   egy üzenet, amely testre szabható címzettnek
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ Az API-t a következő lehetőségeket biztosítja:
     "sendInvitationMessage": false
     ```
 
-  Ebben az esetben vissza a beváltási URL-címe az API-val, amely ágyazható be egy e-mail sablon, IM vagy más tetszőleges terjesztési mód.
+   Ebben az esetben vissza a beváltási URL-címe az API-val, amely ágyazható be egy e-mail sablon, IM vagy más tetszőleges terjesztési mód.
 
 6. Végül ha Ön rendszergazda, ha szeretné, a felhasználó nevében meghívása.
 

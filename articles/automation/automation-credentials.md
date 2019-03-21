@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a842c0807a3cfbad78a43bcffa896c83bceedfb9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1070cc97624b39ec929f5083f7073179fb1f068c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899145"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
-Egy Automation-hitelesítőeszközt objektumot, amely tartalmazza a biztonsági hitelesítő adatok, például a felhasználónévvel és jelszóval rendelkezik. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
+Egy Automation-hitelesítőeszközt objektumot, amely tartalmazza a biztonsági hitelesítő adatok, például a felhasználónévvel és jelszóval rendelkezik. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](#activities) tevékenység.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -31,10 +31,10 @@ A következő táblázatban található parancsmagokkal létrehozása és kezel�
 
 | Parancsmagok | Leírás |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Hitelesítőadat-eszköz adatait kérdezi le. Csak kérheti le a hitelesítő adatokat, magát a **Get-AutomationPSCredential** tevékenység. |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Létrehoz egy új Automation-hitelesítő adat. |
-| [Remove- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Eltávolítja az automatizálási hitelesítő adatok. |
-| [Set- AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
+| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |Hitelesítőadat-eszköz adatait kérdezi le. Csak kérheti le a hitelesítő adatokat, magát a **Get-AutomationPSCredential** tevékenység. |
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Létrehoz egy új Automation-hitelesítő adat. |
+| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Eltávolítja az automatizálási hitelesítő adatok. |
+| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
 
@@ -42,10 +42,10 @@ Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése aut
 
 | Parancsmagok | Leírás |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |Hitelesítőadat-eszköz adatait kérdezi le.  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |Létrehoz egy új Automation-hitelesítő adat. |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential?view=azurermps-4.4.0) |Eltávolítja az automatizálási hitelesítő adatok. |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential?view=azurermps-4.4.0) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
+| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |Hitelesítőadat-eszköz adatait kérdezi le.  |
+| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |Létrehoz egy új Automation-hitelesítő adat. |
+| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Eltávolítja az automatizálási hitelesítő adatok. |
+| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |Egy meglévő Automation hitelesítő adat tulajdonságainak beállítása. |
 
 ## <a name="activities"></a>Tevékenységek
 
@@ -53,7 +53,7 @@ Az alábbi táblázatban felsorolt tevékenységek a runbookok és a DSC-konfigu
 
 | Tevékenységek | Leírás |
 |:--- |:--- |
-| Get-AutomationPSCredential |Lekérdezi egy runbookból vagy DSC-konfigurációból a használni kívánt hitelesítő adatokat. Értéket ad vissza egy [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) objektum. |
+| Get-AutomationPSCredential |Lekérdezi egy runbookból vagy DSC-konfigurációból a használni kívánt hitelesítő adatokat. Értéket ad vissza egy [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) objektum. |
 
 > [!NOTE]
 > Kerülendő a változók használata a Get-AutomationPSCredential, mivel ez nehezíti a runbookok és a DSC-konfigurációk közti függőségek, és a tervezés során hitelesítőeszközei – Name paraméterében.
@@ -93,7 +93,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>PowerShell-hitelesítő adat használata
 
-Egy runbook vagy DSC-konfiguráció hitelesítőadat-eszköz kérheti a **Get-AutomationPSCredential** tevékenység. Ez visszaad egy [PSCredential objektum](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , hogy egy tevékenységet, vagy PSCredential paramétert igénylő parancsmagot használhatja. A külön-külön használandó hitelesítő objektum tulajdonságait is lekérhet. Az objektum szerepel egy olyan tulajdonság, a felhasználónév és a biztonságos jelszót, vagy használhatja a **GetNetworkCredential** metódussal adja vissza egy [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) objektum, amely titkosítatlan verziója biztosít a a jelszó.
+Egy runbook vagy DSC-konfiguráció hitelesítőadat-eszköz kérheti a **Get-AutomationPSCredential** tevékenység. Ez visszaad egy [PSCredential objektum](/dotnet/api/system.management.automation.pscredential) , hogy egy tevékenységet, vagy PSCredential paramétert igénylő parancsmagot használhatja. A külön-külön használandó hitelesítő objektum tulajdonságait is lekérhet. Az objektum szerepel egy olyan tulajdonság, a felhasználónév és a biztonságos jelszót, vagy használhatja a **GetNetworkCredential** metódussal adja vissza egy [NetworkCredential](/dotnet/api/system.net.networkcredential) objektum, amely titkosítatlan verziója biztosít a a jelszó.
 
 ### <a name="textual-runbook-sample"></a>Minta szöveges forgatókönyv
 

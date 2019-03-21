@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 733ae4451988651df2a62a22aa6eb1b6fae44309
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ea4cf03b368cebbfc7d1229be28014b54f2c11d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331724"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004317"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatával az Azure Blob Storage-ból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,6 +181,7 @@ Tekintsük át gyorsan másolása az adatok Azure blob storage. Ez az útmutató
     John, Doe
     Jane, Doe
     ```
+
 ### <a name="create-the-data-factory"></a>Az adat-előállító létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **erőforrás létrehozása** a bal felső sarokban, kattintson a **intelligencia és elemzés**, és kattintson a **adat-előállító**.
@@ -249,14 +250,14 @@ Tekintsük át gyorsan másolása az adatok Azure blob storage. Ez az útmutató
     4. Válassza ki az Azure storage-fiókjában.
     5. Kattintson a **tovább**.
 10. Az a **a kimeneti fájl vagy mappa kiválasztása** oldalon:  
-    6. Adja meg **mappa elérési útja** , **adfblobconnector/output / {year} / {month} / {day}**. Adja meg **lapon**.
-    7. Az a **év**válassza **éééé**.
-    8. Az a **hónap**, győződjön meg arról, hogy van-e állítva **MM**.
-    9. Az a **nap**, győződjön meg arról, hogy van-e állítva **nn**.
-    10. Ellenőrizze, hogy a **tömörítési típus** értékre van állítva **None**.
-    11. Ellenőrizze, hogy a **viselkedés másolása** értékre van állítva **fájlok egyesítése**. Ha a kimeneti fájl ezzel a névvel már létezik, az új tartalmakról ugyanazt a fájlt a végén.
-    12. Kattintson a **tovább**.
-    ![Másolja ki az eszköz – a kimeneti fájl vagy mappa kiválasztása](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    1. Adja meg **mappa elérési útja** , **adfblobconnector/output / {year} / {month} / {day}**. Adja meg **lapon**.
+    1. Az a **év**válassza **éééé**.
+    1. Az a **hónap**, győződjön meg arról, hogy van-e állítva **MM**.
+    1. Az a **nap**, győződjön meg arról, hogy van-e állítva **nn**.
+    1. Ellenőrizze, hogy a **tömörítési típus** értékre van állítva **None**.
+    1. Ellenőrizze, hogy a **viselkedés másolása** értékre van állítva **fájlok egyesítése**. Ha a kimeneti fájl ezzel a névvel már létezik, az új tartalmakról ugyanazt a fájlt a végén.
+    1. Kattintson a **tovább**.
+       ![Másolja ki az eszköz – a kimeneti fájl vagy mappa kiválasztása](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Az a **fájlformátum beállításai** lapon tekintse át a beállításokat, és kattintson a **tovább**. A további beállítások egyik egy fejléc hozzáadását a kimeneti fájlt. Ha ezt a lehetőséget választja, egy fejléc sorra kerül az oszlopok neveit, a forrás sémája. Az alapértelmezett oszlopnevek nevezheti át a forrás sémája megtekintésekor. Az első oszlop, például utónév és Vezetéknév második oszlopnak sikerült módosítani. Ezt követően a kimeneti fájl jön létre az ezekkel a nevekkel fejléc oszlopnevekként.
     ![Másolja ki az eszköz - cél fájlformátum beállításai](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. A a **teljesítménybeállításokat** lapon, ellenőrizze, hogy **felhőbeli egység** és **másolatok párhuzamos** vannak beállítva, hogy **automatikus**, és kattintson a Tovább gombra. Ezekkel a beállításokkal kapcsolatos részletekért lásd: [másolási tevékenységek teljesítményéhez és finomhangolási útmutató](data-factory-copy-activity-performance.md#parallel-copy).
@@ -281,7 +282,7 @@ Tekintsük át gyorsan másolása az adatok Azure blob storage. Ez az útmutató
     2017/04/24
     2017/04/25
     ```
-Figyelése és kezelése az adat-előállítók kapcsolatos részletes információkért lásd: [figyelése és kezelése a Data Factory-folyamatot](data-factory-monitor-manage-app.md) cikk.
+   Figyelése és kezelése az adat-előállítók kapcsolatos részletes információkért lásd: [figyelése és kezelése a Data Factory-folyamatot](data-factory-monitor-manage-app.md) cikk.
 
 ### <a name="data-factory-entities"></a>Data Factory-entitások
 Most váltson vissza a lap a Data Factory kezdőlapján. Figyelje meg, hogy jelenleg két társított szolgáltatást, két adatkészletet és egy folyamatot az adat-előállítóban.

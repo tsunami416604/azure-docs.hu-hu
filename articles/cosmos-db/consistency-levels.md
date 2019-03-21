@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2018
-ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/18/2019
+ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903708"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294506"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
-Elosztott adatbázisok által használt, magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön meg az olvasás következetes és a rendelkezésre állási, teljesítmény és késés alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: erős konzisztencia és a végleges konzisztencia. A [linearizálhatósági](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) , vagy az erős konzisztencia modell adatok programozhatóság gold színvonalát. De ad hozzá egy nagy ahhoz, díja (a stabil állapotot) nagyobb késést, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de nehéz alkalmazások. 
+Elosztott adatbázisok által használt, magas rendelkezésre állás, alacsony késleltetésű, illetve mindkettőt, replikációs győződjön meg az olvasás következetes és a rendelkezésre állási, teljesítmény és késés alapvető magával. A legtöbb kereskedelmi forgalomban kapható elosztott adatbázisok kérje meg a fejlesztők számára, hogy a két szélsőséges konzisztencia modell közül választhat: *erős* konzisztencia és *végleges* konzisztencia. A  [linearizálhatósági](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) , vagy az erős konzisztencia modell adatok programozhatóság gold színvonalát. De áron (a stabil állapotot) nagyobb késést hozzáadja, és csökkenteni a rendelkezésre állás (meghibásodások). Végleges konzisztencia, másrészt magasabb rendelkezésre állás és jobb teljesítményt nyújt, de megkönnyíti rögzített alkalmazások. 
 
-Az Azure Cosmos DB választási helyett két szélsőséges spektrumát, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia vége, de vannak számos konzisztenciaszint mentén az értéktartományon. A fejlesztők ezek a beállítások segítségével győződjön meg arról, pontosan lehetőségeket és részletes és magas rendelkezésre állás vagy a teljesítmény tekintetében kompromisszumot kínál. 
+Az Azure Cosmos DB választási helyett két szélsőséges spektrumát, az adatkonzisztencia közelíti meg. Erős konzisztencia és a végleges konzisztencia az értéktartományon végén, de vannak számos konzisztenciaszint mentén az értéktartományon. A fejlesztők ezek a beállítások használatával pontos lehetőségeket és a részletes és kompromisszumot kínál a magas rendelkezésre állás és teljesítmény. 
 
-Az Azure Cosmos DB öt jól definiált konzisztenciamodellekkel konzisztencia spektrum fejlesztők is választhat. Leggyengébb, felé a modellek pedig erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. A modellek a következők: jól definiált és intuitív. Bizonyos valós forgatókönyvek esetén használható. Minden modell biztosít [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és átfogó SLA-k használatával. Az alábbi képen egy átfogó, különböző konzisztenciaszintet látható.
+Az Azure Cosmos DB öt jól definiált konzisztenciamodellekkel konzisztencia spektrum fejlesztők is választhat. A legerősebb több enyhe, hogy a modellek között *erős*, *korlátozott frissesség*, *munkamenet*, *konzisztens előtag*, és *végleges* konzisztencia. A modellek jól definiált és intuitív és bizonyos valós forgatókönyvek esetén is használható. Minden modell biztosít [rendelkezésre állás és teljesítmény kompromisszumot kínál a](consistency-levels-tradeoffs.md) és az SLA-k használatával. Az alábbi képen látható a különböző konzisztenciaszintet egy átfogó.
 
 ![A spektrum, konzisztencia](./media/consistency-levels/five-consistency-levels.png)
 
-A konzisztenciaszintek régiófüggetlen. A konzisztencia szintjét, az Azure Cosmos-fiók összes olvasási műveletek függetlenül a régiót, amelyből az olvasási és írási szolgáltatás szolgálja ki, az Azure Cosmos-fiókjához társított régiók számának vagy a fiók konfigurálva van-e garantáltan egy egy vagy több írási régiót.
+A konzisztenciaszintek régiófüggetlen, és garantáltan a régiót, amelyből az olvasási és írási szolgáltatás szolgálja ki, az Azure Cosmos-fiókjához társított régiók számának függetlenül minden művelet, vagy hogy a fiók egyetlen van beállítva vagy több írási régiót.
 
 ## <a name="scope-of-the-read-consistency"></a>Az olvasás következetes hatóköre
 

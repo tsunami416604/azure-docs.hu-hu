@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 03/20/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: a1d8984b8c9d0859ff754e3d5bfb35bd98236b54
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098559"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295674"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -112,13 +112,13 @@ Ha a Log Analytics-munkaterület hozzáfér az örökölt tarifacsomagok közöt
 3. A **tarifacsomag**válassza ki a tarifacsomagot, majd kattintson a **kiválasztása**.  
     ![A kijelölt tarifacsomag](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha szeretné [módosítása az előfizetés figyelése az Azure monitorban díjszabási modell](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model) amelyek módosulnak, az adott előfizetésben minden munkaterület tarifacsomagját.
+A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha szeretné [módosítása az előfizetés figyelése az Azure monitorban díjszabási modell](usage-estimated-costs.md#moving-to-the-new-pricing-model) amelyek módosulnak, az adott előfizetésben minden munkaterület tarifacsomagját.
 
 > [!NOTE]
 > Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
 
 > [!NOTE]
-> További információ [ARM-n keresztül a tarifacsomag beállítását](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace) és annak biztosítása érdekében, hogy az ARM üzembe helyezési lesz sikeres, függetlenül attól, hogy az előfizetés van a régi vagy új díjszabási modell. 
+> További információ [ARM-n keresztül a tarifacsomag beállítását](template-workspace-configuration.md#create-a-log-analytics-workspace) és annak biztosítása érdekében, hogy az ARM üzembe helyezési lesz sikeres, függetlenül attól, hogy az előfizetés van a régi vagy új díjszabási modell. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>A Log Analytics már nem gyűjt adatokat okozó hibák elhárítása
@@ -138,24 +138,12 @@ Ha leállítja az adatgyűjtést, a OperationStatus figyelmeztetés. Amikor megk
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>A vártnál magasabb szintű használatot okozó hibák elhárítása
 A magasabb szintű használatot a következők okozhatják:
-- A vártnál több adatot küld a rendszer a Log Analytics számára
 - A vártnál több csomópont küld adatokat a Log Analytics számára
+- A vártnál több adatot küld a rendszer a Log Analytics számára
 
-### <a name="data-volume"></a>Adatmennyiség 
-Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
+A következő szakaszok explor
 
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-Vegye figyelembe, hogy a záradék "ahol IsBillable = true" szűri ki az egyes megoldások, amelynek nem jár Adatbetöltési adattípusok. 
-
-Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az adatok tanulmánya szeretné tovább, részletesebben is megtekintheti a:
-
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-### <a name="nodes-sending-data"></a>Adatokat küldő csomópontok
+## <a name="understanding-nodes-sending-data"></a>Adatokat küldő csomópontok ismertetése
 
 Szeretné megtudni, minden nap az utolsó hónapban adatokat küldő számítógépek (csomópontok) számát, használata
 
@@ -171,9 +159,9 @@ A küldő számítógépek listájának lekérése **adattípusok számlázzuk**
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le. 
+E `union withsource = tt *` , különböző adattípusok keresésekre végrehajtása költséges takarékosan kérdezi le. Ez a lekérdezés a használati adatok típusa számítógép információk lekérdezése a régi módja váltja fel.  
 
-Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok:
+Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránkénti száma számlázzuk adattípusok (amely a hogyan Log Analytics számítja ki a számlázható csomópontok számára az örökölt Csomópontonkénti tarifacsomag):
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -181,13 +169,30 @@ Ez is kiterjeszthető való visszatéréshez, a küldő számítógépek óránk
 | where computerName != ""
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
-Megtekintheti a **mérete** számlázható események betöltött számítógépenként, használja a `_BilledSize` -tulajdonsággal, amely biztosítja a mérete (bájt):
+## <a name="understanding-ingested-data-volume"></a>Understanding betöltött adatmennyiség 
+
+Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Vegye figyelembe, hogy a záradék "ahol IsBillable = true" szűri ki az egyes megoldások, amelynek nem jár Adatbetöltési adattípusok. 
+
+Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az adatok tanulmánya szeretné tovább, részletesebben is megtekintheti a:
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
+
+Megtekintheti a **mérete** számlázható események betöltött számítógépenként, használja a `_BilledSize` tulajdonság ([log – standard – tulajdonságok #_billedsize.md](learn more)) biztosítja a mérete (bájt):
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-Ez a lekérdezés a lekérdezés ezt a használati adatok típusa a régi módja váltja fel. 
+A `_IsBillable` tulajdonság határozza meg, hogy a betöltött adatok díjat számolunk ([log – standard – properties.md #_isbillable](Learn more).)
 
 Megtekintheti a **száma** számítógép betöltött események használata
 
@@ -207,8 +212,29 @@ Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot kül
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last `
 
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure-erőforrás, erőforráscsoport vagy előfizetés alapján adatmennyiség
+
+Az Azure-ban üzemeltetett csomópontok adatok beolvasása a **mérete** betöltött számlázható események __számítógépenként__, használja a `_ResourceId` -tulajdonsággal, amely biztosítja az erőforrás teljes elérési útja ([ naplófájl – standard – properties.md #_resourceid](learn more)):
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+
+Az Azure-ban üzemeltetett csomópontok adatok beolvasása a **mérete** betöltött számlázható események __Azure-előfizetésenként__, elemezni a `_ResourceId` tulajdonsága mint:
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+
+Módosítása `subscriptionId` való `resourceGroup` jelennek meg az Azure resouurce csoport számlázható a feldolgozott adatmennyiség. 
+
+
 > [!NOTE]
 > Néhány, a használati adatok típusú mezőt közben továbbra is a séma elavultak, értékeik már fel van töltve lesz. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.
+
+### <a name="querying-for-common-data-types"></a>Általános adattípusok lekérdezése
 
 Ezután részletesen áttekintjük az adatforrás egy adott típusú, Íme néhány hasznos példa a lekérdezésekre:
 
@@ -241,7 +267,7 @@ Néhány javaslatot a gyűjtött naplók mennyiségét csökkenti a következők
 | AzureDiagnostics           | Az erőforrásnapló-gyűjtés módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../insights/solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
 
-### <a name="getting-node-counts"></a>Első csomópont hibás 
+### <a name="getting-security-and-automation-node-counts"></a>Első biztonsági és Automation-csomópont számát 
 
 Ha a "Száma csomópontonként (OMS)" tarifacsomag, akkor számítunk fel a csomópontok és megoldások száma alapján használja, a Insights számát, valamint a tábla, amelynek, számolunk fel az Analytics-csomópontok megjelennek a a **használat és becsült költségek**lapot.  
 
@@ -282,6 +308,7 @@ Különböző automatizálási csomópontok számának megtekintéséhez haszná
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Riasztás létrehozása, amikor az adatgyűjtés szintje a vártnál magasabb
+
 Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:
 - Az adatmennyiség meghalad egy megadott mennyiséget.
 - Az adatmennyiség várhatóan meghalad egy megadott mennyiséget.

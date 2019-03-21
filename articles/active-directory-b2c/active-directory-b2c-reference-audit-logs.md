@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9967893e855770b693f0d581a07fe2910df4a3cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186943"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003599"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -26,6 +26,7 @@ Az Azure Active Directory B2C (Azure AD B2C-vel) tartalmazó rendszertevékenys�
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A naplók a B2C kategóriában elérhető tevékenységek áttekintése
 A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
+
 |Tevékenység típusa |Leírás  |
 |---------|---------|
 |Engedélyezés |Az erőforrások eléréséhez B2C felhasználói engedély vonatkozó (például egy rendszergazda fér hozzá a B2C-szabályzatok listája) tevékenységek         |
@@ -33,7 +34,7 @@ A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 |Alkalmazás | A B2C-alkalmazások CRUD-műveletek |
 |Kulcs |A B2C-kulcstároló tárolt kulcsok CRUD-műveletek |
 |Erőforrás |B2C-erőforrásokat (például a szabályzatok és az identitás-szolgáltatóktól) CRUD-műveletek
-|Hitelesítés |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
+|Authentication |Felhasználói hitelesítő adatok és a kiállítási érvényesítése|
 
 > [!NOTE]
 > A felhasználói objektum CRUD tevékenységhez, tekintse meg a **alapvető könyvtár** kategória.

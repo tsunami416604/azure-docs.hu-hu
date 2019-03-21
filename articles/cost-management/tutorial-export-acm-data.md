@@ -1,21 +1,21 @@
 ---
 title: Oktatóanyag – Az Azure Cost Managementből exportált adatok létrehozása és kezelése | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhatja létre és kezelheti az Azure Cost Managementből exportált adatokat külső rendszerekkel való használat céljából.
+description: Ez a cikk bemutatja, hogyan, hozhat létre és kezelhet az Azure Cost Management exportált adatok, hogy a külső rendszerek használhatja azt.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 5c33538513388a4093a205b44a1e049072402179
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014126"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Hozzon létre, és az exportált adatok kezelése
 
@@ -45,9 +45,9 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-daily-export"></a>Napi rendszerességű exportálás létrehozása
 
-Cost Management + Számlázás &gt; Cost Management &gt; válasszon ki egy előfizetést vagy egy előfizetésben szereplő erőforráscsoportot &gt; Exportálás &gt; **Hozzáadás**.
+Létrehozásához vagy egy adatexportálás megtekintéséhez vagy -exportálás ütemezése, nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **költségelemzés** menüjében. Például keresse meg **előfizetések**, és válasszon ki egy előfizetést a listából, majd válassza ki **költségelemzés** menüjében. A Cost analysis lap tetején kattintson **exportálása** majd válassza az exportálási beállítás. Kattintson például **exportálási ütemezése**. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
-Adjon meg egy nevet az exportálás, válassza ki a **hónap elejétől számított költségek napi exportálási** lehetőséget. Kattintson a **tovább**.
+Kattintson a **Hozzáadás**, adjon meg egy nevet az exportálás, és válassza a **hónap elejétől számított költségek napi exportálási** lehetőséget. Kattintson a **tovább**.
 
 ![Exportálás típust megjelenítő új exportálási példa](./media/tutorial-export-acm-data/basics_exports.png)
 

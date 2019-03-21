@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669975"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295028"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Gyors útmutató: Vendég felhasználók hozzáadása a címtárhoz az Azure Portalon
 
@@ -39,15 +40,15 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 2. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 3.  A **Kezelés** alatt válassza a **Felhasználókat**.
 
-    ![Válassza az Azure Active Directory elemet.](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Képernyőfelvétel: hol a felhasználók kijelölése](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Válassza az **Új vendégfelhasználót**.
 
-    ![Válassza az Azure Active Directory elemet.](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Képernyőfelvétel: hol kell az új Vendég felhasználó kijelölése elem](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  A **Felhasználónév** alatt adja meg a külső felhasználó e-mail-címét. A **Személyes üzenet hozzáadása a meghívóhoz** részen írja be az üdvözlő üzenetet. 
 
-    ![Válassza az Azure Active Directory elemet.](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![Képernyőfelvétel: hol kell beírni a Vendég felhasználói meghívó üzenet](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. A jobb felső sarokban megjelenik az értesítés a **Felhasználó meghívása sikerült** üzenettel. 
 7.  Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
@@ -59,7 +60,7 @@ Adja hozzá a Salesforce alkalmazást a teszt bérlőhöz és rendelje hozzá a 
 3.  Válassza az **Új alkalmazás** lehetőséget.
 4. A **Hozzáadás a katalógusból** részen keresse meg és válassza ki a **Salesforce** elemet.
 
-    ![Válassza az Azure Active Directory elemet.](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Képernyőfelvétel: a katalógus keresőmezőből hozzáadása](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Válassza a **Hozzáadás** lehetőséget.
 6. A **Kezelés** részen jelölje be az **Egyszeri bejelentkezést**, majd az **Egyszeri bejelentkezési mód** részen válassza a **Jelszóalapú bejelentkezést** és kattintson a **Mentés** gombra.
 7. A **Kezelés** részen válassza a **Felhasználók és csoportok** > **Felhasználó hozzáadása** > **Felhasználók és csoportok** pontot.
@@ -71,11 +72,11 @@ Most jelentkezzen be vendégfelhasználóként, hogy lássa a meghívót.
 1.  Jelentkezzen be a teszt vendégfelhasználó e-mail-fiókjába.
 2.  A Beérkezett üzenetek mappában található a „Meghívást kapott” e-mail.
 
-    ![B2B meghívó e-mail](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Képernyőfelvétel: a B2B-meghívó e-mail](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  Az e-mail törzsében válassza az **Első lépések** elemet. Az **Engedélyek felülvizsgálata** lap megnyílik a böngészőben. 
 
-    ![B2B meghívó elfogadási oldal](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Képernyőfelvétel: a felülvizsgálati – engedélyek lap](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Válassza ki az **Elfogadás** lehetőséget. Megnyílik a Hozzáférési Panel, amely megjeleníti azokat az alkalmazásokat, amelyekhez a vendégfelhasználó hozzáférhet.
 

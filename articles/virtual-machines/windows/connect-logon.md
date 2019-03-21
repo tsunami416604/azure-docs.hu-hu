@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: c14b6e16a16f325681722203eaa05a435b141208
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990628"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284782"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Hogyan csatlakozhat, és jelentkezzen be az Azure Windows rendszerű virtuális gép
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális gépet, és jelentkezzen.
 
-Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telepítenie kell egy RDP-ügyfelet Mac például [Microsoft távoli asztal](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
+Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telepítenie kell egy RDP-ügyfelet Mac például [Microsoft távoli asztal](https://aka.ms/rdmac).
 
 ## <a name="connect-to-the-virtual-machine"></a>Csatlakozás a virtuális géphez
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/).

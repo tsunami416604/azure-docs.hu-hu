@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 564c4b011b26f2bc6b034233d014542172a4a739
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885300"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259958"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Az Azure stack-identitás – áttekintés
 
@@ -65,7 +65,7 @@ Az Azure Stackben, felhasználói fiókok:
 - Korlátozva arra a könyvtárra, ahol azok először regisztrálnia, amely a szervezet címtárában.
 - A helyszíni címtárakban importálhatók. További információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-Ha a szervezet bérlői portál jelentkezik be, használhatja a *https://portal.local.azurestack.external* URL-CÍMÉT. Amikor bejelentkezik az Azure Stack portálon eltérő Azure Stack regisztrálásához használt, a tartománynév regisztrálása az Azure Stack segítségével kell hozzáfűzi a portál URL-címét. Például, ha a fabrikam.onmicrosoft.com Azure Stack regisztrálva van, és a bejelentkezett felhasználói fiók van admin@contoso.com, a használatával jelentkezzen be a felhasználói portál URL-cím: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Ha a szervezet bérlői portál jelentkezik be, használhatja a *https:\//portal.local.azurestack.external* URL-CÍMÉT. Amikor bejelentkezik az Azure Stack portálon eltérő Azure Stack regisztrálásához használt, a tartománynév regisztrálása az Azure Stack segítségével kell hozzáfűzi a portál URL-címét. Például, ha a fabrikam.onmicrosoft.com Azure Stack regisztrálva van, és a bejelentkezett felhasználói fiók van admin@contoso.com, lenne használatával jelentkezzen be a felhasználói portál URL-címe: https:\//portal.local.azurestack.external/ Fabrikam.onmicrosoft.com.
 
 ### <a name="guest-users"></a>Vendégfelhasználók
 
@@ -73,7 +73,7 @@ Más címtárbérlők, hogy kapott hozzáférést az erőforrásokhoz a címtár
 
 A vendégfelhasználók meghívása a felhő üzemeltetői és a felhasználók használható [Azure AD B2B együttműködés](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Meghívott felhasználók hozzáférhetnek a dokumentumok, erőforrások és alkalmazások a címtárból, és Ön szabályozhatja a saját erőforrások és adatok. 
 
-Meg vendégként bejelentkezhet egy másik szervezet directory-bérlőhöz. Ehhez a szervezet könyvtárnév hozzáfűzése a portál URL-CÍMÉT. Például, ha a Contoso szervezetben tartozik, és jelentkezzen be a Fabrikam könyvtárat szeretne, használja https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+Meg vendégként bejelentkezhet egy másik szervezet directory-bérlőhöz. Ehhez a szervezet könyvtárnév hozzáfűzése a portál URL-CÍMÉT. Ha például a Contoso szervezetben tartozik, és jelentkezzen be a Fabrikam könyvtárat szeretne, ha a HTTPS protokollt használja:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="applications"></a>Alkalmazások
 
@@ -156,10 +156,10 @@ Alkalmazások és felhasználók számára az Azure Stack-architektúra négy r�
 
 Az identitásszolgáltató a hitelesítéshez, és megjelenik egy JSON Web Token, a következő információkat kell rendelkeznie:
 
-1. **Az identitás rendszerhez (szolgáltató) URL-cím**: Az URL-cím, amelyen az identitásszolgáltató érhető el. Például: *https://login.windows.net*.
+1. **Az identitás rendszerhez (szolgáltató) URL-cím**: Az URL-cím, amelyen az identitásszolgáltató érhető el. Ha például *https:\//login.windows.net*.
 2. **Alkalmazásazonosító URI-t az Azure Resource Manager**: Egyedi azonosítója az Azure Resource Manager, amely regisztrálva van az identitásszolgáltatóval. Emellett akkor is csak az egyes Azure Stack-telepítés.
 3. **hitelesítő adatok**: A hitelesítő adatokat az identitásszolgáltatónál történő hitelesítésre használható.
-4. **URL-cím az Azure Resource Manager**: Az URL-címet az a hely az Azure Resource Manager-szolgáltatás. Ha például *https://management.azure.com* vagy *https://management.local.azurestack.external*.
+4. **URL-cím az Azure Resource Manager**: Az URL-címet az a hely az Azure Resource Manager-szolgáltatás. Ha például *https:\//management.azure.com* vagy *https:\//management.local.azurestack.external*.
 
 Amikor egy egyszerű (egy ügyfél, alkalmazás vagy felhasználó) hitelesítési kérelmet egy erőforráshoz való hozzáféréshez, a kérésnek tartalmaznia kell:
 

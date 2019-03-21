@@ -8,15 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 03/19/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316927"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286601"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Az Azure Search szolgáltatás api-kulcsok létrehozása és kezelése
 
@@ -42,19 +41,35 @@ A keresési szolgáltatás eléréséhez használt kulcsok kétféle: admin (olv
 > [!NOTE]  
 >  Bizalmas adatok átadására például gyenge biztonsági gyakorlat minősül egy `api-key` a kérelem URI-t. Emiatt az Azure Search csak fogad egy lekérdezési kulcsot egy `api-key` a lekérdezésben szereplő karakterláncot, és kerülje ennek során, kivéve, ha az index tartalmát nyilvánosan elérhetőnek kell lennie. Általános szabály, javasoljuk, hogy megadásának a `api-key` fejléc szerint.  
 
-## <a name="find-api-keys-for-your-service"></a>A szolgáltatás api-kulcsainak megkereséséhez
+## <a name="find-existing-keys"></a>Meglévő kulcsok keresése
 
 Hozzáférési kulcsok a portálon vagy keresztül szerezheti be a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/). További információkért lásd: [rendszergazda és a lekérdezési api-kulcsok kezelése](search-security-api-keys.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéshez.
-3. Válassza ki a szolgáltatást, és keresse meg a szolgáltatás oldalán **beállítások** >**kulcsok** rendszergazda és a lekérdezési kulcsok megtekintéséhez.
+3. Válassza ki a szolgáltatást, és a áttekintése lapon kattintson a **beállítások** >**kulcsok** rendszergazda és a lekérdezési kulcsok megtekintéséhez.
 
-![Portál oldalán beállításait, a kulcsok szakaszban](media/search-security-overview/settings-keys.png)
+   ![Portál oldalán beállításait, a kulcsok szakaszban](media/search-security-overview/settings-keys.png)
+
+## <a name="create-query-keys"></a>Lekérdezési kulcsok létrehozása
+
+Lekérdezési kulcsok használhatók belüli index dokumentumok a csak olvasási hozzáféréssel. Hozzáférés és az ügyfélalkalmazások műveletek korlátozása elengedhetetlen a a szolgáltatás a keresés eszközök védelmére. Mindig használjon egy rendszergazdai kulcs helyett lekérdezési kulcs bármely ügyfél alkalmazásból származó lekérdezést.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéshez.
+3. Válassza ki a szolgáltatást, és a áttekintése lapon kattintson a **beállítások** >**kulcsok**.
+4. Kattintson a **lekérdezési kulcsok kezelése**.
+5. A szolgáltatás már létrehozott lekérdezést, vagy hozzon létre akár 50 új lekérdezés kulcsok. Az alapértelmezett lekérdezési kulcs neve nem, de további lekérdezési kulcsok elnevezheti kezelhetőség érdekében.
+
+   ![Hozzon létre vagy a lekérdezési kulcs használata](media/search-security-overview/create-query-key.png) 
+
+
+> [!Note]
+> A lekérdezési kulcs használata megjelenítő példakód található [az Azure Search-index lekérdezése C# ](search-query-dotnet.md).
 
 ## <a name="regenerate-admin-keys"></a>Az adminisztrációs kulcsok újragenerálása
 
-Két adminisztrációs kulcsot minden egyes szolgáltatás jön létre, így is váltása elsődleges kulcs, a másodlagos kulcs használatával a folyamatos hozzáférés érdekében.
+Két adminisztrációs kulcsot minden egyes szolgáltatás jön létre, így elforgathat egy elsődleges kulcs, a másodlagos kulcs használatával a folyamatos hozzáférés érdekében.
 
 Ha az elsődleges és másodlagos kulcsok egy időben hozza létre újra mindkét kulcsot használó szolgáltatási műveletek eléréséhez szükséges alkalmazások többé nem lesz a szolgáltatáshoz való hozzáférést.
 

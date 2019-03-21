@@ -4,15 +4,15 @@ description: Ismerje meg naplózása és figyelése, az Azure Cosmos DB-ben tár
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992090"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259771"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -24,7 +24,7 @@ Legalább egy Azure Cosmos DB-adatbázisok használatához elindítása után el
 
 Tárgyaljuk figyelése az Azure Cosmos DB-fiókot, mielőtt pedig elmagyarázza néhány dolgot kapcsolatos naplózás és figyelés. Nincsenek naplók az Azure platform különböző típusú. Nincsenek [Azure-tevékenységnaplóinak](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [az Azure-metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), események, szívverés-figyelés, műveletnaplók és így tovább. Nincs naplók áll. A naplók teljes listáját megtekintheti [naplózza az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) az Azure Portalon. 
 
-Az alábbi képen látható a különböző elérhető az Azure naplói:
+Az alábbi képen látható az Azure-naplók elérhető különböző típusa:
 
 ![Különböző Azure-naplók](./media/logging/azurelogging.png)
 
@@ -67,7 +67,7 @@ Azure diagnosztikai naplók az erőforrás által kibocsátott vannak, és adja 
 
 Diagnosztikai naplózás engedélyezése a következő erőforrások kell rendelkeznie:
 
-* Egy meglévő Azure Cosmos DB fiókot, adatbázist és tárolót. Ezek az erőforrások létrehozásával kapcsolatos útmutatóért lásd: [egy adatbázis-fiók létrehozása az Azure portal használatával](create-sql-api-dotnet.md#create-a-database-account), [Azure CLI-minták](cli-samples.md), vagy [PowerShell-minták](powershell-samples.md).
+* Egy meglévő Azure Cosmos DB fiókot, adatbázist és tárolót. Ezek az erőforrások létrehozásával kapcsolatos útmutatóért lásd: [egy adatbázis-fiók létrehozása az Azure portal használatával](create-sql-api-dotnet.md#create-account), [Azure CLI-minták](cli-samples.md), vagy [PowerShell-minták](powershell-samples.md).
 
 Diagnosztikai naplózás az Azure Portalon engedélyezéséhez kövesse az alábbi lépéseket:
 
@@ -99,27 +99,23 @@ Metrikák és diagnosztikai célú naplózásának engedélyezése az Azure CLI-
 - Ahhoz, hogy a diagnosztikai naplók tárolása a storage-fiókban, használja ezt a parancsot:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+   az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   A `resourceId` az Azure Cosmos DB-fiók neve. A `storageId` neve, a storage-fiókot, amelyhez is szeretne küldeni a naplókat.
+   A `resource` az Azure Cosmos DB-fiók neve. A következő formátumban van az erőforrás "/subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/ < Azure_Cosmos_account_name >" a `storage-account` a tárfiók neve, mely kíván küldeni a naplókat. További naplófájlokat "MongoRequests" vagy "DataPlaneRequests" kategória paraméter értékét frissítésével bejelentkezhet. 
 
 - Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez, használja ezt a parancsot:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --event-hub-rule <eventHubRuleID> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
-   A `resourceId` az Azure Cosmos DB-fiók neve. A `serviceBusRuleId` egy karakterlánc, a következő formátumban:
-
-   ```azurecli-interactive
-   {service bus resource ID}/authorizationrules/{key name}
-   ```
+   A `resource` az Azure Cosmos DB-fiók neve. A `event-hub-rule` az event hub szabály azonosítója. 
 
 - Ahhoz, hogy a küldő a diagnosztikai naplók a Log Analytics-munkaterülethez, használja ezt a parancsot:
 
    ```azurecli-interactive
-   azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+   az monitor diagnostic-settings create --name cdbdiagsett --resourceId <resourceId> --workspace <resource id of the log analytics workspace> --logs '[{"category":"QueryRuntimeStatistics","enabled":true,"retentionPolicy":{"days":6,"enabled":true}}]'
    ```
 
 Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 55c781d0c6284de1382c9d3e614621c40963194b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c96b924294286be57de90dae7e6534b5ed9306ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55303091"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57874572"
 ---
-# <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool frissítés kiadása 7.1.60126.1 – 1/29 vagy 2019
+# <a name="threat-modeling-tool-update-release-71601261---1292019"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.60126.1 – 1/29/2019
 
 A Microsoft Threat Modeling Tool 7.1.60126.1 verziója jelent meg. január 29 verzióját 2019, és tartalmazza a következő módosításokat:
 
-- A minimálisan szükséges verzió .NET nőtt [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262).
+- A minimálisan szükséges verzió .NET nőtt [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262).
 - Windows minimális szükséges verziója nőtt [Windows 10 Évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) a .NET-függőség miatt.
 - A modell érvényesítése váltógomb szolgáltatást bővült az eszköz beállítások menüjében.
 - Több hivatkozás a fenyegetés tulajdonságok frissítése.
@@ -47,7 +47,7 @@ Váltsa át a modell érvényesítése be- és kikapcsolása lehetőséget a fá
 - Támogatott operációs rendszerek
   - [A Microsoft Windows 10 Évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
 - .NET-verzió megadása kötelező
-  - [.NET 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények
   - Internetkapcsolat szükséges az eszköz, valamint a sablonok a frissítések fogadásához.
 

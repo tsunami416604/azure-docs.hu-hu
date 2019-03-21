@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0524bd224e3da3e6a9b18a4225c88e9c43d07606
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: HT
+ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223410"
+ms.locfileid: "58285129"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Gyors útmutató: A PowerShell és a REST API használatával az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ Ha a szolgáltatás üres és nem az indexek, eredmények az alábbi példához 
 }
 ```
 
-## <a name="1---create-an-index"></a>1 - index létrehozása
+## <a name="1---create-an-index"></a>1 – Index létrehozása
 
 A portál használata, az index léteznie kell a szolgáltatás adatok betöltése előtt. Ebben a lépésben az index határozza meg, majd leküldi azt a szolgáltatást. A [Index létrehozása (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) ebben a lépésben használt.
 
@@ -162,6 +162,8 @@ Eredmények (csak az első két mezőjét kivonatosan) ehhez hasonlóan kell kin
 
 > [!Tip]
 > Az ellenőrzéshez sikerült is a portálon az indexek listában, vagy futtassa újra a parancsot szolgáltatáskapcsolódási ellenőrzéséhez használt megtekintéséhez a *hotels* az indexek gyűjteményben felsorolt index.
+
+<a name="load-documents"></a>
 
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
@@ -253,7 +255,7 @@ Eredmények az alábbi példához hasonlóan kell kinéznie. Megjelenik a 201-es
 }
 ```
 
-## <a name="3---search-an-index"></a>3 – keresés az indexekben
+## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
 Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search API-dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 

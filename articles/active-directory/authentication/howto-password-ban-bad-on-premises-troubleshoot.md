@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás az Azure AD jelszó protection előzetes verziója
-description: Megismerheti az Azure AD jelszó védelmi előzetes gyakori hibáinak elhárítása
+title: Hibaelhárítás az Azure AD jelszóvédelem
+description: Megismerheti az Azure AD jelszó védelmi gyakori hibáinak elhárítása
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409890"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285700"
 ---
-# <a name="preview-azure-ad-password-protection-troubleshooting"></a>Előzetes verzió: Az Azure AD jelszóvédelem hibáinak elhárítása
-
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-troubleshooting"></a>Az Azure AD jelszóvédelem hibáinak elhárítása
 
 Az Azure AD jelszóvédelem üzembe helyezés után hibaelhárítási lehet szükség. Ez a cikk részletezik segítenek megérteni néhány gyakori hibaelhárítási lépéseket.
 
@@ -63,13 +58,13 @@ Ha le van tiltva a KDS-szolgáltatás indítási módja van konfigurálva, ez a 
 
 Egy egyszerű tesztelési erre a problémára az, hogy manuálisan indítsa el a KDS, vagy a szolgáltatás az MMC-kezelőkonzolon keresztül, vagy más szolgáltatás-felügyeleti eszközök használata (például futtassa a "net start kdssvc" parancssort konzolon). Sikeresen elindul-e és fut a KDS várt.
 
-A leggyakoribb okát, hogy az Active Directory tartományvezérlő-objektum kívül az alapértelmezett tartományi szervezeti Egységbe. Ez a konfiguráció nem támogatott, amelyet a KDS, és nem egy Azure AD jelszóvédelem által meghatározott korlátozás. A probléma javítása, hogy a tartományvezérlő-objektum az alapértelmezett tartományi szervezeti Egységbe alatt.
+A KDS éppen nem sikerült elindítani a leggyakrabban használt fő okát, hogy az Active Directory tartományvezérlő-objektum kívül az alapértelmezett tartományi szervezeti Egységbe. Ez a konfiguráció nem támogatott, amelyet a KDS, és nem egy Azure AD jelszóvédelem által meghatározott korlátozás. A probléma javítása, hogy a tartományvezérlő-objektum az alapértelmezett tartományi szervezeti Egységbe alatt.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A gyenge jelszavakat megnyílt, de nem lehet
 
 Ez a probléma számos oka lehet.
 
-1. A tartományvezérlő ügynökök házirend letöltése nem, vagy nem tudja visszafejteni a meglévő szabályzatokat. Ellenőrizze a lehetséges okokért a fenti témakörökben.
+1. A tartományvezérlő-ügynökök nem tudja letölteni egy szabályzatot, vagy nem tudja visszafejteni a meglévő szabályzatokat. Ellenőrizze a lehetséges okokért a fenti témakörökben.
 
 1. A jelszó a házirend-kényszerítési módban továbbra is be van állítva a naplózási. Ebben a konfigurációban van érvényben, újrakonfigurálása az Azure AD jelszóvédelem Portallal érvényesítése. Lásd: [engedélyezze a jelszavas védelem](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
 
@@ -101,7 +96,7 @@ A lefokozás sikeres volt, és a tartományvezérlő újraindítását, és újr
 
 ## <a name="removal"></a>Eltávolítás
 
-Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftver és karbantartása minden kapcsolódó állapota a tartomány és erdő, ez a feladat végezhető el az alábbi lépéseket követve:
+Ha úgy döntenek, hogy távolítsa el az a szoftver az Azure AD jelszó és a tisztítás minden kapcsolódó állapot tartomány és erdő, ez a feladat végezhető el az alábbi lépéseket követve:
 
 > [!IMPORTANT]
 > Fontos sorrendben hajtsa végre ezeket a lépéseket. Ha a Proxy szolgáltatás minden példányát futtató, rendszeresen újra létrehozza a serviceConnectionPoint objektum. Ha a tartományvezérlő-ügynökszolgáltatás bármelyik példányát futtató, rendszeresen újra létrehozza a serviceConnectionPoint objektum és a sysvol-állapot.
@@ -120,7 +115,7 @@ Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftve
 
    Az eredményül kapott objektumok található keresztül a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték.
 
-4. Manuálisan távolítsa el az összes tartományvezérlő ügynök csatlakozási pontok minden tartományi névhasználati környezetében. Lehet, hogy egy ezeket az objektumokat az erdő, attól függően, hogyan széles körben a nyilvános előzetes verziójú szoftver telepítve lett a tartományvezérlőnkénti. Előfordulhat, hogy felderítése a helyét annak az objektumnak a következő Active Directory PowerShell-paranccsal:
+4. Manuálisan távolítsa el az összes tartományvezérlő ügynök csatlakozási pontok minden tartományi névhasználati környezetében. Lehet, hogy egy ezeket az objektumokat az erdő, attól függően, hogyan széles körben a szoftver telepítve lett a tartományvezérlőnkénti. Előfordulhat, hogy felderítése a helyét annak az objektumnak a következő Active Directory PowerShell-paranccsal:
 
    ```PowerShell
    $scp = "serviceConnectionPoint"

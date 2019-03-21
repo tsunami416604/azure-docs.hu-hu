@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD jelszó protection előzetes verziója
-description: A gyenge jelszavakat a helyszíni Active Directoryban letiltása az Azure AD jelszó protection előzetes verziója
+title: Azure AD jelszóvédelem
+description: Az Azure AD Jelszóvédelem letiltása a gyenge jelszavakat a helyszíni Active Directoryban
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fdf308ff6178dcb51ec73e46d43b853f62e7777
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840953"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284868"
 ---
-# <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Előzetes verzió: Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
+# <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
-|     |
-| --- |
-| Az Azure Active Directory (Azure AD) jelszavas védelem és a letiltott jelszavak egyéni lista a nyilvános előzetes verziójú funkciók az Azure AD. Előzetes verziók kapcsolatos információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
-
-Az Azure AD jelszóvédelem új funkciója, amely növeli a szervezeten belüli jelszóházirendek nyilvános előzetes verzióban érhető el. A helyszíni üzembe helyezés jelszavas védelem is a globális és egyéni le van tiltva – jelszó listák az Azure ad-ben tárolt használ. Az azonos ellenőrzi a helyszíni, az Azure AD a felhőalapú módosításokat végez el.
+Az Azure AD jelszóvédelem funkciója, amely növeli a szervezeten belüli jelszóházirendeket. A helyszíni üzembe helyezés jelszavas védelem is a globális és egyéni le van tiltva – jelszó listák az Azure ad-ben tárolt használ. Az azonos ellenőrzi a helyszíni, az Azure AD a felhőalapú módosításokat végez el.
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 

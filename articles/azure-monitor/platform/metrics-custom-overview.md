@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: cb1d08bb7b4c64d8dbcf39a667cb037ff30c38e7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467895"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287264"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
 
@@ -29,7 +29,7 @@ Egyéni metrikák az Azure Monitor használatával több módszert is lehet kül
 
 Ha egyéni mérőszámok küldése az Azure Monitor, minden egyes adatponthoz vagy jelentett értéket tartalmaznia kell a következő információkat.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 Egyéni metrikák az Azure monitornak elküldeni az entitást, amely elküldi a metrika egy érvényes Azure Active Directory (Azure AD-) token kell a **tulajdonosi** a kérelem fejlécében. Érvényes tulajdonosi jogkivonat-beszerzési néhány támogatott módja van:
 1. [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Hozzáférést biztosít az identitás egy Azure-erőforrás, például egy virtuális Gépet. Felügyelt Felügyeltszolgáltatás-identitás (MSI) célja az erőforrásoknak engedélyek bizonyos műveletek elvégzésére. Példa engedélyezi-e saját magáról metrikák kibocsátható egy erőforrást. Az erőforrás vagy az MSI-vel is megadható **figyelési metrikákat közzétevő** engedélyeit egy másik erőforrás. Ezzel az engedéllyel az MSI kibocsátható, valamint egyéb erőforrások mérőszámait.
 2. [Az Azure AD-szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Ebben a forgatókönyvben, egy Azure AD-alkalmazást vagy szolgáltatást rendelhetők engedélyek kibocsátható egy Azure-erőforrás metrikáit.
@@ -55,7 +55,7 @@ Ez a tulajdonság az erőforrás metrikáit, már úgy van üzembe helyezve az A
 >
 
 ### <a name="timestamp"></a>Időbélyeg
-Az Azure Monitor küldött egyes adatpontok egy időbélyeggel kell megjelölni. Az időbélyegző rögzíti, amikor a metrikaérték mért vagy gyűjtött dátuma és időpontja. Az Azure Monitor fogad el metrikaadatok időbélyegzőnél szerint 20 perc a múltban és a jövőben 5 perc.
+Az Azure Monitor küldött egyes adatpontok egy időbélyeggel kell megjelölni. Az időbélyegző rögzíti, amikor a metrikaérték mért vagy gyűjtött dátuma és időpontja. Az Azure Monitor fogad el metrikaadatok időbélyegzőnél szerint 20 perc a múltban és a jövőben 5 perc. Az időbélyeg ISO 8601 formátumban kell lennie.
 
 ### <a name="namespace"></a>Névtér
 Névterek kategorizálása vagy csoportba foglalhatók a hasonló mérőszámok módon. Névterek használatával érheti el, amelyek különböző információkat és teljesítménymutatók gyűjt metrikákat csoportjait elkülönítését. Például előfordulhat, hogy rendelkezik egy nevű névtér **ContosoMemoryMetrics** , amely nyomon követi a használható memória metrikák, amely az alkalmazás profilját. Egy másik névtér nevű **ContosoAppTransaction** előfordulhat, hogy nyomon követheti az alkalmazás felhasználói tranzakció összes metrikákat.
@@ -65,7 +65,7 @@ Névterek kategorizálása vagy csoportba foglalhatók a hasonló mérőszámok 
 
 ### <a name="dimension-keys"></a>Dimenzió kulcsai
 Egy dimenzió egy kulcs vagy érték pár, amely segít a további jellemzőit adja meg az összegyűjtött metrikát. A további jellemzőit használatával is összegyűjtheti a további információ a mérőszám, amely lehetővé teszi, hogy részletesebb elemzéseket. Például a **Memória\lefoglalt memória** metrika előfordulhat, hogy a dimenzió nevű kulcsot **folyamat** , amely rögzíti, hány bájt memóriát a virtuális gép minden egyes folyamat használ fel. Ez a kulcs használatával szűrheti a metrika mennyi memóriát meghatározott folyamatok használnak vagy a felső öt folyamatok azonosíthatja a memóriahasználat.
-Minden egyéni metrika dimenziók legfeljebb 10 lehet.
+Dimenziók nem kötelező, előfordulhat, hogy nem minden metrikák dimenziókat. Egy egyéni metrika dimenziók legfeljebb 10 lehet.
 
 ### <a name="dimension-values"></a>Dimenzió értékei
 Ha egy metrika adatpont minden dimenzió kulcs jelentett, a metrika a reporting nincs a megfelelő dimenzióértékhez. Például akkor előfordulhat, hogy szeretne jelentést készíteni a ContosoApp a virtuális gép által felhasznált memória:
@@ -75,6 +75,7 @@ Ha egy metrika adatpont minden dimenzió kulcs jelentett, a metrika a reporting 
 * A dimenzió érték lesz **ContosoApp.exe**.
 
 Ha egy metrikaérték közzététel, dimenzió kulcsonként dimenziót érték csak adható meg. Ha a virtuális gépen több folyamatok ugyanazt a memóriahasználat, az időbélyeg több metrikaértékek jelentést. Minden egyes metrikaérték lehet megadni másik dimenzió értékét a **folyamat** dimenzió kulcsot.
+Dimenziók nem kötelező, előfordulhat, hogy nem minden metrikák dimenziókat. Ha egy metrika post dimenziókulcsok, megfelelő dimenzió értékei kötelező.
 
 ### <a name="metric-values"></a>Metrikaértékek
 Az Azure Monitor minden metrika egy perces pontossággal időközönként tárolja. Tisztában vagyunk vele, hogy egy adott percben metrika előfordulhat, hogy kell többször kell mintát venni. Ilyen például a CPU-kihasználtság. Vagy előfordulhat, hogy számos különálló események mért van szükség. Ilyen például, jelentkezzen be a tranzakció késéseket. Küldik, és az Azure monitorban fizetnie kell kerekített értékek számának korlátozásához, helyileg is előzetes összesítésre, és a gridre bocsáthatja ki az értékeket:
@@ -169,13 +170,13 @@ A nyilvános előzetes során tegyenek közzé egyéni metrikákat csak egy Azur
 
 |Azure-régió|Regionális végpont előtagja|
 |---|---|
-|USA keleti régiója|https://eastus.monitoring.azure.com/|
-|USA déli középső régiója|https://southcentralus.monitoring.azure.com/|
-|USA nyugati középső régiója|https://westcentralus.monitoring.azure.com/|
-|USA nyugati régiója, 2.|https://westus2.monitoring.azure.com/|
-|Délkelet-Ázsia|https://southeastasia.monitoring.azure.com/|
-|Észak-Európa|https://northeurope.monitoring.azure.com/|
-|Nyugat-Európa|https://westeurope.monitoring.azure.com/|
+|USA keleti régiója| https:\//eastus.monitoring.azure.com/ |
+|USA déli középső régiója| https:\//southcentralus.monitoring.azure.com/ |
+|USA nyugati középső régiója| https:\//westcentralus.monitoring.azure.com/ |
+|USA nyugati régiója, 2.| https:\//westus2.monitoring.azure.com/ |
+|Délkelet-Ázsia| https:\//southeastasia.monitoring.azure.com/ |
+|Észak-Európa| https:\//northeurope.monitoring.azure.com/ |
+|Nyugat-Európa| https:\//westeurope.monitoring.azure.com/ |
 
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok
 Az Azure Monitor ír elő a következő használati korlátokkal, egyéni metrikákra vonatkozóan:
@@ -185,6 +186,7 @@ Az Azure Monitor ír elő a következő használati korlátokkal, egyéni metrik
 |Adatsorozat/előfizetés/régió aktív idő|50,000|
 |Dimenzió kulcsai metrikánként|10|
 |Karakterlánc hosszának metrika névterek, a metrikák nevei, a dimenzió kulcsai és a dimenzió értékei|maximális hossz 256 karakter|
+
 Egy aktív idősorozat számít, ha bármelyik metrika, a dimenzió kulcsot vagy a dimenzió értékét, amely még az elmúlt 12 órában közzétett metrikaértékek egyedi kombinációja.
 
 ## <a name="next-steps"></a>További lépések

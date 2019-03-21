@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 07e3552b58b702cb94c879dd34397010c07522db
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: be285b6a51ae5a0f4239b841ce64100f1875d785
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791936"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294348"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
@@ -104,7 +104,7 @@ A _hozzáférési mód_ vonatkozik, hogy egy felhasználó hozzáfér a Log Anal
 > - Containers
 > - HTTP-adatgyűjtő API által létrehozott egyéni naplók
 >
-> Ha a naplók rendelt megfelelően az erőforrás egy lekérdezés futtatásával és a rekordok vizsgálatával érdekli tesztelheti. Ha a helyes erőforrás-azonosító szerepel a [_ResourceId](log-standard-properties.md#resourceid) tulajdonság, majd az adatok érhető el az erőforrás-központú lekérdezéseket.
+> Ha a naplók rendelt megfelelően az erőforrás egy lekérdezés futtatásával és a rekordok vizsgálatával érdekli tesztelheti. Ha a helyes erőforrás-azonosító szerepel a [_ResourceId](log-standard-properties.md#_resourceid) tulajdonság, majd az adatok érhető el az erőforrás-központú lekérdezéseket.
 
 ### <a name="comparing-access-modes"></a>Hozzáférési módok összehasonlítása
 
@@ -136,15 +136,6 @@ Ez az az alapértelmezett beállítás a március 2019 után létrehozott össze
 > [!NOTE]
 > Ha a felhasználó csak a megfelelő engedélyekkel rendelkezik a munkaterülethez, csak fogják tudni elérni a munkaterület használatával [erőforrás-központú mód](#access-modes).
 
-
-### <a name="define-access-control-mode-in-azure-portal"></a>Adja meg a hozzáférés-vezérlési mód az Azure Portalon
-Megtekintheti a jelenlegi munkaterület hozzáférési mód a **áttekintése** a munkaterület oldalán a **Log Analytics-munkaterület** menü.
-
-![Nézet munkaterület hozzáférési mód](media/manage-access/view-access-control-mode.png)
-
-Ezt a beállítást módosíthatja a a **tulajdonságok** a munkaterülethez tartozó oldal. A beállítás módosítása esetén a rendszer letiltja nincs engedélye a munkaterület konfigurálása.
-
-![Módosítsa a munkaterület hozzáférési mód](media/manage-access/change-access-control-mode.png)
 
 ### <a name="define-access-control-mode-in-azure-portal"></a>Adja meg a hozzáférés-vezérlési mód az Azure Portalon
 Megtekintheti a jelenlegi munkaterület hozzáférési mód a **áttekintése** a munkaterület oldalán a **Log Analytics-munkaterület** menü.
