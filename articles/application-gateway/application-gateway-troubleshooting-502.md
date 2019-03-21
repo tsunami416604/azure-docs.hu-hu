@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997791"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Application Gatewayben hibás átjáróval kapcsolatos hibák elhárítása
 
@@ -83,7 +83,7 @@ Ha jelen van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfelelőe
 
 | Mintavétel tulajdonság | Érték | Leírás |
 | --- | --- | --- |
-| Teszt URL-címe |http://127.0.0.1/ |URL-cím |
+| Teszt URL-címe |`http://127.0.0.1/` |URL-cím |
 | Intervallum |30 |Mintavételi időköz (másodperc) |
 | Időtúllépés |30 |Mintavétel időkorlátja másodpercben |
 | Nem kifogástalan állapot küszöbértéke |3 |Mintavételi újrapróbálkozások számát. A háttérkiszolgáló-van megjelölve, miután az egymást követő mintavételi hiba száma eléri a nem kifogástalan állapot küszöbértéke. |
@@ -92,7 +92,7 @@ Ha jelen van, győződjön meg arról, hogy a DNS-kiszolgáló tudja megfelelőe
 
 * Győződjön meg arról, hogy egy alapértelmezett hely van konfigurálva, és a 127.0.0.1 figyel.
 * Ha a BackendHttpSetting határozza meg, nem a 80-as portot, az alapértelmezett hely a porton figyeljen kell konfigurálni.
-* A hívás http://127.0.0.1:port egy 200-as HTTP-eredménykód adja vissza. Ez a rendszer visszalépteti az 30 másodpercet időkorláton belül.
+* A hívás `http://127.0.0.1:port` egy 200-as HTTP-eredménykód adja vissza. Ez a rendszer visszalépteti az 30 másodpercet időkorláton belül.
 * Győződjön meg arról, hogy a konfigurált port nyitva-e, hogy nincsenek-e tűzfalszabályok vagy az Azure hálózati biztonsági csoportok, amelyek a konfigurált port bejövő vagy kimenő forgalmát blokkolja.
 * Ha az Azure klasszikus virtuális gép vagy Felhőszolgáltatás használja a teljes tartománynév vagy nyilvános IP-cím, győződjön meg arról, hogy a megfelelő [végpont](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) nyitja meg.
 * Ha a virtuális gép az Azure Resource Manageren keresztül történik, és kívül esik a virtuális hálózathoz, ahol az Application Gateway üzemel, [hálózati biztonsági csoport](../virtual-network/security-overview.md) kell konfigurálni a kívánt port a hozzáférés engedélyezéséhez.
@@ -118,7 +118,7 @@ Egyéni állapot-mintavételei lehetővé teszik a rugalmasságra, az alapértel
 Ellenőrizze, hogy az egyéni Állapotminta megfelelően van konfigurálva, az előző táblázatban. Az előző hibaelhárítási lépések mellett is gondoskodjon a következőkről:
 
 * Győződjön meg arról, hogy a mintavétel megfelelően van-e megadva megfelelően a [útmutató](application-gateway-create-probe-ps.md).
-* Application Gateway egy adott hely van konfigurálva, ha a gazdagépen alapértelmezés szerint nevét kell megadni, "127.0.0.1", kivéve, ha más módon konfigurált egyéni mintavétel.
+* Ha az Application Gateway egy adott hely van konfigurálva, a gazdagépen alapértelmezés szerint nevét kell megadni `127.0.0.1`, kivéve, ha más módon konfigurált egyéni mintavétel.
 * Ellenőrizze, hogy a http:// hívás\<gazdagép\>:\<port\>\<elérési út\> 200-as HTTP eredmény kódot ad vissza.
 * Győződjön meg arról, hogy időköz, időtúllépés és UnhealtyThreshold a teljesítményük elfogadható tartományon belül.
 * Egy HTTPS-kapcsolaton keresztüli mintavételi, ügyeljen arra, hogy a háttérkiszolgáló SNI nincs szükség a háttérkiszolgálón magát a fallback tanúsítvány konfigurálásával.

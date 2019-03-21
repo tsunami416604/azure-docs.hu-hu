@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.subservice: files
-ms.openlocfilehash: 92c77ce8124727d658cc596864f88037f6c34ac0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: a0937de97d858084433f969f1f6d4bdb2ae9e3fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893560"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Fejlesztés az Azure Files c++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -39,7 +39,7 @@ A minták összeállításához, szüksége lesz az Azure Storage ügyféloldali
 Telepítse az Azure Storage-kliens 2.4.0 c++, a következő módszerek egyikét használhatja:
 
 * **Linux:** Kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.
-* **Windows:** A Visual Studióban kattintson **eszközök &gt; NuGet-Csomagkezelő &gt; Package Manager Console**. Írja be a következő parancsot a [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.
+* **Windows:** A Visual Studióban kattintson **eszközök &gt; NuGet-Csomagkezelő &gt; Package Manager Console**. Írja be a következő parancsot a [NuGet Package Manager console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.
   
 ```
 Install-Package wastorage
@@ -72,7 +72,7 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-A fájlok és könyvtárak az Azure-fájlmegosztások nevű tárolóban található egy **megosztása**. A storage-fiókot, a fiók kapacitás lehetővé teszi, hogy annyi megosztások rendelkezhet. Szerezzen be egy megosztást és tartalmát a hozzáférést, az Azure Files-ügyfél használata kell.
+A fájlok és könyvtárak az Azure-fájlmegosztások nevű tárolóban található egy **megosztása**. A storage-fiókot, a fiók kapacitás lehetővé teszi, hogy annyi megosztások rendelkezhet. Egy megosztást és tartalmát való hozzáférés megszerzéséhez szeretné használni az Azure Files-ügyfél.
 
 ```cpp
 // Create the Azure Files client.

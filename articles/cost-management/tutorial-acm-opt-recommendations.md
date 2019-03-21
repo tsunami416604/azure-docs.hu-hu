@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6a26b4c08915b44d24290fde2c74d71b9362c11c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000920"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: A javaslatok a költségek optimalizálása
 
@@ -41,7 +41,9 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="view-cost-optimization-recommendations"></a>Optimalizálás javaslatok megtekintése
 
-Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján. Ezt a listában **Cost Management**válassza **Advisor-javaslatok**. Az Advisor díjakkal kapcsolatos ajánlások jelennek meg.
+Költségek optimalizálása javaslatok előfizetés megtekintéséhez nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **Advisor-javaslatok**.
+
+A felügyeleti csoport javaslatok megtekintéséhez nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **költségelemzés** menüjében. Használja a **hatókör** megszámlálásához váltson át egy másik hatókört, például a felügyeleti csoport. Válassza ki **Advisor-javaslatok** menüjében. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
 ![Az Azure Portalon látható a Cost Management Advisor-javaslatok](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

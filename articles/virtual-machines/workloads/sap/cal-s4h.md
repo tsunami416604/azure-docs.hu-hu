@@ -16,21 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c59fcf43cb4767f1d95d769dfce4d5c8755e45ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431412"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990481"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4hana-t az Azure-ban üzembe helyezése
 Ez a cikk ismerteti, hogyan helyezhet üzembe az S/4hana-t az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3.0 használatával. Egyéb SAP HANA-alapú megoldások, például a BW/4HANA, üzembe helyezéséhez kövesse a lépéseket.
 
 > [!NOTE]
-Az SAP CAL kapcsolatos további információkért látogasson el a [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén. SAP is rendelkezik egy blog kapcsolatban a [SAP Cloud Appliance könyvtár 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
-
+> Az SAP CAL kapcsolatos további információkért látogasson el a [SAP Cloud Appliance Library](https://cal.sap.com/) webhelyén. SAP is rendelkezik egy blog kapcsolatban a [SAP Cloud Appliance könyvtár 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+> 
 > [!NOTE]
-2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
+> 2017. május 29. a mellett a kevesebb az előnyben részesített klasszikus üzemi modellben az Azure Resource Manager üzemi modell segítségével az SAP CAL telepítheti. Azt javasoljuk, hogy használja az új Resource Manager-alapú üzemi modellt, és figyelmen kívül hagyja a klasszikus üzemi modellben.
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>A megoldás részletes folyamata
 
@@ -49,8 +49,8 @@ A **megoldások** lap közül mutat be néhányat az elérhető SAP CAL HANA-ala
 
     c. Az SAP CAL engedélyt helyezze üzembe az Azure-előfizetésében.
 
-    > [!NOTE]
-    A következő lépések bemutatják, hogyan hozhat létre a Resource Manager üzembe helyezések SAP CAL-fiókot. Ha már rendelkezik egy SAP CAL-fiókkal, amely a klasszikus üzemi modell van csatolva, *kell* , kövesse az alábbi lépéseket egy új SAP CAL-fiók létrehozásához. Az új SAP CAL-fióknak rendelkeznie kell üzembe helyezni a Resource Manager-modellben.
+   > [!NOTE]
+   >  A következő lépések bemutatják, hogyan hozhat létre a Resource Manager üzembe helyezések SAP CAL-fiókot. Ha már rendelkezik egy SAP CAL-fiókkal, amely a klasszikus üzemi modell van csatolva, *kell* , kövesse az alábbi lépéseket egy új SAP CAL-fiók létrehozásához. Az új SAP CAL-fióknak rendelkeznie kell üzembe helyezni a Resource Manager-modellben.
 
 1. Hozzon létre egy új SAP CAL-fiókot. A **fiókok** lapon látható három lehetősége az Azure-hoz: 
 
@@ -96,10 +96,10 @@ Sikeresen létrehozott egy SAP CAL-fiókot, amely képes:
 Most már elindíthatja az S/4hana-t helyezze üzembe a felhasználói előfizetés az Azure-ban.
 
 > [!NOTE]
-A folytatás előtt határozza meg, hogy rendelkezik-e az Azure vCPU-kvóták az Azure H-sorozatú virtuális gépek. Jelenleg az SAP CAL H-sorozatú virtuális gépek az Azure központi telepítéséhez használja az SAP HANA-alapú megoldások némelyike. Az Azure-előfizetéshez esetleg nincs H-sorozat vCPU-kvóták a H-sorozat esetében. Ha igen, szüksége lehet beolvasni a H-sorozat legalább 16 Vcpu-kvóta az Azure ügyfélszolgálatától.
-
+> A folytatás előtt határozza meg, hogy rendelkezik-e az Azure vCPU-kvóták az Azure H-sorozatú virtuális gépek. Jelenleg az SAP CAL H-sorozatú virtuális gépek az Azure központi telepítéséhez használja az SAP HANA-alapú megoldások némelyike. Az Azure-előfizetéshez esetleg nincs H-sorozat vCPU-kvóták a H-sorozat esetében. Ha igen, szüksége lehet beolvasni a H-sorozat legalább 16 Vcpu-kvóta az Azure ügyfélszolgálatától.
+> 
 > [!NOTE]
-Az SAP CAL az Azure-ban a megoldás üzembe helyezésekor, előfordulhat, hogy csak egy Azure-régiót kiválaszthatja. Az SAP CAL által javasolt eltérő Azure-régióban való üzembe helyezéséhez SAP CAL előfizetést vásárolni kell. Emellett szüksége lehet nyisson meg egy üzenetet az SAP a CAL fiók engedélyezve van, hogy az eredetileg javasolt eltérő Azure-régióban.
+> Az SAP CAL az Azure-ban a megoldás üzembe helyezésekor, előfordulhat, hogy csak egy Azure-régiót kiválaszthatja. Az SAP CAL által javasolt eltérő Azure-régióban való üzembe helyezéséhez SAP CAL előfizetést vásárolni kell. Emellett szüksége lehet nyisson meg egy üzenetet az SAP a CAL fiók engedélyezve van, hogy az eredetileg javasolt eltérő Azure-régióban.
 
 ### <a name="deploy-a-solution"></a>Megoldás üzembe helyezése
 

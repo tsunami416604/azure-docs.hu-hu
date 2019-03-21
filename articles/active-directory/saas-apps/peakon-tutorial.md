@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b841cbe838156cd00876a9a13c7a9cbe1790ea80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211308"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Peakon
 
@@ -190,7 +190,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -220,7 +220,7 @@ Peakon, esetén kiépítése a manuális feladat.
 
     a. Az a **neve** szövegmezőbe típus első néven **Britta** és Vezetéknév szerint **simon**.
 
-    b. Az a **E-mail** beviteli mező, írja be az e-mail-cím, például **Brittasimon@contoso.com**.
+    b. Az a **E-mail** beviteli mező, írja be az e-mail-cím, például **Brittasimon\@contoso.com**.
 
     c. Kattintson a **létrehozás alkalmazott**.
 

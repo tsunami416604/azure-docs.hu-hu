@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfebab81e1c0105bb42cf2853a2f042f128c1fd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731122"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Oktatóanyag: Az Azure Active Directory-integráció az Comm100 élő csevegés
 
@@ -154,29 +154,29 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Comm100 élő csevegés, haj
 
 ### <a name="configure-comm100-live-chat-single-sign-on"></a>Élő csevegés Comm100 egyszeri bejelentkezés konfigurálása
 
-9. Egy másik böngészőablakban, jelentkezzen be Comm100 élő csevegés egy biztonsági-rendszergazdaként.
+1. Egy másik böngészőablakban, jelentkezzen be Comm100 élő csevegés egy biztonsági-rendszergazdaként.
 
-10. Kattintson a lap felső jobb oldalán, **My Account**.
+1. Kattintson a lap felső jobb oldalán, **My Account**.
 
-    ![Myaccount Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Myaccount Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-11. A menüt a bal oldali menüjében kattintson az **biztonsági** majd **ügynök egyszeri bejelentkezés**.
+1. A menüt a bal oldali menüjében kattintson az **biztonsági** majd **ügynök egyszeri bejelentkezés**.
 
-    ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
-12. Az a **ügynök egyszeri bejelentkezés** lapon, a következő lépésekkel:
+1. Az a **ügynök egyszeri bejelentkezés** lapon, a következő lépésekkel:
 
-    ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Biztonsági Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
 
-    a. Az első kiemelt hivatkozásra másolja és illessze be azt a **bejelentkezési URL-** szövegmezőjébe **Comm100 élő csevegés tartomány és URL-címek** szakaszban az Azure Portalon.
+   a. Az első kiemelt hivatkozásra másolja és illessze be azt a **bejelentkezési URL-** szövegmezőjébe **Comm100 élő csevegés tartomány és URL-címek** szakaszban az Azure Portalon.
 
-    b. Az a **SAML egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+   b. Az a **SAML egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
-    c. Az a **távoli kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe**, az Azure Portalról másolt.
+   c. Az a **távoli kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe**, az Azure Portalról másolt.
 
-    d. Kattintson a **válasszon ki egy fájlt** feltölteni a base-64 kódolású tanúsítványt, amelyet már letöltötte az Azure Portalról, a **tanúsítvány**.
+   d. Kattintson a **válasszon ki egy fájlt** feltölteni a base-64 kódolású tanúsítványt, amelyet már letöltötte az Azure Portalról, a **tanúsítvány**.
 
-    e. Kattintson a **módosítások mentése**
+   e. Kattintson a **módosítások mentése**
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -196,7 +196,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -249,7 +249,7 @@ Ahhoz, hogy az Azure AD-felhasználók Comm100 élő csevegés jelentkezzen be, 
 
     ![Új ügynök Comm100 élő csevegés](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+    a. a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon\@contoso.com**.
 
     b. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
 

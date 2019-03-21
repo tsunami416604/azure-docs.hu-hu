@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979759"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900080"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tárolót ajánlatunk a Cloud Partner portálra
 
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre, és a egy tároló-ajánlat bejeg
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap 
 
-Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Válassza ki az új ajánlat menü **tárolók** megjelenítéséhez a **új ajánlat** képezik, és indítsa el az eszközöket egy új tárolót ajánlat meghatározása.
+Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Válassza ki az új ajánlat menü **tárolók** megjelenítéséhez a **új ajánlat** képezik, és indítsa el az eszközöket egy új tárolót ajánlat meghatározása.
 
 ![Tárolók a lehetőséggel új ajánlat](./media/azure-container-offer.png)
 

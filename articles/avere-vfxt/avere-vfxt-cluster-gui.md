@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300472"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856841"
 ---
 # <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT fürt
 
@@ -31,7 +31,7 @@ Mielőtt csatlakozna, győződjön meg arról, hogy az SSH nyilvános/titkos kul
 
 Ha Linux-alapú ügyfelet használ, használja az SSH-alagútkezelési az űrlap-parancsot: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 Ezzel a paranccsal összekapcsolja a fürt felügyeleti IP-címre a fürt vezérlő IP-címen keresztül.
 
@@ -47,7 +47,7 @@ Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt n
 
 Ez a példa a gyakori Windows-alapú terminál segédprogram, a putty-t használja.
 
-Adja meg a PuTTY **állomásnév** mezőt a fürt vezérlő felhasználónévvel és az IP-címére: *your_username*@*controller_public_IP*.
+Adja meg a PuTTY **állomásnév** mezőt a fürt vezérlő felhasználónévvel és az IP-címére: *your_username*\@*controller_public_IP*.
 
 Például: ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt n
 
 Ebben a lépésben egy webböngészőben a konfigurációs eszközt, a vFXT fürtön futó való kapcsolódáshoz használ.
 
-* Az SSH-alagút kapcsolatot, nyissa meg a webböngészőjét, és navigáljon a https://127.0.0.1:8443. 
+* Az SSH-alagút kapcsolatot, nyissa meg a webböngészőjét, és navigáljon a `https://127.0.0.1:8443`. 
 
   Akkor csatlakozik a fürt IP-cím létrehozásakor az alagút, így ugyanúgy kell használnia a localhost IP-címet a böngészőben. Ha nem 8443 helyi portot használta, a portszámot használja.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201160"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
@@ -45,7 +45,7 @@ További információkért lásd: [Mi az Apache Spark Streaming?](hdinsight-spar
 
 ## <a name="scaling-a-cluster"></a>Fürt méretezése
 
-Bár a is megadhat a csomópontok számát a fürt létrehozása során, érdemes megnöveljék vagy csökkentsék a számítási feladatok megfelelő a fürt. Az összes HDInsight-fürtök lehetővé teszik [a fürtben található csomópontok számának módosítását](hdinsight-administer-use-management-portal.md#scale-clusters). A Spark-fürtök nincs adatvesztés, is lehet elvetni, mert az Azure Storage vagy a Data Lake Storage tárolt összes adatot.
+Bár a is megadhat a csomópontok számát a fürt létrehozása során, érdemes megnöveljék vagy csökkentsék a számítási feladatok megfelelő a fürt. Az összes HDInsight-fürtök lehetővé teszik [a fürtben található csomópontok számának módosítását](hdinsight-administer-use-portal-linux.md#scale-clusters). A Spark-fürtök nincs adatvesztés, is lehet elvetni, mert az Azure Storage vagy a Data Lake Storage tárolt összes adatot.
 
 Nincsenek a megszakító technológiák előnyeit. Például a Kafka pufferelés technológiát, így nagyon IO-igényes, és nem kell annyit esemény a feldolgozási teljesítményt. Ezzel szemben például a Spark Streaming streamfeldolgozóknak olyan nagy számítási igényű, nagyobb teljesítményű virtuális gépeket kellene. Ezek a technológiák, különböző fürtök leválasztott sablonkonfigurációkat, azokat egymástól függetlenül lehessen méretezni okból rendszerbetöltést végrehajtani a virtuális gépek legjobb közben.
 

@@ -1,5 +1,5 @@
 ---
-title: Entitás feloldók Beszélgetéstanuló modell – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Entitás feloldók beszélgetés Learner modell – a Microsoft Cognitive Services |} A Microsoft Docs
 titleSuffix: Azure
 description: Ismerje meg, hogyan entitás feloldók Beszélgetéstanuló.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: ebe555bfd7b34efd87d400d786049964665c76e6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cca78e2536a922165f40bbcbabcae005021aa70b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167847"
 ---
 # <a name="entity-resolvers"></a>Entitás feloldók
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja, hogyan entitás feloldók Beszélgetéstanuló
 [![Entitás feloldók oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_EntityResolvers_Preview)](https://aka.ms/cl_Tutorial_v3_EntityResolvers)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz, hogy az általános oktatóanyag Bot fut.
 
     npm run tutorial-general
 
@@ -37,39 +37,44 @@ Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
 ## <a name="steps"></a>Lépések
 
-### <a name="create-a-new-model"></a>Új modell létrehozása
+Indítsa el a kezdőlapon a webes felhasználói felületen.
 
-1. A webes felhasználói felületen a "Új modell" gombra.
-2. A "Name" mezőbe írja be a "Entitás feloldók", találati aránya adja meg, vagy a "Create" gombra.
+### <a name="create-the-model"></a>A modell létrehozása
+
+1. Válassza ki **új modell**.
+2. Adja meg **entitás feloldók** a **neve**.
+3. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-pair-of-entities"></a>Hozzon létre egy pár entitások
 
-1. A bal oldali panelen kattintson a "Entitás", majd kattintson az "Új entitás" gombra.
-2. A "Entitás neve" mezőjében írja be a "indító".
-3. A "Feloldó típusa" legördülő menüben válassza ki a "datetimeV2".
-4. A "Létrehozás" gombra.
-5. Az információk előugró elolvasása után, kattintson az "OK" gombra.
-6. Ugyanazokat a lépéseket követve hozzon létre "return" nevű, "datetimeV2" feloldó típussal is rendelkező másik entitás.
+1. Válassza ki **entitások** a bal oldali panelen, majd **új entitás**.
+2. Adja meg **indító** a **entitásnév**.
+3. Válassza ki **datetimeV2** a **feloldó típus**.
+4. Kattintson a **Létrehozás** gombra. A tájékoztató előugró ablak bezárása kiválasztásával **OK**.
+5. Ismételje meg az 1 – 4 nevű második entitás létrehozásakor lépéseket **vissza** a **datetimeV2** feloldó típusa.
+
+![](../media/T09_entities.png)
 
 ### <a name="create-a-pair-of-actions"></a>Hozzon létre egy pár műveletek
 
-1. A bal oldali panelen kattintson a "Műveletek", majd kattintson az "Új Action" gombra.
-2. A "Bot a válaszban" mező típusa, "a $departure elhagyása, és a $return visszaadó".
-    - FONTOS – adja meg, vagy kattintson az entitásra a legördülő, írja be a "$[entityName]" találati kell Beszélgetéstanuló, különben ide, ha egy entitás helyett.
-    - Figyelje meg, hogy a "Szükséges entitások" mezőt is megkapja ezeket entitásokat, és nem lehet eltávolítani. Ez megakadályozza, hogy ez a művelet váljon érhető el, amíg mindkettő szükséges entitások találhatók.
-3. A "Létrehozás" gombra.
-4. A "Új Action" gombra kattintva ismét létre.
-5. Az a "Bot a response" mezőbe írja be, a "Ha azt tervezi, hogy utazás?".
-6. A "Kizárásának entitások" mező típusa, "indító" és a is típus "return".
-    - Ezek állapítható meg, hogy a robot, ez a művelet nem lépnek, ha bármelyik ezeket az entitásokat tartalmaz értéket.
-7. A "Létrehozás" gombra.
+1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
+2. Adja meg **a $departure elhagyó, és a $return visszaadó** a **robot a válasz...** .
+    - FONTOS – [entityName] $ találati kell beírni adja meg, vagy kattintson a legördülő egyéb Beszélgetéstanuló az entitás a mérlegeli, ez egy entitás helyett.
+    - Figyelje meg, hogy a **szükséges entitások** mező is megkapja ezeket entitásokat, és nem lehet eltávolítani. Ez megakadályozza, hogy ez a művelet váljon érhető el, amíg mindkettő szükséges entitások találhatók.
+3. Kattintson a **Létrehozás** gombra.
+4. Válassza ki **új művelet** hozhat létre egy második műveletet.
+5. Adja meg **Ha azt tervezi, hogy utazás?** a **robot a válasz...** .
+6. Adja meg **indító** és **vissza** a **kizárásának entitások**. Ezek állapítható meg, hogy a robot, ez a művelet nem lépnek, ha bármelyik ezeket az entitásokat tartalmaz értéket.
+7. Kattintson a **Létrehozás** gombra.
 
+![](../media/T09_actions.png)
 
 ### <a name="training"></a>Képzés
 
-1. Tekintse meg a "képzés: [Status]" az a, és várja meg, hogy a rendszer "kész" részét bal felső részen található meg.
+1. Tekintse meg a **képzés: [Status]** a bal felső sarokban lévő **befejezve**.
     - A "Frissítés" hivatkozásra is kattinthat, ha túl sokáig tart.
     - Képzési állapota "Befejezve" azért szükséges, hogy az entitás feloldók működnek, ha a modell betanítását azt.
+
 2. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd kattintson a "Train párbeszédpanel" gombra.
 3. Az első felhasználó utterance (kifejezés), a "book me repülőjegyet" típusú. 
 4. A "Score műveletek" gombra.
@@ -83,6 +88,8 @@ Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
     - Mindegyik mutasson, és figyelje meg, hogyan történik az entitásokat a dátum objektumokat, amely egyértelműen rögzítése a tényleges naptári dátum ellentétben a "Sunday" vagy "holnap".
 10. Válassza ki a "elhagyását választotta a …" A robot választ.
 11. A "Mentés" gombra.
+
+![](../media/T09_training.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5d724583dd4682fb6c0b01e8ec11196936289b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211903"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116265"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások használat meghatalmazott felhasználói identitás az On-meghatalmazásos folyamat
 
@@ -63,12 +63,12 @@ A középső rétegű szolgáltatás és az ügyfélalkalmazás regisztrálja az
     1. Attól függően, hogy az alkalmazás típusát, állítsa be a bejelentkezési URL-cím vagy átirányítási URL-CÍMÉT az alap URL-címre.
     1. Válassza ki **létrehozás** hozhat létre az alkalmazást.
 1. Az Azure Portalon való kilépés előtt hozzon létre egy ügyfélkulcsot.
-    1. Az Azure Portalon válassza az alkalmazást, majd válasszon **beállítások**.
-    1. Válassza ki **kulcsok** a beállítások menüben, és adjon hozzá egy kulcsot az vagy egy vagy két év a kulcs időtartam.
-    1. Ez a lap mentésekor az Azure Portalon a kulcs értékét jeleníti meg. Másolja és mentse a kulcs értékét egy biztonságos helyre.
+   1. Az Azure Portalon válassza az alkalmazást, majd válasszon **beállítások**.
+   1. Válassza ki **kulcsok** a beállítások menüben, és adjon hozzá egy kulcsot az vagy egy vagy két év a kulcs időtartam.
+   1. Ez a lap mentésekor az Azure Portalon a kulcs értékét jeleníti meg. Másolja és mentse a kulcs értékét egy biztonságos helyre.
 
-    > [!IMPORTANT]
-    > Szüksége lesz a kulcs az Alkalmazásbeállítások konfigurálása a végrehajtása során. A kulcs értéke nem jelenik meg újra, és lekérhető más módon nem. Jegyezze fel, amint az Azure Portalon látható.
+      > [!IMPORTANT]
+      > Szüksége lesz a kulcs az Alkalmazásbeállítások konfigurálása a végrehajtása során. A kulcs értéke nem jelenik meg újra, és lekérhető más módon nem. Jegyezze fel, amint az Azure Portalon látható.
 
 ### <a name="register-the-client-application"></a>Az ügyféloldali alkalmazás regisztrálása
 

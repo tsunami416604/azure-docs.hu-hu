@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 3b354ebf5436a6637fe126085225b0ae6c8f1dcc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1d8b6d2df21fe0aabe85754e061db4deb129b32e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895702"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Gyorsan használatba Fivetran és az SQL Data warehouse-bA
 
@@ -80,5 +80,5 @@ A Fivetran bejelentkezni, az SQL Data Warehouse eléréséhez használt hiteles�
 * Állomás (a kiszolgáló neve).
 * Port.
 * Adatbázis.
-* Felhasználói (a felhasználónév legyen **fivetran @_kiszolgáló_neve_**  ahol *kiszolgáló_neve* része az Azure-beli gazdagéppel URI: ***server_name*.database.windows .net** ).
+* Felhasználói (a felhasználónév legyen **fivetran\@_kiszolgáló_neve_**  ahol *kiszolgáló_neve* része az Azure-beli gazdagéppel URI: ***kiszolgáló_neve *. Database.Windows.NET**).
 * A jelszó.

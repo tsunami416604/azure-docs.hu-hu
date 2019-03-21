@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fa6d90866be93645625fa82410f8dd0e3bd33d00
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 12a914b2cdef0a40493dac1a539cf0c2a7703093
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774285"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999808"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
@@ -45,7 +45,7 @@ dflow.head(3)
 
 ||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-|0|10140490|HY329907|07/05/2015. 11:50:00 PM|050XX N NEWLAND ELENTÉS MENTÉSE|0820|LOPÁS|500 USD MAJD A|UTCA.|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 |DU. 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
+|0|10140490|HY329907|07/05/2015. 11:50:00 PM|050XX N NEWLAND ELENTÉS MENTÉSE|0820|LOPÁS|500 USD MAJD A|UTCA.|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 DU. 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|07/05/2015. 11:30:00 ÓRAKOR|011XX W MORSE ELENTÉS MENTÉSE|0460|AKKUMULÁTOR|EGYSZERŰ|UTCA.|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 DU. 12:42:46|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
 |2|10140270|HY329253|07/05/2015. 11:20:00 ÓRAKOR|121XX S ELŐTÉR ELENTÉS MENTÉSE|0486|AKKUMULÁTOR|EGYSZERŰ BELFÖLDI AKKUMULÁTOR|UTCA.|false|true|...|9|53|08B|||2015|07/12/2015 DU. 12:42:46|
 
@@ -60,9 +60,9 @@ case_category = dflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID (Azonosító)|Eset száma|Kis kategória|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
+||ID (Azonosító)|Eset száma|Kis kategória|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
-|0|10140490|HY329907|HY|07/05/2015. 11:50:00 PM|050XX N NEWLAND ELENTÉS MENTÉSE|0820|LOPÁS|500 USD MAJD A|UTCA.|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 |DU. 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
+|0|10140490|HY329907|HY|07/05/2015. 11:50:00 PM|050XX N NEWLAND ELENTÉS MENTÉSE|0820|LOPÁS|500 USD MAJD A|UTCA.|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 DU. 12:42:46|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|HY|07/05/2015. 11:30:00 ÓRAKOR|011XX W MORSE ELENTÉS MENTÉSE|0460|AKKUMULÁTOR|EGYSZERŰ|UTCA.|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 DU. 12:42:46|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
 |2|10140270|HY329253|HY|07/05/2015. 11:20:00 ÓRAKOR|121XX S ELŐTÉR ELENTÉS MENTÉSE|0486|AKKUMULÁTOR|EGYSZERŰ BELFÖLDI AKKUMULÁTOR|UTCA.|false|true|...|9|53|08B|||2015|07/12/2015 DU. 12:42:46|
 
@@ -236,6 +236,7 @@ builder.preview(skip=75, count=5)
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
+
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
@@ -409,7 +410,7 @@ dflow.head(2)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|------|-----|
+|-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|1|101710|Hale megye|10171002158| |
 |1|ALABAMA|1|101710|Hale megye|10171002162| |
 
@@ -423,7 +424,7 @@ dflow.head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale megye|1.017100e + 10|None|
 |1|ALABAMA|Hale megye|1.017100e + 10|None|
 
@@ -434,7 +435,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale megye|1.017100e + 10|None|
 |1|ALABAMA|Hale megye|1.017100e + 10|None|
 
@@ -454,7 +455,7 @@ df.head(2)
 ```
 
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|
+|-----|-------|---------| -------|------|
 |0|ALABAMA|Hale megye|1.017100e + 10|0.0|
 |1|ALABAMA|Hale megye|1.017100e + 10|0.0|
 

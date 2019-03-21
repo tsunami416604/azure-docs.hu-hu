@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 4dac40e9fad8361c0e6c8a8758028743f2506f56
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 95d7fc55accb163e07dcb7d103cc896794720cf4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845456"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -152,7 +152,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel S
     node -v
     npm -v
     ```
-2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből:
+2. A [Yeoman](https://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből:
 
     ```bash
     npm install -g yo

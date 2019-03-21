@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: e12ca7561181412318fa594093b047cd95e4e6bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448033"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894393"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS) ügynök biztonsági mentés támogatási mátrixa
 
@@ -26,9 +26,7 @@ Az Azure Backup biztonsági másolatokat a helyszíni gépek és Azure virtuáli
 - Futtassa a Windows virtuális gépeken, hogy azok biztonsági másolatot készíthet közvetlenül egy tárolót.
 - Futtassa a Microsoft Azure Backup Server (MABS) vagy a System Center Data Protection Manager (DPM) kiszolgáló. Ebben a forgatókönyvben gépeket és számítási feladatok biztonsági mentése a MABS vagy a DPM-kiszolgálóhoz. A MARS-ügynök ezután menti a kiszolgáló egy tárolót az Azure-ban. 
 
-A biztonsági mentési lehetőségek attól függnek, ahová az agent telepítve van. További információkért lásd: [a MARS-ügynök használatával az Azure Backup architektúrájának](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders). További információ a MABS és a DPM biztonsági mentési architektúra: [biztonsági mentést a DPM- vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). További tájékoztatás [követelmények](backup-support-matrix-mabs-dpm.md) a biztonsági mentési architektúra.
-
-## <a name="supported-installations"></a>Támogatott telepítések
+A biztonsági mentési lehetőségek attól függnek, ahová az agent telepítve van. További információkért lásd: [a MARS-ügynök használatával az Azure Backup architektúrájának](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). További információ a MABS és a DPM biztonsági mentési architektúra: [biztonsági mentést a DPM- vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). További tájékoztatás [követelmények](backup-support-matrix-mabs-dpm.md) a biztonsági mentési architektúra.
 
 **Telepítés** | **Részletek**
 --- | ---
@@ -139,14 +137,12 @@ Az Azure Backup támogatja *kapcsolat nélküli beültetés* kezdeti biztonsági
 
 Rendszerállapotfájlok offline biztonsági másolat nem használható.
 
-
 ## <a name="support-for-data-restoration"></a>Adatok helyreállítása támogatása
 
 Használatával a [azonnali visszaállítása](backup-instant-restore-capability.md) funkció az Azure Backup szolgáltatás, visszaállíthatja az adatokat előtt a tárolóba másolja. A gép biztonsági mentését végzi a kell futó .NET-keretrendszer 4.5.2-es vagy újabb verziója.
 
 Biztonsági mentések nem lehet visszaállítani a célszámítógépen az operációs rendszer korábbi verzióját futtató. Például egy Windows 7 rendszert futtató számítógépről készült biztonsági másolatok visszaállíthatók, a Windows 8-as vagy újabb. Azonban egy olyan számítógépről, amely egy Windows 8 rendszerű készült biztonsági másolatok nem lehet visszaállítani, Windows 7 rendszert futtató számítógépen.
 
-
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [biztonsági mentési architektúra, amely a MARS Agent](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders).
+- Tudjon meg többet [biztonsági mentési architektúra, amely a MARS Agent](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Ismerje meg, milyen rendelkezik támogatással, [MABS és a egy DPM-kiszolgáló a MARS-ügynök futtathatja](backup-support-matrix-mabs-dpm.md).

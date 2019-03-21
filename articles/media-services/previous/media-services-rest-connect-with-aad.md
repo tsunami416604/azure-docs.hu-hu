@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: dff6d07f4df1da3de083934e0d8240beb957292e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883593"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Az Azure AD-hitelesítés használata a Media Services API REST-tel eléréséhez
 
@@ -60,8 +60,8 @@ Media Services API eléréséhez kell gyűjtenie a következő adatpontokhoz.
 
 |Beállítás|Példa|Leírás|
 |---|-------|-----|
-|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
-|REST API-végpont|https://amshelloworld.restv2.westus.media.azure.net/api/|Ez az a végpont elleni melyik összes Media Services REST API hívások az alkalmazásban végrehajtott.|
+|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
+|REST API-végpont|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Ez az a végpont elleni melyik összes Media Services REST API hívások az alkalmazásban végrehajtott.|
 |Ügyfél-azonosító (Alkalmazásazonosító)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Az Azure AD-alkalmazás (ügyfél) azonosítója. A hozzáférési jogkivonat beszerzése az ügyfél-azonosító szükséges. |
 |Titkos ügyfélkulcs|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Az Azure AD alkalmazás kulcsainak (ügyfél titkos kódot). A hozzáférési jogkivonat lekérése szükséges az ügyfél titkos kulcsát.|
 
@@ -69,7 +69,7 @@ Media Services API eléréséhez kell gyűjtenie a következő adatpontokhoz.
 
 Az információk lekéréséhez kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg az AMS-példányhoz.
 3. Válassza ki **API-hozzáférés**.
 4. Kattintson a **csatlakozhat az Azure Media Services API-szolgáltatásnév**.
@@ -83,33 +83,33 @@ Az információk lekéréséhez kövesse az alábbi lépéseket:
 
     Ha szeretne létrehozni egy új AD-alkalmazást, kövesse az alábbi lépéseket:
     
-    1. Nyomja meg **létrehozása új**.
-    2. Adjon meg egy nevet.
-    3. Nyomja meg **hozzon létre új** újra.
-    4. Kattintson a **Mentés** gombra.
+   1. Nyomja meg **létrehozása új**.
+   2. Adjon meg egy nevet.
+   3. Nyomja meg **hozzon létre új** újra.
+   4. Kattintson a **Mentés** gombra.
 
-    ![API-hozzáférés](./media/connect-with-rest/new-app.png)
+      ![API-hozzáférés](./media/connect-with-rest/new-app.png)
 
-    Az új alkalmazás megjelenik az oldalon.
+      Az új alkalmazás megjelenik az oldalon.
 
 6. Első a **ügyfél-azonosító** (Alkalmazásazonosító).
     
-    1. Válassza ki az alkalmazást.
-    2. Első a **ügyfél-azonosító** a jobb oldali ablakban. 
+   1. Válassza ki az alkalmazást.
+   2. Első a **ügyfél-azonosító** a jobb oldali ablakban. 
 
-    ![API-hozzáférés](./media/connect-with-rest/existing-client-id.png)
+      ![API-hozzáférés](./media/connect-with-rest/existing-client-id.png)
 
-7.  Az alkalmazás **kulcs** (ügyfél titkos kódot). 
+7. Az alkalmazás **kulcs** (ügyfél titkos kódot). 
 
-    1. Kattintson a **alkalmazás kezeléséhez** gomb (figyelje meg, hogy az ügyfél-azonosító adatai területen **Alkalmazásazonosító**). 
-    2. Nyomja meg **kulcsok**.
+   1. Kattintson a **alkalmazás kezeléséhez** gomb (figyelje meg, hogy az ügyfél-azonosító adatai területen **Alkalmazásazonosító**). 
+   2. Nyomja meg **kulcsok**.
     
-        ![API-hozzáférés](./media/connect-with-rest/manage-app.png)
-    3. Hozza létre a az alkalmazás kulcsot (ügyfél titkos kódot) kitöltésével **leírás** és **LEJÁRAT** billentyű megnyomásával **mentése**.
+       ![API-hozzáférés](./media/connect-with-rest/manage-app.png)
+   3. Hozza létre a az alkalmazás kulcsot (ügyfél titkos kódot) kitöltésével **leírás** és **LEJÁRAT** billentyű megnyomásával **mentése**.
     
-        Miután a **mentése** bekapcsolva, megjelenik a kulcs értékét. Másolja a kulcs értékét a panel elhagyása előtt.
+       Miután a **mentése** bekapcsolva, megjelenik a kulcs értékét. Másolja a kulcs értékét a panel elhagyása előtt.
 
-    ![API-hozzáférés](./media/connect-with-rest/connect-with-rest03.png)
+   ![API-hozzáférés](./media/connect-with-rest/connect-with-rest03.png)
 
 Hozzáadhat AD kapcsolódási paraméterek értékei a web.config vagy az app.config fájlban, hogy a kód későbbi felhasználásra.
 
