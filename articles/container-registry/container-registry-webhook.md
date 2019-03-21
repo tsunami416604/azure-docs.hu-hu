@@ -5,29 +5,29 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/20/2017
+ms.date: 03/14/2019
 ms.author: danlep
-ms.openlocfilehash: cbfbe5bf0df1b4f40752b5b233dff6416bcdd309
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0a3d2d0e858dc052095c0a58287970d10c06f0ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770601"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099848"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
-Egy Azure container registry tárolja és kezeli a privát Docker-tárolók lemezképeit, Docker Hub nyilvános Docker-rendszerképeket tárol hasonló. Amikor az egyes műveletekre kerül sor egy, a beállításjegyzék-tárházak kiváltó események webhookok is használhatja. Webhookok reagálhat az eseményekre a beállításjegyzék szintjén, vagy azok leszűkítheti egy adott adattárra címkét.
+Egy Azure container registry tárolja és kezeli a privát Docker-tárolók lemezképeit, Docker Hub nyilvános Docker-rendszerképeket tárol hasonló. Azt is üzemeltethetnek tárolóhelyekkel [Helm-diagramok](container-registry-helm-repos.md) (előzetes verzió) üzembe helyezéséhez a Kubernetes-alkalmazások csomagolási formázása. Amikor az egyes műveletekre kerül sor egy, a beállításjegyzék-tárházak kiváltó események webhookok is használhatja. Webhookok reagálhat az eseményekre a beállításjegyzék szintjén, vagy azok leszűkítheti egy adott adattárra címkét.
 
 További információ a webhook-kérelem: [Azure Container Registry webhookok sémaleírás](container-registry-webhook-reference.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure container registry - tároló-beállításjegyzék létrehozása az Azure-előfizetésében. Például a [az Azure portal](container-registry-get-started-portal.md) vagy a [Azure CLI-vel](container-registry-get-started-azure-cli.md).
+* Az Azure container registry - tároló-beállításjegyzék létrehozása az Azure-előfizetésében. Például a [az Azure portal](container-registry-get-started-portal.md) vagy a [Azure CLI-vel](container-registry-get-started-azure-cli.md). A [Azure Container Registry Termékváltozatai](container-registry-skus.md) különböző webhookok kvóták.
 * Docker CLI - helyi számítógépét Docker-gazdagépként beállítani és elérni a Docker CLI-parancsok telepítése [Docker-motor](https://docs.docker.com/engine/installation/).
 
-## <a name="create-webhook-azure-portal"></a>Az Azure portal webhook létrehozása
+## <a name="create-webhook---azure-portal"></a>Webhook – Azure portal létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Lépjen a tárolóregisztrációs adatbázisba, amelyben meg szeretné hozzon létre egy webhookot.
 1. A **szolgáltatások**válassza **Webhookok**.
 1. Válassza ki **Hozzáadás** a webhook eszköztáron.
@@ -35,20 +35,20 @@ További információ a webhook-kérelem: [Azure Container Registry webhookok s�
 
 | Érték | Leírás |
 |---|---|
-| Name (Név) | Kíván adni a webhook nevét. Csak kisbetűket és számokat tartalmazhat, és 5 – 50 karakter hosszúságúnak kell lennie. |
+| Name (Név) | Kíván adni a webhook nevét. Csak betűket és számokat tartalmazhat, és 5 – 50 karakter hosszúságúnak kell lennie. |
 | Szolgáltatás URI-ja | Az URI-t, a webhook POST értesítéseket küldjön-e. |
 | Egyéni fejlécek | A POST-kérés továbbítása a kívánt fejléceket. Lehetnek a "kulcs: érték" formátumban. |
-| Műveletek indítása | A webhook kiváltó műveletek. Webhookok jelenleg kép leküldéses aktiválhatja és/vagy törlési műveleteket. |
+| Műveletek indítása | A webhook kiváltó műveletek. Műveletek közé tartozik kép leküldéses, lemezkép törlése, Helm-diagram leküldéses, Helm-diagram törlése, és képet karanténba. Választhat egy vagy több műveletet a webhook aktiválásához. |
 | status | A webhook létrehozása után az állapotát. Ez alapértelmezés szerint engedélyezve van. |
-| Hatókör | A hatókör, amelyen a webhook működik. Alapértelmezés szerint a hatóköre az összes esemény a beállításjegyzékben. Azt adható meg a tárházban vagy a címke a "tárházat: címkét" formátumban. |
+| Hatókör | A hatókör, amelyen a webhook működik. Nincs megadva, a hatókör-e az összes esemény a beállításjegyzékben. Azt adható meg a tárház vagy egy címkét a következő formátumban: "tárházat: címke" vagy "tárház: *" az összes olyan címkével. |
 
 Példa webhook-űrlapon:
 
 ![Az ACR webhook létrehozása felhasználói felület az Azure Portalon](./media/container-registry-webhook/webhook.png)
 
-## <a name="create-webhook-azure-cli"></a>Azure CLI-vel webhook létrehozása
+## <a name="create-webhook---azure-cli"></a>Hozzon létre a webhook – Azure CLI-vel
 
-Hozzon létre egy webhookot, az Azure CLI-vel, használja a [az acr webhook létrehozása](/cli/azure/acr/webhook#az-acr-webhook-create) parancsot.
+Hozzon létre egy webhookot, az Azure CLI-vel, használja a [az acr webhook létrehozása](/cli/azure/acr/webhook#az-acr-webhook-create) parancsot. A következő parancs létrehoz egy webhookot, az összes rendszerkép események törlése a beállításjegyzékben *mycontainerregistry*:
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -58,7 +58,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Való használata előtt a webhook tárolón leküldéses kép és törlési műveleteket, tesztelheti azt a **Ping** gombra. Ping egy általános POST kérést küld a megadott végponton, és a válasz naplózza. A ping szolgáltatás használatával segítségével ellenőrizze, hogy megfelelően állította be a webhook.
+A webhook használata előtt tesztelheti azt a **Ping** gombra. Ping egy általános POST kérést küld a megadott végponton, és a válasz naplózza. A ping szolgáltatás használatával segítségével ellenőrizze, hogy megfelelően állította be a webhook.
 
 1. Válassza ki a vizsgálni kívánt webhook.
 2. A felső eszköztáron válassza **Ping**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841021"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
 
@@ -35,7 +35,7 @@ Figyelés, észlelni, diagnosztizálása és hibaelhárítása lehetővé teszi 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Service Fabric Java-alkalmazások hibakeresése
 
-Java-alkalmazások [több naplózási keretrendszerekből](http://en.wikipedia.org/wiki/Java_logging_framework) érhetők el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE együtt is használható a [a GitHub-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started). A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszer.
+Java-alkalmazások [több naplózási keretrendszerekből](https://en.wikipedia.org/wiki/Java_logging_framework) érhetők el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE együtt is használható a [a GitHub-kódpéldák](https://github.com/Azure-Samples/service-fabric-java-getting-started). A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszer.
 
 Java.util.logging használatával irányíthatja át az alkalmazásnaplókat a memória, a kimeneti Stream, a konzol fájlok vagy a sockets. Ezek a beállítások mindegyike esetében nincsenek alapértelmezett kivételkezelők keretében nyújtott. Létrehozhat egy `app.properties` fájlt, hogy az alkalmazás összes naplók átirányítása egy helyi fájlba a fájl-kezelő konfigurálása.
 
@@ -64,7 +64,7 @@ Ezt a konfigurációt eredményez, egy rotált módon összegyűjtött naplók `
 
 Alapértelmezés szerint ha obsluha explicit módon van konfigurálva, a konzol kezelő regisztrálva van. A naplók alapján /var/log/syslog syslog egy tekinthető meg.
 
-További információkért lásd: a [a GitHub-kódpéldák](http://github.com/Azure-Samples/service-fabric-java-getting-started).
+További információkért lásd: a [a GitHub-kódpéldák](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Service Fabric C#-alkalmazások hibakeresése

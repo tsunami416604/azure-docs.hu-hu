@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895516"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008210"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Az Azure Data Lake Storage Gen2 biztonsági útmutató
 
@@ -88,7 +88,7 @@ Az alábbiakban a fő pontokat kell tudni az RBAC használatával el az Azure St
 
 A tárfiókkulcsok 512 bites karakterláncok hozott létre Azure-és a tárfiók nevét, például a storage-fiókban tárolt adatok objektumok elérése is használható, -blobokkal, az entitások egy táblát, üzenetsorbeli üzenetek és a egy Azure-beli megosztáson található fájlok. A tárolási fiók kulcsok szabályozza a hozzáférést az adatsík a tárfiókhoz való hozzáférés szabályozása.
 
-Minden tárfióknak a "Kulcs 1" és "2. kulcsba" említett két kulcs van a [az Azure portal](http://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek helyreállíthatja segítségével manuálisan többféle módszer áll rendelkezésre, többek között, de nem csak az egyik a [az Azure portal](https://portal.azure.com/), PowerShell, az Azure CLI- vagy programozott módon, a Storage .NET ügyféloldali kódtár vagy az Azure Storage szolgáltatások segítségével REST API-T.
+Minden tárfióknak a "Kulcs 1" és "2. kulcsba" említett két kulcs van a [az Azure portal](https://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek helyreállíthatja segítségével manuálisan többféle módszer áll rendelkezésre, többek között, de nem csak az egyik a [az Azure portal](https://portal.azure.com/), PowerShell, az Azure CLI- vagy programozott módon, a Storage .NET ügyféloldali kódtár vagy az Azure Storage szolgáltatások segítségével REST API-T.
 
 Nincsenek újragenerálni a tárfiókkulcsokat számtalan.
 
@@ -167,7 +167,7 @@ Ezenkívül azt is megadhatja, hogy SAS használatával kérelmek egy adott IP-c
 
 Egy közös hozzáférésű Jogosultságkód olyan lekérdezési paraméterek hozzáfűzésével mutat az erőforrás URL-címre
 
-amely ismerteti a hozzáférés engedélyezett, és mennyi ideig, amelyhez a hozzáférés engedélyezett. Íme egy példa; Ez az URI blob írásvédett hozzáférést biztosít az öt perc alatt. SAS lekérdezési paramétereket kell URL-kódolású, például a kettőspont (:) vagy 20 %-terület % 3A.
+amely ismerteti a hozzáférés engedélyezett, és mennyi ideig, amelyhez a hozzáférés engedélyezett. Íme egy példa; Ez az URI blob írásvédett hozzáférést biztosít az öt perc alatt. SAS lekérdezési paraméterek lehet URL-kódolású, például a % 3A a kettőspont (:) vagy szóközzel 20 %.
 
 ```
 http://mystorage.dfs.core.windows.net/myfilesystem/myfile.txt (URL to the file)

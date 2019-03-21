@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238794"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089964"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Futtatása és tesztelése a U-SQL az Azure Data Lake U-SQL SDK-val
 
@@ -32,11 +32,11 @@ A Data Lake U-SQL SDK-t igényel a következő függőségeket:
 - [A Microsoft .NET-keretrendszer 4.6-os vagy újabb](https://www.microsoft.com/download/details.aspx?id=17851).
 - A Microsoft Visual C++ 14 és a Windows SDK-val 10.0.10240.0 vagy újabb (modellvezérelt CppSDK ebben a cikkben). Kétféleképpen CppSDK beolvasásához:
 
-    - Telepítés [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). A Program Files mappában – például, C:\Program Files (x86) \Windows Kits\10\ rendelkezni fog egy \Windows Kits\10 mappát. A Windows 10 SDK-verzió \Windows Kits\10\Lib alatt is találhat. Ha nem látja ezeket a mappákat, telepítse újra a Visual Studióban, és ügyeljen arra, hogy válassza ki a Windows 10 SDK telepítése során. Ha ez telepítve a Visual Studióval, a U-SQL helyi fordító megkeresi azt automatikusan.
+  - Telepítés [Visual Studio Community Edition](https://developer.microsoft.com/downloads/vs-thankyou). A Program Files mappában – például, C:\Program Files (x86) \Windows Kits\10\ rendelkezni fog egy \Windows Kits\10 mappát. A Windows 10 SDK-verzió \Windows Kits\10\Lib alatt is találhat. Ha nem látja ezeket a mappákat, telepítse újra a Visual Studióban, és ügyeljen arra, hogy válassza ki a Windows 10 SDK telepítése során. Ha ez telepítve a Visual Studióval, a U-SQL helyi fordító megkeresi azt automatikusan.
 
     ![A Data Lake Tools for Visual Studio helyi futtatású Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Telepítés [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Az előre összeállított Visual C++ és a Windows SDK-fájlok: C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK találja. Ebben az esetben a U-SQL helyi fordító nem található a függőségek automatikusan. Adja meg a hozzá tartozó CppSDK elérési kell. A fájlok másolása egy másik helyre, vagy használja a jelenlegi állapotában.
+  - Telepítés [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Az előre összeállított Visual C++ és a Windows SDK-fájlok: C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK találja. Ebben az esetben a U-SQL helyi fordító nem található a függőségek automatikusan. Adja meg a hozzá tartozó CppSDK elérési kell. A fájlok másolása egy másik helyre, vagy használja a jelenlegi állapotában.
 
 ## <a name="understand-basic-concepts"></a>Alapvető fogalmak megismerése
 
@@ -72,7 +72,7 @@ Ha helyileg futtatja a U-SQL-szkript, egy működő könyvtárba aktuális futta
 | | |\_ScopeCodeGenEngine\_. *|Kompilátor jazyka kimenet|Generált nativní kód.|
 | | |odkazovaná sestavení|Odkaz sestavení|Hivatkozott tevékenységszerelvény-fájlokhoz|
 | | |deployed_resources|Erőforrások üzembe helyezésének|Erőforrás üzembe helyezési fájlokat|
-| | |xxxxxxxx.xxx[1..n]\_\*. *|Végrehajtási napló|Naplózása a végrehajtási lépések|
+| | |xxxxxxxx.xxx[1..n]\_\*.*|Végrehajtási napló|Naplózása a végrehajtási lépések|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Az SDK-val a parancssorból
@@ -139,9 +139,9 @@ Az alábbiakban a nem kötelező argumentumok **futtatása**:
 
 |Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
-|-Háttérkódban|False (Hamis)|A parancsfájl .cs kód tartozik.|
+|-CodeBehind|False (Hamis)|A parancsfájl .cs kód tartozik.|
 |-CppSDK| |CppSDK Directory|
-|-A DataRoot| DataRoot környezeti változó|Helyi futtatás, a "LOCALRUN_DATAROOT" környezeti változó alapértelmezés szerint a DataRoot|
+|-DataRoot| DataRoot környezeti változó|Helyi futtatás, a "LOCALRUN_DATAROOT" környezeti változó alapértelmezés szerint a DataRoot|
 |-MessageOut| |Memóriakép üzeneteket egy fájlba konzolon|
 |-Párhuzamos|1|Futtassa a csomag a megadott párhuzamosság|
 |-Hivatkozások| |Az elérési utak listája extra referenciaszerelvények vagy háttérkód, az adatfájlok elválasztva ';'|
@@ -177,7 +177,7 @@ Az alábbiakban a nem kötelező argumentumok **összeállítása**:
 | -MessageOut [alapértelmezett érték: "%]|Memóriakép üzeneteket egy fájlba konzolon|
 | -Hivatkozik [alapértelmezett érték: "%]|Az elérési utak listája extra referenciaszerelvények vagy háttérkód, az adatfájlok elválasztva ';'|
 | -Sekély [alapérték: 'False']|Sekély fordítás|
-| -UdoRedirect [alapérték: 'False']|Udo szerelvény átirányítási konfiguráció létrehozása|
+| -UdoRedirect [default value 'False']|Udo szerelvény átirányítási konfiguráció létrehozása|
 | -UseDatabase [alapértelmezett érték a "master"]|Az ideiglenes szerelvényregisztráló háttérkód használni kívánt adatbázist|
 | -WorkDir [alapértelmezett érték 'Az aktuális könyvtár']|Is a fordító használat és a kimeneti könyvtár|
 | -RunScopeCEP [alapértelmezett érték "0"]|ScopeCEP módot használja|
@@ -209,9 +209,9 @@ Az alábbiakban a nem kötelező argumentumok **végrehajtása**:
 
 |Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
-|-A DataRoot | '' |Metaadatok végrehajtási adatok legfelső szintű. A rendszer alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
+|-DataRoot | '' |Metaadatok végrehajtási adatok legfelső szintű. A rendszer alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
 |-MessageOut | '' |Memóriakép üzeneteket egy fájlba a konzolon.|
-|-Párhuzamos | (1) |A megadott párhuzamosság szinttel létrehozott helyi futtatású lépések futtatására mutató.|
+|-Párhuzamos | '1' |A megadott párhuzamosság szinttel létrehozott helyi futtatású lépések futtatására mutató.|
 |-Verbose | "False" |Mutató futásidejű részletes kimenetei megjelenítéséhez.|
 
 Íme egy példa a használatra:
@@ -223,7 +223,7 @@ Az alábbiakban a nem kötelező argumentumok **végrehajtása**:
 
 Az alkalmazásprogramozási felület a LocalRunHelper.exe mappában találhatók. Integrálható a U-SQL SDK és a C# teszt keretrendszer méretezése a U-SQL parancsfájl helyi tesztelése működése használhatja őket. Ez a cikk e bemutatják, hogyan használhatja ezeket az adaptereket a U-SQL-parancsprogram teszteléséhez használja a szabványos C# egység tesztelő projektet.
 
-### <a name="step-1-create-c-unit-test-project-and-configuration"></a>1. lépés: C# egység tesztelő projektet és a konfiguráció létrehozása
+### <a name="step-1-create-c-unit-test-project-and-configuration"></a>1. lépés: Hozzon létre C# egység projekt és a konfiguráció tesztelése
 
 - Hozzon létre egy C# egység tesztelő projektet fájl > Új > Projekt > Visual C# > tesztelése > egység tesztelése projekt.
 - LocalRunHelper.exe hozzáadása a projekt hivatkozásként. A LocalRunHelper.exe \build\runtime\LocalRunHelper.exe Nuget-csomagot a következő helyen található.
@@ -240,7 +240,7 @@ Az alkalmazásprogramozási felület a LocalRunHelper.exe mappában találhatók
 
 - Ellenőrizze, hogy a projekt munkakönyvtár, amely általában a ProjectFolder\bin\x64\Debug NugetPackage\build\runtime\ található összes függőséget fájlt másolja.
 
-### <a name="step-2-create-u-sql-script-test-case"></a>2. lépés: A U-SQL parancsfájl tesztelési eset létrehozása
+### <a name="step-2-create-u-sql-script-test-case"></a>2. lépés: U-SQL parancsfájl tesztelési eset létrehozása
 
 Az alábbi, a U-SQL parancsfájl tesztelési mintakódot. A vizsgálat, készítse elő a parancsfájlok, a bemeneti fájlok és a várt kimeneti fájlok kell.
 
@@ -332,7 +332,7 @@ LocalRunHelper.exe az alkalmazásprogramozási felületek biztosít a U-SQL hely
 
 nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
-|Paraméter|Típus|Leírás|
+|Paraméter|Typo|Leírás|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|kimeneti üzenetek esetében be null értékre, a konzol használata|
 
@@ -346,8 +346,8 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |CurrentDir|sztring|Aktuális címtár|
 |DataRoot|sztring|Adatok elérési útjának gyökeréhez|
 |DebuggerMailPath|sztring|A hibakereső mailslot elérési útja|
-|GenerateUdoRedirect|Logikai|Szeretnénk szerelvénybetöltési átirányítás felülbírálás konfiguráció létrehozása|
-|HasCodeBehind|Logikai|Ha a parancsfájl mögötti kódban|
+|GenerateUdoRedirect|logikai|Szeretnénk szerelvénybetöltési átirányítás felülbírálás konfiguráció létrehozása|
+|HasCodeBehind|logikai|Ha a parancsfájl mögötti kódban|
 |InputDir|sztring|Bemeneti adataihoz tartozó könyvtár|
 |MessagePath|sztring|Üzenet memóriakép-fájl elérési útja|
 |OutputDir|sztring|A kimeneti adatokat könyvtár|
@@ -356,18 +356,18 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |ResultPath|sztring|Eredmény memóriakép-fájl elérési útja|
 |RuntimeDir|sztring|Futásidejű könyvtár|
 |ScriptPath|sztring|Hol találhatók a parancsprogram|
-|Sekély|Logikai|Fordítási sekély, vagy sem|
-|Ideiglenes könyvtárának|sztring|Átmeneti könyvtár|
+|Sekély|logikai|Fordítási sekély, vagy sem|
+|TempDir|sztring|Átmeneti könyvtár|
 |UseDataBase|sztring|Adja meg az ideiglenes szerelvényregisztráló, alapértelmezés szerint fő háttérkód használni kívánt adatbázis|
 |WorkDir|sztring|Előnyben részesített munkakönyvtár|
 
 
 **Metódus**
 
-|Módszer|Leírás|a visszaadandó|Paraméter|
+|Módszer|Leírás|Visszatérési érték|Paraméter|
 |------|-----------|------|---------|
-|nyilvános bool DoCompile()|A U-SQL parancsfájl összeállítása|Sikeres művelet igaz| |
-|nyilvános bool DoExec()|Hajtsa végre a lefordított eredménye|Sikeres művelet igaz| |
+|public bool DoCompile()|A U-SQL parancsfájl összeállítása|Sikeres művelet igaz| |
+|public bool DoExec()|Hajtsa végre a lefordított eredménye|Sikeres művelet igaz| |
 |nyilvános bool DoRun()|Futtassa a U-SQL parancsfájlt (fordítási + végrehajtás)|Sikeres művelet igaz| |
 |nyilvános bool IsValidRuntimeDir (karakterlánc elérési útja)|Ellenőrizze, hogy a megadott elérési út érvényes modul elérési útja|Igaz érvényes|Futásidejű könyvtár elérési útja|
 
@@ -379,7 +379,7 @@ E_CSC_SYSTEM_INTERNAL: Belső hiba! Nem sikerült betölteni a fájl vagy a "Sco
 
 Ellenőrizze a következőket:
 
-- Ellenőrizze, hogy x64 környezetben. A build target platform és a tesztelési környezetben kell x64, tekintse meg **1. lépés: egység létrehozása a C# projekt és a konfiguráció teszteléséhez** felett.
+- Ellenőrizze, hogy x64 környezetben. A build target platform és a tesztelési környezetben kell x64, tekintse meg **1. lépés: Hozzon létre C# egység projekt és a konfiguráció teszteléséhez** felett.
 - Ellenőrizze, hogy a munkakönyvtár projekthez NugetPackage\build\runtime\ található összes függőséget fájlt másolta.
 
 

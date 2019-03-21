@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8686e2c518bb2dc778c120350657aa54c856aec6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905120"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -140,17 +140,17 @@ Az egyes lemezek kövesse az alábbi lépéseket:
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-2. Vegye figyelembe a DiskName és LUN-t.
+1. Vegye figyelembe a DiskName és LUN-t.
 
     ![DisknameAndLUN][2]
-3. Távoli asztal a virtuális Gépen. Ezután lépjen a **számítógép-kezelés** | **Eszközkezelő** | **lemezmeghajtók**. Tekintse meg az egyes "Microsoft virtuális lemez" tulajdonságait
+1. Távoli asztal a virtuális Gépen. Ezután lépjen a **számítógép-kezelés** | **Eszközkezelő** | **lemezmeghajtók**. Tekintse meg az egyes "Microsoft virtuális lemez" tulajdonságait
 
     ![VirtualDiskProperties][3]
-4. Itt a LUN számot eszköztáblára mutató hivatkozás a LUN számot, adja meg a virtuális merevlemez csatlakoztatása a virtuális géphez.
-5. Esetében a "Microsoft virtuális lemez" Ugrás a **részletek** lapon ezt a a **tulajdonság** lista, lépjen a **illesztőprogram kulcs**. Az a **érték**, vegye figyelembe a **eltolás**, 0002, az alábbi képernyőképen ez. A 0002 azt jelzi, hogy a Fizikailemez2, amely a tárolókészlet hivatkozik.
+1. Itt a LUN számot eszköztáblára mutató hivatkozás a LUN számot, adja meg a virtuális merevlemez csatlakoztatása a virtuális géphez.
+1. Esetében a "Microsoft virtuális lemez" Ugrás a **részletek** lapon ezt a a **tulajdonság** lista, lépjen a **illesztőprogram kulcs**. Az a **érték**, vegye figyelembe a **eltolás**, 0002, az alábbi képernyőképen ez. A 0002 azt jelzi, hogy a Fizikailemez2, amely a tárolókészlet hivatkozik.
 
     ![VirtualDiskPropertyDetails][4]
-6. Minden egyes tárolókészlethez kiírása a tartozó lemezek ki:
+1. Minden egyes tárolókészlethez kiírása a tartozó lemezek ki:
 
 ```powershell
 Get-StoragePool -FriendlyName AMS1pooldata | Get-PhysicalDisk
@@ -750,7 +750,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 
 ##### <a name="client-application-settings"></a>Ügyfél-Alkalmazásbeállítások
 
-Ha az SQL-ügyfélalkalmazás támogatja a .net 4.5-ös SQLClient, majd használhatja "MULTISUBNETFAILOVER = TRUE" kulcsszó. Ezt a kulcsszót kell alkalmazni, mivel lehetővé teszi a feladatátvétel során az SQL Always On rendelkezésre állási csoport gyorsabban kapcsolatot. Számba veszi a mindig bekapcsolva figyelő párhuzamosan társított összes IP-címeken keresztül, és a feladatátvétel alatt hajt végre a agresszívabb TCP-kapcsolat újrapróbálkozási sebessége.
+Ha az SQL-ügyfélalkalmazás támogatja a .NET 4.5-ös SQLClient, akkor használhatja "MULTISUBNETFAILOVER = TRUE" kulcsszó. Ezt a kulcsszót kell alkalmazni, mivel lehetővé teszi a feladatátvétel során az SQL Always On rendelkezésre állási csoport gyorsabban kapcsolatot. Számba veszi a mindig bekapcsolva figyelő párhuzamosan társított összes IP-címeken keresztül, és a feladatátvétel alatt hajt végre a agresszívabb TCP-kapcsolat újrapróbálkozási sebessége.
 
 Az előző beállításaival kapcsolatos további információkért lásd: [MultiSubnetFailover kulcsszó és a kapcsolódó szolgáltatások](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). További tájékoztatás [SqlClient támogatása magas rendelkezésre állási, vészhelyreállítási](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
@@ -973,7 +973,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET Azure ACLs or Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
@@ -1218,7 +1218,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 #SET ACLs or Azure Network Security Groups & Windows FWs
 
-#http://msdn.microsoft.com/library/azure/dn495192.aspx
+#https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
 #### <a name="step-23-test-failover"></a>23. lépés: Feladatátvétel tesztelése

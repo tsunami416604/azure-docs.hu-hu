@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ee85e6bd171fc9415e5c7606d6e18a7a22fa6570
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cc5b40b6a800ff185c6c52652435b558fabe091f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57873886"
 ---
 # <a name="object-detection"></a>Objektumészlelés
 
-Objektumfelismerés hasonlít a [címkézés](concept-tagging-images.md), azonban az API-t adja vissza a határolókeret koordinátái (képpontban) minden egyes objektum található. Például képet tartalmaz egy kutya, cat és személy, ha a hibakeresés művelet felsorolja azokat az objektumokat a a koordináták a képen. Ez a funkció használatával feldolgozni a képet az objektumok közötti kapcsolatok. Azt is lehetővé teszi meghatározhatja, hogy vannak-e a képet ugyanazt a címkét több példányát.
+Objektumfelismerés hasonlít a [címkézés](concept-tagging-images.md), azonban az API-t adja vissza a határolókeret koordinátái (képpontban) minden egyes objektum található. Például képet tartalmaz egy kutya, cat és személy, ha a hibakeresés művelet felsorolja azokat az objektumokat a a koordináták a képen. Ez a funkció használatával feldolgozni a képet az objektumok közötti kapcsolatok. Azt is lehetővé teszi, hogy vannak-e a képet ugyanazt a címkét több példányát.
 
-A észlelése API objektumok vagy élő dolgot azonosítani a képen alapuló címkék vonatkozik. Vegye figyelembe, hogy ezen a ponton, a besorolás, címkézés használt és a besorolás, használja az objektum észlelésére között nincs hivatalos kapcsolat. Elméleti szinten a észlelése API csak megkeresi objektumok és élő dolog, amíg a címke API is használható például a "belső" környezeti feltételek, amelyeket nem a határoló be a honosított.
+A észlelése API objektumok vagy élő dolgot azonosítani a képen alapuló címkék vonatkozik. Ezen a ponton nincs hivatalos a címkézési besorolás és a objektum észlelési besorolás közötti kapcsolat. Elméleti szinten a észlelése API csak megkeresi objektumok és élő dolog, amíg a címke API is használható például a "belső" környezeti feltételek, amelyeket nem a határoló be a honosított.
 
 ## <a name="object-detection-example"></a>Objektum észlelési példa
 
@@ -89,13 +89,15 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 
 ## <a name="limitations"></a>Korlátozások
 
-Fontos megjegyzés: az észlelési szolgáltatás korlátozásai, így elkerülheti, vagy téves negatív (kihagyott objektumok) és a korlátozott részletes enyhítésén.
-* Objektumok általában rendszer nem észleli, ha azok nagyon kicsi (kevesebb mint 5 %-a képen).
-* Objektumok észlelése általában nem, ha azok szorosan együtt vannak elrendezve (például a lemezek stack).
+Fontos megjegyezni objektumfelismerés vonatkozó korlátozások, így elkerülheti, vagy téves negatív (kihagyott objektumok) és a korlátozott részletes enyhítésén.
+
+* Objektumok általában rendszer nem észleli, ha kis (kevesebb mint 5 %-a képen).
+* Objektumok észlelése általában nem, ha szoros együttműködésben szélesen (például a lemezek stack).
 * Objektumok nem különbözteti meg a márkáról vagy termék neve (szénsavas store tároló, például a különböző típusú). Azonban információkat szerezhet a márka lemezkép használatával a [saját arculat észlelési](concept-brand-detection.md) funkció.
 
 ## <a name="use-the-api"></a>Az API-val
-Az észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. A teljes JSON-választ kap, ha egyszerűen tartalmát a karakterláncot elemezni a `"objects"` szakaszban.
+
+Az észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. A teljes JSON-választ kap, amikor a tartalmát a karakterláncot elemezni a `"objects"` szakaszban.
 
 * [Rövid útmutató: Kép (.NET SDK-t) elemzése](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rövid útmutató: Kép (REST API) elemzése](./quickstarts/csharp-analyze.md)

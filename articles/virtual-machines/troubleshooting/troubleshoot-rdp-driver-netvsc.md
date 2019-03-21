@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: c6918126c36e1940daf564ee7eae562e31b280c3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449104"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994624"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nem lehet távoli csatlakozás a Windows 10-es vagy Windows Server 2016 virtuális gép az Azure-ban netvsc.sys miatt
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan háríthatók el a problémát, amelyben nincs h
 
 Nem lehet csatlakoztatni az Azure Windows 10-es vagy Windows Server 2016 virtuális gép távoli asztali protokoll (RDP) használatával. A [rendszerindítási diagnosztika](boot-diagnostics.md), a képernyőn látható vörös keresztre keresztül a hálózati kártya (NIC). Ez azt jelzi, hogy a virtuális gép nem rendelkezik kapcsolattal az operációs rendszer teljes betöltése után.
 
-Általában a probléma akkor fordul elő, a Windows [összeállítása 14393](http://support.microsoft.com/help/4093120/) és [15063 összeállítása](http://support.microsoft.com/help/4015583/). Ha az operációs rendszer verziója újabb, mint a ezeket a verziókat, ez a cikk nem vonatkozik a forgatókönyvéhez. Ellenőrizze a verziót, a rendszer, nyissa meg a CMD munkamenet [a soros hozzáférés funkció](serial-console-windows.md), majd futtassa a **Ver**.
+Általában a probléma akkor fordul elő, a Windows [összeállítása 14393](https://support.microsoft.com/help/4093120/) és [15063 összeállítása](https://support.microsoft.com/help/4015583/). Ha az operációs rendszer verziója újabb, mint a ezeket a verziókat, ez a cikk nem vonatkozik a forgatókönyvéhez. Ellenőrizze a verziót, a rendszer, nyissa meg a CMD munkamenet [a soros hozzáférés funkció](serial-console-windows.md), majd futtassa a **Ver**.
 
 ## <a name="cause"></a>Ok
 
@@ -55,8 +55,8 @@ Csatlakozás [a soros konzol, nyisson meg egy PowerShell-példány](serial-conso
 
 2. Töltse le a frissítést, amely csatolva van egy működő virtuális gép ugyanabban a régióban az új vagy meglévő adatok lemezre:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) vagy újabb frissítése
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) vagy újabb frissítése
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítése
+   - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítése
 
 3. Válassza le a segédprogram a működő virtuális lemezt, és mellékelje a hibás virtuális Gépet.
 
@@ -98,22 +98,22 @@ Csatlakozás [a soros konzol, nyisson meg egy PowerShell-példány](serial-conso
 
 12. Töltse le a frissítést:
 
-   - **10.0.14393.594**: [KB4073562](http://support.microsoft.com/help/4073562) vagy újabb frissítése
-   - **10.0.15063.0**: [KB4016240](http://support.microsoft.com/help/4016240) vagy újabb frissítése
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) vagy újabb frissítése
+    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) vagy újabb frissítése
 
 13. A rendszer lemez csatolása egy mentési virtuális gépen, amelyen a frissítés letölthető adatlemezként.
 
 14. Futtassa a következő parancsot a frissítés telepítése a virtuális gépen:
 
-   ```
-   dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
-   ```
+    ```
+    dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
+    ```
 
 15. Futtassa a struktúrák leválasztása a következő parancsot:
 
-   ```
-   reg unload HKLM\BROKENSYSTEM
-   ```
+    ```
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 16. [Válassza le a rendszer lemezt, és hozza létre újra a virtuális gép](../windows/troubleshoot-recovery-disks-portal.md).
 

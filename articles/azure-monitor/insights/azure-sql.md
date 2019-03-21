@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 991032a603844e697c122d8a26923f4c95a4a78c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170224"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -66,9 +66,13 @@ A fenti lapot is útmutatás több Azure-előfizetéssel egyetlen Azure SQL Anal
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-A munkaterület a megoldás hozzáadásakor az Azure SQL Analytics csempére a munkaterületéhez kerül, és akkor jelenik meg, az Áttekintés. A csempe a felügyelt példányok, a megoldás diagnosztikai telemetriáját fogadó Azure SQL-adatbázisok, rugalmas készletek, felügyelt példányok és adatbázisok számát jeleníti meg.
+A munkaterület a megoldás hozzáadásakor az Azure SQL Analytics csempére a munkaterületéhez kerül, és akkor jelenik meg, az Áttekintés. Válassza ki a tartalom betöltése összegzésének megtekintése hivatkozásra.
 
-![Az Azure SQL Analytics csempére](./media/azure-sql/azure-sql-sol-tile.png)
+![Az Azure SQL Analytics – áttekintő csempe](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+Betöltése után az a csempe a felügyelt példányok, a megoldás diagnosztikai telemetriáját fogadó Azure SQL-adatbázisok, rugalmas készletek, felügyelt példányok és adatbázisok számát jeleníti meg.
+
+![Az Azure SQL Analytics csempére](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 A megoldás két különböző – egy Azure SQL Database-adatbázisok és rugalmas készletek és a többi nézet a figyelési felügyelt példányt, és a felügyelt példányok adatbázisai figyelés nézetet biztosít.
 

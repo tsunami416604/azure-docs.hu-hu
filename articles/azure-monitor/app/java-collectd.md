@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011187"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>összegyűjtött: Linux teljesítmény-mérőszámok az Application insights szolgáltatásban
 
@@ -26,14 +26,12 @@ Megismerheti a Linux rendszer teljesítmény-mérőszámokat a [Application Insi
 
 Általában fogja használni összegyűjtött, ha már rendelkezik [kialakítva az Application insights segítségével a Javás webszolgáltatások][java]. Biztosít további adatokat annak érdekében, hogy az alkalmazás teljesítményének növelése, vagy a problémák diagnosztizálásához. 
 
-![Mintadiagramok](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>A kialakítási kulcs beszerzése
 Az a [Microsoft Azure-portálon](https://portal.azure.com), nyissa meg a [Application Insights](../../azure-monitor/app/app-insights-overview.md) erőforrás, ahol azt szeretné, hogy az adatok jelennek meg. (Vagy [hozzon létre egy új erőforrást](../../azure-monitor/app/create-new-resource.md ).)
 
 Készítsen róla egy másolatot a kialakítási kulcs, amely azonosítja az erőforrást.
 
-![Összes tallózása, nyissa meg az erőforrást, majd az Essentials legördülő válassza ki, és a kialakítási kulcs másolása](./media/java-collectd/02-props.png)
+![Összes tallózása, nyissa meg az erőforrást, majd az Essentials legördülő válassza ki, és a kialakítási kulcs másolása](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>Összegyűjtött és a beépülő modul telepítése
 A Linux rendszerű kiszolgáló gépeken:
@@ -93,9 +91,7 @@ Egyéb konfigurálása [összegyűjtött beépülő modulok](https://collectd.or
 Indítsa újra a következők szerint összegyűjtött annak [manuális](https://collectd.org/wiki/index.php/First_steps).
 
 ## <a name="view-the-data-in-application-insights"></a>Az adatok megtekintése az Application Insights
-Nyissa meg az Application Insights-erőforrás [Metrikaböngésző, és adja hozzá a diagramok][metrics], meg szeretné tekinteni az egyéni kategóriából a metrikák kiválasztásával.
-
-![](./media/java-collectd/result.png)
+Nyissa meg az Application Insights-erőforrás [metrikákat, és adja hozzá a diagramok][metrics], meg szeretné tekinteni az egyéni kategóriából a metrikák kiválasztásával.
 
 Alapértelmezés szerint a metrikák, amelyről a metrikák gyűjtött összes gazdagépeken összesítjük. A diagram részletei panelen gazdagépenként, a metrikák megjelenítéséhez kapcsolja be a csoportosítást, és válassza a csoportosítás az összegyűjtött-gazdagép.
 

@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2c1a4a1931bc2e38b0bee5f90518b01fdf4767a1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "30196783"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57908688"
 ---
-Dolgozunk a Resource Manager üzembe helyezési modellel, ha az új átjáró termékváltozatok módosítható. Amikor egy örökölt gateway SKU vált egy új másikra, akkor törölje a meglévő VPN-átjáró, majd hozzon létre egy új VPN-átjáró.
+Ha a Resource Manager üzemi modellel dolgozik, módosíthatja az új átjáró SKU-k. Amikor a régi átjárók Termékváltozatainak módosítja az új Termékváltozatra, törölje a meglévő VPN-átjárót, és hozzon létre egy új VPN-átjárót.
 
 Munkafolyamat:
 
@@ -29,7 +29,7 @@ Munkafolyamat:
 
 Szempontok:
 
-* Helyezze át az új SKU, VPN-átjárót kell lennie a Resource Manager üzembe helyezési modellben.
-* Ha egy hagyományos VPN-átjáró, továbbra is kell a régebbi örökölt termékváltozatok használatát, hogy az átjáró, átméretezheti, azonban a régebbi termékváltozatok között. Az új SKU nem lehet átváltani.
-* Kapcsolat állásidő lesz, amikor egy új másikra vált egy örökölt Termékváltozat.
-* Új átjáró SKU módosításakor a VPN-átjáró nyilvános IP-címét fogja módosítani. Ez akkor fordul elő, még akkor is, ha az azonos nyilvános IP-cím objektum, amely korábban használt adja meg.
+* Szeretné áthelyezni az új termékváltozatokra, a Resource Manager-alapú üzemi modellben a VPN-átjárót kell lennie.
+* Ha a klasszikus VPN-átjáró, továbbra is kell a régebbi örökölt termékváltozatok használata az adott átjáróra vonatkozó, átméretezheti, azonban az örökölt termékváltozatok között. Nem módosítható az új termékváltozatokra.
+* Kapcsolat állásidő lesz, amikor az új Termékváltozatra módosítja egy örökölt Termékváltozat.
+* Amikor új átjárók Termékváltozatainak módosítása, a VPN-átjáró nyilvános IP-cím változik. Ez akkor történik, még akkor is, ha az azonos nyilvános IP-címobjektumot, amelyet korábban használt adja meg.

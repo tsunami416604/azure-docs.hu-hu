@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 41f69d2017d9fc04acda47d09c718d3585f6335c
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881095"
 ---
 # <a name="how-application-gateway-works"></a>Az Application Gateway működése
 
 Ez a cikk bemutatja, hogyan az application gateway elfogadja a bejövő kéréseket, és továbbítja a háttérrendszerhez.
 
-![how-application-gateway-works](.\media\how-application-gateway-works\how-application-gateway-works.png)
+![how-application-gateway-works](./media/how-application-gateway-works/how-application-gateway-works.png)
 
 ## <a name="how-a-request-is-accepted"></a>Hogyan egy kérelem elfogadása
 
@@ -36,7 +36,7 @@ A háttérkiszolgáló meghatározása után az application gateway a háttérki
 
 Belső Application Gateway csak magánhálózati IP-címmel rendelkezik. Egy belső Application Gateway DNS-nevét a belső oldható fel a magánhálózati IP-címére. Ezért belső terheléselosztók csak irányíthatja a virtuális hálózathoz hozzáféréssel rendelkező ügyfelek kéréseit az Application Gateway számára.
 
-Vegye figyelembe, hogy az Internet felé néző mind a belső Application Gateway átjárók irányíthatja a kérelmeket a háttérkiszolgálók, privát IP-címek használatával. Ha a készlet háttérerőforrásra magánhálózati IP-cím, virtuális gép hálózati Adapteres konfiguráció vagy egy belső feloldható címet tartalmaz, és a egy nyilvános végpontot a háttérkészlet esetén az Application Gateway az előtérbeli nyilvános IP-címet használ, a kiszolgáló eléréséhez. Előtérbeli nyilvános IP-cím még nincs kiépítve, ha egy kimenő külső csatlakoztatásához van hozzárendelve.
+Vegye figyelembe, hogy az Internet felé néző mind a belső Application Gateway átjárók irányíthatja a háttérkiszolgálókon magánhálózati IP-címek használatával, ha a készlet háttérerőforrásra magánhálózati IP-cím, virtuális gép hálózati Adapteres konfiguráció vagy egy belső feloldható címet tartalmaz, és kéri a háttérkészlet egy nyilvános végpontot, az Application Gateway az előtérbeli nyilvános IP-címet használ a kiszolgáló eléréséhez. Előtérbeli nyilvános IP-cím még nincs kiépítve, ha egy kimenő külső csatlakoztatásához van hozzárendelve.
 
 ### <a name="modifications-to-the-request"></a>A kérelem módosításai
 

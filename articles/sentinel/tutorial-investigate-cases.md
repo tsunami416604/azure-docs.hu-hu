@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c4994863f3c145c7095bcc12dd69ff02fab8455
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6b3357ec06c89645b9c41e9efdb582a18af40672
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540234"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074675"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Oktatóanyag: Vizsgálja meg az Azure-on Előzetesben Sentinel-esetek
 
@@ -42,7 +42,7 @@ Eset több riasztás is tartalmazhatnak. Fontos a megfelelő bizonyíték egy ko
 
 1. Válassza ki **esetek**. A **esetek** lap lehetővé teszi, hogy hány esetben rendelkezik, nyissa meg, hány beállított hány **folyamatban**, és hány bezáródik. Minden esetben láthatja az idő, történt, és az az eset állapotát. Tekintse meg a súlyosságot. döntse el, mi első kezelésére. Az a **esetek** lap, kattintson a **riasztások** lapján megtekintheti a riasztásokat, amelyek egy esetet kapcsolódnak. Entitások, amelyeket korábban az eset része lehet megtekinteni leképezett a **entitások** fülre.  Ha szükséges, például állapot és súlyosság szerint szűrheti az esetek. Ha a **esetek** lapon látni fogja, amelyek tartalmazzák a megadott észlelési szabályok által aktivált riasztások nyitott esetek **Analytics**. Tetején látni fogja az aktív eseteket, új eseteket, és azokban az esetekben, folyamatban van. Súlyosság szerint minden esetben áttekintését is megtekinthető.
 
-  ![Riasztási irányítópult](./media/tutorial-investigate-cases/cases.png)
+   ![Riasztási irányítópult](./media/tutorial-investigate-cases/cases.png)
 
 2. A vizsgálat megkezdéséhez kattintson az egy adott esetet. A jobb oldalon láthatja a részletes információkat az esetet, beleértve a súlyosság, az érintett entitások száma összefoglalása (a hozzárendelés alapján). Minden esetben van egy egyedi azonosítót. Az eset súlyosságának tartalmazza abban az esetben a legsúlyosabb riasztás alapján határozza meg.  
 

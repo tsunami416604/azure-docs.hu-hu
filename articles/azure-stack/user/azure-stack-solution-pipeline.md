@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 13c5d194ca5e6a606b319a42fdba7a597a8d4852
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c7e6640bdb17e9f996545c2c3315c0c1ade42d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902212"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
 
@@ -78,17 +78,17 @@ Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és 
 ### <a name="azure-stack-requirements"></a>Azure Stack-követelmények
 
 * Használja az Azure Stackkel integrált rendszer, vagy üzembe helyezése az Azure Stack Development Kit (ASDK). A ASDK telepítéséhez:
-    * A [oktatóanyag: a telepítő a ASDK üzembe](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) részletes telepítési utasításokat biztosít.
-    * Használja a [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell-parancsprogram ASDK üzembe helyezés utáni lépések automatizálásához.
+  * A [oktatóanyag: a telepítő a ASDK üzembe](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) részletes telepítési utasításokat biztosít.
+  * Használja a [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell-parancsprogram ASDK üzembe helyezés utáni lépések automatizálásához.
 
     > [!Note]
     > ASDK telepítése befejeződik, így ennek megfelelően tervezze körülbelül hét órát vesz igénybe.
 
- * Üzembe helyezése [App Service-ben](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS-szolgáltatások az Azure Stackhez.
- * Hozzon létre [csomag/ajánlatok](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) az Azure Stackben.
- * Hozzon létre egy [bérlői előfizetéshez](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) az Azure Stackben.
- * Webalkalmazás létrehozása a bérlői előfizetéshez. Jegyezze fel az új webes alkalmazás URL-CÍMÉT a későbbi használatra.
- * Telepítse a Windows Server 2012 virtuális gépet a bérlő az előfizetésben. Ez a kiszolgáló a lemezképfájl-kiszolgálóján, és futtassa az Azure fejlesztési és üzemeltetési szolgáltatásokat fogja használni.
+  * Üzembe helyezése [App Service-ben](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS-szolgáltatások az Azure Stackhez.
+  * Hozzon létre [csomag/ajánlatok](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) az Azure Stackben.
+  * Hozzon létre egy [bérlői előfizetéshez](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) az Azure Stackben.
+  * Webalkalmazás létrehozása a bérlői előfizetéshez. Jegyezze fel az új webes alkalmazás URL-CÍMÉT a későbbi használatra.
+  * Telepítse a Windows Server 2012 virtuális gépet a bérlő az előfizetésben. Ez a kiszolgáló a lemezképfájl-kiszolgálóján, és futtassa az Azure fejlesztési és üzemeltetési szolgáltatásokat fogja használni.
 * Adja meg a .NET 3.5 a Windows Server 2016 rendszerképet a virtuális gép (VM). Ez a virtuális gép, egy privát fordító-ügynökhöz az Azure Stack lesz felépítve.
 
 ### <a name="developer-tool-requirements"></a>Fejlesztői eszköz követelményei
@@ -97,8 +97,8 @@ Ez az oktatóanyag feltételezi, hogy néhány alapvető ismeretek az Azure és 
 * [Visual Studio 2017 telepítése](https://docs.microsoft.com/visualstudio/install/install-visual-studio) és [jelentkezzen be az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Csatlakozás a projekthez, és [helyben klónozhatja](https://www.visualstudio.com/docs/git/gitquickstart).
 
- > [!Note]
- > Az Azure Stack környezettel kell a megfelelő rendszerképek hírcsatorna-a Windows Server és SQL Server futtatásához. App Service-ben üzembe helyezett is kell rendelkeznie.
+  > [!Note]
+  > Az Azure Stack környezettel kell a megfelelő rendszerképek hírcsatorna-a Windows Server és SQL Server futtatásához. App Service-ben üzembe helyezett is kell rendelkeznie.
 
 ## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>A privát Azure folyamatok ügynök előkészítése az Azure DevOps Services integrációja
 
@@ -363,7 +363,7 @@ CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja.
 
 2. Keresse meg a **webes alkalmazás készítése** a projekt lapját.
 
-3. A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET használatával aktiválásához szükséges alapvető.
+3. A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET Core használatával aktiválásához szükséges.
 
     ![Argument buildelési folyamat hozzáadása](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 

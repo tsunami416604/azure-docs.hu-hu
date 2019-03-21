@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011663"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
@@ -74,6 +74,7 @@ A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonat
 > RHEL 6 képkészlet nem lett áthelyezve, az új nevezéktannak.
 
 Az alábbi ajánlatok a következők általános felhasználású jelenleg rendelkezésre álló termékváltozatok a következők:
+
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
 RHEL | 7 – NYERS | RAW | Linux-ügynök | RHEL 7 operációsrendszer-lemezképek

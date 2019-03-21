@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009476"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Az Azure Stack adatközpont integrációja - syslog-továbbítás
 
@@ -63,8 +63,8 @@ A paraméterek *Set-SyslogServer* parancsmagot:
 
 | Paraméter | Leírás | Typo | Szükséges |
 |---------|---------|---------|---------|
-|*ServerName* | A syslog-kiszolgáló teljes Tartományneve vagy IP-címe | Karakterlánc | igen|
-|*ServerPort* | Port számát a syslog-kiszolgáló figyel a következőn: | Karakterlánc | igen|
+|*ServerName* | A syslog-kiszolgáló teljes Tartományneve vagy IP-címe | String | igen|
+|*ServerPort* | Port számát a syslog-kiszolgáló figyel a következőn: | String | igen|
 |*NoEncryption*| A syslog-üzeneteket küldjön a tiszta szöveges ügyfél kényszerítése | Jelző | nem|
 |*SkipCertificateCheck*| Hagyja ki a kezdeti TLS-kézfogás során a syslog-kiszolgáló által megadott tanúsítvány érvényesítése | Jelző | nem|
 |*SkipCNCheck*| Ellenőrzésének kihagyására kezdeti TLS-kézfogás során a syslog-kiszolgáló által megadott tanúsítvány köznapi nevének értékét | Jelző | nem|
@@ -72,9 +72,10 @@ A paraméterek *Set-SyslogServer* parancsmagot:
 |*Remove*| Távolítsa el a kiszolgáló konfigurációja az ügyféltől érkező, és állítsa le a syslog-továbbítás| Jelző | nem|
 
 A paraméterek *Set-SyslogClient* parancsmagot:
+
 | Paraméter | Leírás | Typo |
 |---------|---------| ---------|
-| *pfxBinary* | használható az ügyfél által identitás a syslog-kiszolgáló hitelesítése tanúsítványt tartalmazó PFX-fájl  | Byte] |
+| *pfxBinary* | használható az ügyfél által identitás a syslog-kiszolgáló hitelesítése tanúsítványt tartalmazó PFX-fájl  | Byte[] |
 | *CertPassword* |  Jelszót a titkos kulcsot, amely kapcsolódik a pfx-fájl importálása | SecureString |
 |*RemoveCertificate* | Távolítsa el a tanúsítványt az ügyfél | Jelző|
 
@@ -259,7 +260,7 @@ EGP súlyossági tábla:
 
 | Severity | Szint | Numerikus érték |
 |----------|-------| ----------------|
-|0|Meghatározatlan|Érték: 0. Azt jelzi, hogy minden szinten naplók|
+|0|Nem definiált|Érték: 0. Azt jelzi, hogy minden szinten naplók|
 |10|Kritikus|Érték: 1. Azt jelzi, hogy a naplók kritikus riasztás|
 |8|Hiba| Érték: 2. Azt jelzi, hogy hiba történt a naplók|
 |5|Figyelmeztetés|Érték: 3. Azt jelzi, hogy a naplókat a további figyelmeztetés|
@@ -287,9 +288,10 @@ A helyreállítási végpont események táblázatát:
 |RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
 
 Tábla REP súlyossága:
+
 | Severity | Szint | Numerikus érték |
 |----------|-------| ----------------|
-|0|Meghatározatlan|Érték: 0. Azt jelzi, hogy minden szinten naplók|
+|0|Nem definiált|Érték: 0. Azt jelzi, hogy minden szinten naplók|
 |10|Kritikus|Érték: 1. Azt jelzi, hogy a naplók kritikus riasztás|
 |8|Hiba| Érték: 2. Azt jelzi, hogy hiba történt a naplók|
 |5|Figyelmeztetés|Érték: 3. Azt jelzi, hogy a naplókat a további figyelmeztetés|
@@ -306,9 +308,10 @@ Tábla REP súlyossága:
 ```
 
 Windows-események tábla súlyossága:
+
 | CEF-fontosság | Windows Eseményszint | Numerikus érték |
 |--------------------|---------------------| ----------------|
-|0|Meghatározatlan|Érték: 0. Azt jelzi, hogy minden szinten naplók|
+|0|Nem definiált|Érték: 0. Azt jelzi, hogy minden szinten naplók|
 |10|Kritikus|Érték: 1. Azt jelzi, hogy a naplók kritikus riasztás|
 |8|Hiba| Érték: 2. Azt jelzi, hogy hiba történt a naplók|
 |5|Figyelmeztetés|Érték: 3. Azt jelzi, hogy a naplókat a további figyelmeztetés|
@@ -316,6 +319,7 @@ Windows-események tábla súlyossága:
 |0|Részletes|Érték: 5. Azt jelzi, hogy minden szinten naplók|
 
 Windows-események az Azure Stack egyéni bővítmény tábla:
+
 | Egyéni bővítmény neve | Windows-esemény példa | 
 |-----------------------|---------|
 |MasChannel | Rendszer|
@@ -352,13 +356,15 @@ Windows-események az Azure Stack egyéni bővítmény tábla:
 ```
 
 Riasztások súlyosság táblázatban:
+
 | Severity | Szint |
 |----------|-------|
-|0|Meghatározatlan|
+|0|Nem definiált|
 |10|Kritikus|
 |5|Figyelmeztetés|
 
 Riasztások létrehozása az Azure Stack egyéni bővítmény táblába:
+
 | Egyéni bővítmény neve | Példa | 
 |-----------------------|---------|
 |MasEventDescription|LEÍRÁS: Egy felhasználói fiókot \<TestUser\> hoztuk létre a \<TestDomain\>. Fontos biztonsági kockázatot jelenthetnek. --SZERVIZELÉSI: Forduljon a támogatási szolgálathoz. Ügyfél segítségnyújtás a probléma megoldásához szükséges. Ne próbálja anélkül, hogy segítséget a probléma megoldásához. Nyisson egy támogatási kérést, mielőtt a fájl naplógyűjtési folyamat a útmutatásának indítása https://aka.ms/azurestacklogfiles |

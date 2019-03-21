@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866011"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089352"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
 Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
@@ -32,14 +32,14 @@ Ez a cikk a felhasználó áttelepítési cikk folytatása, és közösségi át
 * **Helyi fiók kombinálva közösségi**. Ahogy említettük, a helyi fiók bejelentkezési nevét és a közösségi fiók identitások tárolódnak különböző attribútumokat. `signInNames` a helyi fiókot használt, miközben `userIdentities` közösségi fiók. Egyetlen Azure AD B2C-fiókot, csak a helyi fiók, a közösségi fiók csak, vagy helyi fiók kombinálhatja a közösségi identitású egy felhasználórekordban tárolja. Ez a viselkedés lehetővé teszi, hogy egyetlen fiókban, kezelheti, amíg egy felhasználó jelentkezhet be a helyi fiók credential(s) vagy a közösségi identitású.
 
 * `UserIdentity` Írja be – a közösségi fiók felhasználó az Azure AD B2C-bérlő identitását információt tartalmaz:
-    * `issuer` Az identitásszolgáltató a felhasználói azonosító, például Facebook.com weboldalt kiadó karakteres formáját.
-    * `issuerUserId` Base64 formátumban a közösségi identitásszolgáltató által használt egyedi felhasználói azonosító.
+  * `issuer` Az identitásszolgáltató a felhasználói azonosító, például Facebook.com weboldalt kiadó karakteres formáját.
+  * `issuerUserId` Base64 formátumban a közösségi identitásszolgáltató által használt egyedi felhasználói azonosító.
 
     ```JSON
     "userIdentities": [{
-            "issuer": "Facebook.com",
-            "issuerUserId": "MTIzNDU2Nzg5MA=="
-        }
+          "issuer": "Facebook.com",
+          "issuerUserId": "MTIzNDU2Nzg5MA=="
+      }
     ]
     ```
 

@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245405"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080896"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Teljes számlázási blobtároló méretének kiszámítása
 
@@ -101,17 +101,17 @@ A következő táblázat összefoglalja következő:
 * Minden egyes tárolt metaadatok kódblokkot vegyen fel (ASCII tárolva), a név hosszának plusz a karakterlánc hossza.
 
 * A blokkblobok:
-    * a blokkblob blokklistájának 8 bájt.
-    * Blokkok száma túllépi a azonosítója blokkméret (bájt).
-    * Az összes véglegesítése és a nem véglegesített blokkok az adatok mérete.
+  * a blokkblob blokklistájának 8 bájt.
+  * Blokkok száma túllépi a azonosítója blokkméret (bájt).
+  * Az összes véglegesítése és a nem véglegesített blokkok az adatok mérete.
 
     >[!NOTE]
     >A pillanatképek használata esetén ez a méret csak az alap- vagy pillanatkép BLOB egyedi adatokat is tartalmaz. A nem véglegesített blokkok nem használják a hét után, ha azok szemétgyűjtési gyűjtött. Ezt követően azok nem beleszámítanak a számlázás.
 
 * Lapblobok:
-    * Az adatok nem egymást követő laptartomány száma túllépi az 12 bájt. Láthatja, mikor történt egyedi laptartomány száma a **GetPageRanges** API-t.
+  * Az adatok nem egymást követő laptartomány száma túllépi az 12 bájt. Láthatja, mikor történt egyedi laptartomány száma a **GetPageRanges** API-t.
 
-    * Az adatok (bájt) összes tárolt oldalt mérete.
+  * Az adatok (bájt) összes tárolt oldalt mérete.
 
     >[!NOTE]
     >Pillanatképek használata esetén ez a méret a csak az alap blob vagy van megszámolni blob pillanatkép egyedi lapokat tartalmaz.

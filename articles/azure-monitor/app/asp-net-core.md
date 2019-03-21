@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24132fdb23ff89045f2b497327997d95e4ceecac
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7f3b8101b633c977201b6c413ad12e4bbe55e9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054843"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011781"
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -88,21 +88,21 @@ Válassza ki **nézet** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projekt** > 
 
 - Egy új fájl jön létre:
 
-  -  _ConnectedService.json_
+  - _ConnectedService.json_
 
     ```json
     {
-      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-      "Version": "8.12.10405.1",
-      "GettingStartedDocument": {
-        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-      }
+     "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+     "Version": "8.12.10405.1",
+     "GettingStartedDocument": {
+       "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+     }
     }
     ```
 
 - Három fájlt módosítanak (kiemelés hozzá további megjegyzések):
 
-  - _appSettings.JSON_:
+  - _appsettings.json_:
 
     ```json
     {
@@ -180,6 +180,10 @@ Válassza ki **nézet** > **Team Explorer** (Ctrl +\, Ctrl + M) > **projekt** > 
           }
       }
       ```
+
+## <a name="send-ilogger-logs-to-application-insights"></a>Az Application Insights ILogger naplók küldése
+
+Az Application Insights ILogger küldött rögzítését naplókat támogatja. Naplózás kivétele állíthatja be a Kódminták [Itt](https://docs.microsoft.com/azure/azure-monitor/app/ilogger).
 
 ## <a name="synthetic-transactions-with-powershell"></a>Szintetikus tranzakciók a PowerShell-lel
 
@@ -301,7 +305,7 @@ Az Application Insights termékcsoport dolgozott a merevlemez között funkcióp
 
 Az alábbi táblázat ismerteti a különbségeket több és közti kompromisszummal [.NET és .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server):
 
-   | SDK-t összehasonlító | ASP.NET        | Az ASP.NET Core 2.1.0    | Az ASP.NET Core 2.2.0 |
+   | SDK-t összehasonlító | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
    | **Élő metrikák**      | **+** |**-** | **+** |
    | **Kiszolgáló telemetriai csatorna** | **+** |**-** | **+**|

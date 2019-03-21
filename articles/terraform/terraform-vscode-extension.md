@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: df8260cc0d8ddd8521aa5bf683402c62bc2608f4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766733"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006186"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>A Visual Studio Code Azure Terraform bővítményének telepítése és használata
 
@@ -59,7 +59,7 @@ A Terraform Cloud Shellben való használatához [telepítenie kell a Node.js](h
 
 ### <a name="install-graphviz"></a>A GraphViz telepítése
 
-A Terraform vizualizációs funkciójának használatához [telepítenie kell a GraphVizt](http://graphviz.org/).
+A Terraform vizualizációs funkciójának használatához [telepítenie kell a GraphVizt](https://graphviz.org/).
 
 >[!NOTE]
 >A GraphViz telepítésének ellenőrzéséhez nyisson meg egy terminálablakot, és írja be a `dot -V` parancsot.
@@ -128,7 +128,7 @@ Ebben a gyakorlatban egy olyan alapszintű Terraform konfigurációs fájlt hozu
     ![Mentés main.tf néven](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. Kattintson a **Mentés** gombra.
-- A menüsávon kattintson a **File (Fájl) > Open Folder (Mappa megnyitása)** elemre. Keresse meg a létrehozott új mappát, majd válassza ki.
+1. A menüsávon kattintson a **File (Fájl) > Open Folder (Mappa megnyitása)** elemre. Keresse meg a létrehozott új mappát, majd válassza ki.
 
 ### <a name="run-terraform-init-command"></a>Az *init* Terraform-parancs futtatása
 

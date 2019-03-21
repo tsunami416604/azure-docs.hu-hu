@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50306ab4dee13f772c2c34b3c3a8f13d07861fc0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 53b4d03ac8f5d22595d3a4e840a04583f7ec963d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410264"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995520"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 
@@ -35,7 +35,7 @@ Az alábbi leírásokat felel meg a fenti ábrán a zöld betűkkel lépéseket.
 1. A fenti ábrán az alkalmazás létrehozása egy tanúsítványt, amely belsőleg megkezdi a hozzon létre egy kulcsot tárol a kulcstárolóban.
 2. A Key Vault és az alkalmazás ad vissza egy tanúsítvány-aláírási kérelem (CSR)
 3. Az alkalmazás a választott hitelesítésszolgáltató továbbítja a CSR-fájl.
-4. A választott hitelesítésszolgáltató fűzi hozzá egy olyan X509 tanúsítványt.
+4. Egy X509 fűzi hozzá a választott Hitelesítésszolgáltatói tanúsítvány.
 5. Az alkalmazás befejezi az egyesülés a X509 új tanúsítvány létrehozása a hitelesítésszolgáltató tanúsítványa.
 
 -   **Hozzon létre egy tanúsítványt egy ismert kibocsátó szolgáltatót:** Ennél a módszernél a kibocsátó objektum létrehozása egy egyszeri feladat. Kiállító objektum létrehozása után a key vault, a neve a házirendben a KV tanúsítvány lehet rá hivatkozni. KV tanúsítvány létrehozására irányuló kérelem fog kulcspár létrehozása a tárolóban, és a kommunikációt a kibocsátó szolgáltató szolgáltatással a hivatkozott kibocsátó objektum szereplő információk segítségével egy x509 beolvasni tanúsítványt. A tanúsítvány veszi át a kibocsátó szolgáltatás és a kulcspárt a KV végrehajtásához az egyesített x509 tanúsítványok létrehozásához.  

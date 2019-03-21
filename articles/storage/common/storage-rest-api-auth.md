@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 771f910fce44724250ff79e770e0d1ca56e8765c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012790"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
@@ -46,7 +46,7 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megol
 
 ## <a name="what-is-rest"></a>Mit jelent a többi?
 
-REST azt jelenti, hogy *representational állapotátvitel*. Egy adott definíciót, tekintse meg [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
+REST azt jelenti, hogy *representational állapotátvitel*. Egy adott definíciót, tekintse meg [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 Alapvetően, a REST egy olyan architektúra, mikor használhat API-k hívása, vagy API-kat kell meghívni, így. Azt, hogy mi történik, sem független, és milyen egyéb szoftvert használja küldésekor vagy fogadásakor a REST-hívások. Egy olyan alkalmazást, amely egy Mac, Windows, Linux, az Android rendszerű telefon vagy táblagép, iPhone, iPod vagy webhely futtat, és az azonos REST API-t használja az összes platformokhoz. Adatok is át lehet adni a ki és/vagy a REST API meghívásakor. A REST API-t nem gondoskodik a milyen platformról nevezzük – a fontos, az adatokat a kérésben kapott, és a válaszban megadott adatok.
 
@@ -80,7 +80,7 @@ További paraméterek használatához fűzzön hozzá őket az érték, példáu
 
 [Kérelem törzse](/rest/api/storageservices/List-Containers2#request-body)**:** Nincs nem ListContainers kérelemtörzs. Kérelem törzse az összes PUT művelet szolgál, blobok, valamint SetContainerAccessPolicy, amely lehetővé teszi, hogy a alkalmazni a tárolt hozzáférési szabályzatok egy XML-lista küldése feltöltésekor. A cikkben említett tárolt hozzáférési szabályzatok [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
+[Válasz állapotkódja](/rest/api/storageservices/List-Containers2#status-code)**:** Arra utasítja a bármely állapotkódok, ismernie kell. Ebben a példában egy HTTP-állapotkód: 200-as rendben. HTTP-állapotkódok teljes listáját, tekintse meg [állapotkód-definíciókat](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). A Storage REST API-k az adott hibakódok, olvassa el [REST API-val gyakori hibakódok](/rest/api/storageservices/common-rest-api-error-codes)
 
 [Válaszfejlécek](/rest/api/storageservices/List-Containers2#response-headers)**:** Ezek közé tartozik a *tartalomtípus*; *x-ms-request-id* (a kérés azonosítója, átadott, ha van ilyen); *x-ms-version* (azt jelzi, hogy a használt Blob szolgáltatás), és a *dátum* (UTC-t, arra utasítja a kérés érkezett eldöntve).
 
@@ -88,7 +88,7 @@ További paraméterek használatához fűzzön hozzá őket az érték, példáu
 
 ## <a name="creating-the-rest-request"></a>A REST-kérés létrehozása
 
-Pár megjegyzéseket előtt – biztonság, amikor az éles környezetben futó, mindig használjon HTTP helyett HTTPS. Ebben a gyakorlatban az alkalmazásában kell használnia a HTTP, a kérelmek és válaszok adatait is megtekintheti. A kérések és válaszok adatokat megtekinteni a tényleges REST-hívások, letöltheti [Fiddler](http://www.telerik.com/fiddler) vagy más hasonló alkalmazás. A Visual Studio-megoldásban a tárfiók nevét és a kulcs az osztályban kötöttek, és adja át a tárfiók nevének és a tárfiók kulcsát ListContainersAsyncREST módszer, amely a különböző összetevők a REST-kérelem létrehozásához használt módszerek . Egy valós alkalmazás esetében a tároló nevének és kulcsának lenne egy konfigurációs fájlban, a környezeti változók találhatók, vagy kérhető le az Azure Key Vaultban.
+Pár megjegyzéseket előtt – biztonság, amikor az éles környezetben futó, mindig használjon HTTP helyett HTTPS. Ebben a gyakorlatban az alkalmazásában kell használnia a HTTP, a kérelmek és válaszok adatait is megtekintheti. A kérések és válaszok adatokat megtekinteni a tényleges REST-hívások, letöltheti [Fiddler](https://www.telerik.com/fiddler) vagy más hasonló alkalmazás. A Visual Studio-megoldásban a tárfiók nevét és a kulcs az osztályban kötöttek, és adja át a tárfiók nevének és a tárfiók kulcsát ListContainersAsyncREST módszer, amely a különböző összetevők a REST-kérelem létrehozásához használt módszerek . Egy valós alkalmazás esetében a tároló nevének és kulcsának lenne egy konfigurációs fájlban, a környezeti változók találhatók, vagy kérhető le az Azure Key Vaultban.
 
 A mintaprojekt az engedélyezési fejléc létrehozásához a kód pedig egy különálló osztályt, a cél, hogy, sikerült a teljes osztály igénybe vehet, és adja hozzá a saját megoldás és azokat használja ", ami." Az engedélyezési fejléc kód a legtöbb, az Azure Storage REST API-hívásokkal működik.
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
 
 Ezek a mezők a legtöbb ritkán használják. A Blob Storage adja meg művelet, az MD5-tel, a tartalom hossza, a Kanonikussá fejlécek és a Kanonikussá erőforrás. Üresen hagyhatja, a többi (de a put a `\n` így az tudni fogja üresek).
 
-Mik azok CanonicalizedHeaders és CanonicalizedResource? Jó kérdést. Sőt mire kanonikussá mean? A Microsoft Word nem is ismeri fel a szó. Mi [Wikipedia szerint a kanonikussá tétele kapcsolatos](http://en.wikipedia.org/wiki/Canonicalization): *Számítógép-tudományi kanonikussá tétele (néha szabványügyi szervezet vagy normalizálási) egy folyamatot, amely rendelkezik egy "standard", "normál", illetve canonical űrlapra egynél több lehetséges reprezentáció adatok alakításával.* A normál beszél, ez azt jelenti, hogy számára (például fejlécek Kanonikussá fejlécek esetében) elemek listáját és a kötelező formátum szabványosíthatja őket. Alapvetően úgy döntött, formátumban a Microsoft, és azt egyeznie kell.
+Mik azok CanonicalizedHeaders és CanonicalizedResource? Jó kérdést. Sőt mire kanonikussá mean? A Microsoft Word nem is ismeri fel a szó. Mi [Wikipedia szerint a kanonikussá tétele kapcsolatos](https://en.wikipedia.org/wiki/Canonicalization): *Számítógép-tudományi kanonikussá tétele (néha szabványügyi szervezet vagy normalizálási) egy folyamatot, amely rendelkezik egy "standard", "normál", illetve canonical űrlapra egynél több lehetséges reprezentáció adatok alakításával.* A normál beszél, ez azt jelenti, hogy számára (például fejlécek Kanonikussá fejlécek esetében) elemek listáját és a kötelező formátum szabványosíthatja őket. Alapvetően úgy döntött, formátumban a Microsoft, és azt egyeznie kell.
 
 Kezdjük két szabványosított mezők, mert az engedélyezési fejléc létrehozásához szüksége van rájuk.
 
@@ -325,7 +325,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
     StringBuilder sb = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
-    //   it means put in a standard format. http://en.wikipedia.org/wiki/Canonicalization
+    //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
         StringBuilder headerBuilder = new StringBuilder(kvp.Key);
@@ -482,7 +482,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-A következő értékek közül az [Fiddler](http://www.telerik.com/fiddler):
+A következő értékek közül az [Fiddler](https://www.telerik.com/fiddler):
 
 **A kérelem:**
 

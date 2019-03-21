@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: ee62138a56851747e75d75b7a806b2b73ba4fbbb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852863"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -75,7 +75,7 @@ Munkaterhelés-támogató tárhellyel kiválaszthatja a köteteket, amelyek rés
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Munkaterhelés-támogató tárhely beállítása a PowerShell-parancsmaggal Update-DPMDiskStorage parancsmag frissíti a tárolókészlet egy Azure Backup Server a kötet tulajdonságait. 
+Munkaterhelés-támogató tárhely beállítása a PowerShell-parancsmaggal Update-DPMDiskStorage parancsmag frissíti a tárolókészlet az Azure Backup Server a kötet tulajdonságait. 
 
 Szintaxis:
 
@@ -100,13 +100,13 @@ Védelmi csoportok Modern Backup Storage használatára való frissítése nem k
 
 1. A felügyeleti konzolon válassza a **védelmi** funkció. Az a **védelmi csoport tagjához** listában kattintson a jobb gombbal a tagja, és válassza ki **tag védelmének kikapcsolása**.
 
-  ![Tag védelmének kikapcsolása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Tag védelmének kikapcsolása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Az a **eltávolítása a csoportból** párbeszédpanelen tekintse át a felhasznált lemezterület és a rendelkezésre álló szabad területet a tárolókészlethez. Az alapértelmezett érték a helyreállítási pontok meghagyása a lemezen, és lehetővé teszik számukra megőrzési / hamarosan lejár. Kattintson az **OK** gombra.
 
-  Ha szeretné azonnal a felhasznált lemezterület térjen vissza a szabad tárolókészletbe, válassza ki a **lemezen tárolt replika törlése** taghoz tartozó melletti jelölőnégyzetet, hogy törölje a biztonsági mentési adatok (és a helyreállítási pontok).
+   Ha szeretné azonnal a felhasznált lemezterület térjen vissza a szabad tárolókészletbe, válassza ki a **lemezen tárolt replika törlése** taghoz tartozó melletti jelölőnégyzetet, hogy törölje a biztonsági mentési adatok (és a helyreállítási pontok).
 
-  ![Távolítsa el a csoport párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Távolítsa el a csoport párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Hozzon létre egy védelmi csoportot, amely a Modern Backup Storage használja. A nem védett adatforrásokat tartalmaznak.
 

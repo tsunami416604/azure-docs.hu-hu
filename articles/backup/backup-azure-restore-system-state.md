@@ -8,20 +8,20 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: ab307548853a545c4aa8ee5a573ca5b1ca67c91d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122960"
 ---
 # <a name="restore-system-state-to-windows-server"></a>A Windows Server rendszerállapotának visszaállítása
 
 Ez a cikk ismerteti a Windows Server rendszerállapotának biztonsági mentések visszaállítása egy Azure helyreállítási tárat. Rendszerállapot visszaállítása, rendelkeznie kell egy rendszerállapot biztonsági mentése (utasításait használatával létrehozott [rendszerállapot biztonsági mentése](backup-azure-system-state.md#back-up-windows-server-system-state), és győződjön meg arról, hogy telepítette a [legújabb verzióját a Microsoft Azure Recovery Services (MARS) az ügynök](https://aka.ms/azurebackup_agent). A Windows Server rendszerállapotának adatok helyreállítása az Azure Recovery Services-tárolót a két lépésből áll:
 
 1. Rendszerállapot visszaállítása az Azure Backup-fájlok formájában. Ha a rendszerállapot helyreállítása az Azure Backup-fájlok formájában, közül választhat:
-  * Rendszerállapotának visszaállítása ugyanarra a kiszolgálóra, ahol a biztonsági mentések származnak, vagy
-  * Rendszerállapotának visszaállítása a fájl egy másik kiszolgálóra.
+   * Rendszerállapotának visszaállítása ugyanarra a kiszolgálóra, ahol a biztonsági mentések származnak, vagy
+   * Rendszerállapotának visszaállítása a fájl egy másik kiszolgálóra.
 
 2. A Windows Server a visszaállított rendszerállapot-fájlok érvényesek.
 

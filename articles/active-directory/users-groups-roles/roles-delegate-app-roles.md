@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9409d196e307b75a14a272dee6c8c93789ca8556
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669788"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119734"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Alkalmazás-rendszergazdai szerepkörök az Azure Active Directoryban delegálása
 
@@ -37,8 +37,8 @@ Képes kezelni az alkalmazás-hozzáférés az Azure Portalon megadását:
 1. Jelentkezzen be a [Azure AD-bérlő](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult a bérlő globális rendszergazdai szerepkörrel.
 2. Ha rendelkezik megfelelő engedélyekkel, nyissa meg a [szerepkörök és a rendszergazdák lap](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators).
 3. Nyissa meg a tag hozzárendeléseiről megtekintéséhez a következő szerepkörök egyikét:
-  * **Alkalmazás-rendszergazda**
-  * **Felhőalkalmazás-rendszergazda**
+   * **Alkalmazás-rendszergazda**
+   * **Felhőalkalmazás-rendszergazda**
 4. Az a **tagok** a szerepkörhöz, válassza a lap **tag hozzáadása**.
 5. Válassza ki egy vagy több tag hozzáadása a szerepkörhöz. <!--Members can be users or groups.-->
 
@@ -50,8 +50,8 @@ Alapértelmezés szerint minden felhasználója létrehozhat alkalmazásregisztr
 
 1. Jelentkezzen be a [Azure AD-bérlő](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult a bérlő globális rendszergazdai szerepkörrel.
 2. Ha beszerezte a megfelelő engedélyekkel, és állítsa a következők közül:
-  * Az a [a bérlőhöz tartozó felhasználói beállítások lapon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)állítsa be **felhasználók regisztrálhatnak alkalmazásokat** nem.
-  * Az a [vállalati alkalmazások felhasználói beállításait](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)állítsa be **felhasználók engedélyezhetik alkalmazások hozzáférjenek a vállalati adatokhoz a felhasználók nevében** nem.
+   * Az a [a bérlőhöz tartozó felhasználói beállítások lapon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)állítsa be **felhasználók regisztrálhatnak alkalmazásokat** nem.
+   * Az a [vállalati alkalmazások felhasználói beállításait](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)állítsa be **felhasználók engedélyezhetik alkalmazások hozzáférjenek a vállalati adatokhoz a felhasználók nevében** nem.
 3. Rendelje hozzá a felhasználók ezt az engedélyt az alkalmazás fejlesztői igény szerint szerepkör tagjai.
 
 Amikor egy felhasználó egy alkalmazás regisztrál, a rendszer automatikusan felveszi az alkalmazás első tulajdonosként.

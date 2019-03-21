@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c60dc2ca93547b93ce2ee457393570479069c899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094364"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternatív bemenetek használata
 
@@ -48,6 +48,8 @@ Alternatív bemenetek olyan alternatív, szemantikailag egyenértékűnek felhas
 3. Írja be a "city" a "entitás neve."
 4. A "Létrehozás" gombra.
 
+![](../media/T10_actions.png)
+
 Most hozzunk létre három műveletet.
 
 ### <a name="create-the-first-action"></a>Az első művelet létrehozása
@@ -58,11 +60,15 @@ Most hozzunk létre három műveletet.
 4. A "Kizárásának feljogosítja a" mezőjében írja be a "city".
 5. A "Létrehozás" gombra.
 
+![](../media/T10_action_create_1.png)
+
 ### <a name="create-the-second-action"></a>A második művelet létrehozása
 
 1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
 2. A "Bot a válaszban..." mezőbe írja be a "$city az időjárás Ez valószínűleg napsütéses."
 3. A "Létrehozás" gombra.
+
+![](../media/T10_action_create_2.png)
 
 ### <a name="create-the-third-action"></a>A harmadik művelet létrehozása
 
@@ -71,7 +77,11 @@ Most hozzunk létre három műveletet.
 3. A "Kizárásának feljogosítja a" mezőjében írja be a "city".
 4. A "Létrehozás" gombra.
 
+![](../media/T10_action_create_3.png)
+
 Most már három műveletet.
+
+![](../media/T10_actions.png)
 
 ### <a name="train-the-model"></a>A modell betanítását
 
@@ -82,7 +92,9 @@ Most már három műveletet.
 5. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Denver" típusra
 6. A "Score műveletek" gombra.
 7. Válassza ki a választ, a "Denver az időjárás valószínűleg napsütéses."
-8. A "Mentés" gombra.
+8. A "Módosítások elküldése" gombra.
+
+![](../media/T10_training_1.png)
 
 Nézzük betanítja a modellt, további hozzon létre egy másik train párbeszédpanel.
 
@@ -96,7 +108,9 @@ Nézzük betanítja a modellt, további hozzon létre egy másik train párbesz�
 6. Kattintson a "Seattle", majd kattintson a "city" entitás listájából.
 7. A "Score műveletek" gombra.
 8. Válassza ki a választ, a "Budapesti időjárás valószínűleg napsütéses."
-9. A "Mentés" gombra.
+9. A "Módosítások elküldése" gombra.
+
+![](../media/T10_training_2.png)
 
 ### <a name="third-model-train-dialog-using-alternative-input"></a>Alternatív bemeneti harmadik modell Train párbeszédpanel
 
@@ -106,27 +120,29 @@ Nézzük betanítja a modellt, további hozzon létre egy másik train párbesz�
     - A modell le bizonytalan a legjobb lehetőség, így alapértelmezés szerint azt választja a legmagasabb százalékos gyakoriságot.
 4. Kattintson a "Abandon oktatási" gombra, majd a "Jóváhagyás" gombra.
 
-![](../media/tutorial8_closescores.png)
+![](../media/T10_training_3.png)
 
 Nézzük jobban finomhangolása alternatív bemenet használatával a rendszer. Alternatív beviteli adhat hozzá, amíg oktatási vagy újabb verziója.
 
-5. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd válassza a "Mire használható?" a párbeszédpanelek Train listájából.
-6. Kattintson a "mire használható?" a Csevegés panelen utterance.
-7. A "alternatív bemenet hozzáadása..." mező, írja be "Súgó", majd nyomja le adja meg.
-8. A "Módosítások mentése" gombra.
+1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd válassza a "Mire használható?" a párbeszédpanelek Train listájából.
+1. Kattintson a "mire használható?" a Csevegés panelen utterance.
+1. A "alternatív bemenet hozzáadása..." mező, írja be "Súgó", majd nyomja le adja meg.
+1. A "Módosítások mentése" gombra.
 
-![](../media/tutorial8_helpalternates.png)
+![](../media/T10_training_4.png)
 
 Adjunk hozzá egy másik alternatív beviteli Houston kezelésére.
 
-9. Kattintson a "Mi az az időjárás, a Seattle?" a Csevegés panelen utterance.
-10. Az "Add alternatív beviteli..." mezőben típusa "előrejelzést ad a Houston", és az enter.
-    - A hiba üzenet fontosabb eseményeket a tény alternatív bemenetei között legyen szemantikailag, és ugyanazokat az entitásokat, mint az eredeti utterance (kifejezés); nem csak ugyanazokat az értékeket az entitások. Ugyanezeket az entitásokat a szükséges.
-11. Kattintson a "Houston", és válassza a "city" entitások listájáról.
-12. Az "Add alternatív beviteli..." mezőben típusa "előrejelzést ad a Seattle" és az enter.
-13. Kattintson a "Seattle", és válassza a "city" entitások listájáról.
-14. A "Módosítások mentése" gombra.
-15. Kattintson a "Mentés szerkesztése" gombra.
+1. Kattintson a "Mi az az időjárás, a Seattle?" a Csevegés panelen utterance.
+1. Az "Add alternatív beviteli..." mezőben típusa "előrejelzést ad a Houston", és az enter.
+   - A hiba üzenet fontosabb eseményeket a tény alternatív bemenetei között legyen szemantikailag, és ugyanazokat az entitásokat, mint az eredeti utterance (kifejezés); nem csak ugyanazokat az értékeket az entitások. Ugyanezeket az entitásokat a szükséges.
+1. Kattintson a "Houston", és válassza a "city" entitások listájáról.
+1. Az "Add alternatív beviteli..." mezőben típusa "előrejelzést ad a Seattle" és az enter.
+1. Kattintson a "Seattle", és válassza a "city" entitások listájáról.
+1. A "Módosítások mentése" gombra.
+1. Kattintson a "Mentés szerkesztése" gombra.
+
+![](../media/T10_training_5.png)
 
 ### <a name="testing-the-model"></a>A modell tesztelése
 
@@ -134,7 +150,7 @@ Adjunk hozzá egy másik alternatív beviteli Houston kezelésére.
 2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", írja be a "Súgó me"
 3. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", "Denver vonatkozó előrejelzésben" típusa
 
-![](../media/tutorial8_altcities.png)
+![](../media/T10_logdialog.png)
 
 ## <a name="next-steps"></a>További lépések
 

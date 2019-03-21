@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115861"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077904"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Gyors útmutató: Az Azure Security Center Windows számítógépek felvétele
 Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.
@@ -37,7 +37,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
 2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
- ![Security Center – Áttekintés][2]
+   ![Security Center – Áttekintés][2]
 
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
 4. Válassza a **Bevezetés** lapot.
@@ -48,13 +48,13 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
     ![Nem Azure-beli számítógép hozzáadása](./media/quick-onboard-windows-computer/non-azure.png)
 
-  A megnyíló **Direct Agent** panel egy hivatkozást tartalmaz az ügynök konfigurálásához szükséges munkaterület-azonosító Windows-ügynökének és kulcsának letöltéséhez.
+   A megnyíló **Direct Agent** panel egy hivatkozást tartalmaz az ügynök konfigurálásához szükséges munkaterület-azonosító Windows-ügynökének és kulcsának letöltéséhez.
 
-6.  Válassza ki a számítógép processzortípusának megfelelő **Windows-ügynök letöltése** hivatkozást a telepítési fájl letöltéséhez.
+6. Válassza ki a számítógép processzortípusának megfelelő **Windows-ügynök letöltése** hivatkozást a telepítési fájl letöltéséhez.
 
-7.  Kattintson a **Munkaterület-azonosító** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
+7. Kattintson a **Munkaterület-azonosító** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
 
-8.  Kattintson az **Elsődleges kulcs** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
+8. Kattintson az **Elsődleges kulcs** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
 
 ## <a name="install-the-agent"></a>Az ügynök telepítése
 Most telepíteni kell a letöltött fájlt a célszámítógépre.
@@ -68,7 +68,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
 8. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.
 
-  ![Az ügynök telepítése][5]
+   ![Az ügynök telepítése][5]
 
 9. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
 10. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.

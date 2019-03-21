@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5d725cdac93ebdb39437c0b9bcb619488fade0f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543910"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090661"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton belül
 
@@ -48,7 +48,7 @@ Egyszer létrehozta a virtuális hálózathoz, és hozzárendelt egy alhálózat
 6. Adja meg a fennmaradó beállításokat, beleértve a **csomópontméret**, **dedikált csomópontok célszáma**, és **alacsony prioritású csomópontok célszáma**, illetve bármely kívánt, nem kötelező beállítások.
 7. A **virtuális hálózat**, válassza ki a virtuális hálózatot és alhálózatot kívánja használni.
   
-  ![A virtual network készlet hozzáadása](./media/batch-virtual-network/add-vnet-pool.png)
+   ![A virtual network készlet hozzáadása](./media/batch-virtual-network/add-vnet-pool.png)
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>Felhasználó által megadott útvonalak a kényszerített bújtatás
 

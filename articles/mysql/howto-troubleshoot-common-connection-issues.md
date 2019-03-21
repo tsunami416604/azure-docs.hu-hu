@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bc804c9cbf141f5b0e36a92e4f386a6540f583c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540928"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855520"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
 
@@ -48,7 +48,7 @@ Ha az alkalmazás nem állandó csatlakozás az Azure Database for MySQL, azt á
 
 * Kiszolgálói tűzfal-konfiguráció: Győződjön meg arról, hogy az Azure Database for MySQL-kiszolgáló tűzfalához az ügyfélről, beleértve a proxy-kiszolgálók és az átjárók kapcsolatok engedélyezésére van konfigurálva.
 * Ügyfél tűzfal-konfiguráció: Az ügyfélen a tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz csatlakozhat. IP-címek és portok nem lehet a kiszolgáló és az egyes tűzfalak például MySQL alkalmazásnevek engedélyezni kell.
-* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte *@servername* utótagot a felhasználó nevében.
+* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte  *\@servername* utótagot a felhasználó nevében.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
 

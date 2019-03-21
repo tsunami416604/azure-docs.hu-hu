@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567383"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994908"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás
 
@@ -66,9 +66,9 @@ Most válassza ki a nevét, és írja le.
 ### <a name="steps"></a>Lépések
 
 1. Kattintson a következő kék **üzembe helyezés az Azure** gombra.
-    - A Wingtip Tickets SaaS központi telepítési sablont nyílik az Azure Portalon.
+   - A Wingtip Tickets SaaS központi telepítési sablont nyílik az Azure Portalon.
 
-    [![A gomb üzembe helyezése az Azure-bA.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![A gomb üzembe helyezése az Azure-bA.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. Adja meg a szükséges paraméterértékeket a telepítés.
 
@@ -125,9 +125,9 @@ Minden helyszín kap egy testreszabott webappot az események listázása és je
 Egy központi **Eseményközpont** weblapra mutató hivatkozásokat biztosít az adott környezetben a bérlők számára. Kövesse az alábbi lépéseket tapasztalhat a **Eseményközpont** weblapon és a egy egyéni web app:
 
 1. Nyissa meg a **Eseményközpont** a böngészőben:
-    - http://events.wingtip-mt.&lt; felhasználó&gt;. trafficmanager.net &nbsp; *(cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)*
+   - http://events.wingtip-mt.&lt; felhasználó&gt;. trafficmanager.net &nbsp; *(cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel.)*
 
-    ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Kattintson a **Fabrikam Jazz Club** elemre az **eseményközpontban**.
 
@@ -208,7 +208,7 @@ Ezután azt egy másik új bérlő kiépítéséhez, ezúttal a saját adatbázi
 
 Most megnézzük egyes üzembe helyezett erőforrások:
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg a azon erőforráscsoportok listája. Nyissa meg az alkalmazás üzembe helyezésekor létrehozott erőforráscsoportot.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg a azon erőforráscsoportok listája. Nyissa meg az alkalmazás üzembe helyezésekor létrehozott erőforráscsoportot.
 
    ![erőforráscsoport](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Gomb üzembe helyezéséhez az Azure-bA."

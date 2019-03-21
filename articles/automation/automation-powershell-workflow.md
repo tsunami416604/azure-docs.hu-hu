@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7ab6b387a28df06758e5e0c1ce197781fc4be3c5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436807"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168085"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automatizálási runbookok Windows PowerShell-munkafolyamat alapfogalmak tanulási
 
@@ -226,7 +226,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Ellenőrzőpontok
 
-A *ellenőrzőpont* egy pillanatkép, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat aktuális állapotáról. Ha egy munkafolyamatot ér véget a hibás, vagy fel van függesztve, majd a következő futtatáskor elindul, az utolsó ellenőrzőponttól helyett a munkafolyamat elején.  Ön állíthat be ellenőrzőpontot egy munkafolyamatban a **Checkpoint-Workflow** tevékenység.
+A *ellenőrzőpont* egy pillanatkép, amely tartalmazza a változók aktuális értékét és bármi addig létrejött adott pontra a munkafolyamat aktuális állapotáról. Ha egy munkafolyamatot ér véget a hibás, vagy fel van függesztve, majd a következő futtatáskor elindul, az utolsó ellenőrzőponttól helyett a munkafolyamat elején.  Ön állíthat be ellenőrzőpontot egy munkafolyamatban a **Checkpoint-Workflow** tevékenység. Az Azure Automation szolgáltatás rendelkezik [igazságos elosztás](automation-runbook-execution.md#fair-share), ahol bármelyik runbookhoz, amely 3 óráig fut. van eltávolítva a memóriából, hogy a többi runbookok futtatását. Végül a memóriából runbook lesz töltve, és, ha azt a legutóbbi ellenőrzőponttól venni a runbook végrehajtása folytatódik. Így garantálható, hogy a runbook idővel fog befejeződni, hozzá kell adnia az ellenőrzőpontokat, amely kisebb, mint 3 óra időközönként. Ha minden egyes futtatás során egy új ellenőrzőpont hozzáadásakor, ha a runbook egy hiba miatt 3 óra után lekérdezi zárni, majd a runbook folytatódik határozatlan időre.
 
 A következő mintakód a kivétel létrejötte után a runbook az Activity2 okoz a munkafolyamat befejezéséhez. Esetén a munkafolyamat fut újra, mivel itt volt beállítva az utolsó ellenőrzőpont runbook az Activity2 futtatásával kezdődik.
 

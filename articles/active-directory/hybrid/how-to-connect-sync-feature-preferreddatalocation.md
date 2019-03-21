@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199799"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118442"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -192,8 +192,8 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
    3. A párbeszédpanelen válassza ki a **teljes importálást**, és válassza ki **OK**.
    4. Várjon, amíg a művelet befejeződik.
 
-    > [!NOTE]
-    > A helyszíni Active Directory-összekötő a teljes importálást kihagyhatja, ha az adatforrás-attribútum már szerepel az importált attribútumok listáját. Más szóval, nincs semmilyen módosítást a cikk korábbi részeiben 2. lépés során.
+      > [!NOTE]
+      > A helyszíni Active Directory-összekötő a teljes importálást kihagyhatja, ha az adatforrás-attribútum már szerepel az importált attribútumok listáját. Más szóval, nincs semmilyen módosítást a cikk korábbi részeiben 2. lépés során.
 
 2. Futtatás **teljes importálást** az Azure AD Connectoron:
 

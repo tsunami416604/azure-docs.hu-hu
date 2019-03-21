@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: b8bd57953845278aa75e8cbdf41ae28300edad58
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095517"
 ---
 # <a name="azure-stack-capacity-planning"></a>Az Azure Stack kapacitásának megtervezése
 Az Azure Stack megoldás kiértékelésekor nincsenek hardver konfigurációs lehetőségeket, amelyek közvetlen hatással vannak az Azure Stack-felhő összesített kapacitását. Ezek a CPU, memória sűrűség, tárolási konfigurációt, és a teljes megoldás méretezési vagy kiszolgálók száma, a klasszikus lehetőségek. Ellentétben a hagyományos virtualizálási megoldás az egyszerű számtani felhasználható kapacitás meghatározásához ezeket az összetevőket nem vonatkozik. Az első ennek oka, hogy az Azure Stack tervezésnek lesz-e üzemeltetni az infrastruktúrát vagy felügyeleti összetevők magát a megoldáson belül. A második oka, hogy a megoldás kapacitás némelyike rugalmasság; feladat foglalt a megoldás szoftverek oly módon, hogy bérlői számítási feladatok frissítése.
@@ -49,7 +49,7 @@ Kapacitás számítások kiküszöböli további leírását ebben a szakaszban 
 |     |     |     |     |     |     |     |     |
 
 > <sup>1</sup> standard D2 virtuális gépeket.
-
+> 
 > <sup>2</sup> virtuális mag fizikai mag arány.
 
 Ahogy említettük, a Virtuálisgép-kapacitás rendelkezésre álló memória határozza meg. A virtuális-magot fizikai mag arány exemplify, hogy a Virtuálisgép-sűrűség hogyan módosítani rendelkezésre álló processzorkapacitást, kivéve, ha a megoldás több fizikai mag (egy másik CPU kiválasztott) úgy van felépítve. Ugyanez érvényes tárolási kapacitás és a gyorsítótár tárolókapacitást.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 690ce08aa15a9677b04931ed1965ef819614ee84
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355628"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102145"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Az Azure Marketplace és AppSource ajánlatokat frissítése
 
@@ -68,19 +68,19 @@ Ezek a módosítások végrehajtásához kövesse az alábbi lépéseket.
 
 Az Azure Marketplace-ajánlatok:
 
-2. Válassza ki a **termékváltozatok** fülre.  Válassza ki a Termékváltozat módosítása.
-3. Kattintson a **kiválasztása országok/régiók** gomb alatt a **ország/régió rendelkezésre állási** mező.
-4. A régió rendelkezésre állási párbeszédpanelen régiók hozzáadása vagy eltávolítása a Ez a termékváltozat.
+1. Válassza ki a **termékváltozatok** fülre.  Válassza ki a Termékváltozat módosítása.
+1. Kattintson a **kiválasztása országok/régiók** gomb alatt a **ország/régió rendelkezésre állási** mező.
+1. A régió rendelkezésre állási párbeszédpanelen régiók hozzáadása vagy eltávolítása a Ez a termékváltozat.
 
 Az appsource-ban a következőket kínálja:
 
-2. Válassza ki a **kirakat részletek** fülre.
-3. Mellett a **támogatott országok/régiók** címkézését, kattintson a **támogatott országok/régiók**. 
-4. Támogatott országok/régiók párbeszédpanelen régiók hozzáadása vagy eltávolítása a ezt az ajánlatot.
+1. Válassza ki a **kirakat részletek** fülre.
+1. Mellett a **támogatott országok/régiók** címkézését, kattintson a **támogatott országok/régiók**. 
+1. Támogatott országok/régiók párbeszédpanelen régiók hozzáadása vagy eltávolítása a ezt az ajánlatot.
 
 Mindkét Marketplace-en:
 
-5. Kattintson a **közzététel** a közzétételi folyamat elindításához. 
+1. Kattintson a **közzététel** a közzétételi folyamat elindításához. 
 
 A Termékváltozat egy új régióban elérhetővé van folyamatban, ha rendelkezik keresztül adott régió díjszabás megadásának lehetőségét a **díjszabási adatok exportálása** funkciót. Vissza egy régióban, amely korábban ad hozzá, ha nem tudja frissíteni a díjszabás, mert a díjszabási nem engedélyezettek.
 

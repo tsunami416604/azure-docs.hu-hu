@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 16876a7831ab374637e28165c44d47e0ab059712
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0f700b9e24399768977a1fa221322fa4c1c6708d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095143"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -28,10 +28,10 @@ Ha gondja van az Azure Windows virtuális gép (VM), amely egy egyéni lemezkép
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>A Windows termékaktiválás az Azure Virtual Machines Azure KMS végpontok ismertetése
 Az Azure különböző végpontok használ a KMS-aktiváláshoz függően a felhő régió, ahol a virtuális gép található. Ez a hibaelhárítási útmutató használjon a megfelelő KMS-végpontot, amely az Ön régiójában érvényes.
 
-* Az Azure nyilvános felhő-régiók: kms.core.windows.net:1688
-* Az Azure China 21Vianet országos felhőbeli régiók: kms.core.chinacloudapi.cn:1688
+* Azure public cloud regions: kms.core.windows.net:1688
+* Azure China 21Vianet national cloud regions: kms.core.chinacloudapi.cn:1688
 * Azure Germany-országos felhőbeli régiók: kms.core.cloudapi.de:1688
-* Az Azure US Gov országos felhőbeli régiók: kms.core.usgovcloudapi.net:1688
+* Azure US Gov national cloud regions: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Jelenség
 
@@ -61,7 +61,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Ha **slmgr.vbs/dlv** jeleníti meg a KISKERESKEDELMI csatorna, futtassa az alábbi parancsokat a [KMS-ügyfél telepítési kulcsának](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) Windows Server verziójának használ, és hogy az aktiválási ismételje meg: 
+2. Ha az **slmgr.vbs /dlv** a KISKERESKEDELMI csatornát jeleníti meg, futtassa az alábbi parancsokat a [KMS-ügyféltelepítési kulcs](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) a használt Windows Server-verzióhoz való beállításához, majd kényszerítse az újbóli aktiválást: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -81,34 +81,34 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
 
 2. Ugrás a kezdő, keressen a Windows PowerShell, kattintson a jobb gombbal a Windows PowerShell, és válassza a Futtatás rendszergazdaként.
 
-3. Győződjön meg arról, hogy a virtuális gép a megfelelő Azure KMS-kiszolgáló használatára van konfigurálva. Ehhez futtassa a következő parancsot:
-  
+3. Győződjön meg arról, hogy a virtuális gép úgy van konfigurálva, hogy a megfelelő Azure KMS-kiszolgálót használja. Ehhez futtassa a következő parancsot:
+  
     ```
     iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
-    A parancs kell visszaadnia: Kulcskezelő szolgáltatás gépnév kms.core.windows.net:1688 való beállítása sikerült.
+    A parancsnak ehhez hasonlókat kell visszaadnia: Kulcskezelő szolgáltatás gépnév kms.core.windows.net:1688 való beállítása sikerült.
 
-4. Győződjön meg arról, hogy a KMS-kiszolgálóval való kapcsolat Psping használatával. Váltson arra a mappára, ahová kibontotta a Pstools.zip letöltése, és futtassa a következő:
-  
+4. Győződjön meg arról, hogy a KMS-kiszolgálóval való kapcsolat Psping használatával. Lépjen abba a mappába, amelybe kibontotta a letöltött Pstools.zip fájlt, majd futtassa a következőt:
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
-  Az utolsó előtti másodperc sorban a kimenet győződjön meg arról, hogy látja: Elküldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
+  
+   Győződjön meg arról, hogy a kimenet utolsó előtti sorában a következők láthatók: Elküldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
 
-  Ha elveszett nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóra. Ebben a helyzetben a virtuális gép egy virtuális hálózaton van, és rendelkezik egy egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló el tudja kms.core.windows.net megoldásához. Vagy a DNS-kiszolgáló módosítsa, hogy kms.core.windows.net megoldásához.
+   Ha elveszett nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóra. Ebben a helyzetben a virtuális gép egy virtuális hálózaton van, és rendelkezik egy egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló el tudja kms.core.windows.net megoldásához. Vagy a DNS-kiszolgáló módosítsa, hogy kms.core.windows.net megoldásához.
 
-  Figyelje meg, hogy ha eltávolítja az összes DNS-kiszolgáló egy virtuális hálózatot, virtuális gépek az Azure belső DNS-szolgáltatás használhat. Ez a szolgáltatás fel tudja oldani kms.core.windows.net.
+   Figyelje meg, hogy ha eltávolítja az összes DNS-kiszolgáló egy virtuális hálózatot, virtuális gépek az Azure belső DNS-szolgáltatás használhat. Ez a szolgáltatás fel tudja oldani kms.core.windows.net.
   
 Emellett győződjön meg arról, hogy a Vendég tűzfala nincs konfigurálva, hogy megakadályozza a aktiválási kísérletek.
 
-5. Miután kms.core.windows.net sikeres kapcsolat ellenőrzéséhez futtassa a következő parancsot, hogy emelt szintű Windows PowerShell-parancssorba. Ez a parancs megpróbál aktiválási több alkalommal.
+1. Miután kms.core.windows.net sikeres kapcsolat ellenőrzéséhez futtassa a következő parancsot, hogy emelt szintű Windows PowerShell-parancssorba. Ez a parancs több alkalommal megpróbálja elvégezni az aktiválást.
 
     ```
     1..12 | % { iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
     ```
 
-Sikeres aktiválás ad vissza információkat, a következőhöz:
+A sikeres aktiválás az alábbihoz hasonló információkat ad vissza:
 
 **Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678) aktiválása... A termék aktiválása sikeres.**
 

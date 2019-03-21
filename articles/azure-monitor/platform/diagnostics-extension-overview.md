@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078539"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
 Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, virtuális gép méretezése a készletek és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../../azure-monitor/overview.md).
@@ -50,6 +50,9 @@ Is választhat, hogy az adatokat küldeni az Azure Monitor-metrikák idősorozat
 * Helyettesítő operátor kezelni a teljesítményszámlálók a metrika a "Példány" dimenzió.  Például ha összegyűjtött a "logikai lemez (\*) / DiskWrites/mp" számláló tudni szűrőt, és a "Példány" dimenzión diagram vagy a riasztások a Lemezírások/mp (például: C:) virtuális gépen az egyes logikai lemez felosztása
 
 A fogadó konfigurálásáról további tudnivalókért tekintse meg a [az Azure diagnostics-séma dokumentációját.](diagnostics-extension-schema-1dot3.md)
+
+## <a name="costs"></a>Költségek
+A fenti lehetőségek mindegyike költségeket számítanak fel. Győződjön meg arról, a kutatás, mielőtt a váratlan számlák.  Az Application Insights, az Eseményközpontok felé, és Azure Storage külön Adatbetöltési költségeket és a tárolt idő. Különösen az Azure Storage fogja tartalmaz adatot, örökre ezért érdemes a régi adatok törlése után egy bizonyos időszakban, a költségek alacsonyan tartani.    
 
 ## <a name="versioning-and-configuration-schema"></a>Verziókezelés és konfigurációs séma
 Lásd: [Azure Diagnostics-verzióelőzmények és séma](diagnostics-extension-schema.md).

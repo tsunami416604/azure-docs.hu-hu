@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1fd472c452b476820414d51b8d13bce8a72dfb3d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874936"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091681"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A LUIS-robot C# a Bot keretrendszer 3.x és az Azure Web app bot
 
@@ -46,16 +46,16 @@ A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismer�
 3. Kattintson a Web App Bot ablakban **létrehozás**.
 
 4. A **Bot Service**, adja meg a szükséges információkat, majd kattintson **létrehozás**. Ez létrehozza és telepíti a bot service és a LUIS-alkalmazás az Azure-bA. Ha a használni kívánt [speech betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), tekintse át [régió követelmények](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming) előtt a robot létrehozásának. 
-    * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
-    * A **Bot sablon**, jelölje be:
-        * **SDK-t v3**
-        * **C#**
-        * **Hangfelismerés**
-    * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió](luis-reference-regions.md) jön létre az alkalmazást.
-    * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
+   * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
+   * A **Bot sablon**, jelölje be:
+       * **SDK-t v3**
+       * **C#**
+       * **Hangfelismerés**
+   * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió](luis-reference-regions.md) jön létre az alkalmazást.
+   * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
-    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+     ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Győződjön meg arról, hogy a bot service van telepítve.
@@ -86,9 +86,9 @@ Nyissa meg **Alkalmazásbeállítások** és szerkesztheti a **LuisAppId** mező
 > 1. Kattintson a **saját alkalmazások**. 
 > 2. Keresse meg a korábban létrehozott, LUIS alkalmazást, amely tartalmazza a szándékok és entitások HomeAutomation tartományból.
 > 3. Az a **beállítások** a LUIS alkalmazás lapon keresse meg és másolja az alkalmazás azonosítóját. Győződjön meg arról, hogy [betanított](luis-interactive-test.md) és [közzétett](luis-how-to-publish-app.md). 
-
-    > [!WARNING]
-    > If you delete your app ID or LUIS key, the bot will stop working.
+> 
+> [!WARNING]
+> Ha törli az alkalmazás Azonosítóját vagy a LUIS kulcs, a bot fognak tovább működni.
 
 ## <a name="modify-the-bot-code"></a>A robot kód módosítása
 
