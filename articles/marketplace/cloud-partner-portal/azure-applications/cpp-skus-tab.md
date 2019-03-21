@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7bf7e341a83727e21e9225c384829c05b7230579
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342541"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095993"
 ---
 # <a name="azure-application-skus-tab"></a>Az Azure application termékváltozatok lapja
 
 Ez a cikk ismerteti, hogyan használhatja az SKU-k lapon SKU-k létrehozása az Azure-alkalmazásokat. 
 
->[!IMPORTANT] 
-A Termékváltozat konfigurálásának lépései eltérőek egy kezelt alkalmazásra vonatkozó ajánlat és a egy megoldás sablon ajánlat. Ez a cikk ismerteti a különbségeket. 
+> [!IMPORTANT]
+> A Termékváltozat konfigurálásának lépései eltérőek egy kezelt alkalmazásra vonatkozó ajánlat és a egy megoldás sablon ajánlat. Ez a cikk ismerteti a különbségeket. 
 
 ## <a name="configure-azure-application-skus"></a>Az Azure application SKU-k konfigurálása
 

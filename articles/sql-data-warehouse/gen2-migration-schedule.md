@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: dea0a38b1f543fbb17cb0cd98ee4f96144d07f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432903"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287179"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -43,8 +43,8 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Észak-Kína |\* |\* |
 | Észak-Kína 2 |\* |\* |
 | Kelet-Ázsia |Elérhető |2019. május 1. |
-| USA keleti régiója |Elérhető |2019. április 02. |
-| USA 2. keleti régiója |Elérhető |2019. április 02. |
+| USA keleti régiója |Elérhető |2019. május 1. |
+| USA 2. keleti régiója |Elérhető |Május 1. 2019 |
 | Közép-Franciaország |\* |\* |
 | Közép-Németország |\* |\* |
 | Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
@@ -55,15 +55,15 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Korea középső régiója |2019. április 02. |2019. május 1. |
 | Korea déli régiója |2019. április 02. |2019. június 1. |
 | USA északi középső régiója |2019. április 02. |2019. június 1. |
-| Észak-Európa |Elérhető |2019. április 02. |
+| Észak-Európa |Elérhető |2019. május 1. |
 | USA déli középső régiója |Elérhető |2019. május 1. |
-| Délkelet-Ázsia |Elérhető |2019. április 02. |
+| Délkelet-Ázsia |Elérhető |2019. május 1. |
 | Az Egyesült Királyság déli régiója |2019. április 02. |2019. május 1. |
 | Az Egyesült Királyság nyugati régiója |\*|\* |
 | USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
-| Nyugat-Európa |Elérhető |2019. április 02. |
+| Nyugat-Európa |Elérhető |2019. május 1. |
 | USA nyugati régiója |2019. április 02. |2019. június 1. |
-| USA nyugati régiója, 2. |Elérhető |2019. április 02. |
+| USA nyugati régiója, 2. |Elérhető |2019. május 1. |
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat
 

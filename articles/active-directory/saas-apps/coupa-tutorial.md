@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db5e309bc077b29740b0d6e597164bcbcc5448f9
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coupa
 
@@ -111,6 +111,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coupa, hajtsa végre
     > A bejelentkezési URL-érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [Coupa ügyfél-támogatási csapatának](https://success.coupa.com/Support/Contact_Us?) lekérni ezt az értéket.
 
     b. Az a **azonosító** mezőbe írja be egy URL-címe:
+
     | Környezet  | URL-cím |
     |:-------------|----|
     | Védőfal | `devsso35.coupahost.com`|
@@ -118,6 +119,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coupa, hajtsa végre
     | | |
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe:
+
     | Környezet | URL-cím |
     |------------- |----|
     | Védőfal | `https://devsso35.coupahost.com/sp/ACS.saml2`|
@@ -174,7 +176,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

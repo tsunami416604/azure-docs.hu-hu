@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: ec8254478786825d0333e8be24b0dfbea8c18e60
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d8baec875c25556f1080cdd105c7fa466ffce74e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245150"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094007"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob Storage-tároló méretének kiszámítása
 
@@ -52,7 +52,7 @@ Ez a szkript a következő parancsokat használja a Blob Storage-tároló méret
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Lekérdezi a megadott tárfiók vagy egy erőforráscsoport vagy előfizetés tárfiókok mindegyikét. |
-| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Listázza a tárolóban lévő blobokat. ||
+| [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Listázza a tárolóban lévő blobokat. |
 
 ## <a name="next-steps"></a>További lépések
 

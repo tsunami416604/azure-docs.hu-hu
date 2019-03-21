@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900590"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy Windows Server virtuális gépet az Azure portal használatával. Ezután bemutatja hogyan kell a virtuális gép csatlakoztatása az Azure Active Directory Domain Services (Azure AD DS) a felügyelt tartományhoz.
@@ -107,7 +107,7 @@ A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügye
 
 7. Hitelesítő adatok a következő módszerek egyikével adhatja meg:
 
-   * **Egyszerű felhasználónév formátumú**: (Ajánlott) Adja meg a felhasználó egyszerű felhasználónév (UPN) utótagot a felhasználói fiók, az Azure ad-ben konfigurált. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
+   * **Egyszerű felhasználónév formátumú**: (Ajánlott) Adja meg a felhasználó egyszerű felhasználónév (UPN) utótagot a felhasználói fiók, az Azure ad-ben konfigurált. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob\@domainservicespreview.onmicrosoft.com*.
 
    * **SAMAccountName formátum**: A SAMAccountName formátum is megadhat a fiók nevét. Ebben a példában a felhasználó *bob* meg kellene *CONTOSO100\bob*.
 
@@ -146,7 +146,7 @@ Ha gondjai adódnak a hitelesítő adatokat, és nem lehet csatlakozni a tartom�
 
 * Ellenőrizze, hogy rendelkezik [engedélyezve van a jelszó-szinkronizálás](active-directory-ds-getting-started-password-sync.md) a felügyelt tartományra.
 
-* Ellenőrizze, hogy már használta a felhasználó egyszerű Felhasználónevét az Azure ad-ben konfigurált (például *bob@domainservicespreview.onmicrosoft.com*) való bejelentkezéshez.
+* Ellenőrizze, hogy már használta a felhasználó egyszerű Felhasználónevét az Azure ad-ben konfigurált (például *bob\@domainservicespreview.onmicrosoft.com*) való bejelentkezéshez.
 
 * Várjon, amíg a jelszó-szinkronizálás befejeződött, az első lépésekről szóló útmutatót megadottak szerint.
 

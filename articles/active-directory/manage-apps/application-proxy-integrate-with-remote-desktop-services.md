@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111106"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy a távoli asztal közzététele
 
@@ -86,7 +86,7 @@ Rendszergazdaként az RDS-környezethez csatlakozik, és módosítsa a távoli a
 6. A távoli asztali átjáró lapon módosítsa a **kiszolgálónév** mezőt a külső URL-címet állíthat be a távoli asztali állomás végpont az Alkalmazásproxyban.
 7. Módosítsa a **bejelentkezési módszer** mezőt **jelszavas hitelesítés**.
 
-  ![A távoli asztali szolgáltatások telepítési tulajdonságai képernyő](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
+   ![A távoli asztali szolgáltatások telepítési tulajdonságai képernyő](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
 8. Futtassa a következő parancsot az egyes gyűjtemények. Cserélje le *\<yourcollectionname\>* és *\<proxyfrontendurl\>* a saját adataira. Ez a parancs lehetővé teszi, hogy az egyszeri bejelentkezés a távoli asztali Web- és a távoli asztali átjáró között, és optimalizálja a teljesítmény:
 
@@ -98,8 +98,8 @@ Rendszergazdaként az RDS-környezethez csatlakozik, és módosítsa a távoli a
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
->[!NOTE]
->A fenti parancsot használja egy használni kívánt szintaxiskiemelést a "" nrequire ".
+   >[!NOTE]
+   >A fenti parancsot használja egy használni kívánt szintaxiskiemelést a "" nrequire ".
 
 9. Ellenőrizze az egyéni RDP-tulajdonságok módosítása, valamint megtekintheti a gyűjteményhez RDWeb a letöltött RDP-fájl tartalmát, futtassa a következő parancsot:
     ```

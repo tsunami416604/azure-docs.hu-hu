@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: japere
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e35cc4d5500cdfda0af4e130928434af34b1497f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cad68afd02694ec471d032a554ed468691ff914b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449784"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105471"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Hozzáférés és a MyApps portálról hibáinak elhárítása
 
@@ -96,8 +96,8 @@ Ha a bővítmény telepítve van, és továbbra is problémákat tapasztal, amik
 
 ## <a name="how-do-i-add-a-new-app"></a>Hogyan adhatok hozzá egy új alkalmazást?
 
-1.  Az a **alkalmazások** lapon jelölje be **alkalmazás hozzáadása**.
-2.  Keresse meg az alkalmazást, adja hozzá, és válassza ki a kívánt **Hozzáadás**.
+1. Az a **alkalmazások** lapon jelölje be **alkalmazás hozzáadása**.
+2. Keresse meg az alkalmazást, adja hozzá, és válassza ki a kívánt **Hozzáadás**.
 
    > [!NOTE]
    > * Ez a beállítás csak akkor, ha a rendszergazda engedélyezte a fiók is elérheti.

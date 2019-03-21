@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 3abe7bae5506b721d4baf1e18da390b3e67977d8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5a1cae376ab9db2b0c4b5e0e5514bf7745593433
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894580"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozását és telepítését
 
@@ -82,7 +82,7 @@ Az alábbiakban a sablonban szereplő paraméterekkel leírása:
 | Paraméter | Leírás | Példa JSON-definíció | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | Meghatározza a nevét, hogy a sablon létrehoz a logikai alkalmazás. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | Tesztelési pingelni a hely határozza meg. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
+| `testUri` | Tesztelési pingelni a hely határozza meg. | "testUri": {"type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} | 
 ||||
 
 Tudjon meg többet [REST API a Logic Apps munkafolyamat-definíció és tulajdonságok](https://docs.microsoft.com/rest/api/logic/workflows) és [logikaialkalmazás-definíciók JSON-ra épülő](logic-apps-author-definitions.md).

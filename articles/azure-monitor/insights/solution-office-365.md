@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 003d5da137c88097d9555a9884286251af92d6f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996712"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -71,7 +71,7 @@ Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti meg
 1. Kattintson az **Új alkalmazásregisztráció** elemre.
 
     ![Alkalmazásregisztráció hozzáadása](media/solution-office-365/add-app-registration.png)
-1. Adja meg az alkalmazás **neve** és **bejelentkezési URL-**.  A név legyen leíró.  Használat _http://localhost_ URL-címet, és tarthatja _webalkalmazás / API_ a a **alkalmazástípus**
+1. Adja meg az alkalmazás **neve** és **bejelentkezési URL-**.  A név legyen leíró.  Használat `http://localhost` URL-címet, és tarthatja _webalkalmazás / API_ a a **alkalmazástípus**
     
     ![Alkalmazás létrehozása](media/solution-office-365/create-application.png)
 1. Kattintson a **létrehozás** , és ellenőrizze az alkalmazás adatait.
@@ -91,11 +91,11 @@ Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti meg
     ![API kiválasztása](media/solution-office-365/select-api.png)
 
 1. A **engedélyek kiválasztása** válassza ki a következő beállításokat is **Alkalmazásengedélyek** és **delegált engedélyek**:
-    - A munkahelyhez tartozó szolgáltatásállapot-adatok olvasása
-    - A munkahelyi tevékenységadatok olvasása
-    - A munkahelyre vonatkozó tevékenységjelentések olvasása
+   - A munkahelyhez tartozó szolgáltatásállapot-adatok olvasása
+   - A munkahelyi tevékenységadatok olvasása
+   - A munkahelyre vonatkozó tevékenységjelentések olvasása
 
-    ![API kiválasztása](media/solution-office-365/select-permissions.png)
+     ![API kiválasztása](media/solution-office-365/select-permissions.png)
 
 1. Kattintson a **kiválasztása** , majd **kész**.
 1. Kattintson a **engedélyeket** majd **Igen** az ellenőrző kérdés.
@@ -705,7 +705,7 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 | Lekérdezés | Leírás |
 | --- | --- |
 |Az Office 365-előfizetéshez a műveletek száma |OfficeActivity &#124; művelet count() összegzése |
-|SharePoint-webhelyek használatát|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | Rendezés növekvő száma|
+|SharePoint-webhelyek használatát|OfficeActivity &#124; ahol OfficeWorkload = ~ "sharepoint" &#124; count() by SiteUrl összefoglalója \| száma növekvő rendezés|
 |Felhasználó típusa fájl hozzáférés-műveletek|Keresés a (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory" és "MyTest"|
 |Egy adott kulcsszót tartalmazó keresése|Típus OfficeActivity OfficeWorkload = "MyTest" azureactivedirectory =|
 |Az Exchange külső műveletek figyelése|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

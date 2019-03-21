@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 58f4d7be530aa3c7e0071a2f0d80bc30ebd5cf25
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440913"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835747"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Egy Linux CentOS adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -104,7 +104,7 @@ Hozzon létre egy példányt, a Linux rendszerű adatelemző virtuális gép a l
 A kiépítés körülbelül 10 – 20 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>A Linux rendszerű adatelemző virtuális gép elérése
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](http://www.putty.org)). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](https://www.putty.org)). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
 
 > [!NOTE]
 > A X2Go ügyfél végrehajtott jelentősen jobb, mint a tesztelés továbbítás X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
@@ -114,7 +114,7 @@ Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A f
 ## <a name="installing-and-configuring-x2go-client"></a>Telepítésével és konfigurálásával X2Go ügyfél
 A Linux rendszerű virtuális gép már kiépített X2Go kiszolgálóval, és készen áll kapcsolatok fogadására. A Linux rendszerű virtuális gép grafikus desktopban csatlakozni, tegye a következőt az ügyfélen:
 
-1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 1. Futtassa a X2Go ügyfél, és válassza a **új munkamenet**. Több lap egy konfigurációs ablaka nyílik. Adja meg az alábbi konfigurációs paramétereket:
    * **Munkamenet lapon**:
      * **Gazdagép**: A gazdagép neve vagy a Linux rendszerű adatelemző virtuális gép IP-címét.
@@ -132,7 +132,7 @@ Az R a legnépszerűbb nyelvek adatok elemzési és gépi tanulás. Ha szeretné
 
 Az R modul indításához konzolon, egyszerűen írja be **R** a rendszerhéj. Ekkor megjelenik egy interaktív környezetet. Az R-program fejlesztéséhez, általában egy szerkesztővel például Emacs vagy a vi vagy a gedit, és futtassa az r parancsfájlok Az RStudio hogy egy teljes grafikus IDE környezet az R-programot fejlesszen.
 
-Emellett van egy R-szkriptet, hogy telepítse a [felső 20 R-csomagok](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) Ha azt szeretné. Ez a szkript futtatása után lehetséges a R interaktív felület, amely lehet megadni (ahogy említettük) írja be a **R** a rendszerhéj.  
+Emellett van egy R-szkriptet, hogy telepítse a [felső 20 R-csomagok](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) Ha azt szeretné. Ez a szkript futtatása után lehetséges a R interaktív felület, amely lehet megadni (ahogy említettük) írja be a **R** a rendszerhéj.  
 
 ### <a name="python"></a>Python
 Python fejlesztést az Anaconda Python elosztási 2.7-es és 3.5-ös telepítve van. Ehhez a terjesztéshez körülbelül 300 a legnépszerűbb matematikai, a mérnöki csapathoz és az analitikai csomagok, valamint az alap Python tartalmazza. Az alapértelmezett szövegszerkesztő is használhatja. Emellett használhatja Spyder, a Python ide-vel, amely Anaconda Python disztribúció részét képezi. Spyder kell egy grafikus asztali vagy X11-továbbítást. A grafikus desktopban Spyder parancsikon biztosítunk.
@@ -203,7 +203,7 @@ Mielőtt futtatná a Microsoft R Server Spark-környezetben, kell tennie a telep
 ### <a name="ides-and-editors"></a>Ide-ket és a szerkesztőknek
 Van néhány kódot szerkesztők közül választhat. Ez magában foglalja a vi vagy VIM Emacs, gEdit, Notebookshoz, az RStudio, az Eclipse és IntelliJ. gEdit, Eclipse, intellij-vel, az RStudio és PyCharm grafikus szerkesztők, és meg kell adnia használhatja őket a grafikus asztali bejelentkezett. Ezek a szerkesztők rendelkezik, asztali és az alkalmazás menüből parancsikonokat indíthassák el azokat.
 
-**VIM** és **Emacs** szöveges szerkesztők vannak. Emacs, a-bővítménycsomagot Emacs beszél statisztika (cím), amely megkönnyíti az R használata belül a Emacs szerkesztő nevű telepítette azt. További információ található [REJTÉSE](http://ess.r-project.org/).
+**VIM** és **Emacs** szöveges szerkesztők vannak. Emacs, a-bővítménycsomagot Emacs beszél statisztika (cím), amely megkönnyíti az R használata belül a Emacs szerkesztő nevű telepítette azt. További információ található [REJTÉSE](https://ess.r-project.org/).
 
 **Az eclipse** egy nyílt forrás, bővíthető IDE, amely támogatja több nyelv. A Java-fejlesztőknek kiadása telepítve a virtuális gépen a példány. Nincsenek elérhető számos népszerű nyelvhez kiterjesztése a környezetben telepített beépülő modulok. A beépülő modul az eclipse-ben nevű telepítve van **Azure Toolkit for Eclipse**. Lehetővé teszi, hogy hozzon létre, fejlesztése, tesztelése és üzembe helyezése az Eclipse fejlesztői környezetet, amely támogatja a Java nyelvet használja az Azure-alkalmazások. Emellett van egy **Javához készült Azure SDK** , amely lehetővé teszi, hogy a különböző Azure-szolgáltatásokhoz való hozzáférés a Java környezetben. További információ az Azure-eszközkészlet az Eclipse-hez található [Azure Toolkit for Eclipse](../../azure-toolkit-for-eclipse.md).
 
@@ -377,5 +377,5 @@ Itt látható, hogyan a tanulási és feltárásra továbbra is:
 * A [adatelemzés a Linux Data Science virtuális gépen](linux-dsvm-walkthrough.md) a bemutató ismerteti, hogyan hajthat végre számos gyakori adatelemzési feladatok és a Linux rendszerű adatelemző virtuális gép kiépítése itt. 
 * Próbálja ki az ebben a cikkben leírt eszközök vizsgálja meg az adatelemző virtuális gép a különféle beépített adatelemzési eszközzel. Is futtathat *dsvm-információ – info* a a rendszerhéj belül a virtuális gép alapszintű bevezetést és további információ a virtuális gépen telepített eszközök mutatókat tartalmaznak.  
 * Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
-* Látogasson el a [Cortana Analytics katalógusban](http://gallery.cortanaanalytics.com) machine learning és a data analytics minták, amely a Cortana Analytics Suite használata.
+* Látogasson el a [Cortana Analytics katalógusban](https://gallery.cortanaanalytics.com) machine learning és a data analytics minták, amely a Cortana Analytics Suite használata.
 

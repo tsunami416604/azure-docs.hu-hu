@@ -6,15 +6,15 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: a67315287f90143701ca38b9f42e243b2d4913a3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437700"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842362"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Készíthet az Azure Media Clipperrel
 Ez a szakasz bemutatja az alapvető lépéseken: első lépések az Azure Media Clipperrel. Az alábbi szakaszok nyújtanak konfigurálása az Azure Media Clipperrel adatait.
@@ -100,7 +100,7 @@ Az inicializálás metódus hívásához paraméterei a következők:
 - `height` {Nem kötelező, number} A widget teljes magassága (minimális magasság legyen 600 képpont eszközök ablaktábla és a 850 nélkül az eszközök ablaktábla képpont).
 - `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): Az engedélyezett részklipkészítés módokat. Az alapértelmezett érték az összeset használja.
 - `filterAssetsTypes` (Nem kötelező, logikai): filterAssetsTypes lehetővé teszik az Eszközök panelen szűrők legördülő megjelenítése/elrejtése. Az alapértelmezett érték: igaz.
-- `speedLevels` (Nem kötelező, tömb): speedLevels lehetővé teszi különböző sebességű szint beállítása a videolejátszó, lásd: [dokumentáció az Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) további információ.
+- `speedLevels` (Nem kötelező, tömb): speedLevels lehetővé teszi különböző sebességű szint beállítása a videolejátszó, lásd: [dokumentáció az Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) további információ.
 - `resetOnJobDone` (Nem kötelező, logikai): resetOnJobDone lehetővé teszi, hogy a Clipperrel alaphelyzetbe állítása a részklipkészítési egy kezdeti állapota, amikor egy feladat elküldése sikerült.
 - `autoplayVideo` (Nem kötelező, logikai): autoplayVideo lehetővé teszi, hogy Clipperrel automatikus lejátszás a betöltéskor a videót. Az alapértelmezett érték: igaz.
 - `language` {Nem kötelező, csak karakterlánc}: nyelv, a widget nyelvet határozza meg. Ha nincs megadva, a widget próbálja meg megkeresni az üzeneteket, a böngésző nyelve alapján. A böngésző nincs nyelv észlelése esetén a widget alapértelmezés szerint angol. További információkért lásd: a [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakaszban.
@@ -108,7 +108,7 @@ Az inicializálás metódus hívásához paraméterei a következők:
 - `extraLanguages` (Nem kötelező, JSON): a extraLanguages paramétert az alapértelmezett szótár ad hozzá új nyelvek. További információkért lásd: a [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakaszban.
 
 ## <a name="typescript-definition"></a>TypeScript-definíció
-A [TypeScript](https://www.typescriptlang.org/) a Clipperrel-definíciós fájljának található [Itt](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
+A [TypeScript](https://www.typescriptlang.org/) a Clipperrel-definíciós fájljának található [Itt](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
 
 ## <a name="azure-media-clipper-api"></a>Az Azure Media Clipperrel API
 Ez a szakasz a dokumentumok a Clipperrel által biztosított API-felületet.

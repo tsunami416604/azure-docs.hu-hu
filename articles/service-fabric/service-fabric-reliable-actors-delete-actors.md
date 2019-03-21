@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: d6ac5ea79ed1eb47bc71a520761050889fe6edd8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ab6f8740ec1955078c6acbd9cb362a25a89e4bda
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887391"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors és állapotuk törlése
 Inaktív szereplők szemétgyűjtés csak megtisztítja a szereplő objektum, de nem távolítja el az aktor State Manager tárolt adatokat. Egy aktor újraaktiválásakor az adatok újra szeretné elérhetővé tenni azt a State Manager keresztül. Azokban az esetekben, ahol actors tárolja az adatokat az State Manager és az inaktiválása, de soha nem kapcsolta be újra azt lehet szükség az adatok törlése.
@@ -60,7 +60,7 @@ Reliable actors – további információért olvassa el a következőket:
 * [Actors diagnosztizálása és teljesítményfigyelése](service-fabric-reliable-actors-diagnostics.md)
 * [Aktor API dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [C#-minta kódja](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

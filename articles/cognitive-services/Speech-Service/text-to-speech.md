@@ -1,72 +1,80 @@
 ---
-title: Tudnivalók a szöveg-hang transzformációs – beszédszolgáltatás
+title: Szöveg-hang transzformációs Azure Speech szolgáltatással
 titleSuffix: Azure Cognitive Services
-description: A szöveg-hang transzformációs API több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat kínál. Standard hangtípust használatához meg kell a hangalapú nevének megadásakor a beszédfelismerési szolgáltatás hívásakor néhány más paramétereket.
+description: Az Azure Speech Services szöveg-hang transzformációs egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások, eszközök és eszközök szöveg átalakítása beszéddé természetes emberszerű szintetizált. Standard és a Neurális beszédhangot közül választhat, vagy létrehozhat saját egyéni beszédfelismerési a termék vagy márka egyedi. 75 + standard beszédhangot legfeljebb 45 nyelv és területi beállítás érhető el, és 5 Neurális beszédhangot 4 nyelv és területi beállítás érhető el.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859334"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226912"
 ---
-# <a name="about-the-text-to-speech-api"></a>A szöveg-hang transzformációs API-val kapcsolatos
+# <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
-A **szöveg-hang transzformációs** (Szövegfelolvasás) API természetes hangzó beszéddé átalakítja a bemeneti szöveg (más néven *beszédszintézishez*).
+Az Azure Speech Services szöveg-hang transzformációs egy REST-alapú szolgáltatás, amely lehetővé teszi az alkalmazások, eszközök és eszközök szöveg átalakítása beszéddé természetes emberszerű szintetizált. Standard és a Neurális beszédhangot válasszon, vagy létrehozhatja a saját [egyéni beszédfelismerési](#custom-voice-fonts) a termék vagy márka egyedi. 75 + standard beszédhangot legfeljebb 45 nyelv és területi beállítás érhető el, és 5 Neurális beszédhangot 4 nyelv és területi beállítás érhető el. A teljes listát lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-Beszéd létrehozásához, az alkalmazás HTTP POST-kérelmet küld a szöveg-hang transzformációs API-t. Itt szöveg van beszéddé emberi hangzó és a egy hangfájlt értéket küldi vissza. Hangok és nyelvek széles támogatottak.
-
-Melyik beszéd összefoglaló kik forgatókönyvek a következők:
-
-* *Kisegítő lehetőségek javítása:* **szöveg-hang transzformációs** technológia lehetővé teszi a tartalmak tulajdonosai, és különböző módokon személyek válaszolni a kiadók használhatja a saját tartalmakat. Készült kisegítő funkciók vagy olvasási nehézségekkel emberek értékeljük képes arra, hogy a tartalmak felhasználása aurally. Hangalapú kimeneti is megkönnyíti a szöveges tartalmakat, például újságok és blogok, miközben utazás, illetve az ilyen mobileszközök csak a felhasználók számára.
-
-* *Többfeladatos feldolgozáshoz forgatókönyvekben válaszol:* **szöveg-hang transzformációs** lehetővé teszi személyek számára fontos információk gyorsan és kényelmesen vezetési vagy más módon kívül egy kényelmes környezet olvasása közben. Navigáció: egy közös alkalmazás ezen a területen.
-
-* *Több módok learning növelése:* A különböző emberek különböző módon ismerje meg, ajánlott. Internetes tanulás szakértőktől kimutatták, hogy együtt nyújtó hanghívási és SMS is könnyebben információk ismerje meg, és azokat megőrizheti.
-
-* *Intuitív robotokat vagy asszisztensek kidolgozását:* Kapcsolódniuk egy intelligens csevegőrobot, vagy egy virtuális asszisztensek szerves része lehet. Egyre több vállalat fejleszt Csevegés robotokat vonzó ügyfél szolgáltatás élményt biztosít az ügyfelek számára. Hang hozzáadása egy további dimenziót azáltal, hogy a robot válaszok (például telefonon) aurally fogadását.
-
-## <a name="voice-support"></a>Beszédfelismerési támogatása
-
-A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. További információ a támogatott nyelveket, területi beállítások és beszédhangot: [támogatott nyelvek](language-support.md#text-to-speech).
-
-> [!IMPORTANT]
-> Költségek szabványos, egyéni és Neurális beszédhangot eltérőek. További információkért lásd: [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+Szöveg-hang transzformációs technológia lehetővé teszi a tartalomkészítők, a felhasználóknak a különböző módokon zajló interakciót. Szöveg-hang transzformációs javíthatja a kisegítő lehetőségek biztosításával a felhasználók és használhatja a tartalmakat hallhatóan lehetőség. Hogy a felhasználó egy készült kisegítő funkciók, tanulás fogyatékossággal, vagy elérésével navigációs információra van szüksége, szöveg-hang transzformációs javíthatja a meglévő felületet nyújt. Szöveg-hang transzformációs is egy hang robotok és a virtuális asszisztensek értékes bővítmény.
 
 ### <a name="neural-voices"></a>Neurális beszédhangot
 
-Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális szöveg-hang transzformációs használható. Emberszerű természetes prosody és egyértelmű tagolódását szavak Neurális Szövegfelolvasás rendelkezik jelentősen csökkent figyel-e fáradás AI-rendszerekkel való kommunikáció során. Neurális beszédhangot kapcsolatos további információkért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Az emberi intelligenciára hasonlító elemeket természetes prosody és egyértelmű csuklópontot szó Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás AI-rendszerekkel való kommunikáció során. Neurális beszédhangot kapcsolatos további információkért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 ### <a name="custom-voices"></a>Egyéni beszédhangot
 
-Szövegfelolvasás testreszabás lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját: egy *hangtípusú.* A hangtípusú létrehozásához, győződjön meg arról, a studio felvételt, és töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyéni modell a rögzítése használatára vannak konfigurálva. Saját hangtípusú használatával beszédfelismerési szintetizálásához. További információkért lásd: [egyéni hangtípust](how-to-customize-voice-font.md).
+Hangalapú testreszabási egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját létrehozását teszi lehetővé. Szeretne létrehozni az egyéni hangtípusú, győződjön meg arról, a studio felvételt, és töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyéni modell a rögzítése használatára vannak konfigurálva. Az egyéni hangtípusú használatával beszédfelismerési szintetizálásához. További információkért lásd: [egyéni beszédhangot](how-to-customize-voice-font.md).
 
-## <a name="api-capabilities"></a>API-funkciók
+## <a name="core-features"></a>Alapfunkciók
 
-Nagy mennyiségű képességeit a **szöveg-hang transzformációs** API-t, különös tekintettel a testreszabás, érhetők el REST-en keresztül. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. Képességek és API-részletek teljes listáját lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).
+Ez a táblázat felsorolja a szöveg-hang transzformációs alapvető funkciói:
 
-| Használati eset | REST | SDK-k |
-|-----|-----|-----|----|
-| Töltse fel az adatkészletek a voice-betanítás | Igen | Nem |
-| Hozzon létre & hangvezérelt betűtípus modellek kezelése | Igen | Nem |
-| & Hangvezérelt betűtípus központi telepítések felügyeletéhez szükséges létrehozása | Igen | Nem |
-| Létrehozása és kezelése a hangalapú betűtípus-tesztek| Igen | Nem |
-| Előfizetések kezelése | Igen | Nem |
+| Használati eset | SDK | REST |
+|----------|-----|------|
+| Szöveg-beszéd átalakítás. | Nem | Igen |
+| Töltse fel a hangalapú betanítás adatkészletek. | Nem | igen\* |
+| Hozzon létre, és hang betűtípus modellek kezelése. | Nem | igen\* |
+| Hozzon létre, és hang betűtípus központi telepítések felügyeletéhez szükséges. | Nem | igen\* |
+| Létrehozhat és kezelhet hangalapú betűtípus teszteket. | Nem | igen\* |
+| Előfizetések kezelése. | Nem | igen\* |
+
+\* *Ezek a szolgáltatások érhetők el a cris.ai végpont használatával. Lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> Az API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Fejlécek tájékoztatja korlátját.
+> A szöveg-hang transzformációs végpont valósítja meg, amely korlátozza a kérelmek 25, 5 másodpercenként szabályozás. Szabályozás akkor fordul elő, ha értesítést is üzenetfejlécekben keresztül.
+
+## <a name="get-started-with-text-to-speech"></a>Szöveg-beszéd átalakítás használatának első lépései
+
+Rövid útmutatók, kevesebb mint 10 perc múlva a kódot futtató úgy tervezték, hogy biztosítunk. Ez a táblázat szöveg-hang transzformációs útmutatóink nyelv szerint rendezett listáját tartalmazza.
+
+| Első lépések | Platform | API-referencia |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+
+## <a name="sample-code"></a>Mintakód
+
+A szöveg-hang transzformációs mintakód a Githubon érhető el. Ezek a minták a legnépszerűbb programnyelv a szöveg-beszéd átalakítás terjed ki.
+
+* [Szöveg-hang transzformációs minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+
+## <a name="reference-docs"></a>Segédanyagok
+
+* [Beszéd SDK](speech-sdk-reference.md)
+* [Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ingyenes Speech Services előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [Rövid útmutató: Szöveg-beszéd átalakítás, Python konvertálása](quickstart-python-text-to-speech.md)
-* [Rövid útmutató: Szöveg-beszéd átalakítás, .NET Core konvertálása](quickstart-dotnet-text-to-speech.md)
-* [REST API – referencia](rest-apis.md)
+* [Ingyenes Speech Services előfizetés beszerzése](get-started.md)
+* [Hozzon létre egyéni hangtípust](how-to-customize-voice-font.md)

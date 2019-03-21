@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c51804748e4313d79cc3a369b659974d2d32e2e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163854"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>A kezdő és a ODBC-adattárak Azure Data Factory használatával az adatok másolása
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-odbc-connector.md)
 > * [Aktuális verzió](connector-odbc.md)
 
@@ -51,7 +51,7 @@ ODBC-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **ODBC** | Igen |
+| type | A type tulajdonságot kell beállítani: **Odbc** | Igen |
 | kapcsolati Sztringje | A kapcsolati karakterlánc, hitelesítő adat rész. Például a minta segítségével adható meg a kapcsolati karakterlánc `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, vagy használja a rendszer DSN (adatforrás neve), állítsa be, az Integration Runtime gép `"DSN=<name of the DSN on IR machine>;"` (meg kell továbbra is adja meg a hitelesítő adatok rész társított szolgáltatásban ennek megfelelően).<br>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).| Igen |
 | authenticationType | Az ODBC-adattárban való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **névtelen**. | Igen |
 | Felhasználónév | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
@@ -240,7 +240,7 @@ A data store-hozzáféréssel rendelkező gépen helyi Integration Runtime beál
 
 Az Informix forrás egy Data Factory-megoldás használatához ellenőrizze, hogy az integrációs modul az adattárban található utasításokat követve csatlakozhat [kapcsolati hibák elhárításához](#troubleshoot-connectivity-issues) szakaszban.
 
-Hozzon létre egy ODBC-beli társított szolgáltatás egy IBM Informix-adattár összekapcsolása egy Azure data factory, az alábbi példában látható módon:
+Hozzon létre egy ODBC-társított szolgáltatást, az IBM Informix-adattár egy Azure data factory az alábbi példában látható módon:
 
 ```json
 {

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14957a94dbe8330553a4090e22d80d6cc2ee06eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109324"
 ---
 # <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentéskészítési továbbra is kihívást jelenthet, miután az alkalmazás integrálva van a szervezet identitáskezelő rendszerbe. Sok esetben a rendszergazdák vagy a segélyszolgálat kell elvégeznie az alkalmazásokhoz való hozzáférés kezelése a folyamatban lévő aktív szerepet. Egyes esetekben hozzárendelést egy általános vagy részlegszintű informatikai csapat történik. Gyakran előfordul, a hozzárendelés döntést célja, hogy az üzleti döntéshozó, azok révén az informatikai előtt jóváhagyásra van szükség a delegálható a hozzárendelést.  Integráció a meglévő automatikus identitás- és hozzáférés felügyeleti rendszer, mint a szerepköralapú hozzáférés-vezérlés (RBAC) vagy attribútum-szerepköralapú hozzáférés-vezérlés (ABAC) más szervezetek befektetni. Az integráció és a szabály fejlesztés általában a speciális és költséges lehet. Monitoring, vagy mindkét felügyeleti megközelítés a reporting saját külön, költséges és bonyolult befektetése jelenti.
@@ -29,7 +29,7 @@ Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentés
 
 * [Új vagy meglévő alkalmazásait](configure-single-sign-on-portal.md)
 
- Az Azure AD alkalmazás-hozzárendelés összpontosít két elsődleges hozzárendelési módban:
+  Az Azure AD alkalmazás-hozzárendelés összpontosít két elsődleges hozzárendelési módban:
 
 * **Egyéni hozzárendelés** egy rendszergazda címtár globális rendszergazdai jogosultságokkal rendelkező válassza ki az egyéni felhasználói fiókokhoz és hozzáférést biztosít nekik az alkalmazáshoz.
 * **Csoport alapú hozzárendelés (fizetős Azure AD csak)** címtár globális rendszergazdai jogosultságokkal rendelkező egy informatikai rendszergazda is kiadhatjuk egy csoportnak az alkalmazáshoz. Adott felhasználók hozzáférésének csatlakoznak-e a csoport tagjai a időben próbálnak hozzáférni az alkalmazás határozza meg. Más szóval a rendszergazda hatékonyan hozhat létre egy hozzárendelési szabály figyelmezteti a "minden aktuális tagot a hozzárendelt csoport férhet hozzá az alkalmazás". A hozzárendelés lehetőséget használja, a rendszergazdák kihasználhatják a bármelyik Azure AD csoportkezelési beállítás megjeleníthető, beleértve a [Attribútumalapú dinamikus csoportok](../fundamentals/active-directory-groups-create-azure-portal.md), külső rendszer csoportok (például a helyszíni Active Directory vagy Workday), vagy rendszergazdai vagy önkiszolgáló-üzemeltetési felügyelt csoportok. Egyetlen csoport könnyedén rendelhet több alkalmazás gondoskodik róla, hogy, hogy a hozzárendelés affinitással alkalmazásokat megoszthatja a hozzárendelési szabályok, csökkenti a teljes felügyelet összetettségét. Vegye figyelembe, hogy a beágyazott csoporttagság biztonságicsoport-alapú hozzárendelés alkalmazások jelenleg nem támogatottak.

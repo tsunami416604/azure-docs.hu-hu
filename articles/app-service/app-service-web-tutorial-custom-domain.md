@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5d6a7d77b442383817179fadc5878f02dfe86628
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650903"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089522"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure App Service-ben
 
@@ -145,7 +145,7 @@ Válassza az **Érvényesítés** lehetőséget.
 
 Megjelenik a **Gazdagépnév hozzáadása** oldal. 
 
-Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **CNAME (www.example.com vagy bármely altartomány)**.
+Győződjön meg arról, hogy **gazdagépnév rekordtípusa** értékre van állítva **CNAME (www\.example.com vagy bármely altartomány)**.
 
 Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
@@ -282,7 +282,7 @@ Válassza ki a **Gazdagépnév hozzáadása** elem melletti **+** ikont.
 
 A **Gazdagépnév hozzáadása** gomb aktívvá válik. 
 
-Győződjön meg arról, hogy a **Gazdagépnév rekordtípusa** beállítás értéke **CNAME rekord (www.example.com vagy bármely altartomány)**.
+Győződjön meg arról, hogy **gazdagépnév rekordtípusa** értékre van állítva **CNAME-rekordot (www\.example.com vagy bármely altartomány)**.
 
 Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 

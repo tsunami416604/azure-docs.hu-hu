@@ -2,7 +2,7 @@
 title: Gyakori kérdések – Azure dedikált HSM-be |} A Microsoft Docs
 description: Gyakori Azure dedikált HSM-be más témakörökre vonatkozó kérdések
 services: dedicated-hsm
-author: barclayn
+author: johndaw
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 3/19/2019
 ms.author: barclayn
-ms.openlocfilehash: 2c77f5abac69a1bade523d2a4b6793c2a9df8cf2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447863"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259992"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -164,25 +164,25 @@ Igen. Naplók küldésével HSM a készülék a syslog-kiszolgálónak
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>K: A lehetséges ugyanabban a régióban, illetve több régióban a magas rendelkezésre állású konfigurálásához?
 
-Igen. Magas rendelkezésre állású konfiguráció és beállítás a HSM-ügyfélszoftver Gemalto által biztosított hajtott végre. HSM-EK a helyszíni HSM-EK ugyanazon a VNETEN vagy más virtuális hálózatok ugyanabban a régióban vagy régiók között, vagy helyek közötti virtuális hálózat csatlakozik, vagy pont-pont típusú VPN azonos magas rendelkezésre állású konfiguráció lehet hozzáadni.
+Igen. Magas rendelkezésre állású konfiguráció és beállítás a HSM-ügyfélszoftver Gemalto által biztosított hajtott végre. HSM-EK a helyszíni HSM-EK ugyanazon a VNETEN vagy más virtuális hálózatok ugyanabban a régióban vagy régiók között, vagy helyek közötti virtuális hálózat csatlakozik, vagy pont-pont típusú VPN azonos magas rendelkezésre állású konfiguráció lehet hozzáadni. Megjegyzendő, hogy ez szinkronizálja a megosztottkulcs-anyag csak, és nem meghatározott konfigurációs elemekben, például a szerepköröket.
 
-### <a name="can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Is hozzáadhatok HSM-EK a helyszíni hálózatról egy magas rendelkezésre állási csoporthoz a Azure dedikált HSM-mel?
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>K: Is hozzáadhatok HSM-EK a helyszíni hálózatról egy magas rendelkezésre állási csoporthoz a Azure dedikált HSM-mel?
 
 Igen. Meg kell felelniük a magas rendelkezésre állással SafeNet Luna hálózati HSM-7.
 
-### <a name="can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Is hozzáadhatok Luna 5/6 HSM-EK a helyszíni hálózat egy magas rendelkezésre állási csoporthoz a Azure dedikált HSM-mel?
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>K: Is hozzáadhatok Luna 5/6 HSM-EK a helyszíni hálózat egy magas rendelkezésre állási csoporthoz a Azure dedikált HSM-mel?
 
 Nem.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>K: Hány HSM-EK adhatok hozzá ugyanazt a magas rendelkezésre állású konfigurációt egy egyszeri alkalmazásból?
 
-16.
+egy magas rendelkezésre ÁLLÁSÚ csoport tagjai 16 rendelkezik, a kiváló eredmény tesztelés alatt lefutott, a teljes-szabályozás.
 
 ## <a name="support"></a>Támogatás
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>K: Mit jelent a dedikált HSM szolgáltatás SLA?
 
-Jelenleg nincs nincs biztosítva a dedikált HSM-szolgáltatás szolgáltatói szerződés. A Microsoft biztosítja a hálózati szintű hozzáférés az eszközön, és ezért alkalmazni a standard szintű Azure szolgáltatói szerződésekkel.
+Nincs megadva a dedikált HSM-szolgáltatás adott üzemidő laboratóriumokban van. A Microsoft biztosítja a hálózati szintű hozzáférés az eszközön, és ezért alkalmazni a standard szintű Azure szolgáltatói szerződésekkel.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>K: A hardveres biztonsági modulok használata az Azure dedikált HSM által védett?
 
@@ -198,15 +198,19 @@ Erősen ajánlott egy helyszíni HSM biztonsági mentési eszköz használata a 
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>K: Hogyan dedikált HSM-támogatást kérni?
 
-Ugyanúgy, mint más Azure-szolgáltatásokhoz kap támogatást. Az Azure ügyfélszolgálata Gemalto támogatási attól függően, így szükség szerint továbbítja.
+A Microsoft és a Gemalto biztosítunk támogatást.  Ha a hardver probléma vagy hálózati hozzáférés, emelni a Microsoft támogatási kérelmet, és rasie kérjük, ha a HSM configuration-, szoftver és az fejlesztési probléma van egy támogatási kérést Gemalto. Ha bizonytalan problémát, egy támogatási kérést withg Microsoft előléptetése és majd Gemalto is bevonhat, mint a szükséges. 
 
-### <a name="q-how-do-i-get-access-to-dedicated-hsm-client-software-documentation-firmware-images"></a>K: Hogyan szerezhetem be a dedikált HSM-ügyfélszoftvert, a dokumentáció, a belső vezérlőprogram lemezképeiről a hozzáférést?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>K: Hogyan szerezhetem be az ügyfél szoftver, dokumentáció és integrációs útmutató az SafeNet Luna 7 HSM-be való hozzáférést?
 
-Ügyfél együttműködve kell közvetlenül hozzáférhet a HSM-ügyfélszoftvert, dokumentáció, az operációs rendszer és belső vezérlőprogram lemezképeiről Gemalto.
+A szolgáltatás a regisztrálás után Gemalto ügyfél-azonosító, amely lehetővé teszi, hogy az Gemalto ügyfél-támogatási Portalon biztosított lesz. Ezzel engedélyezi a hozzáférést minden szoftver dokumentációját, valamint közvetlenül a Gemalto engedélyezése támogatási kérések.
 
 ### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>K: Ha a biztonsági rés található és a egy javítási Gemalto, frissítése és javításokat az operációs rendszer/belső vezérlőprogram felelős által kiadott?
 
 A Microsoft nem tudnak csatlakozni az ügyfelek számára lefoglalt HSM-EK. Ügyfelek frissítenie kell, majd a HSM-EK javítására.
+
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>K: Mi történik, ha szükséges indítsa újra a saját HSM?
+
+ A hardveres biztonsági MODULT tartalmaz egy parancssor újraindítási beállítást, és érdemes megjegyezni, hogy a "hardveres újraindítás" beállítást kell használni. Ez bármilyen okból nem sikerül, ha emelni a Microsoft támogatási kérelmet, és az eszköz újraindítása fizikailag is van. 
 
 ## <a name="cryptography-and-standards"></a>Titkosítás és előírások
 
@@ -246,7 +250,7 @@ Igen. Dedikált HSM-szolgáltatás látja el, hogy használja a 3-es szintű FIP
 
 A dedikált HSM-szolgáltatás látja el SafeNet Luna hálózati HSM 7 készülékek. Ezek a készülékek használata 3-es szintű FIPS 140-2 ellenőrzött HSM-EK. A telepített alapértelmezett konfigurációja, az operációs rendszer és a belső vezérlőprogram egyúttal FIPS használatával érvényesített. Nem kell semmit sem a FIPS 140-2-3. szint megfelelőségét.
 
-### <a name="how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Hogyan biztosítja az ügyfél, hogy ha hardveres biztonsági MODULT az üzemből az összes megosztottkulcs-anyag törli?
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>K: Hogyan biztosítja az ügyfél, hogy ha hardveres biztonsági MODULT az üzemből az összes megosztottkulcs-anyag törli?
 
 Kérő megszüntetés, mielőtt egy ügyfél zeroized Crossover HSM ügyféleszközök megadott Gemalto kell rendelkeznie.
 
@@ -262,15 +266,13 @@ Dedikált HSM rendelkezések SafeNet hálózati HSM 7 berendezések (modell A790
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>K: Hány partíció hozható létre dedikált HSM-ben?
 
-A használt HSM adott modellen alapuló, elérhető 10 partíciók vannak.
+A790 használt SafeNet Luna HSM 7 modell 10 partíciók licenc tartalmazza a szolgáltatás díja. Az eszköz a korlát 100 partícióval rendelkezik, és ez korlátig partíciók hozzáadásával külön licencelési költségei és telepíteni kell egy új licenc fájlt az eszközön.
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>K: A dedikált HSM támogatható, hogy hány kulcsot?
 
-A kulcsok maximális számát. Ezek a számok esetében is kulcspárokat Ha aszimmetrikus kulcsokkal.
+A kulcsok maximális számát, akkor a függvény a rendelkezésre álló memória. A használt SafeNet Luna 7 modell A790 32MB memóriával rendelkezik. A következő számokat kell is kulcspárokhoz alkalmazni, ha aszimmetrikus kulcsokkal.
 
 * RSA 2048 - 19,000
 * ECC-P256 - 91,000
-* AES-256 - 218,000
 
 Kapacitás beállítása a kulcs létrehozása sablon és a partíciók száma az adott kulcsattribútum függően változhat.
-

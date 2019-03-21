@@ -9,18 +9,18 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104165"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292886"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Folyékony sablonokkal speciális JSON csatlakoztatva átalakításokat hajthattak végre az Azure Logic Appsben
 
-Hajthat végre alapszintű JSON-átalakításokat a logic Apps natív művelet műveletekhez például **összeállítás** vagy **JSON elemzése**. Speciális JSON csatlakoztatva átalakításokat hajthattak végre, létrehozhat sablonokat vagy a térképek [Liquid](https://shopify.github.io/liquid/), azaz rugalmas web Apps egy nyílt forráskódú sablon nyelvvel. Liquid-sablonok segítségével meghatározhatja, hogyan kell átalakítása JSON-kimenet és összetettebb támogatja a JSON-átalakításokat, az ismétlések, például szabályozhatja a folyamatokat, változók és így tovább. 
+Hajthat végre alapszintű JSON-átalakításokat a logic Apps natív művelet műveletekhez például **összeállítás** vagy **JSON elemzése**. Speciális JSON csatlakoztatva átalakításokat hajthattak végre, létrehozhat sablonokat vagy a térképek [Liquid](https://shopify.github.io/liquid/), azaz rugalmas web Apps egy nyílt forráskódú sablon nyelvvel. Folyékony sablont határozza meg, hogyan alakíthat át, JSON-kimenet való, és támogatja a komplex JSON-átalakítás, például az ismétlések, control flow, változók és így tovább. 
 
-Tehát Liquid átalakítás végrehajtásához a logikai alkalmazásban, először meghatározhatja a JSON az JSON-lel, amelyek Liquid sablont és áruházbeli az integrációs fiókban. Ez a cikk bemutatja, hogyan hozhat létre, és ez Liquid-sablon vagy a térkép használata. 
+Folyékony átalakítás a logikai alkalmazásban elvégzése előtt definiálnia kell a JSON az leképezhető Liquid sablont és tároló JSON-lel az integrációs fiókban. Ez a cikk bemutatja, hogyan hozhat létre, és ez Liquid-sablon vagy a térkép használata. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,10 @@ Tehát Liquid átalakítás végrehajtásához a logikai alkalmazásban, elősz�
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Folyékony sablon vagy az integrációs fiók térkép létrehozása
 
-1. Ebben a példában létre ebben a lépésben ismertetett Liquid mintasablon. Használhatja a Liquid sablonban [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters), mely használata [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciói. Azonban győződjön meg arról, hogy *szűrő neve kezdődhet nagybetűket*, nem kisbetűs karaktereket. 
+1. Ebben a példában létre ebben a lépésben ismertetett Liquid mintasablon. Használhatja a Liquid sablonban [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters), mely használata [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciói. 
+
+   > [!NOTE]
+   > Ellenőrizze, hogy a szűrő nevét használja *mondat kis-és* a sablonban. A szűrők nem fog működni.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}

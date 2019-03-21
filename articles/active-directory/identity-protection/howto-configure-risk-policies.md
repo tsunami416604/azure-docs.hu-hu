@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd988004112fa4f420af7d0149bde19fdc06bfc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1b578c0187f7b804b6261fec9d299f83d7dc1832
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958344"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015141"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
 
@@ -32,7 +32,9 @@ Az Azure AD észleli a kockázati események, amelyek vélhetően feltört ident
 - A bejelentkezési kockázati házirend konfigurálhatja a felhasználói bejelentkezés során észlelt valós idejű kockázati események választ. 
 - A felhasználói kockázati házirend minden aktív felhasználói kockázat, hogy egy felhasználó idővel észlelt válasz konfigurálhatja.  
 
-> [!VIDEO https://youtu.be/zEsbbik-BTE]
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+
 ## <a name="what-is-the-sign-in-risk-policy"></a>Mi az a bejelentkezési kockázati házirend?
 
 Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja, észleli a gyanús tevékenységeket és a bejelentkezési származnak. Ha például a bejelentkezési kész névtelen IP-cím használatával, vagy egy ismeretlen helyről kezdeményezett bejelentkezési? Az Azure ad-ben a rendszer képes észlelni a gyanús tevékenységeket is ismertek kockázati események. A kockázati események, amely az észlelt a bejelentkezés során, az Azure AD kiszámítja egy érték alapján. Az érték a valószínűség (alacsony, közepes, magas), hogy a bejelentkezés nem történik meg a jogos felhasználója jelöli. A neve annak a valószínűsége **bejelentkezési kockázati szint**.

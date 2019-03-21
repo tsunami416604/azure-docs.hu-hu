@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245990"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904643"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
 Mint Azure-szolgáltatásokat, korlátozva van bizonyos az Azure Machine Learning szolgáltatáshoz kapcsolódó erőforrások. Ezek a korlátok a korlát a tényleges számítási, amely lekérdezi a korlátok hozhat létre a munkaterületek számának terjedhet használt betanítási vagy következtetési modelljeit. Ez a cikk áttekintést nyújt a további részleteket az előfizetéshez tartozó különböző Azure-erőforrások előre konfigurált korlátait, valamint kérelem kvóta fejlesztései erőforrás minden típusú hasznos hivatkozásokat is tartalmaz. Ezek a korlátok a költségvetés túlzott futtatások miatt csalás megelőzése érdekében, és tartsa tiszteletben az Azure kapacitásbeli megszorításokon kerüljenek.
 
-Kvóta ne feledje, tervezési és vertikális felskálázási az Azure Machine Learning-szolgáltatások erőforrásai a termelési számítási feladatokhoz. Például ha a fürt nem éri el a csomópontok megadott célszámát, majd előfordulhat, hogy elérte az Azure Machine Learning COMPUTE számítási magok korlát az előfizetéshez tartozó. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik.
+Kvóta ne feledje, tervezési és vertikális felskálázási az Azure Machine Learning-szolgáltatások erőforrásai a termelési számítási feladatokhoz. Például ha a fürt nem éri el a csomópontok megadott célszámát, majd előfordulhat, hogy elérte csökkenti az Azure Machine Learning COMPUTE számítási magok az előfizetéshez. Ha szeretné a határértéket vagy meghaladja az alapértelmezett kvóta emelése, nyissa meg egy online támogatási kérést díjmentesen. A korlátok nem léptethető feletti Azure-kapacitásokhoz megkötések miatt az alábbi táblázatban látható a maximális határértéket. Ha egyetlen oszlop sincs maximális korlátot, az erőforrás állítható korlátok nem rendelkezik.
 
 ## <a name="special-considerations"></a>Különleges szempontok
 

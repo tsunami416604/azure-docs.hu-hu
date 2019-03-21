@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913302"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079026"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>A Power bi-JAL visualizing hálózati biztonsági csoport folyamatnaplóit
 
@@ -56,10 +56,10 @@ A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a
 
 1. Töltse le és nyissa meg a következő Power BI-sablon a Power BI Desktop alkalmazás [a Power bi Network Watcher flow-sablon naplók](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Adja meg a szükséges lekérdezési paraméterek
-    1. **StorageAccountName** – tartalmazó az NSG-Folyamatnaplók, amelyeket szeretne betölteni, és jelenítheti meg a tárfiók nevét határozza meg.
-    1. **NumberOfLogFiles** – számát határozza meg, töltse le és a Power bi-ban jelenítheti meg szeretné naplófájlok. Ha például 50 meg van adva a 50 legfrissebb naplófájlokat. Ha 2 NSG-k engedélyezve és konfigurálva van az NSG-Folyamatnaplók küldeni ennek a fióknak, majd a naplók az elmúlt 25 óra is megtekinthetők.
+   1. **StorageAccountName** – tartalmazó az NSG-Folyamatnaplók, amelyeket szeretne betölteni, és jelenítheti meg a tárfiók nevét határozza meg.
+   1. **NumberOfLogFiles** – számát határozza meg, töltse le és a Power bi-ban jelenítheti meg szeretné naplófájlok. Ha például 50 meg van adva a 50 legfrissebb naplófájlokat. Ha 2 NSG-k engedélyezve és konfigurálva van az NSG-Folyamatnaplók küldeni ennek a fióknak, majd a naplók az elmúlt 25 óra is megtekinthetők.
 
-    ![power BI main][2]
+      ![power BI main][2]
 
 1. Adja meg a tárfiók hozzáférési kulcsára. Annak érvényes hozzáférési kulcsok az Azure portal és a kiválasztja a tárfiókba lépve **Tárelérési kulcsok** beállítások menüjében. Kattintson a **Connect** majd alkalmazza a módosításokat.
 
@@ -67,7 +67,7 @@ A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a
 
     ![hozzáférési kulcs 2][4]
 
-4.  A naplók letöltése és elemzése, és most már használhat az előzetesen létrehozott Vizualizációk.
+4. A naplók letöltése és elemzése, és most már használhat az előzetesen létrehozott Vizualizációk.
 
 ## <a name="understanding-the-visuals"></a>A Vizualizációk ismertetése
 

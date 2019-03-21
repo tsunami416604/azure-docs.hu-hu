@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439118"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101142"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -85,19 +85,19 @@ Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-c
 
     ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - Autoworkplace.exe nem tudja az Azure AD vagy az AD FS-csendes hitelesítést. Ez okozhatja hiányzik vagy helytelenül van konfigurálva az Active Directory összevonási szolgáltatások (az összevont tartományok), vagy hiányzik vagy helytelenül konfigurált Azure AD közvetlen egyszeri bejelentkezés (a felügyelt tartományok), vagy hálózati problémák. 
+  - Autoworkplace.exe nem tudja az Azure AD vagy az AD FS-csendes hitelesítést. Ez okozhatja hiányzik vagy helytelenül van konfigurálva az Active Directory összevonási szolgáltatások (az összevont tartományok), vagy hiányzik vagy helytelenül konfigurált Azure AD közvetlen egyszeri bejelentkezés (a felügyelt tartományok), vagy hálózati problémák. 
     
-     - Annak oka az lehet, hogy a multi-factor authentication (MFA) a kompatibilis vagy nincs konfigurálva a felhasználó számára, és WIAORMUTLIAUTHN nem az AD FS-kiszolgálón kell konfigurálni. 
+    - Annak oka az lehet, hogy a multi-factor authentication (MFA) a kompatibilis vagy nincs konfigurálva a felhasználó számára, és WIAORMUTLIAUTHN nem az AD FS-kiszolgálón kell konfigurálni. 
      
-     - Egy másik lehetőség, felhasználói beavatkozás, amely megakadályozza, hogy vár a kezdőtartomány felderítése (HRD) az oldal **autoworkplace.exe** csendes kérni egy token.
+    - Egy másik lehetőség, felhasználói beavatkozás, amely megakadályozza, hogy vár a kezdőtartomány felderítése (HRD) az oldal **autoworkplace.exe** csendes kérni egy token.
      
-     - Annak oka az lehet, hogy az AD FS és az Azure ad-ben URL-címek hiányoznak az IE intranetzónához az ügyfélen.
+    - Annak oka az lehet, hogy az AD FS és az Azure ad-ben URL-címek hiányoznak az IE intranetzónához az ügyfélen.
      
-     - Hálózati kapcsolódási problémák miatt **autoworkplace.exe** elérni az AD FS vagy az Azure AD URL-címeket. 
+    - Hálózati kapcsolódási problémák miatt **autoworkplace.exe** elérni az AD FS vagy az Azure AD URL-címeket. 
      
-     - **Autoworkplace.exe** megköveteli, hogy közvetlen üzemel az ügyfél a szervezet a helyszínen rendelkeznek az ügyfél AD tartományvezérlőt, ami azt jelenti, hogy a hibrid Azure AD-csatlakozás sikeres, csak ha az ügyfél csatlakozik a szervezeti intraneten.
+    - **Autoworkplace.exe** megköveteli, hogy közvetlen üzemel az ügyfél a szervezet a helyszínen rendelkeznek az ügyfél AD tartományvezérlőt, ami azt jelenti, hogy a hibrid Azure AD-csatlakozás sikeres, csak ha az ügyfél csatlakozik a szervezeti intraneten.
      
-     - A szervezet használja az Azure AD közvetlen egyszeri bejelentkezés, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók az eszközök Internet Explorer intranetes beállításait, és **lehetővé teszik a frissítések állapotsor parancsfájl keresztül** nincs engedélyezve az Intranet zóna.
+    - A szervezet használja az Azure AD közvetlen egyszeri bejelentkezés, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók az eszközök Internet Explorer intranetes beállításait, és **lehetővé teszik a frissítések állapotsor parancsfájl keresztül** nincs engedélyezve az Intranet zóna.
 
 - Nincs bejelentkezve tartományi felhasználóként
 

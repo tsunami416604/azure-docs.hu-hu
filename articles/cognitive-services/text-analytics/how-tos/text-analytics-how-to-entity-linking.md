@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 1ea34d69c867d2d14496320f497df2ece5280e0c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009342"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258071"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -62,7 +62,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
 | DateTime      | Beállítás           | "minden kedden"     | 
 | DateTime      | Időzóna      |    | 
-| URL-cím           | N/A\*         | „<https://www.bing.com>”    |
+| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
 | E-mail         | N/A\*         | „support@contoso.com” |
 
 \* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.

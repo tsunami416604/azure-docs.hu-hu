@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093330"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple-Eszközkezelő szolgáltatás használata kezelheti a kötetek (Update 3 vagy újabb)
 
@@ -235,7 +235,7 @@ Előfordulhat, hogy szeretné módosítani egy helyileg rögzített kötet a ré
    * Ha módosítja a típus a **rétegzett** és archiválási adatok, válassza ezt a kötetet lesz a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet.
    * Ha helyileg rögzített kötetet állítja be, a rétegzett vagy _fordítva_, a következő üzenet jelenik meg.
    
-    ![Változás kötet típusa üzenet](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Változás kötet típusa üzenet](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. Kattintson a **Mentés** gombra a módosítások mentéséhez. Amikor a rendszer megerősítést kér, kattintson a **Igen** az átalakítási folyamat elindításához. 
 

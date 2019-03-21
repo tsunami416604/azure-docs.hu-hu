@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957776"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106478"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó visszaállítása
 
@@ -93,15 +93,15 @@ Ha az Azure Active Directory (Azure AD-) fiókkal nem érhető el, ez oka az leh
 
 - **Új jelszót az authenticator alkalmazásból származó kódot.** Fogadja el a hitelesítési alkalmazás által biztosított véletlenszerű kódot. Ha a rendszergazda bekapcsolta a biztonsági adatok élményt, Észreveheti, hogy a kódot megadnia egy hitelesítő alkalmazást beállításával kapcsolatos további információk a [hitelesítési alkalmazást (előzetes verzió) használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md) cikk. Ha még nem használ biztonsági adatait, Észreveheti, hogy hitelesítőalkalmazás beállítása a kódot megadnia kapcsolatos további információk a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
 
-    1. Válassza ki **saját hitelesítő alkalmazásból származó kód megadása**, majd válassza ki **értesítés küldése**.
+  1. Válassza ki **saját hitelesítő alkalmazásból származó kód megadása**, majd válassza ki **értesítés küldése**.
 
-    2. Nyissa meg a hitelesítő alkalmazás, az ellenőrző kódot a fiók a mezőbe írja be, és válassza **tovább**.
+  2. Nyissa meg a hitelesítő alkalmazás, az ellenőrző kódot a fiók a mezőbe írja be, és válassza **tovább**.
 
-    3. Írja be és erősítse meg az új jelszót, és válassza **Befejezés**.
+  3. Írja be és erősítse meg az új jelszót, és válassza **Befejezés**.
 
-    4. Miután beszerezte az üzenet arról tájékoztatja, hogy a jelszó vissza lett állítva, bejelentkezhet a fiókjába az új jelszót.
+  4. Miután beszerezte az üzenet arról tájékoztatja, hogy a jelszó vissza lett állítva, bejelentkezhet a fiókjába az új jelszót.
         
-    Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
+     Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
 
 A jelszó alaphelyzetbe állítása, miután érkező, például egy fiók visszaigazoló e-mailt kaphat "a Microsoft nevében \< *Saját_szervezet elemre*>." Ha egy hasonló e-mailt kap, de nem nemrég új jelszót, forduljon a szervezet rendszergazdájához azonnal.
 
@@ -113,7 +113,7 @@ Ha csak át szeretné módosítani a jelszavát, ezt megteheti az Office 365-por
 
 Ezt a módszert használja, ha az alkalmazások általában éri el az Office portálon keresztül:
 
-1. Jelentkezzen be a [Office 365-fiókja](https://www.office.com), meglévő jelszavával.
+1. Jelentkezzen be a [Office 365-fiókja](https://portal.office.com), meglévő jelszavával.
 
 2. A jobb felső oldalon, majd válassza ki és **fiók megtekintése**.
 

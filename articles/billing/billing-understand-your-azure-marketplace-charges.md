@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e1930ec4d82593580bfc3a7c3e19439436752e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ae9c2c975bf49725be1858ad02a1c4b90ef58a7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871262"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Az Azure számlázását a külső szolgáltatási díjak
 Külső szolgáltatások az Azure Marketplace-en a külső szoftvergyártók által közzétett. Ha például a SendGrid egy külső szolgáltatások, az Azure-ban is vásárolhat, de nem a Microsoft által közzétett.
@@ -88,5 +88,5 @@ Biztosan megszakítja a külső szolgáltatás rendeléséhez, ha törli az erő
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

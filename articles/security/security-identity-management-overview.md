@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
-Customer intent: As a IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: b58cbcdccced3952c3171daa14f80986e473c5dd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
+ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898499"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure identity management biztonsági áttekintése
 
@@ -67,7 +67,7 @@ További információ:
 
 ## <a name="reverse-proxy"></a>Fordított proxy
 
-Az Azure AD-alkalmazásproxy lehetővé teszi a helyszíni alkalmazások, például közzététele [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) helyek, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), és [IIS](http://www.iis.net/)-alapú alkalmazások a magánhálózaton belülről és biztonságos hozzáférést biztosít a hálózaton kívüli felhasználók számára. Az alkalmazásproxy lehetővé teszi a távoli hozzáférést és egyszeri Bejelentkezést tesz lehetővé a helyszíni webalkalmazásokat a több ezer SaaS-alkalmazás, amely támogatja az Azure ad-ben. Alkalmazottak jelentkezhetnek be az alkalmazásokat a saját eszközükön otthoni és a felhő alapú proxyn keresztül történő hitelesítéséhez.
+Az Azure AD-alkalmazásproxy lehetővé teszi a helyszíni alkalmazások, például közzététele [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) helyek, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), és [IIS](https://www.iis.net/)-alapú alkalmazások a magánhálózaton belülről és biztonságos hozzáférést biztosít a hálózaton kívüli felhasználók számára. Az alkalmazásproxy lehetővé teszi a távoli hozzáférést és egyszeri Bejelentkezést tesz lehetővé a helyszíni webalkalmazásokat a több ezer SaaS-alkalmazás, amely támogatja az Azure ad-ben. Alkalmazottak jelentkezhetnek be az alkalmazásokat a saját eszközükön otthoni és a felhő alapú proxyn keresztül történő hitelesítéséhez.
 
 További információ:
 

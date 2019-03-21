@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dfd7d2a0363a95acb76a5dc214dbd4036de11d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ee5faedd4f59aa791424a1f178f0462922f21d28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094689"
 ---
 Mindegyik végpontra egy *nyilvános port* és a egy *magánhálózati port*:
 
@@ -76,7 +76,7 @@ Ha a virtuális gép Azure-beli virtuális hálózathoz, a hálózati biztonság
 
 4. Használja a lista sorok hozzáadásához, törléséhez vagy az ACL szabályok szerkesztése és sorrendbe. A **távoli ALHÁLÓZATI** értéke egy IP-címtartományt, amely engedélyezi vagy letiltja a forgalmat a forrás IP-címének alapján használja az Azure load balancer az internetről bejövő forgalmat. Mindenképpen adja meg az IP-címtartományt classless Inter-Domain útválasztási (CIDR formátumban), más néven a cím előtagja formátuma. Például: `10.1.0.0/8`.
 
- ![Új ACL-bejegyzéssel](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
+   ![Új ACL-bejegyzéssel](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 
 
 Szabályok is használhatja, vagy meghatározott, ismert címtartományok a forgalom megtagadásához szükséges megfelelő a számítógépek az interneten, a megadott számítógépekről érkező csak adatforgalom engedélyezéséhez.

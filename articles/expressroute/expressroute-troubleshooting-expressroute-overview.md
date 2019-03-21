@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: c4b20b4007a4824ee2dea0e1b22f1ea886218885
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453609"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121519"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt a ellenőrizze-e, és az ExpressRoute-kapcsolat hibaelhárítása. Az ExpressRoute, amely kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe, hogy a kapcsolatszolgáltató megkönnyíthető privát kapcsolaton keresztül, a következő három különböző hálózati zónák foglalja magában:
@@ -51,7 +51,7 @@ A Cloud Exchange közös elhelyezés vagy a pontok közötti Ethernet-kapcsolat 
 
 A-bármely (IPVPN) kapcsolat modellt használja, ha a PEs (MSEE kapcsolódó) (4) szeretné létrehozni a BGP-társviszonyt az Msee (5). Útvonalak majd térjen vissza az ügyfél hálózati az IPVPN szolgáltatás szolgáltató hálózaton keresztül továbbítja.
 
->[!NOTE]
+> [!NOTE]
 >ExpressRoute magas rendelkezésre állás érdekében a Microsoft a redundáns BGP-munkamenetek között msee-k (5) és (4) PE-Msee-pár igényel. Hálózati elérési utak redundáns párjai is javasolt ügyfél hálózatán és PE-CEs között. Azonban – bármely (IPVPN) kapcsolat modellben egyetlen CE eszköz (2) csatlakozhat egy vagy több PEs (3).
 >
 >
@@ -82,8 +82,8 @@ Az ExpressRoute essentialsben *kapcsolatcsoport állapota* Microsoft oldalán a 
 
 ExpressRoute-kapcsolatcsoport működik, hogy a *kapcsolatcsoport állapota* kell *engedélyezve* és a *szolgáltató állapota* kell lennie *kiépített*.
 
->[!NOTE]
->Ha a *kapcsolatcsoport állapota* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *szolgáltató állapota* van nincs kiépítve, forduljon a szolgáltatójához.
+> [!NOTE]
+> Ha a *kapcsolatcsoport állapota* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *szolgáltató állapota* van nincs kiépítve, forduljon a szolgáltatójához.
 >
 >
 
@@ -131,8 +131,8 @@ Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, külön�
     CircuitProvisioningState         : Enabled
     ServiceProviderProvisioningState : Provisioned
 
->[!NOTE]
->Ha a *CircuitProvisioningState* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
+> [!NOTE]
+> Ha a *CircuitProvisioningState* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
 >
 >
 
@@ -159,8 +159,8 @@ Van egy mintaválasz:
 
 Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState : Üzembe helyezett állapot: Engedélyezve
 
->[!NOTE]
->Ha a *állapot* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
+> [!NOTE]
+> Ha a *állapot* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
 >
 >
 
@@ -169,8 +169,8 @@ A szolgáltatót az ExpressRoute-kapcsolatcsoport kiépítési befejezését kö
 
 ### <a name="verification-via-the-azure-portal"></a>Az Azure Portalon keresztül ellenőrzése
 
->[!NOTE]
->Ha 3. rétegbeli a szolgáltató által biztosított, és a társviszony-létesítések üresek a portálon, frissítse a kapcsolatcsoport konfigurációját, a frissítés gomb segítségével a portálon. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
+> [!NOTE]
+> Ha 3. rétegbeli a szolgáltató által biztosított, és a társviszony-létesítések üresek a portálon, frissítse a kapcsolatcsoport konfigurációját, a frissítés gomb segítségével a portálon. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
 >
 >
 
@@ -180,8 +180,8 @@ Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota kiválasztásával
 
 Az előző példában feljegyzett Azure privát társviszony-létesítési útválasztási környezet engedélyezve van, mivel az Azure nyilvános és Microsoft társviszony-létesítési útválasztási környezetek nem engedélyezett. Társviszony-létesítési környezet sikeresen engedélyezve a felsorolt (BGP szükséges) az elsődleges és másodlagos point-to-point alhálózatokat is rendelkezik. A/30 alhálózatot az adapter IP-címe az Msee és PE-Msee szolgálnak. 
 
->[!NOTE]
->A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e PE-Msee a konfigurációt. Ha nem, akkor módosítsa a MSEE útválasztók, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering]
+> [!NOTE]
+> A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e PE-Msee a konfigurációt. Ha nem, akkor módosítsa a MSEE útválasztók, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering]
 >
 >
 
@@ -230,9 +230,8 @@ Ha a társviszony nincs konfigurálva, egy hibaüzenet lenne. Mintaválasz, ha a
             + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
 
 
-<p/>
->[!NOTE]
->Ha a társviszony-létesítés nem engedélyezett, ellenőrizze a Ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureASN*, és *PeerASN* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának] [CreatePeering].  
+> [!NOTE]
+> Ha a társviszony-létesítés nem engedélyezett, ellenőrizze a Ha a hozzárendelt elsődleges és másodlagos alhálózat megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureASN*, és *PeerASN* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].  
 >
 >
 
@@ -266,21 +265,20 @@ A Microsoft társviszony-létesítési konfiguráció részletei lekéréséhez 
 
     Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 
->[!IMPORTANT]
->3. rétegbeli társviszonyok a szolgáltató által beállított, ha a portálon vagy a PowerShell segítségével az ExpressRoute-társviszony beállítása felülírja a szolgáltatás-szolgáltató beállításait. A szolgáltató oldalán társviszony-létesítési beállítások alaphelyzetbe állítását igényli a támogatása a service provider. Az ExpressRoute-társviszony csak akkor módosítsa, ha biztos, hogy a szolgáltató biztosítja a csak a 2. rétegbeli szolgáltatásokat!
+> [!IMPORTANT]
+> 3. rétegbeli társviszonyok a szolgáltató által beállított, ha a portálon vagy a PowerShell segítségével az ExpressRoute-társviszony beállítása felülírja a szolgáltatás-szolgáltató beállításait. A szolgáltató oldalán társviszony-létesítési beállítások alaphelyzetbe állítását igényli a támogatása a service provider. Az ExpressRoute-társviszony csak akkor módosítsa, ha biztos, hogy a szolgáltató biztosítja a csak a 2. rétegbeli szolgáltatásokat!
 >
 >
 
-<p/>
->[!NOTE]
->A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának] [CreatePeering].
+> [!NOTE]
+> A társviszony nincs engedélyezve, ha ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
 >
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>A Microsoft és a szolgáltató közötti ARP ellenőrzése
 Ez a szakasz a (klasszikus) PowerShell-parancsokat használja. Ha már használja az Azure-Resource Manager PowerShell-parancsokat, győződjön meg arról, hogy a rendszergazda/társadminisztrátor hozzáférést az előfizetéshez. Hibaelhárítás az Azure Resource Manager használatával a parancsok tekintse meg a [első ARP-táblák a Resource Manager-alapú üzemi modellben] [ ARP] dokumentumot.
 
->[!NOTE]
+> [!NOTE]
 >ARP lekéréséhez az Azure portal és az Azure Resource Manager PowerShell-parancsokkal is használható. Ha hiba történik, az Azure Resource Manager PowerShell-parancsokkal, klasszikus PowerShell-parancsok is használhatók az Azure Resource Manager az ExpressRoute-Kapcsolatcsoportok klasszikus PowerShell-parancsokkal használható.
 >
 >
@@ -303,8 +301,8 @@ Az alábbi példa bemutatja, hogy a válasz egy társviszony-létesítéshez a p
 
     ARP Info:
        
->[!NOTE]
->Ha ARP-táblázat nem rendelkezik a MAC-címek hozzárendelve felületek IP-címeket, tekintse át a következő információkat:
+> [!NOTE]
+> Ha ARP-táblázat nem rendelkezik a MAC-címek hozzárendelve felületek IP-címeket, tekintse át a következő információkat:
 >1. Ha az első IP-cím / 30 alhálózat hozzárendelt MSEE-közösségbeli adapterén használja az MSEE-PR és MSEE közötti kapcsolat Azure mindig Msee a második IP-címet használ.
 >2. Győződjön meg arról, ha az ügyfél (C-címke) és a VLAN címkéket (S-címke) szolgáltatás megfelelő mindkét MSEE-PR-MSEE párt.
 >
@@ -313,7 +311,7 @@ Az alábbi példa bemutatja, hogy a válasz egy társviszony-létesítéshez a p
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>Ellenőrizze a BGP és az MSEE útvonalak
 Ez a szakasz a (klasszikus) PowerShell-parancsokat használja. Ha már használja az Azure-Resource Manager PowerShell-parancsokat, győződjön meg arról, hogy a rendszergazda/társadminisztrátor hozzáférést az előfizetéshez.
 
->[!NOTE]
+> [!NOTE]
 >A BGP lekérése az Azure portal és az Azure Resource Manager PowerShell-parancsokkal is használható. Ha hiba történik, az Azure Resource Manager PowerShell-parancsokkal, klasszikus PowerShell-parancsok is használhatók az Azure Resource Manager az ExpressRoute-Kapcsolatcsoportok klasszikus PowerShell-parancsokkal használható.
 >
 >
@@ -331,14 +329,13 @@ A következő példa választ:
 
 Ahogy az az előző példában is látható, a parancs hasznos határozza meg, mennyi az útválasztási környezet létrehozását követően. Azt is jelzi, a társviszony-létesítési útválasztó által hirdetett útvonal előtagok száma.
 
->[!NOTE]
->Ha az állapot az aktív vagy inaktív, ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
+> [!NOTE]
+> Ha az állapot az aktív vagy inaktív, ellenőrizze, ha a hozzárendelt elsődleges és másodlagos társ alhálózatait megfelel-e a konfigurációját, a társított PE MSEE. Is ellenőrizheti, ha a megfelelő *VlanId*, *AzureAsn*, és *PeerAsn* Msee használ, és ha ezek az értékek képez le a csatolt PE MSEE használják azokat. Ha MD5 kivonatoló választja, a megosztott kulcs azonos az MSEE-PE-MSEE párt kell lennie. Módosítsa a MSEE-útválasztó konfigurációját, tekintse meg [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport útválasztásának][CreatePeering].
 >
 >
 
-<p/>
->[!NOTE]
->Ha bizonyos célok nem érhetők el egy adott társviszony-létesítésen keresztül, ellenőrizze az útvonaltáblát az msee-k az adott társviszony-létesítési környezethez tartozó. Ha egy megfelelő előtagot (Ez lehet gelt IP) megtalálható az útválasztási táblázatban, majd ellenőrizze Ha tűzfalak és NSG-t és hozzáférés-vezérlési listák az elérési úton, és ha azok lehetővé teszik, hogy a forgalom.
+> [!NOTE]
+> Ha bizonyos célok nem érhetők el egy adott társviszony-létesítésen keresztül, ellenőrizze az útvonaltáblát az msee-k az adott társviszony-létesítési környezethez tartozó. Ha egy megfelelő előtagot (Ez lehet gelt IP) megtalálható az útválasztási táblázatban, majd ellenőrizze Ha tűzfalak és NSG-t és hozzáférés-vezérlési listák az elérési úton, és ha azok lehetővé teszik, hogy a forgalom.
 >
 >
 

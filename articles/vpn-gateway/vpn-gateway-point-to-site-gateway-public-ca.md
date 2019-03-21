@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750786"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848925"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
@@ -20,7 +20,6 @@ Az Azure VPN Gateway már nem Azure-szintű önaláírt tanúsítványokat áll�
 
 >[!NOTE]
 > * Az Azure-szintű tanúsítvány módosítása nem érinti a P2S ügyfél-hitelesítéshez használt önaláírt tanúsítványokat. Továbbra is ki, önaláírt tanúsítványokat használni a szokásos módon.
-> * Ez a változás nem érinti a Web Apps.
 >
 
 Ebben a környezetben a tanúsítványokat egy további Azure-szintű tanúsítványt is. Azok nem a tanúsítványláncok a saját önaláírt legfelső szintű tanúsítványok és az ügyfél-hitelesítési tanúsítványok létrehozásakor használt. Ezeknek a tanúsítványoknak érinti, és le fog járni a időpontokban generált őket, ennek a végrehajtására.
@@ -39,7 +38,7 @@ Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tan
 >
 > **Az összes többi átjáró veszi át a március 12 2019 18:00 UTC díjtól**.
 >
-> Az átjáró áttérési folyamat akár 2 órát vesz igénybe vesz igénybe. Ügyfelek fog kapni egy e-mailt, az átjáró az áttérési folyamat befejezése után.
+> Ügyfelek fog kapni egy e-mailt, az átjáró az áttérési folyamat befejezése után.
 > 
 
 ## <a name="1-verify-your-certificate"></a>1. A tanúsítvány
@@ -51,8 +50,8 @@ Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tan
 2. Nyissa meg, vagy bontsa ki a zip-fájlt, és keresse meg az "Általános" mappában. Az általános mappában, látni fogja a két fájlt, amelyek közül az egyik *VPNSettings.xml*.
 3. Nyissa meg *VPNSettings.xml* bármilyen xml-megjelenítő/szerkesztőben. Az xml-fájlt keressen a következő mezőket:
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. Ha *ServerCertRotCn* és *ServerCertIssuerCn* "DigiCert globális legfelső szintű hitelesítésszolgáltató", a frissítés nem érinti, és folytassa a jelen cikkben ismertetett lépések nem szükséges. Azonban más mutatnak, ha az átjáró tanúsítványa a frissítés részeként és lép érvénybe.
 
 ### <a name="classic"></a>Klasszikus

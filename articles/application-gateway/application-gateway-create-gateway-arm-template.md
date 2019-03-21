@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084929"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
@@ -60,16 +60,16 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 1. Nyissa meg a mentett fájlt, és tekintse meg a tartalom alatt **paraméterek** sorban
 1. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
 
-  | Paraméter | Leírás |
-  | --- | --- |
-  | **subnetPrefix** |Az application gateway alhálózatának CIDR-blokkja. |
-  | **applicationGatewaySize** | Az application gateway méretét.  WAF csak közepes és nagy méretű teszi lehetővé. |
-  | **backendIpaddress1** |Az első webkiszolgáló IP-címe. |
-  | **backendIpaddress2** |A második webkiszolgáló IP-címe. |
-  | **wafEnabled** | Beállítás határozza meg, ha engedélyezve van-e a WAF.|
-  | **wafMode** | A webalkalmazási tűzfal mód.  Elérhető lehetőségek **megelőzési** vagy **észlelési**.|
-  | **wafRuleSetType** | WAF szabálykészletben típusa.  OWASP jelenleg az egyetlen támogatott lehetőség. |
-  | **wafRuleSetVersion** |Szabálykészletben verziója. OWASP CRS 2.2.9 és 3.0 jelenleg a támogatott kapcsolókat. |
+   | Paraméter | Leírás |
+   | --- | --- |
+   | **subnetPrefix** |Az application gateway alhálózatának CIDR-blokkja. |
+   | **applicationGatewaySize** | Az application gateway méretét.  WAF csak közepes és nagy méretű teszi lehetővé. |
+   | **backendIpaddress1** |Az első webkiszolgáló IP-címe. |
+   | **backendIpaddress2** |A második webkiszolgáló IP-címe. |
+   | **wafEnabled** | Beállítás határozza meg, ha engedélyezve van-e a WAF.|
+   | **wafMode** | A webalkalmazási tűzfal mód.  Elérhető lehetőségek **megelőzési** vagy **észlelési**.|
+   | **wafRuleSetType** | WAF szabálykészletben típusa.  OWASP jelenleg az egyetlen támogatott lehetőség. |
+   | **wafRuleSetVersion** |Szabálykészletben verziója. OWASP CRS 2.2.9 és 3.0 jelenleg a támogatott kapcsolókat. |
 
 1. Ellenőrizze a tartalom alatt **erőforrások** , és figyelje meg a következő tulajdonságokkal:
 
@@ -82,44 +82,44 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 1. Mentse a fájlt egy helyi mappába a számítógépén.
 1. Nyissa meg a mentett fájlt, és módosítsa a paraméterek értékeit. A következő értékek használatával helyezze üzembe a forgatókönyvünkben ismertetett Application Gateway-t.
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. Mentse a fájlt. A JSON-sablont és a paramétersablont online JSON érvényesítési eszközök, például a [JSlint.com](https://www.jslint.com/) segítségével tesztelheti.
 

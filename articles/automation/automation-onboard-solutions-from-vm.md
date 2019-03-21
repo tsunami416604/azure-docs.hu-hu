@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 894fc42954182171588d81e2f7f1e37141af9add
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837762"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Az Azure virtuális gép felvétele az Update Management, Change Tracking and Inventory megoldásai
 
@@ -26,7 +26,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="enable-the-solutions"></a>A megoldások engedélyezése
 
-Nyissa meg egy meglévő virtuális gépet. Alatt **OPERATIONS**válassza **frissítéskezelés**, **készlet**, vagy **Change tracking**.
+Nyissa meg egy meglévő virtuális gépet. Alatt **OPERATIONS**válassza **frissítéskezelés**, **készlet**, vagy **Change tracking**. A virtuális gép létezhet bármelyik régióban, függetlenül attól, hogy az Automation-fiók helye.
 
 Ellenőrizze, hogy a megoldás engedélyezéséhez a virtuális gép csak **engedélyezése a virtuális gép** van kiválasztva. Készítse elő a megoldás több gép válassza **ebbe az előfizetésbe tartozó virtuális gépek engedélyezése**, majd válassza ki **kattintással jelölje ki a gépek engedélyezéséhez**. Megtudhatja, hogyan készítse elő több gép egyszerre, lásd: [előkészíteni az Update Management, Change Tracking és Inventory megoldásainak](automation-onboard-solutions-from-automation-account.md).
 

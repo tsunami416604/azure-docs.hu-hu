@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 94ae233f8591c43afa1bb73c3e17964922967d36
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123028"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazáscsoportok bemutatása
 A Service Fabric a fürterőforrás-kezelő általában fürterőforrások kezeli a terhelés elosztható (keresztül jelölt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A Service Fabric kezeli a fürt és a fürt csomópontjainak keresztül teljes kapacitásának [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik kiválóan alkalmas a számos számítási feladatokhoz, de néha további követelmények is betöltheti a Service Fabric alkalmazás különböző példányait használó mintákat. Például előfordulhat, hogy szeretné:
@@ -36,6 +36,7 @@ A legegyszerűbb megmaradjon az alkalmazás kapacitásának akkor, ha a alkalmaz
 Az alábbi képen egy alkalmazáspéldány rendelkező és anélküli egy meghatározott csomópontok maximális száma:
 
 <center>
+
 ![Alkalmazás-példány meghatározása a csomópontok maximális száma][Image1]
 </center>
 
@@ -117,6 +118,7 @@ Kombinálva **MinimumNodes** és **NodeReservationCapacity** garantálja az alka
 Lássunk erre egy példát kapacitás Foglalás:
 
 <center>
+
 ![Az alkalmazáspéldányok lefoglalt kapacitás meghatározása][Image2]
 </center>
 

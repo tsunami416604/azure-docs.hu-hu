@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4ce9ffd1f89f64bd9788b2754b85ea9b765b540c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: ade7f86bc5a00c079a7ccbe719ae46043d692047
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902961"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225144"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszerű Azure-beli virtuális hálózatban a Service Fabric-fürt üzembe helyezése
 
@@ -31,21 +31,24 @@ Ez az oktatóanyag egy éles forgatókönyvet ismertet. Ha azt szeretné, hozzon
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Virtuális hálózat létrehozása az Azure-ban a PowerShell használatával.
-> * Kulcstartó létrehozása és töltsön fel egy tanúsítványt.
-> * Azure Active Directory-hitelesítés beállítása.
-> * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben.
-> * Az X.509-tanúsítványt a fürt védelme.
-> * Csatlakozás a fürthöz PowerShell használatával.
-> * Fürt eltávolítása.
+> * VNET létrehozása a PowerShell használatával
+> * Kulcstartó létrehozása és tanúsítvány feltöltése
+> * Az Azure Active Directory-hitelesítés beállítása
+> * Diagnosztikai gyűjtésének konfigurálása
+> * Az EventStore szolgáltatás beállítása
+> * Állítsa be az Azure Monitor naplóira
+> * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben
+> * A fürt védelme X.509-tanúsítvánnyal
+> * Csatlakozás a fürthöz PowerShell használatával
+> * Fürt eltávolítása
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
-
 > [!div class="checklist"]
-> * Biztonságos fürt létrehozása az Azure-ban.
-> * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md).
-> * [A fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md).
-> * [Fürt törlése](service-fabric-tutorial-delete-cluster.md).
+> * Biztonságos fürt létrehozása az Azure-ban
+> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
+> * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
+> * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
+> * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -154,7 +157,7 @@ Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt é
 |clusterName|mysfcluster123| A fürt neve. Csak betűket és számokat tartalmazhat. 3–23 karakter hosszú lehet.|
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3”</p> |
-|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Például: „<https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346>”.</p>|
+|certificateUrlValue|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie. </p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány URL-címét. Például: „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|
 |sourceVaultValue||<p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a forrástároló értékét. For example, "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory-ügyfél-hitelesítés beállítása
@@ -264,6 +267,336 @@ Adja hozzá a paraméter értékét a [azuredeploy.parameters.json] [ parameters
 },
 "aadClientApplicationId": {
 "value": "7a8f3b37-cc40-45cc-9b8f-57b8919ea461"
+}
+```
+<a id="configurediagnostics" name="configurediagnostics_anchor"></a>
+
+## <a name="configure-diagnostics-collection-on-the-cluster"></a>Diagnosztikai adatgyűjtési konfigurálása a fürtön
+Service Fabric-fürtön futtatja, esetén érdemes egy központi helyen összes csomópontja a naplók gyűjtését. A naplók kellene egy központi helyen segítségével elemezheti és a fürtben, vagy az alkalmazások és szolgáltatások a fürtben futó problémák elhárítása.
+
+Fel-és naplók gyűjtése az egyik módja az Azure Diagnostics (WAD) bővítménye, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. A külső folyamatok használatával olvassa az eseményeket a storage-ból, és a egy elemzési platform termék, például az Azure Monitor naplóira vagy egy másik log-elemzési megoldás helyezze el őket.
+
+Ha az ebben az oktatóanyagban, diagnosztikai gyűjteményét már konfigurálva van az a [sablon][template].
+
+Ha meglévő fürtöt, amely nem rendelkezik telepített diagnosztikai, adja hozzá, vagy frissítse a fürt sablon használatával. Módosítsa a Resource Manager-sablon, amellyel a meglévő fürt létrehozásához, vagy letöltheti a sablont a portálról. Módosítsa a template.json fájlt az alábbi feladatok végrehajtásával:
+
+Új storage-erőforrás hozzáadása az erőforrások szerepelnek a sablonban:
+```json
+"resources": [
+...
+{
+  "apiVersion": "2015-05-01-preview",
+  "type": "Microsoft.Storage/storageAccounts",
+  "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
+  "location": "[parameters('computeLocation')]",
+  "sku": {
+    "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
+  },
+  "tags": {
+    "resourceType": "Service Fabric",
+    "clusterName": "[parameters('clusterName')]"
+  }
+},
+...
+]
+```
+
+Ezután adjon hozzá paramétereket a tárfiók nevét, és írja be a sablon a paraméterek szakaszához. Szeretné, cserélje le a helyőrző szöveg tárfiók neve kerül itt nevét a storage-fiók.
+
+```json
+"parameters": {
+...
+"applicationDiagnosticsStorageAccountType": {
+    "type": "string",
+    "allowedValues": [
+    "Standard_LRS",
+    "Standard_GRS"
+    ],
+    "defaultValue": "Standard_LRS",
+    "metadata": {
+    "description": "Replication option for the application diagnostics storage account"
+    }
+},
+"applicationDiagnosticsStorageAccountName": {
+    "type": "string",
+    "defaultValue": "**STORAGE ACCOUNT NAME GOES HERE**",
+    "metadata": {
+    "description": "Name for the storage account that contains application diagnostics data from the cluster"
+    }
+},
+...
+}
+```
+
+Ezután adja hozzá a **IaaSDiagnostics** tömbjének extensions kiterjesztése a **VirtualMachineProfile** minden egyes tulajdonság **Microsoft.Compute/virtualMachineScaleSets** az erőforrás a fürtben.  Ha használja a [mintasablon][template], nincsenek a három virtuális gép méretezési (az egyes csomóponttípusok a fürt egyik).
+
+```json
+"apiVersion": "2018-10-01",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"name": "[variables('vmNodeType1Name')]",
+"properties": {
+    ...
+    "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat(parameters('vmNodeType0Name'),'_Microsoft.Insights.VMDiagnosticsSettings')]",
+                    "properties": {
+                        "type": "IaaSDiagnostics",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                        "storageAccountName": "[parameters('applicationDiagnosticsStorageAccountName')]",
+                        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-05-01-preview').key1]",
+                        "storageAccountEndPoint": "https://core.windows.net/"
+                        },
+                        "publisher": "Microsoft.Azure.Diagnostics",
+                        "settings": {
+                        "WadCfg": {
+                            "DiagnosticMonitorConfiguration": {
+                            "overallQuotaInMB": "50000",
+                            "EtwProviders": {
+                                "EtwEventSourceProviderConfiguration": [
+                                {
+                                    "provider": "Microsoft-ServiceFabric-Actors",
+                                    "scheduledTransferKeywordFilter": "1",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricReliableActorEventTable"
+                                    }
+                                },
+                                {
+                                    "provider": "Microsoft-ServiceFabric-Services",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricReliableServiceEventTable"
+                                    }
+                                }
+                                ],
+                                "EtwManifestProviderConfiguration": [
+                                {
+                                    "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                                    "scheduledTransferLogLevelFilter": "Information",
+                                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                                    "scheduledTransferPeriod": "PT5M",
+                                    "DefaultEvents": {
+                                    "eventDestination": "ServiceFabricSystemEventTable"
+                                    }
+                                }
+                                ]
+                            }
+                            }
+                        },
+                        "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountName')]"
+                        },
+                        "typeHandlerVersion": "1.5"
+                    }
+                }
+            ...
+            ]
+        }
+    }
+}
+```
+<a id="configureeventstore" name="configureeventstore_anchor"></a>
+
+## <a name="configure-the-eventstore-service"></a>Az EventStore szolgáltatás konfigurálása
+Az EventStore szolgáltatás figyelési lehetőség csak a Service Fabricben. Az EventStore lehetővé teszi a fürt vagy az adott számítási feladatok állapotának megjelenítése az idő. Az EventStore egy állapotalapú Service Fabric-szolgáltatás, amely fenntartja az események a fürtből. Az esemény a Service Fabric Explorert, REST és API-k keresztül érhetők el. EventStore lekérdezi a közvetlenül a diagnosztikai adatok gyorsan minden entitás, a fürtben a fürt, és könnyebben használható:
+
+* Fejlesztési vagy tesztelési időben diagnosztizálhatja a problémákat, vagy ahol a monitorozási folyamatban használni lehet, hogy
+* Győződjön meg arról, hogy felügyeleti műveleteket a fürtön készítésének feldolgozott megfelelően
+* "Pillanatkép" hogyan Service Fabric egy adott entitás implementálására beolvasása
+
+
+
+A fürtön a EventStore szolgáltatás engedélyezéséhez adja hozzá a következőt a **fabricSettings** tulajdonságát a **Microsoft.ServiceFabric/clusters** erőforrás:
+
+```json
+"apiVersion": "2018-02-01",
+"type": "Microsoft.ServiceFabric/clusters",
+"name": "[parameters('clusterName')]",
+"properties": {
+    ...
+    "fabricSettings": [
+        ...
+        {
+            "name": "EventStoreService",
+            "parameters": [
+                {
+                "name": "TargetReplicaSetSize",
+                "value": "3"
+                },
+                {
+                "name": "MinReplicaSetSize",
+                "value": "1"
+                }
+            ]
+        }
+    ]
+}
+```
+<a id="configureloganalytics" name="configureloganalytics_anchor"></a>
+
+## <a name="set-up-azure-monitor-logs-for-the-cluster"></a>Állítsa be a fürt az Azure Monitor naplóira
+
+Az Azure Monitor naplóira Javaslataink fürt események figyelésére. Az Azure Monitor naplóira be, a fürt monitorozásához, rendelkeznie kell [diagnosztika engedélyezve van a fürt-szintű események megtekintéséhez](#configure-diagnostics-collection-on-the-cluster).  
+
+A munkaterület csatlakoztatva kell lennie a fürt származó diagnosztikai adatokhoz.  A napló adatokat tárolja a *applicationDiagnosticsStorageAccountName* tárfiókot, a WADServiceFabric * címke WADWindowsEventLogsTable és WADETWEventTable táblákat.
+
+Adja hozzá az Azure Log Analytics-munkaterületet, és a megoldás a munkaterület hozzáadása:
+
+```json
+"resources": [
+    ...
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[parameters('omsWorkspacename')]",
+        "type": "Microsoft.OperationalInsights/workspaces",
+        "properties": {
+            "sku": {
+                "name": "Free"
+            }
+        },
+        "resources": [
+            {
+                "apiVersion": "2015-11-01-preview",
+                "name": "[concat(variables('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
+                "type": "storageinsightconfigs",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
+                    "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+                ],
+                "properties": {
+                    "containers": [],
+                    "tables": [
+                        "WADServiceFabric*EventTable",
+                        "WADWindowsEventLogsTable",
+                        "WADETWEventTable"
+                    ],
+                    "storageAccount": {
+                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', variables('applicationDiagnosticsStorageAccountName'))]",
+                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
+                    }
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Memory",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Available MBytes"
+                }
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "type": "datasources",
+                "name": "sampleWindowsPerfCounter2",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+                ],
+                "kind": "WindowsPerformanceCounter",
+                "properties": {
+                    "objectName": "Service Fabric Service",
+                    "instanceName": "*",
+                    "intervalSeconds": 10,
+                    "counterName": "Average milliseconds per request"
+                }
+            }
+        ]
+    },
+    {
+        "apiVersion": "2015-11-01-preview",
+        "location": "[parameters('omsRegion')]",
+        "name": "[variables('solution')]",
+        "type": "Microsoft.OperationsManagement/solutions",
+        "dependsOn": [
+            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        ],
+        "properties": {
+            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
+        },
+        "plan": {
+            "name": "[variables('solution')]",
+            "publisher": "Microsoft",
+            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
+            "promotionCode": ""
+        }
+    }
+]
+```
+
+Ezután adjon hozzá paramétereket
+```json
+"parameters": {
+    ...
+    "omsWorkspacename": {
+        "type": "string",
+        "defaultValue": "mysfomsworkspace",
+        "metadata": {
+            "description": "Name of your OMS Log Analytics Workspace"
+        }
+    },
+    "omsRegion": {
+        "type": "string",
+        "defaultValue": "West Europe",
+        "allowedValues": [
+            "West Europe",
+            "East US",
+            "Southeast Asia"
+        ],
+        "metadata": {
+            "description": "Specify the Azure Region for your OMS workspace"
+        }
+    }
+}
+```
+
+Ezután adjon hozzá változókat:
+```json
+"variables": {
+    ...
+    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
+    "solutionName": "ServiceFabric"
+}
+```
+
+Adja hozzá a Log Analytics agent bővítmény minden egyes virtuálisgép-méretezési állítsa be a fürt és az ügynök csatlakoztatása a Log Analytics-munkaterületre. Ez lehetővé teszi a tárolók, alkalmazások és alkalmazásteljesítmény-figyelési gyűjtését diagnosztikai adatait. Bővítményeként való hozzáadásával a virtuálisgép-méretezési készlet erőforrás, az Azure Resource Manager biztosítja, hogy megkapja-e telepítve minden csomóponton, még ha méretezése a fürtben.
+
+```json
+"apiVersion": "2018-10-01",
+"type": "Microsoft.Compute/virtualMachineScaleSets",
+"name": "[variables('vmNodeType1Name')]",
+"properties": {
+    ...
+    "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat(variables('vmNodeType0Name'),'OMS')]",
+                    "properties": {
+                        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                        "type": "MicrosoftMonitoringAgent",
+                        "typeHandlerVersion": "1.0",
+                        "autoUpgradeMinorVersion": true,
+                        "settings": {
+                            "workspaceId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')), '2015-11-01-preview').customerId]"
+                        },
+                        "protectedSettings": {
+                            "workspaceKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')),'2015-11-01-preview').primarySharedKey]"
+                        }
+                    }
+                }
+            ...
+            ]
+        }
+    }
 }
 ```
 
@@ -383,8 +716,21 @@ Ez az oktatóanyag-sorozatban található további cikkek a létrehozott fürt h
 
 Folytassa a következő oktatóanyagra lépve megismerheti a fürtök skálázásának.
 
+> [!div class="checklist"]
+> * VNET létrehozása a PowerShell használatával
+> * Kulcstartó létrehozása és tanúsítvány feltöltése
+> * Az Azure Active Directory-hitelesítés beállítása
+> * Diagnosztikai gyűjtésének konfigurálása
+> * Az EventStore szolgáltatás beállítása
+> * Állítsa be az Azure Monitor naplóira
+> * Biztonságos Service Fabric-fürt létrehozása az Azure PowerShellben
+> * A fürt védelme X.509-tanúsítvánnyal
+> * Csatlakozás a fürthöz PowerShell használatával
+> * Fürt eltávolítása
+
+Ezután folytassa a következő oktatóanyaggal, a fürt figyelése.
 > [!div class="nextstepaction"]
-> [Fürt skálázása](service-fabric-tutorial-scale-cluster.md)
+> [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

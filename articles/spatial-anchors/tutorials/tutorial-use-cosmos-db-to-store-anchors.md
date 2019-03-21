@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a munkamenetek és az Azure térbeli horgonyok és a egy Azure Cosmos DB háttérbeli eszközzel megosztása |} A Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan Azure térbeli Forráshorgony azonosítók eszközök a Unity-nél egy háttér-szolgáltatással és az Azure Cosmos DB közötti megosztásához.
+title: Oktatóanyag – a munkamenetek és eszközök az Azure térbeli horgonyok és a egy Azure Cosmos DB-háttérrendszer megosztása |} A Microsoft Docs
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan Azure térbeli horgonyok azonosítók megosztása egy háttér-Service-szel és az Azure Cosmos DB a Unity Android vagy iOS-eszközök.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,36 +8,36 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0cd42fc37727099ed95a1c6fc2d427b7862412e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752137"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286397"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Munkamenetek és eszközök az Azure térbeli horgonyok és a egy Azure Cosmos DB háttér-megosztás
+# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Munkamenetek és eszközök az Azure térbeli horgonyok és a egy Azure Cosmos DB-háttérrendszer megosztása
 
-Ez az oktatóanyag bemutatja, hogyan használható [Azure térbeli horgonyok](../overview.md) való:
+Ebben az oktatóanyagban, megtudhatja, hogyan használandó [Azure térbeli horgonyok](../overview.md) való:
 
-1. Egy munkamenet horgonyokat létrehozni, és keresse meg azokat az azonos vagy eltérő eszközön egy másik munkamenetben. Például az egy másik napot.
-2. Létrehozni, amely egyszerre több eszközök ugyanazon a helyen található.
+- Horgonyokat létrehozni egy munkamenet során, és keresse meg azokat a munkamenetben egy másik, ugyanarra az eszközre, illetve egy másikat. A második munkamenet Előfordulhat például, egy másik napon.
+- Létrehozni, amely ugyanazon a helyen, és egyszerre több eszközön is elhelyezhetők.
 
-![Adatmegőrzés](./media/persistence.gif)
+![GIF szemléltető objektum adatmegőrzés](./media/persistence.gif)
 
-[Az Azure térbeli horgonyok](../overview.md) platformfüggetlen fejlesztői szolgáltatás lehetővé teszi, hogy hozzon létre a vegyes valóságon alapuló felhasználói élményt alakíthat ki eszközök idővel helyükre kivonatuk objektumok. Ha elkészült, lesz egy alkalmazást, amely két vagy több eszközhöz is telepíthető. Egy példány által létrehozott Azure térbeli horgonyok megosztja a azonosítókról másoknak a Cosmos DB használatával.
+[Az Azure térbeli horgonyok](../overview.md) platformfüggetlen fejlesztői szolgáltatás, amely segítségével hozzon létre vegyes valóság tapasztalatok objektumok helyükre kivonatuk eszközök idővel. Ha elkészült, lesz egy alkalmazást, amely két vagy több eszközhöz is telepíthető. Egy példány által létrehozott térbeli horgonyok fog másokkal a azonosítókról az Azure Cosmos DB használatával.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
-> * Telepítse az ASP.NET Core-webalkalmazás az Azure-ban, amelyek segítségével megoszthatja a központi jellegűek, Cosmos DB-ben tárolja őket.
-> * Konfigurálja a AzureSpatialAnchorsLocalSharedDemo jelenet belül a Unity-mintát, a kihasználásához a megosztás horgonyok webalkalmazás Gyorsútmutatókat.
-> * Üzembe helyezése, és a egy vagy több eszközhöz történő futtatása.
+> * Telepítse az ASP.NET Core-webalkalmazás az Azure-ban, amely a központi jellegűek, megosztására használható az Azure Cosmos DB tárolja őket.
+> * Adja meg a AzureSpatialAnchorsLocalSharedDemo jelenet kihasználásához a megosztás horgonyok webalkalmazást az Azure-gyorssablonok a Unity minta.
+> * Egy vagy több eszköz telepítenek egy alkalmazást, és futtathatja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Érdemes okainak, bár fogja használni az Azure Cosmos DB és a Unity ebben az oktatóanyagban, azaz csak megjeleníthető például az Azure térbeli Forráshorgony azonosítók megosztása más eszközök között. Lehetőség van felhasználó más nyelv és a egy cél elérése érdekében a háttér-technológiákkal. Ezenkívül az ASP.NET Core-webalkalmazást a jelen oktatóanyagban használt maga .NET Core SDK-t 2.2-es. Fut megfelelően az Azure Web Apps szolgáltatásban rendszeres (Windows), de jelenleg nem fog működni az Azure Web Apps for Linux.
+Érdemes megjegyezni, hogy, bár fogja használni az Azure Cosmos DB és a Unity ebben az oktatóanyagban, azaz csak, amelyek különböző eszközökön térbeli horgonyok azonosítók megosztása egy példát. Lehetőség van felhasználó más nyelv és a egy cél elérése érdekében a háttér-technológiákkal. Az ASP.NET Core-webalkalmazás a jelen oktatóanyagban használt is, a .NET Core SDK 2.2-es van szükség. Rendben fut a Web Apps for Windows, de nem Linux rendszeren jelenleg futnak webalkalmazásokat.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,21 +45,25 @@ A következőket fogja megtanulni:
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Jegyezze fel a `Connection String` módon lentebb használandó.
+Másolás a `Connection String` mert, szüksége lesz rá.
 
-## <a name="deploy-your-sharing-anchors-service"></a>A megosztási horgonyok szolgáltatás üzembe helyezése
+## <a name="open-the-sample-project-in-unity"></a>Nyissa meg a mintaprojektet a Unity-nél
 
-Nyissa meg a Visual Studiót, és nyissa meg a projekt a `Sharing\SharingServiceSample` mappát.
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-### <a name="configure-the-service-so-that-it-uses-your-cosmos-db"></a>Konfigurálja a szolgáltatást, hogy használja a Cosmos DB
+## <a name="deploy-the-sharing-anchors-service"></a>A megosztási horgonyok szolgáltatás üzembe helyezése
 
-Az a **Megoldáskezelőben**, nyissa meg `SharingService\Startup.cs`.
+Nyissa meg a Visual Studióban, és a nyissa meg a projektre a a `Sharing\SharingServiceSample` mappát.
 
-Keresse meg a `#define INMEMORY_DEMO` a fájl elején. sor, és hozzászólhat próbálhatja ki. Mentse a fájlt.
+### <a name="configure-the-service-to-use-your-azure-cosmos-db-database"></a>Konfigurálja a szolgáltatást, hogy az Azure Cosmos DB-adatbázist használja
 
-Az a **Megoldáskezelőben**, nyissa meg `SharingService\appsettings.json`.
+A **Megoldáskezelőben**, nyissa meg `SharingService\Startup.cs`.
 
-Keresse meg a `StorageConnectionString` tulajdonságot, és állítsa be az lehet az `Connection String` , hogy a szóban tudomásul vette a [hozzon létre egy adatbázis-fiók lépés](#create-a-database-account). Mentse a fájlt.
+Keresse meg `#define INMEMORY_DEMO` a fájl- és megjegyzés, amely ki sor elején. Mentse a fájlt.
+
+A **Megoldáskezelőben**, nyissa meg `SharingService\appsettings.json`.
+
+Keresse meg a `StorageConnectionString` tulajdonságot, és adja meg kell egyeznie a `Connection String` érték, amely a másolt a [hozzon létre egy adatbázis-fiók lépés](#create-a-database-account). Mentse a fájlt.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 

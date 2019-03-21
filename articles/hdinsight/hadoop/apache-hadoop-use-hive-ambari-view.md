@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cb68e93553be66d0d0be0edf61e491217bfe4d48
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091307"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari Hive nézete használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -73,7 +73,7 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
    * `DROP TABLE`: Törli a tábla- és adatfájlt, abban az esetben, ha a tábla már létezik.
 
    * `CREATE EXTERNAL TABLE`: A Hive egy új "external" táblát hoz létre.
-   Külső táblák csak a tábla definíciójának Hive tárolja. Az adatok az eredeti helyén marad.
+     Külső táblák csak a tábla definíciójának Hive tárolja. Az adatok az eredeti helyén marad.
 
    * `ROW FORMAT`: Bemutatja, hogyan van formázva az adatok. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
 
@@ -81,8 +81,8 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
    * `SELECT`: Választja ki, ahol az oszlop t4 [hiba] értéket tartalmazza az összes sor számát.
 
-    > [!IMPORTANT]  
-    > Hagyja a __adatbázis__ a kijelölés __alapértelmezett__. Ebben a dokumentumban szereplő példák a HDInsight részét képező alapértelmezett adatbázist használja.
+     > [!IMPORTANT]  
+     > Hagyja a __adatbázis__ a kijelölés __alapértelmezett__. Ebben a dokumentumban szereplő példák a HDInsight részét képező alapértelmezett adatbázist használja.
 
 5. A lekérdezés indításához használja a **Execute** gomb a munkalap alatt. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
 
@@ -102,7 +102,7 @@ A lekérdezésterv a Vizualizációk megjelenítéséhez válassza a **Visual is
 
 A **Visual ismertetik** nézet a lekérdezés akkor hasznosak, a folyamat az összetett lekérdezések ismertetése. Egy szöveges egyenértékű ebben a nézetben látható használatával a **magyarázat** gomb a Lekérdezésszerkesztőben.
 
-### <a name="tez-ui"></a>Tez felhasználói felület
+### <a name="tez-ui"></a>Tez UI
 
 A lekérdezés a Tez felhasználói felület megjelenítéséhez válassza a **Tez** fülre a munkalap alatt.
 

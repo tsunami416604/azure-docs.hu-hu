@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: abe211ad4745564cb2698aa1261a1aeb6dd63af7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995183"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik-e az SQL Server Always On rend
 Rendelkeznie kell Azure-fiókkal. Is [nyissa meg az ingyenes Azure-fiók](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **+** hozhat létre új objektumot a portálon.
 
    ![Új objektum](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -292,14 +292,14 @@ Miután az elsődleges tartományvezérlő újraindult, konfigurálhatja a máso
 15. Kattintson a **további** a sárga figyelmeztető sáv található hivatkozásra.
 16. Az a **művelet** oszlopa a **összes kiszolgáló feladat részletei** párbeszédpanelen kattintson a **a számítógép előléptetése tartományvezérlővé**.
 17. A **üzembe helyezési konfiguráció**válassza **tartományvezérlő hozzáadása meglévő tartományhoz**.
-   ![Központi telepítés konfigurálása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![Központi telepítés konfigurálása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. Kattintson a **Kiválasztás** gombra.
 19. Csatlakozás a rendszergazdai fiók használatával (**CORP. CONTOSO.COM\domainadmin**) és a jelszót (**Contoso! 0000**).
 20. A **jelöljön ki egy tartományt az erdőben**, a tartományra, és kattintson **OK**.
 21. A **tartományvezérlő beállításai**, használja az alapértelmezett értékeket, és állítsa be a DSRM-jelszót.
 
-   >[!NOTE]
-   >A **DNS-beállítások** lap előfordulhat, hogy figyelmezteti, hogy a DNS-kiszolgáló delegálást nem hozható létre. Ez a figyelmeztetés nem éles környezetekben figyelmen kívül hagyhatja.
+    >[!NOTE]
+    >A **DNS-beállítások** lap előfordulhat, hogy figyelmezteti, hogy a DNS-kiszolgáló delegálást nem hozható létre. Ez a figyelmeztetés nem éles környezetekben figyelmen kívül hagyhatja.
 22. Kattintson a **tovább** amíg el nem éri a párbeszédpanelen a **Előfeltételek** ellenőrzése. Ezt követően kattintson a **Telepítés** gombra.
 
 Ha a kiszolgáló befejezi a konfiguráció módosításait, indítsa újra a kiszolgálót.

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3aba118354c51285d714bb127e6f5984f8a50057
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096299"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus biztonsági mentés az SQL Server Azure-beli virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]
@@ -73,7 +73,8 @@ A következő táblázat ismerteti a beállításokat, amelyeket az automatikus 
 | **Megőrzési idő** |1 – 30 napig (30 nap) |A biztonsági másolatok megőrzése (nap) száma. |
 | **Tárfiók** |Az Azure storage-fiók (a storage-fiók létrehozása a megadott virtuális gép) |Blob storage-ban automatikus biztonsági mentés fájlok tárolására szolgáló Azure storage-fiókkal. Ezen a helyen tárolja az összes biztonsági mentési fájlokat tároló jön létre. Elnevezési szabálya a biztonságimásolat-fájl tartalmazza a dátum, idő és a gép neve. |
 | **Titkosítás** |Engedélyezés/letiltás (letiltva) |Engedélyezi vagy letiltja a titkosítást. Ha engedélyezve van a titkosítás, a biztonsági mentés visszaállításához használt tanúsítványok találhatók a megadott tárfiók ugyanabban a tárolóban automaticbackup ugyanazt az elnevezési konvenciót használ. A jelszó is módosul, ha egy új tanúsítvány hozza létre ezt a jelszót, de a régi tanúsítvány továbbra is a korábbi biztonsági másolatok visszaállításához. |
-| **Jelszó** |Jelszó szöveg (nincs) |A titkosítási kulcsok jelszava. Ez csak akkor szükséges, ha engedélyezve van-e a titkosítás. Annak érdekében, hogy a titkosított biztonsági másolat visszaállítása, rendelkeznie kell a helyes jelszót és a kapcsolódó az időben, a biztonsági mentéshez használt tanúsítvány. | **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | A Master, Model és MSDB teljes biztonsági másolat készítése |
+| **Jelszó** |Jelszó szöveg (nincs) |A titkosítási kulcsok jelszava. Ez csak akkor szükséges, ha engedélyezve van-e a titkosítás. Annak érdekében, hogy a titkosított biztonsági másolat visszaállítása, rendelkeznie kell a helyes jelszót és a kapcsolódó az időben, a biztonsági mentéshez használt tanúsítvány. |
+| **Rendszeradatbázisok biztonsági mentése** | Engedélyezés/letiltás (letiltva) | A Master, Model és MSDB teljes biztonsági másolat készítése |
 | **Biztonsági mentés ütemezésének konfigurálása** | Manuális vagy automatikus (automatikus) | Válassza ki **automatikus** számára automatikusan teljes és a napló növekedése alapján biztonsági másolataihoz. Válassza ki **manuális** , adja meg a teljes ütemezését és biztonsági másolataihoz. |
 
 ## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció

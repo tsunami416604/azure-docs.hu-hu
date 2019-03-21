@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2b46638a7e0fa3dc80fa4d2fa23d49b37b8885ec
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0ba5cdd4f92390634d6d2bea8add8309cb1f4d3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014499"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Az Azure Cosmos DB index házirend
 
@@ -37,9 +37,6 @@ Az Azure Cosmos DB két lehetőséget támogat az indexelő konfigurálható egy
   > A létező indexek elvetését mellékhatása az indexelési mód konfigurálása egy sem rendelkezik. Ezt a beállítást kell használnia, ha ID használatának megkövetelése a hozzáférési mintákat, vagy önhivatkozást csak.
 
 Lekérdezés konzisztenciaszintek hasonló a normál olvasási műveletek karbantartása. Az Azure Cosmos database hibát ad vissza, ha lekérdezheti, ha a tároló, amelyben nincs mód az indexelés. Vizsgálatok az explicit keresztül, a lekérdezéseket hajthat végre **x-ms-documentdb-enable-vizsgálat** fejléc a REST API-ban vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. Néhány lekérdezés hasonló szolgáltatásokat szabályoznak, ORDER BY záradék használata jelenleg nem támogatott **EnableScanInQuery**, mert azok megszabják, hogy a megfelelő index.
-
-> [!NOTE]
-> Az Azure Cosmos DB egy harmadik, lusta indexelési módban van. Azonban ez folyamatban van, vonja hangsúlyos mert lekérdezési teljesítménnyel és költségekkel járhat. Konzisztens az indexelő mód használatát javasoljuk.
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 

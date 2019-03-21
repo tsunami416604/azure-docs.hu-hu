@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7783da2e3e5fe2ee79942b246e452ad7998e278
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193322"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Oktatóanyag: Az Azure Active Directory integrációja az Sedgwick tartalomkezelő rendszer
 
@@ -112,12 +112,14 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Sedgwick CMS tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/sedgwickcms-tutorial/tutorial_sedgwickcms_url.png)
 
     a. Az a **azonosító** szövegmezőbe írja be az URL-cím: 
+
     | |
     |--|
     | `expresspreview.sedgwickcms.net/voe/sso` |
     | `claimlookup.com/Voe/sso` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|
     | `https://<subdomain>.sedgwickcms.net/voe/sso` |

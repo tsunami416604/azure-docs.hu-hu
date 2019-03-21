@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 03/20/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55a7016ec0068234dfc6110d9d4afc04119ccdd
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194061"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295487"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -221,7 +221,7 @@ Minden, az Azure AD Connecttel hozzáadott erdőhöz tartományi rendszergazdai 
 >Egyes erdőket ki is hagyhat, ha nem szeretne az esetükben egyszeri bejelentkezést használni.
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>Az intranetes zóna konfigurálása ügyfélgépekre
-Annak biztosítása érdekében, hogy az ügyfél automatikusan az intranet zónába jelentkezzen be, gondoskodni kell arról, hogy a két URL-cím az intranet zóna része legyen. Ezzel biztosítható, hogy a tartományhoz csatlakozó számítógép automatikusan Kerberos-jegyet küldjön Azure AD-hez, amikor a vállalati hálózathoz csatlakozik.
+Annak érdekében, hogy az ügyfél bejelentkezések automatikusan az intranet zónában kell győződjön meg arról, hogy az URL-cím az intranet zóna része. Ezzel biztosítható, hogy a tartományhoz csatlakozó számítógép automatikusan Kerberos-jegyet küldjön Azure AD-hez, amikor a vállalati hálózathoz csatlakozik.
 Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési eszközök:
 
 1.  Nyissa meg a csoportházirend-kezelési eszközöket.

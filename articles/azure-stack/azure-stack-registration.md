@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109239"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -173,7 +173,7 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
    ```
    A Set-AzsRegistration parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).
 
-  A folyamat között 10 – 15 percet vesz igénybe. Az üzenet jelenik meg a parancs befejeződésekor **"a környezet már regisztrálva van, és aktiválta a megadott paraméterek használatával."**
+   A folyamat között 10 – 15 percet vesz igénybe. Az üzenet jelenik meg a parancs befejeződésekor **"a környezet már regisztrálva van, és aktiválta a megadott paraméterek használatával."**
 
 ## <a name="register-connected-with-capacity-billing"></a>A kapacitás számlázással csatlakoztatott regisztrálása
 
@@ -210,20 +210,20 @@ Csatlakoztatott környezetek hozzáférhet az interneten és az Azure. Ilyen kö
 
 5. Indítsa el a PowerShell ISE-t rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. Importálás a **RegisterWithAzure.psm1** a modul PowerShell-lel:
 
-  ```PowerShell  
-  $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
-  $RegistrationName = "<unique-registration-name>"
-  Set-AzsRegistration `
+   ```PowerShell  
+   $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationName = "<unique-registration-name>"
+   Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
       -BillingModel Capacity `
       -RegistrationName $RegistrationName
-  ```
+   ```
    > [!Note]  
    > Használatra vonatkozó jelentések készítéséhez a UsageReportingEnabled paraméterrel letilthatja a **Set-AzsRegistration** parancsmag a paraméter false értékre állításával. 
    
-  A Set-AzsRegistration parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).
+   A Set-AzsRegistration parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).
 
 ## <a name="register-disconnected-with-capacity-billing"></a>A kapacitás számlázással leválasztott regisztrálása
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: MT
+ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506805"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110409"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Az Azure-tárterület-áttelepítés – gyakran ismételt kérdések
 
@@ -282,7 +282,7 @@ A más hozzáférést biztosít a tárolási erőforrások:
 
     - **SAS-jogkivonat**: SAS-jogkivonat használatával érheti el adatait a végpontról. További információkért lásd: [a közös hozzáférésű jogosultságkódot](storage-dotnet-shared-access-signature-part-1.md).
 
-**Hogyan egy HTTPS-egyéni tartomány használata a storage-fiókomat? Például Hogyan tehetem "https://mystorageaccountname.blob.core.windows.net/images/image.gif" tűnnek "https://www.contoso.com/images/image.gif"?**
+**Hogyan egy HTTPS-egyéni tartomány használata a storage-fiókomat? Például Hogyan tehetem "<https://mystorageaccountname.blob.core.windows.net/images/image.gif>" tűnnek "<https://www.contoso.com/images/image.gif>"?**
 
 Az SSL jelenleg nem támogatott az egyéni tartományok a storage-fiókok.
 De egyéni tartományokat nem-HTTPS használható. További információkért lásd: [egy egyéni tartománynév beállítása a Blob storage-végponthoz](../blobs/storage-custom-domain-name.md).

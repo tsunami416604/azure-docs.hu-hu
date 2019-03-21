@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876646"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktív hálózatmonitorozás riasztások és az Azure Functions használata a csomagrögzítést
 
@@ -110,13 +110,13 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
     Ebben a példában biztosít az Azure PowerShell-modulok helyi elérési útja. Ezek a mappák egy későbbi lépésben használt. Az ebben a forgatókönyvben használt modulokra:
 
-    * AzureRM.Network
+   * AzureRM.Network
 
-    * AzureRM.Profile
+   * AzureRM.Profile
 
-    * AzureRM.Resources
+   * AzureRM.Resources
 
-    ![PowerShell-mappák][functions5]
+     ![PowerShell-mappák][functions5]
 
 1. Válassza ki **Alkalmazásbeállítások függvény** > **nyissa meg az App Service Editor**.
 
@@ -146,7 +146,7 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
     ![PowerShell fájlok][functions7]
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A PowerShell-parancsmagok használatához hitelesítenie kell. A függvényalkalmazásban állítsa be a hitelesítést. Hitelesítés konfigurálása környezeti változók konfigurálása, és töltse fel a függvényalkalmazás egy titkosított kulcsfájl.
 
@@ -344,7 +344,7 @@ Ugrás a meglévő virtuális gépet, és adja hozzá a riasztási szabályt. É
   |**Beállítás** | **Érték** | **Részletek** |
   |---|---|---|
   |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
-  |**Leírás**|TCP-szegmens küldött túllépte a határértéket|A riasztási szabály leírását.||
+  |**Leírás**|TCP-szegmens küldött túllépte a határértéket|A riasztási szabály leírását.|
   |**Metrika**|Elküldött TCP-szegmens| A metrika a riasztást kiváltó használatára. |
   |**a feltétel**|Nagyobb, mint| A feltétel a metrika értékeléséhez.|
   |**Küszöbérték**|100| A riasztást kiváltó a mérőszám értéke. Ez az érték a környezetnek érvényes értékre kell állítani.|
@@ -362,7 +362,7 @@ A riasztási eseményindítók feltételeit, miután csomagrögzítés jön lét
 
 Ha a rögzítési fájlt helyben van tárolva, jelentkezzen be a virtuális gép kérheti.
 
-Az Azure storage-fiókok fájlok letöltésére vonatkozó utasításokért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Van egy másik eszköz, amellyel [Tártallózó](http://storageexplorer.com/).
+Az Azure storage-fiókok fájlok letöltésére vonatkozó utasításokért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Van egy másik eszköz, amellyel [Tártallózó](https://storageexplorer.com/).
 
 A rögzítési letöltése után megtekintheti azt minden olyan eszközzel, amely képes olvasni a **.cap** fájlt. Az alábbiakban két ezekkel az eszközökkel mutató hivatkozásokat:
 

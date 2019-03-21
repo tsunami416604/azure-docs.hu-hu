@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: b15a884821fa067c329766169cb4c704e9ed069a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f47c6b63ce5f18aa896b086ec884b9a3020cadd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563065"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993278"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Gyűrűpuffer célkódja az SQL Database bővített események
 
@@ -57,7 +57,7 @@ Ez a témakör egy kódmintát a Transact-SQL, amely:
 
 Csak apró módosítással a következő gyűrűpuffer kódminta futtatható az Azure SQL Database vagy a Microsoft SQL Server. A különbség a "adatbá_zis" be néhány dinamikus felügyeleti nézetekkel (DMV-kkel) nevét az 5. lépés a FROM záradékban használt csomópont jelenléte. Példa:
 
-* sys.dm_xe **_database**_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 4471b556dc1ac5f520185d7ad586fb489c6d8f30
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856808"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225161"
 ---
 # <a name="message-deferral"></a>Üzenetek halasztása
 
@@ -36,7 +36,7 @@ Az API [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.broker
 
 Késleltetett üzenet az összes aktív üzenetek (ellentétben a kézbesítetlen levelek alüzenetsor az élő) együtt a fő üzenetsor maradnak, de azok már nem fogadhatók a rendszeres Receive/ReceiveAsync funkciókkal. Késleltetett üzenet keresztül könnyen megtalálhatók legyenek [az üzenetek közötti böngészés](message-browsing.md) Ha egy alkalmazás elveszti őket nyomon.
 
-Egy késleltetett üzenetet lekéréséhez tulajdonosától feladata megjegyzésénél a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , azt késleltet azt. Bármely, hogy ismeri a sorszáma egy késleltetett üzenetet fogadó is később az üzenet explicit módon a `Receive(sequenceNumber)`.
+Egy késleltetett üzenetet lekéréséhez tulajdonosától feladata megjegyzésénél a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , azt késleltet azt. Bármely, hogy ismeri a sorszáma egy késleltetett üzenetet fogadó is később az üzenet explicit módon a `Receive(sequenceNumber)`. Az üzenetsorok, használhatja a [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), a témakör-előfizetés sem használja a [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
 
 Ha nem lehet feldolgozni egy üzenetet, mert az üzenet egy adott erőforrás átmenetileg nem érhető el, de üzenet feldolgozása nem summarily felfüggesztésére vonatkozó, egy üzenetet elhelyezése az ügyféloldali néhány percet módja ne felejtse el a  **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) bizonylatok néhány perc múlva, és újra a késleltetett üzenet beolvasása, az ütemezett üzenet érkezésekor. Ha üzenetkezelőként függ, hogy a művelet egy adatbázis, és átmenetileg nem érhető el, hogy az adatbázis, azt kell nem késleltetési, hanem inkább az üzenetek fogadása felfüggesztése funkciót azonban teljesen, amíg az adatbázis újból elérhető lesz.
 

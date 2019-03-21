@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129233"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084810"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és az Azure Data Lake Storage Gen1
 
@@ -82,7 +82,7 @@ A következő beállításokat a spout hangolásához módosíthatja.
 
 - **Függőben lévő maximális spout: topology.max.spout.pending**. Ez a beállítás határozza meg, hogy a flight (a topológia összes csomópontjának jelenleg még nem nyugtázott) spout szálanként bármikor rekordok számát.
 
- Egy jó számítási tennie, hogy a rekordok méretének becslése. Ezt követően döntse el, hogy mennyi memóriát egy spout szál rendelkezik. A teljes memória egy olyan hozzászólásláncra, és elosztja ezt az értéket, lefoglalt kell biztosítanak a felső határérték a maximális spout függőben lévő paraméter.
+  Egy jó számítási tennie, hogy a rekordok méretének becslése. Ezt követően döntse el, hogy mennyi memóriát egy spout szál rendelkezik. A teljes memória egy olyan hozzászólásláncra, és elosztja ezt az értéket, lefoglalt kell biztosítanak a felső határérték a maximális spout függőben lévő paraméter.
 
 ## <a name="tune-the-bolt"></a>A bolt hangolása
 A Data Lake Storage Gen1 ír le, amikor beállított mérete szinkronizálási házirend (puffer az ügyféloldalon) 4 MB-ra. Írta vagy hsync() majd történik, csak akkor, amikor a puffer mérete a következő ezt az értéket. A Data Lake Storage Gen1 illesztőprogram a feldolgozón a virtuális gép automatikusan végrehajtja a pufferelés, kivéve, ha explicit módon egy hsync() hajt végre.
@@ -98,7 +98,7 @@ A Storm a spout tartalmazza rekordot, mindaddig, amíg explicit módon a bolt á
 A Data Lake Storage Gen1 a legjobb teljesítmény érdekében a bolt rendelkezik tuple adatok 4 MB-os puffer. Ezután írni a Data Lake Storage Gen1 vissza vége, egy 4 MB-os írási. Miután az adatok sikeresen lett írva a tároló (hívó hflush()) által a bolt is igazolja vissza az adatokat a spout. Ez a az itt megadott példa bolt leírása. Emellett akkor is, amely tárolja a rekordokat tartalmazó, mielőtt a hflush() kezdeményezték, és a rekordok felsorolásának arra vonatkozik, nagyobb számú elfogadható. Ez azonban növeli, hogy a spout tárolására van szüksége, és így nő a memória mennyiségét szükséges JVM útban rekordok számát.
 
 > [!NOTE]
-Előfordulhat, hogy az alkalmazások a követelmény, hogy tudomásul veszi a rekordok gyakrabban (a data kisebb, mint 4 MB-os) más nem teljesítmény javítása érdekében. Azonban, hogy az i/o átviteli sebességet, hogy a tároló háttér hatással lehetnek. Alaposan mérjük a kompromisszummal jár, szemben a bolt i/o-teljesítményt.
+> Előfordulhat, hogy az alkalmazások a követelmény, hogy tudomásul veszi a rekordok gyakrabban (a data kisebb, mint 4 MB-os) más nem teljesítmény javítása érdekében. Azonban, hogy az i/o átviteli sebességet, hogy a tároló háttér hatással lehetnek. Alaposan mérjük a kompromisszummal jár, szemben a bolt i/o-teljesítményt.
 
 Ha a rekordok sebessége nem nagy, ezért a 4 MB-os puffer töltse ki, gondolja át, ezt úgy csökkentése hosszú ideig tart:
 * A boltok számának csökkentését, így nincsenek töltse ki a kevesebb pufferek.

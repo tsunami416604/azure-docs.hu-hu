@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b346ac0ac456b7f6af078496e8dd1cb738caab67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: d3cea9f3bc5645aeaefc5bb376557d365681df56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994110"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
@@ -82,7 +82,7 @@ Használhatja a Media Services **dinamikus jegyzékfájlok** csak egy adott megj
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam)
 
-Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. **Élő események** feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy **élő esemény**, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. Miután a tárfiókba kerülnek stream a **élő esemény**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **élő kimeneti**, és **Streamelési lokátor** . **Kimeneti élő** archiválja a streamet, a **eszköz** és keresztül megtekintők számára elérhető legyen a **Streamelési Endpoid**. A **élő esemény** két típus egyike lehet: **átmenő** és **valós idejű kódolás**.
+Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. **Élő események** feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy **élő esemény**, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. Miután a tárfiókba kerülnek stream a **élő esemény**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **élő kimeneti**, és **Streamelési lokátor** . **Kimeneti élő** archiválja a streamet, a **eszköz** és keresztül megtekintők számára elérhető legyen a **folyamatos átviteli végponton**. A **élő esemény** két típus egyike lehet: **átmenő** és **valós idejű kódolás**.
 
 Az alábbi ábrán az átmenő írja be a munkafolyamat:
 

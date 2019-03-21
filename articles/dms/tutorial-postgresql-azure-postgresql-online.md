@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 54df5069970a628962f20761441a8f9947356da9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 9633b6c083b6e7286435c8c3867339868ae53458
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105420"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni PostgreSQL-példány adatbázisait az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban a **DVD Rental** mintaadatbázist fogja migrálni a PostgreSQL 9.6 egy helyszíni példányáról az Azure Database for PostgreSQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -148,64 +148,64 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>A DMS egy példányának kiépítése a CLI használatával
 
-1.  A dms szinkronizálási bővítmény telepítéséhez:
-    - Jelentkezzen be az Azure-ba az alábbi parancs futtatásával:        
-        ```
-        az login
-        ```
+1. A dms szinkronizálási bővítmény telepítéséhez:
+   - Jelentkezzen be az Azure-ba az alábbi parancs futtatásával:        
+       ```
+       az login
+       ```
 
-    - Amikor a rendszer kéri, nyisson meg egy webböngészőt, és adja meg a kódot az eszköz hitelesítéséhez. Kövesse az utasításokat a megjelenésük sorrendjében.
-    - A dms bővítmény hozzáadásához:
-        - Az elérhető bővítmények listájának megjelenítéséhez futtassa a következő parancsot:
+   - Amikor a rendszer kéri, nyisson meg egy webböngészőt, és adja meg a kódot az eszköz hitelesítéséhez. Kövesse az utasításokat a megjelenésük sorrendjében.
+   - A dms bővítmény hozzáadásához:
+       - Az elérhető bővítmények listájának megjelenítéséhez futtassa a következő parancsot:
 
-            ```
-            az extension list-available –otable
-            ```
-        - A bővítmény telepítéséhez futtassa a következő parancsot:
+           ```
+           az extension list-available –otable
+           ```
+       - A bővítmény telepítéséhez futtassa a következő parancsot:
 
-            ```
-            az extension add –n dms-preview
-            ```
+           ```
+           az extension add –n dms-preview
+           ```
 
-    - A dms bővítmény helyes telepítésének ellenőrzéséhez futtassa a következő parancsot:
+   - A dms bővítmény helyes telepítésének ellenőrzéséhez futtassa a következő parancsot:
  
-        ```
-        az extension list -otable
-        ```
-        A következő kimenetnek kell megjelennie:     
+       ```
+       az extension list -otable
+       ```
+       A következő kimenetnek kell megjelennie:     
+
+       ```
+       ExtensionType    Name
+       ---------------  ------
+       whl              dms
+       ```
+
+   - A következő futtatásával bármikor megjelenítheti a DMS-ben támogatott összes parancsot:
+       ```
+       az dms -h
+       ```
+   - Ha több Azure-előfizetéssel is rendelkezik, a DMS-szolgáltatás egy példányának kiépítéséhez használni kívánt előfizetés beállításához futtassa a következő parancsot.
 
         ```
-        ExtensionType    Name
-        ---------------  ------
-        whl              dms
+       az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
-    - A következő futtatásával bármikor megjelenítheti a DMS-ben támogatott összes parancsot:
-        ```
-        az dms -h
-        ```
-    - Ha több Azure-előfizetéssel is rendelkezik, a DMS-szolgáltatás egy példányának kiépítéséhez használni kívánt előfizetés beállításához futtassa a következő parancsot.
+2. A DMS egy példányának kiépítése a következő parancs futtatásával:
 
-         ```
-        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
-         ```
+   ```
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   ```
 
-2.  A DMS egy példányának kiépítése a következő parancs futtatásával:
+   Például a következő parancs szolgáltatást hoz létre az alábbi helyen:
+   - Hely: USA 2. keleti régiója
+   - Előfizetés: 97181df2-909d-420b-ab93-1bff15acb6b7
+   - Erőforráscsoport neve: PostgresDemo
+   - DMS Service Name: PostgresCLI
 
-    ```
-    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
-    ```
-
-    Például a következő parancs szolgáltatást hoz létre az alábbi helyen:
-    - Hely: USA 2. keleti régiója
-    - Előfizetés: 97181df2-909d-420b-ab93-1bff15acb6b7
-    - Erőforráscsoport neve: PostgresDemo
-    - DMS Service Name: PostgresCLI
-
-    ```
-    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
-    ```
-    A DMS-szolgáltatás példányának létrehozása nagyjából 10–12 percet vesz igénybe.
+   ```
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   ```
+   A DMS-szolgáltatás példányának létrehozása nagyjából 10–12 percet vesz igénybe.
 
 3. A DMS-ügynök IP-címének azonosításához, így a Postgres pg_hba.conf fájlba való felvételéhez futtassa a következő parancsot:
 
@@ -242,103 +242,103 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     ```
     Például a következő parancs létrehoz egy projektet az alábbi paraméterek használatával:
 
-      - Hely: USA nyugati középső régiója
-      - Erőforráscsoport neve: PostgresDemo
-      - Szolgáltatás neve: PostgresCLI
-      - Projekt neve: PGMigration
-      - Forrásplatform: PostgreSQL
-      - Célplatform: AzureDbForPostgreSql
+   - Hely: USA nyugati középső régiója
+   - Erőforráscsoport neve: PostgresDemo
+   - Szolgáltatás neve: PostgresCLI
+   - Projekt neve: PGMigration
+   - Forrásplatform: PostgreSQL
+   - Célplatform: AzureDbForPostgreSql
  
-    ```
-    az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
-    ```
+     ```
+     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
+     ```
                 
 6. Az alábbi lépéseket követve hozzon létre egy PostgreSQL-migrálási feladatot.
 
     Ez a lépés magában foglalja a forrás IP-címének, felhasználói azonosítójának és jelszavának, a cél IP-címének, felhasználói azonosítójának és jelszavának, és a feladattípusnak a megadását a kapcsolat létrehozásához.
 
-    - A lehetőségek teljes listájának megtekintéséhez futtassa a parancsot:
-        ```
-        az dms project task create -h
-        ```
+   - A lehetőségek teljes listájának megtekintéséhez futtassa a parancsot:
+       ```
+       az dms project task create -h
+       ```
 
-        A forrás és cél kapcsolata esetében is a bemeneti paraméter egy az objektumlistát tartalmazó json-fájlra hivatkozik.
+       A forrás és cél kapcsolata esetében is a bemeneti paraméter egy az objektumlistát tartalmazó json-fájlra hivatkozik.
  
-        A kapcsolat JSON-objektumának formátuma a PostgreSQL-kapcsolatokhoz.
+       A kapcsolat JSON-objektumának formátuma a PostgreSQL-kapcsolatokhoz.
         
-        ```
-        {
-                    "userName": "user name",    // if this is missing or null, you will be prompted
-                    "password": null,           // if this is missing or null (highly recommended) you will
-                be prompted
-                    "serverName": "server name",
-                    "databaseName": "database name", // if this is missing, it will default to the 'postgres'
-                server
-                    "port": 5432                // if this is missing, it will default to 5432
-                }
-        ```
+       ```
+       {
+                   "userName": "user name",    // if this is missing or null, you will be prompted
+                   "password": null,           // if this is missing or null (highly recommended) you will
+               be prompted
+                   "serverName": "server name",
+                   "databaseName": "database name", // if this is missing, it will default to the 'postgres'
+               server
+                   "port": 5432                // if this is missing, it will default to 5432
+               }
+       ```
 
-    - Emellett van egy adatbázis beállítás json-fájlt, amely felsorolja a json-objektumok. A PostgreSQL esetében az adatbázis-beállítási JSON-objektum formátuma az alábbi:
+   - Emellett van egy adatbázis beállítás json-fájlt, amely felsorolja a json-objektumok. A PostgreSQL esetében az adatbázis-beállítási JSON-objektum formátuma az alábbi:
 
-        ```
-        [
-            {
-                "name": "source database",
-                "target_database_name": "target database",
-            },
-            ...n
-        ]
-        ```
+       ```
+       [
+           {
+               "name": "source database",
+               "target_database_name": "target database",
+           },
+           ...n
+       ]
+       ```
 
-    - Hozzon létre egy json-fájlt a Jegyzettömbben, másolja ki a következő parancsokat, és illessze be őket a fájlba, majd mentse a fájlt a C:\DMS\source.json helyre.
-         ```
-        {
-                    "userName": "postgres",    
-                    "password": null,           
-                be prompted
-                    "serverName": "13.51.14.222",
-                    "databaseName": "dvdrental", 
-                    "port": 5432                
-                }
-         ```
-    - Hozzon létre egy másik, target.json elnevezésű fájlt, és mentse másként a C:\DMS\target.json helyre. Foglalja bele az alábbi parancsokat:
+   - Hozzon létre egy json-fájlt a Jegyzettömbben, másolja ki a következő parancsokat, és illessze be őket a fájlba, majd mentse a fájlt a C:\DMS\source.json helyre.
         ```
-        {
-                "userName": " dms@builddemotarget",    
-                "password": null,           
-                "serverName": " builddemotarget.postgres.database.azure.com",
-                "databaseName": "inventory", 
-                "port": 5432                
-            }
+       {
+                   "userName": "postgres",    
+                   "password": null,           
+               be prompted
+                   "serverName": "13.51.14.222",
+                   "databaseName": "dvdrental", 
+                   "port": 5432                
+               }
         ```
-    - Hozzon létre egy adatbázis-beállítási json-fájlt, amely migrálandó adatbázisként kilistázza a készletet:
-        ``` 
-        [
-            {
-                "name": "dvdrental",
-                "target_database_name": "dvdrental",
-            }
-        ]
-        ```
-    - Futtassa a következő parancsot, amely egybefoglalja a forrás, cél és a DB-beállítási json-fájlokat.
+   - Hozzon létre egy másik, target.json elnevezésű fájlt, és mentse másként a C:\DMS\target.json helyre. Foglalja bele az alábbi parancsokat:
+       ```
+       {
+               "userName": " dms@builddemotarget",    
+               "password": null,           
+               "serverName": " builddemotarget.postgres.database.azure.com",
+               "databaseName": "inventory", 
+               "port": 5432                
+           }
+       ```
+   - Hozzon létre egy adatbázis-beállítási json-fájlt, amely migrálandó adatbázisként kilistázza a készletet:
+       ``` 
+       [
+           {
+               "name": "dvdrental",
+               "target_database_name": "dvdrental",
+           }
+       ]
+       ```
+   - Futtassa a következő parancsot, amely egybefoglalja a forrás, cél és a DB-beállítási json-fájlokat.
 
-        ``` 
-        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
-        ``` 
+       ``` 
+       az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
+       ``` 
 
-    Ezen a ponton sikeresen beküldött egy migrálási feladatot.
+     Ezen a ponton sikeresen beküldött egy migrálási feladatot.
 
-7.  A feladat előrehaladásának megjelenítéséhez futtassa a következő parancsot:
+7. A feladat előrehaladásának megjelenítéséhez futtassa a következő parancsot:
+
+   ```
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   ```
+
+   VAGY
 
     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
-
-    VAGY
-
-     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
-     ```
 
 8. A kibontott kimenetből futtathatja a migrationState lekérdezését is:
 

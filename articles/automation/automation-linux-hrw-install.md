@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820416"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225450"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Üzembe helyezése egy hibrid Runbook-feldolgozója Linuxra
 
@@ -71,7 +71,7 @@ Mielőtt folytatja a műveletet, vegye figyelembe a Log Analytics-munkaterülete
 
 1. A Linuxhoz készült Log Analytics-ügynök telepítése a következő parancs futtatásával. Cserélje le \<munkaterület azonosítója\> és \<WorkspaceKey\> a munkaterület a megfelelő értékekkel.
 
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -84,6 +84,9 @@ Mielőtt folytatja a műveletet, vegye figyelembe a Log Analytics-munkaterülete
    ```
 
 1. A parancs befejeződése után a **hibrid Feldolgozócsoportok** oldal az Azure Portalon az új csoport és a tagok száma látható. Ha egy meglévő csoportot, a tagok száma értéke akkor növekszik. A csoportot a listából kiválaszthatja a a **hibrid Feldolgozócsoportok** lapon, és válassza a **hibrid feldolgozók** csempére. Az a **hibrid feldolgozók** lapon láthatja a felsorolt csoport minden tagja.
+
+> [!NOTE]
+> Ha használja az Azure Monitor virtuálisgép-bővítmény linuxhoz egy Azure virtuális gép ajánlott beállítása `autoUpgradeMinorVersion` hamis értékre, az automatikus frissítés verziók problémákat okozhat a hibrid Runbook-feldolgozó. A bővítmény manuális frissítésével kapcsolatban lásd: [Azure CLI telepítési ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment).
 
 ## <a name="turning-off-signature-validation"></a>Aláírás-ellenőrzés kikapcsolása
 
@@ -111,12 +114,8 @@ A következő runbook-típusok nem használhatók egy Linux-hibrid feldolgozó:
 * Grafikus
 * Grafikus PowerShell-munkafolyamat
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibáinak elhárítása Linux hibrid Runbook-feldolgozók](troubleshoot/hybrid-runbook-worker.md#linux)
-
 ## <a name="next-steps"></a>További lépések
 
 * A runbookok automatizálhatja a folyamatokat a helyszíni adatközpont vagy egyéb felhőalapú környezetbe történő konfigurálásával kapcsolatban lásd: [runbookok futtatása hibrid Runbook-feldolgozók](automation-hrw-run-runbooks.md).
 * A hibrid Runbook-feldolgozóinak eltávolítása útmutatásért lásd: [távolítsa el az Azure Automation hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibáinak elhárítása Linux hibrid Runbook-feldolgozók](troubleshoot/hybrid-runbook-worker.md#linux)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 75e85ae15ded81faf372ba018829a185e8badd60
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: HT
+ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224617"
+ms.locfileid: "58285071"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -31,9 +31,9 @@ Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot az Azure Backup h
 
 Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a következőket ellenőrizze:
 
-1. Azonosítsa vagy [létrehozása](backup-azure-sql-database.md#create-a-recovery-services-vault) ugyanabban a régióban vagy a virtuális Gépet üzemeltető SQL Server-példány területi beállításról egy Recovery Services-tárolót.
-2. [Ellenőrizze a virtuális gép engedélyeit](#fix-sql-sysadmin-permissions) szükséges az SQL-adatbázisok biztonsági mentését.
-3. Ellenőrizze, hogy rendelkezik-e a virtuális gép [hálózati kapcsolat](backup-azure-sql-database.md#establish-network-connectivity).
+1. Azonosítsa vagy [létrehozása](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) ugyanabban a régióban vagy a virtuális Gépet üzemeltető SQL Server-példány területi beállításról egy Recovery Services-tárolót.
+2. [Ellenőrizze a virtuális gép engedélyeit](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) szükséges az SQL-adatbázisok biztonsági mentését.
+3. Ellenőrizze, hogy rendelkezik-e a virtuális gép [hálózati kapcsolat](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 4. Ellenőrizze, hogy az SQL Server-adatbázisok összhangban vannak elnevezve [pokyny Pro pojmenování](#verify-database-naming-guidelines-for-azure-backup) az Azure Backup szolgáltatáshoz.
 5. Győződjön meg arról, hogy nincs engedélyezve az adatbázis biztonsági mentési megoldások. Tiltsa le az összes többi SQL Server biztonsági mentés előtt végzi el ebben a forgatókönyvben. Egy Azure virtuális gép Azure Backup és az Azure Backup bármely konfliktus nélkül a virtuális gépen futó SQL Server-adatbázis számára engedélyezheti.
 
@@ -60,7 +60,7 @@ Az Azure Backup több minden hajtja végre az SQL Server-adatbázis biztonsági 
 - A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ennek a fióknak a biztonsági mentés és visszaállítás szolgál, és az SQL-rendszergazdai engedélyekkel kell rendelkeznie.
 - Az Azure Backup használja a **NT AUTHORITY\SYSTEM** adatbázis felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
-Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [az alábbi lépéseket követve](#fix-sql-sysadmin-permissions).
+Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [az alábbi lépéseket követve](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Az Azure Backup database elnevezési irányelvei ellenőrzése
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: a52c5bf1a52a4d598986664c41e80273e0b26788
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014104"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295421"
 ---
 # <a name="install-and-run-face-containers"></a>Telepítse és futtassa a Face tárolók
 
@@ -48,11 +48,12 @@ Face API-tárolók használata előtt a következő előfeltételeknek kell megf
 
 A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az egyes Face API-tárolók.
 
-| Tároló | Minimális | Ajánlott |
-|-----------|---------|-------------|
-|Arcfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |
+| Tároló | Minimális | Ajánlott | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Arcfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
 
-Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* TPS - tranzakció / másodperc
 
 Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
 

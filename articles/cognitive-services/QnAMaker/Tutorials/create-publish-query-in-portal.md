@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: a3800881cb310fa9484545467c0b0a9c5fe17c1c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121417"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Oktatóanyag: Hozzon létre egy Tudásbázis, majd a QnA Maker portálján kérdés megválaszolása
 
@@ -25,12 +25,12 @@ Ez az oktatóanyag végigvezeti egy tudásbázis létrehozásának és közzét�
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
 > [!div class="checklist"]
-* Tudásbázis létrehozása, és kérdés megválaszolása a QnA Maker portálján
-* A tudásbázis ellenőrzése, mentése és betanítása
-* A tudásbázis közzététele
-* CURL használata a tudásbázis lekérdezéséhez
-
-> [!NOTE] 
+> * Tudásbázis létrehozása, és kérdés megválaszolása a QnA Maker portálján
+> * A tudásbázis ellenőrzése, mentése és betanítása
+> * A tudásbázis közzététele
+> * CURL használata a tudásbázis lekérdezéséhez
+> 
+> [!NOTE]
 > Ebben az oktatóanyagban programozott verziója érhető el a teljes körű megoldást a [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="prerequisites"></a>Előfeltételek

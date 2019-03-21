@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097320"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Az Azure és az Azure Stack egy hibrid felhőmegoldás üzembe helyezése
 
@@ -65,7 +65,7 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
   - A Windows Server 2016-lemezkép
   - A Microsoft SQL Server-rendszerképpel rendelkező Windows Server 2016
   - A megfelelő csomagok és ajánlatok típusa
- - A domain name for your web application. Ha nincs is tartománynév vásároljon egyet egy tartományszolgáltatótól, például a GoDaddy, Bluehost és InMotion.
+  - A domain name for your web application. Ha nincs is tartománynév vásároljon egyet egy tartományszolgáltatótól, például a GoDaddy, Bluehost és InMotion.
 - A tartomány egy megbízható hitelesítésszolgáltatótól LetsEncrypt például SSL-tanúsítvány.
 - Egy webalkalmazást, amely egy SQL Server-adatbázis kommunikál, és támogatja az Application Insights. Letöltheti a [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) mintaalkalmazást a Githubról.
 - Hibrid hálózat egy Azure virtuális hálózat és az Azure Stack virtuális hálózat között. Részletes útmutatásért lásd: [hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack](azure-stack-solution-hybrid-connectivity.md).
@@ -94,19 +94,19 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
 
 7. A **beállítások > választható funkciók konfigurálása**, adja meg a következő beállításokat:
 
-    - **Storage-fiók**. Hozzon létre egy új fiókot, ha szükség van egy.
-    - **Virtuális hálózat**
+   - **Storage-fiók**. Hozzon létre egy új fiókot, ha szükség van egy.
+   - **Virtuális hálózat**
 
-      > [!Important]  
-      > Ellenőrizze, hogy az SQL Server virtuális gép üzemel, a VPN-átjárók ugyanazon a virtuális hálózaton.
+     > [!Important]  
+     > Ellenőrizze, hogy az SQL Server virtuális gép üzemel, a VPN-átjárók ugyanazon a virtuális hálózaton.
 
-    - **Nyilvános IP-cím**. Használhatja az alapértelmezett beállításokat.
-    - **Hálózati biztonsági csoport** (NSG). Hozzon létre egy új NSG-t.
-    - **Bővítmények és a figyelés**. Tartsa meg az alapértelmezett beállításokat.
-    - **Diagnosztikai tárfiók**. Hozzon létre egy új fiókot, ha szükség van egy.
-    - Válassza ki **OK** kattintva mentse a konfigurációt.
+   - **Nyilvános IP-cím**. Használhatja az alapértelmezett beállításokat.
+   - **Hálózati biztonsági csoport** (NSG). Hozzon létre egy új NSG-t.
+   - **Bővítmények és a figyelés**. Tartsa meg az alapértelmezett beállításokat.
+   - **Diagnosztikai tárfiók**. Hozzon létre egy új fiókot, ha szükség van egy.
+   - Válassza ki **OK** kattintva mentse a konfigurációt.
 
-    ![Választható funkciók konfigurálása](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![Választható funkciók konfigurálása](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. A **SQL Server-beállítások**, adja meg a következő beállításokat:
    - A **SQL-kapcsolat**válassza ki a **nyilvános (Internet)**.
@@ -118,7 +118,7 @@ Ebben az oktatóanyagban a Kezdés előtt győződjön meg arról is megfeleljen
 
    - A többi beállítást hagyja meg az alapértelmezett értékeket. Kattintson az **OK** gombra.
 
-    ![SQL Server-beállítások konfigurálása](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![SQL Server-beállítások konfigurálása](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. A **összefoglalás**, tekintse át a virtuális gép konfigurációját, és válassza **OK** a üzembe helyezésének megkezdéséhez.
 
@@ -391,7 +391,7 @@ Traffic Manager-profil létrehozása az Azure-ban fog, és ezután a több felh�
 
     ![Traffic Manager-profil létrehozása](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- Ha a Traffic Manager-profil globális üzembe helyezése befejeződött, az erőforráscsoport, a létrehozott erőforrások listájában jelenik meg.
+   Ha a Traffic Manager-profil globális üzembe helyezése befejeződött, az erőforráscsoport, a létrehozott erőforrások listájában jelenik meg.
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 

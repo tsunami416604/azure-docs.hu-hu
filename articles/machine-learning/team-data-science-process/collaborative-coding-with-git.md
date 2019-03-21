@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863297"
 ---
 # <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
 
@@ -36,7 +36,7 @@ Adja meg az adatokat, az új ághoz, például a kiadásiág-nevet, kiindulási 
 
 Bevált gyakorlat, hogy egy Git-ágak egyes történetet munkatétel létrehozása. Ezt követően minden feladatot munkatétel hozzon létre egy ágat a történetet ág alapján. Az ágak rendszerezése, amely megfelel a történetet-tevékenység kapcsolatokat hierarchikus így akkor hasznos, ha különböző történetek, ugyanazon a projekten dolgozik, a több felhasználó rendelkezik, vagy ha több felhasználó dolgozik a különböző feladatok azonos. Ütközések minimalizálható, ha minden egyes csapattag működik, ha másik ágat, és minden tagjának működik különböző kódok vagy más összetevők ág megosztásakor. 
 
-A következő képen látható a javasolt elágazási stratégia a TDSP mutatja be. Előfordulhat, hogy nem kell számos ágak itt látható, különösen ha csak eggyel rendelkezik, vagy ugyanazon a projekten dolgozik, a két személynek, vagy csak egy személy dolgozik egy történet az összes feladat. Azonban mindig jó megoldás a fejlesztési ágban elválasztja a főágban. Ez segít megakadályozza, hogy a kiadási ág a fejlesztési tevékenységek által megszakított folyamatban van. Git-ág modell teljes leírása megtalálható [egy sikeres Git elágaztatás modellre](http://nvie.com/posts/a-successful-git-branching-model/).
+A következő képen látható a javasolt elágazási stratégia a TDSP mutatja be. Előfordulhat, hogy nem kell számos ágak itt látható, különösen ha csak eggyel rendelkezik, vagy ugyanazon a projekten dolgozik, a két személynek, vagy csak egy személy dolgozik egy történet az összes feladat. Azonban mindig jó megoldás a fejlesztési ágban elválasztja a főágban. Ez segít megakadályozza, hogy a kiadási ág a fejlesztési tevékenységek által megszakított folyamatban van. Git-ág modell teljes leírása megtalálható [egy sikeres Git elágaztatás modellre](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

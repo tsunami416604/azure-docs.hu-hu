@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 124ac79971ca2ee1e7b5ad085a73aceb8f5d8841
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191390"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124082"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -211,7 +211,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | 30 | – Küldött csomagok forrás és a cél **csak verzió 2** | Legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomagok teljes száma. |
 | 16978 | Bájt lett elküldve – a forrás és a cél **csak verzió 2** | A legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomag bájtok száma. Csomag bájt közé tartozik, a csomag fejlécének és adattartalmának bontása. | 
 | 24 | – Küldött csomagok forrás-cél **csak verzió 2** | Legutóbbi frissítés óta forrás célhelyre küldött TCP vagy UDP-csomagok teljes száma. |
-| 14008| Bájt lett elküldve – a forrás-cél **csak verzió 2** | A TCP és UDP-csomag által küldött bájtok cél forrás legutóbbi frissítés óta teljes száma. Csomag bájt közé tartozik a csomag fejlécének és adattartalmának bontása.| |
+| 14008| Bájt lett elküldve – a forrás-cél **csak verzió 2** | A TCP és UDP-csomag által küldött bájtok cél forrás legutóbbi frissítés óta teljes száma. Csomag bájt közé tartozik a csomag fejlécének és adattartalmának bontása.|
 
 ## <a name="next-steps"></a>További lépések
 

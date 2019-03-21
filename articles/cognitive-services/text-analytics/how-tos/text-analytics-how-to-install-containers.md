@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 6ad48bb6e7d9c2fd0365b26999b67ad8c62fc42c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000257"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294144"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -26,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Bármely tárolóra a Szövegelemzés futtatásához az alábbiakkal kell rendelkeznie:
+Annak érdekében, hogy a Text Analytics tárolók futtatásához rendelkeznie kell a számítógép és a tároló környezeteknél.
 
 ## <a name="preparation"></a>Előkészítés
 
@@ -46,13 +46,16 @@ Szövegelemzés tárolók használata előtt a következő előfeltételeknek ke
 
 A következő táblázat ismerteti a minimális és ajánlott, processzormagot legalább 2.6-os gigahertz (GHz) vagy gyorsabb, és a memória (gigabájtban), minden egyes Szövegelemzés tároló lefoglalása.
 
-| Tároló | Minimális | Ajánlott |
-|-----------|---------|-------------|
-|Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |
-|Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |
-|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |
+| Tároló | Minimális | Ajánlott | TPS<br>(Minimum, Maximum)|
+|-----------|---------|-------------|--|
+|Kulcskifejezések kinyerése | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Nyelvfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
+|Véleményelemzés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |15, 30|
 
-Core és a memória felel meg a `--cpus` és `--memory` részeként használt beállítások a `docker run` parancsot.
+* Egyes maghoz kell lennie legalább 2.6-os gigahertz (GHz) vagy gyorsabb.
+* TPS - tranzakció / másodperc
+
+Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek részeként használhatók a `docker run` parancsot.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
 
@@ -64,7 +67,7 @@ Tárolórendszerképek szövegelemzési Microsoft Tárolóregisztrációs adatb�
 |Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
 |Véleményelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltse le a tárolórendszerkép Microsoft Tárolóregisztrációs adatbázisból...
+Használja a [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal töltse le a tárolórendszerkép Microsoft Tárolóregisztrációs adatbázisból.
 
 A Text Analytics tárolók rendelkezésre álló címkék teljes leírását lásd a következő tárolókat a Docker hub:
 
@@ -125,7 +128,7 @@ ApiKey={BILLING_KEY}
 Ezzel a paranccsal:
 
 * A tároló rendszerképét kulcskifejezések tárolóban fut
-* Foglalja le egy processzormagot és memóriát 4 gigabájt (GB)
+* Több processzormaggal és 4 gigabájt (GB) memóriát foglal le
 * Elérhetővé teszi az 5000-es TCP-porton és a egy pszeudo-TTY lefoglalja a tároló
 * Után kilép, automatikusan eltávolítja a tárolót. A tároló rendszerképét az továbbra is elérhető az állomáson. 
 

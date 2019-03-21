@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: c212bda3b59037f99139e02ee6adc63b0084cbe5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: df987d1e13cb5330842fbab41dae96b24b581ddb
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305614"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227269"
 ---
 ## <a name="prepare-your-repository"></a>A tárház előkészítése
 
-Az App Service Kudu-buildelési kiszolgáló automatikus buildek lekéréséhez ellenőrizze, hogy az adattár gyökérkönyvtárában van-e a megfelelő fájlokat a projektben.
+A Azure App Service Kudu-buildelési kiszolgáló automatikus buildek lekéréséhez ellenőrizze, hogy az adattár gyökérkönyvtárában van-e a megfelelő fájlokat a projekt.
 
 | Futtatókörnyezet | Legfelső szintű könyvtár fájlok |
 |-|-|
@@ -28,13 +28,13 @@ Az App Service Kudu-buildelési kiszolgáló automatikus buildek lekéréséhez 
 | Node.js | _Server.js_, _app.js_, vagy _package.json_ egy indítási szkriptet a |
 | Python (csak Windows) | _\*.PY_, _requirements.txt_, vagy _runtime.txt_ |
 | HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_, vagy  _Iisstart.htm_ |
-| WebJobs | _\<job_name > / run. \<bővítmény >_ alatt _alkalmazás\_Data/feladatok/folyamatos_ (a folyamatos webjobs-feladatok) vagy _alkalmazás\_Data/feladatok/triggered_ (az aktivált Webjobs-feladatok). További információkért lásd: [Kudu WebJobs – dokumentáció](https://github.com/projectkudu/kudu/wiki/WebJobs) |
+| WebJobs | _\<job_name > / run. \<bővítmény >_ alatt _alkalmazás\_Data/feladatok/folyamatos_ (a folyamatos webjobs-feladatok) vagy _alkalmazás\_Data/feladatok/triggered_ (az aktivált Webjobs-feladatok). További információkért lásd: [Kudu WebJobs-dokumentáció](https://github.com/projectkudu/kudu/wiki/WebJobs). |
 | Functions | Lásd: [Azure Functions – folyamatos üzembe helyezés](../articles/azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
 
-Az üzembe helyezés testreszabásához, például egy _.deployment_ fájlt az adattár gyökérkönyvtárában. További információkért lásd: [központi telepítések testreszabása](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és [egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
+Az üzembe helyezés testreszabásához, például egy _.deployment_ fájlt az adattár gyökérkönyvtárában. További információkért lásd: [testre szabhatja a központi telepítések](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és [egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 
 > [!NOTE]
-> Ha a Visual Studio fejlesztése, [Visual Studio-tárház létrehozásához,](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). A projekt azonnal készen áll a Git használatával telepíthető.
+> Ha a Visual Studio fejlesztése, [Visual Studio-tárház létrehozásához,](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio). A projekt azonnal készen áll a Git használatával üzembe helyezhetők.
 >
 >
 

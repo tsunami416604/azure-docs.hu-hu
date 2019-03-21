@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850292"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Az Azure SQL Database, az SQL Data Warehouse, a Data Factory és a Power BI SaaS-analytics megismerése
 
@@ -94,7 +94,7 @@ Ebben a lépésben üzembe helyezi a további erőforrások, a jelen oktatóanya
 
 Most, tekintse át a telepített Azure-erőforrások:
 #### <a name="tenant-databases-and-analytics-store"></a>Bérlői adatbázisok és az analytics-tároló
-Használat [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgálók. Cserélje le &lt;felhasználói&gt; az alkalmazás üzembe helyezésekor használt értékkel. -Bejelentkezés használatához = *fejlesztői* és a jelszó = *P@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
+Használat [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  kiszolgálók. Cserélje le &lt;felhasználói&gt; az alkalmazás üzembe helyezésekor használt értékkel. -Bejelentkezés használatához = *fejlesztői* és a jelszó = *P\@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
 
 ![Csatlakozás SQL Database-kiszolgáló a ssms használatával](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -113,7 +113,7 @@ Az Object Explorer:
 #### <a name="blob-storage"></a>Blob Storage
 1. Az a [az Azure Portal](https://ms.portal.azure.com), keresse meg az erőforráscsoportot, amelyet az alkalmazás üzembe helyezéséhez használt. Győződjön meg arról, hogy a tárfiók neve **wingtipstaging\<felhasználói\>**  hozzá lett adva.
 
-  ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
+   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. Kattintson a **wingtipstaging\<felhasználói\>**  tárfiókban található objektumok megismerése.
 1. Kattintson a **Blobok** csempe
@@ -195,7 +195,7 @@ Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott néz
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P\@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

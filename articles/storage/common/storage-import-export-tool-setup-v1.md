@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 6d8cf874032449e362a35d106bba3b430a80ea48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467611"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087448"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz beállítása
 A Microsoft Azure Import/Export eszköz, a meghajtó-előkészítési és -javítás eszköz, amely a Microsoft Azure Import/Export szolgáltatás használata. Az eszköz használható a következő funkciókat:  
@@ -45,36 +45,36 @@ Importálási feladatokhoz előtt meghajtók, ha megfelelnek a következő előf
   
 Ha az importálás részben meghiúsult javításához, lesz szüksége:  
   
--   A másolási naplófájlokkal  
+- A másolási naplófájlokkal  
   
--   A tárfiók kulcsa  
+- A tárfiók kulcsa  
   
   Ha az exportálást, amely részben nem sikerült kijavítani, lesz szüksége:  
   
--   A másolási naplófájlokkal  
+- A másolási naplófájlokkal  
   
--   A jegyzékfájlok (nem kötelező)  
+- A jegyzékfájlok (nem kötelező)  
   
--   A tárfiók kulcsa  
+- A tárfiók kulcsa  
   
 ## <a name="installing-the-azure-importexport-tool"></a>Az Azure Import/Export eszköz telepítése  
  Az Azure Import/Export eszköz áll a következő fájlokat:  
   
--   WAImportExport.exe  
+- WAImportExport.exe  
   
--   WAImportExport.exe.config  
+- WAImportExport.exe.config  
   
--   WAImportExportCore.dll  
+- WAImportExportCore.dll  
   
--   WAImportExportRepair.dll  
+- WAImportExportRepair.dll  
   
--   Microsoft.WindowsAzure.Storage.dll  
+- Microsoft.WindowsAzure.Storage.dll  
   
--   Hddid.dll  
+- Hddid.dll  
   
- Ezek a fájlok másolása egy működő könyvtárba, például `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és a fenti könyvtárat állítja be aktuális könyvtár.  
+  Ezek a fájlok másolása egy működő könyvtárba, például `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és a fenti könyvtárat állítja be aktuális könyvtár.  
   
- A parancs kimenete, futtassa az eszközt, paraméterek nélkül:  
+  A parancs kimenete, futtassa az eszközt, paraméterek nélkül:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  

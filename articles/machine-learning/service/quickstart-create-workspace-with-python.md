@@ -11,18 +11,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9a17f2722af187e88bebf217d56a5a80aba46bc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fcf919a4120348ba8101280d960470ce46e5bdb0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876527"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294246"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
 Ez a cikk létrehozása, majd az Azure Machine Learning szolgáltatás használhatja az Azure Machine Learning SDK for Python 3 [munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben.
 
-Saját Python-környezetet és a Jupyter Notebook Server konfigurálásával megkezdése. Futtassa a telepítés nélkül, tekintse meg [a rövid útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával](quickstart-get-started.md). 
+Saját Python-környezetet és a Jupyter Notebook Server konfigurálásával megkezdése. Futtassa a telepítés nélkül, tekintse meg [a rövid útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával](quickstart-get-started.md).
 
 Ebben a rövid videó verziójának megtekintése:
 
@@ -39,10 +39,10 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 Létrehozhat egy munkaterületet, és a egy konfigurációs fájlt használja, mint más Machine Learning szolgáltatássaé kapcsolatos oktatóanyagok és útmutatók előfeltételek. Csakúgy, mint más Azure-szolgáltatások, bizonyos korlátok és kvóták társítva a Machine Learning. [Ismerje meg a kvótákat és azt, hogyan kérhet belőlük többet.](how-to-manage-quotas.md)
 
 A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkaterületéhez, ha az Ön régiójában rendelkezésre állnak:
- 
+
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
-- [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
+- [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!NOTE]
@@ -59,7 +59,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 > * Az Azure Databricks a környezetben, használja a [Databricks telepítési lépéseket](how-to-configure-environment.md#azure-databricks) helyette.
 
 >[!NOTE]
-> Ezek az utasítások segítségével telepítheti és SDK-t a Jupyter Notebook használata a helyi számítógépen. Jupyter használata a távoli virtuális gépen, állítsa be egy távoli asztali vagy X terminál-munkamenetben. 
+> Ezek az utasítások segítségével telepítheti és SDK-t a Jupyter Notebook használata a helyi számítógépen. Jupyter használata a távoli virtuális gépen, állítsa be egy távoli asztali vagy X terminál-munkamenetben.
 
 Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elkülönített Python-környezetet. Bár ez a cikk [Miniconda](https://docs.conda.io/en/latest/miniconda.html), is használhatja teljes [Anaconda](https://www.anaconda.com/) telepítve vagy [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
@@ -67,7 +67,7 @@ Ebben a rövid útmutatóban található utasításokat a rövid útmutató és 
 
 ### <a name="install-miniconda"></a>A Miniconda telepítése
 
-[Töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). Válassza ki a Python 3.7 verzió telepítéséhez. Ne válassza ki a Python 2.x verzióját.  
+[Töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). Válassza ki a Python 3.7 verzió telepítéséhez. Ne válassza ki a Python 2.x verzióját.
 
 ### <a name="create-an-isolated-python-environment"></a>Elkülönített Python-környezet létrehozása
 
@@ -134,7 +134,7 @@ Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatá
     jupyter notebook
     ```
 
-1. A böngészőablakban hozzon létre egy új notebookot az alapértelmezett `Python 3` kernellel. 
+1. A böngészőablakban hozzon létre egy új notebookot az alapértelmezett `Python 3` kernellel.
 
 1. Szeretné megjeleníteni az SDK-verzió, adja meg, majd ezután futtassa a következő Python-kódot a notebook cella:
 
@@ -145,10 +145,10 @@ Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatá
    ```python
    from azureml.core import Workspace
    ws = Workspace.create(name='myworkspace',
-                         subscription_id='<azure-subscription-id>', 
+                         subscription_id='<azure-subscription-id>',
                          resource_group='myresourcegroup',
                          create_resource_group=True,
-                         location='eastus2' 
+                         location='eastus2'
                         )
    ```
 
@@ -161,9 +161,9 @@ Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatá
 
 ## <a name="write-a-configuration-file"></a>Konfigurációs fájl írása
 
-Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *aml_config\config.json*.  
+Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *aml_config\config.json*.
 
-A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti.  
+A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. A munkaterületet az ugyanabban a könyvtárban vagy alkönyvtárban lévő egyéb notebookokkal és szkriptekkel együtt is betöltheti.
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
@@ -198,7 +198,7 @@ A hivatkozás segítségével a böngészőjében megtekintheti a naplózott ér
 
 ![Az Azure Portalon naplózott értékek](./media/quickstart-create-workspace-with-python/logged-values.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 >[!IMPORTANT]
 >Használhatja a többi Machine Learning-oktatóanyag előfeltételei itt és útmutató létrehozott erőforrások cikkeket.
 
@@ -213,4 +213,4 @@ Ebben a cikkben létrehozott kísérletezhet, és a modellek üzembe helyezése 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Egy rendszerkép osztályozási modell betanítása](tutorial-train-models-with-aml.md)
 
-Emellett megismerheti a [GitHubon lévő speciális példákat](https://aka.ms/aml-notebooks) is.
+Is feltárhatja [speciális példák a Githubon](https://aka.ms/aml-notebooks) vagy megtekintheti a [SDK felhasználói útmutató](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

@@ -12,14 +12,14 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556594"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121043"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Az Azure Time Series Insights explorer
+# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights explorer
 Ez a cikk ismerteti a különböző funkciók és lehetőségek a Time Series Insights explorer webalkalmazáson belül. Használhatja a Time Series Insights explorer webböngészőben az adatok vizualizációkat hozhat létre.
  
 Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Biztosít az adatokat, ami lehetővé teszi, hogy gyorsan ellenőrizheti IoT-megoldásait, és elkerülheti az üzletmenet szempontjából kritikus fontosságú eszközök költséges leállását, globális nézet készítése. Feltárhatja a rejtett trendeket, azonosíthatja a rendellenességeket, és a kiváltó okainak közel valós időben végezhet. A Time Series Insights explorer jelenleg nyilvános előzetes verzióban érhető el.
@@ -71,7 +71,7 @@ Az eseményforrás kapcsolódni a Time Series Insights-környezet percen belül 
          |<, >, <=, >=     |  Double, DateTime, időtartam       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, az időtartam, NULL értékű        |         |
          |IN     | String, Bool, Double, DateTime, az időtartam, NULL értékű        |  Az összes operandusok azonos típusú legyen vagy NULL állandó.        |
-         |RENDELKEZIK     | Karakterlánc        |  Csak állandó karakterlánc-literálnak engedélyezett jobb oldalán. Üres karakterlánc, és a NULL nem engedélyezettek.       |
+         |HAS     | String        |  Csak állandó karakterlánc-literálnak engedélyezett jobb oldalán. Üres karakterlánc, és a NULL nem engedélyezettek.       |
 
       - **Példák a lekérdezések**
       
@@ -91,27 +91,27 @@ Az eseményforrás kapcsolódni a Time Series Insights-környezet percen belül 
 
 10. A **diagram** lehetővé teszi, hogy vizuálisan tárhatja fel adatait. Diagramkezelő eszközök a következők:
 
-   - Válassza ki/kattintson, amely lehetővé teszi, hogy egy adott időtartam vagy egy adatsort kijelölés.  
-   - Időn belül span a kijelölést, nagyítás vagy események áttekintése.  
-   - Adatsorok feloszthatja az adatsorozat más oszlop alapján, az adatsorozat hozzáadása új kifejezésként, csak a kijelölt adatsorozat megjelenítése, a kiválasztott adatsorozat kizárása, ping paranccsal a sorozat, és ismerje meg a események a kiválasztott sorozat.
-   - A szűrő területen, a diagram bal is tekintse meg az összes megjelenített adatsor és átrendezése érték vagy a neve, az összes adatsor vagy kifejezetten a rögzített vagy nem rögzített adatsorozat megjelenítése.  Meg is egyetlen adatsor kijelölése és az adatsorozat felosztása egy másik oszlop alapján, az adatsorozat hozzáadása új kifejezésként, csak a kijelölt adatsorozat megjelenítése, kihagyása a kiválasztott sorozat, rögzítheti a sorozat, vagy események tallózása a kiválasztott sorozatból.
-   - Megtekintésekor több használati egyszerre, a verem, halomszétszedési beállítások, adatsorra vonatkozó további adatok, és használja az azonos y tengely összes a kifejezéseket, a diagram jobb felső sarokban található gombokra.
+    - Válassza ki/kattintson, amely lehetővé teszi, hogy egy adott időtartam vagy egy adatsort kijelölés.  
+    - Időn belül span a kijelölést, nagyítás vagy események áttekintése.  
+    - Adatsorok feloszthatja az adatsorozat más oszlop alapján, az adatsorozat hozzáadása új kifejezésként, csak a kijelölt adatsorozat megjelenítése, a kiválasztott adatsorozat kizárása, ping paranccsal a sorozat, és ismerje meg a események a kiválasztott sorozat.
+    - A szűrő területen, a diagram bal is tekintse meg az összes megjelenített adatsor és átrendezése érték vagy a neve, az összes adatsor vagy kifejezetten a rögzített vagy nem rögzített adatsorozat megjelenítése.  Meg is egyetlen adatsor kijelölése és az adatsorozat felosztása egy másik oszlop alapján, az adatsorozat hozzáadása új kifejezésként, csak a kijelölt adatsorozat megjelenítése, kihagyása a kiválasztott sorozat, rögzítheti a sorozat, vagy események tallózása a kiválasztott sorozatból.
+    - Megtekintésekor több használati egyszerre, a verem, halomszétszedési beállítások, adatsorra vonatkozó további adatok, és használja az azonos y tengely összes a kifejezéseket, a diagram jobb felső sarokban található gombokra.
  
-   ![Diagram](media/time-series-insights-explorer/explorer5.png) 
+    ![Diagram](media/time-series-insights-explorer/explorer5.png) 
 
 11. A **intenzitástérkép** segítségével gyorsan azonosíthatják a egyedi vagy rendellenes adatsor az egy adott lekérdezésre. Csak egy keresési kifejezést, egy intenzitástérkép jeleníthetők meg.    
 
-   ![Intenzitástérkép](media/time-series-insights-explorer/explorer6.png)
+    ![Intenzitástérkép](media/time-series-insights-explorer/explorer6.png)
 
 12. **Események**:  Ha úgy dönt, Fedezze fel az eseményeket, amikor kiválasztja, vagy kattintson a jobb gombbal a fenti panel szeretné elérhetővé tenni az események.  Itt láthatja az összes a nyers események és exportálása az eseményeket JSON vagy CSV-fájlként. Vegye figyelembe, hogy a Time Series Insights minden nyers adatot tárol.
 
-   ![Események](media/time-series-insights-explorer/explorer7.png)
+    ![Események](media/time-series-insights-explorer/explorer7.png)
 
 13. Kattintson a **STATS** után felfedezése elérhetővé, minták és oszlopstatisztikák események fülre.  
 
-   - **Minták**: Ez a funkció proaktív módon elérhetővé teszi a kiválasztott adatterületen a legtöbb statisztikailag minták. Ön nem kell megérteni, milyen minták legtöbb indokolják időt és energiát események ezer meg ez mentesíti. További a Time Series Insights lehetővé teszi a közvetlenül belevágjon folytatja az elemzést végző statisztikailag mintákkal. Ez a funkció menthet vizsgálatot előzményadatokat is hasznos lehet. 
+    - **Minták**: Ez a funkció proaktív módon elérhetővé teszi a kiválasztott adatterületen a legtöbb statisztikailag minták. Ön nem kell megérteni, milyen minták legtöbb indokolják időt és energiát események ezer meg ez mentesíti. További a Time Series Insights lehetővé teszi a közvetlenül belevágjon folytatja az elemzést végző statisztikailag mintákkal. Ez a funkció menthet vizsgálatot előzményadatokat is hasznos lehet. 
 
-   - **Oszlopstatisztikák**:  Oszlopstatisztikák diagramkészítési és a táblákat, amelyek az egyes oszlopok kiválasztott adatsorozat adatainak felosztania az adott időtartam biztosítanak.  
+    - **Oszlopstatisztikák**:  Oszlopstatisztikák diagramkészítési és a táblákat, amelyek az egyes oszlopok kiválasztott adatsorozat adatainak felosztania az adott időtartam biztosítanak.  
  
       ![STATISZTIKA](media/time-series-insights-explorer/explorer8.png) 
 

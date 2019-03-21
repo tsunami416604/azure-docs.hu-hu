@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67836f7ee2633beaaa162e1d3ed9a469ad117ad3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 768afe007141eacbcea1560d3ec1676d9a7d2867
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435694"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852015"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező 123ContactForm
 
@@ -139,7 +139,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés 123ContactForm, hajt
 
     ![Egyszeri bejelentkezés konfigurálása](./media/123contactform-tutorial/submit.png) 
 
-    a. Az a **E-mail** szövegmezőbe írja be az e-mail a felhasználó például **BrittaSimon@Contoso.com**.
+    a. Az a **E-mail** szövegmezőbe írja be az e-mail a felhasználó például **BrittaSimon\@Contoso.com**.
 
     b. Kattintson a **feltöltése** , és keresse meg a letöltött Azure Portalról letöltött metaadatainak XML-fájl.
 
@@ -173,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

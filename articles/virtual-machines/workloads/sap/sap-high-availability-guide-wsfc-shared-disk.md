@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a72a4244e3cae081fe9a962bbb80d3ce19822d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113222"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000304"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -39,7 +39,7 @@ ms.locfileid: "39113222"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [ha-guide]:sap-high-availability-guide.md
@@ -210,9 +210,9 @@ Az Azure Load Balancer szolgáltatás biztosít egy *belső load balancer* az Az
 
 Helyezze üzembe a belső terheléselosztó, amely tartalmazza a fürt csomópontjai az erőforráscsoportban. Ezt követően konfigurálja a belső terheléselosztó portok továbbítási szabályok a mintavétel használatával minden szükséges port. Az ügyfelek csatlakozhatnak keresztül a virtuális gazdagép nevét. A DNS-kiszolgáló szünteti meg a fürt IP-címét, és a belső load balancer kezeli port továbbítja a fürt aktív csomópontja.
 
-![1. ábra: A Windows feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban anélkül, hogy egy megosztott lemez][sap-ha-guide-figure-1001]
+![1. ábra: Windows feladatátvevő fürtszolgáltatás konfigurálása az Azure-ban egy megosztott lemez nélküli][sap-ha-guide-figure-1001]
 
-_**1. ábra:** Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban egy megosztott lemez nélkül_
+_**1. ábra:** A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban anélkül, hogy egy megosztott lemez_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS a fürt megosztott lemezeket
 Windows az SAP ASCS/SCS példányhoz SAP central services, a SAP üzenetkiszolgáló, sorba kiszolgálói folyamatokat és SAP globális gazdagép fájlokat tartalmazza. SAP globális gazdagép fájlok esetében a teljes SAP-rendszer központi fájlok tárolására.
@@ -221,25 +221,25 @@ Az SAP ASCS/SCS példányhoz a következő összetevőket tartalmazza:
 
 * Az SAP central services:
     * Kétféle módon, egy üzenet és sorba kiszolgáló és a egy < ASCS/SCS virtuális gazdagép neve >, amely két folyamatok elérésére szolgál.
-    * Struktúra fájlt: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<példányok száma\>
+    * Fájlstruktúra: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<példányok száma\>
 
 
 * SAP globális gazdagép fájlok:
-    * Struktúra fájlt: S:\usr\sap\\&lt;SID&gt;\SYS\....
-    * A sapmnt fájlmegosztásban, amely lehetővé teszi a hozzáférést a globális S:\usr\sap\\&lt;SID&gt;\SYS\... a következő UNC elérési utat a fájlhoz:
+  * Fájlstruktúra: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * A sapmnt fájlmegosztásban, amely lehetővé teszi a hozzáférést a globális S:\usr\sap\\&lt;SID&gt;\SYS\... a következő UNC elérési utat a fájlhoz:
 
-     \\\\< ASCS/SCS virtuális gazdagép neve > \sapmnt\\&lt;SID&gt;\SYS\....
+    \\\\< ASCS/SCS virtuális gazdagép neve > \sapmnt\\&lt;SID&gt;\SYS\....
 
 
-![2. ábra: Folyamatok, fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz][sap-ha-guide-figure-8001]
+![2. ábra: Folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz][sap-ha-guide-figure-8001]
 
-_**2. ábra:** folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz_
+_**2. ábra:** Folyamatok fájlstruktúra és globális gazdagép sapmnt fájlmegosztás, az SAP ASCS/SCS példányhoz_
 
 Egy magas rendelkezésre állású beállítást, a fürt SAP ASCS/SCS-példányok. Használjuk a *fürtözött megosztott lemezeket* (meghajtó S, ebben a példában), helyezze az SAP ASCS/SCS és globális SAP fájlokat.
 
 ![3. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8002]
 
-_**3. ábra:** SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
+_**3. ábra:** Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
 > [!IMPORTANT]
 > Ez a két összetevő fusson a ugyanazt az SAP ASCS/SCS példányhoz:
@@ -250,7 +250,7 @@ _**3. ábra:** SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös l
 
 ![4. ábra: Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel][sap-ha-guide-figure-8003]
 
-_**4. ábra:** SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
+_**4. ábra:** Az SAP ASCS/SCS magas rendelkezésre ÁLLÁS architektúra közös lemezzel_
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Az SIOS DataKeeper megosztott lemezeket az Azure-ban
 
@@ -268,7 +268,7 @@ További információk [az SIOS DataKeeper](http://us.sios.com/products/datakeep
 
 ![5. ábra: A Windows Server feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurációs az Azure-ban az SIOS DataKeeper_
+_**5. ábra:** Windows feladatátvevő fürtszolgáltatás konfigurálása az Azure-ban az SIOS DataKeeper_
 
 > [!NOTE]
 > Magas rendelkezésre állás az egyes DBMS-termékek, például az SQL Server már nincs szüksége megosztott lemezeket. Az SQL Server AlwaysOn replikálja az adatbázis-kezelő adathoz és naplófájlhoz a helyi lemez egy fürtcsomópont a helyi lemez egy másik fürtcsomópont. Ebben az esetben a Windows-fürt konfigurációját nem kell egy megosztott lemez.

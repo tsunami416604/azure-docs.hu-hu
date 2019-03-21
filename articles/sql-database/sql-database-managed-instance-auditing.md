@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 20c893aa0ff5bc1f20ecfd95d33038937f3af466
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086054"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
@@ -50,7 +50,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
 
    1. Adjon meg egy tároló **neve**, állítsa a nyilvános hozzáférés szintet **privát**, és kattintson a **OK**.
 
-     ![A blob-tároló konfigurációjának létrehozása](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![A blob-tároló konfigurációjának létrehozása](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. Az ellenőrzéshez a tároló létrehozása után naplók van két módon konfigurálja az auditnaplók céljaként: [T-SQL használatával](#blobtsql) vagy [az SQL Server Management Studio (SSMS) felhasználói felület használatával](#blobssms):
 
@@ -113,7 +113,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
         GO
         ```
 
-      1. Következő lépésként [Server Audit Specification vagy Specifikációjába létrehozása](#createspec)
+        1. Következő lépésként [Server Audit Specification vagy Specifikációjába létrehozása](#createspec)
 
    - <a id="blobssms"></a>Adja meg a blob storage-naplók használatával az SQL Server Management Studio (SSMS) 18-ra (előzetes verzió):
 

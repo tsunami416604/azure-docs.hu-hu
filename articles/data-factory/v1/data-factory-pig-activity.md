@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe1ef8c141c4a4daa443f800181f8e6e3199d0cc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997015"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatok átalakítása a Pig-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,6 +82,7 @@ A HDInsight Pig-tevékenység az adat-előállító [folyamat](data-factory-crea
 ```
 
 ## <a name="syntax-details"></a>Szintaxis részletei
+
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | név |A tevékenység neve |Igen |
@@ -124,7 +125,7 @@ A Pig-parancsprogram végrehajtása a Data Factory-folyamatok, tegye a következ
 1. Létrehoz egy társított szolgáltatást, regisztrálnia [a saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy konfigurálása [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Adjuk a társított szolgáltatás **HDInsightLinkedService**.
 2. Hozzon létre egy [társított szolgáltatás](data-factory-azure-blob-connector.md) a adatok tárolásához Azure Blob Storage-kapcsolat konfigurálása. Adjuk a társított szolgáltatás **StorageLinkedService**.
 3. Hozzon létre [adatkészletek](data-factory-create-datasets.md) mutat a bemeneti és kimeneti adatokat. Adjuk a bemeneti adatkészlet **PigSampleIn** és a kimeneti adatkészlet **PigSampleOut**.
-4. A Pig lekérdezés másolása a #2. lépésben beállított, az Azure Blob Storage-fájlban. Ha az Azure storage, amelyen az adatok eltérő, amelyen a lekérdezés fájlt, hozzon létre egy külön Azure Storage társított szolgáltatás. Tekintse meg a társított szolgáltatást a tevékenység-konfigurációban. Használata ** scriptPath ** a pig-parancsfájl elérési útját és **scriptLinkedService**. 
+4. A Pig lekérdezés másolása a #2. lépésben beállított, az Azure Blob Storage-fájlban. Ha az Azure storage, amelyen az adatok eltérő, amelyen a lekérdezés fájlt, hozzon létre egy külön Azure Storage társított szolgáltatás. Tekintse meg a társított szolgáltatást a tevékenység-konfigurációban. Használat **scriptPath** a pig-parancsfájl elérési útját és **scriptLinkedService**. 
    
    > [!NOTE]
    > A Pig-parancsfájl beágyazott a tevékenység meghatározásában használatával is megadhatja a **parancsfájl** tulajdonság. Azonban a Microsoft nem javasolja ezt a módszert, speciális karaktereket kell megadni a parancsfájl el kell, és hibakeresési problémákat okozhat. Az ajánlott eljárás, hogy #4. lépés.

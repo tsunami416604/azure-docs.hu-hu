@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: anshan
 ms.custom: include file
-ms.openlocfilehash: fb45ea02f365cf4e7b394e249f9b91a784e5469f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c9daa86bf36b260001d9969385b9e8a98a8ac0cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368672"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125083"
 ---
 ## <a name="grant-data-access"></a>Adathozzáférés biztosítása
 
@@ -33,12 +33,12 @@ Adathozzáférés egy felhasználó rendszerbiztonsági tag az alábbi lépések
     ![A Time Series Insights-forrás felügyelete – hozzáadás](media/iot-tsi-data-access/getstarted-grant-data-access2.png)
 
 6. Válassza ki **szerepkör kiválasztása**. Válassza ki a felhasználó a megfelelő hozzáférés-szerepkör:
-    - Válassza ki **közreműködői** szeretné-e, hogy a felhasználó módosíthatja a referenciaadatok és megosztás a mentett lekérdezéseket és perspektívákat a környezet más felhasználóival. 
-    - Ellenkező esetben válassza **olvasó** lehetővé teszik a felhasználói adatokat lekérdezni a környezetben, és személyes (nem megosztott) lekérdezéseket mentéséhez a környezetben.
+   - Válassza ki **közreműködői** szeretné-e, hogy a felhasználó módosíthatja a referenciaadatok és megosztás a mentett lekérdezéseket és perspektívákat a környezet más felhasználóival. 
+   - Ellenkező esetben válassza **olvasó** lehetővé teszik a felhasználói adatokat lekérdezni a környezetben, és személyes (nem megosztott) lekérdezéseket mentéséhez a környezetben.
 
-    Válassza ki **Ok** szerepkör kiválasztásának megerősítéséhez.
+     Válassza ki **Ok** szerepkör kiválasztásának megerősítéséhez.
 
-    ![A Time Series Insights-forrás felügyelete – felhasználó kiválasztása](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
+     ![A Time Series Insights-forrás felügyelete – felhasználó kiválasztása](media/iot-tsi-data-access/getstarted-grant-data-access3.png)
 
 7. Válassza ki **Ok** a a **felhasználói szerepkör kiválasztása** lapot.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448041"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57841174"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést egy böngészőben, a beszéd SDK-val
 
@@ -26,7 +26,7 @@ Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([let
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Előfizetői azonosító a Speech Service-hez. Lásd a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
+* Előfizetői azonosító a Speech Service-hez. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md).
 * Egy PC vagy Mac számítógép egy működő mikrofonnal.
 * Egy szövegszerkesztő.
 * A Chrome vagy a Microsoft Edge egy aktuális verziója.
@@ -49,12 +49,12 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
 
 1. Hozza létre a következő HTML-vázat:
 
-  ```html
-  <html>
-  <head>
+   ```html
+   <html>
+   <head>
       <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
-  </head>
-  <body>
+   </head>
+   <body>
     <!-- UI code goes here -->
 
     <!-- SDK reference goes here -->
@@ -62,21 +62,21 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
     <!-- Optional authorization token request goes here -->
 
     <!-- Sample code goes here -->
-  </body>
-  </html>
-  ```
+   </body>
+   </html>
+   ```
 
 1. Szúrja be a következő felhasználói felületi kódot a fájlba, az első megjegyzés alá:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#uidiv)]
 
 1. A Speech SDK hivatkozásának hozzáadása
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
 1. A felismerés gomb, felismerés eredményét és előfizetéshez kapcsolódó mezőket a felhasználói felület kód által meghatározott kezelőkkel beállítani:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 
 ## <a name="create-the-token-source-optional"></a>A jogkivonatforrás létrehozása (nem kötelező)
 
@@ -85,11 +85,11 @@ Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat eg
 
 1. Hozzon létre egy új fájlt `token.php` néven. Ebben a példában feltételezzük, hogy a webkiszolgáló támogatja a PHP parancsnyelv használatát. Írja be a következő kódot:
 
-  [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
+   [!code-php[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/token.php)]
 
 1. Szerkessze az `index.html` fájlt, és szúrja be a következő kódot a fájlba:
 
-  [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
+   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#authorizationfunction)]
 
 > [!NOTE]
 > Az engedélyezési jogkivonatok csupán korlátozott élettartammal rendelkeznek.

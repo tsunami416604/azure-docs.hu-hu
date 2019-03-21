@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd57b753a4e59f2fb9590f081345d7af0de9124d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bb244cb03ed5419762541e93784bb72fcf252676
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451469"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258054"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Eszközkezelés az Azure portal használatával
 
@@ -83,7 +83,7 @@ Az eszköz beállításai lapon konfigurálását teszi lehetővé:
 
 - **Felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön** – alapértelmezés szerint ez a beállítás **NONE**. Adott felhasználók vagy csoportok vagy az összes kijelölésével a felhasználói beállításokat és alkalmazásadatokat szinkronizálásának a Windows 10-es eszközeiket. További információ a Windows 10 sync működéséről.
 Ez a beállítás akkor egy olyan prémium funkció elérhető termékek, például az Azure AD prémium vagy nagyvállalati mobilitási csomag (EMS).
- 
+
 
 
 
@@ -119,7 +119,7 @@ Egyes iOS-eszközök esetén az eszköz nevét tartalmazó aposztrófok potenci�
 
 ## <a name="device-management-tasks"></a>Eszközfelügyeleti feladatokat
 
-Globális rendszergazdaként a regisztrált vagy a csatlakoztatott eszközöket kezelheti. Az Intune szolgáltatás-rendszergazdák a következőket teheti:
+Egy globális rendszergazdai vagy a felhőbeli eszközrendszergazda a regisztrált vagy a csatlakoztatott eszközöket kezelheti. Az Intune szolgáltatás-rendszergazdák a következőket teheti:
  
 - Frissítési eszközök - példák napi műveletek, például eszközök engedélyezése vagy letiltása
 
@@ -151,7 +151,7 @@ Engedélyezi / letiltja az eszközt, két lehetősége van:
 
 **Megjegyzés:**
 
-- Engedélyezi / letiltja az eszköz Azure AD-ben globális rendszergazdának lennie kell. 
+- Globális rendszergazdának lennie, vagy a felhőbeli eszközadminisztrátor engedélyezi / letiltja az eszköz Azure AD-ben kell. 
 - Eszköz letiltása megakadályozza, hogy egy eszközt az Azure AD, meggátolva az eszköz regisztrációját az Azure ad-ben vannak eszköz CA által védett erőforrások eléréséhez, vagy a WH4B hitelesítő adatok használatával sikeres hitelesítése. 
 
 

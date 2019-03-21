@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 6659b49ecfbcb6bf571fccc258a65aa547f72f86
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453813"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012346"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -32,7 +32,7 @@ A legújabb felhőalapú API-verzió Chef biztosít zökkenőmentes integráció
 Ebben a cikkben, állítsa be a Chef környezetet az Azure-beli virtuális gépek kiépítése, és haladjon végig egy házirend vagy az "Útmutató" létrehozása és üzembe kell helyezni a útmutató Azure virtuális gépeken.
 
 ## <a name="chef-basics"></a>Chef alapjai
-Mielőtt elkezdené, [tekintse át az alapvető fogalmait, Chef](http://www.chef.io/chef).
+Mielőtt elkezdené, [tekintse át az alapvető fogalmait, Chef](https://www.chef.io/chef).
 
 A következő ábra szemlélteti a Chef architektúrájának áttekintése.
 

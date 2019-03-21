@@ -16,12 +16,12 @@ ms.date: 03/13/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: 50e5272d92ad333e70f65173cf024d165dc7501c
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58102043"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285666"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Magas rendelkezésre állású konfigurációban App Service üzembe helyezése
 
@@ -207,7 +207,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
     ![Infrastruktúra-szerepkör példány értékek](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
-    > Azokat a (alapértelmezett) értékek módosítása ajánlott a tutoral nő a hardverkövetelményekkel telepíthető az App Service-ben. A javasolt 21 virtuális gépek helyett az (alapértelmezett) 18 maggal és 32,256 MB RAM 15 virtuális gépek támogatásához 26 magok összesen és 46,592 MB RAM szükséges.
+    > Alapértelmezett értékét azoknak, ajánlott a tutoral nő a hardverkövetelményekkel telepíthető az App Service-ben. A javasolt 21 virtuális gépek helyett az alapértelmezett 18 maggal és 32,256 MB RAM 15 virtuális gépek támogatásához 26 magok összesen és 46,592 MB RAM szükséges.
 
 14. Az App Service infrastruktúráját virtuális gépek telepítéséhez használandó a platformlemezkép kiválasztása, és kattintson a **tovább**:
 

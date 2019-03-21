@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: b8fb6e2b23c275d198ac58fec874ad6627a7b43e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007179"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286012"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -21,7 +21,7 @@ Ez a cikk a hibaelhárítási információk védelme érdekében az SQL Server v
 
 ## <a name="feature-consideration-and-limitations"></a>A szolgáltatás szempontok és korlátozások
 
-A szolgáltatás figyelmet megtekintése, tekintse meg a cikket [Azure virtuális gépeken futó SQL Server backup](backup-sql-server-azure-vms.md#feature-consideration-and-limitations).
+A szolgáltatás figyelmet megtekintése, tekintse meg a cikket [Azure virtuális gépeken futó SQL Server backup](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>Az SQL Server engedélyei
 
@@ -80,7 +80,7 @@ Az alábbi táblázatok hibakód alapján vannak rendezve.
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Nem lehet biztonsági mentés, mert az adatforrás tranzakciónaplója megtelt. | Szabad hely az adatbázis tranzakciós napló megtelt. | A probléma megoldásához tekintse meg a [SQL-dokumentáció](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Az SQL-adatbázis nem támogatja a kért biztonsági mentés típusát. | Mindig a rendelkezésre állási csoport másodlagos replikák nem támogatják a teljes és különbségi biztonsági mentés. | <ul><li>Ha Ön egy ad-hoc biztonsági mentési, aktiválja a biztonsági mentést az elsődleges csomópont.</li><li>A biztonsági mentési házirend lett ütemezve, akkor győződjön meg arról, hogy az elsődleges csomópont van regisztrálva. A csomópont regisztrálásához [kövesse a lépéseket az SQL Server-adatbázisok felderítése](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> |
+| Az SQL-adatbázis nem támogatja a kért biztonsági mentés típusát. | Mindig a rendelkezésre állási csoport másodlagos replikák nem támogatják a teljes és különbségi biztonsági mentés. | <ul><li>Ha Ön egy ad-hoc biztonsági mentési, aktiválja a biztonsági mentést az elsődleges csomópont.</li><li>A biztonsági mentési házirend lett ütemezve, akkor győződjön meg arról, hogy az elsődleges csomópont van regisztrálva. A csomópont regisztrálásához [kövesse a lépéseket az SQL Server-adatbázisok felderítése](backup-sql-server-database-azure-vms.md#discover-sql-server-databases).</li></ul> |
 
 ## <a name="restore-failures"></a>A fájlvisszaállítási hibák
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 58773dded162ea51ccc6e502bbbdd4e13965c1d6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c312433832f7402eaff8b40c4e0a2a61397f6f87
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203488"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123504"
 ---
 # <a name="stringcollection-claims-transformations"></a>Publishedresources jogcím-átalakítás
 
@@ -52,10 +52,10 @@ A következő jogcímek átalakítását hozzáadja a **e-mail** takar a **other
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **gyűjtemény**: ["someone@outlook.com"]
-    - **elem**: "admin@contoso.com"
+  - **gyűjtemény**: ["someone@outlook.com"]
+  - **elem**: "admin@contoso.com"
 - Kimeneti jogcímek: 
-    - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
+  - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
@@ -86,11 +86,11 @@ Használja a jogcím-átalakítás karakterlánc-érték hozzáadása egy új va
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **gyűjtemény**: ["someone@outlook.com"]
+  - **gyűjtemény**: ["someone@outlook.com"]
 - Bemeneti paraméterek 
-    - **elem**: "admin@contoso.com"
+  - **elem**: "admin@contoso.com"
 - Kimeneti jogcímek:
-    - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
+  - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
@@ -117,7 +117,7 @@ Az alábbi példa beolvassa a **otherMails** jogcím és az első elemét adja v
 ### <a name="example"></a>Példa
 
 - A bemeneti jogcímek:
-    - **gyűjtemény**: ["someone@outlook.com","someone@contoso.com"]
+  - **gyűjtemény**: ["someone@outlook.com","someone@contoso.com"]
 - Kimeneti jogcímek: 
-    - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**: "someone@outlook.com"
 

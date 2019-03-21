@@ -9,19 +9,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650886"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898873"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat.
 
 A Stream Analytics-lekérdezés tervez, tekintse meg a kimenethez használt nevére a [be záradék](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Feladatonként egy egyetlen kimeneti, vagy ha több INTO záradék a lekérdezés megadásával van szüksége a streamelési feladat több kimenetek is használhatja.
 
-Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
+Létrehozása, módosítása és tesztelése a Stream Analytics-feladat kimenete, használhatja a [az Azure portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell-lel](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API-val](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output), és [a Visual Studio](stream-analytics-quick-create-vs.md).
 
 Néhány kimenetek típusok támogatása [particionálás](#partitioning), és [köteg méretek kimeneti](#output-batch-size) eltérőek lehetnek a teljesítmény optimalizálása.
 
@@ -169,7 +169,7 @@ Az Azure Stream Analytics frissíti az adatmodell dinamikusan, futásidőben, ha
 Ez a táblázat ismerteti az adatok típuskonverziók a [Stream Analytics adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx) az energiagazdálkodási BIs [Entity Data Model (EDM) típusú](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/) Ha egy POWER BI-adatkészlet és a tábla nem létezik.
 
 A Stream Analytics | A Power bi-bA
------|-----|------------
+-----|-----
 bigint | Int64
 típus: nvarchar(max) | Karakterlánc
 dátum/idő | Dátum és idő
@@ -186,7 +186,7 @@ Előző és aktuális | Int64 | Karakterlánc | Dátum és idő | Dupla
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | Karakterlánc | Karakterlánc | Dupla
 Dupla | Dupla | Karakterlánc | Karakterlánc | Dupla
-Karakterlánc | Karakterlánc | Karakterlánc | Karakterlánc |  | Karakterlánc |
+Karakterlánc | Karakterlánc | Karakterlánc | Karakterlánc | Karakterlánc 
 Dátum és idő | Karakterlánc | Karakterlánc |  Dátum és idő | Karakterlánc
 
 
@@ -261,6 +261,7 @@ A Stream Analytics az Azure Cosmos DB-kimenet jelenleg nem érhető el az Azure 
 > Más Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB-fiókokhoz létrehozott más API-kkal, az adatok esetleg nem megfelelően tárolni.
 
 Az alábbi táblázat ismerteti a tulajdonságait, egy Azure Cosmos DB kimeneti létrehozásához.
+
 | Tulajdonság neve | leírás |
 | --- | --- |
 | Kimeneti alias | Tekintse meg ezt a Stream Analytics-lekérdezés kimenete egy alias. |
@@ -331,7 +332,7 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-
+> 
 > [Rövid útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

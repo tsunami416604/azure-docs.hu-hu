@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5802634fe070f5d71fae01706c3cb4e83e04a72e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192064"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285632"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatait az Azure Active Directoryval
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) használatával, módosíthatja egy csoport be
 
 4. Válassza ki azt a csoportot **mobileszköz-kezelési szabályzat – Nyugat-India**, majd válassza ki **tulajdonságok** a a **kezelés** területen.
 
-    ![Csoport számát és a tagok és tag opció kiemelésével – áttekintés oldalra](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Csoport áttekintése lapon, a kiemelt tag lehetőség és](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. Frissítés a **általános beállítások** információkat, ha szükséges, beleértve:
 

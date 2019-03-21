@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200021"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>A vállalati biztonsági csomaggal HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a HDInsight vállalati biztonsági csomag (ESP) és az ESP-fürtök kezelése a szerepkörök.
@@ -143,7 +143,7 @@ Egy átjárócsomópontjával teljesen minősített tartományneve megkeresésé
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>HDInsight-fürtök ESP-felhasználók
 ESP HDInsight fürt rendelkezik a két felhasználói fiókot, amely a fürt létrehozása során jönnek létre:
 
-* **Az Ambari rendszergazdai**: Ez a fiók akkor is *Hadoop-felhasználóra* vagy *HTTP-felhasználó*. Ez a fiók segítségével jelentkezzen be az Ambari, https://&lt;clustername >. azurehdinsight.NET formátumban van. Is használható lekérdezéseket futtathat az Ambari-nézetek, hajtsa végre a külső eszközöket (például PowerShell, templeton eszközön keresztül végzett, a Visual Studio)-feladatok és a Hive ODBC-illesztőt és az Üzletiintelligencia-eszközökkel (például az Excel, a Power bi vagy a Tableau) a hitelesítéshez.
+* **Az Ambari rendszergazdai**: Ez a fiók akkor is *Hadoop-felhasználóra* vagy *HTTP-felhasználó*. Ez a fiók segítségével jelentkezzen be az Ambari, https://&lt;clustername >. azurehdinsight.NET formátumban van. Is használható lekérdezéseket futtathat az Ambari-nézetek, hajtsa végre a külső eszközöket (például PowerShell, templeton eszközön keresztül végzett, a Visual Studio)-feladatok és a Hive ODBC-illesztőt és az Üzletiintelligencia-eszközökkel (például az Excel, a Power BI vagy a Tableau) a hitelesítéshez.
 
 ESP HDInsight fürtök az Ambari rendszergazda mellett három új felhasználók rendelkezik
 
@@ -179,7 +179,7 @@ HDInsight vállalati biztonsági csomaggal rendelkezik, a következő szerepkör
 ## <a name="open-the-ambari-management-ui"></a>Nyissa meg az Ambari felhasználói felület kezelése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Nyissa meg a HDInsight-fürt. Lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-management-portal.md#list-and-show-clusters).
+2. Nyissa meg a HDInsight-fürt.
 3. Kattintson a **irányítópult** Ambari megnyitásához a felső menüben.
 4. Jelentkezzen be az Ambari a fürt rendszergazdai tartományi felhasználónevével és jelszavával.
 5. Kattintson a **rendszergazdai** felső legördülő menüben kattintson a jobb sarokban található, és kattintson **kezelése az Ambari**.

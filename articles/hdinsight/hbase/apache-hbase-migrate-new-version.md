@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650103"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226827"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Az Apache HBase-fürt áttelepítése új verzióra
 
@@ -199,15 +199,21 @@ A következő forgatókönyv olyan ugyanazzal a verzióval HBase fő 3.6 (mindke
 
     ![Az Ambari a tároló nevének módosítása](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. Mentse a módosításokat.
-9. Ambari jelzett módon, indítsa újra az összes szükséges szolgáltatást.
-10. Az alkalmazás az új fürtre mutat.
+8. **Ha a HBase-fürtök a fokozott ír a funkcióval nem használ, akkor kihagyhatja ezt a lépést. Szükség esetén csak a HBase-fürtök fokozott ír a szolgáltatással.**
+   
+   Az eredeti fürthöz a tároló átirányítása hbase.rootdir elérési útvonalának módosításához.
+
+    ![Az Ambari a hbase rootdir tároló nevének módosítása](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. Mentse a módosításokat.
+10. Ambari jelzett módon, indítsa újra az összes szükséges szolgáltatást.
+11. Az alkalmazás az új fürtre mutat.
 
     > [!NOTE]  
     > A statikus DNS, az alkalmazás módosítja a frissítése. Fix kódolása helyett a DNS, konfigurálhatja egy olyan CNAME REKORDOT a tartománynév DNS-beállítások, amely a fürt neve. Egy másik lehetőség, használhat egy konfigurációs fájlt az alkalmazás újbóli telepítése nélkül frissíthető.
 
-11. Indítsa el a bevitelt megtekintheti, ha minden rendben van a várt módon működik.
-12. Ha az új fürt kielégítő, törölje az eredeti fürthöz.
+12. Indítsa el a bevitelt megtekintheti, ha minden rendben van a várt módon működik.
+13. Ha az új fürt kielégítő, törölje az eredeti fürthöz.
 
 ## <a name="next-steps"></a>További lépések
 

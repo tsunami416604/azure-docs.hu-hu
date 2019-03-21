@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863257"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "56003210"
 
 Ez a cikk bemutatja, hogyan használhatja az Azure Media Services (AMS), hogy olyan adatfolyamra, amely a PlayReady vagy a Widevine DRMs AMS dinamikusan titkosítja. A Media Services PlayReady licenckiszolgáló származik, a PlayReady-licenc, és a Widevine-licenc hozta **castLabs** licenckiszolgáló.
 
-Vissza a CENC (PlayReady és/vagy Widevine) által védett tartalmak online lejátszásához használható [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). Lásd: [AMP dokumentum](http://amp.azure.net/libs/amp/latest/docs/) részleteiről.
+Vissza a CENC (PlayReady és/vagy Widevine) által védett tartalmak online lejátszásához használható [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). Lásd: [AMP dokumentum](https://amp.azure.net/libs/amp/latest/docs/) részleteiről.
 
 Az alábbi ábrán egy magas szintű Azure Media Services és a castLabs integrációs architektúra bemutatja.
 
@@ -101,10 +101,10 @@ A Web Application (STS) használata:
 
 ## <a name="playing-back-a-video"></a>Videó lejátszásának
 
-Szeretne lejátszani egy videót, az általános titkosítás (a PlayReady és/vagy Widevine) titkosított, használhatja a [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html). A Konzolalkalmazás futtatásakor meg a tartalom kulcs Azonosítóját és a jegyzékfájl URL-CÍMÉT.
+Szeretne lejátszani egy videót, az általános titkosítás (a PlayReady és/vagy Widevine) titkosított, használhatja a [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html). A Konzolalkalmazás futtatásakor meg a tartalom kulcs Azonosítóját és a jegyzékfájl URL-CÍMÉT.
 
 1. Nyisson meg egy új lapot, majd indítsa el az STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
-2. Lépjen a [az Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+2. Lépjen a [az Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 3. Illessze be a streamelési URL-CÍMÉT.
 4. Kattintson a **speciális beállítások** jelölőnégyzetet.
 5. Az a **védelmi** legördülő menüben válassza a PlayReady és/vagy Widevine.

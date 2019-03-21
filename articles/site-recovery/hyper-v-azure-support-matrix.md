@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
-ms.translationtype: MT
+ms.openlocfilehash: 84b1cfd54f5ff9e6a29c975622847e3ae6304bf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315673"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107151"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -91,7 +91,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 ## <a name="hyper-v-host-storage"></a>A Hyper-V-gazdagép tárolási
 
 **Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
---- | --- | --- | ---
+--- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | Igen | Igen
 TÁROLÓHÁLÓZAT (ISCSI) | Igen | Igen
@@ -180,7 +180,7 @@ Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok között
 Ahhoz, hogy a központi telepítés beállításai Ez a cikk a kompatibilis, ellenőrizze a legújabb szolgáltató és az ügynökverziókat futtatja.
 
 **Name (Név)** | **Leírás** | **Részletek**
---- | --- | --- | --- | ---
+--- | --- | --- 
 Az Azure Site Recovery provider | Koordinálja a helyszíni kiszolgálók és Azure közötti kommunikáció <br/><br/> A Hyper-V Virtual Machine Manager: A Virtual Machine Manager-kiszolgálókra telepített<br/><br/> A Hyper-V Virtual Machine Manager nélkül: A Hyper-V-gazdagépek telepítése| Legújabb verziója: 5.1.2700.1 (az Azure Portalról érhető el)<br/><br/> [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 A Microsoft Azure Recovery Services-ügynök | Koordinálja a replikációt a Hyper-V virtuális gépek és az Azure között<br/><br/> Telepítve van a helyszíni Hyper-V kiszolgálók (a vagy Virtual Machine Manager nélkül) | A portálon elérhető legújabb ügynök
 

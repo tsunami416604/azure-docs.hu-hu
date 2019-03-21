@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245983"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001366"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
 
-Ez a cikk bemutatja, hogyan konfigurálhatja [aktív georeplikáció egyetlen vagy készletezett adatbázisok](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) az Azure SQL Database-adatbázishoz a [az Azure portal](http://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
+Ez a cikk bemutatja, hogyan konfigurálhatja [aktív georeplikáció egyetlen vagy készletezett adatbázisok](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) az Azure SQL Database-adatbázishoz a [az Azure portal](https://portal.azure.com) és, hogy feladatátvételt kezdeményezzen.
 
 Egyetlen vagy készletezett adatbázisok automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használatával egyetlen vagy készletezett adatbázisok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Felügyelt példány (előzetes verzió) az automatikus feladatátvételi csoportok kapcsolatos információkért lásd: [ajánlott eljárások a feladatátvételi csoportok használata a felügyelt példányok](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -32,7 +32,7 @@ Aktív georeplikáció konfigurálása az Azure portal használatával, a követ
 * Az Azure SQL database: Az elsődleges adatbázis, amely egy másik földrajzi régióba replikálni szeretne.
 
 > [!Note]
-Az Azure portál használata esetén csak az elsődleges, ugyanazon az előfizetésen belül egy másodlagos adatbázist hozhat létre. Ha a másodlagos adatbázis szükséges lehet egy másik előfizetésben található, használja a [adatbázis REST API létrehozása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) vagy [az ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
+> Az Azure portál használata esetén csak az elsődleges, ugyanazon az előfizetésen belül egy másodlagos adatbázist hozhat létre. Ha a másodlagos adatbázis szükséges lehet egy másik előfizetésben található, használja a [adatbázis REST API létrehozása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) vagy [az ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Egy másodlagos adatbázis hozzáadása
 
@@ -46,7 +46,7 @@ Miután létrehozott és áttöltésekor a másodlagos, elindul az adatok az új
 > [!NOTE]
 > Ha a partner adatbázis már létezik (például eredményeként egy előző georeplikációs kapcsolatban megszakítást okozó) a parancs sikertelen lesz.
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az adatbázis, amelyet szeretne georeplikáció beállítása.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az adatbázis, amelyet szeretne georeplikáció beállítása.
 2. Az SQL database oldalon válassza ki a **georeplikációs**, majd válassza ki a régiót, a másodlagos adatbázis létrehozásához. Választhat bármelyik régióban más, a régiót az elsődleges adatbázis üzemeltetéséhez, de javasoljuk, hogy a [párosított régióra](../best-practices-availability-paired-regions.md).
 
     ![Aktív georeplikáció konfigurálása](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
@@ -66,11 +66,11 @@ Miután létrehozott és áttöltésekor a másodlagos, elindul az adatok az új
 
 A másodlagos adatbázist elsődlegessé mostantól átválthat.  
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
 2. Az SQL Database panelen válassza ki a **minden beállítás** > **georeplikációs**.
 3. Az a **másodlagos példány hozható létre** listájához, válassza ki az adatbázist az új elsődleges válnak, és kattintson a kívánt **feladatátvételi**.
 
-    ![Feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kattintson a **Igen** , a feladatátvételi művelet elindításához.
 
 A parancs azonnal átvált a másodlagos adatbázis, az elsődleges szerepre.
@@ -84,7 +84,7 @@ Egy rövid ideig, mely során nem érhető el (0 – 25 másodpercig) sorrendje 
 
 Ez a művelet véglegesen leáll a replikálás a másodlagos adatbázishoz, illetve a szerepkör a másodlagos módosításokat egy rendszeres írható és olvasható adatbázis. A másodlagos adatbázis-kapcsolata megszakad, ha a parancs végrehajtása sikeres, de nem válik az olvasási és írási csatlakozási után a másodlagos nem helyreáll.  
 
-1. Az a [az Azure portal](http://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
+1. Az a [az Azure portal](https://portal.azure.com), tallózással keresse meg az elsődleges adatbázis georeplikációs partnerségben.
 2. Az SQL database oldalon válassza ki a **georeplikációs**.
 3. Az a **másodlagos példány hozható létre** listában, válassza ki a el kívánja távolítani a georeplikáció partnerség az adatbázist.
 4. Kattintson a **Replikációleállítás**.

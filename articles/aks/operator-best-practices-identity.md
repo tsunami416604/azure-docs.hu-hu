@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d846f28e78959b6962add51070f04857f6463d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 201fef6b3e773daa18ae252d1d5734d8d87419b5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852807"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287128"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Hitelesítés és engedélyezés az Azure Kubernetes Service (AKS) ajánlott eljárásai
 
@@ -67,7 +67,7 @@ rules:
 Egy RoleBinding majd jön létre, amely összeköti az Azure AD-felhasználó *developer1\@contoso.com* , a RoleBinding, ahogyan az a következő YAML-jegyzékfájl:
 
 ```yaml
-ind: RoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: finance-app-full-access-role-binding
@@ -90,7 +90,7 @@ Amikor *developer1\@contoso.com* hitelesítése szemben az AKS-fürtöt, az erő
 
 Ha a podok más Azure-szolgáltatásokhoz, például a Cosmos DB, a Key Vault vagy a Blob Storage-ban való hozzáférésre van szükségük a pod kell eléréséhez szükséges hitelesítő adatokat. A hozzáférési hitelesítő adatokat akkor beszélünk, ha a tároló rendszerképét az vagy egy Kubernetes-titokként alkalmazza, de kell manuálisan létrehozott és hozzárendelt. Gyakran előfordul a hitelesítő adatok között podok újra felhasználhatók, és nem rendszeresen elforgatva.
 
-Felügyelt identitások az Azure-erőforrások segítségével automatikusan az Azure AD-szolgáltatásokhoz való hozzáférés kéréséhez. Nem manuális megadása között hitelesítő adatokat a podok, ehelyett azokat egy hozzáférési jogkivonat, valós idejű, és az csak a hozzárendelt szolgáltatások eléréséhez használható. Az aks-ben két összetevőből, hogy a podok felügyelt identitásokat használ a fürt operátor által telepített:
+Felügyelt identitások az Azure-erőforrások (implementáltuk egy kapcsolódó AKS nyílt forráskódú projektként) segítségével automatikusan az Azure AD-szolgáltatásokhoz való hozzáférés kéréséhez. Nem manuális megadása között hitelesítő adatokat a podok, ehelyett azokat egy hozzáférési jogkivonat, valós idejű, és az csak a hozzárendelt szolgáltatások eléréséhez használható. Az aks-ben két összetevőből, hogy a podok felügyelt identitásokat használ a fürt operátor által telepített:
 
 * **A csomópont felügyeleti identitás (NMI) kiszolgáló** van, amely egy DaemonSet az AKS-fürt minden csomópontján fut egy pod. A NMI kiszolgáló figyel a pod-kéréseket az Azure-szolgáltatások.
 * **A felügyelt identitás vezérlő (Mikrofon)** központi podot engedélyekkel a Kubernetes API-kiszolgáló lekérdezéséhez, és keres egy Azure-identitás leképezés, amely egy pod felel meg.
@@ -105,6 +105,8 @@ A következő példában egy fejlesztői igényelhet hozzáférést egy Azure SQ
 1. Az Azure AD hozzáférési jogkivonatokat pod kérések továbbítási a NMI kiszolgáló és a MIC telepített.
 1. A fejlesztő üzembe helyezi egy felügyelt identitás, amely a NMI kiszolgálón keresztül egy hozzáférési jogkivonatot kér rendelkező podot.
 1. A jogkivonat a pod vissza, és a egy Azure SQL Server-példány eléréséhez használt.
+
+A pod felügyelt identitások egy AKS nyílt forráskódú projekt, és nem támogatja a technikai Azure-támogatást. A visszajelzések és a hibák gyűjtsön közösségünkhöz nyújtja. A projekt nem ajánlott éles környezetben való használatra.
 
 A pod-identitásokat használ, tekintse meg a [Kubernetes-alkalmazások Azure Active Directory identitásainak][aad-pod-identity].
 

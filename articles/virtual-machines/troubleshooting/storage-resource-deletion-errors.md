@@ -11,22 +11,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326823"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089981"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Storage erőforrás törlésével kapcsolatos hibák elhárítása
 
 Bizonyos esetekben merülhetnek fel az alábbi hibák, miközben a próbál egy Azure storage-fiók, tároló vagy egy Azure Resource Manager üzembe helyezése a blobok törlése:
 
->**Nem sikerült törölni a storage-fiók "StorageAccountName". Hiba: A tárfiók nem törölhető, mert az összetevői használatban.**
-
->**Nem sikerült törölni a # # tároló(k) mimo:<br>virtuális merevlemezek: Jelenleg a címbérlet a tárolót, és a kérésben megadott nincs bérlet azonosítója.**
-
->**Nem sikerült törölni a # # blobok mimo:<br>BlobName.vhd: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.**
+> **Nem sikerült törölni a storage-fiók "StorageAccountName". Hiba: A tárfiók nem törölhető, mert az összetevői használatban.**
+> 
+> **Nem sikerült törölni a # # tároló(k) mimo:<br>virtuális merevlemezek: Jelenleg a címbérlet a tárolót, és a kérésben megadott nincs bérlet azonosítója.**
+> 
+> **Nem sikerült törölni a # # blobok mimo:<br>BlobName.vhd: Jelenleg a címbérlet a blob és a kérésben megadott nincs bérlet azonosítója.**
 
 Az Azure-beli virtuális gépeken használt virtuális merevlemezek egy standard vagy prémium szintű storage-fiókot az Azure-ban lapblobként tárolt .vhd-fájlokat. Az Azure disks kapcsolatos további információkért lásd: a [Bevezetés a managed Disks szolgáltatásba](../linux/managed-disks-overview.md).
 

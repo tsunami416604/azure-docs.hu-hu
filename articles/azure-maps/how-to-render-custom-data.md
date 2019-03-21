@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 982a8b6ed67b955fcb68006072b67f7c59f29688
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086598"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adatok egy rasztertérkép megjelenítése
 
@@ -135,9 +135,9 @@ Az elérési út és a PIN-kód helyére vonatkozó információt is beszerezhet
 
 4. Válassza ki **küldése** , és tekintse át a válaszfejlécben. A location fejlécet tartalmazza az URI-t való hozzáférés, vagy töltse le az adatokat későbbi használatra. Emellett tartalmaz egy egyedi `udId` a feltöltött adatok.  
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 5. Használja a `udId` érték érkezett az adatok feltöltése API-t a térképen funkciók jelennek meg. Ehhez nyissa meg a gyűjteményt az előző szakaszban létrehozott egy új lap. Az első HTTP-metódus a jelentéskészítő lapon válassza ki, és adja meg az URL-címet a GET-kérés:
 

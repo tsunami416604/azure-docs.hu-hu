@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122892"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Az IoT Edge-hez az Azure DevOps Projects (előzetes verzió) segítségével a CI/CD-folyamat létrehozása
 
@@ -127,7 +127,7 @@ Az előző szakaszokban Azure DevOps Projects egy teljes CI/CD-folyamat az IoT E
 
 12. A kibocsátási folyamat menüben válassza **feladatok** majd válassza ki a **fejlesztési** fázis a legördülő listából. A DevOps Projects létrehoz egy kiadási fázisában, amely létrehoz egy IoT hubot, hoz létre az IoT Edge-eszköz az adott hub, üzembe helyezi a mintamodul az összeállítási folyamatból, és kiosztja a virtuális gép futtatása az IoT Edge-eszköz. További információ az Azure IoT Edge-feladatok a CD-re, lásd: [Azure folyamatok konfigurálása a folyamatos üzembe helyezéshez](how-to-ci-cd.md#configure-continuous-deployment).
 
-   ![Folyamatos üzembe helyezés feladatok megtekintése](media/how-to-devops-project/dev-release.png)
+    ![Folyamatos üzembe helyezés feladatok megtekintése](media/how-to-devops-project/dev-release.png)
 
 13. A jobb oldalon válassza ki a **verziók megtekintéséhez**. Ebben a nézetben a kiadások előzményei jelennek meg.
 

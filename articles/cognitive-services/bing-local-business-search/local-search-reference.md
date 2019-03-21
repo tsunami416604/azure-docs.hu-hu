@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 34cedd2b389187e55201b62acc38fca291cdd736
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761788"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992478"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Helyi üzleti keresési Bing-API 7-es referencia
 
@@ -173,18 +173,21 @@ Meghatározza a Bing a kéréshez használt lekérdezési környezet.
 |originalQuery|A kérésben megadott lekérdezési karakterlánc.|String|  
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Határozza meg a keresési eredmények csoport, mint például mainline.
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |elem|Keresési eredmények megjelennek a csoport listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Határozza meg a keresési eredmény elemek megjelenítéséhez.
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |resultIndex|A cikk a válasz megjelenítéséhez a nulla alapú indexét. A cikk nem tartalmazza ezt a mezőt, a válasz jelennek meg az összes elemet. Például megjelenítik az összes hírek a hírek választ.|Egész szám|

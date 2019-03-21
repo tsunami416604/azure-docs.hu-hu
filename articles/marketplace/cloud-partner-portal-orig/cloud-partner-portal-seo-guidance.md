@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809913"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834336"
 ---
 <a name="azure-marketplace-seo-publisher-guide"></a>Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató Közzétevőknek
 =======================================
 
 ### <a name="general-explanation-of-algorithm"></a>Algoritmus általános magyarázata
 
-A Marketplace-en az Azure Search szolgáltatást a webhely keresési képességekkel működtetésére használja. Az algoritmus alapul kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). A standard [Lucene-elemzőt](http://lucene.apache.org/core/) szolgál.
+A Marketplace-en az Azure Search szolgáltatást a webhely keresési képességekkel működtetésére használja. Az algoritmus alapul kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). A standard [Lucene-elemzőt](https://lucene.apache.org/core/) szolgál.
 
 Általában a teljes szöveg mezők, kategóriák és iparágak és bekerült a weightage a relevancia. Speciális feltételeket, a ritkán használt alkalmazások azonban gyakran az alkalmazásban való kereséssel egyezés magasabb pontszámot hoz létre. Így többek között például a "Virtuális gép" használati kis benefit járna, mivel a "Az Azure search" speciális sokkal lenne.
 Az alábbiakban a leginkább megfelelő mezőket kell figyelembe venni.

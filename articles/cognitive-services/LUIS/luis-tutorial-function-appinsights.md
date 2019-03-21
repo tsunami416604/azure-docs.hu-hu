@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098764"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>A LUIS-eredményeket ad hozzá az Application Insights és az Azure functions
 Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
@@ -26,9 +26,9 @@ A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-* Web app-robot Application Insights-könyvtár hozzáadása
-* Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
-* Az Application Insights lekérdezési felső szándékot, pontszám és utterance (kifejezés)
+> * Web app-robot Application Insights-könyvtár hozzáadása
+> * Rögzíti és továbbítja a LUIS lekérdezés eredményeit az Application Insights
+> * Az Application Insights lekérdezési felső szándékot, pontszám és utterance (kifejezés)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

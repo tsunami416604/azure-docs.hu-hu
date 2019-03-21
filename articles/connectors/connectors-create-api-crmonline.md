@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: MT
+ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231254"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295300"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Az Azure Logic Apps Dynamics 365-rekordok kezelése
 
@@ -42,7 +42,7 @@ Először adja hozzá a Dynamics 365-eseményindító, amely akkor aktiválódik
 
 1. Az a [az Azure portal](https://portal.azure.com), az üres logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben, ha nem, nyissa meg a már.
 
-1. A Keresés mezőbe írja be szűrőként "Dynamics 365". Ebben a példában a triggerek listájában válassza ki az eseményindító: **egy rekord létrehozásakor**
+1. A Keresés mezőbe írja be szűrőként "Dynamics 365". Ebben a példában a triggerek listájában válassza ki az eseményindító: **Rekord létrehozásakor**
 
    ![Trigger kiválasztása](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -66,7 +66,7 @@ Most adja hozzá a Dynamics 365-műveletet, amely az új érdeklődő bejegyzés
 
 1. Az eseményindító területén válassza a **új lépés**.
 
-1. A Keresés mezőbe írja be szűrőként "Dynamics 365". Válassza ezt a műveletet a műveletek listájának: **új rekord létrehozása**
+1. A Keresés mezőbe írja be szűrőként "Dynamics 365". A műveletek listából válassza a következő műveletet: **Új rekord létrehozása**
 
    ![Művelet kiválasztása](./media/connectors-create-api-crmonline/select-action.png)
 
@@ -122,9 +122,9 @@ Ez a táblázat néhány mezőt és az ezek értékeinek szükséges adattípuso
 
 | Mezőtípus | Kötelező adatok típusa | Leírás | 
 |------------|--------------------|-------------|
-| Szövegmezők | Egysoros szöveg | Ezek a mezők egyetlen sornyi szöveget vagy a dinamikus tartalmat, amely rendelkezik a text típus szükséges. <p><p>*Példa mezők*: **leírás** és **kategória** | 
-| Egész számból álló mezők | Egész szám | Egyes mezőkben egész szám vagy az egész szám típusú dinamikus tartalom szükség. <p><p>*Példa mezők*: **készültségi szint** és **időtartama** | 
-| Dátummezők | Dátum és idő | Egyes mezőkben hh/nn/éééé formátumban vagy dátum típusú dinamikus tartalom dátum szükség. <p><p>*Példa mezők*: **létrehozott a**, **Kezdődátum**, **tényleges kezdet**, **tényleges Befejezés**, és **fizetési határidő** | 
+| Szövegmezők | Egysoros szöveg | Ezek a mezők egyetlen sornyi szöveget vagy a dinamikus tartalmat, amely rendelkezik a text típus szükséges. <p><p>*Példa mezők*: **Leírás** és **kategória** | 
+| Egész számból álló mezők | Egész szám | Egyes mezőkben egész szám vagy az egész szám típusú dinamikus tartalom szükség. <p><p>*Példa mezők*: **Készültségi szint** és **időtartama** | 
+| Dátummezők | Dátum és idő | Egyes mezőkben hh/nn/éééé formátumban vagy dátum típusú dinamikus tartalom dátum szükség. <p><p>*Példa mezők*: **A létrehozott**, **kezdő dátum**, **tényleges kezdési**, **tényleges Befejezés**, és **esedékesség dátuma** | 
 | Írja be a mezőkben a Rekordazonosító és a keresési | Elsődleges kulcs | Más entitásrekordra hivatkozó egyes mezőkben a Rekordazonosító és a egy keresési típus szükséges. | 
 ||||
 
@@ -187,7 +187,7 @@ A logic apps hibaelhárítással kapcsolatos további információkért lásd: [
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/crm/). 
+További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/dynamicscrmonline/). 
 
 ## <a name="get-support"></a>Támogatás kérése
 

@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezése az Azure AD-jelszó Protection előzetes verziója
-description: Az Azure AD jelszóvédelem előzetes hozzá tartozó rossz jelszavak helyszíni üzembe helyezése
+title: Azure AD jelszóvédelem üzembe helyezése
+description: Az Azure AD jelszóvédelem hozzá tartozó rossz jelszavak helyszíni üzembe helyezése
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,185 +11,180 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f0a009d4bea8a0f0075337d6fcfb9de31b7c7a6
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 54d2d600771316b0a88ea0a2486c0dedd0f84594
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409652"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286533"
 ---
-# <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Üzembe helyezése az Azure AD jelszóvédelem
+# <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
-
-Most, hogy egy-egy [az Azure AD jelszó védelme a Windows Server Active Directory a kényszerítés módja](concept-password-ban-bad-on-premises.md), és hajtsa végre a központi telepítés a következő lépéssel.
+Most, hogy megismerkedett [jelszavas védelem az Azure AD a Windows Server Active Directory a kényszerítés módja](concept-password-ban-bad-on-premises.md), és hajtsa végre az üzemelő példány a következő lépéssel.
 
 ## <a name="deployment-strategy"></a>Üzembe helyezési stratégiához
 
-A Microsoft azt javasolja, hogy minden telepítéshez rendszervizsgálati módban indítsa el. Vizsgálati üzemmód az alapértelmezett kezdeti beállítása ahol folytathatja a jelszavak állítható be, és az eseménynapló-bejegyzéseket létrehozni minden le lesz tiltva. Proxy-kiszolgáló (ko) és a tartományvezérlő ügynökök teljes mértékben telepített rendszervizsgálati módban, rendszeres figyelést kell elvégezni ahhoz, hogy milyen hatást jelszóházirend meghatározása kényszerítési lenne a felhasználók és a környezet, ha a házirend kényszerítve lenne.
+Azt javasoljuk, hogy központi telepítések rendszervizsgálati módban indítsa el. Vizsgálati üzemmód az alapértelmezett kezdeti beállítása, ahol a jelszavak továbbra is kell beállítani. Hogy le lesz tiltva, az eseménynaplóban vannak rögzítve. Üzembe helyezés után a proxykiszolgálók és a tartományvezérlő ügynökök rendszervizsgálati módban, célszerű figyelemmel kísérni a hatást, amelyet a jelszóházirend lesz a felhasználók és a környezet, ha a házirend van érvényben.
 
-Az ellenőrzési szakaszban található számos szervezet:
+Az ellenőrzési szakaszban számos szervezet keresse meg, hogy:
 
 * A meglévő operatív folyamatok használata biztonságosabb, jelszavak javítása van szükségük.
-* Felhasználók vannak bemutatásával nem biztonságos jelszavak rendszeresen kiválasztása
-* Tájékoztassa a felhasználóknak a közelgő változást végpontbiztonság kényszerítése, az hatással lehet rájuk, és segít jobban megérteni, hogyan kiválaszthatnak biztonságosabb, jelszavak van szükségük.
+* Felhasználók gyakran használjon biztonságos jelszavakat.
+* Szükségük van a felhasználók tájékoztatása a közelgő változást végpontbiztonság kényszerítése, azokat a lehetséges hatás és biztonságosabb, jelszavak kiválasztása.
 
-A funkció elfogadható időn rendszervizsgálati módban futott, miután a kényszerítési konfigurációját a lehet tükrözni **naplózási** való **érvényesítése** ezáltal igénylő biztonságosabb, jelszavak. Ez idő alatt célirányos figyelése, célszerű.
+Után a szolgáltatás ésszerű rendszervizsgálati módban futott, válthat a konfigurációt az *naplózási* való *érvényesítése* , amelyek több biztonságos jelszót. Ez idő alatt célirányos figyelése, célszerű.
 
 ## <a name="deployment-requirements"></a>Központi telepítésére vonatkozó követelmények
 
-* Minden tartományvezérlő, amelyen telepíteni szeretné az Azure AD jelszó védelmi DC ügynök szolgáltatás futnia kell a Windows Server 2012 vagy újabb.
-* Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás futnia kell a Windows Server 2012 R2 vagy újabb.
-* Minden olyan gép, amelyen telepítve vannak az Azure AD jelszóvédelem összetevők többek között a tartományvezérlők a Universal C futásidejű telepítve kell rendelkeznie.
-Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
-* Minden olyan tartományban legalább egy tartományvezérlőre és legalább egy, az Azure AD-jelszó védelme Proxy szolgáltatást futtató kiszolgáló között léteznie kell a hálózati kapcsolatot. A kapcsolat lehetővé teszi a tartományvezérlő hozzáférés RPC-végpont eseményleképező portja (135-ös) és a proxy szolgáltatást az RPC-kiszolgáló portja. Az RPC-kiszolgáló portja alapértelmezés szerint dinamikus RPC-portot, de konfigurálható (lásd alább) a statikus port használatára.
-* Minden gép üzemeltetése az Azure AD-jelszó védelme Proxy szolgáltatás az alábbi végpontok hálózati hozzáféréssel kell rendelkeznie:
+* Minden tartományvezérlő, amely a tartományvezérlő-ügynök szolgáltatást a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 vagy újabb verziója.
+* Összes gép, amely a proxy szolgáltatást, a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 R2 vagy újabb verziója.
+* Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás telepítve van a .NET 4.7 kell rendelkeznie.
+  .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
+* Összes gép, a Universal C futásidejű telepített többek között a tartományvezérlők, amely az Azure AD jelszó-védelem összetevői telepítve kell rendelkeznie. A futtatókörnyezet azáltal, hogy meg kell, hogy a Windows Update frissítéseit kérheti le. Vagy egy operációsrendszer-specifikus frissítési csomag beszerezheti azt. További információkért lásd: [frissítése a Windows Universal C futásidejű](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
+* Hálózati kapcsolat között léteznie kell legalább egy tartományvezérlő minden olyan tartományban, és legalább egy kiszolgálót üzemeltető a proxy szolgáltatás jelszavas védelmet. A kapcsolat lehetővé teszi a tartományvezérlő hozzáférés RPC végpont végpontleképező 135-ös port és a proxy szolgáltatást az RPC-kiszolgáló portja. Alapértelmezés szerint az RPC-kiszolgáló portjának egy dinamikus RPC-portot, de konfigurálható, hogy [statikus port használatára](#static).
+* A proxy szolgáltatást üzemeltető összes gép a következő végpontok hálózati hozzáféréssel kell rendelkeznie:
 
-    |Végpont |Cél|
+    |**Végpont**|**Cél**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
     |`https://enterpriseregistration.windows.net`|Az Azure AD jelszó-védelmi funkciók|
 
-* Az Azure AD-jelszó védelme Proxy szolgáltatást futtató összes gép kimenő TLS 1.2-es HTTP-forgalom engedélyezésére kell konfigurálni.
-* Egy globális rendszergazdai fiókkal az Azure AD-jelszó védelme Proxy szolgáltatás és az erdő regisztrálhat az Azure ad-ben.
-* Az Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában, a Windows Server Active Directory-erdő regisztrálni az Azure AD-fiók.
-* Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.
-* Minden Windows Server 2012 és újabb rendszerű tartományvezérlők a tartomány engedélyezni kell a Microsoft kulcsszolgáltató szolgáltatás (manuális eseményindító kezdő használatával van engedélyezve van ez a szolgáltatás alapértelmezett állapotát).
+* A jelszavas védelem proxy szolgáltatást üzemeltető összes gép kimenő TLS 1.2-es HTTP-forgalom engedélyezésére kell konfigurálni.
+* A jelszavas védelem és az erdő proxy szolgáltatás regisztrálása az Azure AD egy globális rendszergazdai fiókkal.
+* A Windows Server Active Directory-erdő regisztrálni az Azure AD-erdő szintű gyökértartomány az Active Directory tartományi rendszergazdai jogosultságokkal rendelkező fiókkal.
+* Minden olyan Active Directory-tartomány a tartományvezérlő-ügynök szolgáltatás szoftvert futtató sysvol-replikáció Distributed File System replikációs (DFSR) kell használnia.
+* A tartomány minden olyan tartományvezérlőre, amely a Windows Server 2012 futtatásához engedélyezni kell a kulcsszolgáltató szolgáltatás. Ez a szolgáltatás alapértelmezés szerint engedélyezve van a manuális eseményindító start-n keresztül.
 
-## <a name="single-forest-deployment"></a>Egyetlen erdő telepítés
+## <a name="single-forest-deployment"></a>Egyerdős üzembe helyezés
 
-Az alábbi ábrán látható, hogyan az alapvető összetevők az Azure AD jelszóvédelem működik együtt a helyszíni Active Directory-környezetben.
+Az alábbi ábrán látható, az Azure AD jelszóvédelem alapvető összetevői együttműködésének egy helyszíni Active Directory-környezetben.
 
-![Hogyan működik az Azure AD jelszóvédelem összetevők együtt](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+![Hogyan működnek együtt az Azure AD jelszó-védelem összetevői](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-Üzembe helyezés előtt, egy célszerű áttekinteni, hogyan működik a szoftvert; Lásd: [fogalmi áttekintése az Azure AD jelszóvédelem](concept-password-ban-bad-on-premises.md).
+Célszerű áttekinteni, hogyan működik a szoftver, a telepítése előtt. Lásd: [fogalmi áttekintése az Azure AD jelszóvédelem](concept-password-ban-bad-on-premises.md).
 
 ### <a name="download-the-software"></a>A szoftver letöltése
 
-Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telepítők a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)
+Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
-### <a name="install-and-configure-the-azure-ad-password-protection-proxy-service"></a>Az Azure AD jelszóvédelem proxy szolgáltatás telepítése és konfigurálása
+### <a name="install-and-configure-the-proxy-service-for-password-protection"></a>Telepítse és konfigurálja a proxykiszolgáló jelszavas védelmet
 
-1. Válasszon egy vagy több kiszolgálót az Azure AD-jelszó védelme Proxy szolgáltatás üzemeltetéséhez.
-   * Minden ilyen szolgáltatás lehet csak jelszóházirendet egyetlen erdő, és a gazdagépen kell lennie egy tartományhoz tartományhoz (gyermek és a legfelső szintű tartományok támogatottak) az adott erdőben. Ahhoz, hogy az Azure AD-jelszó védelme Proxy szolgáltatás feladatának teljesítéséhez, a hálózati kapcsolat, az erdő minden tartományban legalább egy tartományvezérlő és az Azure AD-jelszó védelme Proxy gép között kell lenniük.
-   * Támogatott telepítése és futtatása az Azure AD-jelszó védelme Proxy szolgáltatás egy tartományvezérlőn tesztelési célokra; a hátránya, hogy a tartományvezérlő, akkor ez egyik biztonsági szempont lehet internetkapcsolatra van szükség. A Microsoft azt javasolja, hogy ez a konfiguráció csak használható tesztelési célokra.
-   * Ajánlott legalább két proxykiszolgáló redundancia céljából. [Tekintse meg a magas rendelkezésre állás](howto-password-ban-bad-on-premises-deploy.md#high-availability)
+1. Válasszon egy vagy több kiszolgáló jelszavas védelmet a proxy szolgáltatás üzemeltetéséhez.
+   * Minden ilyen szolgáltatás csak által biztosított jelszóházirendet egyetlen erdő. A gazdagép frissítéséből abban az erdőben egy tartományhoz kell csatlakoznia. Gyermek és a legfelső szintű tartományok támogatottak. Szüksége lesz az erdő minden tartományban legalább egy tartományvezérlő és a jelszó védelmi gép közötti hálózati kapcsolatot.
+   * A proxy szolgáltatás egy tartományvezérlőn tesztelési futtathatja. Azonban, hogy tartományvezérlő ezután internetkapcsolattal, amely lehet az egyik biztonsági szempont. Ez a konfiguráció csak tesztelésre ajánlott.
+   * Azt javasoljuk, hogy a redundancia biztosítása érdekében legalább két proxykiszolgáló. Lásd: [magas rendelkezésre állású](howto-password-ban-bad-on-premises-deploy.md#high-availability).
 
-2. Telepítse az Azure AD-jelszó védelme Proxy szolgáltatást az AzureADPasswordProtectionProxySetup.msi MSI-csomag használatával.
-   * A Szoftvertelepítés nem kell újraindítani. A Szoftvertelepítés előfordulhat, hogy automatizálható a szokásos eljárásokkal MSI, például: `msiexec.exe /i AzureADPasswordProtectionProxySetup.msi /quiet /qn`
+1. Telepítse az Azure AD jelszó-védelmi Proxy szolgáltatás használ a `AzureADPasswordProtectionProxySetup.exe` szoftver telepítője.
+   * A Szoftvertelepítés nem kell újraindítani. A Szoftvertelepítés előfordulhat, hogy automatizálható a szokásos eljárásokkal MSI, például:
+
+      `AzureADPasswordProtectionProxySetup.exe /quiet`
 
       > [!NOTE]
-      > A Windows tűzfal szolgáltatásnak futnia kell az AzureADPasswordProtectionProxySetup.msi MSI-csomag telepítése előtt, különben telepítési hiba történik. Futtassa a Windows tűzfal van konfigurálva, a megoldás-e ideiglenes engedélyezéséhez, és indítsa el a Windows tűzfal szolgáltatást a telepítési folyamat során. A Proxy szoftvert a Windows tűzfal szoftver telepítése után nincs konkrét függőségre rendelkezik. A külső tűzfalat használ, ha továbbra is kell konfigurálni annak a központi telepítésére vonatkozó követelmények kielégítéséhez (engedélyezi a 135-ös portot a bejövő hozzáférést és az RPC-proxy kiszolgáló portja e dinamikus vagy statikus). [Üzembe helyezési követelményeket lásd:](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements)
+      > A Windows tűzfal szolgáltatást kell futnia, a telepítési hiba elkerülése érdekében AzureADPasswordProtectionProxySetup.msi csomag telepítése előtt. Windows tűzfal nem fut van konfigurálva, a megoldás-e ideiglenes engedélyezése és a tűzfal-szolgáltatás futtatásához a telepítés során. A proxy szoftver nincs konkrét függőségre rendelkezik a Windows tűzfalat a telepítés után. Ha egy külső tűzfalat használ, azt kell továbbra is konfigurálni megfelelnek a központi telepítés. Ezek közé tartozik, hogy a port: 135-ös és a proxy RPC-kiszolgáló port bejövő hozzáférést. Lásd: [központi telepítésére vonatkozó követelmények](howto-password-ban-bad-on-premises-deploy.md#deployment-requirements).
 
-3. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
-   * Az Azure AD-jelszó védelme Proxy AzureADPasswordProtection nevű új PowerShell-modul közé tartozik. A következő lépések alapján különböző parancsmagok futtatja a PowerShell-modult, és feltételezik, hogy megnyitották egy új PowerShell-ablakot, és a következőképpen importálta-e az új modul:
+1. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
+   * A jelszó proxy szoftver tartalmaz egy új PowerShell-modul *AzureADPasswordProtection*. Különböző parancsmagok a PowerShell-modult futtassa az alábbi lépéseket. Importálja az új modult a következőképpen:
 
       ```PowerShell
       Import-Module AzureADPasswordProtection
       ```
 
-   * Ellenőrizze, hogy a szolgáltatás fut, a következő PowerShell-paranccsal: `Get-Service AzureADPasswordProtectionProxy | fl`.
-     Az eredmény eredményt kell előállítania a **állapot** "Fut" eredményt visszaadó.
+   * Ellenőrizze, hogy a szolgáltatás fut, használja a következő PowerShell-parancsot:
 
-4. A proxy regisztrálása.
-   * 3. lépés befejezése után az Azure AD-jelszó védelme Proxy szolgáltatás fut a gépen, de még nem rendelkezik a szükséges hitelesítő adatokat az Azure AD-kommunikációhoz. Az Azure AD-regisztráció engedélyezéséhez, hogy lehetővé teszi az szükséges a `Register-AzureADPasswordProtectionProxy` PowerShell-parancsmagot. A parancsmag megköveteli a globális rendszergazdai hitelesítő adatait az Azure-bérlőhöz, valamint a helyszíni Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában. Amint azt a megadott proxy Service, a további indítások sikeres `Register-AzureADPasswordProtectionProxy` továbbra is sikeres legyen, de nem szükségesek.
+      `Get-Service AzureADPasswordProtectionProxy | fl`.
 
-      A Register-AzureADPasswordProtectionProxy parancsmag a következő három különböző hitelesítési módot támogatja.
+     Az eredmény meg kell jelennie egy **állapot** "Üzemelni."
 
-      * Interaktív hitelesítési mód:
+1. A proxy regisztrálása.
+   * 3. lépés befejezése után a proxy szolgáltatás fut a gépen. De a szolgáltatás még nem rendelkezik a szükséges hitelesítő adatokat az Azure AD-kommunikációhoz. Az Azure AD-regisztrációs szükség:
 
-         ```PowerShell
-         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
-         ```
-         > [!NOTE]
-         > Ebben a módban nem működnek Server Core operációs rendszereken. Ehelyett használja az alternatív hitelesítési módok egyikét az alábbi módon.
+     `Register-AzureADPasswordProtectionProxy`
 
-         > [!NOTE]
-         > Ebben a módban meghiúsulhatnak, ha az Internet Explorer fokozott biztonsági beállításai engedélyezve van. A megoldás, hogy tiltsa le a IESC, a proxy, majd engedélyezze újra IESC regisztrálni.
+     Ez a parancsmag az Azure-bérlő globális rendszergazdai hitelesítő adatokat igényel. A helyszíni Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában is szükséges. Miután ez a parancs sikeres lesz, miután egy proxy szolgáltatás azt további indítások sikeresek lesznek, de nem szükségesek.
 
-      * Eszköz-kód hitelesítési mód:
+      A `Register-AzureADPasswordProtectionProxy` parancsmag támogatja a következő három hitelesítési mód.
 
-         ```PowerShell
-         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
-         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
-         ```
+     * Interaktív hitelesítési mód:
 
-         Majd egy másik eszközön megjelenő utasításokat követve fejezze be a hitelesítést.
+        ```PowerShell
+        Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
+        ```
+        > [!NOTE]
+        > Ebben a módban a Server Core operációs rendszereken nem működik. Ehelyett használja a következő hitelesítési módok egyikét. Ebben a módban is sikertelen lehet, ha az Internet Explorer fokozott biztonsági beállításai engedélyezve van. A megoldás, hogy tiltsa le a konfigurációs, a proxy regisztrálása, majd újra engedélyeznie.
 
-      * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
+     * Eszköz-kód hitelesítési mód:
 
-         ```PowerShell
-         $globalAdminCredentials = Get-Credential
-         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
-         ```
+        ```PowerShell
+        Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
+        To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
+        ```
 
-         > [!NOTE]
-         > Ebben a módban sikertelen lesz, ha a hitelesítés valamilyen okból többtényezős Hitelesítést igényel. Ha ez a helyzet, használja az előző két mód közül elvégezni az MFA-alapú hitelesítéshez.
+        Majd egy másik eszközön megjelenő utasítások alapján a hitelesítés befejezéséhez.
 
-      Jelenleg nem szükséges, adja meg a - ForestCredential paramétert, amely a jövőbeni funkció számára van fenntartva.
+     * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
 
-   > [!NOTE]
-   > Az Azure AD jelszóvédelem proxy szolgáltatás regisztrációja várhatóan egy egyszeri lépés a szolgáltatás élettartama során. A proxy szolgáltatás automatikusan végez bármely más szükséges karbantartási ettől kezdve. Miután azt sikerült a megadott proxy, további indítások "Register-AzureADPasswordProtectionProxy", továbbra is sikeres, de nem szükségesek.
+        ```PowerShell
+        $globalAdminCredentials = Get-Credential
+        Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
+        ```
 
-   > [!TIP]
-   > Előfordulhatnak olyan jelentős késleltetés (sok másodperc) egy adott Azure-bérlő esetében futtassa ezt a parancsmagot, a parancsmag végrehajtásának befejeződése előtt először. Csak akkor jelent hibát, ezt a késést nem tekinthető ijesztő.
+        > [!NOTE]
+        > Ebben a módban sikertelen lesz, ha az Azure multi-factor Authentication megadása kötelező. Ebben az esetben használja az előző két hitelesítési módok egyikét.
 
-5. Regisztrálja az erdőben.
-   * A helyszíni Active Directory-erdő inicializálni kell a szükséges hitelesítő adatokkal való kommunikációhoz, az Azure-ban a `Register-AzureADPasswordProtectionForest` PowerShell-parancsmagot. A parancsmag megköveteli a globális rendszergazdai hitelesítő adatait az Azure-bérlőhöz, valamint a helyszíni Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában. Ez a lépés minden erdőre egyszer fut.
+       Adja meg, hogy jelenleg nincs a *- ForestCredential* paramétert, amely a jövőbeni funkció számára van fenntartva.
 
-      A Register-AzureADPasswordProtectionForest parancsmag a következő három különböző hitelesítési módot támogatja.
-
-      * Interaktív hitelesítési mód:
-
-         ```PowerShell
-         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
-         ```
-         > [!NOTE]
-         > Ebben a módban nem működnek Server Core operációs rendszereken. Ehelyett használja az alternatív hitelesítési módok egyikét az alábbi módon.
-
-         > [!NOTE]
-         > Ebben a módban meghiúsulhatnak, ha az Internet Explorer fokozott biztonsági beállításai engedélyezve van. A megoldás, hogy tiltsa le a IESC, a proxy, majd engedélyezze újra IESC regisztrálni.  
-
-      * Eszköz-kód hitelesítési mód:
-
-         ```PowerShell
-         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
-         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
-         ```
-
-         Majd egy másik eszközön megjelenő utasításokat követve fejezze be a hitelesítést.
-
-      * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
-         ```PowerShell
-         $globalAdminCredentials = Get-Credential
-         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
-         ```
-
-         > [!NOTE]
-         > Ebben a módban sikertelen lesz, ha a hitelesítése többtényezős Hitelesítést követel meg. Ha ez a helyzet, használja az előző két mód közül elvégezni az MFA-alapú hitelesítéshez.
-
-      A fenti példákban csak akkor lesz sikeres, ha az aktuálisan bejelentkezett felhasználó egyben a legfelső szintű tartomány Active Directory tartományi rendszergazda. Ha nem ez a helyzet, előfordulhat, hogy adja meg a - ForestCredential paraméter alternatív tartományi hitelesítő adatokat.
-
-   > [!NOTE]
-   > Ha a proxykiszolgálók több vannak telepítve a környezetben, nem számít, mely proxykiszolgáló az erdő regisztrálásához használatos.
+   
+   Regisztráció a proxy szolgáltatás jelszavas védelmet az szükséges csak egyszer a szolgáltatás élettartama során. Ezt követően a proxy szolgáltatás automatikusan végez minden egyéb szükséges karbantartás.
 
    > [!TIP]
-   > Előfordulhatnak olyan jelentős késleltetés (sok másodperc) egy adott Azure-bérlő esetében futtassa ezt a parancsmagot, a parancsmag végrehajtásának befejeződése előtt először. Csak akkor jelent hibát, ezt a késést nem tekinthető ijesztő.
+   > Előfordulhat, hogy egy észrevehető késleltetés, hogy ez a parancsmag futtatása egy adott Azure-bérlő esetében először befejezése előtt. Jelentett hiba, hacsak nem kell aggódnia a késleltetés.
+
+1. Regisztrálja az erdőben.
+   * Az Azure használatával kommunikálnak a szükséges hitelesítő adatokat a helyszíni Active Directory-erdőben kell inicializálnia a `Register-AzureADPasswordProtectionForest` PowerShell-parancsmagot. A parancsmag az Azure-bérlőhöz tartozó globális rendszergazdai hitelesítő adatokat igényel. A helyszíni Active Directory tartományi rendszergazdai jogosultságok az erdő gyökértartományában is szükségesek. Ez a lépés minden erdőre egyszer fut.
+
+      A `Register-AzureADPasswordProtectionForest` parancsmag támogatja a következő három hitelesítési mód.
+
+     * Interaktív hitelesítési mód:
+
+        ```PowerShell
+        Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
+        ```
+        > [!NOTE]
+        > Ebben a módban a Server Core operációs rendszereken nem fog működni. Ehelyett használja a következő két hitelesítési módok egyikét. Ebben a módban is sikertelen lehet, ha az Internet Explorer fokozott biztonsági beállításai engedélyezve van. A megoldás, hogy tiltsa le a konfigurációs, a proxy regisztrálása, majd újra engedélyeznie.  
+
+     * Eszköz-kód hitelesítési mód:
+
+        ```PowerShell
+        Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
+        To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
+        ```
+
+        Majd egy másik eszközön megjelenő utasítások alapján a hitelesítés befejezéséhez.
+
+     * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
+        ```PowerShell
+        $globalAdminCredentials = Get-Credential
+        Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
+        ```
+
+        > [!NOTE]
+        > Ebben a módban sikertelen lesz, ha az Azure multi-factor Authentication megadása kötelező. Ebben az esetben használja az előző két hitelesítési módok egyikét.
+
+       Ezekben a példákban csak akkor sikeres, ha az aktuálisan bejelentkezett felhasználó egyben a legfelső szintű tartomány Active Directory tartományi rendszergazda. Ha ez nem az eset, alternatív tartományi hitelesítő adatokat adhat meg a *- ForestCredential* paraméter.
 
    > [!NOTE]
-   > Az Active Directory-erdő regisztrációs várhatóan egy egyszeri lépés az erdő élettartama során. A tartományt vezérlő ügynökök erdőben futtató automatikusan végre fogja hajtani a bármely más szükséges maintainenance ettől kezdve. Miután egy adott erdő esetén, további indítások sikeres `Register-AzureADPasswordProtectionForest` továbbra is sikeres legyen, de nem szükségesek.
+   > Ha a proxykiszolgálók több vannak telepítve a környezetben, mely proxykiszolgálót, regisztrálhat az erdő nem számít.
 
-   > [!NOTE]
-   > Ahhoz, hogy `Register-AzureADPasswordProtectionForest` legalább egy Windows Server 2012 vagy újabb tartomány sikeres vezérlő elérhetőnek kell lennie a proxykiszolgálót a tartományban. Azonban esetében nem követelmény, hogy a tartományvezérlő ügynök szoftvert telepítenie minden olyan tartományvezérlőn, ez a lépés előtt.
+   > [!TIP]
+   > Előfordulhat, hogy egy észrevehető késleltetés, hogy ez a parancsmag futtatása egy adott Azure-bérlő esetében először befejezése előtt. Jelentett hiba, hacsak nem kell aggódnia a késleltetés.
 
-6. Az Azure AD-jelszó védelmi Proxy szolgáltatás HTTP-proxyn keresztüli kommunikáció konfigurálása
+   Regisztrálása az Active Directory-erdő nem szükséges csak egyszer az erdő élettartama során. Ezt követően a Domain Controller ügynökök az erdő automatikusan elvégzi minden egyéb szükséges karbantartás. Miután `Register-AzureADPasswordProtectionForest` erdő esetében sikeresen lefut, a parancsmag további indítások sikeres, de nem szükségesek.
 
-   Ha környezete megköveteli egy adott HTTP-proxy kommunikálni az Azure használatát, ez is elvégezhető a következő.
+   A `Register-AzureADPasswordProtectionForest` sikeres, legalább egy tartományvezérlő Windows Server 2012 vagy újabb rendszert futtató elérhetőnek kell lennie a proxykiszolgálót a tartományban. De a tartományvezérlő ügynökszoftver nem rendelkezik a tartományvezérlők, ez a lépés előtt kell telepíteni.
 
-   Hozzon létre egy fájlt `proxyservice.exe.config` fájlt a `%ProgramFiles%\Azure AD Password Protection Proxy\Service` mappában a következő tartalommal:
+1. A proxy HTTP-proxyn keresztül kommunikálnak a jelszavas védelem szolgáltatás konfigurálása.
+
+   Ha a környezet egy adott HTTP-proxy kommunikálni az Azure használatát igényli, ezt a módszert használja: Hozzon létre egy *AzureADPasswordProtectionProxy.exe.config* %ProgramFiles%\Azure Active jelszó védelmi Proxy\Service mappában található fájl. Tartalmazza az alábbi tartalommal:
 
       ```xml
       <configuration>
@@ -202,7 +197,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
       </configuration>
       ```
 
-   Ha a HTTP-proxy hitelesítést igényel, adja hozzá a következő useDefaultCredentials címke:
+   Ha a HTTP-proxy hitelesítést igényel, adja hozzá a *useDefaultCredentials* címkét:
 
       ```xml
       <configuration>
@@ -215,17 +210,17 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
       </configuration>
       ```
 
-   Mindkét esetben cserélje `http://yourhttpproxy.com:8080` -címmel és az adott HTTP-proxykiszolgáló portját.
+   Mindkét esetben cserélje le a `http://yourhttpproxy.com:8080` -címmel és az adott HTTP-proxykiszolgáló portját.
 
-   Ha a HTTP-proxyt az engedélyezési házirend van beállítva, hozzáférést kell az Azure AD-jelszó védelme Proxy szolgáltatást futtató gép Active Directory számítógépfiókjához.
+   Ha a HTTP-proxy van konfigurálva velünk a kapcsolatot az engedélyezési házirend, hozzáférést kell biztosítania a gép, amely a proxy szolgáltatást a jelszavas védelem az Active Directory számítógépfiókjához.
 
-   Akkor állítsa le és indítsa újra az Azure AD-jelszó védelme Proxy szolgáltatás létrehozása vagy frissítése után a `proxyservice.exe.config` fájlt.
+   Javasoljuk, hogy állítsa le és indítsa újra a proxy szolgáltatás létrehozása vagy frissítése után a *AzureADPasswordProtectionProxy.exe.config* fájlt.
 
-   Az Azure AD-jelszó védelme Proxy szolgáltatás nem támogatja a megadott hitelesítő adatok használatát egy HTTP-proxy való kapcsolódáshoz.
+   A proxy szolgáltatás nem támogatja a megadott hitelesítő adatok használatát egy HTTP-proxy való kapcsolódáshoz.
 
-7. Nem kötelező: Konfigurálja az Azure AD-jelszó védelme Proxy szolgáltatás egy adott portot figyeljen.
-   * RPC TCP-n keresztül az Azure AD-jelszó DC védelmi ügynök szoftver a tartományvezérlőkön használják az Azure AD-jelszó védelme Proxy szolgáltatással való kommunikációra. Alapértelmezés szerint az Azure AD-jelszó védelme Proxy szolgáltatás figyeli az összes rendelkezésre álló dinamikus RPC-végpont. Hálózati topológia vagy tűzfalra vonatkozó követelmények miatt szükséges, ha a szolgáltatás ehelyett beállítható egy adott TCP-porton figyeljen.
-      * A szolgáltatás futtatásához egy statikus port megadásához használja a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmagot.
+1. Nem kötelező: Konfigurálja a proxykiszolgáló jelszavas védelmet egy adott portot figyeljen.
+   * A tartományvezérlő ügynökszoftver jelszavas védelmet a tartományvezérlőkön RPC Protokollt használ TCP-n keresztül a proxy szolgáltatással való kommunikációra. Alapértelmezés szerint a proxy szolgáltatást figyel minden rendelkezésre álló dinamikus RPC-végpont. De be lehet állítani egy adott TCP-porton figyeljen a szolgáltatást, amennyiben ez szükséges hálózati topológiát, vagy a környezetében a tűzfalra vonatkozó követelmények miatt.
+      * <a id="static" /></a>A szolgáltatás futtatásához egy statikus port megadásához használja a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmagot.
          ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
@@ -233,7 +228,7 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
          > [!WARNING]
          > Állítsa le kell, és indítsa újra a szolgáltatást, a módosítások érvénybe léptetéséhez.
 
-      * A szolgáltatás futtatásához egy dinamikus port megadásához, használja ugyanazt az eljárást azonban StaticPort vissza 0 értékre, például így:
+      * A szolgáltatás futtatásához egy dinamikus port megadásához ugyanazzal az eljárással, de beállítása *StaticPort* történő visszaállítás:
          ```PowerShell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
@@ -242,9 +237,9 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
          > Állítsa le kell, és indítsa újra a szolgáltatást, a módosítások érvénybe léptetéséhez.
 
    > [!NOTE]
-   > Az Azure AD-jelszó védelme Proxy szolgáltatás manuális újraindítását igényli, a portkonfigurációjának módosítását követően. Nem kell újraindítani az ilyen jellegű konfigurációs módosítások elvégzése után a tartományvezérlőn futó tartományvezérlő ügynök szoftver.
+   > A jelszavas védelmet proxy szolgáltatás manuális újraindítását igényli, a portkonfigurációjának módosítását követően. Azonban nem kell újraindítani a tartományvezérlő szolgáltatás ügynökszoftver tartományvezérlőkön, konfigurációs módosítások végrehajtása után.
 
-   * Az aktuális konfigurációját a szolgáltatás használatával lehet lekérdezni a `Get-AzureADPasswordProtectionProxyConfiguration` parancsmag az alábbi példában látható módon:
+   * A szolgáltatás a jelenlegi konfiguráció lekérdezése, használja a `Get-AzureADPasswordProtectionProxyConfiguration` parancsmagot:
 
       ```PowerShell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
@@ -254,39 +249,39 @@ Nincsenek Azure AD jelszóvédelem, amely letölthető a két szükséges telep�
       StaticPort  : 0
       ```
 
-### <a name="install-the-azure-ad-password-protection-dc-agent-service"></a>Az Azure AD jelszóvédelem DC ügynökszolgáltatásának telepítése
+### <a name="install-the-dc-agent-service"></a>A tartományvezérlő ügynökszolgáltatásának telepítése
 
-   Az Azure AD-jelszó Protection tartományvezérlő telepítési ügynök szolgáltatás szoftver használatával a `AzureADPasswordProtectionDCAgent.msi` MSI-csomag
+   Telepítse a DC ügynökszolgáltatás jelszavas védelmet a `AzureADPasswordProtectionDCAgentSetup.msi` csomagot.
 
-   A Szoftvertelepítés kell indítani a telepítés, és távolítsa el, mert az operációsrendszer-követelményt, hogy jelszót szűrő DLL-ek csak betöltése vagy a számítógép újraindítását követően a memóriából.
+   A szoftver telepítése vagy kiszolgálón.%0, újra kell indítani. Ennek az az oka a jelszószűrő DLL-ek csak betöltve, vagy a számítógép újraindítását a memóriából.
 
-   Olyan számítógépen, amelyen még nem egy tartományvezérlőt a tartományvezérlő ügynökszolgáltatásának telepítése támogatott. Ebben az esetben a szolgáltatás elindul, és futtassa, de más módon lesz inaktívnak lennie amíg után a gép egy tartományvezérlő hitelesítenie kelljen magát.
+   Telepítheti a DC-ügynökszolgáltatás olyan számítógépen, amelyen még nem tartományvezérlő. Ebben az esetben a szolgáltatás fogja indítása és futtatása, de inaktív marad mindaddig, amíg a gép egy tartományvezérlő hitelesítenie kelljen magát.
 
-   A Szoftvertelepítés előfordulhat, hogy automatizálható a szokásos eljárásokkal MSI, például:
+   A szoftver telepítését a szokásos az MSI-eljárások használatával automatizálható. Példa:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgent.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
 
    > [!WARNING]
-   > A fenti példa msiexec parancsot egy azonnali újraindítás; fog eredményezni. Ez elkerülhető az megadásával a `/norestart` jelzőt.
+   > A msiexec példaparancs itt egy azonnali újraindítását eredményezi. Amely elkerülése érdekében használja a `/norestart` jelzőt.
 
-Miután egy tartományvezérlőre van telepítve, és újraindul, az Azure AD-jelszó DC védelmi ügynök telepítését akkor fejeződött be. További konfigurálást nem kötelező vagy nem lehetséges.
+A telepítés befejeződött, a tartományvezérlő ügynök szoftver telepítve van a tartományvezérlőn, és a számítógép újraindítása után. További konfigurálást nem kötelező vagy nem lehetséges.
 
 ## <a name="multiple-forest-deployments"></a>Több erdő üzembe helyezés
 
-Nem vonatkoznak további követelmények üzembe helyezéséhez az Azure AD jelszóvédelem több-erdőkön keresztüli. Minden olyan erdőben, egymástól függetlenül van konfigurálva, az egyetlen erdővel telepítési szakaszban leírtak szerint. Minden egyes Azure AD-jelszó védelme Proxy csak támogatja az erdő van csatlakoztatva, a tartományvezérlőket. Az Azure AD-jelszó szoftvert egy adott erdőben nincs tudomása a másik erdő az Active Directory bizalmi kapcsolati konfigurációkat függetlenül üzembe helyezett Azure AD jelszóvédelem szoftver.
+Nem vonatkoznak további követelmények üzembe helyezéséhez az Azure AD jelszóvédelem több-erdőkön keresztüli. Minden olyan erdőben, egymástól függetlenül van konfigurálva, a "egyerdős üzembe helyezés" szakaszban leírtak szerint. Minden egyes jelszó védelme proxy csak támogatja az erdőhöz, amelyik van csatlakoztatva, a tartományvezérlőket. A jelszó szoftvert minden olyan erdőben nem észleli a jelszó szoftver, amelyet más erdőkben, függetlenül az Active Directory bizalmi kapcsolati konfigurációkat.
 
 ## <a name="read-only-domain-controllers"></a>Írásvédett tartományvezérlők
 
-Jelszó changes\sets soha nem feldolgozása, és megőrzi a írásvédett tartományvezérlők (RODC-k); Ehelyett ezeket a rendszer továbbítja az írható tartományvezérlő. Ezért van, a tartományvezérlő ügynök szoftver telepítéséhez az RODC-k nem szükséges.
+Jelszó-módosítások vagy beállítja nem feldolgozása, és megőrzi a írásvédett tartományvezérlők (RODC-k). Írható tartományvezérlők továbbítja azokat. Így nem kell a tartományvezérlő ügynök szoftver telepítéséhez az RODC-k.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-Magas rendelkezésre állás az Azure AD jelszóvédelem biztosítása a fő aggodalma a proxy kiszolgálók rendelkezésre állásának esetén egy erdő tartományvezérlői próbál töltse le az új szabályzatok vagy más adatokat az Azure-ból. Minden tartományvezérlő ügynök egyszerű Ciklikus időszeleteléses stílus algoritmust használ, mely proxykiszolgáló hívást, és kihagyja keresztül, amelyek nem válaszolnak proxykiszolgálók meghatározásakor. A legtöbb teljes csatlakoztatott Active Directory-környezetekben a kifogástalan állapotú replikáció (-directory és a sysvol-állapot) két (2) proxy kiszolgálók rendelkezésre állási, valamint az új szabályzatokat és az egyéb adatok így időben letöltések elegendőnek kell lennie. A kívánt további proxy kiszolgálók, is üzembe helyezhetők.
+A jelszavas védelem fő rendelkezésre állás miatt aggódnának proxy kiszolgálók rendelkezésre állásának esetén az erdőben lévő tartományvezérlők meg új szabályzatok vagy más adatokat letölteni az Azure-ból. Minden tartományvezérlő ügynök egyszerű ciklikus multiplexelés-stílusú algoritmust használ, mely proxykiszolgáló hívása során. Az ügynök kihagyja a proxykiszolgálók, amely nem válaszol. A legtöbb teljes csatlakoztatott Active Directory-környezetek könyvtárat és a sysvol mappa állapot kifogástalan állapotú replikáció rendelkezik a két proxykiszolgáló ez elegendő rendelkezésre állásának biztosításához. Ennek eredményeként az új szabályzatok időben történő letöltését és egyéb adatokat. Azonban telepíthet további proxykiszolgálót.
 
-A magas rendelkezésre állású vonatkozó szokásos problémákat vannak hivatottak DC ügynökszoftver kialakítását. A tartományvezérlő-ügynök a legutóbb letöltött jelszóházirend tartalmazó helyi gyorsítótár tárolja. Akkor is, ha a proxykiszolgálók valamilyen okból elérhetetlenné regisztrált, a tartományvezérlő-ügynökök továbbra is a gyorsítótárazott jelszóházirend kényszerítése. Egy ésszerű frissítési gyakoriság a jelszóházirendek nagyméretű környezetben általában a ahhoz a nap, óra nem vagy kisebb. Ezért a proxykiszolgálók rövid valamilyen okból kimaradás lép, nem váltják ki jelentős hatással az Azure AD-jelszó protection szolgáltatást vagy a biztonsági előnyöket működését.
+A kialakítás a tartományvezérlő ügynök szoftver csökkenti a szokásos problémák kapcsolódó, magas rendelkezésre állású. A tartományvezérlő-ügynök a legutóbb letöltött jelszóházirend tartalmazó helyi gyorsítótár tárolja. Akkor is, ha a proxykiszolgálók elérhetetlenné regisztrált, a tartományvezérlő-ügynökök továbbra is a gyorsítótárazott jelszóházirend kényszerítése. Egy ésszerű frissítési gyakoriság a jelszóházirendek nagy központi telepítés rendszer általában *nap*, nem óra vagy kevesebb. Így rövid valamilyen okból kimaradás lép a proxykiszolgálók nem jelentős hatással vannak az Azure AD jelszóvédelem.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy telepítette a szolgáltatások a helyi kiszolgálóit az Azure AD jelszó-védelemhez szükséges végezze el a [utáni telepítse a konfigurációs és jelentéskészítési információkat összegyűjtési](howto-password-ban-bad-on-premises-operations.md) a telepítés befejezéséhez.
+Most, hogy telepítette a szolgáltatásokat, amelyek a helyszíni kiszolgálókon kell az Azure AD jelszóvédelem [hajtsa végre a telepítés utáni konfigurációs és információk jelentéséért összegyűjtési](howto-password-ban-bad-on-premises-operations.md) a telepítés befejezéséhez.
 
 [Az Azure AD jelszóvédelem fogalmi áttekintése](concept-password-ban-bad-on-premises.md)

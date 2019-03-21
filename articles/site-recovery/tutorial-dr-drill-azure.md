@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c01cc6bd6244bcaa8d33baead35ac2a1dadc3d7a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: MT
+ms.openlocfilehash: e3a2b45e2039c5cabaa7c507c85a045ca73add83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970797"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993939"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
@@ -23,10 +23,10 @@ Ebben a cikkben bemutatjuk, hogyan futtathat egy helyszíni gépről az Azure-ba
 Ez az oktatóanyag a negyedik rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware vagy Hyper-V virtuális gépekhez.
 
 Az oktatóanyag feltételezi, hogy az első három oktatóanyag végére ért:
-    - Az [első oktatóanyagban](tutorial-prepare-azure.md) konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket.
-    - A [második oktatóanyagban](vmware-azure-tutorial-prepare-on-premises.md) helyszíni összetevőket készítettünk elő egy vészhelyreállításhoz, és áttekintettük az előfeltételeket.
-    - A [harmadik oktatóanyagban](vmware-azure-tutorial.md) beállítottuk és engedélyeztük a replikációt a helyszíni VMware virtuális gépünkhöz.
-    - Az oktatóanyagokat úgy terveztük meg, hogy **az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat** mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha további információt szeretne a feladatátvételi teszt lépéseiről, olvassa el az [útmutatót](site-recovery-test-failover-to-azure.md).
+- Az [első oktatóanyagban](tutorial-prepare-azure.md) konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket.
+- A [második oktatóanyagban](vmware-azure-tutorial-prepare-on-premises.md) helyszíni összetevőket készítettünk elő egy vészhelyreállításhoz, és áttekintettük az előfeltételeket.
+- A [harmadik oktatóanyagban](vmware-azure-tutorial.md) beállítottuk és engedélyeztük a replikációt a helyszíni VMware virtuális gépünkhöz.
+- Az oktatóanyagokat úgy terveztük meg, hogy **az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat** mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha további információt szeretne a feladatátvételi teszt lépéseiről, olvassa el az [útmutatót](site-recovery-test-failover-to-azure.md).
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 

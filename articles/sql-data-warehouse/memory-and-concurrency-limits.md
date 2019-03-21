@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/04/2018
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: cc42a0289316116b843696c984f9fc3c2114eb6c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 141112b8b6b44706a750d8a97780e018d96a5006
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592893"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890790"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok
 Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok. További információt, és a alkalmazni ezeket a képességeket a számítási feladat felügyeleti csomag: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). 
@@ -70,7 +70,7 @@ A szolgáltatási szintek a Gen1 és DW6000 DW100 eső.
 | DW6000            | 60            | 1                              | 1440                           |
 
 ## <a name="concurrency-maximums"></a>Párhuzamosság maximális értékei
-Annak érdekében, hogy minden egyes lekérdezés hatékonyan végrehajtásához erőforrásokkal rendelkezik, az SQL Data Warehouse egyidejű helyet foglalnak le rendel az egyes lekérdezések erőforrás-használat nyomon követi. A rendszer által lekérdezések egy üzenetsorba, akkor várjon, amíg elegendő [egyidejű helyet foglalnak le](resource-classes-for-workload-management.md#concurrency-slots) érhetők el. Egyidejű helyet foglalnak le a CPU-rangsorolás is meghatározza. További információkért lásd: [a számítási feladatok elemzése](analyze-your-workload.md)
+Annak érdekében, hogy minden egyes lekérdezés hatékonyan végrehajtásához erőforrásokkal rendelkezik, az SQL Data Warehouse egyidejű helyet foglalnak le rendel az egyes lekérdezések erőforrás-használat nyomon követi. A rendszer lekérdezések alapján, fontosság és egyidejű helyet foglalnak le egy várólistába helyezi. Lekérdezések várakozhasson a várólistán addig, amíg elegendő egyidejű helyet foglalnak le nem érhető el. [Fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és egyidejű helyet foglalnak le a CPU-rangsorolás határozza meg. További információkért lásd: [a számítási feladatok elemzése](analyze-your-workload.md)
 
 ### <a name="gen2"></a>Gen2
  

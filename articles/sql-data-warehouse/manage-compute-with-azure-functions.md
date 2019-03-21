@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470195"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870930"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Az Azure Functions használatával kezelheti a számítási erőforrásokat az Azure SQL Data Warehouse
 
@@ -57,14 +57,14 @@ Miután üzembe helyezte a sablont, három új erőforrást találni: egy ingyen
 
 4. Az ütemezési területen adja meg az SQL Data Warehouse vertikális felskálázásának gyakoriságát CRON-kifejezésként. 
 
-  ![Függvény ütemezésének módosítása](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![Függvény ütemezésének módosítása](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  A `schedule` értéke egy [CRON-kifejezés](http://en.wikipedia.org/wiki/Cron#CRON_expression), amely az alábbi hat mezőt tartalmazza: 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   A `schedule` értéke egy [CRON-kifejezés](https://en.wikipedia.org/wiki/Cron#CRON_expression), amely az alábbi hat mezőt tartalmazza: 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  Ha például *"0 30 9 ** 1-5"* tükrözné eseményindító minden hétköznap 9:30 -kor. További információért tekintse meg az Azure Functions [ütemezési példákat][schedule examples] ismertető leírását.
+   Ha például *"0 30 9 ** 1-5"* tükrözné eseményindító minden hétköznap 9:30 -kor. További információért tekintse meg az Azure Functions [ütemezési példákat][schedule examples] ismertető leírását.
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet idő módosítása

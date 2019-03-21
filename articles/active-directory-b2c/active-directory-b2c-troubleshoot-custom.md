@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1133bdb3c5d708710a556f68e4ac5c57d2dc3dc9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a6ec4c7d239754fe3211b528dd0ac64ee150ad3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153248"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089369"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Naplók gyűjtése
 
@@ -44,31 +44,31 @@ Az Azure AD B2C szolgáltatás adatokat küld az Application Insights támogatja
 1. Nyissa meg a helyreállítási pont Védettként fájlt (például SignUpOrSignin.xml).
 1. A következő attribútumok hozzáadása a `<TrustFrameworkPolicy>` elem:
 
-  ```XML
-  DeploymentMode="Development"
-  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  ```
+   ```XML
+   DeploymentMode="Development"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+   ```
 
 1. Ha már nem létezik, adjon hozzá egy alárendelt csomópont `<UserJourneyBehaviors>` , a `<RelyingParty>` csomópont. Található után azonnal kell lennie a `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
 2. Adja hozzá a következő csomópont gyermekeként a `<UserJourneyBehaviors>` elemet. Cserélje le `{Your Application Insights Key}` együtt a **kialakítási kulcs** Application Insights az előző szakaszban beszerzett.
 
-  ```XML
-  <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-  ```
+   ```XML
+   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   ```
 
-  * `DeveloperMode="true"` ApplicationInsights fejlesztéshez, de korlátozott nagy mennyiségben jó gyorsíthatja fel a telemetriát a feldolgozási folyamat keresztül közli.
-  * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájl (nem kötelező) oldal nézet és az ügyféloldali hibák nyomon követéséhez.
-  * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON, egyéni eseményt küld az Application Insights.
-Minta:
+   * `DeveloperMode="true"` ApplicationInsights fejlesztéshez, de korlátozott nagy mennyiségben jó gyorsíthatja fel a telemetriát a feldolgozási folyamat keresztül közli.
+   * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájl (nem kötelező) oldal nézet és az ügyféloldali hibák nyomon követéséhez.
+   * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON, egyéni eseményt küld az Application Insights.
+   Minta:
 
-  ```XML
-  <TrustFrameworkPolicy
+   ```XML
+   <TrustFrameworkPolicy
     ...
     TenantId="fabrikamb2c.onmicrosoft.com"
     PolicyId="SignUpOrSignInWithAAD"
     DeploymentMode="Development"
     UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-  >
+   >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,8 +76,8 @@ Minta:
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-  </TrustFrameworkPolicy>
-  ```
+   </TrustFrameworkPolicy>
+   ```
 
 3. A szabályzat feltöltése.
 

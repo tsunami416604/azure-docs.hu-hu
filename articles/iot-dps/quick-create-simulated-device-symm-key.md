@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5899b2b667df4800bf98aa6ed7b70f2f8ba4f931
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 7d56f01aabe77680ed78927848668457344a0f2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337104"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080295"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok
 
@@ -114,15 +114,15 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
-    - **Mechanizmus**: Válassza ki **szimmetrikus kulcs** elemet az identitás igazolási *mechanizmus*.
+   - **Mechanizmus**: Válassza ki **szimmetrikus kulcs** elemet az identitás igazolási *mechanizmus*.
 
-    - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
+   - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
 
-    - **Regisztrációs azonosító**: Adja meg a regisztrációs Azonosítót a regisztráció azonosításához. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
+   - **Regisztrációs azonosító**: Adja meg a regisztrációs Azonosítót a regisztráció azonosításához. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
 
-    - **IoT Hub-Eszközazonosító:** Adjon meg egy eszközazonosítót. Például: **device-007**
+   - **IoT Hub-Eszközazonosító:** Adjon meg egy eszközazonosítót. Például: **device-007**
 
-    ![Egyéni regisztráció hozzáadása szimmetrikus kulcsú igazoláshoz a Portalon](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
+     ![Egyéni regisztráció hozzáadása szimmetrikus kulcsú igazoláshoz a Portalon](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
 4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. A Szimmetrikus kulcsot használó eszközregisztráció **symm-key-device-007** néven jelenik meg az *Egyéni beléptetések* lap *Regisztrációs azonosító* oszlopában. 
 

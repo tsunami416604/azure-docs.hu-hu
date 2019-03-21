@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 85dca677238070ded13b59faf9a13081c2409987
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890858"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286431"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -102,19 +102,12 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **5. ok: Biztonsági mentési szolgáltatás nem rendelkezik engedéllyel a régi visszaállítási pontok törléséhez egy erőforrás-csoport zárolás miatt** <br>
 **6. ok: [A virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – a jelenleg az Azure Backup nem támogatja a 1023GB-nál nagyobb lemezméretek
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize – a jelenleg az Azure Backup nem támogatja a 4095GB-nál nagyobb lemezméretek
 
 **Hibakód:**: UserErrorUnsupportedDiskSize <br>
-**Chybová zpráva**: Az Azure Backup jelenleg nem támogatja az 1023 GB-nál nagyobb adatlemezeket <br>
+**Chybová zpráva**: Jelenleg az Azure Backup nem támogatja a 4095GB-nál nagyobb lemezméretek <br>
 
-A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az azonnali visszaállítása az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azonnali visszaállítása frissítése biztosít akár 4 TB-os támogatja, ez [cikk](backup-instant-restore-capability.md#upgrading-to-instant-restore). A frissítés befejezése után az a funkció elérhetővé tételéhez előfizetés akár két órát vesz igénybe. Adjon meg elegendő puffer, mielőtt újra megpróbálja a műveletet.  
-
-## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – a jelenleg az Azure Backup nem támogatja a Standard SSD-lemez
-
-**Hibakód:**: UserErrorStandardSSDNotSupported <br>
-**Chybová zpráva**: Jelenleg az Azure Backup nem támogatja a Standard SSD-lemez <br>
-
-Jelenleg az Azure Backup támogatja Standard SSD-lemezeket csak a frissített tárak [azonnali visszaállítása](backup-instant-restore-capability.md).
+A biztonsági mentési művelet sikertelen lehet, ha a virtuális gép biztonsági mentésével a lemez mérete nagyobb 4095GB-nál. Nagyméretű lemezek támogatása hamarosan elérhető lesz.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nem lehet inicializálni a biztonsági mentés, mivel egy másik biztonsági mentési művelet folyamatban van
 
@@ -200,7 +193,7 @@ A következő feltételek előfordulhat, hogy a pillanatkép-feladat meghiúsul:
 | Ok | Megoldás |
 | --- | --- |
 | A virtuális gép állapota helytelenül van jelenteni, mert a virtuális gép le van állítva a távoli asztal protokoll (RDP). | Ha leállítja a virtuális Géphez RDP, ellenőrizze a portálra, ellenőrizze, hogy a virtuális gép állapota megfelelő. Ha nem megfelelő, állítsa le a virtuális Gépet a portál használatával a **leállítási** lehetőség a VM-irányítópulton. |
-| A virtuális gép nem olvasható be a gazdagép vagy a háló címét a DHCP-Kiszolgálótól. | A Vendég az IaaS virtuális gépek biztonsági mentésének működéséhez engedélyezni kell a DHCP. Ha a virtuális gép nem olvasható be a gazdagép vagy a háló cím 245 DHCP-válaszból, nem töltse le és futtassa a kiterjesztések. Statikus magánhálózati IP-cím van szüksége, ha úgy konfigurálja, keresztül a **az Azure Portal** vagy **PowerShell** , és győződjön meg arról, hogy a virtuális gép a DHCP-beállítás engedélyezve van. [További](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) beállításáról a statikus IP-címet a PowerShell használatával.
+| A virtuális gép nem olvasható be a gazdagép vagy a háló címét a DHCP-Kiszolgálótól. | A Vendég az IaaS virtuális gépek biztonsági mentésének működéséhez engedélyezni kell a DHCP. Ha a virtuális gép nem olvasható be a gazdagép vagy a háló cím 245 DHCP-válaszból, nem töltse le és futtassa a kiterjesztések. Statikus magánhálózati IP-cím van szüksége, ha úgy konfigurálja, keresztül a **az Azure portal** vagy **PowerShell** , és győződjön meg arról, hogy a virtuális gép a DHCP-beállítás engedélyezve van. [További](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) beállításáról a statikus IP-címet a PowerShell használatával.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>A biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen
 Bővítmények nem tölthető be, ha a biztonsági mentés sikertelen, mert nem lehet egy pillanatképet készíteni.

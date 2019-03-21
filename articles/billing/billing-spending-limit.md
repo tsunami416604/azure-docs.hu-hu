@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
-ms.openlocfilehash: bfc6bf8cab1358c47e66660303f3303f4e9c763a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845372"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Tudnivalók az Azure-költségkeretről és annak eltávolításáról
 
@@ -46,7 +46,7 @@ A költségkeretet bármikor eltávolíthatja mindaddig, amíg van érvényes fi
 Az alábbi lépéseket követve távolíthatja el a költségkeretet:
 
 1. Jelentkezzen be a [Fiókközpontban](https://account.windowsazure.com/Subscriptions).
-1. Válasszon egy előfizetést. Ha az előfizetés le van tiltva, hogy a rendszer elérte a költségkeret miatt, kattintson a következő értesítésre: „Subscription reached the Spending Limit and has been disabled to prevent charges” (Az előfizetés a költségkeret túllépése miatt és a további díjak elkerülése végett le van tiltva.) szövegű értesítésre. Ellenkező esetben kattintson a **távolítsa el a költségkeretet** a a **ELŐFIZETÉS állapota** területen.
+1. Válasszon egy előfizetést. Ha az előfizetés a költségkeret elérése miatt le van tiltva, kattintson erre az értesítésre: „Subscription reached the Spending Limit and has been disabled to prevent charges” (Az előfizetés a költségkeret túllépése miatt és a további díjak elkerülése végett le van tiltva.) szövegű értesítésre. Ellenkező esetben kattintson a **távolítsa el a költségkeretet** a a **ELŐFIZETÉS állapota** területen.
 1. Válasszon egy Önnek megfelelő lehetőséget.
 
 ![A költségkeret eltávolítása a megfelelő beállítás kiválasztása](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -86,4 +86,4 @@ Egyéni költségkeretek nem érhetők el.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

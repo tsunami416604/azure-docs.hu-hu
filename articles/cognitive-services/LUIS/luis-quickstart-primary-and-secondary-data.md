@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732704"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100292"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 
@@ -127,7 +127,7 @@ Egyszerű entitások példákat szükség van egy előrejelzési megbízhatónak
     |Jelentkezés a csempéző állásra.|csempéző|
     |Csatoltam az önéletrajzom a tájépítészi álláshoz.|tájépítész|
     |Csatoltam az önéletrajzom a biológiaprofesszori álláshoz.|biológiaprofesszor|
-    |Szeretnék jelentkezni a fényképészi állásra.|fényképész|git 
+    |Szeretnék jelentkezni a fényképészi állásra.|fényképész|
 
 ## <a name="mark-job-entity-in-other-intents"></a>Megjelölés feladat entitás más leképezések
 

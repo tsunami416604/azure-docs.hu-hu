@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d1ff4b44ff352742ee91b61c0c774cfe7c3f9d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 28f9c17e21db5a46ad01fd1b318c52a3a721f8b9
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181354"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226963"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Felügyelt identitások az Azure-erőforrások konfigurálása az Azure virtuális gép PowerShell-lel
 
@@ -46,7 +46,7 @@ Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le az Azur
 
 Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt identitással engedélyezve van, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) szerepkör-hozzárendelés.  Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
 
-1. Tekintse meg a következő Azure virtuális gép gyors útmutatók elvégzése csak a szükséges szakaszok egyikét ("Jelentkezzen be az Azure-bA", "Create resource group", "Létrehozása a hálózati csoport", "A virtuális gép létrehozása").
+1. Tekintse meg a következő Azure virtuális gép gyors útmutatók elvégzése csak a szükséges szakaszok ("Sign-in Azure-bA", "Create erőforráscsoport", "Hálózati csoport létrehozása", "létrehozása a virtuális gép") egyik.
     
     Ha az "Az VM létrehozása" szakaszban kap, a módosítások kisebb a [New-AzVMConfig](/powershell/module/az.compute/new-azvm) parancsmag szintaxisát. Ügyeljen arra, hogy adjon hozzá egy `-AssignIdentity:$SystemAssigned` paramétert a virtuális gép a rendszer által hozzárendelt identitással engedélyezve van, például:
       
@@ -57,14 +57,8 @@ Egy Azure virtuális gép létrehozása felügyelt rendszer által hozzárendelt
    - [Hozzon létre egy Windows virtuális gépet PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md)
    - [Hozzon létre egy Linux rendszerű virtuális gép PowerShell-lel](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Nem kötelező) Adja hozzá a felügyelt identitások az Azure-erőforrások virtuális gép (elavult. január 2019 a tervezett) bővítmény használatával a `-Type` paraméterrel a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok. A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény elavult a január 2019 tervezünk. 
+> [!NOTE]
+> Előfordulhat, hogy is üzembe helyezheti a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény, de azt hamarosan elavulttá válik. Hitelesítés az Azure Instance Metadata identitás végpont használatát javasoljuk. További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS végpontra hitelesítéshez](howto-migrate-vm-extension.md).
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>A meglévő Azure virtuális gép felügyelt identitás alapértelmezett engedélyezése
 
@@ -83,14 +77,8 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás eredetileg an�
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Nem kötelező) Adja hozzá a felügyelt identitások az Azure-erőforrások virtuális gép (elavult. január 2019 a tervezett) bővítmény használatával a `-Type` paraméterrel a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
-    > [!NOTE]
-    > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok.
+> [!NOTE]
+> Előfordulhat, hogy is üzembe helyezheti a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény, de azt hamarosan elavulttá válik. Hitelesítés az Azure Instance Metadata identitás végpont használatát javasoljuk. További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS végpontra hitelesítéshez](howto-migrate-vm-extension.md).
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>Virtuális gép rendszer által hozzárendelt identitással hozzáadása csoporthoz
 
@@ -146,11 +134,8 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény eltávolítása felhasználói a - Name kapcsolót a [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) parancsmagot, a bővítmény hozzáadásakor használt azonos név megadása:
-
-   ```powershell
-   Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
-   ```
+> [!NOTE]
+> Ha a felügyelt identitás (elavult) a Virtuálisgép-bővítmény Azure-erőforrások kiépítése, el kell távolítania a a [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension). További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS hitelesítéshez](howto-migrate-vm-extension.md).
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
@@ -160,7 +145,7 @@ Ebben a szakaszban megismerheti, hogyan adhat hozzá, és a egy felhasználó á
 
 A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális Gépet, a fióknak rendelkeznie kell a [virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) és [felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör-hozzárendeléseket. Nincsenek további Azure AD-címtár szerepkör-hozzárendelések szükségesek.
 
-1. Tekintse meg a következő Azure virtuális gép gyors útmutatók elvégzése csak a szükséges szakaszok egyikét ("Jelentkezzen be az Azure-bA", "Create resource group", "Létrehozása a hálózati csoport", "A virtuális gép létrehozása"). 
+1. Tekintse meg a következő Azure virtuális gép gyors útmutatók elvégzése csak a szükséges szakaszok ("Sign-in Azure-bA", "Create erőforráscsoport", "Hálózati csoport létrehozása", "létrehozása a virtuális gép") egyik. 
   
     Ha az "Az VM létrehozása" szakaszban kap, a módosítások kisebb a [ `New-AzVMConfig` ](/powershell/module/az.compute/new-azvm) parancsmag szintaxisát. Adja hozzá a `-IdentityType UserAssigned` és `-IdentityID ` a virtuális gép egy felhasználó által hozzárendelt identitással a paramétereket.  Cserélje le `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, és `<USER ASSIGNED IDENTITY NAME>` a saját értékeire.  Példa:
     
@@ -171,14 +156,8 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
     - [Hozzon létre egy Windows virtuális gépet PowerShell-lel](../../virtual-machines/windows/quick-create-powershell.md)
     - [Hozzon létre egy Linux rendszerű virtuális gép PowerShell-lel](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Nem kötelező) Adja hozzá az Azure-erőforrások virtuális gép bővítmény használatával felügyelt identitást a `-Type` paraméterrel a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Ügyeljen arra, hogy adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helye:
-      > [!NOTE]
-    > Ez a lépés nem kötelező használni, mivel az Azure példány metaadat szolgáltatás (IMDS) identitás-végpont használatával, valamint a jogkivonatok. A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény elavult a január 2019 tervezünk.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Előfordulhat, hogy is üzembe helyezheti a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény, de azt hamarosan elavulttá válik. Hitelesítés az Azure Instance Metadata identitás végpont használatát javasoljuk. További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS végpontra hitelesítéshez](howto-migrate-vm-extension.md).
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése egy meglévő Azure virtuális Gépen
 
@@ -193,7 +172,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
 2. Hozzon létre egy felügyelt identitás felhasználó által hozzárendelt a [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) parancsmagot.  Megjegyzés: a `Id` a kimenetben, mert szüksége lesz a következő lépésben.
 
    > [!IMPORTANT]
-   > Felhasználó által hozzárendelt felügyelt identitás létrehozása csak alfanumerikus és kötőjel (0-9 vagy a – z vagy A – Z vagy a-) karaktert. Ezenkívül név legfeljebb 24 karakter hosszúságú VM/VMSS megfelelő működéséhez a hozzárendelés legyen. Térjen vissza frissítésekért. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+   > Felhasználó által hozzárendelt felügyelt identitás létrehozása csak alfanumerikus karakterek, aláhúzásjel és kötőjel (0-9 vagy a – z vagy A-Z, \_ vagy -) karaktert. Ezenkívül névnek kell lennie a 3. legfeljebb 128 karakter hosszúságú a hozzárendelés VM/VMSS megfelelően működjön. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
 
    ```powershell
    New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
@@ -208,12 +187,8 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Adja hozzá a felügyelt identitás, az Azure-erőforrások virtuális gép (elavult. január 2019 a tervezett) bővítmény használatával a `-Type` paraméterrel a [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) parancsmagot. "ManagedIdentityExtensionForWindows" vagy "ManagedIdentityExtensionForLinux", a virtuális gép, típusától függően adja át, és adja neki a használatával a `-Name` paraméter. A `-Settings` paraméter adja meg a token beszerzéséhez az OAuth jogkivonat-végpont által használt port. Adja meg a megfelelő `-Location` paraméter, egyező a meglévő virtuális gép helyét.
-
-   ```powershell
-   $settings = @{ "port" = 50342 }
-   Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
-   ```
+> [!NOTE]
+> Előfordulhat, hogy is üzembe helyezheti a felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény, de azt hamarosan elavulttá válik. Hitelesítés az Azure Instance Metadata identitás végpont használatát javasoljuk. További információkért lásd: [áttelepítése a Virtuálisgép-bővítmény az Azure IMDS végpontra hitelesítéshez](howto-migrate-vm-extension.md).
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Távolítsa el a felhasználó által hozzárendelt felügyelt identitás Azure virtuális gépből
 

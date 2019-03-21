@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 574394000c45ca2c12c309c4536a6649bd3fcb76
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e44beed592e013a089011c2a774b7300f2b3f854
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101992"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Egy application gateway létrehozása belső átirányítás, az Azure CLI használatával
 
-Az Azure CLI-vel való konfigurálásához használható [webes forgalom átirányítása](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ebben az oktatóanyagban adja meg a háttérkészlethez egy virtuálisgép-méretezési csoportot. Ezután konfigurálnia figyelőket és szabályokat, hogy a webes forgalom érkezik a megfelelő készlet saját tartományok alapján. Ez az oktatóanyag feltételezi, hogy a saját több tartományok és felhasználási mintái *www.contoso.com* és *www.contoso.org*.
+Az Azure CLI-vel való konfigurálásához használható [webes forgalom átirányítása](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ebben az oktatóanyagban adja meg a háttérkészlethez egy virtuálisgép-méretezési csoportot. Ezután konfigurálnia figyelőket és szabályokat, hogy a webes forgalom érkezik a megfelelő készlet saját tartományok alapján. Ez az oktatóanyag feltételezi, hogy a saját több tartományok és felhasználási mintái *www\.contoso.com* és *www\.contoso.org*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -101,7 +101,7 @@ Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmaz�
 
 ## <a name="add-listeners-and-rules"></a>Figyelők és szabályok hozzáadása 
 
-A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában figyelői jönnek létre, a tartományra *www.contoso.com* és *www.contoso.org*.
+A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre a két tartományhoz. Ebben a példában figyelői jönnek létre, a tartományra *www\.contoso.com* és *www\.contoso.org*.
 
 Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal.
 
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Az átirányítási konfiguráció hozzáadása
 
-Adja hozzá az átirányítási konfiguráció, amely érkező forgalmat küld *www.consoto.org* a figyelőhöz a *www.contoso.com* az application gateway-t a [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Adja hozzá az átirányítási konfiguráció, amely érkező forgalmat küld *www\.consoto.org* a figyelőhöz a *www\.contoso.com* az application gatewayhez [az network application-gateway átirányítási konfiguráció létrehozása](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -217,7 +217,7 @@ Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Módosítsa a címet a tartomány, például http://www.contoso.org és megtekintheti, hogy a forgalom átirányította a vissza a www.contoso.com tartozó figyelőt.
+Módosítsa a címet a tartomány, például http://www.contoso.org és megtekintheti, hogy a forgalom átirányította a térjen vissza a figyelő a www\.contoso.com.
 
 ## <a name="next-steps"></a>További lépések
 

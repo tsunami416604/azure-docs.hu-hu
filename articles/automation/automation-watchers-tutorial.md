@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436756"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002159"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Az Azure Automation figyelőjét fájl változásainak követése a helyi számítógép-feladatok létrehozása
 
@@ -89,8 +89,8 @@ A figyelőfeladat két részt tartalmaz. A megfigyelő és a műveletet. A figye
 1. Válassza ki **művelet beállítása** , és válassza ki a "Folyamat-NewFile" runbook.
 1. Adja meg a következő értékeket a Paraméterek:
 
-   ***EVENTDATA** – hagyja üresen. Adatok a megfigyelő runbook átadva a.  
-   ***Futtatási beállítások** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
+   * **EVENTDATA** – hagyja üresen. Adatok a megfigyelő runbook átadva a.  
+   * **Futtatási beállítások** -hagyja meg az Azure, az Automation szolgáltatásban futtatja a runbookot.
 
 1. Kattintson a **OK**, majd válassza ki a figyelő lapra való visszatéréshez.
 1. Kattintson a **OK** a figyelőfeladat létrehozása.

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339232"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993934"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -29,12 +29,12 @@ Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure
 | --- | --- | --- |
 | **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
-| **Nagyvállalati Szerződés (EA)** | Nagyvállalati Szerződés – Fejlesztés és tesztelés | MS-AZR-0148P |
+| **Nagyvállalati Szerződés (EA)** | Enterprise Dev/Test | MS-AZR-0148P |
 | **Nagyvállalati Szerződés (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
 | **A Microsoft Developer Network (MSDN)** | [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
 | **Pay-As-You-Go** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
-| **Pay-As-You-Go** | [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
+| **Pay-As-You-Go** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
 | **Pay-As-You-Go** | [Ingyenes próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
 | **Pay-As-You-Go** | [Azure in Open licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
 | **Pay-As-You-Go** | [Az Azure diákoknak](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
@@ -52,7 +52,7 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 | **Cloud Solution Provider (CSP)** | Microsoft Azure | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Germany a Microsoft Cloud Germany felhőszolgáltató programjában | MS-AZR-DE-0145P |
-| **Pay-As-You-Go** | Azure diákoknak kezdő csomag | MS-AZR-0144P |
+| **Pay-As-You-Go** | Azure for Students Starter | MS-AZR-0144P |
 | **Pay-As-You-Go** | [A Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Támogatási csomagok** | Standard szintű támogatás | MS-AZR-0041P |
 | **Támogatási csomagok** | A közvetlen professzionális támogatás | MS-AZR-0042P |
@@ -95,7 +95,7 @@ Az alábbi táblázatokban foglalt, vagy nem Költségkezelés az adatokat.
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Névleges használati adatfrissítési ütemterv
 
-Felhasználási és érhetők el az adatok Költségkezelés + számlázás az Azure Portalon, és [API-kat támogató](https://aka.ms/costmgmt/docs). A következő szempontokat tartsa szem előtt, a költségek áttekintése:
+Felhasználási és érhetők el az adatok Költségkezelés + számlázás az Azure Portalon, és [API-kat támogató](index.yml). A következő szempontokat tartsa szem előtt, a költségek áttekintése:
 
 - Becsült költségek a jelenlegi számlázási időszak napi 6 alkalommal frissülnek.
 - Becsült költségek a jelenlegi számlázási időszak szerint további használati díjak módosíthatók.

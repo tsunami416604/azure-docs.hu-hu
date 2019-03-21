@@ -6,30 +6,30 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 12/27/2018
+ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8fea062e2c72410b13fa70cc5cad22b7e677086b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211848"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855282"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása        
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
-Ez a rövid útmutató egy Azure-beli virtuális gép másik Azure-régióba való replikálását ismerteti.
+Ez a rövid útmutató ismerteti, hogyan beállításához vész-helyreállítási egy Azure virtuális gép egy másik régióba való replikálásával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!NOTE]
-> A cikk az új felhasználóknak hivatott bemutatni az Azure Site Recovery használatát az alapértelmezett beállításokkal és minimális testreszabással. Ha többet szeretne megtudni a különféle testreszabható beállításokról, tekintse meg [az Azure-beli virtuális gépek replikálásának engedélyezését bemutató oktatóanyagot](azure-to-azure-tutorial-enable-replication.md).
+> Ez a cikk egy új felhasználók gyors bemutató áll. A legegyszerűbb út az alapértelmezett beállításokat, és minimális testreszabási használ.  A teljesebb forgatókönyv felülvizsgálati [jelen oktatóanyagban](azure-to-azure-tutorial-enable-replication.md).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure-beli virtuális gép replikálásának engedélyezése
 
@@ -54,8 +54,8 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
 
 Az elsődleges régióban lévő virtuális gép replikálása leáll, ha letiltja a gép esetében a replikálást:
 
-- A forrás replikálási beállításai automatikusan törlődnek. Vegye figyelembe, hogy a Site Recovery-bővítmény, amely telepítve van a replikáció során nem törlődnek, és manuálisan el kell távolítani. 
-- Emellett leáll a virtuális gép Site Recovery-számlázása is.
+- A forrás replikálási beállításai automatikusan törlődnek. A replikáció során a virtuális gépen telepített Site Recovery-bővítmény nem törlődnek, és manuálisan kell eltávolítani. 
+- Leállítja a virtuális gép Site Recovery-számlázását.
 
 A következő replikáció leállítása
 
@@ -66,7 +66,7 @@ A következő replikáció leállítása
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy virtuális gépet replikált egy másodlagos régióba. Most megismerheti a további beállításokat, és megpróbálhatja Azure-beli virtuális gépek egy csoportját replikálni helyreállítási terv alapján.
+Ebben a rövid útmutatóban egy virtuális gépet replikált egy másodlagos régióba. Most próbáljon meg egy több Azure virtuális gépet a helyreállítási terv használatával replikál.
 
 > [!div class="nextstepaction"]
 > [Azure-beli virtuális gépek vészhelyreállításának konfigurálása](azure-to-azure-tutorial-enable-replication.md)

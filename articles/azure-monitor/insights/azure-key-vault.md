@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: c3148ebe11ba0e23cbded5965234ece9fb6082aa
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b2c43ff2ae45b4adccb8f19873070a4c3a9dbe99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078764"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
@@ -138,13 +138,13 @@ A frissített megoldás használata:
 1. [A Key Vaultból közvetlenül a Log Analyticshez való küldésének diagnosztika konfigurálása](#enable-key-vault-diagnostics-in-the-portal)  
 2. Az Azure Key Vault megoldás engedélyezése leírt folyamatot követve [kövesse a megoldástárban adja hozzá a Log Analytics-megoldások](../../azure-monitor/insights/solutions.md)
 3. Bármely mentett lekérdezések, az irányítópultok vagy a riasztások az új adattípus használandó frissítése
-  + A típus a módosítása: A: AzureDiagnostics KeyVaults. Az erőforrástípus segítségével szűrheti a Key Vault-naplók.
-  - Helyett: `KeyVaults`, használata `AzureDiagnostics | where ResourceType'=="VAULTS"`
-  + Mezők: (A mezőnevek olyan kis-és nagybetűket)
-  - Bármely mező, amely rendelkezik, amik utótagja \_s, \_d, vagy \_a nevét, a g módosítása az első karakter kisbetűsre
-  - Bármely mező, amely rendelkezik, amik utótagja \_o a neve, az adatok az egyes mezők a beágyazott mezők neve alapján van felosztva. Például az egyszerű felhasználónév a hívó mező tárolva van `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
-   - A mező CallerIpAddress CallerIPAddress értékre módosult
-   - A mező RemoteIPCountry már nem található
+   + A típus a módosítása: A: AzureDiagnostics KeyVaults. Az erőforrástípus segítségével szűrheti a Key Vault-naplók.
+   + Helyett: `KeyVaults`, használata `AzureDiagnostics | where ResourceType'=="VAULTS"`
+   + Mezők: (A mezőnevek olyan kis-és nagybetűket)
+   + Bármely mező, amely rendelkezik, amik utótagja \_s, \_d, vagy \_a nevét, a g módosítása az első karakter kisbetűsre
+   + Bármely mező, amely rendelkezik, amik utótagja \_o a neve, az adatok az egyes mezők a beágyazott mezők neve alapján van felosztva. Például az egyszerű felhasználónév a hívó mező tárolva van `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + A mező CallerIpAddress CallerIPAddress értékre módosult
+   + A mező RemoteIPCountry már nem található
 4. Távolítsa el a *Key Vault Analytics (elavult)* megoldás. Ha a Powershellt használ, használja a `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Összegyűjtött adatok, mielőtt a változás nem jelenik meg az új megoldásba. Továbbra is a régi típusú és a mezőnevek ezen adatok lekérdezéséhez.

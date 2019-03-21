@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186862"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843883"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Go használatával
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Go-alkalmazást egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Bár ez az alkalmazás Go nyelven van megírva, az API-t az szinte bármelyik programozási nyelvével kompatibilis webes RESTful szolgáltatás.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Go-alkalmazást egy keresési kérelmet küld az API-t, és bemutatja a választ. Bár ez az alkalmazás Go nyelven van megírva, az API-t az szinte bármelyik programozási nyelvével kompatibilis webes RESTful szolgáltatás.
 
 Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
@@ -309,7 +309,7 @@ func main() {
 
 ## <a name="sample-response"></a>Mintaválasz  
 
-A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a mintaválasz `result.URL` struktúrával lett megformázva, és a `BingAnswer` és a `result.Name` értékét jeleníti meg.
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. Ez a minta válasz formázni a következő használatával a `BingAnswer` struct, és megjeleníti a `result.Name` és `result.URL`.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

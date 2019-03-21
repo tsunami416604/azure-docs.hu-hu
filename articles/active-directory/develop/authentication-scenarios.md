@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244555"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295708"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -79,7 +79,7 @@ Az Azure AD az alkalmazásokat egy specifikus modell szerint képezi le, amely k
 
 Az Azure AD az alkalmazásokat absztrakt entitásokként, **alkalmazásobjektumokkal** írja le. A fejlesztők alkalmazásokkal dolgoznak. Az üzembe helyezés során az Azure AD az adott alkalmazásobjektumot tervként használva létrehoz egy **szolgáltatásnevet**, amely az alkalmazás konkrét példányát jelöli egy adott címtárban vagy bérlőn. Ez a szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen milyen tevékenységeket hajthat végre az adott célcímtárban, mely erőforrásokat érheti el, és így tovább. Az Azure AD a szolgáltatásneveket az alkalmazásobjektumokból **hozzájárulás** alapján hozza létre.
 
-Az alábbi ábrán az Azure AD hozzájárulás-alapú kiépítési folyamatának egyszerűsített vázát mutatja.
+Az alábbi ábrán az Azure AD hozzájárulás-alapú kiépítési folyamatának egyszerűsített vázát mutatja.  Két bérlőjéhez léteznek, (A és B), ahol A bérlő az alkalmazás tulajdonosa, és a bérlőtől a B bérlőhöz van hárítható el az alkalmazást egy egyszerű szolgáltatást.  
 
 ![Hozzájárulás-alapú egyszerűsített kiépítési folyamat](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
 
@@ -87,14 +87,14 @@ A kiépítési folyamat:
 
 |   |   |
 |---|---|
-| 1 | Egy B-beli felhasználó megkísérel bejelentkezni az alkalmazásba |
+| 1 | A felhasználó a bérlőtől a B bérlőhöz próbál jelentkezzen be az alkalmazás |
 | 2 | A rendszer kéri és ellenőrzi a felhasználó hitelesítő adatait |
 | 3 | A rendszer kéri a felhasználó hozzájárulását ahhoz, hogy az alkalmazás hozzáférjen a B bérlőhöz |
-| 4 | Az Azure AD az A-beli alkalmazásobjektumot tervként használva létrehoz egy szolgáltatásnevet a B-ben |
+| 4 | Azure ad-ben használja az alkalmazásobjektum a tervrajz egyszerű szolgáltatás létrehozása a bérlőtől a B bérlőhöz |
 | 5 | A felhasználó megkapja az igényelt jogkivonatot |
 |   |   |
 
-A folyamat tetszőleges mennyiségben ismételhető a többi bérlőre (C, D és így tovább) vonatkozóan. Az A címtár tárolja az alkalmazás tervét (az alkalmazásobjektumot). A többi bérlőn, amelyekre az alkalmazás hozzájárulást kapott, továbbra is a felhasználók és a rendszergazdák határozhatják meg az egyedi bérlőkön lévő megfelelő szolgáltatásnév-objektumokon keresztül, hogy az alkalmazás milyen tevékenységeket hajthat végre. További információkért lásd [az Azure AD alkalmazás- és szolgáltatásnév-objektumait](app-objects-and-service-principals.md) ismertető cikket.
+A folyamat tetszőleges mennyiségben ismételhető a többi bérlőre (C, D és így tovább) vonatkozóan. A bérlő megőrzi a tervezet az alkalmazás (alkalmazásobjektum). A többi bérlőn, amelyekre az alkalmazás hozzájárulást kapott, továbbra is a felhasználók és a rendszergazdák határozhatják meg az egyedi bérlőkön lévő megfelelő szolgáltatásnév-objektumokon keresztül, hogy az alkalmazás milyen tevékenységeket hajthat végre. További információkért lásd [az Azure AD alkalmazás- és szolgáltatásnév-objektumait](app-objects-and-service-principals.md) ismertető cikket.
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Jogcímek az Azure AD biztonsági jogkivonataiban
 
