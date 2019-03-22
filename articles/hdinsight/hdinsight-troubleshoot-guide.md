@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 17171096abd4532885e69e84ddf56399e516c84e
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 9dbc6b5de3f2050067dc558be7bffdbcad2cb4eb
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408127"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339363"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Hibaelhárítás az Azure HDInsight segítségével
 
@@ -29,7 +29,7 @@ ms.locfileid: "53408127"
 
 | További információ | Lásd a következő cikkeket: |
 | --- | --- |
-| HDInsight Linux-és optimalizálás | - [Információ a HDInsight használata Linux rendszeren](hdinsight-hadoop-linux-information.md)<br>- [Az Apache Hadoop – memória és a teljesítménnyel kapcsolatos hibaelhárítás](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Az Apache Hive-lekérdezés teljesítménye](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| HDInsight Linux-és optimalizálás | - [Információ a HDInsight használata Linux rendszeren](hdinsight-hadoop-linux-information.md)<br>- [Az Apache Hadoop – memória és a teljesítménnyel kapcsolatos hibaelhárítás](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Az Apache Hive-lekérdezés teljesítménye](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Naplók és a memóriaképek | - [Az Apache Hadoop YARN-alkalmazásnaplók elérése linuxon](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [A Linuxos Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [HDInsight-naplók elemzése](hdinsight-debug-jobs.md)|
 | Hibák | - [WebHCat-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Az Apache Hive-beállítások OutofMemory hiba javítása](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Eszközök | - [Az Apache Ambari-nézetek használata az Apache Tez-feladatok hibakereséséhez](hdinsight-debug-ambari-tez-view.md)<br>- [Az Apache Hive-lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)<br>- [Az HDInsight IntelliJ eszközzel](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Az HDInsight Eclipse eszközzel](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode-eszköz](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio eszközzel](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

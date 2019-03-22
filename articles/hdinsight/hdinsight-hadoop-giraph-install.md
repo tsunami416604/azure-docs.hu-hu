@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b46acfbfd77015193135d1a8c7646c331340145
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 96a334b4bd39513bfad128a8f1b59f319fef013e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200650"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317408"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Telepítse, és az Apache Giraph használata Windows-alapú HDInsight-fürtökön
 
@@ -49,7 +49,7 @@ Telepítheti a Giraph bármilyen típusú Azure HDInsight (Hadoop-, Storm, HBase
     |Tulajdonság|Érték|  
     |---|---|  
     |Name (Név)|Adja meg a parancsfájlművelet nevét. Ha például **Giraph telepítése**|
-    |Szkript URI-ja|Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. Ha például *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Szkript URI-ja|Adja meg az egységes erőforrás-azonosító (URI) a parancsfájlt, amely a fürt testreszabásához meghívott. For example, *https:\//hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
     |Csomóponttípus|Adja meg a csomópontok, amelyen fut a testreszabási parancsfájlt. Választhat **minden csomópont**, **csak Átjárócsomópontokhoz**, vagy **csak a munkavégző csomópontok**.
     |Paraméterek|Adja meg a paramétereket, ha a parancsfájl által igényelt. A szkriptet a Giraph telepítése nem szükséges paramétereket, így is ezt üresen hagyja.|  
 

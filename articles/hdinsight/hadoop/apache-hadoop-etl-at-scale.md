@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 7897c677df38bb9b71222730a8b6a9ea11fb40bc
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: c200ca98f2a5ea32886ec12d3e732af6598254f7
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912663"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337612"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerési, átalakítási és betöltési (ETL) ipari méretekben
 
@@ -128,7 +128,7 @@ Sqoop MapReduce importálása és exportálása az adatok párhuzamos művelet �
 
 Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás hatékonyan összegyűjtése, összevonása, és nagy mennyiségű Teljesítménynapló-adatok áthelyezését. Flume egy egyszerű és rugalmas architektúra alapján a streamelési adatok folyamatokat tartalmaz. Flume, hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és számos feladatátvételi és helyreállítási mechanizmusokat. Flume, amely lehetővé teszi, hogy az online analitikus alkalmazás egyszerű bővíthető adatok modellt használ.
 
-Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Átalakítás
 

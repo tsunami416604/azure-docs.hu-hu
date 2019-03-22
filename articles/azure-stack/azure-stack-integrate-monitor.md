@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: ff28fbb52b33308967051a37fdaa3c6c273fc282
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 64a31e0c8a36b7ea8b60f65caefba9ba15b91777
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816093"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258734"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Külső figyelő megoldás integrálása az Azure Stack használatával
 
@@ -81,8 +81,8 @@ A beépülőmodul-fájlt "Azurestack_plugin.py" adja meg a következő paraméte
 
 | Paraméter | Leírás | Példa |
 |---------|---------|---------|
-| *arm_endpoint* | Az Azure Resource Manager (rendszergazda) végpontja |https://adminmanagement.local.azurestack.external |
-| *api_endpoint* | Az Azure Resource Manager (rendszergazda) végpontja  | https://adminmanagement.local.azurestack.external |
+| *arm_endpoint* | Az Azure Resource Manager (rendszergazda) végpontja |https:\//adminmanagement.local.azurestack.external |
+| *api_endpoint* | Az Azure Resource Manager (rendszergazda) végpontja  | https:\//adminmanagement.local.azurestack.external |
 | *Tenant_id* | Felügyeleti előfizetés-azonosító | Az adminisztrátori portál vagy a Powershellen keresztül beolvasása |
 | *User_name* | Operátor előfizetés felhasználónév | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | Operátor előfizetés jelszava | SajátJelszó |
@@ -96,12 +96,12 @@ A beépülőmodul-fájlt "Azurestack_plugin.py" adja meg a következő paraméte
 
 Ha nem használja az Operations Manager, Nagios, illetve a Nagios-alapú megoldás, a PowerShell használatával széles skálájával figyelési megoldásoknak integrálása az Azure-verem engedélyezése.
 
-1. A PowerShell segítségével, győződjön meg arról, hogy rendelkezik-e [PowerShell telepített és konfigurált](azure-stack-powershell-configure-quickstart.md) számára az Azure Stack-üzemeltető környezet. Telepítse a PowerShell helyi számítógépre, amely képes elérni az erőforrás-kezelő (rendszergazda) végpont (https://adminmanagement. [régió]. [External_FQDN]).
+1. A PowerShell segítségével, győződjön meg arról, hogy rendelkezik-e [PowerShell telepített és konfigurált](azure-stack-powershell-configure-quickstart.md) számára az Azure Stack-üzemeltető környezet. Telepítse a PowerShell helyi számítógépre, amely elérheti a (rendszergazda) Resource Manager-végpontot (https:\//adminmanagement. [ [[régió]. [External_FQDN]).
 
 2. Futtassa a következő parancsok futtatásával csatlakozhat az Azure Stack-környezet az Azure Stack operátorait szerint:
 
    ```PowerShell  
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https:\//adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```

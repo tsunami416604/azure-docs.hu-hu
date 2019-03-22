@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: aad35aa7a958e8bdaf1479d1ffbbad5bf213d46a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821966"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339244"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Hibaelhárítás az Apache Spark az Azure HDInsight segítségével
 
@@ -23,7 +23,7 @@ Ismerje meg a leggyakoribb problémák és azok megoldásait az használatakor [
 
 ### <a name="resolution-steps"></a>A megoldás lépései
 
-A konfigurációs értékeket az eljárás végrehajtásához korábban be lett beállítva, a HDInsight. Határozza meg, melyik Spark konfigurációk kell beállítani, és milyen értékeket lásd: Mi az Apache Spark-alkalmazás OutofMemoryError kivétel okozza. 
+A Spark konfigurációs értékek hangolásával Apache Spark-alkalmazás OutofMemoryError kivételt elkerülése érdekében. A következő lépésekkel alapértelmezett Spark konfigurációs értékeket az Azure HDInsight: 
 
 1. Fürtök listájából válassza ki **Spark2**.
 
@@ -85,8 +85,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása a fürtök Jupyter notebook használatával
 
@@ -100,7 +99,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Egy Apache Spark-alkalmazás konfigurálása fürtökön Apache Livy használatával
@@ -117,8 +116,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Hogyan konfigurálhatom egy Apache Spark, az alkalmazás a spark-submit fürtökön?
 
@@ -134,7 +132,7 @@ Ezek a változások fürtre kiterjedő, de a Spark-feladat elküldésekor felül
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
-[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[A HDInsight-fürtökön az Apache Spark-feladat küldése](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
 ## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Az Apache Spark-alkalmazás OutofMemoryError kivételt mi okozza?
@@ -205,12 +203,12 @@ A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java v
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    A kiszámítása az összes végrehajtóval által használt teljes memória: 
+    A teljes memória, összes végrehajtóval által használt számítása: 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   A kiszámítása az illesztőprogram által használt a teljes memória:
+   Az illesztőprogram által használt a teljes memória számítása:
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -219,9 +217,8 @@ A kivétel legvalószínűbb oka az, hogy a nem elegendő halommemória a Java v
 ### <a name="additional-reading"></a>További olvasnivaló
 
 - [Az Apache Spark memória – áttekintés](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Egy HDInsight-fürtön egy Apache Spark-alkalmazás hibakeresése](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Lásd még:
 [Hibaelhárítás az Azure HDInsight segítségével](../../hdinsight/hdinsight-troubleshoot-guide.md)
-

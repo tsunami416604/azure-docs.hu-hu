@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077207"
 ---
 # <a name="localization-string-ids"></a>A honosítás karakterlánc azonosítók
 
@@ -33,7 +33,7 @@ A következő azonosítóval használt azonosítójú tartalomdefiníció `api.s
 | **logonIdentifier_email** | E-mail-cím |
 | **requiredField_email** | Adja meg e-mail-címét |
 | **invalid_email** | Adjon meg egy érvényes e-mail-címet |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | Jelentkezzen be a felhasználónevével |
 | **logonIdentifier_username** | Felhasználónév |
 | **requiredField_username** | Adja meg a felhasználónevét |
