@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 584d59592158ccf542dbb05486b159a5e34ffbc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3f03202d0f4416b3bf08a33e5d997d7149eda9f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759102"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104403"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Notebook létrehozása és megosztása
 
@@ -34,12 +34,12 @@ ms.locfileid: "57759102"
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-    - **Projektnév**: Hello World Python-ben
-    - **A projekt Azonosítóját**: hello-world – python
-    - **Nyilvános projekt**: (törölve)
-    - **Hozzon létre egy README.md**: (törölve)
+   - **Projektnév**: Hello World Python-ben
+   - **A projekt Azonosítóját**: hello-world – python
+   - **Nyilvános projekt**: (törölve)
+   - **Hozzon létre egy README.md**: (törölve)
 
-    ![Új projekt előugró feltöltött adatokkal](media/quickstarts/new-project-popup.png)
+     ![Új projekt előugró feltöltött adatokkal](media/quickstarts/new-project-popup.png)
 
 1. Néhány pillanat múlva Azure notebookok nyit meg az új projekt. Kiválasztásával adjon hozzá egy jegyzetfüzetet a projekthez a **+ új** legördülő (amely jelennek meg, csak **+**), majd válassza **Notebook**:
 

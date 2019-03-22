@@ -14,12 +14,12 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9a60544f01048cd90605306e64d750982bf7a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008903"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök naplózási előzmények megtekintése
 A Privileged Identity Management (PIM) naplózási előzmények segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás minden a kiemelt szerepkörökhöz tartozó megadott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../reports-monitoring/overview-reports.md)
@@ -27,10 +27,10 @@ A Privileged Identity Management (PIM) naplózási előzmények segítségével 
 ## <a name="navigate-to-audit-history"></a>Keresse meg a naplózási előzmények
 Az a [az Azure portal](https://portal.azure.com) irányítópulton válassza a **Azure AD Privileged Identity Management** alkalmazást. Itt kattintva férhet hozzá a naplózási előzmények **kiemelt szerepkörök kezelése** > **naplózási előzmények** a PIM-irányítópulton.
 
-![](media/azure-ad-pim-approval-workflow/image021.png)
+![Előzménynapló](media/azure-ad-pim-approval-workflow/image021.png)
 
->[!NOTE]
-Rendezze az adatokat a művelet, és keressen az "Aktiválás Approved"
+> [!NOTE]
+> Rendezze az adatokat a művelet, és keressen az "Aktiválás Approved"
 
 
 ## <a name="audit-history-graph"></a>Naplózási előzmények diagram

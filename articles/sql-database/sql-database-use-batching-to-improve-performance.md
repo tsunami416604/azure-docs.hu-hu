@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 76b53132cca536f66aa2f739b27d74b08a3f16cf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997688"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
 
@@ -298,7 +298,7 @@ A **DataAdapter** osztály lehetővé teszi, hogy módosítsa egy **adatkészlet
 
 ### <a name="entity-framework"></a>Entitás-keretrendszer
 
-Entity Framework jelenleg nem támogatja kötegelés. Különböző, a közösségi fejlesztők próbált megkerülő megoldások, például felülbírálás bemutatásához a **létrehozva** metódust. De a megoldások jellemzően összetett és testre szabható, az alkalmazás és az adatmodellben. Az Entity Framework codeplex-projekt jelenleg rendelkezik egy hozzászólás oldalt a szolgáltatással kapcsolatos kéréseit. A hozzászólás megtekintése: [tervezési értekezleti feljegyzések - 2012. augusztus 2](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework jelenleg nem támogatja kötegelés. Különböző, a közösségi fejlesztők próbált megkerülő megoldások, például felülbírálás bemutatásához a **létrehozva** metódust. De a megoldások jellemzően összetett és testre szabható, az alkalmazás és az adatmodellben. Az Entity Framework codeplex-projekt jelenleg rendelkezik egy hozzászólás oldalt a szolgáltatással kapcsolatos kéréseit. A hozzászólás megtekintése: [tervezési értekezleti feljegyzések - 2012. augusztus 2](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
 

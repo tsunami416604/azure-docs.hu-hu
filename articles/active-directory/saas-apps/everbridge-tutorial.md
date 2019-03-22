@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95465fdc17131c996fa242d028addbab4191628c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1bb62c9a11971f72a6c96c4652b136c19812cb3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191112"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EverBridge
 
@@ -127,22 +127,22 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 5. Konfigurálhatja a **EverBridge** alkalmazást, **EverBridge tag portál**, a a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    * Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+   * Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
 
-        ![EverBridge tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
+       ![EverBridge tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
 
-        * Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+       * Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-        * Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+       * Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-    * Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+   * Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-        ![EverBridge tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
+       ![EverBridge tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
 
-        * Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+       * Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
-    > [!NOTE]
-    > Ezek a értékei nem valódi. Ezeket az értékeket frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címe. Kapcsolattartó [EverBridge támogatási csapatának](mailto:support@everbridge.com) beolvasni ezeket az értékeket.
+     > [!NOTE]
+     > Ezek a értékei nem valódi. Ezeket az értékeket frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címe. Kapcsolattartó [EverBridge támogatási csapatának](mailto:support@everbridge.com) beolvasni ezeket az értékeket.
 
 6. Az a **SAML-aláíró tanúsítvány** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **összevonási metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -164,21 +164,21 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 9. A felső menüben kattintson a **beállítások** lapot, és válasszon **egyszeri bejelentkezés** alatt **biztonsági**.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Egyszeri bejelentkezés konfigurálása](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-    a. Az a **neve** szövegmezőbe írja be a szolgáltató azonosító neve (például: a vállalat neve).
+     a. Az a **neve** szövegmezőbe írja be a szolgáltató azonosító neve (például: a vállalat neve).
    
-    b. Az a **API neve** szövegmezőbe írja be az API neve.
+     b. Az a **API neve** szövegmezőbe írja be az API neve.
    
-    c. Kattintson a **fájl kiválasztása** gombra kattintva töltse fel a metaadat-fájlt, amely az Azure Portalról letöltött.
+     c. Kattintson a **fájl kiválasztása** gombra kattintva töltse fel a metaadat-fájlt, amely az Azure Portalról letöltött.
    
-    d. Válassza ki a SAML-identitás helyen **identitás a tulajdonos utasítás NameIdentifier elemében van**.
+     d. Válassza ki a SAML-identitás helyen **identitás a tulajdonos utasítás NameIdentifier elemében van**.
    
-    e. Az a **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
+     e. Az a **Identity Provider bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
    
-    f. Válassza ki a szolgáltató által kezdeményezett kérelem kötés, **HTTP-átirányítás**.
+     f. Válassza ki a szolgáltató által kezdeményezett kérelem kötés, **HTTP-átirányítás**.
 
-    g. Kattintson a **Mentés** gombra.
+     g. Kattintson a **Mentés** gombra.
 
 10. Az egyszeri bejelentkezés konfigurálása **EverBridge** alkalmazást, **EverBridge tag portál**, kell küldenie a letöltött **összevonási metaadatainak XML** való [ Támogatási csoport Everbridge](mailto:support@everbridge.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
@@ -200,7 +200,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

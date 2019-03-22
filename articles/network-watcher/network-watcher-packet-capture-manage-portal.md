@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: jdial
-ms.openlocfilehash: 827a3c2f831c8e8fb459e494dcad58e3661e78bd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 22bdd50f129a48ade97db323f904f7e652a00d39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889981"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagrögzítés kezelése az Azure Network Watcher a portál használatával
 
@@ -41,29 +41,29 @@ Ha egy hálózati biztonsági csoportot a hálózati adapter vagy az alhálózat
 1. Navigáljon a böngészőben a [az Azure portal](https://portal.azure.com) , és válassza ki **minden szolgáltatás**, majd válassza ki **Network Watcher** a a **hálózatkezelés szakasz**.
 2. Válassza ki **csomagrögzítés** alatt **hálózati diagnosztikai eszközök**. Bármely meglévő csomagrögzítés vannak felsorolva, függetlenül azok állapotát.
 3. Válassza ki **Hozzáadás** csomagrögzítés létrehozásához. Választhat a következő tulajdonságok értékeit:
-   - **Előfizetés**: az előfizetés, amely a virtuális gépet szeretne létrehozni a csomagrögzítés számára.
-   - **Erőforráscsoport**: az erőforráscsoport, a virtuális gép.
-   - **Cél virtuális gép**: A virtuális gép létrehozása a csomagrögzítés a kívánt.
-   - **Csomagrögzítés neve**: a csomagrögzítés nevét.
-   - **Storage-fiók vagy a fájl**: válasszon **tárfiók**, **fájl**, vagy mindkettőt. Ha **fájl**, a rögzítés írt egy útvonalat a virtuális gépen.
+   - **Előfizetés**: Az előfizetést, amelyhez a virtuális gépet szeretne létrehozni a csomagot a capture van.
+   - **Erőforráscsoport**: Az erőforráscsoport, a virtuális gép.
+   - **Cél virtuális gép**: A csomagrögzítés a létrehozni kívánt virtuális gép.
+   - **Csomagrögzítés neve**: A csomagrögzítés neve.
+   - **Storage-fiók vagy a fájl**: Válassza ki **tárfiók**, **fájl**, vagy mindkettőt. Ha **fájl**, a rögzítés írt egy útvonalat a virtuális gépen.
    - **Helyi fájlelérési út**: A helyi elérési utat, ahol a csomagrögzítés menti a rendszer a virtuális gépen (csak akkor, ha érvényes *fájl* van kiválasztva). Az elérési út érvényes elérési útnak kell lennie. Ha Linux rendszerű virtuális gép használ, az elérési utat kell kezdődnie */var/rögzíti*.
-   - **Storage-fiókok**: jelölje be egy meglévő tárfiókot, ha a kiválasztott *tárfiók*. Ez a beállítás csak akkor érhető el, ha a kiválasztott **tárolási**.
+   - **Storage-fiókok**: Válassza egy meglévő tárfiókot, ha a kiválasztott *tárfiók*. Ez a beállítás csak akkor érhető el, ha a kiválasztott **tárolási**.
    
      > [!NOTE]
      > Prémium szintű storage-fiókok jelenleg nem támogatottak a csomagok tárolására kell-e.
 
-   - **Bájtok maximális száma csomagonként**: az egyes csomagok rögzített bájtok száma. Ha üresen hagyja, az összes bájtot lesznek rögzítve.
-   - **Bájtok maximális száma munkamenetenként**: rögzített bájtok teljes száma. Ha az érték elérésekor a packet capture leáll.
+   - **Bájtok maximális száma csomagonként**: Az egyes csomagok rögzített bájtok száma. Ha üresen hagyja, az összes bájtot lesznek rögzítve.
+   - **Bájtok maximális száma munkamenetenként**: Rögzített bájtok teljes száma. Ha az érték elérésekor a packet capture leáll.
    - **Időkorlát (másodperc)**: A határidő előtt a csomagrögzítés le van állítva. Az alapértelmezett érték 18,000 másodperc.
    - Szűrés (nem kötelező). Válassza ki **+ szűrő hozzáadása**
-     - **Protokoll**: a csomagrögzítés szűrését a protokollt. Az elérhető értékek a következők: TCP, UDP és bármilyen.
-     - **Helyi IP-cím**: Ha a helyi IP-cím megegyezik-e ezt az értéket a csomagrögzítés csomagok szűri.
-     - **Helyi port**: szűri a csomagrögzítés csomagok, ahol a helyi port egyezik-e ezt az értéket.
-     - **Távoli IP-cím**: Ha a távoli IP-cím megegyezik-e ezt az értéket a csomagrögzítés csomagok szűri.
-     - **Távoli port**: Ha a távoli port megegyezik-e ezt az értéket a csomagrögzítés csomagok szűri.
+     - **Protokoll**: A csomagrögzítés szűrését protokoll. Az elérhető értékek a következők: TCP, UDP és bármilyen.
+     - **Helyi IP-cím**: A csomagrögzítés csomagok szűri, ha a helyi IP-cím megegyezik-e ezt az értéket.
+     - **Helyi port**: A csomagrögzítés csomagok szűri, ahol a helyi port egyezik-e ezt az értéket.
+     - **Távoli IP-cím**: A csomagrögzítés csomagok szűri, ha a távoli IP-cím megegyezik-e ezt az értéket.
+     - **Távoli port**: A csomagrögzítés csomagok szűri, ha a távoli port megegyezik-e ezt az értéket.
     
-    > [!NOTE]
-    > Port- és IP-cím értékeit egyetlen érték, -tartományt vagy egy tartományt, például a 80-as-1024-, port lehet. Tetszőleges számú szűrők szükség szerint határozhatja meg.
+     > [!NOTE]
+     > Port- és IP-cím értékeit egyetlen érték, -tartományt vagy egy tartományt, például a 80-as-1024-, port lehet. Tetszőleges számú szűrők szükség szerint határozhatja meg.
 
 4. Kattintson az **OK** gombra.
 
@@ -88,7 +88,7 @@ A csomag rögzítési nézetben válassza ki a **...**  a jobb oldalon – a cso
 
 ## <a name="download-a-packet-capture"></a>Töltse le a csomagrögzítés
 
-A csomag rögzítési munkamenet befejezése után a rögzítési feltölti a blob storage-bA vagy egy helyi fájlba a virtuális gépen. A csomagrögzítés tárolási helyét a csomagrögzítés létrehozása során van meghatározva. Eszköz rögzítési-fájlokat a storage-fiók eléréséhez is a Microsoft Azure Storage Explorer [letöltése](http://storageexplorer.com/).
+A csomag rögzítési munkamenet befejezése után a rögzítési feltölti a blob storage-bA vagy egy helyi fájlba a virtuális gépen. A csomagrögzítés tárolási helyét a csomagrögzítés létrehozása során van meghatározva. Eszköz rögzítési-fájlokat a storage-fiók eléréséhez is a Microsoft Azure Storage Explorer [letöltése](https://storageexplorer.com/).
 
 Ha egy storage-fiók van megadva, packet capture fájlok egy storage-fiókba, a következő helyen találhatóak meg:
 

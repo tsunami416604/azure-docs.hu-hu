@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194308"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286856"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Rendelje hozzá, vagy távolítsa el a licencek használata az Azure Active Directory portálon
 Számos Azure Active Directory (Azure AD) szolgáltatás az adott termék szükséges, hogy aktiválja az Azure AD-termékre, és a felhasználók vagy csoportok (és társított tagok) minden egyes licenc. Csak az aktív licenccel rendelkező felhasználók hozzáférhetnek, és a licencelt használata az Azure AD-szolgáltatások.
@@ -47,7 +47,7 @@ Megtekintheti az elérhető termékek, többek között az egyes licencek ellen�
 
     A **licencek** lap jelenik meg.
 
-    ![Licencek lapon azokról a megvásárolt termékek és licencek hozzárendelése](media/license-users-groups/license-details-blade.png)
+    ![Licencek lapon, a megvásárolt termékek és a hozzárendelt licencek száma](media/license-users-groups/license-details-blade.png)
     
 3. Válassza ki a **vásárolt termékek** hivatkozásra kattintva a **termékek** lapot, és tekintse meg a **hozzárendelt**, **elérhető**, és  **Hamarosan lejáró** minden egyes megadott termék kiadásának részleteit.
 
@@ -76,7 +76,7 @@ Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure A
 
 4. Válassza ki **hozzárendelési beállítások**, ellenőrizze, hogy a megfelelő licencet a beállítások engedélyezve van, és válassza ki **OK**.
 
-    ![Licenc lehetőséget oldal összes kiadásában rendelkezésre álló beállítások megjelenítése](media/license-users-groups/license-option-blade-assignments.png)
+    ![Licenc lehetőséget oldala, amelyen az összes kiadásában elérhető beállítások](media/license-users-groups/license-option-blade-assignments.png)
 
     A **licenc hozzárendelése** frissítések jeleníti meg, hogy egy felhasználó van kiválasztva, valamint, hogy vannak-e konfigurálva a hozzárendeléseket lapon.
 
@@ -102,7 +102,7 @@ Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure A
 
 4. Válassza ki **hozzárendelési beállítások**, ellenőrizze, hogy a megfelelő licencet a beállítások engedélyezve van, és válassza ki **OK**.
 
-    ![Licenc lehetőséget oldal összes kiadásában rendelkezésre álló beállítások megjelenítése](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![Licenc lehetőséget oldala, amelyen az összes kiadásában elérhető beállítások](media/license-users-groups/license-option-blade-group-assignments.png)
 
     A **licenc hozzárendelése** frissítések jeleníti meg, hogy egy felhasználó van kiválasztva, valamint, hogy vannak-e konfigurálva a hozzárendeléseket lapon.
 
@@ -112,7 +112,6 @@ Győződjön meg arról, hogy bárki használja egy licencelt kellene az Azure A
 5. Válassza a **Hozzárendelés** elemet.
 
     A csoport bekerül a licenccel rendelkező csoportok listáját, és minden tagot fér hozzá a csomagban foglalt Azure AD-szolgáltatások.
-
 
 ## <a name="remove-a-license"></a>Licenc eltávolítása
 Licenc eltávolítása egy felhasználót vagy csoportot a **licencek** lapot.

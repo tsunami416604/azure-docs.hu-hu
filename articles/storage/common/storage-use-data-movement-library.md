@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460080"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996150"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Adatok áthelyezése az a Microsoft Azure Storage adatátviteli könyvtár
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 Ez a kód kéri velünk a kapcsolatot egy helyi fájlba, egy új vagy meglévő tároló nevét és a blob nevét, egy új elérési útját. A `TransferManager.UploadAsync` metódus végzi el a feltöltés ezen információk alapján.
 
-Találati `F5` az alkalmazás futtatásához. Ellenőrizheti, hogy történt-e a feltöltés a tárfiók megtekintésével a [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Találati `F5` az alkalmazás futtatásához. Ellenőrizheti, hogy történt-e a feltöltés a tárfiók megtekintésével a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="set-number-of-parallel-operations"></a>Beállítása a párhuzamos műveletek száma
 Az adatátviteli könyvtár által kínált nagyszerű jellemzője megadhatja azokat az adatokat átvitel teljesítménynövelés párhuzamos műveletek számát. Alapértelmezés szerint az adatátviteli könyvtár beállítja a párhuzamos műveletek számát 8 * a gépen a magok számát.

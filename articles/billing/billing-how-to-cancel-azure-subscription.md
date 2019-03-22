@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/23/2019
 ms.author: banders
-ms.openlocfilehash: b0d5dd5fb29c8915e2c660b8647cb0148bce1399
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 374224663323e75a1d1413c47490bd3aacd00267
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901513"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876816"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Az Azure-előfizetés megszüntetése
 
@@ -61,4 +61,4 @@ Ha az előfizetés nem használatalapú, forduljon az ügyfélszolgálathoz megs
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

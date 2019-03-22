@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 6960f6da2eb8c867d36ba4073d1a0fcafe8d75bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443205"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902001"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
 
@@ -41,7 +41,7 @@ A kihívás, mi a face megvalósításában kapcsolat nélküli módban a követ
 * MP4 számos lejátszó, kódoló eszközök által támogatott, de nem létezik a kötés nélküli MP4-tároló és a DRM; között
 * A hosszú távú CFF CENC az módja a go. Azonban még ma, az eszközök/player támogatási ökoszisztéma még nem létezik. A Microsoft olyan megoldásra van szüksége, még ma.
  
-Az elképzelés: smooth streaming ([PIFF](http://go.microsoft.com/?linkid=9682897)) H264/AAC-formátum egy kötés PlayReady (AES-128 Parancsra) rendelkezik. Egyedi smooth streaming .ismv fájl (feltételezve hang egyesített a videóban) önmagában egy fMP4 és lejátszás is használható. Egy smooth streaming tartalom végighalad a PlayReady-titkosítás, ha egyes .ismv fájl lesz-e a PlayReady-védelemmel töredékes MP4. Válasszon egy .ismv fájlt az előnyben részesített sávszélességű lehet és letölthető .mp4, nevezze át.
+Az elképzelés: smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) H264/AAC-formátum egy kötés PlayReady (AES-128 Parancsra) rendelkezik. Egyedi smooth streaming .ismv fájl (feltételezve hang egyesített a videóban) önmagában egy fMP4 és lejátszás is használható. Egy smooth streaming tartalom végighalad a PlayReady-titkosítás, ha egyes .ismv fájl lesz-e a PlayReady-védelemmel töredékes MP4. Válasszon egy .ismv fájlt az előnyben részesített sávszélességű lehet és letölthető .mp4, nevezze át.
 
 Két lehetőség van a PlayReady üzemeltető védett MP4 progresszív letöltés:
 
@@ -57,12 +57,12 @@ Az alábbiakban két készlet tesztelési eszközök, az elsőt a PlayReady-lice
 
 #1. eszköz:
 
-* A progresszív letöltési URL-címe: [http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* A progresszív letöltési URL-címe: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
 * PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
 #2. eszköz:
 
-* A progresszív letöltési URL-címe: [http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](http://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* A progresszív letöltési URL-címe: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA_URL (helyszíni): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 Lejátszási vizsgálatára, használtuk egy univerzális Windows-alkalmazás a Windows 10-es. A [univerzális Windows 10-minták](https://github.com/Microsoft/Windows-universal-samples), egy alapszintű player mintáját nevű [adaptív Streamelés minta](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Mindössze azt kell az adja hozzá a kódot ahhoz, hogy válassza ki a letöltött videót, és szeretné használni a forrás, az adaptív adatfolyam-továbbítási forrás helyett. A változások a következők gomb eseménykezelő gombra:

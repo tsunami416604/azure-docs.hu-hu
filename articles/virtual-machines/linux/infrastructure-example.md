@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888958"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002685"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux rendszerű virtuális gépek Azure-infrastruktúra bemutató példa
 Ez a cikk bemutatja a például alkalmazás-infrastruktúrák létrehozását. A Microsoft részletes információkat talál, egy egyszerű online áruházban, amely egyesíti az irányelvek és elnevezési konvenciók, a rendelkezésre állási csoportok, virtuális hálózatok és terheléselosztók döntések-infrastruktúra megtervezése, és ténylegesen üzembe helyezése a virtuális gépek (VM).
@@ -54,7 +54,7 @@ Az összes a fenti ezek elnevezési konvencióinak:
 
 * Adventure Works Cycles használ **[informatikai munkaterhelés]-[helye]-[Azure-erőforrás]** előtagjaként
   * Ebben a példában "**azos**" (az Azure online Store) az informatikai számítási feladat neve és a "**használata**" (USA keleti RÉGIÓJA 2) az a hely
-* Virtuális hálózatok használata AZOS-használat – VN **[száma]**
+* Virtuális hálózatok használata AZOS-használat – VN<strong>[száma]</strong>
 * A rendelkezésre állási csoportok használata azos-használata-as-**[szerepkör]**
 * Virtuálisgép-neveknek azos használata – használata – virtuálisgép -**[vmname]**
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/01/2017
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 075f08f89e0bbdefa76623a284971f46a1b3966a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013292"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -28,8 +28,6 @@ A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építs
 A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kéréseket, kivételeket és bizonyos rendszermérőszámokat. A 0.20-as verziótól kezdve az SDK bizonyos gyakori külső eredetű csomagokat is képes monitorozni, pl. a MongoDB, a MySQL és a Redis csomagjait. Az egyes bejövő HTTP-kérésekhez kapcsolódó összes eseményt összekapcsolja a gyorsabb hibaelhárítás érdekében.
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
-
-![Példa teljesítményfigyelő diagramokra](./media/nodejs/10-perf.png)
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -49,11 +47,7 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 1. Jelentkezzen be az [Azure Portalra][portal].
 2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
 
-  ![Application Insights-erőforrás létrehozása](./media/nodejs/03-new_appinsights_resource.png)
-
 3. Az erőforrás-létrehozási oldalon az **Alkalmazás típusa** mezőben válassza a **Node.js-alkalmazás** elemet. Az alkalmazástípus határozza meg, hogy milyen alapértelmezett irányítópultokat és jelentéseket hoz létre a rendszer. (Bármely Application Insights-erőforrás képes bármilyen nyelvből és platformból adatot gyűjteni.)
-
-  ![Új Application Insights-erőforrás űrlap](./media/nodejs/04-create_appinsights_resource.png)
 
 ### <a name="sdk"></a> A Node.js SDK beállítása
 
@@ -61,29 +55,29 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 
 1. Másolja át az erőforrás rendszerállapotkulcsát (más néven: *ikey*) az Azure Portalról. Az Application Insights a rendszerállapotkulcs segítségével rendeli hozzá az adatokat az Azure-erőforráshoz. Ahhoz, hogy az SDK használni tudja a rendszerállapotkulcsot, meg kell azt adni a programkód egy környezeti változójában.  
 
-  ![Rendszerállapotkulcs másolása](./media/nodejs/05-appinsights_ikey_portal.png)
+   ![Rendszerállapotkulcs másolása](./media/nodejs/instrumentation-key-001.png)
 
 2. Adja hozzá a Node.js SDK-kódtárat az alkalmazás függőségeihez a package.json lapon. Futtassa az app gyökérkönyvtárából az alábbi parancsot:
 
-  ```bash
-  npm install applicationinsights --save
-  ```
+   ```bash
+   npm install applicationinsights --save
+   ```
 
 3. Explicit módon töltse be a kódtárat a programkódba. Mivel az SDK a rendszerállapotot több más kódtárba is beépíti, a kódtárat a lehető leghamarabb be kell betölteni, akár más `require`-utasítások előtt. 
 
-  Adja hozzá az első .js fájl elejéhez a következő kódot. A `setup` metódus konfigurálja a rendszerállapotkulcsot (és így az Azure-erőforrást), hogy minden követett elemhez alapértelmezetten azt használja a rendszer.
+   Adja hozzá az első .js fájl elejéhez a következő kódot. A `setup` metódus konfigurálja a rendszerállapotkulcsot (és így az Azure-erőforrást), hogy minden követett elemhez alapértelmezetten azt használja a rendszer.
 
-  ```javascript
-  const appInsights = require("applicationinsights");
-  appInsights.setup("<instrumentation_key>");
-  appInsights.start();
-  ```
+   ```javascript
+   const appInsights = require("applicationinsights");
+   appInsights.setup("<instrumentation_key>");
+   appInsights.start();
+   ```
    
-  A rendszerállapotkulcsot az APPINSIGHTS\_INSTRUMENTATIONKEY környezeti változón keresztül is megadhatja ahelyett, hogy kézzel adná azt át a `setup()` vagy a `new appInsights.TelemetryClient()` függvénynek. Ez az eljárás lehetővé teszi, hogy ne írja be az erőforráskulcsot a jóváhagyott forráskódba, és eltérő erőforráskulcsot adjon meg az eltérő környezeteknél.
+   A rendszerállapotkulcsot az APPINSIGHTS\_INSTRUMENTATIONKEY környezeti változón keresztül is megadhatja ahelyett, hogy kézzel adná azt át a `setup()` vagy a `new appInsights.TelemetryClient()` függvénynek. Ez az eljárás lehetővé teszi, hogy ne írja be az erőforráskulcsot a jóváhagyott forráskódba, és eltérő erőforráskulcsot adjon meg az eltérő környezeteknél.
 
-  További konfigurációs részletekért lásd a következő szakaszokat.
+   További konfigurációs részletekért lásd a következő szakaszokat.
 
-  Az SDK-t telemetria küldése nélkül is kipróbálhatja az `appInsights.defaultClient.config.disableAppInsights = true` beállításával.
+   Az SDK-t telemetria küldése nélkül is kipróbálhatja az `appInsights.defaultClient.config.disableAppInsights = true` beállításával.
 
 ### <a name="monitor"></a> Figyelje alkalmazását
 
@@ -91,15 +85,13 @@ Az SDK automatikusan gyűjti a telemetriaadatokat a Node.js-futtatókörnyezetr�
 
 Ezután az [Azure Portalon][portal] lépjen a korábban létrehozott Application Insights-erőforráshoz. Az **Áttekintő idővonalon** tekintse meg az első néhány adatpontot. Részletesebb adatokért válasszon a diagramok különböző összetevői közül.
 
-![Első adatpontok](./media/nodejs/12-first-perf.png)
-
 Az alkalmazáshoz felderített topológia megtekintéséhez kattintson az **Alkalmazás-hozzárendelés** gombra. Részletesebb adatokért válasszon a diagram különböző összetevői közül.
 
-![Egyszerű apphozzárendelés](./media/nodejs/06-appinsights_appmap.png)
+![Egyszerű apphozzárendelés](./media/nodejs/application-map-002.png)
 
 Az alkalmazás részletesebb megismeréséhez és a problémák elhárításához válassza ki a **VIZSGÁLAT** szakasz további elérhető nézeteit.
 
-![Vizsgálat szakasz](./media/nodejs/07-appinsights_investigate_blades.png)
+![Vizsgálat szakasz](./media/nodejs/007-investigate-pane.png)
 
 #### <a name="no-data"></a>Nincs adat?
 

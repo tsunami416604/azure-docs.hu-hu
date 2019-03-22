@@ -1,6 +1,6 @@
 ---
 title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
-description: Az ASP.NET Core-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz
+description: Útmutatás az gyorsan beállíthat az ASP.NET Core-webalkalmazás figyelés az Application insights segítségével
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 14295bca12e64174d03cfd1c2bd8d214d801e8e5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261060"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886728"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
 Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. 
 
-Ez a rövid útmutató végigvezeti az Application Insights SDK egy meglévő ASP.NET Core-webalkalmazáshoz való hozzáadásának folyamatán. 
+Ez a rövid útmutató végigvezeti az Application Insights SDK hozzáadása egy meglévő ASP.NET Core-webalkalmazás. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ A gyorsútmutató elvégzéséhez:
 - [A .NET Core 2.0 SDK telepítése](https://www.microsoft.com/net/core)
 - Szüksége lesz egy Azure-előfizetésre és egy meglévő .NET Core-webalkalmazásra.
 
-Ha nem rendelkezik ASP.NET Core-webalkalmazással, kövesse az [ASP.NET Core-alkalmazás létrehozását és Application Insights hozzáadását](../../azure-monitor/app/asp-net-core.md) bemutató részletes útmutatót.
+Ha nem rendelkezik egy ASP.NET Core-webalkalmazás, használhatja a részletes útmutatóban [ASP.NET Core-alkalmazás létrehozása és az Application Insights hozzáadása.](../../azure-monitor/app/asp-net-core.md)
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 

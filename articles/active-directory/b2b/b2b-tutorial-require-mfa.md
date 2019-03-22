@@ -9,14 +9,15 @@ ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4ed93bee091bf0a40718a47ffb7cd97a85147c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993495"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293992"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Oktatóanyag: Többtényezős hitelesítés B2B vendégfelhasználó
 
@@ -24,7 +25,7 @@ Ha külső B2B-vendégfelhasználókkal dolgozik együtt, ajánlatos az alkalmaz
 
 Példa:
 
-![MFA-t megkövetelő B2B-alkalmazás](media/tutorial-mfa/aad-b2b-mfa-example.png)
+![A Vendég felhasználó bejelentkezik a vállalati alkalmazások bemutató ábra.](media/tutorial-mfa/aad-b2b-mfa-example.png)
 
 1.  Az „A” cég egyik rendszergazdája vagy alkalmazottja azt kéri egy vendégfelhasználótól, hogy használjon egy olyan felhőalapú vagy helyszíni alkalmazást, amely kötelező MFA-használatra van konfigurálva.
 2.  A vendégfelhasználó saját munkahelyi, iskolai vagy közösségi identitásával jelentkezik be. 
@@ -56,11 +57,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 3.  A **Kezelés** alatt válassza a **Felhasználókat**.
 4.  Válassza az **Új vendégfelhasználót**.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-user-3.png)
+    ![Képernyőfelvétel: hol kell az új Vendég felhasználó kijelölése elem](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
 5.  A **Felhasználónév** alatt adja meg a külső felhasználó e-mail-címét. Ha szeretné, üdvözlő üzenetet is megadhat. 
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-user-4.png)
+    ![Képernyőfelvétel: hol kell beírni a Vendég meghívó üzenet](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
 6.  Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. Megjelenik a **Felhasználó meghívása sikerült** üzenet. 
 7.  Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
@@ -79,26 +80,26 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 6.  A **Hozzárendelések** szakaszban válassza a **Felhasználók és csoportok** lehetőséget.
 7.  A **Felhasználók és csoportok** lapon válassza a **Felhasználók és csoportok kiválasztása** lehetőséget, majd válassza ki a **Minden vendégfelhasználó (előzetes verzió)** lehetőséget.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-policy-6.png)
+    ![Minden vendégfelhasználó kiválasztásával ábrázoló képernyőfelvétel](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  Válassza a **Done** (Kész) lehetőséget.
 10. A **Hozzárendelések** szakaszban az **Új** lapon válassza a **Felhőalkalmazások** lehetőséget.
 11. A **Felhőalkalmazások** lapon válassza az **Alkalmazások kiválasztása** elemet, majd válassza a **Kiválasztás** lehetőséget.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-policy-10.png)
+    ![Képernyőfelvétel a felhőalapú alkalmazások lap, és válassza a beállítást:](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
 12. A **Kiválasztás** lapon válassza a **Microsoft Azure-felügyelet** elemet, majd a **Kiválaszt** lehetőséget.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![Képernyőfelvétel: a Microsoft Azure Management alkalmazás kiválasztva](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. A **Felhőalkalmazások** lapon válassza a **Kész** lehetőséget.
 14. Az **Új** lapon a **Hozzáférés-vezérlések** szakaszban válassza az **Engedélyezés** lehetőséget.
 15. Az **Engedélyezés** lapon válassza a **Hozzáférés engedélyezése** lehetőséget, jelölje be a **Többtényezős hitelesítés megkövetelése** jelölőnégyzetet, majd válassza a **Kiválaszt** elemet.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-policy-13.png)
+    ![Képernyőfelvétel: a többtényezős hitelesítési beállítást igényel](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
 16. A **Szabályzat engedélyezése** alatt válassza a **Be** lehetőséget.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-policy-14.png)
+    ![Képernyőfelvétel a engedélyezése házirend-beállításként az értékre:](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
 17. Kattintson a **Létrehozás** gombra.
 
@@ -106,27 +107,27 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 1.  A **Feltételes hozzáférés – szabályzatok** lapon válassza a **What If** lehetőséget. 
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![Képernyőfelvétel: hol kell, hogy mi válassza, ha a beállítás](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  Válassza a **Felhasználó** lehetőséget, majd válassza ki a tesztelési vendégfelhasználót, majd pedig a **Kiválaszt** lehetőséget.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
+    ![Képernyőfelvétel: a Vendég felhasználó által kiválasztott](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  Válassza a **Felhőalkalmazások** elemet.
 4.  A **Felhőalkalmazások** lapon válassza az **Alkalmazások kiválasztása** elemet, majd válassza a **Kiválasztás** lehetőséget. Az alkalmazások listájában válassza a **Microsoft Azure-felügyelet** elemet, majd kattintson a **Kiválaszt** lehetőségre. 
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
+    ![Képernyőfelvétel: a Microsoft Azure Management alkalmazás kiválasztva](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
 5.  A **Felhőalkalmazások** lapon válassza a **Kész** lehetőséget.
 6.  Válassza a **What If** lehetőséget, és ellenőrizze, hogy megjelenik-e az új szabályzat az **Értékelési eredmények** alatt az **Érvényes szabályzatok** fülön.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
+    ![Képernyőfelvétel: hol kell, hogy mi válassza, ha a beállítás](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 1.  A tesztfelhasználó felhasználónevével és jelszavával jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2.  Kérés jelenik meg a további hitelesítési módszerek hozzáadására. A szabályzat hatályba lépéséhez bizonyos időre van szükség.
 
-    ![Válassza az Azure Active Directory elemet.](media/tutorial-mfa/mfa-required.png)
+    ![Képernyőfelvétel: a további információ üzenet megadása kötelező](media/tutorial-mfa/mfa-required.png)
  
 3.  Jelentkezzen ki.
 

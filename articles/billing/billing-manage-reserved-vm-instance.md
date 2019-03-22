@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743633"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904014"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -38,13 +38,13 @@ A Foglalás hatóköre frissítése:
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
 5. A hatókör módosítása.
 
-Ha módosítja a hatókör számára történő megosztása, ahol Ön a tulajdonosa az előfizetések csak kiválaszthatja. Csak a foglalást végrehajtó számlázási ugyanabban a környezetben található előfizetések jelölhető ki.
+Ha módosítja a hatókör számára történő megosztása, ahol Ön a tulajdonosa az előfizetések csak kiválaszthatja. Csak a foglalással megegyező számlázási környezetben található előfizetések választhatók ki.
 
-A hatókör csak az MS-AZR - 0003P vagy MS-AZR - 0023P, vállalati ajánlat MS-AZR - 0017P, MS-AZR - 0148P vagy használatalapú fizetéses ajánlatra, vagy a CSP előfizetéstípusok vonatkozik.
+A hatókör csak az MS-AZR-0003P vagy az MS-AZR-0023P használatalapú fizetési ajánlatra, az MS-AZR-0017P vagy az MS-AZR-0148P vállalati ajánlatra, illetve a CSP előfizetési típusokra vonatkozik.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>A Foglalás kezelésére jogosult felhasználók hozzáadása és módosítása
+## <a name="add-or-change-users-who-can-manage-a-reservation"></a>A foglalást kezelő felhasználók hozzáadása vagy módosítása
 
-A Foglalás felügyeleti szerepkörökhöz a Foglalás a személyek hozzáadásával delegálhat. Alapértelmezés szerint a személy, amely a Foglalás vásárolt, és a fiók rendszergazdája a tulajdonosi szerepkör rendelkezik a foglalást.
+Személyek a foglalás szerepköreihez történő hozzáadásával delegálhatja a foglalás kezelését. Alapértelmezés szerint a foglalást megvásárló személy és a fiókadminisztrátor rendelkezik a tulajdonosi szerepkörrel a foglalás esetében.
 
 Akkor is hozzáférésének kezelése foglalások egymástól függetlenül az előfizetést, a foglalási kedvezményt beolvasása. Amikor engedélyezi a valaki engedélyeit egy foglalást, amely nem jogokat őket az előfizetés kezelése céljából. És ha valaki engedélyek belül a Foglalás hatóköre egy előfizetés kezelése céljából, amely nem jogokat őket a Foglalás kezelése.
 
@@ -54,7 +54,7 @@ A Foglalás kezelési delegálása:
 2. Válassza ki **minden szolgáltatás** > **foglalás** lista foglalásokat, amely hozzáfér a.
 3. Válassza ki a foglalást, amelyet szeretne más felhasználókkal való hozzáférés delegálására.
 4. Válassza ki **hozzáférés-vezérlés (IAM)**.
-5. Válassza ki **szerepkör-hozzárendelés hozzáadása** > **szerepkör** > **tulajdonosa**. Vagy, ha korlátozott hozzáférést szeretne, válassza ki egy másik szerepkör.
+5. Válassza ki **szerepkör-hozzárendelés hozzáadása** > **szerepkör** > **tulajdonosa**. Ha korlátozott hozzáférést szeretne biztosítani, válasszon egy másik szerepkört.
 6. Írja be a tulajdonosként hozzáadni kívánt felhasználó e-mail-címét.
 7. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 
@@ -133,4 +133,4 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

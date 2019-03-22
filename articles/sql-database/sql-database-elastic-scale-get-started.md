@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 245cbafb42becc230f5e480cfc8e6fa41c352190
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309383"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999120"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
 
@@ -28,7 +28,7 @@ Ez a dokumentum bemutatja a fejlesztői felületet a [elastic database-ügyfélk
 ### <a name="prerequisites"></a>Előfeltételek
 
 * Egy Java fejlesztői készlet (JDK), 1.8-as vagy újabb verzió
-* [Maven 3](http://maven.apache.org/download.cgi)
+* [Maven 3](https://maven.apache.org/download.cgi)
 * Egy SQL Database-kiszolgáló Azure-ban vagy egy helyi SQL Server-példány
 
 ### <a name="download-and-run-the-sample-app"></a>Töltse le és futtassa a mintaalkalmazást
@@ -74,7 +74,7 @@ Az ügyféloldali kódtár hozzáadása a saját Maven-projektet, adja hozzá a 
 ### <a name="prerequisites"></a>Előfeltételek
 
 * Visual Studio 2012 vagy újabb a C# használatával. Töltse le az olyan díjmentes verziója, [Visual Studio letölti](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* NuGet 2.7-es vagy újabb verziója. A legújabb verzió beszerzéséhez tekintse meg a [NuGet telepítése](http://docs.nuget.org/docs/start-here/installing-nuget).
+* NuGet 2.7-es vagy újabb verziója. A legújabb verzió beszerzéséhez tekintse meg a [NuGet telepítése](https://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Töltse le és futtassa a mintaalkalmazást
 
@@ -132,7 +132,7 @@ Elastic Database-eszközökkel kapcsolatos további információkért lásd a k�
   * [Elastic Database-eszközök az Azure SQL - Entity Framework-integráció](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [A Script Centerbe a horizontális partíciók rugalmassága](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Rugalmas méretezés bejelentés](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Channel 9-on: [Rugalmas méretezés áttekintő videó](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Channel 9-on: [Rugalmas méretezés áttekintő videó](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Fórum: [Az Azure SQL Database-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Teljesítmény mérésére: [Teljesítményszámlálók a szilánkleképezés-kezelőhöz](sql-database-elastic-database-client-library.md)
 

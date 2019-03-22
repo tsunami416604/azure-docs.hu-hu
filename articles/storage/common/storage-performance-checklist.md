@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012328"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -31,22 +31,22 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 
 | Kész | Terület | Kategória | Kérdés |
 | --- | --- | --- | --- |
-| &nbsp; | All Services (Minden szolgáltatás) |Skálázási célértékei |[Az alkalmazás célja elkerülése érdekében hamarosan eléri a skálázási célértékei?](#subheading1) |
-| &nbsp; | All Services (Minden szolgáltatás) |Skálázási célértékei |[Az elnevezési konvenciókba lehetővé teszi, hogy jobban terheléselosztás?](#subheading47) |
-| &nbsp; | All Services (Minden szolgáltatás) |Hálózat |[Rendelkeznek-e a kiszolgálóoldali ügyféleszközök, elég nagy sávszélességű és kis késése, a szükséges teljesítmény eléréséhez?](#subheading2) |
-| &nbsp; | All Services (Minden szolgáltatás) |Hálózat |[Ügyfél ügyféloldali eszközök rendelkeznek elég magas minőségű hivatkozást?](#subheading3) |
-| &nbsp; | All Services (Minden szolgáltatás) |Hálózat |["Közelében" a tárfiók található az ügyfélalkalmazás?](#subheading4) |
-| &nbsp; | All Services (Minden szolgáltatás) |Tartalomterjesztés |[Használ a tartalom terjesztése egy CDN-t?](#subheading5) |
-| &nbsp; | All Services (Minden szolgáltatás) |A közvetlen ügyfelek hozzáférése |[Használatával és a CORS engedélyezése helyett proxy tárhely eléréséhez közvetlen hozzáférést?](#subheading6) |
-| &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[Az alkalmazás ismételten használt gyorsítótárazási adatokat és módosítások ritkán van?](#subheading7) |
-| &nbsp; | All Services (Minden szolgáltatás) |Gyorsítótárazás |[Van az alkalmazás (ügyféloldali gyorsítótárazás őket, és ezután töltse fel a nagyobb készleteket) kötegelésére?](#subheading8) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Konfigurálta az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Konfigurálta már a .NET használata szálak elegendő számú?](#subheading10) |
-| &nbsp; | All Services (Minden szolgáltatás) |.NET Configuration |[Használ .NET 4.5-ös vagy újabb, amely javult a szemétgyűjtés?](#subheading11) |
-| &nbsp; | All Services (Minden szolgáltatás) |Párhuzamosság |[Ön gondoskodott róla, hogy párhuzamosságot korlátozódik megfelelően, hogy ne túlterhelni, vagy a képességei, vagy a skálázási célértékei?](#subheading12) |
-| &nbsp; | All Services (Minden szolgáltatás) |Eszközök |[Vannak a Microsoft legújabb verzióját használja a megadott ügyfél-könyvtárak és eszközök?](#subheading13) |
-| &nbsp; | All Services (Minden szolgáltatás) |Újrapróbálkozások |[Azok az Ön egy exponenciális visszatartással ismételje meg a szabályzat szabályozási hibákat és időtúllépéseket?](#subheading14) |
-| &nbsp; | All Services (Minden szolgáltatás) |Újrapróbálkozások |[Az a alkalmazás legpontosabb újrapróbálkozások – Újrapróbálkozást lehetővé nem tevő hibák esetén?](#subheading15) |
+| &nbsp; | Az összes szolgáltatás |Skálázási célértékei |[Az alkalmazás célja elkerülése érdekében hamarosan eléri a skálázási célértékei?](#subheading1) |
+| &nbsp; | Az összes szolgáltatás |Skálázási célértékei |[Az elnevezési konvenciókba lehetővé teszi, hogy jobban terheléselosztás?](#subheading47) |
+| &nbsp; | Az összes szolgáltatás |Hálózat |[Rendelkeznek-e a kiszolgálóoldali ügyféleszközök, elég nagy sávszélességű és kis késése, a szükséges teljesítmény eléréséhez?](#subheading2) |
+| &nbsp; | Az összes szolgáltatás |Hálózat |[Ügyfél ügyféloldali eszközök rendelkeznek elég magas minőségű hivatkozást?](#subheading3) |
+| &nbsp; | Az összes szolgáltatás |Hálózat |["Közelében" a tárfiók található az ügyfélalkalmazás?](#subheading4) |
+| &nbsp; | Az összes szolgáltatás |Tartalomterjesztés |[Használ a tartalom terjesztése egy CDN-t?](#subheading5) |
+| &nbsp; | Az összes szolgáltatás |A közvetlen ügyfelek hozzáférése |[Használatával és a CORS engedélyezése helyett proxy tárhely eléréséhez közvetlen hozzáférést?](#subheading6) |
+| &nbsp; | Az összes szolgáltatás |Gyorsítótárazás |[Az alkalmazás ismételten használt gyorsítótárazási adatokat és módosítások ritkán van?](#subheading7) |
+| &nbsp; | Az összes szolgáltatás |Gyorsítótárazás |[Van az alkalmazás (ügyféloldali gyorsítótárazás őket, és ezután töltse fel a nagyobb készleteket) kötegelésére?](#subheading8) |
+| &nbsp; | Az összes szolgáltatás |.NET Configuration |[Konfigurálta az ügyfél számára elegendő az egyidejű kapcsolatok használatát?](#subheading9) |
+| &nbsp; | Az összes szolgáltatás |.NET Configuration |[Konfigurálta már a .NET használata szálak elegendő számú?](#subheading10) |
+| &nbsp; | Az összes szolgáltatás |.NET Configuration |[Használ .NET 4.5-ös vagy újabb, amely javult a szemétgyűjtés?](#subheading11) |
+| &nbsp; | Az összes szolgáltatás |Párhuzamosság |[Ön gondoskodott róla, hogy párhuzamosságot korlátozódik megfelelően, hogy ne túlterhelni, vagy a képességei, vagy a skálázási célértékei?](#subheading12) |
+| &nbsp; | Az összes szolgáltatás |Eszközök |[Vannak a Microsoft legújabb verzióját használja a megadott ügyfél-könyvtárak és eszközök?](#subheading13) |
+| &nbsp; | Az összes szolgáltatás |Újrapróbálkozások |[Azok az Ön egy exponenciális visszatartással ismételje meg a szabályzat szabályozási hibákat és időtúllépéseket?](#subheading14) |
+| &nbsp; | Az összes szolgáltatás |Újrapróbálkozások |[Az a alkalmazás legpontosabb újrapróbálkozások – Újrapróbálkozást lehetővé nem tevő hibák esetén?](#subheading15) |
 | &nbsp; | Blobok |Skálázási célértékei |[Egyetlen objektum egyszerre hozzáférő ügyfelek nagy számú van?](#subheading46) |
 | &nbsp; | Blobok |Skálázási célértékei |[Az alkalmazás egy blob sávszélesség vagy a műveletek méretezhetőségi célértékét belül tartózkodik?](#subheading16) |
 | &nbsp; | Blobok |Blobok másolása |[Másolási blobok azok hatékony módon?](#subheading17) |
@@ -122,7 +122,7 @@ Az ilyen műveletek gyakoriságának csökkentése érdekében néhány ajánlot
 
 * Vizsgálja meg az elnevezési szabályok tartozó fiókokat, tárolók, blobok, táblák és üzenetsorok, szorosan. Vegye figyelembe, hogy egy kivonatoló függvénnyel az igényeinek leginkább megfelelő 3 számjegyből kivonattal fiókneveket előtag.  
 * Ha, ahogy az időbélyegek vagy numerikus azonosítók használata esetén az adatok, akkor győződjön meg arról, nem használ egy csak hozzáfűzéssel bővíthető (vagy csak illesztenie) forgalmi minták. Ezek a minták nem alkalmasak a tartomány-alapú particionálási rendszert, és sikerült érdeklődőt fogja egy partíció, és hatékonyan korlátozza a rendszer az összes forgalom a terheléselosztás. Például ha napi műveletek, például ÉÉÉÉHHNN időbélyegzővel ellátott blob objektumot használó, majd az a napi művelet összes forgalom irányul, egyetlen objektumot, amely egy partíció-kiszolgáló által kiszolgált. Keresse meg, hogy a blob korlátokat partíciónként korlátok az igényeknek, és érdemes feldarabolni Ez a művelet több blobokba, ha szükséges. Ehhez hasonlóan ha idősorozat-adatok tárolása a táblák, mind a forgalom irányítja az utolsó kulcs névtér a része. Időbélyegeket vagy numerikus azonosítót kell használnia, ha előtag azonosítója 3 számjegyből kivonattal, illetve időbélyegeket előtag ssyyyymmdd például az idő a másodperc részét. Ha listázás és lekérdezés műveleteket rendszeresen hajtja végre, válassza ki a kivonatoló függvényt, amely korlátozza a lekérdezések száma. Egyéb esetben elegendő lehet egy véletlenszerű előtagot.  
-* A további információk a particionálási sémát, használja az Azure Storage, olvassa el a SOSP tanulmány [Itt](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
+* A további információk a particionálási sémát, használja az Azure Storage, olvassa el a SOSP tanulmány [Itt](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf).
 
 ### <a name="networking"></a>Hálózat
 Függetlenül attól, hogy az API-t hív meg, amíg gyakran a fizikai hálózati korlátok az alkalmazás egy jelentős hatással lehet a teljesítmény. Az alábbiakban ismertetett egyes felhasználók You may encounter korlátozások.  

@@ -11,43 +11,44 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c81ab72be58cd223eb9b3fe9ec53d56574a94e8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 4b65eb38b6c8102295f40b5e169ae7c32a2342a2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430301"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201364"
 ---
-# <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Biztonságosan a felhasználók a Csoportalapú licencelés terméklicencek közötti migrálása
+# <a name="change-the-license-for-a-single-user-in-a-licensed-group-in-azure-active-directory"></a>A licenc az Azure Active Directoryban egy licenccel rendelkező csoport egy felhasználó módosítása
 
 Ez a cikk ismerteti az ajánlott módszer, ha Csoportalapú licencelést használ terméklicencek közötti áthelyezése a felhasználók. Ez a megközelítés célja annak biztosítására, hogy ne legyen adatvesztés nélkül szolgáltatás vagy az adatok az áttelepítés során: felhasználók át kell váltania termékek közötti zökkenőmentes. Az áttelepítési folyamat két változata terjed ki:
 
--   Egyszerű áttelepítés ütköző szolgáltatási csomagok, például az Office 365 nagyvállalati E3 csomag és az Office 365 nagyvállalati E5 csomag közötti migrálás nem tartalmazó terméklicencek közötti.
+- Egyszerű áttelepítés ütköző szolgáltatási csomagok, például az Office 365 nagyvállalati E3 csomag és az Office 365 nagyvállalati E5 csomag közötti migrálás nem tartalmazó terméklicencek közötti.
 
--   A migrálás összetettebb néhány ütköző szolgáltatási csomagok, például az Office 365 nagyvállalati E1 csomag és az Office 365 nagyvállalati E3 csomag közötti áttelepítés tartalmazó termékek között. Ütközések kapcsolatos további információkért lásd: [ütköző szolgáltatási csomagok](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) és [szolgáltatási csomagok esetében nem rendelhetők hozzá egyszerre](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
+- A migrálás összetettebb néhány ütköző szolgáltatási csomagok, például az Office 365 nagyvállalati E1 csomag és az Office 365 nagyvállalati E3 csomag közötti áttelepítés tartalmazó termékek között. Ütközések kapcsolatos további információkért lásd: [ütköző szolgáltatási csomagok](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) és [szolgáltatási csomagok esetében nem rendelhetők hozzá egyszerre](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
 
 Ez a cikk tartalmazza a minta PowerShell-kód, az áttelepítési és ellenőrzési lépések végrehajtásához használható. A kód különösen hasznos nagy léptékű műveletekhez, amikor is nem manuális lépések végrehajtásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
 Az áttelepítés megkezdése előtt fontos igaz az összes áttelepíteni kívánt felhasználó bizonyos Előfeltételek ellenőrzése. Ha az előfeltételek nem igaz az összes felhasználó, az áttelepítés bizonyos sikertelen lehet. Ennek eredményeképpen a felhasználói egy része lehet, hogy elveszíti a hozzáférést szolgáltatásaihoz vagy adataihoz. Ellenőrizni kell a következő előfeltételek:
 
--   Felhasználók rendelkeznek a *forrás licenc* rendelt Csoportalapú Licencelés használatával. Helyezze át a termék licencét egyetlen forráscsoport öröklődnek, és közvetlenül nem rendel.
+- Felhasználók rendelkeznek a *forrás licenc* rendelt Csoportalapú Licencelés használatával. Helyezze át a termék licencét egyetlen forráscsoport öröklődnek, és közvetlenül nem rendel.
 
     >[!NOTE]
     >Licenceket rendelt is közvetlenül, ha az alkalmazásának megakadályozhatja a *cél licenc*. Tudjon meg többet [közvetlen és a licenc-hozzárendelés](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Akkor érdemes használni egy [PowerShell-parancsprogram](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) annak ellenőrzésére, ha a felhasználók a közvetlen licenc.
 
--   A termék elég rendelkezésre álló licenc van. Nincs elég licence, ha néhány felhasználó nem kaphat a *cél licenc*. Is [ellenőrizze a rendelkezésre álló licencek számát](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
+- A termék elég rendelkezésre álló licenc van. Nincs elég licence, ha néhány felhasználó nem kaphat a *cél licenc*. Is [ellenőrizze a rendelkezésre álló licencek számát](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
 
--   Felhasználók nem rendelkeznek más hozzárendelt terméklicencek, amelyek ütközhetnek a *cél licenc* vagy eltávolításának megakadályozása a *forrás licenc*. Ha például egy kiegészítő termék például Workplace Analytics vagy a Project Online-licenccel, amely maga más termékekkel.
+- Felhasználók nem rendelkeznek más hozzárendelt terméklicencek, amelyek ütközhetnek a *cél licenc* vagy eltávolításának megakadályozása a *forrás licenc*. Ha például egy kiegészítő termék például Workplace Analytics vagy a Project Online-licenccel, amely maga más termékekkel.
 
--   Ismerje meg, hogyan kezeli az csoportok a környezetben. Például ha helyi csoportok kezelése, és szinkronizálhatja őket az Azure Active Directoryba (Azure AD) az Azure AD Connect használatával, majd, hozzáadása/eltávolítása felhasználók a helyszíni rendszerrel. A módosítások az Azure AD-ba való szinkronizálásához, és első mértékének növelése a Csoportalapú licencelés időt vesz igénybe. Az Azure AD dinamikus csoporttagságok használja, ha, hozzáadása/eltávolítása felhasználók ehelyett a tulajdonságaik módosításával. Az áttelepítési folyamat azonban változatlan marad. Az egyetlen különbség hogyan, felhasználók hozzáadása/törlése a csoporttagság.
+- Ismerje meg, hogyan kezeli az csoportok a környezetben. Például ha helyi csoportok kezelése, és szinkronizálhatja őket az Azure Active Directoryba (Azure AD) az Azure AD Connect használatával, majd, hozzáadása/eltávolítása felhasználók a helyszíni rendszerrel. A módosítások az Azure AD-ba való szinkronizálásához, és első mértékének növelése a Csoportalapú licencelés időt vesz igénybe. Az Azure AD dinamikus csoporttagságok használja, ha, hozzáadása/eltávolítása felhasználók ehelyett a tulajdonságaik módosításával. Az áttelepítési folyamat azonban változatlan marad. Az egyetlen különbség hogyan, felhasználók hozzáadása/törlése a csoporttagság.
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>Áttelepítheti a felhasználókat, amelyek nem rendelkeznek ütköző szolgáltatási csomagok termékek között
+
 Az áttelepítés cél az, hogy Csoportalapú licencelés felhasználói licenc módosítása egy *forrás licenc* (ebben a példában: Az Office 365 nagyvállalati E3 csomag), egy *cél licenc* (ebben a példában: Az Office 365 nagyvállalati E5 csomag). Ebben a forgatókönyvben a két termék nem tartalmazhatnak ütköző szolgáltatási csomagok, ezért teljes mértékben hozzárendelhető egyszerre egy konfliktus nélkül. Az áttelepítés során kell felhasználók elveszíteni a hozzáférésüket szolgáltatásaihoz vagy adataihoz. Az áttelepítés történik, és kötegekben kis"." Ellenőrizze az eredményt az egyes kötegek, és minimalizálja a hatókörébe tartozó bármely, a folyamat során esetleg felmerülő problémákat. A teljes a folyamat a következőképpen történik:
 
 1.  Felhasználók csoport tagjai, egy forrás és öröklik a *forrás licenc* a csoportból.
@@ -65,6 +66,7 @@ Az áttelepítés cél az, hogy Csoportalapú licencelés felhasználói licenc 
 7.  Ismételje meg a folyamat a felhasználók ezt követő kötegek.
 
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Egyetlen felhasználó áttelepítése az Azure portal használatával
+
 Ez az egyetlen felhasználó áttelepítése egy egyszerű bemutató.
 
 **1. LÉPÉS**: A felhasználó rendelkezik egy *forrás licenc* , amely örökli a csoportból. Nincsenek nem közvetlen licenc-hozzárendelések:

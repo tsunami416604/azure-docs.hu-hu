@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3ee582e2541e4eb55e5ea1424782df132ecf3575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116554"
 ---
 # <a name="connect-to-other-cognitive-services"></a>Csatlakozhat olyan cognitive services
 
@@ -33,27 +33,27 @@ A Content Moderator alapértelmezett összekötőket tartalmaz:
 
 Megadhat egy munkafolyamatot, mielőtt győződjön meg arról, hogy érvényes hitelesítő adatokat használni kívánt API-összekötő:
 
-1.  Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **összekötők**.
+1. Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **összekötők**.
 
-  ![Content Moderator válassza összekötők](images/connectors-2.png)
+   ![Content Moderator válassza összekötők](images/connectors-2.png)
 
-2.  Válassza ki a **szerkesztése** mellett a hitelesítő adatait a kívánt összekötő található.
+2. Válassza ki a **szerkesztése** mellett a hitelesítő adatait a kívánt összekötő található.
 
-  ![A Content Moderator, válassza ki a szerkesztési szimbólum](images/connectors-3.png)
+   ![A Content Moderator, válassza ki a szerkesztési szimbólum](images/connectors-3.png)
 
-3.  Az előfizetési kulcs jelenik meg. Ha módosítani szeretné, válassza ki a **mentése** befejezése után.
+3. Az előfizetési kulcs jelenik meg. Ha módosítani szeretné, válassza ki a **mentése** befejezése után.
 
-  ![Content Moderator szerkesztése összekötők lapon](images/connectors-4-1.png)
+   ![Content Moderator szerkesztése összekötők lapon](images/connectors-4-1.png)
  
 ## <a name="add-a-connector"></a>Adjon hozzá egy összekötőt
 
-1.  Mielőtt hozzáad egy összekötőt, szüksége van egy előfizetési kulcsot. Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **hitelesítő adatok**. Válassza ki, és másolja az értéket, amely szerepel a **Ocp-Admin-Subscription-Key** mezőbe.
+1. Mielőtt hozzáad egy összekötőt, szüksége van egy előfizetési kulcsot. Válassza ki a vizsgálóeszköz irányítópult **beállítások** > **hitelesítő adatok**. Válassza ki, és másolja az értéket, amely szerepel a **Ocp-Admin-Subscription-Key** mezőbe.
 
-2.  Válassza ki **összekötők**. Válassza ki a vizsgálóeszközt irányítópulton megjelenített elérhető összekötő közül. Ezután válassza ki **Connect**. 
+2. Válassza ki **összekötők**. Válassza ki a vizsgálóeszközt irányítópulton megjelenített elérhető összekötő közül. Ezután válassza ki **Connect**. 
 
-  ![Content Moderator hozzáadása összekötő lap](images/connectors-5.png)
+   ![Content Moderator hozzáadása összekötő lap](images/connectors-5.png)
 
-3.  Az a **Ocp-Admin-Subscription-Key** mezőbe illessze be a másolt kulcsot. Ezt követően válassza a **Mentés** lehetőséget.
+3. Az a **Ocp-Admin-Subscription-Key** mezőbe illessze be a másolt kulcsot. Ezt követően válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

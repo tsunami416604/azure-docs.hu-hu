@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d90407dab29f431f5a592e077c859aea997c4c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: MT
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999490"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -148,6 +148,8 @@ A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaiho
 > [!WARNING]
 > A önkiszolgáló jelszó-átállítási mikor csak egy módszert szükség ellenőrző kód alaphelyzetbe állítása az egyetlen lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
+
+Előfordulhat, hogy a felhasználók legfeljebb 5 hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH hardvertokenek (nyilvános előzetes verzió)
 

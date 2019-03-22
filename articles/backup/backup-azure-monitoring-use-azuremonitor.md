@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439163"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258581"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -29,7 +29,7 @@ A [beépített figyelési és riasztási cikk](backup-azure-monitoring-built-in-
 ## <a name="using-log-analytics-workspace"></a>Log Analytics-munkaterület használata
 
 > [!NOTE]
-> Az Azure virtuális gép biztonsági mentéseinek, MAB-ügynök, a System Center DPM (SC-DPM) van alatt folyamatosan a Log Analytics-munkaterületre diagnosztikai beállításokon keresztül. Az SQL biztonsági másolatokat az Azure-beli virtuális gépeken, az Azure fájlmegosztások biztonsági másolatainak, a Microsoft Azure Backup Server (MABS) támogatása hamarosan elérhető lesz.
+> Az Azure virtuális gép biztonsági mentéseinek, MAB-ügynök, a System Center DPM (SC-DPM), az SQL Azure virtuális gépek biztonsági mentésének van alatt folyamatosan a Log Analytics-munkaterületre diagnosztikai beállításokon keresztül. Az Azure fájlmegosztások biztonsági másolatainak, a Microsoft Azure Backup Server (MABS) támogatása hamarosan elérhető lesz.
 
 Azt is két Azure-szolgáltatások - funkcióit kihasználva az **diagnosztikai beállítások** (adatokat lehet küldeni a több Azure Resource Manager-erőforrások egy másik erőforrás) és **Log Analytics** (LA - létrehozásához egyéni riasztások, ahol megadhatja a más értesítési csatornákra Műveletcsoportok használatával) figyelés ipari méretekben. A következő szakaszokban a LA használatát az Azure Backup monitorozásához ipari méretekben.
 

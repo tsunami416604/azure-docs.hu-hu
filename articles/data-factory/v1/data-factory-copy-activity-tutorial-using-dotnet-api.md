@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ac0ef463f05c2f361c75827e300b2866e16dfef1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 647b2ae5f23ef6f94e3a56eb777053a7eb3e0097
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446979"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090440"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: .NET API használatával másolási tevékenységgel rendelkező folyamat létrehozása
 > [!div class="op_single_selector"]
@@ -515,9 +515,9 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
     ```
 18. Futtassa le a mintát, ehhez kattintson a menü **Hibakeresés** -> **Hibakeresés indítása** elemére. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 19. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
-   * Társított szolgáltatás: **LinkedService_AzureStorage**
-   * Adatkészlet: **InputDataset** és **OutputDataset**.
-   * Adatcsatorna: **PipelineBlobSample**
+    * Társított szolgáltatás: **LinkedService_AzureStorage**
+    * Adatkészlet: **InputDataset** és **OutputDataset**.
+    * Adatcsatorna: **PipelineBlobSample**
 20. Ellenőrizze, hogy a két alkalmazotti rekord a meghatározott Azure SQL-adatbázis **emp** táblájában lett létrehozva.
 
 ## <a name="next-steps"></a>További lépések

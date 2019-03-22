@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 61dd4930d7c34b30a4cedb34a4d815aa553d001e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697649"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895889"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -101,7 +101,7 @@ Minden művelet a következő táblázatban tárolja a tulajdonságokat.  Riaszt
 ### <a name="retrieving-actions"></a>Műveletek beolvasása
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 A Get metódust használatával lekérheti az összes művelet ütemezés.
 
@@ -124,7 +124,7 @@ Ezért ezekben a példákban vannak megadva, az alábbi szakaszok a művelet tí
 ### <a name="deleting-actions"></a>Műveletek törlése
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 A művelet azonosítójú a Delete metódus használatával törölhet olyan műveleteket.
 
@@ -145,7 +145,7 @@ A művelet azonosítójú a Delete metódus használatával törölhet olyan mű
 | Webhook-műveletek | Riasztások, adatok leküldése a szolgáltatás kívánt JSON-fájlként |Nem kötelező, ha a riasztások bővítve lettek az Azure-bA|
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md).
 
 #### <a name="thresholds"></a>Küszöbértékek
 Riasztási művelet rendelkeznie kell egy és csakis egy küszöbértéket.  A mentett keresés eredménye megfelel a küszöbérték, hogy a keresés társított művelet, ha a művelet a bármely más folyamatok futnak.  Egy műveletet is tartalmazhat, csak egy küszöbértéket, hogy más típusú, amelyek nem tartalmazzák a küszöbértékek műveletekhez használható.
@@ -354,7 +354,7 @@ Műveletcsoport hozzárendelt ütemezés módosításához használja a Put met�
 E-mail-értesítések küldése egy vagy több címzett e-mail.  Azok a különféle tulajdonságokat tartalmaznak, az alábbi táblázatban.
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA például az e-mailben értesítést most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA például az e-mailben értesítést most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Tulajdonság | Leírás |
@@ -398,7 +398,7 @@ Egy új e-mail-művelet ütemezés létrehozásához használja a Put metódust 
 Szervizelések el egy runbookot, amely megpróbálja a riasztás által azonosított probléma az Azure automationben.  Hozzon létre egy webhookot a runbookhoz, a szervizelési művelet használni kell, és adja meg az URI-t a WebhookUri tulajdonság.  Ez a művelet az Azure portal használatával hoz létre, amikor egy új webhook automatikusan létrejön a runbook.
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA például a runbook használata szervizelési műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA például a runbook használata szervizelési műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Szervizelések tulajdonságait az alábbi táblázat tartalmazza.
 
@@ -457,7 +457,7 @@ Következő, hozzon létre egy új e-mail-értesítés egy teljes példát.  Ez 
 Webhook-műveletek egy folyamat meghívása egy URL-címet és szükség esetén elküldendő hasznos megkezdéséhez.  Azok javítási műveletek hasonló azzal a különbséggel, nem tér ki rájuk, amelyek aktiválják előfordulhat, hogy az Azure Automation-runbookok eltérő folyamatok webhookok.  Ezenkívül tartalmaznak további lehetőséget kínál a hasznos kell továbbítani a távoli folyamat.
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet egy Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek, például a Webhook mostantól az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan kiterjesztik az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az Azure Log Analytics](../../azure-monitor/platform/alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek, például a Webhook mostantól az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
 Webhook-műveletek nem rendelkezik egy küszöbértéket, de ehelyett hozzá kell adni egy ütemezést, amely rendelkezik a riasztási művelet a küszöbértékkel.  

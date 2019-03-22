@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 44056ae1bca2595965abd3a47b4a2aa29d221623
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255233"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012882"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Első lépései az Azure table storage és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,12 +29,12 @@ Az Azure Table storage szolgáltatás lehetővé teszi nagy mennyiségű struktu
 
 A kezdéshez először hozzon létre egy táblát a storage-fiókban. Bemutatjuk, egy Azure-tábla létrehozása a kódot, valamint hogyan hajthat végre alapszintű táblázat és az entitás műveletek, például a hozzáadása, módosítása, olvasó és táblaentitások olvasása. A Kódminták C nyelven írt\# kódot, és használja a [a Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**Megjegyzés:** hajtsa végre az Azure storage hívásainak API-k némelyike aszinkron. Lásd: [aszinkron programozás az Async és Await](https://msdn.microsoft.com/library/hh191443.aspx) további információt. Az alábbi kódot feltételezi, hogy programozási aszinkron metódusok vannak használatban.
+**MEGJEGYZÉS:** Hajtsa végre az Azure storage hívásainak API-k némelyike aszinkron. Lásd: [aszinkron programozás az Async és Await](https://msdn.microsoft.com/library/hh191443.aspx) további információt. Az alábbi kódot feltételezi, hogy programozási aszinkron metódusok vannak használatban.
 
 * Lásd: [.NET használatával az Azure Table storage használatának első lépései](../storage/storage-dotnet-how-to-use-tables.md) programozott módon kezelésére szolgáló táblák további tájékoztatást.
 * Lásd: [Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/) Azure Storage szolgáltatással kapcsolatos általános információkat.
 * Lásd: [Cloud Services – dokumentáció](https://azure.microsoft.com/documentation/services/cloud-services/) az Azure cloud services kapcsolatos általános információkat.
-* Lásd: [ASP.NET](http://www.asp.net) ASP.NET-alkalmazások programozása további információt.
+* Lásd: [ASP.NET](https://www.asp.net) ASP.NET-alkalmazások programozása további információt.
 
 ## <a name="access-tables-in-code"></a>Hozzáférés táblák a code-ban
 Hozzáférnek a cloud service-projektek, a C# forrásfájlokat, amely az Azure table storage eléréséhez a következő elemeket is kell.

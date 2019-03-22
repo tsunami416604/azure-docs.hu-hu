@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 113408b49297a292967be9215291b3cecfa7384d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 949bf52a586603fc6a82c0da553cf70877a8f4be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431600"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085014"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory állapotának ellenőrzése megoldással az Azure monitorban az Active Directory-környezet optimalizálása
 
@@ -111,10 +111,10 @@ Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-fe
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Egy fókuszterület javaslatok megtekintése, és korrekciós műveletek
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-4. Az a **áttekintése** lap, kattintson a **Active Directory állapotának ellenőrzése** csempére.
-5. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
-6. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![kép az ajánlások állapotának ellenőrzése](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
-7. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Intéztek a cikket, ha újabb értékelések rekordokat, amelyek a javasolt műveleteket származnak, és a megfelelőségi pontszám növeli. Kijavított elemek jelennek meg **átadott objektumok**.
+1. Az a **áttekintése** lap, kattintson a **Active Directory állapotának ellenőrzése** csempére.
+1. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
+1. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![kép az ajánlások állapotának ellenőrzése](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+1. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Intéztek a cikket, ha újabb értékelések rekordokat, amelyek a javasolt műveleteket származnak, és a megfelelőségi pontszám növeli. Kijavított elemek jelennek meg **átadott objektumok**.
 
 ## <a name="ignore-recommendations"></a>Hagyja figyelmen kívül a javaslatok
 Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szövegfájlt, amely az Azure Monitor használatával fogja megakadályozása javaslatokat az értékelés eredményeinek parancsot.

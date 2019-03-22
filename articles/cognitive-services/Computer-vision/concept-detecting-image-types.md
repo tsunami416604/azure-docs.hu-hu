@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cd7b2a8a70a315b05c0824a863803bbc6ffabb2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895447"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>A Computer Vision képtípussal észlelése
 
-Számítógépes Látástechnológia elemezheti kép tartalomtípusa jelzi, hogy-e a kép ClipArt, a méretezési csoport vagy vonalrajz valószínűsége minősítése.
+Az a [kép elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API, Computer Vision elemezheti a tartalomtípus a képek, amely azt jelzi, hogy a kép ClipArt vagy vonalrajz-e.
 
 ## <a name="detecting-clip-art"></a>ClipArt észlelése
 
@@ -115,4 +115,4 @@ A következő JSON-válaszok mutatja be, milyen számítógépes Látástechnol�
 
 ## <a name="next-steps"></a>További lépések
 
-Fogalmak ismertetése [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek kategorizálásához](concept-categorizing-images.md).
+Tekintse meg a [kép elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) referenciadokumentációt megtudhatja, hogyan képtípussal észleléséhez.

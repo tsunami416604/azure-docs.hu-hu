@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 947740ed28deea9682d10eecf9a66dab7540669e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887102"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Titkosítás |} Megoldások 
+
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Webalkalmazás** | <ul><li>[Csak a jóváhagyott szimmetrikus blokktitkosító és a kulcshosszok](#cipher-length)</li><li>[Használható jóváhagyott titkosítási mód letiltása és a szimmetrikus titkosítási inicializálási vektor ismert](#vector-ciphers)</li><li>[Jóváhagyott aszimmetrikus algoritmusok, kulcshosszok és kitöltési használata](#padding)</li><li>[Jóváhagyott véletlenszerű szám generátorok használata](#numgen)</li><li>[Ne használja a szimmetrikus stream Rejtjelek](#stream-ciphers)</li><li>[Jóváhagyott HMAC-val, MAC és beállítható kivonatoló algoritmusok használata](#mac-hash)</li><li>[Csak a jóváhagyott titkosítási kivonatot funkciók használata](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "56880308"
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
-| **Lépések** | <p>Termékek csak a jóváhagyott üzenethitelesítő kódot (MAC) vagy kivonatalapú üzenethitelesítési kód (HMAC) algoritmusok kell használnia.</p><p>Egy üzenethitelesítő kódot (MAC) olyan adat, egy üzenet, amely lehetővé teszi, hogy mind a küldő szerint a gazdaszámítógép és a titkos kulcs használatával üzenet sértetlenségének ellenőrzéséhez a címzett csatlakoztatva. Mindkét kivonat-alapú MAC használatát ([HMAC-val](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) vagy [titkosító-blokkalapú MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) megengedett, mennyi ideig, az összes alapul szolgáló kivonatoló vagy szimmetrikus titkosítási algoritmusok is jóváhagyott használatra; jelenleg ez magában foglalja a HMAC-SHA2-függvények (HMAC-SHA256 algoritmust, HMAC-SHA384 és HMAC-SHA512) és a CMAC/OMAC1 és OMAC2 letiltása a Mac számítógépek (ezek alapulnak AES) titkosító-alapú.</p><p>HMAC-SHA1 használata megengedett tartozó platform kompatibilitását, de akkor kell Kivételt képez ez az eljárás a fájl és a szervezet titkosítási felülvizsgálati mennek keresztül. Kisebb, mint 128 bit üzenetkivonatokat csonkolása nem engedélyezett. Egy kulcsot és az adatok nem engedélyezett, és kell alávetni, a szervezet kriptográfiai tábla kivonatoló metódusok használata előtt tekintse át ügyfél használatával.</p>|
+| **Lépések** | <p>Termékek csak a jóváhagyott üzenethitelesítő kódot (MAC) vagy kivonatalapú üzenethitelesítési kód (HMAC) algoritmusok kell használnia.</p><p>Egy üzenethitelesítő kódot (MAC) olyan adat, egy üzenet, amely lehetővé teszi, hogy mind a küldő szerint a gazdaszámítógép és a titkos kulcs használatával üzenet sértetlenségének ellenőrzéséhez a címzett csatlakoztatva. Mindkét kivonat-alapú MAC használatát ([HMAC-val](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) vagy [titkosító-blokkalapú MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) megengedett, mennyi ideig, az összes alapul szolgáló kivonatoló vagy szimmetrikus titkosítási algoritmusok is jóváhagyott használatra; jelenleg ez magában foglalja a HMAC-SHA2-függvények (HMAC-SHA256 algoritmust, HMAC-SHA384 és HMAC-SHA512) és a CMAC/OMAC1 és OMAC2 letiltása a Mac számítógépek (ezek alapulnak AES) titkosító-alapú.</p><p>HMAC-SHA1 használata megengedett tartozó platform kompatibilitását, de akkor kell Kivételt képez ez az eljárás a fájl és a szervezet titkosítási felülvizsgálati mennek keresztül. Kisebb, mint 128 bit üzenetkivonatokat csonkolása nem engedélyezett. Egy kulcsot és az adatok nem engedélyezett, és kell alávetni, a szervezet kriptográfiai tábla kivonatoló metódusok használata előtt tekintse át ügyfél használatával.</p>|
 
 ## <a id="hash-functions"></a>Csak a jóváhagyott titkosítási kivonatot funkciók használata
 

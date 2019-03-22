@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffac91aef9a091f827c333605ab20c1cce7e258
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446095"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Oktatóanyag: Az Azure Active Directory-integráció a vászonra
 
@@ -180,7 +180,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -239,9 +239,9 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a vászonra, akkor ki kel
 
    a. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be például a felhasználó nevét **BrittaSimon**.
 
-   b. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+   b. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
 
-   c. Az a **bejelentkezési** szövegmezőbe írja be a felhasználó Azure ad-ben e-mail címe például **brittasimon@contoso.com**.
+   c. Az a **bejelentkezési** szövegmezőbe írja be a felhasználó Azure ad-ben e-mail címe például **brittasimon\@contoso.com**.
 
    d. Válassza ki **információ a fiók létrehozása a felhasználó E-mail**.
 

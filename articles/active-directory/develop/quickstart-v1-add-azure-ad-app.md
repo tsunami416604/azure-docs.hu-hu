@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119598"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Gyors útmutató: Alkalmazás regisztrálása az Azure Active Directory 1.0-s verziójú végpontján
 
@@ -52,16 +52,16 @@ Először győződjön meg arról, hogy már rendelkezik egy Azure AD-bérlővel
 
 1. Amikor megjelenik a **Létrehozás** lap, adja meg az alkalmazás regisztrációs adatait: 
 
-    - **név:** Adjon meg egy kifejező alkalmazásnevet
-    - **Alkalmazás típusa:**
-      - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](developer-glossary.md#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](developer-glossary.md#native-client).
-      - Válassza a **Webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](developer-glossary.md#client-application) és [erőforrás-/API-alkalmazások](developer-glossary.md#resource-server) esetében. Ez a beállítás használatos a bizalmas OAuth [webes ügyfelekhez](developer-glossary.md#web-client) és a nyilvános [felhasználóiügynök-alapú ügyfelekhez](developer-glossary.md#user-agent-based-client). Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
-    - **Bejelentkezési URL-címe:** A "webalkalmazás / API" alkalmazások esetén adja meg az alkalmazás alap URL-CÍMÉT. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. 
-    - **Redirect URI:** Adja meg az URI-t használják az Azure AD a jogkivonatválaszok visszaadására "Natív" alkalmazások esetében. Adjon meg egy, az alkalmazáshoz tartozó értéket, például: `http://MyFirstAADApp`
+   - **név:** Adjon meg egy kifejező alkalmazásnevet
+   - **Alkalmazás típusa:**
+     - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](developer-glossary.md#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](developer-glossary.md#native-client).
+     - Válassza a **Webalkalmazás/API** lehetőséget a biztonságos kiszolgálóra telepített [ügyfélalkalmazások](developer-glossary.md#client-application) és [erőforrás-/API-alkalmazások](developer-glossary.md#resource-server) esetében. Ez a beállítás használatos a bizalmas OAuth [webes ügyfelekhez](developer-glossary.md#web-client) és a nyilvános [felhasználóiügynök-alapú ügyfelekhez](developer-glossary.md#user-agent-based-client). Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
+   - **Bejelentkezési URL-címe:** A "webalkalmazás / API" alkalmazások esetén adja meg az alkalmazás alap URL-CÍMÉT. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba. 
+   - **Redirect URI:** Adja meg az URI-t használják az Azure AD a jogkivonatválaszok visszaadására "Natív" alkalmazások esetében. Adjon meg egy, az alkalmazáshoz tartozó értéket, például: `http://MyFirstAADApp`
 
-      ![Új alkalmazás regisztrálása – Létrehozás](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![Új alkalmazás regisztrálása – Létrehozás](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    Ha konkrét példákat szeretne látni a webalkalmazásokra vagy a natív alkalmazásokra, tekintse meg a dokumentáció **Rövid útmutatók** szakaszát.
+     Ha konkrét példákat szeretne látni a webalkalmazásokra vagy a natív alkalmazásokra, tekintse meg a dokumentáció **Rövid útmutatók** szakaszát.
 
 1. Miután végzett, válassza a **Létrehozás** lehetőséget.
 

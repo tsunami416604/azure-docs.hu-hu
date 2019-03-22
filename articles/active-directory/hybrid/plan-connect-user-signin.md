@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b503c7f0693a90d438fcec3ecae335fd349b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996340"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezési lehetőségek
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk azokat a fogalmakat minden identitás-modell segítségével válassza ki az Azure ad-ben való bejelentkezéshez használni kívánt identitást.
@@ -75,7 +75,9 @@ További információkért lásd:
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Amely egy új vagy meglévő farmot használ a Windows Server 2012 R2 AD FS-Összevonás
 Az összevont bejelentkezés a felhasználók a saját helyszíni jelszavak az Azure AD-alapú szolgáltatások jelentkezhetnek be. Közben, netán a vállalati hálózaton, azok nem is kell a jelszavát adja meg. Az összevonási lehetőség az AD FS használatával, egy új vagy meglévő és a Windows Server 2012 R2 AD FS-farm üzembe helyezése. Ha egy meglévő farmra megadását választja, az Azure AD Connect konfigurálja a farm és az Azure AD közötti bizalmi kapcsolat, úgy, hogy a felhasználók bejelentkezhetnek.
 
-<center>![Összevonás az AD FS a Windows Server 2012 R2 rendszerben](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Összevonás az AD FS a Windows Server 2012 R2 rendszerben](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Összevonás az AD FS a Windows Server 2012 R2 telepítése
 
@@ -152,6 +154,7 @@ Nagyon fontos tudni, hogy az egyéni tartomány állapotok az Azure AD-címtárb
 A következő információkat, feltételezzük, hogy használja az érintett használatban van a helyi könyvtár UPN – részeként például egyszerű felhasználónév utótagja contoso.com user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Express beállításokat és a Jelszókivonat-szinkronizálás
+
 | Állapot | Az Azure bejelentkezési felhasználói élmény hatása |
 |:---:|:--- |
 | Nincs hozzáadva |Ebben az esetben nincs egyéni tartomány contoso.com hozzá lett adva az Azure AD-címtárban. Egyszerű felhasználónév a helyszíni az utótaggal rendelkező felhasználók @contoso.com nem tudja használni a helyszíni egyszerű Felhasználónévvel jelentkezzen be az Azure-bA. Ehelyett rendelkeznek őket az Azure AD által biztosított alapértelmezett Azure AD-címtárat az utótag hozzáadása új UPN használatára. Például, ha a felhasználók számára az Azure AD directory azurecontoso.onmicrosoft.com, akkor a helyszíni felhasználót szinkronizál user@contoso.com kap egy egyszerű Felhasználóneve user@azurecontoso.onmicrosoft.com. |

@@ -9,14 +9,15 @@ ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6f0aeaa39114efbf3bd5587eac5744db386672
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105233"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293821"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -59,9 +60,9 @@ Hacsak egy felhasználó a korlátozott rendszergazda vagy a globális rendszerg
 Igen! Ez a szabályzat konfigurálásakor kell arra, hogy elkerülje a tagjának és rendszergazdájának véletlenül letiltja a hozzáférést.
 A vendégfelhasználó való hozzáférés letiltását a [az Azure portal](https://portal.azure.com), használja a feltételes hozzáférési szabályzat a Windows Azure klasszikus üzemi modell API-ban:
 1. Módosítsa a **minden felhasználó** csoportot, hogy csak a tagok tartalmaz.
-   ![módosíthatja a csoport képernyőképe](media/faq/modify-all-users-group.png)
+   ![Ha UserType nem egyenlő Vendég minden felhasználó csoport ábrázoló képernyőfelvétel ](media/faq/modify-all-users-group.png)
 2. Vendégfelhasználók tartalmazó dinamikus csoport létrehozása.
-   ![képernyőfelvétel a csoport létrehozása](media/faq/group-with-guest-users.png)
+   ![Minden vendégfelhasználó új csoportot ábrázoló képernyőfelvétel](media/faq/group-with-guest-users.png)
 3. Állítsa be feltételes hozzáférési szabályzat vendég felhasználók számára a portál hozzáférjen az alábbi videóban látható módon:
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 

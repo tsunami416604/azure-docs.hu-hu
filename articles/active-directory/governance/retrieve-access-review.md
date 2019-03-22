@@ -16,16 +16,16 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a422f619c4ef63da59516ff2748683eb0f7f70
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726688"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839644"
 ---
 # <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal a hozzáférési felülvizsgálatok eredményeinek beolvasása
 
-A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára.  A **Globális rendszergazda**, **Felhasználói fiók adminisztrátora** és **Biztonsági rendszergazda** vagy **Biztonsági olvasó** szerepkörben lévő felhasználók a hozzáférési felülvizsgálatok eredményeit is olvashatják.  Ha felhasználókat szeretne rendelni ezen szerepkörök egyikéhez, egy kiemelt szerepkörű rendszergazda az Azure AD PIM használatával jogosulttá teheti a felhasználókat a szerepkör aktiválására, vagy egy globális rendszergazda végleg [a szerepkörhöz rendelhet egy felhasználót](../fundamentals/active-directory-users-assign-role-azure-portal.md).
+A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára.  A felhasználó, aki az a **globális rendszergazdai**, **felhasználói rendszergazdája**, **biztonsági rendszergazda** vagy **biztonsági olvasó** szerepkör is olvassa el a hozzáférési felülvizsgálat eredményei.  Felhasználók hozzárendelése egy ilyen szerepkörbe, kiemelt szerepkörű rendszergazdák Azure AD PIM-ben használhatja, hogy egy felhasználó jogosult a szerepkör aktiválását, illetve egy globális rendszergazdai véglegesen is [rendelje hozzá egy felhasználót a szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

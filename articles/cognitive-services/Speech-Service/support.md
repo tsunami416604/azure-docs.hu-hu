@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: b8e6c8b125e8eeaadac2e6864b06d55c42d3b173
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542002"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877700"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
-Akkor most használja először a beszédfelismerési szolgáltatás működésének megismerése? Fontolgatja egy új szolgáltatást szeretne az alkalmazáshoz? Az alábbiakban ahol is kaphat segítséget a fejlesztők kapcsolatos javaslatokat.
+Akkor most használja először a beszédszolgáltatások működésének megismerése? Fontolgatja egy új szolgáltatást szeretne az alkalmazáshoz? Az alábbiakban ahol is kaphat segítséget a fejlesztők kapcsolatos javaslatokat.
 
 > [!div class="checklist"]
 > * Az új fejlesztések kapcsolatos tájékozott *Azure Cognitive Services*, vagy keresse meg a kapcsolódó legújabb híreket *beszédszolgáltatás*.
@@ -30,7 +30,7 @@ Akkor most használja először a beszédfelismerési szolgáltatás működés�
 
 ## <a name="stay-informed"></a>Naprakész lehet
 
-Cognitive Services kapcsolatos híreket az összegyűjtött a [a Cognitive Services blogja](https://azure.microsoft.com/blog/topics/cognitive-services/). Beszédszolgáltatás kapcsolatos legújabb információkért nyomon követheti a [Speech service blog](https://azure.microsoft.com/blog/tag/speech-service/).
+Cognitive Services kapcsolatos híreket az összegyűjtött a [a Cognitive Services blogja](https://azure.microsoft.com/blog/topics/cognitive-services/). A legfrissebb információkat beszédszolgáltatások, nyomon követheti a [beszédszolgáltatások blog](https://azure.microsoft.com/blog/tag/speech-service/).
 
 ## <a name="search"></a>Keresés
 

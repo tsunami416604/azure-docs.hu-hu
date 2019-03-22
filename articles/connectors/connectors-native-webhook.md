@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182115"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Hozzon létre eseményalapú munkafolyamatokat és műveleteket webhookok és az Azure Logic Apps használatával
 
@@ -29,9 +29,9 @@ Tudjon meg többet [egyéni API-k, amelyek támogatják a webhook létrehozása]
 
 ## <a name="use-the-webhook-trigger"></a>A webhook eseményindítóhoz használata
 
-A [ *eseményindító* ](connectors-overview.md) olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatának. Webhook eseményindítóként eseményalapú, és nem függ a lekérdezés az új elemeket. Például a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás aktiválódik egy esemény azonnali. A webhook eseményindítóhoz regisztrál egy *visszahívási URL-Címének* egy szolgáltatást, és használja a logikai alkalmazás aktiválódik az URL-CÍMRE szükség.
+A [ *eseményindító* ](connectors-overview.md) olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatának. A webhook eseményindítóhoz eseményalapú, amely új elemeket a lekérdezése nem függ. Ha menti a logikai alkalmazás a webhook eseményindítóként, illetve ha módosítja a logikai alkalmazás le van tiltva, hogy engedélyezve van, a webhook eseményindítóhoz *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálásával egy *visszahívási URL-Címének* szolgáltatás vagy a végpont. Az eseményindító URL-CÍMRE használja fel a logikai alkalmazás futtatása szükséges. Például a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás akkor aktiválódik, ha a várt esemény történik, azonnal. Az eseményindító *lemondja az előfizetést* Ha eltávolítja az eseményindítót, a logikai alkalmazás mentése, illetve amikor megváltozik a logikai alkalmazást engedélyezett.
 
-A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic App Designerben. A lépések azt feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). Az előfizetés hívást kezdeményez, amikor egy logikai alkalmazást egy új webhook mentve, vagy kapcsolt Letiltottról engedélyezett értékre. Ha egy logic app webhooktrigger eltávolítva és mentett, vagy átváltani a leiratkozás hívást kezdeményez engedélyezett.
+A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic App Designerben. A lépések azt feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
 **A webhook-eseményindító hozzáadása**
 
@@ -40,7 +40,7 @@ A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic A
 
    Ezt a lépést, ugyanezt a mintát követi a [HTTP-művelet](connectors-native-http.md) formátumban.
 
-     ![HTTP-eseményindító](./media/connectors-native-webhook/using-trigger.png)
+     ![HTTP-trigger](./media/connectors-native-webhook/using-trigger.png)
 
 3. Adjon hozzá legalább egy műveletet.
 4. Kattintson a **mentése** a logikai alkalmazás közzétételére. Ebben a lépésben az előfizetési végpont meghívja a visszahívási URL-címet, a logikai alkalmazás aktiválásához szükséges.
@@ -48,9 +48,15 @@ A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic A
 
 ## <a name="use-the-webhook-action"></a>A webhook művelettel
 
-Egy [ *művelet* ](connectors-overview.md) egy művelet által elvégzett a logikai alkalmazásban definiált munkafolyamat. Egy webhook művelettel regisztrál egy *visszahívási URL-Címének* egy szolgáltatás, és megvárja, amíg az URL-cím neve folytatása előtt. A ["Jóváhagyási E-mail küldése"](connectors-create-api-office365-outlook.md) egy összekötőt, ez a minta a következő példát. Ez a minta kiterjesztheti az minden olyan szolgáltatáshoz, a webhook művelettel keresztül. 
+Egy [ *művelet* ](connectors-overview.md) egy meghatározott műveletet, és futtassa a logikai alkalmazás munkafolyamat által. Mikor fusson a logikai alkalmazás a webhook művelettel, a művelet *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálja a *visszahívási URL-Címének* szolgáltatás vagy a végpont. A webhook művelettel, majd megvárja, amíg, amely a szolgáltatás hívást az URL-cím a logikai alkalmazás folytatja futtatása előtt. A logikai alkalmazás lemondja az előfizetést a szolgáltatás vagy a végpont ezekben az esetekben: 
 
-A következő példa bemutatja, hogyan állítható be a Logic App Designerben webhook művelettel. Ezek a lépések feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps használt minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-actions). Ha egy logikai alkalmazás a webhook művelet végrehajtása a feliratkozás hívást kezdeményez. A leiratkozási hívást kezdeményez egy Futtatás válaszra való várakozás közben meg lett szakítva, vagy az előtt a logikai alkalmazás túllépi az időkorlátot.
+* Ha a webhook művelet sikeres befejezését követően
+* Ha a logikai alkalmazás futtatásának megszakítása válaszra való várakozás közben
+* Mielőtt a logikai alkalmazás túllépi az időkorlátot
+
+Ha például a [ **jóváhagyó e-mail küldése** ](connectors-create-api-office365-outlook.md) beavatkozásra egy webhook művelettel ezt a mintát a következő példát. Ez a minta kiterjesztheti az minden olyan szolgáltatáshoz, a webhook művelettel keresztül. 
+
+A következő példa bemutatja, hogyan állítható be a Logic App Designerben webhook művelettel. Ezek a lépések feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps használt minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-actions). 
 
 **Egy webhook művelet hozzáadása**
 
@@ -94,10 +100,10 @@ Egy * azt jelenti, hogy kötelező mező.
 | Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
 | Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
 | Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
-| Fizessen elő a fejlécek |fejlécek |HTTP-kérelmek fejléceinek előfizetés |
+| Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
 | Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 | Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
-| Leiratkozás a fejlécek |fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
+| Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
 | Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 
 **Kimenet részletei**
@@ -130,10 +136,10 @@ Egy * azt jelenti, hogy kötelező mező.
 | Előfizetés lemondása metódus * |method |Leiratkozás kérelem használandó HTTP-metódus |
 | Előfizetés lemondása URI * |uri azonosító |A HTTP URI unsubscribe kérelem használata |
 | Fizessen elő a törzs |törzs |Az előfizetés HTTP-kérés törzse |
-| Fizessen elő a fejlécek |fejlécek |HTTP-kérelmek fejléceinek előfizetés |
+| Fizessen elő a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek előfizetés |
 | Fizessen elő a hitelesítés |hitelesítés |Az előfizetés használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 | Előfizetés lemondása törzse |törzs |A leiratkozási HTTP-kérés törzse |
-| Leiratkozás a fejlécek |fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
+| Leiratkozás a fejlécek |A fejlécek |HTTP-kérelmek fejléceinek unsubscribe |
 | Előfizetés lemondása hitelesítés |hitelesítés |A leiratkozási használandó HTTP-hitelesítést. [Tekintse meg a HTTP-összekötő](connectors-native-http.md#authentication) részletekért |
 
 **Kimenet részletei**

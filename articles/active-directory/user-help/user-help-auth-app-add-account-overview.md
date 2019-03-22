@@ -12,21 +12,21 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53afdfc4d2d8288a612cfb461751e6f78ebb2fa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179263"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014967"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Fiókok hozzáadása a Microsoft Authenticator alkalmazás áttekintése
 
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
 
->[!Important]
->A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
-
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
+> [!Important]
+> A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
+> 
+> Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
 Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használhatja:
 
@@ -43,6 +43,7 @@ Minden nap használt számos fiókhoz kétfaktoros ellenőrzés bekapcsolása t�
 |Személyes fiókok|A Microsoft és nem Microsoft-fiókok személyes megnyitotta, mint az Outlook.com, Xbox LIVE-, Google, Facebook és egyéb ilyen.|
 
 ## <a name="in-this-section"></a>Ebben a szakaszban
+
 |Cikk |Leírás |
 |------|------------|
 |[A munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md)|Ismerteti, hogyan lehet a munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazást a kétfaktoros ellenőrzéshez.|

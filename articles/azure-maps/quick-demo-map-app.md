@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cc16c47f3b1764ba6887fd832656dfe2567ba0e4
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: be6d9ab0011e3d6b5d8ae1da489fc60c316e2867
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095466"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Az Azure Maps segítségével egy interaktív keresés térkép létrehozása
 
@@ -34,14 +34,14 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az a **keresés a piactéren** mezőbe írja be **Maps**.
 3. Az **Eredmények** részben válassza a **Maps** lehetőséget. Válassza ki a **létrehozás** a térkép alatt megjelenő gomb.
 4. Az a **létrehozása az Azure Maps-fiók** lap, adja meg a következő értékeket:
-    - Az új fiók **neve**.
-    - A fiókhoz használni kívánt **előfizetés**.
-    - A fiókhoz tartozó **erőforráscsoport**. Választhatja azt is **új létrehozása** vagy **meglévő** erőforráscsoportot.
-    - Válassza ki a **Tarifacsomag** tetszőleges.
-    - Olvassa el a **licenc** és **adatvédelmi nyilatkozat**. Jelölje be a jelölőnégyzetet, fogadja el a feltételeket.
-    - Végül válassza ki a **létrehozás** gombra.
+   - Az új fiók **neve**.
+   - A fiókhoz használni kívánt **előfizetés**.
+   - A fiókhoz tartozó **erőforráscsoport**. Választhatja azt is **új létrehozása** vagy **meglévő** erőforráscsoportot.
+   - Válassza ki a **Tarifacsomag** tetszőleges.
+   - Olvassa el a **licenc** és **adatvédelmi nyilatkozat**. Jelölje be a jelölőnégyzetet, fogadja el a feltételeket.
+   - Végül válassza ki a **létrehozás** gombra.
 
-    ![Az Azure Maps-fiók létrehozása a portálon](./media/quick-demo-map-app/create-account.png)
+     ![Az Azure Maps-fiók létrehozása a portálon](./media/quick-demo-map-app/create-account.png)
 
 5. A fiók sikeres létrehozása után nyissa meg, és a fiók menü beállítások szakaszában található. Válassza ki **kulcsok** megtekintése az Azure Maps-fiók az elsődleges és másodlagos kulcsot. Másolja az **Elsődleges kulcs** értékét a vágólapra, mert a következő szakaszban használnia kell majd.
 

@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: a24b7314775ea7667ab992742586e5b5c8bbb369
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34ef200ff96b098969c74937934d6178cfaf81ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205156"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117132"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Oktatóanyag: virtuális gépek számára elérhetővé az Azure Stack-felhasználók
 
@@ -129,8 +129,8 @@ Most, hogy létrehozott egy ajánlatot, tesztelheti azt. Egy felhasználó, regi
    Az a felhasználói portál üzembe helyezése egy virtuális gépet az új előfizetéssel.
 
    a. Jelentkezzen be a felhasználói portál egy olyan felhasználói fiókkal.
-      - Egy integrált rendszer, az URL-címet az operátor régió és külső tartománynév függően változik, és a következő formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
-   - Ha az Azure Stack fejlesztői készletet használ, a portál címe https://portal.local.azurestack.external.
+   - Egy integrált rendszer, az URL-címet az operátor régió és külső tartománynév függően változik, és a következő formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
+     - Ha az Azure Stack fejlesztői készletet használ, a portál címe https://portal.local.azurestack.external.
 
    b.  Az irányítópulton, válassza ki a **+ erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter próbaverzió**, majd válassza ki a **Létrehozása**.
 

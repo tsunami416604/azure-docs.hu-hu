@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57839576"
 ---
-# <a name="work-with-azure-cosmos-account"></a>Az Azure Cosmos-fiók használata
+# <a name="work-with-azure-cosmos-account"></a>Azure Cosmos-fiók használata
 
 Az Azure Cosmos DB egy teljes körűen felügyelt platform--szolgáltatásként (PaaS) a. Azure Cosmos DB használatának megkezdéséhez először az Azure-előfizetésében ajánlott létrehozni egy Azure Cosmos-fiókot. Az Azure Cosmos-fiók egy egyedi DNS-nevet tartalmazza, és a egy fiókot az Azure portal, Azure CLI használatával, vagy különböző nyelvfüggő SDK-k használatával kezelheti. További információkért lásd: [kezelése az Azure Cosmos-fiók](how-to-manage-database-account.md).
 

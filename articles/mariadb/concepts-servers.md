@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544566"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997899"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Az Azure Database for MariaDB kiszolgáló fogalmak
 Ez a cikk szempontokat és irányelveket tartalmaz az Azure Database for MariaDB-kiszolgálók használata.
@@ -36,6 +36,7 @@ Az Azure Database for MariaDB-kiszolgálón egy vagy több adatbázist is létre
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Hogyan tehető biztonságossá egy Azure Database for MariaDB-kiszolgáló?
 
 A következő elemek biztosíthatja, hogy az adatbázishoz való biztonságos hozzáférést.
+
 |||
 | :--| :--|
 | **Hitelesítés és engedélyezés** | Azure Database for MariaDB-kiszolgáló támogatja a natív MySQL-hitelesítést. Képes csatlakozni és hitelesítése a kiszolgálóra a kiszolgálói rendszergazdai bejelentkezéssel. |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 10fc55886e4c91a2d468704d13d3b206f4a9cf51
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0eb5a33b91925260c89e0b1c23800614ed637bdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990654"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Létrehozása és kezelése az Azure PowerShell használatával virtuálisgép-méretezési csoportot
 
@@ -140,7 +140,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Ha a rendszer erre kéri, adja meg a méretezési csoport létrehozása során használt hitelesítő adatokat (a mintaparancsokban ezek alapértelmezés szerint az *azureuser* és a *P@ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Amikor a rendszer kéri, adja meg a méretezési csoport létrehozása során használt hitelesítő adatokat (a mintaparancsokban alapértelmezés szerint *azureuser* és *P\@ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2083390c3d228e57151db8b165b876054d6c12cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876561"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257431"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A meglévő lejátszókkal tartalom lejátszása
 Az Azure Media Services számos népszerű formátumban, például a Smooth Streaming, HTTP Live Streaming és MPEG-Dash támogatja. Ez a témakör az adatfolyamok teszteléséhez használhatja meglévő lejátszók mutat.

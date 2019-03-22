@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/04/2019
+ms.date: 03/18/2019
 ms.author: kaanan
-ms.openlocfilehash: 5532174b6fc72f51e7ba7a946e601e7d97c7808e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189138"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
 Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pont) lehetővé teszi folyamatosan stream a virtuális gép hálózati forgalmat egy hálózati csomag adatgyűjtőnek vagy az analytics eszközt. A gyűjtő vagy analytics eszközt által biztosított egy [hálózati virtuális berendezésen](https://azure.microsoft.com/solutions/network-appliances/) partner. Dolgozunk a virtuális hálózati TAP érvényesített partneri megoldások listáját lásd: [partneri megoldások](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Virtuális hálózati TAP jelenleg fejlesztői előzetes verzióban a WestCentralUS Azure-régióban. Virtuális hálózati TAP használatához regisztrálnia kell az előzetes verzióban érhető el az e-mail <azurevnettap@microsoft.com> az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni. Ön nem használhatja a funkció, amíg nem kap egy megerősítő e-mailt. A developer Preview verzióját egy szolgáltatásiszint-szerződés nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) részleteiről.
+> Virtuális hálózati TAP jelenleg előzetes verzióban az összes Azure-régióban. Virtuális hálózati TAP használatához regisztrálnia kell az előzetes verzióban érhető el az e-mail <azurevnettap@microsoft.com> az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni. Ön nem használhatja a funkció, amíg nem kap egy megerősítő e-mailt. Ebben az előzetes verzióban egy szolgáltatásiszint-szerződés nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) részleteiről.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Virtuális hálózati TAP partnermegoldások
 
@@ -40,9 +40,11 @@ Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pon
 ### <a name="security-analytics-networkapplication-performance-management"></a>Biztonsági elemzés, hálózati és alkalmazásteljesítmény-felügyelet
 
 - [Biztonsági ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
+- [Cisco Stealthwatch felhő](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
+- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Nubeva Prizmákkal](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)

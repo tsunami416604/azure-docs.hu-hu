@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8008f96e00b0d9a4366832110c696c67a9c7257
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc3a42c280a344ef08fa23111df8652b6167cfb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165407"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109899"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Panorama9
 
@@ -198,18 +198,18 @@ Panorama9, esetén kiépítése a manuális feladat.
 
 1. A felső menüben kattintson **kezelés**, és kattintson a **felhasználók**.
    
-  ![Felhasználók](./media/panorama9-tutorial/ic790027.png "felhasználók")
+   ![Felhasználók](./media/panorama9-tutorial/ic790027.png "felhasználók")
 
 1. A felhasználók szakaszban kattintson a **+** új felhasználó hozzáadásához.
 
- ![Felhasználók](./media/panorama9-tutorial/ic790028.png "felhasználók")
+   ![Felhasználók](./media/panorama9-tutorial/ic790028.png "felhasználók")
 
 1. A felhasználói adatok szakaszban keresse meg, írja be egy érvényes kíván létrehozni az Azure Active Directory-felhasználó e-mail-címét a **E-mail** szövegmezőbe.
 
 1. A felhasználók szakaszban kattintson térjen **mentése**.
    
 > [!NOTE]
-    > Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
+> Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 

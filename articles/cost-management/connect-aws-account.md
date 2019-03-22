@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 411a3d606ac8ec2f262ec9a1aabac7b74ccd110a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098477"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010929"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Csatlakozás Amazon Web Services-fiók
 
@@ -45,7 +45,7 @@ Az első lépés, hogy az egyedi kapcsolat hozzáférési kód lekérése a Clou
 1. Jelentkezzen be az AWS kezelőpultját https://console.aws.amazon.com/iam/home válassza **szerepkörök**.
 2. Kattintson a **szerepkör létrehozása** majd **egy másik AWS-fiók**.
 3. Az a **Fiókazonosító** mezőbe illessze be `432263259397`. A Fiókazonosító az AWS által a Cloudyn-szolgáltatáshoz rendelt Cloudyn gyűjtő fiók. Használhatja a pontos Fiókazonosító látható.
-4. A **beállítások**válassza **külső ID használatának megkövetelése**. Illessze be az egyedi érték, amely korábban átmásolta a **külső azonosító** a Cloudyn mezőt. Kattintson a **tovább: engedélyek**.  
+4. A **beállítások**válassza **külső ID használatának megkövetelése**. Illessze be az egyedi érték, amely korábban átmásolta a **külső azonosító** a Cloudyn mezőt. Kattintson a **tovább: Engedélyek**.  
     ![a szerepkör létrehozása lapon illessze be a külső azonosító a Cloudyn](./media/connect-aws-account/create-role01.png)
 5. Alatt **engedélyházirend csatolása**, a a **házirendtípus** írja be a Szűrő mezőbe keresési `ReadOnlyAccess`, jelölje be **ReadOnlyAccess**, majd kattintson a **tovább: Felülvizsgálat**.  
     ![Válassza ki a csak olvasási hozzáféréssel a házirend-nevek listája](./media/connect-aws-account/readonlyaccess.png)
@@ -80,10 +80,10 @@ A következő szakaszok végigvezetik egy csak olvasható hozzáférést biztos�
 1. Jelentkezzen be az AWS kezelőpultját https://console.aws.amazon.com/iam/home válassza **felhasználók**.
 2. Kattintson a **felhasználó hozzáadása**.
 3. Az a **felhasználónév** mezőbe írja be a felhasználónevet.
-4. A **típus eléréséhez**, jelölje be **programozás alapú hozzáférést** kattintson **tovább: engedélyek**.  
+4. A **típus eléréséhez**, jelölje be **programozás alapú hozzáférést** kattintson **tovább: Engedélyek**.  
     ![a felhasználó hozzáadása oldalán adja meg a felhasználónevet](./media/connect-aws-account/add-user01.png)
 5. Engedélyek kiválasztása **a meglévő szabályzatok közvetlen csatolása**.
-6. Alatt **engedélyházirend csatolása**, a a **házirendtípus** írja be a Szűrő mezőbe keresési `ReadOnlyAccess`válassza **ReadOnlyAccess**, és kattintson a **tovább : Tekintse át**.  
+6. Alatt **engedélyházirend csatolása**, a a **házirendtípus** írja be a Szűrő mezőbe keresési `ReadOnlyAccess`válassza **ReadOnlyAccess**, és kattintson a **tovább : Felülvizsgálat**.  
     ![Válassza ki a felhasználó engedélyeinek beállítása ReadOnlyAccess](./media/connect-aws-account/set-permission-for-user.png)
 7. Az Áttekintés lap, ellenőrizze, helyes-e a választott beállításokat, majd kattintson a **felhasználó létrehozása**.
 8. A teljes lapon jelenik meg a hozzáférési kulcs azonosítója és kulcsa hozzáférési kulccsal. Ezen információk használatával a Cloudyn regisztrációs konfigurálása.
@@ -127,11 +127,11 @@ Létrehozhat egy S3 gyűjtőt részletes számlázási információk tárolásá
 6. Kattintson az Áttekintés lap **létrehozás gyűjtőbe**. A gyűjtő lista jelenik meg.
 7. Kattintson a gyűjtőhöz, Ön által létrehozott, és válassza ki a **engedélyek** lapot, majd **gyűjtőbe házirend**. A gyűjtő Helyicsoportházirend-szerkesztő megnyitása.
 8. Másolja az alábbi példa JSON, és illessze be a gyűjtő Helyicsoportházirend-szerkesztő.
-  - Cserélje le `<BillingBucketName>` az S3 gyűjtő nevével.
-  - Cserélje le `<ReadOnlyUserOrRole>` -szerepkör, illetve felhasználói információ, korábban kimásolt rendelkezett.
+   - Cserélje le `<BillingBucketName>` az S3 gyűjtő nevével.
+   - Cserélje le `<ReadOnlyUserOrRole>` -szerepkör, illetve felhasználói információ, korábban kimásolt rendelkezett.
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ Létrehozhat egy S3 gyűjtőt részletes számlázási információk tárolásá
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. Kattintson a **Save** (Mentés) gombra.  
     ![Kattintson a Mentés gombra a gyűjtő házirendszerkesztőben](./media/connect-aws-account/bucket-policy-editor.png)

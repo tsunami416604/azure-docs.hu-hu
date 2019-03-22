@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: 189683a9e98f161ce537284cc7b0349c94be2bf0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: ffb29fc76313e8870b52cb0a63936da7853ea6ce
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410910"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305183"
 ---
 ## <a name="timeout"></a>Függvény alkalmazás időtúllépési időtartama 
 
-Függvényalkalmazás időtúllépési időtartamát határozza meg a functionTimeout tulajdonságot a [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) soubor projektu. Az alábbi táblázat az alapértelmezett és maximális értékek mindkét terveket, és mindkét modul verzióban:
+Függvényalkalmazás időtúllépési időtartamát határozza meg a functionTimeout tulajdonságot a [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) soubor projektu. Az alábbi táblázat az alapértelmezett és maximális értékek mindkét csomagok percek alatt, és mindkét futtatókörnyezet-verzió:
 
 | Felkészülés | Verze modulu Runtime | Alapértelmezett | Maximum |
 |------|---------|---------|---------|

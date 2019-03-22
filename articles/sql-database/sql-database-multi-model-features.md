@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316523"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884523"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Az Azure SQL Database többmodelles képességek
 
 Többmodelles adatbázisok engedélyezése tárolhatja, és az adatok jelennek meg több adatformátumok a célnyelven például a relációs adatok, diagramok, JSON vagy XML-dokumentumok, kulcs-érték párok, stb.
 
-Az Azure SQL Database használata a relációs modell, amely biztosítja a legjobb teljesítmény érdekében a legtöbb esetben a különböző általános célú alkalmazások célja. Azure SQL Database viszont nem relációs adatok csak korlátozott. Az Azure SQL Database számos különböző nem relációs formátumban, szorosan integrált a relációs modell használatát teszi lehetővé. Az Azure SQL a következő többmodelles szolgáltatásokat biztosítja:
+## <a name="when-to-use-multi-model-capabilities"></a>Többmodelles képességek használata
+
+Az Azure SQL Database használata a relációs modell, amely biztosítja a legjobb teljesítmény érdekében a legtöbb esetben a különböző általános célú alkalmazások célja. Azure SQL Database viszont nem relációs adatok csak korlátozott. Az Azure SQL Database számos különböző nem relációs formátumban, szorosan integrált a relációs modell használatát teszi lehetővé.
+Akkor érdemes megfontolni az Azure SQL Database többmodelles képességeit a következő esetekben:
+- Van néhány információt, vagy adatstruktúrákat, amelyek jobban alkalmasak a nosql-alapú modell, és nem szeretné használni a külön NoSQL-adatbázis.
+- Az adatok többsége ideális választás relációs modell, és a nosql-alapú stílus-adatok bizonyos részeihez modell kell.
+- Szeretné biztosított a gazdag Transact-SQL nyelvi lekérdezéséhez és kielemzéséhez mind a relációs és NoSQL-adatok, és integrálhatja a különböző eszközök és az alkalmazásokhoz, amelyek SQL nyelvet használhat.
+- Adatbázis-szolgáltatások például a alkalmazni kívánt [, memóriabeli technológiákat](sql-database-in-memory.md) az elemzési teljesítményének növelése, vagy használja a nosql-alapú adatok strucutres feldolgozása [tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) vagy [olvasható replikát](sql-database-read-scale-out.md) , hozzon létre az adatok másolatát a többi beállítási helyet, és az elsődleges adatbázis egyes elemzési számítási feladatok kiszervezése.
+
+## <a name="overview"></a>Áttekintés
+
+Az Azure SQL a következő többmodelles szolgáltatásokat biztosítja:
 - [Graph-funkciók](#graph-features) lehetővé teszi az adatok csomópontok és élek tartozik, és a graph fokozott standard Transact-SQL-lekérdezések használata `MATCH` operátor a grafikon adatainak lekérdezéséhez.
 - [JSON-funkcióit](#json-features) lehetővé teszi a JSON-dokumentumok put táblákban, alakíthat át adatokat relációs, JSON-dokumentumokat, és ez fordítva is igaz. A JSON-dokumentumok elemzéséhez függvényekkel fokozott standard Transact-SQL nyelvet használja, és nem fürtözött indexek, az oszlopcentrikus indexek vagy memóriaoptimalizált táblák segítségével optimalizálható a lekérdezéseket.
 - [Térbeli funkciók](#spatial-features) lehetővé teszi a geometriai, földrajzi és adatok tárolására, a térbeli indexekkel indexelés és térbeli lekérdezéseket használó adatok lekéréséhez.
@@ -56,7 +67,7 @@ Nincs semmi gráfadatbázis érheti el, amelyek nem tudják elérni a relációs
 
 ## <a name="json-features"></a>JSON-funkciókkal
 
-Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben.
+Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](https://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben.
 
 JSON-ja egy modern webes és mobilalkalmazások az adatcsere használt népszerű adatok formátuma. JSON félig strukturált adatok tárolására, naplófájlokban vagy hasonló NoSQL-adatbázisok esetében is alkalmazható [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Számos REST webes szolgáltatás visszaadott eredmények formázott JSON-szöveget, vagy fogadja el az adatok JSON formátumú. A legtöbb Azure-szolgáltatások például [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/), és [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) adja vissza, vagy JSON felhasználása REST-végpontokat.
 

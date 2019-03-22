@@ -6,12 +6,12 @@ ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842747"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090746"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>IP-cím megőrzése feladatátvétel során
 
@@ -62,10 +62,10 @@ Forrás regionális kimaradás során, a vállalat átveheti a célrégióban az
 
 - A cél IP-címek már a feladatátvétel előtt helyen, a vállalat feladatátadását és közötti feladatátvétel után automatikusan kapcsolatokat hozhat létre **helyreállítási virtuális hálózat** és **Azure virtuális hálózat**. Ezt szemlélteti az alábbi ábrán...
 - A két virtuális hálózatok közötti kapcsolatok alkalmazás követelményeitől függően (**helyreállítási virtuális hálózat** és **Azure virtuális hálózat**) a célzott régió lehet létrehozott előtt, közben (mint egy köztes lépés) és a feladatátvétel után.
-    - A vállalat [helyreállítási tervek](site-recovery-create-recovery-plans.md) , adja meg, amikor kapcsolatokat kell létrehozni.
-    - A site-to-site VPN vagy a virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolódhatnak.
-        - Virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik.
-        - Virtuális hálózatok közötti társviszony-létesítés [díjszabás](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a virtuális hálózatok közötti VPN Gateway [díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway). A folyamatban lévő feladatátvételi teszteket azt általában javasoljuk, hogy ugyanazt a kapcsolódási módszert használandó adatforrás hálózatok, beleértve a kapcsolat típusa események kiszámíthatatlan hálózati minimalizálása érdekében.
+  - A vállalat [helyreállítási tervek](site-recovery-create-recovery-plans.md) , adja meg, amikor kapcsolatokat kell létrehozni.
+  - A site-to-site VPN vagy a virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolódhatnak.
+      - Virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik.
+      - Virtuális hálózatok közötti társviszony-létesítés [díjszabás](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a virtuális hálózatok közötti VPN Gateway [díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway). A folyamatban lévő feladatátvételi teszteket azt általában javasoljuk, hogy ugyanazt a kapcsolódási módszert használandó adatforrás hálózatok, beleértve a kapcsolat típusa események kiszámíthatatlan hálózati minimalizálása érdekében.
 
     ![Az Azure teljes feladatátvételi erőforrások](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
@@ -128,13 +128,13 @@ Ebben a forgatókönyvben **vállalati B** egy hibrid üzleti fut, az Azure és 
 Itt látható, hogy a hálózati architektúra néz ki a feladatátvétel előtt.
 
 - Alkalmazás virtuális gépeken üzemelnek Azure Kelet-Ázsia.
--  Kelet-Ázsia rendelkezik egy virtuális hálózathoz (**forrása VNet**) a cím terület 10.1.0.0/16.
-    - Kelet-Ázsia rendelkezik elosztja a három alhálózatot, a számítási feladatok **forrása VNet**:
-        - **1. alhálózata**: 10.1.1.0/24
-        - **2. alhálózata**: 10.1.2.0/24,
-        - **Alhálózat 3**: 10.1.3.0/24utilizing cím terület 10.1.0.0/16 az Azure virtuális hálózatban. Ez a virtuális hálózat neve **forrás virtuális hálózat**
- - A másodlagos (cél) régióban Azure Délkelet-Ázsia:
-    - Délkelet-Ázsia rendelkezik egy helyreállítási virtuális hálózat (**helyreállítási virtuális hálózat**) azonos **forrása VNet**.
+- Kelet-Ázsia rendelkezik egy virtuális hálózathoz (**forrása VNet**) a cím terület 10.1.0.0/16.
+  - Kelet-Ázsia rendelkezik elosztja a három alhálózatot, a számítási feladatok **forrása VNet**:
+    - **1. alhálózata**: 10.1.1.0/24
+    - **2. alhálózata**: 10.1.2.0/24,
+    - **Alhálózat 3**: az Azure virtuális hálózat, a cím terület 10.1.0.0/16 10.1.3.0/24utilizing. Ez a virtuális hálózat neve **forrás virtuális hálózat**
+      - A másodlagos (cél) régióban Azure Délkelet-Ázsia:
+  - Délkelet-Ázsia rendelkezik egy helyreállítási virtuális hálózat (**helyreállítási virtuális hálózat**) azonos **forrása VNet**.
 - Kelet-Ázsiában lévő virtuális gép csatlakozik egy helyszíni adatközpont az Azure expressroute-on vagy a hely-hely – VPN.
 - RTO csökkentése érdekében a B kiosztja az átjárókat, a helyreállítási virtuális hálózat az Azure Délkelet-Ázsia a feladatátvétel előtt.
 - Vállalati B rendel/ellenőrzi a cél IP-címek replikált virtuális gépek számára. A cél IP-cím megegyezik a forrás IP-címet minden virtuális géphez.

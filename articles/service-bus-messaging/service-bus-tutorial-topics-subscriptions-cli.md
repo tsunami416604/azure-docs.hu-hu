@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: a75f3f2b1cc6d352afdf366d17c78e95420184cd
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 60c4d1631717eea602e391387d57afe268efbace
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075884"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Oktatóanyag: Parancssori felület és a témakörök/előfizetések készlet frissítése
 
@@ -148,7 +148,7 @@ Miután kiépítette a névteret és a témakört/előfizetéseket, valamint bes
 4. A program futtatásához adja ki az alábbi parancsot. Ne felejtse lecserélni a helyőrzőket az előző lépésben beszerzett kapcsolati sztringre és a témakör nevére:
 
    ```shell
-  java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
+   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
    ```
 
    Figyeljen meg 10 üzenetet, amelyeket a rendszer elküld a témakörnek, majd az egyéni előfizetésektől fogadja őket:

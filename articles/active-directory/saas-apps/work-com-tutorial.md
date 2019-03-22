@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205749"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Work.com
 
@@ -262,9 +262,9 @@ Azure Active Directory-felhasználók számára jelentkezhetnek be akkor ki kell
     
     c. Az a **Alias** szövegmezőbe írja be a **neve** felhasználó **BrittaS**.
     
-    d. Az a **E-mail** szövegmezőbe írja be a **e-mail-cím** felhasználó **Brittasimon@contoso.com**.
+    d. Az a **E-mail** szövegmezőbe írja be a **e-mail-cím** felhasználó **Brittasimon\@contoso.com**.
     
-    e. Az a **felhasználónév** beviteli mező, írja be a felhasználónevet a felhasználó például **Brittasimon@contoso.com**.
+    e. Az a **felhasználónév** beviteli mező, írja be a felhasználónevet a felhasználó például **Brittasimon\@contoso.com**.
     
     f. Az a **becenév** szövegmezőben adjon meg egy **becenév** felhasználó **Simon**.
     

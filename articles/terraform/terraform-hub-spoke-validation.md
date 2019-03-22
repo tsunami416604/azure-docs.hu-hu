@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 83e6585027aa6ca30192a93c2ec1bfc8c525d6d0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781306"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006178"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Oktatóanyag: Az Azure-ban a terraform egy küllős hálózati ellenőrzése
 
@@ -41,7 +41,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 Befejezése után a [Előfeltételek](#prerequisites), győződjön meg arról, hogy jelen-e a megfelelő konfigurációs fájlok.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 

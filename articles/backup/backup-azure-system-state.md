@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268723"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105199"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager-alapú Windows rendszerállapotának biztonsági mentése
 Ez a cikk bemutatja, hogyan biztonsági mentése a Windows Server rendszerállapotának az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.
@@ -51,7 +51,7 @@ Biztonsági mentése a Windows Server rendszerállapotának, szeretne létrehozn
     Vagy
     * válassza a **Meglévő használata** lehetőséget, és kattintson a legördülő menüben az elérhető erőforráscsoportok listájának megtekintéséhez.
 
-  Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
+   Átfogó információk az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
 7. Kattintson a **Hely** elemre a tárolóhoz tartozó földrajzi régió kiválasztásához. Ez a választás határozza meg a földrajzi régiót, ahová az adatok biztonsági másolata el lesz küldve.
 
@@ -130,9 +130,9 @@ Most, hogy létrehozott egy tárolót, konfigurálja Windows rendszerállapotán
     A tároló hitelesítő adatait a rendszer a Letöltések mappába menti. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Save** (Mentés) gombra. Ha véletlenül a **Megnyitás** gombra kattint, hagyja, hogy sikertelen legyen a párbeszédpanel, amely megpróbálja megnyitni a tároló hitelesítő adatait. A tároló hitelesítő adatai nem nyithatók meg. Folytassa a következő lépéssel. A tároló hitelesítő adatai a Letöltések mappában találhatók.   
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
-> [!NOTE]
-> A tároló hitelesítő adatai csak az olyan helyre, amely a Windows Serveren, amelyen meg kívánja használni az ügynök helyi kell menteni.
->
+   > [!NOTE]
+   > A tároló hitelesítő adatai csak az olyan helyre, amely a Windows Serveren, amelyen meg kívánja használni az ügynök helyi kell menteni.
+   >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 

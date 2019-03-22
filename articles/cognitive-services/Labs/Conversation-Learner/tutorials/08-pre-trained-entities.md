@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224173"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58163786"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Pre-trained entitások hozzáadása
 Ez az oktatóanyag bemutatja, hogyan Pre-Trained entitásokat ad hozzá a beszélgetés Learner modell.
@@ -25,7 +25,7 @@ Ez az oktatóanyag bemutatja, hogyan Pre-Trained entitásokat ad hozzá a beszé
 [![Előre betanított entitások oktatóanyag előzetes verzió](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>Követelmények
-Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
+Ehhez az oktatóanyaghoz, hogy az általános oktatóanyag Bot fut.
 
     npm run tutorial-general
 
@@ -35,50 +35,49 @@ Előre betanított entitások felismerése közös típusú entitások, példáu
 
 ## <a name="steps"></a>Lépések
 
+Indítsa el a kezdőlapon a webes felhasználói felületen.
+
 ### <a name="create-the-model"></a>A modell létrehozása
 
-1. A webes felhasználói felületén kattintson az "új Model" kifejezésekre.
-2. A "Name" mezőben írja be a "PretrainedEntities" és az enter.
-3. A "Létrehozás" gombra.
+1. Válassza ki **új modell**.
+2. Adja meg **PretrainedEntities** a **neve**.
+3. Kattintson a **Létrehozás** gombra.
 
 ### <a name="entity-creation"></a>Entitás létrehozása
 
-1. A bal oldali panelen kattintson a "Entitás", majd az "Új entitás" gombra.
-2. Válassza ki a "Előtti-Trained/datetimeV2" a "entitástípus."
-3. Jelölje be a "Többértékű" jelölőnégyzetet.
-    - Többértékű entitások gyűlnek az entitás egy vagy több értéket.
-    - Negálható tulajdonságok Pre-Trained entitások le vannak tiltva.
-4. A "Létrehozás" gombra.
+1. Válassza ki **entitások** a bal oldali panelen, majd **új entitás**.
+2. Válassza ki **előtti-Trained/datetimeV2** a **entitástípus**.
+3. Ellenőrizze **többértékű** ahhoz, hogy az entitás egy vagy több értéket összeadódhatnak. Vegye figyelembe, hogy Pre-Trained entitások negálható nem lehet.
+4. Kattintson a **Létrehozás** gombra.
 
-![](../media/tutorial7_entities_a.PNG)
+![](../media/T08_entity_create.png)
 
-### <a name="create-the-first-action"></a>Az első művelet létrehozása
+1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
+2. Adja meg **a dátum az $builtin-datetimev2** a **robot a válasz...** .
+3. Kattintson a **Létrehozás** gombra.
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "a dátum az $builtin-datetimev2"
-3. A "Létrehozás" gombra.
-
-![](../media/tutorial7_actions_a.PNG)
+![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>A második művelet létrehozása
 
-1. A bal oldali panelen kattintson a "Műveletek", majd az "Új Action" gombra.
-2. A "Bot a válaszban..." mezőbe írja be a "Mi az a dátum?"
-    - Előre betanított entitások nem lehet entitások szükséges, mert azokat az összes felhasználó utterances alapértelmezés szerint ismerhető fel.
-3. A "Kizárásának feljogosítja a" mezőjében írja be a "beépített-datetimev2."
-4. A "Létrehozás" gombra.
+1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
+2. Adja meg **Mi az a dátum?** a **robot a válasz...** . Előre betanított entitások nem lehet **szükséges entitások** , azok minden utterances alapértelmezett felismeri.
+3. Adja meg **beépített-datetimev2** a **kizárásának feljogosítja a**.
+4. Kattintson a **Létrehozás** gombra.
 
-![](../media/tutorial7_actions2_a.PNG)
+![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>A modell betanítását
 
-1. A bal oldali panelen kattintson a "Train-párbeszédpanelekhez", majd az "új Train" gomb.
-2. A Csevegés panelen, ahol allocated "Írja be az üzenetet...", típus a "hello".
-3. A "Score műveletek" gombra.
-4. Válassza ki a választ, "Mi az a dátum?"
-5. A Csevegés panelen, ahol ugyanakkor "Típust az üzenetet...", típus a "ma"
-    - A mai utterance (kifejezés) automatikusan felismeri a LUIS előre betanított modellek.
+1. Válassza ki **Train-párbeszédpanelekhez** a bal oldali panelen, majd **új Train párbeszédpanel**.
+2. Adja meg **hello** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
+3. Válassza ki **műveletek pontozása**.
+4. Válassza ki **Mi az a dátum?** a a műveletek listájáról
+5. Adja meg **Ma** az a felhasználó utterance (kifejezés) a bal oldali Csevegés panelen.
+    - A **Ma** utterance (kifejezés) automatikusan felismeri a LUIS előre betanított modellek.
     - LUIS által biztosított további adatok felett Pre-Trained entitások értékét jeleníti meg.
+
+![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>További lépések
 

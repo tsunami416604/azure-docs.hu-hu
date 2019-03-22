@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448483"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57847127"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
 
@@ -27,16 +27,16 @@ Most már készen áll az alkalmazás a közzétételi portál beállítása.
 
 ## <a name="login-and-create-a-new-offer"></a>Bejelentkezés és a egy új ajánlat létrehozása
 
-1. Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/).
+1. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 2. A bal oldali navigációs sávban kattintson a "+ új ajánlat", és válassza ki a "Dynamics 365 for Customer Engagement."
 
 ![Egy új ajánlat kiválasztása](./media/CRMScreenShot14.png)
 
-3. Egy új ajánlat "Szerkesztő" nézet most megnyílik az Ön számára, és szerzői készen vagyunk.
+1. Egy új ajánlat "Szerkesztő" nézet most megnyílik az Ön számára, és szerzői készen vagyunk.
 
 ![Új ajánlat képernyő](./media/CRMScreenShot15.png)
 
-4. A "űrlapok" igénylő ki kell tölteni a bal oldalon a "Szerkesztő" nézetben láthatók. Minden egyes "form" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillaggal jelölt mezők (\*).
+1. A "űrlapok" igénylő ki kell tölteni a bal oldalon a "Szerkesztő" nézetben láthatók. Minden egyes "form" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillaggal jelölt mezők (\*).
 
 Nincsenek a négy fő űrlapok egy Dynamics 365 Customer Engagement-ajánlat készítése
 
@@ -88,7 +88,7 @@ A következő magyarázatot ezeket a mezőket:
 
 ### <a name="crm-package-availability"></a>CRM-csomag rendelkezésre állása
 
-Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Információ, amelyre régiókban mely országokban szolgálnak tekintse meg a hivatkozást: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Információ, amelyre régiókban mely országokban szolgálnak tekintse meg a hivatkozást: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Megjegyzés: Németország való üzembe helyezés "Szuverén és Egyesült Államokbeli kormányzati felhő" szuverén REQUIRES speciális engedélyek és az érvényesítés során a hitelesítésszolgáltató
 

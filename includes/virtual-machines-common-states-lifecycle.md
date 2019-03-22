@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54122802"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125257"
 ---
 Azure-beli virtuális gépek (VM) halad át, amely osztályozhatók állapotot *kiépítés* és *power* állapotok. Ez a cikk célja be ezeket az állapotokat, és kifejezetten kiemelés, ha az ügyfelek a számlázás például használat. 
 
@@ -94,7 +94,7 @@ Példány használati számlázás
 </tr>
 <tr>
 <td>
-<p><b>Leállítva</b></p>
+<p><b>Stopped</b></p>
 </td>
 <td>
 <p>A virtuális gép lett állítva a vendég operációs rendszeren belül lefelé a, vagy a kikapcsolt API-k használatával.</p>
@@ -255,14 +255,14 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 - **Sikeres** – a felhasználó által kezdeményezett műveletek végrehajtása.
 
     ```
- "statuses": [ 
- {
+  "statuses": [ 
+  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
- }
- ]
+  }
+  ]
     ```
 
  
@@ -270,7 +270,7 @@ A művelet végrehajtása után a virtuális gép fognak váltani a következő 
 - **Nem sikerült** – a sikertelen műveletet jelöl. Tekintse meg a hibakódok további információkért és a lehetséges megoldásokról.
 
     ```
- "statuses": [
+  "statuses": [
     {
       "code": "ProvisioningState/failed/InternalOperationError",
       "level": "Error",

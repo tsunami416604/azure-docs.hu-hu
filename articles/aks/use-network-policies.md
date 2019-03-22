@@ -7,21 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 81b45a25c8040916b835ab333c5ce80ab6c1a788
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181486"
 ---
-# <a name="secure-traffic-between-pods-by-using-network-policies-in-azure-kubernetes-service"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service közötti adatforgalom védelme
+# <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Előnézet - podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
 A modern, mikroszolgáltatás-alapú alkalmazások a Kubernetesben való futtatásakor gyakran érdemes szabályozhatja, hogy mely összetevők kommunikálhatnak egymással. Hogyan forgalom is az Azure Kubernetes Service (AKS)-fürt podok áramlanak a legalacsonyabb jogosultsági szint elvének kell alkalmazni. Tegyük fel, valószínűleg szeretné tiltani a forgalom közvetlenül a háttér-alkalmazásokhoz. A *hálózati házirend* a Kubernetes szolgáltatás lehetővé teszi egy fürt podok közötti bejövő és kimenő forgalomra vonatkozó szabályok meghatározásához.
 
 Calico, egy nyílt forráskódú hálózatkezeléssel és a hálózati biztonsági megoldás Tigera, által megalkotott kínál egy hálózati házirend motor, amely a Kubernetes hálózati házirend-szabályok valósíthat meg. Ez a cikk bemutatja, hogyan telepíti az Calico hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat.
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. Ezt a szolgáltatást bizonyos aspektusainak általánosan (elérhetővé tétel GA) előtt módosulhat.
+> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+>
+> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -451,6 +453,7 @@ Szabályzatokkal kapcsolatos további tudnivalókért lásd: [Kubernetes hálóz
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

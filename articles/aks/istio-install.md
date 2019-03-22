@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: 25a68f55eb9a6deb037029d5d8a984ce74f12be5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: d85b830b63e2d52f3eeb5df8645edccfccf43c76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791460"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138150"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Ez a cikk elkülöníti a Istio telepítéssel kapcsolatos útmutató több kül
 
 ## <a name="download-istio"></a>Töltse le a Istio
 
-Először töltse le és csomagolja ki a legújabb Istio kiadást. A lépések kissé eltérő, MacOS, Linux vagy a Linux Windows alrendszere rendszerhéjakba, és a egy PowerShell shell. Válassza ki az Ön által preferált környezetben lépések a következő telepítési egyikét:
+Először töltse le és csomagolja ki a legújabb Istio kiadást. A lépések kissé eltérőek a bash felületet MacOS, Linux vagy Windows alrendszer Linux rendszeren, és a egy PowerShell parancshéj. Válassza ki az Ön által preferált környezetben lépések a következő telepítési egyikét:
 
 * [Bash on MacOS, Linux vagy Windows-alrendszer linuxhoz](#bash)
 * [PowerShell](#powershell)
@@ -148,6 +148,9 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy futtatja a lépéseket ebben a szakaszban a letöltött és kibontott Istio kiadás a legfelső szintű mappából.
+
+> [!NOTE]
+> Verzió `1.0.6` , és a Istio Helm-diagram újabb használhatatlanná tévő változásai. Ha ezt a verziót telepíteni, most kell manuálisan Kiali létrehozása egy titkos kulcsot. Titkos kulcs manuális létrehozása a Grafana Ha állított be is kell `grafana.security.enabled=true`. Tekintse meg a Istio Helm-diagram [README.md](https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio#installing-the-chart) további tájékoztatást talál a titkos adatokat létrehozása.
 
 Telepítse a Istio összetevőket az AKS-fürt, használja a Helm. A Istio erőforrásokhoz történő telepítéséhez a `istio-system` névteret, és a biztonsággal és figyeléssel a következő további beállításainak engedélyezése:
 

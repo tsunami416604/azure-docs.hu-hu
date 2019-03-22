@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5c7e1815fe27d9b851407a8e6f17d04d7bc1cad
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: d38a575af54f044d64efc67b5483a67ffcd2fcd6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003532"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837609"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insights rendszerteljesítmény-számlálók
 
-Windows széles körének biztosít [teljesítményszámlálók](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) például a Processzor foglaltsága, memória, lemez és hálózat használatának. A saját teljesítményszámlálókat is meghatározhat. Mindaddig, amíg az alkalmazás fut az IIS alatt egy helyi gazdagépen vagy virtuális gép, amely rendszergazdai hozzáféréssel rendelkezik.
+A Windows [teljesítményszámlálók](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) széles választékát biztosítja, amelyek például a processzor foglaltságáról, vagy a memória-, merevlemez- és hálózathasználatról biztosítanak adatokat. A saját teljesítményszámlálókat is meghatározhat. Mindaddig, amíg az alkalmazás fut az IIS alatt egy helyi gazdagépen vagy virtuális gép, amely rendszergazdai hozzáféréssel rendelkezik.
 
 ## <a name="view-counters"></a>Nézet számlálók
 
@@ -53,7 +53,7 @@ Ha a kívánt teljesítményszámláló nem szerepel a listán, metrikák, adhat
     `Get-Counter -ListSet *`
    
     (Lásd: [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
-2. Nyissa meg az applicationinsights.config fájlban.
+2. Open ApplicationInsights.config.
    
    * Ha a fejlesztés során az alkalmazáshoz hozzáadott Application Insights, szerkessze az applicationinsights.config fájlt a projektben, és ezt követően telepítse újra a kiszolgálókat.
    * Ha futásidőben webalkalmazás szoftverfejlesztők használt állapotfigyelő, ApplicationInsights.config található az IIS-ben az alkalmazás gyökérkönyvtárában. Minden kiszolgálópéldány frissítik vele van.
@@ -122,8 +122,8 @@ Egyéb telemetriai adatokat, például **performanceCounters** is rendelkezik eg
 
 * *Kivételek* száma a mintavételi időközben a diagram a portál által fogadott TrackException jelentéseket. Csak a kezelt kivételek ahol hozott TrackException meghívja a kódban, és nem tartalmazza az összes benne [nem kezelt kivételeket](../../azure-monitor/app/asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Teljesítményszámlálók az ASP.Net Core-alkalmazások
-Teljesítményszámlálók használata támogatott, csak akkor, ha az alkalmazás a teljes .NET-keretrendszer van-e állítva. Nincs lehetőség a teljesítményszámlálók adatainak összegyűjtése a .net Core alkalmazásokat.
+## <a name="performance-counters-in-aspnet-core-applications"></a>Teljesítményszámlálók az ASP.NET Core-alkalmazások
+Teljesítményszámlálók használata támogatott, csak akkor, ha az alkalmazás a teljes .NET-keretrendszer van-e állítva. Nincs lehetőség a .NET Core-alkalmazások esetében a teljesítményszámlálók adatainak összegyűjtése.
 
 ## <a name="alerts"></a>Riasztások
 Például más metrikák is [riasztások beállítása](../../azure-monitor/app/alerts.md) figyelmezteti, ha egy teljesítményszámláló kerül kívül megadott korlátot. Nyissa meg a riasztások panelen, és kattintson a riasztás hozzáadása.

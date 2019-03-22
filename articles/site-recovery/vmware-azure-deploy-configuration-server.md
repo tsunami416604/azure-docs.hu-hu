@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004456"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
 Egy helyszíni konfigurációs kiszolgálót telepít, használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikációhoz között a helyszíni VMware és az Azure. Azt is felügyeli az adatreplikációt. Ez a cikk végigvezeti a konfigurációs kiszolgáló telepítése, ha VMware virtuális gépeket replikál az Azure-bA szükséges lépéseket. [Kövesse az ebben a cikkben](physical-azure-set-up-source.md) Ha kell állítani a konfigurációs kiszolgálót fizikai kiszolgáló replikációjához.
 
->[!TIP]
-Megismerheti a konfigurációs kiszolgáló szerepe az Azure Site Recovery architektúrájáról részeként [Itt](vmware-azure-architecture.md).
+> [!TIP]
+> Megismerheti a konfigurációs kiszolgáló szerepe az Azure Site Recovery architektúrájáról részeként [Itt](vmware-azure-architecture.md).
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>Konfigurációs kiszolgáló OVA sablon segítségével üzembe helyezés
 
@@ -46,7 +46,7 @@ Szüksége van a felhasználó **a következők egyikét** konfigurációs kiszo
    1. Keresse meg az Azure Active Directory > felhasználói beállítások
    1. A ** alkalmazásregisztrációk ","Felhasználók regisztrálhatnak alkalmazásokat"ki kell választani a"Yes"-t.
 
-    ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+      ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Az Active Directory összevonási Services(ADFS) **nem támogatott**. Használjon egy szolgáltatáson keresztül felügyelt fiókot [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
@@ -70,11 +70,11 @@ Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitásterve
 3. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **Konfigurációs kiszolgáló VMware-hez** érték jelenik meg.
 4. Töltse le a konfigurációs kiszolgáló az Open Virtualization alkalmazás (OVA) sablonját.
 
-  > [!TIP]
->Emellett közvetlenül, a konfigurációs kiszolgálói sablon legújabb verzióját letöltheti [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+   > [!TIP]
+   >Emellett közvetlenül, a konfigurációs kiszolgálói sablon legújabb verzióját letöltheti [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
->[!NOTE]
-Az OVA sablonnal a megadott licenc egy 180 napig érvényes próbalicencre. POST ennek az időtartamnak kell határidődátumával licenccel a windows aktiválása.
+> [!NOTE]
+> Az OVA sablonnal a megadott licenc egy 180 napig érvényes próbalicencre. POST ennek az időtartamnak kell határidődátumával licenccel a windows aktiválása.
 
 ## <a name="import-the-template-in-vmware"></a>A sablon importálása a VMware-ben
 
@@ -136,6 +136,7 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
     |Töltse le és telepítse manuálisan a MySQL?     |  Igen. Töltse le a MySQL-alkalmazás és a mappában **C:\Temp\ASRSetup**, majd telepítse manuálisan. Most, ha elfogadja a szerződés > kattintson a **töltse le és telepítse**, a portál szerint *már telepítve van*. A következő lépéssel folytathatja.       |
     |Elkerülheti a MySQL letöltése online?     |   Igen. A MySQL-telepítő alkalmazás a mappába helyezett **C:\Temp\ASRSetup**. Fogadja el a használati > kattintson a **töltse le és telepítse**, a portálon az Ön által hozzáadott telepítő fogja használni, és telepíti az alkalmazást. Folytassa a következő lépés utáni telepítése.    |
     |Szeretném, ha letöltése és telepítése az Azure Site Recovery MySQL     |  Fogadja el a licencszerződést, és kattintson a **töltse le és telepítse**. Majd folytassa a következő lépés utáni telepítése.       |
+
 5. A **Berendezés konfigurációjának ellenőrzése** területen a rendszer ellenőrzi az előfeltételeket, mielőtt továbblépne.
 6. A **VCenter-kiszolgáló vagy vSphere ESXi-kiszolgáló hitelesítő adatainak konfigurálása** területen adja meg azon vCenter-kiszolgáló vagy VSphere-gazdagép teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
 7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza ki **hozzáadása**, majd **továbbra is**. Az itt megadott hitelesítő adatok helyben menti.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a43a41b2e115f5bf7cc6b4bf3ca1bd352f5918
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 5ff1718211fa298e4daee694795a0b2438033fe2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Egnyte
 
@@ -178,7 +178,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -229,7 +229,7 @@ Ahhoz, hogy az Azure AD-felhasználók Egnyte jelentkezzen be, akkor ki kell ép
     
     ![Új általános jogú felhasználói](./media/egnyte-tutorial/ic787825.png "új általános jogú felhasználó")   
 
-    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon\@contoso.com**.
 
     b. A **felhasználónév** szöveget adja meg például a felhasználó felhasználóneve **Brittasimon**.
 

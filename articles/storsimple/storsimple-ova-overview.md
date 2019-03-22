@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: decc63ad7ce0b35de41ec53e6b5e02276aa33705
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456074"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013909"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple Virtual Array – bevezetés
 
@@ -74,8 +74,8 @@ A következő táblázat néhány fontos előnye, hogy a StorSimple Virtual Arra
 
 A StorSimple elvégezhető feladatok összefoglalása a lenti táblázatban láthatóak.
 
-|Forgatókönyv     |Számítási feladat     |Támogatott      |Korlátozások               |
-|-------------|-------------|---------------|---------------------------|
+|Forgatókönyv     |Számítási feladat     |Támogatott      |Korlátozások               | Verzió érvényes|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |Távoli Office/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [korlátozásainak fájlkiszolgáló](storsimple-ova-limits.md).<br></br>Lásd: [támogatott SMB-verzió rendszerkövetelményei](storsimple-ova-system-requirements.md).| Az összes verzió     |
 |A felhő archiválása  |Archív fájl megosztása     |Igen      |Lásd: [korlátozásainak fájlkiszolgáló](storsimple-ova-limits.md).<br></br>Lásd: [támogatott SMB-verzió rendszerkövetelményei](storsimple-ova-system-requirements.md).| Az összes verzió     |
 

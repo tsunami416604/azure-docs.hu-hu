@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 917243ccaf4ef3759e02bb92cad6f9ef04514e4a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855180"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -49,7 +49,7 @@ Töltse le a Node.js mintaprojektet a [https://github.com/Azure-Samples/nodejs-d
 Nyissa meg az _index.js_ fájlt, és keresse meg a következő sort:
 
 ```javascript
-var port = process.env.PORT || 1337;
+const port = process.env.PORT || 1337;
 ```
 
 Az App Service a process.env.PORT változót beilleszti az alkalmazásba, így a kód a változó segítségével tudni fogja, hogy melyik portot kell figyelni. 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 62a3169257001f64e3103cc079e544449ac59663
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328384"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087108"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A Bot keretrendszer Node.js-ben a LUIS-robot 3.x és az Azure Web app bot
 
@@ -45,16 +45,16 @@ A robot a HomeAutomation tartományból, amelyek a LUIS alkalmazás válaszol sz
     ![Válassza ki a web app bot az erőforrás létrehozásának megkezdéséhez](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
 3. Az a **Bot Service** panelen adja meg a szükséges információkat, és válassza ki **létrehozás**. Ez létrehozza és telepíti a bot service és a LUIS-alkalmazás az Azure-bA. Ha a használni kívánt [speech betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), tekintse át [régió követelmények](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming) előtt a robot létrehozásának. 
-    * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
-    * A **Bot sablon**, jelölje be:
-        * **SDK-t v3**
-        * **Node.js**
-        * **Hangfelismerés**
-    * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió] [ LUIS] jön létre az alkalmazást.
-    * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
+   * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
+   * A **Bot sablon**, jelölje be:
+       * **SDK-t v3**
+       * **Node.js**
+       * **Hangfelismerés**
+   * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió] [ LUIS] jön létre az alkalmazást.
+   * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
-    ![Bot Service panel](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
+     ![Bot Service panel](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
 
 
 4. Győződjön meg arról, hogy a bot service van telepítve.
@@ -247,7 +247,8 @@ Tudjon meg többet [Bot Framework](https://dev.botframework.com/) és a [3.x](ht
 
 ## <a name="next-steps"></a>További lépések
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> Próbálkozzon más leképezések, Súgó, a Mégse gombra és üdvözlés, például a LUIS-alkalmazás hozzáadása. Ezután adja hozzá az új leképezések a párbeszédpanelek, és tesztelje a robot használatával. 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
+Próbálkozzon más leképezések, Súgó, a Mégse gombra és üdvözlés, például a LUIS-alkalmazás hozzáadása. Ezután adja hozzá az új leképezések a párbeszédpanelek, és tesztelje a robot használatával. 
 
 <!-- 
 > [!NOTE] 

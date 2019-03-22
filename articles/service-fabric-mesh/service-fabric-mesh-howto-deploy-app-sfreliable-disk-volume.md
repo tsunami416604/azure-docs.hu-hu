@@ -1,5 +1,5 @@
 ---
-title: Magas rendelkezésre állású Service Fabric Reliable lemezkötetet használata egy Azure Service Fabric-háló alkalmazásban |} A Microsoft Docs
+title: Magas rendelkezésre állású Service Fabric Reliable lemezkötetet használata az Azure Service Fabric-háló alkalmazások |} A Microsoft Docs
 description: Megtudhatja, hogyan állapot tárolásához az Azure Service Fabric-háló alkalmazások Service Fabric Reliable lemez alapú kötet a tárolóban, az Azure CLI használatával csatlakoztatja.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2ed64bbf0da252285184e2ca6fef0555a85ce149
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850853"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazás magas rendelkezésre állású Service Fabric Reliable lemez alapú Kötet csatlakoztatásához 
 A tárolóalapú alkalmazások megőrzése állapot gyakori módja, hogy távoli tárolók, például az Azure File Storage vagy az adatbázis, mint például az Azure Cosmos DB. Ezt a szintre váltása költséggel jár, jelentős olvasási és írási késést, a távoli tároló.

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 4518f5a6bd232bce3cf973c21944ef3aa722d1f7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 573c45eb9c48d7b6663b518d4830577f951ec70d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727145"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899400"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Gyors útmutató: A Translator Text API segítségével lefordítani karakterláncnak a Python használatával
 
@@ -32,7 +32,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `translate-text.py` nevű fájlba a projektjében.
+Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `translate-text.py` nevű fájlba a projektjében. Győződjön meg arról, hogy az IDE-értelmező hivatkozik a Python használatával elkerülheti a könyvtárak nem ismeri a megfelelő verzióját.
 
 ```python
 # -*- coding: utf-8 -*-

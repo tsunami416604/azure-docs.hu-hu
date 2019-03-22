@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773792"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002933"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -146,9 +146,9 @@ Számlázási felhasználóknak nem kell hozzáférést a felügyeleti csoportok
 
 Cloud Solution Provider (CSP) partner nem támogatottak a Cost Management még ma. Ehelyett használhat [Partnerközpont](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
-## <a name="how-to-switch-between-scopes-within-cost-management"></a>Hogyan lehet váltani a Cost Management hatókörök
+## <a name="switch-between-scopes-in-cost-management"></a>Váltás a Cost Management hatókörök
 
-Tartalmazza az összes Cost Management környezeteket az Azure Portalon egy **hatókör** megszámlálásához, a bal felső a panel, amely gyorsan a hatókör módosítása hozzáférést biztosít. Kattintson a **hatókör** megszámlálásához megnyílik egy Hatókörválasztó, amely megjeleníti a számlázási fiókok, a legfelső szintű felügyeleti csoport és minden olyan előfizetéseket, ami nem beágyazott a legfelső szintű felügyeleti csoportban. A hatókör kiválasztásához kattintson a háttérben, jelöljön ki, majd kattintson a **kiválasztása** gombra a lap alján. A hatókör neve hivatkozásra kattintva jelenítse meg a beágyazott hatókörök (pl. erőforráscsoportok egy előfizetésen belül). A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson a **válassza ezt <scope>**  felső részén a Hatókörválasztó gombra.
+Az Azure Portalon a Cost Management minden nézetek az alábbiak egy **hatókör** megszámlálásához, a bal felső a nézetet. Segítségével gyorsan a hatókör módosítása. Kattintson a **hatókör** megszámlálásához a Hatókörválasztó megnyitásához. Azt jeleníti meg a számlázási fiókok, a legfelső szintű felügyeleti csoport és a gyökérszintű felügyeleti csoport nem beágyazva foglalt olyan előfizetéseket. A hatókör kiválasztásához kattintson a kiemelés, és kattintson a háttér **kiválasztása** alján. Részletezés a beágyazott hatókörökre, például az erőforráscsoportok található egy előfizetésben, kattintson a hatókör neve hivatkozásra. A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson **válassza ezt &lt;hatókör&gt;**  a Hatókörválasztó tetején.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Az erőforrás-azonosítója egy hatókör azonosítása
 
@@ -218,7 +218,7 @@ A Cost Management API-k használatakor, hogy a hatókör fontos. Az alábbi info
 4. Másolja ki az erőforrást azonosító mező értékét.
 5. A hatókör van: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-A Cost Management jelenleg támogatott az Azure globális (https://management.azure.com) és az Azure Government (https://management.usgovcloudapi.net). Az Azure Government kapcsolatos további információkért lásd: [Azure globális és a kormányzati API végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+A Cost Management jelenleg támogatott [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net). Az Azure Government kapcsolatos további információkért lásd: [Azure globális és a kormányzati API végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
 
 ## <a name="next-steps"></a>További lépések
 

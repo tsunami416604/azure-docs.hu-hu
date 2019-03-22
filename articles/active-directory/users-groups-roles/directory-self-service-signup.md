@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7818d184cd74da43ceac008331b4436979152557
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233173"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201262"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Mi az Azure Active Directory önkiszolgáló regisztráció?
 
-Ez a cikk bemutatja az önkiszolgáló regisztrációt, és hogyan támogatják a forgatókönyvet az Azure Active Directoryban (Azure AD). Ha a tartománynév átvételével egy nem felügyelt Azure ad-bérlőben, lásd: [rendszergazdaként egy nem felügyelt könyvtár átvétele](domains-admin-takeover.md).
+Ez a cikk bemutatja az önkiszolgáló regisztráció feltölti egy szervezet az Azure Active Directoryban (Azure AD) használatával. Ha azt szeretné, tartománynév átvételével egy nem felügyelt Azure AD a szervezeten belül, lásd: [rendszergazdaként egy nem felügyelt könyvtár átvétele](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-signup"></a>Miért érdemes használni az önkiszolgáló regisztráció?
 * A szolgáltatások gyorsabban szeretnének hívja meg ügyfeleit
@@ -71,7 +71,7 @@ A két paraméter még pontosabban szabályozhatja az önkiszolgáló regisztrá
 
 A következő folyamatábra szemlélteti azt ismerteti, az e paraméterek különböző kombinációit és az eredményül kapott feltételeinek a címtárral és az önkiszolgáló regisztrációt.
 
-![önkiszolgáló regisztrációs vezérlők](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![önkiszolgáló regisztrációs vezérlők folyamatábrája](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 További információt és példákat ezekkel a paraméterekkel: [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 

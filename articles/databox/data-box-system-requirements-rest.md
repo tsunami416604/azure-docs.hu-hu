@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ad607ad7ef1ee91ea9c886a76faabb0f304969d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538068"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012261"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Az Azure Data Box Blob tárolási követelményei
 
@@ -96,7 +96,7 @@ Futtatás: telepítse a php composer.phar.
 
 ### <a name="endpoint-declaration"></a>Végpont deklarációját
 
-Az Azure Data Box Blob storage-végpont tartalmaz két részből áll: egy régiót és a Data Box-tartomány nevét. A Data Box Blob Storage SDK-t, az alapértelmezett végpont az <serial no. of the device>. microsoftdatabox.com.  További információk a blob service-végpont, [Data Box Blob storage csatlakozás](data-box-deploy-copy-data-via-rest.md).
+Az Azure Data Box Blob storage-végpont tartalmaz két részből áll: egy régiót és a Data Box-tartomány nevét. A Data Box Blob Storage SDK-t, az alapértelmezett végpont az \<sorszám. az eszköz >. microsoftdatabox.com.  További információk a blob service-végpont, [Data Box Blob storage csatlakozás](data-box-deploy-copy-data-via-rest.md).
  
 ## <a name="examples"></a>Példák
 

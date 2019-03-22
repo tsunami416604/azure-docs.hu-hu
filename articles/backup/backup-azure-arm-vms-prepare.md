@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: e7bbb047a982ee4516372bf7a260688139c61923
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c6d6e380cded18a089f624f90d998477a89293be
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732721"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259041"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
-Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot az Azure-beli Virtuálisgép- [Azure Backup](backup-overview.md) helyezheti üzembe, és amely lehetővé teszi a biztonsági mentés a Recovery Services-tároló. 
+Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot az Azure-beli Virtuálisgép- [Azure Backup](backup-overview.md) helyezheti üzembe, és amely lehetővé teszi a biztonsági mentés a Recovery Services-tároló.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -47,13 +47,13 @@ Az Azure Backup biztonsági másolatot készít az Azure virtuális gépek a gé
 
 Szükség esetén Virtuálisgép-ügynök telepítése, és a virtuális gépek kimenő hozzáférésének ellenőrzése.
 
-### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése 
+### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
 Szükség esetén telepítse az ügynököt a következőképpen.
 
 **VM** | **Részletek**
 --- | ---
 **Windows rendszerű virtuális gépek** | [Töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlt. Telepítse a rendszergazdai engedélyekkel a gépen.<br/><br/> A telepítés ellenőrzése a *C:\WindowsAzure\Packages* a virtuális gépen, kattintson a jobb gombbal a WaAppAgent.exe > **tulajdonságok**, > **részletei** fülre. **Termékverzió** kell 2.6.1198.718 vagy újabb verziója.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, hogy nincs biztonsági mentési műveletek futnak, és [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux rendszerű virtuális gépek** | A terjesztési csomag adattárból az RPM- vagy DEB-csomag telepítését a telepítése és frissítése az Azure Linux-ügynök előnyben részesített módszer. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek. Az ügynök nem érhető el a [GitHub](https://github.com/Azure/WALinuxAgent), de nem ajánlott, hogy ott telepítése.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, nincs biztonsági mentési művelet van folyamatban, és a bináris fájlok frissítése. 
+**Linux rendszerű virtuális gépek** | A terjesztési csomag adattárból az RPM- vagy DEB-csomag telepítését a telepítése és frissítése az Azure Linux-ügynök előnyben részesített módszer. Az összes a [terjesztési szolgáltatók által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálhatja az Azure-beli Linuxos ügynök csomag adattárak, valamint a lemezképek. Az ügynök nem érhető el a [GitHub](https://github.com/Azure/WALinuxAgent), de nem ajánlott, hogy ott telepítése.<br/><br/> Amikor az ügynököt frissít, ellenőrizze, nincs biztonsági mentési művelet van folyamatban, és a bináris fájlok frissítése.
 
 
 ### <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
@@ -66,7 +66,7 @@ A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-
    **Beállítás** | **Művelet** | **Előnyök** | **Disadvantages**
    --- | --- | --- | ---
    **Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), külön-külön lehetővé téve, és minden címtartományt kezelése helyett. [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban. | További költségek nélkül. Egyszerű szolgáltatás címkék kezelése
-   **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít. Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.<br/><br/> 
+   **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít. Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.<br/><br/>
    **Az Azure-tűzfal beállítása** | Az Azure-tűzfalon keresztül a forgalom engedélyezése a virtuális gép, egy teljesen minősített tartománynév-címke az Azure Backup szolgáltatás használatával.|  Könnyen használható, ha a virtuális hálózat alhálózatán beállítása Azure-tűzfal | Nem hozható létre a saját teljesen minősített Tartományneve címkéket, vagy teljes tartománynevek módosíthatja a címke.<br/><br/> Az Azure Managed Disks szolgáltatást, ha szüksége lehet egy további port megnyitása (port 8443) a tűzfalat.
 
 #### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Az Azure kimenő hozzáférésének engedélyezéséhez egy NSG-szabály beállítása
@@ -110,22 +110,22 @@ Ha nem rendelkezik a system fiók proxy, egyet az alábbiak szerint állíthatja
 2. Futtatás **PsExec.exe -i -s cmd.exe** a parancssor a rendszerfiók alatt való futtatásához.
 3. A böngészőben a rendszerkörnyezetben fut. Például: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** az Internet Explorerben.  
 4. A proxy-beállítások megadása.
-    - Linuxos gépeken:
-        - Adja hozzá a sort, hogy a **/etc/környezet** fájlt:
-            - **http_proxy =http://proxy IP-cím: proxy portja**
-        - Adja hozzá ezeket a sorokat a **/etc/waagent.conf** fájlt:
-            - **HttpProxy.Host=proxy IP address**
-            - **HttpProxy.Port=proxy port**
-    - Windows gépeken, a böngésző beállításait adja meg, hogy egy proxyt kell használni. Ha proxyt a felhasználói fiók jelenleg használ, ez a szkript használatával alkalmazza a beállítást, a fiók szintjén.
-        ```powershell
-       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-       $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-       Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
+   - Linuxos gépeken:
+     - Adja hozzá a sort, hogy a **/etc/környezet** fájlt:
+       - **http_proxy = http:\//proxy IP-cím: proxy portja**
+     - Adja hozzá ezeket a sorokat a **/etc/waagent.conf** fájlt:
+         - **HttpProxy.Host=proxy IP address**
+         - **HttpProxy.Port=proxy port**
+   - Windows gépeken, a böngésző beállításait adja meg, hogy egy proxyt kell használni. Ha proxyt a felhasználói fiók jelenleg használ, ez a szkript használatával alkalmazza a beállítást, a fiók szintjén.
+       ```powershell
+      $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
+      $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
+      Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
 
-        ```
+       ```
 
 ##### <a name="allow-incoming-connections-on-the-proxy"></a>A proxy bejövő kapcsolatok engedélyezése
 
@@ -157,45 +157,19 @@ Az Azure-tűzfal engedélyezi a kimenő hozzáférést a hálózati forgalmat az
 - [Ismerje meg](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) üzembe helyezése az Azure-tűzfal.
 - [További információ](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN címkék.
 
-## <a name="create-a-vault"></a>Tároló létrehozása
-
-A tároló tárolja a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat, és tárolja a biztonsági másolat gépek társított biztonsági mentési szabályzatok. Hozzon létre egy tárolót a következőképpen:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az a **Hub** menüjében válassza **Tallózás**, és írja be **Recovery Services**. Válassza ki **Recovery Services-tárolók**.
-
-    ![A mezőbe, majd válassza a "Helyreállítási tárak" a eredmények](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
-
-3. Az a **Recovery Services-tárolók** menüjében válassza **Hozzáadás**.
-
-    ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
-
-    !["A recovery Services-tárolók" panel](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-4. A **Recovery Services-tárolók** >  **neve**, adjon meg egy, a tárolót azonosító rövid nevet.
-    - A névnek egyedinek kell lennie az Azure-előfizetéshez.
-    - 2 – 50 karaktert tartalmazhat.
-    - Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-5. Válassza ki **előfizetés** az elérhető előfizetések listájának megtekintéséhez. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (vagy javasolt) előfizetést. Nincs több lehetőség csak akkor, ha a munkahelyi vagy iskolai fiók több Azure-előfizetéssel társítva.
-6. Válassza ki **erőforráscsoport** az elérhető erőforráscsoportok listájának megtekintéséhez, vagy válasszon **új** egy új erőforráscsoport létrehozásához. [További](../azure-resource-manager/resource-group-overview.md) erőforráscsoportokkal kapcsolatos.
-7. Válassza ki **hely** a tárolóhoz tartozó földrajzi régió kiválasztásához. A tároló *kell* kell a virtuális gépek biztonsági mentéséhez használni kívánt ugyanabban a régióban.
-8. Kattintson a **Létrehozás** gombra.
-    - A tároló létrehozása egy ideig is eltarthat.
-    - Figyelje a jobb felső területén, a portál.
-    ![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
-
-Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listája. Ha nem látja a tárolót, válassza ki a **frissítése**.
-
 ## <a name="set-up-storage-replication"></a>Tárreplikáció beállítása
 
 Alapértelmezés szerint a tároló rendelkezik [georedundáns tárolás (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). Az elsődleges biztonsági mentési GRS ajánlott, de használhatja[helyileg redundáns tárolás](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) egy olcsóbb számára.
 
+Az Azure Backup automatikusan kezeli a tárolóhoz tartozó tároló. Meg kell adnia, hogy a tároló replikálásának módját.
 Tárreplikáció módosítsa a következőképpen:
 
-1. A tárolóban > **biztonsági mentési infrastruktúra**, kattintson a **biztonsági mentési konfiguráció**
+1. A **Recovery Services-tárolók** panelen kattintson az új tárolóra. Alatt a **beállítások** területén kattintson **tulajdonságok**.
+2. A **tulajdonságok**alatt **biztonsági mentés konfigurációja**, kattintson a **frissítés**.
 
-   ![A Backup-tárolók listája](./media/backup-azure-arm-vms-prepare/full-blade.png)
+3. Válassza ki a tárolóreplikáció típusa, és kattintson a **mentése**.
 
-2. A **biztonsági mentés konfigurációja**, kötelező, és válassza ki a storage redundancia módját módosítani **mentése**.
+      ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 
 
 ## <a name="configure-a-backup-policy"></a>Biztonsági mentési szabályzat konfigurálása
@@ -217,23 +191,22 @@ Az előfizetésben található virtuális gépek felderítéséhez és a biztons
 3. A **biztonsági mentési szabályzat**, válassza ki a tárolóval társítani kívánt házirendet. Ezután kattintson az **OK** gombra.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
     - Kattintson a **hozzon létre új** szabályzat létrehozásához. [További](backup-azure-arm-vms-prepare.md#configure-a-backup-policy) kapcsolatos házirend meghatározása.
-    
 
-    !["Mentés" és "Biztonsági mentési szabályzat" panel](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
+      !["Mentés" és "Biztonsági mentési szabályzat" panel](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
 4. A **válassza ki a virtuális gépek** ablaktáblán válassza ki a virtuális gépeket, amelyet használni fog a megadott biztonsági mentési szabályzat > **OK**.
 
-    - A kiválasztott virtuális gép érvényesítve lesz.
-    - Választhat a virtuális gépek és a tárolónak ugyanabban a régióban. Virtuális gépek csak biztonsági mentésre alkalmas Ezenkívül egyetlen tárban.
+   - A kiválasztott virtuális gép érvényesítve lesz.
+   - Választhat a virtuális gépek és a tárolónak ugyanabban a régióban. Virtuális gépek csak biztonsági mentésre alkalmas Ezenkívül egyetlen tárban.
 
-   !["A virtuális gépek kiválasztása" panelen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+     !["A virtuális gépek kiválasztása" panelen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
 5. A **biztonsági mentési**válassza **biztonsági mentés engedélyezése**.
 
    - Telepítheti a szabályzatot a tárolóban, és a virtuális gépeket, és telepíti a biztonsági mentési bővítményt a Virtuálisgép-ügynök az Azure virtuális gépen.
    - Ebben a lépésben a virtuális gép nem hozza létre a kezdeti helyreállítási pontot.
 
-   !["A biztonsági mentés engedélyezése" gombra](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+     !["A biztonsági mentés engedélyezése" gombra](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 Biztonsági mentés engedélyezése után:
 
@@ -242,7 +215,7 @@ Biztonsági mentés engedélyezése után:
     - Egy futó virtuális gép adja a legnagyobb esélyt egy alkalmazással konzisztens helyreállítási pont létrehozásának.
     -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. Ez az úgynevezett *offline virtuális gép*. Ebben az esetben a helyreállítási pont az *összeomláshoz igazodik* lesz.
     Vegye figyelembe, hogy az Azure Backup nem támogatja az óra automatikus illesztését nyári időszámítás – mentés módosításait az Azure virtuális gép biztonsági mentéseinek. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
-  
+
 ## <a name="run-the-initial-backup"></a>A kezdeti biztonsági mentés futtatása
 
 A kezdeti biztonsági mentés beállított ütemezés fog futni, kivéve, ha manuálisan futtatja, azonnal. Futtassa manuálisan az alábbiak szerint:

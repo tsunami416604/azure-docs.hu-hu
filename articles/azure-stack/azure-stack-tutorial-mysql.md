@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 8fc3246c76d7d09ea4518b5c548d5dbe05cc7a84
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116792"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Oktatóanyag: Magas rendelkezésre állású MySQL-adatbázisok ajánlat
 
@@ -67,7 +67,7 @@ Ebben a szakaszban a MySQL-kiszolgáló telepítése a lépéseket a fürt haszn
 - Három Linux rendszerű virtuális gépek, a MySQL-fürt üzemeltetéséhez
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **számítási**, majd **MySQL-replikáció**.
 
@@ -168,7 +168,7 @@ A MySQL-fürt létrehozása, konfigurálása és Azure Stack MySQL üzemeltető 
 > Futtassa ezeket a lépéseket az Azure Stack felhasználói portálról bérlői felhasználói biztosít a MySQL-kiszolgáló képességet (Microsoft.MySQLAdapter szolgáltatás) előfizetéssel.
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **adatok \+ tárolási**, majd **MySQL-adatbázis** .<br><br>Adja meg a szükséges adatbázis-tulajdonság információkat, beleértve a neve, rendezés, a használni kívánt előfizetést és helyet a központi telepítéshez használni. 
 

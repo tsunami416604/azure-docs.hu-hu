@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491654"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008375"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-eszköz konfigurációjának módosítása
 
@@ -71,7 +71,7 @@ Az eszköz szinkronizálnia kell az időt ahhoz, hogy a tárolási szolgáltató
 
 Az NTP-kiszolgáló konfigurálásakor győződjön meg arról, hogy a hálózat lehetővé teszi, hogy az NTP-adatforgalmat az Adatközpont az internethez. Nyilvános NTP-kiszolgáló megadásakor győződjön meg arról, hogy a hálózati tűzfal és egyéb biztonsági eszközök engedélyezésére vannak konfigurálva NTP forgalom áramlását felé és felől a külső hálózattal. Kétirányú NTP forgalom pedig nem engedélyezett, ha egy belső NTP-kiszolgáló (Windows tartományvezérlő biztosítja ezt a funkciót) kell használnia. Ha az eszköz ideje nem lehet szinkronizálni, azt nem lehet képes kommunikálni a felhős társzolgáltatóhoz.
 
-Nyilvános NTP-kiszolgálók listájának megtekintéséhez nyissa meg a [NTP-kiszolgálók webes](http://support.ntp.org/bin/view/Servers/WebHome).
+Nyilvános NTP-kiszolgálók listájának megtekintéséhez nyissa meg a [NTP-kiszolgálók webes](https://support.ntp.org/bin/view/Servers/WebHome).
 
 ### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Mi történik, ha az eszköz egy másik időzónában van üzembe helyezve?
 

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: fcd3af6c000debb8da6200205a9aa2ae61feac58
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675415"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896211"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok Store az Azure Key Vaultban
 
@@ -84,6 +84,9 @@ A következő tulajdonságok támogatottak a key vault titkos társított szolg�
 **Használatával a szerzői műveletek a felhasználói felület:**
 
 Válassza ki **Azure Key Vault** titkos mezők az adatok adattárat/számítási kapcsolat létrehozása során. Válassza ki az üzembe helyezett Azure Key Vault társított szolgáltatásban, és adja meg a **název tajného Kódu**. Opcionálisan megadhat egy titkos kód verziója. 
+
+>[!TIP]
+>Az összekötők, például az SQL Server, a Blob storage, stb., a hivatkozott szolgáltatásban található kapcsolati karakterlánc használatával az AKV csak a titkos kód mező például a jelszó tárolásához, vagy tárolja a teljes kapcsolati karakterláncát az AKV választhat. Mindkét lehetőség a felhasználói felületen található.
 
 ![Konfigurálja az AKV titkos kulcs](media/store-credentials-in-key-vault/configure-akv-secret.png)
 

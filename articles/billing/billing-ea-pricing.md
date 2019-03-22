@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 88d94492cb6ed3191e146f117a648293bc9e50f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243720"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892472"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Megtekintheti és letöltheti a szervezet az Azure díjszabása
 
-Az Azure-ügyfelek az egy nagyvállalati szerződés (EA) vagy [Microsoft Ügyfélszerződéséhez](#check-your-access-to-a-microsoft-customer-agreement) előfordulhat, hogy megtekintése és letöltése a díjszabás az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg [megtekintése és letöltése a Microsoft vevői szerződés díjszabása](#View-and-download-pricing-for-your-billing-profile).
+Az Azure-ügyfelek az egy nagyvállalati szerződés (EA) vagy [Microsoft Ügyfélszerződéséhez](#check-your-access-to-a-microsoft-customer-agreement) előfordulhat, hogy megtekintése és letöltése a díjszabás az Azure Portalról. Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg a megtekintése és letöltése a Microsoft vevői szerződés díjszabását.
 
 ## <a name="view-and-download-ea-pricing"></a>Megtekintheti és letöltheti a nagyvállalati szerződés díjszabása
 

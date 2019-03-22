@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: ed2792c3bb599a0e5654be836d440b61fc803012
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9bcc74e395746ae82867d915ea37962bf8880a3e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780303"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Oktatóanyag: A workdayjel képes az Azure Active Directory-integráció
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a workdayjel képes, haj
 
     ![Munkanapi tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https:\//impl.workday.com/<tenant>/login-saml2.flex`
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://www.workday.com`
 
@@ -112,11 +112,11 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a workdayjel képes, haj
 
     ![Munkanapi tartomány és URL-címek egyszeri bejelentkezési adatait](./media/workday-tutorial/reply.png)
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://impl.workday.com/<tenant>/login-saml.htmld`
+    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https:\//impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Ezek az értékek nem a valós. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és a válasz URL-cím. A válasz URL-cím rendelkeznie kell egy altartomány például: www, wd2, wd3, wd3-impl, wd5, wd5-impl).
-    > Vagy hasonló "*http://www.myworkday.com*" működik, de "*http://myworkday.com*" nem létezik. Kapcsolattartó [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Vagy hasonló `http://www.myworkday.com` működik, de `http://myworkday.com` nem létezik. Kapcsolattartó [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 6. A Workday-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Munkanapi alkalmazás vár **nameidentifier** a leképezendő **user.mail**, **UPN** stb., így a attribútumleképezés szerkesztéséhez kattintson a szükséges **szerkesztése**  ikonra, és módosítsa a attribútumleképezés.
 
@@ -159,10 +159,10 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a workdayjel képes, haj
 
     d. A **környezetekben használt** szövegmezőben válassza ki a környezet nevét.  
 
-    >[!NOTE]
-    > A környezet attribútum vannak kötve, a bérlői URL-cím értékét:  
-    >-Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https://impl.workday.com/\<tenant\>/login-saml2.flex*), a **környezet** attribútum megvalósítási értékre kell állítani.  
-    >-Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
+   > [!NOTE]
+   > A környezet attribútum vannak kötve, a bérlői URL-cím értékét:  
+   > -Ha a tartomány neve a Workday-bérlői URL-cím kezdődik impl például: *https:\//impl.workday.com/\<bérlői\>/login-saml2.flex*), a **környezet**attribútum megvalósítási értékre kell állítani.  
+   > -Ha a tartománynév valami mást kezdődik, lépjen kapcsolatba kell [Workday ügyfél-támogatási csapatának](https://www.workday.com/en-us/partners-services/services/support.html) beolvasni a megfelelő **környezet** érték.
 
 4. Az a **SAML-telepítő** szakaszban, hajtsa végre az alábbi lépéseket:
 
@@ -254,7 +254,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

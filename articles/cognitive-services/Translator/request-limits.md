@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 96ee65bfe8792bd56feb39f48659397cb517471a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735366"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861570"
 ---
 # <a name="request-limits-for-translator-text"></a>A Translator Text kérelmekre vonatkozó korlátok
 
@@ -43,7 +43,7 @@ Ezek a korlátok a Microsoft általános rendszerek korlátozódnak. A Microsoft
 
 ## <a name="latency"></a>Késés
 
-Fordítói szöveg rendelkezik 13 másodperc maximális késését. Ez idő szerint fog kapott egy eredményt vagy időtúllépés választ. Általában válaszok visszatér 150 ezredmásodpercben 300 ezredmásodperc. Válaszidők a méretét vagy a kérelem és nyelvi pár alapján változhat.
+A Translator Text API egy standard szintű modellek használata a 15 másodperces időtúllépési maximális késleltetés van. Egyéni modellek használatával fordítási rendelkezik 25 másodpercig maximális késését. Ez idő szerint fog kapott egy eredményt vagy időtúllépés választ. Általában válaszok visszatér 150 ezredmásodpercben 300 ezredmásodperc. Válaszidők a kérelmek és a nyelvi pár méretétől függően változik. Ha nem kapja meg a fordítást, vagy egy [hibaválaszt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) adott időtartamon belül kell ellenőrizze a hálózati kapcsolatot, és próbálkozzon újra.
 
 ## <a name="sentence-length-limits"></a>Mondat hosszának korlátozása
 

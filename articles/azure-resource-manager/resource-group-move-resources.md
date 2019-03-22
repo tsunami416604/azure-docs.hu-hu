@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 579c23fc3092acb785e89ddfa390e9495fc004d3
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194527"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081253"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
-Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások. Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure-erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe](./resource-manager-tutorial-move-resources.md).
+Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-előfizetés és a egy előfizetésen belül egy másik erőforráscsoportot. Az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API használatával helyezhetők át erőforrások. Go-oktatóanyagot, tekintse meg [oktatóanyag: Azure-erőforrások áthelyezése másik erőforráscsoportba vagy előfizetésbe](./resource-manager-tutorial-move-resources.md).
 
 Mind a forrás és a cél csoport írásvédett az áthelyezési művelet során. Írási és törlési műveletek az áthelyezés befejezéséig az erőforráscsoportok elakad. A zárolás azt jelenti, hogy a nem hozzáadása, frissítése vagy törlése az erőforráscsoportok erőforrásaihoz, de ez nem jelenti azt, az erőforrások szüneteltetve legyenek. Ha például egy SQL Server és az adatbázis áthelyezése egy új erőforráscsoportot, ha nem az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
 
-Erőforrások áthelyezése csak áthelyezi egy új erőforráscsoportot. Az áthelyezési művelet az erőforrás helye nem módosítható. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
+Az erőforrás áthelyezése csak egy új erőforráscsoportba helyezi azt. Az áthelyezési művelet nem módosítja az erőforrás helyét. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
 > [!NOTE]
 > Ez a cikk ismerteti az erőforrások áthelyezése a meglévő Azure-előfizetések között. Ha valójában szeretné frissíteni (például a használatalapú fizetéses előfizetésre vált az ingyenes) Azure-előfizetése, az előfizetés konvertálnia kell.
@@ -65,7 +65,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Azure Database for PostgreSQL
 * Az Azure DevOps - szervezetek számára az Azure DevOps nem Microsoft-bővítmény vásárlása kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
 * Azure Maps
-* Az Azure Monitor naplóira
+* Azure Monitor-naplók
 * Azure Relay
 * Az Azure Stack - regisztrációk
 * Batch
@@ -255,58 +255,58 @@ Klasszikus erőforrások áthelyezése új előfizetést, használja a REST-műv
 
 1. Ellenőrizze, hogy ha a forrás-előfizetés részt vehetnek-e egy előfizetések közötti áthelyezés. Használja a következő műveletet:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      A kérelem törzsében a következők:
 
-  ```json
-  {
+   ```json
+   {
     "role": "source"
-  }
-  ```
+   }
+   ```
 
      A választ az érvényesítés művelet a következő formátumban kell megadni:
 
-  ```json
-  {
+   ```json
+   {
     "status": "{status}",
     "reasons": [
       "reason1",
       "reason2"
     ]
-  }
-  ```
+   }
+   ```
 
 2. Ellenőrizze, hogy ha a cél előfizetést részt vehetnek-e egy előfizetések közötti áthelyezés. Használja a következő műveletet:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      A kérelem törzsében a következők:
 
-  ```json
-  {
+   ```json
+   {
     "role": "target"
-  }
-  ```
+   }
+   ```
 
      A válasz a forrás-előfizetés érvényesítése ugyanebben a formátumban van.
 3. Ha mindkét előfizetés érvényesítési sikeresek, minden hagyományos erőforrás áthelyezése egy előfizetésből egy másik előfizetéshez a következő műveletet:
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
+   ```
 
     A kérelem törzsében a következők:
 
-  ```json
-  {
+   ```json
+   {
     "target": "/subscriptions/{target-subscription-id}"
-  }
-  ```
+   }
+   ```
 
 A művelet több percig futtathatnak.
 
@@ -345,52 +345,52 @@ Nincsenek erőforrások áthelyezése előtt néhány fontos lépést. Ezen felt
 
 1. A forrás- és az előfizetések léteznie kell az előfizetésen belül [Azure Active Directory-bérlő](../active-directory/develop/quickstart-create-new-tenant.md). Ellenőrizze, hogy mindkét előfizetéshez tartozik-e az azonos bérlő azonosítója, használja az Azure PowerShell vagy az Azure CLI.
 
-  Azure PowerShell esetén használja:
+   Azure PowerShell esetén használja:
 
-  ```azurepowershell-interactive
-  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
-  ```
+   ```azurepowershell-interactive
+   (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+   (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
+   ```
 
-  Azure CLI esetén használja az alábbi parancsot:
+   Azure CLI esetén használja az alábbi parancsot:
 
-  ```azurecli-interactive
-  az account show --subscription <your-source-subscription> --query tenantId
-  az account show --subscription <your-destination-subscription> --query tenantId
-  ```
+   ```azurecli-interactive
+   az account show --subscription <your-source-subscription> --query tenantId
+   az account show --subscription <your-destination-subscription> --query tenantId
+   ```
 
-  Ha a bérlőazonosítók a forrás- és előfizetés esetében nem ugyanaz, a következő módszerek használatával a bérlőazonosítók egyeztetése:
+   Ha a bérlőazonosítók a forrás- és előfizetés esetében nem ugyanaz, a következő módszerek használatával a bérlőazonosítók egyeztetése:
 
-  * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
-  * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
+   * [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, akkor megjelenik egy hibaüzenet, arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípushoz**. Előfordulhat, hogy ezt a hibaüzenetet erőforrás új előfizetésre történő áthelyezésekor azonban, hogy az előfizetés még nem volt használva az adott erőforrástípushoz.
 
-  A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
+   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
-  ```azurepowershell-interactive
-  Set-AzContext -Subscription <destination-subscription-name-or-id>
-  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -Subscription <destination-subscription-name-or-id>
+   Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+   ```
 
-  Erőforrás-szolgáltató regisztrálásához használja:
+   Erőforrás-szolgáltató regisztrálásához használja:
 
-  ```azurepowershell-interactive
-  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
-  ```
+   ```azurepowershell-interactive
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+   ```
 
-  Azure CLI-hez a következő parancsok használatával a regisztrációs állapot lekérdezése:
+   Azure CLI-hez a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
-  ```azurecli-interactive
-  az account set -s <destination-subscription-name-or-id>
-  az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-  ```
+   ```azurecli-interactive
+   az account set -s <destination-subscription-name-or-id>
+   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+   ```
 
-  Erőforrás-szolgáltató regisztrálásához használja:
+   Erőforrás-szolgáltató regisztrálásához használja:
 
-  ```azurecli-interactive
-  az provider register --namespace Microsoft.Batch
-  ```
+   ```azurecli-interactive
+   az provider register --namespace Microsoft.Batch
+   ```
 
 1. Erőforrások áthelyezése a fióknak legalább a következő engedélyekkel kell rendelkeznie:
 

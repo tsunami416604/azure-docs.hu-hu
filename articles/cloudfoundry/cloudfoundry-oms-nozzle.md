@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 2038ce62e252260dda73813df97a68ee4b3fff61
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111463"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
 
@@ -73,10 +73,10 @@ További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>A figyelési sablon segítségével a Log Analytics-munkaterület létrehozása az Azure Marketplace-beli:
 
 1. Nyissa meg az Azure Portalon.
-2. Kattintson a "+" jelre, vagy az "Erőforrás létrehozása" a bal felső sarokban.
-3. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "Cloud Foundry figyelési megoldás".
-4. A Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
-5. Adja meg a szükséges paramétereket:
+1. Kattintson a "+" jelre, vagy az "Erőforrás létrehozása" a bal felső sarokban.
+1. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "Cloud Foundry figyelési megoldás".
+1. A Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
+1. Adja meg a szükséges paramétereket:
     * **Előfizetés**: Válassza ki a Log Analytics-munkaterületet, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
     * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Log Analytics-munkaterületet.
     * **Erőforráscsoport helye**: Válassza ki az erőforráscsoport helyét.
@@ -84,7 +84,7 @@ További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https
     * **OMS_Workspace_Region**: Válassza ki a munkaterület helyét.
     * **OMS_Workspace_Pricing_Tier**: Válassza ki a Log Analytics-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
     * **Jogi feltételek**: Kattintson a jogi feltételeket, majd kattintson a "Create", fogadja el a jogi kifejezés.
-- Után minden paraméter meg van adva, kattintson a "Létrehozás" a sablon üzembe helyezéséhez. Az üzembe helyezés befejezése után az állapot jelennek meg az értesítési lapon.
+1. Után minden paraméter meg van adva, kattintson a "Létrehozás" a sablon üzembe helyezéséhez. Az üzembe helyezés befejezése után az állapot jelennek meg az értesítési lapon.
 
 
 ## <a name="deploy-the-nozzle"></a>A Nozzle üzembe helyezése

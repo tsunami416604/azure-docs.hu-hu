@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 976bb44ae81a6c002d2503407a4d74d513a76042
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725269"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224022"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 
 [Vállalati biztonsági csomag (ESP) engedélyezve van a HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az engedélyek használata [Apache Ambari](https://ambari.apache.org/) ESP HDInsight-fürtök mind a standard szintű HDInsight-fürtök esetén támogatott.
 
-Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Egyéb engedélyezett végpontokban, például a fürt interakció hitelesítéshez tartományi hitelesítő adataik is használhatják [Hue](https://gethue.com/), Ambari Views, ODBC, JDBC, PowerShell és REST API-k.
+Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataikkal jelentkezhetnek be. Egyéb engedélyezett végpontokban, például a fürt interakció hitelesítéshez tartományi hitelesítő adataik is használhatják [Hue](https://gethue.com/), Ambari Views, ODBC, JDBC, PowerShell és REST API-k.
 
 > [!WARNING]  
 > Ne módosítsa a jelszavát a Linux-alapú HDInsight-fürt Ambari figyelő (hdinsightwatchdog). A jelszó módosítása működésképtelenné válik a parancsfájlműveletekkel vagy a fürt skálázási műveleteket végez.
@@ -51,24 +51,24 @@ Példányok megtekintése az Ambari tartalmaz [Apache Hive](https://hive.apache.
 
 **Jogosultság megadása a ezeket a csoportokat** ![jogosultság megadása a ezeket a csoportokat](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-4. A felhasználó hozzáadásához jelölje be a **felhasználó hozzáadása** gombra.
+1. A felhasználó hozzáadásához jelölje be a **felhasználó hozzáadása** gombra.
 
-    * Kezdenie gépelni, a felhasználó nevét, és megjelenik egy legördülő lista korábban definiált nevek.
+   * Kezdenie gépelni, a felhasználó nevét, és megjelenik egy legördülő lista korábban definiált nevek.
 
-    ![Felhasználói autocompletes](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
+     ![Felhasználói autocompletes](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-    * Válassza ki, vagy begépelte, a felhasználó nevét. Ezzel a felhasználónévvel, egy új felhasználó hozzáadásához válassza a **új** gombra.
+   * Válassza ki, vagy begépelte, a felhasználó nevét. Ezzel a felhasználónévvel, egy új felhasználó hozzáadásához válassza a **új** gombra.
 
-    * A módosítások mentéséhez válassza a **Kék jelölőnégyzet**.
+   * A módosítások mentéséhez válassza a **Kék jelölőnégyzet**.
 
-    ![Felhasználó által megadott](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
+     ![Felhasználó által megadott](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-5. Egy csoport hozzáadásához válassza a **csoport hozzáadása** gombra.
+1. Egy csoport hozzáadásához válassza a **csoport hozzáadása** gombra.
 
-    * Kezdje el beírni a csoport nevét. Egy létező csoport nevének kijelölésekor, és a egy új csoport hozzáadása ugyanaz, mint a felhasználók hozzáadásával.
-    * A módosítások mentéséhez válassza a **Kék jelölőnégyzet**.
+   * Kezdje el beírni a csoport nevét. Egy létező csoport nevének kijelölésekor, és a egy új csoport hozzáadása ugyanaz, mint a felhasználók hozzáadásával.
+   * A módosítások mentéséhez válassza a **Kék jelölőnégyzet**.
 
-    ![A megadott csoport](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
+     ![A megadott csoport](./media/hdinsight-authorize-users-to-ambari/group-entered.png)
 
 Felhasználók hozzáadása közvetlenül egy nézet akkor hasznos, ha szeretné engedélyek hozzárendelése a felhasználói számára, hogy a nézet, de szeretné, hogy egy további engedélyekkel rendelkező csoport tagjának lennie. Csökkentheti az adminisztratív terhelést, lehet egyszerűbb engedélyek hozzárendelése a csoportokhoz.
 

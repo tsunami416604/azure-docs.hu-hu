@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 347ee8389677e507e299490d86ae9b51ba4f59a6
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731580"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994864"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
 
@@ -70,6 +70,9 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
 
 - `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
+
+> [!NOTE]
+> Tervezetek is lehet létrehozni az előfizetés szintjén. Példaként lásd: [tervrajz létrehozása előfizetés példát](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Hozza létre a kezdeti _terv_ objektumot. A **kérelemtörzs** a terv, az esetleg létrehozandó erőforráscsoportok, valamint az összes tervszintű paraméter tulajdonságait tartalmazza. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
 
@@ -435,9 +438,9 @@ Maguknak a terveknek a törléséhez használja a következő REST API-művelete
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](./concepts/lifecycle.md)
-- A [statikus és dinamikus paraméterek](./concepts/parameters.md) használatának elsajátítása
-- A [tervekkel kapcsolatos műveleti sorrend](./concepts/sequencing-order.md) testreszabásának elsajátítása
-- A [tervek erőforrás-zárolásának](./concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [meglévő hozzárendelések frissítésének](./how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](./troubleshoot/general.md)
+- Tudnivalók a [tervek életciklusáról](./concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](./concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](./concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](./concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](./how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](./troubleshoot/general.md).

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105267"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Az Apache Ambari-nézetek használata a HDInsight Apache Tez-feladatok hibakereséséhez
 
@@ -90,14 +90,14 @@ A következő lépések használatával, amely Tez Hive-lekérdezések futtatás
 
 5. Ezen a lapon lévő lapok engedélyezése a következő információkat tekintheti meg:
 
-    * **Lekérdezési adatok**: A Hive-lekérdezés részleteit.
-    * **Idősor**: Információ arról, hogy mennyi ideig tartott feldolgozási minden egyes fázisa.
-    * **Konfigurációk**: Ehhez a lekérdezéshez használt konfigurációja.
+   * **Lekérdezési adatok**: A Hive-lekérdezés részleteit.
+   * **Idősor**: Információ arról, hogy mennyi ideig tartott feldolgozási minden egyes fázisa.
+   * **Konfigurációk**: Ehhez a lekérdezéshez használt konfigurációja.
 
-    A __lekérdezés részletei__ hivatkozások segítségével talál információkat a __alkalmazás__ vagy a __DAG__ ehhez a lekérdezéshez.
+     A __lekérdezés részletei__ hivatkozások segítségével talál információkat a __alkalmazás__ vagy a __DAG__ ehhez a lekérdezéshez.
     
-    * A __alkalmazás__ hivatkozásra a YARN-alkalmazást ehhez a lekérdezéshez információit jeleníti meg. Innen érheti el a YARN-alkalmazásnaplók.
-    * A __DAG__ hivatkozás ehhez a lekérdezéshez irányított aciklikus diagramhoz információit jeleníti meg. Itt megtekintheti a DAG grafikus ábrázolását. A DAG belül a csúcspontokat információk is megtalálhatók.
+   * A __alkalmazás__ hivatkozásra a YARN-alkalmazást ehhez a lekérdezéshez információit jeleníti meg. Innen érheti el a YARN-alkalmazásnaplók.
+   * A __DAG__ hivatkozás ehhez a lekérdezéshez irányított aciklikus diagramhoz információit jeleníti meg. Itt megtekintheti a DAG grafikus ábrázolását. A DAG belül a csúcspontokat információk is megtalálhatók.
 
 ## <a name="next-steps"></a>További lépések
 

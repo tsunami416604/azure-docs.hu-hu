@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: c6bba6a428e5ff339b1d269965fa1948bddc696e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081457"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Lemezes tárolás virtuális gép létrehozása az Azure Stackben
 
@@ -68,56 +68,56 @@ Minden nem felügyelt lemez hozzáadása egy külön tárolóban kell elhelyezni
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>A portál segítségével létrehozhat, és a egy új adatlemez csatolása
 
-1.  A portálon **minden szolgáltatás** > **virtuális gépek**.    
-    ![Példa: Virtuális gép irányítópult](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. A portálon **minden szolgáltatás** > **virtuális gépek**.    
+   ![Példa: Virtuális gép irányítópult](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  Válassza ki a korábban létrehozott virtuális gép.   
-    ![Példa: Válasszon egy virtuális Gépet az irányítópulton](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. Válassza ki a korábban létrehozott virtuális gép.   
+   ![Példa: Válasszon egy virtuális Gépet az irányítópulton](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Válassza ki a virtuális gép **lemezek** > **Hozzáadás adatlemez**.       
-    ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. Válassza ki a virtuális gép **lemezek** > **Hozzáadás adatlemez**.       
+   ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Az adatlemez:
-    -  Adja meg a **LUN**. A logikai egység érvényes számnak kell lennie.
-    -  Válassza ki **létrehozása lemez**.
-    ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. Az adatlemez:
+   -  Adja meg a **LUN**. A logikai egység érvényes számnak kell lennie.
+   -  Válassza ki **létrehozása lemez**.
+   ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  Létrehozása felügyelt lemez panelen:
-    -  Adja meg a **neve** a lemezen.
-    -  Válasszon egy meglévő, vagy hozzon létre egy új **erőforráscsoport**.
-    -  Válassza ki a **hely**. Alapértelmezés szerint a hely ugyanazt a tárolót, amely tárolja az operációsrendszer-lemez értéke.
-    -  Válassza ki a **fiók típusa**. 
-        ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. Létrehozása felügyelt lemez panelen:
+   - Adja meg a **neve** a lemezen.
+   - Válasszon egy meglévő, vagy hozzon létre egy új **erőforráscsoport**.
+   - Válassza ki a **hely**. Alapértelmezés szerint a hely ugyanazt a tárolót, amely tárolja az operációsrendszer-lemez értéke.
+   - Válassza ki a **fiók típusa**. 
+      ![Példa: Új lemez csatolása a virtuális géphez](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **Prémium szintű SSD**  
-        Felügyelt lemezek prémium szintű (SSD) élvezik SSD-meghajtókat, és egységes, közel valós idejű teljesítményt. A legjobb ára és teljesítménye közötti egyensúlyt biztosítanak, és ideálisak a nagy I/O-igényes alkalmazások és a termelési számítási feladatokhoz.
+      **Prémium szintű SSD**  
+      Felügyelt lemezek prémium szintű (SSD) élvezik SSD-meghajtókat, és egységes, közel valós idejű teljesítményt. A legjobb ára és teljesítménye közötti egyensúlyt biztosítanak, és ideálisak a nagy I/O-igényes alkalmazások és a termelési számítási feladatokhoz.
        
-        **Standard HDD**  
-        A standard szintű lemezek (HDD) mágneses meghajtók élvezik és alkalmazások általában hol adatokhoz ritkán. Zóna – a lemezek redundáns élvezik a zónaredundáns tárolás (ZRS), amely az adatokat több zónában replikálja, és elérhetők, még akkor is, ha egy zóna nem működik. 
+      **Standard HDD**  
+      A standard szintű lemezek (HDD) mágneses meghajtók élvezik és alkalmazások általában hol adatokhoz ritkán. Zóna – a lemezek redundáns élvezik a zónaredundáns tárolás (ZRS), amely az adatokat több zónában replikálja, és elérhetők, még akkor is, ha egy zóna nem működik. 
 
-    -  Válassza ki a **adatforrástípust**.
+   - Válassza ki a **adatforrástípust**.
 
-       Lemez létrehozása egy másik lemez pillanatképéből vagy egy tárfiókbeli blobból, vagy üres lemez létrehozása.
+     Lemez létrehozása egy másik lemez pillanatképéből vagy egy tárfiókbeli blobból, vagy üres lemez létrehozása.
 
-        **Snapshot**  
-        Válassza ki a pillanatképet, ha rendelkezésre áll. A pillanatkép kell lennie a virtuális gép előfizetésben és helyen érhető el.
+      **Snapshot**  
+      Válassza ki a pillanatképet, ha rendelkezésre áll. A pillanatkép kell lennie a virtuális gép előfizetésben és helyen érhető el.
 
-        **Storage-blobba**  
-        - Adja hozzá az URI-ját a Storage-blobból, amely tartalmazza a lemezképet.  
-        - Válassza ki **Tallózás** a Storage-fiókok panel megnyitásához. Útmutatásért lásd: [adatlemez hozzáadása egy tárfiókból](#add-a-data-disk-from-a-storage-account).
-        - Válassza ki az operációs rendszer típusa, a lemezkép vagy **Windows**, **Linux**, vagy **nincs (adatlemez)**.
+      **Storage-blobba**  
+     - Adja hozzá az URI-ját a Storage-blobból, amely tartalmazza a lemezképet.  
+     - Válassza ki **Tallózás** a Storage-fiókok panel megnyitásához. Útmutatásért lásd: [adatlemez hozzáadása egy tárfiókból](#add-a-data-disk-from-a-storage-account).
+     - Válassza ki az operációs rendszer típusa, a lemezkép vagy **Windows**, **Linux**, vagy **nincs (adatlemez)**.
 
-        **Nincs (üres lemez)**
+       **Nincs (üres lemez)**
 
-    -  Válassza ki a **mérete (GiB)**.
+   - Válassza ki a **mérete (GiB)**.
 
-       Standard szintű lemez díjai a lemezmérettel arányosan a lemez mérete. Prémium szintű lemez díjai és teljesítménye növelje a lemez mérete alapján. További információkért lásd: [Managed Disks díjszabását ismertető](https://go.microsoft.com/fwlink/?linkid=843142).
+     Standard szintű lemez díjai a lemezmérettel arányosan a lemez mérete. Prémium szintű lemez díjai és teljesítménye növelje a lemez mérete alapján. További információkért lásd: [Managed Disks díjszabását ismertető](https://go.microsoft.com/fwlink/?linkid=843142).
 
-    -  Kattintson a **Létrehozás** gombra. Az Azure Stack hoz létre, és érvényesíti a felügyelt lemez.
+   - Kattintson a **Létrehozás** gombra. Az Azure Stack hoz létre, és érvényesíti a felügyelt lemez.
 
-5.  Után az Azure Stack a lemezt hoz létre, és csatlakoztatja a virtuális gép, az új lemez szerepel-e a virtuális gép lemezbeállításokat alatt **ADATLEMEZEK**.   
+5. Után az Azure Stack a lemezt hoz létre, és csatlakoztatja a virtuális gép, az új lemez szerepel-e a virtuális gép lemezbeállításokat alatt **ADATLEMEZEK**.   
 
-    ![Példa: Lemez megtekintése](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![Példa: Lemez megtekintése](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>Adatlemez hozzáadása egy storage-fiókból
 

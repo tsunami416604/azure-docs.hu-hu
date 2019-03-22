@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5f421c8949efae5a2488d5bf156a5d3571401bcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996446"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows
 
@@ -25,8 +25,8 @@ Az IoT Edge-futtatókörnyezet kapcsolatos további információkért lásd: [me
 
 Ez a cikk felsorolja a lépéseket az Azure IoT Edge-futtatókörnyezet telepítéséhez a Windows x64 (Intel vagy AMD) a rendszer. Windows támogatási jelenleg előzetes verzióban érhető el.
 
->[!NOTE]
-Linux-tárolók használata a Windows rendszereken a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
+> [!NOTE]
+> Linux-tárolók használata a Windows rendszereken a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,6 +52,8 @@ Mit tartalmaz az IoT Edge a legújabb verzióra további információ: [Azure Io
 
 Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis](https://www.opencontainers.org/) container-motor. A termelési forgatókönyvekhez használja a Moby motor szerepel a telepítési parancsfájl a Windows-eszközön a Windows-tárolók futtatásához. A fejlesztés és tesztelés futtatása Linux-tárolók Windows-eszközén, de telepítése és konfigurálása egy tároló-motor az IoT Edge telepítése előtt kell. Mindkét forgatókönyvre érvényes tekintse meg az eszköz előkészítése az előfeltételeket a következő szakaszokat. 
 
+Ha szeretné telepíteni az IoT Edge egy virtuális gépen, beágyazott virtualizálás engedélyezése, és legalább 2 GB memóriát lefoglalni. Beágyazott virtualizálás engedélyezése hogyan eltér attól függően, a hipervizor használatát. A Hyper-V a 2. generációs virtuális gépek beágyazott virtualizálás alapértelmezés szerint engedélyezve. A VMWare van egy ki-/ bekapcsolása a virtuális gépen a funkció engedélyezéséhez. 
+
 #### <a name="moby-engine-for-windows-containers"></a>Windows-tárolókhoz Moby motor
 
 Éles forgatókönyvekben IoT Edge futó Windows-eszközök esetén Moby egy a csak hivatalosan támogatott tároló-motor. A telepítési parancsfájl automatikusan telepíti a Moby motor az eszköz IoT Edge telepítése előtt. Az eszköz előkészítése a tárolók funkció bekapcsolásával. 
@@ -64,7 +66,7 @@ Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis](https://www.opencontainers
 
 Ha Windows fejlesztéséhez és teszteléséhez a tárolók a Linux rendszerű eszközök használata esetén használhatja [Docker for Windows](https://www.docker.com/docker-windows) a tároló motorként. Docker beállítható úgy, hogy [Linux-tárolók használata](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). Telepítheti a Dockert, és állítsa be úgy az IoT Edge telepítése előtt kell. Linux-tárolók nem támogatottak a Windows-eszközökön éles környezetben. 
 
-Ha az IoT Edge-eszközt egy Windows-számítógépen, ellenőrizze, hogy megfelel-e a [rendszerkövetelmények](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) Hyper-V. Ha egy virtuális gépet, engedélyezze [beágyazott virtualizálás](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) és legalább 2 GB memóriát lefoglalni.
+Ha az IoT Edge-eszközt egy Windows-számítógépen, ellenőrizze, hogy megfelel-e a [rendszerkövetelmények](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) Hyper-V.
 
 ## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge egy új eszköz telepítése
 

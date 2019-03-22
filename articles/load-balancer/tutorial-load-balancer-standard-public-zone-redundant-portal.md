@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888152"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
 
@@ -108,7 +108,7 @@ Ebben a szakaszban a hálózati biztonsági csoport szabályait fogja létrehozn
     - A terheléselosztási szabály leírása: *HTTP engedélyezése*.
 4. Kattintson az **OK** gombra.
  
- ![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Virtuális hálózat létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Ismételje meg a 2–4. lépéseket egy másik, *myRDPRule* nevű szabály létrehozásához, amely engedélyezi a 3389-es portot használó, bejövő RDP-kapcsolatokat. Ehhez adja meg az alábbi értékeket:
     - **Forrás**: *Szolgáltatáscímke*.
     - **Forrás szolgáltatáscímkéje**: *Internet*
@@ -137,7 +137,7 @@ Hozzon létre virtuális gépeket különböző zónákban (1. zóna, 2. zóna, 
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 6. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
   
- ![Virtuális gép létrehozása](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
+   ![Virtuális gép létrehozása](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
 
 7. Az 1–6. lépés követésével hozzon létre egy második virtuális gépet *VM2* néven a 2. zónában, valamint egy harmadik virtuális gépet a 3. zónában, *myVnet* virtuális hálózattal, *myBackendSubnet* alhálózattal és **myNetworkSecurityGroup* hálózati biztonsági csoporttal.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: 4c831a5a939e946d7189e4d35eaf051508e904a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999526"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
@@ -68,7 +68,7 @@ Egyes esetekben a felhasználók lehet, hogy üzenetek beolvasása a multi-facto
 
 | Hibakód | Hibaüzenet | Javasolt lépések | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Hibás kódot entered\OATH kód helytelen | Nem hiba, a felhasználó sikeres megadott kód helytelen. | Az a felhasználó hibás kódot adott meg. Rendelkezik, azokat újra egy új kódot kér, vagy jelentkezzen be újra. | 
+| **OathCodeIncorrect** | Hibás kódot entered\OATH kód helytelen | Az a felhasználó hibás kódot adott meg. Rendelkezik, azokat újra egy új kódot kér, vagy jelentkezzen be újra. | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte a maximális megengedett kódot újrapróbálkozási | A felhasználó az ellenőrző kérdés túl sokszor sikertelen volt. A beállítások attól függően, előfordulhat, hogy szükségük lehet a rendszergazdája mostantól feloldva.  |
 | **SMSAuthFailedWrongCodeEntered** | Hibás a megadott vagy szöveges üzenet OTP helytelen kód | Az a felhasználó hibás kódot adott meg. Rendelkezik, azokat újra egy új kódot kér, vagy jelentkezzen be újra. |
 

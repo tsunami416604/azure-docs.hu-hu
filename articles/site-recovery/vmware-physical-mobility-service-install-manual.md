@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 862846c8ec544cf082d45cea650269b6518a016f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790809"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003528"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>A mobilitási szolgáltatás manuális telepítése a VMware virtuális gépek és fizikai kiszolgálókon
 
@@ -65,40 +65,42 @@ Mielőtt telepít, hozzon létre egy hozzáférési kódot, a telepítés során
 
 1. Másolja a telepítőt egy helyi mappába (például C:\Temp) a kiszolgálón, amely számára védelmet kíván. 
 
-  ```
-  cd C:\Temp
-  ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
-  MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
-  cd C:\Temp\Extracted.
-  ```
+   ```
+   cd C:\Temp
+   ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
+   MobilityServiceInstaller.exe /q /x:C:\Temp\Extracted
+   cd C:\Temp\Extracted.
+   ```
 2. A következőképpen telepítheti:
 
-  ```
-  UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
-  ```
+   ```
+   UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
+   ```
 
 3. A konfigurációs kiszolgálót regisztrálja az ügynököt.
 
-  ```
-  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
-  ```
+   ```
+   cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+   UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+   ```
 
 #### <a name="installation-settings"></a>Telepítési beállítások
+
 **Beállítás** | **Részletek**
 --- | ---
-Használat | UnifiedAgent.exe/Role < MS|Fő Célkiszolgáló > /InstallLocation  <Install Location> /platform "VmWare" /Silent
-Telepítési naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
-/ Role | Kötelező telepítés paraméter. Meghatározza, hogy a mobilitási szolgáltatás (MS) vagy a fő célkiszolgálót (MT) kell telepíteni.
+Használat | UnifiedAgent.exe /Role <MS\|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+Telepítési naplók | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+/Role | Kötelező telepítés paraméter. Meghatározza, hogy a mobilitási szolgáltatás (MS) vagy a fő célkiszolgálót (MT) kell telepíteni.
 /InstallLocation| Nem kötelező paraméter. Itt adhatja meg a mobilitási szolgáltatás telepítési helyét (bármely mappa).
-És platformok | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** VMware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
-/ Csendes| Választható. Megadja, hogy a telepítő futtatásához csendes módban.
+/Platform | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** VMware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
+/Silent| Választható. Megadja, hogy a telepítő futtatásához csendes módban.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások
+
 **Beállítás** | **Részletek**
 --- | ---
-Használat | UnifiedAgentConfigurator.exe/csendpoint  <CSIP> /passphrasefilepath <PassphraseFilePath>
-Az ügynök konfigurációs naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+Használat | UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+Az ügynök konfigurációs naplók | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
 /PassphraseFilePath |  Kötelező. A hozzáférési kódot helye. Bármely érvényes UNC vagy helyi fájl elérési útját használja.
 
@@ -106,39 +108,42 @@ Az ügynök konfigurációs naplók | A % ProgramData%\ASRSetupLogs\ASRUnifiedAg
 ### <a name="on-a-linux-machine"></a>Linux rendszerű gépen
 
 1. Másolja a telepítőt egy helyi mappába (például ügynökszámítógépen) a kiszolgálón, amely számára védelmet kíván. A terminálban futtassa a következő parancsokat:
-  ```
-  cd /tmp ;
+   ```
+   cd /tmp ;
 
-  tar -xvzf Microsoft-ASR_UA*release.tar.gz
-  ```
+   tar -xvzf Microsoft-ASR_UA*release.tar.gz
+   ```
 2. A következőképpen telepítheti:
 
-  ```
-  sudo ./install -d <Install Location> -r MS -v VmWare -q
-  ```
+   ```
+   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   ```
 3. Miután a telepítés befejeződött, a mobilitási szolgáltatás regisztrálva kell lenniük a konfigurációs kiszolgálón. Futtassa a konfigurációs kiszolgálót regisztrálja a mobilitási szolgáltatás a következő parancsot:
 
-  ```
-  /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
-  ```
+   ```
+   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+   ```
 
 
 #### <a name="installation-settings"></a>Telepítési beállítások
+
 **Beállítás** | **Részletek**
 --- | ---
-Használat | . / install -d <Install Location> - r < MS|Fő Célkiszolgáló > - v VmWare - q
+Használat | . / install -d <Install Location> - r < MS\|MT > - v VmWare - q
 -r | Kötelező telepítés paraméter. Meghatározza, hogy a mobilitási szolgáltatás (MS) vagy a fő célkiszolgálót (MT) kell telepíteni.
 -d | Nem kötelező paraméter. Adja meg a mobilitási szolgáltatás telepítésének helye: /usr/local/ASR.
 -v | Kötelező. Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. **VMware** VMware virtuális gépek/fizikai kiszolgálók; **Azure** Azure virtuális gépek számára. 
 -q | Választható. Megadja, hogy a telepítő futtatásához csendes módban.
 
 #### <a name="registration-settings"></a>Regisztrációs beállítások
+
 **Beállítás** | **Részletek**
 --- | ---
-Használat | CD /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> - P <PassphraseFilePath>
+Használat | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 -i | A paraméter megadása kötelező. Itt adhatja meg a konfigurációs kiszolgáló IP-címét. Bármilyen érvényes IP-címet használja.
 -P |  Kötelező. Teljes elérési útja, amelyben a jelszót a rendszer menti a fájlt. Bármely érvényes mappát használni
 
 ## <a name="next-steps"></a>További lépések
+
 - [Vészhelyreállítás beállítása VMware virtuális gépekhez](vmware-azure-tutorial.md)
 - [Állítsa be a fizikai kiszolgálók vészhelyreállítása](physical-azure-disaster-recovery.md)

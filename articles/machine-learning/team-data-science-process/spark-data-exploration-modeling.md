@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b1e6884366300a4edfce1eb05971e50f673b3a22
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457224"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860975"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
@@ -29,8 +29,8 @@ A modellek használjuk a logisztikai és lineáris regresszió, véletlenszerű 
 
 * [A SGD lineáris regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) egy lineáris regressziós modellt, amely egy Sztochasztikus átmenetes Grádiens (SGD) módszert használja, és optimalizálása és a szolgáltatás méretezési lehetőségek érhetők el a tip mennyiségeket előrejelzése kifizetett. 
 * [A LBFGS logisztikai regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) , vagy "logit" regressziós, egy regressziós modellt, amely a kategorikus adatok besorolása ehhez a függő változó esetén használható. LBFGS egy kvázi Newton algoritmus, amely megközelíti a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus használatával korlátozott mennyiségű memóriát és széles körben használt a machine Learning szolgáltatásban.
-* [Véletlenszerű erdők](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők regressziós és besorolási használ, és kezelhetik a kategorikus funkciók és többosztályos osztályozási beállítás is kiterjeszthető. Ezek nem igénylik a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
-* [Színátmenet súlyozott fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs regressziós és besorolási használ és kezelhetik a kategorikus funkciókat, nincs szükség a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
+* [Véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők regressziós és besorolási használ, és kezelhetik a kategorikus funkciók és többosztályos osztályozási beállítás is kiterjeszthető. Ezek nem igénylik a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
+* [Színátmenet súlyozott fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs regressziós és besorolási használ és kezelhetik a kategorikus funkciókat, nincs szükség a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
 
 A modellezés lépéseket is bemutató betanításához, kiértékelheti és mentse a modell különböző típusú kódot tartalmaznak. Python-kód a megoldás és a megfelelő grafikon megjelenítése használatban van.   
 
@@ -60,19 +60,17 @@ A Spark 2.0-fürt segítségével megvalósított regressziós és besorolási f
 
 > [!NOTE]
 > A légitársaság adatkészlet hozzá lett adva a Spark 2.0 notebookok jobban a besorolási algoritmusok használatát mutatja be. Lásd az alábbi hivatkozásokat légitársaság kapcsolatos információk időben indító adatkészletet és időjárási adatkészletet:
-
->- Légitársaság időben indító adatok: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
+> - Légitársaság időben indító adatok: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
+> - Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
+> A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet bizonyos szempontokból az adatfeltárás, a Vizualizáció és a gépi Tanulási modell betanítása egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb idő alatt látható: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
 
 <!-- -->
 
@@ -81,7 +79,7 @@ A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-a
 <!-- -->
 
 > [!NOTE]
-A lenti leírások Spark 1.6-os használatához kapcsolódó. A Spark 2.0-s verziójához használja a notebookok ismertetett és a fentebbiekben hivatkozott. 
+> A lenti leírások Spark 1.6-os használatához kapcsolódó. A Spark 2.0-s verziójához használja a notebookok ismertetett és a fentebbiekben hivatkozott. 
 
 <!-- -->
 
@@ -362,8 +360,8 @@ Ez a kód bemutatja, hogyan hozhat létre egy új szolgáltatás dobozolási ór
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Index és a kategorikus funkcióinak be modellezési funkciók kódolása
 Ez a szakasz bemutatja, hogyan index, vagy a modellezési funkciók be kategorikus funkciói kódolása. A modellezés és MLlib függvényekben kategorikus indexelve vagy használata előtt kódolású bemeneti adatokat a funkciókat. A modelltől függően kell index vagy más módon kell kódolnia azokat:  
 
-* **Fa-alapú modellezési** kategóriák a numerikus értékek kódolható igényel (például három kategóriába szolgáltatás is kódolhatók 0, 1, 2). Ez a MLlib által biztosított [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) függvény. Ez a függvény egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, amely címke gyakoriságok szerint vannak rendezve: címke indexek, címkék kódolja. Numerikus értékek a bemenetekhez és adatkezeléssel-indexelt, bár a fa-alapú algoritmusok, megfelelően kezeli őket kategóriák adható meg. 
-* **Logisztikai és lineáris regressziós modellek** szükséges egy gyakori kódolási, ahol, például három kategóriába szolgáltatás bővíthet egyes tartalmazó 0 vagy 1 kategóriájától függően egy megfigyelési szolgáltatás három oszlopot. MLlib biztosít [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori kódolási függvényét. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. Ehhez a kódoláshoz lehetővé teszi, hogy a numerikus értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
+* **Fa-alapú modellezési** kategóriák a numerikus értékek kódolható igényel (például három kategóriába szolgáltatás is kódolhatók 0, 1, 2). Ez a MLlib által biztosított [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) függvény. Ez a függvény egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, amely címke gyakoriságok szerint vannak rendezve: címke indexek, címkék kódolja. Numerikus értékek a bemenetekhez és adatkezeléssel-indexelt, bár a fa-alapú algoritmusok, megfelelően kezeli őket kategóriák adható meg. 
+* **Logisztikai és lineáris regressziós modellek** szükséges egy gyakori kódolási, ahol, például három kategóriába szolgáltatás bővíthet egyes tartalmazó 0 vagy 1 kategóriájától függően egy megfigyelési szolgáltatás három oszlopot. MLlib biztosít [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori kódolási függvényét. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. Ehhez a kódoláshoz lehetővé teszi, hogy a numerikus értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
 
 A következő index és a kategorikus funkciók kódolása a kódot:
 

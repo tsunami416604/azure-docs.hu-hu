@@ -11,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 090c3919bcaee98f5ef398cd581bbf9070f5e87a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765336"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901967"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Adatbázis-feladatok használata a felügyeleti feladatok automatizálása
 
 Az Azure SQL Database lehetővé teszi, hogy hozhat létre, és sikerült rendszeres időközönként hajtható végre T-SQL-lekérdezések futtatása és karbantartási feladatok végrehajtása egy vagy több adatbázis feladatok ütemezését. Minden feladat végrehajtási állapotának naplózza, és a műveletek is automatikusan újrapróbálkozik, bármilyen hiba esetén.
 Megadhatja a céladatbázis vagy -csoportok az Azure SQL Database-adatbázisok, ahol a feladat lesz végrehajtva, és a feladat futtatása is ütemterveket.
 Egy feladat a feladat történő céladatbázis kezeli. Ön is definiálása, karbantartása és Transact-SQL szkriptek hajtható végre, egy Azure SQL Database-adatbázisok csoport közötti megőrzése.
+
+## <a name="when-to-use-automated-jobs"></a>Mikor érdemes használni az automatikus feladatok
 
 Nincsenek számos forgatókönyv feladat automation használhatja:
 
@@ -35,8 +37,10 @@ Nincsenek számos forgatókönyv feladat automation használhatja:
   - Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
   - Olyan hosszabban futó adatfeldolgozási lekérdezéseket hajthat végre nagy adatbáziskészleteken, amilyen például az ügyfél-telemetria gyűjtése. A rendszer az eredményeket egyetlen céltáblában gyűjti össze a további elemzéshez.
 - Adatmozgást
- - Feladatok létrehozására, amelyek más adatbázisok az adatbázisokban végzett módosítások replikálása, vagy a távoli adatbázisokhoz végzett frissítések gyűjtését, és a alkalmazni megváltozott az adatbázisban.
- - Feladatok létrehozására, amelyek vagy az adatbázisokat, SQL Server Integration Services (SSIS) használatával az adatok betöltéséhez.
+  - Feladatok létrehozására, amelyek más adatbázisok az adatbázisokban végzett módosítások replikálása, vagy a távoli adatbázisokhoz végzett frissítések gyűjtését, és a alkalmazni megváltozott az adatbázisban.
+  - Feladatok létrehozására, amelyek vagy az adatbázisokat, SQL Server Integration Services (SSIS) használatával az adatok betöltéséhez.
+
+## <a name="overview"></a>Áttekintés
 
 A következő feladat ütemezési technológiákat az Azure SQL Database-ben érhetők el:
 
@@ -157,9 +161,9 @@ A felügyelt példány az SQL Server által biztosított SQL Agent funkcióit ne
 - SQL-Ügyfélügynök-beállítások csak olvashatók. Az eljárás `sp_set_agent_properties` nem támogatja a felügyelt példányhoz.
 - Az ügynök engedélyezése vagy letiltása jelenleg nem támogatott a felügyelt példányhoz. SQL-ügynök mindig fut-e.
 - Részlegesen támogatott értesítések
- - Személyi hívó nem támogatott.
- - NetSend nem támogatott.
- - Riasztások nem még nem támogatottak.
+  - Személyi hívó nem támogatott.
+  - NetSend nem támogatott.
+  - Riasztások nem még nem támogatottak.
 - Proxyk nem támogatottak.
 - Eseménynapló nem támogatott.
 

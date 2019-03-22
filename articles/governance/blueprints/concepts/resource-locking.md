@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855406"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
-A nagy mennyiségű egységes környezetet létrehozása csak akkor valóban a legértékesebb, ha olyan mechanizmus, amellyel a konzisztencia fenntartása. Ez a cikk ismerteti, hogyan erőforrás zárolása az Azure-tervek.
+A nagy mennyiségű egységes környezetet létrehozása csak akkor valóban a legértékesebb, ha olyan mechanizmus, amellyel a konzisztencia fenntartása. Ez a cikk ismerteti, hogyan erőforrás zárolása az Azure-tervek. Lásd például erőforrás zárolása és az alkalmazás _hozzárendelések megtagadása_, tekintse meg a [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyag.
 
 ## <a name="locking-modes-and-states"></a>Zárolási mód és állapotok
 
@@ -58,8 +58,9 @@ Az RBAC [hozzárendelések megtagadása](../../../role-based-access-control/deny
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](lifecycle.md)
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+- Kövesse a [új erőforrások védelmét](../tutorials/protect-new-resources.md) oktatóanyag.
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
+- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

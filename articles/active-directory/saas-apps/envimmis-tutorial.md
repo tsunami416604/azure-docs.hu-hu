@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08aab209d4772435c8b349026f036ce15ff73ced
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7bc40c5043cefad7892eaead8fe8058ac3707865
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731616"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904711"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Envi MMIS
 
@@ -184,7 +184,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -237,7 +237,7 @@ Ahhoz, hogy az Azure AD-felhasználók Envi MMIS bejelentkezni, akkor ki kell é
 
     ![Alkalmazott hozzáadása](./media/envimmis-tutorial/user3.png)
 
-    a. Az a **felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon@contoso.com**.
+    a. Az a **felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon\@contoso.com**.
     
     b. Az a **Utónév** szövegmezőbe BrittaSimon utónevét típusú, például **Britta**.
 
@@ -245,9 +245,9 @@ Ahhoz, hogy az Azure AD-felhasználók Envi MMIS bejelentkezni, akkor ki kell é
 
     d. Adja meg a cím a felhasználó a **cím** , a szövegmezőbe.
     
-    e. Az a **E-mail cím** szövegmezőbe írja be az e-mail-cím Britta Simon fiók, például **brittasimon@contoso.com**.
+    e. Az a **E-mail cím** szövegmezőbe írja be az e-mail-cím Britta Simon fiók, például **brittasimon\@contoso.com**.
 
-    f. Az a **egyszeri bejelentkezési felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon@contoso.com**.
+    f. Az a **egyszeri bejelentkezési felhasználónév** szövegmezőbe írja be a felhasználónevet Britta Simon fiók, például **brittasimon\@contoso.com**.
 
     g. Kattintson a **Save** (Mentés) gombra.
 

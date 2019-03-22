@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453399"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011120"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>A Microsoft Azure Storage-hoz a Python ügyféloldali titkosítás
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ Visszafejtési keresztül a boríték módszer a következő módon működik:
 4. A tartalom titkosítási kulcs (CEK) szolgál majd visszafejteni a titkosított adatokat.
 
 ## <a name="encryption-mechanism"></a>Titkosítási mechanizmus
-A storage ügyféloldali kódtára használ [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) annak érdekében, hogy a felhasználói adatok titkosításához. Pontosabban a [Cipher Block Chaining (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) AES mód. Minden egyes service működésének némileg eltér, így azok itt ismertetjük.
+A storage ügyféloldali kódtára használ [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) annak érdekében, hogy a felhasználói adatok titkosításához. Pontosabban a [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) AES mód. Minden egyes service működésének némileg eltér, így azok itt ismertetjük.
 
 ### <a name="blobs"></a>Blobok
 Az ügyféloldali kódtár jelenleg csak a teljes blobok titkosítását. Titkosítás támogatott, ha a felhasználók használhatják a **létrehozása*** metódusokat. A letöltések, egyaránt teljes és a tartomány letöltések támogatottak, és a fel- és letöltést ezerszer érhető el.
@@ -91,9 +91,9 @@ Tábla adattitkosítás a következőképpen történik:
 2. Az ügyféloldali kódtár hoz létre egy "véletlenszerű inicializálási vektor (IV) és a egy véletlenszerű tartalom titkosítási kulcs (CEK) a 32 bájtok minden entitás 16 bájtos, és a boríték-titkosítást végzi, az egyes tulajdonságok egy új IV tulajdonságonként származtatás titkosítására. A titkosított tulajdonságot a bináris adatok van tárolva.
 3. A burkolt CEK és néhány további titkosítási metaadatok majd két további fenntartott tulajdonságok formájában tárolja. Az első fenntartott tulajdonság (\_ClientEncryptionMetadata1) egy karakterlánc-tulajdonság, amely tartalmazza a IV, verzióját és burkolt kulcs. A második fenntartott tulajdonság (\_ClientEncryptionMetadata2) egy bináris tulajdonság, amely tartalmazza a titkosított tulajdonságait. A második tulajdonságban tárolt adatok (\_ClientEncryptionMetadata2) maga is titkosítva.
 4. Ezek a további fenntartott tulajdonságok a titkosításhoz szükséges, mert felhasználók most már rendelkezik 252 helyett csak 250 egyéni tulajdonságokat. Az entitás teljes méretének 1MB-nál kisebbnek kell lennie.
-   
+
    Vegye figyelembe, hogy csak karakterlánc-tulajdonságok titkosíthatók. Ha más típusú tulajdonságok titkosítását, azok karakterláncokat kell konvertálni. A titkosított karakterláncokat tárolja a szolgáltatás bináris tulajdonságokként, és azok alakítja vissza karakterláncok (nyers karakterláncok, nem típusú EdmType.STRING EntityProperties) a visszafejtés után.
-   
+
    Felhasználók táblákat, a titkosítási szabályzat mellett titkosítását a tulajdonságokat kell megadnia. A típus értéke EdmType.STRING TableEntity objektumok vagy tárolja ezeket a tulajdonságokat teheti meg, és a beállítása igaz értékre, vagy a encryption_resolver_function beállítása a tableservice objektum titkosítása. Egy titkosítási feloldó egy függvényt, amely egy partíciókulcsot, egy sorkulcsot és egy tulajdonságnév vesz igénybe, és logikai érték beolvasása, amely azt jelzi, hogy tulajdonság titkosítani kell. Titkosítás során az ügyféloldali kódtár használatával ezek az információk döntse el, hogy tulajdonság titkosítani kell az átviteli írása közben. A delegált körül hogyan tulajdonságok vannak titkosítva logikai lehetőségét is biztosít. (Például, ha X, majd titkosítása egy tulajdonság; ellenkező esetben a tulajdonságok a és b titkosítása) Vegye figyelembe, hogy azt nem kell ezt az információt entitások lekérdezése vagy olvasása közben.
 
 ### <a name="batch-operations"></a>Kötegelt műveletek
@@ -105,9 +105,9 @@ Vegye figyelembe, hogy entitásokat, a batch, a batch-titkosítási házirend (e
 > [!NOTE]
 > Az entitások titkosítva vannak, mivel a titkosított szűrő lekérdezéseket nem futtatható.  Ha meg, eredmények helytelen lesz, mert a szolgáltatás lenne összehasonlítani kívánt titkosított adatok nem titkosított adatok.
 > 
->
-Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely tudja feloldani az eredményhalmaz összes kulcsot. Ha a lekérdezés eredménye található entitás nem tudja feloldani a szolgáltatóra, az ügyféloldali kódtár kivételt fogja kijelezni hiba. Minden olyan lekérdezéshez, amely végrehajtja a kiszolgáló oldalán leképezések, az ügyféloldali kódtár felveszi a Speciális titkosítási metaadat-tulajdonságot (\_ClientEncryptionMetadata1 és \_ClientEncryptionMetadata2) a kijelölt oszlopok alapértelmezés szerint.
-
+> 
+> Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely tudja feloldani az eredményhalmaz összes kulcsot. Ha a lekérdezés eredménye található entitás nem tudja feloldani a szolgáltatóra, az ügyféloldali kódtár kivételt fogja kijelezni hiba. Minden olyan lekérdezéshez, amely végrehajtja a kiszolgáló oldalán leképezések, az ügyféloldali kódtár felveszi a Speciális titkosítási metaadat-tulajdonságot (\_ClientEncryptionMetadata1 és \_ClientEncryptionMetadata2) a kijelölt oszlopok alapértelmezés szerint.
+> 
 > [!IMPORTANT]
 > Vegye figyelembe az alábbi fontos szempontokat ügyféloldali titkosítás használata esetén:
 > 
@@ -115,8 +115,6 @@ Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, a
 > * A táblázatok egy hasonló megkötés létezik. Ügyeljen arra, hogy nem frissítése a titkosítási metaadatok nélkül a titkosított tulajdonságainak frissítése.
 > * A titkosított blob metaadatainak állít be, ha felülírhatja a titkosítással kapcsolatos metaadatok visszafejtési, mivel a metaadatok, nem additív szükséges. Ez akkor is igaz, a pillanatképek; Ne adjon meg a metaadat-titkosítású blob pillanatképének létrehozása közben. Hívja meg a metaadatok be lehet állítani, ha lehet a **get_blob_metadata** módszert először az aktuális titkosítási metaadatok lekérése, és elkerülheti az egyidejű írások, metaadatok van beállítása közben.
 > * Engedélyezze a **require_encryption** jelzőt, amely használható a titkosított adatok csak a felhasználók számára szolgáltatás objektumon. További információkért lásd az alábbi.
-> 
-> 
 
 A storage ügyféloldali kódtára a megadott KEK és a kulcs feloldó, a következő felület megvalósítása vár. [Az Azure Key Vault](https://azure.microsoft.com/services/key-vault/) Python KEK felügyeleti függőben, és ebben a könyvtárban befejezése után integráljuk támogatása.
 
@@ -136,10 +134,10 @@ A kulcs feloldó legalább meg kell valósítania egy adott, a kulcs azonosító
 
 * A titkosításhoz használja a rendszer mindig, és a egy kulcs hiányában egy hibát eredményez.
 * A visszafejtéshez:
-  
+
   * A kulcs feloldó hív, ha meg van adva a kulcs beszerzése. Ha a feloldó van megadva, de nem rendelkezik a kulcs azonosítóját leképezése, egy hiba lépett fel.
   * Ha nincs megadva a feloldó, de egy kulcs van megadva, a kulcs szolgál, ha annak azonosítója megegyezik a szükséges kulcs azonosítóját. Az azonosító nem egyezik, ha hiba fordul elő.
-    
+
     A titkosítási minták azure.storage.samples <fix URL>blobokhoz, üzenetsorokhoz és táblákhoz részletesebb végpontok közötti forgatókönyv bemutatásához.
       Minta megvalósítása a KEK és a kulcs feloldó vannak megadva a mintafájlok KeyWrapper és KeyResolver jelölik.
 

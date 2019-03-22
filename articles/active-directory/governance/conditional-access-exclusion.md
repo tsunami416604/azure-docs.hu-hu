@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892718"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Használja az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
@@ -102,7 +102,7 @@ Nézzük terjed ki a két példa, ahol a hozzáférési felülvizsgálatok haszn
 Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja a hozzáférést az egyes országok. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
 
 > [!NOTE]
-> A hozzáférési felülvizsgálatok hozzon létre egy globális rendszergazdai vagy a felhasználóifiók-adminisztrátor szerepkör szükséges.
+> A hozzáférési felülvizsgálatok hozzon létre egy globális rendszergazdai vagy a felhasználó rendszergazdai szerepkör szükséges.
 
 1. A felülvizsgálat minden héten lesz bekövetkezésére.
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431309"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286584"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -37,7 +37,7 @@ Ez az ábra a folyamatot ismerteti, amikor egy felhasználó megpróbál hozzáf
 1. A felhasználó megadja az alkalmazáshoz való hozzáférés a helyszíni proxyn keresztül történő alkalmazás URL-CÍMÉT.
 2. Az alkalmazásproxy átirányítja a kérést az Azure AD authentication szolgáltatások tudnak preauthenticate. Ezen a ponton az Azure AD bármilyen megfelelő hitelesítési és engedélyezési házirendeket, mint a többtényezős hitelesítés vonatkozik. Ha a felhasználó érvényesítését, Azure ad-ben létrehoz egy jogkivonatot, és elküldi azokat a felhasználó.
 3. A felhasználó az alkalmazásproxy továbbítja a jogkivonatot.
-4. Proxy érvényesíti a jogkivonatot, és az egyszerű felhasználónév (UPN) beolvassa és és továbbítja a kérést, az egyszerű Felhasználónevet és az egyszerű szolgáltatásnév (SPN) az összekötő dually hitelesített biztonságos csatornán keresztül történik.
+4. Alkalmazásproxy érvényesíti a jogkivonatot, és beolvassa az egyszerű felhasználónév (UPN), és majd a Connector lekéri az UPN-jét, és az egyszerű szolgáltatásnév (SPN) dually hitelesített biztonságos csatornán keresztül történik.
 5. Az összekötő a helyszíni Active Directory, az alkalmazásnak a Kerberos jogkivonat beszerzéséhez a felhasználó megszemélyesítésekor, a Kerberos által korlátozott delegálás (KCD) egyeztetést végez.
 6. Az Active Directory elküldi az alkalmazás az összekötő Kerberos-jogkivonat.
 7. Az összekötő az eredeti kérés küldése az application server, az AD-ből kapott Kerberos-jogkivonat használatával.

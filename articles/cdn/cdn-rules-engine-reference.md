@@ -1,6 +1,6 @@
 ---
-title: Az Azure CDN szabályok motor-referencia |} Microsoft Docs
-description: Az Azure CDN referenciadokumentációt szabályok motor egyezés feltételek és a szolgáltatások.
+title: Az Azure CDN szabálymotor-referencia |} A Microsoft Docs
+description: Az Azure CDN dokumentációja szabályok szabálymotor egyezési feltételei és funkciókat.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 602b4303dd1940791c11b8b71ac6a27f0474a6d5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3163b33f69f4cc2d6cd4127253c7b6fadfddd6b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733679"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994231"
 ---
-# <a name="azure-cdn-rules-engine-reference"></a>Az Azure CDN szabályok motor-hivatkozás
-Ez a cikk részletes leírását tartalmazza a rendelkezésre álló egyezés feltételek és a szolgáltatások számára az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
+# <a name="azure-cdn-rules-engine-reference"></a>Az Azure CDN szabálymotor-referencia
+Ez a cikk felsorolja a részletes leírását, a rendelkezésre álló egyezési feltételei és a szolgáltatások esetében az Azure Content Delivery Network (CDN) [szabálymotorral](cdn-rules-engine.md).
 
-A szabályok motor lett kialakítva, hogy hogyan adott típusú kérelmet a végső hatóság dolgozza fel a CDN-t.
+A rules engine tervezték hogyan adott típusú kérelmet a végső hatóság dolgozza fel a CDN-t.
 
 **Gyakori használati**:
 
-- Bírálja felül, vagy egy egyéni gyorsítótár-házirend meghatározásához.
-- Biztonságos, vagy letiltja a bizalmas a tartalomhoz.
+- Bírálja felül, vagy egy egyéni gyorsítótár-szabályzat meghatározása.
+- Biztonságos, vagy megtagadja a tartalomhoz bizalmas.
 - Kérelmek átirányítása.
-- Egyéni adatok tárolására.
+- Az egyéni napló data Store.
 
 ## <a name="terminology"></a>Terminológia
-Egy szabály van meghatározva használatával [ **feltételes kifejezések**](cdn-rules-engine-reference-conditional-expressions.md), [ **feltételek egyeznek**](cdn-rules-engine-reference-match-conditions.md), és [ **szolgáltatások**](cdn-rules-engine-reference-features.md). Ezeket az elemeket az alábbi ábrán vannak kiemelve:
+Egy szabály van meghatározva használatával [ **feltételes kifejezéseket**](cdn-rules-engine-reference-conditional-expressions.md), [ **feltételeknek megfelelő**](cdn-rules-engine-reference-match-conditions.md), és [ **funkciók**](cdn-rules-engine-reference-features.md). Ezeket az elemeket az alábbi ábrán vannak kiemelve:
 
- ![CDN-egyeztetés feltétel](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+ ![CDN egyezési feltételei](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
 
 ## <a name="syntax"></a>Szintaxis
 
-Speciális karakterek kezelik, amelyben módon miként egy egyeznek az állapot vagy a szolgáltatás kezeli a szöveges értékek függően változik. Egy egyeznek az állapot vagy a szolgáltatás szöveg értelmezhetik a következő módszerek valamelyikével:
+A speciális karakterek kezelik, amelyben módon hogyan egy egyezési feltétellel vagy a szolgáltatás kezeli a szöveges értékek függően változik. Egy az egyezési feltétellel vagy a szolgáltatás értelmezhetik szöveg a következő módszerek valamelyikével:
 
-1. [**Szöveges értékek**](#literal-values) 
+1. [**Konstans érték**](#literal-values) 
 2. [**Helyettesítő karakteres értékek**](#wildcard-values)
-3. [**A reguláris kifejezések**](#regular-expressions)
+3. [**Reguláris kifejezések**](#regular-expressions)
 
-### <a name="literal-values"></a>Szöveges értékek
-Szöveg, amelyet a rendszer könyvtárelválasztóként értelmezi konstans érték % szimbólum kivételével minden speciális karaktereket kezeli az értéket, amelyet egyeztetni részeként. Más szóval szövegkonstans felel meg a feltétel beállítása `\'*'\` csak teljesül, hogy pontos értékek amikor (Ez azt jelenti, hogy `\'*'\`) található.
+### <a name="literal-values"></a>Konstans érték
+Szöveg, amely szöveges értékként értelmezi a % szimbólum kivételével minden speciális karakterek az érték, amely egyeztetni részeként kezeli. Azaz szövegkonstansnak beállítása feltételnek megfelelő-e `\'*'\` csak meggyőződött róla, hogy pontos értékek amikor (azaz `\'*'\`) található.
  
-A százalékos szimbólum meghatározására szolgál URL-kódolást (például `%20`).
+Egy százalék szimbólummal használva URL-Címének kódolása azt (például `%20`).
 
 ### <a name="wildcard-values"></a>Helyettesítő karakteres értékek
-Szöveg helyettesítő értékként értelmezi, speciális karakterek további jelentése rendel hozzá. A következő táblázat ismerteti, hogyan karakterek a következők emelendők értelmezi:
+Szöveg, amely egy helyettesítő karaktert tartalmazó értéket kerül értelmezésre további jelentése rendel a különleges karaktereket. A következő táblázat ismerteti, hogyan értelmezi a következő karakterkészlet:
 
 Karakter | Leírás
 ----------|------------
-\ | Fordított perjel karaktert a ebben a táblázatban megadott karaktereket. Egy fordított perjel közvetlenül a speciális karaktert, érdemes lehet escape-karaktersorozatot tartalmazó előtt meg kell adni.<br/>Például a következő szintaxissal lehet kilépni csillag: `\*`
-% | A százalékos szimbólum meghatározására szolgál URL-kódolást (például `%20`).
-* | A csillag karakter egy vagy több karaktert jelölő helyettesítő elemként jelen.
-Szóköz | A szóköz karakter azt jelzi, hogy egyeznek feltétel lehet teljesíteni vagy a megadott értékek vagy mintákat.
-"érték" | Szimpla idézőjel nincs speciális jelentéssel. Azonban szimpla idézőjelben készlete szolgál annak jelzésére, hogy egy érték konstansérték kell kezelni. A következőképpen használhatók:<br><br/>-, Akkor meg kell, amikor csak a megadott értéke megegyezik az összehasonlítási érték bármely részének egyezés feltételt.  Például `'ma'` megfelelő a következő karakterláncok bármelyikét: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/ üzleti/sablont. **ma**p<br /><br />-Lehetővé teszi egy speciális karakter konstans karakterként adni. Például adhatnak meg szövegkonstans szóköz karakter a szóköz karakter a szimpla idézőjelben belül befoglaló (Ez azt jelenti, hogy `' '` vagy `'sample value'`).<br/>-Lehetővé teszi egy üres értéket kell megadni. Adjon meg egy üres értéket az szimpla idézőjelben csoportja (Ez azt jelenti, hogy ").<br /><br/>**Fontos:**<br/>-Ha a megadott érték nem tartalmaz helyettesítő karakter, majd automatikusan minősül konstans érték, amely azt jelenti, hogy nem kell adjon meg olyan szimpla idézőjelben.<br/>– Ha egy fordított perjel nem karaktert egy másik ebben a táblázatban, akkor rendszer figyelmen kívül hagyja a szimpla idézőjelben belül van megadva.<br/>-Adjon meg egy speciális karaktert, mert használatával egy fordított perjel karaktert a literális karakter másik módja (Ez azt jelenti, hogy `\`).
+\ | Fordított perjel karaktert a jelen táblázatban lévő megadott karakterek egyikét sem. Egy fordított perjel elé a speciális karaktert kell lennie escape-karakterrel kell megadni.<br/>Ha például a következő szintaxist egy csillag lehet kilépni: `\*`
+% | Egy százalék szimbólummal használva URL-Címének kódolása azt (például `%20`).
+\* | Egy csillag, amely egy vagy több karaktert helyettesítő karakterként.
+Űr | Szóköz karakter jelzi, hogy egyeztetési feltételt lehet teljesíteni a megadott értékek vagy minták egyikét.
+"érték" | Jednoduchá uvozovka nincs kulcsszó különleges jelentéssel. Azonban egy aposztrófok használatos jelzi, hogy egy érték Szövegkonstansérték kell kezelni. Az alábbi módon használható:<br><br/>-Lehetővé teszi, ha a megadott értéke megegyezik az összehasonlítási érték bármely részének teljesítendő egyeztetési feltételt.  Ha például `'ma'` megfelel a következő karakterláncok bármelyikét: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/ business/sablon. **ma**p<br /><br />-Lehetővé teszi egy speciális karaktert a literális karakter adható meg. Például megadhat egy literális karakter belül szimpla idézőjelek között egy készletét a szóköz karakter kötegfájlokban (azaz `' '` vagy `'sample value'`).<br/>-Lehetővé teszi egy üres értéket kell megadni. Adjon meg egy üres értéket szimpla idézőjelek között megadásával (vagyis ").<br /><br/>**Fontos:**<br/>– Ha a megadott érték nem tartalmaz helyettesítő karaktert, majd automatikusan tekintendő konstans érték, ami azt jelenti, hogy nem szükségesek, hogy adjon meg egy szimpla idézőjelek között.<br/>– Ha egy fordított perjel nem ez a táblázat egy másik karakterek elkerülésére, hogy rendszer figyelmen kívül hagyja a szimpla idézőjelek között belül van megadva.<br/>– Egy másik módja egy speciális karaktert adja meg, ahogyan a használatával egy fordított perjel karaktert a literális karakter (azaz `\`).
 
 ### <a name="regular-expressions"></a>Reguláris kifejezések
 
-Reguláris kifejezések meghatározása egy mintát, amely egy szöveges értéket belül kell keresni. Reguláris kifejezés notation adott jelentését szimbólumok számos különböző határozza meg. A következő táblázat azt jelzi, hogyan különleges karakterek feltételek egyeznek és reguláris kifejezések támogató szolgáltatások kezeli.
+Reguláris kifejezések meghatározása egy mintát, amely egy szöveges érték belül kell keresni. Reguláris kifejezés jelöléssel meghatározott jelentéssel számos különböző szimbólumok határozza meg. Az alábbi táblázat azt jelzi, hogy milyen speciális karakterek egyezési feltételei és reguláris kifejezésekkel támogató szolgáltatások kezeli.
 
 Speciális karakter | Leírás
 ------------------|------------
-\ | Egy fordított perjel lehet kilépni a karaktert, a következő lépések informatikai, amely azt eredményezi, ez a karakter, ahelyett, hogy a reguláris kifejezés jelentését konstansérték kell kezelni. Például a következő szintaxissal lehet kilépni csillag: `\*`
-% | A százalékos szimbólum pontos jelentése attól függ, hogy a használatát.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változó azonosítja.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis százalékos szimbólum változó és a elválasztó HTTP azonosítására használ.<br />`\%`: Escape százalékos szimbólum lehetővé teszi, hogy konstans érték használandó vagy URL-kódolást jelzéséhez (például `\%20`).
-* | A csillag karakter lehetővé teszi, hogy az előző karaktert megfeleltethetők nulla vagy több alkalommal. 
-Szóköz | A szóköz karakter konstans karakterként általában rendszer kezeli. 
-"érték" | Szimpla idézőjelben literális karaktereket tekintendők. Szimpla idézőjelben készlete nem rendelkezik speciális jelentéssel.
+\ | Egy fordított perjel lehet kilépni a karakter, az alábbiak szerint informatikai, aminek a karakter konstans érték helyett a reguláris kifejezés jelentése szerinti kell kezelni. Ha például a következő szintaxist egy csillag lehet kilépni: `\*`
+% | Egy százalék szimbólummal szerinti attól függ, hogy a használatát.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változó azonosítja.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis egy százalék szimbólummal változó és elválasztóként HTTP azonosítására használ.<br />`\%`: Escape-karaktersorozat százalékos szimbólum lehetővé teszi egy literálérték, használható vagy URL-Címének kódolása jelzi (például `\%20`).
+\* | Csillag lehetővé teszi, hogy az előző karaktert egyezést kell keresni nulla vagy több alkalommal. 
+Űr | Szóköz karakter általában számít literális karakter. 
+"érték" | Literális karakter szimpla idézőjelek között kell kezelni. Egy készletét szimpla idézőjelek között nincs kulcsszó különleges jelentéssel.
 
 
 ## <a name="next-steps"></a>További lépések
-* [Szabályok motor egyezés feltételek](cdn-rules-engine-reference-match-conditions.md)
-* [Szabályok motor feltételes kifejezések](cdn-rules-engine-reference-conditional-expressions.md)
-* [Szabályok adatbázismotor-szolgáltatások](cdn-rules-engine-reference-features.md)
-* [A szabályok használata HTTP működés felülbírálásához](cdn-rules-engine.md)
+* [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
+* [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
+* [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
+* [A rules engine használatával HTTP a működés felülbírálása](cdn-rules-engine.md)
 * [Az Azure CDN áttekintése](cdn-overview.md)

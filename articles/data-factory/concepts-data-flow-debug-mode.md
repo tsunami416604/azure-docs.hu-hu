@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: d3cabbcc04766d4a209ecf96db3f842902b465a5
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894053"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Data Flow hibakeresési módban leképezése
 
@@ -46,7 +46,7 @@ Ha elkészült a hibakeresés, kapcsolja be a hibakeresési kapcsolja ki, hogy a
 <img src="media/data-flow/datapreview.png" width="400">
 
 ## <a name="data-preview"></a>Adatelőnézet
-A hibakereséssel az adatok előzetes lapon fog világos felfelé az alsó panel. Hibakeresési módot adatfolyam jeleníti meg, csak az aktuális metaadatokat kicsinyítheti az átalakításokat mindegyike a vizsgálat lapon. Az adatok előzetes csak lekérdezi, hogy beállította a korlátot, az adatforrás-beállítások a sorok számát. Kattintson a "Adatlehívást" szükség lehet az adatok előzetes frissítéséhez.
+A hibakereséssel az adatok előzetes lapon fog világos felfelé az alsó panel. Hibakeresési módot adatfolyam jeleníti meg, csak az aktuális metaadatokat kicsinyítheti az átalakításokat mindegyike a vizsgálat lapon. Az adatok előzetes csak lekérdezi a korlátot, állított be a hibakeresési beállításokat tartalmazó sorok száma. Kattintson a "Adatlehívást" szükség lehet az adatok előzetes frissítéséhez.
 
 <img src="media/data-flow/stats.png" width="400">
 

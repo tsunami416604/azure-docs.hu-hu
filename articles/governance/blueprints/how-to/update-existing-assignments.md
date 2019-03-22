@@ -1,6 +1,6 @@
 ---
-title: A meglévő hozzárendelések frissítése
-description: További információ az Azure-tervek a meglévő hozzárendelések módosítása a mechanizmust.
+title: A portálról a meglévő hozzárendelések frissítése
+description: További információ a mechanizmusa a portálról az Azure-tervek a meglévő hozzárendelések módosítása.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818255"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999847"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
 
@@ -69,8 +69,8 @@ Nincs korlátozva a hozzárendelés egy hány alkalommal frissíthetők. Hiba es
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md)
-- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása
-- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása
-- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470314"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855937"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
 Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a Spark ML-csomagokat az Azure HDInsight Spark-fürtön a felügyelt gépi tanulási feladatok. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A cikk a modellek között logisztikai és lineáris regresszió, véletlenszerű erdők és színátmenet súlyozott fákat (GBTs), két általános felügyelt gépi tanulási feladatok mellett:
@@ -26,9 +26,9 @@ Ez a cikk bemutatja, hogyan Scala használata a Spark méretezhető MLlib és a 
 
 A modellezési folyamat szükséges betanítása és kiértékelése egy teszt adatkészlet, és pontossága vonatkozó metrikákat. Ebből a cikkből tudhat meg ezek a modellek tárolása az Azure Blob storage-ban és a pontszám, és a prediktív teljesítmény kiértékelése. Ez a cikk emellett ismerteti, hogyan optimalizálható a modellek kereszt-ellenőrzési és a hyper-paraméter kezdik használatával összetettebb témákra. Az adatok, használja a 2013 NYC taxi utazást és diszkont adatkészlet a Githubon elérhető mintát.
 
-[Scala](http://www.scala-lang.org/), a Java virtuális gép alapján nyelv objektumorientált és működik nyelvi fogalmak integrálható. Egy méretezhető nyelv, amely kiválóan alkalmas elosztott feldolgozás a felhőben, és futtat az Azure-alapú Spark-fürtök.
+[Scala](https://www.scala-lang.org/), a Java virtuális gép alapján nyelv objektumorientált és működik nyelvi fogalmak integrálható. Egy méretezhető nyelv, amely kiválóan alkalmas elosztott feldolgozás a felhőben, és futtat az Azure-alapú Spark-fürtök.
 
-[A Spark](http://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data analytics alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességeket adja meg a megfelelő választás az iteratív algoritmusaival együtt a machine learning és a graph számítások. A [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) csomag magas szintű API-ra épülő adatokat, amelyek segítségével keretek létrehozása, és gyakorlati machine learning-folyamatok finomhangolása egységes ismertet. [MLlib](http://spark.apache.org/mllib/) Spark méretezhető machine learning-kódtár, amely a modellezési funkcióit a az elosztott környezetben van.
+[A Spark](https://spark.apache.org/) egy nyílt forráskódú párhuzamos feldolgozást végző keretrendszer, amely támogatja a memórián belüli feldolgozást a big data analytics alkalmazások teljesítményének növelése érdekében. A Spark feldolgozási motorjára a nagy sebesség, a könnyű használat és a kifinomult elemzési. Spark memóriabeli elosztott számítási képességeket adja meg a megfelelő választás az iteratív algoritmusaival együtt a machine learning és a graph számítások. A [spark.ml](https://spark.apache.org/docs/latest/ml-guide.html) csomag magas szintű API-ra épülő adatokat, amelyek segítségével keretek létrehozása, és gyakorlati machine learning-folyamatok finomhangolása egységes ismertet. [MLlib](https://spark.apache.org/mllib/) Spark méretezhető machine learning-kódtár, amely a modellezési funkcióit a az elosztott környezetben van.
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) nyílt forráskódú Spark az Azure-ban üzemeltetett ajánlat. Emellett támogatja a Jupyter Scala notebookok a Spark-fürtön, és futtathatja a Spark SQL interaktív lekérdezések átalakítása, szűrését és az Azure Blob storage szolgáltatásban tárolt adatok megjelenítése. Scala kódrészletek ebben a cikkben, amelyek a megoldásokat, és megjelenítheti az adatokat a megfelelő grafikon megjelenítése futtatása a Jupyter notebooks, a Spark-fürtökön telepített. Ezek a témakörök modellezési lépéseiben kódot, amely bemutatja, hogyan betanításához, kiértékelése, mentése és felhasználását a modell különböző típusú.
 
@@ -368,7 +368,7 @@ Ez a kód bemutatja, hogyan hozhat létre egy új szolgáltatás dobozolási ór
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>Indexelés és a egy gyakori kódolási kategorikus funkciók
 A modellezés és MLlib függvényekben kategorikus indexelve vagy használata előtt kódolású bemeneti adatokat a funkciókat. Ez a szakasz bemutatja, hogyan index, vagy a modellezési funkciók be kategorikus funkciói kódolása.
 
-Index, vagy a modellek kódolása a modelltől függően más-más módon kell. Például logisztikai és lineáris regressziós modellek van szükség, egy gyakori kódolást. Például három kategóriába szolgáltatás három funkció oszlop bővíthet. 0 vagy 1 kategóriájától függően egy megfigyelési mindegyik oszlop tartalmaz. MLlib biztosít a [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori Encoding funkció. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. A kódolással elvárt numerikus értékelt szolgáltatások, például a logisztikai regressziós algoritmus kategorikus funkciókat is alkalmazható.
+Index, vagy a modellek kódolása a modelltől függően más-más módon kell. Például logisztikai és lineáris regressziós modellek van szükség, egy gyakori kódolást. Például három kategóriába szolgáltatás három funkció oszlop bővíthet. 0 vagy 1 kategóriájától függően egy megfigyelési mindegyik oszlop tartalmaz. MLlib biztosít a [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori Encoding funkció. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. A kódolással elvárt numerikus értékelt szolgáltatások, például a logisztikai regressziós algoritmus kategorikus funkciókat is alkalmazható.
 
 Itt alakítsa át csak négy változókat, példák, amelyek karakterláncok megjelenítése. Más változók, például a hét napja, numerikus értékek kategorikus változókként által képviselt is tudja indexelni.
 
@@ -853,7 +853,7 @@ Grafikon létrehozása Python matplotlib használatával.
 ### <a name="create-a-gbt-regression-model"></a>GBT regressziós modell létrehozása
 Egy GBT regressziós modell létrehozásához a Spark ML használatával `GBTRegressor()` függvényt, és értékelje ki a modell a tesztadatokat.
 
-[Színátmenet súlyozott fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. Használhatja a GBTs regressziós és besorolás. Azok képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és rögzíthetők a hétköznapi nonlinearities és a szolgáltatás kapcsolati. Is használhatja őket egy osztályú-besorolás beállításban.
+[Színátmenet súlyozott fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. Használhatja a GBTs regressziós és besorolás. Azok képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és rögzíthetők a hétköznapi nonlinearities és a szolgáltatás kapcsolati. Is használhatja őket egy osztályú-besorolás beállításban.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410281"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257807"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Egy csatlakoztatott esetben válassza ki az Azure AD vagy az AD FS. A leválasztott esetben csak az AD FS használata támogatott.
@@ -122,7 +122,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
 |CustomAdfsName|A jogcímeket szolgáltató neve.<br>Ezzel a módszerrel a az AD FS kezdőlapja jelenik meg.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Összevonási metaadatok hivatkozás|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|Összevonási metaadatok hivatkozás| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Az eseményindító automation beállítása az Azure Stack a jogcím-szolgáltatói megbízhatóság

@@ -1,7 +1,7 @@
 ---
 title: A Custom Speech Service át beszédszolgáltatások
 titlesuffix: Azure Cognitive Services
-description: A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a beszédfelismerési szolgáltatás számára, hogy a legújabb minőségi és frissítéseket.
+description: A Custom Speech Service most már a beszédszolgáltatások részét képezi. Váltson a Speech Services számára, hogy a legújabb minőségi és frissítéseket.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 44e13a301117ffe11e978666a38897ffd878c223
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 501555c68b7b5922bbf5a74d2a7ed5e548b900c5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551224"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57833537"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech Service áttelepít a beszédszolgáltatás
 
 Ez a cikk segítségével az alkalmazások áttelepíthetők a Custom Speech Service a Speech Service.
 
-A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a beszédfelismerési szolgáltatás számára, hogy a legújabb minőségi és frissítéseket.
+A Custom Speech Service most már a beszédfelismerési szolgáltatás részét képezi. Váltson a Speech Services számára, hogy a legújabb minőségi és frissítéseket.
 
 ## <a name="migration-for-new-customers"></a>Az új ügyfelek áttelepítése
 
@@ -39,11 +39,11 @@ A díjszabási modell az egyszerűbb, a beszédfelismerési szolgáltatás egy �
 
 3. Kövesse a gyors útmutatók és az SDK-minták a megfelelő API-k használata. A REST API-k használatakor is szeretné használni a megfelelő végpontokra és erőforrás kulcsainak.
 
-4. A Speech Service és az API-k használata az ügyfélalkalmazás frissítése.
+4. A Speech Services és API-k használata az ügyfélalkalmazás frissítése.
 
 ## <a name="migration-for-existing-customers"></a>Meglévő ügyfelek migrálása
 
-A meglévő erőforrás kulcsainak áttelepítése a Speech Service, a beszéd portálon. Ehhez a következő lépések szükségesek:
+A meglévő erőforrás kulcsainak áttelepítése a beszédszolgáltatások a Speech Services portálon. Ehhez a következő lépések szükségesek:
 
 > [!NOTE]
 > Erőforrás kulcsainak csak áttelepíthetők ugyanazon a régión belül.
@@ -56,10 +56,10 @@ A meglévő erőforrás kulcsainak áttelepítése a Speech Service, a beszéd p
 
 ## <a name="next-steps"></a>További lépések
 
-* [Speech Service ingyenes kipróbálása](get-started.md).
+* [Ingyenes kipróbálása beszédszolgáltatások](get-started.md).
 * Ismerje meg, [beszédfelismerés](./speech-to-text.md) fogalmakat.
 
 ## <a name="see-also"></a>Lásd még
 
 * [Mi az a Speech Service](overview.md)
-* [Beszédszolgáltatás és az SDK-dokumentáció](speech-sdk.md#get-the-sdk)
+* [Beszédszolgáltatások és a Speech SDK dokumentációja](speech-sdk.md#get-the-sdk)

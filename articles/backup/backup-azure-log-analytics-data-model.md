@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: 00bdc5ff63e78b0f96b794ca907bc28158e62c62
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883640"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075270"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
 
@@ -172,36 +172,36 @@ Ez a táblázat részletesen a feladathoz kapcsolódó mezőket.
 
 Ez a táblázat részletesen házirendekhez kapcsolódó mezőket.
 
-| Mező | Adattípus | Leírás |
-| --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V2** |
-| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - házirend neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
-| PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
-| PolicyName_s |Szöveg |A megadott házirend neve |
-| BackupFrequency_s |Szöveg |Amellyel biztonsági mentések futnak, például, napi, heti gyakoriság |
-| BackupTimes_s |Szöveg |Dátum és idő, amikor a biztonsági mentés van ütemezve |
-| BackupDaysOfTheWeek_s |Szöveg |Ha biztonsági mentések ütemezett napjai |
-| RetentionDuration_s |Egész szám |A konfigurált biztonsági mentés megőrzési időtartama |
-| DailyRetentionDuration_s |Egész szám |Teljes megőrzés időtartama napokban megadva a konfigurált biztonsági mentés |
-| DailyRetentionTimes_s |Szöveg |Dátum és idő, amikor napi megőrzés konfigurálása |
-| WeeklyRetentionDuration_s |Tizedes tört szám |Teljes hetes, a konfigurált biztonsági mentés heti megőrzési időtartama |
-| WeeklyRetentionTimes_s |Szöveg |Dátum és idő, ha a heti megőrzési van konfigurálva |
-| WeeklyRetentionDaysOfTheWeek_s |Szöveg |Heti megőrzési kijelölve a hét napjai |
-| MonthlyRetentionDuration_s |Tizedes tört szám |Hónap konfigurált biztonsági mentés a teljes megőrzési időtartama |
-| MonthlyRetentionTimes_s |Szöveg |Dátum és idő, ha a havi megőrzési van konfigurálva |
-| MonthlyRetentionFormat_s |Szöveg |A havi megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust |
-| MonthlyRetentionDaysOfTheWeek_s |Szöveg |Havi megőrzési kijelölve a hét napjai |
-| MonthlyRetentionWeeksOfTheMonth_s |Szöveg |Hét, a hónap, ha a havi megőrzési van konfigurálva, például First, Last stb. |
-| YearlyRetentionDuration_s |Tizedes tört szám |Teljes megőrzési időtartam a konfigurált biztonsági mentés éves |
-| YearlyRetentionTimes_s |Szöveg |Dátum és idő, amikor éves megőrzési van konfigurálva |
-| YearlyRetentionMonthsOfTheYear_s |Szöveg |Az év hónapjai éves megőrzési kiválasztva |
-| YearlyRetentionFormat_s |Szöveg |Az éves megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust |
-| YearlyRetentionDaysOfTheMonth_s |Szöveg |A hónap, éves megőrzési kijelölt dátumok |
+| Mező | Adattípus | Verzió érvényes | Leírás |
+| --- | --- | --- | --- |
+| EventName_s |Szöveg ||Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg ||Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V2** |
+| State_s |Szöveg ||A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg ||Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg ||Ez a mező képviseli az aktuális művelet - házirend neve |
+| Kategória |Szöveg ||Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
+| Erőforrás |Szöveg ||Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| PolicyUniqueId_g |Szöveg ||Azonosíthatja a szabályzat egyedi azonosítója |
+| PolicyName_s |Szöveg ||A megadott házirend neve |
+| BackupFrequency_s |Szöveg ||Amellyel biztonsági mentések futnak, például, napi, heti gyakoriság |
+| BackupTimes_s |Szöveg ||Dátum és idő, amikor a biztonsági mentés van ütemezve |
+| BackupDaysOfTheWeek_s |Szöveg ||Ha biztonsági mentések ütemezett napjai |
+| RetentionDuration_s |Egész szám ||A konfigurált biztonsági mentés megőrzési időtartama |
+| DailyRetentionDuration_s |Egész szám ||Teljes megőrzés időtartama napokban megadva a konfigurált biztonsági mentés |
+| DailyRetentionTimes_s |Szöveg ||Dátum és idő, amikor napi megőrzés konfigurálása |
+| WeeklyRetentionDuration_s |Tizedes tört szám ||Teljes hetes, a konfigurált biztonsági mentés heti megőrzési időtartama |
+| WeeklyRetentionTimes_s |Szöveg ||Dátum és idő, ha a heti megőrzési van konfigurálva |
+| WeeklyRetentionDaysOfTheWeek_s |Szöveg ||Heti megőrzési kijelölve a hét napjai |
+| MonthlyRetentionDuration_s |Tizedes tört szám ||Hónap konfigurált biztonsági mentés a teljes megőrzési időtartama |
+| MonthlyRetentionTimes_s |Szöveg ||Dátum és idő, ha a havi megőrzési van konfigurálva |
+| MonthlyRetentionFormat_s |Szöveg ||A havi megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust |
+| MonthlyRetentionDaysOfTheWeek_s |Szöveg ||Havi megőrzési kijelölve a hét napjai |
+| MonthlyRetentionWeeksOfTheMonth_s |Szöveg ||Hét, a hónap, ha a havi megőrzési van konfigurálva, például First, Last stb. |
+| YearlyRetentionDuration_s |Tizedes tört szám ||Teljes megőrzési időtartam a konfigurált biztonsági mentés éves |
+| YearlyRetentionTimes_s |Szöveg ||Dátum és idő, amikor éves megőrzési van konfigurálva |
+| YearlyRetentionMonthsOfTheYear_s |Szöveg ||Az év hónapjai éves megőrzési kiválasztva |
+| YearlyRetentionFormat_s |Szöveg ||Az éves megőrzési, például a napi szintű, hetente alapú hét naponta konfigurációtípust | |
+| YearlyRetentionDaysOfTheMonth_s |Szöveg ||A hónap, éves megőrzési kijelölt dátumok |
 | SynchronisationFrequencyPerDay_s |Egész szám |v2|A biztonsági mentés szinkronizálása SC DPM és a MABS nap száma |
 | DiffBackupFormat_s |Szöveg |v2|Különbségi biztonsági másolatok formátuma az SQL Azure virtuális gép biztonsági mentése |
 | DiffBackupTime_s |Time |v2|Az SQL-lel az Azure VM Backup különbözeti biztonsági mentések idejét|
@@ -209,35 +209,35 @@ Ez a táblázat részletesen házirendekhez kapcsolódó mezőket.
 | LogBackupFrequency_s |Tizedes tört szám |v2|Az SQL a Naplóalapú biztonsági mentések gyakoriságát|
 | LogBackupRetentionDuration_s |Tizedes tört szám |v2|Az SQL-lel az Azure virtuális gépek biztonsági mentését a Naplóalapú biztonsági mentések megőrzési időtartama|
 | DiffBackupDaysofTheWeek_s |Szöveg |v2|A használt SQL-lel az Azure VM Backup különbségi biztonsági másolatok hét napjai|
-| SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
-| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
-| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
-| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
-| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
+| SourceSystem |Szöveg ||A forrásrendszerben az aktuális adatok – Azure |
+| ResourceId |Szöveg ||A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg ||Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg ||Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg ||Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg ||Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="policyassociation"></a>PolicyAssociation
 
 Ez a táblázat a különböző entitások szabályzattársításait részletesen ismerteti.
 
-| Mező | Adattípus | Leírás |
-| --- | --- | --- |
-| EventName_s |Szöveg |Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
-| SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V2** |
-| State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
-| BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
-| OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – PolicyAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
-| Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
-| PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
-| VaultUniqueId_s |Szöveg |A tárolóban, amelyhez ez a szabályzat tartozik, az egyedi azonosítója |
+| Mező | Adattípus | Verzió érvényes | Leírás |
+| --- | --- | --- | --- |
+| EventName_s |Szöveg ||Ez a mező képviseli az esemény nevét, a rendszer mindig AzureBackupCentralReport |
+| SchemaVersion_s |Szöveg ||Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V2** |
+| State_s |Szöveg ||A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
+| BackupManagementType_s |Szöveg ||Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
+| OperationName |Szöveg ||Ez a mező képviseli az aktuális művelet – PolicyAssociation neve |
+| Kategória |Szöveg ||Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
+| Erőforrás |Szöveg ||Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
+| PolicyUniqueId_g |Szöveg ||Azonosíthatja a szabályzat egyedi azonosítója |
+| VaultUniqueId_s |Szöveg ||A tárolóban, amelyhez ez a szabályzat tartozik, az egyedi azonosítója |
 | BackupManagementServerUniqueId_s |Szöveg |v2 |A biztonsági mentés felügyeleti kiszolgáló a biztonsági mentési elemek egyedi azonosításához mező védett keresztül, ha van ilyen        |
-| SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
-| ResourceId |Szöveg |A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
-| SubscriptionId |Szöveg |Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
-| ResourceGroup |Szöveg |Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
-| ResourceProvider |Szöveg |Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
-| ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
+| SourceSystem |Szöveg ||A forrásrendszerben az aktuális adatok – Azure |
+| ResourceId |Szöveg ||A begyűjtött adatok erőforrás-azonosítója. Ha például a helyreállítási tár az erőforrás-azonosító |
+| SubscriptionId |Szöveg ||Az erőforrás (például az előfizetés-azonosító Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceGroup |Szöveg ||Az erőforrás (például erőforráscsoport Recovery Services-tároló), amelynek az adatgyűjtés történik |
+| ResourceProvider |Szöveg ||Erőforrás-szolgáltató, amelynek az adatgyűjtés történik. Ha például a Microsoft.recoveryservices szolgáltatónál |
+| ResourceType |Szöveg ||Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ### <a name="protected-container"></a>Védett tároló
 
@@ -355,7 +355,7 @@ Ez a táblázat a védett példányok alapszintű kapcsolódó mezők.
 Ez a táblázat egyszerű helyreállítási pont kapcsolódó mezőket.
 
 | Mező | Adattípus | Leírás |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |Egyedi azonosítója a biztonságimásolat-elem azonosítja a virtuális gépek biztonsági mentése a DPM, a MABS használatával|
 | OldestRecoveryPointTime_s |Szöveg |A biztonsági mentési elem a legrégebbi helyreállítási pont időpontja|
 | OldestRecoveryPointLocation_s |Szöveg |A biztonsági mentési elem a legrégebbi helyreállítási pont helyét|

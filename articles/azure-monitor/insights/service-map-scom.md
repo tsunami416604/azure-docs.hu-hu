@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: magoedte
-ms.openlocfilehash: 878abe79754c3286b77aef744d1bc4973a8af841
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110103"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
 
@@ -67,11 +67,11 @@ A Service Map integráció konfigurálásához tegye a következőket:
 
     A kiszolgáló egy elosztottalkalmazás-diagram létrehozása az integráció a kiszolgálónak kell lennie:
 
-    * Operations Manager által felügyelt
-    * A Service Map által felügyelt
-    * A Service Map kiszolgálók csoport szerepel
+   * Operations Manager által felügyelt
+   * A Service Map által felügyelt
+   * A Service Map kiszolgálók csoport szerepel
 
-    ![Az Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
+     ![Az Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
 
 6. Nem kötelező: Válassza ki a Log Analytics kommunikálni, és kattintson a felügyeleti kiszolgálókat tartalmazó erőforráskészlet **munkaterület hozzáadása**.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 23bf70cd60639aec3ea7e8504dc3f6ebccd4923f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 937346bf6927efe11e43b64b7c9a2111f00c0e0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890826"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
@@ -59,28 +59,28 @@ Gépre kiterjedő proxy beállításainak konfigurálásához kövesse az alább
 
 1. Konfigurálja a proxybeállításokat a .NET-alkalmazásokban 
 
-  - Módosítsa a két fájlt:  
-    C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
-    C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+   - Módosítsa a két fájlt:  
+     C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
+     C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-  - Adja hozzá a < system.net > szakasz a machine.config fájlok (alább a < system.serviceModel > szakaszban).  127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló portját. 
-  ```
+   - Adja hozzá a < system.net > szakasz a machine.config fájlok (alább a < system.serviceModel > szakaszban).  127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló portját. 
+     ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
           <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
         </defaultProxy>
       </system.net>
-  ```
+     ```
 
 2. Állítsa be a WinHTTP-proxybeállítások 
 
-  - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a Powershellt, tekintse meg a meglévő proxy beállításai:   
+   - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a Powershellt, tekintse meg a meglévő proxy beállításai:   
 
-    a Netsh winhttp show proxy
+     a Netsh winhttp show proxy
 
-  - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a PowerShell segítségével állítsa be a proxybeállítást a (127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló port):  
+   - Futtassa a következő parancsot egy rendszergazda jogú parancssort vagy a PowerShell segítségével állítsa be a proxybeállítást a (127.0.01:8888 módosítsa az IP-cím és a proxykiszolgáló port):  
 
-    a Netsh winhttp proxy 127.0.0.1:8888 beállítása
+     a Netsh winhttp proxy 127.0.0.1:8888 beállítása
 
 3. Indítsa újra a Storage Sync-ügynök szolgáltatást a PowerShell vagy egy rendszergazda jogú parancssorból a következő parancs futtatásával: 
 
@@ -100,7 +100,7 @@ A következő táblázat ismerteti a szükséges tartományok kommunikációhoz:
 | **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Az Azure File Sync üzembe helyezésének részeként egy egyszerű szolgáltatást az előfizetéshez tartozó Azure Active Directoryban jön létre. Az URL-címet, amely használható. Ez egyszerű delegálása az Azure File Sync szolgáltatás jogokat minimális számú szolgál. A felhasználó az Azure File Sync kezdeti telepítés végrehajtása egy hitelesített felhasználó az előfizetés-tulajdonosi jogosultságokkal kell lennie. |
 | **Azure Storage** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Amikor a rendszer letölti a fájlt, majd a kiszolgáló hajt végre adott adatáthelyezés hatékonyabban Ha közvetlenül az Azure-fájlmegosztást a Storage-fiókban folytatott kommunikációra. A kiszolgáló rendelkezik egy SAS-kulcs, amely csak lehetővé teszi a célzott fájl megosztás eléréséhez. |
 | **Azure File Sync** | &ast;.one.microsoft.com | &ast;.afs.azure.us | Kezdeti kiszolgálót a regisztrációt követően a kiszolgáló egy regionális az Azure File Sync szolgáltatás példány URL-címet kap az adott régióban. A kiszolgáló URL-címe segítségével hatékonyan és közvetlenül kommunikálni a példány, ahogy szinkronizál kezelése. |
-| **A Microsoft nyilvános kulcsokra épülő infrastruktúra** | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | `https://www.microsoft.com/pki/mscorp`<br />http://ocsp.msocsp.com | Az Azure File Sync ügynök telepítése után a nyilvános kulcsokra épülő infrastruktúra URL-cím segítségével kommunikálni az Azure File Sync szolgáltatás és az Azure-fájlmegosztás szükséges köztes tanúsítványok letöltése. Az OCSP URL-cím segítségével a tanúsítvány állapotának ellenőrzéséhez. |
+| **A Microsoft nyilvános kulcsokra épülő infrastruktúra** | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | `https://www.microsoft.com/pki/mscorp`<br /><http://ocsp.msocsp.com> | Az Azure File Sync ügynök telepítése után a nyilvános kulcsokra épülő infrastruktúra URL-cím segítségével kommunikálni az Azure File Sync szolgáltatás és az Azure-fájlmegosztás szükséges köztes tanúsítványok letöltése. Az OCSP URL-cím segítségével a tanúsítvány állapotának ellenőrzéséhez. |
 
 > [!Important]
 > Ha engedélyezi a forgalmat &ast;. one.microsoft.com, nem csak a szinkronizálási szolgáltatás forgalmát lehetőség a kiszolgálóról. Nincsenek altartományok alatt elérhető számos további Microsoft-szolgáltatások.

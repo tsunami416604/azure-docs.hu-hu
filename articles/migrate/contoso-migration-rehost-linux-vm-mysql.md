@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698962"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077853"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso áttelepítése: Helyszíni Linux-alkalmazás újbóli üzembe helyezése az Azure-beli virtuális gépeken és az Azure-beli MySQL-en
 
@@ -127,7 +127,7 @@ Itt látható, hogyan Contoso-rendszergazdák az áttelepítés elvégzéséhez:
 > [!div class="checklist"]
 > * **1. lépés: Készítse elő az Azure Site Recovery**: Akkor hozzon létre, amely a replikált adatokat tárolja, és hozzon létre egy Recovery Services-tároló Azure storage-fiókkal.
 > * **2. lépés: A Site Recovery a helyszíni VMware előkészítése**: A virtuális gépek felderítése és az ügynök telepítési fiókokat készít elő, és készítse elő az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően.
- * **3. lépés: Az adatbázis kiépítése]**: Az Azure-ban akkor az Azure MySQL-adatbázis egy példányának kiosztása.
+>   * **3. lépés: Az adatbázis kiépítése]**: Az Azure-ban akkor az Azure MySQL-adatbázis egy példányának kiosztása.
 > * **4. lépés: Virtuális gépek replikálása**: Azok a Site Recovery forrás és cél-környezet konfigurálása, állítsa be a replikációs szabályzatot, és indítsa el a virtuális gépek replikálása az Azure storage-bA.
 > * **5. lépés: Az adatbázis migrálása**: MySQL-eszközök a migrálást állítsa be.
 > * **6. lépés: A Site Recovery a virtuális gépek áttelepítése**: Végül, győződjön meg arról, hogy minden megfelelően működik, a feladatátvételi teszt futtatásához, és futtassa a teljes feladatátvételt az a virtuális gépek áttelepítése az Azure-bA.
@@ -147,10 +147,10 @@ A Contoso rendszergazdák hozzon létre egy tárfiókot, és a tároló az aláb
 
 1. Ezek a storage-fiók létrehozása (**contosovmsacc20180528**) az USA keleti RÉGIÓJA 2 régióban.
 
-    - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
-    - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
+   - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
+   - Egy általános célú fiók, és standard szintű storage, LRS-replikációval használnak.
 
-    ![Site Recovery-tároló](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery-tároló](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. A helyen lévő hálózati és tárolási fiókkal, hozzon létre egy tárolót (ContosoMigrationVault) és elhelyezheti a **ContosoFailoverRG** erőforráscsoport az USA keleti RÉGIÓJA 2 elsődleges régióban.
 

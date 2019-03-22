@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 3f20708308a9b5d7c09d6a498d659afac8a508c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: e4c5942dfba62a2c869e4eeceb9018fc926d9de9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090797"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259541"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Oktatóanyag: Egy új eszköz típusának megadása az Azure IoT Central alkalmazásban (új felhasználói felület tervezése)
 
@@ -144,6 +144,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
      ![Hőmérsékleti szimuláció konfigurálása](./media/tutorial-define-device-type/temperaturesimulation.png)
 
 7. Rövid idővel a **mérések** lapon látható a csatlakoztatott légkondicionálóját szimulált eszközről hőmérsékleti telemetria. A vezérlőkkel kezelheti a láthatóságot, az összesítést, vagy szerkesztheti a telemetria definícióját:
+ 
+    > [!NOTE]
+    > A telemetriai adatokat **átlagos** van beállítva, az alapértelmezett összesítés. 
 
     ![Hőmérsékleti szimuláció megtekintése](./media/tutorial-define-device-type/viewsimulation.png)
 

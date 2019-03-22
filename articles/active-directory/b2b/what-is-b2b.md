@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa36ab67957dcba7b5282e219706e442be9dc97
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a77d502182da8128624bfb5fc0481f2f8786ec37
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674480"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293634"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -34,7 +35,7 @@ Az Azure AD B2B esetén a partner saját identitáskezelési megoldását haszn�
 - Nem kell külső fiókokat és jelszavakat kezelnie. 
 - Nem kell fiókokat szinkronizálni és a fiók életciklust kezelni.  
 
-![tag hozzáadása](media/what-is-b2b/add-member.png)
+![Képernyőfelvétel: a hozzáadása a tagok lap](media/what-is-b2b/add-member.png)
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Vendégfelhasználók meghívása egyszerű meghívási és érvényesítési folyamattal
 A vendégfelhasználók a saját munkahelyi, iskolai vagy közösségi identitásukkal jelentkeznek be az alkalmazásokba és szolgáltatásokba. Ha a Vendég felhasználó nem rendelkezik Microsoft-fiókkal vagy Azure AD-fiókkal, akkor a meghívó beváltásakor annak a létrehozása is megtörténik. 
@@ -42,7 +43,7 @@ A vendégfelhasználók a saját munkahelyi, iskolai vagy közösségi identitá
 - Küldhet közvetlen az alkalmazásra mutató hivatkozást vagy meghívót a felhasználó saját hozzáférési paneljére. 
 - A vendégfelhasználók néhány egyszerű érvényesítési lépéssel jelentkezhetnek be.
 
-![Hozzáférési panel](media/what-is-b2b/consentscreen.png)
+![Képernyőfelvétel: a felülvizsgálati – engedélyek lap](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Házirendek használata az alkalmazások és szolgáltatások biztonságos megosztásához
 A vállalati tartalom védelmére használhat engedélyezési házirendeket. Feltételes hozzáférési szabályzatokat, például többtényezős hitelesítést a következőképpen lehet érvényesíteni:
@@ -50,7 +51,7 @@ A vállalati tartalom védelmére használhat engedélyezési házirendeket. Fel
 - Az alkalmazási szinten.
 - Meghatározott vendégfelhasználók számára a vállalati alkalmazások és adatok védelmére.
 
-![vendégfelhasználó hozzáadása](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![Képernyőfelvétel: a feltételes hozzáférési beállítás](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>A vendégfelhasználók hozzáadása könnyű az Azure AD Portalon
@@ -60,7 +61,7 @@ A rendszergazdák egyszerűen felvehetnek vendégfelhasználókat a szervezetbe 
 - A vendégfelhasználó azonnal kap egy testre szabható meghívót, amely lehetővé teszi, hogy bejelentkezzen a hozzáférési panelen.
 - A vendégfelhasználók a címtárban hozzárendelhetők alkalmazásokhoz és csoportokhoz.  
 
-![vendégfelhasználó hozzáadása](media/what-is-b2b/adding-b2b-users-admin.png)
+![Az új vendégfelhasználó meghívó bejegyzés lapot ábrázoló képernyőfelvétel](media/what-is-b2b/adding-b2b-users-admin.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Alkalmazás és csoport gazdák számára saját vendégfelhasználóik kezelésének lehetővé tétele
 
@@ -68,7 +69,7 @@ A vendégfelhasználók kezelését rábízhatja a felhasználó tulajdonosokra,
  - A rendszergazdák önkiszolgáló alkalmazás- és csoportkezelést állíthatnak be.
  - A nem rendszergazdák a [Hozzáférési Panel](https://myapps.microsoft.com) használatával adhatnak vendégfelhasználókat az alkalmazásokhoz és csoportokhoz.
 
-![vendégfelhasználó hozzáadása](media/what-is-b2b/access-panel-manage-app.png)
+![Képernyőfelvétel: a hozzáférési panelen, a vendégfelhasználó](media/what-is-b2b/access-panel-manage-app.png)
 
 ## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Az API-kat és a mintakódot használva könnyen készíthet felvételt végző alkalmazásokat
 
@@ -76,7 +77,7 @@ Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 - A [B2B együttműködés meghívó API-kat](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) használva egyénre szabhatja a felvételi folyamatot, az önkiszolgáló regisztrációs portál létrehozását is beleértve. 
 - Önkiszolgáló portál kínálunk mintakód [a Githubon](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-![regisztrációs portál](media/what-is-b2b/sign-up-portal.png)
+![Képernyőfelvétel: a mintául szolgáló regisztrációs portál](media/what-is-b2b/sign-up-portal.png)
 
 ## <a name="next-steps"></a>További lépések
 

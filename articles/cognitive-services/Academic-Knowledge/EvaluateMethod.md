@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871319"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004929"
 ---
 # <a name="evaluate-method"></a>Módszer kiértékelése
 
@@ -27,7 +27,9 @@ A **kiértékelése** REST API segítségével a lekérdezés alapján tudomány
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>A kérés paraméterei  
+
 Name (Név)     | Érték | Kötelező?  | Leírás
 -----------|-----------|---------|--------
 **kifejezés**       | Szöveges karakterlánc | Igen | A lekérdezési kifejezés, amely meghatározza, mely entitások vissza kell adni.
@@ -38,7 +40,9 @@ Name (Név)     | Érték | Kötelező?  | Leírás
 **OrderBy** |   Szöveges karakterlánc | Nem<br>Alapértelmezés: csökkenő valószínűség szerint | Az entitások rendezéshez használt attribútum neve. Igény szerint növekvő vagy csökkenő adható meg. A formátum: *name: asc* vagy *name: desc*.
   
  <br>
+
 ## <a name="response-json"></a>Válasz (JSON)
+
 Name (Név) | Leírás
 -------|-----   
 **kifejezés** |  A *expr* paraméter a kérelemből.
@@ -46,6 +50,7 @@ Name (Név) | Leírás
 **aborted** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
 <br>
+
 #### <a name="example"></a>Példa:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

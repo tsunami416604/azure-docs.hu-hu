@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761a233b800d67327af5b7f81581e187b41f3e01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d44aaa96b03e188e7f502d5bf1dc1b0de48e4c4d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202672"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852321"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: Egy felhasználó által hozzárendelt felügyelt identitás használata a Windows virtuális gép, Azure Resource Manager eléréséhez
 
@@ -149,7 +149,7 @@ A válasz tartalmazza az adott erőforráscsoport adatait, az alábbi példához
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte, hogy hogyan hozhat létre felhasználó által hozzárendelt identitást, majd csatolhatja azt egy Azure-beli virtuális géphez az Azure Resource Manager API eléréséhez.  További információ az Azure Resource Managerről:
+Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre egy felhasználó által hozzárendelt identitással, és csatlakoztassa azt egy Azure virtuális gépet az Azure Resource Manager API eléréséhez.  További információ az Azure Resource Managerről:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

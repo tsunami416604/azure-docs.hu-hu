@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 797838b077993ddcb4120bcf48b026063abbe1ab
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: MT
+ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105321"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014991"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure-bA vész-helyreállítási architektúra
 
@@ -102,9 +102,10 @@ A következő táblázat ismerteti a különböző típusú konzisztencia.
 Összeomlási alkalmazáskonzisztens pillanatkép készítésének volt a lemezen, ha a pillanatkép adatokat rögzíti. Ez nem foglalhatnak magukban a memóriában.<br/><br/> A lemezen lévő adatokat, amely jelen lehet, ha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról, a pillanatkép azonnali egyenértékű tartalmazza.<br/><br/> Egy összeomlás-konzisztens nem garantálja az adatkonzisztencia az operációs rendszerhez, vagy a virtuális gép található alkalmazásokhoz. | A Site Recovery összeomlás-konzisztens helyreállítási pontokat hoz létre öt percenként alapértelmezés szerint. Ez a beállítás nem módosítható.<br/><br/>  | A legtöbb alkalmazás még ma, összeomlás-konzisztens pontokról is helyreállíthatja.<br/><br/> Összeomlás-konzisztens helyreállítási pontok általában elegendő az operációs rendszerek és alkalmazások, például a DHCP-kiszolgáló és a nyomtatókiszolgálók a replikációhoz.
 
 ### <a name="app-consistent"></a>Alkalmazáskonzisztens
+
 **Leírás** | **Részletek** | **Az ajánlás**
 --- | --- | ---
-Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre.<br/><br/> Az alkalmazáskonzisztens pillanatkép összeomlás-konzisztens pillanatkép található összes információt, valamint az adatokat a memóriában, és a folyamatban lévő tranzakciók tartalmaznak. | Alkalmazáskonzisztens pillanatképek a kötet árnyékmásolata szolgáltatás (VSS) használja:<br/><br/>   1.) Ha kezdeményezték egy pillanatkép, VSS a kötet módosításkori másolási (vonatkozó) műveletek végrehajtása.<br/><br/>   2.) előtt hajtja végre a mintavételt, VSS tájékoztatja a minden alkalmazás, amely a memória rezidens ürítése a lemezre kell a gépen.<br/><br/>   (3) a VSS majd lehetővé teszi a biztonsági mentési és vész-helyreállítási app (Ez esetben a Site Recovery) olvassa el a pillanatkép adatainak és a folytatáshoz. | Alkalmazáskonzisztens pillanatképek készülnek, a megadott gyakorisága beállítás szerint. Ez a gyakoriság mindig kisebbnek kell lennie, mint a beállított helyreállítási pontok megőrzése. Például ha megőrzi a helyreállítási pontok használata az alapértelmezett beállítás 24 órás, kell beállítania a gyakorisága kisebb, mint 24 órával.<br/><br/>Ezek összetettebb és hosszabb időt vesz igénybe, mint az összeomlás-konzisztens pillanatképekkel.<br/><br/> A replikáció engedélyezése virtuális gépeken futó alkalmazások teljesítményét befolyásolja. | <br/><br/>Alkalmazáskonzisztens helyreállítási pontok használata akkor javasolt, adatbázis-operációs rendszerek és alkalmazások, például SQL.<br/><br/> Alkalmazáskonzisztens pillanatképek csak a Windows rendszerű virtuális gépek támogatottak.
+Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre.<br/><br/> Az alkalmazáskonzisztens pillanatkép összeomlás-konzisztens pillanatkép található összes információt, valamint az adatokat a memóriában, és a folyamatban lévő tranzakciók tartalmaznak. | Alkalmazáskonzisztens pillanatképek a kötet árnyékmásolata szolgáltatás (VSS) használja:<br/><br/>   1.) Ha kezdeményezték egy pillanatkép, VSS a kötet módosításkori másolási (vonatkozó) műveletek végrehajtása.<br/><br/>   2.) előtt hajtja végre a mintavételt, VSS tájékoztatja a minden alkalmazás, amely a memória rezidens ürítése a lemezre kell a gépen.<br/><br/>   (3) a VSS majd lehetővé teszi a biztonsági mentési és vész-helyreállítási app (Ez esetben a Site Recovery) olvassa el a pillanatkép adatainak és a folytatáshoz. | Alkalmazáskonzisztens pillanatképek készülnek, a megadott gyakorisága beállítás szerint. Ez a gyakoriság mindig kisebbnek kell lennie, mint a beállított helyreállítási pontok megőrzése. Például ha megőrzi a helyreállítási pontok használata az alapértelmezett beállítás 24 órás, kell beállítania a gyakorisága kisebb, mint 24 órával.<br/><br/>Ezek összetettebb és hosszabb időt vesz igénybe, mint az összeomlás-konzisztens pillanatképekkel.<br/><br/> A replikáció engedélyezése virtuális gépeken futó alkalmazások teljesítményét befolyásolja. 
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
@@ -116,8 +117,7 @@ Amikor engedélyezi egy Azure virtuális gép replikációját, a következők t
 4. A Site Recovery feldolgozza az adatokat a gyorsítótárban, és elküldi azokat a célként megadott tárfiók, vagy a replika felügyelt lemezeket.
 5. Az adatok feldolgozása után az összeomlás-konzisztens helyreállítási pontok öt percenként akkor jönnek létre. Alkalmazáskonzisztens helyreállítási pontokat a replikációs szabályzatban megadott beállítások alapján jönnek létre.
 
-
-   ![Replikációs folyamat, 2. lépés engedélyezése](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Replikációs folyamat, 2. lépés engedélyezése](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
 **Replikációs folyamat**
 
@@ -142,7 +142,7 @@ IP-címeket használó virtuális gépek kimenő kapcsolat szabályozásához, h
 
 #### <a name="source-region-rules"></a>Forrás régió szabályok
 
-**A szabály** |  **Részletek** | **Szolgáltatáscímke**
+**Rule** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek a forrásrégióban storage-fiókok | Tárolási. < régió-neve >.
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure Active Directory (Azure AD).<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új hálózati biztonsági csoport (NSG) szabályai.  | AzureActiveDirectory
@@ -150,7 +150,7 @@ Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés enged�
 
 #### <a name="target-region-rules"></a>Cél régió szabályok
 
-**A szabály** |  **Részletek** | **Szolgáltatáscímke**
+**Rule** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Engedélyezze, hogy a storage-fiókok a célrégióban megfelelnek tartományait. | Tárolási. < régió-neve >.
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure ad-hez.<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új NSG-szabályokat.  | AzureActiveDirectory

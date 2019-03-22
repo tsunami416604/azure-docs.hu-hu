@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/16/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b54b8f74df4b073b29ce05b11aa90ba53db7c09
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 01a1c1fef5dd2dabf99677d59126caf41e1f6885
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731723"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900607"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 
@@ -30,19 +30,19 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Az Azure-előfizetés használatával jelentkezzen be a [Add-AzAccount](/powershell/module/az.profile/add-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Az Azure-előfizetés használatával jelentkezzen be a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
-Add-AzAccount
+Connect-AzAccount
 ```
 
-Tekintse meg, hogy melyik előfizetéssel használja, futtassa [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Tekintse meg, hogy melyik előfizetéssel használja, futtassa [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzContext](/powershell/module/az.profile/set-azcontext).
+Ha szeretne egy másik előfizetést, mint az alapértelmezett, futtassa [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"

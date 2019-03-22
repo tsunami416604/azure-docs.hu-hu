@@ -12,12 +12,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d33fb24e08ea0a726f9f8e51eacf17fd22efaf9
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791137"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011720"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
 
@@ -76,23 +76,23 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. A **virtuális gép neve**, adjon meg egy nevet az új Linux rendszerű virtuális gép.
 1. Ezután írja be vagy válassza ki a következő értékeket:
-    * **Régió**: Válassza ki az Önnek megfelelő Azure-régióban.
-    * **Rendelkezésre állási beállítások**: Válassza ki a rendelkezésre állás és redundancia a legjobb a alkalmazásait és adatait.
-    * **Méretének módosítása**: Ezt a beállítást válassza ki a gép méretét, és ha ezzel elkészült, válassza ki a **kiválasztása**. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
+   * **Régió**: Válassza ki az Önnek megfelelő Azure-régióban.
+   * **Rendelkezésre állási beállítások**: Válassza ki a rendelkezésre állás és redundancia a legjobb a alkalmazásait és adatait.
+   * **Méretének módosítása**: Ezt a beállítást válassza ki a gép méretét, és ha ezzel elkészült, válassza ki a **kiválasztása**. A virtuális gépek méretével kapcsolatban további információt a [Linux rendszerű virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) ismertető cikkben talál.
 
-    ![Virtuális gép méretének kiválasztása](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![Virtuális gép méretének kiválasztása](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > Fejlesztési és tesztelési célokra, használhatja a Virtuálisgép-méretet **DS2** vagy újabb verziója. A teljesítményteszteléshez használjon **DS13** vagy nagyobb méretet.
 
-    * **Hitelesítési típus**: Válassza ki **nyilvános SSH-kulcs**.
+   * **Hitelesítési típus**: Válassza ki **nyilvános SSH-kulcs**.
 
-    > [!Note]
-    > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+     > [!Note]
+     > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
-    * **Felhasználónév**: Adja meg a rendszergazda a virtuális gép nevét.
-    * **Nyilvános SSH-kulcs**: Adja meg a nyilvános RSA-kulcsot.
-    * **Nyilvános bejövő portok**: Válassza a **lehetővé teszi a kiválasztott portok** , és válassza ki a **SSH (22)** a portot a **nyilvános bejövő portok kiválasztása** listája. Ebben a rövid útmutatóban az ebben a lépésben csatlakozhat, és az SQL Server konfigurálása az szükség. Ha távolról szeretne az SQL Serverhez kapcsolódni, válassza ki az **MS SQL (1433)** lehetőséget is a 1433-as port megnyitásához az interneten keresztüli kapcsolatokhoz.
+   * **Felhasználónév**: Adja meg a rendszergazda a virtuális gép nevét.
+   * **Nyilvános SSH-kulcs**: Adja meg a nyilvános RSA-kulcsot.
+   * **Nyilvános bejövő portok**: Válassza a **lehetővé teszi a kiválasztott portok** , és válassza ki a **SSH (22)** a portot a **nyilvános bejövő portok kiválasztása** listája. Ebben a rövid útmutatóban az ebben a lépésben csatlakozhat, és az SQL Server konfigurálása az szükség. Ha távolról szeretne az SQL Serverhez kapcsolódni, válassza ki az **MS SQL (1433)** lehetőséget is a 1433-as port megnyitásához az interneten keresztüli kapcsolatokhoz.
 
    ![Bejövő portok](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -120,7 +120,7 @@ A virtuális gép IP-címét az Azure Portalon találhatja meg.
 
 Ha Windows-ban futtatott, és nem rendelkezik bash, telepítse az SSH-ügyfelet, például a putty-kapcsolaton keresztül.
 
-1. [Töltse le és telepítse a PuTTY-t](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+1. [Töltse le és telepítse a PuTTY-t](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 1. Futtassa a PuTTY-t.
 

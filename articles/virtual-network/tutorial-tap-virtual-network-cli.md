@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 48ccbedd6e3a7da0ec487f27709a47f9364f7da3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188560"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Virtuális hálózati TAP használatával az Azure parancssori felület használata
 
@@ -28,7 +28,7 @@ Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pon
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Hozzon létre egy virtuális hálózati TAP-erőforrás
 
-Olvasási [Előfeltételek](virtual-network-tap-overview.md#prerequisites) egy virtuális hálózati TAP-erőforrás létrehozása előtt. A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy az Azure parancssori felület (CLI) futtatja a számítógépről. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület, nem igényel, az Azure CLI telepítéséhez a számítógépen. Jelentkezzen be az Azure-bA egy olyan fiókkal, amely rendelkezik a megfelelő [engedélyek](virtual-network-tap-overview.md#permissions). Ehhez a cikkhez az Azure CLI 2.0.46 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
+Olvasási [Előfeltételek](virtual-network-tap-overview.md#prerequisites) egy virtuális hálózati TAP-erőforrás létrehozása előtt. A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy az Azure parancssori felület (CLI) futtatja a számítógépről. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület, nem igényel, az Azure CLI telepítéséhez a számítógépen. Jelentkezzen be az Azure-bA egy olyan fiókkal, amely rendelkezik a megfelelő [engedélyek](virtual-network-tap-overview.md#permissions). Ehhez a cikkhez az Azure CLI 2.0.46 verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Virtuális hálózati TAP jelenleg bővítményeként érhető el. Futtatnia kell a bővítmény telepítéséhez `az extension add -n virtual-network-tap`. Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
 
 1. Kérje le egy változóba egy későbbi lépésben használt előfizetés azonosítója:
 

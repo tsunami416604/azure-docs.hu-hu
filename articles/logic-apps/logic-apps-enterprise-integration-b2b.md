@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074720"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack csomag B2B adatfogadás
 
@@ -47,11 +47,13 @@ Az AS2- és X12 használó B2B logikai alkalmazás létrehozása a következő l
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Adja hozzá a **törzs** bemeneteként használni kívánt. Ebben a példában válassza ki, amely elindítja a logikai alkalmazás a HTTP-kérelem törzse. Adjon meg egy kifejezést, amely a fejlécek, a bemeneti vagy a **FEJLÉCEK** mező:
+6. Adja hozzá a **törzs** bemeneteként használni kívánt. 
+   Ebben a példában válassza ki, amely elindítja a logikai alkalmazás a HTTP-kérelem törzse. Adjon meg egy kifejezést, amely a fejlécek, a bemeneti vagy a **FEJLÉCEK** mező:
 
     @triggerOutputs(["headers"])
 
-7. Adja hozzá a szükséges **fejlécek** az AS2, amely találhatja meg a HTTP-kérelemfejlécek. Ebben a példában válassza ki azt a logikai alkalmazás a HTTP-kérelem fejlécét.
+7. Adja hozzá a szükséges **fejlécek** az AS2, amely találhatja meg a HTTP-kérelemfejlécek. 
+   Ebben a példában válassza ki azt a logikai alkalmazás a HTTP-kérelem fejlécét.
 
 8. Most adja hozzá a dekódolási X12 üzenet műveletet. Válassza ki **művelet hozzáadása**.
 
@@ -65,12 +67,13 @@ Az AS2- és X12 használó B2B logikai alkalmazás létrehozása a következő l
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Most meg kell adnia a bemeneti ezt a műveletet. A bemeneti adatok az előző AS2 művelet kimenete.
+11. Most meg kell adnia a bemeneti ezt a műveletet. 
+    A bemeneti adatok az előző AS2 művelet kimenete.
 
     A tényleges üzenettartalom JSON-objektum és base64-kódolású, ezért meg kell adnia egy kifejezést a bemenetként. 
     Adja meg a következő kifejezésre a **X12 EGYBESIMÍTOTT fájl üzenet TO DEKÓDOLÁSI** beviteli mező:
     
-    @base64ToString(body('Decode_AS2_message')? ["AS2Message']? ["Content"])
+    @base64ToString(body('Decode_AS2_message')?['AS2Message']?['Content'])
 
     Most adja hozzá a data policies kapott, és a kimeneti JSON-objektum elemeinek X12 dekódolandó lépéseket. 
     Értesítse a partnert, hogy érkezett-e az adatok, küldhet vissza egy választ, amely tartalmazza az AS2 üzenet törlése értesítési (MDN) a HTTP-válasz művelethez.

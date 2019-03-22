@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c119869c47547fd5d91f6ee91fcd772ea5941f46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010949"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge-modul piactér lapján
 
 
-A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy részből áll: **áttekintése**, **Marketing összetevők**, **vezethet felügyeleti**, és **jogi**.
+A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy szakaszokból áll: **Áttekintés**, **Marketing-összetevők**, **felügyeleti vezethet**, és **jogi**.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -37,7 +37,7 @@ A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
 | **Cím**                 | Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en.  Legfeljebb 50 karakter hosszúságú. <!--ADD PICTURE IN ACTION-->|
-| **Összefoglalás**               | Az ajánlat rövid összefoglalása. A hosszabb 100 karakternél. <!--ADD PICTURE IN ACTION-->|
+| **összegzés**               | Az ajánlat rövid összefoglalása. A hosszabb 100 karakternél. <!--ADD PICTURE IN ACTION-->|
 | **Hosszú összegzése**          | Az ajánlat már összefoglaló (bár ez lehet ugyanaz, mint a **összefoglaló**).  Legfeljebb 256 karakter hosszúságú. <!--ADD PICTURE IN ACTION-->|
 | **Leírás**           | Az ajánlat leírása.  Legfeljebb 3000 karakter hosszúságú támogatja az egyszerű HTML-formázás.<br/> Tartalmaznia kell egy *hardverre vonatkozó minimális* bekezdés alján. Példa: <br/> <p><u>Minimális hardverkövetelmények:</u> Linux x64 és arm32 OS, 1 GB RAM, 500 MB-os tárhelyet</p>
 | **Marketing-azonosító**  | Egyedi URL-címet rendelni ehhez az ajánlathoz, jellemzően a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú lehet.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
@@ -78,7 +78,7 @@ A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
 
 ## <a name="marketing-artifacts"></a>Marketing-összetevők
 
-Ez a szakasz azt a következő alszakaszokat: **emblémák**, **képernyőkép**, és **videók**. 
+Ez a szakasz a következő alszakaszokat rendelkezik: **Emblémák**, **képernyőkép**, és **videók**. 
 
 >[!Note]
 >Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott.
@@ -104,7 +104,7 @@ Ez a szakasz azt a következő alszakaszokat: **emblémák**, **képernyőkép**
 
 ### <a name="logo-guidelines"></a>Emblémával kapcsolatos irányelvek
 
-<!-- It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 A Cloud Partner portálra feltöltött összes emblémák útmutatást követik:
@@ -160,7 +160,7 @@ Után az ajánlat közzététele sikeresen megtörtént, az érdeklődő kapcsol
 
 ## <a name="legal"></a>Jogi tudnivalók
 
-Ez a szakasz lehetővé teszi, hogy a két jogi dokumentumok, amelyek szükségesek az egyes ajánlatok biztosíthat: adatvédelmi irányelveket és a használati feltételeket.
+Ebben a szakaszban adja meg a két jogi dokumentumok, amelyek szükségesek az egyes ajánlatok teszi lehetővé: Adatvédelmi szabályzat és a használati feltételeket.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |

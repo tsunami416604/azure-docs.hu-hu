@@ -15,12 +15,12 @@ ms.date: 03/04/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 1115e11d6bf830afad3746eb41d6368cb89bdbf3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c3ea877e3271dcb5bea527d661e12827eb64fa0c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997423"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy előkészített adatelemzési megoldással az Azure és az Azure Stackben 
 
@@ -175,25 +175,25 @@ Hozzon létre egy új Azure Stack-függvény tiszta adatok áthelyezése az Azur
 
 ## <a name="create-a-blob-storage-triggered-function"></a>A blobtároló által aktivált függvény létrehozása
 
-1.  Bontsa ki a függvényalkalmazást, és válassza ki a **+** megjelenítő gombra **funkciók**.
+1. Bontsa ki a függvényalkalmazást, és válassza ki a **+** megjelenítő gombra **funkciók**.
 
-2.  A keresőmezőbe írja be a `blob` majd válassza ki a kívánt nyelvet és a **Blob eseményindító** sablont.
+2. A keresőmezőbe írja be a `blob` majd válassza ki a kívánt nyelvet és a **Blob eseményindító** sablont.
 
-  ![Válassza ki a blobtároló-eseményindító sablonját.](media/azure-stack-solution-staged-data-analytics/image10.png)
+   ![Válassza ki a blobtároló-eseményindító sablonját.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
-3.  Az alábbi táblázatban megadott beállításokkal:
+3. Az alábbi táblázatban megadott beállításokkal:
 
-    | Beállítás | Ajánlott érték | Leírás |
-    | ------- | ------- | ------- |
-    | Name (Név) | Egyedi a függvényalkalmazásban | A blob által aktivált függvény neve. |
-    | Útvonal | \<a fenti tárolási hely elérési útja > | A figyelt blobtárolóban található hely. A blob fájlneve a kötésben a name paraméter át. |
-    | Tárfiók kapcsolata | Függvény alkalmazás kapcsolat | A tárfiók kapcsolata a függvényalkalmazás által már használt használja, vagy hozzon létre egy újat. |
+   | Beállítás | Ajánlott érték | Leírás |
+   | ------- | ------- | ------- |
+   | Name (Név) | Egyedi a függvényalkalmazásban | A blob által aktivált függvény neve. |
+   | Útvonal | \<a fenti tárolási hely elérési útja > | A figyelt blobtárolóban található hely. A blob fájlneve a kötésben a name paraméter át. |
+   | Tárfiók kapcsolata | Függvény alkalmazás kapcsolat | A tárfiók kapcsolata a függvényalkalmazás által már használt használja, vagy hozzon létre egy újat. |
 
-    **Példa**
+   **Példa**
 
-    ![Hozza létre a blobtároló által aktivált függvényt.](media/azure-stack-solution-staged-data-analytics/image11.png)
+   ![Hozza létre a blobtároló által aktivált függvényt.](media/azure-stack-solution-staged-data-analytics/image11.png)
 
-4.  Válassza ki **létrehozás** a függvény létrehozásához.
+4. Válassza ki **létrehozás** a függvény létrehozásához.
 
 ### <a name="test-the-function"></a>A függvény tesztelése
 
@@ -253,21 +253,21 @@ A lépéseket és a egy másik tárolási fiók és a blob tároló létrehozás
 
 ## <a name="test-the-queue-triggered-function"></a>Teszt az üzenetsor által aktivált függvény
 
-1.  Az Azure Stack portálon keresse meg a függvényt. Bontsa ki a **naplók** a lap alján, és győződjön meg arról, a naplózási adatfolyam nincs leállítva.
+1. Az Azure Stack portálon keresse meg a függvényt. Bontsa ki a **naplók** a lap alján, és győződjön meg arról, a naplózási adatfolyam nincs leállítva.
 
-2.  Nyissa meg a Storage Explorert, és csatlakozzon, ez a szakasz elején létrehozott tárfiókot.
+2. Nyissa meg a Storage Explorert, és csatlakozzon, ez a szakasz elején létrehozott tárfiókot.
 
-3.  Bontsa ki a tárfiókot, **Blobtárolók**, és a blob korábban létrehozott. Válassza ki **feltöltése** , majd **fájlok feltöltése.**
+3. Bontsa ki a tárfiókot, **Blobtárolók**, és a blob korábban létrehozott. Válassza ki **feltöltése** , majd **fájlok feltöltése.**
 
-    ![Töltsön fel egy fájlt a blobtárolóba.](media/azure-stack-solution-staged-data-analytics/image12.png)
+   ![Töltsön fel egy fájlt a blobtárolóba.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
-4.  A fájlok feltöltése párbeszédpanelen válassza ki a fájlokat a mező. Válasszon egy fájlt a helyi számítógépen, például egy képfájlt, jelölje ki, és válassza ki **nyílt** , majd **feltöltése**.
+4. A fájlok feltöltése párbeszédpanelen válassza ki a fájlokat a mező. Válasszon egy fájlt a helyi számítógépen, például egy képfájlt, jelölje ki, és válassza ki **nyílt** , majd **feltöltése**.
 
-5.  Lépjen vissza a függvény naplóihoz, és ellenőrzése megtörtént a blob olvasása.
+5. Lépjen vissza a függvény naplóihoz, és ellenőrzése megtörtént a blob olvasása.
 
-  **Példa**
+   **Példa**
 
-    ![Tekintse meg a naplókban található üzeneteket.](media/azure-stack-solution-staged-data-analytics/image13.png)
+   ![Tekintse meg a naplókban található üzeneteket.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Biztonságos tárolása és használt megfelelő adatok
 

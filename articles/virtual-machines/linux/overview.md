@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208551"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008941"
 ---
 # <a name="azure-and-linux"></a>Az Azure és a Linux
 A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemzési, virtuálisgép-, adatbázis-, mobil-, hálózati, tárolási és webes szolgáltatások) egyre bővülő gyűjteménye&mdash;ideális a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
@@ -59,7 +59,7 @@ A megfelelő DevOps-kultúra megteremtéséhez minden infrastruktúrának kódol
 * [Azure-sablonok](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Az Azure bevezeti a [cloud-init](http://cloud-init.io/) támogatását a legtöbb Linux-disztribúcióban, amely támogatja azt.  A Canonical Ubuntu-alapú virtuális gépei jelenleg az üzembe helyezéskor alapértelmezés szerint engedélyezik a cloud-init eszközt.  A Red Hat RHEL, a CentOS és a Fedora támogatja a cloud-init eszközt, a Red Hat által karbantartott Azure-rendszerképeken azonban jelenleg nincs telepítve.  A cloud-init Red Hat termékcsaládba tartozó operációs rendszeren való használatához létre kell hoznia egy egyéni rendszerképet, amelyre telepítve van a cloud-init.
+Az Azure bevezeti a [cloud-init](https://cloud-init.io/) támogatását a legtöbb Linux-disztribúcióban, amely támogatja azt.  A Canonical Ubuntu-alapú virtuális gépei jelenleg az üzembe helyezéskor alapértelmezés szerint engedélyezik a cloud-init eszközt.  A Red Hat RHEL, a CentOS és a Fedora támogatja a cloud-init eszközt, a Red Hat által karbantartott Azure-rendszerképeken azonban jelenleg nincs telepítve.  A cloud-init Red Hat termékcsaládba tartozó operációs rendszeren való használatához létre kell hoznia egy egyéni rendszerképet, amelyre telepítve van a cloud-init.
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 

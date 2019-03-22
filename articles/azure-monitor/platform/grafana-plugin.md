@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: f592cfdba940b95a9935c6b68f3294233d9fbf15
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002270"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -77,9 +77,9 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
 
         > [!NOTE]
         > Bizonyos adatok forrása mezők neve eltérően a kapcsolódó Azure-beállítások:
-        >     * Bérlői azonosító az Azure címtár-azonosító
-        >     * Ügyfél-azonosító az Azure Active Directory-Alkalmazásazonosító
-        >     * Titkos Ügyfélkód az Azure Active Directory-alkalmazás kulcs értéke
+        > * Bérlői azonosító az Azure címtár-azonosító
+        > * Ügyfél-azonosító az Azure Active Directory-Alkalmazásazonosító
+        > * Titkos Ügyfélkód az Azure Active Directory-alkalmazás kulcs értéke
 
 5. Ha használja az Application Insights, az Application Insights API és az Alkalmazásazonosítót kíván gyűjteni az Application Insights-alapú is megadhatja. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító beolvasása](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
@@ -96,16 +96,16 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
     ![Grafana új gráf](./media/grafana-plugin/grafana-new-graph-dark.png)
 
 4. Válassza ki az Azure Monitor adatforrás konfigurálta.
-    * Gyűjtése az Azure Monitor - metrikák kiválasztása **Azure Monitor** a szolgáltatás legördülő listában. Választók mutatja be, ahol kiválaszthatja az erőforrások és -metrika figyelése ezen a diagramon listája. Virtuális gép adatainak begyűjtése, használja a névtér **Microsoft.Compute/VirtualMachines**. Miután kiválasztotta a virtuális gépek és a metrikák, indítsa el az adatok megtekintése az irányítópulton.
-    ![Az Azure Monitor Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Adatok gyűjtése az Azure Monitor, – adja meg, **Azure Log Analytics** a szolgáltatás legördülő listában. Válassza ki a munkaterületet, szeretné lekérdezni, és állítsa be a lekérdezés szövege. Másolhatja Itt bármilyen naplólekérdezés már van, vagy hozzon létre egy újat. Írja be a lekérdezést, mert IntelliSense jelennek meg, és javasolt az automatikus kiegészítés beállításai. Válassza ki a Vizualizáció típusát a **Time series** **tábla**, és a lekérdezés futtatásához.
+   * Gyűjtése az Azure Monitor - metrikák kiválasztása **Azure Monitor** a szolgáltatás legördülő listában. Választók mutatja be, ahol kiválaszthatja az erőforrások és -metrika figyelése ezen a diagramon listája. Virtuális gép adatainak begyűjtése, használja a névtér **Microsoft.Compute/VirtualMachines**. Miután kiválasztotta a virtuális gépek és a metrikák, indítsa el az adatok megtekintése az irányítópulton.
+     ![Az Azure Monitor Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Adatok gyűjtése az Azure Monitor, – adja meg, **Azure Log Analytics** a szolgáltatás legördülő listában. Válassza ki a munkaterületet, szeretné lekérdezni, és állítsa be a lekérdezés szövege. Másolhatja Itt bármilyen naplólekérdezés már van, vagy hozzon létre egy újat. Írja be a lekérdezést, mert IntelliSense jelennek meg, és javasolt az automatikus kiegészítés beállításai. Válassza ki a Vizualizáció típusát a **Time series** **tábla**, és a lekérdezés futtatásához.
     
-    > [!NOTE]
-    >
-    > A beépülő modul használatával a megadott alapértelmezett lekérdezés két makrók használja: "$__timeFilter() és $__interval. 
-    > Ezek a makrók engedélyezése a Grafana dinamikusan alapján számítja ki az időtartományt és időfelbontási szint, ha ráközelít a diagram része. Ezek a makrók eltávolíthatja, és használjon például egy téli idő szűrővel *TimeGenerated > ago(1h)*, de ez azt jelenti, hogy a graph lenne támogatja a nagyítási funkció.
+     > [!NOTE]
+     >
+     > A beépülő modul használatával a megadott alapértelmezett lekérdezés két makrók használja: "$__timeFilter() és $__interval. 
+     > Ezek a makrók engedélyezése a Grafana dinamikusan alapján számítja ki az időtartományt és időfelbontási szint, ha ráközelít a diagram része. Ezek a makrók eltávolíthatja, és használjon például egy téli idő szűrővel *TimeGenerated > ago(1h)*, de ez azt jelenti, hogy a graph lenne támogatja a nagyítási funkció.
     
-    ![Az Azure Log Analytics Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![Az Azure Log Analytics Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Következő egy könnyen áttekinthető irányítópult használatával két diagram. A bal oldali mutatja, a két virtuális gépet a Processzorhasználat (%). A diagram a jobb oldalon a tranzakciók az Azure Storage-fiókot, a tranzakciós API-típus szerinti bontásban jeleníti meg.
     ![Grafana két diagramok példa](media/grafana-plugin/grafana6.png)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af211710d6b1cce2b06999f9d15882b163dbf60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766377"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Business objektum-felhővel
 
@@ -106,12 +106,14 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Business objektum-felh�
     ![SAP Business objektum felhőalapú tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
@@ -178,7 +180,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -237,7 +239,7 @@ A felhasználói fiók kiépítése:
 
     d. Az a **megjelenítendő név** mezőbe írja be például a felhasználó teljes neve **Britta Simon**.
 
-    e. Az a **E-MAIL** mezőbe írja be például a felhasználó e-mail-címe **brittasimon@contoso.com**.
+    e. Az a **E-MAIL** mezőbe írja be például a felhasználó e-mail-címe **brittasimon\@contoso.com**.
 
     f. Az a **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, és válassza ki **OK**.
 

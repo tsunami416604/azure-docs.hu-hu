@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076887"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba
 
@@ -61,31 +61,31 @@ Az utolsó parancs futtatása után másolja ki és illessze be a kapcsolati szt
 
 Miután létrehozta a névteret és az üzenetsort, valamint beszerezte a szükséges hitelesítő adatokat, készen áll az üzenetek küldésére és fogadására. A kódot [ebben a GitHub-mintamappában](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) vizsgálhatja meg.
 
-2. Klónozás a [Service Bus GitHub-adattár](https://github.com/Azure/azure-service-bus/) a számítógépen a következő parancsot:
+1. Klónozás a [Service Bus GitHub-adattár](https://github.com/Azure/azure-service-bus/) a számítógépen a következő parancsot:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Módosítsa az aktuális könyvtárat a mintamappára, útvonal-elválasztóként pedig használjon perjelet:
+1. Módosítsa az aktuális könyvtárat a mintamappára, útvonal-elválasztóként pedig használjon perjelet:
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. Az alkalmazás létrehozásához adja ki az alábbi parancsot:
+1. Az alkalmazás létrehozásához adja ki az alábbi parancsot:
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. Futtassa a programot, és cserélje le a kapcsolati karakterláncot a korábban kimásolt érték után a következő parancs kiadásával:
+1. Futtassa a programot, és cserélje le a kapcsolati karakterláncot a korábban kimásolt érték után a következő parancs kiadásával:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. Figyelje meg 10 üzenet küldését az üzenetsorban. Az üzenetek rendezése nem garantált, de az üzeneteket küldi el, majd arra vonatkozik, és kapott, a hasznos adatok mellett látható:
+1. Figyelje meg 10 üzenet küldését az üzenetsorban. Az üzenetek rendezése nem garantált, de az üzeneteket küldi el, majd arra vonatkozik, és kapott, a hasznos adatok mellett látható:
 
     ```
     Message sending: Id = 0

@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860558"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
@@ -29,13 +28,12 @@ További információ a következő műveleteket:
 > [!div class="checklist"]
 > * A fejlesztési környezet beállítása.
 > * Az adatok vizsgálatát, és hozzáférést.
-> * Egy egyszerű logisztikai regressziós betanításához helyileg a népszerű scikit használatával – ismerje meg, gépi tanulási kódtár. 
-> * Egy távoli fürtön több modelleket taníthat be.
+> * Egy távoli fürtön egy egyszerű logisztikai regressziós modell betanításához.
 > * Tekintse át a képzési eredményeket, és regisztrálja a legjobb modellt.
 
 Megtudhatja, hogyan modell kiválasztása és hogyan telepítheti a [második rész a jelen oktatóanyag](tutorial-deploy-models-with-aml.md). 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 >[!NOTE]
 > Ebben a cikkben kód az Azure Machine Learning SDK verziója 1.0.8 lett tesztelve.

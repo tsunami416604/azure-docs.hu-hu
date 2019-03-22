@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985438"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964170"
 ---
 Minden virtuális hálózathoz pont – hely kapcsolattal csatlakozó ügyfélszámítógépen rendelkeznie kell telepített ügyféltanúsítvánnyal. Hozza létre a főtanúsítvány az, és telepítse az egyes ügyfélszámítógépekre. Ha nem telepít egy érvényes ügyféltanúsítványt, hitelesítés sikertelen lesz, amikor az ügyfél megpróbál csatlakozni a virtuális hálózathoz.
 
@@ -22,7 +22,7 @@ Létrehozhat egy egyedi tanúsítványt minden ügyfél számára, vagy használ
 
 - **Vállalati tanúsítvány:**
 
-  - Ha vállalati tanúsítványmegoldást használ, az ügyféltanúsítványokat a közös formátumban *name@yourdomain.com*. Ez a formátum helyett használja a *tartománynév\felhasználónév* formátumban.
+  - Ha vállalati tanúsítványmegoldást használ, az ügyféltanúsítványokat a közös formátumban *neve\@sajattartomany.com*. Ez a formátum helyett használja a *tartománynév\felhasználónév* formátumban.
   - Ellenőrizze, hogy egy felhasználó tanúsítványsablont, amelynek alapján az ügyféltanúsítvány *ügyfél-hitelesítés* az első elem, a felhasználók listájában szerepel. Ellenőrizze a tanúsítvány kattint, és megtekintés **kibővített kulcshasználat** a a **részletek** fülre.
 
 - **Önaláírt főtanúsítvány:** Lépésről lépésre betartsa a P2S-tanúsítványokkal alábbi cikk hajtsa végre az, hogy a létrehozott ügyféltanúsítványok lesznek kompatibilisek a P2S-kapcsolatokkal. Ezekben a cikkekben leírt lépéseket egy kompatibilis ügyféltanúsítvány létrehozása: 

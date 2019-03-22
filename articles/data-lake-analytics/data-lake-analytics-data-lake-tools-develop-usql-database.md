@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898797"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>A U-SQL database-projekt használata az Azure Data Lake U-SQL adatbázis fejlesztéséhez
 
@@ -100,7 +100,7 @@ Telepíthet egy U-SQL-adatbázis egy U-SQL database-projekt vagy egy .usqldbpack
 
 A U-SQL projekt hivatkozhat egy U-SQL database-projekt. A hivatkozás a két számítási van hatással:
 
-- *A Project build*: a hivatkozott adatbázis környezetek beállítása előtt a U-SQL-parancsfájlok. 
+- *A Project build*: A hivatkozott adatbázis környezetek beállítása előtt a U-SQL-parancsfájlok. 
 - *Helyi Futtatás ellen (egy helyi-projekt) fiók*: A hivatkozott adatbázis környezetben vannak telepítve (egy helyi-projekt) fiók U-SQL parancsfájl végrehajtása előtt. [További tudnivalók a helyi Futtatás és a különbség a között (a helyi-számítógép) és a (helyi-projekt) fiók Itt](data-lake-analytics-data-lake-tools-local-run.md).
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>A U-SQL-adatbázis hivatkozás hozzáadása
