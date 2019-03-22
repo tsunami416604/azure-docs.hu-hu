@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3cd34bf67b0d796af71036e7d14834a061803973
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2fecf300bb14132a2e02c81a8a0862adff6b46cc
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202758"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült .NET SDK használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -118,6 +118,5 @@ Linux-alapú HDInsight mutat be a következő korlátozások vonatkoznak:
 Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
 
 * [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie.md): Az Oozie-munkafolyamatokkal Sqoop műveletet használja.
-* [HDInsight használatával repülőjáratok késési adatainak elemzése](../hdinsight-analyze-flight-delay-data.md): Repülőjáratok késési adatainak elemzése az Apache Hive használatával, és a Sqoop használatával egy Azure SQL database-adatok exportálása.
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): Keresse meg a HDInsight vagy Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
 

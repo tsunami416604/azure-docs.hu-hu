@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: aa3f2bc23b731f1e2c02d84edd6079debfbae134
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727263"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088043"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -158,12 +158,12 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 * Storage Explorer keresztül Blob adatok eléréséhez most már használhatja [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Ha bejelentkezett, és a Storage Explorer nem tudja lekérni a kulcsokat a tárfiók, majd OAuth-token használható hitelesítést, amikor interakció adataival.
 * Storage Explorer mostantól támogatja az ADLS Gen2 Storage-fiókok. Amikor a Storage Explorer észleli a hierarchikus névtér engedélyezve van a Storage-fiók, akkor lesz a tárfiók neve melletti lásd a "(ADLS-Preview Gen2)". Storage Explorer viszont észleli a hierarchikus névtér engedélyezve van, amikor bejelentkezett-e, vagy ha a Tárfiók nevére és kulcsára. ADLS Gen2-tárfiókok esetén használhatja a Storage Explorerben:
-    * Hozzon létre és tárolók törlése
-    * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
-    * Megtekintheti, és keresse meg az adatok a tárolók
-    * Új mappa létrehozása
-    * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
-    * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
+  * Hozzon létre és tárolók törlése
+  * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
+  * Megtekintheti, és keresse meg az adatok a tárolók
+  * Új mappa létrehozása
+  * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
+  * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
     
     Egyéb tipikus Blob szolgáltatások, például a helyreállítható törlés és a pillanatfelvételeket nem jelenleg érhető el. Engedélyek kezelése is csak akkor használható, amikor bejelentkezett. Ezenkívül az ADLS Gen2 Storage-fiók használatakor Storage Explorer fogja használni az AzCopy az összes feltöltések és a letöltéseket és a név és kulcs hitelesítő adatai a művelet Ha elérhető alapértelmezett.
 * Erős felhasználói visszajelzéseket, miután break lease ismét segítségével egyszerre több blobok megáll bérleteket.
@@ -227,12 +227,12 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 * Storage Explorer keresztül Blob adatok eléréséhez most már használhatja [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Ha bejelentkezett, és a Storage Explorer nem tudja lekérni a kulcsokat a tárfiók, majd OAuth-token használható hitelesítést, amikor interakció adataival.
 * Storage Explorer mostantól támogatja az ADLS Gen2 Storage-fiókok. Amikor a Storage Explorer észleli a hierarchikus névtér engedélyezve van a Storage-fiók, akkor lesz a tárfiók neve melletti lásd a "(ADLS-Preview Gen2)". Storage Explorer viszont észleli a hierarchikus névtér engedélyezve van, amikor bejelentkezett-e, vagy ha a Tárfiók nevére és kulcsára. ADLS Gen2-tárfiókok esetén használhatja a Storage Explorerben:
-    * Hozzon létre és tárolók törlése
-    * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
-    * Megtekintheti, és keresse meg az adatok a tárolók
-    * Új mappa létrehozása
-    * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
-    * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
+  * Hozzon létre és tárolók törlése
+  * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
+  * Megtekintheti, és keresse meg az adatok a tárolók
+  * Új mappa létrehozása
+  * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
+  * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
     
     Egyéb tipikus Blob szolgáltatások, például a helyreállítható törlés és a pillanatfelvételeket nem jelenleg érhető el. Engedélyek kezelése is csak akkor használható, amikor bejelentkezett. Ezenkívül az ADLS Gen2 Storage-fiók használatakor Storage Explorer fogja használni az AzCopy az összes feltöltések és a letöltéseket és a név és kulcs hitelesítő adatai a művelet Ha elérhető alapértelmezett.
 * Erős felhasználói visszajelzéseket, miután break lease ismét segítségével egyszerre több blobok megáll bérleteket.
@@ -282,12 +282,12 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 * Storage Explorer keresztül Blob adatok eléréséhez most már használhatja [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409). Ha bejelentkezett, és a Storage Explorer nem tudja lekérni a kulcsokat a tárfiók, majd OAuth-token használható hitelesítést, amikor interakció adataival.
 * Storage Explorer mostantól támogatja az ADLS Gen2 Storage-fiókok. Amikor a Storage Explorer észleli a hierarchikus névtér engedélyezve van a Storage-fiók, akkor lesz a tárfiók neve melletti lásd a "(ADLS-Preview Gen2)". Storage Explorer viszont észleli a hierarchikus névtér engedélyezve van, amikor bejelentkezett-e, vagy ha a Tárfiók nevére és kulcsára. ADLS Gen2-tárfiókok esetén használhatja a Storage Explorerben:
-    * Hozzon létre és tárolók törlése
-    * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
-    * Megtekintheti, és keresse meg az adatok a tárolók
-    * Új mappa létrehozása
-    * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
-    * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
+  * Hozzon létre és tárolók törlése
+  * Tároló tulajdonságai és az engedélyek (bal oldal) kezelése
+  * Megtekintheti, és keresse meg az adatok a tárolók
+  * Új mappa létrehozása
+  * Feltöltése, letöltése, átnevezése és törlése a fájlok és mappák
+  * Fájlok és mappák tulajdonságait és a (jobb oldalán) engedélyek kezelése.
     
     Egyéb tipikus Blob szolgáltatások, például a helyreállítható törlés és a pillanatfelvételeket nem jelenleg érhető el. Engedélyek kezelése is csak akkor használható, amikor bejelentkezett. Ezenkívül az ADLS Gen2 Storage-fiók használatakor Storage Explorer fogja használni az AzCopy az összes feltöltések és a letöltéseket és a név és kulcs hitelesítő adatai a művelet Ha elérhető alapértelmezett.
 * Erős felhasználói visszajelzéseket, miután break lease ismét segítségével egyszerre több blobok megáll bérleteket.

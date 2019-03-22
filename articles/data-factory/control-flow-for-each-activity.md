@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856944"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092004"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach tevékenység az Azure Data Factoryban
 A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -71,8 +71,8 @@ A cikk későbbi részében tulajdonságait ismerteti. Az elemek tulajdonság a 
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | A for-each tevékenység neve. | Karakterlánc | Igen
-type | Meg kell **ForEach** | Karakterlánc | Igen
+név | A for-each tevékenység neve. | String | Igen
+type | Meg kell **ForEach** | String | Igen
 isSequential | Itt adhatja meg, akár a hurok egymás után vagy a párhuzamos végrehajtja.  Legfeljebb 20 ciklus ismétléseinek is végrehajtható egyszerre párhuzamosan). Például, ha rendelkezik egy ForEach tevékenység léptetés keresztül egy másolási tevékenységgel ellátott 10 különböző forrás és fogadó adatkészleteit a **isSequential** értéke HAMIS, minden példány tevékenységében egyszerre. Alapértelmezett érték a False. <br/><br/> Ha "isSequential" hamis értékre van állítva, győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatását. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések elkerüléséhez. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakaszban. | Logikai | Nem. Alapértelmezett érték a False.
 batchCount | Kötegek száma való párhuzamos végrehajtás száma (ha isSequential hamis értékre van állítva) használható. | Egész szám (legfeljebb 50) | Nem. Alapértelmezett érték 20.
 Elemek | Egy kifejezés, amely megismételhető, egy JSON-tömböt ad vissza. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
@@ -474,7 +474,7 @@ Több tevékenység ciklustevékenység lehetséges (például: másolás és a 
 
 ## <a name="aggregating-outputs"></a>Kimenetek összesítése
 
-Az összesített kimeneteinek __foreach__ tevékenység, kérjük vételéhez _Variable_s és _változó hozzáfűzése_ tevékenység.
+Az összesített kimeneteinek __foreach__ tevékenység vételéhez kérjük _változók_ és _változó hozzáfűzése_ tevékenység.
 
 Első lépésként deklaráljon egy `array` _változó_ a folyamat. Ezt követően meghívása _változó hozzáfűzése_ belül minden egyes tevékenység __foreach__ ciklus. Ezt követően lehet lekérdezni az összesítést a tömb.
 

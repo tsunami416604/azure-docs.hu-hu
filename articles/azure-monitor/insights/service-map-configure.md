@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 65aa561b01fc4950eb007077ba3613e96ccdcacc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26da504188a9060dbbb35330dbd8604bf5fe5e1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763866"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995127"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -42,6 +42,7 @@ A következő szakasz a függőségi ügynököt Windows támogatott operációs
 >
 
 ### <a name="windows-server"></a>Windows Server
+- Windows Server 2019
 - A Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -89,7 +90,7 @@ A következő szakasz a támogatott operációs rendszerek listázása a függő
 
 | Operációs rendszer verziója | Kernel verziója |
 |:--|:--|
-| Ubuntu 18.04 | kernel 4.15. * |
+| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
 | Ubuntu 16.04.3 | kernel 4.15. * |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |

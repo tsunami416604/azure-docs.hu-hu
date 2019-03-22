@@ -11,12 +11,12 @@ ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 tags: connectors
 ms.topic: article
 ms.date: 01/08/2019
-ms.openlocfilehash: a1f89ca6e9dc2d05180df14ff0f4dc52729a7e03
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: eb22539d1f433e396935f82e4cb3786d5699d21a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083954"
 ---
 # <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Hozzon létre és ismétlődő feladatok és a munkafolyamatok futtatásához az Azure Logic Apps
 
@@ -95,12 +95,12 @@ A logikai alkalmazás elindításához és a jövőben csak egyetlen alkalommal 
 
 Ezeket a tulajdonságokat az ismétlődési eseményindító konfigurálhatja.
 
-| Name (Név) | Szükséges | Tulajdonság neve | Típus | Leírás | 
+| Name (Név) | Szükséges | Tulajdonság neve | Typo | Leírás | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Gyakoriság** | Igen | frequency | Karakterlánc | Az időegység, az Ismétlődés: **Második**, **perc**, **óra**, **nap**, **hét**, vagy **hónap** | 
+| **Gyakoriság** | Igen | frequency | String | Az időegység, az Ismétlődés: **Második**, **perc**, **óra**, **nap**, **hét**, vagy **hónap** | 
 | **Intervallum** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy milyen gyakran a munkafolyamat futtatása gyakorisága alapján. <p>Az alapértelmezett időköz: 1. Az alábbiakban a minimális és maximális időközönként: <p>– Hónap: 1 – 16 hónap </br>– Nap: 1-500 nap </br>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például ha a időköz 6, és a gyakoriság "Month", akkor az ismétlődés nem minden hatodik hónapban. | 
-| **Időzóna** | Nem | timeZone | Karakterlánc | Csak amikor Ön megadja a kezdési időt, mert ez az eseményindító nem fogadja el érvényes [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az időzónát, amely a alkalmazni szeretné. | 
-| **Kezdési idő** | Nem | startTime | Karakterlánc | Adja meg a kezdési időt a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-DDThh:mm:ssZ, ha nem adja meg a időzóna <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, majd adja meg "2017-09-18T14:00:00", és válassza ki az időzónát, például a csendes-óceáni idő. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** Hajtsa végre a kezdő időpont a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Ne válassza ki az időzónát, ha hozzá kell adnia a levél "Z", a végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezések esetében a kezdési időpont az első előfordulás a összetett ütemezéseknél az eseményindító nem indul el minden korábban, a kezdési időpontnál. [*Mik azok a módon, hogy a kezdő dátum és idő használható?*](#start-time) | 
+| **Időzóna** | Nem | timeZone | String | Csak amikor Ön megadja a kezdési időt, mert ez az eseményindító nem fogadja el érvényes [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az időzónát, amely a alkalmazni szeretné. | 
+| **Kezdési idő** | Nem | startTime | String | Adja meg a kezdési időt a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-DDThh:mm:ssZ, ha nem adja meg a időzóna <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, majd adja meg "2017-09-18T14:00:00", és válassza ki az időzónát, például a csendes-óceáni idő. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** Hajtsa végre a kezdő időpont a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Ne válassza ki az időzónát, ha hozzá kell adnia a levél "Z", a végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezések esetében a kezdési időpont az első előfordulás a összetett ütemezéseknél az eseményindító nem indul el minden korábban, a kezdési időpontnál. [*Mik azok a módon, hogy a kezdő dátum és idő használható?*](#start-time) | 
 | **Ezeken a napokon** | Nem | weekDays | Karakterláncot vagy karakterlánc-tömbben | Ha "Week", ha a munkafolyamatot futtatni kívánt egy vagy több napot választhat: **Hétfő**, **kedd**, **szerda**, **csütörtök**, **péntek**, **szombat**, és **Vasárnap** | 
 | **Ezekben az órákban** | Nem | hours | Egész szám vagy az egész számok tömbje | Ha "Day" vagy "Week", választhat egy vagy több egész számok 0 és 23 legyen az óra, a nap, amikor a munkafolyamatot futtatni szeretné. <p>Például ha megadja a "10", "12" és "14", kap, az óra együtt 2 óra, 10 Órakor, 12 PM. | 
 | **Ezekben a percekben** | Nem | minutes | Egész szám vagy az egész számok tömbje | Ha "Day" vagy "Week", választhat egy vagy több egész számok 0 és 59 közötti legyen a perc, az óra, ha a munkafolyamatot futtatni szeretné. <p>Például "30" megadhatja a percenkénti be van jelölve, és megjelenik az előző példa a nap, óra, 10:30-kor, 12:30 = 1997031213, és 2:30-kor. | 
@@ -141,8 +141,8 @@ Ezeket a tulajdonságokat az ismétlődési eseményindító konfigurálhatja.
 
 <a name="run-once"></a>
 
-**KÉRDÉS:** Mi történik, ha szeretnék futtatni egy logikai alkalmazást a későbbiekben csak egyszer? </br>
-**VÁLASZ:** A logikai alkalmazás elindításához, és futtassa egyszer ismétlődés nélkül, használhatja a **Scheduler: Egyszeri futtatás feladatok** sablont. Új logikai alkalmazás létrehozása után, de a Logic Apps Designerben a megnyitása előtt a **sablonok** szakaszban, az a **kategória** listáról válassza ki **ütemezés**, majd válassza ki a sablon:
+**K:** Mi történik, ha szeretnék futtatni egy logikai alkalmazást a későbbiekben csak egyszer? </br>
+**V:** A logikai alkalmazás elindításához, és futtassa egyszer ismétlődés nélkül, használhatja a **Scheduler: Egyszeri futtatás feladatok** sablont. Új logikai alkalmazás létrehozása után, de a Logic Apps Designerben a megnyitása előtt a **sablonok** szakaszban, az a **kategória** listáról válassza ki **ütemezés**, majd válassza ki a sablon:
 
 ![Válassza "a Scheduler: Feladatok futtatása után"sablon](./media/connectors-native-recurrence/choose-run-once-template.png)
 
@@ -150,8 +150,8 @@ Vagy egy üres logikaialkalmazás-sablon használata, indítsa el a logikai alka
 
 <a name="example-recurrences"></a>
 
-**KÉRDÉS:** Mik a többi példában ismétlődésütemezésekre? </br>
-**VÁLASZ:** Az alábbiakban további példák:
+**K:** Mik a többi példában ismétlődésütemezésekre? </br>
+**V:** Az alábbiakban további példák:
 
 | Ismétlődés | Intervallum | Gyakoriság | Kezdő időpont | E napokon | Órák | Percek | Megjegyzés |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
@@ -180,8 +180,8 @@ Vagy egy üres logikaialkalmazás-sablon használata, indítsa el a logikai alka
 
 <a name="start-time"></a>
 
-**KÉRDÉS:** Mik azok a módon, hogy a kezdő dátum és idő használható? </br>
-**VÁLASZ:** Íme néhány a minták azt mutatják be, hogy miként szabályozható a kezdő dátum és idő ismétlődési, és hogyan a Logic Apps-motor hajtja végre ezek ismétlődések:
+**K:** Mik azok a módon, hogy a kezdő dátum és idő használható? </br>
+**V:** Íme néhány a minták azt mutatják be, hogy miként szabályozható a kezdő dátum és idő ismétlődési, és hogyan a Logic Apps-motor hajtja végre ezek ismétlődések:
 
 | Kezdő időpont | Ismétlődés ütemezés nélkül | Ismétlődés ütemezéssel | 
 | ---------- | --------------------------- | ------------------------ | 
@@ -202,7 +202,7 @@ Ebben a forgatókönyvben a futtatási idejének alapján a kezdési időpont al
 | Kezdő időpont | Első futtatás ideje | A jövőben futtatási idejének | 
 | ---------- | ------------ | ---------- | 
 | 2017-09 -**07** , 2:00-kor | 2017-09 -**09** , 2:00-kor | 2017-09 -**11** , 2:00-kor </br>2017-09 -**13** , 2:00-kor </br>2017-09 -**15** , 2:00-kor </br>és így tovább...
-||||| 
+||||
 
 Tehát ebben a forgatókönyvben függetlenül attól, hogy milyen a múltban, adja meg a kezdési idő, például 2017-09 -**05** 2:00-kor, vagy 2017-09 -**01** 2:00 Órakor, az első futtassa a következő alkalommal ugyanaz.
 

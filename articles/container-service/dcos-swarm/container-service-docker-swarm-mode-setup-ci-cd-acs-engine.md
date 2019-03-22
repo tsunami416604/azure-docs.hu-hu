@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: a2ecc2b0b8bfcf65d2ba566b8524a0c37c89ab78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980550"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079094"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(ELAVULT) Az ACS-motor és a Docker Swarm módú Azure DevOps használatával üzembe helyezhető egy többtárolós alkalmazást az Azure Container Service a teljes CI/CD-folyamat
 
@@ -163,21 +163,21 @@ Szüksége lesz az egyes rendszerképek, egy a rendszerkép létrehozásához, �
 
    ![Az Azure DevOps - parancssori feladat hozzáadása](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. Egy parancssori feladatot, amely egy bash-szkript használ a *RegistryURL* a docker-compose.yml fájl RegistryURL változóval előfordulás. 
+   1. Egy parancssori feladatot, amely egy bash-szkript használ a *RegistryURL* a docker-compose.yml fájl RegistryURL változóval előfordulás. 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Az Azure DevOps - frissítés összeállítás fájlt a beállításjegyzék URL-címe](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Az Azure DevOps - frissítés összeállítás fájlt a beállításjegyzék URL-címe](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. Egy parancssori feladatot, amely egy bash-szkript használ a *AgentURL* a docker-compose.yml fájl AgentURL változóval előfordulás.
+   2. Egy parancssori feladatot, amely egy bash-szkript használ a *AgentURL* a docker-compose.yml fájl AgentURL változóval előfordulás.
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. Ez a feladat csökken, a buildösszetevőt a frissített Compose-fájlt, így használhatók a kiadásban. Részleteket a következő képernyő jelenik meg.
+      1. Ez a feladat csökken, a buildösszetevőt a frissített Compose-fájlt, így használhatók a kiadásban. Részleteket a következő képernyő jelenik meg.
 
-         ![Azure DevOps - Publish Artifact](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Azure DevOps - Publish Artifact](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Azure DevOps - Publish Compose file](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Azure DevOps - Publish Compose file](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. Kattintson a **várólistára & mentése** a buildelési folyamat teszteléséhez.
 
@@ -187,7 +187,7 @@ Szüksége lesz az egyes rendszerképek, egy a rendszerkép létrehozásához, �
 
 6. Ha a **összeállítása** megfelelő, tekintse meg ezt a képernyőt kell:
 
-  ![Az Azure DevOps - Build sikeres volt](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Az Azure DevOps - Build sikeres volt](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>3. lépés: A kibocsátási folyamat létrehozása
 
@@ -235,14 +235,14 @@ A kiadási munkafolyamat két feladatot a hozzáadott tevődik össze.
 
     A parancsot a fő végrehajtása használja a Docker parancssori felületén és a Docker-Compose CLI a következő feladatokat végezheti el:
 
-    - Jelentkezzen be az Azure container registrybe (a definiált három hozhat létre változókat használ a **változók** lap)
-    - Adja meg a **DOCKER_HOST** változó dolgozhat a Swarm-végponthoz (: 2375-ös)
-    - Keresse meg a *üzembe helyezése* , amely az előző biztonságos másolási tevékenység által létrehozott és a docker-compose.yml fájlt tartalmazó mappa 
-    - Hajtsa végre `docker stack deploy` parancsokat, amelyek az új rendszerképeket és a tárolók létrehozásához.
+   - Jelentkezzen be az Azure container registrybe (a definiált három hozhat létre változókat használ a **változók** lap)
+   - Adja meg a **DOCKER_HOST** változó dolgozhat a Swarm-végponthoz (: 2375-ös)
+   - Keresse meg a *üzembe helyezése* , amely az előző biztonságos másolási tevékenység által létrehozott és a docker-compose.yml fájlt tartalmazó mappa 
+   - Hajtsa végre `docker stack deploy` parancsokat, amelyek az új rendszerképeket és a tárolók létrehozásához.
 
-    >[!IMPORTANT]
-    > Ahogyan az az előző képernyőre, hagyja a **STDERR-en sikertelen** jelölőnégyzet nincs bejelölve. Ez a beállítás lehetővé teszi számunkra, hogy végezze el a kibocsátási folyamat miatt `docker-compose` több diagnosztikai üzeneteket jelenít meg például tárolók leállítása vagy törlése, a standard hibakimenet. Jelölje be a jelölőnégyzetet, ha az Azure DevOps-jelentések, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
-    >
+     >[!IMPORTANT]
+     > Ahogyan az az előző képernyőre, hagyja a **STDERR-en sikertelen** jelölőnégyzet nincs bejelölve. Ez a beállítás lehetővé teszi számunkra, hogy végezze el a kibocsátási folyamat miatt `docker-compose` több diagnosztikai üzeneteket jelenít meg például tárolók leállítása vagy törlése, a standard hibakimenet. Jelölje be a jelölőnégyzetet, ha az Azure DevOps-jelentések, hogy a kiadás során hibák jelentkeztek akkor is, ha minden megfelelően működik.
+     >
 3. Mentse az új kiadási folyamatot.
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>4. lépés: A CI/CD-folyamat tesztelése

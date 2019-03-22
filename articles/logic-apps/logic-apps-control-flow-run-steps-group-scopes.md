@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080454"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
 
@@ -89,7 +89,8 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
       | **Átvitel dátuma-típusú típusa** | None | Csak a tranzit módra vonatkozik. | 
       ||||  
 
-1. [Feltétel hozzáadása](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy a forgalom a jelenlegi utazási idő meghaladja-e adott ideje. Ebben a példában az alábbi lépéseket követve:
+1. [Feltétel hozzáadása](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy a forgalom a jelenlegi utazási idő meghaladja-e adott ideje. 
+   Ebben a példában az alábbi lépéseket követve:
 
    1. Nevezze át a feltételt a következő leírással: **Ha a forgalom idő több, mint a megadott időtartam**
 
@@ -105,7 +106,8 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
       ![Befejezett feltétel](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. Az a **ha igaz** ágban, adjon hozzá egy "e-mail küldése" műveletet az e-mail-szolgáltatóhoz. Állítsa be ezt a műveletet a következő kép alatti lépéseket követve:
+1. Az a **ha igaz** ágban, adjon hozzá egy "e-mail küldése" műveletet az e-mail-szolgáltatóhoz. 
+   Állítsa be ezt a műveletet a következő kép alatti lépéseket követve:
 
    ![Adja hozzá a "E-mail küldése" művelet "Ha true" ág](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
@@ -124,7 +126,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
    1. A dinamikus tartalmak listájában válassza a **Kifejezés** lehetőséget.
 
    1. Keresse meg és válassza a **div()** függvény. 
-   Vigye az egérmutatót az a függvény zárójelek.
+      Vigye az egérmutatót az a függvény zárójelek.
 
    1. Bár a kurzort a függvény zárójelek között van, válassza ki **dinamikus tartalom** , hogy a dinamikus tartalmak listája jelenik meg. 
    
@@ -144,11 +146,11 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
    1. Ha elkészült, válassza ki a **OK**.
 
-  1. Oldja fel a kifejezés, miután adja hozzá ezt a szöveget egy vezető terület: ``` minutes```
+   1. Oldja fel a kifejezés, miután adja hozzá ezt a szöveget egy vezető terület: ``` minutes```
   
-     A **törzs** mező a következőhöz hasonló ebben a példában:
+       A **törzs** mező a következőhöz hasonló ebben a példában:
 
-     ![Befejezett "Törzs" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![Befejezett "Törzs" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
 1. Mentse a logikai alkalmazást.
 

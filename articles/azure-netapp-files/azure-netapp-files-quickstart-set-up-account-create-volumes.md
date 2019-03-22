@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 76c1543f5d9979d46b303f12c495dcaa403cef1d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589061"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078074"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Az Azure NetApp Files beállítása és kötet létrehozása 
 
@@ -56,14 +56,14 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
      ![NetApp új fiók létrehozása](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
 3. Az új NetApp ablakról adja meg a következő információkat: 
-    1. Adja meg **myaccount1** a fiók neve. 
-    2. Válassza ki előfizetését.
-    3. Válassza ki **új létrehozása** új erőforráscsoport létrehozásához. Adja meg **myRG1** az erőforráscsoport neveként. Kattintson az **OK** gombra. 
-    4. Válassza ki a fiók helye.  
+   1. Adja meg **myaccount1** a fiók neve. 
+   2. Válassza ki előfizetését.
+   3. Válassza ki **új létrehozása** új erőforráscsoport létrehozásához. Adja meg **myRG1** az erőforráscsoport neveként. Kattintson az **OK** gombra. 
+   4. Válassza ki a fiók helye.  
 
-    ![Új NetApp fiókokat felsoroló ablakról](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Új NetApp fiókokat felsoroló ablakról](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
 
-    ![Erőforrás-csoport ablak](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
+      ![Erőforrás-csoport ablak](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
 4. Kattintson a **létrehozás** NetApp új fiók létrehozásához.
 
@@ -99,22 +99,22 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
     ![Kattintson a kötetek hozzáadása](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
 
 3. A létrehozását egy kötet ablakot adja meg a kötet adatait: 
-    1. Adja meg **myvol1** a kötet neveként. 
-    2. Adja meg **myfilepath1** , a fájl elérési útját az exportálási útvonal a kötet létrehozásához használt.
-    3. Válassza ki a kapacitás-készletet (**mypool1**).
-    4. Használja az alapértelmezett érték a kvótát. 
-    5. Kattintson a virtuális hálózat **új létrehozása** hozhat létre egy új Azure virtuális hálózat (Vnet).  Ezután adja meg a következő információkat:
-        * Adja meg **myvnet1** a virtuális hálózat neveként.
-        * Adjon meg egy címteret, például 10.7.0.0/16.
-        * Adja meg **myANFsubnet** alhálózati nevet.
-        * Adja meg az alhálózat címtartományának, például 10.7.0.0/24.
-        * Válassza ki **Microsoft.NetApp/volumes** alhálózati delegáláshoz.
-        * Kattintson a **OK** a virtuális hálózat létrehozásához.
-    6. Része az alhálózatnak, válassza ki az újonnan létrehozott virtuális hálózat (**myvnet1**) egy delegált alhálózata.
+   1. Adja meg **myvol1** a kötet neveként. 
+   2. Adja meg **myfilepath1** , a fájl elérési útját az exportálási útvonal a kötet létrehozásához használt.
+   3. Válassza ki a kapacitás-készletet (**mypool1**).
+   4. Használja az alapértelmezett érték a kvótát. 
+   5. Kattintson a virtuális hálózat **új létrehozása** hozhat létre egy új Azure virtuális hálózat (Vnet).  Ezután adja meg a következő információkat:
+       * Adja meg **myvnet1** a virtuális hálózat neveként.
+       * Adjon meg egy címteret, például 10.7.0.0/16.
+       * Adja meg **myANFsubnet** alhálózati nevet.
+       * Adja meg az alhálózat címtartományának, például 10.7.0.0/24.
+       * Válassza ki **Microsoft.NetApp/volumes** alhálózati delegáláshoz.
+       * Kattintson a **OK** a virtuális hálózat létrehozásához.
+   6. Része az alhálózatnak, válassza ki az újonnan létrehozott virtuális hálózat (**myvnet1**) egy delegált alhálózata.
 
-    ![Hozzon létre egy kötetet ablak](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
+      ![Hozzon létre egy kötetet ablak](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
 
-    ![Virtuális hálózat időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Virtuális hálózat időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
 4. Kattintson az **Áttekintés + létrehozás** elemre.
 

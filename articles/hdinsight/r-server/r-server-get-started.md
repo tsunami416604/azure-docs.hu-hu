@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: dce345c39918e7471531710051797c848a3c7cde
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087584"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Az ML-szolgáltatások használatának első lépései az Azure HDInsightban
 
@@ -79,16 +79,16 @@ Ha úgy döntött, hogy telepíti az RStudio Server Community Edition kiadást a
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **2. lehetőség** – az Azure Portalon.
-A portálról:
+  A portálról:
   1. Válassza ki **minden szolgáltatás** a bal oldali menüből.
   2. A **ANALYTICS**válassza **HDInsight-fürtök**.
   3. Válassza ki a fürt nevét, a **HDInsight-fürtök** lapot.
   4. A **Machine Learning-szolgáltatások irányítópultok**válassza **R Studio server**. 
 
-    ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > A használt módszertől függetlenül, az első bejelentkezéskor kétszer kell elvégeznie a hitelesítést.  Az első hitelesítési kérésnél adja meg a *fürt rendszergazdai felhasználói azonosítóját* és *jelszavát*. A második hitelesítési kérésnél adja meg az *SSH felhasználói azonosítót* és *jelszót*. Későbbi napló-modulok csak az SSH hitelesítő adatok szükségesek.
+     > [!IMPORTANT]  
+     > A használt módszertől függetlenül, az első bejelentkezéskor kétszer kell elvégeznie a hitelesítést.  Az első hitelesítési kérésnél adja meg a *fürt rendszergazdai felhasználói azonosítóját* és *jelszavát*. A második hitelesítési kérésnél adja meg az *SSH felhasználói azonosítót* és *jelszót*. Későbbi napló-modulok csak az SSH hitelesítő adatok szükségesek.
 
 A csatlakozást követően a képernyőnek a következőhöz hasonlóan kell kinéznie:
 

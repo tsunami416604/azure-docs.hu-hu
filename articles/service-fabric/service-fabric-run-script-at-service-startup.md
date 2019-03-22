@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838442"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 Végrehajtható egy Service Fabric-szolgáltatás indítása előtt lehet néhány konfigurációs vagy a telepítő munkahelyi futtatásához szükséges.  Például a környezeti változók konfigurálása. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatásjegyzékben a szolgáltatás indítása végrehajtható a szolgáltatást. Az a szolgáltatásbeállítás belépési pontjának módosíthatja, hogy melyik fiók RunAs szabályzat konfigurálásával a végrehajtható telepítő alatt fut.  Egy külön szolgáltatásbeállítás belépési pontjának lehetővé teszi magas szintű jogosultságokat igénylő konfigurációs egy rövid ideig futnak, így a végrehajtható szolgáltatásgazda hosszabb ideig magas szintű jogosultságokkal rendelkező futtatásához nem szükséges.
@@ -34,8 +34,8 @@ Az alábbiakban egy egyszerű szolgáltatás jegyzékfájl például állapotmen
 <ServiceManifest Name="MyStatelessServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest.</Description>
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="MyStatelessServiceType" />
@@ -74,7 +74,7 @@ A következő application manifest példa bemutatja, hogyan konfigurálhatja a s
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -113,7 +113,7 @@ Gyakran előfordul célszerű a rendszergazdai fiók helyett a helyi rendszer fi
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>

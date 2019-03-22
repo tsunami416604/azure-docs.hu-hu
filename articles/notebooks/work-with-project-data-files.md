@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fd1e7ccdc54b5c5111ecfa466e916a376f43521a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5f8b6db77cabdf5e7af66063cbd9a058bd01800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770717"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082772"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 
@@ -42,13 +42,13 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Válassza ki a **feltöltése** parancsot, majd vagy **URL-CÍMRŐL** vagy **számítógépről** és a projekt az importálni kívánt adatok a szükséges adatokat:
 
-    - **URL-címről**: Adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
+   - **URL-címről**: Adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
 
-    ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
+     ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
 
-    - **A számítógép**: Húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
+   - **A számítógép**: Húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
 
-    ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
+     ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
 
 1. Importálás után a notebook kód tartalmazó mappába relatív forráskódfájlok használatával érhető el, és fájlokat a projekt irányítópultján jelenik meg.
 

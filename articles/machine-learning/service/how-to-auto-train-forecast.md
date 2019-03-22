@@ -1,7 +1,7 @@
 ---
-title: Automatikus – train előrejelzési modell
+title: Automatikus – train idősorozat-előrejelzési modell
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható az Azure Machine Learning szolgáltatás automatikus machine learning segítségével előrejelzési regressziós modell betanításához.
+description: Ismerje meg, hogyan használja az Azure Machine Learning szolgáltatás egy idősorozat-előrejelzési regressziós modell használatával automatikus gépi tanulás.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -9,17 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/08/2019
-ms.openlocfilehash: d61a90a19dbcaef4394b3d2844c14ca24b7e5d4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/19/2019
+ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170258"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226611"
 ---
-# <a name="auto-train-a-forecast-model"></a>Automatikus – train előrejelzési modell
+# <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
 
-Ebből a cikkből megismerheti, hogyan automatizált a machine learning szolgáltatásban Azure Machine Learning segítségével előrejelzési regressziós modell betanításához. Előrejelzési modell konfigurálása állít be egy automatizált machine learning segítségével standard regressziós modell hasonló, de bizonyos konfigurációs beállításokat és előfeldolgozásához lépéseket léteznek idősorozat-adatok használata. Az alábbi példák bemutatják, hogyan való:
+Ebből a cikkből elsajátíthatja egy idősorozat-előrejelzési regressziós modell betanításához automatizált a machine learning szolgáltatásban Azure Machine Learning használatával. Előrejelzési modell konfigurálása állít be egy automatizált machine learning segítségével standard regressziós modell hasonló, de bizonyos konfigurációs beállításokat és előfeldolgozásához lépéseket léteznek idősorozat-adatok használata. Az alábbi példák bemutatják, hogyan való:
 
 * A time series modellezési adatok előkészítése
 * Az adott idősorozat-paramétereinek konfigurálása egy [ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektum

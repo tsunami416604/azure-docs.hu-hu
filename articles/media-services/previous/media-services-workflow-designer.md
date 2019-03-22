@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 7358f259d4c38157a203369e9eadae28710f4290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.openlocfilehash: fb24c856138bb9e59d9cb3ea07c9182454e6463a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993707"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080201"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel  
 ## <a name="overview"></a>Áttekintés
@@ -37,8 +37,6 @@ Ezzel az eszközzel is használható, módosíthatja a [munkafolyamatok közzét
 
 > [!NOTE]
 > A munkafolyamat-Tervező eszköz példányának lekéréséhez lépjen kapcsolatba mepd@microsoft.com.
-> 
-> 
 
 Egy munkafolyamat-fájl létrehozása után eszközként tölthet fel, és ezután médiafájlok a kódoláshoz használható. Információk a kódolással **Media Encoder Premium munkafolyamat** használatával **.NET**, lásd: [speciális kódolás a Media Encoder Premium munkafolyamat](media-services-encode-with-premium-workflow.md).
 

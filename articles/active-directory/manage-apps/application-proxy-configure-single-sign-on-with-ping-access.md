@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16763827c043d56ea9a3d461873dc78456cf678d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084081"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -76,8 +76,8 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 5. Töltse ki a kötelező mezőket az új alkalmazással kapcsolatos információkat. A következő útmutatást használhatja a beállításokat:
    - **Belső URL-cím**: Normális esetben adja meg az URL-cím, amellyel az alkalmazás bejelentkezési oldalon a vállalati hálózaton dolgozik. Ebben a forgatókönyvben az összekötőjét a PingAccess proxy kezelni a az alkalmazás első lapját. Ezt a formátumot használja: `https://<host name of your PA server>:<port>`. A port 3000 alapértelmezés szerint, de a PingAccess konfigurálhatja.
 
-    > [!WARNING]
-    > Az ilyen típusú egyszeri Bejelentkezést a belső URL-cím HTTPS protokollt kell használnia, és nem használható http.
+     > [!WARNING]
+     > Az ilyen típusú egyszeri Bejelentkezést a belső URL-cím HTTPS protokollt kell használnia, és nem használható http.
 
    - **Az előhitelesítési módszer**: Azure Active Directory
    - **A fejlécek URL-cím fordításának**: Nem
@@ -91,49 +91,49 @@ Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részlete
 9. Az alkalmazás felügyeleti panelen válassza ki a **egyszeri bejelentkezési**.
 10. Válasszon **fejlécalapú bejelentkezés** a legördülő menüből. Kattintson a **Mentés** gombra.
 
-   >[!TIP]
-   >Ha ez az első alkalommal használja a fejléc-alapú egyszeri bejelentkezés, a PingAccess telepíteni szeretné. Ahhoz, hogy az Azure-előfizetése a PingAccess telepítés automatikusan társítva, az egyszeri bejelentkezési oldalon a hivatkozás segítségével töltse le a PingAccess. Most nyissa meg a letöltési oldalon, vagy térjen vissza erre a lapra később. 
+    >[!TIP]
+    >Ha ez az első alkalommal használja a fejléc-alapú egyszeri bejelentkezés, a PingAccess telepíteni szeretné. Ahhoz, hogy az Azure-előfizetése a PingAccess telepítés automatikusan társítva, az egyszeri bejelentkezési oldalon a hivatkozás segítségével töltse le a PingAccess. Most nyissa meg a letöltési oldalon, vagy térjen vissza erre a lapra később. 
 
-   ![Fejlécalapú bejelentkezés kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
+    ![Fejlécalapú bejelentkezés kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
 
 11. Zárja be a vállalati alkalmazások panelen vagy görgessen a bal oldalon, hogy térjen vissza az Azure Active Directory menü.
 12. Válassza az **Alkalmazásregisztrációk** elemet.
 
-   ![Alkalmazásregisztrációk kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
+    ![Alkalmazásregisztrációk kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
 
 13. Válassza ki az imént hozzáadott alkalmazás, majd **válasz URL-címek**.
 
-   ![Válassza ki a válasz URL-címek](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
+    ![Válassza ki a válasz URL-címek](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
 
 14. Ellenőrizze, hogy a külső URL-cím, amelyet az 5. lépésben az alkalmazáshoz rendelt-e a válasz URL-címek listájában. Ha nem, vegye fel azt.
 15. Az alkalmazás beállítások panelen válassza ki a **szükséges engedélyek**.
 
-  ![Válassza ki a szükséges engedélyek](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+    ![Válassza ki a szükséges engedélyek](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
 16. Válassza a **Hozzáadás** lehetőséget. Az API-hoz, válassza ki a **Windows Azure Active Directory**, majd **kiválasztása**. Az engedélyek kiválasztása **olvasási és írása az összes alkalmazás** és **jelentkezzen be és felhasználói profil olvasása**, majd **válassza** és **kész**.  
 
-  ![Engedélyek kijelölése](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
+    ![Engedélyek kijelölése](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
 
 17. Engedélyek megadása az engedélyek képernyő bezárása előtt. 
-![Engedélyek megadása](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+    ![Engedélyek megadása](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
 
 ### <a name="collect-information-for-the-pingaccess-steps"></a>A PingAccess lépéseket-adatainak összegyűjtése
 
 1. Az alkalmazás beállítások panelen válassza ki a **tulajdonságok**. 
 
-  ![Tulajdonságok kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
+   ![Tulajdonságok kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
 
 2. Mentse a **alkalmazásazonosító** értéket. Az ügyfél-azonosító szolgál a PingAccess konfigurálásakor.
 3. Az alkalmazás beállítások panelen válassza ki a **kulcsok**.
 
-  ![Kulcsok kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
+   ![Kulcsok kiválasztása](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
 
 4. Hozzon létre egy kulcsot a fő leírás, majd válassza a lejárati dátumot a legördülő menüből.
 5. Kattintson a **Mentés** gombra. Megjelenik egy GUID Azonosítót a **érték** mező.
 
-  Mentse ezt az értéket, akkor láthatom újra ez az ablak bezárása után.
+   Mentse ezt az értéket, akkor láthatom újra ez az ablak bezárása után.
 
-  ![Új kulcs létrehozása](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
+   ![Új kulcs létrehozása](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
 
 6. Zárja be a regisztrációk panelére vagy görgessen a bal oldalon, hogy térjen vissza az Azure Active Directory menü.
 7. Válassza ki **tulajdonságok**.

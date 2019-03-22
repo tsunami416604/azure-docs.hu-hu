@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084378"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
@@ -27,7 +27,7 @@ Ez a cikk megtalálhatja a legismertebb importálható és exportálható fájlf
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátum
 
 | Fájlformátum (fájlkiterjesztés) | Támogatott |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV (H.264 és AAC kodekkel) (.flv) |Igen |
 | MXF    (.mxf) |Igen |
 | GXF    (.gxf) |Igen |
@@ -56,7 +56,7 @@ vagy
 
 ## <a name="input-video-codecs"></a>Bemeneti videókodekek
 | Bemeneti videókodekek | Támogatott |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8 bites/10 bites-, akár 4:2:2, ideértve az avcintrát is |8 bites 4:2:0. és 4:2:2 |
 | Avid DNxHD (MXF-ben) |Igen |
 | DVCPro/DVCProHD (in MXF) |Igen |
@@ -79,7 +79,7 @@ vagy
 
 ## <a name="input-audio-codecs"></a>Bemeneti hangkodekek
 | Bemeneti hangkodekek | Támogatott |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1) |Igen |
 | MPEG Layer 2 |Igen |
 | MP3 (MPEG-1-3 hangréteg) |Igen |

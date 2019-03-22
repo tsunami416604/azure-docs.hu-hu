@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 03/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550190"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224549"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -68,11 +68,11 @@ Az Azure AD további hitelesítési módszerek ilyen hozzáadása folyamatosan t
 
 ## <a name="combined-registration-modes"></a>Egyesített regisztrációs módok
 
-Két "módban" kombinált regisztrációs: megszakítás és kezelése. 
+Két "módban" kombinált regisztrációs: megszakítás és kezelése.
 
-Megszakítási mód, a varázsló-szerű felület, egy felhasználó számára látható, ha regisztrálni vagy frissíteni a biztonsági adataikat bejelentkezéskor. 
+Megszakítási mód, a varázsló-szerű felület, egy felhasználó számára látható, ha regisztrálni vagy frissíteni a biztonsági adataikat bejelentkezéskor.
 
-Kezelése mód része a felhasználó profilját, és lehetővé teszi, hogy a biztonsági adatok kezeléséhez. 
+Kezelése mód része a felhasználó profilját, és lehetővé teszi, hogy a biztonsági adatok kezeléséhez.
 
 Két mód esetében a felhasználó korábban már regisztrálva van egy módszer, amelyet a multi-factor Authentication, ha azok kell hajthatok végre MFA saját biztonsági adatok eléréséhez.
 

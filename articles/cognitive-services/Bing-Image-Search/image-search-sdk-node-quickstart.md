@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 017f4a5b4382e2545cc59b8c9f24b00753641d6d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 641247a0ddc08f15fa70006e280426fda083241f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339640"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083028"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Gyors útmutató: Keresse meg a lemezképek lemezkép Bing Search SDK-val, a node.js-ben
 
@@ -68,7 +68,7 @@ A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/c
         return await imageSearchApiClient.imagesOperations.search(searchTerm);
     };
     ```
-## <a name="send-a-query-and-handle-the-response"></a>Lekérdezés küldése és a válasz kezelése
+   ## <a name="send-a-query-and-handle-the-response"></a>Lekérdezés küldése és a válasz kezelése
 
 1. Hívja meg a segítő függvényt, és kezelje annak `promise` elemét a válaszban visszaadott képtalálatok elemzéséhez.
 

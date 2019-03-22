@@ -1,21 +1,21 @@
 ---
-title: A Machine Learning Studióban modell eredményeinek értelmezése
+title: Modell eredményeinek értelmezése
 titleSuffix: Azure Machine Learning Studio
 description: Hogyan választható ki a optimális paraméter használatával, és a vizualizáláshoz pontszám modell kimeneti algoritmus beállítása.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 778f713fb1046d3c1987b065c9dc25c4ad9825cb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877275"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.
@@ -52,7 +52,7 @@ Az Azure Machine Learning Studio tartalmaz eltérő modulok kezelésére az öss
 ### <a name="two-class-classification"></a>Két osztályú osztályozás
 **Példakísérlet**
 
-Egy példa egy két osztályú osztályozási probléma a virágok iris besorolása. A feladat az Írisz osztályozása virágok a hozzájuk tartozó funkciók alapján. Az Írisz adatkészletet, az Azure Machine Learning Studióban megadott egy részét a népszerű [Írisz adatkészletet](http://en.wikipedia.org/wiki/Iris_flower_data_set) példányait tartalmazó csak két virágzik fajok (0 és 1. osztály). Nincsenek az egyes flower (csészelevél hossza, csészelevél szélessége, szirom hosszúsága és szirom szélessége) négy szolgáltatásai.
+Egy példa egy két osztályú osztályozási probléma a virágok iris besorolása. A feladat az Írisz osztályozása virágok a hozzájuk tartozó funkciók alapján. Az Írisz adatkészletet, az Azure Machine Learning Studióban megadott egy részét a népszerű [Írisz adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) példányait tartalmazó csak két virágzik fajok (0 és 1. osztály). Nincsenek az egyes flower (csészelevél hossza, csészelevél szélessége, szirom hosszúsága és szirom szélessége) négy szolgáltatásai.
 
 ![Képernyőkép az iris kísérlet](./media/interpret-model-results/1.png)
 

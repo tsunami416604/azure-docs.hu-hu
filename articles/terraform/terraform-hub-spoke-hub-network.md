@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 52eb6615442618893741f507d9cae6bd31d5f558
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000220"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózat létrehozása terraform az Azure-ban
 
@@ -43,7 +43,7 @@ A központi hálózathoz a következő összetevőkből áll:
 
 A következő Terraform konfigurációs fájl határozza meg az erőforrásokat:
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 

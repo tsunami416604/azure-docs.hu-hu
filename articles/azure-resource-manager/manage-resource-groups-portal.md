@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 2f31809a0d80079730966e2ecdb017b68563949e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825107"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090933"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure portal használatával
 
@@ -46,11 +46,11 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ha megad e
 3. Válassza a **Hozzáadás** lehetőséget.
 4. Írja be a következő értékeket:
 
-    - **Előfizetés**: Válassza ki az Azure-előfizetését. 
-    - **Erőforráscsoport**: Adjon meg egy új erőforráscsoport-nevet. 
-    - **Régió**: Válasszon ki egy Azure-helyen, például **USA középső RÉGIÓJA**.
+   - **Előfizetés**: Válassza ki az Azure-előfizetését. 
+   - **Erőforráscsoport**: Adjon meg egy új erőforráscsoport-nevet. 
+   - **Régió**: Válasszon ki egy Azure-helyen, például **USA középső RÉGIÓJA**.
 
-    ![Erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![Erőforráscsoport létrehozása](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Válassza ki **felülvizsgálat + létrehozás**
 6. Kattintson a **Létrehozás** gombra. Hozzon létre egy erőforráscsoportot néhány másodpercet vesz igénybe.
 7. Válassza ki **frissítése** frissülnek az erőforráscsoport-lista, és válassza ki az újonnan létrehozott erőforráscsoport való megnyitásához a felső menüben. Vagy válasszon ki **értesítési**(Harang ikon) a felső, és válassza ki a **erőforráscsoport megnyitása** az újonnan létrehozott erőforráscsoport megnyitása
@@ -130,14 +130,14 @@ Ez a módszer exportálja a sablonokat az egyes központi telepítések. Ha mód
 3. Válassza ki a központi telepítések közül a listából.
 4. A bal oldali panelen válassza ki a **sablon**. A Resource Manager az alábbi hat fájlt kéri le:
 
-    - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
-    - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
-    - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
-    - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
-    - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
-    - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
+   - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
+   - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
+   - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
+   - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
+   - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
+   - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
 
-    Alapértelmezés szerint a portál megjeleníti a sablont.
+     Alapértelmezés szerint a portál megjeleníti a sablont.
 
 5. Válassza ki **letöltése** sablon exportálása a helyi számítógépen.
 
@@ -151,14 +151,14 @@ Ha módosította az erőforrásokat a portálról, vagy több üzemelő példán
 1. Nyissa meg a törölni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
 2. A bal oldali panelen válassza ki a **Automation-szkript**. A Resource Manager az alábbi hat fájlt kéri le:
 
-    - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
-    - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
-    - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
-    - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
-    - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
-    - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
+   - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
+   - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
+   - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
+   - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
+   - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
+   - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
 
-    Alapértelmezés szerint a portál megjeleníti a sablont.
+     Alapértelmezés szerint a portál megjeleníti a sablont.
 3. Válassza ki **letöltése** sablon exportálása a helyi számítógépen.
 
 Néhány exportált sablont kell bizonyos szerkesztések, használhatók legyenek. Ismerje meg, hogyan fejleszthet sablonokat, tekintse meg a [lépésről lépésre haladó oktatóanyagok](/azure/azure-resource-manager/).

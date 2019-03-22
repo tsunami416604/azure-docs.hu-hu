@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a77ad3ec954e77895cfab76a2f5fe2d822e08fb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473170"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57879854"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok importálására és az Azure Blob Storage Azure Storage Explorer használatával
-Az Azure Storage Explorer egy olyan ingyenes eszköz, a Microsoft, amely lehetővé teszi, hogy az Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ez a témakör ismerteti, hogyan használható a fel- és letöltése az adatok Azure blob storage-ból. Az eszköz letölthető a [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+Az Azure Storage Explorer egy olyan ingyenes eszköz, a Microsoft, amely lehetővé teszi, hogy az Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ez a témakör ismerteti, hogyan használható a fel- és letöltése az adatok Azure blob storage-ból. Az eszköz letölthető a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
@@ -36,7 +36,7 @@ Jelen dokumentum céljából feltételezzük, hogy rendelkezik Azure-előfizeté
 
 * Azure-előfizetés beállításával kapcsolatban lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
 * Storage-fiók létrehozásával és az első fiók és a kulcsadatokat: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md). Jegyezze fel a tárfiók elérési kulcsának ezt a kulcsot az Azure Storage Explorer eszközzel a fiókhoz való csatlakozáshoz szükség szerint.
-* Az Azure Storage Explorer eszköz letölthető a [Microsoft Azure Storage Explorer](http://storageexplorer.com/). Elfogadhatja az alapértelmezett beállításokat a telepítés során.
+* Az Azure Storage Explorer eszköz letölthető a [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Elfogadhatja az alapértelmezett beállításokat a telepítés során.
 
 <a id="explorer"></a>
 

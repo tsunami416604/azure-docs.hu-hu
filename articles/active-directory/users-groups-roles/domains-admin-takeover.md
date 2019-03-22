@@ -1,5 +1,5 @@
 ---
-title: Egy nem felügyelt címtár - rendszergazdája - átvételi Azure Active Directory |} A Microsoft Docs
+title: Egy nem felügyelt címtár – Azure Active Directory rendszergazdai átvételt |} A Microsoft Docs
 description: Hogyan vegye át az Azure Active Directoryban egy nem felügyelt címtár (árnyékmásolat-bérlő) egy DNS-tartománynevet.
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af2628e1da24bd790e94306703aab797a0d56a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202486"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
+
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" a szolgáltatás regisztrációs kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](directory-self-service-signup.md)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Annak eldöntése, hogyan szeretné egy nem felügyelt könyvtár átvétele
@@ -42,13 +43,13 @@ Egyes termékek, amelyek tartalmazzák a SharePoint és onedrive vállalati verz
 
 3. A megerősítő e-mailben a Power bi-BÓL, válassza ki a **Igen, én**.
 
-4. Jelentkezzen be a [Office 365 felügyeleti központban](https://portal.office.com/admintakeover) a Power BI felhasználói fiókkal. Megjelenik az üzenet, amely arra utasítja, hogy **váljon rendszergazdává** a tartomány neve, amely már megtörtént a nem felügyelt bérlőt. Válassza ki **Igen, szeretnék lenni a rendszergazda**.
+4. Jelentkezzen be a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) a Power BI felhasználói fiókkal. Megjelenik az üzenet, amely arra utasítja, hogy **váljon rendszergazdává** a tartomány neve, amely már megtörtént a nem felügyelt bérlőt. Válassza ki **Igen, szeretnék lenni a rendszergazda**.
   
-  ![a rendszergazda legyen az első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
+   ![a rendszergazda legyen az első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
   
 5. Adja hozzá a TXT-rekordot a tartománynév tulajdonjogának igazolásához **fourthcoffee.xyz** , a tartománynév regisztrálójánál. Ebben a példában GoDaddy.com.
   
-  ![Egy txt típusú rekordot a tartománynév hozzáadása](./media/domains-admin-takeover/become-admin-txt-record.png)
+   ![Egy txt típusú rekordot a tartománynév hozzáadása](./media/domains-admin-takeover/become-admin-txt-record.png)
 
 Ha a DNS txt típusú rekordok, a tartománynév regisztrálójánál az megtörtént, az Azure AD-bérlő is kezelheti.
 
@@ -56,23 +57,23 @@ Amikor végzett a fenti lépéseket, Ön mostantól az Office 365-ben a negyedik
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>A tartománynév hozzáadását felügyelt bérlőre az Azure ad-ben
 
-1. Nyissa meg a [Office 365 felügyeleti központban](https://portal.office.com/admintakeover).
-2. Válassza ki **felhasználók** lapra, és hozzon létre egy új felhasználói fiókot vagy hasonló néven *user@fourthcoffeexyz.onmicrosoft.com* , amely nem használja az egyéni tartomány nevét. 
+1. Nyissa meg a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com).
+2. Válassza ki **felhasználók** lapra, és hozzon létre egy új felhasználói fiókot vagy hasonló néven *felhasználói\@fourthcoffeexyz.onmicrosoft.com* , amely nem használja az egyéni tartomány nevét. 
 3. Győződjön meg arról, hogy az új felhasználói fiók rendelkezik-e az Azure AD-bérlő globális rendszergazdai jogosultságokkal.
-4. Nyissa meg **tartományok** lapra az Office 365 felügyeleti központot, válassza ki a tartomány nevét, és válassza **eltávolítása**. 
+4. Nyissa meg **tartományok** a Microsoft 365 felügyeleti központban lapon kattintson a tartomány nevét, majd válassza ki **eltávolítása**. 
   
-  ![Távolítsa el a tartománynevet az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
+   ![Távolítsa el a tartománynevet az Office 365-ből](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Ha a felhasználók és csoportok az Office 365-ben az eltávolított tartománynév rendelkezik, azok kell átnevezni az. onmicrosoft.com tartomány. Ha kényszeríti a tartománynév törlése, minden felhasználó automatikusan átnevezi, ebben a példában a *user@fourthcoffeexyz.onmicrosoft.com*.
+5. Ha a felhasználók és csoportok az Office 365-ben az eltávolított tartománynév rendelkezik, azok kell átnevezni az. onmicrosoft.com tartomány. Ha kényszeríti a tartománynév törlése, minden felhasználó automatikusan átnevezi, ebben a példában a *felhasználói\@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Jelentkezzen be a [Azure AD felügyeleti központ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a az Azure AD-bérlő globális rendszergazdája.
   
 7. Válassza ki **egyéni tartománynevek**, majd adja hozzá a tartomány nevét. Írja be az DNS txt típusú rekordot a tartománynév tulajdonjogának ellenőrzése kell. 
   
-  ![tartomány hozzáadva az Azure ad-hez](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
+   ![az Azure AD hozzá ad ellenőrzött tartomány](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Bármely Power bi-ban vagy az Azure Rights Management szolgáltatást az Office 365-bérlő a hozzárendelt licenccel rendelkező felhasználók irányítópultokkal kell menteni, ha a tartomány nevét a rendszer eltávolítja. Jelentkezzen be egy felhasználónevet, például a használatához be kell jelentkezniük *user@fourthcoffeexyz.onmicrosoft.com* helyett *user@fourthcoffee.xyz*.
+> Bármely Power bi-ban vagy az Azure Rights Management szolgáltatást az Office 365-bérlő a hozzárendelt licenccel rendelkező felhasználók irányítópultokkal kell menteni, ha a tartomány nevét a rendszer eltávolítja. Jelentkezzen be egy felhasználónevet, például a használatához be kell jelentkezniük *felhasználói\@fourthcoffeexyz.onmicrosoft.com* helyett *felhasználói\@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétellel
 
@@ -132,46 +133,47 @@ A parancsmag | Használat
 ### <a name="powershell-example"></a>PowerShell-példa
 
 1. Csatlakozás az Azure AD önkiszolgáló előfizetésért válaszolni használt hitelesítő adatok használatával:
-  ```
+   ```powershell
     Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred
-  ```
+   ```
 2. Tartományok listájának lekérése:
   
-  ```
+   ```powershell
     Get-MsolDomain
-  ```
+   ```
 3. Futtassa a Get-MsolDomainVerificationDns parancsmagot kihívást létrehozásához:
-  ```
+   ```powershell
     Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
   
     For example:
   
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-  ```
+   ```
 
 4. Ez a parancs által visszaadott értéket (a kihívás) másolja. Példa:
-  ```
+   ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-  ```
+   ```
 5. Hozzon létre egy, az előző lépésben kimásolt értéket tartalmazó DNS txt típusú rekordot a nyilvános DNS-névtérben. Ez a bejegyzés a név a szülőtartomány neve, így a rekord a DNS-szerepkört a Windows Server használatával hoz létre, ha hagyja meg a rekord neve üres, és csak illessze be az értéket a szövegmezőbe.
 6. Futtassa a a kérdés ellenőrzése Confirm-MsolDomain-parancsmagot:
   
-  ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
-  ```
+   ```
   
-  Példa:
+   Példa:
   
-  ```
+   ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
-  ```
+   ```
 
 Sikeres kihívást visszatér a parancssorba hiba nélkül.
 
 ## <a name="next-steps"></a>További lépések
+
 * [Egy egyéni tartománynév hozzáadása az Azure ad-ben](../fundamentals/add-custom-domain.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: db6646c2066be940b2c058653fe8f2ceb9bff3a2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 30cd77799837f9b1ef08a9c609e518fd679b9b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871422"
 ---
 # <a name="live-event-latency-in-media-services"></a>A Media Services élő esemény késés
 
 Ez a cikk bemutatja, hogyan lehet beállítani a közel valós idejű a egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents). Emellett ismerteti a tipikus eredményeket közel valós idejű beállításainak használatával által is látható. Az eredmények függ a CDN és a hálózati késést.
 
-Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. Létrehozásakor [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS lejátszása, állítsa [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1-re. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (AMP bemutató oldalon), és állítsa be a lejátszási beállítások használatához a "alacsony késés a heurisztika profil".
+Az új használandó **LowLatency** szolgáltatást, állítsa be a **StreamOptionsFlag** való **LowLatency** a a **videókhoz**. Létrehozásakor [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) HLS lejátszása, állítsa [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1-re. A stream működik-e, ha a [Azure Media Player](https://ampdemo.azureedge.net/) (AMP bemutató oldalon), és állítsa be a lejátszási beállítások használatához a "alacsony késés a heurisztika profil".
 
 > [!NOTE]
 > Jelenleg az Azure Media Player LowLatency HeuristicProfile lejátszásának DASH protokollal, vagy a HLS-CMAF adatstreameket tervezték. Ha MacOS vagy IOS rendszerű eszközökön keresztül HLS-TS céloz meg (például `format=m3u8-aapl` vagy `format=m3u8-aapl-v3`), ne használja ezt a beállítást, mert AMP közvetlenül a natív Windows Media player ebben az esetben az operációs rendszer által biztosított használ.

@@ -8,18 +8,18 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ae1e71170952a2f05e371de68b519eba522e3298
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318697"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295079"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Az adatok exportálása az Azure Blob Storage
 
 *Ez a témakör a rendszergazdák vonatkozik.*
 
-Ez a cikk ismertetőinken részletesebben ismerteti, hogyan lehet a folyamatos exportálási szolgáltatás segítségével az Azure IoT Central rendszeres időközönként exportálja az adatokat a **Azure Blob storage-fiók**. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** fájlok Apache Avro formátumban. Az exportált adatok például az Azure Machine Learning betanítási modellek vagy hosszú távú tendenciája, a Microsoft Power bi-ban a ritka elérésű útvonal elemzéshez használható.
+Ez a cikk ismerteti a folyamatos exportálás funkció használata az Azure IoT Central, hogy az adatokat rendszeresen exportálják a **Azure Blob storage-fiók**. Exportálhatja **mérések**, **eszközök**, és **eszközsablonok** fájlok Apache Avro formátumban. Az exportált adatok például az Azure Machine Learning betanítási modellek vagy hosszú távú tendenciája, a Microsoft Power bi-ban a ritka elérésű útvonal elemzéshez használható.
 
 > [!Note]
 > Ismét bekapcsolja a folyamatos exportálás, kap csak az adatok ettől a pillanattól kezdve. Jelenleg adatokat nem lehet beolvasni egy alkalommal, amikor folyamatos adatexportálás ki volt kapcsolva. További korábbi adatok megőrzése, kapcsolja be a folyamatos exportálás korai.
@@ -29,12 +29,75 @@ Ez a cikk ismertetőinken részletesebben ismerteti, hogyan lehet a folyamatos e
 
 - Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
 
+
+## <a name="set-up-export-destination"></a>Exportálási cél beállítása
+
+Ha nem rendelkezik egy meglévő Storage exportálása, kövesse az alábbi lépéseket:
+
+## <a name="create-storage-account"></a>Storage-fiók létrehozása
+
+1. Hozzon létre egy [új storage-fiókot az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További a [Azure Storage-docs](https://aka.ms/blobdocscreatestorageaccount).
+2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
+3. Válasszon előfizetést. 
+
+    > [!Note] 
+    > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
+
+4. Hozzon létre egy tárolót a tárfiókjában. Lépjen a tárfiókhoz. A **Blob Service**válassza **Blobok tallózása**. Válassza ki **+ tároló** tetején, egy új tároló létrehozása
+
+
+## <a name="set-up-continuous-data-export"></a>Állítsa be a folyamatos exportálás
+
+Most, hogy egy célhelyet exportálhatja az adatokat, az alábbi lépésekkel állítsa be a folyamatos exportálás. 
+
+1. Jelentkezzen be az IoT Central alkalmazáshoz.
+
+2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
+
+    > [!Note]
+    > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
+
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
+
+3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon **Azure Blob Storage** az exportálás céljaként. 
+
+    > [!NOTE] 
+    > Export alkalmazásonként maximális száma öt. 
+
+    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new.PNG)
+
+4. A legördülő listában jelölje ki a **Tárfiók névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
+
+    > [!NOTE] 
+    > Csak akkor jelenik meg a Storage-fiókok névtereket a **megegyező előfizetésben, az IoT-központ alkalmazás**. Ha szeretne exportálni egy célhelyre kívül ehhez az előfizetéshez, válasszon **adjon meg egy kapcsolati karakterláncot** , és tekintse meg az 5. lépés.
+
+    > [!NOTE] 
+    > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
+
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export-create-blob.png)
+
+5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
+    - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
+        - A **beállítások**válassza **hozzáférési kulcsok**
+        - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
+ 
+6. A legördülő listából válassza ki egy tárolót.
+
+7. A **exportálható adatot**, adja meg az egyes adattípusok úgy, hogy a típus exportálása **a**.
+
+6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
+
+  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export-list-blob.png)
+
+7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
+
+
 ## <a name="export-to-azure-blob-storage"></a>Az Azure Blob Storage-exportálás
 
 Mértékek, eszközök és sablonok eszközadatok lesznek exportálva az percenként egyszer, a tárfiók az egyes fájlt, amely tartalmazza a változások a batch, mivel az utolsó exportált fájl. Az exportált adatok [Apache Avro](https://avro.apache.org/docs/current/index.html) formázhatja, és exportálja a három mappákhoz. A tárfiókban lévő alapértelmezett elérési utakhoz a következők:
-    - Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Eszközök: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Eszközsablonok: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Üzenet: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Eszközök: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+- Eszközsablonok: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ### <a name="measurements"></a>Mérések
 

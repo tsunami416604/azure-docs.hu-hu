@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967282"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091358"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése Azure-beli használatra
 
@@ -196,7 +196,7 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
 
 - - -
 
-## <a name="centos-70"></a>CentOS 7.0 +
+## <a name="centos-70"></a>CentOS 7.0+
 
 **Változások a CentOS 7 (és hasonló származékai)**
 
@@ -299,13 +299,13 @@ A CentOS 7 virtuális gép előkészítése Azure-hasonlít a CentOS 6, azonban 
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Ha az a rendszerkép összeállítására **VMware, VirtualBox vagy KVM:** gondoskodjon arról, hogy a Hyper-V illesztőprogramok a initramfs szerepelnek:
+10. Ha az a rendszerkép összeállítására **VMware, VirtualBox vagy KVM:** Ellenőrizze, hogy a Hyper-V illesztőprogramok a initramfs szerepelnek:
 
-   Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalmat:
+    Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalmat:
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   Építse újra a initramfs:
+    Építse újra a initramfs:
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ A CentOS 7 virtuális gép előkészítése Azure-hasonlít a CentOS 6, azonban 
 
 12. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
 
-   Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
+    Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
