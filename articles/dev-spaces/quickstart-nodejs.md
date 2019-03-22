@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: b141a6d2d6a3cdbdea9c60ae07389f809f2b9b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8da401b450438e1640901f26be88620ae8506860
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903283"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Gyors útmutató: A Kubernetes fejlesztői tárolóhely létrehozása az Azure fejlesztési szóközöket (Node.js)
 
@@ -36,7 +36,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.13 --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Az Azure Dev Spaces beállítása
@@ -58,13 +58,13 @@ Az Azure Dev Spaces telepítéséhez hajtsa végre az alábbi lépéseket:
 
    ```output
    (pending registration) Service 'webfrontend' port 'http' will be available at <url>
-   Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+   Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
    ```
 
    Nyissa meg ezt az URL-t egy böngészőablakban, és betöltődik a webalkalmazás. Ahogy a tároló futni kezd, a rendszer `stdout` és `stderr` kimenetet streamel a terminálablakba.
    
    > [!Note]
-   > Első alkalommal több percet is igénybe vehet, hogy rendelkezésre álljon a nyilvános DNS. Ha az URL-cím nem oldódik fel, használhatja a konzolkimeneten megjelenő alternatív http://localhost:<portnumber> URL-címet. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Ön kényelme, valamint a helyi gép és a szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz. Visszatérhet és kipróbálhatja a nyilvános URL-címet később, amikor kész a DNS-rekord.
+   > Első alkalommal több percet is igénybe vehet, hogy rendelkezésre álljon a nyilvános DNS. Ha az URL-címe nem oldható meg, használhatja a tulajdonos alternatív `http://localhost:<portnumber>` URL-címet, a konzol kimenete jelenik meg. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Ön kényelme, valamint a helyi gép és a szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz. Visszatérhet és kipróbálhatja a nyilvános URL-címet később, amikor kész a DNS-rekord.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.

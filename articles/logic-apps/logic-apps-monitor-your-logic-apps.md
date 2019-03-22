@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 6a8c4583d86b41e767e8a2057bae4cef8943a1c1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193418"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112313"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
@@ -93,8 +93,8 @@ A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, 
    1. Válassza ki **Küldés a Log Analyticsnek**. 
    2. A **Log Analytics**, válassza a **konfigurálása**. 
    3. A **OMS-munkaterületek**, válassza ki a használandó naplózási munkaterületet.
-   > [!NOTE]
-   > Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
+      > [!NOTE]
+      > Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.
    4. A **Log**, jelölje be a **WorkflowRuntime** kategória.
    5. Válassza ki a metrika időköz.
    6. Ha elkészült, kattintson a **Mentés** gombra.

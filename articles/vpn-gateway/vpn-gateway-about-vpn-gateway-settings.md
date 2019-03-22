@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 76323ab00a3562cae10520b18008d030e40043fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417533"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864672"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -43,7 +43,7 @@ VPN-átjáró szükséges a `-GatewayType` *Vpn*.
 
 Példa:
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
@@ -63,7 +63,7 @@ Ha az Azure portal használatával a Resource Manager virtuális hálózati átj
 
 Az alábbi PowerShell-példa meghatározza az `-GatewaySku` VpnGw1. Ha-átjáró létrehozása a PowerShell segítségével, akkor először az IP-konfiguráció létrehozása, majd hivatkoznia kell rá a változók használata. Ebben a példában a konfigurációs változó $gwipconfig.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
@@ -77,7 +77,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 ###  <a name="resizechange"></a>Átméretezés vagy a Termékváltozat módosítása
 
-Ha a különböző átjárók Termékváltozatainak használni kívánt VPN-átjárót, a lehetőségek a következők vagy a az átjárók Termékváltozatainak átméretezése, vagy egy másik termékváltozatra módosításához. Ha módosítja egy másik átjáró-Termékváltozatot, teljesen törölje a meglévő átjárót, és hozhat létre egy újat. Ez sikerült létrehozása akár 45 percet is igénybe vehet. Ezzel szemben amikor átjáró-Termékváltozatok, átméretezése kell nagyon kevés állásidő, mert nem kell törölnie kell, és építse újra az átjárót. Ha az átjárók Termékváltozatainak átméretezése helyett módosítsa a beállítást, ehhez célszerű. Előfordulhatnak azonban olyan szabályok átméretezésével kapcsolatos:
+Ha a különböző átjárók Termékváltozatainak használni kívánt VPN-átjárót, a lehetőségek a következők vagy a az átjárók Termékváltozatainak átméretezése, vagy egy másik termékváltozatra módosításához. Ha módosítja egy másik átjáró-Termékváltozatot, teljesen törölje a meglévő átjárót, és hozhat létre egy újat. Az átjáró létrehozása akár 45 percet is igénybe vehet. Ezzel szemben ha az átjáró-Termékváltozatok, átméretezése nem áll mennyi állásidő mert törölnie kell, és építse újra az átjáró nem rendelkezik. Ha az átjárók Termékváltozatainak átméretezése helyett módosítsa a beállítást, ehhez célszerű. Előfordulhatnak azonban olyan szabályok átméretezésével kapcsolatos:
 
 1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
 2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
@@ -102,7 +102,7 @@ A Resource Manager-alapú üzemi modellben az egyes konfigurációkhoz egy adott
 
 A következő PowerShell-példa hozunk létre, amely megköveteli a kapcsolat típusa S2S kapcsolat *IPsec*.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
@@ -120,7 +120,7 @@ A virtuális hálózati átjáró létrehozása után nem módosíthatja a VPN-t
 
 Az alábbi PowerShell-példa meghatározza az `-VpnType` , *RouteBased*. Egy átjáró létrehozásakor biztosítania kell, hogy -VpnType megfeleljen a konfigurációnak.
 
-```powershell
+```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
@@ -132,7 +132,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="gwsub"></a>Átjáró-alhálózat
 
-Mielőtt létrehozna egy VPN-átjárót, létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat tartalmaz IP-címek a virtuális hálózati átjáró virtuális gépek és szolgáltatások használatához. A virtuális hálózati átjáró létrehozásakor átjáróként működő virtuális gépekhez az átjáró-alhálózat telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Soha ne telepítenie kell semmi mást (például további VM-EK) az átjáró-alhálózathoz. Az átjáró-alhálózat neve "GatewaySubnet" megfelelően működjön. Az átjáró-alhálózat "GatewaySubnet" elnevezése lehetővé teszi, hogy tudja, hogy ez az alhálózat a virtuális hálózati átjáró virtuális gépek és szolgáltatások üzembe helyezéséhez Azure.
+Mielőtt létrehozna egy VPN-átjárót, létre kell hoznia egy átjáró-alhálózatot. Az átjáró-alhálózat tartalmaz IP-címek a virtuális hálózati átjáró virtuális gépek és szolgáltatások használatához. A virtuális hálózati átjáró létrehozásakor átjáróként működő virtuális gépekhez az átjáró-alhálózat telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Semmit ne helyezzen üzembe másnak (például további VM-EK) az átjáró-alhálózathoz. Az átjáró-alhálózat neve "GatewaySubnet" megfelelően működjön. Az átjáró-alhálózat "GatewaySubnet" elnevezése lehetővé teszi, hogy tudja, hogy ez az alhálózat a virtuális hálózati átjáró virtuális gépek és szolgáltatások üzembe helyezéséhez Azure.
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
@@ -142,7 +142,7 @@ Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet ta
 
 A következő Resource Manager PowerShell-példa bemutatja egy GatewaySubnet nevű átjáró-alhálózatot. Láthatja, hogy a CIDR-jelölésrendszer/27-es, amely lehetővé teszi, hogy elegendő IP-címet, amely a jelenleg létező legtöbb konfiguráció esetében.
 
-```powershell
+```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
@@ -156,7 +156,7 @@ Nevezze el a helyi hálózati átjárót, a helyszíni VPN-eszköz nyilvános IP
 
 A következő PowerShell-példa egy új helyi hálózati átjárót hoz létre:
 
-```powershell
+```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```

@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0b8f99246852a699f8036a98d8ddf1df7e310c1c
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4da02a4576b0a44c4b80a556d128c154adc246b1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753165"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898550"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Hozzon létre, és keresse meg a központi jellegűek Azure térbeli horgonyok használatával a Unity-nél
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753165"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Azt jól működnek a választott fejlesztési környezetben, amennyiben. Ebben a cikkben fogja nekikezdenénk menete a Unity-nél.
+Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több fejlesztési környezet. Ebben a cikkben fogja nekikezdenénk menete a Unity-nél.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Tudjon meg többet a [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) osztály.
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -36,6 +38,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Tudjon meg többet a [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) osztály.
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -48,6 +52,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Tudjon meg többet a [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) delegálására.
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -97,6 +103,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
+Tudjon meg többet a [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) metódust.
+
 ```csharp
 #if UNITY_IOS
     this.arkitSession = UnityARSessionNativeInterface.GetARSessionNativeInterface();
@@ -114,6 +122,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
+
+Tudjon meg többet a [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) metódust.
 
 ```csharp
 #if UNITY_ANDROID
@@ -137,6 +147,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
+Tudjon meg többet a [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) delegálására.
+
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args)
     {
@@ -148,6 +160,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Tudjon meg többet a [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) osztály.
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
@@ -197,6 +211,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Tudjon meg többet a [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) metódust.
+
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
     if (value.RecommendedForCreateProgress < 1.0f) return;
@@ -204,6 +220,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
+
+Tudjon meg többet a [AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) tulajdonság.
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -214,6 +232,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Tudjon meg többet a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) metódust.
+
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
     anchor.AppProperties[@"last-user-access"] = @"just now";
@@ -221,6 +241,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Tudjon meg többet a [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) metódust.
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -233,11 +255,15 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Tudjon meg többet a [lejárati](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) tulajdonság.
+
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
 ```
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
+
+Tudjon meg többet a [CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) metódust.
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -246,6 +272,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Tudjon meg többet a [AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) delegálására.
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -274,6 +302,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Tudjon meg többet a [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) metódust.
+
 ```csharp
     await this.cloudSession..DeleteAnchorAsync(cloudAnchor);
     // Perform any processing you may want when delete finishes
@@ -281,17 +311,23 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Tudjon meg többet a [leállítása](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) metódust.
+
 ```csharp
     this.cloudSession.Stop();
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
+Tudjon meg többet a [alaphelyzetbe](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) metódust.
+
 ```csharp
     this.cloudSession.Reset();
 ```
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
+
+Tudjon meg többet a [Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) metódust.
 
 ```csharp
     this.cloudSession.Dispose();

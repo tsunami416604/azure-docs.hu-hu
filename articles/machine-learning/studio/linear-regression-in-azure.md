@@ -1,21 +1,21 @@
 ---
-title: Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
+title: Áttelepítése elemzés az Excelben
 titleSuffix: Azure Machine Learning Studio
 description: Az Excel és az Azure Machine Learning Studióban lineáris regressziós modellek összehasonlítása
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 706fe0afb004109ee591eab0efe99cadf9045d33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447654"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864830"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Az Excel analytics áttelepíteni az Azure Machine Learning Studióban
 
@@ -102,11 +102,11 @@ A megoldás volt, a Machine Learning regressziós modell üzembe helyezése a we
 
 A *Web Services-irányítópult* szakasz tartalmaz egy letölthető Excel-munkafüzet. A munkafüzet tartalmaz a webes API-t és a séma adatait beágyazott előre formázott. Amikor rákattint *Excel-munkafüzet letöltése*, megnyitja a munkafüzetet, és mentheti a helyi számítógépen. 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![A Web Services irányítópultról Excel-munkafüzet letöltése](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Nyissa meg a munkafüzetet, és másolja az előre meghatározott paraméterek a kék paraméter szakasz alább látható módon. Miután megadta a paramétereket, az Excel hívja a Machine Learning web Service és az előre jelzett értékek zöld szakaszban megjeleníti az előre jelzett pontozott címkék. A munkafüzet továbbra is előrejelzéseket paraméterek alapján az összes sor elemek a megadott paraméterek alapján a betanított modell létrehozásához. Ez a funkció használatáról további információkért lásd: [használ az Azure Machine Learning Web Service az Excelből](consuming-from-excel.md). 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![Sablon Excel-munkafüzethez csatlakozik az üzembe helyezett webszolgáltatáshoz](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimalizálás és további kísérletek
 Most, hogy az alapterv kellett az Excel-modell, költöztünk előre a Machine Learning lineáris regressziós modell optimalizálása. A modul használtuk [szűrő-alapú szolgáltatás kiválasztása] [ filter-based-feature-selection] javítása a kezdeti adatok a kijelölt elemeket, és azt kommunikációnkhoz érhet el a teljesítmény fokozása 4.6 %-os Mean Absolute Error. A későbbi projektek használjuk ezt a szolgáltatást, amely menthető USA hét iterálás adatattribútumokat található a megfelelő bizonyos használandó modellezési funkcióit a. 
@@ -132,13 +132,9 @@ Lehetővé teszi a prediktív elemzési előrejelzés studióból Excel elviselh
 ## <a name="resources"></a>További források
 Íme néhány forrás, hogy használatával a regressziós: 
 
-* Regresszió az Excelben. Ha soha nem próbálta regressziós az Excelben, ez az oktatóanyag segítségével egyszerűen: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Regresszió az Excelben. Ha soha nem próbálta regressziós az Excelben, ez az oktatóanyag segítségével egyszerűen: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * Előrejelzés regressziós vs. Tyler Chessman írtam egy blog a cikk elmagyarázza, hogyan time series előrejelzési az Excelben, amely lineáris regressziós modell futtatása egy jó kezdőknek leírását tartalmazza. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Szokásos legalább Squares lineáris regressziós modell futtatása: Hibái, problémák és Alkalmazásmegoldásokra. A bevezetés és regressziós veszik górcső alá: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* Szokásos legalább Squares lineáris regressziós modell futtatása: Hibái, problémák és Alkalmazásmegoldásokra. A bevezetés és regressziós veszik górcső alá: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

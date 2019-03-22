@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5544be37015368173f3f8eb39288b7a97ae11c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084997"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Szinkronizálás az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 A következő ábra szemlélteti a szinkronizálás működése az Azure AD Domain Services felügyelt tartomány.
@@ -70,8 +70,6 @@ A következő táblázat néhány gyakori attribútumok és ismerteti, hogyan ak
 
 > [!NOTE]
 > **Jelentkezzen be a felügyelt tartományra a egyszerű felhasználónév formátuma:** A SAMAccountName attribútumot lehet néhány felhasználói fiók a felügyelt tartomány számára automatikusan létrehozott. Ha több felhasználó rendelkezik ugyanazon a mailNickname attribútum, vagy a felhasználók rendelkeznek az UPN-előtagok túl hosszú, ezek a felhasználók a SAMAccountName lehet automatikusan létrehozott. Ezért a SAMAccountName formátum (például CONTOSO100\joeuser) nincs mindig megbízhatóan bejelentkezni a tartományba. Felhasználók a SAMAccountName automatikusan generált UPN előtag eltérhet. Az egyszerű felhasználónév formátumban (például "joeuser@contoso100.com") megbízhatóan bejelentkezni a felügyelt tartományhoz.
->
->
 
 ### <a name="attribute-mapping-for-user-accounts"></a>A felhasználói fiókokhoz attribútumleképezés
 Az alábbi táblázat mutatja be, hogyan adott attribútumok az Azure AD-bérlő objektumokat a rendszer szinkronizálja a felügyelt tartományhoz kapcsolódó attribútumok felhasználó.

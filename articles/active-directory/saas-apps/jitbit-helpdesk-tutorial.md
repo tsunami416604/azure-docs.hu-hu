@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb752a6b598c9fe7f146cd6ce96182405fc0dc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 86148d428bc526e071f095233b0692a6f3775a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Oktatóanyag: Jitbit ügyfélszolgálat az Azure Active Directory-integráció
 
@@ -114,6 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: 
+    
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -224,7 +225,7 @@ Ahhoz, hogy az Azure AD-felhasználók Jitbit segélyszolgálat-ba való bejelen
    
    a. Az a **felhasználónév** szövegmezőbe írja be **BrittaSimon**, a felhasználó neve, mint az Azure Portalon.
 
-   b. Az a **E-mail** szövegmezőbe írja be e-mail a felhasználó például **BrittaSimon@contoso.com**.
+   b. Az a **E-mail** szövegmezőbe írja be e-mail a felhasználó például **BrittaSimon\@contoso.com**.
 
    c. Az a **Utónév** szövegmező, mint például a felhasználó utóneve típus **Britta**.
 

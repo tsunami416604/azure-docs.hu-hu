@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee21080fd95815289f73654cc5bc650296c8e8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177398"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>A kétlépéses ellenőrzéshez alkalmazásjelszók kezelése
 
@@ -89,7 +89,7 @@ Ha a kétlépéses ellenőrzés használja a munkahelyi vagy iskolai fiókot és
 
 1. Jelentkezzen be munkahelyi vagy iskolai fiókjával.
 
-2. Lépjen a https://portal.office.com, jelölje be a **beállítások** ikonra a jobb felső sarkában a **Office 365-portál** lapon, és végül **további biztonsági ellenőrzés**.
+2. Lépjen a [ https://portal.office.com ](https://portal.office.com), jelölje be a **beállítások** ikonra a jobb felső sarkában a **Office 365-portál** lapon, és végül **további biztonsági ellenőrzési**.
 
     ![Office portál ábrázoló kibontva további biztonsági ellenőrzési terület](media/security-info/security-info-o365password.png)
 
@@ -105,7 +105,7 @@ Ha a kétlépéses ellenőrzés használja a munkahelyi vagy iskolai fiókot és
 
 1. Jelentkezzen be munkahelyi vagy iskolai fiókjával.
 
-2. Lépjen a https://portal.office.com, jelölje be a **beállítások** ikonra a jobb felső sarkában a **Office 365-portál** oldalra, és kattintson **további biztonsági ellenőrzés**.
+2. Lépjen a [ https://portal.office.com ](https://portal.office.com), jelölje be a **beállítások** ikonra a jobb felső sarkában a **Office 365-portál** oldalra, és kattintson **további biztonsági ellenőrzési**.
 
 3. Válassza ki a szöveget, amely szerint, **létrehozása és kezelése az alkalmazásjelszavak** megnyitásához a **alkalmazásjelszók** lap.
 

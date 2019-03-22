@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 08838ce0af16cc4ae768bd5d2ecf72c57f8fae97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 03e519520d4a956a5c9690dc1327089505aafced
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120856"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Előfizetői azonosítók beszerzése
 
@@ -24,8 +24,8 @@ Számítógép vizuális szolgáltatások igényelnek Speciális előfizetési k
 
 Előfizetői azonosítók regisztrálni, lásd: [előfizetések](https://azure.microsoft.com/try/cognitive-services/). Célszerű a regisztráció ingyenes. A szolgáltatások díjszabása változhat.
 
->[!NOTE]
-Az előfizetési kulcsok jsou platné Pro csak egyet [Microsoft Azure-régiók](https://azure.microsoft.com/regions/). 
+> [!NOTE]
+> Az előfizetési kulcsok jsou platné Pro csak egyet [Microsoft Azure-régiók](https://azure.microsoft.com/regions/). 
 
 | Régió | Cím |
 |---|---|

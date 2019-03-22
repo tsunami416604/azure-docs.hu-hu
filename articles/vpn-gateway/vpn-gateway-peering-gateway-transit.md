@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 91e2a4f49ba52ccbae8838400d54e0f483ca5039
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199630"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
 
@@ -37,8 +37,8 @@ Ez a dokumentum két forgatókönyvet mutat be:
 1. Mindkét virtuális hálózat a Resource Manager-alapú üzemi modellt használja
 2. A küllőn lévő virtuális hálózat klasszikus, az átjáróval rendelkező középponti virtuális hálózat pedig Resource Manager-alapú
 
-> [!IMPORTANT]
-> Az átjáróval történő adatátvitel jelenleg nem támogatja a globális virtuális hálózatok közötti társviszony-létesítést.
+> [!IMPORTANT]  
+> Átjárói átvitel jelenleg támogatott a globális virtuális hálózati társviszony-létesítés előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók, de nem több felhő között. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el. 
 
 ## <a name="requirements"></a>Követelmények
 
@@ -129,13 +129,13 @@ Add-AzVirtualNetworkPeering `
 A lépések hasonlóak a Resource Manager-alapú példához, azzal a kivétellel, hogy a műveletek csak a Hub-RM virtuális hálózaton lesznek alkalmazva.
 
 1. Hozza létre vagy frissítse a virtuális hálózatok közötti, a Hub-RM felől a Spoke-RM irányába mutató társviszonyt az Azure Portalon. Navigáljon a Hub-RM nevű virtuális hálózati előforráshoz, és kattintson a Társviszonyok, majd a Hozzáadás elemre:
-    - A virtuális hálózat üzemi modelljénél válassza a „Klasszikus” beállítást
-    - Válassza ki a „Spoke-Classic” nevű virtuális hálózatot a megfelelő előfizetésben
-    - Győződjön meg róla, hogy a Hálózati hozzáférés engedélyezése beállítás Engedélyezve értékű.
-    - Adja meg az **Átjáróforgalom engedélyezése** beállítást
-    - Kattintson az OK gombra.
+   - A virtuális hálózat üzemi modelljénél válassza a „Klasszikus” beállítást
+   - Válassza ki a „Spoke-Classic” nevű virtuális hálózatot a megfelelő előfizetésben
+   - Győződjön meg róla, hogy a Hálózati hozzáférés engedélyezése beállítás Engedélyezve értékű.
+   - Adja meg az **Átjáróforgalom engedélyezése** beállítást
+   - Kattintson az OK gombra.
 
-    ![hubrm-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+     ![hubrm-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
 
 2. Ha a társviszony már létrejött, keresse meg a társviszony-létesítési erőforrást, majd engedélyezze az **Átjáróforgalom engedélyezése** beállítást az 1. lépésben szereplő képernyőképen látható módon.
 

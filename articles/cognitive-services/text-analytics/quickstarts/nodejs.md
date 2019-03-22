@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: e11e4a59e447a8befcfaedb7ddedbb9aabdfaa28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 61cfb5fa78a735d2ef542c30b445f3200f256d7c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330698"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226929"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Node.js használatával  
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
+A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
 
 <a name="Detect"></a>
 
@@ -36,11 +36,11 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
 A Language Detection API a [Detect Language metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét.
 
-1. Hozzon létre egy új Node.js-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
+2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.
+3. Cserélje le a `accessKey` érték és a egy előfizetési kulcsot a Text Analytics erőforrásból az Azure-ban.
 4. Cserélje le a `uri` helyét (jelenleg `westus`) a regisztrált régióra.
-5. Futtassa a programot.
+5. Futtassa a programot az IDE vagy az parancssor, például `npm start` vagy `node detect.js`.
 
 ```javascript
 'use strict';
@@ -156,13 +156,13 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A Sentiment Analysis API kinyeri a hangulatot a szöveges bejegyzésekből a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
+A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) használatával. Hangulatelemzés segítségével ismerje meg, hogy alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével. Az alábbi példa a pontszámok biztosít két dokumentumot, egy angol nyelvű, míg a másik spanyol.
 
-1. Hozzon létre egy új Node.js-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
+2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.
+3. Cserélje le a `accessKey` érték és a egy előfizetési kulcsot a Text Analytics erőforrásból az Azure-ban.
 4. Cserélje le a `uri` helyét (jelenleg `westus`) a regisztrált régióra.
-5. Futtassa a programot.
+5. Futtassa a programot az IDE vagy az parancssor, például `npm start` vagy `node sentiment.js`.
 
 ```javascript
 'use strict';
@@ -229,7 +229,8 @@ get_sentiments (documents);
 
 **Hangulatelemzési válasz**
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+Az eredmény, ha azt sorolódik közelebb 1.0-s és a negatív közelebb van pontozását 0.0, ha pozitív mérjük.
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -251,13 +252,13 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
-A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) használatával. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
+A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) használatával. Kulcskifejezések kinyerése segítségével gyorsan azonosíthatja a szöveg és a dokumentum a fő pontokat. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
-1. Hozzon létre egy új Node.js-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
+2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.
+3. Cserélje le a `accessKey` érték és a egy előfizetési kulcsot a Text Analytics erőforrásból az Azure-ban.
 4. Cserélje le a `uri` helyét (jelenleg `westus`) a regisztrált régióra.
-5. Futtassa a programot.
+5. Futtassa a programot az IDE vagy az parancssor, például `npm start` vagy `node key-phrases.js`.
 
 ```javascript
 'use strict';
@@ -367,13 +368,13 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="identify-linked-entities"></a>Társított entitások azonosítása
 
-Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) használatával. Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
+Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) használatával. [Entitások](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) kinyerheti a szöveget, például a "Egyesült Államok", majd biztosítson a típusa és/vagy a Wikipédia-hivatkozás esetében a szavak. A típus az "Egyesült Államok" `location`, míg a Wikipedia hivatkozása `https://en.wikipedia.org/wiki/United_States`.  Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
-1. Hozzon létre egy új Node.js-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
+2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.
+3. Cserélje le a `accessKey` érték és a egy előfizetési kulcsot a Text Analytics erőforrásból az Azure-ban.
 4. Cserélje le a `uri` helyét (jelenleg `westus`) a regisztrált régióra.
-5. Futtassa a programot.
+5. Futtassa a programot az IDE vagy az parancssor, például `npm start` vagy `node entities.js`.
 
 ```javascript
 'use strict';
@@ -440,7 +441,7 @@ get_entities (documents);
 
 **Entitáskinyerési válasz**
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {

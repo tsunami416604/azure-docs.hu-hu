@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2f47a145f00748a3366ea5bd1aa961f4b556a08f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835237"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Méretezhető adatelemzés az Azure Data Lake: Egy végpontok közötti forgatókönyv
 Ez az útmutató bemutatja, hogyan használható az Azure Data Lake adatáttekintés és a bináris osztályozási feladatok NYC taxi út mintán és adatkészlet előrejelzési e tipp egy diszkont fizeti díjszabás. Emellett végigvezeti a lépéseken, a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), a végpontok közötti, az adatgyűjtés a tanítási modell, majd a központi telepítését egy webszolgáltatás, amelyet a modell tesz közzé.
@@ -72,17 +72,17 @@ Ez a szakasz útmutatást ezen erőforrások mindegyike létrehozásával. Ha ú
 ### <a name="create-an-azure-data-lake-store"></a>Hozzon létre egy Azure Data Lake Store
 
 
-Hozzon létre egy ADLS a [az Azure portal](http://portal.azure.com). További információkért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Ügyeljen arra, hogy állítsa be a fürt az AAD-identitását a **DataSource** paneljén a **opcionális konfigurációs** panelen leírt hiba.
+Hozzon létre egy ADLS a [az Azure portal](https://portal.azure.com). További információkért lásd: [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Ügyeljen arra, hogy állítsa be a fürt az AAD-identitását a **DataSource** paneljén a **opcionális konfigurációs** panelen leírt hiba.
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>Az Azure Data Lake Analytics-fiók létrehozása
-Az ADLA fiók létrehozása a [az Azure portal](http://portal.azure.com). További információkért lásd: [oktatóprogram: Ismerkedés az Azure Data Lake Analytics az Azure portal használatával](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Az ADLA fiók létrehozása a [az Azure portal](https://portal.azure.com). További információkért lásd: [oktatóprogram: Ismerkedés az Azure Data Lake Analytics az Azure portal használatával](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob storage-fiók létrehozása
-Hozzon létre egy Azure Blob storage-fiókjában az [az Azure portal](http://portal.azure.com). További információkért lásd: a hozzon létre egy tárolási fiók szakaszhoz [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
+Hozzon létre egy Azure Blob storage-fiókjában az [az Azure portal](https://portal.azure.com). További információkért lásd: a hozzon létre egy tárolási fiók szakaszhoz [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -99,7 +99,7 @@ A telepítés sikeres befejezése után nyissa meg a Visual Studio. A Data Lake 
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>A NYC Taxi lelassítja adatkészlet
-Az itt használt adatkészlet a nyilvánosan elérhető adatkészlet--a [NYC Taxi lelassítja adatkészlet](http://www.andresmh.com/nyctaxitrips/). A NYC Taxi útadatok körülbelül 20 GB tömörített CSV-fájlok (~ 48 GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord a begyűjtés és dropoff helyek és időpontok, licencszám anonimizált feltörés (illesztőprogramok) és medallion (taxi az egyedi azonosító) száma tartalmazza. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
+Az itt használt adatkészlet a nyilvánosan elérhető adatkészlet--a [NYC Taxi lelassítja adatkészlet](https://www.andresmh.com/nyctaxitrips/). A NYC Taxi útadatok körülbelül 20 GB tömörített CSV-fájlok (~ 48 GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord a begyűjtés és dropoff helyek és időpontok, licencszám anonimizált feltörés (illesztőprogramok) és medallion (taxi az egyedi azonosító) száma tartalmazza. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
 
 "Trip_data" CSV trip részleteit, például az utasok, begyűjtést és dropoff pontok, út időtartama és út hossza számát tartalmazza. Az alábbiakban néhány példa rekordokat:
 
@@ -147,7 +147,8 @@ Hajtsa végre a U-SQL használatával, nyissa meg a Visual Studióban kattintson
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>Adatok betöltése céljából: A nyilvános blob adatainak olvasása
-Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét az alábbi parancsfájlok a container_name@blob_storage_account_name wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_data_ {\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt.
+
+Az Azure blobban lévő adatok helyét hivatkozott **wasb://container\_neve\@blob\_tárolási\_fiók\_name.blob.core.windows.net/blob_name**használatával képes kinyerni és **Extractors.Csv()**. Helyettesítse be a saját tároló neve és a tárfiók nevét a következő parancsfájlok tároló\_neve\@blob\_tárolási\_fiók\_nevű wasb-címét. Mivel ugyanazt a formátumot a fájlneveket, lehetőség használni **út\_adatok\_\{\*\}.csv** , olvassa el az összes 12 útadatokat tartalmazó fájlt.
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +171,7 @@ Az Azure blobban lévő adatok helyét hivatkozott **wasb://container_name@blob_
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-Mivel az első sorban a fejlécek, távolítsa el a fejlécek, és megfelelő azokat az oszlop típusának módosítása szüksége. Mentés a feldolgozott adatokat az Azure Data Lake Storage használatával elvégezhető **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ vagy az Azure Blob storage-fiók használatával  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**.
+Mivel az első sorban a fejlécek, távolítsa el a fejlécek, és megfelelő azokat az oszlop típusának módosítása szüksége. Mentés a feldolgozott adatokat az Azure Data Lake Storage használatával elvégezhető **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ vagy az Azure Blob storage-fiók használatával **wasb: / / container_name\@blob_storage_account_name.blob.core.windows.net/blob_name**.
 
     // change data types
     @trip =
@@ -596,7 +597,7 @@ Szeretné üzembe helyezése a gépi tanulási modell, miután állították ös
 Az Azure Machine Learning Studio tudja olvasni az adatokat közvetlenül az Azure Data Lake Store, és hozzon létre és helyezhet üzembe modelleket majd használni. Ez a megközelítés használja a Hive-tábla, amely az Azure Data Lake Store mutat. Ehhez az szükséges, hogy egy külön Azure HDInsight-fürt építhető ki, amelyen létrehozták a Hive-táblában. A következő szakaszok bemutatják, hogyan teheti ezt.
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux-fürt létrehozása
-Hozzon létre egy HDInsight-fürt (Linux) a [az Azure portal](http://portal.azure.com). További információkért lásd: a **egy HDInsight-fürt létrehozása az Azure Data Lake Store-hozzáféréssel rendelkező** szakasz [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Hozzon létre egy HDInsight-fürt (Linux) a [az Azure portal](https://portal.azure.com). További információkért lásd: a **egy HDInsight-fürt létrehozása az Azure Data Lake Store-hozzáféréssel rendelkező** szakasz [egy HDInsight-fürt létrehozása a Data Lake Store az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

@@ -3,18 +3,18 @@ title: Spark Streamelés az Azure HDInsight a
 description: Spark Streaming alkalmazások használata a HDInsight Spark-fürtön.
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.openlocfilehash: d44dc7e7a7b3c63012518c3e854270555f469247
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 03/11/2019
+ms.openlocfilehash: 3ecabd683ed4303a7ff54780299ed0e83aa14c26
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892079"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Az Apache Spark Stream áttekintése
 
@@ -55,86 +55,103 @@ Ez a definíció statikus, és nincs adatot dolgoz fel, amíg az alkalmazás fut
 
 #### <a name="create-a-streamingcontext"></a>Hozzon létre egy StreamingContext
 
-Hozzon létre egy StreamingContext a sparkcontext elemet, amely a fürt mutat. Egy StreamingContext létrehozásakor megadhatja a Köteg mérete (másodpercben), például:
+Hozzon létre egy StreamingContext a sparkcontext elemet, amely a fürt mutat. Egy StreamingContext létrehozásakor megadhatja a Köteg mérete (másodpercben), például:  
 
-    val ssc = new StreamingContext(spark, Seconds(1))
+```
+import org.apache.spark._
+import org.apache.spark.streaming._
+
+val ssc = new StreamingContext(sc, Seconds(1))
+```
 
 #### <a name="create-a-dstream"></a>Hozzon létre egy DStream
 
 A StreamingContext példánnyal hozzon létre egy bemeneti DStream a bemeneti forráshoz. Ebben az esetben az alkalmazás számára új fájlokat a csatlakoztatott a HDInsight-fürt alapértelmezett tárolója megjelenésének állapotfigyelőszolgáltatás.
 
-    val lines = ssc.textFileStream("/uploads/2017/01/")
+```
+val lines = ssc.textFileStream("/uploads/Test/")
+```
 
 #### <a name="apply-transformations"></a>Átalakítások
 
 Meg, hogy a feldolgozás alkalmazásának a DStream átalakításokat. Ezt az alkalmazást egyszerre több sornyi szöveg fogad a fájlt, az egyes sorok felosztja a szavak és map-reduce minta használatával minden egyes szó jelenik meg, hányszor száma.
 
-    val words = lines.flatMap(_.split(" "))
-    val pairs = words.map(word => (word, 1))
-    val wordCounts = pairs.reduceByKey(_ + _)
+```
+val words = lines.flatMap(_.split(" "))
+val pairs = words.map(word => (word, 1))
+val wordCounts = pairs.reduceByKey(_ + _)
+```
 
 #### <a name="output-results"></a>Kimeneti eredményei
 
 Az átalakítási eredmények leküldése a cél rendszerek kimeneti műveletek alkalmazásával. Ebben az esetben a konzol kimenete az eredmény az egyes futtatások keresztül a számítási van nyomtatva.
 
-    wordCounts.print()
+```
+wordCounts.print()
+```
 
 ### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Indítsa el az adatfolyam-továbbítási alkalmazást, és futtassa addig, amíg egy lezáró jel érkezik.
 
-    ssc.start()            
-    ssc.awaitTermination()
+```
+ssc.start()
+ssc.awaitTermination()
+```
 
 További információ az Eseményforrások, átalakítás és kimeneti műveletek támogatja, a Spark Stream API: [Apache Spark programozási útmutató Streamelési](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
 A következő mintaalkalmazás az önálló, ezért is futtathatja azt egy [Jupyter Notebook](apache-spark-jupyter-notebook-kernels.md). Ebben a példában egy utánzatként funkcionáló adatforrás az osztály, amely egy számláló és az aktuális idő (MS) értékét öt másodpercenként DummySource hoz létre. Egy új StreamingContext objektumnak egy kötegelési időkö pedig 30 másodperc. Minden alkalommal, amikor egy naplólapot hoznak létre, a streamelési megvizsgálja az RDD előállított, az RDD alakítja át a Spark DataFrame-alkalmazások keresztül az adathalmaz egy ideiglenes táblát hoz létre.
 
-    class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
+```
+class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
 
-        /** Start the thread that simulates receiving data */
-        def onStart() {
-            new Thread("Dummy Source") { override def run() { receive() } }.start()
-        }
-
-        def onStop() {  }
-
-        /** Periodically generate a random number from 0 to 9, and the timestamp */
-        private def receive() {
-            var counter = 0  
-            while(!isStopped()) {
-                store(Iterator((counter, System.currentTimeMillis)))
-                counter += 1
-                Thread.sleep(5000)
-            }
-        }
+    /** Start the thread that simulates receiving data */
+    def onStart() {
+        new Thread("Dummy Source") { override def run() { receive() } }.start()
     }
 
-    // A batch is created every 30 seconds
-    val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
+    def onStop() {  }
 
-    // Set the active SQLContext so that we can access it statically within the foreachRDD
-    org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
+    /** Periodically generate a random number from 0 to 9, and the timestamp */
+    private def receive() {
+        var counter = 0  
+        while(!isStopped()) {
+            store(Iterator((counter, System.currentTimeMillis)))
+            counter += 1
+            Thread.sleep(5000)
+        }
+    }
+}
 
-    // Create the stream
-    val stream = ssc.receiverStream(new DummySource())
+// A batch is created every 30 seconds
+val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
 
-    // Process RDDs in the batch
-    stream.foreachRDD { rdd =>
+// Set the active SQLContext so that we can access it statically within the foreachRDD
+org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
 
-        // Access the SQLContext and create a table called demo_numbers we can query
-        val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
-        _sqlContext.createDataFrame(rdd).toDF("value", "time")
-            .registerTempTable("demo_numbers")
-    } 
+// Create the stream
+val stream = ssc.receiverStream(new DummySource())
 
-    // Start the stream processing
-    ssc.start()
+// Process RDDs in the batch
+stream.foreachRDD { rdd =>
 
-Ezután lekérdezheti rendszeres időközönként, tekintse meg az aktuális készletét a batch az értékek az adathalmaz például az az SQL-lekérdezést:
+    // Access the SQLContext and create a table called demo_numbers we can query
+    val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
+    _sqlContext.createDataFrame(rdd).toDF("value", "time")
+        .registerTempTable("demo_numbers")
+} 
 
-    %%sql
-    SELECT * FROM demo_numbers
+// Start the stream processing
+ssc.start()
+```
+
+Várjon, amíg a fenti alkalmazás elindítása után körülbelül 30 másodpercet.  Ezután lekérdezheti rendszeres időközönként, tekintse meg az aktuális készletét a batch az értékek az adathalmaz például az az SQL-lekérdezést:
+
+```sql
+%%sql
+SELECT * FROM demo_numbers
+```
 
 A kimenet az alábbihoz hasonló:
 
@@ -161,26 +178,48 @@ Késleltetett windows átfedésben is vannak, például meghatározhat egy ablak
 
 Az alábbi példa frissíti a kódot, amely használja a DummySource gyűjtése a köteg egy-egy egy perces időtartamot és a egy egy perces dia ablakot.
 
-    // A batch is created every 30 seconds
-    val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
+```
+class DummySource extends org.apache.spark.streaming.receiver.Receiver[(Int, Long)](org.apache.spark.storage.StorageLevel.MEMORY_AND_DISK_2) {
 
-    // Set the active SQLContext so that we can access it statically within the foreachRDD
-    org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
+    /** Start the thread that simulates receiving data */
+    def onStart() {
+        new Thread("Dummy Source") { override def run() { receive() } }.start()
+    }
 
-    // Create the stream
-    val stream = ssc.receiverStream(new DummySource())
+    def onStop() {  }
 
-    // Process batches in 1 minute windows
-    stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
+    /** Periodically generate a random number from 0 to 9, and the timestamp */
+    private def receive() {
+        var counter = 0  
+        while(!isStopped()) {
+            store(Iterator((counter, System.currentTimeMillis)))
+            counter += 1
+            Thread.sleep(5000)
+        }
+    }
+}
 
-        // Access the SQLContext and create a table called demo_numbers we can query
-        val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
-        _sqlContext.createDataFrame(rdd).toDF("value", "time")
-        .registerTempTable("demo_numbers")
-    } 
+// A batch is created every 30 seconds
+val ssc = new org.apache.spark.streaming.StreamingContext(spark.sparkContext, org.apache.spark.streaming.Seconds(30))
 
-    // Start the stream processing
-    ssc.start()
+// Set the active SQLContext so that we can access it statically within the foreachRDD
+org.apache.spark.sql.SQLContext.setActive(spark.sqlContext)
+
+// Create the stream
+val stream = ssc.receiverStream(new DummySource())
+
+// Process batches in 1 minute windows
+stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
+
+    // Access the SQLContext and create a table called demo_numbers we can query
+    val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
+    _sqlContext.createDataFrame(rdd).toDF("value", "time")
+    .registerTempTable("demo_numbers")
+} 
+
+// Start the stream processing
+ssc.start()
+```
 
 Az első perc után nincsenek 12 – az egyes ablakban gyűjtött két köteg hat bejegyzéseket.
 

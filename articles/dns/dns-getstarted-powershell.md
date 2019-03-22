@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 5bf4c99d511e35b697ab383069aab1b31674621b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 75ac8a45eb49ac5c4ec3b39667542f4f454a9954
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771638"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110324"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Gyors útmutató: Hozzon létre egy Azure DNS-zóna és -rekord Azure PowerShell-lel
 
@@ -90,7 +90,7 @@ Most, hogy a teszt DNS-zóna egy teszt "A" rekord, ezt kipróbálhatja a névfel
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Az állomásnév **www.contoso.xyz** mutat **10.10.10.10**, ugyanúgy, mint a be vannak állítva ezek. Ezt az eredményt ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+Az állomásnév **www\.contoso.xyz** mutat **10.10.10.10**, ugyanúgy, mint a be vannak állítva ezek. Ezt az eredményt ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
 ## <a name="delete-all-resources"></a>Az összes erőforrás törlése
 

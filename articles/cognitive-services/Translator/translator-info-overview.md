@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 80c9944628eaa828a34ea16eb9f79271d6cd5728
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729211"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883372"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
@@ -28,7 +28,7 @@ A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligen
 
 A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a Translator Text API, amely a Microsoft számos termékét és szolgáltatását szolgálja ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
 
-A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. A Translator Speech API, a Bing Speech API és a Custom Speech Service (előzetes verzió) funkcióit egyesíti egy egységes és teljesen testre szabható szolgáltatásban. A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
+A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egy egységes és teljes mértékben testre szabható szolgáltatásba a Translator Speech API és a Custom Speech Service funkcióit ötvözi. A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

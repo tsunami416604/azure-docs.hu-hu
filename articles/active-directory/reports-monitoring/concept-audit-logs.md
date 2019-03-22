@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65bc0c0ee1ccc1e1f3da5e364582534dfbc0d425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf069e053068eaee3f36153c3888e6c711724267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182166"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -98,7 +98,7 @@ A **szolgáltatás** szűrő lehetővé teszi, hogy a következő szolgáltatás
 - B2C
 - Feltételes hozzáférés
 - Alapvető könyvtár
-- Tagjogosultság-kezelés
+- Jogosultságkezelés
 - Identity Protection
 - Meghívott felhasználók
 - PIM
@@ -204,7 +204,7 @@ Ha szeretné ellenőrizni az alkalmazásaihoz kapcsolódó naplózási adatokat,
 
 ## <a name="office-365-activity-logs"></a>Az Office 365-Tevékenységnaplók
 
-Az Office 365-Tevékenységnaplók is megtekintheti a [Office 365 felügyeleti központ](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, csak az Office 365 felügyeleti központban az Office 365-Tevékenységnaplók teljes nézetét jeleníti meg. 
+Az Office 365-Tevékenységnaplók is megtekintheti a [Microsoft 365 felügyeleti központban](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Annak ellenére, hogy az Office 365-Tevékenységnaplók és az Azure AD tevékenység naplók a könyvtár-erőforrások jelentős részén osztoznak, csak a Microsoft 365 felügyeleti központban az Office 365-Tevékenységnaplók teljes nézetét jeleníti meg. 
 
 Az Office 365 tevékenységeket tartalmazó naplók programozott módon használatával is elérheti a [Office 365 felügyeleti API-k](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 

@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727162"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005849"
 ---
 # <a name="azure-log-integration-faq"></a>Az Azure Log Integration – gyakori kérdések
 
@@ -99,7 +99,7 @@ A **azlog createazureid** a parancs megpróbál egy egyszerű szolgáltatás lé
 
 Hiba:
 
-  *Szerepkör-hozzárendelés - AuthorizationFailed létrehozása figyelmeztetés: Az ügyfél janedo@microsoft.com"objektum"fe9e03e4-4dad-4328-910f-fd24a9660bd2"azonosítója nem rendelkezik a 'Microsoft.Authorization/roleAssignments/write' művelet végrehajtására"/ subscriptions/70 95299-d689-4 c d 97 – b971-0d8ff0000000"hatókörben.*
+  *Szerepkör-hozzárendelés - AuthorizationFailed létrehozása figyelmeztetés: Az ügyfél janedo\@microsoft.com "objektum"fe9e03e4-4dad-4328-910f-fd24a9660bd2"azonosítója nem kell hatókörben 'Microsoft.Authorization/roleAssignments/write' művelet végrehajtására" /subscriptions/ 97 – b971-0d8ff0000000 95299-d689-4c 70d ".*
 
 A **azlog engedélyezése** parancsot az Olvasó szerepkörhöz rendel az Azure AD egyszerű szolgáltatás (létrehozott **azlog createazureid**) a megadott előfizetéshez. Ha az Azure-azonosító nem egy társ-rendszergazdaként vagy az előfizetés tulajdonosa, "Engedélyezése nem sikerült" hibaüzenettel meghiúsul. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) társ-rendszergazdaként vagy a tulajdonos van szükség a művelet végrehajtásához.
 

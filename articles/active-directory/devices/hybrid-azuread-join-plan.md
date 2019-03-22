@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 018281406bb810f6357ad00948060cedae57fc6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de80825ccdd331f57dcd31d307196dc0b45b9cc9
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003812"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294586"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -116,7 +116,8 @@ Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az 
 
 Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztrált](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) a bérlőjéhez, erősen ajánlott, hogy az állapot eltávolítása a hibrid Azure AD-csatlakozás engedélyezése előtt. A Windows 10-es 1809 a kiadásban a következő módosításokat végzett változtatások elkerülése érdekében ebben a kettős állapota: 
  - Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez. 
- - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001
+ - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001.
+ - Ez a változás most KB4489894 a Windows 10 1803-kiadásban érhető el.
 
 A FIPS-kompatibilis TPM hibrid Azure AD join nem támogatott. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt. A Microsoft nem biztosít minden olyan eszközt, a TPM letiltása FIPS-módban, a TPM gyártója függ. Lépjen kapcsolatba a hardver OEM támogatása.
 

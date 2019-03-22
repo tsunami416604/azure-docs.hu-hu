@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ee91c9f152d72fbcc58cb4707af9420a57a1517b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984817"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224197"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
-Hozhat létre egy az imént leküldött rendszerkép használó alkalmazás, hozzon létre egy csoportot, majd egy szolgáltatáscsomagot, és végül magát a webalkalmazást az Azure CLI-parancsok futtatásához. 
+Szeretne létrehozni egy alkalmazást, amelyet az imént leküldött rendszerkép használ, hozzon létre egy csoportot, majd egy szolgáltatáscsomagot, és végül magát a webalkalmazást az Azure CLI-parancsok futtatásához. 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -526,6 +526,9 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 > [!NOTE]
 > `https://` használata szükséges a *\<docker-registry-server-url>* esetén.
 >
+> [!NOTE]
+> Beállításjegyzék dockerhub, eltérő használatakor `docker-custom-image-name` kell tartalmaznia a teljes tartománynév (FQDN) a tárolójegyzék nevére.  
+> Az Azure Container Registry esetében ez így fog kinézni: `<azure-container-registry>.azurecr.io/mydockerimage`.
 
 A parancs a következő JSON-sztringhez hasonló kimenetet jelenít meg, ezzel jelezve, hogy a konfiguráció módosítása sikeres volt:
 

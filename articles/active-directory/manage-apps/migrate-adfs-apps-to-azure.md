@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43a8a316ff28d2cdb9e231057aea3de85d7d444
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f2739b5d2d944ea9a8b8cefdcc741abc8a2b632a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205579"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113401"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
@@ -99,7 +99,7 @@ A migrálás első lépéseként mérje fel az alkalmazás helyszíni konfigurá
 |Alkalmazáskonfigurációs elem|Leírás|Hely az AD-FS-beli konfigurációban|A megfelelő hely az Azure AD-beli konfigurációban|SAML-jogkivonat eleme|
 |-----|-----|-----|-----|-----|
 |Alkalmazás bejelentkezési URL-címe|Az alkalmazás bejelentkezési oldalának URL-címe. A felhasználó itt jelentkezhet be az alkalmazásba az SP által kezdeményezett SAML-folyamatok keretében.|–|Az Azure AD-ben a bejelentkezési URL-cím az Azure Portalon, az alkalmazás **Egyszeri bejelentkezési** tulajdonságainál, bejelentkezési URL-cím néven van konfigurálva.</br></br>(Lehetséges, hogy a bejelentkezési URL-cím megjelenítéséhez a **Speciális URL-beállítások megjelenítése** elemre kell kattintania.)|–|
-|Alkalmazás válasz URL-címe|Az alkalmazás az identitásszolgáltató által használt URL-címe. Az identitásszolgáltató ide küldi a felhasználó adatait és a jogkivonatot, miután a felhasználó bejelentkezett az identitásszolgáltatóra.</br></br> Ezt az „SAML helyességi feltétel fogyasztói végpontjának” is hívják.|Az alkalmazás AD FS-beli függő entitás megbízhatóságának részét képezi. Kattintson a jobb gombbal a függő entitásra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Végpontok** lapot.|Az Azure AD-ben a válasz URL-cím az Azure Portalon, az alkalmazás **Egyszeri bejelentkezési** tulajdonságainál, válasz URL-cím néven van konfigurálva.</br></br>(Lehetséges, hogy a bejelentkezési URL-cím megjelenítéséhez a **Speciális URL-beállítások megjelenítése** elemre kell kattintania.)|Az SAML-jogkivonat **Cél** elemének felel meg.</br></br> Példaérték: https://contoso.my.salesforce.com|
+|Alkalmazás válasz URL-címe|Az alkalmazás az identitásszolgáltató által használt URL-címe. Az identitásszolgáltató ide küldi a felhasználó adatait és a jogkivonatot, miután a felhasználó bejelentkezett az identitásszolgáltatóra.</br></br> Ezt az „SAML helyességi feltétel fogyasztói végpontjának” is hívják.|Az alkalmazás AD FS-beli függő entitás megbízhatóságának részét képezi. Kattintson a jobb gombbal a függő entitásra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Végpontok** lapot.|Az Azure AD-ben a válasz URL-cím az Azure Portalon, az alkalmazás **Egyszeri bejelentkezési** tulajdonságainál, válasz URL-cím néven van konfigurálva.</br></br>(Lehetséges, hogy a bejelentkezési URL-cím megjelenítéséhez a **Speciális URL-beállítások megjelenítése** elemre kell kattintania.)|Az SAML-jogkivonat **Cél** elemének felel meg.</br></br> Példaérték: `https://contoso.my.salesforce.com`|
 |Alkalmazás kijelentkezési URL-címe|Erre az URL-címre a felhasználók kijelentkezésekor a „kijelentkezési tisztítási” kérések érkeznek, amelyek az összes többi alkalmazásból kijelentkeztetik a felhasználót, amelyekbe az identitásszolgáltató bejelentkeztette.|Az AD FS-kezelőben a **Függő entitások megbízhatósága** alatt található. Kattintson a jobb gombbal a függő entitásra, válassza a **Tulajdonságok** parancsot, majd nyissa meg a **Végpontok** lapot.|N/A. Az Azure AD nem támogatja az „egyszeri kijelentkezést”, azaz az összes alkalmazásból való kijelentkezést. Egyszerűen magából az Azure AD-ből jelentkezteti ki a felhasználót.|–|
 |Alkalmazásazonosító|Az alkalmazás identitásszolgáltató által használt azonosítója. Gyakran (de nem mindig) a bejelentkezési URL-cím az azonosító.</br></br> Az alkalmazás időnként „entitásazonosítóként” hivatkozik rá.|Az AD FS-ben ez a függő entitás azonosítója. Kattintson a jobb gombbal a függő entitás megbízhatóságára, válassza a **Tulajdonságok** parancsot, majd nyissa meg az **Azonosítók** lapot.|Az Azure AD-ben az azonosító az Azure Portalon, az alkalmazás **egyszeri bejelentkezési** tulajdonságainál, a **Tartomány és URL-címek** területen, Azonosító néven van konfigurálva. (Lehetséges, hogy a megjelenítéséhez be kell jelölnie a **Speciális URL-beállítások megjelenítése** jelölőnégyzetet.)|Az SAML-jogkivonat **Célközönség** elemének felel meg.|
 |Alkalmazás összevonási metaadatai|Az alkalmazás összevonási metaadatainak helye. Az identitásszolgáltató használja egyes konfigurációs beállítások, például a végpontok vagy a titkosítási tanúsítványok automatikus frissítéséhez.|Az alkalmazás összevonási metaadatainak URL-címe az alkalmazás AD FS-beli függő entitás megbízhatóságának részét képezi. Kattintson jobb gombbal a megbízhatóságra, válassza a **Tulajdonságok** parancsot, majd válassza a **Figyelés** lapot.|N/A. Az Azure AD nem támogatja az alkalmazások összevonási metaadatainak közvetlen felhasználását.|–|

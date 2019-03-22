@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7badd00d6d68b9bb27ff55b5954a44abc74b22
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778298"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849958"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Oktatóanyag: Mimecast felügyeleti konzol az Azure Active Directory-integráció
 
@@ -106,6 +106,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Mimecast felügyelet
     ![Mimecast rendszergazdai konzol tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím:
+    
     | |
     | -- |
     | `https://webmail-uk.mimecast.com`|
@@ -187,7 +188,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 8b895580f2edc0b7af1c6195212490ce083208ad
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991155"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011080"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Ajánlott eljárások biztonságossá tétele és a számítási feladatok kezelése az Azure-bA migrálása
 
@@ -267,7 +267,7 @@ Gyakran használata csak erőforráscsoport nevét erőforrásokhoz kapcsolódó
 
 - [Ismerje meg](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) címkézést és a címke korlátozások.
 - [Felülvizsgálat](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#powershell) PowerShell és CLI-példák, állítsa be a címkézés és a alkalmazni a címkét egy erőforráscsoport erőforrásainak.
-- [Olvasási](http://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) címkézés ajánlott eljárások Azure.
+- [Olvasási](https://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/) címkézés ajánlott eljárások Azure.
 
 
 ## <a name="best-practice-implement-blueprints"></a>Ajánlott eljárás: Tervezetek megvalósítása

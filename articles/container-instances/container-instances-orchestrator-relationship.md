@@ -2,18 +2,18 @@
 title: Az Azure Container Instances és tárolóvezénylés
 description: Ismerje meg, hogyan az Azure container instances használatához tárolóvezénylőt az.
 services: container-instances
-author: seanmck
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: seanmck
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845806"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838147"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Az Azure Container Instances és tárolóvezénylőt
 
@@ -25,16 +25,16 @@ Az Azure Container Instances néhány vezénylési platformokra alapszintű üte
 
 Vezénylési standard definícióját a következő feladatokból áll:
 
-- **Ütemezés**: egy tárolórendszerképet, és a egy erőforrás-kérelmet kap, keresse meg a megfelelő gép, amelyen a tároló futtatásához.
+- **Ütemezés**: Adja meg egy tárolórendszerképet, és a egy erőforrás-kérelemben, keresse meg egy megfelelő gép, amelyen a tároló futtatásához.
 - **Kapcsolat/Anti-affinity**: Adja meg, hogy a tárolók kell a Futtatás közeli hasznos helyek egymással (a teljesítmény) vagy elég távolságra (a rendelkezésre állás érdekében).
-- **Szolgáltatásállapot-figyelést**: nézze meg a tároló hibák, és automatikusan le őket.
-- **Feladatátvétel**: nyomon követheti az összes olyan számítógépen futó, és ütemezze újra a sikertelen gépekről tárolók a megfelelő állapotú csomópontokat.
-- **Skálázás**: hozzáadása vagy eltávolítása a megfelelő igény szerint, manuálisan vagy automatikusan a container Instances szolgáltatásban.
-- **Hálózatkezelés**: Adjon meg egy fölérétegzett hálózatot a gazdagép több gép közötti kommunikációhoz tárolók összehangolása.
-- **A szolgáltatásészlelés**: tárolók keresse meg egymással automatikusan, még akkor is, mivel azok között gazdagépekre, és módosítsa az IP-címek engedélyezése.
-- **Alkalmazásfrissítések koordinált**: alkalmazás üzemszünet elkerülése érdekében a tároló frissítések kezelése, és a visszaállítás engedélyezése, ha valami probléma merül fel.
+- **Szolgáltatásállapot-figyelést**: Tekintse meg a tároló hibák, és automatikusan le őket.
+- **Feladatátvétel**: Nyomon követheti az összes olyan számítógépen futó, és ütemezze újra a sikertelen gépekről tárolók a megfelelő állapotú csomópontokat.
+- **Skálázás**: Adja hozzá, vagy távolítsa el a megfelelő igény szerint, manuálisan vagy automatikusan a container Instances szolgáltatásban.
+- **Hálózatkezelés**: Adjon meg egy fölérétegzett hálózatot a gazdagép több gép közötti kommunikáció koordináló tárolók.
+- **A szolgáltatásészlelés**: Tárolók keresse meg egymással automatikusan, még akkor is, mivel azok között gazdagépekre, és módosítsa az IP-címek engedélyezése.
+- **Alkalmazásfrissítések koordinált**: Alkalmazás üzemszünet elkerülése érdekében a tároló frissítések kezelése, és a visszaállítás engedélyezése, ha valami probléma merül fel.
 
-## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Az Azure Container Instances vezénylési: rétegelt megközelítést
+## <a name="orchestration-with-azure-container-instances-a-layered-approach"></a>Vezénylési az Azure Container Instances szolgáltatással: A rétegelt megközelítést
 
 Az Azure Container Instances lehetővé teszi a réteges megközelítésének szervezését, minden egyetlen tároló, miközben lehetővé teszi az orchestrator platform többtárolós feladatait megkönnyítése végrehajtásához szükséges ütemezés és a felügyeleti képességet biztosít.
 

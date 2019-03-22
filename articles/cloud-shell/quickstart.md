@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 56a4645c5f86e9f95e82533b7f5f81b7bca51e7b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245318"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089148"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Rövid útmutató a Bash Azure Cloud shellben
 
@@ -44,14 +44,14 @@ Ellenőrizze, hogy a környezet legördülő a bal oldalon a rendszerhéj ablak�
 
 ### <a name="set-your-subscription"></a>Az előfizetés beállítása
 1. Lista előfizetések hozzáfér.
-```azurecli-interactive
-az account list
-```
+   ```azurecli-interactive
+   az account list
+   ```
 
 2. Állítsa be az előnyben részesített előfizetést: <br>
-```azurecli-interactive
-az account set --subscription my-subscription-name`
-```
+   ```azurecli-interactive
+   az account set --subscription my-subscription-name`
+   ```
 
 > [!TIP]
 > Az előfizetés használatával későbbi munkamenet során a rendszer megjegyzi `/home/<user>/.azure/azureProfile.json`.
@@ -77,26 +77,26 @@ A felhasználónév, a virtuális gépen lesznek a Cloud shellben használt felh
 ### <a name="ssh-into-your-linux-vm"></a>SSH a Linux rendszerű virtuális Gépre való
 1. Keresse meg a virtuális gép nevét, az Azure portal keresősávba.
 2. Kattintson a "Csatlakozás" a virtuális gép nevét és a nyilvános IP-címet. <br>
-![](media/quickstart/sshcmd-copy.png)
+   ![](media/quickstart/sshcmd-copy.png)
 
 3. SSH és a virtuális Gépre való a `ssh` cmd-ből.
-```
-ssh username@ipaddress
-```
+   ```
+   ssh username@ipaddress
+   ```
 
 Esetén az SSH-kapcsolat létrehozásakor, az Ubuntu üdvözlő üzenet megjelenik. <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Takarítás 
 1. Kilépés az ssh munkamenet.
-```azurecli-interactive
-exit
-```
+   ```azurecli-interactive
+   exit
+   ```
 
 2. Törölje az erőforráscsoportot és a benne lévő erőforrásokat.
-```azurecli-interactive
-az group delete -n MyRG
-```
+   ```azurecli-interactive
+   az group delete -n MyRG
+   ```
 
 ## <a name="next-steps"></a>További lépések
 [További információk a fájlokat a Cloud Shell Bash](persisting-shell-storage.md) <br>

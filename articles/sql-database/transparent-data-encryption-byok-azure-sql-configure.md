@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 6669be82877ae5d9465e23dad3c8b310cf24af89
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576769"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871642"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: Transzparens adattitkosítás engedélyezése az Azure Key Vault az ügyfél által felügyelt kulccsal
 
@@ -26,16 +26,18 @@ Ez a cikk végigvezeti a transzparens adattitkosítás (TDE) egy SQL-adatbázis 
 ## <a name="prerequisites-for-powershell"></a>PowerShell előfeltételei
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda.
 - [Opcionális de javasolt] Rendelkezik egy hardveres biztonsági modul (HSM) vagy a helyi kulcs létrehozásához a TDE-Védőhöz megosztottkulcs-anyag helyi másolatát tárolja.
 - Azure PowerShell telepítenie és futtatnia kell rendelkeznie. 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
-   - [Key vault PowerShell-utasítások](../key-vault/key-vault-overview.md)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
- - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
+  - [Key vault PowerShell-utasítások](../key-vault/key-vault-overview.md)
+  - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
+    - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](../key-vault/key-vault-soft-delete-powershell.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
    - Nincs letiltva
@@ -175,7 +177,7 @@ Használja a [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ellenőrizze a következőket a probléma akkor fordul elő, ha:
-- Ha a key vault nem található, ellenőrizze, hogy használja-e a megfelelő előfizetést használ a [Get-AzSubscription](/powershell/module/az.account/get-azsubscription) parancsmagot.
+- Ha a key vault nem található, ellenőrizze, hogy használja-e a megfelelő előfizetést használ a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsmagot.
 
    ```powershell
    Get-AzSubscription `
@@ -195,13 +197,13 @@ Ellenőrizze a következőket a probléma akkor fordul elő, ha:
 
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda.
 - [Opcionális de javasolt] Rendelkezik egy hardveres biztonsági modul (HSM) vagy a helyi kulcs létrehozásához a TDE-Védőhöz megosztottkulcs-anyag helyi másolatát tárolja.
-- Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verziót, és csatlakozzon az Azure-előfizetéshez, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+- Parancssori felület 2.0-s vagy újabb verziója. Telepítse a legújabb verziót, és csatlakozzon az Azure-előfizetéshez, lásd: [telepítése és konfigurálása az Azure többplatformos parancssori felület 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 - Hozzon létre egy Azure Key Vault és a kulcs TDE használatára.
-   - [CLI 2.0 használatával a Key Vault felügyelete](../key-vault/key-vault-manage-with-cli2.md)
-   - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
- - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
-   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
-   - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 
+  - [CLI 2.0 használatával a Key Vault felügyelete](../key-vault/key-vault-manage-with-cli2.md)
+  - [Egy hardveres biztonsági modul (HSM) és a Key Vault használatára vonatkozó utasítások](../key-vault/key-vault-hsm-protected-keys.md)
+    - A key vaultban kell rendelkeznie a TDE használható a következő tulajdonság:
+  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](../key-vault/key-vault-soft-delete-cli.md) 
 - A kulcs TDE használható a következő attribútumokkal kell rendelkeznie:
    - Lejárati dátum nélküli
    - Nincs letiltva
@@ -263,11 +265,11 @@ Az adatbázis, sem az adattárházra most már TDE engedélyezve van az Azure Ke
 
 ## <a name="sql-cli-references"></a>SQL-CLI referenciák
 
-https://docs.microsoft.com/cli/azure/sql?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql 
 
-https://docs.microsoft.com/cli/azure/sql/server/key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/key 
 
-https://docs.microsoft.com/cli/azure/sql/server/tde-key?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/server/tde-key 
 
-https://docs.microsoft.com/cli/azure/sql/db/tde?view=azure-cli-latest 
+https://docs.microsoft.com/cli/azure/sql/db/tde 
 

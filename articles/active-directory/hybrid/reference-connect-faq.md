@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194971"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840902"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
 ## <a name="general-installation"></a>Általános telepítési
+
+**K: Hogyan lehet erősíti meg a saját Azure AD Connect-kiszolgáló a biztonsági támadási felület csökkentése érdekében?**
+
+A Microsoft azt javasolja, csökkentheti a biztonsági támadási felületet a kritikus összetevője az informatikai környezet az Azure AD Connect kiszolgáló korlátozására.  Az alábbi javaslatok csökkenti a biztonsági kockázatokat, a szervezet számára.
+
+* Üzembe helyezése az Azure AD Connect egy tartományhoz csatlakoztatott kiszolgálón és a tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok való rendszergazdai hozzáférés korlátozása
+
+További tudnivalókért lásd: 
+
+* [Biztonságossá tétele a Rendszergazdák csoport](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Beépített rendszergazdai fiókok védelme](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Támadási felület csökkentésével sustainment és biztonsági javítása](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Az Active Directory támadási felületének csökkentése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **K: Működik-e a telepítés, ha az Azure Active Directory (Azure AD) globális rendszergazda a kétfaktoros hitelesítés (2FA) engedélyezve van?**  
 Ez a forgatókönyv cikk az 2016. február buildek esetében támogatott.
 

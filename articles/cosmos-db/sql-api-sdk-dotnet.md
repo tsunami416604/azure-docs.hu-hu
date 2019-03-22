@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 92d5d458615b029553dee2f8047c85e3fb5f9696
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892597"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838918"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -47,6 +47,10 @@ ms.locfileid: "55892597"
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* Diagnosztikai
 
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2.
 
@@ -357,6 +361,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |2019. február 11. |--- |
 | [2.2.2](#2.2.2) |2019. február 06. |--- |
 | [2.2.1](#2.2.1) |2018. december 24. |--- |
 | [2.2.0](#2.2.0) |2018. december 07. |--- |

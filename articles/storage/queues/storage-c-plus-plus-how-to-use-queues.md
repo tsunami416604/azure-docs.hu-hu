@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
 ms.subservice: queues
-ms.openlocfilehash: b1a566c4179e940b82790c69b3036e3be9e352cc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 08c865e5383e4095a22aa6c10c8b181f916d1d30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999421"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A c++ segítségével a Queue Storage használata
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,10 +23,10 @@ ms.locfileid: "55564527"
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre az Azure Queue storage szolgáltatást használó általános forgatókönyvhöz. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](http://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. Az ismertetett forgatókönyvek között megtalálható **beszúrása**, **Bepillantás**, **első**, és **törlése** várólista-üzenetek, valamint  **létrehozása és törlése a várólisták**.
+Ez az útmutató bemutatja, hogyan hajthat végre az Azure Queue storage szolgáltatást használó általános forgatókönyvhöz. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. Az ismertetett forgatókönyvek között megtalálható **beszúrása**, **Bepillantás**, **első**, és **törlése** várólista-üzenetek, valamint  **létrehozása és törlése a várólisták**.
 
 > [!NOTE]
-> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](http://www.nuget.org/packages/wastorage) vagy a [GitHubon](http://github.com/Azure/azure-storage-cpp/) keresztül.
+> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](https://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
 > 
 > 
 
@@ -42,7 +42,7 @@ Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyfélo
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
 * **Linux:** Kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.
-* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.
+* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.
 
 ```powershell
 Install-Package wastorage
@@ -266,5 +266,5 @@ Most, hogy megismerte a Queue storage alapjait, az alábbi hivatkozásokból tud
 * [A c++ segítségével Blob Storage használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Hogyan használható a Table Storage, a c++ segítségével](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [A C++ Azure Storage-erőforrások listája](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-* [A Storage ügyféloldali kódtára a c++ nyelvhez – dokumentáció](http://azure.github.io/azure-storage-cpp)
+* [A Storage ügyféloldali kódtára a c++ nyelvhez – dokumentáció](https://azure.github.io/azure-storage-cpp)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)

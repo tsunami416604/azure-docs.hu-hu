@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 8683a2cc0aece99d3a30bfa978bff2f8c31e96eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a02144914e73ca1788976d8b01ccd95d1b9e9a1b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884727"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58227150"
 ---
-Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és a következő oktatóanyagban újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
+Ha azt tervezi, folytassa a következő oktatóanyaggal, tartsa meg ebben a rövid útmutatóban létrehozott erőforrásokat. Újból felhasználhatja őket a következő oktatóanyagban.
 
-Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat.
+Ha elkészült, a rövid útmutató mintaalkalmazás, törölje az Azure-erőforrások díjak elkerülése érdekében ebben a rövid útmutatóban létrehozott.
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne lévő erőforrás véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Talán hozott létre az erőforrások egy meglévő erőforráscsoportot, amely tartalmazza a megtartani kívánt erőforrások jelen minta üzemeltetését. Minden erőforrás külön-külön törölheti az erőforráscsoport törlése helyett megfelelő panelekről.
 >
 >
 
-Jelentkezzen be az [Azure Portalra](https://aka.ms/azconfig/portal), és kattintson az **Erőforráscsoportok** elemre.
+Jelentkezzen be a [az Azure portal](https://aka.ms/azconfig/portal), és válassza ki **erőforráscsoportok**.
 
-A **Szűrés név alapján...** mezőbe írja be az erőforráscsoport nevét. A következő útmutatót: Ebben a rövid útmutatóban használt nevű erőforráscsoport *AppConfigTestResources*. Az eredménylistában kattintson a **…** ikonra az erőforráscsoport mellett, majd kattintson az **Erőforráscsoport törlése** elemre.
+Az a **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. A következő útmutatót: Ebben a rövid útmutatóban használt nevű erőforráscsoport *AppConfigTestResources*. Válassza ki az erőforráscsoport, a találatok listájában, **...**  majd **erőforráscsoport törlése**.
 
-A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A megerősítéshez írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
+A rendszer az erőforráscsoport törlésének megerősítését kéri. Adja meg a nevét, erősítse meg, és válassza ki az erőforráscsoport **törlése**.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.

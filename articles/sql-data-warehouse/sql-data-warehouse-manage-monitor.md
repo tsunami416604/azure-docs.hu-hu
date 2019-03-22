@@ -2,20 +2,20 @@
 title: A számítási feladat monitorozása DMV |} A Microsoft Docs
 description: Ismerje meg, a számítási feladatok DMV-k figyelése.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
-ms.author: kevin
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189546"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk ismerteti, hogyan lehet a számítási feladat monitorozása dinamikus felügyeleti nézetekkel (DMV-kkel) segítségével. Ez magában foglalja, vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data warehouse-bA.
@@ -68,9 +68,9 @@ WHERE   [label] = 'My Query';
 
 A fenti lekérdezés eredménye a **jegyezze fel a kérés Azonosítóját** a lekérdezés, amely, amelyet szeretne vizsgálni.
 
-A lekérdezések a **felfüggesztett** vannak várólistára helyezett állapot egyidejűségi korlátok miatt. Ezeket a lekérdezéseket is a sys.dm_pdw_waits vár lekérdezés UserConcurrencyResourceType típusú jelennek meg. Egyidejűségi korlátját kapcsolatos tudnivalókat lásd: [teljesítményszintek](performance-tiers.md) vagy [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Lekérdezések is, amíg a többi okai például objektum zárolása.  Ha a lekérdezés egy erőforrást vár, tekintse meg [erőforrások váró lekérdezések kivizsgálása] [ Investigating queries waiting for resources] további ebben a cikkben.
+A lekérdezések a **felfüggesztett** állapot várólistára tehető aktív futó lekérdezések nagy száma miatt. Ezeket a lekérdezéseket is megjelennek a [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) vár lekérdezés UserConcurrencyResourceType típusú. Egyidejűségi korlátját kapcsolatos tudnivalókat lásd: [teljesítményszintek](performance-tiers.md) vagy [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). Lekérdezések is, amíg a többi okai például objektum zárolása.  Ha a lekérdezés egy erőforrást vár, tekintse meg [erőforrások váró lekérdezések kivizsgálása] [ Investigating queries waiting for resources] további ebben a cikkben.
 
-Használja a keresést a lekérdezés a sys.dm_pdw_exec_requests tábla leegyszerűsítése [címke] [ LABEL] Megjegyzés rendelhet hozzá a lekérdezéshez, amely a sys.dm_pdw_exec_requests nézetben kereshetők.
+A keresést a lekérdezés egyszerűsítése érdekében a [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, használja [címke] [ LABEL] Megjegyzés rendelhet hozzá a lekérdezéshez, amely a sys.dm_pdw_exec_ kereshetők kérelmek megtekintése.
 
 ```sql
 -- Query with Label
@@ -292,11 +292,11 @@ DMV-vel kapcsolatos további információkért lásd: [rendszernézetek][System 
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
-[sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: http://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: http://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: http://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
+[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
+[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
+[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
+[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
+[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx

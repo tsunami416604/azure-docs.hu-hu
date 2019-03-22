@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9cfff565dec0d6f9d2bbea8edf39f180d4b63fd9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870856"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993173"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -55,17 +55,17 @@ Az identitás a biztonsági határokat, hogy az erőforrás, amelyhez csatlakozt
 Felügyelt identitások használatával virtuális gépek Azure-erőforrások számára, amikor a IMDS végpont használatát javasoljuk. Az Azure Instance Metadata szolgáltatás REST-végpont elérhető-e az Azure Resource Manageren keresztül létrehozott IaaS virtuális gépekre. 
 
 Felügyelt identitások használatával az Azure-erőforrások keresztül IMDS előnyei a következők:
-    - Az összes támogatott Azure IaaS operációs rendszer IMDS keresztül felügyelt identitások használható Azure-erőforrások.
-    - Már nem kell telepítenie egy bővítmény engedélyezése a felügyelt identitások az Azure-erőforrások a virtuális gépen. 
-    - Az Azure-erőforrások felügyelt identitások által használt tanúsítványok már nem találhatók a virtuális gépen.
-    - IMDS végpont egy jól ismert nem átirányítható IP-címet, csak érhetőek el a virtuális gép.
-    - egyetlen virtuális gép felügyelt 1000 felhasználó által hozzárendelt identitások is hozzárendelhető. 
+- Az összes támogatott Azure IaaS operációs rendszer IMDS keresztül felügyelt identitások használható Azure-erőforrások.
+- Már nem kell telepítenie egy bővítmény engedélyezése a felügyelt identitások az Azure-erőforrások a virtuális gépen. 
+- Az Azure-erőforrások felügyelt identitások által használt tanúsítványok már nem találhatók a virtuális gépen.
+- IMDS végpont egy jól ismert nem átirányítható IP-címet, csak érhetőek el a virtuális gép.
+- egyetlen virtuális gép felügyelt 1000 felhasználó által hozzárendelt identitások is hozzárendelhető. 
 
 A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény érhető el, továbbra is; azt azonban már nem fejleszt, új funkciókat. Azt javasoljuk, hogy a IMDS végpont használatára vált át. 
 
 A Virtuálisgép-bővítmény végpont használatával vonatkozó korlátozások a következők:
-    - Linux-disztribúciókra vonatkozó korlátozottan támogatja: CoreOS Stable, CentOS 7.1-es, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
-    - A virtuális gép csak 32, felhasználó által hozzárendelt felügyelt identitások is hozzárendelhető.
+- Linux-disztribúciókra vonatkozó korlátozottan támogatja: CoreOS Stable, CentOS 7.1-es, Red Hat 7.2, Ubuntu 15.04, Ubuntu 16.04
+- A virtuális gép csak 32, felhasználó által hozzárendelt felügyelt identitások is hozzárendelhető.
 
 
 Megjegyzés: A felügyelt identitások Azure-erőforrások Virtuálisgép-bővítmény nem támogatott a január 2019 lesz. 
@@ -75,8 +75,8 @@ Az Azure Instance Metadata szolgáltatás további információkért lásd: [IMD
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Felügyelt identitások létrejönnek, automatikusan, ha egy előfizetés áthelyezem egy másik címtárral?
 
 Nem. Ha egy előfizetést másik könyvtárba helyezi át, akkor manuálisan hozza létre őket ismét, és biztosítson számára újra Azure RBAC szerepkör-hozzárendeléseket.
-    - A rendszer adott felügyelt identitások: letiltását és újraengedélyezését. 
-    - Felhasználói rendelt felügyelt identitások: törölje, hozza létre újból, és újra csatolja őket a szükséges erőforrásokat (pl. virtuális gépek)
+- A rendszer adott felügyelt identitások: letiltását és újraengedélyezését. 
+- Felhasználói rendelt felügyelt identitások: törölje, hozza létre újból, és újra csatolja őket a szükséges erőforrásokat (pl. virtuális gépek)
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Egy felügyelt identitás használata egy másik címtár bérlőben lévő erőforrások eléréséhez?
 

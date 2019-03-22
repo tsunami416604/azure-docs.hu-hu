@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 67c34156d6a397cdeb4bb50c712b1bb651c2f257
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 51fb834c0c6a3602ed0edfee6256183eefb2026b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090428"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889488"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Virtuális hálózati átjáró és az Azure Network Watcher PowerShell-lel kapcsolatok hibaelhárítása
 
@@ -85,7 +85,7 @@ A parancsmag futtatása után a Network Watcher áttekinti az erőforrás állap
 
 A művelet szöveg nyújt általános útmutatást a probléma megoldásához. Egy műveletet elvégezhet a problémára, ha egy hivatkozást a további útmutatást. Abban az esetben, ha nincsenek további útmutatást, a válasz biztosít támogatási eset nyitása URL-címét.  A válasz és foglalt tulajdonságaival kapcsolatos további információkért látogasson el a [Network Watcher hibaelhárítása – áttekintés](network-watcher-troubleshoot-overview.md)
 
-Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorerrel](http://storageexplorer.com/)
+Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorer](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>További lépések
 

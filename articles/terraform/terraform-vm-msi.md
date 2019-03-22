@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: ae424638967de808f3ffb7d9a56a02398ed79f9e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768153"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007959"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -77,7 +77,7 @@ A Terraformot használó virtuálisgép-rendszerkép a következő lépéseket v
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Egy Terraformot használó linuxos virtuális gép elérése és konfigurálása
 
-A virtuális gép létrehozása után SSH-val bejelentkezhet rá. A 3. lépés „Alapvető beállítások” szakaszában létrehozott fiókhitelesítő adatokat használja a szöveges parancssorhoz. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](http://www.putty.org/)).
+A virtuális gép létrehozása után SSH-val bejelentkezhet rá. A 3. lépés „Alapvető beállítások” szakaszában létrehozott fiókhitelesítő adatokat használja a szöveges parancssorhoz. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](https://www.putty.org/)).
 
 Miután SSH-val csatlakozott a virtuális géphez, közreműködői engedélyeket kell adnia az Azure-erőforrások felügyelt identitásai számára a teljes előfizetéshez a virtuális gépen. 
 

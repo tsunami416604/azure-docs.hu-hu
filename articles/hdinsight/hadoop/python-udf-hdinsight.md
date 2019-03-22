@@ -7,45 +7,57 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 92221e5aaebbaebb2af17ea211e38a3665a2b04f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: f6a9d688169f0f8fdd6f0be7b664dbe9ebd71941
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652473"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295232"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig
 
 Ismerje meg, hogyan használható a Python felhasználó által definiált függvények (UDF) az Apache Hive- és Apache Hadoop on Azure HDInsight az Apache Pig.
 
-## <a name="python"></a>Python a HDInsight
+## <a name="python"></a>Python on HDInsight
 
 A HDInsight 3.0-s és újabb verziók alapértelmezés szerint telepítve van a Python2.7. Az Apache Hive használható Python ezen verziójával a streamfeldolgozáshoz. Stream-feldolgozás használja az STDOUT és az STDIN adatok átadására a Hive és a UDF között.
 
 HDInsight Jython, amely egy Python-implementációja Java nyelven írt is tartalmaz. Jython közvetlenül a Java virtuális gépen fut, és nem használja a streaming. Jython javasolt a Python-fordítóra akkor, ha a Python és a Pig együttes használatával.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+* **A HDInsight Hadoop-fürt**. Lásd: [HDInsight Linux első lépések](apache-hadoop-linux-tutorial-get-started.md).
+* **Egy SSH-ügyfél**. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* A [URI-séma](../hdinsight-hadoop-linux-information.md#URI-and-scheme) a fürtök elsődleges tárhelyeként. Ez akkor lehet wasb: / / az Azure Storage esetében abfs: / / az Azure Data Lake Storage Gen2 vagy adl: / / az Azure Data Lake Storage Gen1. Ha az Azure Storage vagy a Data Lake Storage Gen2 engedélyezve van a biztonságos átvitel, az URI a wasbs lesz: / / vagy abfss: / /, illetve lásd még a [biztonságos átvitelre](../../storage/common/storage-require-secure-transfer.md).
+* **Tárolási konfiguráció lehetséges módosítása.**  Lásd: [tárolási konfigurációt](#storage-configuration) a tárfiók típusának használatakor `BlobStorage`.
+* Választható.  Ha tervezi a PowerShell-lel, szüksége lesz a [AZ modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) telepítve.
+
+> [!NOTE]  
+> Az ebben a cikkben használt tárfiók volt az Azure Storage [biztonságos átvitelre](/../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` a cikk használja.
+
+## <a name="storage-configuration"></a>Tároló konfigurálása
+Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  Ebben a cikkben a folyamat legalább állítja elő a kimeneti `/tezstaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/tezstaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, melyek a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/tezstaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](../hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`
+
 > [!WARNING]  
-> A jelen dokumentumban leírt lépések hajtsa végre a következő előfeltételek: 
+> A jelen dokumentumban leírt lépések hajtsa végre a következő előfeltételek:  
 >
 > * A Python-szkriptek hoz létre a helyi fejlesztési környezetbe.
-> * Fel kell töltenie a parancsfájlokat a HDInsight segítségével a `scp` parancsot egy helyi Bash vagy a megadott PowerShell-parancsfájlt.
+> * Fel kell töltenie a parancsfájlokat a HDInsight segítségével a `scp` parancsot vagy a megadott PowerShell-parancsfájlt.
 >
-> Ha használni szeretné a [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) előzetes dolgozunk a HDInsight, majd be kell:
+> Ha használni szeretné a [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) HDInsight dolgozni, majd a következőket kell tennie:
 >
 > * Hozzon létre a parancsfájlokat a cloud shell környezeten belül.
 > * Használat `scp` HDInsight, a cloud shellben a fájlok feltöltéséről.
 > * Használat `ssh` a HDInsight csatlakozhat, és futtassa a példák a cloud shellben.
 
-## <a name="hivepython"></a>Az Apache Hive UDF-ben
+## <a name="hivepython"></a>Apache Hive UDF
 
 Python is használható a Hive a HiveQL használatával egy UDF `TRANSFORM` utasítást. Ha például a következő HiveQL meghívja a `hiveudf.py` az a fürt alapértelmezett Azure Storage-fiókban tárolt fájlhoz.
 
-**Linux-alapú HDInsight**
-
 ```hiveql
-add file wasb:///hiveudf.py;
+add file wasbs:///hiveudf.py;
 
 SELECT TRANSFORM (clientid, devicemake, devicemodel)
     USING 'python hiveudf.py' AS
@@ -53,21 +65,6 @@ SELECT TRANSFORM (clientid, devicemake, devicemodel)
 FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
-
-**Windows-alapú HDInsight**
-
-```hiveql
-add file wasb:///hiveudf.py;
-
-SELECT TRANSFORM (clientid, devicemake, devicemodel)
-    USING 'D:\Python27\python.exe hiveudf.py' AS
-    (clientid string, phoneLabel string, phoneHash string)
-FROM hivesampletable
-ORDER BY clientid LIMIT 50;
-```
-
-> [!NOTE]  
-> Windows-alapú HDInsight-fürtökön a `USING` záradékának meg kell adnia python.exe teljes elérési útja.
 
 Itt látható az ebben a példában leírása:
 
@@ -77,8 +74,7 @@ Itt látható az ebben a példában leírása:
 
 <a name="streamingpy"></a>
 
-### <a name="create-the-hiveudfpy-file"></a>A hiveudf.py fájl létrehozása
-
+### <a name="create-file"></a>Fájl létrehozása
 
 A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `hiveudf.py`. Használja a fájl tartalmát a következő kódot:
 
@@ -101,7 +97,7 @@ while True:
 
 Ez a szkript a következő műveleteket hajtja végre:
 
-1. Az adatok egy sor olvasható STDIN.
+1. Az adatok egy sort olvas STDIN.
 2. A záró soremelés karaktert el lett távolítva `string.strip(line, "\n ")`.
 3. Adatfolyam-feldolgozó visszamehet egyetlen sor minden érték közötti lapon karakterrel az összes értékeket tartalmazza. Ezért `string.split(line, "\t")` minden lapját, csak a mezők visszaadása a bemeneti felosztása is használható.
 4. Feldolgozás befejeződése után a kimenet kell megírni, hogy az STDOUT egyetlen vonal, egy lap, a mezők között. Például: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
@@ -109,9 +105,188 @@ Ez a szkript a következő műveleteket hajtja végre:
 
 A parancsfájl kimenete a bemeneti értékek összefűzésével `devicemake` és `devicemodel`, és a egy kivonatot az összefűzött érték.
 
-Lásd: [példák futó](#running) futtatására ebben a példában a HDInsight-fürtön.
+### <a name="upload-file-shell"></a>Töltse fel a fájlt (felület)
+Cserélje le az alábbi parancsokat, `sshuser` Ha különböző tényleges felhasználónévvel.  Cserélje le `mycluster` tényleges fürt nevét.  Győződjön meg arról, a munkakönyvtárban történik, ahol a fájl megtalálható-e.
 
-## <a name="pigpython"></a>Az Apache Pig UDF-ben
+1. Használat `scp` a fájlok másolása a HDInsight-fürthöz. Szerkesztheti, és adja meg az alábbi parancsot:
+
+    ```cmd
+    scp hiveudf.py sshuser@mycluster-ssh.azurehdinsight.net:
+    ```
+
+2. Az SSH használatával csatlakozhat a fürthöz.  Szerkesztheti, és adja meg az alábbi parancsot:
+
+    ```cmd
+    ssh sshuser@mycluster-ssh.azurehdinsight.net
+    ```
+
+3. Az SSH-munkamenetből adjon hozzá a korábban feltöltött a fürt tárolóhelyét python-fájlokat.
+
+    ```bash
+    hdfs dfs -put hiveudf.py /hiveudf.py
+    ```
+
+### <a name="use-hive-udf-shell"></a>Hive-UDF (felület) használata
+
+1. Ha csatlakozni szeretne, Hive, nyissa meg az SSH-munkamenet következő parancsát használja:
+
+    ```bash
+    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
+    ```
+
+    Ez a parancs elindítja a Beeline-ügyfél.
+
+2. Írja be a következő lekérdezést, a `0: jdbc:hive2://headnodehost:10001/>` parancssorba:
+
+   ```hive
+   add file wasbs:///hiveudf.py;
+   SELECT TRANSFORM (clientid, devicemake, devicemodel)
+       USING 'python hiveudf.py' AS
+       (clientid string, phoneLabel string, phoneHash string)
+   FROM hivesampletable
+   ORDER BY clientid LIMIT 50;
+   ```
+
+3. Miután megadta az utolsó sort, a feladat indításának. A feladat befejezése után, kimenetet ad vissza a következő példához hasonló:
+
+        100041    RIM 9650    d476f3687700442549a83fac4560c51c
+        100041    RIM 9650    d476f3687700442549a83fac4560c51c
+        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+
+4. A Beeline kilép, adja meg a következő parancsot:
+
+    ```hive
+    !q
+    ```
+
+### <a name="upload-file-powershell"></a>Töltse fel a fájlt (PowerShell)
+
+> [!IMPORTANT]  
+> Ezek a PowerShell-parancsfájlok nem fog működni, ha [biztonságos átvitelre](../../storage/common/storage-require-secure-transfer.md) engedélyezve van.  Rendszerhéj-parancsokkal, vagy tiltsa le a biztonságos átvitel.
+
+PowerShell is használható távolról a Hive-lekérdezések futtatásához. Győződjön meg, hogy a munkakönyvtárban where `hiveudf.py` található.  A következő PowerShell-parancsfájl használatával, amely egy Hive-lekérdezések futtatásához a `hiveudf.py` parancsfájlt:
+
+```PowerShell
+# Login to your Azure subscription
+# Is there an active Azure subscription?
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Connect-AzAccount
+}
+
+# Revise file path as needed
+$pathToStreamingFile = ".\hiveudf.py"
+
+# Get cluster info
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+$clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
+$resourceGroup = $clusterInfo.ResourceGroup
+$storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+$container=$clusterInfo.DefaultStorageContainer
+$storageAccountKey=(Get-AzStorageAccountKey `
+   -ResourceGroupName $resourceGroup `
+   -Name $storageAccountName)[0].Value
+
+# Create an Azure Storage context
+$context = New-AzStorageContext `
+    -StorageAccountName $storageAccountName `
+    -StorageAccountKey $storageAccountKey
+
+# Upload local files to an Azure Storage blob
+Set-AzStorageBlobContent `
+    -File $pathToStreamingFile `
+    -Blob "hiveudf.py" `
+    -Container $container `
+    -Context $context
+```
+
+> [!NOTE]  
+> Fájlok feltöltése a további információkért lásd: a [Upload data for HDInsight az Apache Hadoop-feladatok](../hdinsight-upload-data.md) dokumentumot.
+
+
+#### <a name="use-hive-udf"></a>Use Hive UDF-ben
+
+
+```PowerShell
+# Script should stop on failures
+$ErrorActionPreference = "Stop"
+
+# Login to your Azure subscription
+# Is there an active Azure subscription?
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Connect-AzAccount
+}
+
+# Get cluster info
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+$creds=Get-Credential -UserName "admin" -Message "Enter the login for the cluster"
+
+$HiveQuery = "add file wasbs:///hiveudf.py;" +
+                "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
+                "USING 'python hiveudf.py' AS " +
+                "(clientid string, phoneLabel string, phoneHash string) " +
+                "FROM hivesampletable " +
+                "ORDER BY clientid LIMIT 50;"
+
+# Create Hive job object
+$jobDefinition = New-AzHDInsightHiveJobDefinition `
+    -Query $HiveQuery
+
+# For status bar updates
+$activity="Hive query"
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Starting query..."
+
+# Start defined Azure HDInsight job on specified cluster.
+$job = Start-AzHDInsightJob `
+    -ClusterName $clusterName `
+    -JobDefinition $jobDefinition `
+    -HttpCredential $creds
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Waiting on query to complete..."
+
+# Wait for completion or failure of specified job
+Wait-AzHDInsightJob `
+    -JobId $job.JobId `
+    -ClusterName $clusterName `
+    -HttpCredential $creds
+
+# Uncomment the following to see stderr output
+<#
+Get-AzHDInsightJobOutput `
+   -Clustername $clusterName `
+   -JobId $job.JobId `
+   -HttpCredential $creds `
+   -DisplayOutputType StandardError
+#>
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Retrieving output..."
+
+# Gets the log output
+Get-AzHDInsightJobOutput `
+    -Clustername $clusterName `
+    -JobId $job.JobId `
+    -HttpCredential $creds
+```
+
+A kimenet a **Hive** feladat a következő példához hasonlóan kell megjelennie:
+
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100041    RIM 9650    d476f3687700442549a83fac4560c51c
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+
+
+## <a name="pigpython"></a>Apache Pig UDF
 
 Egy Python-szkriptet egy UDF-ben, a Pig keresztül lehet használni a `GENERATE` utasítást. A parancsfájl Jython vagy C Python használatával futtathatja.
 
@@ -124,12 +299,12 @@ Adja meg a Python-fordítóra `register` amikor hivatkozik a Python-szkriptet. A
 * **Használható a C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
-> Jython használatakor a pig_jython fájl elérési útja lehet-e, vagy helyi elérési utat, vagy a WASB: / / elérési útja. C Python használata esetén a csomópont, amely a Pig-feladat elküldéséhez használja a helyi fájlrendszerben egy fájlt kell hivatkoznia.
+> Jython használatakor a pig_jython fájl elérési útja lehet-e, vagy helyi elérési utat, vagy egy WASBS: / / elérési útja. C Python használata esetén a csomópont, amely a Pig-feladat elküldéséhez használja a helyi fájlrendszerben egy fájlt kell hivatkoznia.
 
 Egyszer korábbi regisztráció, a Pig Latin ebben a példában megegyezik is:
 
 ```pig
-LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
 LOG = FILTER LOGS by LINE is not null;
 DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
 DUMP DETAILS;
@@ -142,7 +317,7 @@ Itt látható az ebben a példában leírása:
 3. Ezután azt ismétel a rekordok `LOG` és `GENERATE` meghívni a `create_structure` tölti be a Python/Jython szkriptnek metódus `myfuncs`. `LINE` a függvény az aktuális rekordot adnak át szolgál.
 4. Végül a kimenetek a STDOUT vannak kiírt használatával a `DUMP` parancsot. Ez a parancs megjeleníti az eredményeket, a művelet befejezése után.
 
-### <a name="create-the-pigudfpy-file"></a>A pigudf.py fájl létrehozása
+### <a name="create-file"></a>Fájl létrehozása
 
 A fejlesztési környezetet hozzon létre egy szövegfájlt nevű `pigudf.py`. Használja a fájl tartalmát a következő kódot:
 
@@ -180,76 +355,34 @@ A Pig Latin a példában a `LINE` bemenet egy chararray típusúként van defini
 
 Amikor az adatok visszakerülnek a Pig, a konzisztens sémák rendelkezik a `@outputSchema` utasítást.
 
-## <a name="running"></a>Töltse fel, és futtassa a példákat
 
-> [!IMPORTANT]  
-> A **SSH** csak a lépések a Linux-alapú HDInsight-fürtökkel. A **PowerShell** lépések Linux vagy Windows-alapú HDInsight-fürttel működik, de egy Windows-ügyfél szükséges.
 
-### <a name="ssh"></a>SSH
+### <a name="upload-file-shell"></a>Töltse fel a fájlt (felület)
 
-SSH használatával kapcsolatos további információkért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Cserélje le az alábbi parancsokat, `sshuser` Ha különböző tényleges felhasználónévvel.  Cserélje le `mycluster` tényleges fürt nevét.  Győződjön meg arról, a munkakönyvtárban történik, ahol a fájl megtalálható-e.
 
-1. Használat `scp` a fájlok másolása a HDInsight-fürthöz. Ha például a következő parancs másolja a fájlokat nevű fürtben **sajátfürt**.
+1. Használat `scp` a fájlok másolása a HDInsight-fürthöz. Szerkesztheti, és adja meg az alábbi parancsot:
 
-    ```bash
-    scp hiveudf.py pigudf.py myuser@mycluster-ssh.azurehdinsight.net:
+    ```cmd
+    scp pigudf.py sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-2. Az SSH használatával csatlakozhat a fürthöz.
+2. Az SSH használatával csatlakozhat a fürthöz.  Szerkesztheti, és adja meg az alábbi parancsot:
 
-    ```bash
-    ssh myuser@mycluster-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-3. Az SSH-munkamenetből adjon hozzá a korábban feltöltött a fürt tárolóhelyét WASB python-fájlokat.
+3. Az SSH-munkamenetből adjon hozzá a korábban feltöltött a fürt tárolóhelyét python-fájlokat.
 
     ```bash
-    hdfs dfs -put hiveudf.py /hiveudf.py
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-A fájlok feltöltése után a következő lépések segítségével a Hive és Pig-feladatok futtatásához.
 
-#### <a name="use-the-hive-udf"></a>Az UDF-ben a Hive használata
+### <a name="use-pig-udf-shell"></a>A Pig UDF (felület) használata
 
-1. Ha csatlakozni szeretne, Hive, a következő paranccsal:
-
-    ```bash
-    beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
-    ```
-
-    Ez a parancs elindítja a Beeline-ügyfél.
-
-2. Írja be a következő lekérdezést, a `0: jdbc:hive2://headnodehost:10001/>` parancssorba:
-
-   ```hive
-   add file wasb:///hiveudf.py;
-   SELECT TRANSFORM (clientid, devicemake, devicemodel)
-       USING 'python hiveudf.py' AS
-       (clientid string, phoneLabel string, phoneHash string)
-   FROM hivesampletable
-   ORDER BY clientid LIMIT 50;
-   ```
-
-3. Miután megadta az utolsó sort, a feladat indításának. A feladat befejezése után, kimenetet ad vissza a következő példához hasonló:
-
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100041    RIM 9650    d476f3687700442549a83fac4560c51c
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-        100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-
-4. A Beeline kilép, használja a következő parancsot:
-
-    ```hive
-    !q
-    ```
-
-#### <a name="use-the-pig-udf"></a>Az UDF-ben a Pig használata
-
-1. Ha csatlakozni szeretne a pig, a következő paranccsal:
+1. Ha csatlakozni szeretne a pig, nyissa meg az SSH-munkamenet következő parancsát használja:
 
     ```bash
     pig
@@ -258,7 +391,7 @@ A fájlok feltöltése után a következő lépések segítségével a Hive és 
 2. Adja meg a következő utasításokat a `grunt>` parancssorba:
 
    ```pig
-   Register wasb:///pigudf.py using jython as myfuncs;
+   Register wasbs:///pigudf.py using jython as myfuncs;
    LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
@@ -291,7 +424,7 @@ A fájlok feltöltése után a következő lépések segítségével a Hive és 
 
    ```pig
    Register 'pigudf.py' using streaming_python as myfuncs;
-   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -299,48 +432,122 @@ A fájlok feltöltése után a következő lépések segítségével a Hive és 
 
     Ez a feladat befejezése után megtekintheti az ugyanazzal a hibaüzenettel, ha korábban már futtatta a szkriptet Jython használatával.
 
-### <a name="powershell-upload-the-files"></a>PowerShell: A fájlok feltöltése
 
-A HDInsight-kiszolgáló a fájlok feltöltése a PowerShell használatával is. A Python-fájlok feltöltéséhez használja a következő szkriptet:
-
-> [!IMPORTANT]   
-> A jelen szakaszban ismertetett lépések az Azure PowerShell-lel. További információ az Azure PowerShell-lel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
-
-[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=5-41)]
-
-> [!IMPORTANT]
-> Módosítsa a `C:\path\to` a fejlesztési környezetet a fájlok elérési útja értéket.
-
-Ez a szkript lekéri a HDInsight-fürthöz, majd kinyeri a fiók és az alapértelmezett tárfiók kulcsa, és feltölti a fájlokat a tároló gyökérkönyvtárába.
-
-> [!NOTE]  
-> Fájlok feltöltése a további információkért lásd: a [Upload data for HDInsight az Apache Hadoop-feladatok](../hdinsight-upload-data.md) dokumentumot.
-
-#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Az UDF-ben a Hive használata
-
-PowerShell is használható távolról a Hive-lekérdezések futtatásához. A következő PowerShell-parancsfájl használatával futtathat Hive-lekérdezéseket használó **hiveudf.py** parancsfájlt:
+### <a name="upload-file-powershell"></a>Töltse fel a fájlt (PowerShell)
 
 > [!IMPORTANT]  
-> Előtt fut, a parancsfájl kérni fogja, a HTTPs vagy rendszergazdai fiók adatainak a HDInsight-fürt számára.
+> Ezek a PowerShell-parancsfájlok nem fog működni, ha [biztonságos átvitelre](../../storage/common/storage-require-secure-transfer.md) engedélyezve van.  Rendszerhéj-parancsokkal, vagy tiltsa le a biztonságos átvitel.
 
-[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=45-94)]
+PowerShell is használható távolról a Hive-lekérdezések futtatásához. Győződjön meg, hogy a munkakönyvtárban where `pigudf.py` található.  A következő PowerShell-parancsfájl használatával, amely egy Hive-lekérdezések futtatásához a `pigudf.py` parancsfájlt:
 
-A kimenet a **Hive** feladat a következő példához hasonlóan kell megjelennie:
+```PowerShell
+# Login to your Azure subscription
+# Is there an active Azure subscription?
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Connect-AzAccount
+}
 
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100041    RIM 9650    d476f3687700442549a83fac4560c51c
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
-    100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
+# Revise file path as needed
+$pathToJythonFile = ".\pigudf.py"
 
-#### <a name="pig-jython"></a>A Pig (Jython)
 
-PowerShell is használható a Pig Latin-feladatok futtatásához. A Pig Latin használó feladatok futtatásához a **pigudf.py** parancsfájl, használja a következő PowerShell-parancsfájlt:
+# Get cluster info
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+$clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
+$resourceGroup = $clusterInfo.ResourceGroup
+$storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+$container=$clusterInfo.DefaultStorageContainer
+$storageAccountKey=(Get-AzStorageAccountKey `
+   -ResourceGroupName $resourceGroup `
+   -Name $storageAccountName)[0].Value
+
+# Create an Azure Storage context
+$context = New-AzStorageContext `
+    -StorageAccountName $storageAccountName `
+    -StorageAccountKey $storageAccountKey
+
+# Upload local files to an Azure Storage blob
+Set-AzStorageBlobContent `
+    -File $pathToJythonFile `
+    -Blob "pigudf.py" `
+    -Container $container `
+    -Context $context
+```
+
+### <a name="use-pig-udf-powershell"></a>A Pig használata UDF (PowerShell)
 
 > [!NOTE]  
 > Távolról küldjön el egy PowerShell-lel feladat, nincs lehetőség használható a C Python értelmezőként.
 
-[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=98-144)]
+PowerShell is használható a Pig Latin-feladatok futtatásához. A Pig Latin használó feladatok futtatásához a `pigudf.py` parancsfájl, használja a következő PowerShell-parancsfájlt:
+
+```PowerShell
+# Script should stop on failures
+$ErrorActionPreference = "Stop"
+
+# Login to your Azure subscription
+# Is there an active Azure subscription?
+$sub = Get-AzSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Connect-AzAccount
+}
+
+# Get cluster info
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+$creds=Get-Credential -UserName "admin" -Message "Enter the login for the cluster"
+
+
+$PigQuery = "Register wasbs:///pigudf.py using jython as myfuncs;" +
+            "LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);" +
+            "LOG = FILTER LOGS by LINE is not null;" +
+            "DETAILS = foreach LOG generate myfuncs.create_structure(LINE);" +
+            "DUMP DETAILS;"
+
+# Create Pig job object
+$jobDefinition = New-AzHDInsightPigJobDefinition -Query $PigQuery
+
+# For status bar updates
+$activity="Pig job"
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Starting job..."
+
+# Start defined Azure HDInsight job on specified cluster.
+$job = Start-AzHDInsightJob `
+    -ClusterName $clusterName `
+    -JobDefinition $jobDefinition `
+    -HttpCredential $creds
+
+# Progress bar (optional)
+Write-Progress -Activity $activity -Status "Waiting for the Pig job to complete..."
+
+# Wait for completion or failure of specified job
+Wait-AzHDInsightJob `
+    -Job $job.JobId `
+    -ClusterName $clusterName `
+    -HttpCredential $creds
+
+# Uncomment the following to see stderr output
+<#
+Get-AzHDInsightJobOutput `
+    -Clustername $clusterName `
+    -JobId $job.JobId `
+    -HttpCredential $creds `
+    -DisplayOutputType StandardError
+#>
+
+# Progress bar (optional)
+Write-Progress -Activity $activity "Retrieving output..."
+
+# Gets the log output
+Get-AzHDInsightJobOutput `
+    -Clustername $clusterName `
+    -JobId $job.JobId `
+    -HttpCredential $creds
+```
 
 A kimenet a **Pig** feladat a következő adatokhoz hasonlóan kell megjelennie:
 

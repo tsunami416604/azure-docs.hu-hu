@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5c3314f61344dd56e0c96ca76fe143128c279b68
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f7623c126e47a05b5a4be0c23baa191c4de8a766
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870588"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856311"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-nodejs-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Node.js használatával a Computer Vision (OCR) nyomtatott szöveg kinyerése
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Telepítse az npm [`request`](https://www.npmjs.com/package/request) csomagot.
    1. Nyissa meg a parancssori ablakot rendszergazdaként.
-   1. Futtassa a következő parancsot:
+   1. Futtassa az alábbi parancsot:
 
       ```console
       npm install request
@@ -53,7 +53,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Nyisson meg egy parancsablakot.
 1. Amikor a rendszer kéri, a `node` paranccsal futtassa a fájlt. Például: `node get-printed-text.js`.
 
-```nodejs
+```javascript
 'use strict';
 
 const request = require('request');
@@ -205,7 +205,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A minta elemzi és 
 Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el az npm `request` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a parancssori ablakot rendszergazdaként.
-2. Futtassa a következő parancsot:
+2. Futtassa az alábbi parancsot:
 
    ```console
    npm uninstall request

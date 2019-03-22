@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992495"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver
 
@@ -158,7 +158,7 @@ ms.locfileid: "56889919"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56889919"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -343,7 +343,7 @@ Az általános leírása megfelelően SQL Server végrehajtható fájlok találh
 Ezek a konfigurációk engedélyezze a tempdb fel több helyet több, mint a rendszermeghajtó tud biztosítani. A nem állandó D:\ meghajtóra a jobb i/o-késés és az átviteli sebesség (kivéve A-sorozatú virtuális gépek) is kínál. Annak érdekében, hogy a megfelelő tempdb mérete határozza meg, ellenőrizheti a meglévő rendszerek tempdb méretet. 
 
 >[!NOTE]
-> abban az esetben, ha a tempdb-adatfájlok és naplófájl helyezzen egy mappába a D:\ meghajtóra, amelyet létrehozott, győződjön meg arról, hogy a mappa létezik-e a virtuális gép újraindítását követően kell. Mivel a D:\ meghajtóra frissen inicializálása után indítsa újra a virtuális gép összes fájl és könyvtár struktúrák is törli. Annak a lehetősége, újra létre kell hozni a D:\ meghajtón végleges könyvtárstruktúrák dokumentálva az SQL Server szolgáltatás kezdete előtt [Ez a cikk](http://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
+> abban az esetben, ha a tempdb-adatfájlok és naplófájl helyezzen egy mappába a D:\ meghajtóra, amelyet létrehozott, győződjön meg arról, hogy a mappa létezik-e a virtuális gép újraindítását követően kell. Mivel a D:\ meghajtóra frissen inicializálása után indítsa újra a virtuális gép összes fájl és könyvtár struktúrák is törli. Annak a lehetősége, újra létre kell hozni a D:\ meghajtón végleges könyvtárstruktúrák dokumentálva az SQL Server szolgáltatás kezdete előtt [Ez a cikk](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/).
 
 Egy Virtuálisgép-konfigurációt, az SAP adatbázis az SQL Server fut, amely, és ahol a tempdb adat- és a tempdb logfile kerülnek a D:\ meghajtóra hasonlóan néz ki:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: ca951c813554ae253cbd572e03c53b8687499af9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000165"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007931"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Az Azure monitorban gyűjtése IIS-naplók
 Az Internet Information Services (IIS) felhasználói tevékenység tárolja az Azure Monitor által összegyűjtött és tárolt és naplófájlok [adatok](data-collection.md).
@@ -72,7 +72,7 @@ Az alábbi táblázat az IIS-naplóbejegyzések lekérő lekérdezések log kül
 | W3CIISLog |Az összes IIS-napló rögzíti. |
 | W3CIISLog &#124; where scStatus==500 |Az összes IIS-napló rekordok 500 visszaadott állapottal. |
 | W3CIISLog &#124; summarize count() by cIP |Száma az IIS naplóbejegyzéseket, ügyfél IP-cím alapján. |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |Száma az IIS-napló bejegyzései a gazdagép www.contoso.com URL-címe alapján. |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |Száma az IIS-naplóbejegyzések URL-cím szerint esetében a gazdagép www\.contoso.com. |
 | W3CIISLog &#124; összegzése számítógép szerint sum(csBytes) &#124; 500 000 összeget igénybe |Egyes IIS-számítógépek által fogadott összes bájt. |
 
 ## <a name="next-steps"></a>További lépések

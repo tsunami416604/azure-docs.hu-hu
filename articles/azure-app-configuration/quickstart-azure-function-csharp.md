@@ -14,24 +14,24 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5f28e213a5f824562df62a05b98f0f92f71bc591
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957436"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226708"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
-Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Ez lehetővé teszi, hogy könnyedén tárolhatja és kezelheti a kódot egy helyet, amely választja el az alkalmazás beállításait. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást az Azure-függvény. 
+Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Könnyedén tárolhatja, és a egy helyet, amely választja el az alkalmazás beállításait kezelheti a kódból használhatja azt. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást az Azure-függvény. 
 
-A rövid útmutató lépései bármilyen szövegszerkesztővel elvégezhetők. A [Visual Studio Code](https://code.visualstudio.com/) például jó választás lehet, és Windows, macOS és Linux platformokon is használható.
+Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
 
-![Rövid útmutató – teljes helyi](./media/quickstarts/dotnet-core-function-launch-local.png)
+![A rövid útmutató teljes helyi](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visualstudio.microsoft.com/vs) (és ellenőrizze, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van) és a [legújabb Azure Functions tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
+Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visualstudio.microsoft.com/vs). Győződjön meg arról, hogy a **Azure-fejlesztési** számítási feladatot is telepítve van. Is telepítheti a [legújabb Azure Functions tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,9 +43,9 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-app-configuration-store"></a>Csatlakozhat az alkalmazás a konfigurációs adattároló
+## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
 
-1. Nyissa meg *Function1.cs* , és adjon hozzá egy hivatkozást az alkalmazás konfigurációs .NET Core-konfigurációszolgáltatót.
+1. Nyissa meg *Function1.cs*, és vegyen fel egy hivatkozást az alkalmazás konfigurációs .NET Core konfigurációszolgáltatót.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -77,25 +77,25 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Nevű környezeti változó értéke **ConnectionString** , és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha Windows-parancssort használja, hajtsa végre a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
+1. Nevű környezeti változó értéke **ConnectionString**, és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha használja a Windows-parancssort, futtassa a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Ha a Windows Powershellt használ, hajtsa végre a következő parancsot:
+    Windows PowerShell használatakor a következő parancsot:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    Ha macOS vagy Linux használ, hajtsa végre a következő parancsot:
+    Ha macOS vagy Linux használ, futtassa a következő parancsot:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. A függvény teszteléséhez nyomja le a **F5**. Ha a rendszer kéri, fogadja el a kérelmet, töltse le és telepítse a Visual studióból **Azure Functions Core (CLI)** eszközök. Lehet, hogy egy tűzfalkivételt is engedélyeznie kell, hogy az eszközök kezelhessék a HTTP-kéréseket.
+2. A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, fogadja el a kérelmet, töltse le és telepítse a Visual studióból **Azure Functions Core (CLI)** eszközök. Emellett szüksége lehet olyan érvényes tűzfalkivétel engedélyezéséhez, hogy az eszközöket képes kezelni a HTTP-kérelmekre.
 
 3. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 
     ![A rövid útmutató függvény hibakeresése a VS-ben](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz:
+4. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az alábbi képen látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz.
 
     ![Helyi rövid függvény indítása](./media/quickstarts/dotnet-core-function-launch-local.png)
 
@@ -105,7 +105,7 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy új alkalmazás-konfigurációs adattároló létrehozta és a egy Azure-függvényt használta azt. Alkalmazáskonfiguráció használatával kapcsolatos további információkért folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és az egy Azure-függvényt használta azt. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
 > [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)

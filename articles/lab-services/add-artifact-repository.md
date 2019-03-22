@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 85763a895b61d184db033c09a413cc897ef6eaa3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 42b59c8da9e66b0f749d067e3df867911c7108e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551602"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106831"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
 DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
@@ -74,11 +74,11 @@ Ez a szakasz lépéseit az összetevőtárban hozzáadása egy laborhoz az Azure
 
     ![Adattár hozzáadása gombbal](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Az a **Tárházak** csoportjában adja meg a következő információkat:
-  1. **Név**. Adja meg a tárház nevét.
-  2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
-  3. **Ág**. A definíciók lekéréséhez adja meg az ágat.
-  4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
-  5. **Mappa elérési útjának**. Adjon meg legalább egy mappa elérési útja a clone URL-cím, amely tartalmazza az összetevő vagy a Resource Manager-sablon definíciók viszonyítva. Alkönyvtár megadásakor ellenőrizze, hogy a perjel szerepel a mappa elérési útját.
+   1. **Név**. Adja meg a tárház nevét.
+   2. **Git Clone URL-cím**. Adja meg a Git HTTPS clone URL-cím, amely korábban vágólapra másolt a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
+   3. **Ág**. A definíciók lekéréséhez adja meg az ágat.
+   4. **Személyes hozzáférési tokent**. Adja meg a személyes hozzáférési tokent korábban a GitHub vagy a az Azure DevOps-szolgáltatásokkal.
+   5. **Mappa elérési útjának**. Adjon meg legalább egy mappa elérési útja a clone URL-cím, amely tartalmazza az összetevő vagy a Resource Manager-sablon definíciók viszonyítva. Alkönyvtár megadásakor ellenőrizze, hogy a perjel szerepel a mappa elérési útját.
 
         ![Tárházak terület](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. Kattintson a **Mentés** gombra.

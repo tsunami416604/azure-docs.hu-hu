@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125340"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítvány-aláírási kérelem fájljának létrehozása
 
@@ -47,17 +47,17 @@ Ahhoz, hogy leküldéses értesítéseket küldhessen az iOS-alkalmazásoknak, e
 
 2. Frissítse a következő három mezőt az új alkalmazásában, és kattintson a **Continue** (Folytatás) gombra:
 
-    * **Name** (Név): Adjon meg egy leíró nevet az alkalmazáshoz a **Name** (Név) mezőben az **App ID Description** (Alkalmazásazonosító leírása) szakaszban.
-    * **Bundle Identifier** (Csomagazonosító): Az **Explicit App ID** (Explicit alkalmazásazonosító) szakasz alatt adjon meg egy csomagazonosítót (**Bundle Identifier**) abban a formában, `<Organization Identifier>.<Product Name>` ahogy azt az [App Distribution Guide](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) (Alkalmazásterjesztési útmutató) írja. A használt céges azonosítónak (*Organization Identifier*) és terméknévnek (*Product Name*) meg kell egyeznie azzal a céges azonosítóval és terméknévvel, amelyeket az XCode-projekt létrehozásakor használ. Az alábbi képernyőképen a *NotificationHubs* a használt céges azonosító, a terméknév pedig a *GetStarted*. Ha ügyel arra, hogy ez az érték megegyezzen azzal, amelyet az XCode-projektben használ, a helyes közzétételi profilt fogja tudni használni az XCode környezetben.
-    * **Push Notifications** (Leküldéses értesítések): Jelölje be a **Push Notifications** (Leküldéses értesítések) beállítást az **App Services** (Alkalmazásszolgáltatások) szakaszban.
+   * **Név**: Adjon meg egy leíró nevet az alkalmazáshoz tartozó a **neve** mezőbe a **App ID leírás** szakaszban.
+   * **Csomagazonosítója**: Alatt a **Explicit App ID** területén adjon meg egy **Bundle Identifier** formájában `<Organization Identifier>.<Product Name>` említetteknek megfelelően az [alkalmazás telepítési útmutató](https://help.apple.com/xcode/mac/current/#/dev91fe7130a). A használt céges azonosítónak (*Organization Identifier*) és terméknévnek (*Product Name*) meg kell egyeznie azzal a céges azonosítóval és terméknévvel, amelyeket az XCode-projekt létrehozásakor használ. Az alábbi képernyőképen a *NotificationHubs* a használt céges azonosító, a terméknév pedig a *GetStarted*. Ha ügyel arra, hogy ez az érték megegyezzen azzal, amelyet az XCode-projektben használ, a helyes közzétételi profilt fogja tudni használni az XCode környezetben.
+   * **Leküldéses értesítések**: Ellenőrizze a **leküldéses értesítések** beállítást a **App Services** szakaszban.
 
-    ![Regisztrációs űrlap új alkalmazásazonosítókhoz](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+     ![Regisztrációs űrlap új alkalmazásazonosítókhoz](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-    Ez a művelet létrehozza az alkalmazásazonosítót, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Register** (Regisztráció) gombra az új alkalmazásazonosító megerősítéséhez.
+     Ez a művelet létrehozza az alkalmazásazonosítót, és a rendszer megkéri Önt az információk megerősítésére. Kattintson a **Register** (Regisztráció) gombra az új alkalmazásazonosító megerősítéséhez.
 
-    Miután a **Register** (Regisztráció) gombra kattintott, megjelenik az alábbi képen is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
+     Miután a **Register** (Regisztráció) gombra kattintott, megjelenik az alábbi képen is látható **Registration complete** (Regisztráció kész) képernyő. Kattintson a **Done** (Kész) gombra.
 
-    ![Alkalmazásazonosító regisztrációja a jogosultságok megjelenítésével](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+     ![Alkalmazásazonosító regisztrációja a jogosultságok megjelenítésével](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 3. Keresse meg az Ön által létrehozott alkalmazásazonosítót a fejlesztői központban az alkalmazásazonosítók alatt, és kattintson az azt tartalmazó sorra.
 

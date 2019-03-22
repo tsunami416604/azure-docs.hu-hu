@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011104"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban fog használni az Azure Storage beépülő modul a Micr
 ## <a name="introduction-to-hudson"></a>Hudson bemutatása
 Hudson lehetővé teszi, hogy a folyamatos integráció, a szoftver projekt azáltal, hogy fejlesztők könnyedén integrálhatják a kód módosításait, és buildek előállított automatikusan és gyakran, ezáltal a fejlesztők a termelékenység növelése. Buildek rendszerverzióval ellátott, illetve build-összetevőket is feltölthetők a különböző adattárak. Ebből a cikkből megtudhatja, a build-összetevőket a tárházat az Azure Blob storage használata. Azt is megjelennek a függőségek letöltése az Azure Blob storage-ból.
 
-További információ a Hudson található [megfelelnek Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
+További információ a Hudson található [megfelelnek Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
 
 ## <a name="benefits-of-using-the-blob-service"></a>A Blob szolgáltatás használatának előnyei
 A Blob service használata az Agilis fejlesztési build-összetevők futtatásához előnyei a következők:
@@ -52,7 +52,7 @@ A Blob service használata a Hudson CI-megoldás a következő lesz szüksége:
   5. Után végezze el a kezdeti beállítását, megszakítja a futó példányát, a Hudson WAR, indítsa újra a Hudson WAR, és nyissa meg újra a Hudson irányítópult `http://localhost:8080/`, mert ezzel fogja telepítése és konfigurálása az Azure Storage beépülő modul.
      
       Bár egy tipikus Hudson CI-megoldást szeretne úgy, hogy a szolgáltatás, a Hudson war futtatása a parancssorból futtassa a jelen oktatóanyag elegendő lesz.
-* Egy Azure-fiók. Iratkozzon fel a következő Azure-fiókot <http://www.azure.com>.
+* Egy Azure-fiók. Iratkozzon fel a következő Azure-fiókot <https://www.azure.com>.
 * Egy Azure-tárfiók. Ha a tárfiók már nem rendelkezik, létrehozhat egyet a következő lépések használatával [hozzon létre egy Tárfiókot](../common/storage-quickstart-create-account.md).
 * A Hudson CI megoldás ismeretét ajánlott, de nem szükséges, az alábbi tartalommal fogja használni egy alapszintű példa mutatni, ha a Blob service használata Hudson CI vagy a szükséges lépéseket build-összetevőket.
 
@@ -134,7 +134,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja egy lépést, amely
 1. Az a **hozhat létre** szakaszban kattintson a feladat-konfiguráció **felépítési lépés hozzáadása** , és válassza **töltse le az Azure Blob storage-ból**.
 2. A **tárfióknevet**, válassza ki a használandó tárfiókot.
 3. A **Tárolónév**, adja meg a tároló, amelyben a blobokat letölteni kívánt nevét. Környezeti változókat is használhat.
-4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\***  kellene megadnia kezdődő összes BLOB **projekt**.
+4. A **blobnév**, adja meg a blob nevét. Környezeti változókat is használhat. Is használhatja egy csillagot helyettesítő karakter a kezdeti betűjét a blob nevének megadása után. Ha például **projekt\\*** kellene megadnia kezdődő összes BLOB **projekt**.
 5. [Opcionális] A **letöltési mappa elérési útját**, adja meg az elérési utat a Hudson számítógépen, ahol szeretné tölteni a fájlokat az Azure Blob storage-ból. A környezeti változók is használható. (Ha nem ad meg értéket **letöltési mappa elérési útját**, a feladatok munkaterület a fájlok az Azure Blob storage-ból letöltött.)
 
 Ha további elemek szeretné tölteni az Azure Blob storage-ból, létrehozhat további létrehozási lépések.
@@ -158,7 +158,7 @@ A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>További lépések
-* [Hudson felel meg](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Hudson felel meg](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Az Azure Storage-hoz készült Java SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)

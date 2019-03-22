@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d1e43924634e3c4543c244043cb06d965a4d14e0
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576837"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838799"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -61,7 +61,7 @@ A következő magas szintű adatok folyamat lépéseit egy saját üzemeltetés�
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Egy saját üzemeltetésű integrációs modul használatának szempontjai
 
 - Saját üzemeltetésű integrációs több helyszíni adatforrás is használható. Egy egyetlen saját üzemeltetésű integrációs modul az Azure Active Directory ugyanazon a bérlőn belül egy másik data factoryvel is megoszthatók. További információkért lásd: [megosztása egy saját üzemeltetésű integrációs modul](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Használhat egy saját üzemeltetésű integrációs modul telepítve egyetlen gépen csak egy példánya. Ha két adat-előállítók adott igényelnek hozzáférést a helyszíni adatforrások, szükséges a saját üzemeltetésű integrációs modul telepítése a két helyszíni számítógépeken. Más szóval egy saját üzemeltetésű integrációs modult az adott adat-előállító vannak kötve.
+- Használhat egy saját üzemeltetésű integrációs modul telepítve egyetlen gépen csak egy példánya. Ha két adat-előállítók kíván elérni a helyszíni adatforrások, szeretné-e a két helyszíni számítógépekre egyes mindkét az adat-előállítók a saját üzemeltetésű integrációs modul telepítése vagy használata az [saját üzemeltetésű integrációs modul megosztása szolgáltatás](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)megosztani egy másik Data Factory egy saját üzemeltetésű integrációs modult.  
 - A saját üzemeltetésű integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. Azonban a saját üzemeltetésű integrációs modul kellene csökkenti a közelebb az adatforrás az idő a saját üzemeltetésű integrációs modul kapcsolódni az adatforráshoz. Javasoljuk, hogy telepítse a saját üzemeltetésű integrációs modul olyan számítógépen, amelyen eltér a gazdagép a helyszíni adatforrás. Ha a saját üzemeltetésű integrációs modul és az adatforrás különböző gépeken vannak, a saját üzemeltetésű integrációs modul befolyásolják az adatforrás erőforrás esetén.
 - Az azonos helyszíni adatforráshoz csatlakozó különböző gépeken több saját üzemeltetésű integrációs modulok is rendelkezhet. Például előfordulhat, hogy két saját üzemeltetésű integrációs modulok, amely két adat-előállítók szolgálnak, de ugyanazon a helyszíni adatforrás regisztrálva van a mindkét az adat-előállítók.
 - Ha már van egy átjáró telepítve a számítógépen a Power bi-ban Ez a forgatókönyv kiszolgálására, telepítse egy külön saját üzemeltetésű integrációs modul az Azure Data Factory egy másik gépen.
@@ -145,7 +145,7 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 - CNG-kulccsal használó tanúsítványok nem támogatottak.  
 
 > [!NOTE]
-> Ez a tanúsítvány használható titkosításához a saját üzemeltetésű integrációs modul csomóponton használt portok **csomópontok közötti kommunikáció** (a szinkronizálási állapot), és miközben **PowerShell-lel társított szolgáltatáshoz parancsmag hitelesítőadat-beállítás**a helyi hálózaton belül. Javasoljuk, hogy ezt a tanúsítványt használja, ha a magánhálózati környezetben nem biztonságos, vagy ha szeretné, valamint a magánhálózaton lévő csomópontok közötti kommunikáció védelméhez. Adatok áthelyezése a saját üzemeltetésű integrációs modul átvitel pedig más adattárakban mindig bekövetkezik, titkosított csatornán, attól függetlenül, ezt a tanúsítványt, vagy nincs beállítva. 
+> Ez a tanúsítvány használható titkosításához a saját üzemeltetésű integrációs modul csomóponton használt portok **csomópontok közötti kommunikáció** (a társított szolgáltatásokat tartalmazó állapot szinkronizálás szinkronizálási csomóponton hitelesítő adatok), és közben **PowerShell-lel társított szolgáltatáshoz parancsmag hitelesítőadat-beállítás** a helyi hálózaton belül. Javasoljuk, hogy ezt a tanúsítványt használja, ha a magánhálózati környezetben nem biztonságos, vagy ha szeretné, valamint a magánhálózaton lévő csomópontok közötti kommunikáció védelméhez. Adatok áthelyezése a saját üzemeltetésű integrációs modul átvitel pedig más adattárakban mindig bekövetkezik, titkosított csatornán, attól függetlenül, ezt a tanúsítványt, vagy nincs beállítva. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>A saját üzemeltetésű integrációs modul osztanak meg több adat-előállítók
 

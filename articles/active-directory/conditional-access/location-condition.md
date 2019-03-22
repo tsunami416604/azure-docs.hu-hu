@@ -18,12 +18,12 @@ ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e405b592e75ca8b9fd811c7f891baafa19e528da
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e59e00b0be7b7694d03961b19fadfa92c5db98b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171074"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -142,7 +142,7 @@ Alapértelmezés szerint az Azure AD kibocsát egy token óránként. Helyezze �
 
 ### <a name="user-ip-address"></a>Felhasználói IP-cím
 
-Az IP-címet, amely a szabályzat-kiértékelés szolgál a felhasználó a nyilvános IP-címe. Egy magánhálózaton lévő eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím a nyilvános internethez való kapcsolódáshoz a hálózat által használt. Ha az eszköz egy csak IPv6-címet, a hely feltétel konfigurálása nem támogatott.
+Az IP-címet, amely a szabályzat-kiértékelés szolgál a felhasználó a nyilvános IP-címe. Egy magánhálózaton lévő eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím a nyilvános internethez való kapcsolódáshoz a hálózat által használt. Ha az eszköz egy csak IPv6-cím, a hely feltétel konfigurálása nem támogatott.
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Tömeges feltöltés és a nevesített helyek letöltése
 

@@ -1,5 +1,5 @@
 ---
-title: Csoport – Azure Active Directory hozzárendelési kapcsolatos problémák megoldásához |} A Microsoft Docs
+title: Azure Active Directory - csoporthoz hozzárendelt kapcsolatos problémák megoldásához |} A Microsoft Docs
 description: Hogyan lehet azonosítani és megoldani a licenc-hozzárendelési problémák, amikor az Azure Active Directory Csoportalapú licencelést használ
 services: active-directory
 keywords: Az Azure AD licencelése
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201534"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azonosíthatja és a egy Azure Active Directory-csoporthoz hozzárendelt kapcsolatos problémák megoldásához
 
@@ -33,21 +33,21 @@ Használata esetén a Csoportalapú licenceléssel és a fordulhat elő, a hibá
 ## <a name="how-to-find-license-assignment-errors"></a>Licenc-hozzárendelési hibák keresése
 **Licenc-hozzárendelési hibákkal található**
 
-   1. Adott csoportban lévő hibás állapotú felhasználók megkereséséhez a csoporthoz tartozó panel megnyitásához. A **licencek**, egy értesítés jelenik meg, ha nincsenek hibás állapotú felhasználók.
+1. Adott csoportban lévő hibás állapotú felhasználók megkereséséhez a csoporthoz tartozó panel megnyitásához. A **licencek**, egy értesítés jelenik meg, ha nincsenek hibás állapotú felhasználók.
 
-   ![Csoport hibaértesítésre](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![Csoport és a hiba értesítések üzenet](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. Válassza ki az értesítést, nyissa meg az összes érintett felhasználók listáját. Kiválaszthatja, hogy minden egyes felhasználói külön-külön kiválasztásával további részleteket.
+2. Válassza ki az értesítést, nyissa meg az összes érintett felhasználók listáját. Kiválaszthatja, hogy minden egyes felhasználói külön-külön kiválasztásával további részleteket.
 
-   ![A hibás állapotú felhasználók csoport listája](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![a csoport licencelésének hibás állapotú felhasználók listája](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. A legalább egy hibát tartalmazó összes csoportok kereséséhez a **Azure Active Directory** panelen válassza ki **licencek**, majd válassza ki **áttekintése**. Egy információs mező jelenik meg csoport beavatkozást igényel.
+3. A legalább egy hibát tartalmazó összes csoportok kereséséhez a **Azure Active Directory** panelen válassza ki **licencek**, majd válassza ki **áttekintése**. Egy információs mező jelenik meg csoport beavatkozást igényel.
 
-   ![Áttekintés, a hibás állapotú csoportokkal kapcsolatos információ](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![Áttekintés és a hibás állapotú csoportokkal kapcsolatos információ](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. Jelölje be az összes csoportot hibákkal listájának megtekintéséhez. Kiválaszthatja az egyes csoportok további részletekért.
+4. Jelölje be az összes csoportot hibákkal listájának megtekintéséhez. Kiválaszthatja az egyes csoportok további részletekért.
 
-   ![Áttekintés, hibákkal csoport listája](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![Áttekintés és a hibákkal csoport listája](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 A következő szakaszok adjon meg minden esetleges problémát, és úgy oldható meg a leírását.
@@ -104,9 +104,9 @@ Ha az Exchange Online használata esetén a bérlő néhány felhasználója el�
 
 > [!TIP]
 > Szeretné látni, hogy van-e ismétlődő proxycímet, hajtsa végre a következő PowerShell-parancsmag elleni Exchange online-hoz:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx). További információt ebben a cikkben [hogyan a proxyAddresses attribútum feltöltése az Azure ad-ben a](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 Teljesítése után bármely proxy cím az érintett felhasználók számára, ügyeljen arra, hogy a csoport, győződjön meg arról, hogy az licenceket is érvényesek, a licenc feldolgozási kényszerítése.

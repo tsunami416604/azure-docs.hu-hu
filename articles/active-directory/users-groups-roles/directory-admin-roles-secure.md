@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a31d41dedf7b925287a5beda15c7bfeb2bc59c96
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201874"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287230"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
 
@@ -261,7 +261,7 @@ Ha már használja az Azure AD Privileged Identity Management, módosítsa az id
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Határozza meg a jelszóalapú bejelentkezés protokollok való kitettség (ha az Exchange Online-nal)
 
-Múltbeli időpont protokollok feltételezi, hogy felhasználónév/jelszó kombináció is ágyazva eszközök, e-mail-fiókokat, -telefonokat és így tovább. Most már a kibertámadások ellen a felhőben kockázatát, javasoljuk, hogy azonosította a minden lehetséges felhasználói ki, ha hitelesítő adataikkal feltörték, sikerült katasztrofális a szervezet számára, és kizárja őket, hogy jelentkezzen be az e-mail-címét a felhasználónév-n keresztül, de / a jelszó erős hitelesítési követelmények és a feltételes hozzáférést megvalósításával. 
+Múltbeli időpont protokollok feltételezi, hogy felhasználónév/jelszó kombináció is ágyazva eszközök, e-mail-fiókokat, -telefonokat és így tovább. Most már a kibertámadások ellen a felhőben kockázatát, javasoljuk, hogy azonosította a minden lehetséges felhasználói ki, ha hitelesítő adataikkal feltörték, sikerült katasztrofális a szervezet számára, és kizárja őket, hogy jelentkezzen be az e-mail-címét a felhasználónév-n keresztül, de / a jelszó erős hitelesítési követelmények és a feltételes hozzáférést megvalósításával. Letilthatja a [feltételes hozzáféréssel az örökölt hitelesítési](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication). Ellenőrizze a részleteket a [blokkolása az alapszintű hitelesítés](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) Exchnage interneten keresztül. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Végezze el a szerepkörök felülvizsgálata értékelés Office 365-szerepkörök (Ha használja az Office 365)
 

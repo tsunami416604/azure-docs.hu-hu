@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a36f20011429ea45fb951e331c5cf3c2bb7209e2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 55407ec1846a0fe2eb037756dc2e97d8b05e7330
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342530"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997306"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: Vizsgálata és elemzése a költségeket a költségelemzés
 
@@ -51,9 +51,9 @@ További információ a Cost Management adataihoz való hozzáférés hozzárend
 
 ## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
 
-Tekintse át a költségeket, a költségek elemzése az Azure Portalon lépjen **Költségkezelés + számlázás** &gt; **költségelemzés**. Válassza ki **hatókör: _ScopeName_** hatókört válassza, majd kattintson a **kiválasztása**.
+Tekintse át a költségek, a költségek elemzése, nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **költségelemzés** menüjében. Például keresse meg **előfizetések**, és válasszon ki egy előfizetést a listából, majd válassza ki **költségelemzés** menüjében. Használja a **hatókör** megszámlálásához váltson át egy másik hatókört, a költségek elemzése. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
-A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett válassza ki, amely akár mások állítja, és majd, szűrő válassza ki, hogy milyen nagyobb hatókör. Ez azért fontos tudni, mert vannak, akik annak egy szülőhatóköréhez gyermek hatókörök akár összegző nem rendelkezik hozzáféréssel. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
+A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett válassza ki, amely akár mások állítja, és majd, szűrő válassza ki, hogy milyen nagyobb hatókör. Ez azért fontos tudni, mert vannak, akik annak egy szülőhatóköréhez gyermek hatókörök akár összegző nem rendelkezik hozzáféréssel.
 
 Kattintson a **Költségelemzés megnyitása** lehetőségre.
 

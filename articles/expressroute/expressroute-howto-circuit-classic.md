@@ -1,5 +1,5 @@
 ---
-title: 'Az ExpressRoute-Kapcsolatcsoportok módosítása: PowerShell: az Azure klasszikus |} A Microsoft Docs'
+title: 'Az ExpressRoute-Kapcsolatcsoportok módosítása: PowerShell: Klasszikus Azure portál |} A Microsoft Docs'
 description: Ez a cikk végigvezeti a lépéseken ellenőrizze az állapotot, update vagy delete és az ExpressRoute klasszikus üzemi modell kapcsolatcsoport megszüntetése.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5bf6f5662e20b003bd387a6826ab87117be3f113
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104237"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075782"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (klasszikus) használatával egy ExpressRoute-kapcsolatcsoport módosítása
 
@@ -48,25 +48,25 @@ Jelentkezzen be az Azure-fiókjába, használja az alábbi példában:
 
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
-  ```powershell
-  Connect-AzureRmAccount
-  ```
+   ```powershell
+   Connect-AzureRmAccount
+   ```
 2. Keresse meg a fiókot az előfizetésekben.
 
-  ```powershell
-  Get-AzureRmSubscription
-  ```
+   ```powershell
+   Get-AzureRmSubscription
+   ```
 3. Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
 
-  ```powershell
-  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
-  ```
+   ```powershell
+   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   ```
 
 4. Ezután használja a következő parancsmagot az Azure-előfizetés hozzáadása a PowerShell a klasszikus üzemi modellhez.
 
-  ```powershell
-  Add-AzureAccount
-  ```
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="get-the-status-of-a-circuit"></a>A kapcsolat állapotának lekérése
 

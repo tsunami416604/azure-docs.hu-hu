@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 44efe3482e9e1657125cc28441819ea173c982ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae31aa19e5905ccafcd0161ea362cc68234f8295
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861944"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294748"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -127,6 +127,8 @@ Az Azure CLI használatával fűzze hozzá a GUID Azonosítót, ha a **AZURE_HTT
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+További információkért lásd: [Góhoz készült Azure SDK](https://docs.microsoft.com/go/azure/).
+
 ## <a name="use-terraform"></a>A Terraform használata
 
 A Terraform támogatása az Azure szolgáltatói 1.21.0 keresztül érhető el kiadási: [ https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019 ](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Ez a támogatás érvényes összes partnereknek a megoldás a Terraform telepítése és minden erőforrások üzembe helyezése és az Azure-szolgáltató által mért (1.21.0 verzió vagy újabb).

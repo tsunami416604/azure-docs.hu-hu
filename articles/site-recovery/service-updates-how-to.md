@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: e3933fb593dfafc6ecc641d7c19741b7c0882c00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: 36d0a976b73fe5b6f89755ce790b919468744179
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878370"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091647"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Az Azure Site Recovery szolgáltatási hírek
 Szervezetként kell döntse el, hogyan fog az adatok biztonságban és futására tervezett alkalmazások és számítási feladatok, és nem tervezett leállások esetén. Az Azure Site Recovery azzal segíti a BCDR-stratégia, hogy virtuális gépeken és fizikai kiszolgálókon érhető el, ha egy hely leállása futtatja az alkalmazásokat. A Site Recovery replikálja a virtuális gépeken és fizikai kiszolgálókon futó folyamatokat, hogy azok egy másodlagos helyen elérhetők maradjanak az elsődleges hely elérhetetlenné válása esetén. Amikor az elsődleges hely ismét üzembe áll, helyreállítja rajta a munkafolyamatokat.
@@ -108,7 +108,7 @@ Frissítések folytatása előtt tekintse meg [Site Recovery támogatási nyilat
 Újraindítás ajánlott minden mobilitási ügynök frissítését követően győződjön meg arról, hogy az összes legutóbbi módosítások töltődnek be a forrásgépen. Azonban van **nem kötelező**. Ügynök utolsó újraindítás során és az aktuális verziója közötti különbség nagyobb, mint 4, ha újraindításra kötelező. Tekintse meg az alábbi táblázatban részletes ismertetése.
 
 |**Utolsó újraindítás során ügynök verziója** | **A frissítés** | **Az újraindítás kötelező?**|
-|---------|---------|---------|--------|
+|---------|---------|---------|
 |9.16 |  9.18 | Nem kötelező|
 |9.16 | 9.19 | Nem kötelező|
 | 9.16 | 9.20 | Nem kötelező

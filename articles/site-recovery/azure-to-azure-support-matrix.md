@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: dbee223e6c8e878d017026531dd06301fe6aaf84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093871"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287196"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -220,7 +220,7 @@ Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
 Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
-Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |10 MB/s | Lemezenként 842 GB
+Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | Lemezenként 1684 GB
 ## <a name="replicated-machines---networking"></a>A replikált gépek – hálózatkezelés
 **Konfigurálás** | **Támogatás** | **Részletek**
 --- | --- | ---

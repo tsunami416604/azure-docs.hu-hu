@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.openlocfilehash: bfacd71e4c5a018fb2d153e8b9683cfa8031a956
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 80d3d3cf5f386c5f21e1e8fed1071a12c10235cd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010395"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091613"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT hub X.509 biztonsági beállítása
 
@@ -65,7 +65,7 @@ Ezek a lépések bemutatják, hogyan adhat hozzá egy új hitelesítésszolgált
 
 10. Miután sikeresen feltöltötte a tanúsítványt, kattintson a **ellenőrizze**. A **állapot** a tanúsítvány módosításainak **_ellenőrzött_** a a **tanúsítványok** panelen. Kattintson a **frissítése** Ha nem frissíti automatikusan.
 
-   ![Töltse fel a tanúsítvány-ellenőrzés](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
+    ![Töltse fel a tanúsítvány-ellenőrzés](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 
 
 <a id="createdevice"></a>

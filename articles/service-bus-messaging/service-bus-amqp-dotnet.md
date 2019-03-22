@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 96d84b2328ffb83d5c1ea7218b17314a537fa45b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904558"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus, a .NET használata az AMQP 1.0 használatával
 
@@ -63,7 +63,7 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 
 | .NET-törzs objektumtípus | A csatlakoztatott AMQP típusa | Az AMQP törzs szakasz típusa |
 | --- | --- | --- |
-| Logikai |logikai |Az AMQP-érték |
+| logikai |logikai |Az AMQP-érték |
 | bájt |ubyte |Az AMQP-érték |
 | ushort |ushort |Az AMQP-érték |
 | uint |uint |Az AMQP-érték |
@@ -77,7 +77,7 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 | tizedes tört |decimal128 |Az AMQP-érték |
 | CHAR |CHAR |Az AMQP-érték |
 | DateTime |időbélyeg |Az AMQP-érték |
-| GUID |uuid |Az AMQP-érték |
+| Guid |uuid |Az AMQP-érték |
 | byte[] |Bináris |Az AMQP-érték |
 | sztring |sztring |Az AMQP-érték |
 | System.Collections.IList |lista |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
@@ -85,7 +85,7 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 | System.Collections.IDictionary |térkép |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. Megjegyzés: a csak karakterlánc-kulcsok használata támogatott. |
 | URI |Karakterlánc leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
 | DateTimeOffset |Mennyi ideig leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
-| Időtartam |Mennyi ideig leírt (lásd az alábbi) |Az AMQP-érték |
+| TimeSpan |Mennyi ideig leírt (lásd az alábbi) |Az AMQP-érték |
 | Stream |Bináris |Az AMQP-adatok (több is lehet). Az adatok szakaszok a nyers bájt, olvassa el a Stream-objektumból. |
 | Egyéb objektum |Bináris |Az AMQP-adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított serializátor használ a szerializált bináris tartalmazza. |
 
@@ -93,7 +93,7 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 | --- | --- | --- |
 | URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| Időtartam |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>Viselkedésbeli különbségeket
 
@@ -124,7 +124,7 @@ Készen áll további? Látogasson el az alábbi hivatkozásokat:
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
-[NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
+[NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP áttekintése]: service-bus-amqp-overview.md
 [AMQP 1.0 protokoll – útmutató]: service-bus-amqp-protocol-guide.md

@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ab00e74a704afe2f5fc6ef81f4f023b190a32d0b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f4acab2cb4522048f4a78b12ca41161695a31e18
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878340"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259601"
 ---
 # <a name="quickstart-url-preview-with-java"></a>Gyors útmutató: Java-URL-cím előnézete
 
@@ -27,7 +27,7 @@ Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answe
 
 ## <a name="request"></a>Kérés 
 
-A következő kód például létrehoz egy `WebRequest`-kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „https://swiftkey.com/en” webhelyhez.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejléc, és hozzáad egy lekérdezési karakterláncot a "https:\//swiftkey.com/en".  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ```
     // construct URL of search request (endpoint + query string)

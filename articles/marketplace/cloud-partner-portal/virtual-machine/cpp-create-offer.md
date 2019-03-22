@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a875b69a10f6305b4ffe32b63d3db5b508faf01
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639844"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888808"
 ---
 # <a name="create-virtual-machine-offer"></a>Virtuálisgép-ajánlat létrehozása
 
@@ -40,7 +40,7 @@ Ahol:
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Egyszer a jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), kattintson a **+ új ajánlat** elemet a bal oldali menüsáv. Az eredményül kapott menüben kattintson a **virtuális gépek** megjelenítéséhez a **új ajánlat** képezik, és egy új Virtuálisgép-ajánlat eszközök meghatározása folyamatának elindításához. 
+Egyszer a jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), kattintson a **+ új ajánlat** elemet a bal oldali menüsáv. Az eredményül kapott menüben kattintson a **virtuális gépek** megjelenítéséhez a **új ajánlat** képezik, és egy új Virtuálisgép-ajánlat eszközök meghatározása folyamatának elindításához. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![Új virtuális gép ajánlat felhasználói felület kiválasztása](./media/publishvm_003.png)
@@ -55,6 +55,6 @@ Ebben a szakaszban a következő témakörök lapjait tükrözik a **új ajánla
 
 - [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 - [Termékváltozatok lap](./cpp-skus-tab.md)
-- [Test Drive lap](./cpp-test-drive-tab.md)
+- [Tesztverzió lap](./cpp-test-drive-tab.md)
 - [Marketplace lap](./cpp-marketplace-tab.md)
 - [Támogatási lap](./cpp-support-tab.md)

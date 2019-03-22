@@ -11,16 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 934c6d4a46302f9388a114912017a4d916dc8bb2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: b1cf1d5bb87eea8054d2797634756d1b6c38464d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075969"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
-<center>![Helyszíni MFA](./media/howto-mfaserver-deploy/server2.png)</center>
+<center>
+
+![MFA helyszíni üzemeltetése](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Most, hogy a helyszíni Multi-Factor Authentication-kiszolgáló használata mellett döntöttünk, lássunk neki. Ezen a lapon a kiszolgáló új telepítését és helyszíni Active Directoryval való beállítását ismertetjük. Ha már telepített MFA-kiszolgálót és frissíteni szeretné, tekintse meg [a legújabb Azure Multi-Factor Authentication-kiszolgálóra való frissítéssel kapcsolatos](howto-mfaserver-deploy-upgrade.md) témakört. Ha csak a webszolgáltatás telepítésével kapcsolatban keres információt, tekintse meg [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md) című témakört.
 

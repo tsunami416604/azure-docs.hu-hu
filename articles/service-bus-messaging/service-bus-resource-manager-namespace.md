@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: e925ea91518d8f093cd270e238b7ffd09674e726
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a79565661ae11e70364d64503b3b11bdeabeabdb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899757"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablon használatával a Service Bus-névtér
 Ebben a rövid útmutatóban létrehozhat egy Azure Resource Manager-sablon, amely létrehozza a Service Bus-névtér, típus **üzenetkezelés** együtt egy **Standard** Termékváltozat. A cikk azt is meghatározza, a megadott paraméterek, a telepítés végrehajtására. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A teljes sablont, tekintse meg a [a Service Bus-névtér sablon] [ Service Bus namespace template] a Githubon.
@@ -53,7 +53,7 @@ Hozzon létre egy JSON-fájlt **MyServiceBusNamespace.json** az alábbi tartalom
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "serviceBusNamespaceName": {
@@ -109,7 +109,7 @@ Hozzon létre egy JSON-fájlt **MyServiceBusNamespace-Parameters.json** az aláb
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {

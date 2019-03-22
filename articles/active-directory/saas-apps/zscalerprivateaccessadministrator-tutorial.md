@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba2bde039cec65a1afe33efac58752d26f22c2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cdb842c4cebe48f2f6534417a7fe6aa4686d1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171893"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler privát hozzáférés rendszergazdája
 
@@ -217,7 +217,7 @@ Ahhoz, hogy az Azure AD-felhasználók Zscaler privát hozzáférés rendszergaz
 
     ![Zscaler privát hozzáférést rendszergazda felhasználó felügyeleti](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. Az a **felhasználónév** szövegmezőben adja meg az e-mail címét, például a felhasználó **BrittaSimon@contoso.com**.
+    a. Az a **felhasználónév** szövegmezőben adja meg az e-mail címét, például a felhasználó **BrittaSimon\@contoso.com**.
 
     b. Az a **jelszó** szövegmezőbe írja be a jelszót.
 
@@ -225,7 +225,7 @@ Ahhoz, hogy az Azure AD-felhasználók Zscaler privát hozzáférés rendszergaz
 
     d. Válassza ki **szerepkör** , **Zscaler privát hozzáférés rendszergazdája**.
 
-    e. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **BrittaSimon@contoso.com**.
+    e. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó **BrittaSimon\@contoso.com**.
 
     f. Az a **Phone** szövegmezőbe írja be a telefonszámot.
 

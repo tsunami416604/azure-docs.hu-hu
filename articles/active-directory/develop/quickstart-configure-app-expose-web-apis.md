@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940ca126eb18b81fd31f1ee2876948563e9d97af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188376"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080845"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Gyors útmutató: Egy alkalmazást úgy teszi közzé a webes API-k (előzetes verzió)
 
@@ -106,10 +106,10 @@ Ha az alkalmazásjegyzékben kívánja közzétenni új hatókört:
       }
       ```
 
-  > [!NOTE]
-  > Az `id` értéket programozott módon vagy GUID-előállító eszköz, például a [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) használatával kell előállítani. Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth 2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
-  >
-  > A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
+   > [!NOTE]
+   > Az `id` értéket programozott módon vagy GUID-előállító eszköz, például a [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) használatával kell előállítani. Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth 2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
+   >
+   > A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
 
 1. Amikor végzett, kattintson a **Mentés** gombra. A webes API most konfigurálva lett a könyvtárban lévő egyéb alkalmazások általi használatra.
 1. A megadott lépéseket követve [ellenőrizze, hogy a webes API közzététele sikerült-e a többi alkalmazás számára](#verify-the-web-api-is-exposed-to-other-applications).

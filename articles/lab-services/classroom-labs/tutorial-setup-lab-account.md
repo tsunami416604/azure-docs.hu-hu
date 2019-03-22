@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7cf0788bdd013eb6a42ee5aa3f5c054a557cbc77
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: MT
+ms.openlocfilehash: 4c63cb69cd5ce824648d2bf0a6735e316791c44e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079929"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Az Azure Lab Services tesztkörnyezetfiók beállítása
 Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének felügyeletéhez. A tesztkörnyezetfiókban engedélyeket adhat másoknak a tesztkörnyezetek létrehozására, és szabályzatokat állíthat be, amelyek a tesztkörnyezetfiók alá tartozó összes tesztkörnyezetben érvényesek. Ebben az oktatóanyagban megismerheti, hogyan hozhat létre tesztkörnyezetfiókot tesztkörnyezet-rendszergazdaként. 
@@ -48,8 +48,9 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
     2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
     3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
     4. A **Helyszín** esetében válassza ki a helyszínt/régiót, ahol létre szeretné hozni a tesztkörnyezetfiókot. 
-    5. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is. 
-    6. Kattintson a **Létrehozás** gombra. 
+    5. A **társ virtuális hálózatnak**, válassza ki a társ virtuális hálózatnak (VNet), a tesztlabor-hálózat. Ehhez a fiókhoz a létrehozott Labs a kiválasztott virtuális hálózat csatlakozik, és rendelkezik az erőforrásokhoz való hozzáférést a kiválasztott virtuális hálózat. 
+    6. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is. 
+    7. Kattintson a **Létrehozás** gombra. 
 
         ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. Válassza ki a **harang ikonra** eszköztár (**értesítések**), győződjön meg arról, hogy az üzembe helyezés sikeres volt-e, és válassza ki **erőforrás megnyitása**. 

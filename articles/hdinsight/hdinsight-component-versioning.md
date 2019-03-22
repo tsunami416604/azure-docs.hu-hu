@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 4b305087c0c755254d72811fb9275c509343c87e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 0e15f3dc448ba218ebdfe309c4308bbc789ef5be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878397"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226266"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 

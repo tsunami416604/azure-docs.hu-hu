@@ -3,20 +3,20 @@ title: 'Oktatóanyag: Az Azure Database Migration Service használata az Azure S
 description: Végezzen el egy online migrálás a távoli asztali szolgáltatások az SQL Server az Azure SQL Database vagy az Azure SQL Database felügyelt példány az Azure Database Migration Service segítségével megtanulhatja, hogyan.
 services: dms
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 95ce91edcd1273f0fdf7c1e710d19d717eb34e80
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 5b91e3082dba2ac8ea19606f4269e65a0f537ce1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183135"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával
 Az Azure Database Migration Service segítségével az adatbázisokat át egy távoli asztali szolgáltatások az SQL Server-példány [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) minimális állásidővel. Ebben az oktatóanyagban áttelepítése a **Adventureworks2012** visszaállított adatbázis egy távoli asztali szolgáltatások SQL Server példány SQL Server 2012 (vagy újabb) Azure SQL Database vagy az Azure SQL Database felügyelt példány az Azure Database Migration használatával A szolgáltatás.

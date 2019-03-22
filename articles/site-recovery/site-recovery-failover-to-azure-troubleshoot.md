@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889692"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gép vagy fizikai gép – Azure feladatátvétele során előforduló hibák elhárítása
 
@@ -24,7 +24,7 @@ Az Azure-bA egy virtuális gép feladatátvétele közben hibák a következők 
 
 A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtuális géphez az Azure-ban. Ez a következő okok egyike miatt fordulhat elő:
 
-* Nem áll rendelkezésre elegendő mag érhető el a virtuális gép létrehozásához: A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez.
+* Nem áll rendelkezésre elegendő mag érhető el a virtuális gép létrehozásához: A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](https://aka.ms/getazuresupport) a kvóta növeléséhez.
 
 * A feladatátvételi virtuális gépek ugyanazon rendelkezésre állási csoportban lévő különböző méretcsaládokhoz szeretne. Győződjön meg arról, hogy ugyanabban a rendelkezésre állási csoportban válassza ki az összes virtuális gép ugyanazon virtuálisgépméret-családhoz. Nyissa meg a virtuális gép számítási és hálózati beállításainál módosíthatja a méretét, és próbálkozzon újra a feladatátvételt.
 
@@ -32,7 +32,7 @@ A Site Recovery nem tudta egy nem sikerült létrehozni a feladatátviteli virtu
 
 ## <a name="failover-failed-with-error-id-28092"></a>Hibaazonosító: 28092 feladatátvétel sikertelen
 
-A Site Recovery nem tudta hozzon létre egy hálózati adaptert a sikertelen a feladatátviteli virtuális géphez. Győződjön meg arról, hogy elegendő kvótával a hálózati adapterek létrehozása az előfizetésben elérhető. A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](http://aka.ms/getazuresupport) a kvóta növeléséhez. Ha elegendő kvótával rendelkezik, akkor ez lehet egy átmeneti probléma, próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, ismétlés után sem, majd a dokumentum végén található Megjegyzés írása.  
+A Site Recovery nem tudta hozzon létre egy hálózati adaptert a sikertelen a feladatátviteli virtuális géphez. Győződjön meg arról, hogy elegendő kvótával a hálózati adapterek létrehozása az előfizetésben elérhető. A rendelkezésre álló kvótát ellenőrizheti a előfizetés -> használat + kvóták. Megnyithatja a [új támogatási kérelem](https://aka.ms/getazuresupport) a kvóta növeléséhez. Ha elegendő kvótával rendelkezik, akkor ez lehet egy átmeneti probléma, próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, ismétlés után sem, majd a dokumentum végén található Megjegyzés írása.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Feladatátvétel sikertelen Hibaazonosító: 70038
 
@@ -48,7 +48,7 @@ Csatlakozva az Azure-ban minden olyan gép, az Azure-környezethez szükséges n
 
 Manuális módosítása az indítási típusaként válassza az illesztőprogramok **Windows vendég operációs rendszer**, kövesse az az alábbi lépéseket:
 
-1. [Töltse le](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) a no-hidratálási parancsfájlt, és futtassa azt követi. Ez a szkript ellenőrzi, hogy ha a virtuális gép igényel-e a hidratálási.
+1. [Töltse le](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) a no-hidratálási parancsfájlt, és futtassa azt követi. Ez a szkript ellenőrzi, hogy ha a virtuális gép igényel-e a hidratálási.
 
     `.\Script-no-hydration.ps1`
 

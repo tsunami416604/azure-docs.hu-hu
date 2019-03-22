@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e11b158d6e3ce8f8ff4e5cdc3ff3b01722d1c105
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094786"
+ms.locfileid: "58200624"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Gyors útmutató: Folyamat létrehozása a kognitív keresés használatával képességeit, és mintaadatok
 
@@ -55,7 +55,7 @@ Ebben a forgatókönyvben kizárólag Azure-szolgáltatásokat használunk. A sz
 
 Első lépésként regisztráljon az Azure Search szolgáltatásra. 
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be Azure-fiókjával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) Azure-fiókjával.
 
 1. Kattintson az **Erőforrás létrehozása** gombra, keresse meg az Azure Search szolgáltatást, majd kattintson a **Létrehozás** gombra. Ha első alkalommal próbálkozik keresési szolgáltatás beállításával, és segítségre van szüksége, tekintse meg az [Azure Search szolgáltatás a portálon történő létrehozását](search-create-service-portal.md) ismertető szakaszt.
 

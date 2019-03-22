@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198201"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834489"
 ---
-# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Keresés a weben a Bing Web Search REST API és a Node.js használatával
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Gyors útmutató: Keresés a weben a Bing Web Search REST API és a Node.js használatával
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Node.js-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Node.js-alkalmazás egy keresési kérelmet küld az API-t, és bemutatja a választ. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [Node.js 6-os](https://nodejs.org/en/download/) vagy újabb verziója
@@ -43,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
 
-Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. [Kattintson ide](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) az előfizetői azonosító megkereséséhez.
+Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. Nyissa meg a [az API-k oldalon](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) keresse ki az előfizetési kulcs.
 
 Amennyiben nem ismeri a környezeti változók használatát, vagy minél előbb futtatni szeretné az alkalmazást, sztringként is lecserélheti a `process.env['AZURE_SUBSCRIPTION_KEY']` értékét az előfizetői azonosítóra.
 
@@ -110,7 +111,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, íme az egész program:
 const https = require('https')
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
 if (!SUBSCRIPTION_KEY) {
-  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment variable')
 }
 function bingWebSearch(query) {
   https.get({

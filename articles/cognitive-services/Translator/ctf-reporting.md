@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e1af2ef3be2b6cf4b75357107caf9d74c7199e8d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539782"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123419"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
 > [!NOTE]
 > Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
-
+> 
 > Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények is kivezetjük, és nem pótolhatók.
-
->Elérhető a Translator Hub API, lehetővé téve a terminológia és stílus, egyéni fordítási rendszer hasonló funkciókat és hívhatja meg a kategória-azonosítója használatával a Translator Text API. Translator Hub: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). Translator Hub API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
+> 
+> Elérhető a Translator Hub API, lehetővé téve a terminológia és stílus, egyéni fordítási rendszer hasonló funkciókat és hívhatja meg a kategória-azonosítója használatával a Translator Text API. Translator Hub: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). Translator Hub API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli statisztikák és a tényleges tartalmat adja vissza. Ez az API eltér a GetTranslations() metódus mert azt:
 * A fordított tartalomban és a számuk csak a fiókból (appId vagy az Azure Marketplace-fiók) adja vissza.
@@ -56,21 +56,21 @@ Ez a módszer lekérdezi a felhasználó által létrehozott fordításainak sz�
 **Syntax**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslationCount[]GetUserTranslationCounts(
-           string appId,
-           string uriPrefix,
-           string from,
-           string to,
-           int? minRating,
-           int? maxRating,
-           string user,
-           string category
-           DateTime? minDateUtc,
-           DateTime? maxDateUtc,
-           int? skip,
-           int? take);
-```
+> ```cs
+> UserTranslationCount[]GetUserTranslationCounts(
+>            string appId,
+>            string uriPrefix,
+>            string from,
+>            string to,
+>            int? minRating,
+>            int? maxRating,
+>            string user,
+>            string category
+>            DateTime? minDateUtc,
+>            DateTime? maxDateUtc,
+>            int? skip,
+>            int? take);
+> ```
 
 **Paraméterek**
 
@@ -127,21 +127,21 @@ Ez a módszer a fordítások, a felhasználó által létrehozott kérdezi le. A
 **Syntax**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslation[] GetUserTranslations (
-            string appId,
-            string uriPrefix,
-            string from,
-            string to,
-            int? minRating,
-            int? maxRating,
-            string user,
-            string category
-            DateTime? minDateUtc,
-            DateTime? maxDateUtc,
-            int? skip,
-            int? take);
-```
+> ```cs
+> UserTranslation[] GetUserTranslations (
+>             string appId,
+>             string uriPrefix,
+>             string from,
+>             string to,
+>             int? minRating,
+>             int? maxRating,
+>             string user,
+>             string category
+>             DateTime? minDateUtc,
+>             DateTime? maxDateUtc,
+>             int? skip,
+>             int? take);
+> ```
 
 **Paraméterek**
 

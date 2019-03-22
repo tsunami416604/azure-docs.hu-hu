@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995200"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Gyors útmutató: Webes API-k (előzetes verzió) eléréséhez ügyfélalkalmazás konfigurálása
 
@@ -74,11 +74,11 @@ Ha átirányítási URI-t szeretne hozzáadni alkalmazásához:
 
 1. Webes és nyilvános ügyfélalkalmazások egyéni átirányítási URI-jának hozzáadásához kövesse az alábbi lépéseket:
 
-    1. Keresse meg a **Átirányítási URI** szakaszt.
-    1. Válassza ki a létrehozni kívánt alkalmazás típusát: **webes** vagy **nyilvános (mobil és asztali) ügyfél**.
-    1. Adja meg alkalmazása átirányítási URI-ját.
-        * Webalkalmazások esetében az alkalmazás alap URL-címét adja meg. A http://localhost:31544 például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
-        * Nyilvános alkalmazások esetében azt az URI-t adja meg, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazásához tartozó értéket, például: https://MyFirstApp.
+   1. Keresse meg a **Átirányítási URI** szakaszt.
+   1. Válassza ki a létrehozni kívánt alkalmazás típusát: **webes** vagy **nyilvános (mobil és asztali) ügyfél**.
+   1. Adja meg alkalmazása átirányítási URI-ját.
+      * Webalkalmazások esetében az alkalmazás alap URL-címét adja meg. A `http://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
+      * Nyilvános alkalmazások esetében azt az URI-t adja meg, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazásához tartozó értéket, például: https://MyFirstApp.
 
 1. Ha a nyilvános (mobil, asztali) ügyfelekhez javasolt átirányítási URI-k közül szeretne választani, kövesse az alábbi lépéseket:
 

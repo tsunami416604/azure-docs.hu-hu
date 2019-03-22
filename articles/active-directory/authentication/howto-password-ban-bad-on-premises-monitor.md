@@ -1,5 +1,5 @@
 ---
-title: Figyelés és naplózás az Azure AD jelszóvédelem előzetes verzióban érhető el
+title: Figyelés és naplózás az Azure AD jelszóvédelem
 description: Megismerheti az Azure AD jelszó-védelmi figyelés és naplózás
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f946eceab68b0fe49ea67dc33a7094458cd14c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451486"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293719"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>Előzetes verzió: Az Azure AD jelszóvédelem figyelés és naplózás
-
-|     |
-| --- |
-| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Az Azure AD jelszóvédelem figyelés és naplózás
 
 Az Azure AD jelszóvédelem központi telepítését, miután a figyelési és jelentéskészítési elvégzendő alapvető feladatok áll. Ez a cikk részletezik segítségével megismerkedett a különböző figyelési technikák, többek között, ahol minden szolgáltatás információkat naplózza, és az Azure AD jelszóvédelem használatát jelentése.
 
-# <a name="dc-agent-event-logging"></a>Tartományvezérlő ügynök események naplózása
+## <a name="dc-agent-event-logging"></a>Tartományvezérlő ügynök események naplózása
 
 Minden tartományvezérlőn a tartományvezérlő szolgáltatás ügynökszoftver minden egyes jelszó-ellenőrzési művelet (és más állapota) eredményét ír egy helyi Eseménynapló:
 

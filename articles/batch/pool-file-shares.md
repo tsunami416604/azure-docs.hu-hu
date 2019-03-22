@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469566"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103332"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata Batch-készlet
 
@@ -66,16 +66,16 @@ A csatlakoztatási műveletet leegyszerűsítése igény szerint megőrzéséhez
 
 1. Futtassa a `cmdkey` parancssori segédprogram használatával az indítási tevékenység a készlet konfigurációjában. Ez továbbra is fennáll a hitelesítő adatokat a Windows-csomópontokon. A kezdő tevékenység parancssorának hasonlít:
 
-  ```
-  cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
+   ```
+   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
-  ```
+   ```
 
 2. A megosztás csatlakoztatásához használatával minden egyes feladat részeként minden egyes csomóponton `net use`. Például az a következő tevékenység parancssorának csatlakoztatja a fájlmegosztást, mint a *S:* meghajtót. Ez lenne követi, parancsot vagy parancsfájlt, amely hivatkozik a megosztást. Gyorsítótárazott hitelesítő adatok használhatók hívásában `net use`. Ez a lépés feltételezi, hogy az ugyanazon felhasználói identitás használ a feladatokkal, amelyek az indítási tevékenység a készlet, amely nem minden esetben megfelelő használt.
 
-  ```
-  cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
-  ```
+   ```
+   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
+   ```
 
 ### <a name="c-example"></a>C#-példa
 A következő C# példa bemutatja, hogyan is tartalmaz a hitelesítő adatokat, egy Windows-készlet indítási tevékenységet használ. A storage szolgáltatás nevét és a storage hitelesítő adatai továbbítódnak, meghatározott állandókkal van megadva. Az indítási tevékenység itt, normál (nem rendszergazdai) automatikus felhasználói fiók alatt fut, a készlet hatóköre.

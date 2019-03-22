@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43fa8148fff1389982d967b2e69f4a9425841c91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014918"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295623"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
 Meghívó e-mailek minősítés kulcsfontosságú ahhoz, hogy a partnerek hajón B2B együttműködés felhasználóként az Azure ad-ben. A címzett megbízhatóság növelése érdekében használhatja őket. jogtisztasága adhat hozzá, és az e-mailt, ellenőrizze, hogy a címzett, a közösségi koncepció kapcsolatcsoporté kijelölése magabiztosan a **Ismerkedés** gombra kattintva fogadja el a meghívást. Ebben a megbízhatósági kapcsolatban egy kulcsot azt jelenti, hogy csökkentse a megosztási fennakadások nélkül használható. És szeretné is, hogy az e-mailben remekül!
 
-![Az Azure AD B2b meghívó e-mail](media/invitation-email-elements/invitation-email.png)
+![Képernyőfelvétel: a B2B-meghívó e-mail](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>Az e-mailben tájékoztatja
 Tekintsünk meg néhány elemét az e-mailt, hogy tudja, hogyan lehet a legjobban a képességeinek használata érdekében.
@@ -51,12 +51,12 @@ Az e-mail tartalmazza a meghívót küldő személy megjelenített neve. És eme
 
 Ha még állított be a profilképét, a meghívót küldő személy monogramja a kép helyett egy ikon jelenik meg:
 
-  ![Megjelenítés a meghívót küldő személy monogramja](media/invitation-email-elements/inviters-initials.png)
+  ![Képernyőfelvétel: a meghívó a meghívót küldő személy a megjelenített monogramja](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Törzs
 A törzse tartalmazza az üzenetet, hogy a meghívót küldő személy composes mikor [vendégfelhasználók a könyvtárban, csoport vagy alkalmazás](add-users-administrator.md) vagy [a meghívó API használatával](customize-invitation-api.md). Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
 
-  ![e-mail-törzs képe](media/invitation-email-elements/invitation-email-body.png)
+  ![Képernyőfelvétel: a meghívást tartalmazó e-mail törzse](media/invitation-email-elements/invitation-email-body.png)
 
 ### <a name="footer-section"></a>Lábléc szakasz
 A lábléc tartalmazza a Microsoft vállalati márka, és lehetővé teszi, hogy a címzett tudja, ha a rendszer elküldte az e-mail címről küldtük. 
@@ -65,12 +65,12 @@ Különleges eset:
 
 - A meghívót küldő személy nem rendelkezik egy e-mail-címet a meghívó bérlőben
 
-  ![képe a meghívót küldő személy nem rendelkezik egy e-mail-címet a meghívó bérlőben](media/invitation-email-elements/inviter-no-email.png)
+  ![Ha egy meghívót küldő személy nem rendelkezik a meghívó bérlőben e-mail képernyőképe](media/invitation-email-elements/inviter-no-email.png)
 
 
 - A címzett nem kell beváltani a meghívót
 
-  ![Amikor a címzett nem szüksége van a meghívó beváltása](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Ha a címzett nem kell a meghívó beváltása képernyőképe](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 ## <a name="how-the-language-is-determined"></a>Hogyan határozza meg, a nyelv
 A meghívó e-mailben a Vendég felhasználó számára megjelenő nyelvét határozza meg a következő beállításokat. Ezek a beállítások elsőbbségi sorrendben vannak felsorolva. Ha a beállítás nincs konfigurálva, a listán a következő beállítás meghatározza, hogy a nyelvet. 

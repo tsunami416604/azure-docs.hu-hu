@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a434453d6164dbb9fed7aebc3b3636b45daafa21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313242"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842500"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -138,14 +138,9 @@ Mivel az elsődleges célja, hogy a hibrid Runbook-feldolgozó szolgáltatás a 
 
 Telepített modulok által hivatkozott helyen kell lennie a **PSModulePath** környezeti változót, hogy a hibrid feldolgozó automatikusan importálhatja őket. További információkért lásd: [módosítása a PSModulePath telepítési útvonal](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibaelhárítása Windows hibrid Runbook-feldolgozók](troubleshoot/hybrid-runbook-worker.md#windows)
-
-Az Update Management hibáinak elhárítása a további lépésekért lásd: [az Update Management: hibaelhárítási](troubleshoot/update-management.md).
-
 ## <a name="next-steps"></a>További lépések
 
 * A runbookok automatizálhatja a folyamatokat a helyszíni adatközpont vagy egyéb felhőalapú környezetbe történő konfigurálásával kapcsolatban lásd: [runbookok futtatása hibrid Runbook-feldolgozók](automation-hrw-run-runbooks.md).
 * A hibrid Runbook-feldolgozóinak eltávolítása útmutatásért lásd: [távolítsa el az Azure Automation hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-
+* Hogyan háríthatók el a hibrid Runbook-feldolgozók kapcsolatban lásd: [hibaelhárítása Windows hibrid Runbook-feldolgozók](troubleshoot/hybrid-runbook-worker.md#windows)
+* Az Update Management hibáinak elhárítása a további lépésekért lásd: [az Update Management: hibaelhárítási](troubleshoot/update-management.md).

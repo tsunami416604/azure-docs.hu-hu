@@ -3,20 +3,20 @@ title: A cikk kapcsolatos ismert problémák és a migrálás korlátozások az 
 description: Ismerje meg az online migrálást az Azure SQL Database ismert problémák és a migrálás korlátozások.
 services: database-migration
 author: HJToland3
-ms.author: rajpo
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 2261e2143a460bad812a49ba9d8a593c3f3b7b00
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091494"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure SQL DB
 
@@ -62,9 +62,9 @@ Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hiera
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. Ezek a táblák a kizárása a **migrálási beállítások konfigurálása** panel, amelyen megadhatja a táblák az áttelepítéshez.
+   1. Ezek a táblák a kizárása a **migrálási beállítások konfigurálása** panel, amelyen megadhatja a táblák az áttelepítéshez.
 
- 3. Futtassa újra a migrálási tevékenységet.
+   1. Futtassa újra a migrálási tevékenységet.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Az "adatok teljes betöltése" vagy "adatok növekményes szinkronizálása" során a sémában aktív eseményindítókat használó különböző integritás szabálysértések áttelepítési hibák
 

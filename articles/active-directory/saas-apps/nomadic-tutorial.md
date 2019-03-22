@@ -4,227 +4,202 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/27/2017
+ms.topic: tutorial
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c8858821d1f5b8dc770b5099b32b5ea76234446
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6b8a63d24626a1d7af3659281b613f8186a62a5d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Nomadic
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Nomadic integrálása az Azure Active Directory (Azure AD).
-
 Nomadic integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá Nomadic Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Nomadic (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá Nomadic Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Nomadic (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Nomadic az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Nomadic egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [itt egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Nomadic egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Nomadic hozzáadása a katalógusból
-1. Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-## <a name="add-nomadic-from-the-gallery"></a>Nomadic hozzáadása a katalógusból
+* Nomadic támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+
+## <a name="adding-nomadic-from-the-gallery"></a>Nomadic hozzáadása a katalógusból
+
 Az Azure AD integrálása a Nomadic konfigurálásához hozzá kell Nomadic a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **Nomadic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Nomadic**válassza **Nomadic** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények listájában Nomadic](./media/nomadic-tutorial/tutorial_nomadic_addfromgallery.png)
+4. A Keresés mezőbe írja be a **Nomadic**válassza **Nomadic** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Az eredmények listájában Nomadic](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Nomadic a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Nomadic mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Nomadic hivatkozás kapcsolata kell létrehozni.
-
-Nomadic, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Nomadic nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Nomadic hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az Nomadic tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy Nomadic tesztfelhasználót](#create-a-nomadic-test-user)**  – egy megfelelője a Britta Simon Nomadic, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Nomadic egyszeri bejelentkezés konfigurálása](#configure-nomadic-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Nomadic tesztfelhasználót](#create-nomadic-test-user)**  – egy megfelelője a Britta Simon Nomadic, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Nomadic alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Nomadic, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Nomadic, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Nomadic** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Nomadic** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/nomadic-tutorial/tutorial_nomadic_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **Nomadic tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Nomadic tartomány és URL-címek egyszeri bejelentkezési adatait](./media/nomadic-tutorial/tutorial_nomadic_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<company name>.nomadic.fm/signin`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company name>.nomadic.fm/auth/saml2/sp`, `https://<company name>.staging.nomadic.fm/auth/saml2/sp`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító. Kapcsolattartó [Nomadic ügyfél-támogatási csapatának](mailto:help@nomadic.fm) beolvasni ezeket az értékeket. 
- 
+    ![Nomadic tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company name>.nomadic.fm/signin`
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
+    | |
+    |--|
+    | `https://<company name>.nomadic.fm/auth/saml2/sp` |
+    | `https://<company name>.staging.nomadic.fm/auth/saml2/sp` |
 
-    ![A tanúsítvány letöltési hivatkozás](./media/nomadic-tutorial/tutorial_nomadic_certificate.png) 
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Nomadic ügyfél-támogatási csapatának](mailto:help@nomadic.fm) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-1. Kattintson a **mentése** gombra.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/nomadic-tutorial/tutorial_general_400.png)
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1.  Egyszeri bejelentkezés az alkalmazáshoz konfigurált beszerzéséhez forduljon [Nomadic támogatási csapatának](mailto:help@nomadic.fm) és adja meg a letöltött **metaadatok**.
+6. Az a **Nomadic beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-nomadic-single-sign-on"></a>Nomadic egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **Nomadic** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Nomadic támogatási csapatának](mailto:help@nomadic.fm). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/nomadic-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/nomadic-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/nomadic-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/nomadic-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-nomadic-test-user"></a>Nomadic tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy felhasználói Britta Simon nevű Nomadic hoz létre. Együttműködve [Nomadic támogatási csapatának](mailto:help@nomadic.fm) a felhasználók hozzáadása az Nomadic platformon.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Nomadic Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Nomadic**.
 
-**Britta Simon rendel Nomadic, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **Nomadic**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Az alkalmazások listáját a Nomadic hivatkozásra](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Nomadic**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Az alkalmazások listáját a Nomadic hivatkozásra](./media/nomadic-tutorial/tutorial_nomadic_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-nomadic-test-user"></a>Nomadic tesztfelhasználó létrehozása
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+Ebben a szakaszban egy felhasználói Britta Simon nevű Nomadic hoz létre. Együttműködve [Nomadic támogatási csapatának](mailto:help@nomadic.fm) a felhasználók hozzáadása az Nomadic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-A Nomadic csempére kattintva a hozzáférési panelen, meg kell lekérése automatikusan bejelentkezett a Nomadic alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+A Nomadic csempére kattintva a hozzáférési panelen, meg kell automatikusan jelentkeznie a Nomadic, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/nomadic-tutorial/tutorial_general_01.png
-[2]: ./media/nomadic-tutorial/tutorial_general_02.png
-[3]: ./media/nomadic-tutorial/tutorial_general_03.png
-[4]: ./media/nomadic-tutorial/tutorial_general_04.png
-
-[100]: ./media/nomadic-tutorial/tutorial_general_100.png
-
-[200]: ./media/nomadic-tutorial/tutorial_general_200.png
-[201]: ./media/nomadic-tutorial/tutorial_general_201.png
-[202]: ./media/nomadic-tutorial/tutorial_general_202.png
-[203]: ./media/nomadic-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

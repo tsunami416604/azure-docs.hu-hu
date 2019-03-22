@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a894e4f868e09881cff246ecf236a7937b9c7348
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095636"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Gyors útmutató: Keresse meg a lemezképek lemezkép Bing Search SDK-val a Pythonhoz
 
@@ -52,16 +52,16 @@ A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/c
 
 ## <a name="create-the-image-search-client"></a>A képkeresési ügyfél létrehozása
 
-3. Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
+1. Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 
     ```python
     client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
-4. Küldjön egy keresési lekérdezést a Bing Image Search API-nak:
+1. Küldjön egy keresési lekérdezést a Bing Image Search API-nak:
     ```python
     image_results = client.images.search(query=search_term)
     ```
-## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
+   ## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
 
 Elemezze a válaszban visszaadott képtalálatokat.
 

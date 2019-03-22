@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183471"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833501"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Az Azure-ban üzemeltetett virtuális gép konfigurálása
 
@@ -28,7 +28,8 @@ Ez a cikk a méretezés, frissítése és általánosítani a virtuális gépet 
 
 ## <a name="sizing-the-vhds"></a>A virtuális merevlemezeket méretezése
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Ha kiválasztotta a virtuális gépek előre konfigurált operációs rendszert (és szükség esetén további szolgáltatások), majd, már kivételezett egy standard Azure Virtuálisgép-méretet leírtak szerint [VM-termékváltozatok lapon](./cpp-skus-tab.md).  Az ajánlott módszer a megoldás kezdve egy előre konfigurált operációs rendszer.  Azonban ha manuálisan telepíti az operációs rendszer, majd kell méretezze az elsődleges virtuális Merevlemezt a VM-lemezképben található:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+Ha kiválasztotta a virtuális gépek előre konfigurált operációs rendszert (és szükség esetén további szolgáltatások), majd, már kivételezett egy standard Azure Virtuálisgép-méretet leírtak szerint [VM-termékváltozatok lapon](./cpp-skus-tab.md).  Az ajánlott módszer a megoldás kezdve egy előre konfigurált operációs rendszer.  Azonban ha manuálisan telepíti az operációs rendszer, majd kell méretezze az elsődleges virtuális Merevlemezt a VM-lemezképben található:
 
 - A Windows, az operációs rendszer VHD-fájlként kell létrehoznia egy 127 – 128 GB-os rögzített formátumú VHD-t. 
 - Linux rendszeren ez a VHD-fájlként kell létrehoznia egy 30 – 50 GB-os rögzített formátumú VHD-t.
@@ -44,7 +45,7 @@ Az operációs rendszer virtuális gépek tartalmazzák a legújabb frissítése
 
 A Windows Server 2016-ra, futtassa az alábbi parancsot a **frissítései** parancsot.  Ellenkező esetben a Windows korábbi verziói esetén lásd [frissítés beszerzése a Windows Update](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update).  Windows update automatikusan telepíti a legújabb kritikus fontosságú és fontos biztonsági frissítések.
 
-Linux-disztribúciókra vonatkozó frissítéseket gyakran letölthető és telepíthető egy parancssori eszköz vagy egy grafikus segédprogramot.  Például az Ubuntu Linux nyújt a [apt-get paranccsal](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) parancsot és a [kezelő](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) az operációs rendszer frissítésére szolgáló eszköz.
+Linux-disztribúciókra vonatkozó frissítéseket gyakran letölthető és telepíthető egy parancssori eszköz vagy egy grafikus segédprogramot.  Például az Ubuntu Linux nyújt a [apt-get paranccsal](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) parancsot és a [kezelő](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) az operációs rendszer frissítésére szolgáló eszköz.
 
 
 ## <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzést
@@ -72,7 +73,7 @@ Windows operációsrendszer-lemezek a általánosítva vannak a [a sysprep eszk�
 > [!WARNING]
 >  Mert frissítések automatikusan, előfordulhat, hogy futtatja a sysprep futtatása után, akkor kapcsolja ki a virtuális gép, amíg nem telepítik.  A Leállítás elkerüli a virtuális merevlemez operációs rendszerének példány-specifikus módosítása az ezt követő frissítésekben vagy szolgáltatások telepítése.
 
-A sysprep futtatásával kapcsolatos további információkért lásd: [lépéseket általánosítani a virtuális merevlemez] ()https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
+A sysprep futtatásával kapcsolatos további információkért lásd: [lépéseket általánosítani a virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)
 
 ### <a name="linux"></a>Linux
 
@@ -96,7 +97,7 @@ A következő két lépésből álló folyamat Linux rendszerű virtuális gép 
 Másolatokat készít a virtuális gép hasznos gyakran a biztonsági mentés, tesztelés, testre szabott feladatátvétel vagy terheléselosztás, különböző konfigurációjú megoldást kínálnak, és így tovább. A duplikált, és töltse le az elsődleges virtuális Merevlemezt, hogy egy nem felügyelt Klónozás információkért lásd:
 
 - Linux rendszerű virtuális Gépen: [Linux rendszerű VHD letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
-- Windows virtuális gépek: [Töltse le a virtuális merevlemez Windows Azure-ból](../../../virtual-machines/windows/download-vhd.md)
+- Windows VM: [Töltse le a virtuális merevlemez Windows Azure-ból](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e66c694d2bfb5497712bcf81c4d50a8e68fdcef9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122520"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293958"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -38,7 +38,7 @@ Ez a funkció a bérlő és a hely gyűjtemény szintjén "ShowPeoplePickerSugge
 
 Értesítést kap, hogy nincs engedélye felhasználókat meghívni, győződjön meg arról, hogy a felhasználói fiók jogosult külső felhasználók a felhasználói beállítások szakasz meghívása:
 
-![Külső felhasználói beállítások](media/troubleshoot/external-user-settings.png)
+![A külső felhasználók beállításait ábrázoló képernyőfelvétel](media/troubleshoot/external-user-settings.png)
 
 Ha nemrég módosította ezeket a beállításokat, vagy a Vendégmeghívó szerepkörrel egy felhasználóhoz, van egy 15 – 60 perc késleltetéssel a módosítások életbe léptetéséhez.
 
@@ -50,7 +50,7 @@ Gyakori hibák a következők:
 
 Amikor a felhasználók figyelmét, amelyek a szervezet az Azure Active Directory, de ha az adott felhasználói fiók nem létezik (például a felhasználó nem létezik az Azure ad-ben a contoso.com). A rendszergazda a contoso.com, előfordulhat, hogy tartalmaznak egy házirend meggátolja, hogy a felhasználók létrehozása folyamatban. A felhasználónak ellenőriznie kell meghatározni, ha a külső felhasználók számára engedélyezett a rendszergazdától. Előfordulhat, hogy a külső felhasználó rendszergazda kell e-mailben ellenőrzött felhasználók a tartományhoz (Ez [cikk](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) az e-mailben ellenőrzött felhasználók).
 
-![Hiba meg ezen a bérlőn nem teszi lehetővé e-mailben ellenőrzött felhasználók felvételét](media/troubleshoot/allow-email-verified-users.png)
+![Hiba arról, hogy a bérlő nem teszi lehetővé e-mailben ellenőrzött felhasználók](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Külső felhasználó nem létezik már egy összevont tartományban
 

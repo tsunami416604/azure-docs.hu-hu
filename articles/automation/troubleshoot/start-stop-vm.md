@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269997"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861060"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A gépek indítása/leállítása közben ki óra solution hibaelhárítása
 
@@ -141,7 +141,7 @@ Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a
 
 * Elindíthatja és leállíthatja a virtuális gépeket, hogy az Automation-fiók futtató fiókjának rendelkeznie kell a virtuális gép megfelelő engedélyekkel. Ellenőrizze az engedélyeit erőforrás kezelésével kapcsolatos információkért lásd: [a rövid útmutató: Az Azure portal használatával egy felhasználóhoz hozzárendelt szerepkörök megtekintése](../../role-based-access-control/check-access.md). Adja meg az alkalmazásazonosítót a futtató fiók által használt egyszerű szolgáltatás kell. Ezt az értéket lekérheti az Automation-fiókját az Azure Portalon a kiválasztásával **futtató fiókok** alatt **Fiókbeállítások** , és kattintson a megfelelő futtató fiókot.
 
-* Ha a virtuális gép nem indul vagy felszabadítása hibás, ez a viselkedés a virtuális gépre a problémát okozhatja. Néhány példa vagy potenciális problémák, egy frissítését végzi, Leállítás, a szolgáltatás tett kísérlet során lefagy és egyebek). Keresse meg a virtuális gép erőforrást, és ellenőrizze a **tevékenységeket tartalmazó naplók** van-e hibák a naplók megtekintéséhez. Is megkísérelheti a jelentkezzen be a virtuális gép nem találhatók esetleges hibákat az eseménynaplóban.
+* Ha a virtuális gép nem indul vagy felszabadítása hibás, ez a viselkedés a virtuális gépre a problémát okozhatja. Néhány példa vagy potenciális problémák, egy frissítését végzi, Leállítás, a szolgáltatás tett kísérlet során lefagy és egyebek). Keresse meg a virtuális gép erőforrást, és ellenőrizze a **tevékenységeket tartalmazó naplók** van-e hibák a naplók megtekintéséhez. Is megkísérelheti a jelentkezzen be a virtuális gép nem találhatók esetleges hibákat az eseménynaplóban. A virtuális gép hibaelhárítással kapcsolatos további tudnivalókért lásd: [hibaelhárítása Azure virtual machines szolgáltatásban](../../virtual-machines/troubleshooting/index.md)
 
 ## <a name="custom-runbook"></a>Forgatókönyv: Saját egyéni runbook indítása és leállítása a virtuális gépek nem
 

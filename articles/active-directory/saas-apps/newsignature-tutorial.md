@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2a06e848e136b4707fddfd1f355c2baa93b1b6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 81351fc13ddf36d8aeb4fa5cecab10daf152406f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764455"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Oktatóanyag: Az Azure Active Directory-integráció a Microsoft Azure felhőalapú felügyeleti portállal
 
@@ -106,18 +106,21 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft Azure felhőalap
     ![Felhőalapú felügyeleti portálján a Microsoft Azure-tartomány és URL-címek egyetlen bejelentkezési adatait](common/sp-identifier-reply.png)
 
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `https://portal.newsignature.com/<instancename>` |   
     | `https://portal.igcm.com/<instancename>` |
 
     b. Az a **azonosító** mezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `https://<subdomain>.igcm.com` |
     | `https://<subdomain>.newsignature.com` |
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `https://<subdomain>.igcm.com/<instancename>` |
@@ -163,7 +166,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

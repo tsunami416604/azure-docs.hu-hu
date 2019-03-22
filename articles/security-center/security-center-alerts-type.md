@@ -3,7 +3,7 @@ title: Biztonsági riasztások típus szerint az Azure Security Centerben | Micr
 description: Ez a cikk bemutatja az Azure Security Centerben elérhető biztonsági riasztások különböző fajtáit.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,22 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 3/20/2018
+ms.author: monhaber
+ms.openlocfilehash: 407d0610f919b1145a91e8678f57f8d344c9c187
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439683"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286363"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
 
 A speciális észlelések beállításához frissítsen az Azure Security Center Standard verzióra. Az ingyenes próbaverzió is elérhető. A frissítéshez a **Biztonsági szabályzat** beállításnál válassza ki a kívánt [tarifacsomagot](tutorial-security-policy.md). További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
-
-> [!NOTE]
-> A Security Centernek korlátozott előzetes verzióként kiadott új észlelései naplózott rekordokat használnak egy közös naplózási keretrendszerben a Linux rendszerű gépek rosszindulatú viselkedésének észlelésére. Amennyiben csatlakozni szeretne az előzetes verzióhoz, küldjön [nekünk](mailto:ASC_linuxdetections@microsoft.com) egy e-mailt, amely tartalmazza az előfizetés-azonosítóit.
 
 ## <a name="what-type-of-alerts-are-available"></a>Milyen típusú riasztások állnak rendelkezésre?
 Az Azure Security Center különféle [észlelési funkciók](security-center-detection-capabilities.md) segítségével riasztja az ügyfeleket a környezetüket célzó lehetséges támadások esetén. Ezek a riasztások értékes információkat tartalmaznak arról, hogy mi váltotta ki a riasztást, valamint a támadás forrásáról és az általa célba vett erőforrásokról. A riasztásokban található információk eltérhetnek a fenyegetés észleléséhez használt elemzés típusától függően. Az incidensek további környezeti információkat is tartalmazhatnak, amelyek hasznosak lehetnek a fenyegetések vizsgálata során.  Ez a cikk a következő típusú riasztásokról nyújt információkat:

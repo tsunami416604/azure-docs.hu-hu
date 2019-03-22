@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 61c01e8ea3b4cbe7b5f7ab83ab35383d74df3105
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234933"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855835"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
 A Reliable Actors-futtatókörnyezet bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) események és [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek hogyan működik a futtatókörnyezet betekintést nyújtson, és a hibaelhárítás és alkalmazásteljesítmény-figyelés segítségével.
@@ -27,7 +27,7 @@ A Reliable Actors-futtatókörnyezet bocsát ki [EventSource](https://msdn.micro
 ## <a name="eventsource-events"></a>EventSource események
 A Reliable Actors-futtatókörnyezet EventSource szolgáltató neve "A Microsoft-ServiceFabric-Actors". Származó események megjelennek a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakot, amikor folyamatban van, az actors-alkalmazás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md).
 
-Példa eszközöket és technológiákat, amelyek segítségével gyűjtése és/vagy EventSource események megtekintése a [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [Szemantikus naplózás](https://msdn.microsoft.com/library/dn774980.aspx), és a [ A Microsoft TraceEvent könyvtár](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Példa eszközöket és technológiákat, amelyek segítségével gyűjtése és/vagy EventSource események megtekintése a [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [Szemantikus naplózás](https://msdn.microsoft.com/library/dn774980.aspx), és a [ A Microsoft TraceEvent könyvtár](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ### <a name="keywords"></a>Kulcsszavak
 A Reliable Actors EventSource tartozó összes esemény legalább egy kulcsszavas társítva. Ez lehetővé teszi, hogy a gyűjtött események szűrése. A következő kulcsszó bits vannak meghatározva.

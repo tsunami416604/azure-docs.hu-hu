@@ -1,6 +1,6 @@
 ---
-title: A StorSimple biztonságimásolat-katalógus kezelése |} Microsoft Docs
-description: Ismerteti a StorSimple Device Manager szolgáltatás biztonságimásolat-katalógus lapnak a használatával listában válassza ki, és törölje a biztonsági mentés.
+title: A StorSimple biztonságimásolat-katalógus kezelése |} A Microsoft Docs
+description: Azt ismerteti, hogyan használhatja a StorSimple-Eszközkezelő szolgáltatás biztonságimásolat-katalógus lapján listában válassza ki, és törölje a biztonságimásolat-készleteket.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,102 +14,102 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23874926"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076785"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>A StorSimple Device Manager szolgáltatással, a biztonságimásolat-katalógus kezelése
+# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>A biztonságimásolat-katalógus kezelése a StorSimple-Eszközkezelő szolgáltatás segítségével
 ## <a name="overview"></a>Áttekintés
-A StorSimple Device Manager szolgáltatás **biztonságimásolat-katalógus** csempe megjeleníti a biztonsági mentés során manuális vagy ütemezett biztonsági mentést készít a létrehozott. Ezen a lapon a biztonsági mentési házirend, vagy egy kötetet, jelölje be a biztonsági másolatok felsorolása, vagy törölje a biztonsági mentések, vagy a biztonsági másolat használatával állítsa vissza vagy egy kötet klónozása.
+A StorSimple-Eszközkezelő szolgáltatás **biztonságimásolat-katalógus** panel jeleníti meg az összes biztonságimásolat-készletek, amelyek jönnek létre, ha a manuális vagy ütemezett biztonsági mentések megnyílik. Ezen a lapon egy biztonsági mentési szabályzatot, vagy egy kötetet, jelölje be az összes biztonsági mentés listában, vagy a biztonsági mentések törlésével, vagy használjon olyan biztonsági másolatot vissza-vagy kötet klónozása.
 
-Ez az oktatóanyag ismerteti, hogyan listában válassza ki, és egy biztonságimásolat-készlet törlése. További információk az eszköz visszaállítása biztonsági másolatból, [szeretné visszaállítani az eszközt egy biztonságimásolat-készlet](storsimple-8000-restore-from-backup-set-u2.md). Kötet klónozása útmutató, keresse fel [klónozza a StorSimple-kötet](storsimple-8000-clone-volume-u2.md).
+Ez az oktatóanyag azt ismerteti, hogyan listában válassza ki, és a egy biztonságimásolat-készlet törlése. Ismerje meg, hogy az eszköz visszaállítása biztonsági másolatból, lépjen a [az eszköz visszaállítása a biztonságimásolat-készlet](storsimple-8000-restore-from-backup-set-u2.md). Ismerje meg, hogyan kötet klónozása, lépjen a [StorSimple-kötet klónozása](storsimple-8000-clone-volume-u2.md).
 
-![Biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog.png) 
+![a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog.png) 
 
-A **biztonságimásolat-katalógus** panel biztosít egy lekérdezést szűkítheti a biztonsági másolat beállítása. A biztonságimásolat-készletek, amelyek lekérése, a következő paraméterek alapján szűrheti:
+A **biztonságimásolat-katalógus** panel biztosít egy lekérdezés szűkítheti a biztonsági mentés beállítása. A biztonságimásolat-készleteket, amelyek lekérni, a következő paraméterek alapján szűrheti:
 
-* **Eszköz** – az eszköz, amelyre a biztonságimásolat-készlet létrehozása.
-* **A biztonsági mentési házirend, vagy a kötet** – a biztonsági mentési házirend, vagy a kötet a biztonságimásolat-készlet társítva.
-* **A kezdő és a** – a dátum és idő tartomány, a biztonságimásolat-készlet létrehozásakor.
+* **Eszköz** – az eszköz, amelyen a biztonságimásolat-készletet létrehozták.
+* **A biztonsági mentési szabályzat vagy a kötet** – a biztonsági mentési szabályzat vagy a kötet a biztonságimásolat-készlet társítva.
+* **A kezdő és a** – a dátum- és időtartományt a biztonságimásolat-készlet létrehozásakor.
 
-A szűrt biztonsági mentés majd megjelennének a következő attribútumok alapján:
+A szűrt biztonságimásolat-készleteket majd megjelennének attribútumok közül a következők alapján:
 
-* **Név** – a biztonsági mentési házirend, vagy a kötet a biztonságimásolat-készlet társított nevét.
-* **Méret** – a biztonságimásolat-készlet tényleges méretének.
-* **Létrehozás** – a dátum és idő, amikor a biztonsági mentés készült. 
-* **Típus** – biztonsági másolat beállítása helyi pillanatképeket és felhőalapú pillanatfelvételek. Egy helyi pillanatfelvétel minden kötet adatait az eszközön, helyileg tárolt biztonsági másolatot, mivel egy felhőalapú pillanatfelvétel hivatkozik a felhőben tárolt kötet adatok biztonsági mentését. Helyi pillanatképeket gyorsabb hozzáférést biztosít, mivel felhőalapú pillanatfelvételek az adatrugalmasság közül választ.
-* **Elindító** – a biztonsági mentések kezdeményezheti automatikusan egy ütemezés szerint vagy manuálisan egy felhasználó által. A biztonsági mentési házirend segítségével biztonsági mentés ütemezése. Másik lehetőségként használhatja a **biztonsági másolatok készítéséhez** beállítás manuális biztonsági mentés végrehajtása.
+* **Név** – a biztonsági mentési szabályzat vagy a kötet a biztonságimásolat-készlet társított nevét.
+* **Méret** – a biztonságimásolat-készlet aktuális méretének.
+* **Létrehozás dátuma** – a dátum és idő, amikor a biztonsági mentések létrejöttek. 
+* **Típus** – Backup sets lehet a helyi pillanatképek vagy felhőalapú pillanatfelvételek. Helyi pillanatképet az összes kötet az eszközön, a helyileg tárolt biztonsági, mivel a felhőbeli pillanatképet a biztonsági mentés, a felhőben levő kötetadatokról hivatkozik. A helyi pillanatképeket gyorsabb engedélyt biztosít, mivel a felhőbeli pillanatképekkel adatrugalmasság közül választ.
+* **Elindító** – a biztonsági mentések kezdeményezhetők automatikusan egy ütemezés szerint vagy manuálisan felhasználója. Használhatja a biztonsági mentési szabályzatot a biztonsági mentések ütemezéséhez. Másik lehetőségként használhatja a **biztonsági mentés** manuális biztonsági mentés készítése lehetőséget.
 
 ## <a name="list-backup-sets-for-a-backup-policy"></a>Lista biztonságimásolat-készletet a biztonsági mentési házirend
-Az alábbi lépésekkel egy biztonsági mentési házirend biztonsági másolatok felsorolása.
+A következő lépéseket egy biztonsági mentési szabályzat az összes biztonsági mentés listázásához.
 
-#### <a name="to-list-backup-sets"></a>A lista biztonságimásolat-készletek
-1. Nyissa meg a StorSimple Device Manager szolgáltatást, és kattintson a **biztonságimásolat-katalógus**.
+#### <a name="to-list-backup-sets"></a>A biztonságimásolat-készletek listája
+1. Nyissa meg az a StorSimple-Eszközkezelő szolgáltatás, majd kattintson a **biztonságimásolat-katalógus**.
 
-2. Az alábbiak szerint szűrheti a lehetőségek közül:
+2. Szűrőbeállítások a következők szerint:
    
-   1. Adja meg azt az időtartományt.
+   1. Megadhatja az időtartományt.
    2. Válassza ki a megfelelő eszközt.
-   3. Szűrés **biztonsági mentési házirend** megtekintéséhez a megfelelő biztonsági mentés.
-   3. A biztonsági mentési házirend legördülő listából válassza ki a **összes** kattintva megtekintheti az összes biztonsági mentés a kiválasztott eszköz.
+   3. Szűrés **biztonsági mentési szabályzat** a megfelelő a biztonsági másolatok megtekintéséhez.
+   3. A biztonsági mentési szabályzat legördülő listából válassza ki a **összes** a biztonsági másolatok megtekintése a kiválasztott eszközön.
    4. Kattintson a **alkalmaz** a lekérdezés végrehajtásához.
       
-      A kijelölt biztonsági mentési házirend társított biztonsági másolatok meg kell jelennie a biztonságimásolat-készletek listájában.
+      A kiválasztott biztonsági mentési szabályzathoz társított biztonsági másolatok meg kell jelennie a biztonságimásolat-készletek listája.
 
-      ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 ## <a name="select-a-backup-set"></a>Válassza ki a biztonságimásolat-készletből
-Az alábbi lépésekkel válassza ki a biztonsági másolatot egy kötet vagy a biztonsági mentési házirend.
+A következő lépéseket követve állíthatja be egy kötet vagy a biztonsági mentési szabályzat biztonsági másolat kiválasztása.
 
 #### <a name="to-select-a-backup-set"></a>Jelölje be a biztonságimásolat-készletből
-1. Nyissa meg a StorSimple Device Manager szolgáltatást, és kattintson a **biztonságimásolat-katalógus**.
-2. Az alábbiak szerint szűrheti a lehetőségek közül:
+1. Nyissa meg az a StorSimple-Eszközkezelő szolgáltatás, majd kattintson a **biztonságimásolat-katalógus**.
+2. Szűrőbeállítások a következők szerint:
    
-   1. Adja meg azt az időtartományt. 
+   1. Megadhatja az időtartományt. 
    2. Válassza ki a megfelelő eszközt. 
-   3. Szűrés a biztonsági mentés, válassza ki szeretne kötet vagy a biztonsági mentési házirend.
+   3. Kötet vagy a biztonsági mentési házirend, amelyet szeretne, válassza ki a biztonsági szűrés.
    4. Kattintson a **alkalmaz** a lekérdezés végrehajtásához.
       
-      A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési házirend megjelenjen-e a biztonságimásolat-készletek listájában.
+      A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési szabályzat meg kell jelennie a biztonságimásolat-készletek listájában.
 
-      ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Válassza ki, és bontsa ki a biztonságimásolat-készletből. Most már megtekintheti a biztonsági mentés, a benne található kötetek szerinti bontásban. A **visszaállítása** és **törlése** beállítások érhetők el a helyi menüt (kattintson a jobb gombbal) a biztonsági másolat készletéhez. Ezek a műveletek egyikét a biztonságimásolat-készlet, verziószámával a hajthatja végre.
+3. Válassza ki, és bontsa ki a biztonságimásolat-készletből. Most már megtekintheti a biztonságimásolat-készleteket a benne található kötetek szerinti bontásban. A **visszaállítása** és **törlése** beállítások keresztül érhető el a helyi menü (helyi) biztonságimásolat-készlet. A biztonságimásolat-készlet, amely a kijelölt ezen műveletek egyikét végezheti.
 
-    ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>A biztonságimásolat-készlet törlése
-Törli az egy biztonsági mentés, ha már nem szeretne a vele társított adatok megőrzése mellett. A következő lépésekkel egy biztonságimásolat-készlet törlése.
+Egy biztonsági másolat törlése, amikor már nem szeretne megőrizni a hozzá kapcsolódó adatokat. Hajtsa végre az alábbi lépéseket egy biztonságimásolat-készlet törlése.
 
 #### <a name="to-delete-a-backup-set"></a>A biztonságimásolat-készlet törlése
- Nyissa meg a StorSimple Device Manager szolgáltatást, és kattintson a **biztonságimásolat-katalógus**.
-2. Az alábbiak szerint szűrheti a lehetőségek közül:
+ Nyissa meg az a StorSimple-Eszközkezelő szolgáltatás, majd kattintson a **biztonságimásolat-katalógus**.
+1. Szűrőbeállítások a következők szerint:
    
-   1. Adja meg azt az időtartományt. 
+   1. Megadhatja az időtartományt. 
    2. Válassza ki a megfelelő eszközt. 
-   3. Szűrés a biztonsági mentés, válassza ki szeretne kötet vagy a biztonsági mentési házirend.
+   3. Kötet vagy a biztonsági mentési házirend, amelyet szeretne, válassza ki a biztonsági szűrés.
    4. Kattintson a **alkalmaz** a lekérdezés végrehajtásához.
       
-      A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési házirend megjelenjen-e a biztonságimásolat-készletek listájában.
+      A biztonsági mentések társított a kijelölt kötetről, vagy a biztonsági mentési szabályzat meg kell jelennie a biztonságimásolat-készletek listájában.
 
-      ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Válassza ki, és bontsa ki a biztonságimásolat-készletből. Most már megtekintheti a biztonsági mentés, a benne található kötetek szerinti bontásban. A **visszaállítása** és **törlése** beállítások érhetők el a helyi menüt (kattintson a jobb gombbal) a biztonsági másolat készletéhez. Kattintson a jobb gombbal a kijelölt biztonságimásolat-készlet és a helyi menüben válassza a **törlése**.
+1. Válassza ki, és bontsa ki a biztonságimásolat-készletből. Most már megtekintheti a biztonságimásolat-készleteket a benne található kötetek szerinti bontásban. A **visszaállítása** és **törlése** beállítások keresztül érhető el a helyi menü (helyi) biztonságimásolat-készlet. Kattintson a jobb gombbal a kiválasztott biztonságimásolat-készlet és a helyi menüből válassza ki a **törlése**.
 
-    ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-4. Amikor felszólítja a megerősítésre, tekintse át a megjelenített információkat, majd kattintson **törlése**. A kijelölt biztonsági véglegesen törlődik.
+1. Amikor a rendszer megerősítést kér, tekintse át a megjelenített információkat, és kattintson a **törlése**. A kijelölt biztonsági másolat véglegesen törlődik.
 
-    ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
-5. Meg fog értesítést kapni a Törlés folyamatban van, és ha sikeresen befejeződött. A törlés után frissítse a lekérdezést. ezen a lapon. A törölt biztonságimásolat-készlet nem fog megjelenni a biztonságimásolat-készletek listájában.
+1. Értesíteni fogjuk, ha a törlés van folyamatban, és ha ez sikeresen befejeződött. A törlés után frissítse a lekérdezés ezen az oldalon. A törölt biztonságimásolat-készlet nem jelenik meg a biztonságimásolat-készletek listájában.
 
-    ![Ugrás a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Nyissa meg a biztonságimásolat-katalógus](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
-## <a name="next-steps"></a>Következő lépések
-* Megtudhatja, hogyan [a biztonságimásolat-katalógus használatával állítsa vissza az eszköz biztonságimásolat-készletből](storsimple-8000-restore-from-backup-set-u2.md).
-* Megtudhatja, hogyan [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>További lépések
+* Ismerje meg, hogyan [a biztonságimásolat-katalógus használatával állítsa vissza az eszköz biztonságimásolat-készlet](storsimple-8000-restore-from-backup-set-u2.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
 

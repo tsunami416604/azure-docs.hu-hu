@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: b35d3d22ce154420c9099143894688389e8af420
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 9b4bceba53658cb8ac3c73e75e0d19faf3fe3f0b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58078040"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259754"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Az Azure Storage analytics metrics (klasszikus)
 
@@ -23,10 +23,10 @@ A Storage Analytics olyan mérőszámokat, összesített és kapacitási adatait
 
 > [!NOTE]
 > Storage Analytics mérőszámainak áttekintését a Blob, üzenetsor, tábla és fájl szolgáltatások érhetők el.
-> Storage Analytics mérőszámainak áttekintését, mostantól klasszikus metrikákat. A Microsoft használatát javasolja [Storage-mérőszámok az Azure Monitor](/azure/storage/common/storage-metrics-in-azure-monitor.md) helyett a Storage Analytics mérőszámainak áttekintését.
+> Storage Analytics mérőszámainak áttekintését, mostantól klasszikus metrikákat. A Microsoft használatát javasolja [Storage-mérőszámok az Azure Monitor](storage-metrics-in-azure-monitor.md) helyett a Storage Analytics mérőszámainak áttekintését.
 
 ## <a name="transaction-metrics"></a>Tranzakció-mérőszámot  
- Adatok robusztus készletét minden egyes tárolási szolgáltatás óránként vagy perces időközönként rögzíti, és a kért API-művelet, beleértve a bejövő/kimenő forgalom, a rendelkezésre állás, a hibákat, és kérelmek százalékos kategorizált. A tranzakció részleteit a teljes listáját megtekintheti a [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md) témakör.  
+ Adatok robusztus készletét minden egyes tárolási szolgáltatás óránként vagy perces időközönként rögzíti, és a kért API-művelet, beleértve a bejövő/kimenő forgalom, a rendelkezésre állás, a hibákat, és kérelmek százalékos kategorizált. A tranzakció részleteit a teljes listáját megtekintheti a [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema) témakör.  
 
  Tranzakciós adatok két szinten – a szolgáltatási szint és az API-műveletek szintjén rögzíti. A szolgáltatási szintű összefoglalójához az összes statisztika kért API-műveleteket írja a program egy Táblaentitás óránként akkor is, ha nincsenek kérelmek történtek a szolgáltatás. Az API-művelet szintjén statisztikák csak írt entitásokhoz, ha a művelet adott órán belül a kért.  
 
@@ -45,7 +45,7 @@ A Storage Analytics olyan mérőszámokat, összesített és kapacitási adatait
 - **ContainerCount**: A tárfiók Blob service-ben a blobtárolók száma.  
 - **ObjectCount**: A tárfiók Blob service-ben vállalt és a nem véglegesített blokk vagy lap blobok száma.  
 
-  A kapacitási mérőszámot kapcsolatos további információkért lásd: [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).  
+  A kapacitási mérőszámot kapcsolatos további információkért lásd: [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
 ## <a name="how-metrics-are-stored"></a>Metrikák módjára  
 
@@ -123,7 +123,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 Storage-mérőszámok konfigurálása egy .NET-nyelv használatával kapcsolatos további információkért lásd: [a Storage ügyféloldali kódtára a .NET-hez](https://msdn.microsoft.com/library/azure/mt347887.aspx).  
 
-A REST API-val Storage Metrics konfigurálásával kapcsolatos általános információkért lásd: [engedélyezése és konfigurálása a Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics.md).  
+A REST API-val Storage Metrics konfigurálásával kapcsolatos általános információkért lásd: [engedélyezése és konfigurálása a Storage Analytics](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics).  
 
 ##  <a name="viewing-storage-metrics"></a>Storage-metrikák megtekintése  
 Miután konfigurálta a Storage Analytics metrikákat kíván monitorozni a storage-fiókot, a Storage Analytics rögzíti a metrikákat a tárfiókban lévő jól ismert táblák egy készlete. Konfigurálhatja a diagramot óránkénti mérőszámok megtekintéséhez a [az Azure portal](https://portal.azure.com):
@@ -144,7 +144,7 @@ Ha azt szeretné, töltse le a metrikákat, hosszú távú tárolás céljából
 |Perc típusú metrikák|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Csak akkor engedélyezhető, PowerShell-lel vagy programozott módon.<br /><br /> A szolgáltatás metrikáinak elérhető elején 2015-04-05-verzióval.|  
 |Kapacitás|$MetricsCapacityBlob|Csak a BLOB szolgáltatás.|  
 
-Részletes információk a séma találhat meg ezen táblák [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md). A minta az alábbi sorokat megjelenítése csak az elérhető oszlopok egy része, de néhány fontosabb funkciói a Storage Metrics menti ezeket a metrikákat módon mutatják be:  
+Részletes információk a séma találhat meg ezen táblák [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema). A minta az alábbi sorokat megjelenítése csak az elérhető oszlopok egy része, de néhány fontosabb funkciói a Storage Metrics menti ezeket a metrikákat módon mutatják be:  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
@@ -227,6 +227,6 @@ A metrikák táblák által használt kapacitása is számlázható. A következ
 
 ## <a name="next-steps"></a>További lépések
 * [Tárfiók figyelése](https://www.windowsazure.com/manage/services/storage/how-to-monitor-a-storage-account/)   
-* [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)   
-* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md)   
+* [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema)   
+* [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)   
 * [A Storage Analytics naplózási](storage-analytics-logging.md)

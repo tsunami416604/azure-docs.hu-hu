@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0da6b6b0fef0f998e20789253b2a65c54121532c
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207547"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260009"
 ---
 # <a name="manage-content-moderator-service-credentials"></a>A Content Moderator szolgáltatás hitelesítő adatainak kezelése
 
@@ -61,7 +61,7 @@ Az alábbi szakasz megvizsgálja az előző képen részletesebben:
 
 Az első rész listák a **tekintse át az API-végpont**, **csapatazonosító**, és a **Ocp-Apim-Subscription-Key (a Content Moderator Próbakulcs)** a csapatától részeként állítja elő létrehozását. Ezek segítségével az összes Content Moderator API-k, beleértve a felülvizsgálati API-t hívjuk.
 
-Azt is vegye figyelembe az API-végpont a régió azonosítója. Ha például **westus** a régió, a "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
+Azt is vegye figyelembe az API-végpont a régió azonosítója. Ha például **westus** a régió, a "https:\//westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
 
 ![Content Moderator kulcsot a felülvizsgálati eszköz](images/credentials-trialkey.PNG)
 

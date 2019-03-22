@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 3ca3222f47b6a728905f895007269e3c22acd66d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789942"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009966"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
 
@@ -24,8 +24,8 @@ Ez a cikk segít könnyebben átláthatja és készítse elő a hálózatleképe
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Az Azure-bA hálózatleképezés előkészítése
 
 Ha hálózati leképezés maps a forrás VMM-kiszolgálón futó Virtuálisgép-hálózatok között, az Azure-bA replikál, illetve cél Azure virtuális hálózatok. A leképezés a következőket hajtja végre:
-    -  **Hálózati kapcsolat**– biztosítja, hogy a csatlakoztatott hálózati replikált Azure virtuális gépek csatlakoznak. Minden olyan gép, amely az azonos hálózaton feladatátvételt is csatlakozni egymáshoz, még akkor is, ha azok az különböző helyreállítási tervek a feladatátvételt.
-    - **Hálózati átjáró**– Ha a cél Azure-hálózatban hálózati átjáró be van állítva, a virtuális gépek más helyszíni virtuális gépek csatlakozhat.
+-  **Hálózati kapcsolat**– biztosítja, hogy a csatlakoztatott hálózati replikált Azure virtuális gépek csatlakoznak. Minden olyan gép, amely az azonos hálózaton feladatátvételt is csatlakozni egymáshoz, még akkor is, ha azok az különböző helyreállítási tervek a feladatátvételt.
+- **Hálózati átjáró**– Ha a cél Azure-hálózatban hálózati átjáró be van állítva, a virtuális gépek más helyszíni virtuális gépek csatlakozhat.
 
 A hálózatleképezés a következőképpen történik:
 
@@ -56,9 +56,9 @@ A hálózatleképezés a következőképpen történik:
 
 **Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Hozzárendelve**
 ---|---|---|---
-New York | A VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago leképezve
+New York | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago leképezve
  |  | VMNetwork2-NewYork | Nincs leképezve
-Chicago | A VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork leképezve
+Chicago | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork leképezve
  | | VMNetwork2-Chicago | Nincs leképezve
 
 Ebben a példában:

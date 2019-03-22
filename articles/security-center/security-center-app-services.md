@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: f90ad2707e42c4b5b2c4188d7f0f18bb9c5ea31b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105026"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878630"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>App Service-ben az Azure Security Center védelme
 Ez a cikk segít az Azure Security Center segítségével történő figyeléséhez és védelméhez az alkalmazások futtatása az App Service.
@@ -68,4 +68,4 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 * [App services](security-center-virtual-machine-protection.md#app-services):  Az állapot-összefoglalók az App service-környezetek listájának megtekintéséhez.
 * [Partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md): A partnermegoldások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center – gyakori kérdések](security-center-faq.md): Gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Az Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

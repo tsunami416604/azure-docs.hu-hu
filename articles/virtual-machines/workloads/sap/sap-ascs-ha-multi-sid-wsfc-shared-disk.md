@@ -1,6 +1,6 @@
 ---
-title: SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-on |} Microsoft Docs
-description: Multi-SID a magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemez Azure SAP ASC/SCS példányok
+title: Az SAP ASCS/SCS-példány több SID-vel a magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-ban |} A Microsoft Docs
+description: Több SID-vel magas rendelkezésre állás az SAP ASCS/SCS példányhoz a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-ban
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 777fda4317abf431c83b7328084085841eb1f757
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007982"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -56,7 +56,7 @@ ms.locfileid: "34656730"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -204,98 +204,98 @@ ms.locfileid: "34656730"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-on
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Az SAP ASCS/SCS-példány több SID-vel a magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-ban
 
 > ![Windows][Logo_Windows] Windows
 >
 
-2016 szeptemberétől a Microsoft, amely egy szolgáltatás, ahol kezelheti több virtuális IP-cím használatával egy [Azure belső terheléselosztó][load-balancer-multivip-overview]. Ez a funkció már létezik az Azure külső terheléselosztó. 
+2016 szeptemberétől a Microsoft, amely egy szolgáltatás, ahol kezelheti a több virtuális IP-cím használatával egy [Azure belső terheléselosztó][load-balancer-multivip-overview]. Ez a funkció már szerepel az Azure külső load balancert. 
 
-Ha egy SAP üzemelő példányt, a belső terheléselosztót SAP központi Services (ASC vagy SCS)-példányok Windows fürtkonfiguráció létrehozásához kell használnia.
+Ha az SAP üzemelő példányt, a belső terheléselosztó Windows fürtkonfiguráció SAP Central Services (ASCS/SCS)-példányok létrehozásához kell használnia.
 
-Ez a cikk foglalkozik az egyetlen ASC/SCS telepítései áthelyezése egy SAP multi-SID-konfiguráció által megosztott lemezzel meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürt további SAP ASC/SCS fürtözött példányok telepítését. Ez a folyamat befejezése után konfigurált egy SAP multi-SID-fürtöt.
+Ez a cikk egy egyetlen ASCS/SCS-telepítésből áthelyezése az SAP több biztonsági AZONOSÍTÓVAL konfigurációjához további SAP ASCS/SCS fürtözött példányok be megosztott lemezzel, meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürt telepítésével összpontosít. Ez a folyamat befejezése után egy SAP több biztonsági AZONOSÍTÓVAL fürthöz konfigurált.
 
 > [!NOTE]
-> Ez a funkció csak az Azure Resource Manager telepítési modell érhető el.
+> Ez a funkció csak az Azure Resource Manager-alapú üzemi modellben érhető el.
 >
->A titkos előtér-IP-címek minden Azure belső terheléselosztóhoz száma korlátozva van.
+>Minden egyes Azure belső terheléselosztó magánhálózati előtérbeli IP-címek száma korlátozva van.
 >
->Egy WSFC-fürtön SAP ASC/SCS példányok maximális száma megegyezik a titkos előtér-IP-címek minden Azure belső terheléselosztóhoz maximális számát.
+>Egy WSFC-fürt SAP ASCS/SCS-példányok maximális száma megegyezik a minden Azure belső terheléselosztó magánhálózati előtérbeli IP-címek maximális számát.
 >
 
-A "Magánhálózati front-end IP-cím terheléselosztó" szakaszában talál további információt a terheléselosztó korlátok [hálózatkezelés korlátok: Azure Resource Manager][networking-limits-azure-resource-manager].
+Load balancer korlátok kapcsolatos további információkért lásd: a "Privát előtéri IP-Címek száma load balancer" szakaszában [hálózati korlátai: Az Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Már konfigurált egy WSFC-fürt használatára egy SAP ASC/SCS-példány használatával **fájlmegosztás**ezen a diagramon látható módon.
+Már konfigurált egy WSFC-fürt használatával egy SAP ASCS/SCS példányhoz használandó **fájlmegosztás**ezen az ábrán látható módon.
 
-![Magas rendelkezésre állású SAP ASC/SCS példány][sap-ha-guide-figure-6001]
+![Magas rendelkezésre állású SAP ASCS/SCS példányhoz][sap-ha-guide-figure-6001]
 
 > [!IMPORTANT]
 > A telepítő a következő feltételeknek kell megfelelniük:
-> * A SAP ASC/SCS-példány kell osztozik ugyanazon a WSFC-fürtre.
-> * Minden adatbázis-kezelő rendszer (DBMS) SID rendelkeznie kell a saját dedikált WSFC-fürtre.
-> * Egy SAP rendszer SID tartozó SAP alkalmazáskiszolgálók rendelkeznie kell a saját dedikált virtuális gépek.
+> * Az SAP ASCS/SCS-példányokat kell osztania a WSFC-fürtön.
+> * Minden egyes adatbázis-kezelő rendszer (DBMS) SID rendelkeznie kell a saját dedikált WSFC-fürtre.
+> * SAP-alkalmazáskiszolgálókhoz, amely egy SAP-rendszerhez SID tartozik a saját dedikált virtuális gépet kell tartalmaznia.
 
-## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>A megosztott lemez SAP ASC/SCS multi-SID-architektúra
+## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>Az SAP ASCS/SCS több biztonsági AZONOSÍTÓVAL architektúra közös lemezzel
 
-A cél az, hogy több SAP ABAP ASC telepítéséhez, vagy SAP Java SCS fürtözött példánya a azonos WSFC-fürtre, ábrákkal szemléltetett itt:
+A célja, hogy több SAP ABAP ASCS telepítse, vagy SAP Java SCS fürtözött példányok WSFC fürtön, ábrákkal szemléltetett itt:
 
-![Több SAP ASC/SCS fürtözött példánya, az Azure-ban][sap-ha-guide-figure-6002]
+![Több SAP ASCS/SCS fürtözött példány az Azure-ban][sap-ha-guide-figure-6002]
 
-A "Magánhálózati front-end IP-cím terheléselosztó" szakaszában talál további információt a terheléselosztó korlátok [hálózatkezelés korlátok: Azure Resource Manager][networking-limits-azure-resource-manager].
+Load balancer korlátok kapcsolatos további információkért lásd: a "Privát előtéri IP-Címek száma load balancer" szakaszában [hálózati korlátai: Az Azure Resource Manager][networking-limits-azure-resource-manager].
 
-A teljes fekvő két magas rendelkezésre állású SAP rendszerrel néz ki:
+A teljes fekvő két magas rendelkezésre állású SAP-rendszerek a következő lenne:
 
-![SAP magas rendelkezésre állású multi-SID telepítése két SAP rendszer SID-k][sap-ha-guide-figure-6003]
+![SAP magas rendelkezésre állású több SID-vel telepítő két SAP-rendszerrel SID-k][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Az infrastruktúra előkészítése egy SAP multi-SID forgatókönyv
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Az SAP több biztonsági AZONOSÍTÓVAL forgatókönyvhöz az infrastruktúra előkészítése
 
-Készítse elő az infrastruktúrát, egy további SAP ASC/SCS példányát telepítheti a következő paraméterekkel:
+Az infrastruktúra előkészítése, egy további SAP ASCS/SCS-példányt is telepíthet a következő paraméterekkel:
 
 | Paraméter neve | Érték |
 | --- | --- |
-| SAP ASC/SCS SID |PR1-lb-ASC |
-| SAP DBMS belső terheléselosztó | PR5 |
+| SAP ASCS/SCS SID |PR1-lb-ascs |
+| Az SAP DBMS belső load balancer | PR5 |
 | SAP virtuális állomás neve | pr5-sap-cl |
-| SAP ASC/SCS virtuális gazdagép IP-címe (további Azure load balancer IP-címe) | 10.0.0.50 |
-| SAP ASC/SCS példányszámának | 50 |
-| ILB mintavételi portot további SAP ASC/SCS-példány | 62350 |
+| Az SAP ASCS/SCS virtuális gazdagép IP-cím (további Azure load balancer IP-cím) | 10.0.0.50 |
+| Az SAP ASCS/SCS-példányok száma | 50 |
+| ILB-mintavétel port további SAP ASCS/SCS példányhoz | 62350 |
 
 > [!NOTE]
-> Az SAP ASC/SCS példányokat a minden IP-cím csak egy egyedi mintavételi portot. Például egy IP-cím, egy Azure belső terheléselosztón 62300 mintavételi portot használ, ha nincs más IP-címet a terheléselosztóhoz mintavételi portot 62300 is használhat.
+> Az SAP ASCS/SCS példányok minden IP-cím szükséges egyedi mintavételi port. Például egy, az Azure belső terheléselosztó IP-cím 62300 mintavételi portot használ, nincs más IP-címet a terheléselosztó a mintavételi portot 62300 használhatja.
 >
->A célokra mintavételi portot 62300 már foglalt, mert használjuk 62350 mintavételi portot.
+>A jelen 62300 mintavételi port már foglalt, mert használjuk 62350 mintavételi portot.
 
-SAP ASC/SCS további példányokat is telepíthet a létező WSFC-fürtön két csomóponttal rendelkező:
+További SAP ASCS/SCS-példányok a meglévő WSFC-fürtben két csomópont telepítése:
 
-| Virtuálisgép-szerepkör | Virtuális gép állomásneve | Statikus IP-cím |
+| Virtuális gépi szerepkör | Virtuális gép állomásneve | Statikus IP-cím |
 | --- | --- | --- |
-| Első fürtcsomópontra ASC/SCS-példány |PR1-ASC-0 |10.0.0.10 |
-| Második fürtcsomópont ASC/SCS-példány |PR1-ASC-1 |10.0.0.9 |
+| Első fürtcsomópontra ASCS/SCS példányhoz |pr1-ascs-0 |10.0.0.10 |
+| Második fürtcsomópontra ASCS/SCS példányhoz |PR1-ascs-1 |10.0.0.9 |
 
-### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány a DNS-kiszolgálón
+### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz a DNS-kiszolgálón
 
-A következő paraméterek használatával létrehozhat egy DNS-bejegyzést a ASC/SCS példányának virtuális állomás neve:
+Létrehozhat egy DNS-bejegyzést a ASCS/SCS-példány virtuális állomás nevét a következő paraméterek használatával:
 
-| Új SAP ASC/SCS virtuális állomás neve | Társított IP-cím |
-| --- | --- | --- |
+| Új SAP ASCS/SCS virtuális állomás neve | Társított IP-cím |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
-Az új állomás neve és IP-cím jelennek meg a DNS-kezelőben, az alábbi képernyőfelvételen látható módon:
+Az új állomás neve és IP-cím jelenik meg a DNS-kezelőben az alábbi képernyőképen látható módon:
 
-![A megadott DNS-bejegyzés esetében az új SAP ASC/SCS kiemelése DNS-kezelő lista fürt virtuális nevét és a TCP/IP-cím][sap-ha-guide-figure-6004]
+![A megadott DNS-bejegyzés esetében az új SAP ASCS/SCS kiemelés DNS-kezelő lista fürt virtuális neve és a TCP/IP-cím][sap-ha-guide-figure-6004]
 
 > [!NOTE]
-> Új IP-címet rendel a virtuális gazdagép további ASC/SCS példány nevét az új IP-címként a SAP Azure load balancer rendelt azonosnak kell lennie.
+> Az új IP-címet rendel a további példányának ASCS/SCS virtuális állomás neve ugyanaz, mint az SAP az Azure load balancer rendelt új IP-címet kell lennie.
 >
->A mi esetünkben az IP-cím 10.0.0.50.
+>Ebben az esetben az IP-cím 10.0.0.50.
 
-### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>IP-cím hozzáadása egy meglévő Azure belső terheléselosztót a PowerShell használatával
+### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>IP-cím hozzáadása egy meglévő Azure belső terheléselosztó a PowerShell használatával
 
-SAP ASC/SCS egynél több példány létrehozásához az ugyanazon a WSFC-fürtre, a PowerShell használatával IP-cím hozzáadása egy meglévő Azure belső terheléselosztót. Minden IP-címet igényel a saját terheléselosztási szabályok, a mintavételi portot, az előtér-IP-készlet és a háttér-készlet.
+Szeretne létrehozni egynél több SAP ASCS/SCS példányhoz a WSFC-fürtön, a PowerShell használatával ad hozzá egy meglévő Azure belső terheléselosztó IP-címet. Minden IP-cím a saját terheléselosztási szabályok, a mintavételi portot, az előtérbeli IP-címkészlet és a háttérkészlet igényel.
 
-A következő parancsfájl egy új IP-cím hozzáadása a meglévő terheléselosztó. A környezet PowerShell változói frissítése. A parancsfájl az összes szükséges terheléselosztási szabály minden SAP ASC/SCS porthoz hoz létre.
+A következő parancsfájl egy új IP-címet ad hozzá egy meglévő a terheléselosztóhoz. Frissítés a PowerShell változók környezete számára. A parancsfájl létrehozza az összes szükséges terheléselosztási szabály minden SAP ASCS/SCS-porthoz.
 
 ```powershell
 
@@ -375,65 +375,65 @@ $ILB | Set-AzureRmLoadBalancer
 Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
-Miután a parancsfájl lefutott, az eredményeket az Azure-portálon jelennek meg az alábbi képernyőfelvételen látható módon:
+Miután a parancsfájl lefutott, az eredményeket az Azure Portalon jelennek meg az alábbi képernyőképen látható módon:
 
-![Az Azure portálon található új előtér-IP-készlet][sap-ha-guide-figure-6005]
+![Új előtérbeli IP-címkészlet az Azure Portalon][sap-ha-guide-figure-6005]
 
-### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>Lemezek hozzáadása a fürtbeli gépeken, és konfigurálja a SIOS fürt-megosztás lemez
+### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>Lemezek hozzáadása fürthöz gépekre, és konfigurálja az SIOS fürt-megosztás lemez
 
-Hozzá kell adnia az új fürt-megosztás lemez minden további SAP ASC/SCS-példányhoz. A Windows Server 2012 R2, a WSFC megosztás fürtlemez jelenleg használatban, a SIOS DataKeeper szoftveres megoldás.
+Hozzá kell adnia az új fürt-megosztás lemez minden további SAP ASCS/SCS példányhoz. A Windows Server 2012 R2 a WSFC megosztás fürtlemez jelenleg használatban az SIOS DataKeeper szoftvert megoldás.
 
 Tegye a következőket:
-1. Az egyes fürtcsomópontokon egy további lemezt vagy lemezeket (amely kell paritásos) azonos méretűnek hozzáadása, és formázni őket.
-2. Storage replikáció konfigurálását a SIOS DataKeeper.
+1. Egy további lemezt vagy (amely a stripe-kell) azonos méretű lemezek hozzáadása a fürt csomópontok, és formázhatja őket.
+2. Az SIOS DataKeeper tárreplikáció konfigurálja.
 
-Ez az eljárás feltételezi, hogy még telepítette SIOS DataKeeper a WSFC-fürt gépeken. Ha már telepítette azt, a gépek közötti replikáció most konfigurálnia kell. A folyamat részletei a ismertetett [telepítése SIOS DataKeeper Cluster Edition az SAP ASC/SCS megosztás fürtlemezt][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
+Ez az eljárás feltételezi, hogy már telepítette az SIOS DataKeeper a WSFC-fürt gépeken. Ha már telepítette azt, a gépek közötti replikáció most konfigurálnia kell. A folyamat részletes leírása [telepítse az SIOS DataKeeper Cluster Edition a SAP ASCS/SCS fürtlemez-megosztás a][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios].  
 
-![A szinkron tükrözés az új SAP ASC/SCS a lemez megosztása a DataKeeper][sap-ha-guide-figure-6006]
+![A szinkron tükrözés, az új SAP ASCS/SCS a lemez megosztása a DataKeeper][sap-ha-guide-figure-6006]
 
-### <a name="deploy-vms-for-sap-application-servers-and-the-dbms-cluster"></a>Virtuális gépek SAP alkalmazáskiszolgálókra és az adatbázis-kezelő fürt üzembe helyezése
+### <a name="deploy-vms-for-sap-application-servers-and-the-dbms-cluster"></a>SAP-alkalmazáskiszolgálók és az adatbázis-kezelő fürt a virtuális gépek üzembe helyezése
 
-Az infrastruktúra előkészítése, a második SAP rendszer befejezéséhez tegye a következőket:
+Az infrastruktúra előkészítése a második SAP-rendszer végrehajtásához tegye a következőket:
 
-1. Az SAP alkalmazáskiszolgálók dedikált virtuális gépek telepítése, és hogy mindegyik saját dedikált rendelkezésre állási csoportban.
-2. Az adatbázis-kezelő fürt dedikált virtuális gépek telepítése, és hogy mindegyik saját dedikált rendelkezésre állási csoportban.
+1. Az SAP-alkalmazáskiszolgálók számára dedikált virtuális gépek üzembe helyezése, és helyezzen mindegyik saját dedikált rendelkezésre állási csoportban.
+2. Az adatbázis-kezelő fürt számára dedikált virtuális gépek üzembe helyezése, és helyezzen mindegyik saját dedikált rendelkezésre állási csoportban.
 
-## <a name="install-an-sap-netweaver-multi-sid-system"></a>SAP NetWeaver multi-SID rendszer telepítéséhez
+## <a name="install-an-sap-netweaver-multi-sid-system"></a>SAP NetWeaver több biztonsági AZONOSÍTÓVAL rendszer telepítéséhez
 
-A folyamat egy második SAP SID2 rendszer telepítésének ismertetését lásd: [SAP NetWeaver magas rendelkezésre ÁLLÁSÚ telepítés a Windows feladatátvételi fürtszolgáltatás és megosztott lemez egy SAP ASC/SCS példány][sap-high-availability-installation-wsfc-shared-disk].
+Egy második SAP SID2-rendszer telepítését a teljes folyamat leírásáért lásd: [SAP NetWeaver magas rendelkezésre ÁLLÁS telepítése a Windows feladatátvevő fürt és a egy SAP ASCS/SCS példányhoz megosztott lemez][sap-high-availability-installation-wsfc-shared-disk].
 
 A magas szintű eljárás a következőképpen történik:
 
-1. [Telepítse a SAP, ha a magas rendelkezésre állású ASC/SCS példánya][sap-high-availability-installation-wsfc-shared-disk-install-ascs].  
- Ebben a lépésben telepíti, a magas rendelkezésre állású ASC/SCS példánya a létező WSFC-fürt csomópont 1 SAP.
+1. [Telepítse a magas rendelkezésre állású ASCS/SCS példányhoz SAP][sap-high-availability-installation-wsfc-shared-disk-install-ascs].  
+ Ebben a lépésben telepíti, ha egy magas rendelkezésre állású ASCS/SCS példánya a létező WSFC-fürt csomópont 1 SAP.
 
-2. [Az SAP módosításához ASC/SCS példány][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile].
+2. [Az SAP ASCS/SCS-példány módosításához][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile].
 
-3. [Konfigurálja a mintavételi portot][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].  
- Ebben a lépésben a PowerShell használatával konfigurál egy SAP-erőforrás SAP-SID2-IP mintavételi portot. Hajtsa végre ezt a konfigurációt a SAP ASC/SCS fürtcsomópontok egyike.
+3. [A mintavételi port konfigurálása][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].  
+ Ebben a lépésben PowerShell-lel konfigurál egy SAP-erőforrás SAP-SID2-IP mintavételi portot. Hajtsa végre ezt a konfigurációt az SAP ASCS/SCS fürtcsomópontok egyike.
 
-4. Telepítse az adatbázispéldány fölött.  
- A második fürt telepítéséhez kövesse az SAP telepítési útmutatóban.
+4. Telepítse az adatbázispéldányhoz.  
+ A második fürt telepítéséhez kövesse a lépéseket az SAP telepítési útmutatóban.
 
-5. Telepítse a második csomópont.  
- Ebben a lépésben telepíti, a magas rendelkezésre állású ASC/SCS példánya a létező WSFC-fürt csomópont 2 SAP. A második fürt telepítéséhez kövesse az SAP telepítési útmutatóban.
+5. Telepítse a második fürtcsomópontra.  
+ Ebben a lépésben telepíti, ha egy magas rendelkezésre állású ASCS/SCS példánya a létező WSFC-fürt csomópont 2 SAP. A második fürt telepítéséhez kövesse a lépéseket az SAP telepítési útmutatóban.
 
-6. Nyissa meg a Windows tűzfal portjait a SAP ASC/SCS-példány és a mintavételi port.  
-    Mindkét fürtcsomóponton SAP ASC/SCS-példányok használt az összes Windows tűzfal portjainak SAP ASC/SCS használt nyitja meg. A SAP ASC/SCS példány portok a fejezetben felsorolt [SAP ASC / SCS portok][sap-net-weaver-ports-ascs-scs-ports].
+6. Nyissa meg az SAP ASCS/SCS-példány és a mintavételi portot a Windows tűzfal portjai.  
+    Mindkét fürtcsomópont által használt SAP ASCS/SCS-példányok, az SAP ASCS/SCS használt összes Windows tűzfal portok nyitja meg. A fejezetben felsorolt SAP ASCS/SCS példányhoz portokon [SAP ASCS / SCS portok][sap-net-weaver-ports-ascs-scs-ports].
 
-    Más SAP portok listáját lásd: [TCP/IP-portok összes SAP termékek][sap-net-weaver-ports].  
+    Egyéb SAP-portok listája: [TCP/IP-port minden SAP-termék][sap-net-weaver-ports].  
 
-    Az Azure belső terheléselosztási terheléselosztó mintavételi portot, amely 62350 a mi esetünkben is megnyithatja. Le van írva [ebben a cikkben][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port].
+    A belső Azure load balancer mintavételi portot, amely 62350 ebben az esetben is megnyithatja. Le van írva [ebben a cikkben][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port].
 
-7. [Módosítsa az indítási típus példányának kiértékelése SAP fogadását elszámolási (on felhasználók) Windows szolgáltatás][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type].
+7. [Módosíthatja a a kiértékelése SAP beérkezési elszámolás (on felhasználók) Windows-példányok][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type].
 
 8. Telepítse az új dedikált virtuális gépen, a SAP elsődleges kiszolgáló, a SAP telepítési útmutatójában leírtak szerint.  
 
-9. Az SAP további alkalmazáskiszolgáló telepítése az új dedikált virtuális gépen, a SAP telepítési útmutatójában leírtak szerint.
+9. További SAP alkalmazáskiszolgáló telepítése az új dedikált virtuális gépen, a SAP telepítési útmutatójában leírtak szerint.
 
-10. [Az SAP ASC/SCS-példány feladatátvevő és SIOS replikációs teszteléséhez][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
+10. [Tesztelje az SAP ASCS/SCS-példány feladatátvevő és SIOS replikációs][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hálózatkezelés korlátok: az Azure Resource Manager][networking-limits-azure-resource-manager]
-- [Több virtuális IP-címek az Azure terheléselosztó][load-balancer-multivip-overview]
+- [Hálózatkezelési korlátok: Az Azure Resource Manager][networking-limits-azure-resource-manager]
+- [Több virtuális IP-címek az Azure Load Balancer][load-balancer-multivip-overview]

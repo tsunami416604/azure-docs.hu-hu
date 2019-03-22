@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6444d2ab5265fffd4e3c956a2eec29437911b0e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110902"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók segítségével módosíthatja, és átmeneti és éles alkalmazások befolyásolása nélkül tesztelése
 
@@ -39,7 +39,7 @@ Verziók listáját bemutatják, hogy melyik verzió közzététele, ahol azok k
      > [!NOTE]
      > Verzió azonosítója csak karakterek, számjegyek állhat vagy '.', és nem lehet hosszabb 10 karakter hosszúságú.
  
- A megadott nevű új verzióját, és a állítja be aktív verziója.
+   A megadott nevű új verzióját, és a állítja be aktív verziója.
 
 ## <a name="set-active-version"></a>Aktív verzió beállítása
 

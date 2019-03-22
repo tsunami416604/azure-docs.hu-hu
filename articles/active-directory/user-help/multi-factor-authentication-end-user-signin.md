@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840875"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
 > [!NOTE]
@@ -34,7 +34,7 @@ A bejelentkezési felület használatához a második tényezőként beállítá
 | [A telefonon hívja fel a mobil- vagy office telefonomra](#signing-in-with-a-phone-call) |
 | [Az SMS-t kérek a mobiltelefonomra](#signing-in-with-a-text-message)
 | [Az értesítések a Microsoft Authenticator alkalmazásból](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| [Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
+| Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból |
 | [Az alternatív módszert mert jelenleg nem használható az előnyben részesített módszere](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés a telefonhívás
@@ -58,7 +58,7 @@ A következő információkat ismerteti a Microsoft Authenticator alkalmazás ha
 1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
 2. A Microsoft értesítést küld a Microsoft Authenticator alkalmazást az eszközön.
 
-  ![A Microsoft értesítést küld](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![A Microsoft értesítést küld](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. Nyissa meg az értesítést a telefonján és válassza ki a **ellenőrizze** kulcsot. Ha a munkahelyi PIN-kód szükséges, itt adhatja meg.
 4. Meg kell a bejelentkezés megtörtént.
@@ -70,7 +70,7 @@ Ha a Microsoft Authenticator alkalmazás használatával ellenőrző kódok beol
 1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
 2. A Microsoft egy ellenőrző kódot kér.
 
-  ![Ellenőrzőkód megadása](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Ellenőrzőkód megadása](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. Nyissa meg a Microsoft Authenticator alkalmazást a telefonra, és írja be a kódot a mezőbe, ahol most jelentkezik be.
 
@@ -81,7 +81,7 @@ Néha nem rendelkezik a telefon vagy eszközt, akkor állíthatja be az előnybe
 2. Válassza ki **másik ellenőrzési lehetőség használata**. Láthatja, hogy másik ellenőrzési lehetőség, hogy hány rendelkezik a telepítő-alapú.
 3. Válasszon egy másik módszert, és jelentkezzen be.
 
-  ![Alternatív módszer](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Alternatív módszer](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>További lépések
 - Ha problémába ütközik a kétlépéses ellenőrzés jelentkezik, részletes tájékoztatást: [problémája van az Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).

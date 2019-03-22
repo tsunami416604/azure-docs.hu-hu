@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 99ea221dcd236d3e8c42aec25d651b5fda2ae1d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: ba0ecda0ec24bf0a07acbf1bf5bfef494c3eabdd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887429"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57836929"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-minták
 
@@ -34,7 +34,7 @@ A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkri
 | | |
 |**Folyamatos üzembe helyezés**||
 | [Üzembe helyezés a GitHubból](scripts/functions-cli-create-function-app-github-continuous.md) | Létrehoz egy függvényalkalmazást, amely egy GitHub-adattárból lesz üzembe helyezve.  |
-| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Létrehoz egy függvényalkalmazást, amely az Azure DevOpsból lesz üzembe helyezve.  |
+| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Hozzon létre egy függvényalkalmazást, amely üzembe helyezi az Azure DevOps-adattárból.  |
 | | |
 |**Alkalmazás konfigurálása**||
 | [Egyéni tartomány leképezése egy függvényalkalmazásra](scripts/functions-cli-configure-custom-domain.md) | Definiál egy egyéni tartományt a függvényekhez.  |

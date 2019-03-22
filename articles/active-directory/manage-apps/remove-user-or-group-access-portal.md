@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aac24072bcebb0095c12cee1cfa21cfb9868dc5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548592"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074284"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban
 Egy felhasználó vagy csoport eltávolítása folyamatban van hozzárendelve a hozzáférés a vállalati alkalmazások az Azure Active Directoryban (Azure AD) egyik könnyebbé vált. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
@@ -67,7 +67,7 @@ Egy felhasználó vagy csoport eltávolítása folyamatban van hozzárendelve a 
     #To remove the App role assignment run the following command.
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ``` 
-## <a name="next-steps"></a>További lépések
+   ## <a name="next-steps"></a>További lépések
 
 - [Megjelenik az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](assign-user-or-group-access-portal.md)

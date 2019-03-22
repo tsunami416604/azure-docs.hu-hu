@@ -1,6 +1,6 @@
 ---
 title: Egy egyéni házirendek az Azure Active Directory B2C egy érvényesítési technikai profil meghatározása |} A Microsoft Docs
-description: Adja meg az Azure Active Directory B2C egyéni házirendet egy Azure Active Directory technikai profil.
+description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok az Azure Active Directory technikai profil.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4652f23bdf30e1b9e582cd1e83dc95f7716c8394
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436408"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900573"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 

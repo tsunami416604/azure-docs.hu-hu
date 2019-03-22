@@ -8,24 +8,53 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 91b6808e5f74d82a980dc633b2fa2bb0fe6752f1
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301349"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101482"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 
-A Microsoft Azure HDInsight-felhasználók néhány másik tárolási lehetőség közül választhat, ha HDInsight-fürtök létrehozása:
+Több különböző Azure storage-szolgáltatások HDInsight-fürtök létrehozásakor választhat:
 
-* 2. generációs Azure Data Lake Storage
 * Azure Storage
+* 2. generációs Azure Data Lake Storage
 * 1. generációs Azure Data Lake Storage
 
 Ez a cikk ezek tárolási típusok és a hozzájuk tartozó egyedi funkciók áttekintést nyújt.
 
-## <a name="azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Az Azure Data Lake Storage Gen2 az Azure HDInsight az Apache Hadoop-keretrendszerrel
+A következő táblázat összefoglalja az Azure Storage szolgáltatás, amely a különböző HDInsight-verziók támogatottak:
+
+| Társzolgáltatás | Fióktípus | Namespace típusa | Támogatott szolgáltatások | Támogatott teljesítményszintek | Támogatott elérési szint | HDInsight Version (HDInsight-verzió) | Fürttípus |
+|---|---|---|---|---|---|---|---|
+|2. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
+|Azure Storage| Általános célú V2 | Objektum | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
+|Azure Storage| Általános célú V1 | Objektum | Blob | Standard | – | Összes | Összes |
+|Azure Storage| Blob Storage | Objektum | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | Összes | Összes |
+|1. generációs Azure Data Lake Storage| – | Hierarchikus (fájlrendszer) | – | N/A | – | Csak 3.6. | A HBase kivételével |
+
+Az Azure Storage elérési szint további információkért lásd: [Azure Blob storage: Prémium (előzetes verzió), a gyors Elérésűre, ritka elérésű és archív tárolási szintek](../storage/blobs/storage-blob-storage-tiers.md)
+
+Létrehozhat egy fürtöt, az elsődleges és a nem kötelező másodlagos storage szolgáltatás különböző kombinációjával. A következő táblázat összefoglalja a fürt a HDInsight által jelenleg támogatott tárolási konfigurációk:
+
+| HDInsight Version (HDInsight-verzió) | Elsődleges tároló | A másodlagos tárhelyen | Támogatott |
+|---|---|---|---|
+| 3.6 & 4.0 | Standard Blob | Standard Blob | Igen |
+| 3.6 & 4.0 | Standard Blob | 2. generációs Data Lake Storage | Nem |
+| 3.6 & 4.0 | Standard Blob | 1. generációs Data Lake Storage | Igen |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | 2. generációs Data Lake Storage | Igen |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | Standard Blob | Igen |
+| 3.6 & 4.0 | 2. generációs Data Lake Storage | 1. generációs Data Lake Storage | Nem |
+| 3.6 | 1. generációs Data Lake Storage | 1. generációs Data Lake Storage | Igen |
+| 3.6 | 1. generációs Data Lake Storage | Standard Blob | Igen |
+| 3.6 | 1. generációs Data Lake Storage | 2. generációs Data Lake Storage | Nem |
+| 4.0 | 1. generációs Data Lake Storage | Bármelyik | Nem |
+
+* = Ez lehet egy vagy több Data Lake Storage Gen2-fiókok esetében, mindaddig, amíg azok az összes beállítás az azonos felügyelt identitás fürt elérésére használhat.
+
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Az Azure Data Lake Storage Gen2 használata az Azure HDInsight az Apache Hadoop-keretrendszerrel
 
 Az Azure Data Lake Storage Gen2 idő szükséges alapvető funkcióit, az Azure Data Lake Storage Gen1, és egyesíti azokat az Azure Blob storage-bA. Ilyen például egy fájlrendszer, amely kompatibilis a Hadoop-, Azure Active Directory (Azure AD), és a POSIX-alapú hozzáférés-vezérlési listák (ACL). Ez a kombináció kihasználhatja az Azure Data Lake Storage Gen1 teljesítményét a rétegezést és az adatok életciklus-felügyelet a Blob Storage használatát teszi lehetővé.
 
@@ -89,21 +118,10 @@ További információkért lásd: [használata az Azure Data Lake Storage Gen2 U
 
 Az Azure Storage egy robusztus általános célú tárolómegoldás, amely zökkenőmentesen integrálható a HDInsight szolgáltatás. A HDInsight egy blobtárolót használhat az Azure Storage-ben a fürt alapértelmezett fájlrendszereként. HDFS felületen a HDInsight összetevők teljes készlete működhet közvetlenül a strukturált vagy strukturálatlan adatokon a BLOB.
 
-Az Azure storage-fiók létrehozásakor a storage-fiók számos különböző közül választhat. A következő táblázat információkat biztosít a beállításokat, amelyek támogatottak a HDInsight.
-
-| **Tárfiók típusa** | **Támogatott szolgáltatások** | **Támogatott teljesítményszintek** | **Támogatott elérési szint** |
-|----------------------|--------------------|-----------------------------|------------------------|
-| Általános célú V2   | Blob               | Standard                    | Gyakori és ritka elérésű, archív *    |
-| Általános célú V1   | Blob               | Standard                    | –                    |
-| Blob Storage         | Blob               | Standard                    | Gyakori és ritka elérésű, archív *    |
-
-* Az archivált adatok hozzáférési szintje egy kapcsolat nélküli réteg, amely rendelkezik egy több órás késése. Ezen a szinten ne használja a HDInsight. További információkért lásd: [archivált adatok hozzáférési szintje](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
-
-> [!WARNING]  
-> Nem ajánlott, az alapértelmezett blob tároló használata az üzleti adatok tárolására. Az alapértelmezett tároló tartalmaz az alkalmazás- és naplóit. Győződjön meg arról, hogy a naplók begyűjtéséről az alapértelmezett blob tároló törlése előtt. A blog-tároló törlése a tárolási költségek csökkentése érdekében minden használat után. Azt is vegye figyelembe, hogy az egyik blobtároló több fürt közötti nem használható az alapértelmezett fájlrendszer.
-
+Javasoljuk, hogy az alapértelmezett fürttárolóhoz és az üzleti adatokat külön storage tárolók használatával elkülönítheti a HDInsight-naplók és a saját üzleti adatok ideiglenes fájlokat. Emellett ajánlott törölni az alapértelmezett blob tároló, amely tartalmazza az alkalmazás és a rendszer naplóit, tárolási költségek csökkentése érdekében minden használat után. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
+
 A következő ábra az Azure Storage a HDInsight-architektúra absztrakt nézetét nyújtja:
 
 ![Hogyan Hadoop-fürtök használatával a HDFS API-val érik el és tárolják a strukturált és strukturálatlan adatok Blob storage-ban bemutató ábra. Ez](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight tároló-architektúra")

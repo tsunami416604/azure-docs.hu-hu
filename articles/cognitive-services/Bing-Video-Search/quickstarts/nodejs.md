@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5c2df6859a0020160ae0de9b6e498f63dc253b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871982"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077309"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Gyors útmutató: Keressen videókat a Bing Video Search REST API és a Node.js használatával
 
@@ -61,19 +61,19 @@ Ez a rövid útmutató segítségével első hívását, a Bing Videókeresési 
     };
     ```
     
-    2. Amikor `end` van jelzést, használjon `response.on()` tárolásához, a bing kapcsolatos fejlécek (kezdve `bingapis` vagy `x-msedge-`). Majd elemezni a JSON használatával `JSON.parse()`, átalakíthatja egy karakterláncot `JSON.stringify()`, és nyomtassa ki.
+   1. Amikor `end` van jelzést, használjon `response.on()` tárolásához, a bing kapcsolatos fejlécek (kezdve `bingapis` vagy `x-msedge-`). Majd elemezni a JSON használatával `JSON.parse()`, átalakíthatja egy karakterláncot `JSON.stringify()`, és nyomtassa ki.
 
-        ```javascript
-        response.on('end', function () {
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            //JSON Response body
-            console.log(body);
-        });
-        ```
+       ```javascript
+       response.on('end', function () {
+           for (var header in response.headers)
+               // header keys are lower-cased by Node.js
+               if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                    console.log(header + ": " + response.headers[header]);
+           body = JSON.stringify(JSON.parse(body), null, '  ');
+           //JSON Response body
+           console.log(body);
+       });
+       ```
 
 # <a name="create-and-send-the-search-request"></a>Hozzon létre, és a keresési kérelem küldése
 

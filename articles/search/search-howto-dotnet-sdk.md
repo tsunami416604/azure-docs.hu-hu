@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 6f263511a7d1df4af82a690c1d6b04fecd2a8a91
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634541"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286312"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Az Azure Search .NET-alkalmazás használata
 Ez a cikk ahhoz, hogy működik és a egy forgatókönyv a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával egy fejlett keresési funkciókat megvalósítása az Azure Search használatával az alkalmazás.
@@ -33,7 +33,7 @@ Az SDK-t a többi NuGet csomagot a következők:
 
 A különböző klienskódtárak például osztályok definiálása `Index`, `Field`, és `Document`, illetve műveletek, például `Indexes.Create` és `Documents.Search` a a `SearchServiceClient` és `SearchIndexClient` osztályokat. Ezeket az osztályokat vannak szervezve a következő névterek:
 
-* [A Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Az Azure Search .NET SDK jelenlegi verziója már általánosan elérhető. Ha szeretné, hogy ahhoz, hogy a következő verziójában építhet be visszajelzést, kérjük, látogasson el a [visszajelzésküldő oldala](https://feedback.azure.com/forums/263029-azure-search/).
@@ -59,7 +59,7 @@ Számos dolgot kell hajtsa végre az alkalmazás. Ebben az oktatóanyagban alapv
 * Hozzáláthat a tárgymutató dokumentumok
 * A teljes szöveges keresés és a szűrők használatával dokumentumok keresése
 
-A következő példakód azt szemlélteti, minden egyes. Nyugodtan kódrészletek használhatja a saját alkalmazásában.
+Az alábbi mintakód bemutatja ezen. Nyugodtan kódrészletek használhatja a saját alkalmazásában.
 
 ### <a name="overview"></a>Áttekintés
 A mintaalkalmazás, azt fogja felfedezése létrehoz egy új "Hotels" nevet, index tölti fel, néhány dokumentumot, majd néhány keresési lekérdezéseket futtat. A fő program, az általános folyamatot bemutató a következő:
@@ -202,7 +202,7 @@ Ez a cikk végén található az alkalmazás a teljes forráskódot biztosítunk
 Ezután azt fogja annak minden egyes meghívott módszerek közelebbről is `Main`.
 
 ### <a name="creating-an-index"></a>Az index létrehozása
-Miután létrehozott egy `SearchServiceClient`, a következő lépésként `Main` does esetén törölje a "hotels" index már létezik. Ezt a következő módszerrel:
+Miután létrehozott egy `SearchServiceClient`, `Main` törli a "hotels" index, ha már létezik. Ezt a következő módszerrel:
 
 ```csharp
 private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
@@ -330,6 +330,8 @@ Ez a módszer harmadik része a "catch" blokk az indexelés egy fontos hibaeset�
 
 Végül a `UploadDocuments` két másodperces metódus késéseket. Az Azure Search-szolgáltatásban az indexelés aszinkron módon történik, így a mintaalkalmazásnak egy rövid ideig várnia kell, amíg a rendszer meggyőződik arról, hogy a dokumentum kereshető. Ilyen mértékű késleltetésre kizárólag demók, tesztek és mintaalkalmazások esetében van szükség.
 
+<a name="how-dotnet-handles-documents"></a>
+
 #### <a name="how-the-net-sdk-handles-documents"></a>A .NET SDK dokumentumkezelési módszere
 Megfordulhat a fejében, hogy miként képes az Azure Search .NET SDK felhasználó által meghatározott `Hotel` osztályhoz hasonló példányok feltöltésére az indexbe. Annak érdekében, hogy kapcsolatos kérdésére választ kaphat, nézzük meg a `Hotel` osztály:
 
@@ -394,7 +396,7 @@ Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `H
 > 
 > 
 
-Figyelje meg, hogy a második lépésben olyan attribútumok, amelyek például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer` , amely minden egyes nyilvános tulajdonsága megadhat. Ezek az attribútumok leképezése közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket az index Meződefiníciók létrehozására.
+A második szembetűnő dolog, hogy az attribútumokat, amelyek minden egyes nyilvános tulajdonsága megadhat (például `IsFilterable`, `IsSearchable`, `Key`, és `Analyzer`). Ezek az attribútumok leképezése közvetlenül a [megfelelő attribútumok az Azure Search-index](https://docs.microsoft.com/rest/api/searchservice/create-index#request). A `FieldBuilder` osztályt használja ezeket az index Meződefiníciók létrehozására.
 
 Tudnivalók a harmadik lényeg a `Hotel` osztály a nyilvános tulajdonságok adattípusa. Ezeket a tulajdonságokat a .NET-típusú képezze le az index definícióját a mezőtípusokra. Például a rendszer a `Edm.String` típusú `Category` szöveges tulajdonságot a `category` mezőbe képezi le. Hasonló típusleképezés történik a `bool?` és `Edm.Boolean`, illetve a `DateTimeOffset?` és `Edm.DateTimeOffset` között is. A típusleképezés vonatkozó szabályainak dokumentációja az [Azure Search .NET SDK-referenciában](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get), a `Documents.Get` metódusnál található. A `FieldBuilder` osztály a megfelelőségről gondoskodik, de továbbra is lehet annak megértése, abban az esetben szerializációs hárítsa el kell.
 
@@ -585,7 +587,7 @@ Az alábbiakban az eredményeket, amely az összes mező tartalmazza, mivel nem 
 
     ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 
-Ez a lépés befejezi az oktatóanyag, de itt nem állnak le. **További lépések** Azure Search-ról további további forrásokat biztosít.
+Ez a lépés befejezi az oktatóanyag, de itt nem állnak le. ** A következő lépések további erőforrások az Azure Search-ról további adja meg.
 
 ## <a name="next-steps"></a>További lépések
 * Nézze át a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referenciáit.

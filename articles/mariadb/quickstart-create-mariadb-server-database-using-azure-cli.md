@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359323"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842294"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával
 
@@ -147,78 +147,78 @@ Csatlakozás a kiszolgálóhoz a mysql parancssori eszköz használatával:
 
 1. Csatlakozás a kiszolgálóhoz:
 
-  ```azurecli-interactive
-  mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  ```
+   ```azurecli-interactive
+   mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   ```
 
 2. Kiszolgáló állapotának megtekintése a `mysql>` parancssorban:
 
-  ```sql
-  status
-  ```
-  Az alábbihoz hasonló szövegnek kell megjelennie:
+   ```sql
+   status
+   ```
+   Az alábbihoz hasonló szövegnek kell megjelennie:
 
-  ```bash
-  C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  Enter password: ***********
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 65512
-  Server version: 5.6.39.0 MariaDB Server
+   ```bash
+   C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   Enter password: ***********
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Your MySQL connection id is 65512
+   Server version: 5.6.39.0 MariaDB Server
 
-  Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+   Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+   Oracle is a registered trademark of Oracle Corporation and/or its
+   affiliates. Other names may be trademarks of their respective
+   owners.
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-  mysql> status
-  --------------
-  mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
+   mysql> status
+   --------------
+   mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
 
-  Connection id:          64681
-  Current database:
-  Current user:           myadmin@40.118.201.21
-  SSL:                    Cipher in use is AES256-SHA
-  Current pager:          stdout
-  Using outfile:          ''
-  Using delimiter:        ;
-  Server version:         5.6.39.0 MariaDB Server
-  Protocol version:       10
-  Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
-  Server characterset:    latin1
-  Db     characterset:    latin1
-  Client characterset:    utf8
-  Conn.  characterset:    utf8
-  TCP port:               3306
-  Uptime:                 1 day 3 hours 28 min 50 sec
+   Connection id:          64681
+   Current database:
+   Current user:           myadmin@40.118.201.21
+   SSL:                    Cipher in use is AES256-SHA
+   Current pager:          stdout
+   Using outfile:          ''
+   Using delimiter:        ;
+   Server version:         5.6.39.0 MariaDB Server
+   Protocol version:       10
+   Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
+   Server characterset:    latin1
+   Db     characterset:    latin1
+   Client characterset:    utf8
+   Conn.  characterset:    utf8
+   TCP port:               3306
+   Uptime:                 1 day 3 hours 28 min 50 sec
 
-  Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
-  --------------
+   Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
+   --------------
 
-  mysql>
-  ```
+   mysql>
+   ```
 
 > [!TIP]
 > További parancsokért lásd: [az MySQL 5.7 referenciaútmutatójának 4.5.1-es fejezetét](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench használatával
 
-1.  Indítsa el a MySQL Workbench eszközt az ügyfélszámítógépen. Ha még nincs telepítve, [töltse le](https://dev.mysql.com/downloads/workbench/) és telepítse az alkalmazást.
+1. Indítsa el a MySQL Workbench eszközt az ügyfélszámítógépen. Ha még nincs telepítve, [töltse le](https://dev.mysql.com/downloads/workbench/) és telepítse az alkalmazást.
 
-2.  Az **új kapcsolat létrehozására szolgáló** párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
+2. Az **új kapcsolat létrehozására szolgáló** párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
 
- ![Új kapcsolat beállítása](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
+   ![Új kapcsolat beállítása](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-  | Beállítás | Ajánlott érték | Leírás |
-  |---|---|---|
-  | Kapcsolat neve | **Bemutató kapcsolat** | Adjon meg egy címkét a kapcsolathoz (a kapcsolat neve tetszőlegesen kiválasztható) |
-  | Kapcsolati módszer | **Standard (TCP/IP)** | Csatlakozás az Azure Database for MariaDB-hez a TCP/IP protokollal |
-  | Gazdanév | **mydemoserver.mariadb.database.azure.com** | A korábban feljegyzett kiszolgálónév. |
-  | Port | **3306** | Az Azure Database for MariaDB alapértelmezett portja. |
-  | Felhasználónév | **myadmin@mydemoserver** | A korábban feljegyzett kiszolgáló-rendszergazdai bejelentkezési név. |
-  | Jelszó | *az Ön jelszava* | A korábban beállított rendszergazdai fiók jelszavát használja. |
+   | Beállítás | Ajánlott érték | Leírás |
+   |---|---|---|
+   | Kapcsolat neve | **Bemutató kapcsolat** | Adjon meg egy címkét a kapcsolathoz (a kapcsolat neve tetszőlegesen kiválasztható) |
+   | Kapcsolati módszer | **Standard (TCP/IP)** | Csatlakozás az Azure Database for MariaDB-hez a TCP/IP protokollal |
+   | Gazdanév | **mydemoserver.mariadb.database.azure.com** | A korábban feljegyzett kiszolgálónév. |
+   | Port | **3306** | Az Azure Database for MariaDB alapértelmezett portja. |
+   | Felhasználónév | **myadmin\@mydemoserver** | A korábban feljegyzett kiszolgáló-rendszergazdai bejelentkezési név. |
+   | Jelszó | *az Ön jelszava* | A korábban beállított rendszergazdai fiók jelszavát használja. |
 
 3. Válassza a **Test Connection** (Kapcsolat tesztelése) lehetőséget annak teszteléséhez, hogy minden paraméter helyesen lett-e konfigurálva.
 

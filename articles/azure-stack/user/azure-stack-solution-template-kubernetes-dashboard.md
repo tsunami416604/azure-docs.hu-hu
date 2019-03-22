@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: d6428fe17dabd4eb6c0d68a56e3b44cdf3b3f8b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085303"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259210"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Stackben 
 
@@ -116,7 +116,7 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 
 1. Tiltsa le az előugró ablakok a böngészőben.
 
-2. Az URL-címet a böngésző jelezve, hogy a parancs futtatásakor pont `kubectl cluster-info`. Például:https://azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
+2. Az URL-címet a böngésző jelezve, hogy a parancs futtatásakor pont `kubectl cluster-info`. Például: https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / proxy 
 3. Jelölje be az ügyféltanúsítványt.
 4. Adja meg a jogkivonatot. 
 5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa az alábbi parancsot:

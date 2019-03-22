@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084878"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizált vész-helyreállítási megoldás StorSimple található fájlmegosztások az Azure Site Recovery használatával
 ## <a name="overview"></a>Áttekintés
@@ -179,7 +179,7 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
    - *RecoveryPlanName***-StorageAccountKey**: A fenti tárfiók hozzáférési kulcsára.
    - * RecoveryPlanName ***- VMGUIDS**: Esetén a virtuális gép védelmét, az Azure Site Recovery egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép rendel minden virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
 
-    Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
+     Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
 
       ![Objektumok](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
@@ -332,30 +332,30 @@ Kapacitástervezés épül fel, ha legalább két fontos folyamatok:
    - A szükséges internetes sávszélesség meghatározásához.
 
 ## <a name="limitations"></a>Korlátozások
-   - Jelenleg csak 1 StorSimple-eszköz feladatátvétele (az egyetlen StorSimple Cloud Appliance). Egy fájlkiszolgálón, amely több StorSimple eszközt a jelen forgatókönyv még nem támogatott.
-   - Ha egy virtuális gép védelmének engedélyezése során hibaüzenetet kap, ellenőrizze, hogy le van választva az iSCSI-tárolók.
-   - Egy biztonsági mentési szabályzatok kötettárolók között átfedés miatt csoportban minden kötettároló fog a feladatátvételt együtt.
-   - A kiválasztott kötettároló összes kötet fogja végrehajtani a feladatátvételt.
-   - Köteteket, amelyek akár több mint 64 TB-ig hozzáadása nem tudja végrehajtani a feladatátvételt, mert egyetlen StorSimple Cloud Appliance maximális kapacitása 64 TB.
-   - Ha a tervezett/nem tervezett feladatátvétel sikertelen lesz, és a virtuális gépek jönnek létre az Azure-ban, majd akkor ne törölje a virtuális gépeket. Ehelyett hajtsa végre a feladat-visszavételhez. Ha törli a virtuális gépek ezután a helyszíni virtuális gépek nem kapcsolható be újra.
-   - A feladatátvétel után Ha Ön nem láthatja a köteteket, nyissa meg a virtuális gépek, nyissa meg a Lemezkezelést, ellenőrizze újra a lemezeket, és majd kapcsolásuk.
-   - Bizonyos esetekben a meghajtó betűjelei a DR-helyen, mint a betűk helyszíni eltérő lehet. Ha ez történik, szüksége lesz a feladatátvétel befejezése után manuálisan hárítsa el a problémát.
-   - Feladatátvételi feladat időtúllépése: A StorSimple-parancsfájl időtúllépést okoz, ha a kötettároló feladatátvétele parancsfájl (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
-   - Biztonsági mentési feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek biztonsági mentése szkript (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
+- Jelenleg csak 1 StorSimple-eszköz feladatátvétele (az egyetlen StorSimple Cloud Appliance). Egy fájlkiszolgálón, amely több StorSimple eszközt a jelen forgatókönyv még nem támogatott.
+- Ha egy virtuális gép védelmének engedélyezése során hibaüzenetet kap, ellenőrizze, hogy le van választva az iSCSI-tárolók.
+- Egy biztonsági mentési szabályzatok kötettárolók között átfedés miatt csoportban minden kötettároló fog a feladatátvételt együtt.
+- A kiválasztott kötettároló összes kötet fogja végrehajtani a feladatátvételt.
+- Köteteket, amelyek akár több mint 64 TB-ig hozzáadása nem tudja végrehajtani a feladatátvételt, mert egyetlen StorSimple Cloud Appliance maximális kapacitása 64 TB.
+- Ha a tervezett/nem tervezett feladatátvétel sikertelen lesz, és a virtuális gépek jönnek létre az Azure-ban, majd akkor ne törölje a virtuális gépeket. Ehelyett hajtsa végre a feladat-visszavételhez. Ha törli a virtuális gépek ezután a helyszíni virtuális gépek nem kapcsolható be újra.
+- A feladatátvétel után Ha Ön nem láthatja a köteteket, nyissa meg a virtuális gépek, nyissa meg a Lemezkezelést, ellenőrizze újra a lemezeket, és majd kapcsolásuk.
+- Bizonyos esetekben a meghajtó betűjelei a DR-helyen, mint a betűk helyszíni eltérő lehet. Ha ez történik, szüksége lesz a feladatátvétel befejezése után manuálisan hárítsa el a problémát.
+- Feladatátvételi feladat időtúllépése: A StorSimple-parancsfájl időtúllépést okoz, ha a kötettároló feladatátvétele parancsfájl (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
+- Biztonsági mentési feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek biztonsági mentése szkript (jelenleg 120 perc) az Azure Site Recovery előállítónként több időt vesz igénybe.
    
-   > [!IMPORTANT]
-   > A biztonsági mentés manuális futtatása az Azure Portalról, és futtassa újra a helyreállítási tervben.
+  > [!IMPORTANT]
+  > A biztonsági mentés manuális futtatása az Azure Portalról, és futtassa újra a helyreállítási tervben.
    
-   - Klónozza a feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek klónozása időigényesebb, mint az Azure Site Recovery korlát / script (jelenleg 120 perc).
-   - Szinkronizálási hiba ideje: A StorSimple parancsfájlok hibák meg arról, hogy a biztonsági mentés sikertelen volt-e annak ellenére, hogy a biztonsági mentés sikeres, a portálon. Ennek egyik lehetséges oka lehet, hogy a StorSimple-készülék időt szinkronizálva az időzóna szerint az aktuális időt tartalmazó lehet.
+- Klónozza a feladat időtúllépése: A StorSimple-parancsfájl időkorlátja, ha a kötetek klónozása időigényesebb, mint az Azure Site Recovery korlát / script (jelenleg 120 perc).
+- Szinkronizálási hiba ideje: A StorSimple parancsfájlok hibák meg arról, hogy a biztonsági mentés sikertelen volt-e annak ellenére, hogy a biztonsági mentés sikeres, a portálon. Ennek egyik lehetséges oka lehet, hogy a StorSimple-készülék időt szinkronizálva az időzóna szerint az aktuális időt tartalmazó lehet.
    
-   > [!IMPORTANT]
-   > Az aktuális idejét az időzóna készülék idő szinkronizálása.
+  > [!IMPORTANT]
+  > Az aktuális idejét az időzóna készülék idő szinkronizálása.
    
-   - Készülék feladatátvételi hiba: A StorSimple-parancsfájl meghiúsulhat, ha nincs egy készülék feladatátvételt, ha a helyreállítási terv fut-e.
+- Készülék feladatátvételi hiba: A StorSimple-parancsfájl meghiúsulhat, ha nincs egy készülék feladatátvételt, ha a helyreállítási terv fut-e.
    
-   > [!IMPORTANT]
-   > Futtassa újra a helyreállítási tervet, a készülék feladatátvétel befejezése után.
+  > [!IMPORTANT]
+  > Futtassa újra a helyreállítási tervet, a készülék feladatátvétel befejezése után.
 
 
 ## <a name="summary"></a>Összegzés

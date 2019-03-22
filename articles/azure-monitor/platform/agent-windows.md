@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755024"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223427"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -32,6 +32,10 @@ Az ügynök a következő módszerek valamelyikével telepíthetők. A legtöbb 
 * Az Azure Automation Desired State Configuration (DSC). DSC Azure Automation használatával, egy parancsfájllal már telepítve van az a környezet Windows-számítógépekhez.  
 * PowerShell-szkript.
 * Windows rendszerű virtuális gépek a Resource Manager-sablon a helyszíni az Azure Stackben.  
+
+>[!NOTE]
+>Az Azure Security Center (ASC) függ, hogy a Microsoft Monitoring Agent (más néven a Log Analytics Windows-ügynök) lesz, és telepítse és konfigurálja azt, hogy a Log Analytics-munkaterülethez való központi telepítésének részeként is. Az ASC-automatikus üzembe helyezési lehetőségek, amelyek a Log Analytics Windows-ügynököt az előfizetés virtuális gépeinek automatikus telepítését engedélyezi és konfigurálja azt, hogy egy adott munkaterület tartalmazza. Ezzel a beállítással kapcsolatos további információkért lásd: [Log Analytics-ügynököket az Automatikus kiépítés engedélyezése](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
+>
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-agent.md#network-firewall-requirements) ismertető részt.
 

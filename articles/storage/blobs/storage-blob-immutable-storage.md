@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: e9ef73bbed83587f635492553f3e467922481ede
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202877"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Az Azure Blob storage-ban üzleti szempontból kritikus fontosságú adatok Store
 
@@ -86,7 +86,7 @@ Nem jár további költségekkel a szolgáltatást. Nem módosítható adatok re
 
 ## <a name="getting-started"></a>Első lépések
 
-A legújabb verzióiban a [az Azure portal](http://portal.azure.com), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), és [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases) nem módosítható storage támogatja az Azure Blob storage. [Ügyfél klienskódtár-támogatásával](#client-libraries) is biztosított.
+A legújabb verzióiban a [az Azure portal](https://portal.azure.com), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), és [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases) nem módosítható storage támogatja az Azure Blob storage. [Ügyfél klienskódtár-támogatásával](#client-libraries) is biztosított.
 
 > [!NOTE]
 >
@@ -180,7 +180,7 @@ Egy tároló lehet megadva jogi célú visszatartás és a egy időalapú adatme
 
 **Azok a jogi céllal zároltak közé szabályzatok csak a jogi eljárás vagy vannak-e más használati forgatókönyvek?**
 
-Nem, a jogi tartsa még csak nem időalapú adatmegőrzési használt általános kifejezés. Kizárólag a pereskedés használja, nem kell kapcsolatos eljárást. Jogi céllal zároltak közé házirendek hasznosak letiltása, felülírása és törlése a FÉREG adatok, fontos vállalati védelme Ha a megőrzési időtartam nem ismert. Használhatja azt a vállalati házirend-az üzletmenet szempontjából kritikus fontosságú FÉREG számítási feladatok védelméhez, vagy használja a tesztelési házirend szerint, mielőtt egy egyéni eseményindítót időalapú adatmegőrzési használatát igényli. 
+Nem, a jogi tartsa még csak nem időalapú adatmegőrzési használt általános kifejezés. Kizárólag a pereskedés használja, nem kell kapcsolatos eljárást. Jogi céllal zároltak közé házirendek hasznosak letiltása, felülírása és törlése a FÉREG adatok, fontos vállalati védelme Ha a megőrzési időtartam nem ismert. Hogy használhatja azt egy vállalati szabályzat az üzletmenet szempontjából kritikus fontosságú FÉREG számítási feladatok védelméhez, vagy használja a tesztelési házirend szerint, mielőtt egy egyéni eseményindítót időalapú adatmegőrzési használatát igényli. 
 
 **Mi történik, ha megpróbálok törölni egy tárolót, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
 

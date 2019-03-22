@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086819"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Első lépések
 
@@ -74,8 +74,9 @@ Ha már rendelkezik egy Azure AD Connect telepítését, jelölje be a **felhasz
 ![Azure AD Connect: A felhasználói bejelentkezés módosítása](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Járja végig a varázsló, amíg nem kap a **egyszeri bejelentkezés engedélyezése** lapot. Adja meg a tartományi rendszergazda hitelesítő adatai az egyes Active Directory erdő, amely:
-    * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
-    * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
+
+* Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
+* Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
 
 A varázsló befejezését követően a közvetlen egyszeri bejelentkezés engedélyezve van a bérlő.
 
@@ -126,11 +127,11 @@ Felhasználók Intranet zóna beállításainak módosításához két módja va
    - **Érték neve**: Az Azure AD URL-CÍMÉT, a Kerberos-jegyet a rendszer továbbítja.
    - **Érték** (adatok): **1** azt jelzi, hogy az Intranet zóna.
 
-    Az eredmény a következőhöz hasonló:
+     Az eredmény a következőhöz hasonló:
 
-    Érték neve: `https://autologon.microsoftazuread-sso.com`
+     Érték neve: `https://autologon.microsoftazuread-sso.com`
   
-    Érték (adatok): 1
+     Érték (adatok): 1
 
    >[!NOTE]
    > Ha azt szeretné, letilthatja egyes a közvetlen egyszeri bejelentkezés használatával (például, ha ezek a felhasználók jelentkezzen be a megosztott számítógépek), állítsa az előző értékeket **4**. Ez a művelet az Azure AD URL-címet ad hozzá a Tiltott helyek zónához, és közvetlen egyszeri bejelentkezés folyamatosan meghiúsul.
@@ -162,9 +163,9 @@ Felhasználók Intranet zóna beállításainak módosításához két módja va
    - **Érték típusa**: ***REG_DWORD***.
    - **Érték**: ***00000001***.
  
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>Böngésző kapcsolatos szempontok
 
