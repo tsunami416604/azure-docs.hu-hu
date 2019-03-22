@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: b4eedabbc47738eb2f5797ffd67a3e3ebc9529ca
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 468c5584d21c226d6ffce55ff3981e629d872c56
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136224"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317187"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Projekt Akusztika Unity a rövid útmutató
 Használat projekt Akusztika minta Unity kísérletezhet a szimuláció-biztonsági Tervező szabályozza a tartalom.
 
 Szoftverkövetelmények:
 * [Unity 2018.2 +](http://unity3d.com) Windows esetében
-* [Akusztika tartalom mintacsomagot projekt](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Akusztika tartalom mintacsomagot projekt](https://www.microsoft.com/download/details.aspx?id=57346)
 
 Mit tartalmaz a minta-csomag?
 * Unity-jelenetet geometry, megbízható forrásból és játékélményt vezérlők
@@ -33,7 +33,7 @@ Mit tartalmaz a minta-csomag?
 A minta-csomag importálása egy új Unity-projektet. 
 * A Unity, váltson **eszközök > csomag importálása > egyéni csomag...**
 
-    ![Csomag importálása](media/import-package.png)  
+    ![Képernyőkép a Unity csomag importálása beállításai](media/import-package.png)  
 
 * Válasszon **ProjectAcoustics.unitypackage**
 
@@ -44,23 +44,23 @@ A Akusztika eszközkészlet bake részének .NET 4.x scripting futásidejű verz
 
 Ez a beállítás érvénybe tartott megnyitásával ellenőrizheti a **Player beállítások**:
 
-![Lejátszó beállításai](media/player-settings.png)
+![Képernyőkép a Unity Player Beállítások panel](media/player-settings.png)
 
-![.NET 4.5](media/net45.png)
+![Képernyőkép a Unity Player Beállítások panelen a kiválasztott .NET 4.5](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>Kísérletezzen a Tervező vezérlők
 Nyissa meg a minta jelenet a **ProjectAcousticsSample** mappára, majd kattintson a lejátszás gombra a Unity-szerkesztőben. Használat W, A, S, D és az egérrel való mozgáshoz. Hasonlítsa össze, hogy a jelenet úgy érzi, és anélkül Akusztika, nyomja le az **R** gombra mindaddig, amíg az átfedő szöveg változik, és a "Akusztika: Letiltva." További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Vezérlők, amelyek is gyakorlatot kattintson a jobb gombbal, válassza ki a végrehajtandó műveletet, majd balra kattintson a művelet végrehajtásához.
 
 A parancsfájl **AcousticsAdjust** a minta jelenet, amely lehetővé teszi a forrás Tervező paraméterek a megbízható forrásra van csatolva. 
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Képernyőkép a Unity AcousticsAdjust parancsfájl](media/acoustics-adjust.png)
 
 A következő felhőgazdaságtan az, hogy a megadott vezérlők elő lehet állítani. Minden egyes-vezérléssel kapcsolatos részletes információkért lásd: a [projekt Akusztika Unity tervezési oktatóanyag](unreal-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Távolság-alapú gyengülés módosítása
 A hanganyag DSP által biztosított a **projekt Akusztika** Unity spatializer beépülő modul tiszteletben tartja a forrás távolság-alapú gyengülés beépített a Unity-szerkesztőbe. Távolság-alapú gyengülés vezérlők vannak a **hang forrás** összetevő található a **vizsgáló** hang panel alatt adatforrásokat **3D eredményes beállításai**:
 
-![Távolságskála gyengülés](media/distance-attenuation.png)
+![Képernyőkép a Unity távolság gyengülés beállítások panel](media/distance-attenuation.png)
 
 Projekt Akusztika számítási lehetőségek eltérése a lejátszó helyre "szimuláció régió" mezőben hajt végre. A minta csomagban Akusztika eszközök a Windows Media player körülvevő 45 millió szimuláció régió mérettel is számlázásnak, mivel az eredményes gyengülés úgy kell megtervezni, körülbelül 45 m 0-ra csökken.
 

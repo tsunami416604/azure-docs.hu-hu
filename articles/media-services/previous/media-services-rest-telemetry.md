@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1eb6e1458fab6de3472d68352ba7764b71007c8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292581"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317646"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Az Azure Media Services-telemetria konfigurálása a REST segítségével
 
@@ -34,7 +34,7 @@ A jelen témakörben ismertetett lépések a következők:
 - Az értesítési végpontjainak beolvasása
 - Egy értesítési végpont létrehozása a figyelésre. 
 
-    Értesítési végpont létrehozásához állítsa a EndPointType AzureTable (2), és állítsa be a storage-táblához endPontAddress (például https://telemetryvalidationstore.table.core.windows.net/).
+    Értesítési végpont létrehozásához állítsa a EndPointType AzureTable (2), és állítsa be a storage-táblához endPontAddress (például https:\//telemetryvalidationstore.table.core.windows.net/).
   
 - A figyelési konfigurációk beszerzése
 
@@ -121,12 +121,12 @@ A jelen témakörben ismertetett lépések a következők:
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
 > [!NOTE]
-> Ne felejtse el módosítani a "https://telemetryvalidationstore.table.core.windows.net" értéket a tárfiókhoz.
+> Ne felejtse el módosítani a "https:\//telemetryvalidationstore.table.core.windows.net" értéket a tárfiókhoz.
 
 ### <a name="response"></a>Válasz
 

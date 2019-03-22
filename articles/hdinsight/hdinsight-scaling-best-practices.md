@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108154"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316252"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
@@ -120,7 +120,7 @@ A csökkentett mód elhagyása, után manuálisan eltávolíthatja az ideiglenes
 
 * Adatbázisok H100 beküldése sikertelen utasítás megjelenítése: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Csatlakozás hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. nem sikerült Internal.cloudapp.NET/1.1.1.1]: **Kapcsolat elutasítva**
 
-* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net-re: 10001: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: **Kapcsolat elutasítva**
+* H020 nem tudott kapcsolatot hn0-hdisrv.servername.bx.internal.cloudapp .net-re: 10001: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: Kapcsolat elutasítva: org.apache.thrift.transport.TTransportException: Nem sikerült létrehozni a http protokollú kapcsolódáshoz http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] nem sikerült csatlakozni: **Kapcsolat elutasítva**
 
 * A Hive naplókból: [Main] WARN: kiszolgáló. Hiveserver2-n (HiveServer2.java:startHiveServer2(442)) – indítása a hiveserver2-n keresztül kísérlet 21., a hiba újra fog próbálkozni 60 másodperc java.lang.RuntimeException: Engedélyezési házirend alkalmazása a hive-konfigurációs hiba: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Könyvtár nem hozható létre** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Csomópont neve csökkentett módban van**.
     A jelzett blokkokat 0 van szüksége további 9 blokkok elérni a teljes blokkok 9 0.9900 küszöbértéket.

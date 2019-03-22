@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kylestorck
-ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136259"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309945"
 ---
 # <a name="project-acoustics-known-issues"></a>Projekt Akusztika ismert problémák
 A következő ismert problémák léphetnek fel a projekt Akusztika a Tervező előzetes verzió használata esetén.
@@ -28,8 +28,9 @@ A következő ismert problémák léphetnek fel a projekt Akusztika a Tervező e
 
 A Unity (2018.2 +) legújabb verzióját van egy ismert hiba, ahol Unity összeomlik, ha bezárja a projekthez. Ez által nyomon követett [Unity probléma](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project).
 
-## <a name="trouble-deploying-to-android"></a>Hiba történt az Android üzembe helyezése
-Az Androidos projekt Akusztika használatához módosítsa a build target Android. Unity egyes verziói hang beépülő modulok telepítése hibája rendelkezik. Ellenőrizze, hogy nem használja egy verzió által érintett [ezen hiba](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
+## <a name="deploying-to-android-from-some-unity-versions"></a>Az Android néhány Unity verzió üzembe helyezése
+
+Unity egyes verziói hang beépülő modulok telepítése Android hibája rendelkezik. Ellenőrizze, hogy nem használja egy verzió által érintett [ezen hiba](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player).
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>A "fájl nem található metaadat System.Security.dll" hibaüzenetet kapok
 

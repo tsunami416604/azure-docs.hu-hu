@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 7f0bfa407705f4c9535e6dddc9a27a4f7130931d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113830"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336286"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
 
@@ -93,6 +93,14 @@ Keres egy régió nem támogatjuk a még? Ossza meg velünk az ügyfélszolgála
 ## <a name="container-support"></a>Tárolótámogatás
 
  A cognitive Services tárolók biztosít az Azure-felhőben vagy helyszíni üzemelő példány számára. Tudjon meg többet [Cognitive Services-tárolók](cognitive-services-container-support.md).
+
+## <a name="certifications-and-compliance"></a>Tanúsítványok és -megfelelőség
+
+A cognitive Services például a CSA STAR hitelesítő, a FedRAMP mérsékelt és a HIPAA BAA minősítések megkapta. 
+
+Is [letöltése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) tanúsítványaival kapcsolatban a saját eseményeket és a biztonsági értékelések. 
+
+Szeretné megtudni, adatvédelmi és adatkezelési, nyissa meg a [biztonsági és adatkezelési központ](https://servicetrust.microsoft.com/). 
 
 ## <a name="support"></a>Támogatás
 

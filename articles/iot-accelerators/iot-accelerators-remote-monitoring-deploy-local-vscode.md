@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93935aa36c53e1d5de1bba215826d0754ee83b8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902841"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316218"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio Code telepítése
 
@@ -79,7 +79,7 @@ npm install
 npm start
 ```
 
-A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http://localhost:3000/dashboard**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
+A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http:\//localhost:3000 / irányítópult**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
 
@@ -92,7 +92,7 @@ További információ a futó **nginx**, lásd: [nginx-et a Windows](https://ngi
 
 ### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
 
-A távoli figyelési megoldás irányítópultján eléréséhez keresse meg [ http://localhost:9000 ](http://localhost:9000) a böngészőben.
+A távoli figyelési megoldás irányítópultján eléréséhez lépjen a http:\//localhost:9000 a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

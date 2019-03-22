@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b5ca738ef71e25dfe5e71a1983d701bb8868fe5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896806"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310727"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a számítási feladatok elemzése
 
@@ -67,7 +67,7 @@ Az SQL Data Warehouse a következő típusok várjon rendelkezik:
 * **LocalQueriesConcurrencyResourceType**: Egyidejűségi tárolóhely keretein kívül található lekérdezések. DMV-lekérdezések és a rendszer függvények, mint például `SELECT @@VERSION` példa a helyi lekérdezéseket.
 * **UserConcurrencyResourceType**: Egyidejűségi tárolóhely keretein belül található lekérdezések. A végfelhasználói táblákra mutató lekérdezések példa, amelyek az erőforrástípushoz használna képviseli.
 * **DmsConcurrencyResourceType**: Az adatátviteli műveletek eredő vár.
-* **BackupConcurrencyResourceType**: A Várakozás azt jelzi, hogy egy adatbázis biztonsági mentésének folyamatban van. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentése egy időben, a többi kért várólista.
+* **BackupConcurrencyResourceType**: A Várakozás azt jelzi, hogy egy adatbázis biztonsági mentésének folyamatban van. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentése egy időben, a többi kért várólista. Általában javasoljuk, hogy egy minimális idő 10 perc egymást követő pillanatkép között. 
 
 A `sys.dm_pdw_waits` DMV Lekérdezéséhez használható kérést arra vár, hogy milyen erőforrásokat.
 

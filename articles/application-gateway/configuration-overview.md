@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 61b3a9e066a3ee20effa97f1c6c7a0bd1ae90ac0
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285838"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319448"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
@@ -33,9 +33,9 @@ Application gateway-példány dedikált központi telepítés a virtuális hál�
 
 #### <a name="size-of-the-subnet"></a>Az alhálózat mérete
 
-Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra. Például ha egy application gateway három példányban, és nincs magánhálózati előtérbeli IP-címet, majd legalább nyolc IP-címek szükség lesz az alhálózat - öt IP-cím belső használatra, és három IP-címek az application gateway három-példányai számára. Ezért a jelen esetben egy/29 méretű vagy nagyobb alhálózat van szükség. Ha három példányban és IP-címet a magánhálózati előtérbeli IP-konfiguráció kilenc IP-cím lesz szükséges – az application Gateway három példányban három IP-címek magánhálózati előtérbeli és öt IP-Címek egy IP-címet szünteti meg belső használatra. Ezért, jelen esetben a 28 méretet, vagy nagyobb alhálózat van szükség.
+Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja öt IP-címek – az első négy és az utolsó IP-cím - mindegyik olyan alhálózatban, belső használatra. Például ha egy application gateway 15 példányok és nem magánhálózati előtérbeli IP-címet, majd legalább 20 IP-címek szükség lesz az alhálózat - öt IP-cím belső használatra, és 15 IP-címek az application gateway 15-példányai számára. Ezért, jelen esetben a/27-es méretet, vagy nagyobb alhálózat van szükség. Ha 27-es példányok és egy IP-címe a magánhálózati előtérbeli IP-Címének konfigurálása 33 IP-cím lesz szükség - 27-es IP-címek az application Gateway a 27-es példányok és magánhálózati előtérbeli öt IP-Címek egy IP-címet címek belső használatra. Ezért a jelen esetben egy/26-os méretet, vagy nagyobb alhálózat van szükség.
 
-Ajánlott eljárásként használja legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
+Javasoljuk, hogy használjon legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
 
 #### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatott az Application Gateway-alhálózatot a hálózati biztonsági csoportok
 

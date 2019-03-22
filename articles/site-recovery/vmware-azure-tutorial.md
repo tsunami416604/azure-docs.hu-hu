@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848830"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310591"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
 Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
 
-Ebben az oktatóanyagban bemutatjuk, hogyan állíthatja be és engedélyezheti a VMware virtuális gépek Azure-ba történő replikálását az Azure Site Recovery használatával. Az oktatóanyagok bemutatják, hogy hogyan helyezheti üzembe a Site Recovery szolgáltatást alapvető beállításokkal. A legegyszerűbb utat mutatják be, és nem minden lehetőséget tüntetnek fel. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan helyezze üzembe a Site Recovery az alapszintű beállítások testreszabása segítségével nélkül. Összetettebb lehetőségeket tekintse át a cikkeket útmutató alapján.
+
+    - A [replikációs forrás](vmware-azure-set-up-source.md) és a [konfigurációs kiszolgáló](vmware-azure-deploy-configuration-server.md) beállítása.
+    - A [replikációs cél](vmware-azure-set-up-target.md) beállítása.
+    - [Replikációs szabályzat](vmware-azure-set-up-replication.md) konfigurálása és a [replikáció engedélyezése](vmware-azure-enable-replication.md).
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A replikációs forrás és cél megadása.
@@ -37,14 +43,10 @@ Mielőtt elkezdené, érdemes végrehajtania az alábbiakat:
 - Ha szeretné részletesebben is megismerni a VMware virtuális gépek vészhelyreállításának beállítását, tekintse át és használja az alábbi forrásanyagokat:
     - [Gyakori kérdéseket](vmware-azure-common-questions.md) a VMware vészhelyreállításával kapcsolatban.
     - [Ismerje meg](vmware-physical-azure-support-matrix.md), hogy mit támogatott és mi szükséges a VMware esetén.
--  Olvassa el **útmutatóink** részletes utasításait, amelyek a VMware összes üzembe helyezési beállítására kiterjednek:
-    - A [replikációs forrás](vmware-azure-set-up-source.md) és a [konfigurációs kiszolgáló](vmware-azure-deploy-configuration-server.md) beállítása.
-    - A [replikációs cél](vmware-azure-set-up-target.md) beállítása.
-    - [Replikációs szabályzat](vmware-azure-set-up-replication.md) konfigurálása és a [replikáció engedélyezése](vmware-azure-enable-replication.md).
 - Ebben az oktatóanyagban bemutatjuk, hogyan replikálható egyetlen virtuális Gépet. Ha több virtuális gépre telepíti, használjon a [Deployment Planner eszköz](https://aka.ms/asr-deployment-planner) érdekében az üzembe helyezésének megtervezése. [További információ](site-recovery-deployment-planner.md) az eszközről.
 
 És tekintse át a következő tippeket:
-- Ez az oktatóanyag egy OVA-sablonnal hozza létre a konfigurációs kiszolgáló VMware virtuális gépét. Ha nem ezt teszi, hajtsa végre a [ezek instructins](physical-manage-configuration-server.md) manuális beállítása a konfigurációs kiszolgálón.
+- Ez az oktatóanyag egy OVA-sablonnal hozza létre a konfigurációs kiszolgáló VMware virtuális gépét. Ha nem ezt teszi, hajtsa végre a [ezek az utasítások](physical-manage-configuration-server.md) manuális beállítása a konfigurációs kiszolgálón.
 - Ebben az oktatóanyagban a Site Recovery tölti le és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, akkor állíthatja, manuálisan helyette. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
   >A konfigurációs kiszolgálói sablon legújabb verzióját közvetlenül letöltheti a [Microsoft letöltőközpontból](https://aka.ms/asrconfigurationserver).
   Az OVF-sablon a megadott licenc egy próbalicencre 180 napig érvényes. A virtuális gépen futó Windows aktiválni kell a szükséges licenccel. 

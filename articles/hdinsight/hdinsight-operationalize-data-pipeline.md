@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 175fdcc1bf8d28c0eeb6eeccaa54c996c837ef81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744445"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311679"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -50,7 +50,7 @@ Az alábbi ábrán látható, a magas szintű tervezési ebben a példában az O
 
 Ez a folyamat az Azure SQL Database és a egy HDInsight Hadoop-fürt ugyanazon a helyen van szükség. Az Azure SQL Database tárolja a folyamat és az Oozie-metaadatok store mindkét az összesítő adatok.
 
-#### <a name="provision-azure-sql-database"></a>Az Azure SQL-adatbázis kiépítése
+#### <a name="provision-azure-sql-database"></a>Provision Azure SQL Database
 
 1. Az Azure portal használatával hozzon létre egy új erőforráscsoportot, nevű `oozie` ebben a példában által használt összes erőforrást tartalmaz.
 2. Belül a `oozie` erőforráscsoportot, egy Azure SQL-kiszolgáló üzembe helyezése és adatbázis. Nem kell egy adatbázis nagyobb, mint a S1 Standard tarifacsomagot.
@@ -150,7 +150,7 @@ Az Oozie Webkonzol segítségével megtekintheti az állapotát a koordinátor �
 
 2. Győződjön meg arról az alagút működési Ambari lépjen a fő csomópont tallózással:
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Hozzáférés a **Oozie Webkonzol** Ambari belül válassza **Oozie**, **Gyorshivatkozások**, majd válassza ki **Oozie Webkonzol**.
 
@@ -176,7 +176,7 @@ Másolhatja az az SCP-fájlt a `bash` rendszerhéj-munkamenet.
 
 A mintaadatok már elérhető. Azonban a folyamat csak feldolgozásra, egyet a bejövő adatok két Hive-táblák (`rawFlights`) és a egy, az összesített adatok (`flights`). Ezek a táblák az Ambari a következőképpen hozhat létre.
 
-1. Jelentkezzen be az Ambari az [ http://headnodehost:8080 ](http://headnodehost:8080).
+1. Jelentkezzen be az Ambari az http:\//headnodehost:8080.
 2. A szolgáltatások listájából válassza **Hive**.
 
     ![Az Ambari Hive kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)

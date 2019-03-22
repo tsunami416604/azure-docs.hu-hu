@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: f549f9c612797c1c956d6921fe4898a5f8bee9e6
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286193"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319414"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -59,7 +59,7 @@ Application Gateway-példány dedikált központi telepítés a virtuális hál�
 
 ### <a name="in-what-order-are-listeners-processed"></a>Milyen sorrendben dolgozzák fel figyelői?
 
-Figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszintű figyelő megfelel egy bejövő kérésnek feldolgozza a először.  Többhelyes figyelőket konfigurálni kell egy alapszintű figyelő annak biztosítása érdekében az adatforgalmat a megfelelő háttér előtt.
+Lásd: [figyelői feldolgozási sorrendje](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Hol találom meg az Application Gateway IP- és DNS?
 
@@ -83,16 +83,13 @@ Csak egy nyilvános IP-cím egy application gateway esetében támogatott.
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Milyen méretű kell még saját alhálózatot az Application Gateway?
 
-Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra.
-Ha például egy application gateway beállítása három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat szükséges. Ebben az esetben az application gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
-
-Ajánlott eljárásként használja legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
+Lásd: [Application Gateway alhálózat mérete szempontok](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet) tudni, hogy az alhálózat méretét, a telepítéshez szükséges.
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>K. Üzembe helyezhetem egynél több Application Gateway-erőforrás egyetlen alhálózatra?
 
 Igen, egy adott Application Gateway telepítési több példánya mellett, telepíthet egy meglévő alhálózatot, amely tartalmazza a különböző Application Gateway erőforrás egy másik egyedi Application Gateway erőforrás.
 
-Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton nem támogatott. Ezenkívül az automatikus skálázás engedélyezve van, egy alhálózatot csak egy alkalmazás-átjáróval rendelkezhet.
+Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton nem támogatott.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Az Application Gateway támogatja az x-továbbított – a fejlécek?
 
@@ -152,13 +149,7 @@ Nem, de telepítheti az alhálózat más alkalmazásátjárók.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Hálózati biztonsági csoportok az application gateway alhálózatának támogatottak?
 
-Hálózati biztonsági csoportok (NSG-k) az application gateway alhálózatának a következő korlátozásokkal támogatottak:
-
-* Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók kihasználására nem képes a végpontokra módosításokat kezdeményezni.
-
-* Kimenő internetkapcsolattal nem lehet blokkolni. Alapértelmezett kimenő szabályokat az NSG-ben már engedélyezéséhez. Azt javasoljuk, hogy ne távolítsa el az alapértelmezett kimenő szabályok és, hogy ne hozzon létre más kimenő szabályok, amelyek a megtagadási kimenő internetkapcsolattal.
-
-* Az AzureLoadBalancer címkét a forgalmat engedélyezni kell.
+Lásd: [az Application Gateway-alhálózatot a hálózati biztonsági csoportok korlátozásai](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-supported-on-the-application-gateway-subnet) ismerje meg a hálózati biztonsági csoportok az application gateway alhálózatának támogatott.
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>Felhasználó által megadott útvonalakat az application gateway alhálózatának támogatottak?
 
@@ -190,7 +181,7 @@ Az egyéni minták támogatja helyettesítő vagy reguláris kifejezést érkeze
 
 ### <a name="how-are-rules-processed"></a>Szabályok feldolgozásának módja?
 
-Szabályok feldolgozása a sorrendben vannak konfigurálva. Javasoljuk, hogy a többhelyes szabályok előtt alapvető szabályok csökkenti annak esélyét, hogy a forgalom lesz irányítva a nem megfelelő háttérrendszer és az alapszintű szabályt szeretne megegyeznek a forgalmat a port előtt a kiértékelt többhelyes szabály alapján vannak konfigurálva.
+Lásd: [szabályok feldolgozása sorrendben](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules) tudni, hogyan útválasztási szabályok-folyamat az Application Gateway alkalmazásban.
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>Mi a gazdagép mezőt az egyéni mintavételek jelölésére?
 
@@ -356,7 +347,7 @@ A Resource Manager-sablon, amely telepíti és futtatja a népszerű Microsoft k
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Háttérkiszolgáló állapotadatainak adja vissza a állapota ismeretlen, Mi ez az állapot okozza?
 
-A leggyakoribb oka a háttérrendszerhez való hozzáférés le lesz tiltva, az NSG-t vagy az egyéni DNS. Lásd: [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
+Leggyakoribb oka a hozzáférést a háttérbeli NSG-t, egyéni DNS blokkolja, vagy egy UDR az application gateway alhálózatának rendelkezik. Lásd: [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
 
 ## <a name="next-steps"></a>További lépések
 

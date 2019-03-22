@@ -16,16 +16,19 @@ ms.workload: media
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 018392db2ffb510d41385d8e0af19635c35678e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 251a2a3fed57e957de11a20189b6b6d553d98a78
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003415"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310268"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
 Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését. Függetlenül attól, hogy Ön alkalmazásfejlesztő, vagy egy ügyfélszolgálat, kormányzati intézmény vagy szórakoztató vállalat munkatársa, a Media Services olyan alkalmazások létrehozásához nyújt segítséget, amelyek kiváló minőségű multimédiás élményt nyújtanak nagy célközönség számára napjaink legnépszerűbb mobileszközein és böngészőiben. 
+
+> [!NOTE]
+> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref), vagy a támogatott valamelyik [SDK-k](developers-guide.md).
 
 ## <a name="what-can-i-do-with-media-services"></a>Mire használhatom a Media Services szolgáltatást?
 

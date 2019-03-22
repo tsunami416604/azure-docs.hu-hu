@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 4d0b2d24335b03fb1afc729e4cb8f7fc07f8a77e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8d17be31acc6868399e8f785255d28fa2314d48c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456873"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316116"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -59,7 +59,7 @@ Az ügyféloldali eszközök lehetővé teszi, hogy a felhasználó számára:
 
 Az alkalmazás futása közben, az ügyféloldali eszközök is:
 * Fogadja, és az stdout és stderr az alkalmazásból, az aks-ben futó jeleníti meg.
-* Használja a [port-továbbító](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) webes férhessenek hozzá az alkalmazást a http://locahost.
+* Használja a [port-továbbító](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) webes férhessenek hozzá az alkalmazás http-vel:\//localhost.
 * Csatolja a hibakeresőt a futó alkalmazás az aks-ben.
 * Szinkronizálások forráskódját a fejlesztési tárhelyre növekményes buildek, lehetővé téve a gyors ismétlését a változás észlelésekor.
 

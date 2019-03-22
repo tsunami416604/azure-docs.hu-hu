@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3fcc2e31431f0deb15332aec7636e2bfefeffe9b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891256"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317544"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -4595,7 +4595,7 @@ Társított szolgáltatás határozza meg a Salesforce-ban, és állítsa a **t�
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> – Alapértelmezett érték a "https://login.salesforce.com". <br> – Adatok másolása a tesztkörnyezetből, adja meg a "https://test.salesforce.com". <br> – Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
+| environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> – Alapértelmezett érték a "https:\//login.salesforce.com". <br> – Adatok másolása a tesztkörnyezetből, adja meg a "https://test.salesforce.com". <br> – Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) alaphelyzetbe állítása/lekérése a biztonsági jogkivonat való létrehozásával kapcsolatos útmutatást. Az általános biztonsági jogkivonatokat kapcsolatos további információkért lásd: [biztonsági és API-val](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |

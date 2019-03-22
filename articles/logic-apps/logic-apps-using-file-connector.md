@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: c5128e904e540deeb3293fb687da4e8cafcfa1e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870994"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316966"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozhat a helyszíni fájlrendszereket az Azure Logic Apps
 
@@ -48,7 +48,7 @@ Kövesse a példát, ezek az elemek szükségesek:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-1. A keresőmezőbe írja be szűrőként "dropbox". Az eseményindítók listában jelölje ki az eseményindító: **Amikor létrejön egy fájl** 
+1. A keresőmezőbe írja be szűrőként "dropbox". Az eseményindítók listában jelölje ki az eseményindító: **Amikor létrejön egy fájl**
 
    ![Dropbox-trigger kiválasztása](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -78,7 +78,7 @@ Kövesse a példát, ezek az elemek szükségesek:
    | **Átjáró** | Igen | <*telepített átjáró-neve*> | A korábban telepített átjáró neve | 
    ||| 
 
-1. Ha elkészült, kattintson a **Létrehozás** gombra. 
+1. Ha elkészült, kattintson a **Létrehozás** gombra.
 
    A Logic Apps konfigurálja, és teszteli a kapcsolatot, és gondoskodik róla, hogy, hogy a kapcsolat megfelelően működik-e. 
    Ha a kapcsolat megfelelően van beállítva, a művelet, amely a korábban kiválasztott beállítások jelennek meg. 

@@ -1,5 +1,5 @@
 ---
-title: Speciális forgatókönyvek az Azure MFA és a külső VPN-EK
+title: Az Azure MFA és a külső VPN-eket – Azure Active Directory speciális forgatókönyvek
 description: Részletes konfigurációs útmutatók Cisco, Citrix és Juniper integrálása az Azure MFA-kiszolgáló.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1d1f0857ddf0b3f1a888e51418ffabe8cf61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: acbf27ca6f5b58d5c3cebb28698304c130381a7a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174843"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314399"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure multi-factor Authentication és a külső VPN-megoldások
 

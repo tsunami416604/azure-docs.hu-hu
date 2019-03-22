@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
-ms.translationtype: HT
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136392"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311559"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Projekt Akusztika Unreal Bake oktatóanyag
 Ez a dokumentum ismerteti az Unreal szerkesztő bővítményének használatával Akusztika bake be.
@@ -32,7 +32,7 @@ Ennek során egy bake öt lépésből áll:
 
 Importálja a projekt Akusztika beépülő modul csomagot a projekthez. A témakörben talál segítséget a [Unreal integrációs](unreal-integration.md) témakör. A beépülő modul-integrálása után az új Akusztika mód ikonra kattintva nyissa meg a Akusztika felhasználói felület.
 
-![Nyissa meg Akusztika mód](media/acoustics-mode.png)
+![Képernyőkép az Unreal szerkesztő Akusztika mód beállítása](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>Címke Akusztika actors –
 
@@ -42,7 +42,7 @@ Jelöljön ki egy vagy több objektumot a világ Outliner, vagy használja a **t
 
 ### <a name="for-reference-the-objects-tab-parts"></a>A dokumentáció: Az objektumok lapon részei
 
-![Unreal objektumok lap részletei](media/unreal-objects-tab-details.png)
+![Unreal lapján Akusztika objektumok képernyőképe](media/unreal-objects-tab-details.png)
 
 1. A lap kiválasztása gombok (**objektumok** lapja van kiválasztva). A gombok használatával különféle lépéseiről állapotát egy Akusztika bake felülről lefelé.
 2. Mit kell tennie, használatával ezen a lapon rövid leírása.
@@ -75,11 +75,11 @@ Az akusztikai anyagok ellenőrzés kerülnek vissza minden egyes felületből er
 
 Egy adott anyag szoba reverberation idején intenzitásfokozatok kapcsolódik, a elnyelő együttható a legtöbb anyagok elnyelő értékeket kellene 0,01 való 0,20 tartományban. A fenti ezt a tartományt elnyelő együttható anyagok nagyon elnyelő. Például ha egy hely hangok túl reverberant, módosítsa, emelet, vagy akusztikai anyaga valami újabb absorptivity. Az akusztikai anyagi hozzárendelés, hogy a jelenet anyag használó összes szereplő vonatkozik.
 
-![Visszhang grafikon](media/reverb-time-graph.png)
+![Elnyelő együttható reverberation időben negatív összekapcsolását ábrázoló grafikon](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>A dokumentáció: Az anyagok lapon részei
 
-![Unreal objektumok lap részletei](media/unreal-materials-tab-details.png)
+![Unreal lapján Akusztika objektumok képernyőképe](media/unreal-materials-tab-details.png)
 
 1. A **anyagok** lap gomb segítségével ezt a lapot.
 2. Mit kell tennie, használatával ezen a lapon rövid leírása.
@@ -94,7 +94,7 @@ Miután hozzárendelte a anyagok, váltson át a **mintavételek** fülre.
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>A dokumentáció: A mintavételek lapon részei
 
-![Mintavételezők lap részletei](media/unreal-probes-tab-details.png)
+![Képernyőkép a Akusztika mintavételek lapján Unreal](media/unreal-probes-tab-details.png)
 
 1. A **mintavételek** ezt oldal megjelenítéséhez használt lap gomb
 2. Mit kell tennie, használatával ezen a lapon rövid leírása
@@ -124,11 +124,11 @@ Ha ezeket a számításokat befejeződött, megtekintheti a voxel adatai és a m
 
 Mintavétel számítási befejezése után egy új aktor fog megjelenni a világ Outliner nevű **AcousticsDebugRenderer**. Ellenőrzése a **Render mintavételek** és **Render Voxels** jelölőnégyzetek lehetővé teszi a szerkesztő nézőpontban hibakeresési megjelenítését.
 
-![Akusztika megjelenítő hibakeresése](media/acoustics-debug-renderer.png)
+![Ábrázoló képernyőfelvétel Akusztika Debug megjelenítő aktor Unreal-szerkesztő](media/acoustics-debug-renderer.png)
 
 Bármely voxels vagy mintavételek átfedésben a szinten nem jelenik meg, hogy valós idejű megjelenítési beállítás van engedélyezve a nézőpont.
 
-![Valós idejű renderelési engedélyezése](media/unreal-real-time-rendering.png)
+![Valós idejű megjelenítési beállítás, az Unreal képernyőképe](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>Voxels
 
@@ -137,7 +137,7 @@ Navigálás a jelenethez, és ellenőrizze, hogy a akusztikailag occluding geome
 
 Ha összehasonlítja a voxels durva feloldási vs finom megoldás használatával létrehozott, látni fogja, hogy az a durva voxels kétszer akkora.
 
-![Voxel előzetes verzió](media/unreal-voxel-preview.png)
+![Képernyőkép a Akusztika voxels előzetes verziója, az Unreal szerkesztő](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>Mintavétel pontok
 
@@ -145,7 +145,7 @@ Mintavétel pontok azonos a lehetséges player (figyelő) helyen. Amikor sütés
 
 Fontos ellenőrizni, hogy a mintavétel pontok létezik, bárhol a Windows Media player várható utazási a jelenetben. Mintavétel pontok a projekt Akusztika motor navigációs háló kerülnek, és nem lehet áthelyezni vagy szerkeszthetők, ezért győződjön meg arról a navigációs háló tartalmazza az összes lehetséges player hely vizsgálatával szerezheti be a mintavétel pontokat.
 
-![Mintavételezők előzetes verzió](media/unreal-probes-preview.png)
+![Képernyőkép a Akusztika mintavételek Unreal az előzetes verzió](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a>Durva vs finom felbontás
 
@@ -159,9 +159,9 @@ Bár ez egyszerűnek tűnhet, az az akusztikai szimuláció rendelkezik követke
 * Nem megbízható forrásból csoportdobozban voxels "kitöltött", amely, amely tartalmazza a geometriai voxels – ennek eredményeként nincs hang. Megbízható forrásból helyezi, így azok nem belül a nagyobb voxels durva finom beállítás használata esetén, mint a nagyobb nehézséget jelent.
 * A nagyobb voxels fog végberendezésébe több portálok, az alább látható módon. Az első rendszerkép használatával hoztak durva, míg a második azonos kezdőpanelje finom megoldás használatával. A piros jelöléseket aszinkronitást nincs sokkal kevesebb behatolás kezdőpanelje finom beállítások használatával. A kék vonal kezdőpanelje alapján a geometriai, míg a piros vonalat a hatékony akusztikai portál voxel méretét határozzák meg. Hogyan a behatolás játszik az adott helyzetben függ teljesen hogyan a voxels illeszkedik a geometriai, a portál, amelynek a méretét és az objektumok a jelenetben helyét határozza meg.
 
-![Coarse Doorway](media/unreal-coarse-bake.png)
+![Képernyőkép a durva voxels egy kezdőpanelje, az Unreal kitöltése](media/unreal-coarse-bake.png)
 
-![Fine Doorway](media/unreal-fine-bake.png)
+![Az egy kezdőpanelje, az Unreal finom voxels képernyőképe](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>Az Azure Batch használatával szintjét os
 
@@ -169,7 +169,7 @@ A számítási fürt a felhőben az Azure Batch szolgáltatás használatával j
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>A dokumentáció: A bake lapon részei
 
-![Bake lap részletei](media/unreal-bake-tab-details.png)
+![Képernyőkép a Akusztika os lapján Unreal](media/unreal-bake-tab-details.png)
 
 1. Ezt a lapot szolgáló lap os gomb.
 2. Mi a teendő ezen az oldalon rövid leírása.

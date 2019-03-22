@@ -4,33 +4,22 @@ description: Ez a cikk gyakori kérdésekre foglalja össze, üzembe helyezések
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 12/12/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008653"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312053"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
 Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése egy másik Azure-régióba az Azure Site Recovery használatával kapcsolatos gyakori kérdésekre adott válaszokat ismerteti. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="in-this-article"></a>Ebben a cikkben 
-1.  **[Általános kérdések az Azure-ban az Azure-bA](#general)** 
-1.  **[Replikáció](#replication)** 
-1.  **[Replikációs házirend](#replication-policy)** 
-1.  **[Több virtuális gépre kiterjedő konzisztencia](#multi-vm-consistency)** 
-1.  **[Helyreállítási terv](#recovery-plan)** 
-1.  **[Ismételt védelem és a feladat-visszavétel](#reprotection-and-failback)** 
-2.  **[Kapacitás](#capacity)**
-1.  **[Biztonsági](#security)** 
-
-
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) részleteit.
@@ -79,7 +68,7 @@ A Site Recovery nem, nem szükséges az internetkapcsolat. Hozzáférést igény
 Igen, replikálja az alkalmazást, és ne a vész-helyreállítási konfiguráció külön erőforráscsoportot túl.
 Például egy alkalmazást a minden alkalmazás, db, és külön erőforráscsoportot a webes szint esetében, akkor a elemre kell kattintania, a [replikálás varázsló](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor való védelme minden szinten. Az ASR replikálja ezeket mindhárom szintet három másik erőforráscsoportban található.
 
-## <a name="replication-policy"></a>Replikációs házirend
+## <a name="replication-policy"></a>Replikációs szabályzat
 
 ### <a name="what-is-a-replication-policy"></a>Mi a replikációs szabályzat?
 Azt határozza meg a helyreállítási pontok megőrzési előzményeit és az alkalmazáskonzisztens pillanatképek gyakorisága beállításait. Alapértelmezés szerint az Azure Site Recovery létrehoz egy új replikációs házirendet az alapértelmezett beállításokkal:
@@ -186,7 +175,7 @@ A feladatátvétel után a szolgáltatáskimaradás elhárítása után is indí
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Mi az a virtuális gép feladatátvétel RTO?
 A Site Recovery rendelkezik egy [2 óra RTO szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Azonban az esetek többségében a Site Recovery virtuális gépek feladatátvétele percen belül. Kiszámíthatja az RTO nyissa meg a feladatátvételt feladatok, amely az időt jeleníti meg a virtuális Géphez csatlakozva tartottak. Helyreállítási terv az RTO, tekintse meg a szakasz alatt. 
 
-## <a name="recovery-plan"></a>Helyreállítási terv
+## <a name="recovery-plans"></a>Helyreállítási tervek
 
 ### <a name="what-is-a-recovery-plan"></a>Mi a helyreállítási terv?
 A helyreállítási terv a Site Recovery koordinálja a virtuális gépek feladatátvételi helyreállítás. Győződjön meg arról, a helyreállítás következetesen pontos, megismételhető és automatizált segít. A helyreállítási terv megszünteti a felhasználó a következő igényeit:
@@ -226,7 +215,7 @@ Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában
 Igen, akkor is vásárolható [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) a DR régióban, és automatikus feladatátvételi műveletek fogja használni őket. </br> További konfiguráció nélkül nem szükséges, hogy az ügyfeleknek.
 
 
-## <a name="security"></a>Biztonsági
+## <a name="security"></a>Biztonság
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?
 Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik a virtuális gépeken futó bármilyen információ. A Site Recovery szolgáltatás csak a replikáció és a feladatátvétel levezényléséhez szükséges metaadatokat kapja meg.  
 Site Recovery szolgáltatás ISO 27001:2013, 27018, a HIPAA, DPA hitelesített, és SOC2 és FedRAMP JAB folyamatban van.

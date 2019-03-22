@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 938d8efeaa88cc5bebbf33e525132a030f1b3c7c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112503"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313005"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Service Fabric-alkalmazások monitorozása az ELK-val
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Oktatóanyag: Az elk-val a Service Fabric-alkalmazások figyelése
 
 Ez az oktatóanyag egy sorozat negyedik része. Azt mutatja be, hogyan használhatja az ELK-t (Elasticsearch, Logstash és Kibana) az Azure-ban futó Service Fabric-alkalmazások monitorozására.
 
@@ -109,7 +109,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Hozzon létre vagy módosítson egy meglévő Logstash konfigurációs fájlt a következők szerint: amennyiben a fájl létrehozása mellett dönt, az Azure-ban található ELK Bitnami-rendszerkép használata esetén a következő helyen kell létrehoznia: ```/opt/bitnami/logstash/conf/access-log.conf```.
+4. Hozzon létre vagy módosítsa a meglévő Logstash konfigurációs fájlt a következő tartalommal: A fájlt hoz létre, hogy rendelkezik-e létrehozandó ```/opt/bitnami/logstash/conf/access-log.conf``` ELK Bitnami-rendszerkép használata az Azure-ban.
 
     ```json
     input
@@ -149,7 +149,7 @@ Az oktatóanyag lépéseit egy előre konfigurált ELK-környezetben is végreha
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Nyissa meg a Kibana irányítópultját a **http://SERVER-IP** címen, és adja meg a Kibana felhasználónevét és jelszavát. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
+8. A Kibana irányítópultját a következő hozzáférési **http:\//SERVER-IP** és a Kibana felhasználónevét és jelszavát adja meg. Amennyiben az Azure-ban található ELK-rendszerképet használta, az alapértelmezett felhasználónév „user”, a jelszó pedig az, amit a **Rendszerindítási diagnosztika** futtatásakor kapott.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

@@ -1,35 +1,34 @@
 ---
-title: Csatlakozás az Azure Event Hubs – Azure Logic Apps |} A Microsoft Docs
+title: Csatlakozás az Azure Event Hubs – Azure Logic Apps
 description: Felügyelheti és figyelheti az eseményeket az Azure Event Hubs és Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a59f21478f85f238d91c01faed44d8e49cb15f0a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230318"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310795"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Figyelheti, fogadhatja és események küldése az Azure Event Hubs és Azure Logic Apps 
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Figyelheti, fogadhatja és események küldése az Azure Event Hubs és Azure Logic Apps
 
-Ez a cikk bemutatja, hogyan figyelheti és kezelheti a küldött események [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) a belül egy logikai alkalmazást az Azure Event Hubs-összekötővel. Ezzel a módszerrel, amely a feladatok és ellenőrzése, küldése és események fogadása az Event Hub munkafolyamatok automatizálása a logic apps is létrehozhat. 
+Ez a cikk bemutatja, hogyan figyelheti és kezelheti a küldött események [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) a belül egy logikai alkalmazást az Azure Event Hubs-összekötővel. Ezzel a módszerrel, amely a feladatok és ellenőrzése, küldése és események fogadása az Event Hub munkafolyamatok automatizálása a logic apps is létrehozhat.
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Összekötő-specifikus technikai tudnivalókért tekintse meg a <a href="https://docs.microsoft.com/connectors/eventhubs/" target="blank">összekötő-referencia az Azure Event Hubs</a>.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy [Azure Event Hubs-névtér és Eseményközpont](../event-hubs/event-hubs-create.md)
 
-* A logikai alkalmazás, ahol szeretné elérni az Eseményközpont. A logikai alkalmazás elindításához egy Azure Event Hubs-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* A logikai alkalmazás, ahol szeretné elérni az Eseményközpont. A logikai alkalmazás elindításához egy Azure Event Hubs-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 
@@ -37,15 +36,15 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
 
 A logikai alkalmazás eléréséhez az Eseményközpontok felé ellenőrizze az engedélyeit, és a kapcsolati sztring lekérése az Event Hubs-névtér.
 
-1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>. 
+1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
 2. Nyissa meg az Event Hubs *névtér*, nem egy adott Eseményközpontban. A névtér lapon alatt **beállítások**, válassza a **megosztott elérési házirendek**. Alatt **jogcímek**, ellenőrizze, hogy rendelkezik **kezelés** engedélyeket a névtér számára.
 
    ![Az Event Hubs-névtér engedélyeinek kezelése](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-3. Ha szeretné később manuálisan adja meg a kapcsolat adatait, a kapcsolati sztring lekérése az Event Hubs-névtér. 
+3. Ha szeretné később manuálisan adja meg a kapcsolat adatait, a kapcsolati sztring lekérése az Event Hubs-névtér.
 
-   1. A **házirend**, válassza a **RootManageSharedAccessKey**. 
+   1. A **házirend**, válassza a **RootManageSharedAccessKey**.
 
    2. Keresse meg az elsődleges kulcs kapcsolati karakterláncot. Válassza a Másolás gombot, és mentse későbbi használatra a kapcsolati karakterláncot.
 
@@ -62,14 +61,15 @@ A logikai alkalmazás eléréséhez az Eseményközpontok felé ellenőrizze az 
 
 Az Azure Logic Appsben, mindegyik logikai alkalmazásnak kell kezdődnie, egy [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely akkor aktiválódik, ha egy adott esemény történik, vagy ha egy adott feltétel teljesül. Minden alkalommal, amikor akkor aktiválódik, a Logic Apps-motor létrehoz egy logikaialkalmazás-példányt, és megkezdi az alkalmazás munkafolyamatában.
 
-Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafolyamatának új eseményeket az eseményközpontjába elküldésekor. 
+Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafolyamatának új eseményeket az eseményközpontjába elküldésekor.
 
 1. Az Azure Portalon vagy a Visual Studióban hozzon létre egy üres logikai alkalmazást, amely megnyílik a Logic Apps Designerben. Ebben a példában az Azure Portalt használja.
 
-2. A Keresés mezőbe írja be "az event hubs" szűrőként. Az eseményindítók listában jelölje ki a kívánt eseményindító. 
+2. A Keresés mezőbe írja be "az event hubs" szűrőként. Az eseményindítók listában jelölje ki a kívánt eseményindító.
 
-   Ebben a példában ez az eseményindító: 
-   **Event Hubs – amikor események válnak elérhetővé az Eseményközpontban**
+   Ebben a példában ez az eseményindító:
+
+   **Az Event Hubs – amikor események válnak elérhetővé az Eseményközpontban**
 
    ![Trigger kiválasztása](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -80,9 +80,9 @@ Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafo
       ![Adja meg az Eseményközpont vagy felhasználói csoport](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
 
    2. Válassza ki a időközét és gyakoriságát, hogy milyen gyakran szeretné ellenőrizni az Event Hubs az eseményindító.
- 
+
    3. Igény szerint válassza ki, a speciális eseményindító-beállítások némelyikét, válassza a **speciális beállítások megjelenítése**.
-   
+
       ![Speciális beállítások eseményindító](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
 
       | Tulajdonság | Részletek | 
@@ -108,7 +108,7 @@ Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafo
 
 ## <a name="add-an-event-hubs-action"></a>Az Event Hubs művelet hozzáadása
 
-Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) a munkafolyamat egy eseményindító vagy egy másik műveletet a következő lépés. Ebben a példában a logikai alkalmazás elindul, ellenőrzi, hogy az eseményközpont új eseményt az Event Hubs eseményindítóval. 
+Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) a munkafolyamat egy eseményindító vagy egy másik műveletet a következő lépés. Ebben a példában a logikai alkalmazás elindul, ellenőrzi, hogy az eseményközpont új eseményt az Event Hubs eseményindítóval.
 
 1. Az Azure Portalon vagy a Visual Studióban nyissa meg a logikai alkalmazás a Logic Apps Designerben. Ebben a példában az Azure Portalt használja.
 
@@ -118,22 +118,22 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
    Válassza a plusz jelre (**+**), amely akkor jelenik meg, és válassza **művelet hozzáadása**.
 
 3. A Keresés mezőbe írja be "az event hubs" szűrőként.
-Jelölje ki az elvégzendő műveletek listájában. 
+Jelölje ki az elvégzendő műveletek listájában.
 
-   Ebben a példában válassza a következő műveletet: **az Event Hubs - küldési esemény**
+   Ebben a példában válassza a következő műveletet: **Az Event Hubs - küldési esemény**
 
    !["Az Event Hubs - küldési esemény" kiválasztása](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
 4. Ha a kapcsolat részleteivel, kér [mostantól az Event Hubs-kapcsolat létrehozása](#create-connection). Vagy, ha a kapcsolat már létezik, adja meg a művelet a szükséges információkat.
 
-   | Tulajdonság | Szükséges | Leírás | 
+   | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
-   | Eseményközpont neve | Igen | Válassza ki az Event Hubs, ahol szeretné küldeni az esemény | 
-   | Események | Nem | A tartalom a küldeni kívánt esemény | 
-   | Tulajdonságok | Nem | Az alkalmazás tulajdonságainak és -azonosítókkal való küldése | 
-   |||| 
+   | Eseményközpont neve | Igen | Válassza ki az Event Hubs, ahol szeretné küldeni az esemény |
+   | Események | Nem | A tartalom a küldeni kívánt esemény |
+   | Tulajdonságok | Nem | Az alkalmazás tulajdonságainak és -azonosítókkal való küldése |
+   ||||
 
-   Példa: 
+   Példa:
 
    ![Válassza ki az Eseményközpont nevét, és adja meg az események](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
@@ -147,10 +147,10 @@ Jelölje ki az elvégzendő műveletek listájában.
 
 1. Amikor a kapcsolati adatokat kér, adja meg ezeket az adatokat:
 
-   | Tulajdonság | Szükséges | Érték | Leírás | 
+   | Tulajdonság | Szükséges | Value | Leírás |
    |----------|----------|-------|-------------|
    | Kapcsolat neve | Igen | <*kapcsolat neve*> | A neve, a kapcsolat létrehozása |
-   | Event Hubs-névtér | Igen | <*Event-hubs-névtér*> | Válassza ki az Event Hubs-névtér létrehozásához használni szeretne. | 
+   | Event Hubs-névtér | Igen | <*event-hubs-namespace*> | Válassza ki az Event Hubs-névtér létrehozásához használni szeretne. |
    |||||  
 
    Példa:
@@ -168,7 +168,7 @@ Jelölje ki az elvégzendő műveletek listájában.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/eventhubs/). 
+További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/eventhubs/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

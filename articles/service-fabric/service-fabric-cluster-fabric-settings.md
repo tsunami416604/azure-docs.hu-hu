@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 46da7c7931eaf163c24f057bac5de35f3c727519
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836963"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311866"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -614,13 +614,13 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 ## <a name="security"></a>Biztonság
 | **A paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD Cert végpont formátuma, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
+|AADCertEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD Cert végpont formátuma, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|sztring, alapértelmezett érték a ""|Statikus|Natív ügyfél alkalmazás nevét vagy Azonosítóját jelölő Fabric ügyfelek |
 |AADClusterApplication|sztring, alapértelmezett érték a ""|Statikus|Webes API-alkalmazás neve vagy a fürt jelölő azonosító |
-|AADLoginEndpoint|sztring, alapértelmezett érték a ""|Statikus|AAD bejelentkezési végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us" |
+|AADLoginEndpoint|sztring, alapértelmezett érték a ""|Statikus|AAD bejelentkezési végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https:\//login.microsoftonline.us" |
 |AADTenantId|sztring, alapértelmezett érték a ""|Statikus|Bérlő azonosítója (GUID) |
 |AdminClientCertThumbprints|sztring, alapértelmezett érték a ""|Dinamikus|Rendszergazdai szerepkör az ügyfelek által használt tanúsítványok ujjlenyomatai. Egy név vesszővel tagolt lista. |
-|AADTokenEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD jogkivonat-végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https://login.microsoftonline.us/{0}" |
+|AADTokenEndpointFormat|sztring, alapértelmezett érték a ""|Statikus|AAD jogkivonat-végpont, az Azure kereskedelmi alapértelmezett megadott nem alapértelmezett környezetekben, például az Azure Government "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|sztring, alapértelmezett érték a ""|Dinamikus|Minden lehetséges jogcím rendszergazdai ügyfelektől; a várt felhasználónévként ClientClaims; Ez a lista belsőleg lekérdezi hozzáadott ClientClaims; így nincs szükség ClientClaims bejegyzések is hozzáadhat. |
 |AdminClientIdentities|sztring, alapértelmezett érték a ""|Dinamikus|Rendszergazdai szerepkör; háló ügyfelének Windows identitások emelt szintű fabric operations engedélyezésére használja. Egy vesszővel elválasztott listát; mindegyik bejegyzés a domain Fióknév vagy a csoport nevét. A kényelem; a fabric.exe futtató fiók automatikusan rendszergazdai szerepkör; tehát van ServiceFabricAdministrators csoportba. |
 |AppRunAsAccountGroupX509Folder|sztring, alapértelmezett /home/sfuser/sfusercerts |Statikus|Tartalmazó mappára AppRunAsAccountGroup X509 tanúsítványok és titkos kulcsok |

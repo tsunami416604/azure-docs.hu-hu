@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: bab7cdd478ba33eb797df0e68206b0aaa54be6a5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: b6353b2c720a188571a0f6a4e27a89a49c857173
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892608"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311563"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Csomag és a tárolók üzembe helyezése a Service Fabric-alkalmazásba a Yeoman használatával
 
@@ -282,11 +282,11 @@ Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, ho
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, majd navigáljon a Service Fabric Explorerre a http://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer helyen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
+Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorer http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-Ha a futó alkalmazáshoz szeretne csatlakozni, nyisson meg egy webböngészőt, és lépjen a fürt URL-címére, például: http://containertestcluster.eastus.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
+Annak érdekében, hogy a futó alkalmazás csatlakozni, nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét – például http:\//containertestcluster.eastus.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
 ![szavazóalkalmazás][votingapp]
 

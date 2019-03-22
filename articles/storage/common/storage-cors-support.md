@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002947"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313651"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
 2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](https://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](https://www.w3.org/TR/cors/) CORS részleteiért.
@@ -67,7 +67,7 @@ CORS-szabályok a szolgáltatási szinten van beállítva, hogy engedélyezi vag
 
 Minden elem szerepel a CORS-szabály az alábbiakban olvasható:
 
-* **AllowedOrigins**: A forrás-tartományok használatával indítson egy össze az storage CORS használatával engedélyezett. A forrástartomány az a tartomány, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználó betöltötte a szolgáltatás elküldi a pontos kis-és nagybetűket egyeznie kell. A helyettesítő karakter is használható ' *', hogy minden eredettartományból kéréseit a CORS használatával. A fenti példában, a tartományok [ http://www.contoso.com ](http://www.contoso.com) és [ http://www.fabrikam.com ](http://www.fabrikam.com) teheti a CORS használatával szolgáltatásra irányuló kérések.
+* **AllowedOrigins**: A forrás-tartományok használatával indítson egy össze az storage CORS használatával engedélyezett. A forrástartomány az a tartomány, ahonnan a kérés származik. Vegye figyelembe, hogy a forrás a forrás, amely a felhasználó betöltötte a szolgáltatás elküldi a pontos kis-és nagybetűket egyeznie kell. A helyettesítő karakter is használható ' *', hogy minden eredettartományból kéréseit a CORS használatával. A fenti példában, a tartományok http:\//www.contoso.com és a http: \/ /www.fabrikam.com teheti a CORS használatával szolgáltatásra irányuló kérések.
 * **AllowedMethods**: A metódusok (HTTP-kéréssel kapcsolatos műveletek), amely a forrástartomány használhat egy CORS-kéréshez. A fenti példában csak a PUT és a GET kérelmek engedélyezettek.
 * **AllowedHeaders**: A kérelem fejlécében, hogy a forrástartomány előfordulhat, hogy a CORS-kéréshez adjon meg. A fenti példában x-ms-metaadatok, x-ms-meta-célként, és az x-ms-meta-abc kezdve minden metaadat fejlécek használata engedélyezett. Vegye figyelembe, hogy a helyettesítő karaktert ' *' jelzi, hogy engedélyezve van-e bármilyen fejlécet elején a megadott előtaggal.
 * **ExposedHeaders**: A válaszfejlécek, előfordulhat, hogy a CORS-kérelemre válaszul, és amelyeket a böngésző megjeleníthet a kérelem kibocsátója. A fenti példában a böngésző mentenie bármely x-ms-metaadat-fejléc kezdődő elérhetővé.
@@ -130,9 +130,9 @@ Ezután vegye figyelembe a következő CORS-kérések:
 | Kérés |  |  | Válasz |  |
 | --- | --- | --- | --- | --- |
 | **Metódus** |**Forrás** |**Kérelemfejlécek** |**A szabály egyezés** |**Eredmény** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Első szabály |Sikeres |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Második szabály |Sikeres |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |Második szabály |Hiba |
 
 Az első kérelem megegyezik az első szabály – a forrástartomány megegyezik az engedélyezett eredetek, a metódus felel meg az engedélyezett metódusok és a fejléc megegyezik az engedélyezett fejlécek – és így sikeres.
 

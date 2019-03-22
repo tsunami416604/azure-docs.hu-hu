@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 16233c9013e97a7db7ef799b79526abac4741612
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318440"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316269"
 ---
-# <a name="overview-of-failback"></a>Feladat-visszavétel áttekintése
+# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>Feladat-visszavétel VMware virtuális gépek vészhelyreállítása után
 
 Miután Ön rendelkezik a feladatátvétel az Azure-bA a vész-helyreállítási folyamat részeként is visszaadja a feladatokat a helyszíni helyre. Van két különböző típusú feladat-visszavétel az Azure Site Recovery lehetséges: 
 
@@ -25,7 +25,7 @@ Miután Ön rendelkezik a feladatátvétel az Azure-bA a vész-helyreállítási
 Ha VMware virtuális gépek feladatátvétele, is visszaadja a feladatokat a azonos forrás a helyszíni virtuális gép Ha továbbra is létezik. Ebben a forgatókönyvben csak replikálja a módosításokat vissza. Ez a forgatókönyv más néven **eredeti helyre történő helyreállítás**. A helyszíni virtuális gép nem létezik, a forgatókönyv-e egy **eredetitől eltérő helyre**.
 
 > [!NOTE]
-> Csak a feladat-visszavétel az eredeti vCenter és a konfigurációs kiszolgálót is. Nem lehet új konfigurációs kiszolgáló üzembe helyezése, és sikertelen, vissza használja azt. Ezenkívül nem adhat új vCenter a meglévő konfigurációs kiszolgáló és a feladat-visszavétel be a vcenter-kiszolgáló.
+> Csak térjen vissza az eredeti vCenter és a konfigurációs kiszolgáló meghiúsulhat. Nem lehet új konfigurációs kiszolgáló üzembe helyezése, és sikertelen, vissza használja azt. Ezenkívül nem adhat új vCenter a meglévő konfigurációs kiszolgáló és a feladat-visszavétel be a vcenter-kiszolgáló.
 
 ## <a name="original-location-recovery-olr"></a>Eredeti helyre történő helyreállítás (való)
 Ha a feladat-visszavételhez az eredeti virtuális gépet választja, a következő feltételeknek kell teljesülniük:

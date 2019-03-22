@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: c27938ad28abc62f42024faae7931196704b9b1b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895825"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314569"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 A *name* nevet ad a futtató tárolónak (a tárolóazonosító helyett).
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például: http://localhost:4000. A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd IP-címhez visszaadott 4000-es, porton például "http:\//localhost:4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ Használja a sablonban megadott telepítési szkriptet https://github.com/Azure-
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a következő címen: http://localhost:19080/Explorer (a Vagrant Mac OS X rendszeren való használata esetében a localhost helyett használja a virtuális gép magánhálózati IP-címét). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
+Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorer http:\//localhost:19080 / Explorer (a localhost magánhálózati IP-címét a virtuális gép használata a Vagrant Mac OS x). Bontsa ki az Alkalmazások csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazása típusához, és egy másik a típus első példányához.
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd a 4000-es porton visszaadott IP-címet, például: http://localhost:4000. A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd IP-címhez visszaadott 4000-es, porton például "http:\//localhost:4000". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 ![Hello World!][hello-world]
 

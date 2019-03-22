@@ -4,17 +4,17 @@ description: Hogyan állíthatja be az Azure IoT Edge-futtatókörnyezet és bá
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4fa5402b87eea969a5a4093000dda06d3cb5675d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774200"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312988"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -35,7 +35,7 @@ Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**
 
 * A **protokoll** HTTP vagy HTTPS van. A Docker-démon használhatja mindkét protokollt, a tároló-beállításjegyzékek beállításai, attól függően, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
 
-* A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, a hitelesítő adatokat biztosíthat a proxy_host formátumban részeként **felhasználói**:**jelszó**\@**proxy_host**.
+* A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, megadhatja a hitelesítő adatait a proxyállomás részeként a következő formátumban: **felhasználói**:**jelszó**\@**proxy_host** .
 
 * A **proxyport** a hálózati portot, amelyen a proxy válaszol hálózati forgalmat.
 
@@ -43,7 +43,7 @@ Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**
 
 Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű eszközön, konfigurálja a package manager haladhat végig a proxykiszolgáló eléréséhez a telepítési csomagot. Ha például [apt-get paranccsal beállítása egy http-proxy használatára](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Miután konfigurálta a Csomagkezelő, kövesse a [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) vagy [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) a szokásos módon.
 
-Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor nyissa meg a proxykiszolgálón keresztül után töltse le a telepítési parancsfájlt, majd újból letölteni a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
+Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor kétszer nyissa meg a proxykiszolgálón keresztül. Az első kapcsolat letöltésére a telepítési parancsfájlt, és a második kapcsolat van, töltse le a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
 
 ```powershell
 . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -64,20 +64,22 @@ Miután telepítette az IoT Edge-futtatókörnyezet, az alábbi szakasz segíts�
 
 ## <a name="configure-the-daemons"></a>A démonok konfigurálása
 
-A Docker és az IoT Edge démonok, az IoT Edge-eszközön fut, hogy a proxykiszolgáló használatára kell konfigurálni kell. A Docker-démon webes kéréseket hajt végre lekéréses tárolórendszerképeket a tároló-beállításjegyzékek. Az IoT Edge-démon lehetővé teszi, hogy webes kéréseket az IoT hubbal való kommunikációhoz.
+A Moby és az IoT Edge démonok, az IoT Edge-eszközön fut, hogy a proxykiszolgáló használatára kell konfigurálni kell. A Moby démon webes kéréseket hajt végre lekéréses tárolórendszerképeket a tároló-beállításjegyzékek. Az IoT Edge-démon lehetővé teszi, hogy webes kéréseket az IoT hubbal való kommunikációhoz.
 
-### <a name="docker-daemon"></a>Docker-démon
+### <a name="moby-daemon"></a>Moby démon
 
-Tekintse meg a Docker dokumentációt a Docker-démon konfigurálása a környezeti változókat. A legtöbb tároló-beállításjegyzékek (beleértve a DockerHub és az Azure Container Registry) támogatja a HTTPS-kéréseket, így a paraméter, amely kell beállítania **HTTPS_PROXY**. Ha Ön stahují se Image. a beállításjegyzékből, amely nem támogatja a transport layer security (TLS), majd állítsa be a **HTTP_PROXY** paraméter. 
+Mivel Moby Docker épül, tekintse meg a Docker – dokumentáció a Moby démon konfigurálása a környezeti változók. A legtöbb tároló-beállításjegyzékek (beleértve a DockerHub és az Azure Container Registry) támogatja a HTTPS-kéréseket, így a paraméter, amely kell beállítania **HTTPS_PROXY**. Ha Ön stahují se Image. a beállításjegyzékből, amely nem támogatja a transport layer security (TLS), majd állítsa be a **HTTP_PROXY** paraméter. 
 
-Válassza ki a cikket, amely a Docker verziójára: 
+Válassza ki a cikket, amely az IoT Edge-eszköz operációs rendszerének vonatkozik: 
 
-* [Linuxhoz készült docker](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
-* [A Windows docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+* [Docker-démon konfigurálása linuxon](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)
+    * A Linux rendszerű eszközök Moby démon Docker neve követi.
+* [Windows Docker-démon konfigurálása](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#proxy-configuration)
+    * A Windows-eszközök Moby démon iotedge-moby nevezzük. A nevek eltérőek, mert lehetséges, Docker asztal és a Moby párhuzamosan futtatni egy Windows-eszközön. 
 
 ### <a name="iot-edge-daemon"></a>IoT Edge-démon
 
-Az IoT Edge-démon a Docker-démont, hasonló módon van konfigurálva. Az IoT Edge által az IoT hubnak küldött kéréseket a HTTPS használatára. Az alábbi lépések segítségével egy környezeti változót a szolgáltatáshoz, az operációs rendszer alapján. 
+Az IoT Edge-démon a Moby démon hasonló módon van konfigurálva. Az IoT Edge által az IoT hubnak küldött kéréseket a HTTPS használatára. Az alábbi lépések segítségével egy környezeti változót a szolgáltatáshoz, az operációs rendszer alapján. 
 
 #### <a name="linux"></a>Linux
 

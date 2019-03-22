@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 512e07f2892f9c4adf47956d3a5b07debf870e46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 637ec63d1c3e5a3eb1ce26765b1ab22e9823e9a1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849907"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317425"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -82,6 +82,7 @@ Linux-alapú Azure virtuális gép biztonsági mentése, az Azure Backup támoga
 - Az Azure Backup nem támogatja a Core OS Linux.
 - Az Azure Backup nem támogatja a 32 bites operációs rendszereken.
 - Más bring-your-own Linux-disztribúciók működni, amíg a [Linuxhoz készült Azure-beli Virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) érhető el a virtuális gépen, és az is, amely támogatja a Pythont.
+- Az Azure Backup nem támogatja a virtuális gép  **Python 2.6-os verzió* csak** a konfigurált proxy.
 
 
 

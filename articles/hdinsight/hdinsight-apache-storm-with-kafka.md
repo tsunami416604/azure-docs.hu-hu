@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111854"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316949"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -129,7 +129,7 @@ Az oktatóanyagban két topológia szerepel:
     >
     > Ha a Storm-fürt létrehozásához nem használja a dokumentumban lévő sablont, manuálisan kell alkalmaznia a szkriptműveletet a fürtre.
     >
-    > A szkriptművelet a `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` helyen található, és a Storm-fürt felügyelő és nimbus csomópontjaira lesz alkalmazva. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
+    > A parancsprogram-művelet a következő helyen található [ https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh ](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) és a felügyelő és nimbus csomóponttal, a Storm-fürt alkalmazza. A szkriptműveletek használatával kapcsolatos további információkért tekintse meg [a HDInsight szkriptműveletkel való testreszabását](hdinsight-hadoop-customize-cluster-linux.md) ismertető dokumentumot.
 
 A topológiák a [Flux](https://storm.apache.org/releases/1.1.2/flux.html) használatával vannak definiálva. A Flux a Storm 0.10.x verziójával lett bevezetve, és a használatával elválaszthatja a topológia konfigurációját a kódtól. A Flux-keretrendszert használó topológiák esetében a topológia egy YAML-fájlban van definiálva. Az YAML-fájl a topológia részeként is megadható. Önálló fájlként is használható a topológia elküldésekor. A Flux támogatja a változók futásidőben való behelyettesítését is, amit ebben a példában is alkalmazunk.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 923931eec2a7deaa8cf92bec61bc623615c9420d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 3f42aa57a4db445f0fb222905a6350b57c2c2a62
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847059"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315615"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -39,16 +39,12 @@ A szolgáltatás általánosan elérhető Azure-régióban érhető el. Lehet, h
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Nyilvános USA nyugati középső RÉGIÓJA](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 
 Ez a táblázat frissítésekor a szolgáltatásfrissítések, és vagy új támogatott verziók érhetők el.
-
-> [!NOTE]
-> 2018-10-01 jelenleg első jelennek meg, és hamarosan elérhető más régiókban. Ez a táblázat frissül, ha nincsenek a szolgáltatásfrissítések, és vagy új támogatott verziók érhetők el
 
 Próbálja ki a Instance Metadata szolgáltatás, hozzon létre egy virtuális gépről [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) vagy a [az Azure portal](https://portal.azure.com) az újabb régiókban, és kövesse az alábbi példák.
 
@@ -355,7 +351,7 @@ resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-g
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
 csomag | [Terv](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) a virtuális gép az Azure Piactéri lemezkép neve, a termékek és a közzétevő tartalmaz | 2018-04-02
 szolgáltató | A virtuális gép szolgáltató | 2018-10-01
-publicKeys | Nyilvános kulcsok gyűjteményét [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] rendelve a virtuális gép és az elérési út | 2018-04-02
+publicKeys | [Nyilvános kulcsok gyűjteményét](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) rendelve a virtuális gép és az elérési út | 2018-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
 zóna | [Rendelkezésre állási zónában](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-cím | 2017-04-02

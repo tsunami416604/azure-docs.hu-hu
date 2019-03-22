@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 1f6edd871d6815dab93bf9e8d582b0cb1ba6c78f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ab5679f374753d6620b6a0eccca12ac9f162f199
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109239"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337925"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -62,6 +62,9 @@ A regisztrációt követően az Azure Active Directory globális rendszergazdán
 A felhasználó, aki regisztrál az Azure Stack az Azure Active Directory egyszerű szolgáltatás tulajdonosa. Csak a felhasználó, aki regisztrált az Azure Stack az Azure Stack-regisztráció módosíthatja. Ha egy nem rendszergazdai felhasználó, aki nem tulajdonosa, a regisztrációs szolgáltatás egyszerű próbál meg regisztrálni, illetve regisztrálja újra az Azure Stack, azok tapasztalhat a 403-as választ. A 403-as válasz azt jelzi, hogy a felhasználó nem rendelkezik megfelelő engedélyekkel a művelet végrehajtásához.
 
 Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelményeknek, [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Az Azure-előfizetése ingyenes regisztrálása az Azure Stack tekintetében.
+
+> [!NOTE]
+> Ha egynél több Azure Stack, ajánlott eljárás az egyes Azure Stack saját előfizetését regisztrálja. Ez megkönnyíti, hogy a használat nyomon követése.
 
 ### <a name="powershell-language-mode"></a>PowerShell nyelvmód
 
@@ -240,7 +243,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (nincs internetk
 2. A regisztrációs jogkivonatot, futtassa a következő PowerShell-parancsmagokat:  
 
    ```Powershell
-   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
+   $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    A Get-AzsRegistrationToken parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).

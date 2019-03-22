@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138048"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317306"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akusztika – gyakori kérdések
 
@@ -25,7 +25,7 @@ A projekt Akusztika suite beépülő modulokat a rendszer egy Akusztika, amely k
 
 ## <a name="where-can-i-download-the-plugin"></a>Honnan tölthetem le a beépülő modult?
 
-A projekt Akusztika letöltheti a [projekt Akusztika letöltőközpontlapon](https://www.microsoft.com/en-us/download/details.aspx?id=57346).
+Letöltheti a [Akusztika Unity Project beépülő modul](https://www.microsoft.com/download/details.aspx?id=57346) vagy a [projekt Akusztika Unreal beépülő modul](https://www.microsoft.com/download/details.aspx?id=58090).
 
 ## <a name="does-project-acoustics-support-x-platform"></a>Nem támogatja a projekt Akusztika <x> platform?
 

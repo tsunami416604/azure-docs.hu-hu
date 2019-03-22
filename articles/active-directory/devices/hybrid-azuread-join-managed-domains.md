@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2019
+ms.date: 03/20/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce91fc5418de2e93027a8cb3abf1dcc670be64a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 53be1d5728d681d2214677c00681c104a00e3946
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166980"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337329"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: Hibrid Azure Active Directory-csatlakozás a felügyelt tartományok konfigurálása
 
@@ -220,5 +220,5 @@ Ha problémákat tapasztal a tartományhoz csatlakoztatott Windows-eszközök hi
 
 > [!div class="nextstepaction"]
 > [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](hybrid-azuread-join-federated-domains.md)
-> [A hibrid Azure Active Directory-csatlakozás manuális konfigurálása](hybrid-azuread-join-manual-steps.md)
+> [A hibrid Azure Active Directory-csatlakozás manuális konfigurálása](hybrid-azuread-join-manual.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013162"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317722"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával szögletes
 
@@ -48,7 +48,7 @@ Négyzetes társított szolgáltatás a következő tulajdonságok támogatottak
 | gazdagép | A példány URL-címét a négyzetes. (i.e. mystore.mysquare.com)  | Igen |
 | clientId | A négyzetes alkalmazással társított ügyfél-azonosító.  | Igen |
 | clientSecret | A négyzetes az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| redirectUri | Az átirányítási URL-cím hozzárendelve az négyzetes irányítópult. (pl.) http://localhost:2500)  | Igen |
+| redirectUri | Az átirányítási URL-cím hozzárendelve az négyzetes irányítópult. (azaz http:\//localhost:2500)  | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |

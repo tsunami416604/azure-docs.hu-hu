@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 163b479fdf2d6a4885604c52f36f707e558dc3a0
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b7d043b15cad23c9c9eca60c9a24096fee12e14a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011777"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319777"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Felkészülés az Azure Resource Manager-kérelmek hitelesítéséhez
 Használatával erőforrásokon végrehajtott összes műveletet kell hitelesítenie a [Azure Resource Manager] [ lnk-authenticate-arm] az Azure Active Directory (AD). A legegyszerűbben úgy konfigurálhatja ezt, hogy a PowerShell vagy az Azure CLI segítségével.
@@ -41,8 +41,8 @@ A következő lépések bemutatják, hogyan állítsa be a jelszó-hitelesítés
 3. Hozzon létre egy új Azure Active Directory-alkalmazás a következő parancsot, és cserélje le a hely tulajdonosai:
    
    * **{Név}:** megjelenített neve, mint például az alkalmazás **MySampleApp**
-   * **{Kezdőlap URL-címe}:** URL-címe az alkalmazás, mint például a kezdőlap **http://mysampleapp/home**. Az URL-cím nem kell, hogy egy valódi alkalmazás mutasson.
-   * **{Alkalmazásazonosító}:** Például egy egyedi azonosítót **http://mysampleapp**. Az URL-cím nem kell, hogy egy valódi alkalmazás mutasson.
+   * **{Kezdőlap URL-címe}:** URL-címe az alkalmazás, mint például a kezdőlap **http:\//mysampleapp/home**. Az URL-cím nem kell, hogy egy valódi alkalmazás mutasson.
+   * **{Alkalmazásazonosító}:** Például egy egyedi azonosítót **http:\//mysampleapp**. Az URL-cím nem kell, hogy egy valódi alkalmazás mutasson.
    * **{Password}:** Az alkalmazás hitelesítéséhez használt jelszó.
      
      ```powershell

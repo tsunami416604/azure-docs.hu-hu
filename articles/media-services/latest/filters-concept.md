@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 78d6ac0a4ecde8d60a0ef3aa22515c7ce1ea4e07
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889358"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309537"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
 
@@ -88,7 +88,11 @@ Szűrő nyomon követése Tulajdonságfeltételek követési típusok, értékek
 |**Name (Név)**|A track nevét használja a szűréshez.|
 |**Típus**|A szám típust használják a szűréshez.<br/><br/>A következő értékek használata engedélyezett: "videó", "hang" vagy "szöveg".|
 
-## <a name="example"></a>Példa
+## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+
+Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dyanamic jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+
+## <a name="definition-example"></a>Definíció példa
 
 ```json
 {

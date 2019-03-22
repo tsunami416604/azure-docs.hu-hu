@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: a7ba66fae3f2a8426cc333cca109a4c6793d1da2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 56eb7e7372d2041b52af6bbae2b9186b99f97bbb
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724323"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337816"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Csatlakozhat a HDInsight (az Apache Hadoop) SSH-val
 
@@ -50,14 +50,14 @@ Az `ssh` és `scp` parancs elérhető a Linux, Unix és macOS rendszerekben. Az 
 
 A Microsoft Windows alapértelmezés szerint nem telepít SSH-ügyfelet. Az `ssh`- és az `scp`-ügyfél az alábbi csomagokban érhető el a Windows rendszerhez:
 
-* OpenSSH-ügyfél (béta): A Fall Creators Update-lépjen a __beállítások__ > __alkalmazások és szolgáltatások__ > __választható funkciók kezelése__  >  __Funkció hozzáadása__ , és válassza ki a __OpenSSH-ügyfél__. 
+* OpenSSH Client (Beta): A Fall Creators Update-lépjen a __beállítások__ > __alkalmazások és szolgáltatások__ > __választható funkciók kezelése__  >  __Funkció hozzáadása__ , és válassza ki a __OpenSSH-ügyfél__. 
 
     > [!NOTE]  
     > Ha az `ssh` és az `scp` parancsok a funkció engedélyezése után sem érhetők el a PowerShellben, jelentkezzen ki, majd jelentkezzen be újra.
 
 * [Bash on Ubuntu on Windows 10-es](https://msdn.microsoft.com/commandline/wsl/about): A `ssh` és `scp` parancs a Bash on Windows parancssori keresztül érhető el.
 
-* [OpenSSH-ügyfél (béta)](https://blogs.msdn.microsoft.com/powershell/2017/12/15/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Ez a Windows 10 Fall Creators Update-ben bevezetett választható szolgáltatás.
+* [OpenSSH-ügyfél (béta)](https://devblogs.microsoft.com/powershell/using-the-openssh-beta-in-windows-10-fall-creators-update-and-windows-server-1709/): Ez a Windows 10 Fall Creators Update-ben bevezetett választható szolgáltatás.
 
 * [Az Azure Cloud Shell](../cloud-shell/quickstart.md): A Cloud Shellben a böngészőben a Bash-környezetet biztosít, és biztosítja a `ssh`, `scp`, és egyéb gyakori Linux-parancsok.
 

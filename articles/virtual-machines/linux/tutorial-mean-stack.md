@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009651"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315827"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Az Azure-ban Linux rendszerű virtuális gépen a MongoDB, Express, AngularJS és Node.js (mean) készlet-verem létrehozása
 
@@ -324,7 +324,7 @@ Az [AngularJS](https://angularjs.org) egy webes keretrendszert biztosít a dinam
     nodejs server.js
     ```
 
-2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Például: *http://13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
+2. Nyisson meg egy webböngészőt, és ugorjon a virtuális géphez rögzített címre. Ha például *http:\//13.72.77.9:3300*. Az alábbihoz hasonló oldalt kell látnia:
 
     ![Könyvrekord](media/tutorial-mean/meanstack-init.png)
 

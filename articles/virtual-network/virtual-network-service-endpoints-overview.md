@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: ac166161624840aae39e84aa4b149fe58a6c978e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780864"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310540"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -42,6 +42,7 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 **Nyilvános előzetes verzió**
 
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: Hol érhető el, Azure Database for MariaDB minden Azure-régióban elérhető előzetes.
+- **[Az Azure Container Registry](../container-registry/container-registry-vnet.md)**: Hol érhető el az Azure Container Registry az összes Azure-régióban elérhető előzetes.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 

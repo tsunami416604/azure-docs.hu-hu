@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109290"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309804"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(ELAVULT) DC/OS-tárolók kezelése a Marathon REST API
 
@@ -30,7 +30,7 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 * [Csatlakozás Azure Container Service-fürthöz](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>A DC/OS API-k elérése
-Miután csatlakozott az Azure Container Service-fürthöz, és hozzáférhet, a DC/OS keresztül kapcsolódó REST API-k http://localhost:local-port. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Ha például a Marathon végpontok címen érhető el URI-k kezdve `http://localhost/marathon/v2/`. 
+Miután csatlakozott az Azure Container Service-fürthöz, a DC/OS és a kapcsolódó REST API-kon keresztül érheti http:\//localhost:local-port. Az ebben a dokumentumban szereplő példák azt feltételezik, hogy az alagutat a 80-as porton keresztül hozta létre. Ha például a Marathon végpontok címen érhető el URI-k http kezdve: \/ /localhost/marathon/v2 /. 
 
 A [Marathon API-ról](https://mesosphere.github.io/marathon/docs/rest-api.html) és a [Chronos API-ról](https://mesos.github.io/chronos/docs/api.html) a Mesosphere dokumentációjában, a [Mesos Scheduler API-ról](http://mesos.apache.org/documentation/latest/scheduler-http-api/) pedig az Apache dokumentációjában talál további információt.
 
@@ -123,7 +123,7 @@ A Marathon API segítségével horizontálisan felskálázhatja vagy leskálázh
 Futtassa a következő parancsot az alkalmazás horizontális felskálázása a bújtatott kapcsolat.
 
 > [!NOTE]
-> Az URI-ja http://localhost/marathon/v2/apps/ méretezhető az alkalmazás azonosítója követ. Ha az Nginx-mintát, hogy melyik itt, az URI lesz az http://localhost/marathon/v2/apps/nginx.
+> Az URI-ja http: \/ /alkalmazások localhost/marathon/v2, / méretezhető az alkalmazás azonosítója követ. Ha az Nginx-mintát, hogy melyik itt, az URI a http lesz használ:\//localhost/marathon/v2/apps/nginx.
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -180,7 +180,7 @@ A Marathon API-t az üzemelő alkalmazáspéldányok horizontális skálázásá
 A következő parancsot az alkalmazás horizontális felskálázása:
 
 > [!NOTE]
-> Az URI-ja http://localhost/marathon/v2/apps/ méretezhető az alkalmazás azonosítója követ. Ha itt az Nginx-mintát használ, az URI lesz http://localhost/marathon/v2/apps/nginx.
+> Az URI-ja http: \/ /alkalmazások localhost/marathon/v2, / méretezhető az alkalmazás azonosítója követ. Itt az Nginx-mintát használ, ha az URI lesz http:\//localhost/marathon/v2/apps/nginx.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'

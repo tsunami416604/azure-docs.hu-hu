@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 299c06fc043391fc9b765c95ec6d29da3d440719
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d9443349ea7ce91a3b8ab01510917bc82ae9b8ad
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318872"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316133"
 ---
 # <a name="saas-fulfillment-apis-version-1"></a>SaaS teljesítése API-k 1-es verzió
 
@@ -59,26 +59,26 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
 
 Az Azure Portallal egy új alkalmazás regisztrálásához hajtsa végre az alábbi lépéseket:
 
-1.  Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-2.  Ha a fiókja több bérlőhöz is biztosít hozzáférést, kattintson a fiókra az oldal jobb felső sarkában, és állítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
-3.  A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatást, kattintson a **alkalmazásregisztrációk**, és kattintson a **új alkalmazásregisztráció**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Ha a fiókja több bérlőhöz is biztosít hozzáférést, kattintson a fiókra az oldal jobb felső sarkában, és állítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
+3. A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatást, kattintson a **alkalmazásregisztrációk**, és kattintson a **új alkalmazásregisztráció**.
 
-    ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1.png)
+   ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1.png)
 
-4.  A Létrehozás lapon adja meg az alkalmazás\'s regisztrációs adatokat:
-    -   **Név**: Adjon meg egy kifejező alkalmazásnevet
-    -   **Az alkalmazástípus**: 
-        - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client).
-        - Válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
-        Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
-    -   **Bejelentkezés URL-cím**: Webes alkalmazás és az API-alkalmazások adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http://localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
-    -   **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http://MyFirstAADApp**.
+4. A Létrehozás lapon adja meg az alkalmazás\'s regisztrációs adatokat:
+   - **Név**: Adjon meg egy kifejező alkalmazásnevet
+   - **Az alkalmazástípus**: 
+     - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client).
+     - Válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+     Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
+   - **Bejelentkezés URL-cím**: Webes alkalmazás és az API-alkalmazások adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http:\//localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
+   - **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http:\//MyFirstAADApp**.
 
-        ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1-2.png)
+     ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1-2.png)
 
-        Adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
+     Adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-5.  Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi Alkalmazásazonosító rendeli az alkalmazást, és\'újra megnyílik az alkalmazás\'s fő való regisztrációhoz. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
+5. Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi Alkalmazásazonosító rendeli az alkalmazást, és\'újra megnyílik az alkalmazás\'s fő való regisztrációhoz. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
 
 >[!Note]
 >Alapértelmezés szerint az újonnan regisztrált alkalmazást, hogy csak a felhasználók az ugyanazon bérlőről, jelentkezzen be az alkalmazás van konfigurálva.
@@ -511,6 +511,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
     "lastModified": ""
 }
 ```
+
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6f2f002c5ff08e21741927d07a0facfd09ec0914
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295691"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336252"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
@@ -21,7 +21,7 @@ Az Azure virtuális WAN egy hálózati szolgáltatás, amely optimalizált és a
 
 Az Azure virtuális WAN egyesíti az Azure-felhőben számos szolgáltatás például site-to-site VPN (általánosan elérhető), az ExpressRoute (előzetes verzió), pont – hely felhasználói (előzetes verzió) VPN egyetlen operatív felületen. Az Azure-alapú virtuális hálózatokhoz van kapcsolódni a virtuális hálózati kapcsolatokon keresztül.
 
-![A Virtual WAN ábrája](./media/virtual-wan-about/vwangraphic.png)
+![A Virtual WAN ábrája](./media/virtual-wan-about/virtualwan1.png)
 
 Ez a cikk a hálózati kapcsolatot az Azure virtuális WAN gyors betekintést biztosít. A Virtual WAN a következő előnyöket biztosítja:
 
@@ -49,7 +49,7 @@ Egy teljes körű virtuális WAN konfigurálásához hoz létre az alábbi forr�
 
 ## <a name="connectivity"></a>Kapcsolat
 
-Virtuális WAN lehetővé teszi, hogy a kapcsolat három típusa: site-to-site, pont – hely (előzetes verzió), és az ExpressRoute (előzetes verzió).
+Virtuális WAN lehetővé teszi, hogy a kapcsolat három típusa: site-to-site, a pont – hely (előzetes verzió) és az ExpressRoute (előzetes verzió).
 
 ### <a name="s2s"></a>Site-to-site VPN-kapcsolatok
 
@@ -71,7 +71,7 @@ A partnerek és a helyek listáját lásd: a [virtuális WAN-partnerek és helye
 
 ### <a name="p2s"></a>Pont – hely VPN-kapcsolatok (előzetes verzió)
 
-A pont–hely (P2S) kapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális központtal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne csatlakoztatni.
+A pont – hely (P2S) kapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális központ egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne csatlakoztatni.
 
 A kapcsolat létrehozásához lásd: [hozzon létre egy pont – hely kapcsolat használatával virtuális WAN](virtual-wan-point-to-site-portal.md).
 

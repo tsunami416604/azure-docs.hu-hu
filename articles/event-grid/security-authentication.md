@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d66db88dd1e962acc63c960270bb5685218aa391
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095602"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316059"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -88,7 +88,7 @@ Az előfizetés érvényesítése kézfogás kezelésére egy példa: egy [ C# m
 
 ### <a name="checklist"></a>Ellenőrzőlista
 
-Esemény előfizetés létrehozása során, ha például egy hibaüzenetet lát "a megadott végpont ellenőrzése a kísérlet https://your-endpoint-here nem sikerült. További részletekért látogasson el https://aka.ms/esvalidation", az azt jelzi, hogy nincs-e hiba a érvényesítési kézfogás. Ez a hiba elhárításához ellenőrizze a következő szempontokat:
+Esemény előfizetés létrehozása során, ha például egy hibaüzenetet lát "Ellenőrizze a megadott végpont https irányuló kísérlet:\//your-endpoint-here nem sikerült. További részletekért látogasson el a https:\//aka.ms/esvalidation ", azt jelzi, hogy nincs-e hiba a érvényesítési kézfogás. Ez a hiba elhárításához ellenőrizze a következő szempontokat:
 
 * Rendelkezik a cél végpontját ellenőrzése az alkalmazás kódja? Például ha szeretne írni egy HTTP-eseményindító-alapú Azure-függvény, rendelkezik az alkalmazás kódja, módosíthatja a hozzáférést?
 * Ha rendelkezik hozzáféréssel az alkalmazáskód, a alapú ValidationCode kézfogás mechanizmus megvalósításához, a fenti példában látható módon.

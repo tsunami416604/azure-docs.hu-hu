@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4b5196a995576e5b00a988e14183eb720d5b2eae
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989860"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312971"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licencsablon áttekintése 
 Az Azure Media Services segítségével a konfigurálása és a Google Widevine-licenceket kérnek. Ha Widevine-védelemmel ellátott tartalom lejátszása a Media player próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. A szolgáltatás jóváhagyja a kérést, ha a szolgáltatásproblémák a licencet. Ez van az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.
@@ -63,7 +63,7 @@ A Widevine-licenc kérelem egy JSON-ként van formázva.
 | --- | --- | --- |
 | hasznos adat |Base64-kódolású karakterlánc |Az ügyfelek által küldött licenc kérelem. |
 | content_id |Base64-kódolású karakterlánc |A kulcs azonosítója és a tartalom létrehozására használt azonosító minden content_key_specs.track_type kulcsával. |
-| Szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
+| szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
 | policy_name |sztring |Egy korábban regisztrált házirend nevét. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Kulcsok tartalmakat vezérlők licenc szerepelnek. |
 | content_key_specs |JSON-tömb struktúrák, tekintse meg a következő szakaszt: "Content key specifikációihoz."  |Részletesebben vezérlő a melyik tartalomkulcs való visszatéréshez. További információkért lásd: a szakasz "Content key specifikációihoz." Csak a allowed_track_types és content_key_specs értékek egyike adható meg. |

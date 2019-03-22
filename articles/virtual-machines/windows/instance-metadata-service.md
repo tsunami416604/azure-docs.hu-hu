@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8cdf8022f87c8fa3e81e2544a6678751726b2b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889828"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317459"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -352,7 +352,7 @@ resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-g
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
 csomag | [Terv](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) a virtuális gép az Azure Piactéri lemezkép neve, a termékek és a közzétevő tartalmaz | 2018-04-02
 szolgáltató | A virtuális gép szolgáltató | 2018-10-01
-publicKeys | Nyilvános kulcsok gyűjteményét [<https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey>] rendelve a virtuális gép és az elérési út | 2018-04-02
+publicKeys | [Nyilvános kulcsok gyűjteményét](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) rendelve a virtuális gép és az elérési út | 2018-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
 zóna | [Rendelkezésre állási zónában](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-cím | 2017-04-02

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007574"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313600"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötő
 
@@ -77,7 +77,7 @@ Az Azure-összekötő az SAP LaMa 3.0 SP05 kezdődően tartalmazza a szükséges
 1. Nyissa meg az Azure Active Directory panel
 1. Kattintson az alkalmazásregisztrációk
 1. Kattintson a Hozzáadás gombra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például `http://localhost`), majd kattintson a létrehozás
+1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például a http:\//localhost), majd kattintson a létrehozás
 1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza ki az új alkalmazást, majd kattintson a kulcsok a beállítások lapon
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés

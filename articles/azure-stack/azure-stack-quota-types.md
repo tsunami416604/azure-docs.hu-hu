@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782887"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339551"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
@@ -29,7 +29,7 @@ ms.locfileid: "57782887"
 
 [Kvóták](azure-stack-plan-offer-quota-overview.md#plans) erőforrásokat, amelyeket a felhasználói előfizetés is üzembe helyezése és felhasználása a vonatkozó korlátok beállításához. Például kvóták lehetővé teheti a felhasználó legfeljebb öt virtuális gépek létrehozásához. Az egyes erőforrások a saját kvótatípusokat is rendelkezhet.
 
-## <a name="compute-quota-types"></a>COMPUTE kvótatípusok 
+## <a name="compute-quota-types"></a>COMPUTE kvótatípusok
 
 | **Típus** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
@@ -40,16 +40,15 @@ ms.locfileid: "57782887"
 | Maximális kapacitás (GB) standard szintű felügyelt lemez | 2048 | A standard szintű managed disks ezen a helyen létrehozott maximális kapacitását. |
 | Maximális kapacitás (GB) prémium szintű felügyelt lemez | 2048 | A prémium szintű maximális kapacitását a felügyelt lemezek, ezen a helyen létrehozott. |
 
-## <a name="storage-quota-types"></a>Tárolási kvóta típusa 
+## <a name="storage-quota-types"></a>Tárolási kvóta típusa
 
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Maximális kapacitás (GB) |2048 |Tárterület teljes kapacitás (beleértve a blobok és az összes assiociated pillanatképeket, táblák és üzenetsorok), amely képes használni a ezen a helyen az előfizetéshez. |
+| Maximális kapacitás (GB) |2048 |Tárterület teljes kapacitás (beleértve a minden társított pillanatképet a blobok, táblák, üzenetsorok), amely képes használni a ezen a helyen az előfizetéshez. |
 | Tárfiókok teljes száma |20 |Egy előfizetést hozhat létre ezen a helyen storage-fiókok maximális számát. |
 
 > [!NOTE]  
 > Mielőtt a tárhelykvótát van érvényben akár két óráig is eltarthat.
-
 
 ## <a name="network-quota-types"></a>Hálózati kvótatípusok
 
@@ -69,10 +68,10 @@ Egy meglévő kvóta megtekintése két különböző módja van:
 
 ### <a name="plans"></a>Tervek
 
-1.  Az adminisztrátori portál bal oldali navigációs panelén válassza **csomagok**.
-2.  Válassza ki a csomagot, szeretné, részleteinek megtekintéséhez kattintson annak nevére.
-3.  A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
-4.  Válassza ki a kvótát, lásd: ehhez kattintson rá a szeretné a **neve** oszlop.
+1. Az adminisztrátori portál bal oldali navigációs panelén válassza **csomagok**.
+2. Válassza ki a csomagot, szeretné, részleteinek megtekintéséhez kattintson annak nevére.
+3. A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
+4. Válassza ki a kvótát, lásd: ehhez kattintson rá a szeretné a **neve** oszlop.
 
     [![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
@@ -88,14 +87,14 @@ Kvóta szerkesztése két különböző módja van:
 
 ### <a name="edit-a-plan"></a>A terv szerkesztése
 
-1.  Az adminisztrátori portál bal oldali navigációs panelén válassza **csomagok**.
-2.  Válassza ki a csomagot, amelynek szeretné a kvótát, szerkesztéséhez kattintson annak nevére.
-3.  A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
-4.  Válassza ki a szerkesztéséhez kattintson a kívánt kvótát az **neve** oszlop.
+1. Az adminisztrátori portál bal oldali navigációs panelén válassza **csomagok**.
+2. Válassza ki a csomagot, amelynek szeretné a kvótát, szerkesztéséhez kattintson annak nevére.
+3. A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
+4. Válassza ki a szerkesztéséhez kattintson a kívánt kvótát az **neve** oszlop.
     [![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
-5.  A megnyíló panelen válassza ki a **Szerkesztés a számítási**, **Szerkesztés a hálózati**, vagy **Storage szerkesztése**.
-    ![Kvóták](media/azure-stack-quota-types/quotas3.png "kvóták megtekintése")    
+5. A megnyíló panelen válassza ki a **Szerkesztés a számítási**, **Szerkesztés a hálózati**, vagy **Storage szerkesztése**.
+    ![Kvóták](media/azure-stack-quota-types/quotas3.png "kvóták megtekintése")
 
 Azt is megteheti akkor is az alábbi eljárás egy kvóta szerkesztése:
 
@@ -106,9 +105,9 @@ Azt is megteheti akkor is az alábbi eljárás egy kvóta szerkesztése:
 
 ### <a name="edit-original-configuration"></a>Eredeti konfiguráció szerkesztése
   
-Dönthet úgy, hogy az eredeti konfiguráció helyett a kvóta szerkesztése [egy kiegészítő csomag használatával](create-add-on-plan.md). Ha szerkeszti a kvótát, az új konfigurációt automatikusan globálisan érvényes a kvóta használó összes csomag és az összes meglévő előfizetéseket, amelyek ezeket a csomagokat. A kvóta szerkesztése eltér attól, hogy ha használ egy kiegészítő csomagot adjon meg egy módosított kvóta, amely egy felhasználó úgy dönt, hogy az előfizetés. 
+Dönthet úgy, hogy az eredeti konfiguráció helyett a kvóta szerkesztése [egy kiegészítő csomag használatával](create-add-on-plan.md). Ha szerkeszti a kvótát, az új konfigurációt automatikusan globálisan érvényes a kvóta használó összes csomag és az összes meglévő előfizetéseket, amelyek ezeket a csomagokat. A kvóta szerkesztése eltér attól, hogy ha használ egy kiegészítő csomagot adjon meg egy módosított kvóta, amely egy felhasználó úgy dönt, hogy az előfizetés.
 
-Az új értékekkel kvóta globálisan vonatkoznak, a módosított kvóta használó kívül minden csomagra, és minden meglévő előfizetésekhez, amelyek ezeket a csomagokat. 
+Az új értékekkel kvóta globálisan vonatkoznak, a módosított kvóta használó kívül minden csomagra, és minden meglévő előfizetésekhez, amelyek ezeket a csomagokat.
 
 ## <a name="next-steps"></a>További lépések
 

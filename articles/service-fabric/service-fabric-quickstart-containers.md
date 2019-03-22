@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05f8c1898e565e145aedbfdc13e0a88ad09486dc
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 4c7de6738e30cd883257f3b2ea873c933364c003
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804647"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311883"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése a Service Fabric
 
@@ -149,7 +149,7 @@ Kattintson a **Publish** (Közzététel) gombra.
 
 A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Névütközés esetén nevezze át a Visual Studio-projektet, és végezze el újra az üzembe helyezést.
 
-Nyisson meg egy böngészőt, és keresse meg a címet, amely mindössze a **kapcsolati végpont** mezőt az előző lépésben. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Például: http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
+Nyisson meg egy böngészőt, és keresse meg a címet, amely mindössze a **kapcsolati végpont** mezőt az előző lépésben. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Ha például a http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80.
 
  Az IIS alapértelmezett webhelye kell megjelennie: ![IIS alapértelmezett webhelye][iis-default]
 

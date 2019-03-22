@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540011"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337527"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
@@ -24,9 +24,9 @@ A feladatütemezési szám hexadecimális szám karakterláncként. Összehasonl
 
 * Aktív Azure-fiók. Ha még nincs fiókja, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
-* Egy aktív Azure Cosmos DB SQL API-fiók. Ha még nem hozta létre az egyik még, [adatbázisfiók létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) bemutató.
+* Egy aktív Azure Cosmos DB SQL API-fiók. Ha még nem hozta létre az egyik még, [adatbázisfiók létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account) bemutató.
 
-* Az adatbázis-gyűjtemény. Lásd: [gyűjtemény hozzáadása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) bemutató.
+* Az adatbázis-gyűjtemény. Lásd: [gyűjtemény hozzáadása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection) bemutató.
 
 * Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
 
@@ -350,5 +350,3 @@ Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalon, kattintson a jobb g
 * [Próbálja ki az IoT Hub-események oktatóanyag](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * Ismerje meg, hogy más mi mindent tehet az [Event Grid](../event-grid/overview.md)
-
-

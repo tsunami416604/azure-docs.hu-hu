@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817274"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317680"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Az Azure Portal tárfiók figyelése
 
-[Az Azure Storage Analytics](../storage-analytics.md) metrikákat nyújt az összes tárolási szolgáltatások és a blobok, üzenetsorok, naplók és a táblák. Használhatja a [az Azure portal](https://portal.azure.com) konfigurálása, mely metrikákat és naplókat tárolja, amely a fiókjához, és adja meg a mérőszámadatokat vizuális ábrázolásai diagramok konfigurálása.
+[Az Azure Storage Analytics](storage-analytics.md) metrikákat nyújt az összes tárolási szolgáltatások és a blobok, üzenetsorok, naplók és a táblák. Használhatja a [az Azure portal](https://portal.azure.com) konfigurálása, mely metrikákat és naplókat tárolja, amely a fiókjához, és adja meg a mérőszámadatokat vizuális ábrázolásai diagramok konfigurálása.
 
 > [!NOTE]
-> Nincsenek figyelési adatok az Azure Portalon vizsgálata kapcsolódó költségeket. További információkért lásd: [Storage Analytics és a számlázás](/rest/api/storageservices/Storage-Analytics-and-Billing).
+> Nincsenek figyelési adatok az Azure Portalon vizsgálata kapcsolódó költségeket. További információkért lásd: [Storage Analytics](storage-analytics.md).
 >
 > Jelenleg az Azure Files Storage Analytics mérőszámainak áttekintését támogatja, de egyelőre nem támogatják a naplózást.
-> 
-> A Storage Analytics és más eszközök használatával azonosítsa, diagnosztizálása és hibaelhárítása az Azure Storage szolgáltatással kapcsolatos problémák a részletes útmutatót lásd: [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](../storage-monitoring-diagnosing-troubleshooting.md).
+>
+> A Storage Analytics és más eszközök használatával azonosítsa, diagnosztizálása és hibaelhárítása az Azure Storage szolgáltatással kapcsolatos problémák a részletes útmutatót lásd: [figyelése, diagnosztizálása és hibaelhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>A storage-fiók figyelésének konfigurálása
@@ -41,7 +41,7 @@ ms.locfileid: "55817274"
    Az adatmegőrzési házirend beállítása, helyezze át a **megőrzés (nap)** csúszka, vagy adja meg az adatok megőrzése, 1 és 365 nap. Új tárfiókok esetén az alapérték hét nap. Ha nem szeretne adatmegőrzési szabály beállításához, adja meg a nulla. Ha egy adatmegőrzési házirend sem, akár a monitorozási adatok törlését.
 
    > [!WARNING]
-   > A számlázás a metrikák adatait manuálisan törlésekor. Elavult elemzési adatok (az adatmegőrzési-nál régebbi adatok) nem törli azokat a rendszer költségek nélkül. Azt javasoljuk, hogy mennyi ideig szeretné megőrizni a storage analytics-adatok a fiók alapján adatmegőrzési beállítás. Lásd: [milyen díjat tegye díjak storage mérőszámainak engedélyezésével?](../common/storage-enable-and-view-metrics.md#what-charges-do-you-incur-when-you-enable-storage-metrics) további információt.
+   > A számlázás a metrikák adatait manuálisan törlésekor. Elavult elemzési adatok (az adatmegőrzési-nál régebbi adatok) nem törli azokat a rendszer költségek nélkül. Azt javasoljuk, hogy mennyi ideig szeretné megőrizni a storage analytics-adatok a fiók alapján adatmegőrzési beállítás. Lásd: [számlázást a storage-mérőszámok](storage-analytics-metrics.md#billing-on-storage-metrics) további információt.
    >
 
 1. Ha befejezte a figyelési konfigurációtól, válassza ki a **mentése**.
@@ -51,12 +51,12 @@ Metrikák alapértelmezett készletét diagramokat, a storage-fiók panelen, val
 Letilthatja a gyűjtemény metrikák és naplózás, beállítás **állapot** való **ki**.
 
 > [!NOTE]
-> Az Azure Storage használ [táblatároló](../common/storage-introduction.md#table-storage) való tárolása a storage-fiókot, és tárolja a metrikák a metrikák a fiókjában táblákban. További információkért lásd:. [Metrikák módjára](../common/storage-analytics.md#how-metrics-are-stored).
+> Az Azure Storage használ [táblatároló](storage-introduction.md#table-storage) való tárolása a storage-fiókot, és tárolja a metrikák a metrikák a fiókjában táblákban. További információkért lásd:. [Metrikák módjára](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Mérőszámdiagramok testreszabása
 
-Az alábbi eljárás segítségével válassza ki, melyik storage-mérőszámok megtekintéséhez a teljesítménymetrikák diagramja. 
+Az alábbi eljárás segítségével válassza ki, melyik storage-mérőszámok megtekintéséhez a teljesítménymetrikák diagramja.
 
 1. Indítsa el a storage metrikadiagram megjelenítése az Azure Portalon. A diagramok talál a **tárfiók panelén** és a a **metrikák** egy adott szolgáltatás (blob, queue, table, fájl) panelen.
 
@@ -130,17 +130,16 @@ Mentse a diagnosztikai naplók olvasási, írási és törlési kérelmeket a bl
 1. Válassza ki **diagnosztikai** a a **figyelés** részében menü.
 
     ![Diagnosztikai menüelem figyelés alatt az Azure Portalon.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
-    
+
 1. Győződjön meg arról **állapot** értékre van állítva **a**, és válassza ki a **szolgáltatások** szeretné naplózásának engedélyezése a.
 
     ![Naplózás konfigurálása az Azure Portalon.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Kattintson a **Save** (Mentés) gombra.
 
-Egy blobtárolót a diagnosztikai naplók mentett *$logs* a storage-fiókban. A naplózási adatokat, például a storage explorer használatával is megtekintheti a [Microsoft Storage Explorer](http://storageexplorer.com), vagy programozott módon, a storage ügyféloldali kódtára vagy a PowerShell segítségével.
+Egy blobtárolót a diagnosztikai naplók mentett *$logs* a storage-fiókban. A naplózási adatokat, például a storage explorer használatával is megtekintheti a [Microsoft Storage Explorer](https://storageexplorer.com), vagy programozott módon, a storage ügyféloldali kódtára vagy a PowerShell segítségével.
 
-További információ a $logs tároló elérésekor: [tárolási naplózás engedélyezése és Teljesítménynapló-adatok elérése](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data).
+További információ a $logs tároló elérésekor: [a Storage analytics naplózási](storage-analytics-logging.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* További részleteket talál a kapcsolatos [mérőszámok, naplózás, és a számlázási](../storage-analytics.md) a Storage Analytics.
-* [Engedélyezze az Azure Storage-mérőszámok és nézet mérőszámadatokat](../storage-enable-and-view-metrics.md) PowerShell-lel és a C# használatával programozott módon.
+* További részleteket talál a kapcsolatos [mérőszámok, naplózás, és a számlázási](storage-analytics.md) a Storage Analytics.

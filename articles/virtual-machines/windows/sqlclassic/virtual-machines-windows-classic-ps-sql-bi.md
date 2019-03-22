@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 29e851772e665b4130ee58b04c264d55bcd54523
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242891"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317782"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken
 > [!IMPORTANT] 
@@ -28,7 +28,7 @@ ms.locfileid: "51242891"
 
 A Microsoft Azure virtuálisgép-katalógus rendszerképek, amelyek tartalmazzák az SQL Server-telepítéseket tartalmaz. Az SQL Server-kiadásokat támogatja a katalógus-rendszerképek is telepítheti a helyszíni számítógépek és virtuális gépek telepítési fájlokkal. Ez a témakör felsorolja a a lemezképeket telepíteni az SQL Server Business Intelligence-(BI) szolgáltatásokat és a egy virtuális gép kiépítése után szükséges konfigurációs lépéseket. Ez a témakör ismerteti a támogatott üzembe helyezési topológiák BI funkcióiról és ajánlott eljárásokat is.
 
-## <a name="license-considerations"></a>Licenccel kapcsolatos szempontok
+## <a name="license-considerations"></a>License Considerations
 A licenc az SQL Server a Microsoft Azure Virtual Machines szolgáltatásban két módja van:
 
 1. Licenc mobility előnyök tartozó frissítési garanciával rendelkező. További információkért lásd: [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/).
@@ -107,7 +107,7 @@ Az alábbi táblázat a Microsoft Azure virtuális gép katalógus gyakori rends
   > [!NOTE]
   > Az SQL Server adatbázismotor a támogatott forgatókönyvekben BI van szükség. A virtuális gép topológia, egyetlen kiszolgáló az adatbázismotor szükséges ugyanazon a virtuális Gépen futnak.
   
-    További információkért lásd: [Reporting Services eltávolítása](https://msdn.microsoft.com/library/hh479745.aspx) és [távolítsa el az Analysis Services példány](https://msdn.microsoft.com/library/ms143687.aspx).
+    További információkért tekintse meg a következőket: [Távolítsa el a Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) és [távolítsa el az Analysis Services egy példánya](https://msdn.microsoft.com/library/ms143687.aspx).
 * Ellenőrizze **Windows Update** az új "fontos frissítések". A Microsoft Azure virtuálisgép-lemezképek gyakran frissülnek; azonban fontos frissítések válhat a rendelkezésre álló **Windows Update** után a Virtuálisgép-rendszerkép utolsó frissítésének.
 
 ## <a name="example-deployment-topologies"></a>A példában üzembe helyezési topológiák
@@ -174,7 +174,7 @@ A **Windows Server 2008 R2**:
 
 Vagy:
 
-1. Kattintson a **Start**.
+1. Kattintson az **Indítás**gombra.
 2. Az a **Keresés programokban és fájlokban** párbeszédpanelen írja be a **a reporting services**. Ha a virtuális gép fut a Windows Server 2012, írja be a **a reporting services** a a Windows Server 2012 kezdőképernyőjén.
 3. Kattintson a jobb gombbal **Reporting Services Configuration Manager** kattintson **Futtatás rendszergazdaként**.
    
@@ -217,7 +217,7 @@ Jelentéskészítő kiszolgáló engedélyekről további információkért lás
 A konfiguráció ellenőrzéséhez keresse meg a Jelentéskezelő virtuális gépen.
 
 1. A virtuális gépen indítsa el az Internet Explorer rendszergazdai jogosultságokkal.
-2. Keresse meg a http://localhost/reports a virtuális gépen.
+2. Keresse meg a http: \/ /localhost/jelentések a virtuális gépen.
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>Csatlakozás a távoli webes portál vagy a Jelentéskezelő 2014 és 2012
 Ha szeretne csatlakozni a webes portálon, vagy a Jelentéskezelő 2014 és a egy távoli számítógépről a virtuális gépen, 2012 hozzon létre egy új virtuális gép TCP-végpont. Alapértelmezés szerint a jelentéskészítő kiszolgáló figyeli a HTTP-kérelmekre a következő **80-as port**. Ha konfigurálja a jelentéskészítő URL egy másik port használatára, a port számát kell megadnia az alábbi utasításokat.
@@ -226,7 +226,7 @@ Ha szeretne csatlakozni a webes portálon, vagy a Jelentéskezelő 2014 és a eg
 2. Nyissa meg a 80-as portot a tűzfalon a virtuális gép.
 3. Tallózással keresse meg a webes portálon, vagy a jelentés-kezelőt, az Azure virtuális gép **DNS-név** kiszolgálónevet az URL-címben. Példa:
    
-    **Jelentéskészítő kiszolgáló**: http://uebi.cloudapp.net/reportserver **webportál**:   http://uebi.cloudapp.net/reports
+    **Jelentéskészítő kiszolgáló**: http://uebi.cloudapp.net/reportserver  **Webes portál**: http://uebi.cloudapp.net/reports
    
     [Tűzfal konfigurálása a jelentéskészítő kiszolgáló elérése](https://msdn.microsoft.com/library/bb934283.aspx)
 
@@ -240,10 +240,10 @@ Az alábbi táblázatban összefoglaltuk a helyi számítógépről a jelentésk
   3. Válassza ki **jelentéskészítő**.
      
      További információkért lásd: [indítsa el a jelentéskészítő](https://msdn.microsoft.com/library/ms159221.aspx).
-* **SQL Server Data Tools**: virtuális gép: az SQL Server Data Tools a virtuális gépen telepítve van, és a létrehozásához használt **jelentéskészítő kiszolgáló projektek** és a jelentések a virtuális gépen. SQL Server Data Tools a jelentéseket tehetnek közzé a jelentéskészítő kiszolgáló a virtuális gépen.
-* **SQL Server Data Tools: Távoli**: A helyi számítógépen, Reporting Services projekt létrehozása az SQL Server Data Tools, amely tartalmazza a Reporting Services-jelentéseket. A projekt szeretne csatlakozni a web service URL-cím konfigurálása.
+* **SQL Server Data Tools**: VM:  SQL Server Data Tools a virtuális gépen telepítve van, és a létrehozásához használt **jelentéskészítő kiszolgáló projektek** és a jelentések a virtuális gépen. SQL Server Data Tools a jelentéseket tehetnek közzé a jelentéskészítő kiszolgáló a virtuális gépen.
+* **SQL Server Data Tools: Távoli**:  A helyi számítógépen a Reporting Services projekt létrehozása az SQL Server Data Tools, amely tartalmazza a Reporting Services-jelentéseket. A projekt szeretne csatlakozni a web service URL-cím konfigurálása.
   
-    ![SSRS-projekthez az SSDT projekt tulajdonságai](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
+    ![ssdt project properties for SSRS project](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
 * Hozzon létre egy. Virtuális merevlemez-meghajtó, amely jelentéseket tartalmazza, majd töltse fel és a meghajtó csatlakoztatása.
   
   1. Hozzon létre egy. Virtuális merevlemez a helyi számítógépen, amely tartalmazza a jelentésekben.
@@ -258,7 +258,7 @@ További SQL Server-szolgáltatásokat, például a táblázatos módban futó A
 2. Kattintson a **Microsoft SQL Server 2016**, **Microsoft SQL Server 2014** vagy **Microsoft SQL Server 2012** majd **konfigurációs eszközök** .
 3. Kattintson a **SQL Server telepítési központjának**.
 
-Vagy futtassa a C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe vagy C:\SQLServer_11.0_full\setup.exe
+Or run C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe or C:\SQLServer_11.0_full\setup.exe
 
 > [!NOTE]
 > Az első alkalommal futtatja az SQL Server telepítése a további telepítési fájlok letöltődik, és a virtuális gép újraindítását és az SQL Server-telepítés újraindítást igényelnek.
@@ -317,10 +317,10 @@ Ez a szakasz a Microsoft Azure virtuális gépek végpontjaihoz hozhat létre é
   * Hozzon létre virtuális gépek végpontjaihoz a felmerült portok (*).
 * Ha a virtuális gép csatlakozik egy tartományhoz, például az Azure virtuális hálózat VPN-alagút használatával, majd a végpontok nem szükségesek. Azonban a portok megnyitása a virtuális gépen.
   
-  | Port | Típus | Leírás |
+  | Port | Typo | Leírás |
   | --- | --- | --- |
   | **80** |TCP |Jelentéskészítő kiszolgáló távelérés (*). |
-  | **1433** |TCP |Az SQL Server Management Studio (*). |
+  | **1433** |TCP |SQL Server Management Studio (*). |
   | **1434** |UDP |SQL Server Browser bővítményt. Erre azért van szükség, ha a virtuális gép csatlakozik egy tartományhoz. |
   | **2382** |TCP |SQL Server Browser bővítményt. |
   | **2383** |TCP |SQL Server Analysis Services alapértelmezett példány, és fürtözött elnevezett példányok. |
@@ -329,7 +329,7 @@ Ez a szakasz a Microsoft Azure virtuális gépek végpontjaihoz hozhat létre é
 Végpontok létrehozásával kapcsolatos további információkért tekintse meg a következőket:
 
 * Végpontok létrehozása:[egy virtuális géphez végpontok beállítása](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-* SQL-kiszolgáló: "A teljes konfiguráció szeretne csatlakozni a virtual machine Using SQL Server Management Studio lépések" című szakaszában talál [kiépítése egy SQL Server virtuális gépet az Azure-ban](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+* SQL Server: "A teljes konfiguráció szeretne csatlakozni a virtual machine Using SQL Server Management Studio lépések" című szakaszában talál [kiépítése egy SQL Server virtuális gépet az Azure-ban](../sql/virtual-machines-windows-portal-sql-server-provision.md).
 
 A következő ábra szemlélteti a portok megnyitása a virtuális gép tűzfalon való funkcióinak és összetevőinek távoli hozzáférés engedélyezése a virtuális gépen.
 

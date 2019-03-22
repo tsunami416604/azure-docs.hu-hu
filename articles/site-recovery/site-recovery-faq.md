@@ -2,21 +2,21 @@
 title: 'Azure Site Recovery: Gyakori kérdések |} A Microsoft Docs'
 description: Ez a cikk ismerteti a gyakori kérdések az Azure Site Recoveryvel kapcsolatos.
 services: site-recovery
-author: mayurigupta13
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/3/2019
-ms.author: mayg
-ms.openlocfilehash: 1abd18e294ef73e989191d189ea599bca2b4d903
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 3/18/2019
+ms.author: raynew
+ms.openlocfilehash: 018368d28dd34787046ae655a98527aede28603f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881078"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313368"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
-Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Ez a cikk összefoglalja az Azure Site Recovery – gyakori kérdések. 
 
 ## <a name="general"></a>Általános kérdések
 ### <a name="what-does-site-recovery-do"></a>Mire való a Site Recovery?

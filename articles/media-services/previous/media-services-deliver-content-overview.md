@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 51d0c7ade46143ecbf6fe46bc54e5d383d50b382
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3314ad4558fdd55429a5a68326dd46b5920d7daa
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173076"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316235"
 ---
 # <a name="deliver-content-to-customers"></a>Továbbítja a tartalmat az ügyfelek számára
 Amikor, tartalom jusson el a streamelési vagy igény szerinti videó az ügyfelek számára, célja, hogy a magas színvonalú videó továbbítása különböző eszközökre, különböző hálózati körülmények között.
@@ -92,22 +92,22 @@ Csak akkor streamelheti SSL-en keresztül, ha a streamvégpontra, amelyről a ta
 ### <a name="mpeg-dash-format"></a>MPEG-DASH formátumban
 {Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Az Apple HTTP Live Streaming (HLS) V4 formátumban
 {Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Az Apple HTTP Live Streaming (HLS) V3 formátum
 {Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>A csak hangfájlt tartalmazó szűrővel Apple HTTP Live Streaming (HLS) formátumban
 Alapértelmezés szerint csak számok szerepelnek a HLS jegyzékfájlt. Ez a kapcsolat mobilhálózati az Apple Store minősítésre szükséges. Ebben az esetben ha egy ügyfél nem rendelkezik elegendő sávszélesség, vagy 2G-kapcsolaton keresztül kapcsolódik, a lejátszás vált, amennyiben csak. Ez segít megőrizni a tartalomközvetítéshez pufferelés nélkül, de nincs videó van. Bizonyos esetekben pufferelés player lehet előnyben részesített csak keresztül. Ha el kívánja távolítani a csak hangfájlt tartalmazó nyomon követése, vegye fel **csak = false** az URL-címre.
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 További információkért lásd: [dinamikus Manifest összeállítás támogatási és HLS kimeneti további funkciók](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,14 +116,14 @@ További információkért lásd: [dinamikus Manifest összeállítás támogat�
 
 Példa:
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a id="fmp4_v20"></a>Smooth Streaming 2.0 jegyzékfájlt (örökölt jegyzékfájl)
 Alapértelmezés szerint a jegyzékfájl formátuma Smooth Streaming tartalmazza, ismételje meg a címke (az r-kód). Egyes lejátszók azonban nem támogatja az r-címkét. Ezek lejátszókkal ügyfelek használhatják a formátum, amely letiltja az r-kód:
 
 {Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Progresszív letöltés
 A progresszív letöltés megkezdése játszott adathordozó, mielőtt a teljes fájlt letöltötte. Ön nem tudja fokozatosan .ism * (ismv, isma, ismt vagy ismc) fájlok letöltése.

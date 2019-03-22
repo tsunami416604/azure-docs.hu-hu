@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41b6ce24e7c2e8565d7c2f17c32b8b6e1f38ea4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992485"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317612"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(ELAVULT) A Marathon webes felhasználói felületen keresztül egy Azure Container Service DC/OS fürt kezelése
 
@@ -36,12 +36,12 @@ A példákban szereplő feladatok elvégzéséhez szüksége lesz egy az Azure t
 >
 
 ## <a name="explore-the-dcos-ui"></a>A DC/OS felhasználói felületének megnyitása
-Az egy Secure Shell (SSH) alagút [létrehozott](../container-service-connect.md), keresse meg a http://localhost/. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
+Az egy Secure Shell (SSH) alagút [létrehozott](../container-service-connect.md), keresse meg a http: \/ /localhost /. Ez betölti a DC/OS webes felhasználói felületét, és a fürtre vonatkozó információkat jelenít meg, például a felhasznált erőforrásokat, az aktív ügynököket és a futó szolgáltatásokat.
 
 ![A DC/OS UI felhasználói felülete](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>A Marathon felhasználói felület megnyitása
-A Marathon felhasználói felület megtekintéséhez keresse meg a http://localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
+A Marathon felhasználói felület megtekintéséhez tallózással keresse meg a http: \/ /localhost/marathon. Ezen a képernyőn elindíthat egy új tárolót vagy más szolgáltatást az Azure tárolószolgáltatási DC/OS-fürtön. A futó tárolókkal és alkalmazásokkal kapcsolatos információkat is láthat.  
 
 ![Marathon felhasználói felület](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -85,7 +85,7 @@ A Marathon főoldalára visszatérve láthatja a tároló üzembe helyezési ál
 
 ![A Marathon főoldala – a tároló üzembe helyezési állapota](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-Amikor visszavált a DC/OS webes felhasználói Felületét (http://localhost/), láthatja, hogy a DC/OS-fürtön fut egy feladat (az ebben az esetben egy Docker-formázású tároló).
+Amikor visszavált a DC/OS webes felhasználói Felületét (http:\//localhost/), láthatja, hogy a DC/OS-fürtön fut egy feladat (az ebben az esetben egy Docker-formázású tároló).
 
 ![DC/OS webes felhasználói felülete – a fürtön futó feladat](./media/container-service-mesos-marathon-ui/dcos8.png)
 

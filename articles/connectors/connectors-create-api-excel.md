@@ -1,25 +1,25 @@
 ---
-title: Csatlakozhat az Excel online-hoz – Azure Logic Apps |} A Microsoft Docs
+title: Csatlakozhat az Excel online-hoz – Azure Logic Apps
 description: Az Excel online-hoz – REST API-k és az Azure Logic Apps-adatok kezelése
-ms.service: logic-apps
 services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230951"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314519"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Az Azure Logic Apps Excel Online-adatok kezelése
 
-Az Azure Logic Apps és az Excel Online-összekötő automatikus feladatokkal és munkafolyamatokkal, vagy a onedrive-on az Excel online-ban adatai alapján is létrehozhat. Ez az összekötő biztosít műveletek, amelyek segítenek az adatok és a táblázatok, például kezelheti: 
+Az Azure Logic Apps és az Excel Online-összekötő automatikus feladatokkal és munkafolyamatokkal, vagy a onedrive-on az Excel online-ban adatai alapján is létrehozhat. Ez az összekötő biztosít műveletek, amelyek segítenek az adatok és a táblázatok, például kezelheti:
 
 * Hozzon létre új munkalapokat és táblákat.
 * GET, és kezelheti a munkalapok, táblák és sorok.
@@ -34,9 +34,9 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
-* Egy [Office 365-fiókja](https://www.office.com/) számára a munkahelyi és személyes Microsoft-fiók 
+* Egy [Office 365-fiókja](https://www.office.com/) számára a munkahelyi és személyes Microsoft-fiók
 
   Az Excel-adatok létezhet egy vesszővel tagolt (CSV) fájlként egy storage-mappába, például a onedrive-on. 
   Használhatja az azonos CSV-fájl is a [fájlszintű összekötő](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
@@ -53,7 +53,7 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 1. A Keresés mezőbe írja be "excel-" szűrőként. Műveletek listája alatt válassza ki a kívánt művelet.
 
-1. Ha a rendszer kéri, jelentkezzen be az Office 365-fiókjával, válassza ki a **jelentkezzen be a**. 
+1. Ha a rendszer kéri, jelentkezzen be az Office 365-fiókjával, válassza ki a **jelentkezzen be a**.
 
    A hitelesítő adatok engedélyezik a logikai alkalmazás, hozzon létre egy kapcsolatot az Excel online-hoz, és az adatok eléréséhez.
 
@@ -61,10 +61,10 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Tekintse meg ezen összekötő referenciaoldalait technikai részleteit, műveletek és -korlátok, leírtak szerint az összekötők Swagger-fájlok, például:
+A technikai részletekért, például a triggereket, műveletek és -korlátok, leírtak szerint az összekötő OpenAPI (korábbi nevén Swagger-) fájlok, lásd: e összekötő referenciaoldalait:
 
-* [A vállalati Excel online-ban](/connectors/excelonlinebusiness/) 
-* [Excel online-ban a onedrive vállalati verzióhoz](/connectors/excelonline/) 
+* [A vállalati Excel online-ban](/connectors/excelonlinebusiness/)
+* [Excel online-ban a onedrive vállalati verzióhoz](/connectors/excelonline/)
 
 ## <a name="get-support"></a>Támogatás kérése
 

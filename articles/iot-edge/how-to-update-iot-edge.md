@@ -5,33 +5,33 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672899"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311917"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
-Amint az IoT Edge szolgáltatás kiadja az új verziók, érdemes frissíteni szeretné, hogy a legújabb funkciókat és biztonsági fejlesztések az IoT Edge-eszközökön. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
+Amint az IoT Edge szolgáltatás kiadja az új verziók, érdemes frissíteni az IoT Edge-eszközökön a legújabb funkciókról és a biztonsági fejlesztések. Ez a cikk ismerteti az IoT Edge-eszközök frissítése, ha új verzió érhető el. 
 
 IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni kell. Az első az a biztonsági démont, amely futtatja az eszközön, és a futásidejű modulok kezdődik, amikor az eszköz elindul. Jelenleg a biztonsági démon csak frissíthetők magáról az eszközről. A másodperc összetevőt a futtatókörnyezet, az IoT Edge hub és az IoT Edge-ügynök modulok. Az üzembe helyezés felépítésében függően a futtatókörnyezet frissíthetők az eszközről, vagy távolról. 
+
+Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
 >[!IMPORTANT]
 >Az Azure IoT Edge futtat egy Windows-eszközön, ha nem frissítik verzióra 1.0.5 Ha az eszköz vonatkozik a következők egyikét: 
 >* Az eszköz nem frissített a Windows build 17763. 1.0.5 nem támogatja a Windows IoT Edge-verzió régebbi, mint 17763 épít fel.
 >* A Java vagy Node.js-modulok futtatása Windows-eszközén. Hagyja ki 1.0.5 verzió, még akkor is, ha a Windows-eszköz frissítése a legújabb buildre. 
 >
->IoT Edge verzió 1.0.5 kapcsolatos további információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Ahhoz, hogy biztosítsa a fejlesztői eszközöket a legújabb verzióra frissítésével kapcsolatos további információkért lásd: [az IoT-fejlesztői blog](https://devblogs.microsoft.com/iotdev/).
+>IoT Edge verzió 1.0.5 kapcsolatos további információkért lásd: [1.0.5 kibocsátási megjegyzések](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Megakadályozza, hogy a fejlesztői eszközöket a legújabb verzióra frissítésével kapcsolatos további információkért lásd: [az IoT-fejlesztői blog](https://devblogs.microsoft.com/iotdev/).
 
-
-Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
 ## <a name="update-the-security-daemon"></a>A biztonsági démon frissítése
 
@@ -59,9 +59,9 @@ Távolítsa el a biztonsági démon rendszergazdai PowerShell-munkamenetben.
 Uninstall-SecurityDaemon
 ```
 
-Fut a `Uninstall-SecurityDaemon` parancs paraméterek nélkül a biztonsági démon eltávolítja az eszközről, a modul két tárolórendszerképeket együtt. A config.yaml fájlt az eszközön, valamint a a Moby tároló motor adatai másolatok. Megőrzi a konfigurációt, az azt jelenti, hogy nem rendelkezik a kapcsolati karakterlánc vagy a telepítési folyamat során újra az eszköz Device Provisioning Service-információkat biztosít. 
+Fut a `Uninstall-SecurityDaemon` parancs paraméterek nélkül csak eltávolítja a biztonsági démon az eszközről, a modul két tárolórendszerképeket együtt. A config.yaml fájlt az eszközön, valamint a a Moby tároló motor adatai másolatok. A konfigurációs információk azt jelenti, hogy adja meg a kapcsolati karakterlánc vagy a telepítési folyamat során újra az eszköz Device Provisioning Service-információk nem kell tartani. 
 
-Telepítse újra a biztonsági démon attól függően, hogy az IoT Edge-eszköz Windows-tárolók vagy a Linux-tárolók használja. Cserélje le a kifejezés **\<Windows vagy Linux-alapú\>** a tárolók operációs rendszerek egyikével. Használja a **- ExistingConfig** jelzőt az eszközön a meglévő config.yaml fájlra mutasson. 
+Telepítse újra a biztonsági démon attól függően, hogy az IoT Edge-eszköz Windows-tárolók vagy a Linux-tárolók használja. Cserélje le a kifejezés **\<Windows vagy Linux-alapú\>** a megfelelő tárolót operációs rendszerekkel. Használja a **- ExistingConfig** jelzőt az eszközön a meglévő config.yaml fájlra mutasson. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -91,7 +91,7 @@ Ha a központi telepítésben használja működés közbeni címkék (például
 
 Törölje a rendszerkép helyi verzióját az IoT Edge-eszköz. Windows-gépeken a biztonsági démon is eltávolítása a futtatókörnyezet képek, így nem kell újra figyelembe ezt a lépést. 
 
-```cmd/sh
+```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
@@ -106,7 +106,7 @@ Ha adott címkék a központi telepítésben használja (például mcr.microsoft
 
 Az Azure Portalon, a modul telepítési lemezképeket a deklarált a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszban. 
 
-[Speciális edge-futtatókörnyezet beállítások konfigurálása](./media/how-to-update-iot-edge/configure-runtime.png)
+![Speciális edge-futtatókörnyezet beállítások konfigurálása](./media/how-to-update-iot-edge/configure-runtime.png)
 
 A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **systemModules** szakaszban. 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c31f3ec503f22ab0d272ff96b85cf0f76a837d11
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121026"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316057"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>A Service Fabric a Visual Studio Code
 
@@ -107,7 +107,7 @@ A **Service Fabric: Alkalmazás közzététele** a parancs üzembe helyezi a Ser
 A **Service Fabric: Alkalmazás üzembe helyezése** a parancs üzembe helyezi a Service Fabric-alkalmazás a helyi fürthöz. Győződjön meg arról, hogy a helyi fürt fut-e a parancs használata előtt. 
 
 1. Válassza ki a **Service Fabric: Alkalmazás üzembe helyezése** parancs
-2. A helyi fürthöz, a Service Fabric Explorerrel megtekintése (http://localhost:19080/Explorer) , győződjön meg arról, hogy az alkalmazás telepítve van-e. Ez eltarthat némi ideig legyen a kis türelmet.
+2. A helyi fürthöz, a Service Fabric Explorerrel megtekintése (http:\//localhost:19080 / Explorer), győződjön meg arról, hogy az alkalmazás telepítve van-e. Ez eltarthat némi ideig legyen a kis türelmet.
 3. Is **Service Fabric: Alkalmazás közzététele** parancs paraméter nélküli állítsa be a Cloud.json fájl egy helyi fürtön történő üzembe helyezéséhez.
 
 > [!NOTE]

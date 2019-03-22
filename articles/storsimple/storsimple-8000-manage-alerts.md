@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838714"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314450"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-riasztások megtekintése és kezelése
 
@@ -202,7 +202,7 @@ Ha felhőkapcsolatra meghiúsul üzemi a StorSimple-eszköz, majd az eszköz ál
 | Nem lehetett elindítani a StorSimple szolgáltatás(oka)t. |DataPath hiba |Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |
 | Ismétlődő IP-cím észlelve a "Data0". | |A rendszer "10.0.0.1" IP-cím ütközést észlelt. Az eszköz a hálózati erőforrás "Data0" *<device1>* offline állapotban. Győződjön meg arról, hogy az IP-címet nem használja egyetlen más entitás sem ezen a hálózaton. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldásához forduljon a hálózati rendszergazdához. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |
 | IPv4-(vagy IPv6) 'Data0' címe offline állapotban. | |A hálózati erőforrás "Data0" IP-cím "10.0.0.1". előtag hossza "22" az eszközön, és *<device1>* offline állapotban. Győződjön meg arról, hogy a kapcsoló portjaihoz, amelyhez ez az interfész csatlakozik működési. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nem sikerült csatlakozni a hitelesítési szolgáltatást. |DataPath hiba |A URLthat használatos a hitelesítés nem érhető el. Győződjön meg arról, hogy a tűzfalszabályokban szerepel-e a StorSimple eszközhöz megadott URL-mintával. További információ az Azure Portalon URL-minta, nyissa meg https://aka.ms/ss-8000-network-reqs. Azure Government Cloud használata esetén nyissa meg az URL-mintákra a https://aka.ms/ss8000-gov-network-reqs.|
+| Nem sikerült csatlakozni a hitelesítési szolgáltatást. |DataPath hiba |A URLthat használatos a hitelesítés nem érhető el. Győződjön meg arról, hogy a tűzfalszabályokban szerepel-e a StorSimple eszközhöz megadott URL-mintával. További információ az URL-cím-minták az Azure Portalon lépjen a https:\//aka.ms/ss-8000-network-reqs. Azure Government Cloud használata esetén nyissa meg az URL-mintákra, a https:\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Az alkalmazásteljesítmény miatti riasztások
 

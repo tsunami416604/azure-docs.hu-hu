@@ -1,5 +1,5 @@
 ---
-title: Egyesített regisztrációs hibaelhárítása Azure AD SSPR és a többtényezős hitelesítés (előzetes verzió)
+title: Az Azure AD SSPR és a többtényezős hitelesítés (előzetes verzió) – az Azure Active Directory kombinált regisztrációs hibaelhárítása
 description: Hibaelhárítása Azure AD multi-factor Authentication és az önkiszolgáló jelszó-visszaállítási kombinált regisztrációs (előzetes verzió)
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b247a733c6874b023d3dc8114b0538e422baccfd
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589065"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317527"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Hibaelhárítási kombinált biztonsági információk regisztrációs (előzetes verzió)
 

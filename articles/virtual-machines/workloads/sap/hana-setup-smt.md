@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9fe644b7cc7d1a13cb9ed2f7016f25b3e346dfb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233174"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313135"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux SMT kiszolgáló beállítása
 Nagy példányok, SAP HANA nincs közvetlen kapcsolódás az internethez. Nem egy ilyen egység regisztrálja az operációs rendszer szolgáltatót, és a letöltés és frissítések alkalmazása egy egyszerű folyamatot. SUSE Linux-megoldás, hogy egy Azure virtuális gépen SMT kiszolgáló beállítása. Az Azure virtuális hálózat, amely kapcsolódik a HANA nagyméretű példányok az a virtuális gép működtetéséhez. Az ilyen az SMT kiszolgálóval a nagyméretű HANA-példány egység sikerült regisztrálása és a frissítések letöltése. 
@@ -84,7 +84,7 @@ A YAST eszközzel is a smt csomagok telepítéséhez. YAST, lépjen a **Szoftver
 ![A YAST SMT képernyőképe](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Fogadja el a kijelölést a smtserver telepíthető. A telepítés befejezése után nyissa meg a SMT kiszolgáló konfigurációját. Adja meg a szervezeti hitelesítő adatokkal a korábban kapott SUSE-ügyfél központban. Az Azure virtuális gép állomásneve is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban rendelkezik https://smtserver.
+Fogadja el a kijelölést a smtserver telepíthető. A telepítés befejezése után nyissa meg a SMT kiszolgáló konfigurációját. Adja meg a szervezeti hitelesítő adatokkal a korábban kapott SUSE-ügyfél központban. Az Azure virtuális gép állomásneve is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban ez a https:\//smtserver.
 
 ![Képernyőkép az SMT kiszolgálókonfiguráció](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

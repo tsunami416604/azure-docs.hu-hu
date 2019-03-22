@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202690"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314994"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítse, és a Hue használata a HDInsight Hadoop-fürtök
 
@@ -95,7 +95,7 @@ SSH-bújtatás az egyetlen módja a Hue eléréséhez a fürtön, miután fut-e.
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Ez az az állomásnév az elsődleges átjárócsomóponthoz, ahol a Hue webhelyen megtalálható.
-4. A böngészője segítségével, a Hue portál megnyitása http://HOSTNAME:8888. ÁLLOMÁSNÉV cserélje le az előző lépésben beszerzett nevét.
+4. A böngészője segítségével, http a Hue portál megnyitása:\//HOSTNAME:8888. ÁLLOMÁSNÉV cserélje le az előző lépésben beszerzett nevét.
 
    > [!NOTE]  
    > Amikor első alkalommal bejelentkezik, a rendszer kéri, jelentkezzen be a Hue portál-fiók létrehozása. Az itt megadott hitelesítő adatok lesz korlátozva, a portálon, és nem kapcsolódnak a rendszergazda vagy a megadott üzembe helyezése a fürtön SSH-felhasználói hitelesítő adatokat.

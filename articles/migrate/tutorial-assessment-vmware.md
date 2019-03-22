@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104522"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313107"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -185,7 +185,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
    - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [További](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) internet kapcsolat követelményeivel kapcsolatos és a [URL-címek listája](https://docs.microsoft.com/azure/migrate/concepts-collector) a gyűjtő fér hozzá.
 
      > [!NOTE]
-     > A proxykiszolgáló címét <http://ProxyIPAddress> vagy <http://ProxyFQDN> formátumban kell megadni. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
+     > A proxykiszolgáló címét kell megadni a képernyő http:\//ProxyIPAddress vagy http:\//ProxyFQDN. Csak a HTTP-proxyk használata támogatott. Ha egy lehallgató proxy, az internetkapcsolat kezdetben meghiúsulhat, ha nem importálta a proxy-tanúsítvány [további](https://docs.microsoft.com/azure/migrate/concepts-collector) meg arról, hogyan oldhatja ezt egy megbízható tanúsítványt a gyűjtő virtuális Gépen, a proxy tanúsítvány importálásával.
 
    - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
    - Töltse le és telepítse a VMware PowerCLI-t.

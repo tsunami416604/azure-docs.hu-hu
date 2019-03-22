@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 338c4a97bced7d9e524f96fcd82f19e5230ff143
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088910"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317340"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -149,7 +149,7 @@ ProxyPassword="Password"
 A konfigurációs kiszolgáló gép proxybeállításainak következőképpen módosíthatja:
 
 1. Jelentkezzen be a konfigurációs kiszolgálón.
-2. Indítsa el a cspsconfigtool.exe használatával a parancsikont a.
+2. Indítsa el a cspsconfigtool.exe használatával a parancsikont az asztalon.
 3. Kattintson a **tár regisztrálása** fülre.
 4. Töltse le a tároló regisztrációs új fájlt a portálról, és adja meg az eszköz bemeneteként.
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3711277ca11346cf73ff37c37ef4185d8bfdf6b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e20e2a094e1fd88dfc2a25b586dc6c894f92b418
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329871"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312444"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Az alábbi táblázat a következő szakaszban a PowerShell-parancsfájl futtat�
 
 | Paraméter | Leírás | Példa |
 | --- | --- | --- |
-| **$akvURL** |**A kulcstároló URL-címe** |„https://contosokeyvault.vault.azure.net/” |
+| **$akvURL** |**A kulcstároló URL-címe** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**Egyszerű szolgáltatásnév** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Egyszerű szolgáltatás titkos kulcs** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
 | **$credName** |**Hitelesítő adat neve**: AKV-integráció az SQL Serverrel, így a virtuális Géphez a key vault eléréséhez hitelesítő adatot hoz létre. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |
@@ -65,7 +65,7 @@ A **New-AzureVMSqlServerKeyVaultCredentialConfig** parancsmag létrehoz egy konf
 
 1. Az Azure PowerShell, először a bemeneti paramétereinek konfigurálása az adott értékek a jelen témakör korábbi szakaszokban ismertetett módon. A következő parancsfájl csak példaként szolgál.
    
-        $akvURL = "https://contosokeyvault.vault.azure.net/"
+        $akvURL = "https:\//contosokeyvault.vault.azure.net/"
         $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
         $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
         $credName = "mycred1"

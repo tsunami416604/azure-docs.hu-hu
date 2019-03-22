@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5308fc024a53fdbbef12b409622cc35adaea1e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ba28014dfb2be4550407c20b4885feda3921f98
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857708"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316891"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása egy ASP.NET Core Web API kezelőfelületi szolgáltatás a Kestrel használatával
 
@@ -341,9 +341,9 @@ Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **Ru
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A Megoldáskezelőben válassza ki a **Szavazó**alkalmazást, és állítsa be az **Alkalmazás URL-címe** tulajdonságot a következőre: <https://localhost:443>.
+A Megoldáskezelőben, válassza ki a **Voting** alkalmazás, és állítsa be a **alkalmazás URL-Címének** tulajdonságot "https:\//localhost:443".
 
-Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezése után a webböngésző a [https://localhost:443](https://localhost:443) címet nyitja meg. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
+Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Miután üzembe helyezte az alkalmazást, egy webes böngésző megnyitja a https:\//localhost:443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
 ![Szavazóalkalmazás][image2]
 

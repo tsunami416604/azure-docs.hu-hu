@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743480"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317476"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
@@ -32,7 +32,11 @@ Ha meg szeretné határozni a titkosítási beállítások a streamben, hozza l�
 > * Tulajdonságainak **Streamelési Lokátorok** a DateTime típusú állandóan UTC formátumban vannak.
 > * Korlátozott számú házirendeket tervezzen a Media Services-fiók és újból felhasználja őket a Streamelési Lokátorok, amikor szükség van a beállítások. 
 
-## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
+## <a name="associate-filters-with-streaming-locators"></a>Szűrők társítani a Streamelési Lokátorok
+
+Egy listában megadhatja [eszköz vagy a fiók szűrők](filters-concept.md), amely a alkalmazni szeretné a [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dyanamic jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+
+## <a name="filter-order-page-streaming-locator-entities"></a>Szűrő, a sorrendben, a Streamelési lokátor entitások lap
 
 Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 

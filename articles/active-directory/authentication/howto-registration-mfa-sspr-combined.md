@@ -1,5 +1,5 @@
 ---
-title: Egyesített regisztrációs Ismerkedés az Azure AD SSPR és a többtényezős hitelesítés (előzetes verzió)
+title: Egyesített regisztrációs Ismerkedés az Azure AD SSPR és a többtényezős hitelesítés (előzetes verzió) – az Azure Active Directory
 description: Enable kombinált Azure AD multi-factor Authentication és az önkiszolgáló jelszó-átállítási regisztrációk (előzetes verzió)
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6896e2b9633b8de679e8d14a7957dc0e3229e7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 25450d49fd32adf12ac6c8a71671a9cb796b06c4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226725"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317442"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: a33001216fb805b700d077aa8c9d42fae9bd6bae
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 704c26670f9fe2a3d7d0011fee4621a8e8c33028
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416802"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314960"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST
 
@@ -189,7 +189,7 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 
 A [feladat](https://docs.microsoft.com/rest/api/media/jobs) a tényleges kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét.
 
-Ebben a példában a feladat bemenete egy HTTPS URL-címen („https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/”) alapul.
+Ebben a példában a feladat bemenetének alapul HTTPS URL-címet ("https: \/ /nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
 1. A Postman bal ablakában válassza az „Encoding and Analysis” (Kódolás és elemzés) lehetőséget.
 2. Ezután válassza a „Create or Update Job” (Feladat létrehozása vagy frissítése) lehetőséget.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure multi-factor Authentication felhasználói adatok gyűjtése
+title: Az Azure multi-factor Authentication felhasználói adatok gyűjtése – Azure Active Directory
 description: Milyen adatok segítségével a felhasználók hitelesítése az Azure multi-factor Authentication?
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a42a25afc03b07393234014d7237c5419095b2b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b0c22d4421aa984a9862f83b9be1095d548e5841
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201499"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314478"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure multi-factor Authentication felhasználói adatok gyűjtése
 

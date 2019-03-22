@@ -1,5 +1,5 @@
 ---
-title: A Akusztika szimulációs tervezési alapelvek
+title: Tervezési alapelvek az Acoustics Simulationnel
 titlesuffix: Azure Cognitive Services
 description: A fogalmi áttekintése ismerteti, hogyan magában foglalja a projekt Akusztika akusztikai szimuláció tervezni a folyamathoz.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136156"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316068"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Projekt Akusztika tervezési folyamat alapelvei
 
@@ -29,7 +29,7 @@ Egy interaktív címben, hangok és figyelő áthelyezése során a 3D terület,
 
 3D címek világító és kinematikus fizika rendszerek fizika indokolt, de a Tervező igazított többféle, szakirányú és játékélményt célok eléréséhez használja. Vizuális tervezővel egyes képpontos értékek nem állítja be, de inkább beállítja a 3D-modellek, anyagok és könnyű adatátviteli rendszerek, amelyek minden fizikailag alapú kereskedelmi visual esztétikára és CPU-költségek. Mi lenne a megfelelő folyamat Audio? Projekt Akusztika egy első lépése a feltárása, ezt a kérdést. Először azt kell touch beszélget átviteli akusztikus energia használatával adhatja meg.
 
-![visszhang zónák](media/reverb-zones-altspace.png)
+![Képernyőkép a AltSpace jelenet átfedett visszhang zónák](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Lökőfeszültségű válaszok: Akusztikailag csatlakozás hely között
 
@@ -45,7 +45,7 @@ Lökőfeszültségű választ tartalmaz minden érdekes (és minden kevésbé fo
 
 De ha a szimuláció közvetlenül csatlakozik a hang DSP-paraméterek, ahol a Tervező módosítás? Mi volt hogy kapjanak? Hogy próbál a jeggyel rendszer jelentős mennyiségű memóriát vissza elvetése lökőfeszültségű válaszokat, hogy vonzó néhány DSP paramétert. És bizonyos teljesítményt az a Tervező biztosítanak a végső eredményt keresztül, azt kell csak megtalálni a tervezőben a szimuláció és a hanganyag DSP közötti beszúrása.
 
-![lökőfeszültségű válasz paraméterek](media/acoustic-parameters.png)
+![Graph-stilizált lökőfeszültségű válasz átfedett paraméterekkel](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>A szimuláció hang DSP paraméterek átalakításával keletkező tervezni
 

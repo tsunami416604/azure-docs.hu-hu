@@ -6,18 +6,21 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: b0c09c5b425beef6badff7fb6ec298f96591abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990536"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339312"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása
 
 Az Azure Cosmos DB, amely lehetővé teszi, hogy írását a JavaScript nyelvintegrált, a tranzakciós végrehajtását biztosítja **tárolt eljárások**, **eseményindítók**, és **felhasználó által definiált függvények (UDF)**. Ha az SQL API használatával az Azure Cosmos DB, a tárolt eljárások, eseményindítók és felhasználói függvények meghatározhatja a JavaScript nyelven. A logika írását a JavaScript, és hajtsa végre, az adatbázis motorjában. Hozhat létre, és hajtsa végre az UDF-EK, eseményindítók és tárolt eljárások használatával [az Azure portal](https://portal.azure.com/), a [JavaScript nyelvű lekérdezési API-t az Azure Cosmos DB integrált](javascript-query-api.md) és a [Cosmos DB SQL API-ügyfél SDK-k](sql-api-dotnet-samples.md). 
 
 Egy tárolt eljárás, eseményindítók és felhasználó által definiált függvény meghívásához, azt regisztrálnia kell. További információkért lásd: [tárolt eljárások, eseményindítók, felhasználó által definiált függvények az Azure Cosmos DB használata](how-to-use-stored-procedures-triggers-udfs.md).
+
+> [!NOTE]
+> A particionált tárolók, a tárolt eljárás végrehajtása közben partíciókulcs-értékkel kell adni a kérés beállításokat. Tárolt eljárások mindig hatóköre egy partíciókulcsot. Egy másik partíciókulcs-értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárás. Ez is alkalmazandó, valamint eseményindítók.
 
 ## <a id="stored-procedures"></a>Tárolt eljárások írása
 

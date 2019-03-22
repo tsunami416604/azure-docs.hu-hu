@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: e23b65904d16fbd2d8ffe0412603699a9e36aa7e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099525"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315810"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -195,7 +195,7 @@ Az SQL forráshoz hasonlóan itt is használhatja a beágyazási elválasztó tu
 
 Megfigyelheti a DomainInfo.Domain_Name és a RedirectInfo.Redirecting áljelet. A „.” beágyazási elválasztó megadása miatt az importáló eszköz létrehozza a DomainInfo és a RedirectInfo aldokumentumot az importálás során. Ez például az alábbi Azure Cosmos DB-beli végleges dokumentumot eredményezheti:
 
-*{"DomainInfo": {"Tartomány_neve": "ACUS.GOV", "Domain_Name_Address": "<https://www.ACUS.GOV>" }, "Federal Agency": "Az Amerikai Egyesült Államok közigazgatási konferencia", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{"DomainInfo": {"Tartomány_neve": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency": "Az Amerikai Egyesült Államok közigazgatási konferencia", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Az importálási eszköz próbál kikövetkeztetni informace o typu jegyzett értékek CSV-fájlok (határolójeles értékek mindig számít karakterláncok).  A típusokat a következő sorrendben azonosítja: szám, datetime, boolean.  
 

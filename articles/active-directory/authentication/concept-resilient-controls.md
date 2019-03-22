@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
+title: Hozzon létre egy rugalmas hozzáférés-szabályozási kezelési stratégia – Azure Active Directory
 description: Ez a dokumentum biztosít egy szervezet stratégiák útmutatást biztosít hibatűrést során váratlan megszakadását fiókzárolási kockázatának csökkentése érdekében el kell fogadnia
 services: active-directory
 author: martincoetzer
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082143"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316337"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 

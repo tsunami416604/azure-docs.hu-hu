@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás az Azure blob storage – Azure Logic Apps |} A Microsoft Docs
+title: Az Azure blob storage – Azure Logic Apps csatlakoztatása
 description: Hozzon létre és kezelheti a blobokat az Azure Logic Apps az Azure storage-ban
 services: logic-apps
 ms.service: logic-apps
@@ -10,36 +10,36 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230607"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310370"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Hozzon létre és kezelheti a blobokat az Azure Logic Apps az Azure blob storage-ban
 
 Ez a cikk bemutatja, hogyan elérheti és kezelheti, mint belül egy logikai alkalmazást az Azure Blob Storage-összekötővel a az Azure storage-fiókban tárolt fájlok. Ezzel a módszerrel, amely a feladatok és a fájljainak kezelésére szolgáló munkafolyamatok automatizálása a logic apps is létrehozhat. Ha például hozhat létre logikai alkalmazásokat, amelyek létrehozása, beolvasása, frissítése és törlése a fájlokat a storage-fiókban.
 
-Tegyük fel, hogy egy eszköz, amely frissül, és a egy Azure-webhelyen. amely a logikai alkalmazás eseményindítóját funkcionál. Ha ez az esemény történik, akkor is a logikai alkalmazás frissítése néhány fájlt a blob storage-tároló, amely egy műveletet a logikai alkalmazásban. 
+Tegyük fel, hogy egy eszköz, amely frissül, és a egy Azure-webhelyen. amely a logikai alkalmazás eseményindítóját funkcionál. Ha ez az esemény történik, akkor is a logikai alkalmazás frissítése néhány fájlt a blob storage-tároló, amely egy műveletet a logikai alkalmazásban.
 
 > [!NOTE]
-> A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közvetlenül csatlakozik. Ezek a tárfiókok eléréséhez mindkét módszerhez itt: 
+> A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közvetlenül csatlakozik. Ezek a tárfiókok eléréséhez mindkét módszerhez itt:
 >
-> * Hozzon létre egy [integrációs szolgáltatás környezet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amelyhez csatlakozhat egy Azure virtuális hálózatban lévő erőforrásokra. 
-> 
+> * Hozzon létre egy [integrációs szolgáltatás környezet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amelyhez csatlakozhat egy Azure virtuális hálózatban lévő erőforrásokra.
+>
 > * Ha már használja az API Management, használhatja a szolgáltatást az ebben a forgatókönyvben. További információ: [egyszerű vállalati integrációs architektúra](https://aka.ms/aisarch).
 
-Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Összekötő-specifikus technikai tudnivalókért tekintse meg a <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">összekötő-referencia az Azure Blob Storage</a>.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
 * Egy [Azure storage-fiók és a storage-tároló](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-* A logikai alkalmazás, ahol hozzáférésre van szüksége az Azure blob storage-fiókjában. A logikai alkalmazás elindításához egy Azure Blob Storage-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* A logikai alkalmazás, ahol hozzáférésre van szüksége az Azure blob storage-fiókjában. A logikai alkalmazás elindításához egy Azure Blob Storage-eseményindítóval kell egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-trigger"></a>
 
@@ -53,7 +53,7 @@ Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafo
 
 2. A keresőmezőbe írja be az "azure blob" szűrőként. Az eseményindítók listában jelölje ki a kívánt eseményindító.
 
-   Ebben a példában ez az eseményindító: **Azure Blob Storage - amikor egy blob hozzáadásakor vagy módosításakor (csak tulajdonságok)**
+   Ebben a példában ez az eseményindító: **Az Azure Blob Storage - amikor egy blob hozzáadásakor vagy módosításakor (csak tulajdonságok)**
 
    ![Trigger kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -63,9 +63,9 @@ Ez a példa bemutatja, hogy miként indítható el a logikai alkalmazás munkafo
 
    1. Az a **tároló** jelölje ki a mappa ikont.
 
-   2. A mappák listájában válassza ki a szögletes zárójelet ( **>** ), és keresse meg, amíg nem található, és válassza ki a kívánt mappát. 
+   2. A mappák listájában válassza ki a szögletes zárójelet ( **>** ), és keresse meg, amíg nem található, és válassza ki a kívánt mappát.
 
-      ![Mappa kiválasztása](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
+      ![Select folder (Mappa kiválasztása)](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
    3. Válassza ki a időközét és gyakoriságát, hogy milyen gyakran szeretné ellenőrizni a mappában a változásokat az eseményindító.
 
@@ -90,17 +90,17 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
 
 3. A keresőmezőbe írja be az "azure blob" szűrőként. Jelölje ki az elvégzendő műveletek listájában.
 
-   Ebben a példában ez a művelet: **Azure Blob Storage - Get blob tartalma**
+   Ebben a példában ez a művelet: **Az Azure Blob Storage - Get blob tartalma**
 
    ![Művelet kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
-4. Ha a kapcsolat részleteivel, kér [mostantól az Azure Blob Storage-kapcsolat létrehozása](#create-connection). Vagy, ha a kapcsolat már létezik, adja meg a művelet a szükséges információkat. 
+4. Ha a kapcsolat részleteivel, kér [mostantól az Azure Blob Storage-kapcsolat létrehozása](#create-connection). Vagy, ha a kapcsolat már létezik, adja meg a művelet a szükséges információkat.
 
    Ebben a példában válassza ki a kívánt fájlt.
 
    1. Az a **Blob** jelölje ki a mappa ikont.
   
-      ![Mappa kiválasztása](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
+      ![Select folder (Mappa kiválasztása)](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
    2. Keresse meg és válassza ki a fájlt a blob alapján szeretne **azonosító** számát. Ez annak **azonosító** a blob metaadatai, a korábban ismertetett blob storage-eseményindító által visszaadott száma.
 
@@ -119,7 +119,7 @@ Ebben a példában csak lekéri egy BLOB tartalmát. A tartalom megtekintéséhe
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/azureblobconnector/). 
+A technikai részletekért, például a triggereket, műveletek és -korlátok, leírtak szerint az összekötő Open API (korábbi nevén Swagger) fájl, tekintse meg a [összekötő referencialapja](/connectors/azureblobconnector/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

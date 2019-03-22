@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ee6c05b2da4347ed034ae6e7318d6f5d90ea7884
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f777ab238ed0774c4ad6afd862da1584cb06b94
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099644"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317374"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Az Azure Portalon Windows SQL Server virtuális gép kiépítése
 
@@ -247,7 +247,7 @@ A következő táblázat tartalmazza az Azure Key Vault-integráció konfigurál
 
 | PARAMÉTER | LEÍRÁS | PÉLDA |
 | --- | --- | --- |
-| **Key Vault URL** |A Key Vault helye. |<https://contosokeyvault.vault.azure.net/> |
+| **Key Vault URL** |A Key Vault helye. |https:\//contosokeyvault.vault.azure.net/ |
 | **Egyszerű név** |Az Azure Active Directory szolgáltatás egyszerű neve. Ezt a nevet ügyfél-azonosítónak is hívják. |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **Egyszerű titok** |Az Azure Active Directory szolgáltatás egyszerű titka. Ezt a titkot ügyféltitoknak is hívják. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Hitelesítő adat neve** |**Hitelesítő adat neve**: AKV-integráció az SQL Serverrel, így a virtuális Géphez a key vault eléréséhez hitelesítő adatot hoz létre. Válasszon egy nevet ennek a hitelesítő adatnak. |mycred1 |

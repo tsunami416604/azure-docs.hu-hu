@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff6475637b07f50aaea93caac85e65356bc9b96b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851363"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317204"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -466,7 +466,7 @@ Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-
         ],
 ```
 Keresse meg a fordított proxy portjával, a helyi fejlesztési fürt használja, tekintse meg a **HttpApplicationGatewayEndpoint** elem található a helyi Service Fabric-fürt jegyzékfájl:
-1. Nyisson meg egy böngészőablakot, és navigáljon a http://localhost:19080 a Service Fabric Explorer eszköz megnyitásához.
+1. Nyisson meg egy böngészőablakot, és keresse meg a http:\//localhost:19080 a Service Fabric Explorer eszköz megnyitásához.
 2. Válassza ki **fürt -> Manifest**.
 3. Jegyezze fel a HttpApplicationGatewayEndpoint elem portját. Ez alapértelmezés szerint a 19081-es port. Ha mégsem az, akkor módosítania kell a portot a következő VotesController.cs kód GetProxyAddress metódusában.
 

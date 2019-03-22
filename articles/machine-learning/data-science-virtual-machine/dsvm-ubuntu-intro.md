@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884676"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317007"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -144,9 +144,9 @@ Bejelentkezés után a virtuális géphez SSH-ügyfél vagy a grafikus asztali X
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub és JupyterLab
 
-Az Ubuntu DSVM fut [JupyterHub](https://github.com/jupyterhub/jupyterhub), többfelhasználós Jupyter kiszolgáló. Szeretne csatlakozni, keresse meg a https://your-vm-ip:8000 a hordozható vagy asztali, adja meg a felhasználónevet és jelszót, amellyel a virtuális gép létrehozásához, és jelentkezzen be. Számos mintafüzetek érhetők el, hogy a Tallózás gombra, és próbálja ki.
+Az Ubuntu DSVM fut [JupyterHub](https://github.com/jupyterhub/jupyterhub), többfelhasználós Jupyter kiszolgáló. Szeretne csatlakozni, keresse meg a https:\// a-vm-ip:8000 a hordozható vagy asztali, adja meg a felhasználónevet és jelszót, amellyel a virtuális gép létrehozásához, és jelentkezzen be. Számos mintafüzetek érhetők el, hogy a Tallózás gombra, és próbálja ki.
 
-JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. Szeretné elérni, JupyterHub bejelentkezni, és tallózással keresse meg az URL-cím https://your-vm-ip:8000/user/your-username/lab. Ezt a sort ad hozzá /etc/jupyterhub/jupyterhub_config.py JupyterLab állíthatja be az alapértelmezett notebook-kiszolgálóként:
+JupyterLab, a Jupyter-notebookok és JupyterHub, következő generációja érhető el. Szeretné elérni, JupyterHub bejelentkezni, és tallózással keresse meg az URL-cím https:\// a-vm-ip:8000/felhasználó/a-username/lab. Ezt a sort ad hozzá /etc/jupyterhub/jupyterhub_config.py JupyterLab állíthatja be az alapértelmezett notebook-kiszolgálóként:
 
     c.Spawner.default_url = '/lab'
 

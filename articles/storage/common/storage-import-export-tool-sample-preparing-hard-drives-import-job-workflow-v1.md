@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459045"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311713"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
 Ez a témakör végigvezeti a meghajtók előkészítése importálási feladatokhoz teljes folyamatán.  
@@ -31,12 +31,12 @@ Az importálási feladat ezeket az adatokat importál a storage-fiókban a köve
   
 |Forrás|Cél virtuális könyvtárat vagy a blob|  
 |------------|-------------------------------------------|  
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovie.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|  
   
-A leképezés, a fájl a `H:\Video\Drama\GreatMovie.mov` importálva lett-e a blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+A leképezés, a fájl a `H:\Video\Drama\GreatMovie.mov` importálva lett-e a blob https:\//mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov.  
   
 Ezután annak megállapításához, hogy hány merevlemezek szükségesek, számítási az adatok mérete:  
   
@@ -46,11 +46,11 @@ Ebben a példában két 3 TB-os merevlemezeket elegendőnek kell lennie. Mivel a
   
 |Hely|Méret|Cél virtuális könyvtárat vagy a blob|  
 |--------------|----------|-------------------------------------------|  
-|H:\Video1|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Video2|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
-|H:\Photo|30 GB|https://mystorageaccount.blob.core.windows.net/photo|  
-|K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
-|\\\bigshare\john\music|10 GB|https://mystorageaccount.blob.core.windows.net/music|  
+|H:\Video1|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Video2|2,5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
+|H:\Photo|30 GB|https:\//mystorageaccount.blob.core.windows.net/photo|  
+|K:\Temp\FavoriteMovies.ISO|25 GB|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteMovies.ISO|  
+|\\\bigshare\john\music|10 GB|https:\//mystorageaccount.blob.core.windows.net/music|  
   
  Annak ellenére, hogy a `H:\Video`directory felosztott két címtárat, hogy a cél virtuális könyvtárba a tárfiókban lévő mutassanak. Így minden videofájlok karbantartása alatt egyetlen `video` a storage-fiókban lévő tárolóba.  
   

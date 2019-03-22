@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/12/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841123"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317748"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti az Azure Media Services v3 bevezetett módosítások, két v
 Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Services v2 API-k](../previous/media-services-overview.md), az alábbi irányelvek és megfontolandó szempontok a v3 API-k áttelepítése előtt tekintse át. Nincsenek számos előnyei és funkciói a v3 API fejlesztői élményt és Media Services funkcióit. Azonban, mint a hívott a [ismert problémák](#known-issues) szakasz ebben a cikkben, akkor korlátozásokba is miatt az API-verziók között változik. Ezen a lapon, a Media Services-csapat folyamatos fejlesztéseket hajt végre a v3 API-k és a verziók között a hiányosságait kell fenntartani. 
 
 > [!NOTE]
-> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
+> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref), vagy a támogatott valamelyik [SDK-k](developers-guide.md).
 
 ## <a name="benefits-of-media-services-v3"></a>Előnyei a Media Services v3
 

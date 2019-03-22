@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf2f2db57f33645389fd751c8c00f9f135416c50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9570982e18f2698400c2798dd3e29b0ca6160b8c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864133"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309742"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming  
 
@@ -153,7 +153,7 @@ Ha frissít a mobil Chrome böngészőt v62 (vagy magasabb) egy Android telefont
 
 A fenti nyílt forráskódú PWA alkalmazás hozta létre a node.js-ben. Ha szeretné a saját verziója egy Ubuntu Servert futtatni, vegye figyelembe a következő gyakori észlelt problémák, amelyek megakadályozhatják a lejátszás:
 
-1. CORS-hiba: A videó a mintaalkalmazás minta üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google állított be a CORS minden, a Google Cloud Storage gyűjtőben lévő üzemeltetett teszt minták. Ezek a szolgálja ki a CORS fejlécek, explicit módon a CORS-bejegyzés megadása: https://biograf-155113.appspot.com (a tartomány melyik google-beli üzemelteti a minta) megakadályozza a hozzáférést a többi webhelyhez sem. Ha megpróbál, látni fogja a következő HTTP-hiba: Nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Access-Control-Allow-Origin" fejléc nem található a kért erőforrás. Forrás:https://13.85.80.81:8080"hozzáférés ezért nem engedélyezett. Ha egy nem átlátszó választ szolgálja ki az igényeinek, "no-cors" beolvasni az erőforrás le van tiltva cors-támogatással rendelkező a kérelem módjának beállítása.
+1. CORS-hiba: A videó a mintaalkalmazás minta üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google állított be a CORS minden, a Google Cloud Storage gyűjtőben lévő üzemeltetett teszt minták. Ezek a szolgálja ki a CORS fejlécek, explicit módon a CORS-bejegyzés megadása: https://biograf-155113.appspot.com (a tartomány melyik google-beli üzemelteti a minta) megakadályozza a hozzáférést a többi webhelyhez sem. Ha megpróbál, látni fogja a következő HTTP-hiba: Nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Access-Control-Allow-Origin" fejléc nem található a kért erőforrás. Forrás "https:\//13.85.80.81:8080" hozzáférés ezért nem engedélyezett. Ha egy nem átlátszó választ szolgálja ki az igényeinek, "no-cors" beolvasni az erőforrás le van tiltva cors-támogatással rendelkező a kérelem módjának beállítása.
 2. A tanúsítvány kiadása: Kezdet: Chrome v 58, a Widevine az EME HTTPS van szüksége. Ezért a mintaalkalmazás futtatásához egy X509 a HTTPS-kapcsolaton keresztül kell tanúsítványt. Az alábbi követelmények miatt nem működik a szokásos tesztelési tanúsítvány: Be kell szereznie egy tanúsítványt a következő minimális rendszerkövetelményeknek megfelelő:
     - A Chrome és a Firefox SAN-tulajdonos alternatív neve beállítást a tanúsítvány léteznie kell
     - Kell a tanúsítvány megbízható hitelesítésszolgáltató és a egy önaláírt fejlesztési tanúsítvány nem működik.

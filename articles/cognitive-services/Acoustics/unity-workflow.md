@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 7f079c511a32cfcf0fa018d40abb737ad08f3821
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137959"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310625"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Projekt Akusztika Unity tervezési oktatóanyag
 Ez az oktatóanyag leírja a tervezői eszközök és a Unity Project Akusztika számára.
@@ -37,16 +37,16 @@ Projekt Akusztika biztosít egy adatforrás-specifikus Akusztika kialakítási e
 ### <a name="adjust-distance-based-attenuation"></a>Távolság-alapú gyengülés beállítása
 A hanganyag DSP által biztosított a **projekt Akusztika** Unity spatializer beépülő modul tiszteletben tartja a forrás távolság-alapú gyengülés beépített a Unity-szerkesztőbe. Távolság-alapú gyengülés vezérlők vannak a **hang forrás** összetevő található a **vizsgáló** hang panel alatt adatforrásokat **3D eredményes beállításai**:
 
-![Távolságskála gyengülés](media/distance-attenuation.png)
+![Képernyőkép a Unity távolság gyengülés beállítások panel](media/distance-attenuation.png)
 
 Akusztika számítási lehetőségek eltérése a lejátszó helyre "szimuláció régió" mezőben hajt végre. Ha egy megbízható forrásból a szimuláció régión kívül található, a lejátszó távolságban belül a mezőbe csak geometriai hatással lesz a hang propagálás (például hangelnyelés okozó), amely viszonylag jól működik, ha occluders vannak-e a Windows Media player közelében. Azonban azokban az esetekben, amikor a Windows Media player nyissa meg a helyet, de a occluders buildjénél a távoli eredményes forrás a hangot is válnak irreálisan disoccluded. A javasolt megoldás, hogy ebben az esetben ellenőrizze, hogy a hangfájl gyengülés kapcsol körülbelül 45 m, a lejátszó az Edge-ben a mező alapértelmezett vízszintes távolság 0.
 
-![SpeakerMode](media/speaker-mode.png)
+![Képernyőkép a Unity SpeakerMode beállítás panel](media/speaker-mode.png)
 
 ### <a name="adjust-occlusion-and-transmission"></a>Hangelnyelés és átviteli beállítása
 Csatolja a **AcousticsAdjust** forráshoz parancsfájl lehetővé teszi, hogy a hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása**. A szkript hat vezérlők rendelkezik:
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Képernyőkép a Unity AcousticsAdjust parancsfájl](media/acoustics-adjust.png)
 
 * **Engedélyezze a Akusztika** – azt szabályozza, hogy Akusztika alkalmazott ebből a forrásból. Ha nincs bejelölve, a forrás lesz spatialized, HRTFs vagy pásztázásához, de nem lesznek nincs Akusztika. Ez azt jelenti, hogy nincs akadály, hangelnyelés vagy dinamikus reverberation paraméterek – például szintjét és decay. Egy rögzített szint és a késleltetési idő reverberation továbbra is érvényesül.
 * **Hangelnyelés** -alkalmazása egy szorzóval a Akusztika rendszer által számított hangelnyelés dB szintre. Ha ez szorzó 1-nél nagyobb, hangelnyelés fog kell exaggerated közben értékek 1-nél kisebb ne hangelnyelés hatása több változás is, és a 0 érték letiltja a hangelnyelés.
@@ -59,14 +59,14 @@ Csatolja a **AcousticsAdjust** forráshoz parancsfájl lehetővé teszi, hogy a 
 
 Csatolja a **AcousticsAdjustExperimental** forráshoz parancsfájl lehetővé teszi, hogy további kísérleti hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása kísérleti**. Jelenleg egy kísérleti vezérlő:
 
-![AcousticsAdjustExperimental](media/acoustics-adjust-experimental.png)
+![Képernyőkép a Unity AcousticsAdjustExperimental parancsfájl](media/acoustics-adjust-experimental.png)
 
 * **Technológiáira távolság Warp** – exponenciális hajlítása száraz – Nyugat-európai arányának kiszámításához használt távolság a alkalmazni. A Akusztika rendszer kiszámítja a terület teljes nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Hajlítási 1-nél nagyobb értékek a hatás exaggerate távolság kapcsolatos reverberation szintek, így a "távoli" hang növelésével. Hajlítása értékek 1-nél kisebb ügyeljen a távolság-alapú reverberation módosítása több változás is, és, hogy az eredményes további "e".
 
 ## <a name="design-acoustics-for-all-sources"></a>Az összes tervezési Akusztika
 Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Unity a **hang Mixer**, és módosítsa úgy a paramétereket a a **projekt Akusztika Mixer** érvénybe.
 
-![Mixer testreszabása](media/mixer-parameters.png)
+![A projekt Akusztika Unity Mixer képernyőkép testreszabási panel](media/mixer-parameters.png)
 
 * **Wetness igazítás** – beállítja a visszhang energiagazdálkodási, DB, a forrás-figyelő távolság alapján jelenet minden forrás. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz.
 * **RT60 méretezési** – tényezőt skaláris visszhang alkalommal.
@@ -75,7 +75,7 @@ Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Un
 ## <a name="check-proper-sound-source-placement"></a>Ellenőrizze a megfelelő megbízható forrás elhelyezése
 Betöltött voxels belül elhelyezett megbízható forrásból nem kap akusztikai kezelésére. Mivel voxels túlmutatnak az eddig a látható jelenet geometry, lehetséges, egy adatforrás egy voxel belül helyezi el, amíg unoccluded visual geometriai szerint jelenik meg. Projekt Akusztika voxels megtekintheti a voxel rács jelölőnégyzetet átállításával a **Gizmos** menüben, a jobb felső sarkában a **jelenet** megtekintése.
 
-![Gizmos menü](media/gizmos-menu.png)  
+![Képernyőkép a Unity Gizmos menü](media/gizmos-menu.png)  
 
 Voxel megjelenítését is segít meghatározni a vizuális összetevőket a játék egy-egy átalakítási vonatkozik-e. Ha igen, az azonos átalakítás alkalmazása a GameObject üzemeltetéséhez a **Akusztika Manager**.
 
@@ -84,11 +84,11 @@ A játék tervezéskor-szerkesztő ablakban és a futásidőben a játék ablakb
 
 Tervezési idő voxels:
 
-![VoxelsDesignTime](media/voxels-design-time.png)
+![Képernyőfelvétel a projekt Akusztika voxels tervezési idő alatt](media/voxels-design-time.png)
 
 Futásidejű voxels:
 
-![VoxelsRuntime](media/voxels-runtime.png)
+![Képernyőfelvétel a projekt Akusztika voxels futtatási idő alatt](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>További lépések
 * Böngésszen az esettanulmányok, kiemelve a fogalmakat a [folyamat tervezése](design-process.md)

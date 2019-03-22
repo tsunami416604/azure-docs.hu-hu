@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f328c4edeaa35210c5379d84fa47980cb2f07cf
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353141"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317085"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Frissítések **Azure Data Catalog** rendszeresen jelennek meg. Nem minden kiadás új szolgáltatásokkal rendelkező felhasználó, néhány kiadásai háttérszolgáltatás képességek összpontosítanak. Ez az oldal az Azure Data Catalog szolgáltatásban hozzáadott új felhasználói képességek emeli ki.
@@ -240,7 +240,7 @@ Az Azure Data Catalog 2015 decemberében az alábbi képességekkel bővült:
 * Egy új "első lépések" adatforrás-felderítés tapasztalattal az Azure Data Catalog-portálon. Amikor a felhasználók az Azure Data Catalog portál "felderítése" lapján adja meg a keresett kifejezés beírása nélkül jelenjenek meg ezek a katalógus tartalmának, beleértve a leggyakrabban alkalmazott címkék, szakértők, adatforrástípusok és objektumtípusok áttekintést.
 * Regisztráció és az Azure SQL Data Warehouse-objektumok és az adatbázisok felderítéséhez támogatása. További információ az Azure SQL Data Warehouse: [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Regisztráció és az SQL Server Analysis Services-modellekhez és tárolókként SQL Server Reporting Services-kiszolgálók felderítéséhez támogatása. Az SSAS és az SSRS-objektumok regisztrálásakor a Azure Data Catalog bejegyzést hoz létre az SSAS-modellhez és az SSRS-kiszolgálóra, és a jelentések és egyéb objektumok. A tárolók könnyen megtalálhatók legyenek, és az Azure Data Catalog-portál használatával. Felhasználók is megkeresheti, és egy modellt vagy a kiszolgáló mellett a Keresés és szűrés a katalógus tartalmának tartalmát.
-* Regisztráció és a HTTP/HTTPS-kapcsolaton keresztül az SQL Server Analysis Services-objektumok felderítésével támogatása. Felhasználók most már csatlakoztatható az SSAS-kiszolgálók URL-cím használata (például https://servername/olap/msmdpump.dll) ahelyett, hogy a kiszolgáló neve, és az egyszerű hitelesítés és a Windows-hitelesítésen felül névtelen kapcsolatok. A HTTP/HTTPS-kapcsolatok az SSAS további információkért lásd: [HTTP elérésének konfigurálása az Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
+* Regisztráció és a HTTP/HTTPS-kapcsolaton keresztül az SQL Server Analysis Services-objektumok felderítésével támogatása. Felhasználók most már csatlakoztatható az SSAS-kiszolgálók URL-cím (pl. https:\//servername/olap/msmdpump.dll) ahelyett, hogy a kiszolgáló neve, és az egyszerű hitelesítés és a Windows-hitelesítésen felül névtelen kapcsolatok. A HTTP/HTTPS-kapcsolatok az SSAS további információkért lásd: [HTTP elérésének konfigurálása az Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
 * A HDInsight Hive-adatforrások támogatása. A felhasználók mostantól regisztrálása és Fedezze fel a Hive-táblákat az Apache Hive, a Hadoop on HDInsight az adatforrásokat. A Hive a HDInsight további információkért lásd: a [HDInsight dokumentációs központjába](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Regisztrálás és Oracle-adatbázisok és a HDFS-fürtök tárolókként felderítése támogatása. Oracle-táblák és nézetek vagy HDFS regisztrálásakor a Azure Data Catalog bejegyzést hoz létre az adatbázist, táblák és nézetek. Az adatbázis könnyen megtalálhatók legyenek, és az Azure Data Catalog-portál használatával. Felhasználók is megkeresheti, és egy adatbázist vagy a fürt mellett a Keresés és szűrés a katalógus tartalmának tartalmát.
 * Ismeretlen adatforrástípusok manuális regisztrálása támogatása. Felhasználók manuális adhat meg az Azure Data Catalog portál használatával, hogy nem kifejezetten az adatforrás-regisztráló eszköz által támogatott adatforrások is feliratozva és felderített adatforrás adatait.

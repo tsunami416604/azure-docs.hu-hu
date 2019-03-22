@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091103"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309793"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>A WinRM-elérés beállítása a virtuális gépek az Azure Resource Manager
 
@@ -83,7 +83,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 A Microsoft.Compute erőforrás-szolgáltató URL-CÍMÉT a titkos kulcsot a Key vaultban kell a virtuális gép kiépítése során. Ez lehetővé teszi a Microsoft.Compute erőforrás-szolgáltatót, töltse le a titkos kulcsot, és hozza létre a megfelelő tanúsítványt a virtuális gépen.
 
 > [!NOTE]
-> Az URL-címét a titkos kulcsot kell tartalmaznia, valamint a verzió. Alább néz ki egy példa URL-címe https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Az URL-címét a titkos kulcsot kell tartalmaznia, valamint a verzió. Egy példa URL-cím https alább láthatóhoz hasonló:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Sablonok
 A hivatkozásra kattintva az URL-címet a sablon használatával megtekintheti az alábbi kód

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e4995890a1f2ceec8ddf5d4dafafdd13382864db
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240341"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311458"
 ---
-# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
+# <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Telepítse, és a Service Fabric-fürt létrehozása
 
 Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban egy, az AWS-en futtatott önálló fürtöt hoz létre, majd telepít rá egy alkalmazást.
 
@@ -129,7 +129,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ### <a name="bring-up-service-fabric-explorer"></a>A Service Fabric Explorer megnyitása
 
-Most csatlakozhat a fürthöz a Service Fabric Explorerrel közvetlenül az egyik gépről a http://localhost:19080/Explorer/index.html címen, vagy távolról a http://<*IPAddressofaMachine*>:19080/Explorer/index.html címen.
+Most a fürthöz a Service Fabric Explorerrel kapcsolódhat közvetlenül az egyik a http-gépek:\//localhost:19080/Explorer/index.html vagy távoli http-:\/ /<  *IPAddressofaMachine*>: 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Csomópontok hozzáadása és eltávolítása
 

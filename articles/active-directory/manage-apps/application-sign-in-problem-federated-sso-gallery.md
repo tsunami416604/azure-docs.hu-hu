@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013089"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312699"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezésre beállított katalógusából származó alkalmazásba történő bejelentkezésnél
 
@@ -33,7 +33,7 @@ Hibaelhárítás a jelentkezzen be az alábbi, javasoljuk, kövesse az alábbi j
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
-*Hiba AADSTS70001: Alkalmazás-azonosító "https://contoso.com" nem található a címtárban*.
+*Hiba AADSTS70001: Alkalmazás azonosítója a "https:\//contoso.com" nem található a címtárban*.
 
 **Lehetséges ok**
 
@@ -63,7 +63,7 @@ A `Issuer` az alkalmazás Azure ad-ben az SAML-kérelmet küldött attribútum n
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik az alkalmazáshoz konfigurált válaszcímekkel
 
-*Hiba AADSTS50011: A válaszcím https://contoso.com"nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel*
+*Hiba AADSTS50011: A válaszcím "https:\//contoso.com" nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel*
 
 **Lehetséges ok**
 
@@ -145,8 +145,8 @@ Után rövid idő alatt a kiválasztott felhasználók ezeket az alkalmazásokat
 
 Az Azure AD nem támogatja az egyszeri bejelentkezés az alkalmazás által küldött SAML-kérelmet. Néhány gyakori hibák a következők:
 
--   Az SAML-kérelmet kötelező mezők hiányoznak
--   SAML-kérelem kódolt metódusa
+-   Az SAML-kérelemből hiányzó kötelező mezők
+-   SAML-kérelem kódolási metódusa
 
 **Felbontás**
 

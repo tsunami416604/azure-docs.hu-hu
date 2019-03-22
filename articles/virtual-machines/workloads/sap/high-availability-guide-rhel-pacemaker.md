@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010488"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319516"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A Red Hat Enterprise Linux az Azure-ban támasztja beállítása
 
@@ -85,6 +85,8 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
+   Vegye figyelembe, hogy egy készletet egy Azure piactér PAYG RHEL-lemezkép csatolásával, fog hatékonyan a dupla számlázás az RHEL-használat: egyszer a Használatalapú lemezképet, valamint a RHEL jogosultság a készlet csatlakoztatása után. A hiba elhárítása érdekében az Azure mostantól saját RHEL lemezképet biztosít. További információk érhetők el [Itt](https://aka.ms/rhel-byos).
+
 1. **[A]**  Engedélyezése RHEL for SAP-adattárakkal
 
    Annak érdekében, hogy a szükséges csomagok telepítéséhez a következő tárházak engedélyezése.
@@ -144,10 +146,10 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
-   
+
    # Run the following command until the status of both nodes is online
    sudo pcs status
-   
+
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -179,11 +181,10 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 A STONITH eszköz hitelesítéséhez, szemben a Microsoft Azure egy egyszerű szolgáltatást használja. Kövesse az alábbi lépéseket egy szolgáltatásnév létrehozásához.
 
 1. Nyissa meg a következőt: <https://portal.azure.com>
-1. Nyissa meg az Azure Active Directory panel  
-   Lépjen a Tulajdonságok részhez, és jegyezze fel a címtár-azonosító. Ez a **bérlőazonosító**.
+1. Nyissa meg az Azure Active Directory panelen válassza a tulajdonságok és írja le a címtár-azonosító. Ez a **bérlőazonosító**.
 1. Kattintson az alkalmazásregisztrációk
 1. Kattintson az Add (Hozzáadás) parancsra
-1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például `http://localhost`), és kattintson a Létrehozás gombra
+1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például a http:\//localhost), és kattintson a Létrehozás gombra
 1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra

@@ -1,6 +1,6 @@
 ---
 title: Virtuális gép frissítése és kezelése az Azure Stack |} A Microsoft Docs
-description: Ismerje meg, az Update Management, Change Tracking és Inventory megoldásainak használata az Azure Automationben a Windows és Linux rendszerű virtuális gépek az Azure Stack üzembe helyezett kezeléséhez.
+description: Ismerje meg az Azure Monitor használata virtuális gépek, az Update Management, Change Tracking és Inventory megoldások az Azure Automationben Windows és Linux rendszerű virtuális gépek az Azure Stack üzembe helyezett kezeléséhez.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/20/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: cb8258c0f837d0e70ba87a26246f055b0efe5c00
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819445"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316143"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Az Azure Stack VM update és kezelése
 A következő Azure Automation-megoldás funkciók segítségével kezelheti a Windows és Linux rendszerű virtuális gépek, amelyek az Azure Stack használatával helyezi üzembe:
@@ -30,16 +30,18 @@ A következő Azure Automation-megoldás funkciók segítségével kezelheti a W
 
 - **[A változáskövetés](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a feldolgozás a felhőben az Azure Monitor szolgáltatáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
 
-- **[Készlet](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. A leltár nyomon követése az Azure Stack virtuális gépként és leltár konfigurálása egy böngészőalapú felhasználói felületet biztosít. 
+- **[Készlet](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. A leltár nyomon követése az Azure Stack virtuális gépként és leltár konfigurálása egy böngészőalapú felhasználói felületet biztosít.
+
+- **[A virtuális gépek az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**. A virtuális gépek az Azure Monitor figyeli az Azure és az Azure Stack virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. Az eszköz elemzi a teljesítmény és a Windows és Linux rendszerű virtuális gépek állapotát, és a folyamatok és az egyéb erőforrások és a külső folyamatok függőségeit figyeli. 
 
 > [!IMPORTANT]
-> Ezek a megoldások ugyanazok, mint az Azure virtuális gépek kezelésére szolgáló azokat. Az Azure és az Azure Stack virtuális gépek felügyelt ugyanolyan módon, egy közös felületen, ugyanazokkal az eszközökkel. Az Azure Stack-beli virtuális gépek is díjszabása ugyanaz, mint az Azure virtuális gépek használatakor az Update Management, Change Tracking és Inventory megoldások az Azure Stack használatával.
+> Ezek a megoldások ugyanazok, mint az Azure virtuális gépek kezelésére szolgáló azokat. Az Azure és az Azure Stack virtuális gépek felügyelt ugyanolyan módon, egy közös felületen, ugyanazokkal az eszközökkel. Az Azure Stack-beli virtuális gépek is díjszabása ugyanaz, mint az Azure virtuális gépek az Azure Stack az Update Management, változáskövetés, leltár és Azure virtuális gépek figyelése megoldások használatakor.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Néhány előfeltételnek teljesülnie kell, mielőtt használja ezeket a funkciókat, frissítése és az Azure Stack virtuális gépek kezelése. Ezek közé tartozik, amely kell tenni a lépéseket az Azure Portalon, valamint az Azure Stack felügyeleti portálon.
 
 ### <a name="in-the-azure-portal"></a>Az Azure Portalon
-A készlet, a Change Tracking és a frissítés kezelése az Azure automation szolgáltatásokat az Azure Stack-beli virtuális gépek használatához, először engedélyeznie kell ezeket a megoldásokat az Azure-ban.
+Az Azure Monitor használata virtuális gépek, a szoftverleltár, a Change Tracking és a Update Management az Azure automation szolgáltatásokat az Azure Stack-beli virtuális gépek, akkor először engedélyeznie kell ezeket a megoldásokat az Azure-ban.
 
 > [!TIP]
 > Ha már rendelkezik ezeket a funkciókat az Azure virtuális gépek engedélyezve van, használhatja a már meglévő LogAnalytics munkaterület hitelesítő adatait. Ha már rendelkezik egy LogAnalytics munkaterület azonosítója és az elsődleges kulcs, amelyet használni szeretne, ugorjon előre [a következő szakaszban](./vm-update-management.md#in-the-azure-stack-administration-portal). Ellenkező esetben továbbra is ebben a szakaszban egy új LogAnalytics munkaterületet és automation-fiók létrehozásához.
@@ -60,10 +62,28 @@ Ezt követően kell [Automation-fiók létrehozása](https://docs.microsoft.com/
 
    [![](media/vm-update-management/1-sm.PNG "Automation-fiók szolgáltatások engedélyezése")](media/vm-update-management/1-lg.PNG#lightbox)
 
-### <a name="in-the-azure-stack-administration-portal"></a>Az Azure Stack felügyeleti portálon
-Miután engedélyezte az Azure Automation-megoldások az Azure Portalon, ezután kell bejelentkezni az Azure Stack felügyeleti portálon, a felhő rendszergazdájához, és töltse le a **Azure Update és a konfigurációkezelés** és a  **Az Azure frissítési és konfigurációkezelés linuxos** kiterjesztése az Azure Stack piactéren elemek. 
+### <a name="enable-azure-monitor-for-vms"></a>Az Azure Monitor-beli virtuális gépek engedélyezése
 
-   ![Az Azure frissítési és konfigurációs felügyeleti bővítmény Piactéri elem](media/vm-update-management/2.PNG) 
+A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. Az eszköz elemzi a teljesítmény és a Windows és Linux rendszerű virtuális gépek állapotát, és a folyamatok és az egyéb erőforrások és a külső folyamatok függőségeit figyeli.
+
+Az Azure Monitor-beli virtuális gépek a megoldás, a teljesítmény- és alkalmazásfüggőségek figyelés, a virtuális gépek, amelyek üzemeltethető a helyszínen vagy egy másik felhőszolgáltatóval támogatását is tartalmazza. Három főbb funkcióiról részletes betekintést biztosít:
+
+1. Windows és Linux rendszerű Azure virtuális gépek logikai összetevőit: Előre konfigurált állapotára vonatkozó feltételek, elleni mérése történik, és azok riasztást küld, ha a kiértékelt feltétel nem teljesül. 
+
+2. Előre definiált felkapott teljesítménydiagramok: A Vendég virtuális gép operációs rendszerről alapvető teljesítmény-mérőszámait jeleníti meg.
+
+3. Függőségi térkép: A virtuális géppel a különböző erőforráscsoportokban és előfizetésekben összekapcsolt összetevőket jeleníti meg.
+
+A Log Analytics-munkaterület létrehozása után kell a munkaterületen, a Linux és Windows-beli virtuális gépek gyűjtemény teljesítményszámlálók engedélyezése, valamint telepítése, és engedélyezze a ServiceMap és InfrastructureInsights megoldást a munkaterületén. Az eljárást a a [-beli virtuális gépek üzembe helyezése az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#deploy-azure-monitor-for-vms) útmutató.
+
+### <a name="in-the-azure-stack-administration-portal"></a>Az Azure Stack felügyeleti portálon
+Miután engedélyezte az Azure Automation-megoldások az Azure Portalon, ezután kell bejelentkezni az Azure Stack felügyeleti portálon, a felhő rendszergazdájához, és töltse le a **Azure Monitor, az Update és a konfigurációkezelés** és a **Azure Monitor, az Update és a Linux-kezelési** kiterjesztése az Azure Stack piactéren elemek. 
+
+   ![Az Azure Monitor, az update és a konfigurációs felügyeleti bővítmény Piactéri elem](media/vm-update-management/2.PNG) 
+
+Engedélyezze a virtuális gépek Map megoldását az Azure Monitor, és betekintést nyerhet a hálózati függőségeket, kell is letöltheti a **Azure Monitor függőségi ügynök**:
+
+   ![Az Azure Monitor függőségi ügynök](media/vm-update-management/2-dependency.PNG) 
 
 ## <a name="enable-update-management-for-azure-stack-virtual-machines"></a>Az Update Management engedélyezése a virtuális gépek az Azure Stack
 Kövesse az alábbi lépéseket az Azure Stack-beli virtuális gépek az update management engedélyezése.
@@ -96,8 +116,28 @@ Miután a virtuális gépek vizsgálata, ezek megjelennek a frissítéskezelési
 
 Az Azure Stack-beli virtuális gépek és Azure virtuális gépeken ütemezett frissítéstelepítések most már szerepelni.
 
+## <a name="enable-azure-monitor-for-vms-running-on-azure-stack"></a>Az Azure Stacken futó virtuális gépek az Azure Monitor engedélyezése
+Miután a virtuális gépen a **Azure Monitor, az Update és a konfigurációkezelés** és a **Azure Monitor függőségi ügynök** telepített kiterjesztéseket, elindul az adatok a reporting a [Azure Monitor a virtuális gépek](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) megoldás. 
+
+> [!TIP]
+> A **Azure Monitor függőségi ügynök** bővítmény nincs szükség a paramétereket. Az Azure Monitor, virtuális gépek térkép függőségi ügynök maga adatokat nem továbbít, és nincs szükség tűzfalak és a portok módosítása. A térképadatok mindig továbbítása a Log Analytics-ügynököket, az Azure Monitor szolgáltatásba, vagy közvetlenül vagy keresztül a [OMS-átjáró](https://docs.microsoft.com/azure/azure-monitor/platform/gateway) , ha az informatikai biztonsági szabályzatok nem engedélyezése a számítógépek a hálózat csatlakozik az internethez.
+
+Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Áll számos elemet kell figyelembe venni a teljesítmény esetén, amelyek az Azure Monitor a virtuális gépek figyelők legfontosabb operációs rendszer teljesítménymutatókat kapcsolódó processzor, memória, hálózati adapter és lemezhasználat. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.
+
+   ![Az Azure teljesítményének monitorozása lap](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
+
+Megjelenítése a detektált alkalmazás-összetevők Windows és Linux rendszerű virtuális gépeken futó Azure Stack figyelhető kétféle módon az Azure Monitor szolgáltatással a virtuális gépek esetében a virtuális gépről közvetlenül, vagy a virtuális gépek az Azure Monitor csoportokhoz.
+A [Azure Monitor használatával virtuális gépek (előzetes verzió) alkalmazás-összetevők ismertetése a térkép](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-maps) a cikk segít megérteni a felhasználói élményt a két perspektíva adatai és a térkép funkció használata között.
+
+   ![Az Azure teljesítményének monitorozása lap](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
+
+
 ## <a name="enable-update-management-using-a-resource-manager-template"></a>Resource Manager-sablon használatával az Update Management engedélyezése
 Ha az Azure Stack virtuális gépek nagy számú, használhatja [ezen Azure Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) könnyebben üzembe helyezheti a megoldást, a virtuális gépeken. A sablon üzembe helyezi a Microsoft Monitoring Agent bővítményt egy meglévő Azure Stack virtuális Gépet, és hozzáadja azt a meglévő Azure LogAnalytics munkaterülethez.
  
 ## <a name="next-steps"></a>További lépések
 [Az SQL Server rendszerű virtuális gép teljesítményének optimalizálásához](azure-stack-sql-server-vm-considerations.md)
+
+
+
+

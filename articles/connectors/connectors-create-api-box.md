@@ -2,7 +2,6 @@
 title: Csatlakozhat a Boxhoz – Azure Logic Apps |} A Microsoft Docs
 description: Fájlok a Box REST API-k és az Azure Logic Apps létrehozásáról és kezeléséről
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 11/07/2016
 ms.topic: article
@@ -11,22 +10,22 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: aef9423a7281f85029195156a1563d9cfed3029c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 971d38fa0fbd47f0deb815577033bbe684aac32f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229068"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310676"
 ---
 # <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Az Azure Logic Apps a boxban fájlok létrehozásáról és kezeléséről
 
 Ez a cikk bemutatja, hogyan létrehozása és kezelése a fájlokat a boxban belül egy logikai alkalmazást, a Box-összekötővel. Ezzel a módszerrel hozhat létre, amely a feladatok és kezeléséhez a fájlok és más műveletek, például a munkafolyamatok automatizálása a logic apps:
 
-* A kapott boxból adatok az üzleti folyamatot hozhat létre. 
+* A kapott boxból adatok az üzleti folyamatot hozhat létre.
 
 * Indítható automatizált feladatokat és a munkafolyamat, ha egy fájl létrehozásakor vagy frissítésekor.
 
-* Futtassa a másol egy fájlt, töröl egy fájlt, és egyéb műveleteket. 
+* Futtassa a másol egy fájlt, töröl egy fájlt, és egyéb műveleteket.
 
   Ezek a műveletek válasz érkezik, amikor azok elérhetővé a kimeneti más műveletekhez. 
   Például ha egy fájl módosul, a Box, elküldheti a fájlt használja az Office 365 e-mailben.
@@ -37,14 +36,14 @@ Ez a cikk bemutatja, hogyan létrehozása és kezelése a fájlokat a boxban bel
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
-* A logikai alkalmazás, ahol szeretné a Box-fiók eléréséhez. Egy Box-trigger indít el a logikai alkalmazást, szüksége egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* A logikai alkalmazás, ahol szeretné a Box-fiók eléréséhez. Egy Box-trigger indít el a logikai alkalmazást, szüksége egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Alapvető ismeretek szerezhetők [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/box/). 
+A technikai részletekért, például a triggereket, műveletek és -korlátok, leírtak szerint az összekötő OpenAPI (korábbi nevén Swagger) fájl, tekintse meg a [összekötő referenciájának oldalát](/connectors/box/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 57007674e11271e6a3d5bdf660531d01b1eff82c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2da4ee5d60290485d87af86885dda0d72a625fef
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861434"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314807"
 ---
 # <a name="dynamic-manifests"></a>Dinamikus jegyzékek
 
@@ -64,7 +64,7 @@ A dinamikus Manifest eszközprofilok hozhat létre például mobil-, HD/SD, stb-
 
 ![Megjelenítés szűrési példát][renditions2]
 
-A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz dinamikusan csomagolható be a következő adatfolyam-továbbítási protokollok bármelyikét: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
+A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz lehet [dinamikusan csomagolt](dynamic-packaging-overview.md) be a következő adatfolyam-továbbítási protokollok bármelyikét: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
 
 ![Megjelenítés szűrése][renditions1]
 
@@ -122,12 +122,16 @@ Legfeljebb három szűrők kombinálásával.
 
 További információkért lásd: [ez](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blog.
 
+## <a name="associate-filters-with-streaming-locator"></a>Streamelési lokátor szűrők társítása
+
+Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is érvényesek listáját. A [dinamikus packager](dynamic-packaging-overview.md) vonatkozik ez a lista azokat az URL-címet adja meg az ügyfél és-szűrők. Állít elő, ez a kombináció egy [dyanamic jegyzékfájl](filters-dynamic-manifest-overview.md), amely alapján az URL-címben szűrők + szűrők megad a Streamelési lokátor. Azt javasoljuk, hogy a szolgáltatás használata, ha alkalmazza a szűrőket, de nem szeretné elérhetővé tenni az URL-szűrő nevét.
+
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
 - A tartozó értékeket **forceEndTimestamp**, **presentationWindowDuration**, és **liveBackoffDuration** VoD szűrő nem kell beállítani. Csak élő szűrő célokra szolgálnak. 
 - Dinamikus jegyzékfájl működik, Képcsoporttal határok (kulcs keretek), ezért vágást rendelkezik Képcsoporttal pontosságát. 
 - Használhatja ugyanazt a fiókot és az Eszközintelligencia szűrők szűrő nevet. Eszközintelligencia szűrők rendelkezik nagyobb prioritással, és felülírja a fiók szűrők.
-- Frissít egy szűrőt, ha a streamvégpont frissítéséhez a szabályok akár 2 percet vesz igénybe. Ha a tartalom kiszolgálása egyes szűrők használatával (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezeket a szűrőket eredményezhet. Javasoljuk, hogy a gyorsítótár ürítése a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel.
+- Ha frissíti a szűrőt, folyamatos átviteli végponton, a szabályok frissítése akár 2 percet is igénybe vehet. Ha a tartalom kiszolgálása egyes szűrők használatával (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezeket a szűrőket eredményezhet. Javasoljuk, hogy a gyorsítótár ürítése a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel.
 - Az ügyfeleknek kell manuálisan a jegyzékfájl letöltése és elemzése, a pontos startTimestamp és időskálára.
     
     - A számok az adategység tulajdonságainak meghatározásához [lekérése, és vizsgálja meg a jegyzékfájl](#get-and-examine-manifest-files).

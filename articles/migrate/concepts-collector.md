@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080065"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315300"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -82,7 +82,7 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Csatlakozzon az internethez olyan proxyn keresztül
 
 - Ha a proxykiszolgáló hitelesítést igényel, megadhatja a felhasználónevet és jelszót a gyűjtő beállításakor.
-- IP cím vagy teljes Tartománynevét a proxykiszolgálóhoz meg kell *http://IPaddress* vagy *http://FQDN*.
+- IP cím vagy teljes Tartománynevét a proxykiszolgálóhoz meg kell *http:\//IPaddress* vagy *http:\//FQDN*.
 - Csak a HTTP-proxyk használata támogatott. A gyűjtő a HTTPS-alapú proxykiszolgálók nem támogatja.
 - Ha a proxykiszolgálóhoz, egy lehallgató proxy importálnia kell a proxy tanúsítvány a gyűjtő virtuális géphez.
   1. A gyűjtő virtuális gép, lépjen a **Start menü** > **számítógép-tanúsítványok kezelése**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812038"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317510"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Üzembe helyezni a StorSimple Virtual Array – Set mentése, iSCSI-kiszolgáló Azure Portalon
 
@@ -98,7 +98,7 @@ Az alábbi részletes útmutatás segítségével beállíthatja és konfigurál
    
     Az a **webalkalmazás-proxy** oldalon:
    
-   1. Adja meg a **webalkalmazás-proxy URL-címe** a következő formátumban:  *http://host-IP cím* vagy *FQDN: port számát*. Vegye figyelembe, hogy HTTPS URL-címek nem támogatottak.
+   1. Adja meg a **webalkalmazás-proxy URL-címe** a következő formátumban: *http:\//host-IP cím* vagy *FQDN: port számát*. Vegye figyelembe, hogy HTTPS URL-címek nem támogatottak.
    2. Adja meg **hitelesítési** , **alapszintű** vagy **None**.
    3. Hitelesítés használatakor is kell adnia egy **felhasználónév** és **jelszó**.
    4. Kattintson az **Alkalmaz** gombra. Ezzel ellenőrzése és a konfigurált webes proxykiszolgáló beállításait a alkalmazni.

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: e1918d527afbe5aad647d84ab82889099f5f22b9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccdb3e16ea60cf85ae28e533e3b2d9f473cc90c8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105992"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316388"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldásgyorsító helyileg - IntelliJ telepítése
 
@@ -148,7 +148,7 @@ npm install
 npm start
 ```
 
-A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http://localhost:3000/dashboard**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
+A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http:\//localhost:3000 / irányítópult**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
 
@@ -161,7 +161,7 @@ További információ a futó **nginx**, lásd: [nginx-et a Windows](https://ngi
 
 ### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
 
-A távoli figyelési megoldás irányítópultján eléréséhez keresse meg [ http://localhost:9000 ](http://localhost:9000) a böngészőben.
+A távoli figyelési megoldás irányítópultján eléréséhez lépjen a http:\//localhost:9000 a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

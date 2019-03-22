@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 81b09ff3e8bb7e5a41432ff0bdaac36b657d74ea
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569127"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075185"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Gyors útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával
 
@@ -42,8 +42,8 @@ Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása
    - **Erőforráscsoport**: Válassza ki **új létrehozása**, típus *myResourceGroup*, és válassza ki **OK**.
    - **Forrás kiválasztása**: Legördülő listára, és válassza ki **minta (AdventureWorksLT)**.
 
-    > [!IMPORTANT]
-    > Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatokat, így könnyen is követheti ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók.
+     > [!IMPORTANT]
+     > Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatokat, így könnyen is követheti ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók.
   
    ![Önálló adatbázis létrehozása](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -76,9 +76,9 @@ Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása
 
 10. Az a **SQL Database** képernyő, válassza ki **létrehozás** üzembe helyezéséhez és az erőforráscsoport, kiszolgáló és adatbázis üzembe helyezése.
 
-   Üzembe helyezés eltarthat néhány percig. Választhat **értesítések** üzembe helyezési folyamat állapotának monitorozásához az eszköztáron.
+    Üzembe helyezés eltarthat néhány percig. Választhat **értesítések** üzembe helyezési folyamat állapotának monitorozásához az eszköztáron.
 
-   ![Értesítés](./media/sql-database-get-started-portal/notification.png)
+    ![Értesítés](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Az adatbázis lekérdezése
 

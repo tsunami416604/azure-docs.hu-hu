@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: cc55466dac7344053e0cce3cad5f8161cef5226a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438125"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317323"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
 
@@ -34,8 +34,7 @@ Valós idejű kódolás a Media Services használatával kapcsolatos részletes 
 A Media Services RTMP kimenetként rendelkező következő élő kódolók egyikének használatát javasolja. A támogatott URL-sémák a `rtmp://` vagy `rtmps://`.
 
 > [!NOTE]
- > Streamelési RTMP-n keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő TCP-portok nyitva-e.<br/>
- Streamelési RTMPS keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 2935 és 2936 kimenő TCP-portok nyitva-e.
+> Streamelési RTMP-n keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő TCP-portok nyitva-e.
 
 - Az Adobe Flash Media Live Encoder 3.2-es verzióját
 - Haivision KB

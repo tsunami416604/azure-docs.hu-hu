@@ -1,5 +1,5 @@
 ---
-title: A helyszíni Azure AD jelszó-védelmi ügynök verziókiadásai
+title: A helyszíni Azure AD jelszó-védelmi ügynök verziókiadások – Azure Active Directory
 description: Dokumentumok verzió kiadását és viselkedésének módosítási előzmények
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: fd1a96393f3dd9481705e3de8cc42375de7869e7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284799"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311551"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Az Azure AD jelszóvédelem ügynök verzióelőzményei
 

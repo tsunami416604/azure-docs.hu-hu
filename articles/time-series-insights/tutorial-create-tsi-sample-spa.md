@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540146"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312206"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -54,7 +54,7 @@ Mielőtt létrehozna egy alkalmazást, regisztrálnia kell azt az Azure AD-ben. 
    ---|---
    **Name (Név)** | Adjon egy kifejező regisztrációs nevet a profilnak.  
    **Alkalmazás típusa** | Mivel éppen egy SPA-webalkalmazást hoz létre, hagyja meg a „Webalkalmazás/API” értéket.
-   **Bejelentkezési URL** | Adja meg az alkalmazás kezdőlapjának/bejelentkezési oldalának URL-címét. Mivel az alkalmazást az Azure App Service futtatja (lásd később), a használt URL-nek a „https://azurewebsites.net” tartományon belül kell lennie. Ebben a példában a név a regisztrációs néven alapul.
+   **Bejelentkezési URL** | Adja meg az alkalmazás kezdőlapjának/bejelentkezési oldalának URL-címét. Az alkalmazás üzemel az Azure App Service (később), mert egy URL-t kell használnia a "https:\//azurewebsites.net" tartomány. Ebben a példában a név a regisztrációs néven alapul.
 
    Ha elkészült, az új alkalmazásregisztráció létrehozásához kattintson a **Létrehozás** gombra.
 

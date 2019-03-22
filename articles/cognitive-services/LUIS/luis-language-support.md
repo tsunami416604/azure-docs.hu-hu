@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340856"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339516"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -94,3 +94,116 @@ Machine learning alkalmazásához, LUIS bontja az utterance (kifejezés) [jogkiv
 |portugál (brazíliai)|✔||||
 |Spanyol (es-ES)|✔||||
 |Spanyol (es – MX)|✔||||
+
+### <a name="custom-tokenizer-versions"></a>Egyéni jogkivonatokat létrehozó verziók
+
+A következő kulturális környezetek egyéni tokenizer verziójával rendelkezik:
+
+|Kulturális környezet|Verzió|Cél|
+|--|--|--|
+|német<br>`de-de`|1.0.0|Szavak tokenizes halmazra őket egy machine learning-alapú jogkivonatokat létrehozó, amely próbál meg bontja a egyetlen összetevőből összetett szavak használatával.<br>Ha a felhasználó `Ich fahre einen krankenwagen` az utterance (kifejezés), mint szolgáltatás engedélyezve van `Ich fahre einen kranken wagen`. A jelölés, így `kranken` és `wagen` különböző entitásokként egymástól függetlenül.|
+|német<br>`de-de`|1.0.1|A tárolóhelyek halmazra tokenizes a szavakat.<br> Ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) egy, az egyes marad. Így `krankenwagen` egyetlen entitás van megjelölve. |
+
+### <a name="migrating-between-tokenizer-versions"></a>Jogkivonatokat létrehozó verziók közötti migrálás
+
+Az első lehetősége, hogy módosítsa a jogkivonatokat létrehozó verzióját az alkalmazás fájljában, majd importálja a verziót. Ez a művelet módosítja, hogy megcímkézzen tokenekre vannak, de lehetővé teszi, hogy az ugyanazon alkalmazás azonosítóját. 
+
+Tokenizer JSON 1.0.0. Figyelje meg, hogy a tulajdonság értéke `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.0",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.0",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 23,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+JSON tokenizer 1.0.1-es verziója. Figyelje meg, hogy a tulajdonság értéke `tokenizerVersion`. 
+
+```JSON
+{
+    "luis_schema_version": "3.2.0",
+    "versionId": "0.1",
+    "name": "german_app_1.0.1",
+    "desc": "",
+    "culture": "de-de",
+    "tokenizerVersion": "1.0.1",
+    "intents": [
+        {
+            "name": "i1"
+        },
+        {
+            "name": "None"
+        }
+    ],
+    "entities": [
+        {
+            "name": "Fahrzeug",
+            "roles": []
+        }
+    ],
+    "composites": [],
+    "closedLists": [],
+    "patternAnyEntities": [],
+    "regex_entities": [],
+    "prebuiltEntities": [],
+    "model_features": [],
+    "regex_features": [],
+    "patterns": [],
+    "utterances": [
+        {
+            "text": "ich fahre einen krankenwagen",
+            "intent": "i1",
+            "entities": [
+                {
+                    "entity": "Fahrzeug",
+                    "startPos": 16,
+                    "endPos": 27
+                }
+            ]
+        }
+    ],
+    "settings": []
+}
+```
+
+A második lehetősége, hogy [importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file), egy verzió helyett. Ez a művelet azt jelenti, az új alkalmazás egy másik alkalmazás Azonosítóval rendelkezik, de a fájlban megadott jogkivonatokat létrehozó verzióját használja. 

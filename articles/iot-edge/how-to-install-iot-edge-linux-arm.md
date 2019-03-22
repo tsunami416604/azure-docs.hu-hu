@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 03/20/2019
 ms.author: kgremban
-ms.openlocfilehash: dbe9f18f5a38284e2b263d636656c88b1743d7ea
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ad7e34110b0c6d047eb7454b7fac9f8c10df8be2
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555642"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316099"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (ARM32v7/armhf) Linux rendszeren
 
@@ -22,7 +22,7 @@ Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-e
 
 Az IoT Edge-futtatókörnyezet működését, és milyen összetevők járnak kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
 
-Ez a cikk a Linux ARM32v7/armhf Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. Tekintse meg [Azure IoT Edge-támogatás](support.md#operating-systems) által jelenleg támogatott ARM32 operációs rendszerek listáját. 
+Ez a cikk a Linux ARM32v7/armhf IoT Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. ARM32 támogatott operációs rendszerek listáját lásd: [Azure IoT Edge-támogatás](support.md#operating-systems). 
 
 >[!NOTE]
 >A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
@@ -34,7 +34,6 @@ Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis](https://www.opencontainers
 Az alábbi parancsokat a Moby-alapú motor és a parancssori felület (CLI) telepítése. A parancssori felület az éles környezetekben üzemelő példányok esetén nem kötelező, de hasznos, ha fejlesztési.
 
 ```bash
-
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
 
@@ -46,12 +45,11 @@ curl -L https://aka.ms/moby-cli-armhf-latest -o moby_cli.deb && sudo dpkg -i ./m
 
 # Run apt-get fix
 sudo apt-get install -f
-
 ```
 
 ## <a name="install-the-iot-edge-security-daemon"></a>Az IoT Edge biztonsági démon telepítése
 
-A **IoT Edge biztonsági démon** biztosít, és fenntartja az Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-futtatókörnyezet a többi elindításával. 
+A **IoT Edge biztonsági démon** biztosít, és fenntartja az IoT Edge-eszközön a biztonsági követelményeknek. A démon a naplózásra kerül minden rendszerindításkor elindul, és csatlakoztatja az eszközt az IoT Edge-futtatókörnyezet a többi elindításával. 
 
 
 ```bash
@@ -76,10 +74,9 @@ A démon a konfigurációs fájlban a következő konfigurálható `/etc/iotedge
 
 Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközök kapcsolatok karakterlánc segítségével manuálisan. Másik lehetőségként használhatja a Device Provisioning Service-eszközök automatikus kiépítésére, amely akkor hasznos, ha sok eszköz kiépítéséhez van. Üzembe helyezési válaszaitól függően válassza ki a megfelelő telepítési parancsfájlt. 
 
-### <a name="option-1-manual-provisioning"></a>1. lehetőség: Manuális kiépítése
+### <a name="option-1-manual-provisioning"></a>Option 1: Manuális kiépítése
 
-A manuális üzembe helyezi az eszközt, meg kell adnia azt egy [eszköz kapcsolati karakterláncának](how-to-register-device-portal.md) , hogy egy új eszköz regisztrációja az IoT hub létrehozásához.
-
+A manuális üzembe helyezi az eszközt, meg kell adnia azt egy [eszköz kapcsolati karakterláncának](how-to-register-device-portal.md) , hogy egy új IoT Edge-eszköz regisztrációja az IoT hub létrehozásához.
 
 Nyissa meg a konfigurációs fájlban. 
 
@@ -89,21 +86,21 @@ sudo nano /etc/iotedge/config.yaml
 
 Keresse meg az üzembe helyezési fájl, és vonja vissza a **manuális** üzembe helyezési mód. Frissítse az értéket a **device_connection_string** a kapcsolati karakterlánccal az IoT Edge-eszközről.
 
-   ```yaml
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```yaml
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
-   # provisioning: 
-   #   source: "dps"
-   #   global_endpoint: "https://global.azure-devices-provisioning.net"
-   #   scope_id: "{scope_id}"
-   #   registration_id: "{registration_id}"
-   ```
+# provisioning: 
+#   source: "dps"
+#   global_endpoint: "https://global.azure-devices-provisioning.net"
+#   scope_id: "{scope_id}"
+#   registration_id: "{registration_id}"
+```
 
 Mentse és zárja be a fájlt. 
 
-   `CTRL + X`, `Y`, `Enter`
+`CTRL + X`, `Y`, `Enter`
 
 Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
 
@@ -111,7 +108,7 @@ Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon új
 sudo systemctl restart iotedge
 ```
 
-### <a name="option-2-automatic-provisioning"></a>2. lehetőség: Automatikus felhasználóátadás
+### <a name="option-2-automatic-provisioning"></a>Option 2: Automatikus felhasználóátadás
 
 Automatikus kiépítésére egy eszközt, [Device Provisioning Service beállítása és lekérése a regisztrációs Eszközazonosító](how-to-auto-provision-simulated-device-linux.md). Csak olyan eszközökre, amelyeken egy platformmegbízhatósági modul (TPM) lapka automatikus üzembe helyezés működik. Például Raspberry Pi-eszközök nem biztosítja a TPM-hez alapértelmezés szerint. 
 
@@ -123,21 +120,21 @@ sudo nano /etc/iotedge/config.yaml
 
 Keresse meg az üzembe helyezési fájl, és vonja vissza a **dps** üzembe helyezési mód. Frissítse a **scope_id** és **registration_id** az IoT Hub Device Provisioning service és az IoT Edge-eszköz TPM Modullal rendelkező értékeivel. 
 
-   ```yaml
-   # provisioning:
-   #   source: "manual"
-   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```yaml
+# provisioning:
+#   source: "manual"
+#   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
-   provisioning: 
-     source: "dps"
-     global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "{scope_id}"
-     registration_id: "{registration_id}"
-   ```
+provisioning: 
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "{scope_id}"
+  registration_id: "{registration_id}"
+```
 
 Mentse és zárja be a fájlt. 
 
-   `CTRL + X`, `Y`, `Enter`
+`CTRL + X`, `Y`, `Enter`
 
 Miután megadta a kiépítési adatokat a konfigurációs fájlban, a démon újraindításához:
 
@@ -147,7 +144,7 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
 
-Ha használta a **manuális konfigurációs** az előző szakasz lépéseit, az IoT Edge-futtatókörnyezet kell lennie, sikeresen üzembe helyezi és futtatja az eszközön. Ha használta a **automatikus konfiguráció** lépéseit, majd hajtsa végre az alábbi lépéseket, hogy a futtatókörnyezet regisztrálhatja az eszközt az IoT hubbal, az Ön nevében. Lásd az alábbi lépésekkel [létrehozásával és kiépítésével egy szimulált TPM-eszköz peremhálózati eszköz egy Linux rendszerű virtuális gépre](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
+Ha használta a **manuális konfigurációs** az előző szakasz lépéseit, az IoT Edge-futtatókörnyezet kell lennie, sikeresen üzembe helyezi és futtatja az eszközön. Vagy, ha használta a **automatikus konfiguráció** lépéseit, majd hajtsa végre az alábbi lépéseket, hogy a futtatókörnyezet regisztrálhatja az eszközt az IoT hubbal, az Ön nevében. Lásd az alábbi lépésekkel [létrehozása és üzembe helyezése Linux rendszerű virtuális gépen egy szimulált TPM-eszköz IoT Edge-eszköz](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
 Az IoT Edge-démon használatával állapotát ellenőrizheti:
 
@@ -208,6 +205,6 @@ sudo apt-get remove --purge moby-engine
 
 Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
 
-Ha az Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási](troubleshoot.md#stability-issues-on-resource-constrained-devices) lapot.
+Ha az IoT Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási](troubleshoot.md#stability-issues-on-resource-constrained-devices) lapot.
 
 Egy meglévő telepítéshez az IoT Edge a legújabb verzióra frissítéséhez lásd [az IoT Edge biztonsági démon és a futtatókörnyezet frissítése](how-to-update-iot-edge.md).

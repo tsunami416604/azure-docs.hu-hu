@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 8098196abc415dedba392737fc17a4de5739339d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 21396a10543d388b6ac360f426272f1841b2f510
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100240"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314110"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso áttelepítése:  Team Foundation Server üzemelő példányának újrabontása az Azure DevOps Services-re
 
@@ -156,7 +156,7 @@ Contoso-rendszergazdák a TFS-áttelepítési eszköz futtassa az áttelepítés
 
 2. A gyűjtemény URL-Címének megadásával az érvényesítés végrehajtásához az eszköz futtatása:
 
-        **TfsMigrator validate /collection:http://contosotfs:8080/tfs/ContosoDev**
+   **TfsMigrator /collection:http ellenőrzése:\//contosotfs:8080/tfs/ContosoDev**
 
 
 3. Az eszköz akkor jelez hibát.
@@ -175,7 +175,7 @@ Contoso-rendszergazdák a TFS-áttelepítési eszköz futtassa az áttelepítés
 
      ![TFS](./media/contoso-migration-tfs-vsts/collection5.png)
 
-6. Futtassa újra a érvényesítési parancsot, és tartalmazzák ezt az értéket, az Azure AD nevük mellett: **TfsMigrator /collection ellenőrzése:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**.
+6. Futtassa újra a érvényesítési parancsot, és tartalmazzák ezt az értéket, az Azure AD nevük mellett: **TfsMigrator /collection:http ellenőrzése:\//contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com**.
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection7.png)
 
@@ -195,7 +195,7 @@ Az érvényesítés befejeződött, a Contoso is segítségével a rendszergazd�
 
 1. Az előkészítési lépés, futtassa az eszközt.
 
-    **TfsMigrator előkészítése /collection:http://contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com /accountRegion:cus**
+    **TfsMigrator előkészítése /collection:http:\//contosotfs:8080/tfs/ContosoDev /tenantDomainName:contosomigration.onmicrosoft.com /accountRegion:cus**
 
      ![Előkészítés](./media/contoso-migration-tfs-vsts/prep1.png)
 

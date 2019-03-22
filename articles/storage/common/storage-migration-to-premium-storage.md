@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd72e2a75c00c30fdc5497e0d88e9c83dc5fcad8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006508"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317357"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -158,7 +158,7 @@ Hozzon létre egy storage-fiók karbantartása a virtuális merevlemezeket. A vi
 Adatlemezek esetén dönthet úgy, hogy ne néhány adatlemezt a standard szintű tárfiók (például lemezek, amelyek rendelkeznek a hűtőre vonatkozó tárolási), de erősen javasoljuk, hogy minden adat a prémium szintű storage használata éles számítási feladatok áthelyezése.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés. Másolja a VHD-AzCopy vagy a PowerShell használatával
-Meg kell keresnie feldolgozni a két lehetőség közül választhat a tároló elérési útja és a tárfiók kulcsára. Tároló elérési útja és a tárfiók kulcsát található **az Azure Portal** > **tárolási**. A tároló URL-címe lesz, mint például "https://myaccount.blob.core.windows.net/mycontainer/".
+Meg kell keresnie feldolgozni a két lehetőség közül választhat a tároló elérési útja és a tárfiók kulcsára. Tároló elérési útja és a tárfiók kulcsát található **az Azure Portal** > **tárolási**. A tároló URL-címe lesz, például a "https:\//myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Másolja a VHD-t az Azcopyval (aszinkron példány)
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.

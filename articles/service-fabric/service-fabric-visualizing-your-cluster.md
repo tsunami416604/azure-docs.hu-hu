@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: ba6a9a09945f0e822dfe02a74f2cdb8e21a1691c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674667"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317391"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -46,7 +46,7 @@ Az alábbi hivatkozások segítségével töltheti le a Service Fabric Explorer 
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>A fürtön futó Service Fabric Explorerben
 
-A Service Fabric Explorer egy Service Fabric-fürt HTTP-felügyeleti végpont is üzemel. SFX elindíthatja egy webböngészőben, keresse meg a HTTP-felügyeleti végpont a fürt minden böngészőből – például https://clusterFQDN:19080.
+A Service Fabric Explorer egy Service Fabric-fürt HTTP-felügyeleti végpont is üzemel. SFX elindíthatja egy webböngészőben, keresse meg a HTTP-felügyeleti végpont a fürt minden böngészőből – például https:\//clusterFQDN:19080.
 
 A fejlesztő munkaállomás telepítő, elindíthatja a Service Fabric Explorer a helyi fürtön lévő lépve https://localhost:19080/Explorer. Tekintse meg ebben a cikkben [a fejlesztési környezet előkészítését](service-fabric-get-started.md).
 

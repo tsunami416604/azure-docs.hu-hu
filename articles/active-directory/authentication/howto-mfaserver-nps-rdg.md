@@ -1,5 +1,5 @@
 ---
-title: RDG és Azure MFA-kiszolgáló a RADIUS használatával | Microsoft Docs
+title: RDG és Azure MFA-kiszolgáló RADIUS - Azure Active Directory használatával
 description: Ez az Azure Multi-Factor Authentication-oldal segítséget nyújt a távoli asztali (RD) átjáró és a RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló telepítéséhez.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f8c2ecb4f72595398d5631d9545c2ebaa42533
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 25db23ad12dc3494459abe0c7def1008ff21fd36
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181620"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314469"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635404"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317272"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák 
 
@@ -41,7 +41,7 @@ Ebben a dokumentumban megismerkedhet a kezeléséhez és monitorozásához [Apac
   * A Visual Studio 2013 Update 4 vagy [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
-  * A Visual Studio 2015 (bármely kiadás esetén)
+  * Visual Studio 2015 (any edition)
 
   * Visual Studio 2017 (bármely kiadás). A Data Lake Tools for Visual Studio 2017 Azure workload munkafolyamatának részét vannak telepítve.
 
@@ -215,15 +215,15 @@ További információkért lásd: [Apache Storm UI REST API-val](https://storm.a
 
 ### <a name="base-uri"></a>Alap URI-t
 
-Az alap URI a REST API-hoz a Linux-alapú HDInsight-fürtökön érhető el, az átjárócsomópont **https://HEADNODEFQDN:8744/api/v1/**. A tartománynév, a fő csomópont jön létre a fürt létrehozásakor, és nem statikus.
+Az alap URI a REST API-hoz a Linux-alapú HDInsight-fürtökön érhető el, az átjárócsomópont **https:\//HEADNODEFQDN:8744/api/v1/**. A tartománynév, a fő csomópont jön létre a fürt létrehozásakor, és nem statikus.
 
 A fürt fő csomópontjának teljes tartománynevét (FQDN) a különféle módokon találja:
 
 * **SSH-munkamenetből történő**: A parancs használata `headnode -f` a fürthöz egy SSH-munkamenetből.
 * **Az Ambari webes**: Válassza ki **szolgáltatások** lehetőséget az oldal tetején, majd válassza ki **Storm**. Az a **összefoglalás** lapon jelölje be **Storm felhasználói felület Server**. A csomópont, a Storm felhasználói felület és a REST API-t üzemeltető teljes Tartománynevét, amely a lap tetején jelenik meg.
-* **Az Ambari REST API-ból**: A parancs használata `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` kérhet le információt a csomópontot, a Storm felhasználói felület és a REST API-t futtat. Cserélje le **CLUSTERNAME** a fürt nevére. Amikor a rendszer kéri, adja meg a bejelentkezési (rendszergazdai) fiókjának jelszavát. A válasz a "gazdaszámítógép_neve" bejegyzés tartalmazza a csomópont teljes Tartományneve.
+* **Az Ambari REST API-ból**: A parancs használata `curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` kérhet le információt a csomópontot, a Storm felhasználói felület és a REST API-t futtat. Cserélje le **CLUSTERNAME** a fürt nevére. Amikor a rendszer kéri, adja meg a bejelentkezési (rendszergazdai) fiókjának jelszavát. A válasz a "gazdaszámítógép_neve" bejegyzés tartalmazza a csomópont teljes Tartományneve.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A REST API-kérésnek kell használnia **alapszintű hitelesítés**, így a HDInsight fürt rendszergazdai felhasználónevét és jelszavát használja.
 

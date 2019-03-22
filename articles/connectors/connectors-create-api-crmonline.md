@@ -1,21 +1,21 @@
 ---
-title: Csatlakozhat a Dynamics 365 – Azure Logic Apps |} A Microsoft Docs
+title: Csatlakozhat a Dynamics 365 – Azure Logic Apps
 description: Hozzon létre, és a Dynamics 365 (online) REST API-k és az Azure Logic Apps-rekordok kezelése
+services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: Mattp123
 ms.author: matp
-ms.service: logic-apps
-services: logic-apps
 ms.reviewer: estfan, LADocs
-ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
+ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295300"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310574"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Az Azure Logic Apps Dynamics 365-rekordok kezelése
 
@@ -26,13 +26,13 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
 * A [Dynamics 365-fiók](https://dynamics.microsoft.com)
 
 * Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné a Dynamics 365-fiókjába. A logikai alkalmazást egy Dynamics 365-trigger indít el, hogy szüksége egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* A logikai alkalmazás, ahol szeretné a Dynamics 365-fiókjába. A logikai alkalmazást egy Dynamics 365-trigger indít el, hogy szüksége egy [üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-dynamics-365-trigger"></a>Dynamics 365-eseményindító hozzáadása
 
@@ -50,8 +50,8 @@ Először adja hozzá a Dynamics 365-eseményindító, amely akkor aktiválódik
 
 1. Adja meg ezeket a trigger részletei:
 
-   | Tulajdonság | Szükséges | Leírás | 
-   |----------|----------|-------------| 
+   | Tulajdonság | Szükséges | Leírás |
+   |----------|----------|-------------|
    | **Szervezet neve** | Igen | Figyelő, például "Contoso" a szervezet Dynamics 365-példány neve |
    | **Entitás neve** | Igen | A név az entitás figyelése, például "érdeklődők" | 
    | **Gyakoriság** | Igen | Az eseményindító kapcsolatos időközökkel használata frissítések keresésekor időegység |
@@ -72,21 +72,21 @@ Most adja hozzá a Dynamics 365-műveletet, amely az új érdeklődő bejegyzés
 
 1. Adja meg a művelet részletei:
 
-   | Tulajdonság | Szükséges | Leírás | 
-   |----------|----------|-------------| 
+   | Tulajdonság | Szükséges | Leírás |
+   |----------|----------|-------------|
    | **Szervezet neve** | Igen | A Dynamics 365-példányt, ahol hozhat létre a rekord, amely nem az eseményindító a használt példánnyal rendelkezik, de nem ebben a példában a "Contoso" |
-   | **Entitás neve** | Igen | Az entitást, ahol szeretné létrehozni a bejegyzést, például "Tevékenységek" | 
+   | **Entitás neve** | Igen | Az entitást, ahol szeretné létrehozni a bejegyzést, például "Tevékenységek" |
    | | |
 
    ![Művelet részletei](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Ha a **tulajdonos** mezőben jelenik meg a műveletet, kattintson a **tulajdonos** mezőbe, így a dinamikus tartalmak listája jelenik meg. Ebből a listából válassza ki a feladat-rekord az új érdeklődő bejegyzését társított foglalandó mezők értékét:
 
-   | Mező | Leírás | 
-   |-------|-------------| 
+   | Mező | Leírás |
+   |-------|-------------|
    | **Vezetéknév** | A Vezetéknév, az érdeklődő, a bejegyzés az elsődleges kapcsolattartási |
-   | **A témakör** | A leíró neve a rekordban levő az érdeklődő | 
-   | | | 
+   | **A témakör** | A leíró neve a rekordban levő az érdeklődő |
+   | | |
 
    ![A feladat részleteit](./media/connectors-create-api-crmonline/create-record-details.png)
 
@@ -109,7 +109,7 @@ Használhatja például egy Szűrőlekérdezés a csak az aktív fiókokat, és 
 
    ![Adja meg a szűrési és egy rendezési](./media/connectors-create-api-crmonline/advanced-options.png)
 
-További információkért tekintse meg a Dynamics 365 Customer Engagement webes API rendszerlekérdezési beállításait: 
+További információkért tekintse meg a Dynamics 365 Customer Engagement webes API rendszerlekérdezési beállításait:
 
 * [$filter](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#filter-results)
 * [$orderby](https://docs.microsoft.com/dynamics365/customer-engagement/developer/webapi/query-data-web-api#order-results)
@@ -128,19 +128,19 @@ Ez a táblázat néhány mezőt és az ezek értékeinek szükséges adattípuso
 | Írja be a mezőkben a Rekordazonosító és a keresési | Elsődleges kulcs | Más entitásrekordra hivatkozó egyes mezőkben a Rekordazonosító és a egy keresési típus szükséges. | 
 ||||
 
-Ezek mezőtípusok kibővítve, az alábbiakban a Dynamics 365 triggereket és műveleteket, egy rekord azonosítója és a keresési típus együttes példa mezőket. Ez a követelmény azt jelenti, hogy a dinamikus listából kiválasztott értékek nem fognak működni. 
+Ezek mezőtípusok kibővítve, az alábbiakban a Dynamics 365 triggereket és műveleteket, egy rekord azonosítója és a keresési típus együttes példa mezőket. Ez a követelmény azt jelenti, hogy a dinamikus listából kiválasztott értékek nem fognak működni.
 
-| Mező | Leírás | 
+| Mező | Leírás |
 |-------|-------------|
-| **Tulajdonos** | Kell egy érvényes felhasználói azonosító bármelyik vagy csapat rekord azonosítója. | 
-| **Tulajdonos típusa** | Kell lennie, vagy **rendszerfelhasználó** vagy **csapatok**. | 
-| **Kapcsolódó elemek** | Kell egy érvényes Rekordazonosítót, például egy fiók azonosítója, vagy lépjen kapcsolatba a rekord azonosítója. | 
-| **Kapcsolódó elemek típusa** | Például lehet egy keresési típus **fiókok** vagy **névjegyek**. | 
-| **Ügyfél** | Kell egy érvényes Rekordazonosítót, például egy fiók azonosítója, vagy lépjen kapcsolatba a rekord azonosítója. | 
-| **Ügyfél típusa** | Például lehet a keresési típus **fiókok** vagy **névjegyek**. | 
+| **Tulajdonos** | Kell egy érvényes felhasználói azonosító bármelyik vagy csapat rekord azonosítója. |
+| **Tulajdonos típusa** | Kell lennie, vagy **rendszerfelhasználó** vagy **csapatok**. |
+| **Kapcsolódó elemek** | Kell egy érvényes Rekordazonosítót, például egy fiók azonosítója, vagy lépjen kapcsolatba a rekord azonosítója. |
+| **Kapcsolódó elemek típusa** | Például lehet egy keresési típus **fiókok** vagy **névjegyek**. |
+| **Ügyfél** | Kell egy érvényes Rekordazonosítót, például egy fiók azonosítója, vagy lépjen kapcsolatba a rekord azonosítója. |
+| **Ügyfél típusa** | Például lehet a keresési típus **fiókok** vagy **névjegyek**. |
 |||
 
-Ebben a példában a művelet nevű **hozzon létre egy új rekordot** létrehoz egy új feladat rekordot: 
+Ebben a példában a művelet nevű **hozzon létre egy új rekordot** létrehoz egy új feladat rekordot:
 
 ![A feladat-rekord Rekordazonosítók és keresési típusok létrehozása](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
@@ -148,13 +148,13 @@ Ezzel a művelettel egy adott felhasználói azonosító vagy csapat Rekordazono
 
 ![Tulajdonos és a keresési típusú rekorddal](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-Ez a művelet is hozzáadja egy a rekord azonosítója a hozzá társított ügyfélrekordot a **kapcsolatos** mező, majd a keresési típust a **kapcsolódó elemek típusa** mező: 
+Ez a művelet is hozzáadja egy a rekord azonosítója a hozzá társított ügyfélrekordot a **kapcsolatos** mező, majd a keresési típust a **kapcsolódó elemek típusa** mező:
 
 ![Kapcsolódó rekord és a keresési típus](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
 ## <a name="find-record-id"></a>Keresse meg a rekord azonosítója
 
-Egy rekord Azonosítójának megkereséséhez kövesse az alábbi lépéseket: 
+Egy rekord Azonosítójának megkereséséhez kövesse az alábbi lépéseket:
 
 1. Dynamics 365 nyissa meg a rekord, például egy ügyfélrekordot.
 
@@ -175,7 +175,7 @@ Keresse meg, és tekintse át a sikertelen lépéseket a logikai alkalmazásban,
 
    ![A logikai alkalmazás futtatásának állapota](./media/connectors-create-api-crmonline/run-history.png)
 
-1. Bontsa ki egy hibás lépés, hogy meg tudja tekinteni a további részleteket. 
+1. Bontsa ki egy hibás lépés, hogy meg tudja tekinteni a további részleteket.
 
    ![Bontsa ki a sikertelen lépés](./media/connectors-create-api-crmonline/expand-failed-step.png)
 
@@ -187,7 +187,7 @@ A logic apps hibaelhárítással kapcsolatos további információkért lásd: [
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részleteket, például a triggereket, műveletek és -korlátok, az összekötő Swagger-fájl által leírt: a [összekötő referencialapja](/connectors/dynamicscrmonline/). 
+A technikai részletekért, például a triggereket, műveletek és -korlátok, leírtak szerint az összekötő OpenAPI (korábbi nevén Swagger) fájl, tekintse meg a [összekötő referenciájának oldalát](/connectors/dynamicscrmonline/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

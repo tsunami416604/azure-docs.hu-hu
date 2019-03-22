@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 19fb53e73da40a65b074cb0c2f14f11bb130b586
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed0d65a0f00bd5ebc3227a249beec6bafd791347
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177619"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335929"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL Database felügyelt példányába Azure PowerShell-lel
-Ebben a cikkben telepít át a **Adventureworks2012** adatbázis visszaállítása egy helyi példányára, az SQL Server 2005 vagy újabb egy Azure SQL Database felügyelt példánya a Microsoft Azure PowerShell használatával. Adatbázisok migrálhatók a helyszíni SQL Server-példány az Azure SQL Database felügyelt példányába történő használatával az `AzureRM.DataMigration` a Microsoft Azure PowerShell-modulja.
+Ebben a cikkben telepít át a **Adventureworks2012** adatbázis visszaállítása egy helyi példányára, az SQL Server 2005 vagy újabb egy Azure SQL Database felügyelt példánya a Microsoft Azure PowerShell használatával. Adatbázisok migrálhatók a helyszíni SQL Server-példány az Azure SQL Database felügyelt példányába történő használatával az `Az.DataMigration` a Microsoft Azure PowerShell-modulja.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -38,40 +38,40 @@ A lépések elvégzéséhez szüksége:
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 vagy újabb.
 - Az Azure Resource Manager üzembe helyezési modell, amely biztosítja az Azure Database Migration Service-helyek közötti kapcsolatok a helyszíni adatforrás-kiszolgálók használatával a virtuális hálózat létrehozva [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 - A Data Migration Assistant szolgáltatást használ, a cikkben leírtak szerint a helyi adatbázis és séma migrálási felmérést elvégzése [egy SQL Server migrálási felmérést végez](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
-- Töltse le és telepítse a AzureRM.DataMigration modul PowerShell-galériából történő használatával való [Install-Module PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
+- Töltse le és telepítse a Az.DataMigration modul PowerShell-galériából történő használatával való [Install-Module PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)
 - SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatokat ahhoz, hogy rendelkezik a [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel.
 - Annak érdekében, hogy a cél Azure SQL DB-hez való kapcsolódáshoz használt hitelesítő adatok példány az adatbázis VEZÉRLÉSE engedéllyel rendelkezik a cél Azure SQL Database-adatbázisok.
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiók előkészületek.
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be a Microsoft Azure-előfizetés
-A cikk utasításokat használja [bejelentkezés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.4.1) PowerShell használatával jelentkezzen be az Azure-előfizetésében.
+A cikk utasításokat használja [bejelentkezés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps) PowerShell használatával jelentkezzen be az Azure-előfizetésében.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, egy virtuális gép létrehozása előtt.
 
-Hozzon létre egy erőforráscsoportot a használatával a [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) parancsot. 
+Hozzon létre egy erőforráscsoportot a használatával a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsot. 
 
 A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* a a *EastUS* régióban.
 
 ```powershell
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 ## <a name="create-an-instance-of-the-azure-database-migration-service"></a>Az Azure Database Migration Service-példány létrehozása 
-Azure Database Migration Service új példányának használatával hozhat létre a `New-AzureRmDataMigrationService` parancsmagot. Ennek a parancsmagnak a következő szükséges paraméterek:
-- *Azure erőforráscsoport-nevet*. Használhat [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) parancsot hozhat létre Azure-erőforráscsoporton előzőekben ismertetettek szerint, és a name paramétert adja meg.
+Azure Database Migration Service új példányának használatával hozhat létre a `New-AzDataMigrationService` parancsmagot. Ennek a parancsmagnak a következő szükséges paraméterek:
+- *Azure erőforráscsoport-nevet*. Használhat [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsot hozhat létre Azure-erőforráscsoporton előzőekben ismertetettek szerint, és a name paramétert adja meg.
 - *Szolgáltatásnév*. Karakterlánc, amely megfelel a kívánt egyedi szolgáltatás nevének, Azure Database Migration Service 
 - *Hely*. A szolgáltatás helyét adja meg. Adja meg az Azure data center egy helyen, például az USA nyugati RÉGIÓJA vagy Délkelet-Ázsia
 - *Termékváltozat*. Ez a paraméter DMS Sku-név tartozik. Jelenleg támogatott Sku-nevek a következők *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*
-- *Virtuális alhálózati azonosító*. Parancsmagot használhatja [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) alhálózat létrehozását. 
+- *Virtuális alhálózati azonosító*. Parancsmagot használhatja [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) alhálózat létrehozását. 
 
 A következő példában létrehozunk egy elnevezett szolgáltatás *MyDMS* erőforráscsoportban *MyDMSResourceGroup* található a *USA keleti Régiójában* nevűvirtuálishálózatothasználórégió *MyVNET* és nevű alhálózat *MySubnet*.
 
 ```powershell
- $vNet = Get-AzureRmVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+ $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
 
-$vSubNet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
+$vSubNet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
 
-$service = New-AzureRmDms -ResourceGroupName myResourceGroup `
+$service = New-AzDms -ResourceGroupName myResourceGroup `
   -ServiceName MyDMS `
   -Location EastUS `
   -Sku Basic_2vCores `  
@@ -82,7 +82,7 @@ $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
 Miután létrehozott egy Azure Database Migration Service-példányt, hozzon létre egy migrálási projektet. Az Azure Database Migration Service-projekt kapcsolatadatok mind a forrás és cél-példányok, valamint az, hogy a projekt részeként migrálni kívánt adatbázisok listájának kell rendelkeznie.
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Adatbázis-kapcsolati adatok objektum a forrás- és kapcsolatok létrehozása
-Egy adatbázis-kapcsolati adatok objektum használatával is létrehozhat a `New-AzureRmDmsConnInfo` parancsmagot. Ennek a parancsmagnak a következő paraméterekkel:
+Egy adatbázis-kapcsolati adatok objektum használatával is létrehozhat a `New-AzDmsConnInfo` parancsmagot. Ennek a parancsmagnak a következő paraméterekkel:
 - *ServerType*. Adatbázis-kapcsolatot kért, például az SQL, Oracle vagy MySQL típusú. SQL az SQL Server és az Azure SQL használata.
 - *Adatforrás*. Név vagy IP-címét egy SQL Server-példányt vagy az Azure SQL database.
 - *Érvénytelen AuthType*. A kapcsolat, amely lehet SqlAuthentication vagy WindowsAuthentication hitelesítési típusa.
@@ -91,7 +91,7 @@ Egy adatbázis-kapcsolati adatok objektum használatával is létrehozhat a `New
 Az alábbi példában a forrás sql-hitelesítéssel MySourceSQLServer nevű SQL Server kapcsolati adatok objektumot hoz létre: 
 
 ```powershell
-$sourceConnInfo = New-AzureRmDmsConnInfo -ServerType SQL `
+$sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -DataSource MySourceSQLServer `
   -AuthType SqlAuthentication `
   -TrustServerCertificate:$true
@@ -100,27 +100,27 @@ $sourceConnInfo = New-AzureRmDmsConnInfo -ServerType SQL `
 A következő példa bemutatja egy Azure SQL Database felügyelt példányába kiszolgáló sql-hitelesítéssel targetmanagedinstance.database.windows.net nevű kapcsolati adatok létrehozása:
 
 ```powershell
-$targetConnInfo = New-AzureRmDmsConnInfo -ServerType SQL `
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -DataSource "targetmanagedinstance.database.windows.net" `
   -AuthType SqlAuthentication `
   -TrustServerCertificate:$false
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>Adja meg az adatbázisokat a migrálási projekt
-Hozzon létre egy `AzureRmDataMigrationDatabaseInfo` , amely megadja az adatbázisok az Azure adatbázis-Migrálás részeként a projekt, amely objektumok adható meg paraméterként, a projekt létrehozásához. A parancsmag `New-AzureRmDataMigrationDatabaseInfo` AzureRmDataMigrationDatabaseInfo létrehozására használható. 
+Hozzon létre egy `AzDataMigrationDatabaseInfo` , amely megadja az adatbázisok az Azure adatbázis-Migrálás részeként a projekt, amely objektumok adható meg paraméterként, a projekt létrehozásához. A parancsmag `New-AzDataMigrationDatabaseInfo` AzDataMigrationDatabaseInfo létrehozására használható. 
 
-A következő példában létrehozunk `AzureRmDataMigrationDatabaseInfo` project számára a **AdventureWorks** adatbázis, és hozzáadja azt a listát adható meg paraméterként a projekt létrehozásához.
+A következő példában létrehozunk `AzDataMigrationDatabaseInfo` project számára a **AdventureWorks** adatbázis, és hozzáadja azt a listát adható meg paraméterként a projekt létrehozásához.
 
 ```powershell
-$dbInfo1 = New-AzureRmDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks
+$dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks
 $dbList = @($dbInfo1)
 ```
 
 ### <a name="create-a-project-object"></a>Projekt-objektum létrehozása
-Végül hoz létre az Azure Database Migration-projekt nevű *MyDMSProject* található *USA keleti Régiójában* használatával `New-AzureRmDataMigrationProject` és a korábban létrehozott forrás- és kapcsolatok és listájának hozzáadása migrálni kívánt adatbázisok.
+Végül hoz létre az Azure Database Migration-projekt nevű *MyDMSProject* található *USA keleti Régiójában* használatával `New-AzDataMigrationProject` és a korábban létrehozott forrás- és kapcsolatok és listájának hozzáadása migrálni kívánt adatbázisok.
 
 ```powershell
-$project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
+$project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
   -ServiceName $service.Name `
   -ProjectName MyDMSProject `
   -Location EastUS `
@@ -147,22 +147,22 @@ $targetCred = New-Object System.Management.Automation.PSCredential ($targetUserN
 ```
 
 ### <a name="create-backup-fileshare-object"></a>A fájlmegosztás biztonsági mentési objektum létrehozása
-Most hozzon létre a helyi SMB hálózati megosztást, hogy az Azure Database Migration Service is igénybe vehet a forrás adatbázisok biztonsági mentése a New-AzureRmDmsFileShare parancsmaggal képviselő FileShare objektum.
+Most hozzon létre a helyi SMB hálózati megosztást, hogy az Azure Database Migration Service is igénybe vehet a forrás adatbázisok biztonsági mentése a New-AzDmsFileShare parancsmaggal képviselő FileShare objektum.
 
 ```powershell
 $backupPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
 $backupCred = New-Object System.Management.Automation.PSCredential ($backupUserName, $backupPassword)
 
 $backupFileSharePath="\\10.0.0.76\SharedBackup"
-$backupFileShare = New-AzureRmDmsFileShare -Path $backupFileSharePath -Credential $backupCred
+$backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $backupCred
 ```
 
 ### <a name="create-selected-database-object"></a>Kiválasztott adatbázis-objektum létrehozása
-A következő lépés, hogy válassza ki a forrás- és adatbázisokat a New-AzureRmDmsSelectedDB parancsmag használatával, az alábbi példában látható módon:
+A következő lépés, hogy válassza ki a forrás- és adatbázisokat a New-AzDmsSelectedDB parancsmag használatával, az alábbi példában látható módon:
 
 ```powershell
 $selectedDbs = @()
-$selectedDbs += New-AzureRmDmsSelectedDB -MigrateSqlServerSqlDbMi `
+$selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -Name AdventureWorks2016 `
   -TargetDatabaseName AdventureWorks2016 `
   -BackupFileShare $backupFileShare `
@@ -194,17 +194,17 @@ $selectedAgentJobs = @("agentJob1", "agentJob2")
 
 ### <a name="create-and-start-a-migration-task"></a>Hozzon létre, és indítsa el áttelepítési feladatot
 
-Használja a `New-AzureRmDataMigrationTask` parancsmag segítségével hozzon létre egy áttelepítési feladat elindításához. Ennek a parancsmagnak a következő paraméterekkel:
+Használja a `New-AzDataMigrationTask` parancsmag segítségével hozzon létre egy áttelepítési feladat elindításához. Ennek a parancsmagnak a következő paraméterekkel:
 - *TaskType*. Áttelepítési feladat létrehozása az SQL Server az Azure SQL Database felügyelt példányába migrálási típus típusú *MigrateSqlServerSqlDbMi* várt. 
 - *Erőforráscsoport-nevet*. Azure-erőforráscsoportot, amelyben létrehozza a feladat nevét.
 - *Szolgáltatásnév*. Azure Database Migration Service példány, amelyben a feladat létrehozásához.
 - *Projektnév*. Azure Database Migration Service-projekt, amelyben létrehozza a feladat neve. 
 - *Feladatnév*. A létrehozandó feladat neve. 
-- *SourceConnection*. AzureRmDmsConnInfo a forrás SQL Server közötti kapcsolat képviselő objektum.
-- *TargetConnection*. AzureRmDmsConnInfo a cél Azure SQL Database felügyelt példányába kapcsolatot képviselő objektum.
+- *SourceConnection*. AzDmsConnInfo a forrás SQL Server közötti kapcsolat képviselő objektum.
+- *TargetConnection*. AzDmsConnInfo a cél Azure SQL Database felügyelt példányába kapcsolatot képviselő objektum.
 - *SourceCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum forrás-kiszolgálójához való kapcsolódás.
 - *TargetCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum a célkiszolgálóhoz való kapcsolódáshoz.
-- *SelectedDatabase*. A forrás- és adatbázisok közötti képviselő AzureRmDataMigrationSelectedDB objektum.
+- *SelectedDatabase*. A forrás- és adatbázisok közötti képviselő AzDataMigrationSelectedDB objektum.
 - *BackupFileShare*. Fájlmegosztás-objektumot a helyi hálózatot képviselő oszthat meg, hogy az Azure Database Migration Service is igénybe vehet a forrás adatbázisok biztonsági másolatait.
 - *BackupBlobSasUri*. Az SAS URI-t, amelyhez a szolgáltatás a biztonsági mentési fájlokat tölt fel a tárfiók tárolójának hozzáférést biztosít az Azure Database Migration Service. Ismerje meg, hogyan tehet szert az SAS URI blob-tároló.
 - *SelectedLogins*. Kiválasztott bejelentkezések áttelepítése listája.
@@ -213,7 +213,7 @@ Használja a `New-AzureRmDataMigrationTask` parancsmag segítségével hozzon l�
 Az alábbi példa létrehoz és nevű myDMSTask áttelepítési feladat elindítása:
 
 ```powershell
-$migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
+$migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
   -ResourceGroupName myResourceGroup `
   -ServiceName $service.Name `
   -ProjectName $project.Name `
@@ -222,7 +222,7 @@ $migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
   -SourceCred $sourceCred `
   -TargetConnection $targetConnInfo `
   -TargetCred $targetCred `
-  -SelectedDatabase  $selectedDbs`
+  -SelectedDatabase  $selectedDbs `
   -BackupFileShare $backupFileShare `
   -BackupBlobSasUri $blobSasUri `
   -SelectedLogins $selectedLogins `
@@ -243,7 +243,7 @@ if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTas
 Az áttelepítés befejezése után törölheti az Azure DMS-példány:
 
 ```powershell
-Remove-AzureRmDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
+Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
 ## <a name="next-steps"></a>További lépések

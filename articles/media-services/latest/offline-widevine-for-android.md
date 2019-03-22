@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 18c83717e761f22363ccc69c827f5e383f8a9e85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122321"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312257"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming
 
@@ -76,7 +76,7 @@ Az a [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-s
     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
     ```
 
-3. Hozzon létre ContentKeyPolicyOptions:
+3. Create ContentKeyPolicyOptions:
 
     ```csharp
     options.Add(
@@ -108,9 +108,9 @@ Az alábbi listában szereplő osztályok elősegíti a kapcsolat nélküli mód
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
 - library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
-- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/DownloaderConstructorHelper.Java 
-- Library/Core/src/Main/Java/com/Google/Android/exoplayer2/offline/Downloader.Java
-- Library/dash/src/Main/Java/com/Google/Android/exoplayer2/Source/dash/offline/DashDownloader.Java 
+- library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
+- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
+- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
 
 A fejlesztők kell hivatkoznia a [ExoPlayer fejlesztői útmutató](https://google.github.io/ExoPlayer/guide.html) és a megfelelő [fejlesztői Blog](https://medium.com/google-exoplayer) -alkalmazások fejlesztése során. Google nem jelent meg egy teljes körű dokumentációval rendelkező referencia megvalósítása vagy minta kódot támogató jelenleg Widevine offline, így az adatokat a fejlesztők számára az útmutató és blog ExoPlayer alkalmazás. 
 
@@ -144,7 +144,7 @@ Ha frissít a mobil Chrome böngészőt v62 (vagy magasabb) egy Android telefont
 
 A fenti nyílt forráskódú PWA alkalmazás hozta létre a node.js-ben. Ha szeretné a saját verziója egy Ubuntu Servert futtatni, vegye figyelembe a következő gyakori észlelt problémák, amelyek megakadályozhatják a lejátszás:
 
-1. CORS-hiba: A videó a mintaalkalmazás minta üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google állított be a CORS minden, a Google Cloud Storage gyűjtőben lévő üzemeltetett teszt minták. Ezek a szolgálja ki a CORS fejlécek, explicit módon a CORS-bejegyzés megadása: https://biograf-155113.appspot.com (a tartomány melyik google-beli üzemelteti a minta) megakadályozza a hozzáférést a többi webhelyhez sem. Ha megpróbál, látni fogja a következő HTTP-hiba: Nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Access-Control-Allow-Origin" fejléc nem található a kért erőforrás. Forrás:https://13.85.80.81:8080"hozzáférés ezért nem engedélyezett. Ha egy nem átlátszó választ szolgálja ki az igényeinek, "no-cors" beolvasni az erőforrás le van tiltva cors-támogatással rendelkező a kérelem módjának beállítása.
+1. CORS-hiba: A videó a mintaalkalmazás minta üzemeltetett https://storage.googleapis.com/biograf-video-files/videos/. Google állított be a CORS minden, a Google Cloud Storage gyűjtőben lévő üzemeltetett teszt minták. Ezek a szolgálja ki a CORS fejlécek, explicit módon a CORS-bejegyzés megadása: https://biograf-155113.appspot.com (a tartomány melyik google-beli üzemelteti a minta) megakadályozza a hozzáférést a többi webhelyhez sem. Ha megpróbál, látni fogja a következő HTTP-hiba: Nem sikerült betölteni a https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: nincs "Access-Control-Allow-Origin" fejléc nem található a kért erőforrás. Forrás "https:\//13.85.80.81:8080" hozzáférés ezért nem engedélyezett. Ha egy nem átlátszó választ szolgálja ki az igényeinek, "no-cors" beolvasni az erőforrás le van tiltva cors-támogatással rendelkező a kérelem módjának beállítása.
 2. A tanúsítvány kiadása: Kezdet: Chrome v 58, a Widevine az EME HTTPS van szüksége. Ezért a mintaalkalmazás futtatásához egy X509 a HTTPS-kapcsolaton keresztül kell tanúsítványt. Az alábbi követelmények miatt nem működik a szokásos tesztelési tanúsítvány: Be kell szereznie egy tanúsítványt a következő minimális rendszerkövetelményeknek megfelelő:
     - A Chrome és a Firefox SAN-tulajdonos alternatív neve beállítást a tanúsítvány léteznie kell
     - Kell a tanúsítvány megbízható hitelesítésszolgáltató és a egy önaláírt fejlesztési tanúsítvány nem működik.
@@ -189,9 +189,9 @@ A Google Widevine mindkét biztonsági szintek határozzák meg. A különbség 
 
 | **Biztonsági szintjének Widevine-architektúra** |**A Widevine API használt biztonsági szintek**|
 |---|---| 
-| **1. biztonsági szint**: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.|**security_level = 5**: A titkosítási alakíthatják és az összes kezelési az adathordozó (tömörített és tömörítetlen) belül kell kezelni egy hardveres biztonsági TEE.<br/><br/>**security_level = 4**: A titkosítási és a tartalom dekódolási belül kell végrehajtani egy hardveres biztonsági TEE.|
-**Biztonsági szint 2**: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.| **security_level = 3**: A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE. |
-| **3. biztonsági szint**: Nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági. | **security_level = 2**: Szoftvert a titkosításnak és a egy rejtjelezett dekóder szükség.<br/><br/>**security_level = 1**: A szoftveres whitebox kriptográfiai megadása kötelező.|
+| **1. biztonsági szint**: Az összes tartalom feldolgozása, titkosítás és vezérlés belül a megbízható végrehajtási környezetben (TEE) történik. Néhány megvalósítás modellekben biztonsági feldolgozási hajtható végre a különböző lapkák.|**security_level=5**: A titkosítási alakíthatják és az összes kezelési az adathordozó (tömörített és tömörítetlen) belül kell kezelni egy hardveres biztonsági TEE.<br/><br/>**security_level=4**: A titkosítási és a tartalom dekódolási belül kell végrehajtani egy hardveres biztonsági TEE.|
+**Biztonsági szint 2**: Titkosítás (de nem Videofeldolgozás) végez a TEE belül: visszafejtett pufferek alkalmazás tartományhoz adja vissza, és külön videó hardver vagy szoftver keresztül. 2. szintű azonban titkosítási információk feldolgozása van csak a TEE belül.| **security_level=3**: A megosztottkulcs-anyag és a titkosítási műveletek belül kell végrehajtani egy hardveres biztonsági TEE. |
+| **3. biztonsági szint**: Nem rendelkezik egy TEE az eszközön. Megfelelő intézkedéseket előfordulhat, hogy a titkosítási adatokat és a gazdagép operációs rendszere a visszafejtett tartalom védelme érdekében. A 3. szint megvalósítás is tartalmazhat egy hardveres titkosítási motor, de, amely csak növeli a teljesítményt, nem biztonsági. | **security_level=2**: Szoftvert a titkosításnak és a egy rejtjelezett dekóder szükség.<br/><br/>**security_level=1**: A szoftveres whitebox kriptográfiai megadása kötelező.|
 
 ### <a name="question"></a>Kérdés
 

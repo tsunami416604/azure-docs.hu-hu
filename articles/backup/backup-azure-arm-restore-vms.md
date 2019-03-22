@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: geg
-ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2253e729daedc3b130919913c1616449245f9cc1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202588"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315385"
 ---
 # <a name="restore-azure-vms"></a>Azure-beli virtuális gépek visszaállítása
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti az Azure-beli Virtuálisgép-adatok visszaállítása a tár
 Visszaállítása egy virtuális gép győződjön meg arról, hogy rendelkezik a szükséges [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) engedéllyel.
 
 > [!NOTE]
-> Ha nem rendelkezik [RABAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) engedély hajthat végre [lemez visszaállítása](backup-azure-arm-restore-vms.md#create-new-restore-disks) , és hozzon létre virtuális gépet [-sablon telepítése](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkció.
+> Ha nem rendelkezik [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) engedély hajthat végre [lemez visszaállítása](backup-azure-arm-restore-vms.md#create-new-restore-disks) , és hozzon létre virtuális gépet [-sablon telepítése](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) funkció.
 
 ### <a name="restore-options"></a>Visszaállítási beállítások
 

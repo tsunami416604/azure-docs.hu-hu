@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178067"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317493"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
@@ -70,7 +70,7 @@ CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 | source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
 | eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Időbélyeg, ha az esemény történt-e (nem kötelező)                    | eventTime
-| schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
+| schemaURL          | URI      | "https:\//myschema.com"           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
 | contentType        | String   | "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
 | Bővítmények         | Térkép      | { "extA": "vA", "extB", "vB" }  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
 | adat               | Objektum   | { "objA": "vA", "objB", "vB" }  | Az eseménytartalom (nem kötelező)                                       | adat
