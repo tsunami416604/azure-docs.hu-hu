@@ -4,18 +4,16 @@ description: Ismerje meg, hogyan használhatja a Beeline-ügyfél és a Hadoop H
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: a beeline hive, a hive a beeline
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
+ms.openlocfilehash: 00cf441247b9adf8547f373891bba4db29029d3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200481"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335997"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
@@ -24,8 +22,11 @@ Ismerje meg, hogyan használható [Apache Beeline](https://cwiki.apache.org/conf
 A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsight-fürt. A beeline JDBC hiveserver2-n keresztül, a HDInsight-fürtön lévő üzemeltetett szolgáltatásként való kapcsolódáshoz használ. A Beeline használatával távoli elérése a Hive a HDInsight az interneten keresztül. Az alábbi példák megadják a leggyakrabban használt kapcsolati karakterláncok Beeline a HDInsight segítségével kapcsolódhat:
 
 * __Az SSH-kapcsolatot a Beeline segítségével átjárócsomópontjával vagy peremhálózati csomópont__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+
 * __A Beeline használata a HDInsight egy Azure virtuális hálózaton keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __A Beeline használata a HDInsight vállalati biztonsági csomag (ESP) fürthöz csatlakozik egy Azure virtuális hálózaton keresztüli, ügyfél__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
+
+* __A Beeline használata a HDInsight vállalati biztonsági csomag (ESP) fürthöz csatlakozik egy Azure virtuális hálózaton keresztüli, ügyfél__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-DOMAIN>;auth-kerberos;transportMode=http' -n <username>` 
+
 * __A Beeline használata a HDInsight a nyilvános interneten keresztül csatlakozó ügyfél,__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -37,7 +38,7 @@ A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsigh
 >
 > Ha a fürt virtuális hálózaton keresztül kapcsolódik, cserélje le a `<headnode-FQDN>` egy fürt átjárócsomójával létesített teljesen minősített nevére.
 >
-> Ha egy vállalati biztonsági csomag (ESP) fürthöz csatlakozik, cserélje le a `<AAD-Domain>` , az Azure Active Directory (AAD), amely csatlakozik a fürt nevét. Cserélje le `<username>` a tartományon a fürt elérésére jogosult fiók nevével.
+> Ha egy vállalati biztonsági csomag (ESP) fürthöz csatlakozik, cserélje le a `<AAD-DOMAIN>` , az Azure Active Directory (AAD), amely csatlakozik a fürt nevét. Nagybetűk karakterláncát használja a `<AAD-DOMAIN>` érték, ellenkező esetben a hitelesítő adat nem található. Ellenőrizze `/etc/krb5.conf` a kezdőtartomány-nevek, szükség esetén. Cserélje le `<username>` a tartományon a fürt elérésére jogosult fiók nevével. 
 
 ## <a id="prereq"></a>Előfeltételek
 

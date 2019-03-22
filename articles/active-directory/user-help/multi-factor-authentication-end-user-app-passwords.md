@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 6d0dbfeaf3fb018c8dd3f671ce7ad9d7d50e5fca
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177398"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336303"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>A kétlépéses ellenőrzéshez alkalmazásjelszók kezelése
 
@@ -40,7 +40,7 @@ Alkalmazásjelszavak használata esetén ne feledje:
 
 Az első kétlépéses ellenőrzés regisztrációja során felhőszolgáltatására, egy jelszót az alkalmazáshoz. Ha több mint egy jelszót, létrehozhat további jelszavak, a kétlépéses ellenőrzés használata alapján:
 
-- **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókkal és a MyApps portálról.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [a MyApps portálról alkalmazásjelszók létrehozása és törlése](#create-and-delete-app-passwords-using-the-myapps-portal) című szakaszát. A MyApps portálról, és hogyan használható a kapcsolatos további információkért lásd: [Mi az a MyApps portálról az Azure Active Directoryban?](active-directory-saas-access-panel-introduction.md).
+- **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókkal és a MyApps portálról.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [a MyApps portálról alkalmazásjelszók létrehozása és törlése](#create-and-delete-app-passwords-using-the-my-apps-portal) című szakaszát. A MyApps portálról, és hogyan használható a kapcsolatos további információkért lásd: [Mi az a MyApps portálról az Azure Active Directoryban?](active-directory-saas-access-panel-introduction.md).
 
 - **A kétlépéses ellenőrzés használata a munkahelyi vagy iskolai fiókot és az Office 365 portálra.** Hozzon létre vagy töröljön az alkalmazás a jelszavak utasításait a [Create és delete alkalmazásjelszók használatával az Office 365 portálon](#create-and-delete-app-passwords-using-the-office-365-portal) című szakaszát.
 

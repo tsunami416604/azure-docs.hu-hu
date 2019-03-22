@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878380"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313192"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>IBM Nagyszámítógépek 3270 képernyő adatvezérelt alkalmazások integrálása az Azure-ral IBM 3270 és az Azure Logic Apps-összekötő használatával
 
@@ -402,7 +402,7 @@ Amikor befejezte az ezeket a lépéseket, a művelettel a logikai alkalmazást, 
 1. Ha elkészült, mentse, és a logikai alkalmazás futtatásához.
 
    Után a logikai alkalmazás befejezése fut, a futtatási jelennek meg a lépéseket. 
-   Sikeres lépésekkel jelöljük, miközben sikertelen lépések bemutatják az "x".
+   Sikeres lépésekkel pipák, miközben sikertelen lépések bemutatják az "x".
 
 1. Tekintse át a bemeneteit és kimeneteit mindegyik lépéshez, bontsa ki a lépés.
 
@@ -410,7 +410,7 @@ Amikor befejezte az ezeket a lépéseket, a művelettel a logikai alkalmazást, 
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek eseményindítók, műveleteket és korlátot, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő referencialapja: [ https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name> ](/connectors/).
+További technikai részletek eseményindítók, műveleteket és korlátot, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át a [összekötő referencialapja](/connectors/si3270/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

@@ -1,19 +1,19 @@
 ---
-title: Az Azure AD hozzáférési jogosultságokat az RBAC (előzetes verzió) – Azure Storage üzenetsorok és tárolók kezelése az Azure portal használatával |} A Microsoft Docs
+title: Az Azure AD hozzáférési jogosultságokat az RBAC (előzetes verzió) – Azure Storage üzenetsorok és tárolók kezelése az Azure portal használatával
 description: Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Portal használatával hozzáférés hozzárendelése a tárolókhoz és a rendszerbiztonsági tagok üzenetsorok. Az Azure Storage támogatja a beépített és egyéni RBAC-szerepkörök az Azure AD-n keresztül hitelesítést.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a38cce7d15b4796bb66803d06f3589569985cb37
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431856"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319499"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon (előzetes verzió)
 
@@ -101,14 +101,6 @@ Rendelje hozzá a következő lépésekkel a **olvasó** szerepkört, hogy egy f
 
 > [!NOTE]
 > Az Olvasó szerepkör hozzárendelése a csak blobok vagy üzenetsorok az Azure portal használatával elérni kívánó felhasználók számára szükség. 
-
-## <a name="use-azure-ad-credentials-with-the-portal"></a>Az Azure AD hitelesítő adatait használja a portállal
-
-Blobok vagy üzenetsorok használatával az Azure AD hitelesítő adatait az Azure Portal eléréséhez használja az előzetes verzió hivatkozásokat a következő képen látható:
-
-![Hozzáférés blobok vagy üzenetsorok az Azure AD hitelesítő adatai a portálon](media/storage-auth-aad-rbac/access-data-azure-ad.png)
-
-Ha éri el az előzetes verzió hivatkozások helyett az éles hivatkozások blob és üzenetsor adatokat, az Azure Portalon a fiókkulcs használatával engedélyezze a hozzáférést, nem pedig az Azure AD.
 
 ## <a name="next-steps"></a>További lépések
 

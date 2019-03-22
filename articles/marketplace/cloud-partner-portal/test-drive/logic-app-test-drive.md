@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456824"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338598"
 ---
 <a name="logic-app-test-drive"></a>Logikai alkalmazás kipróbálása
 ====================
@@ -95,7 +95,7 @@ Az utolsó szakaszban adja meg, hogy tud érvénybe léptetni a Tesztverzió aut
 **Az Azure előfizetés-azonosító** *[kötelező mező]* Ez hozzáférést biztosít az Azure-szolgáltatások és az Azure Portalon. Az előfizetés, ahol készüljön jelentés, erőforrás-használat és a szolgáltatás számlázása. Ha Ön még nem rendelkezik egy **külön** Tesztverzió az Azure-előfizetés csak, kérjük lépjen tovább, és hozzon létre egyet. Az Azure-előfizetés azonosítókat megkereséséhez az Azure Portalra jelentkezik be, és ellenőrizheti, hogy az előfizetések, a bal oldali menüben.
 (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
-![Az Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
+![Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
 
 **Azure AD-bérlő azonosítója** *[kötelező mező]* Ha a bérlő Azonosítóját már rendelkezésre álló tulajdonságok, azt alább találhatja\> címtár-azonosító
 
@@ -137,6 +137,10 @@ Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozz
 **Az Azure AD-Alkalmazáskulcs -** *[kötelező mező]* az utolsó mezőt, hogy a hitelesítési kulcs létrehozásához. A kulcsok adjon meg egy kulcs leírást az időtartamot, soha nem jár le, majd válassza a mentés. Ez **fontos** ne kelljen egy lejárt kulcs, amely megszakítja a test drive éles környezetben. Másolja ezt az értéket, és illessze be a Test Drive kötelező mező.
 
 ![Az Azure Active Directory-kulcsok szakaszban](./media/azure-resource-manager-test-drive/subdetails8.png)
+
+> [!CAUTION]
+> Az Azure App regisztrációs előzetes nem használható, mert nem létrehozni jelenleg a base64-kódolású kulcs.
+
 
 <a name="next-steps"></a>További lépések
 ----------

@@ -6,21 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: c689a8fe35133456c476106e96336420640ebf66
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293975"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335980"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
 Verziókövetés lehetővé teszi, hogy a forgatókönyvek az Automation fiókhoz a parancsfájlok a GitHub vagy az Azure-Adattárakkal verziókövetési tárházat a naprakészek legyenek. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett. Verziókövetés integrálása az Automation szolgáltatással támogatja az egyetlen irányú szinkronizálását a verziókövetési tárházzal.
 
-Az Azure Automation verziókövetés 3 típust támogat:
+Az Azure Automation három típusú verziókövetés támogatja:
 
 * GitHub
 * Az Azure-kódtárak (Git)
@@ -30,6 +30,7 @@ Az Azure Automation verziókövetés 3 típust támogat:
 
 * Verziókövetési adattár (GitHub vagy az Azure-kódtárak)
 * A [futtató fiókja](manage-runas-account.md)
+* Ellenőrizze, hogy a [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban
 
 > [!NOTE]
 > Verziókövetési szinkronizálási feladatok a felhasználók Automation-fiók alatt fusson, és ugyanez a díjszabás szerint más automatizálási feladatok számlázzuk.
@@ -49,10 +50,10 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |Forrás vezérlő neve     | Egy rövid nevet a verziókövetés        |
 |Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure-kódtárak (Git)</br> Az Azure-kódtárak (TFVC)        |
 |Adattár     | A tárház vagy projekt nevét. Az első 200 tárházak adja vissza. Keresse meg a tárházat, írja be a nevét a mezőbe, majd kattintson **keresése a Githubon**.|
-|Ág     | Az ág forrásfájlok lekérni. Ág célzó nem áll rendelkezésre a TFVC verziókövetési típusa számára.          |
+|Ág     | Az ág forrásfájlok lekérni. Ág célzó nem érhető el a TFVC verziókövetési típusa.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks </br>*A megadott mappában csak runbookok vannak szinkronizálva. A rekurzió nem támogatott.*        |
 |Auto Sync     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
-|Runbook közzététele     | Ha beállítása **a**, miután a forráskezelőből azokat automatikusan közzéteszi a runbookok szinkronizálva lesznek.         |
+|Runbook közzététele     | Ha beállítása **a**, miután a forráskezelőből azok lesz automatikusan közzétenni a runbookok szinkronizálva lesznek.         |
 |Leírás     | További információkat egy szövegmező        |
 
 ![Forrás vezérlő összegzése](./media/source-control-integration/source-control-summary.png)
@@ -62,7 +63,7 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 
 ## <a name="configure-source-control---powershell"></a>Verziókövetés - PowerShell konfigurálása
 
-PowerShell használatával Verziókövetés beállítása az Azure Automationben. Verziókövetés beállítása a PowerShell-parancsmagokkal olyan [személyes hozzáférési jogkivonat (PAT)](#personal-access-token) van szükség. Használja a [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) a verziókövetési kapcsolat létrehozásához. A parancsmaghoz szükséges, a személyes hozzáférési tokent, megtudhatja, hogyan hozzon létre egy biztonságos karakterláncot, a biztonságos karakterláncot [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+PowerShell használatával Verziókövetés beállítása az Azure Automationben. Verziókövetés beállítása a PowerShell-parancsmagokkal, a személyes hozzáférési jogkivonat (PAT) van szükség. Használja a [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) a verziókövetési kapcsolat létrehozásához. A parancsmaghoz szükséges, a személyes hozzáférési tokent, megtudhatja, hogyan hozzon létre egy biztonságos karakterláncot, a biztonságos karakterláncot [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 ### <a name="azure-repos-git"></a>Az Azure-kódtárak (Git)
 
@@ -113,7 +114,7 @@ A személyes hozzáférési jogkivonat létrehozása az Azure-Adattárakkal kapc
 |A munkaelemek (olvasás)    |
 |(Olvasása, lekérdezéséhez és kezeléséhez) Szolgáltatáskapcsolatokat<sup>1</sup>    |
 
-<sup>1</sup>a Szolgáltatáskapcsolatokat engedély csak akkor szükséges, ha engedélyezte a autosync.
+<sup>1</sup> a Szolgáltatáskapcsolatokat engedély csak akkor szükséges, ha engedélyezte a autosync.
 
 ## <a name="syncing"></a>Szinkronizálás…
 
@@ -168,7 +169,7 @@ Válassza ki az eltávolítani kívánt verziókövetés. Az a **forrás vezérl
 
 ## <a name="encoding"></a>Encoding
 
-Több felhasználó szerkesztése a verziókövetési tárházat a runbookok a különböző szerkesztők van-e arra, hogy közben felmerülő problémák kódolást. Ez is helytelen karakterek beszúrása a runbookban. Ezzel kapcsolatos további információkért lásd: [gyakori okai kódolási problémák](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+Ha több személynek a különböző szerkesztők módosítani a verziókövetési tárházat a runbookok, nincs arra, hogy közben felmerülő problémák kódolás. Ez a helyzet a runbookban helytelen karaktereket vezethet. Ezzel kapcsolatos további információkért lásd: [gyakori okai kódolási problémák](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
 
 ## <a name="next-steps"></a>További lépések
 

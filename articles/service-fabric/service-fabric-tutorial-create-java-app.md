@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57874881"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314586"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: A Service Fabric-alkalmazások egy Java Web API kezelőfelületi szolgáltatás és a egy állapotalapú háttérszolgáltatás létrehozása
 
@@ -912,7 +912,7 @@ Ezen a ponton az alkalmazás készen áll egy helyi Service Fabric-fürtön val�
 
 4. Az Eclipse Package Explorerében kattintson a jobb gombbal a **Voting** projektre, és kattintson a **Service Fabric -> Publish Application …** (Service Fabric -> Alkalmazás közzététele…) elemre. 
 5. A **Publish Application** (Alkalmazás közzététele) ablakban válassza ki a **Local.json** elemet a legördülő listából, és kattintson a **Publish** (Közzététel) elemre.
-6. Nyissa meg a webböngészőt és `http://localhost:8080` a helyi Service Fabric-fürt a futó alkalmazás megtekintéséhez. 
+6. Nyissa meg a webes böngésző- és hozzáférés http:\//localhost:8080 a helyi Service Fabric-fürt a futó alkalmazás megtekintéséhez. 
 
 ## <a name="next-steps"></a>További lépések
 

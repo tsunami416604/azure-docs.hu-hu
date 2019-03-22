@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7983169c2b1123c57a48471e3f4d9ad6f19c84dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999406"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314722"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Fejlesztőeszközök a Data Science virtuális gépen
 
@@ -65,7 +65,7 @@ Az adatelemzési virtuális gép (DSVM) biztosítja, hogy a fejlesztési környe
 | Mi ez?   | Webes IDE az r nyelvhez    |
 | A DSVM támogatott verziói      | Linux      |
 | Gyakori használati      |  R-fejlesztés     |
-| Hogyan futtathatja / használata?      | Engedélyezze a szolgáltatást a _systemctl engedélyezése az rstudio-kiszolgáló_, majd indítsa el a szolgáltatást a _systemctl indítsa el az rstudio-kiszolgálót_. Ezután bejelentkezhet az RStudio Serverhez, http://your-vm-ip:8787.       |
+| Hogyan futtathatja / használata?      | Engedélyezze a szolgáltatást a _systemctl engedélyezése az rstudio-kiszolgáló_, majd indítsa el a szolgáltatást a _systemctl indítsa el az rstudio-kiszolgálót_. Ezután bejelentkezhet az RStudio Serverhez: http:\// a-vm-ip:8787.       |
 | A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban az RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

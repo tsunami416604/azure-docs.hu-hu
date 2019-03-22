@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32df3e7ac6dc22e247bd4aecea4f39bf6d3a8017
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889785"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316864"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database-feladatok telepítésének áttekintése
 
@@ -87,12 +87,12 @@ A következő minta hívással megadott paraméterek a kívánt beállítások m
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. FO a feldolgozói szerepkör méretek, további információt talál [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. Feldolgozói szerepkör méretek további információkért lásd: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Elastic Database-feladatok összetevők és a díjszabás</a>.</td>
 </tr>
 
 <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>A számítási méret biztosít a Standard edition. Ez a paraméter alapértelmezett S0. A paraméter értékét... /.. /.. /.. / S9/S12 elfogadottak, amelyek miatt az Azure SQL Database használata a megfelelő számítási mérete. Az SQL-adatbázis számítási méretek további információkért lásd: [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>A számítási méret biztosít a Standard edition. Ez a paraméter alapértelmezett S0. A paraméter értékét... /.. /.. /.. / S9/S12 elfogadottak, amelyek miatt az Azure SQL Database használata a megfelelő számítási mérete. Az SQL-adatbázis számítási méretek további információkért lásd: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Elastic Database-feladatok összetevők és a díjszabás</a>.</td>
 </tr>
 
 <tr>
@@ -137,7 +137,7 @@ Telepítés Virtuálisgép-méretének frissítéséhez futtassa a következő s
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. FO a feldolgozói szerepkör méretek, további információt talál [Elastic Database-feladatok összetevők és a díjszabás](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>A Virtuálisgép-méretet biztosít a használati Felhőszolgáltatáson belül. Ez a paraméter alapértelmezett értéke A0. Paraméterek értékét... /.. / A3 elfogadottak, amelyek miatt a feldolgozói szerepkör egy ExtraSmall/kis és közepes vagy nagy méretű, illetve használandó. Feldolgozói szerepkör méretek további információkért lásd: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Elastic Database-feladatok összetevők és a díjszabás</a>.</td>
 </tr>
 
 </table>

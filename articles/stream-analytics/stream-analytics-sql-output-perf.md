@@ -2,19 +2,19 @@
 title: Az Azure SQL Database Azure Stream Analytics-kimenet
 description: Ismerje meg az Azure Stream Analytics ad ki adatokat az SQL Azure és a nagyobb írási teljesítmény arányt érhet el.
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303275"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338428"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Az Azure SQL Database Azure Stream Analytics-kimenet
 
@@ -33,7 +33,7 @@ Az alábbiakban az egyes szolgáltatásban, amelyekkel javíthatja a megoldás t
 
 - **Kötegméret** – SQL kimeneti konfiguráció lehetővé teszi, hogy adja meg a Köteg maximális mérete egy Azure Stream Analytics SQL kimeneti jellegét a céloldali tábla/számítási feladatok alapján. A köteg méretét kötelező minden tömeges küldött rekordok maximális száma helyezze be a tranzakciót. Fürtözött oszlopcentrikus indexek, a batch-méretek körül [100 ezer](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) lehetővé teszik a további ezerszer minimális naplózás és optimalizálásokat zárolását. A lemezalapú táblák 10 ezer (alapértelmezett), vagy alacsonyabb lehet a megoldás optimális magasabb köteg méretek kezdeményezheti a zárolás eszkalációs tömeges Beszúrások során.
 
-- **Bemeneti üzenet hangolása** – Ha Ön már optimalizált használatával particionálás és a batch méret öröklése, egy üzenet partíciónként bemeneti események számának növelésével segít a további leküldése másolatot az írható átviteli sebességet. Bemeneti üzenet hangolása lehetővé teszi, hogy a köteg méretek belül az Azure Stream Analytics, legfeljebb a megadott Batch-méret, ezáltal javul a teljesítmény. Ez használatával érhető el [tömörítési](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) vagy nagyobb méretű üzenet méretű prémium szintű EventHub termékváltozatban érhető el.
+- **Bemeneti üzenet hangolása** – Ha Ön már optimalizált használatával particionálás és a batch méret öröklése, egy üzenet partíciónként bemeneti események számának növelésével segít a további leküldése másolatot az írható átviteli sebességet. Bemeneti üzenet hangolása lehetővé teszi, hogy a köteg méretek belül az Azure Stream Analytics, legfeljebb a megadott Batch-méret, ezáltal javul a teljesítmény. Ez használatával érhető el [tömörítési](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) vagy az EventHub- vagy Blob bemeneti üzenet méretének növelését.
 
 ## <a name="sql-azure"></a>SQL Azure
 
@@ -44,6 +44,15 @@ Az alábbiakban az egyes szolgáltatásban, amelyekkel javíthatja a megoldás t
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Az Azure Data Factory és a táblák
 
 - **Memóriabeli ideiglenes tábla a táblázatban** – [memórián belüli táblák](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) lehetővé teszik a nagyon nagy sebességű adatbetöltést, de az adatokat a memóriában megfelelően kell. Referenciaalapokhoz képest történő megjelenítése tömeges betöltése egy memórián belüli táblából, a lemezalapú táblák 10-szer gyorsabb, mint a közvetlenül tömeges beszúrás, egyetlen író használata a lemezalapú táblához identity oszlopot és a egy fürtözött index. A tömeges beszúrás teljesítményét kihasználva, állítsa be a [használata Azure Data Factory másolási feladat](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database) , amely adatokat másol a memóriában lévő táblában a lemezalapú táblák.
+
+## <a name="avoiding-performance-pitfalls"></a>Teljesítmény Alkalmazásmegoldásokra elkerülése
+Adatok beszúrása tömeges sokkal gyorsabb, mint az egyszeres beszúrást hajt végre az adatok betöltése, mert az ismétlődő elkerülhető az adatátvitel, az insert utasítás elemzés, az utasítás futtatása és kiállító tranzakció rekord járó többletterhelést. Ehelyett egy hatékonyabb elérési utat használjuk, a storage-motor az adatok továbbításához. Ezt az elérési utat a telepítő költsége azonban sokkal magasabb, mint a lemezalapú táblák egy insert utasítás. A megtérülési pont mérete általában körülbelül 100 sor, túli tömeges betöltési szinte mindig további hatékony. 
+
+Ha a bejövő események aránya alacsony, könnyedén létrehozható köteg méretek alacsonyabb, mint 100 sor, amely lehetővé teszi a tömeges beszúrás nem elég hatékony és túl sok lemezterületet használ. A probléma megoldásához, az alábbi műveletek egyikét teheti:
+* Hozzon létre egy INSTEAD OF [eseményindító](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql) egyszerű insert használata minden egyes sorára.
+* Használjon egy memóriabeli ideiglenes táblára, az előző szakaszban leírtak szerint.
+
+Egy másik ilyen forgatókönyv esetén a írása (NCCI), nem fürtözött oszlopcentrikus indexbe, kisebb tömeges Beszúrások hozható létre, amelyek az index lefagyhat túl sok szegmensek. Ebben az esetben a javaslatot, hogy a fürtözött Oszlopcentrikus index használja helyette.
 
 ## <a name="summary"></a>Összegzés
 

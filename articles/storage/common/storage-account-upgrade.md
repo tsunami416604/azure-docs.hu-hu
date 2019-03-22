@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df9bc1680f20fe6264da0109cd52db1072fd9fc5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217291"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311135"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
@@ -29,14 +29,14 @@ Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blo
 2. Nyissa meg a tárfiókot.
 3. Az a **beállítások** területén kattintson **konfigurációs**.
 4. A **Fiók típusa** területen kattintson a **Frissítés** elemre.
-5. A **Frissítés megerősítése** területen írja be a fiók nevét. 
+5. A **Frissítés megerősítése** területen írja be a fiók nevét.
 6. Kattintson a **frissítése** a panel alján.
 
 ## <a name="upgrade-with-powershell"></a>Frissítés a PowerShell-lel
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Egy általános célú v2 fiókját a PowerShell segítségével egy általános célú v1 fiók frissítéséhez először frissítse PowerShell legújabb verzióját használja a **Az.Storage** modul. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket. 
+Egy általános célú v2 fiókját a PowerShell segítségével egy általános célú v1 fiók frissítéséhez először frissítse PowerShell legújabb verzióját használja a **Az.Storage** modul. A PowerShell telepítésével kapcsolatos információkért lásd [az Azure PowerShell telepítését és konfigurálását](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
 Ezután hívja meg a fiókot, és cserélje le az erőforráscsoport nevét és a storage-fiók frissítése a következő parancsot:
 
@@ -46,17 +46,17 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Frissítés az Azure CLI-vel
 
-Egy általános célú v2 fiók az Azure CLI-vel egy általános célú v1 fiók frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt. 
+Egy általános célú v2 fiók az Azure CLI-vel egy általános célú v1 fiók frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető szakaszt.
 
 Ezután hívja meg a fiókot, és cserélje le az erőforráscsoport nevét és a storage-fiók frissítése a következő parancsot:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
-``` 
+```
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Blobadatok a hozzáférési szint megadását
 
-Általános célú v2 támogatja az összes Azure storage-szolgáltatások és adatok objektum, de az elérési szint csak a Blob storage-ban a blokkblobokhoz érhető el. Amikor frissít egy általános célú v2-tárfiók, megadhatja a hozzáférési szint a blob adatait. 
+Általános célú v2 támogatja az összes Azure storage-szolgáltatások és adatok objektum, de az elérési szint csak a Blob storage-ban a blokkblobokhoz érhető el. Amikor frissít egy általános célú v2-tárfiók, megadhatja a hozzáférési szint a blob adatait.
 
 Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok használatát támogatják a gyors Elérésűre, ritka elérésű vagy archív szinten tárolhatók. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: A gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
@@ -96,7 +96,7 @@ Tárolási költségek becsléséhez és a egy általános célú v2-tárfiók a
     - Mennyi adatot tárol a tárfiókjában?
     - Havi lebontásban hogyan változik az adatmennyiség? Az új adatok folyamatosan átveszik a korábbi adatok helyét?
 * Az elsődleges elérési mintája a Blob storage-adatokból, többek között:
-    - Folyamatban van, hogy mennyi adatot olvas és ír a storage-fiókhoz? 
+    - Folyamatban van, hogy mennyi adatot olvas és ír a storage-fiókhoz?
     - Hány olvasási műveletek és írási műveleteket a rendszer az adatok a storage-fiókban?
 
 Az igényeinek megfelelően a legjobb hozzáférési szint használata mellett dönt, hogy hasznos lehet meghatározni az blob kapacitás, és hogyan adatokat használják. Ezt leginkább teheti megnézzük a figyelési metrikákat a fiókjához.
@@ -108,7 +108,7 @@ A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtés
 További információért lásd [a Storage Analytics mérőszámainak áttekintését](https://msdn.microsoft.com/library/azure/hh343258.aspx) és [a Storage Analytics mérőszámainak táblasémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. 
+> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg.
 
 A Blob Storage tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
 Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók blobszolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.
@@ -120,7 +120,7 @@ A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell 
 
 Azt javasoljuk, hogy az adatfelhasználás és -hozzáférés megfelelő mintájának előállításához olyan megőrzési időszakot válasszon a mérőszámhoz, amely megfelel az Ön használati szokásainak, és extrapolálja az adatokat. Az egyik lehetőség az, hogy hét napig őrzi meg a mérőszámadatokat, és minden héten összegyűjti az adatokat a hónap végén elvégzendő elemzéshez. A másik lehetőség az, hogy az utolsó 30 nap mérőszámadatait őrzi meg, és a 30 napos időszak végén hajtja végre az adatok összegyűjtését és elemzését.
 
-További tudnivalók a mérőszámadatok engedélyezésével, gyűjtésével és megtekintésével kapcsolatban: [Az Azure Storage mérőszámainak engedélyezése és a mérőszámadatok megtekintése](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+További engedélyezésével, gyűjtésével és megtekintésével: [Storage analytics mérőszámainak](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Az elemzési adatok tárolása, elérése és letöltése ugyanúgy díjhoz kötött, mint a normál felhasználói adatok használata.

@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD jelszóvédelem műveletek és jelentéskészítés
+title: Az Azure AD jelszóvédelem műveletek és jelentéskészítés – Azure Active Directory
 description: Az Azure AD jelszóvédelem üzembe helyezés utáni műveleteket, és jelentéskészítés
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285802"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312427"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszóvédelem eljárások
 

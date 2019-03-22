@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/21/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29e4bb23b4b80f6e472d2dcb27fe5e5279a35890
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871043"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337714"
 ---
 # <a name="region-management-in-azure-stack"></a>Régiók kezelése az Azure Stackben
 
@@ -29,7 +29,7 @@ ms.locfileid: "56871043"
 
 Az Azure Stack koncepcióját használja *régiók*, melyek áll az Azure Stack-infrastruktúrát alkotó hardver-erőforrások logikai entitásokat. Régiók kezelése az Azure Stack-infrastruktúra sikeres működéséhez szükséges összes erőforrást is megtalálhatja.
 
-Egy integrált rendszer központi telepítéséhez (a továbbiakban egy *Azure Stack-felhőben*) lekérdezhetővé teszi akár egyetlen régión. Minden egyes Azure Stack Development Kit rendelkezik egy régiót nevű **helyi**. Ha telepít egy második Azure Stackkel integrált rendszereknél, vagy beállíthat egy másik példánya a csomagban található külön hardvert, az Azure Stack-felhőben egy másik régióban.
+Egy integrált rendszer központi telepítéséhez (a továbbiakban egy *Azure Stack-felhőben*) lekérdezhetővé teszi akár egyetlen régión. Minden egyes Azure Stack Development Kit (ASDK) rendelkezik egy régiót nevű **helyi**. Ha telepít egy második Azure Stackkel integrált rendszereknél, vagy beállíthat egy másik példánya a csomagban található külön hardvert, az Azure Stack-felhőben egy másik régióban.
 
 ## <a name="information-available-through-the-region-management-tile"></a>A régió felügyeleti csempén keresztül érhetők el információk
 
@@ -43,7 +43,7 @@ Ha rákattint egy régiót a a **régiók kezelése** csempét, akkor férhet ho
 
 1. **Az erőforrások menüjének**. Eléréséhez adott infrastruktúra felügyeleti területeket, és megtekintheti, és felhasználói erőforrások, például a storage-fiókok és a virtuális hálózatok kezelése.
 
-2. **Riasztások**. Rendszerszintű riasztásokat sorolja fel, és ismerteti az egyes ezeket a riasztásokat.
+2. **Riasztások**. Rendszerszintű riasztások listája, és adja meg az adatokat az egyes ezeket a riasztásokat.
 
 3. **Frissítések**. A jelenlegi verzió az Azure Stack-infrastruktúra, a rendelkezésre álló frissítéseket és a frissítési előzmények megtekintése. Az integrált rendszer frissítheti is.
 

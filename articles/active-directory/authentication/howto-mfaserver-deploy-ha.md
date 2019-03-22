@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-kiszolgáló konfigurálása a magas rendelkezésre álláshoz |} A Microsoft Docs
+title: Azure MFA-kiszolgáló magas rendelkezésre állás – Azure Active Directory konfigurálása
 description: Az Azure multi-factor Authentication kiszolgáló konfigurációban, magas rendelkezésre állást biztosító több példányának telepítése.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26216131b461a395d3c87895a055d3ae30abf87c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba8a1976fa9fc2a02f7f3e8419de10ebba7df950
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198813"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316303"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure multi-factor Authentication-kiszolgáló magas rendelkezésre állás konfigurálása
 

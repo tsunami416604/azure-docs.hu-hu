@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 242c2f63735be33fe933ae3229f7aa28356ea697
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548387"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337000"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
@@ -79,7 +79,7 @@ Eseményközpont összes partíciójára érvényes az eseményközpont konfigur
 
 A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
 
-Jóllehet a partíciók azonosíthatók, és közvetlenül lehet küldeni, nem ajánlott közvetlenül egy partíció küld. Helyette használhatja az [Esemény-közzétevő](#event-publishers) és a [Kapacitás](#capacity) című szakaszokban bemutatott magasabb szintű szerkezeteket. 
+Jóllehet a partíciók azonosíthatók, és közvetlenül lehet küldeni, nem ajánlott közvetlenül egy partíció küld. Ehelyett használhatja a bemutatott magasabb szintű szerkezeteket a [esemény-közzétevő](#event-publishers) és kapacitás szakaszokat. 
 
 A partíciók eseményadatok az esemény, a felhasználó által definiált tulajdonságcsomagot és a metaadatokat, például eltolását a partícióban vagy a száma a streamsorozatban törzse tartalmazó sorozatát ki vannak töltve.
 
@@ -152,13 +152,15 @@ Eseményadatok:
 
 Az eltolás kezelése a felhasználó felelőssége.
 
-## <a name="capacity"></a>Kapacitás
+## <a name="scaling-with-event-hubs"></a>Az Event Hubs méretezése
 
-Az Event Hubs hatékonyan méretezhető párhuzamos architektúrával rendelkezik, amelynek méretezésekor és skálázásakor számos fontos szempontot figyelembe kell venni.
+Nincsenek két tényező, amely befolyásolhatja az Event Hubs méretezés.
+*   Átviteli egységek
+*   Partíciók
 
 ### <a name="throughput-units"></a>Átviteli egységek
 
-Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* révén történik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egy átviteli egység a következő kapacitást biztosítja:
+Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* révén történik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egy átviteli teszi lehetővé:
 
 * Bemenő forgalom: Második vagy 1000 esemény (amelyik előbb bekövetkezik) másodpercenként legfeljebb 1 MB.
 * Kimenő forgalom: Akár 2 MB / másodpercben a második vagy 4096 esemény.
@@ -167,9 +169,13 @@ A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rend
 
 Átviteli egységek előre megvásárolt és díjszabása óradíjalapú. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Legfeljebb 20 átviteli egység vásárolható meg az Event Hubs-névtér és a névtér összes event hubs vannak megosztva.
 
-További átviteli egységek 20-átviteli egységeket 100 egységig egységekben vásárolhatja meg az Azure támogatási szolgálatával. Meghaladja a korlátot vásárolhat átviteli egységeket 100 blokk.
+### <a name="partitions"></a>Partíciók
 
-Azt javasoljuk, hogy optimális méretezhetőség az átviteli egységek és partíciók kiegyenlítése. Egy partíció rendelkezik a minimális méretezési csoport egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
+Partíciók tegye lehetővé, hogy nagy számú az alsóbb feldolgozási. A particionált felhasználói modell, amely az Event Hubs kínál partíciókat, mert meg is horizontális felskálázás az esemény egyidejű feldolgozása közben. Az Event Hub legfeljebb 32 partícióval rendelkezhet.
+
+Azt javasoljuk, hogy optimális méretezhetőség 1:1 átviteli egységek és partíciók kiegyenlítése. Egy partíció rendelkezik egy garantált bejövő és kimenő, legfeljebb egy átviteli egységgel rendelkezhet. Előfordulhat, hogy a partíció nagyobb átviteli sebességet érhet el, amíg a teljesítmény nem garantált. Ezért erősen ajánlott, hogy az eseményközpontokban található partíciók számának nagyobbnak vagy azzal egyenlőnek átviteli egységek számát kell-e.
+
+Adja meg a teljes átviteli sebesség a kellene tervezi, hogy a szükséges átviteli egységek számát és a partíciók minimális száma, de a hány partíciók kell, hogy? Válassza ki az alsóbb rétegbeli párhuzamosság használatával kíván elérni, valamint a jövőbeli átviteli igényei alapján a partíciók számát. Nem jár költségekkel rendelkezik egy eseményközpontban partíciók számát.
 
 Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 

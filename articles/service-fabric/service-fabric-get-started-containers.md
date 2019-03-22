@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 91b694070147cb0591bcc1763905f471161bf07b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875068"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336762"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -153,7 +153,7 @@ Ha ez a parancs nem ad vissza semmit, futtassa a következő parancsot, majd ell
 docker inspect my-web-site
 ```
 
-Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd a visszaadott IP-címet, például: <http://172.31.194.61>. A „Hello World!” címsornak kell megjelennie a böngészőben.
+Csatlakozzon a futó tárolóhoz. Nyisson meg egy webböngészőt, majd az IP-címre visszaadott, például "http:\//172.31.194.61". A „Hello World!” címsornak kell megjelennie a böngészőben.
 
 A tároló leállításához futtassa a következő parancsot:
 
@@ -360,10 +360,12 @@ A Service Fabric majd használja az alapértelmezett adattár hitelesítő adata
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * (Karakterlánc)---DefaultContainerRepositoryPasswordType támogatott 6.4-es futásidejű kezdve
 
-Íme egy példa belül is hozzáadhat a `Hosting` szakaszt az ClusterManifestTemplate.json fájlban. További információkért lásd: [módosítása az Azure Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md) és [titkos alkalmazáskulcsok kezelése az Azure Service Fabric](service-fabric-application-secret-management.md)
+Íme egy példa belül is hozzáadhat a `Hosting` szakaszt az ClusterManifestTemplate.json fájlban. A `Hosting` szakasz hozzáadhatók a fürt létrehozásakor vagy később, a konfiguráció frissítése. További információkért lásd: [módosítása az Azure Service Fabric-fürt beállítások](service-fabric-cluster-fabric-settings.md) és [titkos alkalmazáskulcsok kezelése az Azure Service Fabric](service-fabric-application-secret-management.md)
 
 ```json
-      {
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -388,6 +390,7 @@ A Service Fabric majd használja az alapértelmezett adattár hitelesítő adata
           }
         ]
       },
+]
 ```
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
@@ -618,10 +621,12 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>A tároló kényszerített leállítását megelőző időköz beállítása
 
-Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.  További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
+Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megadva, hogy az mennyit várjon a tároló eltávolítása előtt, miután megkezdődött a szolgáltatás törlése (vagy másik csomópontba áthelyezése). Az időintervallum konfigurálásával a `docker stop <time in seconds>` parancsot küldi a tárolónak.  További információ: [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). A várakozási időköz a `Hosting` szakaszban van meghatározva. A `Hosting` szakasz hozzáadhatók a fürt létrehozásakor vagy később, a konfiguráció frissítése. Az alábbi fürtjegyzék kódrészlete azt mutatja be, hogyan adható meg a várakozási időköz:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -630,7 +635,8 @@ Konfigurálhat egy időintervallumot a futtatókörnyezet számára, ezzel megad
           },
           ...
         ]
-}
+    }
+]
 ```
 Az alapértelmezett időintervallum 10 másodperc. Mivel ez egy dinamikus konfiguráció, a csak konfigurációs frissítés a fürtön frissíti az időkorlátot. 
 
@@ -641,7 +647,9 @@ A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem has
 
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -655,7 +663,8 @@ A Service Fabric-fürtöt úgy is konfigurálhatja, hogy eltávolítsa a nem has
           ...
           }
         ]
-} 
+    } 
+]
 ```
 
 A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, amelyeket nem szabad törölni.  
@@ -666,7 +675,9 @@ A `ContainerImagesToSkip` paraméternél megadhatja azokat a rendszerképeket, a
 A Service Fabric futtatókörnyezete 20 percet foglal le a tárolórendszerképek letöltésére és kicsomagolására, és ez a tárolórendszerképek többségénél elegendő is. Nagyobb rendszerképek esetében, vagy ha a hálózati kapcsolat lassú, szükséges lehet növelni a rendszerkép letöltésének és kibontásának megszakításáig rendelkezésre álló időtartamot. Ez az időtúllépési érték a **ContainerImageDownloadTimeout** attribútummal állítható be a fürtjegyzék **Üzemeltetés** szakaszában, az alábbi kódrészletben látható módon:
 
 ```json
-{
+"fabricSettings": [
+    ...,
+    {
         "name": "Hosting",
         "parameters": [
           {
@@ -674,7 +685,8 @@ A Service Fabric futtatókörnyezete 20 percet foglal le a tárolórendszerképe
               "value": "1200"
           }
         ]
-}
+    }
+]
 ```
 
 
@@ -694,7 +706,9 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
  
 
 ```json
-{ 
+"fabricSettings": [
+    ...,
+    { 
         "name": "Hosting", 
         "parameters": [ 
           { 
@@ -702,8 +716,8 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
             "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
           } 
         ] 
-} 
-
+    } 
+]
 ```
 
 ## <a name="next-steps"></a>További lépések

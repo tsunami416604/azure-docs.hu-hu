@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb1632fe8c0ae873afcf37504dbd13bcfc753e8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904031"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338071"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -104,7 +104,7 @@ Rugalmas készlet erőforrás diagnostics telemetriai adatainak streamelésének
 
    ![Rugalmas készletek diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Azonkívül, hogy a rugalmas készletek a diagnostics telemetriai adatainak, is kell konfigurálnia az egyes adatbázisok diagnostics telemetriai adatainak a rugalmas készlet módon lentebb. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>A diagnostics telemetriai adatainak egyetlen attribútuma, és rugalmas készletben található adatbázisok folyamatos konfigurálása
@@ -159,7 +159,7 @@ Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésé
 
    ![Felügyelt példány diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-> [!NOTE]
+> [!IMPORTANT]
 > Azonkívül, hogy a diagnostics telemetriai adatainak a felügyelt példány, szükség diagnostics telemetriai adatainak minden példány adatbázis konfigurálása módon lentebb. 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurálja a diagnostics telemetriai adatainak adatfolyamként például adatbázisok

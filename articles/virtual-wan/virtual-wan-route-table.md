@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: ac1384827ceede0f66fd08c6c08fa8e934b1ae42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc8dd6770efa1c057a56374ddc0094c2d88d2eb5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076156"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335731"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>A forgalom hálózati virtuális berendezésre figyelmeztetik virtuális központ útválasztási táblázat létrehozása
 
@@ -36,9 +36,9 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 
 Győződjön meg arról, hogy a következő feltételek teljesüléséről:
 
-1. Egy hálózati virtuális készüléket (NVA) rendelkezik egy külső szoftver tetszőleges üzembe helyezett általában az Azure Marketplace (hivatkozás) a virtuális hálózatban.
+1. Egy hálózati virtuális készüléket (NVA) rendelkezik. Ez az egy külső szoftver tetszőleges általában kiépített Azure Marketplace-ről egy virtuális hálózaton.
 2. Rendelkezünk egy privát IP-címet hozzárendelni az NVA hálózati interfészhez. 
-3. Nva-t a virtuális központ nem telepíthetők. Egy külön virtuális hálózatban kell telepíteni. Ebben a cikkben az NVA virtuális hálózatok közötti nevezzük a szegélyhálózat (DMZ) VNet.
+3. Az nva-t a virtuális központ nem telepíthetők. Egy külön virtuális hálózatban kell telepíteni. Ebben a cikkben az NVA virtuális hálózatok közötti nevezzük a szegélyhálózat (DMZ) VNet.
 4. A szegélyhálózat (DMZ) VNet előfordulhat, hogy rendelkezik egy, vagy túl sok virtuális hálózathoz csatlakozik hozzá. Ebben a cikkben a virtuális hálózat neve "Közvetett küllő virtuális hálózat". Ezek a virtuális hálózatok a DMZ-t virtuális hálózathoz virtuális hálózatok közötti társviszony segítségével csatlakoztathatók.
 5. Győződjön meg arról, hogy már létrehozott 2 virtuális hálózatok. Ezeket fogja használni, mint a küllő virtuális hálózatok. Ebben a cikkben a VNet-küllő címterek 10.0.2.0/24 és 10.0.3.0/24. Ha a virtuális hálózat létrehozása információra van szüksége, tekintse meg [hozzon létre egy virtuális hálózathoz a PowerShell használatával](../virtual-network/quick-create-powershell.md).
 6. Győződjön meg róla, minden olyan virtuális hálózatok nem virtuális hálózati átjárók vannak.
@@ -117,14 +117,6 @@ A virtuális központ, a módosítások véglegesítéséhez.
 
 ```powershell
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
-```
-
-## <a name="cleanup"></a>Erőforrások törlése
-
-Ha ezekre az erőforrásokra már nincs szüksége, használhatja [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>További lépések

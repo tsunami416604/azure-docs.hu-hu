@@ -3,33 +3,33 @@ title: A Key Vault-támogatás hozzáadása az ASP.NET-projektben, Visual Studio
 description: Ez az oktatóanyag segítségével elsajátíthatja a Key Vault támogatásának hozzáadása egy ASP.NET- vagy ASP.NET Core-webalkalmazás.
 services: key-vault
 author: ghogen
-manager: douge
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio
 ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/21/2019
 ms.author: ghogen
-ms.openlocfilehash: de849ae290228826ee500ae1c7e623210e585d34
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d95bd114be712953b79ef5afbb0915173f6de26c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113248"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339278"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
-Ebben az oktatóanyagban, megtudhatja, hogyan adhat hozzá, amit az Azure Key Vaulttal a webes projekt a Visual Studióban, a titkos kulcsok kezeléséhez, hogy az ASP.NET Core vagy bármilyen típusú ASP.NET-projekt indításához. A csatlakoztatott szolgáltatás használatával a Visual Studio 2017, a Visual Studio automatikusan adja hozzá a NuGet-csomagok és a konfigurációs beállításokat kell csatlakozni a Key Vault az Azure-ban is rendelkezhet. 
+Ebben az oktatóanyagban, megtudhatja, hogyan adhat hozzá, amit az Azure Key Vaulttal a webes projekt a Visual Studióban, a titkos kulcsok kezeléséhez, hogy az ASP.NET Core vagy bármilyen típusú ASP.NET-projekt indításához. A csatlakoztatott szolgáltatás használatával a Visual Studióban, akkor is automatikusan adja hozzá a NuGet-csomagok és a konfigurációs beállításokat kell csatlakozni a Key Vault az Azure-ban a Visual Studio. 
 
-A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a projekt a Key Vault engedélyezése a részletekért lásd: [Key Vault csatlakoztatott szolgáltatás – Mi történt a saját ASP.NET 4.7.1 projekt](vs-key-vault-aspnet-what-happened.md) vagy [Key Vault csatlakoztatott szolgáltatás – Mi történt ASP.NET Core-projektemmel](vs-key-vault-aspnet-core-what-happened.md).
+A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a projekt a Key Vault engedélyezése a részletekért lásd: [Key Vault csatlakoztatott szolgáltatás – Mi történt a saját ASP.NET 4.7.1 projekt](#how-your-aspnet-framework-project-is-modified) vagy [Key Vault csatlakoztatott szolgáltatás – Mi történt ASP.NET Core-projektemmel](#how-your-aspnet-core-project-is-modified).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A **Visual Studio 2017 15.7-es verziója**, telepített **webfejlesztési** számítási feladattal. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- ASP.NET (és nem alapvető) szüksége lesz a .NET-keretrendszer 4.7.1 fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és webfejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
-- An ASP.NET 4.7.1 or ASP.NET Core 2.0 web project open.
+- **A Visual Studio 2019** vagy **Visual Studio 2017 verzió 15.7** az a **webfejlesztés** számítási feladattal. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- ASP.NET (és nem alapvető) a Visual Studio 2017 kell a .NET-keretrendszer 4.7.1 vagy újabb fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és webfejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
+- Az ASP.NET 4.7.1 vagy újabb, vagy az ASP.NET Core 2.0 webes projekt megnyitása.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault támogatásának hozzáadása a projekthez
 
@@ -107,20 +107,26 @@ Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek a
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
    ```
-3. Ezután nyissa meg a About.cshtml.cs fájlt, és írja be az alábbi kódot
-   1. Ez Microsoft.Extensions.Configuration hivatkozást tartalmaz a utasítás használatával    
-       ```
+
+3. Ezután nyissa meg a About.cshtml.cs fájlt, és írja be az alábbi kódot:
+   1. Ez Microsoft.Extensions.Configuration hivatkozást tartalmaz a using utasítást:
+
+       ```csharp
        using Microsoft.Extensions.Configuration
        ```
-   2. Ez a konstruktor hozzáadása
-       ```
+
+   1. Ez a konstruktor adja hozzá:
+
+       ```csharp
        public AboutModel(IConfiguration configuration)
        {
            _configuration = configuration;
        }
        ```
-   3. Frissítse a OnGet módot. A helyőrző értékét az itt látható a fenti parancsok létrehozott titkos nevű frissítése
-       ```
+
+   1. Frissítse a OnGet módot. Frissítse az itt látható a fenti parancsok létrehozott titkos nevű helyőrző értékét.
+
+       ```csharp
        public void OnGet()
        {
            //Message = "Your application description page.";
@@ -128,7 +134,7 @@ Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek a
        }
        ```
 
-Futtassa az alkalmazást helyileg navigáljon az oldalról. Meg kell beolvasni a titkos érték
+Az alkalmazás helyi futtatásához keresse meg a névjegy lapra. A beolvasott titkos érték kell megjelennie.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -137,6 +143,94 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben a rövid útmutatóban használt erőforráscsoport, jelölje ki.
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
+
+## <a name="how-your-aspnet-core-project-is-modified"></a>Hogyan módosul, az ASP.NET Core-projektet
+
+Ez a szakasz azonosítja a pontos változások ASP.NET-projekt hozzáadása a Key Vault csatlakoztatott szolgáltatás Visual Studio használatával.
+
+### <a name="added-references"></a>A hozzáadott referenciák
+
+A projekt fájl .NET-referenciák és az alkalmazáscsomag-hivatkozások NuGet van hatással.
+
+| Typo | Leírások |
+| --- | --- |
+| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
+
+### <a name="added-files"></a>Hozzáadott fájlok
+
+- ConnectedService.json hozzáadva, amely rögzíti a csatlakoztatott szolgáltatás szolgáltató, a verzió és a egy hivatkozás a dokumentációs némi információt.
+
+### <a name="project-file-changes"></a>Projekt fájlmódosítás
+
+- A csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.json fájl megtörtént.
+
+### <a name="launchsettingsjson-changes"></a>launchsettings.JSON módosítások
+
+- Adja hozzá a következő környezeti változó bejegyzéseket az IIS Express profil, mind a profilt, amely megegyezik a webes projekt neve:
+
+    ```json
+      "environmentVariables": {
+        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED": "true",
+        "ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT": "<your keyvault URL>"
+      }
+    ```
+
+### <a name="changes-on-azure"></a>Változások az Azure-ban
+
+- Létrehozott egy erőforráscsoportot (vagy egy meglévő használja).
+- A megadott erőforráscsoportban létrehozott egy kulcstartót.
+
+## <a name="how-your-aspnet-framework-project-is-modified"></a>Hogyan módosul, az ASP.NET keretrendszer projekt
+
+Ez a szakasz azonosítja a pontos változások ASP.NET-projekt hozzáadása a Key Vault csatlakoztatott szolgáltatás Visual Studio használatával.
+
+### <a name="added-references"></a>A hozzáadott referenciák
+
+Hatással van a .NET projekt fájlhivatkozásokat és `packages.config` (NuGet-hivatkozás).
+
+| Typo | Leírások |
+| --- | --- |
+| .NET; NuGet | Microsoft.Azure.KeyVault |
+| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
+
+### <a name="added-files"></a>Hozzáadott fájlok
+
+- ConnectedService.json ad hozzá, amely rögzíti a csatlakoztatott szolgáltatás szolgáltató, verzióját és a egy hivatkozást a dokumentációban némi információt.
+
+### <a name="project-file-changes"></a>Projekt fájlmódosítás
+
+- A csatlakoztatott szolgáltatások ItemGroup és ConnectedServices.json fájl megtörtént.
+- A .NET-szerelvények ismertetett mutató hivatkozásokat a [hozzá hivatkozásokat](#added-references) szakaszban.
+
+### <a name="webconfig-or-appconfig-changes"></a>Web.config vagy az App.config fájlt módosítások
+
+- Adja hozzá a következő konfigurációs bejegyzéseket:
+
+    ```xml
+    <configSections>
+      <section
+           name="configBuilders"
+           type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" 
+           restartOnExternalChanges="false"
+           requirePermission="false" />
+    </configSections>
+    <configBuilders>
+      <builders>
+        <add 
+             name="AzureKeyVault"
+             vaultName="vaultname"
+             type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Azure, Version=1.0.0.0, Culture=neutral" 
+             vaultUri="https://vaultname.vault.azure.net" />
+      </builders>
+    </configBuilders>
+    ```
+
+### <a name="changes-on-azure"></a>Változások az Azure-ban
+
+- Létrehozott egy erőforráscsoportot (vagy egy meglévő használja).
+- A megadott erőforráscsoportban létrehozott egy kulcstartót.
 
 ## <a name="next-steps"></a>További lépések
 

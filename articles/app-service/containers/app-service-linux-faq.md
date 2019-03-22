@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871493"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339547"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -42,10 +42,10 @@ Az összes Docker-fájlok találhat [GitHub](https://github.com/azure-app-servic
 | Verem     | Várt érték                                                                |
 |-----------|-------------------------------------------------------------------------------|
 | Java SE   | Indítsa el a parancsot a `.jar` alkalmazás                                    |
-| Tomcat    | egy parancsfájlt, hogy az alkalmazás minden szükséges configruations helye |
-| Node.js   | a PM2-konfigurációs fájl vagy a parancsfájl                                |          
+| Tomcat    | a parancsfájl végrehajtása a konfigurációkat az alkalmazás helyét          |
+| Node.js   | a PM2-konfigurációs fájl vagy a parancsfájl                                |
 | .Net Core | a lefordított DLL-nevet: `dotnet <myapp>.dll`                                 |
-| Ruby      | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     
+| Ruby      | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     |
 
 ## <a name="management"></a>Kezelés
 

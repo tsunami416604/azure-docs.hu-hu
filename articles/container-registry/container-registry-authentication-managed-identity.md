@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984205"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338462"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Egy Azure által felügyelt identitás hitelesítésére és egy Azure container registry használata 
 
@@ -31,7 +31,7 @@ Tároló-beállításjegyzék beállítását, és a egy tároló rendszerképé
 
 ## <a name="why-use-a-managed-identity"></a>Miért érdemes használni egy felügyelt identitás?
 
-Egy felügyelt identitás, az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban (Azure AD) automatikusan felügyelt identitást biztosít. Konfigurálható [bizonyos Azure-erőforrások](../active-directory/managed-identities-azure-resources/services-support-msi.md), beleértve a virtuális gépek felügyelt identitással. Ezután használja az identitás programkódban vagy parancsprogramban hitelesítő adatok nélkül férhetnek hozzá a többi Azure-erőforrások.
+Egy felügyelt identitás, az Azure-erőforrások Azure-szolgáltatásokat az Azure Active Directoryban (Azure AD) automatikusan felügyelt identitást biztosít. Konfigurálható [bizonyos Azure-erőforrások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), beleértve a virtuális gépek felügyelt identitással. Ezután használja az identitás programkódban vagy parancsprogramban hitelesítő adatok nélkül férhetnek hozzá a többi Azure-erőforrások.
 
 Felügyelt identitások két típusa van:
 
@@ -41,7 +41,7 @@ Felügyelt identitások két típusa van:
 
 Egy Azure-erőforrás egy felügyelt identitás beállítása után hozzáférést az identitás a szeretne egy másik erőforrás, mint egy rendszerbiztonsági tagot. Például egy felügyelt identitás szerepkör hozzárendelése lekéréses, leküldéses és lekéréses vagy egyéb engedélyek az Azure-beli privát regisztrációs adatbázisba. (Beállításjegyzék szerepkörök teljes listáját lásd: [Azure Container Registry-szerepkörökről és engedélyekről](container-registry-roles.md).) Egy vagy több erőforrást akkor is hozzáférést egy identitás.
 
-Ezután használja az identitás hitelesítésére bármely [szolgáltatás, amely támogatja az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication), anélkül, hogy a hitelesítő adatokat a kódban. Az identitás használatával egy virtuális gépéről elérni az Azure container registry, az Azure Resource Manager végez hitelesítést. A forgatókönyvtől függően a felügyelt identitás használatával történő hitelesítéshez módjának kiválasztása:
+Ezután használja az identitás hitelesítésére bármely [szolgáltatás, amely támogatja az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), anélkül, hogy a hitelesítő adatokat a kódban. Az identitás használatával egy virtuális gépéről elérni az Azure container registry, az Azure Resource Manager végez hitelesítést. A forgatókönyvtől függően a felügyelt identitás használatával történő hitelesítéshez módjának kiválasztása:
 
 * [Az Azure AD hozzáférési jogkivonat beszerzése](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programozott módon használja a HTTP- vagy REST-hívások
 
@@ -126,7 +126,7 @@ userID=$(az identity show --resource-group myResourceGroup --name myACRId --quer
 spID=$(az identity show --resource-group myResourceGroup --name myACRId --query principalId --output tsv)
 ```
 
-Van szüksége a szolgáltatásidentitás azonosítója egy későbbi lépésben bejelentkezéskor a CLI a virtuális gép számára, mert az érték megjelenítése:
+Szüksége a szolgáltatásidentitás azonosítója egy későbbi lépésben, amikor bejelentkezik a CLI a virtuális gép számára, mert az érték megjelenítése:
 
 ```bash
 echo $userID
@@ -164,13 +164,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 SSH-t a Docker virtuális gép, amelynek része az identitást. Futtassa az alábbi Azure CLI-parancsokat, a virtuális gépen telepített Azure CLI használatával.
 
-Első lépésként jelentkezzen be az Azure CLI-t [az bejelentkezési][az-login], konfigurálta a virtuális gép azonosítójának használatával. A <userID>, helyettesítse be az identitást, az előző lépésben lekért azonosítója. 
+Az Azure CLI-t először hitelesítenie [az bejelentkezési][az-login], konfigurálta a virtuális gép azonosítójának használatával. A <userID>, helyettesítse be az identitást, az előző lépésben lekért azonosítója. 
 
 ```azurecli
 az login --identity --username <userID>
 ```
 
-Ezután jelentkezzen be a tárolójegyzékbe [az acr bejelentkezési][az-acr-login]. Ez a parancs használatakor a parancssori Felületet használja-e az Active Directory-jogkivonat jön létre, amikor futtatta `az login` a munkamenet a tárolóregisztrációs adatbázis zökkenőmentesen hitelesítéséhez. (A telepítés a virtuális gép függően szüksége lehet a parancs és a docker-parancsokat futtatni `sudo`.)
+A regisztrációs adatbázisba, majd hitelesítéséhez [az acr bejelentkezési][az-acr-login]. Ez a parancs használatakor a parancssori Felületet használja-e az Active Directory-jogkivonat jön létre, amikor futtatta `az login` a munkamenet a tárolóregisztrációs adatbázis zökkenőmentesen hitelesítéséhez. (A telepítés a virtuális gép függően szüksége lehet a parancs és a docker-parancsokat futtatni `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry
@@ -216,13 +216,13 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 SSH-t a Docker virtuális gép, amelynek része az identitást. Futtassa az alábbi Azure CLI-parancsokat, a virtuális gépen telepített Azure CLI használatával.
 
-Első lépésként jelentkezzen be az Azure CLI-t [az bejelentkezési][az-login], a rendszer által hozzárendelt identitás használatával a virtuális gépen.
+Az Azure CLI-t először hitelesíteni [az bejelentkezési][az-login], a rendszer által hozzárendelt identitás használatával a virtuális gépen.
 
 ```azurecli
 az login --identity
 ```
 
-Ezután jelentkezzen be a tárolójegyzékbe [az acr bejelentkezési][az-acr-login]. Ez a parancs használatakor a parancssori Felületet használja-e az Active Directory-jogkivonat jön létre, amikor futtatta `az login` a munkamenet a tárolóregisztrációs adatbázis zökkenőmentesen hitelesítéséhez. (A telepítés a virtuális gép függően szüksége lehet a parancs és a docker-parancsokat futtatni `sudo`.)
+A regisztrációs adatbázisba, majd hitelesítéséhez [az acr bejelentkezési][az-acr-login]. Ez a parancs használatakor a parancssori Felületet használja-e az Active Directory-jogkivonat jön létre, amikor futtatta `az login` a munkamenet a tárolóregisztrációs adatbázis zökkenőmentesen hitelesítéséhez. (A telepítés a virtuális gép függően szüksége lehet a parancs és a docker-parancsokat futtatni `sudo`.)
 
 ```azurecli
 az acr login --name myContainerRegistry

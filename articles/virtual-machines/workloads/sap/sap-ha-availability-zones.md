@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094752"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339483"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
 [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) egyike az Azure által biztosított magas rendelkezésre állású funkciókat. Rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. Ez a funkció már elérhető néhány [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). A későbbiekben lesz elérhető több régióban.
@@ -93,7 +93,7 @@ Ezek a döntések meghozatalában, is figyelembe kell venni fiók SAP hálózati
 > Valószínű, hogy a korábban ismertetett mérések nyújt minden Azure-régióban, amely támogatja a különböző eredményt [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview). Akkor is, ha a hálózati késés követelmények azonosak, szüksége lehet a különböző központi telepítési stratégiát különböző Azure-régióban fogad el, mert a zónák közötti hálózati késés eltérő lehet. Az egyes Azure-régióban teljesen más lehet a hálózati késést a három különböző zónák között. Más régiókban egységesebb lehet a hálózati késést a három különböző zónák között. A jogcímet, amely mindig van egy 1 – 2 ezredmásodperc közötti hálózati késés modul nem megfelelő. A hálózati késést, rendelkezésre állási zónában az Azure-régióban nem általánosíthatók.
 
 ## <a name="activeactive-deployment"></a>Aktív/aktív központi telepítés
-Ez az üzembe helyezési architektúra aktív/aktív nevezik, mert a két vagy három zónák között az aktív SAP párbeszédpanel-példányok üzembe helyezésekor. Az SAP Central Services-példányhoz, sorba replikációt használ a két zónák közötti telepíti. Ugyanez vonatkozik az adatbázis-kezelő szintje, amely telepíti az SAP Central szolgáltatás ugyanazon zónák között.
+Az üzembe helyezési architektúra hívják aktív/aktív, mert az aktív SAP-alkalmazáskiszolgálókhoz üzembe helyezése két vagy három zónák között. Az SAP Central Services-példányhoz, sorba replikációt használ a két zónák közötti telepíti. Ugyanez vonatkozik az adatbázis-kezelő szintje, amely telepíti az SAP Central szolgáltatás ugyanazon zónák között.
 
 Amikor kiválasztja ezt a konfigurációt, meg kell, hogy az ajánlat zónák közötti hálózati késés, amely a számítási feladatok és az adatbázis-kezelő a szinkron replikáció elfogadható keresnie a két rendelkezésre állási zónák a régióban. Azt is szeretné, hogy a különbözeti közötti hálózati késés a kiválasztott zónák belül, és a zónák közötti hálózati késés nem túl nagy. Ennek oka, hogy nem szeretné, hogy nagy változások, attól függően, hogy a feladat fut, a-zónát a DBMS-kiszolgálóval vagy a keresztben zónák, az üzleti folyamatokkal vagy kötegelt feladatok futtatása rendszerideje a. Különböző módszerekkel elfogadhatók, azonban nincs különbség a tényezők.
 

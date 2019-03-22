@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781588"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338054"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Dokumentum-formátumok és -elnevezési konvenciót útmutató
 
@@ -31,7 +31,7 @@ Ez a táblázat összes támogatott fájlformátum segítségével hozhat létre
 | Microsoft Word    | .DOCX        | A Microsoft Word-dokumentum                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Az Adobe Acrobat portable dokumentum                                                                                                                                                                                                                                                |
 | HTML              | .HTML, .HTM  | HTML-dokumentum                                                                                                                                                                                                                                                                  |
-| Szövegfájl         | .TXT         | UTF-16 vagy UTF-8 kódolású szöveges fájlok                                                                                                                                                                                                                                             |
+| Szövegfájl         | .TXT         | UTF-16 vagy UTF-8 kódolású szöveges fájlok. A fájl neve nem tartalmazhat japán karaktereket.                                                                                                                                                                                        |
 | Igazított szövegfájl | . IGAZÍTÁS       | A bővítmény `.ALIGN` egy speciális bővítmény, amelyet használhat, ha tudja, hogy a dokumentum pár a mondatok tökéletesen igazított. Ha megad egy `.ALIGN` fájlban, egyéni a fordítót nem igazodnak a mondatok az Ön számára. |
 | Excel-fájl        | .XLSX        | Excel-fájlt (2013 vagy újabb). Az első sor / sorát a táblázatban nyelvkód kell lennie.                                                                                                                                                                                                                                                      |
 

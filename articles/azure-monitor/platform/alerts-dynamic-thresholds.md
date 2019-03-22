@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008905"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339006"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
 
@@ -83,7 +83,7 @@ A küszöbértékeket a diagramon megjelenő előtt egy riasztási szabályt a r
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adatot a riasztást kiváltó van szükség?
 
-Dinamikus küszöbérték szükséges adatok pontos küszöbértékek riasztások aktiválása előtt győződjön meg, hogy legalább három nap.
+Ha egy új erőforrást vagy hiányzó metrikaadatok, dinamikus küszöbérték nem aktiválja riasztások a előtt az adatok három nap biztosítására pontosan küszöbértékek érhetők el.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbérték ajánlott eljárások
 

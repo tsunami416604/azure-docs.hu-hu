@@ -2,17 +2,18 @@
 title: Helyszíni gépek migrálása az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110307"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336548"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -113,7 +114,7 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 5. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
 6. A **Replikált elemek** listában kattintson a jobb gombbal a virtuális gépre, majd kattintson a **Migrálás befejezése** parancsra. Ez a következőket teszi:
 
-   - Befejezi a migrálási folyamatot, az AWS virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
+   - Befejezi a migrálási folyamatot, a helyszíni virtuális gép replikálását, és leállítja a virtuális gép Site Recovery-számlázását.
    - Ezzel a lépéssel törli azokat a replikációs adatokat. Azzal nem törli az áttelepített virtuális gépeket.
 
      ![Az áttelepítés befejezése](./media/migrate-tutorial-on-premises-azure/complete-migration.png)

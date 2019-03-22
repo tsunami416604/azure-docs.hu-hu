@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077071"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311217"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Canary kiadás mikroszolgáltatások vamppel az Azure Container Service DC/OS-fürtön
 
@@ -44,7 +44,7 @@ Ez az útmutató beállítjuk Vamp az Azure Container Service DC/OS-fürttel. Ca
 
 ## <a name="set-up-vamp"></a>Vamp beállítása
 
-Most, hogy egy futó DC/OS-fürt, Vamp telepítheti a DC/OS felhasználói felületen (http://localhost:80). 
+Most, hogy egy futó DC/OS-fürt, Vamp telepítheti a DC/OS felhasználói felületen (http:\//localhost:80). 
 
 ![A DC/OS UI felhasználói felülete](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 

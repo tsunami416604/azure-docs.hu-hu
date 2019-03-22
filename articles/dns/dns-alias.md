@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 2/20/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295640"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337646"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-alias a rekordok áttekintése
 
@@ -20,9 +20,9 @@ Az Azure DNS-alias rekordokat a DNS-rekordhalmazok szoftverösszetevője. Ezek h
 
 A következő rekordtípusokhoz, az Azure DNS-zóna egy aliast rekordhalmaz támogatott: 
 
-- A 
-- AAAA 
-- CNAME 
+- A
+- AAAA
+- CNAME
 
 > [!NOTE]
 > Ha szeretne használni a vagy AAAA típusú rekord típust-alias rekord átirányítása egy [Azure Traffic Manager-profil](../traffic-manager/quickstart-create-traffic-manager-profile.md) meg kell győződnie arról, hogy a Traffic Manager-profil csak rendelkezik [külső végpontokat](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Külső végpontok Traffic Managerben, meg kell adnia az IPv4 vagy IPv6-címet. Ideális esetben használjon statikus IP-címeket.
@@ -32,7 +32,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna egy aliast rekordhalmaz tám
 - **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource. A DNS-rekordhalmaz automatikusan megtörténik, ha a nyilvános IP-cím megváltozik, vagy törölni. DNS értékhiányos rekordokat, amelyek nem megfelelő IP-címek kerülni a rendszer.
 
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. Ez különösen hasznos ha kell irányíthatja a forgalmat a zóna legfelső pontján, mint a hagyományos CNAME-rekordokat a zóna felső pontja nem támogatottak. Tegyük fel például, hogy a Traffic Manager-profil myprofile.trafficmanager.net, és a vállalati DNS-zónát a contoso.com. Hozzon létre egy alias rekordhalmaz írja be A/AAAA contoso.com (a zóna felső pontja), és myprofile.trafficmanager.net mutasson.
-
+- **Az Azure Content Delivery Network (CDN) végpontjára mutató**. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Például egy DNS CNAME-rekordhalmazt lehet egy alias egy másik CNAME-rekordhalmazt. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
 
 ## <a name="scenarios"></a>Forgatókönyvek
@@ -61,6 +61,7 @@ Ez a probléma alias rekordok használatával kell megoldani. Ellentétben a CNA
 Ha például a contoso.com és a www\.contoso.com is mutasson a Traffic Manager-profilt. További információt az Azure Traffic Manager-profilok alias rekordok használatával, tekintse meg a következő lépések szakasz.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Mutasson a zóna felső pontja az Azure CDN-végpontok
+
 Csakúgy, mint a Traffic Manager-profil is használhatja alias rekordokat a DNS-zóna felső pontja átirányítása az Azure CDN-végpontok. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására. A webhely előtag-Beillesztés "www", a DNS-név nélkül elérheti.
 
 Például www.contoso.com a statikus webhely neve, a felhasználók számára a webhely használatával nincs szükség a contoso.com DNS-nevének www illesztenie hozzáférhet.

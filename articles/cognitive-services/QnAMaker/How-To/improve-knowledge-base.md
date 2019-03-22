@@ -1,29 +1,29 @@
 ---
 title: Tudásbázis – QnA Maker javítása
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Aktív tanulás lehetővé teszi a Tudásbázis minősége javítható feltünteti alternatív kérdése van, a felhasználó-beküldés, a a kérdés és válasz párt alapján. Ezeket a javaslatokat tekintse át, vagy a hozzá meglévő kérdések vagy visszautasítja őket. A Tudásbázis automatikusan nem változik. El kell fogadnia a vonatkozó javaslatok bármely módosítás érvénybe léptetéséhez. Ezek a javaslatok kérdések hozzáadása nem, de módosítsa vagy törölje a meglévő kérdéseket is.
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537898"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337425"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
 Aktív tanulás lehetővé teszi a Tudásbázis minősége javítható feltünteti alternatív kérdése van, a felhasználó-beküldés, a a kérdés és válasz párt alapján. Ezeket a javaslatokat tekintse át, vagy a hozzá meglévő kérdések vagy visszautasítja őket. 
 
 A Tudásbázis automatikusan nem változik. El kell fogadnia a vonatkozó javaslatok ahhoz, hogy bármilyen módosítás érvénybe léptetéséhez. Ezek a javaslatok kérdések hozzáadása nem, de módosítsa vagy törölje a meglévő kérdéseket is.
 
-## <a name="active-learning"></a>Aktív tanulás
+## <a name="what-is-active-learning"></a>Mi az aktív tanulás?
 
 A QnA Maker megtanulja az implicit és explicit visszajelzés új kérdést változata.
  
@@ -42,7 +42,7 @@ Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alte
 
 Miután kérdések a QnA Maker Portal használata javasolt, tekintse át és fogadja el vagy elutasítása szólhatnak kell. 
 
-## <a name="upgrade-version-to-use-active-learning"></a>Aktív tanulás frissítési verziója
+## <a name="upgrade-your-version-to-use-active-learning"></a>Aktív tanulás használata frissítéséhez
 
 Aktív tanulás a verze modulu runtime 4.4.0 vagy újabb támogatott. Ha a Tudásbázis egy korábbi verzióval készült [a futtatókörnyezet frissítése](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) a funkció használatához. 
 
@@ -64,12 +64,12 @@ Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javaso
 
 1. Aktív tanulás a bekapcsolásához kattintson a a **neve**, lépjen a [ **Szolgáltatásbeállítások** ](https://www.qnamaker.ai/UserSettings) a QnA Maker Portal jobb felső sarokban.  
 
-    ![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![Aktív tanulás javasolt kérdést alternatíva a szolgáltatás beállításai lapon kapcsolja. Válassza ki a felhasználónevet a jobb felső menüben, majd válassza a szolgáltatás beállításait.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
 1. Keresse meg a QnA Maker szolgáltatást, majd váltsa át **aktív tanulás**. 
 
-    [![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás szolgáltatást. Ha nem tudja váltsa át a szolgáltatást, szükség lehet a szolgáltatás frissítése.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     Egyszer **aktív tanulás** van engedélyezve, az ismeretek arra utalnak, új kérdéseket rendszeres időközönként, felhasználó által beküldött kérdések alapján. Letilthatja a **aktív tanulás** beállítás átállításával újra.
 
@@ -77,15 +77,15 @@ Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javaso
 
 1. Annak érdekében, hogy a javasolt kérdések, tekintse meg a **szerkesztése** Tudásbázis lapon jelölje be **javaslatok megjelenítése**. 
 
-    [![A szolgáltatás beállítások lapon a javaslatok megjelenítése gomb megjelenítése](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![A portál a szerkesztése területen jelölje be javaslatok megjelenítése az aktív tanulás új kérdést alternatívák láthatók.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. A kérdés és válasz párok kiválasztásával csak javaslatok megjelenítése a Tudásbázis szűrése **javaslatok szűrés**.
 
-    [![A Szolgáltatásbeállítások oldal, a javaslatokat tekintse meg a szűrés csak kérdés-válasz párt](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![Javaslatok bekapcsolásához a szűrő használatával csak az aktív tanulás javasolt kérdést alternatívák megtekintéséhez.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
 1.  Minden kérdés szakasz javaslatokkal bemutatja egy pipa jelre az új kérdéseket `✔` , fogadja el a kérdést, vagy egy `x` elutasítása a javaslatok. Válassza ki a pipa jelre a kérdés hozzáadása. 
 
-    [![A szolgáltatás beállításai lapon kapcsolja be a aktív tanulás](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Válassza ki, vagy utasítsa el aktív tanulás javasolt kérdést alternatíva a zöld pipa, vagy a vörös törlés osztás kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Hozzáadhat és törölhet _minden javaslat_ kiválasztásával **adja hozzá az összes** vagy **az összes elutasítása**.
 
@@ -154,7 +154,13 @@ Ha az ügyfélalkalmazás (például csevegőrobotot) megkapja a választ, vissz
 
 Az ügyfélalkalmazás összes kérdést jelenít meg és válassza ki a kérdést, hogy a felhasználó lehetőség, hogy a legtöbb szándékát jelöli. 
 
-Miután a felhasználó kiválaszt közülük egyet a meglévő kérdéseket. A felhasználó visszajelzést küld a QnA Maker [Train](https://www.aka.ms/activelearningsamplebot) API-t továbbra is az aktív tanulás visszajelzés ikonjához. 
+Miután a felhasználó kiválaszt egy meglévő kérdések, az ügyfélalkalmazás küldi a felhasználó által választott visszajelzés a QnA Maker Train API-val. A visszajelzés befejezi az aktív tanulás visszajelzési hurkot. 
+
+Használja a [Azure Bot C# példa](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot) aktív tanulás egy teljes körű forgatókönyvben megtekintéséhez.
+
+## <a name="train-api"></a>Train API
+
+Aktív tanulás visszajelzést küld a vonat API POST-kérés a QnA Maker. Az API-aláírás a következő:
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -163,9 +169,42 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-További információ az aktív tanulás használata egy [Azure Bot C# példa](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+|HTTP-kérelem tulajdonság|Name (Név)|Typo|Cél|
+|--|--|--|--|
+|URL-cím útvonal-paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
+|Host subdomain|QnAMaker erőforrás neve|sztring|A QnA Maker, az Azure-előfizetésében az állomásnevet. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
+|Fejléc|Content-Type|sztring|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték a következő: `application/json`|
+|Fejléc|Engedélyezés|sztring|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Bejegyzés törzse|JSON-objektum|JSON|A képzési visszajelzés|
 
-## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktív tanulás a rendszer menti az exportált alkalmazást tsv-fájlt
+JSON-törzse többféle beállításokkal rendelkezik:
+
+|JSON-törzse tulajdonság|Typo|Cél|
+|--|--|--|--|
+|`feedbackRecords`|tömb|Visszajelzés listája.|
+|`userId`|sztring|A felhasználói azonosító, annak a személynek a javasolt kérdések elfogadásával. Felhasználói azonosító formátuma szerint strukturálhatja. Például egy e-mail-cím lehet a felhasználói azonosító érvénytelen az architektúrához. Választható.|
+|`userQuestion`|sztring|A kérdés pontos szövegét. Kötelező.|
+|`qnaID`|szám|Kérdés, talált azonosító a [GenerateAnswer válasz](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+
+Egy példa JSON-törzse hasonlóan néz ki:
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "<question-text>",
+            "qnaId": 1
+        }
+    ]
+}
+```
+
+A sikeres válasz egy 204, és nincs JSON-válasz törzsében állapotát adja vissza. 
+
+<a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
+
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktív tanulás a rendszer menti az exportált Tudásbázis
 
 Ha az alkalmazás rendelkezik aktív tanulás engedélyezve van, és exportálja az alkalmazás a `SuggestedQuestions` oszlop a tsv-fájl az aktív tanulás adatait őrzi meg. 
 
@@ -193,4 +232,4 @@ Ha Ön importálja újra az alkalmazást, az aktív tanulás továbbra is inform
 ## <a name="next-steps"></a>További lépések
  
 > [!div class="nextstepaction"]
-> [A QnA Maker API használata](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Metaadatok használata GenerateAnswer API-val](metadata-generateanswer-usage.md)

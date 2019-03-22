@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847127"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310017"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
 
@@ -53,7 +53,7 @@ Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beál
 
 Ez a közzétevő-profilon belül az ajánlat egyedi azonosítója. Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
 
-például, ha a kiadó **"contoso"** közzétevők ajánlatot hoz létre Ajánlatazonosítót **"minta-WebApp"**, ez fog megjelenni az appsource-ban, mint "https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+például, ha a kiadó **"contoso"** közzétevők ajánlatot hoz létre Ajánlatazonosítót **"minta-WebApp"**, ez fog megjelenni az appsource-ban, mint "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098093"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337106"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
@@ -103,9 +103,11 @@ Ez a támogatás jelenleg nem érhető el az Azure portálon létrehozott txt t�
 ## <a name="alias-records"></a>Aliasrekordok
 
 ### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Mik az egyes forgatókönyvekben, ahol alias rekordok hasznosak?
+
 Lásd a szakasz a forgatókönyveket a [Azure DNS-alias a rekordok áttekintése](dns-alias.md).
 
 ### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Milyen rekordtípusokat alias rekordhalmazok támogatottak?
+
 A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támogatottak:
  
 - A 
@@ -116,30 +118,36 @@ A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támoga
 
 - **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
+- **Az Azure Content Delivery Network (CDN) végpontjára mutató**. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Alias rekordok hivatkozhat, más azonos típusú rekordhalmazok. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Létrehozhat és frissíthet alias rekordokat az Azure Portalon?
+
 Igen. Hozzon létre, vagy az Azure Portalon az Azure REST API-k, PowerShell, CLI és SDK-k alias-rekordok kezelése.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Alias rekordok segítségével, győződjön meg arról, hogy a saját DNS-rekordhalmaz törölték az alapul szolgáló nyilvános IP-cím törlése?
+
 Igen. Ez a funkció egyike az alapképességek alias rekordok. Ez segít a felhasználók számára az alkalmazás az esetleges üzemkimaradások elkerülése érdekében.
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Alias rögzíti lesz a segítségére ahhoz, hogy ellenőrizze, hogy a saját DNS-rekordhalmaz frissül, és a megfelelő IP-címet az alapul szolgáló nyilvános IP-cím változásakor?
+
 Igen. Ez a funkció egyike az alapképességek alias rekordok. Ez segít a lehetséges valamilyen okból kimaradás lép vagy az alkalmazás biztonsági kockázatok elkerülése érdekében.
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>Vonatkozik valamilyen korlátozás aliasrekordot használatával állít be, a vagy AAAA típusú rögzíti, mutasson a Traffic Manager?
+
 Igen. Mutasson a Traffic Manager-profil-alias a vagy AAAA típusú rekordhalmaz, a Traffic Manager a profil csak külső végpontokkal kell használnia. Amikor a Traffic Manager hoz létre a külső végpontokat, adja meg a tényleges IP-címek a végpontok.
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>Van-e használni alias rekordok külön díj?
+
 Alias rekordok egy bizonyságot adhatnak meg egy érvényes DNS-rekordhalmaz. Nincs semmilyen további használati díjának felszámolása alias rekordok.
 
 ## <a name="use-azure-dns"></a>Az Azure DNS használata
 
-### <a name="can-i-cohost-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Is egy tartományt is cohost Azure DNS-ben és a egy másik DNS-szolgáltató használatával?
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>Az Azure DNS és a egy másik DNS-szolgáltató használatával közös üzemeltetésű tartomány lehetőségeket?
 
-Igen. Az Azure DNS támogatja a cohosting tartományok más DNS-szolgáltatásokkal.
+Igen. Az Azure DNS támogatja a közös üzemeltetési tartományok más DNS-szolgáltatásokkal.
 
-Cohosting beállításához módosítsa a Névkiszolgálói rekordokat átirányítása mindkét szolgáltatót a névkiszolgálókat a tartományhoz. A névkiszolgáló (NS) vezérlőelem, mely szolgáltatók kapjanak a tartomány DNS-lekérdezések rögzíti. Ezeket a Névkiszolgálói rekordokat Azure DNS-ben, a másik szolgáltató és a szülőzóna rekordhalmazának módosíthatja. A szülőzóna rekordhalmazának általában van konfigurálva a tartomány tartománynév-n keresztül. A DNS-delegálás további információkért lásd: [tartomány DNS-delegálás](dns-domain-delegation.md).
+Állítsa be a közös üzemeltetési, módosítsa a Névkiszolgálói rekordokat átirányítása mindkét szolgáltatót a névkiszolgálókat a tartományhoz. A névkiszolgáló (NS) vezérlőelem, mely szolgáltatók kapjanak a tartomány DNS-lekérdezések rögzíti. Ezeket a Névkiszolgálói rekordokat Azure DNS-ben, a másik szolgáltató és a szülőzóna rekordhalmazának módosíthatja. A szülőzóna rekordhalmazának általában van konfigurálva a tartomány tartománynév-n keresztül. A DNS-delegálás további információkért lásd: [tartomány DNS-delegálás](dns-domain-delegation.md).
 
 Bizonyosodjon meg róla, hogy mindkét DNS-szolgáltatók között a szinkronban-e a tartomány DNS-rekordjait. Az Azure DNS jelenleg nem támogatja a DNS zónaletöltés. DNS-rekordok segítségével szinkronizálva kell lenniük a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [Parancssori eszköz](dns-operations-recordsets-cli.md).
 
@@ -271,10 +279,9 @@ API-k, PowerShell, CLI és SDK-k használatával már létrehozott privát zón�
 ## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure DNS](dns-overview.md).
-<br>
-- [További információ az Azure DNS használata saját tartományok](private-dns-overview.md).
-<br>
-- [További információ a DNS-zónák és rekordok](dns-zones-records.md).
-<br>
-- [Ismerkedés az Azure DNS](dns-getstarted-portal.md).
 
+- [További információ az Azure DNS használata saját tartományok](private-dns-overview.md).
+
+- [További információ a DNS-zónák és rekordok](dns-zones-records.md).
+
+- [Ismerkedés az Azure DNS](dns-getstarted-portal.md).

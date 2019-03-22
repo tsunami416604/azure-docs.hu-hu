@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: feb74b923a1f15105a2d80f8fefb09184162cb9b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990462"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314875"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -84,7 +84,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
 |thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr lekéréséhez hívja a Get-miniatűr (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
-|a kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
+|kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
 |audioEffects| Nulla vagy több audioEffects tartalmazhat. Részletesebb információkért lásd: [audioEffects](#audioeffects).|
 |címkék| Nulla vagy több címkéket tartalmazhat. További információ részletes: [címkék](#labels).|
@@ -157,7 +157,7 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |language|Az insights nyelv (a forrás nyelvről lefordított). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
 |a szövegben|A [átirat](#transcript) dimenzió.|
 |optikai karakterfelismerés|A [ocr](#ocr) dimenzió.|
-|a kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
+|kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
 |blokkok|Tartalmazhat egy vagy több [blokkok](#blocks)|
 |arcok|A [arcok](#faces) dimenzió.|
 |címkék|A [címkék](#labels) dimenzió.|
@@ -245,41 +245,33 @@ Példa:
 |magabiztosan|Elismerés magabiztosan.|
 |language|Az optikai Karakterfelismerés nyelv.|
 |példányok|Amikor jelent meg az optikai Karakterfelismeréssel időt tartományok listája (az azonos OCR többször is megjelenhetnek).|
+|Magasság|Az optikai Karakterfelismerés négyszög magassága|
+|felső|A legjobb hely a képpont|
+|Balra| A bal oldali hely a képpont|
+|Szélesség|Az optikai Karakterfelismerés téglalap szélességének|
 
 ```json
 "ocr": [
     {
       "id": 0,
       "text": "LIVE FROM NEW YORK",
-      "confidence": 0.91,
+      "confidence": 675.971,
+      "height": 35,
       "language": "en-US",
+      "left": 31,
+      "top": 97,
+      "width": 400,      
       "instances": [
         {
           "start": "00:00:26",
           "end": "00:00:52"
         }
       ]
-    },
-    {
-      "id": 1,
-      "text": "NOTICIAS EN VIVO",
-      "confidence": 0.9,
-      "language": "es-ES",
-      "instances": [
-        {
-          "start": "00:00:26",
-          "end": "00:00:28"
-        },
-        {
-          "start": "00:00:32",
-          "end": "00:00:38"
-        }
-      ]
     }
   ],
 ```
 
-#### <a name="keywords"></a>a kulcsszavak
+#### <a name="keywords"></a>kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|

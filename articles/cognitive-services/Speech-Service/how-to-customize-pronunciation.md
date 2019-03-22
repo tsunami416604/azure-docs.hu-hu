@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878408"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339397"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
 
-Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt.
+Egyéni írásmódja segítségével meghatározhatja a fonetikus űrlap és a egy szó vagy kifejezés (betűszó) megjelenítési. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt.
 
 Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni írásmódja bejegyzést is megadhatja. A struktúra a következőképpen történik:
 
@@ -32,11 +32,12 @@ Az alábbi táblázatban néhány példa látható:
 
 | Megjelenítési űrlap | Használja a beszélt űrlap |
 |----------|-------|
-| C3PO | három csúc o lásd: |
+| 3CPO | három csúc o lásd: |
 | L8R | késedelmes vannak |
-| CNTK | Lásd: n tea k|
+| CNTK | c n t k|
 
 ## <a name="requirements-for-the-spoken-form"></a>A beszédből kinyert képernyő követelményei
+
 A beszédből kinyert képernyő kisbetűnek kell lennie, amely kényszerítheti, hogy az importálás során. Meg kell adnia az adatok programu Pro import ellenőrzéseket is. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Azonban van Előfordulhat, hogy lehet több tiltott karaktereket a megjelenítési űrlap (például ~ és ^).
 
 Minden egyes .txt fájl rendelkezhet több bejegyzés a következő képen látható módon:
@@ -46,18 +47,20 @@ Minden egyes .txt fájl rendelkezhet több bejegyzés a következő képen láth
 A beszédből kinyert képernyő az fonetikus sorrendje a megjelenített képernyő. Betűket, szavakat vagy szótagokat határoznak áll. Jelenleg nincs további útmutatást vagy szabványgyűjtemény állítson össze a kimondott űrlap segítségével.
 
 ## <a name="supported-pronunciation-characters"></a>Támogatott írásmódja karakter
+
 Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A karakterkészlet, amellyel a kimondott képernyőt a kifejezés (az egyéni írásmódja fájlt) expressz az alábbi táblázatban láthatók:
 
 | Nyelv | Karakterek |
 |---------- |----------|
-| Angol (en-US) | a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
-| Német (de-de) | ä lumen, ü,?, a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
+| Angol (en-US) | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Német (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Egy kifejezés megjelenítési űrlap (fájlban írásmódja) nyelven kell megírni ugyanúgy nyelvi betanítás adatkészlet.
 
 ## <a name="requirements-for-the-display-form"></a>A megjelenítési űrlap követelményei
-Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy összetett szavak, amelyek meglévő szavak is lehet. A gyakori szavakat egyéb kiejtés is megadhat.
+
+Megjelenítési űrlap csak egy egyedi szót, egy betűszó vagy összetett szavak, amelyek meglévő szavak is lehet.
 
 >[!NOTE]
 >Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó.

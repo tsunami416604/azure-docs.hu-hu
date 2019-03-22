@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d34ef1bb5bea6f5f099f7fa2a24ddec2362b44ea
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081032"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336184"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés használata a PowerShell-lel
 
@@ -101,10 +101,10 @@ Helyreállítható törlési engedélyezve:
 Előfordulhat, hogy megtekintheti az állapot törölt kulcstartók, az Ön előfizetéséhez rendelve az alábbi paranccsal:
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
-- *ID* helyreállításához, vagy végleges törlése az erőforrás azonosítására használható. 
+- *ID* helyreállítása vagy végleges törlése az erőforrás azonosítására használható. 
 - *Erőforrás-azonosító* ebben a tárban annak az eredeti erőforrás azonosítója. A kulcstartó most már törölt állapotban van, mivel nincs erőforrás létezik-e az adott erőforrás-azonosítója. 
 - *Ütemezett dátum kiürítése* akkor, ha a tároló véglegesen törölve lesz, ha nem tesz. Az alapértelmezett megőrzési időtartamot, kiszámításához használt a *végleges törlés dátuma ütemezett*, 90 nap.
 
@@ -233,8 +233,27 @@ Törölt key vault-objektumokon ajánlati is bemutatja, amikor még a Key Vault 
 >[!IMPORTANT]
 >A tár törölve objektum, által aktivált annak *végleges törlés dátuma ütemezett* mezőben, az véglegesen törlődni fog. Már nem helyreállítható!
 
+## <a name="enabling-purge-protection"></a>Végleges törlés elleni védelem engedélyezése
+
+Végleges törlés elleni védelem bekapcsolásakor, a tároló vagy az objektum törölt állapotban nem törölhető, amíg a 90 napos megőrzési időszak letelte. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a funkció lehetővé teszi a hozzáadott garancia, amely egy tároló vagy az objektum nem lehet véglegesen töröl, amíg a megőrzési időszak letelte.
+
+Engedélyezheti a végleges törlés elleni védelem csak akkor, ha a helyreállítható törlés is engedélyezve van. 
+
+Kapcsolja be a mindkét helyreállítható törlés és a végleges törlése a védelmi tároló létrehozása során használja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) parancsmagot:
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+Végleges törlés elleni védelem hozzáadása egy meglévő tároló (már rendelkező engedélyezhető a helyreállítható törlés), használja a [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0), és [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) parancsmagok:
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>Egyéb erőforrások
 
 - A Key Vault helyreállítható törlés funkciójának áttekintéséhez lásd: [Azure Key Vault helyreállítható törlés áttekintése](key-vault-ovw-soft-delete.md).
-- Az Azure Key Vault használatának általános áttekintéséért lásd: [Mi az Azure Key Vault?](key-vault-overview.md).
-
+- Az Azure Key Vault használatának általános áttekintéséért lásd: [Mi az Azure Key Vault?](key-vault-overview.md). mai napig = sikeres}

@@ -1,5 +1,5 @@
 ---
-title: Android rendszeren az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés
+title: Android rendszeren – Azure Active Directory ügyféltanúsítvány-alapú hitelesítés
 description: További információ a támogatott forgatókönyvek és megoldások konfigurálásával Tanúsítványalapú hitelesítés követelményeinek az Android-eszközök
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2492fe3074b72df5f9ecbaab0496fee1f54ca0e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b0f4a648227e62642bb071a76cbd1f3a50bf78ae
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211563"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314502"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android rendszeren az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés
 

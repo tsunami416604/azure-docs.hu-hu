@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/18/2018
+ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1aebe3086704c3823bcde470640f547de2beaaee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2c3c5530ac21d97adfabfcc00a9351599646f0e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884196"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317289"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Gyors útmutató: Szünet és folytatás compute az Azure SQL Data Warehouse a PowerShell-lel
 
@@ -61,8 +61,7 @@ Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
     ![Kiszolgálónév és erőforráscsoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Jegyezze fel az adatraktár-nevét, amely az adatbázis neve. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. Ön
-5.  Ezek a szünet és folytatás parancsokban.
+4. Jegyezze fel az adatraktár-nevét, amely az adatbázis neve. Írja fel a kiszolgáló nevét és az erőforráscsoportot is.
 6. Ha a kiszolgáló valami.database.windows.net, csak az első részt használja kiszolgálónévként a PowerShell-parancsmagokban. A fenti ábrán a teljes kiszolgálónév newserver-20171113.database.windows.net. Az utótag dobja el, és használja **newserver-20171113** a PowerShell-parancsmagot a kiszolgálónevet.
 
 ## <a name="pause-compute"></a>Számítás szüneteltetése
@@ -103,6 +102,14 @@ $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
+```
+
+## <a name="check-status-of-your-data-warehouse-operation"></a>Az adattárház-művelet állapotának ellenőrzése
+
+Az adattárház állapotának ellenőrzéséhez használja a [Get-AzureRmSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlDatabaseActivity?view=azurermps-6.13.0#description) parancsmagot.
+
+```
+Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

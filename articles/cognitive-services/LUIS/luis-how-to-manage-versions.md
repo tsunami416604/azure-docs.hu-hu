@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: f615a07352faccc8096752e5ba60360144834907
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110902"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338241"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók segítségével módosíthatja, és átmeneti és éles alkalmazások befolyásolása nélkül tesztelése
 
@@ -56,6 +56,10 @@ Jelöljön ki egy verziót a listából, majd **aktív győződjön meg arról,*
     ![Verziók lap, új verzió importálása a szakaszban kezelése](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     -Verziót importált, miután az új verzió válik az aktív verziót.
+
+### <a name="import-errors"></a>Importálási hiba
+
+* Jogkivonatokat létrehozó hibák: Ha egy **jogkivonatokat létrehozó hiba** importálásakor, egy olyanra, amely használja egy másik importálni próbált [jogkivonatokat létrehozó](luis-language-support.md#custom-tokenizer-versions) , mint az alkalmazás jelenleg használ. A probléma megoldásához, két lehetőség közül választhat. Lásd: [jogkivonatokat létrehozó verziók közötti Migrálás](luis-language-support.md#migrating-between-tokenizer-versions) további információt.
 
 <a name = "export-version"></a>
 

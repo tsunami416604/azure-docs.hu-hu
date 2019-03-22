@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097610"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336071"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -94,7 +94,7 @@ Előfordulhat, hogy megtekintheti az állapot törölt kulcstartók, az Ön elő
 ```azurecli
 az keyvault list-deleted
 ```
-- *ID* helyreállításához, vagy végleges törlése az erőforrás azonosítására használható. 
+- *ID* helyreállítása vagy végleges törlése az erőforrás azonosítására használható. 
 - *Erőforrás-azonosító* ebben a tárban annak az eredeti erőforrás azonosítója. A kulcstartó most már törölt állapotban van, mivel nincs erőforrás létezik-e az adott erőforrás-azonosítója. 
 - *Ütemezett dátum kiürítése* akkor, ha a tároló véglegesen törölve lesz, ha nem tesz. Az alapértelmezett megőrzési időtartamot, kiszámításához használt a *végleges törlés dátuma ütemezett*, 90 nap.
 
@@ -222,6 +222,24 @@ Törölt key vault-objektumokon ajánlati is bemutatja, amikor még a Key Vault 
 
 >[!IMPORTANT]
 >A tár törölve objektum, által aktivált annak *végleges törlés dátuma ütemezett* mezőben, az véglegesen törlődni fog. Már nem helyreállítható!
+
+## <a name="enabling-purge-protection"></a>Végleges törlés elleni védelem engedélyezése
+
+Végleges törlés elleni védelem bekapcsolásakor, a tároló vagy az objektum törölt állapotban nem törölhető, amíg a 90 napos megőrzési időszak letelte. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a funkció lehetővé teszi a hozzáadott garancia, amely egy tároló vagy az objektum nem lehet véglegesen töröl, amíg a megőrzési időszak letelte.
+
+Engedélyezheti a végleges törlés elleni védelem csak akkor, ha a helyreállítható törlés is engedélyezve van. 
+
+Kapcsolja be a mindkét helyreállítható törlés és a végleges törlése a védelmi tároló létrehozása során használja a [az keyvault létrehozása](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+Végleges törlés elleni védelem hozzáadása egy meglévő tároló (már rendelkező engedélyezhető a helyreállítható törlés), használja a [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) parancsot:
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 

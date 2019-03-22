@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 94a0d3f19e595ac040d908ea47d6332ceae0943c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314805"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339431"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -25,7 +25,7 @@ Jellemzőalapú navigáció szolgál a lekérdezési eredmények keresési alkal
 > * A mező attribútumainak beállítása
 > * Hozhat létre az index és az adatok betöltése
 > * Az értékkorlátozó szűrők lekérdezés hozzáadása
-> * Eredmények kezelése
+> * Az eredmények kezelése
 
 Értékkorlátozással dinamikus és a egy lekérdezést a visszaadott. Search válaszai a értékkorlátozó kategóriákat ad vissza az eredmények használt bring velük. Ha nem ismeri az aspektusokat, az alábbi példában egy jellemzőalapú navigációs szerkezetben ábrája.
 
@@ -84,7 +84,7 @@ A .NET API-t, a szűrési attribútumokhoz explicit módon kell beállítani. A 
 
 ## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
+Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
 
 ## <a name="add-facet-filters-to-a-query"></a>Az értékkorlátozó szűrők lekérdezés hozzáadása
 
@@ -128,4 +128,3 @@ Bár ez egy gyakori alkalmazási helyzet, már nem valami a jellemzőalapú navi
 + [Szűrők az Azure Search szolgáltatásban](search-filters.md)
 + [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-

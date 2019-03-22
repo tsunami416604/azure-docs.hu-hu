@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/27/2018
+ms.date: 03/21/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dda3725be7549d90223b33608939c392bdf66852
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b33b9629863702d576eac39fb4097a2bff2e57
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217971"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337570"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse erőforrás kihasználtságát és a lekérdezés tevékenység figyelése
 Az Azure SQL Data warehouse-bA az Azure Portalon, a surface elemzéseket nyújt az adatraktár-számítási feladat gazdag figyelési élményt nyújt. Az Azure Portalon az ajánlott eszköz esetén az adattárház figyelését, konfigurálható adatmegőrzési pontokat, riasztások, javaslatok, és testre szabható diagramokat és irányítópultokat a metrikák és naplók biztosít. A portál lehetővé teszi, hogy az egyéb Azure figyelő szolgáltatási, például az Operations Management Suite (OMS) és az Azure Monitor (naplók) egy átfogó figyelési élményt nyújt a nem csupán az adattárház, hanem a teljes Azure analytics is integrálhatja Platform integrált figyelési megoldást. Ez a dokumentáció ismerteti, milyen monitorozási funkciók érhetők el optimalizálása és az elemzési platform az SQL Data Warehouse segítségével kezelheti. 
@@ -46,7 +46,7 @@ Egy programozott élményt, amikor az SQL Data Warehouse a T-SQL-n keresztül a 
 Tekintse meg a DMV-k használatával, amely az SQL Data Warehouse biztosít a listáját, tekintse meg a [dokumentáció](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás
-Metrikák és naplók is exportálhatók az Azure Monitor, kifejezetten a [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) összetevő programozott módon keresztül érhetők el, és [naplóbeli keresés](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata).
+Metrikák és naplók is exportálhatók az Azure Monitor, kifejezetten a [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) összetevő programozott módon keresztül érhetők el, és [lekérdezések naplózását](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). A naplózási késését az SQL Data Warehouse nagyjából 10 – 15 perc alatt van. A késés érintő tényezők a további részletekért látogasson el az alábbi dokumentációt.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ef29dafe32c3c5988cd33f59c8436eeef4b45886
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849278"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339295"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Hogyan használható a keresési eredmények az Azure Search szolgáltatásban
 Ez a cikk útmutatást nyújt a-keresési eredmények, például a teljes száma, a dokumentum lekéréséhez, a rendezési sorrend és navigációs oldal szokásos megoldások szabványos elemeit megvalósításához. Keresztül megadott oldal kapcsolatos beállításokat, adatokat vagy a keresési eredmények információkat közreműködik a [dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) az Azure Search szolgáltatás küldött kérelmeket. 
@@ -25,8 +25,8 @@ A REST API-kérések közé tartozik egy GET parancs, elérési út, és tájék
 Számos mintakódot közé tartozik az előtérbeli webes felületet, amely itt található: [New York City feladatok bemutatóalkalmazást](https://azjobsdemo.azurewebsites.net/) és [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Kérés számos olyan elemek, például a szolgáltatás URL-CÍMÉT és az elérési út, HTTP-műveletet, `api-version`, és így tovább. Kihagytuk hogy vágott a példákat, jelölje ki, amely fontos tördelés szintaxisát. Kérelem szintaxissal kapcsolatos további információkért lásd: [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice). > 
-> 
+> Kérés számos olyan elemek, például a szolgáltatás URL-CÍMÉT és az elérési út, HTTP-műveletet, `api-version`, és így tovább. Kihagytuk hogy vágott a példákat, jelölje ki, amely fontos tördelés szintaxisát. Kérelem szintaxissal kapcsolatos további információkért lásd: [Azure Search szolgáltatás REST](https://docs.microsoft.com/rest/api/searchservice).
+>
 
 ## <a name="total-hits-and-page-counts"></a>Találatok és a lapok száma
 Bemutató egy lekérdezés által visszaadott eredmények teljes száma, és a kisebb adattömbökben, majd ezeket a eredményt adnak vissza az alapvető fontosságú, gyakorlatilag az összes keresési oldalakba.

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813a81e3812f9bb95ab11deec35adc6c05f1b58e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844207"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312223"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Az API Management integrálása a Service Fabric az Azure-ban
 
@@ -142,7 +142,7 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 
 * A **displayName** (megjelenített név) bármilyen, az API-t jelölő név lehet. Ebben a cikkben használja a "Service Fabric-alkalmazás".
 * A **name** (név) egyedi és leíró nevet biztosít az API-nak, például: „service-fabric-app”. A fejlesztői és közzétevői portálon jelenik meg.
-* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ebben a cikkben, például "<http://servicefabric>".
+* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ez a cikk, például a "http:\//servicefabric".
 * A **path** (útvonal) értéke az API Management szolgáltatás kiindulási URL-címéhez lesz hozzáfűzve. A kiindulási URL-cím egy API Management-szolgáltatáspéldány által üzemeltetett mindegyik API esetében megegyezik. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.
 * A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. Ez a cikk listában **http** és **https**.
 * A **path** (útvonal) az API utótagja. Ez a cikk használja a "myapp".

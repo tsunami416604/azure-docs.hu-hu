@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725235"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337544"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service-ben
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe helyezés [Azure App Service](overview.md). Az App Service lehetővé teszi, hogy a BitBucket, GitHub, a folyamatos üzembe helyezés és [Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) kiindulásként a a legújabb frissítéseket a meglévő adattárból az egyik szolgáltatásba.
@@ -47,6 +47,16 @@ Az a **Build szolgáltató** lapon válassza ki a build-szolgáltatót, és katt
 ### <a name="option-1-use-app-service-kudu-build-server"></a>1. lehetőség: használata App Service Kudu-buildelési kiszolgáló
 
 Az a **konfigurálása** lapra, jelölje be a szervezet, tárházat, és az ágat, ahonnan a folyamatos üzembe helyezés. Ha befejezte, kattintson a **Folytatás**.
+
+A GitHub-szervezethez adattárból üzembe helyezéséhez keresse meg a GitHub, és nyissa meg **beállítások** > **alkalmazások** > **engedélyezett OAuth alkalmazások**. Ezután kattintson az "Azure App Service".
+
+![Beállítások > alkalmazások > engedélyezett alkalmazások OAuth > az Azure App Service-ben](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+A következő oldalon hozzáférést az App Service használatával a szervezet tárházakat a jobb oldalon az "Engedélyezés" gombra kattintva.
+
+![Kattintson az "Engedélyezés" App Service-ben hozzáférést biztosítani a szervezet tárházakba](media/app-service-continuous-deployment/grant-access.png)
+
+A szervezet ekkor látnia kell a "Szervezet" listájában a **konfigurálása** az üzembe helyezési központ lapon.
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>2. lehetőség: az Azure-folyamatok (előzetes verzió) használata
 

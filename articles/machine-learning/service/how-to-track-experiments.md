@@ -1,7 +1,7 @@
 ---
-title: Track kísérletek és képzési mérőszámok segítségével
+title: A betanítási futtatások során log-metrikák
 titleSuffix: Azure Machine Learning service
-description: Az Azure Machine Learning szolgáltatással nyomon követhető a kísérletek és figyelheti a mérőszámokat javíthatják a modell létrehozását. További naplózás hozzáadása a tanítási szkriptet, hogyan lehet elküldeni a kísérletet, hogyan ellenőrizheti egy futó feladat állapotát és megtekintése a Futtatás eredményeit.
+description: Nyomon követheti a kísérletek, és figyelheti a mérőszámokat javíthatják a modell létrehozását. További naplózás hozzáadása a tanítási szkriptet, hogyan lehet elküldeni a kísérletet, hogyan ellenőrizheti egy futó feladat állapotát és megtekintése a Futtatás eredményeit.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835d1f41ffe940422554a8ca59d0a91ac8e98607
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008821"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336594"
 ---
-# <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
+# <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Napló metrikák betanítás során fut az Azure Machine Learningben
 
 Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtudhatja, hogyan naplózás hozzáadása a tanítási szkriptet, küldje el egy kísérlet futtatása, figyelheti a futtató és egy Futtatás eredményeinek megtekintéséhez.
 
@@ -218,7 +218,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
    ```
 
 ## <a name="cancel-a-run"></a>A Futtatás megszakítása
-Futtatás ésőbb elküldésekor, lemondhatja a szolgáltatásokat, akkor is, ha elvesztette az objektumhivatkozás mindaddig, amíg a kísérlet neve ismeri, és futtatási azonosítóját. 
+Futtatás elküldését követően lemondhatja a szolgáltatásokat, akkor is, ha elvesztette az objektumhivatkozás mindaddig, amíg a kísérlet neve ismeri, és futtatási azonosítóját. 
 
 ```python
 from azureml.core import Experiment

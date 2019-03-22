@@ -4,17 +4,17 @@ description: Ismerje meg, hogy a modulok, biztonsági, kommunikációs és az es
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a2412a286015cb403fe9a2af7754c7e5346fe98c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: bb2df9c32d5adc8160da82148e4a66a4ab68d182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230424"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311599"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -22,17 +22,17 @@ Az IoT Edge-futtatókörnyezet, amely szükség van ahhoz, hogy figyelembe kell 
 
 Az IoT Edge-futtatókörnyezet az IoT Edge-eszközökön a következő funkciókat hajtja végre:
 
-* Telepíti és frissíti az eszközökön a számítási feladatokat.
-* Fenntartja Azure IoT Edge biztonsági szabványait az eszközön.
-* Biztosítja, hogy [IoT Edge-modulok](iot-edge-modules.md) folyamatos futását.
-* Jelenti a modulok állapotát a felhőnek a távoli monitorozáshoz.
-* Kommunikációt létesít alárendelt levéleszközök és az IoT Edge-eszközök között.
-* Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
-* Kommunikációt létesít az IoT Edge-eszközök és a felhő között.
+* Telepítése és frissítése a számítási feladatokat az eszközön.
+* Az Azure IoT Edge biztonsági szabványait az eszközön karbantartása.
+* Ügyeljen arra, hogy [IoT Edge-modulok](iot-edge-modules.md) folyamatos futását.
+* Modulok állapotát a felhőnek a távoli monitorozáshoz jelentéseket.
+* Alárendelt levéleszközök és az IoT Edge-eszközök közötti kommunikáció támogatására.
+* Az IoT Edge-eszközön a modulok közötti kommunikáció támogatására.
+* Az IoT Edge-eszköz és a felhő közötti kommunikáció támogatására.
 
 ![Modul kommunikál az elemzések és a modulok állapotát az IoT hubhoz](./media/iot-edge-runtime/Pipeline.png)
 
-Az IoT Edge-futtatókörnyezet feladatai két kategóriába sorolhatók: kommunikációs és modul-kezelés. E két szerepkör két összetevőből, az IoT Edge-futtatókörnyezet végzi. Az IoT Edge hubot felelős közötti kommunikáció, míg az IoT Edge-ügynök üzembe helyezése és figyelése a modulok kezeli. 
+Az IoT Edge-futtatókörnyezet feladatai két kategóriába sorolhatók: kommunikációs és modul-kezelés. E két szerepkör két összetevőből, az IoT Edge-futtatókörnyezet végzi. A *IoT Edge hubot* felelős a kommunikációs, amíg a *IoT Edge-ügynök* helyez üzembe, és a modulok figyeli. 
 
 Az IoT Edge-központ és az IoT Edge-ügynök is olyan modulok, csakúgy, mint egy IoT Edge-eszközön futó bármely egyéb modult. 
 
@@ -52,11 +52,11 @@ Az IoT Edge-megoldás sávszélesség csökkentése érdekében használja, az I
 
 ![IoT Edge hubot a fizikai eszközök és az IoT Hub közötti átjáró](./media/iot-edge-runtime/Gateway.png)
 
- IoT Edge hubot megállapíthatja, hogy csatlakozik az IoT Hub. Ha megszakad a kapcsolat, IoT Edge hubot menti az üzenetek vagy a helyi ikereszköz-frissítések. Miután a kapcsolat helyreállt, a szinkronizált összes adatot. Az átmeneti gyorsítótár használt helyet az IoT Edge hubot ikermodul tulajdonsága határozza meg. A gyorsítótár méretét nem maximumon, és az eszköz tárkapacitása is növekszik. 
+IoT Edge hubot megállapíthatja, hogy csatlakozik az IoT Hub. Ha megszakad a kapcsolat, IoT Edge hubot menti az üzenetek vagy a helyi ikereszköz-frissítések. Miután a kapcsolat helyreállt, a szinkronizált összes adatot. Az átmeneti gyorsítótár használt helyet az IoT Edge hubot ikermodul tulajdonsága határozza meg. A gyorsítótár méretét nem maximumon, és az eszköz tárkapacitása is növekszik. 
 
 ### <a name="module-communication"></a>A modul kommunikáció
 
- IoT Edge hubot modult a modul kommunikációt létesít. IoT Edge használatával üzenetközvetítőként hub tartja a modulok egymástól független. Modulok csak adja meg, amelyen a üzenetek és a kimeneteket, amelyhez a üzeneteket írhat elfogadják a bemeneteket kell. A megoldás fejlesztő ezután összefűzi ezeket a bemeneteket, és kiírja együtt, hogy a modulok a rendelés megoldásra jellemző adatok feldolgozása. 
+IoT Edge hubot modult a modul kommunikációt létesít. IoT Edge használatával üzenetközvetítőként hub tartja a modulok egymástól független. Modulok csak adja meg, amelyen a üzenetek és a kimeneteket, amelyhez a üzeneteket írhat elfogadják a bemeneteket kell. A megoldás fejlesztő ezután összefűzi ezeket a bemeneteket, és kiírja együtt, hogy a modulok a rendelés megoldásra jellemző adatok feldolgozása. 
 
 ![IoT Edge hubot modul-modul kommunikációt létesít](./media/iot-edge-runtime/module-endpoints.png)
 

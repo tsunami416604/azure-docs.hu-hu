@@ -3,7 +3,7 @@ title: Azure Service Fabric-hálózatkezelés – bevezetés |} A Microsoft Docs
 description: Ismerje meg a hálózatok, az átjárók és az intelligens forgalmának irányítását a Service Fabric-háló.
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/26/2018
-ms.author: ryanwi
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8d9f5c71d05477094d733fd6b798831b3ff02ce1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892361"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339261"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Bevezetés a Service Fabric-háló alkalmazások a hálózatkezelés
 Ez a cikk ismerteti a terheléselosztók különböző típusú, hogyan átjárók csatlakozni más hálózatokhoz az alkalmazásokkal a hálózati és adatforgalmat a szolgáltatásokat az alkalmazások között.

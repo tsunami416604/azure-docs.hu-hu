@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311563"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336524"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata Azure Container Instances szolgáltatásban
 
@@ -33,7 +33,7 @@ Alkalmazkodjon a példákat, engedélyezése és használata az identitások az 
 
 ## <a name="why-use-a-managed-identity"></a>Miért érdemes használni egy felügyelt identitás?
 
-A futó tárolót egy felügyelt identitás használják a hitelesítéshez bármely [szolgáltatás, amely támogatja az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) tároló kódja a hitelesítő adatok kezelése nélkül. AD-hitelesítést nem támogató szolgáltatások az Azure Key Vaultban titkos kulcsok tárolására, és lekérni a hitelesítő adatokat a Key Vault elérése érdekében a felügyelt identitás használata. Egy felügyelt identitás használatával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
+A futó tárolót egy felügyelt identitás használják a hitelesítéshez bármely [szolgáltatás, amely támogatja az Azure AD-hitelesítés](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) tároló kódja a hitelesítő adatok kezelése nélkül. AD-hitelesítést nem támogató szolgáltatások az Azure Key Vaultban titkos kulcsok tárolására, és lekérni a hitelesítő adatokat a Key Vault elérése érdekében a felügyelt identitás használata. Egy felügyelt identitás használatával kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt. Felügyelt identitások jelenleg csak a Linux tárolópéldányok támogatottak.
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-A Key Vault hitelesíteni, és olvassa el a titkos kód mostantól használhatja a hozzáférési jogkivonat. Ügyeljen arra, hogy az URL-címben a kulcstartó nevét (*https://mykeyvault.vault.azure.net/...*):
+A Key Vault hitelesíteni, és olvassa el a titkos kód mostantól használhatja a hozzáférési jogkivonat. Ügyeljen arra, hogy az URL-címben a kulcstartó nevét (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

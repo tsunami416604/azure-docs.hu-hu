@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551823"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337697"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -27,8 +27,27 @@ Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Általános**
+
+## <a name="blog-post"></a>Blogbejegyzés
+A DevTest Labs-csapat blogja kezdődően 2019. március 20. így visszavontuk. 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>Amennyiben tudja követni a későbbiekben funkciófrissítések?
+Módosítástól, azt fogja kell üzenetküldés funkciófrissítések és/vagy informatív blogbejegyzések az Azure-blogban, és az Azure frissíti. Ezek a blogbejegyzések is összekapcsolja a dokumentáció tartalmaz, bárhol is szükséges.
+
+Fizessen elő a [DevTest Labs Azure blogon](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) és [frissíti az Azure DevTest Labs](https://azure.microsoft.com/updates/?product=devtest-lab) licenchasználati DevTest Labs szolgáltatásban létrehozott új funkciókról.
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>Mi történik, a meglévő blogbejegyzések?
+Jelenleg folyamatban van (kivéve a szolgáltatáskimaradás frissítések) áttelepítése meglévő blogbejegyzések a [DevTest Labs-dokumentáció](devtest-lab-overview.md). Ha az MSDN-blog elavult, azt a rendszer átirányítja a dokumentáció – áttekintés a DevTest Labs szolgáltatásban. Miután átirányítva, kereshet a cikk a "Szűrő által" cím keres. Vegye figyelembe, hogy még nincs áttelepítve minden bejegyzés, de a hónap végén kell elvégezni. 
+
+
+### <a name="where-do-i-see-outage-updates"></a>Hol láthatók szolgáltatáskimaradás frissítések?
+Fogja azt könyvelési szolgáltatáskimaradás frissítések használatával továbbítja a Twitter-leírót. Kövessen minket a Twitteren a legújabb frissítéseket a leállásokat és az ismert hibák.
+
+### <a name="twitter"></a>Twitter 
+A Twitter-leírót: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha kérdésem itt nem választ?
-Ha a kérdés nem szerepel itt, tudassa velünk, így segítségére választ találjanak.
+A kérdés nem szerepel itt, tudassa velünk, és segítünk választ találjanak.
 
 * Ez a GYIK végén kérdését. Az Azure Cache csapata és a Közösség többi tagjával, ez a cikk kapcsolatos érhet el.
 * Szélesebb elérni, új kérdést tenne fel a a [Azure DevTest Labs MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Az Azure DevTest Labs-csapat és a Közösség más tagjai érhet el.
@@ -41,7 +60,7 @@ Az Azure DevTest Labs a csapat időt és pénzt takaríthat meg. A fejlesztők t
 Önkiszolgáló megbízható, az azt jelenti, hogy a fejlesztők és tesztelők hozzon létre saját környezeteket igény szerint. Biztonsága érdekében, hogy DevTest Labs csökkentheti a veszteséget és a vezérlési költségeket, hogy a rendszergazdák rendelkeznek. A rendszergazdák is adja meg, melyik Virtuálisgép-méretek engedélyezett, a virtuális gépek maximális számát, és ha virtuális gép elindult, és állítsa le. DevTest Labs is megkönnyíti a költségek figyelése, és segítenek, hogy vegye figyelembe, hogy a labor-erőforrásokat vannak használatban, a riasztásokat állíthat be.
 
 ## <a name="how-can-i-use-devtest-labs"></a>Hogyan használható a DevTest Labs?
-DevTest Labs akkor hasznos, bármikor, szükséges fejlesztési vagy tesztelési környezetek, és szeretne gyorsan reprodukálhatja őket, vagy költségtakarékos házirendek segítségével kezelheti azokat.
+DevTest Labs akkor hasznos, bármikor szükséges fejlesztési vagy tesztelési környezetek, és azokat gyorsan reprodukálhatja vagy költségtakarékos házirendek segítségével kezelheti azokat.
 
 Az alábbiakban néhány olyan forgatókönyvet használó ügyfeleink számára a DevTest Labs szolgáltatásban:
 
@@ -106,8 +125,8 @@ Egyéb folyamatos integrációs (CI) / folyamatos készregyártás (CD) fordíth
 
 
 **Virtuális gépek**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>Miért nem látható a virtuális gépek panelen láthatók a DevTest Labs, virtuális gépek?
-DevTest Labs szolgáltatásban létrehozott virtuális gép létrehozásakor, a virtuális gép hozzáférési engedélyt kapnak. Megtekintheti a virtuális gép, mind a labs paneljén, majd a a **virtuális gépek** panelen. A DevTest Labs labor felhasználói szerepkörhöz tartozó felhasználók tekintheti meg a labor létrehozása a lab-ben létrehozott összes virtuális gép **összes virtuális gép** panelen. Azonban a DevTest Labs labor felhasználói szerepkörrel rendelkező felhasználók vannak nem automatikusan kapott olvasási hozzáférést az, hogy más felhasználók létrehozott virtuális gép erőforrásait. Ezért ezeken a virtuális gépeken nem jelennek meg a **virtuális gépek** panelen.
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom virtuális gépeket a Virtual Machines lapon láthatók a DevTest Labs?
+DevTest Labs szolgáltatásban létrehozott virtuális gép létrehozásakor, a virtuális gép hozzáférési engedélyt kapnak. Megtekintheti a virtuális gép, mind a labs lapon, majd a a **virtuális gépek** lapot. A DevTest Labs labor felhasználói szerepkörhöz tartozó felhasználók tekintheti meg a labor létrehozása a lab-ben létrehozott összes virtuális gép **összes virtuális gép** lapot. Azonban a DevTest Labs labor felhasználói szerepkörrel rendelkező felhasználók vannak nem automatikusan kapott olvasási hozzáférést az, hogy más felhasználók létrehozott virtuális gép erőforrásait. Ezért ezeken a virtuális gépeken nem jelennek meg a **virtuális gépek** lapot.
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Mi a különbség egy egyéni rendszerkép és a egy képlet?
 Egyéni rendszerkép egy virtuális merevlemezt (VHD). A képlet egy képet további beállításokat is konfigurálhatja, majd mentse és Reprodukálja. Egyéni rendszerkép Ha több környezetek gyors létrehozását az ugyanazon alapvető, nem módosítható a lemezkép használatával szeretné használata előnyösebb lehet. Előfordulhat, hogy egy képlettel jobb, ha azt szeretné, a legújabb elemeket és a virtuális gép konfigurációjának állítja elő a virtuális hálózat vagy alhálózat részeként, vagy egy meghatározott méretű virtuális gépként. Részletesebb magyarázatra van szüksége, lásd: [egyéni rendszerképek és képletek DevTest Labs szolgáltatásban létrehozott](devtest-lab-comparing-vm-base-image-types.md).
@@ -184,7 +203,7 @@ Törölheti a virtuális gépek az Azure Portalon tesztkörnyezetben. Is töröl
 
 **Összetevők**
 ## <a name="what-are-artifacts"></a>Mik az összetevők?
-Összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb elemeket vagy a fejlesztői eszközöket egy virtuális géphez. Összetevők csatlakoztassa a virtuális Géphez a virtuális gép létrehozásakor. Után a virtuális gép ki van építve, az összetevők üzembe helyezése, és konfigurálja a virtuális Gépet. Már létező különféle összetevők érhetők el [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Emellett [hozhat létre saját összetevők](devtest-lab-artifact-author.md).
+Összetevők olyan testreszabható elemek, amelyek segítségével telepítheti a legújabb elemeket vagy a fejlesztői eszközöket egy virtuális géphez. Összetevők csatlakoztassa a virtuális Géphez a virtuális gép létrehozásakor. Után a virtuális gép ki van építve, az összetevők üzembe helyezése, és konfigurálja a virtuális Gépet. Különböző már meglévő összetevőkkel érhető el a [nyilvános GitHub-adattárból](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). Emellett [hozhat létre saját összetevők](devtest-lab-artifact-author.md).
 
 
 **Tesztlabor-konfiguráció**
@@ -232,7 +251,7 @@ Ha egy erőforrás egy másik erőforrás szülő, a szülő erőforrás létezn
 Virtuális gépek gyermek erőforrásokat egy erőforráscsoportba tartozó labor csoportban. Virtuális gépek üzembe helyezése a PowerShell használatával a Resource Manager-sablonok használatával, ha az a PowerShell-parancsfájl a megadott erőforráscsoport-név a labor létrehozása az erőforráscsoport nevének kell lennie. További információkért lásd: [gyakori Azure üzembehelyezési hibák elhárítása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találhatok további hibainformációk, ha egy virtuális gép telepítése sikertelen?
-Virtuális gép üzembe helyezési hibák tevékenységeket tartalmazó naplók rögzíti a rendszer. Lab VM tevékenységeket tartalmazó naplók alapján is megtalálhatja **Auditnaplók** vagy **virtuális gép diagnosztikai** az erőforrás menüben a labor virtuális gép panelen (a panel jelenik meg, miután kiválasztotta a virtuális gépről a **saját virtuális gépek** lista).
+Virtuális gép üzembe helyezési hibák tevékenységeket tartalmazó naplók rögzíti a rendszer. Lab VM tevékenységeket tartalmazó naplók alapján is megtalálhatja **Auditnaplók** vagy **virtuális gép diagnosztikai** a a labor virtuális gép lapon erőforrás menüben (a lap jelenik meg, miután kiválasztotta a virtuális gépről a **saját virtuális gépek** lista).
 
 Egyes esetekben a központi telepítési hiba lép fel, virtuális gép üzembe helyezésének megkezdése előtt. Például akkor, ha a virtuális Géppel együtt létrehozott erőforrás az előfizetésre vonatkozó korlát túllépése. Ebben az esetben a hiba részletes adatait rögzíti a rendszer a labor-szintű Tevékenységnaplók. A Tevékenységnaplók alsó részén találhatók az **Konfigurace a zásady** beállításait. Az Azure-ban naplókat tevékenység használatával kapcsolatos további információk: [megtekintése az erőforrásokon végzett műveletek naplózásához tevékenységi naplóit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 

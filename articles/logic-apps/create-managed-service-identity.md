@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807269"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337581"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
 
@@ -152,7 +152,7 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
 
 1. Adja meg a szükséges adatokat, hogy a művelet, például a kérés **metódus** és **URI** a hívni kívánt erőforrás helye.
 
-   Tegyük fel például, használja az Azure Active Directory (Azure AD) hitelesítési [az Azure-szolgáltatások, amelyek támogatják az Azure ad-ben egyik](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   Tegyük fel például, használja az Azure Active Directory (Azure AD) hitelesítési [az Azure-szolgáltatások, amelyek támogatják az Azure ad-ben egyik](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    Az a **URI** adja meg a végpont URL-címe az Azure szolgáltatás. 
    Tehát, ha az Azure Resource Manager használata esetén meg ezt az értéket a **URI** tulajdonság:
 
@@ -167,7 +167,7 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
    > [!IMPORTANT]
    > 
    > Az a **célközönség** tulajdonság, az erőforrás-Azonosítójának értéke pontosan egyeznie kell azzal az Azure AD vár, így azokat is szükséges a záró perjeleket. 
-   > Ez az ezen erőforrás-azonosító értékeinek található [táblázat: Azure szolgáltatásokban, amelyek támogatják az Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication). 
+   > Ez az ezen erőforrás-azonosító értékeinek található [táblázat: Azure szolgáltatásokban, amelyek támogatják az Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). 
    > Például ha Azure-erőforrással Manager erőforrás-Azonosítóját használja, győződjön meg arról, az URI-t rendelkezik záró perjellel.
 
 1. Továbbra is a kívánt módon a logikai alkalmazás kiépítésének.

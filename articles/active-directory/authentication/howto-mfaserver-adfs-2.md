@@ -1,5 +1,5 @@
 ---
-title: Azure MFA-kiszolgáló használata AD FS 2.0-val | Microsoft Docs
+title: Az Azure MFA-kiszolgálóval és az AD FS 2.0 – az Azure Active Directory
 description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdheti el az Azure MFA és az AD FS 2.0 használatát.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09ff573683ef681a053f2bcd37325d48b3823371
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b60ca0058125aea0124051570fefb031a022456c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100819"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317578"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS 2.0-val való használathoz
 

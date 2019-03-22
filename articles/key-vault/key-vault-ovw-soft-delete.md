@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
-ms.date: 09/25/2017
-ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/19/2019
+ms.openlocfilehash: f222b37e8ca6efcfe28146ee948511d887f547a4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092990"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339142"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault helyreállítható törlés áttekintése
 
@@ -23,9 +23,7 @@ A Key Vault helyreállítható törlési funkció lehetővé teszi, hogy a tör�
 
 ## <a name="supporting-interfaces"></a>Adapterek támogatása
 
-A helyreállítható törlési funkció kezdetben érhető el a REST, .NET-en keresztül / C#, PowerShell és CLI felületek.
-
-Általános információkhoz lásd: a hivatkozások ezeket a további részletekért [Key Vault-referencia](https://docs.microsoft.com/azure/key-vault/).
+A helyreállítható törlési funkció érhető el először a [REST](/rest/api/keyvault/), [CLI](key-vault-soft-delete-cli.md), [PowerShell](key-vault-soft-delete-powershell.md) és [.NET /C# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületek.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -39,26 +37,21 @@ Az Azure Key vault-Kulcstartók követett erőforrások Azure Resource Manager �
 
 Ezzel a funkcióval a törlési műveletet a key vault-objektum vagy a key vault helyreállítható törlés, hatékonyan az egy adott megőrzési időszak (90 nap), a az erőforrásokat tartalmazó miközben a megjelenését, hogy az objektum van-e törölve. A szolgáltatás további lehetővé teszi a helyreállítás, a törölt objektum, lényegében a törlésének visszavonása. 
 
-Helyreállítható törlés egy nem kötelező a Key Vault-viselkedés, és **alapértelmezés szerint nincs engedélyezve** ebben a kiadásban. 
+Helyreállítható törlés egy nem kötelező a Key Vault-viselkedés, és **alapértelmezés szerint nincs engedélyezve** ebben a kiadásban. Ez lehet bekapcsolni keresztül [CLI](key-vault-soft-delete-cli.md) vagy [Powershell](key-vault-soft-delete-powershell.md).
 
-### <a name="purge-protection--flag"></a>Védelem jelző törlése
-Végleges törlése a védelem (**--purge-védelem engedélyezése** az Azure CLI) jelző alapértelmezés szerint ki van kapcsolva. Ha ez a jelző be van kapcsolva, a tároló vagy törölt állapotban objektum nem törölhető, amíg a 90 napos megőrzési időszak lejárt. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a jelző biztosítja, hogy egy tároló vagy egy objektumot is soha nem véglegesen törlődik mindaddig, amíg a megőrzési időszak letelte hozzáadott arra, hogy az ügyfelek. A végleges törlés védelmi jelző bekapcsolhatja, csak akkor, ha a helyreállítható törlés jelző be van kapcsolva, vagy a tároló létrehozásakor bekapcsolása mindkét helyreállítható törlés és a végleges törlése a védelem.
+### <a name="purge-protection"></a>Védelem végleges törlése 
 
-> [!NOTE]
->    A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés.
-> A parancs az ehhez az Azure CLI 2
+Ha véglegesen törölni a védelem be van kapcsolva egy tárolót, vagy egy objektum törölt állapotban nem törölhető, amíg a 90 napos megőrzési időszak letelte. Ezek a tárolók és objektumok továbbra is helyreállíthatók legyenek, ügyfelek biztosítva azt, hogy az adatmegőrzési után történik. 
 
-```
-az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
-```
+Védelem végleges törlése egy nem kötelező a Key Vault-viselkedés, és **alapértelmezés szerint nincs engedélyezve**. Ez lehet bekapcsolni keresztül [CLI](key-vault-soft-delete-cli.md#enabling-purge-protection) vagy [Powershell](key-vault-soft-delete-powershell.md#enabling-purge-protection).
 
 ### <a name="permitted-purge"></a>Engedélyezett végleges törlése
 
 Végleges törlés, a végleges törlése, a key vault POST műveletnek a proxy erőforráson keresztül lehetséges, és speciális jogosultságra van szükség. Általában csak az előfizetés tulajdonosa fogja tudni kulcstartó végleges törlése. A POST műveletet aktivál, hogy a tároló azonnali és helyreállíthatatlan törlését. 
 
-Ez egy kivételek
-- az eset, amikor az Azure-előfizetés van megjelölve *undeletable*. Csak a szolgáltatás ebben az esetben előfordulhat, hogy végezze el a tényleges törlés, és úgy valósítja meg az ütemezett folyamatként. 
-- – Amikor a védelem végleges törlés engedélyezése jelző engedélyezve van a vault. Ebben az esetben a Key Vault várakozik 90 nap során az eredeti titkos objektum lett megjelölve törlésre véglegesen törli az objektumot.
+Kivételek a következők:
+- Ha az Azure-előfizetés van megjelölve *undeletable*. Csak a szolgáltatás ebben az esetben előfordulhat, hogy végezze el a tényleges törlés, és úgy valósítja meg az ütemezett folyamatként. 
+- Ha a---kiürítés-védelem engedélyezése jelző engedélyezve van a tárolóban, magát. Ebben az esetben a Key Vault várakozik 90 nap során az eredeti titkos objektum lett megjelölve törlésre véglegesen törli az objektumot.
 
 ### <a name="key-vault-recovery"></a>A Key vault helyreállítási
 
@@ -66,7 +59,7 @@ Kulcstartó törlése után a szolgáltatás az előfizetést, a helyreállítá
 
 ### <a name="key-vault-object-recovery"></a>A Key vault objektum-helyreállítást
 
-Egy kulcstartó objektumot, például egy kulcs törlése után a szolgáltatás fogja elhelyezni az objektum törölt állapotban, így téve bármely adatbeolvasási műveletekkel elérhetetlenné. Az ebben az állapotban a key vault-objektum is csak akkor jelenik meg, helyreállított vagy kényszerített/véglegesen törölve. 
+Egy kulcstartó objektumot, például egy kulcs törlése után a szolgáltatás fogja elhelyezni az objektum törölt állapotban, így bármely adatbeolvasási műveletekkel elérhetetlenné. Az ebben az állapotban a key vault-objektum is csak akkor jelenik meg, helyreállított vagy kényszerített/véglegesen törölve. 
 
 Egy időben a Key Vault ütemeznek az alapul szolgáló adatokat, a törölt kulcstartó vagy a végrehajtás egy előre meghatározott adatmegőrzési időszak után a key vault objektum megfelelő törlését. A tárolóhoz tartozó DNS-rekordot is megmarad a megőrzési időtartam idejére.
 
