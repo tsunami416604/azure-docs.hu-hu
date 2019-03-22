@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 70fc78fb515c56f0b3102bb006eb6491a664babd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886671"
 ---
 # <a name="r-developers-guide-to-azure"></a>R – fejlesztői útmutató az Azure-bA
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -125,7 +125,7 @@ Míg a Machine Learning-szolgáltatások már része a helyszíni SQL Server 201
 
 
 ### <a name="next-steps"></a>További lépések
-* [Azure-ban, az mrsdeploy futtatja az R-kód](http://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
+* [Azure-ban, az mrsdeploy futtatja az R-kód](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
 * [A Machine Learning szolgáltatás a felhőben](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
 * [További források a Machine Learning-kiszolgáló és a Microsoft R](https://docs.microsoft.com/machine-learning-server/resources-more)
 * [Az Azure-ban R](https://github.com/yueguoguo/r-on-azure) – egy csomagok, eszközök és az R használata az Azure-ral esettanulmányok áttekintése

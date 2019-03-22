@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180840"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 
@@ -193,6 +193,9 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olvassa el a fejezet [bérlői adatbázis-kapcsolatok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) a a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutató vagy [SAP Megjegyzés 2388694][2388694].
 
+> [!IMPORTANT]
+> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> SAP-jegyzetnek [2382421](https://launchpad.support.sap.com/#/notes/2382421) ellentmondásos utasítás beküldte net.ipv4.tcp_timestamps állítsa 1-re is tartalmaz. Az Azure virtuális gépek Azure-terheléselosztó mögött elhelyezni, a paraméter értéke **net.ipv4.tcp_timestamps** való **0**. 
 
 ## <a name="create-a-pacemaker-cluster"></a>Támasztja fürt létrehozása
 

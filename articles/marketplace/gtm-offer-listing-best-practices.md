@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 60f02f0ae92f471718c0c35f8ac833b9ca6c1da4
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863933"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlat, listázás, ajánlott eljárások
 
@@ -56,7 +56,7 @@ Az appsource-on vagy az Azure Marketplace-en jelvény a webhelyen való kapcsol�
 
 Az alábbi minta URL is az előző lekérdezési paramétereket tartalmazza: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-A paraméterek hozzáadásával az appsource-on URL-címre, tekintse át a kampány analytics irányítópultján található hatékonyságát [Cloud Partner Portalon](http://cloudpartner.azure.com/#insights).
+A paraméterek hozzáadásával az appsource-on URL-címre, tekintse át a kampány analytics irányítópultján található hatékonyságát [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights).
 
 ## <a name="next-steps"></a>További lépések
 
