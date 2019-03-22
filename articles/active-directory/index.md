@@ -277,7 +277,7 @@ ms.collection: M365-identity-device-management
                                                         <p>
                                                             <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows rendszerű virtuális gép használata az Azure SQL eléréséhez</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Azure-beli virtuális gép használata jogkivonat beszerzéséhez</a><br>
-                                                            <a href="managed-identities-azure-resources/services-support-msi.md">A felügyelt identitást támogató szolgáltatások</a><br>
+                                                            <a href="managed-identities-azure-resources/services-support-managed-identities.md">A felügyelt identitást támogató szolgáltatások</a><br>
                                                             <a href="managed-identities-azure-resources/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>
