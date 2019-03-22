@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 84eb458c68c7accf1b638b8e21907516328cb892
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545090"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112296"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
 
@@ -80,12 +80,12 @@ Ekkor a számítógép a **irányítópult** eszköze.
    
     Hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
 
-    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
-    - Ha a DHCP nem engedélyezett, hozzárendelheti statikus IP-címek, szükség esetén.
-    - A hálózati adapter IPv4-t konfigurálhatja.
+   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
+   - Ha a DHCP nem engedélyezett, hozzárendelheti statikus IP-címek, szükség esetén.
+   - A hálózati adapter IPv4-t konfigurálhatja.
 
-    >[!NOTE] 
-    > Javasoljuk, hogy nem váltson át a helyi IP-címét a hálózati adaptert a statikus DHCP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adapter IP-címekről a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
+     >[!NOTE] 
+     > Javasoljuk, hogy nem váltson át a helyi IP-címét a hálózati adaptert a statikus DHCP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adapter IP-címekről a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
 
 4. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
    

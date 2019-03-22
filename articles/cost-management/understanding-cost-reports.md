@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109814"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management jelentések
 
@@ -41,7 +41,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
       - Eszközgazdálkodás
       - Optimalizálás
 
-  Írja be a szűrő nevét, és kattintson a **mentése**.
+   Írja be a szűrő nevét, és kattintson a **mentése**.
 
 3. **Címkék**
 
@@ -71,55 +71,55 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
       - A Cloudyn-entitáscímkék költség
       - Előfizetés címke kategóriák költségek felosztási célokra
 
-  Példák a következők lehetnek:
-     - Költséghely
-     - Részleg
-     - Alkalmazás
-     - Környezet
-     - A Cost kód
+   Példák a következők lehetnek:
+   - Költséghely
+   - Részleg
+   - Alkalmazás
+   - Környezet
+   - A Cost kód
 
-    Íme a jelentésekben elérhető beépített csoportok listája:
+     Íme a jelentésekben elérhető beépített csoportok listája:
 
-    - **Költségtípus**
-      - Válassza ki a költségek típus vagy több költségtípusok, vagy válassza ki az összes. A Cost típusok a következők:
-        - Egyszeri
-        - Támogatás
-        - Használatért díjat kell fizetni
-    - **Ügyfél**
-        - Jelöljön ki egy adott ügyfél több ügyfelet, vagy minden ügyfélnek.
-    - **Fiók neve**
-        - A fiók vagy előfizetés nevét. Az Azure-ban az Azure-előfizetés neve.
-    - **Fiók nélkül**
-        - Válasszon egy fiókot, több fiókot, vagy minden fiók. Az Azure-ban akkor az Azure-előfizetés GUID.
-    - **Szülő-fiók**
-        - Válassza ki a fölérendelt, több fiókot, vagy válassza ki minden.
-    - **Szolgáltatás**
-        - Jelöljön ki egy szolgáltatást, több szolgáltatást, vagy az összes szolgáltatás.
-    - **Szolgáltató**
-        - A felhőszolgáltató, ahol a eszközök és a költségek tartoznak.
-    - **Régió**
-        - Régió, amelyen az erőforrás található.
-    - **Rendelkezésre állási zónában**
-        - Az AWS elkülönített helyek egy adott régión belül.
-    - **Erőforrás típusa**
-        - A használatban lévő erőforrás típusát.
-    - **Sub-Type**
-        - Válassza ki a altípusa.
-    - **Művelet**
-        - Válassza ki a műveletet, vagy **az összes megjelenítése**.
-    - **Díjszabási modell**
-        - Összes előre
-        - Előre nem.
-        - Részlegesen előre
-        - Igény szerinti
-        - Foglalás
-        - Helyszíni
-    - **Díj típusa**
-        - Válassza ki a negatív és pozitív díj típus vagy mindkettőt.
-    - **Bérleti**
-        - Egy gép van futtat-e egy dedikált géppel.
-    -   **Használat típusa**
-          - Használati típus lehet egyszeri díjak vagy ismétlődő díjak.
+     - **Költségtípus**
+     - Válassza ki a költségek típus vagy több költségtípusok, vagy válassza ki az összes. A Cost típusok a következők:
+       - Egyszeri
+       - Támogatás
+       - Használatért díjat kell fizetni
+     - **Ügyfél**
+       - Jelöljön ki egy adott ügyfél több ügyfelet, vagy minden ügyfélnek.
+     - **Fiók neve**
+       - A fiók vagy előfizetés nevét. Az Azure-ban az Azure-előfizetés neve.
+     - **Fiók nélkül**
+       - Válasszon egy fiókot, több fiókot, vagy minden fiók. Az Azure-ban akkor az Azure-előfizetés GUID.
+     - **Szülő-fiók**
+       - Válassza ki a fölérendelt, több fiókot, vagy válassza ki minden.
+     - **Szolgáltatás**
+       - Jelöljön ki egy szolgáltatást, több szolgáltatást, vagy az összes szolgáltatás.
+     - **Szolgáltató**
+       - A felhőszolgáltató, ahol a eszközök és a költségek tartoznak.
+     - **Régió**
+       - Régió, amelyen az erőforrás található.
+     - **Rendelkezésre állási zónában**
+       - Az AWS elkülönített helyek egy adott régión belül.
+     - **Erőforrás típusa**
+       - A használatban lévő erőforrás típusát.
+     - **Sub-Type**
+       - Válassza ki a altípusa.
+     - **Művelet**
+       - Válassza ki a műveletet, vagy **az összes megjelenítése**.
+     - **Díjszabási modell**
+       - Összes előre
+       - Előre nem.
+       - Részlegesen előre
+       - Igény szerinti
+       - Foglalás
+       - Helyszíni
+     - **Díj típusa**
+       - Válassza ki a negatív és pozitív díj típus vagy mindkettőt.
+     - **Bérleti**
+       - Egy gép van futtat-e egy dedikált géppel.
+     - **Használat típusa**
+       - Használati típus lehet egyszeri díjak vagy ismétlődő díjak.
 
 5. **Szűrők**
 
@@ -139,7 +139,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
     - Fenntartott példányok vásárlására díjak
     - Néhány Azure Marketplace-elemek.
 
-  Amortizáció, válassza a **amortizált költségek** vagy **tényleges költségek**.
+   Amortizáció, válassza a **amortizált költségek** vagy **tényleges költségek**.
 
 8. **Felbontás**
 
@@ -162,7 +162,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
     A megjelenítése/elrejtése beállítás nincs hatással a jelentésekben.
 
-12.   **Megjelenítési formátum**
+12. **Megjelenítési formátum**
 
     Megjelenítési formátum segítségével válassza ki a különböző graph vagy tábla nézetek.
 

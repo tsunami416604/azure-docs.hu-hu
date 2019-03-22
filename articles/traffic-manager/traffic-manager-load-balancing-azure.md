@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: 8c4d890633a8d588b51f876a361a77e6533b5db4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099018"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatás használata az Azure-ban
 
@@ -68,26 +68,26 @@ Az alábbi ábra az ebben a forgatókönyvben architektúráját mutatja be:
 1. Az Azure Portalon kattintson a **erőforrás létrehozása** > **hálózatkezelés** > **Traffic Manager-profil**  >   **Hozzon létre**.
 2. Adja meg a következő alapvető információkat:
 
-  * **Név**: Adjon a Traffic Manager-profil DNS-előtagnevet.
-  * **Útválasztási módszer**: Válassza ki a forgalom-útválasztási módszer házirendet. A módszerekkel kapcsolatos további információkért lásd: [Traffic Manager forgalom-útválasztási módszerek](traffic-manager-routing-methods.md).
-  * **Előfizetés**: Válassza ki az előfizetést, amelyhez a profil tartalmazza.
-  * **Erőforráscsoport**: Válassza ki az erőforráscsoportot, amely tartalmazza a profil. Ez lehet egy új vagy meglévő erőforráscsoportot.
-  * **Erőforráscsoport helye**: Traffic Manager szolgáltatás globális, és nem egy helyre kötve. Azonban meg kell adnia egy régiót a Traffic Manager-profil társított metaadatokat tartalmazó csoport. Ezen a helyen nem befolyásolja a profil futásidejű rendelkezésre állását.
+   * **Név**: Adjon a Traffic Manager-profil DNS-előtagnevet.
+   * **Útválasztási módszer**: Válassza ki a forgalom-útválasztási módszer házirendet. A módszerekkel kapcsolatos további információkért lásd: [Traffic Manager forgalom-útválasztási módszerek](traffic-manager-routing-methods.md).
+   * **Előfizetés**: Válassza ki az előfizetést, amelyhez a profil tartalmazza.
+   * **Erőforráscsoport**: Válassza ki az erőforráscsoportot, amely tartalmazza a profil. Ez lehet egy új vagy meglévő erőforráscsoportot.
+   * **Erőforráscsoport helye**: Traffic Manager szolgáltatás globális, és nem egy helyre kötve. Azonban meg kell adnia egy régiót a Traffic Manager-profil társított metaadatokat tartalmazó csoport. Ezen a helyen nem befolyásolja a profil futásidejű rendelkezésre állását.
 
 3. Kattintson a **létrehozás** a Traffic Manager-profil létrehozásához.
 
-  !["A Traffic Manager létrehozása" panel](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   !["A Traffic Manager létrehozása" panel](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
 ### <a name="step-2-create-the-application-gateways"></a>2. lépés: Az application Gateway átjárók létrehozása
 
 1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **erőforrás létrehozása** > **hálózatkezelés** > **Application Gateway**.
 2. Adja meg az application gateway a következő alapvető információkat:
 
-  * **Név**: Az application gateway neve.
-  * **SKU-méret**: Az application Gateway átjáróhoz is rendelkezésre állnak, kicsi, közepes vagy nagy a mérete.
-  * **Példányszám**: A példányok száma, 2 és 10 közötti értéket.
-  * **Erőforráscsoport**: Az erőforráscsoport, amely az application gateway tárol. Egy meglévő erőforráscsoportot, vagy egy új lehet.
-  * **Hely**: Az application gateway, amely megegyezik az erőforráscsoport ugyanazon a helyen a régióban. A hely fontos, mivel a virtuális hálózat és a nyilvános IP-címet az átjáró ugyanazon a helyen kell lennie.
+   * **Név**: Az application gateway neve.
+   * **SKU-méret**: Az application Gateway átjáróhoz is rendelkezésre állnak, kicsi, közepes vagy nagy a mérete.
+   * **Példányszám**: A példányok száma, 2 és 10 közötti értéket.
+   * **Erőforráscsoport**: Az erőforráscsoport, amely az application gateway tárol. Egy meglévő erőforráscsoportot, vagy egy új lehet.
+   * **Hely**: Az application gateway, amely megegyezik az erőforráscsoport ugyanazon a helyen a régióban. A hely fontos, mivel a virtuális hálózat és a nyilvános IP-címet az átjáró ugyanazon a helyen kell lennie.
 3. Kattintson az **OK** gombra.
 4. Adja meg a virtuális hálózat, alhálózat, előtérbeli IP-címet és figyelő konfigurációk az application gateway számára. Ebben a forgatókönyvben az előtér-IP-cím van **nyilvános**, amely lehetővé teszi, hogy lehet hozzáadni, a végpont a Traffic Manager-profil később.
 5. Konfigurálja a figyelőt a következő lehetőségek közül:
@@ -104,11 +104,11 @@ Ha úgy dönt, hogy egy háttérkészlet-, az application gateway egy útvonalal
 2. Alatt **beállítások**, jelölje be **háttérkészletek**, majd válassza ki **hozzáadása** szeretne társítani a webes szintű háttér-készletekkel rendelkező virtuális gépek hozzáadásához.
 3. Adja meg, hogy a készletben található gépek IP-címek és a háttérkészlet nevét. Ebben a forgatókönyvben a virtuális gépek két háttér-kiszolgálókészletek kapcsolódik.
 
-  ![Az Application Gateway "Háttérkészlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Az Application Gateway "Háttérkészlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. A **beállítások** válassza ki az application Gateway **szabályok**, majd kattintson a **elérésiút-alapú** gombra egy szabály hozzáadásához.
 
-  ![Application Gateway szabályokat "Elérési út alapján" gomb](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Application Gateway szabályokat "Elérési út alapján" gomb](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. A szabály konfigurálása a következő információk megadásával.
 
@@ -138,13 +138,13 @@ Ebben a forgatókönyvben a Traffic Manager csatlakoztatva van az application Ga
 1. Nyissa meg a Traffic Manager-profil. Ehhez tekintse meg az erőforráscsoportot, vagy keresse meg a Traffic Manager-profil neve **összes erőforrás**.
 2. A bal oldali panelen válassza ki a **végpontok**, és kattintson a **Hozzáadás** végpont hozzáadásának.
 
-  ![A TRAFFIC Manager végpont "Hozzáadás" gombra](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![A TRAFFIC Manager végpont "Hozzáadás" gombra](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
 3. Hozzon létre egy végpont írja be az alábbi adatokat:
 
-  * **Típus**: Válassza ki a végpont terheléselosztásához. Ebben az esetben válassza **Azure-végpont** mert kapcsolódunk az application gateway-példány korábban konfigurált.
-  * **Név**: Adja meg a végpont nevét.
-  * **Célerőforrás típusa**: Válassza ki **nyilvános IP-cím** majd **Célerőforrásnál**, válassza ki a korábban beállított application Gateway nyilvános IP-cím.
+   * **Típus**: Válassza ki a végpont terheléselosztásához. Ebben az esetben válassza **Azure-végpont** mert kapcsolódunk az application gateway-példány korábban konfigurált.
+   * **Név**: Adja meg a végpont nevét.
+   * **Célerőforrás típusa**: Válassza ki **nyilvános IP-cím** majd **Célerőforrásnál**, válassza ki a korábban beállított application Gateway nyilvános IP-cím.
 
    ![A TRAFFIC Manager "Hozzáadás végpont"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -171,7 +171,7 @@ Belső terheléselosztó konfigurálásával kapcsolatos további információk�
 1. Az erőforráscsoportból keresse meg a terheléselosztó, amely az előző lépésben jött létre.
 2. A **beállítások**, kattintson a **háttérkészletek**, és kattintson a **Hozzáadás** egy háttérkészlet hozzáadása.
 
-  ![Load Balancer "Háttérkészlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Load Balancer "Háttérkészlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. Adja meg a háttérkészlet nevét.
 4. Adja hozzá az egyes gépek vagy a rendelkezésre állási a háttérkészlethez.
@@ -180,7 +180,7 @@ Belső terheléselosztó konfigurálásával kapcsolatos további információk�
 
 1. A load balancerben alatt **beállítások**, jelölje be **mintavételek**, és kattintson a **Hozzáadás** vizsgálatok hozzáadásához.
 
- ![Load Balancer "Mintavétel hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Load Balancer "Mintavétel hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Adja meg a mintavétel neve.
 3. Válassza ki a **protokoll** mintavétel. Adatbázis esetén érdemes lehet inkább egy TCP-mintavétel, mint a HTTP-mintavétel. Load balancer vizsgálatok kapcsolatos további információkért tekintse meg [megismerése a load balancer vizsgálatok](../load-balancer/load-balancer-custom-probe-overview.md).

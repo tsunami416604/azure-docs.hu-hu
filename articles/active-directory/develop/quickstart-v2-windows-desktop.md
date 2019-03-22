@@ -3,8 +3,8 @@ title: Azure AD v2 Windows asztali rendszer – rövid útmutató | Microsoft Do
 description: Megtudhatja, hogyan tud egy Windows asztali .NET- (XAML-) alkalmazás lekérni egy hozzáférési jogkivonatot és meghívni egy Azure Active Directory 2.0-végpont által védett API-t.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dccb1385cb5c7909b5b15ae57c6b6cadf4d10f16
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 74f024ee55a707534fbd42b647845179baed01ce
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201041"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása Windows asztali alkalmazások
 
@@ -30,7 +30,7 @@ ms.locfileid: "56408578"
 
 Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .NET- (WPF-) alkalmazást, amely be tud jelentkezni személyes, munkahelyi és iskolai fiókokba, le tud kérni egy hozzáférési jogkivonatot, majd meg tudja hívni a Microsoft Graph API-t.
 
-![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-windows-desktop/windesktop-intro.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-windows-desktop/windesktop-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése

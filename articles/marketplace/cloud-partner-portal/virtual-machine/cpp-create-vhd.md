@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575474"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096571"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Hozzon létre egy Azure-kompatibilis virtuális Merevlemezt.
 
@@ -55,18 +55,18 @@ A Microsoft [az Azure portal](https://ms.portal.azure.com/), az alaprendszerkép
     ![Számítás panel új virtuális gép](./media/publishvm_014.png)
 
 5. Miután kiválasztotta a megfelelő virtuális lemezképet, adja meg a következő értékeket:
-  * Az a **alapjai** panelen adjon meg egy **neve** a virtuális gép, 1 – 15 alfanumerikus karaktert. (Ez a példa `DemoVm009`.)
-  * Adjon meg egy **felhasználónév** és a egy erős **jelszó**, használt helyi fiók létrehozása a virtuális gépen.  (Itt `adminUser` használja.)  A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév és jelszó követelmények](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-  * Válassza ki a létrehozott erőforráscsoportot (Itt `DemoResourceGroup`).
-  * Válassza ki az Azure-adatközpont **hely** (Itt `West US`).
-  * Kattintson a **OK** menteni ezeket az értékeket. 
+   * Az a **alapjai** panelen adjon meg egy **neve** a virtuális gép, 1 – 15 alfanumerikus karaktert. (Ez a példa `DemoVm009`.)
+   * Adjon meg egy **felhasználónév** és a egy erős **jelszó**, használt helyi fiók létrehozása a virtuális gépen.  (Itt `adminUser` használja.)  A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév és jelszó követelmények](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Válassza ki a létrehozott erőforráscsoportot (Itt `DemoResourceGroup`).
+   * Válassza ki az Azure-adatközpont **hely** (Itt `West US`).
+   * Kattintson a **OK** menteni ezeket az értékeket. 
 
-6.  Válassza ki a méretet a virtuális gép üzembe helyezés az alábbi javaslatokat:
-  * Ha azt tervezi, a VHD-t a helyszíni fejlesztés, a méret nem számít. Érdemes egy kisebb méretű virtuális gépet használni.
-  * Amennyiben az Azure-ban kívánja fejleszteni a lemezképet, érdemes a kiválasztott lemezképhez javasolt virtuálisgép-méretek valamelyikét használni.
-  * Díjszabási információkért tekintse meg a **javasolt tarifacsomagok** választó jelenik meg a portálon. Ez megjeleníti a kiadó által megadott három ajánlott méretet. (A közzétevő itt, a Microsoft is.)
+6. Válassza ki a méretet a virtuális gép üzembe helyezés az alábbi javaslatokat:
+   * Ha azt tervezi, a VHD-t a helyszíni fejlesztés, a méret nem számít. Érdemes egy kisebb méretű virtuális gépet használni.
+   * Amennyiben az Azure-ban kívánja fejleszteni a lemezképet, érdemes a kiválasztott lemezképhez javasolt virtuálisgép-méretek valamelyikét használni.
+   * Díjszabási információkért tekintse meg a **javasolt tarifacsomagok** választó jelenik meg a portálon. Ez megjeleníti a kiadó által megadott három ajánlott méretet. (A közzétevő itt, a Microsoft is.)
 
-    ![Új virtuális gép méret panel](./media/publishvm_015.png)
+   ![Új virtuális gép méret panel](./media/publishvm_015.png)
 
 7. Az a **beállítások** panelen adja meg a **használata felügyelt lemez** beállítást **nem**.  Ez lehetővé teszi, hogy az új virtuális merevlemez kézi kezelésére. (A **beállítások** panel lehetővé teszi, hogy módosítsa az egyéb olyan módosítást a tárolási és hálózati beállításokat, például kiválasztásával **prémium (SSD)** a **lemeztípus**.)  Kattintson a **OK** folytatásához.
 

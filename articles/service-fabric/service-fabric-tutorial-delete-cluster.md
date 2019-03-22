@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d4f530e38b6fd69d814765f4133201dd12a87f22
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 62372b4ce4032e019219b5be8c5a49ea135782c1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668582"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223274"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Távolítsa el az Azure-ban futó Service Fabric-fürt
 
-Ez az oktatóanyag egy sorozat negyedik része, és az Azure-ban futó Service Fabric-fürtök törlésének módját ismerteti. A Service Fabric-fürtök teljes törléséhez a fürt által használt összes erőforrást is törölnie kell. Két lehetősége van: törölheti a fürtöt tartalmazó erőforráscsoportot (amivel a fürterőforrás mellett az erőforráscsoport összes többi erőforrását is törli), vagy törölheti az adott fürterőforrást és az ahhoz társított erőforrásokat (meghagyva az erőforráscsoport többi erőforrását).
+Ez az oktatóanyag része, öt egy sorozat harmadik része, és bemutatja, hogyan lehet törölni az Azure-ban futó Service Fabric-fürt. A Service Fabric-fürtök teljes törléséhez a fürt által használt összes erőforrást is törölnie kell. Két lehetősége van: törölheti a fürtöt tartalmazó erőforráscsoportot (amivel a fürterőforrás mellett az erőforráscsoport összes többi erőforrását is törli), vagy törölheti az adott fürterőforrást és az ahhoz társított erőforrásokat (meghagyva az erőforráscsoport többi erőforrását).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -35,6 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban sablon használatával
+> * [-Fürt monitorozása](service-fabric-tutorial-monitor-cluster.md)
 > * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * Fürt törlése
@@ -50,7 +51,7 @@ Az oktatóanyag elkezdése előtt:
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>A Service Fabric-fürtöt tartalmazó erőforráscsoport törlése
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azon előfizetés azonosítóját, amelyikkel el szeretné távolítani a fürtöt.  Az [Azure Portalra](http://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. A fürt és az összes általa használt erőforrás a [Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancsmaggal vagy az [az group delete](/cli/azure/group?view=azure-cli-latest) paranccsal törölhető.
+Jelentkezzen be az Azure-ba, és válassza ki az előfizetés-azonosító, amellyel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. A fürt és az összes általa használt erőforrás a [Remove-AzureRMResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancsmaggal vagy az [az group delete](/cli/azure/group?view=azure-cli-latest) paranccsal törölhető.
 
 ```powershell
 Connect-AzureRmAccount

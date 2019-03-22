@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
-ms.openlocfilehash: 758183efd6a6a2c2b8d172c52ad3bd5c5e12d969
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119904"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Engedélyezze az Azure Active Directory Domain Services PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell-lel az Azure Active Directory (AD) Domain Services engedélyezéséhez.
@@ -141,8 +141,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **A felügyelt tartomány üzembe helyezés után ne felejtse el a további konfigurációs lépéseket.**
 > A felügyelt tartomány üzembe, után továbbra is szeretné végrehajtani az alábbi feladatokat:
 > * **[DNS-beállításainak frissítése](active-directory-ds-getting-started-dns.md)**  a virtuális hálózathoz, így a virtuális gépek a felügyelt tartományhoz csatlakozás tartományhoz vagy hitelesítésre.
-* **[Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatások](active-directory-ds-getting-started-password-sync.md)**, így a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
->
+> * **[Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatások](active-directory-ds-getting-started-password-sync.md)**, így a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
 
 
 ## <a name="powershell-script"></a>PowerShell-szkript
@@ -226,8 +225,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **A felügyelt tartomány üzembe helyezés után ne felejtse el a további konfigurációs lépéseket.**
 > A felügyelt tartomány üzembe, után továbbra is szeretné végrehajtani az alábbi feladatokat:
 > * Frissítse a virtuális hálózat DNS-beállításait, hogy a virtuális gépek a tartományhoz való csatlakozás és hitelesítés talál a felügyelt tartományhoz.
-* Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokat, a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
->
+> * Jelszavak szinkronizálásának engedélyezése az Azure AD tartományi szolgáltatásokat, a végfelhasználók bejelentkezhet a felügyelt tartomány vállalati hitelesítői adataikkal.
 
 ## <a name="next-steps"></a>További lépések
 A felügyelt tartomány létrehozása után hajtsa végre a következő konfigurációs feladatok, így használhatja a felügyelt tartomány:

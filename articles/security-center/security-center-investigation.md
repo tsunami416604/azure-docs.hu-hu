@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8b2e42759ba2bffef28e1bf74e07bc149027ab7a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651763"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107474"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
 Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
@@ -31,10 +31,8 @@ A szolgáltatás célja, hogy megkönnyítse a vizsgálati eljárást a vizsgál
 
 
 > [!NOTE]
-    > * [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
-    > * Vizsgálat csak a támogatott Windows kiszolgálókról összegyűjtött adatokon alapuló riasztások.
->
->
+> * [Egyéni riasztások](security-center-custom-alert.md) a Security Center vizsgálati funkciójáról nem támogatottak.
+> * Vizsgálat csak a támogatott Windows kiszolgálókról összegyűjtött adatokon alapuló riasztások.
 
 
 ## <a name="how-investigation-works"></a>A vizsgálat működése
@@ -98,7 +96,7 @@ Az alábbi elemek megjelenítése a kiválasztott időszaktól független:
 
 ## <a name="how-to-perform-an-investigation"></a>Vizsgálat végrehajtása
 
-A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. Az alábbi lépések arra vonatkoznak, ha riasztásokból indít vizsgálatokat:
+A vizsgálatok biztonsági incidensből vagy riasztásból indíthatók, attól függően, hogy mi felel meg jobban az igényeinek. A következő lépéseket egy vizsgálat indítása riasztásból használhatók:
 
 1.  Nyissa meg a **Security Center** irányítópultját.
 2.  Kattintson a **Biztonsági riasztások** gombra, és válassza ki a kivizsgálni kívánt incidenst.

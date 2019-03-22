@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/16/2019
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f8dffa01b2d7dd7fa966d2b417019f1d2afb1bc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 25dda12ca33165cfc64ffd949a2068acb5150b84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097149"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Oktatóanyag: A csatolt Azure Resource Manager-sablonok létrehozása
 
 Ismerje meg, hogyan hozhat létre összekapcsolt Azure Resource Manager-sablonokat. Összekapcsolt sablonok használatával az egyik sablonja meghívhat egy másikat. Ez nagyszerűen használható a sablonok modularizálásához. Ebben az oktatóanyagban használja ugyanazt a sablont a használt [oktatóanyag: Az Azure Resource Manager-sablonok létrehozása a tőle függő erőforrások](./resource-manager-tutorial-create-templates-with-dependent-resources.md), ami létrehoz egy virtuális gép, egy virtuális hálózatot és más függő erőforrást, beleértve a storage-fiók. Szétválasztja a tárfiók egy hivatkozott sablonnak az erőforrás létrehozása.
+
+Hívása egy hivatkozott sablonnak olyan, mint hogy egy függvény hívásához szükséges.  Emellett megismerjük, hogyan adhatók át a paraméterértékeket a társított sablont, és a "visszatérési értékek" beszerzése a társított sablonból.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -34,6 +36,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Függőség konfigurációja
 > * A sablon üzembe helyezése
 > * További eljárások
+
+További információkért lásd: [kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor](./resource-group-linked-templates.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -67,95 +71,97 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A sablon öt erőforrást határoz meg:
 
-    * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). 
-    * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses). 
-    * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks). 
-    * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces). 
-    * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
+   * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
+   * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
+   * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-    Hasznos lehet néhány alapvető ismeretekkel a sablon a sablon testreszabása előtt beolvasásához.
+     Hasznos lehet néhány alapvető ismeretekkel a sablonséma a sablon testreszabása előtt beolvasásához.
 5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 6. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával hozza létre a fájl egy újabb másolatát **linkedTemplate.json** néven.
 
 ## <a name="create-the-linked-template"></a>Az összekapcsolt sablon létrehozása
 
-Az összekapcsolt sablon létrehoz egy tárfiókot. Az összekapcsolt sablon majdnem teljesen azonos a tárfiókot létrehozó különálló sablonnal. Ebben az oktatóanyagban az összekapcsolt sablonnak vissza kell adnia egy értéket a fő sablonnak. Ez az érték az `outputs` elemben van megadva.
+Az összekapcsolt sablon létrehoz egy tárfiókot. Hozzon létre egy tárfiókot a társított sablon használható önálló sablonként. Ebben az oktatóanyagban a hivatkozott sablonnak két paraméter szükséges, és továbbítja a egy értéke a fő sablont. Ez az "visszatérési" érték van megadva a `outputs` elemet.
 
-1. Nyissa meg linkedTemplate.json Visual Studio Code-ban, ha a fájl nincs megnyitva.
+1. Nyissa meg **linkedTemplate.json** a Visual Studio Code, ha a fájl nincs megnyitva.
 2. Hajtsa végre a következő módosításokat:
 
-    * Távolítson el a tárfiók kivételével minden erőforrást. Összesen négy erőforrást fog eltávolítani.
+    * Más, távolítsa el az összes paramétert **hely**.
+    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert. 
+        ```json
+        "storageAccountName":{
+          "type": "string",
+          "metadata": {
+              "description": "Azure Storage account name."
+          }
+        },
+        ```
+        A tárfiók nevét és helyét paraméterként a fő sablonból a társított sablont.
+        
+    * Távolítsa el a **változók** elemet, és a változó definíciókat.
+    * Távolítsa el a storage-fiókon kívül az összes erőforrást. Összesen négy erőforrást fog eltávolítani.
     * Frissítse az értéket, a **neve** elem, hogy a tárfiók típusú erőforrást:
 
         ```json
           "name": "[parameters('storageAccountName')]",
         ```
-    * Távolítsa el a **változók** elemet, és a változó definíciókat.
-    * Távolítsa el a kivételével az összes paramétereket **hely**.
-    * Vegyen fel egy **storageAccountName** (tárFiókNeve) nevű paramétert. A tárfiók nevét a fő sablon egy paraméterként adja át az összekapcsolt sablonnak.
 
-        ```json
-        "storageAccountName":{
-        "type": "string",
-        "metadata": {
-            "description": "Azure Storage account name."
-        }
-        },
-        ```
     * Módosítsa az **outputs** (kimenetek) elemet, hogy a következőképpen nézzen ki:
-
+    
         ```json
         "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
+          "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+            }
         }
         ```
-        A **storageUri** a fő sablon virtuális gépének erőforrás-definíciójához szükséges.  Az értéket egy kimeneti értékként fogja átadni a fő sablonnak.
+       A **storageUri** a fő sablon virtuális gépének erőforrás-definíciójához szükséges.  Az értéket egy kimeneti értékként fogja átadni a fő sablonnak.
 
-    Ha készen van, a sablonnak így kell kinéznie:
+        Ha készen van, a sablonnak így kell kinéznie:
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-          "storageAccountName":{
-            "type": "string",
-            "metadata": {
-              "description": "Azure Storage account name."
+        ```json
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "storageAccountName": {
+              "type": "string",
+              "metadata": {
+                "description": "Azure Storage account name."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Location for all resources."
+              }
             }
           },
-          "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-              "description": "Location for all resources."
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[parameters('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "kind": "Storage",
+              "properties": {}
+            }
+          ],
+          "outputs": {
+            "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
             }
           }
-        },
-        "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('storageAccountName')]",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "sku": {
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-          }
-        ],
-        "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
         }
-    }
-    ```
+        ```
 3. Mentse a módosításokat.
 
 ## <a name="upload-the-linked-template"></a>Az összekapcsolt sablon feltöltése
@@ -227,7 +233,7 @@ A gyakorlatban, generáljon egy SAS-token, a fő sablon üzembe helyezéséhez, 
 
 A fő sablon egy azuredeploy.json nevű fájl.
 
-1. Ha még nincs megnyitva, nyissa meg a Visual Studio Code-ban az azuredeploy.json fájlt.
+1. Nyissa meg **azuredeploy.json** a Visual Studio Code, ha nincs megnyitva.
 2. A tárolási fiók erőforrás-definíció törlése a sablonból:
 
     ```json
@@ -302,8 +308,6 @@ Mivel a tárfiók jelenleg az összekapcsolt sablonban van definiálva, módosí
     A *linkedTemplate* az üzembehelyezési erőforrás neve.  
 3. frissítés **storageUri tulajdonságok/diagnosticsProfile/bootDiagnostics** az előző képernyőképen látható módon.
 4. A módosított sablon mentéséhez.
-
-További információkat az [Összekapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor](./resource-group-linked-templates.md) című cikkben talál.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

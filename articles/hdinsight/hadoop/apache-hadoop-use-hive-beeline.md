@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b7e2a8d5eb981fc30dd14fed8f7efcfc094af0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110885"
+ms.locfileid: "58200481"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
@@ -294,7 +294,6 @@ Ha Tez Hive-val használ, tekintse meg a következő dokumentumot: [Az Apache Am
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 

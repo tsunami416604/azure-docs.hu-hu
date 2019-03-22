@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207296"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103162"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és jóváhagyás az az Azure Active Directory 1.0-s verziójú végpontján
 
@@ -102,11 +102,11 @@ Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szüks�
 - Az erőforrásoknak külön kell meghatározniuk a `Read` és a `ReadWrite` engedélyeket.
 - Az erőforrásoknak `Admin` engedélyekként kell jelölniük az összes olyan engedélyt, amelyek felhasználói határokon keresztül engedélyezik az adatok hozzáférését.
 - Az erőforrásoknak követniük kell a `Subject.Permission[.Modifier]` elnevezési mintát, ahol:
-    - `Subject` megfelel a rendelkezésre álló adatok
-    - `Permission` felel meg a műveletet, amely a felhasználó is eltarthat, hogy adatokat
-    - `Modifier` igény szerint leírására szolgál egy másik engedélyezési szakterületek
+  - `Subject` megfelel a rendelkezésre álló adatok
+  - `Permission` felel meg a műveletet, amely a felhasználó is eltarthat, hogy adatokat
+  - `Modifier` igény szerint leírására szolgál egy másik engedélyezési szakterületek
     
     Példa:
-    * Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket.
-    * Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
-    * Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.
+  - Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket.
+  - Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
+  - Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.

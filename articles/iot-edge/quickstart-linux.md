@@ -4,17 +4,17 @@ description: Ebben a rövid útmutató egy IoT Edge-eszköz létrehozása és ü
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/28/2019
+ms.date: 03/19/2019
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cb8d686b32aae295e47b127f0312ba6eba9f77e3
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 039ef05f7c0cbb9809a51efc3deef978e2970cf4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408547"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224566"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön
 
@@ -109,7 +109,7 @@ IoT Edge-eszközök viselkednek, és működnek, mint a tipikus IoT-eszközök f
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Másolja az értéket, a `cs` a JSON-kimeneteket a kulcsát, és mentse azt. Ezt az értéket az eszköz kapcsolati karakterláncának. Ez a kapcsolati karakterlánc használatával fog az IoT Edge-futtatókörnyezet konfigurálása a következő szakaszban.
+3. Másolja az értéket, a `connectionString` a JSON-kimeneteket a kulcsát, és mentse azt. Ezt az értéket az eszköz kapcsolati karakterláncának. Ez a kapcsolati karakterlánc használatával fog az IoT Edge-futtatókörnyezet konfigurálása a következő szakaszban.
 
    ![Kapcsolati karakterlánc lekérése a CLI-kimenetből](./media/quickstart/retrieve-connection-string.png)
 

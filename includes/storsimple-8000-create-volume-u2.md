@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: fa433f55839db66bcf8245fe058ac56702af3d6e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889235"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125217"
 ---
 #### <a name="to-create-a-volume"></a>Kötet létrehozása
 1. Az **Eszközök** panelen szereplő eszközök táblázatos listájából válassza ki az eszközt. Kattintson a **+ Kötet hozzáadása** gombra.
@@ -22,7 +22,7 @@ ms.locfileid: "55889235"
 
    2. A legördülő listából válassza ki a kötettárolót, amelyhez kötetet szeretne adni. 
 
-   3.  Adja meg a kötet **Nevét**. A kötetek nem nevezhetők át a létrehozásuk után.
+   3. Adja meg a kötet **Nevét**. A kötetek nem nevezhetők át a létrehozásuk után.
 
    4. A legördülő listából adja meg a **Típus** beállítást a kötethez. Helyi garanciákat, kis késleltetést és magasabb teljesítményt igénylő munkaterheléseknél válasszon **Helyileg rögzített** kötetet. Minden más adathoz válasszon **Rétegzett** kötetet. Ha archív adatokhoz használja ezt a kötetet, jelölje be a **Kötet használata ritkábban használt archív adatokhoz** beállítást.
       
@@ -36,19 +36,19 @@ ms.locfileid: "55889235"
       
        Ha a 8100-as eszközön kioszt egy 8,5 TB-os (vagyis a legnagyobb megengedett méretű) gyors helyi kötetet, azzal elfoglalja az összes rendelkezésre álló helyi területet az eszközön. Innentől kezdve nem hozhat létre további rétegzett köteteket, mivel nincs helyi terület az eszközön, amely üzemeltethetné a rétegzett kötet munkakészletét. A meglévő rétegzett kötetek is hatással vannak a rendelkezésre álló területre. Ha például egy 8100-as eszközhöz már tartozik körülbelül 106 TB rétegzett kötet, akkor csak 4 TB érhető el a gyors helyi kötetekhez.
 
-    6. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. 
+      1. Kattintson a nyílra a **Csatlakoztatott gazdagépek** mezőben. 
 
-        ![Csatlakoztatott gazdagépek](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
+         ![Csatlakoztatott gazdagépek](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
 
-    7. A **Csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t vagy adjon meg egy újat a következő lépések végrehajtásával:
+      1. A **Csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR-t vagy adjon meg egy újat a következő lépések végrehajtásával:
 
-       1. Adja meg az ACR **nevét**.
-       2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
+         1. Adja meg az ACR **nevét**.
+         2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép iSCSI minősített nevét (IQN). Ha nem tudja az IQN-t, lépjen a [Windows Server-gazdagép IQN nevének lekérése](#get-the-iqn-of-a-windows-server-host) szakaszhoz.
 
-    9. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy kötet a megadott beállításokkal.
+      1. Kattintson a **Create** (Létrehozás) gombra. Létrejön egy kötet a megadott beállításokkal.
 
-        ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+         ![Kattintson a Létrehozás gombra](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
-        > [!NOTE]
-        > Ügyeljen arra, hogy a létrehozott kötet nem védett. Az ütemezett biztonsági mentésekhez biztonsági mentési házirendeket kell létrehoznia, és társítania kell azokat a kötethez. 
+         > [!NOTE]
+         > Ügyeljen arra, hogy a létrehozott kötet nem védett. Az ütemezett biztonsági mentésekhez biztonsági mentési házirendeket kell létrehoznia, és társítania kell azokat a kötethez. 
 

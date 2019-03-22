@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0096a7a57cb4a404f5c8e36d8b69eac2c20c1fab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 31330c3d2b10e6245db775da4039fd1948539df4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106015"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Az Azure Stream Analytics az IoT Edge-modul üzembe helyezése
 
@@ -33,6 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az Azure Stream Analytics üzembe helyezése egy IoT Edge-eszközön az Azure Portalról.
 
 <center>
+
 ![Diagram – oktatóanyag architektúra tesztelése és üzembe helyezése az ASA-feladat](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
@@ -215,9 +216,9 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
    ```cmd/sh
    iotedge list  
    ```
-<!--
+   <!--
    ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
--->
+   -->
 1. Tekintse át az összes rendszernaplót és metrikaadatot. Használja a Stream Analytics-modul nevét:
 
    ```cmd/sh

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 03/17/2019
 ms.author: monhaber
-ms.openlocfilehash: 74902d9628f147f37169c22319ad9186bd267f6c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 5f49de453f9cd694598918500a8ac0221937bdb1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201687"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Átláthatóvá és ellenőrizhetővé hibrid felhőbeli számítási feladatokhoz, amely csökkenti a fenyegetéseket, és intelligens észlelés segít lépést tartani, gyorsan fejlődő kibertámadások aktív védelmet kínál.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 810388a85e4ad339ff1444d21ac231fe4c00aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120533"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürterőforrás-kezelő több mechanizmust nyújt az fürt leírása. Futásidőben a fürterőforrás-kezelő ezeket az adatokat használja a szolgáltatások a fürtben futó magas rendelkezésre állásának biztosításához. Ezek a szabályok fontos kényszerítése, közben is megkísérli a fürtön belüli erőforrás-használat optimalizálása érdekében.
@@ -47,6 +47,7 @@ Fontos, hogy a tartalék tartomány megfelelően legyenek beállítva, mivel a S
 Az alábbi ábra az entitásokat, amelyek hozzájárulnak a tartalék tartományok és azon tartományok megjelenítése, különböző tartalék eredményező azt szín. Ebben a példában van adatközpontok ("DC"), állványokon ("R") és a többi panelen (a "B"). Is ha minden panelen egynél több virtuális gép rendelkezik, lehetnek réteget a tartalék tartomány hierarchiában.
 
 <center>
+
 ![Tartalék tartományok keresztül rendezve csomópontok][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Ez nem ajánlott, ha minden szinten, a tartalék tartomány hierarchia mélység
 Hogyan tegye imbalanced tartományok meg? Az alábbi ábrán két különböző fürt elrendezések mutatjuk be. Az első példában a csomópontok egyenlően vannak elosztva a tartalék tartományok. A második példa egy tartalék tartomány számos további csomópontokat, mint a többi tartalék tartományban van. 
 
 <center>
+
 ![Két különböző fürt elrendezések][Image2]
 </center>
 
@@ -72,6 +74,7 @@ Frissítési tartományok sokkal vannak, például a tartalék tartományok, de 
 Az alábbi ábrán látható, három frissítési tartományt szétteríti a három tartalék tartományt. Azt is bemutatja egy lehetséges a három különböző replikába állapotalapú szolgáltatás elhelyezésének, ahol minden egyes említi különböző hibatűrési és frissítési tartományok. Az elhelyezés lehetővé teszi, hogy egy szolgáltatás frissítése közepén tartalék tartomány elvesztését, és a egy példányát a kód és az adatok továbbra is fennáll.  
 
 <center>
+
 ![Tartalék és frissítési tartományokba, az elhelyezési][Image3]
 </center>
 
@@ -88,6 +91,7 @@ Nincs valós egy környezetben, vagy átfedési módjának korlátozásaihoz tar
 - Ha a tartalék tartományokban és frissítési tartományok alkotnak mátrix le a átlói általában futtató géppel "csíkozott" vagy "mátrixban" modell
 
 <center>
+
 ![Tartalék és frissítési tartomány elrendezések][Image4]
 </center>
 
@@ -190,9 +194,9 @@ A "biztonságos kvórum" megközelítés rugalmasabb, mint a "legnagyobb külön
 Mivel mind a módszerek előnyeiről és hátrányairól, jelentettük adaptív megközelítés, amely egyesíti e két stratégia szerint.
 
 > [!NOTE]
->Ez lesz a Service Fabric verziója 6.2 kezdve alapértelmezett viselkedését. 
->
-Az adaptív módszer alapértelmezés szerint a "legnagyobb különbség a" logikai használ, és, csak szükség esetén a "biztonságos kvórum" logikai kapcsolók. A fürterőforrás-kezelő automatikusan kitalálja, hogy mely stratégia szükség, megnézzük, hogyan vannak konfigurálva a fürt és a szolgáltatásokat. Egy adott szolgáltatáshoz: *Ha a TargetReplicaSetSize egyenlően osztható fel a frissítési tartományok száma és a tartalék tartományok száma **és** a csomópontok számát a kisebb vagy egyenlő a (a tartalék tartományok száma) * (a frissítési tartományok száma), a fürt Erőforrás-kezelő, hogy a szolgáltatás a "kvórum alapján" logikát kell használni.* Hogy a fürterőforrás-kezelő ezt a módszert használja a is állapot nélküli és állapotalapú szolgáltatások esetében annak ellenére, hogy a kvórum elvesztése nem releváns, az állapotmentes szolgáltatások esetében figyelembe kell vennie.
+> Ez lesz a Service Fabric verziója 6.2 kezdve alapértelmezett viselkedését. 
+> 
+> Az adaptív módszer alapértelmezés szerint a "legnagyobb különbség a" logikai használ, és, csak szükség esetén a "biztonságos kvórum" logikai kapcsolók. A fürterőforrás-kezelő automatikusan kitalálja, hogy mely stratégia szükség, megnézzük, hogyan vannak konfigurálva a fürt és a szolgáltatásokat. Egy adott szolgáltatáshoz: *Ha a TargetReplicaSetSize egyenlően osztható fel a frissítési tartományok száma és a tartalék tartományok száma **és** a csomópontok számát a kisebb vagy egyenlő a (a tartalék tartományok száma) * (a frissítési tartományok száma), a fürt Erőforrás-kezelő, hogy a szolgáltatás a "kvórum alapján" logikát kell használni.* Hogy a fürterőforrás-kezelő ezt a módszert használja a is állapot nélküli és állapotalapú szolgáltatások esetében annak ellenére, hogy a kvórum elvesztése nem releváns, az állapotmentes szolgáltatások esetében figyelembe kell vennie.
 
 Lépjen vissza az előző példával, és feltételezik, hogy egy fürt most már rendelkezik-e (a fürt továbbra is lehet konfigurálni az öt tartalék tartományok és öt frissítési tartományok és az adott fürt marad az öt üzemeltetett szolgáltatás TargetReplicaSetSize) 8 csomópont. 
 
@@ -344,6 +348,7 @@ Néha (valójában a legtöbbször) fog győződjön meg arról, hogy bizonyos m
 Ezen konfigurációk számos támogatása érdekében a Service Fabric rendelkezik csomópontokra alkalmazható címkék első osztályú fogalma. Ezekkel a címkékkel nevezzük **csomópont tulajdonságai**. **Elhelyezési korlátozások** az egyes szolgáltatásai, válassza ki egy vagy több csomópont-tulajdonságok csatolt utasításokat. Elhelyezési korlátozások határozza meg, ahol szolgáltatásainak futnia kell. Az olyan korlátozások, bővíthető – minden kulcs-érték pár is dolgozhat. 
 
 <center>
+
 ![A fürt elrendezés különböző számítási feladatok][Image5]
 </center>
 
@@ -351,6 +356,7 @@ Ezen konfigurációk számos támogatása érdekében a Service Fabric rendelkez
 A Service Fabric néhány anélkül, hogy a felhasználónak meg kellene adhat meg hozzájuk automatikusan használható alapértelmezett csomópont tulajdonságait határozza meg. Az alapértelmezett tulajdonság meg van határozva a csomópontok a **NodeType** és a **csomópontnév**. Így például, egy elhelyezési korlátozás is írható `"(NodeType == NodeType03)"`. Általában található NodeType csomóponttípust kell a legfontosabb gyakran használt tulajdonságokat. Ez akkor hasznos, mivel az egy gép egy típusú megfelel 1:1. Egyes típusú gépek olyan típusú számítási feladatok egy hagyományos n szintű alkalmazás felel meg.
 
 <center>
+
 ![Elhelyezési korlátozások és a csomópont tulajdonságait][Image6]
 </center>
 
@@ -474,6 +480,7 @@ Ha kikapcsolt minden erőforrás *terheléselosztási*, Service Fabric a fürter
 A fürterőforrás-kezelő futásidőben, nyomon követi a fennmaradó kapacitás, a fürt és a csomópontokon. Nyomon követheti a kapacitás a fürterőforrás-kezelő kivonja a minden szolgáltatás használata a csomópont kapacitását, ahol a szolgáltatás fut-e. Ezekkel az információkkal a Service Fabric fürterőforrás-kezelő ismerhetik fel a hol helyezze el vagy helyezhetik át a replikák úgy, hogy a csomópont feletti kapacitás nem lépjen.
 
 <center>
+
 ![Fürtcsomópontok és a kapacitás][Image7]
 </center>
 

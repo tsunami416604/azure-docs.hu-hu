@@ -16,12 +16,12 @@ ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 9dc2facbcae5ced1328d5488e533239a6a5627cf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a4f41f5cf4e2775e3c300a2e83794e35d7328965
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104233"
 ---
 # <a name="validate-azure-registration"></a>Azure-regisztráció ellenőrzése
  
@@ -67,8 +67,8 @@ A következő előfeltételeknek kell teljesülnie:
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
-> [!NOTE]
-  > Egy CSP-hez, a megosztott szolgáltatások vagy IUR előfizetés használata esetén, mint kell adnia a hitelesítő adatokat, egy felhasználó a saját AAD-ból. Ez általában a lesz hasonló `subscriptionowner@iurcontoso.onmicrosoft.com`. A megfelelő hitelesítő adatokkal kell rendelkeznie, hogy a felhasználó van szüksége, a fent leírt módon.
+   > [!NOTE]
+   > Egy CSP-hez, a megosztott szolgáltatások vagy IUR előfizetés használata esetén, mint kell adnia a hitelesítő adatokat, egy felhasználó a saját AAD-ból. Ez általában a lesz hasonló `subscriptionowner@iurcontoso.onmicrosoft.com`. A megfelelő hitelesítő adatokkal kell rendelkeznie, hogy a felhasználó van szüksége, a fent leírt módon.
 
 3. A PowerShell parancssorában futtassa a következőt beállítása `$subscriptionID` mint az Azure-előfizetés fogja használni. Cserélje le `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` a saját előfizetés-Azonosítójára:
    ```powershell

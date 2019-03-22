@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 69523a76406cc32212a064ec222f0276d03eb1fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 87f608163e20d98179eb6c666158386a99858eeb
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188383"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
@@ -41,7 +41,7 @@ Telepítse az Eclipse Neon vagy újabb verzióját az [Eclipse webhelyéről](ht
 -   Az Eclipse frissítéseinek kereséséhez és telepítéséhez lépjen a **Help** > **Check for Updates** (Súgó > Frissítések keresése) területre.
 
 A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
-1. A **Work with** (Használat) mezőbe írja be a **https://dl.microsoft.com/eclipse** címet.
+1. Az a **együttműködve** mezőbe írja be a https:\//dl.microsoft.com/eclipse.
 2. Kattintson a **Hozzáadás** parancsra.
 
    ![Az Eclipse Service Fabric beépülő modulja][sf-eclipse-plugin-install]

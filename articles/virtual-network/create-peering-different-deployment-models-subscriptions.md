@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: cd0493d4fd126175acafce050394e65a47e9bda9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650019"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104114"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -60,7 +60,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 10. Jelentkezzen ki a portálra a Felhasználóa felhasználóként, majd jelentkezzen be Felhasználób felhasználóként.
 11. Kattintson a **+ új**, típus *virtuális hálózati* a a **keresés a piactéren** mezőbe, majd kattintson a **virtuális hálózati** a keresési eredmények között.
 12. Az a **virtuális hálózat** panel, amelyen megjelenik, válassza ki **klasszikus** a a **telepítési modell kiválasztása** mezőbe, majd kattintson a **létrehozás**.
-13.   A létrehozás virtuális hálózat (klasszikus) mezőben megjelenő adja meg a következő értékeket:
+13. A létrehozás virtuális hálózat (klasszikus) mezőben megjelenő adja meg a következő értékeket:
 
     - **Név**: *myVnetB*
     - **Címtér**: *10.1.0.0/16*

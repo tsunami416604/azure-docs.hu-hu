@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c94c564434df0e9c48facedba1d2232f9510662e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182608"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -87,7 +87,7 @@ További információ a lehetőségekről [beszerzése az Azure multi-factor Aut
 
 Bizonyos esetekben igen.
 
-A rendszergazdák az Azure multi-factor Authentication a Microsoft online szolgáltatásaihoz, például az Azure és az Office 365 felügyeleti portálokat hozzá ingyenesen az Azure MFA funkciók egy részét biztosítja. Ez az ajánlat csak a globális rendszergazdák az Azure Active Directory-példányok, amelyek nem rendelkeznek Azure MFA teljes verzióját az MFA-licencek, a csomag egyik gyermekszoftver vagy egy önálló fogyasztásalapú szolgáltató vonatkozik. Ha a rendszergazdák az ingyenes verzióját használja, és ezután vásárol egy Azure MFA teljes verzióját, majd minden globális rendszergazda emelt szintű a fizetős verzióra automatikusan.
+A rendszergazdák az Azure multi-factor Authentication a Microsoft online szolgáltatásaihoz, beleértve a hozzáférési költségek nélkül az Azure MFA-funkciók egy részét biztosítja a [az Azure portal](https://portal.azure.com) és [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). Ez az ajánlat csak a globális rendszergazdák az Azure Active Directory-példányok, amelyek nem rendelkeznek Azure MFA teljes verzióját az MFA-licencek, a csomag egyik gyermekszoftver vagy egy önálló fogyasztásalapú szolgáltató vonatkozik. Ha a rendszergazdák az ingyenes verzióját használja, és ezután vásárol egy Azure MFA teljes verzióját, majd minden globális rendszergazda emelt szintű a fizetős verzióra automatikusan.
 
 Office 365-felhasználók a multi-factor Authentication ingyenes Office 365-szolgáltatásokhoz, ideértve az Exchange online-hoz és a SharePoint online-hoz való hozzáféréshez az Azure MFA-funkciók egy részét biztosítja. Ez az ajánlat vonatkozik, amikor az Azure Active Directory megfelelő példánya nem rendelkezik Azure MFA teljes verzióját az MFA-licencek, a csomag egyik gyermekszoftver vagy egy önálló fogyasztásalapú szolgáltató hozzárendelt Office 365-licenccel rendelkező felhasználók számára.
 

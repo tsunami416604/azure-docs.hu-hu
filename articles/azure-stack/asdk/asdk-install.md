@@ -16,12 +16,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: a58f5a3794d352fa8671321f5a30d74d2598df75
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 509dafb02d456e3f612e1de8a5bc1cf4b010a05a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977728"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113856"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Az Azure Stack Development Kit (ASDK) telepítése
 Miután [a ASDK számítógép előkészítése](asdk-prepare-host.md), a ASDK is üzembe helyezhetők az alábbi lépéseket követve ebben a cikkben a CloudBuilder.vhdx lemezképpel.
@@ -44,8 +44,8 @@ A jelen cikkben ismertetett lépések bemutatják, hogyan helyezhet üzembe a gr
   
    Ha úgy dönt, hogy az Azure-előfizetés identitásszolgáltatókhoz, szüksége van-e internetkapcsolat, a teljes neve az Azure AD directory-bérlő formájában *domainname*. onmicrosoft.com vagy egy Azure AD ellenőrizte az egyéni tartomány nevét és globális a megadott könyvtár rendszergazdai hitelesítő adataival.<br><br>Az üzembe helyezést követően az Azure Active Directory globális rendszergazdának, nem szükséges. Egyes műveletek azonban szükség lehet a globális rendszergazdai hitelesítő adatok. Például egy erőforrás-szolgáltató szoftvertelepítő parancsfájl vagy egy új szolgáltatást igénylő engedélyt kell adni. Ideiglenesen újbóli regisztrációra a fiók globális rendszergazdai jogosultságokkal, vagy használjon egy külön globális rendszergazdai fiókkal, amely a tulajdonosa a *szolgáltatói előfizetés alapértelmezett*.<br><br>Az AD FS használata Identitásszolgáltatóként, az alapértelmezett stamp címtárszolgáltatás szolgál. Jelentkezzen be az alapértelmezett fiók azurestackadmin@azurestack.local, és a jelszó használata a telepítés során megadottal.
 
-  > [!NOTE]
-  > A legjobb eredmények érdekében még akkor is, ha az AD FS használata Identitásszolgáltatóként, kapcsolat nélküli Azure Stack-környezet használni kívánt célszerű telepíteni a ASDK, ha az internethez csatlakozik. Ezzel a módszerrel a development kit telepítést része a Windows Server 2016 próbaverzió a központi telepítéskor aktiválható.
+   > [!NOTE]
+   > A legjobb eredmények érdekében még akkor is, ha az AD FS használata Identitásszolgáltatóként, kapcsolat nélküli Azure Stack-környezet használni kívánt célszerű telepíteni a ASDK, ha az internethez csatlakozik. Ezzel a módszerrel a development kit telepítést része a Windows Server 2016 próbaverzió a központi telepítéskor aktiválható.
 
 4. Válassza ki a csomagot használja, és kattintson egy hálózati adaptert **tovább**.
 

@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
-ms.author: kumud
+ms.date: 03/18/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167065"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Hozza létre a feladatátvétel több Azure CDN-végpontok Azure Traffic Managerrel
 
@@ -77,7 +77,7 @@ Miután beállította a CDN és a Traffic Manager-profilok, kövesse az alábbi 
     >
 
 
-2.  Az Azure CDN-profilt válassza ki az első CDN-végpont (Akamai). Válassza ki **egyéni tartomány hozzáadása** és bemeneti *cdndemo101akamai.azureedge.net*. Ellenőrizze, hogy zöld pipa az egyéni tartomány ellenőrzése. 
+2.  Az Azure CDN-profilt válassza ki az első CDN-végpont (Akamai). Válassza ki **egyéni tartomány hozzáadása** és bemeneti *cdndemo101.dustydogpetcare.online*. Ellenőrizze, hogy zöld pipa az egyéni tartomány ellenőrzése. 
 
     Az Azure CDN-t használ a *cdnverify* altartomány érvényesítése a DNS-hozzárendelést a regisztrációs folyamat befejezéséhez. További információkért lásd: [hozzon létre egy CNAME DNS-rekord](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ez a lépés lehetővé teszi, hogy az Azure CDN-t az egyéni tartomány felismerje, hogy a kérelmek válaszolni tud.
 
@@ -87,7 +87,7 @@ Miután beállította a CDN és a Traffic Manager-profilok, kövesse az alábbi 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Válassza ki a második CDN-végpont (Verizon) az Azure CDN-profilt, és ismételje meg a 2. lépés. Válassza ki **egyéni tartomány hozzáadása**, és a bemeneti *cdndemo101akamai.azureedge.net*.
+4. Válassza ki a második CDN-végpont (Verizon) az Azure CDN-profilt, és ismételje meg a 2. lépés. Válassza ki **egyéni tartomány hozzáadása**, és a bemeneti *cdndemo101.dustydogpetcare.online*.
  
 Miután végrehajtotta ezeket a lépéseket, a feladatátvételt is használhat több CDN-t szolgáltatás beállítása az Azure Traffic Managerrel. Fogja tudni elérni a teszt az egyéni tartomány URL-címei. A működésének teszteléséhez tiltsa le az elsődleges CDN-végponthoz, és győződjön meg arról, hogy a kérelem van megfelelően átkerül a másodlagos CDN-végpont. 
 

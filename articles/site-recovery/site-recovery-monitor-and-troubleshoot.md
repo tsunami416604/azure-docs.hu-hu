@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432872"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098474"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 
@@ -149,19 +149,19 @@ Emellett az irányítópult a gépek a virtuális gépek lapján követheti nyom
     ![Site Recovery által replikált elemek listanézet](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Az a **replikált elemek** lapon megtekintheti és szűrheti az adatokat. A művelet menü tetején, az elvégezhető műveletek egy adott gép, beleértve a feladatátvételi teszt futtatása, vagy hibaüzenetek megtekintéséhez.
-3.  Kattintson a **oszlopok** megjelenítéséhez további oszlopok megjelenítéséhez a helyreállítási Időkorlát, például a cél konfigurációs problémákat, és a replikációs hibákat.
+3. Kattintson a **oszlopok** megjelenítéséhez további oszlopok megjelenítéséhez a helyreállítási Időkorlát, például a cél konfigurációs problémákat, és a replikációs hibákat.
 4. Kattintson a **szűrő** meghatározott paraméterek, például a replikációs állapotot, vagy egy adott replikációs házirend alapján információk megtekintéséhez.
 5. Kattintson a jobb gombbal egy gép kezdeményezni, például a feladatátvételi teszt műveletek vagy társítva konkrét hiba részleteinek megtekintéséhez.
 6. Kattintson a további részletek feltárásához, egy gép. Részletei a következők:
-      - **Replikálási adatok**: Aktuális állapot és a gép állapotát.
-      - **Helyreállítási Időkorlát** (helyreállításipont-célkitűzés): A virtuális gép és az idő, amikor az rpo-t legutóbb kiszámított aktuális helyreállítási Időkorlát.
-      - **Helyreállítási pontok**: A gép legújabb elérhető helyreállítási pontok.
-      - **Feladatátvételre való készültsége**: Azt jelzi-e egy feladatátvételi tesztet futtatott a gép, az a gép (a mobilitási szolgáltatást futtató gépek) számára, és a konfigurációs problémákat futó ügynök verzióját.
-      - **Hibák**: Replikációs hiba tünetek jelenleg megfigyelhető a gépre, és a lehetséges okok és műveletek listája.
-      - **Események**: A gép érintő legutóbbi események időrendi listáját. Hiba részletei az jelenleg megfigyelhető hiba jelenségeket jeleníti meg, a gép érintő problémák Előzményrekord események pedig.
-      - **Infrastruktúranézet**: A forgatókönyv az infrastruktúra állapotát az látható, amikor az Azure-bA replikáló gépek.
+   - **Replikálási adatok**: Aktuális állapot és a gép állapotát.
+   - **Helyreállítási Időkorlát** (helyreállításipont-célkitűzés): A virtuális gép és az idő, amikor az rpo-t legutóbb kiszámított aktuális helyreállítási Időkorlát.
+   - **Helyreállítási pontok**: A gép legújabb elérhető helyreállítási pontok.
+   - **Feladatátvételre való készültsége**: Azt jelzi-e egy feladatátvételi tesztet futtatott a gép, az a gép (a mobilitási szolgáltatást futtató gépek) számára, és a konfigurációs problémákat futó ügynök verzióját.
+   - **Hibák**: Replikációs hiba tünetek jelenleg megfigyelhető a gépre, és a lehetséges okok és műveletek listája.
+   - **Események**: A gép érintő legutóbbi események időrendi listáját. Hiba részletei az jelenleg megfigyelhető hiba jelenségeket jeleníti meg, a gép érintő problémák Előzményrekord események pedig.
+   - **Infrastruktúranézet**: A forgatókönyv az infrastruktúra állapotát az látható, amikor az Azure-bA replikáló gépek.
 
-    ![Site Recovery által replikált elem részleteinek/áttekintése](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
+     ![Site Recovery által replikált elem részleteinek/áttekintése](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
 
 ### <a name="common-questions"></a>Gyakori kérdések
@@ -191,7 +191,7 @@ Iratkozhat fel ezeket az eseményeket kritikus email értesítéseket kapni:
 A következőképpen iratkozhat fel:
 
 A tárolóban > **figyelés és jelentéskészítés** területén kattintson **Site Recovery-események**.
-2. Kattintson a **E-mail-értesítések**.
-3. A **e-mailes értesítés**, bekapcsolja az értesítéseket, és adja meg, akik küldéséhez. Minden előfizetés-Adminisztrátorok küldeni az értesítéseket, és igény szerint adott e-mail-címeket is elküldheti.
+1. Kattintson a **E-mail-értesítések**.
+1. A **e-mailes értesítés**, bekapcsolja az értesítéseket, és adja meg, akik küldéséhez. Minden előfizetés-Adminisztrátorok küldeni az értesítéseket, és igény szerint adott e-mail-címeket is elküldheti.
 
     ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)

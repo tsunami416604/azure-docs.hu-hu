@@ -8,14 +8,14 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0edf9ebcde2df7e639666f8fe7472baacdeb8640
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9b8bfe2a4b9b7a8432f14fb53b3e7a4cae49a3b4
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212182"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189971"
 ---
-# <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>Elhárítása: Hiba fürt létrehozása az Azure Data Explorer
+# <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>Hibaelhárítás: Fürt létrehozása az Azure Data Explorer hiba
 
 A fürtlétrehozás meghiúsult az Adatkezelőben az Azure nem túl valószínű esetben kövesse az alábbi lépéseket.
 
@@ -23,7 +23,7 @@ A fürtlétrehozás meghiúsult az Adatkezelőben az Azure nem túl valószínű
 
 1. Győződjön meg arról, hogy nincs érvényesítési hiba kapcsolódó a fürt neve alatt megadott **fürt létrehozása** az Azure Portalon.
 
-1. Ellenőrizze a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/>). Keresse meg a régióban, ahol próbál a fürt létrehozása az Azure adatkezelő állapotát.
+1. Ellenőrizze a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/). Keresse meg a régióban, ahol próbál a fürt létrehozása az Azure adatkezelő állapotát.
 
     Ha az állapot nem **jó** (zöld pipa), próbálja meg a fürt létrehozása után az állapot javítja.
 

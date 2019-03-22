@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Oktatóanyag: Az Azure Active Directory-integráció IQNavigator virtuális gépekkel
 
@@ -91,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés IQNavigator virtuális gépekkel tesztelése
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Tesztfelhasználó IQNavigator virtuális gépek létrehozása](#creating-a-iqnavigator-vms-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon IQNavigator-beli virtuális gépeken, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Egy IQNavigator virtuális gépek tesztfelhasználó létrehozása](#creating-a-iqnavigator-vms-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon IQNavigator-beli virtuális gépeken, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
@@ -175,7 +175,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>Tesztfelhasználó IQNavigator virtuális gépek létrehozása
+### <a name="creating-an-iqnavigator-vms-test-user"></a>Egy IQNavigator virtuális gépek tesztfelhasználó létrehozása
 
 Ez a szakasz célja egy IQNavigator-beli virtuális gépeken Britta Simon nevű felhasználó létrehozásához. Együttműködve [IQNavigator virtuális gépek támogatási csapatának](https://www.beeline.com/iqn-product-support/) a felhasználók hozzáadása a IQNavigator virtuális gépek fiókban.
 

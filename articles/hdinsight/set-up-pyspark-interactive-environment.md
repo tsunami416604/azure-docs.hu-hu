@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: c5a8869b0619b7be506ead1b9d37053e9fa57bba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880291"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111633"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezetének beállítása
 
@@ -30,8 +30,8 @@ Használjuk a **python/pip** parancsot hozhat létre a virtuális környezet az 
  
         ![Python-pip verzió](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-    > [!NOTE]
-    > Javasoljuk, hogy manuálisan telepítik a Pythont a MacOS alapértelmezett verzió használata helyett.
+     > [!NOTE]
+     > Javasoljuk, hogy manuálisan telepítik a Pythont a MacOS alapértelmezett verzió használata helyett.
 
 
 2. Telepítés **virtualenv** az alábbi parancs futtatásával.

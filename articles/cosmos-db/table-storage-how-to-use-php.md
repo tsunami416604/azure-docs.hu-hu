@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 3ec91b564647e4eda4696a249c77739daff2ece3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044229"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111497"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -44,19 +44,19 @@ Ebben az útmutatóban olyan Storage Table szolgáltatási vagy Azure Cosmos DB-
 ## <a name="get-the-client-library"></a>Az ügyfélkönyvtár lekérése
 
 1. Hozzon létre egy composer.json nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá az alábbi kódot:
-```json
-{
-  "require": {
+   ```json
+   {
+   "require": {
     "microsoft/azure-storage-table": "*"
-  }
-}
-```
+   }
+   }
+   ```
 2. Töltse le a [composer.phar](https://getcomposer.org/composer.phar) fájlt a gyökérkönyvtárba. 
 3. Nyissa meg a parancssort, és hajtsa végre az alábbi parancsot a projekt gyökérkönyvtárában:
-```
-php composer.phar install
-```
-Másik megoldásként navigáljon az [Azure Storage Table PHP ügyféloldali kódtárához](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) a GitHubon, és klónozza a forráskódot.
+   ```
+   php composer.phar install
+   ```
+   Másik megoldásként navigáljon az [Azure Storage Table PHP ügyféloldali kódtárához](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) a GitHubon, és klónozza a forráskódot.
 
 
 ## <a name="add-required-references"></a>Szükséges referenciák hozzáadása

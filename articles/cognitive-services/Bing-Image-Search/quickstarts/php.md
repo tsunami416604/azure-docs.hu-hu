@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 396c50e6697ed1f111d497f7adeb005e268b80bb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: eb4d04316de875e5eada0bd70383aff73382d8b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546415"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096061"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a PHP használatával
 
@@ -49,7 +49,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-an-http-request"></a>Hozza létre, és végezze el a HTTP-kérés
+   ## <a name="construct-and-perform-an-http-request"></a>Hozza létre, és végezze el a HTTP-kérés
 
 1. Az utolsó lépésben a változók egy HTTP-kérelem Image Search API segítségével.
 

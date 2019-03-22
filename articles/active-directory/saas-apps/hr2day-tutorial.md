@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e932fd59fb888d73fb2ad9aee3f440b4aca3e662
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 378aab82fac5298c3785f752478e3bfc3c6e325b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180573"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
@@ -132,8 +132,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2day_00.png)
     
-    > [!NOTE] 
-    Az SAML-előfeltétel konfigurálása előtt, kapcsolatba kell lépnie a [HR2day Merces ügyfél-támogatási csapata által](mailto:servicedesk@merces.nl) és az egyedi azonosító attribútum értékét a bérlő számára. Ez az érték a következő szakaszban szereplő lépések végrehajtásához szüksége lesz. 
+   > [!NOTE]
+   >  Az SAML-előfeltétel konfigurálása előtt, kapcsolatba kell lépnie a [HR2day Merces ügyfél-támogatási csapata által](mailto:servicedesk@merces.nl) és az egyedi azonosító attribútum értékét a bérlő számára. Ez az érték a következő szakaszban szereplő lépések végrehajtásához szüksége lesz. 
 
 1. Az a **egyszeri bejelentkezési** párbeszédpanel a **felhasználói attribútumok** területen konfigurálja az SAML-jogkivonat attribútum, az alábbi képen látható módon. Ezután az alábbi lépéseket.
     
@@ -174,7 +174,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     > [!TIP]
     >Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** fülre. A beágyazott dokumentáció majd hozzáférni a **konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásáról a [Azure ad-ben a beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+   > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.

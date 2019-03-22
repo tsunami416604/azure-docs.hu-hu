@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 96766a12d7e78dacd93432e30d12f313d52ad4c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415731"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176174"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -56,7 +56,7 @@ Megtekintheti az Azure Active Directory Domain Services állapotának **állapot
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Hozzon létre, és a egy felügyelt identitás engedélyezése
 
-A **felhasználó által hozzárendelt felügyelt identitás** egyszerűsítése és biztonságos domain services műveletek szolgál. A HDInsight Domain Services közreműködői szerepkör hozzárendelése a felügyelt identitást, amikor azt is olvassa el, létrehozása, módosítása és törlési műveletek a tartományi szolgáltatások. Bizonyos domain services-műveletek, például a szervezeti egységek létrehozása és a szolgáltatás alapelvek szükséges ahhoz, hogy a HDInsight vállalati biztonsági csomag. Felügyelt identitások bármely előfizetés hozható létre. További információkért lásd: [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md).
+A **felhasználó által hozzárendelt felügyelt identitás** egyszerűsítése és biztonságos domain services műveletek szolgál. A HDInsight Domain Services közreműködői szerepkör hozzárendelése a felügyelt identitást, amikor azt is olvassa el, létrehozása, módosítása és törlési műveletek a tartományi szolgáltatások. Bizonyos domain services-műveletek, például a szervezeti egységek létrehozása és a szolgáltatás alapelvek szükséges ahhoz, hogy a HDInsight vállalati biztonsági csomag. Felügyelt identitások bármely előfizetés hozható létre. További információk az általános felügyelt identitások, lásd: [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt identitások munka az Azure HDInsight további információkért lásd: [által felügyelt identitásokat az Azure HDInsight](../hdinsight-managed-identities.md).
 
 ESP fürtök beállításához hozzon létre egy felhasználó által hozzárendelt felügyelt identitás, ha már nincs. Lásd: [létrehozás, list, delete vagy egy az Azure portal használatával felügyelt felhasználó által hozzárendelt identitások szerepkör hozzárendelése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) útmutatást. Ezt követően rendelje hozzá a **HDInsight Domain Services közreműködői** a felügyelt identitás (AAD-Tartományi rendszergazdai jogosultságok szükségesek, hogy a szerepkör-hozzárendelés) az Azure AD-Tartományi hozzáférés-vezérlés a szerepkört.
 

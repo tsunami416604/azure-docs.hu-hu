@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
-ms.openlocfilehash: d4d399258ac1bd83fe4cfb46344576ca74e66f1e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805137"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119649"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric ReliableConcurrentQueue bemutatása
 Megbízható egyidejű üzenetsor egy aszinkron, a tranzakciós és a replikált üzenetsor mely funkciók nagy feldolgozási sorba helyezni a, és eltávolítása a sorból műveletek. Célja a nagy átviteli sebességű és kis késése révén a szigorú FIFO rendezése által biztosított lazítani [megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx) és a egy legjobb rendezése biztosítja.
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 Tegyük fel, hogy a feladat sikeresen befejeződött, és, hogy voltak-e a várólista módosítása egyidejű tranzakciók. A felhasználó a várólistán, a következő rendelését bármely tartalmaznia várható:
 
 > 10, 20
-
+> 
 > 20, 10
 
 
@@ -165,7 +165,7 @@ Tegyük fel, hogy elemek lettek el távolítva a sorból a következő sorrendbe
 
 A tranzakció megszakítása azt, ha az elemek kell hozzáadni vissza fejlécére, az üzenetsor, a következő rendelések egyikében:
 > 10, 20
-
+> 
 > 20, 10
 
 Ugyanez érvényes minden olyan esetben, ha a tranzakció nem volt sikeres *lekötött*.

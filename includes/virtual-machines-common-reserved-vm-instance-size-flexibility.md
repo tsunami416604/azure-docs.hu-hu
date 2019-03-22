@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 6517aec56839295af30d251f4cb5d3bb9426282c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0a8b4f9821164cca943064b20f1ec1a87981a172
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125045"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Virtuális gép mérete rugalmasan fenntartott VM-példányok
 
@@ -142,7 +142,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 |Standard_D32s_v3|16|
 |Standard_D64s_v3|32|
 
-További információkért lásd: [általános célú virtuális gépek méretei](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup).
+További információkért lásd: [általános célú virtuális gépek méretei](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-1).
 
 ## <a name="dv2-series"></a>Dv2-sorozat
 
@@ -179,7 +179,7 @@ További információkért lásd: [memóriahasználatra optimalizált virtuális
 |Standard d32 v3|16|
 |Standard_D64_v3|32|
 
-További információkért lásd: [általános célú virtuális gépek méretei](../articles/virtual-machines/windows/sizes-general.md#dv3-series-sup1sup).
+További információkért lásd: [általános célú virtuális gépek méretei](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1).
 
 ## <a name="esv3-series"></a>ESv3-sorozat
 
@@ -240,7 +240,7 @@ További információkért lásd: [számításra optimalizált virtuális gépek
 |Standard_F8s|8|
 |Standard_F16s|16|
 
-További információkért lásd: [számításra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-compute.md#fs-series-sup1sup).
+További információkért lásd: [számításra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-compute.md#fs-series-1).
 
 ## <a name="fsv2-series"></a>Fsv2-sorozat
 
@@ -254,7 +254,7 @@ További információkért lásd: [számításra optimalizált virtuális gépek
 |Standard_F64s_v2|32|
 |Standard_F72s_v2|36|
 
-További információkért lásd: [számításra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-compute.md#fsv2-series-sup1sup).
+További információkért lásd: [számításra optimalizált virtuális gépek méretei](../articles/virtual-machines/windows/sizes-compute.md#fsv2-series-1).
 
 ## <a name="h-series"></a>H-sorozat
 

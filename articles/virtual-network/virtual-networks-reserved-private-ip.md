@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: b83a6e2c81eac9993c481561e3cebbed681d2c4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096044"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan állítható be a statikus belső magánhálózati IP-cím (klasszikus) PowerShell-lel
 A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet adjon meg. Egy virtuális hálózatban lévő virtuális gépek automatikusan fog kapni a belső IP-cím megadott tartományból. De bizonyos esetekben egy adott virtuális gép által használt statikus IP-cím megadása van értelme. Ha például a virtuális gép kívánja futtatni a DNS vagy a tartományvezérlő lesz. Statikus belső IP-címet a virtuális gép akár keresztül olyan leállítása vagy megszüntetési állapotban marad. 
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a [Resource Manager üzemi modell](virtual-networks-static-private-ip-arm-ps.md).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a [Resource Manager üzemi modell](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
-## <a name="install-the-azure-powershell-service-management-module"></a>Az Azure PowerShell Service Management moduljának telepítése
+> ## <a name="install-the-azure-powershell-service-management-module"></a>Az Azure PowerShell Service Management moduljának telepítése
 
 Futtassa a következő parancsokat, előtt győződjön meg arról, hogy a [Azure PowerShell Service Management modul](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
 ) telepítve van a gépen. Azure PowerShell Service Management modul korábbi verzióinak, lásd: [Azure-modul a PowerShell-galériában](https://www.powershellgallery.com/packages/Azure/5.3.0).
@@ -110,7 +110,7 @@ A fenti szkript használatával létrehozott virtuális géphez statikus belső 
 ## <a name="next-steps"></a>További lépések
 [Fenntartott IP-cím](virtual-networks-reserved-public-ip.md)
 
-[A példányszintű nyilvános IP-Címek (ILPIP)](virtual-networks-instance-level-public-ip.md)
+[Instance-Level Public IP (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
 [Fenntartott IP-címet REST API-k](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 

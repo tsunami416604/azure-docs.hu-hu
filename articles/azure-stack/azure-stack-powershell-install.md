@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1f51aee41937c531a987482a6a367970305e6594
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4e623c6a2423d2e61334932d0c40f05e548d3c38
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109865"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Az Azure Stack PowerShell telepítése
 
@@ -218,11 +218,11 @@ Telepítés négy lépésből áll:
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
     ```
 
-    > [!NOTE]  
-    >Internetkapcsolat nélküli gépekre javasoljuk, hogy végrehajtása a következő parancsmagot a telemetriai adatok gyűjtésének letiltása. Egy, a cmldets teljesítményromlást tapasztalhat nélkül a telemetriai adatok gyűjtésének letiltása. Ez a tulajdonság csak azoknál a gépeknél internetkapcsolat nélküli vonatkozik
-    ```PowerShell
-    Disable-AzureRmDataCollection
-    ```
+    > [!NOTE]
+    > Internetkapcsolat nélküli gépekre javasoljuk, hogy végrehajtása a következő parancsmagot a telemetriai adatok gyűjtésének letiltása. Egy, a cmldets teljesítményromlást tapasztalhat nélkül a telemetriai adatok gyűjtésének letiltása. Ez a tulajdonság csak azoknál a gépeknél internetkapcsolat nélküli vonatkozik
+    > ```PowerShell
+    > Disable-AzureRmDataCollection
+    > ```
 
 ### <a name="enable-additional-storage-features"></a>További tárolási szolgáltatások engedélyezése
 

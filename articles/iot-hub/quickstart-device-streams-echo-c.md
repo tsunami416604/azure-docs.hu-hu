@@ -8,20 +8,22 @@ services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 61c1afbe6252d1feefc9bc648457ef21a57d23d5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 9355262d764d96c576e1d5ce07f22d28e7aa2c76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104937"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Egy eszköz alkalmazás a C IoT Hub eszköz adatfolyamok (előzetes verzió) használatával való kommunikáció során
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-[Az IoT Hub eszköz Streamek](./iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A nyilvános előzetes verzióban az C SDK-t csak támogatja eszköz Streamek eszköz oldalán. Ez a rövid útmutató ennek eredményeképpen csak az eszközoldali alkalmazás futtatásához útmutatást terjed ki. Futtatnia kell a hozzájuk tartozó Szolgáltatásoldali alkalmazás, amely [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy [Node.js rövid](./quickstart-device-streams-echo-nodejs.md) útmutatók.
+A Microsoft Azure IoT Hub jelenleg támogatja az eszköz adatfolyamok, mint egy [előzetes verziójú funkció](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+[Az IoT Hub eszköz Streamek](./iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. A nyilvános előzetes verzióban az C SDK-t csak támogatja eszköz Streamek eszköz oldalán. Ez a rövid útmutató ennek eredményeképpen csak az eszközoldali alkalmazás futtatásához útmutatást terjed ki. Futtatnia kell a hozzájuk tartozó Szolgáltatásoldali alkalmazás, amely a [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy [Node.js rövid](./quickstart-device-streams-echo-nodejs.md).
 
 Ebben a rövid útmutatóban az eszközoldali C alkalmazás van a következő funkciókat:
 
@@ -29,13 +31,18 @@ Ebben a rövid útmutatóban az eszközoldali C alkalmazás van a következő fu
 
 * A Szolgáltatásoldali és vissza echo által küldött adatok fogadására.
 
-Bemutatjuk, hogy a kód a kezdeményezés folyamatát egy eszköz stream, valamint hogyan küldhet és fogadhat adatokat használhatja.
+Bemutatjuk, hogy a kód egy eszköz stream, valamint hogyan használható a adatokat küldeni és fogadni a kezdeményezés folyamatán.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+* Előzetes verziójának eszköz Streamek jelenleg csak a az IoT-központok létrehozni a következő régiókban támogatott:
+
+  * **USA középső RÉGIÓJA**
+  * **USA középső RÉGIÓJA – EUAP**
 
 * Telepítse a [Visual Studio 2017](https://www.visualstudio.com/vs/)-et, amelyben engedélyezve van az [„Asztali fejlesztés C++ használatával”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) tevékenységprofil.
 * Telepítse a [Git](https://git-scm.com/download/) legújabb verzióját.
@@ -44,22 +51,23 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató céljaira a [C nyelvhez készült Azure IoT eszközoldali SDK-t](iot-hub-device-sdk-c-intro.md) fogjuk használni. A fejlesztési környezet klónozása és felépítéséhez használt előkészítésével foglalkozunk a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a Githubról. A rövid útmutató mintakódokat az SDK tartalmazza a GitHubon. 
 
-
-1. 3.11.4 verzióját töltse le a [CMake buildelési rendszert](https://cmake.org/download/). Ellenőrizze a letöltött bináris fájlt a megfelelő titkosítási kivonat értékének használatával. Az alábbi példa a Windows PowerShell használatával ellenőrizte az x64 MSI disztribúció 3.11.4-es verziójának titkosítási kivonatát:
+1. 3.13.4 verzióját töltse le a [CMake buildelési rendszert](https://cmake.org/download/). Ellenőrizze a letöltött bináris fájlt a megfelelő titkosítási kivonat értékének használatával. Az alábbi példa a kriptográfiai kivonatokat a x64 3.13.4 verziójának ellenőrzéséhez használja a Windows PowerShell MSI terjesztési:
 
     ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
     ```
     
-    A CMake webhelyén az írás időpontjában a következő kivonatolási értékek szerepelnek a 3.11.4-es verzióhoz:
+    A következő kivonatértékeket verzió 3.13.4 írásának időpontjában a CMake webhelyen felsorolt:
 
     ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
+    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
+    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
+    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
     ```
+
+    Fontos, hogy a Visual Studio Előfeltételek (Visual Studio és az "Asztali fejlesztés C++ használatával" számítási feladat) vannak-e telepítve a gépen **előtt** indítása a `CMake` telepítését. Az előfeltételek teljesülnek, és a letöltés ellenőrzése után telepítse a CMake buildelési rendszert.
 
 2. Nyisson meg egy parancssort vagy a Git Bash-felületet. A következő parancs végrehajtásával klónozza az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-adattárat:
     
@@ -77,27 +85,27 @@ A rövid útmutató céljaira a [C nyelvhez készült Azure IoT eszközoldali SD
     cd cmake
     ```
 
-4. Futtassa az alábbi parancsot, amely létrehozza az SDK fejlesztői ügyfélplatformra szabott verzióját. A Windows, a Visual Studio-megoldást a szimulált eszköz jönnek a `cmake` könyvtár. 
+4. Futtassa a következő parancsokat a `cmake` könyvtár az SDK-t a fejlesztési fejlesztésiügyfél-platformhoz konkrét verzióját.
 
-```
-    # In Linux
-    cmake ..
-    make -j
-```
+   * A Linux:
 
-A Windows a következő parancsokat a Developer-parancssorból a Visual Studio 2015 vagy 2017-es üzenet számára:
+      ```bash
+      cmake ..
+      make -j
+      ```
 
-```
-    rem In Windows
-    rem For VS2015
-    cmake .. -G "Visual Studio 15 2015"
-    
-    rem Or for VS2017
-    cmake .. -G "Visual Studio 15 2017"
+   * A Windows a következő parancsokat a fejlesztői parancssort a Visual Studio 2015 vagy 2017. A szimulált eszközhöz tartozó Visual Studio-megoldás a `cmake` könyvtárban jön létre.
 
-    rem Then build the project
-    cmake --build . -- /m /p:Configuration=Release
-```
+      ```cmd
+      rem For VS2015
+      cmake .. -G "Visual Studio 14 2015"
+
+      rem Or for VS2017
+      cmake .. -G "Visual Studio 15 2017"
+
+      rem Then build the project
+      cmake --build . -- /m /p:Configuration=Release
+      ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -132,52 +140,50 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ezt az értéket használni fogja a rövid útmutató későbbi részében.
 
-
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Eszköz és szolgáltatás keresztül eszköz adatfolyamok közötti kommunikáció
 
 ### <a name="run-the-device-side-application"></a>Az eszközoldali alkalmazás futtatása
 
 Az eszközoldali alkalmazás futtatásához, meg kell hajtsa végre az alábbi lépéseket:
-- A fejlesztési környezet beállítása a jelen szakaszban szerint [eszköz Streamek ismertető cikkben](https://github.com/Azure/azure-iot-sdk-c-tcpstreaming/blob/master/iothub_client/readme.md#compiling-the-device-sdk-for-c).
 
-- Adja meg az eszköz hitelesítő adatokat a forrás fájl szerkesztésével `iothub_client/samples/iothub_client_c2d_streaming_sample/iothub_client_c2d_streaming_sample.c` , és adja meg az eszköz kapcsolati karakterláncát.
-```C
-  /* Paste in the your iothub connection string  */
-  static const char* connectionString = "[device connection string]";
-```
+1. Adja meg az eszköz hitelesítő adatokat a forrás fájl szerkesztésével `iothub_client/samples/iothub_client_c2d_streaming_sample/iothub_client_c2d_streaming_sample.c` és biztosítják, hogy az eszköz kapcsolati karakterláncát.
 
-- A kód fordításához a következőképpen:
+   ```C
+   /* Paste in your iothub connection string  */
+   static const char* connectionString = "[device connection string]";
+   ```
 
-```
-  # In Linux
-  # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_sample
-  make -j
+2. A kód fordításához a következőképpen:
 
+   ```bash
+   # In Linux
+   # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_sample
+   make -j
+   ```
 
-  # In Windows
-  # Go to the cmake folder at the root of repo
-  cmake --build . -- /m /p:Configuration=Release
-```
+   ```cmd
+   rem In Windows
+   rem Go to the cmake folder at the root of repo
+   cmake --build . -- /m /p:Configuration=Release
+   ```
 
-- A lefordított program futtatása:
+3. A lefordított program futtatása:
 
-```
-  # In Linux
-  # Go to sample's folder
-  cmake/iothub_client/samples/iothub_client_c2d_streaming_sample
-  ./iothub_client_c2d_streaming_sample
+   ```bash
+   # In Linux
+   # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_sample
+   ./iothub_client_c2d_streaming_sample
+   ```
 
-
-  # In Windows
-  # Go to sample's release folder
-  cmake\iothub_client\samples\iothub_client_c2d_streaming_sample\Release
-  iothub_client_c2d_streaming_sample.exe
-```
+   ```cmd
+   rem In Windows
+   rem Go to the sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_sample\Release
+   iothub_client_c2d_streaming_sample.exe
+   ```
 
 ### <a name="run-the-service-side-application"></a>A Szolgáltatásoldali alkalmazás futtatása
 
-Ahogy korábban említettük, IoT Hub C SDK-t csak támogatja az eszköz Streamek eszköz oldalán. A Szolgáltatásoldali alkalmazás használja a kísérő szolgáltatás elérhető programok [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy [Node.js rövid](./quickstart-device-streams-echo-nodejs.md) útmutatók.
-
+Amint azt korábban említettük, a IoT Hub C SDK-t csak az eszközoldalon támogatja a eszköz Streamek. Alkalmazás összeállítása és futtatása a Szolgáltatásoldali, lépésekkel érhető el a [ C# rövid](./quickstart-device-streams-echo-csharp.md) vagy a [Node.js rövid](./quickstart-device-streams-echo-nodejs.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -185,7 +191,7 @@ Ahogy korábban említettük, IoT Hub C SDK-t csak támogatja az eszköz Streame
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban rendelkezik beállítása egy IoT hubot, regisztrált egy eszközt, szimulált telemetriát küldött a hubra a C alkalmazás használatával és a telemetriai adatok olvasása a hubról, az Azure Cloud Shell használatával.
+Ebben a rövid, rendelkezik állítsa be az IoT hub, regisztrált egy eszközt, egy eszköz stream a C alkalmazás az eszközön és a egy másik alkalmazás Szolgáltatásoldali között létrehozott és a stream használt oda-vissza az alkalmazások közötti adatküldéshez.
 
 További információ az eszköz adatfolyamok az alábbi hivatkozásokat:
 

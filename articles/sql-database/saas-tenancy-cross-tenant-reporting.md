@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 39ff70670d628ca672022b84e59ed3cc8a17d925
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447022"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096027"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Bérlők közötti jelentéskészítés használatával az elosztott lekérdezések
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban, elosztott lekérdezések futtatása a bérlő teljes k
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-
+> 
 > * Hogyan helyezhet üzembe egy jelentési adatbázis
 > * Elosztott lekérdezések futtatása az összes bérlői adatbázison
 > * Hogyan globális nézetek az egyes adatbázisok engedélyezheti a hatékonyabb lekérdezés érdekében bérlőn
@@ -148,7 +148,7 @@ Most, hogy a *adhocreporting* adatbázis állított be, lépjen tovább, és egy
 
 A végrehajtási terv vizsgálatával, amikor a kurzort a csomag ikonokat részleteiről. 
 
-Fontos megjegyezni, akkor ez a beállítás **TERJESZTÉSI = SHARDED(VenueId)** mikor van definiálva a külső adatforrás javítja a teljesítményt, számos forgatókönyv esetében. Mivel minden egyes *VenueId* egy önálló adatbázis leképezések, szűrés könnyedén elvégezhető távolról, csak a szükséges adatokat ad vissza.
+Fontos megjegyezni, akkor ez a beállítás **TERJESZTÉSI = SHARDED(VenueId)** mikor van definiálva a külső adatforrás javítja a teljesítményt, számos forgatókönyv esetében. Mivel minden egyes *VenueId* az egyes adatbázisok leképezések, szűrés könnyedén elvégezhető távolról, csak a szükséges adatokat ad vissza.
 
 1. Nyissa meg... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReportingQueries.sql* az ssms-ben.
 2. Győződjön meg arról, hogy csatlakozik az **adhocreporting** adatbázis.
@@ -181,7 +181,7 @@ Fontos megjegyezni, akkor ez a beállítás **TERJESZTÉSI = SHARDED(VenueId)** 
 Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
-
+> 
 > * Elosztott lekérdezések futtatása az összes bérlői adatbázison
 > * Jelentéskészítési adatbázis üzembe helyezése, és adja meg a séma, elosztott lekérdezések futtatásához szükséges.
 

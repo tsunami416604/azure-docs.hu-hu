@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556976"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116181"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Oktatóanyag: Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető Üzletiintelligencia-eszközök, egy [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozzon létre Üzletiintelligencia-eszközök a Power BI kimenetként a az Azure Stream Analytics-feladatokhoz. Azt is megtudhatja, hogyan hozhat létre és használhat a valós idejű irányítópultok.
@@ -56,16 +56,16 @@ A csalások valós idejű észlelése az oktatóanyagban a kimeneti küld az Azu
 
 7. Amikor visszatér a **új kimenet** panelen adja meg a következőket:
 
-    * **A csoport munkaterület**: Válasszon ki egy munkaterületet, ahol szeretné létrehozni az adatkészletet a Power BI bérlőben.
-    * **Adatkészlet neve**:  Írja be a `sa-dataset` (igen) kifejezést. Más nevet is használhat. Ha így tesz, győződjön meg arról, jegyezze fel későbbi használatra.
-    * **Tábla neve**: Írja be a `fraudulent-calls` (igen) kifejezést. A Stream Analytics-feladatok a Power BI-kimenet jelenleg csak egy tábla egy adatkészlet rendelkezhet.
+   * **A csoport munkaterület**: Válasszon ki egy munkaterületet, ahol szeretné létrehozni az adatkészletet a Power BI bérlőben.
+   * **Adatkészlet neve**:  Írja be a `sa-dataset` (igen) kifejezést. Más nevet is használhat. Ha így tesz, győződjön meg arról, jegyezze fel későbbi használatra.
+   * **Tábla neve**: Írja be a `fraudulent-calls` (igen) kifejezést. A Stream Analytics-feladatok a Power BI-kimenet jelenleg csak egy tábla egy adatkészlet rendelkezhet.
 
-    ![A Power BI-munkaterület adatkészletet és táblázat](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+     ![A Power BI-munkaterület adatkészletet és táblázat](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
-    > [!WARNING]
-    > Ha a Power BI egy adatkészletet és egy táblázatot, amely azokat a Stream Analytics-feladatban megadott nevével megegyező nevet kell, felülírják a már meglévőket.
-    > Azt javasoljuk, hogy ne explicit módon hozzon létre ezzel az adatkészlettel és táblát a Power BI-fiókjában. Ezek automatikusan jönnek létre a Stream Analytics-feladat indítása és a feladat kimeneti szivattyútelepek elindítja a Power BI-bA. A feladat lekérdezés nem ad vissza eredményt, ha az adatkészlet és a táblázat nem jönnek létre.
-    >
+     > [!WARNING]
+     > Ha a Power BI egy adatkészletet és egy táblázatot, amely azokat a Stream Analytics-feladatban megadott nevével megegyező nevet kell, felülírják a már meglévőket.
+     > Azt javasoljuk, hogy ne explicit módon hozzon létre ezzel az adatkészlettel és táblát a Power BI-fiókjában. Ezek automatikusan jönnek létre a Stream Analytics-feladat indítása és a feladat kimeneti szivattyútelepek elindítja a Power BI-bA. A feladat lekérdezés nem ad vissza eredményt, ha az adatkészlet és a táblázat nem jönnek létre.
+     >
 
 8. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -189,13 +189,13 @@ A Streaming Analytics-feladat elindul, a bejövő streamet a csaló hívások ke
     * Adjon meg egy értéket, és válassza a **fraudulentcalls** lehetőséget.
     * A **Megjelenítendő időtartomány** beállításnál válassza ki az utolsó 10 percet.
 
-    ![Vonaldiagram tartalmazó csempe létrehozása a Power bi-ban](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Vonaldiagram tartalmazó csempe létrehozása a Power bi-ban](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. Kattintson a **tovább**, cím és alcím hozzáadása, és kattintson a **alkalmaz**.
 
-    A Power BI-irányítópult mostantól lehetővé teszi az adatok kétféle nézetét kapcsolatos csaló hívásokat a streamelt adatokat az észlelt.
+     A Power BI-irányítópult mostantól lehetővé teszi az adatok kétféle nézetét kapcsolatos csaló hívásokat a streamelt adatokat az észlelt.
 
-    ![Befejeződött a rosszindulatú hívások két csempét megjelenítő Power BI-irányítópult](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Befejeződött a rosszindulatú hívások két csempét megjelenítő Power BI-irányítópult](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>További információ a Power BI szolgáltatásról

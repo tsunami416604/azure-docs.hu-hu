@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/18/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: bb9e5ba960251f728e14106ab1c586e1d3ef373f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 33f1ccf3f1c7bc657cc66efe7c5025356c954ad6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538646"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187761"
 ---
 # <a name="asdk-release-notes"></a>ASDK kibocsátási megjegyzései
 
@@ -30,9 +30,11 @@ What's new in a ASDK való feliratkozással vétele a [ ![RSS](./media/asdk-rele
 
 ## <a name="build-11902069"></a>1.1902.0.69 összeállítása
 
-### <a name="changes"></a>Módosítások
+### <a name="new-features"></a>Új funkciók
 
 - A 1902 build vezet be az Azure Stack rendszergazdai portál csomagok, ajánlatok, kvóták és kiegészítő csomagok létrehozására szolgáló új felhasználói felületet. További információk, többek között a képernyőképek: [csomagok, ajánlatok és kvóták létrehozása](../azure-stack-create-plan.md).
+
+- Az egyéb módosítások és fejlesztések azzal kapcsolatban, ebben a kiadásban, lásd: [ebben a szakaszban](../azure-stack-update-1902.md#improvements) az Azure Stack a kibocsátási megjegyzéseket.
 
 <!-- ### New features
 
@@ -42,6 +44,20 @@ What's new in a ASDK való feliratkozással vétele a [ ![RSS](./media/asdk-rele
 
 - For a list of issues fixed in this release, see [this section](../azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1902.md#known-issues-post-installation).
 - Note that [available Azure Stack hotfixes](../azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
+
+### <a name="known-issues"></a>Ismert problémák
+
+- Hibát talált, amelyben a csomagok több mint 1450 bájt egy belső Load Balancer (ILB), a rendszer elveti. A probléma okozza a gazdagépen, hogy túl alacsony, hogy megfeleljen a szerepkört, amely 1901 től került, a gazdagép áthaladó VXLAN beágyazású csomagok MTU-beállítását. Legalább két forgatókönyv közül választhat, amelyek akkor fordulhatnak, amelyben úgy találtuk, manifest magát a probléma:
+
+  - SQL-lekérdezéseket az SQL Always-On, amely egy belső Load Balancer (ILB) mögött, és több mint 660 bájt.
+  - Kubernetes üzembe helyezések meghiúsulnak, ha több főkiszolgálót engedélyezését.  
+
+  A probléma akkor fordul elő, ha egy virtuális Gépet és a egy ILB közötti kommunikáció az azonos virtuális hálózatba, de különböző alhálózatokon. A probléma megkerüléséhez az alábbi parancsokat egy rendszergazda jogú parancssorban a ASDK gazdagépen futó:
+
+  ```shell
+  netsh interface ipv4 set sub "hostnic" mtu=1660
+  netsh interface ipv4 set sub "management" mtu=1660
+  ```
 
 ## <a name="build-11901095"></a>1.1901.0.95 összeállítása
 

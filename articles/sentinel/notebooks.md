@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 83bbb7f6a683265e4f2ed20801d0c7541a54e9f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 63ce2be847017ed7e80fe5e573d5553311f6af2f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244961"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107678"
 ---
 # <a name="use-notebooks-to-hunt-for-anomalies"></a>Az anomáliák hunt notebookok használata
 
@@ -48,15 +48,15 @@ A következő példában azt a jegyzetfüzet futtatásához használja beépíte
   
    ![notebook kiválasztása](./media/notebooks/select-notebook.png)
 
-3.  Kattintson a **importálás** , klónozza a GitHub-adattárat a Azure notebookok projektbe.
-  ![Importálás notebook](./media/notebooks/import1.png)
-4.  Minden egyes notebook végigvezeti egy hunt vagy egy vizsgálatot hajt végre a lépéseket. Modellek, könyvtárak, és más függőségek és a konfiguráció a csatlakozást az Azure-Sentinel automatikusan importált egykattintásos végrehajtásának engedélyezéséhez. Kód és a egy Jegyzetfüzet futtatásához szükséges kódtárakat a rendszer előre betölti. Azonnal megkezdheti a jegyzetfüzet futtat a Log Analytics-munkaterület konfiguráció nélkül.
+3. Kattintson a **importálás** , klónozza a GitHub-adattárat a Azure notebookok projektbe.
+   ![Importálás notebook](./media/notebooks/import1.png)
+4. Minden egyes notebook végigvezeti egy hunt vagy egy vizsgálatot hajt végre a lépéseket. Modellek, könyvtárak, és más függőségek és a konfiguráció a csatlakozást az Azure-Sentinel automatikusan importált egykattintásos végrehajtásának engedélyezéséhez. Kód és a egy Jegyzetfüzet futtatásához szükséges kódtárakat a rendszer előre betölti. Azonnal megkezdheti a jegyzetfüzet futtat a Log Analytics-munkaterület konfiguráció nélkül.
 
    ![Tárház importálása](./media/notebooks/import2.png)
 
-5.  Ismerje meg, módosítása és a megadott minta jegyzetfüzetek futtatása. Ezek használhatók kielégítésének számos különböző forgatókönyvekhez.
+5. Ismerje meg, módosítása és a megadott minta jegyzetfüzetek futtatása. Ezek használhatók kielégítésének számos különböző forgatókönyvekhez.
 
-  ![notebook kiválasztása](./media/notebooks/import3.png)
+   ![notebook kiválasztása](./media/notebooks/import3.png)
 
 
 

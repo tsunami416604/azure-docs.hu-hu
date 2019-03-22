@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197042"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099627"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Üzembe helyezése az Azure AD-alkalmazásproxy a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure Active Directory (AD) alkalmazásproxy segítségével támogatja a távoli dolgozók tegye közzé a helyszíni alkalmazások számára az interneten keresztül érhető el. Az Azure AD tartományi szolgáltatásokat most lift-and-shift régi alkalmazásait az Azure infrastruktúra-szolgáltatások a helyszínen futó segítségével. Ezután közzéteheti ezeket az alkalmazásokat az Azure AD-alkalmazásproxy segítségével biztonságos távoli hozzáférést biztosít a felhasználók számára a szervezetben.
@@ -75,12 +75,12 @@ Korábban a Windows Server virtuális gép kiépítése, és azt a felügyelt ta
 
     ![Telepítse a feltételek elfogadása](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. A telepítés során kell megadnia az összekötő regisztrálására az Azure AD Directory alkalmazásproxyjával.
-    * Adja meg a **az Azure AD globális rendszergazdai hitelesítő adatokkal**. A globális rendszergazdai bérlő adatai eltérhetnek a Microsoft Azure rendszerre vonatkozó hitelesítő adatoktól.
-    * Ugyanabban a könyvtárban, ahol az alkalmazásproxy szolgáltatás engedélyezve van a rendszergazdai fiókhoz az összekötő regisztrálására használni kell tartoznia. Ha például a bérlő tartománya a contoso.com, a rendszergazdának kell lennie admin@contoso.com vagy más érvényes alias abban a tartományban.
-    * Ha az Internet Explorer – fokozott biztonsági beállítások be van kapcsolva a kiszolgálón az összekötőt telepíti, a regisztrációs képernyő hozzáférése. Engedélyezi a hozzáférést, kövesse az utasításokat a hibaüzenetben. Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági beállításai ki vannak kapcsolva.
-    * Ha az összekötő regisztrálása meghiúsul, tekintse meg a [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Alkalmazásproxy hibaelhárítása) című anyagot.
+   * Adja meg a **az Azure AD globális rendszergazdai hitelesítő adatokkal**. A globális rendszergazdai bérlő adatai eltérhetnek a Microsoft Azure rendszerre vonatkozó hitelesítő adatoktól.
+   * Ugyanabban a könyvtárban, ahol az alkalmazásproxy szolgáltatás engedélyezve van a rendszergazdai fiókhoz az összekötő regisztrálására használni kell tartoznia. Ha például a bérlő tartománya a contoso.com, a rendszergazdának kell lennie admin@contoso.com vagy más érvényes alias abban a tartományban.
+   * Ha az Internet Explorer – fokozott biztonsági beállítások be van kapcsolva a kiszolgálón az összekötőt telepíti, a regisztrációs képernyő hozzáférése. Engedélyezi a hozzáférést, kövesse az utasításokat a hibaüzenetben. Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági beállításai ki vannak kapcsolva.
+   * Ha az összekötő regisztrálása meghiúsul, tekintse meg a [Troubleshoot Application Proxy](../active-directory/manage-apps/application-proxy-troubleshoot.md) (Alkalmazásproxy hibaelhárítása) című anyagot.
 
-    ![Összekötő telepítve van](./media/app-proxy/app-proxy-connector-installed.png)
+     ![Összekötő telepítve van](./media/app-proxy/app-proxy-connector-installed.png)
 4. Ahhoz, hogy az összekötő működik megfelelően, az Azure AD Application Proxy Connector hibaelhárító futtatásához. Sikeres jelentés a hibaelhárító futtatása után kell megjelennie.
 
     ![Hibaelhárító sikeres](./media/app-proxy/app-proxy-connector-troubleshooter.png)

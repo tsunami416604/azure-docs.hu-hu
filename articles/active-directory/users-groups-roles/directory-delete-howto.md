@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dffcfe7c4c892976a61272a2217226f512b70ed
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 833c2e460ae306a7673e580aaa304be93c3cd044
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542556"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199732"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő törlése
+
 A bérlő törlése esetén a bérlőn található összes erőforrás is törlődik. Elő kell készítenie a bérlő törlése előtt az összes kapcsolódó erőforrás termékeikkel. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölheti az Azure AD-bérlő a portálról.
 
 ## <a name="prepare-the-tenant-for-deletion"></a>A bérlő előkészítése törléshez
@@ -39,13 +40,13 @@ Egy bérlő az Azure AD, amíg nem adja át, több ellenőrzést nem törölhet�
 
 2. Válassza az **Azure Active Directory** elemet.
 
-3. Kapcsoló törölni kívánt bérlőhöz.
+3. Váltson a szervezet törli.
   
-  ![gomb könyvtár törlése](./media/directory-delete-howto/delete-directory-command.png)
+   ![Erősítse meg a szervezet törlése előtt](./media/directory-delete-howto/delete-directory-command.png)
 
 4. Válassza ki **Delete directory**.
   
-  ![gomb könyvtár törlése](./media/directory-delete-howto/delete-directory-list.png)
+   ![Válassza ki a parancs törli a szervezet](./media/directory-delete-howto/delete-directory-list.png)
 
 5. Ha a bérlő nem felel meg egy vagy több ellenőrzés, hogyan adhatók át a további információkra mutató hivatkozást tartalmazó már megadott. Után át kell adnia az összes ellenőrzés, jelölje be az **törlése** a folyamat befejezéséhez.
 
@@ -57,10 +58,10 @@ Mire számítson, ha az Office 365 próba-előfizetés lejárt (nem fizetős Par
 
 Előfizetés állapota | Adatok | Adatokhoz való hozzáférés
 ----- | ----- | -----
-Aktív (próbaverzió 30 nap)  | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>Rendszergazdák rendelkeznek Office 365 felügyeleti központ és az erőforrásokhoz való hozzáférési 
-Lejárt (30 nap)   | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>Rendszergazdák rendelkeznek Office 365 felügyeleti központ és az erőforrásokhoz való hozzáférési
-Le van tiltva (30 nap) | Csak rendszergazda számára elérhető adatok  | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák az Office 365 felügyeleti központ eléréséhez, de nem szükséges licencek kiosztása vagy felhasználók frissítése
-Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák hozzáférhetnek az Office 365 felügyeleti központban vásárolhat és más előfizetések kezelése 
+Aktív (próbaverzió 30 nap)  | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák normál hozzáférhet a Microsoft 365 felügyeleti központot és erőforrások 
+Lejárt (30 nap)   | Az összes elérhető adat    | <li>Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák normál hozzáférhet a Microsoft 365 felügyeleti központot és erőforrások
+Le van tiltva (30 nap) | Csak rendszergazda számára elérhető adatok  | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák a Microsoft 365 felügyeleti központ eléréséhez, de nem szükséges licencek kiosztása vagy felhasználók frissítése
+Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | <li>Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<li>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központban vásárolhat és más előfizetések kezelése 
 
 ## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Töröl egy előfizetést a Microsoft 365 felügyeleti központban
 
@@ -70,17 +71,18 @@ Az előfizetés helyezheti egy **Deprovisoned** állapotban a Microsoft 365 fel�
 
 2. Nyissa meg a **számlázási** lapot, és válasszon **termékek és szolgáltatások**, majd válassza ki az előfizetést, szeretné visszavonni. Miután rákattintott **Mégse**, frissítse az oldalt.
   
-  ![Előfizetés törlése a hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
+   ![Előfizetés törlése a hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
   
 3. Válassza ki **törlése** törölni az előfizetést, és fogadja el a feltételeket és kikötéseket. Összes adat véglegesen törlődik a három napon belül. Ha megváltoztatja döntését újraaktiválhatja az előfizetés a 3 napos időszakban.
   
-  ![feltételek és kikötések](./media/directory-delete-howto/delete-terms.png)
+   ![Figyelmesen olvassa el a használati feltételek](./media/directory-delete-howto/delete-terms.png)
 
 4. Most az előfizetés állapota megváltozott, az előfizetés törlésre van kijelölve. Az előfizetés beírja a **megszüntetett** állapot 72 óra múlva.
 
 5. Után a bérlő, a törölt egy előfizetést, és 72 óra telt, jelentkezhet be az Azure AD felügyeleti központ biztonsági újra, és ott kell lennie nincs szükség művelet, és nem blokkolja-e a bérlő törlése előfizetések. Sikerült törölni az Azure AD-bérlő tudni kell lennie.
   
-  ![át, törlés képernyő előfizetés ellenőrzése](./media/directory-delete-howto/delete-checks-passed.png)
+   ![át, törlés képernyő előfizetés ellenőrzése](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>További lépések
+
 [Az Azure Active Directory-dokumentáció](https://docs.microsoft.com/azure/active-directory/)

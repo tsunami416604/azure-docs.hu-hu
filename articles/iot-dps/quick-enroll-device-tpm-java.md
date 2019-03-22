@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ae1fbd93b26838b262dc6f07081f20b63e853d5c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184661"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104743"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
 
@@ -65,53 +65,53 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 
 2. A letöltött forráskódban lépjen az **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_** mintamappára. Nyissa meg a **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** fájlt egy tetszőleges szövegszerkesztőben, és adja hozzá az alábbi adatokat:
 
-    1. Adja hozzá a `[Provisioning Connection String]` karakterláncot a kiépítési szolgáltatáshoz a portálról:
-        1. Az [Azure Portalon](https://portal.azure.com) lépjen a kiépítési szolgáltatásra. 
-        2. Nyissa meg a **Megosztott elérési szabályzatok** panelt, és válasszon ki egy szabályzatot, amely rendelkezik az *EnrollmentWrite* engedéllyel.
-        3. Másolja ki az **elsődleges kulcs kapcsolati sztringjét**. 
+   1. Adja hozzá a `[Provisioning Connection String]` karakterláncot a kiépítési szolgáltatáshoz a portálról:
+       1. Az [Azure Portalon](https://portal.azure.com) lépjen a kiépítési szolgáltatásra. 
+       2. Nyissa meg a **Megosztott elérési szabályzatok** panelt, és válasszon ki egy szabályzatot, amely rendelkezik az *EnrollmentWrite* engedéllyel.
+       3. Másolja ki az **elsődleges kulcs kapcsolati sztringjét**. 
 
-            ![A kiépítési kapcsolati sztring lekérése a portálról](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
+           ![A kiépítési kapcsolati sztring lekérése a portálról](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-        4. A **_ServiceEnrollmentSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` sztringet az **elsődleges kulcs kapcsolati sztringjére**.
+       4. A **_ServiceEnrollmentSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` sztringet az **elsődleges kulcs kapcsolati sztringjére**.
     
-            ```Java
-            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
-            ```
+           ```Java
+           private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
+           ```
 
-    2. Adja meg a TPM-eszköz adatait:
-        1. Kérje le a *Regisztrációs azonosítót* és a *TPM ellenőrzőkulcsát* egy TPM-eszközszimulációhoz a [TPM-eszköz szimulálása](quick-create-simulated-device.md#simulatetpm) című szakaszhoz vezető lépések alapján.
-        2. Cserélje le a **_ServiceEnrollmentSample.java_** mintakódfájl `[RegistrationId]` és `[TPM Endorsement Key]` értékét az előző lépés kimenetéből származó **_Regisztrációs azonosító_** és **_Ellenőrzőkulcs_** értékekre:
+   2. Adja meg a TPM-eszköz adatait:
+       1. Kérje le a *Regisztrációs azonosítót* és a *TPM ellenőrzőkulcsát* egy TPM-eszközszimulációhoz a [TPM-eszköz szimulálása](quick-create-simulated-device.md#simulatetpm) című szakaszhoz vezető lépések alapján.
+       2. Cserélje le a **_ServiceEnrollmentSample.java_** mintakódfájl `[RegistrationId]` és `[TPM Endorsement Key]` értékét az előző lépés kimenetéből származó **_Regisztrációs azonosító_** és **_Ellenőrzőkulcs_** értékekre:
         
+           ```Java
+           private static final String REGISTRATION_ID = "[RegistrationId]";
+           private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+           ```
+
+   3. Ha szeretné, a kiépítési szolgáltatást a mintakódon keresztül is konfigurálhatja:
+      - A konfiguráció mintához való hozzáadásához kövesse az alábbi lépéseket:
+        1. Az [Azure Portalon](https://portal.azure.com) lépjen a kiépítési szolgáltatáshoz csatolt IoT Hubra. Nyissa meg a hubhoz tartozó **Áttekintés** lapot, és másolja ki az **Eszköznév** értékét. Rendelje hozzá ezt az **Eszköznév** értéket az *IOTHUB_HOST_NAME* paraméterhez.
             ```Java
-            private static final String REGISTRATION_ID = "[RegistrationId]";
-            private static final String TPM_ENDORSEMENT_KEY = "[TPM Endorsement Key]";
+            private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
             ```
-
-    3. Ha szeretné, a kiépítési szolgáltatást a mintakódon keresztül is konfigurálhatja:
-        - A konfiguráció mintához való hozzáadásához kövesse az alábbi lépéseket:
-            1. Az [Azure Portalon](https://portal.azure.com) lépjen a kiépítési szolgáltatáshoz csatolt IoT Hubra. Nyissa meg a hubhoz tartozó **Áttekintés** lapot, és másolja ki az **Eszköznév** értékét. Rendelje hozzá ezt az **Eszköznév** értéket az *IOTHUB_HOST_NAME* paraméterhez.
-                ```Java
-                private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
-                ```
-            2. Rendeljen egy könnyen megjegyezhető nevet a *DEVICE_ID* paraméterhez, és a *PROVISIONING_STATUS* paraméternél tartsa meg az alapértelmezett *ENABLED* értéket. 
+        2. Rendeljen egy könnyen megjegyezhető nevet a *DEVICE_ID* paraméterhez, és a *PROVISIONING_STATUS* paraméternél tartsa meg az alapértelmezett *ENABLED* értéket. 
     
-        - VAGY, ha úgy dönt, hogy nem konfigurálja a kiépítési szolgáltatást, tegye megjegyzésbe vagy törölje a _ServiceEnrollmentSample.java_ fájl alábbi utasításait:
-            ```Java
-            // The following parameters are optional. Remove it if you don't need.
-            individualEnrollment.setDeviceId(DEVICE_ID);
-            individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
-            individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
-            ```
+      - VAGY, ha úgy dönt, hogy nem konfigurálja a kiépítési szolgáltatást, tegye megjegyzésbe vagy törölje a _ServiceEnrollmentSample.java_ fájl alábbi utasításait:
+          ```Java
+          // The following parameters are optional. Remove it if you don't need.
+          individualEnrollment.setDeviceId(DEVICE_ID);
+          individualEnrollment.setIotHubHostName(IOTHUB_HOST_NAME);
+          individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
+          ```
 
-    4. Tanulmányozza a mintakódot. Ez a kód egyéni TPM-eszközregisztrációt hoz létre, frissít, kérdez le és töröl. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a _ServiceEnrollmentSample.java_ fájl végén található alábbi kódsorokat:
+   4. Tanulmányozza a mintakódot. Ez a kód egyéni TPM-eszközregisztrációt hoz létre, frissít, kérdez le és töröl. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a _ServiceEnrollmentSample.java_ fájl végén található alábbi kódsorokat:
     
-        ```Java
-        // *********************************** Delete info of individualEnrollment ************************************
-        System.out.println("\nDelete the individualEnrollment...");
-        provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
-        ```
+       ```Java
+       // *********************************** Delete info of individualEnrollment ************************************
+       System.out.println("\nDelete the individualEnrollment...");
+       provisioningServiceClient.deleteIndividualEnrollment(REGISTRATION_ID);
+       ```
 
-    5. Mentse a _ServiceEnrollmentSample.java_ fájlt.
+   5. Mentse a _ServiceEnrollmentSample.java_ fájlt.
 
 <a id="runjavasample"></a>
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 11/27/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 875548b8277e50ccb813cf6b36541a053abdbb70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: MT
+ms.openlocfilehash: c91fa2c269b507988d2bdefcd2882b2ab55fec35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094865"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
@@ -51,6 +51,8 @@ Mielőtt elkezdené, érdemes áttekinteni a [VMware és fizikai kiszolgálók m
 Windows Server 2008 vagy Windows Server 2008 R2 rendszerű Hyper-V virtuális gépek migrálásához kövesse a [Helyszíni gépek migrálása az Azure-ba](migrate-tutorial-on-premises-azure.md) című oktatóanyag lépéseit.
 
 Ez az oktatóanyag a továbbiakban a Windows Server 2008 vagy 2008 R2 rendszert futtató, helyszíni VMware virtuális gépek és fizikai kiszolgálók migrálásának módját mutatja be.
+> [!TIP]
+> VMware virtuális gépek áttelepítése az Azure-bA az ügynök nélküli kivételfigyelés megoldást keres? [Kattintson ide](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák

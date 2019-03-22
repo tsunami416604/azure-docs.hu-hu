@@ -10,12 +10,12 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 4436fc3c1bec4cdb8e301edd185f4416c931e24f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b7532dc910fae84733c04d4e16ac93a5cd0f11c8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456499"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097906"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -153,7 +153,7 @@ Ez csak helyi fejlesztési vonatkozik. Telepítésekor a megoldás az Azure-ba, 
 
 Amikor futtatja a kódot egy Azure App Service-ben vagy egy Azure virtuális Gépen engedélyezve van egy felügyelt identitás, a tár automatikusan használja a felügyelt identitás. Kódmódosítás nélkül szükség. 
 
-Azt is megteheti előfordulhat, hogy a hitelesítést egy felhasználó által hozzárendelt identitással. További információ a felhasználó által hozzárendelt identitások: [kapcsolatos felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka). A kapcsolati karakterlánc szerepel a [kapcsolati karakterlánc támogatási](#connection-string-support) szakaszt.
+Azt is megteheti előfordulhat, hogy a hitelesítést egy felhasználó által hozzárendelt identitással. További információ a felhasználó által hozzárendelt identitások: [kapcsolatos felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work). A kapcsolati karakterlánc szerepel a [kapcsolati karakterlánc támogatási](#connection-string-support) szakaszt.
 
 ## <a name="running-the-application-using-a-service-principal"></a>Egyszerű szolgáltatás használatával az alkalmazás futtatása 
 
@@ -212,7 +212,7 @@ A következő beállítások támogatottak:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | AzureServiceTokenProvider uses Visual Studio to get token. |
 | `RunAs=CurrentUser` | Helyi fejlesztés | AzureServiceTokenProvider beszerezni a jogkivonatot az Azure AD integrált hitelesítést használ. |
 | `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider egy felügyelt identitás használatával szerezze be a tokent. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka) | AzureServiceTokenProvider egy felhasználó által hozzárendelt identitás használatával szerezze be a tokent. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider egy felhasználó által hozzárendelt identitás használatával szerezze be a tokent. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Szolgáltatásnév | `AzureServiceTokenProvider` a tanúsítványt használja, szerezze be a tokent az Azure ad-ből. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítványt használ, szerezze be a tokent az Azure ad-ből|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Szolgáltatásnév |`AzureServiceTokenProvider` titkos kulcs használatával szerezze be a tokent az Azure ad-ből. |

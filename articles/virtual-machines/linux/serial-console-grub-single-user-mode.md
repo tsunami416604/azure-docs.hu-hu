@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810082"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111888"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
 Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
@@ -172,7 +172,7 @@ SLES GRUB-hozzáféréshez YaST rendszerbetöltőt konfiguráció szükséges. E
 1. Keresse meg a kernel sor azt kezdődik `linux`
 1. Hozzáfűzés `systemd.unit=emergency.target` a sor végére
 1. Indítsa újra ezeket a beállításokat, és írja be a vészhelyzeti rendszerhéj a Ctrl + X
-> Vegye figyelembe, hogy azt a rendszer eldobja a vészhelyzeti shellbe egy _csak olvasható_ fájlrendszer. Ha azt szeretné, hogy módosítani szeretné a fájlokat, szüksége lesz az olvasási és írási engedélyekkel fájlrendszer újbóli csatlakoztatásához. Ehhez adja meg a `mount -o remount,rw /` a rendszerhéjba van beépítve
+   > Vegye figyelembe, hogy azt a rendszer eldobja a vészhelyzeti shellbe egy _csak olvasható_ fájlrendszer. Ha azt szeretné, hogy módosítani szeretné a fájlokat, szüksége lesz az olvasási és írási engedélyekkel fájlrendszer újbóli csatlakoztatásához. Ehhez adja meg a `mount -o remount,rw /` a rendszerhéjba van beépítve
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux-hozzáférés
 Sokkal például a Red Hat Enterprise Linux, az Oracle Linux egyfelhasználós üzemmódban szükséges grub-HIBÁT, és a gyökér szintű felhasználó engedélyezni kell. 

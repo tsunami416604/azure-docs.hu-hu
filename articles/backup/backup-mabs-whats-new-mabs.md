@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: 01709bf7bdf4812802ab983729cc628101810f43
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5718064994a80266c216ae6040746be29194adc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869619"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108916"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>What's new in Microsoft Azure Backup Server
 
@@ -54,7 +54,7 @@ További információ a telepítési/frissítési lépések MABS keresés [Itt](
 
 
 > [!NOTE]
-
+> 
 > MABS alap, a System Center Data Protection Manager ugyanazt a kódot tartalmaz. Data Protection Manager 1807 MABS v3 megegyezik.
 
 ## <a name="next-steps"></a>További lépések

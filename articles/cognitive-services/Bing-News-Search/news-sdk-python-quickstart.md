@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 4b4706baa5148bba955a980b6184e0747f023066
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1d6f4bb2bda550c72566243b2d2d98b1685e9147
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119802"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Gyors útmutató: Hajtsa végre a hírkeresési Bing News Search SDK-val a Pythonhoz
 
@@ -86,4 +86,4 @@ else:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-[Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

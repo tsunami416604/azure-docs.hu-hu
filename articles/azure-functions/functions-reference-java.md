@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 14a9e369f3366fc103cde2f0faafb570de409de7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096724"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -391,6 +391,6 @@ Azure-függvény Java-fejlesztésekhez kapcsolatos további információkért l�
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
-- Helyi fejlesztés és a hibakeresési [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), és [Eclipse](functions-create-maven-eclipse.md). 
+* Helyi fejlesztés és a hibakeresési [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), és [Eclipse](functions-create-maven-eclipse.md). 
 * [Távoli hibakeresés Java az Azure Functions Visual Studio Code-dal](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
 * [Maven beépülő modul az Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) -függvény létrehozása révén egyszerűsíthetők a `azure-functions:add` cél és a egy átmeneti könyvtárat a előkészítése [ZIP fájl központi telepítési](deployment-zip-push.md).

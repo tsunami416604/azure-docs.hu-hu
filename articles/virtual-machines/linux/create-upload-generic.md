@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235972"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105522"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Információk a által támogatott Disztribúciók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -144,10 +144,10 @@ Ha egy egyéni kernel szükség, azt javasoljuk egy újabb rendszermag-verzió (
 A következő javításokat a kernel kell szerepelnie. Ez a lista nem lehet minden disztribúcióján használhatók befejeződött.
 
 * [ata_piix: alapértelmezés szerint a Hyper-V illesztőprogramok lemezek késleltetése](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc: fiók számára az átvitel közbeni csomagokat a VISSZAÁLLÍTÁSI elérési úton](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc: A VISSZAÁLLÍTÁSI elérési úton átvitel csomagok fiók](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc: WRITE_SAME használatának elkerülése](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc: RAID és a virtuális gazdagép adapter illesztőprogramjai azonos írási letiltása](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc: NULL mutató visszakeresési javítás](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: A RAID és a virtuális gazdagép adapter illesztőprogramjai azonos írási letiltása](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc: NULL értékű mutató visszakeresési javítás](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc: kör puffer hibákat eredményezhet i/o-rögzíteni](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs: dupla végrehajtásának __scsi_remove_device elleni védelem](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
@@ -172,13 +172,13 @@ A [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` látja el az Az
     ```
     Grafikus és a csendes rendszerindító nem hasznos a felhőalapú környezetekben, ahol szeretnénk a soros port küldött az összes napló. A `crashkernel` beállítás lehet, hogy a bal oldalon szükség esetén konfigurálva, de vegye figyelembe, hogy ez a paraméter csökkenti a virtuális gépen legalább 128 MB, esetleg problémát észlel, kisebb Virtuálisgép-méretek szerint rendelkezésre álló memória mennyisége.
 
-2. Az Azure Linux-ügynök telepítése.
+1. Az Azure Linux-ügynök telepítése.
   
     Az Azure Linux-ügynök üzembe helyezés az Azure-on Linux-rendszerképen megadása kötelező.  Terjesztések csomagként az RPM- vagy Deb (a csomag neve általában WALinuxAgent vagy walinuxagent) adja meg az ügynök.  Az ügynök emellett manuálisan is telepíthető a lépéseket követve a [Linux-ügynök útmutató](../extensions/agent-linux.md).
 
-3. Győződjön meg arról, hogy az SSH-kiszolgáló van telepítve, és rendszerindítás közben beállítva.  Ez a konfiguráció általában az alapértelmezett érték.
+1. Győződjön meg arról, hogy az SSH-kiszolgáló van telepítve, és rendszerindítás közben beállítva.  Ez a konfiguráció általában az alapértelmezett érték.
 
-4. Lapozófájl-kapacitás az operációsrendszer-lemez ne hozzon létre.
+1. Lapozófájl-kapacitás az operációsrendszer-lemez ne hozzon létre.
   
     Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. A helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Miután telepítette az Azure Linux-ügynök (2. lépés fent), szükség szerint módosítsa a következő paramétereket lévő /etc/waagent.conf.
     ```  
@@ -188,15 +188,15 @@ A [Azure Linux-ügynök](../extensions/agent-linux.md) `waagent` látja el az Az
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: Set this to your desired size.
     ```
-* Futtassa az alábbi parancsokat a virtuális gép megszüntetéséhez.
+1. Futtassa az alábbi parancsokat a virtuális gép megszüntetéséhez.
   
-    ```
-    sudo waagent -force -deprovision
-    export HISTSIZE=0
-    logout
-    ```  
-  > [!NOTE]
-  > A Virtualbox a következő hiba jelenhet Futtatás után `waagent -force -deprovision` szerint `[Errno 5] Input/output error`. Ez a hibaüzenet nem kritikus fontosságú, és figyelmen kívül hagyható.
+     ```
+     sudo waagent -force -deprovision
+     export HISTSIZE=0
+     logout
+     ```  
+   > [!NOTE]
+   > A Virtualbox a következő hiba jelenhet Futtatás után `waagent -force -deprovision` szerint `[Errno 5] Input/output error`. Ez a hibaüzenet nem kritikus fontosságú, és figyelmen kívül hagyható.
 
 * Állítsa le a virtuális gépet, és töltse fel a VHD-t az Azure-bA.
 

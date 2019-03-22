@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: d56b7506230b3a1351c973d2ecbe73008dbcf9c6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99a29536ccf9d4ad87bcd0aa29659306c3553972
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658504"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119394"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Adatmásolás az Azure Database for MySQL-hez az Azure Data Factory használatával
 
@@ -48,7 +48,7 @@ A következő tulajdonságok társított MySQL szolgáltatáshoz készült Azure
 Egy tipikus kapcsolati karakterlánc `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. További tulajdonságok beállíthatja, hogy az eset száma:
 
 | Tulajdonság | Leírás | Beállítások | Szükséges |
-|:--- |:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |:--- |
 | SSLMode | Ez a beállítás megadja, hogy az illesztőprogram használja az SSL-titkosítás és ellenőrzési MySQL-hez való kapcsolódáskor. Például `SSLMode=<0/1/2/3/4>`| Le van tiltva (0) / előnyben részesített (1) **(alapértelmezett)** / szükséges (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nem |
 | UseSystemTrustStore | Ez a beállítás megadja, hogy egy hitelesítésszolgáltató tanúsítvány használatára, a rendszer megbízható áruházból vagy egy adott PEM-fájl. Például `UseSystemTrustStore=<0/1>;`| (1) engedélyezve / letiltva (0) **(alapértelmezett)** | Nem |
 

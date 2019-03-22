@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321488"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093837"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Tekintse át a VMware-vészhelyreállításhoz az Azure-bA a Site Recovery Deployment Planner költségbecslési jelentést
 
 A Deployment Planner jelentése a [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) táblázatokban költségbecslési összefoglalást, a Költségbecslés táblázatban pedig részletes költségelemzést biztosít. Részletes költségelemzést tartalmaz virtuális gépenként. 
+
+>[!Note]
+>Deployment planner eszköz jelenlegi verziója nem biztosít költségbecslést a virtuális gépek replikálása a Managed Disks szolgáltatásba.
+>* Vészhelyreállítás részletezési költségbecslésekkel ugyanazok a storage-fiókok és a felügyelt lemezek, amikor a "Felügyelt lemezek használata" paraméter értéke "Yes" a "Számítás és hálózat" panelen.
+>* Becsléséhez hozzávetőleges éves költség replikálásra, adja meg a következő ideiglenes beállításokat a **költségbecslési** lap:
+>    * A "Költség időtartama" paraméternek **beállítások** "Year" tábla
+>    * A **részletes költségelemzés virtuális** táblában, állítsa be az "Év DR működéseinek száma" oszlop 12-re és a "minden egyes DR működések időtartama (nap)" 30 
+>    * A replikáció költsége a költség oszlop "R", azaz működéseinek tárolási költsége / év betöltve hasonló lesz **működéseinek költség / év** alterület.
 
 ### <a name="cost-estimation-summary"></a>Költségbecslés összefoglalása 
 Az ábra a választott célrégió és a jelentéskészítéshez megadott pénznem vészhelyreállításának (DR) becsült, teljes költségeinek összesített nézetét mutatja be az Azure-hoz.
@@ -106,9 +114,9 @@ Virtuális gépek manuális hozzáadása:
 * Adatredundancia 
 * Azure Hybrid Benefit
 
-3.  Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az „Alkalmazás az összesre” gombra kattintva a következőknél: DR működéseinek száma évente, Az egyes DR működések időtartama (nap), Adatredundancia, és az Azure Hybrid Use Benefit.
+1. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az „Alkalmazás az összesre” gombra kattintva a következőknél: DR működéseinek száma évente, Az egyes DR működések időtartama (nap), Adatredundancia, és az Azure Hybrid Use Benefit.
 
-4.  A költségek frissítéséhez kattintson a „Költségek újraszámítása” lehetőségre.
+1. A költségek frissítéséhez kattintson a „Költségek újraszámítása” lehetőségre.
 
 **Virtuális gép neve**: A virtuális gép nevét.
 

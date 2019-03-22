@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 019232308ec5fa6d735e4499c3fb5f3ac2727e2d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 18660b41f4413d3ae1cd820cd645ddb540397906
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766394"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095899"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Az Apache Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürt
 
@@ -106,12 +106,12 @@ HDInsight Spark-fürtök tartalmazzák [Apache Zeppelin](https://zeppelin.apache
 
 8. Válassza ki a **sávdiagram** ikonra kattintva módosíthatja a képernyőt.  Válassza ki **beállítások** és a következő módosításokat:
 
-    * **Csoportok:**  Adjon hozzá **targettemp**.  
-    * **Értékek:** 1. Távolítsa el **dátum**.  2. Adjon hozzá **temp_diff**.  3.  Módosítsa a gyűjtő a **SUM** való **átlagos**.  
+   * **Csoportok:**  Adjon hozzá **targettemp**.  
+   * **Értékek:** 1. Távolítsa el **dátum**.  2. Adjon hozzá **temp_diff**.  3.  Módosítsa a gyűjtő a **SUM** való **átlagos**.  
 
-    Az alábbi képernyőfelvételen a kimenetet.
+     Az alábbi képernyőfelvételen a kimenetet.
 
-    ![A notebook használatával Spark SQL-utasítás futtatásával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "a notebook használatával Spark SQL-utasítás futtatása")
+     ![A notebook használatával Spark SQL-utasítás futtatásával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "a notebook használatával Spark SQL-utasítás futtatása")
 
 9. Indítsa újra a Livy értelmezője számára készült kilép belőle. Ehhez nyissa meg a interpret beállítások kiválasztásával a bejelentkezett felhasználó neve, a jobb felső sarokban, és válassza ki **Interpret**.  
 

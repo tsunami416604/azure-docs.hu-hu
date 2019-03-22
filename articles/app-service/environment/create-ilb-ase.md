@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747509"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101533"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -80,11 +80,11 @@ Az ILB ASE létrehozása:
 
    Is [meglévő DNS-név leképezése az alkalmazás][customdomain]. Az alkalmazásokhoz használt egyéni tartománynév és az ASE által használt egyéni tartománynév nem egyezhet meg. ILB ASE esetében a _contoso.com_ tartománynév használata esetén az alábbi egyéni tartományneveket nem használhatja alkalmazásaihoz:
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    Ha ismeri alkalmazásai egyéni tartományneveit, válasszon olyan tartományt az ILB ASE környezetnek, amely nem ütközik az egyéni tartománynevekkel. Ebben a példában használhatja a *contoso-internal.com* nevet az ASE tartományaként, mert az nem ütközik *.contoso.com* végződésű tartománynevekkel.
 
@@ -222,7 +222,7 @@ Az ILB ASE WAF eszközhöz való konfigurálásáról további információkat a
 ## <a name="get-started"></a>Bevezetés ##
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat.
- 
+ 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

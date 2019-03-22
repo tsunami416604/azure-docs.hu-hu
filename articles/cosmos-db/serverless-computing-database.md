@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041186"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123776"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -97,11 +97,11 @@ A kiskereskedelmi megvalósításokhoz amikor egy felhasználó felvesz egy elem
 
 1. Létrehozhat több Azure-funkciók hozzáadásával az Azure Cosmos DB-eseményindítók-mindegyike figyeli a következő azonos módosításcsatornáját a vásárlás bevásárlókocsi adatokat. Vegye figyelembe, hogy amikor több funkciók figyeli a következő azonos módosításcsatornáját, egy új a bérletek gyűjteményének szükség minden egyes függvény. Bérlet gyűjteményekkel kapcsolatos további információkért lásd: [ismertetése a Változáscsatorna feldolgozói kódtárával](change-feed-processor.md).
 2. Egy új elemet a bevásárlókocsihoz felhasználók hozzáadásakor, minden egyes függvény egymástól függetlenül hív a változáscsatorna a vásárlási a bevásárlókocsi-tárolóból.
-    * Egy függvény az aktuális kosár tartalmát felhasználhatja más elemek, a felhasználó esetlegesen érdeklő célpontokhoz jelenjen meg.
-    * Egy másik függvény előfordulhat, hogy frissítse a készlet.
-    * Egy másik függvény küldhet ügyfél-információkat az egyes termékek a marketingrészleg felhasználói, akik promóciós levelezőprogrammal elküldi őket. 
+   * Egy függvény az aktuális kosár tartalmát felhasználhatja más elemek, a felhasználó esetlegesen érdeklő célpontokhoz jelenjen meg.
+   * Egy másik függvény előfordulhat, hogy frissítse a készlet.
+   * Egy másik függvény küldhet ügyfél-információkat az egyes termékek a marketingrészleg felhasználói, akik promóciós levelezőprogrammal elküldi őket. 
 
-    Bármelyik részleg hozzon létre egy Azure Cosmos DB-eseményindító úgy a módosítási hírcsatorna, és győződjön meg azok nem késleltetés kritikus sorrendben az események feldolgozását a folyamat során.
+     Bármelyik részleg hozzon létre egy Azure Cosmos DB-eseményindító úgy a módosítási hírcsatorna, és győződjön meg azok nem késleltetés kritikus sorrendben az események feldolgozását a folyamat során.
 
 Ezek mindegyikét a használati esetek, a függvény rendelkezik leválasztott maga az alkalmazás, mert nem kell mindig az új alkalmazás-példányok üzembe helyezésekor. Ehelyett az Azure Functions indít el az egyes függvények diszkrét folyamatok végrehajtásához szükség szerint.
 
@@ -133,7 +133,7 @@ Ha szeretne adatokat tárolni az Azure Functions integrálható, és nem kell r�
 
 Az Azure Functions előnyei: 
 
-* **Eseményvezérelt**. Az Azure Functions eseményvezérelt, és figyelheti a módosítása az Azure Cosmos DB-hírcsatorna. Ez azt jelenti, hogy nem kell figyelési logikát hozhat létre, akkor csak biztatok, hogy figyeli a változtatásokat. 
+* **Event-driven**. Az Azure Functions eseményvezérelt, és figyelheti a módosítása az Azure Cosmos DB-hírcsatorna. Ez azt jelenti, hogy nem kell figyelési logikát hozhat létre, akkor csak biztatok, hogy figyeli a változtatásokat. 
 
 * **Korlátlan**. Függvények hajtsa végre a párhuzamos és a szolgáltatás terveket a jövőre fel annyi igény szerint. Állítsa a paramétereit.
 

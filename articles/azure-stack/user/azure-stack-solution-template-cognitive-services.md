@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099933"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Az Azure Stack üzembe helyezése az Azure Cognitive Services
 
@@ -67,12 +67,12 @@ Mielőtt elkezdené, kell:
 
 Az Azure-ban az előzetes verzióra az Arcfelismerés, LUIS vagy szöveg felismerése tárolók, illetve a Cognitive Services erőforrás létrehozása. Az előfizetési kulcs és a végpont URL-címet az erőforrás használatával hozza létre a cognitive Services-tárolók kell.
 
-1.  Hozzon létre egy Azure-erőforrást az Azure Portalon. Ha szeretné megtekinteni a Face tárolók, akkor először létre kell hoznia egy megfelelő Face erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: Cognitive Services-fiók létrehozása az Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1. Hozzon létre egy Azure-erőforrást az Azure Portalon. Ha szeretné megtekinteni a Face tárolók, akkor először létre kell hoznia egy megfelelő Face erőforrást az Azure Portalon. További információkért lásd: [a rövid útmutató: Cognitive Services-fiók létrehozása az Azure Portalon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-    >  [!Note]  
-    >  A Face vagy a Computer Vision erőforrás tarifacsomagja F0 kell használnia.
+   > [!Note]
+   >  A Face vagy a Computer Vision erőforrás tarifacsomagja F0 kell használnia.
 
-2.  A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat. Az Azure-erőforrás létrehozása után az előzetes verzióra a megfelelő Face, LUIS vagy szöveg felismerése tároló példányosítása az előfizetés kulcsának és végpontjának URL-címet adott erőforrást kell használnia.
+2. A végpont URL-cím és egy előfizetési kulcsra az Azure-beli erőforráshoz kaphat. Az Azure-erőforrás létrehozása után az előzetes verzióra a megfelelő Face, LUIS vagy szöveg felismerése tároló példányosítása az előfizetés kulcsának és végpontjának URL-címet adott erőforrást kell használnia.
 
 ## <a name="create-a-kubernetes-secret"></a>A Kubernetes titkos kódjának létrehozása 
 

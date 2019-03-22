@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 705bc49cef13ae80d648ca59b50021250dede3bd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e455b0167810c6e08853f3bce665cb6f314eec52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181452"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Gyors útmutató: A Python használatával támogatott nyelvek listáját a Translator Text API használatával
 
@@ -95,6 +95,8 @@ python get-languages.py
 Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
 
 ## <a name="sample-response"></a>Mintaválasz
+
+Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 A mintát csonkoltuk, hogy az eredményeknek csak egy részletét mutassa:
 

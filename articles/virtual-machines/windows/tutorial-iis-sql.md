@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aa8f4e188761c50391cd2ead49ae8d8b9081188f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167915"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Oktatóanyag: Az SQL, IIS, .NET verem egy Windows-beli virtuális gépen az Azure PowerShell telepítése
 
@@ -38,7 +38,7 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-## <a name="create-a-iis-vm"></a>IIS rendszerű virtuális gép létrehozása 
+## <a name="create-an-iis-vm"></a>Az IIS virtuális gép létrehozása 
 
 Ebben a példában használjuk [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag a PowerShell Cloud shellben egy Windows Server 2016 virtuális gép gyors létrehozása és telepítése az IIS és a .NET-keretrendszer. Az IIS-t és az SQL-t futtató virtuális gépek közös erőforráscsoportban és virtuális hálózaton találhatók, ezért a nevekhez változókat hozunk létre.
 

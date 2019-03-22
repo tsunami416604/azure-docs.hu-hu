@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 5833571bc1c1ac2674723abf286437c3e5e0a5ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111769"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Apache Spark-fürt létrehozása HDInsight az Azure portal használatával
 Megtudhatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsightban, és hogyan futtathat Spark SQL-lekérdezéseket a Hive-táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A Spark on HDInsight további információkért lásd: [áttekintése: Az Apache Spark on Azure HDInsight](apache-spark-overview.md).
@@ -49,16 +49,16 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
     A **Storage** oldalára történő továbblépéshez kattintson a **Tovább** gombra.
 3. A **Storage** területen adja meg a következő értékeket:
 
-    - **Storage-fiók kiválasztása**: válassza az **Új létrehozása** elemet, majd adjon nevet az új tárfióknak. A rövid útmutatóhoz használt tárfiók neve: **myspark20180403store**.
+   - **Storage-fiók kiválasztása**: válassza az **Új létrehozása** elemet, majd adjon nevet az új tárfióknak. A rövid útmutatóhoz használt tárfiók neve: **myspark20180403store**.
 
-    ![A HDInsight Spark-fürt tárolási konfigurációinak létrehozása](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Spark-fürt létrehozása HDInsightban – tárolási konfigurációk")
+     ![A HDInsight Spark-fürt tárolási konfigurációinak létrehozása](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Spark-fürt létrehozása HDInsightban – tárolási konfigurációk")
 
-    > [!NOTE]  
-    > A képernyőfelvételen a **Meglévő kiválasztása** elem látható. A hivatkozás az **Új létrehozása** és a **Meglévő kiválasztása** elemek között vált.
+     > [!NOTE]  
+     > A képernyőfelvételen a **Meglévő kiválasztása** elem látható. A hivatkozás az **Új létrehozása** és a **Meglévő kiválasztása** elemek között vált.
 
-    Az **Alapértelmezett tároló** alapértelmezett névvel rendelkezik.  A nevet tetszés szerint meg lehet változtatni.
+     Az **Alapértelmezett tároló** alapértelmezett névvel rendelkezik.  A nevet tetszés szerint meg lehet változtatni.
 
-    Az **Összefoglalás** oldalra történő továbblépéshez kattintson a **Tovább** gombra. 
+     Az **Összefoglalás** oldalra történő továbblépéshez kattintson a **Tovább** gombra. 
 
 
 3. Az **Összefoglalás** oldalon kattintson a **Létrehozás** gombra. A fürt létrehozása nagyjából 20 percet vesz igénybe. A következő munkamenetre csak a fürt létrehozását követően lehet továbblépni.

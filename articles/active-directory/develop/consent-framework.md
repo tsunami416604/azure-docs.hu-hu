@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbac6fe421864f9479c9a4ee7eecde97c13f6052
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200530"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124179"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
@@ -58,14 +58,14 @@ A következő lépések bemutatják, hogyan beleegyezése élmény az alkalmazá
 
     **Hogy engedélyt adjanak az alkalmazás a delegált engedélyek**
 
-    1. Nyissa meg a **beállítások** oldalon az alkalmazás
-    1. Válassza ki **szükséges engedélyek**.
-    1. Kattintson a **engedélyeket** gombra.
+   1. Nyissa meg a **beállítások** oldalon az alkalmazás
+   1. Válassza ki **szükséges engedélyek**.
+   1. Kattintson a **engedélyeket** gombra.
 
-    ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Engedélyek megadása az explicit rendszergazdai jóváhagyás](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
-  > [!IMPORTANT]
-  > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.
+   > [!IMPORTANT]
+   > Hozzájárulás megadása az explicit használatával a **engedélyeket** gomb ADAL.js használó egyoldalas alkalmazások (SPA) jelenleg szükség. Ellenkező esetben a kérelem sikertelen lesz, amikor a hozzáférési jogkivonatot kér.
 
 ## <a name="next-steps"></a>További lépések
 

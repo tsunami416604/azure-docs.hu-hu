@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 9e36ac41fb42d7c0e00dca6dc82f2f5daee1278b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 00cdc8de45d2f0177cd1f097fb874cbe67f7e442
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435541"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120125"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
@@ -356,7 +356,7 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ## <a name="summary"> </a> Összefoglalás
 Egy virtuális hálózatban konfigurálva az Azure API Management egyetlen átjáró felületet biztosít az összes konfigurált API-k, azok a helyszínen vagy a felhőben futnak-e. Az Application Gateway integrálása az API Management biztosít szelektív engedélyezésével az adott API-kat az interneten érhető el, valamint a webalkalmazási tűzfal biztosít az API Management-példány egy előtérkiszolgáló, rugalmasságát.
 
-##<a name="next-steps"> </a> Következő lépések
+## <a name="next-steps"> </a> Következő lépések
 * További információ az Azure Application Gateway
   * [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
   * [Application Gateway webalkalmazási tűzfal](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

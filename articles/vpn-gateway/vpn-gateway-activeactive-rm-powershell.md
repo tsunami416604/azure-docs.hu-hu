@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
-ms.openlocfilehash: d1c5ea0ae60894e810d2f4eb0edff2126171a220
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4c5a7a138a2b491867c5c4ba7234415036c8ba0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100836"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Aktív-aktív S2S VPN-kapcsolatok konfigurálása az Azure VPN-átjárókkal
 
@@ -36,10 +36,8 @@ Kombinálhatja ezeket együtt hozhat létre egy összetettebb, magas rendelkezé
 
 > [!IMPORTANT]
 > Az aktív – aktív üzemmód csak a következő termékváltozatok használja: 
-  * VpnGw1, VpnGw2, VpnGw3
-  * Nagy teljesítményű (a régi örökölt termékváltozatok)
-> 
-> 
+>   * VpnGw1, VpnGw2, VpnGw3
+>   * Nagy teljesítményű (a régi örökölt termékváltozatok)
 
 ## <a name ="aagateway"></a>1. rész – létrehozása és aktív-aktív VPN-átjárók konfigurálása
 Az alábbi lépéseket az Azure VPN-átjáró aktív-aktív módban konfigurálja. Az aktív-aktív és az aktív-készenléti átjárók közötti fő különbségeket:

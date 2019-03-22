@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53cc987d13479fc0d9276ec80f33a163a2a6ded7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58120346"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: Az Azure Resource Manager-sablon-üzembehelyezések biztonságos összetevők
 
@@ -126,11 +126,11 @@ Egy Blob-tárolóba van szükség a fájlok feltöltése előtt.
 3. Válassza ki **készítése a blob SAS-jogkivonat és URL-cím**.
 4. Készítsen másolatot **a Blob SAS URL-cím**. Az URL-cím közepén van a Fájlnév **SQLDatabaseExtension.bacpac**.  A fájl nevét az URL-címet osztja három részből áll:
 
-    - **Hely összetevő**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ellenőrizze, hogy a hely végződik a "/".
-    - **BACPAC-fájl neve**: SQLDatabaseExtension.bacpac.
-    - **Összetevő hely SAS-jogkivonat**: Ellenőrizze, hogy a jogkivonat szerepel egy "?."
+   - **Hely összetevő**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Ellenőrizze, hogy a hely végződik a "/".
+   - **BACPAC-fájl neve**: SQLDatabaseExtension.bacpac.
+   - **Összetevő hely SAS-jogkivonat**: Ellenőrizze, hogy a jogkivonat szerepel egy "?."
 
-    Az a három értékre szüksége [helyezheti üzembe a sablont](#deploy-the-template).
+     Az a három értékre szüksége [helyezheti üzembe a sablont](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Nyisson meg egy meglévő sablon
 
@@ -146,13 +146,13 @@ Ebben a munkamenetben létrehozott sablont módosít [oktatóanyag: Az Azure Res
 
     Nincsenek definiálva a sablonban öt erőforrások:
 
-    * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-    * `Microsoft.SQL/servers/securityAlertPolicies`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-    * `Microsoft.SQL/servers/filewallRules`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-    * `Microsoft.SQL/servers/databases`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-    * `Microsoft.SQL/server/databases/extensions`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/securityAlertPolicies`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
+   * `Microsoft.SQL/servers/filewallRules`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`.  Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
-    Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
+     Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 4. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése

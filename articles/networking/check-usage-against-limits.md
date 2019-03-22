@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 56434e12e1d5eec34e8848d71a018147f1e161f6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 54050c4c20b6ebb35f198775448f51ee8cdc533b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777260"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117642"
 ---
 # <a name="check-resource-usage-against-limits"></a>Ellenőrizze az erőforrás-használati korlátozások
 
@@ -34,16 +34,16 @@ Ebből a cikkből elsajátíthatja, hogyan tekintsük meg minden egyes hálózat
 4. Válassza ki az előfizetés nevét adja meg szeretné tekinteni a kapcsolódó használati adatok.
 5. A **beállítások**válassza **használat + kvóta**.
 6. Választhat a következő beállításokat:
-    - **Erőforrástípusok**: Válassza ki az összes erőforrástípus, vagy válassza ki az adott típusú erőforrás meg szeretné jeleníteni.
-    - **Szolgáltatók**: Válassza ki az összes erőforrás-szolgáltató, vagy válasszon **számítási**, **hálózati**, vagy **tárolási**.
-    - **Helyek**: Válassza ki az összes Azure-helyen, vagy válassza ki az adott helyeken.
-    - Kiválaszthatja a megjelenítendő összes erőforrását, vagy csak az erőforrások közül legalább egy telepítési helyét.
+   - **Erőforrástípusok**: Válassza ki az összes erőforrástípus, vagy válassza ki az adott típusú erőforrás meg szeretné jeleníteni.
+   - **Szolgáltatók**: Válassza ki az összes erőforrás-szolgáltató, vagy válasszon **számítási**, **hálózati**, vagy **tárolási**.
+   - **Helyek**: Válassza ki az összes Azure-helyen, vagy válassza ki az adott helyeken.
+   - Kiválaszthatja a megjelenítendő összes erőforrását, vagy csak az erőforrások közül legalább egy telepítési helyét.
 
-    A következő képen látható a példa bemutatja, hogy legalább egy erőforrás üzembe helyezve, az USA keleti régiójában és hálózati erőforrásokat:
+     A következő képen látható a példa bemutatja, hogy legalább egy erőforrás üzembe helyezve, az USA keleti régiójában és hálózati erőforrásokat:
 
-        ![View usage data](./media/check-usage-against-limits/view-usage.png)
+       ![Használati adatok megtekintése](./media/check-usage-against-limits/view-usage.png)
 
-    Az oszlopok az oszlopok fejlécére kattintva rendezhető. A korlátok látható korlátok vonatkoznak az előfizetésében. Ha szeretne egy alapértelmezett korlát növeléséhez, válassza ki a **kérelem növelése**, majd végezze el, és a támogatási kérelem elküldéséhez. Összes erőforrásnak rendelkeznie kell az Azure-ban szereplő maximális korlát [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Ha az aktuális korlát már a maximális számát, a korlát nem növelhető.
+     Az oszlopok az oszlopok fejlécére kattintva rendezhető. A korlátok látható korlátok vonatkoznak az előfizetésében. Ha szeretne egy alapértelmezett korlát növeléséhez, válassza ki a **kérelem növelése**, majd végezze el, és a támogatási kérelem elküldéséhez. Összes erőforrásnak rendelkeznie kell az Azure-ban szereplő maximális korlát [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits). Ha az aktuális korlát már a maximális számát, a korlát nem növelhető.
 
 ## <a name="powershell"></a>PowerShell
 

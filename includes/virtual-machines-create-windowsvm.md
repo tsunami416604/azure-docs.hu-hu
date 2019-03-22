@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0b5e817d5e39dd7800a1482d40c56db5f2be6ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958911"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109422"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Kezdési bal felső sarokban, kattintson a **hozzon létre egy erőforrást** > **számítási** > **Windows Server 2016 Datacenter**.
+2. Kattintson a bal felső sarokban-től kezdődően **erőforrás létrehozása** > **számítási** > **Windows Server 2016 Datacenter**.
 
     ![Navigálás az Azure virtuálisgép-rendszerképekre a portálon](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
@@ -33,7 +33,7 @@ Az Alapvető beállítások panelen felügyeleti információkat kell megadni a 
 
 2. Adjon meg egy **felhasználónevet** és egy erős **jelszót**, amelyeket a helyi fióknak a virtuális gépen való létrehozásához használ a szolgáltatás. A helyi fiókkal jelentkezhet be a virtuális gépre és kezelheti azt. A példában a felhasználónév az _azureuser_.
 
- A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](../articles/virtual-machines/windows/faq.md).
+   A jelszónak 8–123 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információk a [felhasználónév- és jelszókövetelményekről](../articles/virtual-machines/windows/faq.md).
 
 3. Az **Előfizetés** nem kötelező. Gyakori beállítás a „használatalapú fizetés”.
 

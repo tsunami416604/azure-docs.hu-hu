@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775169"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225042"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -233,14 +233,46 @@ Ha véletlenül egy érvénytelen SAS URL-címet használó kapcsolt, és nem le
 
 ## <a name="linux-dependencies"></a>Linux-függőségek
 
-A Linux-disztribúció, Ubuntu 16.04 eltérő szükség lehet néhány függősége manuális telepítéséhez. Általában a következő csomagok szükségesek:
+Általában a következő csomagok szükségesek Storage Explorer linuxon fut:
 
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* `libsecret`
+* [.NET core 2.0 futtatókörnyezet](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* `libgnome-keyring-common` és `libgnome-keyring-dev`
 * `libgconf-2-4`
-* Naprakész GCC
 
-A terjesztési függően más csomagokat telepítenie kell is lehet. A Storage Explorer [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciók adott lépést tartalmaznak.
+A terjesztési attól függően, lehet különböző, vagy további csomagokat telepíteni kell.
+
+Storage Explorer Ubuntu 18.04, 16.04 és 14.04 hivatalosan támogatott. Egy tiszta gépek telepítésének lépései a következők:
+
+# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+
+1. A Storage Explorer letöltése
+2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
+3. Futtassa a `sudo apt-get install libgconf-2-4` parancsot.
+4. Futtassa a `sudo apt install libgnome-keyring-common libgnome-keyring-dev` parancsot.
+
+# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+
+1. A Storage Explorer letöltése
+2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
+3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+
+# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+
+1. A Storage Explorer letöltése
+2. Telepítse a .NET Core Runtime, ellenőrzött legújabb verziója van: [2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) (Ha már telepített egy újabb verzióra, szükség lehet javítani a Storage Explorer, lásd lent)
+3. Futtassa a `sudo apt install libgnome-keyring-dev` parancsot.
+
+---
+
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Javítás a Storage Explorer újabb verzióiban a .NET Core 
+Ha egy .NET Core nagyobb, mint a 2.0-s telepítették, és futtatják a Storage Explorer 1.7.0-ás verzió vagy annál régebbi verzióját, nagy valószínűséggel kell javítása a Storage Explorer; Ehhez hajtsa végre az alábbi lépéseket:
+1. Töltse le a StreamJsonRpc 1.5.43 verziója [nugetről](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Keresse meg a jobb oldalon az oldal a "Csomag letöltése" hivatkozásra.
+2. A csomag a letöltés után módosíthatja a fájl kiterjesztése a `.nupkg` , `.zip`
+3. Tömörítse ki a csomagot
+4. Nyissa meg a következőt: `streamjsonrpc.1.5.43/lib/netstandard1.1/`
+5. Másolás `StreamJsonRpc.dll` a Storage Explorer mappán belül a következő helyekre:
+    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Nyissa meg a Explorer, az Azure portal nem működik
 

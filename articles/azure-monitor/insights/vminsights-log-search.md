@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/06/2019
+ms.date: 03/15/2019
 ms.author: magoedte
-ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983778"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188968"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -33,10 +33,20 @@ Belsőleg generált tulajdonságaiként segítségével egyedi folyamatokat és 
 
 Több rekord megadott folyamat és a egy adott időtartományban számítógép is létezik, mivel a lekérdezések adhat vissza ugyanazon a számítógépen vagy folyamat egynél több rekordot. Adja meg a legújabb bejegyzést, adja hozzá a "|} a deduplikáció erőforrás-azonosító"a lekérdezéshez.
 
-### <a name="connections"></a>Kapcsolatok
-Kapcsolati metrika, egy új táblát az Azure Monitor naplóira - VMConnection készültek. Ez a táblázat ismerteti a kapcsolatokat a gép (bejövő és kimenő). Kapcsolati metrika is ki vannak téve az API-kkal, amelyek biztosítják az eszközöket egy adott metrika beszerzése egy adott időszakban.  TCP-kapcsolatok eredő "*fogadja el*- ing figyel-e szoftvercsatorna bejövő, míg a által létrehozott *csatlakozás*- ing, hogy egy adott IP-cím és port kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
+### <a name="connections-and-ports"></a>Kapcsolatok és portok
+A kapcsolati metrika funkció az Azure Monitor naplóira - VMConnection és VMBoundPort két új táblázat mutatja be. Ezek a táblázatok ismertetik a kapcsolatokat a gép (bejövő és kimenő), valamint a kiszolgáló rajtuk nyílt/active-portok. ConnectionMetrics is, amelyek biztosítják az eszközöket egy adott időszakban egy adott metrika beszerzése a API-kon keresztül érhetők el. TCP-kapcsolatok eredő *elfogadásával* szoftvercsatorna figyel-e a bejövő, míg a által létrehozott *csatlakozás* egy adott IP-cím és port a kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
 
-Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy egy perces időszakra megfigyelési jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett.
+Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy 1 perces időszakra megfigyelési jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett. 
+
+#### <a name="common-fields-and-conventions"></a>Általános mezők és konvenciók 
+A következő mezőket és egyezmények a alkalmazni VMConnection és VMBoundPort is: 
+
+- Számítógép: Teljes tartománynév gép Reporting 
+- AgentID: A Log Analytics-ügynökkel rendelkező gép egyedi azonosítója  
+- Számítógép: A gép ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *m – {GUID}*, ahol *GUID* ügynökazonosító, ugyanaz a GUID  
+- Folyamat: A folyamat ServiceMap által elérhetővé tett az Azure Resource Manager-erőforrás neve. A következő formában van *p-{hexadecimális karakterlánc}*. Folyamat gép hatókörön belüli egyedi, és hozzon létre egy egyedi folyamat azonosítója gépek között, kombinálhatja a gép és a folyamat mezőket. 
+- ProcessName: A jelentéskészítési folyamat végrehajtható fájljának nevét.
+- Az összes IP-címek olyan karakterláncok IPv4 kanonikus formátumban, például *13.107.3.160* 
 
 Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem felelnek meg az egyes fizikai hálózati kapcsolatokat. Több fizikai hálózati kapcsolatot, amely megjelenik majd a megfelelő tábla logikai kapcsolatot vannak csoportosítva.  Ez azt jelenti, rögzíti a *VMConnection* tábla felel meg a logikai csoportosítása és nem az egyes fizikai kapcsolatokat betartását. Egyetlen logikai rekord összesíti ugyanazt az értéket a következő attribútumok megosztása során egy adott egyperces időszakban, a fizikai hálózati kapcsolatot a rendszer *VMConnection*. 
 
@@ -81,7 +91,7 @@ Az alábbiakban néhány fontos tudnivalók:
 1. Ha egy folyamat ugyanazon IP-címen, de több hálózati adapterrel kapcsolatokat fogad, minden egyes kapcsolathoz külön rekord lesz jelentve. 
 2. Helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordokat tartalmazni fogja nincs tevékenység. Nem foglalja azokat, amelyek arra, hogy a gépen port nyitott a bejövő forgalmat.
 3. Részletességi és adatmennyiség csökkentése érdekében helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordok kimarad egy egyező rekordot (az ugyanabban a folyamatban, port és protokoll) esetén egy adott IP-címmel. Amikor egy helyettesítő karaktert tartalmazó IP-címrekordot, a rendszer a IsWildcardBind rekord tulajdonságot az adott IP-címmel rendelkező fog beállítani "True" jelzi, hogy a port van-e téve a jelentéskészítési gép minden felületen keresztül történik.
-4. Csak egy adott illesztő a kötött portok beállítása "False" IsWildcardBind rendelkezik.
+4. Csak egy adott illesztő a kötött portok van beállítva IsWildcardBind *hamis*.
 
 #### <a name="naming-and-classification"></a>Elnevezési és besorolása
 Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp tulajdonság szerepel. A bejövő kapcsolatok esetében RemoteIp megegyezik SourceIp, mint a kimenő kapcsolatokhoz megegyezik a DestinationIp. A RemoteDnsCanonicalNames tulajdonság jelöli a canonical DNS-nevek, a gép által jelentett RemoteIp. A RemoteDnsQuestions és RemoteClassification tulajdonság későbbi használatra vannak fenntartva. 
@@ -111,6 +121,36 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 |IsActive |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
 |ReportReferenceLink |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
 |AdditionalInformation |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
+
+### <a name="ports"></a>Portok 
+Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciálisan fogadja el a forgalmat, de a jelentéskészítési időszakban üresjáratban a VMBoundPort táblában írja.  
+
+Alapértelmezés szerint adatok nem szerepel ebben a táblában. Ahhoz, hogy ez a táblázat az írt adatok, küldjön egy e-mailek vminsights@microsoft.com munkaterület-Azonosítót és -munkaterület régiója együtt.   
+
+Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
+
+| Tulajdonság | Leírás |
+|:--|:--|
+|Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
+|IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
+|Port |A Port számát |
+|Protokoll | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
+ 
+Az identitás egy portot a fenti öt mezők származik, és a PortId tulajdonságban tárolja. Ez a tulajdonság segítségével gyorsan található rekordok egy adott portot időpontja között. 
+
+#### <a name="metrics"></a>Mérőszámok 
+A kapcsolatok társítva jelző mérőszámok a port rekordok tartalmazzák. Jelenleg a következő metrikák szerepelnek a jelentésben (mindegyik metrikát részleteit az előző szakaszban ismertetett): 
+
+- BytesSent és BytesReceived 
+- LinksEstablished, LinksTerminated, LinksLive 
+- ResposeTime, ResponseTimeMin, ResponseTimeMax, ResponseTimeSum 
+
+Az alábbiakban néhány fontos tudnivalók:
+
+- Ha egy folyamat ugyanazon IP-címen, de több hálózati adapterrel kapcsolatokat fogad, minden egyes kapcsolathoz külön rekord lesz jelentve.  
+- Helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordokat tartalmazni fogja nincs tevékenység. Nem foglalja azokat, amelyek arra, hogy a gépen port nyitott a bejövő forgalmat. 
+- Részletességi és adatmennyiség csökkentése érdekében helyettesítő karaktert tartalmazó IP-Címmel rendelkező rekordok kimarad egy egyező rekordot (az ugyanabban a folyamatban, port és protokoll) esetén egy adott IP-címmel. Ha egy helyettesítő karaktert tartalmazó IP-címrekordot, a rendszer a *IsWildcardBind* állítja be a rekord a meghatározott IP-címmel rendelkező tulajdonság *igaz*.  Ez azt jelzi, hogy a port van közzétéve a jelentéskészítő gép minden felületen keresztül történik. 
+- Csak egy adott illesztő a kötött portok van beállítva IsWildcardBind *hamis*. 
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függőségi ügynök esetében van. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
@@ -165,55 +205,124 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gépek listája
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="when-was-the-vm-last-rebooted"></a>Ha a virtuális gép utolsó újraindították
-`let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```kusto
+let Today = now(); ServiceMapComputer_CL | extend DaysSinceBoot = Today - BootTime_t | summarize by Computer, DaysSinceBoot, BootTime_t | sort by BootTime_t asc`
+```
 
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Kép, a hely és a Termékváltozat Azure virtuális gépek – összefoglalás
-`ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```kusto
+ServiceMapComputer_CL | where AzureLocation_s != "" | summarize by ComputerName_s, AzureImageOffering_s, AzureLocation_s, AzureImageSku_s`
+```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>A fizikai memória-kapacitás az összes felügyelt számítógép listája.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
+```
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Számítógép neve, DNS, IP és az operációs rendszer.
-`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```kusto
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
+```
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
-`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
-`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Keresse meg a gép (legutóbbi rekord) IP-cím alapján
-`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Egy megadott számítógép összes ismert folyamat listázása
-`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```kusto
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
+```
 
 ### <a name="list-all-computers-running-sql-server"></a>Az SQL Server rendszert futtató számítógépek listája
-`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
+```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Saját adatközpontban curl összes egyedi termék verziója listázása
-`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```kusto
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
+```
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Az összes számítógép CentOS rendszerű számítógépcsoport létrehozása
-`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```kusto
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
+```
 
 ### <a name="bytes-sent-and-received-trends"></a>Bájt küldött és fogadott trendek
-`VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```kusto
+VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart`
+```
 
 ### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Melyik Azure-beli virtuális gépek vannak továbbítaná a legtöbb bájt
-`VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```kusto
+VMConnection | join kind=fullouter(ServiceMapComputer_CL) on $left.Computer == $right.ComputerName_s | summarize count(BytesSent) by Computer, AzureVMSize_s | sort by count_BytesSent desc`
+```
 
 ### <a name="link-status-trends"></a>Kapcsolat állapota trendek
-`VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```kusto
+VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize  dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart`
+```
 
 ### <a name="connection-failures-trend"></a>Kapcsolódási hibák trend
-`VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```kusto
+VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart`
+```
+
+### <a name="bound-ports"></a>Kötött portok
+```kusto
+VMBoundPort
+| where TimeGenerated >= ago(24hr)
+| where Computer == 'admdemo-appsvr'
+| distinct Port, ProcessName
+```
+
+### <a name="number-of-open-ports-across-machines"></a>Gép megnyitott portok száma:
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by Computer, Machine, Port, Protocol
+| summarize OpenPorts=count() by Computer, Machine
+| order by OpenPorts desc
+```
+
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Nyílt pontszám a munkaterületen folyamatok rendelkeznek portok száma szerint
+```kusto
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize by ProcessName, Port, Protocol
+| summarize OpenPorts=count() by ProcessName
+| order by OpenPorts desc
+```
+
+### <a name="aggregate-behavior-for-each-port"></a>Minden egyes porthoz összesített viselkedés
+Ez a lekérdezés majd pontszámot rendelni az portok által használható tevékenységek, például a legtöbb bejövő/kimenő forgalom a portokon, a portok a legtöbb kapcsolatok
+```kusto
+// 
+VMBoundPort
+| where Ip != "127.0.0.1"
+| summarize BytesSent=sum(BytesSent), BytesReceived=sum(BytesReceived), LinksEstablished=sum(LinksEstablished), LinksTerminated=sum(LinksTerminated), arg_max(TimeGenerated, LinksLive) by Machine, Computer, ProcessName, Ip, Port, IsWildcardBind
+| project-away TimeGenerated
+| order by Machine, Computer, Port, Ip, ProcessName
+```
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok a gépek csoportból összefoglalója
-```
+```kusto
 // the machines of interest
 let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
 // map of ip to monitored machine in the environment

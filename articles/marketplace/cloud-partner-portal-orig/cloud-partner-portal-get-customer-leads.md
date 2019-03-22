@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2ebc0c90d62d1299c076f8d91ba9fed1998a20e5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450192"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58118578"
 ---
 <a name="get-customer-leads"></a>Ügyfélérdeklődések lekérése
 ==================
@@ -39,13 +39,13 @@ Ez a cikk bemutatja, hogyan hozhat létre ügyfélérdeklődések használatáva
 
 <!-- -->
 
-2.  Ügyfél járul hozzá a "Letöltés most" kiválasztása után az adatok megosztása. Ez az érdeklődő egy **érdeklődés kezdeti** vezető, ahol osztjuk meg az első a termék rendelkezik érdeklődést vásárló kapcsolatos információkat. Az érdeklődő felső részén a beszerzési tölcsér.
+1. Ügyfél járul hozzá a "Letöltés most" kiválasztása után az adatok megosztása. Ez az érdeklődő egy **érdeklődés kezdeti** vezető, ahol osztjuk meg az első a termék rendelkezik érdeklődést vásárló kapcsolatos információkat. Az érdeklődő felső részén a beszerzési tölcsér.
 
-    ![Beszerzés most lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Beszerzés most lehetőség](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-3.  Ügyfél kijelölése "Vásárlás" a [az Azure Portal](https://portal.azure.com/) beolvasni a termék. Ez az érdeklődő egy **aktív** vezető, ahol osztjuk meg olyan ügyfelünk, akit a termék telepítése megkezdődött kapcsolatos információkat.
+1. Ügyfél kijelölése "Vásárlás" a [az Azure Portal](https://portal.azure.com/) beolvasni a termék. Ez az érdeklődő egy **aktív** vezető, ahol osztjuk meg olyan ügyfelünk, akit a termék telepítése megkezdődött kapcsolatos információkat.
 
-    ![Vásárlási lehetőség](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![Vásárlási lehetőség](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource

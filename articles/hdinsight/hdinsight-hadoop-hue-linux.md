@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: e0e25a9a1e70575d862374da0fb3097408b002e7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714627"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202690"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítse, és a Hue használata a HDInsight Hadoop-fürtök
 
@@ -27,7 +27,7 @@ ms.locfileid: "53714627"
 ## <a name="what-is-hue"></a>Mit jelent a Hue?
 A hue olyan Apache Hadoop-fürt folytatott kommunikációhoz használható webalkalmazás-típusokhoz. A Hue használata a Hadoop-fürt (HDInsight-fürtök esetén WASB) társított tárhely, tallózással, Hive-feladatok és a Pig-parancsfájlok futtatásához, és így tovább. A Hue telepítése egy HDInsight Hadoop-fürtön a következő összetevők érhetők el.
 
-* Méhviasz Hive szerkesztőben
+* Beeswax Hive Editor
 * Apache Pig
 * Metaadattár manager
 * Az Apache Oozie
@@ -143,7 +143,6 @@ SSH-bújtatás az egyetlen módja a Hue eléréséhez a fürtön, miután fut-e.
 
 ## <a name="next-steps"></a>További lépések
 * [Az Apache Giraph telepítése HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md). Fürt testreszabása használatával a Giraph telepítése HDInsight Hadoop-fürtökön. A Giraph lehetővé teszi a hadoop diagramfeldolgozást, és használható az Azure HDInsight.
-* [A HDInsight-fürtökön Apache Solr telepítése](hdinsight-hadoop-solr-install-linux.md). Fürt testreszabása használatával a Solr telepítése HDInsight Hadoop-fürtökön. A Solr lehetővé teszi a tárolt adatok hatékony keresési műveletek végrehajtásához.
 * [Az R telepítése HDInsight-fürtökön](hdinsight-hadoop-r-scripts-linux.md). Fürt testreszabása használatával R telepítheti a HDInsight Hadoop-fürtöket. Az R a egy nyílt forráskódú nyelv és környezet, amely statisztikai számításokhoz. Több száz beépített statisztikai függvények és a saját programozási nyelvet, amelyek funkcionális és objektumorientált programozási aspektusát kombinálja biztosít. Grafikus széles körű lehetőségeket is kínál.
 
 [powershell-install-configure]: install-configure-powershell-linux.md

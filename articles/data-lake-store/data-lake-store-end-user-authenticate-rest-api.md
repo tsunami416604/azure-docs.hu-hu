@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d5603bb6bbb56d1aebb719902c60de631a4f14f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108188"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -45,38 +45,36 @@ A végfelhasználói bejelentkezési kellene eredménye, hogy az alkalmazás egy
 Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és minden művelet a felhasználó kontextusában lesz végrehajtva. Hajtsa végre az alábbi lépéseket:
 
 1. Az alkalmazáson keresztül irányítsa át a felhasználót az alábbi URL-címre:
-   
+
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
-   
+
    > [!NOTE]
    > A \<REDIRECT-URI> értéket kódolni kell az URL-ben való használatra. Tehát például https://localhost, használjon `https%3A%2F%2Flocalhost`)
-   > 
-   > 
-   
+
     A jelen oktatóanyagban kicserélheti a fenti URL-ben szereplő helyőrző értékeket, és beillesztheti egy webböngésző címsorába. A rendszer átirányítja az Azure bejelentkezési azonosítójával történő hitelesítéshez. Miután sikeresen bejelentkezett, a válasz megjelenik a böngésző címsorában. A válasz az alábbi formátumban jelenik meg:
-   
+
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
 2. Rögzítse a válaszban szereplő engedélyezési kódot. Ebben az oktatóanyagban átmásolhatja a hozzáférési kód a webböngészőben, és azt a BEJEGYZÉSBEN található a jogkivonat-végpont kérése pass címsorában az alábbi kódrészletben látható módon:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
         -F client_id=<APPLICATION-ID> \
         -F code=<AUTHORIZATION-CODE>
-   
+
    > [!NOTE]
    > Ebben az esetben a \<REDIRECT-URI> kódolása nem szükséges.
    > 
    > 
 
 3. A válasz egy JSON-objektum, amely tartalmazza a hozzáférési jogkivonat (például `"access_token": "<ACCESS_TOKEN>"`) és egy frissítési (például `"refresh_token": "<REFRESH_TOKEN>"`). Az alkalmazás használja a hozzáférési jogkivonatot az Azure Data Lake Storage Gen1 és a frissítési jogkivonat elérésekor új hozzáférési jogkivonat beszerzéséhez, ha a hozzáférési jogkivonat lejár.
-   
+
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
 4. Ha a hozzáférési jogkivonat lejár, kérhet egy új hozzáférési jogkivonatot a frissítési jogkivonat használatával, az alábbi kódrészletben látható módon:
-   
+
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
              -F resource=https://management.core.windows.net/ \
@@ -84,7 +82,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
              -F refresh_token=<REFRESH-TOKEN>
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx) (Az engedélyezési kód engedélyezési folyamata).
-   
+
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan service-to-service-hitelesítés használata az Azure Data Lake Storage Gen1 hitelesítést, a REST API használatával. Most már megtekintheti a következő cikkek, amelyek beszélgetnek az Azure Data Lake Storage Gen1 használata a REST API használatával.
 

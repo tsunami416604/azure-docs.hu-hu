@@ -9,16 +9,19 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7eb841a0f4a34e708734cf433fac82ab35ef35b6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8898280e887392591873f1fc832bfd0c105689fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097286"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira továbbítása
 
-Azure Automation Állapotkonfiguráció Desired State Configuration (DSC) csomópont állapotát adatokat küldhet a Log Analytics-munkaterületre. Megfelelőségi állapot jelenik meg az Azure Portalon vagy a PowerShell-lel, csomópontok, és az egyes DSC-erőforrásokhoz a csomópont-konfigurációkat. Az Azure Monitor-naplók segítségével:
+Azure Automation konfigurációs csomópont állapota adatait 30 napig őrzi meg.
+Ha szeretné megőrizni az adatokat hosszabb ideig, csomópont adatokat küldhet a Log Analytics-munkaterület.
+Megfelelőségi állapot jelenik meg az Azure Portalon vagy a PowerShell-lel, csomópontok, és az egyes DSC-erőforrásokhoz a csomópont-konfigurációkat.
+Az Azure Monitor-naplók segítségével:
 
 - Megfelelőségi információk lekérése a felügyelt csomópontok és az egyéni erőforrások
 - Aktiválja az e-mailben vagy a megfelelőségi állapot alapján riasztása
@@ -44,23 +47,23 @@ Azure Automation DSC adatok importálása az Azure Monitor naplóira a kezdéshe
 1. Jelentkezzen be az Azure PowerShell-fiókjával. Lásd: [bejelentkezés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
 1. Első a _ResourceId_ az automation-fiók az alábbi PowerShell-parancs futtatásával: (Ha egynél több automation-fiókkal rendelkezik, válassza ki a _ResourceID_ a konfigurálni kívánt fiók).
 
-  ```powershell
-  # Find the ResourceId for the Automation Account
-  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
-  ```
+   ```powershell
+   # Find the ResourceId for the Automation Account
+   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   ```
 
 1. Első a _ResourceId_ a Log Analytics munkaterület a következő PowerShell-parancs futtatásával: (Ha rendelkezik több munkaterülettel, válassza ki a _ResourceID_ a konfigurálni kívánt munkaterület).
 
-  ```powershell
-  # Find the ResourceId for the Log Analytics workspace
-  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
-  ```
+   ```powershell
+   # Find the ResourceId for the Log Analytics workspace
+   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   ```
 
 1. Futtassa a következő PowerShell-parancsot, és cserélje le `<AutomationResourceId>` és `<WorkspaceResourceId>` az a _ResourceId_ értékeit az előző lépések:
 
-  ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
-  ```
+   ```powershell
+   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   ```
 
 Ha szeretné leállítani az Azure Automation konfigurációs adatok importálása az Azure Monitor naplóira, futtassa a következő PowerShell-parancsot:
 

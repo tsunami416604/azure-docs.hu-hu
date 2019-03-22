@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778ae1aa9d5517912b9c67b27066a75d14358087
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186055"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118595"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -43,8 +43,8 @@ Ezeket a funkciókat folyamatosan dolgozik, függetlenül attól, hol találhat�
  
 > [!NOTE]
 > Az utolsó lehetőség van csak azon bérlők számára, valamilyen okból nem használható egyéni tartományok alkalmazások azonos belső és külső URL-rendelkezik. Mielőtt engedélyezi ezt a funkciót, tekintse át, ha [egyéni tartományok az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md) is. 
-
->Vagy, ha az alkalmazást konfigurálnia kell a hivatkozás fordítási SharePoint, lásd: [konfigurálása a SharePoint 2013-hoz készült másodlagos címek leképezése](https://technet.microsoft.com/library/cc263208.aspx) egy másik módszer a leképezés hivatkozásokat. 
+> 
+> Vagy, ha az alkalmazást konfigurálnia kell a hivatkozás fordítási SharePoint, lásd: [konfigurálása a SharePoint 2013-hoz készült másodlagos címek leképezése](https://technet.microsoft.com/library/cc263208.aspx) egy másik módszer a leképezés hivatkozásokat. 
 
  
 ### <a name="option-1-intune-managed-browser-integration"></a>Option 1: Az Intune által felügyelt böngésző-integráció 

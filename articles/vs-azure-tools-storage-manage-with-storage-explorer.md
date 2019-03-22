@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311205"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225093"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -55,18 +55,13 @@ Az Azure Storage Explorer macOS következő verzióiban támogatott:
 
 Az Azure Storage Explorert a következő Linux-disztribúciókon támogatják:
 
-* Ubuntu 16.04 x64 (ajánlott)
-* Ubuntu 17.10 x64
+* Ubuntu 18.04 x64
+* Ubuntu 16.04 x64
 * Ubuntu 14.04 x64
 
 Az Azure Storage Explorer a többi disztribúciókon is működhet, azonban csak azokat a fent felsorolt hivatalosan támogatott.
 
-Az alábbi függőségeket és kódtárak futtatható az Azure Storage Explorer linuxon is kell rendelkeznie:
-
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* libsecret (Megjegyzés: libsecret-1.so.0 kell lennie a gépen elérhető. Ha libsecret telepítve van egy másik verziója, megpróbálhatja a .so fájl helyreállítható összekapcsolása libsecret-1.so.0)
-* libgconf-2-4
-* Naprakész GCC
+Storage Explorer telepítése Linux rendszeren további segítségért olvassa el a [hibaelhárítási útmutatója](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies).
 
 Az Azure Storage Explorer [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciók adott lépést tartalmaznak.
 

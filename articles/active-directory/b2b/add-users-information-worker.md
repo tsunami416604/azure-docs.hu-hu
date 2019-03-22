@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16caf8b6fd48b5dca676b1c8ee046ad01264ca03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211427"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294511"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Milyen a szervezetben a felhasználók egy alkalmazáshoz vendégfelhasználókat is meghívhat
 
@@ -36,15 +37,15 @@ Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, alka
 1. Nyissa meg a hozzáférési Panel a `https://myapps.microsoft.com`.
 2. Az alkalmazás pontjára, kattintson a három pontra (**...** ), majd válassza ki **kezelés alkalmazás**.
  
-   ![Hozzáférési Paneljein alkalmazás kezelése](media/add-users-iw/access-panel-manage-app.png)
+   ![A kezelés alkalmazás almenü a Salesforce alkalmazás ábrázoló képernyőfelvétel](media/add-users-iw/access-panel-manage-app.png)
  
 3. Válassza ki a felhasználók lista tetején **+**.
    
-   ![Felhasználó hozzáadása a hozzáférési Panel](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![Tagok hozzáadása az alkalmazáshoz tartozó a pluszjelre ábrázoló képernyőfelvétel](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Ha szeretné, üdvözlő üzenetet is megadhat.
    
-   ![Hozzáférési Panel meghívót](media/add-users-iw/access-panel-invitation.png)
+   ![Képernyőfelvétel: a bővítmény hozzáadásához a Vendég tagok ablak](media/add-users-iw/access-panel-invitation.png)
    
 5. Válassza ki **Hozzáadás** , a vendégfelhasználó meghívó küldéséhez. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
 
@@ -55,19 +56,19 @@ Miután egy alkalmazást az önkiszolgáló működésre van konfigurálva, az a
 2. Nyissa meg a hozzáférési Panel a `https://myapps.microsoft.com`.
 3. Válassza ki a **csoportok** alkalmazást.
    
-   ![Hozzáférési Panel csoportok alkalmazás](media/add-users-iw/access-panel-groups.png)
+   ![Képernyőfelvétel: a csoportok alkalmazás a hozzáférési panelen](media/add-users-iw/access-panel-groups.png)
    
 4. A **saját csoportok**, válassza ki a csoportot, amely hozzáfér a megosztani kívánt alkalmazáshoz.
    
-   ![Saját hozzáférési Panel – csoportok](media/add-users-iw/access-panel-groups-i-own.png)
+   ![Képernyőfelvétel: hol kell válasszon ki egy csoportot a saját csoportok alapján](media/add-users-iw/access-panel-groups-i-own.png)
    
 5. A tagok listájának tetején válassza **+**.
    
-   ![Hozzáférési Panel – csoportok tag hozzáadása](media/add-users-iw/access-panel-groups-add-member.png)
+   ![Képernyőfelvétel a plusz a tagoknak a csoportba való felvételekor:](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. Az a **tagok hozzáadása** keresőmezőbe, a Vendég felhasználó e-mail címét. Ha szeretné, üdvözlő üzenetet is megadhat.
    
-   ![Hozzáférési Panel csoport meghívót](media/add-users-iw/access-panel-invitation.png)
+   ![Képernyőfelvétel: a bővítmény hozzáadásához a Vendég tagok ablak](media/add-users-iw/access-panel-invitation.png)
    
 7. Válassza ki **Hozzáadás** meghívóban leírtakat, a vendégfelhasználó automatikus küldése. Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
 

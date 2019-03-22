@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 9044890c1bb4a662adecec0e94a220897af54557
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115113"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096622"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
@@ -125,7 +125,7 @@ A **Create App Service** (App Service létrehozása) párbeszédpanelen:
   * **Hely**: Válassza ki **Nyugat-Európa** vagy egy Önhöz közeli helyet.
   * **A tarifacsomag**: Válassza ki az ingyenes lehetőséget. A szolgáltatások díját az [App Service díjszabás](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) részben találja.
 
-   ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
+    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 

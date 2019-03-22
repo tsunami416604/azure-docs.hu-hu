@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173891"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124218"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hogyan és miért érdemes az Azure AD-alkalmazások felvétele
 
@@ -133,8 +133,9 @@ Továbbra is szeretné, hogy a felhasználók a címtárban, alkalmazások regis
 * Megakadályozza, hogy a felhasználók saját maguk alkalmazások jóváhagyják:
   1. Az Azure Portalon nyissa meg a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) a vállalati alkalmazások szakaszában.
   2. Változás **felhasználók engedélyezhetik, hogy az alkalmazások hozzáférjenek a céges adatok saját nevükben való** való **nem**. 
-      > [!NOTE]
-      > Ha úgy dönt, hogy kapcsolja ki a felhasználói beleegyezés, egy rendszergazda lesz szükséges, hogy engedélyt adjanak az minden olyan új alkalmazás a felhasználó kell használnia.    
+     
+     > [!NOTE]
+     > Ha úgy dönt, hogy kapcsolja ki a felhasználói beleegyezés, egy rendszergazda lesz szükséges, hogy engedélyt adjanak az minden olyan új alkalmazás a felhasználó kell használnia.    
 * Megakadályozza, hogy a felhasználók a saját alkalmazások regisztrálása:
   1. Az Azure Portalon nyissa meg a [felhasználói beállítások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) szakaszban az Azure Active Directory
   2. Változás **felhasználók regisztrálhatnak alkalmazásokat** való **nem**.

@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6f7eaa91faabfea7bb951eb9863ffecd2f5499
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182374"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183152"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -49,7 +49,7 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 - A felhasználószintű licencelést igénylő Microsoft-felhőszolgáltatások mindegyike támogatott. Ez a támogatás magában foglalja a minden Office 365 termékek, Enterprise Mobility + Security és Dynamics 365.
 
-- A csoportalapú licencelés jelenleg csak az [Azure Portalon](https://portal.azure.com) érhető el. Ha a felhasználók és csoportok kezelésének elsődleges eszköze egy másik felügyeleti portál, például az Office 365 portál, folytathatja annak használatát. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
+- Csoportalapú licencelés jelenleg csak a [az Azure portal](https://portal.azure.com). Ha elsősorban használ egyéb alkalmazáskezelési portálokon a felhasználók és csoportok kezelése, mint például a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com), ehhez továbbra is. A licencek csoportszintű kezeléséhez azonban az Azure Portalt kell használnia.
 
 - Az Azure AD automatikusan kezeli a csoporttagság változásaiból eredő licencmódosításokat. A licencmódosítások általában a tagság változása után pár percen belül érvénybe lépnek.
 

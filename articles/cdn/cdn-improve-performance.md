@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: 4d1725b0559c34692d1a89d016fd2d6b7b1b26c1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096452"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben
 Fájlok tömörítési a egyszerű és hatékony módszer fájl átviteli sebességének növelése és a egy fájl méretének csökkentésével, a kiszolgálóról továbbítás előtt oldal betöltési teljesítmény érdekében. Fájlok tömörítési adatforgalmi költségek csökkentése és a egy rugalmasabb ügyfélkapcsolatok kialakítását élményt biztosíthat a felhasználóknak.
@@ -31,13 +31,11 @@ Fájl tömörítésének engedélyezéséhez a két módja van:
 
 > [!IMPORTANT]
 > Az Azure CDN konfigurációs módosítások eltarthat egy ideig a hálózaton belüli propagálásához: 
-- A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
-- Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
-- A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
->
+> - A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+> - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+> - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+> 
 > Ha először a CDN-végpont tömörítési beállítása, várja meg, 1 – 2 óra, mielőtt hozzálátna, győződjön meg arról, a tömörítési beállítások a POP-kre történő propagálása megtörtént.
-> 
-> 
 
 ## <a name="enabling-compression"></a>Tömörítés engedélyezése
 A standard és prémium szintű CDN-csomag biztosítja a tömörítés, de a felhasználói felület eltér. Standard és prémium szintű CDN rétegek közötti különbségekkel kapcsolatos további információkért lásd: [Azure CDN áttekintése](cdn-overview.md).
@@ -49,28 +47,28 @@ A standard és prémium szintű CDN-csomag biztosítja a tömörítés, de a fel
 > 
 
 1. A CDN-profiloldal jelölje ki a CDN-végpont, amelyet kezelni szeretne.
-   
+
     ![Profil CDN-végpontok](./media/cdn-file-compression/cdn-endpoints.png)
-   
+
     A CDN-végpont lap nyílik meg.
 2. Válassza ki **tömörítési**.
 
     ![A CDN-tömörítés kiválasztása](./media/cdn-file-compression/cdn-compress-select-std.png)
-   
+
     A tömörítés lap nyílik meg.
 3. Válassza ki **a** bekapcsolni a tömörítést.
-   
+
     ![CDN fájl tömörítési beállítások](./media/cdn-file-compression/cdn-compress-standard.png)
 4. Használja az alapértelmezett MIME-típusok, vagy hozzáadásával vagy eltávolításával a MIME-típusok listájának módosítása.
-   
+
    > [!TIP]
    > Bár lehetséges, nem ajánlott a tömörítés alkalmazandó tömörített formátum. Ha például ZIP, MP3, MP4 vagy JPG.
    > 
-   
+
    > [!NOTE]
    > Az alapértelmezett MIME-típusok listájának módosításával jelenleg nem támogatott az Azure CDN Standard a Microsofttól.
    > 
- 
+
 5. A módosítások elvégzése után válassza ki a **mentése**.
 
 ### <a name="premium-cdn-profiles"></a>Prémium szintű CDN-profilok
@@ -79,23 +77,23 @@ A standard és prémium szintű CDN-csomag biztosítja a tömörítés, de a fel
 > 
 
 1. Válassza ki a CDN-profiloldal **kezelés**.
-   
+
     ![Válassza ki a CDN kezelése](./media/cdn-file-compression/cdn-manage-btn.png)
-   
+
     Megnyílik a CDN felügyeleti portálját.
 2. A kurzort a **HTTP nagy** lapfülre, majd mutasson a **gyorsítótár beállításainak** úszó menü. Válassza ki **tömörítési**.
 
     ![A CDN-tömörítés kiválasztása](./media/cdn-file-compression/cdn-compress-select.png)
-   
+
     A tömörítési beállítások jelennek meg.
-   
+
     ![CDN fájl tömörítési beállítások](./media/cdn-file-compression/cdn-compress-files.png)
 3. Tömörítés engedélyezése kiválasztásával **tömörítés engedélyezve**. A MIME-típusok tömörítendő (szóközök nélkül) vesszővel tagolt lista formájában adja meg a **fájltípusok** mezőbe.
-   
+
    > [!TIP]
    > Bár lehetséges, nem ajánlott a tömörítés alkalmazandó tömörített formátum. Ha például ZIP, MP3, MP4 vagy JPG.
    > 
-    
+
 4. A módosítások elvégzése után válassza ki a **frissítés**.
 
 ## <a name="compression-rules"></a>A tömörítés szabályok
@@ -110,7 +108,7 @@ A **Azure CDN Standard a Microsoft** profilok, csak a megfelelő fájlok tömör
 Ezek a profilok az alábbi tömörítési kódolásokat támogatják:
 - a gzip (GNU zip)
 - brotli 
- 
+
 Ha a kérés támogatja egynél több tömörítési típus, brotli tömörítési élvez elsőbbséget.
 
 Amikor egy kérelem egy eszköz tömörítése a gzip és a kérés eredményét adja meg a gyorsítótár-tévesztés, az Azure CDN az eszköz tömörítése a gzip közvetlenül a POP-kiszolgálón hajt végre. A tömörített fájlt a későbbiekben a gyorsítótár szolgáltatja.
@@ -120,13 +118,13 @@ Amikor egy kérelem egy eszköz tömörítése a gzip és a kérés eredményét
 A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** profilok, csak a megfelelő fájlok tömörítve vannak. Jogosult a tömörítést, egy fájlt kell:
 - Lehet nagyobb, mint 128 bájt
 - 3 MB-nál kisebb lehet
- 
+
 Ezek a profilok az alábbi tömörítési kódolásokat támogatják:
 - a gzip (GNU zip)
 - DEFLATE
 - bzip2
 - brotli 
- 
+
 Ha a kérés egynél több tömörítési típus támogatja, akkor ezeket a tömörítési típusok élveznek brotli tömörítést.
 
 Amikor egy kérelem egy eszköz brotli tömörítési Itt adhatja meg (HTTP-fejléc `Accept-Encoding: br`) és a kérés eredményeket gyorsítótár-tévesztés, az Azure CDN brotli tömörítési az eszköz elvégzi a közvetlenül a POP-kiszolgálón. A tömörített fájlt a későbbiekben a gyorsítótár szolgáltatja.

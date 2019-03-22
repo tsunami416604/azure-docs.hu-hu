@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 206804ede429e8a9ace75c16b8f0ac4a8d3f49f7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443584"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124116"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 
@@ -143,9 +143,9 @@ Ha egy gyors prototípust írása, és nem szeretne Azure-erőforrások kiosztá
 Az ASP.NET core szakaszban egy Key Vaultot a projekt konfigurálásához kövesse az utasításokat.
 
 1. Telepítse a következő NuGet-csomagot a projekthez
-```
-Microsoft.Configuration.ConfigurationBuilders.UserSecrets
-```
+   ```
+   Microsoft.Configuration.ConfigurationBuilders.UserSecrets
+   ```
 
 2. Adja meg a Key Vault konfigurációs builder a Web.config fájlban. Ez a szakasz előtt helyezze *appSettings* szakaszban. Cserélje le *vaultName* kell lennie a Key Vault-e a Key Vault az Azure nyilvános vagy teljes URI szuverén felhő használata.
 
@@ -159,16 +159,16 @@ Microsoft.Configuration.ConfigurationBuilders.UserSecrets
         </builders>
     </configBuilders>
     ```
-3.  Adja meg az appSettings szakaszt a Key Vault konfigurációs builder használ. Ellenőrizze, hogy minden bejegyzés a titkos beállítás üres értékkel.
+3. Adja meg az appSettings szakaszt a Key Vault konfigurációs builder használ. Ellenőrizze, hogy minden bejegyzés a titkos beállítás üres értékkel.
 
-    ```xml
-    <appSettings configBuilders="AzureKeyVault">
-        <add key="webpages:Version" value="3.0.0.0" />
-        <add key="webpages:Enabled" value="false" />
-        <add key="ClientValidationEnabled" value="true" />
-        <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-        <add key="secret" value="" />
-    </appSettings>
-    ```
+   ```xml
+   <appSettings configBuilders="AzureKeyVault">
+       <add key="webpages:Version" value="3.0.0.0" />
+       <add key="webpages:Enabled" value="false" />
+       <add key="ClientValidationEnabled" value="true" />
+       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+       <add key="secret" value="" />
+   </appSettings>
+   ```
 
 4. Hibakeresés a projektben. Sikeresen fusson.

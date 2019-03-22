@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 7cdaebe62c7071b26c29e599bb0614dbe7631085
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778025"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124303"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bejövő adatátvitel kis adatkészletekhez, az alacsony, közepes hálózati sávszélesség
  
@@ -49,16 +49,16 @@ Ebben a forgatókönyvben javasoljuk a lehetőségek közül választhat:
 
 Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja össze.
 
-| Szolgáltatás                                                            | Azure Storage Explorer                    | Azure Portal  | AzCopy<br>Azure PowerShell<br>Azure CLI            | Az Azure Storage REST API-k és SDK-kkal |
-|----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
-| Rendelkezésre állás                                                       | Letöltés és telepítés <br>Önálló eszközzel | Webes adatvizsgálati eszközök az Azure Portalon           | A parancssori eszköz |A .NET, Java, Python, JavaScript, C++, Go, a Ruby és a PHP programozható felületek                                                         |
-| Grafikus felület                                              | Igen                                       | Igen                                                     | Nem                | Nem                                                      |
-| A támogatott platformok                                              | Windows, Mac, Linux                       | Webalapú     |Windows, Mac, Linux     |Összes platform                                                         |
-| Blob storage-műveletek engedélyezett<br>a blobok és mappák            | Feltöltés<br>Letöltés<br>Kezelés    | Feltöltés<br>Letöltés<br>Kezelés  |Feltöltés<br>Letöltés<br>Kezelés             | Igen, testre szabható                                                        |
-| Engedélyezett Gen1 a Data Lake storage<br>a fájlok és mappák műveletek  | Feltöltés<br>Letöltés<br>Kezelés                | Nem |Feltöltés<br>Letöltés<br>Kezelés                   |      Nem                                                   |
-| Engedélyezett fájl tárolási műveletek<br>a fájlok és könyvtárak        | Feltöltés<br>Letöltés<br>Kezelés       | Feltöltés<br>Letöltés<br>Kezelés   |Feltöltés<br>Letöltés<br>Kezelés |                                                         |Igen, testre szabható
-| Table storage-műveletek engedélyezett<br>táblák                      |Kezelés                            | Nem            |Tábla támogatása az AzCopy 7-es verziója |Igen, testre szabható|
-| Engedélyezett a Queue storage                                              | Kezelés                                    | Nem  |Nem | Igen, akkor a testre szabható|
+| Szolgáltatás | Azure Storage Explorer | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Az Azure Storage REST API-k és SDK-kkal |
+|---------|------------------------|--------------|-----------------------------------------|---------------------------------|
+| Rendelkezésre állás | Letöltés és telepítés <br>Önálló eszközzel | Webes adatvizsgálati eszközök az Azure Portalon | A parancssori eszköz |A .NET, Java, Python, JavaScript, C++, Go, a Ruby és a PHP programozható felületek |
+| Grafikus felület | Igen | Igen | Nem | Nem |
+| A támogatott platformok | Windows, Mac, Linux | Webalapú |Windows, Mac, Linux |Összes platform |
+| Blob storage-műveletek engedélyezett<br>a blobok és mappák | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés |Feltöltés<br>Letöltés<br>Kezelés | Igen, testre szabható |
+| Engedélyezett Gen1 a Data Lake storage<br>a fájlok és mappák műveletek | Feltöltés<br>Letöltés<br>Kezelés | Nem |Feltöltés<br>Letöltés<br>Kezelés                   | Nem |
+| Engedélyezett fájl tárolási műveletek<br>a fájlok és könyvtárak | Feltöltés<br>Letöltés<br>Kezelés | Feltöltés<br>Letöltés<br>Kezelés   |Feltöltés<br>Letöltés<br>Kezelés | Igen, testre szabható |
+| Table storage-műveletek engedélyezett<br>táblák |Kezelés | Nem |Tábla támogatása az AzCopy 7-es verziója |Igen, testre szabható|
+| Engedélyezett a Queue storage | Kezelés | Nem  |Nem | Igen, akkor a testre szabható|
 
 
 ## <a name="next-steps"></a>További lépések

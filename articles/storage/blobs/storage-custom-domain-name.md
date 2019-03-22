@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7f3b6de64343137278895d92835f080f8844dda1
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: e40b6fe115d6b6dea38ead9f0b2550d96bd04c7a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112636"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure storage-fiók egy egyéni tartománynév konfigurálása
 
-Konfigurálhat egy egyéni tartományt az Azure-tárfiókjában lévő Blobadatok eléréséhez. Az alapértelmezett végpont az Azure Blob storage  *\<storage-fiók-neve >. blob.core.windows.net*. Részeként is használhatja a webes végpont, amely akkor jön létre a [statikus webhelyek kiszolgálására funkció (előzetes verzió)](storage-blob-static-website.md). Ha leképez egy egyéni tartományt és altartományt, mint például *www.contoso.com*, a tárfiók blob vagy webes végpontra, a felhasználók hozzáférhetnek a blob adatokhoz a tárfiókban lévő tartományt is használhatja.
+Konfigurálhat egy egyéni tartományt az Azure-tárfiókjában lévő Blobadatok eléréséhez. Az alapértelmezett végpont az Azure Blob storage  *\<storage-fiók-neve >. blob.core.windows.net*. Részeként is használhatja a webes végpont, amely akkor jön létre a [statikus webhelyek kiszolgálására funkció (előzetes verzió)](storage-blob-static-website.md). Ha leképez egy egyéni tartományt és altartományt, mint például *www\.contoso.com*, a tárfiók blob vagy webes végpontra, a felhasználók hozzáférhetnek a blob adatokhoz a tárfiókban lévő tartományt is használhatja.
 
 > [!IMPORTANT]
 > Az Azure Storage nem még natív módon támogatja a HTTPS egyéni tartománnyal rendelkező. Jelenleg is [használata az Azure CDN blobok elérése az egyéni tartományok HTTPS-kapcsolaton keresztül](storage-https-custom-domain-cdn.md).
->
-
-> [!NOTE]  
+> 
+> 
+> [!NOTE]
 > Storage-fiókok jelenleg támogatja a-fiókonként csak egy egyéni tartománynevet. A webes és a blob Szolgáltatásvégpontok nem leképez egy egyéni tartománynevet.
+> 
+> [!NOTE]
+> A leképezés csak működik altartományt (például: www\.contoso.com). Ha a webes végpont elérhető legyen a legfelső szintű tartomány (például contoso.com), akkor meg kell [rendelkező egyéni tartományok az Azure CDN használatával](storage-https-custom-domain-cdn.md)
 
-> [!NOTE]  
-> A leképezés csak működik altartományt (például www.contoso.com). Ha a webes végpont elérhető legyen a legfelső szintű tartomány (például contoso.com), akkor meg kell [rendelkező egyéni tartományok az Azure CDN használatával](storage-https-custom-domain-cdn.md)
-
-Az alábbi táblázatban láthatók a nevű storage-fiókban található blob adatok néhány minta URL-címek *mystorageaccount*. Az egyéni altartomány, amely regisztrálva van a tárfiók *www.contoso.com*:
+Az alábbi táblázatban láthatók a nevű storage-fiókban található blob adatok néhány minta URL-címek *mystorageaccount*. Az egyéni altartomány, amely regisztrálva van a tárfiók *www\.contoso.com*:
 
 | Erőforrás típusa | Alapértelmezett URL-cím | Egyéni tartomány URL-címe |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Tárfiók | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
 | Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
 | Legfelső szintű tároló | http://mystorageaccount.blob.core.windows.net/myblob vagy http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob vagy http://www.contoso.com/$root/myblob |
@@ -43,13 +43,13 @@ Az alábbi táblázatban láthatók a nevű storage-fiókban található blob ad
 
 ## <a name="direct-vs-intermediary-cname-mapping"></a>Direct vs. intermediary CNAME mapping
 
-Az egyéni tartomány egy altartományt (például www.contoso.com) előtaggal két módon a tárfiók blobvégpontjához is mutat: 
+Az egyéni tartomány altartomány előtaggal mutathat (például: www\.contoso.com) a kétféle módon a tárfiókja blob végpontja: 
 * Használjon közvetlen CNAME-leképezés.
 * Használja a *asverify* köztes altartományt.
 
 ### <a name="direct-cname-mapping"></a>Direct CNAME mapping
 
-Az első és a legegyszerűbb, módja, ha egy kanonikus nevének (CNAME) rekordot, amely leképezi az egyéni tartományt és altartományt közvetlenül a blob végpontja. A CNAME record is a domain name system (DNS) feature that maps a source domain to a destination domain. Ebben a példában a forrástartomány a saját egyéni tartományt és altartományt (*www.contoso.com*, például). A cél-tartomány a blob service-végpont (*mystorageaccount.blob.core.windows.net*, például).
+Az első és a legegyszerűbb, módja, ha egy kanonikus nevének (CNAME) rekordot, amely leképezi az egyéni tartományt és altartományt közvetlenül a blob végpontja. A CNAME record is a domain name system (DNS) feature that maps a source domain to a destination domain. Ebben a példában a forrástartomány a saját egyéni tartományt és altartományt (*www\.contoso.com*, például). A cél-tartomány a blob service-végpont (*mystorageaccount.blob.core.windows.net*, például).
 
 A közvetlen metódus az "Egyéni tartomány regisztrálása" szakasz tárgyalja.
 
@@ -89,7 +89,7 @@ Egyéni tartománynév beállítása, hozzon létre egy új CNAME-rekordot a DNS
    A gazdagép nevét a blob-szolgáltatásvégpont. A formátum  *\<mystorageaccount >. blob.core.windows.net*, ahol *mystorageaccount* a tárfiók neve. #1 elem szerepel a gazdagép nevét, a **egyéni tartomány** ablaktábláján a [az Azure portal](https://portal.azure.com). 
 
 1. Az a **egyéni tartomány** panelen szövegbeviteli mezőben adja meg az egyéni tartományt az altartománnyal együtt nevét.  
-   Például, ha a tartomány *contoso.com* és az altartomány-alias *www*, adja meg **www.contoso.com**. Ha az altartomány *fényképek*, adja meg **photos.contoso.com**.
+   Például, ha a tartomány *contoso.com* és az altartomány-alias *www*, adja meg **www\.contoso.com**. Ha az altartomány *fényképek*, adja meg **photos.contoso.com**.
 
 1. Válassza ki az egyéni tartomány regisztrálása, **mentése**.  
    Ha a regisztráció sikeres, a portál értesíti, hogy a tárfiók frissítése sikerült.
@@ -116,7 +116,7 @@ A *asverify* altartomány altartománya különleges Azure rozpoznána. Előtag-
    A gazdagép nevét a blob-szolgáltatásvégpont. A formátum *asverify.\< mystorageaccount >. blob.core.windows.net*, ahol *mystorageaccount* a tárfiók neve. A gazdagép nevét, a #2 elem jelenik meg a *egyéni tartomány* ablaktábláján a [az Azure portal](https://portal.azure.com).
 
 1. Az a **egyéni tartomány** panelen szövegbeviteli mezőben adja meg az egyéni tartományt az altartománnyal együtt nevét.  
-   Nem tartalmaznak *asverify*. Például, ha a tartomány *contoso.com* és az altartomány-alias *www*, adja meg **www.contoso.com**. Ha az altartomány *fényképek*, adja meg **photos.contoso.com**.
+   Nem tartalmaznak *asverify*. Például, ha a tartomány *contoso.com* és az altartomány-alias *www*, adja meg **www\.contoso.com**. Ha az altartomány *fényképek*, adja meg **photos.contoso.com**.
 
 1. Válassza ki a **CNAME rekord közvetett ellenőrzésének használata** jelölőnégyzetet.
 

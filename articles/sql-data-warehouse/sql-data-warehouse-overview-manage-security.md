@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c3844d378b44d292b9a7eb631fa896d5f6e61dbe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 179925fc7411a1ccf3de02d7b6298cc66f93bc66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175717"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Egy SQL Data warehouse-adatbázis védelme
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Az SQL Data Warehouse használ a kiszolgálószintű tűzfalszabályokat. Adatb�
 
 Az SQL Data Warehouse kapcsolatokat a rendszer alapértelmezés szerint titkosítja.  Kapcsolati beállítások módosítása letiltja a titkosítást a rendszer figyelmen kívül hagyja.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL Data Warehouse jelenleg támogatja az SQL Server-hitelesítést a felhasználónévvel és jelszóval, és az Azure Active Directoryval. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezen hitelesítő adatokkal hitelesítheti magát az adatbázis tulajdonosa vagy a "dbo" SQL Server-hitelesítés segítségével a kiszolgáló bármely olyan adatbázisába.

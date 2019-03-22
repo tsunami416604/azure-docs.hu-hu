@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417973"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099171"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>A portál használatával különböző üzemi modellekből származó virtuális hálózatok összekapcsolása
 
@@ -114,7 +114,7 @@ Ha már rendelkezik egy virtuális hálózathoz egy VPN-átjáróval, ellenőriz
 1. Az a **új VPN-kapcsolat** lapon válassza ki a **átjáró azonnali létrehozása** jelölőnégyzetet.
 2. Kattintson a **Választható átjárókonfiguráció** elemre a **Átjáró konfigurációja** lap megnyitásához.
 
-  ![Nyissa meg az átjáró konfigurációs lapján](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "nyissa meg az átjáró konfigurációs lapján")
+   ![Nyissa meg az átjáró konfigurációs lapján](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "nyissa meg az átjáró konfigurációs lapján")
 3. Kattintson a **alhálózat – kötelező beállítások konfigurálása** megnyitásához a **alhálózat hozzáadása** lapot. A **neve** már konfigurálva van a szükséges érték: **Átjáró-alhálózat**.
 4. A **címtartomány** az átjáró-alhálózat tartományának hivatkozik. Bár létrehozhat egy átjáró-alhálózat egy/29-címtartomány (3 címeket), azt javasoljuk, hogy a további IP-címet tartalmaz, amelyek átjáró-alhálózat létrehozását. Ez be tudja fogadni a jövőbeni konfigurációk, amely több elérhető IP-címeket lehet szükség. Ha lehetséges használjon, / 27-eset vagy/28. Ha gyakorlatként használja ezeket a lépéseket, olvassa el a [példaértékeket](#values). Ebben a példában "10.0.0.32/28" használ. Kattintson a **OK** az átjáró-alhálózat létrehozásához.
 5. Az a **átjárókonfiguráció** lapon **mérete** hivatkozik az átjáró-Termékváltozatot. Válassza ki az átjáró-Termékváltozatot a VPN-átjáró számára.
@@ -192,16 +192,16 @@ Ez a szakasz cserélje le a helyőrző IP-címet, amelyet a helyi webhely beáll
 2. A virtuális hálózat lapján, kattintson a **áttekintése**.
 3. Az a **VPN-kapcsolatok** területén kattintson az ábra a helyi hely neve.
 
-  ![VPN-kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
+   ![VPN-kapcsolatok](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-kapcsolatok")
 4. Az a **Site-to-site VPN-kapcsolatok** lap, kattintson a webhely nevét.
 
-  ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "helyi hely neve")
+   ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "helyi hely neve")
 5. Nyissa meg a helyi hely neve a helyi helynek a kapcsolat lapon kattintson a **helyi hely** lapot.
 
-  ![Open-local-hely](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "helyi webhely megnyitása")
+   ![Open-local-hely](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "helyi webhely megnyitása")
 6. Az a **helyi hely** lapon, cserélje le a **VPN-átjáró IP-cím** a Resource Manager-átjáró IP-címmel.
 
-  ![Átjáró – ip-cím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "átjáró IP-címe")
+   ![Átjáró – ip-cím](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "átjáró IP-címe")
 7. Kattintson a **OK** frissíteni az IP-címet.
 
 ## <a name="RMtoclassic"></a>4. szakasz – klasszikus kapcsolat létrehozása a Resource Managerben

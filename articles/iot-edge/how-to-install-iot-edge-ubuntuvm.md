@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 456f7607786bd674cb6ede78d1164db033605799
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116418"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Run Azure IoT Edge on Ubuntu Virtual Machines
 
@@ -45,48 +45,48 @@ Az első rendszerindításkor az Azure IoT Edge Ubuntu virtuális gép előtelep
 Az Azure Portalról, "Azure IoT Edge" keresése és kiválasztása **Ubuntu Server 16.04 LTS + az Azure IoT Edge-futtatókörnyezet** a virtuális gép létrehozása a munkafolyamat elindításához. Itt lépéseket a 3. és 4 a fenti "Üzembe helyezése a az Azure piactér" utasításban.
 
 ## <a name="deploy-from-azure-cli"></a>Az Azure CLI telepítése
-1.  Ha most először a parancssori felület a virtuális gép üzembe helyezése, szüksége lesz programozott üzembe helyezés az Azure-előfizetés engedélyezése:
-    1. Nyissa meg a [Ubuntu rendszeren az Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace-ajánlat
-    1. Válassza ki **most már az első informatikai** és **Folytatás** későbbi párbeszédpanelen
-    1. Válassza ki **történő programozott telepítését? Első lépések** a portálon a párbeszédpanel alján
-    1. Kattintson a **engedélyezése** gombra a **programozott telepítés konfigurálása** lapon, majd kattintson a **mentése**
-1.  Azure CLI-vel használ az asztalon, ha először jelentkezik be:
+1. Ha most először a parancssori felület a virtuális gép üzembe helyezése, szüksége lesz programozott üzembe helyezés az Azure-előfizetés engedélyezése:
+   1. Nyissa meg a [Ubuntu rendszeren az Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace-ajánlat
+   1. Válassza ki **most már az első informatikai** és **Folytatás** későbbi párbeszédpanelen
+   1. Válassza ki **történő programozott telepítését? Első lépések** a portálon a párbeszédpanel alján
+   1. Kattintson a **engedélyezése** gombra a **programozott telepítés konfigurálása** lapon, majd kattintson a **mentése**
+1. Azure CLI-vel használ az asztalon, ha először jelentkezik be:
 
-    ```azurecli-interactive
-    az login
-    ```
+   ```azurecli-interactive
+   az login
+   ```
     
-1.  Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést:
-    1.  Az előfizetések listájának:
+1. Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést:
+   1. Az előfizetések listájának:
     
-       ```azurecli-interactive
-       az account list --output table
-       ```
+      ```azurecli-interactive
+      az account list --output table
+      ```
     
-    1.  Az a használni kívánt előfizetés előfizetés-azonosító mező másolása
-    1.  Az imént kimásolt Azonosítóját a következő parancs futtatásával:
+   1. Az a használni kívánt előfizetés előfizetés-azonosító mező másolása
+   1. Az imént kimásolt Azonosítóját a következő parancs futtatásával:
     
-       ```azurecli-interactive 
-       az account set -s {SubscriptionId}
-       ```
+      ```azurecli-interactive 
+      az account set -s {SubscriptionId}
+      ```
     
-1.  Hozzon létre egy új erőforráscsoportot (vagy adjon meg egy meglévőt a következő lépésben):
+1. Hozzon létre egy új erőforráscsoportot (vagy adjon meg egy meglévőt a következő lépésben):
 
-    ```azurecli-interactive
-    az group create --name IoTEdgeResources --location westus2
-    ```
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus2
+   ```
     
-1.  Hozzon létre egy új virtuális gépet:
+1. Hozzon létre egy új virtuális gépet:
 
-    ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
-    ```
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   ```
 
-1.  Állítsa be az eszköz kapcsolati karakterláncának (követheti a [egy új Azure IoT Edge-eszköz regisztrálása az Azure CLI-vel](how-to-register-device-cli.md) gyakorlati útmutató, ha még nem ismeri a folyamattal):
+1. Állítsa be az eszköz kapcsolati karakterláncának (követheti a [egy új Azure IoT Edge-eszköz regisztrálása az Azure CLI-vel](how-to-register-device-cli.md) gyakorlati útmutató, ha még nem ismeri a folyamattal):
 
-    ```azurecli-interactive
-    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
-    ```
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   ```
 
 Szeretne SSH be ezt a virtuális Gépet a telepítés után, ha használható a nyilvános IP-címre a parancsot: `ssh azureuser@{publicIpAddress}`
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 25c78e4050f1f5fdb02500fa1f206f6cf05e7134
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111956"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259540"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -67,16 +67,16 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
 
     - download.microsoft.com
     - A helyreállítási szolgáltatás URL-címek (geo-név a régióval, ahol a recovery Services-tároló található vonatkozik)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Az Azure nyilvános helyeken)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Az Azure China)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Az Azure US Government)
-        - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Az Azure Germany)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (az Azure nyilvános helyeken)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (az Azure-Kína)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (az Azure US Government)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (az Azure-Németország)
     - 3260-as kimenő portot
 
 > [!Note]
 > 
 > * A letöltött szkript fájlneve lesz a **geo-name** ki kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678...<br><br>
-> * Az URL-cím "<https://pod01-rec2.wcus.backup.windowsazure.com>"
+> * Az URL-cím "https:\//pod01-rec2.wcus.backup.windowsazure.com"
 
 
    Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.

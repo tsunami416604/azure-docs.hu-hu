@@ -4,7 +4,7 @@ description: Az ASP.NET Core-webalkalmazás OpenID Connect használatával a Mic
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200990"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -30,8 +30,7 @@ ms.locfileid: "56204712"
 
 Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-webalkalmazás a személyes fiókok (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókok minden olyan Azure Active Directory (Azure AD)-példányból.
 
-![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
-
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -143,7 +142,7 @@ A sor tartalmazó `.AddAzureAd` az Azure AD-hitelesítés hozzáadása az alkalm
 > |Ahol  |  |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) Alkalmazásazonosítója regisztrálva az Azure Portalon. |
-> | szolgáltató | Az STS végpont a felhasználó hitelesítéséhez. Általában ez a https://login.microsoftonline.com/{tenant}/v2.0 nyilvános felhő, ahol {tenant}, a bérlő vagy a bérlő Azonosítóját, vagy *közös* a közös végpontot (több-bérlős alkalmazásokhoz használt) mutató hivatkozás |
+> | szolgáltató | Az STS végpont a felhasználó hitelesítéséhez. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol {tenant}, a bérlő vagy a bérlő Azonosítóját, vagy *közös* a közös végpontot (több-bérlős alkalmazásokhoz használt) mutató hivatkozás |
 > | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben `ValidateIssuer` értékre van állítva `false` jelzi, hogy fogadja a semmilyen személyes vagy munkahelyi vagy iskolai fiókkal történő bejelentkezések. |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Egy vezérlő vagy egy vezérlő metódusának védelme

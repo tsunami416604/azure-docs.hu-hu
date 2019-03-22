@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ccf67aab2d393d4ee820c19e839ff3076712843d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 715c595f7a8757842ddf10de1c5d5c0a905e9d53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110528"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>A Data Factory MapReduce-programok meghívása
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -110,7 +110,7 @@ A HDInsight-tevékenység JSON-definíciójában:
         }
     }
     ```
-A HDInsight MapReduce-tevékenység segítségével bármely MapReduce jar-fájlt egy HDInsight-fürtön futtathat. Az alábbi példa JSON-definíciójában folyamat a HDInsight-tevékenység futtatni egy Mahout JAR van konfigurálva.
+   A HDInsight MapReduce-tevékenység segítségével bármely MapReduce jar-fájlt egy HDInsight-fürtön futtathat. Az alábbi példa JSON-definíciójában folyamat a HDInsight-tevékenység futtatni egy Mahout JAR van konfigurálva.
 
 ## <a name="sample-on-github"></a>Példa a Githubon
 Egy mintát, a HDInsight MapReduce-tevékenység használatával töltheti le: [Data Factory-mintákat a Githubon](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample).  

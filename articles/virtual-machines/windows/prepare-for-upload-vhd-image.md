@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 978667dcd3f7bd10192a396ec3e8d097bdb73509
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093803"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -320,14 +320,14 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 
 9. A következő AD házirendben győződjön meg arról, hogy nem távolítja el az alábbi, a hozzáférési fiókok:
 
-    - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok Assignment\Access a számítási, hálózati
+   - Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Felhasználói jogok Assignment\Access a számítási, hálózati
 
-    A következő csoportok szerepelnie kell a szabályzatra vonatkozó:
+     A következő csoportok szerepelnie kell a szabályzatra vonatkozó:
 
-    - Rendszergazdák
-    - Biztonságimásolat-felelősök
-    - Mindenki
-    - Felhasználók
+   - Rendszergazdák
+   - Biztonságimásolat-felelősök
+   - Mindenki
+   - Felhasználók
 
 10. Indítsa újra a virtuális Gépen, győződjön meg arról, hogy Windows továbbra is megfelelő, elérhető, az RDP-kapcsolat használatával. Ezen a ponton érdemes a helyi Hyper-V – győződjön meg róla a virtuális gép teljesen elindult-e, és ellenőrizze, hogy RDP érhető el a virtuális gép létrehozásához.
 
@@ -416,12 +416,12 @@ Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, am
 A következő beállítások nem befolyásolják a VHD feltöltésével. Azonban erősen ajánlott, hogy konfigurálta azokat.
 
 * Telepítse a [Azure virtuális gépek ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd: [Azure-beli virtuálisgép-ügynök – áttekintés](../extensions/agent-windows.md).
-*  Miután a virtuális gép létrehozása az Azure-ban, azt javasoljuk, hogy a teljesítmény javítása a "Historikus elnevezésű" köteten helyezze a lapozófájl méretét. Beállíthatja a következőképpen:
+* Miután a virtuális gép létrehozása az Azure-ban, azt javasoljuk, hogy a teljesítmény javítása a "Historikus elnevezésű" köteten helyezze a lapozófájl méretét. Beállíthatja a következőképpen:
 
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
-    ```
-Ha a virtuális Géphez csatolt adatlemezre, az ideiglenes meghajtó kötet meghajtójának betűjelét általában-e "D" A kijelölés és a beállításokat, hogy az elérhető meghajtók száma függően eltérő lehet.
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  Ha a virtuális Géphez csatolt adatlemezre, az ideiglenes meghajtó kötet meghajtójának betűjelét általában-e "D" A kijelölés és a beállításokat, hogy az elérhető meghajtók száma függően eltérő lehet.
 
 ## <a name="next-steps"></a>További lépések
 * [Windows Virtuálisgép-Rendszerkép feltöltése az Azure-bA a Resource Manager üzembe helyezések](upload-generalized-managed.md)

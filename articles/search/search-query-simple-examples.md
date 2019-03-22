@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6037d6a1b418a4241f1133b8ca7d89764da22f61
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571371"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136478"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Az Azure Searchben a lekérdezések létrehozásához Példák egyszerű szintaxisú lekérdezésekre
 
@@ -273,7 +273,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Próbálja meg a lekérdezések a kódot. Az alábbi hivatkozások azt ismertetik, hogyan állítható be a keresési lekérdezések a .NET-hez és a REST API az alapértelmezett egyszerű szintaxis használatával.
 
 * [A .NET SDK használatával az Azure Search-Index lekérdezése](search-query-dotnet.md)
-* [A REST API használatával az Azure Search-Index lekérdezése](search-query-rest-api.md)
+* [A REST API használatával az Azure Search-Index lekérdezése](search-create-index-rest-api.md)
 
 Az alábbi hivatkozásokra kattintva további keresésiszintaxis-referencia, lekérdezés-architektúra és példák találhatók:
 

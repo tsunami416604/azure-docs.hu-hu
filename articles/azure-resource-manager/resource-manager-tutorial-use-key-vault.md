@@ -14,12 +14,12 @@ ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 4027982479b2db315ed47f0eb1cb51977f6374b1
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 50882fc383d4dfab85b5afb919b24c7940eb5ee0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310777"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122741"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Oktatóanyag: Integrálhatja az Azure Key Vault Resource Manager-sablon telepítése
 
@@ -145,13 +145,13 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt. Ez ugyanaz a forgatókönyv, amelyet az [Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása](./resource-manager-tutorial-create-templates-with-dependent-resources.md) részben használt.
 4. A sablon öt erőforrást határoz meg:
 
-    * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-    Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
+     Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
 5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 6. Ismételje meg az 1–4. lépést a következő URL-cím megnyitásához, majd mentse a fájlt **azuredeploy.parameters.json** néven.
 

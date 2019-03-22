@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453171"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105726"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Gyors útmutató: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studióban
 
@@ -95,21 +95,21 @@ Először hozzáadunk egy modult, amely eltávolítja a **normalized-losses** os
 
 1. Kattintson a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, majd a **Properties** (Tulajdonságok) panelen kattintson a **Launch column selector** (Oszlopválasztó elindítása) elemre.
 
-    - A bal oldalon kattintson a **With rules** (Szabályokkal) lehetőségre
-    - A **Begin With** (Kezdés a következővel) területen kattintson az **All columns** (Minden oszlop) lehetőségre. Ezek a szabályok közvetlen [Select Columns in Dataset] [ select-columns] (kivéve azokat fogunk kizárása) az összes oszlopot.
-    - A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** (normalizált veszteségek) lehetőséget, amely aztán bekerül a szövegdobozba.
-    - Kattintson a pipa (OK) gombra (a jobb alsó) az Oszlopválasztó bezárásához.
+   - A bal oldalon kattintson a **With rules** (Szabályokkal) lehetőségre
+   - A **Begin With** (Kezdés a következővel) területen kattintson az **All columns** (Minden oszlop) lehetőségre. Ezek a szabályok közvetlen [Select Columns in Dataset] [ select-columns] (kivéve azokat fogunk kizárása) az összes oszlopot.
+   - A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Megjelenik az oszlopnevek listája. Válassza a **normalized-losses** (normalizált veszteségek) lehetőséget, amely aztán bekerül a szövegdobozba.
+   - Kattintson a pipa (OK) gombra (a jobb alsó) az Oszlopválasztó bezárásához.
 
-    ![Az Oszlopválasztó elindítása és a "normalized-losses" oszlop kizárása](./media/create-experiment/launch-column-selector.png)
+     ![Az Oszlopválasztó elindítása és a "normalized-losses" oszlop kizárása](./media/create-experiment/launch-column-selector.png)
 
-    Ekkor a **Select Columns in Dataset** (Adathalmaz oszlopainak kijelölése) modul Properties (Tulajdonságok) panelje jelzi, hogy a modul a **normalized-losses** ( normalizált veszteségek) kivételével az adathalmaz összes oszlopát fel fogja dolgozni.
+     Ekkor a **Select Columns in Dataset** (Adathalmaz oszlopainak kijelölése) modul Properties (Tulajdonságok) panelje jelzi, hogy a modul a **normalized-losses** ( normalizált veszteségek) kivételével az adathalmaz összes oszlopát fel fogja dolgozni.
 
-    ![A Tulajdonságok panelen látható, hogy a "normalized-losses" oszlop ki van zárva](./media/create-experiment/showing-excluded-column.png)
+     ![A Tulajdonságok panelen látható, hogy a "normalized-losses" oszlop ki van zárva](./media/create-experiment/showing-excluded-column.png)
 
-    > [!TIP] 
-    > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. A jelen esetben kattintson duplán a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, és írja be az „Exclude normalized losses” (A normalized-losses oszlop kizárása) szöveget.
+     > [!TIP] 
+     > A modulokhoz megjegyzéseket adhat. Ehhez kattintson duplán a kívánt modulra, majd gépelje be a megjegyzés szövegét. Így egyetlen pillantással felmérheti, hogy mire szolgál az adott modul a kísérletben. A jelen esetben kattintson duplán a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modulra, és írja be az „Exclude normalized losses” (A normalized-losses oszlop kizárása) szöveget.
 
-    ![Megjegyzés hozzáadása modulhoz dupla kattintással](./media/create-experiment/add-comment.png)
+     ![Megjegyzés hozzáadása modulhoz dupla kattintással](./media/create-experiment/add-comment.png)
 
 1. Húzza a [Clean Missing Data][clean-missing-data] (Hiányzó adatok törlése) modult a kísérletvászonra, és kösse össze a [Select Columns in Dataset][select-columns] (Adathalmaz oszlopainak kijelölése) modullal. A **Properties** (Tulajdonságok) panel **Cleaning mode** (Törlés módja) beállításánál válassza a **Remove entire row** (Teljes sor eltávolítása) lehetőséget. Ezeket a beállításokat a közvetlen [Clean Missing Data] [ clean-missing-data] , amely tartalmaz a hiányzó sort törölje. Kattintson duplán a modulra, és írja be a következő megjegyzést: „Hiányzó értéket tartalmazó sorok törlése”.
 

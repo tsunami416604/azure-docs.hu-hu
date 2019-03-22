@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 73c770f45666ce76b770796ac9714d007c2870cb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095364"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Ruby használatával
 
@@ -86,7 +86,7 @@ gem install 'azure_sdk'
 Azure Ruby SDK használatához az Azure Stack használatával, adja meg a következő értékeket, és adja meg a következő értékeket a környezeti változókat. Az utasításokat lásd a táblázat az operációs rendszerének a a környezeti változók beállítása után.
 
 | Érték | Környezeti változók | Leírás |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Bérlőazonosító | AZURE_TENANT_ID | Az Azure Stack értékét [bérlőazonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű alkalmazást azonosító mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor.  |
 | Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |

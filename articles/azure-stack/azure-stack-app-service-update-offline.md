@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 808c2f38be875e70b4f52698b7a6278aa781a6ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124081"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Az Azure App Service az Azure Stacken offline frissítés
 
@@ -97,14 +97,14 @@ Leválasztott környezet frissítése az App Service-ben, akkor először létre
 7. A következő oldalon:
 
    1. Kattintson a **Connect** megjelenítő gombra a **Azure Stack-előfizetést** mezőbe.
-        * Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Kattintson a **jelentkezzen be a**.
-        * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: _cloudadmin@azurestack.local_. Adja meg a jelszót, és kattintson a **bejelentkezés**.
+      * Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Kattintson a **jelentkezzen be a**.
+      * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: _cloudadmin@azurestack.local_. Adja meg a jelszót, és kattintson a **bejelentkezés**.
    2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
    3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
    4. Ha meglévő App Service-környezet észlel, majd az erőforrás és a tárfiókja fog használni feltöltve, szürkén jelenik meg.
    5. Kattintson a **tovább** , tekintse át a frissítési összefoglalót.
 
-    ![Az App Service-telepítést észlelt][4]
+      ![Az App Service-telepítést észlelt][4]
 
 8. Az összefoglalás lapon:
    1. Ellenőrizze a kiválasztott beállítások. Módosításához használja a **előző** gombok használatával keresse fel az előző lapokra.

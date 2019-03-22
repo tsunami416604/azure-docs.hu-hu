@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: b99490102dd4f2c08a11be066b2ddc5fd6b7ea7b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bc7a49aa143400387afcd59d5b9307d82a028486
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535835"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098661"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -75,23 +75,23 @@ Jegyezze fel az appId-tulajdonság az egy későbbi lépésben a parancs által 
 
 Az Azure Portalon:
 
-1.  Válassza ki **az Azure Active Directory** > **Alkalmazásregisztráció**.
-2.  Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
-3.  Az eredmények között kattintson az alkalmazás regisztrációját.
-4.  A **beállítások**válassza **szükséges engedélyek**.
-5.  A **szükséges engedélyek**válassza **Hozzáadás**.
+1. Válassza ki **az Azure Active Directory** > **Alkalmazásregisztráció**.
+2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
+3. Az eredmények között kattintson az alkalmazás regisztrációját.
+4. A **beállítások**válassza **szükséges engedélyek**.
+5. A **szükséges engedélyek**válassza **Hozzáadás**.
 
-  ![Alkalmazásregisztráció](media/openshift-post-deployment/app-registration.png)
+   ![Alkalmazásregisztráció](media/openshift-post-deployment/app-registration.png)
 
-6.  Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kattintson a **kiválasztása** alján.
+6. Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kattintson a **kiválasztása** alján.
 
-  ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  On Step 2: Jelölje be az engedélyeket, jelölje be **jelentkezzen be és felhasználói profil olvasása** alatt **delegált engedélyek**, és kattintson a **válassza**.
+7. On Step 2: Jelölje be az engedélyeket, jelölje be **jelentkezzen be és felhasználói profil olvasása** alatt **delegált engedélyek**, és kattintson a **válassza**.
 
-  ![Alkalmazásregisztráció-hozzáférés](media/openshift-post-deployment/app-registration-access.png)
+   ![Alkalmazásregisztráció-hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
-8.  Válassza a **Done** (Kész) lehetőséget.
+8. Válassza a **Done** (Kész) lehetőséget.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift az Azure AD-hitelesítés konfigurálása
 

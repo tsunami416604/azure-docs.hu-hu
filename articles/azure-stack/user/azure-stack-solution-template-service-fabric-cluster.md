@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248044"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098008"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
@@ -37,17 +37,17 @@ A következők szükségesek a Service Fabric-fürt üzembe helyezéséhez:
    Ez az a KeyVault Service Fabric üzembe helyezésekor hozzáadása X.509-tanúsítvány. 
    - A **CN** az ehhez a tanúsítványhoz meg kell egyeznie a teljesen minősített tartomány nevét (FQDN), a Service Fabric-fürtöt hoz létre. 
    - A tanúsítvány formátuma PFX, kell lennie, mint a nyilvános és titkos kulcsok szükségesek. 
-   Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) a kiszolgálóoldali tanúsítvány létrehozásához.
+     Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) a kiszolgálóoldali tanúsítvány létrehozásához.
 
-    > [!NOTE]  
-    > A x.509 tanúsítvány egy önaláírt tanúsítványt inplace tesztelési célokra használható. Önaláírt tanúsítványok nem kell egyeznie a fürt teljes Tartománynevét.
+     > [!NOTE]  
+     > A x.509 tanúsítvány egy önaláírt tanúsítványt inplace tesztelési célokra használható. Önaláírt tanúsítványok nem kell egyeznie a fürt teljes Tartománynevét.
 
-1.  **Rendszergazdai ügyfél tanúsítványa** Ez az a tanúsítvány, amelyet az ügyfél a Service Fabric-fürtöt, amely is lehet önaláírt hitelesítést fog használni. Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) az ügyféltanúsítvány létrehozásához.
+1. **Rendszergazdai ügyfél tanúsítványa** Ez az a tanúsítvány, amelyet az ügyfél a Service Fabric-fürtöt, amely is lehet önaláírt hitelesítést fog használni. Lásd: [követelmények](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) az ügyféltanúsítvány létrehozásához.
 
-1.  **Az Azure Stack piactéren elérhetőnek kell lennie a következőkkel:**
-     - **A Windows Server 2016** – a sablon a Windows Server 2016 rendszerképet használ a fürt létrehozásához.  
-     - **Ügyfél parancsprogramok futtatására szolgáló bővítmény** – virtuálisgép-bővítmény a Microsoft.  
-     - **PowerShell célállapot-konfigurációs szakasz** – virtuálisgép-bővítmény a Microsoft.
+1. **Az Azure Stack piactéren elérhetőnek kell lennie a következőkkel:**
+    - **A Windows Server 2016** – a sablon a Windows Server 2016 rendszerképet használ a fürt létrehozásához.  
+    - **Ügyfél parancsprogramok futtatására szolgáló bővítmény** – virtuálisgép-bővítmény a Microsoft.  
+    - **PowerShell célállapot-konfigurációs szakasz** – virtuálisgép-bővítmény a Microsoft.
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
