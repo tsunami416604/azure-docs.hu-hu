@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898082"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339584"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
 Ez az útmutató az Azure fejlesztési tárolóhelyek használata esetén előfordulhat, hogy rendelkezik kapcsolatos gyakori problémák információkat tartalmaz.
+
+Ha a probléma az Azure fejlesztési tárolóhelyek használata esetén, hozzon létre egy [probléma az Azure fejlesztési tárolóhelyek GitHub-adattárában](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="enabling-detailed-logging"></a>Részletes naplózás engedélyezése
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>A fejlesztői, szóközök túllépi az időkorlátot *Várakozás a tároló-rendszerkép összeállítását...*  az AKS-csomópontok virtuális lépés
 
 ### <a name="reason"></a>Ok
-Ez akkor fordul elő, amikor megpróbálja futtatni egy szolgáltatás, amely konfigurálva van Futtatás fejlesztési tárolóhelyek használata egy [AKS virtuális csomópont](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Fejlesztői, szóközök jelenleg nem támogatja az létrehozásához, vagy a virtuális csomópontok szolgáltatások hibakeresésében.
+Ez az időtúllépési akkor fordul elő, amikor megpróbálja futtatni egy szolgáltatás, amely konfigurálva van Futtatás fejlesztési tárolóhelyek használata egy [AKS virtuális csomópont](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Fejlesztői, szóközök jelenleg nem támogatja az létrehozásához, vagy a virtuális csomópontok szolgáltatások hibakeresésében.
 
 Ha `azds up` az a `--verbose` kapcsoló vagy engedélyezése részletes naplózás a Visual Studióban, további részletek megtekintéséhez:
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Ez jelzi, hogy a szolgáltatás pod hozzá lett rendelve *virtuális-csomópont-aci-linux*, amely egy virtuális csomópont.
+A fenti parancs bemutatja, hogy a szolgáltatás pod hozzá lett rendelve *virtuális-csomópont-aci-linux*, amely egy virtuális csomópont.
 
 ### <a name="try"></a>Próbálja ki:
 A Helm-diagramot, távolítsa el a szolgáltatás frissítése *nodeSelector* és/vagy *tolerations* értékek, amelyek lehetővé teszik a szolgáltatást egy virtuális csomópont futtathatók. Ezeket az értékeket a diagram általában meghatározott `values.yaml` fájlt.

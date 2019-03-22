@@ -9,12 +9,12 @@ ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 86e5a0a0cf4c820efdcc65505d11e2fb0c198f0b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039843"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880075"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Hibák elhárításához, ha az aszinkron Java SDK használata Azure Cosmos DB SQL API-fiókok
 Ez a cikk ismerteti gyakori problémák, megoldások, diagnosztikai lépések és eszközök használata esetén a [Java SDK-val aszinkron](sql-api-sdk-async-java.md) az Azure Cosmos DB SQL API-fiókok.
@@ -150,6 +150,40 @@ Ez a hiba a kiszolgálóoldali hiba történik. Azt jelzi, hogy a a kiosztott á
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Nem sikerült kapcsolódni az Azure Cosmos DB emulator
 
 Az Azure Cosmos DB emulator HTTPS-tanúsítvány önaláírt. Az SDK az emulátorral működjön az emulátor tanúsítvány importálása egy Java TrustStore. További információkért lásd: [emulátortanúsítványok exportálása az Azure Cosmos DB](local-emulator-export-ssl-certificates.md).
+
+### <a name="dependency-conflict-issues"></a>Függőségi ütközés kapcsolatos problémák
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+A fenti kivétel javasol függőség egy régebbi verziója RxJava lib (pl. 1.2.2) rendelkezik. Az SDK támaszkodik RxJava 1.3.8, amely rendelkezik az API-k RxJava korábbi verzióiban nem érhető el. 
+
+Az ilyen issuses, hogy mely más függőségek azonosításához az RxJava-1.2.2 biztosítható a megkerülő megoldás, és kizárja a RxJava-1.2.2 tranzitív függőség, és engedélyezze a cosmos DB SDK használata az újabb verzióra.
+
+Azonosíthatja, hogy melyik könyvtár elérhetővé teszi az RxJava 1.2.2 mellett a projekt pom.xml fájlt a következő parancs futtatásával:
+```bash
+mvn dependency:tree
+```
+További információkért lásd: a [maven-függőségi fa útmutató](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html).
+
+Ha azonosította a RxJava-1.2.2 tranzitív függőség mely más függőség a projekt, módosíthatja a függőséget a lib pom-fájljába és kizárási RxJava tranzitív függőség a következő:
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+További információkért lásd: a [tranzitív függőségi útmutató kizárása](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
 ## <a name="enable-client-sice-logging"></a>Ügyfél-SDK naplózásának engedélyezése

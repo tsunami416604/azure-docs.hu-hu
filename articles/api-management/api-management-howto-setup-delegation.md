@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: f0050a91ca8ed380c838c96cf1e485a80a0c9297
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445395"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892455"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Annak a felhasználói és termékelőfizetés delegálása
 Delegálás lehetővé teszi, hogy a meglévő webhely fejlesztői sign-a vagy a regisztráláshoz és a termékekre a fejlesztői portál beépített funkciójával figyelésekor előfizetés kezelésére. Ez lehetővé teszi a felhasználói adatokat, és hajtsa végre az alábbi lépéseket az érvényesítés egyéni módon webhelyét.
@@ -47,7 +47,7 @@ Most szeretne létrehozni a **delegálási végpont**. Számos művelet végreha
 
 1. Kap egy kérelmet a következő formátumban:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL forrás lap} & só = {string} & sig = {string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
    > 
    > 
    
@@ -104,7 +104,7 @@ Győződjön meg, hogy a delegálási végpont a következő műveleteket hajtja
 
 1. Kap egy kérelmet a következő formátumban:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product előfizetés a riasztásoktól} & userId = {a felhasználó kérést} & só = {string} & sig = {string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation= {operation} & productId = {előfizetni a termék} & userId = {a felhasználó kérést} & só = {string} & sig = {string}*
    > 
    > 
    
@@ -120,7 +120,7 @@ Győződjön meg, hogy a delegálási végpont a következő műveleteket hajtja
    * **SIG**: összehasonlítás a saját használandó számított biztonsági kivonatot kiszámított kivonat
 2. Győződjön meg arról, hogy a kérés érkezik az Azure API Management (nem kötelező, de erősen ajánlott a biztonság)
    
-   * COMPUTE-HMAC-SHA512 egy karakterlánc alapján a **productId**, ** userId, és **védőérték** lekérdezési paramétert:
+   * COMPUTE-HMAC-SHA512 egy karakterlánc alapján a **productId**, **userId**, és **védőérték** lekérdezési paramétert:
      
      > HMAC-val (**védőérték** + "\n" + **productId** + "\n" + **userId**)
      > 

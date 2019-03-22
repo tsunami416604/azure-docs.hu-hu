@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c353c40cc838dc4082d3d4b843a48a5fedb6e1f5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039469"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002381"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
 
@@ -190,7 +190,7 @@ Most telepíteni a konfigurációs kiszolgáló:
 
 > [!NOTE]
 > A konfigurációs kiszolgálót a parancssorból is telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
-
+> 
 > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **Konfigurációs kiszolgálók** > ***kiszolgáló neve*** > **Kiszolgáló frissítése** elemet.
 
 ## <a name="step-4-set-up-the-target-environment"></a>4. lépés: A célkörnyezet beállítása
@@ -214,7 +214,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 4. A **helyreállítási pont megőrzése**, adja meg, mennyi ideig van megtartva egyes helyreállítási pontok. A replikált virtuális gépek az adott időszakon belül bármikor helyreállíthatók legyenek.
 5. A **alkalmazáskonzisztens pillanatkép gyakorisága**, adja meg, hogy milyen gyakran jönnek létre alkalmazáskonzisztens pillanatképeket.
 
-    - Alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmazásadatok időponthoz pillanatképet.
+    - Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmazásadatok időponthoz pillanatképet.
     - Kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális Gépet az alkalmazások konzisztens állapotban a pillanatkép készítésének időpontjában.
 6. A szabályzat létrehozásához válassza az **OK** gombot.
 
@@ -249,9 +249,9 @@ Ellenőrizze, hogy végrehajtotta az összes feladat [1. lépés: Gép előkész
 
 > [!NOTE]
 > Amikor engedélyezi a replikációt egy adott virtuális gépen, a Site Recovery telepíti a mobilitási szolgáltatást.
-
+> 
 > 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
-
+> 
 > A hozzáadott virtuális gépek monitorozásához ellenőrizze a virtuális gépek legutolsó felderítésének időpontját a **Konfigurációs kiszolgálók** > **Legutóbbi kapcsolat** területen. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
 

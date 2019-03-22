@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 863b380d4f36e24119e64fbd4a59e8cd66c911e1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779419"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884744"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -217,22 +217,22 @@ Elérheti a mérőszámokat szoftveresen is. További információkért tekintse
 > Sikeres értesítések, leküldéses értesítések lesz küldve a külső pns-sel (például az Apple APNS) vagy a Google FCM egyszerűen jelenti. A feladata az, hogy az értesítések céleszközökre a PNS. Általában a PNS nem fedi fel kézbesítési metrikák át harmadik félnek.  
 
 [Azure Portal]: https://portal.azure.com
-[Notification Hubs díjszabása]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs díjszabása]: https://azure.microsoft.com/pricing/details/notification-hubs/
+[Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Esettanulmány: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Esettanulmány: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [Esettanulmány: Seattle alkalommal]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Esettanulmány: Mural.LY]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Esettanulmány: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [A Notification Hubs – REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[A Notification Hubs bevezetés kapcsolatos oktatóanyagok]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome-alkalmazások oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
-[Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
+[A Notification Hubs bevezetés kapcsolatos oktatóanyagok]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Chrome-alkalmazások oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
+[Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Háttér-regisztrációs útmutató]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Háttér-regisztrációs útmutató 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [Notification Hubs biztonsági modell]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Notification Hubs leküldéses biztonságos oktatóanyag]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[A Notification Hubs hibáinak elhárítása]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Notification Hubs leküldéses biztonságos oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
+[A Notification Hubs hibáinak elhárítása]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs-metrikák]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Regisztrációk Exportálás/importálás]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

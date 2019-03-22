@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 369f3ebca0ca2f5862d8300934dee57a73d8bada
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c934a3b16f5cdd2b4f703b1be15ce16ddc6d8746
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903402"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338479"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
 
@@ -265,7 +265,7 @@ A teljes mintakód elérhető legyen [Notification Hub-minták]. Mindhárom öss
 ### <a name="running-the-sample"></a>A minta futtatása
 
 1. Győződjön meg arról, hogy a webjobs-feladat megfelelően fut, és folyamatosan futtatott, ütemezett.
-2. Futtassa a ** EnterprisePushMobileApp, amely elindítja a Windows Store app.
+2. Futtassa a **EnterprisePushMobileApp**, a Windows Store-alkalmazás elindításához.
 3. Futtassa a **EnterprisePushBackendSystem** konzolalkalmazásra, amely szimulálja a LoB-háttérrendszerhez, és elindítja a küld üzeneteket, és a bejelentési értesítések jelennek meg a következő képhez hasonlóan kell megjelennie:
 
     ![][5]

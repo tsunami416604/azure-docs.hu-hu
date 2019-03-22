@@ -1,19 +1,19 @@
 ---
 title: Gyakori kérdések – VMware-ből az Azure Site recoveryvel Azure-beli vészhelyreállításához |} A Microsoft Docs
 description: Ez a cikk gyakori kérdésekre foglalja össze, amikor, vészhelyreállítás beállítása helyszíni VMware virtuális gépek az Azure-bA az Azure Site Recovery használatával
-author: mayurigupta13
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/14/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: raynew
+ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901848"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319380"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -165,6 +165,10 @@ Nem, a nem felügyelt való váltás felügyelt nem támogatott.
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
 Azure-bA replikálni, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-tárolók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
+
+### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Használhatok Riverbed SteelHeads replikáció?
+
+A partner Riverbed, részletes útmutatást nyújt az Azure Site Recovery használata. Tekintse meg a [megoldási útmutató](https://community.riverbed.com/s/article/DOC-4627).
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 
