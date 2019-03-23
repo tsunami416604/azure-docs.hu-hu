@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 946d8196fbe49e452dab8fa36e4c746a1bcaf490
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c99380faee8fd1bc42922f7f0e367edde1154a9b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137623"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368901"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Gyors útmutató: Ismerkedés az Azure Search REST API-k Postman vagy a Fiddler
 
@@ -85,7 +85,7 @@ A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból
 > [!Tip]
 > Kapcsolja ki a webes forgalom felesleges, nem kapcsolódó HTTP-tevékenység elrejtéséhez. A fiddler esetében a **fájl** menüben kapcsolja ki a **forgalom rögzítése**. 
 
-## <a name="1---create-an-index"></a>1 - index létrehozása
+## <a name="1---create-an-index"></a>1 – Index létrehozása
 
 A kérelem törzse tartalmazza az indexdefiníciót. A kérelemtörzs hozzáadása teszi teljessé az indexet létrehozó kérelmet.
 
@@ -145,6 +145,7 @@ A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot ta
              "hotelId": "1",
              "baseRate": 199.0,
              "description": "Best hotel in town",
+             "description_fr": "Meilleur hôtel en ville"
              "hotelName": "Fancy Stay",
              "category": "Luxury",
              "tags": ["pool", "view", "wifi", "concierge"],
@@ -159,6 +160,7 @@ A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot ta
              "hotelId": "2",
              "baseRate": 79.99,
              "description": "Cheapest hotel in town",
+             "description_fr": "Hôtel le moins cher en ville",
              "hotelName": "Roach Motel",
              "category": "Budget",
              "tags": ["motel", "budget"],
@@ -219,7 +221,7 @@ Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tart
 
 ![Fiddler-kérelem hasznos adatai][9]
 
-## <a name="3---search-an-index"></a>3 – keresés az indexekben
+## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 Most, hogy az index és a dokumentumok is betöltődtek, számára küldhet lekérdezéseket az őket használó [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) REST API-t.
 
 + Ebben a lépésben a parancsot cserélje a **GET** parancsra.

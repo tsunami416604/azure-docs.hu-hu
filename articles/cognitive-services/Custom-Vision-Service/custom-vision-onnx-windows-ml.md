@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879071"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351864"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: A Custom Vision az ONNX-modell használata Windows Machine Learning (előzetes verzió)
 
@@ -51,7 +51,7 @@ A mintaalkalmazás itt érhető el: [https://github.com/Azure-Samples/cognitive-
 
 1. A `F5` kulcs használatával indítsa el az alkalmazást a Visual Studióból. Lehet, hogy a rendszer kéri a fejlesztői mód engedélyezését. További információkért lásd a [Fejlesztés engedélyezése az eszközön](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) dokumentumot.
 
-2. Az alkalmazás indításakor a gombbal válasszon ki egy képet a pontozáshoz.
+1. Az alkalmazás indításakor a gombbal válasszon ki egy képet a pontozáshoz.
 
 ## <a name="use-your-own-model"></a>Saját modell használata
 
@@ -65,8 +65,8 @@ Saját modell esetén a következőképpen járjon el:
 
 1. A Megoldáskezelőben kattintson a jobb gombbal az Assets mappára, és válassza az __Add Existing Item__ (Meglévő elem hozzáadása) lehetőséget. Válassza ki az ONNX-fájlt.
 
-1. A Megoldáskezelőben válassza ki az ONNX-fájlt az Assets mappából. Módosítsa a fájl következő tulajdonságait: 
-    
+1. A Megoldáskezelőben válassza ki az ONNX-fájlt az Assets mappából. Módosítsa a fájl következő tulajdonságait:
+
     * __Build Action (Felépítési művelet)__ -> __Content (Tartalom)__
     * __Copy to Output Directory (Másolás a kimeneti könyvtárba)__ -> __Copy if newer (Másolás, ha újabb)__
 

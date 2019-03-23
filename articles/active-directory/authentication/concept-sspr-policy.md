@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36959582a3866426f8dc0e9969210e29e751ea60
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311900"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360503"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -93,7 +93,7 @@ A következő táblázat ismerteti a felhasználói fiókok létrehozása és fe
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Jelszóelévülési házirendek beállítása az Azure ad-ben
 
-Globális rendszergazda az egyetlen Microsoft felhőszolgáltatáshoz a Microsoft Azure AD-modul Windows PowerShell segítségével állítsa be a felhasználói jelszavakat nem jár le. Távolítsa el a Windows PowerShell-parancsmagok is használhatja a-JE neomezená konfigurációs, vagy hogy mely felhasználói jelszavak vannak beállítva, hogy soha ne járjon le. 
+Egy globális rendszergazdai vagy a felhasználói a Microsoft felhőalapú szolgáltatás segítségével a Microsoft Azure AD-modul Windows Powershellhez készült állítsa be a felhasználói jelszavakat nem jár le. Távolítsa el a Windows PowerShell-parancsmagok is használhatja a-JE neomezená konfigurációs, vagy hogy mely felhasználói jelszavak vannak beállítva, hogy soha ne járjon le. 
 
 Ez az útmutató más szolgáltatók, például az Intune és az Office 365, Azure AD-identitás- és címtárszolgáltatásokat is támaszkodik, amely vonatkozik. Jelszó lejárati idejét a módosítható házirend csak egy része.
 
@@ -107,7 +107,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>A jelszó-elévülési szabályzatának ellenőrzése
 
-1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
+1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
    * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr\@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 
 ### <a name="set-a-password-to-expire"></a>Állítsa be a jelszó lejár
 
-1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
+1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
    * Egy felhasználó jelszavának beállításához, úgy, hogy a jelszó lejár, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 
 ### <a name="set-a-password-to-never-expire"></a>Soha ne járjon le a jelszó beállítása
 
-1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
+1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
    * Egy felhasználó soha ne járjon le a jelszó beállítása, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

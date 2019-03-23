@@ -1,17 +1,17 @@
 ---
 title: Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló
 description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for PostgreSQL-kiszolgáló új felhasználói fiókokat hozhat létre.
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 8b1bf6f1eccefb9235751c9e113c90566dfdff79
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 33c107c46b314136fa3d43f8e7881e096afa374c
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540825"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351082"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for PostgreSQL-kiszolgálóhoz.
@@ -26,7 +26,7 @@ Az Azure Database for PostgreSQL-kiszolgálóhoz megadott 3 alapértelmezett sze
 
 A kiszolgálói rendszergazda felhasználó a azure_pg_admin szerepkör tagja. Azonban a kiszolgálói rendszergazdai fiók nem szerepel a azure_superuser szerepkör. Mivel ez a szolgáltatás egy felügyelt PaaS-szolgáltatás, akkor csak a Microsoft a felügyelő szerepkör részét képezi. 
 
-A PostgreSQL motor által jogosultsággal férhet hozzá az adatbázis-objektumok, az a [PostgreSQL termékdokumentáció](https://www.postgresql.org/docs/current/static/sql-createrole.html). Az Azure Database for postgresql-hez a kiszolgálói rendszergazda felhasználó ezeket a jogosultságokat kap: BEJELENTKEZÉS, NOSUPERUSER, ÖRÖKLIK, CREATEDB, CREATEROLE, NOREPLICATION
+A PostgreSQL motor által jogosultsággal férhet hozzá az adatbázis-objektumok, az a [PostgreSQL termékdokumentáció](https://www.postgresql.org/docs/current/static/sql-createrole.html). Az Azure Database for postgresql-hez a kiszolgálói rendszergazda felhasználó ezeket a jogosultságokat kap: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
 
 A kiszolgálói rendszergazdai felhasználói fiókkal használható további felhasználók létrehozása, és biztosítson számára ezek a felhasználók a azure_pg_admin szerepkörhöz. A kiszolgálói rendszergazdai fiók is, kevesebb jogosultsággal rendelkező felhasználók és szerepkörök, amelyek hozzáférhetnek a különálló adatbázisok és sémák létrehozásához használható.
 

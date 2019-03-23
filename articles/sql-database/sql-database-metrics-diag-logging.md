@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 7cb1632fe8c0ae873afcf37504dbd13bcfc753e8
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: da7dfdb1217e41b7dcb7c7fb6ade55c33488e54b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338071"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372607"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -107,7 +107,7 @@ Rugalmas készlet erőforrás diagnostics telemetriai adatainak streamelésének
 > [!IMPORTANT]
 > Azonkívül, hogy a rugalmas készletek a diagnostics telemetriai adatainak, is kell konfigurálnia az egyes adatbázisok diagnostics telemetriai adatainak a rugalmas készlet módon lentebb. 
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>A diagnostics telemetriai adatainak egyetlen attribútuma, és rugalmas készletben található adatbázisok folyamatos konfigurálása
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Adatfolyam-diagnosztika telemetria egyetlen adatbázishoz vagy rugalmas készlet adatbázis konfigurálása
 
    ![Az SQL Database ikonja](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 

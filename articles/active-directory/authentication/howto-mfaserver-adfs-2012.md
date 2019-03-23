@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213a55cb02c718628a4a2d64bdee98ab66af5ce3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 970e570d9ad27da2690cd38fe480823128322db0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317051"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370703"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS-sel való használathoz Windows Serveren
 
@@ -45,30 +45,22 @@ Mielőtt megkezdi a műveletet, vegye figyelembe az alábbi információkat:
 2. Az Azure Multi-Factor Authentication-kiszolgáló felügyeleti konzolján kattintson az **AD FS** ikonra. Válassza a **Felhasználó beléptetésének engedélyezése** és **Módszer kiválasztásának engedélyezése a felhasználóknak** beállításokat.
 3. Kapcsolja be a további funkciókat, amelyekre vállalatának szüksége van.
 4. Kattintson az **AD FS-adapter telepítése** gombra.
-   
-   <center>
-   
-   ![Felhő](./media/howto-mfaserver-adfs-2012/server.png)</center>
+
+   ![Az MFA-kiszolgáló-konzolról telepítheti az AD FS-Adapter](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. Ha az Active Directory ablak jelenik meg, ez két dolgot jelent. A számítógép tartományhoz csatlakozik, és az AD FS-adapter és a Multi-Factor Authentication szolgáltatás közötti kommunikáció védelmét biztosító Active Directory-konfiguráció hiányos. Kattintson a **Tovább** gombra a konfiguráció automatikus elvégzéséhez, vagy jelölje be **Az Active Directory automatikus konfigurálásának kihagyása és a beállítások manuális megadása** jelölőnégyzetet. Kattintson a **tovább**.
 6. Ha a Helyi csoport ablak jelenik meg, ez két dolgot jelent. A számítógép nem csatlakozik tartományhoz, és az AD FS-adapter és a Multi-Factor Authentication szolgáltatás közötti kommunikáció védelmét biztosító helyi csoport konfigurációja hiányos. Kattintson a **Tovább** gombra a konfiguráció automatikus elvégzéséhez, vagy jelölje be **A helyi csoport automatikus konfigurálásának kihagyása és a beállítások manuális megadása** jelölőnégyzetet. Kattintson a **tovább**.
 7. A telepítővarázslóban kattintson a **Tovább** gombra. Az Azure Multi-Factor Authentication-kiszolgáló létrehozza a PhoneFactor-adminisztrátorok csoportot, és hozzáadja az AD FS-szolgáltatásfiókot a PhoneFactor-adminisztrátorok csoporthoz.
-   <center>
-   
-   ![Felhő](./media/howto-mfaserver-adfs-2012/adapter.png)</center>
 8. A **Telepítő indítása** lapon kattintson a **Tovább** gombra.
 9. A Multi-Factor Authentication AD FS-adapter telepítőjében kattintson a **Tovább** gombra.
 10. Amikor a telepítés befejeződött, kattintson a **Bezárás** gombra.
-11. Ha befejeződött az adapter telepítése, regisztrálnia kell azt az AD FS-sel. Indítsa el a Windows PowerShellt, és futtassa az alábbi parancsot:<br>
+11. Ha befejeződött az adapter telepítése, regisztrálnia kell azt az AD FS-sel. Indítsa el a Windows PowerShellt, és futtassa az alábbi parancsot:
+
     `C:\Program Files\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1`
-    <center>
-    
-    ![Felhő](./media/howto-mfaserver-adfs-2012/pshell.png)</center>
+
 12. Az újonnan regisztrált adapter használatához módosítsa a globális hitelesítési szabályzatot az AD FS-ben. Az AD FS felügyeleti konzoljában nyissa meg a **Hitelesítési házirendek** csomópontot. A **Többtényezős hitelesítés** résznél kattintson a **Globális beállítások** mellett található **Szerkesztés** hivatkozásra. A **Globális hitelesítési házirend szerkesztése** ablakban válassza a **Többtényezős hitelesítés** lehetőséget további hitelesítési módszerként, majd kattintson az **OK** gombra. Lezajlik az adapter regisztrálása WindowsAzureMultiFactorAuthentication néven. A regisztráció érvénybe léptetéséhez indítsa újra az AD FS szolgáltatást.
 
-<center>
-
-![Felhő](./media/howto-mfaserver-adfs-2012/global.png)</center>
+![Globális hitelesítési házirend szerkesztése](./media/howto-mfaserver-adfs-2012/global.png)
 
 Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy van beállítva, hogy további hitelesítésszolgáltatóként működjön az AD FS szolgáltatásokhoz.
 
@@ -85,6 +77,7 @@ Ezen a ponton elértük, hogy a Multi-Factor Authentication-kiszolgáló úgy va
 5. Amikor a telepítés befejeződött, kattintson a **Bezárás** gombra.
 
 ## <a name="edit-the-multifactorauthenticationadfsadapterconfig-file"></a>Szerkessze a MultiFactorAuthenticationAdfsAdapter.config fájlt
+
 A MultiFactorAuthenticationAdfsAdapter.config fájl szerkesztéséhez kövesse az alábbi lépéseket:
 
 1. Állítsa a **UseWebServiceSdk** csomópontot **true** értékre.  
@@ -138,20 +131,22 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
 3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity Platform** elemre, és válassza a **Jogcímszabályok szerkesztése…** lehetőséget.
 
-   ![Felhő](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![Az AD FS-konzolon a jogcímszabályok szerkesztése](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 
-   ![Felhő](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![Az AD FS-konzolon átalakítási szabályok szerkesztése](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
 
-   ![Felhő](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![Átalakítási jogcímszabály varázslóban hozzáadása](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. Adjon nevet a szabálynak.
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
 8. Válassza **Az összes jogcímérték továbbítása** lehetőséget.
-    ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
+    ![Átalakítási Jogcímszabály varázslóban hozzáadása](./media/howto-mfaserver-adfs-2012/configurewizard.png)
+
 9. Kattintson a **Befejezés** gombra. Zárja be az AD FS felügyeleti konzolt.
 
 ## <a name="troubleshooting-logs"></a>Hibaelhárítási naplók

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/18/2019
+ms.date: 03/22/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189563"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368965"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Oszlopcentrikus minőségű sorcsoportokba maximalizálása
 
@@ -67,7 +67,7 @@ from cte;
 ```
 
 A trim_reason_desc arról tájékoztatja, hogy vágott lett-e a sorcsoport (trim_reason_desc = NO_TRIM nincs tisztítás történt, és sorcsoport optimális minőségű jelenti). A következő vágás okokból azt jelzik, hogy a sorcsoport idő előtti előtti:
-- BULKLOAD: A vágás OK akkor használható, ha a terhelés bejövő sorköteg kevesebb mint 1 millió sorral rendelkezett. A motor tömörített sorcsoport hoz létre, ha vannak a nagyobb, mint 100 000 sort (ellentétben a különbözeti tároló beszúrása) beszúrt, de a vágás OK BULKLOAD állítja be. Ebben az esetben érdemes megfontolni az kötegelt betöltés ablakot gyűlik össze több sort alkalmazását. Emellett kiértékeli a particionálási sémát, ez a lehetőség nem túl részletes sorcsoportok nem terjedhetnek ki partícióhatárok biztosításához.
+- BULKLOAD: A vágás OK akkor használható, ha a terhelés bejövő sorköteg kevesebb mint 1 millió sorral rendelkezett. A motor tömörített sorcsoport hoz létre, ha vannak a nagyobb, mint 100 000 sort (ellentétben a különbözeti tároló beszúrása) beszúrt, de a vágás OK BULKLOAD állítja be. Ebben az esetben fontolja meg a batch terheléssel további sorokat tartalmazza. Emellett kiértékeli a particionálási sémát, ez a lehetőség nem túl részletes sorcsoportok nem terjedhetnek ki partícióhatárok biztosításához.
 - MEMORY_LIMITATION: 1 millió sor sorcsoportok létrehozásához, egy bizonyos mennyiségű memóriát működő a motor által van szükség. Ha a betöltési munkamenet rendelkezésre álló memória kevesebb, mint a szükséges munkát memória, a lekérése túl korán vágott sorcsoportok. Az alábbi szakaszok azt ismertetik, hogyan becslése memóriára van szükség, és több memóriát lefoglalni.
 - DICTIONARY_SIZE: Trim ezért azt jelzi, hogy sorcsoport tisztítás történt, mert hiba történt legalább egy karakterláncoszlop széles és/vagy nagy számosságú karakterláncokkal. A szótárkészítéses méret legfeljebb 16 MB-ra a memóriában, és ez a korlát elérésekor a sorcsoport tömörítve van. Ha ez a helyzet, fontolja meg a problémás oszlop elkülönítése egy önálló táblába.
 

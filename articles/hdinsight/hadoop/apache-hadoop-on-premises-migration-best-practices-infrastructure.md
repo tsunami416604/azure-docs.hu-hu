@@ -9,16 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1a8c0ec8a7926d443963075fec576b9e2168d41f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6c57b62d63be55abc51b85327957afffa5dd3a42
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052632"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360197"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
 Ez a cikk az Azure HDInsight-fürtök-infrastruktúra kezelésére alkalmas javaslatok biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="plan-for-hdinsight-cluster-capacity"></a>HDInsight-fürt kapacitásának tervezése
 
@@ -49,7 +51,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Egyik sem (csak HDP)
-|Datameer|HDInsight élcsomóponthoz
+|Datameer|HDInsight Edge node
 |A Datastax (Cassandra)|IaaS (helyett az Azure cosmos DB)
 |DataTorrent|IaaS 
 |Drill|IaaS 
@@ -65,7 +67,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
 |A tableau|IaaS 
-|Vízvonallal|HDInsight élcsomóponthoz
+|Vízvonallal|HDInsight Edge node
 |StreamSets|HDInsight Edge 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
@@ -109,14 +111,14 @@ Például a konfigurációs fájlokban configs vált `core-site.xml`, `hive-site
 # hive-site.xml configuration
 $hiveConfigValues = @{"hive.metastore.client.socket.timeout"="90"}
 
-$config = New—AzureRmHDInsightClusterConfig '
-    | Set—AzureRmHDInsightDefaultStorage
+$config = New—AzHDInsightClusterConfig '
+    | Set—AzHDInsightDefaultStorage
     —StorageAccountName "$defaultStorageAccountName.blob. core.windows.net" `
     —StorageAccountKey "defaultStorageAccountKey " `
-    | Add—AzureRmHDInsightConfigValues `
+    | Add—AzHDInsightConfigValues `
         —HiveSite $hiveConfigValues
 
-New—AzureRmHDInsightCluster `
+New—AzHDInsightCluster `
     —ResourceGroupName $existingResourceGroupName `
     —Cluster-Name $clusterName `
     —Location $location `
@@ -153,7 +155,7 @@ Fürtméretezés automatizálható a következő módszerekkel:
 ### <a name="powershell-cmdlet"></a>PowerShell-parancsmag
 
 ```powershell
-Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
+Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

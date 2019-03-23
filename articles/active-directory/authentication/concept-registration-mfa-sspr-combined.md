@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2865c19e747ca1c5b0a6cda84b8be18bfaeb9335
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317663"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370159"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
 Mielőtt kombinált regisztrációs regisztrált felhasználók hitelesítési módszerek az Azure multi-factor Authentication (MFA) és az önkiszolgáló jelszó-visszaállítás (SSPR) két különböző módokon. Személyek is összetéveszteni őket, hogy a hasonló módszerekkel használták az Azure MFA és az SSPR, de külön regisztrálni az egyes szolgáltatásokhoz rendelkeztek. Most, kombinált regisztrációját a felhasználók egyszer regisztrálni és Azure MFA és az SSPR előnyeinek kihasználása.
 
-![Biztonságiadat - felhasználó, például a Microsoft Authenticator és Phone Mintafelhasználó a címtárban regisztrált biztonsági információ megjelenítése a saját profil együtt.](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Saját profil ábrázoló regisztrálva a felhasználó biztonsági adatai](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendszergazda témájú dokumentáció és a felhasználó témájú dokumentációját, hogy biztosan megismerje az a funkciók és lehetséges hatásait, ez a funkció. A felhasználói dokumentációra készítheti elő a felhasználók az új felhasználói felületre, és annak biztosítása érdekében a sikeres bevezetése érdekében a képzési alapjául.
 
@@ -36,7 +36,7 @@ Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendsze
 
 A MyProfile lapok honosítva megnyitni a lapot a gép az aktuális nyelvi beállításai alapján. A Microsoft tárolja a legutóbbi nyelv, a böngésző gyorsítótárában használt fel, így el az ezt követő kísérletek továbbra is a legutóbbi használt nyelven jelennek meg. A gyorsítótár kiürítése miatt újra kell renderelnie oldalra. Ha szeretné-e egy adott nyelv hozzáadása kényszerítése egy `?lng=de-DE` az URL-cím végéhez ahol `de-DE` be van állítva a megfelelő nyelvi kód kényszeríti a lapok azon a nyelven jelennek meg.
 
-![Saját profil felület képesség állítsa be az SSPR vagy más további biztonsági ellenőrzési módszerek és a biztonsági adatok megjelenítése.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![SSPR vagy más további biztonsági ellenőrzési módszerek beállítása](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>Az összevont regisztrációs módszerek
 
@@ -99,7 +99,7 @@ Példa:
 
 A következő folyamatábra szemlélteti azt ismerteti, milyen módszerek regisztrálása a bejelentkezés során egy felhasználónak, amikor megszakad látható:
 
-![Mostantól a biztonsági adatok folyamatábra elmagyarázza, ha további információra szükség, amikor bejelentkezik szükséges módszerek száma. Ezt módosíthatja, ha csak az MFA vagy csak az SSPR megadása kötelező](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Egyesített biztonsági adatai folyamatábra](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 MFA és az SSPR engedélyezve van, azt javasoljuk, hogy az MFA regisztrációs kényszeríti.
 

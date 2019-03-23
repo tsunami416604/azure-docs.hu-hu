@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 97464115b87ca5facdc055e0031bc5fc4e962a22
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 349f2c4eea743c3e44e492dfa76be4a70f2c37d6
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295657"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362025"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -102,7 +102,7 @@ A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
 Íme egy példa az ONNX-modell üzembe helyezéséhez:
 
-1. Az Azure Machine Learning szolgáltatás munkaterület inicializálása. Ha Ön még nem rendelkezik, ismerje meg, hogyan hozhat létre egy munkaterületet a [ebben a rövid útmutatóban](quickstart-get-started.md).
+1. Az Azure Machine Learning szolgáltatás munkaterület inicializálása. Ha Ön még nem rendelkezik, megtudhatja, hogyan [hozzon létre egy munkaterületet](setup-create-workspace.md).
 
    ```python
    from azureml.core import Workspace

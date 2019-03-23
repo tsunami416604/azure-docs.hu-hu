@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 90fa56bb0e2044d24533c35a051d3f4b644e05b5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900913"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349637"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -41,6 +41,7 @@ A beszédfelismerés SDK érhető el ezekben a régiókban a **beszédfelismeré
  USA középső régiója | "centralus" | https://centralus.cris.ai
  USA északi középső régiója | "northcentralus" | https://northcentralus.cris.ai
  USA déli középső régiója | "southcentralus" | https://southcentralus.cris.ai
+ Közép-India | "centralindia" | https://centralindia.cris.ai
  Kelet-Ázsia | `eastasia` | https://eastasia.cris.ai
  Délkelet-Ázsia | `southeastasia` | https://southeastasia.cris.ai
  Kelet-Japán | `japaneast` | https://japaneast.cris.ai

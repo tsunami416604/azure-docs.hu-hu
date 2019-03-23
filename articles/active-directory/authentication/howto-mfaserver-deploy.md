@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 260da2d58ab6e3342fe372bd51e4877d83b26bfd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313056"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370244"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
 <center>
 
-![MFA helyszíni üzemeltetése](./media/howto-mfaserver-deploy/server2.png)</center>
+![Helyszíni MFA-kiszolgáló – első lépések](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Most, hogy a helyszíni Multi-Factor Authentication-kiszolgáló használata mellett döntöttünk, lássunk neki. Ezen a lapon a kiszolgáló új telepítését és helyszíni Active Directoryval való beállítását ismertetjük. Ha már telepített MFA-kiszolgálót és frissíteni szeretné, tekintse meg [a legújabb Azure Multi-Factor Authentication-kiszolgálóra való frissítéssel kapcsolatos](howto-mfaserver-deploy-upgrade.md) témakört. Ha csak a webszolgáltatás telepítésével kapcsolatban keres információt, tekintse meg [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md) című témakört.
 
@@ -97,11 +97,14 @@ Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-
 3. Válassza a **Kiszolgálóbeállítások** lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 
-   ![Az MFA-kiszolgáló letöltése](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![MFA-kiszolgáló letöltése az Azure Portalról](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Hagyja megnyitva ezt az oldalt, mivel a telepítő futtatása után még hivatkozni fogunk rá.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Az MFA-kiszolgáló telepítése és konfigurálása
+
+> [!WARNING]
+> 2019 MFA-kiszolgáló márciusi indítása letöltések csak akkor fizetős bérlők számára elérhető. Az ingyenes vagy próbaverziója bérlők számára már nem tud letölteni, vagy hozzon létre és aktiváló hitelesítő adatok használata.
 
 Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győződjön meg róla, hogy az a kiszolgáló, amelyikre telepíti, megfelel-e a tervezési szakaszban felsorolt követelményeknek.
 
@@ -110,7 +113,7 @@ Most, hogy letöltötte a kiszolgálót, telepítse és konfigurálja azt. Győz
 3. A telepítés befejezése után kattintson a **Befejezés** gombra. Ekkor elindul a konfigurációs varázsló.
 4. A konfigurációs varázsló üdvözlőképernyőjén jelölje be **A hitelesítéskonfiguráló varázsló használatának kihagyása** jelölőnégyzetet, és kattintson a **Tovább** gombra. Bezáródik a varázsló, és elindul a kiszolgáló.
 
-   ![Felhő](./media/howto-mfaserver-deploy/skip2.png)
+   ![A hitelesítéskonfiguráló varázsló használatának kihagyása](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Azon az oldalon, ahonnan letöltötte a kiszolgálót, kattintson az **Aktiváló hitelesítő adatok előállítása** gombra. Másolja ezt az információt az Azure MFA-kiszolgálón a megfelelő mezőkbe, majd kattintson az **Aktiválás** lehetőségre.
 
@@ -130,7 +133,7 @@ Kattintson a bal oldalon található e-mail ikonra az e-mailek küldésére vona
 
 Az E-mail tartalma lapon áttekintheti a választható e-mail-sablonokat. Válassza a leginkább megfelelő sablont attól függően, hogyan konfigurálta a felhasználókat a kétlépéses ellenőrzés végrehajtására.
 
-![MFA-kiszolgáló – E-mail-sablonok](./media/howto-mfaserver-deploy/email2.png)
+![MFA-kiszolgáló – E-mail-sablonok a konzolon](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Felhasználók importálása az Active Directoryból
 
@@ -143,7 +146,7 @@ A kiszolgáló telepítése után a felhasználók hozzáadása következik. Lé
 3. Most kereshet egyes felhasználókat vagy kereshet az AD címtárban felhasználókat tartalmazó szervezeti egységeket. Ebben az esetben meg kell adni a felhasználók szervezeti egységét.
 4. Jelölje ki az összes felhasználót a jobb oldalon, és kattintson az **Importálás** gombra. Megjelenik egy előugró ablak, amely a művelet sikerességéről értesít. Zárja be az importálási ablakot.
 
-   ![MFA-kiszolgáló – Felhasználók importálása](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA-kiszolgáló felhasználói importálás Active Directoryból](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Automatikus szinkronizálás az Active Directoryval
 
@@ -169,6 +172,9 @@ Ha a Multi-Factor Authentication- (MFA-) kiszolgálót a helyszínen használja,
 * Ügyfél IP-címe – ha elérhető
 
 A fenti mezőkön kívül a rendszer az ellenőrzési eredményeket (sikeres/elutasítva) és az elutasítások okait is tárolja a hitelesítési adatokkal együtt. Ezek az adatok a hitelesítési/használati jelentésekben érhetők el.
+
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők felhasználói MFA-kiszolgáló számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Az Azure MFA-kiszolgáló biztonsági mentése és visszaállítása
 

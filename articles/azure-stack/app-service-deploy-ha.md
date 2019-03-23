@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285666"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370023"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Magas rendelkezésre állású konfigurációban App Service üzembe helyezése
 
@@ -54,8 +54,7 @@ Ezzel a sablonnal előtt győződjön meg arról, hogy a következő [Azure Stac
 ### <a name="deploy-the-app-service-infrastructure"></a>Az App Service-infrastruktúra üzembe helyezése
 Ez a szakasz a lépéseket követve hozzon létre egy egyéni üzembe helyezés a **az App Service-fileshare – SQL Server – magas rendelkezésre állás** Azure Stack gyorsindítási sablon.
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **egyéni**, majd **sablonalapú telepítés**.
 
@@ -94,8 +93,7 @@ Győződjön meg arról, jegyezze fel ezeket az értékeket a kimeneti mindegyik
 
 Fedezze fel a sablon kimeneti értékeket az alábbi lépéseket követve:
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. A felügyeleti portálon, válassza ki a **erőforráscsoportok** pedig az erőforráscsoport nevét, az egyéni üzembe helyezés (**app-service – magas rendelkezésre állás** ebben a példában). 
 
@@ -168,9 +166,20 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     ![Fájlmegosztási kimeneti adatok](media/app-service-deploy-ha/07.png)
 
-9. Telepítse az App Service-ben használt gép nem található, a fájlkiszolgáló, az App Service-fájlmegosztás üzemeltetéséhez használt megegyező virtuális hálózatba, mert nem kell tudnia oldani a nevet. Ez az elvárt működés.<br><br>Győződjön meg arról, hogy a fájlmegosztás UNC elérési út és a fiókok adatait megadott információk helyességét, és nyomja le az **Igen** App Service-ben a telepítés folytatásához a figyelmeztető párbeszédpanelen.
+9. Telepítse az App Service-ben használt gép nem található, a fájlkiszolgáló, az App Service-fájlmegosztás üzemeltetéséhez használt megegyező virtuális hálózatba, mert nem kell tudnia oldani a nevet. **Ez az elvárt működés**.<br><br>Győződjön meg arról, hogy a fájlmegosztás UNC elérési út és a fiókok adatait megadott információk helyességét, és nyomja le az **Igen** App Service-ben a telepítés folytatásához a figyelmeztető párbeszédpanelen.
 
     ![Várt hiba-párbeszédpanelen.](media/app-service-deploy-ha/08.png)
+
+    Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+    - Forrás: Bármelyik
+    - Forrás porttartomány: *
+    - Cél: IP-címek
+    - Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+    - Cél porttartomány: 445
+    - Protokoll: TCP
+    - Művelet: Engedélyezés
+    - Prioritás: 700
+    - Név: Outbound_Allow_SMB445
 
 10. Adja meg az identitás Alkalmazásazonosítója és elérési útja és a jelszavakat az identitás-tanúsítványokat, és kattintson a **tovább**:
     - Identitás alkalmazástanúsítványának (formátumban **sso.appservice.local.azurestack.external.pfx**)
@@ -189,7 +198,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 
     ![Az SQL Server-kapcsolódási információt](media/app-service-deploy-ha/10.png)
 
-12. Az App Service-adatbázisok üzemeltetéséhez használt SQL server megegyező virtuális hálózatba nem található, telepítse az App Service-ben használt gép, mert nem kell tudnia oldani a nevet.  Ez az elvárt működés.<br><br>Győződjön meg arról, hogy az SQL Server nevét és a fiókok adatait megadott információk helyességét, és nyomja le az **Igen** App Service-ben a telepítés folytatásához. Kattintson a **tovább**.
+12. Az App Service-adatbázisok üzemeltetéséhez használt SQL server megegyező virtuális hálózatba nem található, telepítse az App Service-ben használt gép, mert nem kell tudnia oldani a nevet.  **Ez az elvárt működés**.<br><br>Győződjön meg arról, hogy az SQL Server nevét és a fiókok adatait megadott információk helyességét, és nyomja le az **Igen** App Service-ben a telepítés folytatásához. Kattintson a **tovább**.
 
     ![Az SQL Server-kapcsolódási információt](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 [Horizontális felskálázás az App Service](azure-stack-app-service-add-worker-roles.md). Szükség lehet további App Service-ben infrastruktúra szerepkör feldolgozók várt alkalmazás igény szerint a környezetében történő hozzáadásához. Alapértelmezés szerint az Azure Stack App Service támogatja az ingyenes és a megosztott feldolgozói rétegek. Adja hozzá a többi feldolgozói rétegek, további feldolgozói szerepkörök hozzáadása kell.
 
 [Központi telepítés forrásának konfigurálása](azure-stack-app-service-configure-deployment-sources.md). További konfigurációs szükség, hogy igény szerinti üzembe helyezést, az több mint például a GitHub, BitBucket, onedrive vállalati verzió vagy DropBox verziókövetési szolgáltatók.
+
+[Készítsen biztonsági másolatot az App Service-ben](app-service-back-up.md). Miután sikeresen üzembe helyezését és konfigurálását az App Service-ben győződjön meg az összes összetevő szükséges vész-helyreállítási készül biztonsági másolat megakadályozni az adatvesztést, és elkerülheti a felesleges szolgáltatás helyreállítási műveletek során.

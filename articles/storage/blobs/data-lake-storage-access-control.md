@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906b1dde3d145268df4fb1ff5c243c7daa8396ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992444"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370108"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -279,7 +279,18 @@ A tulajdonos módosíthatja a fájlhoz tartozó engedélyeket, így bármilyen s
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>Miért látok néha GUID azonosítókat az ACL-EK?
 
-Egy GUID lesz látható, ha a bejegyzés felhasználót jelöl, és, hogy a felhasználó már az Azure AD-ben nem létezik. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben. Emellett egyszerű szolgáltatásnevekről és biztonsági csoportok nem rendelkezik egy egyszerű felhasználónév (UPN) azonosíthatja azokat, és így ezeket az OID-attribútum (guid) jelöli. 
+Egy GUID lesz látható, ha a bejegyzés felhasználót jelöl, és, hogy a felhasználó már az Azure AD-ben nem létezik. Ez általában akkor történik, ha a felhasználó elhagyta a vállalatot, vagy törölve lett a fiókja az Azure AD-ben. Emellett egyszerű szolgáltatásnevekről és biztonsági csoportok nem rendelkezik egy egyszerű felhasználónév (UPN) azonosíthatja azokat, és így ezeket az OID-attribútum (guid) jelöli.
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>Hogyan állíthatok be ACL-ek megfelelően szolgáltatás egyszerű?
+
+Az egyszerű szolgáltatások hozzáférés-vezérlési listákat ad meg, ha fontos a objektumazonosító (OID), használja a *szolgáltatásnév* a létrehozott alkalmazás regisztráció. Fontos megjegyezni, hogy rendelkezik-e regisztrált alkalmazások külön szolgáltatásnévvel az adott Azure AD-bérlővel. Regisztrált alkalmazások az Azure Portalon látható OID rendelkezik, de a *szolgáltatásnév* rendelkezik egy másik (eltérő) Objektumazonosítóját.
+
+Szeretne kapni az Objektumazonosító egyszerű szolgáltatás számára, hogy az alkalmazás regisztrációját a corresonds, használhatja a `az ad sp show` parancsot. Paraméterként adja meg az Alkalmazásazonosítót. Íme egy példa, amely megfelel az alkalmazás regisztrációs azonosítót a szolgáltatásnévhez tartozó Objektumazonosítót beszerzésével 18218b12-1895-43e9-ad80-6e8fc1ea88ce =. Az Azure CLI-ben futtassa a következő parancsot:
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+Ha a helyes Objektumazonosítóját a szolgáltatásnévhez tartozó, nyissa meg a Storage Explorer **hozzáférés kezelése** lap az Objektumazonosító hozzáadását és hozzárendelését az Objektumazonosító a megfelelő engedélyeket. Győződjön meg arról, hogy ki **mentése**.
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja a Data Lake Storage Gen2 ACL-ek öröklése?
 

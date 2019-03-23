@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a7752fac54f9dfb2f8fb0aecd3b6249c52c3bcf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316354"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370448"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Útmutató: A Windows 7, 8 és 8.1-es a jelszóátállítás engedélyezése
 
@@ -46,7 +46,7 @@ Ellentétben a Windows 10 rendszerű gépek, Windows 7, 8 és 8.1-es gépek nem 
 1. Az újraindítás után a bejelentkezési képernyőn válasszon egy felhasználót, kattintson az "Elfelejtette a jelszavát?" kezdeményezheti a jelszó alaphelyzetbe állítása a munkafolyamat.
 1. Végezze el a munkafolyamatot a jelszó képernyőn lépések.
 
-![Például Windows 7 kattint az "Elfelejtette a jelszavát?" Az önkiszolgáló jelszó-visszaállítási folyamat](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![Például Windows 7 kattint az "Elfelejtette a jelszavát?" SSPR folyamat](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>Beavatkozás nélküli telepítés
 
@@ -67,13 +67,11 @@ A gép és az Azure ad-ben események lesznek naplózva.
 
 Az Azure AD-események az IP-cím és ügyféltípus, ahol a jelszó-visszaállítás történt vonatkozó információk is.
 
-![Például Windows 7 bejelentkezési képernyő jelszó-visszaállításra az Azure AD auditnaplója](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![Például Windows 7 a jelszóátállítás az Azure AD auditnaplója](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 További naplózás szükség, ha egy beállításkulcsot a gépen engedélyezi a részletes naplózást is módosítható. Engedélyezi a részletes naplózást hibaelhárítási céllal.
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * Engedélyezi a részletes naplózást, hozzon létre egy REG_DWORD: "EnableLogging", és állítsa be az 1.
 * Letiltja a részletes naplózást, módosítsa a REG_DWORD "EnableLogging" 0-ra.
@@ -82,4 +80,4 @@ Ha a Windows 7, 8 és 8.1-es gépek proxykiszolgálót vagy tűzfal mögé, HTTP
 
 ## <a name="next-steps"></a>További lépések
 
-[A bejelentkezési képernyő jelszó átállításának Windows 10-es felhasználók engedélyezése](tutorial-sspr-windows.md)
+* [A bejelentkezési képernyő jelszó átállításának Windows 10-es felhasználók engedélyezése](tutorial-sspr-windows.md)

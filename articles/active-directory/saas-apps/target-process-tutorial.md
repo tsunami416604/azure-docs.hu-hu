@@ -4,23 +4,23 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed1c7cd88bb5abf27066658f175d2447d334ce6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e76e2b9b4778229fc70e90f1ff3af5f19251d424
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872213"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TargetProcess
 
@@ -78,10 +78,11 @@ Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsol
 Az Azure AD egyszeri bejelentkezés az TargetProcess tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Hozzon létre TargetProcess tesztfelhasználót](#create-targetprocess-test-user)**  – egy megfelelője a Britta Simon TargetProcess, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+2. **[TargetProcess egyszeri bejelentkezés konfigurálása](#configure-targetprocess-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+5. **[Hozzon létre TargetProcess tesztfelhasználót](#create-targetprocess-test-user)**  – egy megfelelője a Britta Simon TargetProcess, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -105,12 +106,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TargetProcess, hajts
 
     ![TargetProcess tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.tpondemand.com/`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.tpondemand.com/`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.tpondemand.com/`
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL- és azonosító.  Kapcsolattartó [TargetProcess ügyfél-támogatási csapatának](mailto:support@targetprocess.com) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [TargetProcess ügyfél-támogatási csapatának](mailto:support@targetprocess.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -122,48 +123,47 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TargetProcess, hajts
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
-7. Automatizálhatja a konfigurációra **TargetProcess**, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
+### <a name="configure-targetprocess-single-sign-on"></a>TargetProcess egyszeri bejelentkezés konfigurálása
+
+1. Automatizálhatja a konfigurációra **TargetProcess**, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-8. A felvett bővítmény a böngészőre, kattintson a **TargetProcess beállítása** fog irányítja át a TargetProcess alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni TargetProcess. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 9-13 lépések automatizálásához.
+2. A felvett bővítmény a böngészőre, kattintson a **TargetProcess beállítása** fog irányítja át a TargetProcess alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni TargetProcess. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3-7 lépések automatizálásához.
 
     **Ha azt szeretné, az alkalmazás manuális konfigurálásához hajtsa végre az alábbi lépéseket:**
 
-9. Bejelentkezés rendszergazdaként TargetProcess alkalmazását.
+3. Bejelentkezés rendszergazdaként TargetProcess alkalmazását.
 
-10. A felső menüben kattintson **telepítő**.
+4. A felső menüben kattintson **telepítő**.
 
     ![Beállítás](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-11. Kattintson a **beállítások**.
+5. Kattintson a **beállítások** fülre.
 
     ![Beállítások](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-12. Kattintson a **egyszeri bejelentkezési**.
+6. Kattintson a **egyszeri bejelentkezés** fülre.
 
     ![Kattintson az egyszeri bejelentkezés](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-13. Az egyszeri bejelentkezés beállításai párbeszédpanel hajtsa végre a következő lépéseket:
+7. Az egyszeri bejelentkezés beállításai párbeszédpanel hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/target-process-tutorial/tutorial_target_process_08.png)
 
     a. Kattintson a **egyszeri bejelentkezés engedélyezése**.
 
-    b. A **bejelentkezési URL-** szövegmezőjébe illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
+    b. A **bejelentkezési URL-** szövegmezőjébe illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
 
     c. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, másolja a tartalmat, és illessze be azt a **tanúsítvány** szövegmezőbe.
 
     d. Kattintson a **igény szerinti kiépítés engedélyezése**.
 
     e. Kattintson a **Save** (Mentés) gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -198,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listáját, írja be, és válassza ki **TargetProcess**.
+2. Az alkalmazások listájában jelölje ki a **TargetProcess**.
 
     ![Az alkalmazások listáját a TargetProcess hivatkozásra](common/all-applications.png)
 
@@ -218,7 +218,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-targetprocess-test-user"></a>TargetProcess tesztfelhasználó létrehozása
 
-Ez a szakasz célja TargetProcess Britta Simon nevű felhasználó létrehozásához. TargetProcess támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az TargetProcess elérésére, ha még nem létezik tett kísérlet során.
+Ebben a szakaszban egy Britta Simon nevű felhasználó TargetProcess jön létre. TargetProcess támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az TargetProcess, egy új jön létre a hitelesítés után.
 
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [TargetProcess támogatási csoportjának](mailto:support@targetprocess.com).
@@ -231,8 +231,8 @@ Ha a hozzáférési panelen a TargetProcess csempére kattint, meg kell lehet au
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

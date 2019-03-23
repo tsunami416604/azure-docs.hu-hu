@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281581"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370618"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Csatlakoztassa az Azure-fájlmegosztások az Azure Container Instances szolgáltatásban
 
@@ -70,7 +70,7 @@ Azure-fájlmegosztás csatlakoztatása egy tárolóban kötetként, adja meg a m
 az container create \
     --resource-group $ACI_PERS_RESOURCE_GROUP \
     --name hellofiles \
-    --image microsoft/aci-hellofiles \
+    --image mcr.microsoft.com/azuredocs/aci-hellofiles \
     --dns-name-label aci-demo \
     --ports 80 \
     --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
@@ -83,7 +83,7 @@ A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban,
 
 ## <a name="manage-files-in-mounted-volume"></a>Csatlakoztatott kötet található fájlok kezeléséhez
 
-A tároló megkezdéséről keresztül üzembe helyezett egyszerű webalkalmazás használhatja a [microsoft/aci-hellofiles] [ aci-hellofiles] kis méretű szöveges fájlok létrehozása az Azure-fájlmegosztás a megadott csatlakoztatási elérési úton a lemezképet. Szerezze be a webalkalmazás teljesen minősített tartománynevét (FQDN) az a [az container show] [ az-container-show] parancsot:
+A tároló megkezdéséről is használhatja a Microsoft-n keresztül üzembe helyezett egyszerű webalkalmazás [aci-hellofiles] [ aci-hellofiles] kis méretű szöveges fájlok létrehozása az Azure-fájlmegosztás a megadott csatlakoztatási elérési úton a lemezképet. Szerezze be a webalkalmazás teljesen minősített tartománynevét (FQDN) az a [az container show] [ az-container-show] parancsot:
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -140,7 +140,7 @@ Ismerje meg, hogyan csatlakoztathat egyéb kötettípusok az Azure Container Ins
 * [Az Azure Container Instances szolgáltatásban titkos kötet csatlakoztatása](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->
-[aci-hellofiles]: https://hub.docker.com/r/microsoft/aci-hellofiles/
+[aci-hellofiles]: https://hub.docker.com/_/microsoft-azuredocs-aci-hellofiles 
 [portal]: https://portal.azure.com
 [storage-explorer]: https://storageexplorer.com
 

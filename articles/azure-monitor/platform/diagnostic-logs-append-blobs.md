@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882379"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370057"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Az Azure Monitor diagnosztikai naplók tárfiókba archivált formátum módosítás előkészítése
 
@@ -24,7 +24,7 @@ ms.locfileid: "54882379"
 
 ## <a name="what-is-changing"></a>Mi változik
 
-Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az erőforrás diagnosztikai adatok és a tevékenységnapló adatainak Azure storage-fiók, az Event Hubs-névteret, vagy a Log Analytics kínál. A rendszer teljesítményprobléma megoldása a **2018. November 1. 12:00 éjfélkor (UTC)** adatokat küldeni a blob storage-naplófájl formátumát változik. Ha eszközkészlet, amely blob tárolóból az adatok olvasása, tudni, hogy az új adatformátum a azokat az eszközöket frissíteni szeretné.
+Az Azure Monitor egy olyan funkció, amely lehetővé teszi, hogy küldjön az erőforrás diagnosztikai adatok és a tevékenységnapló adatainak Azure storage-fiók, az Event Hubs-névteret, vagy a Log Analytics-munkaterületet az Azure monitorban kínál. A rendszer teljesítményprobléma megoldása a **2018. November 1. 12:00 éjfélkor (UTC)** adatokat küldeni a blob storage-naplófájl formátumát változik. Ha eszközkészlet, amely blob tárolóból az adatok olvasása, tudni, hogy az új adatformátum a azokat az eszközöket frissíteni szeretné.
 
 * Csütörtök. November 1, 2018. 12:00 éjfélkor (UTC), a blob formátumát kell változik [JSON sorok](http://jsonlines.org/). Ez azt jelenti, hogy minden rekord egy új sor nem külső rekordok tömb és JSON-bejegyzések között nincs vesszővel kell elválasztani.
 * A blob formátuma változásokat a egyszerre az összes előfizetés összes diagnosztikai beállításait. Az első PT1H.json fájlt. November 1 bocsátja ki fogja használni az új formátum. A blob és a tároló neve nem változik.

@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 3/23/2019
 ms.author: tamram
-ms.openlocfilehash: 2f46d1ddc8eeefd7d05c51c1d0640f69774746c4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553703"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395578"
 ---
-| Erőforrás | Cél |
+| Erőforrás | Cél        |
 |----------|---------------|
 | Egy blob-tároló maximális mérete | Ugyanaz, mint a maximális tárolókapacitás fiók |
 | Maximális száma blokkokat egy block blob vagy hozzáfűző blob | 50 000 blokkot |
@@ -21,4 +21,3 @@ ms.locfileid: "57553703"
 | A hozzáfűző blob maximális mérete | 50 000 x 4 MiB (KB. 195 GB) |
 | Egy lapblob maximális mérete | 8 TiB |
 | Egy blob-tárolóban tárolt hozzáférési szabályzatok maximális számát | 5 |
-| Cél átviteli egyetlen BLOB | Legfeljebb 60 MiB, vagy akár 500 kérelmek másodpercenkénti száma |

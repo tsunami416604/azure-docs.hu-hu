@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: c7dd2fba852881680b43ceabafec2ac6b2751df4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839593"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359886"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Hozzon létre, és az Azure Machine Learning szolgáltatás munkaterületek kezelése
 
@@ -28,24 +28,19 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="view-a-workspace"></a>Munkaterület megtekintése
+## <a name="view"></a>Munkaterület megtekintése
 
 1. A bal felső sarkában a portálon, válassza ki **minden szolgáltatás**. 
 
-1. Az a **minden szolgáltatás** írja be a Szűrő mezőbe **Machine Learning szolgáltatás munkaterület**.  
+1. Az a **minden szolgáltatás** írja be a Szűrő mezőbe **machine learning-szolgáltatás**.  
 
-   ![Keresse meg az Azure Machine Learning szolgáltatás munkaterület](media/how-to-manage-workspace/allservices-search1.png)
+1. Válassza ki **Machine Learning szolgáltatás munkaterületek**.
 
-1. Az eredmények szűréséhez válassza **Machine Learning szolgáltatás munkaterületén** egy a-munkaterületek listájának megjelenítéséhez. 
-
-   ![Az Azure Machine Learning szolgáltatás munkaterületek listája](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Keresse meg az Azure Machine Learning szolgáltatás munkaterület](media/how-to-manage-workspace/all-services.png)
 
 1. Nézze át a találhatók munkaterületek listáját. Szűrhet előfizetés alapján, erőforráscsoportok és helyek.  
 
-   ![Munkaterület megtekintése](media/how-to-manage-workspace/allservices_view_workspace.PNG)
-
-1. Válassza ki a munkaterületet, újonnan létrehozott a tulajdonságainak megjelenítéséhez.
-
+1. Válasszon egy munkaterületet a tulajdonságainak megjelenítéséhez.
    ![Munkaterület tulajdonságai](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése

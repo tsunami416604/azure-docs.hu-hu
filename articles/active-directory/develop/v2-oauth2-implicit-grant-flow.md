@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd0ce02a92c0a2e803866b6f070dba113c566f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9ce388c53a28d6b04bf7685da397eade4b1fd94
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112211"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371774"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők az implicit folyamat használata
 
@@ -55,7 +55,7 @@ Az alábbi ábrán látható, hogy a teljes implicit bejelentkezési folyamat n�
 Kezdetben beléptetni a felhasználót az alkalmazásba, küldhet egy [OpenID Connect](v2-protocols-oidc.md) engedélyezési kérést és a get- `id_token` a v2.0-végpont a.
 
 > [!IMPORTANT]
-> Egy azonosító jogkivonat, az alkalmazás regisztrációját a sikeres kérése a [regisztrációs portál](https://apps.dev.microsoft.com) kell rendelkeznie a **Implicit folyamat engedélyezése** engedélyezve van a webes ügyfél. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: **A bemeneti paraméter "response_type" megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code"**
+> Egy azonosító jogkivonat, az alkalmazás regisztrációját a sikeres kérése a [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) stránka musí obsahovat a implicit engedélyezési folyamat kiválasztásával megfelelően engedélyezve van **hozzáférési jogkivonatokat** és **Azonosító-jogkivonatokat** alatt a **típusú Implicit engedélyezés** szakaszban. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: **A bemeneti paraméter "response_type" megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code"**
 
 ```
 // Line breaks for legibility only
@@ -77,7 +77,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | `tenant` | szükséges |A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | szükséges |Az alkalmazás azonosítója, amely a regisztrációs portál ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) az alkalmazás hozzárendelve. |
+| `client_id` | szükséges |Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt lapot. |
 | `response_type` | szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. A response_type is tartalmazhat `token`. Használatával `token` itt lehetővé teszi az alkalmazások a kapott hozzáférési jogkivonat azonnal a hitelesítési végpontra ne kelljen egy második kérést a hitelesítési végpontra. Ha használja a `token` response_type, a `scope` paraméternek tartalmaznia kell egy hatókör, melyik erőforrást kell kiállítani token jelzi. |
 | `redirect_uri` | Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. |
 | `scope` | szükséges |Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md). Az OpenID Connect, tartalmaznia kell a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Szükség esetén is érdemes felvenni a `email` vagy `profile` hatókörök további felhasználói adatok elérésekor. A különböző erőforrások hozzájárulás kérése a kéréshez más hatókörök is. |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016709"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395599"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -27,9 +27,9 @@ Az alábbi táblázat összehasonlítja a ultranagy solid-állam-meghajtók (SSD
 |---------|---------|---------|---------|---------|
 |Lemez típusa   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatokhoz például az SAP HANA, felső szintű adatbázisok (például SQL, Oracle) és egyéb tranzakció – (nagy erőforrásigényű) számítási feladatokat.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és a fejlesztés + tesztelés   |Biztonsági mentés, nem kritikus fontosságú, alkalmi hozzáférést   |
-|Lemezméret   |65 536 gibibájtnak (GiB) (előzetes verzió)   |4095 giB (GA), a – 32 767 GiB (előzetes verzió)    |(Elérhetővé tétel GA) 4095 GiB, – 32 767 GiB (előzetes verzió)   |4095 giB (GA), a – 32 767 GiB (előzetes verzió)   |
-|Maximális átviteli sebesség   |2000 MiB/s (előzetes verzió)   |250 (elérhetővé tétel GA) MiB/s, 750 MiB/s (előzetes verzió)   |60 MiB/s (GA), 500 MiB/s (előzetes verzió)   |60 Mib/s (GA), 500 MiB/s (előzetes verzió)   |
-|Maximális IOPS-érték   |160,000 (előzetes verzió)   |Elérhetővé tétel (GA), 7500 20 000 (előzetes verzió)   |500 (GA), a 2000 (előzetes verzió)   |500 (GA), a 2000 (előzetes verzió)   |
+|Lemezméret   |65 536 gibibájtnak (GiB) (előzetes verzió)   |– 32 767 giB    |– 32 767 giB   |– 32 767 giB   |
+|Maximális átviteli sebesség   |2000 MiB/s (előzetes verzió)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximális IOPS-érték   |160,000 (előzetes verzió)   |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-ssd-preview"></a>Ultranagy SSD (előzetes verzió)
 

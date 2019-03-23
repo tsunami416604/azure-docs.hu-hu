@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: 1efe65feaac6e71437958451e8c1a44027495fce
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: c3294aaa2b6c88e08028c8958d2ab3a7297aea74
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620013"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351813"
 ---
 # <a name="private-offers"></a>Saját ajánlatok
 
@@ -55,6 +55,9 @@ Saját ajánlatok csak akkor felfedezhetők a [az Azure portal](https://azure.mi
 ![[Szóló ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
 
 Saját ajánlatok is megjelenik a keresési eredmények között. Keresse a "Privát" jelvény.
+
+> [!Note]
+> Saját ajánlatok a viszonteladó a Cloud Solution Provider (CSP) program keretében létrehozott előfizetések nem támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

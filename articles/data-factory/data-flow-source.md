@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569025"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369171"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>A folyamat forrás átalakítását leképezése
 
@@ -74,16 +74,16 @@ Igény szerint kiválaszthatja a lekérdezés alapján kapcsolatok particionál�
 ## <a name="source-file-management"></a>Forrás fájlok kezelése
 ![Az új forrásbeállítások](media/data-flow/source2.png "új beállításai")
 
-* Helyettesítő elérési útja, amely megfelel a mintának a forrásmappa fájlok sorozatát válasszon. Ez a művelet felülírja az összes fájl, amely az adatkészlet definícióját állított be.
+* Helyettesítő karaktert tartalmazó elérési útja, amely megfelel a mintának a forrásmappa fájlok sorozatát válasszon. Ez a művelet felülírja az összes fájl, amely az adatkészlet definícióját állított be.
 * Fájlok listája. Ugyanaz, mint egy fájl beállítása. Egy szöveges fájl relatív elérési út feldolgozandó fájlok listáját a létrehozott mutasson.
 * Tároló neve oszlop egy oszlop adatait a forrásból a fájl nevét tárolja. Adjon meg egy új nevet a fájl karakterlánc tárolására.
 * A befejezésekor (választhat az adatokat a folyamat végrehajtása után ne történjen semmi a forrás-fájllal, a forrás törölhető(k), vagy helyezze át a forrás-fájlokat. Az áthelyezési utakat relatív elérési utakat.
 
-### <a name="sql-datasets"></a>SQL Datasets
+### <a name="sql-datasets"></a>SQL-adatkészletek
 
 Mint a forrás Azure SQL Database vagy Azure SQL DW használ, amikor kell további beállításokat.
 
-* Lekérdezés: Adja meg a forrás SQL-lekérdezést. Lekérdezés beállítása felülírja a választotta, az adatkészlet bármely táblázat. Vegye figyelembe, hogy az Order By záradékok nem támogatottak-e meg a itt.
+* Lekérdezés: Adja meg a forrás SQL-lekérdezést. Lekérdezés beállítása felülírja a választotta, az adatkészlet bármely táblázat. Vegye figyelembe, hogy az Order By záradékok nem támogatottak-e meg a itt. Azonban, beállíthat egy teljes SELECT FROM utasítás itt.
 
 * Köteg mérete: Adja meg a Köteg mérete nagy mennyiségű adat álló batch méretű olvasott be.
 

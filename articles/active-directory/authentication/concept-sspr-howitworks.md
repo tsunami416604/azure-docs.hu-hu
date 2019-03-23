@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65c64e420bd22498fa2d778095def96cce218055
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313957"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369998"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>A működési elv: Az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -76,7 +76,7 @@ Csak alaphelyzetbe állíthatja az felhasználók a jelszavát, ha a hitelesít�
 > [!WARNING]
 > Azure-rendszergazdai szerepkörök hozzárendelt fiókok lesz szükség az szakaszban definiált metódusok használata [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).
 
-![Hitelesítés][Authentication]
+![Hitelesítési módszerek kiválasztása az Azure Portalon][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>Hitelesítés szükséges módszerek száma
 
@@ -160,7 +160,7 @@ Példa: Nincsenek négy rendszergazdák környezetben. A rendszergazda SSPR seg�
 
 Ha telepítése, konfigurálása és az Azure AD Connect engedélyezéséhez, akkor a következő beállítások a helyszíni Integrációk. Ha ezek a beállítások szürkén jelennek meg, majd a jelszóvisszaíró nincs megfelelően konfigurálva. További információkért lásd: [konfigurálása a jelszóvisszaíró](howto-sspr-writeback.md).
 
-![A Jelszóvisszaíró][Writeback]
+![A jelszóvisszaíró ellenőrzése engedélyezve van és működik][Writeback]
 
 Ez az oldal tartalmaz egy gyors a helyszíni visszaírási ügyfél állapotát, az alábbi üzenetek egyike jelenik meg a jelenlegi konfiguráció alapján:
 
@@ -180,7 +180,7 @@ Ez a vezérlő határozza meg, hogy a jelszóvisszaíró engedélyezve van-e a k
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Engedélyezése a felhasználók számára a fiókok zárolásának feloldása új jelszó nélkül
 
-Ez a vezérlő azt jelzi, hogy a felhasználók, akik látogasson el a jelszó-visszaállítási portál meg kell adni a lehetőséget, azok a helyszíni Active Directory-fiókok zárolásának ne kelljen új jelszót kérnek. Alapértelmezés szerint az Azure AD fiókok feloldja a jelszó-visszaállítás végrehajtása során. E két művelet külön ezt a beállítást használja. 
+Ez a vezérlő azt jelzi, hogy a felhasználók, akik látogasson el a jelszó-visszaállítási portál meg kell adni a lehetőséget, azok a helyszíni Active Directory-fiókok zárolásának ne kelljen új jelszót kérnek. Alapértelmezés szerint az Azure AD fiókok feloldja a jelszó-visszaállítás végrehajtása során. E két művelet külön ezt a beállítást használja.
 
 * Ha beállítása **Igen**, majd a felhasználók a jelszavuk és a zárolás feloldásához, vagy a fiók feloldása új jelszó nélkül kapnak.
 * Ha beállítása **nem**, majd felhasználók vannak csak tudni elvégezni a kombinált jelszó alaphelyzetbe állítása és fiókok zárolásának feloldása műveletet.
@@ -193,9 +193,9 @@ Az Azure AD önkiszolgáló jelszó-visszaállítás felel meg egy rendszergazda
 
 Az összes-vállalatközi (B2B) konfiguráció teljes mértékben támogatottak a jelszó-visszaállítás, és módosítsa. B2B-felhasználói jelszó-visszaállítás a következő három esetben támogatják:
 
-   * **Egy fiókpartner-szervezet egy meglévő Azure AD-bérlővel rendelkező felhasználók**: Ha a szervezetben használt együttműködését abban, meglévő Azure AD-bérlővel, hogy *tiszteletben bármilyen jelszóvisszaállítási szabályzatot engedélyezve vannak a bérlőt*. Jelszó-visszaállítás működéséhez az erőforráspartner-szervezet csak kell győződjön meg arról, hogy engedélyezve van-e az Azure AD SSPR. Semmilyen további díjat nem az Office 365-ügyfelek és a lépéseket követve is engedélyezhető a [jelszókezelés használatának első lépései](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató.
-   * **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy együttműködését abban, használja a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
-   * **B2B-felhasználók**: Minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
+* **Egy fiókpartner-szervezet egy meglévő Azure AD-bérlővel rendelkező felhasználók**: Ha a szervezetben használt együttműködését abban, meglévő Azure AD-bérlővel, hogy *tiszteletben bármilyen jelszóvisszaállítási szabályzatot engedélyezve vannak a bérlőt*. Jelszó-visszaállítás működéséhez az erőforráspartner-szervezet csak kell győződjön meg arról, hogy engedélyezve van-e az Azure AD SSPR. Semmilyen további díjat nem az Office 365-ügyfelek és a lépéseket követve is engedélyezhető a [jelszókezelés használatának első lépései](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) útmutató.
+* **Felhasználók, akik keresztül regisztrálnak** önkiszolgáló: Ha a szervezet, hogy együttműködését abban, használja a [önkiszolgáló](../users-groups-roles/directory-self-service-signup.md) kerülnek a bérlőt a funkciót, azt, hogy értesítse az e-mail-címével, azok regisztrálva a jelszó alaphelyzetbe állítása.
+* **B2B-felhasználók**: Minden olyan új B2B-felhasználók hozta létre az új [Azure AD B2B-funkciói](../active-directory-b2b-what-is-azure-ad-b2b.md) is elérhetik a jelszavaikat az e-mailt, azok regisztrálva a meghívó folyamat során.
 
 Ez a forgatókönyv teszteléséhez nyissa meg https://passwordreset.microsoftonline.com egy partner felhasználók. Ha egy másodlagos vagy hitelesítési e-mail meghatározott rendelkeznek, új jelszó kérésének módja elvárt módon.
 

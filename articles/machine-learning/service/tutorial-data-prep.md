@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca49cb65331373832b00b8489d731d51e8a8e004
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ee49299dbbe8095ef98be51dc8619c28891abc5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182914"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361387"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -58,7 +58,7 @@ Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-
 
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebookot.
 
-1. Végezze el a [Azure Machine Learning Python rövid](quickstart-create-workspace-with-python.md) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
+1. Befejeződött a telepítés lépéseit [ [Azure Machine Learning Python rövid](quickstart-run-local-notebook.md) ](setup-create-workspace.md#python) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
 1. Az adatok előkészítő SDK telepítése az a környezet használatával `pip install azureml-dataprep`.
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
@@ -70,17 +70,18 @@ Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszol
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>A fejlesztési környezet beállítása
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő az alábbi műveleteket tartalmazza:
 
-* Install the SDK
-* Import Python packages
+* Az SDK telepítése
+* Python-csomagok importálása
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>Telepítse és importálja a csomagok
 
-Use the following to install necessary packages if you don't already have them.
+Használja a következő szükséges csomagok telepítéséhez, ha már nincs rájuk.
 
 ```shell
 pip install azureml-dataprep

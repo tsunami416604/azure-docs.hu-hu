@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 6e4a83eb8b3488c4ce2816151ca31b4a594dd742
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338632"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351014"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Az Azure vendég operációs rendszer támogatási és kivezetési szabályzat
 Az Azure vendég operációs rendszer ezen a lapon található információkat konfigurációelemmel kapcsolatos ([vendég operációs rendszer](cloud-services-guestos-update-matrix.md)) Cloud Services feldolgozói és a webes szerepkör (PaaS). Nem alkalmazható a virtuális gépeken (IaaS).
@@ -57,7 +57,7 @@ Vendég operációsrendszer-verziók havonta jelennek meg. Rendszeres kiadások 
 
 Némi várakozás után váljon "Letiltva", "lejár" a vendég operációs rendszer verziója, és az összes telepítés továbbra is fut, hogy a lejárt verziót biztonsági és biztonsági problémák vannak kitéve. Általában a lejárati történik, és kötegekben, így a megfelelő időszak-lejárati eltérőek lehetnek.
 
-Ügyfelek, akik a vendég operációs rendszer frissítése manuálisan, a szolgáltatások konfigurálásához biztosítania kell, hogy a telepítések futnak-e a támogatott vendég operációs rendszeren. Ha a szolgáltatás automatikusan frissíti a vendég operációs rendszer van konfigurálva, az alapul szolgáló platform lesz a megfelelőség biztosítása, és frissíti a a legújabb vendég operációs rendszer.
+Ügyfelek, akik a vendég operációs rendszer frissítése manuálisan, a szolgáltatások konfigurálásához biztosítania kell, hogy azok a szolgáltatások futnak-e a támogatott vendég operációs rendszeren. Ha a szolgáltatás automatikusan frissíti a vendég operációs rendszer van konfigurálva, az alapul szolgáló platform lesz a megfelelőség biztosítása, és frissíti a a legújabb vendég operációs rendszer.
 
 Ezeket az időszakokat ügyfél átmenetek megkönnyítése érdekében a Microsoft saját belátása szerint értékeli hosszabb lehet elvégezni. Módosítások kommunikálja a a [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/08/2017
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: e659367ae13026dbe48ed681d0a68058d686e3ec
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884342"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352102"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>A Custom Vision Service kifejezések jegyzéke
 
-Az alábbiakban néhány kifejezések a Custom Vision Service, és azok jelentését.
+Az alábbiakban néhány olyan gyakori a Custom Vision Service kifejezéssel:
 
 ## <a name="classifier"></a>Az osztályozó
 
@@ -37,33 +37,21 @@ Egy projekt létrehozásakor ki kell választania, hogy a projekt "tartomány". 
 
 A modell által létrehozott **tartományok tömörítése** exportálható legyen az iteráció exportálási funkciókkal. A korlátozások a mobileszközökön a valós idejű besorolás vannak optimalizálva. Kompakt tartomány beépített deklarációkkal némileg kevésbé pontos lehet a betanítási adatok akkora standard tartománnyal. Az egyensúlyt a rendszer, hogy azok kellően kicsire közel valós idejű helyben kell futtatni. 
 
-## <a name="training-image"></a>Képzési kép
+## <a name="evaluation"></a>Próbaverzió
 
-Hozzon létre nagy pontosságú besorolás, a Custom Vision Service számos betanító kép kell rendelkeznie. A képzési lemezkép egy fényképet, a kép azt szeretné, hogy a Custom Vision Service besorolásához. Például narancs osztályozására, meg kellene narancs több képek feltöltése a Custom Vision Service, hogy a szolgáltatás, amely képes felismerni a narancs besorolás létrehozása. Azt javasoljuk, hogy legalább 30 képenként címke.
+Miután az osztályozó által igénybe vett van tanítva, az automatikusan létrehozott https-végpont használatával küldhet tesztelési képet. Az osztályozó által igénybe vett előre jelzett címkék készletét magabiztosan sorrendben adja vissza.
 
 ## <a name="iteration"></a>Iteráció
 
 Minden alkalommal, amikor a vonat vagy újra betaníthatja az, létrehozhat egy új példányaiban a modellben. Mindent megteszünk, hogy idővel az előrehaladást összehasonlítása több korábbi ismétlések. Már nem hasznosak az Ön ismétlések törölheti. Ne feledje, hogy egy iterációját törlése nem vonható vissza, és minden képet és a módosításokat, amelyek korábban csak az adott iteráció is törli. 
 
-## <a name="workspace"></a>Munkaterület
+## <a name="precision"></a>Pontosság
 
-A munkaterület összes a betanítási lemezképet tartalmaz, és tükrözi a legfrissebb verzió továbbfejlesztésében az összes módosítást például hozzáadott vagy eltávolított lemezképek. Betaníthatja az, amikor használatával hoz létre egy új ismétlését a besorolás, a képeket a munkaterület megtalálható.
-
-## <a name="tags"></a>Címkék
-
-Címkék használatával az objektumokat a betanító kép címkézését. Létrehozásakor egy osztályozó kutyák és pónikat azonosításához, akkor célszerű helyezni pónikat, és mind a "kutya" tartalmazó lemezképek "pony" címke és a egy kutya és a egy pony is tartalmazó lemezképek "pony" címke kutyájával lenni, tartalmazó lemezképek "kutya" címkét.
-
-## <a name="evaluation"></a>Próbaverzió
-
-Miután az osztályozó által igénybe vett van tanítva, az automatikusan létrehozott https-végpont használatával küldhet tesztelési képet. Az osztályozó által igénybe vett előre jelzett címkék készletét magabiztosan sorrendben adja vissza.
+A besorolás, a lemezkép megfelelően besorolni mikor besorolni, kép, hogy mennyire valószínű? Kívül az összes rendszerkép (kutyák és pónikat) a besorolás betanításához használja milyen % volt a modell be megfelelő? 100 kép kívül 99 megfelelő címkéket 99 %-os pontossága biztosít.
 
 ## <a name="predictions"></a>Előrejelzések
 
 Az osztályozó által igénybe vett új képek osztályozásához fogad, mint a lemezképeket tárolja az Ön számára. Ezek a lemezképek használatával javíthatja a besorolás pontossága megfelelően megtekintett a rosszul előre jelzett lemezképeket. Ezek a lemezképek használatával, majd újra betaníthatja az.
-
-## <a name="precision"></a>Pontosság
-
-A besorolás, a lemezkép megfelelően besorolni mikor besorolni, kép, hogy mennyire valószínű? Kívül az összes rendszerkép (kutyák és pónikat) a besorolás betanításához használja milyen % volt a modell be megfelelő? 100 kép kívül 99 megfelelő címkéket 99 %-os pontossága biztosít.
 
 ## <a name="recall"></a>Visszahívás
 
@@ -73,7 +61,7 @@ Ki kell besorolásuk megfelelően összes rendszerkép hány volt az osztályoz�
 
 Projekt szintű beállítások és a felhasználói szintű beállításokat két típusa van.
 
-- Projekt szintű beállításokat: 
+- Projekt szintű beállításokat:
   
   Egy projekt vagy az osztályozó által igénybe vett projektszintű beállítások érvényesek. Ezek a következők:
 
@@ -90,3 +78,15 @@ Projekt szintű beállítások és a felhasználói szintű beállításokat ké
    - Használat
       - Projektek létrehozása száma
       - Értékelés/előrejelzési API-hívások száma.
+
+## <a name="tags"></a>Címkék
+
+Címkék használatával az objektumokat a betanító kép címkézését. Létrehozásakor egy osztályozó kutyák és pónikat azonosításához, akkor célszerű helyezni pónikat, és mind a "kutya" tartalmazó lemezképek "pony" címke és a egy kutya és a egy pony is tartalmazó lemezképek "pony" címke kutyájával lenni, tartalmazó lemezképek "kutya" címkét.
+
+## <a name="training-image"></a>Képzési kép
+
+Hozzon létre nagy pontosságú besorolás, a Custom Vision Service számos betanító kép kell rendelkeznie. A képzési lemezkép egy fényképet, a kép azt szeretné, hogy a Custom Vision Service besorolásához. Például narancs osztályozására, meg kellene narancs több képek feltöltése a Custom Vision Service, hogy a szolgáltatás, amely képes felismerni a narancs besorolás létrehozása. Azt javasoljuk, hogy legalább 30 képenként címke.
+
+## <a name="workspace"></a>Munkaterület
+
+A munkaterület összes a betanítási lemezképet tartalmaz, és tükrözi a legfrissebb verzió továbbfejlesztésében az összes módosítást például hozzáadott vagy eltávolított lemezképek. Betaníthatja az, amikor használatával hoz létre egy új ismétlését a besorolás, a képeket a munkaterület megtalálható.

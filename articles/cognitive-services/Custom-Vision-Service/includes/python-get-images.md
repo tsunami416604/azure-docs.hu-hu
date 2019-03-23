@@ -3,15 +3,15 @@ author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b94a877ba3dc8389e8655e7c5f24efaf9bbe795
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f67c8028f5142117a5e245c90622fa0b4920d4d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56323463"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352467"
 ---
 ## <a name="get-the-sample-images"></a>Mintaképek letöltése
 
-Ez a példa a [Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) GitHub-adattár **samples/vision/images** könyvtárában található képeket használja. Klónozza vagy töltse le ezt az adattárat a fejlesztői környezetbe.
+Ebben a példában a képeket a **samples/vision/képek** könyvtárát a [Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) tárházban a Githubon. Klónozza vagy töltse le ezt az adattárat a fejlesztői környezetbe.

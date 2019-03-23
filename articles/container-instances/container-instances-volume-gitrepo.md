@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388272"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369663"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gitRepo kötet csatlakoztatása
 
@@ -33,17 +33,17 @@ Ha csatlakoztatja egy *gitRepo* kötet, megadhatja a kötet konfigurálása hár
 | `directory` | Nem | A könyvtárat, amelybe a tárház klónozása. Az elérési utat kell tartalmaznia, vagy nem kezdődhet "`..`".  Ha megad "`.`", a tárház klónozták a kötet könyvtárba. Ellenkező esetben a Git-tárház be a megadott névvel, a kötet könyvtárban lévő alkönyvtára klónozták. |
 | `revision` | Nem | A változat klónozásának véglegesítési kivonatát. Ha nincs megadva, a `HEAD` változat klónozták. |
 
-## <a name="mount-gitrepo-volume-azure-cli"></a>Kötet csatlakoztatási gitRepo: az Azure CLI
+## <a name="mount-gitrepo-volume-azure-cli"></a>Kötet csatlakoztatási gitRepo: Azure CLI
 
 A gitRepo kötet csatlakoztatása, container Instances szolgáltatásban való központi telepítésekor a [Azure CLI-vel](/cli/azure), szállítási a `--gitrepo-url` és `--gitrepo-mount-path` paramétereket a [az tároló létrehozása] [ az-container-create] parancsot. Megadhatja a klónozza a köteten lévő könyvtár (`--gitrepo-dir`) és a változat klónozásának véglegesítési kivonatát (`--gitrepo-revision`).
 
-A példában a parancs klónozza a [aci-helloworld] [ aci-helloworld] mintaalkalmazás be `/mnt/aci-helloworld` a tároló-példányban:
+A példában a parancs klónozza a Microsoft [aci-helloworld] [ aci-helloworld] mintaalkalmazás be `/mnt/aci-helloworld` a tároló-példányban:
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name hellogitrepo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --dns-name-label aci-demo \
     --ports 80 \
     --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
@@ -68,7 +68,8 @@ A gitRepo kötet csatlakoztatása, a tároló-példányok üzembe helyezésekor 
 
 Például a következő Resource Manager-sablont hoz létre egy tárolócsoportot, amely egyetlen tároló. A tároló klónozza a GitHub-adattárak két által meghatározott a *gitRepo* kötet blokkokat. A második kötet klónozása a könyvtárat adja meg a további tulajdonságok és a egy adott változat klónozásához véglegesítési kivonatát tartalmaz.
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
+[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Az eredményül kapott könyvtárstruktúrája a két klónozott adattárakkal, a fenti sablonban definiálva van:
 
@@ -97,9 +98,9 @@ Egy Azure-Adattárakkal Git-tárházhoz adja meg egy érvényes PAT együtt bár
 
 GitHub-és Azure-Adattárakkal személyes hozzáférési jogkivonatok kapcsolatos további információkért tekintse meg a következőket:
 
-GitHub: [a parancssor a személyes hozzáférési jogkivonat létrehozása][pat-github]
+GitHub: [A parancssor a személyes hozzáférési jogkivonat létrehozása][pat-github]
 
-Az Azure-kódtárak: [személyes hozzáférési jogkivonat hitelesíti a hozzáférést készítése][pat-repos]
+Azure-beli adattárak: [Személyes hozzáférési jogkivonat hitelesíti a hozzáférést készítése][pat-repos]
 
 ## <a name="next-steps"></a>További lépések
 

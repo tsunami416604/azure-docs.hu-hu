@@ -16,12 +16,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: aff9dade7fe0238c0ea8ccc3ae5bba57437c6f89
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339551"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349705"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
@@ -40,7 +40,10 @@ ms.locfileid: "58339551"
 | Maximális kapacitás (GB) standard szintű felügyelt lemez | 2048 | A standard szintű managed disks ezen a helyen létrehozott maximális kapacitását. |
 | Maximális kapacitás (GB) prémium szintű felügyelt lemez | 2048 | A prémium szintű maximális kapacitását a felügyelt lemezek, ezen a helyen létrehozott. |
 
-## <a name="storage-quota-types"></a>Tárolási kvóta típusa
+> [!NOTE]  
+> Nem felügyelt lemez (lapblobok) maximális kapacitása elkülönül a felügyelt lemez kvóta, kell állítani a tárolási kvótát.
+
+## <a name="storage-quota-types"></a>Tárolási kvóta típusa 
 
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ ms.locfileid: "58339551"
 | Tárfiókok teljes száma |20 |Egy előfizetést hozhat létre ezen a helyen storage-fiókok maximális számát. |
 
 > [!NOTE]  
-> Mielőtt a tárhelykvótát van érvényben akár két óráig is eltarthat.
+> Mielőtt a tárhelykvótát van érvényben akár két óráig is eltarthat. Felügyelt lemez maximális kapacitása nem azonos az összes tárolási kvótát, a számítási kvótájának kell állítani.
 
 ## <a name="network-quota-types"></a>Hálózati kvótatípusok
 

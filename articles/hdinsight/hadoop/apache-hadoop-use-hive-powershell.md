@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8bd754533758d2c736e3951e5c7a10f63bb72bd8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410176"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360758"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell-lel, az Apache Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -25,6 +25,8 @@ Ez a dokumentum azt szemlélteti, az Azure PowerShell használata az Azure-erőf
 > Ez a dokumentum nem biztosít a hiveql a példákban használt mire részletes leírását. Az ebben a példában használt HiveQL kapcsolatos tudnivalókat lásd: [Apache Hive használata a HDInsight az Apache Hadoop](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
 
@@ -41,13 +43,13 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyekkel távolról futtatni a 
 
 A következő parancsmagok használhatók, ha egy távoli HDInsight-fürtben Hive-lekérdezések futtatása:
 
-* `Connect-AzureRmAccount`: Azure PowerShell-lel hitelesíti az Azure-előfizetéshez.
-* `New-AzureRmHDInsightHiveJobDefinition`: Létrehoz egy *feladat definíciójának* a megadott hiveql használatával.
-* `Start-AzureRmHDInsightJob`: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
-* `Wait-AzureRmHDInsightJob`: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
-* `Get-AzureRmHDInsightJobOutput`: A feladat kimenetének lekéréséhez használja.
-* `Invoke-AzureRmHDInsightHiveJob`: HiveQL utasítások futtatásához használt. Ez a parancsmag blokkolja a lekérdezés befejeződött, majd az eredményeket adja vissza.
-* `Use-AzureRmHDInsightCluster`: A használandó aktuális fürt beállítja a `Invoke-AzureRmHDInsightHiveJob` parancsot.
+* `Connect-AzAccount`: Azure PowerShell-lel hitelesíti az Azure-előfizetéshez.
+* `New-AzHDInsightHiveJobDefinition`: Létrehoz egy *feladat definíciójának* a megadott hiveql használatával.
+* `Start-AzHDInsightJob`: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* `Wait-AzHDInsightJob`: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
+* `Get-AzHDInsightJobOutput`: A feladat kimenetének lekéréséhez használja.
+* `Invoke-AzHDInsightHiveJob`: HiveQL utasítások futtatásához használt. Ez a parancsmag blokkolja a lekérdezés befejeződött, majd az eredményeket adja vissza.
+* `Use-AzHDInsightCluster`: A használandó aktuális fürt beállítja a `Invoke-AzHDInsightHiveJob` parancsot.
 
 A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat futtathat feladatokat a HDInsight-fürt:
 
@@ -81,7 +83,7 @@ A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat f
    > [!NOTE]  
    > Hosszabb HiveQL lekérdezések esetén használhatja az Azure PowerShell **itt-karakterláncok** parancsmag vagy a HiveQL parancsfájlok. Az alábbi kódrészlet bemutatja, hogyan használhatja a `Invoke-Hive` parancsmag futtatása egy olyan HiveQL-parancsfájlt. A HiveQL-parancsfájlt kell tölthető fel a wasb: / /.
    >
-   > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+   > `Invoke-AzHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
    > További információ **itt-karakterláncok**, lásd: <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">használó Windows PowerShell itt-karakterláncok</a>.
 
@@ -91,7 +93,7 @@ Ha semmilyen adatot nem ad vissza, ha a feladat befejeződik, tekintse meg a hib
 
 ```powershell
 # Print the output of the Hive job.
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `
         -HttpCredential $creds `

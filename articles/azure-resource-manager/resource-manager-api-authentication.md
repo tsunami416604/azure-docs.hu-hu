@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2018
+ms.date: 3/22/2019
 ms.author: dugill
-ms.openlocfilehash: 138367eb7eb0d4be2e0a7bec57d1bce551a5e829
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5144a35dd695ce30f4a7ff940f0bca7e6ba9d23c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107052"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372547"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 
@@ -27,10 +27,10 @@ Ha Ön egy szoftverfejlesztő, aki létre kell hoznia egy alkalmazást, amely fe
 
 Az alkalmazás hozzáférhessen a Resource Manager API-k több módon:
 
-1. **Felhasználó + alkalmazás-hozzáférés**: bejelentkezett felhasználó nevében erőforrásokhoz hozzáférő alkalmazások esetében. Ez a megközelítés alkalmazások, például a web apps és a parancssori eszközöket, amelyek csak "interaktív felügyeleti" Azure-erőforrások kezelésére használható.
+1. **Felhasználó + alkalmazás-hozzáférés**: bejelentkezett felhasználóhoz tartozó erőforrásokhoz hozzáférő alkalmazások esetében. Ez a megközelítés alkalmazások, például a web apps és a parancssori eszközöket, amelyek csak "interaktív felügyeleti" Azure-erőforrások kezelésére használható.
 2. **Csak az alkalmazásra vonatkozó hozzáférési**: démonszolgáltatásokat vagy ütemezett feladatokat futtató alkalmazásokhoz. Az alkalmazás identitását közvetlen hozzáférést az erőforrásokhoz. Ez a megközelítés az Azure-bA hosszú távú távfelügyelt (felügyelet) hozzáférést igénylő alkalmazások esetében működik.
 
-Ez a cikk részletes utasításokat követve hozzon létre egy alkalmazást, amely a két hitelesítési módszert alkalmaz. Ez bemutatja, hogyan szeretné végrehajtani a műveletet a REST API vagy a C#. A teljes ASP.NET MVC alkalmazás mindig elérhető legyen [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Ez a cikk részletes utasításokat követve hozzon létre egy alkalmazást, amely a két hitelesítési módszert alkalmaz. Azt mutatja be minden egyes lépést REST API-val vagy C#. A teljes ASP.NET MVC alkalmazás mindig elérhető legyen [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -70,7 +70,7 @@ A csatlakoztatott előfizetések kezelése:
 ![Előfizetés csatlakoztatása](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>Alkalmazás regisztrálása
-Mielőtt elkezdené, kódolás, webes alkalmazás regisztrálása az Azure Active Directory (AD). Az alkalmazás regisztrációját az alkalmazás központi azonosítót hoz létre az Azure ad-ben. Alapszintű információkat az alkalmazásról, mint például az OAuth-Ügyfélazonosító, a válasz URL-címek és a hitelesítő adatok, az alkalmazás által használt hitelesítés és Azure Resource Manager API-k elérése akkor tárolja. Az alkalmazás regisztrációját is rögzíti a különböző delegált engedélyeket az alkalmazása szükséges, a Microsoft APIs elérésekor a felhasználó nevében.
+Mielőtt elkezdené, kódolás, webes alkalmazás regisztrálása az Azure Active Directory (AD). Az alkalmazás regisztrációját az alkalmazás központi azonosítót hoz létre az Azure ad-ben. Alapszintű információkat az alkalmazásról, mint például az OAuth-Ügyfélazonosító, a válasz URL-címek és a hitelesítő adatok, az alkalmazás által használt hitelesítés és Azure Resource Manager API-k elérése akkor tárolja. Az alkalmazás regisztrációját a különféle delegált engedélyeket az alkalmazása szükséges, amikor a felhasználó éri el a Microsoft APIs is rögzíti.
 
 Mivel az alkalmazás más előfizetésben hozzáfér, mint egy több-bérlős alkalmazást kell konfigurálnia. Érvényesítési átadni, adja meg egy társított az Azure Active Directory-tartományhoz. A tartományok az Azure Active Directory társított megtekintéséhez jelentkezzen be a portálra.
 
@@ -104,12 +104,12 @@ A kérelem egy jogkivonatot, amely a Resource Manager hívja használhatók, az 
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 
-A kérelem meghiúsul, mert a felhasználó nem jelentkezett még, de a válasz lehet lekérdezni a bérlő Azonosítóját. Az adott kivétel beolvasni a bérlő Azonosítóját a válasz fejléc értéke **WWW-Authenticate**. Ezt a megvalósítást, az megjelenik a [GetDirectoryForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L20) metódust.
+A kérelem meghiúsul, mert a felhasználó még nem jelentkezett, de a válasz lehet lekérdezni a bérlő Azonosítóját. Az adott kivétel beolvasni a bérlő Azonosítóját a válasz fejléc értéke **WWW-Authenticate**. Ezt a megvalósítást, az megjelenik a [GetDirectoryForSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L20) metódust.
 
 ## <a name="get-user--app-access-token"></a>Felhasználó + alkalmazás-hozzáférési jogkivonat beszerzése
 Az alkalmazás átirányítja a felhasználót az OAuth 2.0 engedélyezése kérelem - hitelesítéshez a felhasználó hitelesítő adatait, majd az engedélyezési kódot az Azure ad-hez. Az alkalmazás az engedélyezési kód használatával hozzáférési token lekérése a Resource Managerhez. A [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metódus az engedélyezési kérést hoz létre.
 
-Ez a cikk bemutatja a REST API-kérelem a felhasználó hitelesítéséhez. Segítő kódtárak használatával hitelesítést végezni a kódban. Ezek a kódtárak kapcsolatos további információkért lásd: [Azure Active Directory Authentication Libraries](../active-directory/active-directory-authentication-libraries.md). Identitáskezelés az alkalmazások integrálásával kapcsolatos útmutatásért lásd: [Azure Active Directory fejlesztői útmutatója](../active-directory/develop/v1-overview.md).
+Ez a cikk bemutatja a REST API-kérelem a felhasználó hitelesítéséhez. Segítő kódtárak használatával hitelesíti a kódban. Ezek a kódtárak kapcsolatos további információkért lásd: [Azure Active Directory Authentication Libraries](../active-directory/active-directory-authentication-libraries.md). Identitáskezelés az alkalmazások integrálásával kapcsolatos útmutatásért lásd: [Azure Active Directory fejlesztői útmutatója](../active-directory/develop/v1-overview.md).
 
 ### <a name="auth-request-oauth-20"></a>Hitelesítési kérelem (OAuth 2.0)
 Egy nyílt ID Connect/OAuth2.0 engedélyezése kérelem kiadása az Azure AD-hitelesítési végpontra:
@@ -127,7 +127,7 @@ Az Azure AD akkor hitelesíti a felhasználót, és, ha szükséges, megkérdezi
     code=AAABAAAAiL****FDMZBUwZ8eCAA&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="auth-request-open-id-connect"></a>Hitelesítési kérelem (Open ID Connect)
-Ha nem csak az Azure Resource Manager eléréséhez a felhasználó nevében szeretne, de is engedélyezi, hogy a felhasználó jelentkezzen be az alkalmazás használatával az Azure AD-fiókja, ki egy nyílt azonosítója csatlakozás engedélyezése kérése. Az Open ID Connect az alkalmazás is fogad id_token, amely az alkalmazás használhatja a bejelentkezni a felhasználó Azure AD-ből.
+Ha csak nem szeretne a felhasználó Azure Resource Manager eléréséhez, de is engedélyezi, hogy a felhasználó jelentkezzen be az alkalmazás használatával az Azure AD-fiókja, ki egy nyílt azonosítója csatlakozás engedélyezése kérése. Az Open ID Connect az alkalmazás is fogad id_token, amely az alkalmazás használhatja a bejelentkezni a felhasználó Azure AD-ből.
 
 A lekérdezési karakterlánc paraméterei a kérelem rendelkezésre álló ismertetett a [a bejelentkezési kérelem elküldéséhez](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request) cikk.
 
@@ -177,7 +177,7 @@ Egy példaválasz kód engedélyezési jogkivonat:
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039858","not_before":"1432035958","resource":"https://management.core.windows.net/","access_token":"eyJ0eXAiOiJKV1Q****M7Cw6JWtfY2lGc5A","refresh_token":"AAABAAAAiL9Kn2Z****55j-sjnyYgAA","scope":"user_impersonation","id_token":"eyJ0eXAiOiJKV*****-drP1J3P-HnHi9Rr46kGZnukEBH4dsg"}
 
 #### <a name="handle-code-grant-token-response"></a>Kód engedélyezési jogkivonat válasz kezeléséhez
-Token sikeres válasz tartalmazza a (felhasználó + alkalmazás) hozzáférési jogkivonatot az Azure Resource Manager. Az alkalmazás a hozzáférési jogkivonattal erőforrás-kezelő eléréséhez a felhasználó nevében. Az Azure AD által kiállított hozzáférési jogkivonatok élettartama érték egy óra. Nem valószínű, hogy a webalkalmazás kell megújítani a (felhasználó + alkalmazás) hozzáférési jogkivonatot. Ha a hozzáférési jogkivonat megújításához van szüksége, használja a frissítési jogkivonatot, amely az alkalmazás fogad a token válaszban. Közzététele egy OAuth2.0 jogkivonat kérése az Azure AD jogkivonat-végpont:
+Token sikeres válasz tartalmazza a (felhasználó + alkalmazás) hozzáférési jogkivonatot az Azure Resource Manager. Az alkalmazás a hozzáférési jogkivonattal erőforrás-kezelő eléréséhez a felhasználó. Az Azure AD által kiállított hozzáférési jogkivonatok élettartama érték egy óra. Nem valószínű, hogy a webalkalmazás kell megújítani a (felhasználó + alkalmazás) hozzáférési jogkivonatot. Ha a hozzáférési jogkivonat megújításához van szüksége, használja a frissítési jogkivonatot, amely az alkalmazás fogad a token válaszban. Közzététele egy OAuth2.0 jogkivonat kérése az Azure AD jogkivonat-végpont:
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
@@ -192,10 +192,10 @@ Az alábbi példa bemutatja, hogyan használata a frissítési token:
 
     grant_type=refresh_token&refresh_token=AAABAAAAiL9Kn2Z****55j-sjnyYgAA&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Frissítési biztonsági jogkivonat beszerzése az új hozzáférési jogkivonatok az Azure Resource Manager segítségével, de azok nem alkalmasak az alkalmazás által a kapcsolat nélküli elérés. A frissítési jogkivonatok élettartamának korlátozódik, és frissítési biztonsági jogkivonat a felhasználó vannak kötve. Ha a felhasználó elhagyja a szervezetet, az alkalmazás a frissítési jogkivonat használatával elveszítette a hozzáférését. Ez a megközelítés nem alkalmas az Azure erőforrások kezeléséhez csapatok által használt alkalmazások számára.
+Bár a frissítési biztonsági jogkivonat beszerzése az új hozzáférési jogkivonatok az Azure Resource Manager segítségével, nem megfelelő az alkalmazás által a kapcsolat nélküli elérés. A frissítési jogkivonatok élettartamának korlátozódik, és frissítési biztonsági jogkivonat a felhasználó vannak kötve. Ha a felhasználó elhagyja a szervezetet, az alkalmazás a frissítési jogkivonat használatával elveszítette a hozzáférését. Ez a megközelítés nem alkalmas az Azure erőforrások kezeléséhez csapatok által használt alkalmazások számára.
 
 ## <a name="check-if-user-can-assign-access-to-subscription"></a>Ha a felhasználó hozzáférési jogosultságot rendelhet előfizetés ellenőrzése
-Az alkalmazás most már rendelkezik egy tokent az Azure Resource Manager eléréséhez a felhasználó nevében. A következő lépés, hogy az alkalmazás csatlakoztatása az előfizetéshez. A csatlakozás után az alkalmazás kezelheti ezen előfizetések akkor is, ha a felhasználó nincs jelen (hosszú távú offline hozzáférést).
+Az alkalmazás most már rendelkezik egy jogkivonatot a felhasználóhoz tartozó Azure Resource Manager eléréséhez. A következő lépés, hogy az alkalmazás csatlakoztatása az előfizetéshez. A csatlakozás után az alkalmazás kezelheti ezen előfizetések akkor is, ha a felhasználó nincs jelen (hosszú távú offline hozzáférést).
 
 Az egyes előfizetésekhez való kapcsolódáshoz, hívja a [Resource Manager-lista engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions) határozza meg, hogy a felhasználó rendelkezik-e felügyeleti jogokkal az előfizetéshez tartozó API-t.
 
@@ -213,7 +213,7 @@ Előfizetés felhasználói jogosultságok megszerzéséhez a válasz egy péld�
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-Az engedélyek API több engedélyeket ad vissza. Minden egyes engedély engedélyezett műveletek áll (**műveletek**) és nem engedélyezett műveletek (**notactions**). Ha egy művelet szerepel az engedélyezett műveleteket bármilyen engedéllyel, és nem szerepel a nem engedélyezett műveletek körét az engedélyt, a felhasználó számára engedélyezett a művelet végrehajtásához. **Microsoft.Authorization/RoleAssignments/Write** , hogy a hozzáférési felügyeleti jogok a műveletet. Az alkalmazás olvassa be az engedélyek eredmény, ez a művelet a karakterlánc a reguláris kifejezéssel egyező keresse meg a **műveletek** és **notactions** minden engedélyt.
+Az engedélyek API több engedélyeket ad vissza. Minden egyes engedély engedélyezett műveletek áll (**műveletek**) és nem engedélyezett műveletek (**notactions**). Ha egy művelet szerepel az engedélyezett műveleteket bármilyen engedéllyel, és nem szerepel a nem engedélyezett műveletek körét az engedélyt, a felhasználó számára engedélyezett a művelet. **Microsoft.Authorization/RoleAssignments/Write** , hogy a hozzáférési felügyeleti jogok a műveletet. Az alkalmazás olvassa be az engedélyek eredmény, ez a művelet a karakterlánc a reguláris kifejezéssel egyező keresse meg a **műveletek** és **notactions** minden engedélyt.
 
 ## <a name="get-app-only-access-token"></a>Csak az alkalmazásra vonatkozó hozzáférési jogkivonat beszerzése
 Most már tudja, ha a felhasználó hozzáférési jogosultságot rendelhet az Azure-előfizetés. A következő lépések a következők:
@@ -283,7 +283,7 @@ A megfelelő RBAC szerepkör az alkalmazáshoz:
 
 Az alkalmazás szerepkör-hozzárendelés jelenik meg a felhasználók számára, ezért válassza a legkevésbé szükséges jogosultsággal.
 
-Hívja a [erőforrás-kezelő szerepkör-definíció API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) az Azure RBAC-szerepkörökhöz, és a keresési listában, majd megismételheti a kívánt szerepkör-definíció keresése név alapján az eredményt.
+Hívja a [erőforrás-kezelő szerepkör-definíció API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) listázása az összes Azure RBAC-szerepkörökhöz, és az eredmény a szerepkör-definíció keresése név alapján, majd megismételheti.
 
 A [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) minta ASP.net MVC alkalmazás metódus valósítja meg a hívás.
 
@@ -330,7 +330,7 @@ Egy kérelem (példa) RBAC szerepkör hozzárendelése az alkalmazáshoz:
     Content-Type: application/json
     Content-Length: 230
 
-    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
+    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
 
 A kérelem a következő értékeket használjuk:
 
@@ -338,17 +338,17 @@ A kérelem a következő értékeket használjuk:
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |az előfizetés azonosítója |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |az alkalmazás a szolgáltatásnév Objektumazonosítóját |
-| acdd72a7-3385-48ef-bd42-f606fba81ae7 |az Olvasó szerepkör azonosítója |
+| b24988ac-6180-42a0-ab88-20f7382dd24c |a közreműködői szerepkör azonosítója |
 | 4f87261d-2816-465d-8311-70a27558df4c |az új szerepkör-hozzárendelés létrehozása új guid |
 
 A válasz a következő formátumban kell megadni:
 
     HTTP/1.1 201 Created
 
-    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
+    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
 
 ### <a name="get-app-only-access-token-for-azure-resource-manager"></a>Csak az alkalmazásra vonatkozó hozzáférési jogkivonat beszerzése az Azure Resource Manager
-Érvényesítéséhez, amelyet az alkalmazás rendelkezik a kívánt az előfizetés eléréséhez, vizsgálati művelet végrehajtásához a az előfizetés csak alkalmazás token használatával.
+Alkalmazás ellenőrzése is hozzáférhet az előfizetéséhez, tegye egy teszt feladat az előfizetés csak alkalmazás token használatával.
 
 Csak az alkalmazásra vonatkozó hozzáférési jogkivonatot kapjon, kövesse az utasításokat szakaszban [csak az alkalmazásra vonatkozó hozzáférési jogkivonat beszerzése az Azure AD Graph API](#app-azure-ad-graph), egy másik érték a resource paraméter:
 
@@ -357,7 +357,7 @@ Csak az alkalmazásra vonatkozó hozzáférési jogkivonatot kapjon, kövesse az
 A [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) metódus az ASP.NET MVC-mintaalkalmazáson lekéri csak az alkalmazásra vonatkozó hozzáférési tokent az Azure Resource Manager használatával az Active Directory Authentication Library for .net.
 
 #### <a name="get-applications-permissions-on-subscription"></a>Alkalmazás engedélyek előfizetés beszerzése
-Ellenőrizze, hogy rendelkezik-e az alkalmazás a kívánt hozzáférés az Azure-előfizetéssel, akkor is hívhat a [erőforrás-kezelő engedélyei](https://docs.microsoft.com/rest/api/authorization/permissions) API-t. Ez a módszer hogyan megadta, hogy a felhasználó rendelkezik-e az előfizetés hozzáférés-kezelés rights hasonlít. Ennek során azonban hívja meg az engedélyeket API, amely az előző lépésben kapott csak az alkalmazásra vonatkozó hozzáférési jogkivonat.
+Ellenőrizze, hogy az alkalmazás hozzáférhet az Azure-előfizetéssel, akkor is hívhat a [erőforrás-kezelő engedélyei](https://docs.microsoft.com/rest/api/authorization/permissions) API-t. Ez a módszer hogyan megadta, hogy a felhasználó rendelkezik-e az előfizetés hozzáférés-kezelés rights hasonlít. Ennek során azonban hívja meg az engedélyeket API, amely az előző lépésben kapott csak az alkalmazásra vonatkozó hozzáférési jogkivonat.
 
 A [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) minta ASP.NET MVC alkalmazás metódus valósítja meg a hívás.
 
@@ -367,7 +367,7 @@ A megfelelő RBAC-szerepkör van rendelve az alkalmazás szolgáltatásnév az e
 Ha az előfizetés tulajdonosa a portál vagy a parancssori eszközök használatával az alkalmazás szerepkör-hozzárendelés eltávolítása, az alkalmazás már nem érhetik el az adott előfizetéshez. Ebben az esetben kell értesíti a felhasználót, hogy az alkalmazáson kívüli az előfizetéshez a kapcsolat megszakadt és tegye lehetővé számukra a kapcsolat "javítás" lehetőséget. "Javítás" újra hozna létre a szerepkör-hozzárendelés, amelyek offline törölve lett.
 
 Ugyanúgy, mint az előfizetések kapcsolódni az alkalmazáshoz a felhasználó engedélyezte, engedélyeznie kell a felhasználó megszakítja a előfizetések túl. Egy hozzáférési felügyeleti szempontból válassza le azt jelenti, hogy a szerepkör-hozzárendelés, amely az alkalmazás egyszerű szolgáltatás rendelkezik az előfizetés eltávolítása. Igény szerint bármely, az alkalmazás az előfizetés állapota lehet, hogy el kell távolítani túl.
-Csak az előfizetés hozzáférés-felügyeleti engedéllyel rendelkező felhasználók képesek leválasztani az előfizetést.
+Csak az előfizetés hozzáférés-felügyeleti engedéllyel rendelkező felhasználók leválaszthatja az előfizetést.
 
 A [RevokeRoleFromServicePrincipalOnSubscription metódus](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) az ASP.net MVC-mintaalkalmazást a hívás valósítja meg.
 

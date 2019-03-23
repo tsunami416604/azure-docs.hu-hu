@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8fa77409f1f5c32bc1e8f8644111c38f6115a92d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295810"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362050"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -67,22 +67,11 @@ Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-
 
 ### <a name="server"></a>A saját Jupyter notebook server használata
 
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** notebookot.
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Győződjön meg arról, hogy telepítsen `matplotlib` és a `automl` és `notebooks` kiegészítő funkciók a környezetben.
 
-1. Végezze el a [Azure Machine Learning Python rövid](quickstart-create-workspace-with-python.md) Miniconda környezetet, és hozzon létre egy munkaterületet.
-1. Telepítse a `automl` és `notebooks` kiegészítő funkciók a környezet használatával `pip install azureml-sdk[automl,notebooks]`.
-1. Telepítés `maplotlib` használatával `pip install maplotlib`.
-1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
-
-    ```shell
-    jupyter notebook
-    ```
+Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-part2-automated-ml.ipynb** notebookot.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

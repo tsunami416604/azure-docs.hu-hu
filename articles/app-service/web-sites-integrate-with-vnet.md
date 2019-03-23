@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ed99bd3626bb44bff68e4122d6b50523f19e1797
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112619"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369700"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -247,7 +247,7 @@ Nincsenek három funkciók, amelyek lehetővé teszik a virtuális hálózatok k
 
 Hibrid kapcsolatokhoz szükség van a hálózaton a hibrid kapcsolat Manager(HCM) nevű továbbító ügynök telepítését. A HCM képesnek kell lennie az Azure-bA és az alkalmazás csatlakoztatása. Hibrid kapcsolatok nem igényel bejövő internetről elérhető végpont a távoli hálózat ez VPN-kapcsolat szükséges. A HCM csak akkor fut, a Windows, illetve azt, hogy legfeljebb öt olyan példányai, magas rendelkezésre állást biztosít. Hibrid kapcsolatok csak az, ha TCP támogatja, és minden hibrid kapcsolat végpontja meg kell egyeznie a megadott gazdagép: port kombinációjához. 
 
-Az App Service Environment funkció lehetővé teszi, hogy az Azure App Service létrehozása egyetlen bérlő példány futtatásához a virtuális hálózatban található. Ha az alkalmazások App Service Environment-környezetben, majd az alkalmazások eléréséhez további lépések nélkül a virtuális hálózatban található erőforrások. Az App Service Environment-környezet az alkalmazások hatékony feldolgozók futtassa, és méretezhető legfeljebb 100 ASP-példányok és. A hálózatkezelési szolgáltatásokat, beleértve az ExpressRoute- és végpontok összes App Service Environment-környezetek működnek.  
+Az App Service Environment funkció lehetővé teszi, hogy az Azure App Service létrehozása egyetlen bérlő példány futtatásához a virtuális hálózatban található. Ha az alkalmazások App Service Environment-környezetben, majd az alkalmazások eléréséhez további lépések nélkül a virtuális hálózatban található erőforrások. Az App Service-környezet az alkalmazások hatékony feldolgozók fut, és méretezhető legfeljebb 100 ASP-példányhoz. A hálózatkezelési szolgáltatásokat, beleértve az ExpressRoute- és végpontok összes App Service Environment-környezetek működnek.  
 
 Bár egyes használnak megkülönbözteti a kis között átfedés van, ezek közül egyik sem cserélje le a többi. Hogy mely szolgáltatásokat szeretné az igényeinek megfelelően vannak kötve. Példa:
 

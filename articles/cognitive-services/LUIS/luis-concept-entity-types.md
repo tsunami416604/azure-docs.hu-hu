@@ -1,7 +1,7 @@
 ---
 title: Entitás típusa
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: A Language Understanding Intelligent Service (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
+description: 'Entitások adatok kinyerése az utterance (kifejezés). Entitástípusok teszik lehetővé az adatok előre jelezhető kinyerése. Az entitások két típusa van: gép megtudhatta, és nem gép megtanult. Fontos tudni, hogy milyen típusú entitás utterances dolgozik.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844588"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372522"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
-Entitások olyan szavak vagy kifejezések, amelyek az alkalmazás tartományban lévő fontos adatokat kimondott szöveg.
+Entitások adatok kinyerése az utterance (kifejezés). Entitástípusok teszik lehetővé az adatok előre jelezhető kinyerése. Az entitások két típusa van: gép megtudhatta, és nem gép megtanult. Fontos tudni, hogy milyen típusú entitás utterances dolgozik. 
 
 ## <a name="entity-compared-to-intent"></a>Beszédszándék képest entitás
 
@@ -190,7 +190,7 @@ Az entitás az a jó, mikor igazítása:
 
 * Az adatok egy gyakori alkalmazási helyzet, a nyelv kulturális környezet előre összeállított entitások által támogatott illeszkedik. 
 
-Előre összeállított entitások is hozzáadható és bármikor eltávolítható. Ha azt tapasztalja, hogy az észlelt egy előre összeállított entitások egy példa utterance (kifejezés), a jelölést az egyéni entitás nem lehetséges, hogy az előre összeállított entitások eltávolítása az alkalmazásból, jelölje meg az entitás, és az előre létrehozott entitás hozzáadása. 
+Előre összeállított entitások is hozzáadható és bármikor eltávolítható.
 
 ![Előre összeállított entitások száma](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,29 @@ Előre összeállított entitások is hozzáadható és bármikor eltávolíthat
 [Entitás példa JSON-válasz](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 Ezek az előre összeállított entitások némelyike vannak meghatározva a nyílt forráskódú [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text) projekt. A megadott kulturális környezet vagy a szervezet jelenleg nem támogatott, ha járulnak hozzá a projekthez. 
+
+### <a name="troubleshooting-prebuilt-entities"></a>Előre összeállított entitások hibaelhárítása
+
+A LUIS-portálon Ha egy előre létrehozott entitás van megjelölve az egyéni entitás helyett lehetősége van néhány bemutatja, hogyan a probléma megoldásához.
+
+Az előre összeállított entitások adva az alkalmazáshoz fog _mindig_ adható vissza, akkor is, ha az utterance (kifejezés) kell bontsa ki az egyéni entitásaihoz tartozó ugyanazt a szöveget. 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>Példa utterance (kifejezés) címkézett entitás módosítása
+
+Ha az előre összeállított entitások azonos szöveg vagy jogkivonatok, az egyéni entitáshoz, jelölje ki a szöveget a példa utterance (kifejezés), és módosítsa a címkézett utterance (kifejezés). 
+
+Ha az előre összeállított entitások további szöveg és tokenek, mint az egyéni entitás van megjelölve, akkor több lehetősége, hogy hogyan a probléma megoldásához:
+
+* [Távolítsa el a példa utterance (kifejezés)](#remove-example-utterance-to-fix-tagging) metódus
+* [Távolítsa el az előre összeállított entitások](#remove-prebuilt-entity-to-fix-tagging) metódus
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Távolítsa el a címkézés kijavítani példa utterance (kifejezés) 
+
+Először más, hogy törli a példa utterance (kifejezés), és szoftveres átképezése az alkalmazást. Csak a word újból fel vagy kifejezés, amely az entitást, mint egy példa utterance (kifejezés), majd az entitás- és train megjelölése. Most adja hozzá az vissza, az előre létrehozott entitás és az eredeti példa utterance (kifejezés). Az egyéni entitás továbbra is az előre létrehozott entitás helyett lesz megjelölve. 
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Távolítsa el a címkézés kijavítani előre összeállított entitások
+
+A második lehetősége, hogy az előre összeállított entitások eltávolíthatja az alkalmazásból, majd címkét az egyéni entitás az a példában utterance (kifejezés), majd vegye fel az előre összeállított entitások újból az alkalmazást. Ez a javítás feltételezi, hogy az előre összeállított entitások nem egy összetett entitást része. 
 
 ## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
 

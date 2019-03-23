@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2019
 ms.author: kumud
-ms.openlocfilehash: ea1ef845f55fbdadeea1992e167ef6568572abc9
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 66777ec314e95d81a4be57082f06ef16dc170186
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141713"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369632"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
 
@@ -54,7 +54,18 @@ Ez a dokumentum ismerteti a DHCPv6 engedélyezése, hogy a Linux rendszerű virt
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
+Az alapértelmezett hálózati konfiguráció mechanizmus az Ubuntu 17.10 kezdve [NETPLAN]( https://netplan.io).  Telepítés/példányosítás időpontban NETPLAN hálózati konfiguráció olvas YAML konfigurációs fájljait ezen a helyen: / {lib,etc,run}/netplan/*.yaml.
 
+Adja meg egy *dhcp6:true* utasítás egyes ethernet-adapter konfigurációjában.  Példa:
+  
+        network:
+          version: 2
+          ethernets:
+            eno1:
+              dhcp6: true
+
+Korai rendszerindítás során a netplan "leképező hálózati" konfigurációját, és írja/kéz futtatása ki eszközök felügyelete a megadott hálózati démon további információk NETPLAN, lásd: https://netplan.io/reference.
+ 
 ## <a name="debian"></a>Debian
 
 1. Szerkessze a */etc/dhcp/dhclient6.conf* fájlt, és adja hozzá a következő sort:

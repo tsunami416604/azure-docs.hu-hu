@@ -10,12 +10,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bb5770f4e09c0ed764d17998936c0fe97bdaebfb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108578"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370635"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati Szolgáltatásvégpontok az Azure Key Vault
 
@@ -55,7 +55,7 @@ További információkért lásd: [konfigurálása az Azure Key Vault-tűzfalak 
 > Vegye figyelembe a következő konfigurációs korlátozások vonatkoznak:
 > * Legfeljebb 127 virtuális hálózati szabályok és 127 IPv4-szabályok használata engedélyezett. 
 > * Kis-címtartományok, használja a "/ 31" vagy "/ 32" előtag méretei nem támogatottak. Konfigurálja a tartományok egyedi IP-cím szabályok használatával.
-> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő **10.**, **172.16.**, és **192.168.**. 
+> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő **10.**, **172.16-31**, és **192.168.**. 
 > * Jelenleg csak az IPv4-cím támogatott.
 
 ## <a name="trusted-services"></a>Megbízható szolgáltatások

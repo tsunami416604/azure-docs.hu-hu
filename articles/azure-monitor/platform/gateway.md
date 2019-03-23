@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 47b589d32accc4a699e7260b9e4b2de4cca58f2b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314670"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369615"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával az Azure monitorban
 
 >[!NOTE]
 >A Microsoft Azure Monitor átkerül a Microsoft Operations Management Suite (OMS), mert terminológia módosul. Ez a cikk az Azure Log Analytics-átjáró, OMS-átjáró hivatkozik. 
 >
 
-Ez a cikk a Log Analytics-átjáró használatával, amikor a számítógépek közvetlenül kapcsolódó, vagy az Operations Manager által figyelt, amely nincs internet-hozzáféréssel rendelkezik az Azure Automation és a Log Analytics-kommunikáció konfigurálását ismerteti. 
+Ez a cikk a Log Analytics-átjáró használatával, amikor a számítógépek közvetlenül kapcsolódó, vagy az Operations Manager által figyelt, amely nincs internet-hozzáféréssel rendelkezik az Azure Automation és az Azure Monitor-kommunikáció konfigurálását ismerteti. 
 
-A Log Analytics-átjáró, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxy. Ezt az átjárót is adatokat gyűjteni, és küldje el az Azure Automation és a Log Analytics az internethez nem csatlakozó számítógépek nevében.  
+A Log Analytics-átjáró, amely támogatja a HTTP-bújtatás a HTTP-csatlakozási paranccsal továbbítsa HTTP-proxy. Ezt az átjárót is adatokat gyűjteni, és küldje el az Azure Automation és a egy Log Analytics-munkaterületet az Azure monitorban az internethez nem csatlakozó számítógépek nevében.  
 
 A Log Analytics-átjáró támogatja:
 
 * Jelentéskészítési legfeljebb négy azonos Naplóelemzési munkaterület ügynökök, amelyek mögött, és az Azure Automation hibrid Runbook-feldolgozók konfigurált.  
-* Windows számítógép, amelyen a Microsoft Monitoring Agent közvetlenül csatlakozik egy Log Analytics-munkaterületet.
-* Linux rendszerű számítógépek, amelyeken a Linuxhoz készült Log Analytics-ügynököket közvetlenül csatlakozik egy Log Analytics-munkaterületet.  
+* Windows-számítógép, amelyen a Microsoft Monitoring Agent közvetlenül csatlakozik az Azure monitorban Log Analytics-munkaterület.
+* Linux rendszerű számítógépek, amelyeken a Linuxhoz készült Log Analytics-ügynököket közvetlenül csatlakozik az Azure monitorban Log Analytics-munkaterület.  
 * A System Center Operations Manager 2012 SP1 UR7, Operations Manager 2012 R2 UR3 vagy a felügyeleti csoport Operations Manager 2016 vagy újabb verzió, amely integrálva van a Log Analytics.  
 
-Egyes informatikai biztonsági szabályzatok nem engedélyezi a hálózati számítógépeket internet-kapcsolattal. Ezeket a számítógépeket nem lehet pont terminálok (POS) eszköz vagy az IT-szolgáltatások, például támogató kiszolgálók. Ezek az eszközök csatlakozni az Azure Automation vagy a Log Analytics kezelését és a monitor őket, konfigurálja azokat a Log Analytics-átjáró közvetlenül kommunikáljon. A Log Analytics-átjáró konfigurációs adatokat és a továbbítási adatok saját nevükben való kapnak. Ha a számítógépek közvetlenül csatlakozhat a Log Analytics-munkaterületet a Log Analytics-ügynökkel rendelkező vannak konfigurálva, a számítógépek inkább kommunikálni a Log Analytics-átjáró.  
+Egyes informatikai biztonsági szabályzatok nem engedélyezi a hálózati számítógépeket internet-kapcsolattal. Ezeket a számítógépeket nem lehet pont terminálok (POS) eszköz vagy az IT-szolgáltatások, például támogató kiszolgálók. Ezek az eszközök csatlakozni az Azure Automation vagy a Log Analytics-munkaterület kezelését és a figyelő őket, konfigurálja azokat a Log Analytics-átjáró közvetlenül kommunikáljon. A Log Analytics-átjáró konfigurációs adatokat és a továbbítási adatok saját nevükben való kapnak. Ha a számítógépek közvetlenül csatlakozhat a Log Analytics-munkaterületet a Log Analytics-ügynökkel rendelkező vannak konfigurálva, a számítógépek inkább kommunikálni a Log Analytics-átjáró.  
 
 A Log Analytics-átjáró az ügynököktől származó történő adatátvitelhez a szolgáltatás közvetlenül. Az átvitt adatok nem elemzése.
 
 Ha az Operations Manager felügyeleti csoport integrálva van a Log Analytics, a felügyeleti kiszolgálók beállítható úgy, hogy a konfigurációs adatokat fogad és küld összegyűjtött adatokat, attól függően, a megoldás engedélyezését a Log Analytics-átjárón .  Az Operations Manager-ügynököket a felügyeleti kiszolgáló néhány adatot küld. Ha például ügynökök Operations Manager riasztásokat, Konfigurációelemzési adatokat, példánytér és kapacitásadatait küldhet. Egyéb nagy mennyiségű adatok, például az Internet Information Services (IIS) naplók, teljesítményadatok és a biztonsági eseményekről, közvetlenül a Log Analytics-átjáró továbbítja. 
 
-Ha egy vagy több Operations Manager átjáró kiszolgálókat a szegélyhálózaton vagy elszigetelt hálózat nem megbízható rendszerek figyeléséhez van telepítve, ezeken a kiszolgálókon a Log Analytics-átjáró nem tud kommunikálni.  Az Operations Manager átjárókiszolgáló csak egy felügyeleti kiszolgáló is jelentéseket.  Ha az Operations Manager felügyeleti csoport van konfigurálva a Log Analytics-átjáróval folytatott kommunikációban, minden ügynök által felügyelt számítógépre, amely konfigurálva van még gyűjt adatokat a Log Analytics, a rendszer automatikusan továbbítja a proxy konfigurációs adatokat Ha a beállítás értéke üres.    
+Ha egy vagy több Operations Manager átjáró kiszolgálókat a szegélyhálózaton vagy elszigetelt hálózat nem megbízható rendszerek figyeléséhez van telepítve, ezeken a kiszolgálókon a Log Analytics-átjáró nem tud kommunikálni.  Az Operations Manager átjárókiszolgáló csak egy felügyeleti kiszolgáló is jelentéseket.  Ha az Operations Manager felügyeleti csoport van konfigurálva a Log Analytics-átjáróval folytatott kommunikációban, a proxy konfigurációs adatait a rendszer automatikusan továbbítja minden ügynök által felügyelt számítógépre, amely az Azure monitorral Teljesítménynapló-adatok gyűjtésére van konfigurálva akkor is, ha az érték üres.    
 
-A magas rendelkezésre állás a közvetlenül csatlakoztatott vagy -átjárón keresztül, a Log Analytics-szel kommunikáló Operations Management-csoportok használata a hálózati terheléselosztási (NLB) a forgalom elosztását és irányíthatja át több átjáró kiszolgálón. Ily módon egy átjárókiszolgáló leáll, ha a forgalmat a rendszer átirányítja egy másik csomópont érhető el.  
+A magas rendelkezésre állás a közvetlenül csatlakoztatott vagy a Log Analytics-munkaterület az átjárón keresztül kommunikáló Operations Management-csoportok használata a hálózati terheléselosztási (NLB) a forgalom elosztását és irányíthatja át több átjáró kiszolgálón. Ily módon egy átjárókiszolgáló leáll, ha a forgalmat a rendszer átirányítja egy másik csomópont érhető el.  
 
 A számítógépen, amelyen a Log Analytics-átjáró azonosíthatja a Szolgáltatásvégpontok, amelyek az átjárót kell kommunikálnia a Log Analytics Windows-ügynök szükséges. Az azonos munkaterületeknek való jelentés érdekében az átjáró közvetlen is kell az ügynököt, hogy az ügynök vagy Operations Manager felügyeleti csoportban az átjáró mögött van konfigurálva. Ez a konfiguráció lehetővé teszi, hogy az átjáró és az ügynök kommunikálni a hozzárendelt munkaterületet.
 

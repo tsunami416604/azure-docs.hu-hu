@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2dafb58a805a2da89852c84ebad08f1c495adb83
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318119"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368170"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal (előzetes verzió)
 
@@ -53,16 +53,16 @@ A szolgáltatás-engedélyek megadására:
 
 ## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Az alkalmazás-szerepkör TenantCreator hozzárendelni egy felhasználóhoz, az Azure Active Directory-bérlőben
 
-A TenantCreator alkalmazás-szerepkör hozzárendelése egy Azure Active Directory-felhasználó lehetővé teszi, hogy a felhasználó az Azure Active Directory társított Windows virtuális asztal bérlő létrehozása. Szüksége lesz a TenantCreator szerepkör hozzárendelése a globális rendszergazdai fiókjával.
+A TenantCreator alkalmazás-szerepkör hozzárendelése egy Azure Active Directory-felhasználó lehetővé teszi, hogy a felhasználó az Azure Active Directory társított Windows virtuális asztal bérlő létrehozása. A TenantCreator szerepkör hozzárendelése a globális rendszergazdai fiók használatával kell.
 
-A TenantCreator alkalmazás-szerepkör hozzárendelése a globális rendszergazdai fiókjával:
+A globális rendszergazdai fiókkal TenantCreator alkalmazás-szerepkör hozzárendelése:
 
 1. Nyisson meg egy böngészőt, és csatlakozzon a [Azure Active Directory portálon](https://aad.portal.azure.com) globális rendszergazdai fiókjával.
    - Ha több Azure AD-bérlő dolgozik, nyisson meg egy privát böngésző-munkamenetet, és másolja és illessze be a címet URL-címek ajánlott eljárás.
-2. Válassza ki **vállalati alkalmazások**, keressen **Windows virtuális asztal** válassza ki az alkalmazást.
+2. Válassza ki **vállalati alkalmazások**, keressen **Windows virtuális asztal**. Látni fogja a két alkalmazás beleegyezés kérése az előző szakaszban megadott. Válassza ki a két alkalmazásokat, **Windows virtuális asztal**.
 3. Válassza ki **felhasználók és csoportok**, majd **felhasználó hozzáadása**.
 4. Válassza ki a felhasználók és csoportok a **hozzárendelés hozzáadása** panel
-5. Keressen rá egy felhasználói fiókot, amely létrehozza a virtuális asztali Windows-bérlő. 
+5. Keressen rá egy felhasználói fiókot, amely létrehozza a virtuális asztali Windows-bérlő.
    - Az egyszerűség kedvéért ez a globális rendszergazdai fiók is lehet.
 6. Válassza ki a felhasználói fiókot, kattintson a **kiválasztása** gombra, és válassza ki **hozzárendelése**.
 

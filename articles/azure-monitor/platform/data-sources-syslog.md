@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451281"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372301"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások az Azure monitorban
-Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet az Azure Monitor, ahol létrejön egy megfelelő bejegyzés.  
+Syslog-esemény naplózása protokoll, amely Linux közös. Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve. A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon. Az ügynök ezután elküldi az üzenetet az Azure Monitor, ahol létrejön egy megfelelő bejegyzés.  
 
 > [!NOTE]
 > Az Azure Monitor támogatja az üzeneteket a rsyslog vagy syslog-ng, ahol rsyslog-e az alapértelmezett démon gyűjteménye. Red Hat Enterprise Linux, CentOS és Oracle Linux-verzió (sysklog) 5-ös verzióját az alapértelmezett syslog démon nem támogatott a syslog-események gyűjtése. A syslog-adatok gyűjtésére ezek disztribúciók jelen verziója a [rsyslog démonnal](http://rsyslog.com) telepíteni és konfigurálni kell az sysklog helyett.
@@ -30,20 +30,38 @@ Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld
 
 ![A rendszernaplók gyűjtése](media/data-sources-syslog/overview.png)
 
+A következő létesítmények a Syslog-gyűjtő támogatottak:
+
+* kern
+* Felhasználó
+* levelezés
+* Démon
+* hitelesítés
+* syslog
+* LPR
+* Hírek
+* uucp
+* cron
+* authpriv
+* ftp
+* local0-local7
+
+Az egyéb létesítmény [egy egyéni naplók-adatforrás konfigurálása](data-sources-custom-logs.md) az Azure monitorban.
+ 
 ## <a name="configuring-syslog"></a>Syslog konfigurálása
-A Linuxhoz készült Log Analytics-ügynököt csak a létesítmények és súlyossági szinten pedig a konfigurációban megadott eseményeket gyűjt.  Syslog konfigurálhatja az Azure Portalon keresztül, vagy konfigurációs fájlokat a Linux-ügynökök kezelése.
+A Linuxhoz készült Log Analytics-ügynököt csak a létesítmények és súlyossági szinten pedig a konfigurációban megadott eseményeket gyűjt. Syslog konfigurálhatja az Azure Portalon keresztül, vagy konfigurációs fájlokat a Linux-ügynökök kezelése.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Syslog konfigurálása az Azure Portalon
-A Syslog beállítása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources).  Ez a konfiguráció minden egyes Linux-ügynök a konfigurációs fájlt érkeznek.
+A Syslog beállítása a [adatok menü a Speciális beállítások](agent-data-sources.md#configuring-data-sources). Ez a konfiguráció minden egyes Linux-ügynök a konfigurációs fájlt érkeznek.
 
-Írja be a nevét, majd egy új funkció is hozzáadhat **+**.  Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára.  Szűrő üzenetek további feltételeket nem tud biztosítani.
+Írja be a nevét, majd egy új funkció is hozzáadhat **+**. Minden funkció esetében csak a kiválasztott súlyossági szinten pedig a üzenetek összegyűjtött.  Ellenőrizze a súlyossági szint esetén csak az adott létesítmény gyűjteni kívánt számára. Szűrő üzenetek további feltételeket nem tud biztosítani.
 
 ![Syslog konfigurálása](media/data-sources-syslog/configure.png)
 
-Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt.  Ha azt szeretné, Syslog konfigurálása minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre*.
+Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Ha azt szeretné, Syslog konfigurálása minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Syslog konfigurálása Linux-ügynök
-Ha a [Log Analytics-ügynök telepítve van egy Linux-ügyfél](../../azure-monitor/learn/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájl, amely meghatározza a létesítmény és az üzenetek gyűjtött súlyossági telepíti.  Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja.  A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
+Ha a [Log Analytics-ügynök telepítve van egy Linux-ügyfél](../../azure-monitor/learn/quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájl, amely meghatározza a létesítmény és az üzenetek gyűjtött súlyossági telepíti. Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja. A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
 
 > [!NOTE]
 > Ha szerkeszti a syslog-konfiguráció, a syslog démon a módosítások érvénybe léptetéséhez újra kell indítani.
@@ -51,7 +69,7 @@ Ha a [Log Analytics-ügynök telepítve van egy Linux-ügyfél](../../azure-moni
 >
 
 #### <a name="rsyslog"></a>rsyslog
-A konfigurációs fájl rsyslog **/etc/rsyslog.d/95-omsagent.conf**.  Alább láthatók a saját alapértelmezett tartalmát.  Ez a figyelmeztetés vagy magasabb szintű minden lehetőséget a helyi ügynök által küldött syslog-üzeneteket gyűjti.
+A konfigurációs fájl rsyslog **/etc/rsyslog.d/95-omsagent.conf**. Alább láthatók a saját alapértelmezett tartalmát. Ez a figyelmeztetés vagy magasabb szintű minden lehetőséget a helyi ügynök által küldött syslog-üzeneteket gyűjti.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -71,13 +89,13 @@ A konfigurációs fájl rsyslog **/etc/rsyslog.d/95-omsagent.conf**.  Alább lá
     local6.warning     @127.0.0.1:25224
     local7.warning     @127.0.0.1:25224
 
-Eltávolíthatja a létesítmény eltávolítása a konfigurációs fájl vonatkozó szakaszát.  A súlyossági szint esetén csak az adott létesítmény módosítása az adott létesítmény bejegyzés által gyűjtött korlátozhatja.  Például korlátozhatja a felhasználói üzenetek adatcserével rendelkező létesítményben egy hiba vagy magasabb szintű súlyosság kell módosítania a konfigurációs fájl a következő sort:
+Eltávolíthatja a létesítmény eltávolítása a konfigurációs fájl vonatkozó szakaszát. A súlyossági szint esetén csak az adott létesítmény módosítása az adott létesítmény bejegyzés által gyűjtött korlátozhatja. Például korlátozhatja a felhasználói üzenetek adatcserével rendelkező létesítményben egy hiba vagy magasabb szintű súlyosság kell módosítania a konfigurációs fájl a következő sort:
 
     user.error    @127.0.0.1:25224
 
 
 #### <a name="syslog-ng"></a>Syslog-ng
-A syslog-ng konfigurációs fájlja azon hely **/etc/syslog-ng/syslog-ng.conf**.  Alább láthatók a saját alapértelmezett tartalmát.  Ez a syslog-üzeneteket küldött összes létesítmények és az összes súlyossági szinten pedig a helyi ügynök gyűjti.   
+A syslog-ng konfigurációs fájlja azon hely **/etc/syslog-ng/syslog-ng.conf**.  Alább láthatók a saját alapértelmezett tartalmát. Ez a syslog-üzeneteket küldött összes létesítmények és az összes súlyossági szinten pedig a helyi ügynök gyűjti.   
 
     #
     # Warnings (except iptables) in one file:
@@ -128,7 +146,7 @@ A syslog-ng konfigurációs fájlja azon hely **/etc/syslog-ng/syslog-ng.conf**.
     filter f_user_oms { level(alert,crit,debug,emerg,err,info,notice,warning) and facility(user); };
     log { source(src); filter(f_user_oms); destination(d_oms); };
 
-Eltávolíthatja a létesítmény eltávolítása a konfigurációs fájl vonatkozó szakaszát.  Korlátozhatja a súlyossági szint esetén csak az adott létesítmény gyűjtött ehhez távolítsa el a listából.  Például korlátozhatja a felhasználói képessége csak figyelmeztetési és kritikus fontosságú üzenetek, ugyanúgy módosíthatja, hogy a konfigurációs fájl a következő szakaszban:
+Eltávolíthatja a létesítmény eltávolítása a konfigurációs fájl vonatkozó szakaszát. Korlátozhatja a súlyossági szint esetén csak az adott létesítmény gyűjtött ehhez távolítsa el a listából.  Például korlátozhatja a felhasználói képessége csak figyelmeztetési és kritikus fontosságú üzenetek, ugyanúgy módosíthatja, hogy a konfigurációs fájl a következő szakaszban:
 
     #OMS_facility = user
     filter f_user_oms { level(alert,crit) and facility(user); };
@@ -168,7 +186,7 @@ A portszám két konfigurációs fájlok létrehozásával módosíthatja: egy F
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* A syslog-ng config módosítani kell az alábbi példa konfiguráció másolásával, és az egyéni módosított beállítások hozzáadása, a syslog-ng.conf konfigurációs fájl végén található `/etc/syslog-ng/`.  Tegye **nem** használja az alapértelmezett címke **% WORKSPACE_ID % _oms** vagy **% WORKSPACE_ID_OMS**, a módosítások különböztetni egyéni címkék megadása.  
+* A syslog-ng config módosítani kell az alábbi példa konfiguráció másolásával, és az egyéni módosított beállítások hozzáadása, a syslog-ng.conf konfigurációs fájl végén található `/etc/syslog-ng/`. Tegye **nem** használja az alapértelmezett címke **% WORKSPACE_ID % _oms** vagy **% WORKSPACE_ID_OMS**, a módosítások különböztetni egyéni címkék megadása.  
 
     > [!NOTE]
     > Ha módosítja az alapértelmezett értékeket a konfigurációs fájlban, ezek felülírja, ha az ügynök alapértelmezett konfigurációja a érvényes.

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Használja a Custom Vision Service REST API-val'
+title: 'Oktatóanyag: Létrehozását, betanítását és exportálni egy modellt a Custom Vision REST API-val'
 titlesuffix: Azure Cognitive Services
 description: A REST API használatával custom vision modellt hozhat létre, taníthat be, tesztelhet és exportálhat.
 services: cognitive-services
@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/07/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: e33eb58dd4228bb1093c239bae960f71c0f3788c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 54b5f7bb16803adf91a0a8ea60cfa68d1e322d07
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884981"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351099"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>Oktatóanyag: A Custom Vision REST API használata
-
-Ismerje meg, hogyan történhet a Custom Vision REST API segítségével egy modell létrehozása, betanítása, tesztelése és exportálása.
+# <a name="tutorial-create-train-and-export-a-model-with-rest"></a>Oktatóanyag: Létrehozását, betanítását és exportálni egy modellt a REST segítségével
 
 A jelen dokumentum bemutatja, hogyan lehet REST-ügyféllel a REST API-t felhasználni a Custom Vision szolgáltatás betanítására. A példák bemutatják, hogyan használható az API a bash környezetből a `curl` segédprogrammal és Windows PowerShellből a `Invoke-WebRequest` segítségével.
 
@@ -34,9 +32,7 @@ A jelen dokumentum bemutatja, hogyan lehet REST-ügyféllel a REST API-t felhasz
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A Representational State Transfer (REST) alapszintű ismerete. Ez a dokumentum nem foglalkozik részletesen olyan dolgokkal, mint a HTTP-parancsok, a JSON és más REST esetén gyakran használt dolgok.
-
 * Vagy bash (Bourne újra Shell) és [curl](https://curl.haxx.se) segédprogram vagy a Windows PowerShell 3.0-s (vagy újabb).
-
 * Custom Vision fiók. További információkért lásd az [Osztályozó létrehozása](getting-started-build-a-classifier.md) dokumentumot.
 
 ## <a name="get-keys"></a>Kulcsok megszerzése
@@ -121,29 +117,29 @@ $resp.Content
 A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
-[
-    {
-        "id": "ee85a74c-405e-4adc-bb47-ffa8ca0c9f31",
-        "name": "General",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    {
-        "id": "c151d5b5-dd07-472a-acc8-15d29dea8518",
-        "name": "Food",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    {
-        "id": "ca455789-012d-4b50-9fec-5bb63841c793",
-        "name": "Landmarks",
-        "type": "Classification",
-        "exportable": false,
-        "enabled": true
-    },
-    ...
+[  
+  {  
+    "id":"ee85a74c-405e-4adc-bb47-ffa8ca0c9f31",
+    "name":"General",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  {  
+    "id":"c151d5b5-dd07-472a-acc8-15d29dea8518",
+    "name":"Food",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  {  
+    "id":"ca455789-012d-4b50-9fec-5bb63841c793",
+    "name":"Landmarks",
+    "type":"Classification",
+    "exportable":false,
+    "enabled":true
+  },
+  ...
 ]
 ```
 
@@ -209,41 +205,41 @@ $resp.Content
 A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
-{
-    "isBatchSuccessful": true,
-    "images": [
-        {
-            "sourceUrl": "http://myimages/cat.jpg",
-            "status": "OK",
-            "image": {
-                "id": "081adaee-a76b-4d94-a70e-e4fd0935a28f",
-                "created": "2018-08-13T13:24:22.0815638",
-                "width": 640,
-                "height": 480,
-                "imageUri": "https://linktoimage",
-                "thumbnailUri": "https://linktothumbnail",
-                "tags": [
-                    {
-                        "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-                        "tagName": null,
-                        "created": "2018-08-13T13:24:22.104936"
-                    }
-                ],
-                "regions": [
-                    {
-                        "regionId": "40f206a1-3f8a-4de7-a6c3-c7b4643117df",
-                        "tagName": null,
-                        "created": "2018-08-13T13:24:22.104936",
-                        "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-                        "left": 119,
-                        "top": 94,
-                        "width": 240,
-                        "height": 140
-                    }
-                ]
-            }
-        }
-    ]
+{  
+  "isBatchSuccessful":true,
+  "images":[  
+    {  
+      "sourceUrl":"http://myimages/cat.jpg",
+      "status":"OK",
+      "image":{  
+        "id":"081adaee-a76b-4d94-a70e-e4fd0935a28f",
+        "created":"2018-08-13T13:24:22.0815638",
+        "width":640,
+        "height":480,
+        "imageUri":"https://linktoimage",
+        "thumbnailUri":"https://linktothumbnail",
+        "tags":[  
+          {  
+            "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+            "tagName":null,
+            "created":"2018-08-13T13:24:22.104936"
+          }
+        ],
+        "regions":[  
+          {  
+            "regionId":"40f206a1-3f8a-4de7-a6c3-c7b4643117df",
+            "tagName":null,
+            "created":"2018-08-13T13:24:22.104936",
+            "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+            "left":119,
+            "top":94,
+            "width":240,
+            "height":140
+          }
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -305,18 +301,18 @@ $resp.Content
 A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
-{
-    "id": "369b010b-2a92-4f48-a918-4c1a0af91888",
-    "project": "45d1b19b-69b8-4b22-8e7e-d1ca37504686",
-    "iteration": "23de09d6-42a1-413e-839e-8db6ee6d3496",
-    "created": "2018-08-16T17:39:20.7944508Z",
-    "predictions": [
-        {
-            "probability": 0.8390652,
-            "tagId": "ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
-            "tagName": "cat"
-        }
-    ]
+{  
+  "id":"369b010b-2a92-4f48-a918-4c1a0af91888",
+  "project":"45d1b19b-69b8-4b22-8e7e-d1ca37504686",
+  "iteration":"23de09d6-42a1-413e-839e-8db6ee6d3496",
+  "created":"2018-08-16T17:39:20.7944508Z",
+  "predictions":[  
+    {  
+      "probability":0.8390652,
+      "tagId":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43",
+      "tagName":"cat"
+    }
+  ]
 }
 ```
 
@@ -345,11 +341,11 @@ $resp.Content
 A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
-{
-    "platform": "CoreML",
-    "status": "Exporting",
-    "downloadUri": null,
-    "flavor": null
+{  
+  "platform":"CoreML",
+  "status":"Exporting",
+  "downloadUri":null,
+  "flavor":null
 }
 ```
 
@@ -374,14 +370,16 @@ $resp.Content
 A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
-[
-    {
-        "platform": "CoreML",
-        "status": "Done",
-        "downloadUri": "https://linktoexportedmodel",
-        "flavor": null
-    }
+[  
+  {  
+    "platform":"CoreML",
+    "status":"Done",
+    "downloadUri":"https://linktoexportedmodel",
+    "flavor":null
+  }
 ]
 ```
+
+## <a name="next-steps"></a>További lépések
 
 További információk: [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).

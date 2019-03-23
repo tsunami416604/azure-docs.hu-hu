@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f508475166346c56b3bd0c8607c27beb7aba66c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316473"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371528"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 
@@ -30,15 +30,15 @@ A felhőszolgáltatás biztosításához állítson be egy jogcímszabályt, hog
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
 3. Kattintson a jobb gombbal a **Microsoft Office 365 Identity Platform** elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 
-   ![Felhő](./media/howto-mfa-adfs/trustedip1.png)
+   ![AD FS-konzol – a függő entitás Megbízhatóságai](./media/howto-mfa-adfs/trustedip1.png)
 
 4. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 
-   ![Felhő](./media/howto-mfa-adfs/trustedip2.png)
+   ![Jogcímkiadás-átalakítási szabályok szerkesztése](./media/howto-mfa-adfs/trustedip2.png)
 
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
 
-   ![Felhő](./media/howto-mfa-adfs/trustedip3.png)
+   ![Átalakítási Jogcímszabály varázslóban hozzáadása](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Adjon nevet a szabálynak. 
 7. Válassza a **Hitelesítési módszerek hivatkozásai** lehetőséget a Bejövő jogcím típusaként.
@@ -58,15 +58,15 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
 1. Nyissa meg az AD FS felügyeleti konzolt.
 2. A bal oldalon válassza a **Függő entitás megbízhatóságai** elemet.
-3. Középen kattintson a jobb gombbal a **Microsoft Office 365 Identity Platform** elemre, és válassza a **Jogcímszabályok szerkesztése…** lehetőséget.
-   ![Felhő](./media/howto-mfa-adfs/trustedip1.png)
-4. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** lehetőségre.
-   ![Felhő](./media/howto-mfa-adfs/trustedip2.png)
+3. Kattintson a jobb gombbal a **a Microsoft Office 365 Identity Platform** válassza **Jogcímszabályok szerkesztése... ** 
+    ![ADFS konzol – a Jogcímszabályok szerkesztése](./media/howto-mfa-adfs/trustedip1.png)
+4. A kiadás átalakítási szabályai részben kattintson **szabály hozzáadása.** 
+    ![Jogcímszabály hozzáadása](./media/howto-mfa-adfs/trustedip2.png)
 5. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Bejövő jogcím továbbítása vagy szűrése** elemet a legördülő menüből, majd kattintson a **Tovább** gombra.
-   ![Felhő](./media/howto-mfa-adfs/trustedip3.png)
+   ![Átalakítási jogcímszabály hozzáadása varázsló](./media/howto-mfa-adfs/trustedip3.png)
 6. A Jogcímszabály neve melletti mezőben adjon nevet a szabálynak. Példa: InsideCorpNet.
 7. A Bejövő jogcím típusa melletti legördülő listából válassza a **Vállalati hálózaton belül** elemet.
-   ![Felhő](./media/howto-mfa-adfs/trustedip4.png)
+   ![Jogcím a vállalati hálózaton belüli felvétele](./media/howto-mfa-adfs/trustedip4.png)
 8. Kattintson a **Befejezés** gombra.
 9. A Kiadás átalakítási szabályai részben kattintson a **Szabály hozzáadása** elemre.
 10. Az Átalakítási jogcímszabály hozzáadása varázslóban válassza a **Jogcímek küldése egyéni szabállyal** elemet a legördülő menüből, és kattintson a **Tovább** gombra.
@@ -75,7 +75,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![Felhő](./media/howto-mfa-adfs/trustedip5.png)
+    ![Bejelentkezett felhasználók egyéni jogcímszabályok létrehozása](./media/howto-mfa-adfs/trustedip5.png)
 13. Kattintson a **Befejezés** gombra.
 14. Kattintson az **Alkalmaz** gombra.
 15. Kattintson az **OK** gombra.

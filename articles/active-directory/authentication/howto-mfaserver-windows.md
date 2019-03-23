@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43c21fb3c3e7c00ecdbadb1e730ba5ce303dc869
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 36172850c345fc190c3326413f2883dc2b070e98
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312189"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58367890"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows-hitelesítés és Azure Multi-Factor Authentication-kiszolgáló
 
@@ -29,9 +29,10 @@ Az Azure Multi-Factor Authentication-kiszolgáló Windows-hitelesítés szakasz�
 > [!NOTE]
 > Ez a szolgáltatás nem támogatott a Terminálszolgáltatások védelmének biztosítására Windows Server 2012 R2-n.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Ha egy alkalmazás védelmét Windows-hitelesítéssel szeretné biztosítani, kövesse az alábbi eljárást.
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Windows-hitelesítéssel az alkalmazások biztonságossá tételéhez, a következő eljárással
+
 1. Az Azure Multi-Factor Authentication-kiszolgálón kattintson a Windows-hitelesítés ikonra.
-   ![Windows-hitelesítés](./media/howto-mfaserver-windows/windowsauth.png)
+   ![Az MFA-kiszolgáló Windows-hitelesítés](./media/howto-mfaserver-windows/windowsauth.png)
 2. Jelölje be a **Windows-hitelesítés engedélyezése** jelölőnégyzetet. Alapértelmezés szerint a jelölőnégyzet nincs bejelölve.
 3. Az Alkalmazások lapon a rendszergazda konfigurálhatja egy vagy több alkalmazás esetében a Windows-hitelesítést.
 4. Kiszolgáló vagy alkalmazás kiválasztása – meghatározza, hogy a kiszolgáló/alkalmazás engedélyezve van-e. Kattintson az **OK** gombra.

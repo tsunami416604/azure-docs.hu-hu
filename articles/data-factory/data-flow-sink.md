@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852440"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371139"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Hozzárendelés fogadó folyamat átalakítását
 
@@ -57,7 +57,7 @@ Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "
 ## <a name="file-name-options"></a>Fájlnév beállításai
 
    * Alapértelmezett: Fájlok elnevezésére rész alapértelmezett értékei szerinti Spark engedélyezése
-   * Pattern: Adja meg a kimeneti fájlok nevét
+   * Pattern: Adja meg a kimeneti fájlokat egy mintát. Például létrehozza a "hitelek [n]" loans1.csv, loans2.csv,...
    * Partíciónként: Írjon be egy fájlnevet partíciónként
    * Oszlop adatként: Egy oszlop értékét állítsa a kimeneti fájl
 
@@ -66,11 +66,16 @@ Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "
 
 ## <a name="database-options"></a>Adatbázis-beállítások
 
-* Lehetővé teszi az insert, update, delete, upserts. Alapértelmezés szerint a rendszer lehetővé tegyük. Ha frissítés, upsert vagy insert sorok, először hozzá kell adnia egy alter sor átalakítást címke sorokra e adott műveletek.
+* Lehetővé teszi az insert, update, delete, upserts. Alapértelmezés szerint a rendszer lehetővé tegyük. Ha szeretné, frissítés, upsert, vagy törölje a sorokat, először hozzá kell adnia egy alter sor átalakítást címke sorokra e adott műveletek. "Insert engedélyezése" kikapcsolásával leáll az ADF új sorok beszúrását a forrásból.
 * TRUNCATE table (eltávolítja az összes sor a céloldali tábla az adatokat a folyamat befejezése előtt)
 * Hozza létre újból táblában (az adatok a folyamat befejezése előtt dobja el és létrehozására a céltábla végez)
 * Köteg mérete nagy mennyiségű adat terhelés. Adjon meg egy számot és gyűjtőbe írási adattömbökbe
 * Előkészítés engedélyezése: Ez utasítja az ADF a polybase szolgáltatást akkor használja, az Azure Data warehouse-ba, a fogadó-adatkészlet betöltése közben
+
+> [!NOTE]
+> Az adatfolyam hozhat létre egy új tábla definícióját a céladatbázis adatkészlet beállítása a fogadó átalakítást, amely rendelkezik egy új tábla nevét az ADF teheti fel. Az alábbi a táblázat neve a "Szerkesztés" gombra az SQL-adatkészletet, és adja meg egy új tábla nevét. Ezt követően a fogadó átalakításában kapcsolja be a "Séma eltéréseket engedélyezése". Seth None értékre a "Séma importálása" beállítást.
+
+![Átalakítás schéma zdroje](media/data-flow/dataset2.png "SQL-séma")
 
 ![Fogadó SQL-beállítások](media/data-flow/alter-row2.png "SQL-beállítások")
 

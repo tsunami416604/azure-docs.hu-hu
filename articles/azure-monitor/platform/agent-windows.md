@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f9df65d143fbb0eaf6276a0f38971e19c0741786
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223427"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370958"
 ---
-# <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
+# <a name="connect-windows-computers-to-azure-monitor"></a>Windows-számítógépek csatlakoztatása az Azure Monitor
 
-Figyelheti és kezelheti a virtuális gépek vagy fizikai számítógépek a helyi adatközpontban vagy egyéb felhőalapú környezetben a Log Analytics használatával, kell telepíteni a Log Analytics-ügynököket (is hivatkoznak, mint a Microsoft Monitoring Agent (MMA)), és konfigurálja úgy, hogy egy vagy több Log Analytics-munkaterületek jelentéseket. Az ügynök az Azure Automation is támogatja a hibrid forgatókönyv-feldolgozói szerepkör.  
+Figyelheti és kezelheti a virtuális gépek vagy fizikai számítógép a helyi adatközpontban vagy egyéb felhőalapú környezetbe, és az Azure Monitor, kell telepíteni a Log Analytics-ügynököket (is hivatkoznak, mint a Microsoft Monitoring Agent (MMA)), és konfigurálja úgy, hogy egy vagy több Log Analytics-munkaterületek jelentéseket. Az ügynök az Azure Automation is támogatja a hibrid forgatókönyv-feldolgozói szerepkör.  
 
-A felügyelt Windows-számítógépeken az ügynök szerepel a Microsoft Monitoring Agent szolgáltatást. A Microsoft Monitoring Agent szolgáltatást a naplófájlok és a Windows eseménynaplót, teljesítményadatokat és egyéb telemetriát eseményeket gyűjti. Akkor is, ha az ügynök nem tud kommunikálni a Log Analytics szolgáltatással, és jelentéseket küldeni, az ügynök továbbra is fut, és az összegyűjtött adatok a figyelt számítógép lemezén üzenetsorok. Ha a kapcsolat helyreáll, a Microsoft Monitoring Agent szolgáltatást összegyűjtött adatokat küld a szolgáltatás.
+A felügyelt Windows-számítógépeken az ügynök szerepel a Microsoft Monitoring Agent szolgáltatást. A Microsoft Monitoring Agent szolgáltatást a naplófájlok és a Windows eseménynaplót, teljesítményadatokat és egyéb telemetriát eseményeket gyűjti. Akkor is, ha az ügynök nem tud kommunikálni az Azure Monitor és jelentéseket küldeni, az ügynök továbbra is fut, és az összegyűjtött adatok a figyelt számítógép lemezén üzenetsorok. Ha a kapcsolat helyreáll, a Microsoft Monitoring Agent szolgáltatást összegyűjtött adatokat küld a szolgáltatás.
 
 Az ügynök a következő módszerek valamelyikével telepíthetők. A legtöbb esetben ezek a módszerek kombinációját használatával szükség szerint telepítse a számítógépeken, más-más részhalmazához.  Az egyes módszerek használatával kapcsolatban a cikk későbbi részében találhatók.
 
@@ -40,7 +40,7 @@ Az ügynök a következő módszerek valamelyikével telepíthetők. A legtöbb 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-agent.md#network-firewall-requirements) ismertető részt.
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
-A Log Analytics-ügynököket Windows esetében a telepítés előtt kell a munkaterület Azonosítóját és kulcsát a Log Analytics-munkaterület.  Ezt az információt kötelező megfelelően konfigurálni az ügynököt, és a Log Analytics az Azure-ban kereskedelmi és Egyesült Államok kormányának felhője sikeres kommunikációjának biztosításához az egyes telepítési módszerek a telepítés során.  
+A Log Analytics-ügynököket Windows esetében a telepítés előtt kell a munkaterület Azonosítóját és kulcsát a Log Analytics-munkaterület.  Ezt az információt kötelező megfelelően konfigurálni az ügynököt, és az Azure Monitor az Azure kereskedelmi és az Egyesült Államok kormányának felhője sikeres kommunikációjának biztosításához az egyes telepítési módszerek a telepítés során.  
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, jelenteni szeretné a az ügynök telepítése.
@@ -68,7 +68,7 @@ Konfigurálja a .NET-keretrendszer 4.6, vagy később biztonságos titkosítás,
 5. A rendszer a beállítások érvénybe léptetéséhez indítsa újra. 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>Ügynök telepítése varázsló használatával
-Az alábbi lépéseket telepítése és konfigurálása az ügynök a Log Analytics az Azure és az Azure Government felhőben a számítógépen az ügynök telepítővarázslójával. Ha azt szeretné, hogyan konfigurálja az ügynököt, hogy a System Center Operations Manager felügyeleti csoport jelentés is, lásd: [az ügynök telepítővarázslójával az Operations Manager-ügynök telepítése](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
+Az alábbi lépéseket telepítése és konfigurálása a Log Analytics-ügynököket az Azure és az Azure Government felhőben a számítógépen az ügynök telepítővarázslójával. Ha azt szeretné, hogyan konfigurálja az ügynököt, hogy a System Center Operations Manager felügyeleti csoport jelentés is, lásd: [az ügynök telepítővarázslójával az Operations Manager-ügynök telepítése](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
 1. A Log Analytics-munkaterület az a **Windows kiszolgálók** lapot nyit meg, ha a korábbi, válassza ki a megfelelő **Windows-ügynök letöltése** verziójú, a processzor architektúrájától függően a Windows operációs rendszer.   
 2. Futtassa a telepítőt, és telepítse az ügynököt a számítógépre.
@@ -184,15 +184,14 @@ Az ügynök telepítésének befejezése után a annak ellenőrzésére, hogy si
 
 A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki, és az a **Azure Log Analytics** lapon jelenítsék meg az ügynök a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-Egy egyszerű naplóbeli keresést is elvégezheti az Azure Portalon.  
+Egy egyszerű naplóbeli lekérdezést az Azure Portalon is elvégezheti.  
 
-1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
-2. A Log Analytics munkaterület oldalán válassza ki a cél munkaterületet, és válassza ki a **naplóbeli keresés** csempére. 
-2. A naplóbeli keresés panelen írja be a lekérdezést a mező:  
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Azure Monitor**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **az Azure Monitor**.  
+2. Válassza ki **naplók** menüjében. 
+2. A naplók panelen írja be a lekérdezést a mező:  
 
     ```
-    search * 
-    | where Type == "Heartbeat" 
+    Heartbeat 
     | where Category == "Direct Agent" 
     | where TimeGenerated > ago(30m)  
     ```

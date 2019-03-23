@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77c6ce205c40b5814f9b26f9099d868d434d3ce
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316449"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369224"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciókról, önkiszolgáló jelszó-visszaállítás testreszabása
 
@@ -26,12 +26,12 @@ Informatikai szakemberek számára, akik önkiszolgáló jelszó-visszaállítá
 
 Akkor is, ha az SSPR nincs engedélyezve, a felhasználók továbbra is rendelkezik egy "Forduljon a rendszergazdához" hivatkozást a jelszó-visszaállítási portál. Ha egy felhasználó kijelöli ezt a hivatkozást, vagy:
 
-   * E-mailt küld a rendszergazdákkal, és megkéri, ha segítségre van szüksége a felhasználó jelszavának módosítása.
-   * A felhasználók küld egy Ön által megadott segítségért URL-címet.
+* E-mailt küld a rendszergazdákkal, és megkéri, ha segítségre van szüksége a felhasználó jelszavának módosítása.
+* A felhasználók küld egy Ön által megadott segítségért URL-címet.
 
 Azt javasoljuk, hogy állítsa a kapcsolattartó valami például egy e-mail címre vagy webhelyre, hogy a felhasználók már használnak.
 
-![Contact][Contact]
+![Alaphelyzetbe állítja a rendszergazdának elküldött e-mailek mintakérelem][Contact]
 
 Az ügyfél e-mailt küld a következő címzetteknek, a következő sorrendben:
 
@@ -68,8 +68,8 @@ A grafikus úgy dönt, a következő körülmények között jelennek meg:
 
 * Miután a felhasználó beírja a felhasználóneve
 * Ha a felhasználó hozzáfér a testre szabott URL-címe:
-    * Tartalmában való böngészéshez illessze a `whr` paramétert a jelszó-visszaállítási oldalra, mint `https://login.microsoftonline.com/?whr=contoso.com`
-    * Tartalmában való böngészéshez illessze a `username` paramétert a jelszó-visszaállítási oldalra, mint `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Tartalmában való böngészéshez illessze a `whr` paramétert a jelszó-visszaállítási oldalra, mint `https://login.microsoftonline.com/?whr=contoso.com`
+   * Tartalmában való böngészéshez illessze a `username` paramétert a jelszó-visszaállítási oldalra, mint `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 A konfigurálása a vállalati arculat megjelenítése a cikkben talál [vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben](../fundamentals/customize-branding.md).
 

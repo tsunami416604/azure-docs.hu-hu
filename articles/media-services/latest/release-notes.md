@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877360"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351547"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -34,9 +34,13 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="march-2019"></a>2019. március
+
+A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+
 ## <a name="february-2019"></a>2019. február
 
-A Media Services v3 már upported Azure országos felhőkörnyezetekben. Nem minden funkciója érhető el az összes felhő még. További információkért lásd: [felhők és régiók, mely az Azure Media Services v3 létezik](azure-clouds-regions.md).
+A Media Services v3 mostantól támogatott az országos Azure felhőkhöz. Nem minden funkciója érhető el az összes felhő még. További információkért lásd: [felhők és régiók, mely az Azure Media Services v3 létezik](azure-clouds-regions.md).
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) esemény került be az Azure Event Grid-sémák, a Media Services.
 

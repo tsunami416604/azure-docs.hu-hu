@@ -10,18 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4c1d7357dc78ca6c9387fc594f3d49f043008631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95a78fafcd83e6f56f26ef6670beaa179085de62
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120573"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359580"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Python-streamelés HDInsight MapReduce-programok fejlesztése
 
 Megtudhatja, hogyan használható a Python MapReduce műveletek továbbítását. Az Apache Hadoop MapReduce, amely lehetővé teszi, hogy térkép írása, és csökkentse a függvényeket más nyelveken biztosít egy olyan streamelési API. A jelen dokumentumban leírt lépések végrehajtása a térkép, és csökkentheti a Pythonban összetevők.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Egy Linux-alapú Apache Hadoop HDInsight-fürtön
 
@@ -33,7 +35,7 @@ Megtudhatja, hogyan használható a Python MapReduce műveletek továbbítását
   > [!IMPORTANT]
   > Szövegszerkesztő LF Karakterrel kell használnia, mint a sor vége. Egy sor vége a CRLF rendelkezik, hibák a Linux-alapú HDInsight-fürtökön a MapReduce feladat futtatásakor.
 
-* A `ssh` és `scp` parancsok, vagy [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
+* A `ssh` és `scp` parancsok, vagy [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview)
 
 ## <a name="word-count"></a>Word száma
 

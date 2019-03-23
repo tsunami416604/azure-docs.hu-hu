@@ -5,21 +5,21 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c34af90f946542608eaf20f4f21d4986f3c80e6b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750650"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369394"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
 Az Azure Storage egy többrétegű biztonsági modellt biztosít. Ez a modell lehetővé teszi, hogy a tárfiókok egy adott csoportjának támogatott hálózatok biztonságos. Ha a hálózati szabályok vannak beállítva, csak a megadott készlet hálózatok összefoglaló adatokat kéri alkalmazások férhetnek hozzá egy tárfiókot.
 
-Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor vannak érvényben, amikor a kérést a megfelelő engedély szükséges. Az Azure Active Directory (AD) hitelesítő adatait (blobok és üzenetsorok) támogatott engedélyezési (előzetes verzió) egy érvényes tárelérési kulccsal vagy SAS-jogkivonatát.
+Egy alkalmazás, amely hozzáfér a storage-fiók, a hálózati szabályok akkor vannak érvényben, amikor a kérést a megfelelő engedély szükséges. Engedélyezési blobok és üzenetsorok az Azure Active Directory (Azure AD) hitelesítő adatokkal, érvényes fiók hozzáférési kulccsal vagy SAS-jogkivonat használatával támogatott.
 
 > [!IMPORTANT]
 > Alapértelmezés szerint ne tudják bekapcsolni a tűzfalszabályok a tárfiók beérkező adatok blokkolja, kivéve, ha a kérések származhatnak olyan szolgáltatás, amely egy Azure virtuális hálózaton (VNet) belül. Blokkolt közé tartoznak az egyéb Azure-szolgáltatások, a naplózás és mérőszámok szolgáltatások, az Azure Portalról, és így tovább.

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004943"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351881"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Teljes körű hibaelhárítás az Azure Storage-mérőszámok és a naplózás, az AzCopy és a Message Analyzer használatával
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -29,12 +29,12 @@ Ez az oktatóanyag ismerteti a gyakorlati feltárása, egy teljes körű hibaelh
 Az ügyfélalkalmazások számára a Microsoft Azure Storage használatával kapcsolatos hibaelhárítás eszközök kombinációja segítségével határozza meg, amikor probléma történt, és a probléma oka lehet. Ezek az eszközök a következőket foglalják magukban:
 
 * **Az Azure Storage Analytics**. [Az Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) metrikák és naplózás az Azure Storage biztosít.
-  
+
   * **Storage-mérőszámok** nyomon követi a tranzakciók mérőszámait és a tárfiók a kapacitási mérőszámot. Mérőszámok segítségével meghatározhatja, hogy az alkalmazás különböző mértékét számos megfelelően működnek-e. Lásd: [Storage Analytics mérőszámainak Táblasémáját](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) metrikák, a Storage Analytics által nyomon követett típusaival kapcsolatos további információt.
   * **A Storage naplózási** kiszolgálóoldali naplóba az Azure Storage szolgáltatás minden kérelmet naplózhatja. A napló részletes adatok az egyes kérelmek, többek között a műveletet végrehajtani a műveletet, és késési adatokkal állapotát követi nyomon. Lásd: [Storage Analytics naplóformátum](/rest/api/storageservices/Storage-Analytics-Log-Format) a kérelmek és válaszok adatait a Storage Analytics által a naplókba írt további információt.
 
 * **Az Azure portal**. A tárfiók a metrikák és naplózás konfigurálhatja a [az Azure portal](https://portal.azure.com). Megtekintheti a diagramokat és ábrákat azt mutatják be, hogyan működik az alkalmazás idővel, és arra az esetre, ha az alkalmazás végrehajtja az adott mérőszám várt módon riasztások konfigurálása is.
-  
+
     Lásd: [monitorozása az Azure Portal tárfiók](storage-monitor-storage-account.md) figyelése az Azure Portalon konfigurálásával kapcsolatos információkat.
 * **Az AzCopy**. Az Azure Storage-naplóit, blobként vannak tárolva, így az AzCopy segítségével a naplóblobok másolja egy helyi könyvtárba a elemzése a Microsoft Message Analyzer használatával. Lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md) AzCopy további információt.
 * **A Microsoft Message Analyzer**. Az Üzenetelemző olyan eszköz, amely felhasználja a naplófájlok és naplóadatokat, amely megkönnyíti a filter, search és csoport naplóadatok hasznos csoportokba, amelyek segítségével elemezheti a hibákat és a teljesítménnyel kapcsolatos problémák vizuális formában jeleníti meg. Lásd: [Microsoft Message Analyzer működő útmutató](https://technet.microsoft.com/library/jj649776.aspx) Message Analyzer további információt.
@@ -79,51 +79,7 @@ Ebben az oktatóanyagban használjuk Üzenetelemző használata a naplófájlok,
 * A **HTTP hálózati nyomkövetési napló**, amely gyűjti az adatokat a HTTP/HTTPS kérelmek és válaszok adatait, beleértve az Azure Storage kapcsolatos művelet-végrehajtási. Ebben az oktatóanyagban a hálózati nyomkövetés Message Analyzer használatával hozunk létre.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurálja a kiszolgálóoldali naplózás és mérőszámok
-Első lépésként azt konfigurálnia kell az Azure Storage-naplózás és mérőszámok, úgy, hogy az ügyfélalkalmazás elemezheti adatait. Naplózás és a egy számos különböző módon - mérőszámok konfigurálhatja az keresztül a [az Azure portal](https://portal.azure.com), használja a Powershellt, vagy programozott módon. Lásd: [Storage mérőszámainak engedélyezése és a Mérőszámadatok megtekintése](https://msdn.microsoft.com/library/azure/dn782843.aspx) és [tárolási naplózás engedélyezése és Teljesítménynapló-adatok elérése](https://msdn.microsoft.com/library/azure/dn782840.aspx) az MSDN-en, naplózás és mérőszámok konfigurálásával kapcsolatos részletekért.
-
-**Az Azure Portalon**
-
-És konfigurálása naplózás és mérőszámok a Storage-fiók használatával a [az Azure portal](https://portal.azure.com), kövesse az utasításokat, [monitorozása az Azure Portal tárfiók](storage-monitor-storage-account.md).
-
-> [!NOTE]
-> Nem alkalmas állítsa be a perc típusú metrikák az Azure portal használatával. Azonban azt javasoljuk, hogy állítsa őket az oktatóanyag az alkalmazásában, valamint az alkalmazását a teljesítménnyel kapcsolatos problémák kivizsgálása. Perc típusú metrikák, ahogy az alábbi PowerShell-lel, vagy programozott módon, a storage ügyféloldali kódtára segítségével állíthatja be.
-> 
-> Vegye figyelembe, hogy az Azure Portalon nem tudja megjeleníteni a perc típusú metrikák, csak az óránkénti mérőszámot.
-> 
-> 
-
-**Via PowerShell**
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Az Azure PowerShell használatának első lépései, lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
-
-1. Használja a [Add-AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) parancsmagot, hogy az Azure felhasználói fiók hozzáadása a PowerShell-ablakban:
-   
-    ```powershell
-    Add-AzAccount
-    ```
-
-2. Az a **jelentkezzen be a Microsoft Azure** ablakban írja be az e-mail címet és a fiókjához tartozó jelszót. Az Azure hitelesíti és menti a hitelesítő adatokat, majd bezárja az ablakot.
-3. Állítsa be az alapértelmezett tárfiók a storage-fiókba az oktatóanyagban használja úgy, hogy végrehajtja ezeket a parancsokat a PowerShell-ablakban:
-   
-    ```powershell
-    $SubscriptionName = 'Your subscription name'
-    $StorageAccountName = 'yourstorageaccount'
-    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-    ```
-
-4. Storage a Blob szolgáltatás naplózásának engedélyezéséről:
-   
-    ```powershell
-    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
-    ```
-
-5. A Blob szolgáltatás, ügyelve arra, hogy állítsa be, hogy a storage mérőszámainak engedélyezése **- MetricsType** való `Minute`:
-   
-    ```powershell
-    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
-    ```
+Először azt konfigurálnia kell az Azure Storage-naplózás és mérőszámok, így ott vannak az adatok elemzéséhez szolgáltatás oldalán. Naplózás és a egy számos különböző módon - mérőszámok konfigurálhatja az keresztül a [az Azure portal](https://portal.azure.com), használja a Powershellt, vagy programozott módon. Lásd: [engedélyezze a mérőszámok](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) és [naplózás engedélyezése](storage-analytics-logging.md#enable-storage-logging) naplózás és mérőszámok konfigurálásával kapcsolatos részletekért.
 
 ### <a name="configure-net-client-side-logging"></a>.NET ügyféloldali naplózás konfigurálása
 .NET-alkalmazás ügyféloldali naplózási diagnosztika .NET használata az alkalmazás konfigurációs fájljában (a web.config vagy az App.config fájlt). Lásd: [ügyféloldali naplózást, a Storage .NET ügyféloldali kódtár](https://msdn.microsoft.com/library/azure/dn782839.aspx) és [ügyféloldali naplózás a Microsoft Azure Storage SDK for Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) az MSDN-en a részletekért.
@@ -159,8 +115,8 @@ Az oktatóanyag gyűjtése és a hálózati nyomkövetés először mentse a Mes
 
 > [!NOTE]
 > Miután ezzel végzett, a hálózati nyomkövetés gyűjtése, javasoljuk, hogy a beállításokat, előfordulhat, hogy módosította a fiddler esetében a HTTPS-forgalom visszafejtése vissza. A Fiddler beállítások párbeszédpanelen törölje a **rögzítése HTTPS csatlakozik** és **HTTPS-forgalom visszafejtése** jelölőnégyzeteket.
-> 
-> 
+>
+>
 
 Lásd: [hálózati nyomkövetés funkciót](https://technet.microsoft.com/library/jj674819.aspx) kapcsolatos további részletek a TechNeten.
 
@@ -175,8 +131,8 @@ A hozzáadása és testreszabása mérőszámdiagramok további részletekért l
 
 > [!NOTE]
 > Eltarthat egy kis ideig, miután engedélyezte a storage-mérőszámok az Azure-portálon jelennek meg a mérőszámadatokat. Ennek oka az, óránkénti metrikáit az előző órán belül nem jelenik meg az Azure Portalon mindaddig, amíg a jelenlegi óra telt el. Ezenkívül perc típusú metrikák jelenleg nem láthatók az Azure Portalon. Ezért attól függően, amikor engedélyezi a metrikák, eltarthat tekintse meg a mérőszámadatokat akár két órát.
-> 
-> 
+>
+>
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Kiszolgálónaplók egy helyi könyvtárba másolni az AzCopy használata
 Az Azure Storage a kiszolgáló naplóadatok a blobokhoz, ír, amíg a metrikák írt táblákat. Naplóblobok érhetők el a jól ismert `$logs` a tárfiókhoz tartozó tárolót. Naplózási blobok neve hierarchikusan év, hónap, nap és óra, így könnyen keresse meg a vizsgálni kívánt időtartományt. Ha például a `storagesample` fiók, a tárolót a 01/02/2015-höz, a 8 – 9-kor, a naplózási blobok számára `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Az ebben a tárolóban az egyes blobok nevesített sorrendben, kezdve `000000.log`.
@@ -211,8 +167,8 @@ Message Analyzert eszközöket tartalmaz, amelyek segítenek a kiszolgáló, üg
 
 > [!NOTE]
 > Telepítse az összes az Azure Storage-eszközök jelenik meg ez az oktatóanyag az alkalmazásában.
-> 
-> 
+>
+>
 
 ### <a name="import-your-log-files-into-message-analyzer"></a>A naplófájlok importálja a Message Analyzer
 Importálhatja a mentett naplófájlok (kiszolgálóoldali, az ügyféloldali és hálózati) az összes elemzés a Microsoft Message Analyzert egyetlen munkamenetben.
@@ -255,8 +211,8 @@ Az alábbi képen az látható ez elrendezését a nézet minta naplóadatok meg
 
 > [!NOTE]
 > Különböző naplófájlokat rendelkezik másik oszlop, így több naplófájlt származó adatok elemzése rács jelenik meg, ha egyes oszlopokat, nem tartalmaz egy megadott sorának adatokat. Például a fenti képen, az ügyfél log sorokat ne jelenjen meg az adatokat a **időbélyeg**, **TimeElapsed**, **forrás**, és **cél**oszlop, mert ezekben az oszlopokban nem szerepelnek az ügyfél napló, de a hálózati nyomkövetés léteznek. Ehhez hasonlóan a **időbélyeg** oszlop a kiszolgálónapló időbélyeg adatait jeleníti meg, de nincsenek adatok nem jelenik meg a **TimeElapsed**, **forrás**, és  **Cél** oszlopokat, amelyek nem részei a kiszolgálónapló.
-> 
-> 
+>
+>
 
 Mellett az Azure Storage-nézet elrendezések használatával, is határozza meg, és mentse a saját nézet elrendezését. Válassza ki az adatok csoportosításához többi kívánt mezőt, és mentse a csoportosítást, valamint az egyéni elrendezés részeként.
 
@@ -289,12 +245,12 @@ Ez a szűrő alkalmazása, után látni fogja, hogy az ügyfél-naplófájl azon
 
 > [!NOTE]
 > Már szűrhet erre a **StatusCode** oszlopot, és továbbra is három naplókat, ha ad hozzá egy kifejezést a szűrő, amely tartalmazza a naplóbejegyzéseket, ahol az állapotkód értéke null, többek között a ügyfélnapló megjelenített adatokat. A szűrőkifejezés létrehozni, használja:
-> 
+>
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
-> 
+>
 > Ez a szűrő összes sorát visszaadják az ügyfél napló- és csak azokat a sorokat, a kiszolgáló naplóját és a HTTP-napló, az állapotkód értéke nagyobb, mint 400-as. Ügyfélkérelem-azonosító és a modul szerint csoportosítva nézet elrendezését a alkalmazni, ha keressen, és görgessen a található azokról, amelyben szerepelnek az összes három napló bejegyzései keresztül.   
-> 
-> 
+>
+>
 
 ### <a name="filter-log-data-to-find-404-errors"></a>Naplóadatok 404-es hibát talál szűréséhez
 A Storage-eszközök előre definiált szűrők, amely naplóadatokat találja a hibák vagy a trendeket, Ön által keresett szűkítése használhatja tartalmazzák. Ezután azt fogja két előre meghatározott szűrőket alkalmazhat: egyet a kiszolgáló és a hálózat-nyomkövetési naplókat 404-es hibát szűri, és szűri az adatokat a megadott időtartományban.

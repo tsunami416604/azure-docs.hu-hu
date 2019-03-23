@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8c50a3069ea8b1303e45c571425a6f4c9b4c0d5b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732300"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368188"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: Üzembe helyezéséhez az Azure-ban az Azure PowerShell-lel
 
@@ -43,14 +43,14 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Létrehoz egy tárolópéldányt, az Azure PowerShell-lel, adjon meg egy erőforráscsoport-név, tároló-példány nevét és a Docker-tároló rendszerképét az [New-AzContainerGroup] [ New-AzContainerGroup] parancsmagot. Ez a rövid a `microsoft/iis:nanoserver` Windows-lemezkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok Internet Information Services (IIS) a Nano Server futtatásához.
+Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Létrehoz egy tárolópéldányt, az Azure PowerShell-lel, adjon meg egy erőforráscsoport-név, tároló-példány nevét és a Docker-tároló rendszerképét az [New-AzContainerGroup] [ New-AzContainerGroup] parancsmagot. Ebben a rövid útmutatóban használhatja a nyilvános `mcr.microsoft.com/windows/servercore/iis:nanoserver` kép. Ez a rendszerkép a Microsoft Internet Information Services (IIS) futtathat a Nano Server csomagok.
 
 A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban üzembe helyezi egy-egy DNS-névcímke tárolóban úgy, hogy az IIS nyilvánosan elérhető.
 
 A tárolópéldány indításához az alábbihoz hasonló parancs végrehajtása. Állítsa be a `-DnsNameLabel` érték, amely egyedi az Azure-régióban, ahol létrehozhatja a példányt. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
-New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
+New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
 Néhány másodpercen belül meg kell kapnia az Azure válaszát. A tároló `ProvisioningState` beállításának értéke kezdetben **Creating** (Létrehozás), de néhány percen belül **Succeeded** (Sikerült) állapotra kell váltania. Az üzembe helyezési állapot ellenőrzése a [Get-AzContainerGroup] [ Get-AzContainerGroup] parancsmagot:

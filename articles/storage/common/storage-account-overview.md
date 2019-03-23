@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca71fdc8074e56adc8595ee905d5b1db3b60cef1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544239"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371799"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -84,20 +84,14 @@ Az Azure Storage eléréséhez a blokkblobok adataival használati mintái alapj
 
 A rendelkezésre álló hozzáférési szintek a következők:
 
-> [!NOTE]
-> A [prémium szintű hozzáférési szint (előzetes verzió)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), érzékeny alkalmazások teljesítménye, amely optimalizált biztosít alacsony és következetes késés a magas átviteli sebesség és a tranzakciós díjakat. A prémium szintű hozzáférési szint csak Block Blob storage-fiókok (előzetes verzió) érhető el. További információkért lásd: [Azure prémium szintű Blob Storage előzetes](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
-
 * A **interaktív** hozzáférési szint, amely a gyakori hozzáférés a tárfiókban tárolt objektumok számára van optimalizálva. A gyakori elérésű szint adatok elérése a leginkább költséghatékony, amíg némileg magasabb tárolási költségek. Új storage-fiókok jönnek létre a gyakran használt adatok alapértelmezés szerint szint.
 * A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.
 * A **archív** szint, amely csak egyedi blokkblobokhoz érhető el. Az archív szinten az adatokat, amelyeket lekérés több órás késése legalább 180 napig maradnak az archív szinten van optimalizálva. Az archív szinten adatok tárolására szolgáló a leginkább költséghatékony lehetőséget, de az adatok elérése drágább, mint a gyors vagy lassú elérésű szint adatainak elérése. 
 
-
-Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: Prémium (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: gyakori és ritka elérésű, és az archív elérési szint](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
 > Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat. További információkért lásd: a [szakasz számlázási tárfiók](#storage-account-billing).
-
-
 
 ## <a name="replication"></a>Replikáció
 
@@ -135,7 +129,7 @@ Felé irányuló a storage-fiók összes kérelmet kell engedélyezni. A szolgá
 
 A következő módszerek bármelyikével a tárfiókban lévő biztosíthat hozzáférést az adatokhoz:
 
-- **Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adatait használja a felhasználó, csoport vagy más identitást a következő blob és üzenetsor adatokhoz (előzetes verzió) való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+- **Azure Active Directory:** Az Azure Active Directory (Azure AD) hitelesítő adatait használja a felhasználó, csoport vagy más identitást a következő blob és üzenetsor-adatokhoz való hozzáférés hitelesítéséhez. Ha az identitás a hitelesítés sikeres, az Azure AD engedélyezése a kérést az Azure Blob storage és Queue storage használata egy tokent ad vissza. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md).
 - **Megosztott kulcs engedélyezése:** A fiók tárelérési kulcs használatával hozhat létre egy kapcsolati karakterláncot, amely az alkalmazás használ futtatáskor az Azure Storage eléréséhez. Az értékeket a kapcsolati karakterlánc segítségével hozza létre a *engedélyezési* fejlécet, amely az Azure Storage átadott. További információkért lásd: [konfigurálása az Azure Storage kapcsolati karakterláncok](storage-configure-connection-string.md).
 - **Közös hozzáférésű jogosultságkód:** Ha nem használja az Azure AD-hitelesítés használata a közös hozzáférésű jogosultságkód a tárfiókban lévő erőforrásokhoz való hozzáférés delegálására. Közös hozzáférésű jogosultságkód egy jogkivonatot, amely magában foglalja az összes az Azure Storage, az URL-címet a kérelem engedélyezéséhez szükséges információkat. Megadhatja a tárolási erőforrások, jogosultságaitól és az időközt, amely fölött a engedélyek érvényesek a közös hozzáférésű jogosultságkód részeként. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 

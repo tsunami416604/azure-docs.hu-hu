@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 963fd1bfd67a20033f0712d3b447091abda40d11
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262489"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369897"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelésével és karbantartásával a Log Analytics-ügynököket Windows és Linux rendszerekhez
 
-A Windows vagy Linux-ügynök a Log Analytics kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, vagy ha elérte életciklusa szakasza a használatból való kivonást egyaránt eltávolítja azt a számítógépről. Könnyedén felügyelheti a rendszeres karbantartási műveletek manuálisan, illetve az automation, ami csökkenti a működési hiba és a költségeket.
+A Log Analytics Windows vagy Linux-ügynök az Azure monitorban kezdeti telepítés után szükség lehet, konfigurálja újra az ügynököt, vagy távolítsa el a számítógépről, ha elérte életciklusa a használatból való kivonást egyaránt szakasza. Könnyedén felügyelheti a rendszeres karbantartási műveletek manuálisan, illetve az automation, ami csökkenti a működési hiba és a költségeket.
 
 ## <a name="adding-or-removing-a-workspace"></a>Hozzáadása vagy eltávolítása a munkaterület
 
@@ -115,7 +115,7 @@ A szolgáltatás egy proxykiszolgálón keresztül kommunikáljon az ügynök ko
 
 #### <a name="update-settings-using-powershell"></a>PowerShell-lel beállításainak frissítése
 
-Másolja az alábbi minta PowerShell-kódot, frissítse az adott környezetre jellemző információkat, és mentse PS1 fájlnévkiterjesztéssel. Futtassa a szkriptet minden olyan számítógépen, amely közvetlenül csatlakozik a Log Analytics szolgáltatásnak.
+Másolja az alábbi minta PowerShell-kódot, frissítse az adott környezetre jellemző információkat, és mentse PS1 fájlnévkiterjesztéssel. Futtassa a szkriptet minden olyan számítógépen, amely közvetlenül csatlakozik az Azure Monitor Log Analytics-munkaterületen.
 
 ```PowerShell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))

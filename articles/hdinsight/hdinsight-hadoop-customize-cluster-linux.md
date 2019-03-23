@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200684"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361693"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Linux-alapú HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -26,6 +26,8 @@ Az Azure HDInsight nevű konfigurációs módszert biztosít a **szkriptművelet
 > Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További információkért lásd: [HDInsight Windows kivezetési](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 A szkriptműveletek HDInsight alkalmazásként is az Azure piactéren tehetők közzé. További információ a HDInsight-alkalmazások: [egy HDInsight-alkalmazás közzététele az Azure Marketplace-en](hdinsight-apps-publish-applications.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -131,7 +133,7 @@ Hiba történt a parancsfájl egy már fut a fürtön futnak automatikusan nem o
 >
 > Parancsfájlok műveletek gyökérszintű jogosultságokkal futtassa. Győződjön meg arról, hogy megértette a parancsfájl funkciója, a fürthöz való alkalmazása előtt.
 
-Amikor alkalmazza a parancsfájl fürtre, a fürt állapota **futó** való **elfogadva**. Állapotúra változik majd **HDInsight konfigurációs** , és végül térjen **futó** sikeres parancsprogramok. A szkript állapotát a parancsfájlművelet előzményeinek kerül. Ezt az információt arra kéri, hogy a parancsfájl sikeres vagy sikertelen volt. Ha például a `Get-AzureRmHDInsightScriptActionHistory` PowerShell-parancsmagot egy parancsfájl állapotát jeleníti meg. Ez hasonló információt ad vissza a következő szöveget:
+Amikor alkalmazza a parancsfájl fürtre, a fürt állapota **futó** való **elfogadva**. Állapotúra változik majd **HDInsight konfigurációs** , és végül térjen **futó** sikeres parancsprogramok. A szkript állapotát a parancsfájlművelet előzményeinek kerül. Ezt az információt arra kéri, hogy a parancsfájl sikeres vagy sikertelen volt. Ha például a `Get-AzHDInsightScriptActionHistory` PowerShell-parancsmagot egy parancsfájl állapotát jeleníti meg. Ez hasonló információt ad vissza a következő szöveget:
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ További információ a sablon üzembe helyezése:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Használjon szkriptműveletet az Azure PowerShell a fürt létrehozásakor
 
-Ebben a szakaszban használhatja a [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Ebben a szakaszban használhatja a [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Az alábbi parancsfájl bemutatja, hogyan szkriptműveletet alkalmazni, amikor a fürt létrehozása a PowerShell használatával:
 
@@ -368,13 +370,13 @@ A .NET SDK használatával történő parancsfájlok alkalmazni a fürt egy pél
 
 | A parancsmag | Függvény |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |Megőrzött Parancsfájlműveletek információkat lekérni. |
-| `Get-AzureRmHDInsightScriptActionHistory` |A fürt vagy egy adott parancsfájl részleteinek alkalmazott szkriptműveletek előzményeit lekéréséhez. |
-| `Set-AzureRmHDInsightPersistedScriptAction` |Megőrzött parancsfájlművelet-ad-hoc parancsfájlművelet előléptetése. |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |Ad-hoc művelet egy megőrzött parancsfájlművelet lefokozása. |
+| `Get-AzHDInsightPersistedScriptAction` |Megőrzött Parancsfájlműveletek információkat lekérni. |
+| `Get-AzHDInsightScriptActionHistory` |A fürt vagy egy adott parancsfájl részleteinek alkalmazott szkriptműveletek előzményeit lekéréséhez. |
+| `Set-AzHDInsightPersistedScriptAction` |Megőrzött parancsfájlművelet-ad-hoc parancsfájlművelet előléptetése. |
+| `Remove-AzHDInsightPersistedScriptAction` |Ad-hoc művelet egy megőrzött parancsfájlművelet lefokozása. |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` a parancsfájl által végrehajtott műveletek nem vonható vissza. Ez a parancsmag csak a megőrzött jelző távolítja el.
+> `Remove-AzHDInsightPersistedScriptAction` a parancsfájl által végrehajtott műveletek nem vonható vissza. Ez a parancsmag csak a megőrzött jelző távolítja el.
 
 Az alábbi példa parancsfájl mutatja be, a parancsmagokkal előléptetése és lefokozása majd a parancsfájlt.
 

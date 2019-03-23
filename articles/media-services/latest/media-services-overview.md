@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 251a2a3fed57e957de11a20189b6b6d553d98a78
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310268"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351456"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -77,24 +77,11 @@ Erre a következők szolgálnak példaként:
 
 Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-policy-dotnet-howto.md) példa.
 
-## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
-
-Fejlesztési munka a különféle eszközök és SDK-k használata a Media Services v3 API-val kapcsolatos további információkért lásd: [elkezdje](developers-guide.md).
-
-## <a name="v3-content-map"></a>V3-tartalmak térképét
-
-A Media Services v3 tartalmat az alábbi struktúrával (a tartalomjegyzéket is megtalálható) szerint van rendezve:
-
-|Szakaszok| Leírás|
-|---|---|
-| Áttekintés | A Media Services és mit tehet a szolgáltatás funkcióit mutatja be.|
-| Gyors útmutatók | Az új ügyfelek gyorsan kipróbálhatja a Media Services alapvető nap-1 utasítások megjelenítése.|
-| Oktatóanyagok | A Media Services leggyakoribb feladatok egy részének megjelenítése forgatókönyv-alapú eljárásokat.|
-| Példák | Kódminták mutató hivatkozásokat tartalmaz. |
-| Alapelvek | Részletes leírását tartalmazza [Media Services v3 fogalmait és funkcióit](concepts-overview.md). Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* Figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
-| Útmutatók | Bemutatják, hogyan lehet egy adott feladat végrehajtásához.|
-
 ## <a name="next-steps"></a>További lépések
 
-A [fájlok streamelésével](stream-files-dotnet-quickstart.md) foglalkozó témakörben tekintheti meg, hogy milyen egyszerűen kezdheti meg a videofájlok kódolását és streamelését. 
+Hogyan kezdhetem meg a v3 használatát? 
+
+> [!div class="nextstepaction"]
+> [Alapvető fogalmak ismertetése](concepts-overview.md)<br/>
+> [Fejlesztés SDK-k használatával, a Media Services v3 API-val](developers-guide.md) 
 

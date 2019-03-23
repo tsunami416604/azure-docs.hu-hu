@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0daa25cce434b2e97995963918e52df974e2ef9c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336548"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360367"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag feltételezi,
 Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.md) vagy a [Hyper-V](hyper-v-azure-architecture.md) architektúrát az esetleges vészhelyreállítás megkönnyítése érdekében.
 
 > [!TIP]
-> VMware virtuális gépek áttelepítése az Azure-bA az ügynök nélküli kivételfigyelés megoldást keres? [Kattintson ide](https://aka.ms/migrateVMs-signup)
+> Szeretne részt venni a áttelepítése VMware virtuális gépekhez az Azure-bA az új ügynök nélküli kivételfigyelés funkciót? [További](https://aka.ms/migrateVMs-signup).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -129,7 +129,7 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 Miután befejeződött a gépek áttelepítése az Azure-ba, még meg kell tennie néhány lépést.
 
-Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat részeként a [helyreállítási tervek]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) beépített automatizálási szkript funkciójával   
+Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat részeként a [helyreállítási tervek](site-recovery-runbook-automation.md) beépített automatizálási szkript funkciójával   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Áttelepítést követő lépések az Azure-ban
@@ -140,7 +140,7 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
     - VMware-alapú gépek és fizikai kiszolgálók áttelepítése esetében a mobilitási szolgáltatástelepítő telepíti az elérhető Azure virtuálisgép-ügynököt a Windows-rendszerű gépekre. Linux-rendszerű virtuális gépek esetében azt javasoljuk, hogy feladatátvétel után telepítse az ügynököt.
     - Azure virtuális gépek másodlagos régióba való áttelepítésekor még az áttelepítés előtt ki kell építeni az Azure virtuálisgép-ügynököt a virtuális gépen.
     - Hyper-V-alapú virtuális gépek Azure-ba való áttelepítése esetén az Azure virtuálisgép-ügynököt az áttelepítés után telepítse az Azure virtuális gépen.
-- Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. VMware-alapú virtuális gépek vagy fizikai kiszolgálók áttelepítése esetén [távolítsa el a Mobilitási szolgáltatást][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] az Azure virtuális gépről.
+- Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. Ha VMware virtuális gépek vagy fizikai kiszolgálók áttelepítése, távolítsa el a mobilitási szolgáltatás a virtuális gépről.
 - A nagyobb rugalmasság érdekében:
     - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
     - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](azure-to-azure-quickstart.md).

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 02f698d531555aa9b5498060918a2a361b28817e
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743646"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361251"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 
@@ -24,6 +24,8 @@ Bár a Windows-alapú HDInsight az Apache Hadoop használhat a felhőben egy egy
 
 > [!NOTE]  
 > HDInsight-fürtök operációs rendszer Ubuntu hosszú távú támogatási (LTS) használata a fürt csomópontjain. A HDInsight, a rendelkezésre álló Ubuntu verzióját és egyéb összetevő is verzióinformációk kapcsolatos tudnivalókat lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="migration-tasks"></a>Áttelepítési feladatok
 
@@ -63,7 +65,7 @@ A következő lépések használatával adatokat másol az éles fürtöt a vizs
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
     write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
@@ -93,7 +95,7 @@ A következő lépések használatával adatokat másol az éles fürtöt a vizs
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>Az Azure Storage-blobok közötti közvetlen másolása
 
-Azt is megteheti, előfordulhat, hogy szeretné használni a `Start-AzureStorageBlobCopy` másolhat át blobokat több tárfiók HDInsight-on kívül az Azure PowerShell-parancsmagot. További információkért tekintse meg a kezelése az Azure PowerShell az Azure Storage Azure-Blobok szakaszában.
+Azt is megteheti, előfordulhat, hogy szeretné használni a `Start-AzStorageBlobCopy` másolhat át blobokat több tárfiók HDInsight-on kívül az Azure PowerShell-parancsmagot. További információkért tekintse meg a kezelése az Azure PowerShell az Azure Storage Azure-Blobok szakaszában.
 
 ## <a name="client-side-technologies"></a>Ügyféloldali technológiák
 
@@ -147,8 +149,8 @@ A webes használt Windows-alapú HDInsight, például a Feladatelőzményeket é
 
 Az Ambari használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
-* [Az Apache Ambari Web](hdinsight-hadoop-manage-ambari.md)
-* [Az Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Apache Ambari Web](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Ambari-riasztások
 

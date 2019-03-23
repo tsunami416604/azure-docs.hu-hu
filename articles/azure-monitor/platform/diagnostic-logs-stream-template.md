@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467628"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371468"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikusan az diagnosztikai beállítások engedélyezése Resource Manager-sablonnal erőforrás létrehozásakor
-Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs archiválási őket a Storage-fiókban, vagy elküldheti a Log Analytics szolgáltatásba, amikor egy erőforrást hoznak létre streamelési.
+Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs streaming, archiválás őket a Storage-fiókban vagy elküldi azokat a Log Analytics-munkaterület egy erőforrás létrehozásakor.
 
 > [!WARNING]
 > A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ Az alábbiakban egy példát a sablon JSON-fájlt, létre kell hoznia a nem szá
 ## <a name="non-compute-resource-template"></a>Nem – számítási erőforrásokat sablon
 Nem számítási erőforrások szüksége lesz két műveletet kell végrehajtania:
 
-1. Paraméterek hozzáadása a paraméterek blobot a tárfiók nevét, az event hub engedélyezési szabály azonosítója, illetve a Log Analytics-munkaterület Azonosítójára (archív diagnosztikai naplók egy tárfiókban, a folyamatos átviteli naplók az Event hubs szolgáltatásba, és/vagy naplók küldése a Log Analytics engedélyezése).
+1. Paraméterek hozzáadása a paraméterek blobot a tárfiók nevét, az event hub engedélyezési szabály azonosítója, illetve a Log Analytics-munkaterület Azonosítójára (a storage-fiókban, folyamatos átviteli naplók az Event hubs szolgáltatásba, és/vagy naplók küldése az Azure monitornak archív diagnosztikai naplók engedélyezése).
    
     ```json
     "settingName": {

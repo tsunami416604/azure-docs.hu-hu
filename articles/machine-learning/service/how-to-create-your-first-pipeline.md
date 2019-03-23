@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fe8b365974086ef530b83988c63eda338a6079f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ace13b8802c86b3ad40725554c698851ff421b0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014569"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360520"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -356,7 +356,7 @@ response = requests.post(published_pipeline1.endpoint,
 A folyamatok minden és azok részleteinek listáját lásd:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
 
-1. [A munkaterület megjelenítése](how-to-manage-workspace.md#view-a-workspace) folyamatok listája található.
+1. [A munkaterület megjelenítése](how-to-manage-workspace.md#view) folyamatok listája található.
  ![gépi tanulási folyamatok listája](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Válassza ki az adott folyamatot a futtatási eredmények megtekintéséhez.

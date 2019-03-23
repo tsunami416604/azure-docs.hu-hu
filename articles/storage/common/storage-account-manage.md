@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.author: tamram
-ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444055"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370389"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Az Azure Portal tárfiók-beállítások kezelése
 
@@ -20,9 +20,9 @@ Számos beállítást a tárfiók számára érhetők el a [az Azure portal](htt
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 
-Az Azure Storage a Blob storage és Queue storage (előzetes verzió) keresztül szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Active Directory hitelesítési támogatja. Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+Az Azure Storage Blob storage és Queue storage szerepköralapú hozzáférés-vezérlés (RBAC) keresztül támogatja az Azure Active Directory hitelesítési. Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directoryval](storage-auth-aad.md).
 
-A **hozzáférés-vezérlés** beállítások az Azure Portalon rendeljen RBAC-szerepköröket a felhasználók, csoportok, az egyszerű szolgáltatások és a felügyelt identitásokból egyszerű módszert kínálnak. További információ az RBAC-szerepkörök hozzárendelése: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) a blob és üzenetsor adatok](storage-auth-aad-rbac.md).
+A **hozzáférés-vezérlés** beállítások az Azure Portalon rendeljen RBAC-szerepköröket a felhasználók, csoportok, az egyszerű szolgáltatások és a felügyelt identitásokból egyszerű módszert kínálnak. További információ az RBAC-szerepkörök hozzárendelése: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC blob és üzenetsor adatok](storage-auth-aad-rbac.md).
 
 > [!NOTE]
 > Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. 

@@ -1,6 +1,6 @@
 ---
-title: A kódban, PowerShell és a REST API – Azure Search-index létrehozása
-description: A teljes szöveges kereshető indexet létrehozni a HTTP-kérelmekre, és az Azure Search REST API használatával.
+title: Hozzon létre, betöltését és használata a PowerShell és a REST API – Azure Search-index lekérdezése
+description: Hozzon létre, betöltését és kérdezheti le az indexeket, PowerShell, Invoke-RestMethod és az Azure Search REST API használatával.
 ms.date: 03/15/2019
 author: heidisteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285129"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372114"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Gyors útmutató: A PowerShell és a REST API használatával az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése a
 
 [A PowerShell 5.1-es vagy újabb](https://github.com/PowerShell/PowerShell)révén [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) szekvenciális és interaktív lépéseit.
 
-Egy URL-végpontot, és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A végpont URL-cím és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
 1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. Végpontok például a https hasonló lehet:\//my-service-name.search.windows.net.
 
@@ -371,11 +371,7 @@ Próbáljon meg francia leírások az indexbe. Az alábbi példa francia karakte
         {
             "@search.action": "merge",
             "hotelId": "2",
-            "description_fr": "Hôtel le moins cher en ville",
-        },
-        {
-            "@search.action": "delete",
-            "hotelId": "6"
+            "description_fr": "Hôtel le moins cher en ville"
         }
     ]
 }

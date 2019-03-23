@@ -7,26 +7,26 @@ author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: sample
-ms.date: 05/03/2018
+ms.topic: article
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: a285bc4c6eecf1a8cdda758af9df1a697c374b5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e50933ea0231b4be22c2d0f82d33fd02dd0918f5
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533969"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351609"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Az előrejelzési végpont használatával tesztelje a képeket programból a Custom Vision Service osztályozóval
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically"></a>Az előrejelzési végpont használatával programozott módon a rendszerképek tesztelése
 
-Miután betanította a modellt, programozott módon tesztelhet képeket úgy, hogy elküldi őket az előrejelzési API számára. 
+Miután betanította a modellt, programozott módon tesztelhet képeket úgy, hogy elküldi őket az előrejelzési API számára.
 
 > [!NOTE]
 > Ez a dokumentum C# használatával mutatja be a kép elküldését az előrejelzési API-hoz. Az API használatával kapcsolatos bővebb információkért és példákért tekintse meg az [Előrejelzési API-referenciát](https://go.microsoft.com/fwlink/?linkid=865445).
 
 ## <a name="get-the-url-and-prediction-key"></a>Az URL és az előrejelzési kulcs megszerzése
 
-A [Custom Vision weblapon](https://customvision.ai) jelölje ki a projektet, majd válassza ki a __Teljesítmény__ fület. Az előrejelzési API használatával kapcsolatos információk megjelenítéséhez, az __előrejelzés-kulcsot__ is beleértve, válassza az __Előrejelzési URL-címet__. Azure-erőforráshoz csatolt projekteknél az __Előrejelzés-kulcs__ a társított Azure-erőforrás [Azure Portal](https://portal.azure.com) lapján is megtalálható a __Kulcsok__ alatt. Másolja ki a következő információkat az alkalmazásban történő használatra:
+A [Custom Vision weblapon](https://customvision.ai) jelölje ki a projektet, majd válassza ki a __Teljesítmény__ fület. Az előrejelzési API használatával kapcsolatos információk megjelenítéséhez, az __előrejelzés-kulcsot__ is beleértve, válassza az __Előrejelzési URL-címet__. Projektek az Azure-erőforrás csatlakoztatva a __előrejelzés-kulcs__ is megtalálható a [az Azure portal](https://portal.azure.com) társított Azure-erőforrásra vonatkozó lap __kulcsok__. Másolja ki a következő információkat az alkalmazásban történő használatra:
 
 * __URL__ a használt __képfájlhoz__.
 * __Előrejelzés-kulcs__ értéke.
@@ -40,7 +40,7 @@ A [Custom Vision weblapon](https://customvision.ai) jelölje ki a projektet, maj
 
 1. A Visual Studio-ban hozzon létre új C# konzolalkalmazást.
 
-2. A __Program.cs__ fájl törzsében használja a következő kódot.
+1. A __Program.cs__ fájl törzsében használja a következő kódot.
 
     > [!IMPORTANT]
     > Írja át a következő információkat:

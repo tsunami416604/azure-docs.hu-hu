@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860558"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361591"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
@@ -65,9 +65,11 @@ Miután elvégezte az alábbi lépéseket, futtassa a **oktatóanyagok/img – o
 
 ### <a name="server"></a>A saját Jupyter notebook server használata
 
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** notebookot.
+Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen. 
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+ Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** notebookot.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

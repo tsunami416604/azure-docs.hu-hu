@@ -11,18 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 580c9080bb2b019e120ea57e5fe4444a71c24e76
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314790"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371366"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Jelszó-visszaállítás anélkül, hogy a végfelhasználói regisztrációs üzembe helyezése
 
 Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) üzembe helyezéséhez hitelesítési adatok megtalálhatónak kell lennie. Egyes szervezeteknél lehetőséget adja meg a hitelesítési adataikat, maguk a felhasználók számára. Azonban számos szervezet inkább szinkronizálása az Active Directoryban már meglévő adataival. A szinkronizált adatok szeretné elérhetővé tenni az Azure AD és felhasználói beavatkozás nélkül, ha az SSPR meg:
-   * Megfelelően formázza az adatokat a helyszíni címtárban.
-   * Konfigurálása [a gyorsbeállítások használatával az Azure AD Connect](../hybrid/how-to-connect-install-express.md).
+
+* Megfelelően formázza az adatokat a helyszíni címtárban.
+* Konfigurálása [a gyorsbeállítások használatával az Azure AD Connect](../hybrid/how-to-connect-install-express.md).
 
 Megfelelően működjön, telefonszámokat a következő formátumban kell lennie *és CountryCode PhoneNumber*, például + 1 4255551234.
 
@@ -46,7 +47,7 @@ Amikor a felhasználó ellenőriztette a mobiltelefon számával, a telefonos hi
 
 Globális rendszergazda manuálisan is állíthat be a hitelesítési kapcsolattartási adatok egy felhasználó az alábbi képernyőfelvételen a név jelenik meg.
 
-![Contact][Contact]
+![Hitelesítés a felhasználó adatai forduljon az Azure AD-ben][Contact]
 
 Ha a telefonszám mező fel van töltve, és az SSPR-házirendben engedélyezve van a mobiltelefon, a felhasználó jelenik meg, hogy a szám, a jelszó alaphelyzetbe állítása való regisztrációhoz, és közben a jelszó alaphelyzetbe állítása munkafolyamat.
 
@@ -84,7 +85,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Állítsa be a hitelesítési adatokat a PowerShell-lel 1-es verzió
 
-```
+```PowerShell
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
@@ -96,7 +97,7 @@ Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("emai
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>A hitelesítési adatokat a PowerShell-lel 1-es verzió
 
-```
+```PowerShell
 Connect-MsolService
 
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
@@ -110,7 +111,7 @@ Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,Mobi
 
 Olvasni a **hitelesítéshez használt telefon** és **hitelesítési E-mail** PowerShell 1-es verzió használata esetén használja a következő parancsokat:
 
-```
+```PowerShell
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
@@ -122,7 +123,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD 2. verziójú Pow
 
 A PowerShell legújabb verzióit támogatja az Install-Module gyors telepítéséhez futtassa a következő parancsokat. (Az első sorban ellenőrzi, hogy ha a modul már telepítve van.)
 
-```
+```PowerShell
 Get-Module AzureADPreview
 Install-Module AzureADPreview
 Connect-AzureAD
@@ -130,7 +131,7 @@ Connect-AzureAD
 
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Állítsa be a hitelesítési adatokat a 2. verziójú PowerShell-lel
 
-```
+```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
@@ -142,7 +143,7 @@ Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mo
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>A hitelesítési adatokat a 2. verziójú PowerShell-lel
 
-```
+```PowerShell
 Connect-AzureAD
 
 Get-AzureADUser -ObjectID user@domain.com | select otherMails

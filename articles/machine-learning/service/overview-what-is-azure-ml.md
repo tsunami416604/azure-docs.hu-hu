@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f8f3da82d5c8747398882fd589e3ff91aaaa9739
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849210"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361889"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -87,7 +87,7 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedés a Machine Learning szolgáltatás munkaterület létrehozása [az Azure portal használatával](quickstart-get-started.md) (no-telepítés megközelítés) vagy [pythonban](quickstart-create-workspace-with-python.md) (SDK-t telepíti a megközelítés).
+- [Hozzon létre egy Machine Learning szolgáltatás munkaterületet](setup-create-workspace.md) a kezdéshez.
 
 - Kövesse a részletes oktatóanyagok: 
   + [Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md) 
@@ -99,4 +99,4 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 
 - Olvassa el a részletes [Azure Machine Learning szolgáltatás architektúrája és fogalmak](concept-azure-machine-learning-architecture.md) cikk.
 
-- További információkért lásd: [más gépi tanulási termékeit a Microsoft](./overview-more-machine-learning.md).
+- További információkért lásd: [más gépi tanulási termékeit a Microsoft](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).

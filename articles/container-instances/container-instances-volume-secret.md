@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 9aa80cf3cb02237cea11e370151eda8c67c7b10e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856751"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372260"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban titkos kötet csatlakoztatása
 
@@ -31,7 +31,7 @@ Egy vagy több titkokkal-tárolók üzembe helyezését az Azure CLI-vel, péld�
 az container create \
     --resource-group myResourceGroup \
     --name secret-volume-demo \
-    --image microsoft/aci-helloworld \
+    --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --secrets mysecret1="My first secret FOO" mysecret2="My second secret BAR" \
     --secrets-mount-path /mnt/secrets
 ```
@@ -68,7 +68,7 @@ properties:
   - name: aci-tutorial-app
     properties:
       environmentVariables: []
-      image: microsoft/aci-helloworld:latest
+      image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
       ports: []
       resources:
         requests:
@@ -105,7 +105,8 @@ Tovább, amelyben szeretné csatlakoztatni a tárolócsoport minden tároló ese
 
 A következő Resource Manager-sablon meghatározása egy tárolócsoportot egy tároló, amely csatlakoztatja a *titkos* kötet `/mnt/secrets`. A titkos kötet rendelkezik két titkos kulcsokat, a "mysecret1" és "mysecret2."
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json --> [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
+[!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
 A Resource Manager-sablon üzembe helyezéséhez mentse a fenti JSON-nevű `deploy-aci.json`, majd hajtsa végre a [az csoport központi telepítésének létrehozása] [ az-group-deployment-create] parancsot a `--template-file` paramétert:
 

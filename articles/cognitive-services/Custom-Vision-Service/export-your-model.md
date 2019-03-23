@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857245"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351294"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>A mobileszközök használatra modell exportálása
 
-A Custom Vision Service lehetővé teszi, hogy deklarációkkal exportálható offline futtatásához. Az exportált osztályozó beágyazása egy alkalmazásba, és helyileg futtatja az alkalmazást az eszközön a valós idejű besorolási. 
+A Custom Vision Service lehetővé teszi, hogy deklarációkkal exportálható offline futtatásához. Az exportált osztályozó beágyazása egy alkalmazásba, és helyileg futtatja az alkalmazást az eszközön a valós idejű besorolási.
 
 A Custom Vision Service a következő export támogatja:
 
@@ -37,7 +37,7 @@ A Custom Vision Service a következő export támogatja:
 
 > [!NOTE]
 > A jelen szakaszban ismertetett lépések csak alkalmazni, ha rendelkezik egy meglévő osztályozó, amelyek kompakt tartomány nincs beállítva.
- 
+
 A tartomány egy már létező osztályozó konvertálásához használja a következő lépéseket:
 
 1. Az a [Custom vision lapon](https://customvision.ai), jelölje be a __kezdőlap__ ikonra a projektek listájának megtekintéséhez. Is használhatja a [ https://customvision.ai/projects ](https://customvision.ai/projects) a projektek megtekintéséhez.

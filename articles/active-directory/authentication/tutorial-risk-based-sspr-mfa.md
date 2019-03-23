@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71247c9a6527bc7372af1a902028aae72bf4a73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162696"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370552"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Oktatóanyag: Kockázati események eseményindító multi-factor Authentication és a jelszó módosítására használata
 
@@ -61,7 +61,7 @@ Az Azure AD Identity Protection tartalmaz egy alapértelmezett szabályzatot, am
    1. A szabályzat beállításával az összes felhasználónak regisztrálnia kell a többtényezős hitelesítéshez használható módszereket.
 1. Kattintson a **Save** (Mentés) gombra.
 
-   ![Felhasználók MFA-regisztrációjának megkövetelése bejelentkezéskor az Azure AD Identity Protection használatával](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![Felhasználói bejelentkezés a multi-factor Authentication regisztráció megkövetelése](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Kockázatalapú jelszómódosítások engedélyezése
 

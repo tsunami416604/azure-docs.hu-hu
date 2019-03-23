@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961975"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368272"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Az Azure Stack felügyelt lemezek: különbségek és szempontok
 
@@ -134,13 +134,27 @@ Az Azure Stack támogatja *lemezképek kezelt*, amelyek lehetővé teszik, hogy 
 - Általánosítva van a nem felügyelt virtuális gépek és a jövőben felügyelt lemezeket használni szeretne.
 - Felügyelt általánosított virtuális gép rendelkezik, és szeretne létrehozni a több, hasonló felügyelt virtuális gépeket.
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>Nem felügyelt virtuális gépek migrálása felügyelt lemezekre
+### <a name="step-1-generalize-the-vm"></a>1. lépés: A virtuális gép általánosítása
+A Windows hajtsa végre az "A Windows VM Generalize a Sysprep használatával" című szakaszban talál: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Linux rendszeren hajtsa végre az itt az 1. lépés: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
+
+Megjegyzés: Ne felejtse el a virtuális gép általánosítása. Virtuális gép létrehozása, amely még nem lett megfelelően általánosítva egy rendszerképből egy VMProvisioningTimeout hiba vezet.
+
+### <a name="step-2-create-the-managed-image"></a>2. lépés: A felügyelt rendszerkép létrehozása
+Ehhez használhatja a portal, powershell vagy parancssori felület. Kövesse az itt az Azure-dokumentum: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
+
+### <a name="step-3-choose-the-use-case"></a>3. lépés: Válassza ki a használati eset:
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>1. eset: Nem felügyelt virtuális gépek migrálása felügyelt lemezekre
+Ne felejtse el a virtuális gép megfelelően generalize Ez a lépés végrehajtása előtt. POST, ez a virtuális gép általánossá használt motorteljesítmény nem lehet. Virtuális gép létrehozása, amely még nem lett megfelelően általánosítva egy rendszerképből egy VMProvisioningTimeout hiba vezet. 
 
 Kövesse az utasításokat [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) , létrehozhat egy felügyelt rendszerképet, a storage-fiókban általános virtuális merevlemezből. Ez a rendszerkép a jövőben felügyelt virtuális gépek létrehozásához használható.
 
-### <a name="create-managed-image-from-vm"></a>Felügyelt rendszerkép létrehozása virtuális gépről
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>2. eset: Felügyelt virtuális gép létrehozása felügyelt rendszerképből Powershell használatával
 
 Után lemezkép létrehozása a meglévő felügyelt lemez a virtuális gép használata a parancsfájl [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , az alábbi példa parancsfájl hasonló Linux virtuális Gépet hoz létre egy meglévő kép objektum:
+
+Azure Stack powershell-modul 1.7.0-ás vagy újabb: Kövesse az utasításokat [Itt](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+
+Azure Stack powershell-modul 1.6.0-s vagy az alábbi:
 
 ```powershell
 # Variables for common values
@@ -191,7 +205,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-További információkért tekintse meg az Azure által felügyelt rendszerkép cikkek [általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../../virtual-machines/windows/capture-image-resource.md) és [virtuális gép létrehozása felügyelt rendszerképből](../../virtual-machines/windows/create-vm-generalized-managed.md).
+A portál használatával egy virtuális gép létrehozása felügyelt rendszerképből is. További információkért tekintse meg az Azure által felügyelt rendszerkép cikkek [általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../../virtual-machines/windows/capture-image-resource.md) és [virtuális gép létrehozása felügyelt rendszerképből](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfiguráció
 

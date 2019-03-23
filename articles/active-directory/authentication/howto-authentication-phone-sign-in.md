@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26dd1bd6717fe0216545d6b3aa729ac2cb19dc9d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313328"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370382"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Jelszó nélküli telefonnal bejelentkezni a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
 
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be minden olyan Azure AD-fiókot jelszó használata nélkül. A technológia, hasonló [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification), a Microsoft Authenticator-alapú hitelesítést használ a felhasználói hitelesítő adatokat, amelyek egy eszközhöz kötődik, és használja a biometrikus adatokat vagy PIN-kód engedélyezése.
 
-![Egy böngészőben jelentkezzen be kéri a felhasználót, hogy a bejelentkezési kísérlet a Microsoft Authenticator alkalmazásban jóvá – példa](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![Egy böngészőben jelentkezzen be kéri a felhasználót, hogy a bejelentkezés jóváhagyása – példa](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
 Helyett jelenik meg a jelszó kérése a felhasználónév megadása után, a személy, aki engedélyezve van a telefonnal bejelentkezni a Microsoft Authenticator alkalmazásban megjelenik egy üzenet, postaládához, olyan szám, hogy az alkalmazás elemre. Az alkalmazásban a felhasználó kell egyezik meg a válassza a jóváhagyás, majd adja meg a PIN-kódjukat, vagy biometrikus, majd a hitelesítés befejezi.
 
@@ -40,17 +40,20 @@ Nyilvános előzetes verzióként, a rendszergazda először hozzá kell egy sza
 ### <a name="steps-to-enable"></a>További lépések elvégzésével
 
 1. Győződjön meg arról, hogy a nyilvános előzetes kiadását az Azure Active Directory V2 PowerShell-modul legújabb verzióját. Kezdésként érdemes lehet eltávolítani, majd telepítse a következő parancsok végrehajtásával ellenőrizheti:
+
     ```powershell
     Uninstall-Module -Name AzureADPreview
     Install-Module -Name AzureADPreview
     ```
 
 2. Hitelesítés az Azure AD V2 PowerShell modul használata az Azure AD-bérlőhöz. A használt fiók biztonsági rendszergazdai vagy globális rendszergazdai vagy kell lennie.
+
     ```powershell
     Connect-AzureAD
     ```
 
 3. Az Authenticator bejelentkezési szabályzat létrehozása:
+
     ```powershell
     New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
     ```

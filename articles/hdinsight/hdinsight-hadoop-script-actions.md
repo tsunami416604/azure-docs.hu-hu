@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 93313557781c6b3788d8b4d43d6676fc17625709
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d8f7808401b2e11a38b239a353e3b7af2ffcffb3
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201313"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361302"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight Windows-alapú fürtök Parancsfájlműveletekkel-parancsfájlok fejlesztése
 Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).
@@ -32,6 +32,8 @@ Parancsfájlművelet is használható, az Apache Hadoop-fürtön futó további 
 > System.Management.Automation.CommandNotFoundException; ExceptionMessage : A "Mentés-HDIFile" kifejezés nem ismerhető fel egy parancsmag, a függvény, a parancsfájl vagy a működtethető program nevét. Ellenőrizze a helyesírást, a neve, vagy ha egy elérési út része, ellenőrizze, hogy az elérési út helyes, és próbálkozzon újra.
 > 
 > Ez azért, mert nem tartozik a segédmetódusokat.  Lásd: [egyéni parancsfájlok segédmetódusokat](hdinsight-hadoop-script-actions.md#helper-methods-for-custom-scripts).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 A HDInsight-fürtök létrehozása Windows operációs rendszeren, a Script Action az Azure PowerShell-szkript. A következő parancsfájl egy mintát, a hely konfigurációs fájlok konfigurálása:
@@ -191,8 +193,8 @@ Egy fürt testreszabására szolgáló parancsfájlokat kell egyaránt lehet az 
 
 Ebben a példában győződjön meg arról, hogy a tároló `somecontainer` tárfiókban `somestorageaccount` nyilvánosan elérhető-e. Ellenkező esetben a parancsfájl egy "Nem található" kivételt jelez, és sikertelen lesz.
 
-### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Az Add-AzureRmHDInsightScriptAction parancsmag adja át a paramétereket
-Az Add-AzureRmHDInsightScriptAction parancsmag több paraméterek adhatók át, a parancsfájl az összes paramétert tartalmazó karakterlánc értékének kell. Példa:
+### <a name="pass-parameters-to-the-add-azhdinsightscriptaction-cmdlet"></a>Az Add-AzHDInsightScriptAction parancsmag adja át a paramétereket
+Az Add-AzHDInsightScriptAction parancsmag több paraméterek adhatók át, a parancsfájl az összes paramétert tartalmazó karakterlánc értékének kell. Példa:
 
     "-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
 

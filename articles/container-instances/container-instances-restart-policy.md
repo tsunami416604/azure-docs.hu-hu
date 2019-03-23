@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321033"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369964"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása az újraindítási házirendek
 
@@ -26,7 +26,7 @@ A példákban Ez a cikk a használati bemutatni az Azure CLI. Rendelkeznie kell 
 
 Amikor létrehoz egy [tárolócsoport](container-instances-container-groups.md) az Azure Container Instancesben, kiválaszthat egyet a három újraindítási házirend-beállításokat.
 
-| Újraindítási szabályzat   | Leírás |
+| Újraindítási házirend   | Leírás |
 | ---------------- | :---------- |
 | `Always` | A tárolócsoport tárolók mindig újra lesz indítva. Ez a **alapértelmezett** beállítást alkalmazza, amikor nincs újraindítási szabályzata van megadva a tároló létrehozásakor. |
 | `Never` | A tárolócsoport tárolók soha nem újra lesz indítva. A tárolók legfeljebb egyszer futtatni. |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Futtatás befejezési példához
 
-Az újraindítási házirend működés közben látni, hozzon létre egy tároló-példányát a [microsoft/aci-wordcount] [ aci-wordcount-image] rendszerképet, és adja meg a `OnFailure` újraindítási házirend. Ebben a példában a tárolóban fut egy Python-szkriptet, amely, alapértelmezés szerint elemzi a Shakespeare szövege [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavakat ír az STDOUT és majd kilép.
+Az újraindítási házirend működés közben látni, hozzon létre egy tárolópéldányt a Microsofttól [aci-wordcount] [ aci-wordcount-image] rendszerképet, és adja meg a `OnFailure` újraindítási házirend. Ebben a példában a tárolóban fut egy Python-szkriptet, amely, alapértelmezés szerint elemzi a Shakespeare szövege [apró település](http://shakespeare.mit.edu/hamlet/full.html), a 10 leggyakoribb szavakat ír az STDOUT és majd kilép.
 
 A példa tároló futtassa az alábbi [az tároló létrehozása] [ az-container-create] parancsot:
 
@@ -54,7 +54,7 @@ A példa tároló futtassa az alábbi [az tároló létrehozása] [ az-container
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -129,7 +129,7 @@ Például a parancsfájl a példa tárolóban működése módosítható a táro
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=5 MinLength=8
 ```
@@ -164,7 +164,7 @@ Például határozza meg a 3 leggyakoribb öt levelek szavak *Romeo és Juliet*:
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer3 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -189,7 +189,7 @@ Kimenet:
 Hogyan kell a tárolókat, amelyek befejezését kimenetének megőrzése a részletekért lásd: [csatlakoztatása egy Azure-fájlmegosztás az Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
-[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create

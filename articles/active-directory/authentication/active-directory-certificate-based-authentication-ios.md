@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7243249e7aabf588115ef74f838be8ca67a94c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309503"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369428"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>IOS-en az Azure Active Directory Tanúsítványalapú hitelesítés
 
@@ -35,16 +35,16 @@ Ez a funkció érhető el előzetes verzióban érhető el az Office 365 US Gove
 
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Az Azure Information Protection alkalmazással |![Jelölőnégyzet][1] |
-| Az Intune vállalati portál |![Jelölőnégyzet][1] |
-| Microsoft Teams |![Jelölőnégyzet][1] |
-| OneNote |![Jelölőnégyzet][1] |
-| OneDrive |![Jelölőnégyzet][1] |
-| Outlook |![Jelölőnégyzet][1] |
-| Power BI |![Jelölőnégyzet][1] |
-| Skype Vállalati verzió |![Jelölőnégyzet][1] |
-| Word / Excel / PowerPoint |![Jelölőnégyzet][1] |
-| Yammer |![Jelölőnégyzet][1] |
+| Az Azure Information Protection alkalmazással |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Az Intune vállalati portál |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Microsoft Teams |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| OneNote |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| OneDrive |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Outlook |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Power BI |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Skype Vállalati verzió |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Word / Excel / PowerPoint |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Yammer |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
 
 ## <a name="requirements"></a>Követelmények
 

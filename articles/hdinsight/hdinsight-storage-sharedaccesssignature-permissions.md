@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202673"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360996"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférési aláírások használatával a HDInsight adatokhoz hozzáférésének korlátozása
 
@@ -27,6 +27,8 @@ HDInsight a fürthöz társított Azure Storage-fiókokat az adatok teljes hozz�
 > HDInsight a fürthöz az alapértelmezett tároló teljes hozzáféréssel kell rendelkeznie.
 
 ## <a name="requirements"></a>Követelmények
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure-előfizetés
 * C#- vagy Python. C#-példakódot biztosítunk a Visual Studio megoldás.
@@ -160,12 +162,12 @@ Egy HDInsight-fürt által használt SAS létrehozása egy példát tartalmaz a 
 1. A rendszer kéri alkalmazás hitelesítéséhez az Azure-előfizetéshez az alábbi parancsot:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
     Amikor a rendszer kéri, jelentkezzen be a fiók az Azure-előfizetésében.
 
-    Ha a fiók több Azure-előfizetéssel társítva, szükség lehet használandó `Select-AzureRmSubscription` használni kívánt előfizetés kiválasztásához.
+    Ha a fiók több Azure-előfizetéssel társítva, szükség lehet használandó `Select-AzSubscription` használni kívánt előfizetés kiválasztásához.
 
 4. A parancssorból módosítsa a könyvtárat, a `CreateCluster` a HDInsightSAS.ps1 fájlt tartalmazó könyvtárra. Az alábbi parancs segítségével futtassa a parancsfájlt
 
@@ -273,11 +275,11 @@ Miután csatlakozott a fürthöz, a következő lépések segítségével győz�
 
 **A jelenség**: Ha egy fürtöt a PowerShell-parancsfájl használatával hoz létre, a következő hibaüzenet jelenhet meg:
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **Ok**: Ez a hiba akkor fordulhat elő, ha az SSH-felhasználó használata egy jelszót a rendszergazdai/HTTP-felhasználó, a fürt számára, vagy (Linux-alapú fürtök).

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: b12809627bc7a3ab3f17f4c3b11bc3a899fd0485
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849924"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368953"
 ---
 # <a name="azure-backup-architecture"></a>Az Azure Backup-architektúra
 
@@ -179,7 +179,7 @@ A virtuális gépek disk storage és a rendelkezésre álló lemeztípusok kapcs
 Biztonsági másolatot készíthet Azure virtuális gépek premium storage az Azure Backup használatával:
 
 - A premium storage virtuális gépek biztonsági mentési folyamat során a Backup szolgáltatás létrehoz egy átmeneti előkészítési hely nevű *AzureBackup -*, a storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretét.
-- Győződjön meg arról, hogy a premium storage-fiók rendelkezik-e elegendő szabad terület az átmeneti előkészítési hely. [További információk](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Ne módosítsa az előkészítési helyet.
+- Győződjön meg arról, hogy a premium storage-fiók rendelkezik-e elegendő szabad terület az átmeneti előkészítési hely. [További információk](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az előkészítési helyet.
 - A biztonsági mentési feladat befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tároló ára összhangban az [premium storage szolgáltatás díjszabása](../virtual-machines/windows/disks-types.md#billing).
 

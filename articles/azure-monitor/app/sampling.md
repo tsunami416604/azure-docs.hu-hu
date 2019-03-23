@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 83c286be6429376d4d0b4009b18c5f751a4b158f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cd0369f45529082ac929b1d87608204033cd78f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226691"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370516"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -517,7 +517,14 @@ Az ügyféloldali (JavaScript) SDK-t a kiszolgálóoldali SDK-val együtt rögz�
 
 *Nincsenek az egyes ritka események, hogy mindig szeretné. Hogyan kaphatok őket a mintavételi modul korábbi?*
 
-* Egy külön példányát és a egy új (nem az alapértelmezett aktív) TelemetryConfiguration TelemetryClient inicializálása. A ritka események küldéséhez használhatja, amely.
+* Ennek érdekében a legjobb módszer az, hogy egyéni írási [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering), mely beállítja a `SamplingPercentage` a szereplő telemetriai elem a 100 szeretne megőrzött, ahogy az alábbi. Ez biztosítja, hogy az összes mintavételi technikák figyelmen kívül hagyja ezt az elemet a mintavételi beavatkozást.
+
+```csharp
+    if(somecondition)
+    {
+        ((ISupportSampling)item).SamplingPercentage = 100;
+    }
+```
 
 ## <a name="next-steps"></a>További lépések
 

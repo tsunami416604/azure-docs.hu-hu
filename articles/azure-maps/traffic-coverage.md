@@ -1,99 +1,133 @@
 ---
 title: Forgalmi lefedettség Azure Maps-|} A Microsoft Docs
 description: További tudnivalók az Azure Maps forgalmi lefedettség
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/12/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3ef9cce659e1173e419e1ea24cf0a414202013b5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575677"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372248"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Az Azure Maps forgalmi lefedettség
 
-Az Azure Maps nyújt gazdag forgalomra vonatkozó információkat a forgalom formájában **folyamat** és **incidensek**. Ezek az adatok térképen ábrázolt vagy vezetési feltételek valós kéttényezős intelligensebb útvonalak létrehozásához használt is. 
+Az Azure Maps nyújt gazdag forgalomra vonatkozó információkat a forgalom formájában **folyamat** és **incidensek**. Ezek az adatok térképen ábrázolt vagy vezetési feltételek valós kéttényezős intelligensebb útvonalak létrehozásához használt is.
 
 A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság minden régió esetében. Az alábbi táblázat ismerteti, milyen típusú forgalomra vonatkozó információkat is kérhet minden egyes régió: 
 
-|Régió  |Incidensek  |Folyamat  |
+## <a name="americas"></a>Amerika
+
+|Ország/régió  |Incidensek  |Folyamat  |
 |---------|:---------:|:---------:|
-|Argentína      |         |✓         |
-|Ausztrália     |✓         |✓        |
-|Ausztria     |✓         |✓         |
-|Bahrein     |         |✓         |
-|Belgium     |✓         |✓         |
+|Argentína      |✓         |✓         |
 |Brazília     |✓         |✓         |
-|Bulgária     |✓         |✓         |
 |Kanada     |✓         |✓         |
 |Chile     |✓         |✓         |
-|Kolumbia      |         |✓         |
-|Horvátország     |         |✓         |
-|Csehország     |✓         |✓         |
+|Kolumbia      |✓         |✓         |
+|Mexikó     |✓         |✓         |
+|Peru       |✓         |✓         | 
+|Egyesült Államok     |✓         |✓        |
+|+Puerto Rico     |✓         |✓         |
+|Uruguay |✓         |✓         |
+
+
+## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
+
+|Ország/régió   |Incidensek  |Folyamat  |
+|---------|:---------:|:---------:|
+|Ausztrália     |✓         |✓        |
+|Brunei   |✓         |✓        |
+|Hongkong (KKT)     |✓         |✓         |
+|India   |✓         |✓         |
+|Indonézia     |✓         |✓         |
+|Makaó (KKT)     |✓         |✓         |
+|Malajzia     |✓         |✓         |
+|Új-Zéland     |✓         |✓         |
+|Fülöp-szigetek  |✓         |✓         |
+|Szingapúr     |✓         |✓         |
+|Tajvan     |✓         |✓        |
+|Thaiföld     |✓         |✓        |
+|Vietnam   |✓         |✓         |
+
+
+## <a name="europe"></a>Európa
+
+|Ország/régió   |Incidensek  |Folyamat  |
+|---------|:---------:|:---------:|
+|Andorra   |✓         |✓         |
+|Ausztria     |✓         |✓         |
+|Belgium     |✓         |✓         |
+|Bulgária     |✓         |✓         |
+|Horvátország     |✓         |✓         |
+|Cseh Köztársaság     |✓         |✓         |
 |Dánia     |✓         |✓         |
-|Egyiptom     |         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
 |+ Aland-szigetek      |✓         |✓         |
 |Franciaország     |✓         |✓         |
-|+Monaco     |✓         |✓         |
+|Monaco     |✓         |✓         |
 |Németország     |✓         |✓         |
 |Görögország     |✓         |✓         |
-|Hongkong (KKT)     |✓         |✓         |
 |Magyarország     |✓         |✓         |
-|Izland     |         |✓         |
-|Indonézia     |✓         |✓         |
-|Írország (Köztársaság)     |✓         |✓         |
-|Izrael     |         |✓         |
+|Izland     |✓         |✓         |
+|Írország     |✓         |✓         |
 |Olaszország     |✓         |✓        |
-|+San Marino     |✓         |✓         |
-|Kuvait     |✓         |✓         |
-|Lettország     |         |✓         |
+|Lettország     |✓         |✓         |
 |Lesotho     |✓         |✓         |
-|Litvánia     |         |✓         |
+|Liechtenstein      |✓         |✓         |
+|Litvánia     |✓         |✓         |
 |Luxemburg     |✓         |✓         |
-|Makaó (KKT)     |         |✓         |
-|Malajzia     |✓         |✓         |
 |Málta     |✓         |✓         |
-|Mexikó     |✓         |✓         |
-|Marokkó     |         |✓         |
+|Monaco   |✓         |✓         |
 |Hollandia     |✓         |✓         |
-|Új-Zéland     |✓         |✓         |
 |Norvégia     |✓         |✓         |
-|Omán     |         |✓         |
 |Lengyelország     |✓         |✓         |
 |Portugália     |✓         |✓         |
-|+ Azori-szigetek és Madeira     |         |✓         |
-|Katar     |         |✓         |
-|Románia     |         |✓         |
+|+ Azori-szigetek és Madeira     |✓         |✓         |
+|Románia     |✓         |✓         |
 |Orosz Föderáció     |✓         |✓         |
-|Szaúd-Arábia     |✓         |✓         |
-|Szingapúr     |✓         |✓         |
+|San Marino    |✓         |✓         |
 |Szlovákia     |✓         |✓         |
 |Szlovénia     |✓         |✓         |
-|Dél-Afrika     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
 |+Andorra     |✓         |✓         |
 |+ Baleárok     |✓         |✓         |
 |+ Kanári-szigetek     |✓         |✓         |
-|+ Gibraltár     |✓         |✓         |
 |Svédország     |✓         |✓         |
 |Svájc     |✓         |✓        |
-|+Liechtenstein      |✓         |✓         |
-|Tajvan     |✓         |✓        |
-|Thaiföld     |✓         |✓        |
 |Törökország     |✓         |✓         |
 |Ukrajna     |✓         |✓         |
-|Egyesült Arab Emírségek     |✓         |✓         |
 |Egyesült Királyság     |✓         |✓         |
-|(Guernsey & Jersey)     |✓         |✓         |
-|Man-sziget     |✓         |✓         |
-|Egyesült Államok     |✓         |✓        |
-|+Puerto Rico     |✓         |✓         |
+|+ Gibraltár     |✓         |✓         |
+|+ Guernsey & mez     |✓         |✓         |
+|+ Man-sziget     |✓         |✓         |
+|Vatikánváros   |✓         |✓         |
+
+
+## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
+
+|Ország/régió |Incidensek  |Folyamat  |
+|---------|:---------:|:---------:|
+|Bahrein     |✓         |✓         |
+|Egyiptom     |✓         |✓         |
+|Izrael     |✓         |✓         |
+|Kenya     |✓         |✓         |
+|Kuvait     |✓         |✓         |
+|Marokkó     |✓         |✓         |
+|Mozambik  |✓         |✓         |
+|Nigéria   |✓        |✓        |
+|Omán     |✓         |✓         |
+|Katar     |✓         |✓         |
+|Szaúd-Arábia     |✓         |✓         |
+|Dél-Afrika     |✓         |✓         |
+|Egyesült Arab Emírségek  |✓         |✓         |
+
+## <a name="next-steps"></a>További lépések
 
 Az Azure Maps forgalmi adatok kapcsolatos további információkért lásd: a [forgalom](https://docs.microsoft.com/rest/api/maps/traffic) oldalak hivatkozhat.

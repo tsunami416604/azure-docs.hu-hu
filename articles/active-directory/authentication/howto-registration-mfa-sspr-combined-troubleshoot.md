@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f799b671e6216b402aa988aa66da4c2cfc44693
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317527"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370465"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Hibaelhárítási kombinált biztonsági információk regisztrációs (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ebben a cikkben található információk segítségével útmutató rendszergaz
 
 Az Azure AD-ben a "Hitelesítési módszerek" kategóriában vannak az események naplózása kombinált regisztrációs naplók.
 
-![Az Azure AD naplók felületet megjelenítő néhány biztonsági információs regisztrációs események egy új felhasználó a címtárban](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Az Azure AD naplók felületet megjelenítő regisztrációs események](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 Az alábbi listában kombinált regisztrációs által létrehozott összes naplózási eseményt:
 
@@ -162,4 +162,4 @@ Többé nem kéri a felhasználótól regisztrálni az előzetes felület haszn�
 
 ## <a name="next-steps"></a>További lépések
 
-[További információ a kombinált regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication szolgáltatás nyilvános előzetes verzió](concept-registration-mfa-sspr-combined.md)
+* [További információ a kombinált regisztráció önkiszolgáló jelszó-visszaállítás és az Azure multi-factor Authentication szolgáltatás nyilvános előzetes verzió](concept-registration-mfa-sspr-combined.md)

@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
-ms.openlocfilehash: 944623943fc49f4f6856c3a62f30ea61f901c16d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: cd1688cd9d3d19242800b04e7e29c8875879cffc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579413"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351565"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API-k használatával programozott módon juthat az Azure-használat
 Használat és a resource adatok be az előnyben részesített adatelemző eszközökkel Azure Billing API-k használatával. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k vannak megvalósítva egy erőforrás-szolgáltató és a termékcsalád az az Azure Resource Manager által elérhetővé tett API-k egy részét.  
@@ -30,7 +30,7 @@ Használat és a resource adatok be az előnyben részesített adatelemző eszk�
 Egyszer a [jóváhagyás már befejeződött](billing-manage-access.md#opt-in), letölthető számlák előzetes verzióját [számla API](/rest/api/billing). A szolgáltatások a következők:
 
 * **Szerepköralapú hozzáférés-vezérlés az Azure** -konfigurálása hozzáférési házirendek a a [az Azure portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/overview) , adja meg, hogy mely felhasználók vagy alkalmazások hozzáférhet a az előfizetéshez tartozó használati adatok. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés vagy a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörrel.
-* **Dátum szerinti szűrés** -használatát a `$filter` paraméter használatával beolvas minden számla fordított időrendben számla időszak vége dátuma szerint. 
+* **Dátum szerinti szűrés** -használatát a `$filter` paraméter használatával beolvas minden számla fordított időrendben számla időszak vége dátuma szerint.
 
 > [!NOTE]
 > Ez a szolgáltatás első előzetes verziója van, és lehet visszamenőlegesen nem kompatibilisek változhat. Jelenleg nem érhető el az egyes előfizetési ajánlatok (EA, CSP aio-ra nem támogatott.) és az Azure Germany.
@@ -48,7 +48,7 @@ Az Azure használata [erőforrás-használati API](https://msdn.microsoft.com/li
 Használja a [Azure Resource RateCard API](https://msdn.microsoft.com/library/azure/mt219005) elérhető Azure-erőforrások és az egyes becsült díjszabási információk lekéréséhez. Az API-t tartalmazza:
 
 * **Szerepköralapú hozzáférés-vezérlés az Azure** – a hozzáférési szabályzatok konfigurálhatók az a [az Azure portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/overview) , adja meg, hogy mely felhasználók vagy alkalmazások hozzáférhet a RateCard adatokat. Hívó standard szintű Azure Active Directory-jogkivonatok hitelesítést kell használnia. Adja hozzá a hívó érhet el a használati adatokat egy adott Azure-előfizetés az olvasó, a tulajdonos vagy a közreműködői szerepkört.
-* **Használatalapú fizetés, MSDN, kötelezettségvállalás és pénzjóváírásos ajánlatok támogatása (nagyvállalati szerződéssel rendelkező és [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nem támogatott)** – Ez az API az Azure-ajánlat szintű díjszabás információival.  Ez az API hívója erőforrás részleteit és a díjak az ajánlati információkat kell adja át. Sajnáljuk, jelenleg nem biztosít Nagyvállalati díjakat számoljuk fel, mert a nagyvállalati szerződésre vonatkozó ajánlatok testreszabott regisztrációs mértékek. 
+* **Használatalapú fizetés, MSDN, kötelezettségvállalás és pénzjóváírásos ajánlatok támogatása (nagyvállalati szerződéssel rendelkező és [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) nem támogatott)** – Ez az API az Azure-ajánlat szintű díjszabás információival.  Ez az API hívója erőforrás részleteit és a díjak az ajánlati információkat kell adja át. Sajnáljuk, jelenleg nem biztosít Nagyvállalati díjakat számoljuk fel, mert a nagyvállalati szerződésre vonatkozó ajánlatok testreszabott regisztrációs mértékek.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 Néhány lehetséges a használat és a RateCard API-k együttes használatával végzett forgatókönyv:
@@ -58,12 +58,10 @@ Néhány lehetséges a használat és a RateCard API-k együttes használatával
 * **Számlázási előrejelzése** – Get a becsült használat és a felhőbeli költségek, és gépi tanulási algoritmusok előre jelezni, hogy mi a számla lenne az elszámolási időszakban végén a alkalmazni.
 * **Elemzés előtti használat** – előrejelezheti, hogy mekkora a számla lenne a várható használat a számítási feladatok Azure-ba való áthelyezésekor a RateCard API-val. Ha rendelkezik meglévő számítási feladatokat, az egyéb felhőkben vagy privát felhők, a használat az Azure-ral is leképezheti díjak beolvasni egy jobb becslés az Azure-költségek. Ez a becslés teszi lehetővé a kimutatástáblába és következő elemek között a különböző típusú túl az utólagos elszámolású csomagok, például a pénzügyi kötelezettségvállalás és a fizetésre használható kredit az ajánlat, és hasonlítsa össze. Az API-t is költség különbségek régiónként megtekintéséhez lehetővé teszi, és lehetővé teszi, hogy a Lehetőségelemzési költségelemzés annak érdekében, hogy a telepítési döntések meghozatalában.
 * **Lehetőségelemzés** -
-  
+
   * Képes meghatározni, hogy azt helyett egy másik régióban található, vagy az Azure-erőforrás egy másik konfigurációs a számítási feladatok futtatásához. Az Azure erőforrás-használati díjak az Azure-régiót használ a megfelelően változhatnak.
   * Azt is meghatározhatja, hogy ha egy másik Azure-ajánlat típus jobb sebesség nyújt egy Azure-erőforrás.
-  
-## <a name="partner-solutions"></a>Partneri megoldások
-A [Cloud Cruiser és a Microsoft Azure számlázási API integrációját](billing-usage-rate-card-partner-solution-cloudcruiser.md) leíró szakasz azt ismerteti, hogyan működik közvetlenül a [Cloud Cruiser Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) a Windows Azure Pack (WAP) portálról. A Microsoft Azure privát vagy üzemeltetett nyilvános felhő működtetési és pénzügyi aspektusait is zökkenőmentesen kezelheti egyetlen felhasználói felületről.   
+
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a Kódminták a Githubon:
@@ -73,7 +71,4 @@ A [Cloud Cruiser és a Microsoft Azure számlázási API integrációját](billi
 
   * [RateCard API kódmintája](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Az Azure Resource Managerrel kapcsolatos további tudnivalókért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md). 
-
-
-
+* Az Azure Resource Managerrel kapcsolatos további tudnivalókért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).

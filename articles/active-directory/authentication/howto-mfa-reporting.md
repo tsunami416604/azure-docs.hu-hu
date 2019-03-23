@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dd26bbb06310439aae065349c14c6df1c1c12e6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316932"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369051"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
@@ -36,9 +36,7 @@ Az Azure multi-factor Authentication számos jelentéseket biztosít, amelyek se
 2. A bal oldalon válassza ki a **Azure Active Directory** > **MFA-kiszolgáló**.
 3. Válassza ki a megtekinteni kívánt jelentést.
 
-   <center>
-   
-   ![Felhő](./media/howto-mfa-reporting/report.png)</center>
+   ![MFA-kiszolgáló server állapotjelentése az Azure Portalon](./media/howto-mfa-reporting/report.png)
 
 ## <a name="azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentések
 
@@ -55,7 +53,7 @@ A bejelentkezések jelentés biztosíthat kapcsolatos információk a felügyelt
 
 Ezek az adatok keresztül érhető el a [az Azure portal](https://portal.azure.com) és a [reporting API](../reports-monitoring/concept-reporting-api.md).
 
-![Felhő](./media/howto-mfa-reporting/sign-in-report.png)
+![Az Azure AD bejelentkezési jelentések az Azure Portalon](./media/howto-mfa-reporting/sign-in-report.png)
 
 ### <a name="sign-ins-report-structure"></a>Bejelentkezések jelentés szerkezete
 

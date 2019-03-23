@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549428"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350640"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
 
@@ -90,7 +90,7 @@ A körülmények, amelyben egy alkalmazás központi telepítésének azt eredm�
 
 A folyamatos üzembe helyezés az Azure DevOps két lehetősége van:
 
-*   Használjon egy Git-projektet. Csatlakozhat az App Service-n keresztül az üzembe helyezési lehetőségek, hogy az adattárban.
+*   Használjon egy Git-projektet. Az App Service-n keresztül csatlakozzon az üzembe helyezési központ segítségével.
 *   A Team Foundation verzió Control (TFVC) projekt használja. Telepítheti a fordító-ügynökhöz az App Service használatával.
 
 Folyamatos kód üzembe helyezése mindkét ezek a beállítások a meglévő fejlesztői munkafolyamatokba, és hogy az eljárások függ. További információval a következő cikkek szolgálnak: 

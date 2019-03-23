@@ -1,23 +1,25 @@
 ---
-title: Példa, hogyan adhat hozzá a keresési mezőbe – Azure Search automatikus kiegészítési funkciója
-description: Példák az Azure Search automatikus kiegészítés és a javaslatok API-k használatával adatközpontú alkalmazások a végfelhasználói élmény javítása érdekében.
+title: Az automatikus kiegészítés példa typeahead egy keresőmezőt tartalmazó – Azure Search hozzáadása
+description: Engedélyezze a typeahead lekérdezési műveleteket az Azure Search javaslattevők létrehozásával, és töltse ki a befejezett szavakat vagy kifejezéseket egy keresőmezőt tartalmazó kérelmek kidolgozásában.
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 03/22/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b78fdf0c493e4631e4cdd7e26b154570b6226d1f
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200276"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369573"
 ---
-# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>Példa: A keresőmezőbe, az Azure Search használatával ad hozzá az automatikus kiegészítés
+# <a name="example-add-autocomplete-to-partial-term-inputs-in-azure-search"></a>Példa: Az automatikus kiegészítés részleges kifejezés bemeneti adatokat, az Azure Search hozzáadása
+
+Ezt az előzetes funkciót "befejezése" egy részleges kifejezés bemeneti dokumentumokat az Azure Search-index a befejezett kifejezés megadásával. Ez a funkció a kereskedelmi keresőkben talán észrevette. Most már hozzáadhat Ez a funkció jelenleg nyilvános előzetes verzióban elérhető egyszerűsítése érdekében a lekérdezés kezelni egy Azure Search-megoldását.
 
 Ebben a példában elsajátíthatja, hogyan használható [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) és [metszettel](search-faceted-navigation.md) a a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) és [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) hozhat létre hatékony keresőmezőbe. 
 

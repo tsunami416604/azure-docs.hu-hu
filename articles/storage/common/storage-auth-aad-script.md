@@ -5,25 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f8fd3cdcf73749d787fc6f1c2222946961091f80
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6c57367a3a11aeb5bdded8e19ce57b7e265aeea9
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849839"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369241"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell"></a>Az Azure Storage-be a parancssori felület vagy PowerShell eléréséhez használja az Azure AD identity
 
-Az Azure Storage bővítményeket biztosít az Azure CLI és PowerShell, amelyek lehetővé teszik, hogy jelentkezzen be, és a egy Azure Active Directory (Azure AD) identitás alatt parancsfájl-kezelési parancsok futtatásához. Az Azure AD identity lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy lehet egy [-identitás az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Hozzárendelhet engedélyeket az eléréséhez a tárolási erőforrások az Azure AD Identity szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Az Azure Storage-ban RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) az Azure Storage-adatokkal](storage-auth-aad-rbac.md).
+Az Azure Storage bővítményeket biztosít az Azure CLI és PowerShell, amelyek lehetővé teszik, hogy jelentkezzen be, és a egy Azure Active Directory (Azure AD) identitás alatt parancsfájl-kezelési parancsok futtatásához. Az Azure AD identity lehet egy felhasználó, csoport vagy alkalmazás egyszerű szolgáltatást, vagy lehet egy [-identitás az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Hozzárendelhet engedélyeket az eléréséhez a tárolási erőforrások az Azure AD Identity szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Az Azure Storage-ban RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC Azure Storage-adatokkal](storage-auth-aad-rbac.md).
 
-Amikor bejelentkezik az Azure CLI vagy a PowerShell egy Azure AD-identitással, egy hozzáférési jogkivonatot, hogy az identitás alatt az Azure Storage eléréséhez adja vissza. A jogkivonat ezután automatikusan használják parancssori felület vagy PowerShell történő hitelesítéséhez az Azure Storage kapcsolatos művelet-végrehajtási. A támogatott műveletek már nincs szüksége egy kulccsal vagy SAS-jogkivonat a paranccsal át.
+Amikor bejelentkezik az Azure parancssori felület vagy PowerShell az Azure AD-identitásnak, egy hozzáférési jogkivonatot, hogy az identitás alatt az Azure Storage eléréséhez adja vissza. A jogkivonat ezután automatikusan használják parancssori felület vagy PowerShell történő hitelesítéséhez az Azure Storage kapcsolatos művelet-végrehajtási. A támogatott műveletek már nincs szüksége egy kulccsal vagy SAS-jogkivonat a paranccsal át.
 
 ## <a name="supported-operations"></a>Támogatott műveletek
 
-A bővítmények a tárolók és a várólisták műveletek támogatottak. Hívja előfordulhat, hogy mely műveletek az Azure AD Identity, amellyel kell bejelentkezni az Azure parancssori felület vagy PowerShell jogosultságaitól függ. Az Azure Storage-tárolók, vagy várólisták engedélyeket szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Például ha egy Adatolvasó szerepkör van rendelve az identitást, majd futtathatja parancsokat, amelyek az adatok olvasása a tárolóból vagy üzenetsor. Ha a Data-közreműködői szerepkör van rendelve az identitás, majd futtathatja parancsokat, amelyek olvasási, írási, vagy egy tároló vagy üzenetsor vagy a rajtuk tárolt adatok törlése. 
+A bővítmények a tárolók és a várólisták műveletek támogatottak. Hívja előfordulhat, hogy mely műveletek az Azure AD Identity, amellyel bejelentkezik az Azure parancssori felület vagy PowerShell jogosultságaitól függ. Az Azure Storage-tárolók, vagy várólisták engedélyeket szerepköralapú hozzáférés-vezérlés (RBAC) keresztül. Például ha egy Adatolvasó szerepkör van rendelve az identitást, majd futtathatja parancsokat, amelyek az adatok olvasása a tárolóból vagy üzenetsor. Ha a Data-közreműködői szerepkör van rendelve az identitás, majd futtathatja parancsokat, amelyek olvasási, írási, vagy egy tároló vagy üzenetsor vagy a rajtuk tárolt adatok törlése. 
 
 Minden Azure Storage-művelet egy tároló vagy a várólista szükséges jogosultságokat kapcsolatos részletekért lásd: [REST-műveleteinek meghívására szolgáló engedélyek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
@@ -61,10 +61,10 @@ Az alábbi példa bemutatja, hogyan, létrehozhat egy tárolót az új storage-f
         --encryption-services blob
     ```
     
-1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője (előzetes verzió)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon (előzetes verzió) az RBAC üzenetsorok](storage-auth-aad-rbac.md).
+1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon az RBAC üzenetsorok](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > Az Azure AD-támogatás a blobok és üzenetsorok előzetesben RBAC szerepkör-hozzárendelések eltarthat propagálása akár 5 percet.
+    > RBAC szerepkör-hozzárendelések propagálása néhány percig is eltarthat.
     
 1. Hívja a [az a tároló létrehozása](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) parancsot a `--auth-mode` paraméter beállítása `login` létrehozni a tárolót az Azure ad-ben használt hitelesítő adataival:
 
@@ -114,10 +114,10 @@ Az alábbi példa bemutatja, hogyan, létrehozhat egy tárolót az új storage-f
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője (előzetes verzió)](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon (előzetes verzió) az RBAC üzenetsorok](storage-auth-aad-rbac.md).
+1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon az RBAC üzenetsorok](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > Az Azure AD-támogatás a blobok és üzenetsorok előzetesben RBAC szerepkör-hozzárendelések eltarthat propagálása akár 5 percet.
+    > RBAC szerepkör-hozzárendelések propagálása néhány percig is eltarthat.
 
 1. Hozzon létre egy tárolót meghívásával [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer). Mivel a hívás az előző lépésekben létrehozott összefüggésben használja, a tároló jön létre az Azure ad-ben használt hitelesítő adataival. 
 
@@ -128,6 +128,6 @@ Az alábbi példa bemutatja, hogyan, létrehozhat egy tárolót az új storage-f
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure storage szolgáltatáshoz az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md).
-- Felügyelt identitások az Azure-erőforrások az Azure Storage használatával kapcsolatos további információkért lásd: [hitelesítés blobok és üzenetsorok az Azure-ral a hozzáférést az Azure-erőforrások (előzetes verzió) által felügyelt identitások](storage-auth-aad-msi.md).
+- Az Azure storage szolgáltatáshoz az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC tárolási adatok](storage-auth-aad-rbac.md).
+- Felügyelt identitások az Azure-erőforrások az Azure Storage használatával kapcsolatos további információkért lásd: [blobok és üzenetsorok az Azure-ral való hitelesítés hozzáférési felügyelt identitások az Azure-erőforrások](storage-auth-aad-msi.md).
 - A tárolókhoz és üzenetsorok, a storage-alkalmazásokban való elérésének hitelesítéséhez, lásd: [storage alkalmazásait az Azure AD segítségével](storage-auth-aad-app.md).

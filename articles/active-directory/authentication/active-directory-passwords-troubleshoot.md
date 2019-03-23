@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 297d32311b6b697b0141488878d170b3f2f4c359
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315487"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369785"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -35,7 +35,6 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (S
 | UserNotProperlyConfigured = 14 | Sajnáljuk, nem lehet új jelszót most, mert hiányzik a szükséges információkat a fiókból. Nem tartoznak további műveletek oldja meg ezt a helyzetet is igénybe vehet. Forduljon a rendszergazda, és kérje meg a jelszó alaphelyzetbe állításához. Miután hozzáférést a fiókjához újra, a szükséges információkat regisztrálnia kell. Információk regisztrálásához kövesse a [regisztrálása önkiszolgáló jelszó-visszaállítás](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-reset-register) cikk. | SSPR_0014: További biztonsági információkat kelljen a jelszó szükséges. A folytatáshoz, forduljon a rendszergazdához, és kérje meg a jelszó alaphelyzetbe állításához. Miután hozzáférést a fiókjához, további biztonsági információkat kelljen, regisztrálhatja https://aka.ms/ssprsetup. A rendszergazda adhat hozzá további biztonsági adatok fiókja a lépéseket követve [beállítása és a jelszó-visszaállítás olvasási hitelesítési adatok](howto-sspr-authenticationdata.md). |
 | OnPremisesAdminActionRequired = 29 | Sajnáljuk, hogy nem állítható alaphelyzetbe a jelszót jelenleg szervezete jelszó alaphelyzetbe állítása konfigurációs probléma miatt. Nem tartoznak további műveletek oldja meg ezt a helyzetet is igénybe vehet. Forduljon a rendszergazdához, és kivizsgálására. A lehetséges problémák kapcsolatos további információkért lásd: [a jelszóvisszaíró hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback). | SSPR_0029: A jelszó a helyszíni konfiguráció hibája miatt nem tudjuk. Forduljon a rendszergazdához, és kivizsgálására. |
 | OnPremisesConnectivityError = 30 | Sajnáljuk, hogy nem állítható alaphelyzetbe a jelszót jelenleg a szervezet kapcsolódási problémák miatt. Nem tartoznak teendője most műveletek, de a probléma megoldódott lehet, ha később újra próbálkozik. Ha a probléma tartósan fennáll, forduljon a rendszergazdához, és kivizsgálására. Kapcsolati problémákra vonatkozó további tudnivalókért lásd: [a jelszóvisszaíró csatlakoztatási problémáinak hibaelhárítása](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity). | SSPR_0030: Mi az a helyszíni környezettel való gyenge kapcsolat miatt a jelszó nem állítható alaphelyzetbe. Forduljon a rendszergazdához, és kivizsgálására.|
-
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>A jelszó alaphelyzetbe állítása konfigurálása az Azure Portalon hibaelhárítása
 
@@ -168,8 +167,8 @@ A leggyakoribb rendszerkritikus meghibásodási pontot, hogy a tűzfal, és vagy
 
 Az Azure AD Connect verziója 1.1.443.0 és újabb, akkor kimenő HTTPS hozzáféréssel kell a következőket:
 
-   - passwordreset.microsoftonline.com
-   - servicebus.windows.net
+* passwordreset.microsoftonline.com
+* servicebus.windows.net
 
 Részletesebben követheti nyomon, tekintse meg a frissített listájának [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) minden szerdán frissítve, és a következő hétfőn hatályba.
 
@@ -184,7 +183,7 @@ Csatlakozási problémák vagy egyéb átmeneti problémák a szolgáltatással 
 1. Keresse meg a **a Microsoft Azure AD Sync** bejegyzés.
 1. Válassza ki a kattintson a jobb gombbal a szolgáltatás bejegyzés **indítsa újra a**, és ezután Várjon, amíg a művelet befejeződik.
 
-   ![Az Azure AD Sync szolgáltatás újraindítása][Service restart]
+   ![Indítsa újra az Azure AD Sync szolgáltatást, a grafikus felhasználói felületen][Service restart]
 
 Ezeket a lépéseket újra létrehozza a kapcsolatot a felhőalapú szolgáltatással, és hárítsa el a megakadás, léptek fel. Az ADSync szolgáltatás újraindítása nem oldja meg a probléma, azt javasoljuk, hogy megpróbálja tiltsa le, majd engedélyezze újra a jelszót a jelszóvisszaíró szolgáltatás.
 
@@ -215,7 +214,6 @@ Azt javasoljuk, hogy ez a lépés végrehajtása csak azután kísérli meg a ko
 
 > [!WARNING]
 > Ha testre szabott-a-beépített szinkronizálási szabályok *biztonsági Mentésükhöz frissítés folytatása előtt, és ezt követően manuálisan telepítse újra azokat után végzett.*
->
 
 1. Az Azure AD Connect legújabb verzióját töltse le a [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Már telepítette az Azure AD Connect, mert helyben frissíthet az Azure AD Connect telepítés frissítése a legújabb verzióra van szükség.
@@ -231,33 +229,27 @@ Az Azure AD Connectnek szüksége van az Active Directory **jelszó alaphelyzetb
 
 1. Jelentkezzen be az Azure AD Connect-kiszolgáló, és indítsa el a **Synchronization Service Managert** kiválasztásával **Start** > **szinkronizálási szolgáltatás**.
 1. Alatt a **összekötők** lapra, válassza ki a helyszíni **Active Directory Domain Services** összekötő, és válassza ki **tulajdonságok**.  
-   ![Hatályos engedélyek – 2. lépés](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
+   ![Synchronization Service Managert bemutató tulajdonságainak szerkesztése](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. Az előugró ablakban válassza ki a **csatlakozhat az Active Directory-erdő** , és jegyezze fel a **felhasználónév** tulajdonság. Ez a tulajdonság az Azure AD Connect címtár-szinkronizálás végrehajtásához használt AD DS-fiókot. Az Azure AD Connect a jelszóvisszaírás végrehajtásához az AD DS-fiókot kell alaphelyzetbe állítása jelszó engedéllyel.  
-   
-   ![Hatályos engedélyek – 3. lépés](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
+
+   ![A szinkronizálási szolgáltatás az Active Directory felhasználói fiók keresése](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
 1. Jelentkezzen be egy helyszíni tartományvezérlővel, és indítsa el a **Active Directory – felhasználók és számítógépek** alkalmazás.
 1. Válassza ki **nézet** , és győződjön meg arról, hogy a **speciális funkciók** beállítás engedélyezve van.  
-   
-   ![Hatályos engedélyek – 5. lépés](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
+
+   ![Az Active Directory – felhasználók és számítógépek megjelenítése a speciális funkciók](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
 1. Keresse meg az Active Directory felhasználói fiók ellenőrizni szeretné. Kattintson a jobb gombbal a fiók nevét, és válassza ki **tulajdonságok**.  
-   
-   ![Hatályos engedélyek – 6. lépés](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
-
 1. A felugró ablakban nyissa meg a **biztonsági** lapot, és válasszon **speciális**.  
-   
-   ![Hatályos engedélyek – 7. lépés](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
-   
 1. Az a **rendszergazda speciális biztonsági beállításai** előugró ablakban, keresse fel a **hatályos hozzáférés** fülre.
 1. Válassza ki **válasszon ki egy felhasználót**, válassza ki az AD DS-fiókot az Azure AD által használt Connect (lásd a 3. lépés), és válassza ki **hatályos hozzáférés megtekintése**.
 
-   ![Hatályos engedélyek – 9. lépés](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
+   ![A szinkronizálási fióknak hatályos hozzáférés lap](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
 1. Görgessen lefelé, és keressen **jelszó alaphelyzetbe állítása**. Ha a bejegyzés jelölőnégyzet be van jelölve, az Active Directory tartományi szolgáltatások fióknak legyen jogosultsága a kijelölt Active Directory felhasználói fiók a jelszó alaphelyzetbe állítása.  
-   
-   ![Hatályos engedélyek – 10. lépés](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
+
+   ![Ellenőrzi, hogy a szinkronizálási fióknak legyen jogosultsága a Reset jelszó](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
 ## <a name="azure-ad-forums"></a>Azure AD-fórumok
 
@@ -272,17 +264,17 @@ Megfelelően, hogy tegye fel meg minél részletesebb információt a lehető es
 * **Általános hibaleírást**: Mi az a hiba? Mi volt, volt megfigyelhető viselkedés? Hogyan tudjuk reprodukálni a hibát? A lehető adja meg a lehető legtöbb részletet.
 * **Oldal**: Mely lap volt az, amikor észrevette, hogy a hiba? Például az URL-címet, ha tudja, és a egy lapjának képernyőképe, a.
 * **Támogatási kód**: Mi volt a támogatási kódot, amely a jött létre, amikor a felhasználó látott a hiba?
-  * Keresse meg a kódot, reprodukálni a hibát, majd jelölje ki a **támogatási kód** hivatkozásra a képernyő alján, és a támogatási szakértőhöz a globálisan egyedi Azonosítót, az eredmények küldése.
+   * Keresse meg a kódot, reprodukálni a hibát, majd jelölje ki a **támogatási kód** hivatkozásra a képernyő alján, és a támogatási szakértőhöz a globálisan egyedi Azonosítót, az eredmények küldése.
 
-    ![Keresse meg a képernyő alján található támogatási kódot][Support code]
+   ![Keresse meg a képernyő alján található támogatási kódot][Support code]
 
   * Ha egy lap alján támogatás nélkül használ, válassza ki az F12 billentyűt, és keresse meg a biztonsági azonosítója és a CID, és két eredmények küldése a támogatási szakértőhöz.
 * **Dátum, idő és időzóna**: A pontos dátum és idő *az időzónával együtt* , amely a hiba történt.
 * **Felhasználói azonosító**: Ki lett, a felhasználó, akik láttak a hiba? Például *felhasználói\@contoso.com*.
-    * Az összevont felhasználó?
-    * Az átmenő hitelesítés felhasználó?
-    * A jelszó-kivonat-szinkronizált felhasználó van szó?
-    * Az egy csak felhőalapú felhasználói?
+   * Az összevont felhasználó?
+   * Az átmenő hitelesítés felhasználó?
+   * A jelszó-kivonat-szinkronizált felhasználó van szó?
+   * Az egy csak felhőalapú felhasználói?
 * **Licencelési**: A felhasználó rendelkezik egy Azure AD prémium vagy alapszintű Azure AD-licenccel?
 * **Alkalmazás eseménynaplója**: Ha használ jelszóvisszaírót, és a hiba: a helyszíni infrastruktúrában, közé tartozik az alkalmazások eseménynaplójában, az Azure AD Connect-kiszolgáló a tömörített másolatát.
 

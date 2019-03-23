@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457933"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395687"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -105,7 +105,7 @@ Igen, támogatja a nem felügyelt, és a felügyelt lemezek támogatottak. Azt j
 
 Nem.
 
-**Ha hozzon létre egy 128 GB-os lemezt, és ezután a 130 GIB-ra méretének növeléséhez, kell fizetnem az a következő lemez mérete (256 GB)?**
+**Ha hozzon létre egy 128 GB-os lemezt, és növelje a 130 gibibájtban (GiB) méretét, kell fizetnem az a következő lemez mérete (256 GB)?**
 
 Igen.
 
@@ -115,7 +115,7 @@ Az Azure Managed Disks jelenleg csak a helyileg redundáns tárolás, felügyelt
 
 **Csökkenhessen vagy a felügyelt lemezek becsléseim?**
 
-Nem. Ez a funkció jelenleg nem támogatott. 
+Nem. Ez a funkció jelenleg nem támogatott.
 
 **Képes a címbérlet is felosztása a lemezen lévő?**
 
@@ -153,7 +153,7 @@ Minden Azure-régióban mostantól támogatja a Standard SSD-lemezeket.
 Igen, az Azure Backup már elérhető.
 
 **Hogyan hozhatok létre Standard SSD-lemez?**
-Standard SSD-lemez Azure Resource Manager-sablonok, SDK-t, a PowerShell vagy a parancssori felület használatával is létrehozhat. Az alábbiakban Standard SSD-lemez létrehozása a Resource Manager-sablon a szükséges paraméterek:
+Standard SSD-lemezeket az Azure Resource Manager-sablonok, SDK-t, a PowerShell vagy a parancssori felület használatával is létrehozhat. Az alábbiakban Standard SSD-lemez létrehozása a Resource Manager-sablon a szükséges paraméterek:
 
 * *API-verzió* a Microsoft.Compute kell beállítani: `2018-04-01` (vagy újabb)
 * Adja meg *managedDisk.storageAccountType* , `StandardSSD_LRS`
@@ -179,7 +179,7 @@ Igen. Tekintse meg [átalakítása az Azure disks storage felügyelt standard pr
 -AccountType StandardSSD_LRS
 
 **Mi az az előnye, hogy Standard SSD-lemezek használata helyett HDD?**
-Standard SSD-lemez nyújthat nagyobb késést, konzisztencia, rendelkezésre állás és megbízhatóság HDD lemezek képest. Alkalmazások és szolgáltatások zökkenőmentes rengeteg további a standard szintű SSD, amely miatt. Vegye figyelembe, hogy prémium szintű SSD-lemezeket az ajánlott megoldás a legtöbb i/o-igényes éles számítási feladathoz. 
+Standard SSD-lemez jobb késés, a konzisztencia, a rendelkezésre állás és a HDD lemezek képest megbízhatóság biztosításához. Alkalmazások és szolgáltatások zökkenőmentes rengeteg további a standard szintű SSD, amely miatt. Vegye figyelembe, hogy prémium szintű SSD-lemezeket az ajánlott megoldás a legtöbb i/o-igényes éles számítási feladathoz.
 
 **Standard SSD-k használhatok a nem felügyelt lemezként?**
 Standard SSD-lemez nem felügyelt lemezként csak érhetők el.
@@ -191,7 +191,7 @@ Standard SSD-k nem, nem kell egypéldányos virtuális gép SLA-t. Prémium szin
 
 **A migrálás a Managed Disks teljesítményére hatással van?**
 
-Áttelepítésébe tartozik a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül adatokat, amelyek befejezéséhez, általában több óráig is tarthat kevesebb, mint 24 órában a lemezeken lévő adatok mennyiségétől függően háttérben futó példányát. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.  
+Áttelepítésébe tartozik a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttér-példányt az adatokat, amelyeket általában kevesebb, mint 24 befejezése több órát is igénybe vehet a lemezeken lévő adatok mennyiségétől függően óra. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.  
 
 **Milyen változtatásokra van szükség, egy már meglévő Azure Backup szolgáltatás konfigurációs előtti/utáni migrálás a Managed Disks szolgáltatásba?**
 
@@ -205,7 +205,7 @@ Igen, biztonsági mentések problémamentesen működik.
 
 Nincs módosításokra szükség.
 
-**Az egy meglévő virtuálisgép-méretezési csoport automatikus áttelepítése a Managed Disks szolgáltatásba támogatott nem felügyeltről felügyelt csoportok?**
+**Egy meglévő virtuálisgép-méretezési csoport automatikus migrálási értékre van állítva a nem felügyelt lemezek Managed Disks támogatott?**
 
 Nem. Létrehozhat egy új méretezési csoportot a Managed Disks nem felügyelt lemezek a régi méretezési csoportból a lemezkép használatával.
 
@@ -300,7 +300,7 @@ Nincs nem hátulütője TRIM vagy prémium szintű Azure-lemezek vagy a standard
 
 **Mi az a legnagyobb felügyelt lemez méretét a támogatott operációs rendszer és az adatlemezek?**
 
-A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információk: a [blogbejegyzés](https://aka.ms/azure-large-disk-32TB-preview-blog).
+A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információkért lásd: a [blogbejegyzés](https://aka.ms/azure-large-disk-32TB-preview-blog).
 
 **Mi az a legnagyobb támogatott operációs rendszer és az adatlemezek nem felügyelt lemez mérete?**
 
@@ -333,25 +333,29 @@ Meglévő kis méretű prémium szintű lemezek kisebb, mint 64 GiB továbbra is
 
 Pillanatkép készítése a kis méretű lemezek, és hozzon létre egy lemezt automatikusan átvált a tarifacsomag P4 vagy P6 kiépített mérete alapján.
 
-**Ön átméretezhető méretek meglévő felügyelt lemezeket kevesebb mint 4 Tib-ra való új újonnan bevezetett lemezméretek legfeljebb 32 Tib-ra?**
+**Átméretezheti meglévő Managed Disks méretek a 4-nél kevesebb tebibytes (TiB) az új újonnan bevezetett lemezméretek legfeljebb 32 Tib-ra?**
 
 Új felügyelt lemezek méretei 8 Tib-ra, 16 TiB és 32 TiB jelenleg előzetes verzióban érhető el. Nem még támogatjuk a meglévő lemezméretek, az új lemezméret átméretezése.
 
-**Mi az a legnagyobb lemezméret az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott?**
+**Mik az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott legnagyobb lemezméret?**
 
 A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra.
 
-**Mik azok a virtuális gép ajánlott mérete a nagyméretű lemezek (> 4TiB) optimalizált Standard SSD és HDD standard szintű lemezek elérése érdekében a lemez IOPS és sávszélesség?**
+**Mik azok a virtuális gép ajánlott mérete a nagyobb lemezméretek (> 4 Tib-ra) optimalizált Standard SSD és HDD standard szintű lemezek elérése érdekében a lemez IOPS és sávszélesség?**
 
-Standard SSD és Standard HDD nagy lemezméretek, az adatátviteli sebességet eléréséhez (> 4 TB-os) és 500 iops-érték 60 MiB/s, használjon egy, a következő Virtuálisgép-méretek optimalizálhatja a teljesítményt: A B sorozat, DSv2-sorozat, a Dsv3-sorozat, az ESv3 sorozatú Fs-sorozat, Fsv2-sorozat, M-sorozat, GS-sorozat, NCv2 sorozat, az NCv3 sorozatú vagy Ls-sorozat virtuális gépei.
+Standard SSD és Standard HDD nagy lemezméretek, az adatátviteli sebességet eléréséhez (> 4 Tib-ra) és 500 iops-érték 60 MiB/s, javasoljuk, hogy telepít egy új virtuális Gépet a következő Virtuálisgép-méretek egyik optimalizálhatja a teljesítményt: A B sorozat, DSv2-sorozat, a Dsv3-sorozat, az ESv3 sorozatú Fs-sorozat, Fsv2-sorozat, M-sorozat, GS-sorozat, NCv2 sorozat, az NCv3 sorozatú vagy Ls-sorozat virtuális gépei. Nagy méretű lemezek csatolása meglévő virtuális gépek vagy a fenti ajánlott méretet nem használó virtuális gépek alacsonyabb teljesítményt tapasztalhat.
 
-**Mely régiók csak a felügyelt lemezek mérete nagyobb, mint a támogatott 4 Tib-ra?**
+**Hogyan frissíthetem a saját lemezek (> 4 Tib-ra) annak érdekében, hogy a magasabb IOPS és sávszélesség lekérése: általánosan elérhető a nagyobb lemez méretek előzetes verzióban telepített tartalmaznak?**
 
-Az előzetes verziója a felügyelt lemezek méretei túli 4 Tib-ra az Azure éles régiót kivéve Gov, Kínában, és Németországban támogatottak. 
+Vagy leállíthatja, és indítsa el a virtuális Gépet, amely a lemez csatlakoztatva van, vagy válassza le és csatlakoztassa újra a lemezt. A teljesítmény-határértékeit, nagyobb lemezméretek megnöveltük a prémium szintű SSD-k mind a standard SSD-k jelenleg általánosan elérhető
 
-**Hogy támogatják-állomás gyorsítótárazásának engedélyezése az újabb lemezméretek a?**
+**Mely régiók TiB 8, 16 Tib-ra, a felügyelt lemez méretét, és támogatja a 32 Tib-ra?**
 
-Lemezméret kisebb 4TiB állomás gyorsítótárazása az írásvédett és az olvasási/írási támogatjuk. Adatlemez-méretet a több mint 4 Tib-ra, nem támogatjuk a gyorsítótár-beállítás none. Azt javasoljuk, hogy kisebb lemezméretet, ahol várható és jobb teljesítményt boost figyelje a virtuális géphez gyorsítótárazott adatok gyorsítótárazásának kihasználva.
+A 8 Tib-ra, 16 TiB és 32 TiB lemez termékváltozatok támogatottak a globális Azure minden régióban. A Microsoft Azure Government és Azure China 21Vianet támogatása még nem érhető el.
+
+**Hogy támogatják-állomás gyorsítótárazásának engedélyezése az összes lemezméretek?**
+
+Támogatjuk a állomás gyorsítótárazása az írásvédett és az olvasási/írási a lemez mérete kisebb, mint 4 Tib-ra. Adatlemez-méretet a több mint 4 Tib-ra, nem támogatjuk a gyorsítótár-beállítás none. Azt javasoljuk, hogy kisebb lemezméretet, ahol várható és jobb teljesítményt boost figyelje a virtuális géphez gyorsítótárazott adatok gyorsítótárazásának kihasználva.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha kérdésem itt nem választ?
 

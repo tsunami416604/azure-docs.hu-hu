@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012790"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369088"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
@@ -266,7 +266,7 @@ Most, hogy megismerkedett a kérelem létrehozásához, meghívja a szolgáltat�
 ## <a name="creating-the-authorization-header"></a>Az engedélyezési fejléc létrehozásához
 
 > [!TIP]
-> Az Azure Storage mostantól támogatja az Azure Active Directory (Azure AD) integrálása a Blob és üzenetsor-szolgáltatásokhoz (előzetes verzió). Azure ad-ben, amelyek engedélyezik a kérést az Azure Storage egy sokkal egyszerűbb megoldást kínál. Az Azure AD-vel történő hitelesítéséhez a REST-műveleteinek további információkért lásd: [hitelesítés az Azure Active Directoryval (előzetes verzió)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Az Azure AD-integráció az Azure Storage áttekintését lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).
+> Az Azure Storage mostantól támogatja az Azure Active Directory (Azure AD) integrálása a blobok és üzenetsorok. Azure ad-ben, amelyek engedélyezik a kérést az Azure Storage egy sokkal egyszerűbb megoldást kínál. Az Azure AD-vel történő hitelesítéséhez a REST-műveleteinek további információkért lásd: [hitelesítés az Azure Active Directoryval](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Az Azure AD-integráció az Azure Storage áttekintését lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md).
 
 Van egy cikk, amely ismerteti a koncepciót tekintve (nem a kódban) végrehajtása [az Azure Storage szolgáltatásainak hitelesítése](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services).
 Nézzük nyerhet ki pontosan le a cikkben van szükség, és megjeleníteni a kódot.

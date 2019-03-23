@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e960f662fda4272bbc9763eb04fdb739c4776af8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189648"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371332"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Használatával C# a Text Analytics kognitív szolgáltatás hívásához
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 1. Kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) parancsra.
 1. Jelölje be az **Include Prerelease** (Előzetes verzió is) jelölőnégyzetet.
 1. Válassza ki a **Browse** (Tallózás) lapot, majd keressen rá a **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** szövegre.
-1. Válassza ki a NuGet-csomagot, és telepítse. Szükség lehet a v2.8.0 most (3-18-2019), és nem a v3.0.0, amíg a szoftver egy hiba kijavítása.
+1. Válassza ki a NuGet-csomagot, és telepítse. Szükség lehet tárolószintre váltani v2.8.0 most (módon a 3-18-2019) mindaddig, amíg a mintakód v3.0.0 frissül.
 
 > [!Tip]
 >  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) közvetlenül C#-ból is meg lehet hívni, a Microsoft.Azure.CognitiveServices.Language SDK jelentősen megkönnyíti a szolgáltatás meghívását, mivel nem kell a JSON szerializálásával és deszerializálásával foglalkozni.

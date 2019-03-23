@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbee5316b78838bedc62454e8c1954eb5f9205ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317122"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370363"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
 
@@ -28,7 +28,7 @@ A felhasználói portálhoz rendszergazdák állíthatók be, akik az új felhas
 
 A felhasználói portált a környezettől függően érdemes lehet az Azure Multi-Factor Authentication-kiszolgálóval megegyező kiszolgálóra, illetve egy másik, internetkapcsolattal rendelkező kiszolgálóra telepíteni.
 
-![MFA felhasználói portál](./media/howto-mfaserver-deploy-userportal/portal.png)
+![MFA kiszolgáló felhasználói portál bejelentkezési oldalán](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > A felhasználói portál csak a Multi-Factor Authentication-kiszolgálóval érhető el. Ha a Multi-Factor Authenticationt a felhőben használja, hívja fel a felhasználói figyelmét a [fiók kétlépéses ellenőrzéshez történő beállítására](../user-help/multi-factor-authentication-end-user-first-time.md) vagy a [beállítások kétlépéses ellenőrzésnél történő kezelésére](../user-help/multi-factor-authentication-end-user-manage-settings.md).
@@ -118,6 +118,7 @@ Most, hogy telepítette a felhasználói portált, konfigurálnia kell az Azure 
 3. A **Rendszergazdák** lapon adja meg, kik legyenek a rendszergazdák. A részletes rendszergazdai engedélyek létrehozásához használja a Hozzáadás/Szerkesztés mezők jelölőnégyzeteit és legördülő listáit.
 
 Választható konfiguráció:
+
 - **Biztonsági kérdések** – Jóváhagyott biztonsági kérdéseket adhat meg a környezetéhez, továbbá a kérdések nyelvét is beállíthatja.
 - **Elvégzett munkamenetek** – Konfigurálhatja a felhasználói portál integrációját egy űrlapalapú webhellyel az MFA használatával.
 - **Megbízható IP-címek** – Engedélyezheti a felhasználóknak az MFA kihagyását, ha a hitelesítést egy olyan helyről végzik, amely szerepel a megbízható IP-címek vagy tartományok listáján.
@@ -141,9 +142,12 @@ Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a f
 | OATH token használata tartalékként | Lehetővé teszi egy OATH token használatát, ha a kétlépéses ellenőrzés sikertelennek bizonyul. Ezenkívül a munkamenet időtúllépését is megadhatja percben. |
 | Naplózás engedélyezése | Lehetővé teszi a naplózást a felhasználói portálon. A naplófájlok helyen találhatók: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők felhasználói MFA-kiszolgáló számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
+
 Ezen beállítások láthatóvá válnak a portálon a felhasználók számára, ha engedélyezettek és be vannak jelentkezve a felhasználói portálra.
 
-![Felhasználói portál beállításai](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![A felhasználói portál használata az MFA-kiszolgáló-fiók kezelése](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Önkiszolgáló felhasználói regisztráció
 
@@ -159,7 +163,7 @@ Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PI
 
 Ha a felhasználók a szöveges üzenetes ellenőrzési módszert választják, vagy ha ez a módszer van előre konfigurálva, a lapon meg kell adniuk a mobiltelefonszámukat. Ha a felhasználóknak PIN-kódot kell használniuk a hitelesítéskor, a lap PIN-kód megadását is kéri.  A telefonszám és a PIN-kód (ha van) beírása után a felhasználó a **Küldjön SMS-t a hitelesítéshez** gombra kattint. Az Azure Multi-Factor Authentication SMS-ellenőrzést kezdeményez a felhasználó mobiltelefonszáma használatával. A felhasználó egyszeri jelszót (one-time-passcode, OTP) tartalmazó SMS-t kap, és válaszol az üzenetre az OTP-vel és a PIN-kódjával (ha van).
 
-![Felhasználói portál SMS](./media/howto-mfaserver-deploy-userportal/text.png)
+![Felhasználói portál SMS használatával ellenőrzése](./media/howto-mfaserver-deploy-userportal/text.png)
 
 Ha a felhasználó a mobilalkalmazásos ellenőrzési módszert választja, az oldal felkéri, hogy telepítse a Microsoft Authenticator alkalmazást az eszközére, és hozzon létre egy aktiválási kódot. Az alkalmazás telepítése után a felhasználónak az Aktiváló kód előállítása gombra kell kattintania.
 

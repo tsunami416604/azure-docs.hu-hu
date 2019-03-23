@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338032b19d22432c34891de68c6a5ba71de60555
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170686"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370678"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -49,7 +49,7 @@ Számos ügyfél szerint egy egyszerűen követhető útmutatással ellátott e-
 * **SSPR tábla sátrak**: Tábla kártyák elhelyezhet a helyiségben ebéd konferenciahívások, vagy arra bátorítsák a felhasználókat, hogy a regisztráció elvégzése asztalok.
 * **SSPR matricákat**: Matricát sablonokat testre szabhatja és nyomtatási laptopok, monitorok, billentyűzetek vagy mobiltelefonok, ne felejtse el az SSPR eléréséhez hogyan helyezhető el.
 
-![SSPR E-mail minták][Email]
+![Bevezetés a felhasználók számára az SSPR e-mail-minták][Email]
 
 ## <a name="create-your-own-password-portal"></a>Saját jelszókezelő portál létrehozása
 

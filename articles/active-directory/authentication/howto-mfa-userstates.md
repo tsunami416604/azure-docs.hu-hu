@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5411770e6f9d660557ab9360f026efe4c28a9256
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314382"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371747"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
 
@@ -66,10 +66,10 @@ A következő lépéseket követve az oldalt, ahol megtekintheti és kezelheti a
 
 1. A fenti lépések segítségével az Azure multi-factor Authentication beszerzése **felhasználók** lapot.
 2. Keresse meg a felhasználót, az Azure MFA számára engedélyezni kívánja. Előfordulhat, hogy módosítani szeretné a nézet tetején.
-   ![Keresse meg a felhasználó – képernyőkép](./media/howto-mfa-userstates/enable1.png)
+   ![Válassza ki a felhasználót a felhasználók lapról állapotának módosítása](./media/howto-mfa-userstates/enable1.png)
 3. Ellenőrizze a név melletti mezőbe.
 4. A jobb oldali alatt **Gyorsműveletek**, válassza a **engedélyezése** vagy **letiltása**.
-   ![Engedélyezi a kiválasztott felhasználó – képernyőkép](./media/howto-mfa-userstates/user1.png)
+   ![A gyors lépésben menü engedélyezése kattintva kijelölt felhasználó engedélyezése](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Engedélyezett* felhasználók automatikusan át *kényszerített* amikor regisztrálja az Azure MFA-hoz. A felhasználói állapot módosítása nem manuálisan tegye *kényszerített*.
@@ -90,45 +90,52 @@ Ne helyezze át máshová felhasználók közvetlenül a *kényszerített* álla
 
 A modul telepítéséhez először használatával:
 
-       Install-Module MSOnline
-       
+   ```PowerShell
+   Install-Module MSOnline
+   ```
+
 > [!TIP]
 > Ne felejtse el először létesítsen **Connect-MsolService**
 
+Ebben a példában PowerShell-parancsfájl lehetővé teszi, hogy az MFA az egyes felhasználók számára:
 
- Ebben a példában PowerShell-parancsfájl lehetővé teszi, hogy az MFA az egyes felhasználók számára:
-
-        Import-Module MSOnline
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```PowerShell
+   Import-Module MSOnline
+   $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+   $st.RelyingParty = "*"
+   $st.State = "Enabled"
+   $sta = @($st)
+   Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```
 
 PowerShell használata a jó választás, ha tömeges feloldása szükséges engedélyezése a felhasználók. Tegyük fel a következő parancsfájl végighalad a felhasználók listáját, és lehetővé teszi, hogy a többtényezős hitelesítés a fiókjuk:
 
-    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
-    foreach ($user in $users)
-    {
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
-    }
-    
+   ```PowerShell
+   $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
+   foreach ($user in $users)
+   {
+       $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+       $st.RelyingParty = "*"
+       $st.State = "Enabled"
+       $sta = @($st)
+       Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
+   }
+   ```
+
 Többtényezős hitelesítés letiltása, használja ezt a parancsfájlt:
 
-    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
-    
+   ```PowerShell
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   ```
+
 amely is is csonkolva:
 
-    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```PowerShell
+   Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```
 
 ## <a name="next-steps"></a>További lépések
 
-Miért lett egy felhasználó kéri vagy a rendszer nem kéri hajthatok végre MFA? Című témakör [az Azure AD bejelentkezési jelentések a jelentések az Azure multi-factor Authentication dokumentum](howto-mfa-reporting.md#azure-ad-sign-ins-report).
-
-További beállítások, például a megbízható IP-címek, egyedi Hangüzenetek és visszaélési riasztás küldésének, lásd: a cikk [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md)
-
-Felhasználói beállítások kezelése az Azure multi-factor Authentication a cikkben található információ [az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése](howto-mfa-userdevicesettings.md)
+* Miért lett egy felhasználó kéri vagy a rendszer nem kéri hajthatok végre MFA? Című témakör [az Azure AD bejelentkezési jelentések a jelentések az Azure multi-factor Authentication dokumentum](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* További beállítások, például a megbízható IP-címek, egyedi Hangüzenetek és visszaélési riasztás küldésének, lásd: a cikk [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md)
+* Felhasználói beállítások kezelése az Azure multi-factor Authentication a cikkben található információ [az Azure multi-factor Authentication a felhőben a felhasználói beállítások kezelése](howto-mfa-userdevicesettings.md)

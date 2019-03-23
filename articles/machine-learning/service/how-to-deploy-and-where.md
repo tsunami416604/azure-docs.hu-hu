@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f2d2ded849af5054935b6bec8f74e021078b7641
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b9dbd644aff3a41bcf38b982ebd46396ad30edca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860422"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361965"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -27,7 +27,7 @@ A következő számítási célnak modellek helyezhető üzembe:
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
 | [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
-| [Az Azure ML Compute](#azuremlcompute) | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
+| [Az Azure Machine Learning Compute (amlcompute)](#azuremlcompute) | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Jó fejlesztési vagy tesztelési célokra. **Nem megfelelő az éles számítási feladatokhoz.** |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | (Előzetes verzió) Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
@@ -50,13 +50,13 @@ Az üzembe helyezést megvalósító munkafolyamat a fogalmakat további inform�
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [Azure Machine Learning a rövid útmutató – első lépések](quickstart-get-started.md).
+- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
 
 - Betanított modell. Ha nem rendelkezik a betanított modell, kövesse a [modelleket taníthat be a](tutorial-train-models-with-aml.md) oktatóanyag betanítására és regisztrálhat egy, az Azure Machine Learning szolgáltatással.
 
     > [!NOTE]
     > Bár az Azure Machine Learning szolgáltatás bármely általános modellt, amely tölthetők be a Python 3 dolgozhat, az ebben a dokumentumban szereplő példák bemutatják, Python pickle formátumban tárolja a modell használatával.
-    > 
+    >
     > ONNX-modellekkel használatával kapcsolatos további információkért lásd: a [ONNX és az Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentumot.
 
 ## <a id="registermodel"></a> Regisztrálja a betanított modell
@@ -83,7 +83,7 @@ További információkért lásd: a dokumentáció a a [Model class](https://doc
 
 Üzembe helyezett modellnél képként vannak csomagolva. A rendszerkép tartalmazza a minta futtatásához szükséges függőségeket.
 
-A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet. 
+A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet.
 
 A következő kód bemutatja, hogyan hozhat létre egy új rendszerkép-konfiguráció:
 
@@ -126,14 +126,13 @@ A szkript két függvényt, amely betölteni, és futtassa a modell tartalmazza:
 Az alábbi példa parancsfájl fogad el, és JSON-adatokat adja vissza. A `run` függvény olyan formátumra, hogy a modellt vár, és ezután alakítja át a JSON-válasz visszaküldés előtt alakítja át az adatok JSON-ból:
 
 ```python
-# import things required by this script
+%%writefile score.py
 import json
 import numpy as np
 import os
 import pickle
 from sklearn.externals import joblib
 from sklearn.linear_model import LogisticRegression
-
 from azureml.core.model import Model
 
 # load the model
@@ -185,7 +184,7 @@ def run(request):
 > [!IMPORTANT]
 > A `azureml.contrib` névtér gyakran változik, dolgozunk a szolgáltatás fejlesztéséhez. Ezért semmit a névtérben lévő kell előzetes minősül, és nincs teljes egészében a Microsoft támogatja.
 >
-> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevőket telepíthet a `contrib` névtér a következő paranccsal: 
+> Tesztelje a helyi fejlesztési környezetbe kell, ha az összetevőket telepíthet a `contrib` névtér a következő paranccsal:
 > ```shell
 > pip install azureml-contrib-services
 > ```
@@ -196,7 +195,7 @@ Miután létrehozta a rendszerkép-konfiguráció, a lemezkép regisztrálása h
 
 ```python
 # Register the image from the image configuration
-image = ContainerImage.create(name = "myimage", 
+image = ContainerImage.create(name = "myimage",
                               models = [model], #this is the model object
                               image_config = image_config,
                               workspace = ws
@@ -209,7 +208,7 @@ Képek egyben a rendszerverzióval ellátott ugyanazzal a névvel több lemezké
 
 További információkért lásd: a dokumentáció a [ContainerImage osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
-## <a id="deploy"></a> A rendszerkép üzembe helyezése
+## <a id="deploy"></a> Webszolgáltatásként üzembe helyezése
 
 Központi telepítés kap, a folyamat esetén úgy, hogy a számítási célnak függően némileg eltérnek. Az alábbi szakaszokban található információk segítségével megtudhatja, hogyan helyezhet üzembe:
 
@@ -251,7 +250,7 @@ További információkért lásd: a dokumentáció a a [AciWebservice](https://d
 
 Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
 
-AKS-fürt létrehozása az egy folyamatot, amikor a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. 
+AKS-fürt létrehozása az egy folyamatot, amikor a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez.
 
 > [!IMPORTANT]
 > Ha törli a fürtöt, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
@@ -270,7 +269,7 @@ Az Azure Kubernetes Service az alábbi képességeket biztosítja:
 Az automatikus skálázási beállítás vezérelhető `autoscale_target_utilization`, `autoscale_min_replicas`, és `autoscale_max_replicas` az AKS webszolgáltatás. A következő példa bemutatja, hogyan engedélyezheti az automatikus skálázást:
 
 ```python
-aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
                                                 autoscale_target_utilization=30,
                                                 autoscale_min_replicas=1,
                                                 autoscale_max_replicas=4)
@@ -315,10 +314,10 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # Use the default configuration (you can also provide parameters to customize this)
 prov_config = AksCompute.provisioning_configuration()
 
-aks_name = 'aml-aks-1' 
+aks_name = 'aml-aks-1'
 # Create the cluster
-aks_target = ComputeTarget.create(workspace = ws, 
-                                    name = aks_name, 
+aks_target = ComputeTarget.create(workspace = ws,
+                                    name = aks_name,
                                     provisioning_configuration = prov_config)
 
 # Wait for the create process to complete
@@ -366,7 +365,7 @@ from azureml.core.webservice import Webservice, AksWebservice
 aks_config = AksWebservice.deploy_configuration()
 aks_service_name ='aks-service-1'
 # Deploy from image
-service = Webservice.deploy_from_image(workspace = ws, 
+service = Webservice.deploy_from_image(workspace = ws,
                                             name = aks_service_name,
                                             image = image,
                                             deployment_config = aks_config,
@@ -393,87 +392,91 @@ Project Brainwave ultramagas közel valós idejű következtetési kérelmek el�
 
 A Project Brainwave használatával üzembe helyezéséhez, olvassa az [üzembe helyezés az egy FPGA](how-to-deploy-fpga-web-service.md) dokumentumot.
 
-### <a id="iotedge"></a> Az Azure IoT Edge üzembe helyezése
+## <a name="define-schema"></a>Séma megadása
 
-Az Azure IoT Edge-eszköz, Linux vagy Windows-alapú eszköz, amely az Azure IoT Edge-futtatókörnyezet. Az Azure IoT Hub használatával, telepíthet gépi tanulási modellek ezekre az eszközökre, IoT Edge-modulok. Az IoT Edge-eszköz üzembe helyezéséhez lehetővé teszi, hogy az eszköz a modell használatának közvetlenül, ahelyett, hogy adatokat küldeni a felhőbe feldolgozásra. Gyorsabb válaszidőt és alacsonyabb az adatforgalom kap.
+Egyéni decorator használható [OpenAPI](https://swagger.io/docs/specification/about/) specifikáció. generációs és a bemeneti írja be a fájlkezelési a webszolgáltatás üzembe helyezésekor. Az a `score.py` fájlt, a bemeneti és/vagy a konstruktorban kimeneti mintát biztosít egy meghatározott típusú objektum, és amelyet a típusa és a minta automatikus létrehozása a sémát. Jelenleg a következő típusok támogatottak:
 
-A tárolóregisztrációs adatbázisból az Azure IoT Edge-modulok az eszközre vannak telepítve. Kép a modellből származó létrehozásakor tárolódik a tároló-beállításjegyzékbe a munkaterület.
+* `pandas`
+* `numpy`
+* `pyspark`
+* standard Python
 
-> [!IMPORTANT]
-> Ebben a szakaszban található információk azt feltételezi, hogy már ismeri az Azure IoT Hub és az Azure IoT Edge-modulok. Bár ebben a szakaszban az adatok egy részét az Azure Machine Learning szolgáltatásra, a legtöbb, a folyamat az edge-eszköz üzembe helyezése az Azure IoT service történik.
->
-> Ha ismeri az Azure IoT-vel, tekintse meg [Azure IoT – alapok](https://docs.microsoft.com/azure/iot-fundamentals/) és [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) alapvető tudnivalókat. Ezután ebben a szakaszban az egyéb hivatkozások segítségével további tudnivalók a meghatározott műveleteket.
+Először ellenőrizze a szükséges függőségek, a `inference-schema` csomag szerepelnek a `env.yml` conda-környezet fájlt. Ez a példa a `numpy` paraméter írja be a séma, így a felesleges pip `[numpy-support]` is telepítve van.
 
-#### <a name="set-up-your-environment"></a>A környezet kialakítása
+```python
+%%writefile myenv.yml
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - pip:
+    - azureml-defaults
+    - scikit-learn
+    - inference-schema[numpy-support]
+```
 
-* A fejlesztési környezet. További információkért lásd: a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
+Ezután módosítsa a `score.py` importálandó fájl a `inference-schema` csomagokat. A bemeneti és kimeneti formátumok minta meghatároznia a `input_sample` és `output_sample` változókat, amelyek tartalmazzák a webszolgáltatás a kérések és válaszok formátumok. Ezeket a mintákat használják a bemeneti és kimeneti függvény decorator a `run()` függvény.
 
-* Egy [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében. 
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+from sklearn.externals import joblib
+from sklearn.linear_model import LogisticRegression
+from azureml.core.model import Model
 
-* Betanított modell. Találhat egy példát a modell betanítására, a [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentumot. Előre betanított modell érhető el a [AI-eszközkészlet az Azure IoT Edge GitHub-adattárat](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
-#### <a id="getcontainer"></a> A container registry hitelesítő adatainak lekérése
 
-Az eszköz IoT Edge-modul telepítéséhez az Azure IoT a hitelesítő adatokat a tároló-beállításjegyzékbe, amely az Azure Machine Learning szolgáltatás tárolja, a docker-rendszerképek van szüksége.
+def init():
+    global model
+    model_path = Model.get_model_path('sklearn_mnist')
+    model = joblib.load(model_path)
 
-A hitelesítő adatokat kétféleképpen kaphat:
 
-+ **Az Azure Portalon**:
+input_sample = np.array([[1.8]])
+output_sample = np.array([43638.88])
 
-  1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index).
+@input_schema('data', NumpyParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    y_hat = model.predict(data)
+    return json.dumps(y_hat.tolist())
+```
 
-  1. Nyissa meg az Azure Machine Learning szolgáltatás munkaterületet, és válassza ki __áttekintése__. Nyissa meg a tároló beállításjegyzék-beállításokat, jelölje be a __beállításjegyzék__ hivatkozásra.
+A normál regisztrációs és a webes szolgáltatás üzembe helyezési folyamat és a frissített lépéseinek `score.py` fájlt, a Swagger uri beolvasása a szolgáltatástól. Ez az uri kérő adja vissza a `swagger.json` fájlt.
 
-     ![A tároló beállításjegyzék-bejegyzés képe](./media/how-to-deploy-and-where/findregisteredcontainer.png)
+```python
+service.wait_for_deployment(show_output=True)
+print(service.swagger_uri)
+```
 
-  1. Egyszer a container registry esetében válassza **Tárelérési kulcsok** , majd engedélyezze a rendszergazdai felhasználót.
- 
-     ![A hozzáférési kulcsok képernyő képe](./media/how-to-deploy-and-where/findaccesskey.png)
 
-  1. Mentse az értékeket a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**. 
 
-+ **Egy Python-szkriptet a**:
+Amikor létrehoz egy új rendszerképet, manuálisan frissítenie kell minden egyes szolgáltatás, amelyet szeretne az új rendszerképet használja. A web service frissítéséhez használja a `update` metódust. A következő kód bemutatja, hogyan frissíthető egy új rendszerkép használata a web service:
 
-  1. Használja a következő Python-szkriptet a fenti tároló létrehozásához futtatott kód után:
+```python
+from azureml.core.webservice import Webservice
+from azureml.core.image import Image
 
-     ```python
-     # Getting your container details
-     container_reg = ws.get_details()["containerRegistry"]
-     reg_name=container_reg.split("/")[-1]
-     container_url = "\"" + image.image_location + "\","
-     subscription_id = ws.subscription_id
-     from azure.mgmt.containerregistry import ContainerRegistryManagementClient
-     from azure.mgmt import containerregistry
-     client = ContainerRegistryManagementClient(ws._auth,subscription_id)
-     result= client.registries.list_credentials(resource_group_name, reg_name, custom_headers=None, raw=False)
-     username = result.username
-     password = result.passwords[0].value
-     print('ContainerURL{}'.format(image.image_location))
-     print('Servername: {}'.format(reg_name))
-     print('Username: {}'.format(username))
-     print('Password: {}'.format(password))
-     ```
-  1. Mentse az értékeket a ContainerURL, servername, felhasználónév és jelszó. 
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
 
-     Adja meg az IoT Edge-ben a privát tárolójegyzékben található rendszerképek elérése ezen hitelesítő adatok szükségesek.
+# point to a different image
+new_image = Image(workspace = ws, id="myimage2:1")
 
-#### <a name="prepare-the-iot-device"></a>Az IoT-eszköz előkészítése
+# Update the image used by the service
+service.update(image = new_image)
+print(service.state)
+```
 
-Az eszköz regisztrálása az Azure IoT Hub szolgáltatással, és telepítse az IoT Edge-futtatókörnyezet az eszközön. Ha nem ismeri ezt a folyamatot, tekintse meg a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md).
+További információkért lásd: a dokumentáció a a [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály.
 
-Vannak más módszerek az eszköz regisztrálása:
-
-* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
-* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
-* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
-
-#### <a name="deploy-the-model-to-the-device"></a>Az eszközön a modell üzembe helyezése
-
-A modell üzembe helyezése az eszközhöz, használja a beállításjegyzék-információk gyűjtött a [container registry hitelesítő adatainak lekérése](#getcontainer) az üzembe helyezett házirendmodul szakaszban ismertetett lépéseket, az IoT Edge-modulok. Például, hogy amikor [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](../../iot-edge/how-to-deploy-modules-portal.md), konfigurálnia kell a __beállításjegyzék-beállítások__ az eszközhöz. Használja a __bejelentkezési kiszolgáló__, __felhasználónév__, és __jelszó__ a munkaterület tároló-beállításjegyzékhez.
-
-Ezenkívül telepítheti használatával [Azure CLI-vel](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) és [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
-
-## <a name="testing-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
+## <a name="test-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
 
 A webszolgáltatás üzembe teszteléséhez használhatja a `run` webszolgáltatás metódusa. A következő példában egy JSON-dokumentumok értéke egy webszolgáltatás, és az eredmény jelenik meg. Az elküldött adatok egyeznie kell a modellt vár. Ebben a példában az adatok formátuma megfelel-e a bemeneti a küzdő modell által várt.
 
@@ -481,7 +484,7 @@ A webszolgáltatás üzembe teszteléséhez használhatja a `run` webszolgáltat
 import json
 
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
+    [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]
 ]})
 test_sample = bytes(test_sample,encoding = 'utf8')
@@ -514,6 +517,86 @@ print(service.state)
 
 További információkért lásd: a dokumentáció a a [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) osztály.
 
+## <a id="iotedge"></a> Az Azure IoT Edge üzembe helyezése
+
+Az Azure IoT Edge-eszköz, Linux vagy Windows-alapú eszköz, amely az Azure IoT Edge-futtatókörnyezet. Az Azure IoT Hub használatával, telepíthet gépi tanulási modellek ezekre az eszközökre, IoT Edge-modulok. Az IoT Edge-eszköz üzembe helyezéséhez lehetővé teszi, hogy az eszköz a modell használatának közvetlenül, ahelyett, hogy adatokat küldeni a felhőbe feldolgozásra. Gyorsabb válaszidőt és alacsonyabb az adatforgalom kap.
+
+A tárolóregisztrációs adatbázisból az Azure IoT Edge-modulok az eszközre vannak telepítve. Kép a modellből származó létrehozásakor tárolódik a tároló-beállításjegyzékbe a munkaterület.
+
+> [!IMPORTANT]
+> Ebben a szakaszban található információk azt feltételezi, hogy már ismeri az Azure IoT Hub és az Azure IoT Edge-modulok. Bár ebben a szakaszban az adatok egy részét az Azure Machine Learning szolgáltatásra, a legtöbb, a folyamat az edge-eszköz üzembe helyezése az Azure IoT service történik.
+>
+> Ha ismeri az Azure IoT-vel, tekintse meg [Azure IoT – alapok](https://docs.microsoft.com/azure/iot-fundamentals/) és [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) alapvető tudnivalókat. Ezután ebben a szakaszban az egyéb hivatkozások segítségével további tudnivalók a meghatározott műveleteket.
+
+### <a name="set-up-your-environment"></a>A környezet kialakítása
+
+* A fejlesztési környezet. További információkért lásd: a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
+
+* Egy [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében.
+
+* Betanított modell. Találhat egy példát a modell betanítására, a [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentumot. Előre betanított modell érhető el a [AI-eszközkészlet az Azure IoT Edge GitHub-adattárat](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
+
+### <a id="getcontainer"></a> A container registry hitelesítő adatainak lekérése
+
+Az eszköz IoT Edge-modul telepítéséhez az Azure IoT a hitelesítő adatokat a tároló-beállításjegyzékbe, amely az Azure Machine Learning szolgáltatás tárolja, a docker-rendszerképek van szüksége.
+
+A hitelesítő adatokat kétféleképpen kaphat:
+
++ **Az Azure Portalon**:
+
+  1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index).
+
+  1. Nyissa meg az Azure Machine Learning szolgáltatás munkaterületet, és válassza ki __áttekintése__. Nyissa meg a tároló beállításjegyzék-beállításokat, jelölje be a __beállításjegyzék__ hivatkozásra.
+
+     ![A tároló beállításjegyzék-bejegyzés képe](./media/how-to-deploy-and-where/findregisteredcontainer.png)
+
+  1. Egyszer a container registry esetében válassza **Tárelérési kulcsok** , majd engedélyezze a rendszergazdai felhasználót.
+
+     ![A hozzáférési kulcsok képernyő képe](./media/how-to-deploy-and-where/findaccesskey.png)
+
+  1. Mentse az értékeket a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**.
+
++ **Egy Python-szkriptet a**:
+
+  1. Használja a következő Python-szkriptet a fenti tároló létrehozásához futtatott kód után:
+
+     ```python
+     # Getting your container details
+     container_reg = ws.get_details()["containerRegistry"]
+     reg_name=container_reg.split("/")[-1]
+     container_url = "\"" + image.image_location + "\","
+     subscription_id = ws.subscription_id
+     from azure.mgmt.containerregistry import ContainerRegistryManagementClient
+     from azure.mgmt import containerregistry
+     client = ContainerRegistryManagementClient(ws._auth,subscription_id)
+     result= client.registries.list_credentials(resource_group_name, reg_name, custom_headers=None, raw=False)
+     username = result.username
+     password = result.passwords[0].value
+     print('ContainerURL{}'.format(image.image_location))
+     print('Servername: {}'.format(reg_name))
+     print('Username: {}'.format(username))
+     print('Password: {}'.format(password))
+     ```
+  1. Mentse az értékeket a ContainerURL, servername, felhasználónév és jelszó.
+
+     Adja meg az IoT Edge-ben a privát tárolójegyzékben található rendszerképek elérése ezen hitelesítő adatok szükségesek.
+
+### <a name="prepare-the-iot-device"></a>Az IoT-eszköz előkészítése
+
+Az eszköz regisztrálása az Azure IoT Hub szolgáltatással, és telepítse az IoT Edge-futtatókörnyezet az eszközön. Ha nem ismeri ezt a folyamatot, tekintse meg a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md).
+
+Vannak más módszerek az eszköz regisztrálása:
+
+* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
+* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
+
+### <a name="deploy-the-model-to-the-device"></a>Az eszközön a modell üzembe helyezése
+
+A modell üzembe helyezése az eszközhöz, használja a beállításjegyzék-információk gyűjtött a [container registry hitelesítő adatainak lekérése](#getcontainer) az üzembe helyezett házirendmodul szakaszban ismertetett lépéseket, az IoT Edge-modulok. Például, hogy amikor [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](../../iot-edge/how-to-deploy-modules-portal.md), konfigurálnia kell a __beállításjegyzék-beállítások__ az eszközhöz. Használja a __bejelentkezési kiszolgáló__, __felhasználónév__, és __jelszó__ a munkaterület tároló-beállításjegyzékhez.
+
+Ezenkívül telepítheti használatával [Azure CLI-vel](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) és [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
+
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Az üzembe helyezett webszolgáltatáshoz törölheti `service.delete()`.
@@ -524,21 +607,9 @@ A regisztrált modell törléséhez használja `model.delete()`.
 
 További információkért lásd: a dokumentáció a [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), és [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-* __Ha üzembe helyezés során hibák__, használjon `service.get_logs()` a szolgáltatás a naplók megtekintéséhez. A naplózott információk jelezheti, hogy a hiba okát.
-
-* A naplók is tartalmazhat, amely arra utasítja, hogy hiba __naplózási szint megadásához hibakeresési__. A naplózási szint megadásához adja hozzá a pontozó szkript a következő sorokat a lemezkép létrehozásának és a lemezkép használatával hozza létre:
-
-    ```python
-    import logging
-    logging.basicConfig(level=logging.DEBUG)
-    ```
-
-    Ez a változás lehetővé teszi, hogy további naplózást, és előfordulhat, hogy miért jelentkezik a hiba további információt ad vissza.
-
 ## <a name="next-steps"></a>További lépések
 
+* [Üzembe helyezés hibáinak elhárítása](how-to-troubleshoot-deployment.md)
 * [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett gépi Tanulási modell felhasználása](how-to-consume-web-service.md)
 * [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)

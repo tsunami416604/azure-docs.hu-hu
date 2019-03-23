@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8289f358bbfc2fe6229abf4eefc7bc8e57f05d73
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ba4d83d620a597c9a59f1a3c7f2f9d6722ba42d8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464313"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368364"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Az Azure Storage-hozzáférés engedélyezése
 
 Minden alkalommal, amikor a tárfiókban lévő adatelérés az ügyfél kérést küld a HTTP/HTTPS-kapcsolaton keresztül az Azure Storage. Minden kérés biztonságos erőforrás kell engedélyezni, úgy, hogy a szolgáltatás biztosítja, hogy az ügyfél az adatok eléréséhez szükséges engedélyekkel. Az Azure Storage kínál, ezek a beállítások, amelyek engedélyezik a hozzáférést az erőforrások védelme:
 
-- **Az Azure Active Directory (Azure AD) integrálása (előzetes verzió)** a blobok és üzenetsorok. Az Azure AD kínál részletesen szabályozhatja az ügyfél hozzáférés a tárfiókban lévő erőforrásokhoz való szerepköralapú hozzáférés-vezérlés (RBAC). További információkért lásd: [hitelesítése az Azure Active Directory (előzetes verzió) használatával az Azure Storage felé](storage-auth-aad.md).
+- **Az Azure Active Directory (Azure AD) integrálása** a blobok és üzenetsorok. Az Azure AD kínál részletesen szabályozhatja az ügyfél hozzáférés a tárfiókban lévő erőforrásokhoz való szerepköralapú hozzáférés-vezérlés (RBAC). További információkért lásd: [Azure Storage, Azure Active Directory használatával irányuló kérelmek hitelesítéséhez](storage-auth-aad.md).
 - **Megosztott kulcs engedélyezési** blobok, fájlok, üzenetsorok és táblák esetében. Egy megosztott kulcsot használó ügyfél átadja egy fejlécet minden kéréssel, amely a tárfiók hozzáférési kulcsát használatával van aláírva. További információkért lásd: [a megosztott kulcsos hitelesítés](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/).
 - **A közös hozzáférésű jogosultságkódot** blobok, fájlok, üzenetsorok és táblák esetében. Közös hozzáférésű jogosultságkódok (SAS) csak korlátozott delegált erőforráshoz nyújtanak hozzáférést a storage-fiókban. Megjelenik a megkötések az időintervallum esetében, amely az aláírás érvényes, illetve engedélyeket ad a hozzáférés-kezelés rugalmasságot biztosít. További információkért lásd: [a közös hozzáférésű jogosultságkód (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 - **Névtelen nyilvános olvasási hozzáférés** tárolók és blobok. Engedélyezési, nem szükséges. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.  

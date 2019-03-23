@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b433d8556377206ea53ece2764e251dcb266eb95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192353"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369139"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>A munkahelyi eszköz csatlakoztatása a vállalati hálózaton
 A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállalati hálózaton potenciálisan korlátozott erőforrások eléréséhez.
@@ -26,7 +26,7 @@ A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállal
 ## <a name="what-happens-when-you-join-your-device"></a>Mi történik, ha az eszköz csatlakozik
 Windows 10 rendszerű eszközét a vállalati hálózathoz csatlakozik, miközben történik, a következő műveleteket:
 
-- Az eszköz a vállalati hálózaton, ami lehetővé teszi az erőforrások a személyes fiókjával hozzáférni Windows regisztrál. Az eszköz regisztrálása után Windows majd csatlakoztatja az eszközt a hálózathoz, így jelentkezik be, és a korlátozott erőforrások eléréséhez használhatja a szervezet felhasználónevet és jelszót.
+- Windows regisztrálja az eszközt a vállalati hálózathoz, a személyes fiókjával erőforrások eléréséhez, ami lehetővé teszi. Az eszköz regisztrálása után Windows majd csatlakoztatja az eszközt a hálózathoz, így jelentkezik be, és a korlátozott erőforrások eléréséhez használhatja a szervezet felhasználónevet és jelszót.
 
 - Igény szerint a szervezet lehetőségek alapján, akkor a rendszer keresztül vagy a kétlépéses ellenőrzés beállítása [multi-factor Authentication](multi-factor-authentication-end-user-first-time.md) vagy [biztonsági adatok](user-help-security-info-overview.md).
 

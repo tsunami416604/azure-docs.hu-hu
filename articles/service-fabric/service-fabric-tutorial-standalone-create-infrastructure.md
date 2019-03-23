@@ -3,7 +3,7 @@ title: 'Oktatóanyag: Service Fabric-fürt infrastruktúrájának létrehozása 
 description: Ez az oktatóanyag ismerteti, hogyan állíthatja be az AWS-infrastruktúrát Service Fabric-fürt futtatásához.
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6b7d2223d33abb429ab5f59b14c80d43c70598dc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209650"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369112"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: AWS-infrastruktúra létrehozása Service Fabric-fürt futtatásához
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt üzemeltetéséhez az AWS-infrastruktúra létrehozása
 
 Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban egy, az AWS-en futtatott önálló fürtöt hoz létre, majd telepít rá egy alkalmazást.
 
@@ -50,7 +50,7 @@ Válassza a **Launch Instance** (Példány indítása) lehetőséget, és a köv
 
 ![EC2-példány kiválasztása][aws-ec2instance]
 
-Válassza a **t2.medium** lehetőséget, majd válassza a **Next: Configure Instance Details** (Tovább: Példány részleteinek konfigurálása) elemet, és a következő képernyőn módosítsa a példányok számát `3` értékre, majd válassza az **Advanced Details** (Speciális részletek) lehetőséget a szakasz kibontásához.
+Válassza ki **t2.medium**, majd **tovább: Példány adatai konfigurálása**, a példányok számának módosítása a következő képernyőn `3`, majd válassza **speciális részletei** kibontja a szakaszt.
 
 A Service Fabricben a virtuális gépek összekapcsolásához az infrastruktúrát futtató virtuális gépeknek ugyanazokkal a hitelesítő adatokkal kell rendelkezniük.  Két gyakori módja van a konzisztens hitelesítő adatok elérésének: csatlakoztassa mindet ugyanahhoz a tartományhoz, vagy állítsa be ugyanazt a rendszergazdai jelszót az összes virtuális gépen.  Ebben az oktatóanyagban egy felhasználói adatok szkripttel állítja be, hogy az összes EC2-példány ugyanazt a jelszót használja.  Éles környezetben a gazdagépek Windows-tartományhoz való csatlakozása biztonságosabb.
 
@@ -110,7 +110,7 @@ Miután megvan az összes IP-cím, válassza ki az egyik példányt, amelyikhez 
 
 Miután sikeresen csatlakozott a példányhoz, ellenőrizze, hogy van-e közöttük kapcsolat, és megoszthat-e fájlokat.  Miután begyűjtötte az összes példány IP-címét, válasszon ki egyet, amelyhez jelenleg nem csatlakozik. Lépjen a **Start** menüre, írja be a `cmd` sztringet, és válassza a **Parancssor** lehetőséget.
 
-Ezekben a példákban az RDP-kapcsolat a következő IP-címhez jött létre: 172.31.21.141. Ekkor minden csatlakozási teszt a másik IP-címmel történik: 172.31.20.163.
+Ezekben a példákban az RDP-kapcsolat létrejött, a következő IP-címre: 172.31.21.141. Az összes kapcsolat tesztelése, majd más IP-címre történik: 172.31.20.163.
 
 A kapcsolat alapvető működésének teszteléséhez használja a ping parancsot.
 

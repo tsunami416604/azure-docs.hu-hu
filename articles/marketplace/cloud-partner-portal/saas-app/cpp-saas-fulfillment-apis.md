@@ -14,19 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9c3fbe7cd7ebd41f59be360f40d66b8d38dbce5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318935"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58349518"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS-teljesítési API-k
 
 Az SaaS teljesítése API lehetővé teszi a független szoftvergyártók (ISV), a SaaS-alkalmazások integrálása az Azure piactéren. Ez az API lehetővé teszi, hogy minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Az API-t annak listaelem transactable SaaS kínál az Azure Marketplace-en.
-
-Ez az API jelenlegi verziója a 2-es verzió, amely kell használni minden új SaaS kínál.  1. verzióját az API elavult, és támogatja a meglévő ajánlatok fenntartani.
-
 
 ## <a name="business-model-support"></a>Üzleti modell támogatása
 
@@ -40,4 +37,4 @@ Ez az API támogatja a következő üzleti modell képességeket; képes vagy:
 
 ## <a name="next-steps"></a>További lépések
 
-A legújabb verzióját használja, ez az interfész fejlesztéshez: [SaaS teljesítése API-Version 2](./cpp-saas-fulfillment-api-v2.md).
+Ezen a felületen fejlesztéshez: [SaaS teljesítése API-Version 2](./cpp-saas-fulfillment-api-v2.md).

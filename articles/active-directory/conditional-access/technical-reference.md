@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/12/2019
+ms.date: 03/22/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b475eae337b7e6a7e26b3e5a7518be0e461c9fa4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6a303319a3f87f684b72bcddd8d30cd4a2c60642
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170615"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351524"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -144,20 +144,25 @@ A feltételes hozzáférési szabályzat kiválaszthatja **böngészők** ügyf�
 Ez a beállítás minden böngésző együttműködik. Azonban teljesítéséhez egy szabályzatot, például a szabályzatnak megfelelő eszköz követelmény, a következő operációs rendszerek és böngészők támogatottak:
 
 
-| Operációs rendszer                     | Böngészők                            | Támogatás     |
-| :--                    | :--                                 | :-:         |
-| Windows 10             | Az Internet Explorer, a Microsoft Edge, Chrome-ban     | ![Jelölőnégyzet][1] |
-| Windows 8 / 8.1        | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| Windows 7              | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| iOS                    | A Safari, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
-| Android                | Chrome-ban, az Intune Managed Browser      | ![Jelölőnégyzet][1] |
-| Windows Phone          | Internet Explorer, Microsoft Edge             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Jelölőnégyzet][1] |
-| Windows Server 2016    | Chrome                              | Hamarosan elérhető |
-| Windows Server 2012 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| Windows Server 2008 R2 | Internet Explorer, Chrome           | ![Jelölőnégyzet][1] |
-| macOS                  | Chrome, a Safari                      | ![Jelölőnégyzet][1] |
+| Operációs rendszer                     | Böngészők                                      |
+| :--                    | :--                                           |
+| Windows 10             | Az Internet Explorer, a Microsoft Edge, Chrome-ban     |
+| Windows 8 / 8.1        | Internet Explorer, Chrome                     |
+| Windows 7              | Internet Explorer, Chrome                     |
+| iOS                    | A Safari, az Intune Managed Browser                |
+| Android                | Chrome-ban, az Intune Managed Browser                |
+| Windows Phone          | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
+| Windows Server 2016    | Chrome                                        |
+| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
+| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
+| macOS                  | Chrome, a Safari                                |
+ 
 
+
+#### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Miért látok egy tanúsítvány kérése a böngészőben
+
+A Windows 7, iOS, Android és macOS Azure ad-ben azonosítja az eszközt, amikor az eszköz regisztrálva van az Azure ad-vel kiosztott ügyféltanúsítvány használatával.  Egy felhasználó először jelentkezik be a böngészőből a felhasználót a rendszer kér, válassza ki a tanúsítványt. A felhasználónak ki kell választania ezt a tanúsítványt a böngésző használata előtt.
 
 
 #### <a name="chrome-support"></a>Chrome-támogatás

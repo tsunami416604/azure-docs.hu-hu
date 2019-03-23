@@ -1,7 +1,7 @@
 ---
-title: Felhasználói céljaira
+title: Leképezések
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Megjelölésű jelöli egy feladatot vagy műveletet a felhasználó szeretné végrehajtani. Egy célra vagy a cél-ben a felhasználó utterance (kifejezés) fejezzük ki.
+description: Egyetlen megjelölésű jelöli egy feladatot vagy műveletet a felhasználó szeretné végrehajtani. Egy célra vagy a cél-ben a felhasználó utterance (kifejezés) fejezzük ki. Meghatározhatja egy adott szándékot megfelelő műveleteket hajthat végre felhasználókat szeretné állítani az alkalmazásban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae1dd16e3296c11d6bce6ea623f590deaee8f65d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871353"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371111"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>A LUIS-alkalmazás a leképezések kapcsolatos fogalmak
 
@@ -31,7 +31,7 @@ Utazás alkalmazásszándékkal   |   Példák kimondott szövegekre   |
  CheckWeather | "Mi az az időjárás, például Bostonban?" <br/> "Show me a hétvégi vonatkozó előrejelzést" |
  None         | "Get me egy cookie-k recept"<br>"Volt a Lakers win?" |
 
-Az előre meghatározott leképezés kapható összes alkalmazás "[None](#none-intent-is-fallback-for-app)" Ez a tartalék célt. 
+Minden alkalmazást az előre meghatározott leképezés kapható "[nincs](#none-intent-is-fallback-for-app)", azaz a tartalék célt. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Előre összeállított tartományok leképezések használata
 Mellett szándék fog vonatkozni, Ön által meghatározott előre összeállított leképezések is használhatja az előre összeállított tartományok egyikéből. További információkért lásd: [a LUIS-alkalmazások előre összeállított tartományok használata](luis-how-to-use-prebuilt-domains.md) további információt az alkalmazásban az előre összeállított tartományok leképezések testreszabása.
@@ -57,7 +57,11 @@ Hasonlóképpen intentioned [beszédmódok](luis-concept-utterance.md) felel meg
 
 [Előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md) rendelkezik leképezések a kimondott szöveg.  
 
-## <a name="none-intent-is-fallback-for-app"></a>Nincs leképezés nem tartalék alkalmazás
+## <a name="none-intent"></a>A None szándék
+
+A **nincs** szándékot fontos, hogy minden alkalmazás, és nem tartalmazhat nulla kimondott szöveg.
+
+### <a name="none-intent-is-fallback-for-app"></a>Nincs leképezés nem tartalék alkalmazás
 A **nincs** célja egy kevésbé vagy tartalék szándékot. A LUIS utterances, amelyek nem fontos alkalmazástartomány (tárgy területen), akik szolgál. A **nincs** szándékot 10 és 20 százalékát, az alkalmazás teljes megcímkézzen között kell rendelkeznie. Ne hagyja a nincs üres. 
 
 ### <a name="none-intent-helps-conversation-direction"></a>Nincs leképezés segít a beszélgetés iránya
@@ -76,6 +80,12 @@ A **nincs** célja a kötelező szándékot, és nem lehet törölték vagy átn
 
 ## <a name="negative-intentions"></a>Negatív céljaira 
 Negatív és pozitív céljaira, például a meghatározni kívánt "szeretnék **szeretné** egy autó" és "szeretnék **nem** szeretné egy autó", hozhat létre a két szándék (egy pozitív és a egy negatív) és a megfelelő beszédmódok hozzáadása minden egyes. Vagy hozzon létre egy egyetlen célja, és jelölje meg a két különböző pozitív és negatív kifejezés egy egységként.  
+
+## <a name="intents-and-patterns"></a>Leképezések és minták
+
+Ha például kimondott szöveg, amely részben vagy egészben reguláris kifejezésként definiálható, fontolja meg a [reguláris kifejezésnek entitás](luis-concept-entity-types.md#regular-expression-entity) társalkalmazás is egy [minta](luis-concept-patterns.md). 
+
+Egy reguláris kifejezés entitást használó garantálja az adatok kinyerése, így a minta egyezik. A minták egyeztetése garantálja, hogy pontos megjelölésű adja vissza. 
 
 ## <a name="intent-balance"></a>Leképezési terheléselosztása
 Az alkalmazás tartományban szándékok utterances egyensúly kell minden egyes szándékot között. Nem rendelkezik egy leképezést és 10 kimondott szöveg és a egy másik leképezést és 500 kimondott szöveg. Ez nem elosztott terhelésű. Ha ez a helyzet, tekintse át az 500 utterances célja, hogy tekintse meg, ha a leképezések számos is rendezhető újra be egy [minta](luis-concept-patterns.md). 
@@ -96,6 +106,8 @@ További tudnivalók a LUIS és a QnA maker alkalmazások kombinálásával a [d
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Leképezések jelentős számú használó alkalmazásokkal kapcsolatos segítség kérése
 Ha a leképezések számának csökkentése, vagy a leképezések osztani több alkalmazásokba, nem működik, forduljon az ügyfélszolgálathoz. Ha az Azure-előfizetés tartalmazza a támogatási szolgálathoz, lépjen kapcsolatba [technikai Azure-támogatás](https://azure.microsoft.com/support/options/). 
+
+
 
 ## <a name="next-steps"></a>További lépések
 

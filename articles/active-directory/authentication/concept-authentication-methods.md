@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6bd67e500756fe5a7ba5ee29db88b9aedb103e4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315980"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371859"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -155,13 +155,13 @@ Előfordulhat, hogy a felhasználók legfeljebb 5 hardver OATH-tokenek vagy auth
 
 A rendszer OATH nyílt szabvány, amely megadja, hogy egyszeri jelszavas (OTP) kódok jönnek létre. Azure ad-ben az OATH-TOTP SHA-1-tokenek a 30 másodperces vagy 60 másodperces fajta használatát támogatja. Ügyfelek is be kell szereznie ezek a jogkivonatok a szállítótól választott eszközükön. Vegye figyelembe, hogy a titkos kulcsok legfeljebb 128 karakter hosszúságú lehet, nem lesz kompatibilis az összes jogkivonat.
 
-![Az OATH-tokenek tölt fel az MFA-kiszolgáló OATH-tokenek panel az Azure Portalon](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Az OATH-tokenek tölt fel az MFA-kiszolgáló OATH-tokenek panel](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
 Az OATH-tokenek hardver részeként egy nyilvános előzetes verziója támogatott. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 Miután jogkivonatok beszerzett, fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumban, például az egyszerű felhasználónév, sorozatszám, titkos kulcs, időtartam alatt, gyártó és modell, az alábbi példában.
 
-```
+```csv
 upn,serial number,secret key,timeinterval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```

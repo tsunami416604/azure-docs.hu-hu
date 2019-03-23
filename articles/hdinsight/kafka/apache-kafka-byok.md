@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61a4be19000265910493963db9f29df143a7e21c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58173923"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360350"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>A saját kulcs használata: az Apache Kafka az Azure HDInsight (előzetes verzió)
 
@@ -26,6 +26,8 @@ A BYOK-titkosítás a további költségek nélkül a fürt létrehozásakor kez
 A Kafka-fürt (beleértve a Kafka által kezelt replikák) azokat az üzeneteket az egy szimmetrikus adatok titkosítási kulcsa (Adattitkosítási) vannak titkosítva. Az adattitkosítási kulcsot a kulcs titkosítása kulcscserekulcs (KEK) a key vaultból használatával védett. A titkosítási és visszafejtési folyamatok teljes egészében az Azure HDInsight a kezeli. 
 
 Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása a kulcsok a key vaultban. Kulcs forgatása, a HDInsight Kafka-fürt elindítja a percen belül az új kulccsal. Engedélyezze a "Nem kiürítése" és "A helyreállítható törlés" Kulcsvédelmi szolgáltatásokat zsarolóprogram-forgatókönyvek és véletlen törlés elleni védelem érdekében. Védelmi szolgáltatások nélkül kulcsok nem támogatottak.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>A BYOK használatának első lépései
 
@@ -99,7 +101,7 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 
 **Hogyan tudok helyreállítani a fürtöt, ha a kulcsokat a rendszer törli?**
 
-   Csak a "A helyreállítható törlés" engedélyezett kulcsok támogatottak, ha a kulcsok vissza vannak állítva, a key vaultban, mivel a fürt anyagaihoz kell a kulcsokat. Az Azure Key Vault-kulcs visszaállítása, lásd: [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey).
+   Csak a "A helyreállítható törlés" engedélyezett kulcsok támogatottak, ha a kulcsok vissza vannak állítva, a key vaultban, mivel a fürt anyagaihoz kell a kulcsokat. Az Azure Key Vault-kulcs visszaállítása, lásd: [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 **Lehetnek-e a BYOK és a nem a BYOK fürtön egyszerre használata előállítói/fogyasztói alkalmazások?**
 

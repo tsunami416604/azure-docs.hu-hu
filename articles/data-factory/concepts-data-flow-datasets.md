@@ -1,18 +1,18 @@
 ---
 title: Az Azure Data Factory-folyamat adatkészletek adatok leképezése
-description: Az Azure Data Factory leképezési adatfolyam sepecific adatkészlet kompatibilitási rendelkezik
+description: Az Azure Data Factory leképezési adatfolyam rendelkezik az adott adatkészlet kompatibilitási
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726923"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371315"
 ---
 # <a name="mapping-data-flow-datasets"></a>Data Flow adatkészletek leképezése
 
@@ -42,6 +42,12 @@ Amikor egy új adatkészletet hoz létre, van egy "Data Flow kompatibilis" jobb 
 ## <a name="import-schemas"></a>Sémák importálása
 
 A séma az adatfolyam adatkészletek importálásakor egy séma importálása gomb jelenik meg. A gombra kattintva megjelennek a két lehetőség közül választhat: A forrásból importálja, vagy importáljon egy helyi fájlból. A legtöbb esetben közvetlenül a forrásból fogja importálja a sémát. Azonban ha egy meglévő sémafájl (Parquet-fájlok vagy CSV-fejlécek), mutatva, hogy helyi fájlt és a Data Factory határozza meg a séma séma fájl alapján.
+
+## <a name="create-new-table"></a>Új tábla létrehozása
+
+Az adatfolyam hozhat létre egy új tábla definícióját a céladatbázis adatkészlet beállítása a fogadó átalakítást, amely rendelkezik egy új tábla nevét az ADF teheti fel. Az alábbi a táblázat neve a "Szerkesztés" gombra az SQL-adatkészletet, és adja meg egy új tábla nevét. Ezt követően a fogadó átalakításában kapcsolja be a "Séma eltéréseket engedélyezése". Seth None értékre a "Séma importálása" beállítást.
+
+![Átalakítás schéma zdroje](media/data-flow/dataset2.png "SQL-séma")
 
 ## <a name="delimited-text-dataset"></a>Karakterrel elválasztott szöveg adatkészlet
 

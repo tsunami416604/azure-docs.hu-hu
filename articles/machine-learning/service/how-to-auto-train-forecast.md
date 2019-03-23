@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226611"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360724"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
 
@@ -27,7 +27,7 @@ Ebből a cikkből elsajátíthatja egy idősorozat-előrejelzési regressziós m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
+* Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
 * Ez a cikk egy automatizált machine learning-kísérlet beállítása alapszintű ismeretét feltételezi. Kövesse a [oktatóanyag](tutorial-auto-train-models.md) vagy [útmutató](how-to-configure-auto-train.md) az alapvető automatikus machine learning-kísérlet tervezési minták megtekintéséhez.
 
 ## <a name="preparing-data"></a>Adatok előkészítése

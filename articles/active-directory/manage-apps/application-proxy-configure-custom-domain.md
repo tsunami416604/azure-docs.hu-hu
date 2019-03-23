@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106797"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359828"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
@@ -60,7 +60,8 @@ Ha készen áll három követelményekről, kövesse az alábbi lépéseket az e
 
 6. A PFX-tanúsítvány feltöltése, és adja meg a jelszót a tanúsítványhoz. 
 7. Válassza ki **mentése** a módosítások mentéséhez. 
-8. Adjon hozzá egy [DNS-rekord](../../dns/dns-operations-recordsets-portal.md) az új külső URL-címet, amely átirányítja a msappproxy.net tartományt. 
+8. Adjon hozzá egy [DNS-rekord](../../dns/dns-operations-recordsets-portal.md) az új külső URL-címet, amely átirányítja a msappproxy.net tartományt.
+9. Ellenőrizze, hogy a DNS-rekord helyesen van konfigurálva a [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) paranccsal érhető el a külső URL-CÍMÉT, és a egy alias a msapproxy.net tartomány megjelenik-e.
 
 >[!TIP] 
 >Csak egy egyéni tartományt egy tanúsítvány feltöltéséhez kell. Miután a tanúsítvány feltöltése, kiválaszthatja az egyéni tartomány, amikor közzétesz egy új alkalmazást, és nem kell tennie, hogy a DNS-rekord kivételével további konfigurációs. 

@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ce01301455c7abcd26006e622fcfbb8127e1c511
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008210"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372488"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Az Azure Data Lake Storage Gen2 biztonsági útmutató
 
@@ -134,7 +134,7 @@ Adatsík adatbiztonság hivatkozik az Azure Storage-ban tárolt objektumok véde
 Három lehetőség közül választhat, amelyek engedélyezik a hozzáférést az adatobjektumokhoz, az Azure Storage, többek között:
 
 - Az Azure AD-vel történő hitelesítéséhez fájlrendszereit és üzenetsorokhoz való hozzáférést. Az Azure AD engedélyezési, beleértve a kód a titkos kulcsok tárolására szükségtelenné más módjaival előnyöket biztosít. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md). 
-- A tárfiókkulcsok-vel történő elérését megosztott kulcsos hitelesítéséhez. A storage-fiók kulcsok tárolására az alkalmazás, a Microsoft azt javasolja, hogy inkább az Azure AD, ha lehetséges keresztül megosztott kulcsos engedélyezése szükséges. Az éles környezetben, vagy Azure-táblák és fájlok való hozzáférésre folytassa a megosztott kulcs használatával, amíg az Azure AD-integráció előzetes verzióként.
+- A tárfiókkulcsok-vel történő elérését megosztott kulcsos hitelesítéséhez. A storage-fiók kulcsok tárolására az alkalmazás, a Microsoft azt javasolja, hogy inkább az Azure AD, ha lehetséges keresztül megosztott kulcsos engedélyezése szükséges.
 - Közös hozzáférési aláírások használatával bizonyos objektumokhoz szabályzott engedélyekkel az egy adott időtartam megadását.
 
 Engedélyezési keresztüli hozzáférés korlátozása, mellett is használhatja [tűzfalak és virtuális hálózatok](storage-network-security.md) hálózati szabályok alapján a tárfiókhoz való hozzáférés korlátozásához.  Ez a megközelítés lehetővé teszi, hogy megtagadja a hozzáférést a nyilvános internetes forgalmat, és adja meg hozzáférési csak meghatározott Azure virtuális hálózatok vagy nyilvános IP-címtartományok.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 402a2d6afc7b58d4dfc1c9fa67e354b4d157bd4c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310234"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370190"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -40,8 +40,8 @@ Intelligens zárolás integrálható legyen az a hibrid telepítések esetén a 
 
 Használata esetén [átmenő hitelesítés](../hybrid/how-to-connect-pta.md), győződjön meg arról, hogy szüksége:
 
-   * Az Azure ad-ben fiókzárolás küszöbértéke **kevesebb** , mint az Active Directory számítógépfiókok zárolási küszöbértéke. Állítsa be az értékét, úgy, hogy az Active Directory számítógépfiókok zárolási küszöbértéke hosszabb, mint az Azure ad-ben Fiókzárolás küszöbe legalább két-három alkalommal. 
-   * Az Azure ad-ben a fiókzárolás időtartama **másodpercek alatt** van **hosszabb** , mint az Active Directory Fiókzárolás időtartama után **perc**.
+* Az Azure ad-ben fiókzárolás küszöbértéke **kevesebb** , mint az Active Directory számítógépfiókok zárolási küszöbértéke. Állítsa be az értékét, úgy, hogy az Active Directory számítógépfiókok zárolási küszöbértéke hosszabb, mint az Azure ad-ben Fiókzárolás küszöbe legalább két-három alkalommal. 
+* Az Azure ad-ben a fiókzárolás időtartama **másodpercek alatt** van **hosszabb** , mint az Active Directory Fiókzárolás időtartama után **perc**.
 
 > [!IMPORTANT]
 > Jelenleg a rendszergazda nem fiókok zárolásának feloldása a felhasználók felhőbeli ha azok zárolva van az intelligens zárolás funkció. A rendszergazdának meg kell várnia a fiókzárolás időtartama lejár.
@@ -55,7 +55,7 @@ A helyszíni Active Directory fiókzárolási házirend ellenőrzéséhez haszn�
 3. Keresse meg a **számítógép konfigurációja** > **házirendek** > **Windows beállítások** > **biztonsági beállítások**   >  **Fiókházirend** > **fiókzárolási házirend**.
 4. Ellenőrizze a **számítógépfiókok zárolási küszöbértéke** és **alaphelyzetbe állítása Fiókzárolási számláló nullázása** értékeket.
 
-![Módosítsa a helyszíni Active Directory fiókzárolási házirendet egy csoportházirend-objektum használatával](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
+![A helyszíni Active Directory fiókzárolási házirend módosítása](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Intelligens zárolás értékeket az Azure AD kezelése
 
@@ -78,9 +78,7 @@ Az intelligens zárolási küszöbértéke akkor aktiválódik, amikor a követk
 
 **Fiókja jogosulatlan használatának megakadályozása érdekében ideiglenesen zárolva van. Próbálkozzon újra később, és ha továbbra sem tud bejelentkezni, forduljon a rendszergazdához.**
 
-
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg, hogyan lehet a szervezet Azure AD-vel rossz jelszavak letiltása.](howto-password-ban-bad.md)
-
-[Konfigurálja az önkiszolgáló jelszó-visszaállítás felhasználók feloldhatják fiókjukat.](quickstart-sspr.md)
+* [Ismerje meg, hogyan lehet a szervezet Azure AD-vel rossz jelszavak letiltása.](howto-password-ban-bad.md)
+* [Konfigurálja az önkiszolgáló jelszó-visszaállítás felhasználók feloldhatják fiókjukat.](quickstart-sspr.md)

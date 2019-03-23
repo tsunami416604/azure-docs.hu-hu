@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 69a45a0c2c21ffafde8a4b366e1f3e90b7c8f59a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb00f6ccd22be75a235d9cd6fc174741207a76e0
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012618"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359160"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>A HDInsight Apache Pig-feladatok futtatása az Azure PowerShell használatával
 
@@ -26,6 +26,8 @@ Ez a dokumentum az Azure PowerShell használata egy HDInsight-fürtön az Apache
 > Ez a dokumentum nem biztosít a Pig Latin utasításokkal a példákban használt mire részletes leírását. A Pig Latin ebben a példában használt kapcsolatos információkért lásd: [Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-pig.md).
 
 ## <a id="prereq"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Egy Azure HDInsight-fürt**
 
@@ -40,11 +42,11 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyek engedélyezik a HDInsight
 
 A következő parancsmagok használhatók, amikor Pig-feladatokat futtat egy távoli HDInsight-fürtön:
 
-* **Connect-AzureRmAccount**: Az Azure-előfizetéshez az Azure PowerShell hitelesíti.
-* **New-AzureRmHDInsightPigJobDefinition**: Létrehoz egy *feladat definíciójának* -a megadott Pig Latin utasításokkal.
-* **Start-AzureRmHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
-* **Wait-AzureRmHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződött, vagy a rendszer túllépte a várakozási idő.
-* **Get-AzureRmHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
+* **Connect-AzAccount**: Az Azure-előfizetéshez az Azure PowerShell hitelesíti.
+* **New-AzHDInsightPigJobDefinition**: Létrehoz egy *feladat definíciójának* -a megadott Pig Latin utasításokkal.
+* **Start-AzHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* **Wait-AzHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződött, vagy a rendszer túllépte a várakozási idő.
+* **Get-AzHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
 
 A következő lépések bemutatják, hogyan lehet ezeket a parancsmagokat használja a HDInsight-fürtön futó feladatok futtatásához.
 
@@ -76,7 +78,7 @@ Ha semmilyen adatot nem ad vissza, ha a feladat befejeződik, tekintse meg a hib
 
     # Print the output of the Pig job.
     Write-Host "Display the standard error output ..." -ForegroundColor Green
-    Get-AzureRmHDInsightJobOutput `
+    Get-AzHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `

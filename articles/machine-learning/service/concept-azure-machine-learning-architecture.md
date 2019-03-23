@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080322"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361098"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -70,7 +70,7 @@ A besorolás, a munkaterület az alábbi ábra mutatja be:
 
 Egy kísérlet megadott parancsfájl több futtatások csoportja. Mindig tartozik egy munkaterülethez. Ha elküldi egy futtatás, meg kell adnia egy kísérlet neve. A kísérlet keretében a Futtatás adatait tárolja. Ha futtató nyújt, és adja meg, egy kísérlet neve, amely nem létezik, a rendszer automatikusan létrehoz egy új kísérlet a újonnan megadott névvel.
 
-Egy kísérlet használatának példájáért lásd [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
+Egy kísérlet használatának példájáért lásd [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
 
 ## <a name="model"></a>Modell
 
@@ -80,7 +80,7 @@ Futtatás az Azure Machine Learning-modell elő. Egy modellt, amely be van taní
 
 Az Azure Machine Learning szolgáltatás keretrendszer független. Amikor létrehoz egy modellt, minden olyan közkedvelt machine learning-keretrendszerek, például a Scikit-ismerje meg, a XGBoost, a PyTorch, a TensorFlow, a Chainer és a Microsoft Cognitive Toolkittel (korábban cntk) is használhatja.
 
-A modell tanítása példát talál [a rövid útmutató: Hozzon létre egy Machine Learning szolgáltatás munkaterületet](quickstart-get-started.md).
+A modell tanítása példát talál [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
 
 ### <a name="model-registry"></a>Modell beállításjegyzék
 
@@ -143,7 +143,7 @@ Központi telepítés egy számítási célnak kiválasztásával kapcsolatos in
 
 A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó fájlokat tartalmazó könyvtárra. Is megad, egy kísérlet neve, amely a betanítás során gyűjtött adatok tárolására szolgál. Során képzés, a teljes címtárra kerül a képzési környezet (számítási célt), és a parancsfájl a futtatási konfiguráció által meghatározott elindult. A könyvtár pillanatképet is tárolja a munkaterületen a kísérlet keretében.
 
-Egy vonatkozó példáért lásd: [munkaterület létrehozása pythonnal](quickstart-get-started.md).
+Egy vonatkozó példáért lásd: [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
 
 ## <a name="run"></a>Futtassa a következőt:
 
@@ -156,7 +156,7 @@ Futtatás a következő egy rekordot, amely a következő információkat tartal
 
 Futtatás a modell betanításához parancsfájl elküldésekor hozhat létre. Futtató rendelkezhet, nulla vagy több alárendelt futtatások. Például a legfelső szintű futtatás rendelkezhet két gyermek futtatásakor a szolgáltatás, amelyek mindegyike előfordulhat, hogy a saját gyermek futtatni.
 
-Egy modell által készített futtatások nem csupán egy példa: [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
+Egy modell által készített futtatások nem csupán egy példa: [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
 
 ## <a name="snapshot"></a>Pillanatkép
 
@@ -227,6 +227,6 @@ Amikor a megoldás fejlesztése, akkor a Python-szkript használata az Azure Mac
 Ismerkedés az Azure Machine Learning szolgáltatással, tekintse meg:
 
 * [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
-* [Rövid útmutató: Hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
+* [Az Azure Machine Learning szolgáltatás munkaterület létrehozása](setup-create-workspace.md)
 * [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)
-* [Munkaterület létrehozása egy resource manager-sablonnal](how-to-create-workspace-template.md)
+* [Munkaterület létrehozása egy Resource Manager-sablonnal](how-to-create-workspace-template.md)

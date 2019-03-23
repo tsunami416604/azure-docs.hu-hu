@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436262"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361948"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight PowerShell használatával
 
@@ -23,6 +23,8 @@ ms.locfileid: "53436262"
 Ez a dokumentum azt szemlélteti, egy MapReduce-feladatot futtatni a Hadoop HDInsight-fürtön az Azure PowerShell használatával.
 
 ## <a id="prereq"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * **Egy Azure HDInsight (Hadoop on HDInsight)-fürt**
 
@@ -37,15 +39,15 @@ Az Azure PowerShell biztosít *parancsmagok* , amelyek engedélyezik a HDInsight
 
 A következő parancsmagok használhatók MapReduce-feladatok egy távoli HDInsight-fürtön való futtatáskor.
 
-* **Connect-AzureRmAccount**: Azure PowerShell-lel hitelesíti az Azure-előfizetéshez.
+* **Connect-AzAccount**: Azure PowerShell-lel hitelesíti az Azure-előfizetéshez.
 
-* **Új AzureRmHDInsightMapReduceJobDefinition**: Létrehoz egy új *feladat definíciójának* MapReduce megadott információk segítségével.
+* **New-AzHDInsightMapReduceJobDefinition**: Létrehoz egy új *feladat definíciójának* MapReduce megadott információk segítségével.
 
-* **Start-AzureRmHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
+* **Start-AzHDInsightJob**: A feladatdefiníció HDInsight küld, és elindítja a feladatot. A *feladat* objektumot ad vissza.
 
-* **Wait-AzureRmHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
+* **Wait-AzHDInsightJob**: A feladat állapotának ellenőrzéséhez használja a feladatobjektum. Arra vár, amíg a feladat befejeződik, vagy túllépi a várakozási idő.
 
-* **Get-AzureRmHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
+* **Get-AzHDInsightJobOutput**: A feladat kimenetének lekéréséhez használja.
 
 A következő lépések bemutatják, hogyan használja ezeket a parancsmagokat futtathat feladatokat a HDInsight-fürtben.
 
@@ -92,7 +94,7 @@ Ha semmilyen adatot nem ad vissza, ha a feladat befejeződik, tekintse meg a fel
 ```powershell
 # Print the output of the WordCount job.
 Write-Host "Display the standard output ..." -ForegroundColor Green
-Get-AzureRmHDInsightJobOutput `
+Get-AzHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $wordCountJob.JobId `
         -HttpCredential $creds `

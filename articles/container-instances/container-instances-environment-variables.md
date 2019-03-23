@@ -5,20 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403022"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369991"
 ---
 # <a name="set-environment-variables"></a>Környezeti változók beállítása
 
 A környezeti változók beállítása a container Instances szolgáltatásban az lehetővé teszi, hogy az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus konfiguráció. A környezeti változók beállítása egy tárolóban, adja meg őket, amikor létrehoz egy tárolópéldányt. Beállíthatja a környezeti változók egy tárolóhoz, az indításakor a [Azure CLI-vel](#azure-cli-example), [Azure PowerShell-lel](#azure-powershell-example), és a [az Azure portal](#azure-portal-example).
 
-Például, ha futtatja a [microsoft/aci-wordcount] [ aci-wordcount] tárolórendszerképet, és módosíthatja annak viselkedését adja meg az alábbi környezeti változókat:
+Például, ha futtatja a Microsoft [aci-wordcount] [ aci-wordcount] tárolórendszerképet, és módosíthatja annak viselkedését adja meg az alábbi környezeti változókat:
 
 *NumWords*: A STDOUT küldött szavak számát.
 
@@ -28,13 +28,13 @@ Környezeti változókként adja át a titkos kulcsok van szüksége, ha támoga
 
 ## <a name="azure-cli-example"></a>Az Azure CLI-példa
 
-Az alapértelmezett kimenet, hogy a [microsoft/aci-wordcount] [ aci-wordcount] tárolót, először futtassa a [az tároló létrehozása] [ az-container-create] parancsot (nem környezeti változók megadva):
+Az alapértelmezett kimenet, hogy a [aci-wordcount] [ aci-wordcount] tárolót, először futtassa a [az tároló létrehozása] [ az-container-create] parancsot (nem környezeti változók megadva):
 
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -44,7 +44,7 @@ A kimenet módosítása esetén a második tároló indítása a `--environment-
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
@@ -83,13 +83,13 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Környezeti változók beállítása a PowerShell a parancssori felület hasonló, de használja a `-EnvironmentVariable` parancssori argumentum.
 
-Először indítsa el a [microsoft/aci-wordcount] [ aci-wordcount] az alapértelmezett konfigurációban a tároló [New-AzContainerGroup] [ new-Azcontainergroup] a parancs:
+Először indítsa el a [aci-wordcount] [ aci-wordcount] az alapértelmezett konfigurációban a tároló [New-AzContainerGroup] [ new-Azcontainergroup] parancsot:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
-    -Image microsoft/aci-wordcount:latest
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
 Most futtassa a következő [New-AzContainerGroup] [ new-Azcontainergroup] parancsot. Ehhez adja meg a *NumWords* és *MinLength* környezeti változó egy tömbváltozó feltöltése után `envVars`:
@@ -99,7 +99,7 @@ $envVars = @{'NumWords'='5';'MinLength'='8'}
 New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
-    -Image microsoft/aci-wordcount:latest `
+    -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest `
     -RestartPolicy OnFailure `
     -EnvironmentVariable $envVars
 ```
@@ -143,7 +143,7 @@ Környezeti változók beállítása egy tárolót az Azure Portalon való indí
 
 A portál telepítésekor jelenleg legfeljebb három változókhoz, és meg kell adnia őket a következő formátumban: `"variableName":"value"`
 
-Látható egy példa, indítsa el a [microsoft/aci-wordcount] [ aci-wordcount] -tárolóban a *NumWords* és *MinLength* változókat.
+Látható egy példa, indítsa el a [aci-wordcount] [ aci-wordcount] -tárolóban a *NumWords* és *MinLength* változókat.
 
 1. A **konfigurációs**állítsa be a **újraindítási házirend** való *hiba esetén*
 2. Adja meg `"NumWords":"5"` az első változók **Igen** alatt **adjon hozzá további környezeti változókat**, és adja meg `"MinLength":"8"` a második változó. Válassza ki **OK** a, és ezután üzembe a tárolót.
@@ -246,7 +246,7 @@ Feladatalapú forgatókönyvek, például a kötegelt feldolgozási egy nagy mé
 [portal-env-vars-02]: ./media/container-instances-environment-variables/portal-env-vars-02.png
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
