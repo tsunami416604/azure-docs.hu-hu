@@ -1,6 +1,6 @@
 ---
-title: A code használata a .NET API – Azure Search-index létrehozása
-description: Ismerje meg, hogyan hozhat létre az Azure Search .NET SDK használatával egy teljes szöveges kereshető indexet és C# mintakódot.
+title: Az index létrehozása C# – Azure Search
+description: Ismerje meg, hogyan hozhat létre a kereshető teljes szöveges index C# az Azure Search .NET SDK használatával.
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287145"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370584"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Gyors útmutató: 1 – az Azure Search-index létrehozásaC#
 
@@ -23,7 +23,7 @@ Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](sear
 
 > [!div class="checklist"]
 > * Hozzon létre egy [ `SearchServiceClient` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) objektum egy keresési szolgáltatáshoz való csatlakozáshoz.
-> * Hozzon létre egy [ `Index` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) objektumot adja át a paraméterként `Indexes.Create`.
+> * Hozzon létre egy [ `Index` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) objektumot adja át a paramétert `Indexes.Create`.
 > * Hívja a `Indexes.Create` metódust `SearchServiceClient` küldése a `Index` szolgáltatáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -32,7 +32,7 @@ Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](sear
 
 [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
-Egy URL-végpontot, és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+A végpont URL-cím és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
   1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban létrehozott egy üres Azure Search-index adattípusai és működési módokkal definiáló séma alapján. Az oktatóanyag-sorozatban a következő rövid útmutató bemutatja, hogyan betölteni az indexet a kereshető tartalmak.
+Ebben a rövid útmutatóban létrehozott egy üres Azure Search-index adattípusai és működési módokkal definiáló séma alapján. Az index egy "bare csontot" index nevét és a egy kiadott mezők gyűjteménye. Egy realisztikusabb index magában foglalja a más elemek, például [pontozási profilok](index-add-scoring-profiles.md), [javaslattevők](index-add-suggesters.md) typeahead támogatást [szinonimák](search-synonyms.md), és esetleg [ egyéni elemzők](index-add-custom-analyzers.md). Azt javasoljuk, hogy az alapvető munkafolyamat megismerése után tekintse át ezeket a képességeket felülvizsgálni.
+
+Az oktatóanyag-sorozatban a következő rövid útmutató bemutatja, hogyan betölteni az indexet a kereshető tartalmak.
 
 > [!div class="nextstepaction"]
 > [Adatok betöltése az Azure Search index használatávalC#](search-import-data-dotnet.md)

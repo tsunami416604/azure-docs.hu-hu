@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890746"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360284"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -40,7 +40,7 @@ Az Azure Machine Learning szolgáltatás legújabb kiadása a következő szolg�
 + Egy új, szélesebb körű Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.
 + Az új kibontva [Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) a machine Learning szolgáltatáshoz.
 
-A [architektúra](concept-azure-machine-learning-architecture.md) át lett alakítva a könnyű használhatóság. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-azure-machine-learning-architecture.md#workspace) szükséges. Az [Azure Portalon](quickstart-get-started.md) gyorsan létrehozhat munkaterületeket. Munkaterület használatával több felhasználó tud tárolni a képzés és számítási célokat, modell kísérletek, Docker-rendszerképek, üzembe helyezett modellnél és így tovább.
+A [architektúra](concept-azure-machine-learning-architecture.md) át lett alakítva a könnyű használhatóság. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-azure-machine-learning-architecture.md#workspace) szükséges. Munkaterületek gyorsan hozhat létre, az [Azure portal]((setup-create-workspace.md#portal). Munkaterület használatával több felhasználó tud tárolni a képzés és számítási célokat, modell kísérletek, Docker-rendszerképek, üzembe helyezett modellnél és így tovább.
 
 Bár a jelenlegi kiadásban új továbbfejlesztett CLI és az SDK ügyfelek, a workbench asztali alkalmazás maga visszavontuk. Kísérletek kezelhetők a [munkaterület irányítópultot az Azure Portalon](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal). Használja az irányítópultot a kísérlet előzményeinek beolvasására, a munkaterülethez rendelt számítási célok, a modellek és a Docker-rendszerképek kezelésére, vagy akár webszolgáltatások üzembe helyezésére.
 
@@ -50,7 +50,7 @@ Bár a jelenlegi kiadásban új továbbfejlesztett CLI és az SDK ügyfelek, a w
 
 A 2019. január 9. támogatja a Machine Learning Workbench, az Azure Machine Learning-kísérletezés és a Modellkezelési fiókok, és azok kapcsolódó SDK-t és a CLI véget ért. 
 
-Ennek használatával érhető el a legújabb funkciókat <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md), és a [portál](quickstart-get-started.md).
+Ennek használatával érhető el a legújabb funkciókat <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md), és a [portál](setup-create-workspace.md#portal).
 
 ## <a name="what-about-run-histories"></a>Mi a helyzet a futtatási előzményekkel?
 
@@ -81,7 +81,7 @@ A projekt tartalmának nagy részét már a helyi gépen. Így egyszerűen hozzo
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
 
-Ismerje meg, hogyan kezdheti el [Python és a fő SDK](quickstart-create-workspace-with-python.md) vagy [az Azure portal](quickstart-get-started.md).
+[Hozzon létre egy munkaterületet](setup-create-workspace.md#portal) a kezdéshez.
 
 ## <a name="what-about-my-registered-models-and-images"></a>Mi a helyzet a regisztrált modellek és lemezképek?
 
@@ -121,6 +121,6 @@ További információ a [legújabb architektúra az Azure Machine Learning szolg
 
 A szolgáltatás áttekintéséhez olvassa el a [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
 
-A rövid útmutató bemutatja, hogyan hozzon létre egy munkaterületet, hozzon létre egy projektet, futtassa a szkriptet és Fedezze fel az Azure Machine Learning szolgáltatás legújabb verzióját a szkript futtatási előzményeit, próbálja [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
+A rövid útmutató bemutatja, hogyan futtassa a szkriptet, és Fedezze fel az Azure Machine Learning szolgáltatás legújabb verzióját a szkript futtatási előzményeit, próbálja [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
 
 A munkafolyamat részletesebb élményt, kövesse a [részletes oktatóanyag](tutorial-train-models-with-aml.md) , amely részletes útmutatásokat tartalmaz az képzés és az Azure Machine Learning szolgáltatás modellek üzembe helyezéséhez. 

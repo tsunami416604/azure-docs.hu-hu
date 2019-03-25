@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309315"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351551"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
 
@@ -100,6 +100,39 @@ A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nem egy 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Hogyan kérdezhet le a az adatokat a Log Analytics?
 
 A naplók keresése panel a portálon vagy a Log Analytics részét képező Advanced Analytics élmény, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [számos olyan megoldást az Azure-erőforrások](../../azure-monitor/insights/solutions.md) azonnali betekintést a naplóadatok a Log analyticsbe küld be is telepítheti.
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Ismert korlátozás: AzureDiagnostics oszlop-korlát
+Mert sok erőforrás küldése adattípusok összes küldött ugyanabban a táblában (_AzureDiagnostics_), ez a tábla sémája az összes különböző adattípusok összegyűjtött sémái felettes készletét. Például ha már létrehozta a gyűjteményhez a következő adattípusú diagnosztikai beállítások, az összes küld ugyanazon a munkaterületen:
+- Auditnaplók (oszlopok A, B és C álló sémával rendelkező) erőforráshoz 1  
+- (D, E és az F oszlopot álló sémával rendelkező) erőforráshoz 2 hibanaplókat  
+- Folyamatnaplók adatainak (oszlopok G, H, és szeretnék sémával rendelkező) erőforráshoz 3  
+ 
+A AzureDiagnostics tábla néhány adatot az alábbi módon fog kinézni:  
+ 
+| ResourceProvider | Kategória | A | B | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | Naplók | x1 | y1 | z1 |
+| Microsoft.Resource2 | Hibanaplókat | | | | q1 | w1 | E1 csomag |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | Hibanaplókat | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | Naplók | x5 | y5 | z5 |
+| ... |
+ 
+Csak egy explicit bármely adott Azure Log tábla nem rendelkezik 500-nál több oszlopot. Elérése után már az első 500 kívül bármely másik oszlopot az adatokat tartalmazó sorokat dobja el a betöltési idő. A AzureDiagnostics táblában, különösen ki vannak téve lehet hatással a ezt a korlátot. Ez általában történik, vagy mert az adatforrások széles küldött ugyanazon a munkaterületen, vagy több nagyon részletes adatforrások küld a ugyanazon a munkaterületen. 
+ 
+#### <a name="azure-data-factory"></a>Azure Data Factory  
+Az Azure Data Factory, naplók, nagyon részletes készlete miatt egy különösen hatással lehet ez a korlátozás számára ismert erőforrást. Ebben az esetben:  
+- *Semmilyen tevékenységet a folyamat képest van meghatározva. a felhasználó paraméterek*: minden felhasználó egyedi nevű paraméter tevékenység elleni létrehozott egy olyan új oszlop lesz. 
+- *Tevékenység bemeneti és kimeneti*: ezek eltérőek lehetnek a tevékenység-tevékenység, és hozzon létre egy nagy mennyiségű oszlopok részletes jellege miatt. 
+ 
+Mint a szélesebb körű megkerülő megoldás, az alábbi javaslatokat javasoljuk, hogy az ADF-naplók elkülönítése az esélye, hogy ezek a naplók a munkaterületeken összegyűjtött napló másféle érintő minimalizálása érdekében a saját munkaterületre. Várhatóan rendelkezik összeválogatott naplók elérhető az Azure Data Factory által mid április 2019.
+ 
+#### <a name="workarounds"></a>Megkerülő megoldások
+Rövid távú, amíg az 500-as oszlopos korlátot újra meg kell határozni, javasoljuk, hogy részletes adattípusok szét az esélye, szerezze meg a korlátot, különálló munkaterületnek.
+ 
+Hosszabb távú, az Azure Diagnostics fog kell megéri forrásadatok egy egységes, ritka séma egyes adatok típusonként; egyedi táblák dinamikus típusok támogatása párosítva ez jelentős mértékben javítja az adatok Azure-naplók az Azure Diagnostics mechanizmussal érkező használhatósága. Már láthatja ezt válassza ki az Azure-erőforrástípus, például [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) vagy [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) naplókat. Keresse meg az Azure-t támogató ezeket a válogatott naplókat az új erőforrástípusok kapcsolatos híreket az [Azure frissítések](https://azure.microsoft.com/updates/) blogon!
+
 
 ## <a name="next-steps"></a>További lépések
 

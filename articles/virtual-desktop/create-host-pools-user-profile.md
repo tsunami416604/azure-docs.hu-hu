@@ -1,22 +1,22 @@
 ---
-title: Hozzon létre egy felhasználói profil megosztást fogadó készlet – Azure
-description: Hogyan állítható be egy Windows virtuális asztal (előzetes verzió) gazdagép készlet FSLogix profil tárolója.
+title: Hozzon létre egy felhasználói profil megosztást egy Windows virtuális asztal előzetes gazdagép készlet – Azure
+description: Hogyan állítható be egy Windows virtuális asztal előzetes gazdagép készlet FSLogix profil tárolója.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 9dfbda6e17cf954369fd6caa533ba9eef41fd451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336014"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403714"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>A felhasználói profil megosztás gazdagép készlet beállítása
 
-A virtuális asztali Windows-szolgáltatás (előzetes verzió) a javasolt felhasználói profil megoldás FSLogix profil tárolók kínál. A felhasználói profil lemezre (UPD) megoldás használatával nem ajánlott, és azt a virtuális asztali Windows későbbi verzióiban elavulttá válik.
+A Windows Virtual Desktop előzetes verziójú szolgáltatások FSLogix profil tárolók a javasolt felhasználói profil megoldás kínál. A felhasználói profil lemezre (UPD) megoldás használatával nem ajánlott, és azt a virtuális asztali Windows későbbi verzióiban elavulttá válik.
 
 Ebben a szakaszban megtudhatja, hogyan állítható be a gazdagép-készletben FSLogix profil tároló megosztást.
 

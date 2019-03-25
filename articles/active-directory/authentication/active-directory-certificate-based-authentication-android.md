@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0f4a648227e62642bb071a76cbd1f3a50bf78ae
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314502"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368289"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android rendszeren az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés
 
@@ -35,16 +35,16 @@ Ez a funkció érhető el előzetes verzióban érhető el az Office 365 US Gove
 
 | Alkalmazások | Támogatás |
 | --- | --- |
-| Az Azure Information Protection alkalmazással |![Jelölőnégyzet][1] |
-| Az Intune vállalati portál |![Jelölőnégyzet][1] |
-| Microsoft Teams |![Jelölőnégyzet][1] |
-| OneNote |![Jelölőnégyzet][1] |
-| OneDrive |![Jelölőnégyzet][1] |
-| Outlook |![Jelölőnégyzet][1] |
-| Power BI |![Jelölőnégyzet][1] |
-| Skype Vállalati verzió |![Jelölőnégyzet][1] |
-| Word / Excel / PowerPoint |![Jelölőnégyzet][1] |
-| Yammer |![Jelölőnégyzet][1] |
+| Az Azure Information Protection alkalmazással |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Az Intune vállalati portál |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Microsoft Teams |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| OneNote |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| OneDrive |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Outlook |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Power BI |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Skype Vállalati verzió |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Word / Excel / PowerPoint |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
+| Yammer |![Az alkalmazás támogatási hangsúlyozva pipa][1] |
 
 ### <a name="implementation-requirements"></a>Megvalósítás követelményei
 

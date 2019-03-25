@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 94686d62e8019bfc5dba1ccd4a00142512930c0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d8fd6a0422ee26610f58f872cba4487d4e01e6b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862216"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Az Azure Active Directory-integráció Periscope adatokkal
 
@@ -138,7 +138,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Periscope adatokkal, h
 
     e. Másolás a **azonosító** a példány értékét, és illessze be a **azonosító (entityid)** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    f. Az első címke XML-fájl másolása értékét **entityID** , és illessze be a a **kibocsátó** szövegmezőbe.
+    f. Az első címke XML-fájl található, másolja az értéket a **entityID** , és illessze be a a **kibocsátó** szövegmezőbe.
 
     g. Keresse meg a címke **IDPSSODescriptor** az SAML-protokoll. Abban a szakaszban keresse meg a címke **KeyDescriptor** a **használata = aláírási**. másolja az értéket a **X509Certificate** , és illessze be a a **tanúsítvány** szövegmezőbe.
 
