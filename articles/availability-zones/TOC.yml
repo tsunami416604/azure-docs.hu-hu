@@ -1,0 +1,104 @@
+items:
+- name: Azure Resiliency
+  items:
+  - name: Az Azure Resiliency szolgáltatáslapja
+    href: https://azure.microsoft.com/features/resiliency
+  - name: Rugalmas alkalmazások tervezése az Azure-hoz
+    href: https://docs.microsoft.com/azure/architecture/resiliency/
+- name: Magas rendelkezésre állás
+  items:
+  - name: Magas rendelkezésre állás az Azure-alkalmazásokhoz
+    href: https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications
+  - name: Rendelkezésre állási zónák dokumentációja
+    items:
+    - name: Mik a rendelkezésre állási zónák?
+      href: az-overview.md
+    - name: Virtual machines (Virtuális gépek)
+      items:
+      - name: Linux rendszerű virtuális gépek létrehozása egy rendelkezésre állási zónában parancssori felület használatával
+        href: ../virtual-machines/linux/create-cli-availability-zone.md
+      - name: Windows rendszerű virtuális gépek létrehozása egy rendelkezésre állási zónában a PowerShell használatával
+        href: ../virtual-machines/windows/create-powershell-availability-zone.md
+      - name: Windows rendszerű virtuális gépek létrehozása egy rendelkezésre állási zónában az Azure Portalon
+        href: ../virtual-machines/windows/create-portal-availability-zone.md
+    - name: Felügyelt lemezek
+      items:
+      - name: Felügyelt lemez hozzáadása egy rendelkezésre állási zónában parancssori felület használatával
+        href: ../virtual-machines/linux/add-disk.md#use-managed-disks
+      - name: Felügyelt lemez hozzáadása egy rendelkezésre állási zónában PowerShell használatával
+        href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
+    - name: Virtuálisgép-méretezési csoportok
+      items:
+      - name: Méretezési csoport létrehozása egy rendelkezésre állási zónában
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+    - name: Load Balancer
+      items:
+      - name: Mi az a Load Balancer?
+        href: ../load-balancer/load-balancer-standard-overview.md
+      - name: A Load Balancer Standard és a rendelkezésre állási zónák
+        href: ../load-balancer/load-balancer-standard-availability-zones.md
+      - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása
+        href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+        items:
+        - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+        - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása (parancssori felület)
+          href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+      - name: Zónaszintű nyilvános Standard Load Balancer létrehozása
+        href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        items:
+        - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (PowerShell)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: Zónaszintű nyilvános Standard Load Balancer létrehozása (parancssori felület)
+          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+      - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
+        href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+        items:
+        - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között az Azure-ral (CLI)
+          href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+    - name: Nyilvános IP-cím
+      href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+    - name: SQL Database
+      items:
+      - name: Rendelkezésre állási zónák és SQL Database
+        href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
+    - name: Storage
+      items:
+      - name: Zónaredundáns tárolás
+        href: ../storage/common/storage-redundancy-zrs.md
+    - name: Event Hubs
+      items:
+      - name: Event Hubs georeplikációs vészhelyreállítás
+        href: ../event-hubs/event-hubs-geo-dr.md#availability-zones-preview
+    - name: Service Bus
+      items:
+      - name: Service Bus georeplikációs vészhelyreállítás
+        href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview
+    - name: VPN Gateway
+      items:
+      - name: Zónaredundáns virtuális hálózati átjáró létrehozása
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+    - name: ExpressRoute
+      items:
+      - name: Zónaredundáns virtuális hálózati átjáró létrehozása
+        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+- name: Vészhelyreállítás
+  items:
+  - name: Az Azure Site Recovery használata
+    href: https://docs.microsoft.com/azure/site-recovery/
+- name: Azure Backup
+  items:
+  - name: Az Azure Backup használata
+    href: https://docs.microsoft.com/azure/backup/
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Azure-régiók
+    href: https://azure.microsoft.com/regions/
+ms.openlocfilehash: 45a73ec4d5e3649be38133e5ce055f206ecf80ab
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340676"

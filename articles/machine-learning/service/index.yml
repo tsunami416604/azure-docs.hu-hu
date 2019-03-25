@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b7765fc5506129cdf594ef3fd0424f8771de5ef4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651668"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371156"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
@@ -36,12 +36,12 @@ sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'A szolgáltatás használatához szüksége lesz egy munkaterületre és a kapcsolódó erőforrásokra.  Első lépések:'
+    text: 'Miután   <a href="setup-create-workspace">létrehozott egy munkaterületet</a> az Azure Machine Learning service-hez, a következő rövid útmutatókhoz kezdhet hozzá:'
   - type: list
     style: unordered
     items:
-    - html: '<a href="quickstart-get-started">Az Azure Portal rövid útmutatója</a>: lekérhet egy munkaterületet, és futtathat egy kísérletet anélkül, hogy bármit is telepítene.'
-    - html: '<a href="quickstart-create-workspace-with-python">A Python rövid útmutatója</a>: telepítse a fő SDK-t, hozzon létre egy munkaterületet, és futtasson kísérletet egy helyi notebookkiszolgálón.'
+    - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
+    - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
 - title: Részletes útmutatók
   items:
   - type: paragraph

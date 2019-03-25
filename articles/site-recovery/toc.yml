@@ -24,6 +24,12 @@ items:
       href: azure-to-azure-tutorial-failover-failback.md
     - name: Feladat-visszavétel futtatása
       href: azure-to-azure-tutorial-failback.md
+  - name: Azure-beli virtuális gépek áthelyezése
+    items:
+    - name: Azure-beli virtuális gépek áthelyezése egy másik régióba
+      href: azure-to-azure-tutorial-migrate.md
+    - name: Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
+      href: move-Azure-VMs-AVset-Azone.md
   - name: VMware rendszerű virtuális gépek vészhelyreállítása az Azure-ba
     items:
     - name: Az Azure előkészítése
@@ -60,19 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: AWS-példányok áttelepítése az Azure-ba
       href: migrate-tutorial-aws-azure.md
-  - name: Azure-beli virtuális gépek áthelyezése
-    items:
-    - name: Áttekintés
-      href: azure-to-azure-move-overview.md
-    - name: Azure-beli virtuális gépek áthelyezése egy másik régióba
-      href: azure-to-azure-tutorial-migrate.md
-    - name: Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
-      href: move-Azure-VMs-AVset-Azone.md
 - name: Alapelvek
   items:
   - name: Gyakori kérdések a Site Recoveryvel kapcsolatban
     href: site-recovery-faq.md
-  - name: Tudnivalók Azure-beli virtuális gépek Azure-ba történő vészhelyreállításáról
+  - name: Információk az Azure-beli virtuális gépek vészhelyreállításáról
     items:
     - name: Azure-ról Azure-ra architektúra
       href: azure-to-azure-architecture.md
@@ -80,12 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Azure-ról Azure-ra támogatási mátrix
       href: azure-to-azure-support-matrix.md
+    - name: A Site Recovery használata az Azure Backup szolgáltatással
+      href: site-recovery-backup-interoperability.md
     - name: Gyorsított hálózatkezelés az Azure-beli virtuális gépek vészhelyreállításához
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: ExpressRoute és Azure-beli virtuális gépek vészhelyreállítása
       href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Az Azure-beli virtuális gépek vészhelyreállítása és az Azure Backup közötti együttműködési lehetőségek
-      href: site-recovery-backup-interoperability.md
+  - name: Tudnivalók az Azure-beli virtuális gépek áthelyezéséről
+    href: azure-to-azure-move-overview.md
   - name: Tudnivalók VMware rendszerű virtuális gépek Azure-ba történő vészhelyreállításáról
     items:
     - name: A VMware-vészhelyreállítás áttekintése
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 5286e3479561e6effd279978e84f045207a0a7a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835299"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317102"

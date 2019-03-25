@@ -134,8 +134,11 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                     <div class="cardText">
                         <h3>A Saját alkalmazások portál súgója</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/active-directory-saas-access-panel-introduction">Mi az a Saját alkalmazások portál?</a><br/>
-                        <a href="/azure/active-directory/active-directory-saas-access-panel-user-help">Hibaelhárítás</a>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access">A Saját alkalmazások portál elérése és használata</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-update-profile">Profil- és fiókadatok frissítése</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-groups">A csoporttal kapcsolatos információk frissítése</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access-reviews">Saját hozzáférés felülvizsgálatainak elvégzése</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-troubleshoot">Hibaelhárítás</a>
                         </p>
                     </div>
                 </div>

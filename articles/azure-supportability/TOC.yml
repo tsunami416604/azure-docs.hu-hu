@@ -1,0 +1,29 @@
+items:
+- name: Azure-támogatáskérések létrehozása
+  href: how-to-create-azure-support-request.md
+- name: Fájlok feltöltése támogatáskérésekhez
+  href: how-to-use-file-uploader.md
+- name: Hozzáférési jogosultságok a támogatáskérések létrehozásához és kezeléséhez
+  href: create-manage-support-requests-using-access-control.md
+- name: Kvótanövelési kérések
+  href: resource-manager-core-quotas-request.md
+- name: A régióval vagy termékváltozattal kapcsolatos előfizetési problémák elhárítása
+  href: sku-series-unavailable.md
+- name: Referencia
+  items:
+  - name: Azure CLI
+    href: /cli/azure
+  - name: Azure PowerShell
+    href: /powershell/azure
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 31120ea857d0e080bc9629d781ac2cdd73d31bc0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340914"

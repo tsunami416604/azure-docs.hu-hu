@@ -1,0 +1,70 @@
+items:
+- name: Azure informatikai dolgozóknak
+  items:
+  - name: Bevezetés az Azure használatába
+    href: azure-operations-guide.md
+  - name: Gyors útmutatók
+    items:
+    - name: Virtuális gépek
+      items:
+      - name: Windows rendszerű virtuális gépek
+        href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Linux rendszerű virtuális gépek
+        href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Virtuális hálózatok
+      items:
+      - name: Virtuális hálózat létrehozása az Azure Portallal
+        href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Biztonság
+      items:
+      - name: Erőforrások kezelése szerepkör-hozzárendelésekkel
+        href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Azure Stack
+      items:
+      - name: Az Azure Stack üzembe helyezésének áttekintése
+        href: ../../azure-stack/azure-stack-deploy-overview.md
+    - name: Azure Backup
+      items:
+      - name: Biztonsági másolat készítése egy virtuális gépről az Azure Portalon
+        href: ../../backup/quick-backup-vm-portal.md
+    - name: Azure Site Recovery
+      items:
+      - name: Azure-beli virtuális gép replikálása másik Azure-régióba
+        href: ../../site-recovery/azure-to-azure-quickstart.md
+  - name: Oktatóanyagok
+    items:
+    - name: Virtuális gépek
+      items:
+      - name: Windows rendszerű virtuális gépek létrehozása és kezelése
+        href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Linux rendszerű virtuális gépek létrehozása és kezelése
+        href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Jenkins CI/CD-folyamat
+        href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Virtuális gépek terheléselosztása
+        href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Azure Resource Manager-sablonok készítése
+        href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Nagy mennyiségű virtuális gép biztonsági mentése
+        href: ../../backup/tutorial-backup-vm-at-scale.md
+  - name: Útmutatók
+    items:
+    - name: Az Azure számlázási és napi használati adatainak letöltése
+      href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+  - name: További források
+    items:
+    - name: Azure-termékkatalógus
+      href: https://docs.microsoft.com/azure/#pivot=products
+    - name: Azure-ütemterv
+      href: https://azure.microsoft.com/roadmap/
+    - name: Díjkalkulátor
+      href: https://azure.microsoft.com/pricing/calculator/
+    - name: A Microsoft Azure Portal áttekintése
+      href: https://azure.microsoft.com/documentation/articles/azure-portal-overview/
+  - name: Referencia
+ms.openlocfilehash: baa4d388f26c46974c1037c3ecf723a445774591
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341356"

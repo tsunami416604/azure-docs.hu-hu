@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318735"
+documentType: LandingData
+title: A Windows Virtual Desktop dokumentációja
+metadata:
+  title: A Windows Virtual Desktop dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
+  description: Az Azure-hoz készült Windows Virtual Desktop a Windows 10 Enterprise több felhasználó általi használatát teszi lehetővé a felhőalapú virtualizálásnak köszönhetően.
+  author: Heidilohr
+  manager: dansimp
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  ms.date: 02/20/2019
+  ms.author: helohr
+abstract:
+  description: Bármilyen eszközön használhat virtuális asztalt és távoli alkalmazásokat. Egyedül a Microsoft 365 és az Azure együttműködése teszi lehetővé a Windows 10 több munkamenetes használatát nagy léptékben és csökkentett informatikai költségek mellett.
+sections:
+- title: Áttekintés
+  items:
+  - type: paragraph
+    text: Ismerkedjen meg a Windows Virtual Desktoppal és annak használatával. Oktatóanyagok, útmutatók, referenciatartalmak és egyéb anyagok mutatják be, hogyan állíthatja be a gazdagépcsoportokat és bérlőket, és hogyan rendelhet szerepköröket a felhasználókhoz a Windows Virtual Desktop környezetében.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-desktop/overview">Mit takar a Windows Virtual Desktop előzetes verziója?</a>
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan telepítheti és konfigurálhatja a Windows Virtual Desktopot, és ha készen van, hogyan csatlakozhat az ügyfélhez.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Bérlő létrehozása a Windows Virtual Desktopon</a>
+    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Gazdagépcsoport létrehozása az Azure Marketplace-en</a>
+    - html: <a href="/azure/virtual-desktop/manage-app-groups">A Windows Virtual Desktop alkalmazáscsoportjainak kezelése</a>
+    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel</a>
+- title: Referencia
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (előzetes verzió)</a>

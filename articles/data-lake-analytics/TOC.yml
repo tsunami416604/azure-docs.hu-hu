@@ -1,0 +1,163 @@
+items:
+- name: Azure Data Lake Analytics – dokumentáció
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Mi a Data Lake Analytics?
+    href: data-lake-analytics-overview.md
+- name: Bevezetés
+  items:
+  - name: Azure Portal
+    href: data-lake-analytics-get-started-portal.md
+  - name: Visual Studio
+    href: data-lake-analytics-data-lake-tools-get-started.md
+  - name: Visual Studio Code
+    href: data-lake-analytics-data-lake-tools-for-vscode.md
+  - name: Azure PowerShell
+    href: data-lake-analytics-get-started-powershell.md
+  - name: Azure CLI
+    href: data-lake-analytics-get-started-cli.md
+- name: Útmutató
+  items:
+  - name: A Data Lake Analytics kezelése
+    items:
+    - name: Azure Portal
+      href: data-lake-analytics-manage-use-portal.md
+    - name: Parancssor
+      items:
+      - name: Azure CLI
+        href: data-lake-analytics-manage-use-cli.md
+      - name: Azure PowerShell
+        href: data-lake-analytics-manage-use-powershell.md
+    - name: SDK-k
+      items:
+      - name: .NET
+        href: data-lake-analytics-manage-use-dotnet-sdk.md
+      - name: Python
+        href: data-lake-analytics-manage-use-python-sdk.md
+      - name: Java
+        href: data-lake-analytics-manage-use-java-sdk.md
+      - name: Node.js
+        href: data-lake-analytics-manage-use-nodejs.md
+    - name: Felhasználók hozzáadása
+      href: data-lake-analytics-add-users.md
+    - name: Házirendek
+      href: data-lake-analytics-policies.md
+    - name: Biztonságos feladatmappák
+      href: data-lake-analytics-secure.md
+    - name: Diagnosztikai naplók elérése
+      href: data-lake-analytics-diagnostic-logs.md
+    - name: A kvótakorlátok beállítása
+      href: data-lake-analytics-quota-limits.md
+  - name: U-SQL-programok fejlesztése
+    items:
+    - name: U-SQL nyelv
+      items:
+      - name: Alapvető beállítások
+        href: data-lake-analytics-u-sql-get-started.md
+      - name: Nyelvi referencia
+        href: https://msdn.microsoft.com/library/azure/mt591959
+      - name: Katalógus
+        href: data-lake-analytics-u-sql-catalog.md
+      - name: Felhasználó által definiált operátorok
+        href: data-lake-analytics-u-sql-develop-user-defined-operators.md
+      - name: Python-bővítmények
+        href: data-lake-analytics-u-sql-python-extensions.md
+      - name: R-bővítmények
+        href: data-lake-analytics-u-sql-r-extensions.md
+      - name: Cognitive-bővítmények
+        href: data-lake-analytics-u-sql-cognitive.md
+      - name: Programozhatósági útmutató
+        href: data-lake-analytics-u-sql-programmability-guide.md
+    - name: Visual Studio
+      items:
+      - name: Telepítés
+        href: data-lake-analytics-data-lake-tools-install.md
+      - name: Helyi futtatás
+        href: data-lake-analytics-data-lake-tools-local-run.md
+      - name: Helyi hibakeresés
+        href: data-lake-analytics-data-lake-tools-local-debug.md
+      - name: U-SQL-adatbázisok fejlesztése
+        href: data-lake-analytics-data-lake-tools-develop-usql-database.md
+      - name: Feladatok tallózása és megtekintése
+        href: data-lake-analytics-data-lake-tools-view-jobs.md
+      - name: Egyéni C#-kód hibakeresése
+        href: data-lake-analytics-debug-u-sql-jobs.md
+      - name: Ismétlődő feladatok hibaelhárítása
+        href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
+      - name: Csúcsvégrehajtás részletei
+        href: data-lake-analytics-data-lake-tools-use-vertex-execution-view.md
+      - name: U-SQL-adatbázis exportálása
+        href: data-lake-analytics-data-lake-tools-export-database.md
+      - name: Webhelynaplók elemzése
+        href: data-lake-analytics-analyze-weblogs.md
+      - name: Egyenetlen adateloszlás megszüntetése
+        href: data-lake-analytics-data-lake-tools-data-skew-solutions.md
+      - name: Feladatok figyelése és hibaelhárítása
+        href: data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md
+    - name: Visual Studio Code
+      items:
+      - name: Tartalomkészítés
+        href: data-lake-analytics-data-lake-tools-for-vscode.md
+      - name: Egyéni kód
+        href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+      - name: Helyi futtatás és hibakeresés
+        href: data-lake-tools-for-vscode-local-run-and-debug.md
+  - name: U-SQL-feladatok ütemezése
+    items:
+    - name: Feladatok üzemelése az SSIS használatával
+      href: data-lake-analytics-schedule-jobs-ssis.md
+  - name: Folyamatos integráció és folyamatos üzembe helyezés
+    items:
+    - name: Áttekintés
+      href: data-lake-analytics-cicd-overview.md
+    - name: Szerelvényregisztráció
+      href: data-lake-analytics-cicd-manage-assemblies.md
+    - name: Tesztek beállítása
+      href: data-lake-analytics-cicd-test.md
+    - name: U-SQL SDK
+      href: data-lake-analytics-u-sql-sdk.md
+- name: Referencia
+  items:
+  - name: Azure PowerShell
+    href: /powershell/module/az.datalakeanalytics
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datalake.analytics
+  - name: Node.js
+    href: https://www.npmjs.com/package/azure-arm-datalake-analytics
+  - name: Python
+    href: https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python
+  - name: REST
+    href: /rest/api/datalakeanalytics/
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.datalakeanalytics/allversions
+  - name: parancssori felület
+    href: https://docs.microsoft.com/cli/azure/dla
+- name: További források
+  items:
+  - name: Azure Data Lake blog
+    href: https://blogs.msdn.microsoft.com/azuredatalake/
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Módosítási kérelmek
+    href: https://feedback.azure.com/forums/327234-data-lake
+  - name: MSDN fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-lake-analytics/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=data-lake-analytics
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-data-lake
+  - name: Videók
+    href: https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=data-lake-analytics
+ms.openlocfilehash: 34553cebfdad45477b0442e9966b3b15c81bd1f4
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340982"

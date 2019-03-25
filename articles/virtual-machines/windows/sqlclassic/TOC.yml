@@ -1,0 +1,97 @@
+items:
+- name: Áttekintés
+  items:
+  - name: Windows SQL Server virtuális gépek
+    href: ../sql/virtual-machines-windows-sql-server-iaas-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/virtual-machines/windows/
+  - name: GYIK
+    href: ../sql/virtual-machines-windows-sql-server-iaas-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: Első lépések
+  items:
+  - name: Virtuális gép létrehozása az Azure Portalon
+    href: ../sql/virtual-machines-windows-portal-sql-server-provision.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: Virtuális gép létrehozása az Azure PowerShell használatával
+    href: virtual-machines-windows-classic-ps-sql-create.md
+  - name: Kapcsolódás virtuális géphez
+    href: virtual-machines-windows-classic-sql-connect.md
+  - name: Microsoft SQL Server-adatbázis áttelepítése
+    href: ../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: Útmutató
+  items:
+  - name: Magas rendelkezésre állás konfigurálása
+    items:
+    - name: Magas rendelkezésre állású lehetőségek
+      href: ../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+    - name: AlwaysOn rendelkezésre állási csoport konfigurálása PowerShell-lel
+      href: virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
+    - name: Belső figyelő konfigurálása rendelkezésre állási csoporthoz
+      href: virtual-machines-windows-classic-ps-sql-int-listener.md
+    - name: Külső figyelő konfigurálása rendelkezésre állási csoporthoz
+      href: virtual-machines-windows-classic-ps-sql-ext-listener.md
+    - name: Helyi rendelkezésre állási csoport kiterjesztése az Azure-ba
+      href: virtual-machines-windows-classic-sql-onprem-availability.md
+  - name: Kezelés
+    items:
+    - name: Microsoft SQL Server IaaS-ügynök bővítmény használata
+      href: virtual-machines-windows-classic-sql-server-agent-extension.md
+    - name: Automatikus javítás
+      href: virtual-machines-windows-classic-sql-automated-patching.md
+    - name: Azure Key Vault-integráció konfigurálása
+      href: virtual-machines-windows-classic-ps-sql-keyvault.md
+    - name: Premium Storage használata
+      href: virtual-machines-windows-classic-sql-server-premium-storage.md
+    - name: Biztonsági szempontok
+      href: ../sql/virtual-machines-windows-sql-security.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: Biztonsági mentés és visszaállítás
+    items:
+    - name: Biztonsági mentés és visszaállítás
+      href: ../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+    - name: Automatikus biztonsági mentés
+      href: virtual-machines-windows-classic-sql-automated-backup.md
+    - name: Az Azure Storage használata biztonsági mentéshez és helyreállításhoz
+      href: ../sql/virtual-machines-windows-use-storage-sql-server-backup-restore.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: Üzleti intelligencia
+    items:
+    - name: SQL Server Business Intelligence Azure-beli virtuális gépeken
+      href: virtual-machines-windows-classic-ps-sql-bi.md
+    - name: A ReportViewer használata az Azure-ban üzemeltetett webhelyeken
+      href: virtual-machines-windows-classic-sql-server-reportviewer.md
+    - name: Jelentéskészítő kiszolgálóval rendelkező Azure-beli virtuális gép létrehozása az Azure PowerShell használatával
+      href: virtual-machines-windows-classic-ps-sql-report.md
+  - name: A teljesítménnyel kapcsolatos ajánlott eljárások
+    href: ../sql/virtual-machines-windows-sql-performance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+  - name: Alkalmazásminták
+    href: ../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
+- name: Referencia
+  items:
+  - name: Azure PowerShell
+    href: /powershell/azure/overview?view=azuresmps-3.7.0
+  - name: Azure CLI
+    href: /cli/azure/
+  - name: T-SQL
+    href: https://docs.microsoft.com/sql/t-sql/language-reference
+  - name: SQL Server-illesztőprogramok
+    href: https://docs.microsoft.com/sql/connect/sql-server-drivers
+  - name: REST
+    href: /rest/api/
+- name: További források
+  items:
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: SQL Server Data Tools (SSDT)
+    href: https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt
+  - name: SQL Server Management Studio (SSMS)
+    href: https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms
+  - name: SQL Server eszközök
+    href: https://docs.microsoft.com/sql/tools/overview-sql-tools
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+ms.openlocfilehash: 66cc42f9be1a2147597e81ec774b01aa7b59e383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341169"

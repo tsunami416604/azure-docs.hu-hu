@@ -1,0 +1,79 @@
+items:
+- name: Azure Dev Spaces
+  items:
+  - name: Áttekintés
+    href: index.yml
+  - name: Gyors útmutatók
+    items:
+    - name: Java (VS Code és CLI)
+      href: quickstart-java.md
+    - name: .NET Core (VS Code és parancssori felület)
+      href: quickstart-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      href: quickstart-netcore-visualstudio.md
+    - name: Node.js (VS Code és parancssori felület)
+      href: quickstart-nodejs.md
+  - name: Oktatóanyagok
+    items:
+    - name: Java (VS Code és CLI)
+      items:
+      - name: 1 – Első lépések
+        href: get-started-java.md
+      - name: 2 – Többszolgáltatású fejlesztés
+        href: multi-service-java.md
+      - name: 3 – Csoportos fejlesztés
+        href: team-development-java.md
+    - name: .NET Core (VS Code és parancssori felület)
+      items:
+      - name: 1 – Első lépések
+        href: get-started-netcore.md
+      - name: 2 – Többszolgáltatású fejlesztés
+        href: multi-service-netcore.md
+      - name: 3 – Csoportos fejlesztés
+        href: team-development-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      items:
+      - name: 1 – Első lépések
+        href: get-started-netcore-visualstudio.md
+      - name: 2 – Többszolgáltatású fejlesztés
+        href: multi-service-netcore-visualstudio.md
+      - name: 3 – Csoportos fejlesztés
+        href: team-development-netcore-visualstudio.md
+    - name: Node.js (VS Code és parancssori felület)
+      items:
+      - name: 1 – Első lépések
+        href: get-started-nodejs.md
+      - name: 2 – Többszolgáltatású fejlesztés
+        href: multi-service-nodejs.md
+      - name: 3 – Csoportos fejlesztés
+        href: team-development-nodejs.md
+  - name: Alapelvek
+    items:
+    - name: A Dev Spaces működése
+      href: how-dev-spaces-works.md
+  - name: Útmutató
+    items:
+    - name: Kubernetes-fürt létrehozása az Azure Cloud Shell-lel
+      href: how-to/create-cluster-cloud-shell.md
+    - name: Azure Dev Spaces megosztása
+      href: how-to/share-dev-spaces.md
+    - name: Titkos kulcsok kezelése
+      href: how-to/manage-secrets.md
+    - name: Egyéni NuGet-hírcsatorna használata
+      href: how-to/use-custom-nuget-feed.md
+    - name: Kubectl használata az Azure Dev Spaces segítségével
+      href: how-to/use-kubectl-with-azure-dev-spaces.md
+    - name: Azure Dev Spaces-eszközök frissítése
+      href: how-to/upgrade-tools.md
+    - name: A CI/CD és az Azure Dev Spaces használata
+      href: how-to/setup-cicd.md
+    - name: Üzletmenet-folytonosság és vészhelyreállítás az Azure Dev Spaceshez
+      href: how-to/dev-spaces-business-continuity.md
+  - name: Hibaelhárítás
+    href: troubleshooting.md
+ms.openlocfilehash: 2584af119ba13e87d4249ce7cc7f605d88baa88e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341322"

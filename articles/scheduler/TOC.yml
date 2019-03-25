@@ -1,0 +1,69 @@
+items:
+- name: A Scheduler dokumentációja
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Mi az Azure Scheduler?
+    href: scheduler-intro.md
+- name: Bevezetés
+  items:
+  - name: Feladatok létrehozása és kezelése – portál
+    href: scheduler-get-started-portal.md
+  - name: Migrálás a Schedulerből a Logic Appsba
+    href: migrate-from-scheduler-to-logic-apps.md
+- name: Alapelvek
+  items:
+  - name: Alapfogalmak, terminológia és entitások
+    href: scheduler-concepts-terms.md
+- name: Útmutatók
+  items:
+  - name: Tervezés és kialakítás
+    items:
+    - name: Csomagok és számlázás
+      href: scheduler-plans-billing.md
+    - name: Korlátok, kvóták és alapértelmezett értékek
+      href: scheduler-limits-defaults-errors.md
+    - name: Magas rendelkezésre állás és megbízhatóság
+      href: scheduler-high-availability-reliability.md
+  - name: Fejlesztés
+    items:
+    - name: Komplex ütemezések és speciális ismétlődések létrehozása
+      href: scheduler-advanced-complexity.md
+    - name: Ütemezések létrehozása és felügyelete – Azure PowerShell
+      href: scheduler-powershell-reference.md
+  - name: Biztonságos
+    items:
+    - name: Kimenő hívások hitelesítése
+      href: scheduler-outbound-authentication.md
+- name: Referencia
+  items:
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.scheduler
+  - name: REST API
+    href: /rest/api/scheduler
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.scheduler/allversions
+- name: További források
+  items:
+  - name: Az Azure Scheduler fejlesztési terve
+    href: https://azure.microsoft.com/updates/?product=scheduler
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/updates/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-scheduler
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/scheduler/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=scheduler
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=scheduler
+ms.openlocfilehash: fa4c53b0061f9ef23f8086cdcd6bcc73fc55986c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341475"

@@ -1,0 +1,199 @@
+items:
+- name: A Data Lake Storage Gen1 dokumentációja
+  href: index.md
+- name: A Data Lake Storage Gen2-re történő váltás dokumentációja
+  href: https://docs.microsoft.com/azure/storage/data-lake-storage/introduction
+- name: Áttekintés
+  items:
+  - name: A Data Lake Storage Gen1 áttekintése
+    href: data-lake-store-overview.md
+  - name: Összehasonlítás az Azure Storage szolgáltatással
+    href: data-lake-store-comparison-with-blob-storage.md
+  - name: Big Data feldolgozása
+    href: data-lake-store-data-scenarios.md
+  - name: Nyílt forráskódú alkalmazások használata
+    href: data-lake-store-compatible-oss-other-applications.md
+  - name: Ajánlott eljárások
+    href: data-lake-store-best-practices.md
+- name: Bevezetés
+  items:
+  - name: Az Azure Portal használata
+    href: data-lake-store-get-started-portal.md
+  - name: Az Azure PowerShell használata
+    href: data-lake-store-get-started-powershell.md
+  - name: Az Azure parancssori felület használata
+    href: data-lake-store-get-started-cli-2.0.md
+- name: Útmutató
+  items:
+  - name: Adatok betöltése és áthelyezése
+    items:
+    - name: Az Azure Data Factory használata
+      href: ../data-factory/load-azure-data-lake-store.md
+    - name: A Storage Explorer használata
+      href: data-lake-store-in-storage-explorer.md
+    - name: Az AdlCopy használata
+      href: data-lake-store-copy-data-azure-storage-blob.md
+    - name: A DistCp használata
+      href: data-lake-store-copy-data-wasb-distcp.md
+    - name: A Sqoop használata
+      href: data-lake-store-data-transfer-sql-sqoop.md
+    - name: Adatok feltöltése offline forrásokból
+      href: data-lake-store-offline-bulk-data-upload.md
+    - name: A Data Lake Storage Gen1 migrálása régiók között
+      href: data-lake-store-migration-cross-region.md
+  - name: Adatok védelme
+    items:
+    - name: Biztonsági áttekintés
+      href: data-lake-store-security-overview.md
+    - name: Hozzáférés-vezérlés
+      href: data-lake-store-access-control.md
+    - name: A tárolt adatok védelme
+      href: data-lake-store-secure-data.md
+    - name: Titkosítás
+      href: data-lake-store-encryption.md
+    - name: Virtuális hálózat integrációja
+      href: data-lake-store-network-security.md
+  - name: Hitelesítés az 1. generációs Data Lake Storage szolgáltatással
+    items:
+    - name: Hitelesítési lehetőségek
+      href: data-lakes-store-authentication-using-azure-active-directory.md
+    - name: Végfelhasználói hitelesítés
+      href: data-lake-store-end-user-authenticate-using-active-directory.md
+      items:
+      - name: A Java használata
+        href: data-lake-store-end-user-authenticate-java-sdk.md
+      - name: A .NET SDK használata
+        href: data-lake-store-end-user-authenticate-net-sdk.md
+      - name: A REST API használata
+        href: data-lake-store-end-user-authenticate-rest-api.md
+      - name: A Python használata
+        href: data-lake-store-end-user-authenticate-python.md
+    - name: Szolgáltatások közötti hitelesítés
+      href: data-lake-store-service-to-service-authenticate-using-active-directory.md
+      items:
+      - name: A Java használata
+        href: data-lake-store-service-to-service-authenticate-java.md
+      - name: A .NET SDK használata
+        href: data-lake-store-service-to-service-authenticate-net-sdk.md
+      - name: A REST API használata
+        href: data-lake-store-service-to-service-authenticate-rest-api.md
+      - name: A Python használata
+        href: data-lake-store-service-to-service-authenticate-python.md
+  - name: Az 1. generációs Data Lake Storage használata
+    items:
+    - name: Fiókkezelési műveletek
+      items:
+      - name: A .NET SDK használata
+        href: data-lake-store-get-started-net-sdk.md
+      - name: A REST API használata
+        href: data-lake-store-get-started-rest-api.md
+      - name: A Python használata
+        href: data-lake-store-get-started-python.md
+    - name: Fájlrendszeri műveletek
+      items:
+      - name: A .NET SDK használata
+        href: data-lake-store-data-operations-net-sdk.md
+      - name: A Java SDK használata
+        href: data-lake-store-get-started-java-sdk.md
+      - name: A REST API használata
+        href: data-lake-store-data-operations-rest-api.md
+      - name: A Python használata
+        href: data-lake-store-data-operations-python.md
+  - name: Teljesítmény
+    items:
+    - name: Áttekintés
+      href: data-lake-store-performance-tuning-guidance.md
+    - name: Az Azure PowerShell használata
+      href: data-lake-store-performance-tuning-powershell.md
+    - name: A Spark on HDInsight használata
+      href: data-lake-store-performance-tuning-spark.md
+    - name: A Hive on HDInsight használata
+      href: data-lake-store-performance-tuning-hive.md
+    - name: A MapReduce on HDInsight használata
+      href: data-lake-store-performance-tuning-mapreduce.md
+    - name: A Storm on HDInsight használata
+      href: data-lake-store-performance-tuning-storm.md
+  - name: Integráció az Azure-szolgáltatásokkal
+    items:
+    - name: HDInsighttal
+      items:
+      - name: Az Azure Portal használata
+        href: data-lake-store-hdinsight-hadoop-use-portal.md
+      - name: Az Azure PowerShell használata (alapértelmezett tároló)
+        href: data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md
+      - name: Az Azure PowerShell használata (további tároló)
+        href: data-lake-store-hdinsight-hadoop-use-powershell.md
+      - name: Az Azure-sablon használata
+        href: data-lake-store-hdinsight-hadoop-use-resource-manager-template.md
+    - name: Hozzáférés virtuális gépekről az Azure VNET-ben
+      href: data-lake-store-connectivity-from-vnets.md
+    - name: Használat a Data Lake Analyticsszel
+      href: ../data-lake-analytics/data-lake-analytics-get-started-portal.md
+    - name: Használat az Azure Event Hubs-eseményközpontokkal
+      href: data-lake-store-archive-eventhub-capture.md
+    - name: Használat a Data Factoryval
+      href: ../data-factory/load-azure-data-lake-store.md
+    - name: Használat a Stream Analyticsszel
+      href: data-lake-store-stream-analytics.md
+    - name: Használat a Power BI-jal
+      href: data-lake-store-power-bi.md
+    - name: Használat a Data Cataloggal
+      href: data-lake-store-with-data-catalog.md
+    - name: Használat a PolyBase-zel az SQL Data Warehouse-ban
+      href: ../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md
+    - name: Használat az SQL Server integrációs szolgáltatásaival
+      href: https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager
+    - name: További Azure-integrálási lehetőségek
+      href: data-lake-store-integrate-with-other-services.md
+  - name: Kezelés
+    items:
+    - name: Diagnosztikai naplók elérése
+      href: data-lake-store-diagnostic-logs.md
+    - name: Tervezés magas rendelkezésre álláshoz
+      href: data-lake-store-disaster-recovery-guidance.md
+- name: Referencia
+  items:
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=data-lake-store
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.datalakestore
+  - name: .NET
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet
+  - name: Java
+    href: https://docs.microsoft.com/java/api/overview/azure/datalake?view=azure-java-stable
+  - name: Node.js
+    href: https://www.npmjs.com/package/azure-arm-datalake-store
+  - name: Python (Fiókkezelés)
+    href: https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python
+  - name: Python (Fájlrendszer-kezelés)
+    href: https://azure-datalake-store.readthedocs.io/en/latest
+  - name: REST
+    href: /rest/api/datalakestore
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.datalakestore/allversions
+  - name: Azure CLI
+    href: https://docs.microsoft.com/cli/azure/dls
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/updates/?product=data-lake-store
+  - name: Data Lake Store blog
+    href: https://blogs.msdn.microsoft.com/azuredatalake/
+  - name: Visszajelzés küldése a UserVoice-ról
+    href: https://feedback.azure.com/forums/327234-data-lake
+  - name: MSDN fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-lake-store/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow fórum
+    href: https://stackoverflow.com/questions/tagged/azure-data-lake
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store
+ms.openlocfilehash: 8112eab2dc35ba7ff80cd9f1591d999c1d7d6980
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341220"

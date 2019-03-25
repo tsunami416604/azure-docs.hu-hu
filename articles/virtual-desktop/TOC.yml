@@ -1,0 +1,57 @@
+items:
+- name: Windows Virtual Desktop
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mit takar a Windows Virtual Desktop?
+    href: overview.md
+- name: Oktatóanyagok
+  items:
+  - name: 1. Bérlő létrehozása a Windows Virtual Desktopon
+    href: tenant-setup-azure-active-directory.md
+  - name: 2. Gazdagépcsoport létrehozása az Azure Marketplace-en
+    href: create-host-pools-azure-marketplace.md
+  - name: 3. Alkalmazáscsoportok kezelése
+    href: manage-app-groups.md
+  - name: 4. Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
+    href: create-service-principal-role-powershell.md
+- name: Használati útmutató
+  items:
+  - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
+    items:
+    - name: Kapcsolódás Windows 7-en és Windows 10-en
+      href: connect-windows-7-and-10.md
+    - name: Kapcsolódás a webügyféllel
+      href: connect-web.md
+  - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
+    href: create-host-pools-arm-template.md
+  - name: Gazdagépcsoport létrehozása a PowerShell-lel
+    href: create-host-pools-powershell.md
+  - name: Felhasználói profil megosztásának beállítása a gazdagépcsoporton
+    href: create-host-pools-user-profile.md
+  - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
+    href: configure-host-pool-load-balancing.md
+  - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+    href: diagnostics-role-service.md
+  - name: Fő VHD-rendszerkép létrehozása és testreszabása
+    href: set-up-customize-master-image.md
+  - name: Munkamenetgazdák automatikus méretezése
+    href: set-up-scaling-script.md
+- name: Alapelvek
+  items:
+  - name: A Windows Virtual Desktop környezete
+    href: environment-setup.md
+  - name: Delegált hozzáférés a Windows Virtual Desktopon
+    href: delegated-access-virtual-desktop.md
+  - name: Gazdagépcsoport terheléselosztási módszerei
+    href: host-pool-load-balancing.md
+- name: Referencia
+  items:
+  - name: PowerShell
+    href: /powershell/windows-virtual-desktop/overview
+ms.openlocfilehash: 2f321b25d6ba1ad8545bf161dd37e270890efcec
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318769"

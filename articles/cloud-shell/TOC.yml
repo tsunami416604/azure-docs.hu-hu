@@ -1,0 +1,59 @@
+items:
+- name: Áttekintés
+  href: overview.md
+- name: Első lépések
+  items:
+  - name: Bash – Rövid útmutató
+    href: quickstart.md
+  - name: PowerShell – Rövid útmutató
+    href: quickstart-powershell.md
+- name: Funkciók és eszközök
+  items:
+  - name: Funkciók és eszközök
+    href: features.md
+- name: Oktatóanyagok
+  items:
+  - name: Ansible
+    items:
+    - name: Ansible-forgatókönyv futtatása
+      href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+    - name: Az Azure-beli dinamikus leltárak kezelése
+      href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+  - name: Terraform
+    items:
+    - name: Végrehajtási terv létrehozása
+      href: example-terraform-bash.md
+- name: Útmutatók
+  items:
+  - name: PowerShell Cloud Shell Windows-felhasználóknak
+    href: cloud-shell-windows-users.md
+  - name: Fájlok megőrzése tárolóban
+    href: persisting-shell-storage.md
+  - name: Az ablak használata
+    href: using-the-shell-window.md
+  - name: MSI használata a Cloud Shellben
+    href: msi-authorization.md
+  - name: Cloud Shell beágyazása
+    href: embed-cloud-shell.md
+- name: A Cloud Shell-szerkesztő használata
+  href: using-cloud-shell-editor.md
+- name: Hibaelhárítás és korlátozások
+  href: troubleshooting.md
+- name: Referencia
+  items:
+  - name: Azure CLI
+    href: /cli/azure
+  - name: Azure PowerShell
+    href: /powershell/azure
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 873308d775fd7451d89bd05771d3a1c5f5e22995
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341305"

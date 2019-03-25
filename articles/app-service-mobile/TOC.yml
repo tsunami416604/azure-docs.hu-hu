@@ -1,0 +1,322 @@
+items:
+- name: A Mobile Apps dokumentációja
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Mi a Mobile Apps szolgáltatás?
+    href: app-service-mobile-value-prop.md
+  - name: App Service-csomagok
+    href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: Gyors útmutatók
+  items:
+  - name: Android
+    href: app-service-mobile-android-get-started.md
+  - name: Cordova
+    href: app-service-mobile-cordova-get-started.md
+  - name: iOS
+    href: app-service-mobile-ios-get-started.md
+  - name: Windows
+    href: app-service-mobile-windows-store-dotnet-get-started.md
+  - name: Xamarin.Android
+    href: app-service-mobile-xamarin-android-get-started.md
+  - name: Xamarin.Forms
+    href: app-service-mobile-xamarin-forms-get-started.md
+  - name: Xamarin.iOS
+    href: app-service-mobile-xamarin-ios-get-started.md
+- name: Útmutató
+  items:
+  - name: Tervezés és kialakítás
+    items:
+    - name: Hitelesítés és engedélyezés az Azure Mobile Apps megoldásban
+      href: app-service-mobile-auth.md
+    - name: Kapcsolat nélküli adatszinkronizálás az Azure Mobile Apps megoldásban
+      href: app-service-mobile-offline-data-sync.md
+    - name: Azure App Service – ajánlott eljárások
+      href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Az App Service-csomagok részletes áttekintése
+      href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Nagy sűrűségű üzemeltetés
+      href: ../app-service/manage-scale-per-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service-környezet
+      href: ../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Fejlesztés
+    items:
+    - name: Android
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-android-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-android-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-android-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-android-how-to-use-client-library.md
+    - name: Cordova
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-cordova-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-cordova-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-cordova-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        items:
+        - name: Cordova
+          href: app-service-mobile-cordova-how-to-use-client-library.md
+        - name: Javascript/HTML
+          href: app-service-mobile-html-how-to-use-client-library.md
+    - name: iOS
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-ios-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-ios-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-ios-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-ios-how-to-use-client-library.md
+    - name: Windows
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-windows-store-dotnet-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-windows-store-dotnet-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Android
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-xamarin-android-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-xamarin-android-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-xamarin-android-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.Forms
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-xamarin-forms-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-xamarin-forms-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-xamarin-forms-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: Xamarin.iOS
+      items:
+      - name: Offline szinkronizálás engedélyezése
+        href: app-service-mobile-xamarin-ios-get-started-offline-data.md
+      - name: Hitelesítés hozzáadása
+        href: app-service-mobile-xamarin-ios-get-started-users.md
+      - name: Leküldéses értesítések hozzáadása
+        href: app-service-mobile-xamarin-ios-get-started-push.md
+      - name: Az ügyfél-SDK használata
+        href: app-service-mobile-dotnet-how-to-use-client-library.md
+    - name: A kiszolgáló SDK használata
+      items:
+      - name: .NET-háttérrendszer
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+      - name: Node.js háttérrendszer
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md
+      - name: Ügyfél- és kiszolgálóoldali verziószámozás
+        href: app-service-mobile-client-and-server-versioning.md
+    - name: App Service-környezet
+      items:
+      - name: Webalkalmazás létrehozása Azure App Service-környezetben
+        href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Belső terheléselosztó létrehozása és használata
+        href: ../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: ASE létrehozása sablon használatával
+        href: ../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Üzembe helyezés
+    items:
+    - name: Felhőalapú szinkronizálás üzembe helyezése
+      href: ../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Folyamatos üzembe helyezés
+      href: ../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Átmeneti környezetek
+      href: ../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Git helyi üzemelő példánya
+      href: ../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Az Azure Resource Manager üzembe helyezése
+      href: ../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Méretezés
+    items:
+    - name: Alkalmazás vertikális felskálázás
+      href: ../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service-környezet
+      href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      items:
+      - name: Földrajzi alapú méretezés App Service-környezetekkel
+        href: ../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Alkalmazások méretezése App Service-környezetben
+        href: ../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md
+      - name: Automatikus skálázás App Service-környezetben
+        href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Kezelés
+    items:
+    - name: Konfigurálás
+      href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Egyéni tartományok
+      items:
+      - name: Egyéni tartományok vásárlása és konfigurálása
+        href: ../app-service/manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Saját egyéni tartomány leképezése
+        href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Egyéni tartományok létrehozása a Traffic Managerrel
+        href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Meglévő alkalmazás klónozása
+      href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure Virtual Network
+      href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Erőforráscsoportok
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations
+      items:
+      - name: Háttérfeladatok futtatása WebJobs-feladatokkal
+        href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Konfigurálás
+        href: ../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Egyéni konfigurációs beállítások
+        href: ../app-service/environment/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Bejövő forgalom szabályozása
+        href: ../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: A hálózati architektúra áttekintése
+        href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Hálózati konfiguráció részletei az ExpressRoute-tal
+        href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Migrate (Áttelepítés)
+    items:
+    - name: A Mobile Services és az App Services összehasonlítása
+      href: app-service-mobile-value-prop-migration-from-mobile-services.md
+    - name: Meglévő Mobile Service migrálása az App Service alá
+      href: app-service-mobile-migrating-from-mobile-services.md
+    - name: Meglévő Mobile Service frissítése az App Service-re
+      items:
+      - name: .NET-háttérrendszer
+        href: app-service-mobile-net-upgrading-from-mobile-services.md
+      - name: Node.js háttérrendszer
+        href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
+  - name: Biztonságos
+    items:
+    - name: Hitelesítés identitásszolgáltatókkal
+      items:
+      - name: Hitelesítés Azure Active Directory-fiókkal
+        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Hitelesítés Facebook-fiókkal
+        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Hitelesítés Google-fiókkal
+        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Hitelesítés Microsoft-fiókkal
+        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Hitelesítés Twitter-fiókkal
+        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: HTTPS
+      items:
+      - name: TLS kölcsönös hitelesítés beállítása
+        href: ../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: SSL-tanúsítvány vásárlása az Azure-ban
+        href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Máshol beszerzett SSL-tanúsítvány használata
+        href: ../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: App Service-környezet védelme
+      items:
+      - name: Webalkalmazási tűzfal konfigurálása
+        href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Többrétegű biztonsági architektúra megvalósítása
+        href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+      - name: Biztonságos csatlakozás a háttérerőforrásokhoz
+        href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Backup
+    items:
+    - name: Adatok biztonsági mentése az Azure-ban
+      href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Alkalmazás visszaállítása az Azure-ban
+      href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Figyelés
+    href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    items:
+    - name: Diagnosztikai naplózás engedélyezése
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Hibaelhárítás a Visual Studióval
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Integrálás
+    items:
+    - name: E-mail küldése a SendGrid és az Azure használatával
+      href: ../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Exportálás a PowerAppsbe és a Microsoft Flow-ba
+      href: ../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Felügyelt identitás használata
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Hibaelhárítás
+    items:
+    - name: Mobile Apps általános hibaelhárítás
+      items:
+      - name: .NET-háttérrendszer
+        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk
+      - name: Node.js háttérrendszer
+        href: app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging
+    - name: Diagnosztikai naplózás engedélyezése
+      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Hibaelhárítás a Visual Studióval
+      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+- name: Referencia
+  items:
+  - name: .NET háttérrendszeri SDK
+    href: https://msdn.microsoft.com/library/azure/dn961176.aspx
+  - name: Node.js háttérrendszeri SDK
+    href: https://azure.github.io/azure-mobile-apps-node/
+  - name: Android ügyfél-SDK
+    href: https://azure.github.io/azure-mobile-apps-android-client/
+  - name: iOS ügyfél-SDK
+    href: https://azure.github.io/azure-mobile-apps-ios-client/
+  - name: JavaScript/Cordova ügyfél-SDK
+    href: https://azure.github.io/azure-mobile-apps-js-client/
+  - name: Windows/Xamarin ügyfél-SDK
+    href: https://msdn.microsoft.com/library/azure/mt419521.aspx
+- name: Kapcsolódó témakörök
+  items:
+  - name: GitHub-adattárak
+    href: https://github.com/Azure/azure-mobile-apps
+- name: További források
+  items:
+  - name: App Service – ajánlott eljárások
+    href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/app-service/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=mobile-services
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-mobile-services
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=mobile-services
+  - name: Példák
+    items:
+    - name: Kihelyezett mérnök
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/
+    - name: Strukturált adatszinkronizálás
+      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/
+    - name: A gyorsindítás befejeződött
+      items:
+      - name: .NET-háttérrendszer
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/
+      - name: Node.js háttérrendszer
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/
+      - name: Windows
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/
+      - name: Xamarin.Android
+        href: https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/
+ms.openlocfilehash: b7aa7664e7261233cda211b3d206432f388c4e87
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341203"

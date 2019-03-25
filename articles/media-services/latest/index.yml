@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fdda67921db38b912679d27bf5a8c897775ad82b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4e80fd18de40c7df806f0a72612cec7bb71e2d2
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137990"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339181"
 documentType: LandingData
 title: Az Azure Media Services v3 dokumentációja
 metadata:
@@ -18,11 +18,27 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10-15-2018
+  ms.date: 03/20/2019
   ms.author: juliako
 abstract:
   description: Ismerje meg, hogyan streamelhet videókat igény szerint, hogyan közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services v3 használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is. <br/> Az SDK-k alapját a <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI specifikáció (Swagger)</a> képezi.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - image:
+        src: 
+      html: <p>További tudnivalók a Media Services alapvető fogalmairól.</p>
+      href: /azure/media-services/latest/concepts-overview/
+      title: Az alapvető fogalmak
+    - image:
+        src: 
+      html: <p>Jelenleg az Azure Portalon nem felügyelheti a v3 verziójú erőforrásokat. Használja a REST API-t, a parancssori felületet vagy valamelyik támogatott SDK-t.</p>
+      href: /azure/media-services/latest/developers-guide/
+      title: Fejlesztés a v3 API-val
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph

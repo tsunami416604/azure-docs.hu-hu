@@ -1,0 +1,434 @@
+items:
+- name: StorSimple-dokumentáció
+  href: index.md
+- name: StorSimple Virtual Array
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a megoldás?
+      href: storsimple-ova-overview.md
+  - name: Bevezetés
+    items:
+    - name: Felkészülés
+      items:
+      - name: Követelmények áttekintése
+        href: storsimple-ova-system-requirements.md
+      - name: A korlátozások ismertetése
+        href: storsimple-ova-limits.md
+      - name: Az ajánlott eljárások áttekintése
+        href: storsimple-ova-best-practices.md
+    - name: Üzembe helyezés
+      items:
+      - name: Az üzembe helyezés előkészítése
+        href: storsimple-virtual-array-deploy1-portal-prep.md
+        items:
+        - name: A StorSimple Manager szolgáltatás üzembe helyezése
+          href: storsimple-virtual-array-manage-service.md
+        - name: Új hitelesítés
+          href: storsimple-virtual-array-aad-registration-key.md
+      - name: Üzembe helyezés Hyper-V rendszerben
+        href: storsimple-virtual-array-deploy2-provision-hyperv.md
+      - name: Üzembe helyezés VMware rendszerben
+        href: storsimple-virtual-array-deploy2-provision-vmware.md
+      - name: Beállítás fájlkiszolgálóként
+        href: storsimple-virtual-array-deploy3-fs-setup.md
+      - name: Beállítás iSCSI-kiszolgálóként
+        href: storsimple-virtual-array-deploy3-iscsi-setup.md
+  - name: Útmutató
+    items:
+    - name: Kezelés az Azure Portalon
+      href: storsimple-virtual-array-manager-service-administration.md
+      items:
+      - name: A legújabb frissítés telepítése
+        href: storsimple-virtual-array-install-update-11.md
+        items:
+        - name: Az 1-es frissítés telepítése
+          href: storsimple-virtual-array-install-update-1.md
+        - name: A 0.6-os frissítés telepítése
+          href: storsimple-virtual-array-install-update-06.md
+        - name: Archívum
+          items:
+          - name: A 0.5-ös frissítés telepítése
+            href: storsimple-virtual-array-install-update-05.md
+          - name: A 0.4-es frissítés telepítése
+            href: storsimple-virtual-array-install-update-04.md
+          - name: A 0.3-as frissítés telepítése
+            href: storsimple-virtual-array-install-update.md
+      - name: Biztonsági másolatok létrehozása és kezelése
+        href: storsimple-virtual-array-backup.md
+      - name: Klónozás biztonsági mentésből
+        href: storsimple-virtual-array-clone.md
+      - name: Feladatátvétel és vészhelyreállítás
+        href: storsimple-virtual-array-failover-dr.md
+      - name: Inaktiválás és törlés
+        href: storsimple-virtual-array-deactivate-and-delete-device.md
+      - name: Megosztások kezelése
+        href: storsimple-virtual-array-manage-shares.md
+      - name: Kötetek kezelése
+        href: storsimple-virtual-array-manage-volumes.md
+      - name: Szolgáltatás összegzésének megtekintése
+        href: storsimple-virtual-array-service-summary.md
+      - name: Eszköz összegzésének megtekintése
+        href: storsimple-virtual-array-device-summary.md
+      - name: Tárfiókok kezelése
+        href: storsimple-virtual-array-manage-storage-accounts.md
+      - name: ACR-ek kezelése
+        href: storsimple-virtual-array-manage-acrs.md
+      - name: Feladatok kezelése
+        href: storsimple-virtual-array-manage-jobs.md
+      - name: Az eszköz jelszavának módosítása
+        href: storsimple-virtual-array-change-device-admin-password.md
+      - name: Monitorozás riasztások segítségével
+        href: storsimple-virtual-array-manage-alerts.md
+      - name: Diagnosztika és hibaelhárítás
+        href: storsimple-virtual-array-diagnose-problems.md
+      - name: Naplótámogatási kérelem
+        href: storsimple-virtual-array-log-support-ticket.md
+    - name: Konfigurálás helyi webes felhasználói felületen
+      href: storsimple-ova-web-ui-admin.md
+  - name: Kibocsátási megjegyzések
+    items:
+    - name: 1.1-es frissítés – aktuális
+      href: storsimple-virtual-array-update-11-release-notes.md
+    - name: 1. frissítés
+      href: storsimple-virtual-array-update-1-release-notes.md
+    - name: 0.6-os frissítés
+      href: storsimple-virtual-array-update-06-release-notes.md
+    - name: Archívum
+      items:
+      - name: 0.5-ös frissítés
+        href: storsimple-virtual-array-update-05-release-notes.md
+      - name: 0.4-es frissítés
+        href: storsimple-virtual-array-update-04-release-notes.md
+      - name: 0.3-as frissítés
+        href: storsimple-ova-update-03-release-notes.md
+      - name: 0.2-es és 0.1-es frissítés
+        href: storsimple-ova-update-01-release-notes.md
+- name: StorSimple 8000 sorozat (Azure Portal)
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a megoldás?
+      href: storsimple-overview.md
+    - name: Adatátviteli lehetőségek összehasonlítása
+      href: storsimple-8000-choose-storage-solution.md
+    - name: StorSimple – tanulási térkép
+      href: https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/
+    - name: Biztonsági szempontok
+      href: storsimple-8000-security.md
+    - name: Régiónkénti elérhetőség
+      href: storsimple-regions.md
+  - name: Bevezetés
+    items:
+    - name: Felkészülés
+      items:
+      - name: Követelmények áttekintése
+        href: storsimple-8000-system-requirements.md
+      - name: A műszaki specifikációk áttekintése
+        href: storsimple-8000-technical-specifications-and-compliance.md
+      - name: A korlátozások ismertetése
+        href: storsimple-8000-limits.md
+      - name: Ajánlott eljárások
+        href: https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68
+    - name: Telepítés
+      items:
+      - name: Biztonsági kérdések áttekintése
+        href: storsimple-8000-safety.md
+      - name: A 8100-as típus kicsomagolása, szekrényre szerelése és bekábelezése
+        href: storsimple-8100-hardware-installation.md
+      - name: A 8600-as típus kicsomagolása, szekrényre szerelése és bekábelezése
+        href: storsimple-8600-hardware-installation.md
+      - name: 10 GbE hálózati adapterek támogatott hardverei
+        href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
+    - name: Üzembe helyezés
+      items:
+      - name: StorSimple-eszközkezelő szolgáltatás
+        href: storsimple-8000-manage-service.md
+      - name: Új hitelesítés szolgáltatáshoz
+        href: storsimple-8000-aad-registration-key.md
+      - name: Fizikai eszköz az Azure-ban
+        href: storsimple-8000-deployment-walkthrough-u2.md
+      - name: Fizikai eszköz a Government Portalon
+        href: storsimple-8000-deployment-walkthrough-gov-u2.md
+      - name: Felhőalapú berendezés az Azure-ban
+        href: storsimple-8000-cloud-appliance-u2.md
+      - name: StorSimple Snapshot Manager
+        href: storsimple-snapshot-manager-deployment.md
+      - name: SharePointhoz készült StorSimple-adapter
+        href: storsimple-adapter-for-sharepoint.md
+  - name: Útmutató
+    items:
+    - name: Kezelés
+      items:
+      - name: A StorSimple Manager szolgáltatás használata
+        href: storsimple-8000-manager-service-administration.md
+        items:
+        - name: Visszaállítás biztonsági mentésből
+          href: storsimple-8000-restore-from-backup-set-u2.md
+        - name: Kötet klónozása
+          href: storsimple-8000-clone-volume-u2.md
+        - name: Csatlakozás az eszközhöz távolról
+          href: storsimple-8000-remote-connect.md
+        - name: Az eszköz inaktiválása és törlése
+          href: storsimple-8000-deactivate-and-delete-device.md
+        - name: Az eszköz feladatainak átadása
+          href: storsimple-8000-device-failover-disaster-recovery.md
+          items:
+          - name: Feladatátvétel fizikai eszközre
+            href: storsimple-8000-device-failover-physical-device.md
+          - name: Feladatátvétel felhőalapú berendezésre
+            href: storsimple-8000-device-failover-cloud-appliance.md
+          - name: Feladatátvétel ugyanarra az eszközre
+            href: storsimple-8000-device-failover-same-device.md
+        - name: A biztonságimásolat-katalógus kezelése
+          href: storsimple-8000-manage-backup-catalog.md
+        - name: Biztonsági mentési szabályzatok kezelése
+          href: storsimple-8000-manage-backup-policies-u2.md
+        - name: Tárfiókok kezelése
+          href: storsimple-8000-manage-storage-accounts.md
+        - name: Kötettárolók kezelése
+          href: storsimple-8000-manage-volume-containers.md
+        - name: Kötetek kezelése – aktuális
+          href: storsimple-8000-manage-volumes-u2.md
+          items:
+          - name: 'GYIK: Helyileg rögzített kötetek'
+            href: storsimple-8000-local-volume-faq.md
+        - name: Szerepköralapú hozzáférés-vezérlés
+          href: storsimple-8000-role-based-access-control.md
+        - name: ACR-ek kezelése
+          href: storsimple-8000-manage-acrs.md
+        - name: Sávszélességsablonok kezelése
+          href: storsimple-8000-manage-bandwidth-templates.md
+        - name: Feladatok megtekintése és kezelése
+          href: storsimple-8000-manage-jobs-u2.md
+        - name: Az eszköz üzemmódjának módosítása
+          href: storsimple-8000-device-modes.md
+        - name: Az eszköz jelszavának módosítása
+          href: storsimple-8000-change-passwords.md
+        - name: Az eszköz konfigurációjának módosítása
+          href: storsimple-8000-modify-device-config.md
+        - name: Be- és kikapcsolás
+          href: storsimple-turn-device-on-or-off.md
+        - name: Az MPIO konfigurálása Windows Server-gazdagépen
+          href: storsimple-8000-configure-mpio-windows-server.md
+        - name: Az MPIO konfigurálása Linux-gazdagépen
+          href: storsimple-configure-mpio-on-linux.md
+        - name: A CHAP konfigurálása
+          href: storsimple-8000-configure-chap.md
+      - name: A Windows PowerShell StorSimple-bővítményének használata
+        href: storsimple-8000-windows-powershell-administration.md
+        items:
+        - name: Az eszközvezérlő kezelése
+          href: storsimple-8000-manage-device-controller.md
+        - name: A webproxy konfigurálása
+          href: storsimple-8000-configure-web-proxy.md
+        - name: A DATA 0 beállításainak módosítása
+          href: storsimple-8000-modify-data-0.md
+      - name: A StorSimple Snapshot Manager használata
+        href: storsimple-snapshot-manager-admin.md
+        items:
+        - name: Mi az a StorSimple Snapshot Manager?
+          href: storsimple-what-is-snapshot-manager.md
+        - name: További információk a StorSimple Snapshot Manager felületéről
+          href: storsimple-use-snapshot-manager.md
+        - name: Eszközkezelés a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-devices.md
+        - name: Biztonsági mentési házirendek kezelése a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-backup-policies.md
+        - name: Kötetcsoportok kezelése a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-volume-groups.md
+        - name: Biztonságimásolat-katalógus kezelése a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-backup-catalog.md
+        - name: Biztonsági mentési feladatok kezelése a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-backup-jobs.md
+        - name: Kötetek kezelése a StorSimple Snapshot Managerrel
+          href: storsimple-snapshot-manager-manage-volumes.md
+        - name: MMC-műveletek használata a StorSimple Snapshot Managerben
+          href: storsimple-snapshot-manager-mmc-menu.md
+    - name: Automatizálás
+      items:
+      - name: Azure PowerShell-mintaszkriptek használata
+        href: storsimple-8000-automation-azurerm-scripts.md
+      - name: Azure Automation-runbookok használata
+        href: storsimple-8000-automation-azurerm-runbook.md
+    - name: Megoldások kiépítése
+      items:
+      - name: StorSimple Veeammel
+        href: storsimple-configure-backup-target-veeam.md
+      - name: StorSimple Veritas Backup Execkel
+        href: storsimple-configure-backup-target-using-backup-exec.md
+      - name: StorSimple Veritas NetBackuppal
+        href: storsimple-configure-backuptarget-netbackup.md
+      - name: Fájlkiszolgáló Azure-ra történő vészhelyreállításának automatizálása
+        href: storsimple-disaster-recovery-using-azure-site-recovery.md
+      - name: StorSimple Express Route-tal
+        href: https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content
+      - name: StorSimple VMware-rel
+        href: https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463
+      - name: StorSimple Hyper-V-vel
+        href: https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6
+      - name: Elosztott globális névtér
+        href: https://www.microsoft.com/download/details.aspx?id=45507
+    - name: Figyelés
+      items:
+      - name: Szolgáltatás összegzésének használata
+        href: storsimple-8000-service-dashboard.md
+      - name: Eszköz összegzésének használata
+        href: storsimple-8000-device-dashboard.md
+      - name: Monitorozási diagramok használata
+        href: storsimple-8000-monitor-device.md
+      - name: Szolgáltatásriasztások használata
+        href: storsimple-8000-manage-alerts.md
+      - name: Hardverállapot használata
+        href: storsimple-8000-monitor-hardware-status.md
+      - name: Figyelési LED-ek használata
+        href: storsimple-monitoring-indicators.md
+    - name: Hibaelhárítás
+      items:
+      - name: Üzembe helyezési problémák
+        href: storsimple-8000-troubleshoot-deployment.md
+      - name: Diagnosztikai eszköz használata
+        href: storsimple-8000-diagnostics.md
+      - name: Működési problémák
+        href: storsimple-troubleshoot-operational-device.md
+      - name: Hardver cseréje
+        href: storsimple-8000-hardware-component-replacement.md
+        items:
+        - name: Az eszközvezérlő cseréje
+          href: storsimple-8000-controller-replacement.md
+        - name: Az EBOD-vezérlő cseréje
+          href: storsimple-8000-ebod-controller-replacement.md
+        - name: A PCM cseréje
+          href: storsimple-8000-power-cooling-module-replacement.md
+        - name: A lemezmeghajtó cseréje
+          href: storsimple-8000-disk-drive-replacement.md
+        - name: A biztonsági mentési akkumulátor cseréje
+          href: storsimple-8000-battery-replacement.md
+        - name: A ház cseréje
+          href: storsimple-8000-chassis-replacement.md
+      - name: Kapcsolatfelvétel a támogatási szolgáltatással
+        href: storsimple-8000-contact-microsoft-support.md
+        items:
+        - name: Támogatási csomag létrehozása
+          href: storsimple-8000-create-manage-support-package.md
+    - name: Migrate (Áttelepítés)
+      items:
+      - name: Előfizetések és tárfiókok
+        href: storsimple-8000-migrate-classic-azure-portal.md
+      - name: Az 5000/7000 sorozat eszközeiről
+        href: storsimple-8000-migration-options.md
+        items:
+        - name: A StorSimple 8000 sorozat eszközeire
+          href: storsimple-8000-migrate-from-5000-7000.md
+        - name: Az Azure File Syncre
+          href: storsimple-5000-7000-afs-migration.md
+      - name: Egyéb tárolóeszközökből
+        href: https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf
+    - name: Frissítés
+      items:
+      - name: A 5-ös frissítés telepítése – aktuális
+        href: storsimple-8000-install-update-5.md
+      - name: A 4-es frissítés telepítése
+        href: storsimple-8000-install-update-4.md
+  - name: Kibocsátási megjegyzések
+    items:
+    - name: 5-ös frissítés – aktuális
+      href: storsimple-update5-release-notes.md
+    - name: 4-es frissítés
+      href: storsimple-update4-release-notes.md
+    - name: Archívum
+      items:
+      - name: 3-as frissítés
+        href: storsimple-update3-release-notes.md
+      - name: 2.2-es frissítés
+        href: storsimple-update21-release-notes.md
+      - name: 2. frissítés
+        href: storsimple-update2-release-notes.md
+      - name: 1. frissítés
+        href: storsimple-update1-release-notes.md
+      - name: 0.3-as frissítés
+        href: storsimple-february-2015-release-notes.md
+      - name: 0.2-es frissítés
+        href: storsimple-january-2015-release-notes.md
+      - name: 0.1-es frissítés
+        href: storsimple-october-2014-release-notes.md
+      - name: Kiadás – GA
+        href: storsimple-july-2014-release-notes.md
+  - name: Referencia
+    items:
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/storsimple
+    - name: A Windows PowerShell StorSimple-bővítményének parancsmagjai
+      href: https://technet.microsoft.com/library/dn688168.aspx
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.storsimple/allversions
+- name: StorSimple Data Manager
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a megoldás?
+      href: storsimple-data-manager-overview.md
+  - name: Bevezetés
+    items:
+    - name: A StorSimple Data Manager használata
+      href: storsimple-data-manager-ui.md
+  - name: Útmutató
+    items:
+    - name: A .NET használata feladatok indításához
+      href: storsimple-data-manager-dotnet-jobs.md
+    - name: Az Automation használata feladatok indításához
+      href: storsimple-data-manager-job-using-automation.md
+    - name: Blob alapértelmezett elérési útjának módosítása
+      href: storsimple-data-manager-change-default-blob-path.md
+- name: StorSimple partnerek számára
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a megoldás?
+      href: storsimple-partner-csp-overview.md
+  - name: Bevezetés
+    items:
+    - name: Virtuális tömb telepítése CSP-hez
+      href: storsimple-partner-csp-deploy.md
+  - name: Kibocsátási megjegyzések
+    items:
+    - name: A StorSimple kibocsátási megjegyzései
+      href: https://aka.ms/storsimple-virtual-array-latest-relnote
+    - name: A CSP kibocsátási megjegyzései
+      href: https://partner.microsoft.com/Support/whats-new
+    - name: 'StorSimple CSP-hez: GYIK'
+      href: storsimple-partner-csp-faq.md
+- name: Kapcsolódó témakörök
+  items:
+  - name: StorSimple 5000-7000-es sorozat
+    href: http://onlinehelp.storsimple.com
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Marketing blog
+    href: http://blogs.technet.com/b/cis/
+  - name: Marketing
+    href: https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx
+  - name: A StorSimple támogatási lehetőségei
+    href: storsimple-8000-support-options.md
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/storsimple/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=storsimple
+  - name: Támogatási blog
+    href: https://blogs.msdn.com/b/storsimple/
+  - name: Harmadik felekkel kapcsolatos közlemények
+    href: https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=storsimple
+ms.openlocfilehash: 6879dd240dc070483a7d97536a5fa365108af5f1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341135"

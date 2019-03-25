@@ -1,0 +1,168 @@
+items:
+- name: Analysis Services – dokumentáció
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Mi az Analysis Services?
+    href: analysis-services-overview.md
+- name: Gyors útmutatók
+  items:
+  - name: Kiszolgáló létrehozása – Portal
+    href: analysis-services-create-server.md
+  - name: Kiszolgáló létrehozása – PowerShell
+    href: analysis-services-create-powershell.md
+  - name: Kiszolgáló tűzfalának konfigurálása – Portal
+    href: analysis-services-qs-firewall.md
+- name: Oktatóanyagok
+  items:
+  - name: 1 – Mintamodell hozzáadása a portálról
+    href: analysis-services-create-sample-model.md
+  - name: 2 – A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása
+    href: tutorials/analysis-services-tutorial-roles.md
+  - name: 3 – Kapcsolódás Power BI Desktoppal
+    href: tutorials/analysis-services-tutorial-pbid.md
+- name: Alapelvek
+  items:
+  - name: Hitelesítés és felhasználói engedélyek
+    href: analysis-services-manage-users.md
+  - name: Automatizálás szolgáltatásnevekkel
+    href: analysis-services-service-principal.md
+  - name: Ügyfélkódtárak
+    href: analysis-services-data-providers.md
+  - name: Kompatibilitási szint
+    href: analysis-services-compat-level.md
+  - name: Csatlakozás helyszíni adatforrásokhoz
+    href: analysis-services-gateway.md
+  - name: Kapcsolódás kiszolgálókhoz
+    href: analysis-services-connect.md
+  - name: Magas rendelkezésre állás
+    href: analysis-services-bcdr.md
+  - name: Támogatott adatforrások
+    href: analysis-services-datasource.md
+- name: Használati útmutató
+  items:
+  - name: Kiszolgáló
+    items:
+    - name: Biztonsági mentés és visszaállítás
+      href: analysis-services-backup.md
+    - name: Kiszolgálónév aliasának konfigurálása
+      href: analysis-services-server-alias.md
+    - name: Horizontális felskálázás konfigurálása
+      href: analysis-services-scale-out.md
+    - name: Helyszíni adatátjáró telepítése és konfigurálása
+      href: analysis-services-gateway-install.md
+    - name: Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton
+      href: analysis-services-vnet-gateway.md
+    - name: Kiszolgáló kezelése
+      href: analysis-services-manage.md
+    - name: A kiszolgáló metrikáinak monitorozása
+      href: analysis-services-monitor.md
+    - name: Diagnosztikai naplózás beállítása
+      href: analysis-services-logging.md
+    - name: Szolgáltatásnév létrehozása – Azure Portal
+      href: ../active-directory/develop/howto-create-service-principal-portal.md
+    - name: Szolgáltatásnév létrehozása – PowerShell
+      href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
+    - name: Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
+      href: analysis-services-addservprinc-admins.md
+  - name: Modell
+    items:
+    - name: Üzembe helyezés a Visual Studióból (SSDT)
+      href: analysis-services-deploy.md
+    - name: Frissítés a REST API-val
+      href: analysis-services-async-refresh.md
+    - name: Adatmodellezés a Visual Studióban – útmutató az Adventure Workshöz (1400)
+      href: tutorials/aas-adventure-works-tutorial.md
+      items:
+      - name: 1 – Táblázatos modellprojekt létrehozása
+        href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
+      - name: 2 – Az adatok beszerzése
+        href: tutorials/aas-lesson-2-get-data.md
+      - name: 3 – Megjelölés dátumtáblaként
+        href: tutorials/aas-lesson-3-mark-as-date-table.md
+      - name: 4 – Kapcsolatok létrehozása
+        href: tutorials/aas-lesson-4-create-relationships.md
+      - name: 5 – Számított oszlopok létrehozása
+        href: tutorials/aas-lesson-5-create-calculated-columns.md
+      - name: 6 – Mértékek létrehozása
+        href: tutorials/aas-lesson-6-create-measures.md
+      - name: 7 – Fő teljesítménymutatók létrehozása
+        href: tutorials/aas-lesson-7-create-key-performance-indicators.md
+      - name: 8 – Perspektívák létrehozása
+        href: tutorials/aas-lesson-8-create-perspectives.md
+      - name: 9 – Hierarchiák létrehozása
+        href: tutorials/aas-lesson-9-create-hierarchies.md
+      - name: 10 – Partíciók létrehozása
+        href: tutorials/aas-lesson-10-create-partitions.md
+      - name: 11 – Szerepkörök létrehozása
+        href: tutorials/aas-lesson-11-create-roles.md
+      - name: 12 – Elemzés az Excelben
+        href: tutorials/aas-lesson-12-analyze-in-excel.md
+      - name: 13 – Üzembe helyezés
+        href: tutorials/aas-lesson-13-deploy.md
+      - name: Kiegészítő lecke – Részletsorok
+        href: tutorials/aas-supplemental-lesson-detail-rows.md
+      - name: Kiegészítő lecke – Dinamikus biztonság
+        href: tutorials/aas-supplemental-lesson-dynamic-security.md
+      - name: Kiegészítő lecke – Hézagos hierarchiák
+        href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+  - name: Biztonság
+    items:
+    - name: Adatbázis-felhasználók kezelése
+      href: analysis-services-database-users.md
+    - name: A kiszolgálók rendszergazdáinak kezelése
+      href: analysis-services-server-admins.md
+  - name: Kapcsolódás
+    items:
+    - name: Kapcsolódás Excellel
+      href: analysis-services-connect-excel.md
+    - name: Kapcsolódás Power BI-jal
+      href: analysis-services-connect-pbi.md
+    - name: .odc fájl létrehozása
+      href: analysis-services-odc.md
+- name: Referencia
+  items:
+  - name: PowerShell
+    href: analysis-services-powershell.md
+  - name: REST
+    href: /rest/api/analysisservices
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.analysisservices/servers
+  - name: DAX
+    href: https://msdn.microsoft.com/library/gg413422.aspx
+  - name: Power Query M
+    href: https://msdn.microsoft.com/library/mt211003.aspx
+  - name: Táblázatos modell parancsnyelve (TMSL)
+    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference
+  - name: Táblázatos objektummodell (TOM)
+    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo
+  - name: Erőforrás- és objektumkorlátok
+    href: analysis-services-capacity-limits.md
+- name: További források
+  items:
+  - name: Példák
+    href: analysis-services-samples.md
+  - name: Az Analysis Services csapatának blogja
+    href: https://blogs.msdn.microsoft.com/analysisservices/
+  - name: Azure Analysis Services fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
+  - name: Az Azure állapota
+    href: https://azure.microsoft.com/status/
+  - name: Visszajelzés
+    href: https://feedback.azure.com/forums/556165-azure-analysis-services
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/analysis-services/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-analysis-services
+  - name: Videók
+    href: https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest
+ms.openlocfilehash: 33c45fd33e0ff84675474f63b070b41c6f0cb189
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341084"

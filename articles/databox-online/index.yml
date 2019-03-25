@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 44c7f6d32737fe83e80a2f2df15f0ae078a5849e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309076"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400286"
 documentType: LandingData
 title: Azure Data Box-dokumentáció – Online adatátvitel
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 10/12/2018
+  ms.date: 03/22/2019
   ms.author: alkohli
 abstract:
   description: Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway<SUP>előzetes verziójával</SUP> elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszinten feldolgozhatja őket.  A Data Box Edge <SUP>előzetes verziójával</SUP> szűrheti, elemezheti és átalakíthatja az adatokat azok az Azure-ba való átvitele során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>
@@ -24,7 +24,7 @@ sections:
 - title: Oktatóanyagok
   items:
   - type: paragraph
-    text: <b>A Data Box Gateway <SUP>előzetes verziójához</SUP></b>
+    text: <b>A Data Box Gatewayhez</b>
   - type: list
     style: ordered
     items:
@@ -34,7 +34,7 @@ sections:
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Az Azure Data Box Gateway csatlakoztatása, konfigurálása és aktiválása</a>
     - html: <a href="data-box-gateway-deploy-add-shares">Adatok átvitele az Azure Data Factory Gatewayjel</a>
   - type: paragraph
-    text: <b>A Data Box Edge <SUP>előzetes verziójához</SUP></b>
+    text: <b>A Data Box Edge-hez</b>
   - type: list
     style: ordered
     items:

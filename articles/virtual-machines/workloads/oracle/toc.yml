@@ -1,0 +1,35 @@
+items:
+- name: Áttekintés
+  items:
+  - name: Oracle virtuális gépekkel kapcsolatos megfontolások
+    href: oracle-considerations.md
+- name: Gyors útmutatók
+  items:
+  - name: Oracle-adatbázis létrehozása
+    href: oracle-database-quick-create.md
+- name: Oktatóanyagok
+  items:
+  - name: Oracle ASM konfigurálása
+    href: configure-oracle-asm.md
+  - name: Oracle DataGuard konfigurálása
+    href: configure-oracle-dataguard.md
+  - name: Oracle GoldenGate konfigurálása
+    href: configure-oracle-golden-gate.md
+- name: Alapelvek
+  items:
+  - name: Oracle-adatbázis tervezése
+    href: oracle-design.md
+  - name: Biztonsági mentési stratégia Oracle-adatbázisokhoz
+    href: oracle-backup-recovery.md
+  - name: Vészhelyreállítási lehetőségek az Oracle-ben
+    href: oracle-disaster-recovery.md
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340608"

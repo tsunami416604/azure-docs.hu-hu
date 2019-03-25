@@ -1,0 +1,154 @@
+items:
+- name: Az Azure AD Domain Services dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az Azure AD tartományi szolgáltatások?
+    href: active-directory-ds-overview.md
+  - name: Gyakori kérdések
+    href: active-directory-ds-faqs.md
+  - name: Ez a megfelelő választás Önnek?
+    items:
+    - name: Összehasonlítás a Windows Server AD-vel
+      href: active-directory-ds-comparison.md
+    - name: Összehasonlítás az Azure AD-csatlakozással
+      href: active-directory-ds-compare-with-azure-ad-join.md
+  - name: Újdonságok
+    href: https://azure.microsoft.com/updates/?product=active-directory-ds
+  - name: Szolgáltatások
+    href: active-directory-ds-features.md
+  - name: Forgatókönyvek
+    href: active-directory-ds-scenarios.md
+  - name: A szinkronizálás működése
+    href: active-directory-ds-synchronization.md
+  - name: Kompatibilis külső szoftverek
+    href: active-directory-ds-compatible-software.md
+- name: Bevezetés
+  items:
+  - name: '1. feladat: az alapvető beállítások konfigurálása'
+    href: active-directory-ds-getting-started.md
+  - name: '2. feladat: a hálózati beállítások konfigurálása'
+    href: active-directory-ds-getting-started-network.md
+  - name: '3. feladat: rendszergazdai csoport konfigurálása és az Azure AD Domain Services engedélyezése'
+    href: active-directory-ds-getting-started-admingroup.md
+  - name: '4. feladat: a virtuális hálózat DNS-beállításainak frissítése'
+    href: active-directory-ds-getting-started-dns.md
+  - name: '5. feladat: jelszókivonatok szinkronizálásának engedélyezése'
+    href: active-directory-ds-getting-started-password-sync.md
+- name: Útmutató
+  items:
+  - name: Felügyelt tartomány állapotának az ellenőrzése
+    href: active-directory-ds-check-health.md
+  - name: Az Azure AD Domain Services használata az Azure CSP-előfizetésekben
+    href: active-directory-ds-csp.md
+  - name: Az Azure AD Domain Services engedélyezése a PowerShell-lel
+    href: active-directory-ds-enable-using-powershell.md
+  - name: Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra
+    href: active-directory-ds-scoped-synchronization.md
+  - name: Felügyelt tartomány védelme
+    href: active-directory-ds-secure-your-domain.md
+  - name: OU létrehozása egy felügyelt tartományon
+    href: active-directory-ds-admin-guide-create-ou.md
+  - name: Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon
+    href: active-directory-ds-create-gmsa.md
+  - name: Csoportházirend kezelése felügyelt tartományon
+    href: active-directory-ds-admin-guide-administer-group-policy.md
+  - name: Jelszószabályzatok konfigurálása felügyelt tartományon
+    href: active-directory-ds-password-policy.md
+  - name: Virtuális hálózat kiválasztása
+    href: active-directory-ds-networking.md
+  - name: Alkalmazások üzembe helyezése
+    items:
+    - name: Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz
+      href: active-directory-ds-enable-sharepoint-profile-sync.md
+    - name: A Kerberos által korlátozott delegálás konfigurálása
+      href: active-directory-ds-enable-kcd.md
+    - name: Üzembe helyezés az Azure AD-alkalmazásproxyval
+      href: active-directory-ds-deploy-azure-app-proxy.md
+  - name: Felügyelt tartomány törlése
+    href: active-directory-ds-disable-aadds.md
+- name: Csatlakozás egy felügyelt tartományhoz
+  items:
+  - name: Windows Server rendszerű virtuális gép
+    href: active-directory-ds-admin-guide-join-windows-vm-portal.md
+  - name: Windows Server rendszerű virtuális gép sablonból
+    href: active-directory-ds-join-windows-vm-template.md
+  - name: CentOS
+    href: active-directory-ds-join-centos-linux-vm.md
+  - name: CoreOS
+    href: active-directory-ds-join-coreos-linux-vm.md
+  - name: Red Hat Enterprise Linux
+    href: active-directory-ds-join-rhel-linux-vm.md
+  - name: Ubuntu Server
+    href: active-directory-ds-join-ubuntu-linux-vm.md
+- name: Felügyelt tartomány kezelése
+  items:
+  - name: Felügyelt tartomány kezelése
+    href: active-directory-ds-admin-guide-administer-domain.md
+  - name: DNS-kezelés felügyelt tartományon
+    href: active-directory-ds-admin-guide-administer-dns.md
+  - name: E-mail-értesítések frissítése
+    href: active-directory-ds-notifications.md
+- name: Biztonságos LDAP konfigurálása felügyelt tartományhoz
+  items:
+  - name: '1. feladat: Tanúsítvány beszerzése biztonságos LDAP-hoz'
+    href: active-directory-ds-admin-guide-configure-secure-ldap.md
+  - name: '2. feladat: Biztonságos LDAP-tanúsítvány exportálása'
+    href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
+  - name: '3. feladat: Biztonságos LDAP engedélyezése a felügyelt tartományhoz az Azure Portalon'
+    href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
+  - name: '4. feladat: A DNS konfigurálása a felügyelt tartomány internetről való elérésére'
+    href: active-directory-ds-ldaps-configure-dns.md
+  - name: '5. feladat: Kötés létrehozása a felügyelt tartománnyal és a biztonságos LDAP-hozzáférés zárolása'
+    href: active-directory-ds-ldaps-bind-lockdown.md
+  - name: A biztonságos LDAP hibaelhárítása
+    href: active-directory-ds-ldaps-troubleshoot.md
+- name: Hibaelhárítás
+  items:
+  - name: Hibaelhárítási útmutató
+    href: active-directory-ds-troubleshooting.md
+  - name: Riasztások hibaelhárítása
+    href: active-directory-ds-troubleshoot-alerts.md
+    items:
+    - name: Hálózati biztonsági csoportok hibás konfigurációinak javítása
+      href: active-directory-ds-troubleshoot-nsg.md
+    - name: Hiányzó szolgáltatásnevek visszaállítása
+      href: active-directory-ds-troubleshoot-service-principals.md
+    - name: A biztonságos LDAP hibái
+      href: active-directory-ds-troubleshoot-ldaps.md
+  - name: Eltérő bérlők hibáinak megoldása
+    href: active-directory-ds-mismatched-tenant-error.md
+  - name: Felfüggesztett tartományok
+    href: active-directory-ds-suspension.md
+- name: Referencia
+  items:
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=active-directory
+- name: Kapcsolódó témakörök
+  items:
+  - name: Azure Active Directory
+    href: ../active-directory/fundamentals/active-directory-whatis.md
+  - name: Azure Active Directory B2C
+    href: ../active-directory-b2c/active-directory-b2c-overview.md
+  - name: Multi-Factor Authentication
+    href: ../active-directory/authentication/multi-factor-authentication.md
+- name: További források
+  items:
+  - name: Azure AD visszajelzési fórum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Kapcsolat
+    href: active-directory-ds-contact-us.md
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/active-directory-ds/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=active-directory-ds
+ms.openlocfilehash: 8559569df09bf611286730868f50d0bf1878182b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341118"

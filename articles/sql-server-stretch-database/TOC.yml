@@ -1,0 +1,63 @@
+items:
+- name: Az SQL Server Stretch Database dokumentációja
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Mi az a Stretch Database?
+    href: /sql/sql-server/stretch-database/stretch-database
+  - name: Korlátozások és blokkolási problémák
+    href: /sql/sql-server/stretch-database/limitations-for-stretch-database
+- name: Első lépések
+  items:
+  - name: Adatbázisok és táblák azonosítása
+    href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
+  - name: A varázsló futtatása
+    href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
+- name: Útmutató
+  items:
+  - name: Bekapcsolás
+    items:
+    - name: Adatbázis engedélyezése
+      href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
+    - name: Tábla engedélyezése
+      href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
+    - name: Áttelepítendő sorok kiválasztása
+      href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
+  - name: Kezelés
+    items:
+    - name: Az adatáttelepítés figyelése
+      href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
+    - name: Az áttelepítés felfüggesztése és folytatása
+      href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
+    - name: Felügyelet és hibaelhárítás
+      href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
+    - name: Biztonsági mentés
+      href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
+    - name: Visszaállítás
+      href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
+    - name: A Stretch Database letiltása
+      href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
+- name: Referencia
+  items:
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=sql-server-database
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Blog
+    href: https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/sql-server-stretch-database/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=sql-server-stretch-database
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-server-stretch-database
+ms.openlocfilehash: ba3a3cfe763f17e07dc4bcd0c3106acbc352577f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340659"

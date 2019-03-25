@@ -1,0 +1,69 @@
+items:
+- name: BizTalk Services – dokumentáció
+  href: index.md
+- name: Áttekintés
+  items:
+  - name: Kiadások
+    href: biztalk-editions-feature-chart.md
+- name: Első lépések
+  items:
+  - name: BizTalk-szolgáltatások létrehozása
+    href: biztalk-provision-services.md
+- name: Útmutató
+  items:
+  - name: Tervezés és kialakítás
+    items:
+    - name: Rendszergazdai és fejlesztői feladatlista
+      href: biztalk-services-administration-and-development-task-list.md
+  - name: Biztonsági mentés és visszaállítás
+    href: biztalk-backup-restore.md
+  - name: Konfigurálás
+    items:
+    - name: Throttling
+      href: biztalk-throttling-thresholds.md
+    - name: Szolgáltatásbeállítások és monitorozás
+      href: biztalk-dashboard-monitor-scale-tabs.md
+  - name: Migrate (Áttelepítés)
+    items:
+    - name: BizTalk Server-alapú EDI-megoldások áttelepítése a BizTalk Services modulba
+      href: biztalk-migrating-to-edi-guide.md
+  - name: Figyelés
+    items:
+    - name: Szolgáltatás állapotától függő feladatok
+      href: biztalk-service-state-chart.md
+  - name: Biztonságos
+    items:
+    - name: Hozzáférés-vezérlés
+      href: biztalk-issuer-name-issuer-key.md
+  - name: Hibaelhárítás
+    href: biztalk-troubleshoot-using-ops-logs.md
+  - name: Hibrid kapcsolatok
+    items:
+    - name: Áttekintés
+      href: integration-hybrid-connection-overview.md
+    - name: Létrehozás és kezelés
+      href: integration-hybrid-connection-create-manage.md
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN fórum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/biztalk-services/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Kibocsátási megjegyzések
+    href: biztalk-release-notes.md
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=biztalk-services
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/biztalk-services
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services
+ms.openlocfilehash: 75970c0377ccf5ac0aa07cda331b3c4823e464a8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340744"
