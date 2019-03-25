@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a61820dc05752d43774b13399d071c5a2be98483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536480"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400535"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure Stack karbantartási szabályzat
 
@@ -35,7 +35,7 @@ Havi csomagok egy biztonságos Azure-végpont a üzemelnek. Letöltheti őket ma
 
 A gyorsjavítás csomagok ugyanazt az Azure biztonságos végpontját üzemelnek. Letöltheti őket segítségével manuálisan a beágyazott hivatkozásokat az egyes a megfelelő gyorsjavítás; KB-cikkek Ha például [Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). A teljes, a havi csomagok hasonlóan az Azure Stack-operátorok is .xml, .bin és az .exe fájlok letöltésére és importálhatja őket a leírtak [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md). Csatlakoztatott skálázási egység az Azure Stack-operátoroknak jelenik meg a gyorsjavításokat, automatikusan megjelenik a rendszergazdai portálon üzenettel **frissítés érhető el**.
 
-Ha a skálázási egység nem kapcsolódik, és szeretne értesítést kapni az egyes gyorsjavítások kiadások, iratkozzon fel a [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … ) vagy [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …) az egyes kiadások feljegyzett hírcsatorna.  
+Ha a skálázási egység nem kapcsolódik, és szeretne értesítést kapni az egyes gyorsjavítások kiadások, iratkozzon fel a [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) vagy [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) az egyes kiadások feljegyzett hírcsatorna.  
 
 ## <a name="update-package-types"></a>A csomagok frissítése
 

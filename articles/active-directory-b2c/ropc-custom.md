@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562189"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400762"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Az Azure Active Directory (Azure AD) B2C-vel az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamatát. Ezt a folyamatot, az alkalmazás, más néven a függő entitás cseréje jogkivonatokat érvényes hitelesítő adatokat. A hitelesítő adatok közé tartozik a felhasználói Azonosítót és jelszót. A visszaadott jogkivonatok egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot.
 

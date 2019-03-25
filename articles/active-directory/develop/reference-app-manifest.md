@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb21ddc36141dfee1be6f0e42811e6ccbeb44143
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2750de16c71e7d678810316f281e28ca8c40553d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217496"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403153"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
@@ -77,6 +77,14 @@ Az alkalmazásjegyzék konfigurálása:
 | `signInUrl` | sztring | Adja meg az URL-cím, az alkalmazás kezdőlapjára. | `https://MyRegisteredApp` |
 | `signInAudience` | sztring | Itt adhatja meg, milyen Microsoft-fiókok az aktuális alkalmazás használata támogatott. Támogatott értékei a következők:<ul><li>**AzureADMyOrg** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók a szervezet Azure AD-bérlőben (azaz egybérlős)</li><li>**AzureADMultipleOrgs** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók bármely szervezet az Azure AD-bérlőben (azaz több bérlős)</li> <li>**AzureADandPersonalMicrosoftAccount** -felhasználók személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot bármely szervezet az Azure AD-bérlőben</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | Karakterlánc-tömbben | Egyéni karakterláncok kategorizálásához és az alkalmazás azonosításához használható. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+
+
+## <a name="manifest-limits"></a>Manifest korlátok
+Alkalmazásjegyzék rendelkezik több attribútum, amely nevezzük approles például gyűjtemények, keycredentials, knownClientApplications, identifierUris, rediretUris, requiredResourceAccess, oauth2Permissions stb. Bármilyen alkalmazást kész alkalmazásjegyzék belül minden, a kombinált gyűjtemények bejegyzések száma rendelkezik lett maximumon 1200-as. Ha már rendelkezik 100 átirányítási URI az alkalmazásjegyzékben megadott, akkor Ön csak balra az 1100-as fennmaradó kombinált bejegyzések összes gyűjteményt használ, a jegyzékfájl alkotó.
+
+> [!NOTE]
+> Abban az esetben próbál meg hozzáadni a több mint 1200-as bejegyzések az alkalmazásjegyzékben. Előfordulhat, hogy hibaüzenetet kap **"nem sikerült frissíteni az alkalmazás xxxxxx. Hiba részletei: A jegyzékfájl mérete túllépte a korlátot. Az értékek számának csökkentésére, és ismételje meg a kérelmet.** "
+
 
 ## <a name="next-steps"></a>További lépések
 

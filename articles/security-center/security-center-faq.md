@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226895"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401135"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -291,11 +291,14 @@ A Security Center egy Azure-szolgáltatás, amely folyamatosan figyeli az ügyf�
 Az Azure Security Center figyeli a következő Azure-erőforrások:
 
 * Virtuális gépek (VM) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
+* Virtuálisgép-méretezési csoportok (VMSSs)
 * Azure virtuális hálózatok
 * Azure SQL service
 * Azure Storage-fiók
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
+
+Emellett nem Azure-beli (pl. helyszíni) számítógépek is megfigyelhetők az Azure Security Center (mindkettő [Windows-számítógépek](./quick-onboard-windows-computer.md) és [Linux rendszerű számítógépek](./quick-onboard-linux-computer.md) támogatottak)
 
 ## <a name="virtual-machines"></a>Virtuális gépek
 ### <a name="what-types-of-virtual-machines-are-supported"></a>Milyen típusú virtuális gépek támogatottak?

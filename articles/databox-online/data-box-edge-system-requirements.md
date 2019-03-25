@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113770"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401757"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Az Azure Data Box Edge rendszerkövetelmények (előzetes verzió)
+# <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
 Ez a cikk a Microsoft Azure Data Box peremhálózati megoldás és a kapcsolódó ügyfelek számára az Azure Data Box Edge fontos rendszerkövetelményeit ismerteti. Azt javasoljuk, hogy tekintse át az információkat gondosan a Data Box Edge üzembe helyezése előtt. Ezt az információt szükség szerint a telepítési és az ezt követő művelet során vissza hivatkozhat.
 
@@ -23,9 +23,6 @@ A Data Box Edge rendszerkövetelményei a következők:
 
 - **Gazdagépek szoftverkövetelményei** – a támogatott platformok, a helyi konfigurációs felhasználói Felületet a böngészőben, SMB-kliensek és az ügyfelek, amelyek az eszköz elérésére vonatkozó esetleges további követelményeket ismerteti.
 - **Az eszköz hálózatkezelési követelményei** – ismerteti a művelet a fizikai eszköz vonatkozó hálózati követelmények.
-
-> [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszer
 
@@ -63,10 +60,7 @@ Használja az alábbi táblázat port konfigurálása az Azure IoT Edge-futtató
 
 | Port nem. | És leskálázása | Port hatókör | Szükséges | Útmutatás |
 |----------|-----------|------------|----------|----------|
-| TCP 5671-ES (AMQP)| Ki       | WAN        | Igen      | Alapértelmezett kommunikációs protokollt az IoT Edge-hez. Meg kell nyitni, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy AMQP a kívánt kommunikációs protokollt. <br>az AMQP 5672 IoT Edge által nem támogatott. <br>Tiltsa le ezt a portot, ha az Azure IoT Edge használja egy másik IoT Hub protokoll támogatott. |
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyissa meg az IoT Edge-kiépítés. Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell külső hálózatok csatlakoztatása az IoT hubhoz, vagy az Azure IoT Edge segítségével szolgáltatásokat nyújtanak az IoT Hub felé. Így a bejövő szabály csak a belső hálózatról bejövő megnyitni a korlátozott lehet. |
-| TCP 5671-ES (AMQP) | Eleme ennek        |            | Nem       | Bejövő kapcsolatok le kell tiltani.|
-| TCP 443 (HTTPS) | Eleme ennek        |            | Bizonyos esetekben láthatja a megjegyzéseket | Csak a meghatározott forgatókönyvek meg kell nyitni a bejövő kapcsolatokat. Nem HTTP-protokollok, mint például az AMQP, MQTT nem konfigurálható, ha az üzenetek küldhetők a websockets protokoll 443-as porton. |
+| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyissa meg az IoT Edge-kiépítés. Ez a konfiguráció manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS) szükség.|
 
 Teljes körű információkért látogasson el a [tűzfal és az IoT Edge üzembe helyezési konfigurációs portszabályok](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 

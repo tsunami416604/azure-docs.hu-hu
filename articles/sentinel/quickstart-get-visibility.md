@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246950"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402881"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Gyors útmutató: Ismerkedés az Azure-Sentinel-on Előzetesben
 
@@ -118,7 +118,22 @@ Előfordulhat, hogy szeretne létrehozni egy lekérdezést, amely magában fogla
 
 Az adatokat, és azokat, amit keres személy szerepkör alapján különböző irányítópultokat hozhat létre. Például a hálózat rendszergazdájával, hogy a tűzfal-adatokat tartalmaz egy irányítópultot hozhat létre. Milyen gyakran szeretné őket, nézze meg szeretné tekinteni a napi dolgot vannak-e azon alapuló irányítópultokat is létrehozhat, és a többi kívánt elemeket ellenőrzése óránként egyszer, például érdemes tekintse meg az Azure AD bejelentkezési óránként anomali keresése es. 
 
+## <a name="create-new-detections"></a>Hozzon létre új észlelések
 
+Létrehozza a észlelések az [azokat az adatforrásokat, akkor csatlakozik Azure Sentinel-](connect-data-sources.md) a szervezet a fenyegetések kivizsgálására.
+
+Amikor létrehoz egy új észlelés, használhatja a csatlakoztatott adatforrások vannak igazítva, a Microsoft biztonsági kutatói által kialakított beépített észlelések.
+
+1. [A GitHub-Közösségben](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) nyissa meg a **észlelések** mappára, és válassza a megfelelő mappákat.
+   ![megfelelő mappákat](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  Nyissa meg a **Analytics** lapot, és válasszon **hozzáadása**.
+   ![a Log Analytics szabály létrehozása](./media/qs-get-visibility/query-params.png)
+
+3.  A szabály minden paraméter másolja, majd kattintson a **létrehozás**.
+   ![Riasztási szabály létrehozása](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>További lépések
 Ebből a gyors útmutatóból megtudhatta, hogyan kezdheti el az Azure-Sentinel. A következő oktatóanyagban [fenyegetések észlelése](tutorial-detect-threats.md).
 > [!div class="nextstepaction"]

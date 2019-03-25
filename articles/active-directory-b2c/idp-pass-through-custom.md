@@ -10,17 +10,16 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 784387b119bff6445015419adfd3bc0e52eee43f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427871"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402643"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Egyéni szabályzat használatával egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 
-> [!NOTE]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 A [egyéni házirendet](active-directory-b2c-get-started-custom.md) az Azure Active Directory (Azure AD) B2C lehetőséget kínál a felhasználók az alkalmazás regisztráljon vagy jelentkezzen be egy identitásszolgáltatóval. Ha ez történik, az Azure AD B2C-t kap egy [hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md) az identitásszolgáltatótól. Az Azure AD B2C használja ezt a jogkivonatot a felhasználóval kapcsolatos információk lekéréséhez. Hozzáadhat egy jogcímtípust és a kimenő jogcímet a jogkivonat segítségével átadása az alkalmazásokat, amelyek az Azure AD B2C-ben regisztrálja az egyéni házirend. 
 

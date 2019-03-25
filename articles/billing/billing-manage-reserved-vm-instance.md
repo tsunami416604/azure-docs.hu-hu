@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: dbfb559516177d496f5b16dc31f0ef8d0603cf68
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b37f198052ee927ea986d2a6046bfd93b6ee5d5e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904014"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399974"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -28,7 +28,7 @@ Ha az Azure Reserved Virtual Machine Instances vásárolt, módosíthatja az opt
 
 ## <a name="change-the-scope-for-a-reservation"></a>A foglalás hatókörének módosítása
 
- A foglalási kedvezményt virtuális gépeket, SQL adatbázisok, Azure Cosmos DB vagy más erőforrások, amely egyezik a foglalás, és futtassa a Foglalás hatókörön belül érvényes. A Foglalás hatóköre egy előfizetés vagy az összes előfizetést a számlázási környezetben lehet. Egyetlen előfizetéshez állítsa be a hatókört, ha a Foglalás megfeleltetett futó erőforrások a kijelölt előfizetésben. A megosztott hatókör beállítása, ha az Azure megfelel a Foglalás számlázási környezetében előfizetések futtató erőforrások. A számlázási környezetben szolgáltatás megvásárolni a foglalást használt előfizetés függ.
+ A foglalási kedvezményt a virtuális gépek, az SQL adatbázisok, Azure Cosmos DB vagy más erőforrások, amelyek egyeznek a Foglalás és a Foglalás hatóköre futtathat vonatkozik. A számlázási környezetben szolgáltatás megvásárolni a foglalást használt előfizetés függ.
 
 A Foglalás hatóköre frissítése:
 
@@ -115,6 +115,10 @@ A Foglalás az optimalizálási beállítás frissítése:
 4. Válassza a **Beállítások** > **Konfiguráció** lehetőséget.
 5. Módosítsa a **optimalizálás** beállítás.
 
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>További lépések
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
@@ -130,7 +134,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

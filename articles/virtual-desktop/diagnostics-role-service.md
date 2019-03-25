@@ -1,22 +1,22 @@
 ---
-title: Azonosíthatja a problémákat a diagnosztikai szolgáltatás (előzetes verzió) – Azure
-description: A virtuális asztali Windows diagnosztika szolgáltatást és annak használatát ismerteti.
+title: Azonosíthatja a problémákat a Windows virtuális asztal előzetes diagnosztikai szolgáltatás – Azure
+description: A Windows virtuális asztal előzetes diagnosztikai funkciót és való használatát ismerteti.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f44f4d632fa1fc607f3933be8e15eb939e20a8ae
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318614"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402847"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature-preview"></a>Azonosíthatja a problémákat a diagnosztikai szolgáltatás (előzetes verzió)
+# <a name="identify-issues-with-the-diagnostics-feature"></a>Azonosíthatja a problémákat a diagnosztikai szolgáltatás
 
-Windows virtuális asztal (előzetes verzió) biztosít a diagnosztikai szolgáltatás (előzetes verzió), amely lehetővé teszi a rendszergazdák egyetlen felületen keresztül problémák azonosításához. A virtuális asztali Windows-szerepkörök jelentkezzen a diagnosztikai tevékenységet, amikor a felhasználó kommunikál a rendszer. Minden napló vonatkozó információkat, például a Windows virtuális asztal szerepkörök részt vesz a tranzakciót, hibaüzenetek, bérlői kapcsolatos információkat és felhasználói adatokat tartalmazza. Diagnosztikai tevékenységek jönnek létre mind a végfelhasználói, mind a felügyeleti műveleteket, és három fő gyűjtők osztályozhatók:
+Windows Virtual Desktop előzetes verziójához biztosít diagnosztikai funkcióval, amely lehetővé teszi a rendszergazdák egyetlen felületen keresztül problémák azonosításához. A virtuális asztali Windows-szerepkörök jelentkezzen a diagnosztikai tevékenységet, amikor a felhasználó kommunikál a rendszer. Minden napló vonatkozó információkat, például a Windows virtuális asztal szerepkörök részt vesz a tranzakciót, hibaüzenetek, bérlői kapcsolatos információkat és felhasználói adatokat tartalmazza. Diagnosztikai tevékenységek jönnek létre mind a végfelhasználói, mind a felügyeleti műveleteket, és három fő gyűjtők osztályozhatók:
 
 * Hírcsatorna-előfizetés tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak csatlakozni a Microsoft távoli asztali alkalmazásokon keresztül hírcsatorna.
 * Kapcsolat-tevékenységek: a végfelhasználó elindítja ezeket a tevékenységeket, amikor megpróbálnak egy asztali vagy RemoteApp Microsoft távoli asztali alkalmazásokon keresztül csatlakozni.
@@ -145,7 +145,7 @@ Az alábbi táblázat a gyakori hibák a rendszergazdák mutatjuk be.
 |8000|InvalidAuthorizationRoleScope|A megadott szerepkör neve nem felel meg minden olyan meglévő szerepkörneveket. Tekintse át az elgépelések szerepkör nevét, és próbálkozzon újra. |
 |8001|UserNotFound |A megadott felhasználónév nem egyezik meg minden olyan meglévő felhasználói neveket. Tekintse át az elgépelések nevét, és próbálkozzon újra.|
 |8005|UserNotFoundInAAD |A megadott felhasználónév nem egyezik meg minden olyan meglévő felhasználói neveket. Tekintse át az elgépelések nevét, és próbálkozzon újra.|
-|8008|TenantConsentRequired|Kövesse az utasításokat [Itt](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service) történő a bérlő számára.|
+|8008|TenantConsentRequired|Kövesse az utasításokat [Itt](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service) történő a bérlő számára.|
 
 ### <a name="external-connection-error-codes"></a>Külső kapcsolatok hibakódok
 
@@ -164,6 +164,6 @@ Az alábbi táblázat a gyakori hibák a rendszergazdák mutatjuk be.
 
 ## <a name="next-steps"></a>További lépések
 
-Windows virtuális asztal szerepkörei kapcsolatos további információkért lásd: [Windows virtuális asztali környezetben](environment-setup.md).
+Windows virtuális asztal szerepkörei kapcsolatos további információkért lásd: [Windows virtuális asztal előzetes verziójú környezet](environment-setup.md).
 
 Elérhető PowerShell-parancsmagok listáját a Windows virtuális asztal, olvassa el a [PowerShell-referencia](/powershell/windows-virtual-desktop/overview).

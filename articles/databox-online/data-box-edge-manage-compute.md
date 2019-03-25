@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: de8ddd0d2886cd7798160e830094b295c62e17e9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58005058"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400681"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge számítások kezelése
 
@@ -132,6 +132,23 @@ Az alábbi lépéseket az eszköz számára a hozzáférési kulcsok szinkroniz�
      ![Amikor a rendszer kéri válassza az Igen lehetőséget](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
+
+## <a name="enable-a-network-interface-for-compute"></a>Egy hálózati adapter számítási engedélyezése
+
+Szükség lehet a Data Box peremhálózati eszközön futó modul eléréséhez. A modul el kívülről, szüksége lesz egy IP-cím hozzárendelése egy hálózati adapter az eszközön. Ezek kezelheti számítási beállításokat a helyi webes felületén.
+
+Az alábbi lépéseket a helyi webes felületén számítási beállítások konfigurálása.
+
+1. A helyi webes felhasználói felületen váltson **Configuration > Számítási beállítások**.  
+
+2. **Engedélyezése** a hálózati adapter, amelyet szeretne csatlakozni a számítási modulokat az eszközön. 
+
+    - Ha statikus IP-címeket használ, adja meg a hálózati adapter IP-címet.
+    - Ha a DHCP használatával, majd az IP-címek lesz automatikusan hozzárendelve.
+
+3. Válassza ki **alkalmaz** a alkalmazni a beállításokat.
+
+    ![Compute-beállítások engedélyezése](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>További lépések

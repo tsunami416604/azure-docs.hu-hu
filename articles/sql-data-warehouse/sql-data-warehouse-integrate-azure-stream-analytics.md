@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/22/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 605598d1470cbb535d626c15a5e8e4e08aa4d571
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883814"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403765"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Az Azure Stream Analytics használata SQL Data warehouse-bA
 Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatást, amely kis késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást keresztül streamelési adatok a felhőben. Olvassa el is alapismeretek a Mobilfunkciók [Azure Stream Analytics bemutatása][Introduction to Azure Stream Analytics]. Ezután megismerheti a Stream Analytics egy teljes körű megoldás létrehozása a következő a [első lépései az Azure Stream Analytics] [ Get started using Azure Stream Analytics] oktatóanyag.
@@ -34,12 +34,10 @@ Ezután hozzon létre egy Azure SQL Data Warehouse-adatbázis
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Adja meg a feladat kimenete: Az Azure SQL Data Warehouse-adatbázis
 ### <a name="step-1"></a>1. lépés
-A Stream Analytics-feladat kattintson **kimeneti** , az oldalon, majd kattintson a felső **hozzáadása kimeneti**.
+A Stream Analytics-feladat kattintson **kimeneti** , az oldalon, majd kattintson a felső **hozzáadása**.
 
 ### <a name="step-2"></a>2. lépés
-Válassza ki az SQL-adatbázist, és kattintson a Tovább gombra.
-
-![][add-output]
+Válassza ki az SQL Database.
 
 ### <a name="step-3"></a>3. lépés
 A következő oldalon adja meg a következő értékeket:
@@ -62,9 +60,7 @@ A következő oldalon adja meg a következő értékeket:
 ### <a name="step-4"></a>4. lépés
 Kattintson a pipa gombra a feladat kimenetének hozzáadása, és győződjön meg arról, hogy Stream Analytics képes csatlakozni az adatbázishoz.
 
-![][test-connection]
-
-Az adatbázishoz a kapcsolódás sikeres, látni fogja a portál alján értesítést. Kapcsolat tesztelése gombra az alul az adatbázis kapcsolatának teszteléséhez.
+Sikeres a kapcsolat az adatbázissal, látni fogja a portálon értesítést. Az adatbázis kapcsolatának teszteléséhez a vizsgálat gombra.
 
 ## <a name="next-steps"></a>További lépések
 Integráció áttekintését lásd: [SQL Data Warehouse-integráció áttekintése][SQL Data Warehouse integration overview].

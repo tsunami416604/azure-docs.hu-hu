@@ -1,18 +1,18 @@
 ---
-title: A Microsoft Azure Data Box Gateway usecases |} A Microsoft Docs
-description: A témakör ismerteti a usecases Azure Data Box Gateway, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átviteléhez az Azure-bA
+title: A Microsoft Azure Data Box Gateway használati esetek |} A Microsoft Docs
+description: A használati esetek ismerteti az Azure Data Box átjáró, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átviteléhez az Azure-bA
 services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 03/2/2019
 ms.author: alkohli
-ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438592"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403799"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
 
@@ -26,8 +26,6 @@ Data Box-átjáró a következő esetekben használja:
 
 Az ezt követő szakaszokban részletesen ismertetett egyes forgatókönyvek esetében.
 
-> [!IMPORTANT]
-> A Data Box Gateway előzetes verzióban érhető el. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="continuous-data-ingestion"></a>Folyamatos adatbetöltés
 

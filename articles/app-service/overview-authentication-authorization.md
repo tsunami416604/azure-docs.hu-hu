@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297004"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402745"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
+
+> [!NOTE]
+> Jelenleg AAD V2 (beleértve az MSAL) nem támogatott az Azure App Services és az Azure Functions. Ellenőrizze kapcsolatos híreket.
+>
 
 Az Azure App Service biztosít beépített hitelesítés és engedélyezés támogatja, így a felhasználók, és minimális írása vagy a web App alkalmazásban, a RESTful API-t és a mobil háttérrendszer kódot nem adatok eléréséhez, valamint [Azure Functions](../azure-functions/functions-overview.md). Ez a cikk bemutatja, hogyan App Service egyszerűbbé teszi a hitelesítés és engedélyezés az alkalmazáshoz. 
 

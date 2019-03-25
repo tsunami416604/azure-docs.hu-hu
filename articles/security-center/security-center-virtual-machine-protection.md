@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106559"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403833"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
-Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
+Az Azure Security Center elemzi az Azure-erőforrások, nem Azure-kiszolgálók és virtuális gépek biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
 
 Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a gépek és alkalmazások.
 
@@ -53,7 +53,7 @@ A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforr
 Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről.
 
 ### Nem monitorozott virtuális gépek és számítógépek <a name="unmonitored-vms-and-computers"></a>
-A virtuális gép vagy a számítógép nem figyelt a Security Center által, ha a gép nem fut a Microsoft Monitoring Agent bővítményt. A gépek rendelkezhetnek egy helyi ügynök már telepítve van, például a közvetlen OMS-ügynök vagy az SCOM-ügynök. Ilyen ügynökökkel rendelkező gépek eszközként van azonosítva nem figyelt, mert ezek az ügynökök teljes mértékben nem támogatottak a Security Centerben. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
+A virtuális gép vagy a számítógép nem figyelt a Security Center által, ha a gép nem fut a Microsoft Monitoring Agent bővítményt. A gépek rendelkezhetnek egy helyi ügynök már telepítve van, például a közvetlen OMS-ügynök vagy a System Center Operations Manager ügynököt. Ilyen ügynökökkel rendelkező gépek eszközként van azonosítva nem figyelt, mert ezek az ügynökök teljes mértékben nem támogatottak a Security Centerben. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
 
 A bővítményt a nem monitorozott virtuális gép vagy a számítógépen a már telepített helyi ügynök mellett is telepítheti. A két ügynök konfigurációja legyen megegyező, és ugyanahhoz a munkaterülethez csatlakoztassa őket. Ez lehetővé teszi, hogy a Security Center interakcióba léphessen a Microsoft Monitoring Agent bővítménnyel, és adatokat gyűjtsön. [A virtuálisgép-bővítmény engedélyezésével](../azure-monitor/learn/quick-collect-azurevm.md) foglalkozó témakörben találja a Microsoft Monitoring Agent bővítmény telepítésével kapcsolatos utasításokat.
 
@@ -103,7 +103,7 @@ A listában szereplő ikon négy típusa van:
 ![Az Azure klasszikus virtuális gép](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Az Azure klasszikus virtuális gép.
 
 
-![Virtuális gépek azonosítani a munkaterületről](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Azok a virtuális gépek, amelyek csak a megtekintett előfizetés részét képező munkaterület alapján azonosít a rendszer. Ezek közé tartozhatnak olyan, más előfizetésekből származó virtuális gépek is, amelyek a jelen előfizetéshez tartozó munkaterületnek vannak alárendelve, valamint az SCOM közvetlen ügynök használatával telepített, erőforrás-azonosítóval nem rendelkező virtuális gépek.
+![Virtuális gépek azonosítani a munkaterületről](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Azok a virtuális gépek, amelyek csak a megtekintett előfizetés részét képező munkaterület alapján azonosít a rendszer. Ez tartalmazza a virtuális gépek más előfizetésekből származó meg a jelentést az ebben az előfizetésben, és az Operations Manager-ügynök közvetlenül telepített virtuális gépek a munkaterülethez, és nincs erőforrás-azonosító
 
 Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. A listában úgy kereshet is használhatja a szűrők **erőforrástípus** , illetve **súlyossági**.
 
@@ -172,7 +172,7 @@ A Microsoft Monitoring Agent telepítése:
 
 Ha szeretné állítani, új méretezési csoportok, automatikusan telepíteni a Microsoft Monitoring Agent:
 1. Nyissa meg az Azure Policy, és kattintson a **definíciók**.
-2. Keresse meg a szabályzat **Windows Virtuálisgép-méretezési csoportok üzembe helyezése a Log Analytics ügynök** , és kattintson rá.
+2. Keresse meg a szabályzat **Windows virtuálisgép-méretezési csoportok üzembe helyezése a Log Analytics ügynök** , és kattintson rá.
 3. Kattintson a **Hozzárendelés** gombra.
 4. Állítsa be a **hatókör** és **Log Analytics-munkaterület** kattintson **hozzárendelése**.
 

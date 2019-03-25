@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c5a7dc08886e21ef8e287540d9139ec555b11a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242292"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400627"
 ---
 # <a name="collect-data-from-threat-intelligence-providers"></a>Fenyegetésfelderítési szolgáltatóktól vásárolja történő adatgyűjtést 
 
@@ -31,6 +31,8 @@ Után az adatok eseménysorozatot Azure Sentinel, gazdagabbá teheti azt a fenye
 Ahhoz, hogy közötti ellenőrizze a riasztások és a szabályok a valós fenyegetések felderítése, például ha egy adott IP-cím, riasztást kap a threat intelligence szolgáltató integrációs fogja tudni, hogy tudja, az IP-cím nemrégiben megtalálható-e a rosszindulatú is lehet , Az azure Sentinel segítségével az integráció [fenyegetésfelderítési szolgáltatóktól vásárolja fenyegetés](https://aka.ms/graphsecuritytips). 
 
 Fenyegetésfelderítési szolgáltatóktól vásárolja származó naplók is streamelése az Azure-Sentinel egyetlen kattintással. Ez a kapcsolat lehetővé teszi a különböző típusú observables például IP-cím, tartomány, URL-CÍMÉT tartalmazó mutatók építhet és fájlkivonat és létrehozását az egyéni szabályok az Azure-Sentinel riasztást küld.  
+> [!NOTE]
+> Akkor is bemeneteként testre szabott threat mutatók Azure Sentinel-riasztási szabályok, irányítópultok és vadászat forgatókönyvekhez használható integrálásával a [Microsoft Graph biztonsági tiIndicator](https://aka.ms/graphsecuritytiindicators) entitás vagy egy [Microsoft Graph biztonsági Threat Intelligence Platform integrált](https://aka.ms/graphsecuritytips).
 
 ## <a name="prerequisites"></a>Előfeltételek  
 

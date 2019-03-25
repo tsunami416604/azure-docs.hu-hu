@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852204"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399677"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A helyi Azure Sentinel előzetes verzió
 
@@ -75,7 +75,6 @@ Kattintson például **Azure Active Directory**. Ha ehhez az adatforráshoz kapc
 A lap alján Azure Sentinel-kapcsolatos javaslatokat tartalmaz az irányítópultokat kell telepítenie minden egyes összekötőt, akkor is azonnal első érdekes elemzéseket az adatok. <br> Kövesse a telepítési utasításokat vagy [tekintse meg a megfelelő kapcsolatot útmutatóját](connect-data-sources.md) további információt. Az adatösszekötők kapcsolatos információkért lásd: [csatlakoztatása a Microsoft services](connect-data-sources.md).
 
 Után az adatok források csatlakoznak az adatok az Azure Sentinel-streamelés elindul, és készen áll, hogy elkezdheti a. A naplók megtekintéséhez a [beépített irányítópultok](quickstart-get-visibility.md) elkezdhet lekérdezéseket a Log Analyticsben [vizsgálja meg az adatok](tutorial-investigate-cases.md).
-
 
 
 

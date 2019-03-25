@@ -1,6 +1,6 @@
 ---
-title: Exportálási szabályzat konfigurálása egy Azure NetApp Files-kötet esetén | Microsoft Docs
-description: A cikk azt ismerteti, hogyan konfigurálhat exportálási szabályzatot és szabályozhatja a hozzáférést egy Azure NetApp Files-kötet esetén.
+title: Az Azure Files-NetApp használatával NFS-kötet exportálási vonatkozó házirend konfigurálása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet egy NFS-kötet Azure NetApp fájlokkal való hozzáférés szabályozásához export-házirend konfigurálása
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766648"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401489"
 ---
-# <a name="configure-export-policy-for-a-volume"></a>Exportálási szabályzat konfigurálása kötethez
+# <a name="configure-export-policy-for-an-nfs-volume"></a>Az NFS-kötet exportálási vonatkozó házirend konfigurálása
 
-Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. 
+Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. Exportálás házirend a rendszer csak az NFS-kötetek esetében támogatja. 
 
 ## <a name="steps"></a>Lépések 
 
@@ -47,7 +47,7 @@ Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azur
 
     * **Protokollok**   
         Adja meg az exportálási szabályzathoz használni kívánt protokollt.   
-        Az Azure NetApp Files jelenleg csak az NFSv3 protokollt támogatja.
+        Az Azure Files-NetApp exportálási házirend jelenleg csak NFSv3 támogatja.
 
     ![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

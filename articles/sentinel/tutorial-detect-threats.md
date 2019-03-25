@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083164"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400669"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Oktatóanyag: Az Azure-on Előzetesben Sentinel-fenyegetések észlelése
 
@@ -27,18 +27,21 @@ ms.locfileid: "58083164"
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az oktatóanyag segít az Azure Sentinel-fenyegetések észlelése.
-
 Miután [csatlakoztatva az adatforrások](quickstart-onboard.md) Azure Sentinel, hogy valami gyanús történik, ha értesítést szeretne. Ahhoz, hogy ehhez, az Azure Sentinel-részeként létrehozhat speciális riasztási szabályok, esetek, amelyeket hozzárendelhet generáló és mélyen a rendellenességeket és a környezetét fenyegető veszélyek vizsgálatához használja. 
 
-
+Ez az oktatóanyag segít az Azure Sentinel-fenyegetések észlelése.
 > [!div class="checklist"]
 > * Észlelési szabályok létrehozása
 > * Reagálás a fenyegetésekre
 
 ## <a name="create-detection-rules"></a>Észlelési szabályok létrehozása
 
-Esetek vizsgálatához, először be kell észlelési szabályok létrehozásához. Észlelési szabályok biztosító illesztett, vizsgálni, és javítja a fenyegetések és a rendellenességeket, amelyek oka az lehet az adott környezetben, azonnal tudni szeretné, gyanús alapulnak. 
+Esetek vizsgálatához, először be kell észlelési szabályok létrehozásához. 
+
+> [!NOTE]
+> Az Azure-Sentinel létrehozott riasztások keresztül érhetők el [Microsoft Graph biztonsági](https://aka.ms/securitygraphdocs). Tekintse meg a [Microsoft Graph biztonsági riasztások dokumentáció](https://aka.ms/graphsecurityreferencebetadocs) további információért és az integrációs partnerek.
+
+Észlelési szabályok biztosító illesztett, vizsgálni, és javítja a fenyegetések és a rendellenességeket, amelyek oka az lehet az adott környezetben, azonnal tudni szeretné, gyanús alapulnak. 
 
 1. Válassza ki az Azure portál Azure Sentinel-, **Analytics**.
 
@@ -87,7 +90,9 @@ Az Azure Sentinel fenyegetésekkel szembeni forgatókönyvek használatával ké
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtanulta, hogyan kezdheti el használatával Azure Sentinel-fenyegetések észlelése. A következő oktatóanyagban [hogyan reagáljon a fenyegetéseket a automatizált forgatókönyvek](tutorial-respond-threats-playbook.md).
+Ebben az oktatóanyagban megtanulta, hogyan kezdheti el használatával Azure Sentinel-fenyegetések észlelése. 
+
+Megtudhatja, hogyan automatizálható a fenyegetéseket, adott válaszokat [hogyan reagáljon a fenyegetéseket a automatizált forgatókönyvek](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Fenyegetések](tutorial-respond-threats-playbook.md) fenyegetések a válaszok automatizálására.
 

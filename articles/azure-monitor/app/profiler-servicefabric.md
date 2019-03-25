@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 73e453385a6916b6999691afbacd1f102ce7270d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865736"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401102"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Profil élő Azure Service Fabric-alkalmazásokat az Application insights segítségével
 
@@ -55,7 +55,7 @@ Application Insights Profiler az Azure Diagnostics részét képezi. Az Azure Di
   Ha a beállítások helyesek, Application Insights Profiler telepítve, és engedélyezve van az Azure Diagnostics bővítmény telepítésekor. 
 
 1. Az Application Insights hozzáadása a Service Fabric-alkalmazásokat.  
-  A Profiler gyűjtéséhez a kérelmek profilok, az alkalmazás kell kell kérelem adatok küldését az Application Insights. További információkért látogasson el a [Service Fabric-projektekkel készült Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-ServiceFabric) lapot.
+  A Profiler gyűjtéséhez profilok számára a kérelmek az alkalmazás kell kell nyomon követéséhez az Application Insights-műveletek. Útmutatásért olvassa el az állapot nélküli API-k [kérelmek követésének profilkészítés](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json). Egyéb típusú alkalmazások egyéni műveletek követése kapcsolatos további információkért tekintse meg a [Application Insights .NET SDK-val egyéni műveletek követése](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json).
 
 1. Az alkalmazás újbóli üzembe helyezése.
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119785"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403391"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>Data Box Edge biztonság és adatvédelem (előzetes verzió)
+# <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge biztonság és adatvédelem
 
 Biztonsági esetén a fő szempont bevezetése új technológia, különösen akkor, ha a technológiát a bizalmas vagy szellemi tulajdont képező adatokat használatos. A Microsoft Azure Data Box peremhálózati megoldás segítségével, győződjön meg arról, hogy csak hitelesített entitások is megtekintése, módosítása vagy törlése az adatok.
 
@@ -27,9 +27,6 @@ Az Azure Data Box peremhálózati megoldás egymással kommunikáló négy fő �
 - **Data Box peremhálózati eszköz** – az átvitel eszköz, amely tartalmazza a szükséges, hogy a helyszíni adatok importálása az Azure-ba való.
 - **Az eszközhöz csatlakoztatott ügyfelek /-gazdagépekre** – az ügyfelek az infrastruktúra, amely a Data Box peremhálózati eszköz csatlakozik, és adatokat tartalmaznak, amelyek kell védeni.
 - **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez a hely általában a létrehozott Data Box Edge-erőforráshoz társított storage-fiók.
-
-> [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. Order, és a megoldás üzembe helyezése előtt tekintse át a [Azure villámnézethez szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>Box Edge/Data Box átjáró szolgáltatás adatvédelem
@@ -44,7 +41,7 @@ A Data Box Edge/Data Box Gateway szolgáltatás nem a Microsoft Azure-ban üzeme
 A Data Box peremhálózati eszköz egy helyszíni eszköz, amely segít az adatok átalakítása a helyi feldolgozásra, és elküldi azt az Azure-ban. Az eszköz:
 
 - Szüksége van egy aktiválási kulcsot a Data Box Edge/Data Box Gateway szolgáltatás eléréséhez.
-- Védett mindig egy eszköz rendszergazdai jelszava.
+- Van minden alkalommal eszköz jelszóval védett.
 - A zárolt eszköz van. Az eszköz BMC- és BIOS-ban, a BIOS-ban korlátozott felhasználói hozzáféréssel rendelkező jelszóval védett.
 - A biztonságos rendszerindítás engedélyezve van.
 - A Windows Defender Device Guard futtatja. A Device Guard lehetővé teszi, hogy csak az a kódintegritási házirendekben meghatározott megbízható alkalmazások futtathatók. 
@@ -68,14 +65,14 @@ Jelszavak győződjön meg arról, hogy az adatok csak a jogosult felhasználók
 A következőket teheti:
 
 - A helyi webes felhasználói felületen, az eszköz egy böngészőből csatlakozzon, és adja meg egy jelszót az eszköz bejelentkezik.
-- Távoli csatlakozás az eszköz PowerShell-felületén az HTTP-n keresztül. Távfelügyelet alapértelmezés szerint be van kapcsolva. Az eszköz rendszergazdai jelszava jelentkezzen be az eszközt, majd adja meg. További információért ugorjon [távolról csatlakozhat a Data Box peremhálózati eszköz](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Távoli csatlakozás az eszköz PowerShell-felületén az HTTP-n keresztül. Távfelügyelet alapértelmezés szerint be van kapcsolva. Majd adja meg, jelentkezzen be az eszköz az eszköz jelszavát. További információért ugorjon [távolról csatlakozhat a Data Box peremhálózati eszköz](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 Tartsa szem előtt az alábbi gyakorlati tanácsokat:
 
 - A Data Box Edge szolgáltatást nem sikerült beolvasni a már meglévő jelszavai: Ez csak alaphelyzetbe állíthatja őket az Azure Portalon keresztül. Azt javasoljuk, hogy minden jelszót biztonságos helyen tárolja el, így jelszó alaphelyzetbe állítása, ha elfelejti, nem kell. Ha a jelszó alaphelyzetbe állítása, mindenképpen azt alaphelyzetbe állítása előtt az összes felhasználó értesítése.
 - Használja a helyi webes felhasználói Felületét, hogy [módosítsa a jelszót](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Ha megváltoztatja a jelszót, mindenképpen az összes távelérési a felhasználók értesítése, hogy azok nem tapasztalnak egy bejelentkezési hiba.
 - A Windows PowerShell felületet az eszköz távoli kapcsolaton keresztül érheti el a HTTP. Bevált biztonsági gyakorlat csak a megbízható hálózathoz kell a HTTP Protokollt használja.
-- Győződjön meg arról, hogy eszközt rendszergazdai jelszavak erős és a magas szintű védelmet. Kövesse a [ajánlott eljárások a jelszavakhoz](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Győződjön meg arról, hogy eszköz jelszavak erős és a magas szintű védelmet. Kövesse a [ajánlott eljárások a jelszavakhoz](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
 
 ## <a name="protect-the-data"></a>Az adatok védelme
 

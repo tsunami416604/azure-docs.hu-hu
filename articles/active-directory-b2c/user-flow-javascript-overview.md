@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 997babef5860488232f0b530c90b44aba6608ac5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008236"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401554"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>JavaScript és a lap szerződés verziók használata a felhasználói folyamat
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Az Azure AD B2C biztosít a felhasználói felületi elemekre, a felhasználói folyamatokban a HTML, CSS és JavaScript tartalmazó csomagolt tartalom. Ha szeretne engedélyezni [JavaScript](javascript-samples.md) ügyféloldali kódot a felhasználói folyamatok, érdemes, hogy a JavaScript épül az elemek nem módosíthatók. Ellenkező esetben módosításokat okozhat váratlan viselkedést a felhasználó a flow oldalak. Ezek a problémák megelőzése érdekében a felhasználói folyamat lap szerződés használatának kényszerítése, és adjon meg egy oldal szerződés verziót. Ez biztosítja, hogy a tartalom definíciók, amelyek az, hogy a JavaScript nem módosíthatók. Akkor is, ha nem kívánja a felhasználói folyamat engedélyezze a JavaScript, a felhasználói folyamat lap egy oldal szerződés verziót is megadhat.
 

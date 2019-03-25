@@ -1,22 +1,22 @@
 ---
-title: Gazdagép-készlet létrehozása az Azure Marketplace (előzetes verzió) – Azure
-description: Hogyan lehet Windows virtuális asztali állomás-készlet létrehozása az Azure Marketplace-en.
+title: Windows virtuális asztal előzetes gazdagép-készlet létrehozása az Azure Marketplace – Azure
+description: Hogyan lehet Windows virtuális asztal előzetes gazdagép-készlet létrehozása az Azure Marketplace-en.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a1d172f219580b390ba4855928d6f6a68c8269b9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318112"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399871"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace-preview"></a>Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en (előzetes verzió)
+# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en
 
-Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek Windows virtuális asztal (előzetes verzió) bérlő környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
+Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek virtuális Windows Desktop előzetes verziójához bérlői környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
 
 Ez a cikk ismerteti, hogyan hozhat létre egy gazdagép készlet használatával egy Microsoft Azure Marketplace-ajánlat egy virtuális asztali Windows-bérlőn belül. Ez magában foglalja a Windows virtuális asztal, egy erőforráscsoport létrehozása a virtuális gépek Azure-előfizetéssel, a virtuális gépek csatlakoztatása az Active Directory-tartományhoz, és a virtuális gépek regisztrálása a Windows virtuális asztal a gazdagép készletet hoz létre.
 
@@ -64,7 +64,7 @@ A virtuális gép beállítás panel:
 3. Válassza ki a virtuális hálózat, amely kapcsolódik az Active Directory-kiszolgáló, majd válasszon egy alhálózatot a virtuális gépek üzemeltetéséhez.
 4. Kattintson az **OK** gombra.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Windows virtuális asztal bérlőinformációk
+### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows virtuális asztal előzetes bérlőinformációk
 
 A Windows virtuális asztal bérlői információk panel:
 

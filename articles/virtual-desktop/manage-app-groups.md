@@ -1,22 +1,22 @@
 ---
-title: Alkalmazáscsoportok kezelése a Windows virtuális asztal (előzetes verzió) – Azure
-description: Ismerteti, hogyan állíthatja be Windows virtuális asztal bérlők számára az Azure Active Directoryban.
+title: Alkalmazáscsoportok kezelése a Windows virtuális asztal előzetes – Azure
+description: Ismerteti, hogyan állíthatja be Windows virtuális asztal előzetes bérlők számára az Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 455e3b4ac4a5020f68b5201bc19f85892ef62cb1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368986"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401862"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése a Windows virtuális asztal (előzetes verzió)
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése Windows virtuális asztal előzetes verzió
 
-Létrehozott egy új gazdagép-készlet alapértelmezett alkalmazáscsoportnak is közzéteszi a teljes asztalhoz. Emellett a gazdagép-készlet egy vagy több (előzetes verzió) RemoteApp alkalmazáscsoportok is létrehozhat. Ez az oktatóanyag egy RemoteApp-app csoport létrehozása és közzététele a Start menü egyéni alkalmazások.
+Létrehozott egy új Windows virtuális asztal előzetes gazdagép-készlet alapértelmezett alkalmazáscsoportnak is közzéteszi a teljes asztalhoz. Emellett a gazdagép-készlet egy vagy több RemoteApp alkalmazáscsoportok is létrehozhat. Ez az oktatóanyag egy RemoteApp-app csoport létrehozása és közzététele a Start menü egyéni alkalmazások.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 

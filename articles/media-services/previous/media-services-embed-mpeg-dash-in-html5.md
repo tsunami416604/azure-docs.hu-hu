@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ff14afc9e438c2b493219e9fa207b2e8793b3c87
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189206"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403074"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Egy MPEG-DASH adaptív Streamelt videók beágyazása dash.js-sel rendelkező HTML5-alkalmazásba  
 
@@ -55,7 +55,7 @@ Az első lépés az, hogy hozzon létre egy standard HTML tartalmazó oldalra a 
 ```
 
 ## <a name="adding-the-dashjs-player"></a>A dash.js-sel Windows Media Player hozzáadása
-Az alkalmazás ad hozzá a dash.js-sel referenciaimplementációt, szüksége dash.js-sel projekt 1.0-ás kiadásba dash.all.js fájl megnyitása. Ez az alkalmazás JavaScript mappájában menteni kell. Ez a fájl egy kényelmes fájlt, amely a együttesen kéri le a szükséges dash.js-kódot egyetlen fájlba. Ha tekintse meg a dash.js-sel tárház körül, akkor keresse meg az egyes fájlokat, tesztelje a kódot, és még sok más, de minden ehhez van használja dash.js-sel, az dash.all.js fájl nem a következőkre lesz szüksége.
+Az alkalmazás ad hozzá a dash.js-sel referenciaimplementációt, szüksége a dash.all.js fájlt a legújabb verzió dash.js-sel projekt megnyitása. Ez az alkalmazás JavaScript mappájában menteni kell. Ez a fájl egy kényelmes fájlt, amely a együttesen kéri le a szükséges dash.js-kódot egyetlen fájlba. Ha tekintse meg a dash.js-sel tárház körül, akkor keresse meg az egyes fájlokat, tesztelje a kódot, és még sok más, de minden ehhez van használja dash.js-sel, az dash.all.js fájl nem a következőkre lesz szüksége.
 
 Szeretne hozzáadni a dash.js-sel Windows Media player az alkalmazások, a fő szakaszt az basicPlayer.html parancsfájl címke hozzáadása:
 

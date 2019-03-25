@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 5ce816c9e8bec716de840cc5f6fdd546b6abd298
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649781"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403461"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
 
@@ -283,7 +283,7 @@ Ha a virtuális hálózatok különböző előfizetésekben találhatóak, és a
    }
    ```
 
-3. Jelentkezzen be az Azure-bA Felhasználóa felhasználóként, és a sablon üzembe a [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally), vagy a [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Adja meg a fájlnevet, 2. lépésben mentett a példa json-szövegben.
+3. Jelentkezzen be az Azure-bA Felhasználóa felhasználóként, és a sablon üzembe a [portál](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template), vagy a [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template). Adja meg a fájlnevet, 2. lépésben mentett a példa json-szövegben.
 4. A példa json másolásához a 2. lépés egy fájlt a számítógépen, és módosítja a kezdődő sorokat:
    - **Név**: Változás *myVnetA/myVnetAToMyVnetB* való *myVnetB/myVnetBToMyVnetA*.
    - **ID**: Cserélje le `<subscription ID>` Felhasználób az előfizetés-azonosító, és módosítsa a *myVnetB* való *myVnetA*.

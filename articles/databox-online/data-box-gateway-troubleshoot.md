@@ -6,23 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cd4190647586ec47519ca481f78267f8999cef
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100853"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402201"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
 
-Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása. 
-
-> [!IMPORTANT]
-> - A Data Box Gateway előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez a cikk ismerteti az Azure Data Box Gateway átjáróval kapcsolatos problémák elhárítása. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Diagnosztika futtatása
@@ -53,9 +48,9 @@ Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
 
     ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. A támogatási csomag létrehozásának befejezését követően kattintson a **Támogatási csomag letöltése** elemre. A rendszer a tömörített csomagot letölti a megadott helyre. Csomagolja ki a csomagot, és tekintse meg a rendszernapló fájljait.
+2. A támogatási csomag létrehozásának befejezését követően kattintson a **Támogatási csomag letöltése** elemre. A rendszer a tömörített csomagot letölti a megadott helyre. A csomag is kibontásához.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Kattintson a Felhasználó hozzáadása elemre](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Hibaelhárítás naplók használatával
 

@@ -6,27 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 11/13/2018
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685956"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400435"
 ---
-# <a name="what-is-azure-data-box-edge-preview"></a>Mi az Azure Data Box Edge (előzetes verzió)? 
+# <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
 Az Azure Data Box Edge egy olyan tárolási megoldás, amelynek használatával adatokat dolgozhat fel, majd egy hálózaton keresztül elküldheti azokat az Azure-ba. Ez a cikk áttekintést nyújt a Data Box Edge megoldásról, annak előnyeiről, főbb képességeiről és azokról a forgatókönyvekről, amelyekben üzembe helyezheti ezt az eszközt. 
 
 A Data Box Edge egy Microsoft által biztosított fizikai eszközt használ a biztonságos adatátvitel felgyorsításához. A fizikai eszköz a helyszínen üzemel, és Ön írja rá az adatokat az NFS és az SMB protokoll használatával. 
 
 A Data Box Edge a Data Box Gateway összes átjáró-képességével rendelkezik. A Data Box ezen kívül mesterséges intelligenciára épülő peremhálózati számítási képességekkel is rendelkezik, amelyek segítenek az adatok elemzésében, feldolgozásában és szűrésében az Azure blokkblobba, lapblobba vagy az Azure Filesba való átvitelük során.  
-
-> [!IMPORTANT]
-> - A Data Box Edge előzetes verzióban érhető el. [Regisztráljon](#sign-up) a szolgáltatásra!
-> - A megoldás üzembe helyezése előtt tekintse át [az előzetes verziókra vonatkozó szolgáltatási feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -76,7 +71,7 @@ A Data Box Edge fizikai eszköz az alábbi funkciókkal rendelkezik:
 
 | Funkciók/specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
-| Dimenziók   | Szélesség: 17,25 hüvelyk Mélység: 27,25 hüvelyk Magasság: 1,75 hüvelyk<br>(nem tartalmazza a füleket és a PSU-fogantyúkat)  |            
+| Dimenziók   | Szélesség: 17.25" mélysége: 27.25" height: 1.75”<br>(nem tartalmazza a füleket és a PSU-fogantyúkat)  |            
 | Kiszolgálószekrény-terület|1U a kiszolgálószekrénybe helyezve|
 | Kábelek| 2 db tápkábel<br>2 db 1 Gbps sávszélességű RJ45 kábel<br>2 db 10 Gbps sávszélességű SFP+ rézkábel|
 | Összetevők|2 db beépített tápegység (PSU)|

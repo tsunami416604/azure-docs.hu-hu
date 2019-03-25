@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: e0aa3468bda9f904d62e9e20545ac5f990cef521
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57902095"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400889"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód az Azure Data Box Edge (előzetes verzió)
 
@@ -31,11 +31,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-device-access"></a>Eszköz-hozzáférés kezelése
 
-A hozzáférést a Data Box peremhálózati eszköz egy eszköz rendszergazdai jelszavának használatát vezérlik majd. Módosíthatja a rendszergazdai jelszót a helyi webes felhasználói felületen. Az eszköz rendszergazdai jelszava az Azure Portalon is alaphelyzetbe állíthatja.
+A Data Box Edge-eszközön a hozzáférést az eszköz jelszó használatát vezérlik majd. Módosíthatja a jelszót a helyi webes felhasználói felületen. Az eszköz jelszavát az Azure Portalon is alaphelyzetbe állíthatja.
 
-### <a name="change-device-administrator-password"></a>Az eszköz rendszergazdai jelszavának módosítása
+### <a name="change-device-password"></a>Az eszköz jelszavának módosítása
 
-Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz rendszergazdai jelszavának módosítása.
+Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz jelszavának módosítása.
 
 1. A helyi webes felhasználói felületen váltson **karbantartási > jelszó módosítása**.
 2. Adja meg a jelenlegi jelszavát, majd az új jelszót. A megadott jelszónak 8 – 16 karakter hosszúságúnak kell lennie. A következő karakterek közül 3 a jelszóban: nagybetű, kisbetű, számjegyeket és speciális karaktereket. Az új jelszót.
@@ -44,7 +44,7 @@ Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz re
 
 3. Válassza ki **jelszó módosítása**.
  
-### <a name="reset-device-administrator-password"></a>Eszköz rendszergazdai jelszavának alaphelyzetbe állítása
+### <a name="reset-device-password"></a>Eszköz jelszavának alaphelyzetbe állítása
 
 A visszaállítási munkafolyamat nem szükséges majd előkeresnie a régi jelszót, és akkor hasznos, ha a jelszó elvész. Ez a munkafolyamat az Azure Portalon történik.
 
@@ -63,7 +63,7 @@ Az alapértelmezett teljes csatlakoztatott mód szereplőkkel eszközét is futt
 
 - **Teljes körűen csatlakoztatott** – Ez a szokásos alapértelmezett módban, amely az eszköz működik. A felhő feltöltési és a letöltési adatok engedélyezve ebben a módban van. Az Azure portal vagy a helyi webes felhasználói felületének használatával felügyeli az eszközt.
 
-- **Részlegesen csatlakoztatva** – ebben a módban az eszközt nem tölthetők fel bármely azonban az adatokat a megosztásokat az Azure-portálon keresztül kezelhetők.
+- **Részlegesen csatlakoztatva** – ebben a módban az eszközt nem tölthet fel és töltse le a minden megosztás azonban adatokat az Azure-portálon keresztül kezelhetők.
 
     Ebben a módban általában szolgál a hálózati forgalmi díjas műholdas, és a cél, hogy minimalizálja a hálózati sávszélesség-használatot. Minimális hálózatleterheltség figyelési műveletekhez eszköz így is előfordulhatnak.
 

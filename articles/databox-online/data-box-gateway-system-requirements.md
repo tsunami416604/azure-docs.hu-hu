@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: be51e6c829c5f12d17c6302bb951039711f12075
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 73f97128dc7b71179c0b0ab41340af6c0f371da1
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113226"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402966"
 ---
-# <a name="azure-data-box-gateway-system-requirements-preview"></a>Az Azure Data Box Gateway rendszerkövetelményei (előzetes verzió)
+# <a name="azure-data-box-gateway-system-requirements"></a>Az Azure Data Box Gateway rendszerkövetelményei
 
 Ez a cikk ismerteti a fontos követelmények a Microsoft Azure Data Box-Gateway-megoldáshoz, és az ügyfelek az Azure Data Box-átjáróhoz való csatlakozáskor. Azt javasoljuk, hogy tekintse át az információkat gondosan előtt a Data Box átjáró üzembe helyezése, majd tekintse át biztonsági, szükség szerint a telepítési és az ezt követő művelet során.
 
@@ -24,8 +24,6 @@ A Data Box-átjáró virtuális eszköz rendszerkövetelményei a következők:
 - **Gazdagépek szoftverkövetelményei** – a támogatott platformok, a helyi konfigurációs felhasználói Felületet a böngészőben, SMB-ügyfelek és a gazdagépeket, amelyek csatlakozni az eszközhöz vonatkozó esetleges további követelményeket ismerteti.
 - **Az eszköz hálózatkezelési követelményei** – ismerteti a műveletet a virtuális eszköz vonatkozó hálózati követelmények.
 
-> [!IMPORTANT]
-> A Data Box Gateway előzetes verzióban érhető el. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="specifications-for-the-virtual-device"></a>A virtuális eszköz használata estén
 

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 814becd2092c3603f20cd65152e8183446954ce8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 41f9ce38124cdee2166b5a573c4ab91a26c5fb8a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216356"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402422"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
 
@@ -382,7 +382,8 @@ A `validate-jwt` a szabályzat kötelezővé teszi létezik-e, és a jwt-t érv�
     require-expiration-time="true|false"
     require-scheme="scheme"
     require-signed-tokens="true|false"
-    clock-skew="allowed clock skew in seconds">
+    clock-skew="allowed clock skew in seconds"
+    output-token-variable-name="name of a variable to receive a JWT object representing successfully validated token">
   <issuer-signing-keys>
     <key>base64 encoded signing key</key>
     <!-- if there are multiple keys, then add additional key elements -->
@@ -464,43 +465,32 @@ A `validate-jwt` a szabályzat kötelezővé teszi létezik-e, és a jwt-t érv�
 
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>A jogkivonat alapján műveleteket hozzáférés engedélyezése
 
-Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management-access-restriction-policies.md#ValidateJWT) az előzetes engedélyezéshez műveletek a hozzáférést a házirend jogkivonat alapján. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: További API Management funkcióit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50-re. Gyors továbbítja azokat a szabályzatokat, a Helyicsoportházirend-szerkesztő konfigurált 15:00, majd a művelet meghívása a fejlesztői portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.
+Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management-access-restriction-policies.md#ValidateJWT) műveletek való hozzáférés engedélyezése a házirend jogkivonat érték alapján.
 
 ```xml
-<!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->
-<set-variable name="signingKey" value="insert signing key here" />
+<validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
+    <issuer-signing-keys>
+        <key>{{jwt-signing-key}}</key> <!-- signing key is stored in a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>
+    </audiences>
+    <issuers>
+        <issuer>contoso.com</issuer>
+    </issuers>
+    <required-claims>
+        <claim name="group" match="any">
+            <value>finance</value>
+            <value>logistics</value>
+        </claim>
+    </required-claims>
+</validate-jwt>
 <choose>
-  <when condition="@(context.Request.Method.Equals("patch",StringComparison.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="edit">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <when condition="@(new [] {"post", "put"}.Contains(context.Request.Method,StringComparer.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="create">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <otherwise>
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-    </validate-jwt>
-  </otherwise>
+    <when condition="@(context.Request.Method == "POST" && !((Jwt)context.Variables["jwt"]).Claims["group"].Contains("finance"))">
+        <return-response>
+            <set-status code="403" reason="Forbidden" />
+        </return-response>
+    </when>
 </choose>
 ```
 
@@ -550,6 +540,7 @@ Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management
 | igényelnek-aláírt-jogkivonatok           | Logikai érték. Megadja, hogy a jogkivonat szükséges alá legyen írva.                                                                                                                                                                                                                                                                                                                                                                                           | Nem                                                                               | true                                                                              |
 | elválasztó                       | karakterlánc. Adja meg az elválasztó (pl. ",") értékek kinyerését többértékű jogcím használható.                                                                                                                                                                                                                                                                                                                                          | Nem                                                                               | –                                                                               |
 | url                             | Nyissa meg az azonosító konfigurációs végpont URL-címe, amennyiben szerezhető be Open ID konfigurációs metaadatok. A válaszban meg kell felelnie a vonatkozó műszaki adatok, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`. Az Azure Active Directory a következő URL-cím használata: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` és helyettesítse be a directory-bérlő neve, pl. `contoso.onmicrosoft.com`. | Igen                                                                              | –                                                                               |
+output-token-variable-name|karakterlánc. Környezeti változó, amely a token értéket kap olyan típusú objektum nevét [ `Jwt` ](api-management-policy-expressions.md) sikeres jogkivonat érvényesítése után|Nem|–
 
 ### <a name="usage"></a>Használat
 

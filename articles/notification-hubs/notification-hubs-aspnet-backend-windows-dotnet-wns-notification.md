@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 9fde3befb147aeeab9419e08602552a970368cfe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844984"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402508"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése megadott felhasználóknak az Azure Notification Hubs használatával
 
@@ -53,13 +53,13 @@ Ebben az oktatóanyagban épül, amely a notification hub és a Visual Studio-pr
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-client-project"></a>Az ügyfélprojekt kódjának frissítése
+## <a name="update-the-code-for-the-uwp-client"></a>Az UWP-ügyfél a kód frissítése
 
 Ebben a szakaszban a kódot a projekt befejeződött, frissítse a [oktatóanyag: Értesítések küldése az Azure Notification Hubs univerzális Windows-Platformos alkalmazások](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag. A projektnek már társítva kell lennie a Windows Áruházhoz. Emellett úgy kell konfigurálni, hogy az értesítési központot használja. Ebben a szakaszban olyan kódot fog hozzáadni, amely meghívja az új WebAPI háttérrendszert, majd az értesítések regisztrálásához és küldéséhez használja azt.
 
 1. A Visual Studióban nyissa meg a megoldás számára létrehozott a [oktatóanyag: Értesítések küldése az Azure Notification Hubs univerzális Windows-Platformos alkalmazások](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-2. A Megoldáskezelőben kattintson a jobb gombbal a **WindowsApp** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
-3. A képernyő bal oldalán kattintson az **Online** lehetőségre.
+2. A Megoldáskezelőben kattintson a jobb gombbal a Universal Windows Platform (UWP) projektre, és kattintson a **NuGet-csomagok kezelése**.
+3. A bal oldalon válassza ki a **Tallózás**.
 4. A **Search** (Keresés) mezőbe írja be a **Http Client** (HTTP-ügyfél) kifejezést.
 5. A találatok listájában kattintson a **System.Net.Http** elemre, majd az **Install** (Telepítés) parancsra. Fejezze be a telepítést.
 6. A NuGet **Search** (Keresés) mezőjébe írja be a **Json.net** kifejezést. Telepítse a **Newtonsoft.json** csomagot, majd zárja be a NuGet-csomagkezelő ablakát.

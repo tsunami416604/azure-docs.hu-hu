@@ -8,19 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ef35709e90c0a58cc0ff8df1afb6e864adc0a23
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ab3d3a13f8bfa69bd9e13dae344cfbcc3731cc77
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994703"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402592"
 ---
-# <a name="azure-data-box-edge-technical-specifications-preview"></a>Az Azure Data Box Edge műszaki specifikációk (előzetes verzió)
+# <a name="azure-data-box-edge-technical-specifications"></a>Az Azure Data Box Edge műszaki specifikációk
 
 A hardverösszetevők, a Microsoft Azure Data Box Edge-eszköz betartja a műszaki specifikációkról és a következő cikkben ismertetett szabályozási normák terén. A műszaki specifikációk az ellátási egységek (PSUs), a tárolási kapacitás, a ház és a környezeti szabványok ismertetik. 
-
-> [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. Order, és a megoldás üzembe helyezése előtt tekintse át a [Azure villámnézethez szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="power-supply-unit-specifications"></a>Energiagazdálkodási ellátási egység specifikációk
 
@@ -28,7 +25,7 @@ A Data Box peremhálózati eszköz van két 100-240 V ellátási egységek (PSUs
 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximális kimeneti összteljesítmény    |  750 W                     |
+| Maximális kimeneti összteljesítmény    | 750 W                     |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus terjedő: 100-240 V AC |
 | A gyakran moduláris           | Igen                        |

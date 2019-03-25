@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 079fe74ec11570b26cbba93e4aba26d7359bef20
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450736"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402371"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 Általános kérdése [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a .NET-ben a "Kell I tud megszabadulni fejlesztek?" Általában az objektumok megvalósító eldobásakor `IDisposable` befejezése használja őket. Meg nem dobható el a statikus ügyfél, mert nem kész, de amikor befejeződik a függvényt használja. Azt szeretné, hogy a statikus ügyfél élő az alkalmazás időtartamára.
 
-### <a name="http-agent-examples-nodejs"></a>HTTP-ügynök példák (Node.js)
+### <a name="http-agent-examples-javascript"></a>HTTP-ügynök példák (JavaScript)
 
 Jobb kapcsolat felügyeleti lehetőségeket biztosít, mivel a natív használata javasolt [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) osztály helyett nem natív módszerek, például a `node-fetch` modul. A lehetőségek között vannak konfigurálva a kapcsolat paramétereit a `http.agent` osztály. A részletes lehetőségekről elérhető HTTP-ügynökkel rendelkező [új ügynök (\[beállítások\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient példakód (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) egy Azure Cosmos DB-példányhoz csatlakozik. Az Azure Cosmos DB-dokumentáció azt javasolja, hogy Ön [egyedülálló Azure Cosmos DB-ügyfél használata az alkalmazás teljes élettartama](../cosmos-db/performance-tips.md#sdk-usage). Az alábbi példa bemutatja egy függvény adatelemzésre, amely egy minta:
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

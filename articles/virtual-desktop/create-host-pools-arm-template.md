@@ -1,22 +1,22 @@
 ---
-title: Gazdagép-készlet létrehozása az Azure Resource Manager-sablon (előzetes verzió) – Azure
-description: Hogyan lehet Windows virtuális asztali állomás készlet létrehozása az Azure Resource Manager-sablon.
+title: Windows virtuális asztal előzetes gazdagép-készlet létrehozása az Azure Resource Manager-sablonok – Azure
+description: Hogyan gazdagép-készlet létrehozása a Windows virtuális asztal előzetes verzióban érhető el egy Azure Resource Manager-sablonnal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7f4849c19d56bb385e7ad3ce0aa95e16d5c53c23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318464"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401419"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template-preview"></a>Gazdagép-készlet létrehozása az Azure Resource Manager-sablon (előzetes verzió)
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Gazdagép-készlet létrehozása egy Azure Resource Manager-sablonnal
 
-Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek Windows virtuális asztal (előzetes verzió) bérlő környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
+Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek virtuális Windows Desktop előzetes verziójához bérlői környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
 
 Ez a szakasz utasítások gazdagép-készlet létrehozása egy virtuális asztali Windows-bérlő esetében a Microsoft által biztosított Azure Resource Manager-sablonnal. Ebben a cikkben megtudhatja, hogyan lehet Windows virtuális asztal a gazdagép-készlet létrehozása, hozzon létre egy erőforráscsoportot az Azure-előfizetéssel rendelkező virtuális gépek, virtuális gépek csatlakoztatása az Active Directory-tartománynak és regisztrálja a virtuális gépek virtuális asztali Windows.
 

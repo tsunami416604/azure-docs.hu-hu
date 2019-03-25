@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-rendszert futtató Palo Alto adatgyűjtés |} A Microsoft Docs
-description: Ismerje meg az Azure-Sentinel a Palo Alto adatainak gyűjtéséről.
+title: Az Azure-on Előzetesben Sentinel-Palo Alto Networks-adatok gyűjtése |} A Microsoft Docs
+description: Ismerje meg az Azure-Sentinel a Palo Alto Networks adatainak gyűjtéséről.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 149b3b813091033bf5c1685e8b0793f955169808
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841208"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403561"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Csatlakozás a Palo Alto Networks-berendezés
 
@@ -27,14 +27,14 @@ ms.locfileid: "57841208"
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Csatlakozhat az Azure-Sentinel bármely Palo Alto Networks-berendezés Syslog CEF, a naplófájlokat menti. Az Azure Sentinel-integráció segítségével könnyedén futtathat elemzések és lekérdezések a naplófájl adatai között a Palo Alto. Hogyan Azure Sentinel-fogadnak CEF-adatok a további információkért lásd: [csatlakoztatása CEF berendezések](connect-common-event-format.md).
+Csatlakozhat az Azure-Sentinel bármely Palo Alto Networks-berendezés Syslog CEF, a naplófájlokat menti. Az Azure Sentinel-integráció segítségével könnyedén futtathat elemzések és lekérdezések a naplófájl adatai között a Palo Alto Networks. Hogyan Azure Sentinel-fogadnak CEF-adatok a további információkért lásd: [csatlakoztatása CEF berendezések](connect-common-event-format.md).
 
 > [!NOTE]
-> - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
+> Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
-## <a name="step-1-connect-your-palo-alto-appliance-using-an-agent"></a>1. lépés: Csatlakozás a Palo Alto berendezés-ügynök használatával
+## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>1. lépés: Csatlakozás a Palo Alto Networks-berendezés-ügynök használatával
 
-A Palo Alto berendezés csatlakozni az Azure-Sentinel, dedikált gépre az ügynökök telepítéséhez szüksége (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
+A Palo Alto Networks-berendezés csatlakozni az Azure-Sentinel, dedikált gépre az ügynökök telepítéséhez szüksége (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
 Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtuális gép, egy virtuális gépen egy másik felhőben vagy a helyszíni gépen.
 
@@ -98,12 +98,12 @@ Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel 
       1. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
-## <a name="step-2-forward-palo-alto-logs-to-the-syslog-agent"></a>2. lépés: Rendszert futtató Palo Alto naplókat továbbítani a Syslog-ügynök
+## <a name="step-2-forward-palo-alto-networks-logs-to-the-syslog-agent"></a>2. lépés: Továbbítják a Palo Alto Networks-naplókat a Syslog-ügynök
 
 Syslog-üzeneteket az Azure-munkaterülethez a Syslog-ügynökön keresztül a CEF-formátumban továbbítani a Palo Alto Networks konfigurálása:
-1.  Lépjen a [Common Event Format (CEF) konfigurációs útmutatók](https://docs.paloaltonetworks.com/resources/cef) , és töltse le a pdf-berendezés típusához. Kövesse az összes az útmutató a CEF-események gyűjtése a Palo Alto berendezés beállítása. 
+1.  Lépjen a [Common Event Format (CEF) konfigurációs útmutatók](https://docs.paloaltonetworks.com/resources/cef) , és töltse le a pdf-berendezés típusához. Kövesse az összes az útmutató a CEF-események gyűjtésére a Palo Alto Networks-berendezés beállításához. 
 
-1.  Lépjen a [Syslog konfigurálása figyelési](https://aka.ms/asi-syslog-paloalto-forwarding) , és hajtsa végre a 2. és 3 CEF eseménytovábbítás a Palo Alto készülék az Azure Sentinel való konfigurálására.
+1.  Lépjen a [Syslog konfigurálása figyelési](https://aka.ms/asi-syslog-paloalto-forwarding) , és hajtsa végre a 2. és 3 CEF eseménytovábbítás a Palo Alto Networks-berendezés az Azure Sentinel való konfigurálására.
 
     1. Állítsa be a **Syslog server formátum** való **BSD**.
     1. Mindenképpen állítsa be a **létesítmény szám** ugyanarra az értékre állítsa be a Syslog-ügynök.
@@ -130,7 +130,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtudhatta, hogyan szeretne csatlakozni a Palo Alto berendezések Azure Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
+Ebben a dokumentumban megtudhatta, hogyan szeretne csatlakozni a Palo Alto Networks-berendezések Azure Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan [betekintést nyerhet az adatok és a potenciális fenyegetések](quickstart-get-visibility.md).
 - Első lépések [Azure Sentinel-fenyegetések észlelése](tutorial-detect-threats.md).
 

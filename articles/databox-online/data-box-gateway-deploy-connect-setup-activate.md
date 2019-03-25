@@ -6,137 +6,141 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 26b560434e6305689781b8c39c7cf814af9bf8aa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de2ef4908260a62acf28a270dda6ad738a1760b9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112296"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402329"
 ---
-# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
+# <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway
 
 ## <a name="introduction"></a>Bevezetés
 
-Ez az oktatóanyag leírja, hogyan szeretne kapcsolódni, állítsa be, és aktiválja a Data Box átjáróeszköz a helyi webes felhasználói felületen. 
+Ez az oktatóanyag ismerteti csatlakozni, állítsa be, és aktiválja az adatátjáró Box-eszköz helyi webes felhasználói felület használatával. 
 
 A telepítő-aktiválási folyamat befejezéséhez is igénybe vehet körülbelül 10 percet. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Csatlakozás virtuális eszközhöz
+> * Csatlakozás a virtuális eszközhöz
 > * Állítsa be, és a virtuális eszköz aktiválása
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-
-> [!IMPORTANT]
-> - A Data Box Gateway előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt konfigurálja, és állítsa be a Data Box-Gateway, ellenőrizze, hogy:
 
-* Virtuális eszközök kiosztása és csatlakoztatott URL-címe, leírt módon beszerzett a [kiépítése a Hyper-V Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) vagy [üzembe helyezése VMware-ben Data Box Gateway](data-box-gateway-deploy-provision-vmware.md).
+* Sikeresen kiépített egy virtuális eszközt és csatlakoztatott URL-címe, leírt módon beszerzett a [kiépítése a Hyper-V Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) vagy [üzembe helyezése VMware-ben Data Box Gateway](data-box-gateway-deploy-provision-vmware.md).
 * A Data Box-Gateway szolgáltatás Ön által létrehozott Data Box-Gateway-eszközök kezeléséhez az aktiválási kulcs van. További információért ugorjon [üzembe helyezését az Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
 
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Csatlakozás a helyi webes felhasználói felület beállítása 
 
-1. Nyisson meg egy böngészőablakot, és csatlakozzon a helyi webes felületén. Típus:
+1. Nyisson meg egy böngészőablakot és hozzáférés a helyi webes felhasználói felülete a következő címen:
    
    [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
    
-   Használja az előző oktatóanyagban feljegyzett kapcsolati URL-cím. Jelzi, hogy nincs-e a webhely biztonsági tanúsítványával kapcsolatos problémára hibaüzenet jelenik meg. Kattintson a **tovább a weblapra a**. (Ezeket a lépéseket eltérő lehet a használt böngésző alapján.)
-   
-    ![Hiba történt a kapcsolat közben](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+   Használja az előző oktatóanyagban feljegyzett kapcsolati URL-cím. Láthatja, hogy egy hiba vagy figyelmeztetés jelzi, hogy nincs-e a webhely biztonsági tanúsítványával kapcsolatos problémára.
 
-2. Jelentkezzen be a webes felhasználói felületen, a virtuális eszköz. Az alapértelmezett jelszó az *jelszó1*. 
+2. Válassza ki **tovább a weblapra a**. Ezeket a lépéseket a használt böngészőtől függően változhat.
+   
+    ![Webhely biztonsági tanúsítványa hibaüzenet](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+
+3. Jelentkezzen be a webes felhasználói felületen, a virtuális eszköz. Az alapértelmezett jelszó az *jelszó1*. 
    
     ![Jelentkezzen be a helyi webes felhasználói felületen](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-3. Módosítani szeretné az eszköz rendszergazdai jelszavát kéri. Írjon be egy új jelszót, 8 és 16 karakter hosszúságú. A jelszónak tartalmaznia kell a 3 az alábbi: nagybetűk, kisbetűk, számjegyeket és speciális karaktereket.
+4. Amikor a rendszer az eszköz jelszavának módosítása. Az új jelszó 8 – 16 karakterből állhat. A következő 3 tartalmaznia kell: nagybetű, kisbetű, számjegyeket és speciális karaktereket.
 
-    ![Az eszköz rendszergazdai jelszavának módosítása](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![Az eszköz jelszavának módosítása](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
-Ekkor a számítógép a **irányítópult** eszköze.
+A következővel a **irányítópult** eszköze.
 
 ## <a name="set-up-and-activate-the-virtual-device"></a>Állítsa be, és a virtuális eszköz aktiválása
  
-1. Az irányítópultról megnyithatja a különböző beállítások konfigurálásához és a Data Box Gateway szolgáltatással a virtuális eszköz regisztrálásához szükséges. A **hálózati beállítások**, **webalkalmazás-proxy beállításai**, és **időbeállítások** megadása nem kötelező. Csak a szükséges beállítások **eszköznév** és **Felhőbeállítások**.
+Az irányítópulton jeleníti meg a különböző beállítások konfigurálásához és a Data Box Gateway szolgáltatással a virtuális eszköz regisztrálásához szükséges. A **eszköznév**, **hálózati beállítások**, **webalkalmazás-proxy beállításai**, és **időbeállítások** megadása nem kötelező. Csak a szükséges beállítások **Felhőbeállítások**.
    
-    ![Local web UI "Dashboard" page](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![Local web UI "Dashboard" page](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-2. Az a **eszköznév** lapon, az eszköz rövid nevét konfigurálja. A rövid név 1. és 15 karakter hosszú lehet, és betűvel, számokat és kötőjeleket tartalmazhat.
+1. A bal oldali ablaktáblán válassza **eszköznév**, majd adja meg az eszköz rövid nevét. A valódi nevet kell tartalmaz 1 – 15 karakter hosszú, és betűvel, számokat és kötőjeleket tartalmazhat.
 
     ![Helyi webes felhasználói felület "Eszköz neve" lap](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
-3. (Opcionális) konfigurálása a **hálózati beállítások**. Láthatja, hogy legalább 1 hálózati adapter és egyéb, attól függően, hogy hány, konfigurálta a mögöttes virtuális gép. A **hálózati beállítások** oldala a virtuális eszköz az egyik hálózati adapter engedélyezve van az alább látható módon.
+2. (Nem kötelező) A bal oldali ablaktáblán válassza **hálózati beállítások** , majd konfigurálja a beállításokat. A virtuális eszközön látni fogja a legalább egy hálózati adaptert, és hány konfigurálta a mögöttes virtuális gép függően. A **hálózati beállítások** oldala a virtuális eszköz az egyik hálózati adapter engedélyezve van az alább látható módon.
     
     ![Helyi webes felhasználói felület "Hálózati beállítások" lap](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
-    Hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
+    Hálózati beállítások konfigurálását, vegye figyelembe:
 
-   - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
-   - Ha a DHCP nem engedélyezett, hozzárendelheti statikus IP-címek, szükség esetén.
-   - A hálózati adapter IPv4-t konfigurálhatja.
+    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Az IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendelve.
+    - Ha nincs engedélyezve a DHCP, hozzárendelheti statikus IP-címek, szükség esetén.
+    - A hálózati adapter IPv4-t konfigurálhatja.
 
      >[!NOTE] 
      > Javasoljuk, hogy nem váltson át a helyi IP-címét a hálózati adaptert a statikus DHCP, kivéve, ha az eszköz csatlakozni egy másik IP-címet. Ha egy hálózati adaptert, és váltson a DHCP, akkor is nem lehet megállapítani a DHCP-címet. Ha meg szeretné változtatni a DHCP-címére, várja meg, amíg után az eszköz regisztrálva van a szolgáltatással, és lépjen be. Ezután megtekintheti az összes adapter IP-címekről a **eszköztulajdonságok** a szolgáltatás az Azure Portalon.
 
-4. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
+3. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha olyan webproxyt használ csak ezen a lapon konfigurálhatja.
    
    ![Helyi webes felhasználói felület "Webproxy beállításai" lap](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
-   Az a **webalkalmazás-proxy** oldalon:
+   Az a **webalkalmazás-proxy** lapon, tegye a következőket:
    
-   1. Adja meg a **webalkalmazás-proxy URL-címe** a következő formátumban: *http://&lt;gazdagép IP-cím vagy teljes tartománynév&gt;: portszám*. Vegye figyelembe, hogy HTTPS URL-címek nem támogatottak.
-   2. Adja meg **hitelesítési** , **alapszintű** vagy **None**.
-   3. Hitelesítés használata esetén is kell adnia egy **felhasználónév** és **jelszó**.
-   4. Kattintson az **Alkalmaz** gombra. Ezzel ellenőrzése és a konfigurált webes proxykiszolgáló beállításait a alkalmazni.
+   1. Az a **webalkalmazás-proxy URL-címe** mezőbe írja be az URL-cím a következő formátumban: `http://&lt;host-IP address or FQDN&gt;:Port number`. HTTPS URL-címek nem támogatottak.
+   2. A **hitelesítési**válassza **nincs** vagy **NTLM**.
+   3. Ha használ hitelesítést, írja be a **felhasználónév** és **jelszó**.
+   4. Érvényesítéséhez és a alkalmazni a konfigurált webes proxykiszolgáló beállításait, válassza ki a **alkalmaz**.
 
-5. (Opcionális) beállításokat az idő az eszköz, például az időzónát és az elsődleges és másodlagos NTP-kiszolgálót. Az NTP-kiszolgálókra szükség, mert az eszköz szinkronizálnia kell az időt, hogy a felhőszolgáltatókkal hitelesítést.
+4. (Nem kötelező) A bal oldali panelen válassza ki a **időbeállítások**, majd konfigurálja az időzónát és az elsődleges és másodlagos NTP-kiszolgálóhoz az eszközhöz. 
+
+    Az NTP-kiszolgálókra szükség, mert az eszköz szinkronizálnia kell az időt, hogy a felhőszolgáltatókkal hitelesítést.
     
     ![Helyi webes felhasználói felület "Idő beállításai" lap](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
-    Az a **időbeállítások** oldalon:
+    Az a **időbeállítások** lapon, tegye a következőket:
     
-    1. A legördülő listából válassza ki a **időzóna** , amelyben az eszközre telepített földrajzi helye alapján. Az eszköz az alapértelmezett időzóna PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
-    2. Adjon meg egy **elsődleges NTP-kiszolgáló** az eszközhöz, vagy fogadja el alapértékként a time.windows.com. Győződjön meg arról, hogy a hálózat engedélyezi az adatközpont és az internet közötti NTP-adatforgalmat.
-    3. Nem kötelezően megadhatja a **másodlagos NTP-kiszolgáló** az eszközhöz.
-    4. Kattintson az **Alkalmaz** gombra. Ezzel ellenőrzése és a beállított idő beállítások alkalmazásához.
+    1. Az a **időzóna** legördülő listára, válassza ki az időzónát, amely megfelel a földrajzi helyet, amely az eszköz üzembe lesz helyezve.
+        Az eszköz az alapértelmezett időzóna PST. Az eszköz minden ütemezett művelethez ezt az időzónát használja.
 
-6. Az a **Felhőbeállítások** lapon, az eszköz a Data Box Gateway szolgáltatással az Azure Portalon aktiválhatja.
+    2. Adjon meg egy **elsődleges NTP-kiszolgáló** az eszközhöz, vagy fogadja el alapértékként a `time.windows.com`.   
+        Győződjön meg arról, hogy a hálózat engedélyezi az adatközpont és az internet közötti NTP-adatforgalmat.
+
+    3. Szükség esetén a a **másodlagos NTP-kiszolgáló** adja meg az eszköz egy másodlagos kiszolgálón.
+
+    4. Érvényesítéséhez és a konfigurált beállításokat alkalmazni, válassza ki a **alkalmaz**.
+
+6. A bal oldali panelen válassza ki a **Felhőbeállítások**, és aktiválja az eszköz a Data Box Gateway szolgáltatással az Azure Portalon.
     
-    1. Adja meg a **aktiválási kulcs** kapott [aktiválási kulcs lekérése](data-box-gateway-deploy-prep.md#get-the-activation-key) Box adatátjáróhoz.
+    1. Az a **aktiválási kulcs** mezőbe írja be a **aktiválási kulcs** kapott [aktiválási kulcs lekérése](data-box-gateway-deploy-prep.md#get-the-activation-key) Box adatátjáróhoz.
 
-    2. Kattintson a **aktiválása**. 
+    2. Válassza ki **aktiválása**.
        
          ![Local web UI "Cloud settings" page](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Először az eszköz aktív lesz. Az eszköz ezután a fontos frissítéseket keres a, és ha elérhető, a rendszer automatikusan alkalmazza a frissítéseket. Megjelenik egy értesítés erre a célra. 
+    3. Az eszköz akkor aktiválódik, és kritikus frissítések, ha érhető el, a rendszer automatikusan alkalmazza. Megjelenik egy értesítés erre a célra. Figyelheti a frissítési folyamat állapotát az Azure Portalon keresztül.
 
-        A párbeszédpanelen is, hogy másolja és mentse azt biztonságos helyre a helyreállítási kulccsal rendelkezik. Ezt a kulcsot használja az adatok helyreállításához, abban az esetben, ha az eszköz nem indul el.
+        ![Local web UI "Cloud settings" page](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        
+        **A párbeszédpanelen is tartalmaz a helyreállítási kulcs, amely másolja és mentse egy biztonságos helyre. Ezt a kulcsot használja az adatok helyreállításához, abban az esetben, ha az eszköz nem indul el.**
 
-        ![Local web UI "Cloud settings" page](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
 
-    4. Előfordulhat, hogy a frissítés sikeres végrehajtása után néhány percet várnia kell. Jelzi, hogy az eszköz aktiválása sikeresen frissül az oldal.
+    4. Szükség lehet Várjon néhány percet a frissítés sikeres végrehajtásához. A frissítés után a rendszer végrehajtásához, jelentkezzen be az eszközt. A **Felhőbeállítások** lap frissül, jelezve, hogy az eszköz sikeresen aktiválva van.
 
         ![Local web UI "Cloud settings" page updated](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
+Az eszköz beállítása befejeződik. Most már hozzáadhat megosztások az eszközön.
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Csatlakozás virtuális eszközhöz
+> * Csatlakozás a virtuális eszközhöz
 > * Állítsa be, és a virtuális eszköz aktiválása
 
-
-Folytassa a következő oktatóanyaggal, hogyan viheti át az adatokat a Data Box-Gateway.
+A Data Box Gateway adatátvitel kezelésével kapcsolatos információkért lásd:
 
 > [!div class="nextstepaction"]
 > [Adatok áthelyezése az adatátjáró Box](./data-box-gateway-deploy-add-shares.md).

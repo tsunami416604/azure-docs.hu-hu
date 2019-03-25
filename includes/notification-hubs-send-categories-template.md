@@ -8,22 +8,26 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33835833"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405601"
 ---
 Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként fogja elküldeni egy .NET-konzolalkalmazásból. 
 
-1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást:
+1. A Visual Studióban hozzon létre egy új Vizualizációt C# Konzolalkalmazás: egy. Válassza a menü **fájl** > **új** > **projekt**.
+    b. Bontsa ki a **Visual C#** , és válassza ki **Windows asztali**. 
+    c. Válassza ki **Console App (.NET Framework)** sablonok listáján. 
+    d. Adjon meg egy **neve** az alkalmazáshoz. 
+    e. Válassza ki a **mappa** az alkalmazáshoz.
+    f. A projekt létrehozásához válassza az **OK** lehetőséget. 
+2. A Visual Studio főmenüjében válassza **eszközök** > **NuGet-Csomagkezelő** > **Package Manager Console** , majd a konzolablakban Adja meg a következő karakterláncot:
    
-      ![A Console Application (konzolalkalmazás) hivatkozás][13]
-
-2. A Visual Studio főmenüjében válassza a **Tools** (Eszközök) > **Library Package Manager** (Kódtárcsomag-kezelő) > **Package Manager Console** (Csomagkezelői konzol) elemeket, majd a konzolablakban adja meg a következő sztringet:
-   
-        Install-Package Microsoft.Azure.NotificationHubs
+    ```
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
    
 3. Nyomja le az **Enter** billentyűt.  
     Ez a művelet hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomag] használatával.

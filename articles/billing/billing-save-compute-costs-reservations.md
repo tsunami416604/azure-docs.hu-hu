@@ -2,23 +2,18 @@
 title: Mi az az Azure Reservations? | Microsoft Docs
 description: További tudnivalók az Azure-foglalásokat és a díjszabás menteni a virtuális gépeken, az SQL-adatbázisok, Azure Cosmos DB és más erőforrás-használati díjak.
 services: billing
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/06/2019
+ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: a4ad3574849d3c80f671abc93e463b06454289e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3081ab352152d6d736f20da94ed0b513121e231b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904167"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401799"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -44,17 +39,11 @@ Windows virtuális gépek és az SQL Database, a licencelési költségek is fog
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Aki nem jogosult egy foglalás megvásárlása?
 
-A következő előfizetéstípusok az Azure-ügyfelek is vásárolhatnak foglalást:
+Csomag vásárlása egy előfizetés-tulajdonosi szerepkör (MS-AZR - 0017P vagy MS-AZR - 0148P) vállalati vagy használatalapú fizetéses előfizetésre (MS-AZR - 003P vagy MS-AZR - 0023P) kell rendelkeznie. Felhőszolgáltatók használhatja az Azure Portalon vagy [Partnerközpont](/partner-center/azure-reservations) megvásárolható Azure-foglalásokat.
 
-- Nagyvállalati szerződéses előfizetésébe csomag típusa (MS-AZR - 0017P vagy MS-AZR - 0148P).
-- Használatalapú előfizetés ajánlattípusra (MS-AZR - 003P vagy MS-AZR - 0023P).
-- Cloud Solution Provider (CSP) partner használhatja az Azure Portalon vagy [Partnerközpont](https://docs.microsoft.com/partner-center/azure-reservations) megvásárolható Azure-foglalásokat.
+Nagyvállalati szerződéssel rendelkező ügyfeleink a nagyvállalati szerződéssel rendelkező rendszergazdák vásárlások korlátozhatja tiltsa le a **fenntartott példányok hozzáadása** lehetőség az EA-portálon. Nagyvállalati szerződéssel rendelkező rendszergazdák tulajdonosának kell lennie egy előfizetés számára legalább egy nagyvállalati szerződéses előfizetésében vásárolhat egy foglalást. A beállítás akkor hasznos, amelyek egy másik költséghelyek lefoglalását beszerzési központi csapat nagyvállalatok számára. A vásárlás után központi csapatok költség center tulajdonosok adhat hozzá a foglalást. Tulajdonosok majd gazdagépcsoportjaira a foglalást saját előfizetésekhez. A központi csapat az előfizetés-tulajdonosi hozzáféréssel rendelkezik, ahol a Foglalás megvásárlása esetén nem szükséges.
 
 A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik.
-
- A csomag vásárlása:
-
-- Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
 
 ## <a name="how-is-a-reservation-billed"></a>Hogyan történik a Foglalás?
 

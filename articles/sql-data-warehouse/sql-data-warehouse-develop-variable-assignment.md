@@ -10,17 +10,19 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 29b86d430fb5d65e7f089c616651da5f488b675c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455983"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401694"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse változók hozzárendelése
+
 Tippek az Azure SQL Data Warehouse a T-SQL-változók hozzárendeléséhez használható megoldások fejlesztéséhez.
 
 ## <a name="setting-variables-with-declare"></a>DECLARE a változók beállítása
+
 Az SQL Data Warehouse változók vannak beállítva, használja a `DECLARE` utasítást vagy a `SET` utasítást. A DECLARE változók inicializálása az egyik változó értékének beállítása az SQL Data Warehouse a legrugalmasabb módszer.
 
 ```sql
@@ -45,6 +47,7 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>A SET értékeinek beállítása
+
 SET a módszert gyakran egy változó beállításához.
 
 Az alábbi utasításokat az összes érvényes módon beállítva egy olyan változó megadásához:
@@ -59,8 +62,9 @@ SET     @v +=1;
 Csak akkor állíthat egy változó egyszerre beállítva. Azonban az összetett kezelők megengedett is.
 
 ## <a name="limitations"></a>Korlátozások
-Válassza ki vagy a frissítés nem használható változó-hozzárendelés.
+
+Változó-hozzárendelés frissítése nem használható.
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).
 
+További fejlesztési tippek: [fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).

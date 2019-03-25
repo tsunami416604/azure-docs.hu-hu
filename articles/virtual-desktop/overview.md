@@ -1,22 +1,22 @@
 ---
-title: Mit jelent a Windows virtuális asztal? (előzetes verzió) – Azure
-description: Windows virtuális asztal áttekintése.
+title: Mi a Windows virtuális asztal előzetes verziója?  – Azure
+description: Windows virtuális asztal előzetes verziójának áttekintése.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 679c7d3c84237747fd341f92c5dfcc0588d23be2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338547"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401040"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Mit jelent a Windows virtuális asztal? 
+# <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
-Mostantól elérhető nyilvános előzetes verzióban érhető el Windows virtuális asztal az a felhőben futó asztali és alkalmazás virtualizációs szolgáltatás.
+Mostantól elérhető nyilvános előzetes verzióban érhető el Windows virtuális asztal előzetes egy olyan asztali és alkalmazás virtualizációs szolgáltatás, amely a felhőben futtat.
 
 Íme, mi mindent az Azure-ban Windows virtuális asztal futtatásakor:
 
@@ -39,7 +39,7 @@ A Windows virtuális asztal beállíthat egy méretezhető és rugalmas környez
 
 Telepítheti és virtuális asztalok kezelése:
 
-* A gazdagép-címkészleteket, az alkalmazás létrehozása, hozzárendelése a felhasználók és erőforrások közzétételét a Windows virtuális asztal PowerShell és a REST felületeken használatával
+* A gazdagép-címkészleteket, az alkalmazás létrehozása, hozzárendelése a felhasználók és erőforrások közzétételét a Windows virtuális asztal PowerShell és a REST felületeken használatával.
 * Teljes asztali vagy egyéni egyetlen gazdagép-készletből távoli alkalmazások közzététele, hozza létre az egyes alkalmazásokra csoportokat a felhasználók más-más részhalmazához, vagy akár felhasználók képek számának csökkentése érdekében több alkalmazás csoportokhoz rendelhetők hozzá.
 * Kezelheti a környezetében, használja a beépített delegált hozzáférés szerepkörök hozzárendelése és diagnosztikai adatok összegyűjtéséig különböző konfigurációs vagy felhasználói hibák megértése.
 * Az új diagnosztikai szolgáltatás használatával kapcsolatos hibák elhárítása.
@@ -97,4 +97,4 @@ Látogasson el a [Windows virtuális asztal technikai Közösség](https://techc
 Első lépésként kell hoznia egy bérlőt. További bérlők létrehozásával kapcsolatos további információkért folytassa a bérlő létrehozása oktatóanyag.
 
 > [!div class="nextstepaction"]
-> [A virtuális asztali Windows-bérlő létrehozása](tenant-setup-azure-active-directory.md)
+> [Bérlő létrehozása a Windows virtuális asztal előzetes verzióban érhető el](tenant-setup-azure-active-directory.md)

@@ -1,22 +1,22 @@
 ---
 title: Előkészítése és a egy fő VHD-rendszerképet – Azure testreszabása
-description: Hogyan előkészítése, testre szabhatja, és a egy Windows virtuális asztal (előzetes verzió) fő rendszerkép feltöltése az Azure-bA.
+description: Hogyan előkészítése, testre szabhatja, és a egy virtuális asztali Windows-előnézeti kép feltöltése az Azure-bA.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 53bf33aad6511cc282f53659bbe43873cacfc3ff
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318419"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400777"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Előkészítése és a egy fő VHD-lemezkép testreszabása
 
-Ebben a cikkben megtudhatja, hogyan készülhet fel a fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-ba, beleértve a virtuális gépek (VM) létrehozása és telepítése és rajtuk szoftver konfigurálása. Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal-specifikus (előzetes verzió) konfiguráció esetén érvényesek.
+Ebben a cikkben megtudhatja, hogyan készülhet fel a fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-ba, beleértve a virtuális gépek (VM) létrehozása és telepítése és rajtuk szoftver konfigurálása. Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal előzetes jellemző konfiguráció esetén is.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -370,8 +370,8 @@ Az alábbi utasításokat követve megtudhatja, hogyan lehet a fő rendszerkép 
 
 Most, hogy van egy rendszerképe, hozzon létre, vagy frissítse a host készletek. Hogyan hozhat létre, és frissítse a host készletek kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Gazdagép-készlet létrehozása az Azure Resource Manager-sablon (előzetes verzió)](create-host-pools-arm-template.md)
-- [Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en (előzetes verzió)](create-host-pools-azure-marketplace.md)
-- [Gazdagép-készlet létrehozása a PowerShell használatával (előzetes verzió)](create-host-pools-powershell.md)
+- [Gazdagép-készlet létrehozása egy Azure Resource Manager-sablonnal](create-host-pools-arm-template.md)
+- [Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en](create-host-pools-azure-marketplace.md)
+- [Gazdagép-készlet létrehozása a PowerShell-lel](create-host-pools-powershell.md)
 - [A felhasználói profil megosztás gazdagép készlet beállítása](create-host-pools-user-profile.md)
 - [Windows virtuális asztal terheléselosztási módszer konfigurálása](configure-host-pool-load-balancing.md)

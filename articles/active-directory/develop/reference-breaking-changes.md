@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196025"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401295"
 ---
 # <a name="whats-new-for-authentication"></a>Újdonságok a hitelesítéshez? 
 
@@ -42,6 +42,37 @@ A hitelesítési rendszere módosítja, és hozzáadja a szolgáltatások rendsz
 ## <a name="upcoming-changes"></a>Közelgő változások
 
 Nincs, jelenleg ütemezve. 
+
+## <a name="march-2019"></a>2019. március
+
+### <a name="looping-clients-will-be-interrupted"></a>Az ügyfelek hurkolás megszakad
+
+**Hatályba lépés dátuma**: 2019. márciusi 25.
+
+**Érintett végpontok**: 1.0-s verziója és a 2.0-s verzió
+
+**Érintett protokoll**: Minden folyamat
+
+Ügyfélalkalmazások is néha feladatelőzményeket, a bejelentkezési kérésben több száz kiállító rövid időn át.  Előfordulhat, hogy ezeket a kérelmeket, vagy nem lehet sikeres, de az Identitásszolgáltató, növelje a késés az összes felhasználó számára, és csökkenti az Identitásszolgáltató rendelkezésre állásának közreműködés mindannyian és a gyenge felhasználói élmény fokozása számítási feladatok.  Ezek az alkalmazások működnek a normál használati határain kívül, és frissíteni kell, hogy megfelelően viselkednek.  
+
+Az ügyfelek ezt a problémát az ismétlődő kérelmek többszöri küld egy `invalid_grant` hiba: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+
+A legtöbb ügyfelek nem kell a hiba elkerüléséhez viselkedés megváltoztatásához.  Ez a hiba által érintett csak helytelenül konfigurált ügyfelek (token-gyorsítótárazási nélküli vagy azok Rákérdezés hurkok már helymetrikák).  Az ügyfelek nyomon példány helyi (cookie-k) használatával a következő tényezőktől függ:
+
+* Felhasználói mutatót, ha van ilyen
+
+* Hatókörök vagy a kért erőforrás
+
+* Ügyfél-azonosító
+
+* Átirányítási URI
+
+* Válasz típusa és mód
+
+Így több kérés (15 +) egy rövid idő alatt (5 perc) alkalmazások fog kapni egy `invalid_grant` arról tájékoztat, hogy azok hurkolást.  A jogkivonatok kért elég hosszú élettartamú élettartama (10 perc legalább, alapértelmezés szerint 60 percenként), ezért a következő ismétlődő kérelmek ez idő alatt nem szükségesek.  
+
+Kezelje a minden alkalmazás `invalid_grant` által egy interaktív kérdés megjelenítő ahelyett, hogy csendes kér egy token.  Annak érdekében, hogy ez a hiba, az ügyfelek biztosítják, hogy azok helyesen vannak gyorsítótárazás a kapott jogkivonatokat.
+
 
 ## <a name="october-2018"></a>2018. október
 

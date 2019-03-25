@@ -1,6 +1,6 @@
 ---
-title: Különbségek és szempontok a Managed Disks az Azure Stackben |} A Microsoft Docs
-description: Különbségek és szempontok ismerje meg az Azure stack felügyelt lemezek használatakor.
+title: Különbségek és szempontok a felügyelt lemezek és lemezképek az Azure Stack felügyelt |} A Microsoft Docs
+description: Különbségek és szempontok ismerje meg a felügyelt lemezek és az Azure Stack felügyelt képek használata során.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,27 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 28210048cd007fc10dcd4cf5e92577cbd121e2a3
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: c1975c885efc0a2a22b2ab478f8bc9afbcc8bce3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368272"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400359"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Az Azure Stack felügyelt lemezek: különbségek és szempontok
 
-Ez a cikk összefoglalja, ismert [Azure Stack-Managed Disks](azure-stack-manage-vm-disks.md) és [az Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Azure Stack és az Azure magas szintű különbségeit kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
+Ez a cikk összefoglalja, ismert [Azure Stack felügyelt lemezek](azure-stack-manage-vm-disks.md) és [managed disks Azure](../../virtual-machines/windows/managed-disks-overview.md). Azure Stack és az Azure magas szintű különbségeit kapcsolatos további információkért tekintse meg a [szempontok kulcs](azure-stack-considerations.md) cikk.
 
 A felügyelt lemezek leegyszerűsítik a Lemezkezelés IaaS virtuális gépekhez, mivel kezeli az [tárfiókok](../azure-stack-manage-storage-accounts.md) társított Virtuálisgép-lemezek.
 
 > [!Note]  
-> Felügyelt lemezek az Azure Stacken 1808 frissítés érhető el. Ez alapértelmezés szerint engedélyezve van az Azure Stack portálon 1811 Update használó virtuális gépek létrehozásakor.
+> Az Azure Stacken felügyelt lemezek a 1808 frissítés érhető el. Ez alapértelmezés szerint engedélyezve van az Azure Stack-portált használja, kezdve a 1811 frissítés virtuális gépekre.
   
-## <a name="cheat-sheet-managed-disk-differences"></a>Hasznos tanácsok: Felügyelt lemez különbségek
+## <a name="cheat-sheet-managed-disk-differences"></a>Hasznos tanácsok: felügyelt lemez különbségek
 
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ A felügyelt lemezek leegyszerűsítik a Lemezkezelés IaaS virtuális gépekhez
 |Migrálás      |Adja meg az eszköz meglévő nem felügyelt Azure Resource Manager virtuális gépek nélkül hozza létre újra a virtuális gép áttelepítése  |Még nem támogatott |
 
 > [!NOTE]  
-> Felügyelt lemez IOPs és átviteli sebesség az Azure Stackben értéke helyett egy kiépített számot, amelyet az üzemállapotára negatív hatással a hardver- és az Azure Stackben futó számítási feladatok maximális szám.
+> Felügyelt lemezek IOPs és átviteli sebesség az Azure Stackben helyett egy kiépített számot, amely negatív hatással a hardver- és az Azure Stackben futó számítási feladatokat lehet maximális szám.
 
 ## <a name="metrics"></a>Mérőszámok
 
@@ -61,7 +61,7 @@ A storage-mérőszámok különbségek is vannak:
 
 ## <a name="api-versions"></a>API-verziók
 
-Az Azure Stack felügyelt lemezek a következő API-verziókat támogatja:
+Az Azure Stack felügyelt lemezeket támogatja a következő API-verziók:
 
 - 2017-03-30
 - 2017-12-01
@@ -135,26 +135,31 @@ Az Azure Stack támogatja *lemezképek kezelt*, amelyek lehetővé teszik, hogy 
 - Felügyelt általánosított virtuális gép rendelkezik, és szeretne létrehozni a több, hasonló felügyelt virtuális gépeket.
 
 ### <a name="step-1-generalize-the-vm"></a>1. lépés: A virtuális gép általánosítása
-A Windows hajtsa végre az "A Windows VM Generalize a Sysprep használatával" című szakaszban talál: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep Linux rendszeren hajtsa végre az itt az 1. lépés: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm 
 
-Megjegyzés: Ne felejtse el a virtuális gép általánosítása. Virtuális gép létrehozása, amely még nem lett megfelelően általánosítva egy rendszerképből egy VMProvisioningTimeout hiba vezet.
+A Windows, kövesse a [a Sysprep használata Windows virtuális gép Általánosításához](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) szakaszban. Linux esetén hajtsa végre az 1. lépés [Itt](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
+
+> [!NOTE]
+> Ellenőrizze, hogy a virtuális gép általánosítása. Vezet, amely nem lett megfelelően általánosítva egy rendszerképből egy virtuális gép létrehozása egy **VMProvisioningTimeout** hiba.
 
 ### <a name="step-2-create-the-managed-image"></a>2. lépés: A felügyelt rendszerkép létrehozása
-Ehhez használhatja a portal, powershell vagy parancssori felület. Kövesse az itt az Azure-dokumentum: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource
 
-### <a name="step-3-choose-the-use-case"></a>3. lépés: Válassza ki a használati eset:
+A portal, PowerShell vagy a parancssori felület felügyelt rendszerkép létrehozásához használhat. Az Azure-cikkben található lépéseket követve [Itt](/azure/virtual-machines/windows/capture-image-resource).
+
+### <a name="step-3-choose-the-use-case"></a>3. lépés: Válassza ki a használati eset
+
 #### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>1. eset: Nem felügyelt virtuális gépek migrálása felügyelt lemezekre
-Ne felejtse el a virtuális gép megfelelően generalize Ez a lépés végrehajtása előtt. POST, ez a virtuális gép általánossá használt motorteljesítmény nem lehet. Virtuális gép létrehozása, amely még nem lett megfelelően általánosítva egy rendszerképből egy VMProvisioningTimeout hiba vezet. 
 
-Kövesse az utasításokat [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) , létrehozhat egy felügyelt rendszerképet, a storage-fiókban általános virtuális merevlemezből. Ez a rendszerkép a jövőben felügyelt virtuális gépek létrehozásához használható.
+Győződjön meg arról, hogy a virtuális gép megfelelően általánosításához a lépés végrehajtása előtt. Általánossá, után már nem használhatja ezt a virtuális Gépet. Vezet, amely nem lett megfelelően általánosítva egy rendszerképből egy virtuális gép létrehozása egy **VMProvisioningTimeout** hiba.
+
+Kövesse az utasításokat [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) , létrehozhat egy felügyelt rendszerképet, a storage-fiókban általános virtuális merevlemezből. Ez a rendszerkép módosítástól felügyelt virtuális gépek létrehozásához is használhatja.
 
 #### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>2. eset: Felügyelt virtuális gép létrehozása felügyelt rendszerképből Powershell használatával
 
-Után lemezkép létrehozása a meglévő felügyelt lemez a virtuális gép használata a parancsfájl [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , az alábbi példa parancsfájl hasonló Linux virtuális Gépet hoz létre egy meglévő kép objektum:
+Után lemezkép létrehozása a meglévő felügyelt lemez a virtuális gép használata a parancsfájl [Itt](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell), az alábbi példa parancsfájl hasonló Linux virtuális Gépet hoz létre egy meglévő kép objektum:
 
-Azure Stack powershell-modul 1.7.0-ás vagy újabb: Kövesse az utasításokat [Itt](../../virtual-machines/windows/create-vm-generalized-managed.md) 
+Azure Stack PowerShell-modul 1.7.0-ás vagy később: kövesse az utasításokat [Itt](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
-Azure Stack powershell-modul 1.6.0-s vagy az alábbi:
+Azure Stack PowerShell-modul 1.6.0-s vagy korábban:
 
 ```powershell
 # Variables for common values
@@ -195,6 +200,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 $image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
@@ -205,11 +211,11 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-A portál használatával egy virtuális gép létrehozása felügyelt rendszerképből is. További információkért tekintse meg az Azure által felügyelt rendszerkép cikkek [általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../../virtual-machines/windows/capture-image-resource.md) és [virtuális gép létrehozása felügyelt rendszerképből](../../virtual-machines/windows/create-vm-generalized-managed.md).
+A portál használatával egy virtuális gép létrehozása felügyelt rendszerképből. További információkért tekintse meg az Azure által felügyelt rendszerkép cikkek [általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../../virtual-machines/windows/capture-image-resource.md) és [virtuális gép létrehozása felügyelt rendszerképből](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfiguráció
 
-A 1808 alkalmazása után a frissítés vagy újabb, felügyelt lemezek használata előtt a következő konfigurációt kell végrehajtania:
+Frissítse a 1808 alkalmazása után, vagy újabb, felügyelt lemezek használata előtt a következő konfigurációt kell végrehajtania:
 
 - Ha egy előfizetést a 1808 korábban lett létrehozva, kövesse az alábbi lépések végrehajtásával frissítheti az előfizetést. Ellenkező esetben az előfizetésben található virtuális gépek üzembe helyezéséhez meghiúsulhat egy hibaüzenettel "Belső hiba történt a Lemezkezelőben."
    1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.

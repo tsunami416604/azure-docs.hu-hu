@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 78008357e3ea8fbfe707a7dbead19e3fce83b578
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091546"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403697"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Oktatóanyag: Felkészülés az Azure Data Box átjáró (előzetes verzió) üzembe helyezése
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Az Azure Data Box átjáró telepítésének előkészítése
 
 
 A jelen oktatóanyag az első az Azure Data Box Gateway teljes üzembe helyezéséhez szükséges üzembehelyezési oktatóanyagok sorozatában. Ez az oktatóanyag az Azure Portal előkészítésének módját ismerteti a Data Box Gateway-erőforrás üzembe helyezéséhez. 
@@ -29,13 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A virtuáliseszköz-rendszerkép letöltése
 > * Az aktiválási kulcs lekérése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-
-> [!IMPORTANT]
-> - A Data Box Gateway előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-
-### <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Bevezetés
 
 A Data Box Gateway üzembe helyezéséhez tekintse meg az alábbi oktatóanyagokat a megadott sorrendben.
 
@@ -56,97 +50,109 @@ Az alábbiakban a Data Box Gateway-erőforrással, a Data Box Gateway-eszközzel
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* A Microsoft Azure-előfizetést engedélyezni kell a Data Box Gateway-erőforrás használatára.
-* Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
+- A Microsoft Azure-előfizetés támogatnia kell a Data Box-Gateway-erőforráshoz. Utólagos elszámolású előfizetések nem támogatottak.
+- Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway-eszköz
 
 A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 
-* A Hyper-V a Windows Server 2012 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 6.0, 6.5-ös vagy 6.7), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
-* A gazdarendszernek képesnek kell lennie az alábbi erőforrásokat a virtuális Data Box-eszköz üzembe helyezésére elkülöníteni:
+- A Hyper-V a Windows Server 2012 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 6.0, 6.5-ös vagy 6.7), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
+- A gazdarendszernek képesnek kell lennie az alábbi erőforrásokat a virtuális Data Box-eszköz üzembe helyezésére elkülöníteni:
   
-  * Legalább 4 mag.
-  * Legalább 8 GB RAM. 
-  * Egy hálózati adapter.
-  * 250 GB-os operációsrendszer-lemez.
-  * 2 TB-os virtuális lemez a rendszeradatok számára.
+  - Legalább 4 virtuális processzor.
+  - Legalább 8 GB RAM.
+  - Egy hálózati adapter.
+  - 250 GB-os operációsrendszer-lemez.
+  - 2 TB-os virtuális lemez a rendszeradatok számára.
 
 ### <a name="for-the-datacenter-network"></a>Adatközponti hálózat
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* Az adatközpont hálózata a Data Box Gateway-eszköz hálózati követelményeinek megfelelően lett konfigurálva. További információt a [Data Box Gateway rendszerkövetelményeit ismertető](data-box-gateway-system-requirements.md) témakörben talál.
+- Az adatközpont hálózata a Data Box Gateway-eszköz hálózati követelményeinek megfelelően lett konfigurálva. További információkért lásd: a [Data Box Gateway rendszerkövetelményei](data-box-gateway-system-requirements.md).
 
-* A Data Box Gateway számára folyamatosan (legalább) 20 Mbps sebességű dedikált internetes sávszélesség áll rendelkezésre. Ez a sávszélesség nem osztható meg más alkalmazásokkal. A hálózati sávszélesség szabályozása, majd a munkavégzés céljából történő szabályozás esetén javasoljuk, hogy legalább 32 Mbps sebességű internetes sávszélességet használjon.
+- A normál működési feltételek a Data Box-átjáró v: kell rendelkeznie
+
+    - Legalább 10 MB/s sávszélesség és a frissített marad, az eszköz letöltéséhez.
+    - Legalább 20 MB/s dedikált sávszélesség és a fájlok átvitelét le- és feltöltése.
 
 ## <a name="create-a-new-resource"></a>Új erőforrás létrehozása
 
-Az alábbi lépések végrehajtásával hozhat létre új Data Box Gateway-erőforrást. 
-
 Ha rendelkezik meglévő Data Box Gateway-erőforrással a virtuális eszközök kezeléséhez, hagyja ki ezt a lépést, és ugorjon [Az aktiválási kulcs lekérése](#get-the-activation-key) lépésre.
 
-Data Box-erőforrás létrehozásához hajtsa végre az alábbi lépéseket az Azure Portalon.
-1. Microsoft Azure hitelesítő adatait használva jelentkezzen be az Azure Portalra ezen az URL-címen: [https://aka.ms/databox-edge](https://aka.ms/databox-edge). 
+Hozzon létre egy Data Box-átjáró-erőforrást, az alábbi lépéseket az Azure Portalon.
 
-2. Válassza ki a Data Box Edge előzetes verziójához használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. A **Data Box Gateway** lehetőségnél kattintson a **Létrehozás** elemre.
+1. A Microsoft Azure hitelesítő adatok használatával jelentkezzen be:
+
+    - Az Azure Portalon a következő URL-címen: [ https://portal.azure.com ](http://portal.azure.com).
+    - Vagy az Azure Government portálra az URL-címen: [ https://portal.azure.us ](https://portal.azure.us). További részletekért látogasson el [csatlakozhat az Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+
+2. A bal oldali ablaktáblán válassza **+ erőforrás létrehozása**. Keresse meg **Data Box-Edge / Data Box-átjáró**. Válassza ki a Data Box Edge / Data Box-átjárót. Kattintson a **Létrehozás** gombra.
+3. Válassza ki a Data Box átjáróeszköz használni kívánt előfizetést. Válassza ki a régiót, ahol szeretné telepíteni a Data Box-Gateway-erőforrás. Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el. Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. Az a **Box adatátjáró** beállításnál válassza **létrehozás**.
 
     ![A Data Box Gateway szolgáltatás keresése](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
-3. Adja meg vagy válassza ki az alábbi adatokat az új erőforrás számára.
+4. Az a **alapjai** lapon adja meg vagy válassza ki az alábbi **projektadatok**.
     
-    |Beállítás  |Value  |
+    |Beállítás  |Érték  |
     |---------|---------|
-    |Erőforrás neve   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Előfizetés    |A számlázási fiókhoz társított előfizetés. |
+    |Előfizetés    |Ez a rendszer automatikusan kitölti a korábban kiválasztott alapján. A számlázási fiókhoz társított előfizetés. |
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/resource-group-overview.md) kapcsolatban.     |
-    |Hely     |Ebben a kiadásban az USA keleti régiója, az USA 2. nyugati régiója, Délkelet-Ázsia és Nyugat-Európa érhető el. <br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+
+5. Adja meg vagy válassza ki az alábbi **példány részletei**.
+   | Név |} Az erőforrás azonosító rövid nevet.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |   
+    | Régió |} Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el az erőforrás üzembe helyezéséhez. Az Azure Government, government-régiók szerepel a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) érhetők el. <br> Válassza a földrajzi régióban, ahol szeretné az eszköz üzembe helyezése legközelebb eső helyet. |}
     
     ![Data Box Gateway-erőforrás létrehozása](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
-4. Kattintson az **OK** gombra.
+6. Válassza az **Áttekintés + létrehozás** lehetőséget.
  
-Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozását követően értesítést kap.
+7. Az a **tekintse át + létrehozása** lapján, a **díjszabás**, **használati feltételeket tartalmazó fájl**, és az erőforrás részleteit. Kattintson a **Létrehozás** gombra.
 
+    ![Tekintse át a Data Box-Gateway-erőforrás részletei](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
+
+Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeresen létrehozott és telepített, miután, értesítést kap. Válassza ki **erőforrás megnyitása**.
+
+![Tekintse át a Data Box-Gateway-erőforrás részletei](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>A virtuáliseszköz-rendszerkép letöltése
 
-A Data Box Gateway-erőforrás létrehozása után töltse le a megfelelő virtuáliseszköz-rendszerképet a virtuális eszköz a gazdarendszeren való üzembe helyezéséhez. Minden operációs rendszerhez külön virtuáliseszköz-rendszerkép tartozik, amely az erőforrásnak az Azure Portalon található **Gyorsindítás** paneljén keresztül tölthető le.
+A Data Box Gateway-erőforrás létrehozása után töltse le a megfelelő virtuáliseszköz-rendszerképet a virtuális eszköz a gazdarendszeren való üzembe helyezéséhez. A virtuális eszköz lemezképek az operációs rendszer jellemzőek.
 
 > [!IMPORTANT]
 > A Data Box Gatewayen futó szoftver csak a Data Box Gateway-erőforrással használható.
 
+Hajtsa végre a lépéseket a [az Azure portal](https://portal.azure.com/) letölti a virtuális eszköz lemezképet.
 
-Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure.com/).
-
-1. Kattintson a létrehozott erőforrásra, majd az **Áttekintés** elemre. Ha rendelkezik meglévő Azure Data Box Gateway-erőforrással, kattintson az erőforrásra, majd nyissa meg az **Áttekintés** lapot.
+1. Az erőforrás, amelyet létrehozott, és válassza ki a **áttekintése**. Ha rendelkezik egy meglévő Azure Data Box átjáró-erőforrást, válassza ki az erőforrást, és folytassa **áttekintése**. Válassza ki **eszközbeállítások**.
 
     ![Új Data Box Gateway-erőforrás](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
-4. A jobb oldali panelen található gyorsindítási részben kattintson a letölteni kívánt rendszerképnek megfelelő hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.
+2. Az a **letöltési lemezkép** csempére, válassza ki a virtuális eszköz lemezképet, a gazdakiszolgáló épít ki a virtuális gép operációs rendszerének megfelelő. A kép mérete körülbelül 5.6-os GB.
    
    * [Windows Server 2012 R2 vagy újabb rendszer futó Hyper-V VHDX-fájlja](https://aka.ms/dbe-vhdx-2012).
    * [VMDK a VMWare ESXi 6.0, 6.5-ös vagy 6.7](https://aka.ms/dbe-vmdk).
+
+    ![Töltse le a Data Box átjáró virtuális eszköz kép](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
 
 5. Töltse le a fájlt egy helyi meghajtóra, csomagolja ki, és jegyezze fel, hol található a kicsomagolt fájl.
 
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
-Ha a Data Box Gateway-erőforrás működik és elérhető, le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja, majd csatlakoztathatja a Data Box Gateway-eszközt az erőforráshoz.
+Miután a Data Box-Gateway-erőforrás áll, be kell szereznie az aktiválási kulcs. Ezzel a kulccsal aktiválhatja, majd csatlakoztathatja a Data Box Gateway-eszközt az erőforráshoz. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
 
-Az aktiválási kulccsal regisztrálható az összes olyan Data Box Gateway-eszköz, amelyet a Data Box Gateway-erőforrással aktiválni kell. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
+1. Válassza ki az erőforrást, amelyet létrehozott, és válassza ki **áttekintése**. Az a **eszközbeállítások**, lépjen a a **konfigurálása és aktiválása** csempére.
 
-1. Kattintson a létrehozott erőforrásra, majd az **Áttekintés** elemre.
+    ![Konfigurálja és aktiválja a csempe](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 
-    ![Új Data Box Gateway-erőforrás](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
-
-2. Kattintson a **Kulcs létrehozása** elemre az aktiválási kulcs létrehozásához. Kattintson a másolás ikonra a kulcs másolásához, és későbbi használatra történő mentéséhez.
+2. Válassza ki **kulcs generálása** hozhat létre egy aktiválási kulcsot. Kattintson a Másolás ikonra, másolja a kulcsot, és mentheti későbbi használatra.
 
     ![Aktiválási kulcs lekérése](media/data-box-gateway-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Az aktiválási kulcs a létrehozása után 3 nappal lejár. 
+> - Az aktiválási kulcs jön létre, azt követően három nappal lejár.
 > - Ha a kulcs érvényessége lejárt, hozzon létre egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
 ## <a name="next-steps"></a>További lépések

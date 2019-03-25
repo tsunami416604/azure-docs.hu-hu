@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341949"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402354"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -32,6 +32,8 @@ A felügyelt alkalmazásokkal folyamatos kapcsolatot tarthat fenn az ügyfelekke
 Habár az ügyfelek saját maguk telepítik az előfizetésükhöz tartozó felügyelt alkalmazásokat, de a karbantartással, frissítéssel és javítással nem kell foglalkozniuk. Garantálható, hogy mindig minden ügyfél a jóváhagyott verziót használja. Az ügyfeleknek nem kell alkalmazásspecifikus tartományi ismeretekkel rendelkezniük az alkalmazások felügyeletéhez. Az ügyfelek automatikusan megkapják az alkalmazások frissítéseit, és nem kell foglalkozniuk az esetleges hibák keresésével vagy diagnosztizálásával. 
 
 A felügyelt alkalmazások lehetővé teszik, hogy az informatikai részleg előre jóváhagyott megoldásokat nyújtson a vállalat felhasználói számára. Így biztos lehet abban, hogy a megoldások megfelelnek a vállalati szabványoknak.
+
+Felügyelt alkalmazások jelenleg nem támogatja a [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="types-of-managed-applications"></a>A felügyelt alkalmazások típusai
 

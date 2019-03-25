@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 02e03868f5a48088b78d5d9b0221387212f248cf
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5e5a186be19c0ecc9730bc79bddff41fb6bbb571
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958711"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401659"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Gyors útmutató: Get-leképezés Java használatával
 
@@ -29,9 +29,8 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [A Visual Studio Code](https://code.visualstudio.com/) vagy a kedvenc ide-je
 * A df67dcdb-c37d-46af-88e1-8b97951ca1c2 azonosítójú nyilvános alkalmazás
-
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
@@ -43,9 +42,9 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon 
+## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-A Java használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
+A Java használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. Ügyeljen arra, hogy az Apache-kódtárak hozzáadása a projekthez.
 
 1. Másolja ki az alábbi kódot egy `LuisGetRequest.java` nevű osztály létrehozásához:
 
@@ -53,9 +52,9 @@ A Java használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a
 
 2. Cserélje le a `YOUR-KEY` változó értéket a LUIS-kulcsra.
 
-3. Fordítsa le a Java-programot a következővel: `javac -cp ":lib/*" LuisGetRequest.java`. 
+3. Cserélje le a fájl elérési útja és a egy parancssorból a java-program fordítása: `javac -cp .;<FILE_PATH>\* LuisGetRequest.java`.
 
-4. Futtassa az alkalmazást az `java -cp ":lib/*" LuisGetRequest.java` billentyű lenyomásával. Megjelenik a korábban a böngészőablakban látott JSON.
+4. Cserélje le a fájl elérési útja, és futtathatja az alkalmazást parancssori paranccsal futtathatja: `java -cp .;<FILE_PATH>\* LuisGetRequest.java`. Megjelenik a korábban a böngészőablakban látott JSON.
 
     ![A LUIS által visszaadott JSON-eredményt megjelenítő konzolablak](./media/luis-get-started-java-get-intent/console-turn-on.png)
     
@@ -65,7 +64,7 @@ A Java használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje a Java-fájlt. 
+Törölje a Java-fájl vagy projekt mappát.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

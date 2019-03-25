@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 18216c636ebcd84172154ac46fdcd54de64c9bb9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d2dcb1eb9132e68bebbe84d81a4e4f17df79f2d3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241799"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399777"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Az Azure-on Előzetesben Sentinel-használatához szükséges hasznos források
 
@@ -36,7 +36,7 @@ Az Azure Logic Apps-összekötők: <https://docs.microsoft.com/connectors/>
 
 | **Szállító**  | **Használati eset az Azure Sentinel** | **Hivatkozás**|
 |----|----|----|
-| GitHub| Közösségi lap eléréséhez használt| <https://github.com/join> |
+| GitHub| Közösségi lap eléréséhez használt| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| CEF konfigurálása| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto-lekérdezés nyelvi tanfolyam| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 

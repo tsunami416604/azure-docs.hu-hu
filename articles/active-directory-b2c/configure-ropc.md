@@ -10,19 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089335"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401781"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
 Az erőforrás tulajdonosának jelszavas hitelesítő adatainak (ROPC) folyamata egy OAuth standard hitelesítési folyamat, ahol az alkalmazás, más néven a függő entitás adatcseréihez használható érvényes hitelesítő adatokat, például a felhasználói azonosítót és jelszót egy azonosító jogkivonat, a hozzáférési jogkivonatot és a egy frissítési jogkivonatot. 
 
-> [!NOTE]
-> Ez a funkció előzetes verzióban érhető el.
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Az Azure Active Directory (Azure AD) B2C-vel a következő beállítások támogatottak:
 

@@ -1,6 +1,6 @@
 ---
 title: A REST API-t és a sablon erőforrások üzembe helyezése |} A Microsoft Docs
-description: Azure Resource Manager és a Resource Manager REST API használatával helyezze üzembe az Azure-erőforrásokat. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
+description: Azure Resource Manager és a Resource Manager REST API használatával helyezhet üzembe erőforrásokat az Azure-bA. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -10,28 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112024"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402830"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
 Ez a cikk ismerteti a Resource Manager-sablonok, az erőforrások üzembe helyezése az Azure Resource Manager REST API használata.  
 
-> [!TIP]
-> A hibakeresést a telepítés során hibát talál segítséget:
-> 
-> * [Üzembehelyezési műveletek megtekintése](resource-manager-deployment-operations.md) további információ első információkkal könnyíti meg a hiba elhárítása
-> * [Gyakori hibák elhárítása az erőforrások üzembe helyezésekor az Azure-bA az Azure Resource Manager](resource-manager-common-deployment-errors.md) hogyan oldja meg a gyakori telepítési hibák
-> 
-> 
-
 Vagy megadhatja a sablon a kérelem törzsében vagy egy fájlra mutató hivatkozást. Amikor fájl használatával lehet egy helyi fájlból vagy egy külső fájl, amely egy URI-t keresztül érhető el. Ha a sablon a storage-fiókban, korlátozza a hozzáférést a sablont, és adjon meg egy közös hozzáférésű jogosultságkód (SAS) üzembe helyezése során.
+
+## <a name="deployment-scope"></a>Üzembe helyezés hatálya
+
+A központi telepítést az Azure-előfizetés és a egy erőforráscsoportot egy előfizetésen belül célba. A legtöbb esetben egy erőforráscsoportba irányuló üzembe helyezés céljaként meghatározott lesz. Előfizetések üzemelő példányai használatával alkalmazza a házirendeket és a szerepkör-hozzárendelések az előfizetésből. Hozzon létre egy erőforráscsoportot, és üzembe helyezni erőforrásokat, előfizetés központi telepítéseket is használ. Az üzembe helyezés, függően különböző parancsokat használhatja.
+
+Központi telepítése egy **erőforráscsoport**, használjon [központi telepítések – hozzon létre](/rest/api/resources/deployments/createorupdate).
+
+Központi telepítése egy **előfizetés**, használjon [központi telepítések – hozzon létre egy előfizetésre,](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
+
+Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak használja. Előfizetések üzemelő példányai kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](deploy-to-subscription.md).
 
 ## <a name="deploy-with-the-rest-api"></a>Üzembe helyezés a REST API
 1. Állítsa be [gyakori paramétereket és a fejlécek](/rest/api/azure/), beleértve a hitelesítési tokenek.

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: alkohli
-ms.openlocfilehash: b3effdbace2be582bfe85d0402088f8aa0d96fe7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9b0e94deda205497cda4ebf383f302c6c3bb896a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555089"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403595"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell-preview"></a>Kezelheti az Azure Data Box peremhálózati eszköz Windows PowerShell (előzetes verzió)
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
 
 Az Azure Data Box peremhálózati megoldás lehetővé teszi az adatok feldolgozásához, és az Azure-bA a hálózaton keresztüli küldéshez. Ez a cikk ismerteti a Data Box Edge-eszköz konfigurációs és felügyeleti feladatokat. Használhatja az Azure Portalon, helyi webes felhasználói felületen vagy a Windows PowerShell felületet az eszköz kezelését.
 
@@ -32,18 +32,9 @@ Ez a cikk a következő eljárásokat tartalmazza:
 - Compute-naplók lekérése
 - Monitorozás és hibaelhárítás számítási modulok
 
-> [!IMPORTANT]
-> Az Azure Data Box Edge jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="connect-to-the-powershell-interface"></a>A PowerShell-felületünkön csatlakozni
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>Indítson el egy támogatási munkamenetet
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>Hozzon létre egy támogatási csomagot
 
@@ -73,11 +64,15 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a PowerShell-felü
     ```
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
-    Itt látható a parancsmag paraméterei leírása: 
+    Itt látható a parancsmag paraméterei leírása:
     - `Path`: Adja meg a megosztást, ahol szeretné létrehozni a számítási log csomagot egy hálózati elérési útját.
     - `Credential`: Adja meg a felhasználónevet és jelszót a hálózati megosztáson.
     - `RoleInstanceName`: Adja meg ezt a karakterláncot `IotRole` ehhez a paraméterhez.
     - `FullLogCollection`: Ez a paraméter gondoskodik arról, hogy a napló csomag tartalmazza az összes számítási napló. Alapértelmezés szerint a napló csomagot a naplók csak egy részhalmazát tartalmazza.
+
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorozás és hibaelhárítás számítási modulok
+
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>További lépések

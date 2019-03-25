@@ -1,5 +1,5 @@
 ---
-title: Windows virtuális asztal terheléselosztási módszer konfigurálása (előzetes verzió) – Azure
+title: Windows virtuális asztal előzetes terheléselosztási módszer konfigurálása – Azure
 description: Hogyan lehet egy Windows virtuális asztali környezetben terheléselosztási módszer konfigurálása.
 services: virtual-desktop
 author: Heidilohr
@@ -7,23 +7,23 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 10a1066b85b16749fe95e373e696d486b0e7bafa
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318344"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399861"
 ---
-# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows virtuális asztal terheléselosztási módszer konfigurálása
+# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Windows virtuális asztal előzetes terheléselosztási módszer konfigurálása
 
-A terhelés terheléselosztási módszer egy gazdagép készlet konfigurálása lehetővé teszi, módosíthatja a Windows virtuális asztal (előzetes verzió) környezet, hogy jobban megfeleljen az igényeinek.
+A gazdagép-készletre vonatkozó terheléselosztási módszer konfigurálása segítségével állítsa be a Windows virtuális asztal előzetes verziójú környezet, hogy jobban megfeleljen az igényeinek.
 
 >[!NOTE]
 > Ez nem vonatkozik állandó asztali gazdagéphez címkészlethez, mert a felhasználók mindig rendelkezzenek 1:1 leképezés egy munkamenet-gazdagépre a gazdagépen készleten belül.
 
 ## <a name="configure-breadth-first-load-balancing"></a>Szélesség-és felhőközpontú terheléselosztás beállítása
 
-Szélesség-és felhőközpontú load balancing szolgáltatás az alapértelmezett konfiguráció új állomás nem állandó készletek esetében. Új felhasználói munkamenetek szélesség-és felhőközpontú terheléselosztó osztja el a gazdagép-készlet az összes elérhető munkamenet gazdagépeken. Szélesség-és felhőközpontú terheléselosztási konfigurálásakor adhatja meg a maximális munkamenet időkorlátjának munkamenet gazdagépenként a gazdagép-készletben.
+Szélesség-és felhőközpontú load balancing szolgáltatás az alapértelmezett konfiguráció új állomás nem állandó készletek esetében. Új felhasználói munkamenetek a gazdagép-készlet összes elérhető munkamenet-gazdagépek közötti terheléselosztás szélesség-és felhőközpontú osztja el. Szélesség-és felhőközpontú terheléselosztási konfigurálásakor adhatja meg a maximális munkamenet időkorlátjának munkamenet gazdagépenként a gazdagép-készletben.
 
 Először [letöltése és importálása a Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) használatához a PowerShell-munkamenetben, ha még nem tette.
 

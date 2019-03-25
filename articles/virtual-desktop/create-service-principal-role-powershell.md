@@ -1,22 +1,22 @@
 ---
-title: Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell használatával (előzetes verzió) – Azure
-description: Hogyan lehet az egyszerű szolgáltatások létrehozása és hozzárendelése a PowerShell használatával a Windows virtuális asztal szerepkörök.
+title: Windows virtuális asztal előzetes egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell használatával – Azure
+description: Hogyan lehet az egyszerű szolgáltatások létrehozása és hozzárendelése a szerepkörök a PowerShell használatával a Windows Virtual Desktop előzetes verziójához.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 86dafa5ccfb28a174a268c23d7dbc847272aaa3f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318147"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400031"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell használatával
 
-Szolgáltatásnevek használata az identitások szerepköröket és engedélyeket rendelhet a meghatározott célra az Azure Active Directoryban is létrehozhat. Windows virtuális asztal (előzetes verzió), a szolgáltatás egyszerű létrehozásához:
+Szolgáltatásnevek használata az identitások szerepköröket és engedélyeket rendelhet a meghatározott célra az Azure Active Directoryban is létrehozhat. Windows virtuális asztal előzetes verzióban elérhető szolgáltatás hozhat létre, az egyszerű szolgáltatásnév:
 
 - Adott virtuális asztali Windows-felügyeleti feladatok automatizálása
 - Bármely Windows virtuális asztal Azure Resource Manager-sablon futtatásakor helyett MFA szükséges felhasználói hitelesítő adatokat használja
@@ -58,7 +58,7 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Szerepkör-hozzárendelés létrehozása a virtuális asztali Windows
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Szerepkör-hozzárendelés létrehozása a Windows virtuális asztal előzetes verzióban érhető el
 
 Most, hogy létrehozott egy szolgáltatás egyszerű, használhatja a Windows virtuális asztal bejelentkezni. Ellenőrizze, hogy jelentkezzen be egy olyan fiókkal, amely rendelkezik engedélyekkel a szerepkör-hozzárendelés létrehozásához.
 
@@ -112,4 +112,4 @@ Az alábbiakban a három hitelesítő adatokat, le kell írni és azok futtatnia
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerű szolgáltatás létrehozása és bejelentkezés Windows virtuális asztal vele. Bejelentkezés Windows virtuális asztal kapcsolatos további információkért folytassa a csatlakozás a Windows virtuális asztal útmutatók.
 
 - [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
-- [Csatlakozás a Windows virtuális asztali webes ügyfél](connect-web.md)
+- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)

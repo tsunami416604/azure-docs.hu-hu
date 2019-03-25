@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 9cb3abff10482ec7e58b4b049f051e99178cb742
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2f84c48092581a313ff7bead7a862221e0fe4eee
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371980"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400914"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
@@ -49,9 +49,9 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
   * A virtuális hálózatnak rendelkeznie kell négy *üres* üzembe helyezéséhez és erőforrások létrehozása az ISE-ben alhálózat. Ezen alhálózatok előre hozhat létre, vagy megvárhatja, amíg nem hoz létre az ISE-ben, ahol létre alhálózatok egyszerre. Tudjon meg többet [alhálózati követelmények](#create-subnet). 
   
     > [!NOTE]
-    > Ha [ExpressRoute](../expressroute/expressroute-introduction.md), amely biztosítja a privát kapcsolatot Microsoft-felhőszolgáltatásokhoz, be kell [az alábbi útvonalat ad hozzá minden egyes alhálózathoz](../virtual-network/virtual-network-manage-subnet.md) használják az ISE-ben. Ha egy útválasztási táblázatot az alhálózattal [adja hozzá a következő útvonal az útvonaltábla](../virtual-network/manage-route-table.md):
+    > Ha [ExpressRoute](../expressroute/expressroute-introduction.md), amely biztosítja a privát kapcsolatot Microsoft-felhőszolgáltatásokhoz, be kell [hozzon létre egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely rendelkezik a következő útvonal és a hivatkozás, hogy a táblázat minden egyes alhálózathoz, az ISE által használt:
     > 
-    > **Név**: D3655BASE-útvonal<br>
+    > **Név**: <*útvonal neve*><br>
     > **Címelőtag**: 0.0.0.0/0<br>
     > **A következő Ugrás**: Internet
 
@@ -146,9 +146,9 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
      Címek kiszámítása kapcsolatos további információkért lásd: [IPv4 CIDR-blokkok](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Ha [ExpressRoute](../expressroute/expressroute-introduction.md), ne felejtse el [az alábbi útvonalat ad hozzá minden egyes alhálózathoz](../virtual-network/virtual-network-manage-subnet.md) használják az ISE-ben. Ha egy útválasztási táblázatot az alhálózattal [adja hozzá a következő útvonal a útvonaltábla](../virtual-network/manage-route-table.md):
+   * Ha [ExpressRoute](../expressroute/expressroute-introduction.md), ne felejtse el [hozzon létre egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely rendelkezik a következő útvonal és a hivatkozás, hogy a táblázat minden egyes alhálózathoz, az ISE által használt:
 
-     **Név**: D3655BASE-útvonal<br>
+     **Név**: <*útvonal neve*><br>
      **Címelőtag**: 0.0.0.0/0<br>
      **A következő Ugrás**: Internet
 

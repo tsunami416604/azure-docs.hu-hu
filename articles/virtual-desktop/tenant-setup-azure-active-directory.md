@@ -1,22 +1,22 @@
 ---
-title: A Windows virtuális asztal (előzetes verzió) – az Azure-bérlő létrehozása
-description: Ismerteti, hogyan állíthatja be Windows virtuális asztal bérlők számára az Azure Active Directoryban.
+title: Windows virtuális asztal előzetes verziója – Azure-bérlő létrehozása
+description: Ismerteti, hogyan állíthatja be Windows virtuális asztal előzetes bérlők számára az Azure Active Directoryban.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 26bcae12ee5e053289dd18c9f378eff43a0b0e04
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368170"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402898"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal (előzetes verzió)
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal előzetes verzióban érhető el
 
-Bérlő létrehozása a Windows virtuális asztal (előzetes verzió) első lépése az asztali virtualizálási megoldás kiépítésének felé. A bérlő egy olyan egy vagy több gazdagép-készletek. Minden gazdagép készlet több munkamenet gazdagépek, virtuális gépként az Azure-ban futó és a Windows virtuális asztal szolgáltatásban regisztrált áll. Minden gazdagép készlet egy vagy több távoli asztal és a Távsegítség alkalmazás-erőforrások közzététele a felhasználók számára használt alkalmazáscsoportok is áll. A bérlőhöz hozhatja létre a gazdagép-készletek, az alkalmazás létrehozása, hozzárendelése a felhasználók és kapcsolatok a szolgáltatáson keresztül.
+Felé az asztali virtualizálási megoldás kiépítésének első lépése egy bérlő létrehozása a Windows virtuális asztal előzetes verzióban. A bérlő egy olyan egy vagy több gazdagép-készletek. Minden gazdagép készlet több munkamenet gazdagépek, virtuális gépként az Azure-ban futó és a Windows virtuális asztal szolgáltatásban regisztrált áll. Minden gazdagép készlet egy vagy több távoli asztal és a Távsegítség alkalmazás-erőforrások közzététele a felhasználók számára használt alkalmazáscsoportok is áll. A bérlőhöz hozhatja létre a gazdagép-készletek, az alkalmazás létrehozása, hozzárendelése a felhasználók és kapcsolatok a szolgáltatáson keresztül.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -32,7 +32,7 @@ A következő szükséges állítsa be a Windows virtuális asztal bérlő:
    * Ez a Cloud Solution Provider (CSP) szervezetek ügyfelek számára, akik Windows virtuális asztal bérlő létrehozására is vonatkozik. Ha egy CSP-szervezet, jelentkezhet be az ügyfél az Azure Active Directory globális rendszergazdájaként kell lennie.
 * Egy Azure-előfizetés azonosítója
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-service"></a>A virtuális asztali Windows-szolgáltatás biztosítása az Azure Active Directory engedélyekkel
+## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>A Windows Virtual Desktop előzetes verziójú szolgáltatások biztosítása az Azure Active Directory engedélyekkel
 
 Ha az Azure Active Directory Windows virtuális asztali már kapott engedélyt, kihagyhatja ezt a szakaszt.
 
@@ -66,7 +66,7 @@ A globális rendszergazdai fiókkal TenantCreator alkalmazás-szerepkör hozzár
    - Az egyszerűség kedvéért ez a globális rendszergazdai fiók is lehet.
 6. Válassza ki a felhasználói fiókot, kattintson a **kiválasztása** gombra, és válassza ki **hozzárendelése**.
 
-## <a name="create-a-windows-virtual-desktop-tenant"></a>Windows virtuális asztal bérlő létrehozása
+## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Windows virtuális asztal előzetes bérlő létrehozása
 
 Most, hogy jogosultságot kap a Windows virtuális asztal szolgáltatás az Azure Active Directory lekérdezése, és rendelje hozzá a TenantCreator szerepkört egy felhasználói fiókhoz, egy Windows virtuális asztal bérlőt is létrehozhat.
 

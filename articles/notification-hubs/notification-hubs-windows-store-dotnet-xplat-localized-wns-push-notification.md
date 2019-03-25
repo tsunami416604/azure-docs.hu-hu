@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: b4f308e7053e000115f22abd291d934d90c11a94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837592"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402711"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Honosított leküldéses értesítések küldésére Windows-alkalmazások az Azure Notification Hubs használatával
 
@@ -116,7 +116,7 @@ A sablonokkal kapcsolatos további információkért lásd: [sablonok tolás](no
     {
         ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
         ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-        return await SubscribeToCategories(categories);
+        return await SubscribeToCategories(locale, categories);
     }
 
     public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
@@ -190,7 +190,21 @@ A sablonokkal kapcsolatos további információkért lásd: [sablonok tolás](no
     }
     ```
 
-## <a name="send-localized-notifications-from-your-back-end"></a>Honosított értesítések küldése a háttérrendszerből
+
+
+## <a name="run-the-uwp-application"></a>Az UWP-alkalmazás futtatása
+
+1. Futtassa az univerzális Windows Platform-alkalmazásból. Várjon, amíg megjelenik a **Registration successful** (Sikeres regisztráció) üzenet.
+
+    ![Mobilalkalmazás és regisztráció](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
+2. Jelölje ki a **kategóriákat** és a **területi beállítást**, majd kattintson a **Subscribe** (Feliratkozás) lehetőségre. Az alkalmazás címkékké alakítja át a kiválasztott kategóriákat, és új eszközregisztrációt kezdeményez az értesítési központban a kiválasztott címkékre vonatkozóan.
+
+    ![Mobilalkalmazás](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
+3. Egy **megerősítő** üzenet jelenik meg a **feliratkozásokkal** kapcsolatban.
+
+    ![Feliratkozási üzenet](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
+
+## <a name="update-console-app-to-send-localized-notifications"></a>Honosított értesítések küldése console app frissítése
 
 Sablonértesítések küldésekor csak egy tulajdonságkészletet kell megadnia. Ebben az oktatóanyagban a háttéralkalmazás az aktuális hírek honosított verzióját tartalmazó tulajdonságkészletet küldi el, például:
 
@@ -243,20 +257,10 @@ private static async void SendTemplateNotificationAsync()
 
 Ez egyszerű hívás biztosít hírek honosított részét **összes** eszközök, függetlenül a platformot, az értesítési központban épít, és biztosít az adott címkére feliratkozott összes eszközök megfelelő natív adattartalom.
 
-## <a name="test-the-app"></a>Az alkalmazás tesztelése
+## <a name="run-console-app-to-send-localized-notification"></a>Honosított értesítések küldése a Konzolalkalmazás futtatása
+Futtassa a **Konzolalkalmazás** küldhetők értesítések a kategóriákhoz tartozó, és minden támogatott nyelven. Ellenőrizze, hogy csak azon kategóriákra vonatkozóan kap-e értesítéseket, amelyekre feliratkozott, és hogy az üzenetek megfelelnek-e a kiválasztott területi beállításnak.
 
-1. Futtassa a Windows Áruházbeli univerzális alkalmazást. Várjon, amíg megjelenik a **Registration successful** (Sikeres regisztráció) üzenet.
-
-    ![Mobilalkalmazás és regisztráció](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. Jelölje ki a **kategóriákat** és a **területi beállítást**, majd kattintson a **Subscribe** (Feliratkozás) lehetőségre. Az alkalmazás címkékké alakítja át a kiválasztott kategóriákat, és új eszközregisztrációt kezdeményez az értesítési központban a kiválasztott címkékre vonatkozóan.
-
-    ![Mobilalkalmazás](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
-3. Egy **megerősítő** üzenet jelenik meg a **feliratkozásokkal** kapcsolatban.
-
-    ![Feliratkozási üzenet](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
-4. Ha megkapta a megerősítést, futtassa a **konzolalkalmazást**, amellyel értesítéseket küldhet az egyes kategóriákra vonatkozóan az összes támogatott nyelven. Ellenőrizze, hogy csak azon kategóriákra vonatkozóan kap-e értesítéseket, amelyekre feliratkozott, és hogy az üzenetek megfelelnek-e a kiválasztott területi beállításnak.
-
-    ![Értesítési üzenetek](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
+![Értesítési üzenetek](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
 
 ## <a name="next-steps"></a>További lépések
 

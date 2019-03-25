@@ -7,18 +7,18 @@ ms.date: 03/23/2019
 author: twooley
 ms.author: twooley
 ms.subservice: blobs
-ms.openlocfilehash: 16ecade7a8d0049e098bb06bd14828b19934f5f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373045"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400465"
 ---
 # <a name="create-a-block-blob-storage-account"></a>Block blob storage-fiók létrehozása
 
 A block blob storage-fiók típusú használatával hozhatók létre a blokkblobok használatát támogatják a prémium szintű teljesítményt nyújt. Ez a tárfióktípus magas tranzakciók díjak a számítási feladatokhoz van optimalizálva. vagy igénylő nagyon gyors elérés időpontját. Ez a cikk bemutatja, hogyan block blob storage-fiók létrehozása az Azure Portalon, az Azure CLI-vel vagy az Azure PowerShell használatával.
 
-További információ a block blob storage-fiókok, lásd: lásd: [az Azure storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+Block blob storage-fiókokkal kapcsolatos további információkért lásd: [az Azure storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## <a name="create-account-in-the-azure-portal"></a>Fiók létrehozása az Azure Portalon
 
@@ -54,7 +54,7 @@ Az Azure Portalon block blob storage-fiók létrehozásához kövesse az alábbi
 
 1. Kattintson a **Létrehozás** gombra.
 
-### <a name="create-account-using-azure-powershell"></a>Fiók létrehozása az Azure PowerShell használatával
+## <a name="create-account-using-azure-powershell"></a>Fiók létrehozása az Azure PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

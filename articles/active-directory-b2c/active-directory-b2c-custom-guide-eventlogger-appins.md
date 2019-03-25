@@ -10,14 +10,16 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bc9e44cc1f1759231d405e64fab097d73d48486
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160526"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403816"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nyomon követheti a felhasználói viselkedés az Azure Active Directory B2C az Application Insights használatával
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure Active Directory (Azure AD) B2C-vel együtt az Azure Application Insights használata esetén is részletes, és a felhasználói utak eseménynaplók igényeire szabva. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -25,9 +27,6 @@ Azure Active Directory (Azure AD) B2C-vel együtt az Azure Application Insights 
 * Hárítsa el a megfelelő saját házirendeket fejlesztési vagy éles környezetben.
 * Teljesítmény mérésére.
 * Értesítések létrehozása az Application Insights szolgáltatásból.
-
-> [!NOTE]
-> Ez a funkció előzetes verzióban érhető el.
 
 ## <a name="how-it-works"></a>Működés
 

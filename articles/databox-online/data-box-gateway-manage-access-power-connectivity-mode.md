@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d46d74544181a6b9cbfd049b2f5461b20b928483
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873019"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401432"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód az Azure Data Box Gateway (előzetes verzió)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód
 
 Ez a cikk ismerteti a hozzáférést, a teljesítmény és a csatlakozási mód kezelése az Azure Data Box Gateway számára. Ezeket a műveleteket a helyi webes felhasználói felületen vagy az Azure Portalon keresztül történik.
 
@@ -26,16 +26,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Csatlakozási mód kezelése
 > * Energiagazdálkodás
 
-> [!IMPORTANT]
-> A Data Box Gateway előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="manage-device-access"></a>Eszköz-hozzáférés kezelése
 
-A Data Box átjáróeszköz eléréséhez a rendszergazdai jelszó használatát vezérlik majd. Módosíthatja a rendszergazdai jelszót a helyi webes felhasználói felületen. Az eszköz rendszergazdai jelszava az Azure Portalon is alaphelyzetbe állíthatja.
+A Data Box átjáróeszköz eléréséhez a jelszó használatát vezérlik majd. Módosíthatja a jelszót a helyi webes felhasználói felületen. Az eszköz jelszavát az Azure Portalon is alaphelyzetbe állíthatja.
 
-### <a name="change-device-administrator-password"></a>Az eszköz rendszergazdai jelszavának módosítása
+### <a name="change-device-password"></a>Az eszköz jelszavának módosítása
 
-Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz rendszergazdai jelszavának módosítása.
+Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz jelszavának módosítása.
 
 1. A helyi webes felhasználói felületen váltson **karbantartási > jelszó módosítása**.
 2. Adja meg a jelenlegi jelszavát, majd az új jelszót. A megadott jelszónak 8 – 16 karakter hosszúságúnak kell lennie. A következő karakterek közül 3 a jelszóban: nagybetű, kisbetű, számjegyeket és speciális karaktereket. Az új jelszót.
@@ -44,18 +41,18 @@ Kövesse az alábbi lépéseket a helyi felhasználói felületen, az eszköz re
 
 3. Kattintson a **jelszó módosítása**.
  
-### <a name="reset-device-administrator-password"></a>Eszköz rendszergazdai jelszavának alaphelyzetbe állítása
+### <a name="reset-device-password"></a>Eszköz jelszavának alaphelyzetbe állítása
 
 A visszaállítási munkafolyamat nem szükséges majd előkeresnie a régi jelszót, és akkor hasznos, ha a jelszó elvész. Ez a munkafolyamat az Azure Portalon történik.
 
 1. Az Azure Portalon lépjen a **áttekintés > rendszergazdai jelszó alaphelyzetbe állítása**.
 
-    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
 2. Adja meg az új jelszót, és erősítse azt. A megadott jelszónak 8 – 16 karakter hosszúságúnak kell lennie. A következő karakterek közül 3 a jelszóban: nagybetű, kisbetű, számjegyeket és speciális karaktereket. Kattintson a **alaphelyzetbe**.
 
-    ![Másik jelszó kérése](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+    ![Új jelszó létrehozása](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-connectivity-mode"></a>Csatlakozási mód kezelése
 
@@ -88,7 +85,7 @@ Az eszköz üzemmódjának módosítása, kövesse az alábbi lépéseket:
 1. A helyi webes felhasználói felületen váltson **karbantartási > energiaellátási beállítások**.
 2. Kattintson a **leállítási** vagy **indítsa újra a** függően, hogy mit kíván tenni.
 
-    ![Energiaellátási beállítások](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
+    ![Energiagazdálkodási beállítások](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
 3. Amikor a rendszer megerősítést kér, kattintson a **Igen** a folytatáshoz.
 

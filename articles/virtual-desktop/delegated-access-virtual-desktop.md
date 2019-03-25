@@ -1,22 +1,22 @@
 ---
-title: Windows virtuális asztal (előzetes verzió) – az Azure a delegált hozzáférés
-description: Hogyan kell delegálni a felügyeleti funkciókat biztosít a Windows virtuális asztal központi telepítés, beleértve a példákat.
+title: Delegált hozzáférés Windows virtuális asztal előzetes verziója – Azure
+description: Hogyan kell delegálni a felügyeleti funkciókat biztosít a Windows virtuális asztal előzetes központi telepítés, beleértve a példákat.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 49645b697071abb8a2f8c85ebde1e6761a3536ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336099"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400014"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegált hozzáférés a Windows virtuális asztal (előzetes verzió)
+# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows virtuális asztal előzetes verzióban elérhető delegált hozzáférés
 
-Windows virtuális asztal (előzetes verzió) rendelkezik, amely lehetővé teszi olyan mértékű hozzáférést egy adott felhasználó számára engedélyezett szerint szerepkör hozzárendelése meghatározhatja a delegált hozzáférés modell. Szerepkör-hozzárendelés három részből áll: szolgáltatásnév, szerepkör-definíció és hatókör. A Windows virtuális asztal delegált hozzáférés modell alapján az Azure RBAC-modellben. Az adott szerepkör-hozzárendelések és azok összetevőiből kapcsolatos további információkért lásd: [az Azure szerepköralapú hozzáférés-vezérlés áttekintése](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
+Windows virtuális asztal előzetes rendelkezik delegált hozzáférés modell, amely lehetővé teszi olyan mértékű hozzáférést egy adott felhasználó jogosult szerepkör hozzárendelése szerint határozza meg. Szerepkör-hozzárendelés három részből áll: szolgáltatásnév, szerepkör-definíció és hatókör. A Windows virtuális asztal delegált hozzáférés modell alapján az Azure RBAC-modellben. Az adott szerepkör-hozzárendelések és azok összetevőiből kapcsolatos további információkért lásd: [az Azure szerepköralapú hozzáférés-vezérlés áttekintése](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles).
 
 Windows virtuális asztal delegált hozzáférés által támogatott összes eleme a szerepkör-hozzárendelést a következő értékeket:
 
@@ -66,4 +66,4 @@ Módosíthatja a alapszintű három parancsmag a következő paraméterekkel:
 
 Minden szerepkör által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referencia](/powershell/windows-virtual-desktop/overview).
 
-Egy Windows virtuális asztali környezet beállításához útmutatást, lásd: [Windows virtuális asztali környezet kialakítása](environment-setup.md).
+Egy Windows virtuális asztali környezet beállításához útmutatást, lásd: [Windows virtuális asztal előzetes verziójú környezet](environment-setup.md).

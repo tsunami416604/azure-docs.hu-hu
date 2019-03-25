@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106885"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402116"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Testre szabhatja az operációs rendszer biztonsági konfigurációival az Azure Security Centerben (előzetes verzió)
 
@@ -112,7 +112,7 @@ Az egyes kategóriákhoz saját attribútumok készletét. Módosíthatja a köv
 
     - Listája a felhasználói csoportok, például engedélyezett: *A rendszergazdák*, *biztonságimásolat-felelősök*
 
--   **állapot**: A karakterlánc a beállításokat is tartalmazhat *letiltott* vagy *engedélyezve*. A privát előzetes kiadás az karakterlánca kis-és nagybetűket.
+-   **állapot**: A karakterlánc a beállításokat is tartalmazhat *letiltott* vagy *engedélyezve*. Ebben a kiadásban a karakterlánc a kis-és nagybetűket.
 
 Ezek azok az egyetlen mezője, amely konfigurálható. Ha Ön megsérti formátuma vagy mérete, nem lehet menteni a módosítást. Kapni fog egy hiba, amely közli, hogy fel kell töltenie egy érvényes JSON-konfigurációs fájlt.
 

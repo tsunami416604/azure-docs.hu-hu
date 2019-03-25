@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889998"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402456"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Oktatóanyag: Leküldéses értesítések univerzális Windows-Platformos alkalmazások adott Windows-eszközökre
 
@@ -222,30 +222,28 @@ Ebben a szakaszban elvégzi az értesítési központban való regisztrációt a
 
 Az alkalmazás ezzel elkészült. Képes egy kategóriakészlet tárolására az eszköz helyi tárterületén, illetve az értesítési központban való regisztrálásra, ha a felhasználó módosítja a választott kategóriákat. A következő szakaszban meghatároz egy háttérrendszert, amely kategóriaértesítéseket küldhet ennek az alkalmazásnak.
 
-## <a name="send-tagged-notifications"></a>Címkézett értesítések küldése
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>Az alkalmazás futtatása és értesítések létrehozása
-
+## <a name="run-the-uwp-app"></a>Az UWP-alkalmazás futtatása 
 1. Az alkalmazás lefordításához és indításához nyomja le az **F5** billentyűt a Visual Studióban. Az alkalmazás felhasználói felületén váltógombok segítségével választhatja ki, hogy mely kategóriákra szeretne feliratkozni.
 
-    ![Legfrissebb hírek alkalmazás][1]
+    ![Legfrissebb hírek alkalmazás](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. Válasszon ki egy vagy több kategória-váltógombot, majd kattintson a **Subscribe** (Feliratkozás) elemre.
 
     Az alkalmazás címkékké alakítja át a kiválasztott kategóriákat, és új eszközregisztrációt kezdeményez az értesítési központban a kiválasztott címkékre vonatkozóan. A rendszer visszaadja, és egy párbeszédablakban jeleníti meg a regisztrált kategóriákat.
 
-    ![Kategória-váltógombok és Előfizetés gomb][19]
+    ![Kategória-váltógombok és Előfizetés gomb](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. Új értesítés küldése a háttérrendszerről az alábbi módok valamelyikén:
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>Hozzon létre egy konzolalkalmazást címkézett értesítések küldése
 
-   * **Konzolalkalmazás**: Indítsa el a konzolalkalmazást.
-   * **Java/PHP**: Futtassa az alkalmazást vagy szkriptet.
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     A kijelölt kategóriák értesítései bejelentési értesítésként jelennek meg.
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>Címkézett értesítéseket küldhessen a Konzolalkalmazás futtatása
 
-     ![Bejelentési értesítések][14]
+1. Futtassa az alkalmazást, az előző szakaszban létrehozott.
+2. A kijelölt kategóriák értesítései bejelentési értesítésként jelennek meg. Ha az értesítés, láthatja az első UWP-alkalmazás ablak. 
+
+     ![Bejelentési értesítések](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>További lépések
 
@@ -260,11 +258,6 @@ Ebben a cikkben megismerhette a friss hírek kategóriák szerinti küldését. 
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

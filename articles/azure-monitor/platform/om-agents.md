@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 3e11c4dc8aa082723223fb998e599aa514febd3b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369961"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403408"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Az Operations Manager csatlakoztatása az Azure monitornak
 
@@ -43,9 +43,10 @@ Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépe
 ## <a name="prerequisites"></a>Előfeltételek 
 Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
-* Az Azure Monitor csak támogatja a System Center Operations Manager 1807, az Operations Manager 1801-re, az Operations Manager 2016-ra, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
+* Az Azure Monitor csak támogatja a System Center Operations Manager 2016-os vagy újabb, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
+* Egy frissített Advisor felügyeleti csomag tartalmazza a 2. kumulatív frissítést vagy újabb verzió integrálása a System Center Operations Manager 2016 az Egyesült Államok kormányának felhője van szükség. A System Center Operations Manager 2012 R2 egy frissített Advisor felügyeleti csomag tartalmazza a 3. kumulatív frissítéssel vagy újabb verzió szükséges.
 * Minden Operations Manager-ügynöknek meg kell felelnie a minimális támogatási feltételeknek. Győződjön meg arról, hogy ügynök a minimális frissítéskor el, egyéb Windows-ügynök kommunikációja sikertelen és hibák készítése az Operations Manager eseménynaplójában.
-* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).
+* Egy Log Analytics-munkaterület. További információkért tekintse át a [Log Analytics-munkaterület áttekintése](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
 * Végez hitelesítést az Azure-bA egy olyan fiókkal, amely tagja a [Log Analytics-közreműködő szerepkör](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]

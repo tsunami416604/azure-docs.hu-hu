@@ -3,7 +3,7 @@ title: A biztonságot az Azure Security Center javaslatokat |} A Microsoft Docs
 description: " Ismerje meg a biztonsági szabályzatok és javaslatok az Azure Security Center használata a biztonsági támadások történésekről. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/2/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5ff59a9ed7dc44bb7a4176f7a174be1e7d0ec9b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 3/24/2019
+ms.author: monhaber
+ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104906"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402762"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>A biztonságot az Azure Security Center-javaslatok
-Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat konfigurálásával, majd az Azure Security Center által nyújtott ajánlások megvalósítása. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről.
+Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat konfigurálásával, majd az Azure Security Center által nyújtott ajánlások megvalósítása. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről. 
 
-A Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán hoz létre.
+A Security Center automatikusan futtatja a folyamatos vizsgálatok elemzése az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán hoz létre. A Security Center 24 óránként frissíti az ajánlások.
 
 ## <a name="scenario"></a>Forgatókönyv
 A forgatókönyv bemutatja, hogyan használhatja a Security Center csökkentik a biztonsági incidensek és a műveletek figyelése a Security Center javaslatait. A forgatókönyv használja a fiktív vállalat, a Contoso és a szerepkörök a Security Center megjelenő [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Ebben a forgatókönyvben arra összpontosítunk, az alábbi szerepkörök:

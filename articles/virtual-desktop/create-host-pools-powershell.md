@@ -1,22 +1,22 @@
 ---
-title: Gazdagép-készlet létrehozása a PowerShell használatával (előzetes verzió) – Azure
-description: Hogyan gazdagép-készlet létrehozása a virtuális asztali Windows PowerShell-parancsmagokkal.
+title: Windows virtuális asztal előzetes gazdagép-készlet létrehozása a PowerShell használatával – Azure
+description: Hogyan gazdagép-készlet létrehozása a Windows virtuális asztal előzetes verzióban érhető el a PowerShell-parancsmagokkal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4b65d7614db94a9cc3fdca3f4b784c2c84ebaef8
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7b9b7ffbb034a7fb1256d9cc44048cfa55b02245
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318539"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402728"
 ---
-# <a name="create-a-host-pool-with-powershell-preview"></a>Gazdagép-készlet létrehozása a PowerShell használatával (előzetes verzió)
+# <a name="create-a-host-pool-with-powershell"></a>Gazdagép-készlet létrehozása a PowerShell-lel
 
-Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek Windows virtuális asztal (előzetes verzió) bérlő környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
+Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek virtuális Windows Desktop előzetes verziójához bérlői környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Gazdagép-készlet létrehozása a PowerShell-ügyfél használata
 
@@ -70,12 +70,12 @@ Többféle módon is létrehozhat egy virtuális gépet:
 - [Virtuális gép létrehozása felügyelt rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [A virtuális gépek nem felügyelt rendszerkép létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>A virtuális asztali Windows-ügynök telepítése a virtuális gépek előkészítése
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>A Windows Virtual Desktop előzetes verziójához ügynöktelepítéseket a virtuális gépek előkészítése
 
 Tegye a következőket a virtuális gépek előkészítése ahhoz, hogy a virtuális asztali Windows-ügynökök telepítése és a virtuális gépek regisztrálása a Windows virtuális asztali állomás készlethez kell:
 
 - Kell a tartományhoz való csatlakozás a gépet. Ez lehetővé teszi a bejövő Windows virtuális asztali felhasználók Azure Active Directory-fiókjukból képezhető le az Active Directory-fiókjához, és sikerült engedélyezni a virtuális géphez való hozzáférés.
-- Ha a virtuális gép fut a Windows Server operációs rendszer telepítenie kell a távoli asztali munkamenetgazda (RDSH) szerepkör (előzetes verzió). A távoli asztali Munkamenetgazda szerepkör lehetővé teszi, hogy a Windows virtuális asztal ügynökök telepítéséhez megfelelően.
+- Ha a virtuális gép fut a Windows Server operációs rendszer telepítenie kell a távoli asztali munkamenetgazda (RDSH) szerepkör. A távoli asztali Munkamenetgazda szerepkör lehetővé teszi, hogy a Windows virtuális asztal ügynökök telepítéséhez megfelelően.
 
 Sikeresen tartományhoz való csatlakozás tegye az alábbiakat minden egyes virtuális gépen:
 
@@ -85,7 +85,7 @@ Sikeresen tartományhoz való csatlakozás tegye az alábbiakat minden egyes vir
 4. Válassza ki **tartomány** és írja be az Active Directory-tartomány a virtuális hálózaton.
 5. Hitelesítés a tartományhoz csatlakozó gépek jogosultságokkal rendelkező tartományi fiókkal.
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>A virtuális gépek, a Windows virtuális asztali állomás készlethez regisztrálása
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>A virtuális gépek, a Windows virtuális asztal előzetes gazdagép készlethez regisztrálása
 
 A virtuális gépeket egy Windows virtuális asztali állomás készlet regisztrálás rendkívül egyszerű, a virtuális asztali Windows-ügynökök telepítése.
 
@@ -114,7 +114,7 @@ Regisztrálja a virtuális asztali Windows-ügynökök, hajtsa végre a művelet
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a gazdagép készlet végrehajtott, ideje távoli alkalmazások (előzetes verzió) való feltöltéséhez. Virtuális asztali Windows-alkalmazások kezeléséről további információkért tekintse meg a kezelés alkalmazás csoportok oktatóanyag.
+Most, hogy végzett a gazdagép-készletben, töltse fel azt a távoli alkalmazások. Virtuális asztali Windows-alkalmazások kezeléséről további információkért tekintse meg a kezelés alkalmazás csoportok oktatóanyag.
 
 > [!div class="nextstepaction"]
 > [Útmutató alkalmazások csoportok kezelése](./manage-app-groups.md)

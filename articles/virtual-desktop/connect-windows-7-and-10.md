@@ -1,24 +1,24 @@
 ---
-title: Csatlakozás a Windows 7 és Windows 10 (előzetes verzió) – Azure
-description: Hogyan lehet a Windows virtuális asztal HTML5 webes ügyfél csatlakozni.
+title: Csatlakozás Windows virtuális asztali Preview, Windows 7 és Windows 10 – Azure
+description: Hogyan lehet csatlakozni a Windows 7 vagy Windows 10-es ügyfél Windows virtuális asztal előzetes.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 925d762bb065567f6462fdb1614fc308e87b5247
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 644a1d650384f151d9c43b9efa5f47532c58ce14
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318239"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399730"
 ---
-# <a name="connect-with-windows-7-and-windows-10-preview"></a>Csatlakozás a Windows 7 és Windows 10-es (előzetes verzió)
+# <a name="connect-with-windows-7-and-windows-10"></a>Csatlakozás a Windows 7 és Windows 10-es
 
 > A következőre érvényes Windows 7 és Windows 10-es.
 
-A letölthető ügyfél érhető el, amely hozzáférést biztosít a Windows virtuális asztal (előzetes verzió) erőforrásokhoz Windows 7 és Windows 10 rendszerű eszközökön.
+A letölthető ügyfél érhető el, amely hozzáférést biztosít a Windows virtuális asztal előzetes erőforrásokhoz Windows 7 és Windows 10 rendszerű eszközökön.
 
 ## <a name="install-the-client"></a>Az ügyfél telepítése
 

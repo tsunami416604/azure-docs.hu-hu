@@ -2,20 +2,20 @@
 title: Adatok elemzése Azure Machine Learning segítségével | Microsoft Docs
 description: Az Azure Machine Learning segítségével létrehozhat egy prediktív gépi tanulási modellt, amely az Azure SQL Data Warehouse-ban tárolt adatokon alapul.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.date: 03/22/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 8a33d733f4737bf19e7baad6d80d8fa72999268f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7f9500adc6871c4c9f81c32bf456bc36cf91db4b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477658"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402558"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
 
 1. Jelentkezzen be az [Azure Machine Learning Studio][Azure Machine Learning studio] szolgáltatásba, majd kattintson a Saját kísérletek elemre.
-2. Kattintson a **+ ÚJ** opcióra, és válassza ki az **Üres kísérlet** opciót.
+2. Kattintson a **+ új** bal alsó sarkában a képernyőn, majd válassza a **üres kísérlet**.
 3. Adjon meg egy nevet a: Célzott Marketing.
-4. Húzza az **Olvasó** modult a modulpanelről a vászonra.
+4. Húzza a **adatimportálás** alatt modul **adatok bemeneti és kimeneti** a modulok panelről a vászonra.
 5. Adja meg az SQL Data Warehouse adatbázis adatait a Tulajdonságok panelen.
 6. Adja meg az adatbázishoz a **lekérdezést** az Önt érdeklő adatok olvasásához.
 
@@ -77,7 +77,7 @@ A kísérlet futtatásának sikeres befejezése után kattintson az Olvasó modu
 ## <a name="2-clean-the-data"></a>2. Az adatok megtisztítása
 Az adatok megtisztításához el kell vetni néhány, a modell szempontjából érdektelen oszlopot. Ehhez tegye a következőket:
 
-1. Húzza a **Projektoszlopok** modult a vászonra.
+1. Húzza a **Select Columns in Dataset** alatt modul **adatátalakítás < adatkezelési** a vászonra. Ez a modul a **adatok importálása** modul.
 2. Kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra az elvetni kívánt oszlopok megadásához.
    ![Projektoszlopok][4]
 3. Két oszlop kizárása: CustomerAlternateKey és GeographyKey.
@@ -87,21 +87,19 @@ Az adatok megtisztításához el kell vetni néhány, a modell szempontjából �
 Az adatok 80 – 20 fog osztottuk: 80 %-os, egy gépi tanulási modellek betanítása és 20 %-át a modell teszteléséhez. A bináris osztályozási problémához "Két osztályú" algoritmusokat használunk.
 
 1. Húzza a **Felosztás** modult a vászonra.
-2. A Tulajdonságok panelen az első kimeneti adatkészletnél a Sorok felosztása opciónál adja meg a 0,8 értéket.
+2. A Tulajdonságok panelen adja meg a 0,8 értéket az első kimeneti adatkészletnél a sorok.
    ![Adatok felosztása tanítási és tesztelési adatkészletre][6]
 3. Húzza a **Két osztályú súlyozott döntési fa** modult a vászonra.
-4. Húzza a **Tanítási modell** modult a vászonra, és adja meg a bemeneteket. Majd kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra.
-   * Első bemenet: Gépi Tanulási algoritmus.
-   * Második bemenet: Adatok az algoritmus tanításához.
+4. Húzza a **Train Model** modult a vászonra, és adja meg a bemenetek való csatlakoztatásával a **két osztályú súlyozott döntési fa** (gépi Tanulási algoritmus) és **Split** (betanításához az adatokat a az algoritmus) modult. 
      ![Csatlakozás a Tanítási modell modulhoz][7]
-5. Válassza ki a **BikeBuyer** oszlopot előrejelzési oszlopként.
+5. Majd kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra. Válassza ki a **BikeBuyer** oszlopot előrejelzési oszlopként.
    ![Előrejelzési oszlop kiválasztása][8]
 
 ## <a name="4-score-the-model"></a>4. A modell pontozása
 Most teszteljük, hogyan kezeli a modell a tesztadatokat. Az általunk választott algoritmust összehasonlítjuk egy másik algoritmussal, hogy megtudjuk, melyik teljesít jobban.
 
-1. Húzza a **Pontszám modell** modult a vászonra.
-    Első bemenet: Betanított modell második bemenet: Tesztadatok ![pontszámok számolása][9]
+1. A csomóponthúzási **Score Model** modult a vászonra, és kösse össze **tanítási modell** és **Split Data** modulok.
+   ![A modell pontozása][9]
 2. Húzza a **két osztályú Bayes pontozó gépet** a kísérlet vászonra. Összehasonlítjuk ennek az algoritmusnak a teljesítményét a Két osztályú súlyozott döntési fa teljesítményével.
 3. Másolja és illessze be a vászonra a Tanítási és Pontszám modelleket.
 4. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.
@@ -124,18 +122,18 @@ A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) osz
 A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása][Introduction to Machine Learning on Azure] című részt.
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
-[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
-[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
-[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
-[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
-[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
-[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
-[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
-[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
-[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
-[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
-[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
+[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png
+[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2-visualize-new.png
+[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png
+[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png
+[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png
+[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png
+[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png
+[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png
+[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png
+[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png
+[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png
+[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png
 
 
 <!--Article references-->

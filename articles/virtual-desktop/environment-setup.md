@@ -1,22 +1,22 @@
 ---
-title: Windows virtuális asztali környezetben (előzetes verzió) – Azure
-description: Egy Windows virtuális asztali környezetben alapvető elemeit.
+title: Windows virtuális asztal előzetes verziójú környezet – Azure
+description: Egy Windows virtuális asztal előzetes verziójú környezet alapvető elemeit.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c503f665e3e2f99cd59f207c3fc4823b927eaac3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318449"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403510"
 ---
-# <a name="windows-virtual-desktop-environment-preview"></a>Windows virtuális asztali környezetben (előzetes verzió)
+# <a name="windows-virtual-desktop-preview-environment"></a>Windows virtuális asztal előzetes verziójú környezet
 
-Windows virtuális asztal (előzetes verzió) egy szolgáltatása, amely a virtualizált asztali környezet és a távoli alkalmazások könnyű és biztonságos hozzáférést biztosít a felhasználóknak. Ebben a témakörben megtudhatja, egy kis további információk a Windows virtuális asztali környezet általános szerkezetét.
+Windows virtuális asztal előzetes szolgáltatása a virtualizált asztali környezet és a távoli alkalmazások könnyű és biztonságos hozzáférést biztosít a felhasználóknak. Ebben a témakörben megtudhatja, egy kis további információk a Windows virtuális asztali környezet általános szerkezetét.
 
 ## <a name="tenants"></a>Bérlők
 
@@ -57,11 +57,11 @@ Miután az alkalmazás csoportokhoz társított felhasználók, képesek csatlak
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a delegált hozzáférés és a szerepkörök hozzárendelése a felhasználók [delegált hozzáférés a Windows virtuális asztal](delegated-access-virtual-desktop.md).
+További tudnivalók a delegált hozzáférés és a szerepkörök hozzárendelése a felhasználók [Windows virtuális asztal előzetes verzióban elérhető delegált hozzáférés](delegated-access-virtual-desktop.md).
 
-Ismerje meg, hogyan állítható be a virtuális asztali Windows-bérlőhöz, lásd: [bérlő létrehozása a Windows virtuális asztal](tenant-setup-azure-active-directory.md).
+Ismerje meg, hogyan állítható be a virtuális asztali Windows-bérlőhöz, lásd: [bérlő létrehozása a Windows virtuális asztal Preview](tenant-setup-azure-active-directory.md).
 
 Megtudhatja, hogyan csatlakozhat a virtuális asztali Windows, az alábbi cikkekben talál:
 
 - [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
-- [Csatlakozás a Windows virtuális asztali webes ügyfél](connect-web.md)
+- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)
