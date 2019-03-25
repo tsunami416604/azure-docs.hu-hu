@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 51d8b9bad4bb4a3663b07a711f363b263f5d64db
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339686"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351915"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -246,7 +246,7 @@ A Storage ügyféloldali kódtára automatikusan létrehozza az egyedi ügyfélk
 >
 
 ### <a name="server-request-id"></a>Kiszolgálói kérelem azonosítója
-A storage szolgáltatás automatikusan létrehozza a kiszolgáló kérelemazonosítókat.
+A storage szolgáltatás automatikusan létrehozza a kiszolgálói kérelem azonosítók.
 
 * A kiszolgálóoldali Storage Logging naplóban megjelenik a kérés Azonosítóját a **kérelem Azonosítójának fejlécét** oszlop.
 * A hálózati nyomkövetés, például a Fiddler által rögzített, az megjelenik a kérés Azonosítóját parancsválasz-üzeneteket, a **x-ms-request-id** HTTP-fejléc értéke.
@@ -814,9 +814,9 @@ További információ az Azure Storage analytics az alábbi forrásokban talál:
 * [Az Azure Portal tárfiók figyelése](storage-monitor-storage-account.md)
 * [A Storage analytics](storage-analytics.md)
 * [Storage analytics mérőszámainak áttekintését](storage-analytics-metrics.md)
-* [Storage analytics mérőszámainak táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema.md)
+* [Storage analytics mérőszámainak táblasémáját](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Storage analytics naplók](storage-analytics-logging.md)
-* [Storage analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format.md)
+* [Storage analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [Bevezetés]: #introduction
