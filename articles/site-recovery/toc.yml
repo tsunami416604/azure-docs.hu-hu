@@ -212,12 +212,10 @@ items:
         href: vmware-azure-set-up-replication.md
       - name: A mobilitási szolgáltatás telepítése
         items:
-        - name: A mobilitási szolgáltatás telepítése
+        - name: Mobilitási szolgáltatások áttekintése és telepítése
           href: vmware-physical-mobility-service-overview.md
         - name: A mobilitási szolgáltatás leküldéses telepítésének előkészítése
           href: vmware-azure-install-mobility-service.md
-        - name: A mobilitási szolgáltatás telepítése manuálisan
-          href: vmware-physical-mobility-service-install-manual.md
         - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
           href: vmware-azure-mobility-install-configuration-mgr.md
       - name: Replikáció engedélyezése a VMware virtuális gépek számára
@@ -244,6 +242,8 @@ items:
         href: vmware-azure-install-linux-master-target.md
     - name: Kezelés
       items:
+      - name: VMware mobilitási ügynökének kezelése
+        href: vmware-physical-manage-mobility-service.md
       - name: A VMware konfigurációs kiszolgálójának kezelése
         href: vmware-azure-manage-configuration-server.md
       - name: Folyamatkiszolgálók kezelése
@@ -276,8 +276,6 @@ items:
           href: vmware-physical-mobility-service-overview.md
         - name: A mobilitási szolgáltatás leküldéses telepítésének előkészítése
           href: vmware-azure-install-mobility-service.md
-        - name: A mobilitási szolgáltatás telepítése manuálisan
-          href: vmware-physical-mobility-service-install-manual.md
         - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
           href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 'Útmutató: Vészhelyreállítás beállítása'
@@ -286,6 +284,8 @@ items:
       href: physical-to-azure-failover-failback.md
     - name: Kezelés
       items:
+      - name: Fizikai kiszolgáló mobilitási ügynökének kezelése
+        href: vmware-physical-manage-mobility-service.md
       - name: A fizikai kiszolgáló replikációjához használt konfigurációs kiszolgáló kezelése
         href: physical-manage-configuration-server.md
       - name: Folyamatkiszolgálók kezelése
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Szolgáltatási hírek
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b486afff5bc65e58fc89d4b9f0bee4d9c0ff0b5c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317102"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418996"

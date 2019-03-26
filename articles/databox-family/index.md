@@ -17,7 +17,7 @@ ms.author: alkohli
 <p>Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi (TB) adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.</p>
 <h2>Offline adatátvitel</h2>
 <p>Ha a hálózati sávszélesség korlátozott vagy egyáltalán nincs</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -65,7 +65,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Heavy<SUP>előzetes verzió</SUP></b> 500 TB feletti adatmennyiséghez. A Microsoft egy 1 petabájt (PB) kapacitású tárolóeszközt postáz Önnek, amelyet Ön az adatok átmásolását követően visszaküld.</p>
+                            <p><b>Data Box Heavy</b>előzetes verzió 500 TB feletti adatmennyiséghez. A Microsoft egy 1 petabájt (PB) kapacitású tárolóeszközt postáz Önnek, amelyet Ön az adatok átmásolását követően visszaküld.</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Gateway <SUP>előzetes verzió</SUP></b> virtuális eszköz tárolókapacitással. Az eszköz használatával a hálózaton keresztül továbbíthatja adatait az Azure-ba.</p>
+                            <p><b>Data Box Gateway </b> virtuális eszköz tárolókapacitással. Az eszköz használatával a hálózaton keresztül továbbíthatja adatait az Azure-ba.</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ ms.author: alkohli
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Edge <SUP>előzetes verzió</SUP></b> fizikai eszköz tároló- és számítási kapacitással. Az eszköz használatával az Azure-ba való átvitel során elemezheti, átalakíthatja és szűrheti az adatokat.</p>
+                            <p><b>Data Box Edge </b> fizikai eszköz tároló- és számítási kapacitással. Az eszköz használatával az Azure-ba való átvitel során elemezheti, átalakíthatja és szűrheti az adatokat.</p>
                         </div>
                     </div>
                 </div>

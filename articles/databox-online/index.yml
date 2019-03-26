@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 44c7f6d32737fe83e80a2f2df15f0ae078a5849e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400286"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439115"
 documentType: LandingData
 title: Azure Data Box-dokumentáció – Online adatátvitel
 metadata:
@@ -16,10 +16,10 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 03/22/2019
+  ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway<SUP>előzetes verziójával</SUP> elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszinten feldolgozhatja őket.  A Data Box Edge <SUP>előzetes verziójával</SUP> szűrheti, elemezheti és átalakíthatja az adatokat azok az Azure-ba való átvitele során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>
+  description: Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>
 sections:
 - title: Oktatóanyagok
   items:
