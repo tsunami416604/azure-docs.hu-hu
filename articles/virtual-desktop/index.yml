@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318735"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400248"
 documentType: LandingData
-title: A Windows Virtual Desktop dokumentációja
+title: A Windows Virtual Desktop előzetes verziójának dokumentációja
 metadata:
-  title: A Windows Virtual Desktop dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
-  description: Az Azure-hoz készült Windows Virtual Desktop a Windows 10 Enterprise több felhasználó általi használatát teszi lehetővé a felhőalapú virtualizálásnak köszönhetően.
+  title: A Windows Virtual Desktop előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
+  description: Az Azure-hoz készült Windows Virtual Desktop előzetes verziója a Windows 10 Enterprise több felhasználó általi használatát teszi lehetővé a felhőalapú virtualizálásnak köszönhetően.
   author: Heidilohr
-  manager: dansimp
+  manager: daveba
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -23,7 +23,7 @@ sections:
 - title: Áttekintés
   items:
   - type: paragraph
-    text: Ismerkedjen meg a Windows Virtual Desktoppal és annak használatával. Oktatóanyagok, útmutatók, referenciatartalmak és egyéb anyagok mutatják be, hogyan állíthatja be a gazdagépcsoportokat és bérlőket, és hogyan rendelhet szerepköröket a felhasználókhoz a Windows Virtual Desktop környezetében.
+    text: Ismerkedjen meg a Windows Virtual Desktoppal előzetes verziójával és annak használatával. Oktatóanyagok, útmutatók, referenciatartalmak és egyéb anyagok mutatják be, hogyan állíthatja be a gazdagépcsoportokat és bérlőket, és hogyan rendelhet szerepköröket a felhasználókhoz a Windows Virtual Desktop környezetében.
   - type: list
     style: unordered
     items:
@@ -44,4 +44,4 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (előzetes verzió)</a>
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
