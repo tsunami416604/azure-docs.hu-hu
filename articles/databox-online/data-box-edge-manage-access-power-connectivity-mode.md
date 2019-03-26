@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e0b8b35c654f0716fae1e6ab785f57dcf04e1a5a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400889"
+ms.locfileid: "58417802"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge-preview"></a>Kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód az Azure Data Box Edge (előzetes verzió)
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Az Azure Data Box Edge kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód
 
 Ez a cikk ismerteti, hogyan kezelheti a hozzáférést, a teljesítmény és a csatlakozási mód az Azure Data Box Edge. Ezeket a műveleteket a helyi webes felhasználói felületen vagy az Azure Portalon keresztül történik.
 
@@ -26,8 +26,6 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Csatlakozási mód kezelése
 > * Energiagazdálkodás
 
-> [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="manage-device-access"></a>Eszköz-hozzáférés kezelése
 

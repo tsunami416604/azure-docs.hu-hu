@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226538"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437577"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -48,7 +48,6 @@ FunctionsProject
  | - host.json
  | - package.json
  | - extensions.csproj
- | - bin
 ```
 
 A projekt gyökerében van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.js) és a kötési konfigurációs fájl (function.json) nevű mappa. Nevére `function.json`a könyvtár (szülő) mindig a függvényalkalmazás nevére.
@@ -616,6 +615,10 @@ Amikor létrehoz egy függvényalkalmazást, amelyet az App Service-csomagot has
 ### <a name="cold-start"></a>Hidegindítási
 
 Fejlesztése az Azure Functions a kiszolgáló nélküli üzemeltetési modell, ritkán használt indításakor vannak a valóság. *Hidegindítási* arra utal, hogy a függvényalkalmazás indításakor tétlen időszak után első alkalommal hosszabb ideig tart, elindításához. A JavaScript-függvények nagy függőségi fa-különösen hidegindítási jelentős lehet. A hidegindítás folyamat felgyorsítása érdekében [futtathatja a függvényeit egy csomagfájlt,](run-functions-from-deployment-package.md) amikor csak lehetséges. Számos központi telepítési módszerek használják alapértelmezés szerint a csomag modellből a Futtatás, de ha nagy kiküszöbölik által tapasztalt, és ezzel a módszerrel nem futtatja, ez a változás kínálnak jelentős fejlesztéseket tartalmaz.
+
+### <a name="connection-limits"></a>Kapcsolat korlátozásai
+
+Szolgáltatásspecifikus ügyfél az Azure Functions alkalmazások használatakor ne hozzon létre egy új ügyfél minden függvény meghívási. Ehelyett hozzon létre egy statikus ügyfél a globális hatókörben. További információkért lásd: [kapcsolatok az Azure Functions kezelése](manage-connections.md).
 
 ## <a name="next-steps"></a>További lépések
 

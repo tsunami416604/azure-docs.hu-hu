@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105182"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435592"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk ismerteti a helyreállítási lépéseket.
@@ -87,7 +87,7 @@ Alapértelmezés szerint az Azure AD Connect megőrzi be a hét napnyi futtatás
 
 3. A **műveletek**válassza **egyértelmű futtatások**...
 
-4. Választhat **törölje minden Futtatás** vagy **Clear futtatása előtt... <date>**  lehetőséget. Ajánlott kezdeni a futtatási előzményadatokat, amely két napnál régebbi törlése. Ha történő adatbázis méretét a probléma továbbra is, majd válassza ki a **törölje minden Futtatás** lehetőséget.
+4. Választhat **törölje minden Futtatás** vagy **Clear futtatása előtt... \<dátum >** lehetőséget. Ajánlott kezdeni a futtatási előzményadatokat, amely két napnál régebbi törlése. Ha történő adatbázis méretét a probléma továbbra is, majd válassza ki a **törölje minden Futtatás** lehetőséget.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>Rövidítse le a futtatási előzmények adatok megőrzési ideje
 Ez a lépés nem több szinkronizálási ciklus után a 10 GB-os korlátot probléma felmerülése valószínűségét csökkentése érdekében.

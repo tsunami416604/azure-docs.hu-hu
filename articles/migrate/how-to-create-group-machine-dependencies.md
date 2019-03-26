@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 388a0419d5de87c3eb7faff9b556f888e52ac12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e186effb63c1ca96ace33ec389c2487448e4d20d
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117370"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407097"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -60,7 +60,7 @@ Az ügynök telepítése a Windows-gépen:
 4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
 5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **tovább**.
 
-A parancssorból vagy egy automatizált módszer, például az Azure Automation DSC, a System Center Configuration Manager, vagy egy Azure Resource Manager-sablon használatával, ha a helyi adatközpontban telepített Microsoft Azure Stack segítségével telepítse az ügynököt. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) ezen módszerek használatáról az MMA-ügynök telepítése.
+A parancssorból vagy egy automatizált módszer, például a System Center Configuration Manager használatával telepítheti az ügynököt. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) ezen módszerek használatáról az MMA-ügynök telepítése.
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Az ügynök telepítése Linux rendszerű gépen
 

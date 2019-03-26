@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a286b3578cc159b6771df3f91bcd3f2fd35a161
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0d4f9c69d6ddcbef96a88a0df10c3b0974cd5b74
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201676"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437084"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyszeri kijelentkezés SAML-protokoll
 
@@ -72,7 +72,7 @@ Az Azure AD elküldi egy `LogoutResponse` válaszul egy `LogoutRequest` elemet. 
 Az Azure AD-csoportok a `ID`, `Version` és `IssueInstant` lévő értékeknek a `LogoutResponse` elemet. Azt állítja be a `InResponseTo` elem értékét a `ID` attribútuma a `LogoutRequest` , amely a válasz megállapított.
 
 ### <a name="issuer"></a>Kiállító
-Az Azure AD állítja ezt az értéket `https://login.microsoftonline.com/<TenantIdGUID>/` ahol <TenantIdGUID> a bérlő az Azure AD-bérlő azonosítója.
+Az Azure AD állítja ezt az értéket `https://login.microsoftonline.com/<TenantIdGUID>/` ahol \<TenantIdGUID > az Azure AD-bérlő bérlő azonosítója.
 
 Értékét kiértékelheti, hogy a `Issuer` elem, az értéket a **Alkalmazásazonosító URI-t** alkalmazás regisztrációja során megadott.
 

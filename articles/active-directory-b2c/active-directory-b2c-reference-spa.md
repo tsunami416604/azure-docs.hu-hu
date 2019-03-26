@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 081adc9421a97f7cafcf7fba946ce0b901a00a0c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104838"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439430"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Egyoldalas alkalmazás jelentkezzen be az OAuth 2.0 implicit folyamat
 
@@ -27,7 +27,7 @@ Számos modern alkalmazás egylapos alkalmazás előtérrendszerét elsősorban 
 
 Ezek az alkalmazások Azure Active Directory B2C-t támogató (az Azure AD B2C-vel) az OAuth 2.0 implicit folyamat használja. Az OAuth 2.0 típusú implicit engedélyezés folyamat leírt [szakaszban, az OAuth 2.0 ismertetőjének 4.2](https://tools.ietf.org/html/rfc6749). Az implicit folyamatot, az alkalmazás fogad jogkivonatok közvetlenül az Azure Active Directory (Azure AD) authorize végponton, bármely az exchange server-kiszolgáló nélkül. Hitelesítési logikát, és a munkamenet idő szükséges kezelése teljes mértékben a JavaScript-ügyfelet, anélkül, hogy további oldal átirányítja az helyezze el.
 
-Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 segítségével szabályzatokat adhat hozzá alkalmazásához, mint például regisztrációs, bejelentkezési, és a felhasználói folyamatok felügyeleti profil. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával. Segít megismerkedni, hogy vessen egy pillantást a [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) és [a Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) mintákat.
+Az Azure AD B2C kiterjeszti a szabványos OAuth 2.0 implicit folyamat több, mint az egyszerű hitelesítés és engedélyezés. Az Azure AD B2C bevezeti a [szabályzatparaméter](active-directory-b2c-reference-policies.md). A házirend-paraméterrel, az OAuth 2.0 segítségével szabályzatokat adhat hozzá alkalmazásához, mint például regisztrációs, bejelentkezési, és a felhasználói folyamatok felügyeleti profil. Ebben a cikkben bemutatjuk, ezek a tapasztalatok mindegyike az egyoldalas alkalmazások megvalósításához az implicit folyamat és az Azure AD használatával.
 
 Az ebben a cikkben példa HTTP-kérések, használjuk a mintául szolgáló Azure AD B2C-címtár **fabrikamb2c.onmicrosoft.com**. Azt is használhatja a saját minta és felhasználói folyamatokat. Próbálja meg a kérések saját maga az ezeket az értékeket, vagy is le kell cserélni a saját értékeire.
 Ismerje meg, hogyan [első saját Azure AD B2C directory, az alkalmazás és a felhasználói folyamatokat](#use-your-own-azure-ad-b2c-tenant).
@@ -275,9 +275,4 @@ Próbálja ki ezeket a kérelmeket saját magának, hajtsa végre az alábbi há
 1. [Azure AD B2C-bérlő létrehozása](active-directory-b2c-get-started.md). A bérlő nevét használja a kérelmeket.
 2. [Hozzon létre egy alkalmazást](active-directory-b2c-app-registration.md) -Alkalmazásazonosító beszerzése és a egy `redirect_uri` értéket. Vegye fel az alkalmazás egy webalkalmazás vagy webes API-t. Igény szerint hozhat létre egy alkalmazás titkos kulcs.
 3. [A felhasználói folyamatok létrehozása](active-directory-b2c-reference-policies.md) beszerzése a felhasználói folyamat nevét.
-
-## <a name="samples"></a>Példák
-
-* [Hozzon létre egy egyoldalas alkalmazás számára a Node.js segítségével](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
-* [Egyoldalas alkalmazás létrehozása a .NET-keretrendszerrel](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 

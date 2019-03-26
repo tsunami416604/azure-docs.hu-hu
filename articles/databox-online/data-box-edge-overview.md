@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 696f4fee95926009ebda0be3c28672838d89edda
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 31a50d1dab0d5b62ab4dd549127e9092148bd88c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400435"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438087"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -65,22 +65,6 @@ A Data Box Edge az alábbi képességekkel rendelkezik:
 |Rugalmasság     | Beépített hálózati rugalmasság.        |
 
 
-## <a name="features-and-specifications"></a>Funkciók és specifikációk
-
-A Data Box Edge fizikai eszköz az alábbi funkciókkal rendelkezik:
-
-| Funkciók/specifikációk                                          | Leírás              |
-|---------------------------------------------------------|--------------------------|
-| Dimenziók   | Szélesség: 17.25" mélysége: 27.25" height: 1.75”<br>(nem tartalmazza a füleket és a PSU-fogantyúkat)  |            
-| Kiszolgálószekrény-terület|1U a kiszolgálószekrénybe helyezve|
-| Kábelek| 2 db tápkábel<br>2 db 1 Gbps sávszélességű RJ45 kábel<br>2 db 10 Gbps sávszélességű SFP+ rézkábel|
-| Összetevők|2 db beépített tápegység (PSU)|
-| CPU|2 db, egyenként 10 magos Intel Xeon processzor  |
-| Memory (Memória)| 64 GB RAM|
-| Lemezek| 8 NVMe SSD meghajtó, a lemezek mindegyike 1,6 TB-os <br> A rendszer működése leáll, ha az NVMe SSD meghajtók valamelyike meghibásodik. |
-| Helyi tárolási kapacitás| 12,8 TB teljes kapacitás|
-| Hálózati illesztők| 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A többi felület felhasználó által konfigurálható, az adatátvitelhez használható, és a DHCP alapértelmezés szerint. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.|
-
 ## <a name="components"></a>Összetevők
 
 A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizikai eszközből és egy helyi webes felhasználói felületből áll.
@@ -105,30 +89,16 @@ A Data Box Edge megoldás a Data Box Edge-erőforrásból, a Data Box Edge fizik
 A Data Box Edge fizikai eszköznek, az Azure-erőforrásnak és a céloldali tárfióknak, amelybe átviszi az adatokat, nem kell egyazon régióban lenniük.
 
 - **Az erőforrás elérhetősége** – Ebben a kiadásban a Data Box Edge-erőforrás a következő régiókban érhető el:
-    - **Egyesült Államok** – Az USA 2. nyugati régiója és az USA keleti régiója
+    - **Egyesült Államok** – USA keleti RÉGIÓJA
     - **Európai Unió** – Nyugat-Európa
     - **Ázsia és a Csendes-óceáni térség** – Délkelet-Ázsia
-
+    
+    Az Azure Government cloud Data Box-átjáró is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+    
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. 
 
     A Data Box adatait tároló tárfiókok régióinaknak az eszköz közelében kell lennie az optimális teljesítmény elérése érdekében. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
 
-
-## <a name="sign-up"></a>Regisztráció
-
-A Data Box Edge előzetes verzióban érhető el, és a használatához regisztráció szükséges. A Data Box Gateway szolgáltatáshoz való regisztrációhoz hajtsa végre a következő lépéseket:
-
-1. Jelentkezzen be az Azure Portalra itt: [https://aka.ms/databox-edge](https://aka.ms/databox-edge).
-
-2. Válassza ki a Data Box Edge előzetes verziójához használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. A Data Box Edge lehetőségnél kattintson a **Regisztráció** elemre.
-
-    ![A Data Box Edge regisztrációja 3](media/data-box-edge-overview/data-box-edge-sign-up3.png)
-
-3.  Válaszoljon a kérdésekre az adatok tárolási helye szerinti országról, az időkeretről, az adatátviteli cél Azure-szolgáltatásról, a hálózati sávszélességről, valamint az adatátviteli gyakoriságról. Tekintse át az **adatvédelmi és felhasználási feltételeket**, és a négyzet bejelölésével járuljon hozzá, hogy **a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez**.
-
-    ![A Data Box Edge regisztrációja 4](media/data-box-edge-overview/data-box-edge-sign-up4.png)
-
-4. Miután regisztrált, és igénybe veheti az előzetes verziót, megrendelheti a Data Box Edge eszközt.
 
 ## <a name="next-steps"></a>További lépések
 

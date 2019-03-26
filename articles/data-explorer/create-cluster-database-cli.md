@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása a parancssori felület használatával'
+title: 'Gyors útmutató: Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel'
 description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és adatbázis az Azure CLI-vel
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286329"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418652"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>Az Azure Data Explorer fürt és adatbázis létrehozása a parancssori felület használatával
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286329"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-Ebben a rövid útmutató egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürt és a egy adatbázist az Azure parancssori felület használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
     az login
     ```
 
-2. Ha azt szeretné, hogy a fürt létrehozása az előfizetés beállításához. Cserélje le `MyAzureSub` használni kívánt Azure-előfizetés nevére:
+1. Ha azt szeretné, hogy a fürt létrehozása az előfizetés beállításához. Cserélje le `MyAzureSub` használni kívánt Azure-előfizetés nevére:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
 
-2. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
    | soft-delete-period | *3650:00:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
    | hot-cache-period | *3650:00:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
 
-2. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
+1. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

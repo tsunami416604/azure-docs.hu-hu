@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116809"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418822"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>A Java-webalkalmazásban szűrőtelemetria
 
@@ -253,6 +253,20 @@ In ApplicationInsights.xml:
     </ApplicationInsights>
 
 ```
+
+### <a name="3-invoke-your-filter-java-spring"></a>3. A szűrő (Java Spring) meghívása
+
+Alapján a Spring-keretrendszert használó alkalmazások egyéni telemetriát processzorok kell regisztrálni a fő alkalmazásosztály, egy bean. Az alkalmazás indításakor autowired majd lesz.
+
+```Java
+@Bean
+public TelemetryProcessor successFilter() {
+      return new SuccessFilter();
+}
+```
+
+Hozza létre a saját szűrő paramétereket lévő kell `application.properties` és használja ki a Spring Boot externalized konfigurációs keretrendszer ezeket a paramétereket adhat át az egyéni szűrő. 
+
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

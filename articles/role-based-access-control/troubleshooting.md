@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342473"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407589"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Az RBAC hibaelhárítása az Azure-erőforrásokhoz
 
@@ -28,23 +28,31 @@ Ez a cikk szerepköralapú hozzáférés-vezérlés (RBAC) az Azure-erőforráso
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problémák az RBAC-beli szerepkör-hozzárendelésekkel
 
-- Ha nem tudja felvenni a szerepkör-hozzárendelés, mert a **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy mert engedélyekkel kapcsolatos hibát kap, ellenőrizze, hogy használja egy szerepkör, amely rendelkezik a `Microsoft.Authorization/roleAssignments/*` engedéllyel a kívánt hatókörben rendelje hozzá a szerepkört. Ha nem rendelkezik ezzel az engedéllyel, forduljon az előfizetés-rendszergazdához.
-- Ha engedélyekkel kapcsolatos hibát amikor megpróbál létrehozni egy erőforrást, ellenőrizze, hogy használja egy szerepkör, amely jogosult arra, hogy az erőforrások létrehozása a kijelölt hatókörben. Például előfordulhat, hogy szeretne közreműködő lenni. Ha nem rendelkezik engedéllyel, ellenőrizze az előfizetés-rendszergazdától.
-- Ha engedélyekkel kapcsolatos hibát létrehozni vagy frissíteni egy támogatási jegyet észlel, ellenőrizze, hogy használja egy szerepkör, amely rendelkezik a `Microsoft.Support/*` engedéllyel, mint például [támogatási kérelem közreműködői](built-in-roles.md#support-request-contributor).
-- Ha egy szerepkör hozzárendelésekor hibaüzenetet kap, amely szerint a szerepkör-hozzárendelések száma átlépte a határértéket, próbálja meg csökkenteni a szerepkör-hozzárendelések számát a szerepkörök csoportokhoz történő hozzárendelésével. Az Azure támogatja az akár **2000** szerepkör-hozzárendelések száma előfizetésenként.
+- Ha nem tudja az Azure Portalon a szerepkör-hozzárendelés hozzáadása a **hozzáférés-vezérlés (IAM)** mert a **Hozzáadás** > **szerepkör-hozzárendelés hozzáadása** lehetőség le van tiltva, vagy Ellenőrizze, hogy jelenleg jelentkezett be, amely hozzá van rendelve egy szerepkör, amely rendelkezik egy felhasználó az engedélyekkel kapcsolatos hibát kap, "az ügyfél nem rendelkezik a művelet végrehajtására", mert a `Microsoft.Authorization/roleAssignments/write` engedély például [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) a szerepkör hozzárendelése a kívánt hatókörben.
+- Ha hibaüzenet jelenik meg a "További szerepkör-hozzárendelések nem hozható létre (kód: RoleAssignmentLimitExceeded) "szerepkör hozzárendelése meg, próbálja meg úgy csökkenthető a szerepkör-hozzárendelések száma szerepkörök hozzárendelése a csoportokhoz helyette. Az Azure támogatja az akár **2000** szerepkör-hozzárendelések száma előfizetésenként.
 
 ## <a name="problems-with-custom-roles"></a>Problémák az egyéni szerepkörökkel
 
-- Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy rendelkezik-e a `Microsoft.Authorization/roleDefinition/write` engedéllyel.
-- Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy legalább egy hozzárendelhető hatókörökkel törölve lett a bérlőben. A `AssignableScopes` tulajdonságot egy egyéni szerepkör vezérlők [akik létrehozása, törlése, módosítása vagy megtekintése az egyéni szerepkör](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
-- Ha a szerepkör-definíciók korlátját meghaladó új szerepkör létrehozása, törlése nem egyéni szerepköröket megkísérlésekor hibaüzenetet kap használható. Is megpróbálhatja konszolidálhatja vagy felhasználhatják a meglévő egyéni szerepköröket. Az Azure támogatja az akár **2000** egyéni szerepkörök a bérlőben.
-- Ha egy egyéni szerepkör törlése nem sikerült, ellenőrizze, hogy egy vagy több szerepkör-hozzárendeléseit továbbra is használja az egyéni szerepkör.
+- Ha ismertetik, hogyan hozhat létre egy egyéni szerepkört van szüksége, tekintse meg az egyéni szerepkör oktatóanyagok segítségével [Azure PowerShell-lel](tutorial-custom-role-powershell.md) vagy [Azure CLI-vel](tutorial-custom-role-cli.md).
+- Ha Ön nem lehet frissíteni egy meglévő egyéni szerepkört, ellenőrizze, hogy jelenleg jelentkezett be, amely hozzá van rendelve egy szerepkör, amely rendelkezik egy felhasználó a `Microsoft.Authorization/roleDefinition/write` engedély például [tulajdonosa](built-in-roles.md#owner) vagy [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator).
+- Ha nem sikerül, egy egyéni szerepkör törléséhez, és a hibaüzenet a "meglévő szerepkör-hozzárendelések hivatkoznak szerepkör vannak (kód: RoleDefinitionHasAssignments) ", akkor vannak a szerepkör-hozzárendeléseit továbbra is használja az egyéni szerepkör. Távolítsa el azokat a szerepkör-hozzárendeléseket, és próbálja meg újra törölni az egyéni szerepkör.
+- Ha a hibaüzenet jelenik meg "szerepkör-definíciók korlátját túllépve. Nincsenek további szerepkör-definíciók hozhatók létre (hibakód: RoleDefinitionLimitExceeded) "Amikor megpróbál létrehozni egy új egyéni biztonsági szerepkört, törölje a nem használt egyéni szerepköröket. Az Azure támogatja az akár **2000** egyéni szerepkörök a bérlőben.
+- Ha hibaüzenetet kap hasonló "az ügyfél jogosult végrehajtani a műveletet"Microsoft.Authorization/roleDefinitions/write"hatókör"/ subscriptions / {subscriptionid}", azonban a társított előfizetés nem található" Amikor egy egyéni szerepkör frissítése meg, ellenőrizze hogy egy vagy több [hozzárendelhető hatókörökkel](role-definitions.md#assignablescopes) törölve lett, a bérlőben. Ha a hatókör törölve lett, hozzon létre egy támogatási jegyet nincs jelenleg elérhető önkiszolgáló megoldás nem.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
 
-- Ha szeretné megismerni egy előfizetés másik bérlőre való áthelyezésének lépéseit, tekintse meg az [Azure-előfizetés tulajdonjogának másik fiókra történő átruházását](../billing/billing-subscription-transfer.md) bemutató cikket.
-- Előfizetését átadhatja egy másik bérlőben, ha minden szerepkör-hozzárendelések véglegesen törlődnek a forrás-bérlőből, és a célbérlőhöz nem települnek át. Újra létre kell hoznia a célbérlőhöz a szerepkör-hozzárendelések.
-- Ha egy globális felügyeleti és hozzáférési elvesztette előfizetésre, használja a **Access management az Azure-erőforrások** ideiglenes váltógomb [a hozzáférési szintjének emelése](elevate-access-global-admin.md) alapján visszaszerezhetik hozzáférésüket a az előfizetés.
+- Ha egy előfizetés átadására irányuló szükséges lépéseket kell egy másik Azure ad-bérlőhöz, lásd: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md).
+- Ha egy előfizetés átadására egy másik Azure ad-bérlőben, az összes szerepkör-hozzárendelések véglegesen törlődnek a forrás az Azure AD-bérlőből, és nem lesznek áttelepítve a cél az Azure AD-bérlővel. Újra létre kell hoznia a célbérlőhöz a szerepkör-hozzárendelések.
+- Ha Ön egy Azure AD globális rendszergazda, és nem fér hozzá egy előfizetést után a bérlők között át lett helyezve, használja a **Access management az Azure-erőforrások** ideiglenes váltógomb [ahozzáférésiszintjénekemelése](elevate-access-global-admin.md) az előfizetés eléréséhez.
+
+## <a name="issues-with-service-admins-or-co-admins"></a>Problémák a szolgáltatásadminisztrátorokkal vagy társadminisztrátorokkal
+
+- Ha problémák merülnek fel a szolgáltatás-rendszergazdaként vagy társ-rendszergazda, lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md) és [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD rendszergazdai szerepkörök](rbac-and-directory-admin-roles.md).
+
+## <a name="access-denied-or-permission-errors"></a>A hozzáférés megtagadva vagy jogosultsági hibák
+
+- Ha a hiba az engedélyeknél "az ügyfél nem jogosult a művelet végrehajtásához a hatókörben (kód: AuthorizationFailed) "Amikor megpróbál létrehozni egy erőforrást, ellenőrizze, hogy jelenleg bejelentkezve a felhasználó, amely hozzá van rendelve egy szerepkör, amely az erőforrás írási engedéllyel rendelkezik a kijelölt hatókörben. Például egy erőforráscsoportba tartozó virtuális gépek kezeléséhez, meg kell rendelkeznie a [virtuális gépek Közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkör az erőforráscsoport (vagy szülő hatókörben). Minden beépített szerepkör esetében az engedélyek listáját lásd: [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
+- Ha a hiba az engedélyeknél "Nincs engedélye támogatási kérelmet szeretne létrehozni" Amikor megpróbálja létrehozni vagy frissíteni egy támogatási jegyet, ellenőrizze, hogy jelenleg jelentkezett be, amely hozzá van rendelve egy szerepkör, amely rendelkezik egy felhasználó a `Microsoft.Support/supportTickets/write` engedéllyel, például [Támogatáskérési közreműködő támogatja](built-in-roles.md#support-request-contributor).
 
 ## <a name="rbac-changes-are-not-being-detected"></a>RBAC módosításait nem észleli a folyamatban
 

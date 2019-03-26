@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3654168d5bd733c87c48d808ab4a668c5c03655e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: da06b8772cbf4f9f805952e19cff03791a86e4c7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370142"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Oktatóanyag: Támogatás a portál az Azure Active Directory-integráció
 
@@ -194,7 +194,7 @@ Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a támogatás p
 
 2. Az alkalmazások listájában jelölje ki a **megteremteni a portál**.
 
-    ![A támogatás a portál hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A portál finanszírozási hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
@@ -212,13 +212,13 @@ Ebben a szakaszban engedélyezze Britta Simon ad hozzáférést, a támogatás p
 
 ### <a name="create-the-funding-portal-test-user"></a>A támogatás portál tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű megteremteni a portálon hoz létre. Együttműködve [megteremteni a portál támogatási csapatának](mailto:info@regenteducation.com) a felhasználók hozzáadása az üzenetek a portál platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű megteremteni a portálon hoz létre. Együttműködve [megteremteni a portál támogatási csapatának](mailto:info@regenteducation.com) felhasználót is hozzáadhat a támogatás a portál platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a támogatás a portál csempére kattint, akkor kell is automatikusan megtörténik a, amelynek beállítása egyszeri bejelentkezés az üzenetek portálra. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha rákattint a finanszírozási portál csempe a hozzáférési panelen, kell lehet automatikusan bejelentkezett, amelynek beállítása egyszeri Bejelentkezést a finanszírozási portál. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876364"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437101"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -338,6 +338,39 @@ IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtató
 |AMQP|5671|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Alapértelmezett kommunikációs protokollt az IoT Edge-hez. <li> Nyissa meg kell, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy az AMQP protokoll kívánt kell konfigurálni.<li>az AMQP 5672 IoT Edge által nem támogatott.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge használja egy másik IoT Hub protokoll támogatott.<li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul></ul>|
 |HTTPS|443|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyissa meg a 443-as kiépítése az IoT Edge. Ez a konfiguráció manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS) szükség. <li>Bejövő (bejövő) kapcsolatot kell lennie a nyílt csak az adott forgatókönyveket: <ul> <li>  Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell megnyitni a külső hálózatokhoz IoTHub csatlakozni, vagy adja meg az IoTHub-szolgáltatások az Azure IoT Edge segítségével. Így a bejövő szabály csak megnyitásához a belső hálózatról bejövő (bejövő) korlátozott lehet. <li> -Ügyfél (C2D) eszközök esetén.</ul><li>IoT Edge által nem támogatott a 80-as HTTP-hez.<li>Ha nem HTTP-protokoll (például AMQP és MQTT) nem konfigurálható a vállalat; az üzenetek küldhetők a websockets protokoll. 443-as portot ebben az esetben WebSocket-kommunikációhoz fogja használni.</ul>|
 
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge-ügynök modul folyamatosan "üres konfigurációs fájl" jelentéseket, és nem modulok indítsa el az eszközön
+
+Hiba történt a központi telepítésben definiált modulok elindítása van az eszközön. Csak a edgeAgent fut, de folyamatosan reporting "üres konfigurációs fájl...".
+
+### <a name="potential-root-cause"></a>Lehetséges okát
+Alapértelmezés szerint az IoT Edge modulok saját elkülönített tároló hálózati indítja el. Az eszköz problémái lehetnek DNS-névfeloldás a magánhálózaton belül.
+
+### <a name="resolution"></a>Megoldás:
+Adja meg a DNS-kiszolgáló, a környezetnek a tárolóbeállítások motor. Hozzon létre egy fájlt `daemon.json` adja meg a DNS-kiszolgáló használatára. Példa:
+
+```
+{
+    "dns": ["1.1.1.1"]
+}
+```
+
+A fenti példában a DNS-kiszolgáló egy nyilvánosan elérhető-e DNS-szolgáltatás állítja be. Ha az edge-eszköz nem érhető el az IP-a környezetből, cserélje le az elérhető DNS-kiszolgáló címét.
+
+Hely `daemon.json` a platformnak megfelelő helyen: 
+
+| Platform | Hely |
+| --------- | -------- |
+| Linux | `/etc/docker` |
+| Windows-gazdagépen a Windows-tárolókkal | `C:\ProgramData\iotedge-moby-data\config` |
+
+Ha már tartalmazza a hely `daemon.json` fájlt, adja hozzá a **dns** billentyűt, és mentse a fájlt.
+
+*Indítsa újra a frissítések érvénybe lépéséhez a tároló motor*
+
+| Platform | Parancs |
+| --------- | -------- |
+| Linux | `sudo systemctl restart docker` |
+| Windows (Admin Powershell) | `Restart-Service iotedge-moby -Force` |
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldje el a problémát](https://github.com/Azure/iotedge/issues) , hogy továbbra is javíthatja. 

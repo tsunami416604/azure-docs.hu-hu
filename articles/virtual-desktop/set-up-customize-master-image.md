@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: ca186090f28f04811030e83b159782a9bfeb87f9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ccea3ebae4bcc19410cfb5537a7140f69b04c4e7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400777"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438784"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>Előkészítése és a egy fő VHD-lemezkép testreszabása
+# <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
 Ebben a cikkben megtudhatja, hogyan készülhet fel a fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-ba, beleértve a virtuális gépek (VM) létrehozása és telepítése és rajtuk szoftver konfigurálása. Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal előzetes jellemző konfiguráció esetén is.
 
@@ -162,8 +162,8 @@ Automatikus frissítés manuálisan is letilthatja.
 
 Az automatikus frissítések letiltásához:
 
-1. Telepítse az Office 365 utasításait követve [Office lemezkép előkészítése](set-up-customize-master-image.md#office-image-preparation).
-2. Telepítse a további alkalmazásokat utasításait követve [felhasználó profil beállítása (FSLogix)](set-up-customize-master-image.md#user-profile-setup-fslogix), [a Windows Defender](set-up-customize-master-image.md#windows-defender), és [más alkalmazások és a beállításjegyzék konfigurációja](set-up-customize-master-image.md#other-applications-and-registry-configuration).
+1. Telepítse az Office 365 utasításait követve [szoftver előkészítési és -telepítési](set-up-customize-master-image.md#software-preparation-and-installation).
+2. Telepítse a további alkalmazásokat utasításait követve [állítsa be a felhasználói profil tároló (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix), [konfigurálása a Windows Defender](set-up-customize-master-image.md#configure-windows-defender), és [más alkalmazások és a beállításjegyzék konfigurációs](set-up-customize-master-image.md#other-applications-and-registry-configuration).
 3. Tiltsa le a Windows automatikus frissítési szolgáltatás a helyi virtuális gépen.
 4. Nyissa meg **Helyicsoportházirend-szerkesztő\\felügyeleti sablonok\\Windows-összetevők\\Windows Update**.
 5. Kattintson a jobb gombbal **automatikus frissítés konfigurálása** , beállíthatja azt a **letiltott**.
@@ -171,7 +171,7 @@ Az automatikus frissítések letiltásához:
 A következő parancsot egy parancssorban az automatikus frissítések letiltásához is futtathatja.
 
 ```batch
-reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
 Adjon meg egy kezdő elrendezés Windows 10 rendszerű számítógépen a következő parancs futtatásával.
@@ -232,9 +232,7 @@ Windows virtuális asztal hivatalosan nem támogatja a Skype és csoportokat.
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Állítsa be a felhasználói profil tároló (FSLogix)
 
-A lemezkép részeként adja meg a FSLogix tároló, kövesse a [állítsa be a felhasználói állomás készlet megosztásának](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
-
-A fájl megosztási beállításkulcs konfigurálásakor használja a létrehozott fájlmegosztás [-engedélyek konfigurálása a fájlkiszolgáló a](set-up-customize-master-image.md#configure-permissions-for-the-file-server) hol szeretné tárolni a profil tárolókat. Tesztelheti a FSLogix tároló, ez a funkció [rövid](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+A lemezkép részeként adja meg a FSLogix tároló, kövesse a [állítsa be a felhasználói állomás készlet megosztásának](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Tesztelheti a FSLogix tároló működésének [ebben a rövid útmutatóban](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>A Windows Defender konfigurálása
 

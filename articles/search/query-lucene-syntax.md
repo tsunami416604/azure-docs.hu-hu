@@ -4,7 +4,7 @@ description: Az Azure Search szolgáltatással használt a teljes Lucene szintax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a2576a0489ad62aba0a85a45f110acb8ac220847
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107185"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438053"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -35,7 +35,7 @@ Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemz
 
 <a name="bkmk_example"></a> 
 
-## <a name="example-showing-full-syntax"></a>Példa ábrázoló teljes szintaxis
+### <a name="example-showing-full-syntax"></a>Példa ábrázoló teljes szintaxis
 
 A következő példa olyan dokumentumokat keres a használatával a Lucene lekérdezési szintaxis, egyértelmű az indexben a `queryType=full` paraméter. Ez a lekérdezés visszaadja a "Hotels", ahol a kategória mező tartalmazza a "budget" kifejezést, és a "nemrégiben felújított" kifejezést tartalmazó összes kereshető mezőt. "Nemrégiben felújított" kifejezést tartalmazó dokumentumok újabb rangsora eredményeként az előfizetési időszak boost érték (3).  
 
@@ -60,50 +60,6 @@ További példák: [Lucene lekérdezési szintaxis példái létrehozásához az
 
 > [!NOTE]  
 >  Az Azure Search is támogatja a [egyszerű lekérdezési szintaxis](query-simple-syntax.md), amely egy egyszerű és hatékony lekérdezési nyelvet, az egyszerű kulcsszavas keresést is használható.  
-
-
-##  <a name="bkmk_fields"></a> A mező-hatáskörű lekérdezések  
- Megadhat egy `fieldname:searchterm` konstrukció fielded lekérdezési műveletet, ha a mező kitöltése egyetlen szó, és a keresési kifejezést is egy szót vagy kifejezést, igény szerint a logikai operátorokkal együtt meghatározásához. Néhány példa a következők:  
-
-- Műfaj: jazz nem előzmények  
-
-- előadók: ("mérföld is" "John Coltrane")
-
-  Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
-
-  A megadott mező `fieldname:searchterm` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
-
-##  <a name="bkmk_fuzzy"></a> intelligens keresést  
- Egy intelligens keresés egyezések megkeresi, hogy rendelkezik egy hasonló konstrukció. / [Lucene dokumentáció](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), az intelligens keresés alapján [Damerau-Levenshtein távolság](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).  
-
- Ehhez az intelligens keresést, használja a hullámos vonallal "~" és a egy nem kötelező paraméter, a 0. és 2 (alapértelmezett), közötti szám, amely megadja a Szerkesztés egyetlen szó végén szimbólum. Például "blue ~" vagy "kék ~ 1" adna vissza "blue", "Csupa kék" és "összeragasztásában".
-
- Intelligens keresés csak akkor alkalmazható, használati, nem a mondatok. Az intelligens keresés kibontásával 50 feltételek, amelyek megfelelnek a távolság által legfeljebb egy kifejezést.
-
-##  <a name="bkmk_proximity"></a> közelségi keresésre  
- Közelségi keresés segítségével keresse meg a feltételeket, amelyek egymáshoz közel egy dokumentumban. Egy hullámos vonallal beszúrása "~" kifejezés végén jel követ szavak, amelyek a közelségi határ létrehozása száma. Ha például `"hotel airport"~5` a feltételek "hotel", és minden más belül 5 szó "repülőtér" dokumentumban található.  
-
-
-##  <a name="bkmk_termboost"></a> kiemelési távú  
- Kifejezés kiemelési prioritása nagyobb, ha a gyorsított időszak alatt, dokumentum, amely nem tartalmazza a kisbetűs viszonyított tartalmazza a dokumentum hivatkozik. Ez eltér pontozási profilok, hogy miként növelhető a pontozási profilok specifikus használati helyett egyes mezők.  
-
-Az alábbi példa segít a különbségeket mutatja be. Tegyük fel, hogy egy pontozó profilt, amely felgyorsíthatók megfelel egy bizonyos mezőben, például: *műfaj* a a [musicstoreindex példa](index-add-scoring-profiles.md#bkmk_ex). Kifejezés kiemelési felhasználható bizonyos keresési feltételek magasabb, mint a többi további növelése érdekében. Ha például `rock^2 electronic` fog jelentősen növelheti a műfaj mezőben magasabb, mint más az indexben kereshető mezőket a keresési feltételeket tartalmazó dokumentumokat. További, a keresési kifejezést tartalmazó dokumentumok *rock* magasabb, mint a többi keresési kifejezés besorolásra kerülő *elektronikus* eredményeként az előfizetési időszak boost érték (2).  
-
- Növelése érdekében egy kifejezést használja a beszúrási jellel "^", a keresett kifejezés végén boost tényezővel (szám) szimbólum. Jelentősen növelheti a mondatok is. Minél nagyobb a boost tényező, több megfelelő kifejezés lesz más keresési feltételek viszonyítva. Alapértelmezés szerint a boost tényező: 1. Bár a boost tényező pozitívnak kell lennie, 1-nél kisebb (például 0,20) lehet.  
-
-##  <a name="bkmk_regex"></a> reguláris kifejezés keresése  
- Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).  
-
- Keresse meg a "amelyben" vagy "hotel" tartalmazó dokumentumok, például adja meg a `/[mh]otel/`.  Reguláris kifejezés keresések a rendszer összeveti egyetlen szavakat.   
-
-##  <a name="bkmk_wildcard"></a> helyettesítő karakteres keresés  
- Szintaxis is használható általában felismerhető a több (*) vagy egy (?) karakter helyettesítő karakteres kereséssel. Vegye figyelembe, hogy a Lucene lekérdezéselemző használatát a szimbólumok egyetlen kifejezés, és a egy kifejezés nem támogatja.  
-
- Például a "note", például a "jegyzetfüzet" vagy "Jegyzettömb" előtaggal szavakat tartalmazó dokumentumok keresése adja meg "Megjegyzés: *".  
-
-> [!NOTE]  
->  Nem használhatja a * és? szimbólum a keresési első karaktert.  
->  Nincs szöveg elemzése a helyettesítő karakteres keresés lekérdezések történik. Lekérdezéskor helyettesítő karaktert tartalmazó lekérdezési kifejezések összehasonlítja a search-index elemzett feltételeit és kibontva.
 
 ##  <a name="bkmk_syntax"></a> Szintaxis-alapok  
  A következő szintaxis-alapok, a Lucene-szintaxist használó összes lekérdezésére érvényes.  
@@ -139,19 +95,19 @@ Mezőt a csoportosítás akkor hasonló, de egyetlen mezőt, a csoportosítás h
 ### <a name="searchmode-parameter-considerations"></a>SearchMode paraméterrel kapcsolatos szempontok  
  A hatását `searchMode` a lekérdezések, leírtak szerint [egyszerű lekérdezési szintaxis az Azure Search](query-simple-syntax.md), a Lucene lekérdezési szintaxis egyformán vonatkozik. Nevezetesen `searchMode` nem együtt operátorok eredményezhet, amely tűnhet, hogy szokatlan nvdimm-n törlés következményei állíthatja be, hogy a paraméter a lekérdezési eredmények. Ha az alapértelmezett megőrzi `searchMode=any`, és a egy NOT operátor szerinti szűrése, a művelet számított vagy műveletként, hogy "Győr" nem "Seattle" adja vissza, amelyek nem Seattle összes városok használja.  
 
-##  <a name="bkmk_boolean"></a> Logikai operátorok  
+##  <a name="bkmk_boolean"></a> Logikai operátorokat (AND, OR, NOT) 
  Mindig adjon meg szöveget logikai operátorokat (AND, OR, NOT) minden korlátokat.  
 
-#### <a name="or-operator-or-or-"></a>VAGY operátor `OR` vagy `||`
+### <a name="or-operator-or-or-"></a>VAGY operátor `OR` vagy `||`
 
 A vagy operátor egy függőleges oszlopra vagy egy függőleges vonal. Például: `wifi || luxury` "Wi-Fi" vagy "engedélyezhető" vagy mindkettőt tartalmazó dokumentumokat fogja keresni. Mivel az alapértelmezett együtt operátor vagy sikerült is hagyhatja azt, úgy, hogy `wifi luxury` megfelelője `wifi || luxuery`.
 
-#### <a name="and-operator-and--or-"></a>ÉS az operátorral `AND`, `&&` vagy `+`
+### <a name="and-operator-and--or-"></a>ÉS az operátorral `AND`, `&&` vagy `+`
 
 Az és operátor egy pontosvessző vagy a plusz jelre. Például: `wifi && luxury` "Wi-Fi" és "engedélyezhető" is tartalmazó dokumentumokat fogja keresni. A plusz (+) karakter szükséges feltételek szolgál. Ha például `+wifi +luxury` előírja, hogy mindkét kifejezés valahol meg kell jelennie az egyetlen dokumentum terén.
 
 
-#### <a name="not-operator-not--or--"></a>NOT operátor `NOT`, `!` vagy `-`
+### <a name="not-operator-not--or--"></a>NOT operátor `NOT`, `!` vagy `-`
 
 A NOT operátor felkiáltójel vagy a mínuszjelet. Például: `wifi !luxury` fog keresni a dokumentumokon, amelyek a "wifi" távú és/vagy nem rendelkezik "engedélyezhető". A `searchMode` vezérlők lehetőséget, hogy egy kifejezés, és a NOT operátor műveletet vagy végbe hiányában a lekérdezésben az egyéb feltételeket egy + vagy || operátort. Emlékeztetnek arra, hogy `searchMode` is megadni `any`(alapértelmezés) vagy `all`.
 
@@ -164,6 +120,50 @@ Használatával `searchMode=all` növeli a lekérdezések a pontosság, többek 
 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Pontozó helyettesítő és regex lekérdezéseket.
  Az Azure Search használ, a kiértékelés gyakorisága-alapú ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) szöveges lekérdezések. Azonban helyettesítő és regex lekérdezéseket, ahol feltételek hatóköre lehet széleskörű, a gyakoriság tényezőt figyelmen kívül hagyja, hogy az ennek a területnek a hordozóeltolást ritkább feltételek származó egyezések felé. Minden megfelelő elemet a helyettesítő karaktert tartalmazó és a reguláris kifejezés egyaránt kezelik kereséseket.
+
+##  <a name="bkmk_fields"></a> A mező-hatáskörű lekérdezések  
+ Megadhat egy `fieldname:searchterm` konstrukció fielded lekérdezési műveletet, ha a mező kitöltése egyetlen szó, és a keresési kifejezést is egy szót vagy kifejezést, igény szerint a logikai operátorokkal együtt meghatározásához. Néhány példa a következők:  
+
+- Műfaj: jazz nem előzmények  
+
+- előadók: ("mérföld is" "John Coltrane")
+
+  Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
+
+  A megadott mező `fieldname:searchterm` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
+
+##  <a name="bkmk_fuzzy"></a> intelligens keresést  
+ Egy intelligens keresés egyezések megkeresi, hogy rendelkezik egy hasonló konstrukció. / [Lucene dokumentáció](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), az intelligens keresés alapján [Damerau-Levenshtein távolság](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Az intelligens keresés kibontásával 50 feltételek, amelyek megfelelnek a távolság által legfeljebb egy kifejezést. 
+
+ Ehhez az intelligens keresést, használja a hullámos vonallal "~" és a egy nem kötelező paraméter, a 0. és 2 (alapértelmezett), közötti szám, amely megadja a Szerkesztés egyetlen szó végén szimbólum. Például "blue ~" vagy "kék ~ 1" adna vissza "blue", "Csupa kék" és "összeragasztásában".
+
+ Intelligens keresés feltételeket, nem a kifejezések csak alkalmazható, de a hullámos vonallal hozzáfűzése külön-külön mindegyik kifejezés egy név vagy kifejezés. Például "Unviersty ~, ~" Wshington ~ "a"Eötvös Loránd Tudományegyetem"megfelel.
+ 
+
+##  <a name="bkmk_proximity"></a> közelségi keresésre  
+ Közelségi keresés segítségével keresse meg a feltételeket, amelyek egymáshoz közel egy dokumentumban. Egy hullámos vonallal beszúrása "~" kifejezés végén jel követ szavak, amelyek a közelségi határ létrehozása száma. Ha például `"hotel airport"~5` a feltételek "hotel", és minden más belül 5 szó "repülőtér" dokumentumban található.  
+
+
+##  <a name="bkmk_termboost"></a> kiemelési távú  
+ Kifejezés kiemelési prioritása nagyobb, ha a gyorsított időszak alatt, dokumentum, amely nem tartalmazza a kisbetűs viszonyított tartalmazza a dokumentum hivatkozik. Ez eltér pontozási profilok, hogy miként növelhető a pontozási profilok specifikus használati helyett egyes mezők.  
+
+Az alábbi példa segít a különbségeket mutatja be. Tegyük fel, hogy egy pontozó profilt, amely felgyorsíthatók megfelel egy bizonyos mezőben, például: *műfaj* a a [musicstoreindex példa](index-add-scoring-profiles.md#bkmk_ex). Kifejezés kiemelési felhasználható bizonyos keresési feltételek magasabb, mint a többi további növelése érdekében. Ha például `rock^2 electronic` fog jelentősen növelheti a műfaj mezőben magasabb, mint más az indexben kereshető mezőket a keresési feltételeket tartalmazó dokumentumokat. További, a keresési kifejezést tartalmazó dokumentumok *rock* magasabb, mint a többi keresési kifejezés besorolásra kerülő *elektronikus* eredményeként az előfizetési időszak boost érték (2).  
+
+ Növelése érdekében egy kifejezést használja a beszúrási jellel "^", a keresett kifejezés végén boost tényezővel (szám) szimbólum. Jelentősen növelheti a mondatok is. Minél nagyobb a boost tényező, több megfelelő kifejezés lesz más keresési feltételek viszonyítva. Alapértelmezés szerint a boost tényező: 1. Bár a boost tényező pozitívnak kell lennie, 1-nél kisebb (például 0,20) lehet.  
+
+##  <a name="bkmk_regex"></a> reguláris kifejezés keresése  
+ Keresés reguláris kifejezés közötti útjaiban perjeleket a "/", a dokumentált tartalma alapján egyezést talál az [RegExp osztály](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).  
+
+ Keresse meg a "amelyben" vagy "hotel" tartalmazó dokumentumok, például adja meg a `/[mh]otel/`.  Reguláris kifejezés keresések a rendszer összeveti egyetlen szavakat.   
+
+##  <a name="bkmk_wildcard"></a> helyettesítő karakteres keresés  
+ Szintaxis is használható általában felismerhető a több (*) vagy egy (?) karakter helyettesítő karakteres kereséssel. Vegye figyelembe, hogy a Lucene lekérdezéselemző használatát a szimbólumok egyetlen kifejezés, és a egy kifejezés nem támogatja.  
+
+ Például a "note", például a "jegyzetfüzet" vagy "Jegyzettömb" előtaggal szavakat tartalmazó dokumentumok keresése adja meg "Megjegyzés: *".  
+
+> [!NOTE]  
+>  Nem használhatja a * és? szimbólum a keresési első karaktert.  
+>  Nincs szöveg elemzése a helyettesítő karakteres keresés lekérdezések történik. Lekérdezéskor helyettesítő karaktert tartalmazó lekérdezési kifejezések összehasonlítja a search-index elemzett feltételeit és kibontva.
 
 ## <a name="see-also"></a>Lásd még  
 

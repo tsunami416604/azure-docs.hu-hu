@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 85fdd67cd676db2a7c54c10523787b0d395de5dc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9955068fbc0d6493add83c6c92390413b3975106
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870788"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437171"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -77,7 +77,7 @@ Ebben a példában az Azure Functions-verzióhoz tartozó 1.x. Ahhoz, hogy ez a 
 - [a hozzáférési jogok paraméter nincs megadva](#trigger---configuration)
 - a log paraméter típusának módosítása `TraceWriter` , `ILogger`
 - Változás `log.Info` , `log.LogInformation`
- 
+
 ### <a name="trigger---c-script-example"></a>Eseményindító - C#-szkript példa
 
 Az alábbi példa bemutatja egy kötelező a Service Bus-trigger egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény beolvassa [üzenet metaadatok](#trigger---message-metadata) és a egy Service Bus üzenetsor üzenetet.
@@ -160,7 +160,7 @@ A következő Java-függvényt használ a `@ServiceBusQueueTrigger` a jegyzet a 
  ) {
      context.getLogger().info(message);
  }
- ```
+```
 
 A Java-függvényeket is indítható el, amikor egy üzenet bekerül egy Service Bus-témakörbe. Az alábbi példában a `@ServiceBusTopicTrigger` jegyzet írja le a trigger konfigurációja.
 
@@ -177,7 +177,7 @@ A Java-függvényeket is indítható el, amikor egy üzenet bekerül egy Service
     ) {
         context.getLogger().info(message);
     }
- ```
+```
 
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
 
@@ -279,7 +279,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type** | n/a | Állítsa "serviceBusTrigger". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | A függvénykódot az üzenetsor vagy témakör üzenet képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. | 
+|**name** | n/a | A függvénykódot az üzenetsor vagy témakör üzenet képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
 |**queueName**|**queueName**|Figyelni kívánt üzenetsor neve.  Csak akkor, ha egy üzenetsort, nem a témakör a figyelés beállítása.
 |**topicName**|**topicName**|Figyelendő üzenettéma nevére. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
 |**subscriptionName**|**subscriptionName**|Neve a figyelni kívánt előfizetést. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
@@ -339,7 +339,21 @@ Lásd: [kódpéldák](#trigger---example) , használja ezeket a tulajdonságokat
 
 A [host.json](functions-host-json.md#servicebus) fájl tartalmazza a Service Bus-eseményindító viselkedését vezérlő beállításokat.
 
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-service-bus.md)]
+```json
+{
+    "serviceBus": {
+      "maxConcurrentCalls": 16,
+      "prefetchCount": 100,
+      "maxAutoRenewDuration": "00:05:00"
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------|
+|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. A közvetlen egyszerre csak egy üzenetsor vagy témakör üzenetet feldolgozni a futtatókörnyezetet, állítsa `maxConcurrentCalls` 1-re. |
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.|
+|maxAutoRenewDuration|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.|
 
 ## <a name="output"></a>Kimenet
 
@@ -471,7 +485,7 @@ public String pushToQueue(
       result.setValue(message + " has been sent.");
       return message;
  }
- ```
+```
 
  Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@QueueOutput` függvény paraméterei, amelynek az értéke egy Service Bus-üzenetsorba tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
 
@@ -582,7 +596,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type** | n/a | "A serviceBus" kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Állítsa "out". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | Az üzenetsor vagy témakör, a függvény kódját képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. | 
+|**name** | n/a | Az üzenetsor vagy témakör, a függvény kódját képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
 |**queueName**|**queueName**|Az üzenetsor neve.  Állítsa be, csak akkor, ha üzenetküldésre üzenetsor, témakör esetében nem.
 |**topicName**|**topicName**|Figyelendő üzenettéma nevére. Csak akkor, ha üzenetküldésre témakör, nem a várólista állítsa be.|
 |**kapcsolat**|**kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Például, ha a beállított `connection` "MyServiceBus", hogy a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyServiceBus." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete alapértelmezett a Service Bus kapcsolati karakterláncát használja a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket, látható [a felügyeleti hitelesítő adatok lekérése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie.|
@@ -641,11 +655,11 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 ```
 
 |Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------| 
-|maxAutoRenewDuration|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.| 
-|az automatikus kiegészítés|true|E az eseményindító kell azonnal minősítés befejezése (automatikus kiegészítés), vagy várjon, amíg meghívásához teljes feldolgozása.| 
-|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. A közvetlen egyszerre csak egy üzenetsor vagy témakör üzenetet feldolgozni a futtatókörnyezetet, állítsa `maxConcurrentCalls` 1-re. | 
-|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.| 
+|---------|---------|---------|
+|maxAutoRenewDuration|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.|
+|az automatikus kiegészítés|true|E az eseményindító kell azonnal minősítés befejezése (automatikus kiegészítés), vagy várjon, amíg meghívásához teljes feldolgozása.|
+|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. A közvetlen egyszerre csak egy üzenetsor vagy témakör üzenetet feldolgozni a futtatókörnyezetet, állítsa `maxConcurrentCalls` 1-re. |
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.|
 
 
 ## <a name="next-steps"></a>További lépések

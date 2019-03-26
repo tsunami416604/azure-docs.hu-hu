@@ -1,24 +1,24 @@
 ---
 title: A központi telepítési feladatütemezés sorrend megértése
-description: Ismerje meg az életciklus-tervrajz halad át, és minden egyes szakaszhoz részleteit.
+description: További tudnivalók az életciklus-, amely végighalad a tervezetdefiníciót és minden egyes szakaszhoz részleteit.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990569"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434806"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
 
-Azure tervek az egy **alkalmazás-előkészítés rendelés** erőforrás-létrehozás sorrendjének meghatározásához tervrajz hozzárendelésének feldolgozása során. Ez a cikk a következő fogalmakat ismerteti:
+Azure tervek az egy **alkalmazás-előkészítés rendelés** az erőforrás-létrehozás sorrendjének meghatározásához egy tervezetdefiníció hozzárendelésének feldolgozása során. Ez a cikk a következő fogalmakat ismerteti:
 
 - Az alapértelmezett műveleti sorrend sorrend használt
 - A rendelés testreszabása
@@ -30,7 +30,7 @@ A JSON-példák, amelyek a saját értékeire cserélni kell változók vannak:
 
 ## <a name="default-sequencing-order"></a>Alapértelmezett alkalmazás-előkészítés sorrend
 
-Ha a tervezet nem ahhoz, hogy az összetevők üzembe helyezése a direktívákat tartalmaz, vagy az irányelv null értékű, a következő sorrendben szolgál:
+Ha a tervezetdefiníciót tartalmaz ahhoz, hogy az összetevők üzembe helyezése a nincs direktívákat, vagy az irányelv null értékű, akkor a következő sorrendben használja:
 
 - Előfizetési szinten **szerepkör-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
 - Előfizetési szinten **szabályzat-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
@@ -45,16 +45,14 @@ Belül **erőforráscsoport** összetevő, a következő feladatütemezési sorr
 
 ## <a name="customizing-the-sequencing-order"></a>Az alkalmazás-előkészítés sorrendjének testreszabása
 
-Nagy tervezetek létrehozása, amikor a meghatározott sorrendben létrehozandó erőforrás szükség lehet. Ebben a forgatókönyvben a leggyakoribb használati mintáját akkor, ha a tervrajz több Azure Resource Manager-sablont is tartalmaz. Tervezetek kezeli ezt a mintát azáltal, hogy az alkalmazás-előkészítés sorrendben kell definiálni.
+Ha nagy tervezetdefiníciók összeállítása, meghatározott sorrendben létrehozandó erőforrás szükség lehet. Ebben a forgatókönyvben a leggyakoribb használati mintáját esetén, a tervezetdefiníciót több Azure Resource Manager-sablont is tartalmaz. Tervezetek kezeli ezt a mintát azáltal, hogy az alkalmazás-előkészítés sorrendben kell definiálni.
 
-Az eredménykészlet definiálásával történik egy `dependsOn` a JSON-tulajdonságot. Csak a tervezet (az erőforráscsoportok) és az összetevő objektumok támogatja ezt a tulajdonságot. `dependsOn` az összetevő neve, amely az adott összetevő kell létrehozni, mielőtt a létrehozás egy karakterlánc-tömbben.
+Az eredménykészlet definiálásával történik egy `dependsOn` a JSON-tulajdonságot. A tervezetdefiníciót erőforráscsoportok és összetevő objektumok támogatja ezt a tulajdonságot. `dependsOn` az összetevő neve, amely az adott összetevő kell létrehozni, mielőtt a létrehozás egy karakterlánc-tömbben.
 
-> [!NOTE]
-> **Erőforráscsoport** összetevők támogatja a `dependsOn` tulajdonság, azonban nem lehet célja egy `dependsOn` bármely összetevő típusa szerint.
+### <a name="example---ordered-resource-group"></a>Például: erőforráscsoport rendezve
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>Példa – tervezet rendezett erőforráscsoport
-
-Ebben a példában tervezet egy erőforráscsoportot, amely egy egyéni alkalmazás-előkészítés sorrendben definiált értéket deklarálásával `dependsOn`, és a egy standard erőforráscsoportot. Ebben az esetben a lehívandó összetevő nevű **assignPolicyTags** előtt a program feldolgozza a **rendezett-rg** erőforráscsoportot. **Standard-rg** az alapértelmezett műveleti sorrend sorrend szerint lesz feldolgozva.
+Ebben a példában tervezetdefiníció rendelkezik egy erőforráscsoportot, amely egy egyéni alkalmazás-előkészítés sorrendben definiált értéket deklarálásával `dependsOn`, és a egy standard erőforráscsoportot. Ebben az esetben a lehívandó összetevő nevű **assignPolicyTags** előtt a program feldolgozza a **rendezett-rg** erőforráscsoportot.
+**Standard-rg** az alapértelmezett műveleti sorrend sorrend szerint lesz feldolgozva.
 
 ```json
 {
@@ -104,6 +102,42 @@ Ebben a példában egy szabályzat-összetevő, amely egy Azure Resource Manager
 }
 ```
 
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Példa - előfizetési szint sablon összetevő függően egy erőforráscsoportot
+
+Ebben a példában a Resource Manager-sablonnal üzembe helyezett erőforrás csoport függ az előfizetés szintjén van. Az alapértelmezett rendezése, az előfizetés-szintű összetevők létrehozott bármely erőforráscsoport- és alárendelt összetevők ezen erőforráscsoportok előtt. Az erőforráscsoport van definiálva a tervezetdefiníciót ehhez hasonló:
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+Az előfizetés szintű sablon összetevőben attól függően, a **wait-az-me** erőforráscsoport van definiálva ehhez hasonló:
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
+}
+```
+
 ## <a name="processing-the-customized-sequence"></a>A testre szabott feladatütemezési feldolgozása
 
 A létrehozási folyamat során a topológiai rendezést a függőségi grafikon a tervek összetevők létrehozására szolgál. Az ellenőrzés biztosítja, hogy az egyes fenyegetési erőforráscsoportok és összetevők közötti függőség támogatott.
@@ -112,8 +146,8 @@ Ha az összetevő függ, amely nem módosítható az alapértelmezett sorrend de
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [életciklus-tervezetet](lifecycle.md).
-- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](parameters.md).
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md).
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md).
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
+- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
+- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

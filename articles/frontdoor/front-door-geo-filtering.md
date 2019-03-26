@@ -3,31 +3,31 @@ title: Tartomány geoszűrése az Azure Front Door Service-ben | Microsoft Docs
 description: Ebben a cikkben megismerkedhet az Azure Front Door Service geoszűrési szabályzatával
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/09/2018
-ms.author: sharadag
-ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865505"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407640"
 ---
-# <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>Geoszűrés: Az Azure Front Door Service előtérrendszereinek földrajzi alapú hozzáférés-vezérlése
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi az a földrajzi szűrés Azure bejárati ajtajának tartomány?
 
-Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban érdemes ország alapján korlátozni a webalkalmazásokhoz való hozzáférést. Az Azure Front Door alkalmazási rétegbeli biztonsága lehetővé teszi, hogy egyéni védelmi szabályokkal definiáljon szabályzatot a végpont konkrét elérési útjára vonatkozóan a megadott országokból való hozzáférés engedélyezéséhez vagy letiltásához. 
+Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban érdemes ország alapján korlátozni a webalkalmazásokhoz való hozzáférést. Webes alkalmazás tűzfal (WAF) szolgáltatás bejárati ajtajának, lehetővé teszi meghatározhat egy olyan szabályzatot, a végpont a megadott elérési úthoz tartozó egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok. 
 
-Az alkalmazásbiztonsági szabályzatok általában egyéni szabályok egy készletét tartalmazzák. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
+A WAF-szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
-A Front Door geoszűrési szabályzatát az [Azure PowerShell-lel](front-door-tutorial-geo-filtering.md) vagy a [gyors üzembe helyezési sablonunkkal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering) konfigurálhatja.
+Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajának vagy a [Azure PowerShell-lel](front-door-tutorial-geo-filtering.md) vagy a [gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
-## <a name="country-code-reference"></a>Országkód-hivatkozás
+## <a name="country-code-reference"></a>Ország kódok referenciája
 
 |Országkód | Ország neve |
 | ----- | ----- |

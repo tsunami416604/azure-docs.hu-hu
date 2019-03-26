@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081253"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418890"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -49,7 +49,7 @@ Kapcsolattartó [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Sup
 
 ## <a name="services-that-can-be-moved"></a>Áthelyezhető szolgáltatások
 
-Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyezhető Azure-szolgáltatások általános összegzését tartalmazza. Nagyobb részletességgel, lásd: [művelet támogatási erőforrások áthelyezése](move-support-resources.md).
+Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyezhető Azure-szolgáltatások általános összegzését tartalmazza. Melyik erőforrás típusai támogatják az áthelyezési listáját lásd: [művelet támogatási erőforrások áthelyezése](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -143,7 +143,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
-* A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
+* A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Microsoft Genomics
 * Azure-beli SAP HANA-szolgáltatás

@@ -11,12 +11,12 @@ ms.date: 10/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52f8b70a4b098cc7266042499300235588e5303f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5b2471b28132b26c41844b620f6dcf49e3802a6e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164311"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436710"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Mi az a ADConnectivityTool PowerShell-modult?
 
@@ -47,7 +47,7 @@ Például ha helyreállításon dolgozunk a könyvtár hozzáadása a **csatlako
 
 Mi ténylegesen történik a színfalak mögött, hogy az Azure AD Connect hívja a `Start-NetworkConnectivityDiagnosisTools` függvény.  Ez a függvény nevezzük, amikor hitelesítő adatok érvényesítése hálózati kapcsolati hiba miatt sikertelen.
 
-Végül a részletes naplófájl jön létre, amikor az eszköz neve a varázslóból. A naplóban található **C:\ProgramData\AADConnect\ADConnectivityTool-<date>-<time>.log**
+Végül a részletes naplófájl jön létre, amikor az eszköz neve a varázslóból. A naplóban található **C:\ProgramData\AADConnect\ADConnectivityTool-\<dátum >-\<idő > .log**
 
 ## <a name="adconnectivitytools-post-installation"></a>A telepítés után ADConnectivityTools
 Az Azure AD Connect telepítése után a ADConnectivityTools PowerShell-modul az a funkciók bármelyike használható.  

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119037"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417768"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -53,31 +53,31 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszert
 
 | **Tulajdonság** | **Leírás** |
 |---|---|
-| TenantId | A bérlő azonosítója |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| Typo | A napló típusa. Mindig `AzureDiagnostics` |
-| SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
-| ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
-| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| ResourceId | Erőforrás-URI |
-| Erőforrás | A kiszolgáló neve |
-| Kategória | `MySqlSlowLogs` |
-| OperationName | `LogEvent` |
-| Logical_server_name_s | A kiszolgáló neve |
-| start_time_t [UTC] | A lekérdezés kezdetének időpontja |
-| query_time_s | A lekérdezés végrehajtásához szükséges idő összesen |
-| lock_time_s | A lekérdezés zárolva volt idő összesen |
-| user_host_s | Felhasználónév |
-| rows_sent_s | Elküldött sorok száma |
-| rows_examined_s | Vizsgált sorok száma |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | Id beszúrása |
-| sql_text_s | Teljes lekérdezést |
-| server_id_s | A kiszolgáló azonosítója |
-| thread_id_s | Id vlákna |
-| \_ResourceId | Erőforrás-URI |
+| `TenantId` | A bérlő azonosítója |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
+| `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
+| `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Erőforrás-URI |
+| `Resource` | A kiszolgáló neve |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | A kiszolgáló neve |
+| `start_time_t` [UTC] | A lekérdezés kezdetének időpontja |
+| `query_time_s` | A lekérdezés végrehajtásához szükséges idő összesen |
+| `lock_time_s` | A lekérdezés zárolva volt idő összesen |
+| `user_host_s` | Felhasználónév |
+| `rows_sent_s` | Elküldött sorok száma |
+| `rows_examined_s` | Vizsgált sorok száma |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | Id beszúrása |
+| `sql_text_s` | Teljes lekérdezést |
+| `server_id_s` | A kiszolgáló azonosítója |
+| `thread_id_s` | Id vlákna |
+| `\_ResourceId` | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések
 - [Konfigurálása és a naplók eléréséhez az Azure parancssori felületen](howto-configure-server-logs-in-cli.md).

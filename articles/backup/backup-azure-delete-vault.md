@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: raynew
-ms.openlocfilehash: e83698af6bb1caab1568375b726753d34a8c8467
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1cc86470b9e45469d633d47121869b3c2dc1b052
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861349"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439005"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -31,7 +31,7 @@ A Kezdés előtt fontos megérteni, hogy rendelkezik a kiszolgálók Recovery Se
 - Ha nem szeretné megőrizni a helyreállítási tárban lévő adatokat, és törli a tárolót, törölheti a tárolót kényszeríti.
 - Próbálja meg törölni egy tároló, de nem tudja, ha a tároló továbbra is fogadására van konfigurálva, biztonsági mentési adatokat.
 
-Tároló törlése, tekintse meg a hogyan [tároló törlése az Azure Portalról](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal). Ha a szakaszban [kényszeríti a tároló törlése](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Ha nem tudja, mi az a tárolóban, és győződjön meg arról, hogy törölheti a tárolót, hogy szüksége, tekintse meg a [Remove tároló függőségeket és a tároló törlése](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault).
+Tároló törlése, tekintse meg a hogyan [tároló törlése az Azure Portalról](#delete-a-vault-from-the-azure-portal). Ha a szakaszban [kényszeríti a tároló törlése](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Ha nem tudja, mi az a tárolóban, és győződjön meg arról, hogy törölheti a tárolót, hogy szüksége, tekintse meg a [Remove tároló függőségeket és a tároló törlése](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault).
 
 ## <a name="delete-a-vault-from-the-azure-portal"></a>Tároló törlése az Azure Portalról
 
@@ -90,7 +90,7 @@ Recovery Services-tároló törlése:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. Ha a tároló nem üres, a hibaüzenetet kapja "Tároló nem törölhető, mert nincsenek a tár meglévő erőforrásokat". Tartalmazott belül egy tároló eltávolításához tegye a következőket:
+9. Ha a tároló nem üres, a hibaüzenetet kapja "Tároló nem törölhető, mert nincsenek a tár meglévő erőforrásokat". Egy tároló tárolójában eltávolításához tegye a következőket:
 
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01

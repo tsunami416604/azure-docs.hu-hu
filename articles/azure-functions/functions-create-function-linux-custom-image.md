@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337574"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418057"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -69,7 +69,7 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 * `node`: létrehoz egy JavaScript-projektet.
 * `python`: egy Python-projektet hoz létre.
 
-[! TARTALMAZZA a funkciók – python-előzetes verzió – megjegyzés]
+[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
 A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
 

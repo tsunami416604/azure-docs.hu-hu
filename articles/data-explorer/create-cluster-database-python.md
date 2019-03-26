@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Egy Azure Data Explorer fürt és adatbázis létrehozása a Python használatával'
-description: Ismerje meg, hogyan hozhat létre egy Azure Data Explorer fürt és az adatbázis a Python használatával
+description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és adatbázis Python használatával
 services: data-explorer
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 4f87c5996ea323c26c32c1680ba6f627bf8f95c2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: db6064feb379bf7da4f2c2e6417583c3d8b8b0d3
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287526"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417887"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása a Python használatával
 
@@ -25,11 +25,11 @@ ms.locfileid: "58287526"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Ez a rövid útmutató ismerteti, hogyan hozhat létre Azure Data Explorer fürt és adatbázis Python használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Python használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
 
@@ -53,9 +53,9 @@ pip install azure-mgmt-kusto
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
     
-    A hitelesítő adatok beállítása a "hitelesítő adatok" (További információ: https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python )
+1. Állítsa be [ *a hitelesítő adatok*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
 
-2. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
@@ -91,7 +91,7 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
    | soft_delete_period | *3650 nap 0:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
    | hot_cache_period | *3650 nap 0:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
 
-2. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
+1. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
 
     ```Python
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)

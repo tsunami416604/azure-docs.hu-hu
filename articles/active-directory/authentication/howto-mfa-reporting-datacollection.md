@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0c22d4421aa984a9862f83b9be1095d548e5841
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314478"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436662"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure multi-factor Authentication felhasználói adatok gyűjtése
 
@@ -138,7 +138,7 @@ MFA Server 8.0-s vagy újabb verzióját a következő folyamat lehetővé teszi
 - Jelentkezzen be az MFA-kiszolgáló, keresse meg a **felhasználók** lapra, válassza ki az adott felhasználót, majd kattintson a **szerkesztése** gombra. Képernyőfelvételek (Alt-PrtScn), az egyes fülekre kattintva adja meg a felhasználó MFA beállításaikat.
 - A parancssorból az MFA-kiszolgáló, az alábbi parancsot a telepítés megfelelően elérési útvonalának megváltoztatása `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` előállításához egy JSON formátumú fájlba.
 - A rendszergazdák is használja a Web Service SDK GetUserGdpr műveletet beállítás exportálása minden MFA felhőalapú szolgáltatás adott felhasználó gyűjtött információk, vagy nagyobb jelentéskészítési megoldását építsen be.
-- Keresés `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` és minden olyan biztonsági mentéseit "<username>" (az idézőjelek között a keresési) található összes példányát, a felhasználói rekord hozzáadása vagy módosítani.
+- Keresési `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` és minden olyan biztonsági mentéseit "\<username >" (az idézőjelek között a keresési) található összes példányát, a felhasználói rekord hozzáadása vagy módosítani.
    - Ezeket a rekordokat korlátozott (de nem kiszűrni) legyen eszközhitelesítést **"Felhasználói változások naplózása"** MFA kiszolgáló felhasználói, naplózás terület, a naplófájlok fület.
    - Ha syslog van konfigurálva, és **"Felhasználói változások naplózása"** jelölőnégyzet be van jelölve az MFA kiszolgáló felhasználói, naplózás terület, a Syslog fülre, majd a naplóbejegyzéseket is begyűjthető syslog helyette.
 - A felhasználónév a MultiFactorAuthSvc.log és más MFA-kiszolgáló más előfordulását naplófájlok tartozó hitelesítési kísérletek számítanak, üzemeltetési és más közölt MultiFactorAuthGdpr.exe exportálási vagy a Web Service SDK használatával GetUserGdpr.

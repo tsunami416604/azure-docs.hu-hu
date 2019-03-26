@@ -1,93 +1,108 @@
 ---
-title: Oktatóanyag – Tartomány geoszűrésének konfigurálása az Azure Front Door Service-ben | Microsoft Docs
+title: Oktatóanyag – a földrajzi szűrés beállítása webes alkalmazás tűzfal-házirend Azure bejárati ajtajának szolgáltatás
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2018
-ms.author: sharadag
-ms.openlocfilehash: 68da9a0255cde6cbad5c675901c80193888bf255
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: 371347149b3c3f14784ba62365cfd6224ded99d1
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214878"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407334"
 ---
-# <a name="how-to-set-up-a-geo-filtering-policy-for-your-front-door"></a>Geoszűrési szabályzat beállítása a Front Doorhoz
+# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Számára a bejárati ajtó a földrajzi szűrés WAF szabályzat beállítása
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. Ez a minta geoszűrési szabályzat az Egyesült Államok kivételével minden más országból érkező kérelmeket letiltja.
 
-## <a name="1-set-up-your-powershell-environment"></a>1. A PowerShell-környezet beállítása
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="prerequisites"></a>Előfeltételek
+Geoszűrő szabályzat beállítása előtt állítsa be a PowerShell környezetet, és bejárati ajtajának profil létrehozásához.
+### <a name="set-up-your-powershell-environment"></a>A PowerShell-környezet beállítása
 Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modellt használják az Azure-erőforrások kezeléséhez. 
 
-Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az oldalon megjelenő utasításokat az Azure-beli hitelesítő adataival való bejelentkezéshez és az AzureRM telepítéséhez.
-```
-# Connect to Azure with an interactive dialog for sign-in
-Connect-AzureRmAccount
-Install-Module -Name AzureRM
-```
-> [!NOTE]
->  Az [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) támogatása hamarosan elérhető lesz.
+Az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/overview) telepítheti a helyi számítógépen és bármely PowerShell-munkamenetben használhatja. Kövesse az utasításokat az oldalon, jelentkezzen be Azure hitelesítő adataival, és Az PowerShell-modul telepítéséhez.
 
-A Front Door-modul telepítése előtt győződjön meg arról, hogy telepítve van a PowerShellGet aktuális verziója. Futtassa az alábbi parancsot, majd nyissa meg a PowerShellt újból.
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Az Azure-bA összekapcsolása a bejelentkezéshez egy interaktív párbeszédpanel
+```
+Connect-AzAccount
+Install-Module -Name Az
+```
+Ellenőrizze, hogy telepítve van a PowerShellGet aktuális verziójával rendelkezik. Futtassa az alábbi parancsot, majd nyissa meg a PowerShellt újból.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-Telepítse az AzureRM.FrontDoor modult. 
+### <a name="create-a-front-door-profile"></a>Bejárati ajtajának profil létrehozása
+Hozzon létre egy bejárati ajtajának profilt leírt utasítások alapján [a rövid útmutató: Hozzon létre egy bejárati ajtajának profilt](quickstart-create-front-door.md).
 
-```
-Install-Module -Name AzureRM.FrontDoor -AllowPrerelease
-```
+## <a name="define-geo-filtering-match-condition"></a>Adja meg a földrajzi szűrés feltételnek megfelelő
 
-## <a name="2-define-geo-filtering-match-conditions"></a>2. A geoszűrési egyeztetési feltétel vagy feltételek megadása
-Először hozzon létre egy minta egyeztetési feltételt, amely kijelöli azokat a kérelmeket, melyek nem a „US” országból érkeznek. Az egyeztetési feltételek létrehozásakor használandó paraméterekről a PowerShell [útmutatójában](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoormatchconditionobject) találhat további információt. A kétbetűs országkódok országoknak való megfeleltetése [itt](front-door-geo-filtering.md) van megadva.
+Hozzon létre egy minta az egyezési feltétellel, ami nem jelenik meg az "US" kérelmek [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) paraméterekkel egyeztetési feltételt létrehozásakor. Az ország-lel két betű országkódok biztosított [Itt](front-door-geo-filtering.md).
 
-```
-$nonUSGeoMatchCondition = New-AzureRmFrontDoorMatchConditionObject -MatchVariable RemoteAddr -OperatorProperty GeoMatch -NegateCondition $true -MatchValue "US"
+```azurepowershell-interactive
+$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+-MatchVariable RemoteAddr `
+-OperatorProperty GeoMatch `
+-NegateCondition $true `
+-MatchValue "US"
 ```
  
-## <a name="3-add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>3. A geoszűrési egyeztetési feltétel hozzáadása egy szabályhoz egy művelettel és egy prioritással
+## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>A geoszűrési egyeztetési feltétel hozzáadása egy szabályhoz egy művelettel és egy prioritással
 
-Ezután hozza létre a `nonUSBlockRule` CustomRule (egyéni szabály) objektumot az egyeztetési feltétel, egy Művelet és egy Prioritás alapján.  Egy CustomRule (egyéni szabály) objektum több MatchCondition (egyeztetési feltétel) objektummal is rendelkezhet.  Ebben a példában a Művelet a Blokkolás értékre, a Prioritás pedig az 1 értékre, a legmagasabb prioritásra van állítva.
-
-```
-$nonUSBlockRule = New-AzureRmFrontDoorCustomRuleObject -Name "geoFilterRule" -RuleType MatchRule -MatchCondition $nonUSGeoMatchCondition -Action Block -Priority 1
-```
-
-A CustomRule (egyéni szabály) objektumok létrehozásakor használandó paraméterekről a PowerShell [útmutatójában](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoorcustomruleobject) találhat további információt.
-
-## <a name="4-add-rules-to-a-policy"></a>4. Szabályok hozzáadása egy szabályzathoz
-Ez a lépés létrehozza a `geoPolicy` szabályzatobjektumot, amely tartalmazza az előző lépésben létrehozott és a megadott erőforráscsoportban található `nonUSBlockRule` szabályt. A `Get-AzureRmResourceGroup` parancsmaggal keresheti meg a $resourceGroup erőforráscsoport-nevet.
+Hozzon létre egy tűzfalhoz objektumot `nonUSBlockRule` az egyezési feltétellel, a művelet és a egy prioritását az alapján [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject).  Egy CustomRule (egyéni szabály) objektum több MatchCondition (egyeztetési feltétel) objektummal is rendelkezhet.  Ebben a példában a Művelet a Blokkolás értékre, a Prioritás pedig az 1 értékre, a legmagasabb prioritásra van állítva.
 
 ```
-$geoPolicy = New-AzureRmFrontDoorFireWallPolicy -Name "geoPolicyAllowUSOnly" -resourceGroupName $resourceGroup -Customrule $nonUSBlockRule  -Mode Prevention -EnabledState Enabled
+$nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
+-Name "geoFilterRule" `
+-RuleType MatchRule `
+-MatchCondition $nonUSGeoMatchCondition `
+-Action Block `
+-Priority 1
 ```
 
-A szabályzatok létrehozásakor használandó paraméterekről a PowerShell [útmutatójában](https://docs.microsoft.com/azure/frontdoor/new-azurermfrontdoorfirewallpolicy) találhat további információt.
+## <a name="add-rules-to-a-policy"></a>Szabályok hozzáadása egy házirend
+Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzResourceGroup`. Ezután hozzon létre egy `geoPolicy` csoportházirend-objektumot tartalmazó `nonUSBlockRule` használatával [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban. Meg kell adnia egy egyedi nevet a földrajzi házirend. 
 
-## <a name="5-link-policy-to-a-front-door-frontend-host"></a>5. A szabályzat csatolása egy előtérbeli Front Door-gazdagéphez
-Az utolsó lépések arra szolgálnak, hogy a védelmiszabályzat-objektumot egy meglévő előtérbeli Front Door-gazdagéphez csatolják, és frissítsék a Front Door tulajdonságait. Először be kell olvasnia a Front Door-objektumot a [Get-AzureRmFrontDoor](https://docs.microsoft.com/azure/frontdoor/get-azurermfrontdoor) parancsmaggal, majd be kell állítania annak előtérbeli WebApplicationFirewallPolicyLink tulajdonságát a `geoPolicy` erőforrás-azonosítójára.
+Az alábbi példában az erőforráscsoport nevét használja *myResourceGroupFD1* feltételezve, hogy létrehozta a bejárati ajtó profil szereplő utasítások segítségével a [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md) cikk.
 
 ```
-$geoFrontDoorObjectExample = Get-AzureRmFrontDoor -ResourceGroupName $resourceGroup
+$geoPolicy = New-AzFrontDoorFireWallPolicy `
+-Name "geoPolicyAllowUSOnly" `
+-resourceGroupName myResourceGroupFD1 `
+-Customrule $nonUSBlockRule  `
+-Mode Prevention `
+-EnabledState Enabled
+```
+
+## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>Hivatkozás WAF házirend bejárati ajtajának előtérbeli gazdagépre
+A WAF-objektum csatolása a meglévő bejárati ajtajának előtérbeli gazdagép és a bejárati ajtajának tulajdonságainak frissítése. 
+
+Ehhez először kérjen le a bejárati ajtajának objektum használatával [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor). 
+
+```
+$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-A következő [paranccsal](https://docs.microsoft.com/azure/frontdoor/set-azurermfrontdoor) frissítse a Front Door-objektumot.
+Ezután állítsa a frontend WebApplicationFirewallPolicyLink tulajdonságot az erőforrás-azonosító, a `geoPolicy`használatával [Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
 
 ```
-Set-AzureRmFrontDoor -InputObject $geoFrontDoorObjectExample[0]
+Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 ```
 
 > [!NOTE] 
-> A WebApplicationFirewallPolicyLink tulajdonságot csak egyszer kell beállítani a védelmi szabályzat előtérbeli Front Door-gazdagéphez való csatolásához. A későbbi szabályzatfrissítések automatikusan alkalmazva lesznek az előtérbeli gazdagépre.
+> Csak egyszer WebApplicationFirewallPolicyLink tulajdonság beállítása mutató hivatkozást a WAF-házirend bejárati ajtajának előtérbeli gazdagépre kell. További frissítései a rendszer automatikusan alkalmazza az előtér-gazdagépre.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838391"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438301"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
@@ -40,7 +40,7 @@ Ha üzembe helyezése egy új objektumot, amely megsérti az egyedi-e megkötés
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Viselkedés az ismétlődő attribútumok rugalmassága
 Helyett a teljes, üzembe helyezése és a egy duplikált attribútummal rendelkező objektum frissítése sikertelen, az Azure Active Directory "karanténba" az ismétlődő attribútuma, amely sértene az egyediségre vonatkozó feltételnek. Ha ez az attribútum nem szükséges a kiépítést, UserPrincipalName, például a szolgáltatás egy helyőrző értéket rendeli hozzá. A formátum a következő ideiglenes értékek  
-"***<OriginalPrefix>+ < 4DigitNumber >\@<InitialTenantDomain>. onmicrosoft.com***".  
+"***\<OriginalPrefix > +\<4DigitNumber >\@\<InitialTenantDomain >. onmicrosoft.com***".  
 Ha az attribútum nem szükséges, például egy **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezheti a ütközés attribútumot, és folytatja az objektum létrehozása vagy frissítése.
 
 Esetén karanténba az attribútum, az azonos hiba a jelentés e-mailben a régi viselkedés használt megkapja az ütközést vonatkozó adatokat. Azonban ezt az információt csak egyszer jelenik meg a hibajelentés, ha a karanténba helyezett történik, nem továbbra is be kell jelentkeznie a jövőbeli e-mailek. Ezenkívül az objektum az exportálás sikeres volt, mert a Szinkronizáló ügyfél nem naplózza a hibát, és nem próbálja meg újra a Létrehozás / frissítés ezt követő szinkronizálási ciklust követően.
@@ -66,7 +66,7 @@ Ellenőrizze, hogy ha a szolgáltatás engedélyezve van-e a bérlő számára, 
 > Set-MsolDirSyncFeature parancsmag segítségével proaktív módon engedélyezze a ismétlődő attribútumok rugalmassága szolgáltatást, mielőtt van kapcsolva a bérlő már nem. Az, hogy a szolgáltatás tesztelése, szüksége lesz egy új Azure Active Directory-bérlő létrehozása.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>A DirSyncProvisioningErrors objektumok azonosítása
-Rendelkező objektumok, Azure Active Directory PowerShell-lel és az Office 365 felügyeleti portálon, a duplikált tulajdonság ütközés miatt ezek a hibák azonosításához jelenleg két módszer áll rendelkezésre. Tervezzük bővíteni a kiegészítő portál alapján a jelentéskészítés a jövőben.
+Jelenleg két módszer van a hibák miatt duplikált tulajdonság ütközik, Azure Active Directory PowerShell-lel rendelkező objektumok azonosítására és a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). Tervezzük bővíteni a kiegészítő portál alapján a jelentéskészítés a jövőben.
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 A PowerShell-parancsmagok ebben a témakörben a következő érték igaz:
@@ -113,17 +113,17 @@ A széles körű karakterlánc keresés használata ehhez a **– keresési kara
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>Az összes vagy egy korlátozott mennyiség
-1. **MaxResults <Int>**  korlátozza az értékeket egy adott számú lekérdezés segítségével.
+1. **MaxResults \<Int >** korlátozza az értékeket egy adott számú lekérdezés segítségével.
 2. **Az összes** annak érdekében, hogy minden eredmény abban az esetben, a hibák nagy számú létezik blobnevet is használható.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="office-365-admin-portal"></a>Office 365 felügyeleti portál
-Címtár-szinkronizálási hibák az Office 365 felügyeleti központban tekintheti meg. A jelentés az Office 365 portálon csak megjeleníti **felhasználói** objektumok, amelyek ezeket a hibákat. Nem jelenik meg a kapcsolatos információ közötti ütközések **csoportok** és **névjegyek**.
+## <a name="microsoft-365-admin-center"></a>Microsoft 365 admin center
+Címtár-szinkronizálási hibák a Microsoft 365 felügyeleti központban tekintheti meg. A jelentés a Microsoft 365 felügyeleti központ csak megjeleníti **felhasználói** objektumok, amelyek ezeket a hibákat. Nem jelenik meg a kapcsolatos információ közötti ütközések **csoportok** és **névjegyek**.
 
 ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktív felhasználók")
 
-Címtár-szinkronizálási hibák megtekintése az Office 365 felügyeleti központban, lásd: [azonosíthatja a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Címtár-szinkronizálási hibák megtekintése a Microsoft 365 felügyeleti központban, lásd: [azonosíthatja a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Szinkronizálási hibajelentés identitás
 Ha ütközés duplikált attribútummal rendelkező objektum történik az új viselkedéssel értesítést tartalmazza a standard szintű szinkronizálási hibajelentés identitás küldött e-mail sablonjaként szolgál műszaki értesítési forduljon a bérlő számára. Van azonban fontos változás az ezt a viselkedést. Múltbeli időpont ismétlődő attribútum ütközés információ lenne szerepelnek minden ezt követő hibajelentés az ütközést megszüntetéséig. Az új viselkedéssel egy adott ütközés hibaértesítésre csak jelennek meg egyszer – az ütköző attribútum karanténba időpontjában.

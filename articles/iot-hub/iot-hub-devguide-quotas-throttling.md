@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 4656cc5a27d459c4f30f7cf23cc41b9525e79dcd
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791375"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437630"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
@@ -42,6 +42,7 @@ Az alábbi táblázat a kényszerített szabályozások. Értékek tekintse meg 
 | Felhőből az eszközre kap<sup>1</sup> <br/> (csak ha eszköz HTTPS PROTOKOLLT használ)| 16.67/sec/Unit (1000/perc/egység) | 16.67/sec/Unit (1000/perc/egység) | 833.33/sec/Unit (50000/perc/egység) |
 | Fájl feltöltése | 1.67 fájl fájlfeltöltési értesítés/mp/egység (100/perc/egység) | 1.67 fájl fájlfeltöltési értesítés/mp/egység (100/perc/egység) | 83.33 fájl fájlfeltöltési értesítés/mp/egység (5000/perc/egység) |
 | Közvetlen metódusok<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/mp/egység<sup>2</sup> | 
+| Lekérdezések | 20/mp/egység | 20/mp/egység | 1000/mp/egység |
 | A páros olvasási (eszköz- és modul)<sup>1</sup> | 100/sec | Nagyobb 100/mp és 10/mp/egység | 500-as/mp/egység |
 | Ikereszköz frissítések (eszköz- és modul)<sup>1</sup> | 50/mp | Magasabb 50/mp vagy 5/mp/egység | 250/mp/egység |
 | Operatív feladatok<sup>1,3</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: d12ea20f9f510b0e2d3d3512d8d8c71a3fb96eec
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372522"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418686"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
@@ -216,11 +216,20 @@ Ha az előre összeállított entitások további szöveg és tokenek, mint az e
 
 #### <a name="remove-example-utterance-to-fix-tagging"></a>Távolítsa el a címkézés kijavítani példa utterance (kifejezés) 
 
-Először más, hogy törli a példa utterance (kifejezés), és szoftveres átképezése az alkalmazást. Csak a word újból fel vagy kifejezés, amely az entitást, mint egy példa utterance (kifejezés), majd az entitás- és train megjelölése. Most adja hozzá az vissza, az előre létrehozott entitás és az eredeti példa utterance (kifejezés). Az egyéni entitás továbbra is az előre létrehozott entitás helyett lesz megjelölve. 
+Az első választás, hogy távolítsa el a példa utterance (kifejezés). 
+
+1. A példa utterance (kifejezés) törölje.
+1. Újratanítás PowerShell az alkalmazást. 
+1. Csak a word újból fel vagy kifejezés, amely az entitás, amely egy előre összeállított entitások, mint egy teljes példát utterance (kifejezés) van megjelölve. Szó vagy kifejezés továbbra is kap az előre létrehozott entitás megjelölve. 
+1. Válassza ki a példa utterance (kifejezés) szereplő entitás az a **szándékot** lapon, és módosítsa az egyéni entitáshoz, és újra be. Ezzel akadályozhatja meg a LUIS a pontos szöveg megjelölése az azt használó példa megszólalásokat előre összeállított entitás. 
+1. Vissza a leképezés adja hozzá a teljes eredeti példa utterance (kifejezés). Az egyéni entitás továbbra is az előre létrehozott entitás helyett lesz megjelölve. Az egyéni entitás nincs megjelölve, ha hozzá kell, hogy a szöveg további példák a kimondott szöveg.
 
 #### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Távolítsa el a címkézés kijavítani előre összeállított entitások
 
-A második lehetősége, hogy az előre összeállított entitások eltávolíthatja az alkalmazásból, majd címkét az egyéni entitás az a példában utterance (kifejezés), majd vegye fel az előre összeállított entitások újból az alkalmazást. Ez a javítás feltételezi, hogy az előre összeállított entitások nem egy összetett entitást része. 
+1. Az előre összeállított entitások eltávolítása az alkalmazásból. 
+1. Az a **szándékot** lapon, jelölje meg az egyéni entitás az a példában utterance (kifejezés).
+1. Tanítsa be az alkalmazást.
+1. Vegye fel az előre összeállított entitások újból az alkalmazást kész, és az alkalmazást. Ez a javítás feltételezi, hogy az előre összeállított entitások nem egy összetett entitást része.
 
 ## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
 

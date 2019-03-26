@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a98ec18f2ed38b290d04c3fdc36d9a6ff80a675a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010529"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407351"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -170,7 +170,6 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
   - Több fájlt vagy egy almappát, amely tartalmazza a naplófájlok a letöltés után egyesítheti őket helyileg a korábban leírt utasításokat SSMS egyesítési naplófájlokat leírtak szerint.
   - Nézet blobnaplózás programozott módon jelentkezik:
 
-    - Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) C# könyvtár.
     - [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
 
 ## <a id="subheading-5"></a>Éles eljárások
@@ -258,8 +257,11 @@ AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 Az Azure SQL database naplózási használata kezelheti [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok, az alábbi példákban szemléltetett módon:
 
 - [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Azure Blob storage-fiók üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Üzembe helyezése egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Azure Monitor naplóira](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni a Log Analytics üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Event Hubs üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
+> [!NOTE]
+> A csatolt mintákat egy külső nyilvános tárházban, és vannak megadva a ",", nélkül garancia, és bármely Microsoft támogatási program vagy szolgáltatás nem támogatja.
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

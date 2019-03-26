@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e7d264e5d5d289117dbc30b71e317506006e1f30
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b9462866f0be62d288e121b71119d0f9885a0d39
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401587"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439413"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -284,6 +284,7 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     | Kína | Észak-Kína | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | 443 | Bejövő |
     | &nbsp; | Kelet-Kína | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | 443 | Bejövő |
     | &nbsp; | Észak-Kína 2 | 40.73.37.141</br>40.73.38.172 | 443 | Bejövő |
+    | &nbsp; | Kelet-Kína 2 | 139.217.227.106</br>139.217.228.187 | 443 | Bejövő |
     | Európa | Észak-Európa | 52.164.210.96</br>13.74.153.132 | 443 | Bejövő |
     | &nbsp; | Nyugat-Európa| 52.166.243.90</br>52.174.36.244 | 443 | Bejövő |
     | Franciaország | Közép-Franciaország| 20.188.39.64</br>40.89.157.135 | 443 | Bejövő |

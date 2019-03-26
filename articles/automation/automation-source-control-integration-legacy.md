@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9b82b1e17a62aa9b3d606b0b16295acf04eb85
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901542"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418754"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Verziókövetés integrálása az Azure Automation – régi
 
@@ -65,17 +65,17 @@ Ha már rendelkezik egy GitHub-fiók és a egy Azure Automation mutató hivatkoz
      
      | **A paraméter** | **Érték** |
      |:--- |:--- |
-     | Name (Név) |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Typo |String |
-     | Érték |{"Ág":\<*az ág nevének*>, "RunbookFolderPath":\<*forgatókönyvek mappájának elérési útja*>, "Szolgáltatótípus":\<*1 értékkel rendelkezik GitHub*>, "Tárház":\<*a tárház nevét*>, "Felhasználónév":\<*a GitHub felhasználói név*>} |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
+     | `Type`  |String |
+     | `Value` |{"Ág":\<*az ág nevének*>, "RunbookFolderPath":\<*forgatókönyvek mappájának elérési útja*>, "Szolgáltatótípus":\<*1 értékkel rendelkezik GitHub*>, "Tárház":\<*a tárház nevét*>, "Felhasználónév":\<*a GitHub felhasználói név*>} |
 
      * A változó **Microsoft.Azure.Automation.SourceControl.OAuthToken**, az OAuthToken biztonságos titkosított értékét tartalmazza.  
 
      |**A paraméter**            |**Érték** |
      |:---|:---|
-     | Name (Név)  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-     | Typo | Unknown(Encrypted) |
-     | Érték | <*Titkosított OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+     | `Type`  | Unknown(Encrypted) |
+     | `Value` | <*Titkosított OAuthToken*> |  
 
      ![Változók](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 

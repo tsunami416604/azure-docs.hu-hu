@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: b367251e6799031ed96058d21e606446e14636c7
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730097"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407606"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Tartomány és az Azure App Service SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -278,7 +278,7 @@ Amikor egy tartományt az Azure Portalon vásárol, az App Service-alkalmazás a
 
 **Használható inkább egy Azure virtuális gép átirányítása egy tartományt az Azure Portalon vásárolt?**
 
-Igen, a tartomány mutathat egy virtuális géphez, tárolás stb. További információkért lásd: [hozzon létre egy egyéni teljes tartománynév az Azure Portalon egy Windows virtuális gép](../virtual-machines/windows/portal-create-fqdn.md).
+Igen, a tartomány mutathat egy virtuális géphez. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../dns/dns-custom-domain.md) ismertető cikkben talál.
 
 **GoDaddy- vagy az Azure DNS által futtatott saját tartomány?**
 

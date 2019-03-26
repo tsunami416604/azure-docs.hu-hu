@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979887"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407691"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy a rendszergazdai jelszót egy Windows virtuális gép visszaállítása
 Ha nem tud csatlakozni egy Windows virtuális gép (VM), új helyi rendszergazdai jelszót, vagy alaphelyzetbe állítása a távoli asztali szolgáltatások-konfiguráció (Windows rendszerű tartományvezérlőkön nem támogatott). Új jelszó kéréséhez használja az Azure Portalt vagy az Azure PowerShell virtuálisgép-hozzáférési bővítményét. Miután bejelentkezett a virtuális gépre, kérjen új jelszót a helyi rendszergazda számára.  
@@ -39,18 +39,19 @@ Első lépésként jelentkezzen be a [az Azure portal](https://portal.azure.com)
 
 1. Válassza ki a Windows virtuális Gépet, majd **jelszó alaphelyzetbe állítása** alatt **támogatás + hibaelhárítás**. A **jelszó alaphelyzetbe állítása** ablak jelenik meg.
 
-1. Válassza ki **jelszó alaphelyzetbe állítása**, és adjon meg egy felhasználónevet és jelszót, majd válassza ki **frissítés**. 
+2. Válassza ki **jelszó alaphelyzetbe állítása**, és adjon meg egy felhasználónevet és jelszót, majd válassza ki **frissítés**. 
 
-1. Próbáljon újra kapcsolódni a virtuális Géphez.
+3. Próbáljon újra kapcsolódni a virtuális Géphez.
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**A távoli asztali szolgáltatások-konfiguráció visszaállítása**
 
+Ez a folyamat engedélyezi a távoli asztali szolgáltatás a virtuális gépen, és hozzon létre egy tűzfalszabályt az alapértelmezett RDP-portra 3389-es.
+
 1. Válassza ki a Windows virtuális Gépet, majd **jelszó alaphelyzetbe állítása** alatt **támogatás + hibaelhárítás**. A **jelszó alaphelyzetbe állítása** ablak jelenik meg. 
 
-1. Válassza ki **csak a konfiguráció alaphelyzetbe állítása** majd **frissítés**. 
+2. Válassza ki **csak a konfiguráció alaphelyzetbe állítása** majd **frissítés**. 
 
-1. Próbáljon újra kapcsolódni a virtuális Géphez.
-
+3. Próbáljon újra kapcsolódni a virtuális Géphez.
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Állítsa alaphelyzetbe a VMAccess bővítmény és a PowerShell használatával
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: cdc3e7ec6ec55c3376aeb545e1f64079ad1f6323
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214639"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407402"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Naplóriasztások kapcsoló API beállításait
 
@@ -37,13 +37,18 @@ Számos előnnyel jár, létrehozásának és kezelésének, használatával ria
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Örökölt Log riasztások API való váltás folyamata
 
-Áttérés a figyelmeztetési szabályok folyamata [örökölt Log Analytics-riasztás API](api-alerts.md) módosítása a riasztások definícióit, a lekérdezés vagy a konfiguráció semmilyen módon nem jár. Felhasználók szabadon választhat [örökölt Log Analytics Alert API](api-alerts.md) vagy az új [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Riasztási szabályok vagy API-t, rendszer által létrehozott *kezelhetők, csak az azonos API által* – valamint az Azure Portalról. Alapértelmezés szerint az Azure Monitor továbbra is az [örökölt Log Analytics-riasztás API](api-alerts.md) bármely új riasztási szabály létrehozásához az Azure Portalról.
+Áttérés a figyelmeztetési szabályok folyamata [örökölt Log Analytics-riasztás API](api-alerts.md) módosítása a riasztások definícióit, a lekérdezés vagy a konfiguráció semmilyen módon nem jár. A riasztási szabályok és azok nem érinti, és a riasztások figyelése nem állítja le, vagy leállt, közben vagy után a kapcsolót.
+
+Felhasználók szabadon választhat [örökölt Log Analytics Alert API](api-alerts.md) vagy az új [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Riasztási szabályok vagy API-t, rendszer által létrehozott *kezelhetők, csak az azonos API által* – valamint az Azure Portalról. Alapértelmezés szerint az Azure Monitor továbbra is az [örökölt Log Analytics-riasztás API](api-alerts.md) bármely új riasztási szabály létrehozásához az Azure Portalról.
 
 A kapcsoló scheduledQueryRules API fontossági következményeinek ügyfélbeállításai alatt:
 
 - Minden interakciók esetén parancsvezérelt felületek segítségével riasztások kezelése most meg kell ismételnie a [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) helyette. További információkért tekintse meg, [minta használata az Azure Resource-sablon használatával](alerts-log.md#managing-log-alerts-using-azure-resource-template) és [minta használata az Azure CLI és PowerShell használatával](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)
-- Minden olyan új riasztási szabály létrehozása az Azure portal használatával jön [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) csak és a felhasználó használhat a [további funkciókat az új API](#Benefits-of-switching-to-new-Azure-API) , valamint az Azure Portalon
+- Minden olyan új riasztási szabály létrehozása az Azure portal használatával jön [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) csak és a felhasználó használhat a [további funkciókat az új API](#benefits-of-switching-to-new-azure-api) , valamint az Azure Portalon
 - Riasztási szabály súlyossága a árkonstrukcióra: *A kritikus, figyelmeztetés & tájékoztató*, az *fontossági értékek 0, 1 és 2*. Együtt létrehozni vagy frissíteni a beállítást riasztási szabályok az súlyossági 4 is.
+
+> [!CAUTION]
+> Miután egy felhasználó jóváhagyja váltson az új beállításokat szabályozó [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), a szabályok nem optimalizált vissza szülővé és visszaalakítás szülőből használatát a korábbi [örökölt Log Analytics Alert API](api-alerts.md).
 
 Bárki, aki önkéntesen váltson át az új [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) és blokkolja a használat a [örökölt Log Analytics-riasztás API](api-alerts.md);. Ehhez egy PUT-hívást hajt végre az alábbi API-t az összes riasztást válthat a megadott Log Analytics-munkaterülethez társított szabályok.
 

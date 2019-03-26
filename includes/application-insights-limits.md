@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/21/2018
 ms.author: mbullwin
 ms.custom: include file
-ms.openlocfilehash: d253ed7c5aa971f2fd767a6943eb0117c457fc45
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 31ff6ae66b13eb5e5abcde94e8d3df7f6e32f63c
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554806"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407983"
 ---
 Bizonyos korlátozások érvényesek a metrikák és események alkalmazásonként, azaz kialakítási kulcsonként. A korlátozások a választott [díjszabási csomagtól](https://azure.microsoft.com/pricing/details/application-insights/) függően változnak.
 
@@ -23,10 +23,10 @@ Bizonyos korlátozások érvényesek a metrikák és események alkalmazásonké
 | Throttling | 32000 esemény/másodperc | A korlát megállapítása egy percnyi mérés alapján történik.
 | Adatmegőrzés | 90 nap | Ez az erőforrás a [Keresés](../articles/azure-monitor/app/diagnostic-search.md), [Elemzés](../articles/azure-monitor/app/analytics.md) és [Metrikaböngésző](../articles/azure-monitor/app/metrics-explorer.md) esetén használható.
 | [Többlépéses rendelkezésre állási teszt](../articles/azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) a részletes eredmények megőrzésével | 90 nap | Ez az erőforrás minden lépésről részletes eredményeket biztosít.
-| A maximális mérete | 64,000 | 
+| A maximális mérete | 64,000 |
 | Tulajdonság- és metrikanév hossza | 150 | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
 | Tulajdonságérték-sztring hossza | 8,192 | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
-| Nyomkövetési és kivételüzenet hossza | 10,000 | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
+| Nyomkövetési és kivételüzenet hossza | 32,768  | Lásd: [írja be a sémák](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/).
 | [Rendelkezésre állási tesztek](../articles/azure-monitor/app/monitor-web-app-availability.md) száma alkalmazásonként | 100 |
 | [Profiler](../articles/azure-monitor/app/profiler.md) adatmegőrzés | 5 nap |
 | [Profiler](../articles/azure-monitor/app/profiler.md) naponta küldött adatok | 10 GB |

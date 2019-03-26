@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 2/4/2019
+ms.date: 3/25/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 8fd8cd93015fdb5cdcf657ecbcbb9a7cc870525a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5029fb29aecda1f1bef14dc95f6301b539c60441
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747747"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419104"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -33,7 +33,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi az az Azure tűzfal a tipikus telepítési modell?
 
-Azure tűzfal telepíthet minden olyan virtuális hálózaton, de az ügyfelek általában üzembe helyezni a központi virtuális hálózaton, és a Központ-küllő modellek hozzá más virtuális hálózatokat. Ezután beállíthatja az alapértelmezett útvonal, a társviszonyban álló virtuális hálózatba, mutasson a tűzfal központi virtuális hálózaton.
+Azure tűzfal telepíthet minden olyan virtuális hálózaton, de az ügyfelek általában üzembe helyezni a központi virtuális hálózaton, és a Központ-küllő modellek hozzá más virtuális hálózatokat. Ezután beállíthatja az alapértelmezett útvonal, a társviszonyban álló virtuális hálózatba, mutasson a tűzfal központi virtuális hálózaton. Globális virtuális társhálózatok létesítésének támogatott, de nem ajánlott lehetséges teljesítményének és késési problémák miatt régiók között elosztva. A legjobb teljesítmény érdekében üzembe helyezése egy tűzfal régiónként.
 
 Ez a modell előnye képesek központilag több küllő virtuális hálózatok különböző előfizetésekben vezérlőelem. Is találhatók költséget takaríthat meg, nem kell az egyes virtuális hálózatok tűzfal külön-külön telepíteni. A költségek csökkentését és a társítás társviszony-létesítési költséget, az ügyfél forgalmi minták alapján kell mérni.
 
@@ -122,7 +122,7 @@ Igen, az Azure tűzfal hub virtuális hálózatban két küllő virtuális hál�
 
 ### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure-tűzfal előre is, és az azonos virtuális hálózatban vagy a társviszonyban álló virtuális hálózatba tartozó alhálózatok közötti hálózati forgalom szűrése?
 
-Igen. Azonban az UDR átirányítja a forgalmat ugyanaz az alhálózatok közötti konfigurálása virtuális hálózat további figyelmet igényel. Használatakor a virtuális hálózati címtartományt, az UDR cél előtagjaként is elegendő, ez is továbbítja az egyik gépről egy másik gépre az Azure tűzfal-példány ugyanazon az alhálózaton minden forgalmat. Ennek elkerülése érdekében közé tartozik az alhálózat egy útvonalat az udr-t a következő ugrási típusú **VNET**. Ezeket az útvonalakat kezeléséhez gyakran fordul elő hiba, és nehézkes lehet. A belső hálózati szegmentálást ajánlott módszer, hogy hálózati biztonsági csoportok, amelyek nem igénylik az udr-EK.
+Igen. Azonban ugyanazon virtuális Hálózatban lévő alhálózatok közötti forgalom átirányítása az udr-EK konfigurálása további figyelmet igényel. Használatakor a virtuális hálózati címtartományt, az UDR cél előtagjaként is elegendő, ez is továbbítja az egyik gépről egy másik gépre az Azure tűzfal-példány ugyanazon az alhálózaton minden forgalmat. Ennek elkerülése érdekében közé tartozik az alhálózat egy útvonalat az udr-t a következő ugrási típusú **VNET**. Ezeket az útvonalakat kezeléséhez gyakran fordul elő hiba, és nehézkes lehet. A belső hálózati szegmentálást ajánlott módszer, hogy hálózati biztonsági csoportok, amelyek nem igénylik az udr-EK.
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak-e minden olyan tűzfal erőforrás-korlátozások csoportban?
 

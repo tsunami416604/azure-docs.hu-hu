@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193993"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418737"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -74,6 +74,7 @@ Tudnivalók az Azure által biztosított névfeloldást használata esetén:
 * Gazdagép nevének kell lennie a DNS-kompatibilis. Neveket kell használnia csak 0-9, a – z, és a "-", és nem kezdődhet vagy végződhet egy "-".
 * A DNS-lekérdezés forgalom folyamatban van az egyes virtuális Gépekhez. Szabályozás nem érinti a legtöbb alkalmazás. Ha kérelemszabályozás, győződjön meg arról, hogy engedélyezve van-e az ügyféloldali gyorsítótárazást. További információkért lásd: [DNS-ügyfél konfigurációjának](#dns-client-configuration).
 * Csak az első 180 felhőalapú szolgáltatások a virtuális gépek a klasszikus üzemi modellben minden egyes virtuális hálózat van regisztrálva. Ez a korlátozás nem vonatkozik az Azure Resource Manager virtuális hálózatokhoz.
+* Az Azure DNS IP-cím a 168.63.129.16. Ez egy statikus IP-címet, és nem változik.
 
 ## <a name="dns-client-configuration"></a>DNS-ügyfél konfigurációja
 

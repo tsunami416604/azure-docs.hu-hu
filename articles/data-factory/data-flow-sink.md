@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: a56f391aa76bd1216fd51d516adb836a2093bcba
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371139"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438632"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Hozzárendelés fogadó folyamat átalakítását
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Fogadó-beállítások](media/data-flow/windows1.png "fogadó 1")
+![Fogadó-beállítások](media/data-flow/sink1.png "fogadó 1")
 
 Az Adatátalakítási folyamat befejezése után az átalakított adatok is fogadó célkiszolgáló adatkészletekbe. A fogadó átalakítási választhatja ki, amely a cél kimeneti adatok használni kívánt adatkészlet-definícióban. Előfordulhat, hogy annyi fogadó átalakítást, az adatfolyam igényel.
 

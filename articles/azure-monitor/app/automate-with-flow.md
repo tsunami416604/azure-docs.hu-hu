@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: cbb9cceef68febec0af991c3d8d5df3e3404f1c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15299be83758c157bf3bc7d9fb27b50763b9148e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834050"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438937"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő Azure Application Insights folyamatok automatizálása a Microsoft Flow
 
@@ -43,7 +43,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy folyamatot, amely
 
     ![Válassza ki az ütemezési területen hozhat létre](./media/automate-with-flow/2schedule.png)
 
-1. Az a a **időköz** mezőbe írja be **1**, majd a a **gyakorisága** jelölje ki **nap**.
+1. Az a **időköz** mezőbe írja be **1**, majd a a **gyakorisága** jelölje ki **nap**.
 2. Kattintson a **új lépés**
 
     ![Állítsa be a belépő gyakorisággal és időközzel ütemezése ismétlődésének](./media/automate-with-flow/3schedulerecurrence.png)

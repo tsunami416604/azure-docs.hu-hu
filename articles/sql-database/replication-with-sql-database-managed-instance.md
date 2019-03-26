@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 164448f2e96b796d21419e90a3965390f22d7d38
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b20a119a69ac796bc9ea85083d335f0a7d2fdf2d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762976"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417955"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa
 
@@ -45,13 +45,13 @@ A felügyelt példány működhet a közzétevő vagy forgalmazó konfigurálás
 A következőket támogatja:
 
 - A helyszíni SQL Server és az Azure SQL Database felügyelt példány tranzakciós és pillanatkép-replikációs arányát.
-- A helyszíni SQL Server-adatbázisok, az Azure SQL Database önálló adatbázisok vagy készletezett adatbázisok az Azure SQL Database rugalmas készletei előfizetőket is lehet.
+- A helyszíni SQL Server-adatbázisok, önálló adatbázisok és felügyelt példányok az Azure SQL Database vagy Azure SQL Database rugalmas készletei a készletezett adatbázisok előfizetőket is lehet.
 - Egyirányú és kétirányú replikációt.
 
 A következő funkciók nem támogatottak az Azure SQL Database felügyelt példány:
 
 - Frissíthető előfizetések.
-- Aktív georeplikáció.
+- [Aktív georeplikáció](sql-database-active-geo-replication.md) és [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md) nem lehet, ha a tranzakciós replikáció van konfigurálva.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Közzététel és terjesztés példa konfigurálása
 

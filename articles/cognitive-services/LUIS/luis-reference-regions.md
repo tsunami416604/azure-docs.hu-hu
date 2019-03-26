@@ -1,7 +1,7 @@
 ---
 title: Közzétételi régiók és végpontok
 titleSuffix: Azure Cognitive Services
-description: A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Amikor közzétesz egy alkalmazást, a LUIS automatikusan létrehozza a kulcsot az ahhoz tartozó régiót-végpont URL-címe.
+description: 3 szerzői régió és azok portálok támogatja az összes számos közzétételi régióban. A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Amikor közzétesz egy alkalmazást, a LUIS automatikusan létrehozza a kulcsot az ahhoz tartozó régiót-végpont URL-címe.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/25/2019
 ms.author: diberry
-ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01444cec798763bc4e44bcabe0d7ebb640e537a8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765170"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436336"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Szerzői és régiók és a hozzá tartozó kulcsok közzététele
 
-A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Ha Ön [alkalmazások közzététele](./luis-how-to-publish-app.md), LUIS automatikusan előállítja a kulcsot az ahhoz tartozó régiót-végpont URL-címe. A LUIS alkalmazás közzététele több régióban, régiónként legalább egy kulcs szükséges. 
+Három szerzői régiók és azok portálok támogatja az összes számos közzétételi régióban. A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Ha Ön [alkalmazások közzététele](./luis-how-to-publish-app.md), LUIS automatikusan előállítja a kulcsot az ahhoz tartozó régiót-végpont URL-címe. A LUIS alkalmazás közzététele több régióban, régiónként legalább egy kulcs szükséges. 
 
-## <a name="luis-website"></a>A LUIS-webhely
+<a name="luis-website"></a>
+
+## <a name="luis-authoring-regions"></a>A LUIS-létrehozási régiók
 Nincsenek három LUIS webhelyek, régió alapján. Hozhat létre és közzététele ugyanabban a régióban kell. 
 
-|LUIS|Régió|
-|--|--|
-|[www.Luis.ai][www.luis.ai]|USA<br>nem Európa<br>nem Ausztrália|
-|[AU.Luis.ai][au.luis.ai]|Ausztrália|
-|[EU.Luis.ai][eu.luis.ai]|Európa|
+|LUIS|Globális régió|Szerzői műveletek terület az Azure-ban|
+|--|--|--|
+|[www.Luis.ai][www.luis.ai]|USA<br>nem Európa<br>nem Ausztrália| `westus`|
+|[AU.Luis.ai][au.luis.ai]|Ausztrália| `australiaeast`|
+|[EU.Luis.ai][eu.luis.ai]|Európa|`westeurope`|
+
+Használhatja az Authoring Tool régió egy másik Azure-közzétételi régióban üzembe helyezett LUIS szolgáltatással való interakcióhoz.  
+
+Szerzői műveletek terület rendelkezik [párosított régiók feladatátvételi](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 ## <a name="regions-and-azure-resources"></a>Régiók és az Azure-erőforrások
 Az alkalmazás közzé van téve a LUIS erőforrások a LUIS portálon hozzá társított összes régióba. Például a létrehozott alkalmazás [www.luis.ai][www.luis.ai], ha a LUIS erőforrás létrehozása **westus** , és adja hozzá az alkalmazást egy erőforrást, az alkalmazás közzé van téve az adott régióban. 

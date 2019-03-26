@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 846f07051ee65a542b56624fa84a9bdc4ca0f4e6
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119292"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418006"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
@@ -96,10 +96,12 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | az ügyfél által támogatott rejtjel listáját adja vissza          |
 | ciphers_used               | a létrehozott SSL-kapcsolathoz használt Rejtjelek-karakterláncot ad vissza |
+| client_ip                  | Az ügyfél; IP-címe Ez különösen hasznos az forgatókönyvek, ahol ügyfelek írja újra az Application Gateway által beállított X – továbbított – a fejléc, hogy a fejlécet tartalmazza, csak az IP-címet a portadatokat nélkül kíván. |
 | client_port                | ügyfél-port                                                  |
 | client_tcp_rtt             | információ az ügyfél; TCP-kapcsolat a rendszer támogatja a TCP_INFO szoftvercsatorna-lehetőség érhető el |
 | client_user                | HTTP-hitelesítés használata esetén a felhasználónév a hitelesítéshez megadott |
 | gazdagép                       | Ebben a sorrendben elsőbbségi: állomásnév, a kérelem-sor vagy az állomás nevét a "Host" kérelem fejléce mező, vagy a kiszolgáló neve egyezik a kérelem |
+| cookie_*name*              | a *neve* cookie-k |
 | http_method                | a módszer, hogy az URL-cím kérésére. Például GET, POST stb. |
 | http_status                | munkamenet-állapot, például: 200-as, 400, 403-as stb.                       |
 | http_version               | kérelem protokoll, általában "HTTP 1.0", "HTTP/1.1" vagy "HTTP és 2.0-s" |
@@ -120,10 +122,6 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 - A HTTP-fejléc újraírási támogatása csak az új Termékváltozat esetében támogatott [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). A funkció nem fog támogatni a régi Termékváltozat.
 
 - A csatlakozás, a frissítés és a kiszolgáló fejlécek újraírását még nem támogatott.
-
-- Két fontos kiszolgálói változókkal, client_ip (a hozzáférést kérvényező ügyfélhez IP-címe) és cookie_*neve* (a *neve* cookie-k), még nem támogatott. A client_ip kiszolgálói változó különösen hasznos forgatókönyvekben, ahol ügyfelek írja újra az Application Gateway által beállított x – továbbított – a fejléc, hogy a fejléc csak IP-címét tartalmazza az ügyfél és a port adatai nem kíván.
-
-  Mindkét kiszolgáló változó hamarosan támogatott lesz.
 
 - Feltételesen újraírási a http-fejléceket a funkció hamarosan elérhető lesz.
 

@@ -4,14 +4,14 @@ description: Az Azure-erőforrástípus, amely egy új erőforráscsoportot vagy
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 2/13/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: f82c3adc0049c7386206fb4be10d3e634627a25a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236889"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438468"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 Ez a cikk felsorolja egy Azure-erőforrás az áthelyezési művelet támogatja-e. Bár egy erőforrás támogatja az áthelyezési művelet, előfordulhat, hogy feltételeket, amelyek megakadályozhatja, hogy az erőforrás áthelyezett lehet. Feltételeket, amelyek hatással vannak az áthelyezési műveleteket kapcsolatos részletekért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
@@ -153,7 +153,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | availabilitysets | Igen | Igen |
-| Lemezek | Igen | Igen |
+| lemezek | Igen | Igen |
 | katalógusok | Nem | Nem |
 | galériák vagy-képekből | Nem | Nem |
 | galériák/képek/verziója | Nem | Nem |
@@ -241,7 +241,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| Csomagok | Nem | Nem |
+| csomagok | Nem | Nem |
 | Csomagok | Nem | Nem |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -422,7 +422,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| labaccounts | Igen | Igen |
+| labaccounts | Nem | Nem |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -533,7 +533,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | expressroutecrossconnections | Nem | Nem |
 | expressroutegateways | Nem | Nem |
 | expressrouteports | Nem | Nem |
-| frontdoors | Igen | Igen |
+| frontdoorok | Igen | Igen |
 | frontdoorwebapplicationfirewallpolicies | Igen | Igen |
 | interfaceendpoints | Nem | Nem |
 | loadbalancers | Igen | Igen |
@@ -782,7 +782,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | customapis | Igen | Igen |
 | hostingenvironments | Nem | Nem |
 | serverfarms | Igen | Igen |
-| Helyek | Igen | Igen |
+| webhelyek | Igen | Igen |
 | webhelyek/premieraddons | Igen | Igen |
 | helyek és tárhelyek | Igen | Igen |
 

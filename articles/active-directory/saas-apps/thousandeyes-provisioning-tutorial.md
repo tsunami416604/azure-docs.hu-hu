@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b9b39cfc6ac760c41b58c050cb1ebf39d3f93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180929"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436796"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása ThousandEyes konfigurálása
 
@@ -33,11 +33,14 @@ Ez az oktatóanyag célja, a lépéseket kell elvégeznie a ThousandEyes és az 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
 *   Az Azure Active directory-bérlő
-*   Egy ThousandEyes bérlőt a [standard szintű csomag](https://www.thousandeyes.com/pricing) vagy jobban engedélyezve 
-*   ThousandEyes rendszergazdai engedélyekkel rendelkező felhasználói fiók 
+*   Az aktív [ThousandEyes fiók](https://www.thousandeyes.com/pricing)
+*   Egy ThousandEyes felhasználói fiókot, amely egy szerepkört, amely tartalmazza a következő 3 engedélyeket:
+    * összes felhasználó megtekintése
+    * felhasználó szerkesztése
+    * API-hozzáférési engedélyek
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK), Standard csomaggal ThousandEyes csapatok számára elérhető vagy jobb.
+> Az Azure AD létesítési integrációs támaszkodik a [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM). 
 
 ## <a name="assigning-users-to-thousandeyes"></a>Felhasználók hozzárendelése ThousandEyes
 
@@ -51,7 +54,19 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szü
 
 *   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve ThousandEyes az üzembe helyezési konfiguráció tesztelése. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó hozzárendelése ThousandEyes, akkor ki kell választania a **felhasználói** , vagy egy másik érvényes és alkalmazásspecifikus szerepkör (ha elérhető) a hozzárendelés párbeszédpanelen. A **alapértelmezett hozzáférési** szerepkör nem működik az üzembe helyezés, és ezeket a felhasználókat a rendszer kihagyja.
+*   Amikor egy felhasználó hozzárendelése ThousandEyes, akkor ki kell választania a **felhasználói** vagy egy másik érvényes és alkalmazásspecifikus szerepkör (ha elérhető) a hozzárendelés párbeszédpanelen. A **alapértelmezett hozzáférési** szerepkör nem működik az üzembe helyezés, és ezeket a felhasználókat a rendszer kihagyja.
+
+## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>ThousandEyes célgépnek automatikusan létrehozott felhasználói szerepkörök konfigurálása
+
+Minden egyes fiók csoport automatikus kiépítés áll, hogy a felhasználók konfigurálhatja a szerepkörök a alkalmazni az új felhasználói fiók létrehozásakor egy készletét. Alapértelmezés szerint az Automatikus kiépítés felhasználók vannak hozzárendelve a _normál felhasználói_ szerepkört a fiókhoz az összes csoportot, ha másként van konfigurálva.
+
+1. Adjon meg egy új automatikus regisztrációt a felhasználók szerepköreit az ThousandEyes jelentkezzen be, és keresse meg az SCIM-beállítások szakaszban **> a felhasználó ikonjára a jobb felső sarokban > Fiókbeállítások > Szervezet > Biztonság és hitelesítés.** 
+
+   ![SCIM API beállítások megnyitása](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
+
+2. Adjon hozzá egy bejegyzést, minden egyes, majd rendelje hozzá egy készletét szerepkörök *mentése* a módosításokat.
+
+   ![Alapértelmezett szerepkörök és csoportok beállítása a felhasználók számára létrehozott SCIM API-n keresztül](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
 
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>ThousandEyes történő felhasználókiépítés konfigurálása 
@@ -59,7 +74,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt szü
 Ez a szakasz végigvezeti az Azure AD-csatlakozás ThousandEyes a felhasználói fiók üzembe helyezési API és az eszközkiépítési szolgáltatás létrehozása, konfigurálása frissíteni, és tiltsa le a hozzárendelt felhasználói fiókok Azure AD-ben a felhasználó és csoport-hozzárendelések alapján ThousandEyes a .
 
 > [!TIP]
-> Előfordulhat, hogy meg ThousandEyes SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható függetlenül az automatikus kiépítést, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Dönthet úgy is engedélyezve ThousandEyes, a következő SAML-alapú egyszeri bejelentkezés (SSO) a [Azure Tudásbázis szereplő utasítások](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial) egyszeri bejelentkezés befejezéséhez. Egyszeri bejelentkezés automatikus üzembe helyezés, függetlenül konfigurálhatók, bár ezen két funkció kiegészíti egymást.
 
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurálja az automatikus felhasználói fiók kiépítése ThousandEyes az Azure AD-ben
@@ -75,7 +90,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás ThousandEyes a felhasználói
 
     ![Kiépítés ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **OAuth tulajdonosi jogkivonat** a ThousandEyes fiók által létrehozott (és és token létrehozása az ThousandEyes fiókban  **Profil** szakaszt).
+5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **OAuth tulajdonosi jogkivonat** a ThousandEyes' fiók által létrehozott (és és token létrehozása az ThousandEyes fiókban  **Profil** szakaszt).
 
     ![Kiépítés ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

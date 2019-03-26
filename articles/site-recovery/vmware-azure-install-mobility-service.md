@@ -1,19 +1,19 @@
 ---
-title: Telepítse a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása az Azure-bA |} A Microsoft Docs
-description: Ismerje meg, hogyan kell telepíteni a mobilitási szolgáltatás ügynökének vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók az Azure-bA az Azure Site Recovery szolgáltatással.
+title: Készítse elő a forrásgépek telepíteni a mobilitási szolgáltatás leküldéses telepítése vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálókon keresztül az Azure-bA |} A Microsoft Docs
+description: Ismerje meg, hogyan készíti elő a kiszolgálót, hogy telepíteni a mobilitási ügynök leküldéses telepítése a VMware virtuális gépek vészhelyreállítása és fizikai kiszolgálók az Azure-bA az Azure Site Recovery szolgáltatással.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846912"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418669"
 ---
-# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása a mobilitási szolgáltatás telepítése
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Készítse elő a forrásgép mobilitási ügynökök leküldéses telepítés
 
 Amikor, vészhelyreállítás beállítása VMware virtuális gépek és fizikai kiszolgálók [Azure Site Recovery](site-recovery-overview.md), telepíti a [Site Recovery mobilitási szolgáltatás](vmware-physical-mobility-service-overview.md) minden helyszíni VMware virtuális gépek és fizikai kiszolgálón.  A mobilitási szolgáltatást kell-e a gépen adatírásokat, és továbbítja őket a Site Recovery is folyamatkiszolgálón.
 
@@ -24,9 +24,9 @@ Az összes Windows szeretné a védelmét tegye a következőket:
 1. Győződjön meg arról, hogy nincs-e a gép és a folyamatkiszolgáló közötti hálózati kapcsolatot. Ha nem állított be különálló folyamatkiszolgálót, majd alapértelmezés szerint azt fut a konfigurációs kiszolgálón.
 1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fiók vagy helyi vagy tartományi rendszergazdai jogosultsággal kell rendelkeznie. Használja ezt a fiókot, csak a leküldéses telepítéshez és az ügynökök frissítésével.
 2. Ha nem használ tartományi fiókot, tiltsa le a következő távoli felhasználói hozzáférés-vezérlés a helyi számítógépen:
-    - A localaccounttokenfilterpolicy beállításjegyzékbeli kulcs hozzáadása egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa az értékét **1**.
+    - Adja hozzá egy új DWORD localaccounttokenfilterpolicy beállításjegyzékbeli kulcs: **LocalAccountTokenFilterPolicy**. Állítsa az értékét **1**.
     -  Ehhez egy parancssorban futtassa a következő parancsot:  
-   "REG ADD localaccounttokenfilterpolicy /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
 3. A Windows tűzfal a védeni kívánt számítógépen, válassza ki a **lehetővé teszik az alkalmazás vagy szolgáltatás tűzfalán keresztül**. Engedélyezése **fájl- és nyomtatómegosztás** és **Windows Management Instrumentation (WMI)**. Tartományi számítógépek esetében konfigurálhatja a tűzfal beállításai csoportházirend-objektum (GPO) használatával.
 
    ![Tűzfalbeállítások](./media/vmware-azure-install-mobility-service/mobility1.png)
@@ -59,6 +59,10 @@ Az összes Linux, amely számára védelmet kíván tegye a következőket:
 11. Az a **fiókok kezelése** lapon jelölje be **fiók hozzáadása**.
 12. Adja hozzá a létrehozott fiókot.
 13. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
+
+## <a name="anti-virus-on-replicated-machines"></a>A replikált gépek víruskereső
+
+Ha replikálni kívánt gépek aktív víruskereső szoftvert, ellenőrizze, hogy a mobilitási szolgáltatás telepítési mappa kizárása víruskereső operations (*C:\ProgramData\ASR\agent*). Ez biztosítja, hogy a replikáció megfelelően működik-e.
 
 ## <a name="next-steps"></a>További lépések
 

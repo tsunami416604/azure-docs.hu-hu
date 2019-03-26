@@ -10,57 +10,43 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e0f768b876b49ec006ce98decf121d73d334b6d8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195597"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439519"
 ---
 ### <a name="run-the-service"></a>A szolgáltatás futtatása
 
-1. A szolgáltatás futtatásához nyomja le az F5 billentyűt (vagy írja be a terminálablakba az `azds up` parancsot). A szolgáltatás automatikusan futtatni fogják az újonnan kijelölt terület _dev/scott_. 
-1. Az `azds list-up` ismételt futtatásával ellenőrizheti, hogy a szolgáltatás a saját területén fut-e. Látható, hogy egy példányát *mywebapi* most már fut a _dev/scott_ terület (futó verzió _fejlesztési_ továbbra is fut, de nem szerepel).
+A szolgáltatás futtatásához nyomja le az F5 billentyűt (vagy `azds up` a Terminál ablakában) futtatni a szolgáltatást. A szolgáltatás automatikusan futtatni fogják az újonnan kijelölt terület _dev/scott_. Ellenőrizze, hogy a szolgáltatás fut-e a saját térben futtatásával `azds list-up`:
 
-    ```
-    Name                      DevSpace  Type     Updated  Status
-    mywebapi                  scott     Service  3m ago   Running
-    mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
-    webfrontend               dev       Service  26m ago  Running
-    ```
+```cmd
+$ azds list-up
 
-1. Futtatás `azds list-uris`, és figyelje meg, hogy a hozzáférési pont a URL-címe *webfrontend*.
-
-    ```
-    Uri                                                                        Status
-    -------------------------------------------------------------------------  ---------
-    http://localhost:53831 => mywebapi.scott:80                                Tunneled
-    http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
-    ```
-
-1. Az URL-CÍMÉT használja a *scott.s* keresse meg az alkalmazás-előtagot. Figyelje meg a frissített URL-cím feloldása továbbra is. Az URL-címet egyedi érték a _dev/scott_ terület. A speciális URL-cím azt jelzi, hogy, hogy a "Scott URL-címe" küldött kérelmek megpróbálja szolgáltatások első útvonal a _dev/scott_ tárhelyen, de ha nem jár sikerrel, rendszer visszavált a szolgáltatások a _fejlesztési_ terület.
-
-<!--
-TODO: replace 2 & 3 with below once bug#753164 and PR#158827 get pushed to production.
-
-You can confirm that your service is running in its own space by running `azds list-up` again. First, you'll notice an instance of *mywebapi* is now running in the _dev/scott_ space (the version running in _dev_ is still running but it is not listed). If you run `azds list-uris`, you will notice that the access point URL for *webfrontend* is prefixed with the text "scott.s.". This URL is unique to the _dev/scott_ space. The special URL signifies that requests sent to the "Scott URL" will try to first route to services in the _dev/scott_ space, but if that fails, they will fall back to services in the _dev_ space.
-
-```
 Name                      DevSpace  Type     Updated  Status
 mywebapi                  scott     Service  3m ago   Running
-mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-```
+Figyelje meg, hogy egy példányát *mywebapi* most már fut a _dev/scott_ terület. A futó verzió _fejlesztési_ továbbra is fut, de nem szerepel.
+
+Az aktuális hely URL-lista futtatásával `azds list-uris`.
+
+```cmd
+$ azds list-uris
+
 Uri                                                                        Status
 -------------------------------------------------------------------------  ---------
 http://localhost:53831 => mywebapi.scott:80                                Tunneled
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
--->
 
-![](../articles/dev-spaces/media/common/space-routing.png)
+Figyelje meg, hogy a nyilvános hozzáférési pont URL-Címének *webfrontend* a következő előtaggal kezdődik *scott.s*. Az URL-címet egyedi érték a _dev/scott_ terület. Az URL-előtagot a Bejövőforgalom-vezérlőt, átirányíthatja a kéréseket a arra utasítja a _dev/scott_ szolgáltatás verzióját. Ezen az URL-kérelmet a fejlesztői, szóközök történik, ha a Bejövőforgalom-vezérlőjéhez először próbál irányítsa át a kérést, hogy a *webfrontend* szolgáltatásának a _dev/scott_ terület. Ha ez nem sikerül, a kérést a rendszer átirányítja a *webfrontend* szolgáltatást a a _fejlesztési_ terület tartalékként. Is megfigyelheti, hogy létezik egy localhost URL-címet a Kubernetes használatával localhost keresztül a szolgáltatás eléréséhez *port-továbbító* funkciót. További információ az URL-címek és az Azure fejlesztési tárolóhelyek útválasztás: [hogyan Azure fejlesztési tárolóhelyek működik, és konfigurált](../articles/dev-spaces/how-dev-spaces-works.md).
+
+
+
+![A lemezterület-Útválasztás](../articles/dev-spaces/media/common/Space-Routing.png)
 
 Az Azure Dev Spaces ezen beépített szolgáltatása lehetővé teszi, hogy tesztelhesse a kódot egy megosztott térben anélkül, hogy minden egyes fejlesztőnek ismételten létre kellene hoznia a saját tere teljes szolgáltatási vermét. Ez az útválasztás megköveteli az alkalmazáskódtól a propagálási fejlécek továbbítását, ahogy az az útmutató előző lépésében is látható.
 

@@ -1,24 +1,38 @@
 ---
 title: A QnA Maker szolgáltatás – QnA Maker frissítése
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker verem egyes összetevőinek frissítésére a kezdeti létrehozás után kiválaszthatja.
+description: Ossza meg, vagy a QnA Maker szolgáltatás frissítése annak érdekében, hogy az erőforrások jobb kezelése.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/25/2019
 ms.author: tulasim
-ms.openlocfilehash: e37a903112f30917ff5051305bb2144981de1c9d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883270"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437987"
 ---
-# <a name="upgrade-your-qna-maker-service"></a>QnA Maker-szolgáltatás frissítése
+# <a name="share-or-upgrade-your-qna-maker-service"></a>Megosztás vagy a QnA Maker szolgáltatás frissítése
+Ossza meg, vagy a QnA Maker szolgáltatás frissítése annak érdekében, hogy az erőforrások jobb kezelése. 
+
 A QnA Maker verem egyes összetevőinek frissítésére a kezdeti létrehozás után kiválaszthatja. A részletek a függő összetevők és a termékváltozat [Itt](https://aka.ms/qnamaker-docs-capacity).
+
+## <a name="share-existing-services-with-qna-maker"></a>A QnA Maker meglévő szolgáltatások megosztása
+
+A QnA Maker több Azure-erőforrásokat hoz létre. Annak érdekében, hogy csökkentse a felügyeleti és a költségek megosztását, az alábbi táblázat segítségével megismerheti, hogy és mit nem oszthat meg:
+
+|Szolgáltatás|Megosztás|
+|--|--|
+|Cognitive Services|X|
+|App Service-csomag|✔|
+|App Service|X|
+|Application Insights|✔|
+|Keresési szolgáltatás|✔|
 
 ## <a name="upgrade-qna-maker-management-sku"></a>A QnA Maker felügyeleti Termékváltozat frissítése
 

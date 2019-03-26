@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201466"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439262"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Gyors útmutató: A felhasználók és a natív iOS-alkalmazások a Microsoft Graph API meghívása
 
@@ -44,7 +44,7 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
-> Ahhoz, hogy a rövid útmutatóhoz tartozó kódminta működjön, hozzá kell adnia egy válasz URL-t a következő formában: `msal<AppId>://auth` (ahol az msal<AppId> ez az alkalmazásazonosító).
+> Az ebben a rövid működéséhez kódminta található, a válasz URL-cím hozzá kell `msal<AppId>://auth` (ahol az msal\<AppId > az alkalmazás azonosítója).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |Az elemek magyarázata:||
 > |---------|---------|
-> | `forScopes` | Tartalmazza a kért hatóköröket (azaz [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)) |
+> | `forScopes` | Tartalmazza a kért hatóköröket (azaz `[ "user.read" ]` Microsoft Graph és `[ "<Application ID URL>/scope" ]` egyéni webes API-k esetében) (például `api://<Application ID>/access_as_user`) |
 
 #### <a name="getting-an-access-token-silently"></a>Hozzáférési jogkivonat csendes lekérése
 

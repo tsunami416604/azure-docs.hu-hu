@@ -9,14 +9,14 @@ keywords: az Azure functions, függvények, eseményfeldolgozás, webhookok, din
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: d3da5cc9e0eff27fde6bcd503c033db12f49371e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767702"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439328"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kódot tesztelés az Azure Functions stratégiák
 
@@ -44,7 +44,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy C# Függvényalkalmazásna
 2. [Egy HTTP-függvény létrehozása sablonból](./functions-create-first-azure-function.md) , és nevezze el *HttpTrigger*.
 3. [Időzítő függvény létrehozása sablonból](./functions-create-scheduled-function.md) , és nevezze el *TimerTrigger*.
 4. [Hozzon létre egy xUnit tesztalkalmazás](https://xunit.github.io/docs/getting-started-dotnet-core) a Visual Studióban kattintson **fájl > Új > Projekt > Visual C# > .NET Core > xUnit tesztelő projektet** , és nevezze el *Functions.Test*. 
-5. Egy mutató hivatkozásokat tudjon felvenni az alkalmazás tesztelése a Nuget segítségével [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) és [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+5. Egy mutató hivatkozásokat tudjon felvenni a vizsga alkalmazás a Nuget segítségével [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Referencia a *funkciók* alkalmazás](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) a *Functions.Test* alkalmazást.
 
 ### <a name="create-test-classes"></a>Teszt osztályok létrehozása
@@ -55,11 +55,28 @@ Minden függvény vesz igénybe egy példányát [ILogger](https://docs.microsof
 
 A `ListLogger` osztály hivatott megvalósítása a `ILogger` felületet, és tartsa egy teszt során értékelésre üzeneteket belső listájában.
 
-**Kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza ki **Hozzáadás > osztály**, adja neki **ListLogger.cs** , és adja meg a következő kódot:
+**Kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza ki **Hozzáadás > osztály**, adja neki **NullScope.cs** , és adja meg a következő kódot:
+
+```csharp
+using System;
+
+namespace Functions.Tests
+{
+    public class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+
+        private NullScope() { }
+
+        public void Dispose() { }
+    }
+}
+```
+
+Ezután **kattintson a jobb gombbal** a a *Functions.Test* alkalmazás, és válassza **Hozzáadás > osztály**, adja neki **ListLogger.cs** , és adja meg a a következő kódot:
 
 ```csharp
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -94,7 +111,7 @@ namespace Functions.Tests
 
 A `ListLogger` osztály által szerződésben vállalt módon valósítja meg az alábbi tagokat az `ILogger` felületen:
 
-- **BeginScope**: Hatókörök hozzáadása a naplózási környezetben. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) osztály, hogy a függvény tesztelése.
+- **BeginScope**: Hatókörök hozzáadása a naplózási környezetben. Ebben az esetben a vizsgálat csak pontokat a statikus példányhoz a `NullScope` osztály, hogy a függvény tesztelése.
 
 - **IsEnabled**: Alapértelmezés szerint `false` van megadva.
 

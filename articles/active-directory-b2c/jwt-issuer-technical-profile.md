@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dabffd88965a10fe4feca2b600cfaf5741e2f664
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157907"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436054"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>A technikai profil meghatározása az egyéni Azure Active Directory B2C-házirendek a JWT jogkivonat kibocsátója
 
@@ -54,7 +54,7 @@ A **InputClaims**, **OutputClaims**, és **PersistClaims** elemek a következők
 | rolling_refresh_token_lifetime_secs | Nem | Frissítési jogkivonat csúszóablak-élettartama. Ez az időtartam elteltével a felhasználónak kötelező hitelesítse magát újra, attól függetlenül, az érvényességi időtartam legutóbbi az alkalmazás által beszerzett jogkivonat frissítésére. Ha nem szeretné kényszeríteni a csúszóablak-élettartama, állítsa a allow_infinite_rolling_refresh_token `true`. Az alapértelmezett érték 7,776,000 másodperc (90 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 31,536,000 másodperc (365 napos). | 
 | allow_infinite_rolling_refresh_token | Nem | Ha beállítása `true`, a csúszóablakon frissítési jogkivonat élettartama soha nem jár le. |
 | IssuanceClaimPattern | Igen | Azt szabályozza, hogy a kibocsátói (iss) jogcím. Az értékek egyikét:<ul><li>AuthorityAndTenantGuid - az iss jogcím tartalmazza a tartomány nevét, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, és a bérlő azonosítója https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - az iss jogcím tartalmazza a tartomány nevét, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, a bérlő azonosítóját és a függő entitás házirend neve. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
-| AuthenticationContextReferenceClaimPattern | Nem | Szabályozza a `acr` jogcím értéke.<ul><li>Nincs – Azure AD B2C-vel nem jogcímet ad az acr</li><li>PolicyId – a `acr` jogcím a szabályzat nevét tartalmazza.</li></ul>Az érték a lehetőségeket TFP (bizalmi keretrendszer házirend) és az ACR (hitelesítési környezeti hivatkozás). Ajánlott, ha az érték TFP, az érték beállítása, biztosítása a `<Item>` az a `Key="AuthenticationContextReferenceClaimPattern"` létezik értéke pedig `None`. Adja hozzá a függő entitás házirendjében <OutputClaims> cikkhez, ez az elem hozzáadása `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Ügyeljen arra, hogy a házirend tartalmazza a jogcím típusa `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
+| AuthenticationContextReferenceClaimPattern | Nem | Szabályozza a `acr` jogcím értéke.<ul><li>Nincs – Azure AD B2C-vel nem jogcímet ad az acr</li><li>PolicyId – a `acr` jogcím a szabályzat nevét tartalmazza.</li></ul>Az érték a lehetőségeket TFP (bizalmi keretrendszer házirend) és az ACR (hitelesítési környezeti hivatkozás). Ajánlott, ha az érték TFP, az érték beállítása, biztosítása a `<Item>` az a `Key="AuthenticationContextReferenceClaimPattern"` létezik értéke pedig `None`. Adja hozzá a függő entitás házirendjében `<OutputClaims>` cikkhez, ez az elem hozzáadása `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Ügyeljen arra, hogy a házirend tartalmazza a jogcím típusa `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 

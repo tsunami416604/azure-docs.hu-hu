@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: a9b8be58e8dfb27fbe896cf1c8d8dc0e91e3b24c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402847"
+ms.locfileid: "58418635"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>Azonosíthatja a problémákat a diagnosztikai szolgáltatás
+# <a name="identify-issues-with-the-diagnostics-feature"></a>A diagnosztikai funkcióval kapcsolatos problémák azonosítása
 
 Windows Virtual Desktop előzetes verziójához biztosít diagnosztikai funkcióval, amely lehetővé teszi a rendszergazdák egyetlen felületen keresztül problémák azonosításához. A virtuális asztali Windows-szerepkörök jelentkezzen a diagnosztikai tevékenységet, amikor a felhasználó kommunikál a rendszer. Minden napló vonatkozó információkat, például a Windows virtuális asztal szerepkörök részt vesz a tranzakciót, hibaüzenetek, bérlői kapcsolatos információkat és felhasználói adatokat tartalmazza. Diagnosztikai tevékenységek jönnek létre mind a végfelhasználói, mind a felügyeleti műveleteket, és három fő gyűjtők osztályozhatók:
 
@@ -32,20 +32,20 @@ Windows virtuális asztal diagnosztika csak egy PowerShell-parancsmagot használ
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>A bérlő diagnosztikai tevékenységek beolvasása
 
-Diagnosztikai tevékenységek megadásával lekérheti a **Get-RdsDiagnosticsActivities** parancsmagot. Az alábbi példaparancsmagot listáját adja vissza a diagnosztikai tevékenységek, csökkenő a legrégebbi.
+Diagnosztikai tevékenységek megadásával lekérheti a **Get-RdsDiagnosticActivities** parancsmagot. Az alábbi példaparancsmagot listáját adja vissza a diagnosztikai tevékenységek, csökkenő a legrégebbi.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName>
+Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
 Hasonló más Windows virtuális asztal PowerShell parancsmagokat kell használnia a **- TenantName** paraméterrel adja meg a lekérdezésben használni szeretne a bérlő nevével. A bérlő neve akkor szinte minden diagnosztikai tevékenység lekérdezések.
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>Részletes diagnosztikai tevékenységek beolvasása
 
-A **– részletes** paraméter további részleteket biztosít minden egyes visszaküldött diagnosztikai tevékenységhez. Minden egyes tevékenységhez formátuma a tevékenység típusa függvényében. A **– részletes** paraméterrel adhatók hozzá bármelyik **Get-RdsDiagnosticsActivities** lekérdezés, az alábbi példában látható módon.
+A **– részletes** paraméter további részleteket biztosít minden egyes visszaküldött diagnosztikai tevékenységhez. Minden egyes tevékenységhez formátuma a tevékenység típusa függvényében. A **– részletes** paraméterrel adhatók hozzá bármelyik **Get-RdsDiagnosticActivities** lekérdezés, az alábbi példában látható módon.
 
 ```powershell
-Get-RdsDiagnosticsActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 ```
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>Lekérni egy adott diagnosztikai tevékenység által tevékenység azonosítója

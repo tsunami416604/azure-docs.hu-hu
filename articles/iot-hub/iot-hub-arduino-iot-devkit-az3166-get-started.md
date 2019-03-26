@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 941455e39a32405097563b043046866aeb5c7964
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0c6189dfd02a4bdd3662f4fa50dbb812fe995884
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351932"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438482"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -24,7 +24,9 @@ Használhatja a [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-develo
 
 ## <a name="what-you-do"></a>TEENDŐ
 
-A fejlesztői készlet csatlakozhat az Azure IoT hub által létrehozott. Ezután a hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjteni az érzékelők, és az IoT hubnak küldi az adatokat.
+Az ebben a cikkben fogja használni [Visual Studio Code](https://code.visualstudio.com/), többplatformos forrás code szerkesztőt, és a [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítmény.
+
+A fejlesztői készlet fog csatlakozni az Azure IoT hub által létrehozott. Ezután a hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjteni az érzékelők, és az IoT hubnak küldi az adatokat.
 
 Még nem rendelkezik egy fejlesztői készlet? Próbálja ki a [DevKit szimulátor](https://azure-samples.github.io/iot-devkit-web-simulator/) vagy [vásárolhat egy DevKit](https://aka.ms/iot-devkit-purchase).
 
@@ -119,7 +121,9 @@ Tesztelje az érzékelők B gomb megnyomásával. Továbbra is lenyomásával, �
 
 ### <a name="install-azure-iot-tools"></a>Az Azure IoT-eszközök telepítése
 
-Javasoljuk, hogy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) fejleszthet a a fejlesztői készlet Visual Studio Code készült bővítőcsomagjának. Az Azure IoT-eszközöket tartalmaz [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) fejlesztésről és hibakeresésről IoT devkit különféle eszközökön és [Azure IoT Hub-eszközkészlet](https://aka.ms/iot-toolkit) kezelhesse és használhassa az Azure IoT Hub szolgáltatással.
+Ebben a szakaszban telepíteni fogja a [Arduino IDE](https://www.arduino.cc/en/Main/Software) rendszerképkeresés [Visual Studio Code](https://code.visualstudio.com/), a többplatformos, nyílt forráskódú Kódszerkesztő.
+
+Telepítenie kell a [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) a Visual Studio Code-bővítmény csomag. Azt javasoljuk, [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) fejleszthetnek alkalmazásokat az a fejlesztői készlet Visual Studio Code készült bővítőcsomagjának. Az Azure IoT-eszközök bővítményt csomag tartalmazza a [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) amely fejlesztésekor és hibakeresésekor különféle IoT devkit eszközökön szolgál. A [Azure IoT Hub-eszközkészlet](https://aka.ms/iot-toolkit), az Azure IoT-eszközök bővítményt csomaggal is tartalmazza, kezelhesse és használhassa az Azure IoT hub segítségével.
 
 Megtekinthet ezek [Channel 9](https://channel9.msdn.com/) rendelkeznie működésével kapcsolatos áttekintő videók:
 * [A VS Code az új IoT Workbench-bővítmény bemutatása](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code)

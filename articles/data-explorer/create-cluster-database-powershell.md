@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 650bdc5cdf99645bc2be6c8e85737dacd10a6b27
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287523"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417717"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával
 
@@ -25,20 +25,21 @@ ms.locfileid: "58287523"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Ebben a rövid útmutató egy Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával.
-
-PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) létrehozása és konfigurálása [Azure adatkezelő](https://docs.microsoft.com/azure/kusto/ ).
-
-A [ **Az.Kusto**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto ). Az Azure PowerShell-lel és **Az.Kusto**, a következő feladatok végrehajtására:
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) rendszerképkeresés [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
 
 ## <a name="configure-parameters"></a>Paraméterek konfigurálása
 
-A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellben futtatja. Ha helyileg futtatja a parancssori Felületet, kövesse az alábbi lépéseket, jelentkezzen be az Azure-ba, és állítsa be a jelenlegi előfizetésében:
+A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellben futtatja. Ha helyileg futtatja a CLI-t, hajtsa végre az 1. és 2. Jelentkezzen be az Azure-ba, és beállítása a jelenlegi előfizetésében lépéseket:
 
 1. Az alábbi parancs futtatásával jelentkezzen be az Azure-ba:
 
@@ -46,12 +47,12 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
     Connect-AzAccount
     ```
 
-2. Ha azt szeretné, hogy a fürt létrehozása az előfizetés beállításához.
+2. Állítsa be az előfizetést, ahol azt szeretné, hogy a fürt létrehozása:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Az eszköz Az.Kusto modul telepítése:
+3. Amikor fut az Azure CLI-vel, helyileg vagy az Azure Cloud Shell, az eszközön a Az.Kusto modul telepítenie kell:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -116,7 +117,5 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="next-steps"></a>További lépések
 
-További Az.Kusto parancsokat annak [ **Itt**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto )
-
-> [!div class="nextstepaction"]
-> [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+* [További Az.Kusto parancsok](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/17/2018
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: e3fa5616518675d8475937ec63afdd8e1742e8c6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a3a43c56a49c243390eac964d31988b7d30fbb56
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553521"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407941"
 ---
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "57553521"
 |  | A darabolásos átvitel kódolási (irányuló) | HTTP-darabolás nélkül |
 | ---- | ------- | ------- |
 | **Letöltés** | Letöltési mérete nincs korlátozva van. | Letöltési mérete nincs korlátozva van. |
-| **Feltöltés** |  Mindaddig, amíg minden irányuló feltöltött 28.6 MB-nál kevesebb, nincs korlátozva. | A méret nem lehet nagyobb, mint 28.6. MB-OT. |
+| **Feltöltés** |  Mindaddig, amíg minden irányuló feltöltött 2 GB-nál kevesebb, nincs korlátozva. | A mérete nem lehet nagyobb 2 GB-nál. |

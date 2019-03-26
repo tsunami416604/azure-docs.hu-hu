@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285785"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418856"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket *alain\@contoso.com*.
@@ -84,6 +84,8 @@ Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvénye
 4. Az a **Contoso** lapon jelölje be **ellenőrizze** , hogy az egyéni tartomány megfelelően regisztrálva van, és érvényes Azure AD-hez.
 
     ![A DNS-bejegyzés adatainak és az ellenőrzés gombra a Contoso lap](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+Az egyéni tartománynév ellenőrzése után törölheti az ellenőrzési TXT vagy MX fájlt.
 
 ## <a name="common-verification-issues"></a>Gyakori hitelesítési hibák
 - Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzon a következőkkel:

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e18a63892f000eff0f72656082d5e6e1f0ca159b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737781"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437475"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -282,7 +282,7 @@ A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a kö
   {
       ....
   }
-  ```
+   ```
 
   Egy teljes példa: [eseményindító – C#-példa](#trigger---c-example).
 
@@ -318,8 +318,8 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |---------|---------|----------------------|
 |**type** | n/a | Meg kell `blobTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
 |**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. A kivételeket jeleztük a [használati](#trigger---usage) szakaszban. |
-|**name** | n/a | A változó, amely a függvény kódját a blob neve. | 
-|**path** | **BlobPath** |A [tároló](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) figyeléséhez.  Előfordulhat, hogy egy [blob minta](#trigger---blob-name-patterns). | 
+|**name** | n/a | A változó, amely a függvény kódját a blob neve. |
+|**path** | **BlobPath** |A [tároló](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) figyeléséhez.  Előfordulhat, hogy egy [blob minta](#trigger---blob-name-patterns). |
 |**kapcsolat** | **kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -450,7 +450,9 @@ JavaScript és Java-funkciók a teljes blob betölti a memóriába, és C# funkc
 
 ## <a name="trigger---polling"></a>Trigger - lekérdezés
 
-Ha a figyelt blobtárolóban több mint 10 000 BLOB tartalmaz, a Functions runtime vizsgálatok a naplófájlok új vagy módosított blobok megtekintéshez. Ez a folyamat az késleltetések eredményezheti. Függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után. Emellett [tárolási naplók jönnek létre egy "ajánlott beavatkozást"](/rest/api/storageservices/About-Storage-Analytics-Logging) alapját. Nincs garancia arra, hogy rögzítve lesznek-e az összes eseményt. Bizonyos körülmények között a naplók kimaradhatnak. Ha a gyorsabb és megbízhatóbb blob feldolgozás van szüksége, érdemes lehet létrehozni egy [üzenetsori üzenet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozásakor, a blob. Ezután egy [üzenetsor eseményindító](functions-bindings-storage-queue.md) feldolgozni a blob blob eseményindító helyett. Egy másik lehetőség az, hogy az Event Grid; használata Lásd a következő oktatóanyagot [feltöltött Event Grid használatával képek átméretezésének automatizálása](../event-grid/resize-images-on-storage-blob-upload-event.md).
+Ha a figyelt blobtárolóban tartalmaz a több mint 10 000 BLOB (között az összes tárolót), a Functions runtime vizsgálatok a naplófájlok új vagy módosított blobok megtekintéshez. Ez a folyamat az késleltetések eredményezheti. Függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után. Emellett [tárolási naplók jönnek létre egy "ajánlott beavatkozást"](/rest/api/storageservices/About-Storage-Analytics-Logging) alapját. Nincs garancia arra, hogy rögzítve lesznek-e az összes eseményt. Bizonyos körülmények között a naplók kimaradhatnak.
+
+Ha a gyorsabb és megbízhatóbb blob feldolgozás van szüksége, érdemes lehet létrehozni egy [üzenetsori üzenet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozásakor, a blob. Ezután egy [üzenetsor eseményindító](functions-bindings-storage-queue.md) feldolgozni a blob blob eseményindító helyett. Egy másik lehetőség az, hogy az Event Grid; használata Lásd a következő oktatóanyagot [feltöltött Event Grid használatával képek átméretezésének automatizálása](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
 ## <a name="input"></a>Input (Bemenet)
 
@@ -479,7 +481,7 @@ public static void Run(
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
-```        
+```
 
 ### <a name="input---c-script-example"></a>Bemenet – C#-szkript példa
 
@@ -802,7 +804,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
     { ImageSize.Small,      (640, 400) },
     { ImageSize.Medium,     (800, 600) }
 };
-```        
+```
 
 ### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
 

@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: 6c1a6bf4e7042c28239f57af6b39c0822b63b5e8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1cac267be026d0e472db9a7a321f5fff6ab3e917
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768076"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434772"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Alhálózat delegálása az Azure NetApp Fileshoz 
 
 Az Azure Files-NetApp egy alhálózatot kell delegálni.   Kötet létrehozásakor kell a delegált alhálózatot adjon meg.
 
-## <a name="about-this-task"></a>Ez a feladat kapcsolatban
+## <a name="considerations"></a>Megfontolandó szempontok
 * Új alhálózat egy/24, az alapértelmezett érték létrehozására szolgáló varázsló hálózati maszk, amely 251 elérhető IP-címek biztosít. Egy/28-as használatával hálózati maszk, amely a 16 használható IP-címet biztosít, a szolgáltatás elegendő.
-* Nem egy hálózati biztonsági csoportot kijelölje vagy szolgáltatási végpont delegált alhálózaton. Ekkor a alhálózati delegálás sikertelen lesz.
 * Az egyes Azure virtuális hálózatok (Vnet) csak egy alhálózatot az Azure Files-NetApp delegálható.
-* Egy kötet a virtuális társhálózatra való hozzáférés jelenleg nem támogatott.
+* Nem egy hálózati biztonsági csoportot kijelölje vagy szolgáltatási végpont delegált alhálózaton. Ekkor a alhálózati delegálás sikertelen lesz.
+* A kötet egy globálisan társított virtuális hálózaton való hozzáférés jelenleg nem támogatott.
+* Létrehozás [felhasználó által definiált egyéni útvonalak](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) a Virtuálisgép-alhálózatok címmel Azure NetApp Files, meghatalmazott alhálózathoz (cél) előtag nem támogatott, és hatással van a virtuális gépek kapcsolatai.
 
 ## <a name="steps"></a>Lépések 
 1.  Nyissa meg a **virtuális hálózatok** panel az Azure Portalon, majd válassza a virtuális hálózatot, amelyet szeretne használni az Azure NetApp fájlokhoz.    

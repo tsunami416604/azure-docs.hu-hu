@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/09/2019
+ms.date: 03/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f2de9274e1b6c996e75148d1a1f018d73a721bb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3f6ac8a693e09d0efbac080d7effc6ce21c6a094
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443453"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418971"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -190,11 +190,15 @@ A használati feltételek létrehozása és kényszerítése után az érintett 
 
 ![Felhasználói web-bejelentkezés](./media/active-directory-tou/user-tou.png)
 
+A felhasználók a használati feltételek megtekintése és, ha szükséges, használja a gombok, nagyíthat és.
+
+![Nagyítás gombokkal használati feltételek megtekintése](./media/active-directory-tou/zoom-buttons.png)
+
 Az alábbi képernyő bemutatja a használati feltételek megjelenését a mobileszközökön.
 
 ![Felhasználói utazó bejelentkezés](./media/active-directory-tou/mobile-tou.png)
 
-A felhasználóknak csak kell fogadja el a használati feltételeket egyszer, és nem jelenik meg a használati feltételeket újra a későbbi bejelentkezések.
+A felhasználóknak csak kell fogadja el a használati feltételeket egyszer, és nem láthatják a használati feltételeket újra a későbbi bejelentkezések.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>A használati feltételek áttekintése a felhasználók által
 A felhasználók az alábbi eljárással tekinthetik át az általuk elfogadott használati feltételeket.

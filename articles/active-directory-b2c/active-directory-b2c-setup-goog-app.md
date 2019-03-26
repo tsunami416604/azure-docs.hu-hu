@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 03/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 29b988beff0f25bc0d4abcc1c95a70bccf9ba1cb
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1d4f7460d53e721ca1cba7aba6c6ef9c45111ee5
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427428"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435440"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a Google-fiókkal az Azure Active Directory B2C beállítása
 
@@ -24,15 +24,13 @@ ms.locfileid: "56427428"
 Használatához a Google-fiók, mint egy [identitásszolgáltató](active-directory-b2c-reference-oauth-code.md) Azure Active Directory (Azure AD) B2C-vel, az alkalmazás létrehozása a bérlőben, hogy az azt jelölő szüksége. Ha még nem rendelkezik egy Google-fiók beszerezheti a [ https://accounts.google.com/SignUp ](https://accounts.google.com/SignUp).
 
 1. Jelentkezzen be a [Google fejlesztői konzolon](https://console.developers.google.com/) Google-fiókja hitelesítő adataival.
-2. Válassza ki **Create project**, és kattintson a **létrehozás**. Ha projektek előtt létrehozott, válassza ki a projekt listát, és válassza **új projekt**.
+2. A lap bal felső sarokban, válassza ki a projekt listát, és válassza **új projekt**.
 3. Adjon meg egy **projektnév**, kattintson a **létrehozás**, majd győződjön meg arról, hogy az új projekt használ, és.
-3. Válassza ki **hitelesítő adatok** a bal oldali menüben, és válassza ki a **hitelesítő adatok létrehozása** > **Oauth-Ügyfélazonosító**.
-4. Válassza ki **konfigurálása beleegyezést kérő oldalon**.
-5. Válasszon vagy adjon meg egy érvényes **E-mail-cím**, adja meg egy **a felhasználóknak megjelenített Terméknév**, hozzáadása `b2clogin.com` való **tartományok jogosult**, és kattintson a **mentése** .
-6. A **alkalmazástípus**válassza **webes alkalmazás**.
-7. Adjon meg egy **neve** adja meg az alkalmazás `https://your-tenant-name.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le `your-tenant-name` a bérlő nevével. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő nevét kell.
-8. Kattintson a **Create** (Létrehozás) gombra.
-9. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
+4. Válassza ki **hitelesítő adatok** a bal oldali menüben, és válassza ki a **hitelesítő adatok létrehozása** > **Oauth-Ügyfélazonosító**.
+5. A **alkalmazástípus**válassza **webes alkalmazás**.
+6. Adjon meg egy **neve** adja meg az alkalmazás `https://your-tenant-name.b2clogin.com` a **JavaScript engedélyezett eredetek**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jogosult átirányítási URI-k**. Cserélje le `your-tenant-name` a bérlő nevével. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő nevét kell.
+7. Kattintson a **Create** (Létrehozás) gombra.
+8. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Google-fiók konfigurálása identitás-szolgáltatóként
 

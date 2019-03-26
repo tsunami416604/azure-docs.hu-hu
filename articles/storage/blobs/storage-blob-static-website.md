@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a72182091721dd6a1104cb8e3495aee1a3b25eb8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867736"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439386"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -46,6 +46,9 @@ https://contoso.z4.web.core.windows.net/image.png
 ```
 
 A kijelölt alapértelmezett név szolgál a legfelső szintű és alkönyvtárakat, amikor egy fájl neve nincs megadva. Ha a kiszolgáló a 404-es adja vissza, és nem ad meg egy hibadokumentum elérési útja, majd egy alapértelmezett 404-es oldal küld vissza a felhasználó.
+
+> [!NOTE]
+> Fájlok nyilvános hozzáférés szintje alapértelmezés szerint a privát. A fájlok fájlnévkiterjesztései névtelen hozzáférés kérelmeket, mert a rendszer figyelmen kívül hagyja ezt a beállítást. Nyilvános hozzáférés az összes olyan fájlra, és RBAC-engedélyek figyelmen kívül hagyja.
 
 ## <a name="cdn-and-ssl-support"></a>CDN-t és az SSL-támogatás
 

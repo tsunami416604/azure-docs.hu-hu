@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107593"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418703"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -48,11 +48,10 @@ A forrásgép a konfigurációs kiszolgálót regisztrálja a mobilitási ügyn�
     3. Ellenőrizze, hogy a felsorolt mappák [víruskereső program a Site Recovery mappakivételek](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a víruskereső szoftver nem tartoznak.  
     4. A problémák megoldása után próbálja megismételni a regisztrációt a következő irányelvek alapján [a forrásgép a konfigurációs kiszolgálót regisztrálja](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. Linuxon Ha a platform értékét < INSTALLATION_DIR\>/etc/drscout.conf sérült, regisztráció meghiúsul. A probléma azonosításához, nyissa meg a /var/log/ua_install.log fájlt. Keresse meg benne **konfigurációs megszakítása VM_PLATFORM értéke null, vagy azt, nem VmWare/Azure-beli**. A platform kell megadni **VmWare** vagy **Azure**. Ha a drscout.conf fájl sérült, azt javasoljuk, hogy Ön [távolítsa el a mobilitási](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) , majd telepítse újra a mobilitási ügynök. Ha az eltávolítás nem sikerül, kövesse az alábbi lépéseket:
-    1. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és tegye megjegyzésbe a hívást a **StopServices** függvény.
-    2. Nyissa meg a Installation_Directory/Vx/bin/uninstall.sh fájlt, és tegye megjegyzésbe a hívást a **stop_services** függvény.
-    3. Nyissa meg a Installation_Directory/Fx/uninstall.sh fájlt, és tegye megjegyzésbe a teljes szakasz-e a Fx szolgáltatás leállításához.
-    4. [Távolítsa el](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) a mobilitási ügynök. A sikeres eltávolítása után indítsa újra a rendszert, és próbálja meg újra a mobilitási ügynök.
+7. Linuxon Ha a platform értékét < INSTALLATION_DIR\>/etc/drscout.conf sérült, regisztráció meghiúsul. A probléma azonosításához, nyissa meg a /var/log/ua_install.log fájlt. Keresse meg benne **konfigurációs megszakítása VM_PLATFORM értéke null, vagy azt, nem VmWare/Azure-beli**. A platform kell megadni **VmWare** vagy **Azure**. Ha a drscout.conf fájl sérült, azt javasoljuk, hogy Ön [távolítsa el a mobilitási](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) , majd telepítse újra a mobilitási ügynök. Ha az eltávolítás nem sikerül, kövesse az alábbi lépéseket: egy. Nyissa meg a Installation_Directory/uninstall.sh fájlt, és tegye megjegyzésbe a hívást a **StopServices** függvény.
+    b. Nyissa meg a Installation_Directory/Vx/bin/uninstall.sh fájlt, és tegye megjegyzésbe a hívást a **stop_services** függvény.
+    c. Nyissa meg a Installation_Directory/Fx/uninstall.sh fájlt, és tegye megjegyzésbe a teljes szakasz-e a Fx szolgáltatás leállításához.
+    d. [Távolítsa el](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a mobilitási ügynök. A sikeres eltávolítása után indítsa újra a rendszert, és próbálja meg újra a mobilitási ügynök.
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Telepítési hiba: A fiókok betöltése nem sikerült
 
@@ -80,9 +79,9 @@ Ez a hiba elkerülése érdekében győződjön meg arról, a rendszeróra ideje
 
 A Site Recovery hitelesítéséhez szükséges tanúsítvány nem hozható létre. Miután meggyőződött arról, hogy a telepítő futtatja egy helyi rendszergazdaként futtassa újra a telepítőt.
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Hiba a kiszolgáló Standard Server Standard próbaverzióról Windows engedély aktiválásához
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Server Standard, Windows Server Standard értékelése licence aktiválásának
 
-1. OVF-keresztül a konfigurációs kiszolgáló telepítésének részeként egy próbalicencre van használatban, amely érvényes 180 napig. Kell aktiválnia a jelen licenc, mielőtt ez lejár. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
+1. OVF-keresztül a konfigurációs kiszolgáló telepítésének részeként egy próbalicencre van használatban, amely érvényes 180 napig. Kell aktiválnia a jelen licenc, mielőtt ez lejár. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása és replikációs tevékenységek így gátolhatja.
 2. Ha nem tudja aktiválni a Windows-licenccel, kapcsolatba [Windows támogatási csoportjának](https://aka.ms/Windows_Support) a probléma megoldásához.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Forrásgép regisztrálni a konfigurációs kiszolgáló
@@ -146,7 +145,7 @@ A konfigurációs kiszolgálón elavult védett gép eltávolításához haszná
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    Ha a forrás kiszolgálón bejegyzés "Rendszert-VM01", egy IP-címe 10.0.0.4, majd a következő parancsot használja.
+    Ha a forrás kiszolgáló bejegyzés "Rendszert-VM01", és a egy ip-címe 10.0.0.4 majd a következő parancsot használja.
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  

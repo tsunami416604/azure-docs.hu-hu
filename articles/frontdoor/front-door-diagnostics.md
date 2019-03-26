@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112109"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407028"
 ---
-# <a name="monitoring-metrics-for-front-door"></a>Figyelési metrikák bejárati ajtajának
+# <a name="monitoring-metrics-and-logs-for-front-door"></a>Figyelési metrikák és naplók számára a bejárati ajtó
 
 Azure bejárati ajtajának Service használatával figyelemmel kísérheti az erőforrásokat a következőképpen:
-* [Naplók](#diagnostic-logging): A teljesítmény, a hozzáférési és egyéb adatok mentése vagy figyelési célból az erőforrásból felhasznált naplóihoz.
 
 * [Metrikák](#metrics): Az Application Gateway jelenleg rendelkezik hét metrikák megtekintéséhez a teljesítményszámlálókat.
+* [Naplók](#diagnostic-logging): A teljesítmény, a hozzáférési és egyéb adatok mentése vagy figyelési célból az erőforrásból felhasznált naplóihoz.
 
 ## <a name="metrics"></a>Mérőszámok
 

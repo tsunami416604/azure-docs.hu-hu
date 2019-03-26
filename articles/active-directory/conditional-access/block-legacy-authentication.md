@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be66ead6521bdb21626caaecd582fac4da6f664b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 42f46e6759b0803b49316219f2ca2a6a7beb3818
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351269"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434755"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
@@ -140,4 +140,6 @@ Ha letiltja az örökölt hitelesítési ügyfelek vonatkozó feltétellel, az e
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem ismeri még a feltételes hozzáférési szabályzatok konfigurálása, lásd: [többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md) példaként.
+- Ha nem ismeri még a feltételes hozzáférési szabályzatok konfigurálása, lásd: [többtényezős hitelesítés az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md) példaként.
+
+- Modern hitelesítés nélküli támogatásával kapcsolatos további információkért lásd: [Office 2013 és az Office 2016 ügyfélalkalmazások számára a modern hitelesítés működéséről](https://docs.microsoft.com/en-us/office365/enterprise/modern-auth-for-office-2013-and-2016) 

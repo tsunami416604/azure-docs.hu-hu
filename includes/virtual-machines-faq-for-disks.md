@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 94893a5b5716c9bd207ad2a8bc8ca457974dddd4
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395687"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407878"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -300,7 +300,7 @@ Nincs nem hátulütője TRIM vagy prémium szintű Azure-lemezek vagy a standard
 
 **Mi az a legnagyobb felügyelt lemez méretét a támogatott operációs rendszer és az adatlemezek?**
 
-A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információkért lásd: a [blogbejegyzés](https://aka.ms/azure-large-disk-32TB-preview-blog).
+A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure legfeljebb 32 Tib-ra a globális Azure-ban, 4 Tib-ra az Azure-szuverén felhőkben felügyelt adatlemezek.
 
 **Mi az a legnagyobb támogatott operációs rendszer és az adatlemezek nem felügyelt lemez mérete?**
 
@@ -335,7 +335,7 @@ Pillanatkép készítése a kis méretű lemezek, és hozzon létre egy lemezt a
 
 **Átméretezheti meglévő Managed Disks méretek a 4-nél kevesebb tebibytes (TiB) az új újonnan bevezetett lemezméretek legfeljebb 32 Tib-ra?**
 
-Új felügyelt lemezek méretei 8 Tib-ra, 16 TiB és 32 TiB jelenleg előzetes verzióban érhető el. Nem még támogatjuk a meglévő lemezméretek, az új lemezméret átméretezése.
+Igen.
 
 **Mik az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott legnagyobb lemezméret?**
 

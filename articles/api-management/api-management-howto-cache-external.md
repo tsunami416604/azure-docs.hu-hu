@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7d44f7f5d97e558121c5611bc34282989b12f535
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761242"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407623"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>A Redis az Azure API Management egy külső Azure Cache használatához
 
@@ -66,7 +66,7 @@ Adjon hozzá egy külső Azure Cache redis az Azure API Management az alábbi l�
 ![A saját gyorsítótár életre APIM](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> A **alapján** beállítással melyik regionális telepítési kommunikálni fog az API Management a gyorsítótár konfigurált több regionális az API Management-konfiguráció esetén. A megadott gyorsítótárak **alapértelmezett** felülbírálják gyorsítótárak regionális értékkel.
+> A **használata** beállítással melyik regionális telepítési kommunikálni fog az API Management a gyorsítótár konfigurált több regionális az API Management-konfiguráció esetén. A megadott gyorsítótárak **alapértelmezett** felülbírálják gyorsítótárak regionális értékkel.
 >
 > Például ha az API Management az USA keleti RÉGIÓJA, Délkelet-Ázsiában és Nyugat-európai régióban üzemel, és nincsenek két gyorsítótárak konfigurálni, egyet-egyet **alapértelmezett** és a egy **Délkelet-Ázsia**, azAPIManagement **Délkelet-Ázsia** fogja használni a saját gyorsítótár, míg a másik két régió fogja használni a **alapértelmezett** gyorsítótár-bejegyzés.
 
@@ -76,7 +76,7 @@ Adjon hozzá egy külső Azure Cache redis az Azure API Management az alábbi l�
 2. Válassza ki a **külső gyorsítótár** fülre a bal oldali menüben.
 3. Kattintson a **+ Hozzáadás** gombra.
 4. Válassza ki a saját gyorsítótárához az a **gyorsítótárpéldány** legördülő mező.
-5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **alapján** legördülő mező.
+5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **használata** legördülő mező.
 6. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Adja hozzá az Azure Cache általában az aktuális Azure-előfizetés vagy az Azure-on kívül üzemeltetett redis
@@ -85,7 +85,7 @@ Adjon hozzá egy külső Azure Cache redis az Azure API Management az alábbi l�
 2. Válassza ki a **külső gyorsítótár** fülre a bal oldali menüben.
 3. Kattintson a **+ Hozzáadás** gombra.
 4. Válassza ki **egyéni** a a **gyorsítótárpéldány** legördülő mező.
-5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **alapján** legördülő mező.
+5. Válassza ki **alapértelmezett** , vagy adja meg a kívánt régiót, a a **használata** legördülő mező.
 6. Adja meg az Azure Cache Redis kapcsolati karakterlánc az **kapcsolati karakterlánc** mező.
 7. Kattintson a **Save** (Mentés) gombra.
 

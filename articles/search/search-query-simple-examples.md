@@ -1,5 +1,5 @@
 ---
-title: Egyszerű lekérdezési példa – Azure Search
+title: A "egyszerű" keresési szintaxis – Azure Search lekérdezési példák
 description: A teljes szöveges keresés, filter, search, földrajzi keresés, többszempontú keresés és más lekérdezési karakterláncok az Azure Search-index lekérdezése használt egyszerű lekérdezés példákat.
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136478"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439117"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Az Azure Searchben a lekérdezések létrehozásához Példák egyszerű szintaxisú lekérdezésekre
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Az "egyszerű" szintaxis használatával az Azure Search lekérdezési példák
 
 [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) hívja meg az alapértelmezett lekérdezéselemzőt végre teljes szöveges keresési lekérdezéseket az Azure Search-index. Az egyszerű lekérdezéselemző gyors, és kezeli az Azure Search, beleértve a teljes szöveges keresés, szűrt, és a jellemzőalapú keresés és földrajzi kereséssel gyakori forgatókönyvek. Ez a cikk lépésben elérhető lekérdezési műveletek bemutatásához, az egyszerű szintaxis használatakor példán keresztül.
 
@@ -55,7 +55,9 @@ URL-Címének szerkezete a következő elemekből áll:
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés küldése
 
-Ellenőrzési lépésként, illessze be a következő kérelmet GET, majd kattintson a **küldése**. Eredmények a rendszer a részletes JSON-dokumentumok formájában adja vissza. Akkor is másolás és beillesztés az URL-cím első az alábbi példában.
+Ellenőrzési lépésként, illessze be a következő kérelmet GET, majd kattintson a **küldése**. Eredmények a rendszer a részletes JSON-dokumentumok formájában adja vissza. Teljes dokumentumokat ad vissza, amely lehetővé teszi, hogy minden mező és az összes értéket.
+
+Illessze be az URL-címet REST-ügyfél ellenőrzésként, valamint a dokumentum szerkezete.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ Interaktív lekérdezések esetén nem kell megadnia semmit: egyszerű az alapé
 Az első példa nem parser-specifikus, de azt vezethet, vezessen be az első lekérdezés alapvető fogalom: tartalmazottsági. Ebben a példában a lekérdezés-végrehajtás és a válasz csak néhány bizonyos mezők hatóköröket. Hogyan építse fel olvasható JSON-választ, hogy akkor fontos, ha az eszköz csak a Postman vagy a keresési explorer. 
 
 Kihagytuk, a lekérdezés célozza meg, csak a *business_title* mezőben, majd adja meg a csak üzleti címe adja vissza. Szintaxisa a következő **searchFields** korlátozása csak a business_title mezőre, lekérdezés-végrehajtás és **kiválasztása** , adja meg, hogy mely mezők szerepelnek a válasz.
+
+### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+Íme az ugyanabból a lekérdezés több mező egy vesszővel tagolt lista.
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>Teljes URL-cím
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

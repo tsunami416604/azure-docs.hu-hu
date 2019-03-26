@@ -4,7 +4,7 @@ description: A teljes szöveges keresési lekérdezésekben az Azure Search szol
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441560"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437492"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Az Azure Search egyszerű lekérdezési szintaxis
 Az Azure Search két Lucene-alapú lekérdezési nyelv valósít meg: [Egyszerű Lekérdezéselemzőt](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Az Azure Search szolgáltatásban az egyszerű lekérdezési szintaxis nem tartalmazza az intelligens/olajsár lehetőségek.  
 
 > [!NOTE]  
->  Az Azure Search alternatívát kínál [Lucene lekérdezési szintaxis](query-lucene-syntax.md) összetettebb lekérdezésekhez. Lekérdezéselemzési architektúra és minden egyes szintaxis előnyeivel kapcsolatos további információkért lásd: [teljes szöveges keresés működése az Azure Search](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+>  Az Azure Search alternatívát kínál [Lucene lekérdezési szintaxis](query-lucene-syntax.md) összetettebb lekérdezésekhez. Lekérdezéselemzési architektúra és minden egyes szintaxis előnyeivel kapcsolatos további információkért lásd: [teljes szöveges keresés működése az Azure Search](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Való meghívásának egyszerű elemzése
 
@@ -44,38 +44,38 @@ A hangok szerint egyértelmű nincs lekérdezés végrehajtása az Azure Search 
 
 Általában Kedvet hol találhatók az operátornak foglalandó lekérdezés, ellentétben, amelyek több beépített navigációs struktúrát e-kereskedelmi helyek nagy valószínűséggel felhasználók ezek viselkedést, a felhasználói interakció minták az alkalmazásokat, amelyek a tartalomhoz, keressen a megtekintéséhez. További információkért lásd: [NOT operátor](#not-operator). 
 
-## <a name="operators-in-simple-search"></a>Az egyszerű keresés operátorok
+## <a name="boolean-operators-and-or-not"></a>Logikai operátorokat (AND, OR, NOT) 
 
 Operátorok feltételek, amelyek az egyező dokumentumok találhatók széles skáláját hozhat létre egy lekérdezési karakterláncban ágyazhatók be. 
 
-## <a name="and-operator-"></a>ÉS operátor `+`
+### <a name="and-operator-"></a>ÉS operátor `+`
 
 Az AND operátor nem plusz jelre. Ha például `wifi+luxury` egyaránt tartalmazó dokumentumokat fogja keresni `wifi` és `luxury`.
 
-## <a name="or-operator-"></a>VAGY a kezelő `|`
+### <a name="or-operator-"></a>VAGY a kezelő `|`
 
 A vagy operátor egy függőleges oszlopra vagy egy függőleges vonal. Például `wifi | luxury` vagy tartalmazó dokumentumokat fogja keresni `wifi` vagy `luxury` vagy mindkettőt.
 
 <a name="not-operator"></a>
 
-## <a name="not-operator--"></a>NOT operátor `-`
+### <a name="not-operator--"></a>NOT operátor `-`
 
 A NOT operátor mínuszjel. Például `wifi –luxury` dokumentumokon, amelyek meg fogja keresni az `wifi` távú és/vagy nem rendelkezik `luxury` (és/vagy által szabályozott `searchMode`).
 
 > [!NOTE]  
 >  A `searchMode` vezérlők lehetőséget, hogy egy kifejezés, és a NOT operátor műveletet vagy végbe hiányában a lekérdezésben az egyéb feltételeket egy `+` vagy `|` operátor. Emlékeztetnek arra, hogy `searchMode` is megadni `any` (alapértelmezés) vagy `all`. Ha `any`, növeli a lekérdezések visszahívása fel további találatok, és alapértelmezés szerint `-` értelmezi "Vagy NOT". Ha például `wifi -luxury` egyezni fog a dokumentumok, hogy vagy tartalmazza a kisbetűs `wifi` vagy azokkal, amelyek nem tartalmaznak az előfizetési időszak `luxury`. Ha `all`, nő a pontosság, a lekérdezések kevesebb találatot többek között, és alapértelmezés szerint - értelmezi "És a NOT". Ha például `wifi -luxury` egyezni fog a dokumentumok, amely tartalmazza a kisbetűs `wifi` , és nem tartalmaz "engedélyezhető" kifejezés. Ez valószínűleg a egy intuitívabb működés esetén a `-` operátor. Ezért érdemes használni `searchMode=all` helyett `searchMode=any` szeretné optimalizálni keresi meg a pontosság helyett már ismert, ha *és* gyakran használnak a felhasználók a `-` operátor, keresi.
 
-## <a name="suffix-operator-"></a>Utótag-operátor `*`
+## <a name="suffix-operator"></a>Utótag-operátor
 
-Az utótag operátor csillaggal. Ha például `lux*` dokumentumokon, amelyek egy kifejezés, amely kezdődik meg fogja keresni `lux`,-és nagybetűktől.  
+Az utótag operátor nem csillag `*`. Ha például `lux*` dokumentumokon, amelyek egy kifejezés, amely kezdődik meg fogja keresni `lux`,-és nagybetűktől.  
 
-## <a name="phrase-search-operator--"></a>A kifejezés keresési operátor `" "`
+## <a name="phrase-search-operator"></a>A kifejezés keresési operátor
 
-A kifejezés operátor elfedi kifejezést idézőjelek közé. Előfordulhat például `Roach Motel` (idézőjelek nélkül) tartalmazó dokumentumok lenne keresése `Roach` és/vagy `Motel` bárhol bármilyen sorrendben, `"Roach Motel"` (az együtt) csak egyezni fog együttesen, amely a teljes kifejezést tartalmazó dokumentumok rendelés (a szövegelemzés továbbra is vonatkozik).
+A kifejezés operátor elfedi kifejezést idézőjelek `" "`. Előfordulhat például `Roach Motel` (idézőjelek nélkül) tartalmazó dokumentumok lenne keresése `Roach` és/vagy `Motel` bárhol bármilyen sorrendben, `"Roach Motel"` (az együtt) csak egyezni fog együttesen, amely a teljes kifejezést tartalmazó dokumentumok rendelés (a szövegelemzés továbbra is vonatkozik).
 
-## <a name="precedence-operator--"></a>Elsőbbségi operátor `( )`
+## <a name="precedence-operator"></a>Elsőbbségi operátor
 
-A sorrend operátor elfedi a karakterlánc zárójelek között. Ha például `motel+(wifi | luxury)` dokumentumot tartalmazó, amelyben kifejezés, és meg fogja keresni `wifi` vagy `luxury` (vagy mindkettő). |}  
+A sorrend operátor elfedi a karakterlánc zárójelben `( )`. Ha például `motel+(wifi | luxury)` dokumentumot tartalmazó, amelyben kifejezés, és meg fogja keresni `wifi` vagy `luxury` (vagy mindkettő).  
 
 ## <a name="escaping-search-operators"></a>Escape-karaktersorozat operátorokat  
 

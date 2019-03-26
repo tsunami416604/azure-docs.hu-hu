@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 47b589d32accc4a699e7260b9e4b2de4cca58f2b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369615"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437339"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával az Azure monitorban
 
@@ -173,7 +173,7 @@ Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terhelés
 Ismerje meg, hogyan tervezhet és üzembe helyezése az Azure Load Balancerhez, lásd: [Mi az Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Alapszintű load balancer telepítéséhez kövesse a témakörben ismertetett lépéseket [rövid](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) kivételével a szakaszban ismertetett lépéseket **háttérkiszolgálók létrehozása**.   
 
 > [!NOTE]
-> A használatával az Azure Load Balancer konfigurálása a **alapszintű Termékváltozat**, megköveteli, hogy Azure-beli virtuális gépek rendelkezésre állási csoportba tartozik. A rendelkezésre állási csoportok kapcsolatos további információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése](../../virtual-machines/windows/manage-availability.md). Meglévő virtuális gépek hozzáadása egy rendelkezésre állási csoporthoz, tekintse meg [állítsa be az Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Az Azure Load Balancer használatával konfigurálása a **alapszintű Termékváltozat**, megköveteli, hogy Azure-beli virtuális gépek rendelkezésre állási csoportba tartozik. A rendelkezésre állási csoportok kapcsolatos további információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése](../../virtual-machines/windows/manage-availability.md). Meglévő virtuális gépek hozzáadása egy rendelkezésre állási csoporthoz, tekintse meg [állítsa be az Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
 A terheléselosztó létrehozása után egy háttérkészlet kell létrehozni, amely elosztja a forgalmat egy vagy több átjáró kiszolgáló között. A rövid útmutató a cikk a szakaszban ismertetett lépéseket követve [a terheléselosztó-erőforrások létrehozása](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  

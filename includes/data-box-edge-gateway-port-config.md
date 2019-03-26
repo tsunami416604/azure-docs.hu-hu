@@ -1,8 +1,16 @@
-      ---
-author: alkohli ms.service: databox  
-MS.topic: ms.date tartalmazza: 03/21/2019 ms.author: alkohli
 ---
-
+author: alkohli
+ms.service: databox
+ms.topic: include
+ms.date: 03/25/2019
+ms.author: alkohli
+ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431470"
+---
 | Port nem.| És leskálázása | Port hatókör| Szükséges|   Megjegyzések |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80-AS (HTTP)|Ki|WAN |Nem|Kimenő port szolgál az internet-hozzáférés frissítések lekéréséhez. <br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
@@ -15,4 +23,3 @@ MS.topic: ms.date tartalmazza: 03/21/2019 ms.author: alkohli
 | TCP 443 (HTTPS)|Out/In|LAN|Igen|Ezt a portot a bejövő portot, az eszközön a helyi felügyeleti helyi felhasználói felülete. |
 | A TCP 445-ÖS (SMB)|Eleme ennek|LAN|Bizonyos esetekben<br>Lásd: a megjegyzések|A port szükség, csak akkor, ha az SMB-n keresztül csatlakozik. |
 | TCP 2049 (NFS)|Eleme ennek|LAN|Bizonyos esetekben<br>Lásd: a megjegyzések|A port szükség, csak akkor, ha NFS-n keresztül csatlakozik. |
-

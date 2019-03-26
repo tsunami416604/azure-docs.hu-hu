@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb9c7087b8c8241d352cfa67d5d6158899fa8a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35c231f043261b65baa40eff32535eeab014bee9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174010"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437956"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan használja az Azure AD a SAML-protokollt
 
@@ -37,7 +37,7 @@ Az Azure AD a felhőalapú szolgáltatást használ **metaadatok URI** lekérni 
 
 Az Azure Active Directory bérlőspecifikus és közös (bérlő független) egyetlen bejelentkezéshez és az egyszeri kijelentkezési végpont tesz elérhetővé. URL-címmel rendelkező helyek képviselő – azok nem csupán azonosítók--, nyissa meg a végpont metaadatainak olvasásához.
 
-* A bérlő-specifikus végpont nem található: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`. A *<TenantDomainName>* helyőrző regisztrált tartománynévvel vagy Azure AD-bérlő TenantID GUID-Azonosítóját jelöli. Ha például a contoso.com bérlőt összevonási metaadatait jelenleg: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* A bérlő-specifikus végpont nem található: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`. A  *\<Bérlőtartományneve >* helyőrző regisztrált tartománynévvel vagy Azure AD-bérlő TenantID GUID-Azonosítóját jelöli. Ha például a contoso.com bérlőt összevonási metaadatait jelenleg: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * A bérlő független végpont nem található: `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. A végpont címe a **közös** jelenik meg ahelyett, hogy a bérlői tartomány neve vagy azonosítója.
 

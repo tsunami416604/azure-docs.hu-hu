@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233200"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418601"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Hogyan hozhat létre és kezelheti Azure Cache a Redis az Azure klasszikus parancssori felület használatával
 > [!div class="op_single_selector"]
@@ -57,9 +57,9 @@ A következő tulajdonságok létrehozása és frissítése az Azure Cache a Red
 | Szegmensszám |-r,---szegmensszám |A fürtözési prémium fürt gyorsítótár létrehozása a szegmensek száma. |
 | Virtual Network |-v, --virtual-network |Megadja a pontos ARM erőforrás-Azonosítóját a virtuális hálózat üzembe helyezéséhez az Azure gyorsítótár egy virtuális hálózaton, a gyorsítótár üzemeltetése esetén a Redis. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Kulcs típusa |-t, --key-type |Kulcs típusa, hogy újítsa meg. Érvényes értékek: [elsődleges, másodlagos] |
-| StaticIP |-p, --static-ip <static-ip> |Tárolásához a gyorsítótár egy virtuális hálózaton, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nincs megadva, az egyik van kiválasztva, az alhálózatról. |
-| Alhálózat |t, --subnet <subnet> |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. |
-| VirtualNetwork |-v,--virtuális hálózat < virtuális-hálózat > |Megadja a pontos ARM erőforrás-Azonosítóját a virtuális hálózat üzembe helyezéséhez az Azure gyorsítótár egy virtuális hálózaton, a gyorsítótár üzemeltetése esetén a Redis. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p,--statikus ip- \<statikus ip-\> |Tárolásához a gyorsítótár egy virtuális hálózaton, adja meg egy egyedi IP-cím az alhálózat, a gyorsítótár. Ha nincs megadva, az egyik van kiválasztva, az alhálózatról. |
+| Alhálózat |t, --subnet \<subnet\> |Üzemelteti a gyorsítótár egy virtuális hálózaton, amikor megadja az alhálózaton, melyben szeretné üzembe helyezni a gyorsítótár nevére. |
+| VirtualNetwork |-v, --virtual-network \<virtual-network\> |Megadja a pontos ARM erőforrás-Azonosítóját a virtuális hálózat üzembe helyezéséhez az Azure gyorsítótár egy virtuális hálózaton, a gyorsítótár üzemeltetése esetén a Redis. Példa formátum: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Előfizetés |-s, – előfizetés |Az előfizetés-azonosító. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Tekintse meg az összes Azure Cache Redis parancsok

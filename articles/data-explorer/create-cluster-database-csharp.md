@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: d861eba6ce905ccaf0d08a08cdd9998a199889da
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287511"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417904"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Hozzon létre egy Azure Data Explorer fürt és -adatbázis használatávalC#
 
@@ -25,20 +25,19 @@ ms.locfileid: "58287511"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Data Explorer fürt és -adatbázis használatával C#.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis használatával C#.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+* Ha még nincs telepítve a Visual Studio 2017, letöltheti és használhatja a **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
-- A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="install-c-nuget"></a>Telepítés C# nuget
 
-- Nuget-csomag szüksége lesz az Azure Data Explorer (Kusto), a Nuget itt találja: https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/
-- Emellett a Microsoft.IdentityModel.Clients.ActiveDirectory nuget-hitelesítéshez https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+1. Telepítse a [Azure Data Explorer (Kusto) nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
+1. Telepítse a [Microsoft.IdentityModel.Clients.ActiveDirectory nuget-csomag](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Data Explorer-fürt létrehozása
 
@@ -72,10 +71,10 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Data Explorer fürt
    | resourceGroupName | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
-    
-    A hitelesítő adatok beállítása a "hitelesítő adatok" (További információ: https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet )
 
-2. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. Állítsa be [a hitelesítő adatok](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+
+1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
 
     ```C#-interactive
     KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);

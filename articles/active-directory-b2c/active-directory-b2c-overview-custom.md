@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 03/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187164"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417933"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok
 
@@ -29,10 +29,10 @@ Egyéni szabályzatok olyan konfigurációs fájlokat, amelyek az Azure Active D
 |-|-------------------|-----------------|
 | Felhasználói célcsoport számára | Minden alkalmazás vagy fejlesztők számára az identitás szakértelem nélkül is. | Identitáskezelő szakemberek használhatják, rendszerintegrátoroktól, tanácsadókkal és házon belüli identitás csapatok. Ezek nem okoz gondot az OpenIDConnect folyamatok és identitás-szolgáltatóktól és jogcímalapú hitelesítést. |
 | Konfigurációs mód | Egy felhasználóbarát felhasználói felület (UI) az Azure Portalon. | XML-fájlok közvetlen módosítása, majd feltölti az Azure Portalra. |
-| Felhasználói felület testreszabása | Teljes felhasználói felületének testreszabását, beleértve a HTML és CSS.<br><br>Egyéni karakterláncot tartalmazó többnyelvű támogatás. | Azonos |
+| Felhasználói felület testreszabása | Teljes felhasználói felületének testreszabását, beleértve a HTML, CSS és JavaScript.<br><br>Egyéni karakterláncot tartalmazó többnyelvű támogatás. | Azonos |
 | Attribútum testreszabása | Standard és egyéni attribútumait. | Azonos |
 | Jogkivonat és munkamenet-kezelés | Egyéni jogkivonatot, és több munkamenet-beállításokkal. | Azonos |
-| Identitásszolgáltatók | Előre definiált helyi vagy a közösségi szolgáltató. | OIDC szabványokon alapuló, az OAUTH és a SAML. |
+| Identitásszolgáltatók | Előre definiált helyi vagy a közösségi szolgáltató és a legtöbb OIDC Identitásszolgáltatók, például az összevonás az Azure Active Directory-bérlők. | OIDC szabványokon alapuló, az OAUTH és a SAML.  Hitelesítési integrációs a REST API-k használatával is lehetőség. |
 | Identitáskezelési tevékenységek | Regisztrálási vagy bejelentkezési helyi vagy számos közösségi fiókok.<br><br>Az önkiszolgáló jelszó-visszaállítás.<br><br>Profil szerkesztése.<br><br>Multi-Factor Authentication.<br><br>Testre szabhatja a biztonsági jogkivonat és munkamenet.<br><br>Hozzáférési jogkivonat folyamatokat. | Felhasználói folyamatok használatával egyéni Identitásszolgáltatók megegyező feladatok elvégzéséhez, vagy használjon egyéni hatókörök.<br><br>Építhet ki egy felhasználói fiókot egy másik rendszer regisztrációs időpontjában.<br><br>A saját e-mail-szolgáltató használatával üdvözlő e-mail küldése.<br><br>Ezen kívül az Azure AD B2C-vel a felhasználókhoz tartozó tárolóban.<br><br>Ellenőrizze a felhasználó által megadott megbízható rendszerrel információkat egy API-val. |
 
 ## <a name="policy-files"></a>A házirend-fájlok
