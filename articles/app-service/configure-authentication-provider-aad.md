@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0c5ceda99fe35fafff23f2bcf4ea766d7dd42b75
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403221"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438224"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Az App Service-alkalmazások a Azure Active Directory-bejelentkezés konfigurálása
 
@@ -43,8 +43,6 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Services, Azure Active
 5. (Nem kötelező) A hozzáférés korlátozása csak az Azure Active Directory által hitelesített felhasználók a helyet, állítsa be **elvégzendő művelet, ha a kérés nincs hitelesítve** való **bejelentkezés az Azure Active Directory**. Ehhez az szükséges, hogy minden kérelmet hitelesíteni, és az összes nem hitelesített kérelmek a rendszer átirányítja az Azure Active Directory-hitelesítéshez.
 6. Kattintson a **Save** (Mentés) gombra.
 
-Most már készen áll az App Service-alkalmazást a hitelesítéshez használt Azure Active Directoryban.
-
 ## <a name="advanced"> </a>Speciális beállítások konfigurálása
 
 Konfigurációs beállítások is megadhatja manuálisan. Ez a az előnyben részesített megoldás, ha a használni kívánt Azure Active Directory-bérlő eltér a bérlőhöz, amellyel bejelentkezik az Azure. A konfiguráció befejezéséhez, először létre kell hoznia egy regisztrációs az Azure Active Directoryban, és meg kell adni a regisztrációs adatokat az egyes App Service-ben.
@@ -57,8 +55,12 @@ Konfigurációs beállítások is megadhatja manuálisan. Ez a az előnyben rés
 4. Néhány másodpercen belül megtekintheti az imént létrehozott új alkalmazásregisztráció.
 5. Miután hozzáadta az alkalmazás regisztrációját, az alkalmazás regisztrációs nevére, kattintson a **beállítások** tetején, majd kattintson a **tulajdonságai** 
 6. Az a **Alkalmazásazonosító URI-t** mezőbe illessze be az alkalmazás URL-cím (az 1. lépésből), a a **kezdőlap URL-címe** illessze be az alkalmazás URL-cím (az 1. lépésből), majd kattintson a **mentése**
-7. Ezután kattintson a a **válasz URL-címek**, szerkesztheti a **válasz URL-cím**, illessze be az alkalmazás URL-cím (az 1. lépésből), majd az URL-cím végéhez fűzött */.auth/login/aad/callback* (a a példában `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Kattintson a **Save** (Mentés) gombra.   
-8.  Ezen a ponton másolja a **Alkalmazásazonosító** az alkalmazáshoz. Legyen a későbbi használatra. Szüksége lesz rá az App Service-alkalmazás konfigurálása.
+7. Ezután kattintson a a **válasz URL-címek**, szerkesztheti a **válasz URL-cím**, illessze be az alkalmazás URL-cím (az 1. lépésből), majd fűzze hozzá az URL-cím végéhez */.auth/login/aad/callback* (a a példában `https://contoso.azurewebsites.net/.auth/login/aad/callback`). Kattintson a **Save** (Mentés) gombra.
+
+   > [!NOTE]
+   > Használhatja az ugyanazon alkalmazás regisztrációját a több tartomány hozzáadásával további **válasz URL-címek**. Ellenőrizze, hogy minden App Service-példányhoz a saját regisztráció, a modellt, így a saját engedélyek és jóváhagyás. Is érdemes lehet külön alkalmazásregisztrációk számára külön webhelyek átmeneti tárhelyei. Ez az, hogy a tesztelt új kódot tartalmaz hibát nem érinti az éles elkerülése érdekében a környezetek között megosztott engedélyekkel.
+    
+8. Ezen a ponton másolja a **Alkalmazásazonosító** az alkalmazáshoz. Legyen a későbbi használatra. Szüksége lesz rá az App Service-alkalmazás konfigurálása.
 9. Zárja be a **regisztrált alkalmazás** lapot. A a **alkalmazásregisztrációk** lapon a **végpontok** gomb tetején, majd másolja a **WS-FEDERATION SIGN-ON ENDPOINT** URL-címet, de távolítsa el a `/wsfed` befejezési az URL-címből. A végeredmény hasonlóan kell kinéznie `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000`. A tartománynév szuverén felhő eltérő lehet. Ez erre a célra a kiállító URL-címe későbbi használatra.
 
 ### <a name="secrets"> </a>Az App Service-alkalmazást az Azure Active Directory-információk hozzáadása

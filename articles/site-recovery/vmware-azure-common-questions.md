@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 82ae36eaaf4616dbd85760a0962f301a2b1a20f5
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319380"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418789"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -57,12 +57,12 @@ A felügyelt lemezek kismértékben eltér a storage-fiókok számítjuk fel. Te
 
 * Standard szintű tárfiók Vs. HDD standard szintű felügyelt lemez
 
-    - **Az ASR-hez kiépített tároló lemez**: S10
+    - **Az Azure Site Recovery által felhasznált tárterület lemez**: S10
     - **A számlázás a standard szintű tárfiók kötet felhasznált**: 5 USD / hó
     - **Standard szintű felügyelt lemez kell fizetnie a kiosztott kötet**: $5.89 / hó
 
 * Prémium szintű storage-fiók Vs. Premium SSD Managed Disk 
-    - **Az ASR-hez kiépített tároló lemez**: P10
+    - **Az Azure Site Recovery által felhasznált tárterület lemez**: P10
     - **Premium storage-fiók kell fizetnie a kiosztott kötet**: $17.92 / hó
     - **Prémium szintű felügyelt lemez kell fizetnie a kiosztott kötet**: $17.92 / hó
 
@@ -203,7 +203,7 @@ Igen, adhat hozzá új virtuális gépek egy meglévő replikációs csoporthoz.
 A VMware – Azure replikálás módosíthatja a lemez méretét. Ha azt szeretné, adjon hozzá új lemezeket kell a lemezt adja hozzá, és engedélyezheti a virtuális gép védelmét.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Át tudom telepíteni a helyi gépek az új Vcenter folyamatban lévő replikáció befolyásolása nélkül?
-Nem, Vcenter vagy a migrálás folyamatban lévő replikáció hatással van. A vcenter-kiszolgáló az automatikus rendszer-Helyreállítás beállítása és a gépek replikációjának engedélyezéséhez kell.
+Nem, Vcenter vagy a migrálás folyamatban lévő replikáció hatással van. Állítsa be az Azure Site Recovery-t a vcenter-kiszolgáló és a gépek replikációjának engedélyezéséhez kell.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Replikálhatok gyorsítótár vagy a céloldali tárfiókot, amely egy virtuális hálózathoz (az Azure storage-tűzfalak) konfigurálva van?
 Nem, az Azure Site Recovery nem támogatja a replikációt a Storage a virtuális hálózaton.
@@ -275,7 +275,7 @@ Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastrukt
 A telepítőcsomagokat tartják a **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** mappát a konfigurációs kiszolgálón.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Hogyan kell telepíteni a mobilitási szolgáltatás?
-Telepíti az egyes virtuális Gépeken szeretne replikálni, használatával egy [leküldéses telepítése](vmware-azure-install-mobility-service.md), vagy [manuális telepítés](vmware-physical-mobility-service-install-manual.md) a felhasználói felület vagy Powershell. Azt is megteheti, telepítheti, mint például egy üzembe helyezési eszközzel [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
+Telepíti az egyes virtuális Gépeken szeretne replikálni, használatával egy [leküldéses telepítése](vmware-physical-mobility-service-overview.md#push-installation), vagy [manuális telepítés](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) a felhasználói felület vagy Powershell. Azt is megteheti, telepítheti, mint például egy üzembe helyezési eszközzel [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 
