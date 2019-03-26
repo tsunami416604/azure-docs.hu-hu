@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5597937ff0bc44b55deb43ccc45b618a1bb8fec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82e9941a6c468a3b0ed9d1f22a2970cfa6584617
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186097"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439345"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
@@ -278,7 +278,7 @@ Ha követte ezeket a lépéseket, az alkalmazás Web.config frissíti a rendszer
 
 Kövesse az alábbi lépéseket, győződjön meg arról, hogy működik-e a kulcshoz kapcsolódó kulcsváltás logikát.
 
-1. Miután ellenőrizte, hogy az alkalmazás a fenti kódot használ, nyissa meg a **Web.config** fájlt, és keresse meg a **<issuerNameRegistry>** letiltása, konkrétan a következő néhány sort:
+1. Miután ellenőrizte, hogy az alkalmazás a fenti kódot használ, nyissa meg a **Web.config** fájlt, és keresse meg a  **\<issuerNameRegistry >** letiltása, kifejezetten keres a a következő néhány sort:
    ```
    <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -286,7 +286,7 @@ Kövesse az alábbi lépéseket, győződjön meg arról, hogy működik-e a kul
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Az a **<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
+2. Az a  **\<ujjlenyomat hozzáadása = "" >** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
 3. Hozza létre az alkalmazást, és futtassa azt. A bejelentkezési folyamat elvégzése is, ha az alkalmazás sikeresen frissítése folyamatban van a kulcsot úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentuma az. Ha előfizetéssel kapcsolatos problémák merülnek fel, győződjön meg arról, a módosítások az alkalmazás helyesek olvassa el a [hozzáadása bejelentkezés a webes alkalmazás Using Azure ad-ben](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy töltsön le és az alábbi kódmintában vizsgálatával: [Több-Bérlős felhőalapú alkalmazások az Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 hoztak létre webes alkalmazásokat és a .NET 3.5 a Windows Identity Foundation (WIF) v1.0

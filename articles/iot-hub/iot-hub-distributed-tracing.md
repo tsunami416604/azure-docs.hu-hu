@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: f685521adbbd8b9be9128ff77ab38b42860518b6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351048"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439296"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Elosztott nyomkövetést (előzetes verzió) az Azure IoT eszköz – felhő üzenetek nyomon követése
 
@@ -174,7 +174,7 @@ Ezeket az utasításokat, amellyel a minta a Windows rendszer. Más környezetek
 
 Rendelkezik **nem triviális** az előzetes verzióra az elosztott nyomkövetést szolgáltatás C SDK használata nélkül. Ez a megközelítés ezért nem ajánlott.
 
-Először meg kell valósítani az IoT Hub protokoll primitívek az üzenetek a fejlesztői útmutatót [létrehozása és olvas az IoT Hub-üzenetek](iot-hub-devguide-messages-construct.md). Szerkessze a protokoll tulajdonság az üzenetek hozzáadása az AMQP és MQTT `tracestate` , **rendszertulajdonság**. Ezek:
+Először meg kell valósítani az IoT Hub protokoll primitívek az üzenetek a fejlesztői útmutatót [létrehozása és olvas az IoT Hub-üzenetek](iot-hub-devguide-messages-construct.md). Ezt követően az üzenetek hozzáadása az AMQP és MQTT protokoll tulajdonságainak szerkesztése `tracestate` , **rendszertulajdonság**. Ezek:
 
 * Az MQTT, adja hozzá `%24.tracestate=timestamp%3d1539243209` üzenet témakörbe, ahol `1539243209` le kell cserélni a unix-időbélyegző formátumban lévő üzenet létrehozásának idejét. Tegyük fel, tekintse meg a megvalósítás [C SDK-ban](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)
 * Az AMQP és adja hozzá `key("tracestate")` és `value("timestamp=1539243209")` , üzenet jegyzet. Egy referenciaimplementációt, lásd: [Itt](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).

@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/26/2019
 ms.author: raynew
-ms.openlocfilehash: 2fe2e972d16bdb27c5d2fbd2d552dac825235b6d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 0070edf007399fff1f12f483b9ca552a755b53fb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286465"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436591"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -63,7 +63,7 @@ A Site Recovery támogatja az egy támogatott gépen futó bármilyen számítá
 **Összetevő** | **Részletek**
 --- | ---
 Gép beállításai | Az Azure-bA replikált gépek meg kell felelnie [Azure-követelmények](#azure-vm-requirements).
-Gépeken futó számítási feladatokhoz | A Site Recovery bármilyen számítási feladat (például: az Active Directory, az SQL server stb.,) replikálását támogatja egy támogatott gépen futó. További tudnivalókért kattintson [Itt](https://aka.ms/asr_workload)
+Gépeken futó számítási feladatokhoz | A Site Recovery bármilyen számítási feladat (például: az Active Directory, az SQL server stb.,) replikálását támogatja egy támogatott gépen futó. [További információk](https://aka.ms/asr_workload).
 Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1. </br></br>  [A Windows Server 2008, legalább SP2 – 32 bites és 64 bites](migrate-tutorial-windows-server-2008.md) (csak a migrálás). </br></br> Windows 2016 Nano Server nem támogatott.
 Linux operációs rendszer architektúrája | Csak 64 bites rendszeren támogatott. 32 bites rendszerben nem támogatott.
 Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>CentOS: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.4, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) 7.5 <br/><br/></br>– A replikált gépek SUSE Linux Enterprise Server 11 SP3 rendszerről történő SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.</br></br> - [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Linux- és az Azure-ban nyílt forráskódú technológia támogatása. A Site Recovery koordinálja a feladatátvétel futtatása a Linux-kiszolgálók az Azure-ban. Linux-szállítók azonban csak a teljes életciklusa még nem értek el terjesztési verziók támogatási előfordulhat, hogy korlátozza.<br/><br/> – A Linux-disztribúció csak a tőzsdei kernelekkel, amelyek részei a terjesztési alverzió kiadási/frissítés támogatottak.<br/><br/> -Frissítése a védett számítógépek között jelentős Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.<br/><br/> – Red Hat Enterprise Linux 5.2-5.11 vagy CentOS 5.2-5.11 operációs rendszert futtató kiszolgálókat kell rendelkeznie a [Linux Integration Services (LIS) összetevők](https://www.microsoft.com/download/details.aspx?id=55106) telepítve van a gépek Azure-ban.
@@ -154,7 +154,7 @@ Multi-NIC | Igen
 Fenntartott IP-cím | Igen
 IPv4 | Igen
 Forrás IP-cím megőrzése | Igen
-Az Azure virtuális hálózati Szolgáltatásvégpontok<br/> (nem Azure Storage-tűzfalak) | Igen
+Az Azure virtuális hálózati Szolgáltatásvégpontok<br/> | Igen
 Gyorsított hálózatkezelés | Nem
 
 ## <a name="storage"></a>Storage
@@ -203,7 +203,7 @@ Blokkblobok | Nem
 Titkosítás inaktív állapotban (a Storage Service Encryption)| Igen
 Prémium szintű Storage | Igen
 Importálási/exportálási szolgáltatás | Nem
-A cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolására használt) konfigurált virtuális hálózatok az Azure Storage-tűzfalak | Nem
+A cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolására használt) konfigurált virtuális hálózatok az Azure Storage-tűzfalak | Igen
 Általános célú v2-tárfiókok (egyaránt gyakori és ritka elérésű szinten) | Nem
 
 ## <a name="azure-compute"></a>Az Azure compute
@@ -266,11 +266,11 @@ Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok között
 
 **Name (Név)** | **Leírás** | **Legújabb verzió letöltése utasítások**
 --- | --- | --- 
-Konfigurációs kiszolgáló | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | Kattintson a friss telepítés helyett, [Itt](vmware-azure-deploy-configuration-server.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-Folyamatkiszolgáló|Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.| Kattintson a friss telepítés helyett, [Itt](vmware-azure-set-up-process-server-scale.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | Kattintson a friss telepítés helyett, [Itt](vmware-azure-install-mobility-service.md). Meglévő összetevő legújabb verziójára való frissítését, kattintson a [Itt](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal).
+Konfigurációs kiszolgáló | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-deploy-configuration-server.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Folyamatkiszolgáló|Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.| További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-set-up-process-server-scale.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-install-mobility-service.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal).
 
-A legújabb funkciókkal és javításokkal kapcsolatos további információkért kattintson [Itt](https://aka.ms/ASR_latest_release_notes).
+A legújabb szolgáltatásaival kapcsolatos további tudnivalókért látogasson el [legújabb kibocsátási megjegyzések](https://aka.ms/ASR_latest_release_notes).
 
 
 ## <a name="next-steps"></a>További lépések

@@ -3,7 +3,7 @@ title: Jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-j
 description: Ismerje meg, jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések használata az Azure Portalon
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22126114f2d4fcb865485d9cebc69f0e35f70201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198473"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434891"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Jelentkezzen be kapcsolatos hibák elhárítása Azure Active Directory-jelentések segítségével
 
@@ -37,17 +37,17 @@ Emellett a bejelentkezési jelentések is segíthet a szervezet felhasználói b
 A következők szükségesek:
 
 * Prémium verzió (P1 vagy P2) licenccel rendelkező Azure AD-bérlővel. Lásd: [Ismerkedés az Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) az Azure Active Directory-kiadás frissítése.
-* A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó** vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
+* A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó**, vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>A bejelentkezések jelentés használatával bejelentkezési hibák elhárítása
 
 1. Keresse meg a [az Azure portal](https://portal.azure.com) válassza ki azt a címtárat.
 2. Válassza ki **Azure Active Directory** válassza **bejelentkezések** származó a **figyelés** szakaszban. 
-3. A megadott szűrők segítségével leszűkítheti a hiba, a felhasználónév vagy objektumazonosító, az alkalmazás nevét vagy a dátum. Emellett válassza **hiba** a a **állapot** legördülő csak a sikertelen bejelentkezések megjelenítéséhez. 
+3. A megadott szűrők segítségével leszűkítheti a hiba, a felhasználónév vagy objektumazonosító, az alkalmazás nevét vagy a dátum. Ezenkívül válassza **hiba** a a **állapota** legördülő csak a sikertelen bejelentkezések megjelenítéséhez. 
 
     ![Szűrés eredményei](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. Azonosítsa a sikertelen bejelentkezési, amelyet szeretne vizsgálni, és válassza ki azt. Ekkor megnyílik a további részletei ablak megnyitásához a sikertelen bejelentkezési kapcsolatos további információkat. Jegyezze fel a **bejelentkezési hiba kódja** és **a hiba oka**. 
+4. Azonosítsa a sikertelen bejelentkezési vizsgálni kívánt. Válassza ki azt a sikertelen bejelentkezési kapcsolatos további információkat a további részletei ablak megnyitásához. Jegyezze fel a **bejelentkezési hiba kódja** és **a hiba oka**. 
 
     ![Rekord kiválasztása](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -55,7 +55,7 @@ A következők szükségesek:
 
     ![Hibaelhárítás és támogatás](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. A hiba okának leírja a hibát. Például ebben az esetben, a hiba oka van **érvénytelen felhasználónév vagy jelszó vagy érvénytelen helyszíni felhasználónév vagy jelszó**. Ez azt jelenti, hogy a felhasználó által megadott egy helytelen felhasználónév vagy jelszó jelentkezzen be az Azure Portalon. A javítás, hogy egyszerűen csak jelentkezzen be újra a helyes felhasználónevet és jelszót.
+6. A hiba okának leírja a hibát. Például ebben az esetben, a hiba oka van **érvénytelen felhasználónév vagy jelszó vagy érvénytelen helyszíni felhasználónév vagy jelszó**. A javítás, hogy egyszerűen csak jelentkezzen be újra a helyes felhasználónevet és jelszót.
 
 7. További információt a szervizeléshez, így a hibakódot, keressen rá **50126** ebben a példában a a [bejelentkezések hibakódjai referencia](reference-sign-ins-error-codes.md). 
 

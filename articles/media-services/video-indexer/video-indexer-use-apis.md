@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c2c22d2d3d68080b1d4e05410121ea1d1be283d
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57862719"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439176"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -73,19 +73,6 @@ A művelet leegyszerűsítése érdekében használhatja az **Engedélyezési** 
 A hozzáférési jogkivonatok 1 óráig érvényesek. A Műveleti API használata előtt ellenőrizze, hogy érvényes-e a hozzáférési jogkivonata. Ha lejárt, hívja meg az Engedélyezési API-t ismét egy új hozzáférési jogkivonat kéréséhez.
  
 Készen áll az API integrálásának megkezdésére. Itt megtalálhatja [az egyes Video Indexer REST API-k részletes leírását](https://api-portal.videoindexer.ai/).
-
-## <a name="location"></a>Hely
-
-Minden Műveleti API-hoz szükség van egy Hely paraméterre, amely jelzi, melyik régióba kell irányítani a hívást, és melyikben jött létre a fiók.
-
-Az alábbi táblázatban szereplő értékek érvényesek. A **Paraméter értéke** az API használatakor megadott érték.
-
-|**Name (Név)**|**Paraméter értéke**|**Leírás**|
-|---|---|---|
-|Próbaverzió|ellenőrzési|Próbafiókokhoz használható.|
-|USA nyugati régiója|westus2|Az Azure USA 2. nyugati régiójában használható.|
-|Észak-Európa |northeurope|Az Azure Észak-Európa régiójában használható.|
-|Kelet-Ázsia|eastasia|Az Azure Kelet-Ázsia régiójában használható.|
 
 ## <a name="account-id"></a>Fiókazonosító 
 
@@ -224,6 +211,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>További lépések
 
-[A kimeneti JSON adatainak vizsgálata](video-indexer-output-json-v2.md).
-
-[A Video Indexer áttekintése](video-indexer-overview.md)
+- [A kimeneti JSON adatainak vizsgálata](video-indexer-output-json-v2.md).
+- [A Video Indexer áttekintése](video-indexer-overview.md)
+- [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

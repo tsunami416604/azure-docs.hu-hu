@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 6bd1d24cdece91265a7355678ea2bc0b0f9e3910
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092583"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439158"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN-nel dinamikuswebhely-gyorsítás
 
@@ -27,7 +27,7 @@ A közösségi média, elektronikus kereskedelmi és a hyper-személyre szabott 
 
 Standard szintű content delivery network (CDN) képesség magában foglalja a statikus fájlok kézbesítésének felgyorsítása érdekében gyorsítótárfájlok közelebb a végfelhasználók számára lehetővé teszi. Azonban a dinamikus webes alkalmazások peremhálózati helyeken tartalom gyorsítótárazása nem lehetséges, mert a kiszolgáló válaszul a felhasználók viselkedésének a tartalmat állít elő. Az ilyen tartalmak kézbesítésének felgyorsítása bonyolultabb, mint a hagyományos peremhálózati gyorsítótár, és egy teljes körű megoldás, amely a beállítás a teljes elérési útját a tervezéstől a kézbesítési mentén az egyes elemek igényel. Az Azure CDN dinamikuswebhely-gyorsításként (DSA) optimalizálása a teljesítmény, a dinamikus tartalmú weblapok kimutathatóan javult.
 
-**Az Azure CDN az Akamaitól** és **verizon Azure CDN** mindkettő lehetővé teszi a DSA-optimalizálás keresztül a **optimalizált** menü végpont létrehozása közben.
+**Az Azure CDN az Akamaitól** és **verizon Azure CDN** mindkettő lehetővé teszi a DSA-optimalizálás keresztül a **optimalizált** menü végpont létrehozása közben. A Microsoft dinamikuswebhely-gyorsítás keresztül érhető el [Azure bejárati ajtajának Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
 
 > [!Important]
 > A **Akamai Azure CDN** -profilok, átválthatnak optimalizálása CDN-végpont létrehozása után.
@@ -109,9 +109,9 @@ TCP *kezdő lassú* algoritmus a TCP protokoll, amely megakadályozza, hogy a h�
 
 1. Állapotát és a sávszélesség-figyelés segítségével az edge PoP kiszolgálók közötti kapcsolatot a sávszélesség mérését.
     
-2. Metrikák edge PoP kiszolgálók között vannak megosztva, úgy, hogy minden kiszolgáló a hálózati feltételek és a többi kapcsolódási stran kiszolgáló állapotát.  
+2. Metrikák edge PoP kiszolgálók között vannak megosztva, úgy, hogy minden kiszolgáló a hálózati feltételek és a többi kapcsolódási stran kiszolgáló állapotát.  
     
-3. A CDN peremhálózati kiszolgálókon győződjön feltételezéseket néhány átviteli paraméterek, például az optimális ablakméret lennie más helyezkedik CDN edge kiszolgálókkal való kommunikációhoz. Ez a lépés azt jelenti, hogy a kezdeti torlódás ablak mérete növelhető, ha a CDN edge-kiszolgáló közötti kapcsolat állapotát is képes magasabb szintű csomag adatforgalom.  
+3. A CDN peremhálózati kiszolgálókon győződjön feltételezéseket néhány átviteli paraméterek, például az optimális ablakméret lennie más helyezkedik CDN edge kiszolgálókkal való kommunikációhoz. Ez a lépés azt jelenti, hogy a kezdeti torlódás ablak mérete növelhető, ha a CDN edge-kiszolgáló közötti kapcsolat állapotát is képes magasabb szintű csomag adatforgalom.  
 
 #### <a name="leveraging-persistent-connections"></a>Állandó kapcsolatot kihasználva
 
@@ -157,7 +157,7 @@ A **Azure CDN Standard verizon** és **Azure CDN Akamai Standard** profilok, bek
 
 Gyorsítótárazási szabályok elérése:
 
-1. Az a **CDN-profil** beállítások területén válassza a lap **gyorsítótár-szabályokkal**.  
+1. Az a **CDN-profil** beállítások területén válassza a lap **gyorsítótár-szabályokkal**.  
     
     ![CDN-gyorsítótárszabályok gomb](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,7 +169,7 @@ A **verizon Azure CDN Premium** profilok csak, kapcsolja be az adott DSA végpon
 
 A rules engine elérése:
     
-1. Az a **CDN-profil** lapon jelölje be **kezelés**.  
+1. Az a **CDN-profil** lapon jelölje be **kezelés**.  
     
     ![CDN-profil kezelése gomb](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
@@ -183,7 +183,7 @@ A rules engine elérése:
 
 Másik lehetőségként használhatja a két CDN-végpontok: egy végpontot optimalizált és DSA, hogy a dinamikus eszközök és a egy másik végpont optimalizált és a egy statikus optimalizálás típusa, például az általános webes kézbesítés kézbesítési gyorsítótárazható eszközökhöz. A weblap URL-címek az eszköz a CDN-végpont használatát tervezi a közvetlen hivatkozás módosítása 
 
-Például: `mydynamic.azureedge.net/index.html` egy dinamikus lapja és betölti a DSA-végpontról.  A html-oldalt több statikus objektumokat, például a JavaScript-kódtárakat vagy a statikus CDN-végpontról, például a betöltött képek hivatkozik `mystatic.azureedge.net/banner.jpg` és `mystatic.azureedge.net/scripts.js`. 
+Például: `mydynamic.azureedge.net/index.html` egy dinamikus lapja és betölti a DSA-végpontról.  A html-oldalt több statikus objektumokat, például a JavaScript-kódtárakat vagy a statikus CDN-végpontról, például a betöltött képek hivatkozik `mystatic.azureedge.net/banner.jpg` és `mystatic.azureedge.net/scripts.js`. 
 
 
 
