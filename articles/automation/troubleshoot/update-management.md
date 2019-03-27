@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a8be44201a2181ab252dfba501469719dd675ffa
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 166ffea9cbeb3f343d70737de9049ee721fa9a98
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410162"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448682"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -65,7 +65,7 @@ Ez akkor fordul elő, amikor létrehoz egy központi telepítést, amely rendelk
 
 #### <a name="resolution"></a>Megoldás:
 
-Az alábbi megkerülő megoldást használja, hogy az ütemezett kell. Használhatja a [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) parancsmag és a kapcsoló `-ForUpdate` ütemezés létrehozása és használata a [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+Az alábbi megkerülő megoldást használja, hogy az ütemezett kell. Használhatja a [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) parancsmag és a kapcsoló `-ForUpdate` ütemezés létrehozása és használata a [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) parancsmag paraméterével a a többi bérlő számára a gépek a `-NonAzureComputer` paraméter. Az alábbi példa bemutatja egy példa, hogyan teheti ezt meg:
 
 ```azurepowershell-interactive

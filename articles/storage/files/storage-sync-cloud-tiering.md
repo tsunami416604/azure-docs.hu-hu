@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652560"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486104"
 ---
 # <a name="cloud-tiering-overview"></a>A cloud rétegezési áttekintése
 Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync, amelyben gyakran használt gyorsítótárba helyileg a kiszolgálón, míg minden más fájlnál számítógépen rétegzett az Azure Files házirend-beállításai alapján. A rétegzett egy fájlt, az Azure File Sync fájlrendszerszűrő (StorageSync.sys) helyettesíti a fájlt helyileg egy mutatót, vagy az újraelemzési pont. Az újraelemzési pontot az Azure Files-fájlra mutató URL-címet jelöli. Egy rétegzett fájlt a "offline" attribútum és a beállítása az NTFS, harmadik féltől származó alkalmazások biztonságosan azonosíthassa a rétegzett fájlok FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is rendelkezik.
@@ -85,7 +85,7 @@ Ellenőrizze, hogy a fájl tartozik rétegzett az Azure-fájlmegosztás számos 
    * **Használat `fsutil` egy fájlt az újraelemzési pontok kereséséhez.**
        Az előző beállítás leírtak egy rétegzett fájlt mindig van egy újraelemzési pont beállítása. Egy újraelemzési mutató az Azure File Sync fájlrendszerszűrő (StorageSync.sys) a speciális mutató. Ellenőrizze, hogy rendelkezik-e a fájl egy újraelemzési pont egy emelt szintű parancssort vagy a PowerShell-ablakban, futtassa a `fsutil` segédprogrammal:
     
-        ```PowerShell
+        ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
@@ -101,7 +101,7 @@ A fájl lemezre visszahívásának legegyszerűbb módja, hogy nyissa meg a fáj
 
 Is használhatja PowerShell kényszerítése egy fájlt. Ez a beállítás akkor hasznos, ha egyszerre, majd előkeresnie több fájl egy mappában található összes fájl például lehet. Nyissa meg a kiszolgáló-csomóponton, amelyen telepítve van-e az Azure File Sync egy PowerShell-munkamenetet, és futtassa a következő PowerShell-parancsokat:
     
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
     ```
@@ -114,7 +114,7 @@ Windows Fájlkezelőben tünteti fel a két tulajdonság, amelyek egy fájl mér
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hogyan kényszeríthetem egy fájl vagy címtár helyezhető el?
 Ha a felhő rétegezési szolgáltatás engedélyezve van, felhőbeli rétegezés automatikusan rétegek fájlok alapján az utolsó hozzáférés, és elérése érdekében a kötet szabad terület százalékos aránya a felhőbeli végpont a megadott idő módosítása. Egyes esetekben azonban érdemes manuálisan a Tier fájl kényszerített. Ez akkor lehet hasznos, ha menti a nagy méretű fájlt, amely nem szeretne hosszú ideig újra használni, és azt szeretné, a szabad lemezterület a köteten a más fájlok és mappák használata. Kényszerítheti, hogy a következő PowerShell-parancsok használatával rétegezést:
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d26ced30f718f06d6d0ba9eb7c2a78682305ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102366"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485849"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
 > [!NOTE]
@@ -175,7 +175,7 @@ A szelet futtathatja a következő módszerek valamelyikével:
 * Kattintson a **futtatása** a parancssorban a a **ADATSZELET** panelen a szelet az Azure Portalon.
 * Futtatás **Set-AzDataFactorySliceStatus** parancsmagot és az állapot beállítása **Várakozás** a szelet.   
 
-    ```PowerShell
+    ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
   Lásd: [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] a parancsmag részleteit.

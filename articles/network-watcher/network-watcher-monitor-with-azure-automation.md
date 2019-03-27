@@ -1,6 +1,6 @@
 ---
-title: VPN-átjárók Azure hálózati figyelőt hibaelhárítás figyelése |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan diagnosztizálhatja a helyi kapcsolat az Azure Automation- és hálózati figyelőt
+title: Hibaelhárítás Azure Network Watcher VPN-átjárók figyelése |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan a az Azure Automation és a Network Watcher helyszíni kapcsolatok diagnosztizálása
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,56 +13,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a102916bb0626f5b110fb134a8a25c902cfaefe7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4995d7ae846652c374a289603f29f88f6f56dfef
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485493"
 ---
-# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók a hálózati figyelőt hibaelhárításban figyelése
+# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>A Network Watcher troubleshooting VPN-átjárók figyelése
 
-Való mélyebben elemezheti a hálózat teljesítménye szempontjából fontos a megbízható szolgáltatásokat nyújtsanak az ügyfeleinek. Ezért fontos hálózati kimaradás körülmények gyorsan észlelését és csökkenthető a leállás feltétel intézkedéseket. Azure Automation szolgáltatásbeli bevezetése, valamint a feladat futtatása programozott módon runbookok keresztül teszi lehetővé. Egy tökéletes receptet folyamatos és proaktív hálózati figyelés és riasztás végrehajtásához Azure Automation használatával hoz létre.
+Részletes információszerzéshez a hálózati teljesítményt, kritikus fontosságú megbízható szolgáltatásokat nyújtsanak az ügyfeleinek. Ezért fontos hálózati kimaradás feltételek gyors észlelése és a szolgáltatáskimaradás feltétel csökkentése érdekében javítási intézkedéseket. Az Azure Automation lehetővé teszi végrehajtása és a egy feladat futtatása programozott módon a runbookok használatával. Azure Automation használatával létrehoz egy tökéletes receptet folyamatos és proaktív hálózati monitorozási és riasztási végrehajtásához.
 
 ## <a name="scenario"></a>Forgatókönyv
 
-Az alábbi ábrán a forgatókönyv egy többrétegű alkalmazást, a helyi kapcsolat létrejött, a VPN-átjáró és alagút használatával. Annak biztosítása, a VPN-átjáró működik-e és fut-létfontosságú alkalmazások teljesítménye.
+A forgatókönyv az alábbi képen egy többrétegű alkalmazást a helyi kapcsolat jött létre a VPN-átjáró és alagút. Az alkalmazások teljesítményének biztosítása a VPN-átjáró működik és fut fontos.
 
-Egy runbook egy parancsfájlt, amely a VPN-alagúton, az erőforrás hibaelhárítási API-val való kapcsolat bújtatási állapotának ellenőrzése kapcsolat állapotának ellenőrzése hozza létre. Ha az állapot nem kifogástalan, egy e-mailek eseményindító rendszergazdák érkezik.
+Egy runbook jön létre egy parancsfájlt, amely a VPN-alagút, kapcsolat bújtatási állapotának ellenőrzése az erőforrás hibaelhárítás API-t használó kapcsolat állapotának ellenőrzése. Ha az állapot nem kifogástalan, egy e-mail-trigger rendszergazdák érkezik.
 
 ![Példaforgatókönyv][scenario]
 
-Ez a forgatókönyv tartalma:
+Ebben a forgatókönyvben lesz:
 
-- Hozzon létre egy runbook meghívása a `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmaggal hibaelhárításához kapcsolat állapota
-- Ütemezés kapcsolása a forgatókönyvhöz
+- Hozzon létre egy runbook meghívása a `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmagot, hogy a kapcsolat állapotának hibaelhárítása
+- Ütemezés összekapcsolása a runbook
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a forgatókönyv megkezdése előtt rendelkeznie kell a következő előfeltételeknek:
+Ebben a forgatókönyvben a Kezdés előtt az alábbi előfeltételekkel kell rendelkeznie:
 
-- Egy Azure automation-fiók az Azure-ban. Győződjön meg arról, hogy az automation-fiók a legújabb modul van, és a AzureRM.Network modul is rendelkezik. A AzureRM.Network modul esetén érhető el, a modul gyűjteményben kell adja hozzá az automation-fiók.
-- A hitelesítő adatok készletét konfigurálása az Azure Automationben kell rendelkeznie. További tudnivalókért olvassa el [Azure Automation szolgáltatásbeli biztonsági](../automation/automation-security-overview.md)
-- Egy érvényes SMTP-kiszolgáló (Office 365, a helyszíni e-mail vagy egy másik) és az Azure Automationben hitelesítő adatokhoz
+- Egy Azure automation-fiókot az Azure-ban. Győződjön meg arról, hogy az automation-fiók rendelkezik a legújabb modulok az AzureRM.Network modult is tartalmaz. Az AzureRM.Network modul érhető el a modul katalógus Ha adja hozzá az automation-fiók van szüksége.
+- Az Azure Automation konfigurálása hitelesítő adatra kell rendelkeznie. További információ: [Azure Automation biztonsága](../automation/automation-security-overview.md)
+- Egy érvényes SMTP-kiszolgáló (Office 365-höz, a helyszíni e-mailek vagy egy másik) és az Azure Automation szolgáltatásban meghatározott hitelesítő adatokkal
 - A konfigurált virtuális hálózati átjáró az Azure-ban.
-- A naplók tárolásához egy létező tárolóval meglévő tárfiókot.
+- Egy meglévő tárfiókot a naplók tárolására egy meglévő tárolóval.
 
 > [!NOTE]
-> Az infrastruktúra az előző ábrán kitaláltak illusztrációs célokat szolgálnak, és még nem jöttek létre ebben a cikkben található lépéseket.
+> A fejezet az előző képen infrastruktúra illusztrációs célokat szolgálnak, és nem jönnek létre ebben a cikkben található lépéseket.
 
-### <a name="create-the-runbook"></a>Hozza létre a runbookot
+### <a name="create-the-runbook"></a>A runbook létrehozása
 
-Az első lépés a példa konfigurálására, hogy hozza létre a runbookot. A példa egy futtató fiókot. A futtató fiókokkal kapcsolatos további tudnivalókért keresse fel a [Runbookok hitelesítéséhez az Azure-beli futtató fiók](../automation/automation-create-runas-account.md)
+Az első lépés a példa konfigurálása, ha a runbook. Ebben a példában egy futtató fiókot használja. Futtató fiókok kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>1. lépés
 
-Keresse meg az Azure Automation a [Azure-portálon](https://portal.azure.com) kattintson **Runbookok**
+Az Azure Automationt, keresse meg a [az Azure portal](https://portal.azure.com) kattintson **Runbookok**
 
-![Automation-fiók – áttekintés][1]
+![Automation-fiókok áttekintése][1]
 
 ### <a name="step-2"></a>2. lépés
 
-Kattintson a **hozzáadása egy runbook** a runbook létrehozásának megkezdéséhez.
+Kattintson a **forgatókönyv hozzáadása** a runbook létrehozásának megkezdéséhez.
 
 ![runbookok panel][2]
 
@@ -70,21 +70,21 @@ Kattintson a **hozzáadása egy runbook** a runbook létrehozásának megkezdés
 
 A **Gyorslétrehozás**, kattintson a **hozzon létre egy új runbookot** hozza létre a runbookot.
 
-![egy runbook panel hozzáadása][3]
+![Adjon hozzá egy runbook panel][3]
 
 ### <a name="step-4"></a>4. lépés
 
-Ebben a lépésben, amelyben tudatjuk a felhasználókkal a runbook nevét, a példában szereplő nevezik **Get-VPNGatewayStatus**. Ez nem lényeges, hogy a runbook egy leíró nevet, és adjon neki egy nevet, amely PowerShell szabványos elnevezési szabályai a következő ajánlott. A runbook típusa ehhez a példához **PowerShell**, a többi beállítást a rendszer grafikus PowerShell-munkafolyamati és grafikus PowerShell-munkafolyamat.
+Ebben a lépésben azt adja meg a runbook nevét, a példában nevű **Get-VPNGatewayStatus**. Ez nem lényeges, hogy a runbook egy leíró nevet, és javasolt nevezi el a következő PowerShell szabványos elnevezési szabványait. Ebben a példában a runbook típusa **PowerShell**, a többi beállítást a rendszer grafikus, PowerShell-munkafolyamat, és a grafikus PowerShell-munkafolyamat.
 
-![runbook panel][4]
+![forgatókönyv panel][4]
 
 ### <a name="step-5"></a>5. lépés
 
-Ebben a lépésben a runbook jön létre az alábbi példakód biztosít a példában a szükséges összes kódot. Az elemek, amelyek tartalmazzák a kódban \<érték\> kell cserélni az értékeket az előfizetésből.
+Ebben a lépésben a runbook létrehozása a következő példakód a példában a szükséges összes kódot biztosít az. Az elemek, amelyek tartalmazzák a kódban \<érték\> kell cserélni az értékeket az előfizetésből.
 
-Kattintson az alábbi kód használata **mentése**
+Kattintson a következő kód használatával **mentése**
 
-```PowerShell
+```powershell
 # Set these variables to the proper values for your environment
 $o365AutomationCredential = "<Office 365 account>"
 $fromEmail = "<from email address>"
@@ -146,47 +146,47 @@ else
 
 ### <a name="step-6"></a>6. lépés
 
-A forgatókönyv mentése, után ütemezés össze kell kapcsolni, hogy automatizálja a runbook elindítása. A folyamat elindításához kattintson **ütemezés**.
+A runbook a mentés után ütemezés szerint kell társítani, hogy a kezdete a forgatókönyv automatizálása. A folyamat elindításához kattintson **ütemezés**.
 
 ![6. lépés][6]
 
-## <a name="link-a-schedule-to-the-runbook"></a>Ütemezés kapcsolása a forgatókönyvhöz
+## <a name="link-a-schedule-to-the-runbook"></a>Ütemezés összekapcsolása a runbook
 
-Létre kell hozni egy új ütemezést. Kattintson a **ütemezés kapcsolása a forgatókönyvhöz**.
+Létre kell hozni egy új ütemezést. Kattintson a **összekapcsolhat egy ütemezést a runbook**.
 
 ![7. lépés][7]
 
 ### <a name="step-1"></a>1. lépés
 
-Az a **ütemezés** paneljén kattintson **új ütemezés létrehozása**
+Az a **ütemezés** panelen kattintson a **új ütemezés létrehozása**
 
 ![8. lépés][8]
 
 ### <a name="step-2"></a>2. lépés
 
-Az a **új ütemezés** panel kitöltése során az ütemezési információkat. A beállítható értékei a következők:
+Az a **új ütemezés** panelen töltse ki az ütemezési információkat. A megadható értékek a következők:
 
 - **Név** -ütemezés rövid nevét.
-- **Leírás** -ütemezés leírását.
-- **Elindul** -e érték dátum, idő és időzóna alkotó az idő az ütemezés eseményindítók kombinációja.
-- **Ismétlődés** -Ez az érték határozza meg az ütemezés ismétlési.  Érvényes értékek a következők **egyszer** vagy **ismétlődő**.
-- **Ismétlődik minden** -az ismétlődési ütemezés az óra, nap, hét és hónap.
-- **Beállíthatja a lejárati idejét** -az érték szabja meg, ha az ütemezés lejárati vagy nem. Megadható **Igen** vagy **nem**. Érvényes dátumot és időpontot meg kell adni, ha az Igen választása vannak.
+- **Leírás** – egy leírást az ütemezés.
+- **Elindul** – ezt az értéket a dátum, idő és időzóna alkotó az idő az ütemezési eseményindítókról kombinációját.
+- **Ismétlődési** – Ez az érték határozza meg a ütemezése ismétlődésének beolvasása.  Érvényes értékek a következők **egyszer** vagy **ismétlődő**.
+- **Ismétlődés minden** -óra, nap, hét vagy hónapok az ütemezés ismétlődési időköze.
+- **Beállíthatja a lejárati idejét** -érték határozza meg, ha az ütemezés lejárnak, vagy sem. Állítható **Igen** vagy **nem**. Egy érvényes dátumot és időpontot is, ha az Igen választ adni.
 
 > [!NOTE]
-> Egy runbook minden órában gyakoribb futtatásához rendelkeznie kell, ha egyszerre több ütemezés léteznie kell más időközönként (Ez azt jelenti, 15, 30, az óra 45 perc)
+> Egy runbook minden órában gyakoribb futtatásához rendelkeznie kell, ha több ütemezés kell létrehozni, különböző időközönként (azaz, 15, 30, 45 perc minden óra után)
 
 ![9. lépés][9]
 
 ### <a name="step-3"></a>3. lépés
 
-Kattintson a Mentés menteni az ütemezést a runbookhoz.
+Kattintson a Mentés gombra az ütemezés a runbookhoz.
 
 ![10. lépés][10]
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerhesse a integrálása az Azure Automation szolgáltatásban hibaelhárítási hálózati figyelőt, megtudhatja, hogyan csomag rögzíti a virtuális gép riasztásokat kiváltó ellátogatva [hozzon létre egy riasztási kiváltott csomagrögzítéssel Azure hálózati figyelőt](network-watcher-alert-triggered-packet-capture.md).
+Most, hogy rendelkezik egy-egy Network Watcher hibaelhárítása az Azure Automation integrálása, megtudhatja, hogyan aktiválhat a virtuális gép riasztásokat csomagrögzítés funkcionáló [Azure Network WatcherHozzonlétreegyaktiváltriasztáscsomagrögzítés](network-watcher-alert-triggered-packet-capture.md).
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

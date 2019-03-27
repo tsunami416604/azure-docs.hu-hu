@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160904"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486847"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
@@ -25,6 +25,13 @@ A b2clogin.com használata lehetővé teszi további előnyökkel, például:
 
 - A cookie-k fejlécében a Microsoft-szolgáltatások által felhasznált terület csökken.
 - Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`.
+
+>[!NOTE]
+> Használhatja a bérlő nevével és a bérlő GUID módon:
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (amely még mindig hivatkozik `onmicrosoft.com`)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (ebben az esetben nincs nem Microsoft mutató hivatkozás egyáltalán)
+>
+> Azonban nem használható egy _egyéni tartomány_ az Azure Active Directory B2C-bérlőben, pl. `https://your-tenant-name.b2clogin.com/your-custom-domain-name` lenne _nem_ működik.
 
 Vegye figyelembe ezeket a beállításokat, előfordulhat, hogy módosítania kell a b2clogin.com használata esetén:
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961295"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486138"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -63,8 +63,8 @@ A **OrchestrationStep** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Rendelés | Igen | A vezénylési lépéseinek sorrendjét. | 
-| Typo | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
+| `Order` | Igen | A vezénylési lépéseinek sorrendjét. | 
+| `Type` | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
 | ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa, ha a vezénylési lépés típusát a következők egyikét: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`. Az Azure AD B2C kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
 | CpimIssuerTechnicalProfileReferenceId | Nem | A vezénylési lépés típusa `SendClaims`. Ez a tulajdonság határozza meg, hogy a jogcímszolgáltató jogcímszolgáltató-kibocsátja a jogkivonatot a függő entitás technikai profil azonosítója.  Ha hiányoznak, nem megbízható függő entitás jogkivonat jön létre. |
 
@@ -92,8 +92,8 @@ A **előfeltétel** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Typo | Igen | Ügyfélellenőrzés, vagy a lekérdezés végrehajtásához az előfeltétel típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy **ClaimEquals**, ami azt jelenti, hogy a műveletek kell elvégezni, ha a megadott jogcím létezik, és annak értéke a megadott érték egyenlő. |
-| ExecuteActionsIf | Igen | Egy igaz vagy hamis teszt segítségével döntse el, ha a másnak az előfeltétele a műveleteket kell elvégezni. | 
+| `Type` | Igen | Ügyfélellenőrzés, vagy a lekérdezés végrehajtásához az előfeltétel típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy **ClaimEquals**, ami azt jelenti, hogy a műveletek kell elvégezni, ha a megadott jogcím létezik, és annak értéke a megadott érték egyenlő. |
+| `ExecuteActionsIf` | Igen | Egy igaz vagy hamis teszt segítségével döntse el, ha a másnak az előfeltétele a műveleteket kell elvégezni. | 
 
 A **előfeltétel** elemeket a következő elemeket tartalmazza:
 

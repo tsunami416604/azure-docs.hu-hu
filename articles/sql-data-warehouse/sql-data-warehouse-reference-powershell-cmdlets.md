@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0310a74986f86e072e3ee0fa81df36a03d2e5117
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 10ba16fc06a4678c7bd70cbb7e6797b8d9be8ff4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409941"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485119"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-parancsmagok és a REST API-k, az SQL Data warehouse-hoz
 Az SQL Data Warehouse számos feladat az Azure PowerShell-parancsmagok vagy a REST API-k használatával kezelhetők.  Az alábbiakban néhány példa bemutatja, hogyan automatizálhatja a gyakori feladatokat az SQL Data Warehouse a PowerShell-parancsok használatával.  Néhány hasznos REST példák: a cikk [kezelése a REST-tel méretezhetőség][Manage scalability with REST].
@@ -26,7 +26,7 @@ Az SQL Data Warehouse számos feladat az Azure PowerShell-parancsmagok vagy a RE
 1. Nyissa meg a Windows PowerShellt.
 2. A PowerShell-parancssorba futtassa ezeket a parancsokat, az Azure Resource Managerrel való bejelentkezéshez, és válassza ki az előfizetését.
    
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     Get-AzSubscription
     Select-AzSubscription -SubscriptionName "MySubscription"

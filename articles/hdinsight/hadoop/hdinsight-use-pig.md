@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 3f4f99a37718fac3ae4baa14553290d63c7bce63
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 2b0f3a4394267a808b6e6e0a73abfaf1e698ff1c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653968"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445025"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -107,7 +107,7 @@ Az SQL Server Integration Services (SSIS) használatával egy Pig feladatot futt
 
 * [Az Azure HDInsight Pig-tevékenység][pigtask]
 
-* [Az Azure előfizetés Csatlakozáskezelő][connectionmanager]
+* [Azure Subscription Connection Manager][connectionmanager]
 
 További információ az Azure Feature Pack for SSIS [Itt][ssispack].
 
@@ -117,7 +117,7 @@ Most, hogy megtanulhatta, hogyan lehet a Pig használata a HDInsight, egyéb mó
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md)
 * [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
 * [A HDInsight Apache Sqoop használata](hdinsight-use-sqoop.md)
-* [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie.md)
+* [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie-linux-mac.md)
 * [HDInsight MapReduce-feladatok használata][hdinsight-use-mapreduce]
 
 [apachepig-home]: https://pig.apache.org/

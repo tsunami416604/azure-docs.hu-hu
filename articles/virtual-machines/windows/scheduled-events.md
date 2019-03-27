@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c9bd14128a6874f06983aa99ebb5a8a9a85843a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550675"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486733"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépeken ütemezett események
 
@@ -46,7 +46,9 @@ Számos alkalmazás fel a virtuális gép karbantartási idő is kihasználhatj�
 
 Az ütemezett események biztosítja az események a következő esetekben használja:
 - A platform által kezdeményezett karbantartás (pl. gazdagép operációsrendszer-frissítés)
+- Csökkentett teljesítményű hardver
 - Felhasználó által kezdeményezett karbantartás (például felhasználói újraindítása vagy újbóli üzembe helyezése egy virtuális gép)
+- [Alacsony prioritású virtuális gép kiürítési](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) beállítja a méretezési csoportban
 
 ## <a name="the-basics"></a>Alapismeretek  
 
@@ -55,15 +57,16 @@ Az Azure Metadata szolgáltatás tesz elérhetővé az információkat a futó v
 ### <a name="endpoint-discovery"></a>Végpont felderítése
 A virtuális Hálózatot használó virtuális gépekről, a metaadatok szolgáltatás érhető el statikus nem irányítható IP-cím, `169.254.169.254`. A teljes végpont az ütemezett eseményekről legújabb verzióját a következő: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
 
 Ha a virtuális gép nem jön létre egy virtuális hálózatban, az alapértelmezett esetben a felhőszolgáltatásokat és a klasszikus virtuális gépeket, további logikát Fedezze fel az IP-cím használata szükséges. Tekintse meg ezt a mintát, megtudhatja, hogyan [a gazdagép-végpont felderítése](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Verzió és -régiók rendelkezésre állása
-Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verziók kötelező, és a jelenlegi verzió `2017-08-01`.
+Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verziók kötelező, és a jelenlegi verzió `2017-11-01`.
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - |
+| 2017-11-01 | Általános rendelkezésre állás | Összes | <li> Alacsony prioritású virtuális gép kiürítési "Preempt" eseménytípus támogatása<br> | 
 | 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 
 | 2017-03-01 | Előzetes verzió | Összes |<li>Kezdeti kiadás
 
@@ -90,7 +93,7 @@ Előfordulhat, hogy a metaadat-szolgáltatás, meg kell adnia a fejléc `Metadat
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
 ```
 
 A válasz az ütemezett események tömbjét tartalmazza. Üres tömb, az azt jelenti, hogy jelenleg nem tartoznak események ütemezve.
@@ -101,7 +104,7 @@ Abban az esetben, ahol az ütemezett események, a válasz események tömbjét 
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -116,7 +119,7 @@ A DocumentIncarnation ETag, és vizsgálja meg, ha az esemény hasznos adatai m�
 |Tulajdonság  |  Leírás |
 | - | - |
 | EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érinti a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). |
+| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érinti a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
 | ResourceType | Ez az esemény hatással van az erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
 | További források| Ez az esemény hatással van az erőforrások listájában. Ez legfeljebb egy gépeket tartalmaznak garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmazhat a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Eseményállapot | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél áll rendelkezésre; az esemény már nem adható vissza, ha az esemény befejeződött.
@@ -130,6 +133,7 @@ Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű 
 | Rögzítése| 15 perc |
 | Újraindítás | 15 perc |
 | Ismételt üzembe helyezés | 10 perc |
+| Megelőzik az | 30 másodperc |
 
 ### <a name="event-scope"></a>Esemény hatókör     
 Ütemezett kézbesíti az eseményeket:        
@@ -156,7 +160,7 @@ Az alábbiakban található a várt json a `POST` kérelem törzse. A kérés ta
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
 ```
 
 > [!NOTE] 
@@ -167,7 +171,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 
 Az alábbi minta ütemezett események a metaadatok szolgáltatást, és hagyja jóvá a szálankénti függőben lévő eseményekhez.
 
-```PowerShell
+```powershell
 # How to get scheduled events 
 function Get-ScheduledEvents($uri)
 {
@@ -202,7 +206,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-08-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

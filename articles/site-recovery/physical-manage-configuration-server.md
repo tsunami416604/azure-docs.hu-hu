@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 338c4a97bced7d9e524f96fcd82f19e5230ff143
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b4a35cb853326aa3e54c7b261eaa72f15929a84c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317340"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483964"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -158,7 +158,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
 6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
 7. Futtassa az alábbi parancsot:
 
-   ```PowerShell
+   ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
    net stop obengine
@@ -178,7 +178,7 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
 6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
 7. A következő parancs futtatásával
 
-    ```PowerShell
+    ```powershell
     $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
     net stop obengine
@@ -265,7 +265,7 @@ A kiszolgáló frissítése a következőképpen:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Vagy a kiszolgáló regisztrációjának konfigurációs kiszolgáló (PowerShell)
 
-1. [Telepítés](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell-modul
+1. [Telepítés](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Azure PowerShell-modul
 2. Jelentkezzen be a parancsot az Azure-fiókjába
     
     `Connect-AzureRmAccount`
@@ -274,7 +274,7 @@ A kiszolgáló frissítése a következőképpen:
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  Most már a tárolási környezet beállítása
     
-    ```PowerShell
+    ```powershell
     $Vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $Vault
     ```

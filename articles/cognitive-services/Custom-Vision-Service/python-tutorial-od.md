@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 152194a44c549329e94d57fd3253a667ec95d480
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 15c7df52dcc2b9ab6977ee9d67d7997ff8b14287
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351830"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485968"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Gyors útmutató: A Custom Vision Python SDK-val objektum észlelési projekt létrehozása
 
-Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a Python együttes használatával egy objektumészlelési modell létrehozása céljából. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
+Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen a Custom Vision SDK és a Python együttes használatával egy objektumészlelési modell létrehozása céljából. A létrehozást követően, akkor is címkézett régiók hozzáadása, tölthet fel képeket, betanítását a projekt, a projekt közzétett előrejelzési végponti URL-cím beszerzése és ezt a végpont programozott módon képet. Használja sablonként a példát a saját Python-alkalmazása létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Ez a cikk ahhoz biztosít információt és mintakódot, hogy megismerkedhessen 
 
 A Pythonhoz készült Custom Vision Service SDK telepítéséhez futtassa a következő parancsot a PowerShellben:
 
-```PowerShell
+```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
@@ -57,11 +57,14 @@ ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 # Replace with a valid key
 training_key = "<your training key>"
 prediction_key = "<your prediction key>"
+prediction_resource_id = "<your prediction resource id>"
+
+publish_iteration_name = "detectModel"
 
 trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
 
 # Find the object detection domain
-obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection")
+obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection" and domain.name == "General")
 
 # Create a new project
 print ("Creating project...")
@@ -135,6 +138,9 @@ scissors_image_regions = {
 Ezután használja ezt a társítási térképet a mintaképek feltöltéséhez a régiókoordinátáikkal együtt. Adja hozzá a következő kódot.
 
 ```Python
+# Update this with the path to where you downloaded the images.
+base_image_url = "<path to the images>"
+
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -143,23 +149,27 @@ for file_name in fork_image_regions.keys():
     x,y,w,h = fork_image_regions[file_name]
     regions = [ Region(tag_id=fork_tag.id, left=x,top=y,width=w,height=h) ]
 
-    with open("images/fork/" + file_name + ".jpg", mode="rb") as image_contents:
+    with open(base_image_url + "images/fork/" + file_name + ".jpg", mode="rb") as image_contents:
         tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
 
 for file_name in scissors_image_regions.keys():
     x,y,w,h = scissors_image_regions[file_name]
     regions = [ Region(tag_id=scissors_tag.id, left=x,top=y,width=w,height=h) ]
 
-    with open("images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
+    with open(base_image_url + "images/scissors/" + file_name + ".jpg", mode="rb") as image_contents:
         tagged_images_with_regions.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), regions=regions))
 
-
-trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
+upload_result = trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
+if not upload_result.is_batch_successful:
+    print("Image batch upload failed.")
+    for image in upload_result.images:
+        print("Image status: ", image.status)
+    exit(-1)
 ```
 
-### <a name="train-the-project"></a>A projekt tanítása
+### <a name="train-the-project-and-publish"></a>A projekt betanítás, közzététel
 
-Ez a kód létrehozza az első iterációt a projektben, és alapértelmezett iterációként jelöli meg. Az alapértelmezett iteráció azt a modellverziót tükrözi, amely válaszolni fog az előrejelzési kérésekre. Mindig frissítse a modell újbóli betanításakor.
+Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
 
 ```Python
 import time
@@ -171,12 +181,12 @@ while (iteration.status != "Completed"):
     print ("Training status: " + iteration.status)
     time.sleep(1)
 
-# The iteration is now trained. Make it the default project endpoint
-trainer.update_iteration(project.id, iteration.id, is_default=True)
+# The iteration is now trained. Publish it to the project endpoint
+trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>Szerezze meg és használja az alapértelmezett előrejelzési végpontot
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Letöltheti a közzétett ismétléseinek előrejelzési végpont
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -188,19 +198,19 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 # Open the sample image and get back the prediction results.
-with open("images/Test/test_od_image.jpg", mode="rb") as test_data:
-    results = predictor.predict_image(project.id, test_data, iteration.id)
+with open(base_image_url + "images/Test/test_od_image.jpg", mode="rb") as test_data:
+    results = predictor.detect_image(project.id, publish_iteration_name, test_data)
 
-# Display the results.
+# Display the results.    
 for prediction in results.predictions:
-    print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
+    print("\t" + prediction.tag_name + ": {0:.2f}% bbox.left = {1:.2f}, bbox.top = {2:.2f}, bbox.width = {3:.2f}, bbox.height = {4:.2f}".format(prediction.probability * 100, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height))
 ```
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa a *sample.py* fájlt.
 
-```PowerShell
+```powershell
 python sample.py
 ```
 

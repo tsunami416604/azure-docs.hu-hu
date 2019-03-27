@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec441835d4c409d0d8c1fad66c41cef2eb462105
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8f60cce99606b1a92cba62847b060c49cb0c2c0d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436444"
+ms.locfileid: "58485255"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Gyors útmutató: Szimulált X.509-eszköz használata az Azure IoT C SDK kiépítése
 
@@ -49,7 +49,7 @@ Ebben a szakaszban egy fejlesztői környezetet készítünk elő az [Azure IoT 
 
     Az alábbi példa a kriptográfiai kivonatokat a x64 3.13.4 verziójának ellenőrzéséhez használja a Windows PowerShell MSI terjesztési:
 
-    ```PowerShell
+    ```powershell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
     PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
@@ -139,7 +139,7 @@ Az Azure IoT C SDK mintakódját használja majd a szimulált eszköz egyéni re
 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
-    - **Mechanizmus:** Válassza az X.509 elemet az identitás igazolási *Mechanizmusaként*.
+    - **Mechanizmus:** Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
     - **Elsődleges tanúsítvány .pem or .cer fájlja:** Kattintson a **válasszon ki egy fájlt** a tanúsítványfájlt, X509testcert.pem, válassza ki a korábban létrehozott.
     - **IoT Hub-Eszközazonosító:** Adja meg **test-docs-cert-device** biztosíthat az eszköz azonosítója.
 

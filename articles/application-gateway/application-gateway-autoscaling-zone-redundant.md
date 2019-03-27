@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544037"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444825"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -29,6 +29,29 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 > Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
+
+Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja össze.
+
+|                                                   | V1 Termékváltozatot   | v2 szintű Termékváltozatot   |
+| ------------------------------------------------- | -------- | -------- |
+| Automatikus skálázás                                       |          | &#x2713; |
+| A Zone redudancy                                   |          | &#x2713; |
+| &nbsp;Statikus virtuális IP-cím&nbsp;&nbsp;                      |          | &#x2713; |
+| URL-alapú útválasztás                                 | &#x2713; | &#x2713; |
+| Több hely üzemeltetése                             | &#x2713; | &#x2713; |
+| Forgalom átirányítása                               | &#x2713; | &#x2713; |
+| Webalkalmazási tűzfal (WAF)                    | &#x2713; | &#x2713; |
+| Secure Sockets Layer- (SSL-) lezárás            | &#x2713; | &#x2713; |
+| Végpontok közötti SSL-titkosítás                         | &#x2713; | &#x2713; |
+| Munkamenet-affinitás                                  | &#x2713; | &#x2713; |
+| Egyéni hibalapok                                | &#x2713; | &#x2713; |
+| HTTP (S) fejlécek újraírása                           |          | &#x2713; |
+| WebSocket támogatás                                 | &#x2713; | &#x2713; |
+| HTTP/2-támogatás                                    | &#x2713; | &#x2713; |
+| Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
+| Az Azure Kubernetes Service (AKS) Bejövőforgalom-vezérlőt |          | &#x2713; |
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -48,7 +71,7 @@ Az előzetes időszakban nem jár költségekkel. Fizetnie kell application Gate
 |NSG bejövő port-tartomány| -65200 – 65535 Standard_v2 Termékváltozat<br>-65503 65534 Standard Termékváltozat esetében.<br>További információkért lásd: a [– gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Teljesítmény az Azure-beli diagnosztikai naplók|Nem támogatott.<br>Az Azure-metrikák kell használni.|
 |Számlázás|Nincs, jelenleg nincs számlázási.|
-|FIPS-módban, WebSocket|Ezek jelenleg nem támogatottak.|
+|FIPS-módban|Ezek jelenleg nem támogatottak.|
 |ILB mód|Ez jelenleg nem támogatott. Nyilvános és ILB mód együtt használható.|
 |Netwatcher integráció|A nyilvános előzetes verzióban nem támogatott.|
 

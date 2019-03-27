@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101091"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447221"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel
 
@@ -39,9 +39,10 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza ki a **új** > **adatok + analitika** > **adat-előállító**:
+1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**:
    
-   ![Új adat-előállító létrehozása](./media/load-azure-data-lake-storage-gen2/new-azure-data-factory-menu.png)
+   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 2. Az a **új adat-előállító** lap, adja meg a mezőket az alábbi képen látható: 
       
    ![Új adat-előállító lap](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)

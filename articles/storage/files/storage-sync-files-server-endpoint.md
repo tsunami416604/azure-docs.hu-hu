@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 68f21ef70b402fe45613fdcbda3074bac1d4eb5a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: aa5f8aaef21967a23505c785eb8ef811cf5767cc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464959"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486445"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Az Azure File Sync-kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -51,7 +51,7 @@ Ha ezt később is megteheti az Azure File Sync használatával egy adott kiszol
 
 Győződjön meg arról, hogy az összes rétegzett fájlok idézni vannak-e a kiszolgálói végpont eltávolítása előtt, tiltsa le a felhőbeli rétegezést a kiszolgálói végpontot, és végre a következő PowerShell-parancsmag előhívja a kiszolgálói végpont névtérben lévő összes rétegzett fájlok:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```

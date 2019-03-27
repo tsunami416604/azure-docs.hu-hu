@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 7e401fe099a4e18573ccfe2aacda6068c37abfb7
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00684df614771437f33655538a808468ee778d29
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352051"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487005"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Gyors útmutató: Objektum észlelési projekt létrehozása a Javához készült egyéni Látástechnológiai SDK-val
 
@@ -43,7 +43,7 @@ Ez a Java-projekt létrehoz egy új objektumészlelési Custom Vision-projektet 
 
 A program a konfigurációja szerint az azonosító adatait környezeti változókként tárolja. A változók beállításához lépjen a **Vision/CustomVision** mappára a PowerShellben. Ezután írja be a következő parancsokat:
 
-```PowerShell
+```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
@@ -76,9 +76,9 @@ Az előző kódrészlet két segédfüggvényt használ, amelyek a képeket erő
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=277-314)]
 
-### <a name="train-the-project"></a>A projekt tanítása
+### <a name="train-the-project-and-publish"></a>A projekt betanítás, közzététel
 
-Ez a kód létrehozza az első iterációt a projektben, és alapértelmezett iterációként jelöli meg. Az alapértelmezett iteráció azt a modellverziót tükrözi, amely válaszolni fog az előrejelzési kérésekre. Mindig frissítse a modell újbóli betanításakor.
+Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=233-242)]
 
@@ -92,7 +92,7 @@ Az előrejelzési végpont (itt a `predictor` objektum jelöli) az a hivatkozás
 
 A megoldás a Mavennel való fordításához és futtatásához futtassa a következő parancsot a PowerShellben lévő projektkönyvtárban:
 
-```PowerShell
+```powershell
 mvn compile exec:java
 ```
 

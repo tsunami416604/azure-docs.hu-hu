@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 12c0ee08435ca4b3077bc3a8c28b217ebaf70e08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f47e9fd8842f9884ced290385e5f647fac57bc13
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993319"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484982"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
 
@@ -31,7 +31,7 @@ Az első lépéseként fel kell hitelesíteni a kérelmet.
 
 Az Azure Monitor API ellen végrehajtott összes feladatot használja az Azure Resource Manager-hitelesítési modellre. Ezért minden kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesítés egyik módja, hogy az Azure AD egyszerű szolgáltatás létrehozása és a hitelesítéshez (JWT-) token lekérése. Az alábbi parancsprogram azt ismerteti, hogy az Azure AD PowerShell-lel egyszerű szolgáltatásnév létrehozása. A részletes lépésenkénti útmutatóért tekintse meg a dokumentációt a [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Emellett lehetőség [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-```PowerShell
+```powershell
 $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
@@ -60,7 +60,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 Az Azure Monitor API lekérdezéséhez, az ügyfélalkalmazás használ a korábban létrehozott szolgáltatásnevet hitelesítéshez. Az alábbi példa PowerShell-példaszkript bemutatja egy megközelítést használ a [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) a JWT-hitelesítési token beszerzése. A JWT jogkivonat egy engedélyezési HTTP paraméter, a kérelmek részeként az Azure Monitor REST API kerülnek.
 
-```PowerShell
+```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
 
 $subscription = Get-AzSubscription -SubscriptionId $subscriptionId
@@ -102,7 +102,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://docs.micro
 
 Ha például lekérdezheti az Azure Storage-fiókhoz tartozó metrikadefiníciók, a kérelem lenne a következőképpen jelenik meg:
 
-```PowerShell
+```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
 
 Invoke-RestMethod -Uri $request `
@@ -246,7 +246,7 @@ A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérel
 
 Például lettek kibocsátva a "API-név dimenzió" a "Tranzakció" metrika ahol dimenzió értékek listájának beolvasása a GeoType dimenzió = "Elsődleges" a megadott időtartományban a kérés a következő lenne:
 
-```PowerShell
+```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
@@ -319,7 +319,7 @@ A metrika neve "értéke" (nem a "localizedValue") használja a szűrési kérel
 
 Például beolvasni az első 3 API-k, csökkenő érték szerint a "Tranzakciók" 5 perc széles során, a GeotType lett-e az "elsődleges", a kérelem a következő lenne:
 
-```PowerShell
+```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&`$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
@@ -398,7 +398,7 @@ Használja a [Azure Monitor metrikadefiníciók REST API-val](https://msdn.micro
 
 Például egy Azure Logic App metrikadefinícióinak lekéréséhez a kérelem lenne a következőképpen jelenik meg:
 
-```PowerShell
+```powershell
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01"
 
 Invoke-RestMethod -Uri $request `
@@ -471,7 +471,7 @@ Miután a rendelkezésre álló metrikadefinícióinak ismertek, ezt követően 
 
 Például lekérdezheti az RunsSucceeded metrika adatpontok az adott időtartományt és a egy metrikaindítójának aggregációs időköze 1 óra, a kérelem a következő lesz a következő:
 
-```PowerShell
+```powershell
 $filter = "(name.value eq 'RunsSucceeded') and aggregationType eq 'Total' and startTime eq 2017-08-18T19:00:00 and endTime eq 2017-08-18T23:00:00 and timeGrain eq duration'PT1H'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
@@ -519,7 +519,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 
 Több adatokat vagy összesítési pont lekéréséhez adja hozzá a metrikai meghatározásainak nevek és típusú összesítést a szűrő, az alábbi példában látható módon:
 
-```PowerShell
+```powershell
 $filter = "(name.value eq 'ActionsCompleted' or name.value eq 'RunsSucceeded') and (aggregationType eq 'Total' or aggregationType eq 'Average') and startTime eq 2017-08-18T21:00:00 and endTime eq 2017-08-18T21:30:00 and timeGrain eq duration'PT1M'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
 Invoke-RestMethod -Uri $request `
@@ -631,7 +631,7 @@ Az erőforrás-azonosító az Azure Portalon is szerezhető be. Ehhez keresse me
 
 Az erőforrás-azonosítója, valamint az Azure PowerShell-parancsmagok használatával lehet beolvasni. Az erőforrás-azonosító beszerzése az Azure Logic Apps, például futtassa a Get-AzureLogicApp parancsmag az alábbi példában látható módon:
 
-```PowerShell
+```powershell
 Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
@@ -710,7 +710,7 @@ Az eredmény a következő példához hasonló lesz:
 
 Metrikadefiníciók és a kapcsolódó értékeket kívül is is lehet az Azure Monitor REST API használatával lekérheti az Azure-erőforrások kapcsolatos további érdekes elemzést. Tegyük fel, akkor lehet lekérdezés [tevékenységnapló](https://msdn.microsoft.com/library/azure/dn931934.aspx) adatokat. A következő minta azt mutatja be, egy Azure-előfizetés lekérdezési tevékenységnapló adatainak adott időtartományon belül, az Azure Monitor REST API használatával:
 
-```PowerShell
+```powershell
 $apiVersion = "2015-04-01"
 $filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
 $request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"

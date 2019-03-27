@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b9ab48ea971a5e7f5e9c72f9e729d2fcb5ed37f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437866"
+ms.locfileid: "58444659"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -29,6 +29,23 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 + **Új funkciók**
   + A *azureml.core.Run.create_children* módszer lehetővé teszi, hogy több gyermek közel valós idejű létrehozása egyetlen hívással futtatja.
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.0
+
++ **Használhatatlanná tévő változásai**
+  + Az adat-előkészítő csomag fogalma elavult, és már nem támogatott. Ahelyett, hogy egy csomag több adatfolyamot átlátni, megőrizheti a adatfolyamok külön-külön.
+    + Útmutató: [Nyitó és mentése adatfolyamok notebook](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **Új funkciók**
+  + Data Prep mostantól képes felismerni az oszlopokat, amelyek egy adott szemantikai megfelel, és ennek megfelelően fel. A jelenleg támogatott STypes tartalmazza: e-mail-cím, földrajzi koordinátákat (földrajzi szélesség és hosszúság), az IPv4 és IPv6-címek, Egyesült Államokbeli telefonszámok és az Amerikai.
+    + Útmutató: [Szemantikai típusok notebook](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + Adatelőkészítés mostantól támogatja a következő műveletek használatával hozzon létre egy eredő oszlopot két numerikus oszlopok: kivonása, szorzása, osztani, és a modulus.
+  + Meghívhatja `verify_has_data()` a ellenőrizze, hogy az adatfolyamot eredményezne rekordok, ha egy adatfolyamot.
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Mostantól megadhatja a használandó hisztogram a numerikus oszlopok profilok dobozok száma.
+  + A `read_pandas_dataframe` átalakítás mostantól csak az adathalmaz, hogy a karakterlánc - vagy bájt típusmegadású oszlopneveket.
+  + Kijavítva a hiba található a `fill_nulls` átalakítás, ahol értékeket is nem megfelelően tölti ki Ha az oszlop hiányzott.
 
 ## <a name="2019-03-11"></a>2019-03-11
 

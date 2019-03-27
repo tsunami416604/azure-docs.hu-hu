@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: 21119816477d460aa48560b8ca231f23144a901b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888493"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444877"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok szoftveres létrehozása
 
@@ -28,7 +28,7 @@ Ez a dokumentum végigvezeti a programozott módon létrehozása és közzétét
 
 ## <a name="overview"></a>Áttekintés
 
-Megosztott irányítópultok Azure is [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és a storage-fiókok.  Ezért azokat programozott módon keresztül kezelhetők a [Azure Resource Manager REST API-k](/rest/api/), a [Azure CLI-vel](https://docs.microsoft.com/cli/azure), [Azure PowerShell-parancsok](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0), és számos [ Az Azure portal](https://portal.azure.com) funkciói könnyebbé tenni az erőforrás-kezelés ezen API-k épülnek.  
+Megosztott irányítópultok Azure is [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és a storage-fiókok.  Ezért azokat programozott módon keresztül kezelhetők a [Azure Resource Manager REST API-k](/rest/api/), a [Azure CLI-vel](https://docs.microsoft.com/cli/azure), [Azure PowerShell-parancsok](https://docs.microsoft.com/powershell/azure/get-started-azureps), és számos [ Az Azure portal](https://portal.azure.com) funkciói könnyebbé tenni az erőforrás-kezelés ezen API-k épülnek.  
 
 Minden egyes ezen API-k és eszközök kínál módon hozhat létre, a listában, beolvasása, módosításához és törléséhez az erőforrásokat.  Mivel az irányítópultok erőforrásokat, válassza ki a kedvenc API-hoz, illetve eszköz használata.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5fa553d63a33f06432d8ae3e5247d7eca0fde90a
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351898"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487787"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -283,12 +283,12 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
 2. Váltson arra a C:\Program Files\Microsoft integrációs Runtime\3.0\PowerShellScript\ mappára.
 3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. Kapcsolja be újra be:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
 3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
 
     Átjáró magas rendelkezésre állású szolgáltatás egy extra AuthKey param szükség.
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. Kapcsolja be újra be:
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -485,12 +485,12 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
 1. Indítsa el a **Azure PowerShell-lel** rendszergazdai módban.
 2. Jelentkezzen be az Azure-fiókjába a következő parancs futtatásával, és az Azure hitelesítő adatok megadása.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. Használja a **New-AzDataFactoryGateway** logikai-átjárók létrehozására a következő parancsmagot:
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **A példában szereplő parancs és a kimeneti**:
@@ -513,7 +513,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
 
 1. Az Azure PowerShellben váltson arra a mappára: **C:\\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Futtatás **RegisterGateway.ps1** a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     ```
     Az átjáró egy távoli gépen a IsRegisterOnRemoteMachine paraméter használatával regisztrálhatja. Példa:
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. Használhatja a **Get-AzDataFactoryGateway** az átjárók listájának beolvasása a data Factory-parancsmagot. Ha a **állapot** látható **online**, ez azt jelenti, hogy az átjáró készen áll a használatra.
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    Egy átjáró használatával eltávolíthatja a **Remove-AzDataFactoryGateway** egy átjáró használatával a parancsmag és a frissítés leírását a **Set-AzDataFactoryGateway** parancsmagok. Szintaxist és egyéb részletek ezekről a parancsmagokról lásd: a Data Factory parancsmagjainak leírása.  
 
 ### <a name="list-gateways-using-powershell"></a>Lista átjárókon a PowerShell használatával
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>Távolítsa el a gatewayen a PowerShell használatával
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

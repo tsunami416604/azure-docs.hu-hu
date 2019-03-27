@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f333b626fa51fa60f80350547ee53f346d6cc3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436767"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486971"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Létrehozása, figyelése és kezelése az Azure data factoryt az Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -44,17 +44,17 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 1. Indítsa el a **PowerShellt**.
 2. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét.
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
@@ -63,7 +63,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 
 5. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben.
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
@@ -72,28 +72,28 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
     Ha másik erőforráscsoportot használ, használja ehelyett saját erőforráscsoportja nevét, amikor az oktatóanyag az ADFTutorialResourceGroup csoportra utal.
 6. Hozzon létre egy Azure Active Directory-alkalmazást.
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication = New-AzADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
     Ha az alábbi hiba jelenik meg, adjon meg egy másik URL-címet, és futtassa ismét a parancsot.
     
-    ```PowerShell
+    ```powershell
     Another object with the same value for property identifierUris already exists.
     ```
 7. Hozza létre az AD-szolgáltatásnevet.
 
-    ```PowerShell
+    ```powershell
     New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. Adja hozzá a szolgáltatásnevet a **Data Factory közreműködője** szerepkörhöz.
 
-    ```PowerShell
+    ```powershell
     New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. Szerezze be az alkalmazásazonosítót.
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication 
     ```
     Írja le az alkalmazásazonosítót (a parancs kimenetében szereplő applicationID paraméter értéke).

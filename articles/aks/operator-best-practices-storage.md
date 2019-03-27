@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 691decb88188a428edfeab1ea9e99c48876b6d9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110074"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496174"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a tárolási és biztonsági másolatokat az Azure Kubernetes Service (AKS)
 
@@ -91,9 +91,9 @@ Tárolási osztály lehetőségekkel kapcsolatos további információkért lás
 
 ## <a name="secure-and-back-up-your-data"></a>Biztonságos és az adatok biztonsági mentése
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – használja a megfelelő eszköz a tárolási típus, például Heptio Ark vagy az Azure Site Recovery az adatok biztonsági mentése. Győződjön meg arról, és biztonsági, az ezeket a biztonsági mentéseket.
+**Ajánlott eljárásokkal kapcsolatos útmutatás** – használja a megfelelő eszköz a tárolási típus, például Velero vagy az Azure Site Recovery az adatok biztonsági mentése. Győződjön meg arról, és biztonsági, az ezeket a biztonsági mentéseket.
 
-Amikor az alkalmazások tárolására és felhasználását adatait megőrzi a lemezen, vagy a fájlokat, kell tennie a rendszeres biztonsági mentést, vagy az adatok pillanatképeit. Az Azure Disks beépített pillanatkép technológiákat használhatnak fel. Szükség lehet az alkalmazások kiüríteni a lemezre, a pillanatkép-készítési művelet végrehajtása előtt ír hurok. [Heptio Ark] [ heptio-ark] további fürterőforrások és konfigurációkkal állandó kötetek biztonsági mentése. Ha nem tudja [állapot eltávolítása az alkalmazások][remove-state], biztonsági mentése az adatok állandó kötetekről, és rendszeresen tesztelje a visszaállítási műveleteket, ellenőrizze az adatok integritásának megőrzése, és a szükséges folyamatokat.
+Amikor az alkalmazások tárolására és felhasználását adatait megőrzi a lemezen, vagy a fájlokat, kell tennie a rendszeres biztonsági mentést, vagy az adatok pillanatképeit. Az Azure Disks beépített pillanatkép technológiákat használhatnak fel. Szükség lehet az alkalmazások kiüríteni a lemezre, a pillanatkép-készítési művelet végrehajtása előtt ír hurok. [Velero] [ velero] további fürterőforrások és konfigurációkkal állandó kötetek biztonsági mentése. Ha nem tudja [állapot eltávolítása az alkalmazások][remove-state], biztonsági mentése az adatok állandó kötetekről, és rendszeresen tesztelje a visszaállítási műveleteket, ellenőrizze az adatok integritásának megőrzése, és a szükséges folyamatokat.
 
 Ismerje meg, az adatok biztonsági mentése, és ha kell fokozatosan leválasztani az adatokat a pillanatkép más megközelítést vonatkozó korlátozások. Adatok biztonsági mentése nem feltétlenül lehetővé teszik a fürt üzembe helyezése az alkalmazás-környezet helyreállításához. Ezen forgatókönyvekkel kapcsolatos további információkért lásd: [ajánlott eljárások az üzleti folytonossági és vészhelyreállítási helyreállítási az aks-ben][best-practices-multi-region].
 
@@ -102,7 +102,7 @@ Ismerje meg, az adatok biztonsági mentése, és ha kell fokozatosan leválaszta
 Storage ajánlott eljárások az aks-ben összpontosított ebben a cikkben. A Kubernetes storage alapjait kapcsolatos további információkért lásd: [Fájltárolóval kapcsolatos fogalmak az aks-ben alkalmazásokhoz][aks-concepts-storage].
 
 <!-- LINKS - External -->
-[heptio-ark]: https://github.com/heptio/ark
+[velero]: https://github.com/heptio/velero
 [dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 

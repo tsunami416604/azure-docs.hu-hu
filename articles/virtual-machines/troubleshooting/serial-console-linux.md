@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010991"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445660"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Linuxos virtuális gépek soros konzolja
 
@@ -41,9 +41,9 @@ Windows virtuális gépek soros konzol dokumentációjáért lásd: [a Windows v
 
 - A soros konzol használó fióknak rendelkeznie kell a [virtuális gépek Közreműködője szerepkör](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók:
 
-    - A virtuális gép, amelyben éri el a soros konzol jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban.
+- A virtuális gép, amelyben éri el a soros konzol jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban.
 
-    - Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
+- Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
 
 
 
@@ -85,12 +85,11 @@ Egyéni Linux-rendszerképek     | A Linux rendszerű virtuális gép egyéni re
 
 Forgatókönyv          | A soros konzol műveletek
 :------------------|:-----------------------------------------
-Hibás *FSTAB* fájl | Nyomja le az **Enter** billentyűt a folytatáshoz, és a egy szövegszerkesztő segítségével hárítsa el a *FSTAB* fájlt. Előfordulhat, hogy kell lenniük ehhez egyfelhasználós módban. További információkért lásd: [fstab-hibák megoldása](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) és [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
-Helytelen tűzfal-szabályok | A soros konzol eléréséhez, és engedélyezze az iptables javítása.
-Fájlrendszer sérülése és ellenőrzése | A soros konzol eléréséhez, és a fájlrendszer helyreállítani.
-Az RDP/SSH konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat.
-Rendszer hálózati zárolása| A soros konzol eléréséhez a rendszer kezelését az Azure Portalról.
-A rendszertöltő használata | Indítsa újra a virtuális Gépet a soros konzol panelen a Linux rendszerű virtuális gépen lévő GRUB eléréséhez. További információkért lásd: [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
+Hibás *FSTAB* fájl | Nyomja le az **Enter** billentyűt a folytatáshoz, és a egy szövegszerkesztő segítségével hárítsa el a *FSTAB* fájlt. Előfordulhat, hogy kell lenniük ehhez egyfelhasználós módban. További információkért lásd: a soros konzol szakaszában [fstab-hibák megoldása](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) és [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
+Helytelen tűzfal-szabályok |  Engedélyezze az iptables SSH-kapcsolat blokkolására van beállítva, ha a soros konzol segítségével anélkül, hogy az SSH a virtuális gép kezelése. További részleteket tekinthet meg a [engedélyezze az iptables ember lap](https://linux.die.net/man/8/iptables). Ehhez hasonlóan ha Ön firewalld SSH-hozzáférését blokkolja, hozzáférhet a virtuális gép soros konzolon keresztül és firewalld újrakonfigurálása. További részletek találhatók a [firewalld dokumentáció](https://firewalld.org/documentation/).
+Fájlrendszer sérülése és ellenőrzése | Tekintse át a soros konzol szakaszában [Azure Linux rendszerű virtuális gép nem indítható el miatt fájlrendszer hibáinak](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) további hibaelhárítási részleteket sérült fájlrendszerek soros konzol használatával.
+SSH konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat. Soros konzol használható függetlenül a virtuális gépek SSH-konfigurációja nem követeli meg a virtuális gép hálózati kapcsolat működjön. Hibaelhárítási útmutató érhető el: [hibaelhárítása SSH kapcsolatok az Azure Linux rendszerű virtuális géphez, amelyek nem sikerül, hibák, vagy elutasítják](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). További részletek [részletes SSH hibaelhárítási lépései Linux rendszerű virtuális gép az Azure-ban való csatlakozással kapcsolatos problémákat](./detailed-troubleshoot-ssh-connection.md)
+A rendszertöltő használata | Indítsa újra a virtuális Gépet a soros konzol panelen a Linux rendszerű virtuális gépen lévő GRUB eléréséhez. További részletek és disztribúció kapcsolatos információkat lásd: [GRUB és egyfelhasználós üzemmódban használja a soros konzol](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. A soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén is letilthatja.

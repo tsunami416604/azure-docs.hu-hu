@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 6b06ee7710dedbf2283fc4e365b767aa57547e7c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 0e5e4e207542a74ef3fc5ff7fc78431b7956e54c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417819"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449257"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálókhoz
 
@@ -43,7 +43,8 @@ A mobilitási ügynök leküldéses telepítése során az alábbi lépéseket k
 2. Ügynök sikeresen be másolása után az előfeltételeinek ellenőrzése történik a kiszolgálón. Telepítés sikertelen lesz, ha egy vagy több, a [Előfeltételek](vmware-physical-azure-support-matrix.md) nem teljesülnek. Ha minden előfeltétel teljesül, a telepítés akkor indul el.
 3. Az Azure Site Recovery VSS provider telepítve van a kiszolgálón a mobilitási ügynök telepítésének részeként. Ez a szolgáltató alkalmazás konzisztens pontok létrehozására szolgál. VSS-szolgáltató telepítése nem sikerül, ha ez a lépés kimarad, és továbbra is az ügynök telepítése.
 4. Ha az ügynök telepítése sikeresen befejeződik, de a VSS-szolgáltató telepítése sikertelen lesz, majd feladat állapota – "Figyelmeztetés" van megjelölve. Ez nincs hatással az összeomlási konzisztencia pontok létrehozása.
-    a. Alkalmazás konzisztens pontokat létrehozni, tekintse meg [ügyfeleinket](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) manuálisan a Site Recovery VSS-szolgáltató telepítésének befejezéséhez.
+
+    a. Alkalmazás konzisztens pontokat létrehozni, tekintse meg [ügyfeleinket](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) manuálisan a Site Recovery VSS-szolgáltató telepítésének befejezéséhez. </br>
     b.  Ha nem szeretne alkalmazás konzisztens pontot kell létrehozni, [módosítani a replikációs szabályzat](vmware-azure-set-up-replication.md#create-a-policy) tiltsa le az alkalmazás konzisztens pontokat.
 
 ### <a name="before-922-versions"></a>Mielőtt 9.22 verziók

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821353"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487668"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet. Ez a kimenet egy hibaüzenet, a felhasználó vagy egy összetett objektumot egy másik runbookból a használni kívánt lehet. Windows PowerShell biztosít [több adatfolyam](/powershell/module/microsoft.powershell.core/about/about_redirection) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az Azure Automation eltérően működik az egyes ezekbe az adatfolyamokba. Ajánlott eljárások használata minden egyes runbook létrehozásakor kövesse.
@@ -35,7 +35,7 @@ A kimeneti adatfolyamba, objektumok, amelyek megfelelően olyan parancsfájl vag
 
 Adatokat írni a kimeneti adatfolyamhoz a [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) vagy az objektum saját sort a runbook helyezésével.
 
-```PowerShell
+```powershell
 #The following lines both write an object to the output stream.
 Write-Output –InputObject $object
 $object
@@ -46,7 +46,7 @@ Ha a függvény, amely tartalmazza a runbook a kimeneti adatfolyamba ír, a kime
 
 Vegye figyelembe a következő runbookot:
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   Write-Verbose "Verbose outside of function" -Verbose
@@ -90,7 +90,7 @@ A következő példa listáját kimeneti típusokat:
 
 Az alábbi példában a runbook kimenete egy karakterlánc-objektum, és határozza meg, a kimeneti típus tartalmazza. Ha a runbook kimenete egy tömb bizonyos típusú, majd meg kell továbbra is megadni, nem pedig egy tömb típusú.
 
-```PowerShell
+```powershell
 Workflow Test-Runbook
 {
   [OutputType([string])]
@@ -126,7 +126,7 @@ A figyelmeztetési és hibaadatfolyamok a runbookban előforduló problémákat 
 
 Hozzon létre egy figyelmeztető vagy hibaüzeneteket a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) parancsmagot. A tevékenységek is írhatnak adatokat ezekbe az adatfolyamokba.
 
-```PowerShell
+```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
 
 $ErrorActionPreference = "Stop"
@@ -141,7 +141,7 @@ Amikor [runbook tesztelése](automation-testing-runbook.md), nem a részletes ü
 
 Részletes üzenetet létrehozni a [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) parancsmagot.
 
-```PowerShell
+```powershell
 #The following line creates a verbose message.
 
 Write-Verbose –Message "This is a verbose message."
@@ -183,7 +183,7 @@ A Windows PowerShellben, lekérheti-kimenet és üzenetek runbookok a [Get-Azure
 
 A következő példában elindul a runbook, és megvárja, amíg az befejeződik. Ha befejeződött, a kimeneti adatfolyamot a feladatból gyűjti.
 
-```PowerShell
+```powershell
 $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
   –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 

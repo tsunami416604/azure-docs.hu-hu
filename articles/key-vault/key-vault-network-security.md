@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: 4b3225dd25fee2859a36f98add51fcf612a45c83
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108891"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487236"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Az Azure Key Vault-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -84,33 +84,33 @@ Ebben a cikkben részletes útmutatást nyújt az Azure Key Vault-tűzfalak és 
 1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps), és [jelentkezzen be a](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
 2. Elérhető a virtuális hálózati szabályok listája. Ha nem állított be ehhez a kulcstartóhoz tartozó szabályokat, a lista üres lesz.
-   ```PowerShell
+   ```powershell
    (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
 3. Szolgáltatásvégpont engedélyezése a Key vault a egy meglévő virtuális hálózatot és alhálózatot.
-   ```PowerShell
+   ```powershell
    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
 4. Adjon hozzá egy virtuális hálózatot és alhálózatot a hálózati szabályt.
-   ```PowerShell
+   ```powershell
    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
 5. Adjon hozzá egy IP-címtartományt, ahonnan a forgalom engedélyezéséhez.
-   ```PowerShell
+   ```powershell
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
 6. Ha ezt a kulcstartót kell lennie minden olyan megbízható szolgáltatások által elérhető, állítsa be `bypass` való `AzureServices`.
-   ```PowerShell
+   ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
 7. Kapcsolja be a hálózati szabályokat úgy, hogy az alapértelmezett művelet a `Deny`.
-   ```PowerShell
+   ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 

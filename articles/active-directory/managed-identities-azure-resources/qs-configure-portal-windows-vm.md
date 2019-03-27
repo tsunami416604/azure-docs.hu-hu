@@ -3,7 +3,7 @@ title: Konfigurálása felügyelt identitások az Azure-erőforrások egy Azure 
 description: Részletes utasításokat a felügyelt identitások az Azure-erőforrások egy Azure virtuális gépen az Azure portal használatával.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be360225de7fd4484b3d6b41480b73d93f12c4a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ab0a5b021048f0f684473d3f54bbeadf870cd007
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209642"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445308"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális gép az Azure portal használatával
 
@@ -79,7 +79,7 @@ Ha egy virtuális gép, amely már nincs szüksége a rendszer által hozzárend
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
  Ebben a szakaszban megismerheti, hogyan adhat hozzá, és a egy felhasználó által hozzárendelt felügyelt identitás eltávolítása egy virtuális Gépet az Azure portal használatával.
 

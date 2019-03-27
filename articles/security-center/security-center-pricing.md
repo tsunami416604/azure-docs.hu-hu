@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
-ms.openlocfilehash: 5f49de453f9cd694598918500a8ac0221937bdb1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 680e39b291cbaa1012cd972e188ab4e5f7aef694
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201687"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449004"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Átláthatóvá és ellenőrizhetővé hibrid felhőbeli számítási feladatokhoz, amely csökkenti a fenyegetéseket, és intelligens észlelés segít lépést tartani, gyorsan fejlődő kibertámadások aktív védelmet kínál.
@@ -49,7 +49,7 @@ A standard szintű csomag lekéréséhez:
 ![A Security Center díjszabása](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
-> Ahhoz, hogy az összes Security Center-szolgáltatásokat, telepítenie kell a Standard díjcsomag az előfizetés vagy a alkalmazni virtual machines gépet tartalmazó erőforráscsoport. Csak a time VM access, az adaptív alkalmazásvezérlők és hálózati észlelések az Azure-erőforrások nem engedélyezi a munkaterülethez tartozó díjszabás konfigurálása.
+> Ahhoz, hogy az összes Security Center-szolgáltatásokat, telepítenie kell a Standard díjcsomag a alkalmazni virtual machines gépet tartalmazó előfizetéshez. Csak a time VM access, az adaptív alkalmazásvezérlők és hálózati észlelések az Azure-erőforrások nem engedélyezi a munkaterülethez tartozó díjszabás konfigurálása.
 >
 >
 

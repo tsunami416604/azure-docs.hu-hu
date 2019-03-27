@@ -3,7 +3,7 @@ title: Válassza ki a Windows VM-rendszerképek az Azure-ban |} A Microsoft Docs
 description: Azure PowerShell használatával a közzétevő, ajánlat, Termékváltozat és verzió Marketplace Virtuálisgép-rendszerképek határozza meg.
 services: virtual-machines-windows
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
-ms.author: danlep
-ms.openlocfilehash: ebf4b413ecfbdf850f0d9e6ebc50f166e27bee0a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: cynthn
+ms.openlocfilehash: 20fd8a0bfccea579ddef5a605d65f5643d4849bd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081848"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500015"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure Marketplace-en az Azure PowerShell használatával Windows Virtuálisgép-rendszerképek keresése
 
@@ -72,21 +72,21 @@ Ezután a kiválasztott termékváltozat futtassa [Get-AzVMImage](https://docs.m
 
     ```powershell
     $pubName="<publisher>"
-    Get-AzVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+    Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
     ```
 
 3. Adja meg a kiválasztott ajánlat nevét, és a termékváltozatok listázása:
 
     ```powershell
     $offerName="<offer>"
-    Get-AzVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+    Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
     ```
 
 4. Adja meg a kiválasztott Termékváltozat nevét, és a lemezkép-verzió beolvasása:
 
     ```powershell
     $skuName="<SKU>"
-    Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
+    Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
 Kimenetéből származó a `Get-AzVMImage` parancsot, kiválaszthatja, hogy egy új virtuális gép üzembe helyezéséhez lemezképe.
@@ -126,7 +126,7 @@ Az a *MicrosoftWindowsServer* közzétevő:
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
-Get-AzVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
 ```
 
 Kimenet:
@@ -143,7 +143,7 @@ Az a *WindowsServer* kínálnak:
 
 ```powershell
 $offerName="WindowsServer"
-Get-AzVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
 ```
 
 Részleges kimenet:
@@ -174,7 +174,7 @@ Ezután a *2019-Datacenter* Termékváltozat:
 
 ```powershell
 $skuName="2019-Datacenter"
-Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
+Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
 Most a kijelölt közzétevő, ajánlat, Termékváltozat és verzió URN kombinálható (a következővel határolt értékekkel:). Ezt az URN adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag. Igény szerint lecserélheti a verziószámot a URN "legutóbbi" beolvasni a rendszerkép legújabb verzióját.
@@ -191,7 +191,7 @@ Például a *Windows Server 2016 Datacenter* lemezkép nem rendelkezik további 
 
 ```powershell
 $version = "2016.127.20170406"
-Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Skus $skuName -Version $version
+Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Skus $skuName -Version $version
 ```
 
 Kimenet:
@@ -216,7 +216,7 @@ DataDiskImages   : []
 Az alábbi példában látható a hasonló parancsot a *adatelemző virtuális gép – Windows 2016* lemezképet, amely rendelkezik a következő `PurchasePlan` tulajdonságai: `name`, `product`, és `publisher`. Bizonyos képek is, hogy egy `promotion code` tulajdonság. A lemezkép központi telepítése, lásd a következő szakaszok fogadja el a feltételeket és a programozott telepítés engedélyezése.
 
 ```powershell
-Get-AzVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
+Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
 ```
 
 Kimenet:

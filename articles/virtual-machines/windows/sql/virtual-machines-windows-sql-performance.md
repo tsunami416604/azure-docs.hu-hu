@@ -16,18 +16,18 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415901"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448572"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk nyújt útmutatást a Microsoft Azure virtuális gép az SQL Server teljesítményének optimalizálásához. Az Azure Virtual Machines szolgáltatásban futó SQL Server, miközben azt javasoljuk, hogy folytatja az azonos adatbázis teljesítmény-finomhangolási a helyszíni környezetben, az SQL Server megfelelő lehetőségeket használatával. Azonban a nyilvános felhőben egy relációs adatbázis teljesítménye számos tényezőtől, például a virtuális gép méretét és az adatlemezek konfigurációja függ.
+Ez a cikk nyújt útmutatást a Microsoft Azure virtuális gép az SQL Server teljesítményének optimalizálásához. Az Azure Virtual Machines szolgáltatásban futó SQL Server, miközben azt javasoljuk, hogy folytatja az azonos adatbázis teljesítmény-finomhangolási a helyszíni környezetben, az SQL Server megfelelő lehetőségeket használatával. A relációs adatbázisok nyilvános felhőbeli teljesítménye azonban számos tényezőtől függ, például a virtuális gép méretétől és az adatlemezek konfigurációjától.
 
 [SQL Server-rendszerképeket az Azure Portalon üzembe helyezett](quickstart-sql-vm-create-portal.md) kövesse az általános tárolási konfigurálási eljárásoknak megfelelő beállításában (hogyan tároló úgy van konfigurálva a további információkért lásd: [tárolási konfigurációt az SQL Server virtuális gépek](virtual-machines-windows-sql-server-storage-configuration.md)). Kiépítés után célszerű megfontolni más optimalizálási lehetőségek a cikkben leírtak szerint. A kiválasztott beállításokat alapja a számítási feladatok, és ellenőrizze a tesztelés útján.
 
@@ -135,7 +135,7 @@ Ez a javaslat egyetlen kivétel van: _írási-igényes a TempDB használat eset�
 
   * A fenti javaslatok vonatkozik a prémium szintű SSD-kkel. Ha prémium szintű SSD-k nem használ, ne engedélyezze a bármely gyorsítótárazást az adatlemezt.
 
-  * A lemezek gyorsítótárazása konfigurálásával kapcsolatos útmutatásért lásd az alábbi cikkeket. A klasszikus (ASM) telepítési modell lásd: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) és [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Az Azure Resource Manager-alapú modell lásd: [Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-4.4.1) és [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk?view=azurermps-4.4.1).
+  * A lemezek gyorsítótárazása konfigurálásával kapcsolatos útmutatásért lásd az alábbi cikkeket. A klasszikus (ASM) telepítési modell lásd: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) és [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Az Azure Resource Manager-alapú modell lásd: [Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) és [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk).
 
      > [!WARNING]
      > Állítsa le az SQL Server szolgáltatást, ha módosítja az ügyfélgyorsítótár beállítása Azure-beli Virtuálisgép-lemezek lehetőségét, bármilyen adatbázis-sérülés elkerülése érdekében.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5fe3d9369958984b76fd704583460a95868da85e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114213"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486869"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
 
@@ -116,7 +116,7 @@ az appservice plan create \
 
 A következő parancs létrehoz egy App Service-csomagban lévő _P1V2_. A lehetőségeket `-WorkerSize` vannak _kis_, _Közepes_, és _nagy_.
 
-```PowerShell
+```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
     -Name <app_service_plan_name> `
     -Location <region_name> `

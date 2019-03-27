@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 20b232c53427c8ce13ded2cd722a74b1a686b536
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 09574647aae8725a614dd20fd0247b0f8cf8b68a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360427"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446984"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -223,7 +223,7 @@ Lásd: [Apache Sqoop használata a HDInsight](hadoop/hdinsight-use-sqoop.md).
 
 **Az Apache Oozie-feladatok elküldése**
 
-Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-oozie.md).
+Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a HDInsight Apache Hadoop-keretrendszerrel](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Az Azure Blob storage-adatok feltöltése
 Lásd: [Adatok feltöltése a HDInsightba][hdinsight-upload-data].

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ff543b7275ab05a83b1be1d156cbc6059a3b5430
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 08fdc20df70e4a97dd0cb99468354ef2b5c51f2b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369890"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447040"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval
 
@@ -22,8 +22,6 @@ Az Azure Storage támogatja a hitelesítés és engedélyezés az Azure Active D
 Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. A Microsoft javasolja, hogy az Azure AD-hitelesítés használata az Azure Storage-alkalmazásokhoz, amikor csak lehetséges.
 
 Hitelesítés és engedélyezés az Azure AD hitelesítő adatait az összes általános célú v2, általános célú v1 és Blob storage-fiókok az összes nyilvános régióban érhető el. Csak a tárfiókok az Azure Resource Manager üzembe helyezési modell támogatása az Azure AD engedélyezési hoz létre.
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blobok és üzenetsorok az Azure ad-ben – áttekintés
 
@@ -41,7 +39,11 @@ Az RBAC szerepkör van rendelve egy Azure AD rendszerbiztonsági tag, amikor az 
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-Az Azure Portal beépített szerepkör hozzárendelése kapcsolatban lásd: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon az RBAC üzenetsorok](storage-auth-aad-rbac.md).
+Ismerje meg, hogyan rendelje hozzá egy beépített RBAC az Azure Storage-erőforrások, tekintse meg az alábbi témakörök:
+
+- [Hozzáférés engedélyezése az Azure blob és üzenetsor adatok RBAC használata az Azure Portalon](storage-auth-aad-rbac-portal.md)
+- [Az RBAC Azure CLI-vel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése](storage-auth-aad-rbac-cli.md)
+- [Az RBAC a PowerShell-lel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése](storage-auth-aad-rbac-powershell.md)
 
 ### <a name="access-permissions-granted-by-rbac-roles"></a>RBAC-szerepkörök által biztosított hozzáférési engedélyek 
 
@@ -49,7 +51,6 @@ További információ az Azure Storage-műveletek meghívásához szükséges en
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon](storage-auth-aad-rbac.md)
 - [Hitelesítés az Azure Active Directoryval egy alkalmazásból blobok és üzenetsorok eléréséhez](storage-auth-aad-app.md)
 - [Hitelesíti a blobok és üzenetsorok, a felügyelt identitásokból hozzáférést az Azure-erőforrások](storage-auth-aad-msi.md)
-- [Az Azure Storage-be a parancssori felület vagy PowerShell eléréséhez használja az Azure AD identity](storage-auth-aad-script.md)
+- Az Azure Files SMB-n keresztül hitelesítést az Azure AD-tartományhoz csatlakoztatott virtuális gépek csak (előzetes verzió) támogatja. Azure AD SMB-n keresztül az Azure Files-vel kapcsolatos további információkért lásd: [áttekintése az Azure Active Directory hitelesítési SMB-n keresztül az Azure Files (előzetes verzió)](../files/storage-files-active-directory-overview.md).

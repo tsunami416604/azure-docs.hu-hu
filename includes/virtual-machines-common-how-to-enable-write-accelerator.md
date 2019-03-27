@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/22/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 44533bc6ed0656be387fa76c0e975046ad7f79ab
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740747"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494779"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -96,7 +96,7 @@ Adja meg a $true vagy $false szabályozhatja az Azure Írásgyorsító lemezek �
 
 A parancsok példák nézhet:
 
-```PowerShell
+```powershell
 New-AzVMConfig | Set-AzVMOsDisk | Add-AzVMDataDisk -Name "datadisk1" | Add-AzVMDataDisk -Name "logdisk1" -WriteAccelerator | New-AzVM
 
 Get-AzVM | Update-AzVM -OsDiskWriteAccelerator $true
@@ -114,7 +114,7 @@ Ez a szkript használatával adjon hozzá egy új lemezt a virtuális gép. Az e
 
 Cserélje le `myVM`, `myWAVMs`, `log001`, a lemez és LunID az adott központi telepítés számára megfelelő értékekkel a lemez méretét.
 
-```PowerShell
+```powershell
 # Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group
@@ -137,7 +137,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 Ez a szkript használatával a meglévő lemez Írásgyorsító engedélyezése. Cserélje le `myVM`, `myWAVMs`, és `test-log001` az adott központi telepítés számára megfelelő értékekkel. A parancsfájl hozzáad Írásgyorsító egy meglévő lemezhez ahol értéke **$newstatus** "$true" értékre van állítva. Az érték "$false" használatával adott lemez Írásgyorsító letiltja.
 
-```PowerShell
+```powershell
 #Specify your VM Name
 $vmName="myVM"
 #Specify your Resource Group

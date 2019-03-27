@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 756a836ff276804e9c85675c1acd5cb18aaa1258
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d173f1f9048a46f3fb2500d225ec121157d5d960
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008395"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483540"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Telepítse az NVIDIA GPU-illesztőprogramokat N-sorozatú virtuális gépeken futó Windows 
 
@@ -59,7 +59,7 @@ A GPU-Eszközállapot lekérdezéséhez futtathatja az [nvidia-smi](https://deve
 RDMA-kompatibilis, az N sorozatú virtuális gépek például helyezze üzembe az azonos rendelkezésre állási csoportban vagy a virtuális gép méretezési csoport egyetlen elhelyezési csoport NC24r RDMA hálózati kapcsolat is engedélyezhetők. A HpcVmDrivers bővítmény telepítéséhez a Windows hálózati eszközillesztőket, amelyek lehetővé teszik az RDMA-kapcsolattal hozzá kell adni. A Virtuálisgép-bővítmény egy RDMA-kompatibilis N-sorozatú virtuális gépek hozzáadásához használja [Azure PowerShell-lel](/powershell/azure/overview) parancsmagok az Azure Resource Manager.
 
 Telepítse a legújabb verziót 1.1-es HpcVMDrivers futtatására szolgáló bővítmény egy meglévő RDMA-kompatibilis virtuális gép az USA nyugati régiójában myVM nevű:
-  ```PowerShell
+  ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
   További információkért lásd: [virtuálisgép-bővítmények és szolgáltatások Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

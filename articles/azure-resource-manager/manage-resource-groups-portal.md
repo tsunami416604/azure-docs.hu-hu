@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090933"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484695"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure portal használatával
 
@@ -122,7 +122,7 @@ Kétféleképpen exportálhat sablont:
 
 Ez a módszer exportálja a sablonokat az egyes központi telepítések. Ha módosította az erőforrásokat a portálon vagy a hozzáadja/törli erőforrás több üzemelő példányban, lásd: [sablonokat exportálhat erőforráscsoportok](#export-templates-from-resource-groups).
 
-1. Nyissa meg a törölni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
+1. Nyissa meg az exportálni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
 2. A bal oldali panelen válassza ki a **központi telepítések**, vagy jelölje ki a hivatkozást **központi telepítések**.  Az alábbi képernyőképen látható **4 sikeres** négy különböző üzembe helyezési nevekkel négy elválasztott telepítések miatt. Előfordulhat, hogy látható **1 sikeres**.
 
     ![Exportálás Azure erőforráscsoport-sablonok](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
@@ -148,8 +148,8 @@ Ez a módszer exportálja a sablonokat az egyes központi telepítések. Ha mód
 
 Ha módosította az erőforrásokat a portálról, vagy több üzemelő példányban erőforrások hozzáadása/eltávolítása, az üzembe helyezés előzményeiből a sablonok lekérése nem tükrözi az erőforráscsoport aktuális állapotát. Ez a szakasz bemutatja, hogyan exportálhat az erőforráscsoport aktuális állapotát tükröző sablont. A szándék szerint egy pillanatkép, az erőforráscsoport, amely segítségével ugyanabban az erőforráscsoportban üzembe helyezése. Használja az exportált sablon más megoldásokkal, jelentős mértékben módosítani kell azt.
 
-1. Nyissa meg a törölni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
-2. A bal oldali panelen válassza ki a **Automation-szkript**. A Resource Manager az alábbi hat fájlt kéri le:
+1. Nyissa meg az exportálni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
+2. A bal oldali panelen válassza ki a **sablon exportálása**. A Resource Manager az alábbi hat fájlt kéri le:
 
    - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
    - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.

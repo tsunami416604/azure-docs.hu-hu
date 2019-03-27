@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25ebd72c512eb92c5d9a464a4b4d74f9e41ae389
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194095"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484112"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -55,7 +55,7 @@ Az első lépés a fő naplózási beállítása, hogy a kulcstartóhoz, amely a
 
 Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be Azure-fiókjába a következő parancs használatával:  
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
@@ -63,13 +63,13 @@ Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét �
 
 Előfordulhat, hogy a kulcstartó létrehozásához használt előfizetés megadásához. Adja meg a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 Ezután a key vault fogja naplózás tartozó előfizetés megadásához, írja be:
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
@@ -81,7 +81,7 @@ Bár használhatja egy meglévő tárfiókot a naplók, hozunk létre egy tárfi
 
 Az egyszerű a mint a key vault tartalmazza is használunk ugyanabban az erőforráscsoportban. Az a [kezdeti lépéseket ismertető oktatóanyag](key-vault-get-started.md), ez az erőforráscsoport neve **ContosoResourceGroup**, és továbbra is Kelet-Ázsia a helyet használja. Cserélje le ezeket az értékeket a sajátjainak megfelelőkkel:
 
-```PowerShell
+```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
@@ -94,7 +94,7 @@ Az egyszerű a mint a key vault tartalmazza is használunk ugyanabban az erőfor
 
 Az a [kezdeti lépéseket ismertető oktatóanyag](key-vault-get-started.md), a kulcstartó neve **ContosoKeyVault**. Ezt a nevet, és a részletek tárolható egy változóban nevű továbbra is **kv**:
 
-```PowerShell
+```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
@@ -102,7 +102,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 Ahhoz, hogy a Key Vault naplózását, fogjuk használni a **Set-AzDiagnosticSetting** parancsmagot, és az új tárfiókot, és a key vaultban létrehozott változókat. Emellett értékre állítjuk a **-engedélyezve** jelzőt **$true** és a kategóriát **AuditEvent** (a Key Vault naplózásának egyetlen kategóriája):
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
@@ -122,7 +122,7 @@ Ez a kimenet megerősíti, hogy a naplózás engedélyezve van a key vaultban, �
 
 Igény szerint beállíthatja adatmegőrzési a naplók úgy, hogy a régebbi naplófájlok automatikusan törlődnek. Például állítsa be a megőrzési házirend beállításával a **- RetentionEnabled** jelzőt **$true**, és állítsa be a **- RetentionInDays** paramétert **90**úgy, hogy a 90 napnál régebbi naplófájlok automatikusan törlődnek.
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
@@ -141,13 +141,13 @@ Key Vault-naplók vannak tárolva a **insights-logs-auditevent** megadott storag
 
 Először hozzon létre egy változót a tároló nevéhez. Ez a változó az útmutató többi részében fogja használni.
 
-```PowerShell
+```powershell
 $container = 'insights-logs-auditevent'
 ```
 
 Ebben a tárolóban lévő összes BLOB listáját, írja be:
 
-```PowerShell
+```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
@@ -174,19 +174,19 @@ Használhatja ugyanazt a tárfiókot a naplók több erőforrás, mert az a blob
 
 Hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
 
-```PowerShell 
+```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 ```
 
 Majd kérje le az összes blob listáját:  
 
-```PowerShell
+```powershell
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 A listát a keresztül **Get-AzStorageBlobContent** töltse le a célmappába:
 
-```PowerShell
+```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
@@ -196,19 +196,19 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Ha több erőforráscsoporttal rendelkezik, de csak egyhez szeretne naplókat letölteni, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` parancsot:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Ha azt szeretné, minden a naplók letöltéséhez január 2019 hónapban, `-Blob '*/year=2019/m=01/*'`:
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
@@ -221,7 +221,7 @@ Most már készen áll a naplók tartalmának megtekintésére. Azonban mielőtt
 
 Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Lássunk erre egy példa naplóbejegyzés. Futtassa ezt a parancsot:
 
-```PowerShell
+```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 

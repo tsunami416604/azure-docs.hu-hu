@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c7fa81f6d23962eedb3dfeafdd397b62a83d130e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4c66f35537cff87eb53a6cfe9bc0389f038f1a10
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372678"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449758"
 ---
 Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépített RBAC-szerepkörök:
 
@@ -24,5 +24,8 @@ Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépít
 - [Storage-Üzenetsorbeli adatok olvasója](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Csak olvasási engedélyeket az Azure-üzenetsorok használatával.
 - [Tárolási üzenetsor adatok üzenetet feldolgozó](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor-preview): Használja a grant peek, lekérése és törlési jogosultsággal az Azure Storage-üzenetsorok üzenetek.
 - [Tárolási üzenetsor adatok üzenetet küldő](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender-preview): Engedélyeket adhat hozzá engedélyeket az Azure Storage-üzenetsorok üzenetek.
+
+> [!IMPORTANT]
+> RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.
 
 További információ a beépített szerepkörök határozza meg az Azure Storage, lásd: [megismerheti a szerepkör-definíciók](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért lásd: [egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérlés](../articles/role-based-access-control/custom-roles.md). 

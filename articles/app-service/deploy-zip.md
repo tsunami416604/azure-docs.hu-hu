@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 011caaad2f9cb3b0b891df172002dcb6b6aa8206
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f94544a2e7a26ab00432a3564bb752c71254844
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607051"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484880"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájlt
 
@@ -100,7 +100,7 @@ curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.s
 
 Az alábbi példában [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) küldeni egy kérelmet, amely tartalmazza a .war-fájlt. Cserélje le a zárójelben `<deployment_user>`, `<deployment_password>`, `<zip_file_path>`, és `<app_name>`.
 
-```PowerShell
+```powershell
 $username = "<deployment_user>"
 $password = "<deployment_password>"
 $filePath = "<war_file_path>"

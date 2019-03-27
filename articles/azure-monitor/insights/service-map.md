@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731094"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485152"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
-A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
+A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
 
 Ez a cikk bevezetése és használata a Service Map részleteit ismerteti. A Service Map és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( service-map-configure.md).
 
@@ -374,50 +374,50 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* rendelkezik a kiszolgál�
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Typo | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | A munkaterületen belül a gépek egyedi azonosítója |
-| ResourceName_s | A munkaterületen belül a gépek egyedi azonosítója |
-| ComputerName_s | A számítógép teljes Tartományneve |
-| Ipv4Addresses_s | Listáját a kiszolgáló az IPv4-címek |
-| Ipv6Addresses_s | Listáját a kiszolgáló az IPv6-címek |
-| DnsNames_s | DNS-nevek tömbje |
-| OperatingSystemFamily_s | Windows vagy Linux rendszeren |
-| OperatingSystemFullName_s | Az operációs rendszer teljes neve  |
-| Bitness_s | Bitszámértékének a gép (32 bites vagy 64 bites)  |
-| PhysicalMemory_d | A fizikai memória (MB) |
-| Cpus_d | Processzorok száma |
-| CpuSpeed_d | A CPU-sebesség MHz-ben|
-| VirtualizationState_s | *ismeretlen*, *fizikai*, *virtuális*, *hipervizor* |
-| VirtualMachineType_s | *Hyper-v*, *vmware*, és így tovább |
-| VirtualMachineNativeMachineId_g | A hipervizor által hozzárendelt virtuális gép azonosítója |
-| VirtualMachineName_s | A virtuális gép neve |
-| BootTime_t | A rendszerindítás ideje |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | A munkaterületen belül a gépek egyedi azonosítója |
+| `ResourceName_s` | A munkaterületen belül a gépek egyedi azonosítója |
+| `ComputerName_s` | A számítógép teljes Tartományneve |
+| `Ipv4Addresses_s` | Listáját a kiszolgáló az IPv4-címek |
+| `Ipv6Addresses_s` | Listáját a kiszolgáló az IPv6-címek |
+| `DnsNames_s` | DNS-nevek tömbje |
+| `OperatingSystemFamily_s` | Windows vagy Linux rendszeren |
+| `OperatingSystemFullName_s` | Az operációs rendszer teljes neve  |
+| `Bitness_s` | Bitszámértékének a gép (32 bites vagy 64 bites)  |
+| `PhysicalMemory_d` | A fizikai memória (MB) |
+| `Cpus_d` | Processzorok száma |
+| `CpuSpeed_d` | A CPU-sebesség MHz-ben|
+| `VirtualizationState_s` | *ismeretlen*, *fizikai*, *virtuális*, *hipervizor* |
+| `VirtualMachineType_s` | *Hyper-v*, *vmware*, és így tovább |
+| `VirtualMachineNativeMachineId_g` | A hipervizor által hozzárendelt virtuális gép azonosítója |
+| `VirtualMachineName_s` | A virtuális gép neve |
+| `BootTime_t` | A rendszerindítás ideje |
 
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
 Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolattal rendelkező folyamatokat a Hardverleltár-adatait a Service Map-ügynökökkel kiszolgálókon. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Typo | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| ResourceId | A munkaterületen belül a folyamat egyedi azonosítója |
-| ResourceName_s | A gépen, amelyen fut a folyamat egyedi azonosítója|
-| MachineResourceName_s | Az erőforrás nevét a gép |
-| ExecutableName_s | A folyamat végrehajtható fájl neve |
-| StartTime_t | A folyamat készlet kezdő időpont |
-| FirstPid_d | Az első PID folyamatkészletben |
-| Description_s | A folyamat leírása |
-| CompanyName_s | A vállalat neve |
-| InternalName_s | A belső név |
-| ProductName_s | A termék nevét |
-| ProductVersion_s | A termék verziója |
-| FileVersion_s | A fájl verziója |
-| CommandLine_s | A parancssorból |
-| ExecutablePath z | A végrehajtható fájl elérési útja |
-| WorkingDirectory_s | A munkakönyvtárban |
-| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
-| UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | A munkaterületen belül a folyamat egyedi azonosítója |
+| `ResourceName_s` | A gépen, amelyen fut a folyamat egyedi azonosítója|
+| `MachineResourceName_s` | Az erőforrás nevét a gép |
+| `ExecutableName_s` | A folyamat végrehajtható fájl neve |
+| `StartTime_t` | A folyamat készlet kezdő időpont |
+| `FirstPid_d` | Az első PID folyamatkészletben |
+| `Description_s` | A folyamat leírása |
+| `CompanyName_s` | A vállalat neve |
+| `InternalName_s` | A belső név |
+| `ProductName_s` | A termék nevét |
+| `ProductVersion_s` | A termék verziója |
+| `FileVersion_s` | A fájl verziója |
+| `CommandLine_s` | A parancssorból |
+| `ExecutablePath _s` | A végrehajtható fájl elérési útja |
+| `WorkingDirectory_s` | A munkakönyvtárban |
+| `UserName` | A fiók, amely alatt a folyamat végrehajtása |
+| `UserDomain` | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 

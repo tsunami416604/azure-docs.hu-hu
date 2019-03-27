@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167070"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487821"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -106,8 +106,8 @@ A **maszk** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Typo | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
-| Regex | Nem | Ha **típus** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
+| `Type` | Igen | Az igényt maszk típusa. A lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot a vezető része egy karakterlánc jogcím van hozzárendelve. A `Regex` érték azt jelzi, hogy a teljes karakterlánc jogcím van hozzárendelve egy reguláris kifejezést.  Ha a `Regex` érték van megadva, nem kötelező attribútum kell definiálni a reguláris kifejezés használata. |
+| `Regex` | Nem | Ha **`Type`** értékre van állítva `Regex`, adja meg a reguláris kifejezés használata.
 
 Ez a példa konfigurálja egy **PhoneNumber** jogcím a `Simple` maszk:
 
@@ -162,7 +162,7 @@ A **enumerálás** elem tartalmazza a következő attribútumokat:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Szöveg | Igen | A megjelenítendő karakterlánc, amely a felhasználói felületen ezt a lehetőséget választja a felhasználó számára látható. |
-|Value | Igen | A jogcím értéke, amely ezzel a beállítással társítva van. |
+|Érték | Igen | A jogcím értéke, amely ezzel a beállítással társítva van. |
 | SelectByDefault | Nem | Azt jelzi-e ez a beállítás van kiválasztva a felhasználói felület alapértelmezés szerint. Érvényes értékek: IGAZ vagy hamis. |
 
 Ez a példa konfigurálja egy **Város** legördülő lista jogcímet, és a egy alapértelmezett értéket az `New York`:

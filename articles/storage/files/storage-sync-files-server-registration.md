@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 954cbe66bfc4a0cebf7692a90aeee637ffcb6ca3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165331"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485055"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Az Azure File Sync használatával regisztrált kiszolgálók kezelése
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt nem átalakításával keletkező a Windows-kiszolgálók az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -101,7 +101,7 @@ A kiszolgáló használhatók legyenek, mint egy *kiszolgálói végpont* a az A
 #### <a name="register-the-server-with-powershell"></a>Regisztrálja a kiszolgálót a PowerShell-lel
 Kiszolgáló regisztrálása a PowerShell használatával is elvégezheti. Ez a kiszolgáló regisztrálása a Cloud Solution Provider (CSP) előfizetésekhez az egyetlen támogatott módja:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
 Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
@@ -116,7 +116,7 @@ Nincsenek számos lépést, a kiszolgáló regisztrációját az Társzinkroniz�
 #### <a name="optional-recall-all-tiered-data"></a>(Nem kötelező) Összes rétegzett adat visszahívása
 Ha szeretné a jelenleg elérhető legyen az Azure File Sync (azaz nem egy éles környezetben, nem a tesztelési, környezet) eltávolítása után számítógépen rétegzett fájlok, ne felejtse el minden egyes kiszolgálói végpontot tartalmazó köteten lévő összes fájlt. Tiltsa le a felhőbeli rétegezés az összes kiszolgálói végpontot, és futtassa a következő PowerShell-parancsmagot:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
@@ -134,7 +134,7 @@ A Storage Sync Service a kiszolgáló regisztrációjának törlése, mielőtt a
 
 Ez egy egyszerű PowerShell-parancsprogrammal is elvégezhető:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
 $accountInfo = Connect-AzAccount
@@ -172,20 +172,20 @@ Képes szabályozni a a hálózati kihasználtság az Azure File Sync használat
 
 Például létrehozhat egy új szabályozási korlát, győződjön meg arról, hogy az Azure File Sync nem használja a több mint 10 MB/s közötti 9: 00 és 17: 00 (17:00 óra) a munkahét során: 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
 ```
 
 A korlát a következő parancsmag használatával tekintheti meg:
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 
 Hálózati korlátozások eltávolításához használja `Remove-StorageSyncNetworkLimit`. Például a következő parancs eltávolítja az összes hálózati korlátai:
 
-```PowerShell
+```powershell
 Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
 ```
 

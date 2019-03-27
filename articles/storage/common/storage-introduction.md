@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012728"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446703"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -93,23 +93,15 @@ Az Azure Storage emellett a virtuális gépek által használt felügyelt és ne
 
 Storage-fióktípusok kapcsolatos további információkért lásd: [az Azure storage-fiók áttekintése](storage-account-overview.md). 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>A blobok, fájlok és üzenetsorok elérése
+## <a name="securing-access-to-storage-accounts"></a>Storage-fiókokhoz való hozzáférés biztonságossá tétele
 
-Mindegyik tárfiók két hitelesítési kulccsal rendelkezik, amely bármelyike használható bármilyen művelethez. Mivel két kulcs van, időről-időre leválthatja ezeket, így növelhető a biztonság. A kulcsok biztonságba helyezése kritikus fontosságú, mivel a fiók nevével együtt korlátlan hozzáférést biztosítanak a tárfiókban tárolt összes adathoz.
+Az Azure Storage minden kérelmet kell engedélyezni. Az Azure Storage a következő hitelesítési módszereket támogatja:
 
-Ebben a szakaszban két módját ismertetjük a Storage-fiók és a benne lévő adatok védelmének. A tárfiók és a benne lévő adatok védelmével kapcsolatos további információkért lásd az [Azure Storage biztonsági útmutatóját](storage-security-guide.md).
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>A tárfiókokhoz való hozzáférés biztonságossá tétele az Azure AD használatával
-
-A tároló adataihoz való hozzáférés biztonságossá tételének egyik módja a tárfiók kulcsaihoz való hozzáférés szabályozása. A Resource Manager szerepköralapú hozzáférés-vezérlésének (RBAC) használatával szerepköröket rendelhet felhasználókhoz, csoportokhoz és alkalmazásokhoz. Ezek a szerepkörök engedélyezett vagy nem engedélyezett műveletek csoportjaihoz vannak rendelve. Ha az RBAC használatával ad hozzáférést egy tárfiókhoz, azzal csak a tárfiók felügyeleti műveleteit, például a hozzáférési szint módosítását engedélyezi. Az RBAC használatával nem adhat hozzáférést az adatobjektumokhoz, például az egyes tárolókhoz vagy fájlmegosztásokhoz. Mindazonáltal, az RBAC használatával hozzáférést adhat a tárfiók kulcsaihoz, amelyek lehetővé teszik az adatobjektumok olvasását.
-
-### <a name="securing-access-using-shared-access-signatures"></a>Hozzáférés biztonságossá tétele közös hozzáférésű jogosultságkódok használatával
-
-A közös hozzáférésű jogosultságkódok és a tárolt hozzáférési szabályzatok használatával gondoskodhat az adatobjektumok védelméről. A közös hozzáférésű jogosultságkód (SAS) egy biztonsági jogkivonatot tartalmazó sztring, amelyet egy adategység URI azonosítójához csatolva hozzáférés adható adott tárolóobjektumokhoz, valamint korlátozások határozhatók meg, például engedélyek vagy a hozzáférés dátum-/időtartománya. Ez a szolgáltatás kiterjedt képességeket biztosít. Részletes információkért lásd: [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata).
-
-### <a name="public-access-to-blobs"></a>Nyilvános hozzáférés a blobokhoz
-
-A Blob szolgáltatás segítségével nyilvános hozzáférést adhat a tárolókhoz és annak blobjaihoz, vagy egy adott blobhoz. Ha egy tárolót vagy blobot nyilvánosként jelöl meg, bárki névtelenül, hitelesítés nélkül megtekintheti. Például akkor lehet érdemes ezt alkalmaznia, ha a webhelyén blobtárolóban lévő képeket, videókat vagy dokumentumokat használ. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
+- **Az Azure Active Directory (Azure AD) integrációs blob és üzenetsor adatok.** Az Azure Storage a Blob és üzenetsor szolgáltatások a szerepköralapú hozzáférés-vezérlés (RBAC) keresztül támogatja a hitelesítés és engedélyezés az Azure AD-beli hitelesítő. Az Azure AD-kérések engedélyezése kiemelkedő biztonság és a könnyű használat használata ajánlott. További információkért lásd: [hitelesítés hozzáférés az Azure-blobok és üzenetsorok az Azure Active Directoryval](storage-auth-aad.md).
+- **Az Azure AD engedélyezési SMB-n keresztül az Azure Files (előzetes verzió).** Az Azure Files SMB (Server Message Block) keresztül az Azure Active Directory Domain Services identitás-alapú hitelesítést támogatja. A tartományhoz csatlakoztatott Windows virtuális gépek (VM) férhetnek hozzá az Azure-fájlmegosztásokat az Azure AD hitelesítő adatait. További információkért lásd: [áttekintése az Azure Active Directory hitelesítési SMB-n keresztül az Azure Files (előzetes verzió)](../files/storage-files-active-directory-overview.md).
+- **A megosztott kulcs engedélyezési.** Az Azure Storage-Blob, Queue és Table szolgáltatások és az Azure Files hitelesítés támogatásához a megosztott Key.A ügyfél engedélyezési fejlécet minden kérelemnél, amely a tárfiók hozzáférési kulcsát használatával van aláírva adja át a megosztott kulcs használatával. További információkért lásd: [a megosztott kulcsos hitelesítés](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key).
+- **A közös hozzáférésű jogosultságkódot (SAS) engedély használatával.** Közös hozzáférésű jogosultságkód (SAS) egy olyan tárolási erőforrás URI-ra hozzáfűzhető egy biztonsági jogkivonatot tartalmazó karakterlánc. A biztonsági jogkivonat például engedélyek vagy a időköz hozzáférési korlátozásokat foglalja magában. További információkért tekintse meg [használata közös hozzáférésű Jogosultságkódok (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Tárolókhoz és blobokhoz való névtelen hozzáférés.** A blobok és a egy tároló lehet nyilvánosan elérhető. Ha megadja, hogy egy tárolót vagy blobot nyilvános, bárki névtelenül, a hitelesítés nem kötelező. További információk: [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Tárolók és blobok névtelen olvasási hozzáférésének kezelése).
 
 ## <a name="encryption"></a>Titkosítás
 

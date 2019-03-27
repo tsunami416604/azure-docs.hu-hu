@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878455"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481756"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-összekötő felügyeleti megoldás (elavult)
 
@@ -272,7 +272,7 @@ Ez a megoldás nem rendelkezik az irányítópulton látható naplókeresési mi
 ## <a name="removing-the-connector-with-powershell"></a>A PowerShell-lel az összekötő eltávolítása
 Az OMS-portál elavulásának nincs lehetőség a konfigurálását, és távolítsa el a meglévő kapcsolatok a portálról. Meglévő kapcsolatok a következő PowerShell-parancsfájllal távolíthatja el. A tulajdonosi vagy közreműködői a munkaterület és Application Insights-erőforrást az olvasó végrehajtani a műveletet kell lennie.
 
-```PowerShell
+```powershell
 $Subscription_app = "App Subscription Name"
 $ResourceGroup_app = "App ResourceGroup"
 $Application = "Application Name"
@@ -289,7 +289,7 @@ Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceG
 
 Kérheti le a következő PowerShell-parancsfájlt, amely REST API-hívás hív meg használó alkalmazások listáját. 
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"

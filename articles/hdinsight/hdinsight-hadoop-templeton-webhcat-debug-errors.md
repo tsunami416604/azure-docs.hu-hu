@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f1515af1ef61bc40ae91e3e5b43154f92bc89ae4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725372"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448313"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A HDInsight a webhcat használatával fogadott hibák megértése és megoldása
 
@@ -29,7 +29,7 @@ Ismerje meg hibaüzenetek érkeztek az WebHCat használata a HDInsight és azok 
 > [!IMPORTANT]  
 > A jelen dokumentumban felsorolt hibákat számos elő, amikor a rendszer túllépte a beállított maximális értéket. Ha a megoldás lépés említi, hogy egy érték módosítható, kell használnia az alábbiak egyikét a módosítás végrehajtásához:
 
-* A **Windows** fürtök: Használjon szkriptműveletet az érték beállításához a fürt létrehozása során. További információkért lásd: [szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions.md).
+* A **Windows** fürtök: Használjon szkriptműveletet az érték beállításához a fürt létrehozása során. További információkért lásd: [szkriptműveletek fejlesztése](hdinsight-hadoop-script-actions-linux.md).
 
 * A **Linux** fürtök: Az Apache Ambari (webes vagy a REST API), módosítsa az értéket használja. További információkért lásd: [kezelése HDInsight az Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
@@ -42,7 +42,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 
 | Beállítás | Művelet | Alapértelmezett érték |
 | --- | --- | --- |
-| [yarn.Scheduler.Capacity.maximum – alkalmazások][maximum-applications] |Aktív lehet egyidejű feladatok maximális száma (függőben lévő vagy futó) |10,000 |
+| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Aktív lehet egyidejű feladatok maximális száma (függőben lévő vagy futó) |10,000 |
 | [templeton.exec.max-procs][max-procs] |Is kiszolgálható kérelmek maximális száma |20 |
 | [mapreduce.jobhistory.max ezredmásodperces kora][max-age-ms] |A feladatelőzmények napok számának megmaradnak. |7 nap |
 
@@ -70,7 +70,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 | --- | --- |
 | Feladat részletei törölve lettek a feladatelőzmények által iterálásakor |Feladatelőzmények megőrzési idő alapértelmezés szerint 7 nap. Az alapértelmezett megőrzési időtartamot is módosítható módosításával `mapreduce.jobhistory.max-age-ms`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
 | Feladat leállította a feladatátvétel miatt |Ismételje meg a feladat elküldése két percre |
-| Egy érvénytelen feladatazonosító lett megadva. |Ellenőrizze, hogy helyes-e-e a feladat azonosítója |
+| Egy érvénytelen Feladatazonosító lett megadva. |Ellenőrizze, hogy helyes-e-e a feladat azonosítója |
 
 ## <a name="bad-gateway"></a>Hibás átjáró
 
@@ -80,7 +80,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 | --- | --- |
 | Belső szemétgyűjtés történik, a WebHCat folyamaton belül |Várjon, amíg befejeződik, vagy indítsa újra a WebHCat szolgáltatást szemétgyűjtés |
 | Az erőforrás-kezelő szolgáltatás válaszára várakozás időkorlátja. Ez a hiba akkor fordulhat elő, ha aktív kérelmek száma a beállított maximális értéket (alapértelmezés: 10 000) |Várjon, amíg a jelenleg futó feladatok elvégzéséhez, vagy növelheti az egyidejű feladat módosításával `yarn.scheduler.capacity.maximum-applications`. További információkért lásd: a [módosítása konfigurációs](#modifying-configuration) szakaszban. |
-| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` értékre van állítva `*` |Nem kérnek le *összes* feladat részletei. Helyette használjon `jobid` bizonyos feladatazonosító csak nagyobb feladatok részleteinek lekérése. És ne használja `Fields` |
+| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` értékre van állítva `*` |Nem kérnek le *összes* feladat részletei. Helyette használjon `jobid` csak bizonyos feladatazonosító. nagyobb feladatok részleteinek lekérése És ne használja `Fields` |
 | Átjárócsomópont feladatátvevő során leállt a WebHCat-szolgáltatás |Két percig várjon, majd próbálja megismételni a műveletet |
 | Nincsenek a Webhcaten keresztül elküldött több mint 500 függőben lévő feladatok |Várjon, amíg az aktuálisan folyamatban lévő feladat befejeződött, további feladatok elküldése előtt |
 

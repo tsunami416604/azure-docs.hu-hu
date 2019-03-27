@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871536"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486054"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
 
@@ -121,14 +121,14 @@ Az előzetes verzió csak a nem éles használatra szolgál. Éles szolgáltatá
 
 Regisztráljon az előzetes verzióra, a következő parancsokat a PowerShellben. Ügyeljen arra, hogy lévő a helyőrzőt cserélje le a saját előfizetés-azonosító:
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Az előzetes verzióra jóváhagyását 1-2 nap telhet. Győződjön meg arról, hogy a regisztrációban jóvá lett hagyva, futtassa a következő parancsot:
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ A következő szolgáltatások vagy szolgáltatások nem támogatottak a fiók f
 - Storage-fiókok használata az Azure Data Lake Storage Gen2 hierarchikus névtér nem lehet végrehajtani a feladatátvételt.
 - Archivált blobokat tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Archivált nem tervezi a feladatátvételt egy önálló tárfiókot a blobok karbantartása.
 - Prémium szintű blokkblobok tartalmazó tárfiókot nem lehet végrehajtani a feladatátvételt. Támogatja a blokkblobokat prémium szintű Storage-fiókok jelenleg nem támogatja georedundancia.
+- A feladatátvétel befejezése után a következő funkciók fognak tovább működni, ha eredetileg engedélyezve: [Esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklusokkal](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózási](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvételi helyett
 

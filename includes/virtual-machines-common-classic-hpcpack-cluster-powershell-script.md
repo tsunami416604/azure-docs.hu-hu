@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 2df08968ad66bd330611b975c045c9e9c9b240aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6f0d2d59ed50c743adb19027c404bfa83a1886f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735556"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484864"
 ---
 Attól függően, a környezet és a lehetőségek a parancsfájl az összes a fürtinfrastruktúrát, beleértve az Azure virtual network, tárfiókok, felhőszolgáltatások, tartományvezérlő, helyi vagy távoli SQL-adatbázisok, fő csomópontot és további fürtcsomópontok hozhat létre. A parancsfájl azt is megteheti, már meglévő Azure-infrastruktúrát használják, és a csak a HPC-fürtcsomópontok létrehozása.
 
@@ -22,7 +22,7 @@ HPC Pack-fürt tervezésével kapcsolatos háttér-információkat lásd: a [ter
 * **Konfigurációs parancsfájl**: Hozzon létre egy XML-fájlt, amely a parancsfájlhoz a konfigurálása a HPC-fürtöt. Információért és példákért tekintse meg későbbi részeiben ebben a cikkben és a fájl, amely a telepítési parancsfájl társul Manual.rtf.
 
 ## <a name="syntax"></a>Szintaxis
-```PowerShell
+```powershell
 New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminPassword] <String>] [[-HPCImageName] <String>] [[-LogFile] <String>] [-Force] [-NoCleanOnFailure] [-PSSessionSkipCACheck] [<CommonParameters>]
 ```
 > [!NOTE]
@@ -53,7 +53,7 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 ### <a name="example"></a>Példa
 A következő példában létrehozunk egy HPC Pack-fürthöz, a konfigurációs fájl használatával *MyConfigFile.xml*, és adja meg a fürt telepítéséhez rendszergazdai hitelesítő adatait.
 
-```PowerShell
+```powershell
 .\New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
 ```
 

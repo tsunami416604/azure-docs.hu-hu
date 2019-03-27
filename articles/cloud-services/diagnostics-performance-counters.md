@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 7713b449d5e5291ce1dd6c9b814ebefd07bc53a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737671"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485399"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Az Azure-felhőszolgáltatás teljesítményszámlálók gyűjtése
 
@@ -29,7 +29,7 @@ Teljesítményszámlálók nyújt arról, hogy az alkalmazás és a gazdagép ha
 
 A teljesítményszámláló két részből áll, a készlet nevét (más néven kategória) és a egy vagy több számlálók épül fel. PowerShell segítségével a rendelkezésre álló teljesítményszámlálók listája:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -56,7 +56,7 @@ A `CounterSetName` tulajdonság beállítása (vagy kategória) jelöli, és jó
 
 A beállított összes számlálót lekéréséhez használja a `CounterSetName` értékét, és bontsa ki a `Paths` gyűjtemény. Mindegyik elérési út elem lekérdezheti, ha egy számlálót. Például az elérhető számlálók kapcsolatos lekérése a `Processor` állítsa be, bontsa ki a `Paths` gyűjtemény:
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

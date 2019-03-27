@@ -1,6 +1,6 @@
 ---
 title: Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe Oracle |} A Microsoft Docs
-description: Oracle az Azure Virtual Machines DBMS üzembe helyezési SAP számítási feladatokhoz
+description: Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6abfd26e63cc8001f501371fffce0a4c10f4ff85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327782"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483514"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatok
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327782"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327782"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -314,7 +314,7 @@ Ez a dokumentum figyelembe kell venni az Azure IaaS SAP számítási telepít az
 Oracle-verziók és az SAP futtatása az Azure-beli SAP-Jegyzetnek az Oracle által támogatott megfelelő operációsrendszer-verziók információt annak [2039619].
 
 Általános információk az SAP Business Suite futó Oracle található [SAP, Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A Windows Hyper-V és az Azure általános támogatási kapcsolatos további információkért ellenőrizze a [Oracle és a Microsoft Azure – gyakori kérdések](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle-szoftverek futtatása Microsoft Azure-on Oracle támogatja. A Windows Hyper-V és az Azure általános támogatási kapcsolatos további információkért ellenőrizze a [Oracle és a Microsoft Azure – gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Releváns, az Oracle, SAP és az Azure SAP-megjegyzések 
 
@@ -426,7 +426,7 @@ A Windows az Oracle-környezetek, javasoljuk, hogy gyorsított hálózatkezelés
 [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md) más virtuális gépek, az Oracle Database, többek között az Azure rendelkezésre állási csoportok és az SAP-figyelés központi telepítései kapcsolatos lényeges fogalmakat ismerteti.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Oracle Database, Oracle Linux-adatait
-Oracle-szoftverek futtatásához a Microsoft Azure, az Oracle Linux, a vendég operációs rendszer Oracle támogatja. További információ a Windows Hyper-V és az Azure általános támogatása: a [Azure és az Oracle – gyakori kérdések](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
+Oracle-szoftverek futtatásához a Microsoft Azure, az Oracle Linux, a vendég operációs rendszer Oracle támogatja. További információ a Windows Hyper-V és az Azure általános támogatása: a [Azure és az Oracle – gyakori kérdések](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
 Az adott forgatókönyvtől az Oracle-adatbázisok felhasználásával SAP-alkalmazások használata is támogatott. A dokumentum tovább részében részleteket ismertetik.
 
@@ -463,12 +463,13 @@ A oldala az Azure blob storage vagy a felügyelt lemezek mérete alapján haszn�
 A támogatott Azure-beli Virtuálisgép-típusok azonosításához tekintse meg az SAP-Jegyzetnek [1928533].
 
 Minimális konfigurációt:
+
 | Összetevő | Lemez | Gyorsítótárazás | Ezért * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA & mirrlogB | Prémium | None | Nem szükséges |
-| /Oracle/<SID>/origlogaB & mirrlogA | Prémium | None | Nem szükséges |
-| /Oracle/<SID>/sapdata1...n | Prémium | Csak olvasás | Használható |
-| /Oracle/<SID>/oraarch | Standard | None | Nem szükséges |
+| /Oracle/\<SID > / origlogaA & mirrlogB | Prémium | None | Nem szükséges |
+| /Oracle/\<SID > / origlogaB & mirrlogA | Prémium | None | Nem szükséges |
+| /Oracle/\<SID > / sapdata1... n | Prémium | Csak olvasás | Használható |
+| /Oracle/\<SID > / oraarch | Standard | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | | Nem szükséges |
 
 * Ezért: LVM stripe vagy MDADM RAID0 használatával
@@ -476,15 +477,16 @@ Minimális konfigurációt:
 Az Oracle online visszaállítási naplók tárolásához lemezkiválasztás IOPS követelmények szerint kell meghatározni. Minden sapdata1... tárolására lehetséges, amíg a kötet, az IOPS és átviteli sebesség megfelelnek-e egyetlen csatlakoztatott lemez (táblahelyeket) n. 
 
 Teljesítmény-konfigurációkat:
+
 | Összetevő | Lemez | Gyorsítótárazás | Ezért * |
 | --- | ---| --- | --- |
-| /Oracle/<SID>/origlogaA | Prémium | None | Használható  |
-| /Oracle/<SID>/origlogaB | Prémium | None | Használható |
-| /Oracle/<SID>/mirrlogAB | Prémium | None | Használható |
-| /Oracle/<SID>/mirrlogBA | Prémium | None | Használható |
-| /Oracle/<SID>/sapdata1...n | Prémium | Csak olvasás | Ajánlott  |
-| /oracle/SID/sapdata(n+1)* | Prémium | None | Használható |
-| /Oracle/<SID>/oraarch* | Prémium | None | Nem szükséges |
+| /Oracle/\<SID > / origlogaA | Prémium | None | Használható  |
+| /Oracle/\<SID > / origlogaB | Prémium | None | Használható |
+| /Oracle/\<SID > / mirrlogAB | Prémium | None | Használható |
+| /Oracle/\<SID > / mirrlogBA | Prémium | None | Használható |
+| /Oracle/\<SID > / sapdata1... n | Prémium | Csak olvasás | Ajánlott  |
+| /oracle/\<SID>/sapdata(n+1)* | Prémium | None | Használható |
+| /Oracle/\<SID > / oraarch * | Prémium | None | Nem szükséges |
 | Oracle-kezdőlap, saptrace... | Operációsrendszer-lemez | Nem szükséges |
 
 * Ezért: LVM stripe vagy MDADM RAID0 használatával

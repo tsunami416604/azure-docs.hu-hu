@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/24/2019
+ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: de8ddd0d2886cd7798160e830094b295c62e17e9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400681"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499030"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Az Azure Data Box Edge számítások kezelése
 
@@ -32,7 +32,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="manage-triggers"></a>Eseményindítók kezelése
 
-Események akkor fordulhat elő, a felhőalapú környezetben, illetve az eszközön, előfordulhat, hogy a művelet végrehajtása a kívánt dolgot. Például amikor létrejön egy fájl olyan megosztáson található, egy eseményt. Triggerek olyan események választ. Eseményindítók segíthet végrehajthat egy függvényt, amikor az esemény lesz elindítva. A Data Box Edge eseményindítók fájl eseményekre vagy ütemezés szerint is lehet.
+Események akkor fordulhat elő, a felhőalapú környezetben, illetve az eszközön, előfordulhat, hogy a művelet végrehajtása a kívánt dolgot. Például amikor létrejön egy fájl olyan megosztáson található, egy eseményt. Eseményindítók az eseményeket hoz létre. A Data Box Edge eseményindítók fájl eseményekre vagy ütemezés szerint is lehet.
 
 - **Fájl**: Nagyszerűek ezek fájl eseményeihez, például a létrehozott fájl, a fájl módosítása.
 - **Ütemezett**: Nagyszerűek ezek az ütemezés szerint határozhatja meg a kezdő dátum, kezdési ideje és a gyakorisági adott válaszként.

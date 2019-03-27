@@ -3,7 +3,7 @@ title: Felügyelt identitások az Azure-erőforrások a virtuálisgép-méretez�
 description: Részletes utasításokat a rendszer és felhasználó által hozzárendelt felügyelt identitások a virtuálisgép-méretezési csoportot állítsa be a PowerShell használatával.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dee7759dccf3093e9ba9f66bffcceaf603a11d4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226878"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448585"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtual machine scale sets PowerShell-lel
 

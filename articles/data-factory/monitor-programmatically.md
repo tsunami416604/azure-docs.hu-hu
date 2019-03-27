@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: ed1d6ab96a7658880a8784c5e03c3787cf87a8ba
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576310"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486613"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programozott módon az Azure data factory monitorozása
 Ez a cikk ismerteti az adat-előállító folyamat monitorozása a különböző szoftverfejlesztői készletek (SDK-k) használatával. 
@@ -105,7 +105,7 @@ Létrehozásával és a egy folyamatot a REST API használatával figyelési le�
     ```
 2. A másolási tevékenység futtatási részleteinek (például az írt vagy olvasott adatok méretének) lekéréséhez futtassa az alábbi szkriptet.
 
-    ```PowerShell
+    ```powershell
     $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}/activityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
     $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
     $response | ConvertTo-Json

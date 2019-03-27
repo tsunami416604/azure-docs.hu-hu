@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: ca7081bdfedae3abb5ec426a9d3ec0a7867a2ef9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: ffc4a0c57681e877250c7be82f5160174178892a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337017"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486019"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Adatok áthelyezése az AzCopy v10 (előzetes verzió)
 
@@ -285,6 +285,6 @@ A következő paranccsal egy sikertelen vagy megszakítva feladat folytatása. E
 
 ## <a name="next-steps"></a>További lépések
 
-Ha kérdése, problémák vagy általános visszajelzést, küldje el őket [a Githubon](https://github.com/Azure/azure-storage-azcopy.).
+Ha kérdése, problémák vagy általános visszajelzést, küldje el őket [a Githubon](https://github.com/Azure/azure-storage-azcopy).
 
 

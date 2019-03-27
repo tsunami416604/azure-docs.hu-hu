@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: eddf85df3f9efb6a742e226e9582e2e284cbd4cf
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 88eb97a206bc75bc9635da90eb9d48818ceef0f0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215133"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487132"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 
@@ -37,7 +37,7 @@ A példának szüksége van a forrástárfiók nevére és kulcsára, a céltár
 Néhány példa a minta bemeneteire:
 
 Ha az AzCopy az alapértelmezett könyvtárba van telepítve:
-```PowerShell
+```powershell
 srcStorageAccountName: ExampleSourceStorageAccountName
 srcStorageAccountKey: ExampleSourceStorageAccountKey
 DestStorageAccountName: ExampleTargetStorageAccountName
@@ -69,7 +69,7 @@ Ez a szkript a következő parancsokat használja az adatok egyik tárfiókból 
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Visszaadja az adott Storage-fiókhoz társított tárolókat. |
-| [Új AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Létrehoz egy Azure Storage-környezetet. |
+| [New-AzStorageContext](/powershell/module/az.storage/New-AzStorageContext) | Létrehoz egy Azure Storage-környezetet. |
 
 ## <a name="next-steps"></a>További lépések
 

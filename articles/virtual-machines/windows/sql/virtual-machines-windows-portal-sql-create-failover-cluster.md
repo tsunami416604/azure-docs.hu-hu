@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842753"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486318"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -222,7 +222,7 @@ A következő lépés, hogy a feladatátvevő fürt konfigurálása az S2D-t. Eb
 
    A Feladatátvételi fürtszolgáltatás telepítése a PowerShell-lel, futtassa a következő parancsfájlt egy rendszergazdai PowerShell-munkamenetből a virtuális gépek egyike.
 
-   ```PowerShell
+   ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
@@ -253,7 +253,7 @@ A **konfiguráció ellenőrzése varázsló** az ellenőrző teszteket futtat.
 
 A PowerShell-lel a fürt ellenőrzéséhez futtassa a következő szkriptet egy rendszergazdai PowerShell-munkamenetből a virtuális gépek egyik.
 
-   ```PowerShell
+   ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
@@ -270,7 +270,7 @@ A feladatátvevő fürt létrehozásához az alábbiak szükségesek:
 
 Az alábbi PowerShell-lel egy feladatátvevő fürtöt hoz létre. Frissítse a parancsfájlt a csomópontok (virtuális gép neve) és a egy elérhető IP-címet az Azure virtuális hálózat neve:
 
-```PowerShell
+```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
@@ -294,7 +294,7 @@ A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más ad
 
    A következő PowerShell lehetővé teszi a közvetlen tárolóhelyek.  
 
-   ```PowerShell
+   ```powershell
    Enable-ClusterS2D
    ```
 
@@ -304,7 +304,7 @@ A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más ad
 
    Az S2D-t a szolgáltatások egyike, hogy automatikusan létrehoz egy tárolókészletet Ha engedélyezi azt. Most már készen áll a kötet létrehozásához. A PowerShell-parancsmag segítségével `New-Volume` automatizálja a kötet létrehozását, beleértve a formázást, felvétele a fürtbe, és egy fürt megosztott kötete (CSV) létrehozása. A következő példában létrehozunk egy 800 gigabájt (GB), fürt megosztott kötetei szolgáltatás.
 
-   ```PowerShell
+   ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
@@ -431,7 +431,7 @@ A load balancer létrehozása:
 
 Beállítása a fürt mintavételi port paraméternek, frissítse a változók a következő szkriptet a környezete értékeivel. Távolítsa el a csúcsos zárójeleket `<>` a parancsfájlból. 
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
    $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
    $ILBIP = "<n.n.n.n>" 
@@ -457,7 +457,7 @@ Az előző szkriptben a környezet értékeinek beállítását. Az alábbi list
 
 Miután beállította a fürt mintavétel láthatja az összes fürt paramétert a PowerShellben. Futtassa a következő parancsfájlt:
 
-   ```PowerShell
+   ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0192b88525d326840283f79ecea7027516ce8c7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997362"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483438"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban
 
@@ -253,7 +253,7 @@ Távolítsa el a SAPMNT fájlmegosztást a *mindkét* ASCS/SCS fürtcsomópont.
 
 Hajtsa végre a következő PowerShell-parancsfájlt:
 
-```PowerShell
+```powershell
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
@@ -261,7 +261,7 @@ Ha a SAPLOC megosztás nem létezik, hozzon létre egyet a *mindkét* ASCS/SCS f
 
 Hajtsa végre a következő PowerShell-parancsfájlt:
 
-```PowerShell
+```powershell
 #Create SAPLOC share and set security
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -289,12 +289,12 @@ A következő kötet és a fájlmegosztást létrehozni az SOFS-fürthöz:
 CSV-kötetet létrehozni, tükrözött rugalmassági beállítással, hajtsa végre a következő PowerShell-parancsmagot egy SOFS-fürt csomópont:
 
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 SAPMNT létrehozásához, és állítsa be a mappa és a fájlmegosztás biztonsági, hajtsa végre a következő PowerShell-parancsfájl egy SOFS-fürt csomópont:
 
-```PowerShell
+```powershell
 # Create SAPMNT on file share
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -354,7 +354,7 @@ Hajtsa végre az alábbi lépéseket:
 
 Hajtsa végre a következő PowerShell-parancsfájlt az SAP ASCS/SCS fürtcsomópontok egyike:
 
-```PowerShell
+```powershell
 # Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
 
 $SAPSID = "PR1"
@@ -419,7 +419,7 @@ Az új SAP ASCS/SCS virtuális állomás nevét és a globális állomásnév SA
 
 Másolás [ **SAPScripts.psm1** ] [ sap-powershell-scrips] a helyi meghajtó C:\tmp, és futtassa a következő PowerShell-parancsmagot:
 
-```PowerShell
+```powershell
 Import-Module C:\tmp\SAPScripts.psm1
 
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
@@ -463,7 +463,7 @@ További információkért lásd: [Megjegyzés 1596496 SAP - SAP erőforrástíp
 
 Egy SAP létrehozása \<SID > fürtcsoport egy ASCS/SCS hálózati név és egy megfelelő IP-címet, futtassa a következő PowerShell-parancsmagot:
 
-```PowerShell
+```powershell
 # Create SAP Cluster Group
 $SAPSID = "PR1"
 $SAPClusterGroupName = "SAP $SAPSID"
@@ -533,7 +533,7 @@ Az SAP az SAP-erőforrások létrehozásának véglegesítéséhez\<SID > fürtc
 
 Futtassa a következő PowerShell-parancsmagot:
 
-```PowerShell
+```powershell
 $SAPSID = "PR1"
 $SAPInstanceNumber = "00"
 $SAPNetworkNameClusterResourceName = "pr1-ascs"

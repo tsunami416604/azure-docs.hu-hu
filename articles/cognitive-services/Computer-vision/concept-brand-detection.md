@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 7bfda764c418258a7bc555697530214240a5f0d3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734319"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496587"
 ---
 # <a name="brand-detection"></a>Márka észlelése
 
@@ -91,7 +91,8 @@ Bizonyos esetekben a márka detector használatával kiesik a emblémakép, mind
 ```
 
 ## <a name="use-the-api"></a>Az API-val
-A márka észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. A teljes JSON-választ kap, ha egyszerűen tartalmát a karakterláncot elemezni a `"brands"` szakaszban.
+
+A márka észlelési szolgáltatás részét képezi a [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-t. Ez az API REST-hívások vagy a natív SDK keresztül hívása. Például `Brands` a a **visualFeatures** lekérdezési paraméter. Ezt követően a teljes JSON-választ kap, ha egyszerűen elemezni a karakterlánc a tartalmát a `"brands"` szakaszban.
 
 * [Rövid útmutató: Kép (.NET SDK-t) elemzése](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Rövid útmutató: Kép (REST API) elemzése](./quickstarts/csharp-analyze.md)

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774438"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487316"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
 Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
@@ -99,6 +99,12 @@ Tartományalapú szűrés konfiguráció alábbi lépésekből áll:
 3. [Módosítások alkalmazása és ellenőrzése](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Válassza ki a szinkronizálandó tartományok
+Válassza ki a szinkronizálandó tartományok két módja van:
+    - A szinkronizálási szolgáltatás használata
+    - Az Azure AD Connect varázsló használatával.
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>A szinkronizálási szolgáltatással szinkronizálni a tartományok kiválasztása
 Állítsa a tartomány, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
@@ -112,6 +118,17 @@ Tartományalapú szűrés konfiguráció alábbi lépésekből áll:
    ![Frissítés szükséges](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Ha elkészült, zárja be a **tulajdonságok** kattintva párbeszédpanel **OK**. Az erdő tartományokat eltávolítja, ha egy előugró üzenet szerint, hogy tartományhoz el lett távolítva, és ez a konfiguráció lesznek törölve.
 7. Továbbra is módosíthatja a futtatási profilokat.
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Válassza ki a tartományok szinkronizálását az Azure AD Connect varázsló használatával
+Állítsa a tartomány, hajtsa végre a következő lépéseket:
+
+1.  Az Azure AD Connect varázsló indítása
+2.  Kattintson a **Configure** (Konfigurálás) elemre.
+3.  Válassza ki **szinkronizálási beállítások testreszabása** kattintson **tovább**.
+4.  Adja meg Azure AD hitelesítő adatait
+5.  Az a **csatlakoztatott könyvtárak** kattintson képernyő **tovább**.
+6.  Az a **tartomány és szervezeti egység szűrési lap** kattintson **frissítése**.  Új tartományok ügyfélalkalmazásra most jelenik meg, és a törölt tartományok eltűnik.
+   ![Partíciók](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>A futtatási profil frissítése
 Ha a tartomány-szűrőnek, is frissíteni szeretné a futtatási profilokat.

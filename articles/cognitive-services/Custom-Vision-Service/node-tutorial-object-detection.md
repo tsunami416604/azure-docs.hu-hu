@@ -8,18 +8,18 @@ manager: daauld
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 9cc1e2cd3735d8292ebca803b83351bb97de8b83
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 17b6e59e121b836823b9e86d0d60b91d93ba82f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752358"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487260"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: A Custom Vision Node.js SDK-val objektum észlelési projekt létrehozása
 
-Ez a cikk ismerteti, információt és segítséget nyújtanak a mintakódot SDK használatának első lépései az egyéni Látástechnológiai a node.js használatával hozhat létre egy észlelési objektummodellt. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a példa sablonként használni a saját Node.js-alkalmazás létrehozásához.
+Ez a cikk ismerteti, információt és segítséget nyújtanak a mintakódot SDK használatának első lépései az egyéni Látástechnológiai a node.js használatával hozhat létre egy észlelési objektummodellt. A létrehozást követően, akkor is címkézett régiók hozzáadása, tölthet fel képeket, betanítását a projekt, a projekt közzétett előrejelzési végponti URL-cím beszerzése és ezt a végpont programozott módon képet. Ez a példa sablonként használni a saját Node.js-alkalmazás létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,9 +58,12 @@ const setTimeoutPromise = util.promisify(setTimeout);
 
 const trainingKey = "<your training key>";
 const predictionKey = "<your prediction key>";
+const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
 const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+
+const publishIterationName = "detectModel";
 
 const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
 
@@ -181,9 +184,9 @@ A képek, címkék és régiók projekthez való hozzáadásához szúrja be az 
     await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project"></a>A projekt tanítása
+### <a name="train-the-project-and-publish"></a>A projekt betanítás, közzététel
 
-Ez a kód létrehozza az első iterációt a projektben, és alapértelmezett iterációként jelöli meg. Az alapértelmezett iteráció azt a modellverziót tükrözi, amely válaszolni fog az előrejelzési kérésekre. Mindig frissítse a modell újbóli betanításakor.
+Ez a kód a projektet hoz létre az első példányát, és majd az előrejelzési végpontot tesz közzé, hogy az iteráció. Név, a közzétett iteráció előrejelzési kérelmek küldésére használható. Egy iteráció nem áll rendelkezésre előrejelzési végpontját, amíg közzé van téve.
 
 ```javascript
     console.log("Training...");
@@ -198,11 +201,11 @@ Ez a kód létrehozza az első iterációt a projektben, és alapértelmezett it
     }
     console.log("Training status: " + trainingIteration.status);
 
-    trainingIteration.isDefault = true;
-    await trainer.updateIteration(sampleProject.id, trainingIteration.id, trainingIteration);
+    // Publish the iteration to the end point
+    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-default-prediction-endpoint"></a>Szerezze meg és használja az alapértelmezett előrejelzési végpontot
+### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Letöltheti a közzétett ismétléseinek előrejelzési végpont
 
 A képek előrejelzési végpontra való küldéséhez és az előrejelzés lekéréséhez adja hozzá a következő kódot a fájl végéhez:
 
@@ -210,7 +213,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
     const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_od_image.jpg`);
 
-    const results = await predictor.predictImage(sampleProject.id, testFile, { iterationId: trainingIteration.id })
+    const results = await predictor.detectImage(sampleProject.id, publishIterationName, testFile)
 
     // Show results
     console.log("Results:");
@@ -224,7 +227,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 
 Futtatás *sample.js*.
 
-```PowerShell
+```powershell
 node sample.js
 ```
 

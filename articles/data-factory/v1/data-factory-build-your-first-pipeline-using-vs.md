@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d5100a3da9b00f5c9a1defee1e4b9280528fd2d8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543015"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483065"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Oktatóanyag: Adat-előállító létrehozása a Visual Studio használatával
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -314,8 +314,8 @@ Ebben a lépésben a projektben lévő Data Factory-entitásokat (társított sz
    5. Válassza ki a data factoryhoz a **régiót**.
    6. Kattintson a **Tovább** gombra a **Publish Items** (Elemek közzététele) oldalra való váltáshoz. (Ha a **Tovább** gomb le van tiltva, nyomja le a **TAB** billentyűt a Name (Név) mezőből való kilépéshez.)
 
-    > [!IMPORTANT]
-    > Ha a közzététel során a **Data factory name “DataFactoryUsingVS” is not available** (A „DataFactoryUsingVS” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveDataFactoryUsingVS). A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.   
+      > [!IMPORTANT]
+      > Ha a közzététel során a **Data factory name “DataFactoryUsingVS” is not available** (A „DataFactoryUsingVS” data factory-név nem érhető el) hibaüzenetet kapja, módosítsa a nevet (például: azÖnneveDataFactoryUsingVS). A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.   
 1. A **Publish Items** (Elemek közzététele) oldalon győződjön meg arról, hogy az összes Data Factory-entitás ki van jelölve, és kattintson a **Tovább** gombra a **Summary** (Összegzés) oldalra való váltáshoz.
 
     ![Publish items (Elemek közzététele) oldal](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
@@ -328,12 +328,12 @@ Fontos tudnivalók:
 
 - Ha a hibaüzenetet kapja: **Ez az előfizetés nincs regisztrálva a Microsoft.DataFactory névtér**, tegye a következők egyikét, és próbálkozzon újra a közzététellel:
     - Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához.
-        ```PowerShell   
+        ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e.
 
-        ```PowerShell
+        ```powershell
         Get-AzResourceProvider
         ```
     - Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
@@ -565,6 +565,7 @@ Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevék
 
 
 ## <a name="see-also"></a>Lásd még:
+
 | Témakör | Leírás |
 |:--- |:--- |
 | [Folyamatok](data-factory-create-pipelines.md) |Ebből a cikkből megismerheti az Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |

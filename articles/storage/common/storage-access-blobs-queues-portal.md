@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc4896f634bb98b4663dfc3fbc6bad7ba9bace3e
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319646"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444725"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Az Azure Portallal blob és üzenetsor adatok elérését
 
@@ -43,7 +43,7 @@ Blob és üzenetsor adatok eléréséhez az Azure Portalról az Azure AD-fiókot
 - Az Azure Resource Manager társított meg [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör minimális szintre a tárfiók hatókörrel rendelkező vagy újabb. A **olvasó** szerepkör engedélyt ad a legtöbb korlátozott, de egy másik Azure Resource Manager-szerepkör, amely hozzáférést biztosít a tárfiók kezelési erőforrásainak is fogadható el.
 - Akár egy beépített vagy egyéni szerepkört, blobok és a sorban lévő adatok elérését biztosító Önhöz rendelve.
 
-A **olvasó** szerepkör-hozzárendelés vagy egy másik Azure-erőforrás-kezelő szerepkör-hozzárendelés azért szükséges, hogy a felhasználó megtekintheti és keresse meg a tárfiók kezelési erőforrásainak az Azure Portalon. A blob és üzenetsor-adatokhoz hozzáférést biztosító RBAC-szerepkörök nem biztosíthat hozzáférést tárfiók kezelési erőforrásainak. A portálon a blob és üzenetsor adatok eléréséhez, a felhasználó engedélyre van szüksége, keresse meg a tárfiók erőforrásainak. Ezzel a követelménnyel kapcsolatban további információkért lásd: [a portál elérésére szolgáló olvasó szerepkört](../common/storage-auth-aad-rbac.md#assign-the-reader-role-for-portal-access).
+A **olvasó** szerepkör-hozzárendelés vagy egy másik Azure-erőforrás-kezelő szerepkör-hozzárendelés azért szükséges, hogy a felhasználó megtekintheti és keresse meg a tárfiók kezelési erőforrásainak az Azure Portalon. A blob és üzenetsor-adatokhoz hozzáférést biztosító RBAC-szerepkörök nem biztosíthat hozzáférést tárfiók kezelési erőforrásainak. A portálon a blob és üzenetsor adatok eléréséhez, a felhasználó engedélyre van szüksége, keresse meg a tárfiók erőforrásainak. Ezzel a követelménnyel kapcsolatban további információkért lásd: [a portál elérésére szolgáló olvasó szerepkört](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 A beépített szerepkörök, amelyek támogatják a blob és üzenetsor-adatokhoz való hozzáférést a következők:
 
@@ -96,5 +96,7 @@ Figyelje meg, hogy nem BLOB szerepelnek a listán, ha nem rendelkezik hozzáfér
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió)](storage-auth-aad.md)
-- [Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon (előzetes verzió)](storage-auth-aad-rbac.md)
+- [Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval](storage-auth-aad.md)
+- [Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon](storage-auth-aad-rbac-portal.md)
+- [Az RBAC Azure CLI-vel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése](storage-auth-aad-rbac-cli.md)
+- [Az RBAC a PowerShell-lel az Azure blob és üzenetsor adatokhoz való hozzáférés engedélyezése](storage-auth-aad-rbac-powershell.md)

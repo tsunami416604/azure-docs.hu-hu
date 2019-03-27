@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2bf323b34c5a5301094bdecdc9fa705fe9077320
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076343"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482130"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -49,7 +49,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
     A következő PowerShell-kód feltételezi, hogy az AzureRM PowerShell-modul telepítve van, további információért tekintse meg az [Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
 
-    ```PowerShell
+    ```powershell
     $resourceGroupName = "<your-resource-group-name>"
     $storageAccountName = "<your-storage-account-name>"
 
@@ -87,7 +87,7 @@ Az SMB-fájlmegosztást váró üzletági (LOB) alkalmazások Azure-ba való át
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Az Azure-fájlmegosztások hitelesítő adatainak megőrzése Windowson  
 A [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) segédprogram lehetővé teszi a tárfiókok hitelesítő adatainak tárolását Windowson. Ez azt jelenti, hogy nem szükséges megadnia a hitelesítő adatokat az Azure-fájlmegosztások csatlakoztatáskor vagy UNC-útvonalon keresztül történő elérésekor. A tárfiók hitelesítő adatainak mentéséhez futtassa a következő PowerShell-parancsokat, és cserélje le értelemszerűen a `<your-storage-account-name>` és `<your-resource-group-name>` elemeket.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 
@@ -107,7 +107,7 @@ Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Con
 
 A list paraméter segítségével ellenőrizheti, hogy a cmdkey segédprogram tárolta-e a tárfiók hitelesítő adatait:
 
-```PowerShell
+```powershell
 cmdkey /list
 ```
 
@@ -128,7 +128,7 @@ Két további esetet kell figyelembe venni a cmdkey segédprogrammal kapcsolatba
 
 A hitelesítő adatok tárolása egy másik felhasználó számára a gépen nagyon egyszerű: amikor be van jelentkezve a fiókjába, egyszerűen hajtsa végre a következő PowerShell-parancsot:
 
-```PowerShell
+```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
 Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
@@ -141,7 +141,7 @@ A hitelesítő adatok tárolása egy távoli gépen a PowerShell távoli eljár�
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Az Azure-fájlmegosztás csatlakoztatása a PowerShell-lel
 Futtassa a következő parancsokat egy normál (azaz nem emelt szintű) PowerShell-munkamenetből az Azure-fájlmegosztás csatlakoztatásához. Ne felejtse el kicserélni a `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` és `<desired-drive-letter>` elemeket a vonatkozó információval.
 
-```PowerShell
+```powershell
 $resourceGroupName = "<your-resource-group-name>"
 $storageAccountName = "<your-storage-account-name>"
 $fileShareName = "<your-file-share-name>"
@@ -172,7 +172,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 
 A következő PowerShell-parancsmag használatával szükség esetén leválasztható az Azure-fájlmegosztás.
 
-```PowerShell
+```powershell
 Remove-PSDrive -Name <desired-drive-letter>
 ```
 
@@ -252,7 +252,7 @@ Mielőtt eltávolítja az SMB 1-et a környezetből, naplózhatja az SMB 1 haszn
 
 A naplózás engedélyezéséhez hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 
-```PowerShell
+```powershell
 Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
@@ -261,7 +261,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 
 Az SMB 1 Windows Server-példányról történő eltávolításához hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 
-```PowerShell
+```powershell
 Remove-WindowsFeature -Name FS-SMB1
 ```
 
@@ -275,7 +275,7 @@ Az eltávolítási folyamat befejezéséhez indítsa újra a kiszolgálót.
 
 Az SMB 1 Windows-ügyfélről történő eltávolításához hajtsa végre a következő parancsmagot egy emelt szintű PowerShell-munkamenetből:
 
-```PowerShell
+```powershell
 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ```
 
@@ -288,7 +288,7 @@ Az SMB 1 nem távolítható el teljesen a Windows/Windows Server korábbi verzi�
 
 Ezt a következő PowerShell-parancsmaggal egyszerűen megteheti:
 
-```PowerShell
+```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
 ```
 

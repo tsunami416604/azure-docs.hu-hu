@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247239"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486784"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 
@@ -67,7 +67,7 @@ Vegyük részletesebben megismerni, felügyelt példányok kapcsolati architekt�
 
 ![A virtuális fürt kapcsolati architektúra](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Az ügyfelek egy állomásnevet, amely rendelkezik az űrlap használatával csatlakozhat a felügyelt példány `<mi_name>.<dns_zone>.database.windows.net`. Az állomásnév feloldása egy magánhálózati IP-cím, bár azt a nyilvános tartomány neve tartománynévrendszer (DNS) zónában lévő regisztrálva van, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön, amikor a fürt létrehozásához. Ha egy újonnan létrehozott fürt másodlagos felügyelt példány üzemelteti, a zóna Azonosítójával megosztja az elsődleges fürt. További információkért lásd: [autofailover csoportok használatával engedélyezhető az átlátható és koordinált több adatbázis feladatátvételét](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Az ügyfelek egy állomásnevet, amely rendelkezik az űrlap használatával csatlakozhat a felügyelt példány `<mi_name>.<dns_zone>.database.windows.net`. Az állomásnév feloldása egy magánhálózati IP-cím, bár azt a nyilvános tartomány neve tartománynévrendszer (DNS) zónában lévő regisztrálva van, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön, amikor a fürt létrehozásához. Ha egy újonnan létrehozott fürt másodlagos felügyelt példány üzemelteti, a zóna Azonosítójával megosztja az elsődleges fürt. További információkért lásd: [automatikus feladatátvételi csoportok használatával engedélyezhető az átlátható és koordinált több adatbázis feladatátvételét](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 A magánhálózati IP-cím tartozik, a felügyelt példány belső terheléselosztót. A load balancer irányítja a forgalmat a felügyelt példány átjáróhoz. Több felügyelt példány futtathatja ugyanazon a fürtön belül, mert az átjáró forgalom átirányítása a megfelelő SQL-adatbázismotor szolgáltatás használja a felügyelt példány állomás neve.
 
@@ -109,6 +109,8 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |80, 443, 12000|TCP     |Bármelyik              |Internet   |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZATI *  |Engedélyezés |
+
+> Ellenőrizze, hogy 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. Felügyelt példány üzembe helyezés ARM üzemelő példányok meghiúsulhat, ha a bemeneti és kimeneti szabályok a minden egyes portok külön-külön vannak konfigurálva. 
 
 \* MI ALHÁLÓZAT az IP-címtartományt az űrlap 10.x.x.x/y alhálózat hivatkozik. Ezt az információt találja az Azure Portalon, az alhálózat tulajdonságait.
 
@@ -167,6 +169,6 @@ Ha a virtuális hálózat egy egyéni DNS tartalmaz, adja hozzá az Azure rekurz
 - [Az alhálózat méretének kiszámítása](sql-database-managed-instance-determine-size-vnet-subnet.md) kívánja telepíteni a felügyelt példányok.
 - Ismerje meg, hogyan hozhat létre egy felügyelt példányt:
   - Az a [az Azure portal](sql-database-managed-instance-get-started.md).
-  - Használatával [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+  - Használatával [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Használatával [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
   - Használatával [egy Azure Resource Manager-sablon (használatával a jumpboxba, vagyis az ssms-ben szereplő)](https://portal.azure.com/).

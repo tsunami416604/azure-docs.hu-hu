@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: b65613de8f11aa36c398d15176541ac43a3dba69
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e6d953841e5c22c21640f874ecad942f8db76ad1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770220"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448897"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -102,7 +102,7 @@ Metrikákkal elvégezhető feladatok a következők:
 - Metrikák irányíthatja a naplók metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja. 
 - Metrikák Stream- [Eseményközpont](stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
 - [Archív](../../azure-monitor/learn/tutorial-archive-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit.
-- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) vagy [REST API-val](rest-api-walkthrough.md).
+- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights/) vagy [REST API-val](rest-api-walkthrough.md).
 
 
 
@@ -146,7 +146,7 @@ A naplók segítségével elvégezhető feladatok a következők:
 - Konfigurálja egy [riasztási szabály](alerts-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.
 - A naplózási adatokat az alapján egy munkafolyamatot hozhat létre [Logic Apps](~/articles/logic-apps/index.yml).
 - A lekérdezés eredményeinek exportálására [Power BI](powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.
-- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
+- Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) vagy [REST API-val](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Teljesítménynapló-adatok megtekintése
 Minden naplóadatokat az Azure Monitor használatával lekéri a [naplólekérdezés](../log-query/log-query-overview.md) -készült a [Kusto-lekérdezés nyelvi](../log-query/get-started-queries.md), amely lehetővé teszi, hogy gyorsan lekérni, konszolidálhatja és elemezheti az összegyűjtött adatokat. Használat [Log Analytics](../log-query/portals.md) fejlesztésére és tesztelésére a lekérdezések az Azure Portalon. Eredmények interaktív használatához, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Naplók segítségével is lekérhet a [Azure REST API-val figyelési](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).

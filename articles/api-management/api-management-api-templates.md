@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970892"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486368"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Az Azure API Management API-sablonok
 
@@ -82,15 +82,15 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
 ### <a name="controls"></a>Vezérlők  
  A `API list` sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [lapozófájl-vezérlő](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
--   [Keresés-vezérlő](api-management-page-controls.md#search-control)  
+-   [search-control](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|API-k|A gyűjtemény [API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitásokat.|Az API-k az aktuális felhasználó számára látható.|  
+|`apis`|A gyűjtemény [API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitásokat.|Az API-k az aktuális felhasználó számára látható.|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   
@@ -345,15 +345,15 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|apiId|sztring|A jelenlegi API azonosítója.|  
-|ApiName|sztring|Az API neve.|  
-|apiDescription|sztring|Az API leírása.|  
-|api-t|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitás.|A jelenlegi API-t.|  
-|művelet|[Művelet](api-management-template-data-model-reference.md#Operation)|A megjelenített műveletet.|  
-|sampleUrl|sztring|Az aktuális művelet URL-CÍMÉT.|  
-|operationMenu|[A művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveleteinek menü.|  
-|consoleUrl|URI|URI-JÁNAK a **kipróbálás** gombra.|  
-|minták|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet Kódminták...|  
+|`apiId`|sztring|A jelenlegi API azonosítója.|  
+|`apiName`|sztring|Az API neve.|  
+|`apiDescription`|sztring|Az API leírása.|  
+|`api`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitás.|A jelenlegi API-t.|  
+|`operation`|[Művelet](api-management-template-data-model-reference.md#Operation)|A megjelenített műveletet.|  
+|`sampleUrl`|sztring|Az aktuális művelet URL-CÍMÉT.|  
+|`operationMenu`|[A művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveleteinek menü.|  
+|`consoleUrl`|URI|URI-JÁNAK a **kipróbálás** gombra.|  
+|`samples`|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet Kódminták...|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   
@@ -1192,7 +1192,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> A PHP  
+###  <a name="PHP"></a> PHP  
  A **DocumentationSamplesPhp** a sablon lehetővé teszi, hogy testre szabhatja a kódminta található, a művelet lapon kód minták szakaszában.  
   
 #### <a name="default-template"></a>Alapértelmezett sablon  
