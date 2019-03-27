@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a25dd3a2228f0b1b3ab33db0c9c689d7b2899d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310557"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479529"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
@@ -32,8 +32,15 @@ Az Azure AD jelszóvédelem szem előtt ezeket az alapelveket a célja:
 * Nincs minimális Active Directory tartomány vagy erdő működési szintje (DFL/FFL) nem szükséges.
 * A szoftver nem hozzon létre vagy fiókok az Active Directory-tartományok, amely megvédi a szükséges.
 * Felhasználói tiszta szöveges jelszavak ne hagyja a tartományvezérlő, jelszó-ellenőrzési műveletek során vagy a tetszőleges időpontban.
-* A növekményes üzembe helyezést. De a jelszóházirend csak kényszerítve van, ahol a Domain Controller ügynök (DC ügynök) telepítve van.
-* Azt javasoljuk, hogy az összes olyan tartományvezérlőn annak biztosítására, univerzális jelszó védelmi biztonság kényszerítése az DC-ügynök telepítése.
+* Támogatott növekményes üzembe helyezést, azonban a jelszóházirend csak kényszerítve van, ahol a Domain Controller ügynök (DC ügynök) telepítve van. További részleteket a következő témakörben talál.
+
+## <a name="incremental-deployment"></a>Növekményes üzembe helyezést
+
+Az Azure AD jelszóvédelem támogatja a növekményes üzembe helyezést az Active Directory-tartományban lévő tartományvezérlők között, de fontos tudni, Mi ez igazán azt jelenti, és a kompromisszumot kínál a rendszer.
+
+Az Azure AD jelszó DC védelmi ügynök nevű szoftvert csak ellenőrizheti jelszavak, ha telepítve van a tartományvezérlőn, és csak a jelszó módosítására, az adott tartományvezérlőhöz küldött. Nincs lehetőség, hogy mely tartományvezérlők a Windows ügyfél gépek feldolgozásának felhasználói jelszó módosítására közül választ. Annak érdekében, hogy garantálja a következetes viselkedését és univerzális jelszó védelmi biztonság kényszerítése, a tartományvezérlő ügynök szoftvert telepítenie kell egy tartomány összes tartományvezérlőjére.
+
+Számos szervezetben érdemes az Azure AD jelszóvédelem részhalmazán a tartományvezérlők teljes körű telepítésére végrehajtásakor.%n előtt gondosan tesztelés. Azure AD jelszóvédelem támogatja a részleges központi telepítési, például a tartományvezérlő ügynök nevű szoftvert egy adott tartományvezérlő aktívan ellenőrzi a jelszavak akkor is, ha a tartomány más tartományvezérlők nem rendelkeznek telepített DC ügynökszoftver. Az ilyen típusú részleges központi telepítések nincsenek biztonságos, és más, nem ajánlott tesztelési célokra.
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 

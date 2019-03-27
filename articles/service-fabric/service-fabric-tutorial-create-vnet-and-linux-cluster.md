@@ -3,7 +3,7 @@ title: Linux-alapú Service Fabric-fürt létrehozása az Azure-ban | Microsoft 
 description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fabric-fürtöt egy meglévő Azure-beli virtuális hálózatban az Azure CLI használatával.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 780f87924bcd25f0485bfed1b9640915b7d8e1d3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 890f7c207b373781c55e4261a58505d849298d82
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309469"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499148"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure-beli virtuális hálózathoz Linux Service Fabric-fürt üzembe helyezése
 
@@ -34,6 +34,7 @@ Előkészületek:
 * Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md)
 * Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli)
 * További információt a fürtök kapcsolatos főbb fogalmakat, [áttekintése az Azure-fürtök](service-fabric-azure-clusters-overview.md)
+* [Megtervezheti és előkészítheti a](service-fabric-cluster-azure-deployment-preparation.md) éles fürt üzembe helyezéséhez.
 
 Az alábbi eljárással létrehozunk egy hét csomópontos Service Fabric-fürtön. A Service Fabric-fürtök Azure-ban történő futtatásával járó költségek kiszámításához használja az [Azure-díjkalkulátort](https://azure.microsoft.com/pricing/calculator/).
 

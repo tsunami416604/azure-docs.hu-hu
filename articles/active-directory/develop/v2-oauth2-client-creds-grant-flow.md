@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540568"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445430"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 ügyfél-hitelesítési folyamata
 
@@ -76,10 +76,10 @@ Alkalmazásengedélyek használata az alkalmazásban, a következő szakaszokban
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az alkalmazás regisztrációs portálon az engedélyek kéréséhez
 
-1. Regisztráljon, és létrehozhat egy alkalmazást keresztül a [az alkalmazásregisztrációs portálon](quickstart-v2-register-an-app.md) vagy az új [alkalmazásregisztrációk (előzetes verzió) élmény](quickstart-register-app.md).
-1. Nyissa meg az alkalmazás, amellyel regisztrálásához, vagy az alkalmazás létrehozása a portálon. Az alkalmazás létrehozásakor legalább egy alkalmazás titkos használni kell.
-1. Keresse meg a **API-engedélyek** szakaszt, és adja hozzá a **Alkalmazásengedélyek** az alkalmazásának.
-1. **Mentés** az alkalmazás regisztrációját.
+1. Regisztrálja, és hozzon létre egy alkalmazást az új keresztül [alkalmazásregisztrációk (előzetes verzió) élmény](quickstart-register-app.md).
+2. Nyissa meg az alkalmazás az App regisztrációk (előzetes verzió) felületen. Keresse meg a **tanúsítványok és titkos kulcsok** szakaszt, és adjon hozzá egy **új titkos ügyfélkulcsot**, mert legalább egy titkos Ügyfélkód használja a jogkivonat kéréséhez kell.
+3. Keresse meg a **API-engedélyek** szakaszt, és adja hozzá a **Alkalmazásengedélyek** az alkalmazásának.
+4. **Mentés** az alkalmazás regisztrációját.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: Jelentkezzen be a felhasználó az alkalmazás
 
@@ -172,7 +172,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | Szükséges | A directory-bérlő az alkalmazás tervek GUID Azonosítóját vagy a tartománynév formátumban való működésre. |
 | `client_id` | Szükséges | Az Alkalmazásazonosító, amely az alkalmazás hozzá van rendelve. Ezt az információt találja a portálon, ahol regisztrálta az alkalmazást. |
 | `scope` | Szükséges | Az átadott érték a `scope` paraméter a kéréshez a kívánt, elhelyezni, az erőforrást az erőforrás-azonosító (Alkalmazásazonosító URI-alkalmazás) kell lennie a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. </br>Ez az érték jelzi, hogy az összes közvetlen alkalmazás engedélyt már konfigurálta az alkalmazást, a végpontot kell jogkivonatok kiállítása az erőforrással használni kívánt azokat a a v2.0-végpont. További információkat talál a `/.default` hatókörét, tekintse meg a [dokumentáció hozzájárulás](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Szükséges | Az alkalmazás titkos az alkalmazás az alkalmazás regisztrációs portálon létrehozott. A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt. |
+| `client_secret` | Szükséges | Az ügyfél titkos kulcsát az alkalmazás az alkalmazás regisztrációs portálon létrehozott. A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt. |
 | `grant_type` | Szükséges | Meg kell `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat kérése tanúsítvánnyal

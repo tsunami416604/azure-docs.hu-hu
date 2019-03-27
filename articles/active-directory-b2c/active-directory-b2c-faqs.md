@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 89ad91316da027e399891a7e1b348e66c1d3a4f5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433722"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499896"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -113,7 +113,8 @@ Jelenleg nem. Ez a funkció tervbe van. A tartomány az ellenőrzése a **tartom
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölhetek Azure AD B2C-bérlő?
 Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törléséhez:
 
-1. A szabályzatokat az Azure AD B2C-bérlő törlése.
+1. Törölje az összes felhasználói folyamatok (szabályzatok) az Azure AD B2C-bérlőben.
+1. Törölje az Azure AD B2C-bérlő regisztrált összes alkalmazást.
 1. Most jelentkezzen be a [az Azure portal](https://portal.azure.com/) előfizetés-rendszergazdaként. (Használja a ugyanazzal a munkahelyi vagy iskolai fiók vagy a Microsoft-fiók, amellyel Azure-fiók regisztrálása.)
 1. Váltás az Azure AD B2C-bérlőt szeretne törölni.
 2. Keresse meg az Active Directory a bal oldali menüben.

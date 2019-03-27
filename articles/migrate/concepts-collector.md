@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 78ef88d0710e8a82d30fa26b60073aa75e363c15
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315300"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498417"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -150,6 +150,9 @@ vCenter Server | 443-as TCP | A gyűjtő képes kommunikálni a vCenter-kiszolg�
 RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>Összegyűjtött metaadatok
+
+> [!NOTE]
+> A gyűjtőberendezés segítségével segítséget méretezése az alkalmazások a migrálás őket az Azure-bA az Azure Migrate által felderített metaadatok hajtsa végre az Azure-megfelelőségi elemzés, a függőségi alkalmazáselemzés és a költségek megtervezése. A Microsoft nem használja ezeket az adatokat bármely licenc megfelelőség ellenőrzése viszonyítva.
 
 A gyűjtőberendezés minden virtuális géphez deríti fel a következő konfigurációs metaadatokat. A konfigurációs adatokat a virtuális gépek esetében érhető el egy órán felderítés indítása.
 

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: b45b59775abd2db7cea9d0fa9b0cc23f7ce31277
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848835"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497839"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: az első, először ki (FIFO) 
 
 A Microsoft Azure Service Bus-munkamenetek engedélyezze a közös és rendezett kezelését a kapcsolódó üzenetek korlátlan streameken működő sorrendje. Vegye figyelembe a Service Bus FIFO garancia,-munkameneteket kell használnia. A Service Bus nem előíró kapcsolatos üzenetek közötti kapcsolat jellegét, és szintén nem határoz meg egy adott modell meghatározásához, ahol egy üzenetsort kezdődik vagy végződik.
 
 > [!NOTE]
-> A Service Bus alapszintű csomagja nem támogatja a munkamenetek. A standard és prémium szintű csomag olyan munkameneteket támogat. További információkért lásd: [Service Bus díjszabásáról](service-bus-pricing-billing.md).
+> A Service Bus alapszintű csomagja nem támogatja a munkamenetek. A standard és prémium szintű csomag olyan munkameneteket támogat. További információkért lásd: [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Bármely küldő hozhat létre egy munkamenetet, mikor küldjön üzeneteket üzenetsor vagy témakör beállításával a [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) tulajdonságot néhány alkalmazás által meghatározott, a munkamenet egyedi azonosítója. Az AMQP 1.0 protokoll szintjén ezt az értéket képez a *csoportazonosító* tulajdonság.
 

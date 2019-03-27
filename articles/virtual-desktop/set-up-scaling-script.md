@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: bee02549d68b1dbdba3f0e62477b28bbd475ea32
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402490"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497897"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatikus méretezés a munkamenet-gazdagépek
+# <a name="automatically-scale-session-hosts"></a>Munkamenetgazdák automatikus méretezése
 
 Számos Windows virtuális asztal előzetes központi telepítés az Azure-ban a virtuális gép költségek pedig a virtuális asztali Windows központi telepítési díja jelentős részét. Költségek csökkentése érdekében érdemes, állítsa le és a használat csúcsidőn kívüli időszakokban szabadítsa fel a munkamenet gazdagép virtuális gépeken (VM), majd indítsa újra őket az alacsony kínálat csúcsidőben használat.
 
@@ -81,7 +81,7 @@ Adja meg a megfelelő értékek be a soubor Config.XML v méretezési parancsfá
 | currentAzureSubscriptionId    | Ahol a munkamenetgazda virtuális gépek futtatása az Azure-előfizetés azonosítója                        |
 | tenantName                    | Windows virtuális asztal bérlő neve                                                    |
 | hostPoolName                  | Windows virtuális asztali állomás készlet neve                                                 |
-| RDBroker                      | Az alapértelmezett érték WVD Service URL-címe <https://rdbroker.wvd.microsoft.com>             |
+| RDBroker                      | URL-címet a WVD szolgáltatásba, alapértelmezett érték https:\//rdbroker.wvd.microsoft.com             |
 | Felhasználónév                      | A szolgáltatás egyszerű alkalmazás azonosítója (azt a lehetséges, hogy az azonos szolgáltatásnév AADApplicationId a) vagy általános jogú felhasználó a multi-factor authentication használata nélkül |
 | isServicePrincipal            | Elfogadott értékek a következők **igaz** vagy **hamis**. Azt jelzi, hogy a második használt hitelesítő adatok, egy szolgáltatásnév vagy egy standard szintű fiók. |
 | BeginPeakTime                 | Amikor használati csúcsidőszak kezdete                                                            |

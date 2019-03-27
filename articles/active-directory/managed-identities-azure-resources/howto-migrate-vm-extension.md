@@ -3,7 +3,7 @@ title: Állítsa le a felügyelt identitás Virtuálisgép-bővítménnyel, és 
 description: Lépés útmutató leállítása, a Virtuálisgép-bővítménnyel, és indítsa el az Azure példány metaadat szolgáltatás (IMDS) használnak a hitelesítéshez.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: priyamo
-ms.openlocfilehash: c29eb22f2606fc44cfd7d948f2c363cb51c811dd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: markvi
+ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227616"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498332"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Állítsa le a virtuális gép használatával felügyelt identitások bővítményt, és elkezdheti az Azure Instance Metadata szolgáltatás
 
@@ -196,7 +196,7 @@ Van néhány jelentős korlátozás, a virtuális gépi bővítmény használat�
 
 ## <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
-A [Azure példány metaadat szolgáltatás (IMDS)](https://docs.microsoft.com/azure/virtual-machines/instance-metadata-service) egy REST-végpont, amely azzal foglalkozik, amelyek segítségével kezelheti és konfigurálhatja a virtuális gépek virtuálisgép-példányokat futtató. A végpont egy jól ismert nem átirányítható IP-címen érhető el (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.
+A [Azure példány metaadat szolgáltatás (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) egy REST-végpont, amely azzal foglalkozik, amelyek segítségével kezelheti és konfigurálhatja a virtuális gépek virtuálisgép-példányokat futtató. A végpont egy jól ismert nem átirányítható IP-címen érhető el (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.
 
 Nincsenek Azure IMDS használata szükséges jogkivonatok kérelmezésére számos előnnyel jár. 
 

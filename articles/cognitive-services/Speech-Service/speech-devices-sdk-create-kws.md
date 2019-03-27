@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22d270d9bc337b9d7ad776baf5dd35f877c05eae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b5ace2e741f900dd4ab7ba6518d0956284af35f6
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856427"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498231"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Hozzon létre egy egyéni ébresztési szót a Speech szolgáltatással
 
@@ -49,23 +49,19 @@ Ha úgy dönt, hogy ébresztési szót, ügyeljen a következőkre:
 
 Egy egyéni ébresztési szót az eszköz használata előtt létre kell hoznia az ébresztési szó a Microsoft egyéni ébresztési Word létrehozó szolgáltatások használatával. Miután megadta a ébresztési word-, a szolgáltatás állít elő a fájlnevet, amely a szoftverfejlesztői készlet ahhoz, hogy az ébresztési word, az eszközön telepítheti.
 
-1. Nyissa meg a [Custom Speech service portal](https://cris.ai/).
+1. Nyissa meg a [Custom Speech Service-portál](https://cris.ai/).
 
-1. Hozzon létre egy új fiókot, amellyel az Azure Active Directory a meghívót kapott e-mail-címmel.
+    ![A Custom Speech Service-portál](media/speech-devices-sdk/wake-word-4.png)
 
-    ![Új fiók létrehozása](media/speech-devices-sdk/wake-word-1.png)
+1. Jelentkezzen be az e-mail címet az Azure Active Directory a meghívó érkezett.
 
-1. A **egyéni ébresztési Word** lap nem érhető el nyilvánosan, így nem áll fenn, amely vesz igénybe, hogy közvetlen kapcsolat. A Custom Speech funkcióhoz egy Azure-előfizetések, de nem az egyéni ébresztési Word funkció. Ha kapott a **nem találhatók előfizetések.** hibalap, csak cserélje le a **"előfizetések? errorMessage nincs % 20Subscriptions % 20found ="** az "**customkws**" a URL-cím és a találatok adjon meg. Az URL-cím ezek egyike lehet: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws vagy https://northeurope.cris.ai/customkws, attól függően, ahol a régióban van.
-
-    ![Az egyéni ébresztési Word oldal rejtett](media/speech-devices-sdk/wake-word-4.png)
+1. A **egyéni ébresztési Word** lap nem érhető el nyilvánosan, így nem áll fenn, amely vesz igénybe, hogy közvetlen kapcsolat. Az egyéni beszédfelismerési szolgáltatás Azure-előfizetés szükséges, de az egyéni ébresztési Word funkció sem. Ha kapott a **nem találhatók előfizetések.** hibalap, csak cserélje le a **"előfizetések? errorMessage nincs % 20Subscriptions % 20found ="** az "**customkws**" a URL-cím és a találatok adjon meg. Az URL-cím ezek egyike lehet: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws vagy https://northeurope.cris.ai/customkws, attól függően, ahol a régióban van.
 
 1. Írja be a választott ébresztési szót, és válassza ki **küldje el a word**.
 
     ![Adja meg az ébresztési word](media/speech-devices-sdk/wake-word-5.png)
 
 1. Eltarthat néhány percig, létrejön a fájlokat. Megjelenik egy forgó kör a böngészőablakban. Ezután egy információs sáv megjelenik, rákérdez arra, hogy töltse le a .zip-fájlként.
-
-    ![A .zip fájl fogadása](media/speech-devices-sdk/wake-word-6.png)
 
 1. Mentse a .zip-fájlt a számítógépre. Ez a csomag központi telepítése az egyéni ébresztési word-fájl szükséges. Az egyéni ébresztési szó üzembe helyezéséhez kövesse a [a Speech eszközök SDK használatának első lépései](speech-devices-sdk-qsg.md).
 

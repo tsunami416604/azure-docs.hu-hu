@@ -9,12 +9,12 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 02/09/2019
-ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e77556ac0d6f64797906c0f3b4181f147b1668e2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244674"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448408"
 ---
 # <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései és a dokumentáció frissítéseiről
 
@@ -22,9 +22,10 @@ Az Azure SQL Data Warehouse (az SQL DW) egy felhőalapú vállalati adattárház
 
 Kattintson az alábbi hivatkozásokra kattintva további információk az új funkciók és fejlesztések, amelyek az Azure SQL Data Warehouse legújabb verzióját. Ezek a szolgáltatásfrissítések fogadásához az azonosított karbantartási ütemezés során várható.
 
-- [Az SQL Data Warehouse verzió 10.0.10106.0 (január)](./release-notes-10-0-10106-0.md)
-- [A 2018. december](./release-notes-december-2018.md)
-- [2018. október](./release-notes-october-2018.md)
+- [2019. március](./release-notes-10-0-10106-0.md#march-2019)
+- [2019. január](./release-notes-10-0-10106-0.md#january-2019)
+- [A 2018. december](./release-notes-10-0-10106-0.md#december-2018)
+- [2018. október](./release-notes-10-0-10106-0.md#october-2018)
 - [2018. szeptember](./release-notes-september-2018.md)
 - [2018. augusztus](./release-notes-august-2018.md)
 - [2018. július](./release-notes-july-2018.md)
@@ -39,9 +40,9 @@ Ellenőrizze, hogy melyik kiadás lett, az adattárház lett alkalmazva. Csatlak
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/dw-version.png)
+Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
 
-Kérjük, győződjön meg arról, melyik kiadás telepítve van az Azure SQL Data Warehouse azonosított verzióját használja. 
+A dátum, győződjön meg arról, melyik kiadás telepítve van az Azure SQL Data Warehouse azonosított használja. 
 
 
 ## <a name="next-steps"></a>További lépések

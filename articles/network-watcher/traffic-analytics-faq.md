@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fee22561bb0c341ed5c6e4dc49a8d7f8aa8efaf2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835316"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445202"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -163,7 +163,7 @@ Az erőforrások információk jelennek meg az irányítópult; azonban nem flow
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Konfigurálhatom úgy a traffic analytics PowerShell-lel vagy az Azure Resource Manager-sablon, vagy az ügyfél?
 
-A traffic analytics 6.2.1 verzió frissítésétől kezdve a Windows PowerShell segítségével konfigurálhatja. Csoportforgalom naplózása és a traffic analytics egy adott NSG a Set parancsmag használatával, lásd: [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.3.0). A flow naplózási és a traffic analytics állapota egy adott NSG lekéréséhez lásd: [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus?view=azurermps-6.3.0).
+A traffic analytics 6.2.1 verzió frissítésétől kezdve a Windows PowerShell segítségével konfigurálhatja. Csoportforgalom naplózása és a traffic analytics egy adott NSG a Set parancsmag használatával, lásd: [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog). A flow naplózási és a traffic analytics állapota egy adott NSG lekéréséhez lásd: [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus).
 
 Jelenleg a traffic analytics konfigurálása Azure Resource Manager-sablon nem használható.
 

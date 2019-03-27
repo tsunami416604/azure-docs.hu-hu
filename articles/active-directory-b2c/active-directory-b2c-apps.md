@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446375"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497958"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -108,7 +108,7 @@ Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára a
 
 Az eszközök, például az asztali és mobil alkalmazások, telepített alkalmazások gyakran igényelnek hozzáférést Háttérszolgáltatásokhoz vagy webes API-k felhasználók nevében. Egyedi identitáskezelési eszközöket adhat a natív alkalmazásokhoz, és biztonságosan meg háttér-szolgáltatásokat az Azure AD B2C-vel és a [OAuth 2.0 hitelesítési kódfolyamat](active-directory-b2c-reference-oauth-code.md).  
 
-Ezt a folyamatot, az alkalmazás végrehajt [házirendek](active-directory-b2c-reference-policies.md) és kap egy `authorization_code` után a felhasználó teljesítette a szabályzat az Azure AD-ből. A `authorization_code` jelöli a háttér-szolgáltatásokat az aktuálisan bejelentkezett felhasználó nevében az alkalmazás számára. Az alkalmazás ezután tudjon cserélni a `authorization_code` a háttérben egy `id_token` és a egy `refresh_token`.  Az alkalmazás használhatja a `id_token` egy háttér-webes API-nak a HTTP-kérések hitelesítéséhez. Az `refresh_token` alkalmas ezenfelül új `id_token` kérésére is, ha a régi lejárna.
+Ezt a folyamatot, az alkalmazás végrehajt [házirendek](active-directory-b2c-reference-policies.md) és kap egy `authorization_code` után a felhasználó teljesítette a szabályzat az Azure AD-ből. A `authorization_code` jelöli a háttér-szolgáltatásokat az aktuálisan bejelentkezett felhasználó nevében az alkalmazás számára. Az alkalmazás ezután tudjon cserélni a `authorization_code` a háttérben egy `access_token` és a egy `refresh_token`.  Az alkalmazás használhatja a `access_token` egy háttér-webes API-nak a HTTP-kérések hitelesítéséhez. Az `refresh_token` alkalmas ezenfelül új `access_token` kérésére is, ha a régi lejárna.
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411254"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500049"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Vegyen fel egy szimbólum réteget a térkép
 
@@ -35,6 +35,9 @@ A második kódblokkot, egy adatforrás-objektum létrejött, használja a [Data
 A harmadik kódblokkot létrehoz egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) és a frissítések, egér, a pont koordináták kattintson az alakzat osztállyal [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) metódust.
 
 A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  Az adatforrás az kattintson eseményfigyelő és a szimbólum réteg létrehozása és belül a térképhez hozzáadni a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosítására, hogy a pont után teljes betölti a térkép jelenik meg.
+
+> [!TIP]
+> Alapértelmezés szerint a teljesítmény szimbólum rétegek optimalizálása a renderelési szimbólumok a szimbólumok, amely átfedésben. Ahogy a rejtett szimbólumok nagyítás láthatóvá válhat. Tiltsa le ezt a szolgáltatást, és minden szimbólumok leképezéséhez mindenkor, állítsa be a `allowOverlap` tulajdonságát a `iconOptions` megadhatja, hogy `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egy szimbólum réteget ad hozzá egy egyéni ikon
 

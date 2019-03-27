@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b30ef7d0b373f0d9a440b6649f819e429e28328c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314926"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482985"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application Hosting for UK OFFICIAL Workloads
 
@@ -95,7 +95,7 @@ Adatok kívül az átvitel során, és az Azure-összetevők közötti védje [T
 
 [Az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására vonatkozó ajánlott eljárásokat követve. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
-[A Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) egy valós idejű védelem képesség, amellyel a vírusok, kémprogramok és más kártevők azonosításában és. Ez alapértelmezés szerint telepítve van az alapul szolgáló PaaS virtuálisgép-infrastruktúra és az Azure-hálót biztosítása a vásárlók számára transzparens módon kezeli
+[A Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) egy valós idejű védelem képesség, amellyel a vírusok, kémprogramok és más kártevők azonosításában és. Ez alapértelmezés szerint telepítve van az alapul szolgáló PaaS virtuálisgép-infrastruktúra és az Azure-hálót az ügyfél számára transzparens módon kezeli.
 
 ### <a name="paas-services-in-this-blueprint"></a>Ez a megoldás a PaaS-szolgáltatások
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880925"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445636"
 ---
 # <a name="azure-networking"></a>Az Azure-hálózatok
 
@@ -34,7 +34,7 @@ Az Azure biztosít a különböző hálózati funkciói, amelyek együtt vagy k�
 - [Kezelhetőségi](#manageability): Figyelheti, és az Azure hálózati erőforrások kezeléséhez.
 - [Telepítési és konfigurációs eszközök](#tools): Egy olyan webes portál vagy a többplatformos parancssori eszközök segítségével telepítheti és konfigurálhatja a hálózati erőforrásokhoz.
 
-## <a name="Connectivity"></a>Azure-erőforrások közötti kapcsolat
+## <a name="connectivity"></a>Azure-erőforrások közötti kapcsolat
 
 Például a Virtual Machines, Cloud Services, Virtual Machines Scale Sets és az Azure App Service Environment-környezetek Azure-erőforrások is privát módon kommunikáljanak egymással egy Azure virtuális hálózaton (VNet) keresztül. Virtuális hálózat egy logikai elkülönítés az Azure felhő számára kijelölt a [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Minden egyes Azure-előfizetésen belül több virtuális hálózat és az Azure valósíthat meg [régió](https://azure.microsoft.com/regions). Minden egyes virtuális hálózat el különítve a többi virtuális hálózatok. Az egyes virtuális hálózatok a következőket teheti:
 
@@ -150,7 +150,7 @@ Az Azure a következő felügyelhető és kezelhető a hálózati eszközöket k
 Telepítheti és konfigurálhatja az Azure hálózati erőforrásaival a következő eszközök bármelyikével:
 
 - **Az Azure Portalon:** Egy grafikus felhasználói felület, amelyen a böngészőben. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-- **Azure PowerShell:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- **Azure PowerShell:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure parancssori felület (CLI):** Parancssori eszközök kezelése az Azure Linux, macOS vagy Windows-számítógépekről. További információ az Azure CLI olvassa el a [Azure CLI áttekintése](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure Resource Manager-sablonok:** Egy fájl (JSON formátumban), amely meghatározza az infrastruktúra és a egy Azure-megoldás konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Sablonok készítése kapcsolatos további információkért olvassa el a [gyakorlati tanácsok a sablonok létrehozásához](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. Sablonok is üzembe helyezhetők az Azure Portalon, parancssori felület vagy PowerShell. Első lépésként sablonokkal azonnal üzembe helyezése a sok előre konfigurált sablonok egyikét a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=network) könyvtár. 
 

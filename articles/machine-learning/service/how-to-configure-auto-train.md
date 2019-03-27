@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 03/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79d013e5836555547cbf254bb25c06add0a717e1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 0de6cf9be01fc93a26a782189a2062d19eaf73e8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295385"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499267"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -39,21 +39,24 @@ Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine
 
 Automatizált gépi tanulási funkciók általánosan elérhetők, amíg **előrejelzés jelenleg még nyilvános előzetes verzióban.**
 
-Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
+Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus. DNN-algoritmusok betanítás során érhetők el, miközben automatizált ML nem építhető fel DNN-modelleket.
 
 Besorolás | Regresszió | Előrejelzések
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Rugalmas Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Rugalmas Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[C-támogatás vektor besorolás (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)
-[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)
+[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[C-támogatás vektor besorolás (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#classification)|
-[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|
+[xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[A DNN Classifer](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[A DNN regressor erre](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [A DNN regressor erre](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[A DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris regressor erre](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineáris regressor erre](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
+[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
 
 ## <a name="data-source-and-format"></a>Adatforrás és a formátum
@@ -156,15 +159,15 @@ Külön vonat és érvényesítési beállítása get_data() vagy közvetlenül 
 
 ### <a name="k-folds-cross-validation"></a>K – Modellrész keresztellenőrzés
 
-Használat `n_cross_validations` ellenőrzések közötti számát adja meg a beállítást. A tanítási adathalmazt lesz véletlenszerűen felosztva `n_cross_validations` modellrész egyenlő méretű. Során minden egyes keresztellenőrzési round egyet a kevesebb modellrészt használható ellenőrzés céljából a többi modellrész tanított modell. Ez a folyamat ismétlődik a `n_cross_validations` kerekít mindaddig, amíg minden modellrészek érvényesítési beállított egyszer használatos. Az összes átlagos pontszámok `n_cross_validations` kerekít lesz jelentve, és a megfelelő modellt fog retrained a a egészében betanítási adatok készlete.
+Használat `n_cross_validations` ellenőrzések közötti számát adja meg a beállítást. A tanítási adathalmazt lesz véletlenszerűen felosztva `n_cross_validations` modellrész egyenlő méretű. Során minden egyes keresztellenőrzési round egyet a kevesebb modellrészt használható ellenőrzés céljából a többi modellrész tanított modell. Ez a folyamat ismétlődik a `n_cross_validations` kerekít mindaddig, amíg minden modellrészek érvényesítési beállított egyszer használatos. Az összes átlagos pontszámok `n_cross_validations` kerekít lesz jelentve, és a megfelelő modellt fog retrained a a egészében betanítási adatok készlete. 
 
 ### <a name="monte-carlo-cross-validation-aka-repeated-random-sub-sampling"></a>Monte Carlo keresztellenőrzés (más néven) Ismétlődő véletlenszerű alárendelt mintavételi)
 
-Használjon `validation_size` százalékos aránya az érvényesítés, és használja a használandó képzési adatkészlet megadásához `n_cross_validations` közötti ellenőrzések száma. Egyes során keresztellenőrzés round, egy részhalmazát méretű `validation_size` ellenőrzés céljából a többi adat tanított modell a rendszer véletlenszerűen választ. Végül, az átlagos pontszámmodell összes `n_cross_validations` kerekít lesz jelentve, és a megfelelő modellt fog retrained a a egészében betanítási adatok készlete.
+Használjon `validation_size` százalékos aránya az érvényesítés, és használja a használandó képzési adatkészlet megadásához `n_cross_validations` közötti ellenőrzések száma. Egyes során keresztellenőrzés round, egy részhalmazát méretű `validation_size` ellenőrzés céljából a többi adat tanított modell a rendszer véletlenszerűen választ. Végül, az átlagos pontszámmodell összes `n_cross_validations` kerekít lesz jelentve, és a megfelelő modellt fog retrained a a egészében betanítási adatok készlete. Monte Carlo idősorozat-előrejelzés nem támogatott.
 
 ### <a name="custom-validation-dataset"></a>Egyéni ellenőrzési adatkészlet
 
-Egyéni ellenőrzési adatkészletet használja, ha véletlenszerű split nem fogadható el (általában time series és imbalanced adatokat). A saját érvényesítési adatkészletet is megadhat. A modellben értékelik az érvényesítési élelmiszer-megadott véletlenszerű adatkészlet helyett.
+Egyéni ellenőrzési adatkészlet, ha véletlenszerű split nem elfogadható, általában idősorozat-adatok vagy imbalanced adatokat használja. A saját érvényesítési adatkészletet is megadhat. A modellben értékelik az érvényesítési élelmiszer-megadott véletlenszerű adatkészlet helyett.
 
 ## <a name="compute-to-run-experiment"></a>Számítási kísérlet futtatása
 
@@ -178,7 +181,7 @@ Tekintse meg a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningNo
 
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
-Többféle módon használhatja az automatikus machine learning-kísérlet konfigurálása. Ezeket a paramétereket állítja be hárítható el egy `AutoMLConfig` objektum.
+Többféle módon használhatja az automatikus machine learning-kísérlet konfigurálása. Ezeket a paramétereket állítja be hárítható el egy `AutoMLConfig` objektum. Tekintse meg a [AutoMLConfig osztály](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) paraméterek teljes listája.  
 
 Néhány példa:
 
@@ -223,6 +226,7 @@ Háromféle különböző `task` paraméterértékeket, amelyek meghatározzák 
     * GradientBoosting
     * TensorFlowDNN
     * TensorFlowLinearClassifier
+    * XGBoostClassifier
 * Regresszió
     * ElasticNet
     * GradientBoosting
@@ -235,6 +239,7 @@ Háromféle különböző `task` paraméterértékeket, amelyek meghatározzák 
     * LightGBM
     * TensorFlowLinearRegressor
     * TensorFlowDNN
+    * XGBoostRegressor
 * Előrejelzések
     * ElasticNet
     * GradientBoosting
@@ -247,8 +252,7 @@ Háromféle különböző `task` paraméterértékeket, amelyek meghatározzák 
     * LightGBM
     * TensorFlowLinearRegressor
     * TensorFlowDNN
-
-Tekintse meg a [AutoMLConfig osztály](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) paraméterek teljes listája.  
+    * XGBoostRegressor
 
 ## <a name="data-pre-processing-and-featurization"></a>Üzem előtti adatfeldolgozás és a featurization
 
@@ -265,6 +269,44 @@ Ha `preprocess=True`, a következő adatok előfeldolgozása lépések végrehaj
     * Numerikus nagyon kevés egyedi értékkel kategorikus funkciók alakítja át a funkciókat.
     * Függően Számosság kategorikus funkcióját hajtsa végre a kódolás vagy (ujjlenyomat) egy gyakori kódolási címke.
 
+## <a name="time-series-forecasting"></a>Idősor-előrejelzési
+A time series előrejelzési feladattípus van további paraméterek meghatározására.
+1. time_horizon_name – Ez az egyik kötelező paraméter, amely meghatározza az oszlop neve, a tanítási adatokat tartalmazó dátum/idő sorozat. 
+1. max_horizon – Ez határozza meg a mennyi ideig előre jelezni kívánt meg az ismétlődési gyakoriságára vonatkozóan a betanítási adatok alapján. Például ha napi idő szemek a betanítási adatok, milyen ki az meghatározott azt szeretné, hogy a modell betanításához az nap.
+1. grain_column_names – Ez meghatározza a betanítási adatok az egyes idősoros adatokat tartalmazó oszlop nevével. Például egy adott márka áruház értékesítés vannak előrejelzés, tároló és a márka oszlopok a a időfelbontási szint oszlopként, hogy lenne definiálhat.
+
+Példa ezek alatt használt beállításokat, a jegyzetfüzet érhető el minta [Itt](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
+
+```python
+# Setting Store and Brand as grains for training.
+grain_column_names = ['Store', 'Brand']
+nseries = data.groupby(grain_column_names).ngroups
+
+# View the number of time series data with defined grains
+print('Data contains {0} individual time-series.'.format(nseries))
+```
+
+```python
+time_series_settings = {
+    'time_column_name': time_column_name,
+    'grain_column_names': grain_column_names,
+    'drop_column_names': ['logQuantity'],
+    'max_horizon': n_test_periods
+}
+
+automl_config = AutoMLConfig(task='forecasting',
+                             debug_log='automl_oj_sales_errors.log',
+                             primary_metric='normalized_root_mean_squared_error',
+                             iterations=10,
+                             X=X_train,
+                             y=y_train,
+                             n_cross_validations=5,
+                             enable_ensembling=False,
+                             path=project_folder,
+                             verbosity=logging.INFO,
+                             **time_series_settings)
+```
+
 ## <a name="run-experiment"></a>Kísérlet futtatása
 
 Küldje el a kísérlet futtatásához és a egy modell létrehozása. Adja át a `AutoMLConfig` , a `submit` metódus a modell generálásához.
@@ -277,6 +319,13 @@ run = experiment.submit(automl_config, show_output=True)
 >Függősége először telepítve van egy új gépen.  Mielőtt látható a kimenetre akár 10 percig is eltarthat.
 >Beállítás `show_output` való `True` a konzolon látható kimenetet eredményez.
 
+## <a name="exit-criteria"></a>Kilépési feltételek 
+Van néhány lehetőség meghatározhatja a kísérlet elvégzéséhez.
+1. Nincsenek feltételek – Ha nem határoznak meg bármelyik lépjen ki a paramétereket addig, amíg a további előrehaladást nem található az elsődleges metrika továbbra is a kísérletet. 
+1. Szám ismétlésszámot – meghatározhatja a kísérlet futtatásához az ismétlések száma. Nem kötelező is határozhat meg egy adott időkorláton perc / minden egyes ismétléskor iteration_timeout_minutes hozzáadása.
+1. Kilépés után egy bizonyos hosszúságú időszeletet - experiment_timeout_minutes használatával adhatja meg hogy mennyi ideig perc kísérlet továbbra is a Futtatás a között.
+1. Kilépés után egy pontszám elérte - dönthet úgy, hogy a experiement befejezése után a rendszer elérte az elsődleges mérőszám alapján pontszámot experiment_exit_score használatával.
+
 
 ## <a name="explore-model-metrics"></a>Modell metrikák böngészése
 Megtekintheti az eredményeket a widget vagy beágyazott, ha Ön történő használatát. Lásd: [nyomon követheti és értékelheti a modellek](how-to-track-experiments.md#view-run-details) további részletekért.
@@ -285,7 +334,7 @@ Megtekintheti az eredményeket a widget vagy beágyazott, ha Ön történő hasz
 ### <a name="classification-metrics"></a>Besorolási metrikák
 A következő metrikák besorolási tevékenység minden egyes ismétléskor lesznek mentve.
 
-|Elsődleges metrika|Leírás|Számítás|További paraméterek
+|Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
 AUC_Macro| AUC az a terület, a fogadó működő jellemző görbe alatt. Makró minden egyes osztály a AUC számtani középértékét.  | [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "makra."|
 AUC_Micro| AUC az a terület, a fogadó működő jellemző görbe alatt. Micro globálisan számított a valódi pozitívok és az egyes osztályok vakriasztások kombinálásával| [Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | átlagos = "micro"|
@@ -311,7 +360,7 @@ weighted_accuracy|Ahol a súlyt kapnak valamennyi példa megegyezik az időarán
 ### <a name="regression-and-forecasting-metrics"></a>Regresszió és előrejelzési mérőszámok
 A következő metrikák regressziós vagy előrejelzési feladat minden egyes ismétléskor lesznek mentve.
 
-|Elsődleges metrika|Leírás|Számítás|További paraméterek
+|Metrika|Leírás|Számítás|További paraméterek
 --|--|--|--|
 explained_variance|MAGYARÁZAT eltérés az időarány, amíg, amelyhez a modell matematikai fiókok számára egy adott adatkészlet változata. A százalékos varianciát a varianciát a hibák az eredeti adatok csökkenése. Az átlag, a hibák értéke 0, esetén egyenlő magyarázat eltérés.|[Számítás](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|None|
 r2_score|R2 meghatározása vagy a képest egy alapkonfiguráció modellt, amely a mean squared hibák százalékos csökkenését a relatív. Az átlag, a hibák értéke 0, esetén egyenlő magyarázat eltérés.|[Számítás](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|None|

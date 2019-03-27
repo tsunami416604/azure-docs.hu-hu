@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/15/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 777b3a8d414f0b785d908c37da98e987445ed96d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c54d2aef2d8e748e31bffcecef323c4806d15f60
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317459"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482054"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Az összes példány metaadatok lekérdezés-és nagybetűk.
 
 ### <a name="data-output"></a>Kimeneti adatok
+
 Alapértelmezés szerint a Instance Metadata szolgáltatás adatokat ad vissza JSON formátumban (`Content-Type: application/json`). Azonban más API-k adja vissza, adatok különböző formátumokban.
 Az alábbi táblázat a más API-kkal támogathatják adatformátumok a célnyelven eszköztáblára.
 
@@ -111,6 +112,9 @@ Egy nem alapértelmezett válaszformátum eléréséhez adja meg a kért formát
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
+> [!NOTE]
+> Levél csomópontok a `format=json` nem működik. A lekérdezések `format=text` explicit módon kell megadni az alapértelmezett formátum json-e.
+
 ### <a name="security"></a>Biztonság
 
 Instance Metadata szolgáltatás végpont elérésére csak a futó virtuálisgép-példány nem átirányítható IP-címen belül. Emellett a kérelmet egy `X-Forwarded-For` fejléc elutasította a szolgáltatást.
@@ -123,8 +127,8 @@ Ha nem található egy adatelemre, vagy hibás kérés, a Instance Metadata szol
 HTTP-állapotkód | Ok
 ----------------|-------
 200 OK |
-400 Hibás kérés | Hiányzó `Metadata: true` fejléc
-404 – Nem található | A kért elem nem létezik. 
+400 Hibás kérés | Hiányzó `Metadata: true` fejléc, vagy hiányzik a formátum Levélcsomópont lekérdezésekor
+404 – Nem található | A kért elem nem létezik.
 405 Metoda není Povolena | Csak `GET` és `POST` kérelmek támogatottak.
 429 túl sok kérelem | Az API jelenleg legfeljebb 5 lekérdezések másodpercenként
 500 Service Error     | Némi várakozás után próbálkozzon újra
@@ -503,12 +507,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Az Azure rendelkezik a különböző szuverén felhők például [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Néha szüksége a Azure-környezet néhány futásidejű döntéseket hozhat. A következő minta bemutatja, hogyan érheti el ezt a viselkedést.
 
 **Kérés**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Válasz**
-```
+```bash
 AZUREPUBLICCLOUD
 ```
 

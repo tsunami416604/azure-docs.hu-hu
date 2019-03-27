@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 6afc9325cb2aababb286f653323531c9ebb04b4a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438801"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500168"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -76,7 +76,7 @@ Egy mezőt az index attribútumainak az engedélyezett műveletek – állítsa 
 A fenti képernyőképen az index attribútumainak az ingatlan-mintához részleges listája. A teljes indexsémát a portálon is megtekintheti. Az index attribútumainak kapcsolatos további információkért lásd: [Index REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Néhány lekérdezés funkció engedélyezve van, index kiterjedő helyett egy mezőnként könnyen. Ezek közé tartozik: [szinonimát térképek](search-synonyms.md), [egyéni elemzőket](index-add-custom-analyzers.md), [javaslattevő szerkezeteket (az automatikus kiegészítés és automatikus kiegészítés)](index-add-suggesters.md), [kiértékelési logika eredmények rangsorolása](index-add-scoring-profiles.md).
+> Néhány lekérdezés funkció engedélyezve van, index kiterjedő helyett egy mezőnként könnyen. Ezek közé tartozik: [szinonimát térképek](search-synonyms.md), [egyéni elemzőket](index-add-custom-analyzers.md), [javaslattevő hoz létre (az automatikus kiegészítés és a javasolt lekérdezések)](index-add-suggesters.md), [kiértékelési logika az eredmények rangsorolása](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>A lekérdezési kérést elemei
 

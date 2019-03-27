@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 5f6708a9c22939395f992c2ac58a7e510b35f763
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317272"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447108"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Üzembe helyezés és kezelés az Azure HDInsight az Apache Storm-topológiák 
 
@@ -23,7 +23,6 @@ Ebben a dokumentumban megismerkedhet a kezeléséhez és monitorozásához [Apac
 > [!IMPORTANT]  
 > A jelen cikkben ismertetett lépések a Linux-alapú Storm on HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
 >
-> Üzembe helyezése és figyelése a Windows-alapú HDInsight-topológiáinak kapcsolatos tudnivalókat lásd: [üzembe helyezése és kezelése a HDInsight Windows-alapú Apache Storm-topológiák](apache-storm-deploy-monitor-topology.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek

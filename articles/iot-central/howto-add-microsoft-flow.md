@@ -1,25 +1,32 @@
 ---
 title: Hozzon létre munkafolyamatokat az Azure IoT Central-összekötő a Microsoft Flow |} A Microsoft Docs
-description: Az IoT Central-összekötő a Microsoft Flow használatával aktiválhatja a munkafolyamatokat és létrehozása, frissítése és törlése eszköz a munkafolyamatokban.
+description: Az IoT Central-összekötő a Microsoft Flow használatával aktiválhatja a munkafolyamatokat és létrehozása, beolvasása, frissítése, eszközök és parancsok futtatása munkafolyamatokban.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 03/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 555fe54174c9e13319af676cab3a5d3dcfaf2fe5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: hegate
+ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770249"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497737"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
 *Ez a témakör létrehozói és a rendszergazdák vonatkozik.*
 
-Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásokat, üzleti felhasználók által használt, a Microsoft Flow használatával. Az IoT Central-összekötő használatával a Microsoft Flow, beállíthat munkafolyamatokat IoT-központ a szabály aktiválásakor. Egy munkafolyamatban, IoT-központ vagy bármely más alkalmazás által aktivált a műveleteket használhatja az IoT Central-összekötő az eszköz létrehozásához, egy eszköz tulajdonságait és beállítások frissítése vagy eszköz törlése. Tekintse meg [a Microsoft Flow sablonok](https://aka.ms/iotcentralflowtemplates) IoT-központ más szolgáltatásokba, mint a mobil értesítések és a Microsoft Teams kapcsolódnak.
+Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásokat, üzleti felhasználók által használt, a Microsoft Flow használatával. Az IoT Central-összekötő használatával a Microsoft Flow, beállíthat munkafolyamatokat IoT-központ a szabály aktiválásakor. Egy munkafolyamatban, IoT-központ vagy bármely más alkalmazás által aktivált használhatja az IoT Central-összekötő a műveletek:
+- Eszköz létrehozása
+- Eszközadatok beolvasása
+- Egy eszköz tulajdonságait és beállítások frissítése
+- Futtassa a parancsot az eszközön
+- Eszköz törlése
+
+Tekintse meg [a Microsoft Flow sablonok](https://aka.ms/iotcentralflowtemplates) IoT-központ más szolgáltatásokba, mint a mobil értesítések és a Microsoft Teams kapcsolódnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,19 +35,19 @@ Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásoka
 
 ## <a name="trigger-a-workflow"></a>Egy munkafolyamat-trigger
 
-Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, amikor egy IoT-központ a szabály aktiválásakor a mobil értesítés.
+Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, amikor egy IoT-központ a szabály aktiválásakor a mobil értesítés. A teljes munkafolyamatot belül az IoT Central-alkalmazást, a beágyazott Microsoft Flow Tervező használatával hozhat létre.
 
-1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules.md). Miután mentette a szabály feltételeit, jelölje be a **Microsoft Flow művelet** új műveletként. Egy új böngészőlapon vagy ablakban kell nyissa meg a böngészőben, átirányítjuk a Microsoft Flow-bA.
+1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules.md). Miután mentette a szabály feltételeit, jelölje be a **Microsoft Flow művelet** új műveletként. Párbeszédpanel megnyílik egy, a munkafolyamat konfigurálása. Az IoT-központ felhasználói fiók bejelentkezett Microsoft Flow-ba való bejelentkezéshez használható.
 
     ![Hozzon létre egy új Microsoft Flow-művelet](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. Jelentkezzen be a Microsoft Flow szolgáltatásba. Ez nem kell ugyanazt a fiókot, mint amelyet az IoT-központ használja. Egy Áttekintés lap megjelenítése egy IoT-központ csatlakozó, amely egy egyéni műveleti nyílik.
+1. A munkafolyamatok tha férhetnek hozzá, és a csatlakoztatott IoT-központ szabály listáját láthatja. Kattintson a **sablonok böngészése** vagy **új > Létrehozás sablonból** és bármely, a rendelkezésre álló sablonok közül választhat. 
 
-1. Jelentkezzen be az IoT Central-összekötő, és válassza ki **Folytatás**. Ekkor megnyílik a Microsoft Flow Tervező a munkafolyamat létrehozása alatt. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
+    ![Elérhető a Microsoft Flow sablonok](media/howto-add-microsoft-flow/flowtemplates.png)
 
-1. Válasszon **+ új lépés** és **művelet hozzáadása**. Ezen a ponton a munkafolyamat bármely elvégzendő is hozzáadhat. Példaként nézzük mobil értesítés küldése. Keresse meg **értesítési**, és válassza a **értesítések - mobil értesítés küldése**.
+1. Jelentkezzen be a a kiválasztott sablonban fog kérni. Miután az összekötők be van jelentkezve, ekkor megnyílik hozhat létre a munkafolyamat-tervezőben. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
 
-1. A műveletet töltse ki a kívánt tegyük fel, hogy az értesítési szövegmezőben. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
+1. Az adatokat, a művelet és az új műveletek hozzáadásával testre szabásával testre szabhatja a munkafolyamatot. Ebben a példában a művelet akkor **értesítések - mobil értesítés küldése**. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
 
     > [!NOTE]
     > Válassza ki a **Továbbiak** a dinamikus tartalom ablakban elolvashatja a mérés és tulajdonság értékei, amely kiváltotta a szabály a szöveget.
@@ -52,9 +59,9 @@ Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, 
     > [!NOTE]
     > Ha azt szeretné, más felhasználók az IoT-központ alkalmazásban ez a szabály szerkesztéséhez, meg kell osztania azt velük a Microsoft Flow. A Microsoft Flow-fiókok hozzáadása tulajdonosként a munkafolyamatban.
 
-1. Ha visszatér az IoT Central alkalmazáshoz, megjelenik ez a szabály a Microsoft Flow művelet rendelkezik az műveletek területen.
+1. Ha visszatér az IoT Central alkalmazáshoz, megjelenik ez a szabály a Microsoft Flow művelettel rendelkezik a műveletek területen.
 
-Mindig megkezdheti az IoT Central-összekötő a Microsoft Flow munkafolyamat létrehozásához. Kiválaszthatja, melyik IoT Central-alkalmazást, és melyik szabály való csatlakozáshoz.
+Az IoT Central-összekötő közvetlenül a Microsoft Flow használatával munkafolyamatok is létrehozható. Kiválaszthatja, hogy mely IoT Central-alkalmazást szeretne csatlakozni.
 
 ## <a name="create-a-device-in-a-workflow"></a>A munkafolyamat-eszköz létrehozásához
 
@@ -107,6 +114,18 @@ Ez a szakasz bemutatja, hogyan eszközbeállítások, illetve egy mobileszközö
 1. Végül mentse a munkafolyamatot.
 
 1. Próbálja ki a munkafolyamatot a Microsoft Flow mobilalkalmazásban. Nyissa meg a **gombok** lap az alkalmazásban. Megjelenik a frissítési eszköz munkafolyamat -> gombra. Adja meg a bemeneti adatok, és tekintse meg az eszköz frissíti az IoT Central!
+
+## <a name="get-device-information-in-a-workflow"></a>A munkafolyamat eszközadatok beolvasása
+
+Az eszköz azonosítója az eszköz információkat szerezhet a **az Azure IoT Central - eszközök beszerzése** művelet. Például eszköznév, eszköz sablon neve, tulajdonságértékeket és a munkafolyamat későbbi műveletekben átadása beállításértékeket adatai olvashatók be. Íme egy példa-munkafolyamat, amely továbbítja az ügyfél neve tulajdonság értéke az eszközről a Microsoft Teams.
+
+   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowgetdevice.png)
+
+
+## <a name="run-a-command-on-a-device-in-a-workflow"></a>A munkafolyamat egy eszközön a parancs futtatása
+A parancs futtatható egy eszközön, az eszköz azonosítója használatával a **Azure IoT Central - parancs futtatása** művelet. Kiválaszthatja, hogy a parancs futtatásához, és továbbítja a parancs paraméterei ezt a műveletet. Íme egy példa-munkafolyamat, amely egy újraindítási parancsot futtatja, a Microsoft Flow mobilalkalmazásban egy gomb.
+
+   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>A munkafolyamat eszköz törlése
 

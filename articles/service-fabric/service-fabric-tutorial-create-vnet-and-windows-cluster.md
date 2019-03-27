@@ -3,7 +3,7 @@ title: Windows Azure-ban futó Service Fabric-fürt létrehozása |} A Microsoft
 description: Ebben az oktatóanyagban megismerheti, hogyan helyezheti üzembe Windows Service Fabric-fürtön az Azure virtuális hálózat és a hálózati biztonsági csoport PowerShell-lel.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/13/2019
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: aa44355ea86b42f8865d7791fec04ffad2b6f3ad
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 28f115e356c8852174b923f4891f93ad435ce7d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313821"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498162"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszerű Azure-beli virtuális hálózatban a Service Fabric-fürt üzembe helyezése
 
@@ -58,6 +58,7 @@ Az oktatóanyag elkezdése előtt:
 * Telepítse a [Service Fabric SDK és a PowerShell-modult](service-fabric-get-started.md).
 * Telepítse a [Azure Powershell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 * Tekintse át a kapcsolatos főbb fogalmakat [Azure fürtök](service-fabric-azure-clusters-overview.md).
+* [Megtervezheti és előkészítheti a](service-fabric-cluster-azure-deployment-preparation.md) éles fürt üzembe helyezéséhez.
 
 Az alábbi eljárással létrehozunk egy hét csomópontos Service Fabric-fürtön. Használja a [Azure Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) Service Fabric-fürtön az Azure-ban való futtatásával járó költségek kiszámításához.
 
@@ -181,7 +182,7 @@ Hozzon létre két Azure AD-alkalmazást a fürthöz való hozzáférés szabál
 
 Futtatás `SetupApplications.ps1`, és meg paraméterekként a bérlő azonosítója, a fürt neve és a webes alkalmazás válasz URL-cím. Adja meg a felhasználóneveket és jelszavakat, a felhasználók számára. Példa:
 
-```PowerShell
+```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin

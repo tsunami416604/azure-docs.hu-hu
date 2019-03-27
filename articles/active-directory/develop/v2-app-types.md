@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162934"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499981"
 ---
 # <a name="application-types-for-v20"></a>Alkalmazástípusok a 2.0-s verzió
 
@@ -124,7 +124,7 @@ Ebből a folyamatból az alkalmazás fogad egy hozzáférési kóddal a v2.0-vé
 
 Alkalmazások, amelyek hosszú ideig futó folyamatokat, vagy egy felhasználói interakció nélkül kíván hozzáférni a védett erőforrások, például a webes API-k is kell. Ezek az alkalmazások hitelesítheti és a jogkivonatok lekérésére, az alkalmazás identitás használatával, nem pedig a felhasználó delegált identitása, az OAuth 2.0 ügyfél-hitelesítési folyamata az. Titkos Ügyfélkód vagy tanúsítvány használata az alkalmazás identitását bizonyíthatja. További információ: [tanúsítványok démon alkalmazások az Azure ad hitelesítése](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
-Ebből a folyamatból, az alkalmazás közvetlenül kommunikál a `/token` végpontot a végpontok beszerzése:
+Ebből a folyamatból, az alkalmazás közvetlenül kommunikál a `/token` hozzáférést szerezni a végpont:
 
 ![Démon alkalmazások hitelesítési folyamat](./media/v2-app-types/convergence_scenarios_daemon.png)
 

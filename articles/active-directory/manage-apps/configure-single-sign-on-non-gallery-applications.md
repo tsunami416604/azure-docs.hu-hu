@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefde6173156ea86f210ecc196c848fd97aaa0c8
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435781"
+ms.locfileid: "58484095"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások az Azure Active Directory konfigurálása
 
@@ -79,7 +79,7 @@ Az Azure AD beállításához, adja meg az alapszintű SAML-konfigurációja. Ma
 
     Több replyURLs konfigurálásához használhatja a következő PowerShell-parancsfájlt.
 
-    ```PowerShell
+    ```powershell
     $sp = Get-AzureADServicePrincipal -SearchString "<Exact App  name>"
     $app = Get-AzureADApplication -SearchString "<Exact app name>"
     Set-AzureADApplication -ObjectId $app.ObjectId -ReplyUrls "<ReplyURLs>"

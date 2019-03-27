@@ -1,6 +1,6 @@
 ---
 title: Az Azure Power BI Embedded dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-description: Ismerje meg, hogyan ágyazhat be Power BI-adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokba. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.
+description: 'Ismerje meg, hogyan ágyazhat be Power BI-adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokba. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.'
 services: power-bi-embedded
 author: markingmyname
 ms.author: maghan
@@ -9,13 +9,8 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678236"
 ---
+
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded – dokumentáció
 
 Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelentéseket az alkalmazásokhoz a Power BI Embedded használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan ágyazhat be zökkenőmentesen Power BI-jelentéseket és -irányítópultokat az alkalmazásokba.
@@ -105,7 +100,7 @@ Ismerje meg, hogyan adhat hozzá adatmegjelenítéseket és interaktív jelenté
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/?view=azurermps-6.5.0#power_bi_embedded_capacity">PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/#power_bi_embedded_capacity">PowerShell</a></p>
                     </div>
                 </div>
             </div>

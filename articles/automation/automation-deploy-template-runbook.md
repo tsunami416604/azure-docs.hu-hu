@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, a runbook, json, az azure automation
-ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2008ba697665baa0e8cf73564ec31d6267425404
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416116"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446968"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
 
@@ -32,7 +32,7 @@ Az oktatóanyag elvégzéséhez szüksége van a következő elemek:
 * Egy Azure-előfizetés. Ha Ön még nem rendelkezik, akkor [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/).
 * [Automation-fiók](automation-sec-configure-azure-runas-account.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez.  Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * [Az Azure Storage-fiók](../storage/common/storage-create-storage-account.md) , amely tárolja a Resource Manager-sablon
-* Az Azure Powershell telepítve a helyi gépen. Lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.1.0) beszerzése az Azure PowerShell-lel kapcsolatos információkat.
+* Az Azure Powershell telepítve a helyi gépen. Lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) beszerzése az Azure PowerShell-lel kapcsolatos információkat.
 
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 
@@ -203,7 +203,7 @@ Publish-AzureRmAutomationRunbook @publishParams
 
 ## <a name="start-the-runbook"></a>A runbook indítása
 
-Most kezdődik meg a runbook meghívása a [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook?view=azurermps-4.1.0) parancsmagot.
+Most kezdődik meg a runbook meghívása a [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot.
 
 Runbook indítása az Azure Portalon kapcsolatos információkért lásd: [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md).
 

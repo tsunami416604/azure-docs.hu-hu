@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: ae4e4487b3d9df4b2cf756174f0a56e721af91c4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 034abe4e3c37c94afbe431a51efd9493b707fa89
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406905"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498536"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
 
@@ -81,8 +81,6 @@ Azure-erőforrások, amelyek támogatják a [az Azure monitor](../../azure-monit
 ### <a name="enable-diagnostics-with-powershell"></a>Diagnosztika engedélyezése a PowerShell-lel
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Van szüksége a 2016. November (v2.3.0), vagy újabb kiadását [Azure PowerShell-lel](/powershell/azure/overview).
 
 A következő PowerShell-példa bemutatja, hogyan használható [Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) ahhoz, hogy a hálózati biztonsági csoport diagnosztikai. Ugyanezzel a módszerrel együttműködik az összes támogatott erőforrás - beállítása `$resourceId` , az erőforrás diagnosztikai számára engedélyezni szeretné az erőforrás-azonosítója.
 

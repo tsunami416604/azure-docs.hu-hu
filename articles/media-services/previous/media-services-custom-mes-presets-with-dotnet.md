@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eaea0719aa8ca981da68841dae365decdd3c860e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181656"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499862"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Testreszabás Media Encoder Standard készletek  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181656"
 Ez a cikk bemutatja, hogyan végrehajtásához speciális kódolás a Media Encoder Standard (MES) használatával egyéni előbeállítás. A cikkben .NET kódolási tevékenység és a egy feladatot, amely végrehajtja a feladat létrehozásához.  
 
 Ez a cikk bemutatja, hogyan szabhatja testre a készlet végrehajtásával a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) készletet, és a rétegek számának csökkentését. A [Media Encoder Standard testreszabása készletek](media-services-advanced-encoding-with-mes.md) a cikk bemutatja az egyéni előbeállításokat speciális kódolási feladatok végrehajtásához használható.
+
+> [!NOTE]
+> Az egyéni készletek ebben a cikkben leírt nem használható [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) átalakítások vagy a CLI-parancsok. Tekintse meg a [áttelepítési útmutató a v2 v3](../latest/migrate-from-v2-to-v3.md) további részletekért.
 
 ## <a id="customizing_presets"></a> A MES előre testreszabása
 
@@ -260,6 +263,11 @@ namespace CustomizeMESPresests
     }
 }
 ```
+
+## <a name="see-also"></a>Lásd még
+
+- [Az egyéni átalakítási kódolása a parancssori felület használatával](../latest/custom-preset-cli-howto.md)
+- [Kódolás a Media Services v3](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

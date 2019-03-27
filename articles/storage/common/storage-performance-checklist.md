@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012328"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446000"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -98,7 +98,7 @@ Az Azure Storage szolgáltatás mindegyike rendelkezik kapacitás (GB), a tranza
 Ha Ön hamarosan eléri a storage-fiókokat használhat egy adott előfizetés/régió kombinációja túllépi, az alkalmazás- és tárfiókjai használatának értékelése, és határozza meg, ha bármely feltétel a alkalmazni.
 
 * Storage-fiókot használni a nem felügyelt lemezként, és ezeket a lemezeket ad hozzá a virtuális gépek. Ebben a forgatókönyvben javasoljuk [felügyelt lemezek](../../virtual-machines/windows/managed-disks-overview.md), ahogy a tárolási lemezskálázhatóság, anélkül, hogy egyes storage-fiókok létrehozásához és kezeléséhez kellene adni.
-* Egy tárfiók használatával egy ügyfél alapon, az adatok elkülönítését céljából. Ebben a forgatókönyvben javasoljuk egy teljes tárfiókot, hanem minden egyes ügyfél storage-tárolók használatával. Az Azure Storage most már lehetővé teszi a szerepköralapú hozzáférés-vezérlés egy kiszolgálónként [tároló alapjául](storage-auth-aad-rbac.md).
+* Egy tárfiók használatával egy ügyfél alapon, az adatok elkülönítését céljából. Ebben a forgatókönyvben javasoljuk egy teljes tárfiókot, hanem minden egyes ügyfél storage-tárolók használatával. Az Azure Storage most már lehetővé teszi a szerepköralapú hozzáférés-vezérlés egy kiszolgálónként [tároló alapjául](storage-auth-aad-rbac-portal.md).
 * Több tárfiók használata szegmensre bejövő/kimenő forgalom/iops/kapacitás nagyobb fokú méretezhetőségét. Ebben a forgatókönyvben, ha lehetséges, javasoljuk, hogy előnyeit a [növelni a korlátozások](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) a standard szintű tárfiókok a storage-fiókok szükséges a számítási feladatok számának csökkentése érdekében.
 
 Ha az alkalmazás már majdnem elérte az egy tárfiókban skálázási célértékei, vegye figyelembe, vezetnek be a következő módszerek egyikét:  

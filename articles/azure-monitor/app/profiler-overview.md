@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850275"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498128"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles üzemi alkalmazások az Azure-ban az Application insights segítségével
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
@@ -75,7 +75,7 @@ Ha **CLR-beli! ThePreStub** kérelmek, a kérelem egy hosszú időt vesz igényb
 
 ### <a id="ngencold"></a>Betöltés kódot ([HIDEG])
 
-Ha a metódus nevét tartalmazza **[HIDEG]**, mint például **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, .NET-keretrendszer futtatókörnyezete végrehajtása kód által nem optimalizált először [profil interaktív optimalizálási](https://msdn.microsoft.com/library/e7k32f4k.aspx). Minden módszer esetén azt üzenet legfeljebb egyszer a folyamat során.
+Ha a metódus nevét tartalmazza **[HIDEG]**, mint például **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, .NET-keretrendszer futtatókörnyezete végrehajtása kód által nem optimalizált először [profil interaktív optimalizálási](/cpp/build/profile-guided-optimizations). Minden módszer esetén azt üzenet legfeljebb egyszer a folyamat során.
 
 Kérelem ideje jelentős mennyiségű kódot betöltése vesz igénybe, a kérelem-e az elsőt a nem optimalizált része a metódus végrehajtásához. Fontolja meg egy melegítési folyamat, amely végrehajtja a része, amely a kódot, mielőtt a felhasználók-e férni.
 

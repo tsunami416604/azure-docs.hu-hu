@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60fc8cb8be39b2ffc217641464a991d8d2f3b997
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 06fd83ee815e9e207c1fa5a1c6767280122c4d0c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674293"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482691"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez
 
@@ -47,7 +47,7 @@ A cookie-k beállításairól az Azure portal használatával beállítása:
 
 Az alkalmazás aktuális cookie-k beállításainak megtekintéséhez használja a PowerShell-parancsot:  
 
-```PowerShell
+```powershell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
@@ -57,21 +57,21 @@ A következő PowerShell-parancsokat a ```<ObjectId>``` objectid azonosítóját
 
 **Http-Only Cookie** 
 
-```PowerShell
+```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
 **Biztonságos cookie-k**
 
-```PowerShell
+```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
 **Maradandó cookie-k**
 
-```PowerShell
+```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $false 
 ```

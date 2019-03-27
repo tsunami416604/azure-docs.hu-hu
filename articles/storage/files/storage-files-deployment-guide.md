@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 1b62bb6b00e1add93ee4215507d1b110dcf51424
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f0b6ed366f35368c70f3d2224f430f400ee9656c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566967"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481178"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ebből a cikkből megtudhatja, hogyan gyakorlatilag Azure Files üzembe helyezése a szervezeten belül.
@@ -132,7 +132,7 @@ Cserélje le az a helyszíni fájlmegosztások, érdemes előre csatlakoztassa a
 ### <a name="windows"></a>Windows
 PowerShell a mount parancs futtatása több számítógépeken használható. A következő példában `$computers` manuálisan fel van töltve, azonban létrehozhat automatikusan csatlakoztatni a számítógépek listáját. Ha például töltheti fel ezt a változót, az eredmények az Active Directoryból.
 
-```PowerShell
+```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
 $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name> /PERSISTENT:YES } }
 ```

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7031e003ad05d647ccfaebf9239f26ef0af00a7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13f67bfe0902a528d16b6a967f9d4ac189100406
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110715"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482403"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Oktatóanyag: Hozzon létre egy Data Factory-folyamatot adatok áthelyezéséhez az Azure PowerShell-lel
 > [!div class="op_single_selector"]
@@ -82,31 +82,31 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
 
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```   
    
     Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 
     Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje a **&lt;NameOfAzureSubscription**&gt; kifejezést az Azure-előfizetése nevére.
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 1. Hozzon létre egy Azure-erőforráscsoportot **ADFTutorialResourceGroup** néven a következő parancs futtatásával:
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
     Az oktatóanyag különböző lépései során feltételezzük, hogy az **ADFTutorialResourceGroup** elnevezésű erőforráscsoportot használja. Ha másik erőforráscsoportot használ, akkor az oktatóanyagban azt használja az ADFTutorialResourceGroup helyett.
 1. Futtassa a **New-AzDataFactory** parancsmaggal hozzon létre egy data factoryt **ADFTutorialDataFactoryPSH**:  
 
-    ```PowerShell
+    ```powershell
     $df=New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
     Előfordulhat, hogy ez a név már foglalt. Ezért egyedivé az adat-előállító nevét egy elő- vagy utótag hozzáadásával (például: ADFTutorialDataFactoryPSH05152017), és futtassa újra a parancsot.  
@@ -124,13 +124,13 @@ Vegye figyelembe a következő szempontokat:
 
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához:
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
     Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e.
 
-    ```PowerShell
+    ```powershell
     Get-AzResourceProvider
     ```
   * Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com). Navigáljon egy Data Factory-panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
@@ -166,7 +166,7 @@ Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítóval.
 1. Az **Azure PowerShellben** váltson az **ADFGetStartedPSH** mappára.
 1. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. Ehhez, valamint az oktatóanyagban használt többi Data Factory-parancsmaghoz is meg kell adnia értékeket a **ResourceGroupName** és a **DataFactoryName** paraméterek számára. Másik lehetőségként a ResourceGroupName és a datafactoryname értékeket a parancsmag futtatásakor beírása nélkül a New-AzDataFactory parancsmag által visszaadott DataFactory-objektum adhat át. 
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
     Itt látható a minta kimenete:
@@ -181,7 +181,7 @@ Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítóval.
 
     A társított szolgáltatás létrehozásának egy másik módja egy erőforráscsoport és egy adat-előállító nevének megadása a DataFactory-objektum helyett.  
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
@@ -206,7 +206,7 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
     ```
 1. Futtassa az alábbi parancsot egy társított szolgáltatás létrehozásához.
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
@@ -290,7 +290,7 @@ Ebben a lépésben hozza létre az InputDataset nevű adatkészletet, amely az A
     Ezekről a JSON-tulajdonságokról további tudnivalók az [Azure Blob-összekötőről](data-factory-azure-blob-connector.md#dataset-properties) szóló cikkben olvashatók.
 1. A Data Factory-adatkészlet létrehozásához futtassa az alábbi parancsot.
 
-    ```PowerShell  
+    ```powershell  
     New-AzDataFactoryDataset $df -File .\InputDataset.json
     ```
     Itt látható a minta kimenete:
@@ -353,7 +353,7 @@ A lépés ezen részében egy kimeneti adatkészletet hoz létre **OutputDataset
     További információ ezekről a JSON-tulajdonságokról: [Azure SQL-összekötő](data-factory-azure-sql-connector.md#dataset-properties).
 1. A data factory-adatkészlet létrehozásához futtassa az alábbi parancsot.
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
@@ -438,7 +438,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
      A folyamathoz tartozó definíció JSON-tulajdonságainak leírásáért lásd: [folyamatok létrehozása](data-factory-create-pipelines.md). A másolási tevékenységhez tartozó definíció JSON-tulajdonságainak leírásáért lásd: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md). A BlobSource által támogatott JSON-tulajdonságok leírásáért lásd: [Azure Blob-összekötő](data-factory-azure-blob-connector.md). Az SqlSink által támogatott JSON-tulajdonságok leírásáért lásd: [Azure SQL Database-összekötő](data-factory-azure-sql-connector.md).
 1. A data factory-tábla létrehozásához futtassa az alábbi parancsot.
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
@@ -459,12 +459,12 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
 
 1. Cserélje le &lt;DataFactoryName&gt; nevét a data factory és a Futtatás **Get-AzDataFactory**, és rendelje a kimenetet egy $df változóhoz.
 
-    ```PowerShell  
+    ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
     Példa:
-    ```PowerShell
+    ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
@@ -483,7 +483,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     ```
 1. Futtassa **Get-AzDataFactorySlice** összes szelet részleteinek az **OutputDataset**, azaz a kimeneti adatkészlet a folyamat.  
 
-    ```PowerShell   
+    ```powershell   
     Get-AzDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
@@ -527,7 +527,7 @@ Ebben a lépésben az Azure PowerShell használatával figyeli az Azure data fac
     ```
 1. Futtatás **Get-AzDataFactoryRun** részleteit a tevékenység futtatása egy **adott** szeletet. Az előbbi parancs kimenetéből kimásolt dátum-idő értékkel adjon értéket a StartDateTime paraméternek. 
 
-    ```PowerShell  
+    ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 

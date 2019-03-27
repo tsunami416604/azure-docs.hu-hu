@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2b4fcb42c913149f8caf05a72fb089586ee21e2a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106120"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498171"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Események fogadása az Event Processor Host használatával az Azure Event Hubs
 
@@ -83,11 +83,11 @@ public class SimpleEventProcessor : IEventProcessor
 
 Következő lépésként hozza létre az [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) példány. Attól függően, a túlterhelés, amikor létrehozza a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) példány a konstruktorban, a következő paraméterek használhatók:
 
-- **Állomásnév:** minden egyes felhasználói példány nevét. Minden példánya **EventProcessorHost** esetében a változót egy fogyasztói csoporton belül egyedi értékkel kell rendelkeznie, így nem érdemes ezt az értéket keményen code.
+- **Állomásnév:** minden egyes felhasználói példány nevét. Minden példánya **EventProcessorHost** adott felhasználói csoportban, ezért nem keményen code ezt az értéket a változót egy egyedi értékkel kell rendelkeznie.
 - **eventHubPath:** Az eseményközpont neve.
 - **consumerGroupName:** Az Event Hubs használ **$Default** , az alapértelmezett felhasználói csoport, de neve nem célszerű a feldolgozás az adott helyzet egy fogyasztói csoport létrehozása.
 - **eventHubConnectionString:** A kapcsolati karakterláncot az eseményközpontba, amely az Azure Portalról kérhető. Ezt a kapcsolati karakterláncot kell **figyelésére** engedélyeket az eseményközpontban.
-- **StorageConnectionString:** A belső erőforrás-kezelés használt tárfiók.
+- **storageConnectionString:** A belső erőforrás-kezelés használt tárfiók.
 
 Végül a feldolgozók regisztrálása a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) példány az Event Hubs szolgáltatással. Események feldolgozása processzor eseményosztály Regisztrálás az EventProcessorHost példányát elindul. Regisztrálás arra utasítja az Event Hubs szolgáltatás várható, hogy a fogyasztó alkalmazás használ-e a partíciókat némelyike eseményeit, és a meghívni a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementációs kódot, amikor leküldi az események felhasználásához. 
 
@@ -125,7 +125,7 @@ Itt minden állomás egy bizonyos időtartamon (a címbérlet élettartama) szer
 
 Egyes hívások [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) kézbesíti az eseményeket gyűjteménye. A feladata ezeket az eseményeket kezelésére. Ha azt szeretné, hogy a processzor gazdagép minden üzenet legalább egyszer feldolgozza, meg kell írnia a saját kód újrapróbálkozás megtartása. De szennyezett állapotüzenetekkel körültekintően járjon el.
 
-Javasoljuk, hogy végrehajtja-e a dolgok viszonylag gyorsan; azt jelenti tegye a csekély a feldolgozás, amennyire csak lehetséges. Ehelyett használja a fogyasztói csoportok. Kiírhatja olyan tárhelyekre és néhány útválasztás van szüksége, ha akkor célszerűbb általában két fogyasztói csoportot használnak, és két [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) megvalósításokhoz, amely külön-külön futtassa.
+Javasoljuk, hogy végrehajtja-e a dolgok viszonylag gyorsan; azt jelenti tegye a csekély a feldolgozás, amennyire csak lehetséges. Ehelyett használja a fogyasztói csoportok. Kiírhatja olyan tárhelyekre és néhány útválasztás kell, hogy két felhasználói csoportokat használja, és két [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) megvalósításokhoz, amely külön-külön futtassa.
 
 A feldolgozás során egy ponton érdemes nyomon követheti, mi elolvasta és befejeződött. Így nyomon követheti, kritikus fontosságú, ha újra kell indítania az olvasó, így nem tér a stream elején. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) egyszerűbbé teszi a nyomon követési használatával *ellenőrzőpontok*. Egy ellenőrzőpont egy helyet, vagy az eltolás egy adott partíció egy adott felhasználói csoportban, mely pont, a rendszer meggyőződik arról, hogy az üzenetek feldolgozta. Az ellenőrzőpont jelölés **EventProcessorHost** meghívásával történik a [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metódust a [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektum. Ez a művelet belül történik a [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metódus is megtehető, de [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
@@ -141,7 +141,7 @@ Alapértelmezés szerint [EventProcessorHost](/dotnet/api/microsoft.azure.eventh
 
 ## <a name="shut-down-gracefully"></a>Biztonságos leállítása
 
-Végül [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) lehetővé teszi, hogy az összes partíció olvasók kerüljön tiszta Leállítás utáni, és mindig kell meghívni, ha leáll egy példányát [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Ezt is késésekhez vezethet, ha a többi példány indítása **EventProcessorHost** címbérlet lejárati és alapidőpont ütközések miatt. Alapidőpont felügyeleti tárgyalja részletesen a jelen [blogbejegyzés](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)
+Végül [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) lehetővé teszi, hogy az összes partíció olvasók kerüljön tiszta Leállítás utáni, és mindig kell meghívni, ha leáll egy példányát [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Ezt is késésekhez vezethet, ha a többi példány indítása **EventProcessorHost** címbérlet lejárati és alapidőpont ütközések miatt. Alapidőpont felügyeleti tárgyalja részletesen ismertetjük a [alapidőpont](#epoch) cikkének. 
 
 ## <a name="lease-management"></a>Partícióbérlés-kezeléssel
 Események feldolgozása processzor eseményosztály Regisztrálás az EventProcessorHost példányát elindul. A gazdagép-példány szerzi be az egyes partíciók az Event Hubs-bérletek valószínűleg lekérhetem néhány más gazdagép-példányokról, úgy, hogy a partíciók az egyenletes eloszlás szerveződik át az összes gazdagép-példányok között. Minden bérelt partíció esetében a gazdagép-példány hoz létre a megadott event processor osztály egy példányát, majd fogadja az eseményeket az adott partíció és azokat az esemény processzor-példányba továbbítja. További példányok hozzáadja, és további bérleteket is olvassa be a program, az EventProcessorHost végül elosztja a terhelést minden felhasználó között.
@@ -159,6 +159,32 @@ Emellett több túlterhelésének [RegisterEventProcessorAsync](/dotnet/api/micr
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Ha ez a paraméter **igaz**, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) nevezzük, amikor a partíción lévő események fogadásához az alapul szolgáló hívás túllépi az időkorlátot. Ez a módszer hasznos időalapú műveletek végrehajtása során a partícióra inaktív időszakaik.
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Lehetővé teszi, hogy egy függvény mutató vagy lambda kifejezés be lehet állítani, nevű partíció beolvasása egy olvasó megkezdésekor eltolás kezdeti biztosít. Az eltolás megadása, nélkül az olvasó kezdődik, a legrégebbi esemény, ha az eltolás egy JSON-fájlt már megtörtént, a megadott tárfiókban a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) konstruktor. Ez a módszer akkor hasznos, ha meg szeretné változtatni az olvasó indítási viselkedését. Ez a metódus meghívásakor az objektumot a paraméter tartalmazza a Partícióazonosító, amelynek az olvasó indítása folyamatban van.
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Lehetővé teszi az alapul szolgáló előforduló kivételek értesítés [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Dolgok nem várt módon működik, ha ez az esemény remek hogy elkezdhessük megvizsgálni.
+
+## <a name="epoch"></a>Alapidőpont
+
+Íme a receive alapidőpont működése:
+
+### <a name="with-epoch"></a>Az alapidőpont
+Alapidőpont az egyedi azonosító (alapidőpont érték) a szolgáltatás által használt, partíció/bérleti tulajdonjog kényszerítésére. Használatával az alapidőpont-alapú fogadó létrehozása a [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) metódust. Ezzel a módszerrel hoz létre egy alapidőpont-alapú fogadó. A fogadó létrejön egy adott event hub-partícióról a megadott felhasználói csoportból.
+
+Az alapidőpont funkció lehetővé teszi a felhasználóknak biztosítása érdekében, hogy csak egyetlen fogadó egy fogyasztói csoporton bármikor történik, amely a következő szabályokat:
+
+- Ha nincs meglévő fogadó a felhasználói csoportokon, a felhasználó egyetlen külső eseményfogyasztó hozhat létre bármely alapidőpont értékkel.
+- Ha van egy alapidőpont érték E1 csomag és a fogadó és hozunk létre egy új fogadó-alapidőpont érték e2 ahol e1 < = e2, a fogadó e1 az automatikusan megszakad, e2 a fogadó sikeresen létrejött-e.
+- Ha van egy alapidőpont érték E1 csomag és a fogadó és hozunk létre egy új fogadó-alapidőpont érték e2 ahol e1 > e2, majd a e2 létrehozása sikertelen a következő hibával: A fogadó az alapidőpont E1 csomag már létezik.
+
+### <a name="no-epoch"></a>Nincs alapidőpont
+Használatával nem alapidőpont-alapú fogadó létrehozása a [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) metódust. 
+
+Léteznek olyan forgatókönyvek az adatfolyam-feldolgozó, ahol felhasználókat szeretne létrehozni a több fogadóval egy fogyasztói csoporton. Az ilyen forgatókönyvek támogatása érdekében alapidőpont nélkül egyetlen külső eseményfogyasztó létrehozásának lehetősége van, és ebben az esetben lehetővé tesszük legfeljebb 5 párhuzamos fogadók a fogyasztói csoportban található.
+
+### <a name="mixed-mode"></a>A vegyes üzemmód
+Nem ajánlott, ahol az alapidőpont hozzon létre fogadót, és váltson nem-alapidőpont vagy fordítva az ugyanazt a fogyasztói csoportot az alkalmazás használatának. Azonban ez a probléma akkor fordul elő, ha a szolgáltatás végzi el a következő szabályok segítségével:
+
+- Ha egy fogadó már létre alapidőpont e1, és aktívan megkapja az eseményeket, és nincs alapidőpont hozunk létre egy új fogadó, új fogadó létrehozása sikertelen lesz. Alapidőpont fogadók mindig elsőbbséget élveznek a rendszerben.
+- Ha egyetlen külső eseményfogyasztó már létre alapidőpont e1, és le lett választva, és a egy új fogadó a rendszer létrehozza az új MessagingFactory nincs alapidőpont, új fogadó létrehozása sikeres lesz. Nincs olyan kikötés itt, hogy a rendszer észlelni fogja a "címzett"leválasztás, ~ 10 perc múlva.
+- Ha egy vagy több fogadóval nincs alapidőpont hoztak létre, és hozunk létre egy új fogadó alapidőpont E1 csomag, a régi fogadók első bontotta a kapcsolatot.
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,7 +3,7 @@ title: Azure PowerShell-példaszkript – Alkalmazástanúsítvány hozzáadása
 description: Azure PowerShell-példaszkript – Alkalmazástanúsítvány hozzáadása egy Service Fabric-fürthöz.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,20 +13,22 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: be097f88f774df9e4a6429af444c6c742737f4c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: d5e1540a347bb14e7479bc445afa98e220b5475a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598710"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497061"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Alkalmazástanúsítvány hozzáadása egy Service Fabric-fürthöz
 
 Ez a példaszkript létrehoz egy önaláírt tanúsítványt a megadott Azure Key Vaultban, és telepíti a Service Fabric-fürt minden csomópontján. A tanúsítvány emellett egy helyi mappába is letöltődik. A letöltött tanúsítvány neve megegyezik a kulcstartóban található tanúsítvány nevével. Szabja testre a paramétereket szükség szerint.
 
-Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -34,11 +36,11 @@ Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutat�
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-A szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) | Adjon hozzá új alkalmazástanúsítványt a fürtöt alkotó virtuálisgép-méretezési csoporthoz.  |
+| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | Adjon hozzá új alkalmazástanúsítványt a fürtöt alkotó virtuálisgép-méretezési csoporthoz.  |
 
 ## <a name="next-steps"></a>További lépések
 

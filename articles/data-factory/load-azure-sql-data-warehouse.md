@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a478a9f73edae463a5dace1b1a28180e5d09bdc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6a7e0a27d3cda4193a04467d541f851a9e57fa46
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437734"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446714"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse-bA az Azure Data Factory használatával
 
@@ -45,10 +45,11 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza ki a **új** > **adatok + analitika** > **adat-előállító**: 
+1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**: 
    
-   ![Új adat-előállító létrehozása](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
-1. Az a **új adat-előállító** lap, adja meg a mezőket az alábbi képen látható:
+   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
+2. Az a **új adat-előállító** lap, adja meg a mezőket az alábbi képen látható:
       
    ![Új adat-előállító lap](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
@@ -58,8 +59,8 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
     * **Verzió**: Válassza ki **V2**.
     * **Hely**: Válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak más helyeken / régiókban is lehetnek. Ezek adattárak közé tartozik az Azure Data Lake Store, az Azure Storage, Azure SQL Database és így tovább.
 
-1. Kattintson a **Létrehozás** gombra.
-1. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon:
+3. Kattintson a **Létrehozás** gombra.
+4. Létrehozás befejezése után nyissa meg az adat-előállítóhoz. Megjelenik a **adat-előállító** kezdőlapja a következő képen látható módon:
    
    ![Data factory kezdőlap](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 

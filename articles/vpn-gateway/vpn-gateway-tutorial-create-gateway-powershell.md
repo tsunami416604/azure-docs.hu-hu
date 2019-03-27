@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414133"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445217"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Oktatóanyag: Létrehozása és kezelése a PowerShell használatával a VPN-átjáró
 
@@ -118,7 +118,7 @@ Amint az átjáró létrejött, létrehozhat egy kapcsolatot a virtuális háló
 
 ## <a name="view-the-gateway-public-ip-address"></a>Az átjáró nyilvános IP-címének megtekintése
 
-Ha tudja, hogy a nyilvános IP-cím nevére, [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) átjáróhoz rendelt nyilvános IP-cím megjelenítéséhez.
+Ha tudja, hogy a nyilvános IP-cím nevére, [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) átjáróhoz rendelt nyilvános IP-cím megjelenítéséhez.
 
 A munkamenet túllépte az időkorlátot, ha közös hálózati paraméterek másolja az új munkamenetbe, ez az oktatóanyag elején található folytatja, majd a folytatáshoz.
 

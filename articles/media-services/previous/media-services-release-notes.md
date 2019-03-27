@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e602cc28026b4b6660c90eaeb529e549dbba5f5
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295429"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499080"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
 
 > [!NOTE]
-> A Media Services v2 jelennek meg semmilyen új szolgáltatásokat és funkciókat. 
+> A Media Services v2 jelennek meg semmilyen új szolgáltatásokat és funkciókat. <br/>Tekintse meg a legújabb verzió [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavítása összpontosíthatunk. Probléma jelentéséhez vagy tegyen fel kérdéseket, küldje el a hozzászólás a [Az Azure Media Services MSDN-fórum]. 
 

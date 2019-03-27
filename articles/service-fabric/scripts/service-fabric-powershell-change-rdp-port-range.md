@@ -3,7 +3,7 @@ title: Azure PowerShell-példaszkript – Az RPD-porttartomány módosítása | 
 description: Azure PowerShell-példaszkript – Módosítja egy üzembe helyezett fürt RPD-porttartományát.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,18 +13,20 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 83fb6cc03f605a60b06f31fa6ddd82cd4e3e899e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: ee2ac3a2051ba7dd63aac5928e1713541f23b81f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30180187"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500100"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Az RPD-porttartomány értékeinek frissítése
 
 Ez a példaszkript módosítja az RPD-porttartomány értékeit a fürtcsomópont virtuális gépein a fürt üzembe helyezése után.  Az Azure PowerShellre azért van szükség, hogy a rendszer ne váltson a háttérben lévő virtuális gépek között.  A szkript lekéri a fürt erőforráscsoportjában található `Microsoft.Network/loadBalancers` erőforrást, és frissíti az `inboundNatPools.frontendPortRangeStart` és `inboundNatPools.frontendPortRangeEnd` értékeket. Szabja testre a paramétereket szükség szerint.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve. 
 
@@ -38,8 +40,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Lekéri a `Microsoft.Network/loadBalancers` erőforrást. |
-|[Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource)|Frissíti a `Microsoft.Network/loadBalancers` erőforrást.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Lekéri a `Microsoft.Network/loadBalancers` erőforrást. |
+|[Set-AzResource](/powershell/module/az.resources/set-azresource)|Frissíti a `Microsoft.Network/loadBalancers` erőforrást.|
 
 ## <a name="next-steps"></a>További lépések
 

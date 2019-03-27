@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836980"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499913"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -40,6 +40,56 @@ Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?
 
 >[!NOTE]
 >Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13900"></a>1.3.90.0 
+
+### <a name="release-status"></a>Kiadási állapot 
+
+3/25/2019: Még nem elérhető 
+ 
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+
+
+
+- Frissítési tartomány támogatása 
+- Az Exchange-levelezés nyilvános mappái a szolgáltatás általános elérhetőségével 
+- Varázsló munkamenethibák kezelésére vonatkozó szolgáltatási hibák javítása 
+- Régi felhasználói felület összekötő tulajdonságai lapon hozzáadott figyelmeztető hivatkozásra. 
+- Az egyesített csoportok a Jelszóvisszaíró szolgáltatás már általánosan elérhető 
+- Továbbfejlesztett SSPR hiba jelenik meg, amikor a tartományvezérlő hiányzik egy LDAP-vezérlő 
+- A DCOM beállításjegyzék hibákat során hozzáadott diagnostics telepítése  
+- Továbbfejlesztett nyomkövetés nál RPC-hibák 
+- Nagyvállalati szerződéssel rendelkező hitelesítő adatok alárendelt tartományok engedélyezése 
+- Lehetővé teszi az adatbázis nevét (az alapértelmezett név ADSync) a telepítés során kell megadni
+- A WS-Trust javítás folytattuk a munkát a ping parancs, és adja hozzá az új Azure-példányokban támogatási 3.19.8 adal frissítése 
+- Csoport módosítása szinkronizálási szabályokat a samAccountName DomainNetbios és a felhőbe – DomainFQDN flow szükséges jogcímek 
+- Módosított alapértelmezett szinkronizálási szabály kezelése – további [Itt](how-to-connect-fix-default-rules.md).
+- Hozzáadott új ügynök windows-szolgáltatás futtatásához. Ez az ügynök, "Admin ügynök" nevű lehetővé teszi, hogy részletesebb távoli diagnosztikát a Microsoft Engineers támogatási eset megnyitásakor elhárítása érdekében az Azure AD Connect-kiszolgáló. További információ a felügyeleti ügynök [Itt](whatis-aadc-admin-agent.md). 
+- Frissítve a végfelhasználói licencszerződést (EULA) 
+- Automatikus frissítés támogatásának hozzáadása a üzemelő példánya, amely az AD FS használata, a bejelentkezés típusát.  Ez a követelmény az AD FS az Azure AD függő entitás megbízhatóságának frissítése a frissítési folyamat részeként is eltávolítja. 
+- Az Azure ad-ben megbízhatósági feladatot, amely két lehetőséget biztosít hozzá: megbízhatósági elemzése és frissítése és a megbízhatóság alaphelyzetbe állítása. 
+- Az AD FS az Azure AD függő entitás megbízhatósági viselkedése megváltozott, hogy mindig használja a - SupportMultipleDomain kapcsoló (megbízhatóság és az Azure AD-tartományt tartalmaz frissítéseket). 
+- A telepítés új AD FS farm viselkedése megváltozott, úgy, hogy egy .pfx formátumú tanúsítványt igényel egy előre telepített tanúsítvány használatát eltávolításával.
+- A telepítés új AD FS farm munkafolyamat frissítése, csak lehetővé teszi, hogy 1 az AD FS és 1 WAP-kiszolgáló telepítéséhez.  Minden további kiszolgáló első telepítése után történik. 
+
+### <a name="fixed-issues"></a>Hibák kijavítva: 
+
+
+- Javítsa ki az SQL logikai ADSync szolgáltatás újracsatlakozás 
+- Javítsa ki, hogy a tiszta telepítését egy üres SQL-AOA DB használatával 
+- Javítsa ki a PS-engedélyek parancsprogram, amellyel pontosíthatja GWB engedélyek 
+- Javítsa ki a LocalDB VSS-hibák  
+- Javítsa ki a félrevezető hibaüzenet, ha objektum típusa nem hatókörében 
+- Ahol a kiszolgálón az Azure AD PowerShell telepítési hibát okozhat egy szerelvény ütközés az Azure AD Connecttel probléma javítását. 
+- Kijavítva a nál hiba átmeneti kiszolgálón összekötő hitelesítő adatai a régi felhasználói felület frissítésekor. 
+- Rögzített néhány memóriavesztés 
+- Vegyes Autoupgrade javításai 
+- Egyéb javítások exportálása és importálása nem megerősített feldolgozása 
+- Kijavítva a hiba kezelése miatt egy fordított perjel a tartomány és szervezeti egységek szűrése 
+- Javítva lett egy probléma, ahol ADSync szolgáltatás leállítására több mint 2 percet vesz igénybe, és frissítési időpontban problémát okoz. 
+
+
+
 
 ## <a name="12700"></a>1.2.70.0
 

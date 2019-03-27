@@ -6,12 +6,12 @@ ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/21/2019
-ms.openlocfilehash: 33958eae291b03b568491e24f09abefdacb667c8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e98e501806971f3cf1bec29960ad15ef9c0024fc
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405902"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498145"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Használja az Azure Disk Encryption a virtuálisgép-méretezési csoport sorrendről beállítása
 
@@ -152,7 +152,7 @@ Ha azt szeretné, hogy az Azure Disk Encryption alkalmazása előtt egy másik b
 ```
 
 További részletes sablonokat lásd:
-* Az Azure Disk Encryption bővítmény alkalmazása után egy egyéni PowerShell-parancsfájlt, amely formázza az ügyfélszolgálati (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* Az Azure Disk Encryption bővítmény alkalmazása után egy egyéni héjparancsfájlt, amely formázza a lemezt (Linux): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 * Az Azure Disk Encryption bővítmény alkalmazása után egy egyéni Powershell-parancsprogram, inicializálja és formázza a lemezt (Windows): [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-windows-ADE-after-customscript.json)
 * Az Azure Disk Encryption bővítményt, mielőtt egy egyéni Powershell-parancsprogram, inicializálja és formázza a lemezt (Windows) a alkalmazni: [deploy-extseq-windows-CustomScript-after-ADE.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-windows-CustomScript-after-ADE.json)
 

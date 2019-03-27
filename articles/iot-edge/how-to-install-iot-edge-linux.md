@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 398b984f4d97005fdc4d749f3fe072423cc5bbd7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1d1e0f100a90c28bd7469991dee559abcd88f9a2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309298"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499470"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (x64) linuxon
 
@@ -23,7 +23,7 @@ Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-e
 
 További tudnivalókért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
 
-Ez a cikk a Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel IoT Edge-eszköz. Tekintse meg [Azure IoT Edge-támogatás](support.md#operating-systems) AMD64 támogatott operációs rendszerek listáját.
+Ez a cikk az Ubuntu Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel IoT Edge-eszköz. Tekintse meg [Azure IoT Edge-támogatás](support.md#operating-systems) AMD64 támogatott operációs rendszerek listáját.
 
 > [!NOTE]
 > A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
@@ -33,11 +33,22 @@ Ez a cikk a Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet tele
 Készítse elő az eszközt az IoT Edge modul telepítése.
 
 
-Telepítse az adattár-konfiguráció. Cserélje le **\<kiadási\>** a **16.04** vagy **18.04** az Ubuntu kiadásának megfelelő módon.
+Telepítse az adattár-konfiguráció. Válasszon a **16.04** vagy **18.04** a kiadását Ubuntu megfelelő kódrészletet.
 
+> [!IMPORTANT]
+> Ellenőrizze, hogy a kódtöredék a helyes kódot boxból Ubuntu verziójának kiválasztása.
+
+* A **Ubuntu 16.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/<release>/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
    ```
+
+* A **Ubuntu 18.04**:
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   ```
+   
+Telepítse az adattár-konfiguráció. Válasszon a **16.04** vagy **18.04** a kiadását Ubuntu megfelelő kódrészletet.
 
 Másolja ki a létrehozott lista.
 

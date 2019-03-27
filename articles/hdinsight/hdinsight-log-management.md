@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f0a22ea4a24a82cb4acf7a3b20a743ee7425c72
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294909"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500474"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -98,7 +98,7 @@ A következő lépés a feladat végrehajtási naplófájlokat a különböző s
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop naplófájljait
 
-HDInsight tárolja a naplófájlokat, a fürt fájlrendszerben és az Azure storage-ban is. A fürt naplófájlok megnyitásával ellenőrizheti egy [SSH](/hdinsight-hadoop-linux-use-ssh-unix.md) kapcsolat, a fürt és a fájlrendszer-böngészés, vagy a fő csomópontot távoli kiszolgálón a Hadoop YARN állapot-portál használatával. A naplófájlok, az Azure BLOB storage, az eszközöket, amelyek hozzáférhetnek, és töltse le az adatokat az Azure storage-ból bármelyikével ellenőrizheti. Példa [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer), és a Visual Studio Server Explorerben. A PowerShell és az Azure Storage ügyfélkódtáraival vagy az Azure .NET SDK-k használatával is az Azure blob storage-adatok eléréséhez.
+HDInsight tárolja a naplófájlokat, a fürt fájlrendszerben és az Azure storage-ban is. A fürt naplófájlok megnyitásával ellenőrizheti egy [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) kapcsolat, a fürt és a fájlrendszer-böngészés, vagy a fő csomópontot távoli kiszolgálón a Hadoop YARN állapot-portál használatával. A naplófájlok, az Azure BLOB storage, az eszközöket, amelyek hozzáférhetnek, és töltse le az adatokat az Azure storage-ból bármelyikével ellenőrizheti. Példa [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer), és a Visual Studio Server Explorerben. A PowerShell és az Azure Storage ügyfélkódtáraival vagy az Azure .NET SDK-k használatával is az Azure blob storage-adatok eléréséhez.
 
 Hadoop fut, a feladatok munkájának *kísérletek feladat* a különböző csomópontokhoz a fürtben. HDInsight kezdeményezhet spekulatív feladat kísérletek, bármely más feladat, kísérletek nem fejeződnek be először lezárja. Ez létrehoz, a rendszer naplózza a vezérlőket, stderr és syslog log fájl a működés közbeni jelentős tevékenység. Emellett tett kísérletet feladat fut egyidejűleg, de egy naplófájlt is csak eredmények megjelenítéséhez lineárisan.
 

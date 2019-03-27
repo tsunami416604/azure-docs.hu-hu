@@ -8,12 +8,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: ec012f85c4b4e93e9be475781e9da79f686cbf9e
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417717"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472480"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával
 
@@ -25,7 +25,7 @@ ms.locfileid: "58417717"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) rendszerképkeresés [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,12 +47,12 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
     Connect-AzAccount
     ```
 
-2. Állítsa be az előfizetést, ahol azt szeretné, hogy a fürt létrehozása:
+1. Állítsa be az előfizetést, ahol azt szeretné, hogy a fürt létrehozása:
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Amikor fut az Azure CLI-vel, helyileg vagy az Azure Cloud Shell, az eszközön a Az.Kusto modul telepítenie kell:
+1. Amikor fut az Azure CLI-vel, helyileg vagy az Azure Cloud Shell, az eszközön a Az.Kusto modul telepítenie kell:
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -74,7 +74,7 @@ A következő lépéseket nem szükséges, ha a parancsok az Azure Cloud Shellbe
 
     Nincsenek további nem kötelező paraméterek, amelyet használhat, például a fürt kapacitásának.
 
-2. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
+1. A következő paranccsal ellenőrizze, hogy a fürt létrehozása sikeresen megtörtént:
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
@@ -98,7 +98,7 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
    | SoftDeletePeriod | *3650:00:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
    | HotCachePeriod | *3650:00:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
 
-2. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
+1. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase

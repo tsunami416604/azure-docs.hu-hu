@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839100"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500253"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -274,7 +274,7 @@ További tudnivalók az Azure VPN-beállítást a cikk elolvasásával [tervezé
 
 [Az Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) titkosítási, identitáskezelési és engedélyezési házirendeket használ a fájlok és e-mailek védelmének elősegítésére. Az Azure RMS működésének bemutatása, több eszközre – telefonokon, táblagépeken és számítógépeken a szervezeten belül, mind a szervezeten kívüli ellenőrzését. Ez a lehetőség azért lehetséges, mert az Azure RMS-t biztosítja, ami az adatok maradnak, még akkor is, ha elhagyják a szervezet területét.
 
-Amikor az Azure RMS használatával védeni a fájlokat, és teljes körű támogatással, iparági szabványos kriptográfia használja [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Azure RMS adatvédelmi használja ki, ha rendelkezik, hogy a fájl védett marad akkor is, ha a ellenőrzése alatt nem álló tárolók másolódik informatikai, például egy felhős társzolgáltatás. Az egyetlen különbség, e-mailben megosztott fájlok a fájl védett, lépéseit egy e-mail üzenet mellékleteként nyitni a védett mellékletet.
+Amikor az Azure RMS használatával védeni a fájlokat, és teljes körű támogatással, iparági szabványos kriptográfia használja [FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf). Azure RMS adatvédelmi használja ki, ha rendelkezik, hogy a fájl védett marad akkor is, ha a ellenőrzése alatt nem álló tárolók másolódik informatikai, például egy felhős társzolgáltatás. Az egyetlen különbség, e-mailben megosztott fájlok a fájl védett, lépéseit egy e-mail üzenet mellékleteként nyitni a védett mellékletet.
 Az Azure RMS bevezetésének tervezésekor a következőket javasoljuk:
 
 - Telepítse a [RMS-megosztó alkalmazás](https://technet.microsoft.com/library/dn339006.aspx). Ez az alkalmazás integrálja az Office-alkalmazásokat telepít egy Office-bővítmény, hogy a felhasználók egyszerűen védhetik a fájlokat közvetlenül.

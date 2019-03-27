@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3172354752e2c6a1a7368b297e3cc6e763cd2fcb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900573"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483896"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -65,8 +65,8 @@ A **előfeltétel** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Typo | Igen | Ellenőrizze vagy végrehajtani az előfeltétel-lekérdezés típusa. Mindkét `ClaimsExist` van megadva, győződjön meg arról, hogy műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a műveleteket kell elvégezni, ha a megadott jogcím létezik, és a hozzá tartozó érték megegyezik a megadott értéket. |
-| ExecuteActionsIf | Igen | Azt jelzi, hogy e előfeltétele a műveleteket kell elvégezni, ha a tesztelés true vagy FALSE (hamis). |
+| `Type` | Igen | Ellenőrizze vagy végrehajtani az előfeltétel-lekérdezés típusa. Mindkét `ClaimsExist` van megadva, győződjön meg arról, hogy műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy `ClaimEquals` van megadva, hogy a műveleteket kell elvégezni, ha a megadott jogcím létezik, és a hozzá tartozó érték megegyezik a megadott értéket. |
+| `ExecuteActionsIf` | Igen | Azt jelzi, hogy e előfeltétele a műveleteket kell elvégezni, ha a tesztelés true vagy FALSE (hamis). |
 
 A **előfeltétel** elem a következő elemeket tartalmazza:
 

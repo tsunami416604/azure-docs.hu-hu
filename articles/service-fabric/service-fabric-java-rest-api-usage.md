@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a6cb5ffe6c21c6eda9eb8b7f610952e92707a6bd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182030"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483471"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Az Azure Service Fabric Java ügyfél API-k
 
@@ -126,11 +126,11 @@ Kövesse az alábbi lépéseket az AutoRest eszközzel Service Fabric Java-Ügyf
 Minden API-ja található megvalósítási négy túlterheléssel. Ha vannak a választható paraméterek: ezután találjuk négy további változata, beleértve a választható paraméterek. Például érdemes lehet az API-t ``removeReplica``.
  1. **nyilvános void removeReplica (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId, logikai forceRemove, hosszú időkorlátja)**
     * Ez az a szinkron változó a removeReplica API-hívás
- 2. **nyilvános ServiceFuture<Void> removeReplicaAsync (karakterlánc-nodeName, UUID partitionId, replicaId karakterláncot, logikai forceRemove, hosszú időtúllépés, végső ServiceCallback<Void> serviceCallback)**
+ 2. **nyilvános ServiceFuture\<Void > removeReplicaAsync (karakterlánc-nodeName, UUID partitionId, replicaId karakterláncot, logikai forceRemove, hosszú időtúllépés, végső ServiceCallback\<Void > serviceCallback)**
     * Ez az API-hívás változat használható, ha használja a jövőbeli alapján aszinkron programozás és visszahívások használni kívánt
- 3. **nyilvános rendszernek megfigyelhetőnek<Void> removeReplicaAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
+ 3. **nyilvános rendszernek megfigyelhetőnek\<Void > removeReplicaAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
     * Ez az API-hívás változat használható, ha a reaktív jellegű aszinkron programozás használni kívánt
- 4. **nyilvános rendszernek megfigyelhetőnek < ServiceResponse<Void>> removeReplicaWithServiceResponseAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
+ 4. **nyilvános rendszernek megfigyelhetőnek\<ServiceResponse\<Void >> removeReplicaWithServiceResponseAsync (karakterlánc nodeName, UUID partitionId, karakterlánc replicaId)**
     * Ez mérettel bővült, API-hívás is használható, ha azt szeretné, használhatja a reaktív jellegű aszinkron programozás és foglalkozik a nyers rest-válasz
 
 ## <a name="next-steps"></a>További lépések

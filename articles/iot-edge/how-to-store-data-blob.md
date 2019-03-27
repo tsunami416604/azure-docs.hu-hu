@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881384"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499158"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -345,7 +345,7 @@ Ez a modul a kívánt tulajdonságok, például: ![azureblobstorageoniotedge –
     }
 
    ```
-  ## <a name="logs"></a>Logs
+## <a name="logs"></a>Logs
 
 Kövesse a lépéseket a [konfigurálása az IoT Edge-modulok a docker-naplók](production-checklist.md#set-up-logs-and-diagnostics)
 
@@ -383,9 +383,10 @@ Az alábbi rövid útmutatókat használja, így sikerült telepítheti őket, I
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Megpróbálhatja [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a helyi storage-fiókhoz való csatlakozáshoz. A megpróbáltuk [korábbi verziót 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Azure Explorer.
+"Az Azure Storage Explorer" a helyi storage-fiókhoz való csatlakozáshoz is kipróbálhatja. Együttműködik az [Azure Storage Explorer verziója 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0).
+
 > [!NOTE]
-> Előfordulhat, hogy az alábbi lépéseket végrehajtása során hibákba ütközik, figyelmen kívül hagyása és a frissítés. 
+> A következő lépésekkel, például egy kapcsolat hozzáadása a helyi storage-fiók vagy helyi tárfiókban lévő tárolók létrehozása közben hibák léphetnek fel. Hagyja figyelmen kívül, és frissítse. 
 
 1. Töltse le és telepítse az Azure Storage Explorerrel
 2. Kapcsolódás az Azure Storage kapcsolati karakterlánc használatával

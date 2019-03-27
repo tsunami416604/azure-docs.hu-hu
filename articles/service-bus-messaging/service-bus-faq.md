@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a10b4d7fac29a6b016b5660b0430d042f2443fbd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210594"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498077"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -55,7 +55,7 @@ Egy üzenetsor és a témakör következő tulajdonságai nem módosíthatók. F
 ## <a name="pricing"></a>Díjszabás
 Ez a szakasz néhány – gyakori kérdések a Service Bus díjszabási struktúrája ad választ.
 
-A [a Service Bus díjszabása és számlázási](service-bus-pricing-billing.md) a cikk ismerteti a Service Bus a számlázási mérőszámok. További részletes információ a Service Bus díjszabási lehetőségek: [a Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
+A [a Service Bus díjszabása és számlázási](https://azure.microsoft.com/pricing/details/service-bus/) a cikk ismerteti a Service Bus a számlázási mérőszámok. További részletes információ a Service Bus díjszabási lehetőségek: [a Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. 
 

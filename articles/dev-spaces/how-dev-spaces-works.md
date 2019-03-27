@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: b6f178628961001c4022ffc86bc13ee0e529e3c4
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438971"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500559"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -96,7 +96,7 @@ Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezve van, amikor telepí
 * Eltávolítja az összes nevű Kubernetes-névtér *azds*, ha létezik, és létrehoz egy újat.
 * Üzembe helyez egy Kubernetes-inicializáló objektumot.
 
-! [Azure fejlesztési tárolóhelyek fürt előkészítése]] (media/how-dev-spaces-works/prepare-cluster.svg)
+![Az Azure fejlesztési tárolóhelyek fürt előkészítése](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Azure fejlesztői tárolóhelyek használatához legalább egy fejlesztési területet kell lennie. Az Azure fejlesztési tárolóhelyek fejlesztési tárolóhelyek Kubernetes névtereihez az AKS-fürt használja. A tartományvezérlő telepítésekor felszólítja, hogy hozzon létre egy új Kubernetes-névteret, vagy válasszon egy meglévő névtér vagy az első fejlesztési terület adatokként. Ha egy névtér fejlesztési tárhelyként ki van jelölve, a vezérlő hozzáad a *azds.io/space=true* fejlesztési tárhelyként azonosításához névtéren címkét. A kezdeti fejlesztési helyet hoz létre, vagy kijelölése alapértelmezés szerint be van jelölve, a fürt előkészítése után. Amikor egy hely van kiválasztva, használatos Azure fejlesztési szóközökkel új számítási feladatok létrehozásához.
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863321"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499556"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az Azure Container Instances?
 
@@ -52,10 +52,11 @@ Néhány funkció jelenleg csak Linux-tárolók:
 
 * Több tároló tárolócsoportonként
 * Kötet csatlakoztatási ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [titkos](container-instances-volume-secret.md))
+* [Erőforrás-használati metrikák](container-instances-monitor.md) az Azure Monitor szolgáltatással
 * [Virtuális hálózat üzembe helyezési](container-instances-vnet.md) (előzetes verzió)
 * [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
 
-Az Azure Container Instances támogatja a Windows Server 2016 lemezképek hosszú távú karbantartási csatorna (LTSC) alapján. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
+Az Azure Container Instances jelenleg támogatja a Windows Server 2016 lemezképek hosszú távú karbantartási csatorna (LTSC) alapján. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
 
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 

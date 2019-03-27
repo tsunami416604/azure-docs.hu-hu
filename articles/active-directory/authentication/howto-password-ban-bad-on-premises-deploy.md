@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8502ab3257bc1d121e0440ba765dfd19a6722cec
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3be702d1f75b0a96e22ea03602c924be580b0968
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311968"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499250"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -36,7 +36,7 @@ Után a szolgáltatás ésszerű rendszervizsgálati módban futott, válthat a 
 
 ## <a name="deployment-requirements"></a>Központi telepítésére vonatkozó követelmények
 
-* Minden tartományvezérlő, amely a tartományvezérlő-ügynök szolgáltatást a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 vagy újabb verziója.
+* Minden tartományvezérlő, amely a tartományvezérlő-ügynök szolgáltatást a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 vagy újabb verziója. Ez a követelmény nem jelenti azt, hogy az Active Directory-tartományban vagy erdőben is kell lennie a Windows Server 2012 tartomány vagy erdő működési szintjén. Az említett [tervezési alapelvek](concept-password-ban-bad-on-premises.md#design-principles), nem minimális működési vagy FFL vagy a tartományvezérlő-ügynök vagy a proxy futtatandó szoftverekhez szükséges.
 * Összes gép, amely a proxy szolgáltatást, a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 R2 vagy újabb verziója.
 * Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás telepítve van a .NET 4.7 kell rendelkeznie.
   .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
@@ -85,7 +85,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 1. Nyisson meg egy PowerShell-ablakot rendszergazdaként.
    * A jelszó proxy szoftver tartalmaz egy új PowerShell-modul *AzureADPasswordProtection*. Különböző parancsmagok a PowerShell-modult futtassa az alábbi lépéseket. Importálja az új modult a következőképpen:
 
-      ```PowerShell
+      ```powershell
       Import-Module AzureADPasswordProtection
       ```
 
@@ -106,7 +106,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
      * Interaktív hitelesítési mód:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -114,7 +114,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
      * Eszköz-kód hitelesítési mód:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -123,7 +123,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
      * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
 
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionProxy -AzureCredential $globalAdminCredentials
         ```
@@ -146,7 +146,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
      * Interaktív hitelesítési mód:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
         > [!NOTE]
@@ -154,7 +154,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
      * Eszköz-kód hitelesítési mód:
 
-        ```PowerShell
+        ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com' -AuthenticateUsingDeviceCode
         To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XYZABC123 to authenticate.
         ```
@@ -162,7 +162,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
         Majd egy másik eszközön megjelenő utasítások alapján a hitelesítés befejezéséhez.
 
      * Beavatkozás nélküli (jelszóalapú) hitelesítési mód:
-        ```PowerShell
+        ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
         ```
@@ -221,7 +221,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 1. Nem kötelező: Konfigurálja a proxykiszolgáló jelszavas védelmet egy adott portot figyeljen.
    * A tartományvezérlő ügynökszoftver jelszavas védelmet a tartományvezérlőkön RPC Protokollt használ TCP-n keresztül a proxy szolgáltatással való kommunikációra. Alapértelmezés szerint a proxy szolgáltatást figyel minden rendelkezésre álló dinamikus RPC-végpont. De be lehet állítani egy adott TCP-porton figyeljen a szolgáltatást, amennyiben ez szükséges hálózati topológiát, vagy a környezetében a tűzfalra vonatkozó követelmények miatt.
       * <a id="static" /></a>A szolgáltatás futtatásához egy statikus port megadásához használja a `Set-AzureADPasswordProtectionProxyConfiguration` parancsmagot.
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
 
@@ -229,7 +229,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
          > Állítsa le kell, és indítsa újra a szolgáltatást, a módosítások érvénybe léptetéséhez.
 
       * A szolgáltatás futtatásához egy dinamikus port megadásához ugyanazzal az eljárással, de beállítása *StaticPort* történő visszaállítás:
-         ```PowerShell
+         ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```
 
@@ -241,7 +241,7 @@ Nincsenek Azure AD jelszóvédelem két szükséges telepítők. Az elérhető a
 
    * A szolgáltatás a jelenlegi konfiguráció lekérdezése, használja a `Get-AzureADPasswordProtectionProxyConfiguration` parancsmagot:
 
-      ```PowerShell
+      ```powershell
       Get-AzureADPasswordProtectionProxyConfiguration | fl
 
       ServiceName : AzureADPasswordProtectionProxy

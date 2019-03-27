@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7156249e720416161cd56af7589ed85827c6034b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812548"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500083"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok importálására és az Azure Data Factory használatával az Azure-tábla
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,6 +31,8 @@ ms.locfileid: "55812548"
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factoryban adatáthelyezést és-tárolókról az Azure Table Storage. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése. 
 
 Másolhatja az adatokat bármely támogatott forrásadattár Azure Table Storage vagy az Azure Table Storage bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok és-tárolókról az Azure Table Storage áthelyezéséhez a különböző eszközök/API-k használatával.
@@ -476,7 +478,7 @@ Amikor adatok áthelyezése Azure táblából, a következő & [Azure Table Stor
 | OData-adatok típusa | .NET Type | Részletek |
 | --- | --- | --- |
 | Edm.Binary |byte[] |Bájttömb legfeljebb 64 KB-os. |
-| Edm.Boolean |Logikai |Logikai érték. |
+| Edm.Boolean |logikai |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.,) (UTC). A tartomány vége. December 31-9999. |
 | Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |

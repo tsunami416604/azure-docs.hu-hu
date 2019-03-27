@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f6a9d688169f0f8fdd6f0be7b664dbe9ebd71941
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295232"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497992"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig
 
@@ -35,7 +35,7 @@ HDInsight Jython, amely egy Python-implementációja Java nyelven írt is tartal
 * Választható.  Ha tervezi a PowerShell-lel, szüksége lesz a [AZ modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) telepítve.
 
 > [!NOTE]  
-> Az ebben a cikkben használt tárfiók volt az Azure Storage [biztonságos átvitelre](/../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` a cikk használja.
+> Az ebben a cikkben használt tárfiók volt az Azure Storage [biztonságos átvitelre](../../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` a cikk használja.
 
 ## <a name="storage-configuration"></a>Tároló konfigurálása
 Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  Ebben a cikkben a folyamat legalább állítja elő a kimeneti `/tezstaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/tezstaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, melyek a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/tezstaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](../hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`

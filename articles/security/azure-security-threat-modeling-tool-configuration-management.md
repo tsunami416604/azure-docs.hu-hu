@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bd1d3c71660ae584b0aa57c7cc765fdc519f4b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863593"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498383"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Biztonsági keret: Konfigurációkezelés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -85,7 +85,7 @@ Example: var str="alert(1)"; eval(str);
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [ASP.NET – áttekintés hibakeresés](https://msdn2.microsoft.com/library/ms227556.aspx), [követés áttekintése ASP.NET](https://msdn2.microsoft.com/library/bb386420.aspx), [hogyan: Enable Tracing for ASP.NET-alkalmazás engedélyezése](https://msdn2.microsoft.com/library/0x5wc973.aspx), [hogyan: Az ASP.NET-alkalmazások hibakeresés engedélyezése](https://msdn2.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Hivatkozások**              | [ASP.NET – áttekintés hibakeresés](https://msdn.microsoft.com/library/ms227556.aspx), [követés áttekintése ASP.NET](https://msdn.microsoft.com/library/bb386420.aspx), [hogyan: Enable Tracing for ASP.NET-alkalmazás engedélyezése](https://msdn.microsoft.com/library/0x5wc973.aspx), [hogyan: Az ASP.NET-alkalmazások hibakeresés engedélyezése](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Lépések** | Amikor nyomkövetés engedélyezve van minden böngésző is szerzi be a nyomkövetési adatok belső állapot és a munkafolyamat adatait tartalmazó kérő lapon. Ezt az információt lehet a biztonság-és nagybetűket. Hibakeresés engedélyezve van a lapon, ha hiba történik az a kiszolgáló egy teljes verem nyomkövetési adatok számára a böngészőben megjelenő eredményez. Az adatokat a kiszolgálói munkafolyamat biztonsági szempontból kényes információt tehetik közzé. |
 
 ## <a id="js-trusted"></a>Hozzáférés külső JavaScript-kódok csak megbízható forrásból származó
