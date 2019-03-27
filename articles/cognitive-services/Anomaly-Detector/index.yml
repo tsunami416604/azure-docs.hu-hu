@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473372"
+documentType: LandingData
+title: Az Anomaly Detector API dokumentációja
+metadata:
+  title: Anomaly Detector API – Oktatóanyagok, rövid útmutatók, API-referencia – Azure Cognitive Services | Microsoft Docs
+  description: Az Anomaly Detector API használatával gondoskodhat az adatok az idő függvényében történő figyeléséről, valamint észlelheti a gépi tanulással kapcsolatos rendellenességeket. Betekintést nyerhet adataiba, a mennyiségtől, az iparágtól vagy a forgatókönyvtől függetlenül.
+  services: cognitive-services
+  author: aahill
+  manager: cgronlun
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/26/2019
+  ms.author: aahi
+abstract:
+  description: Az Anomaly Detector API használatával könnyedén beágyazhat rendellenességészlelési képességeket az alkalmazásaiba, így a felhasználók gyorsan azonosíthatják a felmerülő a problémákat, ezáltal minimálisra csökkenthetik a veszteséget és az adott probléma az ügyfelekre gyakorolt hatását. Mindehhez nem szükségesek gépi tanulási háttérismeretek. Egyetlen API-hívással aktiválhatja az előre betanított MI-modellt, amely típustól és mennyiségtől függetlenül feldolgozza az idősorozat-adatokat, a pontosság növelése érdekében kiválasztja az adatokhoz legmegfelelőbb rendellenességészlelési modellt, és azonnal automatikusan megjeleníti a felmerülő incidenseket. A szolgáltatást testre szabhatja úgy, hogy mérettől függetlenül minden rendellenességet észleljen.  Az Anomaly Detector használatával többek között azonosíthatja az üzleti incidenseket, monitorozhatja az IoT-eszközök forgalmát, felügyelheti a visszaéléseket és reagálhat a változó piaci viszonyokra.
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/anomaly-detector/overview
+      html: <p>Tudnivalók az Anomaly Detector API-ról</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi az az Anomaly Detector API?
+    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
+      html: <p>Optimalizálhatja a rendellenességészlelés eredményeit az API-val kapcsolatos ajánlott eljárások alkalmazásával</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
+    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
+      html: <p>Többek között beállíthatja a rendellenességészlelés érzékenységét és különféle észlelési módokat használhat.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Az Anomaly Detection API használata
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Idősorozat-adatok rendellenességeinek észlelése a következők használatával:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/logo_Csharp.svg
+      href: quickstarts/detect-data-anomalies-csharp
+      text: C#
+    - image:
+        src: media/logo_Java.svg
+      href: quickstarts/detect-data-anomalies-java
+      text: Java
+    - image:
+        src: media/logo_python.svg
+      href: quickstarts/detect-data-anomalies-python
+      text: Python

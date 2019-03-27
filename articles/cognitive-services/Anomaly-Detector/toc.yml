@@ -1,0 +1,47 @@
+items:
+- name: Az Anomaly Detector dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az az Anomaly Detector API?
+    href: overview.md
+  expanded: true
+- name: Gyors útmutatók
+  items:
+  - name: Adatok rendellenességeinek észlelése
+    items:
+    - name: A C# használata
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: A Java használata
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: A Python használata
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: Útmutatók
+  items:
+  - name: Adatok rendellenességeinek azonosítása
+    href: how-to/identify-anomalies.md
+- name: Alapelvek
+  items:
+  - name: Ajánlott eljárások az Anomaly Detection API-hoz
+    href: concepts/anomaly-detection-best-practices.md
+- name: Referencia
+  items:
+  - name: REST API-referencia
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: SDK-k
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: További források
+  items:
+  - name: Díjszabás
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: Régiónkénti rendelkezésre állás
+    href: https://aka.ms/anomaly-detector-region
+ms.openlocfilehash: c752383026434ca2f8f1d3f047bb1dbc3740c7ea
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473373"

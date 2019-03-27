@@ -1,31 +1,38 @@
 items:
-- name: Az Azure Portal testreszabása – dokumentáció
+- name: Azure Portal-dokumentáció
   href: index.yml
-- name: Azure-irányítópultok
+- name: Áttekintés
+  items:
+  - name: Tudnivalók az Azure Portalról
+    href: azure-portal-overview.md
+  - name: Támogatott böngészők és eszközök
+    href: azure-portal-supported-browsers-devices.md
+- name: Alapelvek
   items:
   - name: Azure-irányítópultok létrehozása és megosztása
     href: azure-portal-dashboards.md
-  - name: Egyéni Markdown-csempe használata
-    href: azure-portal-markdown-tile.md
   - name: Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel
     href: azure-portal-dashboard-share-access.md
-  - name: Az Azure-irányítópultok struktúrája
-    href: azure-portal-dashboards-structure.md
   - name: Azure-irányítópultok létrehozása programozott módon
     href: azure-portal-dashboards-create-programmatically.md
-- name: Beállítások
+- name: Útmutatók
+  items:
+  - name: Kontrasztos megjelenítés bekapcsolása és téma módosítása
+    href: azure-portal-change-theme-high-contrast.md
+  - name: Egyéni Markdown-csempe használata
+    href: azure-portal-markdown-tile.md
+  - name: Felhasználói beállítások exportálása vagy törlése
+    href: azure-portal-export-delete-settings.md
+- name: Referencia
   items:
   - name: Billentyűparancsok
     href: azure-portal-keyboard-shortcuts.md
-  - name: Támogatott böngészők és eszközök
-    href: ../azure-preview-portal-supported-browsers-devices.md
-  - name: Kontrasztos megjelenítés bekapcsolása és téma módosítása
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Felhasználói beállítások exportálása vagy törlése
-    href: azure-portal-export-delete-settings.md
-  expanded: true
+  - name: Az Azure-irányítópultok struktúrája
+    href: azure-portal-dashboards-structure.md
 - name: További források
   items:
+  - name: Az Azure Portal útmutató videósorozata
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/updates/
   - name: Fejlessze a készségeit a Microsoft Learnnel
@@ -36,11 +43,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Videók
+  - name: Azure-videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 7fee5a433470309384931e6ea43817288aecf7a8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 43a009582b565f10261c0cc6cc24507c3ef6e44e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902771"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443879"

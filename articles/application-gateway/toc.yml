@@ -17,15 +17,15 @@ items:
 - name: Oktatóanyagok
   items:
   - name: Egy webhely üzemeltetése
-    href: tutorial-manage-web-traffic-cli.md
+    href: quick-create-portal.md
   - name: Webalkalmazási tűzfal engedélyezése
-    href: tutorial-restrict-web-traffic-cli.md
+    href: application-gateway-web-application-firewall-portal.md
   - name: Védelem az SSL-lel
-    href: tutorial-ssl-cli.md
+    href: create-ssl-portal.md
   - name: Több webhely üzemeltetése
-    href: tutorial-multiple-sites-cli.md
+    href: create-multiple-sites-portal.md
   - name: Útválasztás URL-cím alapján
-    href: tutorial-url-route-cli.md
+    href: create-url-route-portal.md
   - name: Webes forgalom átirányítása
     href: tutorial-url-redirect-cli.md
   - name: Automatikus skálázás és zónaredundancia
@@ -90,8 +90,10 @@ items:
   items:
   - name: Egy webhely üzemeltetése
     items:
-    - name: Azure Portal
+    - name: Azure PowerShell
       href: tutorial-manage-web-traffic-powershell.md
+    - name: Azure CLI
+      href: tutorial-manage-web-traffic-cli.md
     - name: Sablon
       href: create-vmss-template.md
   - name: Belső terheléselosztó konfigurálása
@@ -104,10 +106,10 @@ items:
     items:
     - name: SSL leállítása
       items:
-      - name: SSL leállítása – Portal
-        href: create-ssl-portal.md
       - name: SSL leállítása – PowerShell
         href: tutorial-ssl-powershell.md
+      - name: SSL leállítása – Azure CLI
+        href: tutorial-ssl-cli.md
     - name: Végpontok közötti SSL
       items:
       - name: Végpontok közötti SSL – Portál
@@ -126,10 +128,10 @@ items:
         href: application-gateway-configure-ssl-policy-powershell.md
   - name: Webalkalmazási tűzfal konfigurálása
     items:
-    - name: Azure Portal
-      href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
+    - name: Azure CLI
+      href: tutorial-restrict-web-traffic-cli.md
   - name: WAF-szabálykészletek konfigurálása
     items:
     - name: Azure Portal
@@ -140,16 +142,16 @@ items:
       href: application-gateway-customize-waf-rules-cli.md
   - name: Útválasztás URL-cím alapján
     items:
-    - name: Azure Portal
-      href: create-url-route-portal.md
     - name: Azure PowerShell
       href: tutorial-url-route-powershell.md
+    - name: Azure CLI
+      href: tutorial-url-route-cli.md
   - name: Több webhely üzemeltetése
     items:
-    - name: Azure Portal
-      href: create-multiple-sites-portal.md
     - name: Azure PowerShell
       href: tutorial-multiple-sites-powershell.md
+    - name: Azure CLI
+      href: tutorial-multiple-sites-cli.md
   - name: Forgalom átirányítása
     items:
     - name: Külső forgalom
@@ -236,9 +238,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: cd08a1ac880bb4242f4f57882d0e45133cf26748
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: b7b696b2094dc74e1a30cbd33f304aa663bf742e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350747"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444919"

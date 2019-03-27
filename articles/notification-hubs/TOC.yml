@@ -114,6 +114,20 @@ items:
       href: notification-hubs-php-push-notification-tutorial.md
     - name: Értesítési központ létrehozása – Python
       href: notification-hubs-python-push-notification-tutorial.md
+  - name: A platformértesítési szolgáltatás beállításainak konfigurálása
+    items:
+    - name: Az Apple Push Notification szolgáltatás beállításainak konfigurálása
+      href: configure-apple-push-notification-service.md
+    - name: A Google Firebase Cloud Messaging beállításainak konfigurálása
+      href: configure-google-firebase-cloud-messaging.md
+    - name: A Windows Push Notification szolgáltatás konfigurálása
+      href: configure-windows-push-notification-service.md
+    - name: A Microsoft Push Notification szolgáltatás konfigurálása
+      href: configure-microsoft-push-notification-service.md
+    - name: Az Android Device Messaging konfigurálása
+      href: configure-android-device-messaging.md
+    - name: A felhőalapú Baidu-értesítés konfigurálása
+      href: configure-baidu-cloud-push.md
   - name: Regisztráció az alkalmazás háttérrendszerével
     href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
   - name: Jogkivonat-alapú hitelesítés használata Apple-eszközökön
@@ -150,9 +164,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Támogatási lehetőségek
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: a618c3788c501f28d822021b35c925fcf85c7b3c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a5681a615638fdd14aecb2654e2c6d46f0a7bda4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438767"
+ms.locfileid: "58486954"
