@@ -1,20 +1,20 @@
 ---
 title: Cognitive Services-fiók létrehozása az Azure Portalon
 titlesuffix: Azure Cognitive Services
-description: Hogyan lehet egy Microsoft Cognitive Services API-k létrehozása az Azure Portalon.
+description: Tudnivalók az Azure Cognitive Services API-k létrehozása az Azure Portalon.
 services: cognitive-services
 author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/22/2019
 ms.author: garye
-ms.openlocfilehash: 21e1eb00f688f2e7061e876cc4375d6d780838fc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534803"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472854"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Gyors útmutató: Cognitive Services-fiók létrehozása az Azure Portalon
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban fog elsajátíthatja az Azure Cognitive Services re
 Mielőtt hozzáfogna, fontos tudni, hogy nincsenek-e kétféle Azure Cognitive Services-előfizetéseket. Az első az egyetlen szolgáltatás, például a Computer Vision, vagy a Speech Services-előfizetés. Előfizetés – olyan egyetlen szolgáltatást ennek az erőforrásnak korlátozódik. A második pedig az Azure Cognitive Services több szolgáltatásos előfizetést. Ez az előfizetés lehetővé teszi, hogy egyetlen előfizetéshez az Azure Cognitive Services többsége. Ez a beállítás is összesíti a számlázás. Lásd: [Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/) további információt.
 
 >[!WARNING]
-> Jelenleg ezek a szolgáltatások **nem** támogatja több szolgáltatásos kulcsokat: A QnA Maker, beszédszolgáltatások és egyéni vizuális.
+> Jelenleg ezek a szolgáltatások **nem** támogatja több szolgáltatásos kulcsokat: A QnA Maker, beszédszolgáltatások, egyéni vizuális és Anomáliadetektálási detector használatával.
 
 A következő szakaszok végigvezetik egy egyetlen vagy több szolgáltatásos előfizetést.
 

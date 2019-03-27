@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 305d81d6614d1f0654e0d96b10f1759498683003
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558464"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487872"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -81,13 +81,13 @@ A multiChartStack=<true/false> paraméter engedélyezi a diagramon történő r�
 - multiChartStack=false&multiChartSameScale=true 
   - A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Ennek alapértelmezett értéke false, tehát a funkció engedélyezéséhez a true értéket kell megadnia.  
   
-A timeBucketUnit=<Unit>&timeBucketSize=<integer> paraméter használatával különböző részletességre állíthatja be az időköz csúszkáját, így jobban áttekinthetővé válik a diagram.  
-- timeBucketUnit=<Unit>&timeBucketSize=<integer>
+A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi, hogy az időköz csúszkáját egy részletesebb vagy simább, módosítsa a diagram nézet több összesítve.  
+- `timeBucketUnit=<Unit>&timeBucketSize=<integer>`
   - Egységek = nap, óra, perc, másodperc, ezredmásodperc.  Az egység nevét mindig nagybetűvel írja.
   - Az egységek számának megadásához adja át a kívánt egész számot a timeBucketSize paraméterhez.  Vegye figyelembe, hogy a részletesség legfeljebb 7 napos lehet.  
   
-A timezoneOffset=<integer> paraméterrel megadhatja a megtekinteni kívánt diagram időzónáját az egyezményes világidőhöz (UTC) viszonyított időeltolódással.  
-  - timezoneOffset=-<integer>
+A `timezoneOffset=<integer>` a paraméter lehetővé teszi, hogy az UTC Időzóna időeltolódással lehet megtekinteni kívánt diagram időzónáját.  
+  - `timezoneOffset=-<integer>`
     - Az egész számot mindig ezredmásodpercben kell megadnia.  
     - Vegye figyelembe, hogy ez a funkció kissé eltér a TSI Explorerben engedélyezett funkciótól, a helyi (böngésző szerinti) időt vagy az egyezményes világidőt (UTC) is kiválaszthatja.  
  

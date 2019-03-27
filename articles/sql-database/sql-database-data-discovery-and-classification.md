@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database adatfelderítés és besorolás |} A Microsoft Docs
-description: Az Azure SQL Database adatfelderítés és besorolás
+title: Az Azure SQL Database és az SQL Data Warehouse adatfelderítés és besorolás |} A Microsoft Docs
+description: Az Azure SQL Database és az adatok felderítés és besorolás
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202979"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495986"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Az Azure SQL Database adatfelderítés és besorolás
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Az Azure SQL Database és az SQL Data Warehouse adatfelderítés és besorolás
 
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít az Azure SQL Database-be épített fejlettebb képességek **felderítése**, **Írisz**, **címkézés**  &  **védelme** a bizalmas adatokat az adatbázisban.
 Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok (PII), és így tovább.) a szervezeti adatok védelme helyzetében kulcsfontosságú szerepet játszhatnak. Az infrastruktúra szolgálhasson:
@@ -28,10 +28,10 @@ Felderítése és besorolása a leginkább bizalmas adatok (üzleti, pénzügyi,
 - Különféle biztonsági forgatókönyvek, például a (naplózás) figyelési és riasztási a bizalmas adatokhoz való rendellenes hozzáférést.
 - Való hozzáférés szabályozása és a bizalmas adatokat tartalmazó adatbázisok biztonságának megerősítése.
 
-Adatfelderítés és besorolás részét képezi a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. adatfelderítés és besorolás érheti el és a központi SQL ADS portálon keresztül kezelhetők.
+Adatfelderítés és besorolás részét képezi a [speciális adatbiztonság](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. adatfelderítés és besorolás érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 > [!NOTE]
-> Ez a dokumentum csak az Azure SQL Database vonatkozik. Az SQL Server (helyszíni), lásd: [SQL Adatfelderítés és besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
+> Ez a dokumentum az Azure SQL Database és az Azure SQL Data Warehouse vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Az SQL Server (helyszíni), lásd: [SQL Adatfelderítés és besorolás](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Mi az adatfelderítés és besorolás
 

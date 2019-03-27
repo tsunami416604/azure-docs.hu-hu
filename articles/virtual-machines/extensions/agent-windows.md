@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 051c9cb0c6c1af121a1bdd1f553ef124f980b49d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d17d7c9d7b57e6ca040e4f81c9665789c8bc26e2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977151"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483250"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuálisgép-ügynök – áttekintés
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy olyan biztonságos, egyszerűsített folyamat, amely felügyeli a virtuális gép (VM) az Azure Fabric Controller-szal. A Virtuálisgép-ügynök engedélyezése és az Azure virtuálisgép-bővítmények végrehajtása az elsődleges szerepe van. A Virtuálisgép-bővítmények telepítése és beállítása a szoftver például a virtuális gép üzembe helyezés utáni konfigurációs engedélyezése. A Virtuálisgép-bővítmények rendszergazdai jelszavának visszaállítása egy virtuális gép helyreállítási funkciókat is engedélyezheti. Az Azure Virtuálisgép-ügynök nélkül nem lehet futtatni a Virtuálisgép-bővítmények.
@@ -80,7 +80,7 @@ Get-AzVM
 
 A következő sűrített példához kimenetet mutat be a *ProvisionVMAgent* tulajdonság ágyazhatók egymásba *OSProfile*. Ez a tulajdonság segítségével határozza meg, ha a Virtuálisgép-ügynök telepítve van a virtuális géphez:
 
-```PowerShell
+```powershell
 OSProfile                  :
   ComputerName             : myVM
   AdminUsername            : myUserName
@@ -91,7 +91,7 @@ OSProfile                  :
 
 A következő parancsfájl segítségével egy virtuális gép neve és a Virtuálisgép-ügynök állapotát az tömör listáját adja vissza:
 
-```PowerShell
+```powershell
 $vms = Get-AzVM
 
 foreach ($vm in $vms) {

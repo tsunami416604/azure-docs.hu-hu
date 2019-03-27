@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: eeda1ed3181b8cc8f641ed731b7f00fac2d3fad6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bbda2a16e57f3907ef2910b17ed3c744d2d1ec3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005826"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487855"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -58,7 +58,7 @@ Ez az üzenet jelenik meg, ha a kiszolgáló korábban regisztrálva lett az Tá
 
 Ha a kiszolgáló nem szerepel a **regisztrált kiszolgálókat** a Storage Sync Service, a kiszolgáló regisztrációjának törlése, kívánt futtassa a következő PowerShell-parancsokat:
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Reset-StorageSyncServer
 ```
@@ -113,7 +113,7 @@ Ez a probléma akkor fordul elő, ha a kiszolgáló offline állapotban, vagy ni
 <a id="server-endpoint-provisioningfailed"></a>**Nem lehet kiszolgálói végpont tulajdonságai lap megnyitásához, vagy a felhőbeli rétegzési szabályzat frissítése**  
 A probléma akkor fordulhat elő, ha meghiúsul egy felügyeleti műveletet a kiszolgálói végpontot. Ha a kiszolgálói végpont tulajdonságai lap nem nyitható meg az Azure portal, PowerShell-parancsokkal a kiszolgálóról, a kiszolgálói végpont frissítése lehet, hogy a probléma megoldására. 
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 # Get the server endpoint id based on the server endpoint DisplayName property
 Get-AzureRmStorageSyncServerEndpoint `
@@ -253,7 +253,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Egy fájl módosult, de a módosítás nem még észlelt szinkronizálás által. Szinkronizálás után ez a változás észlelésekor állítja helyre. | Nincs szükség felhasználói műveletre. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | A fájl nem szinkronizálható, mert az Azure-beli fájlmegosztás korlátot. | A probléma megoldásához tekintse meg [a megosztás Azure fájltárolási korlátot elérte](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) a hibaelhárítási útmutató szakaszát. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, ha a fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, vagy a fájl rendelkezik törlési a függő állapotú. | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Ez a hiba akkor fordulhat elő, a következő okok miatt: fájl titkosítva van egy nem támogatott megoldás (például NTFS EFS) által, a fájl rendelkezik a törlés függőben lévő állapotba, vagy egy csak olvasható replikációs DFS-R mappában található | A fájl titkosítva van egy nem támogatott megoldás, ha a fájl visszafejtése, és a támogatott titkosítási megoldással. Támogatási megoldások listáját lásd: [titkosítási megoldások](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) az útmutató a tervezési szakaszban. Ha a fájl a függő állapotú törlés, a fájl törlődik, az összes megnyitott fájlleírók bezárásakor. Ha a fájl csak olvasható replikációs DFS-R mappában található, a Azure Files Sync kiszolgálóvégpontok nem csak olvasható replikációs mappák a DFS-R támogatja. Lásd: [kapacitástervezési útmutató](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) további információt.
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 
@@ -331,7 +331,7 @@ Ez a hiba oka, hogy az Azure File Sync ügynök az Azure-fájlmegosztást, mert 
 
 1. Ellenőrizze, hogy fel tudja oldani a storage DNS-név a kiszolgálóról.
 
-    ```PowerShell
+    ```powershell
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Ellenőrizze, hogy a tárfiók létezik-e.](#troubleshoot-storage-account)
@@ -457,13 +457,13 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
 
 1. A SkipVerifyingPinnedRootCertificate beállításjegyzék-értéket hoz létre.
 
-    ```PowerShell
+    ```powershell
     New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Azure\StorageSync -Name SkipVerifyingPinnedRootCertificate -PropertyType DWORD -Value 1
     ```
 
 2. Indítsa újra a szinkronizálási szolgáltatást a regisztrált kiszolgálón.
 
-    ```PowerShell
+    ```powershell
     Restart-Service -Name FileSyncSvc -Force
     ```
 
@@ -503,7 +503,7 @@ Ha a kiszolgáló ideje helyes, hajtsa végre az alábbi lépéseket a probléma
 1. Ellenőrizze az Azure File Sync ügynök verziója 4.0.1.0 vagy újabb verziója szükséges.
 2. A következő PowerShell-parancsok futtatása a kiszolgálón:
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
     Login-AzureRmStorageSync -SubscriptionID <guid> -TenantID <guid>
     Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -616,7 +616,7 @@ Ez a hiba akkor fordul elő, a szinkronizálási adatbázishoz belső hiba miatt
     ![Egy Képernyőkép a felhőbeli végpont részletek ablaktábláján egy hivatkozást a tárfiókra.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
 $region = "<Az_Region>"
@@ -719,7 +719,7 @@ if ($storageAccount -eq $null) {
     ![Egy Képernyőkép a tárolási fiók tűzfal és a hálózati szabályok le van tiltva.](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
     Write-Host ("The storage account referenced contains network " + `
@@ -735,7 +735,7 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 3. Ellenőrizze, hogy a fájlmegosztás a felhőbeli végpont által hivatkozott (kell rendelkeznie feljegyzett a fenti 1. lépés) fájlmegosztások listájában megjelenik-e.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell
+```powershell
 $fileShare = Get-AzureStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
     $_.IsSnapshot -eq $false
@@ -762,7 +762,7 @@ if ($fileShare -eq $null) {
     - Az a **kiválasztása** mezőbe írja be a **hibrid File Sync szolgáltatásbeli**, válassza ki a szerepkört, és kattintson a **mentése**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```PowerShell    
+```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
     if ($_.DisplayName -eq "Hybrid File Sync Service") {
@@ -790,13 +790,13 @@ Használhat [File Server Resource Manager (FSRM) fájlszűrők](https://docs.mic
 
 Először hozzon létre egy FSRM fájlcsoport a [New-FsrmFileGroup parancsmag](https://docs.microsoft.com/powershell/module/fileserverresourcemanager/new-fsrmfilegroup). Ebben a példában csak két a nem támogatott karaktereket tartalmaz a csoport határozza meg, de a karaktereket a fájl csoport szükség szerint több is felvehet.
 
-```PowerShell
+```powershell
 New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
 ```
 
 Miután beállított egy FSRM fájlcsoport, egy FSRM fájlszűrést, a New-FsrmFileScreen parancsmaggal hozhat létre.
 
-```PowerShell
+```powershell
 New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
 ```
 
@@ -893,7 +893,7 @@ Ha a probléma továbbra is fennáll, futtassa a AFSDiag eszköz:
 1. Hozzon létre egy könyvtárat, ahol a AFSDiag kimeneti menti a rendszer (például C:\Output).
 2. Nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő parancsokat (nyomja le az Enter minden parancs után):
 
-    ```PowerShell
+    ```powershell
     cd "c:\Program Files\Azure\StorageSyncAgent"
     Import-Module .\afsdiag.ps1
     Debug-Afs c:\output # Note: Use the path created in step 1.

@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67c07169b3ff66d99ee52a0e078e0e463a42702e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119173"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482912"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -61,11 +61,11 @@ Ha nem tudja az értékelési jelentés exportálása a portálról, próbálkoz
 
    a.    Egy rendszergazda Windows PowerShell-ablakban futtassa a következő parancsot: ```armclient login```
 
-   Ekkor megnyílik az Azure bejelentkezési előugró hol kell bejelentkezni az Azure-bA.
+        This opens the Azure login pop-up where you need to sign in to Azure.
 
    b.    Ugyanebben a PowerShell ablakban futtassa a következő parancsot az értékelési jelentés (cserélje le az URI-paraméterek megfelelő értékeivel, a minta API-kérelem alább) a letöltési URL-Címének lekéréséhez
 
-      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
       Mintakérelem és kimenet:
 
@@ -102,6 +102,9 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
    - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon az ügyfélszolgálathoz az Azure Migrate.
 
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance"></a>Nem sikerült válassza ki az Azure felhőalapú az a készülék
+
+Ez egy ismert probléma, és a javítás érhető el a problémát. Töltse le a [legújabb frissítése a bits](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) a készülék és a frissítés a készülék a alkalmazni a javítást.
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Gyűjtő nem sikerül csatlakozni az internethez
 
@@ -330,4 +333,4 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 | 802       | TimeSyncError                  | Az idő nincs internetes időkiszolgálóval szinkronizálva.                            | Az idő nincs internetes időkiszolgálóval szinkronizálva.                                                    | Győződjön meg arról, hogy a számítógépen az időzónájának megfelelően van beállítva az idő, majd próbálja megismételni a műveletet.                                 |
 | 702       | OMSInvalidProjectKey           | A megadott projektkulcs érvénytelen.                                                | A megadott projektkulcs érvénytelen.                                                                        | Próbálja megismételni a műveletet a megfelelő projektkulccsal.                                                                                              |
 | 703       | OMSHttpRequestException        | Hiba történt a kérés küldése. Üzenet: % Message;                                | Ellenőrizze a projekt azonosítóját és kulcsát, és győződjön meg arról, hogy a végpont elérhető.                                       | Próbálja megismételni a műveletet. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához.                                                                     |
-| 704       | OMSHttpRequestTimeoutException | HTTP-kérés túllépte az időkorlátot. Üzenet: % Message;                                     | Ellenőrizze, hogy a projektazonosító és -kulcs helyes-e, és győződjön meg róla, hogy a végpont olvasható.                                       | Próbálja megismételni a műveletet. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához.                                                                     |
+| 704       | OMSHttpRequestTimeoutException | HTTP-kérés túllépte az időkorlátot. Üzenet: % Message;                                     | Ellenőrizze a projekt azonosítóját és kulcsát, és győződjön meg arról, hogy a végpont elérhető.                                       | Próbálja megismételni a műveletet. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához.                                                                     |

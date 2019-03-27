@@ -79,21 +79,6 @@ items:
       - name: HDInsight-alkalmazások közzététele az Azure Marketplace-en
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: Közzétett alkalmazás telepítése – Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: Közzétett alkalmazás telepítése – Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: Közzétett alkalmazás telepítése – Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: Közzétett alkalmazás telepítése – H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: Közzétett alkalmazás telepítése – Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: Biztonságos
     items:
     - name: SSH használata a HDInsighttal
@@ -231,9 +216,6 @@ items:
       - name: Apache Hive-beállítások a Nincs elég memória hiba javításához
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Apache Ambari Views használata az Apache TEZ-feladatok hibakereséséhez
-        href: ../hdinsight-debug-ambari-tez-view.md
-        maintainContext: true
       - name: Apache Hive-lekérdezések optimalizálása
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
@@ -303,33 +285,6 @@ items:
     - name: .NET–megoldások áttelepítése Linux-fürtökre
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Apache Hadoop MapReduce-minták futtatása
-      href: ../hdinsight-run-samples.md
-      maintainContext: true
-    - name: Az Apache Giraph használata nagyméretű gráfok feldolgozásához
-      href: ../hdinsight-hadoop-giraph-install.md
-      maintainContext: true
-    - name: Az Apache Oozie használata a munkafolyamatokhoz
-      href: ../hdinsight-use-oozie.md
-      maintainContext: true
-    - name: Apache Storm-topológiák üzembe helyezése és kezelése
-      href: ../storm/apache-storm-deploy-monitor-topology.md
-      maintainContext: true
-    - name: Az Apache Maven használata Java-alkalmazások létrehozásához
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Apache Hadoop YARN-alkalmazásnaplók elérése
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: Filmajánlók létrehozása az Apache Mahout használatával
-      href: ../hdinsight-mahout.md
-      maintainContext: true
-    - name: Szkriptműveletek fejlesztése
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Fürtök figyelése az Apache Ambari API-val
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: További források
   items:
   - name: Kibocsátási megjegyzések
@@ -352,9 +307,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: e00619810711e0a27c2c49224e96818e7d184d1f
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 39bc984d593f9026a3f6db85da8b8d1b80038335
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360024"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444419"

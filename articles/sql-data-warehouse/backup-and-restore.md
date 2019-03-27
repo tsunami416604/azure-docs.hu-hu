@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8faeb06987577d7e0098e3b5047cdde91b1254ae
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 55874d261ac453d559975f25b2272319cdc6a7db
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315231"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448010"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 
@@ -44,7 +44,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ez a funkció lehetővé teszi az adatraktár visszaállítási pontok létrehozása előtt és után a módosítások nagy manuális eseményindító pillanatképeket. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztens, amely további védelmet biztosít bármilyen számítási feladat megszakítások vagy felhasználói hibák esetén a gyors helyreállítási idő. Felhasználó által definiált visszaállítási pontok érhetők el hét napja, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési időtartama nem módosítható. **felhasználó által definiált 42 visszaállítási pontok** garantáltan bármikor időben kell lenniük, [törölt](https://go.microsoft.com/fwlink/?linkid=875299) egy másik létrehozása előtt visszaállítási pont. A pillanatképek révén a felhasználó által definiált visszaállítási pontok létrehozása is beállíthat [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) vagy az Azure Portalon.
+Ez a funkció lehetővé teszi az adatraktár visszaállítási pontok létrehozása előtt és után a módosítások nagy manuális eseményindító pillanatképeket. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztens, amely további védelmet biztosít bármilyen számítási feladat megszakítások vagy felhasználói hibák esetén a gyors helyreállítási idő. Felhasználó által definiált visszaállítási pontok érhetők el hét napja, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési időtartama nem módosítható. **felhasználó által definiált 42 visszaállítási pontok** garantáltan bármikor időben kell lenniük, [törölt](https://go.microsoft.com/fwlink/?linkid=875299) egy másik létrehozása előtt visszaállítási pont. A pillanatképek révén a felhasználó által definiált visszaállítási pontok létrehozása is beállíthat [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint#examples) vagy az Azure Portalon.
 
 > [!NOTE]
 > Ha a 7 napnál hosszabb visszaállítási pontok van szüksége, adjon szavazzon ezt a képességet [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Is hozzon létre egy felhasználói visszaállítási pont és az újonnan létrehozott visszaállításipont visszaállítása egy új data warehouse-bA. Miután visszaállította, az adatraktár online rendelkezik, és akár szüneteltetheti is, hogy határozatlan ideig számítási költségeit. A szüneteltetett adatbázis tárolási díjak pedig az Azure Premium Storage tekintetében. Ha egy aktív másolata, a visszaállított adatraktár van szüksége, folytathatja, amelynek csak néhány percet vehet igénybe.

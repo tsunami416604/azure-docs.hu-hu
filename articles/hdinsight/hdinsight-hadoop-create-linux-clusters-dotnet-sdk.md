@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 52f67d21c3a130df4d85c220baca9c6af8eb06c1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0106063cfe376f31040b5dcd6856282ee09ae5c9
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793478"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447952"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
 
@@ -396,5 +396,5 @@ Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő segíts�
 * [Az Apache Hive-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
 * [Az Apache Pig-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
 * [Az Apache Sqoop-feladatok futtatása a HDInsight .NET SDK használatával](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
-* [A HDInsight Apache Oozie-feladatok futtatása](hdinsight-use-oozie.md)
+* [A HDInsight Apache Oozie-feladatok futtatása](hdinsight-use-oozie-linux-mac.md)
 

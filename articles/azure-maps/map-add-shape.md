@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3023d5d4010108d46424bba284029b58f5fd279c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658742"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497244"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása a térkép
 
@@ -119,7 +119,7 @@ A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/at
 A maps hozzá további kódot példák a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
-> [Egyéni HTML hozzáadása](./map-add-custom-html.md)
+> [HTML Markers](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Keresési eredmények megjelenítése](./map-search-location.md)
+> [Egy megadott hőtérképrészlet térképréteg hozzáadása](./map-add-heat-map-layer.md)

@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04108c4b5a8ce04b971a0529393ea442cb1cf226
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113333"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480123"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Egy értesítési központ, az Azure Portalon a leküldéses értesítések beállítása
 
@@ -29,7 +29,7 @@ Ha még nem hozott létre egy értesítési központ, hozzon létre egyet. Tová
 
 Fel az Apple Push Notification Service (APNS) beállítása:
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Apple (APNS)**.
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Apple (APNS)** a bal oldali menüből.
 
 1. A **hitelesítési mód**, ezek közül bármelyikre **tanúsítvány** vagy **Token**.
 
@@ -42,7 +42,7 @@ Fel az Apple Push Notification Service (APNS) beállítása:
 
    b. Ha **Token**:
 
-   * Adja meg a **kulcsazonosító**, **Alkalmazásköteg-azonosító**, **Csapatazonosító**, és **Token**.
+   * Adja meg a **Kulcsazonosító**, **Alkalmazásköteg-azonosító**, **Csapatazonosító**, és **Token**.
    * Válassza a **Védőfal** módot. Vagy a leküldéses értesítések küldéséhez felhasználók, akik megvásárolták az alkalmazást az áruházból, válassza ki a **éles** mód.
 
      ![Képernyőkép az APN szolgáltatás jogkivonat-konfiguráció az Azure Portalon](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
@@ -53,7 +53,7 @@ További információkért lásd: [leküldéses értesítések iOS-re az Azure N
 
 To set up push notifications for Google Firebase Cloud Messaging (FCM):
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Google (GCM/FCM)**. 
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Google (GCM/FCM)** a bal oldali menüből. 
 2. Illessze be a **API-kulcs** a korábban mentett FCM-projekt. 
 3. Kattintson a **Mentés** gombra. 
 
@@ -67,7 +67,7 @@ További információkért lásd: [leküldéses értesítések küldése Android
 
 Fel Windows leküldéses értesítési szolgáltatásának (WNS) beállítása:
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Windows (WNS)**.
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Windows (WNS)** a bal oldali menüből.
 2. Adjon meg értéket a **csomag biztonsági azonosítója** és **biztonsági kulcs**.
 3. Kattintson a **Mentés** gombra.
 
@@ -79,7 +79,7 @@ További információ: [küldhetők értesítések UWP-alkalmazásokba az Azure 
 
 A Windows Phone állítsa be a Microsoft leküldéses értesítési szolgáltatásának (MPNS): 
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Windows Phone (MPNS)**.
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Windows Phone (MPNS)** a bal oldali menüből.
 1. Vagy nem hitelesített vagy hitelesített leküldéses értesítések engedélyezése:
 
    a. Nem hitelesített leküldéses értesítések engedélyezéséhez jelölje be **nem hitelesített leküldés engedélyezése** > **mentése**.
@@ -99,7 +99,7 @@ További információkért lásd: [leküldéses értesítések Windows Phone-alk
 
 Leküldéses értesítések az Amazon Device Messaging (ADM) beállítása:
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Amazon (ADM)**.
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Amazon (ADM)** a bal oldali menüből.
 2. Adjon meg értéket a **ügyfél-azonosító** és **titkos Ügyfélkód**.
 3. Kattintson a **Mentés** gombra.
     
@@ -111,7 +111,7 @@ További információkért lásd: [Notification Hubs használatának első lép�
 
 Baidu leküldéses értesítések beállítása:
 
-1. Az Azure Portalon az a **értesítési központ**válassza **Baidu (Android China)**. 
+1. Az Azure Portalon az a **értesítési központ** lapon jelölje be **Baidu (Android China)** a bal oldali menüből. 
 2. Adja meg a **Api-kulcs** a Baidu felhőalapú leküldéses projekt Baidu-konzoljában beszerzett. 
 3. Adja meg a **titkos kulcs** a Baidu felhőalapú leküldéses projekt Baidu-konzoljában beszerzett. 
 4. Kattintson a **Mentés** gombra. 

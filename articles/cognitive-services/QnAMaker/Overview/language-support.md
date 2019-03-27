@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 820a9ae0df91fba8cf00764428867bec6196841a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335861"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497686"
 ---
 # <a name="language-support-for-qna-maker"></a>A QnA Maker nyelvi támogatás
 
@@ -37,7 +37,7 @@ A QnA Maker kérdés-válasz kinyerési támogatja a tetszőleges nyelven lapon,
 
 A QnA Maker erőforrás- és az első dokumentum vagy URL-cím hozzáadódik az első Tudásbázis létrehozásakor az erőforráson, az összes tudásbázisok észleléséhez használt elsődleges nyelv van beállítva. A nyelvet nem lehet módosítani. 
 
-Ha a felhasználó több nyelv támogatása tervek, kell rendelkezniük nekik a QnA Maker új erőforrást az egyes nyelvekhez. Ismerje meg, hogyan [nyelven alapuló QnA Maker Tudásbázis létrehozása](/how-to/language-knowledge-base.md).  
+Ha a felhasználó több nyelv támogatása tervek, kell rendelkezniük nekik a QnA Maker új erőforrást az egyes nyelvekhez. Ismerje meg, hogyan [nyelven alapuló QnA Maker Tudásbázis létrehozása](../how-to/language-knowledge-base.md).  
 
 Ellenőrizze az alábbi lépéseket követve elsődleges nyelve:
 

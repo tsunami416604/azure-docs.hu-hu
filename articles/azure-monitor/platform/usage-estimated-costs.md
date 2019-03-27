@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 1ae35c30e0379ed7a0f1fac16c279651e3bcd8fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315877"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480542"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
 
@@ -138,7 +138,7 @@ isGrandFatherableSubscription optedInDate
 
 Ez az előfizetés áttelepítése az új díjszabási modellre, futtassa:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -149,7 +149,7 @@ Invoke-AzResourceAction `
 
 Ellenőrizze, hogy a módosítás volt sikeres újrafuttatása:
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -170,7 +170,7 @@ A optInDate az időbélyeg, ha ez az előfizetés kérte, hogy az új díjszabá
 
 Ha szeretne visszatérni a régi díjszabási modell, futtatná:
 
-```PowerShell
+```powershell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -183,7 +183,7 @@ Ha az előző parancsfájlt, amely rendelkezik majd Újrafuttatja ``-Action list
 
 Ha több előfizetéssel rendelkezik, hogy migrálni szeretne a ugyanazt bérlőhöz üzemelnek, amely létrehozhatja a saját variant megtalálhatja az alábbi parancsfájlok használatával:
 
-```PowerShell
+```powershell
 #Query tenant and create an array comprised of all of your tenants subscription ids
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
@@ -192,7 +192,7 @@ $Subscriptions = $Tenant.Id
 
 Ellenőrizze, hogy ha a bérlő összes előfizetés jogosultak az új díjszabási modellben, futtathatja:
 
-```PowerShell
+```powershell
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
@@ -206,7 +206,7 @@ Invoke-AzResourceAction `
 
 Lehet, hogy a parancsfájl finomított további hozzon létre egy parancsfájlt, amely három tömbök állít elő. Egy tömb áll, amely az összes előfizetés-azonosító a rendelkező ```isGrandFatherableSubscription``` igaz értékre van állítva, és optedInDate jelenleg nem rendelkezik értékkel. Olyan előfizetéseket, jelenleg az új díjszabási modellben a második tömbje. És a egy harmadik tömb csak az előfizetés azonosítókat a bérlő nem jogosultak az új díjszabási modell használatával:
 
-```PowerShell
+```powershell
 [System.Collections.ArrayList]$Eligible= @{}
 [System.Collections.ArrayList]$NewPricingEnabled = @{}
 [System.Collections.ArrayList]$NotEligible = @{}
@@ -242,7 +242,7 @@ $Result= Invoke-AzResourceAction `
 
 Most, hogy az előfizetések, a három tömbök osztható meg alaposan tekintse át az eredményeket. Érdemes lehet, hogy készítsen biztonsági másolatot a tömbök a tartalmát, így könnyen visszaállíthatja a módosításokat a későbbiekben vissza kívánja. Ha úgy dönt, szeretett volna a jogosult előfizetéseket, amelyek a rendszer jelenleg a régi díjszabási modell az új díjszabási modell Ez a feladat most elvégezhető az átalakítás:
 
-```PowerShell
+```powershell
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"

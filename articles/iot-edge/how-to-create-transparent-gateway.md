@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c769ae8e684a94e60f6a2e31ba404a0593f7aa78
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096707"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482946"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -71,7 +71,7 @@ OpenSSL for Windows telepítése a gépen, amely a tanúsítványok létrehozás
    
    2. A powershell parancssorba vcpkg telepítése után a következő parancsot az OpenSSL csomagot telepítse a Windows x64. A telepítés általában befejezéséhez körülbelül 5 percet vesz igénybe.
 
-      ```PowerShell
+      ```powershell
       .\vcpkg install openssl:x64-windows
       ```
    3. Adjon hozzá `<VCPKGDIR>\installed\x64-windows\tools\openssl` útját a PATH környezeti változóba, hogy a openssl.exe fájl elindításaihoz érhető el.
@@ -84,7 +84,7 @@ A c nyelvhez készült Azure IoT eszközoldali SDK-t tartalmaz parancsprogramoka
 
 2. Klónozza a git-adattár, amely nem éles tanúsítványainak létrehozásához szükséges parancsfájlokat tartalmazza. Ezek a parancsfájlok segítségével hozhat létre a szükséges tanúsítványok beállítása a transzparens átjáró. Használja a `git clone` parancs vagy [töltse le a zip-fájl](https://github.com/Azure/azure-iot-sdk-c/archive/master.zip). 
 
-   ```PowerShell
+   ```powershell
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
@@ -92,7 +92,7 @@ A c nyelvhez készült Azure IoT eszközoldali SDK-t tartalmaz parancsprogramoka
 
 4. Másolja a konfigurációs és a parancsfájl a munkakönyvtárban. 
 
-   ```PowerShell
+   ```powershell
    copy <path>\azure-iot-sdk-c\tools\CACertificates\*.cnf .
    copy <path>\azure-iot-sdk-c\tools\CACertificates\ca-certs.ps1 .
    ```
@@ -101,25 +101,25 @@ A c nyelvhez készült Azure IoT eszközoldali SDK-t tartalmaz parancsprogramoka
 
 5. Állítsa be a környezeti változó OPENSSL_CONF használhat a openssl_root_ca.cnf konfigurációs fájlt.
 
-    ```PowerShell
+    ```powershell
     $env:OPENSSL_CONF = "$PWD\openssl_root_ca.cnf"
     ```
 
 6. Engedélyezze a PowerShell a parancsprogramok futtatásához.
 
-   ```PowerShell
+   ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
 7. A PowerShell a globális névtérhez a parancsfájlok által használt funkciók használata.
    
-   ```PowerShell
+   ```powershell
    . .\ca-certs.ps1
    ```
 
 8. Győződjön meg arról, hogy OpenSSL megfelelően telepítve, és ellenőrizze, hogy nem jár együtt név ütközések a meglévő tanúsítványok. Ha probléma adódik, a parancsfájl kell azt ismertetik, hogyan javíthatók a rendszeren.
 
-   ```PowerShell
+   ```powershell
    Test-CACertsPrerequisites
    ```
 
@@ -129,19 +129,19 @@ Ebben a szakaszban három tanúsítványokat hoznak létre, és csatlakoztassa �
 
 1. Hozza létre a tulajdonos Hitelesítésszolgáltatói tanúsítványt és annak egy közbenső tanúsítvány aláírása. A tanúsítványok összes kerülnek  *\<WRKDIR >*.
 
-      ```PowerShell
+      ```powershell
       New-CACertsCertChain rsa
       ```
 
 2. A peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványok és titkos kulcs létrehozása a következő paranccsal. Adjon meg egy nevet, az átjáró eszköz, amelyet használhat a fájlokat, és a tanúsítvány létrehozása során. 
 
-   ```PowerShell
+   ```powershell
    New-CACertsEdgeDevice "<gateway name>"
    ```
 
 3. A Hitelesítésszolgáltatói tanúsítvány tulajdonosa, a köztes tanúsítványt és a peremhálózati eszköz Hitelesítésszolgáltatói tanúsítvány a következő paranccsal hozzon létre egy tanúsítványláncra. 
 
-   ```PowerShell
+   ```powershell
    Write-CACertsCertificatesForEdgeDevice "<gateway name>"
    ```
 

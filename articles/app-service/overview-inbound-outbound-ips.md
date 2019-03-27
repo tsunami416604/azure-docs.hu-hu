@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 56ca87f318aa5f1843a3b28480be834df1669c71
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811009"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480804"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek az Azure App Service-ben
 
@@ -45,11 +45,11 @@ Horizontálisan felskálázott példányok számától függetlenül minden alka
 
 A készletet, kimenő IP-címek esetében az alkalmazás szükségleteinek változásával az alacsonyabb rétegek közötti az alkalmazás horizontális (**alapszintű**, **Standard**, és **prémium**) és a  **A prémium V2** szint.
 
-Megtalálhatja az összes lehetséges kimenő IP-címet az alkalmazás használhatja, függetlenül tarifacsomagok felismerésével készletét a `possibleOutboundIPAddresses` tulajdonság. Lásd: [keresse meg a kimenő IP-címek](#find-outbound-ips).
+Megtalálhatja az összes lehetséges kimenő IP-címet az alkalmazás használhatja, függetlenül tarifacsomagok felismerésével készletét a `possibleOutboundIPAddresses` tulajdonság vagy a **további kimenő IP-címek** mezőbe a **tulajdonságai**  panel az Azure Portalon. Lásd: [keresse meg a kimenő IP-címek](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Kimenő IP-címek keresése
 
-Az alkalmazás az Azure Portal által jelenleg használt kimenő IP-címek megkereséséhez kattintson **tulajdonságok** az alkalmazás bal oldali navigációs panelen. 
+Az alkalmazás az Azure Portal által jelenleg használt kimenő IP-címek megkereséséhez kattintson **tulajdonságok** az alkalmazás bal oldali navigációs panelen. Szerepelnek a **kimenő IP-címek** mező.
 
 Ugyanazokat az információkat talál a következő parancs futtatásával a [Cloud Shell](../cloud-shell/quickstart.md).
 
@@ -61,7 +61,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Található összes lehetséges kimenő IP-címeket az alkalmazás tarifacsomagjaival, függetlenül a következő parancsot a [Cloud Shell](../cloud-shell/quickstart.md).
+Található _összes_ lehetséges kimenő IP-címeket az alkalmazás tarifacsomagjaival, függetlenül kattintson **tulajdonságok** az alkalmazás bal oldali navigációs panelen. Szerepelnek a **további kimenő IP-címek** mező.
+
+Ugyanazokat az információkat talál a következő parancs futtatásával a [Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv

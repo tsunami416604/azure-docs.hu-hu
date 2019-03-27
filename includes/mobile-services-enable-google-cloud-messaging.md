@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836523"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488042"
 ---
 1. Lépjen be a [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) (Google felhőkonzol) felületére, és jelentkezzen be Google-fiókja hitelesítő adataival. 
 2. Kattintson az eszköztár **Create Project** (Projekt létrehozása) gombjára. 
    
     ![Új projekt létrehozása](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. A **Project name** (Projekt neve) mezőben adja meg a projektje nevét, majd kattintson a **Create** (Létrehozás) gombra.
-4. Válassza az eszköztáron az **Alerts** (Értesítések) gombot, majd válassza ki a projektjét a listából. Ekkor megjelenik a projektje irányítópultja. Az irányítópultot közvetlenül is elérheti a következő URL használatával: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+4. Válassza az eszköztáron az **Alerts** (Értesítések) gombot, majd válassza ki a projektjét a listából. Ekkor megjelenik a projektje irányítópultja. Ön is elérheti közvetlenül az irányítópulton az URL-cím használatával: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![Projekt kiválasztása az értesítéseknél](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. Jegyezze az irányítópult **Project info** (Projektadatok) csempéjén a **Project info** (Projektinformáció) tulajdonság értékét. 
@@ -51,5 +51,5 @@ ms.locfileid: "33836523"
 
     ![API-kulcs másolása](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében. A projekt irányítópultjára való visszatéréshez használja ezt az URL-t: https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+    Ezt az API-kulcs-értéket fogja használni, hogy engedélyezze az Azure-nak a GCM-mel való hitelesítést, és hogy leküldéses értesítéseket küldjön az alkalmazása nevében. Lépjen vissza a projekt irányítópultján, használja az URL-cím: `https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

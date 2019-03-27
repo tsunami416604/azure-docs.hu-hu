@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dd89d9645d2054f301ed999121fefc417ea5c6fa
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6a69d8d60b2e588ded9ccca20521195ae11ff136
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293906"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449423"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -45,9 +45,9 @@ Egy későbbi horizontális felskálázási művelet végrehajtása, ha példáu
 
 * Szinkronizálás engedélyezett, akkor is, ha nincs a replikákat a lekérdezési készletben. Egy vagy több replikát az új adatokat az elsődleges kiszolgálón egy feldolgozási műveletből nulláról is kiterjesztése, ha a replika. a lekérdezési készlet először hajtsa végre a szinkronizálást, és majd horizontális felskálázás. Redundáns hidratálási az újonnan hozzáadott replikák szinkronizálása előtt horizontális felskálázás elkerülhető.
 
-* Amikor egy modell adatbázis törlésével az elsődleges kiszolgálóról, akkor nem automatikusan törlődnek a replikákat a lekérdezési készlet. El kell végeznie egy szinkronizálási művelet, amely a fájl/s az adatbázishoz tartozó távolít el a replika megosztott blob tárolási helyét, és ezután törli a modelladatbázisnál, a lekérdezési készlet a replikákon.
+* Amikor egy modell adatbázis törlésével az elsődleges kiszolgálóról, akkor nem automatikusan törlődnek a replikákat a lekérdezési készlet. Egy szinkronizálási művelet használatával kell végrehajtania a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell-paranccsal, amely a fájl/s az adatbázishoz tartozó távolít el a replika megosztott blob tárolási helyét, és ezután törli a modell az adatbázis a lekérdezési készlet a replikákon.
 
-* Amikor az elsődleges kiszolgálón egy adatbázis átnevezése, van egy további lépés szükséges az adatbázis megfelelően szinkronizálva a replikákat. Után átnevezése, hajtsa végre a szinkronizálást, adja meg a `-Database` paraméter a régi adatbázis nevével. A szinkronizálás replikákat eltávolítja az adatbázis és a fájlok a régi nevére. Hajtsa végre egy másik szinkronizálási megadása a `-Database` paramétert az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlokat a második csoporton és hydrates esetleges replikákat. Ezek a szinkronizálások nem hajtható végre, a portálon a szinkronizálás modell parancs használatával.
+* Amikor az elsődleges kiszolgálón egy adatbázis átnevezése, van egy további lépés szükséges az adatbázis megfelelően szinkronizálva a replikákat. Átnevezése, után hajtsa végre a szinkronizálást a használatával a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) parancs megadásával a `-Database` paraméter a régi adatbázis nevével. A szinkronizálás replikákat eltávolítja az adatbázis és a fájlok a régi nevére. Hajtsa végre egy másik szinkronizálási megadása a `-Database` paramétert az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlokat a második csoporton és hydrates esetleges replikákat. Ezek a szinkronizálások nem hajtható végre, a portálon a szinkronizálás modell parancs használatával.
 
 ### <a name="separate-processing-from-query-pool"></a>A lekérdezési készletből külön feldolgozása
 
@@ -103,6 +103,20 @@ Használja a **szinkronizálási** műveletet.
 
 `GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
+Állapotkódok adja vissza:
+
+
+|Kód  |Leírás  |
+|---------|---------|
+|-1     |  Érvénytelen       |
+|0     | Replikáció folyamatban        |
+|1     |  Rehidratálása       |
+|2     |   Befejezve       |
+|3     |   Meghiúsult      |
+|4     |    Véglegesítés     |
+|||
+
+
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -112,6 +126,8 @@ PowerShell-lel, mielőtt [telepítése vagy frissítése a legújabb Azure Power
 Szinkronizálási futtatásához használja [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 Lekérdezési replikák száma beállításához használja [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Adja meg a választható `-ReadonlyReplicaCount` paraméter.
+
+A feldolgozó kiszolgáló, a lekérdezési készletből elkülönítése, használja a [Set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Adja meg a választható `-DefaultConnectionMode` használni kívánt paramétert `Readonly`.
 
 ## <a name="connections"></a>Kapcsolatok
 

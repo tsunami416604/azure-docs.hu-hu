@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855455"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482963"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Nagyméretű HANA-példányokhoz tartozó támogatott esetek
 Ez a dokumentum ismerteti a támogatott forgatókönyveket az architektúra részleteivel együtt a HANA nagyméretű példányok (HLI) számára.
@@ -68,10 +68,10 @@ Minden üzembe helyezett kiszolgáló előre konfigurálva, az ethernet-illeszt�
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | A csomópontot a csomópont |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | A csomópontot a csomópont |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | STONITH |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | A csomópontot a csomópont |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | STONITH |
 
 Használhatja a felületek, a konfigurált a HLI egységen topológia alapján. Ha például a "B" felületen van beállítva csomópontok közötti kommunikáció, amely akkor hasznos, ha egy kibővített topológia konfigurálva van. Egyetlen csomópont vertikális felskálázás konfigurálása esetén ez az interfész nem használatos. A felület használatával kapcsolatos további információért tekintse át a szükséges forgatókönyveket (a dokumentum későbbi). 
 
@@ -101,7 +101,7 @@ HANA-Rendszerreplikálást vagy kibővített HANA üzembe helyezési esetben egy
 Storage a kért topológia alapján előre konfigurált. A kiszolgálók, az SKU-k és a konfigurált topológia számát a kötet mérete és a csatlakoztatási pont megoldástól. További információért tekintse át a szükséges forgatókönyveket (a dokumentum későbbi). Ha további tárhelyre szükség, a több TB-os növekmény is vásárolhat.
 
 >[!NOTE]
->A csatlakoztatási pont usr/sap/ <SID> /hana/megosztott csatlakoztatási pont mutató szimbolikus hivatkozás.
+>A csatlakoztatási pontusr/sap/\<SID >/hana/megosztott csatlakoztatási pont mutató szimbolikus hivatkozás.
 
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
@@ -142,10 +142,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -177,10 +177,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -217,10 +217,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -258,10 +258,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -312,10 +312,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH használt |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | STONITH használt |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | STONITH használt |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -360,10 +360,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Konfigurálva, de nincs használatban |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | STONITH használt |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | STONITH használt |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Konfigurálva, de nincs használatban |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | STONITH használt |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -419,10 +419,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -460,10 +460,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -496,10 +496,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:
@@ -535,10 +535,10 @@ A következő hálózati adapterek előre:
 | B | I. TÍPUS | eth2.tenant | eno3.tenant | Csomópont és csomópont közötti kommunikációhoz |
 | C | I. TÍPUS | eth1.tenant | eno2.tenant | A storage csomópont |
 | D | I. TÍPUS | eth4.tenant | eno4.tenant | Konfigurálva, de nincs használatban |
-| A | II. TÍPUSÚ | vlan<tenantNo> | team0.tenant | Ügyfél HLI |
-| B | II. TÍPUSÚ | VLAN < tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
-| C | II. TÍPUSÚ | VLAN < tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
-| D | II. TÍPUSÚ | VLAN < tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
+| A | II. TÍPUSÚ | VLAN\<tenantNo > | team0.tenant | Ügyfél HLI |
+| B | II. TÍPUSÚ | VLAN\<tenantNo + 2 > | team0.tenant+2 | Csomópont és csomópont közötti kommunikációhoz |
+| C | II. TÍPUSÚ | VLAN\<tenantNo + 1 > | team0.tenant+1 | A storage csomópont |
+| D | II. TÍPUSÚ | VLAN\<tenantNo + 3 > | team0.tenant+3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
 A következő csatlakozási pontok le előre:

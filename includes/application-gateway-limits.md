@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 77a391cc661ed33f5888d2b18cb9c5db16498cd6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553753"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494969"
 ---
 | Erőforrás | Alapértelmezett korlát | Megjegyzés |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ ms.locfileid: "57553753"
 | URL-címleképezések száma figyelő |1 | |
 | URL-cím maximális-alapú szabályt leképezése|100||
 | Az átirányítási konfigurációk |100<sup>1</sup>| |
-| WebSocket egyidejű kapcsolat |5000| |
+| WebSocket egyidejű kapcsolat |Medium gateways 20k<br> Nagy átjárók 50k| |
 | URL-cím maximális hossza|8,000||
 | Maximális fájlfeltöltési méretet, Standard |2 GB | |
 | Maximális feltöltési méretének WAF |Közepes WAF átjárók, 100 MB-ra<br>Nagy WAF átjárók, 500 MB-tal| |

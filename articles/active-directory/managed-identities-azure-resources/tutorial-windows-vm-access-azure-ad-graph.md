@@ -3,7 +3,7 @@ title: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által ho
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure AD Graph API-hoz egy Windows rendszerű virtuális gép rendszer által hozzárendelt felügyelt identitásával.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 49b0d9e4fad61195118c92c047340f2cd4d9e20f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890096"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480685"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
@@ -85,7 +85,7 @@ A lehetőség használatához szüksége lesz Azure AD PowerShellre. Ha nincs te
    ```
    Egy adott Azure Active Directory csatlakozni, használja a _TenantId_ paramétert a következők szerint:
 
-   ```PowerShell
+   ```powershell
    Connect-AzureAD -TenantId "Object Id of the tenant"
    ```
 

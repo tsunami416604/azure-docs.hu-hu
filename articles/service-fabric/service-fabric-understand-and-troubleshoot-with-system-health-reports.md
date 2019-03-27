@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d62fd909d10515c9217a4dd0aa760afa376b8d7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9b3ba8d216f3e82c9aff7f2b49b9c24115b32f2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838901"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487906"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevőket meg rendszerállapot-jelentéseket a lehetőségeiből közvetlenül a fürtön lévő összes entitáshoz. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli az entitásokat a rendszer jelentések alapján. Azt is rendezi őket a hierarchiában, amely entitás interakciót rögzíti.
@@ -84,7 +84,7 @@ System.FM jelentések OK, amikor a csomópont csatlakozik a gyűrű (azt a már 
 
 Az alábbi példa bemutatja a csomópont állapota OK állapotú System.FM esemény:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
 
 NodeName              : _Node_0
@@ -137,7 +137,7 @@ System.CM kiderítheti OK gombra az alkalmazás létrehozásakor vagy frissíté
 
 Az alábbi példa bemutatja az állapot esemény a a **fabric: / WordCount** alkalmazás:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
 
 ApplicationName                 : fabric:/WordCount
@@ -169,7 +169,7 @@ System.FM kiderítheti OK gombra a szolgáltatás létrehozásakor. Az entitás 
 
 Az alábbi példa bemutatja az állapot eseményt a szolgáltatás **fabric: / WordCount/WordCountWebService**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
 
@@ -224,7 +224,7 @@ Az alábbi példák egyes ezeket a jelentéseket ismertetik.
 
 Az alábbi példa bemutatja egy megfelelő partíció:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
 
 PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
@@ -246,7 +246,7 @@ HealthEvents          :
 
 Az alábbi példa bemutatja egy partíció, amely alatt a cél replika száma állapotát. A következő lépés, hogy a partíció leírást, amely bemutatja, hogyan van konfigurálva kap: **MinReplicaSetSize** három és **TargetReplicaSetSize** hét. A fürtben, amely ebben az esetben az öt kérje le a csomópontok számát. Tehát ebben az esetben két replika nem helyezhető, mert a cél replikák száma nagyobb, mint a rendelkezésre álló csomópontok száma.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
 
@@ -324,7 +324,7 @@ PS C:\> @(Get-ServiceFabricNode).Count
 
 Az alábbi példa bemutatja egy partíciót, amely elakadt állapotát az újrakonfigurálás miatt nem érvényesítenie a megszakítás a felhasználó a token a **RunAsync** metódust. Az állapotjelentés bármely megjelölt az elsődleges replika (P) kivizsgálása segítségével részletes le további, a probléma.
 
-```PowerShell
+```powershell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
 
 
@@ -388,7 +388,7 @@ System.RA jelentések OK, a replika létrehozása után.
 
 Az alábbi példa bemutatja a kifogástalan állapotú replika:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -419,7 +419,7 @@ Figyelmeztetések egészség művelet helyileg bizonyos számú alkalommal (füg
 
 Az alábbi példa bemutatja egy replikát, amely szűrész állapotát `TargetInvocationException` a nyitott metódus. A leírása tartalmazza a hiba jelentkezése, **IStatefulServiceReplica.Open**, a kivétel típusát **TargetInvocationException**, és a híváslánc.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
 
@@ -470,7 +470,7 @@ Exception has been thrown by the target of an invocation.
 
 Az alábbi példa bemutatja egy replikát, folyamatosan összeomló bezárása során:
 
-```PowerShell
+```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
 
@@ -515,7 +515,7 @@ Bizonyos ritkán előforduló esetekben az újrakonfigurálás is elakadt miatt 
 
 Az alábbi példa bemutatja egy jelentés, ahol a helyi replika egy újrakonfigurálás elakadt. Ebben a példában, van egy szolgáltatás miatt nem érvényesítenie a megszakítás jogkivonatot.
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
 
@@ -601,7 +601,7 @@ Az újrakonfigurálás tiltásának feloldása:
 
 Az alábbi példa bemutatja az egészségügyi esemény System.RAP a egy megbízható szolgáltatás, amely nem kell érvényesítenie a megszakítás tokent **RunAsync**:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
 
@@ -679,7 +679,7 @@ Egy elnevezési művelet a vártnál több időt vesz igénybe, ha a művelet a 
 
 Az alábbi példa bemutatja a szolgáltatás létrehozási művelet. A művelet a megadott időtartamnál hosszabb időt vett igénybe. "AO" újrapróbálkozik, és elküldi a munka a "nem". "Nem" befejezni az utolsó művelet időkorlát. Ebben az esetben a azonos replika nem elsődleges, a "AO" és "Nem" szerepköröket.
 
-```PowerShell
+```powershell
 PartitionId           : 00000000-0000-0000-0000-000000001000
 ReplicaId             : 131064359253133577
 AggregatedHealthState : Warning
@@ -736,7 +736,7 @@ System.Hosting kiderítheti OK gombra, ha egy alkalmazás aktiválása megtört�
 
 Az alábbi példa bemutatja egy sikeres aktiválás:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
 
 ApplicationName                    : fabric:/WordCount
@@ -793,7 +793,7 @@ System.Hosting jelentések OK, ha a szolgáltatás típusának regisztrálása s
 
 Az alábbi példa bemutatja egy megfelelő telepített szervizcsomag:
 
-```PowerShell
+```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
 

@@ -8,20 +8,15 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310902"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497754"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](../../azure-monitor/platform/activity-logs-overview.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
-
-> [!WARNING]
-> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) , amelyhez a Tevékenységnaplót archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválása a diagnosztikai naplók és mérőszámok egy tárfiókba, célszerű a storage-fiókját a tevékenységnapló használatával az összes monitorozási adat ne egy központi helyen felhasználójának. A storage-fiók nem rendelkezik a mindaddig, amíg a beállítást konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik a naplókat kibocsátó előfizetésnek az azonos előfizetésben kell.
@@ -65,7 +60,7 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 | --- | --- | --- |
 | StorageAccountId |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
 | Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzLocation).Location`. |
-| RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
+| RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
 | Kategóriák |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI-n keresztül a tevékenységnapló archiválása
@@ -79,7 +74,7 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 | név |Igen |A napló-profil neve. |
 | storage-account-id |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
 | helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő szóközzel elválasztott listáját. Megtekintheti összes régiók listáját az előfizetéshez a `az account list-locations --query [].name`. |
-| nap |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
+| nap |Igen |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen).  Ha nulla, majd az engedélyezett paramétert meg kell igaz értékre. |
 |engedélyezve | Igen |IGAZ vagy hamis.  Engedélyezi vagy letiltja a megtartási házirend segítségével.  Igaz értéke esetén a nap paraméter 0-nál nagyobb számnak kell lennie.
 | kategóriák |Igen |Eseménykategóriák, érdemes gyűjtik szóközzel elválasztott listáját. Lehetséges értékek: írási, törlési és művelet. |
 

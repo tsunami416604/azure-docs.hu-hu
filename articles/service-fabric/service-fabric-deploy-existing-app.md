@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
-ms.openlocfilehash: 5831a21225b80e613f713a516d2f000f8b33f096
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa883f819c53f57a8e281069b2a3db1c55efc6c6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853154"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480539"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Csomagolása és üzembe helyezése egy meglévő végrehajtható fájlt a Service Fabric
 Amikor csomagolására, meglévő végrehajtható egy [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction.md), választhat egy Visual Studio-projektsablont használja, vagy [hozza létre manuálisan az alkalmazáscsomag](#manually). A Visual Studiót használja, az alkalmazás-csomag szerkezete és a jegyzékfájlok hozza létre az új webesprojekt-sablon az Ön számára.
@@ -254,7 +254,7 @@ Naplófájlok a szolgáltatás munkakönyvtárával lesznek mentve. Határozza m
 ## <a name="deployment"></a>Környezet
 Az utolsó lépés [az alkalmazás üzembe helyezéséhez](service-fabric-deploy-remove-applications.md). A következő PowerShell-parancsfájl megjeleníti az alkalmazás a helyi fejlesztési fürt üzembe helyezéséhez, és a egy új Service Fabric-szolgáltatás elindítása.
 
-```PowerShell
+```powershell
 
 Connect-ServiceFabricCluster localhost:19000
 

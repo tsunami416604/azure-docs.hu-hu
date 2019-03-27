@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 65064707374ba76701566e061b77bfd6cdf520ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1259d8f15ac719db833bef5ae37a7c2e665b2fb
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833385"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480634"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -93,37 +93,37 @@ Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létreh
 
 2. Első lépésként jelentkezzen be az Azure-előfizetéshez.
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 
 3. Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiók a bérlő azonosítója, és alapértelmezett előfizetés-azonosító jelennek meg. Az összes Azure-parancsmagjaival működik az alapértelmezett előfizetést kontextusában. Hozzáfér az előfizetések listájának megtekintéséhez használja a következő parancsot:
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 
 4. A működő környezet másik előfizetésbe való módosításához használja a következő parancsot:
 
-    ```PowerShell
+    ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. Az összes klasszikus metrikaalapú riasztási szabályok az erőforráscsoport kérheti le:
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. Megtekintheti a klasszikus a metrikaalapú riasztási szabály részletei
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. Állítsa be a célerőforrás összes riasztási szabályt kérheti le. Például állítsa be a riasztási szabályok az összes virtuális gépen.
 
-    ```PowerShell
+    ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 

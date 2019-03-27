@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890542"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481688"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  
@@ -91,7 +91,7 @@ A következő lépésekben az analytics tárolóba, amelyet üzembe **tenantanal
 2. $DemoScenario változó állítsa be a parancsfájlt a választott analytics tároló megfelelően:
     - SQL database használata nélkül oszloptár, állítsa be **$DemoScenario** = **2**
     - Az oszlop store az SQL database használatához állítsa **$DemoScenario** = **3**  
-3. Nyomja meg **F5** a bemutató-parancsfájl futtatása (amely meghívja a *üzembe helyezés – TenantAnalytics<XX>.ps1* parancsfájl) a bérlői analitikai tárolóban hoz létre, amely. 
+3. Nyomja meg **F5** a bemutató-parancsfájl futtatása (amely meghívja a *üzembe helyezés – TenantAnalytics\<XX > .ps1* parancsfájl) a bérlői analitikai tárolóban hoz létre, amely. 
 
 Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-dpt -&lt;felhasználói&gt;**  és **katalógus-dpt -&lt;felhasználói&gt;**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P\@ssword1*. Tekintse meg a [bevezető oktatóanyag](saas-dbpertenant-wingtip-app-overview.md) további útmutatást.
 
@@ -120,7 +120,7 @@ A folytatás előtt győződjön meg arról, központilag telepített a feladat-
 
 1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – dpt -&lt;felhasználói&gt;.
 2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. Módosítsa a @User változó felső részén a parancsfájlt, és cserélje le <User> a felhasználó a Wingtip SaaS-alkalmazás üzembe helyezésekor használt értékkel.
+3. Módosítsa a @User változó felső részén a parancsfájlt, és cserélje le `<User>` a felhasználó a Wingtip SaaS-alkalmazás üzembe helyezésekor használt értékkel.
 4. Nyomja meg **F5** , amely létrehozza a két célcsoportok szkript futtatásához.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Az összes bérlő nyers adatokat nyerhet ki
@@ -134,7 +134,7 @@ Minden egyes feladat kinyeri az adatokat, és közzéteszi azt az analytics-tár
 
 1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – dpt -&lt;felhasználói&gt; kiszolgáló.
 2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
-3. Módosítsa @User felső részén a parancsfájlt, és cserélje le <User> a Wingtip SaaS-alkalmazás üzembe helyezésekor használt felhasználónévvel 
+3. Módosítsa @User felső részén a parancsfájlt, és cserélje le `<User>` a Wingtip SaaS-alkalmazás üzembe helyezésekor használt felhasználónévvel 
 4. Nyomja le az F5 billentyűt a szkript létrehoz és futtatja a feladatot, amely a jegyeket, és az ügyfelek adatokat gyűjt mindegyik bérlői adatbázis futtatásához. A feladat menti az adatokat az analytics-tárolóba.
 5. A lekérdezés a TicketsRawData táblát az adatbázisban tenantanalytics, győződjön meg arról, hogy a táblázat az összes bérlő jegyek adatokkal van feltöltve.
 

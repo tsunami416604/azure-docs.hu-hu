@@ -7,15 +7,15 @@ manager: cgrounlun
 ms.service: cognitive-services
 ms.technology: anomaly-finder
 ms.topic: include
-ms.date: 11/15/2018
+ms.date: 03/21/2019
 ms.author: nitinme
 ms.custom: include file
-ms.openlocfilehash: e93b889ee3ead06c28f9fec5659a61aad2752bac
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 1dab9b0e23b5fe574f9b4506fdcad510d378bfef
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716192"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494744"
 ---
 > [!NOTE]
-> Anomáliaészlelő Private Preview verzióban van. Az Anomáliadetektálási Finder privát előzetes verzióra [lépjen kapcsolatba velünk](mailto:kenshoteam@microsoft.com). Ha hozzáférést kapnak, tekintse meg a hozzáférés ellenőrzött [Anomáliadetektálási Finder privát előzetes verziójának dokumentációja](https://aka.ms/AnomalyFinderPrivatePreview) további információt.
+> Az Anomáliadetektálási detector használatával API (nyilvános előzetes verzióban) lecseréli a Anomáliaészlelő tesztkörnyezetben. Meglévő Anomáliaészlelő labs 2019. április 30. a rendszer eltávolítja. Javasoljuk, hogy a megadott idő előtti az Anomáliadetektálási érzékelő át. Tekintse meg a [Anomáliadetektálási detector használatával API-dokumentáció](../articles/cognitive-services/anomaly-detector/index.yml) további információt. 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793036"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482800"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Egy másodlagos helyre Hyper-V-replikáció terhelésiteszt-eredményei
 
@@ -108,7 +108,7 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 
 | Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 256 rendelkezik |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 256 rendelkezik |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | VMM-kiszolgáló |2 | | |2 |1 Gbps |A Windows Server 2012 adatbázis R2 (x 64) és a VMM 2012 R2-ben |
 
 ### <a name="secondary-site"></a>Másodlagos hely
@@ -121,8 +121,8 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 | Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
 | A Hyper-V fürtben lévő kiszolgálók: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |A Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30-as GHz |2 |GB/s x 4 I |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST17 |128 |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST24 |256 |A Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |2 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |2 | |A Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | VMM-kiszolgáló |2 | | |2 |1 Gbps |A Windows Server 2012 adatbázis R2 (x 64) és a VMM 2012 R2-ben |
 
 ### <a name="server-workloads"></a>Server számítási feladatok
@@ -131,7 +131,7 @@ Az eredmények egyértelműen bemutatják, hogy a Site Recovery, Hyper-V replika
 * Használjuk a [IOMeter](http://www.iometer.org) a munkaterhelés jellemző a szimuláció táblázat foglalja össze.
 * Összes IOMeter profil beállítása az írási szimulálásához legrosszabb véletlenszerű bájt írási számítási feladatok esetében.
 
-| Számítási feladat | I/o-mérete (KB) | A(z) % hozzáférés | % Olvasási | Függőben lévő i/o műveletek | I/o-minta |
+| Számítási feladat | I/o-mérete (KB) | % Access | % Olvasási | Függőben lévő i/o műveletek | I/o-minta |
 | --- | --- | --- | --- | --- | --- |
 | Fájlkiszolgáló |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Minden 100 %-os véletlenszerű |
 | Az SQL Server (1. kötet) SQL Server (2. kötet) |864 |100%100% |70%0% |88 |100 %-os random100 % szekvenciális |
@@ -175,10 +175,10 @@ A táblázat összefoglalja a teljesítmény-mérőszámok és a központi telep
 | CPU |\Processor(_Total)\% Processor Time |
 | Elérhető memória |\Memory\Available (MB) |
 | IO |\PhysicalDisk(_Total)\Disk Transfers/sec |
-| Virtuális gép olvasási művelet/mp (IOPS) |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read művelet/mp |
-| Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write művelet/mp |
-| Virtuális gép olvasási teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Read bájt/mp |
-| Virtuális gép a lemezírás teljesítménye |\Hyper-V virtuális tárolóeszköz (<VHD>) \Write bájt/mp |
+| Virtuális gép olvasási művelet/mp (IOPS) |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Read művelet/mp |
+| Virtuális gép (IOPS) írási művelet/mp |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Write művelet/mp |
+| Virtuális gép olvasási teljesítménye |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Read bájt/mp |
+| Virtuális gép a lemezírás teljesítménye |\Hyper-V virtuális tárolóeszköz (\<VHD-t >) \Write bájt/mp |
 
 ## <a name="next-steps"></a>További lépések
 

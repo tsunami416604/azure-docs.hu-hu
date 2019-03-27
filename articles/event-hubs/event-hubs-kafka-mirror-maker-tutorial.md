@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: a0f22e7940a2be442bdf836c0e76e29bad2e9b36
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7271eb6b8cbc8a117b5a8e75edfe02985ec3452
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769923"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487464"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Az Event Hubs-beli Apache kafka Kafka MirrorMaker használata
 
@@ -119,6 +119,12 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 Győződjön meg arról, hogy eseményeket elérni próbált a Kafka-kompatibilis eseményközpontot, tekintse meg a bejövő adatokat, az a [az Azure portal](https://azure.microsoft.com/features/azure-portal/), vagy az event hubs egy fogyasztó futtatásához.
 
 A MirrorMaker fut a forrás-Kafka-fürt bármely esemény mindkét a Kafka-fürt által fogadott és a tükrözött Kafka event hub-szolgáltatás engedélyezve van. A MirrorMaker és a egy Event Hubs Kafka-végpontot, Kafka meglévő adatcsatornáinak áttelepítheti a a felügyelt Azure Event Hubs szolgáltatás módosítása a meglévő fürtből, és minden folyamatban lévő adatokat a folyamat megszakítása nélkül.
+
+## <a name="samples"></a>Példák
+Tekintse meg a következő minták a Githubon:
+
+- [Ebben az oktatóanyagban a Githubról a mintakód](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+- [Az Azure Event Hubs Kafka Mirrormakerrel futtat egy Azure-Tárolópéldányon](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>További lépések
 

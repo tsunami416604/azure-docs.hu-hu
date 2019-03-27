@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568887"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443994"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Hibaelhárítás a Linux rendszerű virtuális gép eszköznév módosítása
 
@@ -36,15 +36,17 @@ A következő problémákat tapasztalhat, ha Linuxos virtuális gépek futtatás
 
 Linux rendszerű eszköz útvonalakat nem garantáltan konzisztens újraindítások között. Eszköz nevének nagyobb számokat (betű) és a kisebb számokat állnak. Amikor a Linux-tároló eszközillesztő észleli az új eszköz, az illesztőprogram rendeli hozzá a fő- és alverzió számok melletti elérhető tartományon az eszközön. Egy eszköz eltávolításakor az eszköz számok felszabadítását ismételt felhasználásra.
 
-A probléma oka, hogy vizsgálata a Linux rendszerű eszköz van ütemezve az SCSI-alrendszer aszinkron módon történik. Ennek eredményeképpen egy eszköz elérési utat újraindítások között változhat. 
+A probléma oka, hogy vizsgálata a Linux rendszerű eszköz van ütemezve az SCSI-alrendszer aszinkron módon történik. Ennek eredményeképpen egy eszköz elérési utat újraindítások között változhat.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához, állandó elnevezési használja. Állandó elnevezési használandó négy módja van: fájlrendszer címke, UUID azonosító, azonosítója vagy elérési út alapján. Az Azure Linux virtuális gépek a fájlrendszer címkét vagy UUID használatát javasoljuk. 
+A probléma megoldásához, állandó elnevezési használja. Állandó elnevezési használandó négy módja van: fájlrendszer címke, UUID azonosító, azonosítója vagy elérési út alapján. Az Azure Linux virtuális gépek a fájlrendszer címkét vagy UUID használatát javasoljuk.
 
-A legtöbb disztribúciók adja meg a `fstab` **nofail** vagy **nobootwait** paramétereket. Ezek a paraméterek engedélyezze a rendszert a Ha a lemez indításkor csatlakoztatása nem sikerült. A telepítési dokumentációjából további információt ezekről a paraméterekről. Konfigurálása Linux rendszerű virtuális gép UUID használandó, adatlemez hozzáadásakor a további információkért lásd: [Connect segítségével csatlakoztassa az új lemezt a Linux rendszerű virtuális géphez](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+A legtöbb disztribúciók adja meg a `fstab` **nofail** vagy **nobootwait** paramétereket. Ezek a paraméterek engedélyezze a rendszert a Ha a lemez indításkor csatlakoztatása nem sikerült. A telepítési dokumentációjából további információt ezekről a paraméterekről. Konfigurálása Linux rendszerű virtuális gép UUID használandó, adatlemez hozzáadásakor a további információkért lásd: [Connect segítségével csatlakoztassa az új lemezt a Linux rendszerű virtuális géphez](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 Az Azure Linux-ügynök telepítve van egy virtuális Gépet, ha az ügynök Udev szabályok segítségével hozhatnak létre szimbolikus hivatkozásokat tartalmaz a /dev/disk/azure elérési úton. Alkalmazások és parancsfájlok Udev szabályok segítségével azonosíthatja a virtuális géphez, valamint a lemez típusát csatlakozó lemezek és a lemez LUN-ok.
+
+Ha már befejezte az fstab oly módon, hogy a virtuális gép nem indítja, és a virtuális géphez SSH nem Ön, használhatja a [virtuális gép soros konzol](./serial-console-linux.md) meg [egyfelhasználós módban](./serial-console-grub-single-user-mode.md) és módosíthatja az fstab.
 
 ### <a name="identify-disk-luns"></a>Lemez LUN-ok azonosítása
 
@@ -83,29 +85,29 @@ Vendég Logikaiegység-adatok segítségével az Azure-előfizetés metaadatait 
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
-      {
-        "caching": "None",
-          "createOption": "empty",
-        "diskSizeGb": 1023,
-          "image": null,
-        "lun": 0,
-        "managedDisk": null,
-        "name": "testVM-20170619-114353",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-        }
-      },
-      {
-        "caching": "None",
-        "createOption": "empty",
-        "diskSizeGb": 512,
-        "image": null,
-        "lun": 1,
-        "managedDisk": null,
-        "name": "testVM-20170619-121516",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-        }
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
       }
     ]
 
@@ -138,7 +140,7 @@ A partíciókat a `blkid` egy adatlemezt tartalmazó lista. Alkalmazások karban
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>A legújabb Azure Storage-szabályok beolvasása
 
 A legújabb Azure Storage-szabályok lekéréséhez futtassa a következő parancsokat:

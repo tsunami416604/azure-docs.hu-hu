@@ -9,14 +9,28 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 1850959946531abbaf531484696951dee59dadbb
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ce48a240c67c6077027210ffb0ca85db93610782
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351762"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472956"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzései
+
+## <a name="march-26-2019"></a>2019. március 26.
+- A Custom Vision Service került általánosan elérhető az Azure-ban! 
+- Új machine learning-háttéralkalmazásának javult a teljesítmény, különösen a nagy kihívást jelentő adatkészleteket és a minden részletre kiterjedő besorolási hozzáadott képzés speciális szolgáltatás. Speciális képzésekkel, megadhatja a képzés és a Custom Vision számítási idő költségvetési kísérlettel azonosítja azokat a beállításokat a legjobb képzési és kiegészítését. A gyors ismétlését továbbra is használhatja a meglévő gyors képzést. 
+- 3.0 bevezetett API-k. A 2019. október 1. előtti-3.0 API-k elkövetkező elavulása jelentettük be. A dokumentációt, gyors útmutatók a [.Net](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/csharp-tutorial), [Python](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/python-tutorial), [csomópont](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/node-tutorial), [Java](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/java-tutorial), vagy [Go](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/go-tutorial) példák az első lépésekről. 
+- Lecseréli az "Alapértelmezett ismétlések" a közzététel/közzétételének visszavonása a 3.0 API-k. 
+- Új modell exportálási célok lettek hozzáadva. A docker-fájl exportálása frissítve lett a Raspberry Pi 3 ARM támogatása érdekében. Exportálás támogatási bővült a [Vision AI Dev csomag.](https://visionaidevkit.com/) 
+- A címkék megnövekedett legfeljebb 500 S0 szint projektenként. Képek megnövekedett legfeljebb projektenként, 100 000 S0 szint.
+- Eltávolítja a felnőtt tartományhoz. Általános tartomány inkább az ajánlott.
+- Bejelentett [díjszabás](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/) általános rendelkezésre állás érdekében.  
+
+
+## <a name="february-25-2019"></a>2019. február 25.
+- Bejelentett korlátozott próbaverzió projects (projektek egy Azure-erőforrás nem társított), a végén Custom Vision megújítására az Azure nyilvános előzetes verziója az Áthelyezés befejezése után. 2019. márciusi 25., kezdve a CustomVision.ai hely csak támogatni fogja egy Azure-erőforrás, például a Custom Vision ingyenes erőforrás megtekintését célprojektet. 2019. október 1., keresztül továbbra is lesz érhetik el a meglévő korlátozott próbaverziós projektek a Custom Vision API-kon keresztül. Ez lehetőséget biztosít, ideje a Custom Vision korábban írt alkalmazások API-kulcsok frissítése. 2019. október 1. után bármely korlátozott próbaverziós projektek az Azure-bA helyezte át még nem törlődnek.
 
 ## <a name="january-22-2019"></a>2019. január 22.
 - Támogatás hozzáadva az új Azure-régió: 2. nyugati RÉGIÓJA, USA keleti RÉGIÓJA, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Délkelet-Ázsia, Kelet-Ausztrália, közép-India, Egyesült Királyság déli régiója, kelet-japán és USA északi középső RÉGIÓJA. Támogatási továbbra is fennáll, az USA déli középső Régiójában. 
