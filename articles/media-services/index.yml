@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3b778caed10981923d424745d820bfe10c1ce553
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903606"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519714"
 documentType: LandingData
 title: Az Azure Media Services dokumentációja
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Az Azure Media Services (AMS) egy felhőalapú platform, amelyen nagy felbontású videokódolást és médiaszínvonalú videostreamelést nyújtó, a célközönségét a legnépszerűbb eszközökön elérő megoldásokat készíthet. Az AMS v3 azt is lehetővé teszi, hogy a Video Indexer AMS v3 elemző előzetes beállításaival megállapításokat nyerjen ki video- és hangfájljaiból. Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert.<br/> Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">összehasonlító dokumentumot</a>.
+  description: Az Azure Media Services egy felhőalapú platform, amelyen nagy felbontású videokódolást és médiaszínvonalú videostreamelést nyújtó, a célközönségét a legnépszerűbb eszközökön elérő megoldásokat készíthet. A Media Services v3 azt is lehetővé teszi, hogy a Video Indexer Media Services v3 elemző előzetes beállításaival megállapításokat nyerjen ki hang- és videofájljaiból. Ha részletesebb megállapításokra van szüksége, használja közvetlenül a Video Indexert.
 sections:
 - items:
   - type: list
@@ -40,7 +40,7 @@ sections:
         src: media/index/AMSIcons-media_analytics.svg
       title: Video Indexer
     - href: /azure/media-services/previous/
-      html: <p>Ismerje meg, hogyan kódolhatja, streamelheti igény szerint és közvetítheti élőben videóit a Media Services v2 használatával.</p>
+      html: <p>A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. Próbálja ki a Media Services v3-as verzióját.</p>
       image:
         src: media/index/AMSIcons-media_servicesV2.svg
       title: Azure Media Services v2 (örökölt)
@@ -49,51 +49,3 @@ sections:
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: Tartalomkézbesítési hálózat (CDN)
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Útmutató a Media Services v3-mal végzett kódoláshoz és streameléshez:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Videofájlok streamelése
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-  - type: paragraph
-    text: 'Ismerje meg, hogyan nyerhet ki megállapításokat a videóiból a Video Indexerrel:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Megállapítások kinyerése
-      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan streamelhet fájlokat igény szerint, hogyan közvetíthet élőben, és hogyan elemezheti videóit a Media Services 3-as verziója használatával:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: Videók feltöltése, kódolása és streamelése
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-live.svg
-      text: Élő közvetítés
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Videók elemzése
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-  - type: paragraph
-    text: 'Ismerje meg, hogyan nyerhet ki megállapításokat a videóiból a Video Indexer API-val:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Megállapítások kinyerése
-      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json

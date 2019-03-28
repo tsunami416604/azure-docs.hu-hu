@@ -18,6 +18,8 @@ ms.author: carolz
 
 Ismerje meg, hogyan streamelhet médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
+**MEGJEGYZÉS:** A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). A [2-esről a 3-as verzióra való migrálás útmutatóját](../latest/migrate-from-v2-to-v3.md) is érdemes áttekinteni.
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">
@@ -66,7 +68,7 @@ Ismerje meg, hogyan streamelhet médiaszínvonalú videókat a Media Services b�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Bevezetés az Azure Media Services Azure Portallal való használatába</h3>
+                        <h3>Bevezetés az Azure Media Services használatába az Azure Portalon</h3>
                     </div>
                 </div>
             </div>
@@ -102,7 +104,7 @@ Ismerje meg, hogyan streamelhet médiaszínvonalú videókat a Media Services b�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Tartalomtovábbítás az Azure Portal használatával</h3>
+                        <h3>Tartalomtovábbítás az Azure Portalon</h3>
                     </div>
                 </div>
             </div>

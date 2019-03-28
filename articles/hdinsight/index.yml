@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cdb34766617a27848a68ee1b4227153bd6ab63f8
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 418410bfe1cb7c10d6095ee7175a2637501ce40f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359619"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520445"
 documentType: LandingData
 title: Azure HDInsight – dokumentáció
 metadata:
@@ -15,9 +15,9 @@ metadata:
   ms.author: hrasheed
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 10/18/2018
+  ms.date: 03/26/2019
 abstract:
-  description: Ismerje meg, hogyan használhatja az Azure HDInsightot streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentációk mutatják be fürtök létrehozását, a Big Data típusú feldolgozást és elemzést, illetve megoldások fejlesztését a legnépszerűbb nyílt forráskódú keretrendszerekkel, mint az Apache Hadoop, az Apache Spark, az Apache Hive, az Apache LLAP, az Apache Kafka, az Apache Storm és a Microsoft Machine Learning Server.<p>Az Azure HDInsight egy teljes mértékben felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. A HDInsight egy olyan felhőszolgáltatás, amelynek segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. A HDInsight emellett forgatókönyvek széles körét támogatja, köztük a kinyerési, átalakítási és betöltési (ETL) feladatokat; az adatraktározást, a gépi tanulást és az IoT-t.</p>
+  description: Ismerje meg, hogyan használhatja az Azure HDInsightot streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentációk mutatják be fürtök létrehozását, a Big Data típusú feldolgozást és elemzést, illetve megoldások fejlesztését a legnépszerűbb nyílt forráskódú keretrendszerekkel, mint az Apache Hadoop, az Apache Spark, az Apache Hive, az Apache LLAP, az Apache Kafka, az Apache Storm és a Microsoft Machine Learning Server.<p>Az Azure HDInsight egy felügyelt, teljes körű, nyílt forráskódú elemzési szolgáltatás vállalatok részére. A HDInsight egy olyan felhőszolgáltatás, amelynek segítségével könnyen, gyorsan és költséghatékonyan dolgozható fel nagy mennyiségű adat. A HDInsight emellett forgatókönyvek széles körét támogatja, köztük a kinyerési, átalakítási és betöltési (ETL) feladatokat; az adatraktározást, a gépi tanulást és az IoT-t.</p>
   aside:
     image:
       alt: 

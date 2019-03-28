@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250678"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519925"
 abstract:
   description: Megtudhatja, hogyan építhet be intelligens algoritmusokat az alkalmazásokba és webhelyekbe ezekkel az Azure Machine Learning-termékekkel.  Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
 documentType: LandingData
@@ -38,8 +38,8 @@ sections:
   - text: <b>Rövid útmutatók:</b>
     type: paragraph
   - items:
-    - html: <a href="service/quickstart-create-workspace-with-python">Az első lépések a Python használatával</a>
-    - html: <a href="service/quickstart-get-started">Az első lépések az Azure Portal használatával</a>
+    - html: <a href="service/quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre)
+    - html: <a href="service/quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgálóval</a> (helyi SDK-telepítés)
     style: unordered
     type: list
   - text: <b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>
