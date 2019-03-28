@@ -5,40 +5,33 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228355"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521516"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
 
 Többféle szolgáltatáscsomagban érhető el az Azure Container Registry (ACR) [termékváltozatok néven](container-registry-skus.md). ACR kezdeti verziójában érhető el egy egyetlen Termékváltozat klasszikus, amely nem rendelkezik a Basic, Standard és prémium szintű csomag beépített szolgáltatásai számos funkciót (összefoglaló néven *felügyelt* beállításjegyzékek).
 
-A klasszikus Termékváltozat hamarosan elavulttá válik, és a március 2019 után nem lesz elérhető. Ez a cikk részletesen a nem felügyelt klasszikus beállításjegyzékben áttelepítése a felügyelt termékváltozatok közül, így azok továbbfejlesztett szolgáltatáskészlet előnyeit is.
+A klasszikus Termékváltozat hamarosan elavulttá válik, és április 2019 után nem lesz elérhető. Ez a cikk részletesen a nem felügyelt klasszikus beállításjegyzékben áttelepítése a felügyelt termékváltozatok közül, így azok továbbfejlesztett szolgáltatáskészlet előnyeit is.
 
 ## <a name="why-upgrade"></a>Miért érdemes frissíteni?
 
-A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető a **március 2019**. Az összes meglévő klasszikus beállításjegyzékek március 2019 előtt kell frissíteni.
+A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető után **április 2019**. Az összes meglévő klasszikus beállításjegyzékek április 2019 előtt kell frissíteni. A beállításjegyzékek klasszikus portál felügyeleti funkcióinak kivezetése lesz. Az új klasszikus nyilvántartó létrehozása után április 2019 letiltásra kerül.
 
-Tervezett elavulásának és klasszikus nem felügyelt beállításjegyzékek korlátozott képességeit az összes klasszikus beállításjegyzékek lehet frissíthető a Basic, Standard vagy prémium szintű felügyelt beállításjegyzékek. Ezek a magasabb szintű termékváltozatok a beállításjegyzék így integrálható az Azure funkcióit.
-
-Adja meg a felügyelt beállításjegyzékek:
-
-* Az Azure Active Directory-integráció [egyéni bejelentkezési](container-registry-authentication.md#individual-login-with-azure-ad)
-* Kép és a címke törlése támogatása
-* [Georeplikáció](container-registry-geo-replication.md)
-* [Webhooks](container-registry-webhook.md)
+Tervezett elavulásának és klasszikus nem felügyelt beállításjegyzékek korlátozott képességeit az összes klasszikus beállításjegyzékek felügyelt beállításjegyzékek (alapszintű, Standard vagy prémium) kell frissíteni. Ezek a magasabb szintű termékváltozatok a beállításjegyzék így integrálható az Azure funkcióit. A díjszabásról és a funkciókról a különböző szolgáltatásszintek kapcsolatos további információkért lásd: [Container Registry Termékváltozatai](container-registry-skus.md).
 
 A klasszikus beállításjegyzékben attól függ, hogy a tárfiók, amely az Azure automatikusan látja el az Azure-előfizetésben a beállításjegyzék létrehozásakor. Ezzel szemben a Basic, Standard és prémium szintű termékváltozatok kihasználhatja az Azure [speciális tárolási szolgáltatások](container-registry-storage.md) átlátható módon kezeli az Ön számára a lemezképek tárolását. Egy önálló tárfiókot a saját előfizetése nem jön létre.
 
 Felügyelt beállításjegyzék tárterületét az alábbi előnyöket nyújtja:
 
 * Tárolórendszerkép [titkosítása](container-registry-storage.md#encryption-at-rest).
-* Rendszerképek tárolása [georedundáns tárolás](container-registry-storage.md#geo-redundant-storage)modulhoz, biztonsági mentés, a képek a többrégiós replikációval.
+* Rendszerképek tárolása [georedundáns tárolás](container-registry-storage.md#geo-redundant-storage)modulhoz, biztonsági mentés, a képek a többrégiós replikációval (csak prémium szintű Termékváltozat esetében).
 * Lehetővé teszi, hogy szabadon [termékváltozatok közötti áthelyezése](container-registry-skus.md#changing-skus), ha úgy dönt, hogy egy magasabb szintű Termékváltozat, amely lehetővé teszi, hogy nagyobb átviteli sebességet. Minden SKU, az ACR megfelel az átviteli sebességet megkövetelő, növelje az igényeinek.
 * A beállításjegyzék és a tárolás egységes biztonsági modellt biztosít egyszerűsített rights management. Kezelheti az engedélyeket, csak az a container registry esetében nem kell külön tárfiókra vonatkozó engedélyeket is tud kezelni.
 
@@ -46,13 +39,13 @@ Az ACR képtárolás a további részletekért lásd: [képtárolás tárolót a
 
 ## <a name="migration-considerations"></a>Az áttelepítés szempontjai
 
-Klasszikus beállításjegyzék módosítja egy felügyelt beállításjegyzéket, amikor az Azure egy tárfiókba, Azure által kezelt kell másolnia az összes meglévő tárolórendszerképek az ACR-létrehozott storage-fiókból az előfizetésében. A beállításjegyzék méretétől függően a folyamat eltarthat néhány percig akár néhány órát.
+Amikor frissít egy klasszikus beállításjegyzék egy felügyelt beállításjegyzéket, az Azure egy tárfiókba, Azure által kezelt kell másolnia összes meglévő tárolórendszerkép az ACR-létrehozott storage-fiókból az előfizetésében. A beállításjegyzék méretétől függően a folyamat eltarthat néhány percig akár néhány órát. Költségbecslési célokat a várt a migrálási idő körülbelül 0,5 GB / perc.
 
-A konvertálás során minden `docker push` műveletek le vannak tiltva, amíg `docker pull` továbbra is működik.
+A konvertálás során `docker push` műveletek le vannak tiltva, az utolsó 10 %-a migrálás során. `docker pull` továbbra is megfelelően működik.
 
 Nem törölhető és nem módosíthatják a tárfiók a klasszikus beállításjegyzékben biztonsági a konvertálás során a tartalmát. Ezzel a tárolólemezképek sérülését eredményezheti.
 
-Az áttelepítés befejeződése után a tárfiókot az előfizetésében, amelyet eredetileg biztonsági a klasszikus beállításjegyzékben már nem használják ACR. Miután meggyőződött arról, hogy az áttelepítés sikeres volt-e, vegye figyelembe a költségek csökkentése érdekében a tárfiók törlése.
+Az áttelepítés befejeződése után a tárfiókot az előfizetésében, amelyet eredetileg biztonsági a klasszikus beállításjegyzékben már nem használják az Azure Container Registry. Miután meggyőződött arról, hogy az áttelepítés sikeres volt-e, vegye figyelembe a költségek csökkentése érdekében a tárfiók törlése.
 
 >[!IMPORTANT]
 > A felügyelt termékváltozatok egyik klasszikusból frissítése egy **egyirányú folyamat**. Klasszikus beállításjegyzék alapszintű, Standard vagy prémium konvertált, nem térhet vissza a klasszikus. Azonban szabadon áthelyezheti a beállításjegyzék elegendő kapacitással a felügyelt termékváltozatok között.
@@ -69,7 +62,7 @@ Az Azure CLI-ben klasszikus beállításjegyzék frissítése, hajtsa végre a [
 az acr update --name myclassicregistry --sku Premium
 ```
 
-Az áttelepítés befejeződése után az alábbihoz hasonló kimenetnek kell megjelennie. Figyelje meg, hogy a `sku` van "Prémium" és a `storageAccount` "NULL" jelzi, hogy az Azure már kezeli a lemezképet tároló ehhez a beállításjegyzékhez.
+Az áttelepítés befejeződése után az alábbihoz hasonló kimenetnek kell megjelennie. Figyelje meg, hogy a `sku` van "Prémium" és a `storageAccount` van `null`, amely azt jelzi, hogy az Azure már kezeli a lemezképet tároló ehhez a beállításjegyzékhez.
 
 ```JSON
 {
@@ -100,7 +93,7 @@ Ha egy hasonló hibaüzenet jelenik meg, futtassa a [az acr update] [ az-acr-upd
 
 ## <a name="upgrade-in-azure-portal"></a>Frissítse az Azure Portalon
 
-Klasszikus beállításjegyzék frissítése az Azure portal használatával, ha az Azure automatikusan kiválasztja a legalacsonyabb szintű Termékváltozat, amely lehetővé teszi a lemezképek. Például, ha a beállításjegyzék a rendszerképek 12 GiB tartalmaz, az Azure automatikusan kiválasztja és alakítja át a klasszikus beállításjegyzékben standard (100 GB maximális).
+Klasszikus beállításjegyzék frissítése az Azure portal használatával, ha az Azure automatikusan kiválasztja a Standard vagy prémium szintű Termékváltozat, attól függően, amelyek Termékváltozat lehetővé teszi a lemezképek. Például, ha a beállításjegyzék 100-nál kevesebb GiB képeken látható, az Azure automatikusan kiválasztja és alakítja át a klasszikus beállításjegyzékben standard (100 GB maximális).
 
 A klasszikus beállításjegyzék frissítése az Azure portal használatával, keresse meg a tároló-beállításjegyzék **áttekintése** válassza **frissítését a felügyelt beállításjegyzékre**.
 
@@ -108,19 +101,17 @@ A klasszikus beállításjegyzék frissítése az Azure portal használatával, 
 
 Válassza ki **OK** annak ellenőrzéséhez, hogy szeretné-e frissíteni egy felügyelt beállításjegyzéket.
 
-![Klasszikus beállításjegyzék frissítése az Azure Portal felhasználói felületén megerősítése][update-classic-02-confirm]
-
-Az áttelepítés során a portál jelzi, hogy a tárolójegyzék **üzembe helyezési állapota** van *Updating*. Ahogy korábban említettük, `docker push` műveletek le vannak tiltva, az áttelepítés során, és nem kell törölnie, vagy frissítés a tárfiók a klasszikus beállításjegyzékben által használt, amíg az áttelepítés van folyamatban – így kép sérülés eredményezhet.
+Az áttelepítés során a portál jelzi, hogy a tárolójegyzék **üzembe helyezési állapota** van *Updating*. Ahogy korábban említettük, `docker push` műveletek le vannak tiltva, az utolsó 10 %-a migrálás során. Ehhez nem delete vagy update mutatóval a tárfiók a klasszikus beállításjegyzékben által használt, amíg az áttelepítés van folyamatban – így eredményezhet kép sérülése.
 
 ![Klasszikus beállításjegyzék frissítése folyamatban van az Azure Portal felhasználói felületén][update-classic-03-updating]
 
-Ha az áttelepítés befejeződött, a **üzembe helyezési állapota** azt jelzi, hogy *sikeres*, és ismét `docker push` a tárolójegyzékbe.
+Ha az áttelepítés befejeződött, a **üzembe helyezési állapota** azt jelzi, hogy *sikeres*, és folytathatja a normál működést a beállításjegyzék.
 
 ![Klasszikus beállításjegyzék frissítése az Azure Portal felhasználói felületén befejezési állapota][update-classic-04-updated]
 
 ## <a name="next-steps"></a>További lépések
 
-Klasszikus beállításjegyzék alapszintű, Standard vagy prémium már frissített, miután az Azure már nem használja a storage-fiókot, amelyet eredetileg támogat a klasszikus beállításjegyzékben. Költségek csökkentése érdekében fontolja meg, törlését, a storage-fiók vagy a Blob-tároló, amely tartalmazza a régi tárolólemezképek a fiókon belül.
+Klasszikus beállításjegyzék egy felügyelt beállításjegyzéket, hogy frissített, miután az Azure már nem használja a tárfiókot, amelyet eredetileg támogat a klasszikus beállításjegyzékben. Költségek csökkentése érdekében fontolja meg, törlését, a storage-fiók vagy a Blob-tároló, amely tartalmazza a régi tárolólemezképek a fiókon belül.
 
 <!-- IMAGES -->
 [update-classic-01-upgrade]: ./media/container-registry-upgrade/update-classic-01-upgrade.png

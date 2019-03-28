@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405113"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518745"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Az Azure Search Blob indexelőjével JSON-blobok indexelése
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob [indexelő](search-indexer-overview.md) nyerje strukturált JSON-dokumentumokat az Azure Blob storage-ban, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt a meglévő, a JSON-blobok kinyert szöveget. 
@@ -211,7 +211,7 @@ Az indexelő konfigurációjának a kérelem törzsében szerepel. Egy adatforr�
 
 Ütemezés és a paraméterek megadása nem kötelező. Ha kihagyja őket, használatával azonnal, fut-e az indexelő `json` elemzési módot.
 
-Nem tartalmazza az adott indexelő [mezőleképezéseivel](#field-mappings). Az indexelő meghatározásán hagyhatja **mezőleképezéseivel** Ha tulajdonságai között a forrás JSON-dokumentum felel meg a cél keresési indexhez mezőit. 
+Ez különösen az indexelő nem tartalmazza a mező-leképezések. Az indexelő meghatározásán hagyhatja **mezőleképezéseivel** Ha tulajdonságai között a forrás JSON-dokumentum felel meg a cél keresési indexhez mezőit. 
 
 
 ### <a name="rest-example"></a>Példa REST
@@ -253,7 +253,7 @@ Minden indexelő esetében van szükség egy célindex, amely megkapja az adatok
 
 ### <a name="indexer-request"></a>Az indexelő kérelem
 
-A kérelem egy teljes körűen megadott indexelő jeleníti meg. Ez magában foglalja [mezőleképezéseivel](#field-mappings), amely az előző példák lettek hagyva. Idézze, hogy "ütemezés", "parameters" és "fieldMappings" választható mindaddig, amíg nincs egy elérhető alapértelmezett. Az indexelő futtatása azonnal felsorolhatja az "ütemezés" okoz. Az index az "json" alapértelmezett "parsingMode" felsorolhatja okoz.
+A kérelem egy teljes körűen megadott indexelő jeleníti meg. Ez magában foglalja a mező-leképezések, amely az előző példák lettek hagyva. Idézze, hogy "ütemezés", "parameters" és "fieldMappings" választható mindaddig, amíg nincs egy elérhető alapértelmezett. Az indexelő futtatása azonnal felsorolhatja az "ütemezés" okoz. Az index az "json" alapértelmezett "parsingMode" felsorolhatja okoz.
 
 Adatok importálása az indexelő létrehozása az Azure Search aktivál. Ez azonnal, és ezt követően ütemezés szerint futtatott Ha megadott egy.
 

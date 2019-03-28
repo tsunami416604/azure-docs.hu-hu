@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749035"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540482"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Visszaállítása egy Azure SQL Database vagy feladatátvétel a másodlagos kiszolgálóra
 
@@ -32,6 +32,13 @@ Folyamatos üzletmenet – forgatókönyvek és a szolgáltatások ezeket a forg
 
 > [!NOTE]
 > Zónaredundáns prémium és az üzletileg kritikus adatbázisokat vagy készleteket használ, ha a helyreállítási folyamat automatikus, és a többi anyag nem vonatkozik.
+
+> [!NOTE]
+> Elsődleges és másodlagos adatbázisok ugyanazon a szolgáltatásszinten van szüksége. Is erősen ajánlott, hogy a másodlagos adatbázis jön létre a számítási mérete (dtu-k vagy virtuális magok) megegyezik az elsődleges. További információkért lásd: [verzióra történő frissítéshez vagy az elsődleges adatbázis alacsonyabb szolgáltatásszintre](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+
+> [!NOTE]
+> Egy vagy több, feladatátvételi csoportok segítségével kezelheti a több adatbázis feladatátvételét.
+> Ha a feladatátvételi csoporthoz ad hozzá egy meglévő georeplikációs kapcsolatban, győződjön meg arról, a geo-secondary van konfigurálva, az ugyanazon a szolgáltatásszinten és a számítási méret elsődlegesként. További információkért lásd: [automatikus feladatátvételi csoportok használatával engedélyezhető az átlátható és koordinált több adatbázis feladatátvételét](sql-database-auto-failover-group.md).
 
 ## <a name="prepare-for-the-event-of-an-outage"></a>Az esemény szolgáltatáskimaradások előkészítése
 
@@ -73,6 +80,7 @@ A következő útmutatók használatával feladatátvételt egy georeplikált m�
 
 - [Feladatátvétel georeplikált másodlagos kiszolgáló használatával az Azure portal használatával](sql-database-geo-replication-portal.md)
 - [Átadja a feladatokat a másodlagos kiszolgáló PowerShell-lel](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [Átadja a feladatokat egy másodlagos kiszolgáló Transact-SQL (T-SQL) használatával](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>Helyreállítása geo-visszaállítás használatával
 

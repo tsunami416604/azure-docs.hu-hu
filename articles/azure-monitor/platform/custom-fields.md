@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d3eb0fba2b7178b8b1702d4ca89ff85a441c20d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261264"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541077"
 ---
-# <a name="create-custom-fields-in-log-analytics"></a>Egyéni mezők létrehozása a Log Analyticsben
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezőket hozhat létre a Log Analytics-munkaterületet az Azure monitorban
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan szöveges adatok a Log Analytics elemezni, a begyűjtésük. Számos előnnyel jár a lekérdezés szöveges adatok elemzése a begyűjtésük után [elemzése a Log Analytics szöveges adatok](../log-query/parse-text.md).
+> Ez a cikk ismerteti, hogyan kell elemezni a szöveges adatokat a Log Analytics-munkaterületen, a begyűjtésük. Számos előnnyel jár a lekérdezés szöveges adatok elemzése a begyűjtésük után [elemzése az Azure monitorban szöveges adatok](../log-query/parse-text.md).
 
-A **egyéni mezők** Log Analytics szolgáltatása lehetővé teszi, hogy a saját kereshető mezők hozzáadásával a Log Analytics meglévő rekordok.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
+A **egyéni mezők** Azure monitor szolgáltatás lehetővé teszi, hogy terjessze ki a meglévő rekordjainak a Log Analytics-munkaterülethez adja hozzá a saját kereshető mezőket.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
 
 ![Egyéni mezők áttekintése](media/custom-fields/overview.png)
 

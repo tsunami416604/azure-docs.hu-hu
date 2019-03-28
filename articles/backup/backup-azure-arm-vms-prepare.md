@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: 3133f22a4d9ecd8a0ee4bff9f8b0be9c1f4eb705
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7fc724f1aff40c6dedff59ce3919496a30b30337
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403663"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520173"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
 
@@ -220,7 +220,8 @@ Biztonsági mentés engedélyezése után:
 - Egy kezdeti biztonsági mentés a biztonsági mentés ütemezése szerint fut.
 - A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, a virtuális gép fut-e.
     - Egy futó virtuális gép adja a legnagyobb esélyt egy alkalmazással konzisztens helyreállítási pont létrehozásának.
-    -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. A kapcsolat nélküli virtuális gépként ismert. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz. [További]() vegye figyelembe, hogy az Azure Backup nem támogatja az óra automatikus illesztését nyári időszámítás – mentés módosításait az Azure virtuális gép biztonsági mentéseinek. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
+    -  Azonban a virtuális gép biztonsági másolat még akkor is, ha ki van kapcsolva, és a bővítményt nem lehet telepíteni. A kapcsolat nélküli virtuális gépként ismert. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz.
+    Vegye figyelembe, hogy az Azure Backup nem támogatja az óra automatikus illesztését nyári időszámítás – mentés módosításait az Azure virtuális gép biztonsági mentéseinek. Biztonsági mentési szabályzatok manuálisan szükség szerint módosítsa.
 
 ## <a name="run-the-initial-backup"></a>A kezdeti biztonsági mentés futtatása
 

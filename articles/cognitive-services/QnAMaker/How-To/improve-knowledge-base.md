@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 739ae64c6b32958271260bcbd01b339c1b108f11
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337425"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522196"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -208,7 +208,7 @@ A sikeres válasz egy 204, és nincs JSON-válasz törzsében állapotát adja v
 
 Ha az alkalmazás rendelkezik aktív tanulás engedélyezve van, és exportálja az alkalmazás a `SuggestedQuestions` oszlop a tsv-fájl az aktív tanulás adatait őrzi meg. 
 
-A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit (`autosuggested`), és explicit (`usersuggested`) [visszajelzés](#active-learning). A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
+A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit (`autosuggested`), és explicit (`usersuggested`) visszajelzés. A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
 
 ```JSON
 [

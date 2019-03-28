@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 3501284be2430941863bbae90f044df8ba5e7a2a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454804"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517946"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -184,7 +184,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
 | location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
 | httpStatusCodeCategory | sztring | Http-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb 304 vagy 307), jogosulatlan (401, 403, 429), hibás (400, 500 és 600 között), egyéb |
-| resourceId | sztring | A /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<erőforráscsoport>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> API Management-erőforrás azonosítója |
+| resourceId | sztring | Id of the API Management resource /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
 | method | sztring | A bejövő kérelem HTTP-metódusa |
 | url | sztring | A bejövő kérelem URL-címe |

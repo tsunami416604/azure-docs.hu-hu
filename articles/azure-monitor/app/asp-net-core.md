@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 934d0a73bf6345edd79ae00526a1db0361b3524d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482775"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520751"
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -409,6 +409,6 @@ Ezen módszerek bármelyikével problémája, hogy azok ne tiltsa le csak az App
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerje meg a felhasználói folyamatok](../../azure-monitor/app/usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazáson keresztül.
-* [Pillanatkép gyűjtésének konfigurálása](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) forráskód és a változók állapotának megtekintéséhez jelenleg a függvény kivételt vált ki.
+* [Pillanatkép gyűjtésének konfigurálása](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) forráskód és a változók állapotának megtekintéséhez jelenleg a függvény kivételt vált ki.
 * [Az API-val](../../azure-monitor/app/api-custom-events-metrics.md) küldése a saját események és mérőszámok az alkalmazás teljesítményének és használatának részletesebb megjelenítéséhez.
 * Használat [rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md) ellenőrizheti az alkalmazás folyamatosan az egész világon.

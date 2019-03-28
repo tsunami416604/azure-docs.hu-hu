@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.openlocfilehash: 9f626e2a5c277cdce78c6e90046a1d40dac2d588
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078669"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519731"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások Visual studióval kezelése
 
@@ -42,6 +42,13 @@ Is hozhat létre, szerkesztése, kezelése és a logic Apps-alkalmazások telep�
   
     Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">hogyan telepítheti a bővítményt a Visual Studio rendszerén belül</a>. 
     Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
+
+* A Visual Studio 2017 vagy Visual Studio 2015-öt a cloud Explorer
+
+  * A Visual Studio 2017, a Visual Studio telepítőjének futtatásához, és telepítse a **Azure-beli számítási**. További információkért lásd: [kezelése az Azure accuonts a Visual Studio Cloud Explorer társított erőforrások](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017).
+
+  * A Visual Studio 2015 [Cloud Explorer letöltése a Visual Studio-piactér](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+  További információkért lásd: [kezelése a Visual Studio Cloud Explorer (2015) Azure-fiókjához társított erőforrások](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
 * A beágyazott Logic Apps Designerben használatakor a hozzáférést
 

@@ -15,18 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: 8f2a3536b7d1b02f124b3116c96ce442383a6b3b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4e686d314c1b6550c2c782e9a1e1dc681ff154e1
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294433"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539683"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
 
 Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltatásokat: 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+
+## <a name="compliance"></a>Megfelelőség
+Az Azure Service Fabric erőforrás-szolgáltató az összes Azure-régióban érhető el, és kompatibilis az összes megfelelőségi tanúsítványok, amelyek az Azure rendelkezik; Ez az alábbiakat tartalmazza: SOC, ISO, PCI DSS szabványnak, HIPPA és GDRP. Tekintse át a megfelelőségi tanúsítványok teljes listáját a következő: [Megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Mikroszolgáltatásokból álló alkalmazások 
 A Service Fabric lehetővé teszi mikroszolgáltatásokból álló, skálázható és megbízható alkalmazásokat készítését és felügyeletét, amelyek nagy sűrűség mellett futnak számítógépek egy megosztott készletén, vagyis fürtökön. Kifinomult, könnyen használható futtatókörnyezetet biztosít, amelyben elosztott, skálázható, állapot nélküli és állapotalapú, tárolókban futó mikroszolgáltatásokat állíthat össze. Ezenkívül átfogó alkalmazásfelügyeleti képességeket kínál a telepített alkalmazások kiépítéséhez, üzembe helyezéséhez, figyeléséhez, frissítéséhez/javításához és törléséhez, beleértve a tárolóalapú szolgáltatásokat is.

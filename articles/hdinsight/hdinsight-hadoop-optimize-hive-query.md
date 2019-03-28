@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 1c863bc3b0ded0558e052ee3d98586ad815a0cfd
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/21/2019
+ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202741"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521737"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight az Apache Hive-lekérdezések optimalizálása
 
-Az Azure HDInsight, a számos több fürttípusokat és technológiákat, amelyek Apache Hive-lekérdezéseket is futtathat. A HDInsight-fürt létrehozásakor válassza ki a megfelelő fürt segítségével optimalizálják a teljesítményt a munkaterhelés igényei szerint. 
+Az Azure HDInsight, a számos több fürttípusokat és technológiákat, amelyek Apache Hive-lekérdezéseket is futtathat. A HDInsight-fürt létrehozásakor válassza ki a megfelelő fürt segítségével optimalizálják a teljesítményt a munkaterhelés igényei szerint.
 
 Például választhatja, **interaktív lekérdezés** fürt típusát az alkalmi, interaktív lekérdezésekhez optimalizálja. Válassza ki az Apache **Hadoop** fürt típusa a kötegelt műveletként használható a Hive-lekérdezések optimalizálása érdekében. **A Spark** és **HBase** típusok fürtöt is futtathat Hive-lekérdezéseket. További információ a Hive-lekérdezések futtatása HDInsight-fürt különböző: [Mi az Apache Hive és az Azure HDInsight HiveQL?](hadoop/hdinsight-use-hive.md).
 

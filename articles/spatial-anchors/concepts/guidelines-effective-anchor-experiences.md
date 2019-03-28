@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895804"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520802"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Hozzon létre egy hatékony forráshorgony élmény Azure térbeli horgonyok használatával
 
@@ -86,7 +86,7 @@ A cél a forgatókönyvben a fényképek segítségével. Ön felhasználók meg
 
 A hely a forgatókönyvben a felhasználók egyszerűen ismerete nincs valahol a horgony Itt adhatja adja meg. A felhasználók a terület vizsgálat az eszközükön, és gyorsan megtalálhatja a horgony.
 
-Ez a tapasztalat általában van szükség, hogy jól válogatott horgonyokat létrehozni az [különböző megtekintésre perspektívák](#consider-various-viewing-perspectives). Ha sok perspektívából észlelnek a helyiségben a létrehozása után a horgony beolvasott, a felhasználók szinte bárhonnan beolvashatja amikor találja meg.
+Ez a tapasztalat általában megköveteli, hogy jól válogatott horgonyokat létrehozni különböző megtekintésre perspektívák leírt módon. Ha sok perspektívából észlelnek a helyiségben a létrehozása után a horgony beolvasott, a felhasználók szinte bárhonnan beolvashatja amikor találja meg.
 
 ![A felhasználó hogyan beolvasás található horgonyra szoba ábrája](./media/scan-room.png)
 

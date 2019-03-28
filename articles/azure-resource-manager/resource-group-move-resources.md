@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 98236133a90cfddfe2ea476486556318b2c88b10
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418890"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521092"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -104,6 +104,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
+* Azure-beli SAP HANA-szolgáltatás
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
 * Service Bus
@@ -146,7 +147,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Microsoft Genomics
-* Azure-beli SAP HANA-szolgáltatás
 * Biztonság
 * Site Recovery
 * StorSimple-Eszközkezelő

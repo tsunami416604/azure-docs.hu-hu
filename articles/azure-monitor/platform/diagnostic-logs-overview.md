@@ -1,19 +1,19 @@
 ---
 title: Az Azure diagnosztikai naplók áttekintése
 description: Ismerje meg, Mik azok az Azure diagnosztikai naplók, és hogyan használhatja őket egy Azure-erőforrás belül előforduló események megértéséhez.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 03/26/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 890f2224a4053ec8cad65b44b85eab0e31be3b64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310182"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519391"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -49,11 +49,6 @@ Használhatja a storage-fiók vagy az Event Hubs-névtér, amely nem ugyanabban 
 > [!NOTE]
 >  Hálózati forgalmi naplók tárfiókba mögötti egy biztonságos virtuális hálózaton jelenleg nem archiválhatja.
 
-> [!WARNING]
-> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
-
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 
 Erőforrás-diagnosztikai naplók vannak konfigurálva az erőforrás diagnosztikai beállításait használja. Bérlő diagnosztikai naplók egy bérlő diagnosztikai beállítás használatával konfigurálhatók. **Diagnosztikai beállítások** szolgáltatás vezérlőelem:
@@ -61,7 +56,7 @@ Erőforrás-diagnosztikai naplók vannak konfigurálva az erőforrás diagnoszti
 * Ha a diagnosztikai naplók és mérőszámok érkeznek (Storage-fiók, az Event Hubs, illetve az Azure Monitor).
 * Melyik naplókategóriák küldik, és hogy metrikaadatok is elküldi a rendszer.
 * Mennyi ideig minden naplókategória megőrződjön-e a storage-fiókban
-    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
+    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 365 közötti napok számát.
     - Ha a megőrzési házirend-beállításokat, de a naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs és a Log Analytics lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
     - Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 

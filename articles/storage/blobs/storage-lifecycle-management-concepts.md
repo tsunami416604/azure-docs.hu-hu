@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 0d52b2f59bba2270b3d36ff2499ce1e0e492b228
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fe5e4b6a4f6a3da851b6e27419bff265758a1ba1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500423"
+ms.locfileid: "58522213"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage, életciklus kezelése
 
@@ -227,7 +227,7 @@ Ez a példa bemutatja, hogyan előtaggal van ellátva a blokkblobok használatá
 
 ### <a name="archive-data-at-ingest"></a>Betöltés adatok archiválása 
 
-Néhány adatot tétlen marad, a felhőben és a ritkán, ha követően tárolja. Archiválhatja ezeket az adatokat, azonnal beolvasás után. A következő életciklus-szabályzat van konfigurálva, a betöltés adatok archiválása. Ebben a példában átmenetek letiltása a tárfiók tárolóban lévő blobok `archivecontainer` azonnal, az archív tárolási szintről. Az azonnali átállás kapcsolódással ható blobok 0 nap után az utolsó módosítás időpontja:
+Néhány adatot tétlen marad, a felhőben és a ritkán, ha követően tárolja. A következő életciklus-szabályzat van konfigurálva, az adatok archiválása, miután az adatbetöltés sebességétől. Ebben a példában átmenetek letiltása a tárfiók tárolóban lévő blobok `archivecontainer` be az archív tárolási szintről. Az átállás a blobok eljáró 0 nap utolsó módosítás időpontja után végezhető el:
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1c0a04a074cfbd96423502ac92dd5821bade78e1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 841193305556e3bc9e543abc47974c7b91b0cea1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258530"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518036"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box használatával a helyszíni HDFS adattárba adatok áttelepítése az Azure Storage
 
@@ -111,7 +111,7 @@ A másolási sebesség javításához:
 
 Kövesse az alábbi lépéseket, előkészítése és a Microsoft Data Box-eszköze szállításra.
 
-1. Az adatmásolás befejezése után futtassa [szállításra való](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#prepare-to-ship) a Data Box. Miután az eszköz előkészítése befejeződött, töltse le a AJ fájlokat. Ezek AJ használja, vagy később, ellenőrizze az adatokat az Azure-bA feltöltött fájlok manifest lesz. Állítsa le az eszközt, és távolítsa el a kábelek. 
+1. Az adatmásolás befejezése után futtassa [szállításra való](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) a Data Box. Miután az eszköz előkészítése befejeződött, töltse le a AJ fájlokat. Ezek AJ használja, vagy később, ellenőrizze az adatokat az Azure-bA feltöltött fájlok manifest lesz. Állítsa le az eszközt, és távolítsa el a kábelek. 
 2.  Ütemezhet begyűjtést a UPS- [vissza az Azure-bA a Data Box szállításra](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
 3.  Microsoft megkapja az eszköz, csatlakoztatva van a hálózati adatközpontba, és adatokat töltenek fel a tárfiók a megadott (a hierarchikus névterek le van tiltva) után mikor megrendelt a Data Box. Ellenőrizze a AJ fájlokra vonatkozóan, hogy az Azure-bA feltöltött összes adatát. Most már továbbléphet az adatok Data Lake Storage Gen2-tárfiókra.
 

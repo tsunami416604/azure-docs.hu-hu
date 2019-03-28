@@ -1,6 +1,6 @@
 ---
 title: A powershellel létrehozása és konfigurálása a Log Analytics-munkaterület |} A Microsoft Docs
-description: Log Analytics-adatait használja a helyszíni kiszolgálók, vagy a felhő-infrastruktúráról. Ha az Azure diagnostics által létrehozott Azure storage-ból is összegyűjtheti a számítógépadatok.
+description: Log Analytics-munkaterületek az Azure monitorban kiszolgálókról érkező adatok tárolása a helyszíni vagy felhőalapú infrastruktúra. Ha az Azure diagnostics által létrehozott Azure storage-ból is összegyűjtheti a számítógépadatok.
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -8,18 +8,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 956c6c7c17812996853f35440c60251aa5a91057
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482099"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539377"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>A PowerShell-lel az Azure Monitor Log Analytics-munkaterület kezelése
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) parancssori vagy parancsfájl részeként különféle funkciók végrehajtásához a Log Analyticsben.  A PowerShell használatával is elvégezheti a feladatok közé:
+Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) különféle funkciók végrehajtásához a Log Analytics-munkaterületet az Azure monitorban parancssori vagy parancsfájl részeként.  A PowerShell használatával is elvégezheti a feladatok közé:
 
 * Munkaterület létrehozása
 * Adja hozzá, vagy eltávolíthat egy megoldást
@@ -195,7 +195,7 @@ A fenti példában regexDelimiter van definiálva "\\n" az új sor. A napló elv
 | `yyyy-MM-ddTHH:mm:ss` <br> A T T szövegkonstans betűvel | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Az Azure diagnostics küldése a Log Analytics konfigurálása
-Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Azure diagnostics engedélyezni és konfigurálni a Log Analytics-munkaterület írni rendelkeznie kell. Ez a megközelítés elküldi az adatokat közvetlenül a Log Analyticshez, és nem szükséges egy tárfiókba írható adat. Támogatott erőforrások közé tartoznak:
+Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Azure diagnostics engedélyezni és konfigurálni a Log Analytics-munkaterület írni rendelkeznie kell. Ez a megközelítés küld adatokat közvetlenül a munkaterületet, és nem szükséges egy tárfiókba írható adat. Támogatott erőforrások közé tartoznak:
 
 | Erőforrás típusa | Logs | Mérőszámok |
 | --- | --- | --- |
@@ -233,15 +233,15 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 A fenti parancsmag használatával gyűjtsön naplókat azokról erőforrások különböző előfizetésekhez tartoznak. A parancsmag is képes működni előfizetések között, mivel biztosítani a, mind a naplók és a naplókat küld a munkaterület létrehozása erőforrás azonosítója.
 
 
-## <a name="configuring-log-analytics-to-collect-azure-diagnostics-from-storage"></a>A storage-ból az Azure diagnostics gyűjtése a Log Analytics konfigurálása
-Klasszikus a felhőszolgáltatás és a egy service fabric-fürtben futó példányát belül származó naplóadatokat gyűjthet, először az Azure storage-szeretne adatokat írni kell. A log Analytics majd van konfigurálva a tárfiókot a naplók gyűjtését. Támogatott erőforrások közé tartoznak:
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>A storage-ból az Azure diagnostics gyűjtése a Log Analytics-munkaterület konfigurálása
+Klasszikus a felhőszolgáltatás és a egy service fabric-fürtben futó példányát belül származó naplóadatokat gyűjthet, először az Azure storage-szeretne adatokat írni kell. Log Analytics-munkaterület majd van konfigurálva a tárfiókot a naplók gyűjtését. Támogatott erőforrások közé tartoznak:
 
 * Klasszikus cloud services (webes és feldolgozói szerepkörök)
 * Service fabric-fürtök
 
 A következő példa bemutatja, hogyan:
 
-1. A meglévő tárfiókok és a Log Analytics az adatokat indexeli helyek listája
+1. A meglévő tárfiókok és a munkaterület indexeli-e az adatok helyek listája
 2. Hozzon létre egy storage-fiókból olvassa el a konfigurációt
 3. Frissítse az újonnan létrehozott konfigurációt index adatokat további helyekről
 4. Az újonnan létrehozott konfigurációjának törlése
@@ -250,7 +250,7 @@ A következő példa bemutatja, hogyan:
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
 $storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 

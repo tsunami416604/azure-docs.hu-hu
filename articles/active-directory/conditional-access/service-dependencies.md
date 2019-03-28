@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan feltételek használatával az Azure Active Dir
 services: active-directory
 keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/18/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e15dd12da2fbd03d342b4eb2a32f34db958b6ed
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259468"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522030"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mik a szolgáltatásfüggőségek az Azure Active Directory feltételes hozzáférés? 
 

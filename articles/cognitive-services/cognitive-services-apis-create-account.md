@@ -7,14 +7,14 @@ author: garyericson
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: 7df429aa848c6f9fb9abe09fbf4357db20fcde6a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6950cba5ac958233e7ea77c8dc783ca86cc5a386
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472854"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519884"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Gyors útmutató: Cognitive Services-fiók létrehozása az Azure Portalon
 
@@ -33,27 +33,6 @@ Mielőtt hozzáfogna, fontos tudni, hogy nincsenek-e kétféle Azure Cognitive S
 
 A következő szakaszok végigvezetik egy egyetlen vagy több szolgáltatásos előfizetést.
 
-### <a name="single-service-subscription"></a>Előfizetés – olyan egyetlen szolgáltatást
-
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson a **+ erőforrás létrehozása**.
-
-    ![Válassza ki a Cognitive Services API-k](media/cognitive-services-apis-create-account/azurePortalScreen.png)
-
-2. Azure Marketplace-en, válassza a **mesterséges Intelligencia és Machine Learning**. Ha érdekli a szolgáltatás nem jelenik meg, kattintson a **összes** megtekintéséhez a Cognitive Services API-k teljes katalógusát.
-
-    ![Válassza ki a Cognitive Services API-k](media/cognitive-services-apis-create-account/azureMarketplace.png)
-
-3. Az a **létrehozás** lap, adja meg a következő információkat:
-
-    |    |    |
-    |--|--|
-    | **Name (Név)** | Egy leíró nevet a cognitive services-erőforrás. Azt javasoljuk egy leíró nevet, például *MyNameFaceAPIAccount*. |
-    | **Előfizetés** | Válasszon ki egy rendelkezésre álló Azure-előfizetéseit. |
-    | **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
-    | **Tarifacsomag** | A Cognitive Services-fiók költsége a választott beállításokat, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
-
-    ![Erőforrás-létrehozás képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ### <a name="multi-service-subscription"></a>Több szolgáltatásos előfizetés
 
@@ -80,6 +59,28 @@ A következő szakaszok végigvezetik egy egyetlen vagy több szolgáltatásos e
     | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
 
     ![Erőforrás-létrehozás képernyő](media/cognitive-services-apis-create-account/resource_create_screen_multi.png)
+
+### <a name="single-service-subscription"></a>Előfizetés – olyan egyetlen szolgáltatást
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson a **+ erőforrás létrehozása**.
+
+    ![Válassza ki a Cognitive Services API-k](media/cognitive-services-apis-create-account/azurePortalScreen.png)
+
+2. Azure Marketplace-en, válassza a **mesterséges Intelligencia és Machine Learning**. Ha érdekli a szolgáltatás nem jelenik meg, kattintson a **összes** megtekintéséhez a Cognitive Services API-k teljes katalógusát.
+
+    ![Válassza ki a Cognitive Services API-k](media/cognitive-services-apis-create-account/azureMarketplace.png)
+
+3. Az a **létrehozás** lap, adja meg a következő információkat:
+
+    |    |    |
+    |--|--|
+    | **Name (Név)** | Egy leíró nevet a cognitive services-erőforrás. Azt javasoljuk egy leíró nevet, például *MyNameFaceAPIAccount*. |
+    | **Előfizetés** | Válasszon ki egy rendelkezésre álló Azure-előfizetéseit. |
+    | **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
+    | **Tarifacsomag** | A Cognitive Services-fiók költsége a választott beállításokat, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
+
+    ![Erőforrás-létrehozás képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 ## <a name="access-your-resource"></a>Az erőforrás eléréséhez
 

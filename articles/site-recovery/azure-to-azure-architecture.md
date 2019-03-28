@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 73def6b659676cc4fecf1d9ef499247c23888566
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310285"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540720"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure-bA vész-helyreállítási architektúra
 
@@ -144,7 +144,7 @@ IP-címeket használó virtuális gépek kimenő kapcsolat szabályozásához, h
 
 **Rule** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek a forrásrégióban storage-fiókok | Tárolási. < régió-neve >.
+Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek a forrásrégióban storage-fiókok | Storage. \<régió-neve >.
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure Active Directory (Azure AD).<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új hálózati biztonsági csoport (NSG) szabályai.  | AzureActiveDirectory
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés engedélyezése [Site Recovery végpontok](https://aka.ms/site-recovery-public-ips) , amelyek megfelelnek a célhelyen. 
 
@@ -152,7 +152,7 @@ Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés enged�
 
 **Rule** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-Kimenő HTTPS-forgalom engedélyezése: 443-as port | Engedélyezze, hogy a storage-fiókok a célrégióban megfelelnek tartományait. | Tárolási. < régió-neve >.
+Kimenő HTTPS-forgalom engedélyezése: 443-as port | Engedélyezze, hogy a storage-fiókok a célrégióban megfelelnek tartományait. | Storage. \<régió-neve >.
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Lehetővé teszi a tartományok, amelyek megfelelnek az Azure ad-hez.<br/><br/> Ha a jövőben hozzáadja az Azure AD-címeket szeretne létrehozni új NSG-szabályokat.  | AzureActiveDirectory
 Kimenő HTTPS-forgalom engedélyezése: 443-as port | Való hozzáférés engedélyezése [Site Recovery végpontok](https://aka.ms/site-recovery-public-ips) , amelyek megfelelnek a helyét. 
 

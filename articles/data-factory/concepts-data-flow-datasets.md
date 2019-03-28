@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 4e36e96947e6a8595230023065eb9f44a5a1f3d2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371315"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521839"
 ---
 # <a name="mapping-data-flow-datasets"></a>Data Flow adatkészletek leképezése
 
@@ -49,9 +49,27 @@ Az adatfolyam hozhat létre egy új tábla definícióját a céladatbázis adat
 
 ![Átalakítás schéma zdroje](media/data-flow/dataset2.png "SQL-séma")
 
-## <a name="delimited-text-dataset"></a>Karakterrel elválasztott szöveg adatkészlet
+## <a name="choose-your-type-of-data-first"></a>Először válassza ki az adatok típusát
 
-Elválasztójellel tagolt szöveges adatkészlet állítja a elválasztó kezeléséhez vagy egyetlen elválasztó karakterek ("\t"számára TSV,"," fürt megosztott kötetei szolgáltatás, ' |} "...) vagy több karakter határoló keresése. A fejléc sorra váltógombot állítsa be, és keresse meg azokat a forrás átalakítással automatikusan észlelje az adattípusokat.
+### <a name="delimited-text"></a>Karakterrel elválasztott szöveg
+
+Elválasztójellel tagolt szöveges adatkészlet állítja a elválasztó kezeléséhez vagy egyetlen elválasztó karakterek ("\t"számára TSV,"," fürt megosztott kötetei szolgáltatás, ' |} "...) vagy több karakter határoló keresése. A fejléc sorra váltógombot állítsa be, és keresse meg azokat a forrás átalakítással automatikusan észlelje az adattípusokat. Ha egy fogadó tagolt szöveges adatok betöltése az adatkészletet használ, csak adja meg egy célmappát. A fogadó beállításaiban megadhatja a kimeneti fájlok nevét.
+
+### <a name="parquet"></a>Parquet eszközökben
+
+Az ADF-adatfolyamok az előnyben részesített átmeneti adatkészlettípus Parquet használja. Parquet fogja tárolni a bőséges metaadatok séma az adatokkal együtt.
+
+### <a name="database-types"></a>Adatbázis típusa
+
+Kiválaszthatja az Azure SQL Database vagy Azure SQL dw-ben.
+
+A többi ADF adatkészlet típusra a másolási tevékenység használatával az adatok előkészítéséhez. Ez a minta segíteni a sablonkatalógusban egy ADF-sablon szerepel.
+
+![másolja ki az átmeneti](media/data-flow/templatedf.png "átmeneti másolása")
+
+## <a name="choose-your-connection-type"></a>Válassza ki a kapcsolat típusa
+
+Ha a Parquet vagy tagolt szöveges adatkészletet használ, az adatok ezután kiválaszthatja a hely: Az ADLS- vagy Blob.
 
 ## <a name="next-steps"></a>További lépések
 

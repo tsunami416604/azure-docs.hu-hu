@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: 8dab132cd03b24f4f9e55cb777cc0f984526ba12
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 51398c893f212bc51f3edd20ee4c666d91779352
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243363"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520003"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: Telemetria küldése egy eszközről IoT hubra és a egy háttér-alkalmazással (Python), annak olvasása
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. Jelenleg a Microsoft Azure IoT SDK Pythonhoz készült Python csak bizonyos verziójának minden egyes platformhoz támogatja. További tudnivalókért tekintse meg a [Python SDK információs](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
+A mintaalkalmazás futtatása ebben a rövid útmutatóban a Pythonban megírt. Jelenleg a Microsoft Azure IoT SDK Pythonhoz készült Python csak bizonyos verziójának minden egyes platformhoz támogatja. További tudnivalókért tekintse meg a [Python SDK információs](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
 Ez a rövid útmutató feltételezi, hogy egy Windows fejlesztési számítógépet használ. A Windows rendszerek esetében csak [Python 3.6.x](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrához 32 bites, akkor a telepítő letöltési a x86; a 64 bites architektúra töltse le az x86-64. Emellett győződjön meg arról, hogy a [Microsoft Visual C++ újraterjeszthető csomag a Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) architektúra (x86 vagy x64) telepítve van.
 

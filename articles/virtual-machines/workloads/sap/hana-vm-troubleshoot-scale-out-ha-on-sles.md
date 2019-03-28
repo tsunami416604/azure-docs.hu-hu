@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994714"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520581"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Győződjön meg arról, és az SAP HANA kibővített magas rendelkezésre állású telepítés SLES 12 SP3 hibaelhárítása 
 
@@ -68,19 +68,19 @@ Ha a **crm áttelepítése** parancshoz, ügyeljen arra, hogy a fürt konfigurá
 
 | Csomópont típusa | a virtuális gép neve | IP-cím |
 | --- | --- | --- |
-| 1 helyet a fő csomópont | hso-hana-virtuálisgép-s1-0 | 10.0.0.30 |
-| 1 1 helyet a munkavégző csomópont | hso-hana-virtuálisgép-s1-1 | 10.0.0.31 |
-| A helyen 1 2 feldolgozó csomóponton | hso-hana-virtuálisgép-s1 – 2 | 10.0.0.32 |
+| 1 helyet a fő csomópont | hso-hana-vm-s1-0 | 10.0.0.30 |
+| 1 1 helyet a munkavégző csomópont | hso-hana-vm-s1-1 | 10.0.0.31 |
+| A helyen 1 2 feldolgozó csomóponton | hso-hana-vm-s1-2 | 10.0.0.32 |
 | | | |
-| A főcsomópont 2 helyen található | hso-hana-virtuálisgép-s2-0 | 10.0.0.40 |
-| 1, 2 helyen található munkavégző csomópont | hso-hana-virtuálisgép-s2-1 | 10.0.0.41 |
-| A hely 2 2 feldolgozó csomóponton | hso-hana-virtuálisgép-s2-2  | 10.0.0.42 |
+| A főcsomópont 2 helyen található | hso-hana-vm-s2-0 | 10.0.0.40 |
+| 1, 2 helyen található munkavégző csomópont | hso-hana-vm-s2-1 | 10.0.0.41 |
+| A hely 2 2 feldolgozó csomóponton | hso-hana-vm-s2-2  | 10.0.0.42 |
 | | | |
 | Csomóponttöbbséget használó készítői | hso-hana-dm | 10.0.0.13 |
 | SBD eszköz kiszolgáló | hso-hana-sbd | 10.0.0.19 |
 | | | |
-| NFS-kiszolgálószolgáltatás 1 | hso-nfs-vm-0 | 10.0.0.15 címet |
-| NFS-kiszolgáló 2 | hso-nfs-vm-1 | 10.0.0.14 |
+| NFS-kiszolgálószolgáltatás 1 | hso-nfs-vm-0 | 10.0.0.15 |
+| NFS server 2 | hso-nfs-vm-1 | 10.0.0.14 |
 
 
 
@@ -451,7 +451,7 @@ node.startup = automatic
 
 Tesztelés és a egy virtuális gép az újraindítás után az ellenőrzés során a SBD eszköz nem jelenik többé meg bizonyos esetekben. Hiba történt az indítási beállítások és YaST2 mutatott közötti eltérést. Ellenőrizze a beállításokat, hajtsa végre az alábbi lépéseket:
 
-1. Indítsa el a YaST2.
+1. Start YaST2.
 2. Válassza ki **hálózati szolgáltatások** bal oldalán.
 3. Görgessen le, jobb oldalán **iSCSI-kezdeményező** , és jelölje ki.
 4. A következő képernyőn alatt a **szolgáltatás** lapon egyedi kezdeményező neve a csomópont megjelenik.
@@ -943,7 +943,7 @@ listeninterface = .internal
 
 
 
-## <a name="hawk"></a>HAWK
+## <a name="hawk"></a>Hawk
 
 A megoldást kínál a felhasználók számára, hogy az összes parancs a rendszerhéj szintjén menük és a grafikai inkább grafikus felhasználói Felülettel egy böngésző felületet biztosít.
 A böngésző felület használatához cserélje le a **\<csomópont\>** egy tényleges SAP HANA csomóponttal, a következő URL-címben. Adja meg a fürt hitelesítő adatait (felhasználói **fürt**):
@@ -964,7 +964,7 @@ Ez a példa bemutatja a fürtáttelepítés erőforrás okozta, a helyre vonatko
 ![HAWK lista megkötései](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Emellett feltölthet a **hb_report** Hawk alatt a kimenetet **előzmények**, látható módon. Lásd: [naplófájlokat gyűjthet hb_report](#hbreport-to-collect-log-files): 
+Emellett feltölthet a **hb_report** Hawk alatt a kimenetet **előzmények**, látható módon. Tekintse meg a naplófájlokat gyűjthet hb_report: 
 
 ![HAWK feltöltési hb_report kimenet](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

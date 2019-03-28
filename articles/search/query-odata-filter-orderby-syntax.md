@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06478cb3366054bd20239bf80f026562efd26232
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087397"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541052"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>A szűrők és az Azure Search szolgáltatásban az order by záradékok OData-kifejezések szintaxisa
 
@@ -128,10 +128,10 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 ## <a name="filter-examples"></a>Példák a szűrők  
 
- Keresse meg azt az alapdíj mellett minden hotels kisebb, mint 100 USD, vagy afölött 4 értékelése:  
+ Keresse meg azt az alapdíj mellett minden hotels kisebb, mint 200 USD értékű, vagy afölött 4 értékelése:  
 
 ```
-$filter=baseRate lt 100.0 and rating ge 4
+$filter=baseRate lt 200.0 and rating ge 4
 ```
 
  Keresse meg az összes hotels "Roach amelyben" kivételével, amely rendelkezik lett felújított 2010 óta:  
@@ -140,10 +140,10 @@ $filter=baseRate lt 100.0 and rating ge 4
 $filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
 ```
 
- Keresse meg az összes hotels alap arány kisebb, mint 200 USD értékű, amely rendelkezik lett felújított 2012, a dátumból/időből konstans, amely tartalmazza az időzóna-információk a csendes-óceáni téli idő óta:  
+ Keresse meg az összes hotels alap arány kisebb, mint 200 USD értékű, amely rendelkezik lett felújított 2010, a dátumból/időből konstans, amely tartalmazza az időzóna-információk a csendes-óceáni téli idő óta:  
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2012-01-01T00:00:00-08:00
+$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
 ```
 
  Keresse meg az összes "Hotels", amely rendelkezik a várakozást a csomagban foglalt, és ne engedélyezze a fogyasztási:  

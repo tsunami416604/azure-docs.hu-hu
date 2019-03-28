@@ -3,7 +3,7 @@ title: Az Azure Active Directory (Azure AD) való csatlakozás megvalósítás t
 description: Ismerteti a lépéseket, amelyekre szükség van a megvalósítása az Azure AD-hez csatlakoztatott eszközök a környezetben.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.subservice: devices
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b681915eb3ad9960f335d46508b857fa6ec2e20
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551772"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518933"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 

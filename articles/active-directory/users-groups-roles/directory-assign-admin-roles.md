@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9793ad76859fdd14b3194dfeb77e68905ff58fe5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b62b710a7217792276392e8815013848ef607733
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362067"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522366"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -231,7 +231,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Támogatási szakértő kommunikációs csapatok](#teams-communications-support-specialist)**: A szerepkör felhasználói belül a Microsoft Teams és a Skype vállalati verzió az eszközök a Microsoft Teams és a Skype for Business felügyeleti központ hibaelhárítás felhasználói hívás használatával kommunikációs problémák elhárításához. A szerepkör felhasználói csak tekintheti meg a felhasználói adatok hívásában az adott felhasználó rendelkezik kulcskeresési. Ez a szerepkör nem fér megtekintését, hozzon létre és kezelhetik a támogatási jegyeket.
 
-* **[Felhasználói rendszergazda](#user-account-administrator)**: A szerepkörrel rendelkező felhasználók létrehozása, felhasználók, és bizonyos korlátozásokkal (lásd alább) a felhasználók minden aspektusa kezelhető, és frissítheti a jelszó-elévülési házirendnek. Továbbá ezzel a szerepkörrel rendelkező felhasználók is csoportok létrehozásához és kezeléséhez minden. Ez a szerepkör is létrehozhatók és kezelhetők a felhasználói nézetek, kezelhetik a támogatási jegyeket, és szolgáltatások állapotának figyelése lehetővé teszi.
+* **Felhasználói rendszergazda**: A szerepkörrel rendelkező felhasználók létrehozása, felhasználók, és bizonyos korlátozásokkal (lásd alább) a felhasználók minden aspektusa kezelhető, és frissítheti a jelszó-elévülési házirendnek. Továbbá ezzel a szerepkörrel rendelkező felhasználók is csoportok létrehozásához és kezeléséhez minden. Ez a szerepkör is létrehozhatók és kezelhetők a felhasználói nézetek, kezelhetik a támogatási jegyeket, és szolgáltatások állapotának figyelése lehetővé teszi.
 
   | | |
   | --- | --- |

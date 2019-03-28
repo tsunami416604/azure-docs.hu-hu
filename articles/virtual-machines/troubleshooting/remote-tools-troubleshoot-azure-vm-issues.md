@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 2126ed2624d735d88d52ddc1ee97bfb970cc8a74
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119768"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539870"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure virtuális gép hibáinak elhárítása
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* A parancs, amely ugyanabban a vnetben számítógépen kell futtatni.
->* Dedikált IP-CÍMMEL vagy állomásnév helyett használható <computer>.
+>* Dedikált IP-CÍMMEL vagy állomásnév helyett használható \<számítógép >.
 >* Az -s paraméter gondoskodik arról, hogy a parancs hív (rendszergazdának) rendszer fiók használatával.
 >* PsExec 135-ös és a 445-ös TCP-portot használja. Ezért a két portokat kell nyitva a tűzfalon.
 

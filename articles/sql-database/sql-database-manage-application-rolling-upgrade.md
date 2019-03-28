@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 63f301b4618df9764460d0a9a133834fb72e33bb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329166"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540584"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL-adatbázis aktív georeplikáció használatával kezelheti a felhőalapú alkalmazások működés közbeni frissítése
 
@@ -103,7 +103,21 @@ Lehetővé teszik a frissítés visszaállítása, létre kell hoznia egy átmen
 Az előkészítési végzett, amikor a frissítés készen áll az átmeneti környezetben. A következő diagram azt ábrázolja, hogy ezeket a frissítési lépéseket:
 
 1. Állítsa be az elsődleges adatbázis csak olvasható módra (10) az éles környezetben. Ebben a módban garantálja, hogy az éles adatbázisban (V1) időközben nem változnak a frissítés, így megakadályozza a adateltérésekkel a V1 és v2-es adatbázis-példányok között.
-2. Válassza le a másodlagos adatbázis ugyanabban a régióban a tervezett lezárást mód (11) segítségével. Ez a művelet létrehoz egy független, de teljes körűen szinkronizált másolatot az éles adatbázisban. Ez az adatbázis lesz frissítve.
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. Állítsa le a georeplikáció leválasztásával a másodlagos (11). Ez a művelet létrehoz egy független, de teljes körűen szinkronizált másolatot az éles adatbázisban. Ez az adatbázis lesz frissítve. Az alábbi példában a Transact-SQL, de [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) is rendelkezésre áll. 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABSE V1
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. Frissítési szkriptek futtatása `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`, és az elsődleges adatbázis átmeneti (12). Az adatbázis-módosítások automatikusan replikálja az előkészítési másodlagos.
 
 ![SQL-adatbázis georeplikációs konfiguráció felhőalapú vészhelyreállítással.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

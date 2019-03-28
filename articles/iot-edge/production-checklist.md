@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433450"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521754"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -134,7 +134,7 @@ Az oktatóanyagok és egyéb dokumentáció hogy kérje meg, hogy az ugyanazon t
 
 ### <a name="use-tags-to-manage-versions"></a>Címkék használatával verziók kezelése
 
-Egy címke egy Docker fogalom, amely segítségével a Docker-tárolók verzióinak megkülönböztetésére. A címkék olyan például utótagok **1.0** , amely egy tároló-beállításjegyzékbe végén lépjen. Ha például **mcr.microsoft.com/azureiotedge-agent:1.0**. A címkék mutable és módosítható átirányítása egy másik tárolóba tetszőleges időpontban, így csapata egy konvenciókhoz, és hajtsa végre a továbblépés modul rendszerképek frissítése során meg kell egyezniük. 
+Egy címke egy docker fogalom, amely segítségével a docker-tárolók verzióinak megkülönböztetésére. A címkék olyan például utótagok **1.0** , amely egy tároló-beállításjegyzékbe végén lépjen. Ha például **mcr.microsoft.com/azureiotedge-agent:1.0**. A címkék mutable és módosítható átirányítása egy másik tárolóba tetszőleges időpontban, így csapata egy konvenciókhoz, és hajtsa végre a továbblépés modul rendszerképek frissítése során meg kell egyezniük. 
 
 A címkék segítségével érvényesítését a frissítések az IoT Edge-eszközökön. Amikor leküld egy frissített verzióját egy modul a tárolóregisztrációs adatbázisba, növelje meg a címke. Ezután küldje le új központi telepítést az eszközök növekszik a címkével ellátott. A tároló motor fogja felismerni a megnövelt címke új verzióként, és kéri a modul legújabb saját eszközre. 
 
@@ -172,7 +172,7 @@ Ezzel az ellenőrzőlistával tűzfalszabályokat kiindulópontként szolgál:
    | \*.azurecr.io | 443 | Személyes, mind a 3. fél tárolóregisztrációs adatbázis |
    | \*.blob.core.windows.net | 443 | Töltse le a lemezkép eltérések | 
    | \*.azure-devices.net | 5671, 8883, 443 | Az IoT Hub-hozzáférés |
-   | \*. docker.io  | 443 | Docker-hozzáférés (nem kötelező) |
+   | \*. docker.io  | 443 | A docker Hub hozzáféréséhez (nem kötelező) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Egy proxyn keresztül történő kommunikáció konfigurálása
 
@@ -186,16 +186,57 @@ Az eszközök fog üzembe helyezni a hálózaton, proxykiszolgálót használ, h
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren az IoT Edge-démon illesztőprogram naplózása alapértelmezés szerint használja a naplók. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-WinEvent` a lekérdezések naplói a démonból. IoT Edge-modulok a JSON-illesztőprogram naplózása, a Docker alapértelmezett használja.  
+Linux rendszeren az IoT Edge-démon illesztőprogram naplózása alapértelmezés szerint használja a naplók. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-WinEvent` a lekérdezések naplói a démonból. IoT Edge-modulok az a JSON-illesztőprogram naplózást, amely az alapértelmezett.  
 
 Amikor egy IoT Edge-példányban tesztel, kérheti le a naplókat és hárítsa el az eszközök általában hozzáférhet. A telepítési forgatókönyvben nem lehet ezt a lehetőséget. Vegye figyelembe, hogy azt a módszert, éles környezetben az eszközökkel kapcsolatos információk összegyűjtéséhez. Az egyik lehetőség, hogy egy naplózási modul, amely adatokat gyűjt a más modulok tesznek, és elküldi a felhőbe. Például egy naplózási modul [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), vagy a saját is tervezhet. 
 
-Ha aggódik túl nagy a korlátozott erőforráshoz eszközön naplókat, a memóriahasználat csökkentése érdekében néhány lehetősége van. 
+### <a name="place-limits-on-log-size"></a>Napló mérete korlátozza
 
-* A Docker-démont, maga az összes docker logfiles mérete kifejezetten korlátozhatja. A Linux rendszerre, konfigurálása, a démon `/etc/docker/daemon.json`. A Windows `C:\ProgramData\docker\confige\daemon.json`. 
-* Ha azt szeretné beállítani az egyes tárolók naplófájl méretét, az egyes modul a CreateOptions megteheti. 
-* Konfigurálja az automatikus kezelésére naplókat a naplók állítsa az alapértelmezett naplózási illesztőprogram, a Docker a Docker. 
-* Bizonyos időközönként eltávolítja az régi naplókat az eszközről a logrotate eszköz a Docker telepítésével. Használja a következő fájl megadása: 
+Alapértelmezés szerint a Moby tároló motor nincs beállítva tároló log méretbeli korlátokat. Idővel ez az eszköz a naplók segítségével betelik, és kevés lemezterület vezethet. Vegye figyelembe, hogy ez a következő beállításokat:
+
+**Beállítás: Globális vonatkozó korlátokat tartalmazza az összes tároló-modulok beállítása**
+
+A tároló motor naplóbeállításainak az összes tároló logfiles méretének korlátozhatja. Az alábbi példa a naplófájl-illesztőprogram állítja `json-file` (ajánlott)-fájlok számától és méretétől vonatkozó korlátozások:
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+Ezt az információt nevű fájl hozzáadása (vagy hozzáfűző) `daemon.json` , és helyezze a megfelelő helyet az adott eszközplatformon.
+
+| Platform | Hely |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+A tároló-motor a módosítások érvénybe léptetéséhez újra kell indítani.
+
+**Beállítás: Minden tároló modul beállítása a napló**
+
+Ezért teheti a **createOptions** minden egyes modul. Példa:
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**A Linux rendszerek további beállítások**
+
+* A naplók elküldése a tároló motor konfigurálása `systemd` [napló](https://docs.docker.com/config/containers/logging/journald/) beállításával `journald` , az alapértelmezett naplózási illesztőprogramot. 
+
+* Bizonyos időközönként eltávolítja az régi naplókat az eszközről a logrotate eszköz telepítésével. Használja a következő fájl megadása: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

@@ -12,45 +12,41 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f151c45920a51b3c9a25f36de34b2c1800e4e71
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834597"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520683"
 ---
-# <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Csatlakozás az Azure SQL Database és az Active Directory MFA
+# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Csatlakozás az Azure SQL Database az Azure multi-factor Authentication
 
-Ez a cikk ismerteti egy C# programot, amely csatlakozik a Microsoft Azure SQL Database. A program interaktív módú hitelesítést, amely támogatja a [Azure Active Directory (Azure AD) többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+Ez a cikk ismerteti egy C# Azure SQL Database-adatbázishoz csatlakozó program. A program interaktív módú hitelesítést, amely támogatja a [Azure multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
-Többtényezős hitelesítés támogatása az SQL-eszközökkel kapcsolatos további információkért lásd: [Azure Active Directory-támogatás az SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
+A multi-factor Authentication szolgáltatás támogatása az SQL-eszközökkel kapcsolatos további információkért lásd: [Azure Active Directory-támogatás az SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
-## <a name="multi-factor-authentication-for-azure-sql-database"></a>Többtényezős hitelesítés az Azure SQL Database
+## <a name="multi-factor-authentication-for-azure-sql-database"></a>Többtényezős hitelesítés az Azure SQL Database-hez
 
-.NET-keretrendszer verziója 4.7.2, a enumerálás kezdődően [ `SqlAuthenticationMethod` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) új értéke – `ActiveDirectoryInteractive`. Az ügyfél C# program, a felsorolási érték esetén a rendszer a többtényezős hitelesítés támogatása az Azure AD interaktív mód használatával csatlakozni egy Azure SQL Database. Futtatja a programot a felhasználó számára jelenik meg a következő párbeszédpanelen:
+.NET-keretrendszer verziója 4.7.2, a enumerálás kezdődően [ `SqlAuthenticationMethod` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) egy új értékkel rendelkezik: `ActiveDirectoryInteractive`. Az ügyfél C# program, a felsorolási érték esetén a rendszer az Azure Active Directory (Azure AD), amely támogatja a multi-factor Authentication szolgáltatás egy Azure SQL Database-adatbázishoz csatlakozni interaktív módot használja. Futtatja a programot a felhasználó számára jelenik meg a következő párbeszédpanelen:
 
 * Egy párbeszédpanel, amely egy Azure AD felhasználói nevét jeleníti meg, és kéri a jelszót.
 
-   Ha a felhasználó tartománya össze van vonva az Azure ad-vel, majd a párbeszédpanel nem jelenik meg jelszavát nem szükséges.
+   Ha a felhasználó tartománya össze van vonva az Azure ad-vel, ezen a párbeszédpanelen nem jelenik meg, mert nincs jelszó van szükség.
 
-   Ha az Azure AD-szabályzat ró a felhasználó MFA, majd a következő két párbeszédpanelek jelennek meg.
+   Ha az Azure AD-szabályzat ró a felhasználó a multi-factor Authentication szolgáltatás, a következő két párbeszédpanelek jelennek meg.
 
-* Az első alkalommal a felhasználó végighalad a többtényezős hitelesítés, a rendszer megjeleníti a szöveges üzenetek küldéséhez mobiltelefonszám kérő párbeszédpanel. Minden üzenetet biztosít a *ellenőrzőkódot* , amely a felhasználónak meg kell adnia, a következő párbeszédpanelen.
+* Az első alkalommal a felhasználó végighalad a többtényezős hitelesítés, a rendszer egy párbeszédpanel, amely kéri a szöveges üzenetek küldéséhez mobiltelefonszám jeleníti meg. Minden üzenetet biztosít a *ellenőrzőkódot* , amely a felhasználónak meg kell adnia, a következő párbeszédpanelen.
 
-* Egy MFA ellenőrző kódot, amelyet a rendszer elküldte a mobiltelefonra kérő párbeszédpanel.
+* A multi-factor Authentication ellenőrző kódot, amelyet a rendszer elküldte a mobiltelefonra kérő párbeszédpanel.
 
-Az Azure AD MFA igénylése konfigurálásával kapcsolatos további információkért lásd: [Ismerkedés az Azure multi-factor Authentication a felhőben](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
+Többtényezős hitelesítés kötelezővé tétele az Azure AD konfigurálásával kapcsolatos további információkért lásd: [Ismerkedés az Azure multi-factor Authentication a felhőben](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
 A párbeszédpanelek pillanatképeiért lásd: [többtényezős hitelesítés beállítása az SQL Server Management Studio és az Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!TIP]
-> A .NET Framework API-k segítségével megkeresheti az **.NET API böngésző** eszköz oldalon:
+> A .NET Framework API-k segítségével megkeresheti a [.NET API böngésző eszköz lap](https://docs.microsoft.com/dotnet/api/).
 >
-> [https://docs.microsoft.com/dotnet/api/](https://docs.microsoft.com/dotnet/api/)
->
-> Is kereshet közvetlenül és az opcionális **? kifejezés =&lt;érték keresés&gt;**  paramétert:
->
-> [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
+> Közvetlenül is kereshet a [választható? kifejezés =&lt;érték keresés&gt; paraméter](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Konfigurálja a C# alkalmazás az Azure Portalon
 
@@ -58,42 +54,39 @@ Mielőtt hozzákezd, rendelkeznie kell egy [Azure SQL Database-kiszolgáló](sql
 
 ### <a name="register-your-app-and-set-permissions"></a>Az alkalmazás regisztrálásához és az engedélyek beállítása
 
+Az Azure AD-hitelesítés használatára a C# program rendelkezik egy Azure AD-alkalmazást, regisztrálni. Ha alkalmazásokat szeretne regisztrálni, kell lennie vagy egy Azure AD-rendszergazda vagy egy felhasználó hozzárendelve az Azure AD *alkalmazásfejlesztő* szerepkör. További információ a szerepkörök hozzárendelése: [rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése az Azure Active Directory felhasználók](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-Az Azure AD-hitelesítés használatára a C# program rendelkezik egy Azure AD-alkalmazást, regisztrálni. Ha alkalmazásokat szeretne regisztrálni, kell lennie vagy egy Azure AD-rendszergazda vagy egy felhasználó hozzárendelve az Azure AD *alkalmazásfejlesztő* szerepkör. További információ a szerepkörök hozzárendelése: [rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryval a felhasználók számára.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
-
- Az alkalmazásregisztráció befejezését állít elő, és megjeleníti az **Alkalmazásazonosító**. A program ezt az Azonosítót való csatlakozáshoz szükséges van.
-
+Az alkalmazásregisztráció befejezését állít elő, és megjeleníti az **Alkalmazásazonosító**. A program ezt az Azonosítót való csatlakozáshoz szükséges van.
 
 Regisztráljon, és az alkalmazáshoz szükséges engedélyek beállítása:
 
-1. Az Azure portal > **Azure Active Directory** > **alkalmazásregisztrációk** > **új alkalmazás regisztrálása**
+1. Az Azure Portalon válassza ki a **Azure Active Directory** > **alkalmazásregisztrációk** > **új alkalmazásregisztráció**.
 
     ![Appok regisztrálása](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
-    Miután létrejött az alkalmazás regisztrációját, a **Alkalmazásazonosító** érték jön létre és jelennek meg.
+    Az alkalmazásregisztráció létrehozása után a **Alkalmazásazonosító** érték jön létre és jelennek meg.
 
     ![Alkalmazás-azonosító megjelenítése](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. **Regisztrált alkalmazás** > **beállítások** > **szükséges engedélyek** > **hozzáadása**
+2. Válassza ki **regisztrált alkalmazás** > **beállítások** > **szükséges engedélyek** > **Hozzáadás**.
 
     ![Regisztrált alkalmazás engedélyek beállításai](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **Szükséges engedélyek** > **Hozzáadás** > **API kiválasztása** > **Azure SQL Database**
+3. Válassza ki **szükséges engedélyek** > **Hozzáadás** > **API kiválasztása** > **Azure SQL Database**.
 
     ![API-t az Azure SQL Database-hozzáférés hozzáadása](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. **API-hozzáférés** > **engedélyek kiválasztása** > **delegált engedélyek**
+4. Válassza ki **API-hozzáférés** > **engedélyek kiválasztása** > **delegált engedélyek**.
 
     ![API-t az Azure SQL Database-engedélyek delegálása](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 ### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Állítsa be az Azure AD-rendszergazdát az SQL Database-kiszolgáló
 
+Az a C# program futtatását, egy Azure SQL server-rendszergazda hozzá kell rendelnie az SQL Database-kiszolgálóhoz az Azure AD-rendszergazdát. 
 
-Az a C# program futtatását, egy Azure SQL server-rendszergazda hozzá kell rendelnie az Azure SQL Serverhez Azure AD-rendszergazdát. 
+Az a **SQL Server** lapon jelölje be **Active Directory-rendszergazda** > **rendszergazda beállítása**.
 
- * **Az SQL Server** > **Active Directory-rendszergazda** > **rendszergazda beállítása**
-
-Az Azure SQL Database az Azure AD-rendszergazdák és felhasználók kapcsolatos további információkért lásd: a képernyőképek a [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server), a szakaszban **Azure-beli üzembe helyezése Az Azure SQL Database-kiszolgáló Active Directory-rendszergazda**.
+Az Azure SQL Database az Azure AD-rendszergazdák és felhasználók kapcsolatos további információkért tekintse meg a képernyőképeket [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>Nem rendszergazdai felhasználók hozzáadása egy adott adatbázishoz (nem kötelező)
 
@@ -105,23 +98,23 @@ További információkért lásd: [használata az Azure Active Directory-hiteles
 
 ## <a name="new-authentication-enum-value"></a>Új hitelesítés Felsorolásérték
 
-A C# példa támaszkodik a [ `System.Data.SqlClient` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) névtér. A multi-factor authentication érdeklik a enumerálás van `SqlAuthenticationMethod`, amely rendelkezik a következő értékeket:
+A C# példa támaszkodik a [ `System.Data.SqlClient` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) névtér. A multi-factor Authentication érdeklik a enumerálás van `SqlAuthenticationMethod`, amely rendelkezik a következő értékeket:
 
 - `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
-   Ez az érték használata egy Azure ad-ben felhasználónév MFA megvalósítása. Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény. Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
+   Használja ezt az értéket egy Azure AD felhasználói névvel multi-factor Authentication hitelesítés megvalósításához. Ez az érték a fókusz a jelen cikk. Interaktív élményt párbeszédpanel a felhasználói jelszót, majd a többtényezős hitelesítés érvényesítés megjelenítésével, ha a multi-factor Authentication ezt a felhasználót a várakozásnak hoz létre. Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
 - `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  Használja ezt az értéket a egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a hitelesítési módszer nem támogatja a többtényezős hitelesítés.
+  Használja ezt az értéket a egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a hitelesítési módszer nem támogatja a többtényezős hitelesítést.
 
 - `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
-  Ezt az értéket használja a hitelesítéshez, amely egy Azure AD-felhasználónevet és jelszót igényel. Az Azure SQL Database szolgáltatás végzi a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
+  Ezt az értéket használja a hitelesítéshez, amely egy Azure AD-felhasználónevet és jelszót igényel. Az Azure SQL Database szolgáltatás végzi a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítést.
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Állítsa be C# paraméterértékeket az Azure Portalról
 
-Az a C# programot sikeresen futtatni kell, hogy a statikus mezők rendelje hozzá a megfelelő értékekre. Itt látható a mezők példaértékek láthatók. A következők az Azure-portál helyek hol lehet beszerezni a szükséges értékeket is látható:
+Az a C# programot sikeresen futtatni kell, hogy a statikus mezők rendelje hozzá a megfelelő értékekre. Itt látható a mezők példaértékek láthatók. Az Azure-portál helyek hol lehet beszerezni a szükséges értékeket is látható vannak.
 
 | Statikus mező neve | Példaérték | Ha az Azure Portalon |
 | :---------------- | :------------ | :-------------------- |
@@ -129,25 +122,25 @@ Az a C# programot sikeresen futtatni kell, hogy a statikus mezők rendelje hozz�
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Az Azure Active Directory** > **felhasználói** > **új vendégfelhasználó** |
 | Initial_DatabaseName | "myDatabase." | **SQL Server-kiszolgálók** > **SQL-adatbázisok** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > **alkalmazás azonosítója** |
-| RedirectUri | új Uri ("https://mywebserver.com/") | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > *[Your-alkalmazás-Regisz]*  >  **Beállítások** > **RedirectURIs**<br /><br />Ebben a cikkben minden olyan érvényes érték nem okoz gondot az RedirectUri, itt nem használ. |
+| RedirectUri | új Uri ("https://mywebserver.com/") | **Az Azure Active Directory** > **alkalmazásregisztrációk** > **Keresés név alapján** > *[Your App-regisztrációs]*  >  **Beállítások** > **RedirectURIs**<br /><br />Ebben a cikkben minden olyan érvényes érték nem okoz gondot az RedirectUri, mert itt nem használja. |
 | &nbsp; | &nbsp; | &nbsp; |
 
-## <a name="verify-with-sql-server-management-studio-ssms"></a>Ellenőrizze az SQL Server Management Studio (SSMS)
+## <a name="verify-with-sql-server-management-studio"></a>Ellenőrizze az SQL Server Management Studióval
 
-Mielőtt futtatja a C# program, egy célszerű ellenőrizni, hogy a beállítás és konfiguráció helyesek az ssms-ben. Bármely C# program hiba majd is leszűkül forráskódjához.
+Mielőtt futtatja a C# program, akkor célszerű, hogy ellenőrizze, hogy a beállítás és konfiguráció megfelelő-e az SQL Server Management Studio (SSMS). Bármely C# program hiba majd is leszűkül forráskódjához.
 
 ### <a name="verify-sql-database-firewall-ip-addresses"></a>Ellenőrizze az SQL Database-tűzfal IP-címek
 
-Futtassa az ssms-t ugyanazon a számítógépen, ugyanabban az épületben, ahonnan futtatni szeretné a C# program. Ebben a tesztben bármely **hitelesítési** mód rendben. A végrehajtás, hogy az adatbázis-kiszolgáló tűzfal nem fogad az IP-címe esetén olvassa el [Azure SQL Database kiszolgálószintű és adatbázisszintű tűzfalszabályok](sql-database-firewall-configure.md) segítséget.
+Futtassa az ssms-t ugyanazon a számítógépen, ugyanabban az épületben, ahonnan futtatni szeretné a C# program. Ebben a tesztben bármely **hitelesítési** üzemmód az OK gombra. A végrehajtás, hogy az adatbázis-kiszolgáló tűzfal nem fogad az IP-címe esetén olvassa el [Azure SQL Database kiszolgálószintű és adatbázisszintű tűzfalszabályok](sql-database-firewall-configure.md) segítséget.
 
-### <a name="verify-azure-active-directory-mfa"></a>Az Azure Active Directory MFA ellenőrzése
+### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Az Azure Active Directory multi-factor Authentication hitelesítés ellenőrzése
 
 Futtassa újra az ssms-ben, ezúttal az **hitelesítési** beállítása **Active Directory - MFA-támogatással rendelkező univerzális**. Ez a beállítás SSMS 17.5 vagy újabb verziója szükséges.
 
-További információkért lásd: [multi-factor Authentication hitelesítés beállítása az ssms-ben és az Azure AD](sql-database-ssms-mfa-authentication-configure.md).
+További információkért lásd: [multi-factor Authentication konfigurálása az ssms-ben és az Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Ha az adatbázis egy vendég felhasználók is szüksége a az Azure AD-tartomány nevét az adatbázis - **beállítások** > **AD tartomány felhasználónév vagy a bérlői azonosító**. Az Azure Portalon keresse meg a tartomány nevét, válassza a **Azure Active Directory** > **egyéni tartománynevek**. Az a C# példaprogram biztosít egy tartomány név nem szükséges.
+> Ha az adatbázis egy vendég felhasználók is kell az adatbázist az Azure AD-tartomány nevet kell adnia: Válassza ki **beállítások** > **AD tartomány felhasználónév vagy a bérlői azonosító**. Az Azure Portalon keresse meg a tartomány nevét, válassza a **Azure Active Directory** > **egyéni tartománynevek**. Az a C# példaprogram biztosít egy tartomány név nem szükséges.
 
 ## <a name="c-code-example"></a>C#-kód példa
 
@@ -155,7 +148,7 @@ A példában C# program támaszkodik a [ *Microsoft.IdentityModel.Clients.Active
 
 Ez a csomag telepítéséhez a Visual Studióban, válassza ki a **projekt** > **NuGet-csomagok kezelése**. Keresse meg és telepítse **Microsoft.IdentityModel.Clients.ActiveDirectory**.
 
-### <a name="c-source-code"></a>C#Forráskód
+Ez a példa C# forráskódját.
 
 ```csharp
 
@@ -247,11 +240,11 @@ namespace ADInteractive5
                 Console.ResetColor();
             }
         }
-    } // EOClass Program .
+    } // EOClass Program.
 
     /// <summary>
     /// SqlAuthenticationProvider - Is a public class that defines 3 different Azure AD
-    /// authentication methods.  The methods are supported in the new .NET 4.7.2 .
+    /// authentication methods.  The methods are supported in the new .NET 4.7.2.
     ///  . 
     /// 1. Interactive,  2. Integrated,  3. Password
     ///  . 
@@ -318,14 +311,14 @@ namespace ADInteractive5
                 || authenticationMethod == SC.SqlAuthenticationMethod.ActiveDirectoryInteractive
                 || authenticationMethod == SC.SqlAuthenticationMethod.ActiveDirectoryPassword;
         }
-    } // EOClass ActiveDirectoryAuthProvider .
+    } // EOClass ActiveDirectoryAuthProvider.
 } // EONamespace.  End of entire program source code.
 
 ```
 
 &nbsp;
 
-#### <a name="actual-test-output-from-c"></a>A C# tényleges tesztkimenet
+Ez a példa a C# kimenet tesztelése.
 
 ```
 [C:\Test\VSProj\ADInteractive5\ADInteractive5\bin\Debug\]

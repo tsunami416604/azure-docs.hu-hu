@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 3/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 84af16c156635f7f7dbfb42972e564dd21a554bb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436889"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520649"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -133,6 +133,11 @@ Használhatja a `POST /vision/v2.0/recognizeText` és `GET /vision/v2.0/textOper
 
 Használhatja a `POST /vision/v2.0/recognizeTextDirect` művelet szinkron ismeri fel a képet nyomtatott szöveg. Mivel ez a művelet szinkron, ehhez a művelethez a kérelem törzsében megegyezik a számára, amely a `POST /vision/v2.0/recognizeText` műveletet, de a válasz törzs esetében ez a művelet nem ugyanaz, mint amellyel által visszaadott a `GET /vision/v2.0/textOperations/*{id}*` műveletet.
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+
 ## <a name="stop-the-container"></a>Állítsa le a tároló
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -141,9 +146,6 @@ Használhatja a `POST /vision/v2.0/recognizeTextDirect` művelet szinkron ismeri
 
 A kimenet futtatásakor a tároló [csatlakoztatási](./computer-vision-resource-container-config.md#mount-settings) és naplózás engedélyezve van, a tárolót hoz létre a naplófájlokat, amelyek hasznosak a hibaelhárítás indítása, vagy a tároló futtatása közben történik. 
 
-## <a name="containers-api-documentation"></a>Tároló API-dokumentáció
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Számlázás
 

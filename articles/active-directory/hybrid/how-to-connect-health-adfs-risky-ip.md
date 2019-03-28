@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170802"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540907"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP jelentés (nyilvános előzetes verzió)
 Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -38,7 +38,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > 
 
 ## <a name="what-is-in-the-report"></a>Mi az a jelentés?
-A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. Ez a következő adatokat tartalmazza: ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
+A sikertelen bejelentkezési tevékenység ügyfél IP-címeket a webalkalmazás-Proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. Ez a következő adatokat tartalmazza: ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
 
 | Jelentéselem | Leírás |
 | ------- | ----------- |

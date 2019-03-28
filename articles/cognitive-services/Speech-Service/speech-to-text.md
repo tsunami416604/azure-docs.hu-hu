@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: acf338afdf33408637bf7cca79d28f5e90888eba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224440"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520666"
 ---
 # <a name="what-is-speech-to-text"></a>Mit jelent a hang-szöveg transzformációs?
 
@@ -24,7 +24,7 @@ Hang-szöveg transzformációs Azure Speech Services, más néven hang-szöveg t
 
 Alapértelmezés szerint a hang-szöveg transzformációs szolgáltatás univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adatok felhasználásával lett betanított, és a felhőben üzembe helyezett. Az optimális legyen természetes nyelvi és Diktálás forgatókönyvek. Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. 
 
-Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy hang fájlok elérésére a Speech SDK és a REST API-k a storage-ból. A beszédfelismerés SDK támogatja a WAV/PCM 16 bites, 16 kHz, egyetlen-channel hangot beszédfelismerési. További hangformátumok támogatottak használatával a [hang-szöveg transzformációs REST-végpont](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-formats) vagy a [a batch szolgáltatás beszédátírási](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
+Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy hang fájlok elérésére a Speech SDK és a REST API-k a storage-ból. A beszédfelismerés SDK támogatja a WAV/PCM 16 bites, 16 kHz, egyetlen-channel hangot beszédfelismerési. További hangformátumok támogatottak használatával a [hang-szöveg transzformációs REST-végpont](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) vagy a [a batch szolgáltatás beszédátírási](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats).
 
 ## <a name="core-features"></a>Alapfunkciók
 

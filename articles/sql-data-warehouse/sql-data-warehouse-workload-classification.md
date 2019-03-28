@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994003"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520131"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>Az SQL Data Warehouse számítási feladatok besorolás (előzetes verzió)
 
@@ -33,6 +33,8 @@ Számítási feladat felügyeleti osztályozás lehetővé teszi, hogy a számí
 Míg számos módon adatraktározás számítási besorolásához, a legegyszerűbb és leggyakrabban használt besorolási, betöltés és lekérdezés. Tölt be adatokat az insert, update és delete utasításokat.  Lekérdezheti, ha kiválasztja az adatokat. Egy adattárház-megoldások gyakran kell egy számítási feladat házirend betöltése tevékenységeit, például egy nagyobb erőforrásosztály több erőforrást hozzárendelése. A különböző számítási feladatok a házirend-lekérdezés, például a tevékenységek betöltésére képest alacsonyabb fontossági lehet alkalmazni.
 
 Akkor is subclassify a betöltés és lekérdezés számítási feladatokat is. Subclassification biztosítja a számítási feladatok vezérlése. Lekérdezési számítási feladatok például állhat, adatkocka frissül, irányítópult-lekérdezések vagy ad hoc lekérdezéseket. Ezen lekérdezési számítási feladatok különböző erőforrás osztályok vagy fontosság beállítással mindegyike osztályozhatja. Betöltés subclassification is kihasználhatják. A nagyobb erőforrásosztályok nagy átalakításokat is hozzárendelhető. Magasabb fontossági használható annak biztosítása érdekében fontos értékesítési adatokat betöltő időjárási adatok előtt, vagy egy közösségi adatcsatornát.
+
+Nem az összes utasítást, nem szükséges erőforrásokat, és nem befolyásolhatja az végrehajtási fontosság kell sorolni.  A DBCC paranccsal a BEGIN, VÉGLEGESÍTÉSI és ROLLBACK TRANSACTION utasítások nem besorolt.
 
 ## <a name="classification-process"></a>Minősítési folyamat
 

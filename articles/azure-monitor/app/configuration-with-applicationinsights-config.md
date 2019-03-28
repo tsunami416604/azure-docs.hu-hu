@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d17b1b754afc5067a885025dba83cd0fba2370d5
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214572"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522247"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
@@ -30,7 +30,7 @@ Egy ezzel egyenértékű fájlt a vezérlő nem létezik a [SDK egy weblapon][cl
 Ez a dokumentum ismerteti a szakaszok jelenik meg a konfigurációs fájlt, hogy szabályozzák az SDK összetevői, és mely NuGet-csomagok betöltése összetevőket.
 
 > [!NOTE]
-> Csak akkor érvényesíthetők ApplicationInsights.config és .xml utasításokat a .NET Core SDK-t. Egy .NET Core-alkalmazást módosítások általában használjuk az appsettings.json fájlt. Ez egy példát találhat a [Snapshot Debugger dokumentációját.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> Csak akkor érvényesíthetők ApplicationInsights.config és .xml utasításokat a .NET Core SDK-t. Egy .NET Core-alkalmazást módosítások általában használjuk az appsettings.json fájlt. Ez egy példát találhat a [Snapshot Debugger dokumentációját.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetria modulok (ASP.NET)
 Minden telemetriai modul egy adott típusú adatokat gyűjt, és a fő API segítségével az adatok küldése. A modulok telepítése különböző NuGet-csomagok, amelyek is hozzáadhat a .config fájlt a szükséges sorok szerint.
@@ -134,7 +134,7 @@ A standard szintű inicializálók összes állítottak vagy a Web- vagy Windows
 
 A Service Fabric-ban futó .NET-alkalmazásokban, hozzáadhatja a `Microsoft.ApplicationInsights.ServiceFabric` NuGet-csomagot. Ez a csomag tartalmaz egy `FabricTelemetryInitializer`, amely a Service Fabric további tulajdonságokkal bővít telemetriai. További információkért lásd: a [GitHub-oldalon](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) hozzá a NuGet-csomag tulajdonságait.
 
-## <a name="telemetry-processors-aspnet"></a>Telemetria feldolgozók (ASP.NET)
+## <a name="telemetry-processors-aspnet"></a>Telemetry Processors (ASP.NET)
 Telemetria processzorok szűrheti és módosíthatja mindegyik telemetriaelemhez, az SDK-ból a portálon való továbbítás előtt.
 
 Is [írhat saját telemetriát processzorok](../../azure-monitor/app/api-filtering-sampling.md#filtering).
@@ -180,8 +180,8 @@ Ezeket a paramétereket befolyásolják, hogyan a Java SDK-t kell tárolni és a
 #### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
 Az SDK-t a memóriában tárolt tárolható telemetriai elemek száma. Ha eléri ezt a számot, a telemetriai adatok kiürítené –, a telemetriai adatok elemek érkeznek az Application Insights-kiszolgáló.
 
-* Min.: 1
-* Maximális száma: 1000
+* Min: 1
+* Max: 1000
 * Alapértelmezett: 500
 
 ```
@@ -198,8 +198,8 @@ Az SDK-t a memóriában tárolt tárolható telemetriai elemek száma. Ha eléri
 #### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
 Meghatározza, hogy milyen gyakran a memórián belüli storage-ban tárolt adatok ki kell üríteni (az Application Insightsnak elküldött).
 
-* Min.: 1
-* Maximális száma: 300
+* Min: 1
+* Max: 300
 * Alapértelmezett: 5
 
 ```
@@ -216,8 +216,8 @@ Meghatározza, hogy milyen gyakran a memórián belüli storage-ban tárolt adat
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
 Meghatározza a maximális mérete (MB), amely a helyi lemezen az állandó tároló számára engedélyezett. Ez a tároló megőrzése telemetriai elemeket, amelyeket nem sikerült az Application Insights-végpont továbbíthatja a Microsoftnak szolgál. A tároló mérete feltétele teljesült, amikor új telemetriai tételek elvesznek.
 
-* Min.: 1
-* Maximális száma: 100
+* Min: 1
+* Max: 100
 * Alapértelmezett: 10
 
 ```

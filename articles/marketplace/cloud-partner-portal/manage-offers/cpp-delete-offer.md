@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f26597022b89bcd113ee250db75a842c634273eb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371383"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540006"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace és AppSource ajánlatok és termékváltozatok törlése
 
@@ -28,7 +28,7 @@ Különböző okok miatt dönthet úgy, hogy visszavonja az ajánlatot a Microso
 - *Ajánlat eltávolítása* biztosítja, hogy már nem lehet-e vásárolhat új ügyfeleket, vagy üzembe helyezni az ajánlatot, azonban nem érinti a meglévő ügyfelekre, akik támogatnia kell a licencszerződést, és a vonatkozó törvényeknek megfelelően. 
 - *Ajánlat megszüntetése* azt a folyamatot, a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés. 
 
-Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560) (7. szakasz) és a [részvételi szabályzatában](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (szakasz [ Ajánlatok felfüggesztése és eltávolítása](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560) és a [részvételi szabályzatában](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (szakasz [ajánlat felfüggesztése és eltávolítása](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
 Ez a cikk előadások információ a különböző támogatott törlés forgatókönyvek és az egyes végrehajtásához szükséges lépéseket.  
 

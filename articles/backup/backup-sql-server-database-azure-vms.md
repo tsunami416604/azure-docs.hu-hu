@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285071"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522162"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -145,7 +145,7 @@ Biztonsági mentés a következőképpen konfigurálja:
 
    - Válassza ki az alapértelmezett házirend: HourlyLogBackup.
    - Válassza ki a korábban létrehozott SQL meglévő biztonsági mentési házirend.
-   - [Adja meg egy új házirendet](#configure-a-backup-policy) a helyreállítási Időkorlát és a megőrzési tartomány alapján.
+   - Új szabályzat a helyreállítási Időkorlát és a megőrzési tartomány alapján határozza meg.
 
      ![Válassza ki a biztonsági mentési szabályzat](./media/backup-azure-sql-database/select-backup-policy.png)
 

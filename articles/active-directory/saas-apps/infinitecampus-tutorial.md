@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0ada3055a3347cb42179fddbba671f2f03f502d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d7d194d810e0fd3b9fb57b0876bee12447f65c6
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885067"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Végtelen Campus az Azure Active Directory-integráció
 
@@ -90,7 +90,7 @@ Az Azure AD egyszeri bejelentkezés a végtelen Campus tesztelése és konfigur�
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Létrehozás egy végtelen telephelyi tesztfelhasználót](#creating-a-infinite-campus-test-user)**  – egy megfelelője a Britta Simon végtelen Campus, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+3. **[Létrehozás egy végtelen telephelyi tesztfelhasználót](#creating-an-infinite-campus-test-user)**  – egy megfelelője a Britta Simon végtelen Campus, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 

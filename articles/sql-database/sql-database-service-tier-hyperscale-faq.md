@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/26/2019
+ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075935"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540669"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -216,7 +216,7 @@ Nem. Nyilvános előzetes verzióban egy nagy kapacitású adatbázis nem helyez
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Tegye elveszítem a bármely funkciók és képességek a nagy kapacitású szolgáltatásszint való migrálás után
 
-Igen. Azure SQL Database funkcióit nem támogatottak a nagy kapacitású nyilvános előzetesben, beleértve többek között a TDE és hosszú távú adatmegőrzés. Miután áttelepítette az adatbázisok, nagy kapacitású, ezek a funkciók tovább működni.
+Igen. Azure SQL Database funkcióit nem támogatottak a nagy kapacitású hosszú távú adatmegőrzés nem kizárólagosan beleértve a nyilvános előzetes verzióban. Miután áttelepítette az adatbázisok, nagy kapacitású, ezek a funkciók tovább működni.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Áthelyezhető a helyszíni SQL Server-adatbázis vagy az SQL Server virtuális gép adatbázis nagy kapacitású
 

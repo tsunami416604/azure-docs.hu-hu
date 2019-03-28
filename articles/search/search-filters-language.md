@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 76892e22e940476ca26cde7a91bfe928b47f22ba
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311184"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522264"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Az Azure Search nyelven szűrése 
 
@@ -39,11 +39,11 @@ A minták tallózása, beleértve a [ingatlan minta](search-get-started-portal.m
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Hitelesítésikód-példák Meződefiníciók nyelvek esetén a megjelenítő, lásd: [(.NET) index definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet#define-your-azure-search-index) és [definiálása az indexekben (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api#define-your-azure-search-index-using-well-formed-json).
+> Hitelesítésikód-példák Meződefiníciók nyelvek esetén a megjelenítő, lásd: [(.NET) index definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [definiálása az indexekben (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api-using-well-formed-json).
 
 ## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
 
-Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
+Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, és töltse fel az index](https://docs.microsoft.com/azure/search/search-create-index-dotnet) mielőtt egy lekérdezést. Ebben a lépésben Itt a teljesség megemlíteni azt. Egyik módja határozza meg, hogy rendelkezésre áll-e az index, indexeket lista ellenőrzésével a [portál](https://portal.azure.com).
 
 ## <a name="constrain-the-query-and-trim-results"></a>A lekérdezés megtartása és a tároló visszaigénylésének eredmények
 

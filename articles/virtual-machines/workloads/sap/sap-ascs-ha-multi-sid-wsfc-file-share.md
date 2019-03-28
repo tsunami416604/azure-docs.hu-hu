@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 845bf72f52bb83fa597c597871599c826e5749f6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479973"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540142"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -241,7 +241,7 @@ A célja, hogy több SAP speciális üzleti alkalmazás programozási (ASCS) vag
 
 _**2. ábra:** SAP több biztonsági AZONOSÍTÓVAL konfigurációs két fürtben_
 
-A telepítés, egy további **SAP \<SID2 >** rendszer megegyezik a telepítés az egyik <SID> rendszer. Két további előkészítő lépések szükség, az ASC/SCS-fürtön, valamint a fájl megosztási SOFS-fürthöz.
+A telepítés, egy további **SAP \<SID2 >** rendszer megegyezik a telepítés az egyik \<SID > rendszer. Két további előkészítő lépések szükség, az ASC/SCS-fürtön, valamint a fájl megosztási SOFS-fürthöz.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Az SAP több biztonsági AZONOSÍTÓVAL forgatókönyvhöz az infrastruktúra előkészítése
 
@@ -261,7 +261,7 @@ Ezeket a lépéseket ismerteti [infrastruktúra előkészítése az SAP több bi
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>A meglévő SAP globális gazdagép használatával egy SOFS-fürtöt az infrastruktúra előkészítése
 
-Újból felhasználhatja a meglévő \<SAPGlobalHost > és az első SAP Volume1 <SID1> rendszer.
+Újból felhasználhatja a meglévő \<SAPGlobalHost > és az első SAP Volume1 \<SID1 > rendszer.
 
 ![3. ábra: Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomás neve][sap-ha-guide-figure-8014]
 
@@ -271,7 +271,7 @@ _**3. ábra:** Több SID-vel SOFS pedig ugyanaz, mint az SAP globális állomás
 >A második **SAP \<SID2 >** rendszer, az azonos Volume1 és azonos  **\<SAPGlobalHost >** hálózatnév szolgálnak.
 >Mivel már beállított **SAPMNT** különböző SAP-rendszerek esetén használja a megosztás neve, a  **\<SAPGlobalHost >** hálózatnév, kell használnia az azonos **Volume1**.
 >
->A fájl elérési útját a <SID2> globális gazdagép a C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>A fájl elérési útját a \<SID2 > globális gazdagép a C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
 Az a \<SID2 > rendszer, elő kell készítenie az SAP globális állomás... \SYS\.. az SOFS-fürthöz mappájába.

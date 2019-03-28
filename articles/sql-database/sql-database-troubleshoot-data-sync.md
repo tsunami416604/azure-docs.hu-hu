@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 8b86103f76e2425acea1b4f7c590204f0a893510
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484428"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539632"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
@@ -40,7 +40,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 - [A teljesítmény jelentős csökkenéséhez láthatók](#sync-perf)
 
-- [Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt?](#sync-nulls)
+- [Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop \<oszlop >. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt?](#sync-nulls)
 
 - [Hogyan kezeli a Data Syncet. a körkörös hivatkozások? Azt jelenti, amikor ugyanazokat az adatokat több szinkronizálási csoportban szinkronizálva van, és ennek eredményeképpen tartja módosítása?](#sync-circ)
 
@@ -105,7 +105,7 @@ A teljesítmény replikákban jelentősen megnő, valószínűleg a pont, ahol m
 
 - **Feloldási**. A legjobb javítás megelőzési. Győződjön meg arról, hogy a szinkronizálási csoport nem rendelkezik. a körkörös hivatkozás. Minden sor egy szinkronizálási csoport által szinkronizálva van egy másik szinkronizálási csoport nem szinkronizálható.
 
-### <a name="sync-nulls"></a> Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop <column>. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt? 
+### <a name="sync-nulls"></a> Ez az üzenet jelenik meg: "A NULL érték nem lehet beszúrni az oszlop \<oszlop >. Oszlop nem engedélyezi a null értékeket." Ez mit jelent, és hogyan javíthatom azt? 
 Ez a hibaüzenet azt jelzi, hogy a két alábbi problémák egyike történt:
 -  Egy táblázat nem rendelkezik elsődleges kulccsal. A probléma megoldásához adja hozzá az elsődleges kulcs szinkronizál az összes táblákhoz való.
 -  A CREATE INDEX utasítás WHERE záradék szerepel. Ez az állapot nem kezeli az adatok szinkronizálása. A probléma megoldásához távolítsa el a WHERE záradékban, vagy manuálisan végezze el a módosításokat az összes adatbázishoz. 

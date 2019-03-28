@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 18013050546cc5e204d9cc07a2f499388596164c
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: ca4f9bf00d70f327ff756558e25315762a9a77a8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319448"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519748"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
@@ -72,7 +72,7 @@ Konfigurálhatja az application gateway, vagy hogy a nyilvános IP-címmel vagy 
 
 Csak egy nyilvános IP-cím vagy egy magánhálózati IP-cím támogatott. Az Application Gateway létrehozása során kiválaszthatja az előtérbeli IP-címet. 
 
-- Egy nyilvános IP-cím esetén lehet váltani, hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az Application Gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-cím, az IP-cím típusa kiválasztott (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus és dinamikus nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip) 
+- Egy nyilvános IP-cím esetén lehet váltani, hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az Application Gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-cím, az IP-cím típusa kiválasztott (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus és dinamikus nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-components) 
 
 - Esetén egy magánhálózati IP-címet kiválaszthatja az alhálózatról, amelyben az Application Gateway létrejön egy magánhálózati IP-cím megadásához. Ha nincs explicit módon meghatározva, tetszőleges IP-cím lesz automatikusan kiválasztva az alhálózatról. További információkért lásd: [hozzon létre egy application gateway egy belső terheléselosztó (ILB) végponthoz.](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)
 
@@ -110,7 +110,7 @@ Kell a HTTP és HTTPS protokoll közül választhat.
 
 - Ha úgy dönt, hogy a HTTP, az az ügyfél és az alkalmazás-átjáró közötti forgalom nem titkosított.
 
-- Ha érdekli, válassza a HTTPS [Secure Sockets Layer (SSL) megszüntetése](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) vagy [teljes körű SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ha úgy dönt, hogy a HTTPS, a rendszer titkosítja a forgalmat az ügyfél és az alkalmazás-átjáró között, és az SSL-kapcsolatot az application gatewayben befejeződik.  Ha azt szeretné, hogy a teljes körű SSL-titkosítást, továbbá kell konfigurálása során válassza ki a HTTPS protokoll *háttérbeli HTTP-beállítás*. Ez biztosítja, hogy a forgalom újbóli titkosítva, a háttérkiszolgáló az alkalmazásátjáróról segít.
+- Ha érdekli, válassza a HTTPS [Secure Sockets Layer (SSL) megszüntetése](https://docs.microsoft.com/azure/application-gateway/overview) vagy [teljes körű SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ha úgy dönt, hogy a HTTPS, a rendszer titkosítja a forgalmat az ügyfél és az alkalmazás-átjáró között, és az SSL-kapcsolatot az application gatewayben befejeződik.  Ha azt szeretné, hogy a teljes körű SSL-titkosítást, továbbá kell konfigurálása során válassza ki a HTTPS protokoll *háttérbeli HTTP-beállítás*. Ez biztosítja, hogy a forgalom újbóli titkosítva, a háttérkiszolgáló az alkalmazásátjáróról segít.
 
   Konfigurálja a Secure Sockets Layer (SSL)-lezárások és teljes körű SSL-titkosítást, a tanúsítvány vehető fel a figyelővel, lehetővé téve az Application Gateway, hogy a szimmetrikus kulcs megfelelően az SSL protokoll-meghatározása szükséges. A szimmetrikus kulcs titkosításához és visszafejtéséhez az átjáró küldött forgalmat majd szolgál. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé. 
 

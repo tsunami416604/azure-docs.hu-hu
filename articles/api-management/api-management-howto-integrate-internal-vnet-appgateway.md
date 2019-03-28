@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 46678590366021ff0f3ddb714d439c18addc578b
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361070"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521924"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
@@ -51,7 +51,7 @@ Ebben a cikkben ismertetett lépéseket követve, kell rendelkeznie:
 
 Ez a cikk bemutatja, hogyan használhatja a külső és belső fogyasztók számára egy egy API Management-szolgáltatás, és lehetővé teszi mind a helyszínen, egy egyetlen előtér-kiszolgálóként, és a felhőalapú API-k. Hogyan teszi közzé az API-k (a példában kiemelve jelennek meg a zöld) csak egy részhalmazát útválasztási szolgáltatással elérhető az Application Gatewayben külső felhasználásra is megjelenik.
 
-Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. Belső fogyasztók számára (kiemelve a narancssárga) férhetnek hozzá az összes belső és külső API-k. Forgalom soha nem kerül ki internetes kézbesíti a rendszer a nagy teljesítményű Expressroute-Kapcsolatcsoportok keresztül.
+Az első telepítő minden API-felügyelt csak a virtuális hálózaton belül. Belső fogyasztók számára (kiemelve a narancssárga) férhetnek hozzá az összes belső és külső API-k. Forgalom soha nem kerül ki az interneten. Nagy teljesítményű kapcsolat Expressroute-Kapcsolatcsoportok keresztül kézbesíti a rendszer.
 
 ![URL-útvonal](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 

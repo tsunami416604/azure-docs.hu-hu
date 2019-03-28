@@ -8,27 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 03/20/2019
+ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634626"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521196"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hadoop MapReduce használata
 
-Útmutató MapReduce-feladatok futtatása a HDInsight-fürtökön. Fedezze fel, hogy használható-e a MapReduce különböző módjait az alábbi táblázat segítségével a HDInsight:
-
-| **Ezzel**... | **...fenti ehhez** | .. során ez **fürt operációs rendszerének** | ...from ez **ügyfél operációs rendszer** |
-|:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop paranccsal keresztül **SSH** |Linux |Linux, Unix, Mac OS X vagy Windows |
-| [REST](apache-hadoop-use-mapreduce-curl.md) |A feladat elküldéséhez távolról használatával **REST** (példák a cURL használatával) |Linux vagy Windows |Linux, Unix, Mac OS X vagy Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux vagy Windows |Windows |
-
-> [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+Útmutató MapReduce-feladatok futtatása a HDInsight-fürtökön. 
 
 ## <a id="whatis"></a>Mit jelent a MapReduce
 
@@ -36,7 +26,7 @@ Az Apache Hadoop MapReduce feladatok, amelyek nagy mennyiségű adatot ír egy s
 
 * **Eseményleképező**: A bemeneti adatokat feldolgozó, elemzi azokat (általában a szűrési és rendezési műveleteket) és bocsát ki a rekord (kulcs-érték párok)
 
-* **Nyomáscsökkentő**: A Teljesítményleképező által kibocsátott rekordokat használ fel, és, amely kisebb, összesített eredményt hoz létre az Eseményleképező adatok összegzési műveletet hajt végre
+* **Reducer**: A Teljesítményleképező által kibocsátott rekordokat használ fel, és, amely kisebb, összesített eredményt hoz létre az Eseményleképező adatok összegzési műveletet hajt végre
 
 Egy alapszintű szószámlálási számláló MapReduce feladat például az alábbi ábra mutatja be:
 
@@ -69,7 +59,7 @@ Példák Stream használata a HDInsight a hadoop a következő dokumentumokban t
 
 HDInsight biztosít különböző példa adatkészletek, amelyek tárolása a `/example/data` és `/HdiSamples` könyvtár. Ezek a könyvtárak a a fürt alapértelmezett tárolója találhatók. Ebben a dokumentumban használjuk a `/example/data/gutenberg/davinci.txt` fájlt. Ez a fájl Leonardo Da Vinci jegyzetfüzet tartalmazza.
 
-## <a id="job"></a>A példában a MapReduce
+## <a id="job"></a>Example MapReduce
 
 A MapReduce word-count alkalmazás például a HDInsight-fürt része. Ebben a példában a következő helyen található `/example/jars/hadoop-mapreduce-examples.jar` a fürt alapértelmezett tárolására.
 
@@ -162,9 +152,6 @@ HDInsight HiveQL feladatok futtatásához különböző módszerek használatáv
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop paranccsal keresztül **SSH** |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [A curl](apache-hadoop-use-mapreduce-curl.md) |A feladat elküldéséhez távolról használatával **REST** |Linux vagy Windows |Linux, Unix, Mac OS X vagy Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux vagy Windows |Windows |
-
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="nextsteps"></a>Következő lépések
 

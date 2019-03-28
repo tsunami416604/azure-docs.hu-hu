@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan állíthatja be a kiosztott átviteli sebesség
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005063"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520904"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -75,6 +75,20 @@ A két modell kombinálhatók. Az adatbázis és a tároló üzembe helyezési �
 * Explicit módon lehet konfigurálni a kiosztott átviteli sebesség RUs "P" a b nevű tárolót
 * A "K" fenntartott átviteli sebesség közösen használja a négy tárolók A, C, D és E. Átviteli sebesség pontos mennyisége érhető el a, C, D, E változik. Nincsenek nem SLA-k minden egyes tároló átviteli sebességet.
 * A "P" fenntartott átviteli sebesség lekérdezése mindig garantáltan a B nevű tárolót. SLA-k alapját.
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>Átviteli sebességet egy adatbázist vagy egy tároló frissítése
+
+Miután létrehozott egy Azure Cosmos-tároló vagy egy adatbázist, akkor is frissítheti a kiosztott átviteli sebesség. Nincs korlátozva az a maximális kiosztott átviteli sebesség, amely az adatbázis vagy a tároló lehet konfigurálni. A minimális kiosztott átviteli sebesség a következő tényezőktől függ: 
+
+* Minden eddiginél a tárolóban tárolt adatok maximális mérete
+* A maximális átviteli sebesség, a tároló minden eddiginél megadó
+* Az Azure Cosmos-tárolók, így minden eddiginél létrehozott megosztott adattovábbítási kapacitással rendelkező adatbázis maximális számát. 
+
+Az SDK-k használatával programozott módon lekérni a tárolók és a egy adatbázist a minimális átviteli sebesség, vagy megtekintheti az értékét az Azure Portalon. Ha a .NET SDK használatával a [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) módszer lehetővé teszi a kiosztott átviteli sebesség értékét skálázását. A Java SDK használata esetén a [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) módszer lehetővé teszi a kiosztott átviteli sebesség értékét skálázását. 
+
+Ha a .NET SDK használatával a [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) módszer lehetővé teszi, hogy a minimális átviteli sebesség, tárolók és a egy adatbázis beolvasása. 
+
+A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. A skálázási művelet 4 órán keresztül tétlen időszak után is futtathatja. A tétlen időszak számít, ha az idő időszak, amikor nincs ajánlat a csere művelet (amely tartalmazza a felfelé és lefelé méretezési) egy tároló vagy az adatbázis nem létezik. 
 
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871643"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519629"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -39,9 +39,9 @@ Ezeket a funkciókat az Azure Speech Services alkotják. Ebben a táblázatban h
 
 Ismerje meg, mi az az Azure Speech Services új.
 
+* Március 2019 - szöveg-beszéd átalakítás, amely egy adott régióban elérhető beszédhangot teljes listáját adja vissza egy új végpont már elérhető. További információkért lásd: [szöveg-hang transzformációs API-referencia (REST)](rest-text-to-speech.md).
 * Február a 2019 - kiadott beszéd SDK 1.3.0 támogatása [Unity (bétaverzió)](quickstart-csharp-unity.md). Támogatása hozzáadva a `AudioInput` osztály, amely lehetővé teszi a streamelési forrás Audio kiválasztását. Fejlesztések és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * December 2018 - kiadott beszéd SDK 1.2.0-s vagy annál újabb támogatása [Python](quickstart-python.md) és [Node.js](quickstart-js-node.md), valamint Ubuntu 18.04 LTS. További információkért lásd: [kibocsátási megjegyzések](releasenotes.md).
-* 2018. december – a szöveg-hang transzformációs útmutatóink hozzáadott [.NET Core](quickstart-dotnet-text-to-speech.md), [Python](quickstart-python-text-to-speech.md), [Node.js](quickstart-nodejs-text-to-speech.md). További minták érhetők el a [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http).
 
 ## <a name="try-speech-services"></a>Próbálja ki a beszédszolgáltatások
 

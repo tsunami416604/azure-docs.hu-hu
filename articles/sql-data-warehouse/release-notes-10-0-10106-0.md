@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b208ab10568740e3e1bcadd5f072f2080a573cef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369479"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522332"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 
@@ -28,7 +28,7 @@ Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiad
 |**Számítási feladatok fontossági mostantól elérhető előzetes verzióban**|Számítási feladatok fontossági kérelmek besorolása fontosság használatával lehetővé teszi az adatmérnökök. A magasabb fontossági kérelmek garantáltan gyorsabb hozzáférés az erőforrásokhoz, SLA betartása segíti.  Számítási feladatok fontossági lehetővé teszi, hogy a nagy üzleti érték munka SLA betartása kevesebb erőforrást, megosztott környezetben.<br/><br/>A számítási feladatok fontossági további információkért lásd: a [besorolási](sql-data-warehouse-workload-classification.md) és [fontosság](sql-data-warehouse-workload-importance.md) című áttekintő cikkeket a dokumentációban. Tekintse meg a [MUNKATERHELÉS-OSZTÁLYOZÓ létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc is.<br/><br/>Tekintse meg a számítási feladatok fontossági in action rendezvényen a videók alatt:<br/>[Számítási feladatok tartománykezelési fogalmaival](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Munkaterhelés-felügyeleti forgatókönyvek](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**CSOPORTOSÍTÁSI SZEMPONT ÖSSZEGZÉSE**|ÖSSZESÍTŐ már a csoportosítás lehetőségét támogatja az Azure Data Warehouse.   CSOPORT által összesítése csoportot hoz létre minden egyes kombinációjához oszlop kifejezésében. A GROUP BY is "összesíti" az eredmények rész- és végösszegek be. Ehhez áthelyezi azt jobbról balra, amelyen létrehozza csoportok és aggregation(s) oszlop kifejezések számának csökkentésével.  Az oszlopok sorrendjét hatással van az összesítő kimeneti, és hatással lehet az eredményhalmaz sorok számát.<br/><br/>A csoport által összesítése további információkért lásd: a cikk [GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**Alkalmazott DWU-és CPU-portál mérőszámai pontosság jobb legyen**|Az SQL Data Warehouse jelentősen javítja a metrika pontosságát az Azure Portalon.  Ebben a kiadásban a Processzor és a DWU használt metrikai definíciója a számítási feladat megfelelően megfelelően az összes számítási csomópont tartalmazza.|
-|**További T-SQL támogatása**|A T-SQL nyelv támadási SQL Data warehouse-hoz kibővített közé tartozik a támogatása:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)
+|**További T-SQL támogatása**|A T-SQL nyelv támadási SQL Data warehouse-hoz kibővített közé tartozik a támogatása:<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései

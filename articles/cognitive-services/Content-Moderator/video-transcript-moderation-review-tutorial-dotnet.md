@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 504f79186eb69fb6e6c23c1a0cd9dfd7584bb128
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904337"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522077"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: A videó és a szöveges moderálása
 
@@ -234,7 +234,7 @@ A moderálási folyamat visszaadja a videó kulcskockáinak listáját, valamint
 A `CreateVideoReviewInContentModerator()` számos egyéb metódust meghív a következő feladatok elvégzéséhez:
 
 > [!NOTE]
-> A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) a [videomoderálási kimenet](#sample-video-moderation-response) képkockáihoz tartozó időbélyegeknek felelnek meg.
+> A konzolalkalmazás az [FFmpeg](https://ffmpeg.org/) könyvtárat használja a miniatűrök létrehozásához. Ezek a miniatűrök (képek) a videomoderálás kimenetben keret időbélyegei felelnek meg.
 
 |Tevékenység|Metódusok|Fájl|
 |-|-|-|

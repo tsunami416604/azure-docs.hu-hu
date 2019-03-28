@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: a3fd89ee67b495d3ca1173faa9381ceba117ef63
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 230c68b0b1de1ef452de51b7b0661a3c3786ea76
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259312"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521703"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
@@ -420,7 +420,7 @@ A létrejövő feladat részleteit a sablon URI, amely lekérdezhetők és üzem
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Egyszerűen helyezze üzembe a sablont, egy új virtuális Gépet hoz létre, leírtak [Itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source).
+Egyszerűen helyezze üzembe a sablont, egy új virtuális Gépet hoz létre, leírtak [Itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS

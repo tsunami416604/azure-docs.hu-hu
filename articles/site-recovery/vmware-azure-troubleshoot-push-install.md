@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0278332105f2102fc82122c5a74db6326f011e81
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078652"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541186"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
@@ -183,7 +183,7 @@ Ha a fenti félkövér karakterlánc megfigyelte, grub-HIBÁT nevét is tartalma
 Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
 
 
-1. Az eszköz UUID található parancs végrehajtásával "blkid <device name>". Példa:<br>
+1. Az eszköz UUID található parancs végrehajtásával "blkid \<eszköz neve >". Példa:<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,7 +191,7 @@ Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. Most cserélje le az eszköz nevét annak UUID azonosító, a következő formátumban, például a "legfelső szintű UUID azonosítója = =<UUID>". Például, ha azt az alapvető cserélje le az eszköz nevét UUID azonosító, és folytathatja a fájlokat a fent említett paraméter "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub: majd a fájlokban a sorok kinézni. <br>
+2. Most cserélje le az eszköz nevét annak UUID azonosító, a következő formátumban, például a "legfelső szintű UUID azonosítója = =\<UUID >". Például, ha azt az alapvető cserélje le az eszköz nevét UUID azonosító, és folytathatja a fájlokat a fent említett paraméter "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub: majd a fájlokban a sorok kinézni. <br>
    *kernel /boot/vmlinuz-3.0.101-63-default **legfelső szintű UUID azonosítója = 62927e85-f7ba-40bc-9993-cc1feeb191e4 =** **folytatása UUID azonosítója = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b =** splash = beavatkozás nélküli crashkernel = 256M-:128M showopts vga = 0x314*
 3. Indítsa újra a védelmi műveletet
 

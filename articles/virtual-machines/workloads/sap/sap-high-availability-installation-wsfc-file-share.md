@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0192b88525d326840283f79ecea7027516ce8c7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 04490abb8b7f3f4c39e4134a314429e190db5174
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483438"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540788"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban
 
@@ -278,7 +278,7 @@ New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators",
 
 A következő kötet és a fájlmegosztást létrehozni az SOFS-fürthöz:
 
-* SAP GLOBALHOST fájl C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ struktúra az SOFS-fürt megosztott kötete (CSV)
+* SAP GLOBALHOST fájl `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` struktúra az SOFS-fürt megosztott kötete (CSV)
 
 * SAPMNT fájlmegosztás
 
@@ -347,8 +347,8 @@ Hajtsa végre az alábbi lépéseket:
 ## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>Helyezze át a \SYS\... mappát az SOFS-fürthöz
 
 Hajtsa végre az alábbi lépéseket:
-1. Másolja a SYS mappát (például C:\usr\sap\\<SID>\SYS) ASCS/SCS egyik fürtcsomópont az SOFS-fürthöz (például, hogy C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS).
-2. Törölje a C:\usr\sap\\<SID>mindkét ASCS/SCS fürtcsomópontok \SYS mappájában található.
+1. Másolja a SYS mappát (például `C:\usr\sap\<SID>\SYS`) ASCS/SCS egyik fürtcsomópont az SOFS-fürthöz (például, hogy `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS`).
+2. Törölje a `C:\usr\sap\<SID>\SYS` mindkét ASCS/SCS fürtcsomópontok mappájában található.
 
 ## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>Az SAP ASCS/SCS-fürt a fürt biztonsági beállításainak frissítése
 
@@ -374,7 +374,7 @@ Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs
 
 ## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>Az alapértelmezett és az SAP ASCS/SCS példányhoz profil frissítése
 
-Az új SAP ASCS/SCS virtuális állomás nevét és a globális állomásnév SAP, frissítenie kell az alapértelmezett és az SAP ASCS/SCS példányhoz profil \<SID >_ASCS/SCS\<Nr >_<Host>.
+Az új SAP ASCS/SCS virtuális állomás nevét és a globális állomásnév SAP, frissítenie kell az alapértelmezett és az SAP ASCS/SCS példányhoz profil \<SID >_ASCS/SCS\<Nr >_\<gazdagép >.
 
 
 | Régi értékek |  |
@@ -459,7 +459,7 @@ Az új saprc.dll fájl mindkét ASCS/SCS fürtcsomóponton telepítve van.
 
 További információkért lásd: [Megjegyzés 1596496 SAP - SAP erőforrástípus DLL-ek frissítése a fürterőforrás-figyelő][1596496].
 
-## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Hozzon létre egy SAP <SID> csoport, a hálózat nevét és IP-fürt
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Hozzon létre egy SAP \<SID > csoport, a hálózat nevét és IP-fürt
 
 Egy SAP létrehozása \<SID > fürtcsoport egy ASCS/SCS hálózati név és egy megfelelő IP-címet, futtassa a következő PowerShell-parancsmagot:
 

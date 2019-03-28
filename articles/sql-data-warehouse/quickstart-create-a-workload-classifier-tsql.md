@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3355f9068d35f29483e257e5c236275f76a1c9d0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 8ae9ad4d1101c3b42c46c51546ac82e5b4a134c8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008601"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519850"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Gyors útmutató: T-SQL (előzetes verzió) használatával munkaterhelés besorolás létrehozása
 
@@ -51,7 +51,9 @@ END
 ;
 ```
 
-## <a name="create-theceo-user-in-mysampledatawarehouse"></a>A mySampleDataWarehouse TheCEO felhasználó létrehozása
+## <a name="create-user"></a>Felhasználó létrehozása
+
+[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", a mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -61,7 +63,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier-for-theceo-with-high-importance"></a>Hozzon létre egy számítási feladat osztályozó TheCEO a nagyon fontosként megjelölve
+## <a name="create-a-workload-classifier"></a>Számítási feladatok besorolás létrehozása
+
+Hozzon létre egy [munkaterhelés osztályozó](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) a "TheCEO" nagyon fontosként megjelölve.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];

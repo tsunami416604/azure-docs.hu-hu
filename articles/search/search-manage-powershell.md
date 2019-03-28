@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: heidist
-ms.openlocfilehash: 541feee2005428226b3f46927bc0e4bfb53cc98d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781714"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520564"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell-lel az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy
 > * [Összes, az előfizetésben a keresési szolgáltatások](#list-search-services)
 > * [Egy adott keresési szolgáltatás adatainak lekérése](#get-search-service-information)
 > * [Hozzon létre vagy egy szolgáltatás törlése](#create-or-delete-a-service)
-> * [Felügyeleti API-kulcsok újragenerálása](#regenerate-admin-api-keys)
+> * Felügyeleti API-kulcsok újragenerálása
 > * [Hozzon létre vagy lekérdezési api-kulcsok törlése](#create-or-delete-query-keys)
 > * [A szolgáltatások méretezése növelésével vagy csökkentésével a replikák és partíciók](#scale-replicas-and-partitions)
 

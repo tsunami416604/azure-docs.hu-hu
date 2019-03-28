@@ -1,6 +1,6 @@
 ---
 title: Az Azure-beli üzembe helyezése Windows virtuális gép hibáinak elhárítása |} A Microsoft Docs
-description: Azurethe Resource Manager-alapú üzemi modellben üzembe Windows virtuális gép hibák elhárítása.
+description: Az Azure Resource Manager-alapú üzemi modellben üzembe Windows virtuális gép hibák elhárítása.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 9d98a060033674a53c8ac5390bc40d10b0fbe69b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882501"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540703"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Az Azure-beli üzembe helyezése Windows virtuális gép hibáinak elhárítása
 
@@ -32,11 +32,7 @@ Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>A fürt nem támogatja a kért Virtuálisgép-méret
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Próbálja megismételni a kérést kisebb Virtuálisgép-mérettel.
 - Ha a kért virtuális gép mérete nem lehet módosítani:
     - Állítsa le a rendelkezésre állási csoport összes virtuális gépen. Kattintson a **erőforráscsoportok** > az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **virtuális gépek** > a virtuális gép >  **Állítsa le**.
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>A fürt nem rendelkezik ingyenes erőforrások
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Ismételje meg később a kérelmet.
 - Ha az új virtuális gép egy másik rendelkezésre állási csoport része lehet.
     - Hozzon létre egy virtuális Gépet egy másik rendelkezésre állási csoportot (ugyanabban a régióban).

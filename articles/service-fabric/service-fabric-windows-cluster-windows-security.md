@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 681ee66ca165ece170dd2a2ce2736cf55a44f1f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d599414978c44407acc1a449f853607d6a40c495
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104080"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541009"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
@@ -30,7 +30,7 @@ Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biz
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Csoportosan felügyelt szolgáltatásfiókot használó Windows biztonságának konfigurálása  
-A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomag tartalmaz egy sablon konfigurálásához a Windows biztonsági használatával [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.\< verzió > .zip](https://go.microsoft.com/fwlink/?LinkId=730690) különálló fürt csomag tartalmazza a sablon konfigurálásához a Windows biztonsági használatával [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```
 "security": {
@@ -86,7 +86,7 @@ Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurálja a Windows biztonsági gép csoport használatával  
-Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felügyelt szolgáltatásfiókot használja a fenti útmutató szerint. A minta *ClusterConfig.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomag tartalmazza a sablon a Windows biztonsági beállításainak megadása.  Windows biztonsági konfigurálva van a **tulajdonságok** szakaszban: 
+Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felügyelt szolgáltatásfiókot használja a fenti útmutató szerint. A minta *ClusterConfig.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.\< verzió > .zip](https://go.microsoft.com/fwlink/?LinkId=730690) különálló fürt csomag tartalmazza a sablon konfigurálásához a Windows biztonsági.  Windows biztonsági konfigurálva van a **tulajdonságok** szakaszban: 
 
 ```
 "security": {

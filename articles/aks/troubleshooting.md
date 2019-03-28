@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432634"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540924"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -90,3 +90,7 @@ Fürtműveletek korlátozva, ha aktív frissítési műveletek történnek, vagy
 
 * Ha folyamatosan frissíti a fürt, várjon, amíg a művelet véget nem ér. Ha sikeres, próbálja meg újra a korábban sikertelen műveletet.
 * Ha a fürt frissítése nem sikerült, hajtsa végre a fenti lépéseket
+
+## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhető a fürt egy másik előfizetésben vagy az előfizetés az új bérlőhöz fürt?
+
+Az AKS-fürt egy másik előfizetésben, vagy a fürt egy új bérlő előfizetésének tulajdonos erőforrásfájljait áthelyezték, a fürt miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogok funkciók elvesznek. **Az AKS nem támogatja a mozgó fürtök előfizetések vagy a bérlők között** miatt ez a korlátozás.

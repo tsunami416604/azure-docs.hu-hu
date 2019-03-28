@@ -7,21 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: f804cfd693a37099edc22e7f4861d6d7e1af0fc7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651113"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518677"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata a HDInsight Apache Spark-fürtök Jupyter notebookokhoz külső Python-csomagok telepítése
 > [!div class="op_single_selector"]
 > * [Használatával](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Szkriptműveletek használatával](apache-spark-python-package-installation.md)
 
-Ismerje meg, hogyan Parancsfájlműveletek segítségével konfigurálhatja egy [Apache Spark](https://spark.apache.org/) fürt a HDInsight (Linux) használatához a külső, Közösség által biztosított **python** csomagokat, amelyek nem tartalmazza a fürt-a-beépített.
+Ismerje meg, hogyan Parancsfájlműveletek segítségével konfigurálhatja egy [Apache Spark](https://spark.apache.org/) külső, a Közösség által biztosított használatára a HDInsight-fürt **python** csomagokat, amelyek nem tartalmazza a fürt-a-beépített.
 
 > [!NOTE]  
 > Beállíthatja a Jupyter notebook használatával `%%configure` Magic Quadrant külső csomagok használata. Útmutatásért lásd: [külső csomagok használata a HDInsight Apache Spark-fürtök Jupyter-notebookjait](apache-spark-jupyter-notebook-use-external-packages.md).
@@ -48,7 +48,7 @@ A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket ké
 * **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például az Apache Hadoop YARN ResourceManager, az Apache Hive-lekérdezés (HiveQL) nyelv és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított az Apache Hadoop-fürtverziók újdonságai](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
 
-> [!WARNING]   
+> [!IMPORTANT]   
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak. Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
 > Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Lehet, hogy a probléma megoldásához a Microsoft ügyfélszolgálatához, vagy előfordulhat, hogy megadását is végezhetnek elérhető csatornák a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/).
@@ -56,33 +56,52 @@ A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket ké
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Külső csomagok használata Jupyter notebookokkal
 
-1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
+1. Az a [az Azure portal](https://portal.azure.com/), keresse meg a fürthöz.  
 
-2. A Spark-fürt panelén kattintson **Parancsfájlműveletek** a bal oldali ablaktáblán. A parancsprogram típusát "Egyéni" használja, és adjon egy rövid nevet a parancsprogram-művelet. Futtassa a parancsprogramot a **a fő- és munkavégző csomópontok** és a paraméterek mezőt hagyja üresen. A bash-szkript a lehet hivatkozni: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. A kiválasztott, a bal oldali ablaktáblán, a fürttel **beállítások**válassza **Szkriptműveletek**.
 
-   > [!NOTE]  
-   > Nincsenek két python-telepítés esetén a fürt a. A Spark fogja használni a Anaconda python-telepítés található `/usr/bin/anaconda/bin` , és alapértelmezés szerint a Python 2.7-es környezetben. Python 3.x és telepítési csomagok használata a PySpark3 kernel az elérési útját használja a `conda` végrehajtható, hogy a környezetben, és használja a `-n` paraméterrel adja meg a környezetben. Ha például a parancs `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, telepíti a `ggplot` csomagot a Python 3.5-ös környezetben történő a `conda-forge` csatorna.
+3. Válassza ki **+ új küldés**.
 
-3. A PySpark Jupyter notebook megnyitása
+4. Adja meg a következő értékeket a **Szkriptművelet** ablakban:  
+
+
+    |Paraméter | Érték |
+    |---|---|
+    |Szkripttípus | Válassza ki **– az egyéni** a legördülő listából.|
+    |Name (Név) |Adja meg `tensorflow` a szövegmezőben.|
+    |Bash parancsfájl URI azonosítója |Adja meg `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` a szövegmezőben. |
+    |Csomóponttípus(ok) | Válassza ki a **fő**, és **feldolgozó** jelölőnégyzeteket. |
+
+    `tensorflowinstall.sh` tartalmazza a következő parancsokat:
+
+    ```bash
+    #!/usr/bin/env bash
+    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    ```
+
+5. Kattintson a **Létrehozás** gombra.  Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+
+6. Várjon, amíg a parancsfájl végrehajtására.  A **Szkriptműveletek** panel fog állapot **új Parancsfájlműveletek az aktuális fürtművelet befejeződése után küldhetők** a parancsfájl végrehajtása közben.  Egy folyamatjelző tekintheti meg az Ambari felhasználói felületén **Háttérműveletekhez** ablak.
+
+7. A PySpark Jupyter notebook megnyitása.  Lásd: [Jupyter notebook létrehozása a Spark HDInsight](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) lépéseit.
 
     ![Új Jupyter notebook létrehozása](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Új Jupyter notebook létrehozása")
 
-4. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. A felső részen kattintson a notebook nevére, és adjon meg egy könnyen megjegyezhető nevet.
+8. Mostantól `import tensorflow` és a egy hello world példa futtatásához. Írja be a következő kódot:
 
-    ![Adjon nevet a notebooknak](./media/apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Adjon nevet a notebooknak")
-
-5. Mostantól `import tensorflow` és a egy hello world példa futtatásához. 
-
-    Kód másolása:
-
-        import tensorflow as tf
-        hello = tf.constant('Hello, TensorFlow!')
-        sess = tf.Session()
-        print(sess.run(hello))
+    ```
+    import tensorflow as tf
+    hello = tf.constant('Hello, TensorFlow!')
+    sess = tf.Session()
+    print(sess.run(hello))
+    ```
 
     Az eredmény a következőhöz hasonló:
     
     ![TensorFlow kódfuttatás](./media/apache-spark-python-package-installation/execution.png "végrehajtása TensorFlow-kód")
+
+> [!NOTE]  
+> Nincsenek két python-telepítés esetén a fürt a. A Spark fogja használni a Anaconda python-telepítés található `/usr/bin/anaconda/bin` , és alapértelmezés szerint a Python 2.7-es környezetben. Python 3.x és telepítési csomagok használata a PySpark3 kernel az elérési útját használja a `conda` végrehajtható, hogy a környezetben, és használja a `-n` paraméterrel adja meg a környezetben. Ha például a parancs `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, telepíti a `ggplot` csomagot a Python 3.5-ös környezetben történő a `conda-forge` csatorna.
 
 ## <a name="seealso"></a>Lásd még:
 * [Áttekintés: Az Apache Spark on Azure HDInsight](apache-spark-overview.md)

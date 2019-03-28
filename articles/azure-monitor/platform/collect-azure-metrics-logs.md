@@ -1,6 +1,6 @@
 ---
-title: Az Azure service naplókat és mérőszámokat gyűjtése a Log Analytics |} A Microsoft Docs
-description: Állítsa be a diagnosztikai naplókat és mérőszámokat írni a Log Analytics Azure-erőforrások.
+title: Az Azure service naplókat és mérőszámokat gyűjtése a Log Analytics-munkaterület |} A Microsoft Docs
+description: Állítsa be a diagnosztikai naplókat és mérőszámokat írni a Log Analytics-munkaterületet az Azure Monitor Azure-erőforrások.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 034abe4e3c37c94afbe431a51efd9493b707fa89
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498536"
+ms.locfileid: "58540177"
 ---
-# <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Naplók gyűjtése az Azure service és a Log Analytics használati metrikái
+# <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Az Azure service naplókat és mérőszámokat gyűjtése a Log Analytics-munkaterületet az Azure monitorban
 
 Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböző módja van:
 
-1. A Log Analyticshez való közvetlen az Azure diagnostics (*diagnosztikai* az alábbi táblázatban)
-2. A Log Analytics az Azure storage-bA az Azure diagnostics (*tárolási* az alábbi táblázatban)
+1. Log Analytics-munkaterületet az Azure monitorban irányítani az Azure diagnostics (*diagnosztikai* az alábbi táblázatban)
+2. A Log Analytics-munkaterületet az Azure Monitor az Azure storage-bA az Azure diagnostics (*tárolási* az alábbi táblázatban)
 3. Összekötők az Azure-szolgáltatásokhoz (*összekötők* az alábbi táblázatban)
-4. Parancsfájlok, összegyűjtése és majd ezeket az adatokat a Log analyticsbe (üres az alábbi táblázatban és -szolgáltatásokhoz, amelyek nem szerepelnek a listán)
+4. Parancsfájlok, összegyűjtése és majd ezeket az adatokat az Azure Monitor (üres az alábbi táblázatban és -szolgáltatásokhoz, amelyek nem szerepelnek a listán) Log Analytics-munkaterületen
 
 
 | Szolgáltatás                 | Erőforrás típusa                           | Logs        | Mérőszámok     | Megoldás |
@@ -64,12 +64,12 @@ Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböz�
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>A Log Analyticshez való közvetlen az Azure diagnostics
-Számos Azure-erőforrás írása a diagnosztikai naplók és közvetlenül a Log Analytics és a metrikák az elemzési adatok gyűjtése az előnyben részesített módja. Az Azure diagnostics használatakor az adatok kerülnek azonnal a Log Analytics, és nem kell először a tárolás az adatokat írni.
+Számos Azure-erőforrás diagnosztikai naplók és mérőszámok írhatók közvetlenül az Azure Monitor egy Log Analytics-munkaterületen, és ez az előnyben részesített módja az elemzési adatokat gyűjt. Az Azure diagnostics használatakor az adatok írása azonnal a munkaterületet, és nem kell először a tárolás az adatokat írni.
 
-Azure-erőforrások, amelyek támogatják a [az Azure monitor](../../azure-monitor/overview.md) közvetlenül a Log Analytics szolgáltatáshoz is a naplók és mérőszámok küldése.
+Azure-erőforrások, amelyek támogatják a [az Azure monitor](../../azure-monitor/overview.md) közvetlenül a Log Analytics-munkaterület is a naplók és mérőszámok küldése.
 
 > [!NOTE]
-> A többdimenziós metrikák elküldése a Log Analyticsbe diagnosztikai beállításokon keresztül jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
+> Többdimenziós metrikák diagnosztikai beállításokon keresztül egy Log Analytics-munkaterülettel küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
 > *Például*: Az Eseményközpont "Bejövő üzenetek" metrikája fel és ábrázolható egy üzenetsoronként. Azonban a metrika jelenik meg az összes bejövő üzenetek összes diagnosztikai beállításokon keresztül exportálásakor várólistára helyezi az Eseményközpont.
 >
@@ -125,9 +125,9 @@ Diagnosztikai erőforrás engedélyezéséhez a létrehozást, és a diagnosztik
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>A storage, akkor a Log Analytics az Azure diagnostics
 
-Belül az egyes erőforrások naplóinak gyűjtéséhez is lehet küldeni a naplókat az Azure storage-, és állítsa be a Log Analyticsben, hogy olvassa el a naplókat a storage-ból.
+Bizonyos erőforrások belül naplóinak gyűjtéséhez is lehet a naplók küldése az Azure storage, és állítsa be a Log Analytics-munkaterületet, olvassa el a naplókat a storage-ból.
 
-A log Analytics használatával Ez a megközelítés az alábbi erőforrások és a naplók az Azure storage-ból a diagnosztikai adatok gyűjtéséhez:
+Az Azure Monitor használatával Ez a megközelítés a következő erőforrások és a naplók az Azure storage-ból a diagnosztikai adatok gyűjtéséhez:
 
 | Erőforrás | Logs |
 | --- | --- |
@@ -136,23 +136,23 @@ A log Analytics használatával Ez a megközelítés az alábbi erőforrások é
 | Webes szerepkörök <br> Feldolgozói szerepkörök |Linux Syslog <br> Windows-esemény <br> IIS-napló <br> Windows ETWEvent |
 
 > [!NOTE]
-> Tárolás és a tranzakciókért, ha küld diagnosztikai tárfiók és a Ha a Log Analytics olvassa be az adatokat a tárfiók a Azure megszokott adatforgalmi díjakat számítunk fel.
+> Ha diagnosztikai küld egy tárfiókba, és a Ha a Log Analytics-munkaterület olvassa be az adatokat a tárfiók storage és a tranzakciókért a megszokott Azure adatforgalmi díjakat számítunk fel.
 >
 >
 
-Lásd: [a blob storage-események az IIS és a table storage](azure-storage-iis-table.md) tudhat meg többet a Log Analytics hogyan gyűjthet a ezeket a naplókat.
+Lásd: [a blob storage-események az IIS és a table storage](azure-storage-iis-table.md) tudhat meg többet az Azure Monitor hogyan gyűjthet a ezeket a naplókat.
 
 ## <a name="connectors-for-azure-services"></a>Az Azure-szolgáltatásokhoz az összekötők
 
-Nincs egy összekötőt, az Application Insights, amely lehetővé teszi a Log Analytics felé küldött kell Application Insights által gyűjtött adatokat.
+Nincs olyan összekötő az Application Insights, amely lehetővé teszi a Log Analytics-munkaterület kell küldeni az Application Insights által gyűjtött adatokat.
 
 Tudjon meg többet a [Application Insights-összekötő](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>A szkriptek gyűjtése, és ezeket az adatokat a Log Analyticsbe
+## <a name="scripts-to-collect-and-post-data-to-log-analytics-workspace"></a>A szkriptek gyűjthet, és ezeket az adatokat a Log Analytics-munkaterület
 
-Az Azure-szolgáltatásokhoz, amelyek nem rendelkeznek a naplók és mérőszámok küldése a Log Analyticshez való közvetlen módszer egy Azure Automation-szkript használatával a naplók és mérőszámok gyűjtése. A szkript ezután is küldheti az adatokat a Log Analytics használatával az [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md)
+Az Azure-szolgáltatásokhoz, amelyek nem rendelkeznek közvetlen módszer naplók és mérőszámok küldése a Log Analytics-munkaterület egy Azure Automation-szkript használatával a naplók és mérőszámok gyűjtése. A parancsfájl is elküldheti az adatokat a munkaterület használatával a [adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md)
 
-Az Azure-sablon szerepel [példák az Azure Automationnel](https://azure.microsoft.com/resources/templates/?term=OMS) adatokat gyűjteni a szolgáltatások és a Log Analytics felé.
+Az Azure-sablon szerepel [példák az Azure Automationnel](https://azure.microsoft.com/resources/templates/?term=OMS) szolgáltatások adatokat gyűjteni, és küldje el az Azure monitornak.
 
 ## <a name="next-steps"></a>További lépések
 

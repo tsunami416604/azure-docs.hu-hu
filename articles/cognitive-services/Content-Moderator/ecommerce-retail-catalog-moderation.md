@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855954"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539496"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Oktatóanyag: Termékképek mérsékelt e-kereskedelem az Azure Content Moderator
 
@@ -61,7 +61,7 @@ Ez az oktatóanyag kiemeli a kódot, amely a projekt központi, de azt nem fedez
 
 ## <a name="define-api-keys-and-endpoints"></a>API-kulcsok és a végpontok megadása
 
-Ahogy említettük, ebben az oktatóanyagban három a cognitive services; Ezért van szükség három tartozó kulcsok és API-végpontokon. Tekintse meg a következő mezőket a **Program** osztály: 
+Ahogy említettük, ebben az oktatóanyagban három a cognitive services; Ezért van szükség három tartozó kulcsok és API-végpontokon. Tekintse meg a következő mezőket a **Program** osztály:
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ Tekintse meg a **EvaluateAdultRacy** metódus az a **Program** osztály. Ez a m�
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags metódus
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags metódus
 
-A következő metódust vesz igénybe egy kép URL-címe és a Computer Vision előfizetési információk és elemzi a kép hírességek meglétének. Ha egy vagy több hírességek talál, azt a megfelelő értéket állít be a **ReviewTags** a tárolótömb **igaz**. 
+A következő metódust vesz igénybe egy kép URL-címe és a Computer Vision előfizetési információk és elemzi a kép hírességek meglétének. Ha egy vagy több hírességek talál, azt a megfelelő értéket állít be a **ReviewTags** a tárolótömb **igaz**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags metódus
 
-Ezután tekintse meg a **EvaluateCustomVisionTags** metódussal, amely a tényleges termékek osztályozza&mdash;ebben az esetben megőrzendő tartalomként jelöli meg, a játékok, és tollak. Kövesse az utasításokat a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutató hozhat létre saját egyéni rendszerkép osztályozó észleléséhez jelzőket, a játékok, és tollak (vagy bármilyen, az egyéni címkék választott) képeken.
+Ezután tekintse meg a **EvaluateCustomVisionTags** metódussal, amely a tényleges termékek osztályozza&mdash;ebben az esetben megőrzendő tartalomként jelöli meg, a játékok, és tollak. Kövesse az utasításokat a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) útmutató hozhat létre saját egyéni rendszerkép osztályozó észleléséhez jelzőket, a játékok, és tollak (vagy bármilyen, az egyéni címkék választott) képeken. A lemezképeket is használhatja a **minta-lemezképek** mappában található a [GitHub-adattárat](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) gyorsan betanításához néhány ebben a példában kategóriája.
 
 ![Egyéni vizuális weblapját a betanító kép tollak, a játékok és jelzők](images/tutorial-ecommerce-custom-vision.PNG)
 
-Után az osztályozó által igénybe vett van tanítva, az előrejelzési és előrejelzési végponti URL-cím beszerzése (lásd: [URL-cím és az előrejelzési kulcs lekérése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) segítséget beolvasása őket), és rendelje hozzá ezeket az értékeket a `CustomVisionKey` és `CustomVisionUri` mezők , illetve. A metódus az osztályozó által igénybe vett lekérdezéséhez ezeket az értékeket használja. Az osztályozó által igénybe vett talál a kép egy vagy több egyéni címkével, ha ez a módszer beállítja a megfelelő értékeket a **ReviewTags** a tárolótömb **igaz**. 
+Után az osztályozó által igénybe vett van tanítva, az előrejelzési és előrejelzési végponti URL-cím beszerzése (lásd: [URL-cím és az előrejelzési kulcs lekérése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) segítséget beolvasása őket), és rendelje hozzá ezeket az értékeket a `CustomVisionKey` és `CustomVisionUri` mezők , illetve. A metódus az osztályozó által igénybe vett lekérdezéséhez ezeket az értékeket használja. Az osztályozó által igénybe vett talál a kép egy vagy több egyéni címkével, ha ez a módszer beállítja a megfelelő értékeket a **ReviewTags** a tárolótömb **igaz**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

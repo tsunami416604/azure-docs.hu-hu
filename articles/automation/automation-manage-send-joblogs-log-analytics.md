@@ -1,5 +1,5 @@
 ---
-title: Az Azure Monitor naplóira Azure Automation-feladat adatainak továbbítása
+title: Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure az Azure Monitor naplókat további elemzés és a felügyeleti.
 services: automation
 ms.service: automation
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 10497d40dcf67fb18d40eba02ec9e95c45be097b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1897ddf328413decdc13cffaab0fb569d8d95665
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820858"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521669"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 
@@ -63,7 +63,7 @@ Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki
    $workspaceId = "[resource id of the log analytics workspace]"
    $automationAccountId = "[resource id of your automation account]"
 
-   Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
+   Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
 
 Ez a szkript futtatása után is igénybe vehet egy óra, az Azure Monitor naplóira új JobLogs vagy ír JobStreams rekordok megtekintése előtt.

@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 03/27/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: 8993aea208e4ccdcf92f676cc07f2912979da606
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb8f0fd98296d0cc4de1596480988b154a731d41
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476996"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540227"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure Table storage műveleteket az Azure PowerShell használatával 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,9 +32,11 @@ A cikkben található útmutató ismerteti a gyakori Azure Table storage-művele
 
 A cikkben található útmutató bemutatja, hogyan hozhat létre egy új Azure Storage-fiók az egy új erőforráscsoportot, így könnyen eltávolíthatja, ha elkészült. Ha szeretné inkább egy meglévő tárfiókot, is megteheti, helyette.
 
-Példák Azure PowerShell-modul szükséges `AzureRM` 4.4.0 verzió vagy újabb. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable AzureRM` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps).
+A példák megkövetelése Az PowerShell-modulok `Az.Storage (1.1.3 or greater)` és `Az.Resources (1.2.0 or greater)`. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable Az*` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
-[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
+> [!IMPORTANT]
+> Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `Az` modul telepítve van. Az aktuális AzureRmStorageTable verziója nem kompatibilis a régebbi AzureRM-modul.
+> Kövesse a [legújabb telepítési Az modul telepítésére vonatkozó utasításokat](/powershell/azure/install-az-ps) szükség esetén.
 
 Miután az Azure PowerShell telepítése vagy frissítése, telepítenie kell a modult **AzureRmStorageTable**, amely rendelkezik, és az entitáskezelésről parancsokat. Ez a modul telepítéséhez futtassa a Powershellt rendszergazdaként, és használja a **Install-Module** parancsot.
 
@@ -44,10 +46,10 @@ Install-Module AzureRmStorageTable
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+Jelentkezzen be az Azure-előfizetésbe a `Add-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
 ```powershell
-Connect-AzureRmAccount
+Add-AzAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Helyek listájának lekérése
@@ -55,28 +57,28 @@ Connect-AzureRmAccount
 Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezek a példák a **eastus**. Ez az érték Store a változóban **hely** későbbi használatra.
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location
 $location = "eastus"
 ```
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup) paranccsal. 
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot. 
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoport nevének Store későbbi használat céljából egy változóban. Ebben a példában egy erőforráscsoportot nevű *pshtablesrg* jön létre a *eastus* régióban.
 
 ```powershell
 $resourceGroup = "pshtablesrg"
-New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
+New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Helyileg redundáns tárolás (LRS) használó általános célú standard szintű storage-fiók létrehozása [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). A tárfiók környezetét, amely meghatározza a használandó tárfiókot beolvasása. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
+Helyileg redundáns tárolás (LRS) használó általános célú standard szintű storage-fiók létrehozása [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Mindenképpen adja meg a tárfiók egyedi neve. Ezután kérdezze le a környezetet, amely a tárfiók jelöli. A storage-fiók eljárva hivatkozhat többször adja meg a hitelesítő adatokat a környezetre.
 
 ```powershell
 $storageAccountName = "pshtablestorage"
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName Standard_LRS `
@@ -87,40 +89,51 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-Hozzon létre egy táblát, használja a [New-AzureStorageTable](/powershell/module/azure.storage/New-AzureStorageTable) parancsmagot. Ebben a példában a táblázat neve `pshtesttable`.
+Hozzon létre egy táblát, használja a [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) parancsmagot. Ebben a példában a táblázat neve `pshtesttable`.
 
 ```powershell
 $tableName = "pshtesttable"
-New-AzureStorageTable –Name $tableName –Context $ctx
+New-AzStorageTable –Name $tableName –Context $ctx
 ```
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>A tárfiókban lévő táblák listájának lekéréséhez
 
-A tárfiók tárfiókkulcsait lévő táblák listájának lekéréséhez [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
+A tárfiók tárfiókkulcsait lévő táblák listájának lekéréséhez [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable).
 
 ```powershell
-Get-AzureStorageTable –Context $ctx | select Name
+Get-AzStorageTable –Context $ctx | select Name
 ```
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>Egy adott tábla egy hivatkozást lekérni
 
-Tábla műveletek végrehajtásához, szüksége van egy, az adott tábla. Egy hivatkozást az első [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable). 
+Tábla műveletek végrehajtásához, szüksége van egy, az adott tábla. Egy hivatkozást az első [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable).
 
 ```powershell
-$storageTable = Get-AzureStorageTable –Name $tableName –Context $ctx
+$storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
+```
+
+## <a name="reference-cloudtable-property-of-a-specific-table"></a>Egy adott tábla hivatkozási CloudTable tulajdonság
+
+> [!IMPORTANT]
+> CloudTable használata nem kötelező, ha **AzureRmStorageTable** PowerShell-modult. Hívja a **Get-AzTableTable** parancs használatával beszerezheti az ezen objektum hivatkozását. Ezzel a paranccsal emellett a táblát hoz létre, ha azt nem létezik.
+
+Egy táblát a műveletek végrehajtásához **AzureRmStorageTable**, egy hivatkozás egy adott tábla CloudTable tulajdonság van szüksége.
+
+```powershell
+$cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
 ```
 
 [!INCLUDE [storage-table-entities-powershell-include](../../../includes/storage-table-entities-powershell-include.md)]
 
 ## <a name="delete-a-table"></a>Tábla törlése
 
-Egy tábla törléséhez használja [Remove-AzureStorageTable](/powershell/module/azure.storage/Remove-AzureStorageTable). Ez a parancsmag eltávolítja a tábla, beleértve az összes adatot.
+Egy tábla törléséhez használja [Remove-AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable). Ez a parancsmag eltávolítja a tábla, beleértve az összes adatot.
 
 ```powershell
-Remove-AzureStorageTable –Name $tableName –Context $ctx
+Remove-AzStorageTable –Name $tableName –Context $ctx
 
 # Retrieve the list of tables to verify the table has been removed.
-Get-AzureStorageTable –Context $Ctx | select Name
+Get-AzStorageTable –Context $Ctx | select Name
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -128,7 +141,7 @@ Get-AzureStorageTable –Context $Ctx | select Name
 Ha egy új erőforrás és a tárfiókja-fiókot, ez az útmutató elején, eltávolíthatja az összes létrehozott ebben a gyakorlatban az erőforráscsoport eltávolításával az eszközök. Ez a parancs törli a csoportot, valamint a magát az erőforráscsoportot lévő összes erőforrást.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -145,8 +158,8 @@ Az útmutató a cikkben megismerkedett a gyakori Azure Table storage műveleteke
 
 További információkért tekintse meg a következő cikkek
 
-* [Tárolási PowerShell-parancsmagok](/powershell/module/azurerm.storage#storage)
+* [Tárolási PowerShell-parancsmagok](/powershell/module/az.storage#storage)
 
-* [PowerShell az Azure Storage-táblák használata](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/)
+* [Azure PowerShell - modul v2.0 AzureRmStorageTable PS-táblák használata](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

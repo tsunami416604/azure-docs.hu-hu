@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7fdc1417ac524b422a12a087cf1661040efb9f8a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138082"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521958"
 ---
 # <a name="azure-container-registry-skus"></a>Az Azure Container Registry Termékváltozatai
 
@@ -20,31 +20,15 @@ Az Azure Container Registry (ACR) több szolgáltatási szinten, SKU-k más név
 
 | SKU | Managed | Leírás |
 | --- | :-------: | ----------- |
-| **Basic** | Igen | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Alapszintű beállításjegyzékek ugyanazokat a programozott képességeket, Standard és prémium (a Azure Active Directory hitelesítési integráció, a lemezkép törlése és a webhook) rendelkezik. Azonban a belefoglalt tárterület és a lemezkép átviteli sebesség különösen leginkább megfelelő alacsonyabb használati forgatókönyvek. |
+| **Basic** | Igen | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Alapszintű beállításjegyzékek rendelkezik, a Standard és prémium szintű ugyanazokat a programozott képességeket (például az Azure Active Directory [hitelesítési integrációs](container-registry-authentication.md#individual-login-with-azure-ad), [kép törlése][container-registry-delete], és [webhookok][container-registry-webhook]). Azonban a belefoglalt tárterület és a lemezkép átviteli sebesség különösen leginkább megfelelő alacsonyabb használati forgatókönyvek. |
 | **Standard** | Igen | Szabványos regisztrációs adatbázisokkal a Basic, a nagyobb foglalt tároló- és képfájlok átviteli sebesség megegyező funkciókat kínál. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
 | **Prémium** | Igen | Prémium szintű beállításjegyzékek adja meg a belefoglalt tárterület és a párhuzamos műveletek nagy mennyiségű forgatókönyveket lehetővé legmagasabb összege. Mellett lemezkép nagyobb átviteli sebességet, prémium szintű funkciók, többek között ad [georeplikációs] [ container-registry-geo-replication] egyetlen regisztrációs adatbázis kezeléséhez több régióban [megbízhatóság (előzetes verzió)tartalom](container-registry-content-trust.md) kép címke aláírására, és [tűzfalak és virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) a beállításjegyzékben való hozzáférés korlátozásához. |
-| Klasszikus<sup>1</sup> | Nem | Ez a Termékváltozat engedélyezve van az Azure-ban az Azure Container Registry szolgáltatás kezdeti verziójában. Klasszikus beállításjegyzékek élvezik egy tárfiókot, amelyet az Azure létrehozza az előfizetésében, ami lehetővé teszi az ACR-hez, például a nagyobb átviteli sebesség és georeplikáció útján magasabb szintű képességeket biztosít. |
-
-<sup>1</sup> a klasszikus SKU lesz **elavult** a **március 2019**. Új tároló-beállításjegyzékek alapszintű, Standard vagy prémium szintű használja.
-
-Kiválasztotta azt egy magasabb szintű Termékváltozatot kínál a további teljesítmény és méretezhetőség, azonban az összes felügyelt termékváltozatok adja meg ugyanazokat a programozott képességeket. A több szolgáltatási szintekkel megkezdheti az alapszintű, majd a a rendszerleíró adatbázis használattal növekedése Standard és prémium szintű átalakítása.
-
-## <a name="managed-vs-unmanaged"></a>Nem felügyelt és felügyelt
-
-A Basic, Standard és prémium szintű termékváltozatok összefoglaló néven *felügyelt* beállításjegyzékek, és a klasszikus beállításjegyzékek, *nem felügyelt*. Az elsődleges különbség a kettő között, a tárolólemezképek tárolási módját.
-
-### <a name="managed-basic-standard-premium"></a>Felügyelt (alapszintű, Standard, prémium)
-
-A felügyelt beállításjegyzékek előnyök teljes egészében az Azure által kezelt képet tárból. Azt jelenti egy storage-fiókot, amely tárolja a lemezképeket nem jelenik meg az Azure-előfizetésen belül. Több előnye is van a felügyelt beállításjegyzék Termékváltozatai egyik használatának köszönhetően jutottunk, a részletes tárgyalt [képtárolás tárolót az Azure Container Registry][container-registry-storage]. Ez a cikk a felügyelt beállításjegyzék Termékváltozatai és azok képességeinek összpontosít.
-
-### <a name="unmanaged-classic"></a>Nem felügyelt (klasszikus)
+|  Klasszikus (*nem érhető el, április 2019 után*) | Nem | Ez a Termékváltozat engedélyezve van az Azure-ban az Azure Container Registry szolgáltatás kezdeti verziójában. Klasszikus beállításjegyzékek élvezik egy tárfiókot, amelyet az Azure létrehozza az előfizetésében, ami lehetővé teszi az ACR-hez, például a nagyobb átviteli sebesség és georeplikáció útján magasabb szintű képességeket biztosít. |
 
 > [!IMPORTANT]
-> A klasszikus Termékváltozat hamarosan elavulttá válik, és a március 2019 után nem lesz elérhető. Alapszintű, Standard vagy prémium szintű minden új beállításjegyzékek használata.
+> A klasszikus beállításjegyzékben folyamatban van a Termékváltozat **elavult**, és nem lesz elérhető után **április 2019**. Az összes új beállításjegyzékek alapszintű, Standard vagy prémium szintű használatát javasoljuk. Az összes meglévő klasszikus beállításjegyzékek április 2019 előtt kell frissíteni. Frissítési információ: [klasszikus beállításjegyzék frissítése][container-registry-upgrade].
 
-Klasszikus beállításjegyzékek vannak "nem felügyelt" abban az értelemben, hogy a tárfiók, amely a klasszikus beállításjegyzékben található belül *a* Azure-előfizetést. Így Ön a tárfiók, amelyben a tárolórendszerképek tárolt kezeléséért felelős. A nem felügyelt beállításjegyzékek, nem lehet átállítani a termékváltozatok között a változó igényeknek megfelelő (eltérő [frissítése] [ container-registry-upgrade] a felügyelt beállításjegyzékre), és a felügyelt beállításjegyzékek több szolgáltatás (például nem érhető el tároló kép törléséhez, [georeplikációs][container-registry-geo-replication], és [webhookok][container-registry-webhook]).
-
-Klasszikus beállításjegyzék frissítése a felügyelt termékváltozatok egyik kapcsolatos további információkért lásd: [klasszikus beállításjegyzék frissítése][container-registry-upgrade].
+A Basic, Standard és prémium szintű termékváltozatok (összefoglaló néven *felügyelt beállításjegyzékek*) összes ugyanazokat a programozott képességeket biztosítanak. Emellett az összes részesülnek [képtárolás] [ container-registry-storage] teljes egészében az Azure által kezelt. Az egy magasabb szintű Termékváltozat biztosít, további teljesítmény és méretezhetőség. A több szolgáltatási szintekkel megkezdheti az alapszintű, majd a a rendszerleíró adatbázis használattal növekedése Standard és prémium szintű átalakítása.
 
 ## <a name="sku-feature-matrix"></a>Termékváltozat funkció mátrix
 
@@ -70,13 +54,7 @@ A tároló-beállításjegyzék **áttekintése** az Azure Portalon válassza ki
 
 ![Az Azure Portalon a Termékváltozat a tárolóregisztrációs adatbázis frissítése][update-registry-sku]
 
-Ha klasszikus beállításjegyzék, az Azure Portalon a felügyelt Termékváltozat nem választhat. Ehelyett először [frissítése] [ container-registry-upgrade] egy felügyelt beállításjegyzéket, (tekintse meg [módosítása klasszikusról](#changing-from-classic)).
-
-## <a name="changing-from-classic"></a>Kapcsolatcsoportok módosítása klasszikusról módosítása
-
-További szempontot figyelembe kell venni egy nem felügyelt klasszikus registry egy felügyelt a Basic, Standard vagy prémium szintű termékváltozatok áttelepítésekor. Ha a klasszikus beállításjegyzékben tartalmaz egy képeket nagy számú és méretű számos gigabájtig terjedhetnek, az áttelepítési folyamat eltarthat egy ideig. Ezenkívül `docker push` műveletek le vannak tiltva, amíg az áttelepítés akkor fejeződött be.
-
-A klasszikus beállításjegyzék frissítése a felügyelt termékváltozatok közül a részletekért lásd: [klasszikus tároló-beállításjegyzék frissítése][container-registry-upgrade].
+Ha klasszikus beállításjegyzék, az Azure Portalon a felügyelt Termékváltozat nem választhat. Ehelyett először [frissítése] [ container-registry-upgrade] , egy felügyelt beállításjegyzéket.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -107,4 +85,5 @@ Küldje el, és szavazzon az új szolgáltatási javaslataikat [ACR UserVoice][c
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
 [container-registry-storage]: container-registry-storage.md
+[container-registry-delete]: container-registry-delete.md
 [container-registry-webhook]: container-registry-webhook.md

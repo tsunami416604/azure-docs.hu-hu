@@ -1,5 +1,5 @@
 ---
-title: Összegyűjtheti és elemezheti az Azure-Tevékenységnaplók Log Analytics |} A Microsoft Docs
+title: Összegyűjtheti és elemezheti az Azure-Tevékenységnaplók Log Analytics-munkaterületen |} A Microsoft Docs
 description: Az Azure-tevékenységnaplóinak megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure-tevékenységnapló kereshet.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540253"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540431"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Összegyűjtheti és elemezheti a Log Analytics-munkaterületet az Azure monitorban az Azure-Tevékenységnaplók
 
 ![Azure Tevékenységnaplók szimbólum](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Az
 
 A tevékenységnapló használatával megadhatja, hogy a *mi*, *akik*, és *amikor* írási műveletek (PUT, POST, DELETE) arról, hogy az erőforrást az előfizetésében. A műveletek és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló nem tartalmaz olvasási (GET) műveleteket, illetve az erőforrások a klasszikus üzemi modellt használó műveleteket.
 
-Az Azure-Tevékenységnaplók Log Analyticshez való kapcsolódáskor, a következőket teheti:
+A csatlakozáskor az Azure-Tevékenységnaplók Log Analytics-munkaterületet a következőket teheti:
 
 - Az előre meghatározott nézeteket a vizsgálati naplók elemzése
 - Elemezheti és a Keresés és a tevékenység naplóinak több Azure-előfizetéssel
@@ -40,15 +40,15 @@ Az Azure-Tevékenységnaplók Log Analyticshez való kapcsolódáskor, a követk
 - Azonosítsa, mely negatív hatással az erőforrások vagy szolgáltatáskimaradás esetén állapotbeli problémák
 - Naplóbeli keresés használatával vesse össze a felhasználói tevékenységek, automatikus skálázási műveletek, az engedélyezési módosításainak és a környezet más naplók és metrikák szolgáltatásának állapota
 
-<sup>1</sup>alapértelmezés szerint a Log Analytics tartja az Azure-Tevékenységnaplók 90 napig, akkor is, ha azokat ingyenes szint. Vagy, ha 90 napnál kevesebb munkaterület adatmegőrzési beállítását. Ha a munkaterület 90 napnál hosszabb megőrzési rendelkezik, a tevékenységnaplókat őrzi meg a alapján a megőrzési idő a munkaterület a.
+<sup>1</sup>alapértelmezés szerint az Azure Monitor tartja az Azure-Tevékenységnaplók Log Analytics-munkaterület 90 nap, akkor is, ha azokat ingyenes szint. Vagy, ha 90 napnál kevesebb munkaterület adatmegőrzési beállítását. Ha a munkaterület 90 napnál hosszabb megőrzési rendelkezik, a tevékenységnaplókat őrzi meg a alapján a megőrzési idő a munkaterület a.
 
-A log Analytics ingyenes Tevékenységnaplók gyűjt, és a naplókat tároló 90 napig ingyenesen. Ha 90 napnál hosszabb ideig naplókat tárolja, az adatok 90 napnál tovább tárolt adatok adatmegőrzési díjat számolunk.
+A Log Analytics-munkaterület ingyenesen Tevékenységnaplók gyűjt, és a naplókat tároló 90 napig ingyenesen. Ha 90 napnál hosszabb ideig naplókat tárolja, az adatok 90 napnál tovább tárolt adatok adatmegőrzési díjat számolunk.
 
 Ha Ön az ingyenes tarifacsomag, tevékenységeket tartalmazó naplók nem vonatkoznak a napi adatok használata során.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Tevékenységnaplók az ügynökök által. A megoldás által használt összes adat közvetlenül az Azure-ból származik.
+Ellentétben a legtöbb Azure Monitor megoldások adatok nem lesznek gyűjtve tevékenységnaplóit ügynökök által. A megoldás által használt összes adat közvetlenül az Azure-ból származik.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |

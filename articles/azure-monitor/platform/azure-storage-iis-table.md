@@ -1,6 +1,6 @@
 ---
-title: A blob storage használata az IIS és a table storage-események az Azure Log Analyticsben |} A Microsoft Docs
-description: A log Analytics képes olvasni az Azure-szolgáltatások diagnosztikai a table storage-be írni a naplófájlokban vagy IIS-napló írása blobtárolókba.
+title: A blob storage használata az IIS és a table storage-események az Azure Monitor |} A Microsoft Docs
+description: Az Azure Monitor olvashatja a naplókban az Azure-szolgáltatások diagnosztikai a table storage-be írni vagy az IIS-napló írása blobtárolókba.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306629"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540601"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Az Azure blob storage használata az IIS és az Azure table storage-események az Azure Monitor szolgáltatással
 
-A log Analytics a naplók a következő szolgáltatásokat, hogy az írási diagnosztika a table storage vagy az IIS-napló írása blobtárolókba olvashatja:
+Az Azure Monitor a naplók a következő szolgáltatásokat, hogy az írási diagnosztika a table storage vagy az IIS-napló írása blobtárolókba olvashatja:
 
 * A Service Fabric-fürtök (előzetes verzió)
 * Virtuális gépek
 * Webes/feldolgozói szerepkörök
 
-A Log Analytics gyűjtheti ezekhez az erőforrásokhoz, mielőtt az Azure diagnostics engedélyezve kell lennie.
+Az Azure Monitor gyűjtheti be ezekhez az erőforrásokhoz a Log Analytics-munkaterület, mielőtt az Azure diagnostics engedélyezve kell lennie.
 
-Miután diagnosztika engedélyezve van, használhatja az Azure Portalon, vagy PowerShell konfigurálása a Log Analyticsben, hogy a naplók összegyűjtése.
+Után diagnosztika engedélyezve van, használhatja az Azure Portalon, vagy PowerShell beállítása a munkaterületen, a naplók gyűjtését.
 
-Az Azure Diagnostics az Azure kiterjesztése, amely lehetővé teszi, hogy egy feldolgozói szerepkör, a webes szerepkör vagy az Azure-ban futó virtuális gép diagnosztikai adatainak összegyűjtése. Az adatok Azure storage-fiók tárolva van, és ezután Log Analytics által összegyűjtött.
+Az Azure Diagnostics az Azure kiterjesztése, amely lehetővé teszi, hogy egy feldolgozói szerepkör, a webes szerepkör vagy az Azure-ban futó virtuális gép diagnosztikai adatainak összegyűjtése. Az adatok Azure storage-fiók tárolva van, és ezután gyűjthetők a Azure Monitor.
 
-A Log Analytics ezeket az Azure diagnosztikai naplók gyűjtésére a naplók a következő helyeken kell lennie:
+Az Azure Monitor ezeket az Azure diagnosztikai naplók gyűjtésére a naplók a következő helyeken kell lennie:
 
 | Napló típusa | Erőforrás típusa | Hely |
 | --- | --- | --- |
@@ -116,10 +116,10 @@ Győződjön meg arról, hogy a ConfigurationSettings határozza meg a storage-f
 
 A **AccountName** és **AccountKey** értékek találhatók, a tárolási fiók irányítópultján, a Tárelérési kulcsok kezelése az Azure Portalon. A protokoll, a kapcsolati karakterlánc lehet **https**.
 
-A frissített diagnosztikai konfiguráció alkalmazása a felhőszolgáltatáshoz, és a diagnosztika az Azure Storage-írja, majd készen áll a Log Analytics konfigurálása.
+A frissített diagnosztikai konfiguráció alkalmazása a felhőszolgáltatáshoz, és a diagnosztika az Azure Storage-írja, majd készen áll a Log Analytics-munkaterület konfigurálása.
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Naplók gyűjtése az Azure Storage-ból az Azure portal használatával
-Az Azure portal segítségével konfigurálhatja a Log Analyticsben, hogy a naplók a következő Azure-szolgáltatások gyűjtése:
+Az Azure portal segítségével konfigurálhatja a Log Analytics-munkaterületet az Azure monitorban a naplók a következő Azure-szolgáltatások:
 
 * Service Fabric-fürtök
 * Virtuális gépek
@@ -136,9 +136,9 @@ Az Azure Portalon keresse meg a Log Analytics-munkaterületet, és hajtsa végre
 5. A forrás értéke automatikusan adattípus alapján van feltöltve, és nem módosítható
 6. Kattintson az OK gombra a konfiguráció mentése
 
-További tárfiókok és a Log Analytics gyűjtéséhez kívánt adattípusok ismételje meg a 2 – 6.
+További tárfiókok és a munkaterületre gyűjtendő adattípusokat ismételje meg a 2 – 6.
 
-Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfiókból. A konfiguráció alkalmazása után tárolási írt adatok csak megjelennek. A log Analytics olvasni a már meglévő adatokat a tárfiókból.
+Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics-munkaterületet a tárfiókból. A konfiguráció alkalmazása után tárolási írt adatok csak megjelennek. A munkaterület nem olvassa a már meglévő adatok a storage-fiókot.
 
 > [!NOTE]
 > A portál nem ellenőrzi, hogy a forrás létezik-e a tárfiókban, vagy ha új adatokat ír.
@@ -149,7 +149,7 @@ Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfió
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
+Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása az Azure Monitor](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
 
 Azure PowerShell használatával pontosabban megadhatja az Azure Storage írt események.
 További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

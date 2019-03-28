@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726872"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540040"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Adatátalakítás folyamat illesztési leképezése
 
@@ -67,6 +67,10 @@ Az ADF adatfolyam önillesztést feltételek a válassza egy meglévő adatfolya
 ![Önillesztés](media/data-flow/selfjoin.png "Önillesztés")
 
 A fenti ábrán a Select transformaci tetején. Az összes műveletet az aliasképző "OrigSourceBatting" az eredeti adatfolyam. A kijelölt illesztési átalakítás alatta látható, hogy vesszük a Select alias stream a jobb oldali illesztési lehetővé teszi számunkra, hogy ugyanazzal a kulccsal az bal és jobb oldalán a belső illesztéssel hivatkozhat.
+
+## <a name="composite-and-custom-keys"></a>Összetett és egyéni kulcsok
+
+Egyéni és összetett kulcsokat hozhat létre menet közben belső illesztés átalakítását. A további illesztési oszlopok az egyes kapcsolati sor melletti a plusz jelre (+) sorokat adhat hozzá. Vagy egy új kulcs értéket a működés közbeni illesztési számnak a Kifejezésszerkesztő számítási.
 
 ## <a name="next-steps"></a>További lépések
 

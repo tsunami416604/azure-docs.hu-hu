@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b007575c614134f298a16b32c3179f7f0dfd31e5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436693"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520156"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -309,6 +309,11 @@ A LUIS-portálról, válassza ki az alkalmazást, majd válassza ki **végpont n
 
 Miután feltöltötte a napló, [tekintse át a végpont](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) utterances a LUIS-portálon.
 
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
 ## <a name="stop-the-container"></a>Állítsa le a tároló
 
 Állítsa le a tárolót, a parancssori környezetben, ahol a tárolóban fut, nyomja le a **Ctrl + C**.
@@ -316,10 +321,6 @@ Miután feltöltötte a napló, [tekintse át a végpont](https://docs.microsoft
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 A kimenet futtatásakor a tároló [csatlakoztatási](luis-container-configuration.md#mount-settings) és naplózás engedélyezve van, a tárolót hoz létre a naplófájlokat, amelyek hasznosak a hibaelhárítás indítása, vagy a tároló futtatása közben történik. 
-
-## <a name="containers-api-documentation"></a>Tároló API-dokumentáció
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Számlázás
 

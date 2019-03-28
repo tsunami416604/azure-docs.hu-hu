@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0de6cf9be01fc93a26a782189a2062d19eaf73e8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fd937aba302004f23904e4f743c93e69460f9026
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499267"
+ms.locfileid: "58541145"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -36,8 +36,6 @@ Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning támogatja a besorolást, regressziós és előrejelzés tevékenységtípust.
-
-Automatizált gépi tanulási funkciók általánosan elérhetők, amíg **előrejelzés jelenleg még nyilvános előzetes verzióban.**
 
 Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus. DNN-algoritmusok betanítás során érhetők el, miközben automatizált ML nem építhető fel DNN-modelleket.
 

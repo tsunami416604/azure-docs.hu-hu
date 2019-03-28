@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 0c942056e95812dfbbe6e3b1e8963799088273fb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f54ff738199d433308a8eaba6a643861c57b4abb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981196"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540686"
 ---
 # <a name="resize-a-windows-vm"></a>Egy Windows virtuális gép átméretezése
 
@@ -55,7 +55,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Ha a kívánt méret nem szerepel, futtassa az alábbi parancsokat a virtuális gép felszabadítása méretezze át, és indítsa újra a virtuális Gépet. Cserélje le **<newVMsize>** a kívánt méretre.
+Ha a kívánt méret nem szerepel, futtassa az alábbi parancsokat a virtuális gép felszabadítása méretezze át, és indítsa újra a virtuális Gépet. Cserélje le  **\<newVMsize >** a kívánt méretre.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

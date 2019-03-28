@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: bc4de2d406ea2c1814825daf89d5e6a576c94036
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764812"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540057"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File storage csatlakoztatása az SMB-, Linux rendszerű virtuális gépeken
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új storage-fiókot az erőforráscsoportban létrehozott, [az tárfiók létrehozása](/cli/azure/storage/account). Ez a példa létrehoz egy tárfiókot, nevű *mySTORAGEACCT<random number>*  és a tárfiók nevét a változóban **STORAGEACCT**. Tárfiókok nevének egyedinek kell lennie, használatával `$RANDOM` egy számot fűz a végfelhasználók egyedi legyen.
+Hozzon létre egy új storage-fiókot az erőforráscsoportban létrehozott, [az tárfiók létrehozása](/cli/azure/storage/account). Ez a példa létrehoz egy tárfiókot, nevű *mySTORAGEACCT\<véletlenszerű szám >* és a tárfiók nevét a változóban **STORAGEACCT**. Tárfiókok nevének egyedinek kell lennie, használatával `$RANDOM` egy számot fűz a végfelhasználók egyedi legyen.
 
 ```bash
 STORAGEACCT=$(az storage account create \

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: e9e47eff3df941b0c1437083dc7440fab4091418
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317068"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518728"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -24,7 +24,7 @@ ms.locfileid: "58317068"
 
 ![Application Insights Metrics Explorer](media/functions-monitoring/metrics-explorer.png)
 
-Az Azure Functions is rendelkezik [beépített monitorozást, amely nem használható az Application Insights](#monitoring-without-application-insights). Az Application Insights azt javasoljuk, mert több adat és hatékonyabb módon elemezheti az adatokat biztosít.
+Az Azure Functions is rendelkezik a beépített figyelés, amely nem használja az Application Insights. Az Application Insights azt javasoljuk, mert több adat és hatékonyabb módon elemezheti az adatokat biztosít.
 
 ## <a name="application-insights-pricing-and-limits"></a>Az Application Insights díjszabása és korlátozásai
 
@@ -77,7 +77,7 @@ A következő lépés [tiltsa le a beépített naplózási](#disable-built-in-lo
 
 ## <a name="disable-built-in-logging"></a>Beépített naplózás letiltása
 
-Ha engedélyezi az Application Insights, tiltsa le a [beépített naplózási által használt Azure Storage](#logging-to-storage). A beépített naplózási hasznos tesztelni a kisebb számítási feladatokhoz, de nagy terhelésű éles környezetben való használatra nem alkalmas. Éles környezetben a figyeléshez, javasoljuk, hogy az Application Insights. Ha beépített naplózást éles környezetben használja, a naplózás rekord hiányosak lehetnek az Azure Storage-szabályozás miatt.
+Ha engedélyezi az Application Insights, tiltsa le a beépített naplózási által használt Azure Storage. A beépített naplózási hasznos tesztelni a kisebb számítási feladatokhoz, de nagy terhelésű éles környezetben való használatra nem alkalmas. Éles környezetben a figyeléshez, javasoljuk, hogy az Application Insights. Ha beépített naplózást éles környezetben használja, a naplózás rekord hiányosak lehetnek az Azure Storage-szabályozás miatt.
 
 Beépített naplózási letiltásához törölje a `AzureWebJobsDashboard` alkalmazásbeállítást. Az Azure Portalon Alkalmazásbeállítások törlésével kapcsolatos információkért lásd: a **Alkalmazásbeállítások** szakaszában [függvényalkalmazás kezelése](functions-how-to-use-azure-function-app-settings.md#settings). Mielőtt törli az alkalmazásbeállítást, ellenőrizze, nem ugyanaz a függvényalkalmazás a meglévő funkciók használata a beállítás az Azure Storage-eseményindítók és kötések.
 
@@ -125,7 +125,7 @@ A [Metrikaböngésző](../azure-monitor/app/metrics-explorer.md), diagramok és 
 
 ![Metrikaböngésző](media/functions-monitoring/metrics-explorer.png)
 
-Az a [hibák](../azure-monitor/app/asp-net-exceptions.md) lapon létrehozhat diagramokat és függvény hibák és a kiszolgáló kivételek alapuló riasztások. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, kivéve, ha meg, hogy [egyéni telemetriát](#custom-telemetry-in-c-functions) függőségek.
+Az a [hibák](../azure-monitor/app/asp-net-exceptions.md) lapon létrehozhat diagramokat és függvény hibák és a kiszolgáló kivételek alapuló riasztások. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, kivéve, ha a függőségekhez egyéni telemetriát megvalósítása.
 
 ![Hibák](media/functions-monitoring/failures.png)
 
@@ -423,7 +423,7 @@ A parancsfájl C#-függvények, használhatja a `LogMetric` metódust a `ILogger
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Ez a kód hívása helyett a `TrackMetric` használatával [a .NET-hez készült Application Insights API](#custom-telemetry-in-c-functions).
+Ez a kód hívása helyett a `TrackMetric` a .NET-hez az Application Insights API használatával.
 
 ## <a name="write-logs-in-javascript-functions"></a>JavaScript-függvények naplóznak
 
@@ -441,7 +441,7 @@ Amikor futtatja [verzió 1.x](functions-versions.md#creating-1x-apps) Node.js-f�
 context.log.metric("TestMetric", 1234);
 ```
 
-Ez a kód hívása helyett a `trackMetric` használatával [az Application insights Node.js SDK](#custom-telemetry-in-javascript-functions).
+Ez a kód hívása helyett a `trackMetric` az Application Insights Node.js SDK használatával.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Egyéni telemetriát bejelentkezés C# funkciók
 
@@ -632,7 +632,7 @@ A `tagOverrides` paraméterkészlettel a `operation_Id` a függvény meghívási
 
 ### <a name="dependencies"></a>Függőségek
 
-Függőségek, a függvény rendelkező más szolgáltatások nem jelennek meg automatikusan. A függőségek megjelenítéséhez egyéni kódot is írhat. Példák: szereplő mintakódban a [ C# egyéni telemetriát szakasz](#custom-telemetry-in-c-functions). A mintakód eredményez olyan *alkalmazástérkép* az Application insights szolgáltatásban az alábbi képen láthatóhoz hasonló:
+Függőségek, a függvény rendelkező más szolgáltatások nem jelennek meg automatikusan. A függőségek megjelenítéséhez egyéni kódot is írhat. Példák: szereplő mintakódban a [ C# egyéni telemetriát szakasz](#log-custom-telemetry-in-c-functions). A mintakód eredményez olyan *alkalmazástérkép* az Application insights szolgáltatásban az alábbi képen láthatóhoz hasonló:
 
 ![Alkalmazástérkép](media/functions-monitoring/app-map.png)
 

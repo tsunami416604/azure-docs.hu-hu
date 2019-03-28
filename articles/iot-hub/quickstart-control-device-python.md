@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
-ms.openlocfilehash: 801258f2f6f56fc3fd9e7c830e93bf0dbfa9c134
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 03/26/2019
+ms.openlocfilehash: ce3bf98a5f31f18c6759b202d53d8a1ced46296e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170360"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519663"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Python)
 
@@ -35,9 +35,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. A fejlesztői gépen szükség lesz a Python 2.7.x vagy a 3.5.x verziójára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. Jelenleg a Microsoft Azure IoT SDK Pythonhoz készült Python csak bizonyos verziójának minden egyes platformhoz támogatja. További tudnivalókért tekintse meg a [Python SDK információs](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-A Pythont a [Python.org](https://www.python.org/downloads/) oldalról töltheti le többféle platformra.
+Ez a rövid útmutató feltételezi, hogy egy Windows fejlesztési számítógépet használ. A Windows rendszerek esetében csak [Python 3.6.x](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrához 32 bites, akkor a telepítő letöltési a x86; a 64 bites architektúra töltse le az x86-64. Emellett győződjön meg arról, hogy a [Microsoft Visual C++ újraterjeszthető csomag a Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) architektúra (x86 vagy x64) telepítve van.
+
+Python tölthető le a más platformok [Python.org](https://www.python.org/downloads/).
 
 A Python aktuális verzióját a következő parancsok egyikével ellenőrizheti a fejlesztői gépen:
 

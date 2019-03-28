@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/25/2019
+ms.date: 03/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 31a50d1dab0d5b62ab4dd549127e9092148bd88c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8e07678604797e7e2090f5fefcdb3f3adff40161
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438087"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521771"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -102,9 +102,9 @@ A Data Box Edge fizikai eszköznek, az Azure-erőforrásnak és a céloldali tá
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Data Box Edge rendszerkövetelményeinek](https://aka.ms/dbe-docs) áttekintése.
-- A [Data Box Edge korlátainak](https://aka.ms/dbe-docs) értelmezése.
-- Az [Azure Data Box Edge](https://aka.ms/dbe-docs) üzembe helyezése az Azure Portalon.
+- A [Data Box Edge rendszerkövetelményeinek](data-box-edge-system-requirements.md) áttekintése.
+- A [Data Box Edge korlátainak](data-box-edge-limits.md) értelmezése.
+- Az [Azure Data Box Edge](data-box-edge-deploy-prep.md) üzembe helyezése az Azure Portalon.
 
 
 

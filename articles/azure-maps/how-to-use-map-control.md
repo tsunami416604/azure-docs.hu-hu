@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57850f67b56113036cb6cc37e9f1f2694ba9eb8f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 56580454753ae6af60f5f8c51d9504f813f91e97
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672729"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540125"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 
@@ -26,11 +26,11 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 1. Hozzon létre egy új HTML-fájlt.
 
 2. Töltse be az Azure Maps webes SDK-t. Ezt megteheti egy két lehetőség közül választhat;
-    
+
     a. Az URL-végpontot a stíluslap és parancsfájl útmutatót hozzáadásával az Azure Maps Web SDK globálisan üzemeltetett CDN verzióját használja a `<head>` elem a fájl:
 
-    ```html
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
     ```
 
@@ -40,19 +40,19 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 
     Ezután adja hozzá hivatkozásokat az Azure Maps stíluslap és parancsfájl forrás mutató hivatkozásokat a `<head>` elem a fájl:
 
-    ```html
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css" />
+    ```HTML
+    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
     <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
     ```
 
 3. A térkép megjelenítési, hogy az kitöltse a teljes szervezet lap, adja hozzá a következő `<style>` elem a `<head>` elemet.
 
-    ```html
+    ```HTML
     <style>
         html, body {
             margin: 0;
         }
-    
+
         #myMap {
             height: 100vh;
             width: 100vw;
@@ -60,9 +60,9 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </style>
     ```
 
-4. Az oldal törzsében, adjon hozzá egy `<div>` elemet, és adjon neki egy `id` , **myMap**. 
+4. Az oldal törzsében, adjon hozzá egy `<div>` elemet, és adjon neki egy `id` , **myMap**.
 
-    ```html
+    ```HTML
     <body>
         <div id="myMap"></div>
     </body>
@@ -70,8 +70,8 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 
 5. A térkép vezérlőelem inicializálása, új definiálására a html törzsében, és hozzon létre egy parancsfájlt. A saját Azure Maps-fiók kulcsára vagy Azure Active Directory (AAD) hitelesítő adatokat használja a térkép használatával történő hitelesítéshez [hitelesítési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions). Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md). A **nyelvi** beállítás megadja a térkép címkék és a vezérlők használt nyelv. A támogatott nyelvek további információkért lásd: [támogatott nyelvek](supported-languages.md). Ha egy előfizetési kulcsot használ a hitelesítéshez.
 
-    ```html
-    <script type='text/javascript'>
+    ```HTML
+    <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
             zoom: 12,
@@ -86,8 +86,8 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 
     Az Azure Active Directory (AAD) használata a hitelesítéshez:
 
-    ```html
-    <script type='text/javascript'>
+    ```HTML
+    <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
             zoom: 12,
@@ -103,41 +103,42 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     ```
 
     Lásd: [hitelesítés az Azure Maps](azure-maps-authentication.md) további részletekért.
+
 6. Igény szerint hasznosnak találhatja, a következő meta tag elemeket ad hozzá a fő az oldal hasznos:
 
-    ```html
+    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
-    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
-    
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
     <!-- Ensures the web page looks good on all screen sizes. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
 7. A teljes kép a HTML-fájl hasonlóan kell kinéznie a következőket:
 
-    ```html
+    ```HTML
     <!DOCTYPE html>
     <html>
     <head>
         <title></title>
-    
-        <meta charset="utf-8" />
-        
+
+        <meta charset="utf-8">
+
         <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
-        <meta http-equiv="x-ua-compatible" content="IE=Edge" />
-    
+        <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
         <!-- Ensures the web page looks good on all screen sizes. -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
-    
+
         <style>
             html, body {
                 margin: 0;
             }
-        
+
             #myMap {
                 height: 100vh;
                 width: 100vw;
@@ -146,8 +147,8 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </head>
     <body>
         <div id="myMap"></div>
-        
-        <script type='text/javascript'>
+
+        <script type="text/javascript">
             //Create an instance of the map control and set some options.
             var map = new atlas.Map('myMap', {
                 center: [-122.33, 47.6],

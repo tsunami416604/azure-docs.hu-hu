@@ -3,7 +3,7 @@ title: Az Azure Active Directory eszközfelügyeletének ismertetése | Microsof
 description: Ez a cikk azt ismerteti, hogyan lehet az eszközfelügyelettel szabályozni a környezetben található erőforrásokhoz hozzáférő eszközöket.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/01/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b303841dffd09e2c2f8250e4a7885fda36ab4a38
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c5b736c75f65fa5dfc2f3132a43ac0485bc58d19
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168605"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520309"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Az Azure Active Directory eszközfelügyeletének ismertetése
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905059"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521815"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -153,7 +153,7 @@ Ez akkor lehetséges, ha a kód elküldi ezeket az adatokat. Azt is történhet,
 
 **Az összes** az ügyfél webcímet oktettjének mindig értéke 0 után a földrajzi attribútumokat kulcskeresési vannak.
 
-## <a name="my-ikey-is-visible-in-my-web-page-source"></a>A Rendszerállapotkulcsot látható lesz a weblap forrása. 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>A kialakítási kulcsot a weblap forrása látható lesz. 
 
 * Ez a gyakori eljárás a figyelési megoldások.
 * Az adatok ellopására nem használható.
@@ -162,7 +162,7 @@ Ez akkor lehetséges, ha a kód elküldi ezeket az adatokat. Azt is történhet,
 
 Sikerült:
 
-* Ügyfél és kiszolgáló adatokhoz (külön Application Insights-erőforrások) két külön Erőforráskulcsot használja. Vagy
+* Két külön kialakítási kulcs (külön Application Insights-erőforrást), használja az ügyfél és kiszolgáló adatok. Vagy
 * Írni a proxy, amely a kiszolgálón fut, és a webes ügyfél adatait, hogy a proxyn keresztül történő küldése.
 
 ## <a name="post"></a>Hogyan ellenőrizhetem a diagnosztikai keresésben POST data?

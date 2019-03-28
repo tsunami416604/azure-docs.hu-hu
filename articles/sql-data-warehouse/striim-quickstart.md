@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 1f8c2590ea01e9a819ebdacd6b3774555dded800
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a835fbd427408afae9ea6ae1b1bc2a84c18b0c34
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250840"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540454"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW Piactéri ajánlat telepítési útmutató
 
@@ -29,7 +29,7 @@ A Striim virtuális gép konfigurálása a megadott tulajdonságokkal, jegyezze 
 
 ![Striim konfigurálása][configure]
 
-Miután üzembe helyezte, kattintson a <VM Name>masternode – az Azure Portalon kattintson a Kapcsolódás elemre, és másolja a virtuális gép helyi fiókjával bejelentkezés 
+Üzembe helyezése után kattintson a \<virtuális gép neve >-masternode az Azure Portalon kattintson a Kapcsolódás elemre, és másolja a virtuális gép helyi fiókjával bejelentkezés 
 
 ![Striim csatlakozhat az SQL Data warehouse-bA][connect]
 
@@ -55,7 +55,7 @@ Hajtsa végre az alábbi parancsokat a JDBC jar-fájl áthelyezése a Striim lib
 
 ![A Striim fürt elindításához][start-striim]
 
-Most nyissa meg a kedvenc böngészőjét, és navigáljon <DNS Name>: 9080
+Most nyissa meg a kedvenc böngészőjét, és navigáljon \<DNS-neve >: 9080
 
 ![Keresse meg a bejelentkezési képernyőn][navigate]
 

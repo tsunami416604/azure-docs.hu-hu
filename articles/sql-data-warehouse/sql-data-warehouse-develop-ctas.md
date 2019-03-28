@@ -2,27 +2,27 @@
 title: Az Azure SQL Data Warehouse létrehozása a TABLE AS SELECT (CTAS) |} A Microsoft Docs
 description: A CREATE TABLE AS SELECT (CTAS) utasítás az Azure SQL Data Warehouse-megoldások fejlesztése programozási tippek.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/26/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b66b6018ed5f6f427896db00b5348983b76a0e5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f791f460efec1b84533379e74add003619dbac6f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472150"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521567"
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse használatával a CREATE TABLE AS SELECT (CTAS)
 A CREATE TABLE AS SELECT (CTAS) T-SQL utasítást az Azure SQL Data Warehouse-megoldások fejlesztése programozási tippek.
 
 ## <a name="what-is-create-table-as-select-ctas"></a>Mit jelent a CREATE TABLE AS SELECT (CTAS)?
 
-A [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) , vagy a CTAS utasítás az a legfontosabb érhető el a T-SQL-funkciók egyikét. Egy párhuzamos művelet, amely létrehoz egy új táblát egy kiválasztási utasítás kimenete alapján. CTASD, a legegyszerűbb módja egy tábla egy másolatának létrehozásához. 
+A [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) , vagy a CTAS utasítás az a legfontosabb érhető el a T-SQL-funkciók egyikét. Egy párhuzamos művelet, amely létrehoz egy új táblát egy kiválasztási utasítás kimenete alapján. A CTAS, a legegyszerűbb módja létrehozásához és adatok beszúrása egy tábla egyetlen paranccsal. 
 
 ## <a name="selectinto-vs-ctas"></a>VÁLASSZON... AZ vs. CTAS
 Adathozzáférésnek felszámított változata is érdemes lehet CTAS a [kiválasztása... AZ](/sql/t-sql/queries/select-into-clause-transact-sql) utasítást.
@@ -35,11 +35,10 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Az előző példában `[dbo].[FactInternetSales_new]` ROUND_ROBIN elosztott tábla FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXSZEL rendelkező létrehozott van, mivel ez az a tábla alapértelmezett beállítást az Azure SQL Data Warehouse.
+VÁLASSZON... IMPORTÁLÁSA azonban nem teszi lehetővé, hogy módosítja a terjesztési mód vagy az index típusa a művelet részeként. `[dbo].[FactInternetSales_new]` létrejön az alapértelmezett telepítési típus használatával ROUND_ROBIN és az alapértelmezett táblaszerkezet FÜRTÖZÖTT OSZLOPCENTRIKUS INDEXET.
 
-VÁLASSZON... IMPORTÁLÁSA azonban nem teszi lehetővé, hogy módosítja a terjesztési mód vagy az index típusa a művelet részeként. Ez az, ahol a CTAS érhető el.
-
-Az előző példában a CTAS konvertálása meglehetősen egyszerű folyamat a következő:
+A CTAS használata esetén is tudja mindkét elosztása a tábla adatait, valamint a táblázat szerkezetét típusú adja meg.
+Az előző példában a CTAS konvertálása:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-A CTAS Ön tudja majd módosítani a tábla adatait, valamint a táblatípus mindkét a terjesztési. 
+ 
 
 > [!NOTE]
 > Ha csak próbál módosítani az indexet a a `CTAS` művelet és a forrástáblában kivonatterjesztés, majd a `CTAS` művelet legjobban hajtja végre, ha ugyanazon terjesztési és oszlop adattípusát. Így elkerülhető, közötti adatáthelyezés terjesztési a művelet, amely hatékonyabb során.
@@ -62,7 +61,7 @@ A CTAS Ön tudja majd módosítani a tábla adatait, valamint a táblatípus min
 > 
 
 ## <a name="using-ctas-to-copy-a-table"></a>A CTAS használata tábla másolása
-Talán az egyik leggyakoribb használja a `CTAS` hoz létre egy táblát egy példányát, hogy a DDL módosíthatja. Ha például eredetileg hozta létre a táblát, `ROUND_ROBIN` és most szeretné módosítani egy oszlop alapján elosztott tábla `CTAS` van, hogyan kell módosítania az oszlopot. `CTAS` is használható, particionálás, az indexelés vagy oszlop típusának módosítása.
+Talán az egyik leggyakoribb használja a `CTAS` hoz létre egy táblát egy példányát, hogy a DDL módosíthatja. Ha például eredetileg létrehozta a táblát, `ROUND_ROBIN` , és most szeretné módosítani, hogy egy oszlop alapján elosztott tábla `CTAS` van, hogyan kell módosítania az oszlopot. `CTAS` is használható, particionálás, az indexelés vagy oszlop típusának módosítása.
 
 Tegyük fel, ez a tábla alapértelmezett eloszlási típusát használatával létrehozott `ROUND_ROBIN` elosztott, mivel nincs elosztási oszlop van megadva a `CREATE TABLE`.
 
@@ -95,7 +94,7 @@ CREATE TABLE FactInternetSales
 );
 ```
 
-Most szeretné hozzon létre egy új példányát a tábla fürtözött Oszlopcentrikus indexszel rendelkező, így kihasználhatja a fürtözött Oszlopcentrikus táblák teljesítményének. Is szeretné osztani az ebben a táblában a ProductKey, mivel, amelyek várhatóan ebben az oszlopban való csatlakozások, és szeretné kerülni az adatmozgatás ProductKey való csatlakozások során. Végül is hozzáadandó OrderDateKey a particionálás, hogy a régi adatok régi partíciók elvetésével gyorsan törölheti. Íme a CTAS utasítás, amely a régi tábla szeretné másolni egy új táblába.
+Most szeretné hozzon létre egy új példányát a tábla fürtözött Oszlopcentrikus indexszel rendelkező, így kihasználhatja a fürtözött Oszlopcentrikus táblák teljesítményének. Is szeretné osztani az ebben a táblában a ProductKey, mivel, amelyek várhatóan ebben az oszlopban való csatlakozások, és szeretné kerülni az adatmozgatás ProductKey való csatlakozások során. Végül is hozzáadandó OrderDateKey a particionálás, hogy a régi adatok régi partíciók elvetésével gyorsan törölheti. Íme a CTAS nyilatkozata is, amely a régi tábla szeretné másolni egy új táblába.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -125,13 +124,8 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [!NOTE]
-> Az Azure SQL Data Warehouse még nem támogatja a statisztikák automatikus létrehozását és frissítését.  A legjobb lekérdezési teljesítmény eléréséhez fontos létrehozni statisztikákat a táblák összes oszlopához az első betöltés után, illetve az adatok minden lényeges módosítását követően.  A statisztika részletes ismertetése lásd: a fejlesztés témakörcsoport [Statistics] [Statistics] témakörében.
-> 
-> 
-
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>A CTAS használata a nem támogatott funkciók
-A CTAS is használható az alábbi nem támogatott funkciók számos megkerüléséhez. Ez gyakran bizonyíthatja win/win helyzet lehet, nem csak a kód megfelelőként fogja, de ez gyakran szerint fog futni gyorsabban az SQL Data warehouse-bA. Ez a teljes körűen párhuzamos működésű hasznosíthassák eredményeként. A CTAS macről körül forgatókönyvek a következők:
+A CTAS is használható az alábbi nem támogatott funkciók számos megkerüléséhez. Ezt a módszert gyakran bizonyíthatja win/win helyzet lehet, nem csak a kód megfelelőként fogja, de ez gyakran szerint fog futni gyorsabban az SQL Data warehouse-bA. A teljesítmény a teljes körűen párhuzamos működésű kialakításakor eredménye. A CTAS macről körül forgatókönyvek a következők:
 
 * A frissítések ANSI ILLESZTÉSEK
 * Törli az ANSI illesztések
@@ -160,7 +154,7 @@ WITH
 ;
 ```
 
-Az eredeti lekérdezés előfordulhat, hogy rendelkezik kikeresi ehhez hasonló:
+Az eredeti lekérdezés előfordulhat, hogy rendelkezik kikeresi a következőhöz hasonló:
 
 ```sql
 UPDATE    acs
@@ -222,7 +216,7 @@ DROP TABLE CTAS_acs
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI illesztési helyettesíti a törlési utasítások
-Néha a legjobb módszer az adatok törlése a használandó `CTAS`. Ahelyett, hogy az adatok törlése egyszerűen válassza ki az adatokat meg szeretné tartani. Ez különösen igaz a `DELETE` csatlakozó szintaxis, mivel az SQL Data Warehouse nem támogatja az ANSI illesztések az ansi használó utasításokat a `FROM` záradékában egy `DELETE` utasítást.
+Néha a legjobb módszer az adatok törlése a használandó `CTAS`. Ahelyett, hogy az adatok törlése, válassza ki a megőrizni kívánt adatokat. Ez különösen igaz a `DELETE` ANSI használó utasításokat szintaxis csatlakozzon, mert az SQL Data Warehouse nem támogatja az ANSI illesztések az `FROM` záradékában egy `DELETE` utasítást.
 
 A konvertált DELETE utasítást egy példát alább érhető el:
 
@@ -246,9 +240,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Cserélje le a merge utasítások
-Merge utasítások kicserélhető, legalább a részben, a CTAS használatával. Az INSERT és a frissítés konszolidálhatja az egy utasítás be. A törölt rekordok kellene le kell zárni a második utasításban.
+Merge utasítások kicserélhető, legalább a részben, a CTAS használatával. Az INSERT és a frissítés konszolidálhatja az egy utasítás be. A törölt rekordok korlátozni kell a `SELECT` utasítással hagyja el az eredmények közül.
 
-Az alábbiakban látható egy példa egy UPSERT:
+Az alábbi példa egy UPSERT szól:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -327,13 +321,13 @@ from ctas_r
 ;
 ```
 
-Tárolt eredmény érték eltér. A megőrzött az eredmény oszlop értékét használja a más kifejezésekben a hiba akkor is, nagyobb jelentőségű tényező válik.
+Tárolt eredmény érték eltér. A megőrzött értékét az eredményoszlop más kifejezésekben használja, a hiba még nagyobb jelentőségű tényező válik.
 
 ![A CTAS eredmények](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
 Ez különösen fontos az adatmigrálások. Annak ellenére, hogy a második lekérdezés pontosabb valószínűleg nincs probléma. Az adatok eltérő lenne a forrásrendszerben képest, és integritását a migrálás a kérdéseket, amely vezet. Ez az adott ritka esetekben, amikor a "rossz" választ ténylegesen a megfelelőt egyik!
 
-Láthatjuk, hogy ez a két eredményt eltérése oka implicit típus döntő le. Az első példában a tábla határozza meg az oszlop definíciójában. Egy implicit típusának átalakítása akkor fordul elő, ha a sor kerül. A második példában nincs nincs típusú implicit konverzió, a kifejezés határozza meg az oszlop adattípusát. Figyelje meg, hogy az oszlop a második példában definiálva van egy nullázható oszlopot, mivel az első példában nem. A táblázat létrehozásának első példa oszlop nullázhatóságával az explicit módon lett definiálva. A második, csak maradt a kifejezést, és alapértelmezés szerint ez a példa egy NULL-definíció eredményezne.  
+Láthatjuk, hogy ez a két eredményt eltérése oka implicit típus döntő le. Az első példában a tábla határozza meg az oszlop definíciójában. A sor kerül, ha történik egy típusú implicit konverzió. A második példában nincs nincs típusú implicit konverzió, a kifejezés határozza meg az oszlop adattípusát. Figyelje meg, hogy az oszlop a második példában definiálva van egy nullázható oszlopot, mivel az első példában nem. Az első példában a tábla létrehozásakor a rendszer explicit módon definiálva oszlop nullázhatósági. A második példában azt maradt a kifejezést, és alapértelmezés szerint, egy NULL értékű definíció eredményezne.  
 
 A problémák megoldásához, kifejezetten be kell állítania a típusának átalakítása és nullázhatóságának a CTAS utasítás SELECT részén. A tábla létrehozása részben ezen tulajdonságai nem állíthatók be.
 
@@ -386,7 +380,7 @@ WITH
 
 Azonban az érték mező értéke azt nem része a forrásadatok számított kifejezés.
 
-A particionált, ezt érdemes adatkészlet létrehozásához:
+A particionált adatkészlet létrehozásához, érdemes tegye a következőket:
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -410,7 +404,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ;
 ```
 
-Tökéletesen finom szeretné futtatni a lekérdezést. A probléma származik, amikor megpróbálja végrehajtani a partíció kapcsolójának. A tábladefiníciókat nem egyeznek. Módosítani, hogy a tábladefiníciókat a CTAS egyeznie kell.
+Tökéletesen finom szeretné futtatni a lekérdezést. A probléma származik, amikor megpróbálja végrehajtani a partíció kapcsolójának. A tábladefiníciókat nem egyeznek. Ahhoz, hogy a megfelelő tábladefiníciókat, a CTAS kell módosítani, hogy adjon hozzá egy `ISNULL` függvény megőrizheti az oszlop nullázhatósági attribútuma.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

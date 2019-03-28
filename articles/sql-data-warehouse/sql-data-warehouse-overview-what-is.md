@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: igorstan
 ms.reviewer: igorstan
-ms.openlocfilehash: 393fca972676f2584a9ef4fc457b33161a325089
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1937d96db96c00af7f004ef4c22c4985499e393e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477777"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521635"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
 
-Az SQL Data Warehouse egy felhőalapú vállalati adattárház (EDW), amely a nagymértékben párhuzamos feldolgozás (MPP) kiaknázásával adatok petabájtjain képes komplex lekérdezéseket végrehajtani. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Importálja a big data-adatokat az SQL Data Warehouse-ba egyszerű PolyBase T-SQL lekérdezések használatával, majd az MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzéseket futtathat. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.  
+Az SQL Data Warehouse egy felhőalapú vállalati adattárház (EDW), amely a nagymértékben párhuzamos feldolgozás (MPP) kiaknázásával adatok petabájtjain képes komplex lekérdezéseket végrehajtani. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Big Data típusú adatok importálása az SQL Data Warehouse-bA az egyszerű [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL-lekérdezéseket, és majd használja a power MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzési futtatásához. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.  
 
 
 ## <a name="key-component-of-big-data-solution"></a>A big data-megoldások fő összetevője

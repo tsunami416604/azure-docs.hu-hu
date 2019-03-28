@@ -2,7 +2,7 @@
 title: Gyakori kérdések – Azure dedikált HSM-be |} A Microsoft Docs
 description: Gyakori Azure dedikált HSM-be más témakörökre vonatkozó kérdések
 services: dedicated-hsm
-author: johndaw
+author: johncdawson
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/19/2019
+ms.date: 3/27/2019
 ms.author: barclayn
-ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259992"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540822"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -58,9 +58,28 @@ Jelenleg Azure dedikált HSM-be csak révén a HSM-EK jelszóalapú hitelesíté
 
 A Microsoft csak a Gemalto SafeNet Luna hálózati hardveres biztonsági MODULT a dedikált HSM szolgáltatáson keresztül biztosít, és nem tárolható az ügyfél által biztosított eszközöket.
 
-### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>K: Nem Azure dedikált HSM-be PIN-kód/ETH-szolgáltatásokat támogatják, és megfelel a PCI HSM v1 vagy v2-minősítési követelmények?
+### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>K: Nem Azure dedikált HSM-be támogatási fizetési (PIN-kód/ETH) funkciókat?
 
-A dedikált HSM Azure szolgáltatás SafeNet Luna hálózati HSM 7 (modell A790) eszközöket használ. Ezek az eszközök nem támogatják a fizetési HSM bizonyos funkciók (például PIN-kód vagy ETH) vagy a tanúsítványok. Ha szeretné, hogy Azure dedikált HSM szolgáltatást, hogy támogatja a HSM-EK fizetési a jövőben, adja meg az alábbi visszajelzés.
+A dedikált HSM Azure szolgáltatás SafeNet Luna hálózati HSM 7 (modell A790) eszközöket használ. Ezek az eszközök nem támogatják a fizetési HSM bizonyos funkciók (például PIN-kód vagy ETH) vagy a tanúsítványok. Ha szeretné, hogy Azure dedikált HSM szolgáltatást, hogy támogatja a HSM-EK fizetési a jövőben, adjon át a visszajelzések, forduljon a Microsoft-ügyfélmenedzserhez.
+
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>K: Melyik Azure-régióban érhető el dedikált HSM?
+
+Től március 2019 késői dedikált HSM érhető el az alább felsorolt 14 régióban. További régiók bevezetését tervezzük, és keresztül a Microsoft-ügyfélmenedzserhez ezekről is.
+
+* USA keleti régiója
+* USA 2. keleti régiója
+* USA nyugati régiója
+* USA déli középső régiója
+* Délkelet-Ázsia
+* Kelet-Ázsia
+* Észak-Európa
+* Nyugat-Európa
+* Az Egyesült Királyság déli régiója
+* Az Egyesült Királyság nyugati régiója
+* Közép-Kanada
+* Kelet-Kanada
+* Kelet-Ausztrália
+* Délkelet-Ausztrália
 
 ## <a name="interoperability"></a>Együttműködési lehetőség
 
