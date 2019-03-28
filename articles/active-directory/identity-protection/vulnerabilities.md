@@ -4,7 +4,7 @@ description: Az Azure Active Directory Identity Protection által észlelt bizto
 services: active-directory
 keywords: az Azure active directory identity protection, a cloud discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5968731981e9ba602a27b6b66a53e7b67e8fa7f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fec9693641ff5918f622ecceee3fb94828b508e
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187321"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517895"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Az Azure Active Directory Identity Protection által észlelt biztonsági rések
 Biztonsági rések olyan gyengeségek az adott környezetben, a támadók kihasználhatnák. Azt javasoljuk, hogy oldja meg a biztonsági rések javítása a szervezete biztonsági állapotát, és megakadályozza, hogy a támadók kihasználja őket.

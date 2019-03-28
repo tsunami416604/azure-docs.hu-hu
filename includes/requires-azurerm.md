@@ -4,17 +4,17 @@ ms.author: sttramer
 manager: carmonm
 ms.date: 12/11/2018
 ms.topic: include
-ms.openlocfilehash: cfcbb0877c981c6f9f1e3be633871e7a19354ab3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4ba200b9aaa4e4460f6113413c008d65b302447a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148013"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505945"
 ---
 > [!IMPORTANT]
 >
 > Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `AzureRM` modul telepítve van. Ez csak egy régebbi modul Windows PowerShell 5.x, amely megkapja a kritikus frissítéseket, de már nem elérhető új szolgáltatások beolvasása. Ha rendelkezik a `Az` modul telepítve van, akkor telepítenie kell `AzureRM` is. A telepítendő `AzureRM`:
 > 
-> 1. Tiltsa le az AzureRM-aliasok `Az` (Ha engedélyezve van) való `Disable-AzureRMAlias`. Ez a parancs nélkül futó `Az` telepítve vagy le van tiltva az aliasok az ártalmatlan.
-> 2. Kövesse a [legújabb telepítési utasításokat az AzureRM](/powershell/azure/azurerm/install-azurerm-ps). Ha már rendelkezik `AzureRM` telepítve van, frissítse a legújabb verzióra.
+> 1. Tiltsa le az AzureRM-aliasok `Az` (Ha engedélyezve van) való `Disable-AzAlias`. Ez a parancs nélkül futó `Az` telepítve vagy le van tiltva az aliasok az ártalmatlan.
+> 2. Kövesse a [legújabb telepítési utasításokat az AzureRM](/powershell/azure/azurerm/install-Az-ps). Ha már rendelkezik `AzureRM` telepítve van, frissítse a legújabb verzióra.
 

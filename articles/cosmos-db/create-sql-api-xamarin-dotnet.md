@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 06dd24b9909da9c3358c876a71de7d0df45a5223
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585324"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517113"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Építhet teendőkezelő alkalmazást az Azure Cosmos DB SQL API-fiók használatával xamarinnal
 
@@ -31,7 +31,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-s
 > [!NOTE]
 > A GitHubon [itt](https://github.com/xamarinhq/app-geocontacts) megtalálható egy teljes Canonical Xamarin-mintaalkalmazás mintakódja, amely több Azure-ajánlatot is bemutat (például a CosmosDB-t). Ez az alkalmazás földrajzilag elosztott kapcsolattartók megtekintését mutatja be, és lehetővé teszi e kapcsolattartók számára, hogy frissítsék a tartózkodási helyüket.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB SQL API-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API](sql-api-sdk-dotnet.md)-n és a [Xamarinon](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=Cross-Platform) alapuló teendőlista-kezelő webalkalmazást a [Xamarin.Forms](https://docs.microsoft.com/xamarin/#pivot=platforms&panel=XamarinForms) és az [MVVM-architektúraminta](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB SQL API-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API](sql-api-sdk-dotnet.md)-n és a [Xamarinon](https://docs.microsoft.com/xamarin/) alapuló teendőlista-kezelő webalkalmazást a [Xamarin.Forms](https://docs.microsoft.com/xamarin/) és az [MVVM-architektúraminta](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) használatával.
 
 ![iOS rendszeren futó teendőkezelő Xamarin-alkalmazás](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 

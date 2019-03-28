@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 6f7772eb7f2c500bbb58c391b1bc4b7a73141699
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dd5dc53311c8611a4ca4d174401bba797fe5c4b1
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675755"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505744"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Naplózás a diagnosztikai beállítások engedélyezése
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
 
@@ -56,9 +58,9 @@ ms.locfileid: "56675755"
 Ha kapcsolja be a diagnosztikai beállítások a PowerShell-lel szeretne, használja a következő kódot:
 
 ```azurepowershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
-Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName <subscription that includes your IoT Hub>
+Set-AzDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```
 
 Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezt követően naplók jelennek meg a beállított archiválási célzott a **diagnosztikai beállítások** panelen. Konfiguruje se diagnostika kapcsolatos további információkért lásd: [gyűjtése és felhasználása a naplófájlok adatait az azure-erőforrások](../articles/azure-monitor/platform/diagnostic-logs-overview.md).

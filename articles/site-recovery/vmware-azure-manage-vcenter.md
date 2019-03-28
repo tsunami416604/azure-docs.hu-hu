@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855129"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518082"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter-kiszolgáló kezelése
 
@@ -108,7 +108,7 @@ Néhány virtuális gépek áthelyezése új vCenter:
 4. Most a által áttelepített virtuális gépek védelme [kiválasztása a vcenter-kiszolgáló, ha engedélyezte a védelmet](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Ha az áttelepítés alatt álló virtuális gépek száma **magasabb** , hogy a megőrzi a régi vcenter-kiszolgáló, a virtuális gépek száma a megadott utasításokat követve új vcenter-kiszolgáló IP-címének frissítése [Itt](#modify-vcenter-ip-address-port). Néhány virtuális gépek, amelyek megmaradnak a régi vcenter [tiltsa le a replikációt](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault), és kezdje el  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)**.
+> Ha az áttelepítés alatt álló virtuális gépek száma **magasabb** , hogy megőrzi a régi vcenter-kiszolgáló, a virtuális gépek száma frissítése a az itt megadott utasítások szerint új vcenter-kiszolgáló IP-címét. Néhány virtuális gépek, amelyek megmaradnak a régi vcenter [tiltsa le a replikációt](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [adhatja hozzá új vCenter adatait a konfigurációs kiszolgáló](#add-vmware-server-to-the-vault), és kezdje el  **[engedélyezni a védelmet](vmware-azure-tutorial.md#enable-replication)**.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

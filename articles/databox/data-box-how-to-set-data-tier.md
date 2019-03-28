@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118374"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517147"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box segítségével adatokat küldeni a megfelelő Azure Storage blob szintjének
 
@@ -27,7 +27,7 @@ Az Azure storage lehetővé teszi, hogy a három különböző rétegek tárolja
 
 Ritka elérésű tárolási szint olyan ritkán használt adatokhoz, amely minimum 30 napig kell tárolni. A ritkán használt szint tárolási költsége alacsonyabb, mint a gyakori elérésű tárolási szinten, de az adathozzáférési díjakat magas, gyakori elérésű szinthez képest.
 
-Az Azure archív rétegét offline állapotban, és a legalacsonyabb tárolási költségeket, de a legmagasabb hozzáférési költségekkel is kínál. Ez a szint legalább 180 napos archív tárolás maradó adatokra tervezték. Az egyes szolgáltatásszintek és a díjszabási modell részletekért nyissa meg [a tárolási Rétegek összehasonlítása](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#comparison-of-the-storage-tiers).
+Az Azure archív rétegét offline állapotban, és a legalacsonyabb tárolási költségeket, de a legmagasabb hozzáférési költségekkel is kínál. Ez a szint legalább 180 napos archív tárolás maradó adatokra tervezték. Az egyes szolgáltatásszintek és a díjszabási modell részletekért nyissa meg [a tárolási Rétegek összehasonlítása](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
 A Data Box az adatokat a tárfiók társított tárolási szintek van feltöltve. Storage-fiók létrehozásakor megadhatja a hozzáférési szint gyors Elérésűre vagy ritka elérésű. Függően a hozzáférési mintájában, a számítási feladatok és a költség, áthelyezheti az adatokat az alapértelmezett szint egy új blobtárolási réteg.
 

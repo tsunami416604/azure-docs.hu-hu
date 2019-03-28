@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096775"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517266"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet társított költségek nyomon követése
 Ez a cikk nyomon követését a labor költségeinek ismertetése. Azt mutatja be megtekintheti a becsült költségek trent az aktuális hónap a tesztkörnyezethez. A cikk emellett bemutatja, hogyan hónap elejétől számított költség / erőforrás megtekintéséhez a tesztkörnyezetben.
@@ -71,7 +71,7 @@ DevTest Labs lehetővé teszi kontrollja a tesztkörnyezetben, majd megtekinthet
    - Adjon meg egy **költség cél**. Például IP-címek fenntartási azt tervezi, hogy a megadott időszakban a jelen labor beváltható.
    - Engedélyezheti vagy tilthatja le semmilyen küszöbérték válassza azt szeretné, akár 125 %-át a megadott, 25 %-os léptékben – jelentett **költség cél**.
       - **Értesítés**: Ha a küszöbértéket, által egy webhook URL-CÍMÉT adja meg, hogy értesítést kap.
-      - **Vykreslit v grafu**: Ha ezt a küszöbértéket, az eredmények ábrázolási is megtekintheti, költség trend gráfokon leírtak szerint [a havi becsült költség Trend diagram megtekintése](#viewing-the-monthly-estimated-cost-trend-chart).
+      - **Vykreslit v grafu**: Ha ezt a küszöbértéket, az eredmények ábrázolási költség trend gráf is megtekintheti, a havi becsült költség Trend diagram megtekintése leírtak szerint.
    - Ha úgy dönt, hogy **értesítendő** a küszöbértéket, amikor meg kell adnia a webhook URL-CÍMÉT. A költségek Integrációk területen jelölje ki a **Ide kattintva hozzáadhat egyet integrációs**. Adjon meg egy **Webhook URL-cím** a konfigurálás értesítési ablaktáblát, és válassza ki a **OK**.
 
        ![Konfigurálja az értesítési ablaktáblát](./media/devtest-lab-configure-cost-management/configure-notification.png)

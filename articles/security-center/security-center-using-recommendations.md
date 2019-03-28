@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/24/2019
+ms.date: 3/26/2019
 ms.author: monhaber
-ms.openlocfilehash: 8c8108697e39153aef8727942c166a741cb8398c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402762"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517691"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>A biztonságot az Azure Security Center-javaslatok
 Jelentős biztonsági esemény esélyét csökkentheti biztonsági szabályzat konfigurálásával, majd az Azure Security Center által nyújtott ajánlások megvalósítása. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok használata a Security Centerben a biztonsági támadások történésekről. 
 
-A Security Center automatikusan futtatja a folyamatos vizsgálatok elemzése az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán hoz létre. A Security Center 24 óránként frissíti az ajánlások.
+A Security Center automatikusan futtatja a folyamatos vizsgálatok elemzése az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges biztonsági vezérlők konfigurálásának folyamatán hoz létre. A Security Center javaslatait frissíti a 24 órán belül, a következő kivételekkel:
+
+- Operációs rendszer biztonsági konfigurációs javaslatokat frissülnek 48 órán belül
+- Az Endpoint Protection problémák javaslatai frissülnek 8 órán belül
 
 ## <a name="scenario"></a>Forgatókönyv
 A forgatókönyv bemutatja, hogyan használhatja a Security Center csökkentik a biztonsági incidensek és a műveletek figyelése a Security Center javaslatait. A forgatókönyv használja a fiktív vállalat, a Contoso és a szerepkörök a Security Center megjelenő [tervezéséhez és útmutató](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Ebben a forgatókönyvben arra összpontosítunk, az alábbi szerepkörök:

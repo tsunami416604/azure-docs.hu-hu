@@ -4,15 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 432d0d4c201d0d73e5695a1726129e7fa744bdde
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2a1bf160926bc2f90e326d773bf6a3e7fdc37103
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319784"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505669"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Gyakran előforduló hibák a klasszikusból Azure Resource Manager-alapú környezetbe való migrálás során
 Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből Azure Resource Manager verembe történő migrálása során leggyakrabban előforduló hibákat és kezelési lehetőségeiket.
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ## <a name="list-of-errors"></a>Hibalista
 
@@ -22,7 +24,7 @@ Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből
 | A migrálás az {üzemeltetett szolgáltatás} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példánya esetében nem támogatott, mivel ez egy PaaS üzemelő példány (webes/feldolgozó). |Ez akkor fordul elő, ha az üzemelő példány egy webes/feldolgozói szerepkört tartalmaz. Mivel a migrálás csak a Virtual Machines esetében támogatott, távolítsa el a webes/feldolgozói szerepkört az üzemelő példányból, és próbálkozzon újra a migrálással. |
 | A {sablonnév} sablon üzembe helyezése meghiúsult. CorrelationId={guid} |A migrálási szolgáltatás hátterében Azure Resource Manager-sablonok használatával hozunk létre erőforrásokat az Azure Resource Manager veremben. Mivel a sablonok idempotensek, ezért általában a migrálási művelet ismételt végrehajtásával biztonságosan megkerülheti ezt a hibát. Ha a hiba továbbra is fennáll, [forduljon az Azure ügyfélszolgálatához](../articles/azure-supportability/how-to-create-azure-support-request.md), és adja meg számokra a CorrelationId azonosítót. <br><br> **MEGJEGYZÉS:** Miután az incidens követi nyomon a támogatási csoporthoz, ne próbálkozzon intézkedésekkel, előfordulhat, hogy ez az adott környezet nem kívánt következményekkel. |
 | A {virtuális hálózat neve} virtuális hálózat nem létezik. |Ez akkor fordulat elő, ha a Virtual Network hálózatot az új Azure Portalon hozta létre. A tényleges Virtual Network hálózat neve a „Csoport * <VNET name>” mintát követi |
-| Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a {bővítmény neve} bővítményt, amely az Azure Resource Managerben nem támogatott. Javasolt a virtuális gépről eltávolítani a bővítményt, mielőtt folytatná a migrálást. |Az XML bővítmények, például a BGInfo 1.*, nem támogatottak az Azure Resource Managerben. Ezért az ilyen bővítmények nem migrálhatók. Ha az ilyen bővítmények telepítve maradnak a virtuális gépen, a rendszer automatikusan eltávolítja azokat a migrálás befejezése előtt. |
+| Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a {bővítmény neve} bővítményt, amely az Azure Resource Managerben nem támogatott. Javasolt a virtuális gépről eltávolítani a bővítményt, mielőtt folytatná a migrálást. |XML-bővítmények, például a BGInfo 1. \* az Azure Resource Managerben nem támogatott. Ezért az ilyen bővítmények nem migrálhatók. Ha az ilyen bővítmények telepítve maradnak a virtuális gépen, a rendszer automatikusan eltávolítja azokat a migrálás befejezése előtt. |
 | Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a VMSnapshot/VMSnapshotLinux bővítményt, amely jelenleg a migrálási szolgáltatásban nem támogatott. Távolítsa el a bővítményt a virtuális gépről, majd a migrálás befejezése után adja újra hozzá az Azure Resource Manager használatával |Ez az a forgatókönyv, amelyikben a virtuális gép konfigurálva van az Azure Backup szolgáltatáshoz. Mivel ez a funkció jelenleg nem támogatott forgatókönyv, kérjük, kövesse a helyen található áthidaló megoldást https://aka.ms/vmbackupmigration |
 | Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a {bővítmény neve} bővítményt, amelynek az állapotát a virtuális gép nem jelenti. Ezért ez a virtuális gép nem migrálható. Gondoskodjon róla, hogy a virtuális gép jelentse a bővítmény állapotát, vagy távolítsa el a bővítményt a virtuális gépről, és próbálkozzon újra a migrálással. <br><br> Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a {bővítmény neve} bővítményt, amely a {kezelői állapot} kezelői állapotot jelenti. Ezért a virtuális gép nem migrálható. Gondoskodjon róla, hogy a bővítmény jelentett állapota {kezelői állapot}, vagy távolítsa el a virtuális gépről, és próbálkozzon újra a migrálással. <br><br> Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépének virtuálisgép-ügynöke az ügynök átfogó állapotát Not Ready állapotként jelenti. Ezért ez a virtuális gép nem migrálható, ha migrálható bővítménnyel rendelkezik. Gondoskodjon róla, hogy a virtuálisgép-ügynök átfogó állapotát Ready állapotként jelentse. Tekintse meg https://aka.ms/classiciaasmigrationfaqs. |Az Azure vendég ügynök és a VM-bővítmény számára szükség van kimenő internetkapcsolatra a VM-tárfiókhoz az állapotuk közléséhez. Az állapothibák gyakori okai a következők lehetnek <li> egy hálózati biztonsági csoport, amely blokkolja a kimenő internetkapcsolatokat <li> Ha a VNET helyszíni DNS-kiszolgálók rendelkezik, és a DNS-kapcsolata megszakad <br><br> Ha továbbra is nem támogatott állapot látható, a bővítmények eltávolításával átugorhatja ezt az ellenőrzést, és folytathatja a migrálást. |
 | A migrálás az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példánya esetében nem támogatott, mivel ez több rendelkezésre állási csoporttal rendelkezik. |Jelenleg csak az 1 vagy kevesebb rendelkezésre állási csoporttal rendelkező üzemeltetett szolgáltatások migrálhatók. A probléma megkerülése érdekében a további rendelkezésre állási csoportokat és az azokban lévő virtuális gépeket mozgassa át egy másik üzemeltetett szolgáltatásba. |
@@ -44,7 +46,7 @@ Ez akkor fordulhat elő, ha az adatlemez logikai mérete nincs szinkronban a vir
 
 #### <a name="verifying-the-issue"></a>A probléma ellenőrzése
 
-```PowerShell
+```powershell
 # Store the VM details in the VM object
 $vm = Get-AzureVM -ServiceName $servicename -Name $vmname
 
@@ -65,7 +67,7 @@ ExtensionData       :
 
 # Now get the properties of the blob backing the data disk above
 # NOTE the size of the blob is about 15 GB which is different from LogicalDiskSizeInGB above
-$blob = Get-AzureStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
+$blob = Get-AzStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
 
 $blob
 
@@ -82,7 +84,7 @@ Name              : coreosvm-dd1.vhd
 
 #### <a name="mitigating-the-issue"></a>A probléma kezelése
 
-```PowerShell
+```powershell
 # Convert the blob size in bytes to GB into a variable which we'll use later
 $newSize = [int]($blob.Length / 1GB)
 

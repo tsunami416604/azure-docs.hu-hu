@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: cbc28ce13d08ee8665be642d9db6b1f236b380d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ae63b1738824095073ac6b9e1071f6b4a3e5ae1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57870129"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518847"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs .NET Core használatával
 
@@ -236,6 +236,6 @@ Ha nem változtatható módon adta meg az előfizetői azonosítót a programban
 
 ## <a name="see-also"></a>Lásd még
 
-* [Szöveget beszéddé átalakító API-referencia](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Szöveget beszéddé átalakító API-referencia](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Egyéni hangtípust létrehozása](how-to-customize-voice-font.md)
 * [Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták](record-custom-voice-samples.md)

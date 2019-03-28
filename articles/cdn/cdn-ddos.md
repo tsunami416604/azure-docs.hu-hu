@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: magattus
-ms.openlocfilehash: 78969b2b0ff50e45990d131ad3ce5b63c92d20b2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3aefe2ff3891857ec3588e4b48f53876c5c90aa2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373090"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516969"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 
-Content delivery network a DDoS protection tervezési biztosít. A globális beosztása volumentric támadások elháríthatók, mellett a Azure CDN további a DDoS protection rendelkezik, ahogyan az alábbi nem külön költségek.
+Content delivery network a DDoS protection tervezési biztosít. A globális kapacitás-es támadások elháríthatók, mellett a Azure CDN további a DDoS protection rendelkezik, ahogyan az alábbi nem külön költségek.
 
 ## <a name="azure-cdn-from-microsoft"></a>A Microsoft Azure CDN
 

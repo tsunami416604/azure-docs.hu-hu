@@ -9,16 +9,16 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d0b3f3d53d6e8204e23ac9aaa8a428b25dc4dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74a7316ea00f5c38d6a2b1a98d81affeeffcd5e9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195549"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517997"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -46,7 +46,7 @@ A felhasználónak meg kell adnia vállalati hitelesítői adataikkal másodszor
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Részletes leírása, hogyan működik a Jelszókivonat-szinkronizálás
 Az alábbi szakasz ismerteti, részletes, az Active Directory és az Azure AD között Jelszókivonat-szinkronizálás működését.
 
-![A folyamat részletes jelszó](./media/how-to-connect-password-hash-synchronization/arch3.png)
+![A folyamat részletes jelszó](./media/how-to-connect-password-hash-synchronization/arch3a.png)
 
 
 1. Két percenként, a jelszó kivonatoló szinkronizálási ügynököt az AD Connect kiszolgálói kérelmek tárolja a jelszókivonatokat (az unicodePwd attribútum) tartományvezérlőt.  A standard keresztül van ehhez a kérelemhez [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) használt szinkronizálni a tartományvezérlők közötti replikációs protokoll. A szolgáltatás fiók a beszerzése a jelszót a kivonatok Címtárváltozások replikálása és replikálása összes AD jogosultságaitól (alapértelmezés szerint a telepítési) kell rendelkeznie.

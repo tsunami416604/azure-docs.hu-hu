@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8005b187f300375b62c254516a61f4993675b0b9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403108"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518558"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -47,7 +47,7 @@ Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak
 
 Szüksége lesz egy sablon használatával helyez üzembe. Ha még nem rendelkezik egy, töltse le és mentse egy [példasablonja](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) az Azure gyorsindítási sablonok tárházából. A cikk ezt használja a helyi Fájlnév **c:\MyTemplates\azuredeploy.json**.
 
-Ha nem használ a [Azure Cloud shell](#deploy-templates-from-azure-cloud-shell) sablonok üzembe helyezése az Azure PowerShell telepítése és csatlakozás az Azure szüksége:
+Sablonok üzembe helyezése az Azure Cloud shellt használja, ha az Azure PowerShell telepítése és csatlakozás az Azure szüksége:
 
 - **Azure PowerShell-parancsmagjainak telepítése a helyi számítógépen.** További információért lásd [az Azure PowerShell használatának első lépéseit](/powershell/azure/get-started-azureps).
 - **Csatlakozás az Azure használatával [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Ha több Azure-előfizetéssel rendelkezik, szükség lehet futtatni [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). További információkért lásd: [használata több Azure-előfizetéssel](/powershell/azure/manage-subscriptions-azureps).

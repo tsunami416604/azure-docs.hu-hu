@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92c09e7defe159818b22bc8275d011d05512aa66
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 978b865f6dd7e3427a0139e7e71ed4b2d937fbe5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446585"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517300"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Az Apache Ambari Hive nézete használata a HDInsight Apache Hadoop-keretrendszerrel
 
@@ -24,22 +24,14 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux-alapú Apache Hadoop a HDInsight-fürt verziója 3.4-es vagy nagyobb.
-
-  > [!IMPORTANT]  
-  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+* A HDInsight Hadoop-fürt. Lásd: [HDInsight Linux első lépések](./apache-hadoop-linux-tutorial-get-started.md).
 * Egy webes böngésző
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a fürtöt.  Lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) útmutatást. A fürt megnyílik egy új portálpanelen.
 
-2. A HDInsight-fürt, majd válassza ki és **Ambari-nézetek** származó a **Gyorshivatkozások** szakaszban.
-
-    ![A portál Gyorshivatkozások szakaszát](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
-
-    Amikor a rendszer kéri, hitelesítéshez, használja a fürtre való bejelentkezéshez (alapértelmezett `admin`) fiók nevét és a fürt létrehozásakor megadott jelszót.
+2. A **fürt irányítópultjai**válassza **Ambari-nézetek**. Amikor a rendszer kéri, hitelesítéshez, használja a fürtre való bejelentkezéshez (alapértelmezett `admin`) fiók nevét és a fürt létrehozásakor megadott jelszót.
 
 3. Nézetek listájáról válassza ki a __Hive-nézet__.
 
@@ -81,30 +73,30 @@ Ismerje meg, hogyan futtathat Hive-lekérdezések Apache Ambari Hive-nézet hasz
 
    * `SELECT`: Választja ki, ahol az oszlop t4 [hiba] értéket tartalmazza az összes sor számát.
 
-     > [!IMPORTANT]  
-     > Hagyja a __adatbázis__ a kijelölés __alapértelmezett__. Ebben a dokumentumban szereplő példák a HDInsight részét képező alapértelmezett adatbázist használja.
+   > [!IMPORTANT]  
+   > Hagyja a __adatbázis__ a kijelölés __alapértelmezett__. Ebben a dokumentumban szereplő példák a HDInsight részét képező alapértelmezett adatbázist használja.
 
-5. A lekérdezés indításához használja a **Execute** gomb a munkalap alatt. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
+5. A lekérdezés indításához válassza **Execute** a munkalap alatt. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
 
 6. A lekérdezés futtatása után a **eredmények** lap megjeleníti a művelet eredményei. A következő szöveget a lekérdezés eredménye:
 
         loglevel       count
         [ERROR]        3
 
-    Használhatja a **naplók** fülre kattintva megtekintheti a feladat által létrehozott adatok naplózása.
+    Használhatja a **LOG** fülre kattintva megtekintheti a feladat által létrehozott adatok naplózása.
 
    > [!TIP]  
-   > Töltse le, vagy a-eredményeket menteni a **-eredményeket menteni** a bal felső legördülő párbeszédpanel a **lekérdezési folyamat eredményei** szakaszban.
+   > Töltse le, vagy a-eredményeket menteni a **műveletek** legördülő párbeszédpanel mellett a **eredmények** fülre.
 
 ### <a name="visual-explain"></a>Vizualizáció ismertetik.
 
 A lekérdezésterv a Vizualizációk megjelenítéséhez válassza a **Visual ismertetik** fülre a munkalap alatt.
 
-A **Visual ismertetik** nézet a lekérdezés akkor hasznosak, a folyamat az összetett lekérdezések ismertetése. Egy szöveges egyenértékű ebben a nézetben látható használatával a **magyarázat** gomb a Lekérdezésszerkesztőben.
+A **Visual ismertetik** nézet a lekérdezés akkor hasznosak, a folyamat az összetett lekérdezések ismertetése.
 
 ### <a name="tez-ui"></a>Tez UI
 
-A lekérdezés a Tez felhasználói felület megjelenítéséhez válassza a **Tez** fülre a munkalap alatt.
+A lekérdezés a Tez felhasználói felület megjelenítéséhez válassza a **Tez felhasználói felület** fülre a munkalap alatt.
 
 > [!IMPORTANT]  
 > Tez nem használatos az összes lekérdezés megoldásához. Több lekérdezés használata a Tez nélkül oldható meg. 

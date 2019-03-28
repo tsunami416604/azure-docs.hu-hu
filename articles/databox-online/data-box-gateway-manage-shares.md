@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d1b5125c2e3904900adb0a121d60cba8a1731d43
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 105996cf72e2a96a06a4478518e68765d3d158f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499641"
+ms.locfileid: "58516892"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
 
@@ -84,6 +84,9 @@ A törlés végrehajtása után annak megfelelően frissül a megosztások list�
 
 A frissítési funkció lehetővé teszi a helyszíni megosztások tartalmának frissítését. A megosztások frissítésekor a rendszer keresést indít a legutóbbi frissítés óta a felhőbe feltöltött Azure-objektumok (például blobok és fájlok) azonosítására. Az eszközön található helyszíni megosztás tartalma ezt követően frissül ezekkel a fájlokkal. 
 
+> [!NOTE]
+> Engedélyek és hozzáférés-vezérlési listák (ACL) nem maradnak a frissítési művelet között. 
+
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
 1.  Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
@@ -107,7 +110,7 @@ Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Por
 Hiba esetén a rendszer riasztást ad ki. A riasztás részletei között szerepel a hiba oka és a hibaelhárítási javaslat. A riasztás továbbá tartalmaz egy fájlra mutató hivatkozást is, amelyre rákattintva megtekintheti a teljes hibajegyzéket, azon fájlok listájával együtt, amelyek esetében a frissítési vagy törlési művelet meghiúsult.
 
 >[!IMPORTANT]
-> Az előzetes verzióban egyszerre csak egy megosztást frissítsen.
+> Ebben a kiadásban ne frissüljön legfeljebb egyetlen megosztása egyszerre.
 
 ## <a name="sync-storage-keys"></a>Tárkulcsok szinkronizálása
 

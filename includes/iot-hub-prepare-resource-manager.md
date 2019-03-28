@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b7d043b15cad23c9c9eca60c9a24096fee12e14a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c30f31903e59c505d778c95c58adbb48af0db96f
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319777"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505742"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Felkészülés az Azure Resource Manager-kérelmek hitelesítéséhez
 Használatával erőforrásokon végrehajtott összes műveletet kell hitelesítenie a [Azure Resource Manager] [ lnk-authenticate-arm] az Azure Active Directory (AD). A legegyszerűbben úgy konfigurálhatja ezt, hogy a PowerShell vagy az Azure CLI segítségével.
@@ -21,19 +21,19 @@ A következő lépések bemutatják, hogyan állítsa be a jelszó-hitelesítés
 1. Jelentkezzen be az Azure-előfizetéshez az alábbi paranccsal:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezik hozzáférést, az összes Azure-előfizetések a hitelesítő adatokhoz tartozó. Használja a következő parancs használható elérhető Azure-előfizetések listázásához:
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     A következő parancs használata kezelheti az IoT hub-parancsok futtatásához használni kívánt előfizetés kiválasztásához. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -47,18 +47,18 @@ A következő lépések bemutatják, hogyan állítsa be a jelszó-hitelesítés
      
      ```powershell
      $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
+     New-AzADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. Jegyezze fel a **ApplicationId** a létrehozott alkalmazás. Később szüksége.
 5. Hozzon létre egy új szolgáltatásnevet, a következő parancsot, és cserélje le **{MyApplicationId}** együtt a **ApplicationId** az előző lépésből:
    
     ```powershell
-    New-AzureRmADServicePrincipal -ApplicationId {MyApplicationId}
+    New-AzADServicePrincipal -ApplicationId {MyApplicationId}
     ```
 6. Állítsa be a következő parancsot, és cserélje le a szerepkör-hozzárendelés **{MyApplicationId}** együtt a **ApplicationId**.
    
     ```powershell
-    New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
+    New-AzRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}
     ```
 
 Most már befejezte az Azure AD-alkalmazást, amely lehetővé teszi, hogy az egyéni hitelesítés létrehozása C# alkalmazás. Az oktatóanyag későbbi részében szüksége a következő értékeket:
@@ -69,4 +69,4 @@ Most már befejezte az Azure AD-alkalmazást, amely lehetővé teszi, hogy az eg
 * Jelszó
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps

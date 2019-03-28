@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38c8e98d92c21e3dc7d37337466dc79c85d0a15f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401123"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517912"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Üzembe helyezése az Azure Data Box átjáró Hyper-v rendszerben
 
@@ -136,7 +136,9 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **tovább**.
 
     ![Adja meg a név és hely lapja](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet. Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető,  egy adatlemez hozzáadásával azonban bővíteni lehet. Kattintson a **tovább**.
+19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet. 
+    
+    Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető. Kísérlet zsugorítása lemez eredményeit az adatvesztést a helyi adatokat az eszközön. egy adatlemez hozzáadásával azonban bővíteni lehet. Kattintson a **tovább**.
 
     ![Lemez lapjának konfigurálása](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Az **Összefoglalás** lapon tekintse át a virtuális adatlemez adatait, és ha elégedett, kattintson a **Befejezés** gombra a lemez létrehozásához. A varázsló bezáródik, és a rendszer hozzáadja a virtuális merevlemezt a géphez.

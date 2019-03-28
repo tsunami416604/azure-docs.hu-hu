@@ -5,18 +5,18 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: c6c82ee26fdbd824bdf42720ed7fc08135a872da
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372405"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517317"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
-[Az Azure Virtual Network](../virtual-network/virtual-networks-overview.md) nyújt biztonságos, privát hálózati, beleértve a szűrési, Útválasztás és társviszony-létesítést az Azure és helyszíni erőforrások. Tárolócsoportok üzembe egy Azure-beli virtuális hálózatban, a tárolók képesek kommunikálni biztonságosan a virtuális hálózatban lévő más erőforrásokra.
+[Az Azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztosít az Azure biztonságos, privát hálózati és helyi erőforrásokhoz. Tárolócsoportok üzembe egy Azure-beli virtuális hálózatban, a tárolók képesek kommunikálni biztonságosan a virtuális hálózatban lévő más erőforrásokra.
 
 Egy Azure-beli virtuális hálózatban üzembe helyezett tárolócsoportok olyan szituációkra, mint engedélyezése:
 
@@ -34,7 +34,6 @@ Egy Azure-beli virtuális hálózatban üzembe helyezett tárolócsoportok olyan
 Bizonyos korlátozások érvényesek, amikor üzembe helyezi a tárolócsoportok egy virtuális hálózatot.
 
 * Tárolócsoportok telepíteni egy alhálózathoz, az alhálózat nem tartalmazhat más erőforrástípusok. Az összes meglévő erőforrások eltávolítása előtt tárolócsoportok hozzá egy meglévő alhálózatot, vagy hozzon létre egy új alhálózatot.
-* Tárolócsoportok üzembe helyezni egy virtuális hálózatban jelenleg nem támogatják nyilvános IP-címe vagy DNS-név címke.
 * Nem használhat egy [identitás](container-instances-managed-identity.md) egy tárolócsoport üzembe helyezett virtuális hálózathoz.
 * További hálózati erőforrás, mert egy tárolócsoport telepítése egy virtuális hálózathoz általában némileg lassabb, mint a standard szintű tárolópéldány üzembe helyezése.
 
@@ -46,10 +45,14 @@ Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások �
 
 Tároló erőforráskorlátok ezekben a régiókban nem hálózati container Instances korlátok eltérhet. Ez a funkció jelenleg csak Linux-tárolók támogatják. Windows támogatási tervezünk.
 
-### <a name="unsupported-network-resources-and-features"></a>Nem támogatott hálózati erőforrások és szolgáltatások
+### <a name="unsupported-networking-scenarios"></a>Nem támogatott hálózati forgatókönyvek 
 
-* Azure Load Balancer
-* Társviszony létesítése virtuális hálózatok között
+* **Az Azure Load Balancer** – az Azure Load Balancerhez tárolópéldányok elé helyezi el egy hálózati tárolócsoport nem támogatott.
+* **Virtuális hálózatok közötti társviszony** -, nem tartalmazó delegálva az Azure Container Instances egy másik virtuális hálózatot az alhálózat egy virtuális hálózati társviszonyt
+* **Útválasztási táblázatok** – felhasználó által megadott útvonalak nem állítható be egy alhálózat delegálva az Azure Container Instances szolgáltatásban
+* **Hálózati biztonsági csoportok** – kimenő biztonsági szabályok az Azure Container Instances delegált egy alhálózatra alkalmazott NSG-k jelenleg nem érvényes. 
+* **Nyilvános IP- vagy DNS-címke** -tárolócsoportok üzembe helyezni egy virtuális hálózatban jelenleg nem támogatottak, illetéktelenül elért fiók(ok) tárolóit közvetlenül az interneten egy nyilvános IP-cím vagy teljes tartománynév
+* **Belső névfeloldást** – Azure-erőforrásokat a virtuális hálózat a belső Azure DNS-névfeloldás nem támogatott.
 
 **Hálózati erőforrás törlése** igényel [további lépéseket](#delete-network-resources) után tárolócsoportok helyezte a virtuális hálózathoz.
 

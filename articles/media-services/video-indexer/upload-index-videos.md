@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877870"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516961"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -37,6 +37,7 @@ A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a
 - A bájt tömb beállítás túllépi az időkorlátot 30 perc után
 - A `videoURL` paraméterben megadott URL-címet kódolni kell
 - Media Services objektumai indexelő is, az indexelés URL-címről korlátozások
+- A video Indexer esetében a maximális időtartama 4 óra egyetlen fájl
 
 > [!Tip]
 > Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.

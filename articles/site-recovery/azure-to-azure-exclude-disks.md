@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 978566eb9e0073c60046eca024e09ba63c642180
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b378f77874b1ebef243836c101fa71a53f4775d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458013"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517743"
 ---
 # <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Lemezek kizárása a replikációból Azure virtuális gépek az Azure-bA az Azure PowerShell-lel
 
@@ -31,7 +31,7 @@ Előkészületek:
 ## <a name="why-exclude-disks-from-replication"></a>Miért érdemes lemezeket kizárni a replikációból?
 A lemezek kizárása a replikációból az alábbiak miatt lehet szükséges:
 
-- Elérte a virtuális gép [rátáról Azure Site Recovery-korlátok az adatok replikálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#azure-site-recovery-limits-to-replicate-data-change-rates)
+- Elérte a virtuális gép [rátáról Azure Site Recovery-korlátok az adatok replikálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
 
 - A kizárt lemezen előforduló adatváltozások nem fontosak, vagy nincs szükség azok replikálására.
 

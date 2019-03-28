@@ -4,7 +4,7 @@ description: Ismerje meg az Azure AD Identity Protection bejelentkezési kockáz
 services: active-directory
 keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3f03cfcf821fa093e9f21cf9a11a2d99d67683
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999038"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518040"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>kézikönyv: A bejelentkezési kockázati szabályzat konfigurálása
 

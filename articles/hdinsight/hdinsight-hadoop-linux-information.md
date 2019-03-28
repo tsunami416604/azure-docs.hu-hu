@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/09/2018
-ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/20/2019
+ms.openlocfilehash: c149c6466f7d86f5cb22c840d4353c3939768768
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202452"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518983"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -28,8 +28,9 @@ Az Azure HDInsight-fürtök a jól ismert Linux-környezet, az Azure-felhőben f
 A jelen dokumentumban leírt lépések számos használja az alábbi segédprogramokat, és előfordulhat, hogy a rendszer telepíteni kell.
 
 * [cURL](https://curl.haxx.se/) – webes szolgáltatások folytatott kommunikációhoz használatos.
-* [jq](https://stedolan.github.io/jq/) – használt JSON-dokumentumok elemzése.
-* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) – távoli kezelése az Azure-szolgáltatások használatos.
+* **jq**, egy parancssori JSON feldolgozó.  Lásd: [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/).
+* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – távoli kezelése az Azure-szolgáltatások használatos.
+* **Egy SSH-ügyfél**. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Felhasználók
 
@@ -39,23 +40,23 @@ Tartományhoz csatlakoztatott HDInsight támogatja egyszerre több felhasználó
 
 ## <a name="domain-names"></a>Tartománynevek
 
-A teljesen minősített tartománynevét (FQDN) az internetről a fürthöz való csatlakozás során használandó van  **&lt;clustername >. azurehdinsight.net** vagy (csak SSH-)  **&lt;clustername-ssh >. azurehdinsight.NET**.
+A teljesen minősített tartománynevét (FQDN) az internetről a fürthöz való csatlakozás során használandó van `CLUSTERNAME.azurehdinsight.net` vagy `CLUSTERNAME-ssh.azurehdinsight.net` (a csak SSH-).
 
 Belsőleg a fürt egyes csomópontjaihoz fürt konfigurálása során hozzárendelt névvel rendelkezik. A fürt nevének megkereséséhez tekintse meg a **gazdagépek** az Ambari webes Kezelőfelületen oldalán. Az Ambari REST API-ból az állomások listájához való visszatéréshez is használhatja a következő:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Amikor a rendszer kéri, adja meg a jelszót a rendszergazdai fiók. Ez a parancs egy JSON-dokumentum, amely tartalmazza a fürtben lévő gazdagépek listáját adja vissza. Jq segítségével csomagolja ki a `host_name` elemérték minden állomás számára.
+Cserélje le a `CLUSTERNAME` elemet a fürt nevére. Amikor a rendszer kéri, adja meg a jelszót a rendszergazdai fiók. Ez a parancs egy JSON-dokumentum, amely tartalmazza a fürtben lévő gazdagépek listáját adja vissza. [jq](https://stedolan.github.io/jq/) használatával olvasható ki a `host_name` elemérték minden állomás számára.
 
 Ha meg kell keresnie a csomópont nevét egy adott szolgáltatáshoz, az Ambari lekérdezheti az adott összetevő. A gazdagépet keressen a HDFS-név csomópont, például használja a következő parancsot:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután jq kér le csak a `host_name` érték a gazdagépek számára.
+Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, majd [jq](https://stedolan.github.io/jq/) lekéri csak a `host_name` érték a gazdagépek számára.
 
 ## <a name="remote-access-to-services"></a>Távoli szolgáltatásokhoz való hozzáférés
 
-* **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
+* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
 
     A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni, és az Ambari, majd jelentkezzen be.
 
@@ -66,21 +67,21 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután 
     >
     > Az Ambari webes felület összes funkciójának használatához egy SSH-alagutat a proxy webes forgalom, a fürt fő csomópontjának. Lásd: [használata SSH-bújtatással való eléréséről az Apache Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb webes](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Az Ambari (REST)** - https://&lt;clustername >.azurehdinsight.net/ambari
+* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
-* **WebHCat (templeton eszközön keresztül végzett)** - https://&lt;clustername >.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
-* **SSH** - &lt;clustername >-ssh.azurehdinsight.net port 22-es vagy 23. Csatlakozzon az elsődleges átjárócsomóponthoz, míg 23 szeretne csatlakozni a másodlagos 22-es port szolgál. Az átjárócsomópontokkal további információkért lásd: [rendelkezésre állás és megbízhatóság az Apache Hadoop-fürtök a HDInsight](hdinsight-high-availability-linux.md).
+* **SSH** -CLUSTERNAME-ssh.azurehdinsight.net port 22-es vagy 23. Csatlakozzon az elsődleges átjárócsomóponthoz, míg 23 szeretne csatlakozni a másodlagos 22-es port szolgál. Az átjárócsomópontokkal további információkért lásd: [rendelkezésre állás és megbízhatóság az Apache Hadoop-fürtök a HDInsight](hdinsight-high-availability-linux.md).
 
     > [!NOTE]  
     > A fürt átjárócsomópontjaiból ssh-n keresztül egy ügyfél gépéről csak elérni. Miután csatlakozott, ezután hozzáférhetnek a feldolgozó csomópontok egy átjárócsomópontjával SSH használatával.
@@ -91,8 +92,8 @@ További információkért lásd: a [HDInsight az Apache Hadoop-szolgáltatások
 
 Hadoop-kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a könyvtár a következő alkönyvtárakat tartalmaz:
 
-* **2.2.4.9-1**: A könyvtár neve a Hortonworks Data platform HDInsight által használt verziója. A szám a fürtön fut, az itt felsorolt eltérő lehet.
-* **current**: Ez a könyvtár alkönyvtárat mutató hivatkozásokat tartalmaz a **2.2.4.9-1** könyvtár. Ez a könyvtár létezik-e, hogy ne felejtse el a verziószám nem kell.
+* **2.6.5.3006-29**: A könyvtár neve a Hortonworks Data platform HDInsight által használt verziója. A szám a fürtön fut, az itt felsorolt eltérő lehet.
+* **current**: Ez a könyvtár alkönyvtárat mutató hivatkozásokat tartalmaz a **2.6.5.3006-29** könyvtár. Ez a könyvtár létezik-e, hogy ne felejtse el a verziószám nem kell.
 
 Hadoop elosztott fájlrendszer címen található példa adatok és a JAR-fájlok `/example` és `/HdiSamples`.
 
@@ -150,7 +151,9 @@ Használata esetén __Azure Data Lake Storage Gen1__, a következő URI sémák 
 
 Az Ambari segítségével lekérni a fürt alapértelmezett tárolási konfigurációját. A következő paranccsal a curl használatával HDFS konfigurációs információk lekéréséhez és a szűrő [jq](https://stedolan.github.io/jq/):
 
-```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
+```bash
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+```
 
 > [!NOTE]  
 > Ez a parancs visszaadja a alkalmazni a kiszolgáló első konfiguráció (`service_config_version=1`), amely tartalmazza ezt az információt. Szükség lehet a listában keresse meg a legújabb összes konfigurációs verziókat.
@@ -163,13 +166,17 @@ Ez a parancs egy értéket ad vissza a következő URI-k hasonló:
 
 * `adl://home` Ha az Azure Data Lake Storage használatával. A Data Lake Storage nevének lekéréséhez használja az alábbi REST-hívás:
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+     ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
+    ```
 
     Ez a parancs visszaadja a következő állomásnév: `<data-lake-store-account-name>.azuredatalakestore.net`.
 
     A könyvtár a tárolóban, amely a HDInsight a legfelső szintű lekéréséhez használja az alábbi REST-hívás:
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+    ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
+    ```
 
     Ez a parancs hasonló ad vissza egy elérési utat a következő elérési úton: `/clusters/<hdinsight-cluster-name>/`.
 
@@ -210,7 +217,7 @@ Ha használ __Azure Data Lake Storage__, tekintse meg a következő hivatkozáso
 
 ## <a name="scaling"></a>A fürt méretezése
 
-A funkció a fürtméretezés lehetővé teszi a dinamikus módosítását az adatok csomópontok egy fürt által használt. A méretezési műveletek közben egyéb feladatokat is végezhet, vagy a folyamatok a fürtön futnak.
+A funkció a fürtméretezés lehetővé teszi a dinamikus módosítását az adatok csomópontok egy fürt által használt. A méretezési műveletek közben egyéb feladatokat is végezhet, vagy a folyamatok a fürtön futnak.  Lásd még a [méretezési HDInsight-fürtök](./hdinsight-scaling-best-practices.md)
 
 A különböző fürttípusok vannak hatással a méretezés az alábbiak szerint:
 
@@ -237,7 +244,7 @@ A különböző fürttípusok vannak hatással a méretezés az alábbiak szerin
 
     * **A Storm felhasználói felület**: Használja az alábbi lépéseket a topológia a Storm kezelői felülettel újraegyensúlyozására.
 
-        1. Nyissa meg **https://CLUSTERNAME.azurehdinsight.net/stormui** a böngészőben, ahol CLUSTERNAME a, a Storm-fürt. Ha a rendszer kéri, adja meg a HDInsight-fürt (rendszergazda) nevét és a fürt létrehozásakor megadott jelszót.
+        1. Nyissa meg `https://CLUSTERNAME.azurehdinsight.net/stormui` webböngészőben, ahol `CLUSTERNAME` a Storm-fürt neve. Ha a rendszer kéri, adja meg a HDInsight-fürt (rendszergazda) nevét és a fürt létrehozásakor megadott jelszót.
         2. Válassza ki a kívánt újraegyensúlyozására, majd válassza ki a topológiát a **Újraegyensúlyozására** gombra. Adja meg a késés, az újraegyensúlyozási művelet végrehajtása előtt.
 
 * **A Kafka**: Méretezési műveleteket követően érdemes kiegyenlíteni a partíciók replikáit. További információkért lásd: a [magas rendelkezésre állás az Apache Kafka on HDInsight adatok](./kafka/apache-kafka-high-availability.md) dokumentumot.
@@ -275,7 +282,7 @@ Például, ha a legújabb verzióját használni kívánt [Apache DataFu](https:
 
 Szeretné egy összetevő egy másik verzióját használni, töltse fel a verzióra van szükség, és használhatja a feladatok.
 
-> [!WARNING]
+> [!IMPORTANT]
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak, és Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
 > Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Emiatt előfordulhat, hogy a probléma megoldásához vagy rákérdez arra, hogy a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát a rendelkezésre álló csatorna léphet. Például sok, használható, például közösségi helyek vannak: [A HDInsight az MSDN-fórumokra](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ https://apache.org ](https://apache.org), például: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
@@ -283,6 +290,7 @@ Szeretné egy összetevő egy másik verzióját használni, töltse fel a verzi
 ## <a name="next-steps"></a>További lépések
 
 * [Áttelepítés a Windows-alapú HDInsight a Linux-alapú](hdinsight-migrate-from-windows-to-linux.md)
+* [HDInsight-fürtök kezelése az Apache Ambari REST API használatával](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Az Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [Az Apache Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce-feladatok használata a HDInsightban](hadoop/hdinsight-use-mapreduce.md)

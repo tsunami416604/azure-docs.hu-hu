@@ -1,21 +1,19 @@
 ---
 title: Jelentések mentése a Power BI-Munkaterületcsoportok |} A Microsoft Docs
 description: Megtudhatja, hogyan menteni a Power BI-Munkaterületcsoportok jelentéseihez. Ehhez a megfelelő engedélyekkel ahhoz, hogy sikeresen működik.
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 8de31479e55aca64a5412bb89765c9b6062c0358
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc3c9f71900abcbba440db259d92df53a4c7a586
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864881"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516450"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Jelentések mentése a Power BI munkaterületi gyűjteményekkel
 

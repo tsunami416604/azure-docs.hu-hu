@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: 933ee0ce6885960d5b35f67a0a4ee50602fe55c8
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4be7bbd1b8a5c896fe67b14170bd0cd1d20167a7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148014"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505851"
 ---
 ### <a name="neural-voices"></a>Neurális beszédhangot
 
@@ -36,7 +36,7 @@ Standard szintű beszédhangot ezekben a régiókban érhetők el:
 | USA 2. keleti régiója | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Kelet-Ázsia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Délkelet-Ázsia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Észak-Európa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v |
+| Észak-Európa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Nyugat-Európa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
 
 ### <a name="custom-voices"></a>Egyéni beszédhangot
