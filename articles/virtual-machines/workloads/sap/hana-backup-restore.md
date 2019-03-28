@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107729"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541230"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -416,10 +416,10 @@ For snapshot of the volume storing the boot LUN
 A részleteket a paraméterek a következők: 
 
 - Az első paraméterként a pillanatkép biztonsági másolat típusa jellemzi. Az engedélyezett értékek a következők **hana**, **naplók**, és **rendszerindító**. 
-- A paraméter **<HANA Large Instance Type>** rendszerindító kötetet a biztonsági másolatokat csak szükség. Nincsenek függ a HANA nagyméretű példány egység két érvényes érték a "TypeI" vagy "TypeII". Ismerje meg, hogy az egység típusa van, lásd: [SAP HANA (nagyméretű példányok) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
-- A paraméter **< snapshot_prefix >** snapshot vagy snapshot típusú biztonsági mentési címke. Két célja van: egyet az, hogy adjon meg egy nevet, hogy tudja, Mik azok a pillanatképek. A második célja a parancsfájl *azure\_hana\_backup.pl* meghatározni, hogy az adott címke alatt megmaradnak a storage pillanatképek számát. Ha ütemez be két tárhely pillanatképes biztonsági mentései az azonos típusú (például **hana**), két különböző címkét, és határozza meg, hogy minden 30 pillanatképek kell tárolni, az érintett kötetek 60 tárolási pillanatképekkel megtörténhet. Csak alfanumerikus ("A-Z, a-z, 0-9"), aláhúzásjel ("_") és kötőjel ("-") karakter használata engedélyezett. 
-- A paraméter **< snapshot_frequency >** fenntartja a jövőbeli fejlesztésekkel, és nincs hatással. Állítsa be a "3 perccel" típusú biztonsági mentés végrehajtásakor **log**, és a "15 perc a" a többi biztonsági mentési típusok végrehajtása közben.
-- A paraméter **<number of snapshots retained>** megőrzési idejét a pillanatképek közvetve a pillanatkép ugyanazon előtaggal (címke) rendelkező pillanatképek számának megadásával határozza meg. Ez a paraméter fontos ütemezett végrehajtás cron keresztül. Az azonos snapshot_prefix-pillanatképeket száma meghaladja a paraméter által megadott, ha a legrégebbi pillanatkép törlődik egy új storage-pillanatkép végrehajtása előtt.
+- A paraméter  **\<HANA nagyméretű példány típusa >** rendszerindító kötetet a biztonsági másolatokat csak szükség. Nincsenek függ a HANA nagyméretű példány egység két érvényes érték a "TypeI" vagy "TypeII". Ismerje meg, hogy az egység típusa van, lásd: [SAP HANA (nagyméretű példányok) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
+- A paraméter  **\<snapshot_prefix >** snapshot vagy snapshot típusú biztonsági mentési címke. Két célja van: egyet az, hogy adjon meg egy nevet, hogy tudja, Mik azok a pillanatképek. A második célja a parancsfájl *azure\_hana\_backup.pl* meghatározni, hogy az adott címke alatt megmaradnak a storage pillanatképek számát. Ha ütemez be két tárhely pillanatképes biztonsági mentései az azonos típusú (például **hana**), két különböző címkét, és határozza meg, hogy minden 30 pillanatképek kell tárolni, az érintett kötetek 60 tárolási pillanatképekkel megtörténhet. Csak alfanumerikus ("A-Z, a-z, 0-9"), aláhúzásjel ("_") és kötőjel ("-") karakter használata engedélyezett. 
+- A paraméter  **\<snapshot_frequency >** fenntartja a jövőbeli fejlesztésekkel, és nincs hatással. Állítsa be a "3 perccel" típusú biztonsági mentés végrehajtásakor **log**, és a "15 perc a" a többi biztonsági mentési típusok végrehajtása közben.
+- A paraméter  **\<megőrzött pillanatképeket száma >** megőrzési idejét a pillanatképek közvetve a pillanatkép ugyanazon előtaggal (címke) rendelkező pillanatképek számának megadásával határozza meg. Ez a paraméter fontos ütemezett végrehajtás cron keresztül. Az azonos snapshot_prefix-pillanatképeket száma meghaladja a paraméter által megadott, ha a legrégebbi pillanatkép törlődik egy új storage-pillanatkép végrehajtása előtt.
 
 Egy kibővített esetén a parancsfájl hajtja végre további annak ellenőrzése, győződjön meg arról, hogy minden HANA-kiszolgáló elérhető. A parancsfájl azt is ellenőrzi, hogy az összes HANA-példányok adják vissza megfelelő-példánya egy SAP HANA-pillanatkép létrehozása előtt. Az SAP HANA pillanatképe tárolási pillanatkép követ.
 

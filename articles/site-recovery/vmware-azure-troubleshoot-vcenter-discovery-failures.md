@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885297"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540805"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>VCenter-felderítési hibák elhárítása
+# <a name="troubleshoot-vcenter-discovery-failures"></a>A vCenter-felderítési hibák elhárítása
 
 Ez a cikk segít, hogy a VMware vCenter-felderítési hibák miatt előforduló problémák elhárítása.
 
@@ -46,8 +46,8 @@ vCenter felderítése a rendszer alapértelmezett proxybeállításait, a rendsz
 
 A következő helyzetekben fordulhat elő, ha a probléma akkor fordul elő:
 
-- A vCenter-kiszolgáló <vCenter> nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: (503) kiszolgáló nem érhető el
-- A vCenter-kiszolgáló <vCenter> nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: Nem sikerült csatlakozni a távoli kiszolgálóhoz.
+- A vCenter-kiszolgáló \<vCenter > nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: (503) kiszolgáló nem érhető el
+- A vCenter-kiszolgáló \<vCenter > nem érhető el a hiba miatt: A távoli kiszolgáló hibát adott vissza: Nem sikerült csatlakozni a távoli kiszolgálóhoz.
 - Nem lehet csatlakozni a vCenter/ESXi-kiszolgálóhoz.
 
 A probléma megoldásához:

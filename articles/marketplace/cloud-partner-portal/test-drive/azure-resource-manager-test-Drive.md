@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 615005e265f199cd6950123aa2af8b26f4fa4637
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456810"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541162"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
+# <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager – Tesztverzió
 
 Ez a cikk a kiadók, akik az ajánlatot az Azure piactéren, illetve akik az appsource-on rendelkezik, de létre szeretné hozni a Test Drive csak Azure-erőforrásokkal való szól.
 
@@ -51,7 +51,7 @@ Ha hozhat létre egy Azure Resource Manager Test Drive választja, a követelmé
 
 A legfontosabb eleme egy Azure Resource Manager Test Drive létrehozásával kapcsolatos, hogy megadhatja, milyen eset az ügyfelek tapasztalhat. Ön egy tűzfal terméket, és szeretné bemutató arról, hogy kezeli a parancsfájl-injektálási támadások? Azok a tárolási termék, és szeretné bemutató milyen gyors és egyszerű a megoldás akkor tömöríti a fájlokat?
 
-Győződjön meg arról, töltött idő kiértékelése, Mik azok a legjobb módszerei mutatni, a termék elegendő mennyiségű óvadék. Kifejezetten a szükséges erőforrások köré kell, csomagolása a Resource Manager-sablon megfelelő könnyebbé teszi azt.
+Ellenőrizze, hogy egy kiértékelése, Mik azok a legjobb módszerei mutatni, a termék elegendő ideig költségek. Kifejezetten a szükséges erőforrások köré kell, csomagolása a Resource Manager-sablon megfelelő könnyebbé teszi azt.
 
 A tűzfal példát folytatva, az architektúra lehet, hogy van szüksége egy nyilvános IP a szolgáltatás és egy másik nyilvános IP URL-címe a webhelyet, amelyet a tűzfal védi. Minden egyes IP üzembe helyezett virtuális gépen, és együtt egy hálózati biztonsági csoport és a hálózati adapter csatlakozik.
 

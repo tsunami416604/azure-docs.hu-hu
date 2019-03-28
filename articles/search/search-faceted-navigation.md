@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861043"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541213"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -34,7 +34,7 @@ Az alkalmazások fejlesztéséhez jelent létrehozó alkalmazáskódban lekérde
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk egy feladat keresési portált használja példaként. A példában egy ASP.NET MVC alkalmazás van megvalósítva.
 
--   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](https://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
 
 -   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
@@ -364,7 +364,7 @@ Nincsenek két térinformatikai funkciók az Azure Search szolgáltatásban **ge
 * A **geo.distance** függvényt ad vissza a távolságot adja meg kilométerben két pont között. Egy pont mező másik pedig a szűrő részeként átadott konstans. 
 * A **geo.intersects** függvény igaz értéket ad vissza, ha egy adott időpontra van egy adott sokszög belül. A pont egy mezőt, és a sokszög a szűrő részeként átadott koordináták állandó listaként van megadva.
 
-A szűrő példái annak [OData-kifejezések szintaxisa (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+A szűrő példái annak [OData-kifejezések szintaxisa (Azure Search)](query-odata-filter-orderby-syntax.md).
 
 <a name="tryitout"></a>
 

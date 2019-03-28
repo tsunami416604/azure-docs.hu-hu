@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b1e6ffc985c35b6711b8e602dbb877e840ab3f1b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: dcd0461e185fa97853bcd84e53bb43aacc5799c0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992379"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517011"
 documentType: LandingData
 title: Az Azure Database for MariaDB dokumentációja
 metadata:
@@ -14,7 +14,7 @@ metadata:
   ms.author: andrela
   ms.service: mariadb
   ms.topic: landing-page
-  ms.date: 02/25/2018
+  ms.date: 03/25/2019
 abstract:
   description: Az Azure Database for MariaDB egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú MariaDB Server motoron alapul.  Ez a teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. Az Azure Database for MariaDB-ben végzett alkalmazásfejlesztéssel kiaknázhatja az Ön által választott nyílt forráskódú eszközök és platform előnyeit. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Database for MariaDB használatát.
 sections:
@@ -38,7 +38,7 @@ sections:
   - type: paragraph
     text: 'További információ az adatbázisok tervezéséről és az alkalmazások fejlesztéséről:'
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: 'Adatbázis tervezése: <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>'
 - title: Példák

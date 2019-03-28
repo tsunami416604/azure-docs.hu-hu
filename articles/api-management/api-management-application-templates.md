@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 0eead6201f737448b4de76476802518a506375da
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 732fdf3f9210a1484895e0b43e061b4bbc586b43
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446234"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541264"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Az Azure API Management alkalmazássablonok
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
@@ -75,15 +75,15 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ### <a name="controls"></a>Vezérlők  
  A `Product list` sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [lapozófájl-vezérlő](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
-|Alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az aktuális felhasználó számára látható alkalmazások.|  
-|Kategórianév|sztring|A kategória az alkalmazás.|  
+|`Paging`|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
+|`Applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az aktuális felhasználó számára látható alkalmazások.|  
+|`CategoryName`|sztring|A kategória az alkalmazás.|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   

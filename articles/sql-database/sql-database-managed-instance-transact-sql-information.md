@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b044a7c2b3122fcbce44ae2e45198f57f6a87260
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903130"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541281"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -217,7 +217,7 @@ További információkért lásd: [ALTER DATABASE SET PARTNER és a SET WITNESS]
 
 - Több naplófájl nem támogatottak.
 - Az általános célú szolgáltatásszinten lévő memórián belüli objektumok nem támogatottak.  
-- Úgy adatbázisonként legfeljebb 280 fájlok példányonkénti 280 fájlok korlátozva van. Adatok és a naplófájlok számításba vesszük ezt a korlátot felé.  
+- Általános célú példányonként legfeljebb 280 fájlt adatbázisonként úgy 280 fájlok korlátozva van. Adat- és naplófájlok fájlok az általános célú réteg felé ezt a korlátot bájtjai számítanak. [Kritikus fontosságú üzleti szint támogatja – 32 767 fájlt adatbázisonként](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Adatbázis nem tartalmazhatnak filestream-adatokat tartalmazó fájlcsoportokat.  Helyreállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.  
 - Minden fájl kerül, az Azure Blob storage-ban. I/o és teljesítmény / fájl egyes fájlok méretét függenek.  
 
@@ -485,9 +485,9 @@ Felügyelt példány nem állítható vissza [tartalmazott adatbázisok](https:/
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Tárhely túllépése kis teljesítményigényű adatbázis-fájlokkal
 
-Minden felügyelt példány rendelkezik az Azure prémium szintű lemez terület számára lefoglalt 35 TB tárterület, és egyes adatbázisfájlok külön fizikai lemezen kerül. Adatlemez-méretet 128 GB-os, 256 GB, 512 GB, 1 TB vagy 4 TB-os lehet. Nem használt területet a lemezen nem számítunk fel díjat, de az Azure prémium szintű lemezméretek teljes összege legfeljebb 35 TB. Bizonyos esetekben egy felügyelt példányt, amely nem kell 8 TB összesen meghaladhatja a 35 TB-os az Azure a belső töredezettség miatt a tárhely mérete korlátozza.
+Egyes általános célú felügyelt példányok rendelkezik az Azure prémium szintű lemez terület számára lefoglalt 35 TB tárterület, és egyes adatbázisfájlok külön fizikai lemezen kerül. Adatlemez-méretet 128 GB-os, 256 GB, 512 GB, 1 TB vagy 4 TB-os lehet. Nem használt területet a lemezen nem számítunk fel díjat, de az Azure prémium szintű lemezméretek teljes összege legfeljebb 35 TB. Bizonyos esetekben egy felügyelt példányt, amely nem kell 8 TB összesen meghaladhatja a 35 TB-os az Azure a belső töredezettség miatt a tárhely mérete korlátozza.
 
-Például a felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyezve a 4 TB-os lemez mérete, és 248-fájlok (minden 1 GB-os méretig) külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
+Ha például egy általános célú felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyezve a 4 TB-os lemez mérete, és 248-fájlok (minden 1 GB-os méretig) külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
 
 - Az összes lefoglalt lemezterület tárméret: x 4 1 TB + 248 x 128 GB = 35 TB.
 - a példányon adatbázisok teljes lefoglalt terület: x 1.2 1 TB + 248 x 1 GB = 1,4 TB.
@@ -495,6 +495,8 @@ Például a felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyez
 Ez az ábra bemutatja, hogy bizonyos körülmény miatt a fájlok egy adott terjesztési csoportban, a felügyelt példány lehet elérni a csatolt Azure prémium szintű lemezes számára fenntartva, amikor előfordulhat, hogy nem a várt 35 TB.
 
 Ebben a példában a meglévő adatbázisok továbbra is működni fog, és növelhető bármilyen probléma nélküli mindaddig, amíg az új fájlok nem lettek hozzáadva. Azonban új adatbázisokat nem kell létrehozni, vagy vissza, mert nem áll elég hely az új meghajtók, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretének korlátja. A visszaadott hiba ebben az esetben nem egyértelmű.
+
+Is [hátralévő fájlok számának meghatározása](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) rendszernézetek használatával. Ha az elérni próbált ezt a korlátot próbál [üres, és a egy, a DBCC SHRINKFILE utasítással kisebb fájlok törlése](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) vagy shitch a [fontos üzleti szint, amely nem rendelkezik ezt a korlátot](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Adatbázis során SAS-kulcs helytelen konfiguráció visszaállítása
 

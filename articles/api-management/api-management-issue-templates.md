@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 99732a61ab64f8600ca368d4af5f47451014a993
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760750"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540839"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>A probléma sablonok az Azure API Management szolgáltatásban
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
@@ -99,11 +99,11 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Hibák|A gyűjtemény [probléma](api-management-template-data-model-reference.md#Issue) entitásokat.|A probléma, az aktuális felhasználó számára látható.|  
-|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
-|IsAuthenticated|logikai|Hogy az aktuális felhasználó van bejelentkezve a fejlesztői portálra.|  
-|CanReportIssues|logikai|Az aktuális felhasználó rendelkezik-e be a problémát az engedélyeket.|  
-|Keresés|sztring|Ez a tulajdonság elavult, és nem használható.|  
+|`Issues`|A gyűjtemény [probléma](api-management-template-data-model-reference.md#Issue) entitásokat.|A probléma, az aktuális felhasználó számára látható.|  
+|`Paging`|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A lapozófájl információ az alkalmazások a gyűjteményhez.|  
+|`IsAuthenticated`|logikai|Hogy az aktuális felhasználó van bejelentkezve a fejlesztői portálra.|  
+|`CanReportIssues`|logikai|Az aktuális felhasználó rendelkezik-e be a problémát az engedélyeket.|  
+|`Search`|sztring|Ez a tulajdonság elavult, és nem használható.|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   

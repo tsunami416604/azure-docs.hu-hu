@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b3e11c58dcc5f5c68e9fe081cc47cf2fa18e9e57
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 296debefb5597af0c82202993443dc38f48f147a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697893"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519561"
 documentType: LandingData
 title: Az Azure AD feltételes hozzáférésének dokumentációja
 metadata:
@@ -13,14 +13,14 @@ metadata:
   description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure Active Directory feltételes hozzáférését.
   services: active-directory
   ms.subservice: conditional-access
-  author: MarkusVi
+  author: MicrosoftGuyJFlo
   manager: daveba
   ms.service: active-directory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/14/2018
-  ms.author: markvi
+  ms.author: joflore
 abstract:
   description: Megismerheti, hogyan alakíthat ki egyensúlyt a biztonság és a termelékenység között az Azure AD feltételes hozzáférésének konfigurálásával. A feltételes hozzáférési szabályzatokkal figyelembe veheti a felhőalapú alkalmazások elérésének módját a hozzáféréssel kapcsolatos döntések meghozásakor. A hozzáférési döntésekben például figyelembe veheti a következő kérdéseket:<ul><li>Mi a felhasználó hálózati helye?</li><li>Felügyelt eszközről kezdeményezték a hozzáférési kísérletet?</li><li>Melyik ügyfélalkalmazásból kezdeményezték a kapcsolódási kísérletet?</li><li>Történt hozzáférési kísérlet kockázatos bejelentkezéssel?</li></ul>Az alábbi forrásanyagokkal gyorsan felkészülhet.
   aside:

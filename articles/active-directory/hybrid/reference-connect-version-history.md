@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/18/2018
+ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab0e7ce1891dc3553f89f652c7dac70e66a4df0
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499913"
+ms.locfileid: "58540958"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -41,7 +41,7 @@ Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?
 >[!NOTE]
 >Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13900"></a>1.3.90.0 
+## <a name="13100"></a>1.3.10.0 
 
 ### <a name="release-status"></a>Kiadási állapot 
 

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295266"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540975"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -77,14 +77,12 @@ A Batch fiókra vonatkozó kvóták az megtekintése a [az Azure portal][portal]
 1. Válassza ki **Batch-fiókok** a portálon, majd válassza ki az Önt érdeklő Batch-fiókhoz.
 1. Válassza ki **kvóták** a Batch-fiók menüjében.
 1. A Batch-fiók telepítve a kvóták megtekintése
-   
+
     ![Batch-fiókra vonatkozó kvóták][account_quotas]
-
-
 
 ## <a name="increase-a-quota"></a>A kvóta növeléséhez
 
-Kövesse az alábbi lépéseket egy kvótát a Batch-fiók vagy az előfizetés használatával növelheti a [az Azure portal][portal]. Kvótanövelést típusát a Batch-fiók készletlefoglalási módjától függ.
+Kövesse az alábbi lépéseket egy kvótát a Batch-fiók vagy az előfizetés használatával növelheti a [az Azure portal][portal]. Kvótanövelést típusát a Batch-fiók készletlefoglalási módjától függ. Kérje egy kvótájának növelését, meg kell adnia a Virtuálisgép-sorozatok, amelyet szeretne növelését. Ha alkalmazza a kvótájának növelését, a rendszer alkalmazza minden sorozat virtuális gépei esetében.
 
 ### <a name="increase-a-batch-cores-quota"></a>Batch-magkvóta növeléséhez 
 

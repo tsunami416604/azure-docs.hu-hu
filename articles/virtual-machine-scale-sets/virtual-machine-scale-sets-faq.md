@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999561"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541027"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -243,7 +243,7 @@ Egy vonatkozó példáért lásd: [a 101-vm-ssh-kulcsfájl GitHub gyorsindítás
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>A futtatási amikor `Update-AzVmss` után egynél több tanúsítvány felvétele a azonos key vaultban tárolt, az alábbi üzenet látható:
 
->Update-AzVmss: Lista titkos kulcsot tartalmazza: /subscriptions/ < saját-subscription-id > több példánya / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, ami nem engedélyezett.
+>Update-AzVmss: Lista titkos kulcsot tartalmazza: /subscriptions/ több példánya\<my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, ami nem engedélyezett.
 
 Ez akkor fordulhat elő, ha megpróbálja újra hozzá ugyanahhoz a tárolóhoz, a forrás meglévő tárolóhoz tartozó új tárolóra tanúsítvány használata helyett. A `Add-AzVmssSecret` parancs nem működik megfelelően további titkos kulcsok hozzáadása esetén.
 
@@ -303,7 +303,7 @@ A CRP-összetevő nem marad az ügyfél titkos kulcsok. Ha `stop deallocate` a v
 
 Ez a probléma nem tapasztal, amikor a horizontális felskálázás, mert a titkos kulcsot az Azure Service Fabric (a modellben egyetlen fabric-bérlő) gyorsítótárazott másolatának.
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Miért van, adja meg a pontos helyét a tanúsítvány URL-címe (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>), ahol azt az [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Miért van, adja meg a pontos helyét a tanúsítvány URL-címe (https:\/\/\<a tároló neve >.vault.azure.net:443/secrets/\<a pontos helyet >), a [Service Fabric fürtök – biztonsági helyzetek](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)?
 
 Az Azure Key Vault-dokumentáció megállapítja, hogy az első titkos REST API a titkos kulcs legújabb verzióját kell visszaadnia, ha a verzió nincs megadva.
 

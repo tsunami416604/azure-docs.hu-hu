@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905120"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540873"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -682,7 +682,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: Növelje a erőforrásokon engedélyezett hibák <Optional>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: Növelje a erőforrásokon engedélyezett hibák \<nem kötelező >
 
 Bizonyos erőforrások, az Always On rendelkezésre állási csoport tartozó korlátozva van a hány hiba fordul elő egy időszak, amelyben a fürtszolgáltatásnak próbál indítsa újra az erőforráscsoportot. Ajánlott növeli Ez ugyanakkor azt is, ajánljuk figyelmébe ebben az eljárásban óta Ha ezt nem manuális feladatátvétel és az eseményindító feladatátvételeket leállításával gépek megjelenik a közeli ezt a korlátot.
 
@@ -692,7 +692,7 @@ A hiba keretet, ehhez a Feladatátvevőfürt-kezelő duplája körültekintő le
 
 Módosítsa a maximális hibaszám 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: Emellett IP-cím erőforrás fürt csoport <Optional>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: Emellett IP-cím erőforrás fürtcsoporthoz tartozó \<nem kötelező >
 
 Ha csak egy IP-cím esetében a fürtcsoportban, és ez a felhő alhálózat igazított, ügyeljen arra, ha véletlenül kapcsolat nélküli minden fürtcsomópontnak a hálózaton a felhőben, majd a fürt IP-erőforrás és a fürt hálózati neve nem képesek online állapotba. Ebben a helyzetben a fürt más erőforrásai megakadályozza a frissítéseket.
 
