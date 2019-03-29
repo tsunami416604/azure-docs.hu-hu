@@ -203,11 +203,6 @@ items:
     - name: Példák (egyszerű szintaxis)
       href: search-query-simple-examples.md
     - name: Példák (teljes Lucene)
-      href: search-query-lucene-examples.md
-  - name: Az eredmények kezelése
-    items:
-    - name: Oldalhoz kapcsolódó szolgáltatások
-      href: search-pagination-page-layout.md
   - name: Adatok szűrése és rendezése
     items:
     - name: A szűrők áttekintése
@@ -216,8 +211,12 @@ items:
       href: search-filters-facets.md
     - name: Jellemzőalapú navigáció hozzáadása
       href: search-faceted-navigation.md
-    - name: Szűrés és rendezés kifejezési szintaxis szerint
-      href: query-odata-filter-orderby-syntax.md
+    - name: A szűrési és az OrderBy kifejezés szintaxisa és példái
+      href: search-query-lucene-examples.md
+  - name: Az eredmények kezelése
+    items:
+    - name: Oldalhoz kapcsolódó szolgáltatások
+      href: search-pagination-page-layout.md
   - name: Relevanciahangolás
     items:
     - name: Pontozási profilok hozzáadása
@@ -307,9 +306,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videók
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 74d4c29b7a4c70116531ef242929571eee3e4d90
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d0e692407a89e01806f425bedb302160ec8c672b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500493"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576822"

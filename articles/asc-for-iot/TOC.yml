@@ -8,6 +8,8 @@ items:
     href: architecture.md
   - name: Biztonsági ügynökök
     href: security-agent-architecture.md
+  - name: Biztonsági Edge-modul
+    href: security-edge-architecture.md
   - name: A szolgáltatás előfeltételei
     href: service-prerequisites.md
   - name: Ismerkedés az ASC for IoT használatával
@@ -23,26 +25,8 @@ items:
   - name: Egyéni biztonsági riasztások létrehozása
     href: quickstart-create-custom-alerts.md
   expanded: true
-- name: Oktatóanyagok
-  items:
-  - name: Biztonsági ügynökök üzembe helyezése
-    items:
-    - name: C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön
-      href: tutorial-deploy-windows-cs.md
-    - name: C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
-      href: tutorial-deploy-linux-cs.md
-    - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
-      href: tutorial-deploy-linux-c.md
-  - name: Eszköz vizsgálata
-    href: tutorial-investigate-device.md
-  - name: Saját biztonsági üzenetek küldése
-    href: tutorial-send-security-messages.md
 - name: Alapelvek
   items:
-  - name: Melyik ügynököt telepítsem?
-    href: select-deploy-agent.md
-  - name: Biztonsági ügynökök konfigurálása
-    href: concept-agent-configuration.md
   - name: Biztonsági ügynök hitelesítése
     href: concept-security-agent-authentication-methods.md
   - name: Biztonsági modul
@@ -51,12 +35,30 @@ items:
     href: concept-security-alerts.md
   - name: Biztonsági javaslatok
     href: concept-recommendations.md
+  - name: Díjszabás és kapcsolódó költségek
+    href: concept-pricing.md
 - name: Útmutatók
   items:
+  - name: Melyik ügynököt telepítsem?
+    items:
+    - name: Üzembe helyezendő ügynök kiválasztása
+      href: how-to-deploy-agent.md
+    - name: C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön
+      href: how-to-deploy-windows-cs.md
+    - name: C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
+      href: how-to-deploy-linux-cs.md
+    - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
+      href: how-to-deploy-linux-c.md
+  - name: Biztonsági Edge-modul üzembe helyezése
+    href: how-to-deploy-edge.md
+  - name: Biztonsági ügynökök konfigurálása
+    href: how-to-agent-configuration.md
+  - name: Saját biztonsági üzenetek küldése
+    href: how-to-send-security-messages.md
   - name: Hozzáférés a nyers biztonsági adatokhoz
     href: how-to-security-data-access.md
-  - name: Biztonsági ikermodul módosítása
-    href: how-to-modify-security-module-twin.md
+  - name: Eszköz vizsgálata
+    href: how-to-investigate-device.md
 - name: További források
   items:
   - name: Gyakori kérdések
@@ -67,9 +69,9 @@ items:
     href: http://blogs.msdn.com/b/azuresecurity/
   - name: Régiónkénti rendelkezésre állás
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 17508e05a8de52e12487bf35fd3e063761abcbe2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541322"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575164"

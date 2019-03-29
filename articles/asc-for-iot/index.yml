@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fad8ecd0658b2a00f249e8b218bab1dbdaf83187
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542233"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578220"
 documentType: LandingData
-title: Az Azure Security Center (ASC) for IoT előzetes verziójának dokumentációja
+title: Az ASC for IoT előzetes verziójának dokumentációja
 metadata:
-  title: Az Azure Security Center (ASC) for IoT előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: Az ASC for IoT előzetes verziójának dokumentációja – Oktatóanyagok, rövid útmutatók | Microsoft Doc
+  meta.description: ASC for IoT unifies your security management and enables advanced threat protection across your IoT solution.
   services: ascforiot
   author: mlottner
   manager: barbkess
@@ -20,7 +20,7 @@ metadata:
   ms.date: 03/26/19
   ms.author: barbkess
 abstract:
-  description: Az Azure Security Center for IoT előzetes verziójával a teljes IoT-megoldásra kiterjesztheti a meglévő kiberbiztonsági megoldások biztosította rálátást. Teljes körű áttekintést nyerhet az Azure-hoz kapcsolódó erőforrások biztonsági állapotáról. A gyors üzembe helyezési lehetőségek és az IoT Hub-ikermodulokkal kialakított teljes körű integráció széleskörű testreszabhatóságot és könnyű integrációt biztosít meglévő eszközfelügyeleti rendszereihez. 
+  description: Az ASC for IoT előzetes verziójával a teljes IoT-rendszerre kiterjesztheti a meglévő kiberbiztonsági megoldások biztosította rálátást. Teljes körű áttekintést nyerhet az Azure-hoz kapcsolódó erőforrások biztonsági állapotáról. A gyors üzembe helyezési lehetőségek és az IoT Hub-ikermodulokkal kialakított teljes körű integráció széleskörű testreszabhatóságot és könnyű integrációt biztosít meglévő eszközfelügyeleti rendszereihez. 
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -32,19 +32,19 @@ sections:
     - image:
         src: media/index/deploy.svg
       text: Az ASC for IoT engedélyezése
-      href: /azure/ascforiot/quickstart-onboard-iot-hub
+      href: /azure/asc-for-iot/quickstart-onboard-iot-hub
     - image:
         src: media/index/get-started.svg
       text: Ismerkedés az ASC for IoT használatával
-      href: /azure/ascforiot/quickstart-getting-started
-- title: Részletes útmutatók
+      href: /azure/asc-for-iot/getting-started
+- title: Útmutatók
   items:
   - type: paragraph
     text: Ismerje meg, hogyan adhat meg biztonsági szabályzatokat, hogyan védheti meg eszközeit a rosszindulatú tevékenységektől, illetve hogyan válaszolhat a biztonsági riasztásokra és incidensekre.
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="/azure/ascforiot/tutorial-investigate-device">Fenyegetések észlelése az ASC for IoT segítségével</a>
+    - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Fenyegetések észlelése az ASC for IoT segítségével</a>
 - title: Fejlessze a készségeit a Microsoft Learnnel
   items:
   - type: list
