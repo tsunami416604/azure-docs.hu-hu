@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 2a6d356bcf65cdb59e84b34cf2a7478de796e61a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473202"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619511"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával
 
@@ -91,7 +91,7 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 2. Hozzon létre egy `CloseableHttpClient` objektum, amely kéréseket küldhetnek az API-t. A kérelem küldése egy `HttpPost` támogatásikérelem-objektum kombinálásával a végponthoz, és a egy Anomáliadetektálási detector használatával URL-CÍMÉT.
 
-3. Használja a kérelem `setHeader()` függvény beállítása a `Content-Type` fejlécére, `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+3. Használja a kérelem `setHeader()` függvény beállítása a `Content-Type` fejlécet `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
 4. A kérelem használata `setEntity()` függvényt, hogy az adatok küldésének.   
 

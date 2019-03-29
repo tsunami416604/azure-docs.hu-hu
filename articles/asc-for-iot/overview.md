@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 9ca55a1c977b887e8d1ea51186068e57627e78f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 46107797acad52e3df82d341750c52f99c81d63e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542022"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578815"
 ---
-# <a name="introducing-asc-for-iot"></a>ASC IoT bemutatása 
+# <a name="introducing-asc-for-iot"></a>ASC IoT bemutatása
 
 > [!IMPORTANT]
 > Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
@@ -45,7 +45,7 @@ Biztonsági egységes képet kaphat az összes helyszíni és felhőbeli számí
 
 ### <a name="adaptive-threat-prevention"></a>Az adaptív fenyegetések megelőzése
 
-ASC az IoT használatával folyamatosan figyeli a gépek, hálózatok és Azure-szolgáltatásokkal, mint az Azure IoT-megoldás a peremhálózati eszközökön az alkalmazások biztonságát. A több száz beépített biztonság állapotát, vagy hozzon létre egy saját, az IoT Hub-irányítópulthoz a központi ASC választhat. A biztonsági beállítások optimalizálásához, illetve a biztonsági pontszám gyakorlati ajánlásokat készítünk rendelkező virtuális gépek, hálózatok, alkalmazások és adatok között. Az újonnan hozzáadott IoT-képességeik mostantól az Azure IoT-megoldás a támadási felület csökkentése és elhárítani a problémákat, mielőtt kihasználnák. 
+ASC az IoT használatával folyamatosan figyeli a gépek, hálózatok és Azure-szolgáltatásokkal, mint az Azure IoT-megoldás a peremhálózati eszközökön az alkalmazások biztonságát. A több száz beépített biztonság állapotát, vagy hozzon létre egy saját, az IoT Hub-irányítópulthoz a központi ASC választhat. A biztonsági beállítások optimalizálásához, illetve a biztonsági pontszám gyakorlati ajánlásokat készítünk rendelkező virtuális gépek, hálózatok, alkalmazások és adatok között. Az újonnan hozzáadott IoT-képességeik mostantól az Azure IoT-megoldás a támadási felület csökkentése és elhárítani a problémákat, mielőtt kihasználnák.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Intelligens fenyegetésészlelés és -válasz
 

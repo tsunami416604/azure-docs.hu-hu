@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499080"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621430"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
 
 > [!NOTE]
-> A Media Services v2 jelennek meg semmilyen új szolgáltatásokat és funkciókat. <br/>Tekintse meg a legújabb verzió [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavítása összpontosíthatunk. Probléma jelentéséhez vagy tegyen fel kérdéseket, küldje el a hozzászólás a [Az Azure Media Services MSDN-fórum]. 
 
@@ -42,13 +42,12 @@ Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavít
 | Egyes ügyfelek között egy ismételje meg a címke a probléma a Smooth Streaming-jegyzékfájlban származhatnak. |További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues). |
 | Media Services .NET SDK-objektumok nem szerializálható, és emiatt nem működnek az Azure Cache redis. |Ha az SDK AssetCollection objektumot hozzáadása az Azure Cache redis, akkor a program kivételt vált ki. |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
 A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
 
 ## <a name="december-2018"></a>2018. december
 
-A [Media Hyperlapse előzetes](media-services-hyperlapse-content.md) az Azure Media Services szolgáltatása hamarosan megszűnik. 2018. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019. március 29., a kivont és már nem elérhető lesz.
+Az Azure Media Services Media Hyperlapse előzetes verzióként elérhető funkciója hamarosan megszűnik. 2018. December 19., kezdve a Media Services fog már nem győződjön meg arról, módosításokat és fejlesztéseket Media hyperlapse használatával való. 2019. március 29., a kivont és már nem elérhető lesz.
 
 ## <a name="october-2018"></a>2018. október
 
@@ -260,7 +259,6 @@ A következő új funkciók lettek bejelentett:
 
 * [Valós idejű kódolás a Media Services előnézete](media-services-manage-live-encoder-enabled-channels.md)
 * [A dinamikus manifest](media-services-dynamic-manifest-overview.md)
-* [Előzetes verziója az Azure Media Hyperlapse médiafeldolgozót.](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>2015 áprilisi kiadás
 ### <a name="general-media-services-updates"></a>Általános Media Services-frissítések

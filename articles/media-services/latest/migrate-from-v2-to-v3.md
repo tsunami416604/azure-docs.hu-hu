@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317748"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621736"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -79,12 +79,14 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 A v3 API rendelkezik a következő szolgáltatás garanciát a v2 API hiányosságok pótlásában. A hiányosságok folyamatban.
 
 * A [prémium szintű kódoló](../previous/media-services-premium-workflow-encoder-formats.md) és az örökölt [elemzési médiafeldolgozók](../previous/media-services-analytics-overview.md) (az Azure Media Services Indexer 2 előzetes verzió, Face Redactor stb.) nem érhetők el a v3-n keresztül.<br/>Ügyfelek, akik a Media Indexer 1 vagy 2 előzetes migrálni szeretne azonnal használható a készletet a v3 API AudioAnalyzer.  Az új beállításkészlet további funkciókat, mint a régebbi Media Indexer 1 vagy 2-es tartalmazza. 
-* Számos, a Media Encoder Standard v2 API-k speciális funkciója jelenleg nem állnak rendelkezésre a v3-as, például:
+* Számos, a [speciális funkciókat, a Media Encoder Standard a v2-ben](../previous/media-services-advanced-encoding-with-mes.md) API-k jelenleg nem állnak rendelkezésre a v3-as, például:
     * Kivágás (az igény szerinti és élő forgatókönyv)
     * Eszközeinek vágása
     * Átfedések
     * Vágása
     * Miniatűr Sprites
+    * Nincs hang Beszúrás, amikor a bevitel csendes hangsáv van
+    * Nincs videó Beszúrás, ha a bemeneti videó nyomon rendelkezik.
 * Élő események átkódolása jelenleg nem támogatja a lappal beszúrási közepes stream és az ad reklámjelölők beszúrása API-hívás használatával. 
 
 > [!NOTE]

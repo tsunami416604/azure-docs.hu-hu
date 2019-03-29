@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan való előkészítése az Azure virtuális gép
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837762"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619722"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Az Azure virtuális gép felvétele az Update Management, Change Tracking and Inventory megoldásai
 
@@ -26,7 +26,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="enable-the-solutions"></a>A megoldások engedélyezése
 
-Nyissa meg egy meglévő virtuális gépet. Alatt **OPERATIONS**válassza **frissítéskezelés**, **készlet**, vagy **Change tracking**. A virtuális gép létezhet bármelyik régióban, függetlenül attól, hogy az Automation-fiók helye.
+Nyissa meg egy meglévő virtuális gépet. Alatt **OPERATIONS**válassza **frissítéskezelés**, **készlet**, vagy **Change tracking**. A virtuális gép létezhet bármelyik régióban, függetlenül attól, hogy az Automation-fiók helye. Ha egy virtuális gép megoldás bevezetése kell rendelkeznie a `Microsoft.OperationalInsights/workspaces/read` engedéllyel, hogy a virtuális gép felkészített a munkaterületre. Általában szükséges további engedélyekkel kapcsolatos további információkért lásd: [előkészítheti a gépeket szükséges engedélyeket](automation-role-based-access-control.md#onboarding).
 
 Ellenőrizze, hogy a megoldás engedélyezéséhez a virtuális gép csak **engedélyezése a virtuális gép** van kiválasztva. Készítse elő a megoldás több gép válassza **ebbe az előfizetésbe tartozó virtuális gépek engedélyezése**, majd válassza ki **kattintással jelölje ki a gépek engedélyezéséhez**. Megtudhatja, hogyan készítse elő több gép egyszerre, lásd: [előkészíteni az Update Management, Change Tracking és Inventory megoldásainak](automation-onboard-solutions-from-automation-account.md).
 
@@ -85,13 +85,13 @@ Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása
 
 1. Az Azure Portalról nyissa meg az Automation-fiókját, és a az Automation-fiók oldalon válassza ki **csatolt munkaterület** a szakaszában **kapcsolódó erőforrások** a bal oldalon.
 
-1. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
+2. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
 
    ![Munkaterület oldalán leválasztása](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
 
-1. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
+3. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
 Az Update Management megoldás használata esetén igény szerint, előfordulhat, hogy el kívánja távolítani a következő elemek, amelyek a megoldás eltávolítása után már nem szükséges.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: f39fee9b59dfec643a640a4e17460ed9199c858f
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542067"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579444"
 ---
 # <a name="asc-for-iot-security-alerts"></a>Az IoT biztonsági riasztásokhoz ASC
 
@@ -27,8 +27,15 @@ ms.locfileid: "58542067"
 > Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Az IoT ASC folyamatosan elemzi az IoT-megoldás használatával figyelmeztet a rosszindulatú tevékenység fejlett elemzés és veszélyészlelés céljából intelligencia használatával.
+Emellett egyéni értesítések, a várt eszközök működésének ismerete alapján is létrehozhat.
+Riasztás azt jelzi, hogy comprise, funkcionál, és kell vizsgálni és javítja.
 
-## <a name="device-alerts"></a>Eszközriasztások
+Ebben a cikkben található beépített riasztások, amely akkor aktiválódik a az IoT Hub és/vagy IoT-eszközök listáját.
+Beépített riasztás melletti IOT ASC lehetővé teszi egyéni riasztások alapján várt Hub és/vagy eszköz viselkedésének meghatározása.
+További részletekért lásd: [egyéni riasztásokat is létrehozhat](quickstart-create-custom-alerts.md).
+
+## <a name="built-in-alerts-for-iot-devices"></a>Az IoT-eszközök beépített riasztások
 
 | Severity | Name (Név)                                                   | Adatforrás | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,7 +79,7 @@ ms.locfileid: "58542067"
 | Alacsony      | Bash-előzmények törölve.                                   | Ügynök       | A bash Előzmények napló nincs bejelölve. A támadók saját parancsok elrejtheti a jelennek meg a naplók                                                                                                                                                                                                                                                                                                                                                   |
 | Alacsony      | Nem sikerült a találgatásos támadás                                      | Ügynök       | Több sikertelen bejelentkezési kísérletek azonosított. Egy kísérlet és sikertelen találgatásos támadás kényszerítése az eszközön történt.                                                                                                                                                                                                                                                                                                                                                  |
 
-## <a name="iot-hub-alerts"></a>Az IoT Hub-riasztások
+## <a name="built-in-alerts-for-iot-hub"></a>Az IoT Hub beépített riasztások
 
 | Severity | Name (Név)                                                                         | Leírás                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,4 +95,4 @@ ms.locfileid: "58542067"
 
 - [Áttekintés](overview.md)
 - [Biztonsági adatok elérése](how-to-security-data-access.md)
-- [Vizsgálja meg az eszköz](tutorial-investigate-device.md)
+- [Vizsgálja meg az eszköz](how-to-investigate-device.md)

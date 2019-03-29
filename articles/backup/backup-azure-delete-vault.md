@@ -6,62 +6,53 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: 1cc86470b9e45469d633d47121869b3c2dc1b052
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 94d66e28f8edbda6c41dcceaf427d7d7d869c90f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439005"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620117"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
 Ez a cikk bemutatja, hogyan törölhet egy [Azure Backup](backup-overview.md) Recovery Services-tároló. Függőségek eltávolítása-tároló törlése, és egy tároló által kényszerített törlése vonatkozó utasításokat tartalmazza.
 
 
-
-
 ## <a name="before-you-start"></a>Előkészületek
 
 A Kezdés előtt fontos megérteni, hogy rendelkezik a kiszolgálók Recovery Services-tároló nem törölhető regisztrálva, vagy, amely tárolja a biztonsági mentési adatokat.
 
-
-- Tároló szabályosan törlése, a kiszolgálók regisztrációját, és tároló adatok eltávolítása.
+- Egy tároló szabályosan törléséhez, a kiszolgáló regisztrációjának törlése, tároló adatok eltávolítása, és ezután törölje a tárat.
+- Ha törli egy tároló, amely továbbra is a függőségekkel rendelkezik, egy hibaüzenet jelenik meg. és meg kell manuálisan távolítsa el a tároló függőségeket, többek között:
+    - Biztonsági másolatba mentett elemek
+    - Védett kiszolgálók
+    - Felügyeleti kiszolgáló (az Azure Backup Server, a DPM) biztonsági mentési ![válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
 - Ha nem szeretné megőrizni a helyreállítási tárban lévő adatokat, és törli a tárolót, törölheti a tárolót kényszeríti.
 - Próbálja meg törölni egy tároló, de nem tudja, ha a tároló továbbra is fogadására van konfigurálva, biztonsági mentési adatokat.
 
-Tároló törlése, tekintse meg a hogyan [tároló törlése az Azure Portalról](#delete-a-vault-from-the-azure-portal). Ha a szakaszban [kényszeríti a tároló törlése](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Ha nem tudja, mi az a tárolóban, és győződjön meg arról, hogy törölheti a tárolót, hogy szüksége, tekintse meg a [Remove tároló függőségeket és a tároló törlése](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault).
 
 ## <a name="delete-a-vault-from-the-azure-portal"></a>Tároló törlése az Azure Portalról
 
-1. Nyissa meg a portálon a Recovery Services-tárolók listája.
-2. A listában jelölje ki a törölni kívánt tárolót. A tároló irányítópultjának megnyitása.
+1. Nyissa meg a tároló irányítópultján.  
+2. Az irányítópulton kattintson **törlése**. Győződjön meg arról, hogy törölni kívánja.
 
     ![Válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-1. A tároló irányítópultján kattintson **törlése**. Győződjön meg arról, hogy törölni kívánja.
+Ha hibaüzenetet kap, távolítsa el [biztonsági mentési elemek](#remove-backup-items), [infrastruktúra-kiszolgálók](#remove-backup-infrastructure-servers), és [helyreállítási pontok](#remove-azure-backup-agent-recovery-points), és ezután törölje a tárat.
 
-    ![Válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/click-delete-button-to-delete-vault.png)
+![tároló-hiba törlése](./media/backup-azure-delete-vault/error.png)
 
-2. Ha tároló függőségek, a **törlési hiba tároló** jelenik meg: 
-
-    ![Tártörlési hiba](./media/backup-azure-delete-vault/vault-delete-error.png)
-
-    - Kövesse ezeket az utasításokat a tároló törlése előtt távolítsa el a függőségeket, tekintse át
-    - [Az alábbi lépéseket követve](#delete-the-recovery-services-vault-by-force) kényszeríti a tároló törlése a PowerShell használatával. 
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Kényszeríti a Recovery Services-tároló törlése
 
+Törölheti a tárolót kényszeríti a PowerShell használatával. Kényszerített törlés, az azt jelenti, hogy a tárolót, és minden ahhoz kapcsolódó biztonsági mentési adat véglegesen törlődik.
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Kényszeríti a Recovery Services-tároló törlése a PowerShell használatával is. Ez azt jelenti, hogy a tárolót, és minden ahhoz kapcsolódó biztonsági mentési adat véglegesen törlődik. 
 
-> [!Warning]
-> Recovery Services-tároló törlése a PowerShell segítségével, győződjön meg arról, hogy szeretné-e a tárolóban lévő összes biztonsági mentési adatok véglegesen törli.
->
-
-Recovery Services-tároló törlése:
+Egy tároló által kényszerített törlése:
 
 1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsot, és kövesse a képernyőn megjelenő utasításokat.
 
@@ -90,28 +81,18 @@ Recovery Services-tároló törlése:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. Ha a tároló nem üres, a hibaüzenetet kapja "Tároló nem törölhető, mert nincsenek a tár meglévő erőforrásokat". Egy tároló tárolójában eltávolításához tegye a következőket:
+9. Ha a tároló nem üres, a hibaüzenetet kapja "Tároló nem törölhető, mert nincsenek a tár meglévő erőforrásokat". Tartalmazott belül egy tároló eltávolításához tegye a következőket:
 
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. Jelentkezzen be az előfizetés az Azure Portalon, és győződjön meg arról, hogy a tároló törlődik.
+10. Az Azure Portalon győződjön meg arról, hogy a tároló törlődik.
 
 
-## <a name="remove-vault-dependencies-and-delete-vault"></a>Távolítsa el a tároló függőségeket, és a tároló törlése
+## <a name="remove-vault-items-and-delete-the-vault"></a>Tároló elemek eltávolítása és a tároló törlése
 
-A tároló függőségeket, a következő manuális eltávolítása:
-
-- Az a **biztonsági másolati elemek** menü, remove-függőségek:
-    - Az Azure Storage (Azure Files) biztonsági mentések
-    - Az SQL Server Azure virtuális gép biztonsági mentéseinek
-    - Azure-beli virtuális gépek biztonsági mentések
-- Az a **biztonsági mentési infrastruktúra** menü, remove-függőségek:
-    - A Microsoft Azure Backup Server (MABS) biztonsági mentések
-    - A System Center DPM biztonsági mentések
-
-![Válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
+Ezen eljárás néhány példa a biztonsági másolatok és az infrastruktúra-kiszolgálók eltávolításához adja meg. Után minden a tároló törlődik, törölheti azt.
 
 ### <a name="remove-backup-items"></a>Biztonsági mentési elemek eltávolítása
 
@@ -200,12 +181,13 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
 
 
 
+
+
+
 ### <a name="delete-the-vault-after-removing-dependencies"></a>Függőségek eltávolítását követően a tároló törlése
 
 1. Ha az összes függősége el lettek távolítva, görgessen a a **Essentials** ablaktábláján a tároló menüjében.
-
-    - Nem lehetnek bármely **biztonsági mentési elemek**, **biztonsági mentés a felügyeleti kiszolgálók**, vagy **replikált elemek** szerepel.
-    - Ha az elemek továbbra is megjelennek a tárolóban, távolítsa el őket.
+2. Győződjön meg arról, hogy nincs minden **biztonsági mentési elemek**, **biztonsági mentés a felügyeleti kiszolgálók**, vagy **replikált elemek** szerepel. Ha az elemek továbbra is megjelennek a tárolóban, távolítsa el őket.
 
 2. Ha nincs több elem a tárolóban, a tároló irányítópultján kattintson **törlése**.
 

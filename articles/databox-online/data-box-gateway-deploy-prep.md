@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 78008357e3ea8fbfe707a7dbead19e3fce83b578
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403697"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620087"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Oktatóanyag: Az Azure Data Box átjáró telepítésének előkészítése
 
@@ -101,8 +101,11 @@ Hozzon létre egy Data Box-átjáró-erőforrást, az alábbi lépéseket az Azu
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/resource-group-overview.md) kapcsolatban.     |
 
 5. Adja meg vagy válassza ki az alábbi **példány részletei**.
-   | Név |} Az erőforrás azonosító rövid nevet.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |   
-    | Régió |} Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el az erőforrás üzembe helyezéséhez. Az Azure Government, government-régiók szerepel a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) érhetők el. <br> Válassza a földrajzi régióban, ahol szeretné az eszköz üzembe helyezése legközelebb eső helyet. |}
+
+    |Beállítás  |Érték  |
+    |---------|---------|
+    |Name (Név)   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |   
+    |Régió     |Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el az erőforrás üzembe helyezéséhez. Az Azure Government, government-régiók szerepel a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) érhetők el. <br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
     
     ![Data Box Gateway-erőforrás létrehozása](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

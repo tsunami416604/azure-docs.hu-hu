@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 8fb60f36bbc7c8886c1f465177a11224a1c90659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541247"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621923"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon adatmodell-referencia
 Ez a témakör ismerteti az Azure API Management a fejlesztői portál sablonjainak az adatmodellek a használt gyakori elemek entitás, és írja be semmilyen felelősséget.  
@@ -162,7 +162,7 @@ A fejlesztői portál nem érhető el a használat rétegében.
 ##  <a name="Header"></a> Fejléc  
  Ez a szakasz ismerteti a `parameter` ábrázolását.  
   
-|Tulajdonság|Leírás|Typo|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|-----------------|----------|  
 |`name`|sztring|A paraméter neve.|  
 |`description`|sztring|Paraméter leírása.|  
@@ -239,7 +239,7 @@ A fejlesztői portál nem érhető el a használat rétegében.
 ##  <a name="Parameter"></a> A paraméter  
  Ez a szakasz ismerteti a `parameter` ábrázolását.  
   
-|Tulajdonság|Leírás|Typo|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|-----------------|----------|  
 |`name`|sztring|A paraméter neve.|  
 |`description`|sztring|Paraméter leírása.|  

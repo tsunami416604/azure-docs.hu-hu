@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-identitáskezelést |} A Microsoft Docs
-description: Az Azure AD-identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében.
+title: Identitáskezelést – Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directory identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167581"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579716"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure ad-ben identitáskezelést?
 
@@ -77,7 +77,7 @@ Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, mi
 - [Mi az a hozzáférési felülvizsgálat?](access-reviews-overview.md)
 - [Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
 - [Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
-- [A directory-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [Az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Használati feltételek
 

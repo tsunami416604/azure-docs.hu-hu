@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 1a8bfbe12156156944d4527ebb11fa6f1a1de544
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977235"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579750"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automatikus méretezés a virtuálisgép-méretezési csoportok
 
@@ -43,16 +43,52 @@ Beállíthat is vertikális skálázás aktivált alapján alapján metrikariasz
 4. A virtuálisgép-méretezési csoportot egy webhook értesítést a riasztás hozzáadásához.
 
 > [!NOTE]
-> Vertikális automatikus méretezés csak akkor kerül sor Virtuálisgép-méretek egyes tartományokon belül. Hasonlítsa össze az egyes méretének előírásait akár több, a másikra, mielőtt (Ha nagyobb nem mindig látható, nagyobb méretű virtuális gép mérete). Választhat, hogy skálázni a következő párok méretek között:
+> Az első virtuális gépen, az méretezhetők, méretek mérete miatt előfordulhat, hogy korlátozva lesz, mert a rendelkezésre állási, a további méretek a fürt jelenlegi virtuális gép üzemel. A cikk ezt használja a közzétett automation-runbookok hozunk ebben az esetben a gondoskodik, és csak méretezésre a virtuális gép mérete párok alatt. Ez azt jelenti, hogy Standard_D1v2 virtuális gép fog hirtelen nem lehet Standard_G5 skálázható vertikálisan leskálázni Basic_A0 való. Korlátozott virtuálisgép-méretek felfelé és lefelé méretezését is nem támogatott. Választhat, hogy skálázni a következő párok méretek között:
 > 
 > | Pár skálázás Virtuálisgép-méretek |  |
 > | --- | --- |
-> | Standard_A0 |Standard_A11 |
-> | Standard_D1 |Standard_D14 |
-> | Standard_DS1 |Standard_DS14 |
-> | Standard_D1v2 |Standard_D15v2 |
+> | Basic_A0 |Basic_A4 |
+> | Standard_A0 |Standard_A4 |
+> | Standard_A5 |Standard_A7 |
+> | Standard_A8 |Standard_A9 |
+> | Standard_A10 |Standard_A11 |
+> | Standard_A1_v2 |Standard_A8_v2 |
+> | Standard_A2m_v2 |Standard_A8m_v2  |
+> | Standard_B1s |Standard_B2s |
+> | Standard_B1ms |Standard_B8ms |
+> | Standard_D1 |Standard_D4 |
+> | Standard_D11 |Standard_D14 |
+> | Standard_DS1 |Standard_DS4 |
+> | Standard_DS11 |Standard_DS14 |
+> | Standard_D1_v2 |Standard_D5_v2 |
+> | Standard_D11_v2 |Standard_D14_v2 |
+> | Standard_DS1_v2 |Standard_DS5_v2 |
+> | Standard_DS11_v2 |Standard_DS14_v2 |
+> | Standard_D2_v3 |Standard_D64_v3 |
+> | Standard_D2s_v3 |Standard_D64s_v3 |
+> | Standard_DC2s |Standard_DC4s |
+> | Standard_E2_v3 |Standard_E64_v3 |
+> | Standard_E2s_v3 |Standard_E64s_v3 |
+> | Standard_F1 |Standard_F16 |
+> | Standard_F1s |Standard_F16s |
+> | Standard_F2sv2 |Standard_F72sv2 |
 > | Standard_G1 |Standard G5 |
 > | Standard_GS1 |Például a Standard_GS5 |
+> | Standard_H8 |Standard_H16 |
+> | Standard_H8m |Standard_H16m |
+> | Standard_L4s |Standard_L32s |
+> | Standard_L8s_v2 |Standard_L80s_v2 |
+> | Standard m8ms  |Standard m 128 MS |
+> | Standard m32ls  |Standard m64ls |
+> | Standard m64s  |Standard_M128s |
+> | Standard_M64  |Standard_M128 |
+> | Standard_M64m  |Standard_M128m |
+> | Standard_NC6 |Standard_NC24 |
+> | Standard_NC6s_v2 |Standard_NC24s_v2 |
+> | Standard_NC6s_v3 |Standard_NC24s_v3 |
+> | Standard_ND6s |Standard_ND24s |
+> | Standard_NV6 |Standard_NV24 |
+> | Standard_NV6s_v2 |Standard_NV24s_v2 |
 > 
 > 
 
@@ -64,7 +100,7 @@ Először is szüksége, hozzon létre egy Azure Automation-fiók, amely futtatj
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation függőleges méretezés runbookok importálása az előfizetés
 A runbookok szükséges a virtuális gép méretezési csoportjai vertikális skálázása az Azure Automation forgatókönyv-katalógusában a már közzétett. Importálja őket az előfizetés kövesse a cikkben ismertetett lépések:
 
-* [Azure Automation forgatókönyv- és katalógusok](../automation/automation-runbook-gallery.md)
+* [Runbook- és modulkatalógusok az Azure Automationhöz](../automation/automation-runbook-gallery.md)
 
 Válassza a Tallózás a katalógusban a beállítás a Runbookok menüjében:
 

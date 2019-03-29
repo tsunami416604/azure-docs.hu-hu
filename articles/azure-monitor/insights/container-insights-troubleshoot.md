@@ -11,18 +11,32 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: abf833cc054bfac0581506f75259e357f0ab1b38
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985750"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577041"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Hibaelhárítás az Azure Monitor for containers szolgáltatásban
 
 Az Azure Kubernetes Service (AKS)-fürt figyelése az Azure Monitor szolgáltatással tárolók konfigurálásakor előfordulhat, hogy hibába ütközik megakadályozza az adatok gyűjtése vagy állapotát. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
+
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Engedélyezési hiba történt a bevezetési vagy frissítési művelet közben
+Engedélyezése az Azure Monitor-tárolókhoz, és támogatja a mérőszámok gyűjtését. a fürt frissítése, akkor előfordulhat, hogy megjelenik egy hibaüzenet hasonlítanak a következő - *az ügyfél < felhasználó identitása > "objektum azonosítója: < objectId > felhasználó" nem rendelkezik hatókörben 'Microsoft.Authorization/roleAssignments/write' művelet végrehajtására*
+
+A bevezetési vagy a frissítési folyamat során biztosítása a **figyelési metrikákat közzétevő** szerepkör-hozzárendelés fürterőforrás próbálta meg végrehajtani. A folyamatot kezdeményező felhasználó számára az Azure Monitor tárolók vagy a frissítés támogatja a mérőszámok gyűjtését hozzáféréssel kell rendelkeznie a **Microsoft.Authorization/roleAssignments/write** engedélyt az AKS-fürtöt erőforrás-hatókör. Csak a tagjai a **tulajdonosa** és **felhasználói hozzáférés rendszergazdája** beépített szerepkörök, amelyekhez hozzáférést ezt az engedélyt. Ha a biztonsági házirendek részletes szintű engedélyek hozzárendelése a, javasoljuk, hogy megtekinti [egyéni szerepkörök](../../role-based-access-control/custom-roles.md) és rendelje hozzá a felhasználókat, akiknek nincs szükségük. 
+
+Manuálisan is biztosíthat a ezt a szerepkört az Azure Portalon a következő lépések végrehajtásával:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+2. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Kubernetes**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Azure Kubernetes**.
+3. Kubernetes-fürtök listájában válassza ki azt a listából.
+2. Kattintson a bal oldali menüből **hozzáférés-vezérlés (IAM)**.
+3. Válassza ki **+ Hozzáadás** szerepkör-hozzárendelés hozzáadása, és válassza ki a **figyelési metrikákat közzétevő** szerepkör és a **válassza ki** mezőbe írja be **AKS** , a szűrő csak a fürtöket az eredményeket engedélyezéseihez definiálva az előfizetésben. Válassza ki azt a listából a létrehozott fürtre jellemző.
+4. Válassza ki **mentése** befejeződik, a szerepkör hozzárendelése. 
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Az Azure Monitor for containers szolgáltatásban engedélyezve van, de semmilyen információt nem küld
 Ha-tárolókhoz az Azure Monitor sikeresen engedélyezve és konfigurálva, de állapotinformációi nem jelennek, vagy nem jár eredménnyel log lekérdezésből, a probléma diagnosztizálása az alábbi lépéseket: 

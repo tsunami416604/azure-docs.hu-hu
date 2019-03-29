@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762840"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621408"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
@@ -1809,7 +1809,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőfor
     ...
 ```
 
-Ha szeretne létrehozni egy új egyedi nevet minden alkalommal, amikor a sablon üzembe helyezése, és célja, hogy az erőforrás frissítése nem, akkor használhatja a [utcNow](#utcnow) uniqueString függvényt. Ez a megközelítés egy tesztkörnyezetben használhatja. Egy vonatkozó példáért lásd: [utcNow](#utcNow).
+Ha szeretne létrehozni egy új egyedi nevet minden alkalommal, amikor a sablon üzembe helyezése, és célja, hogy az erőforrás frissítése nem, akkor használhatja a [utcNow](#utcnow) uniqueString függvényt. Ez a megközelítés egy tesztkörnyezetben használhatja. Egy vonatkozó példáért lásd: [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Vrácená hodnota
 

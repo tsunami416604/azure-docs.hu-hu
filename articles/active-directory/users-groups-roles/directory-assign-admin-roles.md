@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 03/27/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b62b710a7217792276392e8815013848ef607733
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 48142961e4b6714090441b24e4bd6ca07afaf598
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522366"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622246"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -1127,13 +1127,14 @@ Graph-displayName | Az Azure portal megjelenített neve | directoryRoleTemplateI
 ----------------- | ------------------------- | -------------------------
 Alkalmazás-rendszergazda | Alkalmazás-rendszergazda | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Alkalmazásfejlesztő | Alkalmazásfejlesztő | CF1C38E5-3621-4004-A7CB-879624DCED7C
+Hitelesítési rendszergazda | Hitelesítési rendszergazda | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Számlázási adminisztrátor | Számlázási rendszergazda | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Asztali elemzési rendszergazda | Asztali elemzési rendszergazda | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Felhőalkalmazás-rendszergazda | Felhőalkalmazás-rendszergazda | 158c047a-c907-4556-b7ef-446551a6b5f7
 Felhőbeli eszközrendszergazda | Felhőbeli eszközrendszergazda | 7698a772-787b-4ac8-901f-60d6b08affd2
 Céges rendszergazda | Globális rendszergazda | 62e90394-69f5-4237-9190-012177145e10
 Szabályozási ügyintéző | Szabályozási ügyintéző | 17315797-102d-40b4-93e0-432062caca18
-Feltételes hozzáférésű rendszergazda | Feltételes hozzáférésű rendszergazda | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
+Feltételes hozzáférésű rendszergazda | Feltételes hozzáférési rendszergazda | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM-szolgáltatásadminisztrátor | Dynamics 365-rendszergazda | 44367163-eba1-44c3-98af-f5787879f96a
 Ügyfélszéf hozzáférés-jóváhagyója | Ügyfél Ügyfélszéf hozzáférés-jóváhagyója | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Eszközadminisztrátorok | Eszközadminisztrátorok | 9f06204d-73c1-4d4c-880a-6edb90606fd8
@@ -1154,6 +1155,7 @@ Lync-szolgáltatások rendszergazdája | Skype Vállalati verzió-rendszergazda 
 1. szintű partnertámogatás | Partnerek 1. rétegbeli támogatása | 4ba39ca4-527c-499a-b93d-d9b492c50246
 2. szintű partnertámogatás | Partnerek 2. rétegbeli támogatása | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Power BI-szolgáltatásadminisztrátor | Power BI-adminisztrátor | a9ea8996-122f-4c74-9520-8edcd192826c
+A kiemelt hitelesítést rendszergazda | Kiemelt jogosultságú hitelesítési rendszergazda | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Kiemelt szerepkörű rendszergazda | Kiemelt szerepkörű rendszergazda | e8611ab8-c189-46e8-94e1-60213ab1f814
 Jelentésolvasó | Jelentésolvasó | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Biztonsági rendszergazda | Biztonsági rendszergazda | 194ae4cb-b126-40b2-bd5b-6091b380977d

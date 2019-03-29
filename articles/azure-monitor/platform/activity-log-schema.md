@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868544"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622212"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
 A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md) van megadva a cikk végén található.
@@ -358,6 +358,7 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 | correlationId | GUID, amely a karakterlánc-formátum. |
 | leírás |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
+| category | Mindig "értesítés" |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztató" |
 | resourceGroupName |Az érintett erőforrás metrikariasztás esetén az erőforráscsoport neve. Más riasztástípusok, amely tartalmazza a riasztás magát az erőforráscsoport nevét. |
 | resourceProviderName |Metrikariasztás esetén az érintett erőforrás az erőforrás-szolgáltató neve. Más riasztástípusok célszerű a riasztás magát az erőforrás-szolgáltató nevét. |
@@ -556,6 +557,7 @@ Ez a kategória tartalmazza azt a rekordot, bármely Azure Security Center álta
 | leírás |A biztonsági események statikus szöveges leírása. |
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
 | EventName |A biztonsági események rövid neve. |
+| category | Mindig a "Security" |
 | id |A biztonsági események egyedi erőforrás-azonosítója. |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" vagy "Tájékoztató" |
 | resourceGroupName |Az erőforrás az erőforráscsoport neve. |

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842448"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620155"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -44,6 +44,8 @@ A Microsoft felhőbeli piactér való részvétel az a Microsoft Partner Network
 A regisztrálás után jegyezze fel a Microsoft Partner Network-Azonosítóját a szervezet számára. Szüksége lesz 3. lépés során a Marketplace-en regisztrációs űrlap elküldésekor.
 *   További információ a előnyeit a [Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Ha a szervezet rendelkezik egy meglévő tagság, akkor a szervezet a regisztráció során akkor csatlakozik. Ha [Partnerközpont](https://partnercenter.microsoft.com/partner/home), fogja látni az azonosító a Partnerközpont-fiókkal. Ha [Partner tagsági Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), fogja látni, a tagsági Partnerközpont-fiókkal. 
+
+Nyisson meg egy a jegy Microsoft [támogatási partnerkapcsolat](https://partner.microsoft.com/support) az MPN-regisztrációs problémáival kapcsolatban.
 
 ---
 

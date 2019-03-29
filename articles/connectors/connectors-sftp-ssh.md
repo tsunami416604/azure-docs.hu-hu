@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886663"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575096"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Figyelheti, létrehozása és kezelése az SFTP-fájlok az SSH és az Azure Logic Apps használatával
 
@@ -27,10 +27,16 @@ Automatizálhatja a feladatokat, amelyek figyelése, létrehozása, küldése é
 * Fájl tartalom és metaadatok beolvasása.
 * Mappák archívumok kibontása.
 
-Képest a [SFTP-összekötővel](../connectors/connectors-create-api-sftp.md), az SFTP-SSH-összekötő olvashatja vagy írhatja a fájlok akár *1 GB-os* építőkockákat, mivel kezeli az 50 MB-ot az adatok mérete. 1 GB-nál nagyobb méretű fájlokhoz, műveleteket használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) a cikk későbbi részében.
-
 Eseményindítókat, amelyek az SFTP-kiszolgálón lévő események figyelésére és egyéb műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveleteket, amelyeket az SFTP-kiszolgáló a különböző feladatok elvégzésére is használhatja. Egyéb műveletek a logikai alkalmazás kimenetét a SFTP-műveletek használata is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailes riasztásokhoz ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával.
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Korlátok
+
+* SFTP-SSH műveletek olvashatja vagy írhatja a fájlokat, amelyek *1 GB-os vagy kisebb* , mivel kezeli az adatok *50 MB-os darab*, nem 1 GB-os darab.
+
+* A fájlok *1 GB-nál nagyobb*, műveleteket használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Az SFTP-SSH-eseményindítók jelenleg nem támogatja a darabolás.
+
+További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](#comparison) újabb, a következő szakaszban.
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, ahol az SFTP-SSH-összekötő rendelkezik-e ezek a képességek közötti fő különbségeket:
 
-* Használja a <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> könyvtár, amely egy nyílt forráskódú Secure Shell (SSH) kódtár, amely támogatja a .NET. 
+* Használja a <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> könyvtár, amely egy nyílt forráskódú Secure Shell (SSH) kódtár, amely támogatja a .NET.
 
   > [!NOTE]
   >
   > Az SFTP-SSH összekötő támogatja *csak* a titkos kulcsok, formátumok, algoritmusokat és ujjlenyomatok:
-  > 
+  >
   > * **Titkos kulcs formátumok**: RSA (egyeztetéséhez a Rivest-Shamir Adleman) és a DSA (Digital Signature Algorithm) kulcsot az OpenSSH-és a ssh.com
   > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
   > * **Ujjlenyomattal történő**: MD5
 
-* Olvas vagy ír a fájlok akár *1 GB-os* méretű képest az SFTP-összekötővel, de kezeli a darabokban 50 MB-ot, nem az 1 GB-os darab adatokat. 1 GB-nál nagyobb méretű fájlokhoz, műveletek is használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Eseményindítók jelenleg nem támogatja a darabolás.
+* Műveletek olvashatja vagy írhatja fájlok *legfeljebb 1 GB-os* az SFTP-összekötővel, de leíró adatok darabokban 50 MB-ot, nem 1 GB-os darab képest. 1 GB-nál nagyobb méretű fájlokhoz, műveletek is használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Az SFTP-SSH-eseményindítók jelenleg nem támogatja a darabolás.
 
 * Itt a **mappa létrehozása** művelet, amely egy mappát hoz létre az SFTP-kiszolgáló a megadott elérési úton.
 
 * Itt a **fájl átnevezése tevékenység** művelet, amely az SFTP-kiszolgáló egy fájlt nevez át.
 
-* A kapcsolat az SFTP-kiszolgáló gyorsítótárazza *a legfeljebb 1 óra*, amely javítja a teljesítményt, és csökkenti a kiszolgálóhoz való kapcsolódás kísérletek számát. Ez az időtartam beállítása a gyorsítótárazási viselkedésének, szerkessze a <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> tulajdonság frissítése az SSH-konfigurációja az SFTP-kiszolgálón. 
+* A kapcsolat az SFTP-kiszolgáló gyorsítótárazza *a legfeljebb 1 óra*, amely javítja a teljesítményt, és csökkenti a kiszolgálóhoz való kapcsolódás kísérletek számát. Ez az időtartam beállítása a gyorsítótárazási viselkedésének, szerkessze a <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank"> **ClientAliveInterval** </a> tulajdonság frissítése az SSH-konfigurációja az SFTP-kiszolgálón.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,5 +1,5 @@
 ---
-title: A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése |} A Microsoft Docs
+title: A PIM - Azure Active Directory Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése |} A Microsoft Docs
 description: Megtekintheti a tevékenységeket, és a naplózási előzmények az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afbbad9b956d41252ff9121c99a91669c71aaab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6fb97c416d0e34635b8aa4c19fc6b94889f566c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211733"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578135"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó tevékenység és a naplózási előzmények megtekintése
 
@@ -113,4 +113,4 @@ Saját naplózás lehetővé teszi a személyes szerepkör tevékenység megteki
 
 - [Rendelje hozzá a PIM az Azure-erőforrásszerepkörök](pim-resource-roles-assign-roles.md)
 - [Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek](pim-resource-roles-approval-workflow.md)
-- [A PIM az Azure AD-címtárbeli szerepkörök naplózási előzmények megtekintése](pim-how-to-use-audit-log.md)
+- [Az Azure AD-szerepköröket a PIM naplózási előzmények megtekintése](pim-how-to-use-audit-log.md)

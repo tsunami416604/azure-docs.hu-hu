@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD hozzáférési felülvizsgálatok segítségével a felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése |} A Microsoft Docs
+title: A hozzáférési felülvizsgálatok segítségével kezelheti a felhasználók ki vannak zárva a feltételes hozzáférési házirendek – Azure Active Directory |} A Microsoft Docs
 description: Ismerje meg, hogyan használhatja az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal a feltételes hozzáférési szabályzatok kizárt felhasználók kezelése
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892718"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577133"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Használja az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
-Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. Ez a cikk azt ismerteti, néhány példa, amelyben kizárások szükség lehet, és hogyan, az informatikai rendszergazdaként kezelheti ezt a feladatot, felügyeletét, házirend kivételek elkerülése érdekében, és auditorok biztosítanak arról, hogy az ilyen kivételek lektorálhatók rendszeresen használja az Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokkal.
+Az ideális világában a minden felhasználó követnie a hozzáférési szabályzatok a munkahelyi erőforrásokhoz való hozzáférés biztonságossá tétele érdekében. Azonban néha előfordulhatnak olyan üzleti esetek, amelyek kivételek kérik. Ez a cikk azt ismerteti, néhány példa, amelyben kizárások szükség lehet, és hogyan, az informatikai rendszergazdaként kezelheti ezt a feladatot, felügyeletét, házirend kivételek elkerülése érdekében, és auditorok biztosítanak arról, hogy az ilyen kivételek lektorálhatók rendszeresen használja az Azure Az Active Directory (Azure AD) hozzáférési felülvizsgálatokkal.
 
 > [!NOTE]
 > Egy érvényes Azure AD Premium P2, Enterprise Mobility + Security E5 díjköteles vagy próbaidőszaki licence van szükség az Azure AD hozzáférési felülvizsgálatokkal. További információk: [Azure Active Directory editions](../fundamentals/active-directory-whatis.md) (Azure Active Directory-kiadások).
@@ -44,7 +44,7 @@ Egy másik példa lehet az, hogy a feltételes hozzáférési szabályzatot, ame
 
 ## <a name="why-are-exclusions-challenging"></a>Miért vannak kivételek kihívást?
 
-Az Azure AD-ben gazdagépcsoportjaira egy feltételes hozzáférési szabályzatot a felhasználók egy csoportja. Akkor szintén kizárhatja néhány felhasználót címtárbeli szerepkörök, egyes felhasználókat vagy vendégek a felhasználók kiválasztásával. Fontos megjegyezni, hogy ezeket a kivételeket úgy vannak konfigurálva, ha a házirend céljának kifejezettebb nem kényszeríthető azoknak a felhasználóknak. Ha ezeket a kivételeket úgy lettek konfigurálva, listaként vagy egyéni felhasználók vagy az örökölt helyszíni biztonsági csoportot, akkor azt korlátozza, hogy látható-e a kizárási lista (a felhasználók lehet, hogy nem tudja a létezésük) és a rendszergazda szabályozhatja azt (a felhasználók úgy csatlakozhatnak a biztonsági csoport a szabályzat portálban kell). Ezenkívül, amelyek egy időben a kizárás teljes felhasználók nem szükséges vagy, jogosult legyen.
+Az Azure AD-ben gazdagépcsoportjaira egy feltételes hozzáférési szabályzatot a felhasználók egy csoportja. Akkor szintén kizárhatja néhány felhasználót az Azure AD szerepköröket, egyes felhasználókat vagy vendégek a felhasználók kiválasztásával. Fontos megjegyezni, hogy ezeket a kivételeket úgy vannak konfigurálva, ha a házirend céljának kifejezettebb nem kényszeríthető azoknak a felhasználóknak. Ha ezeket a kivételeket úgy lettek konfigurálva, listaként vagy egyéni felhasználók vagy az örökölt helyszíni biztonsági csoportot, akkor azt korlátozza, hogy látható-e a kizárási lista (a felhasználók lehet, hogy nem tudja a létezésük) és a rendszergazda szabályozhatja azt (a felhasználók úgy csatlakozhatnak a biztonsági csoport a szabályzat portálban kell). Ezenkívül, amelyek egy időben a kizárás teljes felhasználók nem szükséges vagy, jogosult legyen.
 
 Kizárás elején van egy rövid lista a felhasználók, akik a szabályzat megkerülése. Az idő múlásával egyre több felhasználók ki vannak zárva, és a lista nő. Bizonyos helyzetekben szükség van, tekintse át a listát, és győződjön meg arról, hogy felhasználók továbbra is ki kell zárni. Technikai szempontból a lista kezelése lehet viszonylag egyszerű, de számára lehetővé teszi az üzleti döntéseket hozhat, és hogyan tegye meg róla, hogy az összes naplózható?
 

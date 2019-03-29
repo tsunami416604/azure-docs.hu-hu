@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117200"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578152"
 ---
 # <a name="runbook-input-parameters"></a>Runbook bemeneti paraméterei
 
@@ -30,10 +30,10 @@ Az Azure Automation PowerShell és a PowerShell-munkafolyamati runbookok haszná
 
 | **Tulajdonság** | **Leírás** |
 |:--- |:--- |
-| Typo |Kötelező. A paraméter értéke a várt adattípus. Minden olyan .NET-típus érvénytelen. |
-| Name (Név) |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
-| Kötelező |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha azonosítással  **\$igaz**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha azonosítással  **\$hamis**, majd egy értéket nem kötelező. |
-| Alapértelmezett érték |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Egy alapértelmezett értéket állíthat be minden paramétert, és is automatikusan végrehajtja a paraméter nem kötelező, függetlenül a kötelező beállítás. |
+| `Type` |Kötelező. A paraméter értéke a várt adattípus. Minden olyan .NET-típus érvénytelen. |
+| `Name` |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
+| `Mandatory` |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha azonosítással  **\$igaz**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha azonosítással  **\$hamis**, majd egy értéket nem kötelező. |
+| `Default value` |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Egy alapértelmezett értéket állíthat be minden paramétert, és is automatikusan végrehajtja a paraméter nem kötelező, függetlenül a kötelező beállítás. |
 
 Windows PowerShell támogatja a további attribútumok bemeneti paramétereket, mint azok szerepel itt, például érvényesítési, aliasok, és paraméter állítja be. Azure Automation jelenleg csak az előző bemeneti paramétereket támogatja.
 
@@ -94,11 +94,11 @@ Használhatja a [ **Write-Output** ](/powershell/module/microsoft.powershell.uti
 
    | **Tulajdonság** | **Leírás** |
    |:--- |:--- |
-   | Name (Név) |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
-   | Leírás |Választható. Bemeneti paraméter céljáról szóló leírást. |
-   | Typo |Választható. Az adattípus, amely a paraméter értéke a várt. Támogatott paramétertípusok a következők **karakterlánc**, **Int32**, **Int64**, **decimális**, **logikai**,  **Dátum és idő**, és **objektum**. Ha olyan adattípust nincs bejelölve, a rendszer alapértelmezés szerint **karakterlánc**. |
-   | Kötelező |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha úgy dönt, **Igen**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha úgy dönt, **nincs**, majd egy érték esetén nem szükséges a runbook elindult, és a egy alapértelmezett érték is beállítható. |
-   | Alapértelmezett érték |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Alapértelmezett érték beállítható, amely nem kötelező paraméter. Alapértelmezett érték beállításához válassza **egyéni**. Ezt az értéket használja, ha egy másik érték van megadva, a forgatókönyv elindulásakor. Válasszon **nincs** Ha nem szeretne minden olyan alapértelmezett értéket. |
+   | `Name` |Kötelező. A paraméter neve. Ez kell lenniük a runbookon belül és csak betűket, számokat, vagy aláhúzás karaktereket. Egy betűvel kell kezdődnie. |
+   | `Description` |Választható. Bemeneti paraméter céljáról szóló leírást. |
+   | `Type` |Választható. Az adattípus, amely a paraméter értéke a várt. Támogatott paramétertípusok a következők **karakterlánc**, **Int32**, **Int64**, **decimális**, **logikai**,  **Dátum és idő**, és **objektum**. Ha olyan adattípust nincs bejelölve, a rendszer alapértelmezés szerint **karakterlánc**. |
+   | `Mandatory` |Választható. Itt adhatja meg, hogy értéket kell adni a paraméter. Ha úgy dönt, **Igen**, majd egy értéket meg kell adni a forgatókönyv elindulásakor. Ha úgy dönt, **nincs**, majd egy érték esetén nem szükséges a runbook elindult, és a egy alapértelmezett érték is beállítható. |
+   | `Default Value` |Választható. Itt adható meg egy értéket, amely a paraméter akkor használatos, ha egy érték nem átadott, a forgatókönyv elindulásakor. Alapértelmezett érték beállítható, amely nem kötelező paraméter. Alapértelmezett érték beállításához válassza **egyéni**. Ezt az értéket használja, ha egy másik érték van megadva, a forgatókönyv elindulásakor. Válasszon **nincs** Ha nem szeretne minden olyan alapértelmezett értéket. |
 
     ![Új bemenet hozzáadása](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. Hozzon létre két paramétert a következő tulajdonságokkal által használt a **Get-AzureRmVm** tevékenység:

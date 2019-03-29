@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: a1ee95ad847d20159c79af8f080cc7878e114759
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444524"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578919"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
@@ -21,7 +21,7 @@ ms.locfileid: "58444524"
 Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti.
 
 > [!IMPORTANT]
-> Egy általános célú v1- vagy Blob storage-tárfiók frissítése az általános célú v2 végleges, és nem vonható vissza.
+> Egy általános célú v1- vagy Blob storage-fiók frissítése az általános célú v2 végleges, és nem vonható vissza.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Frissítse az Azure portal használatával
 

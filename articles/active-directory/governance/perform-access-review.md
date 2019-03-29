@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatok áttekintése |} A Microsoft Docs
+title: Tekintse át a hozzáférési csoportokat, vagy a hozzáférési felülvizsgálatok – Azure Active Directory-alkalmazások |} A Microsoft Docs
 description: Ismerje meg, hogyan tekintse át a csoport tagjai elérésére vagy alkalmazás-hozzáférés az Azure Active Directory hozzáférési felülvizsgálatok.
 services: active-directory
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 097d230e919e6d4b56e6c677364610bda6630f75
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728386"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579682"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Hozzáférés a csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatok áttekintése
+# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Tekintse át a hozzáférési csoportokhoz vagy alkalmazásokhoz az Azure AD hozzáférési felülvizsgálatokkal
 
-Az Azure Active Directory (Azure AD) egyszerűbbé teszi a hogyan vállalatok kezelése az Azure AD-csoportok és alkalmazások elérését, és más Microsoft Online Services-szolgáltatás neve az Azure AD hozzáférési felülvizsgálatok.
+Az Azure Active Directory (Azure AD) egyszerűbbé teszi a vállalatok csoportokhoz és alkalmazásokhoz való hozzáférés kezelése az Azure AD és más Microsoft Online Services szolgáltatás az Azure AD hozzáférési felülvizsgálatok.
 
 Ez a cikk bemutatja, hogyan kijelölt felülvizsgálót elvégzi a hozzáférési felülvizsgálat egy csoporthoz vagy alkalmazáshoz való hozzáféréssel rendelkező felhasználók tagjai.
 

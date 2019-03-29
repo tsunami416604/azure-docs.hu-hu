@@ -1,5 +1,5 @@
 ---
-title: Programok és vezérlők kezelése az Azure AD hozzáférési felülvizsgálatokkal |} A Microsoft Docs
+title: Programok és vezérlők a hozzáférési felülvizsgálatok – Azure Active Directory kezelése |} A Microsoft Docs
 description: Ismerje meg, hogyan hozhat létre minden egyes szabályozási, kockázatkezelési és megfelelőségi-kezdeményezéshez az további programokat a szervezet Azure Active Directory hozzáférési felülvizsgálatok másként vezérlőinek vizualizációkká.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3056976ada6c0a0287eec608dbad230e8dbb2625
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43c0f1c041bfed1b041a9926efd869d167c6f1e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895175"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577263"
 ---
-# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Programok és vezérlők kezelése az Azure AD hozzáférési felülvizsgálatok
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Kezelheti a programok és vezérlők az Azure ad hozzáférési felülvizsgálatokkal
 
 Az Azure Active Directory (Azure AD) csoport tagjai és alkalmazás-hozzáférés hozzáférési felülvizsgálatai tartalmazza. Ezekben a példákban a vezérlőelemek győződjön meg arról, ki férhet hozzá a szervezet csoporttagságot és az alkalmazások a felügyeletet. Szervezet ezek a vezérlők segítségével hatékonyan oldja meg a szabályozási, kockázatkezelési és megfelelőségi követelmények.
 

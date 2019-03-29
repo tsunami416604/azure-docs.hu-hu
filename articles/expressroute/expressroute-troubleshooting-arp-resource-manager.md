@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432141"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622076"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ Gondoskodjon arról, hogy a következő további végrehajtási előtt
 * Az IP-címtartományok a társviszony-létesítések (az Azure privát, Azure nyilvános és Microsoft) konfigurálásához használt. Tekintse át az ip-cím hozzárendelés szereplő példák a [ExpressRoute útválasztási követelményei lapon](expressroute-routing.md) végigvezetnek, hogyan az ügyféloldali és az ExpressRoute oldalán felületek ip-címek vannak leképezve. A társviszony-létesítés konfigurációját a információkat szerezhet a áttekintésével a [ExpressRoute-társviszony-létesítési konfiguráció lap](expressroute-howto-routing-arm.md).
 * A hálózatkezelésért felelős csapat adatait / adapterek MAC-címek a kapcsolatszolgáltató használja a rendszer ezen IP-címmel.
 * A legújabb PowerShell-modult az Azure-hoz (1,50 vagy újabb verzió) kell rendelkeznie.
+
+> [!NOTE]
+> Ha a szolgáltató által biztosított 3. rétegbeli és az ARP-táblák üres, a portál/kimenet az alábbi, a frissítés gombra a portál használatával kapcsolatcsoport beállításainak frissítése. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
+>
+>
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ARP-a táblák az ExpressRoute-kapcsolatcsoport
 A szakasz útmutatásai segítségével hogyan az ARP-táblák támaszkodunk a PowerShell használatával tekintheti meg. Ön vagy a kapcsolatszolgáltató rendelkezik konfigurálni kell a társviszony-létesítés előtt halad tovább. Minden egyes-kapcsolatcsoport két elérési útját (elsődleges és másodlagos) rendelkezik. ARP-táblázat minden útvonalhoz egymástól függetlenül megtekinthető.

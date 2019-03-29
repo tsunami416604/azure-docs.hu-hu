@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361098"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577322"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -46,11 +46,13 @@ A munkaterület tartja a számítási célokhoz, amely segítségével a modell 
 
 A munkaterület regisztrált modellek. Pontozó szkripteket és a egy regisztrált modell használatával hozzon létre egy rendszerképet. Telepítheti a lemezképet az Azure Container Instances Azure Kubernetes Service-ben vagy egy mező-programmable gate array (FPGA) REST-alapú HTTP-végpontként. A lemezképet az Azure IoT Edge-eszköz modulként is telepítheti.
 
-Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Ha megoszt egy munkaterületet, szabályozhatja a hozzáférést a következő szerepkörök hozzárendelésével a felhasználók számára:
+Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Ha megoszt egy munkaterületet, szabályozhatja a hozzáférést a következő szerepköröket rendelhet a felhasználók:
 
 * Tulajdonos
 * Közreműködő
 * Olvasó
+
+Ezen szerepkörökkel kapcsolatos további információkért lásd: a [osztálynak az Azure Machine Learning-munkaterület](how-to-assign-roles.md) cikk.
 
 Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a munkaterület által használt erőforrások:
 

@@ -10,25 +10,24 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f8692bac271c2b0a51fef358d2fc73d6cfc8fe97
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 08d168a688935328fb4716b849c70e828545765b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004393"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620070"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse adatkezelési partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk az adatok felügyeleti eszközöket és megoldásokat támogató Azure SQL Data Warehouse a Microsoft partnervállalatokban emeli ki.
 
 ## <a name="data-management-partners"></a>Adatkezelési partnerek
-| Partner | Leírás | Hivatkozások | Videók |
-| --- | --- | --- | --- |
-| ![Adattárház-coffing][1] |**Adattárház-coffing**<br>Nexus Chameleon, egy eszközt, a Tervező lekérdezése rendszerek számára kijelölt 10 éves coffing Adattárházak biztosít. Nexus egy SQL Data warehouse-hoz elérhető lekérdezési eszköz érhető el. Nexus használatával lekérdezheti a belső fejlesztésű, és a számítógépek és adatait felhőbeli több különböző platformon. Pont – kattintson-jelentés! |[Webhely][coffing_website]<br>[Kiadás][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![videó coffing](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
-| ![Inbrein][2] |**MicroERD**<br>Inbrein MicroERD biztosítja az eszközöket, amelyek a pontos adatmodell létrehozása, csökkenteni a redundáns adattárolás érdekében, növelheti a hatékonyságot, és figyelje meg az előírásoknak. A felhasználói felület használatával, amelyek célja a széles körű felhasználói élményt alapján, olyan modellező dolgozhatnak DB modellek könnyen és kényelmesen. Folyamatosan élvezheti MicroERD Rákérdezés támogatottá vagy frissítések új és továbbfejlesztett funkcióit. |[Webhely][inbrein_website]<br>[Adatlap][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![videó inbrein](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
-| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian összegyűjti, tárolja és kezeli a metaadatokat az adatkezelési kulcs problémás pontok megoldásához. Infolibrarian emellett metaadatok felügyeleti adatszabályozást és felügyeleti szoftvermegoldások eszköz kezelését, közzétételéhez kezébe a különböző eszközök és technológiák metaadataiból. |[Marketplace-en][infolibrarian_marketplace]<br>[Webhely][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![videó infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
-| ![Globális Redpoint][4] |**RedPoint Interaction**<br>RedPoint interakció lehetővé teszi egy folyamatos párbeszédpanelen ügyfelek érhet el minden kommunikációs csatornán keresztül, és pont touch. Könnyedén kezelheti a marketing-működési vezérlőelem egyetlen pontról omnichannel teljes életciklusa |[Marketplace-en][redpoint_it_marketplace]<br>[Webhely][redpoint_it_website]<br>[Kiadás][redpoint_press]<br>[Adatlap][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![videó redpoint dm](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
-| ![Globális Redpoint][4] |**RedPoint Data Management**<br>Adatkezelés RedPoint engedélyezése s marketingszakemberek adataikat cross-csatorna ügyfélkapcsolati során strukturált és strukturálatlan adatok kezelése a alkalmazni. Az Azure SQL Data Warehouse és RedPoint előnyeit kihasználva maximalizálható a strukturált és strukturálatlan adatokhoz, hogy a mai omni csatornán belüli ügyfelek végezhetnek szükség hyper személyre szabott, környezetfüggő interakciókat értékét. Fogd és vidd felület kialakítása, és könnyen adatok felügyeleti folyamatok végrehajtása teszi. |[Marketplace-en][redpoint_dm_marketplace]<br>[Webhely][redpoint_dm_website]<br>[Kiadás][redpoint_press]<br>[Adatlap][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![videó redpoint dm](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0) |
-| ![Egy Sentry][5] |**DW Sentry**<br>Az intelligens adatok mozgását irányítópult és az esemény naptár, a mindig tudja, pontosan mi negatív hatással van a számítási feladatok. Tervezték, hogy a lekérdezések és betölteni a biztonsági mentést, vagy állítsa vissza az adatokat a futó feladatokat, akkor soha nem kell foglalkoznia a legtöbbet hozhatja ki az Azure-erőforrások. |[Marketplace-en][sql_sentry_marketplace]<br>[Webhely][sql_sentry_website]<br>[Kiadás][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
+| Partner | Leírás | Webhely és a termék hivatkozása |
+| ------- | ----------- | -------------------- |
+| ![Adattárház-coffing][1] |**Adattárház-coffing**<br>Nexus Chameleon, egy eszközt, a Tervező lekérdezése rendszerek számára kijelölt 10 éves coffing Adattárházak biztosít. Nexus egy SQL Data warehouse-hoz elérhető lekérdezési eszköz érhető el. Nexus használatával lekérdezheti a belső fejlesztésű, és a számítógépek és adatait felhőbeli több különböző platformon. Pont – kattintson-jelentés! |[Termék oldalát][coffing_website]<br> |
+| ![Inbrein][2] |**Inbrein MicroERD**<br>Inbrein MicroERD biztosítja az eszközöket, amelyek a pontos adatmodell létrehozása, csökkenteni a redundáns adattárolás érdekében, növelheti a hatékonyságot, és figyelje meg az előírásoknak. A felhasználói felület használatával, amelyek célja a széles körű felhasználói élményt alapján, olyan modellező dolgozhatnak DB modellek könnyen és kényelmesen. Folyamatosan élvezheti MicroERD Rákérdezés támogatottá vagy frissítések új és továbbfejlesztett funkcióit. |[Termék oldalát][inbrein_website]<br> |
+| ![Infolibrarian][3] |**Infolibrarian (metaadat-felügyeleti kiszolgáló)**<br>InfoLibrarian összegyűjti, tárolja és kezeli a metaadatokat az adatkezelési kulcs problémás pontok megoldásához. Infolibrarian emellett metaadatok felügyeleti adatszabályozást és felügyeleti szoftvermegoldások eszköz kezelését, közzétételéhez kezébe a különböző eszközök és technológiák metaadataiból. |[Termék oldalát][infolibrarian_website]<br> [Az Azure Marketplace-en][infolibrarian_marketplace]<br> |
+| ![Globális Redpoint][4] |**RedPoint Data Management**<br>RedPoint adatkezelés lehetővé teszi a forgalmazók adataikat cross-csatorna ügyfélkapcsolati során strukturált és strukturálatlan adatok kezelése a alkalmazni. Az Azure SQL Data Warehouse és RedPoint előnyeit kihasználva maximalizálható a strukturált és strukturálatlan adatokhoz, hogy a mai omni csatornán belüli ügyfelek végezhetnek szükség hyper személyre szabott, környezetfüggő interakciókat értékét. Fogd és vidd felület kialakítása, és könnyen adatok felügyeleti folyamatok végrehajtása teszi. |[Termék oldalát][redpoint_dm_website]<br> [Az Azure Marketplace-en][redpoint_dm_marketplace]<br> |
+| ![Egy Sentry][5] |**A SentryOne (DW-figyelő)**<br>Az intelligens adatok mozgását irányítópult és az esemény naptár, a mindig tudja, pontosan mi negatív hatással van a számítási feladatok. Tervezték, hogy a lekérdezések és betölteni a biztonsági mentést, vagy állítsa vissza az adatokat a futó feladatokat, akkor soha nem kell foglalkoznia a legtöbbet hozhatja ki az Azure-erőforrások. |[Termék oldalát][sql_sentry_website]<br>[Az Azure Marketplace-en][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>További lépések
 Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelligencia partnerek] [ bi_partners] és [adatokat az integrációs partnerek][di_partners].
@@ -52,64 +51,12 @@ Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelli
 [coffing_website]:https://www.coffingdw.com/software/nexus/
 [inbrein_website]:http://microerd.com/
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
-[redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
 [redpoint_dm_website]:http://www.redpoint.net/products/data-management-solutions/
 [sql_sentry_website]:https://sentryone.com/platform/azure-sql-dw-performance-monitoring/
 
-<!--ebook Links-->
-
-<!--Datasheet Links-->
-
-<!--[coffing_datasheet]:-->
-
-[inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf
-
-<!--[infolibrarian_datasheet]:-->
-
-[redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf
-[redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf
-
-<!--[sql_sentry_datasheet]:-->
 
 <!--Marketplace Links -->
 
-<!--[coffing_marketplace]:https://azure.microsoft.com/marketplace/partners/nexus/nexus-chameleon-9/ -->
-
-<!--[inbrein_marketplace]:-->
-
 [infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/
-[redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/
 [redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ 
-[sql_sentry_marketplace]:https://www.sentryone.com/products/sentryone-platform/dw-sentry/azure-sql-data-warehouse-monitoring
-
-<!--Press links-->
-
-[coffing_press]:https://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
-
-<!--[inbrein_press]:-->
-
-<!--[infolibrarian_press]:-->
-
-[redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
-[sql_sentry_press]:https://www.sentryone.com/sentryone-v-11.2-offers-new-insights-and-powerful-automation
-
-
-<!--YouTube links-->
-
-[coffing_youtube]:https://www.youtube.com/channel/UC8o1zhc9tNp9ve6vDn34tkw
-[inbrein_youtube]:https://www.youtube.com/channel/UCHTYjFFaTpo6bPAtuxgdZig
-
-<!--[infolibrarian_youtube]:-->
-
-[redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal
-[sql_sentry_youtube]:https://www.youtube.com/user/SQLSentry
-
-<!--Twitter links-->
-
-[coffing_twitter]:https://twitter.com/CoffingDW
-[inbrein_twitter]:https://twitter.com/microerd
-[infolibrarian_twitter]:https://twitter.com/InfoLibCorp
-[redpoint_twitter]:https://twitter.com/RedPointGlobal
-[sql_sentry_twitter]:https://twitter.com/SQLSentry
-
-<!--Video links-->
+[sql_sentry_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/sentryone.sentryoneeval

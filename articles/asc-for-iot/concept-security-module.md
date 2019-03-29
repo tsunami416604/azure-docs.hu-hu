@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 63d21cc5027145ab87030bd2561bc5087298f16c
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d766b17c9d49792d2e8192a952e8e6e559a8acd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541842"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579376"
 ---
 # <a name="security-module"></a>Biztonsági modul
 
@@ -35,16 +35,18 @@ IoT-megoldások az Azure-ban fejlesztett ikereszközök Eszközkezelés és a fo
 
 Az IoT ASC kínál szolgáltatás teljesen integrálható a meglévő IoT device-kezelési platform, az, hogy az eszköz biztonsági állapotát kezelése lehetővé teszi az eszközök vezérlési meglévő képességeit használja gyártmány és. Integráció érhető el az IoT Hub végrehajtását ikereszköz mechanizmust.  
 
-További információ fogalma [eszköz](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) ikerállapotának az Azure IoT hubon. 
+További információ fogalma [ikereszközök](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) az Azure IoT Hub. 
 
 ## <a name="security-module-twins"></a>Biztonsági ikermodulokkal
 
-ASC IOT egy biztonsági ikermodul a szolgáltatás minden egyes eszközhöz fenntart. Biztonsági ikermodulja tárolja a megoldás megfelelő az eszköz biztonsági egyes adott eszközhöz tartozó összes információt. A kijelölt biztonsági ikermodul biztonságosabb kommunikációhoz és a frissítések és karbantartás kevesebb erőforrást igénylő engedélyezése biztonsági eszköztulajdonságok karbantartása.  
+ASC IOT egy biztonsági ikermodul a szolgáltatás minden egyes eszközhöz fenntart.
+Biztonsági ikermodulja tárolja a megoldás megfelelő az eszköz biztonsági egyes adott eszközhöz tartozó összes információt.
+A kijelölt biztonsági ikermodul biztonságosabb kommunikációhoz és a frissítések és karbantartás kevesebb erőforrást igénylő engedélyezése biztonsági eszköztulajdonságok karbantartása.  
 
-Lásd: [létrehozás biztonsági ikermodul](quickstart-create-security-twin.md) és [biztonsági ügynökök konfigurálása](concept-agent-configuration.md) megtudhatja, hogyan hozhat létre, testre szabhatja, és állítsa be az ikereszköz. Lásd: [ismertetése ikermodulokkal](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) további információ az IoT Hub ikermodulokkal fogalma. 
+Lásd: [létrehozás biztonsági ikermodul](quickstart-create-security-twin.md) és [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) megtudhatja, hogyan hozhat létre, testre szabhatja, és állítsa be az ikereszköz. Lásd: [ismertetése ikermodulokkal](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) további információ az IoT Hub ikermodulokkal fogalma. 
  
 
 ## <a name="see-also"></a>Lásd még
 - [ASC for IoT-előzetes verzió](overview.md)
-- [Biztonsági ügynökök telepítése](select-deploy-agent.md)
+- [Biztonsági ügynökök telepítése](how-to-deploy-agent.md)
 - [Biztonsági ügynök hitelesítési módszerek](concept-security-agent-authentication-methods.md)

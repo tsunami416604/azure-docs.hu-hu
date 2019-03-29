@@ -1,5 +1,5 @@
 ---
-title: A PIM - Azure használatának megkezdése |} A Microsoft Docs
+title: A PIM - Azure Active Directory használatának megkezdése |} A Microsoft Docs
 description: Ismerje meg, hogyan engedélyezheti és az Azure Portalon az Azure AD Privileged Identity Management (PIM) használatának első lépései.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 00a93b23b5967e8b6b881f5d1fe6adcd89b0f77b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546857"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576741"
 ---
 # <a name="start-using-pim"></a>Ismerkedés a PIM-mel
 
@@ -38,7 +38,7 @@ További információkért lásd: [Licenckövetelményekért a PIM használatát
 
 ## <a name="first-person-to-use-pim"></a>Első, aki a PIM használata
 
-Ha Ön az első, aki a címtárban a PIM használatát tervezi, akkor automatikusan megkapja a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörökhöz a címtárban. Csak a kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD-címtárra vonatkozó szerepkör-hozzárendeléseit. Ezenkívül, dönthet úgy, hogy futtassa a [biztonsági varázsló](pim-security-wizard.md) végigvezeti az első felderítési és hozzárendelési élményen.
+Ha Ön az első, aki a címtárban a PIM használatát tervezi, akkor automatikusan megkapja a [biztonsági rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) és [kiemelt szerepkörű rendszergazda](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) szerepkörökhöz a címtárban. Csak a kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD szerepkör-hozzárendeléseit. Ezenkívül, dönthet úgy, hogy futtassa a [biztonsági varázsló](pim-security-wizard.md) végigvezeti az első felderítési és hozzárendelési élményen.
 
 ## <a name="enable-pim"></a>PIM engedélyezése
 
@@ -108,7 +108,7 @@ A PIM beállítása után az identitáskezelési feladatokat is végezhet.
 | **Saját kérések** | Megjeleníti a függőben lévő kérések az elérhető szerepkörök hozzárendelésének aktiválására. |
 | **Kérések jóváhagyása** | A felhasználók a címtárban jogosult szerepkörök aktiválási kéréseit listáját jeleníti meg, amely jóváhagyásra váró jelölik. |
 | **Hozzáférés áttekintése** | Hozzárendelt végrehajtásához, e, lehetőséggel megtekintheti a saját magának vagy valaki más aktív hozzáférési felülvizsgálatok sorolja fel. |
-| **Az Azure AD-szerepkörök** | Megjeleníti egy irányítópultot és a kiemelt szerepkörű rendszergazdák számára az Azure AD-címtár szerepkör-hozzárendelések kezeléséhez beállításait. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
+| **Az Azure AD-szerepkörök** | Megjeleníti egy irányítópultot és a kiemelt szerepkörű rendszergazdák számára az Azure AD szerepkör-hozzárendelések kezeléséhez beállításait. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
 | **Azure-erőforrások** | Megjeleníti egy irányítópultot és a kiemelt szerepkörű rendszergazdák kezelhetik a szerepkör-hozzárendelések az Azure resource beállításait. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>A PIM csempe hozzáadása az irányítópulthoz
@@ -133,5 +133,5 @@ Nyissa meg a PIM megkönnyítése, hozzá kell adnia a PIM csempe az Azure porta
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
+- [Az Azure AD PIM-szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
 - [Fedezze fel a PIM kezelése Azure-erőforrások](pim-resource-roles-discover-resources.md)

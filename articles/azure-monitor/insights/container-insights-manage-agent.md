@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 6bfcb17d0a81c6e23c4bfa3dd4f4dd8cc3079379
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331470"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577084"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Az Azure Monitor tárolók ügynök kezelése
 Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log Analytics-ügynök Linux rendszeren. Kezdeti telepítés után nincsenek rutin vagy választható feladatok végrehajtásához életciklusa során szükség lehet. Ez a cikk részletesen manuálisan frissítse az ügynököt, és tiltsa le az adott tároló környezeti változóit. 
@@ -29,13 +29,13 @@ Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log A
 Ha az ügynök frissítése sikertelen, ez a cikk ismerteti a folyamatot, az ügynök manuális frissítése. Tekintse kiadott verziói követéséhez [ügynök közleményekért](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
 
 ### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Felügyelt Kubernetes-fürtön az ügynök frissítése
-Az ügynök frissítési folyamata két egyszerű lépésből áll. Az első lépés, hogy tiltsa le az Azure CLI használatával az Azure Monitor szolgáltatással figyelést.  Az ismertetett lépéseket követve a [letiltani a figyelést](container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json#azure-cli) cikk. Azure CLI használatával lehetővé teszi számunkra, hogy az ügynök eltávolítása a fürt csomópontjainak a megoldás és a vonatkozó adatok a munkaterületen tárolt befolyásolása nélkül. 
+Az ügynök frissítési folyamata két egyszerű lépésből áll. Az első lépés, hogy tiltsa le az Azure CLI használatával az Azure Monitor szolgáltatással figyelést.  Az ismertetett lépéseket követve a [letiltani a figyelést](container-insights-optout.md?#azure-cli) cikk. Azure CLI használatával lehetővé teszi számunkra, hogy az ügynök eltávolítása a fürt csomópontjainak a megoldás és a vonatkozó adatok a munkaterületen tárolt befolyásolása nélkül. 
 
 >[!NOTE]
 >Ezt a karbantartási tevékenységet hajt végre, gyűjtött adatokat nem továbbítja a fürt csomópontjainak, majd azt teljesítménynézetet nem jelenik meg az adatok közötti idő eltávolíthatja az ügynököt, és az új verzió telepítése. 
 >
 
-Az ügynök az új verzió telepítéséhez kövesse a leírt lépéseket követve a [előkészítése figyelési](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-using-azure-cli) című cikket, a folyamat befejezéséhez az Azure CLI használatával.  
+Az ügynök az új verzió telepítéséhez kövesse a leírt lépéseket követve a [előkészítése figyelési](container-insights-onboard.md?#enable-using-azure-cli) című cikket, a folyamat befejezéséhez az Azure CLI használatával.  
 
 Miután a figyelés újbóli engedélyezését, körülbelül 15 percet, mielőtt a fürt frissített mérőszámok megtekintéséhez vehet igénybe. Az ügynök frissítése sikerült ellenőrzéséhez futtassa a parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
 

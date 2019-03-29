@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 34cda2f09392513b0d3f76cc5f77ea0064109410
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58009250"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576105"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Az Azure tervezetek ISO 27001 tervezet minta vezérlő leképezés
 
@@ -122,7 +122,7 @@ Ismertetése, ahol az Azure-erőforrások rendelkezhetnek titkosítási konfigur
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 események naplózása
 
-Ez a megoldás segítségével győződjön meg, hogy a rendszer eseményeket naplóz hétrészes sorozat hozzárendelésével [Azure Policy](../../../policy/overview.md) definíciókat, amely a naplózási beállítások az Azure-erőforrás naplózása. Szabályzat akkor is naplózza, ha a virtuális gépek nem naplókat küld a megadott log analytics-munkaterület.
+Ez a megoldás segítségével győződjön meg, hogy a rendszer eseményeket naplóz hétrészes sorozat hozzárendelésével [Azure Policy](../../../policy/overview.md) naplózási beállításai az Azure-erőforrás naplózása definíciókat. Szabályzat akkor is naplózza, ha a virtuális gépek nem naplókat küld a megadott log analytics-munkaterület.
 
 - [Előzetes verzió]: Függőségi ügynök üzembe helyezés – virtuális gép rendszerkép (OS) listán nem szereplő naplózása
 - [Előzetes verzió]: Függőségi ügynök telepítése a VMSS - virtuális gép rendszerkép (OS) listán nem szereplő naplózása

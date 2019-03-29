@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001328"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621532"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Linux-alkalmazások az Azure Monitor teljesítményszámlálók gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) az adott alkalmazásokra vonatkozó teljesítményszámlálók gyűjtése az Azure Monitor szolgáltatásba.  Az ebben a cikkben szereplő alkalmazások a következők:  
 
-- [MySQL](#MySQL)
+- [MySQL](#mysql)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL

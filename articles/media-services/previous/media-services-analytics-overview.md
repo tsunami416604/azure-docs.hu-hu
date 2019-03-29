@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884727"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620002"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>A Media Services platformon Médiaelemzés 
 
@@ -40,8 +40,6 @@ A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. Egy 
 
 ### <a name="indexer"></a>Indexelő
 Az Azure Media Indexerrel is felvehető tartalom kereshető, és létrehozni feliratozáshoz nyomon követi. Az előző verzióhoz képest, az Azure Media Indexer 2 előzetes verzió támogatja a gyorsabb indexelés és a szélesebb körű nyelvi rendelkezik. Támogatott nyelvek angol, spanyol, francia, német, olasz, kínai, portugál és arab. Részletes információkért és példákért lásd: [videók feldolgozása az Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
-### <a name="hyperlapse"></a>Hyperlapse
-A Microsoft Hyperlapse-ben videóstabilizálási és finomíthat funkció gyors, a hosszú tartalomból értelmezhető videók létrehozásához. Amellett, hogy a videó finomíthat hoz létre, a Hyperlapse segítségével hozzon létre stabil videók mobiltelefonok vagy kamerák keresztül rögzített remegő videók. Részletes információkért és példákért lásd: [Hyperlapse médiafájlokat az Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Mozgásérzékelő
 Mozgásérzékelő segítségével egy videóban hátterű mozgásfelismerés. Ez lehetővé teszi a térfigyelő kamerák által észlelt mozgásban lévő események által kiváltott hamis pozitív kereséséhez. Részletes információkért és példákért lásd: [Mozgásérzékelés az Azure Médiaelemzés használatával](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Arcérzékelő
@@ -53,7 +51,7 @@ Az Azure Media OCR (optikai karakterfelismerés) szerkeszthetők, kereshető dig
 ### <a name="scalable-face-redaction"></a>Méretezhető arcszerkesztés
 Az Azure Media Redactor kínál a felhőben méretezhető arcszerkesztés Media Analytics médiafeldolgozó. Arcszerkesztés használatával módosíthatja a arcának elmossa videó. Előfordulhat, hogy használni kívánt a face kivonási szolgáltatás sajtóbeli híradásoknál, vagy ha közbiztonság van szó. Néhány perc alatt több arcokat tartalmazó képanyag manuálisan szereplők órát is igénybe vehet, de ennek a szolgáltatásnak arcszerkesztés néhány egyszerű lépéssel vesz igénybe. További információkért lásd: a [szereplők az Azure Media Analytics arcok](media-services-face-redaction.md) cikk.
 ### <a name="content-moderation"></a>Tartalom-jóváhagyás
-Az Azure Content Moderator lehetővé teszi a gépi támogatású képmoderálás használhatja a videókhoz. Például érdemes észlelheti a videók lehetséges felnőtt és szexuális tartalom, és tekintse át a megjelölt tartalom az emberi moderálás csoportok. Manuálisan moderálása nem kívánatos tartalmakat a videók a időigényes és drága feladat. A szolgáltatás és a kapcsolódó vizsgálóeszközt kombinálja a legjobb eredmények elérése érdekében emberi hurok képességekkel rendelkező gépi támogatású képmoderálás hatékonyan és költséghatékonyan. További tudnivalókért tekintse meg a [feldolgozhatja a videóit Azure Content Moderator](media-services-content-moderation.md) cikk.
+Az Azure Content Moderator lehetővé teszi a gépi támogatású képmoderálás használhatja a videókhoz. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat. Manuálisan moderálása nem kívánatos tartalmakat a videók a időigényes és drága feladat. A szolgáltatás és a kapcsolódó vizsgálóeszközt kombinálja a legjobb eredmények elérése érdekében emberi hurok képességekkel rendelkező gépi támogatású képmoderálás hatékonyan és költséghatékonyan. További tudnivalókért tekintse meg a [feldolgozhatja a videóit Azure Content Moderator](media-services-content-moderation.md) cikk.
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 Media Analytics megkönnyíti a szervezetek számára, és vállalatok glean új elemzéseket az videót, és kezelheti hatékonyan videótartalmak nagy mennyiségű. Az alábbiakban néhány forgatókönyvre:

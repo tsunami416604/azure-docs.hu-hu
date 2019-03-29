@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168775"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621824"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
@@ -22,7 +22,7 @@ Befejezéséhez újraindítás szükséges idő attól függ, hogy a PostgreSQL-
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for PostgreSQL-kiszolgáló és adatbázis](quickstart-create-server-database-portal.md)
+- Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
 
 ## <a name="perform-server-restart"></a>Hajtsa végre a kiszolgáló újraindítása
 

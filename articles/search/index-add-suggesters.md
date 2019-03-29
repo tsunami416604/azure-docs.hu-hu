@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5a46575f6e8a0b05b65dbf49c70bddb570b514b2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497433"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577110"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Az Azure Search typeahead indexet javaslattevők hozzáadása
 
-A **javaslattevő** egy szerkezet az egy [Azure Search-index](search-what-is-an-index.md) , amely támogatja a "Keresés –--beíráskor" felületet. Tartalmaz, amelynek szeretné engedélyezni, typeahead lekérdezés bemenetei között a mezők listája. Typeahead két változata van, melyek: *automatikus kiegészítés* elkezdi beírni a, kifejezéssel befejezése *javaslatok* eredmények rövid listáját tartalmazza. 
+A **javaslattevő** egy szerkezet az egy [Azure Search-index](search-what-is-an-index.md) , amely támogatja a "Keresés –--beíráskor" felületet. Tartalmaz, amelynek szeretné engedélyezni, typeahead lekérdezés bemenetei között a mezők listája. Belüli index, az azonos javaslattevő támogatja ezen két typeahead változat egyikében vagy: *automatikus kiegészítés* elkezdi beírni a, kifejezéssel befejezése *javaslatok* eredmények rövid listáját tartalmazza. 
 
-Xbox keresési lap az automatikus kiegészítés elemek végigvezetik a keresési eredmények új lapot az adott lekérdezés, míg a tényleges eredmények, amelyek egy oldalt, hogy adott játék. A keresősávba egy elemet az automatikus kiegészítés korlátozza, vagy adja meg itt látható egy hasonló listáját. A javaslatok egy dokumentumot, az eredmény legjobban illő bármely részét-kkel.
+Az alábbi képernyőképen is typeahead funkciókat mutatja be. Xbox keresési lap az automatikus kiegészítés elemek végigvezetik a keresési eredmények új lapot az adott lekérdezés, míg a tényleges eredmények, amelyek egy oldalt, hogy adott játék. A keresősávba egy elemet az automatikus kiegészítés korlátozza, vagy adja meg itt látható egy hasonló listáját. A javaslatok egy dokumentumot, az eredmény legjobban illő bármely részét-kkel.
 
 ![Az automatikus kiegészítés és a javasolt lekérdezések Visual összehasonlítása](./media/index-add-suggesters/visual-comparison-suggest-complete.png "automatikus kiegészítés és a javasolt lekérdezések Visual összehasonlítása")
 
 Ezen viselkedés megvalósítása az Azure Search, egy index és lekérdezés-összetevő van. 
 
-+ Adja hozzá a javaslattevő az indexben. A portal, a REST API vagy a .NET SDK használatával hozzon létre egy javaslattevő. 
++ Az index egy javaslattevő összetevője. A portal, a REST API vagy a .NET SDK használatával hozzon létre egy javaslattevő. 
 
-+ A lekérdezés adja meg a javaslat vagy sutocomplete művelet. 
++ A lekérdezés összetevője a lekérdezési kérelem (vagy egy javaslat, vagy az automatikus kiegészítés művelet) a megadott művelet. 
 
 > [!Important]
-> Automatikus kiegészítési funkciója jelenleg előzetes verziójú, REST API-k előzetes verzióban érhető el, ezért a .NET SDK-t, és az éles környezetben nem támogatott. 
+> Automatikus kiegészítési funkciója jelenleg előzetes verziójú, REST API-k előzetes verzióban érhető el, ezért a .NET SDK-t. Nem célja az éles környezetben. 
 
 Keresés –--beíráskor támogatása engedélyezve van, mező alapon. Ha azt szeretné, felületet nyújt a képernyőképen jelzett hasonló mindkét typeahead viselkedések belül ugyanazt a keresési megoldást valósíthat meg. Mindkét kérelmek cél a *dokumentumok* után a felhasználó legalább egy három bemeneti sztring biztosított meghatározott index és a válaszok gyűjteményét adja vissza.
 
@@ -77,7 +77,7 @@ A javaslattevő létrehozása után adja hozzá a [javaslatok API](https://docs.
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-A C#, adja meg egy [javaslattevő osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). Javaslattevő olyan gyűjteménye, de csak egy elemet is eltarthat.
+A C#, adja meg egy [javaslattevő osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). A javaslattevő gyűjteménye, amelyek csak is igénybe vehet egy elemet. Adja hozzá `using System.Collections.Generic;` úgy, hogy az objektumok listáját is létrehozhat. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,4 +137,4 @@ A tesztkörnyezet Azure Search szolgáltatást használja, és előre betöltöt
 Azt javasoljuk, hogy az alábbi példa megtekintéséhez, hogyan dolgoznak ki a kérelmeket.
 
 > [!div class="nextstepaction"]
-> [Automatikus kiegészítéses lekérdezési példa (előzetes verzió)](search-autocomplete-tutorial.md) 
+> [Javaslatok és az automatikus kiegészítés példák](search-autocomplete-tutorial.md) 

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517946"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622195"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -77,21 +77,28 @@ A mérőszámok és tevékenységnaplók alapján beállíthatja, hogy milyen ri
 
 A riasztások konfigurálása:
 
-1. Válassza a lap alján lévő menüsáv **Riasztások (klasszikus)** elemét.
+1. Válassza ki **riasztások** a menüsorban a lap alján.
 
-    ![riasztások](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![riasztások](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Válassza a **Metrikariasztás hozzáadása** lehetőséget.
-3. Adja meg a riasztás **Nevét**.
-4. A monitorozni kívánt mérőszámként válassza a **Jogosulatlan átjárókérések** mérőszámot.
-5. Jelölje be az **E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak** beállítást.
-6. Kattintson az **OK** gombra.
-7. Próbálja API-kulcs nélkül meghívni a Conference API-t. Az adott API Management-szolgáltatás tulajdonosaként egy figyelmeztető e-mailt kap. 
+2. Kattintson a egy **Új riasztási szabály** erre a riasztásra vonatkozóan.
+3. Kattintson a **feltétel hozzáadása**.
+4. Válassza ki **metrikák** a jel típusát a legördülő menü.
+5. Válassza ki **nem engedélyezett átjárókiszolgáló kérelem** , monitorozni kívánt jel.
 
-    > [!TIP]
-    > A riasztási szabály egy webhookot vagy egy Azure Logic Apps-alkalmazást is meghívhat az aktiválásakor.
+    ![riasztások](./media/api-management-azure-monitor/signal-type.png)
 
-    ![riasztás-beállítása](./media/api-management-azure-monitor/set-up-alert.png)
+6. Az a **jellogika konfigurálása** megtekintheti, adjon meg egy küszöbértéket, amely után a riasztás legyen elindítva, és kattintson a **kész**.
+
+    ![riasztások](./media/api-management-azure-monitor/threshold.png)
+
+7. Válasszon ki egy meglévő műveletet, vagy hozzon létre egy újat. Az alábbi példában egy e-mailt küld a rendszergazdáknak. 
+
+    ![riasztások](./media/api-management-azure-monitor/action-details.png)
+
+8. Adjon meg egy nevet, a riasztási szabály leírását, és válassza ki azt a súlyossági szintet. 
+9. Nyomja meg **riasztási szabály létrehozása**.
+10. Most próbáljon meg meghívni a Conference API, API-kulcs nélkül. A riasztás akkor aktiválódik, a rendszergazdák egy e-mailt küld. 
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -184,7 +191,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
 | location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
 | httpStatusCodeCategory | sztring | Http-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb 304 vagy 307), jogosulatlan (401, 403, 429), hibás (400, 500 és 600 között), egyéb |
-| resourceId | sztring | Id of the API Management resource /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
+| resourceId | sztring | ID of the API Management resource /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
 | method | sztring | A bejövő kérelem HTTP-metódusa |
 | url | sztring | A bejövő kérelem URL-címe |

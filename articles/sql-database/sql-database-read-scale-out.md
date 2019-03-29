@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 8f34b3ed91e4b470fdfa7c2ffad401e7890abe1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/28/2019
+ms.openlocfilehash: d9ad859ef24b51dc337dc23281d2fe4e1eada1e6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886456"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619891"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
+# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Csak olvasható replikákat használ a terheléselosztása csak olvasható lekérdezési számítási feladatok betöltése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -27,24 +27,23 @@ ms.locfileid: "57886456"
 
 **Horizontális Felskálázás olvasása** lehetővé teszi, hogy terheléselosztása az Azure SQL Database csak olvasható-alapú számítási feladatokat egy csak olvasható replika kapacitásának betölteni.
 
-Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)) vagy az üzletileg kritikus ([Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)) automatikusan hozzáférést kapnak az AlwaysON replikák több a rendelkezésre állási SLA-t támogatja.
+Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)) vagy az üzletileg kritikus ([Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)) automatikusan hozzáférést kapnak az AlwaysON replikák több a rendelkezésre állási SLA-t támogatja. Ezt a következő ábra szemlélteti.
 
-![Csak olvasható replikák](media/sql-database-managed-instance/business-critical-service-tier.png)
+![Csak olvasható replikák](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Ezek a replikák számítási mérete megegyezik a normál adatbázis-kapcsolatok által használt írható-olvasható replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
+A másodlagos replikák számítási mérete megegyezik az elsődleges replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
 
 Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) vagy a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metódust.
 
-Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások lesznek irányítva, vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálása kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások irányítja a rendszer az átjáró vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` konfigurált tulajdonság a alkalmazás kapcsolati karakterláncában. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Ha olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, minden kapcsolat a rendszer átirányítja az írható-olvasható replika, a független a `ApplicationIntent` tulajdonság.
 
 > [!NOTE]
-> Lekérdezés Data Store és a bővített események nem támogatottak a csak olvasható replika.
-
+> Lekérdezés Data Store, a bővített események, az SQL Profiler és a naplózási szolgáltatások nem támogatottak a csak olvasható replika. 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
-A replikák előnyeit egyike, hogy a replika mindig a tranzakciós szempontból konzisztens állapotban van, de különböző időpontokban időben lehet néhány kisebb késés között különböző replikába. Horizontális Felskálázás olvasása támogatja a munkamenet-szintű konzisztencia. Ez azt jelenti, hogy a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége által okozott kapcsolódási hiba után, ha átirányítható egy replikára, amely nem naprakész, és az írható-olvasható replika 100 %-os. Hasonlóképpen ha egy alkalmazás írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa azokat a csak olvasható munkamenet használatával, lehetséges, hogy a legújabb frissítéseket nem láthatók azonnal. Ez azért, mert a tranzakciós napló Ismétlés a replikákra aszinkron.
+A replikák előnyeit egyike, hogy a replika mindig a tranzakciós szempontból konzisztens állapotban van, de különböző időpontokban időben lehet néhány kisebb késés között különböző replikába. Horizontális Felskálázás olvasása támogatja a munkamenet-szintű konzisztencia. Ez azt jelenti, hogy a csak olvasható munkamenet újracsatlakozik a replika elérhetetlensége által okozott kapcsolódási hiba után, ha átirányítható egy replikára, amely nem naprakész, és az írható-olvasható replika 100 %-os. Hasonlóképpen ha egy alkalmazás írja az adatokat, olvasási és írási munkamenet használatával, és azonnal olvassa azokat a csak olvasható munkamenet használatával, lehetséges, hogy a legújabb frissítéseket nem láthatók azonnal a replikán. A késés egy aszinkron tranzakciós napló visszaállítási művelet okozza.
 
 > [!NOTE]
 > Replikációs a régión belül a késleltetések alacsony, és ebben a helyzetben ritkán fordul elő.
@@ -77,6 +76,14 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 > [!NOTE]
 > Egy adott időpontban csak az egyik az AlwaysON-replikák érhető el a csak olvasható munkameneteket.
+
+## <a name="monitoring-and-troubleshooting-read-only-replica"></a>Monitorozási és hibaelhárítási csak olvasható replika
+
+Ha csatlakozik egy csak olvasható replika, érheti el a teljesítmény metrikák használatával a `sys.dm_db_resource_stats` DMV Lekérdezéséhez. Lekérdezési terv statisztikák elérésére, használja a `sys.dm_exec_query_stats`, `sys.dm_exec_query_plan` és `sys.dm_exec_sql_text` DMV-k használatával.
+
+> [!NOTE]
+> A DMV `sys.resource_stats` CPU használatát és a tárolási adatokat az elsődleges replika adja vissza a logikai master adatbázisban.
+
 
 ## <a name="enable-and-disable-read-scale-out"></a>Engedélyezheti vagy letilthatja a horizontális Felskálázás olvasása
 
@@ -124,9 +131,13 @@ Body:
 
 További információkért lásd: [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
 
+## <a name="using-tempdb-on-read-only-replica"></a>A csak olvasható replika használatával a TempDB
+
+A TempDB adatbázist a csak olvasható replikák nem replikálódnak. Minden replika jön létre, ha a replika jön létre a TempDB adatbázis a saját verziója van. Biztosítja, hogy a TempDB frissíthető és módosítható a lekérdezés végrehajtása során. Ha a TempDB-objektumok a csak olvasható számítási feladat függ, létre kell hoznia ezeket az objektumokat a lekérdezési szkriptet részeként. 
+
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontális Felskálázás olvasása használata a georeplikált adatbázis
 
-Ha használ betölteni az egyenleg csak olvasható számítási feladatok, a georeplikált (pl. tagjaként egy feladatátvételi csoportot) egy adatbázis, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok a felskálázás olvasása. Amikor az alkalmazás csatlakozik az új elsődleges a feladatátvételt követően ugyanezt a terheléselosztás hatást tud biztosítani. Ha az olvasási szintű engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a replikára ugyanúgy azt átirányíthatja a kapcsolatokat az elsődleges adatbázison.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` a rendszer átirányítja az elsődleges replika, a georeplikált másodlagos, ami egyben csak olvasható. Georeplikált másodlagos adatbázis egy másik végponti, mint az elsődleges adatbázissal rendelkezik, mert hagyományosan eléréséhez a másodlagos ez nem szükséges beállítása `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (bármely ügyfél kapcsolat engedélyezett).
+Olvasási kibővített betölteni az egyenleg csak olvasható számítási, adatbázis, amely georeplikált (például egy feladatátvételi csoport tagja), győződjön meg arról, hogy az olvasási használatakor horizontális felskálázás az elsődleges, mind a georeplikált másodlagos adatbázisok engedélyezett. Ez a konfiguráció biztosítja, hogy az ugyanazon terheléselosztó élmény továbbra is fennáll, amikor az alkalmazás csatlakozik az új elsődleges feladatátvétel után. Ha az olvasási szintű engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a replikára ugyanúgy azt átirányíthatja a kapcsolatokat az elsődleges adatbázison.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` a rendszer átirányítja az elsődleges replika, a georeplikált másodlagos, ami egyben csak olvasható. Georeplikált másodlagos adatbázis egy másik végponti, mint az elsődleges adatbázissal rendelkezik, mert hagyományosan eléréséhez a másodlagos ez nem szükséges beállítása `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (bármely ügyfél kapcsolat engedélyezett).
 
 > [!NOTE]
 > Ciklikus időszeletelés vagy bármely más elosztott terhelésű helyi replikáit a másodlagos adatbázis között nem támogatott.

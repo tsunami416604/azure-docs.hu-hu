@@ -1,5 +1,5 @@
 ---
-title: Azure-erőforrás szerepköröket a PIM |} A Microsoft Docs
+title: Azure-erőforrás szerepkörök hozzárendelése az Azure Active Directory - a PIM |} A Microsoft Docs
 description: Ismerje meg, hogyan lehet Azure-erőforrás szerepkörök hozzárendelése az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee09526c2bf1ebf9821e1f84dc99bfc8635b9ee2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a912e1786e005e9a4b6ba2cc22713a172234a489
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086190"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578662"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Rendelje hozzá a PIM az Azure-erőforrásszerepkörök
 
-Az Azure AD PIM-ben a beépített Azure-erőforrások szerepköreihez, valamint a egyéni szerepköröket, beleértve többek között a (,) képes kezelni:
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) képes kezelni, a beépített Azure-erőforrások szerepköreihez, valamint a egyéni szerepköröket, beleértve többek között a (,):
 
 - Tulajdonos
 - Felhasználói hozzáférés rendszergazdája
@@ -129,4 +129,4 @@ Kövesse az alábbi lépéseket, frissítéséhez vagy egy meglévő szerepkör-
 
 - [A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása](pim-resource-roles-renew-extend.md)
 - [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)
-- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
+- [Az Azure AD PIM-szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)

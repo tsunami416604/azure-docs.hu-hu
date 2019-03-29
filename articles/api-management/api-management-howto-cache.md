@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 39284805d9b9b5c10f5e211dc7d4c461d15cc6bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763537"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577016"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
 Az API Management műveleteit konfigurálni lehet a válaszok gyorsítótárazásához. A válaszok gyorsítótárazása jelentősen csökkentheti az API-k késleltetését, sávszélesség-használatát és a webszolgáltatások terhelését olyan adatok esetén, amelyek nem változnak gyakran.
- 
+
 A gyorsítótárazással kapcsolatos részletes információk: [Az API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) és [Egyedi gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
 ![gyorsítótár-házirendek](media/api-management-howto-cache/cache-policies.png)
@@ -59,7 +59,7 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
 6. A képernyő felső részén válassza a **Tervezés** lapot.
 7. Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
 
-    ![kódszerkesztő](media/api-management-howto-cache/code-editor.png) 
+    ![kódszerkesztő](media/api-management-howto-cache/code-editor.png)
 
 8. Az **inbound** elemben adja hozzá a következő szabályzatot:
 
@@ -76,7 +76,7 @@ A példában bemutatott gyorsítótárazási házirendek használata esetén a *
     Az **Időtartam** megadja a gyorsítótárazott válaszok lejárati időközét. Ebben a példában az időköz **20** másodperc.
 
 > [!TIP]
-> Ha használ egy külső gyorsítótár leírtak szerint [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md), előfordulhat, hogy szeretne megadni a `cache-preference` a gyorsítótárazási házirendek attribútumát. Lásd: [API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) további részletekért.
+> Ha használ egy külső gyorsítótár leírtak szerint [használni egy külső Azure Cache Redis az Azure API Management](api-management-howto-cache-external.md), előfordulhat, hogy szeretne megadni a `caching-type` a gyorsítótárazási házirendek attribútumát. Lásd: [API Management gyorsítótárazási házirendjei](api-management-caching-policies.md) további részletekért.
 
 ## <a name="test-operation"></a>Művelet meghívása és a gyorsítótárazás tesztelése
 A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a műveletet a fejlesztői portálról.

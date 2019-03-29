@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361795"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577560"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -315,7 +315,9 @@ Ha a fürt már fut, [hozzon létre egy könyvtárat](https://docs.databricks.co
    1. Az a **kódtárak** lapon jelölje be **indítsa újra a**.
       
    Továbbá vegye figyelembe:
-   + Egyes csomagokat, mint például `psutil`, Databricks ütközéseket okozhat a telepítés során. Az ilyen hibák elkerülése érdekében csomagok telepítéséhez fagyasztási lib verziójával, mint például `pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`. 
+   + Automl-konfiguráció használata esetén az Azure Databricks adja hozzá a következő paraméterekkel:
+    1. ```max_concurrent_iterations``` a fürt feldolgozó csomópontjainak száma alapján. 
+    2. ```spark_context=sc``` databricks/spark / # alapértelmezett spark környezet. 
    + Vagy ha egy régi SDK-verzióval rendelkezik, kapcsolja ki azt a fürt telepített függvénytárak és a Kukába helyezni. Az új SDK-verzió telepítése, és indítsa újra a fürtöt. Ha ezt követően egy problémát, válassza le, és csatlakoztassa újból a fürthöz.
 
 Ha a telepítés sikeres volt, az importált függvénytár például a következők közül kell kinéznie:

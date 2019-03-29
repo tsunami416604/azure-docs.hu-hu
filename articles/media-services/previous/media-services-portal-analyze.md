@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a303b9d27b3708bd4f59517452fa232cc38c923
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259686"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619441"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Médiatartalmak elemzése az Azure Portal használatával 
 > [!NOTE]
@@ -73,11 +73,6 @@ Egy rövid nevet, amely lehetővé teszi, hogy a művelet azonosítására. [Ez]
 
 ### <a name="output-file"></a>Kimeneti fájl
 Egy rövid nevet, amely lehetővé teszi a kimeneti tartalom megbízható azonosításához. 
-
-## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Az Azure Media Hyperlapse egy felügyeleti csomag, amely zökkenőmentes idő lejárt videók létrehozza az első, aki vagy művelet – kamera tartalmak.  További információ [ebben](media-services-hyperlapse-content.md) a témakörben érhető el. Ez a szakasz néhány, amely a felügyeleti csomag a megadott beállítások részleteit.
-
-![Videók elemzése](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>Sebesség
 Adja meg a sebesség, amellyel a bemeneti videó felgyorsítása érdekében. A bemeneti videó egy stabil és idő lejárt megjelenítés kimenete.

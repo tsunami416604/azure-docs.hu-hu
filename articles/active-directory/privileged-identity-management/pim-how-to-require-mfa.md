@@ -1,5 +1,5 @@
 ---
-title: Többtényezős hitelesítés (MFA) és a PIM – Azure |} A Microsoft Docs
+title: Többtényezős hitelesítés (MFA) és a PIM - Azure Active Directory |} A Microsoft Docs
 description: Ismerje meg, miként ellenőrzi az Azure AD Privileged Identity Management (PIM) a többtényezős hitelesítés (MFA).
 services: active-directory
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a641f5be28e4750ba8d3d4f8b56802034aab2c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8831a838a403d58d8673c6400e0dda06c03dc69f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187253"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578798"
 ---
 # <a name="multi-factor-authentication-mfa-and-pim"></a>Többtényezős hitelesítés (MFA) és a PIM
 
 Azt javasoljuk, hogy szükséges-e többtényezős hitelesítés (MFA) az összes rendszergazda számára. Ez csökkenti a biztonsági kockázatot jelentő jelszó miatt a támadás kockázatát.
 
-Megkövetelheti, hogy a felhasználók bejelentkezéskor befejezéséhez az MFA-hitelesítést. Azt is megkövetelheti, hogy a felhasználók aktiválnak egy szerepkörhöz az Azure AD Privileged Identity Management (PIM) amikor befejeződnek az MFA-hitelesítést. Ezzel a módszerrel a felhasználó nem fejeződött be az MFA-hitelesítést, ha azok jelentkezett be, ha kéri erre a PIM által.
+Megkövetelheti, hogy a felhasználók bejelentkezéskor befejezéséhez az MFA-hitelesítést. Is megkövetelheti, hogy felhasználók végezze el az MFA-hitelesítést amikor aktiválnak egy szerepkörhöz az Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Ezzel a módszerrel a felhasználó nem fejeződött be az MFA-hitelesítést, ha azok jelentkezett be, ha kéri erre a PIM által.
 
 > [!IMPORTANT]
 > Kattintson a jobb most az Azure MFA csak akkor működik a munkahelyi vagy iskolai fiókokhoz, nem Microsoft-fiókok (általában egy személyes fiók, amellyel jelentkezzen be a Microsoft szolgáltatásaihoz, például a Skype, Xbox, Outlook.com, stb.). Ez az oka bárki Microsoft-fiókkal nem lehet a jogosult rendszergazda, mert a szerepkörök aktiválására nem használhatják a többtényezős hitelesítés. Ha ezek a felhasználók továbbra is a Microsoft-fiókkal számítási feladatok kezelése, megszereznie azokat állandó rendszergazdák most.
@@ -40,5 +40,5 @@ Azt is megteheti Ha a felhasználók végeznek helyszíni hitelesítést haszná
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [A PIM az Azure AD szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
 - [A PIM Azure szerepkör-beállítások konfigurálása](pim-resource-roles-configure-role-settings.md)

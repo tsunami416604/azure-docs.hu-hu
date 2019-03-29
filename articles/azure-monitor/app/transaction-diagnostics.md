@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903623"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619832"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített összetevőt tranzakció diagnosztikája
 
@@ -32,7 +32,7 @@ Az egyesített diagnosztika terén automatikusan kiszolgálóoldali telemetria u
 * Összetevők külön Application Insights-kialakítási kulcs (akkor is, ha az előfizetések különböző) vagy egy egyetlen az Application Insights-kialakítási kulcsot a jelentéskészítés különböző szerepköröket is. Az új felület részleteket jeleníti meg termékcsalád összes tagjára, függetlenül attól, hogy azok be van állítva.
 
 > [!NOTE]
-> * **Hiányzik a kapcsolódó elem hivatkozásokat?** Az összes kapcsolódó telemetria a [felső](#cross-component-transaction-chart) és [alsó](#all-telemetry-with-this-Operation-Id) a bal oldali szakaszát. 
+> * **Hiányzik a kapcsolódó elem hivatkozásokat?** Az összes kapcsolódó telemetria a [felső](#cross-component-transaction-chart) és [alsó](#all-telemetry-with-this-operation-id) a bal oldali szakaszát. 
 
 ## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztikája élmény
 Ez a nézet részből négy fő: eredmények listája, összetevőt tranzakció diagramot, ezt a műveletet, és bármely kiválasztott telemetriai elem a bal oldali ablaktáblában kapcsolódó összes telemetriai adat idő – feladatütemezési listáját.

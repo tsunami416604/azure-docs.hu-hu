@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 230c68b0b1de1ef452de51b7b0661a3c3786ea76
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521703"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578883"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
-Ez a cikk azt ismerteti, hogyan biztonsági mentése és visszaállítása az Azure virtuális gép egy [Azure Backup](backup-overview.md) Recovery Services-tároló PowerShell-parancsmagok használatával. 
+Ez a cikk azt ismerteti, hogyan biztonsági mentése és visszaállítása az Azure virtuális gép egy [Azure Backup](backup-overview.md) Recovery Services-tároló PowerShell-parancsmagok használatával.
 
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
@@ -24,10 +24,7 @@ Ebben a cikkben az alábbiakkal fog megismerkedni:
 > * Hozzon létre egy Recovery Services-tárolót, és állítsa be a tárolási környezet.
 > * Biztonsági mentési szabályzat meghatározása
 > * A biztonsági mentési szabályzat alkalmazása több virtuális gép védelme érdekében
-> * Az eseményindító egy igény szerinti biztonsági mentési feladat előtt a védett virtuális gépek is biztonsági mentése (vagy védelme) egy virtuális gépet, el kell végeznie a [Előfeltételek](backup-azure-arm-vms-prepare.md) készítse elő a környezetét a virtuális gépek védelmére. 
-
-
-
+> * Az eseményindító egy igény szerinti biztonsági mentési feladat előtt a védett virtuális gépek is biztonsági mentése (vagy védelme) egy virtuális gépet, el kell végeznie a [Előfeltételek](backup-azure-arm-vms-prepare.md) készítse elő a környezetét a virtuális gépek védelmére.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -44,8 +41,6 @@ Az alábbi ábrán az objektumhierarchia foglalja össze.
 
 Tekintse át a **Az.RecoveryServices** [parancsmag-referencia](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) referencia az Azure-könyvtárban.
 
-
-
 ## <a name="set-up-and-register"></a>Beállítása és regisztrálása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -58,7 +53,7 @@ A kezdéshez:
 
     ```powershell
     Get-Command *azrecoveryservices*
-    ```   
+    ```
  
     Az aliasok és az Azure Backup az Azure Site Recovery és a Recovery Services-tároló-parancsmagok jelennek meg. Az alábbi képen látható egy példa látni. Akkor sem a parancsmagok teljes listája.
 
@@ -147,6 +142,18 @@ Mielőtt engedélyezné a virtuális gép védelmét, használjon [Set-AzRecover
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
+### <a name="modifying-storage-replication-settings"></a>A tárolóreplikálási beállítások módosítása
+
+Használat [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0) parancsot az LRS vagy GRS-tár tárolási replikációs konfigurációjának beállítása
+
+```powershell
+$vault= Get-AzRecoveryServicesVault -name "testvault"
+Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+```
+
+> [!NOTE]
+> Tárhely-redundancia módosíthatók, csak akkor, ha nem találhatók biztonsági mentési elemek védett a tárolóba.
+
 ### <a name="create-a-protection-policy"></a>Egy védelmi szabályzat létrehozása
 
 Helyreállítási tár létrehozásakor a tár alapértelmezett védelmi és megőrzési szabályzatokkal rendelkezik. Az alapértelmezett védelmi szabályzat naponta egyszer, adott időben aktivál egy biztonsági mentési feladatot. Az alapértelmezett megőrzési szabályzat 30 napig őrzi meg a napi helyreállítási pontokat. Az alapértelmezett házirend segítségével gyorsan biztosíthatja virtuális GÉPE védelmét, és később eltérő adatokkal a szabályzat szerkesztéséhez.
@@ -226,7 +233,6 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Ha az Azure Government cloud használ, használja az értéket ff281ffe-705c-4f53-9f37-a40e6f2c68f3 ServicePrincipalName paraméter a [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmagot.
 >
 
-
 ### <a name="modify-a-protection-policy"></a>A védelmi házirend módosítása
 
 Az alkalmazásvédelmi szabályzat módosításához használjon [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) módosíthatja a SchedulePolicy vagy RetentionPolicy objektumokat.
@@ -239,6 +245,19 @@ $retPol.DailySchedule.DurationCountInDays = 365
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol
 ```
+
+#### <a name="configuring-instant-restore-snapshot-retention"></a>Azonnali helyreállítás pillanatkép megőrzés konfigurálása
+
+> [!NOTE]
+> Az PS-től 1.6.0-s verziójának, az egyik is az azonnali helyreállítás pillanatkép megőrzési időtartam frissítése a szabályzatban Powershell-lel
+
+````powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=7
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+````
+
+Az alapértelmezett érték 2 lesz, a felhasználó beállíthat egy minimális 1 és 5 maximális értékének. A heti biztonsági mentési házirendeket, az időszak 5 értékre van állítva, és nem módosítható.
 
 ## <a name="trigger-a-backup"></a>Indítson egy biztonsági mentést
 
@@ -672,7 +691,7 @@ $rp[0]
 
 A kimenet a következő példához hasonló:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -719,4 +738,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>További lépések
 
-Ha inkább a érhet el az Azure-erőforrások PowerShell-lel, tekintse meg a PowerShell a cikkben [üzembe helyezés és a Windows Server biztonsági mentés kezelése](backup-client-automation.md). Ha Ön kezeli a DPM biztonsági mentések, ismertető cikkben [üzembe helyezés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md). 
+Ha inkább a érhet el az Azure-erőforrások PowerShell-lel, tekintse meg a PowerShell a cikkben [üzembe helyezés és a Windows Server biztonsági mentés kezelése](backup-client-automation.md). Ha Ön kezeli a DPM biztonsági mentések, ismertető cikkben [üzembe helyezés és a DPM a biztonsági mentés kezelése](backup-dpm-automation.md).
