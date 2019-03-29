@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 2553dccaa57e5340bf36bbccdf7826d242716300
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: bdbf0d78b45291e7482c1af3999c8ce3980ef36f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472633"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578492"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Számára a bejárati ajtó a földrajzi szűrés WAF szabályzat beállítása
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. Ez a minta geoszűrési szabályzat az Egyesült Államok kivételével minden más országból érkező kérelmeket letiltja.
@@ -79,7 +79,7 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ## <a name="add-rules-to-a-policy"></a>Szabályok hozzáadása egy házirend
 Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzResourceGroup`. Ezután hozzon létre egy `geoPolicy` csoportházirend-objektumot tartalmazó `nonUSBlockRule` használatával [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban. Meg kell adnia egy egyedi nevet a földrajzi házirend. 
 
-Az alábbi példában az erőforráscsoport nevét használja *myResourceGroupFD1* feltételezve, hogy létrehozta a bejárati ajtó profil szereplő utasítások segítségével a [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md) cikk.
+Az alábbi példában az erőforráscsoport nevét használja *myResourceGroupFD1* feltételezve, hogy létrehozta a bejárati ajtó profil szereplő utasítások segítségével a [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md) cikk. Az az alábbi példában cserélje le a szabályzat neve *geoPolicyAllowUSOnly* egy egyedi házirend neve.
 
 ```
 $geoPolicy = New-AzFrontDoorFireWallPolicy `

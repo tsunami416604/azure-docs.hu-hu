@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51191f3276a9420129f47944b47a182479719d5a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122012"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621668"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -28,10 +28,14 @@ Az Azure Backup legfontosabb értékelemeket nyújtja:
 - **A helyszíni biztonsági mentés kiürítési**: Az Azure Backup egy egyszerű megoldást a helyszíni erőforrások biztonsági mentéséről a felhőbe kínál. Első rövid és hosszú távú biztonsági mentés üzembe helyezése összetett nélkül a helyszíni biztonsági mentési megoldások. 
 - **Azure IaaS virtuális gépek biztonsági mentése**: Az Azure Backup az eredeti adatok véletlen megsemmisítése ellen védő független és elkülönített biztonsági mentések biztosít. Biztonsági mentések egy Recovery Services-tároló beépített helyreállítási pontok felügyelt vannak tárolva. Konfiguráció és a méretezhetőség egyszerű, biztonsági mentések vannak optimalizálva, és igény szerint könnyedén visszaállíthatók.
 - **Könnyedén méretezheti a** – az Azure Backup a mögöttes teljesítményét és korlátlan méretezhetőségét az Azure-felhő használ a magas rendelkezésre állású megoldásokat fejleszthet a karbantartás és a figyelés többletterhe. 
-- **Korlátlan adatátvitel első** – az Azure Backup nem korlátozza a bejövő vagy kimenő adatok átvitele, vagy a célkiszolgálóra továbbított adatokat számítunk fel díjat.
+- **Korlátlan adatátvitel első**: Az Azure Backup nem korlátozza a bejövő vagy kimenő adatok átviteli, vagy a célkiszolgálóra továbbított adatokat számítunk fel díjat.
     - Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
     - Az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat importálása offline kezdeti biztonsági mentést hajt végre, ha nincs a bejövő adatok költséggel.  [További információk](backup-azure-backup-import-export.md). 
-- **A biztonságos**: Adatok titkosítása lehetővé teszi a biztonságos átvitelét és tárolását az adatok a nyilvános felhőben. A titkosítás jelszavát helyileg tárolja, és soha nem kerül az Azure-ba, illetve nincs ott tárolva. Ha vissza kell állítani valamilyen adatot, csak Ön rendelkezik a titkosítási jelszóval vagy a kulccsal.
+- **A biztonságos**:
+    - A helyszínen, az átvitt adatok titkosítása az AES256 használatával a helyszíni gépen. A továbbított adatok között a tárolási és biztonsági mentési HTTPS védi. Az iSCSI protokoll biztosítja a biztonsági mentés és a felhasználó gép között továbbított adatokat. Az iSCSI-csatorna védelmére Secure tunneling használják.
+    - A helyszínen az Azure Backup szolgáltatásban, az adatokat az Azure-titkosított inaktív használatával adja meg a biztonsági mentés üzembe helyezésekor meg a jelszót. A hozzáférési kódot vagy kulcs soha továbbított adatok köre és az Azure-ban tárolja. Ha vissza kell állítani valamilyen adatot, csak Ön rendelkezik a titkosítási jelszóval vagy a kulccsal.
+    - Azure virtuális gépek, az adatok titkosítása:-visszaállítási Storage Service Encryption (SSE) használatával. Biztonsági mentés automatikusan tárolás előtt titkosítja az adatokat. Az Azure Storage, beolvasása előtt mindig visszafejti az adatokat.
+    - Biztonsági másolat az Azure Disk Encryption (ADE) használatával titkosított Azure virtuális gépeket is támogatja. [További információk](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 - **Alkalmazáskonzisztens biztonsági másolatok beolvasása**: Az alkalmazáskonzisztens biztonsági mentés azt jelenti, hogy a helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentést nyújt, amely garantálja, hogy ne legyen szükség további javításokra az adatok visszaállításához. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
 - **Rövid és hosszú távú megőrzése**: Recovery Services-tárolókat rövid és hosszú távú adatmegőrzés is használhat. Az Azure nem korlátozza az adatok megőrzési idejét a Recovery Services-tárolókban. Mindaddig, amíg Ön, mint a tárolhatja. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. [További](backup-introduction-to-azure-backup.md#backup-and-retention)kapcsolatban, hogy ezt a korlátot milyen hatással van a biztonsági mentési igényeire.
 - **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Az Azure Backup szolgáltatással nem kell költenie helyszíni tárolóeszközökre. Az Azure Backup automatikusan foglalja le és kezeli a biztonsági mentési tárolót, és a egy használatalapú mint-akkor-használható modellt használ, hogy csak a kell fizetnie a felhasznált tárterületet. [További](https://azure.microsoft.com/pricing/details/backup) információ a díjszabásról.
@@ -56,7 +60,7 @@ A tábla pontok használatával segít azonosítani a BCDR-igényeinek.
 
 **Objective** | **Részletek** | **Összehasonlítás**
 --- | --- | --- 
-**Adatok biztonsági mentése és megőrzése** | Biztonsági mentési adatok őrződnek meg, illetve tárolt napig, hónapok vagy évek még ha a megfelelőség szempontjából szükséges. | Például az Azure Backup biztonsági mentési megoldások lehetővé teszik, hogy válasszon a készíteni kívánt adatokat, és hogy a biztonsági mentési és adatmegőrzési szabályzatok hangolása céljából.<br/><br/> A Site Recovery nem teszi lehetővé az azonos finomhangolása.
+**Adatok biztonsági mentése és megőrzése** | Biztonsági mentési adatok őrződnek meg, illetve tárolt napig, hónapok vagy évek még ha a megfelelőség szempontjából szükséges. | Például az Azure Backup biztonsági mentési megoldások lehetővé teszik, hogy válasszon a készíteni kívánt adatokat, és hogy a biztonsági mentési és adatmegőrzési szabályzatok hangolása céljából.<br/><br/> A Site Recovery nem teszi lehetővé az azonos való elősegítésével.
 **Helyreállítási időkorlát (RPO)** | Az elfogadható adatveszteség mennyisége, ha helyreállítást kell végezni. | Biztonsági másolatok több változó RPO rendelkezik.<br/><br/> Virtuális gép biztonsági mentéseinek általában rendelkeznek egy nap az RPO, míg adatbázisok biztonsági mentései rpo-k akár 15 percet is.<br/><br/> A Site recoveryben alacsony RPO-e a replikáció folyamatos vagy gyakori, úgy, hogy a különbözeti között a forrás és a replika másolás kis óta.
 **A helyreállítási időre vonatkozó célkitűzés (RTO)** |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. | A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. 
 
@@ -66,7 +70,7 @@ Az Azure Backup a helyszíni gépek és Azure virtuális gépek készíthető.
 
 **Gép** | **Készítsen biztonsági másolatot a forgatókönyv**
 --- | ---
-**A helyszíni biztonsági mentés** |  1.) futtassa az Azure Backup a Microsoft Azure Recovery Services (MARS) ügynök a helyi Windows-gépek egyedi fájlokat és a rendszerállapot biztonsági mentése. <br/><br/>2.) biztonsági mentése a helyszíni gépek biztonsági mentési kiszolgálóra (a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS)), és konfigurálja a biztonsági mentési kiszolgálóra, egy Azure Backup helyreállítási tárba történő biztonsági mentés az Azure-ban.
+**A helyszíni biztonsági mentés** |  1.) futtassa az Azure Backup a Microsoft Azure Recovery Services (MARS) ügynök a helyi Windows-gépek egyedi fájlokat és a rendszerállapot biztonsági mentése. <br/><br/>2.) biztonsági mentése a helyszíni gépek biztonsági mentési kiszolgálóra (a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS)), és konfigurálja a biztonsági mentési kiszolgálóra történő biztonsági mentése az Azure biztonsági mentés a Recovery Services tárolóba az Azure-ban.
 **Az Azure virtuális gépek** | 1.) a biztonsági mentés engedélyezése az egyes Azure virtuális gépek. Ha engedélyezi a biztonsági mentés, az Azure Backup egy kiterjesztést telepít az Azure-beli Virtuálisgép-ügynök, amely a virtuális gép fut-e. Az ügynök teljes virtuális gép biztonsági mentését.<br/><br/> 2.) futtassa a MARS-ügynök egy Azure virtuális Gépen. Ez akkor hasznos, ha egyes fájlok és mappák biztonsági mentése a virtuális gépen.<br/><br/> 3.) biztonsági mentése Azure virtuális gép egy DPM-kiszolgáló vagy az Azure-ban futó MABS. Használja az Azure Backup-tárolóba, majd biztonsági mentése a DPM-kiszolgáló/MABS. 
 
 

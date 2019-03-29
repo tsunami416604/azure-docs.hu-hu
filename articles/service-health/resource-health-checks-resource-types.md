@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: a8bc82a2717bfa6838b2331ef54ed8098422c223
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770339"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620750"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető
 Alább az erőforrástípusok szerint resource health segítségével végrehajtott összes ellenőrzés teljes listája.
@@ -51,10 +51,15 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 |---|
 |<ul><li>A kiszolgáló a virtuális gépet üzemeltető fel és futó?</li><li>Befejeződött a gazdagép operációs rendszer rendszerindítást?</li><li>A virtuálisgép-tároló üzembe helyezett és kapcsolt be?</li><li>Van-e hálózati kapcsolat a gazdagép és a storage-fiók között?</li><li>Befejeződött a vendég operációs rendszerben indul el?</li><li>Nem tervezett karbantartást?</li></ul>|
 
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Sikertelen folyamatfuttatás nem voltak?</li><li>A fürt üzemelteti a Data Factory kifogástalan?</li></ul>|
+
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Felhasználók problémákat tapasztal vagy a listázása a Data Lake Analytics-feladatok elküldése van?</li><li>Data Lake Analytics-feladatok nem lehet végrehajtani a rendszerhibák vannak?</li></ul>|
+|<ul><li>Felhasználók problémákat tapasztal vagy a listázása a Data Lake Analytics-feladatok elküldése van?</li><li>Data Lake Analytics-feladatok nem lehet végrehajtani a rendszer hibái miatt vannak?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -62,8 +67,27 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 |---|
 |<ul><li>Tapasztaltak a felhasználóknak a problémák adatok feltöltése a Data Lake Store?</li><li>Tapasztaltak a felhasználók adatokat tölti le a Data Lake Store problémákat?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/Services
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A database migration service kiépítése nem sikerült?</li><li>A database migration service leállt miatt tétlen vagy felhasználói kérésre?</li></ul>|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A kiszolgáló karbantartás miatt nem érhető el?</li><li>A kiszolgáló újrakonfigurálás miatt nem érhető el?</li></ul>|
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A kiszolgáló karbantartás miatt nem érhető el?</li><li>A kiszolgáló újrakonfigurálás miatt nem érhető el?</li></ul>|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A kiszolgáló karbantartás miatt nem érhető el?</li><li>A kiszolgáló újrakonfigurálás miatt nem érhető el?</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Működik-e az IoT hub?</li></ul>|
@@ -73,15 +97,40 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 |---|
 |<ul><li>Ott volt bármilyen adatbázis és gyűjtemény kérelmek nem szolgálja ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt?</li><li>Van már nem szolgálja ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt dokumentum kérések?</li></ul>|
 
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Az Event Hubs-névtér tapasztalja felhasználó által generált hibák?</li><li>Az Event Hubs-névtér jelenleg frissítés alatt áll?</li></ul>|
+
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Alapvető szolgáltatásához érhetők el a HDInsight-fürtön?</li><li>Hozzáférhet a HDInsight-fürt az inaktív BYOK-titkosítási kulcsot?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Az Azure KeyVault platformmal kapcsolatos problémák miatt sikertelen kéréseket a key vault?</li><li>Vannak a key vaulttal kérelmek miatt szabályozás alatt áll ügyfél által végrehajtott túl sok kérelmet?</li></ul>|
 
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Az Application Gateway csökkentett teljesítményű teljesítményét van?</li><li>Az Application Gateway érhető el?</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A VPN-alagút csatlakozik?</li><li>Vannak-e konfigurációs ütközések a kapcsolatot?</li><li>Az előmegosztott kulcsok megfelelően legyenek konfigurálva?</li><li>A helyszíni VPN-eszköz érhető el?</li><li>Vannak-e eltérést az IPSec/IKE-biztonsági házirend?</li><li>Megfelelően kiépített vagy hibás állapotban van az S2S VPN-kapcsolat?</li><li>Megfelelően kiépített vagy hibás állapotban van a VNET – VNET kapcsolat?</li></ul>|
+
+## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Az ExpressRoute-kapcsolatcsoport kifogástalan állapotban van?</li></ul>|
+
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Bejárati ajtajának háttérrendszerek reagál a hibás állapot-mintavételei?</li><li>Késnek konfigurációs módosításokat?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Végrehajtott ellenőrzések|
@@ -91,7 +140,12 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li> Végrehajtható futásidejű műveletek, mint a regisztráció, a telepítéshez vagy a Küldés a névtér?</li></ul>|
+|<ul><li>Végrehajtható futásidejű műveletek, mint a regisztráció, a telepítéshez vagy a Küldés a névtér?</li></ul>|
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/Workspaces
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>-E a munkaterület az késleltetések indexelő?</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |Végrehajtott ellenőrzések|
@@ -101,7 +155,7 @@ Alább az erőforrástípusok szerint resource health segítségével végrehajt
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>A gazda operációs rendszer működik és elérhető?</li><li>Az a workspaceCollection az adatközponton kívülről elérhető?</li><li>A Power bi erőforrás-szolgáltató érhető el?</li><li>Érhető el a Power bi szolgáltatás a megfelelő régióban?</li></ul>|
+|<ul><li>A gazda operációs rendszer működik és elérhető?</li><li>Az a workspaceCollection az adatközponton kívülről elérhető?</li><li>A Power BI erőforrás-szolgáltató érhető el?</li><li>Érhető el a Power BI szolgáltatásban a megfelelő régióban?</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |Végrehajtott ellenőrzések|

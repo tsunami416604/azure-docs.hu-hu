@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/12/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109341"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578611"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -30,8 +30,10 @@ Futtató fiókok két típusa van:
   * Létrehoz egy *AzureRunAsConnection* nevű Automation-kapcsolatobjektumot a megadott Automation-fiókban. Ez a kapcsolatobjektum magában foglalja az alkalmazásazonosítót, a bérlőazonosítót, az előfizetés-azonosítót és a tanúsítvány ujjlenyomatát.
 
 * **Az Azure klasszikus futtató fiók** – Ez a fiók használható a klasszikus üzembe helyezési modell erőforrások kezeléséhez.
+  * Létrehoz egy felügyeleti tanúsítványt az előfizetésben
   * Létrehoz egy *AzureClassicRunAsCertificate* nevű Automation-tanúsítványobjektumot a megadott Automation-fiókban. Ez a tanúsítványobjektum tartalmazza a felügyeleti tanúsítvány által használt titkos tanúsítványkulcsot.
   * Létrehoz egy *AzureClassicRunAsConnection* nevű Automation-kapcsolatobjektumot a megadott Automation-fiókban. Ez a kapcsolatobjektum tartalmazza az előfizetés nevét, a subscriptionId paramétert, valamint a tanúsítványobjektum nevét.
+  * Létrehozni vagy megújítani az előfizetés társrendszergazdájának kell lennie.
   
   > [!NOTE]
   > Az Azure Cloud Solution Provider (az Azure CSP)-előfizetések támogatása csak az Azure Resource Manager modellel, nem az Azure Resource Manager - szolgáltatások nem érhetők el a programban. Az Azure klasszikus futtató fiók létrehozása nem CSP-előfizetésekben használatakor. Az Azure futtató fiók továbbra is létrejön. Kriptográfiai Szolgáltató az előfizetésekkel kapcsolatos további tudnivalókért lásd: [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
@@ -52,6 +54,10 @@ Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és enge
 <sup>1</sup> az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [AD-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Ha az Azure AD-bérlő **felhasználók regisztrálhatnak alkalmazásokat** beállítást **felhasználói beállítások**oldal legyen **Igen**. Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre.
 
 Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják a globális rendszergazdai vagy társadminisztrátori szerepkörhöz az előfizetés, vendégként van hozzáadva. Ebben a helyzetben kap egy `You do not have permissions to create…` szóló figyelmeztetés a **Automation-fiók hozzáadása** lap. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
+
+## <a name="permissions-classic"></a>Engedélyek konfigurálása a klasszikus futtató fiókok
+
+Beállítható, vagy megújítani a klasszikus futtató fiókokat kell rendelkeznie a **társ-rendszergazdaként** szerepkört az előfizetés szintjén. Klasszikus engedélyekkel kapcsolatos további tudnivalókért lásd: [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md#add-a-co-administrator).
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Futtató fiók létrehozása a portálon
 
@@ -197,10 +203,10 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
         return
     }
 
-    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous 8 lines that import the AzureRM modules to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
 
     # Import-Module Az.Automation
-    # Enable-AzureRmAlias 
+    # Enable-AzureRmAlias
 
 
     Connect-AzureRmAccount -Environment $EnvironmentName 
@@ -357,7 +363,7 @@ A tanúsítvány megújításához tegye a következőket:
 
     ![Futtató fiók tanúsítványának megújítása](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. A tanúsítvány megújítása során a menü **Értesítések** részén nyomon követheti a folyamat állapotát. 
+1. A tanúsítvány megújítása során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
 
 ## <a name="limiting-run-as-account-permissions"></a>Futtató fiók vonatkozó engedélyek korlátozása
 
@@ -394,4 +400,3 @@ A futtató fiókkal kapcsolatos hasonló problémákat gyorsan elháríthatja a 
 
 * Szolgáltatásnevekkel kapcsolatos további információkért lásd: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok](../active-directory/develop/app-objects-and-service-principals.md).
 * Tanúsítványokkal és az Azure-szolgáltatásokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
-

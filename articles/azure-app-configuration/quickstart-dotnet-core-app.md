@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e00c086e0b91c0f48821143ff118c62afdd76e82
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485169"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575768"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -57,14 +57,16 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 
         dotnet restore
 
-3. Nyissa meg *Program.cs*, és frissítse a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt az `builder.AddAzureAppConfiguration()` metódust.
+3. Nyissa meg *Program.cs*, és vegyen fel egy hivatkozást az alkalmazás konfigurációs .NET Core konfigurációszolgáltatót.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+4. Frissítés a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt az `builder.AddAzureAppConfiguration()` metódust.
 
+    ```csharp
     static void Main(string[] args)
     {
         var builder = new ConfigurationBuilder();

@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d2b0209f57ff5f59d59ee057db7675b2dcd071b8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522060"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621498"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -408,19 +408,19 @@ A következő tárolt eljárások a [feladatok adatbázis](sql-database-job-auto
 
 |Tárolt eljárás  |Leírás  |
 |---------|---------|
-|sp_add_job     |     Hozzáad egy új feladatot.    |
-|sp_update_job    |      Frissíti egy meglévő feladat.   |
-|sp_delete_job     |      Egy meglévő feladat törlése.   |
-|sp_add_jobstep    |    Egy lépést ad egy feladathoz.     |
-|sp_update_jobstep     |     Egy feladat lépésének frissíti.    |
-|sp_delete_jobstep     |     Egy feladat lépésének törlése.    |
-|sp_start_job    |  Elindul egy feladat végrehajtása.       |
-|sp_stop_job     |     Egy feladat végrehajtása leáll.   |
-|sp_add_target_group    |     Cél csoport hozzáadása.    |
-|sp_delete_target_group     |    A célként megadott csoport törlése.     |
-|sp_add_target_group_member     |    Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.     |
-|sp_delete_target_group_member     |     A cél a csoporttag eltávolítása egy célcsoportot.    |
-|sp_purge_jobhistory    |    Eltávolít egy feladat replikálásielőzmény-rekord.     |
+|[sp_add_job](#sp_add_job)     |     Hozzáad egy új feladatot.    |
+|[sp_update_job](#sp_update_job)    |      Frissíti egy meglévő feladat.   |
+|[sp_delete_job](#sp_delete_job)     |      Egy meglévő feladat törlése.   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    Egy lépést ad egy feladathoz.     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     Egy feladat lépésének frissíti.    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     Egy feladat lépésének törlése.    |
+|[sp_start_job](#sp_start_job)    |  Elindul egy feladat végrehajtása.       |
+|[sp_stop_job](#sp_stop_job)     |     Egy feladat végrehajtása leáll.   |
+|[sp_add_target_group](#sp_add_target_group)    |     Cél csoport hozzáadása.    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    A célként megadott csoport törlése.     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     A cél a csoporttag eltávolítása egy célcsoportot.    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    Eltávolít egy feladat replikálásielőzmény-rekord.     |
 
 
 
@@ -1195,13 +1195,13 @@ A következő nézetek érhetők el a [feladatok adatbázis](sql-database-job-au
 
 |Nézet  |Leírás  |
 |---------|---------|
-|jobs_executions     |  Látható feladat-végrehajtási előzményei.      |
+|[jobs_executions](#jobs_executions-view)     |  Látható feladat-végrehajtási előzményei.      |
 |[jobs](#jobs-view)     |   Az összes feladat látható.      |
-|job_versions     |   Az összes feladat verzió látható.      |
+|[job_versions](#job_versions-view)     |   Az összes feladat verzió látható.      |
 |[feladatlépésnél](#jobsteps-view)     |     Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.    |
-|jobstep_versions     |     Minden egyes feladat összes verzióját az összes lépéseit mutatja be.    |
-|target_groups     |      Az összes célcsoportok mutatja.   |
-|target_group_members     |   Minden célként megadott csoport minden tagját mutatja.      |
+|[jobstep_versions](#jobstep_versions-view)     |     Minden egyes feladat összes verzióját az összes lépéseit mutatja be.    |
+|[target_groups](#target_groups-view)     |      Az összes célcsoportok mutatja.   |
+|[target_group_members](#target_groups_members-view)     |   Minden célként megadott csoport minden tagját mutatja.      |
 
 
 ### <a name="jobsexecutions-view"></a>jobs_executions megtekintése
@@ -1347,4 +1347,3 @@ Minden célként megadott csoport minden tagját mutatja.
 
 - [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
 - [Engedélyezési és az engedélyek az SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

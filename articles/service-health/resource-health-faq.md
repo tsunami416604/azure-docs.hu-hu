@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884538"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579563"
 ---
 # <a name="azure-resource-health-faq"></a>Az Azure Resource Health – gyakori kérdések
 Ismerje meg az Azure Resource Health szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat.
@@ -50,7 +50,7 @@ Igen, amikor az erőforrás nem érhető el, a Resource Health azonosítja az ez
 A portálon a felhasználó által kezdeményezett műveletek láthatók használatával egy kék értesítési ikon jelenik meg, amíg a tervezett és nem tervezett események piros figyelmeztető ikon jelenik meg. További részletek szerepelnek a [Resource Health áttekintése](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Integrálhatom az saját monitorozási eszközökkel a Resource Health?
-A Resource health szolgáltatás, amelyek segítségével diagnosztizálhatja és kezelheti az Azure-szolgáltatási problémák, amelyek hatással az erőforrások. Bár a Resource Health API használatával programozott módon megszerezni az állapot, javasolt metrikák használatával figyeli az erőforrások. Ha problémát észlel, a Resource Health segít megállapítani a hiba okát, és végigvezeti a felhasználót és azok leküzdési műveletek. Látogasson el [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) tudhat meg többet használatáról metrikák ellenőrizze az erőforrások.
+A Resource health rendelkezik [támogatása előzetes](resource-health-alert-arm-template-guide.md) tevékenységnapló-riasztások alapú. Tevékenységnapló-riasztások használata [Műveletcsoportok](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups) figyelmezteti a felhasználókat, hogy egy riasztás aktiválódott-e. Műveletcsoportok különböző értesítési csatornákat, például az e-mailben, SMS, webhook és ITSM-műveletek támogatásához.
 
 ## <a name="where-do-i-find-resource-health"></a>Hol találom meg a Resource Health?
 Az Azure Portalra való bejelentkezés után többféleképpen is elérheti a Resource Health:
@@ -67,13 +67,7 @@ Resource Health segítségével támogatott erőforrástípusok és állapot-ell
 Ha egy erőforrás állapotának ellenőrzése, az állapot szerinti kattint **helytelen állapot jelentése**. A jelentés az elküldés előtt, hogy a lehetőséget, hogy további részleteket a miért véli, hogy az aktuális állapot-ellenőrzése nem megfelelő.
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Az összes Azure-régióban érhető el a Resource Health? 
-A Resource health között az összes Azure helyeken, kivéve a következő régiókban érhető el:
-- USA-beli államigazgatás – Virginia
-- US Gov Iowa
-- US DoD – Kelet
-- US DoD – Középső régió
-- Közép-Németország
-- Északkelet-Németország
+A Resource health az összes Azure helyeken érhető el.
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Miben különbözik a Resource Health az Azure állapota, vagy a Service Health dashboard?
 A Resource Health által biztosított információkkal pontosabb, mint amit az Azure állapota, vagy a Service Health dashboard által biztosított.

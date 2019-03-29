@@ -1,5 +1,5 @@
 ---
-title: E-mail-értesítések a PIM – Azure |} A Microsoft Docs
+title: E-mail-értesítések a PIM - Azure Active Directory |} A Microsoft Docs
 description: Az Azure AD Privileged Identity Management (PIM) e-mail-értesítések ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905171"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576947"
 ---
 # <a name="email-notifications-in-pim"></a>A PIM e-mail-értesítések
 
-Az Azure AD Privileged Identity Management (PIM) lehetővé teszi, hogy amikor fontos események történnek, például amikor egy szerepkör hozzárendelése vagy aktiválása. A PIM követi Önt folyamatosan értesíteni, és egyéb résztvevői e-mail-értesítések küldésével. E-mailek tartalmazhat kapcsolódó feladatok, az ilyen aktiválása vagy szerepkör megújítása mutató hivatkozásokat is. Ez a cikk bemutatja, hogyan meg e-mailek, mikor kapják, és ki kapja.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) lehetővé teszi, hogy amikor fontos események történnek, például amikor egy szerepkör hozzárendelése vagy aktiválása. A PIM követi Önt folyamatosan értesíteni, és egyéb résztvevői e-mail-értesítések küldésével. E-mailek tartalmazhat kapcsolódó feladatok, az ilyen aktiválása vagy szerepkör megújítása mutató hivatkozásokat is. Ez a cikk bemutatja, hogyan meg e-mailek, mikor kapják, és ki kapja.
 
 ## <a name="sender-email-address-and-subject-line"></a>Feladó e-mail címét és a tulajdonos sor
 
@@ -101,5 +101,5 @@ Az alábbiakban látható egy például szolgáló e-mail érkezik, amikor egy f
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
-- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)
+- [A PIM az Azure AD szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)

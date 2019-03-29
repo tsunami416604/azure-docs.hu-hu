@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: f292ad5802af6765ec26df7de1aa271e1214e0e9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: a31380c8581503a340c55c374afc02c6e1fa290b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983013"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577169"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Az Azure Monitor tárolók áttekintése
 
@@ -31,9 +31,12 @@ Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérősz
 A tárolók az Azure Monitor számos előre meghatározott nézeteket, amelyek bemutatják az adataihoz, tárolókhoz kapcsolódó számítási feladatot, és milyen hatással van a figyelt Kubernetes-fürt teljesítménybeli állapotát, így is tartalmazza:  
 
 * AKS-tárolók, a csomópont és a processzor és memória átlagos kihasználtság futó azonosításához. A Tudásbázis segítségével erőforrás szűk keresztmetszetek azonosítása.
-* Azonosítsa a tárolócsoportok és a tárolók az Azure Container Instances szolgáltatásban üzemeltetett processzor és memória felhasználását.  * Azonosítása, ahol a tároló található a vezérlő vagy podot. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye.
+* Azonosítsa a tárolócsoportok és a tárolók az Azure Container Instances szolgáltatásban üzemeltetett processzor és memória felhasználását.  
+* Azonosítsa, amelyben a tároló található a vezérlő vagy podot. A Tudásbázis segítségével megtekintheti a vezérlő vagy a pod általános teljesítménye.
 * Tekintse át az erőforrás-használat, a gazdagépen futó számítási feladatok, amely a szabványos folyamatokat, amelyek támogatják a pod kapcsolódnak.
 * Ismerje meg a fürt átlagos és a leggyakrabban használt terhelések viselkedését. Ennek segítségével azonosíthatja a kapacitásbeli szükségleteket, és döntse el, a legnagyobb terhelést, amely képes elviselni a fürt. 
+
+Proaktív módon Önt, és jegyezze fel, amikor a CPU és memória kihasználtságáról, a csomópontok és a tárolók túllépi a küszöbértékek riasztásokat is lehet konfigurálni.  
 
 ## <a name="how-do-i-access-this-feature"></a>Hogyan érhetem el ezt a szolgáltatást?
 Az Azure Monitor-tárolókhoz az Azure Monitor vagy közvetlenül a kijelölt AKS-fürt két módon érheti el. Az Azure Monitor rendelkezik az összes tárolót egy globális szempontjából telepített, amely monitorozza, és amelyek nincsenek, amely lehetővé teszi a Keresés és szűrés az előfizetések és erőforráscsoportok, és a kiválasztott tárolók az Azure Monitor ezután részletes a tároló.  Ellenkező esetben egyszerűen a funkció eléréséhez közvetlenül a kijelölt AKS tároló az AKS oldalról.  

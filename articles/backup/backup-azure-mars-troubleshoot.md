@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: a9a445208c151a537c35fa7afafa48b19486828f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008157"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621617"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibaelhárítása
 
@@ -60,7 +60,7 @@ Oldja meg az esetlegesen előforduló hibák során konfigurációja, a regisztr
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Biztonsági másolatok ne futtassa a megadott ütemezés szerint
 Ha ütemezett biztonsági mentések nem lekérése automatikusan, amíg a manuális biztonsági mentések problémamentesen működik, próbálja meg a következő műveleteket:
 
-- Győződjön meg arról, a Windows Server biztonsági mentés ütemezése nem ütközik az Azure-fájlok és mappák biztonsági mentés ütemezése.
+- Győződjön meg arról, a Windows Server biztonsági mentés ütemezése nem ütközik az Azure fájlok és mappák biztonsági mentés ütemezése.
 - Lépjen a **vezérlőpultot** > **felügyeleti eszközök** > **Feladatütemező**. Bontsa ki a **Microsoft**, és válassza ki **Online biztonsági mentés**. Kattintson duplán a **Microsoft-OnlineBackup**, és nyissa meg a **eseményindítók** fülre. Győződjön meg arról, hogy az állapot értéke **engedélyezve**. Ha nem, válassza ki a **szerkesztése**, és válassza ki a **engedélyezve** jelölőnégyzetet, majd kattintson **OK**. Az a **általános** lépjen **biztonsági beállítások** , és győződjön meg arról, hogy a feladat futtatásához a kiválasztott felhasználói fiók vagy **rendszer** vagy **helyi Rendszergazdák csoport** a kiszolgálón.
 
 - Tekintse meg, ha a PowerShell 3.0-s vagy újabb verziója telepítve van-e a kiszolgálón. A PowerShell-verziójának ellenőrzéséhez futtassa a következő parancsot, és ellenőrizze, hogy a *fő* verziószáma 3-nál nagyobb vagy egyenlő.

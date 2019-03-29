@@ -1,6 +1,6 @@
 ---
-title: Mik az Azure AD hozzáférési felülvizsgálatok? | Microsoft Docs
-description: Az Azure Active Directory hozzáférési felülvizsgálatok segítségével, szabályozási, kockázatkezelési és megfelelőségi irányelveinek a szervezet megfelel a csoporttagságot és az alkalmazás hozzáférési csoport szabályozhatja.
+title: Mik azok a hozzáférési felülvizsgálatok? – Az azure Active Directory |} A Microsoft Docs
+description: Használja az Azure Active Directory hozzáférési felülvizsgálatok, szabályozási, kockázatkezelési és megfelelőségi irányelveinek a szervezet megfelel a csoporttagságot és az alkalmazás hozzáférési csoport szabályozhatja.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845154"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576122"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik az Azure AD hozzáférési felülvizsgálatok?
 
@@ -42,7 +42,7 @@ Az Azure AD lehetővé teszi a szervezeten belül, és a külső szervezetek, p�
 
 ## <a name="when-to-use-access-reviews"></a>Mikor érdemes használni a hozzáférési felülvizsgálatok?
 
-- **Kiemelt szerepkörű felhasználók túl sok:** Azt, hogy hány felhasználó rendszergazdai hozzáféréssel rendelkezik-e célszerű, hány, azokat a globális rendszergazdák, ha vannak ilyenek, és meghívhatják a Vendégek vagy partnerek után érvényessége a felhasználóhoz egy felügyeleti feladat nem lettek eltávolítva. Újrahitelesítheti a szerepkör-hozzárendelés felhasználókat a [az Azure AD-címtárbeli szerepkörök](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a globális rendszergazdák vagy [Azure-erőforrások szerepkörök](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a felhasználói hozzáférés rendszergazdája a a [Azure ad-ben Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) tapasztalható.
+- **Kiemelt szerepkörű felhasználók túl sok:** Azt, hogy hány felhasználó rendszergazdai hozzáféréssel rendelkezik-e célszerű, hány, azokat a globális rendszergazdák, ha vannak ilyenek, és meghívhatják a Vendégek vagy partnerek után érvényessége a felhasználóhoz egy felügyeleti feladat nem lettek eltávolítva. Újrahitelesítheti a szerepkör-hozzárendelés felhasználókat a [Azure AD-szerepkörök](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a globális rendszergazdák vagy [Azure-erőforrások szerepkörök](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) például a felhasználói hozzáférés rendszergazdája a a [az Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) tapasztalható.
 - **Amikor az automation is létre lehessen hozni:** Létrehozhatók olyan szabályok, biztonsági vagy Office 365-csoportok, a dinamikus tagságot, de mi történik a HR-adatokat, ha nem az Azure ad-ben, vagy ha felhasználók továbbra is hozzá kell férniük a csere taníthat be a csoport elhagyása után? Ezután létrehozhat azoknak, akik továbbra is hozzá kell férniük kaphatnak folyamatos hozzáférést biztosítani, hogy a csoport értékelést.
 - **Ha egy csoport egy új célra szolgál:** Ha egy csoportot, amelyet szeretne szinkronizálja az Azure ad-hez, vagy ha azt tervezi, hogy az értékesítési csapat csoport minden tagja számára a Salesforce alkalmazás, hasznos lenne, kérje meg a csoport tagságát, a csoport használatban van egy másik kockázati co előtt tekintse át a csoport tulajdonosa tartalomegyezés.
 - **Üzleti kritikus fontosságú adatok elérése:** bizonyos erőforrásokhoz, szükséges lehet kívüli személyek kérni, hogy rendszeresen jelentkezzen ki, és adjon egy indoklás miért szükséges hozzáférés naplózási célokra.
@@ -52,13 +52,13 @@ Az Azure AD lehetővé teszi a szervezeten belül, és a külső szervezetek, p�
 
 ## <a name="where-do-you-create-reviews"></a>Ahol felülvizsgálatok létrehozni?
 
-Attól függően, amit meg szeretné tekinteni a hozzáférési felülvizsgálat hoz létre az Azure AD hozzáférési felülvizsgálatok, az Azure AD vállalati alkalmazásokat (az előzetes verzió) vagy az Azure AD PIM-ben.
+Attól függően, amit meg szeretné tekinteni, a hozzáférési felülvizsgálat fog létrehozni az Azure AD hozzáférési felülvizsgálatok, az Azure AD vállalati alkalmazásokat (az előzetes verzió) vagy az Azure AD PIM-ben.
 
 | A felhasználók hozzáférési jogosultságok | Felülvizsgálók is lehet. | Tekintse át a létrehozott | Felülvizsgáló élmény |
 | --- | --- | --- | --- |
-| Biztonsági csoport tagjai</br>Office-csoport tagjai | Megadott felülvizsgálók</br>Csoporttulajdonosok</br>Önkiszolgáló áttekintése | Az Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD-csoportok | Hozzáférési panel |
-| Egy csatlakoztatott alkalmazáshoz rendelve | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD vállalati alkalmazások (az előzetes verzió) | Hozzáférési panel |
-| Az Azure AD-címtárbeli szerepkört | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD PIM-ben | Azure Portal |
+| Biztonsági csoport tagjai</br>Office-csoport tagjai | Megadott felülvizsgálók</br>Csoporttulajdonosok</br>Önkiszolgáló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD-csoportok | Hozzáférési panel |
+| Egy csatlakoztatott alkalmazáshoz rendelve | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Azure AD hozzáférési felülvizsgálatok</br>Az Azure AD vállalati alkalmazások (az előzetes verzió) | Hozzáférési panel |
+| Az Azure AD-szerepkörhöz | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD PIM-ben | Azure Portal |
 | Azure-erőforrás-szerepkör | Megadott felülvizsgálók</br>Önkiszolgáló áttekintése | Az Azure AD PIM-ben | Azure Portal |
 
 ## <a name="prerequisites"></a>Előfeltételek

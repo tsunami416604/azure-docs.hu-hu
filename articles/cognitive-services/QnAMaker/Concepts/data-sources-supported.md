@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433110"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578628"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -32,7 +32,11 @@ Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Make
 
 ## <a name="data-source-locations"></a>Adatforrás helye
 
-Csak nyilvános URL-címek érvényesek minden adatforráson. Ne küldjön el a hitelesítést igénylő adatforrások. A hitelesített webhelyről töltheti le a fájlt, majd a fájl feltöltési, amelynek segítségével a kérdések és válaszok kinyerése.
+A legtöbb adatforrás helyének meg kell adnia a nyilvános URL-címeket vagy -fájlokat, amelyek nem igényelnek a hitelesítést. 
+
+[A SharePoint-adatforrás helyek](../How-to/add-sharepoint-datasources.md) biztosít hitelesített fájlok engedélyezettek. SharePoint-erőforrások fájlok, nem a weblapok kell lennie. 
+
+Ha egy hitelesített fájlba vagy URL-címe van, egy másik lehetőség, hogy töltse le a fájlt a hitelesített helyről a helyi számítógépen, majd adja hozzá a helyi számítógépet, hogy a Tudásbázis. 
 
 ## <a name="faq-urls"></a>Gyakori kérdések URL-címek
 

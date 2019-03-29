@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775322"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620636"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Méretezési csoport partíciókat és -replikákat a lekérdezés és a számítási feladatok indexeléséhez az Azure Search
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépés az, hogy szükség esetén a replikákat és partíciókat, a szolgáltatás által használt számának növelésére. Minden egyes számlázási egységek rögzített számú kínálja. Ez a cikk ismerteti azokat az egységeket optimális konfigurációt, amely elosztja a lekérdezés-végrehajtás, indexelési és tárolási követelményeinek elérésére lefoglalása.
 
-Erőforrás-konfigurációban érhető el a szolgáltatás üzembe helyezésekor meg a [alapszintű csomag](https://aka.ms/azuresearchbasic) vagy az egyik a [normál szintű csomagjai](search-limits-quotas-capacity.md). Ezek a csomagok, szolgáltatások, előállításának egységnyi növekményekben *keresési egységek* (su) Ha mindegyik partíciót és a replika számít-e egy SU. 
+Erőforrás-konfigurációban érhető el a szolgáltatás üzembe helyezésekor meg a [alapszintű csomag](https://aka.ms/azuresearchbasic) vagy az egyik a [Standard vagy a tárolásra optimalizált szint](search-limits-quotas-capacity.md). Ezek a csomagok, szolgáltatások, előállításának egységnyi növekményekben *keresési egységek* (su) Ha mindegyik partíciót és a replika számít-e egy SU. 
 
 SUs kevesebb találatot használata egy arányosan alacsonyabb számlákat. A számlázás érvényben a mindaddig, amíg a szolgáltatás be van állítva. Átmenetileg nem használ olyan szolgáltatást, ha az egyetlen lehetőség a számlázás elkerülése érdekében a a szolgáltatás törlése, és ezután hozza létre újra szükség esetén.
 
@@ -81,7 +81,7 @@ Szeretné növelni, vagy a lefoglalást a replikák és partíciók, javasoljuk,
 
 Egy egyszerű szolgáltatást is pontosan egy partícióval rendelkezik, és legfeljebb három replika, legfeljebb korlátozhatja három SUS. A csak állítható erőforrás a replikákat. A lekérdezések magas rendelkezésre állás érdekében legalább két replika van szüksége.
 
-A standard szintű services feltételezheti, hogy a következő fájlattribútumok replikákat és partíciókat, a 36-SU korlát vonatkozik. 
+Minden standard szintű és tárolásra optimalizált keresési szolgáltatások feltételezheti, hogy a következő fájlattribútumok replikákat és partíciókat, a 36-SU korlát vonatkozik. 
 
 |   | **1 partíció** | **2 partíció** | **3 partíció** | **4 partíciók** | **6 partíciók** | **12 partícióra** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ Mivel a szolgáltatás egyszerűen és viszonylag gyorsan vertikális, általáb
 
 Szolgáltatói szerződések (SLA) az Azure Search lekérdezési műveletek vagy egy index frissítéseit hozzáadása, frissítése vagy törlése a dokumentumok álló célozzák meg.
 
-Alapszintű csomag korona egy partíciót és három replika készül. Ha azt szeretné, hogy az indexelés és a lekérdezési teljesítmény iránti igény ingadozása azonnal reagálni a rugalmasságot, fontolja meg a Standard csomagok valamelyikére.
+Alapszintű csomag korona egy partíciót és három replika készül. Ha azt szeretné, hogy az indexelés és a lekérdezési teljesítmény iránti igény ingadozása azonnal reagálni a rugalmasságot, fontolja meg a Standard csomagok valamelyikére.  Ha megtalálta a tárolási igényei folyamatosan nőnek sokkal gyorsabban, mint a lekérdezési teljesítmény, fontolja meg a tárolásra optimalizált csomagok valamelyikére.
 
 ### <a name="index-availability-during-a-rebuild"></a>Index elérhetőségére újjáépítést során
 

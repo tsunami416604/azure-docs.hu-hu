@@ -6,17 +6,17 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 69a2d9e7858c0f152056e821c19caa9852b420d5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57555127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620276"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
 
 Rugalmasság és a vészhelyreállítás online rendszerek közös szüksége. Az Azure SignalR Service már garantálja a 99,9 %-os rendelkezésre állást, de továbbra is egy regionális szolgáltatás.
-A szolgáltatáspéldány mindig fut egy adott régióban, és a egy régióra kiterjedő szolgáltatáskimaradás esetén nem fog a feladatátvételt egy másik régióba.
+A service-példányt egy adott régióban mindig fut-e, és nem feladatátvételt egy másik régióban egy régióra kiterjedő szolgáltatáskimaradás esetén.
 
 Ehelyett az SDK szolgáltatás támogatja a több SignalR-szolgáltatáspéldány, és automatikusan átvált a többi példány, ha ezek közül néhány nem áll rendelkezésre a funkcionalitást biztosít.
 Ezzel a funkcióval helyreállíthatja, ha katasztrófa történik, de a megfelelő topológia beállítása saját magának kell kell lennie. Ennek módját a jelen dokumentum megtudhatja.
@@ -28,8 +28,8 @@ Több szolgáltatáspéldány alkalmazás kiszolgálóhoz való csatlakozáshoz,
 Egy példányt, akik online forgalmat tart az elsődleges és másodlagos egy teljesen működőképes, de biztonsági mentési példány elsődleges.
 SDK megvalósítása fog egyeztetni csak így normális esetben az ügyfelek csak csatlakozni elsődleges végpontok elsődleges végpontok adja vissza.
 Azonban az elsődleges példány nem működik, ha fog egyeztetni másodlagos végpontok adja vissza, hogy a ügyfél továbbra is kapcsolatok.
-Elsődleges példány és az alkalmazáskiszolgáló normál kiszolgáló kapcsolatokon keresztül csatlakoznak, de a másodlagos példány és az alkalmazás server össze egy különleges gyenge kapcsolatok nevű kapcsolat.
-A gyenge kapcsolat fő különbség az, hogy nem fogadni ügyfél kapcsolat útválasztás, mert a másodlagos példány általában egy másik régióban található. Útválasztás az ügyfél egy másik régióba általában nem használhatók, az optimális választás (növeli a késés).
+Elsődleges példány és az alkalmazáskiszolgáló normál kiszolgáló kapcsolatokon keresztül csatlakoznak, de a másodlagos példány és az alkalmazáskiszolgáló össze egy speciális típusú kapcsolat gyenge kapcsolatnak nevezik.
+A gyenge kapcsolat fő különbség az, hogy nem fogadni ügyfél kapcsolat útválasztás, mert a másodlagos példány egy másik régióban található. Egy ügyfél egy másik régióba az Útválasztás nem egy optimális választás (növeli a késés).
 
 Egy szolgáltatáspéldány különböző szerepkörökkel rendelkezhetnek, több alkalmazás-kiszolgálóhoz való csatlakozáskor.
 Több régióban a forgatókönyvben egy szokásos telepítése, hogy két (vagy több) pár SignalR service-példányt és alkalmazások kiszolgálói.
@@ -51,7 +51,7 @@ Ezt megteheti két módja van:
 
 ### <a name="through-config"></a>Config keresztül
 
-Már tudnia kell, hogyan állíthatja be a környezeti változók és alkalmazástelepítés settings/web.cofig keresztül egy konfigurációs bejegyzés nevű keresztül a SignalR szolgáltatás kapcsolati karakterláncának `Azure:SignalR:ConnectionString`.
+Érdemes beállítása a SignalR service kapcsolati karakterlánc környezeti változók és alkalmazástelepítés settings/web.cofig keresztül egy konfigurációs bejegyzés nevű keresztül ismert `Azure:SignalR:ConnectionString`.
 Ha több végpontot, állítsa be őket a több konfigurációs bejegyzéseket, minden, a következő formátumban:
 
 ```
@@ -121,7 +121,7 @@ SignalR service támogathatja mind a mintákat, a fő különbség hogyan valós
 Ha alkalmazás-kiszolgálók aktív/passzív, SignalR service is aktív/passzív (amint az elsődleges alkalmazás server csak a elsődleges SignalR service példányát adja vissza).
 Ha alkalmazás-kiszolgálók aktív-aktív, SignalR service is aktív/aktív (az összes alkalmazás-kiszolgálók a saját elsődleges SignalR-példányok ad vissza, így ezek mindegyike forgalom).
 
-Meg kell említeni függetlenül attól, milyen minták használatát választja, meg kell kiszolgálóhoz való csatlakozáshoz minden SignalR szolgáltatáspéldány egy alkalmazás elsődlegesként.
+Megjegyzendő, függetlenül attól, milyen minták használatát választja, meg kell kiszolgálóhoz való csatlakozáshoz minden SignalR szolgáltatáspéldány egy alkalmazás elsődlegesként.
 
 Is (Ez a hosszú kapcsolat) SignalR kapcsolat jellege miatt az ügyfelek fog tapasztalni kapcsolat csepp Ha katasztrófa és feladatátvételi kerül sor.
 Ügyfél oldalán, hogy az átlátható legyen a végfelhasználókat az ilyen esetek kezeléséhez szükséges. Ha például újból kapcsolat bezárása után.
@@ -129,3 +129,5 @@ Is (Ez a hosszú kapcsolat) SignalR kapcsolat jellege miatt az ügyfelek fog tap
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan rugalmasság a SignalR service-alkalmazás konfigurálása rendelkezik. Szeretné megtudni, kiszolgáló vagy ügyfél-csatlakozási és a SignalR service-ben útválasztási kapcsolat kapcsolatos további részletekért, beolvashatja [Ez a cikk](signalr-concept-internals.md) a SignalR service belső elemei.
+
+Skálázás forgatókönyvek például a horizontális skálázás, több példány üzemeltetéséhez együtt nagy számú kapcsolatok kezelésére, olvassa el a [méretezése több példány](signalr-howto-scale-multi-instances.md)?

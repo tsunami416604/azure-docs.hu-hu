@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520564"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620597"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>A PowerShell-lel az Azure Search szolgáltatás kezelése
 > [!div class="op_single_selector"]
@@ -24,17 +24,17 @@ ms.locfileid: "58520564"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) létrehozása és konfigurálása [Azure Search](https://docs.microsoft.com/azure/search/). A [ **Az.Search** ](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) modul kibővíti [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0) paritásos teljes, a [Azure Search felügyeleti REST API-k](https://docs.microsoft.com/rest/api/searchmanagement). Az Azure PowerShell-lel és **Az.Search**, a következő feladatok végrehajtására:
+PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) létrehozása és konfigurálása az Azure Search. A **Az.Search** modul kiterjeszti az Azure PowerShell], a teljes paritással a [Azure Search felügyeleti REST API-k](https://docs.microsoft.com/rest/api/searchmanagement). Az Azure PowerShell-lel és **Az.Search**, a következő feladatok végrehajtására:
 
 > [!div class="checklist"]
 > * [Összes, az előfizetésben a keresési szolgáltatások](#list-search-services)
 > * [Egy adott keresési szolgáltatás adatainak lekérése](#get-search-service-information)
 > * [Hozzon létre vagy egy szolgáltatás törlése](#create-or-delete-a-service)
-> * Felügyeleti API-kulcsok újragenerálása
+> * [Felügyeleti API-kulcsok újragenerálása](#regenerate-admin-keys)
 > * [Hozzon létre vagy lekérdezési api-kulcsok törlése](#create-or-delete-query-keys)
 > * [A szolgáltatások méretezése növelésével vagy csökkentésével a replikák és partíciók](#scale-replicas-and-partitions)
 
-PowerShell nem használható a neve, régió vagy a szolgáltatási szintjének módosítása. Dedikált erőforrások vannak lefoglalva, a szolgáltatás létrehozásakor. Egy új szolgáltatás az alapul szolgáló hardver (hely vagy a csomópont típusa) módosítása szükséges. Nincsenek eszközök vagy API-k a tartalom átviteléhez. Minden tartalomkezelési keresztül van [REST](https://docs.microsoft.com/rest/api/searchservice/) vagy [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API-kat, és ha szeretné helyezni az indexek, szüksége lesz hozza létre újra és újra betölti őket az új szolgáltatás. 
+PowerShell nem használható a neve, régió vagy a szolgáltatási szintjének módosítása. Dedikált erőforrások vannak lefoglalva, a szolgáltatás létrehozásakor. Egy új szolgáltatás az alapul szolgáló hardver (hely vagy a csomópont típusa) módosítása szükséges. Nincsenek eszközök vagy API-k tartalmak átvitelére egy szolgáltatásból egy másikba. Minden tartalomkezelési keresztül van [REST](https://docs.microsoft.com/rest/api/searchservice/) vagy [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API-kat, és ha szeretné helyezni az indexek, szüksége lesz hozza létre újra és újra betölti őket az új szolgáltatás. 
 
 Noha nincsenek dedikált PowerShell-parancsokat a tartalomkezeléshez, írhat a PowerShell-parancsprogram, amely meghívja a REST és .NET létrehozására és betöltésére, indexet. A **Az.Search** modul önmagában nem biztosítja ezeket a műveleteket.
 

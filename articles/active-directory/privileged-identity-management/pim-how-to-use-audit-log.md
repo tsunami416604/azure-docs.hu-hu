@@ -1,6 +1,6 @@
 ---
-title: A PIM az Azure AD-címtárbeli szerepkörök naplózási előzmények megtekintése |} A Microsoft Docs
-description: Ismerje meg az Azure AD-címtárbeli szerepkörökhöz tartozó naplózási előzmények megtekintése az Azure AD Privileged Identity Management (PIM).
+title: A PIM - Azure Active Directory Azure AD-szerepkörökhöz tartozó naplózási előzmények megtekintése |} A Microsoft Docs
+description: Ismerje meg az Azure AD-szerepkörökhöz tartozó naplózási előzmények megtekintése az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008903"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576140"
 ---
-# <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök naplózási előzmények megtekintése
-A Privileged Identity Management (PIM) naplózási előzmények segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás minden a kiemelt szerepkörökhöz tartozó megadott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Az Azure AD-szerepköröket a PIM naplózási előzmények megtekintése
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) naplózási előzmények segítségével tekintse meg a felhasználó-hozzárendelés és aktiválás minden a kiemelt szerepkörökhöz tartozó megadott időtartamon belül. Ha meg szeretné tekinteni a teljes naplózási előzmények tevékenység a saját bérlőjében, beleértve a rendszergazda, a végfelhasználó és a szinkronizálási tevékenység, használhatja a [Azure Active Directory hozzáférési és használati jelentéseket.](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-audit-history"></a>Keresse meg a naplózási előzmények
 Az a [az Azure portal](https://portal.azure.com) irányítópulton válassza a **Azure AD Privileged Identity Management** alkalmazást. Itt kattintva férhet hozzá a naplózási előzmények **kiemelt szerepkörök kezelése** > **naplózási előzmények** a PIM-irányítópulton.

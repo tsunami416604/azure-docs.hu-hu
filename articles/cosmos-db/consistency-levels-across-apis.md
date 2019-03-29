@@ -7,75 +7,51 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001983"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620665"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
-Azure Cosmos DB által kínált öt konzisztenciamodell az SQL API natív módon támogatottak. Azure Cosmos DB használata esetén az SQL API az alapértelmezett érték. 
+Az Azure Cosmos DB natív támogatást nyújt az átviteli protokoll-kompatibilis API-k népszerű adatbázisok számára. Ezek közé tartozik a MongoDB, Apache Cassandra, Gremlin és Azure Table storage. Ezeknek az adatbázisoknak nem pontosan definiált konzisztenciamodellekkel vagy a konzisztenciaszintek vonatkozó SLA-alapú garanciákat kínál. Ezek általában az Azure Cosmos DB által kínált öt konzisztenciamodell csak egy adott részét biztosítják. 
 
-Az Azure Cosmos DB natív támogatást is nyújt átviteli protokoll-kompatibilis API-k népszerű adatbázisok számára. Adatbázisok belefoglalása a MongoDB, Apache Cassandra, Gremlin és Azure Table storage. Ezek az adatbázisok pontosan a meghatározott konzisztenciamodellt kínál vagy a konzisztenciaszintek garanciát SLA-alapú nem kínálnak. Ezek általában az Azure Cosmos DB által kínált öt konzisztenciamodell csak egy adott részét biztosítják. Az SQL API-t, a Gremlin API-t és a Table API az alapértelmezett konzisztenciaszint a következőn: az Azure Cosmos-fiók használható. 
+SQL API-t, a Gremlin API és a Table API használatakor az alapértelmezett konzisztenciaszint a következőn: az Azure Cosmos-fiók szolgál. 
 
-A következő szakaszok bemutatják a leképezés között az Apache Cassandra, mongodb-hez és a megfelelő konzisztenciaszintek az Azure Cosmos DB egy nyílt Forráskódú ügyfél-illesztőprogram által kért adatok konzisztenciáját.
+Cassandra API-t vagy az Azure Cosmos DB API a mongodb-hez használatakor alkalmazások lekérése az Apache Cassandra- és mongodb-vel, által kínált konzisztenciaszintekről, még erősebb konzisztencia-és tartóssági garancia teljes körű. Ez a dokumentum a konzisztenciaszintek a megfelelő Azure Cosmos DB Apache Cassandra- és MongoDB konzisztenciaszintek mutatja be.
+
 
 ## <a id="cassandra-mapping"></a>Az Apache Cassandra és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
-Alábbi táblázat ismerteti az egy Cassandra API-hoz és az azzal egyenértékű natív konzisztencia megfeleltetés Cosmos DB segítségével különböző konzisztencia együttes használata. Az Apache Cassandra írási és olvasási mód minden kombinációja Cosmos DB natív módon támogatottak. Minden Apache Cassandra írási és olvasási konzisztenciájú modellt kombinációját, a Cosmos DB fog biztosítani, egyenlő vagy nagyobb konzisztenciára vonatkozó garanciákat, mint az Apache Cassandra. Emellett a Cosmos DB biztosítja a nagyobb tartósságot garantál, mint az Apache Cassandra írási leggyengébb módban is.
+Eltérően AzureCosmos DB Apache Cassandra nem natív módon biztosít pontosan definiált és garantált adatkonzisztenciát biztosítanak.  Ehelyett az Apache Cassandra biztosít a konzisztenciaszint írási és olvasási konzisztenciaszint ahhoz, hogy a magas rendelkezésre állás, a konzisztencia és a késleltetés és kompromisszumot kínál a. Ha az Azure Cosmos DB Cassandra API-val: 
 
-Az alábbi táblázat a **írási konzisztencia leképezési** Azure Cosmos DB és a Cassandra között:
+* Az Apache Cassandra írási konzisztencia szintjét az alapértelmezett konzisztenciaszint a következőn: az Azure Cosmos-fiók van hozzárendelve. 
 
-| Cassandra | Azure Cosmos DB | Garancia |
-| - | - | - |
-|Összes|Erős  | Linearizálhatóság |
-| EACH_QUORUM   | Erős    | Linearizálhatóság | 
-| SOROS KVÓRUM |  Erős |    Linearizálhatóság |
-| LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, BÁRMELY | Konzisztens előtag |Globális konzisztens előtag |
-| EACH_QUORUM   | Erős    | Linearizálhatóság |
-| SOROS KVÓRUM |  Erős |    Linearizálhatóság |
-| LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, BÁRMELY | Konzisztens előtag | Globális konzisztens előtag |
-| SOROS KVÓRUM | Erős   | Linearizálhatóság |
-| LOCAL_QUORUM, HÁROM, KÉT, EGY, LOCAL_ONE, BÁRMELY | Konzisztens előtag | Globális konzisztens előtag |
-| LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE    | Kötött elavulás | <ul><li>Korlátozott frissesség.</li><li>A legtöbb K verziók vagy t idő mögött.</li><li>Olvassa el a régióban található legutóbbi véglegesített érték.</li></ul> |
-| EGY LOCAL_ONE, BÁRMELY   | Konzisztens előtag | Régiók szerinti konzisztens előtag |
+* Az Azure Cosmos DB dinamikusan leképezése a Cassandra ügyfél illesztőprogram egy konfigurált dinamikusan egy olvasási kérést az Azure Cosmos DB konzisztenciaszint által meghatározott olvasás következetes szint. 
 
-Az alábbi táblázat a **olvasás konzisztenciájának leképezési** Azure Cosmos DB és a Cassandra között:
+Az alábbi táblázat mutatja be, hogyan Cassandra natív konzisztenciaszintekről vannak leképezve konzisztenciaszintek az Azure Cosmos DB Cassandra API használatakor:  
 
-| Cassandra | Azure Cosmos DB | Garancia |
-| - | - | - |
-| MINDEN, A KVÓRUM, SOROS, LOCAL_QUORUM, LOCAL_SERIAL, HÁROM, KÉT, EGY, LOCAL_ONE | Erős  | Linearizálhatóság|
-| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Erős |   Linearizálhatóság |
-|LOCAL_ONE, ÉS AZ EGYIK | Konzisztens előtag | Globális konzisztens előtag |
-| AZ ÖSSZES, KVÓRUM SOROZAT   | Erős    | Linearizálhatóság |
-| LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM |  Konzisztens előtag   | Globális konzisztens előtag |
-| LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM |    Konzisztens előtag   | Globális konzisztens előtag |
-| ALL, QUORUM, SERIAL, LOCAL_QUORUM, LOCAL_SERIAL, THREE, TWO   |Erős |   Linearizálhatóság |
-| LOCAL_ONE, ÉS AZ EGYIK    | Konzisztens előtag | Globális konzisztens előtag|
-| MINDEN, a KVÓRUM, soros erős Linearizálhatósági
-LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM  |Konzisztens előtag  | Globális konzisztens előtag |
-|Összes    |Erős |Linearizálhatóság |
-| LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM  |Konzisztens előtag  |Globális konzisztens előtag|
-|MINDEN, a KVÓRUM, soros erős Linearizálhatósági
-LOCAL_ONE, EGY, LOCAL_QUORUM, LOCAL_SERIAL, KÉT, HÁROM  |Konzisztens előtag  |Globális konzisztens előtag |
-|Összes    |Erős | Linearizálhatóság |
-| LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM  | Konzisztens előtag | Globális konzisztens előtag |
-| QUORUM, LOCAL_QUORUM, LOCAL_SERIAL, TWO, THREE |  Kötött elavulás   | <ul><li>Korlátozott frissesség.</li><li>A legtöbb K verziók vagy t idő mögött. </li><li>Olvassa el a régióban található legutóbbi véglegesített érték.</li></ul>
-| LOCAL_ONE, ÉS AZ EGYIK |Konzisztens előtag | Régiók szerinti konzisztens előtag |
-| LOCAL_ONE, EGY, KETTŐ, HÁROM, LOCAL_QUORUM, KVÓRUM  | Konzisztens előtag | Régiók szerinti konzisztens előtag |
+[ ![Cassandra konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
+## <a id="mongo-mapping"></a>Mongodb-hez és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
-## <a id="mongo-mapping"></a>A MongoDB 3.4-es és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
+A natív MongoDB eltérően az Azure Cosmos dB-ben nem tartalmaz pontosan a meghatározott konzisztenciagaranciákat. Ehelyett natív MongoDB lehetővé teszi a felhasználók számára a következő konzisztenciagaranciákat: jelent problémát egy írási, olvasási szempont és: isMaster direktiva – közvetlen elérése érdekében a kívánt konzisztenciaszint elsődleges vagy másodlagos replikákra az olvasási műveletek. 
 
-Az alábbi táblázat az Azure Cosmos DB MongoDB 3.4-es és az alapértelmezett konzisztenciaszint között "aggályokat olvasása" hozzárendelést mutatja be. A táblázat több régióban, és egyetlen régióban üzemelő példányok.
+Azure Cosmos DB API a mongodb-hez használatakor a MongoDB-illesztőprogram kezeli az írási régiót az elsődleges replika, és minden más régiókban olvasható replika. Kiválaszthatja, hogy melyik elsődleges replikaként az Azure Cosmos-fiókjához társított régiót. 
 
-| **MongoDB 3.4** | **Az Azure Cosmos DB (többrégiós)** | **Az Azure Cosmos DB (egyetlen régióban)** |
-| - | - | - |
-| Linearizable | Erős | Erős |
-| Csomóponttöbbséget használó | Korlátozott frissesség | Erős |
-| Helyi | Konzisztens előtag | Konzisztens előtag |
+Mongodb-hez készült Azure Cosmos DB API használatakor:
+
+* Az írási szempont az alapértelmezett konzisztenciaszint a következőn: az Azure Cosmos-fiók van hozzárendelve.
+ 
+* Az Azure Cosmos DB dinamikusan leképezése az olvasási szempont a MongoDB ügyfél illesztőprogramot, amely dinamikusan konfigurálva egy olvasási kérést az Azure Cosmos DB konzisztenciaszintekről egyik által megadott. 
+
+* Egy adott régióban, az Azure Cosmos-fiók "Master" azáltal, hogy a régióban, mint az első írható régióba tartozó is jegyzettel láthatja el. 
+
+Az alábbi táblázat bemutatja, hogyan a natív MongoDB írási/olvasási aggályokat vannak leképezve az Azure Cosmos konzisztenciaszintek mongodb-hez készült Azure Cosmos DB API használatakor:
+
+[ ![MongoDB konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 52f1316b8167d2e1c3e37dbbfc0059b68e832172
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538561"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579410"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltat
 | **Partíciók száma** | Ez a tulajdonság beállítva a létrehozáskor számának meghatározásához [partíciók](../event-hubs/event-hubs-features.md#partitions) az eszközről a felhőbe eseményfeldolgozást. |
 | **Megőrzési idő**  | Ez a tulajdonság határozza meg, mennyi ideig maradnak, üzeneteket az IoT Hub napban. Az alapértelmezett érték egy nap, de a hét nap növelhető. |
 
-Az IoT Hub lehetővé teszi, hogy az adatok megőrzése a beépített Event hubs számára legfeljebb 7 napig. Beállíthatja, hogy a megőrzési időtartam, az IoT hub létrehozása során. Adatok megőrzése mérete az IoT Hub az IoT hub-szint és az egység típusa függ. Tekintetében mérete a beépített az Event Hubs üzenetek maximális mérete legfeljebb 24 órával kvóta őrizheti meg. Például az IoT Hub által biztosított elegendő tárhely megőrzése legalább 1 S1 egység 400 ezer üzenetet 4 k méretezés minden. Az eszközök kisebb üzeneteket küldenek, akkor előfordulhat, hogy őrzi meg (akár 7 napig) attól függően, hogy mennyi tárhelyet használja fel. Garantáljuk, hogy az adatok megőrzése legalább a megadott megőrzési ideje.
+Az IoT Hub lehetővé teszi, hogy az adatok megőrzése a beépített Event hubs számára legfeljebb 7 napig. Beállíthatja, hogy a megőrzési időtartam, az IoT hub létrehozása során. Adatmegőrzési idő az IoT Hub az IoT hub-szint és az egység típusa függ. Tekintetében mérete a beépített az Event Hubs üzenetek maximális mérete legfeljebb 24 órával kvóta őrizheti meg. Például az IoT Hub által biztosított elegendő tárhely megőrzése legalább 1 S1 egység 400 ezer üzenetet 4 k méretezés minden. Az eszközök kisebb üzeneteket küldenek, akkor előfordulhat, hogy őrzi meg (akár 7 napig) attól függően, hogy mennyi tárhelyet használja fel. Garantáljuk, hogy az adatok megőrzése legalább a megadott megőrzési ideje.
 
 Az IoT Hub lehetővé teszi olyan kezelése a beépített eszköz-felhő a felhasználói csoportok végpont kap.
 

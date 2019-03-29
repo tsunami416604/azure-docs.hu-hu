@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497244"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579291"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása a térkép
 
@@ -32,6 +32,16 @@ Az első kódblokkot a fenti kód egy térkép-objektumot hoz létre. Látható 
 A második kódblokkot, egy adatforrás-objektum létrejött, használja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály. A [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) objektum létrehozása és az adatforrás hozzá.
 
 A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) rendereket sor objektumok csomagolni a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest). A legutóbbi kódblokkot hoz létre, és a egy vonalréteg hozzáadása a térképen. Megtekintheti a tulajdonságait, egy sor réteg [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Az adatforrás és a vonalréteg létrehozásakor és a térkép belül a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosítására, hogy a sor után teljes betölti a térkép jelenik meg.
+
+## <a name="add-symbols-along-a-line"></a>Adjon hozzá egy vonal mentén szimbólumok
+
+Ez a példa bemutatja, hogyan adhat hozzá egy vonal mentén nyíl ikon a térképen. Egy szimbólum réteg használatával állítsa be a "line" "elhelyezési" lehetőséget, ha ezzel a szimbólumokat a vonal mentén jelennek meg, és az ikonok elforgatása (0 fok = jobbra).
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vonal mentén nyíl megjelenítése" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show nyíl vonal mentén</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="customize-a-line-layer"></a>Egy vonalréteg testreszabása
 
@@ -84,6 +94,16 @@ A második kódblokkot, egy adatforrás-objektum létrejött, használja a [Data
 A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) csomagolni adatok rendereli a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a térképen. Megtekintheti a tulajdonságait, polygon réteg [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). A [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) sorok tömbje. Megtekintheti a tulajdonságait, egy sor réteg [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). A harmadik kódblokkot sokszög- és vonalrétegek hoz létre.
 
 A legutóbbi kódblokkot a sokszög- és vonalrétegek ad hozzá a térképen. Az adatforrás és a Rétegek létrehozásakor és a térkép belül a [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) biztosítására, hogy megjelenik-e a sokszög, teljes mértékben betölti a térkép után.
+
+## <a name="fill-a-polygon-with-a-pattern"></a>Töltse ki a sokszög egy mintával
+
+Sokszög kitöltés színe mellett egy kép minta is használható. Egy rendszerkép minta betöltheti a maps képerőforrások sprite, és ezután hivatkozhat a rendszerképet a `fillPattern` a sokszögréteg tulajdonságát.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög kitöltési minta" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>sokszög kitöltési minta</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="customize-a-polygon-layer"></a>Egy sokszögréteg testreszabása
 

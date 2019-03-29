@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910284"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578373"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Figyelése, létrehozása és kezelése az SFTP-fájlok Azure Logic Apps használatával
 
@@ -27,10 +27,18 @@ Automatizálhatja a feladatokat, amelyek figyelése, létrehozása, küldése é
 * Fájl tartalom és metaadatok beolvasása.
 * Mappák archívumok kibontása.
 
-Képest a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md), az SFTP-összekötővel olvashatja, vagy írási fájlok mérete legfeljebb 50 MB-ot, ha nem használ [leskálázási műveletek darabolás üzenet](../logic-apps/logic-apps-handle-large-messages.md). Jelenleg nem használható, az eseményindítók darabolás. A fájlok akár 1 GB méretű, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md). 1 GB-nál nagyobb méretű fájlokhoz, használhatja az SFTP-SSH plusz összekötő [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). 
-
 Eseményindítókat, amelyek az SFTP-kiszolgálón lévő események figyelésére és egyéb műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveleteket, amelyeket az SFTP-kiszolgáló a különböző feladatok elvégzésére is használhatja. Egyéb műveletek a logikai alkalmazás kimenetét a SFTP-műveletek használata is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailes riasztásokhoz ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával.
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>Korlátok
+
+* SFTP-műveletek olvashatja vagy írhatja fájlok *50 MB-ot vagy kisebb* Ha nem használ [üzenet darabolás leskálázási műveletek](../logic-apps/logic-apps-handle-large-messages.md), túllépi ezt a határt, lehetővé teszik. Az SFTP-eseményindítók jelenleg nem támogatja a darabolás.
+
+* A fájlok *legfeljebb 1 GB-os*, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md).
+
+* A fájlok *1 GB-nál nagyobb*, használja az SFTP-SSH-összekötő plusz [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md).
+
+Tekintse át a többi különbségről az SFTP-összekötő és az SFTP-SSH-összekötő között [hasonlítsa össze az SFTP-SSH és az SFTP](../connectors/connectors-sftp-ssh.md#comparison) az SFTP-SSH cikkben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

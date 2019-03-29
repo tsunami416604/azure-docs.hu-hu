@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7c8f256cf91a479c45f21b933efdb6a5e0212796
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7de4307f7eef95a637dc828ac1738bd0ed39c7c7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541872"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578458"
 ---
 # <a name="security-agent-reference-architecture"></a>Biztonsági ügynök a referencia-architektúra
 
@@ -32,15 +32,15 @@ ASC IOT referenciaarchitektúra naplózni, feldolgozásához, összesített és 
 
 Biztonsági ügynökök tervezték, hogy korlátozott IoT-környezetben működik, és nagymértékben testre szabhatók, adja meg a erőforrásokért képest értékek szempontjából.
 
-Biztonsági ügynökök a következő IoT-megoldás szolgáltatásokat támogatják:
+Biztonsági ügynökök a következő szolgáltatásokat támogatják:
 
-- Nyers biztonsági események gyűjtésére az alapul szolgáló operációs rendszer (Linux, Windows). Elérhető biztonsági adatgyűjtők kapcsolatos további információkért lásd: [IoT-ügynök konfigurációjának ASC](concept-agent-configuration.md).
+- Nyers biztonsági események gyűjtésére a mögöttes operációs rendszer (Linux, Windows). Elérhető biztonsági adatgyűjtők kapcsolatos további információkért lásd: [IoT-ügynök konfigurációjának ASC](how-to-agent-configuration.md).
 
 - Nyers biztonsági események összesítése az IoT hubon keresztül küldött üzeneteket.
 
 - Meglévő eszközidentitás, vagy egy dedikált modul identitás hitelesíteni. Lásd: [biztonsági ügynök hitelesítési módszerek](concept-security-agent-authentication-methods.md) további.
 
-- Az használatával távolról konfigurálja a **ascforiot** ikermodul. További tudnivalókért lásd: [az ASC IoT-ügynök konfigurálása](concept-agent-configuration.md).
+- Az használatával távolról konfigurálja a **azureiotsecurity** ikermodul. További tudnivalókért lásd: [az ASC IoT-ügynök konfigurálása](how-to-agent-configuration.md).
 
 IoT-biztonság ügynökök ASC lettek kifejlesztve, nyílt forráskódú projektként, és a Githubról elérhető: 
 
@@ -62,10 +62,8 @@ Ebben a cikkben megismerkedett az ASC IoT biztonsági házirendügynök-architek
 
 Továbbra is az IoT-környezet ASC használatának első lépései, használja a következő cikkeket:
 
-
+- Megismerheti [biztonsági ügynök hitelesítési módszerek](concept-security-agent-authentication-methods.md)
+- Válassza ki és helyezhet üzembe egy [security-ügynök](how-to-deploy-agent.md)
 - Tekintse át az ASC IoT [szolgáltatás előfeltételei](service-prerequisites.md)
 - Ismerje meg, hogyan [ASC engedélyezése az IoT hub IoT-szolgáltatás](quickstart-onboard-iot-hub.md)
-- Használja a gyors útmutató: [a megoldás konfigurálása](quickstart-configure-your-solution.md)
-- Megismerheti [biztonsági ügynök hitelesítési módszerek](concept-security-agent-authentication-methods.md)
-- Válassza ki és helyezhet üzembe egy [security-ügynök](select-deploy-agent.md)
 - További információ a szolgáltatás a [ASC IoT – GYIK](resources-frequently-asked-questions.md)

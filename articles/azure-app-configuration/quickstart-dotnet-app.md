@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 551b884f032eaba3f052fcb7571ba907038152ff
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b4cb571653cbe69939a1cbdc92338663e4e7125f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226844"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576072"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET keretrendszerre épülő alkalmazás az Azure-alkalmazás konfigurációja
 
@@ -46,6 +46,7 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 ## <a name="connect-to-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló csatlakozni
 
 1. Kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**. Az a **Tallózás** lapon, keresése és a következő NuGet-csomagok hozzáadása a projekthez. Ha nem látja őket, válassza ki a **előzetes verzió** jelölőnégyzetet.
+
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later

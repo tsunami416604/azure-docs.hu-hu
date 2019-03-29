@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401040"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577186"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -72,7 +72,7 @@ Az infrastruktúra Windows virtuális asztal támogatásához a következőkre v
   
 Az Azure virtuális gépeket hoz létre a Windows virtuális asztal kell lennie:
 
-* [Tartományhoz csatlakoztatott standard](https://docs.microsoft.com/microsoft-desktop-optimization-pack/appv-v4/domain-joined-and-non-domain-joined-clients) vagy [Hybrid AD-hez csatlakoztatott](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuális gépek az Azure AD-hez csatlakoztatott nem lehet.
+* [Tartományhoz csatlakoztatott standard](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [Hybrid AD-hez csatlakoztatott](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuális gépek az Azure AD-hez csatlakoztatott nem lehet.
 * A következő támogatott operációsrendszer-lemezképek egyikét futtató:
   * Windows 10 Enterprise több munkamenet
   * Windows Server 2016

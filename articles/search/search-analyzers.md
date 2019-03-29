@@ -4,17 +4,17 @@ description: Az alapértelmezett egyéni, előre definiált vagy nyelvspecifikus
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343272"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578764"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -97,16 +97,18 @@ A keresés nem várt eredményeket adjon vissza, ha a legvalószínűbb token fe
 
 A [keresési Analyzer bemutató](https://alice.unearth.ai/) egy külső bemutató alkalmazás egy egymás mellett hasonlítja, a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor. Az index rögzített; egy népszerű történetet szöveget tartalmaz. Az egyes keresési feltétele alapján ad meg, az egyes analyzer eredmények jelennek meg a szomszédos csomópontoknak, így jobban, hogy minden egyes analyzer miként dolgozza fel ugyanazt a karakterláncot. 
 
-## <a name="examples"></a>Példák
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>REST-példák
 
 Az alábbi példák néhány főbb forgatókönyvek megvalósítását analyzer definíciói.
 
-+ [Egyéni elemző példa](#Example1)
-+ [Egy mező példa elemzők hozzárendelése](#Example2)
-+ [Az indexelési és keresési elemzők keverése](#Example3)
-+ [Nyelvi elemző példa](#Example4)
++ [Egyéni elemző példa](#Custom-analyzer-example)
++ [Egy mező példa elemzők hozzárendelése](#Per-field-analyzer-assignment-example)
++ [Az indexelési és keresési elemzők keverése](#Mixing-analyzers-for-indexing-and-search-operations)
++ [Nyelvi elemző példa](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>Egyéni elemző példa
 
@@ -180,7 +182,7 @@ Ebben a példában ajánljuk figyelmébe:
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>Mező elemző eszköz hozzárendelés példa
 
@@ -213,7 +215,7 @@ A "analyzer"-elem felülbírálja a szabványos analyzer mező szerint történi
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Az indexelési és keresési műveletek elemzők keverése
 
@@ -241,7 +243,7 @@ Az API-k különböző elemzők az indexelés és keresés megadásával tovább
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>Nyelvi elemző példa
 
@@ -273,6 +275,69 @@ Különböző nyelveken karakterláncokat tartalmazó mezők használhatja egy n
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C#Példák
+
+Ha használja a .NET SDK-kódmintákat, fűzze hozzá a ezekben a példákban használatát, és konfigurálja az elemzőket.
+
++ [Rendelje hozzá egy beépített elemző eszköz](#Assign-a-language-analyzer)
++ [Egy elemző konfigurálása](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>Nyelvi elemző hozzárendelése
+
+Minden olyan elemző, amely-, konfiguráció nélkül, a egy mezőben definíciója van megadva. Esetében nem követelmény, egy elemző szerkezet létrehozásához. 
+
+Ebben a példában a leírás mezők Microsoft English és francia elemzők rendel. Egy kódrészletet egy nagyobb definíció a "Hotels" index létrehozása a Szálloda osztállyal hotels.cs fájljában származik a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta.
+
+Hívás [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)megadását, a [AnalyzerName osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) biztosít, amely minden a szöveg elemzők az Azure Search támogatott.
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>Egyéni elemző megadása
+
+Testreszabási és konfigurációs szükség, amikor szüksége lesz egy elemző szerkezet az index hozzáadása. Azt határozza meg, miután hozzáadhatja a mező definíció ahogyan az előző példában is látható.
+
+Használat [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) az objektum létrehozásához. További példák: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/28/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 72a3bead4ba8670187c35856f9cd4e4f4b975a30
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311695"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621974"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
@@ -108,7 +108,7 @@ A QnA Maker lehetővé teszi a felhasználóknak [együttműködés](../How-to/c
 
 ## <a name="active-learning"></a>Aktív tanulás
 
-[Aktív tanulás](../How-to/improve-knowledge-base.md) does alternatív kérdések javasolása széles minőségét és a felhasználó-alapú lekérdezések mennyisége, ha a legjobb feladat. Fontos, hogy az ügyfél-alkalmazások felhasználói lekérdezések részt az aktív tanulás visszajelzési ciklus ellenőrzéstől nélkül. Miután kérdések a QnA Maker Portal használata javasolt, tekintse át és fogadja el vagy elutasítása szólhatnak kell. 
+[Aktív tanulás](../How-to/improve-knowledge-base.md) does alternatív kérdések javasolása széles minőségét és a felhasználó-alapú lekérdezések mennyisége, ha a legjobb feladat. Fontos, hogy az ügyfél-alkalmazások felhasználói lekérdezések részt az aktív tanulás visszajelzési ciklus ellenőrzéstől nélkül. Kérdések a QnA Maker Portal használata javasolt, ha is **[javaslatok szűrés](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** , majd tekintse át és fogadja el vagy elutasíthatja a szólhatnak. 
 
 ## <a name="next-steps"></a>További lépések
 

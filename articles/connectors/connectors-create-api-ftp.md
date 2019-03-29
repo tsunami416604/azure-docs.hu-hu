@@ -1,21 +1,21 @@
 ---
-title: FTP-kiszolgálóhoz - Azure Logic Apps csatlakoztatása |} A Microsoft Docs
+title: FTP-kiszolgálóhoz - Azure Logic Apps csatlakoztatása
 description: Létrehozása, figyelése és kezelése az Azure Logic Apps egy FTP-kiszolgálón található fájlok
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913359"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576326"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Létrehozása, figyelése és kezelése az FTP-fájlok Azure Logic Apps használatával
 
@@ -28,10 +28,11 @@ Az Azure Logic Apps és az FTP-összekötő automatikus feladatokkal és munkafo
 
 Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgáló és a kimenetet más műveletek számára elérhetővé tenni. Futtatási műveleteket használhat a logic Apps az FTP-kiszolgálón található fájlok kezeléséhez. FTP-műveleteket a kimenetét használják más műveleteket is rendelkezhet. Például ha rendszeresen fájlok az FTP-kiszolgálóról, elküldheti ezeket a fájlokat és a tartalom kapcsolatos e-mailek az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-> [!NOTE]
-> Az FTP-összekötő támogatja a csak olyan fájlok, amelyek 50 MB vagy kisebb, ha nem használ [leskálázási műveletek darabolás üzenet](../logic-apps/logic-apps-handle-large-messages.md). Jelenleg nem használható, az eseményindítók darabolás.
->
-> Ezenkívül az FTP-összekötő csak explicit FTP támogatja az SSL feletti (FTPS), és nem kompatibilis az implicit FTPS. 
+## <a name="limits"></a>Korlátok
+
+* FTP-műveleteket csak olyan fájlok, amelyek támogatják *50 MB-ot kisebb vagy* Ha nem használ [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md), amelyek lehetővé teszik túllépi ezt a határt. FTP-eseményindítók jelenleg nem támogatja a darabolás.
+
+* Az FTP-összekötő csak explicit FTP támogatja az SSL feletti (FTPS), és nem kompatibilis az implicit FTPS.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +52,7 @@ Használhatja az eseményindítókat, amelyek választ kaphat az FTP-kiszolgál�
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
 
-1. Üres logic Apps a keresőmezőbe írja be szűrőként "ftp". Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
+1. Üres logic Apps a keresőmezőbe írja be szűrőként "ftp". Eseményindítók listája alatt válassza ki a kívánt az eseményindító.
 
    – vagy –
 
@@ -82,7 +83,7 @@ Ez az eseményindító a logikaialkalmazás-munkafolyamat az eseményindító é
 
 **Példa vállalati**: Ez az eseményindító használatával figyelheti az FTP-mappába, új fájlok, amelyek ismertetik a vevői rendelések. Ezután használhatja az FTP művelet például **fájl tartalmának beolvasása**, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, valamint egy rendelési adatbázisba sorrendben tárolja.
 
-Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
 * Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
 
@@ -121,7 +122,7 @@ Most, hogy a logikai alkalmazás egy eseményindító tartozik, adja hozzá a m�
 
 Ez a művelet a tartalom egy fájlt egy FTP-kiszolgálón olvassa be, ha a fájl hozzáadásakor vagy frissítésekor. Így például az előző példában és a egy műveletet, amely a fájl tartalmának beolvasása után ezt a fájlt ad hozzá vagy szerkeszthetők az eseményindító is hozzáadhat. 
 
-Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+Fájl tartalmának kérésekor eseményindítók nem olvasható be a fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
 
 * Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
 
@@ -151,7 +152,7 @@ A következő példa bemutatja, ez a művelet: **Tartalom lekérése**
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/ftpconnector/).
+További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át a [összekötő referencialapja](/connectors/ftpconnector/).
 
 ## <a name="get-support"></a>Támogatás kérése
 

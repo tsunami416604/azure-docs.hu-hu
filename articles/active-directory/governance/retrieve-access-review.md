@@ -1,6 +1,6 @@
 ---
-title: A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal a hozzáférési felülvizsgálatok eredményeinek lekéréséhez |} A Microsoft Docs
-description: Ismerje meg, hogyan kérheti le a hozzáférési felülvizsgálatok eredményeinek csoporttagok vagy alkalmazás-hozzáférés az Azure AD hozzáférési felülvizsgálatok.
+title: A csoportok és az alkalmazásokat a hozzáférési felülvizsgálatok – Azure Active Directory hozzáférési felülvizsgálatok eredményeinek lekéréséhez |} A Microsoft Docs
+description: Ismerje meg, hogyan kérheti le a hozzáférési felülvizsgálatok eredményeinek csoporttagok vagy alkalmazás-hozzáférés az Azure Active Directory hozzáférési felülvizsgálatok.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eae4bafb3eefcee2785c784030d7be8dde66988e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839644"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578705"
 ---
-# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal a hozzáférési felülvizsgálatok eredményeinek beolvasása
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Beolvasni a hozzáférési felülvizsgálat eredményei csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
 A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára.  A felhasználó, aki az a **globális rendszergazdai**, **felhasználói rendszergazdája**, **biztonsági rendszergazda** vagy **biztonsági olvasó** szerepkör is olvassa el a hozzáférési felülvizsgálat eredményei.  Felhasználók hozzárendelése egy ilyen szerepkörbe, kiemelt szerepkörű rendszergazdák Azure AD PIM-ben használhatja, hogy egy felhasználó jogosult a szerepkör aktiválását, illetve egy globális rendszergazdai véglegesen is [rendelje hozzá egy felhasználót a szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 

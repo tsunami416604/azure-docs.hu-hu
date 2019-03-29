@@ -7,19 +7,22 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762925"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621270"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
-Az Azure Search szolgáltatásban egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, vagy **Standard**, ahol **Standard** több konfigurációk és -kapacitások érhető el. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a **Standard** fejlesztési és éles környezetekben. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search. 
+Az Azure Search szolgáltatásban egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, **Standard**, vagy **tárolásra optimalizált**.  **Standard szintű** és **tárolásra optimalizált** érhetők el a konfigurációkat és a kapacitások több. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a fejlesztési és éles üzemelő példányokhoz magasabb fizetős csomagok valamelyikére. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search.
+
+> [!NOTE]
+> Tárolásra optimalizált szolgáltatásszintjét jelenleg előzetes verzióként érhető el egy vizsgálat és a Kísérletezési céljából a cél az, hogy visszajelzéseket kedvezményes áron. Végső díjszabás lesz bejelentve később, amikor ezek a rétegek általánosan elérhetők. Azt javasoljuk, hogy az éles környezetben ezek a rétegek tanúsítványokkal szemben.
 
 Rétegek helyett az szolgáltatást (szolgáltatásokat) üzemeltető a hardver jellemzőit tükrözik, és vannak különbözteti meg:
 
@@ -42,11 +45,16 @@ A következő táblázat felsorolja az elérhető tarifacsomag. Egyéb informác
 |-----|-------------|
 |Ingyenes | Más előfizetőkkel megosztott. Nem méretezhető, legfeljebb 3 indexszel és 50 MB tárhely. |
 |Alapszintű | Dedikált számítási erőforrások a kisebb léptékű termelési számítási feladatokhoz. 2 GB egy partíciót, és legfeljebb három replika. |
-|Standard 1 (S1 esetén) | Az S1 a további tárolási és feldolgozási kapacitással, minden szinten dedikált gépek mentése. Partíció mérete 25 GB/partíció (legfeljebb 300 GB-os dokumentum szolgáltatásonként) s1 esetén. |
-|Standard szintű 2 (S2) | Hasonló az S1 szintre, de a 100 GB/partíció (maximális 1,2 TB-os dokumentum szolgáltatásonként) |
-|Standard 3 (S3 esetén) | 200 GB/partíció (maximális 2,4 TB-os dokumentum szolgáltatásonként). |
+|Standard 1 (S1 esetén) | Az S1 a további tárolási és feldolgozási kapacitással, minden szinten dedikált gépek mentése. Partíció mérete 25 GB/partíció (legfeljebb 300 GB szolgáltatásonként) s1 esetén. |
+|Standard szintű 2 (S2) | Hasonló az S1 szintre, de a 100 GB/partíció (maximális 1,2 TB szolgáltatásonként) |
+|Standard 3 (S3 esetén) | 200 GB/partíció (maximális 2,4 TB szolgáltatásonként) |
 |Standard 3 nagy sűrűségű (S3-HD) | Nagy sűrűségű van egy *üzemeltetési mód* S3. Az alapul szolgáló hardver sok kisebb indexek, több-bérlős forgatókönyvek számára van optimalizálva. S3-HD S3, de a hardver optimalizált sok kisebb indexeket a gyors olvasást az azonos egységenkénti díj rendelkezik.|
+|Tárolásra optimalizált 1 (1) | 1 TB-os partíciónként (legfeljebb 12 TB szolgáltatásonként) |
+|Tárolásra optimalizált 2 (L2) | 2 TB-os partíciónként (legfeljebb 24 TB szolgáltatásonként) |
 
+> [!NOTE] 
+> A tárolásra optimalizált rétegei kedvezőbb áron / TB, mint a Standard szint nagyobb tárolási kapacitás.  Az elsődleges egyensúlyt a lekérdezés nagyobb késést, amelynek ellenőrizni kell az alkalmazás specifikus igényei.  Ez a szint a teljesítménnyel kapcsolatos megfontolások kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+>
 
 ## <a name="how-billing-works"></a>A számlázás működése
 
@@ -56,7 +64,7 @@ Az Azure Search szolgáltatásban az Azure Search szolgáltatásban a személy k
 
 A szolgáltatás magát a minimális díj megfizetése alól az első keresési egység (1 replika x 1 partíció), és ez a mennyiség állandó, a szolgáltatás teljes élettartama, mert a szolgáltatás bármit kevesebb, mint ez a konfiguráció nem futtatható. 
 
-Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2 és S3 nem jelennek meg). Ha létrehozott egy alapszintű vagy standard szolgáltatást, a havi költségek lenne átlagos az érték, amely megjelenik az *ár-1* és *ár-2* jelölik. Egység költségek fel az egyes szintek mert a számítási teljesítmény és tárterület-kapacitás nagyobb, minden egyes egymást követő szinten.
+Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2, S3, L1 és L2 nem jelennek meg). Ha létrehozott egy **alapszintű**, **Standard**, vagy **tárolásra optimalizált** service, a havi költségek lenne átlagos az érték, amely megjelenik az *ár-1*és *ár-2* jelölik. Egység költségek lépjen az egyes szintek mert a számítási teljesítmény és tárterület-kapacitás nagyobb egyes egymást követő rétegben.
 
 ![/ Alapegység](./media/search-sku-tier/per-unit-pricing.png "/ alapegység")
 
@@ -117,7 +125,7 @@ Az Azure Search szolgáltatásban kapacitás van strukturálva, *replikák* és 
 + A partíciók indexek tárolja, és automatikusan a kereshető adatok felosztása: két partíció harmadának ossza fel az indexet a felét, három partíció, és így tovább. Kapacitás tekintetében *mérete particionálása* funkciója az elsődleges megkülönböztető szolgáltatásszinten.
 
 > [!NOTE]
-> Az összes **Standard** támogatási szintekkel [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) segítségével [sebessége vagy a tárolás a rendszer-súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** kínál fel három replika készül, magas rendelkezésre állású azonban csak egy partíciót tartalmaz. **Ingyenes** szinten nem kínál dedikált erőforrásokat: számítástechnika több előfizető által megosztott erőforrások.
+> Az összes **Standard** és **tárolásra optimalizált** támogatási szintekkel [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) segítségével [a rendszer a sebesség-súlyozási vagy tárolási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** kínál fel három replika készül, magas rendelkezésre állású azonban csak egy partíciót tartalmaz. **Ingyenes** szinten nem kínál dedikált erőforrásokat: számítástechnika több előfizető által megosztott erőforrások.
 
 ### <a name="more-about-service-limits"></a>További információ a szolgáltatásokra vonatkozó korlátozások
 
@@ -125,7 +133,7 @@ Az Azure Search szolgáltatásban kapacitás van strukturálva, *replikák* és 
 
 ## <a name="consumption-patterns"></a>Felhasználási mintákkal
 
-A legtöbb ügyfél kezdje a **ingyenes** szolgáltatás, amely azok határozatlan ideig megőrizni, és válassza ki a a **Standard** rétegek súlyos fejlesztési vagy éles üzemi számítási feladatokhoz. 
+A legtöbb ügyfél kezdje a **ingyenes** szolgáltatás, amely azok határozatlan ideig megőrizni, és válassza ki a a **Standard** vagy **tárolásra optimalizált** rétegek súlyos fejlesztési vagy az éles üzemi környezetekhez. 
 
 ![Az Azure search-csomagok](./media/search-sku-tier/tiers.png "tarifacsomagok az Azure search")
 
@@ -147,6 +155,15 @@ Portál és díjszabási oldal helyezze a fókuszt a partíció méretét és a 
 > [!NOTE]
 > Korábban a dokumentum korlátok veszi figyelembe volt, de már nem alkalmazható az új szolgáltatások verziókat. További információ a feltételek alapján, amely dokumentumot korlátok továbbra is érvényben maradnak: [szolgáltatási korlátozásaival: korlátait dokumentálja](search-limits-quotas-capacity.md#document-limits).
 >
+
+Optimalizált tárolási rétegek, **L1-L2**, a nagy mennyiségű adat követelményeknek, de a végfelhasználók számára, amikor minimálisra csökkentik a Lekérdezések késése nem áll a legmagasabb prioritást száma viszonylag alacsony alkalmazásokhoz ideálisak.  
+
+|  | L1 | 2. |  |  |  |  |  |
+|--|----|----|--|--|--|--|--|
+| Partíció mérete|  1 TB | 2 TB |  |  |  |  |  |
+| index és indexelő korlátok| 10 | 10 |  |  |  |  |  |
+
+*L2* kétszer az általános tárolási kapacitását kínál egy *L1*.  Válassza ki a réteg úgy gondolja, hogy az index kell maximális adatmennyiség alapján.  A *L1* 12 TB legfeljebb 1 TB-os lépésekben szint particionálja az be méretezési közben a *L2* növelheti partíciónként akár 24 TB legfeljebb 2 TB-osra bővül.
 
 ## <a name="evaluate-capacity"></a>Kapacitás kiértékelése
 
@@ -174,16 +191,17 @@ Feltéve, a minta képviselő, mind a teljes adatforrásra tíz százalékát, e
 
 Egyes ügyfelek inkább a dedikált erőforrások, amelyek nagyobb mintavételi és feldolgozási időt, és ezután fejlesztése index mennyisége, mérete és a lekérdezés kötetek valósághű becslése a fejlesztés során történő indításához. Kezdetben a szolgáltatás ki van építve a legjobb-találgatásos becslés alapján, és majd, az alkalmazásfejlesztési projekt kiforrottá, teams általában tudja, hogy a meglévő szolgáltatás felett vagy alatt várható éles számítási kapacitást. 
 
-1. [Tekintse át a szolgáltatásokra vonatkozó korlátozások minden egyes rétegben](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) e alacsonyabb rétegek támogathat kell indexek mennyiségének meghatározásához. Között a **alapszintű**-**S1**- **S2** szinteken, index korlátok el a 15-50 – 200 jelölik.
+1. [Tekintse át a szolgáltatásokra vonatkozó korlátozások minden egyes rétegben](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) e alacsonyabb rétegek támogathat kell indexek mennyiségének meghatározásához. Között a **alapszintű**-**S1**-**S2** szinteken, index korlátok el a 15-50 – 200 jelölik.  A **tárolásra optimalizált** csomag esetében 10 indexek mivel ez egy nagyon nagy méretű indexek alacsony számának támogatásához Tervező.
 
 1. [Hozzon létre egy szolgáltatás a számlázható szint szerint kalkuláljuk](search-create-service-portal.md):
 
     + Indítsa el a alacsony **alapszintű** vagy **S1** Ha Ön a elsajátítható elején.
     + Indítsa el a magas **S2** vagy akár **S3**, ha nagy méretű indexelést és lekérdezést terhelések magától értetődő.
+    + Tárolásra optimalizált, címen **L1** vagy **L2**, ha meg vannak indexelő nagy mennyiségű adatot, és lekérdezési terhelés viszonylag alacsony, például belső üzleti alkalmazás.
 
 1. [Az első index létrehozása](search-create-index-portal.md) meghatározni a forrásadatok hogyan fordítja le az indexbe. Ez az az egyetlen módszer, ha meg szeretné becsülni az index mérete.
 
-1. [Figyelheti a storage, szolgáltatási korlátai, lekérdezés mennyiségi és késési](search-monitor-usage.md) a portálon. A portálon, olyan lekérdezést mutat be, valamint a második, szabályozott lekérdezések és keresési késés; összes segítségével eldöntheti, hogy ha vannak, a megfelelő szint. Azokat a portál mérőszámai, kivéve részletes figyelésének beállításához, átkattintós elemzés, például engedélyezésével [forgalmi elemzések keresése](search-traffic-analytics.md). 
+1. [Figyelheti a storage, szolgáltatási korlátai, lekérdezés mennyiségi és késési](search-monitor-usage.md) a portálon. A portálon, olyan lekérdezést mutat be, valamint a második, szabályozott lekérdezések és keresési késés; az összes, amelynek segítségével eldöntheti, hogy ha választotta-e a megfelelő szint. Azokat a portál mérőszámai, kivéve részletes figyelésének beállításához, átkattintós elemzés, például engedélyezésével [forgalmi elemzések keresése](search-traffic-analytics.md). 
 
 Index számát és méretét alkalmazhatják az elemzés, mert maximális korlát elérésekor keresztül teljes kihasználtság (partíciók) tárolás vagy korlátozásainak erőforrásokon (indexek, indexelők és így tovább), amelyiket hamarabb elérik. A portál segítségével nyomon követheti, mindkettő, bemutató aktuális használatát és a maximális korlát egymás mellett az Áttekintés oldalon.
 
@@ -197,8 +215,9 @@ Lekérdezések másodpercenkénti (lekérdezési QPS) azt jelzi, amely kiemeli �
 
 A standard szint az egyensúlyt a replikák közvetíti partíciók, további replikán keresztül kiszolgálnia lekérdezést támogató betöltésére, terheléselosztás és további partíciók párhuzamos feldolgozásra. A teljesítmény finomhangolása a szolgáltatás kiépítése után.
 
-Ügyfelek, akik strong kezdettől fogva kötetek érdemes megfontolnia a magasabb szintű, nagyobb teljesítményű hardver által támogatott lekérdezési megtartását. Ezután offline állapotba helyezése partíciókat és -replikákat, vagy még váltson egy alacsonyabb szintű szolgáltatást, ha a lekérdezés köteteket tényleges táblává alakíthatóak sikertelen. A lekérdezések átviteli sebességére kiszámításáról további információkért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
+Ügyfelek, akik várhatóan erős tartósan lekérdezés kötetek kezdettől fogva érdemes magasabb **Standard** rétegek, nagyobb teljesítményű hardver által támogatott. Ezután offline állapotba helyezése partíciókat és -replikákat, vagy még váltson egy alacsonyabb szintű szolgáltatást, ha a lekérdezés köteteket tényleges táblává alakíthatóak sikertelen. A lekérdezések átviteli sebességére kiszámításáról további információkért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
 
+A tárolási rétegek felé nagy adatszámítási támogató további általános index rendelkezésre álló tárhelyet, amelyeknél némileg Könnyített lekérdezés késésre vonatkozó követelmény letisztult optimalizálva.  További replikák továbbra is jól használható betöltésére, terheléselosztás és további partíciók párhuzamos feldolgozásra. A teljesítmény finomhangolása a szolgáltatás kiépítése után.
 
 **Szolgáltatásiszint-szerződések**
 
@@ -216,7 +235,7 @@ A **ingyenes** szint és az előzetes funkciók nem tartoznak [szolgáltatói sz
 
 Kezdje egy **ingyenes** csomagot, és teljesítményjellemzőit megérteni az adatok egy részhalmazának használata kezdeti indexet hozhat létre. Az Azure Search szolgáltatásban az adatok struktúrája fordított index, amennyiben ez a méret és tartalom fordított index összetettsége határozza meg. Ne feledje, hogy magas redundáns tartalom általában egy kisebb indexet, mint a magas szabálytalan tartalom eredményez. Mint ilyen akkor az adatkészlet, amely meghatározza, hogy index tárhellyel kapcsolatos követelmények mérete helyett a tartalom jellemzőit.
 
-Index mérete, a kezdeti ötlet után [kiépítése egy számlázható szolgáltatás létrejöttét](search-create-service-portal.md) az ebben a cikkben tárgyalt vagy csomagok valamelyikére **alapszintű** vagy egy **Standard** szint. Az adatok részhalmazainak mesterséges korlátozások enyhítése és [az index újraépítése](search-howto-reindex.md) minden rájuk ténylegesen kívánt adatokat.
+Index mérete, a kezdeti ötlet után [kiépítése egy számlázható szolgáltatás létrejöttét](search-create-service-portal.md) az ebben a cikkben tárgyalt vagy csomagok valamelyikére **alapszintű**, **Standard**, vagy **Tárolásra optimalizált** szint. Az adatok méretezés mesterséges korlátozások enyhítése és [az index újraépítése](search-howto-reindex.md) minden rájuk ténylegesen kívánt adatokat.
 
 [Foglaljon le a partíciókat és -replikákat](search-capacity-planning.md) a teljesítmény és méretezés van szüksége, igény szerint.
 

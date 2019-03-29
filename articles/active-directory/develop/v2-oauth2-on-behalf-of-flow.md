@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445755"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576930"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0-alapú meghatalmazásos folyamat
 
@@ -72,8 +72,8 @@ A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozz�
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | `grant_type` | Szükséges | A jogkivonat kérése típusát. A kérést a jwt-t, az értéknek kell lennie `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Szükséges | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) vagy az új [App regisztrációk (előzetes verzió) portál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) az alkalmazás hozzá van rendelve. |
-| `client_secret` | Szükséges | Az alkalmazás titkos, hogy létrehozta az alkalmazás a portálon, hogy használja-e az alkalmazás regisztrálásához. |
+| `client_id` | Szükséges | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalon az alkalmazás hozzá van rendelve. |
+| `client_secret` | Szükséges | Az ügyfél titkos kulcsát az alkalmazás az Azure Portal - alkalmazás regisztrációs lapján létrehozott. |
 | `assertion` | Szükséges | A kérésben használt token értékét. |
 | `scope` | Szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. További információkért lásd: [hatókörök](v2-permissions-and-consent.md). |
 | `requested_token_use` | Szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. A OBO folyamatban az értékét állítsa `on_behalf_of`. |
@@ -104,7 +104,7 @@ A service to service hozzáférési jogkivonat kérése tanúsítvánnyal az al�
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | `grant_type` | Szükséges | A jogkivonat kérése típusa. A kérést a jwt-t, az értéknek kell lennie `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Szükséges | Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely a [az alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) vagy az új [App regisztrációk (előzetes verzió) portál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) az alkalmazás hozzá van rendelve. |
+| `client_id` | Szükséges |  Az alkalmazás (ügyfél) AZONOSÍTÓJÁT, amely [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalon az alkalmazás hozzá van rendelve. |
 | `client_assertion_type` | Szükséges | Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Szükséges | Egy helyességi feltétel (egy JSON webes jogkivonat) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. A tanúsítvány és a helyességi feltétel formátumát regisztrálni, lásd: [hitelesítő tanúsítvány](active-directory-certificate-credentials.md). |
 | `assertion` | Szükséges | A kérésben használt token értékét. |
@@ -205,7 +205,7 @@ Jelenleg a személyes Microsoft-fiókrendszer nepodporuje kombinált jóváhagy�
 
 #### <a name="pre-authorized-applications"></a>Előre engedélyezett alkalmazások
 
-Az alkalmazás betekintő portál új funkció el "előre engedélyezett alkalmazások". Ily módon az erőforrás azt jelzi, hogy mindig egy adott alkalmazás egyes hatókörök fogadására engedéllyel rendelkezik-e. Ez elsősorban hasznos, hogy zökkenőmentesebb előtér-ügyfél és a egy háttér-erőforrás közötti kapcsolatokat. Erőforrás deklarálhatnak több előre engedélyezett alkalmazásoknál – kérheti, hogy minden ilyen alkalmazás ezeket az engedélyeket egy OBO a flow és a fogadásukra anélkül, hogy a felhasználó jóváhagyást.
+Az alkalmazás portal szolgáltatása "előre engedélyezett alkalmazások". Ily módon az erőforrás azt jelzi, hogy mindig egy adott alkalmazás egyes hatókörök fogadására engedéllyel rendelkezik-e. Ez elsősorban hasznos, hogy zökkenőmentesebb előtér-ügyfél és a egy háttér-erőforrás közötti kapcsolatokat. Erőforrás deklarálhatnak több előre engedélyezett alkalmazásoknál – kérheti, hogy minden ilyen alkalmazás ezeket az engedélyeket egy OBO a flow és a fogadásukra anélkül, hogy a felhasználó jóváhagyást.
 
 #### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
 

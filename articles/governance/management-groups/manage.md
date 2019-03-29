@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990535"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622059"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -67,9 +67,9 @@ A felügyeleti csoport törléséhez az alábbi követelményeknek kell teljesü
 
 1. Nincsenek alárendelt felügyeleti csoportok vagy előfizetések a felügyeleti csoportban.
 
-   - Egy felügyeleti csoportot ki egy előfizetést áthelyezésével kapcsolatban lásd: [előfizetés áthelyezése egy másik felügyeleti csoportba](#Move-subscriptions-in-the-hierarchy).
+   - Egy felügyeleti csoportot ki egy előfizetést áthelyezésével kapcsolatban lásd: [előfizetés áthelyezése egy másik felügyeleti csoportba](#move-subscriptions-in-the-hierarchy).
 
-   - A felügyeleti csoport áthelyezése egy másik felügyeleti csoportba: [felügyeleti csoportok kerül a hierarchia](#Move-management-groups-in-the-hierarchy).
+   - A felügyeleti csoport áthelyezése egy másik felügyeleti csoportba: [felügyeleti csoportok kerül a hierarchia](#move-management-groups-in-the-hierarchy).
 
 1. A felügyeleti csoport ("Owner", "Közreműködő" vagy "Felügyeleti csoport közreműködői") van is írási engedélye. Milyen engedélyek megtekintéséhez, rendelkezik, válassza ki a felügyeleti csoportot, majd **IAM**. RBAC-szerepkörökkel kapcsolatos további tudnivalókért lásd: [hozzáférést és engedélyeket az RBAC kezelése](../../role-based-access-control/overview.md).  
 
@@ -316,11 +316,11 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
 
-Felügyeleti csoportok támogatottak belül [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md). Lekérdezheti, ha egy felügyeleti csoporthoz, egyéb Azure-erőforrások központi ugyanazon a helyen lévő összes eseményeket.  Például megjelenik az összes szerepkör-hozzárendeléseket vagy szabályzat-hozzárendelés módosításait egy adott felügyeleti csoportban.
+A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../azure-monitor/platform/activity-logs-overview.md). Lekérdezheti, ha egy felügyeleti csoporthoz, egyéb Azure-erőforrások központi ugyanazon a helyen lévő összes eseményeket.  Például megtekintheti egy adott felügyeleti csoporthoz tartozó összes szerepkör-hozzárendelés vagy szabályzat-hozzárendelés módosításait.
 
 ![Tevékenységnaplók felügyeleti csoportokkal](media/al-mg.png)
 
-Megtekinti a lekérdezés felügyeleti csoportok az Azure Portalon kívül, ha a felügyeleti csoportok célhatókört néz **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Felügyeleti csoportok hivatkozó más erőforrás-szolgáltatók
 

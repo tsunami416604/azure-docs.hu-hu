@@ -1,7 +1,7 @@
 ---
 title: A szűrők és order by záradékok – Azure Search OData-kifejezések szintaxisa
 description: Szűrő és order by kifejezés OData-szűrőszintaxis Azure Search-lekérdezésekhez.
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541052"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578407"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>A szűrők és az Azure Search szolgáltatásban az order by záradékok OData-kifejezések szintaxisa
 
@@ -207,7 +207,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Keresse meg az összes "Hotels" nevű vagy Roach amelyben egyenlő "vagy"Költségvetés hotel"):  
+Keresse meg az összes "Hotels" nevű "Roach amelyben" vagy "Költségvetés hotel" egyenlő). Kifejezések tartalmazhatnak szóközt, amelynek egy alapértelmezett elválasztó. Adjon meg egy elválasztó felülbírálás, foglaljuk elválasztó karakterként szimpla idézőjelek között a szűrőkifejezés részeként:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +223,12 @@ Keresse meg a címke "Wi-Fi" vagy "készlet" összes "Hotels":
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+Több címkék, "fűtött törülköző állványt" vagy "hajszárító tartalmaz" egyezés található. Ne felejtse el megadni egy alternatív elválasztó karaktert, ha az alapértelmezett helyet elválasztó üzemképtelen. 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 Az összes hotels nélkül a címke "amelyben" és "kézi" nem található:  

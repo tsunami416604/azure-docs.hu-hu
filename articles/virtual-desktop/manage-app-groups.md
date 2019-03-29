@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401862"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578747"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése Windows virtuális asztal előzetes verzió
 
@@ -28,13 +28,13 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
 
 ## <a name="create-a-remoteapp-group"></a>A RemoteApp-csoport létrehozása
 
-1. Futtassa a következő PowerShell-parancsmag egy új üres RemoteApp-csoport létrehozása.
+1. Futtassa a következő PowerShell-parancsmag egy új RemoteApp üres app csoport létrehozásához.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (Nem kötelező) Az alkalmazás csoport létrejöttének ellenőrzéséhez futtathatja a következő parancsmagot a gazdagép készlet minden alkalmazáscsoport listájának megtekintéséhez.
+2. (Nem kötelező) Az alkalmazás csoport létrejöttének ellenőrzéséhez futtathatja a következő parancsmagot a gazdagép-készlet az összes alkalmazás csoportok listájának megtekintéséhez.
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
@@ -45,17 +45,17 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-
-4. Futtassa a következő parancsmag egy új RemoteApp közzététele az 1. lépésben létrehozott csoporthoz.
+   
+4. Futtassa a következő parancsmagot a appalias alapján az alkalmazás telepítéséhez. a 3. lépés futtatásakor a kimeneti appalias láthatóvá válik.
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Nem kötelező) Futtassa a következő parancsmagot appalias alapján az alkalmazás telepítéséhez. a 3. lépés futtatásakor a kimeneti appalias láthatóvá válik.
+5. (Nem kötelező) Futtassa a következő parancsmag egy új RemoteApp közzététele az 1. lépésben létrehozott csoporthoz.
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. Győződjön meg arról, hogy az alkalmazás úgy lett közzétéve, futtassa a következő parancsmagot.
@@ -76,4 +76,4 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
 Miután létrehozta az alkalmazáscsoportokhoz, egyszerű szolgáltatások létrehozása, és szerepköröket rendelhet a felhasználók számára. Ennek módjáról, lásd az oktatóanyag az egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell használatával.
 
 > [!div class="nextstepaction"]
-> [Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell használatával](create-service-principal-role-powershell.md)
+> [Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel](create-service-principal-role-powershell.md)

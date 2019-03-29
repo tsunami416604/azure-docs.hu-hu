@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092446"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621634"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Elindítása és leállítása az Azure-SSIS integrációs modul ütemezés szerint
 Ez a cikk ismerteti a indítása és leállítása az Azure-SSIS integrációs modul (IR) ütemezése az Azure Data Factory (ADF) használatával. Az Azure-SSIS integrációs modul az ADF számítási erőforrás dedikált SQL Server Integration Services (SSIS) csomagjainak végrehajtásához. Rendszert futtató Azure-SSIS integrációs modul rendelkezik egy hozzá társított költségek. Ezért általában szeretné futtatni az integrációs modul csak akkor, amikor szüksége van leállítása az integrációs modul helyének, ha Ön már nincs rájuk szükség, és az SSIS-csomagok végrehajtása az Azure-ban. Használhatja az ADF felhasználói felületének (UI) / alkalmazás vagy az Azure PowerShell használatával [manuálisan indítása vagy leállítása az integrációs modul helyének](manage-azure-ssis-integration-runtime.md)).
@@ -94,7 +94,7 @@ Ha létrehoz egy harmadik eseményindítót, ütemezett napi éjfélkor futtatja
   
     2. A **metódus**válassza **POST**. 
     3. A **törzs**, adja meg `{"message":"Start my IR"}`. 
-    4. A **hitelesítési**válassza **MSI** az ADF a felügyelt identitást használja, lásd: [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) cikkben további információkat.
+    4. A **hitelesítési**válassza **MSI** az ADF a felügyelt identitást használja, lásd: [felügyelt identitás adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) cikkben további információkat.
     5. A **erőforrás**, adja meg `https://management.azure.com/`.
     
        ![ADF Web Activity Schedule SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -348,7 +348,7 @@ Az alábbi szakasz ismerteti a PowerShell-runbook létrehozása. A parancsfájl 
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Ütemezések a runbook indítása és leállítása az Azure-SSIS integrációs modul létrehozása
 
-Az előző szakaszban létrehozott az Azure Automation-runbook, indítása vagy leállítása az Azure-SSIS integrációs modult. Ebben a szakaszban létrehoz két ütemezések a runbookhoz. Az első ütemezés konfigurálásakor megadott **START** a **művelet**. Hasonlóképpen, a másodikat konfigurálásakor megadott **LEÁLLÍTÁSA** a **művelet**. Ütemezések létrehozása részletes lépéseiért lásd: [ütemezés létrehozása](../automation/automation-schedules.md#creating-a-schedule) cikk.
+Az előző szakaszban létrehozott az Azure Automation-runbook, indítása vagy leállítása az Azure-SSIS integrációs modult. Ebben a szakaszban létrehoz két ütemezések a runbookhoz. Az első ütemezés konfigurálásakor megadott **START** a **művelet**. Hasonlóképpen, a másodikat konfigurálásakor megadott **LEÁLLÍTÁSA** a **művelet**. Ütemezések létrehozása részletes lépéseiért lásd: [ütemezés létrehozása](../automation/shared-resources/schedules.md#creating-a-schedule) cikk.
 
 1. A **Runbook** ablakban válassza **ütemezések**, és válassza ki **+ ütemezés hozzáadása** az eszköztáron. 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-címtár szerepkör-beállítások konfigurálása a PIM |} A Microsoft Docs
-description: Ismerje meg az Azure AD-címtár szerepkör-beállítások konfigurálása az Azure AD Privileged Identity Management (PIM).
+title: Az Azure AD szerepkör-beállítások konfigurálása az Azure Active Directory - a PIM |} A Microsoft Docs
+description: Ismerje meg az Azure AD szerepkör-beállítások konfigurálása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,34 +14,34 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162543"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576862"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>A PIM az Azure AD directory szerepkör-beállítások konfigurálása
+# <a name="configure-azure-ad-role-settings-in-pim"></a>A PIM az Azure AD szerepkör-beállítások konfigurálása
 
-A kiemelt szerepkörű rendszergazda testre szabhatja az Azure AD Privileged Identity Management (PIM) a szervezetben, mint például a felhasználó, aki jogosult szerepkör-hozzárendelés az aktiválás élményét módosítása.
+A kiemelt szerepkörű rendszergazda testre szabhatja az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) a szervezetben, mint például a felhasználó, aki jogosult szerepkör-hozzárendelés az aktiválás élményét módosítása.
 
 ## <a name="open-role-settings"></a>Nyissa meg a szerepkör-beállítások
 
-Kövesse az alábbi lépéseket egy Azure AD-címtárbeli szerepkör beállításainak megnyitásához.
+Kövesse az alábbi lépéseket, nyissa meg a beállításokat az Azure AD-szerepkörhöz.
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-1. Kattintson a **az Azure AD-címtárbeli szerepkörök**.
+1. Kattintson a **Azure AD-szerepkörök**.
 
 1. Kattintson a **beállítások**.
 
-    ![Az Azure AD-címtárbeli szerepkörök - beállítások](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Az Azure AD-szerepkörök – beállítások](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. Kattintson a **szerepkörök**.
 
 1. Kattintson a szerepkör, amelynek beállításait konfigurálni szeretné.
 
-    ![Az Azure AD-címtárbeli szerepkörök - beállítások szerepkörök](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Az Azure AD-szerepkörök – beállítások szerepkör](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     A beállítások lapon az egyes szerepkörökhöz a rendszer számos beállítást konfigurálhat. Ezek a beállítások csak a felhasználók, akik hatással **jogosult** hozzárendelések nem **állandó** hozzárendelések.
 
@@ -98,13 +98,13 @@ Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse a
 
 1. Állítsa be a **jóváhagyás megkövetelése,** váltson **engedélyezve**. A panelen válassza ki a jóváhagyók beállításokkal bontja ki.
 
-    ![Az Azure AD-címtárbeli szerepkörök - Settings - jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Az Azure AD-szerepkörök - Settings - jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Ha Ön **nem** adja meg minden olyan jóváhagyónak, a kiemelt szerepkörű rendszergazdák lesznek a alapértelmezett jóváhagyónak. Kiemelt szerepkörű rendszergazdák jóváhagyása szükséges **összes** aktiválási kérelmek ehhez a szerepkörhöz.
 
 1. A jóváhagyók megadásához kattintson **jóváhagyók kiválasztása**.
 
-    ![Az Azure AD-címtárbeli szerepkörök - Settings - jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Az Azure AD-szerepkörök - Settings - jóváhagyás szükséges](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. Egy vagy több jóváhagyók kiválasztása, és kattintson a **kiválasztása**. Felhasználók vagy csoportok kiválasztása Ajánlott legalább 2 jóváhagyó. A saját jóváhagyás nem engedélyezett.
 
@@ -117,5 +117,5 @@ Ha szeretné a szerepkör aktiválásához jóváhagyás szükséges, kövesse a
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
-- [Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben](pim-how-to-configure-security-alerts.md)
+- [Az Azure AD PIM-szerepkörök hozzárendelése](pim-how-to-add-role-to-user.md)
+- [Biztonsági riasztások az Azure AD-szerepkörök konfigurálása az PIM-ben](pim-how-to-configure-security-alerts.md)

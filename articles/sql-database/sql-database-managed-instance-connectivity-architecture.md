@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486784"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621549"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 
@@ -107,7 +107,7 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 | Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|felügyelet  |80, 443, 12000|TCP     |Bármelyik              |Internet   |Engedélyezés |
+|felügyelet  |80, 443, 12000|TCP     |Bármelyik              |AzureCloud  |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZATI *  |Engedélyezés |
 
 > Ellenőrizze, hogy 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. Felügyelt példány üzembe helyezés ARM üzemelő példányok meghiúsulhat, ha a bemeneti és kimeneti szabályok a minden egyes portok külön-külön vannak konfigurálva. 

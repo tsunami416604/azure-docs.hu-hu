@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés biztosítása más rendszergazdák számára a PIM - Azure kezelését |} A Microsoft Docs
+title: Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM - kezelése Azure Active Directory |} A Microsoft Docs
 description: Megtudhatja, hogyan hozzáférést biztosítani más kezelése az Azure AD Privileged Identity Management (PIM) számára.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d8cb77cda97c3141987fa8b0ea39541ace6db3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 74b938335dbace5a827bcfa43172704dc8b09da2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191735"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579614"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Hozzáférés biztosítása más rendszergazdák számára, miközben a PIM kezelése
 
-Az Azure AD Privileged Identity Management (PIM) egy szervezet számára automatikusan lehetővé teszi, hogy a globális rendszergazda szerepkör-hozzárendelések és a PIM számára hozzáférést kaphat. Senki más nem írási hozzáférést kap alapértelmezés szerint, beleértve a más globális rendszergazdákat. Egyéb globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik a PIM számára olvasási hozzáférést. A PIM számára hozzáférést, az első felhasználó rendelhet hozzá mások számára a **kiemelt szerepkörű rendszergazda** szerepkör.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egy szervezet számára automatikusan lehetővé teszi, hogy a globális rendszergazda szerepkör-hozzárendelések és a PIM számára hozzáférést kaphat. Senki más nem írási hozzáférést kap alapértelmezés szerint, beleértve a más globális rendszergazdákat. Egyéb globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik a PIM számára olvasási hozzáférést. A PIM számára hozzáférést, az első felhasználó rendelhet hozzá mások számára a **kiemelt szerepkörű rendszergazda** szerepkör.
 
 > [!NOTE]
 > A PIM kezelése az Azure MFA van szükség. A Microsoft-fiókok Azure MFA-kiszolgáló nem lehet regisztrálni, mivel a felhasználó, aki a Microsoft-fiókkal jelentkezik be a PIM férhetnek hozzá.
@@ -36,11 +36,11 @@ Ellenőrizze, hogy mindig legalább két felhasználót a kiemelt szerepkörű r
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-1. Kattintson a **az Azure AD-címtárbeli szerepkörök**.
+1. Kattintson a **Azure AD-szerepkörök**.
 
 1. Kattintson a **szerepkörök**.
 
-    ![A PIM az Azure AD-címtárbeli szerepkörök - szerepkörök](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+    ![A PIM az Azure AD-szerepkörök – szerepkör](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
 
 1. Kattintson a **kiemelt szerepkörű rendszergazda** szerepkör a tagok lap megnyitásához.
 
@@ -74,7 +74,7 @@ Valaki távolítja el a kiemelt szerepkörű rendszergazda szerepkört, előtt �
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-1. Kattintson a **az Azure AD-címtárbeli szerepkörök**.
+1. Kattintson a **Azure AD-szerepkörök**.
 
 1. Kattintson a **szerepkörök**.
 

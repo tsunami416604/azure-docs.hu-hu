@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: d669842c60fb69820e6d94ad0a9359f6460101fe
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95e984f6f08af01a2ffd7b9b4e0ec598d73f4d05
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481875"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621073"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows
 
@@ -26,7 +26,16 @@ Az IoT Edge-futtatókörnyezet kapcsolatos további információkért lásd: [me
 Ez a cikk felsorolja a lépéseket az Azure IoT Edge-futtatókörnyezet telepítéséhez a Windows x64 (Intel vagy AMD) a rendszer. Windows támogatási jelenleg előzetes verzióban érhető el.
 
 > [!NOTE]
-> Linux-tárolók használata a Windows rendszereken a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra.
+> Egy ismert probléma a Windows operációs rendszer megakadályozza, hogy alvó állapotba, és az IoT Edge-modulok (folyamat logikailag Windows Nano Server-tárolók) futtatásakor hibernálást használatára való átállást. A probléma hatással van az eszköz akkumulátor-élettartamát.
+>
+> Áthidaló megoldásként használja a parancsot `Stop-Service iotedge` minden futó IoT Edge-modulok leállítja ezeket az állapotokat az energiagazdálkodási használata előtt. 
+
+<!--
+> [!NOTE]
+> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
+-->
+
+Linux használatával tároló Windows rendszereken a javasolt vagy támogatott éles konfiguráció nem az Azure IoT Edge-hez. Azonban ez használható fejlesztési és tesztelési célra. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

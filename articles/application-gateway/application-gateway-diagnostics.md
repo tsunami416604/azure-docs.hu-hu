@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/11/2019
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309128"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620876"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -131,7 +131,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Naplózás engedélyezése az Azure Portalon
 
-1. Az Azure Portalon keresse meg az erőforrást, és kattintson **diagnosztikai naplók**.
+1. Az Azure Portalon keresse meg az erőforrást, és válassza **diagnosztikai beállítások**.
 
    Az Application Gateway három naplók érhetők el:
 
@@ -139,21 +139,15 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
    * Teljesítmény-napló
    * Tűzfal naplója
 
-2. Az adatok gyűjtésének elkezdéséhez kattintson a **Diagnosztika bekapcsolása** elemre.
+2. Való adatgyűjtés megkezdéséhez válasszon **diagnosztika bekapcsolása**.
 
    ![Diagnosztika bekapcsolása][1]
 
-3. A **diagnosztikai beállítások** panel biztosít a diagnosztikai naplók beállításait. Ebben a példában a Log Analytics tárolja a naplókat. Kattintson a **konfigurálása** alatt **Log Analytics** a munkaterület konfigurálásához. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
+3. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait. Ebben a példában a Log Analytics tárolja a naplókat. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
 
    ![A konfigurációs folyamat indítása][2]
 
-4. Válasszon egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. Ebben a példában egy már meglévőt.
-
-   ![Log Analytics-munkaterületek lehetőségei][3]
-
-5. Hagyja jóvá a beállításokat, és kattintson a **mentése**.
-
-   ![Diagnosztikai beállítások panelen választása esetén][4]
+5. Adjon meg egy nevet a beállításokat, hagyja jóvá a beállításokat, majd válassza **mentése**.
 
 ### <a name="activity-log"></a>Tevékenységnapló
 
@@ -334,7 +328,7 @@ Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, ahol megtekintheti 
 
    Már szűrhet erre a háttérrendszer készlet alapon történik egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítése.
 
-Keresse meg az application gateway alatt **figyelés** kattintson **metrikák**. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
+Keresse meg az application gateway alatt **figyelés** kiválasztása **metrikák**. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
 Az alábbi képen egy példa három metrikákkal jelenik meg az elmúlt 30 percben lásd:
 
@@ -348,11 +342,11 @@ Riasztási szabályok alapján egy erőforrás metrikáit is elindítható. Egy 
 
 Az alábbi példa végigvezeti egy riasztási szabályt, amely e-mailt küld egy rendszergazda után átviteli szabályok megsértése esetén alkalmazandók egy küszöbérték létrehozása:
 
-1. Kattintson a **metrikariasztás hozzáadása** megnyitásához a **szabály felvétele** panelen. Ezen a panelen, a metrikák paneljén is elérheti.
+1. Válassza ki **metrikariasztás hozzáadása** megnyitásához a **szabály felvétele** lapot. Ezen a lapon, a metrikák oldalon is elérheti.
 
    !["Metrikariasztás hozzáadása" gomb][6]
 
-2. Az a **szabály felvétele** panelen töltse ki a nevét, a feltétel, és a szakaszok értesítése, és kattintson **OK**.
+2. Az a **szabály felvétele** lapon töltse ki a nevét, a feltétel, és a szakaszok értesíti, és válassza ki **OK**.
 
    * Az a **feltétel** választó, válasszon egyet a négy értékek közül: **Nagyobb, mint**, **nagyobb vagy egyenlő**, **kevesebb mint**, vagy **kisebb vagy egyenlő**.
 
@@ -360,7 +354,7 @@ Az alábbi példa végigvezeti egy riasztási szabályt, amely e-mailt küld egy
 
    * Ha **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak**, az e-mailben dinamikus lehet az adott erőforráshoz hozzáféréssel rendelkező felhasználók száma alapján. Ellenkező esetben megadhatja a felhasználók vesszővel elválasztott listája a **további rendszergazdai email(s)** mezőbe.
 
-   ![Adja hozzá a szabály panel][7]
+   ![A szabály-weblap hozzáadása][7]
 
 Ha a küszöbértékének érkezik egy e-mailt, amely egy, az alábbi képen hasonló:
 

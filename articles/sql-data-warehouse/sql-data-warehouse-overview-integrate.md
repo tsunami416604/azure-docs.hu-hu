@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2995c08b2dc92f36061c6ba29be68b402b2d3ec0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d2fcdd4aa28a7d3b1a8e50629e5be1d88046a12b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876476"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621209"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása az SQL Data warehouse-bA
 A fő funkciói mellett az SQL Data Warehouse lehetővé teszi a felhasználók számos, az Azure-ban a más szolgáltatások integrálása. Ezek a szolgáltatások a következők:
@@ -58,6 +58,4 @@ Az Azure Stream Analytics egy összetett, teljes körűen felügyelt infrastrukt
 
 További információkért lásd: [integrálás az Azure Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md).
 
-## <a name="next-steps"></a>További lépések
-Az Azure SQL Database integrálásához tekintse meg [konfigurálása az SQL Database rugalmas lekérdezése](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092276"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574718"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda berendezés csatlakoztatása 
 
@@ -42,6 +42,7 @@ Barracuda Web Application Firewall integráció és Azure OMS-kiszolgálón kere
 2. Sentinel-az Azure Portalon nyissa meg a, amelyen üzembe helyezett Azure Sentinel-munkaterületet, és válassza ki a végén a sort, majd válassza a három pontra (...) **speciális beállítások**. 
 1. Válassza ki **adatok** , majd **Syslog**.
 1. Győződjön meg arról, hogy a létesítmény Barracuda beállított létezik, és állítsa be a súlyosság, majd kattintson az **mentése**.
+6. A Barracuda események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
 
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése

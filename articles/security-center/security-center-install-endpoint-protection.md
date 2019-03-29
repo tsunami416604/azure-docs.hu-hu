@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6d9c5b080c491d3a6f35f591c69d4c39989b22a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099797"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579325"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
 Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.
@@ -31,12 +31,12 @@ A Security Center a következő végpontvédelmi problémákkal jelentések:
 - Endpoint protection állapota:
 
   - Lejárt aláírás – egy kártevőirtó megoldást a virtuális gépeken és számítógépeken települ, de a megoldás nem rendelkezik a legújabb kártevőirtó-aláírásokat.
-  - Nincs valós idejű védelem – egy kártevőirtó megoldást a virtuális gépeken és számítógépeken telepítve van, de a valós idejű védelem nincs konfigurálva.   Letilthatja a szolgáltatást, vagy lehet, hogy a Security Center nem olvasható be az állapot, mert a megoldás nem támogatott. Lásd: [partnerintegráció](security-center-partner-integration.md) támogatott megoldások listáját.
+  - Nincs valós idejű védelem – egy kártevőirtó megoldást a virtuális gépeken és számítógépeken telepítve van, de a valós idejű védelem nincs konfigurálva.   Letilthatja a szolgáltatást, vagy lehet, hogy a Security Center nem olvasható be az állapot, mert a megoldás nem támogatott. Lásd: [partnerintegráció](security-center-os-coverage.md#supported-endpoint-protection-solutions) támogatott megoldások listáját.
   - Jelentést nem küldő – egy kártevőirtó megoldás telepítve van, de nem küld adatokat.
   - Ismeretlen – egy kártevőirtó megoldás telepítve van, de annak állapota ismeretlen, vagy egy ismeretlen hibát jelez.
 
     > [!NOTE]
-    > Lásd: [biztonsági megoldások integrálása](security-center-partner-integration.md#integrated-azure-security-solutions) integrálhatók a Security Centerrel végpontvédelmi biztonsági megoldások listáját.
+    > Lásd: [biztonsági megoldások integrálása](security-center-os-coverage.md#supported-endpoint-protection-solutions) integrálhatók a Security Centerrel végpontvédelmi biztonsági megoldások listáját.
     >
     >
 

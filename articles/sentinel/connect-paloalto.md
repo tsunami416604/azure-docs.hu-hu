@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bcab43869b488eed1cc6693a2970b6ea4bb2e7c1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403561"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576343"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Csatlakozás a Palo Alto Networks-berendezés
 
@@ -122,6 +122,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 3. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog ` típusa.
 1. Ha nincsenek hibák, vagy ha a naplók nem érkező ellenőrzéséhez tekintse meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
+6. A Palo Alto Networks-események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
 
 
 

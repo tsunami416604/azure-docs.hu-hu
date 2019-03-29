@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541812"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577800"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerek 
 
@@ -41,10 +41,12 @@ A hitelesítés végrehajtásához AzureIoTSecurity ügynök szolgáló két mó
 
  - **A modul** hitelesítési mód<br>
    A modul az ikereszköz függetlenül van hitelesítve.
-   Az ilyen típusú hitelesítés van definiálva a a Authentication.config fájlban a szükséges adatokat C# és a c-hez tartozó LocalConfiguration.json
+   Akkor használja ezt a hitelesítési típust, ha szeretné, hogy a biztonsági ügynök egy dedikált hitelesítési módszer biztonsági modul (csak a szimmetrikus kulcs) keresztül.
         
  - **Eszköz** hitelesítési mód<br>
-    Ezzel a módszerrel a biztonsági ügynök először hitelesíti az eszközt. Az első hitelesítés után az IoT-ügynök ASC végez **Rest** hívás a Rest API-val, a hitelesítési adatok az eszköz IoT hubhoz. IoT-ügynök az ASC majd kéri a biztonsági modul hitelesítési módszert, és az adatokat az IoT hubról. Az utolsó lépésben IoT-ügynök az ASC-hitelesítésére az ASC IoT modul hajt végre.    
+    Ezzel a módszerrel a biztonsági ügynök először hitelesíti az eszközidentitást. Az első hitelesítés után az IoT-ügynök ASC végez egy **REST** hívás a REST API-val, a hitelesítési adatok az eszköz IoT hubhoz. IoT-ügynök az ASC majd kéri a biztonsági modul hitelesítési módszert, és az adatokat az IoT hubról. Az utolsó lépésben IoT-ügynök az ASC-hitelesítésére az ASC IoT modul hajt végre.
+    
+    Akkor használja ezt a hitelesítési típust, ha szeretné, hogy a biztonsági ügynök újra felhasználhatja a meglévő eszköz hitelesítési módszert (önaláírt tanúsítvány és szimmetrikus kulcsot). 
 
 Lásd: [biztonsági ügynök telepítési paramétereket](#security-agent-installation-parameters) megtudhatja, hogyan konfigurálhatja.
                                 
@@ -55,7 +57,7 @@ Lásd: [biztonsági ügynök telepítési paramétereket](#security-agent-instal
 
 ## <a name="security-agent-installation-parameters"></a>Biztonsági ügynök telepítési paraméterek
 
-Amikor [egy biztonsági ügynök üzembe helyezése](select-deploy-agent.md), hitelesítés részletei argumentumot meg kell adni.
+Amikor [egy biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md), hitelesítés részletei argumentumot meg kell adni.
 Ezek az argumentumok az alábbi táblázatban szerepelnek.
 
 
@@ -111,5 +113,5 @@ Szerkesztés _LocalConfiguration.json_ a következő paraméterekkel:
 
 ## <a name="see-also"></a>Lásd még
 - [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
-- [Biztonsági ügynök telepítése](select-deploy-agent.md)
+- [Biztonsági ügynök telepítése](how-to-deploy-agent.md)
 - [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)

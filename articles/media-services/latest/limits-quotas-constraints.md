@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 694c56cf52cb7a15230b9a2cdd34642c7820b407
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897560"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621685"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3
 
@@ -24,24 +24,26 @@ Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| Eszközök az Azure Media Services-fiókonként | 1,000,000|
+| Egy Azure Media Services-fiókra jutó adategység | 1,000,000|
 | Dinamikusjegyzék-szűrők|100|
 | JobInputs feladatonként | 50 (fix)|
-| / Feladat/TransformOutputs az átalakító JobOutputs | 20 (fixed) |
+| JobOutputs feladatonként | 20 (fixed) |
+| Az átalakító TransformOutputs | 20 (fixed) |
 | Fájlok JobInput száma|10 (fix)|
 | Fájlméret| Bizonyos esetekben nincs korlátozva a Media Services támogatja a maximális fájlméretet. <sup>(1)</sup> |
 | Feladatok száma a Media Services-fiók | 500 000 <sup>(2)</sup> (fix)|
-| Átalakítások listázása|A választ, az 1000 átalakítások laponként böngész|
-| Feladatok listázása|A válasz az 500 feladatok laponként böngész|
+| Átalakítások listázása|A válasz oldalakra bontása oldalanként 1000 átalakítással|
+| Feladatok listázása|A válasz oldalakra bontása oldalanként 500 feladattal|
 | Élő események Media Services-fiókonként |5|
 | Egyetlen előfizetéshez Media Services-fiókok | 25 (rögzített) |
-| Futó állapotú videókhoz élő kimenetek |3|
+| Futó állapotú élő esemény élő kimenetek |3|
+| Élő kimeneti maximális időtartama | 25 óra |
 | Tárfiókok | 100<sup>(4)</sup> (fix) |
 | Streamvégpontok (Leállítva vagy fut) a Media Services-fiókonként|2 (fix)|
 | Streamelési szabályok | 100 <sup>(3)</sup> |
 | A Media Services-fiókonként átalakítások | 100 (fix)|
 | Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(5)</sup> (fix) |
-| Tartalmi kulcs házirendje |30 | 
+| Tartalomkulcs-szabályzat |30 | 
 
 <sup>1</sup> egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. Azonban további korlátozások érvényesek az Azure Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. Ha 4K tartalom, amely nagyobb, mint 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
 

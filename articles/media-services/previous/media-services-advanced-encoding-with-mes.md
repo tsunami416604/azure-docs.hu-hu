@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850360"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576292"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Fejlett kódolás MES-beállításkészletek testreszabásával végrehajtása 
 
@@ -27,11 +27,10 @@ ms.locfileid: "57850360"
 
 Ez a témakör bemutatja a Media Encoder Standard-beállításkészletek testreszabása. A [kódolás a Media Encoder Standard használatával egyéni előbeállításokat](media-services-custom-mes-presets-with-dotnet.md) a témakör bemutatja, hogyan hozhat létre a kódolási tevékenység és a egy feladatot, amely végrehajtja ezt a feladatot a .NET használatával. Miután testre szabta a készletet, adja meg az egyéni készletek a kódolási feladat. 
 
->[!NOTE]
->Ha egy XML-készletet használ, ügyeljen arra, hogy elemek sorrendjének megőrzése, ahogyan az alábbi XML-mintát (például KeyFrameInterval előzze meg a SceneChangeDetection).
->
+Ha egy XML-készletet használ, ügyeljen arra, hogy elemek sorrendjének megőrzése, ahogyan az alábbi XML-mintát (például KeyFrameInterval előzze meg a SceneChangeDetection).
 
-Ebben a témakörben találja meg az egyéni készletek, amelyek a következő kódolási feladatokat.
+> [!NOTE] 
+> Számos speciális Media Services v2, a Media Encoder Standard jelenleg nem állnak rendelkezésre a v3-as. További információkért lásd: [hézagok funkció](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Relatív méretek támogatása
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory – Használati feltételek| Microsoft Docs
-description: Ismerteti, hogyan kezdheti el az Azure AD használati feltételek a szükséges információkkal az alkalmazottak vagy a Vendégek, mielőtt hozzáférhetne az.
+title: Használati feltételek – Azure Active Directory |} A Microsoft Docs
+description: Ismerteti, hogyan kezdheti el az Azure Active Directory – használati feltételek a szükséges információkkal az alkalmazottak vagy a Vendégek, mielőtt hozzáférhetne.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,12 +15,12 @@ ms.subservice: compliance
 ms.date: 03/24/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f6ac8a693e09d0efbac080d7effc6ce21c6a094
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 25a3eb6fdfc6928e2e414dcbe799861c3b2eb999
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418971"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576173"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.

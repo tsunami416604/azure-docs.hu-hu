@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 213e6a95484b5f6953f8423474953125f8739015
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541827"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574744"
 ---
 # <a name="asc-for-iot-prerequisites"></a>Az IoT-Előfeltételek ASC
 
@@ -59,7 +59,7 @@ Ellenőrizze az IoT Hub hely megkezdése előtt, a szolgáltatás rendelkezésre
 
 ## <a name="supported-platforms-for-agents"></a>Ügynökök által támogatott platformok 
 
-IoT-ügynökök ASC egyre nagyobb számban elérhető eszközöket és platformokat támogatja. Tekintse meg a [támogatott platformok listáját](select-deploy-agent.md) ellenőrizheti a meglévő vagy tervezett hálózatieszköz-könyvtár.  
+IoT-ügynökök ASC egyre nagyobb számban elérhető eszközöket és platformokat támogatja. Tekintse meg a [támogatott platformok listáját](how-to-deploy-agent.md) ellenőrizheti a meglévő vagy tervezett hálózatieszköz-könyvtár.  
 
 ## <a name="next-steps"></a>További lépések
 - [Áttekintés](overview.md)

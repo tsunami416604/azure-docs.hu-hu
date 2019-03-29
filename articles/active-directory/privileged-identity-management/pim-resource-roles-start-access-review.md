@@ -1,5 +1,5 @@
 ---
-title: Az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása a PIM |} A Microsoft Docs
+title: A PIM - Azure Active Directory Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása |} A Microsoft Docs
 description: Útmutató az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4ebf9ec08915a557f897a743cac1160d7e6823
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46903967b375d882dc3c7a62cd0b7f8b6059f8b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173436"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579495"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása
-Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések társított kockázatának csökkentése érdekében, a kiemelt szerepkörű rendszergazdák szerepkörök rendszeresen tekintse át. Ez a dokumentum ismerteti a lépéseket az Azure-erőforrások a Privileged Identity Management (PIM) hozzáférési felülvizsgálat indítása.
+Szerepkör-hozzárendelések "elavult" válnak, amikor a felhasználók a privilegizált hozzáférés, amelyekre már nincs szükségük. A régi szerepkör-hozzárendelések társított kockázatának csökkentése érdekében, a kiemelt szerepkörű rendszergazdák szerepkörök rendszeresen tekintse át. Ez a dokumentum ismerteti a lépéseket a hozzáférési felülvizsgálat indítása az Azure Active Directory (Azure AD) Privileged Identity Management (PIM).
 
 A PIM-alkalmazás fő lapján lépjen a:
 
@@ -76,4 +76,4 @@ Amíg viszonyt keresztül, emlékeztesse a felhasználókat, végezze el a felü
 
 - [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése](pim-resource-roles-complete-access-review.md)
 - [A saját Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-resource-roles-perform-access-review.md)
-- [A PIM az Azure AD-címtárbeli szerepkörökhöz tartozó hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md)
+- [A PIM az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása](pim-how-to-start-security-review.md)

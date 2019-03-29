@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ade6737d2df37d35eefd0be77895a54e1cea433d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314874"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577204"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
 A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hogy egy könnyen használható szerkesztési funkciót.
+
+<a name="add-datasource"></a>
 
 ## <a name="edit-your-knowledge-base-content"></a>A Tudásbázis-tartalmat szerkesztése
 
@@ -52,7 +54,7 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
 
 ## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
 
-Válassza ki **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis tábla.
+Az a **beállítások** lapon jelölje be **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis tábla.
 
 ![A QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 

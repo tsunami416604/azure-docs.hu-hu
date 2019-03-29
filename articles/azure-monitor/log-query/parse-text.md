@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268192"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620859"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Az Azure Monitor naplóira szöveges adatok elemzése
 Bizonyos Azure Monitor által gyűjtött naplóadatok egyetlen tulajdonsággal több információt tartalmazza. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.
@@ -55,7 +55,7 @@ Ez a módszer előnyei a következők:
  
 Ezt a módszert hátrányai a következők:
 
-- Több összetett lekérdezések szükségesek. Ez a enyhíthető [funkciók szimulálása a tábla](#Use-function-to-simulate-a-table).
+- Több összetett lekérdezések szükségesek. Ez a enyhíthető [funkciók szimulálása a tábla](#use-function-to-simulate-a-table).
 - Több lekérdezés elemzés logikáját kell replikálni. Megoszthat egy logikai függvényeken keresztül.
 - Terhelés hozhat létre, ha nagyon nagy rekord összetett logikát futtat csoportokat (több milliárd rekordon,).
 

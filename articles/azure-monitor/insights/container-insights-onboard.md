@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/28/2019
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 591624e6bab07bfa06799d8e4817622e7a5c280a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 403cbeb0a68e39eab714ceb428fcfaefe8de0ff7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107644"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576241"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Hogyan előkészítése az Azure Monitor for containers szolgáltatásban  
 
@@ -28,14 +28,16 @@ Ez a cikk bemutatja, hogyan állítható be az Azure Monitor for containers szol
 
 Az Azure Monitor for containers szolgáltatásban engedélyezhető az új vagy egy vagy több meglévő telepítéseit az AKS használatával a következő támogatott módszerek:
 
-* Az Azure portal vagy az Azure CLI-vel
+* Az Azure Portalon, az Azure PowerShell vagy az Azure CLI-vel
 * Használatával [Terraform és az AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - **Log Analytics-munkaterületet.** Létrehozhat, engedélyezze a monitorozást az új AKS-fürt, vagy lehetővé teszik az előkészítési folyamatot, hozzon létre egy alapértelmezett munkaterületet az AKS-fürt előfizetés alapértelmezett az erőforráscsoportban. Ha úgy döntött, hogy saját maga létrehozni, azt a létrehozhat [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)segítségével, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-- Ön egy **a Log Analytics közreműködő szerepkör tagjai** engedélyezéséhez a tárolók figyelését. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
+- Ön a tagja, a **Log Analytics közreműködő szerepkör** engedélyezéséhez a tárolók figyelését. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
+- Ön a tagja, a **[tulajdonosa](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** az AKS-fürt erőforrás szerepkört. 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -46,19 +48,22 @@ A teljesítmény monitorozását teszi lehetővé a tárolóalapú Log Analytics
 Az ügynök új verziójának kiadásakor, a rendszer automatikusan frissíti a felügyelt Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes fürtökön. Tekintse kiadott verziói követéséhez [ügynök közleményekért](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). 
 
 >[!NOTE] 
->Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. A sablon kell telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel."
+>Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. A sablonhoz telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Engedélyezze a monitorozást az új fürt
-A telepítés során engedélyezheti egy új AKS-fürtöt az Azure Portalon, az Azure CLI-vel, vagy a terraform használatával figyelését.  Kövesse a cikk rövid [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough-portal.md) szeretné engedélyezni a portálról, ha. Az a **figyelés** lapon a a **figyelés engedélyezése** beállításnál válassza **Igen**, majd válassza ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. 
+A telepítés során engedélyezheti egy új AKS-fürtöt az Azure Portalon, az Azure CLI-vel, vagy a terraform használatával figyelését.  Engedélyezi a portálról, kövesse a rövid útmutató a cikkben [Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough-portal.md) kövesse a lépéseket a szakaszában **figyelni és naplók**.  
+
+>[!NOTE]
+>Ha az a rövid útmutató cikk lépéseit követve engedélyezze a monitorozást az AKS-fürtöt a portálon az alábbi, vagy válasszon egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy új kéri. 
 
 ### <a name="enable-using-azure-cli"></a>Engedélyezze az Azure CLI használatával
 Egy új Azure CLI használatával létrehozott AKS-fürt figyelése engedélyezéséhez kövesse a lépés a rövid útmutató a cikkben a szakaszában [létrehozása AKS-fürt](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.43 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+>Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
 ### <a name="enable-using-terraform"></a>Engedélyezze a Terraform használatával
@@ -79,9 +84,14 @@ Miután engedélyezte a figyelés, és minden konfigurációs feladat sikeresen 
 Miután engedélyezte a figyelés, a fürt mérőszámok megtekintéséhez nagyjából 15 percet igénybe vehet. 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>A meglévő felügyelt fürtöket figyelés engedélyezése
-Az AKS-fürt vagy az Azure CLI használatával a portálról, vagy a megadott Azure Resource Manager-sablonnal a PowerShell-parancsmag használatával már telepített figyelése `New-AzResourceGroupDeployment`. 
+Engedélyezheti a figyelését egy AKS-fürtöt, amely már üzemel, a támogatott módszerek egyikének használatával:
 
-### <a name="enable-monitoring-using-azure-cli"></a>Engedélyezze a monitorozást az Azure CLI használatával
+* Azure CLI
+* Terraform
+* [Az Azure Monitor](#enable-from-azure-monitor-in-the-portal) vagy [közvetlenül az AKS-fürtöt a](#enable-directly-from-aks-cluster-in-the-portal) az Azure Portalon 
+* Az a [Azure Resource Manager-sablon megadott](#enable-using-an-azure-resource-manager-template) Azure PowerShell-parancsmag használatával `New-AzResourceGroupDeployment` vagy az Azure CLI használatával. 
+
+### <a name="enable-using-azure-cli"></a>Engedélyezze az Azure CLI használatával
 A következő lépés lehetővé teszi, hogy az AKS-fürt Azure CLI-vel figyelését. Ebben a példában, nem kell egy létrehozása, vagy adjon meg egy meglévő munkaterületet. Ez a parancs leegyszerűsíti a folyamatot, egy alapértelmezett munkaterületet hoz létre az AKS-fürt előfizetés az alapértelmezett erőforráscsoportot, ha egy még nem létezik a régióban.  Az alapértelmezett munkaterületen létrehozott hasonló formátumát *Alapértelmezettmunkaterület -\<GUID azonosítója >-\<régió >*.  
 
 ```azurecli
@@ -106,7 +116,7 @@ A kimenet az alábbihoz hasonló lesz:
 provisioningState       : Succeeded
 ```
 
-### <a name="enable-monitoring-using-terraform"></a>Engedélyezze a monitorozást a Terraform használatával
+### <a name="enable-using-terraform"></a>Engedélyezze a Terraform használatával
 1. Adja hozzá a **oms_agent** bővítmény profilt a már meglévő [azurerm_kubernetes_cluster erőforrás](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
 
    ```
@@ -120,7 +130,7 @@ provisioningState       : Succeeded
 
 2. Adja hozzá a [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a Terraform dokumentációjában leírt lépések végrehajtásával.
 
-### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>A portálon az Azure Monitor figyelés engedélyezése 
+### <a name="enable-from-azure-monitor-in-the-portal"></a>Az Azure Monitor engedélyezése a portálon 
 Ahhoz, hogy az AKS-fürt az Azure Portalon az Azure Monitor figyelését, tegye a következőket:
 
 1. Az Azure Portalon válassza ki a **figyelő**. 
@@ -137,8 +147,8 @@ Ahhoz, hogy az AKS-fürt az Azure Portalon az Azure Monitor figyelését, tegye 
  
 Miután engedélyezte a figyelés, a fürt mérőszámok megtekintéséhez nagyjából 15 percet igénybe vehet. 
 
-### <a name="enable-monitoring-from-aks-cluster-in-the-portal"></a>Engedélyezze a monitorozást az AKS-fürtöt a portálon
-Az AKS-tároló az Azure Portal figyelés engedélyezése, tegye a következőket:
+### <a name="enable-directly-from-aks-cluster-in-the-portal"></a>AKS-fürtöt a portálon közvetlenül a engedélyezése
+Ahhoz, hogy közvetlenül egy az AKS-fürtök az Azure Portalon a figyelés, tegye a következőket:
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. 
 2. Az erőforrások listájába írja be a szöveget **tárolók**.  
@@ -159,24 +169,23 @@ Az AKS-tároló az Azure Portal figyelés engedélyezése, tegye a következőke
  
 Miután engedélyezte a figyelés, körülbelül 15 percet, mielőtt megtekintheti a fürt működési adatokat vehet igénybe. 
 
-### <a name="enable-monitoring-by-using-an-azure-resource-manager-template"></a>Engedélyezze a monitorozást az Azure Resource Manager-sablon használatával
+### <a name="enable-using-an-azure-resource-manager-template"></a>Engedélyezze az Azure Resource Manager-sablon használatával
 Ez a módszer két JSON-sablont tartalmaz. Egy sablon határozza meg, a konfigurációt a figyelés, és a másik paraméterértékeket, hogy adja meg az alábbiakat tartalmazza:
 
 * Az AKS tároló erőforrás-azonosítója. 
 * Az erőforráscsoport, amely a fürt üzemel.
-* A Log Analytics-munkaterületet és régióban hozhat létre a munkaterületén. 
 
 >[!NOTE]
 >A sablonhoz telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel.
 >
 
-A Log Analytics-munkaterületen van, manuálisan kell létrehozni. A munkaterület létrehozásához, beállíthatja azt keresztül [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)segítségével, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+A Log Analytics-munkaterülethez van létrehozni a figyelést az Azure PowerShell vagy parancssori felület használatával engedélyezése előtt. A munkaterület létrehozásához, beállíthatja azt keresztül [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)segítségével, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
 
 Ha ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalmát, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 #### <a name="create-and-execute-a-template"></a>Hozzon létre, és hajtsa végre a sablon
 
@@ -204,13 +213,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
       "metadata": {
          "description": "Azure Monitor Log Analytics Resource ID"
        }
-    },
-    "workspaceRegion": {
-    "type": "string",
-    "metadata": {
-       "description": "Azure Monitor Log Analytics workspace region"
-      }
-     }
+    }
     },
     "resources": [
       {
@@ -230,41 +233,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
          }
        }
       }
-     },
-    {
-        "type": "Microsoft.Resources/deployments",
-        "name": "[Concat('ContainerInsights', '-',  uniqueString(parameters('workspaceResourceId')))]", 
-        "apiVersion": "2017-05-10",
-        "subscriptionId": "[split(parameters('workspaceResourceId'),'/')[2]]",
-        "resourceGroup": "[split(parameters('workspaceResourceId'),'/')[4]]",
-        "properties": {
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "location": "[parameters('workspaceRegion')]",
-                        "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
-                        "properties": {
-                            "workspaceResourceId": "[parameters('workspaceResourceId')]"
-                        },
-                        "plan": {
-                            "name": "[Concat('ContainerInsights', '(', split(parameters('workspaceResourceId'),'/')[8], ')')]",
-                            "product": "[Concat('OMSGallery/', 'ContainerInsights')]",
-                            "promotionCode": "",
-                            "publisher": "Microsoft"
-                        }
-                    }
-                ]
-            },
-            "parameters": {}
-        }
-       }
+     }
      ]
     }
     ```
@@ -285,19 +254,16 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
        },
        "workspaceResourceId": {
          "value": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>"
-       },
-       "workspaceRegion": {
-         "value": "<workspaceLocation>"
-       }
+       }  
      }
     }
     ```
 
-4. Értékeinek szerkesztéséhez **aksResourceId** és **aksResourceLocation** értékek a segítségével a **az AKS áttekintése** oldala az AKS-fürtöt. Az érték **workspaceResourceId** a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. Emellett adja meg a helyet, a munkaterület a **workspaceRegion**. 
+4. Értékeinek szerkesztéséhez **aksResourceId** és **aksResourceLocation** az értékekkel a **az AKS áttekintése** oldala az AKS-fürtöt. Az érték **workspaceResourceId** a Log Analytics-munkaterületet, amely tartalmazza a következő munkaterület nevének teljes erőforrás-Azonosítójára van. 
 5. Mentse a fájlt **existingClusterParam.json** egy helyi mappába.
 6. Készen áll a sablon üzembe helyezésére. 
 
-   * Használja a következő PowerShell-parancsokat a sablont tartalmazó mappában:
+   * Üzembe helyezése az Azure PowerShell-lel, használja az alábbi parancsokat a sablont tartalmazó mappában:
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
@@ -308,7 +274,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
        provisioningState       : Succeeded
        ```
 
-   * A következő parancs futtatása az Azure CLI-vel:
+   * Az Azure CLI-vel üzembe helyezéséhez futtassa a következő parancsokat:
     
        ```azurecli
        az login

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4ebe77d26360776140db8e2a4b0209475d9d6367
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484712"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621315"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítése
 Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azure AD B2C-vel), szükség lehet a felhasználói fiók áttelepítéséhez. Ez a cikk bemutatja, hogyan telepítheti át meglévő felhasználói fiókok bármely identitásszolgáltatótól az Azure AD B2C-vel. A cikk nem szinkronban kell lennie az előírásoknak megfelelő, de néhány forgatókönyv bemutatja. A fejlesztő feladata mindkét megközelítés megfelelőségét.
@@ -257,7 +257,7 @@ A jelszó módosítása nyomon követéséhez használhatja az Azure-táblát. H
 ### <a name="41-update-your-application-setting"></a>4.1: Az alkalmazás-beállítás frissítése
 1. A RESTful API – demó verzió ellenőrzéséhez nyissa meg a `AADB2C.UserMigration.sln` a Visual Studióban.
 
-1. Az a `AADB2C.UserMigration.API` projektben nyissa meg a *appsettings.json* fájlt. Cserélje le a beállítás-ben konfigurálttal [2.2. lépés](#step-22-configure-the-application-settings):
+1. Az a `AADB2C.UserMigration.API` projektben nyissa meg a *Web.config* fájlt. Cserélje le a beállítás-ben konfigurálttal [2.2. lépés](#step-22-configure-the-application-settings):
 
     ```json
     {

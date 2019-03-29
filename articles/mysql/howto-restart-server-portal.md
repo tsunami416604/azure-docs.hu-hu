@@ -1,17 +1,17 @@
 ---
 title: Indítsa újra az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
-description: Ez a cikk bemutatja, hogyan újraindítható egy Azure Database for MySQL-kiszolgálóhoz az Azure Portal használatával.
+description: Ez a cikk bemutatja, hogyan újraindítható egy Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.openlocfilehash: 6cf6679dc6398b112ffc964f50986b2ab30aba47
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621397"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Indítsa újra az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for MySQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
@@ -22,7 +22,7 @@ Befejezéséhez újraindítás szükséges idő attól függ, hogy a MySQL-helyr
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató végrehajtásához lesz szüksége:
-- Egy [, Azure Database for MySQL-kiszolgáló és adatbázis](quickstart-create-mysql-server-database-using-azure-portal.md)
+- Egy [, Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>Hajtsa végre a kiszolgáló újraindítása
 

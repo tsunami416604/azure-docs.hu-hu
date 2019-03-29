@@ -2,20 +2,20 @@
 title: 'Oktatóanyag: New York-i taxik adatok betöltése az Azure SQL Data Warehouse |} A Microsoft Docs'
 description: Oktatóanyag az Azure portal és az SQL Server Management Studio New York-i taxik adatainak betöltésére egy nyilvános Azure-blobból Azure SQL Data warehouse-bA.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466526"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620189"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: New York-i taxik adatait az Azure SQL Data Warehouse betöltése
 
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
 
 6. Kattintson a **teljesítményszint** megadásához, hogy az adatraktár Gen1 és Gen2, és az adattárházegységek számának. 
 
-7. A jelen oktatóanyag esetében válassza ki a **Gen1** az SQL Data Warehouse. A csúszka alapértelmezés szerint értéke **DW1000c**.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
+7. A jelen oktatóanyag esetében válassza ki a **Gen2** az SQL Data Warehouse. A csúszka értéke **DW1000c** alapértelmezés szerint.  Csúsztassa fel és le, hogy kipróbálja a működését a gyakorlatban. 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -150,7 +150,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A névnek valami ilyesmit kell lennie: **mynewserver-20180430.database.windows.net**. |
-    | Hitelesítés | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
+    | Authentication | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ezt a jelszót adta meg a kiszolgáló létrehozásakor. |
 

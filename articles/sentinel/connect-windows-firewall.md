@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2356a7e5426037ffe9fc8b304ac113f4a3fe2a17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103349"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574840"
 ---
 # <a name="connect-windows-firewall"></a>A Windows tűzfal csatlakoztatása
 
@@ -39,6 +39,7 @@ A Windows tűzfal-összekötő lehetővé teszi, hogy könnyedén csatlakoztatha
 1. Az Azure-Sentinel-portálon válassza **adatgyűjtés** majd kattintson a a **Windows tűzfal** csempére. 
 1. Válassza ki a kívánt adatfolyam adattípusokat.
 1. Kattintson az **Install** (Telepítés) gombra.
+6. A megfelelő sémát a Log Analytics használata a Windows tűzfal, keresse meg **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

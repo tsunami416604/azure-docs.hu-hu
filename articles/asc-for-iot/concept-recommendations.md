@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 1e4582d93d1e3380ecdabdb241f27839d4da4565
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541857"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576197"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
 
@@ -27,12 +27,13 @@ ms.locfileid: "58541857"
 > Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Folyamatban lévő megoldás elemzés alapján az IoT ASC javítása és az eszközök, működési állapot és az IoT Hub-környezet teljes védelme érdekében szükség esetén az alábbi javaslatokat biztosít. 
+Az IoT ASC megvizsgálja az Azure-erőforrások és az IoT-eszközök, és biztosítja a biztonsági javaslatok a támadási felület csökkentése érdekében. Biztonsági javaslatok gyakorlatban is használható, és a célja, hogy a megfelelő ajánlott biztonsági eljárások az ügyfelek támogatási.
 
+Ebben a cikkben található javaslatok, amely akkor aktiválódik a az IoT Hub és/vagy IoT-eszközök listáját.
 
-## <a name="device-recommendations"></a>Eszköz-javaslatok
+## <a name="recommendations-for-iot-devices"></a>Javaslatok az IoT-eszközök
 
-Eszköz megnövelhető elemzések és javaslatok eszközbiztonság és -viselkedés javítása érdekében. 
+Elemzések és javaslatok javíthatja biztonsági helyzetét eszköz eszköz megnövelhető. 
 
 | Severity | Name (Név)                                                      | Adatforrás | Leírás                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,9 +43,9 @@ Eszköz megnövelhető elemzések és javaslatok eszközbiztonság és -viselked
 | Közepes   | Megengedő tűzfalszabály kimeneti láncában található.    | Ügynök       | Egy szabály a tűzfalon talált, amely számos különböző IP-címek és portok megengedő mintát tartalmaz.                                                                                   |
 | Közepes   | Művelet rendszer alapkonfiguráció érvényesítése sikertelen volt           | Ügynök       | Eszköz nem kompatibilis [CIS Linux rendszerek vonatkozásában](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
-### <a name="operational-recommendation"></a>Működési javaslat
+### <a name="operational-recommendations-for-iot-devices"></a>IoT-eszközök működési javaslatok
 
-Működési megnövelhető insights és az ügynök konfigurációjának javítására vonatkozó javaslatokat.
+Működési megnövelhető insights és a biztonsági ügynök konfigurációjának javítására vonatkozó javaslatokat.
 
 | Severity | Name (Név)                                    | Adatforrás | Leírás                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Működési megnövelhető insights és az ügynök konfigurációjának javít�
 | Alacsony      | Biztonsági ikereszköz konfigurációs ütközés    | Ügynök       | A biztonsági ikereszköz konfigurációban meghatározott ütközések.                           |
 
 
-## <a name="iot-hub-recommendations"></a>Az IoT Hub-javaslatok
+## <a name="recommendations-for-iot-hub"></a>Az IoT Hub javaslatok
 
 Javaslat riasztások adja meg, az insight and javaslatok a műveletek javítása a környezet biztonsági állapotát.  
 

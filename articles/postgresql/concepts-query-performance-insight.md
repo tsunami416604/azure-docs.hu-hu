@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486579"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620733"
 ---
 # <a name="query-performance-insight"></a>Lekérdezési terheléselemző 
 
@@ -28,11 +28,11 @@ A lekérdezési Terheléselemző függvénynek, adatok szerepelniük kell a [Que
 ## <a name="viewing-performance-insights"></a>Teljesítményelemzés megtekintése
 A Microsoft Azure Portal [Lekérdezési terheléselemző](concepts-query-performance-insight.md) nézete a Lekérdezéstárból származó fontos információk vizualizációit jeleníti meg. 
 
-Az Azure Database for PostgreSQL-kiszolgáló portáloldalán válassza **lekérdezési teljesítmény Insight** alatt a **támogatás + hibaelhárítás** a menüsávon szakaszában.
+Az Azure Database for PostgreSQL-kiszolgáló portáloldalán válassza **lekérdezési teljesítmény Insight** alatt a **intelligens teljesítmény** a menüsávon szakaszában.
 
 ![Lekérdezési Terheléselemző hosszú ideig futó lekérdezések](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-A **Hosszú ideig futó lekérdezések** lapon az 5 leggyakoribb lekérdezés látható a végrehajtásonkénti átlagos időtartam szerint, 15 perces időközönként összesítve. Több lekérdezés megtekintéséhez válasszon értéket a **Lekérdezések száma** legördülő menüből. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
+A **hosszú ideig futó lekérdezések** lapon látható az öt legaktívabb lekérdezések által végrehajtásonkénti, átlagos időtartam összesített 15 perces időközönként. Több lekérdezés megtekintéséhez válasszon értéket a **Lekérdezések száma** legördülő menüből. A diagram színei ekkor egy adott lekérdezésazonosító tekintetében változhatnak.
 
 Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt is megteheti a bejövő és kimenő ikonok a nagyítás segítségével megtekintheti a kisebb vagy nagyobb bizonyos idő jelölik.
 
@@ -40,7 +40,7 @@ A diagramot az alábbi táblázatban további tájékoztatást nyújt a hosszú 
 
 A kiszolgálóval kapcsolatos megfelelő várakozási adatok vizualizációinak megjelenítéséhez válassza a **Várakozási statisztikák** fület.
 
-![A Lekérdezési terheléselemző várakozási statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Lekérdezési Terheléselemző vár statisztika](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>További lépések
 - További információk az Azure Database for PostgreSQL [monitoringjához és finomhangolásához](concepts-monitoring.md).

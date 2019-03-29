@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 1f94544a2e7a26ab00432a3564bb752c71254844
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484880"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619798"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájlt
 
@@ -31,6 +31,7 @@ A ZIP-fájl központi telepítés használja ugyanazt a Kudu szolgáltatást ado
 - A beállítás az alapértelmezett buildelési folyamat, amely tartalmazza a csomag-visszaállítás engedélyezése.
 - [Telepítés testreszabása](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), többek között üzembe helyezési parancsfájlok futtatásához.  
 - Telepítési naplók. 
+- Egy fájl maximális mérete 512 MB-ot.
 
 További információkért lásd: [Kudu dokumentáció](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 

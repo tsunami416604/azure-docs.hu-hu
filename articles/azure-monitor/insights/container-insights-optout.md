@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 16abcd2130e92f182dc129c2d7f5cd07ac04a766
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2493866f2926f29e673a7825dbd3c4a2d0e41808
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313531"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579529"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókat és az Azure Monitor figyelésének leállítása
 
@@ -32,7 +32,7 @@ Használja a [az aks disable-bővítmények](https://docs.microsoft.com/cli/azur
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Kívánja újból engedélyezni a figyelést a fürt számára, lásd: [engedélyezze a monitorozást az Azure CLI-vel](container-insights-onboard.md#enable-monitoring-using-azure-cli).
+Kívánja újból engedélyezni a figyelést a fürt számára, lásd: [engedélyezze a monitorozást az Azure CLI-vel](container-insights-onboard.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 Megadott van két Azure Resource Manager-sablon eltávolítása az erőforráscsoportban a megoldásokkal kapcsolatos forrásanyagok konzisztens és ismétlődő támogatásához. Egyik megadása leállíthatja a figyelést, a konfigurációs JSON-sablon, a másik, konfigurálja úgy, hogy adja meg az AKS Azonosítót és erőforrás erőforráscsoportot, amely a fürt üzembe lesz helyezve, a paraméterértékeket tartalmaz. 

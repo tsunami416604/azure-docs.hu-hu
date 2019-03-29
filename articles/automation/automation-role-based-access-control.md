@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544980"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621379"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -231,6 +231,9 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 |Regisztrációs állapot ellenőrzése – olvasás megoldás      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Megoldás         |
 |Regisztrációs állapot ellenőrzése – olvasás VM      | Microsoft.Compute/virtualMachines/read         | Virtuális gép         |
 |Regisztrációs állapot ellenőrzése – olvasható fiók      | Microsoft.Automation/automationAccounts/read  |  Automation-fiók   |
+| Bevezetési munkaterületen ellenőrizze a virtuális gép<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Előfizetés         |
+
+<sup>1</sup> erre az engedélyre van szükség üzembe helyezni a virtuális gép portáljának felületén keresztül.
 
 ### <a name="onboarding-from-automation-account"></a>Előkészítés Automation-fiók
 

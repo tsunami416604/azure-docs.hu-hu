@@ -1,6 +1,6 @@
 ---
-title: Mi az az Azure AD Privileged Identity Management? | Microsoft Docs
-description: Áttekintést nyújt az Azure Active Directory Privileged Identity Managementről (PIM).
+title: Mi a Privileged Identity Management? – Az azure Active Directory |} A Microsoft Docs
+description: Az Azure AD Privileged Identity Management (PIM) áttekintést nyújt.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022fd8e1ab8445954b205f471cd1aa4d18e11545
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 22f4caed1ea0490470009c21f22624861808cb2d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178158"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578679"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
 

@@ -7,24 +7,29 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780405"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620640"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
-Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**, vagy **Standard** díjcsomagok árából.
+Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**,  **Standard szintű**, vagy **tárolásra optimalizált** díjcsomagok árából.
 
 + **Ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetésében.
 
 + **Alapszintű** dedikált számítási erőforrásokat biztosít a kisebb léptékű termelési számítási feladatokhoz.
 
 + **Standard szintű** minden szinten több tárolási és feldolgozási kapacitással rendelkező dedikált gépen üzemel. Standard négy szinten érhető el: S1, S2, S3 és S3 HD.
+
++ **Tárolási optimalizált** további összes tárhely, tárolási sávszélességet és a memória, mint a dedikált gépen üzemel **Standard**. Tárolási optimalizált két szinten érhető el: 1 és 2.
+
+> [!NOTE]
+> Tárolásra optimalizált szolgáltatásszintjét jelenleg előzetes verzióként érhető el egy vizsgálat és a Kísérletezési céljából a cél az, hogy visszajelzéseket kedvezményes áron. Végső díjszabás lesz bejelentve később, amikor ezek a rétegek általánosan elérhetők. Azt javasoljuk, hogy az éles környezetben ezek a rétegek tanúsítványokkal szemben.
 
   Nagy kapacitású S3 (S3 HD) van fejthetők vissza az adott munkaterhelés konkrét: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű (1 millió indexenkénti, három példányban indexek szolgáltatásonként) kis méretű indexeket. Ez a szint nem biztosít a [indexelő szolgáltatás](search-indexer-overview.md). Az S3 HD adatbetöltés kell kihasználni a ügyfélleküldéses módszer használatával a forrás és a indexet az adatok leküldéséhez API-hívások. 
 
@@ -42,13 +47,13 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 
 ## <a name="index-limits"></a>Index korlátok
 
-| Erőforrás | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
-| -------- | ---- | ------------------- | --- | --- | --- | --- |
-| Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |
-| Indexenkénti maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) indexenkénti |1 |1 |1 |1 |1 |1 |
-| Maximális [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indexenkénti |100 |100 |100 |100 |100 |100 |
-| Profil maximális függvények |8 |8 |8 |8 |8 |8 |
+| Erőforrás | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2. |
+| -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
+| Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
+| Indexenkénti maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) indexenkénti |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximális [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indexenkénti |100 |100 |100 |100 |100 |100 |100 |100 |
+| Profil maximális függvények |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek. Alapszintű csomag egyetlen Termékváltozat és a egy alacsonyabb korlátja 100 mezők indexenkénti.
 
@@ -98,16 +103,16 @@ Késedelmes 2017 után létrehozott alapvető szolgáltatások megnövekedett le
 
 Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés vagy a természetes nyelvi feldolgozás, a kognitív keresés rövidebb maximális futó idővel rendelkezik, úgy, hogy más indexelési feladatokat is elhelyezkedhetnek. Ha egy indexelési feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, próbálja meg egy ütemezés szerint fut. Az ütemező nyomon követi az indexelés állapotát. Ha egy ütemezett indexelési feladat bármilyen okból megszakad, az indexelő folytathatja a munkát, ahol utolsó abbahagyta a következő ütemezett futáskor.
 
-| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
-| -------- | ----------------- | ----------------- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |
-| Maximális indexelési terhelés száma indításonként |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |– |
-| Maximális futási idejét <sup>5</sup> | 1 – 3 perc alatt |24 óra |24 óra |24 óra |24 óra |–  |
-| Maximális futási idejét, a kognitív keresés szakértelmével vagy a blob-indexelés a képelemzés <sup>5</sup> | 3 – 10 perc |2 óra |2 óra |2 óra |2 óra |–  |
-| BLOB indexelőjével: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |
-| BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4 millió |4 millió |4 millió |– |
+| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2. |
+| -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
+| Maximális indexelési terhelés száma indításonként |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |– |Korlátlan |Korlátlan |
+| Maximális futási idejét <sup>5</sup> | 1 – 3 perc alatt |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
+| Maximális futási idejét, a kognitív keresés szakértelmével vagy a blob-indexelés a képelemzés <sup>5</sup> | 3 – 10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
+| BLOB indexelőjével: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |256 |256 |
+| BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4 millió |4 millió |4 millió |– |4 millió |4 millió |
 
 <sup>1</sup> ingyenes szolgáltatások indexelő maximális végrehajtási ideje 3 perc alatt van, a blob-forrásoknak és minden más adatforrás esetében 1 perc.
 
@@ -124,6 +129,8 @@ Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés 
 QPS becslések egymástól függetlenül minden ügyfélnek kellett kifejleszteni. Index mérete és összetettsége, lekérdezések mérete és összetettsége és forgalom mennyisége olyan elsődleges befolyásoló QPS. Nincs lehetőség a jelentéssel bíró becslések kínáló venni olyan tényezőket, ha ismeretlen.
 
 A becslések olyan kiszámíthatóbb, ha dedikált erőforrások (alap és Standard szinten) futó szolgáltatások alapján számítjuk ki. További QPS megbecsülheti szorosan, mert rendelkezik több paraméter felett. Megközelítés-becslésére módjáról útmutatóért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
+
+Tárolásra optimalizált szint esetében egy alacsonyabb lekérdezések átviteli sebességére és nagyobb késleltetéssel járhat, mint a Standard szint számíthat.  Szolgáló becslése a lekérdezési teljesítmény révén módszerre ugyanaz, mint a Standard csomagokhoz.
 
 ## <a name="data-limits-cognitive-search"></a>A Data korlátai (cognitive search)
 

@@ -1,6 +1,6 @@
 ---
-title: Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal |} A Microsoft Docs
-description: Vendégfelhasználók kezelése egy csoporthoz, vagy az Azure Active Directory hozzáférési felülvizsgálatokkal alkalmazáshoz hozzárendelt
+title: Vendégfelhasználói hozzáférés felügyelete az Azure Active Directory - a hozzáférési felülvizsgálatokat |} A Microsoft Docs
+description: Vendégfelhasználók kezelése egy csoporthoz vagy alkalmazáshoz való hozzárendelésként az Azure Active Directory hozzáférési felülvizsgálatok rendelve
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881044"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576496"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatok
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
 
 Az Azure Active Directory (Azure AD), akkor egyszerűen együttműködési határait átlépve használatával engedélyezheti a [az Azure AD B2B szolgáltatás](../b2b/what-is-b2b.md). Vendég más bérlők felhasználói is lehetnek [meghívhatják a rendszergazdák által](../b2b/add-users-administrator.md) vagy [más felhasználók](../b2b/what-is-b2b.md). Ez a funkció a közösségi identitásuk, például a Microsoft-fiókok is vonatkozik.

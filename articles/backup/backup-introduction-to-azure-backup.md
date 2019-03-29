@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994415"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621651"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -37,7 +37,11 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 
 **Korlátlan adatátvitel** – Az Azure Backup nem korlátozza a bejövő vagy kimenő adatok mennyiségét. Az Azure Backup nem számol fel díjat sem az átvitt adatokért. Azonban, ha nagy mennyiségű adat importálására az Azure Import/Export szolgáltatást használja, a bejövő adatoknak van bizonyos költségvonzatuk. Ennek költségére vonatkozóan [az offline biztonsági mentésnek az Azure Backup szolgáltatásban alkalmazott munkafolyamatát](backup-azure-backup-import-export.md) ismertető cikkben talál bővebb információt. Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
 
-**Adattitkosítás** – Az adattitkosítás adatainak biztonságos átvitelét és tárolását teszi lehetővé a nyilvános felhőben. A titkosítás jelszavát helyileg tárolja, és soha nem kerül az Azure-ba, illetve nincs ott tárolva. Ha vissza kell állítani valamilyen adatot, csak Ön rendelkezik a titkosítási jelszóval vagy a kulccsal.
+**Adattitkosítás**:
+- A helyszínen, az átvitt adatok titkosítása az AES256 használatával a helyszíni gépen. A továbbított adatok között a tárolási és biztonsági mentési HTTPS védi. Az iSCSI protokoll biztosítja a biztonsági mentés és a felhasználó gép között továbbított adatokat. Az iSCSI-csatorna védelmére Secure tunneling használják.
+- A helyszínen az Azure Backup szolgáltatásban, az adatokat az Azure-titkosított inaktív használatával adja meg a biztonsági mentés üzembe helyezésekor meg a jelszót. A hozzáférési kódot vagy kulcs soha továbbított adatok köre és az Azure-ban tárolja. Ha vissza kell állítani valamilyen adatot, csak Ön rendelkezik a titkosítási jelszóval vagy a kulccsal.
+- Azure virtuális gépek, az adatok titkosítása:-visszaállítási Storage Service Encryption (SSE) használatával. Biztonsági mentés automatikusan tárolás előtt titkosítja az adatokat. Az Azure Storage, beolvasása előtt mindig visszafejti az adatokat.
+- Biztonsági másolat az Azure Disk Encryption (ADE) használatával titkosított Azure virtuális gépeket is támogatja. [További információk](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
 **Alkalmazáskonzisztens biztonsági mentés** – Az alkalmazáskonzisztens biztonsági mentés azt jelenti, hogy a helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentést nyújt, amely garantálja, hogy ne legyen szükség további javításokra az adatok visszaállításához. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
 
@@ -84,9 +88,9 @@ Az alábbi táblázat a Linux támogatott az Azure Backup-összetevőket.
 **Összetevő** | **Linux (Azure által támogatott)**
 --- | ---
 Azure Backup (MARS) ügynöke | Nincs (Windows-alapú ügynök csak)
-System Center DPM | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
+System Center DPM | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
 Azure Backup Server | Hyper-V és VMware virtuális gépek Linux rendszerű vendég virtuális gépeinek fájlkonzisztens biztonsági mentése<br/><br/> Virtuális gép Hyper-V és VMWare Linux rendszerű Vendég virtuális gépek visszaállítása</br></br> Az Azure virtuális gépek nem érhető el fájlkonzisztens biztonsági mentés
-Azure IaaS virtuális gép biztonsági mentése | Alkalmazáskonzisztens biztonsági mentés használatával a [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/><br/> [A fájlszintű helyreállítási](backup-azure-restore-files-from-vm.md)<br/><br/> [Virtuális gép létrehozása a visszaállított lemezről](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Virtuális gép létrehozása egy helyreállítási pontból](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
+Azure IaaS virtuális gép biztonsági mentése | Alkalmazáskonzisztens biztonsági mentés használatával a [szkript előtti és utáni keretrendszerrel](backup-azure-linux-app-consistent.md)<br/><br/> [A fájlszintű helyreállítási](backup-azure-restore-files-from-vm.md)<br/><br/> [Virtuális gép létrehozása a visszaállított lemezről](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [Virtuális gép létrehozása egy helyreállítási pontból](backup-azure-arm-restore-vms.md#create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Prémium szintű tárolós virtuális gépek használata az Azure Backup szolgáltatással
 Az Azure Backup védi a premium storage virtuális gépek. Az Azure premium storage szolgáltatás tartós állapotú meghajtót (SSD)-alapú tárolás, I/O-igényes számítási feladatok támogatására. A Premium Storage a virtuális gépek számítási feladataihoz kínál vonzó megoldást. A Premium Storage és más lemeztípusok kapcsolatos további információkért lásd: a cikk [válassza ki a lemez típusát](../virtual-machines/windows/disks-types.md).

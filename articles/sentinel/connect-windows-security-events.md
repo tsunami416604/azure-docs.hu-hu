@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087601"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576088"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -45,7 +45,7 @@ Teljes mértékben a Windows biztonsági események integrálása az Azure-Senti
 1. Az Azure-Sentinel-portálon válassza **adatgyűjtés** majd kattintson a a **Windows biztonsági eseményeinek** csempére. 
 1. Válassza ki a kívánt adatfolyam adattípusokat.
 1. Kattintson az **Update** (Frissítés) elemre.
-
+6. A megfelelő sémát a Log Analytics használata a Windows biztonsági eseményeket, keresse meg **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 

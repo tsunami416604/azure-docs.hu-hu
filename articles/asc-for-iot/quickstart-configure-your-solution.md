@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ba8b1a099dc204730813754fdfc4b0b8ce45303
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2a24db1124ecd9c2437eafee54d856120a77e97f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541637"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576445"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Gyors útmutató: Az IoT-megoldás konfigurálása
 
@@ -29,11 +29,11 @@ ms.locfileid: "58541637"
 
 Ez a cikk bemutatja, hogyan kezdeti konfigurálása az ASC használva az IoT biztonsági megoldásokat magyarázattal szolgál. 
 
-## <a name="asc-for-iot"></a>Az IoT ASC
+## <a name="asc-for-iot"></a>ASC for IoT
 
 ASC az IoT Azure-alapú IoT-megoldások átfogó teljes körű biztonsági biztosít.
 
-Az ASC az IoT. a teljes IoT-megoldás egy irányítópult, felszínre hozza a minden IoT-eszközök, IoT-platformokhoz és háttérbeli erőforrásokhoz az Azure-ban figyelheti.
+Az IoT ASC figyelheti a teljes IoT-megoldás egy irányítópult, felszínre hozza a minden IoT-eszközök, IoT-platformokhoz és háttérbeli erőforrásokhoz az Azure-ban.
 
 Engedélyezve van az IoT hub, IOT ASC automatikusan azonosítja más Azure-szolgáltatásokhoz is csatlakozik az IoT hub és az IoT-megoldás kapcsolatos.
 
@@ -50,7 +50,7 @@ Az IoT-megoldás új erőforráscsoport hozzáadásához tegye a következőket:
 2. Válassza ki, és nyissa meg a **erőforrások** alatt **biztonsági** a bal oldali menüből. 
 3. Válassza ki **erőforrások hozzáadása**.
 4. Válassza ki az IoT-megoldás tartozó erőforrásokat.
-4. Kattintson a **Hozzáadás** parancsra. 
+5. Kattintson a **Hozzáadás** parancsra. 
 
 Gratulálunk! Az IoT-megoldás történő hozzáadása egy új erőforrást.
 

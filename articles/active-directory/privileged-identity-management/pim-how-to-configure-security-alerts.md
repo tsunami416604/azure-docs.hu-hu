@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása a PIM |} A Microsoft Docs
-description: Ismerje meg az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management (PIM).
+title: Biztonsági riasztások az Azure AD-szerepkörök konfigurálása az Azure Active Directory - a PIM |} A Microsoft Docs
+description: Ismerje meg az Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172382"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577229"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Az Azure AD-címtárbeli szerepkörökhöz tartozó biztonsági riasztások konfigurálása az PIM-ben
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Biztonsági riasztások az Azure AD-szerepkörök konfigurálása az PIM-ben
 
-Az Azure AD Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a PIM-irányítópulton. Válassza ki a riasztást a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a PIM-irányítópulton. Válassza ki a riasztást a felhasználók vagy szerepkörök a riasztást kiváltó felsoroló jelentés megtekintéséhez.
 
 ![A PIM biztonsági riasztások – képernyőkép](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-Ez a szakasz felsorolja az összes biztonsági riasztás címtárszerepkörökkel, hogyan háríthatja el a mellett, hogy hogyan. Súlyosság a következő jelentése van:
+Ez a szakasz felsorolja az Azure AD-szerepkörök, hogyan háríthatja el a mellett, hogy hogyan összes biztonsági riasztás. Súlyosság a következő jelentése van:
 
 * **Magas**: Egy szabályzat megsértése miatt azonnali beavatkozást igényel.
 * **Közepes**: Nem igényel azonnali intézkedést, de lehetséges szabályzat megsértését jelzi.
@@ -130,4 +130,4 @@ Testre szabhatja a PIM-a környezetet és biztonsági célok biztonsági riaszt�
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)
+- [A PIM az Azure AD szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md)

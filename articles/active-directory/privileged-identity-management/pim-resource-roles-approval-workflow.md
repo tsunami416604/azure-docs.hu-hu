@@ -1,5 +1,5 @@
 ---
-title: Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek |} A Microsoft Docs
+title: Hagyja jóvá vagy utasítsa a PIM - Azure Active Directory Azure-erőforrások szerepköreihez tartozó kérelmek |} A Microsoft Docs
 description: Megtudhatja, hogyan jóváhagyja vagy elutasítja az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó kérelmek.
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a458f62ec38503e401b3fb810dc7edc8059a7715
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5ecb55dd2798241ca0ae1754ecf95a79f8aeb134
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245575"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575113"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure-erőforrások szerepköreihez tartozó kérelmek
 
-Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM), konfigurálhatja szerepkörök jóváhagyást kér az aktiválás, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
 
 Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure-erőforrások szerepköreihez tartozó lépéseket.
 
@@ -84,4 +84,4 @@ A következő munkafolyamat-értesítést némi információt:
 
 - [A PIM az Azure-erőforrás szerepkörök meghosszabbítása vagy megújítása](pim-resource-roles-renew-extend.md)
 - [A PIM e-mail-értesítések](pim-email-notifications.md)
-- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)
+- [Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek](azure-ad-pim-approval-workflow.md)

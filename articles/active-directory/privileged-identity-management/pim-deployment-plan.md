@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD Privileged Identity Management (PIM) üzembe helyezése |} A Microsoft Docs
+title: Privileged Identity Management (PIM) – az Azure Active Directory telepítése |} A Microsoft Docs
 description: Ismerteti, hogyan lehet az Azure AD Privileged Identity Management (PIM) telepítésének megtervezését.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227031"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578195"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
-Ez a részletes útmutató ismerteti az Azure AD Privileged Identity Management (PIM) Szolgáltatásának a szervezet telepítésének megtervezését.
+Ez az útmutató lépésről lépésre ismerteti, megtervezheti az üzembe helyezés az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) a szervezetben.
 
 > [!TIP]
 > Ebben a dokumentumban jelölésű elem jelenik meg:
@@ -79,7 +79,7 @@ További információkért lásd: [Mi az Azure AD Privileged Identity Management
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>Szerepkörök, amelyek felügyelhetők a PIM
 
-**Az Azure AD-szerepkörök** – ezek a szerepkörök felelnek az Azure Active Directory (például a globális rendszergazda, Exchange-rendszergazda és biztonsági rendszergazda) belül az összes címtárbeli szerepkörök. Tudjon meg többet a szerepkörökről és a funkcióikat [rendszergazdája szerepkör engedélyei az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md). A szerepköröket a rendszergazdákat meghatározása kapcsolatos útmutatásért lásd: [legalább kiemelt szerepköröket feladat](../users-groups-roles/roles-delegate-by-task.md).
+**Az Azure AD-szerepkörök** – ezek a szerepkörök felelnek az összes az Azure Active Directoryban (például a globális rendszergazda, Exchange-rendszergazda és biztonsági rendszergazda). Tudjon meg többet a szerepkörökről és a funkcióikat [rendszergazdája szerepkör engedélyei az Azure Active Directoryban](../users-groups-roles/directory-assign-admin-roles.md). A szerepköröket a rendszergazdákat meghatározása kapcsolatos útmutatásért lásd: [legalább kiemelt szerepköröket feladat](../users-groups-roles/roles-delegate-by-task.md).
 
 **Azure-erőforrások szerepköreihez** – ezek a szerepkörök az Azure-erőforrás, erőforráscsoport, előfizetés vagy a felügyeleti csoport vannak csatolva. A PIM mindkét beépített szerepkörök, például a tulajdonos, a felhasználói hozzáférés rendszergazdája és a közreműködő, just-in-time hozzáférést biztosít, valamint [egyéni szerepkörök](../../role-based-access-control/custom-roles.md). Az Azure erőforrás-szerepkörökkel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md).
 
@@ -294,7 +294,7 @@ Most, hogy azonosította a tesztfelhasználókat, ebben a lépésben használat�
 
 #### <a name="configure-pim-for-azure-ad-roles"></a>Az Azure AD-szerepkörökhöz tartozó privileged Identity Management konfigurálása
 
-1. [Az Azure AD directory szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md) tervezett alapján.
+1. [Az Azure AD szerepkör-beállítások konfigurálása](pim-how-to-change-default-settings.md) tervezett alapján.
 
 1. Navigáljon a **Azure AD-szerepkörök**, kattintson a **szerepkörök**, és válassza ki az imént beállított szerepkört.
 

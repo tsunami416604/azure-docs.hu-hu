@@ -1,6 +1,6 @@
 ---
-title: Fejezze be a hozzáférési felülvizsgálat csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal |} A Microsoft Docs
-description: Ismerje meg, hogyan végezheti el csoport tagjainak vagy alkalmazás-hozzáférés az Azure AD hozzáférési felülvizsgálatok hozzáférési felülvizsgálat.
+title: A csoportokat vagy alkalmazásokat – Azure Active Directory hozzáférési felülvizsgálatok elvégzése |} A Microsoft Docs
+description: Ismerje meg, hogyan végezheti el csoport tagjainak vagy alkalmazás-hozzáférés az Azure Active Directory hozzáférési felülvizsgálatok hozzáférési felülvizsgálat.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729610"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579597"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportokat vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatok hozzáférési felülvizsgálat befejezése
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>A csoportok a hozzáférési felülvizsgálat befejezése vagy alkalmazásokat az Azure AD hozzáférési felülvizsgálatokkal
 
 A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára. Az Azure AD automatikusan elküldi felülvizsgálók nekik hozzáférést kérő e-mailt. Ha a felhasználó nem tudták beszerezni egy e-mailt, küldhet nekik az utasításokat [csoportokhoz vagy alkalmazásokhoz való hozzáférés felülvizsgálata](perform-access-review.md). (Vegye figyelembe, hogy ki, a felülvizsgálók hozzá vannak rendelve, de nem fogadták el a meghívást vendégek nem kap egy e-mailt a hozzáférési felülvizsgálatok, mivel először el kell fogadniuk előtt tekintse át a meghívót.) A hozzáférési felülvizsgálati időszak után, vagy ha egy rendszergazda leállítja a hozzáférési felülvizsgálatot, kövesse a cikk megtekintéséhez és a alkalmazni az eredményeket.
 

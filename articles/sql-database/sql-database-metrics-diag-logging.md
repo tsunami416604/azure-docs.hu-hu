@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c5be8af71fcbdf6f38f878c70180f38227070245
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499325"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621230"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -148,7 +148,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be a f
 
 | Erőforrás | Telemetriai adatok figyelése |
 | :------------------- | ------------------- |
-| **Felügyelt példány** | ResourceUsageStats tartalmazza a virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, fenntartott tárolóhely, és használja a tárolóhelyet. |
+| **Felügyelt példány** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
 
 Felügyelt példány és a példány adatbázisok diagnostics telemetriai adatainak adatfolyamként konfigurálásához kell külön konfigurálni **mindkét** a következők közül:
 

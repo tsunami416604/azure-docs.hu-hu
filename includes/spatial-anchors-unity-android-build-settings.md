@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 53f480b8858e2bbe7d4699d8637ecaa5ab0c08a3
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 355d89b1fd7d7cc8c9db58122d51c6ff7dff5f3b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305356"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622586"
 ---
 Nyissa meg a projektre a Unity, az `Unity` mappát.
 
@@ -25,4 +25,4 @@ Zárja be a **Build Settings** ablak.
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Töltse le és importálja a ARCore SDK for Unity
 
-Töltse le a `unitypackage` fájlt a [ARCore SDK for Unity-kiadások](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). Vissza a Unity project válassza **eszközök** > **csomag importálása** > **egyéni csomag** majd válassza ki a `unitypackage` fájl korábban letöltött. Az a **Unity-csomag importálása** párbeszédpanelen győződjön meg arról, hogy minden fájl ki van jelölve, és adja meg **importálás**.
+Töltse le a `unitypackage` fájlt a [ARCore SDK for Unity 1.5-ös kiadás](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0). Vissza a Unity project válassza **eszközök** > **csomag importálása** > **egyéni csomag** majd válassza ki a `unitypackage` fájl korábban letöltött. Az a **Unity-csomag importálása** párbeszédpanelen győződjön meg arról, hogy minden fájl ki van jelölve, és adja meg **importálás**.

@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd0612f865b82537e914ce6b6e062038a570c98
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449115"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578577"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
@@ -217,7 +217,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|
-| Azure Global | `https://storage.azure.com/` | Előzetes verzió |
-| Azure Government |  | Nincs |
-| Azure Germany |   | Nincs |
-| Azure China 21Vianet |  | Nincs |
+| Azure Global | `https://storage.azure.com/` | Elérhető |
+| Azure Government | `https://storage.azure.com/` | Elérhető |
+| Azure Germany | `https://storage.azure.com/` | Elérhető |
+| Azure China 21Vianet | `https://storage.azure.com/` | Elérhető |

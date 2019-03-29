@@ -1,5 +1,5 @@
 ---
-title: Azure szerepkör-beállítások konfigurálása a PIM |} A Microsoft Docs
+title: Azure szerepkör-beállítások konfigurálása a PIM - Azure Active Directory |} A Microsoft Docs
 description: Ismerje meg az Azure-erőforrás szerepkör-beállítások konfigurálása az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f793ee22796497b96a1acbd998397dbe2ac40d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f9db39e67cf3ee67b7990f227dbad7e3210cd14b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162135"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577152"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>A PIM Azure szerepkör-beállítások konfigurálása
 
-Amikor az Azure erőforrás-szerepköri beállításokat konfigurálja, meghatározhatja az alapértelmezett beállításokat, amelyek érvényesek az Azure AD Privileged Identity Management (PIM) szerepkör-hozzárendelések Azure-erőforrás. A következő eljárások használatával konfigurálhatja a jóváhagyási munkafolyamatot, és adja meg, akik jóváhagyhatják vagy megtagadhatják a kérelmeket.
+Azure-erőforrás beállítások konfigurálásakor adja meg az Azure-erőforrást az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) szerepkör-hozzárendelések alkalmazott alapértelmezett beállításokat. A következő eljárások használatával konfigurálhatja a jóváhagyási munkafolyamatot, és adja meg, akik jóváhagyhatják vagy megtagadhatják a kérelmeket.
 
 ## <a name="open-role-settings"></a>Nyissa meg a szerepkör-beállítások
 

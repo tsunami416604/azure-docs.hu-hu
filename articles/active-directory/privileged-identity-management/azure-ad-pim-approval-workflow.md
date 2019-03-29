@@ -1,6 +1,6 @@
 ---
-title: Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek |} A Microsoft Docs
-description: Megtudhatja, hogyan jóváhagyja vagy elutasítja az Azure AD Privileged Identity Management (PIM) az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek.
+title: Hagyja jóvá vagy utasítsa a kéréseket az Azure AD-szerepköröket a PIM - Azure Active Directory |} A Microsoft Docs
+description: Megtudhatja, hogyan jóváhagyja vagy elutasítja a kérelmeket az Azure AD-szerepkörök az Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,32 +16,32 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 125a9864eaf53ecdf035247ba23d7c95a8daf131
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244981"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576794"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure AD-címtárbeli szerepkörökhöz tartozó kérelmek
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Hagyja jóvá vagy utasítsa a PIM az Azure AD-szerepkörökhöz tartozó kérelmek
 
-Az Azure AD Privileged Identity Management (PIM) jóváhagyást kér az aktiválási szerepkörök konfigurálása, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM), konfigurálhatja szerepkörök jóváhagyást kér az aktiválás, és válasszon egy vagy több felhasználót, vagy delegált jóváhagyók csoportot. Delegált jóváhagyók rendelkezik jóváhagyásra váró kérelmek 24 óra. Ha 24 órán belül nem jóváhagyják a kérését, majd a jogosult felhasználó újra egy új kérelmet kell benyújtania. A 24 órás jóváhagyási időtartomány érték nem módosítható.
 
-Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure AD-címtárbeli szerepkörökhöz tartozó lépéseket.
+Kövesse az ebben a cikkben jóváhagyja vagy elutasítja a kérelmeket az Azure AD-szerepkörökhöz tartozó lépéseket.
 
 ## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
-Delegált jóváhagyónak e-mailben értesítést fog kapni, ha egy Azure AD directory szerepkör kérelem jóváhagyásra váró. Megtekintheti a függőben lévő kérések az PIM-ben.
+Delegált jóváhagyójaként e-mailben értesítést fog kapni, ha egy Azure AD-szerepkör kérelem jóváhagyásra váró. Megtekintheti a függőben lévő kérések az PIM-ben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **az Azure AD Privileged Identity Management**.
 
-1. Kattintson a **az Azure AD-címtárbeli szerepkörök**.
+1. Kattintson a **Azure AD-szerepkörök**.
 
 1. Kattintson a **kérések jóváhagyása**.
 
-    ![A PIM az Azure AD-címtárbeli szerepkörök - szerepkörök](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![A PIM az Azure AD-szerepkörök – szerepkör](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Jóváhagyásra váró láthatja a kérések listáját.
 

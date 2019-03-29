@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 335e114fc6a4afa83a6b82509148cf258a9e8347
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e614758a91cb3ff02822eeeeb8ae7e80d2123e5d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501151"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578730"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Az Azure Maps Services modullal
 
@@ -34,7 +34,7 @@ Az Azure Maps Web SDK biztosít egy services modult, amely egy segédkódtárba 
     
     > az npm telepítése azure-térképek – rest
     
-    Majd adja hozzá a parancsfájl hivatkozik a `<head>` elem a fájl:
+    Ezután vegyen fel egy parancsfájl hivatkozást a `<head>` elem a fájl:
     
     ```html
     <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
@@ -138,12 +138,12 @@ Az Azure Maps Web SDK biztosít egy services modult, amely egy segédkódtárba 
       
       for(var i=0;i<response.results.length;i++){
         html.push('<tr><td>', (i+1), '.</td><td>', 
-                  response.results[i].address.freeformAddress, 
-                  '</td><td>', 
-                  response.results[i].position.lat,
-                  '</td><td>', 
-                  response.results[i].position.lon,
-                  '</td></tr>');
+                    response.results[i].address.freeformAddress, 
+                    '</td><td>', 
+                    response.results[i].position.lat,
+                    '</td><td>', 
+                    response.results[i].position.lon,
+                    '</td></tr>');
       }
       
       html.push('</table>');
@@ -154,6 +154,8 @@ Az Azure Maps Web SDK biztosít egy services modult, amely egy segédkódtárba 
     ```
 
     Itt látható a teljes körűen futó kódminta:
+
+<br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="A szolgáltatások modul használatával" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>az Services modullal</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.

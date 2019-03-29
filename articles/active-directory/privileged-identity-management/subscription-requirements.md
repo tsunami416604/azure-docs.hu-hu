@@ -1,5 +1,5 @@
 ---
-title: Használható az Azure PIM - licenckövetelményekért |} A Microsoft Docs
+title: A PIM - használata az Azure Active Directory licenckövetelményekért |} A Microsoft Docs
 description: Az Azure AD Privileged Identity Management (PIM) használata a licencelési követelményeket ismerteti.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177249"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576148"
 ---
 # <a name="license-requirements-to-use-pim"></a>Licenckövetelmények vonatkoznak, miközben a PIM használata
 
@@ -45,7 +45,7 @@ Minden egyes rendszergazda vagy a felhasználó kommunikál, vagy fogad az egyik
 - A rendszergazdák az Azure AD-szerepkörök felügyelt PIM használatával
 - A rendszergazdák a felügyelt, miközben a PIM használata Azure-erőforrásszerepkörök
 - A kiemelt szerepkörű Rendszergazda szerepkörhöz hozzárendelt rendszergazdák
-- Címtárszerepkörök a PIM használatával kezelhetők a jogosult felhasználók
+- A felügyelt hozzárendelni az Azure AD-szerepkörök jogosultak felhasználó a PIM használata
 - A felhasználók tudni a PIM kérések jóváhagyása vagy elutasítása
 - A just-in-time vagy közvetlen (időalapú) hozzárendelést egy Azure-erőforrás szerepkörhöz rendelt felhasználók  
 - Hozzáférési felülvizsgálat rendelt felhasználók

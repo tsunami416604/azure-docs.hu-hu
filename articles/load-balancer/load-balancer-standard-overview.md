@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/11/2019
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382565"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578526"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure Standard Load Balancer áttekintése
 
-Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
+Az Azure Load Balancer lehetővé teszi az alkalmazások skálázását és magas rendelkezésre állású szolgáltatások létrehozását. Load Balancer bejövő, valamint a kimenő forgatókönyveket is használható, és alacsony késleltetésű, nagy átviteli sebességet, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető. 
 
 Ez a cikk a Standard Load Balancer összpontosít.  Az Azure Load Balancerhez általános áttekintést, tekintse át a [Load Balancer áttekintése](load-balancer-overview.md) is.
 
@@ -73,6 +73,9 @@ Emellett, ha a teljes háttérkészlet [le mintavételek](load-balancer-custom-p
 Felülvizsgálat [Load Balancer állapot-mintavételei](load-balancer-custom-probe-overview.md) részleteiről.
 
 ### <a name="az"></a>A rendelkezésre állási zónák
+
+>[!IMPORTANT]
+>Felülvizsgálat [rendelkezésre állási zónák](../availability-zones/az-overview.md) vonatkozó témaköreit, beleértve a régió konkrét információkkal.
 
 Standard Load Balancer támogatja a további képességek régióban, ahol érhetők el rendelkezésre állási zónák.  Ezek a funkciók hozzáadódnak az összes Standard Load Balancer biztosít.  A Standard Load Balancer nyilvános és belső rendelkezésre állási zónák konfigurációk érhetők el.
 

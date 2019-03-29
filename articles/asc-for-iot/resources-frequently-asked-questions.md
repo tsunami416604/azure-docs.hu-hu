@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541932"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575147"
 ---
 # <a name="asc-for-iot-frequently-asked-questions"></a>Az IoT ASC – gyakori kérdések  
 
@@ -77,7 +77,7 @@ Részletes telepítési és az ügynök telepítési információk a Githubon ta
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik azok a függőségeket és előfeltételek az ügynök?
 
-ASC IOT számos különböző platformokat támogatja. Lásd: [támogatott eszközplatformok](select-deploy-agent.md) ellenőrizheti az adott eszközök támogatása. 
+ASC IOT számos különböző platformokat támogatja. Lásd: [támogatott eszközplatformok](how-to-deploy-agent.md) ellenőrizheti az adott eszközök támogatása. 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Az ügynök által összegyűjtött adatok?
 
@@ -97,9 +97,9 @@ Igen. Az ügynök továbbított adatok az IoT Hub kvóta külön tranzakciónak 
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Következő lépések E ügynök már telepítve van, és nem jelenik meg semmilyen tevékenységet vagy naplók
 
-1. Ellenőrizze a [ügynöktípus megfelel az eszköz a kijelölt operációsrendszer-platform](select-deploy-agent.md)
+1. Ellenőrizze a [ügynöktípus megfelel az eszköz a kijelölt operációsrendszer-platform](how-to-deploy-agent.md)
 
-1. Erősítse meg a [ügynök fut-e az eszközön](concept-agent-configuration.md).
+1. Erősítse meg a [ügynök fut-e az eszközön](how-to-agent-configuration.md).
 
 2. Ellenőrizze a [szolgáltatás engedélyezése sikeres volt](quickstart-onboard-iot-hub.md) való **biztonsági** az IoT hubban. 
 

@@ -4,14 +4,14 @@ description: A címek az Azure Migrate kapcsolatos gyakori kérdések
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003712"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578645"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -108,9 +108,7 @@ Az ügynökalapú felderítés beállítás elérhető, a készülék-alapú fel
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>A elemzett ESXi-gazdagép környezet teljesítményét hatással az ott lenne?
 
-Abban az esetben, a [egy ideje a felderítési módszer](https://docs.microsoft.com/azure/migrate/concepts-collector), annak érdekében, hogy a teljesítményadatok összegyűjtése a statisztikai szint a vCenter-kiszolgálón 3 értéke lenne. Ezen a szinten értékre állítaná összegyűjtik a nagy mennyiségű adatokat, amelyek a vCenter Server-adatbázis a hibaelhárítás. A vcenter Server oldalán teljesítményproblémák lépnek fel, így eredményezhet. Lenne elhanyagolható hatással az ESXi-gazdagépen.
-
-Bevezettük a folyamatos profilkészítés teljesítményadatok (amely előzetes verzióban érhető el). A folyamatos profilkészítés már nem látható egy kell módosítani, a vCenter Server statisztikai szintje a teljesítményalapú értékelés futtatása. A gyűjtőberendezés most fog profilt készíteni a helyszíni gépek és mérhető, a virtuális gépek teljesítményadatait. Ez az ESXi-gazdagépek, valamint a vCenter-kiszolgáló rendelkezik szinte nullára gyakorolt hatást.
+A teljesítményadatok folyamatos profilkészítési, nem kell módosítani a vCenter Server statisztikai szintje a teljesítményalapú értékelés futtatása nem. A gyűjtőberendezés fog profilt készíteni a helyszíni gépek és mérhető, a virtuális gépek teljesítményadatait. Ez az ESXi-gazdagépek, valamint a vCenter-kiszolgáló rendelkezik szinte nullára gyakorolt hatást.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Hol található az összegyűjtött adatok tárolt és mennyi ideig?
 

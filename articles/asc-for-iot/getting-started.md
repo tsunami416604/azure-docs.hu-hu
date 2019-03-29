@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: a78eeda814b21d489eb957d44202b17c61d836d5
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541887"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575215"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>Az IoT első lépései az Azure Security Center (ASC) 
 
@@ -67,7 +67,7 @@ Ellenőrizze, hogy IoT-fokozott biztonsági képességei, például a távoli ka
 1. Ha az IoT Hub nem tartozik regisztrált eszköz, [új eszköz regisztrálása](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
 1. [Hozzon létre egy azureiotsecurity biztonsági modult](quickstart-create-security-twin.md) eszközökhöz.
 1. Az ügynök telepítése egy tényleges eszközön telepítése helyett az Azure szimulált eszközön [léptetéses egy új Azure virtuális gép (VM) be](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) elérhető zónában. 
-1. [Az ASC IoT biztonsági ügynök telepítése](tutorial-deploy-linux-cs.md) a IoT-eszközt, vagy új virtuális Gépen.
+1. [Az ASC IoT biztonsági ügynök telepítése](how-to-deploy-linux-cs.md) a IoT-eszközt, vagy új virtuális Gépen.
 1. Kövesse az utasításokat [trigger_events](https://aka.ms/iot-security-github-trigger-events) egy ártalmatlan támadás szimulációjának futtatásához.
 1. ASC ellenőrizze az előző lépésben a szimulált támadás válaszul IoT-riasztások esetén. 
     - Ellenőrzési öt perc alatt a szkript futtatása után kezdődik.
@@ -79,4 +79,4 @@ Ellenőrizze, hogy IoT-fokozott biztonsági képességei, például a távoli ka
 - Konfigurálja a [megoldás](quickstart-configure-your-solution.md)
 - [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
 - Konfigurálása [egyéni riasztások](quickstart-create-custom-alerts.md)
-- [A biztonsági ügynök telepítése](select-deploy-agent.md)
+- [A biztonsági ügynök telepítése](how-to-deploy-agent.md)

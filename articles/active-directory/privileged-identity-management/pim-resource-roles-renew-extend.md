@@ -1,5 +1,5 @@
 ---
-title: Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendeléseket a PIM |} A Microsoft Docs
+title: Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendeléseket a PIM - Azure Active Directory |} A Microsoft Docs
 description: Ismerje meg, hogyan bővítheti, vagy az Azure AD Privileged Identity Management (PIM) az Azure-erőforrás szerepkör-hozzárendelések megújításához.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8aef7d4ac37109233af4ffb364b6f3e4c9b291ac
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004226"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578390"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Meghosszabbítása vagy megújítása az Azure-erőforrás szerepkör-hozzárendelések az PIM-ben
 
-Privileged Identity Management (PIM) az Azure-erőforrások kezelése az Azure-erőforrások hozzáférés és a hozzárendelés életciklusának új vezérlőket mutatja be. A rendszergazdák a kezdő és záró dátum-idő tulajdonságokkal tagsági rendelhet hozzá. Amikor megközelíti a hozzárendelés vége, a PIM küld az érintett felhasználók vagy csoportok e-mail-értesítéseket. A rendszergazdák az erőforrás kell biztosítják, hogy megfelelő hozzáférési e-mail-értesítéseket is küld. Hozzárendelések meg lehet újítani, és látható, akár 30 napig lejárt állapotban maradnak, még akkor is, ha nincs kibővítve a hozzáférés.
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vezet be új vezérlőket az Azure-erőforrások hozzáférés és a hozzárendelés életciklusának kezelésére. A rendszergazdák a kezdő és záró dátum-idő tulajdonságokkal tagsági rendelhet hozzá. Amikor megközelíti a hozzárendelés vége, a PIM küld az érintett felhasználók vagy csoportok e-mail-értesítéseket. A rendszergazdák az erőforrás kell biztosítják, hogy megfelelő hozzáférési e-mail-értesítéseket is küld. Hozzárendelések meg lehet újítani, és látható, akár 30 napig lejárt állapotban maradnak, még akkor is, ha nincs kibővítve a hozzáférés.
 
 ## <a name="who-can-extend-and-renew"></a>Akik bővítheti és megújítását?
 

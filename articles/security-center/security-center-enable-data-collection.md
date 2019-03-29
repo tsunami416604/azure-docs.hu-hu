@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: monhaber
-ms.openlocfilehash: 2ce3a94b7ea4745ec3727e508cd10bb580a74c98
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cabd3d58c3b6bf76b294e1edf1cf94aad5d30f2f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401033"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578951"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtual machine scale sets, IaaS-tárolók és nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent ügynököt az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -286,7 +286,7 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
    3. Töltse fel a nyilvános config és a privát config ezekkel az értékekkel:
      
            $PublicConf = '{
-               "workspaceId": "WorkspaceID value",
+               "workspaceId": "WorkspaceID value"
            }' 
  
            $PrivateConf = '{

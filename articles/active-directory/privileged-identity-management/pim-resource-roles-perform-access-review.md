@@ -1,5 +1,5 @@
 ---
-title: A saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása a PIM |} A Microsoft Docs
+title: A saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása az Azure Active Directory - a PIM |} A Microsoft Docs
 description: Ismerje meg, hogyan hajtsa végre az Azure-erőforrások szerepköreihez hozzáférési felülvizsgálat Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,15 +16,15 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a8ef3d0ff602ce4580755db0ada97fcf7cdbbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208231"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575079"
 ---
 # <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>A PIM a saját Azure-erőforrás-szerepkörök hozzáférési felülvizsgálat végrehajtása
-Privileged Identity Management (PIM) az Azure-erőforrások egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az emelt szintű hozzáférés az erőforrásokhoz az Azure-ban. 
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az emelt szintű hozzáférés az erőforrásokhoz az Azure-ban. 
 
 Ha egy rendszergazdai szerepkörrel vannak rendelve, a szervezet kiemelt szerepkörű rendszergazda fel, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladatnak. Előfordulhat, hogy kap egy e-mailt, amelyben a hivatkozást, vagy megnyithatja közvetlenül a [az Azure portal](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.
 
@@ -54,4 +54,4 @@ Kövesse az alábbi lépéseket, és a hozzáférési felülvizsgálat befejezé
 
 ## <a name="next-steps"></a>További lépések
 
-- [A saját Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-how-to-perform-security-review.md)
+- [A PIM a saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása](pim-how-to-perform-security-review.md)

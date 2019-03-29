@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: c4b6b416d6a36938948573da7b9c3f5cac04bdcf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 591f7ed52a64d1005f1bb52e54eb3359da0e30a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904899"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579648"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -116,6 +116,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 3. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog ` típusa.
 1. Ha nincsenek hibák, vagy ha a naplók nem érkező ellenőrzéséhez tekintse meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
+6. A Cisco események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
 
 
 

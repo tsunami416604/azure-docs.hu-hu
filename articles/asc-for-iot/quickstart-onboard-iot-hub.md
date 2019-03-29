@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 4fd7fb68fd2eb8be0c1c109d76cff341faba9391
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: cea7517a99358d41a8ba60a78b4e2bfdbdeaf0e8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541638"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576224"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 
@@ -36,7 +36,7 @@ Ez a cikk az ASC az IoT hub IoT-előzetes szolgáltatás engedélyezése a magya
 ## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezéséhez szükséges előfeltételek
 
 - Log Analytics-munkaterület
-  - Két típusú adatok tárolódnak a Log Analytics munkaterületén az ASC által alapértelmezés szerint az IoT; **biztonsági riasztások** és **javaslatok**. 
+  - Két típusú adatok tárolódnak a Log Analytics-munkaterület az ASC alapértelmezés szerint az IoT; **biztonsági riasztások** és **javaslatok**. 
   - Dönthet úgy, hogy adjon hozzá további információk típusa, a storage **nyers események**. Vegye figyelembe, hogy tárolására **nyers események** a Log Analytics sorozatéhoz további tárolási költségeket. 
 - Az IoT Hub (standard szintű vagy újabb)
 

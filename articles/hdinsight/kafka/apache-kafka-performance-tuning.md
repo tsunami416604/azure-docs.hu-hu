@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 903cd8921801ffb47dd73f48e507f30aa0b6dccc
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3f15f45e0543c582d70463fb9ddc7ac569ff57bc
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373150"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576758"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Az Apache Kafka HDInsight-fürtök esetén a teljesítmény optimalizálása
 
@@ -66,7 +66,7 @@ Storage-lemez iops-t (bemeneti/kimeneti műveletek másodpercenként) korlátozo
 
 ### <a name="number-of-topics-and-partitions"></a>Témák és partíciók száma
 
-A Kafka gyártók témaköröket írni. A Kafka-fogyasztók témakörök olvasni. A témakör a napló, amely a lemezen lévő adatstruktúra társul. A Kafka fűzi hozzá a témakör a napló végére egy gyártó származó rekordokat. A témakör a napló futó több fájl sok partíció áll. Ezeket a fájlokat, vannak, a Kafka-fürt több csomópontján elosztva. A fogyasztók olvasni azok kiadása ütemben történik, a Kafka-témaköröket és és ki tudja választani a témakör naplóban pozíciójukat (eltolásnak).
+A Kafka gyártók témaköröket írni. A Kafka-fogyasztók témakörök olvasni. A témakör a napló, amely a lemezen lévő adatstruktúra társul. A Kafka fűzi hozzá a témakör a napló végére egy gyártó származó rekordokat. A témakör a napló futó több fájl sok partíció áll. Ezeket a fájlokat, vannak, a Kafka-fürt több csomópontján elosztva. A fogyasztók olvasni a Kafka-témaköreit, azok kiadása ütemben történik, és folytathatja a munkát a témakör naplóban pozíciójukat (eltolásnak).
 
 Mindegyik Kafka partíció egy naplófájlt a rendszer, és termelő szálak írhat több naplók egyszerre. Hasonlóképpen mivel minden egyes felhasználói szál üzeneteket olvas az egyik partíció, felhasználása több partícióról származó történik párhuzamosan is.
 

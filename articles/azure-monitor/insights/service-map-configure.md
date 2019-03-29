@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 4d3de1d0b242017f7026873ccaeba547f85981fc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a152d9242c4d272800e2e159603c2554f1d89092
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482091"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622042"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -57,13 +57,11 @@ A következő szakasz a függőségi ügynököt Windows támogatott operációs
 - Windows 7
 
 ## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
-A következő szakasz a támogatott operációs rendszerek listázása a függőségi ügynök, a Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (az RHEL-Kernel).  
+A következő szakasz a függőségi ügynök Linux rendszeren a támogatott operációs rendszerek listázása.  
 
 - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
 - A nem szabványos kernelű kiadások, például a PAE és a Xen nem támogatottak semmilyen Linux-disztribúció esetén. Ha például kiadási karakterlánc "2.6.16.21-0.8-xen", a rendszer nem támogatott.
 - Az egyéni kernelek, beleértve a standard kernelek újrafordításait, nem támogatottak.
-- CentOSPlus kernel használata támogatott.
-- Az Oracle Unbreakable Enterprise Kernellel (UEK) a cikk későbbi szakasza foglalkozik.
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 

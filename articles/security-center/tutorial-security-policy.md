@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/14/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226113"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578441"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -109,7 +109,7 @@ Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok
 
    ![Csoportházirend kezelése](./media/tutorial-security-policy/policy-management.png)
 
-2. Kattintson arra az előfizetésre, amelyhez le kívánja tiltani a javaslatot.
+2. Kattintson az előfizetést vagy felügyeleti csoportot, amelyhez le kívánja tiltani a javaslatot.
 
 1. Kattintson a hozzárendelt szabályzat.
 

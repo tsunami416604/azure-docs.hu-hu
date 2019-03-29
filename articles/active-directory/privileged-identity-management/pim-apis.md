@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Graph API-k a PIM szolgáltatásra (előzetes verzió) |} A Microsoft Docs
-description: A Microsoft Graph API-k az Azure Active Directory Privileged Identity Management (PIM) (előzetes verzió) használatát ismerteti.
+title: A PIM szolgáltatásra (előzetes verzió) – az Azure Active Directory, a Microsoft Graph API-k |} A Microsoft Docs
+description: A Microsoft Graph API-k használata az Azure AD Privileged Identity Management (PIM) (előzetes verzió) arról nyújt tájékoztatást.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d853579335653987321fded154eb9fb0f8dbdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000285"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578968"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>A Microsoft Graph API-k a PIM szolgáltatásra (előzetes verzió)
 
-Az Azure AD Privileged Identity Management (PIM) az Azure portal használatával is elvégezheti a feladatok többsége is végrehajtható a [Microsoft Graph API-k](https://developer.microsoft.com/graph/docs/concepts/overview). A cikk néhány fontos fogalmakat, a Microsoft Graph API-k használata a PIM szolgáltatásra. A Microsoft Graph API-k kapcsolatos információkért tekintse meg a [az Azure AD Privileged Identity Management API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) az Azure portal használatával is elvégezheti a feladatok többsége is végrehajtható a [Microsoft Graph API-k](https://developer.microsoft.com/graph/docs/concepts/overview). A cikk néhány fontos fogalmakat, a Microsoft Graph API-k használata a PIM szolgáltatásra. A Microsoft Graph API-k kapcsolatos információkért tekintse meg a [az Azure AD Privileged Identity Management API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > A /beta verzióban a Microsoft Graph API-k előzetes verzióként érhetők el, és változhatnak. Éles üzemi alkalmazások pedig a következő API-k használata nem támogatott.

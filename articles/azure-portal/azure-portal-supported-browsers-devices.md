@@ -12,23 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 03/27/2019
 ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: c9425875685236db99d78506e23f879d39d94ce5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 1595d744fbfda47a9db9ff27de09cd53c6f73ece
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888753"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576394"
 ---
-# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Támogatott böngészők és eszközök számára az Azure Portalon
-Futtathatja a [az Azure portal](https://portal.azure.com) minden modern asztali számítógépükön, tábla-eszközök és böngészők.
+# <a name="supported-devices"></a>Támogatott eszközök
 
-### <a name="supported-devices"></a>Támogatott eszközök
-Az Azure Portalon kiválóan működjön az modern számítógépek, Mac számítógépek és táblagépek. Ha az Azure-erőforrások kezelése a mobileszköz van szüksége, próbálja meg iPhone- és Android rendszeren elérhető az Azure mobile app. További információkért lásd: [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+A [az Azure portal](https://portal.azure.com) egy webalapú konzol, és futtatja az összes modern asztalok és táblagépes használatra egyaránt terjeszthetők a böngészőben. Ha Azure-erőforrások kezelése a mobileszköz van szüksége, próbálja meg a [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/). IOS és Android rendszeren elérhető legyen.
 
-### <a name="supported-browsers"></a>Támogatott böngészők
+## <a name="recommended-browsers"></a>Ajánlott böngészők
+
 Azt javasoljuk, hogy a legfrissebb böngészőben, amely kompatibilis az operációs rendszert használ. A következő böngészők támogatottak:
 
 * Microsoft Edge (legújabb verzió)
@@ -36,4 +35,3 @@ Azt javasoljuk, hogy a legfrissebb böngészőben, amely kompatibilis az operác
 * Safari (csak Mac, legújabb verzió)
 * Chrome (legújabb verzió)
 * Firefox (legújabb verzió)
-

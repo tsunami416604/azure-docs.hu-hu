@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5310d85b73f4485c27b61735afab9ad5ed3fb9ea
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2164969de4198d381a5c7a5f5ab73128a67ccbda
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898924"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576845"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Csatlakozás a Fortinet berendezés 
 
@@ -138,6 +138,7 @@ Upwards of mindaddig, amíg megjelennek a Log Analytics indítása a naplók 20 
 1. Ha sikeres eredményt adott mindkét azokat a parancsokat, ellenőrizze a Log Analyticsben, hogy tekintse meg, ha a naplók érkezési. Ezek a készülékek a streamelt minden eseményt a Log Analytics a nyers formában jelennek meg `CommonSecurityLog ` típusa.
 1. Ha nincsenek hibák, vagy ha a naplók nem érkező ellenőrzéséhez tekintse meg `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 1. Győződjön meg arról, hogy a Syslog-üzenet alapértelmezett mérete legfeljebb 2048 bájtok száma (2KB). Ha naplók túl hosszú, frissítse a security_events.conf ezzel a paranccsal: `message_length_limit 4096`
+6. A Fortinet események Log Analytics használja a megfelelő sémát, keresse meg **CommonSecurityLog**.
 
 
 ## <a name="next-steps"></a>További lépések

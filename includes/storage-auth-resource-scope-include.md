@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ad4b244b58d741ad45463297df5bd358f3ae9918
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a50eb45291ada23f55057f3c440c5b8b23cc4bce
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449957"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622637"
 ---
 Az RBAC-szerepkört rendel egy rendszerbiztonsági tag, mielőtt határozza meg, hogy a rendszerbiztonsági tagot kell hozzáférés hatókörét. Ajánlott eljárások szabályozzák, hogy minden esetben célszerű csak a minimális lehetséges hatókör megadása.
 
@@ -24,3 +24,6 @@ Az alábbi lista ismerteti a szintek milyen gazdagépcsoportjaira az Azure blob 
 - **A storage-fiók.** Ebben a hatókörben egy rendszerbiztonsági tag hozzáfér a blobok és az összes tárolót, vagy valamennyi üzenetsorok és az üzenetek.
 - **Az erőforráscsoport.** Ebben a hatókörben egy rendszerbiztonsági tag hozzáfér az összes, a tárolók és a tárfiókot az erőforráscsoportban lévő összes üzenetsor.
 - **Az előfizetés.** Ebben a hatókörben egy rendszerbiztonsági tag hozzáfér az összes, a tárolók és az üzenetsorok, az összes, az erőforráscsoport az előfizetésben található összes tárfiókot.
+
+> [!IMPORTANT]
+> Ha az előfizetése tartalmazza az Azure DataBricks-névtér, az előfizetések szintjén hozzárendelt szerepkörök blokkolva lesz a blob és üzenetsor-adatokhoz való hozzáférést.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 26e54ba507ecab5d12ceb4169baaa52f99c20792
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b6a8393a5f47d7fb85699f6828c4d08cc7afcabc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232430"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620699"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>A földrajzi forgalom-útválasztási módszer az Azure Traffic Manager által használt ország/régió-hierarchia
 
@@ -29,7 +29,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - AD(Andorra)
 
-        - Al(Albania)
+        - AL(Albania)
 
         - AT(Austria)
 
@@ -97,9 +97,9 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - MD(Moldova)
 
-        - Me(Montenegro)
+        - ME(Montenegro)
 
-        - Az MK (Macedónia, V.J.K.)
+        - MK(Macedonia, FYRO)
 
         - MT(Malta)
 
@@ -125,13 +125,14 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - SK(Slovakia)
 
-        - Service Manager (a San Marino)
+        - SM(San Marino)
 
         - UA(Ukraine)
+            - Régió, Krím
 
         - Sebezhetőség-Felmérési (Vatikánváros)
 
-        - XJ (Jan Mayen)
+        - XJ(Jan Mayen)
 
         - XK(Kosovo)
 
@@ -153,7 +154,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - LB(Lebanon)
 
-        - OM(OMAN)
+        - OM(Oman)
 
         - PS (palesztin nemzeti hatóság)
 
@@ -203,7 +204,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
             - CA-NT(Northwest Territories)
 
-            - CA-Nu(Nunavut)
+            - CA-NU(Nunavut)
 
             - CA-on(Ontario)
 
@@ -217,9 +218,9 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - Létrehozva (Costa Rica)
 
-        - Cu(Cuba)
+        - CU(Cuba)
 
-        - CW(CuraÃ§AO)
+        - CW(CuraÃ§ao)
 
         - DM(Dominica)
 
@@ -263,27 +264,27 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - SV (El Salvador)
 
-        - SX (Sint Maarten)
+        - SX(Sint Maarten)
 
         - TC (a Turks és Caicos-szigetek)
 
         - TT (Trinidad és Tobago)
 
-        - UM (EGYESÜLT ÁLLAMOK Külbirtokai)
+        - UM(U.S. Külbirtokai)
 
         - US(United States)
 
-            - US-ak(Alaska)
+            - US-AK(Alaska)
 
             - US-AL(Alabama)
 
-            - US-ar(Arkansas)
+            - US-AR(Arkansas)
 
             - US-AZ(Arizona)
 
             - US-CA(California)
 
-            - US-Co(Colorado)
+            - US-CO(Colorado)
 
             - US-CT(Connecticut)
 
@@ -301,23 +302,23 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
             - US-ID(Idaho)
 
-            - US-il(Illinois)
+            - US-IL(Illinois)
 
-            - US-in(Indiana)
+            - US-IN(Indiana)
 
             - US-KS(Kansas)
 
             - US-KY(Kentucky)
 
-            - US-la(Louisiana)
+            - US-LA(Louisiana)
 
             - US-MA(Massachusetts)
 
             - US-MD(Maryland)
 
-            - US-Me(Maine)
+            - US-ME(Maine)
 
-            - US-mi(Michigan)
+            - US-MI(Michigan)
 
             - US-MN(Minnesota)
 
@@ -353,7 +354,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
             - USA-RI(Rhode Island)
 
-            - USA-SC(South Carolina)
+            - US-SC(South Carolina)
 
             - USA-SD(South Dakota)
 
@@ -363,13 +364,13 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
             - US-ut(Utah)
 
-            - US-va(Virginia)
+            - US-VA(Virginia)
 
             - US-VT(Vermont)
 
             - US-WA(Washington)
 
-            - US-Wi(Wisconsin)
+            - US-WI(Wisconsin)
 
             - USA-WV(West Virginia)
 
@@ -385,7 +386,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - XS(Saba)
 
-    - GEO-as(Asia)
+    - GEO-AS(Asia)
 
         - AF(Afghanistan)
 
@@ -433,7 +434,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - MM(Myanmar)
 
-        - Mn(Mongolia)
+        - MN(Mongolia)
 
         - Hónap (Makaó (KKT))
 
@@ -463,7 +464,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - VN(Vietnam)
 
-    - GEO-af(Africa)
+    - GEO-AF(Africa)
 
         - AO(Angola)
 
@@ -483,7 +484,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - CG(Congo)
 
-        - Konfigurációelem (rendelkező d'Ivoire)
+        - CI(Côte d’Ivoire)
 
         - CM(Cameroon)
 
@@ -547,7 +548,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - SC(Seychelles)
 
-        - SD(SUDAN)
+        - SD(Sudan)
 
         - SH (Szent Ilona, Ascension és Tristan da Cunha)
 
@@ -557,7 +558,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - So(Somalia)
 
-        - SS (Dél-szudán)
+        - SS(South Sudan)
 
         - St. (Sao Tome és Principe)
 
@@ -637,7 +638,7 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
             - AU-TAS(Tasmania)
 
-            - AU-Vic(Victoria)
+            - AU-VIC(Victoria)
 
             - AU-WA(Western Australia)
 
@@ -663,13 +664,13 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
 
         - NR(Nauru)
 
-        - Nu(Niue)
+        - NU(Niue)
 
         - NZ (Új-Zéland)
 
         - PF (Francia Polinézia)
 
-        - PG (Pápua Új-Guinea)
+        - PG(Papua New Guinea)
 
         - PN (Pitcairn-szigetek)
 
