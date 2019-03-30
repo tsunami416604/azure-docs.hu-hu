@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dfd0443dafbc4fcc221937f248bf6d2f292b528f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116198"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651751"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Data Warehouse az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -170,7 +170,7 @@ Használatával **[PolyBase](https://docs.microsoft.com/sql/relational-databases
 * Ha a forrásadatok **Azure Blob- vagy Azure Data Lake Store**, és kompatibilis a polybase-zel formátuma, közvetlenül lehet másolni az Azure SQL Data Warehouse a PolyBase használatával. Lásd: **[közvetlen másolása a PolyBase](#direct-copy-using-polybase)** adatokkal.
 * Ha a forrásadattár és formátum eredetileg nem támogatott a PolyBase által, használhatja a **[szakaszos Másolás a PolyBase](#staged-copy-using-polybase)** funkció ehelyett. Is, nagyobb átviteli sebességet biztosít automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob storage-ban. Majd betölti adatokat az SQL Data Warehouse-bA.
 
-Állítsa be a `allowPolyBase` tulajdonságot **igaz** az Azure Data Factoryben az adatok másolása az Azure SQL Data Warehouse-bA a PolyBase használatával az alábbi példában látható módon. AllowPolyBase értéke igaz, ha a PolyBase segítségével konkrét tulajdonságok is megadhat a `polyBaseSettings` tulajdonságcsoport. Tekintse meg a [SqlDWSink](#SqlDWSink) szakasz kapcsolódó polyBaseSettings használható tulajdonságokkal kapcsolatos információk.
+Állítsa be a `allowPolyBase` tulajdonságot **igaz** az Azure Data Factoryben az adatok másolása az Azure SQL Data Warehouse-bA a PolyBase használatával az alábbi példában látható módon. AllowPolyBase értéke igaz, ha a PolyBase segítségével konkrét tulajdonságok is megadhat a `polyBaseSettings` tulajdonságcsoport. Tekintse meg a [SqlDWSink](#sqldwsink) szakasz kapcsolódó polyBaseSettings használható tulajdonságokkal kapcsolatos információk.
 
 ```JSON
 "sink": {

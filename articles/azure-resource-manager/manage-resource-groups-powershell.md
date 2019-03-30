@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6f416f1de6baca7fe79ea2a5dddfb8f8eb5f5120
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825093"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651784"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure PowerShell-lel
 
@@ -85,6 +85,10 @@ Egy erőforráscsoport üzemelő példányához ellenőrzéséhez tekintse meg a
 ## <a name="deploy-a-resource-group-and-resources"></a>Egy erőforráscsoport és erőforrások üzembe helyezése
 
 Hozzon létre egy erőforráscsoportot, és az erőforrások üzembe helyezése a csoporthoz egy Resource Manager-sablon használatával. További információkért lásd: [hozzon létre és helyezhet üzembe erőforrásokat](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+
+## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
+
+Ez a funkció más néven van *visszaállítási hiba*. További információkért lásd: [ismételt üzembe helyezése, központi telepítésének hibája esetén](./resource-group-template-deploy.md#redeploy-when-deployment-fails).
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Helyezze át egy másik erőforráscsoportba vagy előfizetésbe
 
