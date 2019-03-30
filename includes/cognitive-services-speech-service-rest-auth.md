@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e8f7c18c50085d6baf17cc0c9103b2c4bcacbaf
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58052021"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671739"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -89,9 +89,6 @@ curl -v -X POST
 Ez C# osztály mutatja be a hozzáférési jogkivonat beszerzése. Át a az Speech Service előfizetési kulcs, ha az osztály példányosítania. Ha az előfizetés nem szerepel az USA nyugati régiója, az értékének módosítása `FetchTokenUri` a régióban, az előfizetés megfelelően.
 
 ```cs
-/*
-    * This class demonstrates how to get a valid access token.
-    */
 public class Authentication
 {
     public static readonly string FetchTokenUri =

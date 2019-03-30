@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/22/2019
-ms.openlocfilehash: f7fbbb421a01b268b784a6d6c875cd959a5d1d42
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407847"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671798"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -107,6 +107,8 @@ Azonban továbbra is *exchange* egy foglalást, ha módosítani szeretné.
 A foglalás lemondásáért 12%-os korai felmondási díj számítható fel. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
 
 Ha a fenntartott virtuálisgép-példányok foglalása kapcsán módosítania kell a régiót, a virtuális gép méretcsoportját vagy az időszakot, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves távon elindítja az új Foglalás létrehozásakor. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
+
+Exchange-hez vagy a visszatérítés foglalások kapcsolatos további információkért lásd: [foglalás cseréje és a visszatérítéseket](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

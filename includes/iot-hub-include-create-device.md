@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4a4ec51430242cc3e3d6a0b801f2b4be7858ab50
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516091"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671813"
 ---
 <!-- put the ## header in the file that includes this file -->
 
 Ebben a szakaszban az identitásjegyzékben egy eszközidentitást az IoT hub létrehozása. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. "Identitásjegyzék" című szakaszában talál további információt a [az IoT Hub fejlesztői útmutató](../articles/iot-hub/iot-hub-devguide-identity-registry.md) 
 
-1. Az IoT hub navigációs menü megnyitása **IoT-eszközök**, majd kattintson a **Hozzáadás** új eszköz regisztrálása az IoT hub.
+1. Az IoT hub navigációs menü megnyitása **IoT-eszközök**, majd **Hozzáadás** új eszköz regisztrálása az IoT hub.
 
     ![Eszközidentitás létrehozása a portálon](./media/iot-hub-include-create-device/create-identity-portal.png)
 
-1. Adjon meg egy nevet az új eszköz, például: **myDeviceId**, és kattintson a **mentése**. Ez a művelet létrehoz egy új eszközidentitást az IoT hub.
+1. Adjon meg egy nevet az új eszköz, például: **myDeviceId**, és válassza ki **mentése**. Ez a művelet létrehoz egy új eszközidentitást az IoT hub.
 
    ![Új eszköz felvétele](./media/iot-hub-include-create-device/create-a-device.png)
 

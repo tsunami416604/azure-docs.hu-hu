@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/30/2018
+ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407878"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671873"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -219,7 +219,7 @@ Igen, kiválaszthatja a felügyelt lemezekkel rendelkező virtuális gép felada
 
 **Az Azure-beli virtuális gépek replikálása Azure-bA az Azure Site Recovery által védett áttelepítés hatással van?**
 
-Igen. Felügyelt lemezekkel rendelkező virtuális gépek Azure-bA védelmét az Azure Site Recovery jelenleg csak egy nyilvános előzetesként elérhető.
+Igen. Jelenleg az Azure Site Recovery Azure-felügyelt lemezekkel rendelkező virtuális gépek védelme az Azure általánosan elérhető szolgáltatásként érhető el.
 
 **Migrálhatók, amelyek vagy a korábban titkosított lemezessé tárfiókokban lévő nem felügyelt lemezekkel rendelkező virtuális gépek?**
 
@@ -339,7 +339,7 @@ Igen.
 
 **Mik az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott legnagyobb lemezméret?**
 
-A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra.
+A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra. A nagyobb méretű lemezek akár 32 Tib-ra támogatása hamarosan bekerül.
 
 **Mik azok a virtuális gép ajánlott mérete a nagyobb lemezméretek (> 4 Tib-ra) optimalizált Standard SSD és HDD standard szintű lemezek elérése érdekében a lemez IOPS és sávszélesség?**
 
