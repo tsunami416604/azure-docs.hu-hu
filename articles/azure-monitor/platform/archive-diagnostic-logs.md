@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 0d23509d4efb0385770811e004bb2599c3866847
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313341"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629364"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../../storage/common/s
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 
-Az alábbi módszerek bármelyikével a diagnosztikai naplók archiválása, beállíthat egy **diagnosztikai beállítás** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplók és metrikaadatok küldeni a célhelyre (storage-fiók, az Event Hubs-névtér vagy a Log Analytics). Események az egyes naplókategória és a mérőszám, a storage-fiókban tárolt adatok az adatmegőrzési (Ha a napok száma) is meghatározza. Adatmegőrzési értéke nulla, a napló kategória események tárolása történik határozatlan idejű (azaz, végtelen). Adatmegőrzési más módon lehet minden olyan 1 és 2147483647 között eltelt napok számát. [További információ itt a diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. 
+Az alábbi módszerek bármelyikével a diagnosztikai naplók archiválása, beállíthat egy **diagnosztikai beállítás** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplók és metrikaadatok küldeni a célhelyre (storage-fiók, az Event Hubs-névtér vagy Log Analytics-munkaterület). Események az egyes naplókategória és a mérőszám, a storage-fiókban tárolt adatok az adatmegőrzési (Ha a napok száma) is meghatározza. Adatmegőrzési értéke nulla, a napló kategória események tárolása történik határozatlan idejű (azaz, végtelen). Adatmegőrzési más módon lehet minden olyan 1 és 2147483647 között eltelt napok számát. [További információ itt a diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén a rendszer törli a szabályzatot. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet. 
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.

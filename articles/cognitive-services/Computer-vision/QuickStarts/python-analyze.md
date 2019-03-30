@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e63ce8a7c047ecdede9ce72527f590f5fec7c5b4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 23a85a84cfd2f938bd32e42925c07177203bf636
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652832"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630225"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Python használatával a Computer Vision egy távoli kép elemzése
 
@@ -32,6 +32,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 - A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
 - Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- A következő Python-csomagokat telepíteni kell rendelkeznie. Használhat [pip](https://packaging.python.org/tutorials/installing-packages/) Python-csomagok telepítéséhez.
+    - [Kérelmek](http://docs.python-requests.org/en/master/)
+    - [matplotlib](https://matplotlib.org/)
+    - [párnád](https://python-pillow.org/)
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 

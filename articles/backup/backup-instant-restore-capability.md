@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578900"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652671"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
 > [!NOTE]
-> Vannak átnevezés, hogy a felhasználók visszajelzései alapján **virtuális gép biztonsági mentési vermének v2 verziójára** való **azonnali visszaállítása** elkerülése érdekében az Azure Stack-funkciókkal.
+> Vannak átnevezés, hogy a felhasználók visszajelzései alapján **virtuális gép biztonsági mentési vermének v2 verziójára** való **azonnali visszaállítása** elkerülése érdekében az Azure Stack-funkciókkal.<br/><br/> Minden Azure backup felhasználók most már frissítve van **azonnali visszaállítása**.
 
 Az új modellre azonnali visszaállítása a következő szolgáltatás fejlesztéseket biztosítja:
 
@@ -60,15 +60,25 @@ A növekményes pillanatképek vannak a virtuális gép tárfiókban tárolja, a
 >[!NOTE]
 > Pillanatkép adatmegőrzési szabályzatok heti 5 napon rögzítik.
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Az Azure portal használatával pillanatképek megőrzésének konfigurálása
+## <a name="configure-snapshot-retention"></a>Pillanatképek megőrzésének konfigurálása
 
-**Minden Azure backup felhasználók most már frissítettek az azonnali helyreállítás**.
+### <a name="using-azure-portal"></a>Az Azure Portal használata
 
 Az Azure Portalon, tekintse meg a hozzáadott mező a **virtuális gép biztonsági mentési szabályzat** panel a **azonnali visszaállítása** szakaszban. Módosíthatja a pillanatkép megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzat** panel az összes virtuális gép az adott biztonsági mentési szabályzathoz társított.
 
 ![Azonnali visszaállítási képesség](./media/backup-azure-vms/instant-restore-capability.png)
 
-Powershell-lel pillanatkép megőrzési konfigurálásához tekintse meg [ebben a dokumentumban](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention).
+### <a name="using-powershell"></a>A PowerShell használata
+
+>[!NOTE]
+> Az PowerShell 1.6.0-s verziójának és újabb verziók frissítheti az azonnali helyreállítás pillanatkép megőrzési időszak házirend PowerShell-lel
+
+```powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+Az alapértelmezett pillanatkép megőrzési minden házirend értéke 2 nap. Felhasználók módosíthatják az érték legalább 1 és legfeljebb 5 napig. Heti házirendek a pillanatkép megőrzési rögzített 5 nap.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

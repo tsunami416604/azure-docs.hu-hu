@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106644"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652150"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Csomagolja ki, csatlakozzon, és az Azure Data Box-lemezek zárolásának feloldása
 
@@ -90,7 +90,7 @@ A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az al�
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. Futtassa a `DataBoxDiskUnlock.exe` parancsot, és adja meg a hozzáférési kulcsot, amelyet a [Csatlakozás lemezekhez és a hozzáférési kulcs lekérése](#Connect-to-disks-and-get-the-passkey) részben szerzett meg. Megjelenik a meghajtóhoz rendelt betűjel. Az alábbiakban egy példa látható a kimenetre.
+6. Futtassa a `DataBoxDiskUnlock.exe` parancsot, és adja meg a hozzáférési kulcsot, amelyet a [Csatlakozás lemezekhez és a hozzáférési kulcs lekérése](#connect-to-disks-and-get-the-passkey) részben szerzett meg. Megjelenik a meghajtóhoz rendelt betűjel. Az alábbiakban egy példa látható a kimenetre.
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -204,7 +204,7 @@ A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az al�
      OpenSSL is already installed.
      ```
 
-6. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Adja meg a hozzáférési kulcsot az Azure Portalról, amelyet a [Csatlakozás lemezekhez és a hozzáférési kulcs lekérése](#Connect-to-disks-and-get-the-passkey) részben szerzett meg. Ha kívánja, megadhatja azon BitLocker által titkosított kötetek listáját, amelyek zárolását fel szeretné oldani. A hozzáférési kulcsot és a kötetlistát egyszeres idézőjelek között kell megadni. 
+6. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt. Adja meg a hozzáférési kulcsot az Azure Portalról, amelyet a [Csatlakozás lemezekhez és a hozzáférési kulcs lekérése](#connect-to-disks-and-get-the-passkey) részben szerzett meg. Ha kívánja, megadhatja azon BitLocker által titkosított kötetek listáját, amelyek zárolását fel szeretné oldani. A hozzáférési kulcsot és a kötetlistát egyszeres idézőjelek között kell megadni. 
 
     Írja be a következő parancsot.
  

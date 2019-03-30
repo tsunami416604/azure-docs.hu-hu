@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891433"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648520"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure Reserved VM Instances nem tartalmazza a szoftverek díjait.
 
@@ -71,13 +71,13 @@ Ezek a mérőszámok költsége Azure RateCard API-n keresztül kérheti le. A d
 ## <a name="next-steps"></a>További lépések
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Mik azok a foglalást az Azure-hoz?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
+- [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

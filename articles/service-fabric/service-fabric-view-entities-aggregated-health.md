@@ -4,7 +4,7 @@ description: Ismerteti, hogyan lehet lekérdezni, megtekintése és az Azure Ser
 services: service-fabric
 documentationcenter: .net
 author: oanapl
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: fa34c52d-3a74-4b90-b045-ad67afa43fe5
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d2b2a772e1cab50b8bad91c6b102529dfb362166
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8113bffba824ddb0885e92b0d6c5392748899da
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105216"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662771"
 ---
 # <a name="view-service-fabric-health-reports"></a>A Service Fabric-állapotjelentések megtekintése
 Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) egészségügyi entitásokkal, mely rendszer összetevőit és watchdogs is jelentés helyi feltételek, amelyek figyelése. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) összesíti az összes egészségügyi adatokat annak meghatározására, hogy e entitások kifogástalan állapotú.

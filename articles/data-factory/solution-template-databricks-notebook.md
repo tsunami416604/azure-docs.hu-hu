@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 54b440ee76fe36a83284b8ce769bb31012781a35
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295759"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630809"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Adatok átalakítása a Databricks az Azure Data Factoryban való használatával
 
@@ -39,7 +39,7 @@ Ez a sablon egyszerű megőrzéséhez a sablon nem hoz létre ütemezett esemén
 
 2.  Ellenőrizze, hogy egy **Azure Databricks-munkaterület** , vagy hozzon létre egy újat.
 
-1.  **A notebook importálása az ETL-**. Importálás az alábbi átalakítási jegyzetfüzetet a Databricks-munkaterülethez. (Nincs, de ne feledje, hogy később válassza az elérési ugyanazon a helyen, mint az alábbi is.) A notebook importálása a következő URL-címet az URL-cím mezőben írja be az URL-cím: `https://DataFactorylabstaging1.blob.core.windows.net/share/Transformations.html`. Válassza ki **importálás**.
+1.  **A notebook importálása az ETL-**. Importálás az alábbi átalakítási jegyzetfüzetet a Databricks-munkaterülethez. (Nincs, de ne feledje, hogy később válassza az elérési ugyanazon a helyen, mint az alábbi is.) A notebook importálása a következő URL-címet az URL-cím mezőben írja be az URL-cím: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Válassza ki **importálás**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 

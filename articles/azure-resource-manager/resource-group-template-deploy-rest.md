@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3468f5b625911cd637b22e2c1d35a47fb7d7b0e4
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 15e4a7058dc1e74c726644e86c58381003eee937
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402830"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649755"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
@@ -36,6 +36,7 @@ Központi telepítése egy **előfizetés**, használjon [központi telepítése
 Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak használja. Előfizetések üzemelő példányai kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](deploy-to-subscription.md).
 
 ## <a name="deploy-with-the-rest-api"></a>Üzembe helyezés a REST API
+
 1. Állítsa be [gyakori paramétereket és a fejlécek](/rest/api/azure/), beleértve a hitelesítési tokenek.
 
 1. Ha nem rendelkezik egy meglévő erőforráscsoportot, hozzon létre egy erőforráscsoportot. Adja meg az előfizetés-Azonosítóját, nevét az új erőforráscsoport és a helyre, amely a megoldáshoz szükséges. További információkért lásd: [hozzon létre egy erőforráscsoportot](/rest/api/resources/resourcegroups/createorupdate).
@@ -45,6 +46,7 @@ Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak
    ```
 
    A hasonló kéréstörzset:
+
    ```json
    {
     "location": "West US",
@@ -166,7 +168,7 @@ Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak
    }
    ```
 
-5. A sablon központi telepítés állapotának lekéréséhez. További információkért lásd: [-sablonalapú telepítéssel kapcsolatos információk lekérése](/rest/api/resources/deployments/get).
+1. A sablon központi telepítés állapotának lekéréséhez. További információkért lásd: [-sablonalapú telepítéssel kapcsolatos információk lekérése](/rest/api/resources/deployments/get).
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -174,7 +176,12 @@ Ebben a cikkben szereplő példák erőforráscsoportok üzemelő példányainak
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 
-Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `onErrorDeployment` tulajdonságot a kérelem törzsében.
+Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `onErrorDeployment` tulajdonságot a kérelem törzsében. Ez a funkció akkor hasznos, ha rendelkezik egy korábbi hibátlan állapotra van az infrastruktúra telepítése és akarja, hogy vissza kell állítani az. Nincsenek figyelmeztetések és korlátozások:
+
+- Az újbóli üzembe helyezés pontosan, ahogy korábban már volt futtatva ugyanazokkal a paraméterekkel futtatja. A paraméterek nem módosítható.
+- A korábbi központi telepítés segítségével futtatja a [teljes mód](./deployment-modes.md#complete-mode). Nem szerepel a korábbi központi telepítés minden erőforrás törlődni, és a minden erőforrás-konfigurációt az előző állapotukba. Győződjön meg arról, hogy megértette a [üzembe helyezési mód](./deployment-modes.md).
+- Az újratelepítés csak érinti az erőforrásokat, a módosításokat adatokat nem érinti.
+- Ez a funkció csak az erőforráscsoport központi telepítések, nem előfizetési szintű központi telepítések támogatott. Előfizetés-szintű üzembe helyezéssel kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](./deploy-to-subscription.md).
 
 Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
 
@@ -245,9 +252,9 @@ Paraméterfájl használatával paramétert értékek továbbítása üzembe hel
             "reference": {
                "keyVault": {
                   "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-               }, 
-               "secretName": "sqlAdminPassword" 
-            }   
+               },
+               "secretName": "sqlAdminPassword"
+            }
         }
    }
 }
@@ -258,9 +265,9 @@ A paraméter-fájl mérete nem lehet több mint 64 KB-os.
 Ha meg kell adnia a kényes értéket a paraméterhez (például a jelszó), adja hozzá ezt az értéket, egy kulcstárolóba. Lekérése a key vault üzembe helyezése során, az előző példában látható módon. További információkért lásd: [biztonságos értékek továbbítása üzembe helyezés során](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>További lépések
-* Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
-* Kezelési REST-műveletek aszinkron kapcsolatos további információkért lásd: [Azure aszinkron műveletek követése](resource-manager-async-operations.md).
-* Az üzembe helyezni erőforrásokat, a .NET ügyféloldali kódtár használatával egy példa: [erőforrások üzembe helyezése .NET-kódtárak és sablon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* A paraméterek meghatározása sablonban, lásd: [sablonok készítése](resource-group-authoring-templates.md#parameters).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 
+- Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
+- Kezelési REST-műveletek aszinkron kapcsolatos további információkért lásd: [Azure aszinkron műveletek követése](resource-manager-async-operations.md).
+- Az üzembe helyezni erőforrásokat, a .NET ügyféloldali kódtár használatával egy példa: [erőforrások üzembe helyezése .NET-kódtárak és sablon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- A paraméterek meghatározása sablonban, lásd: [sablonok készítése](resource-group-authoring-templates.md#parameters).
+- Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – a munkamenetek és eszközök az Azure térbeli horgonyok megosztása |} A Microsoft Docs
+title: Oktatóanyag – megosztás Azure térbeli horgonyok munkamenetek és eszközök |} A Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan oszthat meg Azure térbeli Forráshorgony azonosítók között egy háttér-szolgáltatással a Unity Android vagy iOS-eszközök.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901304"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629308"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>Oktatóanyag: Munkamenetek és eszközök az Azure térbeli horgonyok megosztása
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: Azure térbeli horgonyok megosztása a munkamenetek és eszközök
 
-Ez az oktatóanyag bemutatja, hogyan használható [Azure térbeli horgonyok](../overview.md) való:
-
-1. Egy munkamenet horgonyokat létrehozni, és keresse meg azokat az azonos vagy eltérő eszközön egy másik munkamenetben. Például az egy másik napot.
-2. Létrehozni, amely egyszerre több eszközök ugyanazon a helyen található.
+Ebben az oktatóanyagban, megtudhatja, hogyan használandó [Azure térbeli horgonyok](../overview.md) horgonyokat létrehozni egy munkamenet során, és keresse meg őket, vagy egy másik ugyanazon az eszközön. Ezek azonos kapcsolati alapokat is ugyanazon a helyen, és egyszerre több eszközön található.
 
 ![Adatmegőrzés](./media/persistence.gif)
 
@@ -51,10 +48,6 @@ Nyissa meg a Visual Studiót, és nyissa meg a projekt a `Sharing\SharingService
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Nyissa meg a mintaprojektet a Unity-nél
-
-[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
-
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
@@ -63,7 +56,7 @@ Nyissa meg a Visual Studiót, és nyissa meg a projekt a `Sharing\SharingService
 
 Ebben az oktatóanyagban az ASP.NET Core-webalkalmazás Azure-ban üzembe helyezett, és ezután konfigurálását és a Unity-alkalmazás üzembe helyezését. Térbeli horgonyok létrehozott-e az alkalmazással, és megosztva azokat más eszközök használatával az ASP.NET Core-webalkalmazás.
 
-Az ASP.NET Core-webalkalmazás fejlesztéséhez, hogy az Azure Cosmos DB tárolja a megosztott térbeli horgonyok kapcsolatos további információkért folytassa a következő oktatóanyaggal.
+Az ASP.NET Core-webalkalmazás fejlesztéséhez, hogy az Azure Cosmos DB tárolja a megosztott térbeli Forráshorgony azonosítók kapcsolatos további információkért folytassa a következő oktatóanyaggal. Az Azure Cosmos DB megőrzése lehetőséget biztosít az ASP.NET Core-webalkalmazás. Ennek során tehát lehetővé teszi az alkalmazás horgonyra már ma létrehozhatja első, és térjen vissza később nap találja meg ismét a horgony azonosítója a webalkalmazásban tárolt használatával.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Cosmos DB Store horgonyokra mutató használata](./tutorial-use-cosmos-db-to-store-anchors.md)

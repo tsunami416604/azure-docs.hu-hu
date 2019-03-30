@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872646"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648846"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Megtekintése és letöltése az Azure-használat és költségek
 
@@ -28,7 +28,7 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek vagy rendelkezik egy [Mic
 
 Csak egyes szerepkörök lekérése az Azure-használati adatok, például a a fiók rendszergazdája vagy vállalati rendszergazdai jogosultsága. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#Check-your-access-to-a-Microsoft-Customer-Agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és a számlához manager megtekintése az Azure-használat és költségek. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#check-your-access-to-a-microsoft-customer-agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és a számlához manager megtekintése az Azure-használat és költségek. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-usage-from-the-account-center-csv"></a>Az Account Center webhelyen (.csv) a használati adatok letöltése
 

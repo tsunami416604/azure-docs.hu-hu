@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: 94d66e28f8edbda6c41dcceaf427d7d7d869c90f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620117"
+ms.locfileid: "58652217"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 
@@ -108,7 +108,7 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
 
 
 3. A **biztonsági mentés leállítása** > **válasszon egy lehetőséget**válassza **biztonsági másolatok adatainak törlése**.
-4. Adja meg az elem nevét, és kattintson a **biztonsági mentés leállítása**. 
+4. Adja meg az elem nevét, és kattintson a **biztonsági mentés leállítása**.
    - Ez ellenőrzi, hogy szeretné-e az elem törlése.
    - A **biztonsági mentés leállítása** ellenőrzése után a gomb aktiválódik.
    - Ha megőrzi, és ne törölje az adatokat, nem tudja törölni a tárolót.
@@ -126,7 +126,7 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
 ### <a name="remove-backup-infrastructure-servers"></a>Távolítsa el a biztonsági mentési infrastruktúra-kiszolgálók
 
 1. A tároló irányítópultos menüjében kattintson **biztonsági mentési infrastruktúra**.
-2. Kattintson a **biztonságimásolat-felügyeleti kiszolgálók** kiszolgálók megjelenítése. 
+2. Kattintson a **biztonságimásolat-felügyeleti kiszolgálók** kiszolgálók megjelenítése.
 
     ![Válassza ki a tárolót az irányítópult megnyitásához](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -135,7 +135,7 @@ Ez az eljárás egy példa, amely bemutatja, hogyan távolíthatja el az Azure F
     ![Válassza ki a biztonsági mentés típusa](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. . A **biztonsági mentés leállítása** > **válasszon egy lehetőséget**válassza **biztonsági másolatok adatainak törlése**.
-4. Adja meg az elem nevét, és kattintson a **biztonsági mentés leállítása**. 
+4. Adja meg az elem nevét, és kattintson a **biztonsági mentés leállítása**.
    - Ez ellenőrzi, hogy szeretné-e az elem törlése.
    - A **biztonsági mentés leállítása** ellenőrzése után a gomb aktiválódik.
    - Ha megőrzi, és ne törölje az adatokat, nem tudja törölni a tárolót.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 40145ee0e284f90dc1cf231db01d02219a58eeda
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 340638377dadfd662beb3ca6ed977aeb9050b645
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313143"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630005"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Gyors útmutató: A helyi rendszerképet a REST API használatával elemezheti és C# a Computer Vision
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A minta a Visual Studióban való létrehozásához végezze el az alábbi lépéseket:
 
-1. A Visual C#-konzolalkalmazás sablonjával hozzon létre egy új Visual Studio-megoldást.
+1. Hozzon létre egy új Visual Studio-megoldást a Visual Studióban, a Vizualizáció C# Console App (.NET Framework) sablont.
 1. Telepítse a Newtonsoft.Json NuGet-csomagot.
     1. A menüben kattintson a **Tools** (Eszközök) elemre, és válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) lehetőséget.
     1. Kattintson a **Browse** (Tallózás) lapra, majd írja be a **keresőmezőbe** a „Newtonsoft.Json” kifejezést.

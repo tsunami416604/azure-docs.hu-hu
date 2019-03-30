@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286516"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649646"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -685,7 +685,7 @@ Mielőtt feltölti a titkos kulcsot a key vaulthoz, igény szerint titkosíthat�
     $secretUrl = $response.id
 ```
 
-Használat `$KeyEncryptionKey` és `$secretUrl` esetében a következő lépésben [KEK használatával az operációsrendszer-lemez csatolása](#BKMK_URLKEK).
+Használat `$KeyEncryptionKey` és `$secretUrl` esetében a következő lépésben [KEK használatával az operációsrendszer-lemez csatolása](#bkmk_URLKEK).
 
 ##  <a name="bkmk_SecretURL"></a> Adja meg titkos URL-cím, egy operációsrendszer-lemez csatolása
 

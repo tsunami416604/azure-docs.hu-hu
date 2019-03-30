@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 607c18a67f7acc13ffe4d5c14131f20a2f94e8d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891018"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Netop portállal
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Netop portállal, hajtsa vé
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Hagyja a **Namespace** üres.
+    c. Az a **Namespace** szövegmezőbe írja be https://secure.netop.com.
 
     d. Válassza ki a forrás, **attribútum**.
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Netop portállal, hajtsa vé
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Netop portál egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Netop portál** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Netop portál támogatási csoport ](mailto:casemanager@netop.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Netop portál** oldalon kell a letöltött **összevonási metaadatainak XML** és a bejelentkezési URL-cím az Azure Portalról. 3. lépés a dokumentáció utasításait [Itt](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) NetOp portál konfigurálása az Azure AD-hitelesítés.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

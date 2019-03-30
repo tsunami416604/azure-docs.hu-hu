@@ -1,6 +1,6 @@
 ---
-title: Az Azure Log Analytics az SQL Server-környezet optimalizálása |} A Microsoft Docs
-description: Az Azure Log Analytics az SQL Health Check megoldás segítségével felmérheti a kockázatait és állapotát, a környezetek rendszeres időközönkénti.
+title: Az Azure monitorral az SQL Server-környezet optimalizálása |} A Microsoft Docs
+description: Az Azure monitorral az SQL Health Check megoldás segítségével felmérheti a kockázatait és állapotát, a környezetek rendszeres időközönkénti.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8c06f0a3a33133c7b1595db52204d15b03d6aab
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372471"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629124"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás a Log Analyticsben
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás az Azure monitorban
 
 ![Symbol SQL állapotának ellenőrzése](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -40,24 +40,24 @@ Miután hozzáadta a megoldást, és az értékelés befejeződött, összefogla
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az SQL Health Check megoldás telepítve minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van a .NET-keretrendszer 4 támogatott verziója szükséges.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és a Log Analytics szolgáltatás használatára szolgál.  
+* Az SQL Health Check megoldás telepítve minden olyan számítógépen, a Microsoft Monitoring Agent (MMA) telepítve van a .NET-keretrendszer 4 támogatott verziója szükséges.  Az MMA-ügynök System Center 2016 – Operations Manager és az Operations Manager 2012 R2 és az Azure Monitor használják.  
 * A megoldás támogatja az SQL Server 2012, 2014 vagy 2016 verzióra.
 * Az SQL Health Check megoldás hozzáadása az Azure Portalon az Azure marketplace-ről Log Analytics-munkaterületet.  A megoldás telepítéséhez rendszergazdaként vagy az Azure-előfizetés közreműködőjének kell lennie.
 
   > [!NOTE]
-  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozásához a felhőben a Log Analytics szolgáltatásnak küldi. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
+  > A megoldás hozzáadását követően a AdvisorAssessment.exe fájlt adnak hozzá, ügynökökkel kiszolgálókra. Konfigurációs adatok olvasása és feldolgozása a felhőben az Azure Monitor majd küldött. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
   >
   >
 
-Hajtsa végre az állapot-ellenőrzés az SQL Server-kiszolgálók ellen, szükségük van egy ügynök és a kapcsolat a Log Analytics a következő támogatott módszerek egyikének használatával:
+Hajtsa végre az állapot-ellenőrzés az SQL Server-kiszolgálók ellen, szükségük van egy ügynök és a kapcsolatot az Azure monitornak a következő támogatott módszerek egyikének használatával:
 
 1. Telepítse a [a Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) , ha a kiszolgáló már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
-2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva a Log Analytics szolgáltatással, a kiszolgáló is lehet, többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is a Log Analytics szolgáltatással az Operations Manager által figyelendő.  
+2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva az Azure Monitor szolgáltatással, a kiszolgáló is lehet, többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is a Log Analytics szolgáltatással az Operations Manager által figyelt.  
 3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) engedélyezése után a megoldás a munkaterületén.  
 
-Az ügynök az SQL Server, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd a felügyeleti kiszolgálóról közvetlenül a Log Analytics szolgáltatásnak továbbítja.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
+Az ügynököt az SQL Server, az Operations Manager felügyeleti csoport jelentéseket gyűjti az adatokat, továbbítja a hozzárendelt felügyeleti kiszolgálónak, és majd küld egy felügyeleti kiszolgálóról közvetlenül az Azure Monitor.  Az adatok nem szerepel, az Operations Manager-adatbázisokról.  
 
-Ha az SQL Server rendszer Operations Manager által figyelt, kell konfigurálása egy Operations Manager futtató fiókot. Lásd: [az Operations Manager futtató fiókokat a Log Analytics](#operations-manager-run-as-accounts-for-log-analytics) alatt további információt.
+Ha az SQL Server rendszer Operations Manager által figyelt, kell konfigurálása egy Operations Manager futtató fiókot. Lásd: [az Operations Manager futtató fiókok az Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics) alatt további információt.
 
 ## <a name="sql-health-check-data-collection-details"></a>Adatok gyűjtése részletek SQL állapotának ellenőrzése
 SQL állapotának ellenőrzése, hogy engedélyezte-ügynök használatával a következő forrásokból gyűjt adatokat:
@@ -157,43 +157,37 @@ Nem feltétlenül. A javaslatok tudással és több ezer ügyfél által a Micro
 Minden javaslat, hogy miért fontos vonatkozó útmutatást tartalmaz. Ez az útmutató használjon kiértékelését, hogy a javaslat megvalósítása alkalmas, az informatikai szolgáltatások jellegét, és a szervezet igényeit.
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Fókusz terület ajánlásokkal állapotának ellenőrzése
-Az assessment megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás.  A telepítés után megtekintheti a javaslatok összegzését az SQL állapotának ellenőrzése csempe a megoldás oldalon az Azure Portal használatával.
+-Felmérési megoldást az Azure Monitor használata előtt rendelkeznie kell a telepített megoldás.  Azt követően, javaslatok összegzését az SQL állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldal az Azure Monitor az Azure Portalon.
 
 Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Egy fókuszterület javaslatok megtekintése, és korrekciós műveletek
-1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
-2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-3. A Log Analytics-előfizetések ablaktábláján válasszon egy munkaterületet, majd kattintson a **áttekintése** csempére.  
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Monitorozás** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Monitorozás** lehetőséget.
+3. Az a **Insights** szakaszában a menüből válassza **további**.  
 4. Az a **áttekintése** lap, kattintson a **SQL állapotának ellenőrzése** csempére.
 5. Az a **állapotának ellenőrzése** lapon. tekintse át az összefoglaló adatokat az egyik a fókusz terület paneleket, majd kattintson egy adott fókuszterület javaslatok megtekintése.
 6. A bármelyik, fókusz terület megtekintheti a rangsorolt javaslatok arról, hogy a környezetben. Alatt egy javaslatra kattint **érintett objektumok** Miért jön létre a javaslat részleteinek megtekintéséhez.<br><br> ![SQL állapotának ellenőrzése javaslatok képe](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Az ajánlott javítási műveleteket hajthatja végre **javasolt műveletek**. Az elem történnek, ha újabb értékelések, amely ajánlott műveletek származnak, és növeli a megfelelőségi pontszám lesz felvéve. Kijavított elemek jelennek meg **átadott objektumok**.
 
 ## <a name="ignore-recommendations"></a>Hagyja figyelmen kívül a javaslatok
-Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szövegfájlt, amelynek használatával a Log Analytics megakadályozása javaslatokat az értékelés eredményeinek parancsot.
+Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szövegfájlt, amely az Azure Monitor használatával fogja megakadályozása javaslatokat az értékelés eredményeinek parancsot.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Javaslatok, amelyek figyelmen kívül hagyja majd azonosításához
-1. Az Azure Portalon a kijelölt munkaterület a Log Analytics munkaterület oldalon, kattintson a **naplóbeli keresés** csempére.
+1. Az Azure Monitor menüjében kattintson **naplók**.
 2. A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata a környezetében.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
-    Íme egy Képernyőkép a Naplókeresési lekérdezésen:<br><br> ![nem sikerült javaslatokat](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Íme egy Képernyőkép a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Hozhat létre és használhat egy IgnoreRecommendations.txt szövegfájl
 1. Hozzon létre egy fájlt IgnoreRecommendations.txt.
-2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet a Log Analyticsben, hogy figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
-3. Helyezze a fájlt a következő mappában minden olyan számítógépen a Log Analytics figyelmen kívül hagyja a javaslatok, ahová.
+2. Illessze be, vagy írjon be minden egyes RecommendationId minden javaslat, amelyet az Azure Monitor figyelmen kívül, külön sorban, majd mentse és zárja be a fájlt.
+3. Helyezni a fájlt a következő mappában minden olyan számítógépen, ahová szeretné az Azure Monitor figyelmen kívül hagyja a javaslatokat.
    * A Microsoft Monitoring Agent (közvetlenül vagy Operations Manager keresztül csatlakozik) – a számítógépeken *SystemDrive*: Monitoring Agent\Agent \Program Files\Microsoft
    * Az Operations Manager felügyeleti kiszolgálón – *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
    * Az Operations Manager 2016 felügyeleti kiszolgálón – *SystemDrive*: System Center 2016\Operations Manager\Server \Program Files\Microsoft
@@ -203,14 +197,8 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 2. A következő naplófájl-keresési lekérdezések segítségével a figyelmen kívül hagyott javaslatok listája.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](../../azure-monitor/log-query/log-query-overview.md), akkor a fenti lekérdezés módosulnak az alábbiak.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
 3. Ha később úgy dönt, hogy szeretné-e figyelmen kívül hagyott javaslatok, IgnoreRecommendations.txt fájlok eltávolítása, vagy távolíthatja el RecommendationIDs őket.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL Health Check megoldás – gyakori kérdések
@@ -263,4 +251,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.
+* [Lekérdezések naplózását](../log-query/log-query-overview.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.

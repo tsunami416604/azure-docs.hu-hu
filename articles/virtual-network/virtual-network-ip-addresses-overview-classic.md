@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112602"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652167"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím-típusok és lefoglalási módszereket (klasszikus) Azure-ban
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: a nyilvános és privát.
@@ -41,7 +41,7 @@ Nyilvános IP-címmel társítva a következő erőforrástípusok:
 * Alkalmazásátjárók
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
-Ha hozzá kell rendelni egy Azure-erőforrás nyilvános IP-címre van szüksége, *dinamikusan* számára lefoglalt nyilvános IP-címet a helyre, az erőforrás létrehozása egy készletét. Az IP-cím akkor szabadul fel, ha az erőforrás le van állítva. A felhőalapú szolgáltatás, ez történik, ha az összes szerepkörpéldány le lesz állítva, amely segítségével elkerülhető a *statikus* (fenntartott) IP-cím (lásd: [Cloud Services](#Cloud-services)).
+Ha hozzá kell rendelni egy Azure-erőforrás nyilvános IP-címre van szüksége, *dinamikusan* számára lefoglalt nyilvános IP-címet a helyre, az erőforrás létrehozása egy készletét. Az IP-cím akkor szabadul fel, ha az erőforrás le van állítva. A felhőalapú szolgáltatás, ez történik, ha az összes szerepkörpéldány le lesz állítva, amely segítségével elkerülhető a *statikus* (fenntartott) IP-cím (lásd: [Cloud Services](#cloud-services)).
 
 > [!NOTE]
 > Azure-erőforrások számára kiosztott nyilvános IP-címet, amelyről IP-címtartományok listája közzé van téve [Azure Datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).

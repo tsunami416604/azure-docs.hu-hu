@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan frissítse a konfigurációt, amely egy önáll
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 88846845f1f8ffc71fb193e134a18ec38f619141
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855181"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665602"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Önálló fürt konfigurációjának frissítése 
 
@@ -73,13 +73,13 @@ A fürttanúsítvány fürtcsomópontok közötti hitelesítéshez használatos.
 
 Négy beállítások támogatottak:  
 
-* Egy tanúsítvány frissítése: A frissítés elérési útja (elsődleges) -> tanúsítvány B (elsődleges) tanúsítvány tanúsítvány C (elsődleges) -> ->...
+* A tanúsítványnak frissítés: A frissítés elérési útja (elsődleges) -> tanúsítvány B (elsődleges) tanúsítvány tanúsítvány-C (elsődleges) -> ->...
 
-* Kettős tanúsítvány frissítése: A frissítés elérési útja (elsődleges) -> Tanúsítvány tanúsítvány-(elsődleges), és B (másodlagos) -> tanúsítvány B (elsődleges) -> (elsődleges) tanúsítvány B és C (másodlagos) > tanúsítvány C (elsődleges) ->...
+* Duplavonal-tanúsítvány frissítés: A frissítés elérési útja (elsődleges) -> Tanúsítvány tanúsítvány-(elsődleges), és B (másodlagos) -> tanúsítvány B (elsődleges) -> (elsődleges) tanúsítvány B és C (másodlagos) > tanúsítvány C (elsődleges) ->...
 
-* Tanúsítvány típusa frissítés: tanúsítvány ujjlenyomat-alapú konfigurációs <> – Köznapinév-alapú tanúsítvány konfigurálását. Ha például a tanúsítvány-ujjlenyomat (elsődleges) és ujjlenyomatát B (másodlagos) -> tanúsítvány CommonName c
+* Tanúsítvány típusa frissítés: Tanúsítvány ujjlenyomat-alapú konfigurációs <> – Köznapinév-alapú tanúsítvány konfigurálását. Ha például a tanúsítvány-ujjlenyomat (elsődleges) és ujjlenyomatát B (másodlagos) -> tanúsítvány CommonName c
 
-* Tanúsítvány-kibocsátó ujjlenyomatát frissítés: A frissítési útvonalat a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et1, et2 = (elsődleges) tanúsítvány CN -> A, IssuerThumbprint = et2 = (elsődleges).
+* Tanúsítvány kiállítója ujjlenyomat frissítés: A frissítési útvonalat a tanúsítvány CN = A, IssuerThumbprint et1 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et1, et2 = (elsődleges) tanúsítvány CN -> = A, IssuerThumbprint et2 = (elsődleges).
 
 
 ## <a name="next-steps"></a>További lépések

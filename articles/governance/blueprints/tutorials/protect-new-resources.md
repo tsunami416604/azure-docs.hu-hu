@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan használhatja az Azure-tervek erőforrászárat
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57858400"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629216"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Az Azure-tervek erőforrászárat új erőforrások védelme
 
@@ -40,7 +40,7 @@ Először hozza létre az új tervezetdefiníciót.
 
 1. Az a **bevezetés** oldal bal oldalán válassza a **létrehozás** gomb alatt _tervrajz létrehozása_.
 
-1. Keresse meg a **üres minta** felső részén a lapot, majd válassza a tervezet minta **a minta használata**.
+1. Keresse meg a **üres tervezet** felső részén a lapot, majd válassza a tervezet minta **üres tervezet kezdje**.
 
 1. Adja meg a _alapjai_ a tervezet-minta:
 
@@ -81,7 +81,7 @@ Először hozza létre az új tervezetdefiníciót.
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -182,6 +182,8 @@ A hozzárendelés az erőforráscsoport létrehozása _TestingBPLocks_ és a Res
 
    A tervezet-hozzárendelést, létrehozott egy [hozzárendelés megtagadása](../../../role-based-access-control/deny-assignments.md) kényszerítése a telepített erőforráscsoportot, amelybe a a _csak olvasható_ tervezet zárolási mód. A megtagadási hozzárendelés megakadályozza, hogy valaki megfelelő jogosultságokkal a a _szerepkör-hozzárendelések_ bizonyos műveleteket, fülre. A megtagadási hozzárendelés befolyásolja _összes rendszerbiztonsági tag_.
 
+   További információ a rendszerbiztonsági tag kizárása egy megtagadási-hozzárendelést: [tervezetek erőforrás zárolása](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment).
+
 1. Válassza ki a Megtagadás hozzárendelést, majd válassza ki a **megtagadva engedélyek** a bal oldalon.
 
    A megtagadási hozzárendelés megakadályozza, hogy az összes műveletet a **\*** és **művelet** konfiguráció, de lehetővé teszi, hogy olvasási hozzáférés kizárásával  **\* /olvasási**keresztül **NotActions**.
@@ -221,9 +223,9 @@ Ez az oktatóanyag befejezésekor törölje az alábbi forrásanyagokat:
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md)
-- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása
-- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
+- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

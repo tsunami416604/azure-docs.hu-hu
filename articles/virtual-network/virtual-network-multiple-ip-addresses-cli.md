@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 5606fb2f01a79a517279809d6da21ec865ee8b0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110137"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648333"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Több IP-cím hozzárendelése a virtuális gépek az Azure CLI használatával
 
@@ -165,7 +165,7 @@ A magánhálózati IP-címek hozzáadása a virtuális gép operációs rendszer
 
 ## <a name="add"></a>IP-címek hozzáadása egy virtuális Géphez
 
-Az alábbi lépéseket követve adhat hozzá további privát és nyilvános IP-címek egy meglévő Azure-beli hálózati interfészhez. A példák útmutatóra a [forgatókönyv](#Scenario) ebben a cikkben leírt.
+Az alábbi lépéseket követve adhat hozzá további privát és nyilvános IP-címek egy meglévő Azure-beli hálózati interfészhez. A példák útmutatóra a [forgatókönyv](#scenario) ebben a cikkben leírt.
 
 1. Nyisson meg egy parancs-rendszerhéjat, és a hátralévő lépéseket ebben a szakaszban egy egyetlen munkamenetben. Ha még nem rendelkezik Azure CLI telepítve és konfigurálva, hajtsa végre a a [Azure CLI telepítési](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk, és jelentkezzen be az Azure-fiók az a `az-login` parancsot.
 

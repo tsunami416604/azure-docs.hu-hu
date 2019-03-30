@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 98eb2574ab427f2d5727d74a077628d3a7f829bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213b227c4ab3f97d9f8787f4e84348e36c43a6e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311455"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630504"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: A Computer Vision REST API és a Java használatával egy távoli kép elemzése
 
@@ -56,9 +56,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Cserélje le a `Main` nyilvános osztály teljes tartalmát az alábbi kódra, majd hajtsa végre a következő változtatásokat, ahol szükséges:
    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
    1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
-   1. Ha szeretné, cserélje le az `imageToAnalyze` értéket egy másik elemzendő kép URL-címére.
-1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
-1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
+   1. Ha szeretné, cserélje le az `imageToAnalyze` értéket egy olyan kép URL-címére, amelyet elemezni szeretne.
 
 ```java
 public class Main {
@@ -125,6 +123,25 @@ public class Main {
     }
 }
 ```
+
+## <a name="compile-and-run-the-program"></a>A program létrehozása és futtatása
+
+1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
+1. Ha IDE-t használ, futtassa a `Main` metódust.
+
+Azt is megteheti Ha a program egy parancssori ablakból rendszert használ, futtassa a következő parancsokat. Ezek a parancsok feltételezik, hogy egy nevű mappában találhatók a tárak `libs` , amely ugyanabban a mappában van `Main.java`; Ha nem, akkor cserélje le `libs` a kódtárakat az elérési útját.
+
+1. Fordítsa le a fájl `Main.java`.
+
+    ```bash
+    javac -cp ".;libs/*" Main.java
+    ```
+
+1. Futtassa a programot. A parancs egy kérést küld a QnA Maker API-ra a tudásbázis létrehozásához, majd 30 másodpercenként lekérdezi az eredményeket. Minden egyes választ ki a program a parancssori ablakba.
+
+    ```bash
+    java -cp ".;libs/*" Main
+    ```
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 

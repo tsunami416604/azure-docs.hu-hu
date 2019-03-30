@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816902"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652450"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -134,7 +134,8 @@ A portál lehetővé teszi, hogy a sablon mentése az Azure-fiókjába, és tele
    ![Mentett sablon üzembe helyezése](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>További lépések
-* Auditnaplók megtekintése: [auditálási műveletek a Resource Manager](./resource-group-audit.md).
-* Telepítési hibák elhárításához tekintse meg a [üzembehelyezési műveletek megtekintése](./resource-manager-deployment-operations.md).
-* Sablon exportálása egy üzembe helyezési vagy az erőforráscsoport, lásd: [exportálása az Azure Resource Manager-sablonok](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-* A szolgáltatás több régióban, tekintse meg biztonságosan bevezetési [Azure Deployment Manager](./deployment-manager-overview.md).
+
+- Auditnaplók megtekintése: [auditálási műveletek a Resource Manager](./resource-group-audit.md).
+- Telepítési hibák elhárításához tekintse meg a [üzembehelyezési műveletek megtekintése](./resource-manager-deployment-operations.md).
+- Sablon exportálása egy üzembe helyezési vagy az erőforráscsoport, lásd: [exportálása az Azure Resource Manager-sablonok](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+- A szolgáltatás több régióban, tekintse meg biztonságosan bevezetési [Azure Deployment Manager](./deployment-manager-overview.md).

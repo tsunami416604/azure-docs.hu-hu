@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403468"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629136"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: Csatlakozás, beállítása és aktiválni az Azure Data Box Edge 
 
@@ -75,7 +75,7 @@ Az irányítópulton jeleníti meg a különböző beállítások konfigurálás
     ![Helyi webes felhasználói felület "Eszköz neve" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. (Nem kötelező) A bal oldali panelen válassza ki a **hálózati beállítások** , majd konfigurálja a beállításokat.  
-    A fizikai eszközön hat hálózati adapterrel vannak. PORTHOZ 1 és PORT 2 az 1-GB/s sebességű hálózati adapterrel. PORT 3, a PORT 4, PORT 5 és PORT 6 minden 10-GB/s sebességű hálózati adapterrel is szolgálhat 25-GB/s sebességű hálózati adapterek. PORT 1 automatikusan csak felügyeleti port van beállítva, és PORT 2 PORT 6 minden adat port. A **hálózati beállítások** lap az alább látható módon.
+    A fizikai eszközön nincsenek hat hálózati adapterrel. PORTHOZ 1 és PORT 2 az 1-GB/s sebességű hálózati adapterrel. PORT 3, a PORT 4, PORT 5 és PORT 6 minden 10-GB/s sebességű hálózati adapterrel is szolgálhat 25-GB/s sebességű hálózati adapterek. PORT 1 automatikusan csak felügyeleti port van beállítva, és PORT 2 PORT 6 minden adat port. A **hálózati beállítások** lap az alább látható módon.
     
     ![Helyi webes felhasználói felület "Hálózati beállítások" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
@@ -119,7 +119,14 @@ Az irányítópulton jeleníti meg a különböző beállítások konfigurálás
 
         ![Helyi webes felhasználói felület "Idő beállításai" lap](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. A bal oldali panelen válassza ki a **Felhőbeállítások**, és aktiválja az eszköz a Data Box Edge szolgáltatással az Azure Portalon.
+5. (Nem kötelező) A bal oldali panelen válassza ki a **tárolási beállítások** a storage-rugalmasság konfigurálására az eszközön. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Alapértelmezés szerint a storage, az eszközön nem rugalmas és nincs adatvesztés, adatlemez meghibásodásakor az eszközön. Ha engedélyezi a rugalmas beállítást, a storage, az eszközön újra kell konfigurálni, és az eszköz képes elviselni a hiba, az adatvesztés nélküli egy adatlemezt. A tárolás konfigurálása a rugalmas, az eszköz használható kapacitása csökkenthető.
+
+    > [!IMPORTANT] 
+    > A rugalmasság csak akkor állítható be, az eszköz aktiválása előtt. 
+
+    ![Helyi webes felhasználói felület "Tárolási beállítások" lap](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. A bal oldali panelen válassza ki a **Felhőbeállítások**, és aktiválja az eszköz a Data Box Edge szolgáltatással az Azure Portalon.
     
     1. Az a **aktiválási kulcs** mezőbe írja be a termékaktiválási kulcsot, a kapott [aktiválási kulcs lekérése](data-box-edge-deploy-prep.md#get-the-activation-key) a Data Box Edge-hez.
     2. Kattintson az **Alkalmaz** gombra.
@@ -132,7 +139,7 @@ Az irányítópulton jeleníti meg a különböző beállítások konfigurálás
 
         ![Local web UI "Cloud settings" page updated](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. Előfordulhat, hogy a frissítés sikeres végrehajtása után néhány percet várnia kell. Jelzi, hogy az eszköz aktiválása sikeresen frissül az oldal.
+    4. Szükség lehet Várjon néhány percet, miután a frissítés sikeresen befejeződött. Jelzi, hogy az eszköz aktiválása sikeresen frissül az oldal.
 
         ![Local web UI "Cloud settings" page updated](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 

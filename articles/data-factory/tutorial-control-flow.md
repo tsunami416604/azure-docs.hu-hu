@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551636"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649220"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
+
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, egy, a sikeres műveletet jelző e-mailt szeretne küldeni, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, egy, a sikertelen műveletet jelző e-mailt szeretne küldeni, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
 
 A forgatókönyv általános áttekintést: ![Áttekintés](media/tutorial-control-flow/overview.png)
@@ -56,6 +57,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     John|Doe
     Jane|Doe
     ```
+
 2. Az [Azure Storage Explorer](https://storageexplorer.com/) vagy egy hasonló eszköz használatával hozza létre az **adfv2branch** tárolót, és töltse fel az **input.txt** fájlt a tárolóba.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása
@@ -73,7 +75,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
 1. Kattintson a **Tools** (Eszközök)  -> **NuGet Package Manager** (NuGet-csomagkezelő) -> **Package Manager Console** (Csomagkezelő konzol) elemre.
 2. Az a **Package Manager Console**, csomagok telepítéséhez a következő parancsokat. Tekintse meg [Microsoft.Azure.Management.DataFactory nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) adatokkal.
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -139,6 +141,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
     ```
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
+
 Hozzon létre egy „CreateOrUpdateDataFactory” funkciót a Program.cs fájlban:
 
 ```csharp
@@ -173,6 +176,7 @@ Factory df = CreateOrUpdateDataFactory(client);
 ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
+
 Hozzon létre egy „StorageLinkedServiceDefinition” funkciót a Program.cs fájlban:
 
 ```csharp
@@ -188,6 +192,7 @@ static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagemen
     return linkedService;
 }
 ```
+
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **Azure Storage-beli társított szolgáltatást**. A támogatott tulajdonságokról és adatokról az [Azure Blobbeli társított szolgáltatások tulajdonságait](connector-azure-blob-storage.md#linked-service-properties) ismertető részből tudhat meg többet.
 
 ```csharp
@@ -199,6 +204,7 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 Ebben a részben két adatkészletet hoz létre: egyet a forráshoz és egyet a fogadóhoz. 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Adatkészlet létrehozása a forrás Azure Blobhoz
+
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehoz egy **Azure Blob-adatkészletet**. A támogatott tulajdonságokról és adatokról az [Azure Blob-adatkészlet tulajdonságait](connector-azure-blob-storage.md#dataset-properties) ismertető részből tudhat meg többet.
 
 Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a Blob-adatkészlet az előző lépésben létrehozott Azure Storage-beli társított szolgáltatásra vonatkozik, és a következőket írja le:
@@ -258,6 +264,7 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetNa
 ```
 
 ## <a name="create-a-c-class-emailrequest"></a>Hozzon létre egy C# osztály: EmailRequest
+
 A C#-projektben hozzon létre egy **EmailRequest** nevű osztályt. Ez határozza meg, hogy a folyamat e-mailek küldésekor milyen tulajdonságokat küld a törzskérelemben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
 
 - **Message**: az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a futás részleteit (az írt adatok mennyiségét). Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
@@ -289,10 +296,13 @@ A C#-projektben hozzon létre egy **EmailRequest** nevű osztályt. Ez határozz
         }
     }
 ```
+
 ## <a name="create-email-workflow-endpoints"></a>E-mail munkafolyamat végpontjainak létrehozása
+
 E-mail küldésének aktiválásához a [Logic Apps](../logic-apps/logic-apps-overview.md) használatával határozhat meg munkafolyamatot. A Logic App-munkafolyamatok létrehozásának részleteit a [logikai alkalmazások létrehozását ismertető](../logic-apps/quickstart-create-first-logic-app-workflow.md) cikkben tekintheti meg. 
 
 ### <a name="success-email-workflow"></a>Sikeres műveletről tájékoztató e-mail munkafolyamata 
+
 Hozzon létre egy `CopySuccessEmail` nevű Logic App-munkafolyamatot. A munkafolyamat eseményindítója legyen `When an HTTP request is received`, és adjon hozzá egy `Office 365 Outlook – Send an email` műveletet.
 
 ![Sikeres műveletről tájékoztató e-mail munkafolyamata](media/tutorial-control-flow/success-email-workflow.png)
@@ -318,6 +328,7 @@ A kérelem eseményindítójához a `Request Body JSON Schema` esetében adja me
     "type": "object"
 }
 ```
+
 Ez az előző szakaszban létrehozott **EmailRequest** osztályhoz igazodik. 
 
 A kérelemnek a következő módon kell megjelennie a Logikaialkalmazás-tervezőben:
@@ -336,6 +347,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ## <a name="fail-email-workflow"></a>Sikertelen műveletről tájékoztató e-mail munkafolyamata 
+
 Klónozza a **CopySuccessEmail** munkafolyamatot, és hozzon létre egy másik Logic Apps-munkafolyamatot **CopyFailEmail** néven. A kérelem eseményindítójában a `Request Body JSON schema` ugyanaz. Egyszerűen módosítsa az e-mail formátumát (például a `Subject` értékét) a sikertelen műveletről tájékoztató e-mailnek megfelelően. Például:
 
 ![Logikaialkalmazás-tervező – Sikertelen műveletről tájékoztató e-mail munkafolyamata](media/tutorial-control-flow/fail-email-workflow.png)
@@ -356,7 +368,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 //Fail Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
+
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
+
 Adja hozzá a következő kódot a Main metódushoz, amely létrehozza a másolási tevékenységet és a dependsOn tulajdonságot tartalmazó folyamatot. Ebben az oktatóanyagban a folyamat egy tevékenységet tartalmaz: egy másolási tevékenységet, amely a Blob-adatkészletet használja forrásként és egy másik Blob-adatkészletet fogadóként. A másolási tevékenység sikeressége vagy sikertelensége esetén más-más e-mail-feladatokat hív meg.
 
 Ebben a folyamatban a következő funkciókat használja:
@@ -440,12 +454,15 @@ static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             return resource;
         }
 ```
+
 Adja hozzá a következő kódot a **Main** metódushoz, amely létrehozza a folyamatot:
 
 ```
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
 ```
+
 ### <a name="parameters"></a>Paraméterek
+
 A folyamat első szakasza határozza meg a paramétereket. 
 
 - sourceBlobContainer – a folyamat ezen paraméterét a forrás blob-adatkészlet használja fel.
@@ -461,7 +478,9 @@ Parameters = new Dictionary<string, ParameterSpecification>
         { "receiver", new ParameterSpecification { Type = ParameterType.String } }
     },
 ```
+
 ### <a name="web-activity"></a>Webes tevékenység
+
 A webes tevékenység bármely REST-végpont meghívását lehetővé teszi. Erről a tevékenységről további információt a [webes tevékenységgel](control-flow-web-activity.md) kapcsolatos témakörben talál. Ez a folyamat egy webes tevékenységgel hívja meg a Logic Apps e-mail-munkafolyamatát. Két webes tevékenységet hoz létre: az egyik a **CopySuccessEmail** munkafolyamatot, a másik pedig a **CopyFailWorkFlow** munkafolyamatot hívja meg.
 
 ```csharp
@@ -481,6 +500,7 @@ A webes tevékenység bármely REST-végpont meghívását lehetővé teszi. Err
             }
         }
 ```
+
 Az „Url” tulajdonságba illessze be a Logic Apps-munkafolyamatból a megfelelő kérési URL-végpontot. A „Body” tulajdonságban adja át az „EmailRequest” osztály egy példányát. Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
 
 - Message – Az átadott érték: `@{activity('CopyBlobtoBlob').output.dataWritten`. Hozzáfér az előző másolási tevékenység egy tulajdonságához, és átadja a dataWritten értéket. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
@@ -491,6 +511,7 @@ Az „Url” tulajdonságba illessze be a Logic Apps-munkafolyamatból a megfele
 Ez a kód egy új tevékenységfüggőséget hoz létre, amely az azt megelőző másolási tevékenységtől függ.
 
 ## <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
+
 Adja hozzá a következő kódot a **Main** metódushoz, amely **elindítja a folyamat futását**.
 
 ```csharp
@@ -508,6 +529,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="main-class"></a>Main osztály 
+
 A végső Main metódusnak így kell kinéznie: Állítsa össze és futtassa a programot a folyamat futásának aktiválásához.
 
 ```csharp
@@ -539,6 +561,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Folyamat futásának monitorozása
+
 1. Adja hozzá a következő kódot a **Main** metódushoz a folyamat futása állapotának folyamatos, az adatok másolásának befejezéséig tartó ellenőrzéséhez.
 
     ```csharp
@@ -578,6 +601,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ```
 
 ## <a name="run-the-code"></a>A kód futtatása
+
 Állítsa össze és indítsa el az alkalmazást, majd ellenőrizze a folyamat-végrehajtást.
 A konzol megjeleníti az adat-előállító, a társított szolgáltatás, az adatkészletek, a folyamat, valamint a folyamat futása létrehozási állapotát. Ezután ellenőrzi a folyamat futási állapotát. Várjon, amíg megjelennek a másolási tevékenység futásának részletei, beleértve az olvasott és írt adatok méretét. Ezután például az Azure Storage Explorerhez hasonló eszközök használatával ellenőrizheti, hogy a blobok a változókban megadottak szerint át lettek-e másolva az outputBlobPath helyre az inputBlobPath helyről.
 
@@ -734,6 +758,7 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

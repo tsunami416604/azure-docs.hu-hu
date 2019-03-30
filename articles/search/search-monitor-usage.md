@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 14f1a92f701eaedd98b825316ebf213f7c144920
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959459"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652297"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
@@ -58,10 +58,10 @@ Az Azure Search tárol, ami azt jelenti, hogy a napló külsőleg kell tárolni 
 
 Az alábbi táblázat a naplók tárolásához és hozzáadása a szolgáltatási műveletek és az Application Insights segítségével a lekérdezési számítási feladatok részletes figyelését lehetőségeit hasonlítja össze.
 
-| Erőforrás | Használt |
+| Erőforrás | Alkalmazási cél |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Naplózott eseményeket és mérőszámokat lekérdezés, alapú egyet az alábbi, a sémák felhasználói események az alkalmazásban is vonatkozhatnak, és. Ez az az egyetlen megoldás, amely a felhasználói műveletek vagy jelek figyelembe veszi, leképezés események a felhasználó által kezdeményezett search-ben alkalmazáskód által küldött kérelmek szűrése szemben. Ezt a módszert használja, a másolás és beillesztés kialakítási kódja be a forrásfájlokat útvonal adatok kérése az Application Insightsba. További információkért lásd: [forgalmi elemzések keresése](search-traffic-analytics.md). |
-| [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményt naplózza a Log Analytics-munkaterületet. Lekérdezések egy munkaterületet a részletes információkat adnak a naplóból vonatkozóan futtathat le. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Azure Monitor-naplók](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményt naplózza a Log Analytics-munkaterületet. Lekérdezések egy munkaterületet a részletes információkat adnak a naplóból vonatkozóan futtathat le. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba, és JSON-fájlban tárolt. Egy JSON-szerkesztő segítségével megtekintheti a fájl tartalmát.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Naplózott események és lekérdezés-metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
 
@@ -98,7 +98,7 @@ Naplózás engedélyezve van, a profil mentésekor. Tárolók csak akkor jönnek
 
 Egy óra elteltével fog megjelenni a tárolók a Blob storage vesz igénybe. Nincs óránként, a tároló és a egy blob. 
 
-Használhat [Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) vagy egy másik JSON-szerkesztő a fájlok megtekintéséhez. 
+Használhat [Visual Studio Code](#download-and-open-in-visual-studio-code) vagy egy másik JSON-szerkesztő a fájlok megtekintéséhez. 
 
 ### <a name="example-path"></a>Példa az elérési útra
 

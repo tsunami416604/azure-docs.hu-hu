@@ -1,6 +1,6 @@
 ---
-title: Megismerheti a kedvezményes Azure-foglalások |} A Microsoft Docs
-description: Ismerje meg, hogyan a foglalási kedvezményt alkalmazott futtató SQL-adatbázisok.
+title: Megismerheti a foglalások kedvezmény az Azure SQL Database |} A Microsoft Docs
+description: Ismerje meg, hogyan a foglalási kedvezményt kell alkalmazni az Azure SQL Database futtatása.
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: ff31b9be0e927cca7d272e5deaa5ecf48a52580d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa4fc43efab8c168fd5351ec60def7a3d0eefada
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845458"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649441"
 ---
-# <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt SQL-adatbázisok
+# <a name="understand-how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure SQL Database
 
 Miután egy Azure SQL Database szolgáltatás számára fenntartott kapacitást vásárol, a rendszer automatikusan alkalmazza a foglalási kedvezményt SQL Database-adatbázisokhoz, amelyek megfelelnek a attribútumok és a Foglalás mennyiségét. Foglalás az SQL-adatbázis számítási költségeit tartalmazza. Szoftverek, tárolási és hálózatkezelési díjkötelesek a normál díjakat. Olyan SQL-adatbázisok esetén is terjed ki a licencelési költségei [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -54,6 +54,6 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [CSP-előfizetésekben foglalás használati adatai](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

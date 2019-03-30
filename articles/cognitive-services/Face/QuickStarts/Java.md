@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b82f230c790f0615077cc96e83ece823713b0a73
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c0c1b9c1e9afc84e9702f6c1897d372a017be868
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308978"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629894"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a Java használatával
 
@@ -30,11 +30,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-the-java-project"></a>A Java-projekt létrehozása
 
-Hozzon létre egy új parancssori Java-alkalmazást az IDE-ben, és adjon hozzá egy **fő** osztály használatával egy **fő** metódust. Ezután töltse le a következő globális könyvtárak a Maven tárházból való a `lib` könyvtárat a projekthez:
-* `org.apache.httpcomponents:httpclient:4.5.6`
-* `org.apache.httpcomponents:httpcore:4.4.10`
-* `org.json:json:20170516`
-* `commons-logging:commons-logging:1.1.2`
+1. Hozzon létre egy új parancssori Java-alkalmazást az IDE-ben, és adjon hozzá egy **fő** osztály használatával egy **fő** metódust.
+1. Importálja az alábbi kódtárakat a Java-projektbe. Ha Mavent használ, a Maven-koordináták mindegyik kódtár esetében meg vannak adva.
+   - [Az Apache HTTP-alapú](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
+   - [Az Apache HTTP core](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
+   - [JSON-kódtár](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+   - [Az Apache Commons naplózási](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-naplózás: commons-naplózás: 1.1.2)
 
 ## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
 
@@ -64,91 +65,95 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Adja hozzá a következő mezőket a **fő** osztály. Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok). Is célszerű beállítani a `imageWithFaces` érték, egy másik képfájl mutató elérési utat.
+Cserélje le a **fő** osztályban az alábbi kódra. Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `uriBase` úgy, hogy a megfelelő régióazonosító tartalmaz (lásd a [Face API-dokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) minden régióban listája végpontok). Is célszerű beállítani a `imageWithFaces` érték, egy másik képfájl mutató elérési utat.
 
 A `faceAttributes` mező értéke csak bizonyos típusú attribútumok listáját. Azt határozza meg az észlelt arcok kapcsolatos lekérni kívánt adatokat.
 
 ```Java
-// Replace <Subscription Key> with your valid subscription key.
-private static final String subscriptionKey = "<Subscription Key>";
+public class Main {
+    // Replace <Subscription Key> with your valid subscription key.
+    private static final String subscriptionKey = "<Subscription Key>";
 
-// NOTE: You must use the same region in your REST call as you used to
-// obtain your subscription keys. For example, if you obtained your
-// subscription keys from westus, replace "westcentralus" in the URL
-// below with "westus".
-//
-// Free trial subscription keys are generated in the "westus" region. If you
-// use a free trial subscription key, you shouldn't need to change this region.
-private static final String uriBase =
-    "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    // NOTE: You must use the same region in your REST call as you used to
+    // obtain your subscription keys. For example, if you obtained your
+    // subscription keys from westus, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the "westus" region. If you
+    // use a free trial subscription key, you shouldn't need to change this region.
+    private static final String uriBase =
+        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 
-private static final String imageWithFaces =
-    "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
+    private static final String imageWithFaces =
+        "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
 
-private static final String faceAttributes =
-    "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+    private static final String faceAttributes =
+        "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
 ### <a name="call-the-face-detection-rest-api"></a>Az arcfelismerés is használható REST API meghívása
 
-Adja hozzá a következő metódust a **fő** metódust. Akkor hoz létre REST-hívást a Face API, arcfelismerési kapcsolatos információk észleléséhez a távoli kép (a `faceAttributes` karakterláncot adja meg, melyik face attribútumok beolvasni). Ezután egy JSON-karakterláncot ír a kimeneti adatokat.
+Adja hozzá a **fő** módszer a következő kóddal. Akkor hoz létre REST-hívást a Face API, arcfelismerési kapcsolatos információk észleléséhez a távoli kép (a `faceAttributes` karakterláncot adja meg, melyik face attribútumok beolvasni). Ezután egy JSON-karakterláncot ír a kimeneti adatokat.
 
 ```Java
-HttpClient httpclient = HttpClientBuilder.create().build();
+    public static void main(String[] args) {
+        HttpClient httpclient = HttpClientBuilder.create().build();
 
-try
-{
-    URIBuilder builder = new URIBuilder(uriBase);
+        try
+        {
+            URIBuilder builder = new URIBuilder(uriBase);
 
-    // Request parameters. All of them are optional.
-    builder.setParameter("returnFaceId", "true");
-    builder.setParameter("returnFaceLandmarks", "false");
-    builder.setParameter("returnFaceAttributes", faceAttributes);
+            // Request parameters. All of them are optional.
+            builder.setParameter("returnFaceId", "true");
+            builder.setParameter("returnFaceLandmarks", "false");
+            builder.setParameter("returnFaceAttributes", faceAttributes);
 
-    // Prepare the URI for the REST API call.
-    URI uri = builder.build();
-    HttpPost request = new HttpPost(uri);
+            // Prepare the URI for the REST API call.
+            URI uri = builder.build();
+            HttpPost request = new HttpPost(uri);
 
-    // Request headers.
-    request.setHeader("Content-Type", "application/json");
-    request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+            // Request headers.
+            request.setHeader("Content-Type", "application/json");
+            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-    // Request body.
-    StringEntity reqEntity = new StringEntity(imageWithFaces);
-    request.setEntity(reqEntity);
+            // Request body.
+            StringEntity reqEntity = new StringEntity(imageWithFaces);
+            request.setEntity(reqEntity);
 
-    // Execute the REST API call and get the response entity.
-    HttpResponse response = httpclient.execute(request);
-    HttpEntity entity = response.getEntity();
+            // Execute the REST API call and get the response entity.
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
 ```
 
 ### <a name="parse-the-json-response"></a>A JSON-válasz elemzése
 
-Közvetlenül az előző kód alatt adja hozzá a következő kódblokk, amely a visszaadott JSON-adatokat egy könnyebben olvasható formátumba konvertálja a nyomtatás, a konzol előtt. Végül zárja be a try-catch blokk ki.
+Közvetlenül az előző kód alatt adja hozzá a következő kódblokk, amely a visszaadott JSON-adatokat egy könnyebben olvasható formátumba konvertálja a nyomtatás, a konzol előtt. Végül, zárja be a try-catch blokk ki a **fő** metódust, és a **fő** osztály.
 
 ```Java
-    if (entity != null)
-    {
-        // Format and display the JSON response.
-        System.out.println("REST Response:\n");
+            if (entity != null)
+            {
+                // Format and display the JSON response.
+                System.out.println("REST Response:\n");
 
-        String jsonString = EntityUtils.toString(entity).trim();
-        if (jsonString.charAt(0) == '[') {
-            JSONArray jsonArray = new JSONArray(jsonString);
-            System.out.println(jsonArray.toString(2));
+                String jsonString = EntityUtils.toString(entity).trim();
+                if (jsonString.charAt(0) == '[') {
+                    JSONArray jsonArray = new JSONArray(jsonString);
+                    System.out.println(jsonArray.toString(2));
+                }
+                else if (jsonString.charAt(0) == '{') {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    System.out.println(jsonObject.toString(2));
+                } else {
+                    System.out.println(jsonString);
+                }
+            }
         }
-        else if (jsonString.charAt(0) == '{') {
-            JSONObject jsonObject = new JSONObject(jsonString);
-            System.out.println(jsonObject.toString(2));
-        } else {
-            System.out.println(jsonString);
+        catch (Exception e)
+        {
+            // Display error message.
+            System.out.println(e.getMessage());
         }
     }
-}
-catch (Exception e)
-{
-    // Display error message.
-    System.out.println(e.getMessage());
 }
 ```
 

@@ -3,8 +3,8 @@ title: A Service Fabric az Azure-ban – áttekintés | Microsoft Docs
 description: A Service Fabric áttekintése, ahol az alkalmazások számos mikroszolgáltatásból állnak a skálázhatóság és a rugalmasság érdekében. A Service Fabric egy elosztott rendszerplatform, amellyel skálázható, megbízható és könnyen felügyelhető alkalmazásokat készíthet a felhőben való használatra.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: masnider
 ms.assetid: bbcc652a-a790-4bc4-926b-e8cd966587c0
 ms.service: service-fabric
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/20/2017
-ms.author: msfussell
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 4e686d314c1b6550c2c782e9a1e1dc681ff154e1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 71b87f975d856e20bd3934258c50be54e06254ef
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539683"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666392"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.

@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c8796c300b5163f23ad1156650f6e74b61ccdfa6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 703256206a6626222013f4e502545c5c1f8cfab7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486665"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648690"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása
 
@@ -49,14 +49,15 @@ Az oktatóanyag elvégzéséhez:
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
 
 * A [Maven](https://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-* Telepítés [Node.js](https://nodejs.org).
+* A [Maven](http://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
 
 ---
 
@@ -73,18 +74,18 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 2. Válassza ki **tárolási** származó a **új** lapot.
 3. Válassza ki **tárfiók – blob, fájl, tábla, üzenetsor** alatt **kiemelt**.
-4. Töltse ki a tárfiók űrlapjának a következő információkat az alábbi képen látható módon, és válassza ki **létrehozás**:
+4. Töltse ki a tárfiók űrlapját a következő adatokkal az alábbi képen látható módon, és kattintson a **Létrehozás** elemre:
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-   | **Tárfiók neve** | mystorageaccount | A tárfiók egyedi neve |
-   | **Hely** | USA keleti régiója | Válassza ki a helyet. |
-   | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
+   | **Name (Név)** | mystorageaccount | A tárfiók egyedi neve |
+   | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
    | **Fióktípus** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
+   | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
    | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
-   | **Hozzáférési szint** | Gyakori | Gyakori elérésű elegendő a példaforgatókönyvhöz a. |
+   |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
+   |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+   |**Hely** | USA keleti régiója | Válassza ki a helyet. |
 
 ![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -95,7 +96,7 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
 [Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip), és bontsa ki (csomagolja ki) a storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy konzolalkalmazást.
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git 
+git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
@@ -106,6 +107,14 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+
+[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
+
+```bash
+git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 [Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
@@ -114,57 +123,65 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-[Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) , és bontsa ki a fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Node.js-alkalmazás.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
-```
-
 ---
-
-## <a name="configure-the-sample"></a>A minta konfigurálásához
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Ezt a kapcsolati sztringet tárolhatja egy környezeti változóban az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Az operációs rendszer alapján a következő parancsok egyikét futtatja cseréje \<yourconnectionstring\> tényleges kapcsolati karakterláncra. A parancs egy környezeti változót ment a helyi számítógépen. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati sztringre. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
 ### <a name="linux"></a>Linux
 
 ```
-export storageconnectionstring=<yourconnectionstring>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx storageconnectionstring "<yourconnectionstring>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Az alkalmazásban meg kell adnia a tárfiók hitelesítő adatait. Ezeket az adatokat tárolhatja a környezeti változókat az alkalmazást futtató helyi gépen. Kövesse az alábbi példák a környezeti változók létrehozásához az operációs rendszerének megfelelően.
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
-Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Illessze be a **tárfióknevet** és **kulcs** értékeket cserélheti le a következő parancsokat, és cserélje le a \<youraccountname\> és \<youraccountkey\>helyőrzőket. Ez a parancs a környezeti változók menti a helyi gépen. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ.
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati sztringre. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
 ### <a name="linux"></a>Linux
 
 ```
-export accountname=<youraccountname>
-export accountkey=<youraccountkey>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx accountname "<youraccountname>"
-setx accountkey "<youraccountkey>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
+```
+
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+
+Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
+
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati sztringjét**. Cserélje le a \<yourconnectionstring\> kifejezést a tényleges kapcsolati sztringre. Ehhez futtassa a következő parancsok közül az operációs rendszerének megfelelőt. A parancs egy környezeti változót ment a helyi számítógépen. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
+
+### <a name="linux"></a>Linux
+
+```
+export storageconnectionstring=\<yourconnectionstring\>
+```
+
+### <a name="windows"></a>Windows
+
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Ez a minta szükséges, hogy biztonságosan tárolja a nevét és a tárfiók kulcsára. A környezeti változókat a géphez, amely a minta futtatása lesz helyi Store őket. A környezeti változók létrehozásához használja a Linux- vagy a Windows például az operációs rendszerének megfelelően. 
+Ez a minta szükséges, hogy biztonságosan tárolja a nevét és a tárfiók kulcsára. A környezeti változókat a géphez, amely a minta futtatása lesz helyi Store őket. A környezeti változók létrehozásához használja a Linux- vagy a Windows például az operációs rendszerének megfelelően. A Windows, a környezeti változó nem érhető el addig, amíg újból betölti a **parancssor** vagy rendszerhéj használ.
 
 ### <a name="linux-example"></a>Linuxos példa
 
@@ -179,21 +196,6 @@ export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
-
-Annak ezeket az adatokat az Azure Portalon lépjen a tárfiókhoz, majd válasszon **hozzáférési kulcsok** a a **beállítások** szakaszban. 
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-A minta futtatásához, hozzá kell adnia a tárfiók hitelesítő adatait, a `.env.example` fájlt, és nevezze át `.env`.
-
-```
-AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
-AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
-```
-
-Annak ezeket az adatokat az Azure Portalon lépjen a tárfiókhoz, majd válasszon **hozzáférési kulcsok** a a **beállítások** szakaszban. 
-
-Emellett telepítenie kell a szükséges függőségeknek. Ehhez nyisson meg egy parancssort, lépjen a mappába, majd adja meg `npm install`.
 
 ---
 
@@ -215,17 +217,23 @@ Az alkalmazás terminálon vagy parancssorban való futtatásához lépjen a **c
 
 ![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
-A mintakód a `circuitbreaker.py` fájlban található `run_circuit_breaker` metódussal letölt egy képet a tárfiókból a [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) metódus segítségével. 
+A mintakód a `circuitbreaker.py` fájlban található `run_circuit_breaker` metódussal letölt egy képet a tárfiókból a [get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) metódus segítségével.
 
 A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzatra van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérelmet újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **retry\_to\_secondary** paramétert állítsa true (igaz) értékre, ha a kérelmet a másodlagos végponton kell újra megkísérelni, amennyiben az elsődleges végpontra irányuló első kérelem sikertelen lenne. A mintaalkalmazásban az egyéni újrapróbálkozási szabályzat a Storage-objektum `retry_callback` függvényében van definiálva.
 
-A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.  
+A letöltés előtt meg kell határozni a Service objektum [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) és [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) függvényét. Ezek a függvények határozzák meg az eseménykezelőket, amelyek a letöltés sikeres befejezésekor vagy a sikertelen letöltés utáni újrapróbálkozásokkal aktiválódnak.
+
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+Az alkalmazás futtatásához nyisson meg egy terminált vagy parancssort, amelynek hatóköre a letöltött alkalmazásmappára terjed ki. Az alkalmazás futtatásához adja ki a következő parancsot: `mvn compile exec:java`. Az alkalmazás ezután feltölti a **HelloWorld.png** képet a könyvtárból a tárfiókjába, és ellenőrzi, hogy a kép replikálása a másodlagos RA-GRS-végpontra megtörtént-e. Ha az ellenőrzés befejeződött, az alkalmazás folyamatos ismétléssel elkezdi letölteni a képet, miközben jelent annak a végpontnak, ahonnan a képet letölti.
+
+A Storage-objektum újrapróbálkozási függvénye lineáris újrapróbálkozási szabályzat használatára van beállítva. Az újrapróbálkozási függvény határozza meg, hogy egy kérést újra kell-e próbálni, valamint megadja, hogy hány másodpercnyi várakozás után történjen az újrapróbálkozás. A **BlobRequestOptions** **LocationMode** tulajdonságát először **PRIMARY\_, majd \_SECONDARY** értékűre kell beállítani. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 A minta futtatásához a Maven használata a parancssorban.
 
-1. Nyisson meg egy rendszerhéjat, és keresse meg a **storage-blobs-java-v10-tutorial-master** belül a klónozott könyvtárra.
+1. Nyisson meg egy rendszerhéjat, és keresse meg a **storage-blobs-java-v10-quickstart** belül a klónozott könyvtárra.
 2. Írja be a `mvn compile exec:java` (igen) kifejezést.
 
 Ez a minta egy tesztfájlt hoz létre az alapértelmezett címtárban, a windows-felhasználók ebben a könyvtárban **AppData\Local\Temp**. A minta ezután jeleníti meg a parancsok, amelyeket megadhat a következő beállításokat:
@@ -265,33 +273,6 @@ Cleaning up the sample and exiting!
 
 A mintát a felhasználó vezérli, így parancsokat kell megadnia a kód futtatásához. Bemenet-és nagybetűk.
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-A minta futtatásához nyisson meg egy parancssort, lépjen a mappába, majd adja meg `node index.js`.
-
-A minta létrehoz egy tárolót a Blob storage-fiókban, feltölti **HelloWorld.png** a tárolóba, majd ismételten ellenőrzi, hogy a tároló és a kép replikálása a másodlagos régióba. Replikációt követően a rendszer kérni, hogy adja meg **D** vagy **Q** (ENTER követ) letöltéséhez, vagy a kilépéshez. A kimenet a következő példához hasonlóan kell kinéznie:
-
-```
-Created container successfully: newcontainer1550799840726
-Uploaded blob: HelloWorld.png
-Checking to see if container and blob have replicated to secondary region.
-[0] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[1] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-...
-[31] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[32] Container found, but blob has not replicated to secondary region yet.
-...
-[67] Container found, but blob has not replicated to secondary region yet.
-[68] Blob has replicated to secondary region.
-Ready for blob download. Enter (D) to download or (Q) to quit, followed by ENTER.
-> D
-Attempting to download blob...
-Blob downloaded from primary endpoint.
-> Q
-Exiting...
-Deleted container newcontainer1550799840726
-```
-
 ---
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
@@ -301,7 +282,7 @@ Deleted container newcontainer1550799840726
 ### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
 
 A rendszer akkor hívja meg az `OperationContextRetrying` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) paramétere `SecondaryOnly` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.
- 
+
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
 {
@@ -335,7 +316,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 {
     if (blobClient.DefaultRequestOptions.LocationMode == LocationMode.SecondaryOnly)
     {
-        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times, 
+        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times,
         //    then switch back to the primary and see if it's available now.
         secondaryReadCount++;
         if (secondaryReadCount >= secondaryThreshold)
@@ -347,11 +328,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python) 
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>Újrapróbálkozási eseménykezelő
 
-A rendszer akkor hívja meg az `retry_callback` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétere `SECONDARY` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.  
+A rendszer akkor hívja meg az `retry_callback` eseménykezelőt, ha a kép letöltése meghiúsult, és újrapróbálkozásra van beállítva. Ha a rendszer elérte a próbálkozások alkalmazásban definiált maximális számát, a kérelem [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) paramétere `SECONDARY` értékre változik. Ez a beállítás kényszeríti az alkalmazást, hogy a másodlagos végpontról kísérelje meg letölteni a képet. Ezzel a konfigurációval csökkenthető a kép lekérési ideje, mivel a rendszer nem próbálja vég nélkül elérni az elsődleges végpontot.
 
 ```python
 def retry_callback(retry_context):
@@ -389,9 +370,22 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+
+Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequestOptions** **LocationMode** tulajdonsága először **PRIMARY\_, majd\_SECONDARY** értékűre lett beállítva. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
+
+```java
+    BlobRequestOptions myReqOptions = new BlobRequestOptions();
+    myReqOptions.setRetryPolicyFactory(new RetryLinearRetry(deltaBackOff, maxAttempts));
+    myReqOptions.setLocationMode(LocationMode.PRIMARY_THEN_SECONDARY);
+    blobClient.setDefaultRequestOptions(myReqOptions);
+
+    blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-A Java SDK V10-kell visszahívás-kezelőket nem szükséges, és az SDK-val most már rendelkezik néhány alapvető különbség a 7-es verziója SDK-ból. Helyett LocationMode, van egy másodlagos **folyamat**. Egy másodlagos folyamatot adhat meg a **RequestRetryOptions** és, ha definiálva van, lehetővé teszi az alkalmazás automatikusan átvált a másodlagos folyamat nem az adatok elsődleges keresztül éri el.
+A Java SDK V10-kell visszahívás-kezelőket nem továbbra is szükséges, és az SDK-val most már rendelkezik néhány alapvető különbség a 7-es verziója SDK-ból. Helyett LocationMode, van egy másodlagos **folyamat**. Egy másodlagos folyamatot adhat meg a **RequestRetryOptions** és, ha definiálva van, lehetővé teszi az alkalmazás automatikusan átvált a másodlagos folyamat nem az adatok elsődleges keresztül éri el.
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines
@@ -399,29 +393,6 @@ PipelineOptions myOptions = new PipelineOptions();
 myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
 // We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
 final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
-```
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-A Node.js SDK V10-visszahívás-kezelőket nem szükségesek. Ehelyett a minta létrehoz egy folyamatot, az újrapróbálkozási beállításokat és a egy másodlagos végpont konfigurálva. Ez lehetővé teszi az alkalmazás automatikusan átvált a másodlagos folyamat nem az adatok elsődleges keresztül éri el. 
-
-```javascript
-const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-const storageAccessKey = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
-const sharedKeyCredential = new SharedKeyCredential(accountName, storageAccessKey);
-
-const primaryAccountURL = `https://${accountName}.blob.core.windows.net`;
-const secondaryAccountURL = `https://${accountName}-secondary.blob.core.windows.net`;
-
-const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
-  retryOptions: {
-    maxTries: 3, 
-    tryTimeoutInMs: 10000,
-    retryDelayInMs: 500, 
-    maxRetryDelayInMs: 1000,
-    secondaryHost: secondaryAccountURL
-  }
-});
 ```
 
 ---

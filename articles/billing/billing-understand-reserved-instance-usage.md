@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: a3bacdb19dfe16a63cf1f89ef6fb162d08cb4d32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883780"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652535"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
 
@@ -64,7 +64,7 @@ Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az aláb
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Az SQL Database és a Cosmos DB használatát fenntartott kapacitás foglalások
 
-A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is. 
+A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is.
 
 Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
@@ -93,6 +93,10 @@ Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az aláb
 2. **ConsumptionMeter** az SQL Database erőforrás mérő azonosítója.
 3. A **mérőszám azonosítója** foglalás mérőszám. Ez az érték költsége 0 USD. Bármely SQL Database-erőforrásokat, amelyek esetében a foglalási kedvezményt a mérőszám azonosítója jeleníti meg a CSV-fájlt.
 
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>További lépések
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
@@ -104,9 +108,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
-
-

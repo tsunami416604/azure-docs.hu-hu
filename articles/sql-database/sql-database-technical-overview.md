@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 29a0d0679adc51cf1493d241273e3b572a7fd57d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214299"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670835"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -149,11 +149,14 @@ Az [SQL Database](sql-database-automatic-tuning.md) két szempont alapján képe
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
-Emellett az [adaptív lekérdezésfeldolgozási](/sql/relational-databases/performance/adaptive-query-processing) szolgáltatáscsalád is elérhető vált az SQL Database-ben, beleértve a több utasításból álló, táblaértékű függvények kihagyásos végrehajtását, a kötegelt módú memóriaengedély visszajelzését, valamint a kötegelt módú adaptív illesztéseket. Ezen adaptív lekérdezésfeldolgozó funkciók mindegyike hasonló technikával „tanul és alkalmazkodik”, ezzel is hozzájárulva a korábban nyomon követhetetlen lekérdezés-optimalizálási gondokra visszavezethető teljesítményproblémák megoldásához.
+Emellett az [adaptív lekérdezésfeldolgozási](/sql/relational-databases/performance/intelligent-query-processing) szolgáltatáscsalád is elérhető vált az SQL Database-ben, beleértve a több utasításból álló, táblaértékű függvények kihagyásos végrehajtását, a kötegelt módú memóriaengedély visszajelzését, valamint a kötegelt módú adaptív illesztéseket. Ezen adaptív lekérdezésfeldolgozó funkciók mindegyike hasonló technikával „tanul és alkalmazkodik”, ezzel is hozzájárulva a korábban nyomon követhetetlen lekérdezés-optimalizálási gondokra visszavezethető teljesítményproblémák megoldásához.
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség
 
 Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](sql-database-security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
+
+> [!IMPORTANT]
+> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter/compliance/complianceofferings) aktuális listájával együtt.
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
@@ -242,7 +245,7 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Adatbázis-felügyeleti kérdéseket
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Kérdések
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Kérdések
 - [MSDN fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Tegyen fel műszaki kérdéseket
 - [Visszajelzés](https://aka.ms/sqlfeedback): Hibák bejelentése és funkciók kérése
 - [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server megvitatása

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985903"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630612"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -534,4 +534,4 @@ Sikeres feltöltés esetén, tekintse meg a tulajdonságait, a kulcs, amelyet az
 
 ## <a name="next-steps"></a>További lépések
 
-Mostantól használhatja ezt a HSM által védett kulcsot tárol a kulcstárolóban. További információkért lásd: a **Ha hardveres biztonsági modul (HSM) használni kívánt** című rész a [Ismerkedés az Azure Key Vault](key-vault-overview.md) oktatóanyag.
+Mostantól használhatja ezt a HSM által védett kulcsot tárol a kulcstárolóban. További információkért lásd: e árak és funkciók [összehasonlító](https://azure.microsoft.com/pricing/details/key-vault/).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240167"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648819"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Észlelése és elhárítása bontja a kapcsolatot az Azure IoT Hub szolgáltatással
 
@@ -32,7 +32,7 @@ Eszköz kapcsolat események és hibák jelentkeznek, engedélyezze a diagnoszti
 1. Válassza ki **diagnosztikai beállítások**.
 1. Válassza ki **diagnosztika bekapcsolása**.
 1. Engedélyezése **kapcsolatok** gyűjtendő naplók.
-1. Könnyebben végezhet adatelemzést, kapcsolja be a **Küldés a Log Analyticsnek** ([díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/)). A példa alapján [kapcsolódási hibák megoldásához](#Resolve-connectivity-errors).
+1. Könnyebben végezhet adatelemzést, kapcsolja be a **Küldés a Log Analyticsnek** ([díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/)). A példa alapján [kapcsolódási hibák megoldásához](#resolve-connectivity-errors).
 
    ![Ajánlott beállítások][2]
 
@@ -40,15 +40,14 @@ További tudnivalókért lásd: [Azure IoT Hub állapotának Monitorozásához �
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Riasztások beállítása a _csatlakoztatott eszközök_ a metrika darabszám
 
-Értesítéseket kaphat, amikor az eszköz leválasztása, a riasztások beállítása a **csatlakoztatott eszközök** metrikát.
+Értesítéseket kaphat, amikor az eszköz leválasztása, a riasztások beállítása a **csatlakoztatott eszközök (előzetes verzió)** metrikát.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg az IoT hubnak.
-1. Válassza ki **riasztások (klasszikus)**.
-1. Válassza ki **metrikariasztás hozzáadása (klasszikus)**.
-1. Töltse ki az űrlapot, és válassza ki a **OK**.
-
-   ![Metrikariasztás ajánlott][3]
+1. Válassza ki **riasztások**.
+1. Válassza ki **Új riasztási szabály**.
+1. Válassza ki **feltétel hozzáadása**, majd válassza a "Csatlakoztatott eszközök (előzetes verzió)".
+1. Fejezze be a kívánt küszöbértékeket beállítását, és a riasztási beállítások szerint a következő utasításokat.
 
 További tudnivalókért lásd: [Mik azok a Microsoft Azure klasszikus riasztások?](../azure-monitor/platform/alerts-overview.md).
 

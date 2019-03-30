@@ -4,7 +4,7 @@ description: További információ megjelenítése, és a monitorozást és diag
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246916"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662159"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Esemény elemzése és képi megjelenítése a Azure Monitor naplóira
  Az Azure Monitor naplóira gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan lekérdezéseket futtathat az Azure Monitor-naplók elemzése és hibaelhárítása, mi történik a fürtön. Az alábbi gyakori kérdések foglalkozik:

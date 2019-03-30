@@ -3,8 +3,8 @@ title: Az Azure Service Fabric DNS-szolgáltatás |} A Microsoft Docs
 description: Felderítéséhez a fürtön belül a mikroszolgáltatások Service Fabric dns szolgáltatást használni.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
-ms.author: msfussell
-ms.openlocfilehash: b49df76bc5b9c4d5f469e702b65ffd5762e49a39
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: aljo
+ms.openlocfilehash: 3b3262eadc732c23000a66f24aaeeed4d9794db0
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455836"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665644"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
 A DNS szolgáltatás nem egy választható rendszerszolgáltatás, amely a fürt engedélyezheti a DNS protokollt használó egyéb szolgáltatások észlelését. 

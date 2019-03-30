@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/05/2019
+ms.date: 03/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c9cdac53e43d57feb0d2dc5a8a7153dc05be8a7d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 161eb302dfa1eb002a49afcd08da1a2795bc81ed
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170632"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649424"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (privát előzetes verzió)
 
@@ -45,6 +45,8 @@ Az Azure Deployment Manager REST API-referenciában találhat [Itt](https://docs
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
@@ -55,13 +57,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 * Deployment Manager-parancsmagok. Az előzetes verziójú parancsmagok telepítéséhez a PowerShellGet legújabb verziójára lesz szüksége. A legújabb verzió beszerzéséről lásd [a PowerShellGet telepítését](/powershell/gallery/installing-psget) ismertető cikket. A PowerShellGet telepítése után zárja be a PowerShell-ablakot. Nyisson meg egy új emelt szintű PowerShell-ablakot, és használja a következő parancsot:
 
     ```powershell
-    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
-    ```
-
-    Az Az Azure PowerShell-modul telepítve van, két további kapcsolók szükségesek:
-
-    ```powershell
-    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    Install-Module -Name Az.DeploymentManager -AllowPrerelease -AllowClobber -Force
     ```
 
 * [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
@@ -302,10 +298,10 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
     
     # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     
     # Create the service topology
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
@@ -321,7 +317,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     ```azurepowershell
     # Create the rollout
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json"
@@ -332,7 +328,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
     ```azurepowershell
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
-    Get-AzureRmDeploymentManagerRollout `
+    Get-AzDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName `
         -Verbose

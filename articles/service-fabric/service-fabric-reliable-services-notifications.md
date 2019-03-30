@@ -4,7 +4,7 @@ description: Service Fabric Reliable Services értesítések fogalmi dokumentác
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433514"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662669"
 ---
 # <a name="reliable-services-notifications"></a>A Reliable Services-értesítések
-Értesítések engedélyezése az ügyfelek nyomon követheti, hogy érdeklődik az objektumhoz végrehajtott módosításokat. Két típusú objektumok támogathatja az értesítéseket: *Reliable State Manager* és *megbízható szótárban*.
+Értesítések engedélyezése az ügyfelek nyomon követheti, hogy érdeklődik az objektumhoz végrehajtott módosításokat. Két típusú objektumok értesítéseket támogatja: *A Reliable State Manager* és *megbízható szótárban*.
 
 Értesítések a leggyakoribb okai a következők:
 
@@ -46,9 +46,9 @@ A Reliable State Manager nyomon követi az aktuális megszakít tranzakciók. Az
 A Reliable State Manager fenntart egy megbízható szótárban és megbízható várólista például megbízható állapotainak gyűjteményét. A Reliable State Manager értesítések akkor aktiválódik, ha módosítja a gyűjtemény: olyan megbízható állapotban van hozzáadva vagy eltávolítva, vagy a teljes gyűjteményt újraépítésekor.
 A Reliable State Manager gyűjtemény újraépítésekor három esetben:
 
-* Helyreállítás: Egy replika indításakor helyreáll a rendes működés korábbi állapotba a lemezről. A helyreállítás végén használ **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a helyreállított megbízható állapotok.
-* Teljes másolási: replika csatlakozhat a konfigurációs készlet, mielőtt rendelkezik kell létrehozni. Egyes esetekben ehhez az elsődleges replikából a alkalmazni lehessen a tétlen másodlagos replikának a Reliable State Manager állapot teljes másolata. A Reliable State Manager a másodlagos replikát használ **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a megbízható állapotok, akkor megszerezte az elsődleges replikából.
-* Visszaállítás: A vészhelyreállítási forgatókönyveket, a replika visszaállítható biztonsági keresztül **RestoreAsync**. Ezekben az esetekben használja az elsődleges replikán a Reliable State Manager **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a megbízható, a biztonsági másolatból visszaállított állapotok.
+* Helyreállítás: Amikor elindul egy replikát, azt korábbi állapotba állítja helyre a lemezről. A helyreállítás végén használ **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a helyreállított megbízható állapotok.
+* Teljes másolatát: Replika csatlakozhat a konfigurációs készlet, mielőtt rendelkezik kell létrehozni. Egyes esetekben ehhez az elsődleges replikából a alkalmazni lehessen a tétlen másodlagos replikának a Reliable State Manager állapot teljes másolata. A Reliable State Manager a másodlagos replikát használ **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a megbízható állapotok, akkor megszerezte az elsődleges replikából.
+* Visszaállítás: A vészhelyreállítási forgatókönyveket, a replika állapota keresztül másolatból visszaállított **RestoreAsync**. Ezekben az esetekben használja az elsődleges replikán a Reliable State Manager **NotifyStateManagerChangedEventArgs** üzenetszám egy eseményt, amely azokat a megbízható, a biztonsági másolatból visszaállított állapotok.
 
 Tranzakció-értesítések és/vagy manager állapotértesítésekre regisztrál, regisztrálnia kell a **TransactionChanged** vagy **StateManagerChanged** a Reliable State Manager eseményeket. Ezek eseménykezelők regisztrálni egy közös helyen, az állapotalapú szolgáltatás a konstruktor. Ha regisztrálja a konstruktort, bármilyen értesítés, hogy a rendszer élettartama során megváltozása miatt nem hagyja ki **IReliableStateManager**.
 
@@ -109,11 +109,11 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>Megbízható szótár értesítések
 Megbízható szótárban az értesítések a következő események biztosítja:
 
-* Újraépítés: Meghívva **ReliableDictionary** állt állapotában a helyreállított vagy másolt helyi állapot vagy a biztonsági mentés.
-* Törlés: Meghívva állapotát **ReliableDictionary** keresztül törölve lett a **ClearAsync** metódust.
-* Adja hozzá: Nevű elem hozzáadása után a **ReliableDictionary**.
+* Építse újra: Meghívva **ReliableDictionary** állt állapotában a helyreállított vagy másolt helyi állapot vagy a biztonsági mentés.
+* Törlése: Meghívva állapotát **ReliableDictionary** keresztül törölve lett a **ClearAsync** metódust.
+* Adja hozzá a következőket: Egy elem hozzáadása után a nevű **ReliableDictionary**.
 * Frissítés: Meghívva, ha az egyik elemére **IReliableDictionary** frissítve lett.
-* Eltávolítás: Meghívva, ha az egyik elemére **IReliableDictionary** törölve lett.
+* Távolítsa el: Meghívva, ha az egyik elemére **IReliableDictionary** törölve lett.
 
 Megbízható szótárban értesítéseket kaphat, regisztrálnia kell a **DictionaryChanged** eseménykezelőt a **IReliableDictionary**. Ezek eseménykezelők regisztrálni egy közös helyen szerepel a **ReliableStateManager.StateManagerChanged** értesítés beállítása.
 Ha regisztrálja **IReliableDictionary** adnak hozzá **IReliableStateManager** biztosítja, hogy minden olyan értesítések nem hagyja ki.

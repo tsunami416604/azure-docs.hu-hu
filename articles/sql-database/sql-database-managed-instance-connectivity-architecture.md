@@ -4,7 +4,7 @@ description: Tudnivalók Azure SQL Database felügyelt példány kommunikációs
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621549"
+ms.locfileid: "58651312"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 
@@ -110,7 +110,8 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 |felügyelet  |80, 443, 12000|TCP     |Bármelyik              |AzureCloud  |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZATI *  |Engedélyezés |
 
-> Ellenőrizze, hogy 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. Felügyelt példány üzembe helyezés ARM üzemelő példányok meghiúsulhat, ha a bemeneti és kimeneti szabályok a minden egyes portok külön-külön vannak konfigurálva. 
+> [!IMPORTANT]
+> Győződjön meg arról, 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. Felügyelt példány üzembe helyezés ARM üzemelő példányok sikertelen lesz, ha a bemeneti és kimeneti szabályok a az egyes portok külön-külön vannak konfigurálva. Ha ezek a portok külön szabályokat, a telepítés meghiúsul, hibakód: `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI ALHÁLÓZAT az IP-címtartományt az űrlap 10.x.x.x/y alhálózat hivatkozik. Ezt az információt találja az Azure Portalon, az alhálózat tulajdonságait.
 

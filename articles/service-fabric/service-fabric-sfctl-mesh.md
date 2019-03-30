@@ -4,7 +4,7 @@ description: Ismerteti a Service Fabric parancssori felület sfctl rácsot alkot
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c7f4a0774c9277606e7c7c550eaa114e2ebbccbd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4901630509eb60cb1bbe88a46b51277af244c8f8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285178"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670727"
 ---
-# <a name="sfctl-mesh"></a>sfctl-háló
+# <a name="sfctl-mesh"></a>sfctl mesh
 Törölje, és az alkalmazások Service Fabric-háló kezelése.
 
 ## <a name="subgroups"></a>Alcsoportok
 |Alcsoport|Leírás|
 | --- | --- |
-| [Alkalmazás](service-fabric-sfctl-mesh-app.md) | Töltse le és alkalmazás-erőforrások törlése. |
-| [Code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | A naplók lekérése a tároló a megadott kód csomag az adott szolgáltatás replika. |
+| [app](service-fabric-sfctl-mesh-app.md) | Töltse le és alkalmazás-erőforrások törlése. |
+| [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | A naplók lekérése a tároló a megadott kód csomag az adott szolgáltatás replika. |
 | [Üzembe helyezés](service-fabric-sfctl-mesh-deployment.md) | Service Fabric-háló az erőforrások létrehozásához. |
 | [Átjáró](service-fabric-sfctl-mesh-gateway.md) | GET és delete háló az átjáró-erőforrásokat. |
-| [Hálózati](service-fabric-sfctl-mesh-network.md) | GET, és törölje a háló hálózati erőforrásokhoz. |
-| [Titkos kulcs](service-fabric-sfctl-mesh-secret.md) | Töltse le és titkos háló-erőforrások törlése. |
+| [network](service-fabric-sfctl-mesh-network.md) | GET, és törölje a háló hálózati erőforrásokhoz. |
+| [secret](service-fabric-sfctl-mesh-secret.md) | Töltse le és titkos háló-erőforrások törlése. |
 | [secretvalue](service-fabric-sfctl-mesh-secretvalue.md) | GET és delete háló secretvalue erőforrásokat. |
 | [service](service-fabric-sfctl-mesh-service.md) | Szolgáltatás részleteinek és a szolgáltatások listája egy alkalmazás-erőforrás lekérése. |
-| [szolgáltatás-replika](service-fabric-sfctl-mesh-service-replica.md) | Kérje le egy alkalmazás-erőforrást replikáinak részleteit és a egy adott szolgáltatás lista replikáját. |
+| [service-replica](service-fabric-sfctl-mesh-service-replica.md) | Kérje le egy alkalmazás-erőforrást replikáinak részleteit és a egy adott szolgáltatás lista replikáját. |
 | [kötet](service-fabric-sfctl-mesh-volume.md) | Töltse le és mennyiségi erőforrások törlése. |
 
 

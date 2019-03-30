@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 931727eff0de104ea57930abb1d3739fa086967a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b8f4fdb3ab3e1107a8753db14dcbb68c6d97a104
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226657"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652501"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux
 
@@ -231,9 +231,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>10.0.0.41 glust-1</b>
    <b>10.0.0.42 glust-2</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    </code></pre>
 
 1. **[A]**  a közös könyvtárak létrehozása
@@ -330,7 +330,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
      --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create vip_<b>NW1</b>_ASCS IPaddr2 \
-     ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
+     ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create nc_<b>NW1</b>_ASCS azure-lb port=620<b>00</b> \
@@ -355,7 +355,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[1]**  SAP NetWeaver ASCS telepítése  
 
-   SAP NetWeaver ASCS telepítése egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a ascs rendszerbe fut be, az IP-címe például használatával első csomópontjára legfelső szintű <b>nw1 – ascs</b>, <b>10.0.0.11</b> és a példányok száma, amelyek például használja a terheléselosztó a mintavétel <b>00</b>.
+   SAP NetWeaver ASCS telepítése egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a ascs rendszerbe fut be, az IP-címe például használatával első csomópontjára legfelső szintű <b>nw1 – ascs</b>, <b>10.0.0.7</b> és a példányok száma, amelyek például használja a terheléselosztó a mintavétel <b>00</b>.
 
    A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni.
 
@@ -382,7 +382,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
     --group g-<b>NW1</b>_AERS
    
    sudo pcs resource create vip_<b>NW1</b>_AERS IPaddr2 \
-     ip=<b>10.0.0.12</b> cidr_netmask=<b>24</b> \
+     ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
     --group g-<b>NW1</b>_AERS
    
    sudo pcs resource create nc_<b>NW1</b>_AERS azure-lb port=621<b>02</b> \
@@ -411,7 +411,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **a(z) [2]**  SAP NetWeaver SSZON telepítése  
 
-   SAP NetWeaver SSZON telepíti, a második csomópont használatával egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a SSZON az IP-címét, például a legfelső szintű <b>nw1-aers</b>, <b>10.0.0.12</b> és a példányok száma, amelyek például használja a terheléselosztó a mintavétel <b>02</b>.
+   SAP NetWeaver SSZON telepíti, a második csomópont használatával egy virtuális állomásnevet, amely leképezi a terheléselosztó előtérbeli konfigurációját a SSZON az IP-címét, például a legfelső szintű <b>nw1-aers</b>, <b>10.0.0.8</b> és a példányok száma, amelyek például használja a terheléselosztó a mintavétel <b>02</b>.
 
    A sapinst paraméter SAPINST_REMOTE_ACCESS_USER használhatja, hogy a nem gyökér felhasználó sapinst csatlakozni.
 
@@ -576,14 +576,11 @@ A lépések Csengő azt feltételezik, hogy a kiszolgáló egy kiszolgálón tel
    <b>10.0.0.41 glust-1</b>
    <b>10.0.0.42 glust-2</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
-   # IP address of all application servers
-   <b>10.0.0.8 nw1-di-0</b>
-   <b>10.0.0.7 nw1-di-1</b>
    </code></pre>
 
 1. A sapmnt könyvtár létrehozása

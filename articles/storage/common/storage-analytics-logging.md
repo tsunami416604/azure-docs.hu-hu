@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a350576742a9bcb899405aae19c032cc9b966975
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351323"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652059"
 ---
 # <a name="azure-storage-analytics-logging"></a>Az Azure Storage analytics naplózása
 
@@ -27,7 +27,6 @@ A Storage Analytics naplók sikeres és sikertelen kérések kapcsolatos részle
 >  A Storage Analytics naplózási jelenleg csak a Blob, Queue és Table szolgáltatások érhető el. Premium storage-fiók azonban nem támogatott.
 
 ## <a name="requests-logged-in-logging"></a>Naplózott kérések naplózása
-
 ### <a name="logging-authenticated-requests"></a>Hitelesített naplózást kérelmek
 
  A következő típusú hitelesített kérelmeket naplózza:
@@ -63,13 +62,13 @@ Ha nagy mennyiségű, több fájlt a naplóadatok esetében minden egyes óráé
 
 A legtöbb tárolási böngészési eszközei lehetővé teszik a blobok; metaadatainak megtekintése Ez az információ PowerShell-lel is olvashatja vagy programozott módon. Az alábbi PowerShell-kódrészlettel példaként szolgál a szűrés a naplózási blobok listáját, az időpontnak a megadása név szerint, és csak ezeket a naplókat tartalmazó azonosításához metaadatok **írási** műveleteket.  
 
- ```  
+ ```powershell
  Get-AzureStorageBlob -Container '$logs' |  
- where {  
+ Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
  } |  
- foreach {  
+ ForEach-Object {  
      "{0}  {1}  {2}  {3}" –f $_.Name,   
      $_.ICloudBlob.Metadata.StartTime,   
      $_.ICloudBlob.Metadata.EndTime,   
@@ -143,24 +142,25 @@ A naplózni kívánt tárolási szolgáltatások és a megőrzési időszak (nap
 
  A következő parancsot a naplózás olvasási vált, írási és törlési kérelmek, a Queue szolgáltatás az alapértelmezett tárfiókot az öt nap megőrzési:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  A következő parancs vált kikapcsolhatják a naplózást az a table service alapértelmezett tárfiókban található:  
 
-```  
+```powershell
 Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Működik az Azure-előfizetésében az Azure PowerShell-parancsmagjainak konfigurálása és használata az alapértelmezett tárfiók kiválasztása kapcsolatos információkért lásd: [Azure PowerShell telepítése és konfigurálása annak](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ### <a name="enable-storage-logging-programmatically"></a>Tárolási programozott módon naplózás engedélyezése  
+
  Mellett az Azure Portalon vagy a Storage-naplózás az Azure PowerShell-parancsmagok használata esetén is használhatja az Azure Storage API-k közül. Ha például egy .NET-nyelv használata a Storage ügyféloldali kódtára használhatja.  
 
  Az osztályok **CloudBlobClient**, **CloudQueueClient**, és **CloudTableClient** összes rendelkezik metódusokkal például **SetServiceProperties** és **SetServicePropertiesAsync** hosszabb időt igénylő egy **ServiceProperties** paraméterként objektum. Használhatja a **ServiceProperties** objektum tárolási naplózás konfigurálása. Ha például a következő C# kódrészlet bemutatja, hogyan módosíthatja a Mi a naplózására akkor kerül sor, és a várakozási sor naplózása megőrzési időtartama:  
 
-```  
+```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
 var queueClient = storageAccount.CreateCloudQueueClient();  
 var serviceProperties = queueClient.GetServiceProperties();  
@@ -190,7 +190,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
  Az alábbi példa bemutatja, hogyan tölthet le a napló adatokat a queue szolgáltatás az díjtól 09 AM, 10 AM és 20, 2014. május 11: 00 óra. A **/S** paraméter hatására hozhat létre egy helyi mappastruktúra alapján a dátumok és időpontok a naplófájlnevekkel; az AzCopy a **/V** paramétert az AzCopy a részletes kimenet; létrehozására hatására a **/Y** paraméter AzCopy felülírja a helyi fájlok okoz. Cserélje le **< yourstorageaccount\>**  a storage-fiókot, és cserélje le a nevű **< yourstoragekey\>**  az a tárfiók kulcsára.  
 
-```  
+```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
 ```  
 
@@ -201,6 +201,7 @@ AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs
  Ha letöltötte a naplózási adatokat, megtekintheti a naplóbejegyzéseket a fájlokat. Ezek a naplófájlok elválasztójellel tagolt szöveges formátum használata számú naplófájl olvasása eszközök képesek elemezni, többek között a Microsoft Message Analyzer (további információkért lásd: Útmutató a [figyelés felismerése és hibáinak elhárítása a Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)). A különböző eszközök eltérő berendezések a formázást, szűrése, rendezése, a Keresés a naplófájlok tartalmát ad rendelkezik. A Storage naplózási naplófájlformátum és a tartalom kapcsolatos további információkért lásd: [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format) és [Storage Analytics naplózott műveletek és az állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 
 ## <a name="next-steps"></a>További lépések
+
 * [Storage Analytics naplóformátum](/rest/api/storageservices/storage-analytics-log-format)
 * [A Storage Analytics naplózott műveletek és a hibaállapot-üzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [Storage Analytics Metrics (klasszikus)](storage-analytics-metrics.md)

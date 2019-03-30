@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 4b4901b0323caa8eeda6b49228e65d1f28495164
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f4034a3462d7221c16464e6a2cee9aad2105a6cd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518490"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649811"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -129,7 +129,7 @@ A visszaállítási előfizetés/régió és zóna között. | Nem támogatott.
 Egy meglévő virtuális gép visszaállítása | Cserélje le a lemez beállítást használja.
 Lemez visszaállítása engedélyezve van az Azure Storage Service Encryption (SSE) a storage-fiók | Nem támogatott.<br/><br/> Állítsa vissza, amely nem rendelkezik az SSE engedélyezve van.
 Vegyes tárfiókok visszaállítása | Nem támogatott.<br/><br/> A tárfiók típusa alapján, az összes visszaállított lemez lesz prémium vagy standard szintű és nem vegyes.
-Zónaredundáns tárolás (ZRS) használatával vissza a storage-fiókba | Nem támogatott.
+Zónaredundáns tárolás (ZRS) használatával vissza a storage-fiókba | Támogatott (a virtuális Gépet, amely vannak a biztonsági mentésben Jan 2019 után, és ahol [rendelkezésre állási zónában](https://azure.microsoft.com/global-infrastructure/availability-zones/) érhetők el)
 Közvetlenül egy rendelkezésre állási csoportot a virtuális gép visszaállítása | Felügyelt lemezek esetén állítsa vissza a lemezt, és a rendelkezésre állási készlet lehetőséget használja a sablonban.<br/><br/> Nem felügyelt lemezek esetén nem támogatott. Nem felügyelt lemezek esetén állítsa vissza a lemezt, és ezután létrehoz egy virtuális Gépet a rendelkezésre állási csoportban.
 Nem felügyelt virtuális gépek biztonsági mentését visszaállítást, miután a frissítés felügyelt virtuális gép| Támogatott.<br/><br/> Állítsa vissza a lemezeket, és hozzon létre egy felügyelt virtuális Gépen.
 Visszaállítási pont, a managed Disks szolgáltatásba a virtuális gép áttelepítése előtt a virtuális gép visszaállítása | Támogatott.<br/><br/> Állítsa vissza a nem felügyelt lemezek (alapértelmezett), a visszaállított lemez átalakítása felügyelt lemez és a felügyelt lemezekkel rendelkező virtuális gép létrehozása.
@@ -149,6 +149,7 @@ Az üzembe helyezett virtuális gépek biztonsági mentése egy [méretezési cs
 Az üzembe helyezett virtuális gépek biztonsági mentése a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Microsoft vagy harmadik fél által közzétett) |  Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Virtuális gépek biztonsági mentése telepített egyéni rendszerképből (külső) |   Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Az Azure-bA áttelepített virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> Biztonsági mentése a virtuális Gépet, a Virtuálisgép-ügynök a migrált gépen telepítve van.
+Készítsen biztonsági másolatot a virtuális gépek konzisztencia | nem támogatott. <br/><br/>Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
 
 
 
@@ -165,6 +166,7 @@ Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Ha futta
 A deduplikált lemezek biztonsági mentése | Nem támogatott.
 Lemez hozzáadása a védett virtuális gép | Támogatott.
 A védett virtuális gépek a lemez átméretezése | Támogatott.
+Megosztott tároló| A CSV vagy a Scale-Out File Server virtuális gépek biztonsági mentésének nem ajánlott. Fürt megosztott kötetei szolgáltatás író eséllyel lesz sikertelen.
 
 ## <a name="vm-network-support"></a>Virtuálisgép-hálózatok támogatása
 

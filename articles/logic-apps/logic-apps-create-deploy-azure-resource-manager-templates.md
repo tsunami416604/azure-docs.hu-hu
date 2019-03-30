@@ -10,23 +10,24 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 5a1cae376ab9db2b0c4b5e0e5514bf7745593433
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8ad70c5d22ca73258fa9e6501d03d5409a4e45d8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894580"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652484"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozását és telepítését
 
-Az Azure Logic Apps biztosít az Azure Resource Manager-sablonok, amelyet használhat, nem csak automatizálhatja a munkafolyamatokat logikai alkalmazásokat hozhat létre, hanem az erőforrásokat és üzembe helyezéshez használt paraméterek meghatározására. Ez a sablon használata a saját üzleti forgatókönyvek esetén, vagy testre szabhatja a sablont az igényeknek. Tudjon meg többet a [Resource Manager-sablon a logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager-sablonok szerkezetének és szintaxisának](../azure-resource-manager/resource-group-authoring-templates.md). JSON-szintaxist és a Tulajdonságok [Microsoft.Logic erőforrás-típus](/azure/templates/microsoft.logic/allversions).
+Az Azure Logic Apps biztosít az Azure Resource Manager-sablonok, amelyet használhat, nem csak automatizálhatja a munkafolyamatokat logikai alkalmazásokat hozhat létre, hanem az erőforrásokat és üzembe helyezéshez használt paraméterek meghatározására.
+Ez a sablon használata a saját üzleti forgatókönyvek esetén, vagy testre szabhatja a sablont az igényeknek. Tudjon meg többet a [Resource Manager-sablon a logic apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) és [Azure Resource Manager-sablonok szerkezetének és szintaxisának](../azure-resource-manager/resource-group-authoring-templates.md). JSON-szintaxist és a Tulajdonságok [Microsoft.Logic erőforrás-típus](/azure/templates/microsoft.logic/allversions).
 
 ## <a name="define-the-logic-app"></a>Adja meg a logikai alkalmazás
-
 Ebben a példában logic app-definíciójának óránként egyszer futtatja, és Pingeli a megadott helyen a `testUri` paraméter.
-A sablon paraméter értékét használja a logikai alkalmazás nevét (```logicAppName```) és a teszteléshez ping helye (```testUri```). Tudjon meg többet [ezek a paraméterek meghatározása a sablonban](#define-parameters). A sablon ugyanarra a helyre, az Azure-erőforráscsoportot, a logikai alkalmazás helyét is beállítja. 
+A sablon paraméter értékét használja a logikai alkalmazás nevét (```logicAppName```) és a teszteléshez ping helye (```testUri```). Tudjon meg többet [ezek a paraméterek meghatározása a sablonban](#define-parameters).
+A sablon ugyanarra a helyre, az Azure-erőforráscsoportot, a logikai alkalmazás helyét is beállítja.
 
-``` json
+```json
 {
    "type": "Microsoft.Logic/workflows",
    "apiVersion": "2016-06-01",
@@ -69,7 +70,7 @@ A sablon paraméter értékét használja a logikai alkalmazás nevét (```logic
       "parameters": {}
    }
 }
-``` 
+```
 
 <a name="define-parameters"></a>
 
@@ -79,10 +80,10 @@ A sablon paraméter értékét használja a logikai alkalmazás nevét (```logic
 
 Az alábbiakban a sablonban szereplő paraméterekkel leírása:
 
-| Paraméter | Leírás | Példa JSON-definíció | 
-| --------- | ----------- | ----------------------- | 
+| Paraméter | Leírás | Példa JSON-definíció |
+| --------- | ----------- | ----------------------- |
 | `logicAppName` | Meghatározza a nevét, hogy a sablon létrehoz a logikai alkalmazás. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | Tesztelési pingelni a hely határozza meg. | "testUri": {"type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} | 
+| `testUri` | Tesztelési pingelni a hely határozza meg. | "testUri": {"type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} |
 ||||
 
 Tudjon meg többet [REST API a Logic Apps munkafolyamat-definíció és tulajdonságok](https://docs.microsoft.com/rest/api/logic/workflows) és [logikaialkalmazás-definíciók JSON-ra épülő](logic-apps-author-definitions.md).
@@ -93,7 +94,8 @@ Hozzon létre, és automatikusan egy logikai alkalmazás üzembe helyezése az A
 
 [![Üzembe helyezés az Azure-ban](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Ez a művelet bejelentkezik, az Azure Portalt, ahol adja meg a logikai alkalmazás részleteit, és végezze el a módosításokat a sablon és paraméterek. Például az Azure Portalon kéri az alábbi részleteket:
+Ez a művelet bejelentkezik, az Azure Portalt, ahol adja meg a logikai alkalmazás részleteit, és végezze el a módosításokat a sablon és paraméterek.
+Például az Azure Portalon kéri az alábbi részleteket:
 
 * Azure-előfizetés neve
 * Használni kívánt erőforráscsoportot
@@ -110,13 +112,13 @@ Ez a művelet bejelentkezik, az Azure Portalt, ahol adja meg a logikai alkalmaz�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-```
+```powershell
 New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
-``` 
+```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-```
+```azurecli
 azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 ```
 

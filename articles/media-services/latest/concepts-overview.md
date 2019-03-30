@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d8790eac93b288d5d5254f188fe5c901b5d5df14
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351490"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630553"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
@@ -30,7 +30,7 @@ Ez a témakör rövid áttekintést nyújt az Azure Media Services – alapelvek
 
 A Media Services-fiók létrehozása és a digitális fájlok feltöltése kell kezelése, titkosítása, kódolás, elemzése és az Azure-ban médiafolyam indításához **eszközök**.
 
-- [Felhőbeli feltöltés és tárolás](storage-account-concept.md)
+- [Felhőbe történő feltöltés és tárolás](storage-account-concept.md)
 - [Eszközök fogalma](assets-concept.md)
 
 ## <a name="encoding"></a>Encoding
@@ -76,16 +76,16 @@ Használhatja a Media Services **dinamikus jegyzékfájlok** csak egy adott megj
 
 - [dinamikus becsomagolás](dynamic-packaging-overview.md)
 - [Streamvégpontok](streaming-endpoint-concept.md)
-- [A streamelési Lokátorok](streaming-locators-concept.md)
-- [Streamelési házirendek](streaming-policy-concept.md)
-- [Tartalmi kulcs házirendjei](content-key-policy-concept.md)
+- [Streamelési lokátorok](streaming-locators-concept.md)
+- [Streamelési szabályzatok](streaming-policy-concept.md)
+- [Tartalomkulcs-szabályzatok](content-key-policy-concept.md)
 - [A Content protection](content-protection-overview.md)
-- [A dinamikus jegyzékek](filters-dynamic-manifest-overview.md)
+- [Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)
 - [Szűrők](filters-concept.md)
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam)
 
-Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. **Élő események** feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor létrehoz egy **élő esemény**, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. Miután a tárfiókba kerülnek stream a **élő esemény**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **élő kimeneti**, és **Streamelési lokátor** . **Kimeneti élő** archiválja a streamet, a **eszköz** és keresztül megtekintők számára elérhető legyen a **folyamatos átviteli végponton**. A **élő esemény** két típus egyike lehet: **átmenő** és **valós idejű kódolás**.
+Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Amikor létrehoz egy **élő esemény**, egy bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. Miután a tárfiókba kerülnek stream a **élő esemény**, megkezdheti a streamelési eseményt hoz létre egy **eszköz**, **élő kimeneti**, és **Streamelési lokátor** . **Kimeneti élő** archiválja a streamet, a **eszköz** és keresztül megtekintők számára elérhető legyen a **folyamatos átviteli végponton**. A **élő esemény** két típus egyike lehet: **átmenő** és **valós idejű kódolás**.
 
 Az alábbi ábrán az átmenő írja be a munkafolyamat:
 
@@ -102,6 +102,11 @@ A feladat előrehaladásának megtekintéséhez használjon **Event Grid**. A Me
 
 - [Event Grid-események kezelése](reacting-to-media-services-events.md)
 - [Sémák](media-services-event-schemas.md)
+
+### <a name="azure-monitor"></a>Azure Monitor
+
+Figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hogyan az alkalmazások az Azure Monitor szolgáltatással hajtja végre.
+
 - [Metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md)
 - [Diagnosztikai naplók sémák](media-services-diagnostic-logs-schema.md)
 
@@ -113,4 +118,9 @@ Az Azure Media Player segítségével streameli a Media Services számos külön
 
 ## <a name="next-steps"></a>További lépések
 
-[Feltöltése, kódolása és streamelése a Media Services használatával](stream-files-tutorial-with-api.md)
+* [Kódolás a távoli fájl- és video-adatfolyamok – REST](stream-files-tutorial-with-rest.md)
+* [A feltöltött fájl- és video - adatfolyamot .NET kódolása](stream-files-tutorial-with-api.md)
+* [Stream élő – .NET](stream-live-tutorial-with-api.md)
+* [.NET - videó elemzése](analyze-videos-tutorial-with-api.md)
+* [AES-128 dinamikus titkosítást – .NET](protect-with-aes128.md)
+* [A többplatformos DRM - .NET dinamikusan titkosítása](protect-with-drm.md) 

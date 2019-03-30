@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170700"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező IriusRisk
 
@@ -89,7 +89,7 @@ Az Azure AD egyszeri bejelentkezés az IriusRisk tesztelése és konfigurálása
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy IriusRisk tesztfelhasználót](#create-a-iriusrisk-test-user)**  – egy megfelelője a Britta Simon IriusRisk, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+1. **[Hozzon létre egy IriusRisk tesztfelhasználót](#create-an-iriusrisk-test-user)**  – egy megfelelője a Britta Simon IriusRisk, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
 1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 

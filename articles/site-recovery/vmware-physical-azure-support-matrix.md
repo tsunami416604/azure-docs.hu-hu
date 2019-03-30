@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: raynew
-ms.openlocfilehash: 0070edf007399fff1f12f483b9ca552a755b53fb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 199f9508b599e2f946404446a23e9608bb969ba7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436591"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649458"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -74,35 +74,34 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás ezen verziója** | **Kernel verziója** |
 --- | --- | --- |
+14.04 LTS | [9.23][9.23 UR] | a 3.13.0-165-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.15.0-1037-azure 4.15.0-1023-Azure |
 14.04 LTS | [9.22][9.22 UR] | a 3.13.0-164-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1036-azure |
 14.04 LTS | [9.21][9.21 UR] | a 3.13.0-163-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.15.0-1035-azure 4.15.0-1023-Azure |
 14.04 LTS | [9.20][9.20 UR] | a 3.13.0-153-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.15.0-1025-azure 4.15.0-1023-Azure |
-14.04 LTS | [9.19][9.19 UR] | a 3.13.0-153-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-131-generic 4.4.0-21-Generic |
 |||
+16.04 LTS | [9.23][9.23 UR] | a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-45-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1037-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.22][9.22 UR] | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-43-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1036-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.21][9.21 UR] | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1035-azure 4.15.0-1012-Azure|
 16.04 LTS | [9.20][9.20 UR] | a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1025-azure 4.15.0-1012-Azure|
-16.04 LTS | [9.19][9.19 UR] | a 4.4.0-131-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-30-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1019-azure 4.15.0-1012-Azure|
 
 ### <a name="debian-kernel-versions"></a>Debian kernel-verzióknál
 
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás ezen verziója** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | [9.19][9.19 UR],[9.20][9.20 UR],[9.21][9.21 UR], [9.22][9.22 UR]| 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.20][9.20 UR],[9.21][9.21 UR], [9.22][9.22 UR],[9.23][9.23 UR]| 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR] | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
-Debian 8 | [9.19][9.19 UR] | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.7-amd64 |
+Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR],[9.23][9.23 UR] | 3.16.0-4-amd64 to 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 támogatott kernel verziója
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.23][9.23 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.79-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.22][9.22 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.64-default SP3 4.4.73-5-default |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.19][9.19 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.85-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.140-94.42-default SP3 4.4.73-5-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltárolás
 
@@ -185,7 +184,7 @@ Vendég-kiszolgáló többutas (MPIO) | Nem
 
 > [!NOTE]
 > UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később telepíthetők át az Azure-bA. A következő korlátozások vonatkoznak:
-> 
+>
 > - Csak az Azure-bA áttelepítése támogatott. A helyszíni VMware-helyre történő feladat-visszavétel nem támogatott.
 > - A kiszolgáló az operációsrendszer-lemez nem tartalmazhat több mint négy partícióval.
 > - A mobilitási szolgáltatás 9.13 vagy újabb verziójára van szükség.
@@ -265,7 +264,7 @@ Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok között
 ## <a name="download-latest-azure-site-recovery-components"></a>Töltse le a legújabb Azure Site Recovery-összetevők
 
 **Name (Név)** | **Leírás** | **Legújabb verzió letöltése utasítások**
---- | --- | --- 
+--- | --- | ---
 Konfigurációs kiszolgáló | Koordinálja a helyszíni VMware-kiszolgálók és Azure közötti kommunikációt <br/><br/> A helyszíni VMware-kiszolgálók telepítése | További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-deploy-configuration-server.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Folyamatkiszolgáló|Alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket és elküldi azt az Azure Storage. Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.| További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-set-up-process-server-scale.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-azure-manage-process-server.md#upgrade-a-process-server).
 A mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgálók/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikáció<br/><br/> A VMware virtuális gépek vagy fizikai kiszolgálókat szeretne replikálni telepítve | További információért keresse fel a ügyfeleinket [friss telepítés](vmware-azure-install-mobility-service.md) és [meglévő összetevő a legújabb verzióra frissítés](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal).
@@ -276,6 +275,7 @@ A legújabb szolgáltatásaival kapcsolatos további tudnivalókért látogasson
 ## <a name="next-steps"></a>További lépések
 [Ismerje meg, hogyan](tutorial-prepare-azure.md) VMware virtuális gépek vészhelyreállítása az Azure előkészítése.
 
+[9.23 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery
 [9.22 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery
 [9.21 UR]: https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery
 [9.20 UR]: https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery

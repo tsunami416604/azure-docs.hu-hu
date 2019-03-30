@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: 66fd42e5aa110b4c9ef686b1d66429ff7dbaf550
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857691"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648299"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -53,7 +53,7 @@ Letöltheti a vállalati használati CSV-fájl a vállalati portálról. Szűré
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Az SQL Database és a Cosmos DB használatát fenntartott kapacitás foglalások
 
-A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is. 
+A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is.
 
 Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
@@ -64,7 +64,7 @@ Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy
 |Product| Az SQL Database Gen 4 (2 mag)|
 |Régió | eastus |
 
-### <a name="usage-in-csv-file"></a>CSV-fájl használata 
+### <a name="usage-in-csv-file"></a>CSV-fájl használata
 
 Szűrjön az **további információ** , és írja be a **Foglalásazonosító**, és válassza ki a szükséges **mérőszám kategóriája** – Azure SQL database vagy az Azure Cosmos DB. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket.
 
@@ -81,19 +81,20 @@ A foglalást az Azure-használat is megjelenik-e, a vállalati portál használa
 1. Ön nem számítunk fel díjat a virtuális gép a hardverösszetevő, Foglalás körébe. Egy SQL Database foglalás lát egy sort a **szolgáltatásnév** mint az Azure SQL Database szolgáltatás számára fenntartott kapacitás kihasználtsága.
 2. Ebben a példában nem rendelkezik a az Azure Hybrid Benefit, így a Windows szoftverek, a virtuális gép együttes díjkötelesek.
 
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+
 ## <a name="next-steps"></a>További lépések
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md) 
+- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
 - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

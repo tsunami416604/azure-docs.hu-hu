@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839814"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652382"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
@@ -28,7 +28,7 @@ A legtöbb előfizetés esetén töltse le a számla a [az Azure portal](https:/
 
 Csak egyes szerepkörök engedélye, például az a fiók rendszergazdája vagy vállalati rendszergazdai számlák megtekintése. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#Check-your-access-to-a-Microsoft-Customer-Agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és számlázása a számlákon szerkesztését. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Ha rendelkezik egy [Microsoft Ügyfélszerződéséhez](#check-your-access-to-a-microsoft-customer-agreement), csak egy számlázási profilja tulajdonos, közreműködő, olvasó, és számlázása a számlákon szerkesztését. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="download-your-azure-invoices-pdf"></a>Töltse le az Azure-számlák (.pdf)
 

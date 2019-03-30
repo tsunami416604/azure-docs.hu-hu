@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268787"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630596"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
 
@@ -84,7 +84,12 @@ Lásd: [séma példák](#event-schema-examples) olvashat.
 
 ### <a name="track-level-events"></a>Nyomon követheti-szintű eseményeit
 
-Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. A sledování událostí típusok a következők:
+Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. 
+
+> [!NOTE]
+> Az összes nyomon követése-szintű eseményeit élőadás-kódoló csatlakoztatása után aktiválódnak.
+
+A track szintű esemény típusok a következők:
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
@@ -92,7 +97,7 @@ Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. A sledován�
 | Microsoft.Media.LiveEventIncomingStreamReceived | Media kiszolgáló egyes nyomon követése az első adathalmaz kap a streamben vagy a kapcsolat. |
 | Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-kiszolgáló észleli a hang és video-adatfolyamokat nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
 | Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media-kiszolgáló észleli a külső kódoló érkező két video-adatfolyamokat bármelyikét nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését. |
+| Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését.<br/><br/>A kódoló eredetileg csatlakoztatták, miután a szívverés események továbbra is gridre bocsáthatja ki minden 20 másodperc, hogy a kódoló továbbra is csatlakozik, vagy nem. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Kiszolgáló kihagyást észleli a bejövő nyomon követése. |
 
 Lásd: [séma példák](#event-schema-examples) olvashat.
@@ -615,9 +620,9 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | OverlapCount | egész szám | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
 | DiscontinuityCount | egész szám | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
 | nonIncreasingCount | egész szám | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
-| unexpectedBitrate | Logikai | Ha a várt és tényleges bitsebességre való átkódolása eltér az elmúlt 20 másodperc alatt több mint engedélyezett korlátot. IGAZ, ha, és csak akkor, ha, incomingBitrate > = 2 * sávszélességű vagy incomingBitrate < = vagy IncomingBitrate sávszélességű/2 = 0. |
+| unexpectedBitrate | logikai | Ha a várt és tényleges bitsebességre való átkódolása eltér az elmúlt 20 másodperc alatt több mint engedélyezett korlátot. IGAZ, ha, és csak akkor, ha, incomingBitrate > = 2 * sávszélességű vagy incomingBitrate < = vagy IncomingBitrate sávszélességű/2 = 0. |
 | state | sztring | Az élő esemény állapota. |
-| kifogástalan | Logikai | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| kifogástalan | logikai | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 

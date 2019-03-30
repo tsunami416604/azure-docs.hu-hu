@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08430f3eee858cdb6c9a7fbdfe11bd4c00ef148d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902875"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630404"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -23,7 +23,7 @@ Ez a cikk összefoglalja a jelenleg az Azure Stream Analytics előzetes verziób
 
 A következő funkciók vannak a nyilvános előzetes verzióban érhető el. Kihasználhatja ezeket a szolgáltatásokat még ma, de ne használja éles környezetben.
 
-### <a name="anomaly-detection"></a>Anomáliadetektálás
+### <a name="anomaly-detection"></a>Rendellenességek észlelése
 
 Az Azure Stream Analytics bevezeti az új machine learning-modellek támogatása *kiugrás* és *süllyedések* észlelési mellett kétirányú, lassú pozitív, és a lassú negatív trendek észlelését. További információért látogasson el [anomáliadetektálás az Azure Stream Analyticsben](stream-analytics-machine-learning-anomaly-detection.md).
 
@@ -54,10 +54,6 @@ A következő funkciók private preview verzióban van.
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>C# az Azure Stream Analytics az IoT Edge-ben egyéni deszerializáló
 
 A fejlesztők mostantól implementálhatók az egyéni deserializers deszerializálni az Azure Stream Analytics a fogadott események C#-ban. Amely képes lehet deszerializálni formátumok közé Parquet, Protopuf, XML vagy bármilyen bináris formátumot.
-
-### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Felügyelt identitások Azure-erőforrás felé történő hitelesítéshez az Azure Data Lake Storage
-
-Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőforrások hitelesítéshez az Azure Data Lake Storage Gen1 írása közben a felügyelt identitásokból lehetővé teszi, hogy a feladatok programozott módon hozhatók létre. További információért látogasson el [identitások felügyelt használata az Azure-erőforrásokhoz való hitelesítéséhez az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimeneti](stream-analytics-managed-identities-adls.md).
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>A Visual Studio Code az Azure Stream Analytics szolgáltatáshoz
 

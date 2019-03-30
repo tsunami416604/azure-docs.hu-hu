@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6baeb27855381ca03862f2632d31c628a088af39
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620614"
+ms.locfileid: "58649288"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Biztonságos hozzáférés az Azure Logic Appsben
 
@@ -156,8 +156,9 @@ További engedélyezési protokollok hozzáadása a logikai alkalmazást, érdem
 
 Ahhoz, hogy csak adott felhasználók vagy csoportok, a logikai alkalmazás a műveletek futtatásához, korlátozhatja a hozzáférést a feladatokat, köztük a kezelése, megjelenítése és szerkesztése. A Logic Apps támogatja [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amelyet testre vagy hozzárendelése beépített szerepkörök tagjai az előfizetésében, például:
 
-* **A logikai alkalmazás Közreműködője**: Felhasználók megtekintése, szerkesztése és a logikai alkalmazás frissítése. Ez a szerepkör a logikai alkalmazás törlése vagy rendszergazdai műveletek futtatásához.
-* **Logikai alkalmazás operátora**: Felhasználók a logikai alkalmazás és a futtatási előzmények megtekintése és engedélyezheti vagy letilthatja a logikai alkalmazást. Ez a szerepkör szerkesztéséhez vagy a logikai alkalmazás frissítése.
+* [A logikai alkalmazás Közreműködője](../role-based-access-control/built-in-roles.md#logic-app-contributor): Felhasználók megtekintése, szerkesztése és a logikai alkalmazás frissítése. 
+
+* [Logikai alkalmazás operátora](../role-based-access-control/built-in-roles.md#logic-app-operator): Felhasználók a logikai alkalmazás és a futtatási előzmények megtekintése és engedélyezheti vagy letilthatja a logikai alkalmazást. Ez a szerepkör szerkesztéséhez vagy a logikai alkalmazás frissítése.
 
 Megakadályozásához módosítása vagy törlése a logikai alkalmazás, használhatja a [Azure erőforrás-zárolás](../azure-resource-manager/resource-group-lock-resources.md). Ez a képesség segít mindebben másokat megakadályozzon módosítása vagy törlése az éles erőforrásait.
 

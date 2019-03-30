@@ -4,7 +4,7 @@ description: Verzióra történő frissítéséhez a Service Fabric-alkalmazás,
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099192"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670617"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
 Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. Alkalmazásfrissítési paraméterek szabályozhatja az időtúllépéseket és állapot-ellenőrzést, a frissítés során alkalmazott, és azok adja meg a szabályzatokban, amelyek a alkalmazni kell, amikor a sikertelen frissítés. Alkalmazás-paraméterek használatával verziófrissítések vonatkoznak:
@@ -94,11 +94,12 @@ A Service Fabric-alkalmazások frissítéséhez használatával a Service Fabric
 
 | Paraméter | Leírás |
 | --- | --- |
-| alkalmazásazonosító  |Az alkalmazás, amely frissítés alatt áll azonosítója. <br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric:" Schéma identifikátoru URI. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "~" karaktert. Például, ha az alkalmazás neve "fabric: / myapp/app1", lesz az identitása "myapp ~ app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
+| alkalmazásazonosító  |Az alkalmazás, amely frissítés alatt áll azonosítója. <br> Ez általában a nélkül az alkalmazás teljes nevét a "fabric:" Schéma identifikátoru URI. 6.0-s verzió kezdve hierarchikus nevek vannak tagolva, az a "\~" karaktert. Például, ha az alkalmazás neve "fabric: / myapp/app1", lesz az identitása "myapp\~app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
 alkalmazás-verzió |Az alkalmazás verziója írja be, amely a frissítési célokat.|
 paraméterek  |Parametr aplikace JSON-kódolású listáját felülbírálja a alkalmazni, ha az alkalmazás frissítését.|
 
 ### <a name="optional-parameters"></a>Választható paraméterek
+
 | Paraméter | Leírás |
 | --- | --- |
 default-service-health-policy | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) alapértelmezés szerint egy bizonyos szolgáltatástípusként állapotának értékeléséhez használt állapotházirend specifikace kódolva. A térkép alapértelmezés szerint üres. |

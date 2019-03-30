@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003240"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648556"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Java SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -43,15 +43,15 @@ Az SQL API-t a Java SDK támogatja a szinkron műveletek. Aszinkron támogatást
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
-### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * Kijavítva a hiba a PartitionKey kivonatoló v2-ben.
 
-### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 * Az összetett indexek támogatása.
 * Kijavítva a hiba az globális végpontja manager frissítés kényszerítése.
 * Kijavítva a hiba a upserts előtti feltételekkel közvetlen módban.
 
-### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 * Kijavítva a hiba átjáró cím gyorsítótárban.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0

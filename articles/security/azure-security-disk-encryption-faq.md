@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9323db9faff162488f5f56c03ac976aa47bb6f97
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 14e9bd7b87f2941fcc075a6265f2e6c96fe646ea
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339492"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649909"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -125,7 +125,7 @@ Az egyéni Linux-rendszerképek az Azure Disk Encryption, nem lehet alkalmazni. 
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Használhatom-e frissítéseket Linux Red Hat használó virtuális gép a yum használatával frissítést?
 
-Igen, hajtsa végre a frissítést, vagy a Red Hat Linux rendszerű virtuális gép javítása. További információkért lásd: [frissítéseinek alkalmazása a yum használatával frissítés használatával titkosított Azure IaaS Red Hat VM](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/).
+Igen, végezhet a yum használatával frissítése egy Red Hat Linux rendszerű virtuális gépen.  További információkért lásd: [tűzfal mögött található Linux-csomagkezelés](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Mi a javasolt az Azure disk encryption munkafolyamat Linux?
 

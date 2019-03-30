@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 96ac8522f94a3555fe63575baca8bbfbabc272d9
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 9c0e672788858176800c04d7b2aa355d303aec1f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570453"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666171"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és Maven
 
@@ -48,6 +48,9 @@ mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
+
+> [!NOTE]
+> Ha olyan a parancs futtatásával problémákat tapasztal, tekintse meg, milyen `maven-archetype-plugin` verziót használja. Mivel a parancs egy üres Directory nélkül futtatja `.pom` fájlt, akkor előfordulhat, hogy próbál használni, a régebbi verziójú, a beépülő modul `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Ha régebbi verzióról frissített a Maven. Ha igen, próbálja meg törölni a `maven-archetype-plugin` directory és a következő parancs újbóli futtatásával.
 
 ### <a name="windows"></a>Windows
 

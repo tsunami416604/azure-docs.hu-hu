@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2c29d9860f1c8fc4f0f6d9f4d84c06e8ade8dee5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286975"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629484"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Gyors útmutató: Egy Azure térbeli horgonyok használó HoloLens Unity-alkalmazás létrehozása
 
@@ -35,7 +35,7 @@ A gyorsútmutató elvégzéséhez:
 
 
 - Egy Windows-számítógépen, amelyre szüksége <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> vagy újabb és <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> vagy újabb van telepítve. A Visual Studio telepítésének tartalmaznia kell a **univerzális Windows Platform fejlesztési** számítási feladatot. Emellett telepítenie kell <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>.
-- HoloLens eszköz, amelyre szüksége [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. [Windows-2018. október 10. frissítés](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (más néven RS5) telepítve kell lennie az eszközön. A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza ki **frissítések keresése**.
+- HoloLens eszköz, amelyre szüksége [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. [Windows-2018. október 10. frissítés](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (más néven RS5) telepítve kell lennie az eszközön. A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza ki **frissítések keresése**.
 - Az alkalmazásban, engedélyeznie kell a **SpatialPerception** képesség. Ez a beállítás nem található **Build Settings** > **Player beállítások** > **közzétételi beállítások**  >   **Képességek**.
 - Az alkalmazásban, engedélyeznie kell a **virtuális valóságban támogatott** a **Windows vegyes valóság SDK**. Ez a beállítás nem található **Build Settings** > **Player beállítások** > **XR beállítások**.
 

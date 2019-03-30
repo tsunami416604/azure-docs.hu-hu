@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0880ad2ab02fad574f5204741b0fa03e4ef0338
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109780"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648063"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
@@ -69,9 +69,10 @@ A csomag telepítéséhez kövesse az alábbi lépéseket:
 
 1. Nyisson meg egy standard szintű PowerShell-ablakot, és futtassa a következő parancsot:
 
-    ```
+    ```powershell
      Install-Module -Name AzureAD
     ```
+
     Ha a parancsot futtatja, nem rendszergazda, a `-scope currentuser` lehetőséget.
 2. A telepítés során válasszon **Y** Nuget.org a két csomagok telepítéséhez. Mindkét csomagot szükség. 
 
@@ -81,20 +82,22 @@ Szerezze be az ObjectId azonosítóját, az alkalmazást, és keressen rá az al
 
 1. Ugyanebben a PowerShell ablakban az Azure AD-modul importálásához.
 
-    ```
+    ```powershell
     Import-Module AzureAD
     ```
 
 2. Jelentkezzen be az Azure AD-modul a bérlői rendszergazda.
 
-    ```
+    ```powershell
     Connect-AzureAD
     ```
+
 3. Keresse meg az alkalmazást, a kezdőlap URL-címe alapján. Annak az URL-címet a portálon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**. Ez a példa *sharepoint-iddemo*.
 
+    ```powershell
+    Get-AzureADApplication | Where-Object { $_.Homepage -like "sharepoint-iddemo" } | Format-List DisplayName, Homepage, ObjectID
     ```
-    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
-    ```
+
 4. Az itt látható egy hasonló eredményt kell kapnia. Másolja a következő szakaszban az ObjectID GUID Azonosítót.
 
     ```
@@ -109,7 +112,7 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 
 1. Győződjön meg arról, hogy a megfelelő alkalmazáshoz, és cserélje le *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* az az előző szakaszban kimásolt objektumazonosító.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
@@ -117,23 +120,25 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 
 2. Hozzon létre egy üres alkalmazás-objektumot a kívánt módosításokat, győződjön meg arról, hogy tartsa. Ez a változó tárolja a frissíteni kívánt értékeket. Semmi nem jön létre ebben a lépésben.
 
-    ```
+    ```powershell
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
 3. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a `https://sharepoint-iddemo.msappproxy.net/` való `https://sharepoint-iddemo.msappproxy.net/hybrid/`,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
 
-    ```
+    ```powershell
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
+
 4. A frissítés, amely a másolt GUID (ObjectID) használatával győződjön meg arról, "1. lépés: Az ObjectId azonosítóját, az alkalmazás található."
 
-    ```
+    ```powershell
     Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
+
 5. Győződjön meg arról, hogy sikeres volt-e a módosítást, indítsa újra az alkalmazást.
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 

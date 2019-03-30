@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 1b2790a4673fd162deca445b4300850fc0e3a087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83ae58e4a86d3bc2ffb2197f48d2c641790e8524
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851982"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648282"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Az Azure Machine Learning Studio-munkaterület használata az Azure Resource Manager üzembe helyezése
 
@@ -25,10 +25,11 @@ Az egy Azure Resource Manager központi telepítési sablont, így Ön egy skál
 Azt fogja hozzon létre egy Azure-erőforráscsoportot, majd egy új Azure storage-fiókot és a egy új Azure Machine Learning Studio-munkaterület használatával a Resource Manager-sablon üzembe helyezése. Az üzembe helyezés befejezése után a rendszer (az elsődleges kulcsot, a munkaterület azonosítója és az URL-cím a munkaterületre) létrehozott munkaterületeket fontos információinak kinyomtatásához.
 
 ### <a name="create-an-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
+
 A Machine Learning-munkaterület szükséges Azure storage-fiók, hozzá kell kapcsolni az adatkészlet tárolásához.
 Az alábbi sablont használ, az az erőforráscsoport létrehozásához a tárfiók nevét és a munkaterület nevét.  Azt is használ a tárfiók nevének tulajdonságként a munkaterület létrehozásakor.
 
-```
+```json
 {
     "contentVersion": "1.0.0.0",
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -76,10 +77,11 @@ Az alábbi sablont használ, az az erőforráscsoport létrehozásához a tárfi
 Ez a sablon mentése c:\temp\ mlworkspace.json fájlt.
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>Az erőforráscsoport a sablon üzembe helyezése
+
 * A PowerShell megnyitása
 * Az Azure Resource Manager és az Azure Service Management-modulok telepítése
 
-```
+```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
 Install-Module AzureRM -Scope CurrentUser
 
@@ -91,7 +93,7 @@ Install-Module Azure -Scope CurrentUser
 
 * Azure-beli hitelesítésre
 
-```
+```powershell
 # Authenticate (enter your credentials in the pop-up window)
 Connect-AzureRmAccount
 ```
@@ -103,7 +105,7 @@ Most, hogy már az Azure-ba, hogy hozhat létre az erőforráscsoportot.
 
 * Hozzon létre egy erőforráscsoportot
 
-```
+```powershell
 $rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
@@ -115,27 +117,28 @@ Az erőforráscsoport nevét használják a sablont létrehozni a tárfiók nev�
 
 * Használja az erőforráscsoport-telepítés, üzembe helyezése egy új Machine Learning-munkaterületet.
 
-```
+```powershell
 # Create a Resource Group, TemplateFile is the location of the JSON template.
 $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
 Az üzembe helyezés befejezése után az üzembe helyezett munkaterület tulajdonságai magától értetődő. Ha például is elérheti az elsődleges kulcs Token.
 
-```
+```powershell
 # Access Azure Machine Learning studio Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
 Egy másik meglévő munkaterület-jogkivonatok módja az Invoke-AzureRmResourceAction parancs használata. Például listázhatja az összes munkaterületet az elsődleges és másodlagos jogkivonatokat.
 
-```
+```powershell
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 A munkaterület kiépítése, után számos Azure Machine Learning Studio feladatokat is automatizálhatja a [PowerShell-modul az Azure Machine Learning Studio](https://aka.ms/amlps).
 
 ## <a name="next-steps"></a>További lépések
+
 * Tudjon meg többet [Azure Resource Manager-sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md).
 * Tekintse meg a [Azure-Gyorssablonok-adattárában](https://github.com/Azure/azure-quickstart-templates).
 * Ebben a videóban kapcsolatos [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).

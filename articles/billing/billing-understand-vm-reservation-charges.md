@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: e2ad086e767afc47fe72b52f934cb3bfc7cc146e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8994041d525186dd55bb4f4475f7e68036454f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849805"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649829"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt a virtuális gépek
 
@@ -61,15 +61,15 @@ Vásárlásakor a fenntartott VM-példány, ha **optimalizált**: **példány m�
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Mik azok a foglalást az Azure-hoz?](billing-save-compute-costs-reservations.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
-- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
+- [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [CSP-előfizetésekben foglalás használati adatai](https://docs.microsoft.com/partner-center/azure-reservations)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

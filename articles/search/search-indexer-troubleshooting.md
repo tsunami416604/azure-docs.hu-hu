@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 5ce27f16268c7a640b15fb0e95aed019b186e389
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307904"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652416"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Az Azure Search gyakori indexelő hibáinak elhárítása
 
 Az indexelők számos olyan problémák futtathatja, ha az adatok indexelése az Azure Search szolgáltatásba. Hiba a fő kategóriák a következők:
 
-* [Egy adatforráshoz való kapcsolódáshoz](#Data-Source-Connection-Errors)
-* [A dokumentum-feldolgozás](#Document-Processing-Errors)
-* [A dokumentum Adatbetöltési egy indexbe](#Index-Errors)
+* [Egy adatforráshoz való kapcsolódáshoz](#data-source-connection-errors)
+* [A dokumentum-feldolgozás](#document-processing-errors)
+* [A dokumentum Adatbetöltési egy indexbe](#index-errors)
 
 ## <a name="data-source-connection-errors"></a>Adatok forrás csatlakozási hibák
 

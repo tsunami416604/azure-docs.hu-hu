@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti a Service Fabric Fault Analysis Service hogy hi
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425238"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662353"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A Fault Analysis Service bemutatása
 A Fault Analysis Service tesztelése a Microsoft Azure Service Fabric beépített szolgáltatás lett tervezve. A Fault Analysis Service is idéz elő a jelentéssel bíró hibák és a teljes teszt forgatókönyvek az alkalmazások futtatásához. Ezek a hibák és a forgatókönyvek gyakorolja, és ellenőrizze a számos állapotok és átmenetek, amely egy szolgáltatás teljes élettartamuk, az összes olyan ellenőrzött, megbízható és konzisztens módon fog tapasztalni.
@@ -46,9 +46,9 @@ Tartalék művelet vagy tesztkörnyezetben a forgatókönyv elindításakor a ta
 ## <a name="testing-distributed-systems"></a>Az elosztott rendszerek tesztelése
 A feladat írása, és jelentősen egyszerűbb elosztott méretezhető alkalmazások kezelése a Service Fabric gondoskodik. A Fault Analysis Service lehetővé teszi egy hasonló módon egyszerűbb elosztott alkalmazás tesztelése. Nincsenek három fő problémák tesztelése során kell megoldani:
 
-1. Valós forgatókönyvekben fellépő hibákat szimuláló/generálása: egyik fontos szempontja a Service Fabric, hogy lehetővé teszi az elosztott alkalmazások számára a különféle hibák helyreállításához. Azonban, hogy ezek a hibák helyreállíthatók-e az alkalmazás teszteléséhez kell egy mechanizmust, ezeket egy kontrollált tesztkörnyezetben végezze a való életből vett hibák szimulálása/létrehozni.
-1. Korrelált hibák képességét: alapvető hibák a rendszeren, például hálózati hibák és a gép rendszerhibák esetén is egyszerűen külön-külön előállításához. Nem triviális generálása jelentős számos forgatókönyv esetében, amely akkor fordulhat elő a való világból interakciókat ezeket az egyes hibák miatt.
-1. Egységes felhasználói élményt között különböző szintjeit fejlesztéséhez és üzembe helyezéséhez: nincsenek tartalék injektálási számos rendszer, amelyeket a különböző típusú hibák. Azonban a felhasználói felület az ezek mindegyikét, gyenge, beépített fejlesztői forgatókönyveket, a ugyanazokat a teszteket futó nagy tesztelési környezetekben, éles környezetben tesztek az áthelyezése esetén.
+1. Szimuláló/létrehozásakor fellépő hibákat a valós életből vett példák: A fontos szempontja a Service Fabric egyik célja, hogy lehetővé teszi az elosztott alkalmazások számára a különféle hibák helyreállításához. Azonban, hogy ezek a hibák helyreállíthatók-e az alkalmazás teszteléséhez kell egy mechanizmust, ezeket egy kontrollált tesztkörnyezetben végezze a való életből vett hibák szimulálása/létrehozni.
+1. Korrelált hibák képességét: A rendszer, például hálózati hibák és a gép hibák, alapvető hibák is egyszerűen külön-külön előállításához. Nem triviális generálása jelentős számos forgatókönyv esetében, amely akkor fordulhat elő a való világból interakciókat ezeket az egyes hibák miatt.
+1. Egységes felhasználói élményt között különböző szintjeit fejlesztéséhez és üzembe helyezéséhez: Nincsenek tartalék injektálási számos rendszer, amelyeket a különböző típusú hibák. Azonban a felhasználói felület az ezek mindegyikét, gyenge, beépített fejlesztői forgatókönyveket, a ugyanazokat a teszteket futó nagy tesztelési környezetekben, éles környezetben tesztek az áthelyezése esetén.
 
 Bár vannak e problémák, a rendszer, amely megegyezik a szükséges garanciákkal – egészen a beépített fejlesztői környezet tesztelése az éles fürtök számos mechanizmusok hiányzik. A Fault Analysis Service a fejlesztőket az alkalmazás tesztelése a saját üzleti logikája összpontosít. A Fault Analysis Service biztosítja az összes szükséges a szolgáltatás az alapjául szolgáló elosztott rendszer közötti teszteléséhez.
 

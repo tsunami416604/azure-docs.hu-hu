@@ -3,8 +3,8 @@ title: Az Azure Service Fabric állapotalapú szolgáltatások egységtesztelés
 description: Ismerje meg a fogalmakkal és módszerekkel tesztelése a Service Fabric Stateful Services egység.
 services: service-fabric
 documentationcenter: .net
-author: charleszipp
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
-ms.author: ryanwi
-ms.openlocfilehash: c2d98316b81b3d908ebbe6147fe40f231e94c142
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: atsenthi
+ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703682"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662567"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>A Service Fabric állapotalapú szolgáltatások egységtesztelés
 
@@ -51,8 +51,8 @@ Emellett több példánnyal rendelkező lehetővé teszi a vizsgálatok váltás
 A State Manager kell kezelni, mint egy távoli erőforrás és ezért utánzott. Ha az állapot manager utánzási, kell lennie nyomon követésére, mi a állapot-kezelőhöz, mentett, olvassa el és ellenőrzése néhány alapul szolgáló memórián belüli tároló. Ennek elérése egy egyszerű módja, hogy minden a Reliable Collections típusú utánzatként funkcionáló példányának létrehozása. Ezek mocks belül adattípusú, amely szorosan illeszkedjen az adott gyűjteményen végrehajtott műveletek használata. Az alábbiakban néhány javasolt adattípusok, az egyes megbízható gyűjtemények
 
 - IReliableDictionary < TKey, TValue >-< TKey, TValue > System.Collections.Concurrent.ConcurrentDictionary >
-- IReliableQueue<T> System.Collections.Generic.Queue -><T>
-- IReliableConcurrentQueue<T> System.Collections.Concurrent.ConcurrentQueue -><T>
+- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
+- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Sok állapot Manager példányok, egyetlen tárolási
 Ahogy korábban említettük, a State Manager és a Reliable Collections távoli erőforrásként kell kezelni. Ezért ezeket az erőforrásokat kell, és az egységteszteket belül fog kell mocked. Azonban amikor fut egy állapotalapú szolgáltatás több példánya lesz kihívást egyes utánzott állapotkezelője szinkronban tartásához különböző állapot-nyilvántartó szolgáltatási példányai között. Az állapotalapú szolgáltatás fut a fürtön, amikor a Service Fabric gondoskodik, hogy az összes másodlagos replikát állapotkezelője az elsődleges replika konzisztens. Ezért a tesztek kell úgy viselkedik, hogy azok szimulálhatja a szerepkör-módosításokat.

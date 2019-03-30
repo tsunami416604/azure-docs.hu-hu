@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001096"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651543"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -48,10 +48,10 @@ URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, ha a S
 
 **URL-cím** | **Részletek**  
 --- | ---
-*.blob.core.windows.net | Szükséges, hogy az adatokat a virtuális gépről is írható a gyorsítótárfiók a forrásrégióban.
+*.blob.core.windows.net | Szükséges, hogy az adatokat a virtuális gépről is írható a gyorsítótárfiók a forrásrégióban. Ha tudja, hogy a gyorsítótár összes storage-fiókok a virtuális gépek számára, akkor engedélyezési lista specifikus tárolási fiók URL-címek (például: cache1.blob.core.windows.net és cache2.blob.core.windows.net) helyett *. blob.core.windows.net
 login.microsoftonline.com | A Site Recovery szolgáltatás URL-címeinek a hitelesítési és engedélyezési szükséges.
-*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja fordulhat elő, a virtuális gépről.
-*.servicebus.windows.net | Szükséges, hogy a virtuális Gépet a Site Recovery monitorozási és diagnosztikai adatok beírhatók.
+*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja fordulhat elő, a virtuális gépről. A megfelelő "Site Recovery IP-cím" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
+*.servicebus.windows.net | Szükséges, hogy a virtuális Gépet a Site Recovery monitorozási és diagnosztikai adatok beírhatók. A megfelelő "Site Recovery figyelési IP-címet" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 

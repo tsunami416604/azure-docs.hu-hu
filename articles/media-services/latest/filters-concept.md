@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 78d6ac0a4ecde8d60a0ef3aa22515c7ce1ea4e07
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 61b877c322fcd58472990c328beea2e309502bce
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309537"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652348"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
 
@@ -58,7 +58,7 @@ A következő tulajdonságok használatával írja le a szűrőket.
 |Name (Név)|Leírás|
 |---|---|
 |firstQuality|Az első minőségi sávszélességű a szűrő.|
-|presentationTimeRange|A bemutató időtartományban. Ez a tulajdonság jegyzékfájl kezdő és záró pontot bemutató időszak hossza és az élő kezdőpozíciója szűréshez használható. <br/>További információkért lásd: [PresentationTimeRange](#PresentationTimeRange).|
+|presentationTimeRange|A bemutató időtartományban. Ez a tulajdonság jegyzékfájl kezdő és záró pontot bemutató időszak hossza és az élő kezdőpozíciója szűréshez használható. <br/>További információkért lásd: [PresentationTimeRange](#presentationtimerange).|
 |nyomon követi|A számok kiválasztási feltételeket. További információkért lásd: [nyomon követi](#tracks)|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange

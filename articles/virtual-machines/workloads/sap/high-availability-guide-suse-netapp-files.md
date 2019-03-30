@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 0d2edee8f4df6a2328ec99cc4d570687c4342c8a
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540992"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662370"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -58,7 +58,7 @@ ms.locfileid: "58540992"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlok](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlokat (a nyilvános előzetes verzió)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
 A példa konfiguráció, telepítési parancsokat stb., a ASCS példány szám 02 00, a SSZON példányszámának 01, az elsődleges alkalmazáspéldány (szolgáltatói CÍMEI) pedig az alkalmazáspéldány (AAS) 03. Az SAP-rendszer azonosító QAS szolgál. 
 
 Ez a cikk azt ismerteti, hogyan érhető el magas rendelkezésre állás az SAP NetWeaver alkalmazást az Azure Files-NetApp. Az adatbázis réteg nem ez a cikk részletesen ismertetett.

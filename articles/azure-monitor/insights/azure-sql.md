@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Analytics megoldás a Log Analytics Rendszereben |} A Microsoft Docs
+title: Az Azure SQL Analytics megoldás az Azure Monitor |} A Microsoft Docs
 description: Az Azure SQL Analytics megoldás segítségével az Azure SQL-adatbázisok kezelése
 services: log-analytics
 ms.service: log-analytics
@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170224"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629965"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -23,7 +23,7 @@ ms.locfileid: "58170224"
 
 Az Azure SQL Analytics egy speciális felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 
-A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatokat az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterületet a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
+A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatait az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterület az Azure diagnosztikai metrikák az Azure Monitor nézeteivel együtt használja. Az Azure Monitor segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
 
 A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és a jellemző használati forgatókönyvei: a beágyazott videót:
 
@@ -32,29 +32,18 @@ A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és 
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamként diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok figyelése: egyetlen, összevont és felügyelt példányok adatbázisai. A megoldás nem használja az ügynökök a Log Analytics szolgáltatáshoz való csatlakozáshoz, mivel a megoldás nem támogatja a helyszíni SQL Server tárolt vagy a virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
+Az Azure SQL Analytics csak egy felhőalapú megoldást támogató adatfolyamként diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok figyelése: egyetlen, összevont és felügyelt példányok adatbázisai. A megoldás nem használja az ügynökök kapcsolódni az Azure Monitor, mivel a megoldás nem támogatja a helyszíni SQL Server tárolt vagy a virtuális gépek figyelése, az alábbi tábla a kompatibilitási.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Azure Diagnostics](../platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
-| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
+| [Azure Diagnostics](../platform/collect-azure-metrics-logs.md) | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure által az Azure Monitor naplóira érkeznek. |
+| [Azure Storage-fiók](../platform/collect-azure-metrics-logs.md) | Nem | Az Azure Monitor egy storage-fiókból az adatok nem olvashatók. |
 | [Windows-ügynökök](../platform/agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
 | [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
-| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Nem | Közvetlen kapcsolat legyen az Operations Manager-ügynök a Log Analytics szolgáltatáshoz a megoldás nem használja. |
+| [System Center Operations Manager felügyeleti csoport](../platform/om-agents.md) | Nem | A megoldás nem használja az Azure monitornak közvetlen kapcsolat legyen az Operations Manager-ügynök. |
 
 ## <a name="configuration"></a>Konfiguráció
-
-Hajtsa végre az alábbi lépéseket az Azure SQL Analytics megoldás hozzáadása az Azure-irányítópulton.
-
-1. Az Azure SQL Analytics megoldás hozzáadni a munkaterülethez [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
-2. Az Azure Portalon kattintson a **+ erőforrás létrehozása**, majd keresse meg az **Azure SQL Analytics**.  
-    ![Felügyelet és kezelés](./media/azure-sql/monitoring-management.png)
-3. Válassza ki **Azure SQL Analytics (előzetes verzió)** a listából
-4. Az a **Azure SQL Analytics (előzetes verzió)** területen kattintson a **létrehozás**.  
-    ![Létrehozás](./media/azure-sql/portal-create.png)
-5. Az a **új megoldás létrehozása** területen létrehozhat új, vagy válasszon ki egy meglévő munkaterületet, adja hozzá a megoldást, és kattintson a kívánt **létrehozás**.
-
-    ![munkaterület hozzáadása](./media/azure-sql/add-to-workspace.png)
+Az ismertetett folyamat használata [hozzáadása az Azure Monitor megoldások kövesse a megoldástárban](../../azure-monitor/insights/solutions.md) hozzáadása az Azure SQL Analytics (előzetes verzió) megoldás a Log Analytics-munkaterületre.
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Az Azure SQL Database, a rugalmas készletek és a felügyelt példányok stream diagnostics telemetriai adatainak konfigurálása
 
@@ -80,9 +69,9 @@ Az Azure SQL Database-adatbázisok és rugalmas készletek Azure SQL Analytics f
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Az Azure SQL Analytics-adatok megtekintése
 
-Az irányítópult programban különböző szempontok szerint keresztül figyelt összes adatbázis áttekintését tartalmazza. A programban különböző szempontok szerint működjön engedélyeznie kell megfelelő metrikákat vagy naplókat az SQL-erőforrások Azure Log Analytics-munkaterületre is streamelhetők.
+Az irányítópult programban különböző szempontok szerint keresztül figyelt összes adatbázis áttekintését tartalmazza. A programban különböző szempontok szerint működjön engedélyeznie kell megfelelő metrikákat vagy naplókat az SQL-erőforrások is streamelhetők a Log Analytics-munkaterülethez.
 
-Vegye figyelembe, hogy néhány metrikákat vagy naplókat az Azure Log Analytics nem streameli, ha a csempéket a megoldásban nincsenek feltöltve adattal figyelési információkat.
+Vegye figyelembe, hogy néhány metrikákat vagy naplókat adatfolyamként történő küldése az Azure Monitor szolgáltatásba, ha a csempéket a megoldásban nincsenek feltöltve adattal figyelési információkat.
 
 ### <a name="azure-sql-database-and-elastic-pool-view"></a>Az Azure SQL Database és a rugalmas készlet megtekintése
 
@@ -302,6 +291,6 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [Naplókeresések](../log-query/log-query-overview.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
+- Használat [lekérdezések naplózását](../log-query/log-query-overview.md) az Azure monitorban az Azure SQL részletes adatainak megtekintéséhez.
 - [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) Azure SQL-adatainak megjelenítése.
 - [Riasztások létrehozása](../platform/alerts-overview.md) amikor adott Azure SQL-események történnek.

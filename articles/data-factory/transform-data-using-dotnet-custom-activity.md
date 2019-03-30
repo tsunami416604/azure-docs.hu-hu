@@ -11,14 +11,15 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855869"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652093"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-use-custom-activities.md)
 > * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
@@ -39,6 +40,7 @@ Lásd az alábbi cikkeket, ha most ismerkedik az Azure Batch szolgáltatás:
 * [Új AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmaggal hozzon létre egy Azure Batch-készletben.
 
 ## <a name="azure-batch-linked-service"></a>Az Azure Batch-beli társított szolgáltatás
+
 A következő JSON egy minta Azure Batch társított szolgáltatás határozza meg. További információkért lásd: [számítási környezetek Azure Data Factory által támogatott](compute-linked-services.md)
 
 ```json
@@ -114,7 +116,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 &#42;A Tulajdonságok `resourceLinkedService` és `folderPath` kell adható meg egyszerre, vagy mindkettő ki lehet hagyni.
 
 > [!NOTE]
-> Társított szolgáltatások, az egyéni tevékenység referenceObjects átadott, hogy át az Azure Key Vault ajánlott biztonsági eljárás engedélyezve társított szolgáltatás (mivel az nem tartalmaz minden olyan biztonságos karakterlánc) és a fetch a hitelesítő adatok használatával közvetlenül a kulcs titkos neve Tár a kódból. Egy példa annak [Itt](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , hogy a hivatkozások AKV társított szolgáltatás engedélyezve a hitelesítő adatokat kéri le a Key vaultból, és ezután hozzáfér a tárolót a kódban.  
+> Társított szolgáltatások, az egyéni tevékenység referenceObjects átadott, hogy át az Azure Key Vault ajánlott biztonsági eljárás engedélyezve társított szolgáltatás (mivel az nem tartalmaz minden olyan biztonságos karakterlánc) és a fetch a hitelesítő adatok használatával közvetlenül a kulcs titkos neve Tár a kódból. Egy példa annak [Itt](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , hogy a hivatkozások AKV társított szolgáltatás engedélyezve a hitelesítő adatokat kéri le a Key vaultból, és ezután hozzáfér a tárolót a kódban.
 
 ## <a name="custom-activity-permissions"></a>Egyéni tevékenység engedélyek
 
@@ -147,7 +149,6 @@ Az egyéni tevékenység parancsot közvetlenül hajthat végre. Az alábbi pél
 ## <a name="passing-objects-and-properties"></a>Objektumok és tulajdonságok átadása
 
 Ez a példa mutatja be, hogyan használhatók a referenceObjects és extendedProperties átadni az adat-előállító objektumok és a felhasználó által definiált tulajdonságok az egyéni alkalmazás.
-
 
 ```json
 {
@@ -191,15 +192,15 @@ Ez a példa mutatja be, hogyan használhatók a referenceObjects és extendedPro
 
 Amikor a tevékenység végrehajtása, referenceObjects és extendedProperties következő fájlok tárolják a SampleApp.exe végrehajtási mappájában telepített:
 
-- activity.json
+- `activity.json`
 
   ExtendedProperties és az egyéni tevékenység tulajdonságainak tárolja.
 
-- linkedServices.json
+- `linkedServices.json`
 
   Tárolók társított szolgáltatásokat egy tömbjét referenceObjects tulajdonság definiálva.
 
-- datasets.json
+- `datasets.json`
 
   Tárolók egy tömb, az adatkészletek a referenceObjects tulajdonság definiálva.
 
@@ -232,12 +233,13 @@ namespace SampleApp
 
 A következő PowerShell-paranccsal folyamatfuttatás megkezdése:
 
-```.powershell
+```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
+
 Ha a folyamat fut, a végrehajtás kimenetének a következő parancsokkal ellenőrizheti:
 
-```.powershell
+```powershell
 while ($True) {
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
@@ -265,7 +267,7 @@ $result.Error -join "`r`n"
 
 A **stdout** és **stderr** az egyéni alkalmazás menti, és a **adfjobs** tárolót az Azure Storage társított szolgáltatás létrehozása Azure Batch társított során meghatározott A feladat egy GUID-szolgáltatás. Megtekintheti a részletes elérési Tevékenységfuttatás kimenetében, az alábbi kódrészletben látható módon:
 
-```shell
+```
 Pipeline ' MyCustomActivity' run finished. Result:
 
 ResourceGroupName : resourcegroupname
@@ -295,11 +297,12 @@ Activity Error section:
 "failureType": ""
 "target": "MyCustomActivity"
 ```
+
 Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasználására, beszerezheti a fájl elérési útját a stdout.txt kifejezésben "\@activity('MyCustomActivity').output.outputs [0]".
 
-  > [!IMPORTANT]
-  > - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön.
-  > - A társított szolgáltatások, amelyek a helyi Integration Runtime a bizalmas adatokat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime annak biztosítása érdekében a hitelesítő adatok marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges.
+> [!IMPORTANT]
+> - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön.
+> - A társított szolgáltatások, amelyek a helyi Integration Runtime a bizalmas adatokat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime annak biztosítása érdekében a hitelesítő adatok marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges.
 
 ## <a name="pass-outputs-to-another-activity"></a>Pass egy másik tevékenység kimenete
 
@@ -311,10 +314,10 @@ Bizalmas tulajdonságértékek típusúként megjelölt *SecureString*, ahogyan 
 
 ```json
 "extendedProperties": {
-    "connectionString": {
-        "type": "SecureString",
-        "value": "aSampleSecureString"
-    }
+  "connectionString": {
+    "type": "SecureString",
+    "value": "aSampleSecureString"
+  }
 }
 ```
 
@@ -334,7 +337,6 @@ A Data Factory V2 egyéni tevékenység-ben bevezetett változások az egyéni k
 
 A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és eltérései a Data Factory 1. verzió (egyéni) DotNet tevékenységi:
 
-
 |Különbségek      | Egyéni tevékenység      | verzió 1 (egyéni) DotNet tevékenységi      |
 | ---- | ---- | ---- |
 |Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .NET-DLL-fájl végrehajtása      |
@@ -344,7 +346,6 @@ A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és
 |A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |
 |Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.NET SDK-val (a .NET 4.5.2-es. képkocka) keresztül      |
 |Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó dll .NET-ben      |
-
 
 Ha rendelkezik meglévő .NET-kódot írni a verziók 1 (egyéni) DotNet tevékenységi, módosítania a kódot, hogy az egyéni tevékenység az aktuális verzióval működjön. A kód frissítése a következő általános irányelveket:
 
@@ -358,6 +359,7 @@ Ha rendelkezik meglévő .NET-kódot írni a verziók 1 (egyéni) DotNet tevéke
 Teljes minta, hogyan a teljes körű DLL-t és a folyamat minta ismertetett az adat-előállító verziója 1. cikk [egyéni tevékenységek használata Azure Data Factory-folyamatot](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory egyéni tevékenységként, Lásd:[ Data Factory egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatikus skálázás az Azure Batch
+
 Az Azure Batch-készlet is létrehozhat **automatikus skálázási** funkció. Létrehozhat például egy azure batch-készletet 0 dedikált virtuális gépek és az automatikus skálázás képletét a függőben lévő feladatok száma alapján.
 
 A mintául szolgáló képlet itt éri el a következő viselkedés: Amikor először hozza létre a készletet, 1 virtuális gép kezdődik. $PendingTasks metrika határozza meg, hogy a feladatok száma futó + (sorban áll) aktív állapotban. A képlet átlagos száma függőben lévő feladatokat megkeresi az elmúlt 180 másodperc alatt, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy TargetDedicated soha nem túllép 25 virtuális gépeket. Tehát új feladatokat az elküldésüket készlet automatikusan nő befejeződött feladatokat, mint a virtuális gépek ingyenes egyenként válnak és az automatikus skálázás zsugorítja ezeken a virtuális gépeken. igény szerinti startingNumberOfVMs és maxNumberofVMs kell beállítani.

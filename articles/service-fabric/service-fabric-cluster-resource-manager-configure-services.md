@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan ismertetik a Service Fabric-szolgáltatás metr
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 55d75bb0bae4bf3feb370b7fdf4d80dc43bdc0ca
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 21fcac62c9335652d0c682a6ac889be82e649464
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736889"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661547"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Fürt resource manager beállításainak megadása a Service Fabric-szolgáltatások
 A Service Fabric-fürt Resource Manager lehetővé teszi, hogy a szükséges megtennie minden vállalkozásnak nevű szolgáltatás meghatározó szabályok részletesen szabályozhatja. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhat jelentésre, beleértve az mennyire fontos vannak az adott szolgáltatásra szeretné metrikák készletét. Három különböző feladatokra szolgáltatások konfigurálása felszámolja:

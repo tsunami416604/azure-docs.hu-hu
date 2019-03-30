@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – a munkamenetek és eszközök az Azure térbeli horgonyok és a egy Azure Cosmos DB-háttérrendszer megosztása |} A Microsoft Docs
+title: Oktatóanyag – megosztás Azure térbeli horgonyok munkamenetek és az eszközök között egy Azure Cosmos DB-háttéralkalmazáshoz |} A Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan Azure térbeli horgonyok azonosítók megosztása egy háttér-Service-szel és az Azure Cosmos DB a Unity Android vagy iOS-eszközök.
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 17e9d19b755c1d3ac455d9fef8406e00de3a376d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286397"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628943"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Munkamenetek és eszközök az Azure térbeli horgonyok és a egy Azure Cosmos DB-háttérrendszer megosztása
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Megosztás Azure térbeli horgonyok munkamenetek és az eszközök között egy Azure Cosmos DB-háttéralkalmazáshoz
 
-Ebben az oktatóanyagban, megtudhatja, hogyan használandó [Azure térbeli horgonyok](../overview.md) való:
-
-- Horgonyokat létrehozni egy munkamenet során, és keresse meg azokat a munkamenetben egy másik, ugyanarra az eszközre, illetve egy másikat. A második munkamenet Előfordulhat például, egy másik napon.
-- Létrehozni, amely ugyanazon a helyen, és egyszerre több eszközön is elhelyezhetők.
+Ebben az oktatóanyagban, megtudhatja, hogyan használandó [Azure térbeli horgonyok](../overview.md) horgonyokat létrehozni egy munkamenet során, és keresse meg azokat a munkamenetben egy másik, ugyanarra az eszközre, illetve egy másikat. A második munkamenet Előfordulhat például, egy másik napon. Ezek azonos kapcsolati alapokat is ugyanazon a helyen, és egyszerre több eszközön található.
 
 ![GIF szemléltető objektum adatmegőrzés](./media/persistence.gif)
 

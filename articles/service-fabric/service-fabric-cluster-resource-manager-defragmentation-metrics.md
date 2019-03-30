@@ -4,7 +4,7 @@ description: Töredezettségmentesítési használatával, vagy a Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6c15526169a984ffdaee826fec6ac21fc42647e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086785"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661650"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Lemeztöredezettség-mentesítés metrikái és betöltése a Service Fabricben
 A Service Fabric fürt Resource Manager alapértelmezett stratégiát terhelési mérőszámok a fürt kezelésére szolgáló, hogy a terhelés. Annak biztosítása, hogy a csomópontok egyenletesen felhasználtuk elkerülhető a gyakran és ritkán használt kritikus pontok elkerülése érdekében, hogy a versengés és az elpazarolt erőforrások mennyisége is. Terjesztése a számítási feladatokat a fürt akkor is a legbiztonságosabb fennmaradó hibák, mivel biztosítja, hogy a hiba nem használ egy adott számítási feladatok nagy részét meg tekintetében. 

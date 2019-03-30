@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 43df80e060ff698537f7fd65075006e6dfffe6c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117149"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665950"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: A webes alkalmazás egyéni tartomány DNS-rekordok létrehozása 
 
@@ -173,7 +173,7 @@ set-AzWebApp `
 Nyissa meg valamilyen böngészőben a `http://www.<your domainname>` és a `http://<you domain name>` webhelyet.
 
 > [!NOTE]
-> Ügyeljen rá, hogy az URL-címből ne maradjon le a `http://` előtag, különben a böngésző esetleg maga javasol majd egy URL-címet.
+> Győződjön meg arról, hogy a `http://` előtag, különben a böngésző próbálja meg megjósolni a egy URL-CÍMÉT, lehetséges, hogy!
 
 Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Példa:
 

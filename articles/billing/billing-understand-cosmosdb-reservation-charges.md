@@ -6,15 +6,15 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: f6549710f90c8d59ed443ab9ae1a302a2d8278d5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899519"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648537"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Miután egy Azure Cosmos DB szolgáltatás számára fenntartott kapacitást vá
 
 Rendszer alkalmazza a foglalási kedvezményt [kiosztott átviteli sebesség](../cosmos-db/request-units.md) tekintetében kérelemegység / másodperc (RU/s) a óra – óra alapon. Más Cosmos DB-erőforrások, amelyek megfelelnek a Foglalás attribútumok automatikusan alkalmazza a teljes órát nem futtató Azure Cosmos DB-erőforrások, a foglalási kedvezményt. Azure Cosmos DB-erőforrásokat, amelyek egy időben futnak a kedvezményeket is alkalmazhat. Ha nem rendelkezik, amely megfelel a Foglalás attribútumok vagy teljes órát futtató Cosmos DB-erőforrásokat, a teljes előnyeit, a foglalási kedvezményt az adott órában nem kap.
 
-A kedvezmény számítógépen rétegzett. Magasabb kérelemegységgel foglalások nagyobb kedvezmények adja meg. 
+A kedvezmény számítógépen rétegzett. Magasabb kérelemegységgel foglalások nagyobb kedvezmények adja meg.
 
 A foglalásvásárlás kedvezmények vonatkoznak egyenértékű, igény szerinti regionális díjszabás aránya az összes régióban. A foglalási kedvezményt arányok minden régióban, tekintse meg a [régiónként a foglalási kedvezményt](#reservation-discount-per-region) című szakaszát.
 
@@ -71,15 +71,15 @@ Azure Cosmos DB átviteli költségek óra órán keresztül alkalmazza a foglal
 Vegye figyelembe a foglalást az alábbi követelményeket:
 
 * Átviteli sebességgel: 50 000 RU/s  
-* A régióban használják: 2 
+* A régióban használják: 2
 
-Ebben az esetben az összes igény szerinti szolgáltatások díjait számlán 500 mennyiség 100 RU/s mérő e két régióban vannak. A teljes RU/s használat 100 000 óránként. 
+Ebben az esetben az összes igény szerinti szolgáltatások díjait számlán 500 mennyiség 100 RU/s mérő e két régióban vannak. A teljes RU/s használat 100 000 óránként.
 
 **1. forgatókönyv**
 
 Tegyük fel, hogy módosítania kell az Azure Cosmos DB központi telepítések, az USA északi középső régiója és USA nyugati régióban. Minden egyes régió 50 000 RU/s átviteli sebesség használatalapú rendelkezik. A foglalásvásárlás 100 000 RU/s teljesen lenne elosztása az igény szerinti szolgáltatások díjait számlán.
 
-A kedvezményt, amely lefed egy foglalást számítja ki, hogy: átviteli fogyasztás * reservation_discount_ratio_for_that_region. A foglalási kedvezményt arány az USA északi középső régiója és USA nyugati régió esetében az 1. Így az összes kedvezményes RU/s 100 000. Ez az érték számítja ki, hogy: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. Nem kell fizetnie a további díjakat a normál használatalapú díjakat. 
+A kedvezményt, amely lefed egy foglalást számítja ki, hogy: átviteli fogyasztás * reservation_discount_ratio_for_that_region. A foglalási kedvezményt arány az USA északi középső régiója és USA nyugati régió esetében az 1. Így az összes kedvezményes RU/s 100 000. Ez az érték számítja ki, hogy: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. Nem kell fizetnie a további díjakat a normál használatalapú díjakat.
 
 |Fogyasztásmérő leírása | Régió |Átviteli sebesség fogyasztás (RU/s) |RU/s alkalmazza a foglalási kedvezményt |
 |---------|---------|---------|---------|
@@ -97,25 +97,24 @@ Tegyük fel, hogy módosítania kell az Azure Cosmos DB központi telepítések,
 
 Ausztrália 2. középső régiója régióban 50 000 egység használati 75 000 RU/s számlázható használat (vagy normalizált használati) felel meg. Ez az érték számítja ki, hogy: átviteli fogyasztás * reservation_discount_ratio_for_that_region. A számítási 75 000 RU/s számlázható vagy normalizált használat eredménye. Ez az érték számítja ki, hogy: 50 000 * 1.5-ös = 75 000 RU/s.
 
-A foglalásvásárlás 100 000 RU/s lenne eltolás Ausztrália 2. középső régiója az 75 000 RU/s. 25 000 RU/s, hagyja a Dél-Franciaország régió. A maradék 25 000 RU/s, az a foglalási kedvezményt 15,384 RU/s vonatkozik a Dél-Franciaország régió. A kedvezmény értékét számítja ki, hogy: 25 000 / 1.625 = 15,384 RU/s. A fennmaradó 34,616 RU/s a Dél-Franciaország régió a normál használatalapú díjszabás szerint számoljuk el. 
+A foglalásvásárlás 100 000 RU/s lenne eltolás Ausztrália 2. középső régiója az 75 000 RU/s. 25 000 RU/s, hagyja a Dél-Franciaország régió. A maradék 25 000 RU/s, az a foglalási kedvezményt 15,384 RU/s vonatkozik a Dél-Franciaország régió. A kedvezmény értékét számítja ki, hogy: 25 000 / 1.625 = 15,384 RU/s. A fennmaradó 34,616 RU/s a Dél-Franciaország régió a normál használatalapú díjszabás szerint számoljuk el.
 
 Az Azure számlázási rendszer fog hozzárendelni a Foglalás számlázási kedvezményei az első példányhoz, amelyek feldolgozása, és, amely megfelel a Foglalás konfigurációját. Ha például Ausztrália 2. középső régiója ebben az esetben.
 
 Ismertetése és használati jelentések számlázási megtekintheti az alkalmazást az Azure foglalások: [ismertetése Azure foglalás használatának](../billing/billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="next-steps"></a>További lépések
-
-Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-
-* [Mik az Azure-foglalásokat?](../billing/billing-save-compute-costs-reservations.md)  
-* [Fizessen elő az Azure Cosmos DB-erőforrásokat, hogy az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)  
-* [Az Azure Reservations kezelése](../billing/billing-manage-reserved-vm-instance.md)  
-* [A használatalapú fizetéses előfizetést foglalás használati adatai](../billing/billing-understand-reserved-instance-usage.md)  
-* [A nagyvállalati beléptetés foglalás használati adatai](../billing/billing-understand-reserved-instance-usage-ea.md)  
-* [CSP-előfizetésekben foglalás használati adatai](https://docs.microsoft.com/partner-center/azure-reservations)
-
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
+## <a name="next-steps"></a>További lépések
+
+Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+* [Mik azok a foglalást az Azure-hoz](../billing/billing-save-compute-costs-reservations.md)  
+* [Fizessen elő az Azure Cosmos DB-erőforrásokat, hogy az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)  
+* [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)  
+* [Azure-foglalások kezelése](../billing/billing-manage-reserved-vm-instance.md)  
+* [A használatalapú fizetéses előfizetést foglalás használati adatai](../billing/billing-understand-reserved-instance-usage.md)  
+* [A nagyvállalati beléptetés foglalás használati adatai](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [CSP-előfizetésekben foglalás használati adatai](https://docs.microsoft.com/partner-center/azure-reservations)

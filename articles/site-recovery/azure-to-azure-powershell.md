@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869411"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652076"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
 
@@ -163,7 +163,7 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 
 A fabric objektum a tároló egy Azure-régiót jelöli. Az elsődleges fabric objektumot képviselő tartozó virtuális gépek védelméről a tároló az Azure-régióban jön létre. A példában ez a cikk a védett virtuális gép van, az USA keleti régiójában.
 
-- Régiónként csak egy hálóhoz objektum lehet létrehozni. 
+- Régiónként csak egy hálóhoz objektum lehet létrehozni.
 - Ha korábban engedélyezte az Azure Portal virtuális gép Site Recovery-replikációja, a Site Recovery automatikusan létrehoz egy fabric objektumot. A fabric objektum létezik, régió, ha nem hozható létre egy újat.
 
 
@@ -588,7 +588,22 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
+## <a name="reprotect-and-failback-to-source-region"></a>Védelem-újrabeállítást és a feladat-visszavétel forrásrégió
+
 A feladatátvétel után a amikor elkészült, lépjen vissza az eredeti régióban, az Update-AzureRmRecoveryServicesAsrProtectionDirection parancsmag segítségével replikációval védett elem visszirányú replikálás indítása.
+
+```azurepowershell
+#Create Cache storage account for replication logs in the primary region
+$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+```
+
+```azurepowershell
+#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+-ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+```
+
+Ismételt védelem befejezése után a feladatátvételi fordított irányban (USA nyugati RÉGIÓJA, USA keleti régiója) és a feladat-visszavétel forrásrégió is kezdeményezhető.
 
 ## <a name="next-steps"></a>További lépések
 Nézet a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) megtudhatja, hogyan hajthat végre egyéb feladatok, például a helyreállítási tervek létrehozása és tesztelése a Powershellen keresztül a helyreállítási terv feladatátvételét.

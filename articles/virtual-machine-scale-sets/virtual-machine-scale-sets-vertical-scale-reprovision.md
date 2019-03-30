@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3821f6a2bad56b46bccbcca8830be09ad1e44c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579750"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648265"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automatikus méretezés a virtuálisgép-méretezési csoportok
 
@@ -98,6 +98,7 @@ Először is szüksége, hozzon létre egy Azure Automation-fiók, amely futtatj
 * [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation függőleges méretezés runbookok importálása az előfizetés
+
 A runbookok szükséges a virtuális gép méretezési csoportjai vertikális skálázása az Azure Automation forgatókönyv-katalógusában a már közzétett. Importálja őket az előfizetés kövesse a cikkben ismertetett lépések:
 
 * [Runbook- és modulkatalógusok az Azure Automationhöz](../automation/automation-runbook-gallery.md)
@@ -111,6 +112,7 @@ A runbookokat, amelyek importálandó jelennek meg. Válassza ki a runbookot, ho
 ![Runbookkatalógus][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a forgatókönyvhöz
+
 Runbookok importálása után hozzáadása egy webhookot a runbookhoz, úgy is elindítható a figyelőről érkező egy virtuálisgép-méretezési csoportot. Ebben a cikkben ismertetett egy webhookot hoz létre a Runbook részletei:
 
 * [Az Azure Automation-webhookok](../automation/automation-webhooks.md)
@@ -121,9 +123,10 @@ Runbookok importálása után hozzáadása egy webhookot a runbookhoz, úgy is e
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporton
+
 Alább egy PowerShell-parancsprogram bemutatja, hogyan riasztás hozzáadása egy virtuálisgép-méretezési csoport beállítása. Tekintse meg a mérőszám a riasztás triggerfuttatáskor aktiválandó nevét a következő cikket: [Gyakori metrikák az Azure Monitor automatikus skálázás](../azure-monitor/platform/autoscale-common-metrics.md).
 
-```
+```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
@@ -160,6 +163,7 @@ Riasztások létrehozásával kapcsolatos további információkért tekintse me
 * [Az Azure platformfüggetlen parancssori figyelő rövid minták](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Összegzés
+
 Ez a cikk bemutatta, egyszerű vertikális méretezési példákat. Ezek építőelemei – Automation-fiók, runbookok, a webhookok, riasztások - az egyéni műveletek egy csoportját, gazdag különféle eseményekre is kapcsolódni.
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/29/2019
+ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454741"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668492"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -48,6 +48,9 @@ A felügyelt példány ötvözi a legjobb funkciókat, Azure SQL Database és SQ
 |Hardver megvásárlása és kezelése <br>Nincs felügyeleti többletterhelést okoz az alapul szolgáló infrastruktúra kezelése <br>Gyors kiépítés és a szolgáltatás méretezése <br>Automatikus javítás és -verzió frissítése <br>Egyéb PaaS data services-integráció |99,99 %-os SLA-t  <br>A beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>A védett adatok [automatizált biztonsági mentések](sql-database-automated-backups.md) <br>Ügyfél konfigurálható biztonsági másolatainak megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági mentések](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz kötött adatbázis-visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyeleti**|
 |Izolált környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egyetlen dedikált számítási és a storage szolgáltatás bérlői) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Az Azure AD-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezésének támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések)</a> (**nyilvános előzetes verzióban**) <br>Megfelelőségi szabványoknak megfelelő ugyanaz, mint az Azure SQL database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) |Automatizálhatja a szolgáltatás üzembe helyezését és skálázás az Azure Resource Manager API <br>Az Azure portal funkciók manuális szolgáltatáshoz kiépítés és méretezés <br>Data Migration Service
+
+> [!IMPORTANT]
+> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter/compliance/complianceofferings) aktuális listájával együtt.
 
 A felügyelt példányok legfontosabb funkcióit az alábbi táblázatban láthatók:
 

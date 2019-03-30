@@ -10,14 +10,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: f64a76fa6063ebc5681b546b53fe9d6ca7bc5037
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400396"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648656"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -77,7 +77,7 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik 
 Resource Manager-sablonok tárolása a helyi gépén, helyett érdemesebb lehet külső helyen tárolja őket. Sablonok verziókövetési adattár (például a GitHub) tárolhatja. Vagy tárolhatja őket az Azure storage-fiók, a közös hozzáférésű a szervezetben.
 
 Egy külső sablon üzembe helyezéséhez használja a **sablon-uri** paraméter. A példában az URI használatával helyezhet üzembe a mintául szolgáló sablont a Githubból.
-   
+
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
@@ -102,7 +102,12 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 
-Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `--rollback-on-error` paramétert a üzembe helyezés parancsba.
+Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja a `--rollback-on-error` paramétert a üzembe helyezés parancsba. Ez a funkció akkor hasznos, ha rendelkezik egy korábbi hibátlan állapotra van az infrastruktúra telepítése és akarja, hogy vissza kell állítani az. Nincsenek figyelmeztetések és korlátozások:
+
+- Az újbóli üzembe helyezés pontosan, ahogy korábban már volt futtatva ugyanazokkal a paraméterekkel futtatja. A paraméterek nem módosítható.
+- A korábbi központi telepítés segítségével futtatja a [teljes mód](./deployment-modes.md#complete-mode). Nem szerepel a korábbi központi telepítés minden erőforrás törlődni, és a minden erőforrás-konfigurációt az előző állapotukba. Győződjön meg arról, hogy megértette a [üzembe helyezési mód](./deployment-modes.md).
+- Az újratelepítés csak érinti az erőforrásokat, a módosításokat adatokat nem érinti.
+- Ez a funkció csak az erőforráscsoport központi telepítések, nem előfizetési szintű központi telepítések támogatott. Előfizetés-szintű üzembe helyezéssel kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](./deploy-to-subscription.md).
 
 Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
 
@@ -261,9 +266,10 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs visszaadja egy hibaüzenet,
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ebben a cikkben szereplő példák erőforrások üzembe helyezése az erőforráscsoporthoz, az alapértelmezett előfizetést. Használjon másik előfizetést, lásd: [több Azure-előfizetések kezelése](/cli/azure/manage-azure-subscriptions-azure-cli).
-* Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
-* A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
-* Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
-* Biztonságosan terjed ki a szolgáltatás több régióban, lásd: [Azure Deployment Manager](deployment-manager-overview.md).
+
+- Ebben a cikkben szereplő példák erőforrások üzembe helyezése az erőforráscsoporthoz, az alapértelmezett előfizetést. Használjon másik előfizetést, lásd: [több Azure-előfizetések kezelése](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Adja meg, hogyan legyen kezelve az erőforrásokat, az erőforráscsoportban létezik, de nincsenek definiálva a sablonban, lásd: [Azure Resource Manager üzembe helyezési mód](deployment-modes.md).
+- A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
+- Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-cli-sas-token.md).
+- Biztonságosan terjed ki a szolgáltatás több régióban, lásd: [Azure Deployment Manager](deployment-manager-overview.md).

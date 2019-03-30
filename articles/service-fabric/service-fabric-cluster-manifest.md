@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan konfigurálhatja az önálló vagy a helyi Azur
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: c71473e975333d33406d78130ad28f417b9b967e
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853336"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662329"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Egy különálló Windows-fürt konfigurációs beállításai
 Ez a cikk ismerteti, amely megadható önálló Azure Service Fabric-fürt konfigurációs beállításainak a *ClusterConfig.json* fájlt. Ez a fájl lesz használatával adhatja meg a fürt csomópontjai, biztonsági konfigurációkat, valamint a hálózati topológia hibatűrési és frissítési tartományokba tekintetében.  Miután módosítása, vagy a konfigurációs beállítások hozzáadása, választhatja [önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md) vagy [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,8 +74,8 @@ Service Fabric-fürt legalább három csomóponttal kell tartalmaznia. Ebben a s
 | **Csomópont-konfiguráció** | **Leírás** |
 | --- | --- |
 | Csomópontnév |Bármilyen könnyen felismerhető nevet adhat a csomópontra. |
-| IP-cím |Nyissa meg egy parancsablakot, és írja be az IP-cím, a csomópont található `ipconfig`. Tekintse meg az IPV4-címet, és rendelje hozzá az IP-cím változó. |
-| nodetyperef hivatkozással |Minden csomóponton egy másik csomópont típusa is hozzárendelhető. A [csomóponttípusok](#node-types) határozzák meg a következő szakaszban. |
+| iPAddress |Nyissa meg egy parancsablakot, és írja be az IP-cím, a csomópont található `ipconfig`. Tekintse meg az IPV4-címet, és rendelje hozzá az IP-cím változó. |
+| nodeTypeRef |Minden csomóponton egy másik csomópont típusa is hozzárendelhető. A [csomóponttípusok](#node-types) határozzák meg a következő szakaszban. |
 | faultDomain |Tartalék tartományok engedélyezze a fürt-rendszergazdák meghatározhatnak, amelyek egy időben közös fizikai függőségek miatt meghiúsulhat a fizikai csomópontokon. |
 | upgradeDomain |Frissítési tartományok nagyjából egy időben, a Service Fabric frissítéskezelésének leállítás csomópontok készleteit ismerteti. Melyik csomópontokon hozzárendelni, amelyhez frissítési tartományok is választható, mert nem korlátozza a biztonsági fizikai követelményeit. |
 

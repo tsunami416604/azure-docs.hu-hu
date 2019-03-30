@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: c29647e4ee312302b66535ba834edabb42e4cff7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0c48b85e48153eb70400fc6da4822271f49b7fbe
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550600"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630181"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a PHP használatával
 
@@ -24,7 +24,8 @@ Ebben a rövid, használatával az Azure Face REST API a PHP emberi arcok észle
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
-- Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download)
+- Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download).
+- A PHP [http_request2 típusú](https://pear.php.net/package/HTTP_Request2) csomagot.
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 

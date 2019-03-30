@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 3f64be35aca985d0374e224cc9c8940502005014
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578883"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629595"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Biztonsági mentése és helyreállítása Azure virtuális gépeken a PowerShell-lel
 
@@ -184,10 +184,18 @@ A biztonsági mentési alkalmazásvédelmi szabályzat legalább egy adatmegőrz
 - A [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) parancsmag létrehoz egy PowerShell-objektumot, amely tartalmazza a biztonsági mentési szabályzat.
 - A ütemezése és megőrzése csoportházirend-objektumok használhatók a New-AzRecoveryServicesBackupProtectionPolicy parancsmag bemeneteként.
 
-A következő példában változókat az ütemezési házirend és a megőrzési házirend tárolja. A példában használja ezeket a változókat paraméterek megadásához egy védelmi szabályzat létrehozásakor *NewPolicy*.
+Alapértelmezés szerint a kezdési idő az ütemezés csoportházirend-objektum van meghatározva. Az alábbi példa használatával módosíthatja a kezdési idő és a kívánt kezdő időpontja. A kívánt kezdési időpontot kell lennie (UTC) is. Az alábbi példa azt feltételezi, hogy a kívánt kezdési időpont 01:00-kor (UTC), a napi biztonsági mentésekhez.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+A következő példában változókat az ütemezési házirend és a megőrzési házirend tárolja. A példában használja ezeket a változókat paraméterek megadásához egy védelmi szabályzat létrehozásakor *NewPolicy*.
+
+```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```

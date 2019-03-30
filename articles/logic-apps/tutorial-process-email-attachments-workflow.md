@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 518a9009ad7a3cca13679f9a410fd36dd874261f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588381"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630771"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Oktatóanyag: Kezelési e-maileket és mellékleteket az Azure Logic Apps automatizálása
 
@@ -144,6 +144,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport | 
    | **Szolgáltatási csomag** | Használatalapú csomag | Ez a beállítás határozza meg az erőforrások, például a számítási teljesítmény lefoglalásának és méretezésének módját a függvényalkalmazás futtatásához. Lásd a [szolgáltatási csomagok összehasonlítását](../azure-functions/functions-scale.md). | 
    | **Hely** | USA nyugati régiója | A korábban is használt régió | 
+   | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza ki a .NET-moduljának C# és F# funkciók. |
    | **Tárolás** | cleantextfunctionstorageacct | Hozzon létre egy tárfiókot a függvényalkalmazás számára. Csak kisbetűket és számokat használjon. <p>**Megjegyzés:** Ez a tárfiók a függvényalkalmazást tartalmazza, és a korábban létrehozott storage-fiók e-mail-mellékletek eltér. | 
    | **Application Insights** | Ki | Bekapcsolja az [Application Insights](../azure-monitor/app/app-insights-overview.md) alkalmazásmonitorozását, de ehhez az oktatóanyaghoz válassza a **kikapcsolva** beállítást. | 
    |||| 

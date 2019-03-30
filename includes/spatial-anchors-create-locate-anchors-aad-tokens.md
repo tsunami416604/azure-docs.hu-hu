@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: cde1d8fbc41537c616f28787528f146cc6b09789
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c06b94d179f9f5a17a652cf32bd560cc9b5f8e4f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57907696"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632421"
 ---
 ### <a name="azure-active-directory-authentication"></a>Azure Active Directory-hitelesítés
 
-Azure térbeli horgonyok is lehetővé teszi a felhasználó Azure Active Directory-jogkivonatokat a hitelesítéshez alkalmazásai. Például az AAD-jogkivonatok segítségével integrálhatók az ASA. Ha egy vállalati megőrzi a felhasználók az aad-ben, megadhat egy felhasználó AAD-tokent az Azure térbeli horgonyok SDK-ban. Ha így tesz, közvetlenül kapcsolódhat az ASA-szolgáltatás, amely ugyanahhoz az AAD-bérlőhöz tartozik.
+Azure térbeli kapcsolati alapokat is lehetővé teszi a felhasználó Azure ad-ben (az Active Directory) jogkivonatokat a hitelesítéshez alkalmazásai. Például az Azure AD-jogkivonatok segítségével integrálhatók az Azure térbeli horgonyok. Ha egy vállalati megőrzi a felhasználók Azure AD-ben, megadhat egy Azure AD-felhasználói jogkivonat térbeli horgonyok Azure SDK-ban. Ha így tesz, közvetlenül kapcsolódhat az Azure térbeli horgonyok szolgáltatás, amely az Azure AD-bérlőhöz tartozik.

@@ -1,5 +1,5 @@
 ---
-title: SUSE csomag kedvezményes és a használat – Azure foglalások |} A Microsoft Docs
+title: SUSE foglalási terv kedvezményt és a használat – Azure |} A Microsoft Docs
 description: Ismerje meg, hogyan SUSE terv kedvezmények SUSE szoftver virtuális gépeken.
 services: billing
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: a9f784d7e7ed21a5a10a2f5e16125d60e7b9667f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863474"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649256"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>Megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezmény
+# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Megismerheti, hogyan alkalmazza a a SUSE Linux Enterprise szoftvert foglalási terv kedvezményt van az Azure-hoz
 
 SUSE Linux csomagot vásárol, miután a rendszer automatikusan alkalmazza a kedvezményt az üzembe helyezett SUSE virtuális gépek (VM), amelyek megfelelnek a foglalást. A SUSE Linux-csomag magában foglalja a SUSE szoftvert futtat Azure virtuális gép költségét.
 
 A megfelelő SUSE Linux-csomag megvásárlása, szüksége megtudhatja, hogy milyen SUSE virtuális gépek futtatása és a virtuális gépeken vcpu-k számát. Használja az alábbi szakaszok segítségével azonosíthatja a használati CSV-fájlból, mit szeretne vásárolni.
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>Példány mérete rugalmasan különböző méretű virtuális gépek vonatkozik kedvezmény
+## <a name="discount-applies-to-different-vm-sizes"></a>Különböző méretű virtuális gépek vonatkozik kedvezmény
 
 Például a Reserved VM Instances, SUSE megtervezése vásárlások rugalmasabbá példány mérete. Ez azt jelenti, hogy a kedvezmény érvényes, még ha telepít egy virtuális Gépet egy másik vCPU-számot. A kedvezmény a szoftvercsomag különböző méretekkel vonatkozik.
 
@@ -40,7 +40,7 @@ Például ha vásárol egy csomag az SUSE Linux Enterprise Server for HPC Priori
 
 Az 5 vagy több Vcpu arány, 2.6-os. Ezért a SUSE egy virtuális Gépet az 5 vagy több Vcpu-foglalás szoftverköltség, ami körülbelül 77 % csak része ismerteti.
 
-## <a name="understand-your-suse-vm-usage-before-buying-a-suse-linux-plan"></a>A SUSE virtuális gépek használatának megértéséhez egy SUSE Linux-csomag megvásárlása előtt
+## <a name="understand-suse-vm-usage-before-you-buy"></a>SUSE virtuális gépek használatának megértéséhez, vásárlás előtt
 
 Az alábbi táblázatokban a szoftverfrissítési csomagok vásárolhat egy foglalást, a kapcsolódó használati mérőszámok és a arányok minden.
 
@@ -133,6 +133,6 @@ Foglalások kapcsolatos további információkért tekintse meg a következő ci
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

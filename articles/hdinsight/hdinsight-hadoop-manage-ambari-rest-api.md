@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 38d845e133b5ae1a091fd9fee698b2bf801135e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a56cc0c575a6e50a38aea91c8fc2e1855617457f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880595"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648384"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -306,7 +306,7 @@ Ebben a példában a vonatkozó aktuális konfigurációját tartalmazó JSON-do
    Módosíthatja, és adja meg az alábbi parancsokat:
 
    * Cserélje le `livy2-conf` a kívánt összetevőt.
-   * Cserélje le `INITIAL` beolvasni a tényleges értékkel `tag` a [az összes konfiguráció lekérése](#Get-all-configurations).
+   * Cserélje le `INITIAL` beolvasni a tényleges értékkel `tag` a [az összes konfiguráció lekérése](#get-all-configurations).
 
      **EGY. Bash**  
      ```bash

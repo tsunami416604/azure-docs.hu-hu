@@ -4,7 +4,7 @@ description: Ismerteti a Service Fabric parancssori felület sfctl háló háló
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 8828605241d55ac6f9ce789ccc55c30f2cd36434
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: feec5c4796c025c1707b4eb93bfe34b8d384ef3a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285206"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669180"
 ---
-# <a name="sfctl-mesh-network"></a>sfctl-háló hálózati
+# <a name="sfctl-mesh-network"></a>sfctl mesh hálózata
 GET, és törölje a háló hálózati erőforrásokhoz.
 
 ## <a name="commands"></a>Parancsok
@@ -51,7 +51,7 @@ Törli a hálózati erőforrás nevével.
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-mesh-network-list"></a>sfctl-háló hálózati listája
 A hálózati erőforrások listája.
@@ -66,7 +66,7 @@ Az összes hálózati erőforrás adatainak beolvasása egy adott erőforráscso
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-mesh-network-show"></a>sfctl-háló hálózati show
 A megadott nevű hálózati erőforrás beolvasása.
@@ -87,7 +87,7 @@ A megadott nevű hálózati erőforrás adatainak beolvasása. A leírás és a 
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 
 ## <a name="next-steps"></a>További lépések

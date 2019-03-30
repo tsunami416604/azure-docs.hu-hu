@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e4585e8e1a809824e63f917fed1cc8a9cfa646a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202928"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660256"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -81,7 +81,7 @@ Amikor lejár egy csoportot, akkor a csoport egy nappal a lejárat után törlő
 
 ![Csoport törlése e-mail-értesítések](./media/groups-lifecycle/deletion-notification.png)
 
-A törléstől számított 30 napon belül tudja állítani a csoport kiválasztásával **csoport visszaállítása** vagy a PowerShell-parancsmagok használatával leírtak szerint [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](groups-restore-deleted.md).
+A törléstől számított 30 napon belül tudja állítani a csoport kiválasztásával **csoport visszaállítása** vagy a PowerShell-parancsmagok használatával leírtak szerint [visszaállítása egy törölt Office 365-csoportot az Azure Active Directoryban](groups-restore-deleted.md). Ne feledje, hogy a 30 napos csoport visszaállítása időszak a nem testreszabható.
     
 Ha a csoportban van visszaállítása dokumentumokat, SharePoint-webhelyek vagy más állandó objektumok, teljes körűen visszaállítani a csoportot és annak tartalma akár 24 órát igénybe vehet.
 

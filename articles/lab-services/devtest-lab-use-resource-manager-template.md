@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181554"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648435"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Egy Azure Resource Manager-sablon használatával virtuális gépek létrehozása 
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a virtuális gépre kiterjedő és a Resource Manager-sablon
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Több virtuális gépre kiterjedő és a egy virtuális Resource Manager-sablonok
-Virtuális gépek létrehozásához a DevTest Labs szolgáltatásban létrehozott Resource Manager-sablon használatával két módja van: az Microsoft.DevTestLab/labs/virtualmachines erőforrás kiépítéséhez, vagy az Microsoft.Commpute/virtualmachines erőforrás kiépítéséhez. Minden egyes különböző helyzetekben szolgál, és különböző engedélyekkel kell rendelkeznie.
+Virtuális gépek létrehozásához a DevTest Labs szolgáltatásban létrehozott Resource Manager-sablon használatával két módja van: az Microsoft.DevTestLab/labs/virtualmachines erőforrás kiépítéséhez, vagy az Microsoft.Compute/virtualmachines erőforrás kiépítéséhez. Minden egyes különböző helyzetekben szolgál, és különböző engedélyekkel kell rendelkeznie.
 
 - Resource Manager-sablonok, amelyek Microsoft.DevTestLab/labs/virtualmachines erőforrás típusa (mivel a "erőforrás" tulajdonságban a sablonban) egyes tesztlabor virtuális gépeket helyezhet üzembe. Minden egyes virtuális Géphez, majd a DevTest Labs szolgáltatásban virtuális gépek listában egyetlen elemként jelenik meg:
 

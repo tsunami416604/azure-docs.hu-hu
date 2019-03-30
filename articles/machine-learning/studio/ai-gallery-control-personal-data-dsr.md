@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118033"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648109"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Megtekintheti és terméken belüli felhasználói adatok törlése az Azure AI-katalógusban
 
@@ -80,7 +80,7 @@ Például adja vissza a választ:
 
 A katalógus API-t az Azure AI-katalógus, amely közvetlenül is megtekintheti a közzétett entitásokkal kapcsolatos információkat tárolja a [AI-katalógusban webhely](https://gallery.azure.ai/). 
 
-A közzétett entitások megtekintéséhez látogasson el a következő URL-címet, és cserélje le `[AuthorId]` beszerzett Szerző azonosítójú [egy szerző Azonosítójának lekéréséhez](#get-an-author-ID) felett.
+A közzétett entitások megtekintéséhez látogasson el a következő URL-címet, és cserélje le `[AuthorId]` beszerzett Szerző azonosítójú [egy szerző Azonosítójának lekéréséhez](#get-an-author-id) felett.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 

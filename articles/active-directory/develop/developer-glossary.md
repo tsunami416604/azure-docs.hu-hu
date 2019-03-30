@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 245683ec6c3c2d25f362e035020e162af75e1627
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169921"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650393"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 
@@ -204,7 +204,7 @@ Az Azure AD-bérlőt az Azure és az Office 365-előfizetések létrehozása vag
 
 ## <a name="token-endpoint"></a>jogkivonat-végpont
 
-Egyik végpontja által megvalósított a [az engedélyezési kiszolgáló](#authorization-server) támogatási OAuth2 [engedélyezések](#authorization-grant). Attól függően, a támogatás használat beszerezni egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token), egy [ügyfél](#client-application), vagy [azonosító jogkivonat](#ID-token) együtt használva az [OpenID Csatlakozás] [ OpenIDConnect] protokollt.
+Egyik végpontja által megvalósított a [az engedélyezési kiszolgáló](#authorization-server) támogatási OAuth2 [engedélyezések](#authorization-grant). Attól függően, a támogatás használat beszerezni egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token), egy [ügyfél](#client-application), vagy [azonosító jogkivonat](#id-token) együtt használva az [OpenID Csatlakozás] [ OpenIDConnect] protokollt.
 
 ## <a name="user-agent-based-client"></a>Felhasználói ügynök-alapú ügyfél
 

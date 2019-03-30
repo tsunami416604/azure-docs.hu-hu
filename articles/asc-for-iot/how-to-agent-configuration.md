@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ce6744a3a7d71f358dccb3dc29c470f3a376240
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580703"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649373"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
@@ -42,7 +42,7 @@ ASC IoT a biztonsági ügynök ikereszköz konfigurációs objektum számára eg
 
 Ezek a beállítások segítségével testre szabhatja az ügynök az egyes helyzetekhez szükséges. Például automatikusan a kivételével az egyes események vagy energiafogyasztás minimális szinten tartása is ezek a tulajdonságok konfigurálásával.  
 
-Az ASC használja az IoT biztonsági ügynökkonfiguráció [séma](https://github.com/azure/asc-for-iot-schemas/security/module/twin) módosításokat.  
+Az ASC használja az IoT biztonsági ügynökkonfiguráció [séma](https://aka.ms/iot-security-github-module-schema) módosításokat.  
 
 ## <a name="configuration-objects"></a>Konfigurációs objektumok 
 
@@ -64,7 +64,7 @@ Az ügynök nem indulnak el, ha a konfigurációs objektum nem egyezik meg a sé
 
 ## <a name="configuration-schema-and-validation"></a>Konfigurációs séma- és érvényesítése 
 
-Ellenőrizze, hogy ezzel szemben az ügynök konfigurációs [séma](https://github.com/Azure/asc-for-iot/schema/security_module_twin). Az ügynök nem indulnak el, ha a konfigurációs objektum nem egyezik meg a séma.
+Ellenőrizze, hogy ezzel szemben az ügynök konfigurációs [séma](https://aka.ms/iot-security-github-module-schema). Az ügynök nem indulnak el, ha a konfigurációs objektum nem egyezik meg a séma.
 
  
 Ha az ügynök futása közben a konfigurációs objektum egy érvénytelen konfigurációt (a konfiguráció nem felel meg a sémának) változik, az ügynök figyelmen kívül hagyja az érvénytelen konfigurációt, és továbbra is a jelenlegi konfiguráció használatával. 

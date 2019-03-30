@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578407"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648503"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>A szűrők és az Azure Search szolgáltatásban az order by záradékok OData-kifejezések szintaxisa
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - A `search.in` függvény azt teszteli-e egy adott karakterlánc típusú megegyezik egy adott értékek listáját. Azt is segítségével bármely vagy összes gyűjtemény karakterlánc típusú értékeket az adott listáját egyetlen érték összehasonlítására. A mező és a lista minden egyes érték közötti egyenlőségi határozza meg a kis-és nagybetűket módon, ugyanúgy mint a `eq` operátor. Ezért, például egy kifejezést `search.in(myfield, 'a, b, c')` egyenértékű `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, azzal a különbséggel, hogy `search.in` sokkal jobb teljesítményt eredményez. 
 
-  Az első paraméterként a `search.in` függvény a sztring mezőhivatkozásnak (vagy egy karakterlánc-gyűjtemény mezők abban az esetben tartomány változó ahol `search.in` használnak egy `any` vagy `all` kifejezés). A második paraméter megadása az értékek, szóközöket és/vagy a vesszővel elválasztott listáját tartalmazó karakterlánc. Eltérő szóközöket és vesszőket elválasztók használható, mert a tartalmazzák-e ezeket a karaktereket kell, ha egy nem kötelező harmadik paramétert is megadhat `search.in`. 
-
-  A harmadik paramétere egy karakterláncot, ahol minden karaktert a karakterlánc, vagy ez a karakterlánc részét úgy viselkedik, mint az elválasztó elemzésekor a második paraméterben szereplő értékek listáját.
+   Az első paraméterként a `search.in` függvény a sztring mezőhivatkozásnak (vagy egy karakterlánc-gyűjtemény mezők abban az esetben tartomány változó ahol `search.in` használnak egy `any` vagy `all` kifejezés). 
+  
+   A második paraméter megadása az értékek, szóközöket és/vagy a vesszővel elválasztott listáját tartalmazó karakterlánc. 
+  
+   A harmadik paramétere egy karakterláncot, ahol minden karaktert a karakterlánc, vagy ez a karakterlánc részét úgy viselkedik, mint az elválasztó elemzésekor a második paraméterben szereplő értékek listáját. Eltérő szóközöket és vesszőket elválasztók használható, mert a tartalmazzák-e ezeket a karaktereket kell, ha egy nem kötelező harmadik paramétert is megadhat `search.in`. 
 
   > [!NOTE]   
   > Bizonyos helyzetekben szükséges összehasonlítása egy mezőt egy állandó értékek nagy számú ellen. Például biztonsági elrejtés végrehajtása szűrőkkel szükség lehet összehasonlítása a dokumentum azonosító mező ellen, amelyhez a kérelmező felhasználó van olvasási hozzáférést azonosítók listáját. Ilyen esetekben erősen javasoljuk a `search.in` függvényt egy bonyolultabb vagy műveletet egyenlőség kifejezések helyett. Például `search.in(Id, '123, 456, ...')` helyett `Id eq 123 or Id eq 456 or ....`. 
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Keresse meg az összes "Hotels" nevű "Roach amelyben" vagy "Költségvetés hotel" egyenlő). Kifejezések tartalmazhatnak szóközt, amelynek egy alapértelmezett elválasztó. Adjon meg egy elválasztó felülbírálás, foglaljuk elválasztó karakterként szimpla idézőjelek között a szűrőkifejezés részeként:  
+Keresse meg az összes "Hotels" nevű "Roach amelyben" vagy "Költségvetés hotel" egyenlő). Kifejezések tartalmazhatnak szóközt, amelynek egy alapértelmezett elválasztó. A harmadik paramétereként karakterlánc egy másik elválasztó szimpla idézőjelben specicfy teszi lehetővé:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -225,7 +227,7 @@ Keresse meg a címke "Wi-Fi" vagy "készlet" összes "Hotels":
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
-Több címkék, "fűtött törülköző állványt" vagy "hajszárító tartalmaz" egyezés található. Ne felejtse el megadni egy alternatív elválasztó karaktert, ha az alapértelmezett helyet elválasztó üzemképtelen. 
+Címkék-gyűjteményekben, például "fűtött törülköző állványt" vagy "hajszárító tartalmaz" kifejezések egyezés található. 
 
 ```
 $filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))

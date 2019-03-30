@@ -1,118 +1,129 @@
 ---
 title: Az Azure Application Gateway konfigurálása – áttekintés
-description: Ez a cikk a különböző összetevők konfigurálása az Azure Application Gateway ismertetése
+description: Ez a cikk ismerteti az Azure Application Gateway összetevői konfigurálása
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: ca4f9bf00d70f327ff756558e25315762a9a77a8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 371d15f59c091f7ac38d36bfe3de5f4b31e4482c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519748"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629639"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
-Az Application gateway lehet megvalósítani a különböző helyzetekhez különböző módon konfigurálható több összetevőből áll. Ez a cikk végigvezeti hogyan minden összetevője kell konfigurálni.
+Az Azure Application Gateway, amelyek a különböző helyzetekhez különböző módokon konfigurálhatja több összetevőből áll. Ez a cikk bemutatja, hogyan konfigurálhatja az egyes összetevők.
 
-![application-gateway-components](./media/configuration-overview/configuration-overview1.png)
+![Application Gateway összetevők folyamatábra](./media/configuration-overview/configuration-overview1.png)
 
-A fenti példaképen alkalmazás 3 figyelők konfigurációját mutatja be. Első többhelyes figyelővel a kettő `http://acme.com/*` és `http://fabrikam.com/*`, illetve. Mindkét figyelik a 80-as porton. A harmadik figyelő végpontok közötti SSL-lezárást az alapszintű figyelő. 
+Ez a rendszerkép egy alkalmazás, amely rendelkezik három figyelői mutatja be. Az első kettő az többhelyes figyelővel a `http://acme.com/*` és `http://fabrikam.com/*`, illetve. Mindkét figyelni, a 80-as porton. A harmadik pedig egy alapszintű figyelő, amely rendelkezik teljes körű Secure Sockets Layer (SSL) megszüntetése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Az Azure virtual network és a kijelölt alhálózatot
 
-Application gateway-példány dedikált központi telepítés a virtuális hálózaton. A virtuális hálózaton belüli kijelölt alhálózatot az application gateway szükség. Az alhálózat egy átjáró központi telepítésű alkalmazás több példánya rendelkezhet. Az alhálózat más application Gateway átjárókon is telepítheti, de nem telepítheti az application gateway alhálózatának más erőforráshoz.  
+Egy application gateway-példány dedikált központi telepítés a virtuális hálózaton. A virtuális hálózaton belüli kijelölt alhálózatot az application gateway szükség. Az alhálózat egy átjáró központi telepítésű alkalmazás több példánya rendelkezhet. Az alhálózat más application Gateway átjárókon is telepítheti. De nem telepítheti az application gateway alhálózatának más erőforráshoz.
 
-> [!NOTE]   
-> Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton nem támogatott.
+> [!NOTE]
+> Standard_v2 és a standard szintű Azure Application Gateway nem használhat egyidejűleg ugyanabban az alhálózatban.
 
 #### <a name="size-of-the-subnet"></a>Az alhálózat mérete
 
-Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja öt IP-címek – az első négy és az utolsó IP-cím - mindegyik olyan alhálózatban, belső használatra. Például ha egy application gateway 15 példányok és nem magánhálózati előtérbeli IP-címet, majd legalább 20 IP-címek szükség lesz az alhálózat - öt IP-cím belső használatra, és 15 IP-címek az application gateway 15-példányai számára. Ezért, jelen esetben a/27-es méretet, vagy nagyobb alhálózat van szükség. Ha 27-es példányok és egy IP-címe a magánhálózati előtérbeli IP-Címének konfigurálása 33 IP-cím lesz szükség - 27-es IP-címek az application Gateway a 27-es példányok és magánhálózati előtérbeli öt IP-Címek egy IP-címet címek belső használatra. Ezért a jelen esetben egy/26-os méretet, vagy nagyobb alhálózat van szükség.
+Az Application Gateway példányonként 1 privát IP-cím, valamint egy másik magánhálózati IP-címet használ fel, ha egy magánhálózati előtérbeli IP-Címmel van konfigurálva.
 
-Javasoljuk, hogy használjon legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
+Az Azure is lefoglalja minden egyes belső használatra alhálózatban 5 IP-címek: az első 4 és az utolsó IP-címek. Vegyük példaként a 15 application gateway-példány nincs magánhálózati előtérbeli IP-Címmel rendelkező. You need at least 20 IP addresses for this subnet: belső használatra és az application gateway-példány a 15. 5. Ezért létre kell/27-es méretet, vagy nagyobb alhálózat.
 
-#### <a name="network-security-groups-supported-on-the-application-gateway-subnet"></a>Támogatott az Application Gateway-alhálózatot a hálózati biztonsági csoportok
+Fontolja meg, amely rendelkezik 27 application gateway-példány és a egy IP-címet egy privát előtér-IP-alhálózatot. Ebben az esetben 33 IP-cím lesz szüksége: az application gateway-példány, a privát előtéri 1 és 5 belső használatra 27. Ezért létre kell egy/26-os méretet, vagy nagyobb alhálózat.
 
-Hálózati biztonsági csoportok (NSG-k) az Application Gateway-alhálózat a következő korlátozásokkal támogatottak: 
+Azt javasoljuk, hogy használja-e legalább/28-as alhálózat mérete. Ez a méret 11 használható IP-címet biztosít. Ha az alkalmazások terhelésének 10-nél több IP-címeket igényel, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
 
-- Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók kihasználására nem képes a végpontokra módosításokat kezdeményezni.
+#### <a name="network-security-groups-on-the-application-gateway-subnet"></a>A hálózati biztonsági csoportok az Application Gateway-alhálózat
 
-- Kimenő internetkapcsolattal nem lehet blokkolni. Alapértelmezett kimenő szabályokat az NSG-ben már engedélyezéséhez. Azt javasoljuk, hogy ne távolítsa el az alapértelmezett kimenő szabályok és, hogy ne hozzon létre más kimenő szabályok, amelyek a megtagadási kimenő internetkapcsolattal.
+Hálózati biztonsági csoportok (NSG-k) az Application Gatewayen támogatottak. Azonban számos korlátozások vonatkoznak:
 
-- Az AzureLoadBalancer címkét a forgalmat engedélyezni kell.
+- Meg kell adnia a v2 szintű Termékváltozatot a bejövő forgalmat az Application Gateway v1 Termékváltozatot 65503 – 65534 portokat és 65200 – 65535 portok kivételeket. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. Ezeket a portokat védik (zárják le) Azure-tanúsítványok. Külső entitások – például az ügyfelek, átjárók, a hely a megfelelő tanúsítványok nélkül végpontokra módosítások nem kezdeményezhető.
+
+- Kimenő internetkapcsolattal nem lehet blokkolni. Alapértelmezett kimenő szabályokat az NSG engedélyezéséhez. Azt javasoljuk, hogy Ön:
+
+  - Ne távolítsa el az alapértelmezett kimenő szabályok.
+  - Ne hozzon létre más kimenő szabályok, amelyek a megtagadási kimenő internetkapcsolattal.
+
+- A forgalom a **AzureLoadBalancer** címke engedélyezni kell.
 
 ##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Néhány forrás IP-címek engedélyezési lista az Application Gateway elérésére
 
-Ebben a forgatókönyvben teheti meg az application gateway alhálózatának az NSG-k használatával. Az alábbi korlátozásokat kell elhelyezni az alhálózat prioritás a listában szereplő sorrendben:
+A jelen esetben használja az Application Gateway-alhálózat NSG-k. Az alábbi korlátozások PUT ez prioritásuk szerinti sorrendben kell az alhálózaton található:
 
-1. Engedélyezik a bejövő forgalmat a forrás IP-/ IP-címtartományt.
-2. Lehetővé teszi minden forrás 65503 – 65534 portokat a beérkező kérések [háttérrendszer állapotának kommunikációs](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
-3. Lehetővé teszi a bejövő Azure Load Balancer vizsgálatok (AzureLoadBalancer címke) és a bejövő virtuális hálózati forgalom (VirtualNetwork címke) a a [NSG](https://docs.microsoft.com/azure/virtual-network/security-overview).
-4. Minden egyéb bejövő forgalmat egy megtagadási az összes szabály letiltása.
+1. Engedélyezik a bejövő forgalmat a forrás IP-/ IP-címtartomány.
+2. Lehetővé teszi minden forrás 65503 – 65534 portokat a beérkező kérések [háttérrendszer állapota kommunikációs](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. Ezeket a portokat védik (zárják le) Azure-tanúsítványok. Helyben megfelelő tanúsítványok nélkül a külső entitások módosításokat a végpontokra nem kezdeményezhető.
+3. Engedélyezi a bejövő Azure Load Balancer-mintavételek (*AzureLoadBalancer* címke) és a bejövő forgalom a virtuális hálózat (*VirtualNetwork* címke) az a [hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/security-overview).
+4. Minden egyéb adatforgalmat letiltása Megtagadás – minden szabály segítségével.
 5. Az összes célhelyre az internetre irányuló kimenő forgalom engedélyezése.
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Felhasználó által megadott útvonalakat támogatja az Application Gateway-alhálózat
 
-Felhasználó által megadott útvonalak (udr-EK), a v1-Termékváltozat esetén támogatottak a az application gateway alhálózatának mindaddig, amíg nem módosítja a kérelem/válasz végpontok közötti kommunikáció. Például beállíthat egy UDR az application gateway alhálózatának az, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson, de győződjön meg arról, hogy a csomag elérje a kívánt rendeltetési post ellenőrzés. Ezt a nem megfelelő állapot vizsgálatok és a forgalom útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat a virtuális hálózat ExpressRoute vagy VPN-átjárók propagálása.
+Felhasználó által megadott útvonalak (udr-EK) esetében a v1 Termékváltozatot támogatottak az Application Gateway-alhálózat, mindaddig, amíg azok kérés/válasz végpontok közötti kommunikáció nem módosítható. Ha például állíthat be egy UDR az Application Gateway-alhálózat, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson. Azonban meg kell győződnie arról, hogy a csomagot a vizsgálat után elérje a kívánt rendeltetési. Ezt a helytelen állapotmintát vagy forgalom-útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat, amelyek a virtuális hálózat az Azure ExpressRoute vagy VPN Gateway átjárók által lépnek.
 
-V2 esetén Termékváltozat, az application gateway alhálózatának az udr-EK nem támogatottak. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+A v2 termékváltozat az udr-EK az Application Gateway-alhálózat nem támogatottak. További információkért lásd: [automatikus skálázást és az Application Gateway zóna redundancia](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
 
 > [!NOTE]
-> Az állapot ellenőrzése az udr-EK használata az application gateway alhálózatának a hatására a [háttérrendszer állapotának megtekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) jelennek meg **ismeretlen** és az application gateway-naplók generációja failue is eredményez, és metrikák. Javasoljuk, ne használja udr-EK az application gateway alhálózatának megtekintheti a háttérrendszer állapota, naplók és mérőszámok.
+> Az állapot ellenőrzése az udr-EK használata az Application Gateway-alhálózat hatására a [háttérrendszer állapota nézet](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) megjelenik az "Ismeretlen". Az Application Gateway-naplók és mérőszámok sikertelen generációja is okoz. Azt javasoljuk, hogy nem használja udr-EK az Application Gateway-alhálózat, hogy a háttérrendszer állapota, naplók és metrikák is megtekintheti.
 
-## <a name="frontend-ip"></a>Előtérbeli IP-címet
+## <a name="front-end-ip"></a>Előtérbeli IP-címet
 
-Konfigurálhatja az application gateway, vagy hogy a nyilvános IP-címmel vagy magánhálózati IP-cím, vagy mindkettőt. Nyilvános IP-cím kötelező, ha egy háttérszolgáltatás, amelyek elérhetők az ügyfelek által az interneten keresztül egy internetre irányuló virtuális IP-cím megadása kötelező. Nyilvános IP-cím nem csatlakozik az internethez, más néven egy belső load balancer (ILB) végpont nem érintkező belső végpont szükséges. Az átjáró ILB-vel történő konfigurálása a belső üzletági alkalmazásoknál hasznos, amelyek nem érintkeznek az internettel. Emellett a többrétegű alkalmazások szolgáltatásai és rétegei számára is hasznos, amelyek egy internettel nem érintkező biztonsági korláton belül vannak, de attól még igényelik az időszeleteléses terheléselosztást, a munkamenet tartós használatát vagy a Secure Sockets Layer (SSL) lezárását.
+Konfigurálhatja az application gateway nyilvános IP-címmel vagy magánhálózati IP-cím. Nyilvános IP-cím megadása kötelező a háttéralkalmazás számára az ügyfelek az interneten egy internetre irányuló virtuális IP-cím (VIP) keresztül kell elérniük üzemeltetése. 
 
-Csak egy nyilvános IP-cím vagy egy magánhálózati IP-cím támogatott. Az Application Gateway létrehozása során kiválaszthatja az előtérbeli IP-címet. 
+Nyilvános IP-cím nem az internettel nem érintkező belső végpont szükséges. Néven, amely egy *belső load balancer* (ILB) végponthoz. Egy application gateway ILB hasznos internettel nem érintkező belső üzleti alkalmazások. Emellett akkor is hasznos szolgáltatásokhoz, és szinten belül biztonsági határként többrétegű alkalmazásokban, amelyek nem érhetőek el az internethez, de a Ciklikus időszeleteléses igénylő terjesztési, a munkamenet tartós használatát vagy az SSL-lezárást betöltése.
 
-- Egy nyilvános IP-cím esetén lehet váltani, hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az Application Gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-cím, az IP-cím típusa kiválasztott (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus és dinamikus nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-components) 
+Csak 1 nyilvános IP-cím vagy 1 privát IP-cím támogatott. Az application gateway létrehozásakor kiválaszthatja az előtérbeli IP-címet.
 
-- Esetén egy magánhálózati IP-címet kiválaszthatja az alhálózatról, amelyben az Application Gateway létrejön egy magánhálózati IP-cím megadásához. Ha nincs explicit módon meghatározva, tetszőleges IP-cím lesz automatikusan kiválasztva az alhálózatról. További információkért lásd: [hozzon létre egy application gateway egy belső terheléselosztó (ILB) végponthoz.](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)
+- Egy nyilvános IP-címek használatához hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az application gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-címet, a kiválasztott IP-cím típusa (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus vagy dinamikus nyilvános IP-cím](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
 
-Egy előtérbeli IP-Címmel társítva *figyelő* amely ellenőrzi a bejövő kéréseket az előtérbeli IP-címen.
+- Egy magánhálózati IP-címhez megadhat egy magánhálózati IP-címet az alhálózatról, ahol az application gateway létrejön. Ha nem ad meg egy, a rendszer automatikusan kiválasztja tetszőleges IP-címet az alhálózatról. További információkért lásd: [application gateway létrehozása belső terheléselosztóval](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+
+Előtérbeli IP-cím társítva egy *figyelő*, amely ellenőrzi a bejövő kéréseket az előtér-IP-címen.
 
 ## <a name="listeners"></a>Figyelők
 
-Egy figyelő olyan logikai entitás, amely ellenőrzi, hogy a bejövő kérelmek kapcsolat, a port, protokoll, állomás és IP-cím használatával. Ezért amikor konfigurálja a figyelőt, meg kell adnia ezeket az értékeket port, protokoll, állomás és IP-ugyanaz a megfelelő értékeket a bejövő kérelem, az átjárón, amelyeket. Amikor létrehoz egy application gateway az Azure portal használatával, akkor is létrehozhat egy alapértelmezett figyelőt válassza ki a protokollt és portot a figyelőhöz. Emellett kiválaszthatja, hogy szeretné-e a figyelő a HTTP2 támogatásának engedélyezése. Az Application Gateway létrehozása után szerkesztheti a beállítás az alapértelmezett figyelőjének (*appGatewayHttpListener*/*appGatewayHttpsListener*) és/vagy hozzon létre új figyelők.
+Egy figyelő egy logikai entitás, amely ellenőrzi, bejövő kapcsolódási kérelmeket a port, protokoll, állomás és IP-cím használatával. Amikor konfigurálja a figyelőt, ezek a megfelelő értékekre, az átjárón a bejövő kérelemben szereplő értékeket kell megadnia.
+
+Egy application gateway létrehozásakor az Azure portal használatával is létrehozhat egy alapértelmezett figyelőt válassza ki a protokollt és portot a figyelőhöz. Kiválaszthatja, hogy a HTTP2 támogatása a figyelő az engedélyezi-e. Miután létrehozta az application gateway, szerkesztheti a figyelő alapértelmezett beállításait (*appGatewayHttpListener*/*appGatewayHttpsListener*), vagy hozzon létre új figyelők.
 
 ### <a name="listener-type"></a>Figyelő típusa
 
-Választhat [alap- vagy többhelyes figyelő](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners) létrehozásakor egy új figyelőt. 
+Amikor létrehoz egy új figyelőt, akkor választhat [ *alapszintű* és *többhelyes*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
 
-- Ha egy Application gateway mögött egyetlen hely üzemelteti, válassza ki az alapszintű figyelő. Ismerje meg, [hogyan hozhat létre egy application gateway az alapszintű figyelő](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Ha egy application gateway mögött egyetlen hely, válassza a alapszintű. Ismerje meg, [hogyan hozhat létre egy application gateway egy alapszintű figyelő](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Ha egynél több webalkalmazást vagy konfigurálásakor, ugyanazon szülőtartomány több altartománnyal ugyanazon application gateway-példányon, majd válassza ki a többhelyes figyelő. A többhelyes figyelő továbbá kell adjon meg egy állomásnevet. Ennek az oka az Application Gateway a HTTP 1.1-állomásfejlécek segítségével az ugyanazon nyilvános IP-cím és port egynél több webhely üzemeltetése támaszkodik.
+- Ha egynél több webalkalmazást vagy több altartománnyal, ugyanazon szülőtartomány ugyanazon application gateway-példányon konfigurálásakor, válassza ki a többhelyes figyelő. A többhelyes figyelő számára is meg kell adnia egy nevet. Ennek az oka az Application Gateway a HTTP 1.1-állomásfejlécek segítségével az ugyanazon nyilvános IP-cím és port egynél több webhely üzemeltetése támaszkodik.
 
 #### <a name="order-of-processing-listeners"></a>A figyelők feldolgozási sorrendje
 
-V1 termékváltozatot, esetén figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszintű figyelő megfelel egy bejövő kérésnek feldolgozza a először. Ezért többhelyes figyelőket konfigurálni kell egy alapszintű figyelő annak biztosítása érdekében az adatforgalmat a megfelelő háttér előtt.
+A v1 Termékváltozatot a figyelők sorrendjében, hogy a rendelés feldolgozása történik. Egy alapszintű figyelő megfelel egy bejövő kérésnek, ha a figyelő először feldolgozza a kérést. Tehát konfigurálása előtt győződjön meg arról, hogy az adatforgalom a megfelelő háttérbe legyen irányítva, az alapszintű figyelői többhelyes figyelőket.
 
-V2 SKU-k esetén többhelyes figyelővel dolgozza fel előbb alapszintű figyelők.
+A v2 szintű Termékváltozatot, a többhelyes figyelővel dolgozza fel előbb alapszintű figyelők.
 
-### <a name="frontend-ip"></a>Előtérbeli IP-címet
+### <a name="front-end-ip"></a>Előtérbeli IP-címet
 
-Válassza ki az előtérbeli IP-címet, amelyet meg kíván társítani ehhez a figyelőhöz. A figyelőt a bejövő kérelem, az IP-címen fog figyelésére.
+Válassza ki az előtérbeli IP-cím, amelyet szeretne társítani ehhez a figyelőhöz. A figyelő az IP-címen bejövő kérelmek fogadni fog.
 
-### <a name="frontend-port"></a>Előtérbeli Port
+### <a name="front-end-port"></a>Előtérbeli port
 
-Válassza ki az előtérbeli portot. Válassza ki a meglévő portot, vagy hozzon létre egy újat. Választhat között bármilyen érték a [engedélyezett portok tartományát](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Ez lehetővé teszi, nem csak jól ismert, például a 80-as és 443-as portokat használó, de bármelyik engedélyezett egyéni port használatára alkalmas. Több portot vagy irányuló figyelői nyilvános vagy privát irányuló figyelői használható.
+Válassza ki az előtérbeli portot. Válassza ki a meglévő port, vagy hozzon létre egy újat. Válassza ki az értéket a [engedélyezett portok tartományát](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Nem csak a jól ismert portot, például a 80-as és 443-as, de a bármely engedélyezett, amely lehetővé teszi egyéni portot is használhat. Port figyelői nyilvános vagy privát néző figyelői is használható.
 
 ### <a name="protocol"></a>Protokoll
 
-Kell a HTTP és HTTPS protokoll közül választhat. 
+Válassza ki a HTTP vagy HTTPS:
 
-- Ha úgy dönt, hogy a HTTP, az az ügyfél és az alkalmazás-átjáró közötti forgalom nem titkosított.
+- Ha úgy dönt, hogy a HTTP, az ügyfél és az application gateway közötti adatforgalom nem titkosítottak.
 
-- Ha érdekli, válassza a HTTPS [Secure Sockets Layer (SSL) megszüntetése](https://docs.microsoft.com/azure/application-gateway/overview) vagy [teljes körű SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ha úgy dönt, hogy a HTTPS, a rendszer titkosítja a forgalmat az ügyfél és az alkalmazás-átjáró között, és az SSL-kapcsolatot az application gatewayben befejeződik.  Ha azt szeretné, hogy a teljes körű SSL-titkosítást, továbbá kell konfigurálása során válassza ki a HTTPS protokoll *háttérbeli HTTP-beállítás*. Ez biztosítja, hogy a forgalom újbóli titkosítva, a háttérkiszolgáló az alkalmazásátjáróról segít.
+- Ha azt szeretné, válassza ki a HTTPS [SSL-lezárást](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) vagy [végpontok közötti SSL-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Az ügyfél és az application gateway közötti adatforgalom titkosítva van. És az SSL-kapcsolatot az application gatewayben befejeződik. Ha azt szeretné, hogy a teljes körű SSL-titkosítást, válassza ki a HTTPS és konfigurálnia kell a **háttér-HTTP** beállítás. Ez biztosítja, hogy a forgalom újra titkosítva, amikor az application gateway a háttérbe való segít.
 
-  Konfigurálja a Secure Sockets Layer (SSL)-lezárások és teljes körű SSL-titkosítást, a tanúsítvány vehető fel a figyelővel, lehetővé téve az Application Gateway, hogy a szimmetrikus kulcs megfelelően az SSL protokoll-meghatározása szükséges. A szimmetrikus kulcs titkosításához és visszafejtéséhez az átjáró küldött forgalmat majd szolgál. Az átjáró tanúsítványa kell lennie a személyes információcsere (PFX) formátumban. Ez a fájlformátum exportálja a titkos kulcsot, a titkosítási és visszafejtési forgalmat az application gateway által igényelt teszi lehetővé. 
+SSL-lezárások és teljes körű SSL-titkosítás konfigurálása, hozzá kell adnia egy tanúsítványt a figyelőt, hogy engedélyezze az application gateway, hogy a szimmetrikus kulcs. Ez az SSL protokoll-meghatározása szabja meg. A szimmetrikus kulcs titkosítása és visszafejtése az átjáró küldött szolgál. Az átjáró tanúsítványa a személyes információcsere (PFX) formátumúnak kell lennie. Ebben a formátumban exportálja a titkos kulcsot az átjáró által használt titkosítása és visszafejtése a teszi lehetővé.
 
 #### <a name="supported-certificates"></a>Támogatott tanúsítványok
 
@@ -122,7 +133,7 @@ Lásd: [tanúsítványokat az SSL-lezárást támogatott](https://docs.microsoft
 
 #### <a name="http2-support"></a>A HTTP2 támogatása
 
-HTTP/2 protokoll támogatása az application gateway figyelői-ügyfelekhez érhető el. A háttér-kiszolgálókészlethez kommunikációs HTTP/1.1 felett van. Alapértelmezés szerint a HTTP/2-támogatás le van tiltva. A következő Azure PowerShell-lel kódrészlet példakód bemutatja, hogyan tehető lehetővé, hogy:
+HTTP/2 protokoll támogatása az application gateway figyelői kapcsolódó ügyfelek számára érhető el. A háttér kiszolgálókészlettel kommunikációs HTTP/1.1 felett van. Alapértelmezés szerint a HTTP/2-támogatás le van tiltva. Azure PowerShell a következő kódrészletet bemutatja, hogyan ennek engedélyezéséhez:
 
 ```azurepowershell
 $gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
@@ -132,124 +143,147 @@ $gw.EnableHttp2 = $true
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```
 
-#### <a name="websocket-support"></a>Websocket-támogatás
+#### <a name="websocket-support"></a>WebSocket támogatás
 
-Alapértelmezés szerint engedélyezve van a Websocket-támogatás. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik. A HTTP és HTTPS-figyelőként való használja a websockets protokollt. 
+Alapértelmezés szerint engedélyezve van a WebSocket-támogatás. Nem tartozik a felhasználó által konfigurálható beállítás engedélyezéséhez vagy letiltásához. A HTTP és HTTPS-figyelőként való használja a websockets protokollt.
 
-### <a name="custom-error-page"></a>Vlastní Chybovou Stránku
+### <a name="custom-error-pages"></a>Egyéni hibalapok
 
-Egyéni hibalapok határozhatók globális szinten, valamint a figyelő szintet, ugyanakkor globális szintű vlastní chybové stránky létrehozása az Azure Portal jelenleg nem támogatott. A figyelő szintjén konfigurálhatja a WAF 403-as hibaüzenet egyéni hibalap vagy egy 502 karbantartás oldalon. Is kell az adott hiba állapotkód egy nyilvánosan elérhető-e a blob URL-címet. További információkért lásd: [létrehozása egyéni hibalap](https://docs.microsoft.com/azure/application-gateway/custom-error).
+A globális vagy a figyelő szintjén egyéni hibaüzenetet adhatja meg. Azonban a globális szintű vlastní chybové stránky létrehozása az Azure Portal jelenleg nem támogatott. A figyelő szintjén konfigurálhatja a 403-as webes alkalmazás tűzfal hiba az egyéni hibalap vagy egy 502 karbantartás oldalon. Meg kell adnia egy nyilvánosan elérhető-e a blob URL-címet az adott hiba állapotkódot. További információt az [egyéni Application Gateway-hibaoldalak létrehozását ismertető részben](https://docs.microsoft.com/azure/application-gateway/custom-error) talál.
 
 ![Application Gateway-hibakódok](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-Egy globális vlastní chybovou stránku konfigurálásához használja [Azure PowerShell-konfiguráció](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration) 
+Egy globális vlastní chybovou stránku beállítása: [Azure PowerShell-konfiguráció](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
 
-### <a name="ssl-policy"></a>SSL-házirend
+### <a name="ssl-policy"></a>SSL-szabályzat
 
-Központosíthatja az SSL-tanúsítványok kezelését, és a egy háttér-kiszolgálófarm titkosítási és visszafejtési terhelés csökkentése. A központi SSL kezelésére is lehetővé teszi egy központi SSL-szabályzat, amely a szervezeti biztonsági követelményeknek megfelelő megadását.  Alapértelmezett, előre meghatározott és egyéni SSL-szabályzat közül választhat. 
+SSL-tanúsítványkezelés központosítása és a titkosítási-visszafejtési egy háttér-kiszolgálófarm a terhelés csökkentése. Központi SSL-kezelési is lehetővé teszi egy központi SSL-szabályzat, amely a biztonsági követelményeknek megfelelő adja meg. Választhat *alapértelmezett*, *előre meghatározott*, vagy *egyéni* SSL-szabályzat.
 
-Beállíthatja, hogy az SSL-szabályzat az SSL-protokollverziók szabályozására. Alkalmazásátjáró számára megtagadja a TLS1.0 TLS1.1 és TLS1.2 konfigurálhatja. Az SSL 2.0 és 3.0 alapértelmezés szerint már letiltott és nem konfigurálhatók. További információkért lásd: [Application-Gateway SSL-házirend áttekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+A vezérlő az SSL-protokollverziók SSL-szabályzat konfigurálása Egy application gateway számára megtagadja a TLS1.0 TLS1.1 és TLS1.2 konfigurálhatja. Alapértelmezés szerint az SSL 2.0 és 3.0 le vannak tiltva, és nem konfigurálható. További információkért lásd: [Application-Gateway SSL-házirend áttekintése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
-Miután létrehozott egy figyelőt, társítsa azt egy kérés útválasztási szabályt, amely meghatározza, hogy hogyan a kérelem érkezett a figyelő a háttérrendszer lesznek irányítva.
+Miután létrehozott egy figyelőt, hogy társítsa azt egy kérelem-útválasztási szabály. Ez a szabály azt határozza meg, hogyan legyenek átirányítva a figyelő a fogadott kéréseket a háttér.
 
-## <a name="request-routing-rule"></a>Kérelemirányítási szabály
+## <a name="request-routing-rules"></a>Kérelem-útválasztási szabályok
 
-Az application gateway az Azure portal használatával hoz létre, miközben egy alapértelmezett szabályt hoz létre (*felhasználóval a rule1*), amely összeköti az alapértelmezett figyelő (*appGatewayHttpListener*) az alapértelmezett háttérkészlet (*appGatewayBackendPool*) és a háttérbeli HTTP-beállítások alapértelmezett (*appGatewayBackendHttpSettings*). Az application gateway létrehozása után módosíthatja a beállítást, ez az alapértelmezett szabály, illetve új szabályokat hozhat létre.
+Egy application gateway az Azure portal használatával hoz létre, amikor létrehoz egy alapértelmezett szabályt (*felhasználóval a rule1*). Ez a szabály köti a alapértelmezett figyelőt (*appGatewayHttpListener*) és az alapértelmezett háttér-címkészletet (*appGatewayBackendPool*) és az alapértelmezett háttér-HTTP-beállítások ( *appGatewayBackendHttpSettings*). Miután létrehozta az átjárót, szerkessze a beállításokat az alapértelmezett szabály, vagy létrehozhat új szabályokat.
 
 ### <a name="rule-type"></a>Szabálytípus
 
-Választhat [alap- vagy útvonalalapú szabály](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule) új szabály létrehozása során. 
+Szabály létrehozásakor választhat a között [ *alapszintű* és *-alapú*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule).
 
-- Ha szeretné továbbítani a kapcsolódó figyelőt az összes kérelem (például: blog.contoso.com/*) egyetlen háttérkészlethez, válassza az alapszintű figyelő. 
-- Válassza ki a figyelő-alapú, ha szeretné átirányítani kéréseket a meghatározott háttérkészletek az adott URL-cím. Az elérési út mintája csak az elérési utat az URL-cím, hogy a lekérdezési paraméterek nem érvényes.
-
+- Válassza az alapszintű, ha azt szeretné továbbítani a kapcsolódó figyelőt az összes kérelem (például *blog<i></i>.contoso.com/\*)* egyetlen háttér-készlethez.
+- Válassza ki a-alapú Ha irányíthatja a kérelmeket az adott URL elérési utak adott háttér-tárolókészletekben. Az elérési út mintája csak az elérési utat az URL-cím, hogy a lekérdezési paraméterek nem érvényes.
 
 #### <a name="order-of-processing-rules"></a>A szabályok feldolgozása sorrendben
 
-V1 termékváltozatot, esetén egyező minta a bejövő kérelem feldolgozása a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel. Éppen ezért, ha a kérelem megfelel a mintának a két vagy több útvonal létezik az az URL-Címtérkép, majd az elérési utat, amely szerepel a listán előbb található, karakterként lesz, és a rendszer továbbítja a kérést társított azt az elérési utat a háttérkiszolgálón.
+A v1 Termékváltozatot a mintamegfeleltetés bejövő kérelmek feldolgozása a ahhoz, hogy az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepelnek. A kérelem megfelel a mintának két vagy több útvonal létezik az az elérési út térkép az, ha az elérési út a listában szereplő első egyezik. És a rendszer továbbítja a kérést a háttérbe, amely az elérési út van társítva.
 
-V2 SKU-k esetén pontos egyezést keresztül, amelyben az elérési utakat az URL-Címtérkép szereplő sorrendben tárolja a magasabb prioritású. Az adott ok, ha a kérelem megfelel a mintának két vagy több elérési útvonalat, a akkor a rendszer továbbítja a kérést a háttérrendszer társított, az elérési útvonalat, amely pontosan megegyezik a kérés. Az elérési utat a bejövő kérelem nem egyezik az URL-Címtérkép bármely elérési út, ha a sorrendben, amelyben az elérési utakat az URL-Címtérkép útvonalalapú szabály szerepel majd egyező minta a bejövő kérelem feldolgozása.
+A v2 szintű Termékváltozatot pontos egyezés magasabb prioritású, mint az elérési utat az URL-Címtérkép megadott sorrendben. Ha a kérelem megfelel a mintának két vagy több elérési utakban, a rendszer továbbítja a kérést a háttérbe, amely pontosan egyezik a kérelem elérési társított. Ha az elérési utat a bejövő kérelem nem felel meg pontosan bármilyen útvonalat a térképen, az elérési út térkép sorrend listában az útvonalalapú szabály megadhatók a kérelem feldolgozása.
 
 ### <a name="associated-listener"></a>Kapcsolódó figyelő
 
-Hozzá kell rendelni a szabály a figyelőt, hogy a *kérelemirányítási szabály* társított a *figyelő* meghatározásához abban az esetben a *háttérkészlet* , amelyhez a kérelem van át szeretné irányítani.
+Társítsa a szabály a figyelőt, hogy a *kérelem-útválasztási szabály* , amely társítva van a háttérkészlet irányítsa át a kérést a meghatározásához a figyelő abban az esetben.
 
-### <a name="associated-backend-pool"></a>Társított háttér-címkészlet
+### <a name="associated-back-end-pool"></a>Társított háttérkészlet
 
-A háttérkészlet, a háttérbeli célokat szolgálnak majd a kérelmek, a figyelő által fogadott tartalmazó társítja. Egy egyszerű szabályt esetén csak egy háttérkészlet engedélyezett, mert a rendszer továbbítja a kapcsolódó figyelőt kérelmei ehhez a háttérkészlethez. Útvonalalapú szabály esetén adjon hozzá több háttérkészletek minden egyes URL-cím megfelelő. A megfelelő háttérkészlet a rendszer továbbítja a kérelmeket, amelyek egyeznek az itt megadott URL-címet. Mivel a kérelmek, amelyek nem felelnek meg az összes ebben a szabályban megadott URL-cím a rendszer továbbítja azt is, alapértelmezett háttérkészlet hozzáadása.
+Társítsa a szabály a háttérbeli készletet, amely tartalmazza a háttér-tárolók kiszolgálni a kérelmeket, amely megkapja a figyelőt.
 
-### <a name="associated-backend-http-setting"></a>Társított háttérbeli HTTP-beállítás
+ - Egy alapszintű szabály csak egy háttérkészlet használata engedélyezett. A kapcsolódó figyelőt az összes kérelmet továbbítja a háttérkészlethez.
 
-Adjon hozzá minden egyes szabály egy háttérbeli HTTP-beállítás. A kérelmeket fogja átirányítani az Alkalmazásátjáró háttérbeli célelemein kerüljön a portszám, protokoll és más ebben a beállításban megadott beállítások használatával. Egy egyszerű szabályt esetén csak egy háttérbeli HTTP-beállítás engedélyezett, mert a a kapcsolódó figyelőt a kérelmeket a rendszer továbbítja a megfelelő háttér célokat a HTTP-beállítás használatával. Útvonalalapú szabály esetén adjon hozzá több háttérbeli HTTP-beállítások minden egyes URL-cím megfelelő. A megfelelő háttér célokat, az egyes URL-cím megfelelő HTTP-beállítások használatával a rendszer továbbítja a kérelmeket, amelyek egyeznek az itt megadott URL-címet. Továbbá adja hozzá egy alapértelmezett HTTP-beállítás, mivel a rendszer továbbítja a kérelmeket, amelyek nem felelnek meg az összes ebben a szabályban megadott URL-cím használatával az alapértelmezett HTTP-beállítás alapértelmezett háttérkészlet.
+ - Útvonalalapú szabály vegyen fel több háttér-címkészletet, amelyek megfelelnek a minden egyes URL-címet. A megfelelő háttérkészlet továbbítja a kérelmeket, amelyek megfelelnek a megadott URL-címet. Továbbá adja hozzá egy alapértelmezett háttér-címkészletet. A szabály minden olyan URL-cím nem egyezik a kérelem a készlet továbbítja.
+
+### <a name="associated-back-end-http-setting"></a>Társított háttér-HTTP-beállítás
+
+Adjon hozzá minden egyes szabály egy háttér-HTTP-beállítás. Kérelem az Alkalmazásátjáró háttérbeli célelemein kerüljön a portszám, protokoll és egyéb információkat ebben a beállításban megadott irányul.
+
+Egy alapszintű szabály csak egy háttér-HTTP-beállítás engedélyezett. A kapcsolódó figyelőt az összes kérelmet a rendszer a HTTP-beállítás használatával továbbítja a megfelelő háttér-tárolókra.
+
+Adjon hozzá minden egyes szabály egy háttér-HTTP-beállítás. Kérelem az application gateway szolgáltatást a háttér-tárolók használatával, a portszám, protokoll és egyéb adataihoz, ebben a beállításban megadott irányul.
+
+Egy alapszintű szabály csak egy háttér-HTTP-beállítás engedélyezett. A a kapcsolódó figyelőt a kérelmeket a megfelelő háttér-tárolók továbbítja a HTTP-beállítás használatával.
+
+Útvonalalapú szabály adja hozzá több háttér-HTTP-beállítások, amelyek megfelelnek az egyes URL-cím. Az URL-címet, ezzel a beállítással a feltételeknek megfelelő kérelmeket a megfelelő háttér-tárolók továbbítja a HTTP-beállítások, amelyek megfelelnek az egyes URL-cím használatával. Továbbá adja hozzá egy alapértelmezett HTTP-beállítás. Az alapértelmezett háttérkészlet-kéréseket, amelyek nem felelnek meg a szabály minden olyan URL-cím továbbítja az alapértelmezett HTTP-beállítás használatával.
 
 ### <a name="redirection-setting"></a>Átirányítási beállítás
 
-Ha az átirányítási alapszintű szabály van konfigurálva, a kapcsolódó figyelőt az összes kérelem átirányítja az átirányítás célhelye, ezáltal a globális átirányítás. Ha az átirányítási konfigurálva van egy útvonalalapú szabály, a kérelmek csak egy adott hely területen, a például a bevásárlókosár-terület kimaradásával/bevásárlókocsi / *, az átirányítás célhelye, ezáltal az átirányítási elérési út alapján lesz átirányítva. 
+Ha átirányítása egy alapszintű szabály van konfigurálva, a kapcsolódó figyelőt az összes kérelmet a rendszer átirányítja a cél. Ez a *globális* átirányítást. Ha átirányítása egy útvonalalapú szabály van konfigurálva, a rendszer átirányítja csak egy adott hely területen kérelmeket. Ilyen például, egy vásárlási bevásárlókocsi területet, amely helyén */cart/\**. Ez a *-alapú* átirányítást.
 
-Az átirányítás képesség kapcsolatos információkért lásd: [mappaátirányítás áttekintése](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Átirányítások kapcsolatos további információkért lásd: [Application Gateway átirányítás áttekintése](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
-- #### <a name="redirection-type"></a>Átirányítás típusa
+#### <a name="redirection-type"></a>Átirányítás típusa
 
-  Válassza ki a szükséges átirányítás típusát: Permanent(301), Temporary(307), Found(302) vagy lásd other(303).
+Válassza ki a szükséges átirányítás típusát: *Permanent(301)*, *Temporary(307)*, *Found(302)*, vagy *other(303) lásd*.
 
-- #### <a name="redirection-target"></a>Átirányítás célhelye
+#### <a name="redirection-target"></a>Átirányítás célhelye
 
-  Választhat egy másik figyelő vagy külső helyre átirányítási céljaként. 
+Válasszon egy másik figyelő vagy külső helyre átirányítási céljaként.
 
-  - ##### <a name="listener"></a>Figyelő
+##### <a name="listener"></a>Figyelő
 
-    Átirányítási céljaként lehetőséget választva figyelő segít egy figyelő átirányítása egy másik figyelő az átjárón. A beállítás akkor szükséges, ha engedélyezi a HTTP – HTTPS átirányításról, azaz a átirányítási forgalmat a forrás figyelőt a bejövő HTTP-kérések ellenőrzése a bejövő HTTPS-kéréseket a cél-figyelővel ellenőrzése. Azt is beállíthatja a lekérdezési karakterlánc és elérési útját a szerepeltetni a átirányítás célhelyre továbbítja a kérést küldött eredeti kéréssel.![application-gateway-components](./media/configuration-overview/configure-redirection.png)
+Válassza ki a figyelő átirányítja a forgalmat egy figyelőt a a másikra, az átjárón átirányítási céljaként. A beállítás akkor szükséges, ha szeretné engedélyezni a HTTP – HTTPS átirányításról. Átirányítja a forgalmat a forrás-figyelő, amely a bejövő HTTP-kéréseket a cél-figyelő, amely ellenőrzi a bejövő HTTPS-kéréseket, ellenőrzi. Azt is beállíthatja a lekérdezési karakterlánc és az eredeti kérelem elérési útját tartalmazza, amely az átirányítás célhelye továbbíthatja a rendszer a kérésben.
 
-    További részletekért a HTTP – HTTPS átirányításról, tekintse meg a [portállal HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal), [PowerShell-lel HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell), [parancssori felület használatával a HTTP, HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+![Application Gateway összetevők párbeszédpanel](./media/configuration-overview/configure-redirection.png)
 
-  - ##### <a name="external-site"></a>Külső webhely
+HTTP – HTTPS átirányítás kapcsolatos további információkért lásd:
+- [Az Azure portal használatával HTTP-HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
+- [HTTP-HTTP-átirányítás PowerShell-lel](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [Az Azure CLI-vel HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
-    Külső webhely akkor válassza, ha szeretné irányítani a forgalmat a figyelőt, így a szabályhoz társított átirányítja őket egy külső helyre. A lekérdezési karakterlánc szerepeltetni a átirányítás célhelyre továbbítja a kérést küldött eredeti kéréssel választhatja ki. Az elérési utat az eredeti kérést a külső hely nem tudja továbbítani.
+##### <a name="external-site"></a>Külső webhely
 
-    Átirányítás külső helyre vonatkozó további információkért lásd: [forgalom átirányítása a PowerShell-lel külső helyre](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell) és [https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+Külső webhely akkor válassza, ha szeretné irányítani a forgalmat a figyelőt, hogy ez a szabály egy külső helyre van társítva. Kiválaszthatja, hogy a lekérdezési karakterláncot az eredeti kérést az szerepeljenek a kérelemhez, amely az átirányítás célhelye lesznek továbbítva. Az elérési útját, amely az eredeti kérés az volt a külső hely nem tudja továbbítani.
 
-#### <a name="rewrite-http-header-setting"></a>HTTP-fejléc beállítás újraírása
+Átirányítás kapcsolatos további információkért lásd:
+- [Forgalom átirányítása egy külső helyre a PowerShell használatával](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
+- [Forgalom átirányítása egy külső helyre a parancssori felület használatával](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
 
-Ez a funkció lehetővé teszi hozzáadása, eltávolítása vagy HTTP-kérelmek és válaszfejlécek történt a kérelem frissítése, és a válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között.    Ez a funkció csak a PowerShell segítségével konfigurálhatja. Portal és CLI támogatási még nem érhető el. További információkért lásd: [Újraírási HTTP-fejlécek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) áttekintése és [konfigurálása HTTP-fejléc újraírási](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration).
+#### <a name="rewrite-the-http-header-setting"></a>A HTTP-fejléc beállítás újraírása
+
+Ez a beállítás hozzáadása vagy eltávolítása HTTP-kérelmek és válaszfejlécek a kérelem közben frissíti, és a válasz-csomagok áthelyezése az ügyfél és a háttér-készletek között. Csak ez a funkció a PowerShell segítségével konfigurálhatja. Az Azure portal és CLI támogatási még nem érhetők el. További információkért lásd:
+
+ - [Újraírási HTTP-fejlécek áttekintése](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
+ - [HTTP-fejléc újraírási konfigurálása](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>HTTP-beállítások
 
-Az application gateway irányítja a forgalmat a háttérkiszolgálókhoz, ez az összetevő a megadott konfiguráció használatával. Miután létrehozott egy HTTP-beállítás, kell társítani egy vagy több kérés útválasztási szabályokat.
+Az application gateway irányítja a forgalmat a háttérbeli kiszolgálók itt az Ön által megadott konfiguráció használatával. Miután létrehozta a HTTP-beállítás, társítania kell azt egy vagy több kérelem-útválasztási szabályok.
 
 ### <a name="cookie-based-affinity"></a>Cookie-alapú affinitás
 
-Ez a funkció akkor hasznos, ha meg szeretné tartani a felhasználói munkamenet ugyanazon a kiszolgálón. Az átjáróval kezelt cookie-k használatával az Application Gateway képes egy felhasználói munkamenet minden újabb forgalmát ugyanarra a kiszolgálóra irányítani feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer a kiszolgálón. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitás, majd nem tudja használni ezt a funkciót. Használ cookie-alapú munkamenet-affinitást, biztosítania kell, hogy az ügyfelek támogatnia kell a cookie-kat. 
+Ez a funkció akkor hasznos, ha meg szeretné tartani a felhasználói munkamenet ugyanazon a kiszolgálón. Átjáró által kezelt cookie-k lehetővé teszik az application gateway közvetlen későbbi érkező forgalom felhasználói munkamenet ugyanarra a kiszolgálóra a feldolgozáshoz. Ez azért fontos, a munkamenet-állapot mentése helyileg a kiszolgálón a felhasználói munkamenet. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitás, nem használhatja ezt a szolgáltatást. A használatához győződjön meg róla, hogy az ügyfelek támogatják-e a cookie-kat.
 
 ### <a name="connection-draining"></a>Kapcsolatkiürítés
 
-A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. Ez a beállítás háttérkészlet összes tagjára alkalmazhatók szabály létrehozása során. Ha engedélyezve van, az application gateway biztosítja, hogy, hogy háttérkészlet megszüntetéséhez regisztrálása példányai nem kap új kérések miközben lehetővé teszi a meglévő kérések végrehajtásához beállított időkorláton belül. Ez egyaránt vonatkozik azokra a háttérpéldányokra, amelyek API-hívással, explicit módon lettek eltávolítva a háttérkészletből, és azokra is, amelyeket az állapot-mintavételek „Nem kifogástalan” állapotúnak minősítenek.
+A kapcsolat kiürítése segítségével szabályosan tervezett szolgáltatás frissítései során a háttérkészlet-tagok eltávolítása. Ezzel a beállítással egy háttér-készlet összes tagjának alkalmazhat szabály létrehozása során. Ez biztosítja, hogy egy háttérkészlet megszüntetéséhez regisztrálása példányai nem kapja meg új kérések. Ugyanakkor meglévő kérelmek engedélyezettek a beállított időn belül befejezni. Háttérkiszolgáló-példányokhoz, amely explicit módon törlődnek a háttérkészlet-egy API-hívás által a kapcsolat kiürítése vonatkozik. Háttérkiszolgáló-példányokhoz jelentett is vonatkozik *nem megfelelő állapotú* által az állapot-mintavételei.
 
 ### <a name="protocol"></a>Protokoll
 
-Az Application gateway támogatja a HTTP és HTTPS protokollok útválasztási kérelmek a háttérkiszolgálókhoz. Ha a HTTP protokollt választja, majd forgalom folyamatok nem titkosított a háttérkiszolgálókhoz. Ezekben az esetekben, ahol a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció lehetőség nem elfogadható akkor a HTTPS protokollt kell választania. Ezt a beállítást, a figyelő a HTTPS protokoll kiválasztásával együtt lehetővé teszi, hogy engedélyezze [teljes körű SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Lehetővé teszi a küldheti a bizalmas adatokat, a háttérkiszolgáló titkosítva. A biztonságos kommunikációhoz tanúsítványt kell konfigurálni a teljes körű SSL-lel engedélyezett háttérkészlet minden egyes háttérkiszolgálójához.
+Az Application Gateway támogatja a HTTP és HTTPS a háttérkiszolgálók érkező kérések útválasztására. Ha úgy dönt, hogy a HTTP, a forgalmat a háttér-kiszolgálókon nem titkosítottak. Ha a titkosítatlan kommunikáció nem elfogadható, válassza ki a HTTPS.
+
+Ez a beállítás a figyelő támogatja a kombinálva HTTPS [végpontok közötti SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Ez lehetővé teszi, hogy küldheti a bizalmas adatokat a háttérrendszerének titkosítva. Háttér-kiszolgálókhoz a háttér-készlet, amely teljes körű SSL engedélyezve van a biztonságos kommunikációhoz tanúsítványt kell konfigurálni.
 
 ### <a name="port"></a>Port
 
-Ez az a port, amelyet a háttérkiszolgálók figyelik a az Application Gateway érkező forgalomra. Konfigurálhatja a beállításnak 1 és 65535 közötti port.
+Ez a beállítás meghatározza azt a portot, ahol a háttérkiszolgálók figyeli a forgalmat az application gateway az. Konfigurálhatja a beállításnak 1 és 65535 közötti port.
 
 ### <a name="request-timeout"></a>Kérés időtúllépése
 
-Az application gateway háttérkészlet válasz érkezik egy "Kapcsolat időkorlátja lejárt" hiba visszaküldése előtt vár másodpercek számát.
+A beállítás akkor a válasz érkezik a háttérkészlet, mielőtt egy "kapcsolat időkorlátja lejárt" hibaüzenetet ad vissza, amely az application gateway másodpercek számát.
 
-### <a name="override-backend-path"></a>Háttéralkalmazás elérési útjának felülbírálása
+### <a name="override-back-end-path"></a>Bírálja felül a háttér-elérési útja
 
-Ezzel a beállítással konfigurálhatja egy választható egyéni továbbítási elérési útját használja, ha a rendszer továbbítja a kérést a háttérkiszolgálóra. Ez bármely részét a bejövő, amely megfelel a megadott egyéni elérési út, másolja a **bírálja felül a háttérszolgáltatás elérési útja** mezőt a továbbított elérési utat. A funkció működésének megismerése az alábbi táblázatban talál.
+Ez a beállítás lehetővé teszi egy nem kötelező egyéni továbbítási útvonal használja, ha a rendszer továbbítja a kérést a háttérbe való konfigurálását. Bármely részét a bejövő, amely megfelel az egyéni elérési utat a **bírálja felül a háttérszolgáltatás elérési útja** mező másolja a továbbított elérési útja. Az alábbi táblázat bemutatja a funkció működésének módját:
 
-- Amikor a HTTP-beállítás kapcsolódik egy egyszerű kérelem-útválasztási szabály:
+- Amikor a HTTP-beállítás kapcsolódik egy alapszintű kérelem-útválasztási szabályt:
 
-  | Eredeti kérést  | Háttéralkalmazás elérési útjának felülbírálása | Továbbított háttérrendszeréhez kérelem |
+  | Eredeti kérést  | Bírálja felül a háttér-elérési útja | Kérelem továbbított háttéralkalmazáshoz |
   | ----------------- | --------------------- | ---------------------------- |
   | /Home/            | /override/            | / / home/felülbírálása              |
   | / home/secondhome / | /override/            | / felülbírálás/home/secondhome /   |
 
-- Amikor a HTTP-beállítás kapcsolódik egy kérelem-alapú útválasztási szabályt:
+- Amikor a HTTP-beállítás kapcsolódik egy útvonalalapú kérelem-útválasztási szabály:
 
-  | Eredeti kérést           | Elérésiút-szabály       | Háttéralkalmazás elérési útjának felülbírálása | Továbbított háttérrendszeréhez kérelem |
+  | Eredeti kérést           | Elérésiút-szabály       | Bírálja felül a háttér-elérési útja | Kérelem továbbított háttéralkalmazáshoz |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |
   | /pathrule/home /            | /pathrule*      | /override/            | / / home/felülbírálása              |
   | / elérésiút-szabályban/home/secondhome / | /pathrule*      | /override/            | / felülbírálás/home/secondhome /   |
@@ -258,47 +292,55 @@ Ezzel a beállítással konfigurálhatja egy választható egyéni továbbítás
   | /pathrule/home /            | / elérésiút-szabályban/home * | /override/            | /override/                   |
   | / elérésiút-szabályban/home/secondhome / | / elérésiút-szabályban/home * | /override/            | / / secondhome/felülbírálása        |
 
-### <a name="use-for-app-service"></a>App Service esetén
+### <a name="use-for-app-service"></a>Az app service használata
 
-Ez a felhasználói felület parancsikon kiválasztja a két szükséges beállításokat az App service háttérrendszer - lehetővé teszi, hogy válasszon címet állomás nevét, és létrehoz egy új egyéni mintavételt. A szakaszban az az oka, hogy miért volt történik kifejtett **állomásnévvel címet válasszon** beállítás. Egy új mintavételt jön létre, ahol a mintavétel fejlécet is ki háttér-tag-címről.
+Ez a felhasználói felület parancsikon, ami az Azure App Service háttérrendszer két szükséges beállításait. Lehetővé teszi, hogy **válassza ki a háttér-cím állomásnév**, és létrehoz egy új egyéni mintavétel. (További információkért lásd: a [kivételezési állomásnév háttér-címről](#pick) beállítás című szakaszban.) Létrejön egy új szondát, és a mintavételi fejléc kivétele történik a háttér-tag-címről.
 
 ### <a name="use-custom-probe"></a>Egyéni mintavétel használata
 
-Ezzel a beállítással társítani egy [egyéni mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) a HTTP-beállítás. HTTP-beállítás csak egy egyéni mintát is társíthat. Ha nincs explicit módon társít egy egyéni mintát, majd [alapértelmezett mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) a háttérrendszer állapotának figyelésére használható. Javasoljuk, hogy a háttérrendszerekre állapotfigyelés részletesebb szabályozhassák egyéni mintavétel létrehozása.
+Ezt a beállítást társítja a [egyéni mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) a HTTP-beállítás. HTTP-beállítás csak egy egyéni mintát is társíthat. Ha nincs explicit módon társíthatja egy egyéni mintát a [alapértelmezett mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) a háttérrendszer állapotának figyelésére szolgál. Azt javasoljuk, hogy a nagyobb mértékben vezérelheti a háttérrendszerek állapotfigyelés az egyéni mintavétel létrehozása.
 
-> [!NOTE]   
-> Egyéni mintavétel nem kezdődik a háttérkészlet állapotának figyelése, kivéve, ha explicit módon társítva egy figyelőt a megfelelő HTTP-beállításokat.
+> [!NOTE]
+> Az egyéni mintavétel nem monitorozza a háttérkészlet-állapotát, kivéve, ha explicit módon társítva egy figyelőt a megfelelő HTTP-beállítás.
 
-### <a name="pick-host-name-from-backend-address"></a>Háttérbeli címről származó Pick-gazdagépnév
+### <a id="pick"/></a>Válassza ki a háttér-cím állomásnév
 
-Ez a funkció dinamikusan állítja be a *gazdagép* az állomásnév egy IP-címét vagy teljesen minősített tartománynevét (FQDN) használatával a háttérkészlet, a kérelemben szereplő tartományfejléc. Ez hasznos az esetekben, ahol a tartománynév, a háttérrendszer eltér az application gateway DNS-nevét, és a háttérrendszer támaszkodik egy adott állomásfejlécet vagy SNI-bővítményt a megfelelő végpontra való feloldáshoz, mint a több-bérlős szolgáltatások esetén a háttérrendszert. Mivel az App service egy több-bérlős szolgáltatás egy megosztott terület használata egyetlen IP-cím, egy App Service-ben a gazdagép neve, az egyéni tartomány beállításai csak a érhető el. Alapértelmezés szerint az egyéni tartománynév a *example.azurewebsites.net*. Ezért ha szeretne hozzáférni az App service az application gateway használatával, vagy egy állomásnév nem kifejezetten az App Service-ben regisztrált vagy az Application gateway teljes Tartománynevét, hogy bírálja felül az eredeti kérést, az App service-állomásnév, az állomásnév szerint engedélyezés **állomásnévvel címet válasszon** beállítás.
+Ez a funkció dinamikusan állítja be a *gazdagép* a háttérkészlet-állomás nevét a kérelemben szereplő tartományfejléc. IP-cím vagy teljes Tartománynevet használja.
 
-Ha egy egyéni tartománnyal, és a meglévő egyéni DNS-név van leképezve az App Service-ben, majd nem kívánja engedélyezni ezt a beállítást.
+Ez a funkció segít a háttérrendszer tartományneve eltér az application gateway DNS-nevét, és a háttérrendszer egy adott állomásfejlécet vagy kiszolgálónév jelzése (SNI) bővítményt a megfelelő végpontra való feloldáshoz támaszkodik.
 
-> [!NOTE]   
-> A beállítás nem áll az App Service Environment (ASE) szükséges, mivel az ASE egy dedikált központi telepítést. 
+Egy példa funkcióban több-bérlős szolgáltatások háttérrendszerként. Az app service szolgáltatás egy több-bérlős szolgáltatás, amely egy megosztott terület egyetlen IP-címet használ. Tehát egy app Service-ben is csak keresztül érhetők el a gazdagép neve, amely az egyéni tartomány között vannak konfigurálva.
+
+Alapértelmezés szerint az egyéni tartománynév a *example.azurewebsites.<i> </i>nettó*. Elérni az app service az application gateway egy állomásnevet, amely nincs explicit módon regisztrálva van az app service-ben vagy az application gateway FQDN használatával, bírálja felül az eredeti kérést, az app service-gazdagépnév az állomásnevet. Ehhez engedélyezze a **állomásnévvel címet válasszon** beállítás.
+
+Meglévő egyéni DNS-nevű le van képezve az app service egyéni tartománnyal nem rendelkezik engedélyezi ezt a beállítást.
+
+> [!NOTE]
+> A beállítás nem szükséges az App Service Environment-környezet a powerapps szolgáltatásra, azaz dedikált központi telepítés.
 
 ### <a name="host-name-override"></a>Gazdagép nevének felülbírálása
 
-Ez a lehetőség váltja fel a *gazdagép* a bejövő kérelem, az application gateway az itt megadott állomás nevét a fejlécet. Például ha www\.contoso.com a következőként van megadva a **állomásnév** állítja, az eredeti kérést https://appgw.eastus.cloudapp.net/path1 változik https://www.contoso.com/path1 amikor rendszer továbbítja a kérést a háttérkiszolgálóra. 
+Ez a lehetőség váltja fel a *gazdagép* a bejövő kérelem, az application gatewayen az Ön által megadott állomás nevét a fejlécet.
 
-## <a name="backend-pool"></a>Háttérkészlet
+Például ha *www.contoso<i></i>.com* van megadva a **állomásnév** állítja, az eredeti kérést *https:/<i></i>/appgw.eastus.cloudapp.net/path1* módosul, amelyikben *https:/<i></i>/www.contoso.com/path1* amikor továbbítja a kérést a háttérkiszolgáló-.
 
-Háttérkészlet mutatott háttérrendszer tagok négy típusú is lehet: egy adott virtuális gép, virtuálisgép-méretezési csoportot, egy IP-címet/FQDN vagy egy app Service-ben. Minden egyes háttérkészlethez azonos típusú több tagot is mutat. Tagok ugyanazon háttérkészletéhez különböző típusú mutató nem támogatott. 
+## <a name="back-end-pool"></a>Háttérkészlet
 
-Miután létrehozta a háttérkészlet, társíthatja azt egy vagy több kérés útválasztási szabályokat szeretne. Szükség minden egyes háttérkészlethez állapotfigyelő mintavételezőket konfigurálása az application gateway-en. Amikor egy kérés útválasztási szabály a feltétel teljesül, az application gateway továbbítja a forgalmat a kifogástalan állapotú kiszolgálók a megfelelő háttérkészlet (határoz meg az állapotmintákat).
+A háttérkészlet mutasson négy típusú háttér tagok: egy adott virtuális gép, virtuálisgép-méretezési csoportot, egy IP-címet/FQDN vagy egy app Service-ben. Minden egyes háttérkészlethez azonos típusú több tagot is mutat. Ugyanazt a háttér-készletet a különböző típusú tagok mutató nem támogatott.
+
+Miután létrehozott egy háttérkészlet, társítania kell azt egy vagy több kérelem-útválasztási szabályok. Az application gateway-en is minden egyes háttérkészlethez állapotfigyelő mintavételezőket kell konfigurálnia. Amikor egy kérelem-útválasztási szabály a feltétel teljesül, az application gateway továbbítja a forgalmat a kifogástalan állapotú kiszolgálók a megfelelő háttérkészlet (határoz meg az állapotmintákat).
 
 ## <a name="health-probes"></a>Állapotminták
 
-Annak ellenére, hogy az application gateway alapértelmezés szerint a háttérrendszerének összes erőforrásának állapotát figyeli, azt javasoljuk, egyéni mintavétel létrehozása az egyes háttérbeli HTTP-beállítás annak érdekében, hogy egy több szabályozható a Szolgáltatásállapot-figyelést. Egyéni állapotadat-mintavétel konfigurálása kapcsolatban lásd: [egyéni egészségügyi mintavételi beállítások](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Egy application gateway alapértelmezés szerint a háttérrendszerének összes erőforrásának állapotát figyeli. De erősen ajánlott, hogy Ön egyéni mintavétel létrehozása az egyes háttér-HTTP-beállítás nagyobb mértékben vezérelheti a Szolgáltatásállapot-figyelést beolvasásához. Egyéni mintavétel konfigurálásával kapcsolatban lásd: [egyéni egészségügyi mintavételi beállítások](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
 
-> [!NOTE]   
-> Ha egy egyéni állapotmintát hoz létre, meg kell társítsa azt egy háttérbeli HTTP-beállítás. Egyéni mintavétel nem kezdődik a háttérkészlet állapotának figyelése, kivéve, ha explicit módon társítva egy figyelőt a megfelelő HTTP-beállításokat.
+> [!NOTE]
+> Miután létrehozott egy egyéni állapotadat-mintavétel, kell hozzárendelni a háttér-HTTP-beállítás. Egyéni mintavétel nem figyeli a háttérkészlet-állapotát, kivéve, ha explicit módon társítva egy figyelőt a megfelelő HTTP-beállítás.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megismerkedett az Application Gateway-összetevők, a következőket teheti:
+Most, hogy megismerkedett az Application Gateway-összetevők, akkor a következőket teheti:
 
-- [Application Gateway létrehozása az Azure Portalon](quick-create-portal.md)
-- [Hozzon létre egy Application Gatewayen a PowerShell használatával](quick-create-powershell.md)
-- [Hozzon létre egy Application Gateway az Azure CLI használatával](quick-create-cli.md)
+- [Application gateway létrehozása az Azure Portalon](quick-create-portal.md)
+- [Egy application gateway létrehozása a PowerShell használatával](quick-create-powershell.md)
+- [Application gateway létrehozása az Azure CLI-vel](quick-create-cli.md)

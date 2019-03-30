@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: e9f613b6cd02bd1e85b75db7a3b2c2b4adccce3f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372131"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630702"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Gyors útmutató: Arcfelismerés a képet, a Face .NET SDK használatával
 
@@ -32,11 +32,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceDetection**. 
 1. Ha más projektek is vannak a megoldásban, válassza ki ezt a projektet az egyedüli kezdőprojektként.
-1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **Tallózás** lapot, és válasszon **előzetes verzió**; majd keresse meg és telepítse a következő csomagokat:
+1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **Tallózás** lapot, és válasszon **előzetes verzió**; majd keresse meg és telepítse a következő csomagot:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-    - Microsoft.Rest.ClientRuntime
-    - Microsoft.Rest.ClientRuntime.Azure
-    - Newtonsoft.Json
+1. Ellenőrizze, hogy telepítette a NuGet-csomagok legújabb verziói a projekthez. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **frissítések** lapra, és telepítse a legújabb verziói jelennek meg, a csomagokat.
 
 ## <a name="add-face-detection-code"></a>Arcok észlelése kód hozzáadása
 
@@ -50,21 +48,21 @@ Adja hozzá az alábbi `using` utasításokat a *Program.cs* fájl elejéhez.
 
 ### <a name="add-essential-fields"></a>Alapvető mezők hozzáadása
 
-Adja hozzá a **Program** osztályhoz a következő mezőket: Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `faceEndpoint` úgy, hogy a megfelelő régióazonosító tartalmaz. Is kell beállítani a `localImagePath` és/vagy `remoteImageUrl` elérési utakhoz, mutasson a tényleges értékek képfájlok.
+Adja hozzá a **Program** osztályt a következő mezőket. Ezeket az adatokat adja meg, hogyan csatlakozhat a Face szolgáltatás és a bemeneti adatok beszerzése. Frissíteni kell a `subscriptionKey` mező értékét az előfizetési kulcs, és előfordulhat, hogy módosítania kell a `faceEndpoint` úgy, hogy a megfelelő régióazonosító tartalmaz. Is kell beállítani a `localImagePath` és/vagy `remoteImageUrl` elérési utakhoz, mutasson a tényleges értékek képfájlok.
 
 A `faceAttributes` mező értéke csak bizonyos típusú attribútumok tömbje. Azt határozza meg az észlelt arcok kapcsolatos lekérni kívánt adatokat.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=9-34)]
 
 ### <a name="create-and-use-the-face-client"></a>Hozzon létre, és a Face ügyfél használata
 
-Ezután adja hozzá a következő kódot a **fő** módszere a **Program** osztály. A Face API-ügyfél állít be.
+Ezután adja hozzá a **fő** módszere a **Program** osztályban az alábbi kódra. A Face API-ügyfél állít be.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
 A a **fő** metódust, adja hozzá a következő kódot arcfelismerés helyi és távoli képen az újonnan létrehozott Face ügyfél használatával. Észlelési módszerek meghatározva mellett. 
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>Arcfelismerés
 
@@ -82,9 +80,9 @@ Ezt követően adja meg a **GetFaceAttributes** metódust. Ez a kapcsolódó att
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-Végül adja meg a **DisplayAttributes** metódus face attribútum adatokat írni a konzol kimenete.
+Végül adja meg a **DisplayAttributes** metódus face attribútum adatokat írni a konzol kimenete. Ezután bezárhatja az osztály és a névtér.
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-125)]
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 

@@ -4,7 +4,7 @@ description: Ismerteti, hogyan lehet egyéni rendszerállapot-jelentések küld�
 services: service-fabric
 documentationcenter: .net
 author: oanapl
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 775c9b155f080c8996a7680514cb2fb004a4e3fb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152252"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670387"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) célzó jelző nem megfelelő állapotú fürt és az alkalmazás feltételeket az adott entitásokon. Használja az állapotközpontú modellről **egészségügyi jelentéskészítők** (rendszer összetevőit és watchdogs). A cél, egyszerű és gyors diagnosztizálása és javítás. Szolgáltatás írók kell health szolgáltatással kapcsolatos előzetes költségek. Tetszőleges feltételt, amely hatással lehet a health kell jelenteni, különösen akkor, ha a legfelső szintű közeli jelző problémák megkönnyíti. Az egészségügyi információk takaríthat meg időt és energiát a Hibakeresés és kivizsgálása érdekében. Az üzletmenetet különösen törlése után a szolgáltatás nem működik és ipari méretekben a felhőben (magán- vagy Azure).

@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287179"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648573"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
 A Microsoft lehetővé teszi, hogy belépő szintű költségének adattárház végezhetőek.  Csökkentse számítási szinten képes legyen kezelni az erőforrás-igényes lekérdezéseket mostantól elérhetők az Azure SQL Data warehouse-hoz. A teljes bejelentés [alacsonyabb szintű támogatás Gen2 számítási](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat az alábbi táblázatban feltüntetett régiókban érhető el. A támogatott régiók Gen1 a korábbi adattárházak Gen2-re keresztül frissíthető vagy:
 
 - **Az automatikus frissítési folyamat:** Az automatikus frissítéseket, amint az egy régióban érhető el a szolgáltatás ne indítsa.  Az automatikus frissítések elindulását, egy adott régióban, az egyes DW-frissítések során a kiválasztott karbantartási ütemezés kerül sor.
-- [**Helyi frissítés Gen2-re:**](#Self-upgrade-to-Gen2) Szabályozhatja, mikor kell frissíteni, tegye a helyi frissítés Gen2-re. Ha még nem támogatott a régióban, visszaállíthatja közvetlenül egy helyreállítási pontról Gen2-példányra egy támogatott régióban.
+- [**Helyi frissítés Gen2-re:**](#self-upgrade-to-gen2) Szabályozhatja, mikor kell frissíteni, tegye a helyi frissítés Gen2-re. Ha még nem támogatott a régióban, visszaállíthatja közvetlenül egy helyreállítási pontról Gen2-példányra egy támogatott régióban.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Az Automatikus ütemezés és a régió rendelkezésre állási tábla
 

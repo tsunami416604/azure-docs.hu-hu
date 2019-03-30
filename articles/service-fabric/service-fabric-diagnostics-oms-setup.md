@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan állítható be az Azure Monitor naplóira jele
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ca5dd4a7c12a68a549f081ad62db1736c9c68837
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3523a2df413740f644151c548e403c39c9be1f03
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483165"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670506"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Állítsa be a fürt az Azure Monitor naplóira
 
 Az Azure Monitor naplóira Javaslataink fürt események figyelésére. Beállíthat a Log Analytics-munkaterületet az Azure Resource Manager, a PowerShell vagy az Azure Marketplace-en keresztül. Ha fenntartja az üzembe helyezés későbbi használat céljából egy frissített Resource Manager-sablon, használja ugyanazt a sablont az Azure Monitor naplók környezetet. Marketplace-en keresztüli üzembe helyezést az egyszerűbb, ha már rendelkezik egy diagnosztika engedélyezve van az üzembe helyezett fürt. Ha a fiók, amelyre telepíti, akkor nem kell az előfizetési szintű hozzáféréssel, üzembe helyezése PowerShell vagy a Resource Manager-sablon használatával.
 
 > [!NOTE]
-> Az Azure Monitor naplóira be, a fürt monitorozásához, szüksége lesz a diagnosztika engedélyezve van a fürt-szintű vagy platformszintű események megtekintéséhez. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [Linux-fürtöket-diagnosztika beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
+> Az Azure Monitor naplóira be, a fürt monitorozásához, szüksége lesz a diagnosztika engedélyezve van a fürt-szintű vagy platformszintű események megtekintéséhez. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [Linux-fürtöket-diagnosztika beállítása](service-fabric-diagnostics-oms-syslog.md) további
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +49,7 @@ Ha szeretne egy fürt üzembe helyezését követően adja hozzá a Log Analytic
 Ha a Windows használja, továbbra is az alábbi lépéseket követve az Azure Monitor naplóira csatlakozni a fürthöz kapcsolódó események tároló tárfiók. 
 
 >[!NOTE]
->A Linux-fürtök használatát teszi lehetővé a még nem áll rendelkezésre. 
+>A Service Fabric-elemzés megoldás csak a támogatott Windows-fürtöket. Linux-fürtöket, tekintse meg a cikk a [beállítása az Azure Monitor naplóira Linux-fürtök esetén](service-fabric-diagnostics-oms-syslog.md).  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>A Log Analytics-munkaterület csatlakozni a fürthöz 
 

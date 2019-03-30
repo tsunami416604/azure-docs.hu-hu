@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 67c07169b3ff66d99ee52a0e078e0e463a42702e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482912"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652637"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -102,7 +102,7 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
    - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon az ügyfélszolgálathoz az Azure Migrate.
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance"></a>Nem sikerült válassza ki az Azure felhőalapú az a készülék
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>Nem lehet válassza ki az Azure felhőalapú a készülék meghiúsul az "Azure felhő kiválasztása nem sikerült"
 
 Ez egy ismert probléma, és a javítás érhető el a problémát. Töltse le a [legújabb frissítése a bits](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) a készülék és a frissítés a készülék a alkalmazni a javítást.
 

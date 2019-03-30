@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: de2d8bcbf4ca75ad7278ec9fe47a3f55160b7910
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082653"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649636"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím hozzárendelése a virtuális gépek PowerShell-lel
 
@@ -196,7 +196,7 @@ A következő lépések azt ismertetik, hogyan hozzon létre próbaképpen egy v
 
 ## <a name="add"></a>IP-címek hozzáadása egy virtuális Géphez
 
-Az Azure hálózati adapterhez privát és nyilvános IP-címek az alábbi lépéseket követve adhat hozzá. Az alábbi szakaszokban található példák feltételezik, hogy már rendelkezik egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario) a jelen cikk, de nem szükséges, hogy végrehajtja.
+Az Azure hálózati adapterhez privát és nyilvános IP-címek az alábbi lépéseket követve adhat hozzá. Az alábbi szakaszokban található példák feltételezik, hogy már rendelkezik egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#scenario) a jelen cikk, de nem szükséges, hogy végrehajtja.
 
 1. Nyisson meg egy PowerShell-parancssort, és a hátralévő lépéseket ebben a szakaszban egy egyetlen PowerShell-munkameneten belül. Ha még nem rendelkezik a PowerShell telepítése és konfigurálása, hajtsa végre a a [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) cikk.
 2. Módosítsa a következő $Variables "values" a hálózati adapter IP-címet hozzáadni kívánt és az erőforráscsoportot és a hálózati adapter létezik a hely neve:

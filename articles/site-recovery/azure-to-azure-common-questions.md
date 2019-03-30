@@ -4,15 +4,15 @@ description: Ez a cikk gyakori kérdésekre foglalja össze, üzembe helyezések
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 03/18/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 2c1890570f153de68d187c37dc0a7bca156c2d47
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312053"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649883"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -34,6 +34,9 @@ Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintet�
 3. [Vészhelyreállítás beállítása az Azure virtuális gépek](azure-to-azure-how-to-enable-replication.md)
 4. [Feladatátvételi teszt futtatása](azure-to-azure-tutorial-dr-drill.md)
 5. [Feladatátadás és feladatátvétel az elsődleges régióba](azure-to-azure-tutorial-failover-failback.md)
+
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Hogyan kapacitás garantáltan a célrégióban az Azure virtuális gépek?
+Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
 
 ## <a name="replication"></a>Replikáció
 
@@ -79,7 +82,7 @@ Azt határozza meg a helyreállítási pontok megőrzési előzményeit és az a
 [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Mi az összeomlás-konzisztens helyreállítási pont?
-Összeomlás-konzisztens helyreállítási pont a lemezen lévő adatok jelöli, mint ha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról a pillanatkép időpontjában. Nem tartalmazza, amelyeket volt, a memória, ha a pillanatkép. 
+Összeomlás-konzisztens helyreállítási pont a lemezen lévő adatok jelöli, mint ha a virtuális gép leállt, vagy a tápkábel felhasználásával lett létrehozva a kiszolgálóról a pillanatkép időpontjában. Nem tartalmazza, amelyeket volt, a memória, ha a pillanatkép.
 
 Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konzisztens pillanatképekkel. Összeomlás-konzisztens helyreállítási pont elég általában a nem adatbázis-operációs rendszerek és alkalmazások, például fájlkiszolgálókat, a DHCP-kiszolgálók és a nyomtatókiszolgálók.
 
@@ -87,9 +90,7 @@ Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konziszt
 A Site Recovery 5 percenként összeomlás-konzisztens helyreállítási pont létrehozása.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazáskonzisztens helyreállítási pontot? 
-Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens helyreállítási pontok rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. 
-
-Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
+Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens helyreállítási pontok rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Mit jelent alkalmazásteljesítmény alkalmazáskonzisztens helyreállítási pontokat a hatását?
 Alkalmazáskonzisztens helyreállítási pontok összes adatot a memória és a folyamat rögzíti a mérlegeli igényel a keretrendszert, például VSS letiltásától az alkalmazás windows rendszeren. Ha nagyon gyakran meg lehet a teljesítményt, ha a számítási feladat már nagyon elfoglalt. Általában javasolt nem 1 óra használata kevésbé gyakori alkalmazáskonzisztens helyreállítási pontok adatbázis-számítási feladatokhoz és adatbázis-munkaterhelés esetén is elegendő. 
@@ -116,8 +117,8 @@ A legrégebbi helyreállítási pont használható érték 72 óra.
 ### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Mi történik, ha az egy replikációs házirendet, 24 órában és a egy probléma megakadályozza, hogy a Site Recovery létrehozni helyreállítási pontokból 24 óránál tovább áll? Elvesznek az előző helyreállítási pontokhoz?
 Nem, a Site Recovery fogja megőrizni a korábbi helyreállítási pontjait. Függően a helyreállítási pontok megőrzési időtartamát, 24 órában ebben az esetben a Site Recovery váltja fel legrégebbi pont csak akkor, ha van egy új pontok generációja. Ebben az esetben minden olyan új helyreállítási pont jön létre, néhány probléma miatt nem lesz, mint a régi pontok csoportengedély változatlan marad eljut a adatmegőrzési időszak után.
 
-### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Miután egy virtuális gépen engedélyezve van a replikáció, hogyan módosíthatom a replikációs szabályzat? 
-Lépjen a **Site Recovery-tároló** > **Site Recovery-infrastruktúra** > **replikációs házirendek**. Válassza ki a házirendet, amelyet szerkeszteni és menteni a módosításokat. Minden olyan változás túl a meglévő replikálását alkalmazza. 
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Miután egy virtuális gépen engedélyezve van a replikáció, hogyan módosíthatom a replikációs szabályzat?
+Lépjen a **Site Recovery-tároló** > **Site Recovery-infrastruktúra** > **replikációs házirendek**. Válassza ki a házirendet, amelyet szerkeszteni és menteni a módosításokat. Minden olyan változás túl a meglévő replikálását alkalmazza.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>A helyreállítási pontok teljes másolat, a virtuális gép vagy különbségi vannak?
 Az első helyreállítási pontot, amely akkor jön létre a teljes példánnyal rendelkezik. Egymást követő helyreállítási pontot kell a változásokat.
@@ -125,7 +126,7 @@ Az első helyreállítási pontot, amely akkor jön létre a teljes példánnyal
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>A helyreállítási pontok megőrzési időszakának megnöveli a tárolási költségek?
 Igen. Ha növeli a megőrzési időtartam 24 óra, 72 óra, a Site Recovery menti a helyreállítási pontok egy további 48 órán át. A hozzáadott idő tárolási díjakat számítunk fel. Például ha egyetlen helyreállítási pont rendelkezik az új módosításokkal, 10 GB-os és a GB-onkénti költség 0,16 $ / hó, a további díjakat lenne $ 1.6-os * 48 havonta.
 
-## <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia 
+## <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia
 
 ### <a name="what-is-multi-vm-consistency"></a>Mi az virtuális gépre kiterjedő konzisztencia?
 Ez azt jelenti, hogy így arról, hogy a helyreállítási pont konzisztens az összes a replikált virtuális gépek között.
@@ -134,7 +135,7 @@ A virtuális gépek lesz megosztott összeomlás-konzisztens és alkalmazáskonz
 Olvassa el az oktatóanyag [több virtuális gépre kiterjedő konzisztencia engedélyezése](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Helyezhetem el a feladatátvételt egyetlen virtuális gép egy adott virtuális gépre kiterjedő konzisztencia replikációs csoport?
-A "Virtuális gépre kiterjedő konzisztencia" lehetőség kiválasztásával, vannak feltüntetve, hogy az alkalmazás maga csoportban lévő összes virtuális gépet. Ezért egyetlen virtuális gép feladatátvétele nem engedélyezett. 
+A "Virtuális gépre kiterjedő konzisztencia" lehetőség kiválasztásával, vannak feltüntetve, hogy az alkalmazás maga csoportban lévő összes virtuális gépet. Ezért egyetlen virtuális gép feladatátvétele nem engedélyezett.
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>Hány virtuális gépet is replikálni a virtuális gépre kiterjedő konzisztencia replikációs csoport részeként?
 16 virtuális gépeket együtt, egy replikációs csoport is lehet replikálni.
@@ -145,9 +146,12 @@ Intenzív CPU, mert több virtuális gépre kiterjedő konzisztencia engedélyez
 
 ## <a name="failover"></a>Feladatátvétel
 
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Hogyan kapacitás garantáltan a célrégióban az Azure virtuális gépek?
+Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
+
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
 
-A feladatátvétel nem automatikus. A portálon egyetlen kattintással megkezdése folyamatban lévő feladatátvételi teszteket, vagy használhatja [PowerShell](azure-to-azure-powershell.md) feladatátvétel indításához. 
+A feladatátvétel nem automatikus. A portálon egyetlen kattintással megkezdése folyamatban lévő feladatátvételi teszteket, vagy használhatja [PowerShell](azure-to-azure-powershell.md) feladatátvétel indításához.
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Nyilvános IP-cím megőrizhetem a feladatátvételt követően?
 
@@ -158,7 +162,8 @@ Igen, őrizheti meg magánhálózati IP-cím. Alapértelmezés szerint a Vészhe
 
 ### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>A feladatátvételt követően a kiszolgáló nem rendelkezik a azonos IP-címét a forrásoldali virtuális Géppel. Miért van, egy új IP-cím hozzárendelve?
 
-A Site Recovery megpróbálja adja meg az IP-címet a feladatátvétel időpontjában. Ha egy másik virtuális gépet tart, hogy a cím, a Site Recovery és a cél állítja be a következő elérhető IP-címe. Hogyan kezeli a Site Recovery-címzés teljes ismertetése, lásd: [hálózatleképezés és virtuális hálózatok IP-címzés beállítása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
+A Site Recovery megpróbálja adja meg az IP-címet a feladatátvétel időpontjában. Ha egy másik virtuális gépet tart, hogy a cím, a Site Recovery és a cél állítja be a következő elérhető IP-címe.
+Hogyan kezeli a Site Recovery-címzés teljes ismertetése, lásd: [hálózatleképezés és virtuális hálózatok IP-címzés beállítása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Mik a **legutóbbi (legkisebb helyreállítási Időkorlát)** helyreállítási pontok?
 A **legutóbbi (legkisebb helyreállítási Időkorlát)** lehetőség először feldolgozza a helyreállítási pont létrehozása az egyes virtuális Gépekhez,-ba irányuló feladatátvétel előtt a Site Recovery szolgáltatásba küldött összes adatot. Ezt a lehetőséget biztosít a a legalacsonyabb helyreállítási időkorlátot (RPO), mert a virtuális gép létrehozása után a feladatátvételi rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
@@ -173,7 +178,7 @@ A **utoljára feldolgozva** lehetőséget minden virtuális gépre a legújabb h
 A feladatátvétel után a szolgáltatáskimaradás elhárítása után is indíthat. A Site Recovery nem követeli meg, hajtsa végre a feladatátvételt az elsődleges régióból.
 
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Mi az a virtuális gép feladatátvétel RTO?
-A Site Recovery rendelkezik egy [2 óra RTO szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Azonban az esetek többségében a Site Recovery virtuális gépek feladatátvétele percen belül. Kiszámíthatja az RTO nyissa meg a feladatátvételt feladatok, amely az időt jeleníti meg a virtuális Géphez csatlakozva tartottak. Helyreállítási terv az RTO, tekintse meg a szakasz alatt. 
+A Site Recovery rendelkezik egy [2 óra RTO szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Azonban az esetek többségében a Site Recovery virtuális gépek feladatátvétele percen belül. Kiszámíthatja az RTO nyissa meg a feladatátvételt feladatok, amely az időt jeleníti meg a virtuális Géphez csatlakozva tartottak. Helyreállítási terv az RTO, tekintse meg a szakasz alatt.
 
 ## <a name="recovery-plans"></a>Helyreállítási tervek
 
@@ -188,7 +193,7 @@ A helyreállítási terv a Site Recovery koordinálja a virtuális gépek felada
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>Hogyan valósul alkalmazás-előkészítés a helyreállítási tervet?
 
-A helyreállítási terv az alkalmazás-előkészítés eléréséhez több csoportot is létrehozhat. Minden csoport átadja a feladatokat egy időben. Virtuális gépek számára a ugyanazon csoport nem része felett együtt, majd egy másik csoportot. Egy alkalmazás modellezésére a helyreállítási terv használatával kapcsolatban lásd: [helyreállítási tervek](recovery-plan-overview.md#model-apps). 
+A helyreállítási terv az alkalmazás-előkészítés eléréséhez több csoportot is létrehozhat. Minden csoport átadja a feladatokat egy időben. Virtuális gépek számára a ugyanazon csoport nem része felett együtt, majd egy másik csoportot. Egy alkalmazás modellezésére a helyreállítási terv használatával kapcsolatban lásd: [helyreállítási tervek](recovery-plan-overview.md#model-apps).
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Hol találhatom meg a helyreállítási terv RTO?
 A helyreállítási terv RTO ellenőrzéséhez hajtsa végre a helyreállítási terv feladatátvételi tesztjét, és nyissa meg **Site Recovery-feladatok**.
@@ -199,7 +204,7 @@ A következő példában a feladat SAPTestRecoveryPlan nevű tartott 8 perc és 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>A helyreállítási tervbe is hozzáadhatok automation-runbookok?
 Igen, integrálható az Azure Automation-runbookok a helyreállítási tervbe. [További információk](site-recovery-runbook-automation.md).
 
-## <a name="reprotection-and-failback"></a>Ismételt védelem és a feladat-visszavétel 
+## <a name="reprotection-and-failback"></a>Ismételt védelem és a feladat-visszavétel
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>A feladatátvétel után az elsődleges régióból egy vész-helyreállítási régióba vannak a virtuális gépek automatikusan védett DR régióban?
 Nem. Ha Ön [átadja a feladatokat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) Azure virtuális gépek egyik régióból a másikba, a virtuális gépek indítása a DR régióban egy nem védett állapotban. Feladat-visszavételt a virtuális gépek az elsődleges régióra, kell [ismételt védelme](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) a virtuális gépek a másodlagos régióban.
@@ -208,7 +213,7 @@ Nem. Ha Ön [átadja a feladatokat](https://docs.microsoft.com/azure/site-recove
 Azt az adott helyzettől függ. Például ha a forrásrégióban virtuális gép létezik, csak között a forrás és a cél lemezzel változtatások vannak szinkronizálva. A Site Recovery a különbözeti kiszámítja a lemezek összehasonlításával, és ezután az adatok átvitele. Ez a folyamat általában néhány órát vesz igénybe. Ismételt védelem során történtekkel kapcsolatos további információkért lásd: [ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges régióba]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Mennyi idő mindezt végezze el a feladat-visszavételt?
-Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba. 
+Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba.
 
 ## <a name="capacity"></a>Kapacitás
 ### <a name="does-site-recovery-work-with-reserved-instance"></a>A fenntartott példány működik a Site Recovery?

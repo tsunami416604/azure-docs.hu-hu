@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213450"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652280"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nem lehet RDP az Azure Virtual Machines, mert a DHCP-ügyfél szolgáltatás le van tiltva
 
@@ -27,7 +27,6 @@ Ez a cikk ismerteti a problémát, amelyben nem lehet a távoli asztal az Azure 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Probléma
-
 Nem lehet RDP-kapcsolatok egy virtuális Gépet az Azure-ban a DHCP-ügyfél szolgáltatás le van tiltva, a virtuális gépen. Amikor ellenőrizheti a képernyőképen a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, megjelenik a virtuális gép indul el megfelelően, és a hitelesítő adatokat a bejelentkezési képernyőn vár. Ön távolról tekintse meg az eseménynaplókat a virtuális gépen az Eseménynapló használatával. Láthatja, hogy a DHCP-ügyfél szolgáltatás nincs elindítva vagy nem indul el. A következő egy minta jelentkezzen be:
 
 **Naplófájl neve**: Rendszer </br>
@@ -98,7 +97,7 @@ A probléma megoldásához, soros vezérlőelem használatával engedélyezze a 
 1. Csatlakozás [soros konzol](serial-console-windows.md) , és nyissa meg egy PowerShell-példány.
 2. Töltse le a folyamat figyelője eszközt a következő szkript futtatásával:
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ A probléma megoldásához, soros vezérlőelem használatával engedélyezze a 
 3. Próbálja ki a virtuális Géphez való csatlakozáshoz a távoli asztal használatával.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP-ügyfél szolgáltatás összeomlik vagy lefagy
+
 1. Ha a szolgáltatás állapotának Beragadt a **kezdő** vagy **leállítása** állapotban van, próbálja meg leállítani a szolgáltatást:
 
         sc stop DHCP
@@ -205,5 +205,3 @@ A probléma megoldásához, soros vezérlőelem használatával engedélyezze a 
 ## <a name="next-steps"></a>További lépések
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a megoldott probléma.
-
-

@@ -1,10 +1,10 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - fürtök törlése alkalmazás |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minta - alkalmazás a Service Fabric-fürt eltávolítása.
+title: Az Azure PowerShell-Példaszkript – egy fürt alkalmazás eltávolítása |} A Microsoft Docs
+description: Az Azure PowerShell-Példaszkript – Service Fabric-fürtön az alkalmazás eltávolítása.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,36 +13,36 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ea7037fc3655298fc4c03b8d9f988a55e42c9fe9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: HT
+ms.openlocfilehash: 05edc6bce6744acd14dea2358663c4097922f2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927862"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667463"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Alkalmazások eltávolítása a Service Fabric-fürt
+# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Alkalmazás eltávolítása egy Service Fabric fürtről
 
-Ez a parancsfájlpélda futó Service Fabric-alkalmazás példány törlése, és megszünteti az alkalmazástípus és -verzió a fürtből.  Az alkalmazáspéldány törlésekor is törlődnek a futó szolgáltatás az adott alkalmazáshoz tartozó példányok. Szabja testre a paramétereket szükség szerint. 
+Ez a példaszkript egy futó Service Fabric-alkalmazás példány törli, és megszünteti az alkalmazás típusát és a fürt verzióját.  Az alkalmazáspéldány törlésével az adott alkalmazáshoz kapcsolódó összes éppen futó szolgáltatáspéldányt is törli. Szabja testre a paramétereket szükség szerint. 
 
-Szükség esetén telepítse a Service Fabric PowerShell-modulját és a [Service Fabric SDK](../service-fabric-get-started.md). 
+Ha szükséges, telepítse a Service Fabric PowerShell-modult a [Service Fabric SDK](../service-fabric-get-started.md)-val. 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/remove-application/remove-application.ps1 "Remove an application from a cluster")]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Egy futó Service Fabric-alkalmazás példány eltávolítja a fürtből.  |
-| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Megszünteti a Service Fabric alkalmazástípus és -verzió a fürtből. |
+| [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | Egy futó Service Fabric-alkalmazás példány eltávolítja a fürtről.  |
+| [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Megszünteti egy Service Fabric-alkalmazás típusát és a fürt verzióját. |
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Service Fabric PowerShell-modul: [Azure PowerShell dokumentációs](/powershell/azure/service-fabric/?view=azureservicefabricps).
+A Service Fabric PowerShell-modul további információkért lásd: [Azure PowerShell-dokumentáció](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Azure Service Fabric további Powershell-példák találhatók a [Azure PowerShell-példák](../service-fabric-powershell-samples.md).
+További Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.

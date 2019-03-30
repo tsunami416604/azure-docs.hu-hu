@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 44a9784e47772c5a2ae1335aa048a4d3b86073eb
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 59dc9f82251e7a406e6fe1339fdb55b4880cd74d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577106"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Az Azure Active Directory-integráció Pega rendszerekkel
 
@@ -207,7 +207,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Pega rendszerekkel, hajtsa v
 
     a. Másolás a **entitás azonosító** értékét, és illessze be a **azonosító** szövegmezőjébe a **alapszintű SAML-konfigurációja** az Azure Portalon.
 
-    b.  Másolás a **helyességi feltétel fogyasztói Service (ACS) helyen** értékét, és illessze be a **válasz URL-cím** szövegmező szövegmezőjébe a **alapszintű SAML-konfigurációja** az Azure Portalon.
+    b. Másolás a **helyességi feltétel fogyasztói Service (ACS) helyen** értékét, és illessze be a **válasz URL-cím** szövegmezőjébe a **alapszintű SAML-konfigurációja** az Azure Portalon.
 
     c. Válassza ki **tiltsa le a kérelem-aláírás**.
 

@@ -4,7 +4,7 @@ description: A Service Fabric Reliable Actors – újbóli belépés bemutatása
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: amanbha
 ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c7a4066a949ad6e66c45dff67f1e80801f2fa4cd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055260"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669027"
 ---
 # <a name="reliable-actors-reentrancy"></a>A Reliable Actors – újbóli belépés
 A Reliable Actors-futtatókörnyezet, alapértelmezés szerint lehetővé teszi a logikai hívás környezetfüggő – újbóli belépés. Ez lehetővé teszi, hogy ha az azonos környezetben hívásláncot azok ismételten belépő az aktorok esetében. Például egy Aktor üzenetet küld az Aktor B, akik egy üzenetet küld az Aktor c-hez Feldolgozni az üzenetet részeként Aktor C meghívja az Aktor A, az üzenet-e ismételten belépő, így a megengedett, hogy. Bármely más hívási környezet részét képező többi üzenet le lesz tiltva az Aktor A feldolgozás befejezéséig tartó.

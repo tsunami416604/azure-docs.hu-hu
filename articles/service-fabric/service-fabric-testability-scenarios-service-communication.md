@@ -1,10 +1,10 @@
 ---
-title: 'Tesztelhetőségi: Szolgáltatás kommunikációs |} Microsoft Docs'
-description: Szolgáltatások közötti kommunikáció az olyan kritikus integrációs pont Service Fabric-alkalmazás. A cikk ismerteti a tervezési szempontokat és tesztelési módszereket.
+title: 'Testability: Szolgáltatás kommunikációs |} A Microsoft Docs'
+description: Szolgáltatások közötti kommunikáció nem Service Fabric-alkalmazás kritikus fontosságú integrációs pont. Ez a cikk ismerteti a tervezési szempontjai és tesztelési módszereket.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e3ea537d310d49c934cf6789184f090791cf16a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211225"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665746"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>A Service Fabric tesztelhetőségi forgatókönyvek: kommunikációs szolgáltatás
-Mikroszolgáltatások létrehozására és természetesen az Azure Service Fabric architekturális stílusok szolgáltatásorientált felülete. Az elosztott-architektúrák típusai componentized mikroszolgáltatási alkalmazások általában több szolgáltatás egymással kapcsolatot igénylő álló. Még a legegyszerűbb esetben általában van legalább egy állapot nélküli webszolgáltatás és az állapot-nyilvántartó tárolási ADATSZOLGÁLTATÁSNÁL, amely kell kommunikálniuk.
+# <a name="service-fabric-testability-scenarios-service-communication"></a>A Service Fabric testability alkalmazási helyzetek: A szolgáltatások közötti kommunikáció
+Mikroszolgáltatások és architekturális stílusok szolgáltatásorientált felülete természetes módon az Azure Service Fabricben. Az elosztott architektúrák az ilyen típusú componentized épülő alkalmazások általában több szolgáltatás, amely egymáshoz beszélnie állnak. Még a legegyszerűbb esetben általában rendelkezik legalább egy állapot nélküli webes szolgáltatás és a egy állapotalapú tárolási szolgáltatás, amely kell kommunikálniuk.
 
-Szolgáltatások közötti kommunikáció nem egy alkalmazást, az kritikus integrációs pont, mert minden egyes szolgáltatás elérhetővé teszi a távoli API más szolgáltatások. API határok olyan készlete, amelyek i/o általában végzett néhány eljárni, tesztelése és érvényesítési megfelelő mennyiségű igényel.
+Szolgáltatások közötti kommunikáció egy alkalmazás egy kritikus fontosságú integrációs pontot azért minden egyes szolgáltatás más szolgáltatások egy távoli API-t tesz elérhetővé. Működő API határokat egy készletét, amely általában magában foglalja az i/o-néhány ellátás, kellő számú tesztelés és ellenőrzés szükséges.
 
-Nincsenek abban az esetben, ha a szolgáltatás határok együtt vezetékes elosztott rendszer számos szempontok:
+Számos szempontot győződjön meg arról, amikor ezen szolgáltatások határait a vezetékes együtt az elosztott rendszerekben:
 
-* *Átviteli protokoll*. Fog alkalmazni a megnövekedett való együttműködés HTTP, vagy egy egyéni bináris protokoll maximális átviteli sebesség eléréséhez?
-* *Hibakezelés*. Állandó és átmeneti hibák kezelésének módját? Mi történik, ha a szolgáltatás egy másik csomópont?
-* *Időtúllépések és a késleltetés*. Állással alkalmazásokban hogyan minden szolgáltatási réteg kezelnek várakozási ideje a vermen keresztül, és a felhasználó számára?
+* *Átviteli protokoll*. Fog használni a megnövekedett együttműködés HTTP-, vagy egy egyéni bináris protokoll maximális átviteli sebesség?
+* *Hibakezelés*. Állandó és átmeneti hibák kezelésének módját? Mi történik, ha egy szolgáltatás helyezi át egy másik csomópont?
+* *Időtúllépések és a késleltetés*. Az alkalmazásokban. állással hogyan fogja minden szolgáltatási réteg kezelni késés a verem és a felhasználó számára?
 
-Hogy a Service Fabric által biztosított beépített szolgáltatás kommunikációs összetevők valamelyikét használja, vagy hoz létre a saját, a szolgáltatások közötti kapcsolat tesztelése fontos a rugalmasságot az alkalmazás biztosítja.
+E egy-egy Service Fabric által biztosított beépített szolgáltatás kommunikációs összetevőjét használhatja, vagy létrehozhat egy saját, tesztelés, a szolgáltatások közötti interakciókat biztosítva rugalmasságot az alkalmazásban.
 
-## <a name="prepare-for-services-to-move"></a>Készítse elő a szolgáltatások áthelyezése
-Előfordulhat, hogy idővel Navigálás szolgáltatáspéldány. Ez akkor különösen igaz olyan esetben, ha vannak konfigurálva az optimális erőforrás egyéni szabott terheléselosztás betöltési metrikáit. A Service Fabric helyezi át a szolgáltatáspéldány azok rendelkezésre állásának maximalizálását frissítések, a feladatátvétel, a kibővített és a más elosztott rendszer élettartamuk során előforduló helyzetek esetén.
+## <a name="prepare-for-services-to-move"></a>Szolgáltatások áthelyezése előkészítése
+Előfordulhat, hogy idővel Navigálás szolgáltatáspéldányok. Ez akkor különösen igaz, ha vannak konfigurálva az optimális erőforrás szabott egyéni terheléselosztási terhelési mérőszámok. A Service Fabric áthelyezi a szolgáltatáspéldányok a rendelkezésre állás maximalizálása érdekében a frissítéseket, folyamatban lévő feladatátvételi teszteket, horizontális felskálázás és más helyzetekben egy elosztott rendszer élettartama során előforduló során is.
 
-Szolgáltatások Navigálás a fürt, mivel az ügyfelek és egyéb szolgáltatások szeretné kezelni a két forgatókönyv akkor kérdezze meg a szolgáltatás kell előkészíteni:
+Szolgáltatások Navigálás a fürtben, mint az ügyfelek és egyéb szolgáltatások fel kell készülnöm szeretné kezelni a két esetben beszélnek szolgáltatáshoz:
 
-* A szolgáltatás példányt, vagy a partíció replika óta volt szó, ha azt át lett helyezve. Ez a szolgáltatási életciklus részét, és azt kell várt, és az alkalmazás élettartama során.
-* A szolgáltatás példányt, vagy a partíció replikája éppen áthelyezi. A szolgáltatás egyik csomópontról egy másikra feladatátvételi nagyon gyorsan Service Fabric történik, bár lehet késleltetést a rendelkezésre állási Ha ez az összetevő a szolgáltatás elindításához lassú.
+* A szolgáltatás-példány vagy partíció replikája az utolsó óta, akkor azt már át lett helyezve. Ez egy normál része egy szolgáltatás-életciklusának, és az alkalmazás teljes élettartama során számíthat.
+* A szolgáltatás-példány vagy partíció replikája áthelyezése folyamatban van. Egyik csomópontról a másikra szolgáltatás feladatátvétele Service Fabric nagyon gyorsan történik, bár előfordulhat késleltetés rendelkezésre állási Ha ez az összetevő a szolgáltatás indítása lassú.
 
-Ezek a forgatókönyvek szabályosan kezelése fontos smooth futó rendszer esetén. Ehhez a következőket kell figyelembe venni, hogy:
+Ezek a forgatókönyvek szabályosan kezelése fontos az smooth futó rendszerek. Ha igen, vegye figyelembe, hogy:
 
-* Minden szolgáltatás, amely képes csatlakozni egy *cím* (például a HTTP vagy a websocket elemek) figyelő. Ha egy szolgáltatáspéldány vagy partíció helyezi, a cím végpont változik. (Áthelyezi azt egy másik csomópont egy másik IP-címmel.) A beépített kommunikációs összetevők használata, azok újra feloldó szolgáltatás címek meg fogja kezelni.
-* Lehet, a szolgáltatás példány elindul felfelé a figyelő a szolgáltatás várakozási ideje ideiglenes növelése újra. Ez attól függ, hogy milyen gyorsan a szolgáltatás megjelenik-e a figyelő a szolgáltatáspéldány áthelyezése után.
-* A meglévő kapcsolatokat kell zárni, majd újra megnyitni a szolgáltatás egy új csomópont megnyitása után. Egy szabályos csomópont leállítása vagy újraindítása lehetővé teszi, hogy a meglévő kapcsolatok kell leállítása idő.
+* Minden szolgáltatás, amely lehet csatlakoztatni egy *cím* , amely figyeli (például a HTTP vagy a websockets protokoll). Ha egy szolgáltatáspéldány vagy partíció helyezi, a cím végpontjainak módosítása. (Ez áthelyezi egy másik csomópont egy másik IP-címmel.) A beépített kommunikációs összetevők használata, azok újra feloldó szolgáltatás címek meg fogja kezelni.
+* Előfordulhat, hogy lehet a szolgáltatások adatelérési idejére, a szolgáltatás-példány elindul felfelé a figyelő ideiglenes növekedése újra. Ez attól függ, hogy mennyi idő alatt a szolgáltatás a figyelő követően megnyílik a szolgáltatás példánya kerül.
+* Minden olyan meglévő kapcsolatokat kell zárni és újra megnyitja a szolgáltatás egy új csomópont megnyitása után kell. Meglévő kapcsolatok szabályosan leállítani időt hagy az normális csomópont meghibásodásakor vagy újraindítás.
 
-### <a name="test-it-move-service-instances"></a>Tesztelheti: szolgáltatáspéldány áthelyezése
-A Service Fabric tesztelhetőségi eszközök segítségével egy teszt forgatókönyv tesztelésére ezekben a helyzetekben különböző módon hozhat létre:
+### <a name="test-it-move-service-instances"></a>Tesztelje azt: Helyezze át a szolgáltatáspéldányok
+A Service Fabric testability eszközök segítségével egy teszt forgatókönyv teszteléséhez ezekben a helyzetekben különböző módon hozhat létre:
 
-1. Helyezze át egy állapotalapú szolgáltatás elsődleges másodpéldány.
+1. Helyezze át egy állapotalapú szolgáltatás elsődleges replikája.
    
-    Az elsődleges másodpéldány állapotalapú szolgáltatási partíció áthelyezhető okból sem állhat. Ezzel a cél egy adott partícióra megtekintéséhez, hogy a szolgáltatások reagálnak az áthelyezés nagyon szabályozott módon elsődleges replikáját.
+    Az elsődleges replika állapotalapú szolgáltatás partíció áthelyezhetők a számtalan. Ezzel az elsődleges másodpéldány egy adott partíció megtekintéséhez, hogy a szolgáltatások reagálás az áthelyezés nagyon ellenőrzött módon célozza.
    
     ```powershell
    
@@ -62,7 +62,7 @@ A Service Fabric tesztelhetőségi eszközök segítségével egy teszt forgató
     ```
 2. Csomópont leállítása.
    
-    Egy csomópont leáll, amikor a Service Fabric helyez át valamennyi szolgáltatás példányainak és partíciók, melyeket a fürt más elérhető csomópontok közül a csomóponton. Ezzel a teszt olyan helyzet, ha egy csomópont a fürt és a szolgáltatáspéldány összes elvesztését, és ezen a csomóponton replikának történő áthelyezéséhez.
+    Amikor egy csomópont leáll, a Service Fabric összes szolgáltatáspéldányok vagy partíció, amely a csomóponton, hogy a fürt más elérhető csomópontok egyikét is helyezi. Használja ezt a helyzetet, ahol egy csomópontot a fürtből, valamint a szolgáltatáspéldányok összes elvesztését, és ezen a csomóponton replikák át kell helyeznie teszteléséhez.
    
     A PowerShell segítségével leállíthatja egy csomópont **Stop-ServiceFabricNode** parancsmagot:
    
@@ -72,15 +72,15 @@ A Service Fabric tesztelhetőségi eszközök segítségével egy teszt forgató
    
     ```
 
-## <a name="maintain-service-availability"></a>Szolgáltatás rendelkezésre állása karbantartása
-Platformként a Service Fabric célja, hogy a szolgáltatások magas rendelkezésre állás biztosításához. De szélsőséges esetben alapul szolgáló infrastruktúra problémákat is okozhatnak elérhetetlensége. Fontos túl tesztelése, forgatókönyvek esetén.
+## <a name="maintain-service-availability"></a>Szolgáltatás elérhetőségének kezelése
+-Platformként a Service Fabric célja, hogy a szolgáltatások magas rendelkezésre állást biztosít. De a szélsőséges esetben alapjául szolgáló infrastruktúrával kapcsolatos problémák is okozhatnak elérhetetlensége. Fontos, ebben az esetben túl teszteléséhez.
 
-Állapotalapú szolgáltatások a kvórum rendszerbe használja replikálja a magas rendelkezésre állás állapota. Ez azt jelenti, hogy a kvórum replikák kell írási műveletek végrehajtásához. Bizonyos ritkán előforduló esetekben, például a széles körű hardverhiba replikák kvórum nem érhetők el. Ezekben az esetekben pedig nem fogják tudni írási műveletek végrehajtására, de továbbra is lesz az olvasási műveletek végrehajtásához.
+Állapotalapú szolgáltatások egy kvórum-alapú rendszer használatával replikálni a magas rendelkezésre állási állapotát. Ez azt jelenti, hogy a kvórum replikák kell írási műveletek végrehajtásához. Bizonyos ritkán előforduló esetekben, például egy széles körű hardverhiba replikák kvórum előfordulhat, hogy nem érhető el. Ezekben az esetekben nem lesz írási műveletek végrehajtására, de Ön továbbra is képesek lesznek az olvasási műveletek végrehajtásához.
 
-### <a name="test-it-write-operation-unavailability"></a>Tesztelheti: írási művelet elérhetetlensége
-A Service Fabric a tesztelhetőségi eszközök használatával helyezhet el a hibát, amely a kvórum elvesztése, mert egy tesztelési kapott. Bár az ilyen esetben nem ritka, fontos, hogy az ügyfelek és az állapotalapú service szolgáltatástól függő szolgáltatások előkészített kezelésére, ha azok nem hajtható végre írási kérelmeket szolgál, hogy amikor. Fontos továbbá, hogy az állapotalapú szolgáltatás felismeri ezt a lehetőséget, és lehet szabályosan tájékoztatni a hívóknak.
+### <a name="test-it-write-operation-unavailability"></a>Tesztelje azt: Írási művelet elérhetetlensége
+A testability eszközökkel a Service Fabricben, szúr be egy tartalék, melynek kvórum elvesztése teszteléshez használhat. Ilyen esetben nem ritka, fontos, hogy az ügyfelek és a egy állapotalapú szolgáltatás függő szolgáltatások kezelésére, ahol nem vállalnak írási kérelmeket, amikor készek. Fontos továbbá, hogy maga az állapotalapú szolgáltatás ismeri ezt a lehetőséget, és biztonságosan kommunikálhatnak, a hívó.
 
-A PowerShell használatával lehet szükség a kvórum elvesztése **Invoke-ServiceFabricPartitionQuorumLoss** parancsmagot:
+A PowerShell használatával is idéz elő kvórum elvesztése **Invoke-ServiceFabricPartitionQuorumLoss** parancsmagot:
 
 ```powershell
 
@@ -88,10 +88,10 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-Ebben a példában hivatott `QuorumLossMode` való `QuorumReplicas` annak jelzésére, hogy azt szeretnénk, hogy kvórum elvesztése nélkül összes replika le. Ezzel a módszerrel az olvasási műveletek is továbbra is lehetséges. Egy olyan forgatókönyvet, amikor nem érhető el egy teljes partíció teszteléséhez állíthat be erre a kapcsolóra `AllReplicas`.
+Ebben a példában beállított `QuorumLossMode` való `QuorumReplicas` jelzi, hogy szeretnénk idéz elő a kvórum elvesztése összes replika eltávolítása nélkül. Így az olvasási műveletek így is előfordulhatnak. Hol érhető el egy teljes partíciót a forgatókönyv teszteléséhez is beállíthatja ezt a kapcsolót `AllReplicas`.
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók tesztelhetőségi műveletek](service-fabric-testability-actions.md)
+[További tudnivalók a testability műveletek](service-fabric-testability-actions.md)
 
-[További tudnivalók tesztelhetőségi forgatókönyvek](service-fabric-testability-scenarios.md)
+[További tudnivalók a testability alkalmazási helyzetek](service-fabric-testability-scenarios.md)
 

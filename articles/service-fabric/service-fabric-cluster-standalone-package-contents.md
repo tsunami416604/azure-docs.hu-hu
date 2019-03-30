@@ -4,7 +4,7 @@ description: Leírás és a Windows Server az Azure Service Fabric különálló
 services: service-fabric
 documentationcenter: .net
 author: maburlik
-manager: timlt
+manager: chackdan
 editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: facdcd162826e6f77ace098391459cba00061c4f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141611"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661615"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server a Service Fabric különálló csomag tartalma
 Az a [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric különálló csomag, talál a következő fájlokat:
@@ -52,7 +52,7 @@ Az a [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabri
 | ClusterConfig.gMSA.Windows.MultiMachine.json |Egy fürt mintát tartalmazó konfigurációs fájlt a biztonságos, több (vagy virtuális gépen) fürtöt, az egyes csomópontok állapotinformációit a biztonságos fürt összes beállítását. A fürt használatával lett biztonságossá téve [csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Fürt-konfigurációs minták
-Fürt konfigurációs sablonok legfrissebb verzióit a GitHub-oldalon található: [önálló fürt konfigurációs mintáinak](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Fürt konfigurációs sablonok legfrissebb verzióit a GitHub-oldalon talál: [Önálló fürtkonfiguráció minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Független futtatókörnyezet-csomag
 A legfrissebb futtatókörnyezet-csomag automatikusan letölti a fürt üzembe helyezése során [letöltési hivatkozás - Service Fabric-futtatókörnyezet – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).

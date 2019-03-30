@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840817"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666787"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
@@ -129,7 +129,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>A rugalmas feladatok előzetes verzióinak engedélyezése az előfizetéséhez
 
-A rugalmas feladatok használatához az alábbi parancs futtatásával regisztrálja a szolgáltatást Azure-előfizetésében (csak egyszer kell elvégezni minden olyan előfizetés esetében, ahol rugalmas feladatokat kíván futtatni):
+Rugalmas feladatok használata a funkció regisztrálása az Azure-előfizetésben a következő parancs futtatásával. Futtassa a következő parancsot, amelyben a feladatügynök kiépítése szeretne az előfizetés esetében. Feladat célok adatbázisokat tartalmazó előfizetés nem kell regisztrálni.
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql

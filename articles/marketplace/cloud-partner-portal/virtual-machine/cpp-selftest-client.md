@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309418"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649086"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Hozzon létre egy teszteléséhez ügyfél való használatát egy Azure-beli virtuálisgép-lemezkép
 
 Ez a cikk egy útmutató, amely egy ügyfél szolgáltatás létrehozására szolgáló használ fel, a teszteléséhez API-t használja. A helyi tesztelése API segítségével elővalidálási egy virtuális gépet (VM) annak érdekében, hogy megfelelnek-e a legújabb Azure Marketplace közzétételi követelményeknek. Az ügyfél szolgáltatás lehetővé teszi, hogy tesztelje egy virtuális Gépet, mielőtt elküldi az ajánlat a Microsoft általi hitelesítésre.
-
 
 ## <a name="development-and-testing-overview"></a>Fejlesztési és tesztelési áttekintése
 
@@ -41,13 +40,11 @@ A magas szintű lépések teszteléséhez ügyfél létrehozásához a következ
 
 Miután létrehozta az ügyfél, tesztelheti a virtuális gép ellen.
 
-
 ### <a name="self-test-client-authorization"></a>Ügyfél-hitelesítés teszteléséhez
 
 Az alábbi ábrán látható, az engedélyezés működése a szolgáltatások közötti hívások ügyfél-hitelesítő adatokkal (közös titkos kulcsot vagy tanúsítvány).
 
 ![Ügyfél-hitelesítési folyamat](./media/stclient-dev-process.png)
-
 
 ## <a name="the-self-test-client-api"></a>A helyi tesztelése ügyfél API
 
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 A következő táblázat ismerteti az API-mezők.
@@ -83,11 +79,9 @@ A következő táblázat ismerteti az API-mezők.
 |  PortNo            |  Nyissa meg a port számát a virtuális Géphez való csatlakozáshoz. A portszám általában van `22` Linux- és `5986` for Windows.          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>Az API-t használ
 
 A PowerShell vagy a cURL használatával teszteléséhez API használhatja fel.
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Az API-t a Linux operációs rendszer használata a PowerShell használatával
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Az alábbi képernyőfelvételen látható az API hívásakor a PowerShellben.
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ A curl használatával az API meghívása, kövesse az alábbi lépéseket:
 2. A módszer a következő bejegyzés és tartalomtípus pedig JSON-t, az alábbi kódrészletben látható módon.
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 A következő képernyő egy példa az API-t a curl használatával mutatja.
 
 ![A curl-paranccsal API meghívása](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ Használatával a következő lépéseket az Azure AD-bérlőjében válassza ki
    A következő lépésekben szükség lehet a bérlő nevét (vagy a könyvtár neve), vagy a bérlő azonosítója (vagy a címtár-azonosító).
 
    **Bérlő információk lekéréséhez:**
-  
+
    A **Azure Active Directory áttekintése**, keressen a "Tulajdonságok", majd **tulajdonságok**. Az alábbi képernyőfelvétel-készítés példaként használva:
 
    - **Név** – a bérlő nevét vagy a könyvtár neve
@@ -284,7 +278,7 @@ A következő lépések segítségével regisztrálja az ügyfélalkalmazás.
 14. Kattintson a **Kiválasztás** gombra.
 15. Válassza a **Done** (Kész) lehetőséget.
 16. A **beállítások**válassza **tulajdonságok**.
-17. A **tulajdonságok**, görgessen le a **több-bérlős**. Válassza ki **Igen**.  
+17. A **tulajdonságok**, görgessen le a **több-bérlős**. Válassza ki **Igen**.
 
     ![Több-bérlős alkalmazás konfigurálása](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ A következő programok bármelyikét használhatja hozhat létre, és az OAuth-
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 A kérelem törzsében adja át a következő paraméterekkel:
 
 ```
@@ -364,7 +359,7 @@ Az alábbi képernyőfelvétel-készítés mutat példát a curl-parancs haszná
 
 Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncového bodu egy hasznos adat a következő formátumban:
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -387,7 +382,7 @@ var token = JObject.Parse(content)["access_token"];
 
 Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncového bodu egy hasznos adat a következő formátumban:
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>Alkalmazás-jogkivonatára az ügyfél át az API-hoz
 
 Adja át a jogkivonatot a helyi tesztelése API, az engedélyezési fejléc a következő kód használatával:
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>A helyi tesztelése ügyfél tesztelése
@@ -445,7 +438,7 @@ Az alábbi kódrészletek megjelenítése a vizsgálati eredmények JSON formát
 
 **Vizsgálati eredmények egy Windows virtuális gép számára:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ Az alábbi kódrészletek megjelenítése a vizsgálati eredmények JSON formát
 
 **Vizsgálati eredmények Linux rendszerű virtuális gép számára:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104488"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652586"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
 
@@ -145,7 +145,7 @@ A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előn
 - **Társviszonyban álló, csatlakoztatott vagy többszörös virtuális hálózatok**: A forgalom a társviszonyban álló virtuális hálózatba szűréséhez, szolgáltatásvégpont-szabályzatra kell alkalmazni egyenként ezeket a virtuális hálózatokat.
 - **Szűrés az internetes forgalmat a hálózati berendezések vagy az Azure-tűzfal**: Azure-szolgáltatások forgalmára, a házirendek szűrése végpontok keresztül, és rest berendezések vagy az Azure-tűzfalon keresztül Internet vagy az Azure hálózati forgalom szűrése. 
 - **Forgalom az Azure-szolgáltatások virtuális hálózatokon üzembe helyezett szűrés**: Az előzetes verzióban szolgáltatásvégpont-szabályzat nem támogatottak a felügyelt Azure-szolgáltatásokért, hogy a rendszer üzembe helyezi a virtuális hálózat. 
- Tekintse meg az egyes szolgáltatásokra vonatkozó [korlátozásokat.](#Limitations)
+ Tekintse meg az egyes szolgáltatásokra vonatkozó [korlátozásokat.](#limitations)
 - **Forgalom szűrése az Azure-szolgáltatások helyszíni**: Szolgáltatásvégpont-szabályzat csak alkalmazása a forgalomra a házirendek társított alhálózatokat. Az egyes Azure-beli szolgáltatási erőforrásokhoz való helyszíni hozzáférés engedélyezéséhez a forgalmat virtuális hálózati berendezésekkel vagy tűzfalakkal szűrheti.
 
 ## <a name="logging-and-troubleshooting"></a>Naplózás és hibaelhárítás

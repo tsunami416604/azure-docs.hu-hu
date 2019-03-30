@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575215"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648316"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>Az IoT első lépései az Azure Security Center (ASC) 
 
@@ -53,7 +53,7 @@ Engedélyezze a monitorozást az eszköz az Identitáskezelés, eszköz-felhő �
 
 1. [Az IoT Hub szolgáltatás IoT ASC engedélyezése](quickstart-onboard-iot-hub.md)
 1. Ha az IoT Hub nem tartozik regisztrált eszköz, [új eszköz regisztrálása](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
-1. [Hozzon létre egy ascforiot biztonsági modult](quickstart-create-security-twin.md) eszközökhöz. 
+1. [Az eszközök azureiotsecurity biztonsági modul létrehozása](quickstart-create-security-twin.md) eszközökhöz. 
 1. Megadni az eszköz és a rendszer működését normál keresztül [egyéni riasztások](quickstart-create-custom-alerts.md). 
 1. Hajtsa végre a rendszer tesztelésen, szolgáltatás és az eszköz állapotát. 
 1. Ismerkedés a [riasztások](concept-security-alerts.md), [javaslatok](concept-recommendations.md), és [részletes ismertetése a Log Analytics használatával](how-to-security-data-access.md) IoT Hub használatával. 
@@ -69,8 +69,7 @@ Ellenőrizze, hogy IoT-fokozott biztonsági képességei, például a távoli ka
 1. Az ügynök telepítése egy tényleges eszközön telepítése helyett az Azure szimulált eszközön [léptetéses egy új Azure virtuális gép (VM) be](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) elérhető zónában. 
 1. [Az ASC IoT biztonsági ügynök telepítése](how-to-deploy-linux-cs.md) a IoT-eszközt, vagy új virtuális Gépen.
 1. Kövesse az utasításokat [trigger_events](https://aka.ms/iot-security-github-trigger-events) egy ártalmatlan támadás szimulációjának futtatásához.
-1. ASC ellenőrizze az előző lépésben a szimulált támadás válaszul IoT-riasztások esetén. 
-    - Ellenőrzési öt perc alatt a szkript futtatása után kezdődik.
+1. ASC ellenőrizze az előző lépésben a szimulált támadás válaszul IoT-riasztások esetén. Ellenőrzési öt perc alatt a szkript futtatása után kezdődik.
 1. Ismerkedés a [riasztások](concept-security-alerts.md), [javaslatok](concept-recommendations.md), és [részletes ismertetése a Log Analytics használatával](how-to-security-data-access.md) IoT Hub használatával. 
 
 ## <a name="next-steps"></a>További lépések

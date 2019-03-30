@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0b6430a31f31f85f01f67994f6b6fa0f30af9575
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 20a438f4eb932596647002bf9d3072c651ac969c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879922"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630656"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-curl-in-computer-vision"></a>Gyors útmutató: A REST API-val miniatűrkép generálása és a cURL a Computer Vision
 
@@ -65,7 +65,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres válasz a(z) `<thumbnailFile>` helyen megszabott fájlba írja a miniatűrt. Ha a kérés meghiúsul, a válasz tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
+A sikeres válasz a(z) `<thumbnailFile>` helyen megszabott fájlba írja a miniatűrt. Ha a kérés meghiúsul, a válasz tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát. Ha a kérés úgy tűnik, hogy sikeres legyen, de a létrehozott miniatűr nem érvényes képfájl, lehet, hogy az előfizetési kulcs érvénytelen nem.
 
 ## <a name="next-steps"></a>További lépések
 

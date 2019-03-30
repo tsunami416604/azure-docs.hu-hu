@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385041"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649968"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Áttelepítés az Azure Container Service (ACS) az Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ ACS és az AKS különböző néhány fő területe, amely hatással van a migr�
 
 ### <a name="differences-between-kubernetes-versions"></a>Kubernetes-verzió közötti különbségek
 
-Ha migráláshoz Kubernetes egy újabb verziója (például: a 1.9.x 1.7.x), van néhány változtatást, hogy a k8s API-t a figyelmet igénylő.
+Ha a migráláshoz Kubernetes újabb verziójára (például: 1.7.x 1.9.x,), a k8s API-nak a figyelmet igénylő néhány változás.
 
 * [Egy ThirdPartyResource CustomResourceDefinition áttelepítése](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
 * [API-számítási feladatok módosítások verziókban 1.8-as és 1.9](https://kubernetes.io/docs/reference/workloads-18-19/).
@@ -144,7 +144,7 @@ Hajtsa végre a YAML-definíciók bármely szükséges módosításokat. Példa:
 
 ### <a name="3-optional-migrate-volumes"></a>3. (Nem kötelező) Kötetek áttelepítése
 
-Kötetek át az ACS-fürtben az AKS-fürt. További részletek találhatók a [állandó kötetek áttelepítése](#Migrating-Persistent-Volumes) szakaszban.
+Kötetek át az ACS-fürtben az AKS-fürt. További részletek találhatók a [állandó kötetek áttelepítése](#migrating-persistent-volumes) szakaszban.
 
 ### <a name="4-deploy-applications"></a>4. Alkalmazások üzembe helyezése
 

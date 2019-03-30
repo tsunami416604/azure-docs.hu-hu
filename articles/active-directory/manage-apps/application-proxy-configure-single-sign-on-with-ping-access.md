@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 319791c2436395c00dafc744fb6fcb1ff18b0750
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084081"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652331"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -43,7 +43,7 @@ További információk: [Azure Active Directory editions](../fundamentals/active
 
 ## <a name="publish-your-application-in-azure"></a>Az alkalmazás közzététele az Azure-ban
 
-Ez a cikk szól, akik közzétenni egy alkalmazást ebben a forgatókönyvben az első alkalommal. Megtudhatja, hogyan – első lépések alkalmazás és a PingAccess, mellett a közzétételi lépéseket mutatja be. Ha már konfigurálta a mindkét szolgáltatás, de a közzétételi lépéseket felelevenítéséhez, kihagyja az összekötő telepítését, és helyezze át a [adja hozzá az alkalmazás az Azure AD-alkalmazásproxyval](#add-your-app-to-Azure-AD-with-Application-Proxy).
+Ez a cikk szól, akik közzétenni egy alkalmazást ebben a forgatókönyvben az első alkalommal. Megtudhatja, hogyan – első lépések alkalmazás és a PingAccess, mellett a közzétételi lépéseket mutatja be. Ha már konfigurálta a mindkét szolgáltatás, de a közzétételi lépéseket felelevenítéséhez, kihagyja az összekötő telepítését, és helyezze át a [adja hozzá az alkalmazás az Azure AD-alkalmazásproxyval](#add-your-app-to-azure-ad-with-application-proxy).
 
 >[!NOTE]
 >Mivel ebben a forgatókönyvben az Azure AD közötti partneri és PingAccess, bizonyos utasítások találhatók a Ping Identity webhelyen.

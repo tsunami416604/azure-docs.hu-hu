@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 087de711fdbc70a4562045f8d774f2c6ae5a0db5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 087b52bd603e8aed6078ab340e84c1f6bd0e8082
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417038"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652195"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell-lel több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
 
@@ -30,7 +30,7 @@ ms.locfileid: "50417038"
 Hozza létre az Azure virtuális gépeken (VM), és csatolni a virtuális gépek mindegyike több hálózati adapterrel (NIC). Több hálózati adapter engedélyezze a hálózati adaptereken keresztüli forgalom típusainak elkülönítését. Ha például egy hálózati adapter előfordulhat, hogy kommunikáljon az internettel, amíg egy másik kommunikál, csak a belső erőforrásokhoz nem csatlakozik az internethez. Lehetővé teszi több hálózati adapter közötti hálózati forgalom külön számos hálózati virtuális berendezések, például az alkalmazásszolgáltatást és WAN-optimalizálás megoldások szükség.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan használja a következő lépésekkel a [Resource Manager üzemi modell](../virtual-machines/windows/multiple-nics.md).
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik:  [Resource Manager és klasszikus](../resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ismerje meg, hogyan használja a következő lépésekkel a [Resource Manager üzemi modell](../virtual-machines/windows/multiple-nics.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
@@ -52,7 +52,7 @@ A háttérbeli virtuális gépek létrehozása a következő erőforrások függ
 ### <a name="step-1---start-your-script"></a>1. lépés – a parancsfájl futtatásához
 Letöltheti a teljes PowerShell-parancsfájlt használja [Itt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Módosítsa a parancsfájl futtatásához az alábbi lépésekkel.
 
-1. A meglévő erőforráscsoportot, a fent telepített alapján az alábbi változók értékeinek módosítása [Előfeltételek](#Prerequisites).
+1. A meglévő erőforráscsoportot, a fent telepített alapján az alábbi változók értékeinek módosítása [Előfeltételek](#prerequisites).
 
     ```powershell
     $location              = "West US"
@@ -199,7 +199,7 @@ Most, hogy a letöltött és módosított a szkriptet, szükség szerint, a para
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5. lépés – a virtuális gép operációs rendszerén belül útválasztás konfigurálása
 
-Az Azure DHCP egy alapértelmezett átjáró a virtuális géphez csatolt első (elsődleges) hálózati adapterhez rendeli. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. Másodlagos hálózati adapterrel, azonban kommunikálhat kívül található erőforrásokkal. Konfigurálja az útválasztást a másodlagos hálózati adapterrel, tekintse meg a következő cikkeket:
+Az Azure DHCP egy alapértelmezett átjáró a virtuális géphez csatolt első (elsődleges) hálózati adapterhez rendeli. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. A másodlagos hálózati adapterek kommunikálhatnak az alhálózatukon kívül található erőforrásokkal. Konfigurálja az útválasztást a másodlagos hálózati adapterrel, tekintse meg a következő cikkeket:
 
 - [Windows virtuális gép több hálózati adapter konfigurálása](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
 )

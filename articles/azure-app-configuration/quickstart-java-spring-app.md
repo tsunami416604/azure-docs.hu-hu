@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 050a7a3718cb7c9eb864b7ed6ea0787c079e31b9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: fec72a4fac6baa3869928c0203aeb29e53ce5ea4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226317"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648469"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Gyors útmutató: Egy Java Spring-alkalmazás létrehozása az alkalmazás konfigurációja
 
@@ -93,7 +93,7 @@ Használja a [Spring Initializr](https://start.spring.io/) egy új Spring Boot-p
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M1</version>
+        <version>1.1.0.M3</version>
     </dependency>
     ```
 

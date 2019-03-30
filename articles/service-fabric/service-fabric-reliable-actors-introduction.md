@@ -4,7 +4,7 @@ description: A Service Fabric Reliable Actors programozási modell bemutatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258061"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668670"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>A Service Fabric Reliable Actors bemutatása
 A Reliable Actors a Service Fabric alkalmazási keretrendszer alapján a [virtuális Aktor](https://research.microsoft.com/en-us/projects/orleans/) mintát. A Reliable Actors API épülő a méretezhetőséget és megbízhatóságot garantálja a Service Fabric által biztosított programozási egyszálas modellt biztosít.
@@ -37,7 +37,7 @@ Bár az aktor tervezési minta lehet egy jó illeszkednek az elosztott rendszere
 * Az aktorpéldányokat i/o-műveletek kiállításával nem blokkolja a hívó az késleltetések előre nem látható.
 
 ## <a name="actors-in-service-fabric"></a>A Service Fabric actors
-A Service Fabric actors vannak megvalósítva a Reliable Actors keretrendszerben: actor-minta-alapú alkalmazás-keretrendszer, a beépített [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Minden egyes ír Reliable Actors-szolgáltatás ténylegesen egy particionált, állapotalapú Reliable Services.
+A Service Fabric actors megvalósítva, a Reliable Actors keretrendszerben. Actor-minta-alapú alkalmazás-keretrendszer, a beépített [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Minden egyes ír Reliable Actors-szolgáltatás ténylegesen egy particionált, állapotalapú Reliable Services.
 
 Minden egyes színész számít, ha az aktor típusát, a .NET-objektumokat kell egy .NET-típus egy példányát módja megegyezik egy példányát. Például előfordulhat, hogy az aktor típusát, amely megvalósítja a Számológépet funkcióit, és lehetséges, hogy sok actors az adott típusú, amely különböző csomópontokon vannak elosztva a fürtben. Minden ilyen színész egyedileg azonosít egy aktor.
 

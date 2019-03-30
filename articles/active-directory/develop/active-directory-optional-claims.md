@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 592f2ef95935ce1d1f83db6c3327cab9c20015d3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185451"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652568"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
@@ -50,7 +50,7 @@ Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md)
 
 ## <a name="standard-optional-claims-set"></a>Standard választható jogcímek készletébe
 
-Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions), az alábbi. Vegye figyelembe, hogy jogcímeket hozzáadásakor a **hozzáférési jogkivonat**, ez lesz érvényes hozzáférési jogkivonatok kért *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
+Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#configuring-custom-claims-via-directory-extensions), az alábbi. Vegye figyelembe, hogy jogcímeket hozzáadásakor a **hozzáférési jogkivonat**, ez lesz érvényes hozzáférési jogkivonatok kért *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
 
 > [!NOTE]
 > A legtöbb ezeket a jogcímeket is szerepelnek JWTs az 1.0-s verziója és a 2.0-s verziójú jogkivonatok, de nem SAML-jogkivonatokat, kivéve, ahol ennek ellenezőjét jelöltük a jogkivonat típusa oszlopban. Emellett bár nem kötelező jogcímek csak jelenleg támogatott az AAD-felhasználók, MSA támogatási ad hozzá. Amikor MSA választható jogcímeket támogatja a v2.0-végpont, a felhasználói adattípusú oszlop jogcím elérhető-e az AAD vagy az MSA-felhasználók esetében fog jelöl. 

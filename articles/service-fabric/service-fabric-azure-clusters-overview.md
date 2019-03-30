@@ -4,7 +4,7 @@ description: Service Fabric-fürtök a Windows Server és Linux rendszerű, mely
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: a968b173357bf8bcb83990b891f38306895b4ca8
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967271"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670472"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Service Fabric áttekintése az Azure-fürtök
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy fürt csomópontja nevezzük. Fürtök méretezheti több ezer csomóponton. Ha új csomópontot ad hozzá a fürtöt, akkor a Service Fabric csomópontok megnövekedett számú rebalances a szolgáltatás partíció replikák és példányok. A teljes javítja az alkalmazások teljesítményéről, és csökkenti a versengés memória való hozzáféréshez. Ha a fürt csomópontjainak hatékonyan nincsenek használatban, csökkentheti a fürtben található csomópontok számát. A Service Fabric rebalances a partíciók replikáit és példányainak újra a csomópontokat, hogy a hardver jobban kihasználja a csomópontokon csökkent számú.
@@ -31,9 +31,9 @@ Az Azure Service Fabric-fürt egy Azure-erőforrás, amely használja, és kommu
 * Virtuális gépek és virtuális hálózati adapterek
 * virtuálisgép-méretezési csoportok
 * virtuális hálózatokkal
-* Terheléselosztók
+* terheléselosztók
 * tárfiókok
-* public IP addresses
+* nyilvános IP-címek
 
 ![Service Fabric-fürt][Image]
 

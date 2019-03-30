@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 50cd5969ce02ee5eea0637c950069d684d67b5d3
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361455"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652314"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Napló metrikák betanítás során fut az Azure Machine Learningben
 
@@ -351,7 +351,7 @@ További információk:
 Minden besorolás modell, amely az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével tekintheti meg a következő diagramok: 
 + [Keveredési mátrix](#confusion-matrix)
 + [Pontosság-visszahívási diagram](#precision-recall-chart)
-+ [Fogadó működési jellemzői (vagy ROC)](#ROC)
++ [Fogadó működési jellemzői (vagy ROC)](#roc)
 + [Átemelés görbévé](#lift-curve)
 + [Nyereség görbévé](#gains-curve)
 + [Hitelesítési diagram](#calibration-plot)

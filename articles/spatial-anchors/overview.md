@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833798"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628865"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Az Azure térbeli kapcsolatok alapjainak áttekintése
 
@@ -30,7 +30,7 @@ Egyes használati példák térbeli horgonyok által engedélyezett többek köz
 
 - [Módon felmérő](concepts/anchor-relationships-way-finding.md). A fejlesztők is csatlakoztathat térbeli horgonyok együtt a kettő közötti kapcsolatok létrehozása. Például egy alkalmazás tartalmazhat felületet nyújt, amelynek két vagy több pont a lényeges, hogy egy felhasználó egy adott feladat végrehajtásához együtt kell működnie. Ezek a lényeges pontok csatlakoztatott módon hozható létre. Később amikor a felhasználó a többlépéses feladat befejeződik, az alkalmazás kérhet, amelyek a jelenlegivel irányítani felé a következő lépés a felhasználó a feladatnak a közeli kapcsolatok alapjainak.
 
-- [A való életből vett megőrzése virtuális tartalom](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Egy alkalmazás hagyhatja, hogy egy felhasználó egy virtuális naptár helyezze egy konferencia szoba üzenőfalon, a felhasználók egy telefonos alkalmazást vagy a HoloLens eszköz használatával is láthatják. Egy ipari beállítás, a felhasználó kap a gépre vonatkozó környezeti információkat húzni a támogatott eszközön a kamera.
+- [A való életből vett megőrzése virtuális tartalom](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor). Egy alkalmazás hagyhatja, hogy egy felhasználó egy virtuális naptár helyezze egy konferencia szoba üzenőfalon, a felhasználók egy telefonos alkalmazást vagy a HoloLens eszköz használatával is láthatják. Egy ipari beállítás, a felhasználó kap a gépre vonatkozó környezeti információkat húzni a támogatott eszközön a kamera.
 
 Az Azure térbeli horgonyok egy felügyelt szolgáltatás és ügyféloldali SDK-támogatott eszközplatformok tevődik össze. A következő szakaszok Azure térbeli horgonyok használó alkalmazások használatának első lépéseivel kapcsolatos információkat.
 

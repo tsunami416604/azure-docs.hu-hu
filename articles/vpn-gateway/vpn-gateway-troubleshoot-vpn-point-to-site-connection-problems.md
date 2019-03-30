@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2018
+ms.date: 03/28/2018
 ms.author: genli
-ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994182"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630473"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítása: Az Azure pont – hely kapcsolati problémák
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
 
 Ez a cikk felsorolja az általános előfordulhat, hogy pont – hely kapcsolati problémák. Emellett ismerteti a lehetséges okait és megoldásait ezeket a problémákat.
 
@@ -41,7 +41,7 @@ Ez a probléma akkor fordul elő, ha az ügyféltanúsítvány hiányzik a **tan
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a tanúsítványkezelőben: kattintson a **Start**, típus **számítógép-tanúsítványok kezelése**, és kattintson a **számítógép-tanúsítványok kezelése** a keresési eredményekben.
+1. Nyissa meg a tanúsítványkezelőben: Kattintson a **Start**, típus **számítógép-tanúsítványok kezelése**, és kattintson a **számítógép-tanúsítványok kezelése** a keresési eredményekben.
 
 2. Győződjön meg arról, hogy a megfelelő helyen vannak a következő tanúsítványok:
 
@@ -49,7 +49,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
 3. Lépjen a C:\Users\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználó és számítógép tárolójában.
 
@@ -81,7 +81,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 1. Távolítsa el az átjáró alhálózatán található udr-t. Ellenőrizze, hogy az udr-t minden forgalmat megfelelően továbbítja.
 2. Az Azure Portalon tekintheti meg, hogy azt visszavonták a legfelső szintű tanúsítvány állapotának ellenőrzéséhez. Ha nincs visszavonva, próbálja meg törölni a a főtanúsítványt és reupload. További információkért lásd: [tanúsítványok létrehozása](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-ügyfél hiba: tanúsítványlánc dolgozva, de leállt 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-ügyfél hiba: Tanúsítványlánc dolgozva, de leállt 
 
 ### <a name="symptom"></a>Jelenség 
 
@@ -97,11 +97,11 @@ Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
 2. Ha a tanúsítványok már a helyen, próbálja meg törölni a tanúsítványokat, és telepítse újra. A **azuregateway -*GUID*. cloudapp.net** tanúsítványa megtalálható-e a VPN-ügyfélkonfigurációs csomagot, amely az Azure Portalról letöltött. Fájl archivers használhatja a fájlok kibontásához a csomagból.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Letöltési hiba: nincs megadva a cél URI azonosítója
+## <a name="file-download-error-target-uri-is-not-specified"></a>Fájlletöltési hiba: Nincs megadva a cél URI azonosítója
 
 ### <a name="symptom"></a>Jelenség
 
@@ -117,7 +117,7 @@ A probléma miatt egy hibás átjáró típusa.
 
 A VPN gateway típusúnak kell lennie **VPN**, és a VPN-típust kell **RouteBased**.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-ügyfél hiba: az Azure VPN egyéni parancsprogram végrehajtása sikertelen volt 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-ügyfél hiba: Az Azure VPN egyéni parancsprogram végrehajtása sikertelen volt 
 
 ### <a name="symptom"></a>Jelenség
 
@@ -150,7 +150,7 @@ Bontsa ki a VPN-ügyfélkonfigurációs csomagot, és keresse meg a .cer fájlt.
 5. Indítsa újra a számítógépet. 
 6. Próbálja meg telepíteni a VPN-ügyfél.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Az Azure portal hiba: nem sikerült menteni a VPN-átjáró és az adat érvénytelen
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Az Azure portal hiba: Nem sikerült menteni a VPN-átjáró és az adat érvénytelen
 
 ### <a name="symptom"></a>Jelenség
 
@@ -185,7 +185,7 @@ Győződjön meg arról, hogy az adatok a tanúsítvány nem tartalmaz érvényt
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Az Azure portal hiba: nem sikerült menteni a VPN-átjáró és az erőforrás neve érvénytelen.
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Az Azure portal hiba: Nem sikerült menteni a VPN-átjáró és az erőforrás neve érvénytelen.
 
 ### <a name="symptom"></a>Jelenség
 
@@ -197,7 +197,7 @@ Amikor megpróbálja menteni a VPN Gateway az Azure Portalon, a következő hiba
 
 A probléma oka, hogy a tanúsítvány neve érvénytelen karaktert, például egy szóközt tartalmaz. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Hiba az Azure portal: VPN csomag fájlletöltési hiba 503-as
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Az Azure portal hiba: VPN csomag fájlletöltési hiba 503-as
 
 ### <a name="symptom"></a>Jelenség
 
@@ -209,7 +209,7 @@ A VPN-ügyfél konfigurációs csomagjának letöltése megkísérlésekor a kö
 
 Ez a hiba átmeneti hálózati probléma okozhatja. Próbálkozzon újra néhány perc múlva a VPN-csomag letöltése.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Az Azure VPN-átjáró frissítésének: minden pont helyrendszer-ügyfelek nem tudnak csatlakozni
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Az Azure VPN Gateway-frissítés: Az ügyfelek nem tudnak csatlakozni a webhely pont
 
 ### <a name="cause"></a>Ok
 
@@ -217,7 +217,7 @@ Ha a tanúsítvány több mint 50 %-os keresztül élettartamuk, a tanúsítván
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához, telepítse újra az összes ügyfél a hely csomag pontot.
+A probléma elhárításához töltse le újra, és ismételt üzembe helyezése a pontot, hogy az összes ügyfél esetében a hely csomag.
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Túl sok a VPN-ügyfelek egyszerre csatlakoztatott
 
@@ -302,7 +302,7 @@ A probléma akkor fordulhat elő, ha a VPN-ügyfél nem kap az útvonalakat az A
 
 Ez a probléma megoldásához [Azure VPN gateway alaphelyzetbe állítása](vpn-gateway-resetgw-classic.md). Ahhoz, hogy az új útvonalakat használ, a pont – hely VPN-ügyfelek kell lesznek újra letöltve, miután a virtuális hálózatok közötti társviszony beállítása sikerült.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavont tanúsítványok függvény nem tudta ellenőrizni a visszavont tanúsítványok, mert a visszavont tanúsítványok kiszolgálója offline állapotban volt. (Hiba 0x80092013)"
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "A visszavont tanúsítványok függvény nem tudta ellenőrizni a visszavont tanúsítványok, mert a visszavont tanúsítványok kiszolgálója offline állapotban volt. (Hiba 0x80092013)"
 
 ### <a name="causes"></a>Okok
 Ez a hibaüzenet akkor fordul elő, ha az ügyfél nem tud hozzáférni http://crl3.digicert.com/ssca-sha2-g1.crl és http://crl4.digicert.com/ssca-sha2-g1.crl.  A visszavonás ellenőrzését az alábbi két hely hozzáférésre van szüksége.  Ez a probléma általában akkor fordul elő, az ügyfél, amely a proxykiszolgáló konfigurálva van. Bizonyos környezetekben Ha a kérelmek nem fogja a proxykiszolgálón keresztül, a rendszer megtagadja a peremhálózati tűzfalon.
@@ -343,7 +343,7 @@ A hálózati illesztőprogram frissítése:
 4. Ha a Windows nem talál egy új illesztőprogramot, nézzük meg egy, az eszköz gyártójának webhelyén, és kövesse az utasításokat.
 5. Indítsa újra a számítógépet, és próbálja meg újra a kapcsolódást.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hiba: "fájl letöltési hiba történt. nincs megadva a cél URI"
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hiba: "Fájlletöltési hiba cél URI azonosítója nincs megadva a"
 
 ### <a name="cause"></a>Ok
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 362129b4ccd0e46b6ffc682e7232c62c196ef334
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772908"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652129"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózat integrációja Azure Data Lake Storage Gen1
 
@@ -75,7 +75,7 @@ Néhány elérhető lehetőség:
 
 - Data Lake Storage Gen1 virtuálishálózat-integrációs támogatást volt elérhető előtt készült HDInsight-fürtök támogatása az új szolgáltatás hozza létre újra kell lennie.
  
-- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozzon létre a HDInsight-fürt végül ismét engedélyezni a virtuális hálózati szabályt vagy vonja kiválasztása előtt **engedélyezze a hozzáférést minden hálózat és szolgáltatás**. További információt a [Kivételek](##Exceptions) szakaszban talál.
+- Amikor új HDInsight-fürt létrehozásakor egy 1. generációs Data Lake Storage-fiókot választ ki, amelyen engedélyezve van a virtuális hálózati integráció, a folyamat sikertelen lesz. Elsőként tiltsa le a virtuális hálózati szabályokat. Vagy a Data Lake Storage-fiók **Tűzfal és virtuális hálózatok** panelén válassza a **Hozzáférés engedélyezése minden hálózatról és szolgáltatásról** lehetőséget. Ezután hozzon létre a HDInsight-fürt végül ismét engedélyezni a virtuális hálózati szabályt vagy vonja kiválasztása előtt **engedélyezze a hozzáférést minden hálózat és szolgáltatás**. További információt a [Kivételek](#exceptions) szakaszban talál.
 
 - Data Lake Storage Gen1 virtuális hálózat integrációja nem működik az [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   

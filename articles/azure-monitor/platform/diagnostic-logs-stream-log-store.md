@@ -1,6 +1,6 @@
 ---
-title: A Log Analytics az Azure diagnosztikai naplók Stream
-description: Útmutató az Azure Log Analytics-munkaterület diagnosztikai naplók streamelése.
+title: Stream Azure diagnosztikai naplók a Log Analytics-munkaterületet az Azure monitorban
+description: Útmutató az Azure monitorban Log Analytics-munkaterületet az Azure diagnosztikai naplók streamelése.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351551"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630789"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure diagnosztikai naplók a Log Analytics-munkaterületet az Azure monitorban
 
-**[Az Azure diagnosztikai naplók](diagnostic-logs-overview.md)**  továbbítható közel valós időben az Azure Log Analyticshez a portal, PowerShell-parancsmagok vagy az Azure CLI használatával.
+**[Az Azure diagnosztikai naplók](diagnostic-logs-overview.md)**  továbbítható egy Log Analytics-munkaterületen a portal, PowerShell-parancsmagok vagy az Azure CLI használatával az Azure Monitor közel valós időben.
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>A Log Analytics mire képes a diagnosztikai naplók
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>A Log Analytics-munkaterületen mire képes a diagnosztikai naplók
 
-Az Azure Log Analytics egy olyan rugalmas log keresést és elemzést eszköz, amely lehetővé teszi, hogy betekintést nyerhet az Azure-erőforrások által létrehozott nyers naplóadatokat. Bizonyos funkciók a következők:
+Az Azure Monitor egy rugalmas napló lekérdezési és elemzési eszköz, amely lehetővé teszi, hogy betekintést nyerhet az Azure-erőforrások által létrehozott nyers naplóadat adatokat biztosít. Bizonyos funkciók a következők:
 
-* **Naplóbeli keresés** -írási speciális lekérdezések naplója adatait, és még akkor is, a különböző forrásokból származó összevetését naplók létrehozása diagramok, amelyek az Azure-irányítópulton is rögzítheti.
-* **Riasztási** -észlelés, ha egy vagy több esemény egy adott lekérdezésnek megfelelő, és a egy e-mailben vagy webhook-hívással értesüljön róla.
-* **Megoldások** – használja az előre elkészített nézeteket és irányítópultokat, amelyek azonnali betekintést nyerhet a naplózási adatokat.
+* **Naplólekérdezés** -írási összetett lekérdezéseket, a naplózási adatokat, a különböző összevetését naplók adatforrásokat, és hozzon létre több mint diagram, amely az Azure-irányítópulton is rögzítheti.
+* **Riasztási** -észlelés, ha egy vagy több esemény egy adott lekérdezésnek megfelelő, és a egy e-mailben vagy webhook-hívással használatával az Azure Monitor riasztások értesüljön róla.
 * **Speciális elemzési** – machine learning a alkalmazni, és a naplók által feltárt lehetséges problémák azonosítása érdekében algoritmusokkal mintát.
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>A Log Analytics diagnosztikai naplóinak streamelésének engedélyezéséhez
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>A Log Analytics-munkaterületet a diagnosztikai naplók streamelésének engedélyezéséhez
 
 Streamelési diagnosztikai naplók a portálon keresztül programozás útján vagy a használatával engedélyezheti a [Azure Monitor REST API-k](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). Mindkét esetben hoz létre egy diagnosztikai beállítás található, amely megadott Log Analytics-munkaterület és naplókategóriák és metrikák is szeretne küldeni munkaterületre. A diagnosztika **naplókategória** napló, amely egy erőforrás rendelkezhetnek olyan típusú.
 
@@ -42,9 +41,8 @@ A Log Analytics-munkaterület nem rendelkezik és a naplókat kibocsátó mindad
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Stream diagnosztikai naplók a portál használatával
-1. A portálon lépjen az Azure Monitor, és kattintson a **diagnosztikai beállítások**
+1. A portálon lépjen az Azure Monitor, és kattintson a **diagnosztikai beállítások** a a **beállítások** menü.
 
-    ![Az Azure Monitor figyelési szakasza](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. Igény szerint szűrje a listát, erőforráscsoport vagy erőforrás típusa, majd kattintson az a erőforrás, amelynek szeretné egy diagnosztikai beállítás.
 
@@ -97,9 +95,9 @@ Adhat hozzá további kategóriát a diagnosztikai napló szótárak ad hozzá a
 
 A `--resource-group` argumentum csak akkor kötelező, ha `--workspace` nem egy objektumot.
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>Hogyan kérdezhet le a az adatokat a Log Analytics?
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Hogyan kérdezhet le a az adatokat a Log Analytics-munkaterület?
 
-A naplók keresése panel a portálon vagy a Log Analytics részét képező Advanced Analytics élmény, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [számos olyan megoldást az Azure-erőforrások](../../azure-monitor/insights/solutions.md) azonnali betekintést a naplóadatok a Log analyticsbe küld be is telepítheti.
+A naplók panel az Azure Monitor-portálon, a diagnosztikai naplók lekérdezheti a AzureDiagnostics táblában a naplókezelési megoldás részeként. Vannak még [több figyelési megoldások az Azure-erőforrások](../../azure-monitor/insights/solutions.md) telepítheti a azonnali információkhoz juthat a naplózási adatokat küld az Azure Monitor szolgáltatásba.
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Ismert korlátozás: AzureDiagnostics oszlop-korlát
 Mert sok erőforrás küldése adattípusok összes küldött ugyanabban a táblában (_AzureDiagnostics_), ez a tábla sémája az összes különböző adattípusok összegyűjtött sémái felettes készletét. Például ha már létrehozta a gyűjteményhez a következő adattípusú diagnosztikai beállítások, az összes küld ugyanazon a munkaterületen:

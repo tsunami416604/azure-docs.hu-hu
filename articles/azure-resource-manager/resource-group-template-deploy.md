@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2ef5cc702bd5035c958a8feb9b6f5051781cd3cc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518558"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649794"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -103,7 +103,12 @@ Illessze be a kódot a rendszerhéjba van beépítve, kattintson a jobb gombbal 
 
 ## <a name="redeploy-when-deployment-fails"></a>Telepítse újra a központi telepítésének hibája esetén
 
-Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja vagy a `-RollbackToLastDeployment` vagy `-RollBackDeploymentName` paramétert a üzembe helyezés parancsba.
+Ez a funkció más néven van *visszaállítási hiba*. Ha egy központi telepítés nem sikerül, automatikusan is újratelepítése egy korábbi, a sikeres telepítés az üzembe helyezési előzményekből. Újbóli üzembe helyezés megadásához használja vagy a `-RollbackToLastDeployment` vagy `-RollBackDeploymentName` paramétert a üzembe helyezés parancsba. Ez a funkció akkor hasznos, ha rendelkezik egy korábbi hibátlan állapotra van az infrastruktúra telepítése és akarja, hogy vissza kell állítani az. Nincsenek figyelmeztetések és korlátozások:
+
+- Az újbóli üzembe helyezés pontosan, ahogy korábban már volt futtatva ugyanazokkal a paraméterekkel futtatja. A paraméterek nem módosítható.
+- A korábbi központi telepítés segítségével futtatja a [teljes mód](./deployment-modes.md#complete-mode). Nem szerepel a korábbi központi telepítés minden erőforrás törlődni, és a minden erőforrás-konfigurációt az előző állapotukba. Győződjön meg arról, hogy megértette a [üzembe helyezési mód](./deployment-modes.md).
+- Az újratelepítés csak érinti az erőforrásokat, a módosításokat adatokat nem érinti.
+- Ez a funkció csak az erőforráscsoport központi telepítések, nem előfizetési szintű központi telepítések támogatott. Előfizetés-szintű üzembe helyezéssel kapcsolatos további információkért lásd: [erőforráscsoport és erőforrások létrehozásához az előfizetés szintjén](./deploy-to-subscription.md).
 
 Ez a beállítás használatához az üzemelő példányok egyedi névvel kell rendelkezniük az előzményekben található ellenőrizhető, hogy. Ha nem rendelkezik egyedi nevét, az aktuális telepítése sikertelen volt. a korábban sikeresen végrehajtott központi telepítés előzményei esetleg felülírhatja. Használhatja ezt a beállítást csak a legfelső szintű telepítések. Beágyazott sablonból üzemelő példányok nem újbóli üzembe helyezés érhetők el.
 

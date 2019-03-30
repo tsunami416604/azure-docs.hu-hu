@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286584"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652518"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -82,7 +82,7 @@ Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateT
 2. Miután az alkalmazás megjelenik a vállalati alkalmazások listájában, válassza ki, majd kattintson a **egyszeri bejelentkezési**.
 3. Az egyszeri bejelentkezési mód beállítása legyen **integrált Windows-hitelesítés**.  
 4. Adja meg a **belső alkalmazás egyszerű Szolgáltatásnevét** az alkalmazáskiszolgáló. Ebben a példában a közzétett alkalmazás egyszerű Szolgáltatásnevét http/www.contoso.com. Ezt az SPN kell lennie, amelyhez az összekötőt használhat delegált hitelesítő adatokat a szolgáltatások listájában. 
-5. Válassza ki a **delegált bejelentkezési azonosító** az összekötő használatára a felhasználó nevében. További információkért lásd: [különböző helyszíni és felhőbeli identitások használata](#Working-with-different-on-premises-and-cloud-identities)
+5. Válassza ki a **delegált bejelentkezési azonosító** az összekötő használatára a felhasználó nevében. További információkért lásd: [különböző helyszíni és felhőbeli identitások használata](#working-with-different-on-premises-and-cloud-identities)
 
    ![Speciális alkalmazás konfigurációja](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

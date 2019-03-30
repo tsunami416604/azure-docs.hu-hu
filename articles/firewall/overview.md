@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 3/25/2019
+ms.date: 3/29/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: be490299d09e396e4bc589ebf777f64ce084d320
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 7f313af75e78db8a60fe6864c41cd8e6c5a3ad9b
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418720"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629948"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -81,7 +81,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A tűzfal áthelyezése másik erőforráscsoportba vagy előfizetésbe nem támogatott.|A tűzfalak áthelyezése más erőforráscsoportba vagy előfizetésbe nem támogatott.|Ez a funkció támogatása az ütemterv van. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|
 |A hálózati és az szabályokban porttartomány|Portjait legfeljebb 64 000, magas portok vannak fenntartva, felügyeleti és állapotának mintavételei. |Dolgozunk a korlátozás enyhítése.|
 |Előfordulhat, hogy első maszkolva intelligens veszélyforrás-riasztásai|A hálózati szabályok a 80-as/443-as kimenő szűrési maszkok célhelyet fenyegetésészlelési intelligencia riasztást, ha a riasztás csak módra konfigurálni.|Hozzon létre kimenő szűrés a 80-as/443-as alkalmazás szabályok használatával. Vagy módosítsa a threat intelligence módot **riasztás és a megtagadási**.|
-
+|Az Azure tűzfal használja az Azure DNS csak a névfeloldáshoz|Azure tűzfal teljes tartománynevek csak az Azure DNS használatával oldja fel. Egyéni DNS-kiszolgáló nem támogatott. Nincs nincs hatással a DNS-feloldás más alhálózatokon.|Dolgozunk a korlátozás enyhítése.
 ## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure-tűzfal](tutorial-firewall-deploy-portal.md)

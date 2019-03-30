@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110494"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648902"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges régióba
 
@@ -22,10 +22,6 @@ Ha Ön [átadja a feladatokat](site-recovery-failover.md) Azure virtuális gépe
 
 - A másodlagos régió virtuális gépek ismételt védelme, hogy megkezdődhessen replikálni az elsődleges régióba.
 - Miután ismételt védelem befejezése és a virtuális gépeket replikál, akkor a feladatokat őket a másodlagos elsődleges régió felé.
-
-> [!WARNING]
-> Ha [áttelepített](migrate-overview.md#what-do-we-mean-by-migration) gépek az elsődleges kiszolgálóról a másodlagos régióba, a virtuális gép áthelyezése egy másik erőforráscsoportot, vagy az Azure virtuális gép törölve, nem a virtuális gép ismételt védelme, és feladat-visszavételt azt.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. A virtuális gép feladatátvétel az elsődleges másodlagos régióba véglegesíteni kell lennie.

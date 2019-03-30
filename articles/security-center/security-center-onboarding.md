@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100070"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665491"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Ingyenes Standard próbálhatja ki. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -33,7 +33,7 @@ A Security Center a következőket tartalmazza:
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrásokra észlelése     
 A Security Center automatikusan észleli azokat az Azure-előfizetéseket vagy munkaterületeket, amelyeken nincs engedélyezve a Security Center Standard. Ez a Security Center ingyenes verzióját használó Azure-előfizetéseket és az olyan munkaterületeket is magában foglalja, amelyeken nincs engedélyezve a biztonsági megoldás.
 
-A Standard szintre, amely örökli az előfizetés összes erőforrásának, frissítheti a teljes Azure-előfizetéssel, vagy megadhatja a frissítésére csak egy adott erőforráscsoportban egyedi házirendet. Ha az erőforráscsoport szabályzatbeállítások egyediek, a Security Center nem bírálja felül az árképzési házirendek az előfizetés Standard csomagra frissítésekor. Alkalmazása a Standard szintű előfizetésre vonatkozik az összes támogatott erőforrásokhoz az előfizetésben. Alkalmazása a Standard szintű munkaterületre a munkaterületre jelentő valamennyi erőforrására vonatkozik.
+A Standard szintre, amely örökli az előfizetésen belüli összes támogatott erőforrások teljes Azure-előfizetésre frissítheti. Alkalmazása a Standard szintű munkaterületre a munkaterületre jelentő valamennyi erőforrására vonatkozik.
 
 > [!NOTE]
 > Érdemes a költségek kezelése és az ügynökök egy adott készletét korlátozásával megoldás összegyűjtött adatok mennyisége korlátozza. [Megoldás célcsoportjának](../operations-management-suite/operations-management-suite-solution-targeting.md) lehetővé teszi, hogy a megoldás hatókör vonatkozik, és célozhat meg a munkaterület számítógépek egy részének.  Célcsoport-kezelési megoldást használ, ha a Security Center a munkaterület a megoldás nem tartalmazóként sorolja fel.
