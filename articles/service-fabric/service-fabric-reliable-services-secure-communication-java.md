@@ -1,10 +1,10 @@
 ---
-title: Szolgáltatás távoli eljáráshívási Java az Azure Service Fabric folytatott kommunikáció biztosítása |} Microsoft Docs
-description: Útmutató a Java megbízható szolgáltatások az Azure Service Fabric-fürt a futó szolgáltatás távoli eljáráshívás-alapú kommunikáció biztonságossá tételére.
+title: Az Azure Service Fabric Java-szolgáltatás távelérésének lehetővé tétele kommunikáció biztonságossá tételéhez |} A Microsoft Docs
+description: 'Útmutató: Java reliable Services, Azure Service Fabric-fürtben futó szolgáltatás távelérésének lehetővé tétele a-alapú kommunikáció biztonságossá tételére.'
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: timlt
+manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020813"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666996"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Biztonságos szolgáltatás távoli eljáráshívási kommunikáció egy Java szolgáltatásban
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Szolgáltatás távelérésének lehetővé tétele kommunikáció egy Java service-ben
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-secure-communication.md)
 > * [Java Linuxon](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-A biztonság az egyik legfontosabb szempontja a kommunikáció. A Reliable Services alkalmazás-keretrendszer tartalmaz néhány előre elkészített kommunikációs verem és eszközöket, amelyek a biztonság növelése érdekében használhatja. Ez a cikk ismerteti a Java-szolgáltatás használatakor a távelérési szolgáltatás, a biztonság növelése érdekében. Egy olyan buildekről nyújtanak [példa](service-fabric-reliable-services-communication-remoting-java.md) , amely ismerteti a Java nyelven írt megbízható szolgáltatások távoli eljáráshívást beállítani. 
+Biztonsági az egyik legfontosabb szempontja kommunikáció. A Reliable Services alkalmazási keretrendszer tartalmaz néhány előre létrehozott kommunikációs implementációt, eszközök, amelyek a biztonság növelése érdekében használhatja. Ez a cikk leírja, hogyan egy Java-szolgáltatás használatakor szolgáltatás távelérésének lehetővé tétele a biztonság növelése érdekében. Egy meglévő épül [példa](service-fabric-reliable-services-communication-remoting-java.md) , amely azt ismerteti, hogyan reliable Services Java nyelven írt távoli eljáráshívást beállítani. 
 
-Számítógépek biztonságossá tétele a service szolgáltatás távoli eljáráshívási Java szolgáltatások használatakor, kövesse az alábbi lépéseket:
+Szolgáltatás távelérésének lehetővé tétele a Java-szolgáltatások használatakor szolgáltatás védelme érdekében kövesse az alábbi lépéseket:
 
-1. Illesztőfelület, hozzon létre `HelloWorldStateless`, amely meghatározza, hogy a módszereket, amelyek számára a szolgáltatás a távoli eljáráshívás használható. A szolgáltatás által használt `FabricTransportServiceRemotingListener`, amely deklarálva van a `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` csomag. Ez egy `CommunicationListener` megvalósítása, amely távoli eljáráshívási képességeket biztosít.
+1. Hozzon létre egy adaptert `HelloWorldStateless`, amely meghatározza, hogy a módszereket, a távoli eljáráshívás a szolgáltatás számára elérhetők. A szolgáltatás által használt `FabricTransportServiceRemotingListener`, amely van deklarálva a `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` csomagot. Ez egy `CommunicationListener` megvalósítása, amely távoli eljáráshívás képességeket biztosít.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,15 +53,15 @@ Számítógépek biztonságossá tétele a service szolgáltatás távoli eljár
         }
     }
     ```
-2. Adja hozzá a figyelő beállításai és a hitelesítő adatokat.
+2. Adja hozzá a figyelő beállításai és biztonsági hitelesítő adatokat.
 
-    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Linux rendszeren futó szolgáltatásokhoz a tanúsítványt a PEM-formmatted fájlként; elérhetőnek kell lennie vagy egy `.pem` a tanúsítvány és titkos kulcsot tartalmazó fájlt, vagy egy `.crt` fájl, a tanúsítványt és egy `.key` a titkos kulcsot tartalmazó fájlt. További tudnivalókért lásd: [helyét és a Linux csomópontján X.509-tanúsítvány formátuma](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. A linuxon futó szolgáltatások esetében a tanúsítványt a PEM-formmatted fájlként elérhetőnek kell lennie vagy egy `.pem` a tanúsítványt és titkos kulcsot tartalmazó fájl, vagy egy `.crt` fájlt, amely tartalmazza a tanúsítványt és a egy `.key` a titkos kulcsot tartalmazó fájlt. További tudnivalókért lásd: [helyét és a Linux-csomópontokat az X.509-tanúsítványokat formátumát](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
-    Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
+    Két módon, hogy megadhat figyelő beállításai és biztonsági hitelesítő adatokat:
 
-   1. Adja meg azokat a egy [a konfigurációs csomag](service-fabric-application-and-service-manifests.md):
+   1. Adja meg azokat a egy [konfigurációs csomag](service-fabric-application-and-service-manifests.md):
 
-       Hozzáadása egy elnevezett `TransportSettings` szakasz a settings.xml fájlban.
+       Adjon hozzá egy elnevezett `TransportSettings` szakaszt az settings.xml fájlban.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -88,7 +88,7 @@ Számítógépek biztonságossá tétele a service szolgáltatás távoli eljár
         }
        ```
 
-        Ha ad hozzá egy `TransportSettings` bármely előtag nélkül a settings.xml fájlban szakasz `FabricTransportListenerSettings` betölti alapértelmezés szerint ez a szakasz az összes beállítás.
+        Ha hozzáad egy `TransportSettings` az összes előtag nélkül settings.xml fájl `FabricTransportListenerSettings` betölti alapértelmezés szerint ez a szakasz az összes beállítás.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -107,9 +107,9 @@ Számítógépek biztonságossá tétele a service szolgáltatás távoli eljár
             return listeners;
         }
        ```
-3. Hívható módszerek biztonságos szolgáltatás használata helyett a távoli eljáráshívás verem használatával a `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` a szolgáltatásproxy létrehozására, használja az osztály `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
+3. Meghívásakor módszer a biztonságos service használata helyett a távoli eljáráshívás stack használatával a `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` osztály egy szolgáltatási proxy létrehozásához, `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`.
 
-    Ha az Ügyfélkód egy szolgáltatás részeként fut, betöltheti `FabricTransportSettings` a settings.xml fájlból. Hozzon létre egy TransportSettings szakaszt, amelyek hasonlóak a szolgáltatáskód hibáit, amint azt korábban. A következő módosításokat az ügyfél kód:
+    Ha az Ügyfélkód egy szolgáltatás részeként fut, akkor betöltheti `FabricTransportSettings` settings.xml fájlból. Hozzon létre egy TransportSettings szakaszt, amely hasonlít a szolgáltatás kódot, ahogy ezt korábban. Az Ügyfélkód hajtsa végre a következő módosításokat:
 
     ```java
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 801e3b20908c3e92693e5e800428773bf5c90539
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521465"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661786"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -39,7 +39,7 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 >
 > Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) portok 11000-12000. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
 > [!NOTE]
-> Ez a témakör az önálló adatbázisok és rugalmas készletek és az SQL Data Warehouse-adatbázist üzemeltető Azure SQL Database-kiszolgálókra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a témakör önálló adatbázisok és rugalmas készletek, az SQL Data Warehouse adatbázisok, Azure Database for MySQL, Azure Database for MariaDB és üzemeltetésére, Azure Database for PostgreSQL Azure SQL Database-kiszolgálókra vonatkozik. Az egyszerűség kedvéért SQL Database megnevezése SQL Database, az SQL Data Warehouse, Azure Database for MySQL, Azure Database for MariaDB és, Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 

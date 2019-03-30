@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3baa4a9b91e76b9072714229b6a46e9fca69bcdd
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331384"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650853"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Csatlakozhat egy SQL Server virtuális gépet az Azure-ban
 
@@ -138,7 +138,7 @@ Az alábbi táblázat a szeretne csatlakozni egy Azure-beli virtuális gépen fu
 |---|---|
 | [SQL Server-hitelesítési mód engedélyezése](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | A virtuális gép távolról csatlakozhat, kivéve, ha egy virtuális hálózaton konfigurálta az Active Directory SQL Server-hitelesítés szükséges. |
 | [Hozzon létre egy SQL-bejelentkezés](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Ha az SQL-hitelesítést használ, egy felhasználónevet és jelszót, amely a céladatbázisba is jogosult az SQL-bejelentkezési kell. |
-| [Engedélyezze a TCP/IP protokoll](#manualTCP) | Az SQL Server TCP-n keresztül kapcsolatok engedélyeznie kell. |
+| [Engedélyezze a TCP/IP protokoll](#manualtcp) | Az SQL Server TCP-n keresztül kapcsolatok engedélyeznie kell. |
 | [Az SQL Server-portot a tűzfalszabály engedélyezése](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | A virtuális gép tűzfala engedélyeznie kell az SQL Server portja (alapértelmezés szerint 1433) a bejövő forgalmat. |
 | [Hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt a TCP 1433-as](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Engedélyeznie kell a virtuális gép az SQL Server portja (alapértelmezés szerint 1433) a forgalom fogadására, ha az interneten keresztül csatlakozni kíván. Helyi, mind a virtuális hálózat kapcsolatok nem igényelnek ez. Ez az az egyetlen lépés szükséges az Azure Portalon. |
 

@@ -4,7 +4,7 @@ description: Az alkalmazás a Linux Service Fabric-fürt operációs rendszer ja
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285152"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668194"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
 
@@ -41,13 +41,13 @@ A patch orchestration alkalmazást a következő szolgáltatásokat biztosítja:
 
 A patch orchestration alkalmazást a következő alösszetevők tevődik össze:
 
-- **Koordinátor szolgáltatást**: az állapotalapú szolgáltatás felelős:
+- **Koordinátor szolgáltatást**: Az állapotalapú szolgáltatás felelős:
     - Az operációs rendszer frissítési feladat az egész fürt összehangolása.
     - Az eredmény a befejezett operációsrendszer-frissítési műveletek tárolására.
-- **Csomópont-ügynökszolgáltatás**: A állapotmentes szolgáltatás fut a Service Fabric-fürt összes csomópontján. A szolgáltatás felelős:
+- **Csomópont-ügynökszolgáltatás**: Az állapotmentes szolgáltatás fut, a Service Fabric-fürt összes csomópontján. A szolgáltatás felelős:
     - A Linuxon futó csomóponti ügynök démon rendszerindításra.
     - A démon szolgáltatás figyelésére.
-- **Csomópont ügynök démon**: A Linux-démon szolgáltatás fut le egy magasabb szintű jogosultságot (root). Ezzel szemben a csomópont az ügynök és a koordinátor szolgáltatást futtatni egy alacsonyabb szintű jogosultságokkal. A szolgáltatás felelős a a fürt összes csomópontján a következő frissítési feladatok végrehajtása:
+- **Csomópont ügynök démon**: A Linux-démon szolgáltatás fut, a magasabb szintű jogosultság (root). Ezzel szemben a csomópont az ügynök és a koordinátor szolgáltatást futtatni egy alacsonyabb szintű jogosultságokkal. A szolgáltatás felelős a a fürt összes csomópontján a következő frissítési feladatok végrehajtása:
     - A csomóponton automatikus operációsrendszer-frissítés letiltása.
     - Letöltése és telepítése az operációs rendszer frissítése a házirend szerint a felhasználó adta meg.
     - A gép bejegyzés operációsrendszer-frissítés telepítése újraindítása, ha szükséges.
@@ -132,8 +132,8 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 |MaxResultsToCache    |Hosszú                              | Frissítés eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítések olyan telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Frissítések egyszerre több frissítési tartományt telepített állnak. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg frissítés.)
 | UpdateOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 180)                   | Megadja azt az időtartamot, minden olyan frissítési művelet (letöltése vagy telepítése). A művelet a megadott időkorláton belül nem végzi el, ha megszakadt.       |
-| RescheduleCount      | Int <br> (Alapértelmezett: 5).                  | A szolgáltatás átütemez az operációs rendszer maximális száma abban az esetben, ha egy művelet meghiúsul, tartósan frissítése.          |
-| RescheduleTimeInMinutes  | Int <br>(Alapértelmezés: 30). | Az időköz, ahol a szolgáltatás az operációs rendszer átütemez frissítés abban az esetben, ha hiba továbbra is fennáll. |
+| RescheduleCount      | Int <br> (Alapértelmezett: 5)                  | A szolgáltatás átütemez az operációs rendszer maximális száma abban az esetben, ha egy művelet meghiúsul, tartósan frissítése.          |
+| RescheduleTimeInMinutes  | Int <br>(Alapértelmezett: 30) | Az időköz, ahol a szolgáltatás az operációs rendszer átütemez frissítés abban az esetben, ha hiba továbbra is fennáll. |
 | UpdateFrequency           | Vesszővel tagolt karakterláncot (alapértelmezett: "Hetente, szerda, 7:00:00")     | A gyakoriság, az operációs rendszer frissítéseinek telepítése a fürtön. A formátum és a lehetséges értékek a következők: <br>-Ha például havonta, 5., 12:22:32 havi, NN formátumban. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> – Napi, formátumban, például naponta, 12:22:32.  <br> – Nincs azt jelzi, hogy a frissítés nem hajtható végre.  <br><br> Minden esetben vannak (UTC).|
 | UpdateClassification | Vesszővel tagolt karakterláncot (alapértelmezett: "securityupdates") | A fürt csomópontjain telepítendő frissítések típusát. Elfogadható értékek a következők securityupdates, minden. <br> -securityupdates – csak a biztonsági frissítéseket telepíti <br> az összes elérhető frissítés az apt - all - telepíti.|
 | ApprovedPatches | Vesszővel tagolt karakterláncot (alapértelmezett: "") | Ez az a jóváhagyott frissítések, amelyek a fürtcsomópontokat, telepítenie kell. A vesszővel tagolt listában tartalmazza a jóváhagyott csomagok és igény szerint kívánt cílová verze.<br> például: "apt utils 1.2.10ubuntu1, python3-jwt, apt-átviteli – https < 1.2.194, libsystemd0 = > 229-4ubuntu16 =" <br> A fenti telepíti <br> -verzió 1.2.10ubuntu1, ha elérhető, az apt-gyorsítótár az apt utils. Ha adott verzió nem érhető el, majd, műveletvégzés. <br> -python3-jwt frissítéseit is elérhető legújabb verzióra. Ha a csomag nem található, majd műveletvégzés. <br> -verziójához, amely kisebb, mint 1.2.194 apt-átviteli – https-frissítések. Ez a verzió nem szerepel, majd, hogy műveletvégzés. <br> -verziójához, amely nagyobb vagy egyenlő 229-4ubuntu16 libsystemd0 frissítéseket. Ha egy ilyen verzió nem létezik, majd, műveletvégzés.|
@@ -221,7 +221,7 @@ A JSON mezők az alábbiak szerint:
 
 Mező | Értékek | Részletek
 -- | -- | --
-Operationresult adatokat a | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
+OperationResult | 0 – sikeres<br> 1 – sikeres hibákkal<br> 2 – nem sikerült<br> 3 – megszakítva<br> 4 – megszakítva időkorlát | Azt jelzi, hogy általános művelet (általában egy vagy több frissítés telepítését) eredményét.
 Eredménykód | Ugyanaz, mint az operationresult adatokat a | Ebben a mezőben azt jelzi, hogy egyedi frissítés telepítési művelet eredményét.
 OperationType | 1 – telepítés<br> 0 – keresse meg és töltse le.| Telepítés a, amelyek akkor jelennek meg az eredményeket alapértelmezés szerint csak OperationType.
 UpdateClassification | Az alapértelmezett érték "securityupdates" | A frissítési művelet során telepített frissítések típusa
@@ -305,7 +305,7 @@ A. A patch orchestration alkalmazás számára szükséges idő nagyrészt a kö
 
 K. **Hogyan segített patch orchestration alkalmazás úgy dönt, hogy mely frissítések a biztonsági frissítéseket.**
 
-A. Patch orchestration alkalmazás meghatározására szolgál, hogy mely frissítések között az elérhető frissítések állnak biztonsági frissítések disztribúció-specifikus logika használ. Például: az ubuntu-archívumok $RELEASE frissítéseket keres az app-biztonság, $RELEASE-frissítések ($RELEASE = xenial vagy a linux standard alap végleges verziót). 
+A. Patch orchestration alkalmazás meghatározására szolgál, hogy mely frissítések között az elérhető frissítések állnak biztonsági frissítések disztribúció-specifikus logika használ. Példa: Az ubuntu az alkalmazás keres frissítéseket archívumok $RELEASE-biztonság, $RELEASE-frissítések ($RELEASE = xenial vagy a linux standard alap végleges verziót). 
 
  
 K. **Hogyan zárolhat be a csomag egy adott verzióját?**

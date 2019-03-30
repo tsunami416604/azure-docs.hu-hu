@@ -4,14 +4,18 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 563c2bd561328561d30acee6910b70d53ef64c6b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305117"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631138"
 ---
 ## <a name="set-up-your-device"></a>Az eszköz beállítása
+
+Nyissa meg a projektre a Unity, az `Unity` mappát.
+
+![Unity-ablak](./media/spatial-anchors-unity/unity-window.png)
 
 ### <a name="set-up-an-android-device"></a>Egy Android-eszköz beállítása
 
@@ -31,7 +35,9 @@ Az a **vizsgáló** panelen adja meg a `Sharing Anchors Service url` (az ASP.NET
 
 Mentse a jelenet kiválasztásával **fájl** > **mentése**.
 
-## <a name="to-deploy-the-app-to-an-android-device"></a>Telepítse az alkalmazást az Android-eszközön
+## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
+
+### <a name="deploy-to-android-device"></a>Android-eszköz üzembe helyezése
 
 Jelentkezzen be az Android-eszközön, és csatlakozzon a számítógéphez egy USB-kábel használatával.
 
@@ -41,9 +47,9 @@ Alatt **jelenetek épít**, mellett jelölje be a `AzureSpatialAnchorsPlugin/Exa
 
 Győződjön meg arról, hogy **exportálása projekt** nem be van jelölve. Válassza ki **létrehozásához és futtatásához**. Kérni fogja menteni a `.apk` fájlt. Bármilyen nevet, kiválaszthatja.
 
-Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első lehetőség, hogy később ugyanazon az eszközön vagy egy másik található horgonyra létrehozását teszi lehetővé. A második lehetőség, ha korábban már futtatja az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok.
+Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé. A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az tájékoztatjuk a további köré, hogy mi a teendő. Például akkor felszólítja az eszköz Navigálás környezeti információkat gyűjthet. Később a, fog horgonyra helyezze a világon, fog, várjon, amíg feltölti, és így tovább.
 
-## <a name="to-deploy-the-app-to-an-ios-device"></a>Az alkalmazás telepítése iOS-eszközök számára
+### <a name="deploy-to-an-ios-device"></a>IOS-eszközön való üzembe helyezése
 
 Nyissa meg **Build Settings** kiválasztásával **fájl** > **Build Settings**.
 
@@ -51,6 +57,6 @@ Alatt **jelenetek épít**, mellett jelölje be a `AzureSpatialAnchorsPlugin/Exa
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első lehetőség, hogy később ugyanazon az eszközön vagy egy másik található horgonyra létrehozását teszi lehetővé. A második lehetőség, ha korábban már futtatja az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok.
+Kövesse az utasításokat az alkalmazásban. Választhat **Létrehozás & megosztás Forráshorgony** vagy **keresse meg a megosztott Forráshorgony**. Az első forgatókönyv, amely ugyanazon az eszközön vagy egy másik később található horgonyra létrehozását teszi lehetővé. A második forgatókönyv szerint, ha már futtatott az alkalmazást, vagy ugyanazon az eszközön, vagy egy másik, a lehetővé teszi, hogy keresse meg a korábban megosztott horgonyok. Miután a forgatókönyvet, az alkalmazás végigvezeti az tájékoztatjuk a további köré, hogy mi a teendő. Például akkor felszólítja az eszköz Navigálás környezeti információkat gyűjthet. Később a, fog horgonyra helyezze a világon, fog, várjon, amíg feltölti, és így tovább.
 
 Az xcode-ban, állítsa le az alkalmazást a kiválasztásával **leállítása**.

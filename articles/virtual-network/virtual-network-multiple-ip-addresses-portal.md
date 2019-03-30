@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 0f36ab9ab7703dd9677b6c2989eddb91593af79f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105107"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650564"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-cím hozzárendelése a virtuális gépek az Azure portal használatával
 
@@ -36,7 +36,7 @@ Ha szeretne egy virtuális Gépet több IP-cím vagy egy statikus magánhálóza
 
 ## <a name="add"></a>IP-címek hozzáadása egy virtuális Géphez
 
-Egy Azure-beli hálózati interfészhez privát és nyilvános IP-címek az alábbi lépéseket követve adhat hozzá. Az alábbi szakaszokban található példák feltételezik, hogy már rendelkezik egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario), de ez nem szükséges.
+Egy Azure-beli hálózati interfészhez privát és nyilvános IP-címek az alábbi lépéseket követve adhat hozzá. Az alábbi szakaszokban található példák feltételezik, hogy már rendelkezik egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#scenario), de ez nem szükséges.
 
 ### <a name="coreadd"></a>Alapvető lépéseket
 

@@ -4,7 +4,7 @@ description: Ismerteti a Service Fabric parancssori felület sfctl értéke para
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2039dd9222809d2c05aaeaf01f9d38c51f3b3797
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276332"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661592"
 ---
 # <a name="sfctl-is"></a>sfctl értéke
 Lekérdezés, és parancsokat küldjön az infrastruktúra-szolgáltatás.
@@ -52,7 +52,7 @@ Az infrastruktúra-szolgáltatás konfigurált egy vagy több példányban fürt
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-is-query"></a>sfctl értéke lekérdezés
 Hívja meg az adott infrastruktúra szolgáltatáspéldány lekérdezés csak olvasható.
@@ -75,7 +75,7 @@ Az infrastruktúra-szolgáltatás konfigurált egy vagy több példányban fürt
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 
 ## <a name="next-steps"></a>További lépések

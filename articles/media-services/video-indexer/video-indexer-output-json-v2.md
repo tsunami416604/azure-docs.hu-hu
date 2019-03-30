@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314875"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650080"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
-
-> [!Note]
-> A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 
 
 Meghívásakor a **első videó Index** API és a válasz állapota OK, a részletes JSON-kimenet, a válasz tartalma kapunk. A JSON-tartalmak a megadott feltárását részleteit tartalmazza. Az insights közé tartozik például a dimenziók: szövegekben felismerése, arcok, témakörök, blokkok, stb. A dimenziók időtartományok azt mutatják be, amikor a videó minden dimenzió jelentek meg a példányban.  
 
@@ -163,7 +160,7 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |címkék|A [címkék](#labels) dimenzió.|
 |helyességének|A [helyességének](#shots) dimenzió.|
 |márka|A [márkái](#brands) dimenzió.|
-|audioEffects|A [audioEffects](#audioEffects) dimenzió.|
+|audioEffects|A [audioEffects](#audioeffects) dimenzió.|
 |hangulati|A [hangulati](#sentiments) dimenzió.|
 |visualContentModeration|A [visualContentModeration](#visualcontentmoderation) dimenzió.|
 |textualContentModeration|A [textualContentModeration](#textualcontentmoderation) dimenzió.|
@@ -550,7 +547,7 @@ Példa:
 |SpeakerLongestMonolog|A beszélő leghosszabb monolog. Ha a beszélő belül a monolog silences része. Csend elején és végén a monolog törlődik.| 
 |SpeakerTalkToListenRatio|A számítás időt a speaker monolog (nélkül a csend köztes) elosztva a videó teljes időtartama alapján. Az idő a harmadik tizedesvesszőtől lesz kerekítve.|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Name (Név)|Leírás|
 |---|---|

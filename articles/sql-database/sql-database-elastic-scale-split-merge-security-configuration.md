@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593318"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651668"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
 
@@ -83,17 +83,17 @@ SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolg
 3. [A szolgáltatás konfigurációs fájlja a Hitelesítésszolgáltatói tanúsítvány frissítése](#update-ca-certificate-in-service-configuration-file)
 4. [Ügyfél-tanúsítványok kiállításához](#issue-client-certificates)
 5. [Az ügyféltanúsítványok PFX-fájlok létrehozása](#create-pfx-files-for-client-certificates)
-6. [Ügyfél-tanúsítvány importálása](#Import-Client-Certificate)
+6. [Ügyfél-tanúsítvány importálása](#import-client-certificate)
 7. [Másolja a tanúsítvány-ujjlenyomatok ügyfél](#copy-client-certificate-thumbprints)
 8. [A konfigurációs fájlban engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>Meglévő ügyfél-tanúsítványok használata
 1. [Keresse meg a hitelesítésszolgáltató nyilvános kulcsa](#find-ca-public-key)
-2. [A szolgáltatás felhőalapú hitelesítésszolgáltató-tanúsítvány feltöltése](#Upload-CA-certificate-to-cloud-service)
-3. [A szolgáltatás konfigurációs fájlja a Hitelesítésszolgáltatói tanúsítvány frissítése](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [Másolja a tanúsítvány-ujjlenyomatok ügyfél](#Copy-Client-Certificate-Thumbprints)
+2. [A szolgáltatás felhőalapú hitelesítésszolgáltató-tanúsítvány feltöltése](#upload-ca-certificate-to-cloud-service)
+3. [A szolgáltatás konfigurációs fájlja a Hitelesítésszolgáltatói tanúsítvány frissítése](#update-ca-certificate-in-service-configuration-file)
+4. [Másolja a tanúsítvány-ujjlenyomatok ügyfél](#copy-client-certificate-thumbprints)
 5. [A konfigurációs fájlban engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése](#Configure-Client-Certificate-Revocation-Check)
+6. [Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 A Szolgáltatásvégpontok való hozzáférés korlátozható az IP-címek meghatározott tartományát.

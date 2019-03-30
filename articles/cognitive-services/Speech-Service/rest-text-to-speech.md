@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e6913b1de0045f86667fdcea824ee4cc613c4bc3
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497669"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660966"
 ---
 # <a name="text-to-speech-rest-api"></a>Szöveg-hang transzformációs REST API-val
 
@@ -44,14 +44,25 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióban végponton 
 
 | Régió | Végpont |
 |--------|----------|
-| USA nyugati régiója | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list  |
-| USA 2. nyugati régiója | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kelet-Ausztrália | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Dél-Brazília | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Közép-Kanada | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA középső régiója | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kelet-Ázsia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | USA keleti régiója | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | USA 2. keleti régiója | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Kelet-Ázsia | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Délkelet-Ázsia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Közép-Franciaország | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Közép-India | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kelet-Japán | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Korea középső régiója | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA északi középső régiója | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Észak-Európa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA déli középső régiója | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Délkelet-Ázsia | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Az Egyesült Királyság déli régiója | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
 | Nyugat-Európa | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA nyugati régiója | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA nyugati régiója, 2. | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 

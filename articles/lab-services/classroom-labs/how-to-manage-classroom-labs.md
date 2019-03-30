@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962825"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651123"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Az Azure Lab Services osztályterem-tesztkörnyezetek kezelése 
 Ez a cikk azt ismerteti, hogyan hozhat létre, és törölje az osztályterem-tesztkörnyezet. Bemutatja azt is, az osztályterem-tesztkörnyezetek megtekintése a lab-fiókokban. 
@@ -37,9 +37,9 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. A **virtuális gép specifikációinak kiválasztására** szolgáló lapon hajtsa végre a következőket:
-    1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. 
+    1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. Jelenleg **kis**, **Közepes**, **nagy**, és **GPU** méretek használata engedélyezett.
     2. Válassza ki a **régiót**, amelyben létre szeretné hozni a virtuális gépeket. 
-    3. Válassza ki a tesztkörnyezetben a virtuális gépek létrehozásához használni kívánt **virtuálisgép-rendszerképet**. 
+    3. Válassza ki a tesztkörnyezetben a virtuális gépek létrehozásához használni kívánt **virtuálisgép-rendszerképet**. Ha egy Linuxos rendszerképet választja, megjelenik egy lehetőség, a távoli asztali kapcsolat engedélyezése. További információkért lásd: [Linux esetén a távoli asztali kapcsolat engedélyezése](how-to-enable-remote-desktop-linux.md).
     4. Kattintson a **Tovább** gombra.
 
         ![Virtuális gép specifikációinak megadása](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Az oktatóanyag alábbi lépéseit nem kötelező végrehajtani: 
     1. Az **Indítás** gomb kiválasztásával indítsa el a virtuálisgép-sablont.
-    2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. 
+    2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Ha Linux rendszerű virtuális gép sablon, kiválaszthatja, hogy szeretné-e az SSH és a RDP-(ha az RDP engedélyezve van).
     3. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
     4. **Állítsa le** a virtuális gépet.  
     5. Adja meg a sablon **leírását**.

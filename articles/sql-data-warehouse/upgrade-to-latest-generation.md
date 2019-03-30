@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 522f1f2f24e8c8c3f68a42569d4057a7694754d1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314840"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651073"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 
@@ -34,8 +34,8 @@ Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten találh
 ## <a name="before-you-begin"></a>Előkészületek
 
 1. Ellenőrizze, hogy a [régió](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) GEN1 GEN2 az áttelepítés támogatott. Megjegyzés: az automatikus áttelepítési dátum. Az automatizált folyamat való ütközések elkerülése érdekében tervezze meg a az automatizált folyamat kezdő dátum előtt manuális áttelepítést.
-2. Ha Ön egy régióban, amely még nem támogatott, továbbra is hozzá kell adni a régió kereséséhez vagy [visszaállítással frissítés](#Upgrade-from-an-Azure-geographical-region-using-restore-through-the-Azure-portal) egy támogatott régióban.
-3. Ha a régió, [frissítés az Azure Portalon keresztül](#Upgrade-in-a-supported-region-using-the-Azure-portal)
+2. Ha Ön egy régióban, amely még nem támogatott, továbbra is hozzá kell adni a régió kereséséhez vagy [visszaállítással frissítés](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) egy támogatott régióban.
+3. Ha a régió, [frissítés az Azure Portalon keresztül](#upgrade-in-a-supported-region-using-the-azure-portal)
 4. **Válassza ki a javasolt teljesítményszint** az adatraktár alapján a jelenlegi teljesítményszint optimalizált Gen1 számítási rétegben az alábbi leképezés használatával:
 
    | COMPUTE-optimalizált Gen1 kapacitás | COMPUTE-optimalizált Gen2-kapacitás |

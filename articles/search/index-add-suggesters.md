@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577110"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650461"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Az Azure Search typeahead indexet javaslattevők hozzáadása
 
@@ -77,7 +77,7 @@ A javaslattevő létrehozása után adja hozzá a [javaslatok API](https://docs.
 
 ### <a name="use-the-net-sdk"></a>A .NET SDK használata
 
-A C#, adja meg egy [javaslattevő osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). A javaslattevő gyűjteménye, amelyek csak is igénybe vehet egy elemet. Adja hozzá `using System.Collections.Generic;` úgy, hogy az objektumok listáját is létrehozhat. 
+A C#, adja meg egy [javaslattevő objektum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet). `Suggesters` egy gyűjtemény, de csak egy elemet is eltarthat. 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)

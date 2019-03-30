@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 3b32418361b992b91aa96579a0cf1f84d8b9d312
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620410"
+ms.locfileid: "58650716"
 ---
 # <a name="restore-azure-vms"></a>Azure-beli virtuális gépek visszaállítása
 
@@ -29,8 +29,8 @@ Az Azure Backup a virtuális gép visszaállítása többféleképpen biztosít.
 **Visszaállítási lehetőség** | **Részletek**
 --- | ---
 **Új virtuális gép létrehozása** | Gyorsan hoz létre, és lekér egy egyszerű virtuális Gépet és a egy visszaállítási pontot.<br/><br/> Most adja meg a virtuális gép nevét, válassza ki az erőforráscsoportot és a virtuális hálózat (VNet), amelyben kerül, és adja meg a tárolás típusát.
-**Lemez visszaállítása** | Visszaállít egy Virtuálisgép-lemez, amely majd használható új virtuális gép létrehozásához.<br/><br/> Az Azure Backup segítségével testre szabhatja, és hozzon létre egy virtuális Gépet sablonból biztosít. <br/><br/> Ezt a lehetőséget, adja meg a tárfiók VHD-k másolja. A visszaállítási feladat egy sablont, hogy letöltheti és adhatja meg az egyéni virtuális gép beállításait, és hozzon létre egy virtuális Gépet hoz létre.<br/><br/> – A storage-fiók és a tárolónak ugyanazon a helyen kell lennie. Ha nem rendelkezik ilyennel, hozzon létre egy tárfiókot.<br/><br/> A tárfiók replikációs típusa jelenik meg. Zónaredundáns tárolás (ZRS) nem támogatott.<br/><br/> Azt is megteheti a lemez csatolása meglévő virtuális géphez, vagy hozzon létre egy új virtuális Gépet PowerShell-lel.<br/><br/> Ez a beállítás akkor hasznos, ha a virtuális gép testreszabása, adja hozzá a konfigurációs beállítások, amelyek nem létezik a biztonsági mentés idején vagy adja hozzá a beállítások a sablonban vagy a PowerShell használatával kell konfigurálni kívánja.
-**Cserélje le a meglévő** | Lemez visszaállítása és kicserél egy lemezt a meglévő virtuális gép használatával.<br/><br/> Az aktuális virtuális gép már léteznie kell. Ha már törölték a beállítás nem használható.<br/><br/> Az Azure biztonsági mentési pillanatképet készít a meglévő virtuális gép a lemez cseréje előtt. A pillanatkép, adja meg az átmeneti helyen tárolja. A virtuális géphez csatlakoztatott lemezek majd cseréje a kiválasztott helyreállítási pont használatával. A pillanatkép, amely hibaállapota-tárolóba másol és őrzi meg a megadott adatmegőrzési szabályzatának megfelelően.<br/><br/> Cserélje le a meglévő nem titkosított felügyelt virtuális gépek esetén támogatott. Nem felügyelt lemezek esetén nem támogatott [általánosított virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), vagy a virtuális gépek [egyéni rendszerképekből létrehozott](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Ha a visszaállítási pont több vagy kevesebb, mint a jelenlegi virtuális lemezeket, majd a visszaállítási pont a lemezek száma csak a Virtuálisgép-konfigurációt fogja tartalmazni.
+**Lemez visszaállítása** | Visszaállít egy Virtuálisgép-lemez, amely majd használható új virtuális gép létrehozásához.<br/><br/> Az Azure Backup segítségével testre szabhatja, és hozzon létre egy virtuális Gépet sablonból biztosít. <br/><br/> Ezt a lehetőséget, adja meg a tárfiók VHD-k másolja. A visszaállítási feladat egy sablont, hogy letöltheti és adhatja meg az egyéni virtuális gép beállításait, és hozzon létre egy virtuális Gépet hoz létre.<br/><br/> A tárfiók és a tárolónak ugyanazon a helyen kell lennie. Ha nem rendelkezik ilyennel, hozzon létre egy tárfiókot.<br/><br/> A tárfiók replikációs típusa jelenik meg. Zónaredundáns tárolás (ZRS) nem támogatott.<br/><br/> Azt is megteheti a lemez csatolása meglévő virtuális géphez, vagy hozzon létre egy új virtuális Gépet PowerShell-lel.<br/><br/> Ez a beállítás akkor hasznos, ha a virtuális gép testreszabása, adja hozzá a konfigurációs beállítások, amelyek nem létezik a biztonsági mentés idején vagy adja hozzá a beállítások a sablonban vagy a PowerShell használatával kell konfigurálni kívánja.
+**Cserélje le a meglévő** | Lemez visszaállítása és kicserél egy lemezt a meglévő virtuális gép használatával.<br/><br/> Az aktuális virtuális gép már léteznie kell. Ha már törölték a beállítás nem használható.<br/><br/> Az Azure biztonsági mentési pillanatképet készít a meglévő virtuális gép a lemez cseréje előtt. A pillanatkép, adja meg az átmeneti helyen tárolja. A virtuális géphez csatlakoztatott lemezek majd cseréje a kiválasztott helyreállítási pont használatával.<br/><br/> A pillanatkép, amely hibaállapota-tárolóba másol és őrzi meg a megadott adatmegőrzési szabályzatának megfelelően. <br/><br/> Cserélje le a meglévő nem titkosított felügyelt virtuális gépek esetén támogatott. Nem felügyelt lemezek esetén nem támogatott [általánosított virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource), vagy a virtuális gépek [egyéni rendszerképekből létrehozott](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Ha a visszaállítási pont több vagy kevesebb, mint a jelenlegi virtuális lemezeket, majd a visszaállítási pont a lemezek száma csak a Virtuálisgép-konfigurációt fogja tartalmazni.<br/><br/>
 
 > [!NOTE]
 > Meghatározott fájlokat és mappákat egy Azure-beli virtuális gépen is helyreállíthatja. [További információk](backup-azure-restore-files-from-vm.md).
@@ -58,7 +58,7 @@ Ha nem rendelkezik engedélyekkel, [lemez visszaállítása](#restore-disks), ma
 ## <a name="choose-a-vm-restore-configuration"></a>Válasszon egy Virtuálisgép-konfiguráció visszaállítása
 
 1. A **konfiguráció visszaállítása**, válasszon egy visszaállítási beállítást:
-    - **Új létrehozása**. Használja ezt a beállítást, ha szeretne létrehozni egy új virtuális Gépet. Hozzon létre egy virtuális gép egyszerű beállításokkal, vagy a lemez visszaállítása és a egy egyéni virtuális gép létrehozása.
+    - **Hozzon létre új**: Használja ezt a beállítást, ha szeretne létrehozni egy új virtuális Gépet. Hozzon létre egy virtuális gép egyszerű beállításokkal, vagy a lemez visszaállítása és a egy egyéni virtuális gép létrehozása.
     - **Cserélje le a meglévő**: Használja ezt a beállítást, ha azt szeretné, cserélje le egy meglévő virtuális Gépen található lemezek.
 
         ![Állítsa vissza a konfigurációs varázsló](./media/backup-azure-arm-restore-vms/restore-configuration.png)
@@ -95,6 +95,8 @@ Egyik a [visszaállítási lehetőségek](#restore-options), létrehozhat egy le
     ![Helyreállítási konfiguráció befejeződött](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 4. A **konfiguráció visszaállítása**válassza **OK**. A **visszaállítása**, kattintson a **visszaállítása** elindítani a visszaállítási műveletet.
+
+A virtuális gépek visszaállítás során az Azure Backup storage-fiók nem használ. De az **lemezek visszaállítása** és **azonnali visszaállítása**, tárfiók sablon tárolására szolgál.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>A visszaállított virtuális gép testreszabása sablonok használatával
 
@@ -142,6 +144,7 @@ Számos gyakori helyzetek, amelyekben szüksége lehet a virtuális gépek vissz
 **Operációs rendszer nélküli helyreállítás** | A fő különbség az Azure-beli és helyszíni kiépítéshez között, hogy nincs egyetlen VM-konzol az Azure-ban érhető el. A konzol bizonyos helyzetekben, például egy operációs rendszer nélküli helyreállítás (BMR) használatával helyreállításához szükséges – típusú biztonsági mentést. Viszont a virtuális gép visszaállítása a tárból, operációs rendszer nélküli teljes értékű alternatívájaként.
 **Speciális hálózati konfigurációval rendelkező virtuális gépek visszaállítása** | Speciális hálózati konfigurációk közé tartozik a virtuális gépek belső vagy külső load terheléselosztást, a több hálózati Adapterrel, vagy több fenntartott IP-cím használatával. Ezek a virtuális gépek használatával állítsa vissza a [lemez beállítást vissza](#restore-disks). Ez a beállítás a virtuális merevlemezeket másolatot készít a megadott tárfiókba, és, létrehozhat egy virtuális Gépet egy [belső](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) vagy [külső](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) terheléselosztó, [több hálózati adapter](../virtual-machines/windows/multiple-nics.md), vagy [több fenntartott IP-címek](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), a konfiguráció megfelelően.
 **Hálózati biztonsági csoport (NSG) a hálózati adapter/alhálózat** | Az Azure virtuális gépek biztonsági mentését támogatja a biztonsági mentés és visszaállítás az NSG információkat a virtuális hálózat, alhálózat és hálózati adapterek szintjén.
+**Zóna rögzített virtuális gépek** | Az Azure Backup támogatja a biztonsági mentés és helyreállítás zónázott rögzített virtuális gépek. [További információ](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>A visszaállítási művelet követése
 Miután a visszaállítási műveletet indít el, a biztonsági mentési szolgáltatás létrehoz egy feladatot az nyomon követése. Az Azure Backup a feladattal kapcsolatos értesítéseket a portál jeleníti meg. Ha nem látható, kattintson a **értesítések** szimbólum megtekintheti őket.
@@ -174,7 +177,6 @@ Számos virtuális gép visszaállítása után jegyezze fel az alábbiakkal:
 
 - Ha egy virtuális Gépet, visszaállította a neve megegyezik az eredeti biztonsági másolatban szereplő virtuális gép ugyanabban az erőforráscsoportban, biztonsági mentés visszaállítása után továbbra is a virtuális gépen.
 - Ha állítja vissza, a virtuális gép egy másik erőforráscsoportba, vagy egy másik nevet a visszaállított virtuális Gépet a megadott, szüksége a visszaállított virtuális gép biztonsági másolat beállítása.
-
 
 ## <a name="next-steps"></a>További lépések
 

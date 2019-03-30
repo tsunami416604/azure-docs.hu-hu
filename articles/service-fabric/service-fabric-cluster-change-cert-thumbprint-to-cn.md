@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan lehet váltani az tanúsítvány-ujjlenyomatok 
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: 7280424c57e2dfab0a64794855cb522bcf69e135
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e7d5e51ea7048a134a5085715dec1797af32da17
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500500"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664415"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>A tanúsítvány-ujjlenyomat fürt módosítása köznapi név
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Egy tanúsítvány-ujjlenyomatok a tanúsítvány köznapi nevek használatával üzembe helyezett fürt közötti váltás révén jóval egyszerűbb tanúsítványkezelés. Ez a cikk ismerteti a tanúsítvány köznapi nevét használja a tanúsítvány-ujjlenyomat helyett a futó Service Fabric-fürt frissítése.

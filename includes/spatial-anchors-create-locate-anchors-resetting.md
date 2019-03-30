@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 16a9d77ed337b0a1e7b13c1d8b03fcaef1acabd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d591532d0b6d1047b9ebd1b2099b180beb494688
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016286"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632411"
 ---
-A környezet adatait, amely a munkamenet rögzítésének befejeztével alaphelyzetbe állításához Reset() függvényt hívhatja meg.
+A környezet adatait, amely a munkamenet rögzítésének befejeztével alaphelyzetbe állításához hívhat `Reset()`.

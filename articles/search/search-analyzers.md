@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578764"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651821"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -291,7 +291,7 @@ Minden olyan elemző, amely-, konfiguráció nélkül, a egy mezőben definíci�
 
 Ebben a példában a leírás mezők Microsoft English és francia elemzők rendel. Egy kódrészletet egy nagyobb definíció a "Hotels" index létrehozása a Szálloda osztállyal hotels.cs fájljában származik a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta.
 
-Hívás [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)megadását, a [AnalyzerName osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) biztosít, amely minden a szöveg elemzők az Azure Search támogatott.
+Hívás [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)megadását, a [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) biztosít egy szöveges elemző eszköz az Azure Search támogatott típus.
 
 ```csharp
     public partial class Hotel
@@ -317,7 +317,7 @@ Hívás [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.
 
 Testreszabási és konfigurációs szükség, amikor szüksége lesz egy elemző szerkezet az index hozzáadása. Azt határozza meg, miután hozzáadhatja a mező definíció ahogyan az előző példában is látható.
 
-Használat [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) az objektum létrehozásához. További példák: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) objektum. További példák: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {

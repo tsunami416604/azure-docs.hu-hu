@@ -4,7 +4,7 @@ description: Tudnivalók az alkalmazás és szolgáltatás események és napló
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e26dbc037c206635cfb92ea49f28d0f891e53ef8
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 613faf5bbc9498b82bc04460d30b2e94c30340db
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291266"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661054"
 ---
 # <a name="application-logging"></a>Alkalmazásnaplózás
 
@@ -29,7 +29,7 @@ Egyes termékek automatikusan a kód alkalmazásáról. Bár ezek a megoldások 
 
 Ezek a javaslatok használati példák: [naplózás hozzáadása a Service Fabric-alkalmazás](service-fabric-how-to-diagnostics-log.md).
 
-## <a name="application-insights-sdk"></a>Application Insights SDK letöltése
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
 Az Application Insights-integrációja révén a Service Fabric beépített rendelkezik. Felhasználók hozzáadása az AI Service Fabric nuget-csomagok és fogadásához, adatok és a létrehozott naplók és a gyűjtött, az Azure Portalon. Emellett tanácsos adja hozzá a saját telemetriát, diagnosztizálása és keresése a saját alkalmazások és szolgáltatások és az alkalmazás részei, amelyek nyomon követése érdekében a leggyakrabban használt. A [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) osztályt az SDK szolgáltatással számos módon nyomon követéséhez az alkalmazások telemetriai adatokat. Tekintse meg a példa bemutatja, hogyan alakítsa ki, és adja hozzá az application insights az alkalmazáshoz a jelen oktatóanyagban szereplő [figyelése és diagnosztizálása a .NET-alkalmazás](service-fabric-tutorial-monitoring-aspnet.md)
 

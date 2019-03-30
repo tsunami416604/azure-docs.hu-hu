@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: ad9e22668d0f6d994ad0fce7b207b5849dfa27e9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888814"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651241"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS Azure powershellel
 
@@ -93,7 +93,7 @@ Kellene látható részletesebben "A" rekordok létrehozása, az alábbi példá
 
 Minden esetben bemutatjuk, hogyan hozhat létre a rekordhalmaz egyetlen rekordot tartalmazó. "A" rekordok a korábbi példákban is kell igazítani, más típusú, a metaadatok, több rekordot tartalmazó rekordhalmazok létrehozásához vagy üres rekordhalmazok létrehozásához.
 
-Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mivel SOAs jönnek létre, és törölni minden DNS-zónát, és nem hozható létre vagy külön-külön törölve. Azonban [módosíthatja a SOA típusú, újabb példában látható módon](#to-modify-an-SOA-record).
+Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mivel SOAs jönnek létre, és törölni minden DNS-zónát, és nem hozható létre vagy külön-külön törölve. Azonban [módosíthatja a SOA típusú, újabb példában látható módon](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó AAAA típusú rekordhalmaz létrehozása
 

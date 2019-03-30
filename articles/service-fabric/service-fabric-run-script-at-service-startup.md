@@ -3,8 +3,8 @@ title: Parancsfájl futtatása az Azure Service Fabric-szolgáltatás indítása
 description: Ismerje meg, hogyan konfigurálja a házirendet egy Service Fabric szolgáltatásbeállítás belépési pontjának, és futtasson egy szkriptet a szolgáltatás indítása óta eltelt idő.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: atsenthi
+ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838442"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660391"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 Végrehajtható egy Service Fabric-szolgáltatás indítása előtt lehet néhány konfigurációs vagy a telepítő munkahelyi futtatásához szükséges.  Például a környezeti változók konfigurálása. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatásjegyzékben a szolgáltatás indítása végrehajtható a szolgáltatást. Az a szolgáltatásbeállítás belépési pontjának módosíthatja, hogy melyik fiók RunAs szabályzat konfigurálásával a végrehajtható telepítő alatt fut.  Egy külön szolgáltatásbeállítás belépési pontjának lehetővé teszi magas szintű jogosultságokat igénylő konfigurációs egy rövid ideig futnak, így a végrehajtható szolgáltatásgazda hosszabb ideig magas szintű jogosultságokkal rendelkező futtatásához nem szükséges.

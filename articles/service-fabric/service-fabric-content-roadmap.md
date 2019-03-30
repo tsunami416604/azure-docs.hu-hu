@@ -3,8 +3,8 @@ title: További információ az Azure Service Fabric |} A Microsoft Docs
 description: Ismerje meg az alapfogalmak és az Azure Service Fabric főbb információkat. A Service Fabric és a mikroszolgáltatások létrehozása kiterjesztett áttekintést nyújt.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
-ms.author: ryanwi
-ms.openlocfilehash: 8beac9d4a84fdee4e8fa7689d60cb51c20acd671
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: atsenthi
+ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241833"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667990"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 

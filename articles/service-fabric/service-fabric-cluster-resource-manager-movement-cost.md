@@ -4,7 +4,7 @@ description: A mozgás költsége a Service Fabric-szolgáltatások áttekintés
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a4431f1d2e9a63ee7797100cc1092244d9a8b880
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101516"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669979"
 ---
 # <a name="service-movement-cost"></a>Szolgáltatás a mozgás költsége
 A Service Fabric fürterőforrás-kezelő úgy ítéli meg, amikor megpróbálja meghatározni, hogy mi változik a fürt tényezővel mennyibe kerül a módosításokat. "Cost" fogalma forog ki ellen, hogy mekkora a fürt javítása érdekében. Költség Beleszámítja a terheléselosztást, töredezettségmentesítése és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy megfeleljen a követelményeknek a legkevésbé zavart okozó vagy költséges módon. 

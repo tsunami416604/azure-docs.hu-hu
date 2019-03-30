@@ -1,10 +1,10 @@
 ---
-title: Azure Service Fabric csomóponttípusok és a virtuális gép méretezési készletek |} Microsoft Docs
-description: Megtudhatja, hogyan típusok kapcsolódnak a virtuálisgép-méretezési Azure Service Fabric-csomópont állítja be, és távolról csatlakoztatása egy méretezési állítsa be a példány vagy fürtcsomóponton.
+title: Az Azure Service Fabric-csomóponttípusok és virtuálisgép-méretezési csoportokban |} A Microsoft Docs
+description: Ismerje meg, milyen típusú vonatkoznak a virtuálisgép-méretezési csoport Azure Service Fabric-csomópont állítja be, és távolról csatlakozni a méretezési csoport példány vagy csomópont.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 84d7f407781f09fed4667a22f0a46bc72c6e02a9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7f9397ee21f74fe6a776881940e5721264216b0f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212364"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660614"
 ---
-# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric csomóponttípusok és a virtuális gép skálázása beállítása
-[Virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets) az Azure számítási erőforrás. Méretezési csoportok segítségével telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteménye. Az egyes csomóponttípusok, megadhat egy Azure Service Fabric-fürt állít be egy külön skála.  Állítsa be a Service Fabric-futtatókörnyezet, a rendszer minden egyes virtuális gépen telepítve. Lehet egymástól függetlenül az egyes csomóponttípusok méretezése felfelé vagy lefelé, módosítsa az operációs rendszer Termékváltozata minden fürtcsomóponton futó, eltérő számú portok nyitva, és használni különböző teljesítmény-mérőszámait.
+# <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Az Azure Service Fabric-csomóponttípusok és virtuálisgép-méretezési csoportokban
+[A Virtual machine scale sets](/azure/virtual-machine-scale-sets) az Azure-beli számítási erőforrás. Használhatja a méretezési csoportok üzembe helyezése és kezelése a virtuális gépek csoportként gyűjteménye. Mindegyik csomóponttípus, amelyeket egy Azure Service Fabric-fürtöt állít be egy külön méretezési csoportban.  Állítsa be a Service Fabric-futtatókörnyezet, a méretezési csoportban lévő mindegyik virtuális gépre telepíteni. Is egymástól függetlenül mindegyik csomóponttípus kisebbre vagy nagyobbra méretezhetők, módosítsa az operációs rendszer Termékváltozata a fürt minden csomópontján fut, más-más részhalmazához nyitott portokkal rendelkezik és használni a különböző kapacitási mérőszámot.
 
-Az alábbi ábrán látható, amely két csomópont típusai, előtér- és háttérszolgáltatások nevű fürt. Minden csomópont az öt csomóponttal rendelkezik.
+A következő ábrán látható, amely két csomópontot típusai, FrontEnd és BackEnd nevű fürt. Mindegyik csomóponttípus öt csomópontot tartalmaz.
 
-![Egy fürt, amely két csomópont tartozik][NodeTypes]
+![A fürt, amelyben két csomópont típusa][NodeTypes]
 
-## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Virtuálisgép-méretezési készlet példányok leképezése csomópontok
-A fenti ábrán látható, méretezési készlet példányok példányt 0 kezdjék, és növelje meg az 1. A csomópont nevének számozására is megjelenik. Csomópont BackEnd_0 például a háttér-méretezési csoport 0 példány. Ez különösen méretezési öt példánya, BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 és BackEnd_4 nevű van.
+## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Virtuális gép méretezési csoport példányaihoz leképezése csomópontok
+Az előző ábrán látható, a méretezési csoport példányaihoz számozása 0 példány, és növelje meg az 1. A csomópont nevének számozására tükrözi. Például BackEnd_0 csomópont a háttérrendszer méretezési 0 példányát. Az adott méretezési csoportot öt példányban BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 és BackEnd_4 nevű rendelkezik.
 
-A méretezési növelheti, ha egy új példánya jön létre. A méretezés új példány nevének általában a virtuális gépek méretezési csoportjának név, valamint a következő példányok számát. A jelen példában BackEnd_5.
+Amikor egy méretezési csoportot, egy új példánya jön létre. Az új méretezési csoportot példány neve általában a méretezési csoport nevét, valamint a következő példányok számát. Ebben a példában BackEnd_5.
 
-## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési készlet terheléselosztók leképezése csomóponttípusok, a méretezés beállítása
-Ha az Azure portálon lévő telepítve, vagy használja a minta Azure Resource Manager-sablon, egy erőforráscsoportba tartozó összes erőforrást találhatók. Megtekintheti az egyes méretezési készlet vagy csomópont azokat a terheléselosztókat. A terheléselosztó neve a következő formátumot használja: **LB -&lt;csomóponttípus&gt;**. Példa: LB-sfcluster4doc-0, a következő ábrán látható módon:
+## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Méretezési csoport terheléselosztók leképezése csomóponttípusok és méretezési csoportok
+Ha a fürtöt az Azure Portalon, illetve a minta az Azure Resource Manager-sablont használja, minden erőforrás egy erőforráscsoportba tartozó jelennek meg. Láthatja, hogy az egyes méretezési készlet vagy csomópont a terheléselosztók. A terheléselosztó neve a következő formátumot használja: **LB -&lt;csomóponttípus neve&gt;**. Ilyen például, az LB-sfcluster4doc-0, az alábbi ábrán látható módon:
 
 ![További források][Resources]
 
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg a [a "Üzembe helyezés bárhol" szolgáltatás és az Azure által kezelt fürtökkel összehasonlítása áttekintése](service-fabric-deploy-anywhere.md).
-* További tudnivalók [fürt biztonsági](service-fabric-cluster-security.md).
-* [Távoli kapcsolódás](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) egy adott méretezési készlet példányhoz
-* [Frissítse a RDP-portok tartományát értékei](./scripts/service-fabric-powershell-change-rdp-port-range.md) fürtön, virtuális gépek telepítése után
-* [A rendszergazda felhasználónév és jelszó módosítása](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) fürt virtuális gépek
+* Tekintse meg a [áttekintése a "Üzembe helyezés bárhol" funkció és az Azure által felügyelt fürtöket való összehasonlítást](service-fabric-deploy-anywhere.md).
+* Ismerje meg [biztonsági fürt](service-fabric-cluster-security.md).
+* [Távoli csatlakozás](service-fabric-cluster-remote-connect-to-azure-cluster-node.md) adott scale set-példányra
+* [Az RPD-porttartomány értékeinek frissítése](./scripts/service-fabric-powershell-change-rdp-port-range.md) fürtön, virtuális gépek üzembe helyezés után
+* [Módosítsa a rendszergazdai felhasználónevét és jelszavát](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) fürt virtuális gépeihez
 
 <!--Image references-->
 [NodeTypes]: ./media/service-fabric-cluster-nodetypes/NodeTypes.png

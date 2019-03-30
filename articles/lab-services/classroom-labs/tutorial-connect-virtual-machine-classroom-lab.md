@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5482ea720ea8d21230587dd9216bd006bf4e5a6e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775577"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650648"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Az Azure Lab Services osztályterem-tesztkörnyezet elérése
 Ebben az oktatóanyagban a diákok megtanulnak csatlakozni egy osztályterem-tesztkörnyezet virtuális gépéhez (VM). 
@@ -45,8 +45,8 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Kapcsolódás egy virtuális géphez](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Hajtsa végre a következő lépések egyikét: 
-    1. A **Windows** virtuális gépeket, mentse a **RDP** a merevlemez-fájlt. Nyissa meg a virtuális géphez csatlakozni RDP-fájlt. Használja a **felhasználónév** és **jelszó** jelentkezzen be a gép az oktató/professzor kérhet. 
-    3. A **Linux** virtuális gépeket, másolja és menti az SSH-kapcsolati karakterláncot a **csatlakozhat a virtuális gép** párbeszédpanel bezárásához. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni. 
+    1. A **Windows** virtuális gépeket, mentse a **RDP** a merevlemez-fájlt. Nyissa meg a virtuális géphez csatlakozni RDP-fájlt. Használja a **felhasználónév** és **jelszó** bejelentkezni a gép az oktató/professzor kérhet. 
+    3. A **Linux** használható virtuális gépeket, **SSH** vagy **RDP** (Ha engedélyezve van) a hozzájuk való kapcsolódáshoz. További információkért lásd: [engedélyezze a távoli asztali kapcsolatot a Linux rendszerű gépek](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanult hozzáférni egy osztályterem-tesztkörnyezethez az oktatótól/tanártól kapott regisztrációs hivatkozás használatával.

@@ -4,7 +4,7 @@ description: Ismerje meg, egy önálló fürtön futó Windows-rendszerbiztonsá
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ce3bf686-ffc4-452f-b15a-3c812aa9e672
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: d599414978c44407acc1a449f853607d6a40c495
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541009"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666674"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).

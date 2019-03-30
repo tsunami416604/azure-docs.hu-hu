@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc718429991a7bba30739d09882c51f8baf5dc9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: fd518ad8c5ea13c4eeaa017417332744cecd328e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336269"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661224"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -47,6 +47,11 @@ Ha az erőforrásigények `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.p
 ## <a name="fpgas"></a>FPGA-k
 
 Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
+
+## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
+
+Tensor Flow automatikus machine learning jelenleg nem támogatja a tensor flow verzió 1.13. Ez telepítése miatt nem működik a csomagfüggőségek. Dolgozunk a probléma megoldásához egy későbbi kiadásban. 
+
 
 ## <a name="databricks"></a>Databricks
 

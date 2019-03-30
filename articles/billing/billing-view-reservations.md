@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: banders
-ms.openlocfilehash: a66547ed4bf089bb618dc8b98da7f260b6b5536a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904303"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650223"
 ---
-# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Foglalások megtekintése az Azure-hoz az Azure Portalon
+# <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure-foglalások megtekintése az Azure Portalon
 
-Az előfizetés típusa és az engedélyek, függően számos megtekintése az Azure-erőforrások lefoglalását többféleképpen.
+Az előfizetés típusa és az engedélyek, függően nincsenek többféle módon megtekintéséhez a foglalást az Azure-hoz.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>A foglalások tulajdonosaként vagy olvasó megtekintése
 
@@ -62,15 +62,26 @@ API-k használatával az adatok lekéréséhez lásd: [nagyvállalati vásárló
 
 Azure foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Mik azok a foglalást az Azure-hoz?](billing-save-compute-costs-reservations.md)
+- [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
+
+Szolgáltatási csomag vásárlása:
+
 - [Fizessen elő az, Cosmos DB szolgáltatás számára fenntartott kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
 - [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
+
+Szoftverfrissítési csomag vásárlása:
+
+- [Fizessen elő az Azure foglalásai közül Red Hat szoftvercsomagok – alap](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Előre fizetés Azure Reservations-beli SUSE-szoftvercsomagokért](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+Használatelemzés:
+
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 - [CSP-előfizetésekben foglalás használati adatai](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

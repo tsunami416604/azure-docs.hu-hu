@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078074"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660510"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Az Azure NetApp Files beállítása és kötet létrehozása 
 
@@ -105,9 +105,9 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
    4. Használja az alapértelmezett érték a kvótát. 
    5. Kattintson a virtuális hálózat **új létrehozása** hozhat létre egy új Azure virtuális hálózat (Vnet).  Ezután adja meg a következő információkat:
        * Adja meg **myvnet1** a virtuális hálózat neveként.
-       * Adjon meg egy címteret, például 10.7.0.0/16.
+       * A beállítás, például 10.7.0.0/16-címtereket határozhat meg
        * Adja meg **myANFsubnet** alhálózati nevet.
-       * Adja meg az alhálózat címtartományának, például 10.7.0.0/24.
+       * Adja meg az alhálózat címtartományának, például 10.7.0.0/24. Vegye figyelembe, hogy nem oszthat meg a kijelölt alhálózatot más erőforrásokkal.
        * Válassza ki **Microsoft.NetApp/volumes** alhálózati delegáláshoz.
        * Kattintson a **OK** a virtuális hálózat létrehozásához.
    6. Része az alhálózatnak, válassza ki az újonnan létrehozott virtuális hálózat (**myvnet1**) egy delegált alhálózata.

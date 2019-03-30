@@ -4,7 +4,7 @@ description: Ismerteti a Service Fabric parancssori felület sfctl háló code-p
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 81ddcc8c5685a839afabc1e82ecf4246cb813c21
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7bc8491071946eaa2e322517e5d36d681a49130
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285094"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661071"
 ---
-# <a name="sfctl-mesh-code-package-log"></a>sfctl háló code-package-log
+# <a name="sfctl-mesh-code-package-log"></a>sfctl mesh kódcsomagnaplója
 A naplók lekérése a tároló a megadott kód csomag az adott szolgáltatás replika.
 
 ## <a name="commands"></a>Parancsok
@@ -39,7 +39,7 @@ Beolvassa a naplókat a tárolót a megadott kód csomag a service replika.
 
 |Argumentum|Leírás|
 | --- | --- |
-| – alkalmazás-neve – alkalmazás-neve [kötelező] | Az alkalmazás neve. |
+| --app-name --application-name [Required] | Az alkalmazás neve. |
 | – [kötelező] code-package-neve | Kódcsomag a szolgáltatás neve. |
 | – [kötelező] replika neve | A Service Fabric-replika nevét. |
 | – [kötelező] szolgáltatás neve | A szolgáltatás neve. |
@@ -53,7 +53,7 @@ Beolvassa a naplókat a tárolót a megadott kód csomag a service replika.
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 
 ## <a name="next-steps"></a>További lépések

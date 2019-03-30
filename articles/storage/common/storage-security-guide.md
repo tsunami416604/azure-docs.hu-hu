@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369743"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650121"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -46,7 +46,7 @@ Az alábbiakban az ebben a cikkben tárgyalt témaköröket:
 * Használatával [Storage Analytics](#storage-analytics) az Azure Storage-hozzáférés naplózása
 
   Ez a szakasz bemutatja, hogyan találhatja meg információkat a storage analytics naplók kérelmek. Azt fogjuk vessen egy pillantást valós a storage analytics naplóadatokat, és lásd: how to tesz különbséget az adatok egy kérelmet a Tárfiók hívóbetűjét, a megosztott hozzáférési aláírást, az akár névtelenül és kell-e azt sikeres vagy sikertelen.
-* [Böngészőalapú ügyfeleken a CORS engedélyezése](#Cross-Origin-Resource-Sharing-CORS)
+* [Böngészőalapú ügyfeleken a CORS engedélyezése](#cross-origin-resource-sharing-cors)
 
   Ez a szakasz ismerteti hogyan teszi lehetővé az eltérő eredetű erőforrások megosztása (CORS). Tartományok közötti elérést, és hogyan kezelhető az Azure Storage-bA beépített CORS képességekkel rendelkező tárgyaljuk.
 

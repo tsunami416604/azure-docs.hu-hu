@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 8066285e90903870937f28a62ef9fe8b2f6be55c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 04a99be40f1a89d834c560bddf3f49c2a73f34b8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005488"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650257"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
@@ -70,6 +70,8 @@ Ha megszakítja az SQL Database szolgáltatás számára fenntartott kapacitás 
 
 Ha a fenntartott Azure SQL Database-kapacitás lefoglalását egy másik régióra, üzembe helyezési típusra, teljesítményszintre vagy eltérő feltételekre kell módosítania, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor indul. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
 
+Exchange-hez vagy a visszatérítés foglalások kapcsolatos további információkért lásd: [foglalás cseréje és a visszatérítéseket](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+
 ## <a name="vcore-size-flexibility"></a>virtuális mag mérete rugalmasság
 
 virtuális mag mérete rugalmasan segít kisebbre vagy nagyobbra méretezhetők a teljesítményszint és a régiót, a lefoglalt kapacitás juttatás elvesztése nélkül. Az SQL Database szolgáltatás számára fenntartott kapacitás emellett lehetőséget biztosít átmenetileg áthelyezheti a gyakori elérésű adatbázisok készletek és az önálló adatbázisok közötti (belül az azonos régióban és a teljesítmény szint) a normál működés részeként a lefoglalt kapacitás elvesztése nélkül előnyeit. Egy nem alkalmazott puffer tartja a foglalás, hatékonyan kezelheti a teljesítmény-használatnak a költségvetés túllépése nélkül.
@@ -92,4 +94,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

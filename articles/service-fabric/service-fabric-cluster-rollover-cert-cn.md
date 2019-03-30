@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan váltani egy Service Fabric-fürt tanúsítván
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: aljo
-ms.openlocfilehash: 549c5fed02402bb17b85fe796fecc4b53b321a66
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e60eb33403b9c38972087706b9e62bc3578b97bb
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497090"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663876"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuálisan vihetők át a Service Fabric-fürt tanúsítvány
 Ha egy Service Fabric-fürt tanúsítvány hamarosan lejár, akkor frissítenie kell a tanúsítványt.  Tanúsítványváltás az egyszerű, ha a fürt [beállított tanúsítvány köznapi név alapján](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (helyett ujjlenyomat).  Egy új tanúsítvány beszerzése egy hitelesítésszolgáltatótól, új lejárati dátummal.  Önaláírt tanúsítványok nem termelési Service Fabric-fürtök az Azure portal fürt létrehozásának munkafolyamata során létrehozott tanúsítványokat támogatása el. Az új tanúsítvány köznapi neve megegyezik a régebbi tanúsítványt kell rendelkeznie. 

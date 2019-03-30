@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0e0d1cd98f27ef40681e37a55f7021bf102fda21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409465"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664268"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizálhatja költségeit az Azure Cosmos DB-ben lefoglalt kapacitás
 
@@ -20,7 +20,7 @@ Az Azure Cosmos DB kapacitás révén pénzt takaríthat meg előre kellene fize
 
 Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás jelentősen csökkentheti a Cosmos DB költségeket&mdash;akár 65 %-a – egyéves vagy hároméves előzetes kötelezettségvállalás a normál árakhoz. Lefoglalt kapacitás egy számlázási-os kedvezményt biztosít, és nem befolyásolja az Azure Cosmos DB-erőforrások futási állapotát.
 
-Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás átviteli sebesség kiosztott részéért, az erőforrások ismerteti. A tárolási és hálózati díjak nem fedi le. Amint vásárol egy foglalást, az átviteli díjakat, amelyek megfelelnek a Foglalás attribútumok már nem számoljuk el a használatalapú – mint-akkor lépjen a díjszabás szerint. A foglalások további információkért lásd: a [Azure foglalások](../billing/billing-save-compute-costs-reservations.md) cikk. 
+Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás átviteli sebesség kiosztott részéért, az erőforrások ismerteti. A tárolási és hálózati díjak nem fedi le. Amint vásárol egy foglalást, az átviteli díjakat, amelyek megfelelnek a Foglalás attribútumok már nem számoljuk el a használatalapú – mint-akkor lépjen a díjszabás szerint. A foglalások további információkért lásd: a [Azure foglalások](../billing/billing-save-compute-costs-reservations.md) cikk.
 
 Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás is elérhetőek a [az Azure portal](https://portal.azure.com). Lefoglalt kapacitás vásárlása:
 
@@ -48,7 +48,7 @@ A Foglalás mérete átviteli sebességet, amelyet a fogja használni a meglév�
 
 4. Töltse ki a kötelező mezőket az alábbi táblázatban leírtak szerint:
 
-   ![A lefoglalt kapacitás űrlap kitöltése](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
+   ![A lefoglalt kapacitás űrlap kitöltése](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
 
    |Mező  |Leírás  |
    |---------|---------|
@@ -61,17 +61,17 @@ A Foglalás mérete átviteli sebességet, amelyet a fogja használni a meglév�
 
 5. Tekintse át a kedvezményeket és a Foglalás az ára a **költségek** szakaszban. Átviteli sebesség kiosztott részéért, minden régióban az Azure Cosmos DB-erőforrásokat foglalás fizetendő díj vonatkozik.  
 
-6. Válassza a **Beszerzés** lehetőséget. A következő oldal jelenik meg, ha a vásárlás sikeres volt: 
+6. Válassza a **Beszerzés** lehetőséget. A következő oldal jelenik meg, ha a vásárlás sikeres volt:
 
-   ![A lefoglalt kapacitás űrlap kitöltése](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png) 
+   ![A lefoglalt kapacitás űrlap kitöltése](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
 
-Miután vásárol egy foglalást, alkalmazva azonnal minden meglévő Azure Cosmos DB-erőforrásokat, amelyek megfelelnek a Foglalás feltételeit. Ha nem rendelkezik olyan meglévő Azure Cosmos DB-erőforrások, a Foglalás érvényes lesz, ha telepít egy új Cosmos DB-példányra, amely megfelel a Foglalás feltételeit. Mindkét esetben a Foglalás időtartama a sikeres vásárlás után azonnal elkezdődik. 
+Miután vásárol egy foglalást, alkalmazva azonnal minden meglévő Azure Cosmos DB-erőforrásokat, amelyek megfelelnek a Foglalás feltételeit. Ha nem rendelkezik olyan meglévő Azure Cosmos DB-erőforrások, a Foglalás érvényes lesz, ha telepít egy új Cosmos DB-példányra, amely megfelel a Foglalás feltételeit. Mindkét esetben a Foglalás időtartama a sikeres vásárlás után azonnal elkezdődik.
 
 Ha a Foglalás lejár, az Azure Cosmos DB üzemelő példányok továbbra is futnak, és a normál használatalapú díjakat számítjuk.
 
 ## <a name="cancellation-and-exchanges"></a>Megszakítás és cseréje
 
-Segítség az azonosításához, a jobb oldali lefoglalt kapacitás: [megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Abban az esetben, megszakítása vagy exchange-egy Azure Cosmos DB-foglalást, lépjen kapcsolatba az Azure Cosmos DB csapatának kell `AskCosmosDB@microsoft.com`.
+Segítség az azonosításához, a jobb oldali lefoglalt kapacitás: [megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Ha szeretné-e megszakítása vagy exchange-egy Azure Cosmos DB-foglalást, lásd: [foglalás cseréje és a visszatérítéseket](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -90,4 +90,3 @@ Rendszer automatikusan alkalmazza a foglalási kedvezményt az Azure Cosmos DB-e
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

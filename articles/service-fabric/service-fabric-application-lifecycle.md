@@ -3,8 +3,8 @@ title: Alkalmazás-életciklus a Service Fabricben |} A Microsoft Docs
 description: Ismerteti, fejlesztéséhez, üzembe helyezéséhez, tesztelés, frissítése, karbantartása és eltávolítása a Service Fabric-alkalmazásokat.
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
-ms.author: ryanwi
-ms.openlocfilehash: 65104503af2e177f1898d8509c2d82bd9b58c266
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: atsenthi
+ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446962"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664981"
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás-életciklus
 Egyéb platformok esetén az Azure Service fabric-alkalmazás általában halad végig a következő fázisok szerint: tervezési, fejlesztési, tesztelési, üzembe helyezés, frissítése, karbantartási és eltávolítását. A Service Fabric első osztályú támogatási szolgáltatásokat biztosít a felhőalapú alkalmazások, a fejlesztéstől az üzembe helyezés, a napi felügyeleti és a karbantartási végleges leszerelésének alkalmazás teljes életciklusa. A modell lehetővé teszi, hogy több különböző szerepkörök egymástól függetlenül részt vesznek az alkalmazásfejlesztési életciklust. Ez a cikk áttekintést az API-k és azok hogyan használhatók a eltérő szerepkörök fázisai a a Service Fabric-alkalmazás életciklusa során.

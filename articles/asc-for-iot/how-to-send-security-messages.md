@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7e1229ceaa2ae7113c95cfb202a84c56a3e53d61
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620134"
+ms.locfileid: "58650155"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetküldés SDK
 
@@ -92,7 +92,7 @@ Biztonsági üzeneteket küldhet az ASC használata az IoT-ügynök használatá
 
 Szeretne küldeni az eszközön lévő adatokat az eszközökről, az IoT ASC általi feldolgozáshoz, egyet a következő API-k való megjelöléséhez használja a megfelelő útválasztás az ASC-hez az IoT-feldolgozási folyamat üzeneteket. Ezzel a módszerrel küldött üzenetek feldolgozása lesz, és a rendszer az IoT, mind az IoT Hub vagy az Azure Security Center security insights ASC belül jelenik meg. 
 
-Az összes elküldött adatokat, még akkor is, ha a helyes fejlécben jelölése is meg kell felelnie a [ASC IoT-üzenet séma](https://github.com/Azure/ASC-for-IoT-Schemas). 
+Az összes elküldött adatokat, még akkor is, ha a helyes fejlécben jelölése is meg kell felelnie a [ASC IoT-üzenet séma](https://aka.ms/iot-security-schemas). 
 
 ### <a name="send-security-message-api"></a>Security API-üzenet küldése
 

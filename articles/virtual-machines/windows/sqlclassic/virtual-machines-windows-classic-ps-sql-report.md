@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445636"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650274"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ Egy önaláírt tanúsítványt hozott létre a virtuális gépen a virtuális g
    4. Válassza ki **helyi számítógép** kezeléséhez, és kattintson a **Befejezés**.
    5. Kattintson a **Ok** majd bontsa ki a **tanúsítványok - személyes** csomópontokat, majd kattintson **tanúsítványok**. A tanúsítvány neve megegyezik a virtuális gép DNS-nevét, és végződik **cloudapp.net**. Kattintson a jobb gombbal a tanúsítvány nevét, és kattintson a **másolási**.
    6. Bontsa ki a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontot, és kattintson rá jobb gombbal **tanúsítványok** majd **beillesztési**.
-   7. Ellenőrzéséhez kattintson duplán a tanúsítvány neve alatt **megbízható legfelső szintű hitelesítésszolgáltatók** , és ellenőrizze, hogy nem tartalmaz hibát, és láthatja, hogy a tanúsítványt. Ha a jelentéskészítő kiszolgáló, az érték a tanúsítványok konfigurálása a HTTPS-parancsprogramja ebben a témakörben használni kívánt **ujjlenyomat** , mint a parancsfájl egy paraméter megadása kötelező. **Az ujjlenyomat értéket beolvasni**, hajtsa végre a következőket. Emellett van egy PowerShell-minta a szakaszban az ujjlenyomat beolvasása [konfigurálása a jelentéskészítő kiszolgáló és a HTTPS-szkripttel](#use-script-to-configure-the-report-server-and-HTTPS).
+   7. Ellenőrzéséhez kattintson duplán a tanúsítvány neve alatt **megbízható legfelső szintű hitelesítésszolgáltatók** , és ellenőrizze, hogy nem tartalmaz hibát, és láthatja, hogy a tanúsítványt. Ha a jelentéskészítő kiszolgáló, az érték a tanúsítványok konfigurálása a HTTPS-parancsprogramja ebben a témakörben használni kívánt **ujjlenyomat** , mint a parancsfájl egy paraméter megadása kötelező. **Az ujjlenyomat értéket beolvasni**, hajtsa végre a következőket. Emellett van egy PowerShell-minta a szakaszban az ujjlenyomat beolvasása [konfigurálása a jelentéskészítő kiszolgáló és a HTTPS-szkripttel](#use-script-to-configure-the-report-server-and-https).
       
       1. Kattintson duplán a tanúsítvány, például ssrsnativecloud.cloudapp.net nevére.
       2. Kattintson a **Részletek** fülre.

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: sihhu
 ms.author: MayMSFT
 ms.reviewer: trbye
-ms.date: 02/04/2019
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4fc6f2e147c5c891653031b913f4b2a04b571b2b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d85f1ddcfe264e027a0f9d6c5f291d0005cad67c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622178"
+ms.locfileid: "58665015"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -84,7 +84,7 @@ Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A 
 Használja a következő szükséges csomagok telepítéséhez, ha már nincs rájuk.
 
 ```shell
-pip install azureml-dataprep
+pip install azureml-dataprep==1.0.17
 ```
 
 Importálja az SDK-t.
@@ -92,6 +92,9 @@ Importálja az SDK-t.
 ```python
 import azureml.dataprep as dprep
 ```
+
+> [!IMPORTANT]
+> Győződjön meg arról, 1.0.17-es telepíti. Ebben az oktatóanyagban nem fog működni a legújabb 1.1.0-s verzió
 
 ## <a name="load-data"></a>Adatok betöltése
 
@@ -1082,8 +1085,10 @@ Most már rendelkezik egy teljes körűen átalakított és előkészített adat
 
 ```python
 import os
+
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
-final_df.save(file_path)
+package = dprep.Package([final_df])
+package.save(file_path)
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

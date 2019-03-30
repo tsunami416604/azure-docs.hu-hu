@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181622"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650085"
 ---
 # <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
 Ez a cikk ismerteti a felhasználók hozzáadása a tesztkörnyezethez, azok regisztrálva a labor, szabályozhatja a virtuális Gépet, és további használatához órák száma. 
@@ -44,14 +44,20 @@ A regisztrációs hivatkozást küld diákok, használja az alábbi módszerek e
 Ha a **hozzáférés korlátozása** a tesztkörnyezethez engedélyezve van, csak a felhasználók a listán szereplő felhasználók rögzítheti a regisztráció hivatkozásra a tesztkörnyezethez. Ez a beállítás alapértelmezés szerint engedélyezve van. 
 
 ### <a name="send-email-to-users"></a>E-mail küldése a felhasználóknak
+Az Azure Lab Services lehetővé teszi az oktatók labor meghívók az összes e-mail vagy e-mail-ügyfélprogram kiválasztott diákoknak szóló másikra használata nélkül. Az oktatók is vigye a mutatót az e-mailek ikon látható az egyes tanulók vagy válassza ki egy vagy több tanulók, és használja a lista egyes tanulói **meghívó küldése** az eszköztáron. Ez a szolgáltatás egy regisztrációs hivatkozást tartalmazó e-mailt küld, és az oktató által hozzáadott egy üzenetet (ha van). Miután a rendszer elküldi a meghívót, az ajánlati állapot változik **meghívó elküldve** , hogy a tanárok is nyomon követheti, mely a tanulók már megkapták a regisztráció hivatkozásra, és azt elküldésének dátuma.
+
 1. Váltson a **felhasználók** megtekintheti, ha nem az oldalon már. 
-2. Válassza ki a specifikus vagy minden felhasználó a listán. Meghatározott felhasználóknak kínált, jelölje be a jelölőnégyzeteket a lista első oszlopában. Minden felhasználó kijelöléséhez jelölje be az első oszlop a cím elé (**neve**), vagy válassza ki az összes felhasználó számára az összes jelölőnégyzetet a listából.
-3. Válassza ki **meghívó küldése** az eszköztáron. Vigye az egérmutatót egy diák nevét a listában, és elküldeni az e-mailek ikon is. 
+2. Válassza ki a specifikus vagy minden felhasználó a listán. Meghatározott felhasználóknak kínált, jelölje be a jelölőnégyzeteket a lista első oszlopában. Minden felhasználó kijelöléséhez jelölje be az első oszlop a cím elé (**neve**), vagy válassza ki az összes felhasználó számára az összes jelölőnégyzetet a listából. Megtekintheti az állapotát a **meghívó állapot** ebben a listában.  Az alábbi ábrán a diákok számára meghívó állapot értéke **meghívó nincs elküldve**. 
+
+    ![Tanulók kiválasztása](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Válassza ki a **e-mail ikonra (boríték)** az egyik a sorok (vagy) válasszon **meghívó küldése** az eszköztáron. Az egér fölé az e-mailek ikon jelenik meg a listában lévő tanulói nevét is. 
 
     ![Regisztráció hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon, kövesse az alábbi lépéseket: 
     1. Írja be egy **üzenetet** , amely elküldi a tanulók számára. Az e-mail automatikusan a regisztrációs hivatkozást tartalmaz. 
-    2. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon jelölje be **küldése**. 
+    2. Az a **regisztrációs-hivatkozás küldése e-mailben** lapon jelölje be **küldése**. Meghívó módosítása a következőre állapotának megtekintéséhez **meghívó küldése** majd **meghívó elküldve**. 
+        
+        ![Küldött meghívások](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="get-registration-link"></a>Regisztráció hivatkozás beszerzése
 1. Váltson a **felhasználók** nézet kiválasztásával **felhasználók** a bal oldali menüben. 

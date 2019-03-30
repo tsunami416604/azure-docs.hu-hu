@@ -1,10 +1,10 @@
 ---
-title: Az Azure PowerShell-parancsfájl minta - fürtre alkalmazás központi telepítése |} Microsoft Docs
-description: Az Azure PowerShell-parancsfájl minta - alkalmazás üzembe helyezése a Service Fabric-fürt.
+title: Azure PowerShell-Példaszkript – üzembe az alkalmazást egy fürtön |} A Microsoft Docs
+description: Azure PowerShell-Példaszkript – az alkalmazás egy Service Fabric-fürt üzembe.
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,43 +13,43 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: c81514fb4b1c1da483ebd55deae149caf22d4b63
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: HT
+ms.openlocfilehash: e205315530b0dc89037c1253c571c72c55f00a67
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927600"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661428"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>A Service Fabric-fürt alkalmazás központi telepítése
+# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Alkalmazás üzembe helyezése egy Service Fabric-fürtön
 
-Ez a parancsfájlpélda másolja egy alkalmazáscsomagot a fürt lemezképtárolóhoz, az alkalmazástípus regisztrálása a fürt, eltávolítja a szükségtelen alkalmazáscsomag és az alkalmazástípus létrehoz egy alkalmazáspéldányt.  Ha a célalkalmazás típusa, az alkalmazás jegyzékében meghatározott alapértelmezett szolgáltatások, akkor ezek a szolgáltatások jelenleg jönnek létre. Szabja testre a paramétereket szükség szerint. 
+Ez a példaszkript egy alkalmazáscsomagot a fürt lemezképtárolójába másolja, regisztrálja az alkalmazás típusát a fürt, eltávolítja a felesleges alkalmazások csomagot és az alkalmazástípus alkalmazáspéldány hoz létre.  Ha bármely alapértelmezett szolgáltatások definiálva az alkalmazásjegyzékben, a célalkalmazás típusa, akkor ezeket a szolgáltatásokat most jönnek létre. Szabja testre a paramétereket szükség szerint. 
 
-Szükség esetén telepítse a Service Fabric PowerShell-modulját és a [Service Fabric SDK](../service-fabric-get-started.md). 
+Ha szükséges, telepítse a Service Fabric PowerShell-modult a [Service Fabric SDK](../service-fabric-get-started.md)-val. 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/service-fabric/deploy-application/deploy-application.ps1 "Deploy an application to a cluster")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A parancsfájl-minta futtatása után, a parancsfájl [alkalmazás eltávolítása](service-fabric-powershell-remove-application.md) az alkalmazáspéldány eltávolítása az alkalmazástípus regisztrációjának törlése és az alkalmazáscsomag törlése az image store használható.
+A példaszkript futtatása után, a parancsfájl [alkalmazás eltávolítása](service-fabric-powershell-remove-application.md) segítségével távolítsa el az alkalmazáspéldány, törölje az alkalmazástípus regisztrációját, és az alkalmazáscsomag törlése a képet tárból.
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-|[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Kapcsolatot hoz létre a Service Fabric-fürt. |
-|[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Másolja az alkalmazáscsomagot a fürt lemezképet tárolja.  |
-|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Regisztrálja az alkalmazástípus és -verzió a fürtön. |
-|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Alkalmazást hoz létre a regisztrált alkalmazáshoz típusból. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | A Service Fabric alkalmazáscsomag eltávolítása az image store.|
+|[Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| Létrehoz egy kapcsolatot a Service Fabric-fürtön. |
+|[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Másolja egy alkalmazáscsomagot a fürt lemezképet tárolja.  |
+|[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Regisztrálja az alkalmazástípus és -verziót a fürtön. |
+|[New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Létrehoz egy alkalmazást egy regisztrált alkalmazás írja be. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | A lemezképtároló távolít el egy Service Fabric-alkalmazáscsomagot.|
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Service Fabric PowerShell-modul: [Azure PowerShell dokumentációs](/powershell/azure/service-fabric/?view=azureservicefabricps).
+A Service Fabric PowerShell-modul további információkért lásd: [Azure PowerShell-dokumentáció](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Azure Service Fabric további Powershell-példák találhatók a [Azure PowerShell-példák](../service-fabric-powershell-samples.md).
+További Powershell-példákat az Azure Service Fabrichez az [Azure PowerShell-példák](../service-fabric-powershell-samples.md) között találhat.

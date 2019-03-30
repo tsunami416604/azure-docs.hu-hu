@@ -1,10 +1,10 @@
 ---
-title: Cloud Services és a Service Fabric közötti különbségek |} Microsoft Docs
-description: Fogalmi áttekintése áttelepítéséhez a Service Fabric Felhőszolgáltatások alkalmazások.
+title: A Cloud Services és a Service Fabric közötti különbségek |} A Microsoft Docs
+description: Áttelepítés fogalmi áttekintése alkalmazások a Cloud Servicesből a Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206482"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669452"
 ---
-# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Cloud Services és a Service Fabric közötti különbségekről áttelepítése előtt ismerje meg alkalmazások.
-A Microsoft Azure Service Fabric a következő generációs alkalmazás felhőplatform jól skálázható, nagymértékben megbízható elosztott alkalmazásokhoz. Számos új szolgáltatást csomagolása, telepítése, frissítése és elosztott felhőalapú alkalmazások kezelése okozna. 
+# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>További tudnivalók a Cloud Services és a Service Fabric közötti különbségekről való migrálás előtt alkalmazásokat.
+A Microsoft Azure Service Fabric az új generációs felhőalapú alkalmazás platform, rugalmasan méretezhető, magas megbízhatóságú elosztott alkalmazásokhoz. Azt mutatja be a csomagolása, üzembe helyezésével, frissítésével és elosztott felhőalkalmazások kezelése frissítés számos új szolgáltatást. 
 
-Ez egy bevezető útmutatóban áttelepítése a Service Fabric Felhőszolgáltatások alkalmazások. Architekturális elsősorban a összpontosít, és Felhőszolgáltatások és a Service Fabric közötti különbségek tervezése.
+Egy bevezető útmutató az alkalmazások a Cloud Servicesből a Service Fabric. Azt architekturális elsősorban a összpontosít, és a Cloud Services és a Service Fabric közötti különbségek kialakítása.
 
 ## <a name="applications-and-infrastructure"></a>Alkalmazások és infrastruktúra
-A felhőalapú szolgáltatások és a Service Fabric alapvető különbség, a virtuális gépek, munkaterhelések és alkalmazások közötti kapcsolat. A munkaterhelés itt van definiálva, az adott feladat végrehajtására, vagy adjon meg egy szolgáltatás írt kódot.
+Alapvető különbség a Cloud Services és a Service Fabric kapcsolódik egymáshoz a virtuális gépek, a számítási feladatok és az alkalmazások. Itt egy számítási feladat számít, ha az adott feladat végrehajtására, vagy adjon meg egy szolgáltatás írt kódot.
 
-* **Cloud Services csomag van, mint a virtuális gépek alkalmazások központi telepítésével kapcsolatos.** A Virtuálisgép-példány, például egy webes vagy feldolgozói szerepkör szorosan csatlakoztatott írt kódot. A munkaterhelés, a Cloud Services telepítéséhez van a munkaterhelés futtató egy vagy több Virtuálisgép-példányok telepítése. Az alkalmazások és a virtuális gépek nem elválasztási van, és ezért nem formális definíciója van egy alkalmazás. Az alkalmazás-re webes vagy feldolgozói szerepkör példányok belül a Felhőszolgáltatások központi telepítés akár egy teljes felhőalapú szolgáltatások telepítése. Ebben a példában az alkalmazás szerepkör példányok jelenik meg.
+* **A cloud Services van a virtuális alkalmazások központi telepítésével kapcsolatos.** Írt szorosan összekapcsolt, például egy webes vagy feldolgozói szerepkör egy Virtuálisgép-példányhoz. A Cloud Services számítási feladatok üzembe helyezéséhez van, amely a számítási feladatok futtatásához egy vagy több Virtuálisgép-példányok üzembe helyezéséhez. Alkalmazások és a virtuális gépek nem szétválasztása van, és itt is van az alkalmazás nem hivatalos definíció nem. Egy alkalmazás tekinthető webes vagy feldolgozói szerepkör példányok egy Cloud Services-környezetben, vagy egy teljes Cloud Services-környezetben. Ebben a példában egy alkalmazás jelenik meg a szerepkörpéldányok készletként.
 
-![A felhőalapú szolgáltatások alkalmazásokhoz és topológia][1]
+![Cloud Services-alkalmazások és a topológia][1]
 
-* **A Service Fabric tárgya meglévő virtuális gépek vagy a Service Fabric futó Windows vagy Linux rendszerű gépek-alkalmazások telepítése.** A szolgáltatások írt teljesen leválasztott a az alkalmazás mögötti infrastruktúra, amelyeket el a Service Fabric-alkalmazás platform, az alkalmazás több környezetekben telepíthető. A munkaterhelés, a Service Fabric "szolgáltatás" nevezik, és egy vagy több szolgáltatás hivatalosan által meghatározott alkalmazást, a Service Fabric-alkalmazás platformon futó vannak csoportosítva. Service Fabric-fürt egyetlen több alkalmazást is telepíthető.
+* **Service Fabric a meglévő virtuális gépekhez vagy a Service Fabric futó Windows vagy Linux rendszerű gépek alkalmazások központi telepítésével kapcsolatos.** A szolgáltatások ír teljesen leválasztott származó az alapul szolgáló infrastruktúrát, amelyeket azonnal a Service Fabric application platform, így egy alkalmazás több környezethez is telepíthető. A Service Fabric egy számítási feladat "szolgáltatás" nevezzük, és a egy korábbi által definiált alkalmazás, amely a Service Fabric-alkalmazás platformon fut, egy vagy több szolgáltatás szerint vannak csoportosítva. Több alkalmazást is üzembe helyezhetők a Service Fabric-fürtön.
 
-![Service Fabric-alkalmazások és a topológia][2]
+![Service Fabric-alkalmazásokat és topológia][2]
 
-Maga a Service Fabric egy platform alkalmazásréteg futó Windows vagy Linux,, mivel a Cloud Services rendszer csatolt munkaterhelések az Azure által kezelt virtuális gépek telepítéséhez.
-A Service Fabric-alkalmazás modell számos előnnyel rendelkezik:
+Maga a Service Fabric, amely egy application platform Windows vagy Linux-alapú futtató, mivel a Cloud Services egy rendszer üzembe helyezéséhez az Azure által felügyelt virtuális gépeket csatolt számítási feladatokkal.
+A Service Fabric-alkalmazásmodell rendelkezik számos előnnyel jár:
 
-* Gyors üzembe helyezési idők. Virtuálisgép-példányok létrehozása időigényes lehet. A Service Fabric virtuális gépek csak telepítése után a fürtöt, amely üzemelteti a Service Fabric-alkalmazás platform. Ettől kezdve alkalmazáscsomagok telepíthetők a fürt nagyon gyorsan.
-* Nagy sűrűségű üzemeltetéséhez. A felhőalapú szolgáltatások a feldolgozói szerepkör virtuális gépek egy munkaterhelés üzemelteti. A Service Fabric alkalmazások függetlenek a futtató virtuális gépeken, azaz nagyszámú virtuális gépek, amelyek csökkenthető a teljes költség szempontjából nagyobb üzemelő példányok esetében kevés alkalmazások telepítése.
-* A Service Fabric platform futtatható bárhol, amely rendelkezik a Windows Server vagy Linux rendszerű gépek, Azure vagy a helyszíni. A platform absztrakciós réteget biztosít az alapul szolgáló infrastruktúra feletti, az alkalmazás futtatható a különböző környezetekben. 
-* Elosztott alkalmazások kezelése. A Service Fabric a platform nem csak állomások elosztott alkalmazásokat, de az életciklus, függetlenül a üzemeltető virtuális gép vagy gépek életciklusának kezelésére segítségével is.
+* Gyors üzembe helyezéshez szükséges idő. Virtuálisgép-példányok létrehozása időigényes lehet. A Service Fabric segítségével a virtuális gépek csak telepítése után a fürtöt, amely üzemelteti a Service Fabric application platform. Az ettől az alkalmazáscsomagok telepíthetők a fürt nagyon gyorsan.
+* Nagy sűrűségű üzemeltetés. A Cloud Services a feldolgozói szerepkör virtuális gép, amelyen egy számítási feladat. A Service Fabric, az alkalmazások elkülönülnek futtató virtuális gépek őket, ami azt jelenti, nagy számú kis számú virtuális gépeket, ami csökkentheti a teljes költség, nagyobb telepítések alkalmazásokat telepíthet.
+* A Service Fabric platformot bárhol futtathatók, amely rendelkezik a Windows Server vagy Linux rendszerű gépek Azure-ban vagy a helyszíni e. A platform biztosítja az alapul szolgáló infrastruktúra feletti egy olyan absztrakciós réteget, így az alkalmazás futtatható a különböző környezetekben. 
+* Elosztott alkalmazás kezelése. A Service Fabric az, hogy nem csak gazdagépek elosztott alkalmazásokhoz, de is segít kezelése életciklusukon függetlenül, a üzemeltetési virtuális gép vagy gépek életciklusa platform.
 
 ## <a name="application-architecture"></a>Alkalmazásarchitektúra
-Cloud Services alkalmazás architektúra általában tartalmaz számos külső függőségei, például a Service Bus Azure Table és a Blob-tároló, SQL, Redis vagy mások állapotának és adatainak kérelem és a webkiszolgáló közötti kommunikáció kezelése és Cloud Services telepítések feldolgozói szerepköröket. A teljes Felhőszolgáltatások alkalmazás például nézhet ki:  
+A Cloud Services-alkalmazás architektúrájának általában magában foglalja számos olyan külső függőségei, mint a Service Bus, az Azure Table és a Blob Storage, SQL, a Redis és mások állapota és adatai egy alkalmazás és webhely közötti kommunikáció kezelése és A központi telepítés a Cloud Services feldolgozói szerepkörei. A teljes Cloud Services-alkalmazás például ehhez hasonló lehet:  
 
-![A felhőalapú szolgáltatások architektúrája][9]
+![Cloud Services architektúrája][9]
 
-Service Fabric-alkalmazások is beállíthatja a teljes alkalmazás ugyanazon külső szolgáltatások használatával. Ebben a példában Felhőszolgáltatások architektúrát használ, a legegyszerűbb áttelepítési út Felhőszolgáltatások a Service Fabric-hoz csak a felhőalapú szolgáltatások telepítése cserélje le a Service Fabric-alkalmazás, megőrzi az általános architektúrája azonos. A webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások révén minimális kódmódosítással is használatát.
+Service Fabric-alkalmazásokat is beállíthatja a teljes alkalmazás ugyanazok a külső szolgáltatások használata. Ebben a példában a Cloud Services-architektúra használatával, a legegyszerűbb áttelepítési út a Cloud Servicesből a Service Fabric az csak a Cloud Services üzembe helyezési cserélje le a Service Fabric-alkalmazás, ugyanazt az általános architektúrát tartja. A webes és feldolgozói szerepkörök már Service Fabric állapotmentes szolgáltatások révén minimális kódmódosítással is lehet.
 
 ![Egyszerű áttelepítés után a Service Fabric-architektúra][10]
 
-Ebben a szakaszban a rendszer továbbra is működni azonos az előzővel. A Service Fabric állapotalapú szolgáltatások, külső állapot tárolók kihasználni is internalized, állapotalapú alkalmazások és szolgáltatások részlegeinek. Ez az bonyolultabb mint egy egyszerű webes és feldolgozói szerepkörök történő áttelepítésének Service Fabric állapotmentes szolgáltatásokhoz, mivel az egyéni szolgáltatások, amelyek az alkalmazás funkciókat biztosítanak, ahogy a külső szolgáltatások előtt írása. Az ezzel a következő előnyöket nyújtja: 
+Ezen a ponton a rendszer továbbra is a korábbiaknak megfelelően működjön. Kihasználni a Service Fabric állapotalapú szolgáltatások, külső állapotuk tárolók is lehet internalized, ahogy a állapotalapú szolgáltatások, ha vannak ilyenek. Ez a bonyolultabb, mint a Service Fabric állapotmentes szolgáltatások, webes és feldolgozói szerepkörök egyszerű áttelepítést, az egyéni szolgáltatásokról, amelyek az alkalmazás egyenértékű funkciókat biztosít, mint a külső szolgáltatások előtt írása szükséges. Ennek előnyei a következők: 
 
 * Külső függőségek eltávolítása 
-* A központi telepítési, kezelési és frissítési modell egységesíti. 
+* A központi telepítési, kezelési és frissítési modellek egységes. 
 
-Egy példa eredményül kapott architektúrájának ezeket a szolgáltatásokat internalizing nézhet ki:
+Ezek a szolgáltatások internalizing eredményül kapott példa architektúrát nézhet ki:
 
 ![A teljes áttelepítés után a Service Fabric-architektúra][11]
 
-## <a name="communication-and-workflow"></a>Kommunikációs és a munkafolyamat
-A legtöbb Cloud Service-alkalmazások egynél több réteg áll. Hasonlóképpen a Service Fabric-alkalmazás több szolgáltatás (általában számos szolgáltatás) áll. Két közös kommunikációs modellt közvetlen kommunikációra és egy külső tartós tárolási keresztül.
+## <a name="communication-and-workflow"></a>Kommunikációs és munkafolyamat
+A legtöbb Cloud Service-alkalmazások egynél több szinten állnak. Ehhez hasonlóan a Service Fabric-alkalmazás több szolgáltatás (általában számos szolgáltatás) áll. Két gyakori kommunikációs modellt a közvetlen kommunikációt és a egy külső tartós tárolási keresztül.
 
-### <a name="direct-communication"></a>Közvetlen kommunikációt
-Az közvetlen kommunikációt rétegek közvetlenül a végpont által az egyes rétegek kommunikációt. Állapot nélküli környezetekben, például a Cloud Services, ez azt jelenti, hogy kiválasztása egy Virtuálisgép-szerepkör példánya vagy véletlenszerűen vagy ciklikus multiplexelés egyenleg betölteni, és közvetlenül csatlakozik a végpont.
+### <a name="direct-communication"></a>Közvetlen kommunikáció
+Közvetlen kommunikációt az rétegek közvetlenül minden egyes réteg által elérhető végponton keresztüli kommunikációt. Állapot nélküli környezetekben, például a Cloud Services, ez azt jelenti, hogy kiválasztja egy példányt egy Virtuálisgép-szerepkör, vagy véletlenszerűen vagy Ciklikus időszeleteléses egyenleg betölteni, és közvetlenül csatlakozik a végpont.
 
-![A közvetlen kommunikációt cloud Services csomag][5]
+![A közvetlen kommunikációt a cloud Services][5]
 
- Közvetlen kommunikációra a Service Fabric egy általános kommunikációs modellt. A kulcs közötti Service Fabric és a Cloud Services különbség, hogy a Cloud Services csatlakoztat egy virtuális Gépet, mivel a Service Fabric csatlakozzon a szolgáltatáshoz. Ez fontos különbség néhány lehetnek az okai:
+ Közvetlen kommunikációra a Service Fabric egy általános kommunikációs modellt. A Service Fabric és Felhőszolgáltatások közötti fő különbség, hogy a Cloud Services csatlakoztat egy virtuális géphez, mivel a Service Fabric csatlakozik a szolgáltatáshoz. Ez fontos különbség néhány okok miatt:
 
-* A Service Fabric szolgáltatások nincs kötve a virtuális gépeket üzemeltető szolgáltatások előfordulhat, hogy Navigálás a fürthöz, és tulajdonképpen várhatóan különböző okokból Navigálás: erőforrás terheléselosztás, feladatátvevő, alkalmazások és az infrastruktúra frissítések és elhelyezési vagy terheléselosztási vannak. Ez azt jelenti, hogy egy szolgáltatáspéldány cím bármikor módosíthatja. 
-* Egy virtuális Gépet, a Service Fabric több szolgáltatásra, az egyedi végpontok száma tárolhatja.
+* A Service Fabric Services nincs kötve a; üzemeltető virtuális gépek szolgáltatások előfordulhat, hogy Navigálás a fürt, és tulajdonképpen várhatóan Navigálás különböző okok miatt: Erőforrás terheléselosztás, feladatátvétel, alkalmazás és -infrastruktúra frissítések és elhelyezési vagy a betöltés korlátozása. Ez azt jelenti, hogy egy szolgáltatáspéldány címet bármikor módosíthatja. 
+* Egy virtuális gép a Service Fabric több szolgáltatást, amelyek mindegyike egyedi végpontok is üzemeltethet.
 
-Service Fabric szolgáltatás felderítési mechanizmust, a elnevezési szolgáltatást, amely segítségével hárítsa el a végponti címeket szolgáltatások nevű biztosít. 
+A Service Fabric lehetővé teszi a szolgáltatás felderítési, neve az elnevezési szolgáltatás, amely szolgáltatások végpontcímeket megoldásához használható. 
 
-![A Service Fabric közvetlen kommunikációt][6]
+![A Service Fabric közvetlen kommunikáció][6]
 
 ### <a name="queues"></a>Üzenetsorok
-Egy általános kommunikációs mechanizmus állapot nélküli környezetekben, például Felhőszolgáltatások rétegek közötti, hogy egy külső tároló várólista tartósan tárolja a másik egy rétegtől munkahelyi feladatokhoz. Egy általános forgatókönyv egy webes réteghez, amely a feladatok küldése az Azure Queue vagy a Service Bus ahol feldolgozói szerepkör példányok created és a feladatok feldolgozásához.
+Egy általános kommunikációs mechanizmus állapot nélküli környezetekben, például a Cloud Services réteg között, hogy egy külső storage-üzenetsor tartósan tárolja a munkahelyi feladatokat az egyik rétegről a másikra. Egy gyakori forgatókönyv, amely egy Azure-üzenetsor vagy ahol feldolgozói szerepkör példányai is a sorból, és a feladatok feldolgozásához a Service Bus feladatok küld a webes szint.
 
 ![Cloud Services várólista kommunikáció][7]
 
-Az azonos kommunikációs modellt a Service Fabric használható. Ez akkor lehet hasznos, az áttelepítés alatt a Service Fabric Felhőszolgáltatások egy meglévő alkalmazást. 
+A Service Fabric ugyanazt a kommunikációs modellt is használható. Ez akkor hasznos, ha egy meglévő alkalmazást a Cloud Services Service Fabric áttelepítése. 
 
-![A Service Fabric közvetlen kommunikációt][8]
+![A Service Fabric közvetlen kommunikáció][8]
 
 ## <a name="next-steps"></a>További lépések
-A legegyszerűbb áttelepítési út Felhőszolgáltatások a Service Fabric-hoz csak a felhőalapú szolgáltatások telepítése cserélje le a Service Fabric-alkalmazás, megőrzi az alkalmazás általános architektúrája többé-kevésbé megegyezik. A következő cikk nyújt egy útmutató egy webes vagy feldolgozói szerepkör átalakítása a Service Fabric állapotmentes szolgáltatások segítségével.
+A legegyszerűbb áttelepítési út a Cloud Servicesből a Service Fabric, hogy csak a Cloud Services üzembe helyezési cserélje le a Service Fabric-alkalmazás, így az általános architektúrát, az alkalmazás nagyjából azonos. A következő cikk útmutató egy webes vagy feldolgozói szerepkör átalakítása egy Service Fabric állapotmentes szolgáltatás.
 
-* [Egyszerű áttelepítési: webes vagy feldolgozói szerepkör konvertálása a Service Fabric állapotmentes szolgáltatások](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+* [Egyszerű migrálás: a webes vagy feldolgozói szerepkör átalakítása egy Service Fabric állapotmentes szolgáltatás](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-cloud-services-migration-differences/topology-cloud-services.png

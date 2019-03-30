@@ -4,7 +4,7 @@ description: A Service Fabric terminológiája áttekintése. Legfontosabb termi
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: chackdan;subramar
 ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: d9012ff37693b406d4e91560c880d6bed66c051b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498298"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668440"
 ---
 # <a name="service-fabric-terminology-overview"></a>A Service Fabric a terminológia áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Is [gazdagépet a Service Fabric-fürtök bárhol](service-fabric-deploy-anywhere.md): Azure-ban, egy helyszíni adatközpontban vagy bármely más szolgáltatónál.  Service Fabric az orchestrator-megoldás a [Azure Service Fabric-háló](/azure/service-fabric-mesh). Bármely keretrendszer használatával a szolgáltatások írását, és válassza ki, az alkalmazás futtatásához több környezetben lehetőségek közül. Ez a cikk részletesen megérteni a kifejezések a dokumentáció a Service Fabric által használt terminológiával.

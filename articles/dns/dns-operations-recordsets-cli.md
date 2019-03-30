@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963815"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650971"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS az Azure CLI használatával
 
@@ -92,7 +92,7 @@ A rekordadatok megadásához használt paraméterek a rekord típusától függn
 
 Minden esetben bemutatjuk, hogyan hozhat létre egy rekordot. A bejegyzés kerül a meglévő rekordhalmazt, vagy implicit módon létrehozott rekordhalmaz. További tájékoztatást a rekordhalmazok létrehozásához, és bejegyzést meghatározó paraméter explicit módon, olvassa el [hozzon létre egy DNS-rekordhalmaz](#create-a-dns-record-set).
 
-Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mivel SOAs jönnek létre, és törölni minden DNS-zónát, és nem hozható létre vagy külön-külön törölve. Azonban [módosíthatja a SOA típusú, újabb példában látható módon](#to-modify-an-SOA-record).
+Nem biztosítunk lehet például egy SOA típusú rekordhalmaz létrehozása, mivel SOAs jönnek létre, és törölni minden DNS-zónát, és nem hozható létre vagy külön-külön törölve. Azonban [módosíthatja a SOA típusú, újabb példában látható módon](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record"></a>Hozzon létre egy AAAA típusú rekordot
 
@@ -106,7 +106,7 @@ az network dns record-set aaaa add-record --resource-group myresourcegroup --zon
 az network dns record-set caa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-caa --flags 0 --tag "issue" --value "ca1.contoso.com"
 ```
 
-### <a name="create-a-cname-record"></a>Hozzon létre egy CNAME-rekordot
+### <a name="create-a-cname-record"></a>Create a CNAME record
 
 > [!NOTE]
 > A DNS-szabványok nem engedélyeznek CNAME-rekordokat a zóna tetején található rekordokra (`--Name "@"`), és nem teszik egynél több rekordot tartalmazó rekordhalmazok.
@@ -117,7 +117,7 @@ az network dns record-set caa add-record --resource-group myresourcegroup --zone
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.contoso.com
 ```
 
-### <a name="create-an-mx-record"></a>Az MX-rekord létrehozása
+### <a name="create-an-mx-record"></a>Create an MX record
 
 Ebben a példában a rekordhalmaznevet használjuk "\@" hozhat létre az MX-rekord a zóna legfelső pontján (ebben az esetben "contoso.com").
 
@@ -207,7 +207,7 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 Minden rekordhalmaz tartalmaz egy [idő – Élettartam (TTL)](dns-zones-records.md#time-to-live), [metaadatok](dns-zones-records.md#tags-and-metadata), és a DNS-rekordjait. Az alábbi szakaszok azt ismertetik, hogyan módosíthatja a ezeket a tulajdonságokat.
 
-### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>Egy A, AAAA, CAA, MX, NS, PTR, SRV és txt típusú rekord módosítása
+### <a name="to-modify-an-a-aaaa-caa-mx-ns-ptr-srv-or-txt-record"></a>To modify an A, AAAA, CAA, MX, NS, PTR, SRV, or TXT record
 
 Egy már létező rekord nevével írja be A, AAAA, CAA, MX, NS, PTR, SRV vagy TXT módosításához kell először adjon hozzá egy új rekordot, és ezután törölje a meglévő rekord. A Törlés és a rekordok hozzáadása részletes utasításokért lásd: Ez a cikk korábbi szakaszait.
 

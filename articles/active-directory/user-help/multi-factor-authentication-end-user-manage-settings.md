@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29da9e87c09ad157babf1e1a391fb967859d73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210509"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665049"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzés beállításainak kezelése
 Ez a cikk a kétlépéses ellenőrzés vagy a multi-factor Authentication hitelesítés beállításainak frissítésével kapcsolatos kérdésekre ad választ. Ha a fiókjához regisztrálással kapcsolatos problémák merülnek fel, tekintse meg [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.
@@ -50,7 +50,7 @@ Ha a hivatkozásra kattintva nem működik az Ön számára, akkor is elérhető
     ![Proofup](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 
 ## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>Szeretnék megváltoztathatják a telefonszámukat, vagy egy másodlagos szám hozzáadása
-Fontos, egy másodlagos hitelesítő telefonszám konfigurálása.  Mivel az elsődleges telefonszámukat és a mobilalkalmazás valószínűleg a azonos telefonon, a másodlagos telefonszámot az egyetlen módja fogja tudni visszaszerezheti fiókját, ha a telefonja elveszett vagy ellopták.
+Fontos, egy másodlagos hitelesítő telefonszám konfigurálása.  Mivel az elsődleges telefonszámukat és a mobilalkalmazás okai valószínűleg a azonos telefonon, a másodlagos telefonszám, a leggyorsabb módot kínálni arra fogja tudni visszaszerezheti fiókját, ha a telefonja elveszett vagy ellopták.
 
 > [!NOTE]
 > Ha nem fér hozzá az elsődleges telefonszám, és nem a fiókjába első segítségre van szüksége, tekintse meg a [problémákat tapasztal a kétlépéses ellenőrzéssel](multi-factor-authentication-end-user-troubleshoot.md) cikk további segítséget itt találhat.  

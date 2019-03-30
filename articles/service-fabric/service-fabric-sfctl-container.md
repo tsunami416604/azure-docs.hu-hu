@@ -4,7 +4,7 @@ description: A Service Fabric parancssori felület sfctl tárolóparancsok ismer
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 455b2a70568566bff5b1ea4c185568a1758f7db3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a5037c535737946a50d8af6fa60d0815120276d9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274904"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663706"
 ---
 # <a name="sfctl-container"></a>sfctl-tároló
 Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
@@ -28,7 +28,7 @@ Tároló futtatási kapcsolatos parancsok egy fürtcsomóponton.
 
 |Parancs|Leírás|
 | --- | --- |
-| api meghívása | Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához. |
+| invoke-api | Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tárolón a tároló API meghívásához. |
 | naplók | A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása. |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl tároló invoke-api
@@ -44,9 +44,9 @@ Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz t�
 | --container-api-uri-elérési út [kötelező] | Tároló REST API-URI elérési út a(z) {id} használata helyett a tároló neve vagy azonosítója. |
 | --csomópontnév [kötelező] | A csomópont neve. |
 | --service-jegyzékfájl-name [kötelező] | A szolgáltatásjegyzék-alkalmazástípus a Service Fabric-fürt részeként regisztrált neve. |
-| --container-api – törzs | HTTP-kérés törzse REST API-tárolóhoz. |
+| --container-api-body | HTTP-kérés törzse REST API-tárolóhoz. |
 | --container-api-content-type | Typ obsahu tároló REST API-t alapértelmezés szerint az "application/json". |
-| --container-api-http-művelet | Alapértelmezés szerint GET REST API-t tároló HTTP-műveletet. |
+| --container-api-http-verb | Alapértelmezés szerint GET REST API-t tároló HTTP-műveletet. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -57,7 +57,7 @@ Egy üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz t�
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-container-logs"></a>sfctl-tároló naplóit
 A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsomaghoz tároló naplóinak beolvasása.
@@ -82,7 +82,7 @@ A tároló üzembe helyezett egy Service Fabric-csomóponton, az adott kódcsoma
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 
 ## <a name="next-steps"></a>További lépések

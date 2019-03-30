@@ -6,18 +6,21 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7bfd94cb4940c33cb72a39827f67d04a5540ccdb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859691"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663434"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre a Resource Health tevékenységnapló-riasztások programozott módon az Azure Resource Manager-sablonokkal és az Azure PowerShell használatával.
 
 Az Azure Resource Health láthatók a jelenlegi és korábbi állapotát az Azure-erőforrások. Azure Resource Health-riasztások értesítheti, a közel valós idejű akkor, ha ezek az erőforrások állapota változik rendelkezik. Létrehozása a Resource Health riasztásokat programozott módon lehetővé teszik a felhasználók létrehozása és testre szabhatja a riasztásokat tömegesen.
+
+> [!NOTE]
+> Resource Health-riasztások jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
