@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 450d47e4c20da1d9d9760ababf58c75eef2814b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78f19fcca51bb9c14fd05013834599c3e0f12779
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182370"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662108"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az Azure SQL Database felügyelt példány offline a DMS használatával
 
@@ -152,9 +152,9 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 1. Az a **Migrálási cél részletei** képernyőn, adja meg a cél, amely, amelyhez migráláshoz előre kiépített Azure SQL Database felügyelt példány kapcsolati adatait a **AdventureWorks2012**adatbázis.
 
-    Ha még nem építette az Azure SQL Database felügyelt példány, válassza ki a **nem** segítséget nyújtanak a példány üzembe helyezése egy hivatkozáshoz. A projekt létrehozása továbbra is, és ezt követően készen áll, az Azure SQL Database felügyelt példány esetén térjen vissza az adott projekthez az áttelepítés végrehajtásához.
+    Ha még nem építette az Azure SQL Database felügyelt példány, válassza ki a [hivatkozás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started) segítséget nyújtanak a példány üzembe helyezése. A projekt létrehozása továbbra is, és ezt követően készen áll, az Azure SQL Database felügyelt példány esetén térjen vissza az adott projekthez az áttelepítés végrehajtásához.
 
-       ![Select Target](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
+     ![Cél kiválasztása](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
 2. Kattintson a **Mentés** gombra.
 

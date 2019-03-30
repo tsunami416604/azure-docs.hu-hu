@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/29/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 19e94fc65ddc1719c601397adfe77f8f9445e4fa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351456"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662125"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -44,19 +44,6 @@ A Media Services lehetővé teszi különböző média-munkafolyamatok létrehoz
 * Használja az Azure Media Services együtt [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/#pivot=products&panel=ai) a feliratok és akadálymentes feliratok hozzáadása videókhoz, egy szélesebb közönség számára (például fogyatékkal élők hallási vagy eltérő mentén olvasni kívánt személyek méretformátumok figyelembe vétele nyelv).
 * Engedélyezi az Azure CDN nagy méretű méretezési lehetőségek érhetők el az azonnali nagy terhelés (például az események kezdetét) a hatékonyabb hibakezelést eléréséhez. 
 
-## <a name="v3-capabilities"></a>A v3 képességei
-
-A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. 
-
-Ez a verzió az alábbi képességeket biztosítja:  
-
-* **Átalakítás**, amellyel a médiafeldolgozási vagy az -elemzési feladatok egyszerű munkafolyamatait határozhatja meg. Az átalakítás a video- és hangfájlok feldolgozásának rögzített folyamata. A későbbiekben ismételten alkalmazhatja a tartalomtárban levő összes fájl feldolgozásához a feladatoknak az átalakítási szolgáltatás számára történő elküldésével.
-* **Feladatok** a videók feldolgozásához (kódolás vagy elemzés). A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg a feladatokban. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
-* **Értesítések** , hogy a feladat előrehaladásának vagy állapotok, vagy az élő esemény indítása és leállítása és a hiba esemény figyelése. Az értesítések az Azure Event Grid értesítési rendszerével vannak integrálva. Könnyedén előfizethet az Azure Media Services több erőforrásának eseményeire. 
-* **Az Azure Resource Management** sablonok létrehozása és üzembe helyezése átalakítások, a Streamelési végpontok, az élő események és egyéb használható.
-* **Szerepköralapú hozzáférés-vezérlés** beállíthatja az erőforrásszintek simítása, lehetővé téve a hozzáférés bizonyos erőforrásokhoz, mint átalakítások, élő események és egyéb zárolását.
-* **Ügyfél SDK-k** több nyelven: .NET, .NET core, Python, Go, Java és Node.js.
-
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
 Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Átalakítások) az Azure Resource Manager elnevezési korlátozásai vonatkoznak. Az Azure Resource Manager szolgáltatásnak megfelelően az erőforrásnevek mindig egyediek. Így bármilyen egyedi azonosító sztringet (pl. GUID-ok) használhat erőforrásnévként. 
@@ -76,6 +63,41 @@ Erre a következők szolgálnak példaként:
 * a rendszer nem adja vissza az URL lekérdezési sztring részét (az aláírás eltávolításához) a feladat HTTP bemeneti URL-jei esetében.
 
 Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-policy-dotnet-howto.md) példa.
+
+
+## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát? 
+
+Ismerje meg, hogyan kódolása és csomagolása, streamelhet videókat igény szerinti, élő közvetítés, elemezheti videóit a Media Services v3. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
+
+### <a name="quickstarts"></a>Gyors útmutatók  
+
+A rövid útmutatók alapvető nap-1 utasítások megjelenítése az új ügyfelek gyorsan kipróbálhatja a Media Services.
+
+* [Stream-videó fájlok – .NET](stream-files-dotnet-quickstart.md)
+* [Stream-videó fájlok – CLI](stream-files-cli-quickstart.md)
+* [Stream-videó fájlok – Node.js](stream-files-nodejs-quickstart.md)
+    
+### <a name="tutorials"></a>Oktatóanyagok 
+
+Az oktatóanyagok bemutatják a forgatókönyv-alapú eljárások a Media Services leggyakoribb feladatokat.
+
+* [Kódolás a távoli fájl- és video-adatfolyamok – REST](stream-files-tutorial-with-rest.md)
+* [A feltöltött fájl- és video - adatfolyamot .NET kódolása](stream-files-tutorial-with-api.md)
+* [Stream élő – .NET](stream-live-tutorial-with-api.md)
+* [.NET - videó elemzése](analyze-videos-tutorial-with-api.md)
+* [AES-128 dinamikus titkosítást – .NET](protect-with-aes128.md)
+    
+### <a name="how-to-guides"></a>Útmutatók
+
+Cikkek tartalmaznak kódmintákkal, amelyek bemutatják, hogyan lehet egy adott feladat végrehajtásához. Ez a szakasz példákat talál, az alábbiakban ezek közül néhány:
+
+* [Fiók létrehozása – CLI](create-account-cli-how-to.md)
+* [Hozzáférés API-k – parancssori felület](access-api-cli-how-to.md)
+* [A fejlesztés megkezdése az SDK-k](developers-guide.md)
+* [Kódolás a HTTPS, a feladat bemeneti – .NET](job-input-from-http-how-to.md)  
+* [A figyelő események – portál](monitor-events-portal-how-to.md)
+* [A többplatformos DRM - .NET dinamikusan titkosítása](protect-with-drm.md) 
+* [Az egyéni átalakítási kódolása a parancssori felület használatával](custom-preset-cli-howto.md)
 
 ## <a name="next-steps"></a>További lépések
 
