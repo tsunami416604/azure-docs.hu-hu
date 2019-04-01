@@ -3,17 +3,17 @@ title: 'Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard 
 description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Standard .NET SDK használatával.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: 0197ae8077a00111e005e5686efcd2597b995bcb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 327ab46b01e15b77e675e052dbfe8b3453b566a6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007034"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757119"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cfaf0bf20449262fcebb6cefc1b0a499c6190ae8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861170"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756471"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Gyors útmutató: Próbálja ki a Content Moderator a weben
 
@@ -69,5 +69,5 @@ Vagy folytassa a következő lépésekkel a kódban a moderálási API-k haszná
 
 Ismerje meg, hogyan használható a moderálási API-k magukat az alkalmazásban.
 - Képmoderálás megvalósításához. Használja a [API-konzol](try-image-api.md) vagy a [ C# rövid](image-moderation-quickstart-dotnet.md) kiszűrhető, és észlelheti a potenciális felnőtt és szexuális tartalom címkék, megbízhatósági pontszámokat és egyéb használatával a kinyert információkat.
-- Szövegmoderálás megvalósításához. Használja a [API-konzol](try-text-api.md) vagy használja a [ C# rövid](text-moderation-quickstart-dotnet.md) tartalomszűrés, nem kívánatos szöveg gépi támogatású besorolás (előzetes verzió), a szöveges tartalom vizsgálata és a személyes azonosításra alkalmas adatokat (PII). 
+- Szövegmoderálás megvalósításához. Használja a [API-konzol](try-text-api.md) vagy használja a [ C# rövid](text-moderation-quickstart-dotnet.md) tartalomszűrés, a nem kívánt szöveg gépi támogatású besorolás (előzetes verzió) és a személyes adatokat a szöveges tartalom vizsgálata.
 - Videomoderálás megvalósításához. Kövesse a [videó moderálás útmutató útmutató a C# ](video-moderation-api.md) videók vizsgálata, és észlelheti a potenciális felnőtt és szexuális tartalom. 

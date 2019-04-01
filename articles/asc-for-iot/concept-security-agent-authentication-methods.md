@@ -1,6 +1,6 @@
 ---
-title: Hitelesítési módszerek IoT villámnézethez ASC |} A Microsoft Docs
-description: Ismerje meg az elérhető különböző hitelesítési módszereit IoT-szolgáltatást az ASC használatakor.
+title: Hitelesítési módszerek az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg az elérhető különböző hitelesítési módszereit IoT-szolgáltatás az Azure Security Center használata esetén.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577800"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758380"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerek 
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk ismerteti a különböző hitelesítési módszerek AzureIoTSecurity-ügynökkel rendelkező használhatja az IoT Hub-hitelesítésre.
 
-Minden egyes eszköz előkészítve az ASC-hez, az IoT hub IOT egy biztonsági modulra szükség. Az eszköz hitelesítéséhez, az IoT ASC két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldás optimális módját. 
+Minden egyes eszköz előkészítve az Azure Security Center (ASC) az IoT hub IOT egy biztonsági modulra szükség. Az eszköz hitelesítéséhez, az IoT ASC két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldás optimális módját. 
 
 > [!div class="checklist"]
 > * A modul a biztonsági beállítás

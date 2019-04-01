@@ -7,23 +7,25 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: c1e4803698525f0d084fadac14e3952b951ecae6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164442"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755258"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Létrehozhat és konfigurálhat egy Azure Kubernetes-szolgáltatások (AKS)-fürtön az Azure Portalon a virtuális csomópontok használata
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Előzetes verzió – létrehozása és konfigurálása az Azure Kubernetes szolgáltatások (AKS)-fürt virtuális csomópontok használata az Azure Portalon
 
 Számítási feladatok az Azure Kubernetes Service (AKS)-fürt gyors üzembe helyezéséhez használhatja a virtuális csomópontok. Virtuális csomópont esetén podok gyors kiépítés rendelkezik, és csak a végrehajtási idejű másodpercenként kell fizetnie. Egy méretezési esetben nem kell az újabb podok futtatandó virtuális gép számítási csomópontok üzembe helyezéséhez a Kubernetes fürt méretező várja. Ez a cikk bemutatja, hogyan hozhat létre és konfigurálja a virtuális hálózati erőforrásokat és a egy AKS-fürt virtuális csomópontok engedélyezve van.
 
 > [!IMPORTANT]
-> Az aks-ben a virtuális csomópontok használata jelenleg **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+>
+> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
 
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Bár ez a funkció előzetes verzióban érhető el, a következő régiókban központi telepítések támogatottak:
+A következő régiók virtuális csomópont központi telepítések támogatottak:
 
 * Kelet-Ausztrália (Kelet-Ausztrália)
 * USA keleti RÉGIÓJA (USA keleti régiója)
@@ -182,6 +184,8 @@ Virtuális csomópontok használata egy méretezési megoldás az aks-ben egyik 
 
 - [A Kubernetes-podok horizontális méretező használatához][aks-hpa]
 - [A Kubernetes-fürt méretező használatához][aks-cluster-autoscaler]
+- [Tekintse meg az automatikus skálázási minta virtuális csomópontok][virtual-node-autoscale]
+- [További információ a Virtual Kubelet nyílt forráskódú kódtár][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -190,6 +194,9 @@ Virtuális csomópontok használata egy méretezési megoldás az aks-ben egyik 
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md
@@ -198,4 +205,3 @@ Virtuális csomópontok használata egy méretezési megoldás az aks-ben egyik 
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
-
