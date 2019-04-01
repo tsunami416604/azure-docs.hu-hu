@@ -1,186 +1,76 @@
 ---
-title: Jóváhagyás feladatok és emberi hurok felülvizsgálatok - Content Moderator
+title: Értékelések, munkafolyamatok, és a feladatok alapelvei – a Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Gépi támogatású képmoderálás emberi hurok képességekkel rendelkező egyesítése a legjobb eredmények elérése érdekében az üzleti lekérése az Azure Content Moderator felülvizsgálati API használatával.
+description: Ellenőrzések, a munkafolyamatok és a feladatok ismertetése
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 21d71110853c5f18b0b5f0b51d30110eb45ff54a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862700"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756296"
 ---
-# <a name="content-moderation-jobs-and-reviews"></a>Tartalom-jóváhagyás feladatok és értékelések
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-jóváhagyás ellenőrzések, a munkafolyamatok és a feladatok
 
-Az Azure Content Moderator a gépi támogatású képmoderálás emberi hurok képességekkel rendelkező egyesítése [felülvizsgálati API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) beolvasni a legjobb eredmények elérése érdekében a vállalkozása számára.
+A Content Moderator a gépi támogatású moderálását az emberi hurok-képességeivel létrehozhat egy optimális moderálási folyamat a valós életből vett egyesíti. A felhő alapú keresztül teszi ezt [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com). Ez az útmutató azt ismerteti, a felülvizsgálati eszköz alapfogalmakat: ellenőrzések, a munkafolyamatok és a feladatok.
 
-A felülvizsgálati API emberi felvenni a tartalom-jóváhagyás folyamat az alábbi lehetőségeket kínálja:
+## <a name="reviews"></a>Felülvizsgálatok
 
-* `Job` műveletek a gépi támogatású képmoderálás és az emberi ellenőrző létrehozása egy lépésben szolgálnak.
-* `Review` műveletek emberi vizsgálóeszközt létrehozásakor, a moderálás lépés kívül használható.
-* `Workflow` műveletek küszöbértékeinek felülvizsgálat létrehozása a keresés automatizáló munkafolyamatok kezelésére használhatók.
+Tekintsük át a tartalmat töltenek fel a vizsgálóeszközt és alatt jelenik meg a **tekintse át** fülre. Itt a felhasználók az alkalmazott címkék alter és a saját egyéni címkével lát, szükség szerint. Amikor egy felhasználó beküld egy, az eredményeket egy megadott visszahívási végpont érkeznek, és a tartalmat a webhely törlődik.
 
-A `Job` és `Review` műveleteket fogadja el a visszahívás végpontjainak állapotának és eredményeinek fogadásakor.
+![Felülvizsgálati eszköz webhely nyisson meg egy böngészőben a áttekintése lapon](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-Ez a cikk ismerteti a `Job` és `Review` műveleteket. Olvassa el a [munkafolyamatok áttekintése](workflow-api.md) létrehozásával kapcsolatos információkat, szerkesztheti és munkafolyamat-meghatározások beolvasása.
+Lásd: a [felülvizsgálati eszköz útmutató](./review-tool-user-guide/review-moderated-images.md) felülvizsgálatok létrehozásának első lépései, vagy tekintse meg a [REST API-útmutató](./try-review-api-review.md) megtudhatja, hogyan ehhez programozott módon.
 
-## <a name="job-operations"></a>Feladat műveletei
+## <a name="workflows"></a>Munkafolyamatok
 
-### <a name="start-a-job"></a>Feladat indítása
-Használja a `Job.Create` műveletet a moderálás és emberi vizsgálóeszközt létrehozó feladat elindításához. A Content Moderator megvizsgálja a tartalmat, és kiértékeli a megadott munkafolyamat. A munkafolyamat eredményei alapján, vagy hoz létre értékelések vagy kihagyja a lépést. Azt is elküldi a utáni moderálás és az utólagos felülvizsgálat címkék a visszahívás-végpontra.
+Egy munkafolyamat, felhőalapú testre szabott szűrheti a tartalom. A munkafolyamatok számos különböző módon tartalom szűrése és a megfelelő a megfelelő műveletet szolgáltatás képes csatlakozni. A Content Moderator összekötőjével munkafolyamat automatikusan moderálás címkékkel és hozhat létre értékelések elküldött tartalommal.
 
-A bemeneti adatok az alábbi információkat:
+### <a name="view-workflows"></a>A munkafolyamatok megtekintése
 
-- A felülvizsgálati csapat azonosítója.
-- A tartalom kell mérsékelni.
-- A munkafolyamat nevét. (Az alapértelmezett érték a "alapértelmezett" munkafolyamatot.)
-- Az API-visszahívás értesítések pontján.
- 
-A következő választ mutatja a indított feladat azonosítóját. A feladat állapotát, és részletes információkban részesülnek a használja a feladat azonosítója.
+A meglévő munkafolyamatokba megtekintéséhez nyissa meg a [vizsgálóeszköz](https://contentmoderator.cognitive.microsoft.com/) válassza **beállítások** > **munkafolyamatok**.
 
-    {
-        "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
-    }
+![Alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 
-### <a name="get-job-status"></a>Feladat állapotának beolvasása
+A munkafolyamatok JSON karakterláncként, ami lehetővé teszi számukra elérhető programozott módon teljesen leírását is. Ha a **szerkesztése** a munkafolyamathoz lehetőséget, majd válassza ki a **JSON** lapon látni fog egy JSON-kifejezést a következőhöz hasonló:
 
-Használja a `Job.Get` művelet és a feladat azonosító lekérése egy futó vagy befejezett feladat részleteit. A művelet azonnal, míg a moderálás feladat aszinkron módon fut adja vissza. Az eredmény a visszahívás-végponton keresztül.
-
-A bemeneteket az alábbi információkat:
-
-- A felülvizsgálati csoport azonosítója: Az előző művelet által visszaadott feladat azonosítója
-
-A válasz tartalmazza a következő információkat:
-
-- A létrehozott felülvizsgálat azonosítója. (Ezt az Azonosítót használja a végleges ellenőrzésig eredmények eléréséhez.)
-- A feladat (befejezett és folyamatban) állapota: A hozzárendelt moderálás címkék (kulcs-érték párok).
-- A feladat-végrehajtási jelentés.
- 
- 
-        {
-            "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-            "TeamName": "some team name",
-            "Status": "Complete",
-            "WorkflowId": "OCR",
-            "Type": "Image",
-            "CallBackEndpoint": "",
-            "ReviewId": "201801i28fc0f7cbf424447846e509af853ea54",
-            "ResultMetaData":[
-            {
-            "Key": "hasText",
-            "Value": "True"
-            },
-            {
-            "Key": "ocrText",
-            "Value": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
-            }
-            ],
-            "JobExecutionReport": [
-            {
-                "Ts": "2018-01-07T00:38:29.3238715",
-                "Msg": "Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.2928416",
-                "Msg": "Job marked completed and job content has been removed"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.0856472",
-                "Msg": "Execution Complete"
-                },
-            {
-                "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-                }
-            ]
-        }
- 
-![Képek felülvizsgálata emberi moderátorok által](images/ocr-sample-image.PNG)
-
-## <a name="review-operations"></a>Műveletek áttekintése
-
-### <a name="create-reviews"></a>Felülvizsgálat létrehozása
-
-Használja a `Review.Create` létrehozni a az emberi ellenőrzések. Vagy máshol közepes szintű vagy az egyéni logikát használja a moderálás címkéket társíthat.
-
-Ez a művelet a bemeneti adatokat a következők:
-
-- Át kell tekinteni a tartalmat.
-- A hozzárendelt címkék (kulcs-érték párral) által az emberi moderátorok felülvizsgálatra.
-
-A következő választ mutatja a felülvizsgálat azonosítója:
-
-    [
-        "201712i46950138c61a4740b118a43cac33f434",
-    ]
-
-
-### <a name="get-review-status"></a>Felülvizsgálati állapot beolvasása
-Használja a `Review.Get` művelettel lekérheti az eredményeket egy emberi vizsgálóeszközt moderált obrázku befejeződése után. Értesítést kaphat a megadott visszahívási végponton keresztül. 
-
-A művelet a címkék két csoportját adja vissza: 
-
-* A moderálás szolgáltatás által hozzárendelt címkék
-* A címkék, Miután befejeződött az emberi ellenőrző
-
-A bemenetek legalább a következők:
-
-- A felülvizsgálat csoport neve
-- Tekintse át az előző művelet által visszaadott azonosítója
-
-A válasz tartalmazza a következő információkat:
-
-- A felülvizsgálati állapot
-- A címkék (kulcs-érték párok), az emberi ellenőrző erősítette
-- A moderálás szolgáltatás által hozzárendelt címkék (kulcs-érték párok)
-
-Mindkét felülvizsgáló által hozzárendelt címkéinek megtekintéséhez (**reviewerResultTags**) és a kezdeti címkék (**metaadatok**) a következő minta válasz:
-
-    {
-        "reviewId": "201712i46950138c61a4740b118a43cac33f434",
-        "subTeam": "public",
-        "status": "Complete",
-        "reviewerResultTags": [
-        {
-            "key": "a",
-            "value": "False"
+```json
+{
+    "Type": "Logic",
+    "If": {
+        "ConnectorName": "moderator",
+        "OutputName": "isAdult",
+        "Operator": "eq",
+        "Value": "true",
+        "Type": "Condition"
         },
-        {
-            "key": "r",
-            "value": "True"
-        },
-        {
-            "key": "sc",
-            "value": "True"
-        }
-        ],
-        "createdBy": "{teamname}",
-        "metadata": [
-        {
-            "key": "sc",
-            "value": "true"
-        }
-        ],
-        "type": "Image",
-        "content": "https://reviewcontentprod.blob.core.windows.net/{teamname}/IMG_201712i46950138c61a4740b118a43cac33f434",
-        "contentId": "0",
-        "callbackEndpoint": "{callbackUrl}"
+    "Then": {
+    "Perform": [
+    {
+        "Name": "createreview",
+        "CallbackEndpoint": null,
+        "Tags": []
     }
+    ],
+    "Type": "Actions"
+    }
+}
+```
+
+Lásd: a [felülvizsgálati eszköz útmutató](./review-tool-user-guide/workflows.md) munkafolyamatok létrehozása és használata első lépései, vagy tekintse meg a [REST API-útmutató](./try-review-api-workflow.md) megtudhatja, hogyan ehhez programozott módon.
+
+## <a name="jobs"></a>Feladatok
+
+A moderálás feladat egy burkoló a tartalom-jóváhagyás, munkafolyamatok és értékelések funkciójának típusú funkcionál. A feladat megvizsgálja a tartalom a Content Moderator képmoderálás API-t vagy szöveges moderálási API-t, és azután ellenőrzi a kijelölt munkafolyamat ellen. A munkafolyamat eredményei alapján lehet, hogy vagy a tartalom vonatkozó felülvizsgálat nem hozható létre a [vizsgálóeszköz](./review-tool-user-guide/human-in-the-loop.md). Értékelések és a munkafolyamatok lehet létrehozni és konfigurálni a megfelelő API-k, amíg a feladat API megszerzését teszi lehetővé egy részletes jelentés a teljes folyamat (amely küldhető a megadott visszahívás-végponthoz).
+
+Tekintse meg a [REST API-val útmutató](./try-review-api-job.md) feladatok használatának megkezdéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

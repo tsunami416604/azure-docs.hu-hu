@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 599b1d3f522a0f287736808cce88163f1ef7f28f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295674"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755800"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Használat és költségek kezelése a Log Analytics az Azure monitorban
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan tarthatja a költségeket, a Log Analytics által az adatok megőrzési időszak beállítása.  További kapcsolódó információt a következő cikkekben talál.
 > - [Adathasználat elemzése a Log Analytics](manage-cost-storage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
 > - [Használat és becsült költségek figyelése](usage-estimated-costs.md) ismerteti, hogyan lehet megtekinteni a használati és becsült költségek figyelési funkciók eltérő díjszabási modelleket a több Azure-ban. Emellett bemutatja, hogyan lehet módosítani a díjszabási modellt.
 
-A log Analytics méretezési és támogatási gyűjtése, az indexelés és a vállalati adatok naponta bármilyen forrásból származó nagy mennyiségű tárolására tervezték vagy üzembe helyezve az Azure-ban.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni a nem a Log Analytics-munkaterület költségét csak alapján összegyűjtött adatok mennyisége is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott források által létrehozott adatokat tárolni.  
+A log Analytics az Azure monitorban méretezési és támogatási gyűjtése, az indexelés és a vállalati adatok naponta bármilyen forrásból származó nagy mennyiségű tárolására tervezték vagy üzembe helyezve az Azure-ban.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni a nem a Log Analytics-munkaterület költségét csak alapján összegyűjtött adatok mennyisége is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott források által létrehozott adatokat tárolni.  
 
 Ez a cikk áttekintettük, hogyan proaktívan figyelheti adatok mennyisége és a storage növekedési, és azok a kapcsolódó költségek szabályozására vonatkozó korlátok beállításához. 
 
@@ -114,8 +114,6 @@ Ha a Log Analytics-munkaterület hozzáfér az örökölt tarifacsomagok közöt
 
 A munkaterület helyezhetik át a jelenlegi tarifacsomag szeretne, ha szeretné [módosítása az előfizetés figyelése az Azure monitorban díjszabási modell](usage-estimated-costs.md#moving-to-the-new-pricing-model) amelyek módosulnak, az adott előfizetésben minden munkaterület tarifacsomagját.
 
-> [!NOTE]
-> Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
 
 > [!NOTE]
 > További információ [ARM-n keresztül a tarifacsomag beállítását](template-workspace-configuration.md#create-a-log-analytics-workspace) és annak biztosítása érdekében, hogy az ARM üzembe helyezési lesz sikeres, függetlenül attól, hogy az előfizetés van a régi vagy új díjszabási modell. 

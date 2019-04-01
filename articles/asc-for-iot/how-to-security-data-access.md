@@ -1,6 +1,6 @@
 ---
-title: Adathozzáférés ASC használata az IoT-előzetes verzió |} A Microsoft Docs
-description: További tudnivalók az IoT ASC használatakor biztonsági riasztás és a javaslattételt adatok eléréséhez.
+title: Adatainak elérése az Azure Security Center segítségével az IoT-előzetes verzió |} A Microsoft Docs
+description: További tudnivalók az Azure Security Center használata az IoT biztonsági riasztás és a javaslattételt adatok eléréséhez.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 510ee9bdefe87c1fab40e58bb715f2a8cce936b7
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576639"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758521"
 ---
 # <a name="access-your-security-data"></a>Biztonsági adatok elérése 
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-ASC az IoT tárolja a biztonsági riasztások, javaslatok és biztonsági nyers adatokat (Ha meg szeretné tartani őket) Log Analytics-munkaterület.
+Az Azure Security Center (ASC) az IoT tárolja a biztonsági riasztások, javaslatok és biztonsági nyers adatokat (Ha meg szeretné tartani őket) Log Analytics-munkaterület.
 
 ## <a name="log-analytics"></a>Log Analytics
 

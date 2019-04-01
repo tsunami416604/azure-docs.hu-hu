@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja az IoT-megoldás előzetes ASC |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az ASC használata az IoT teljes körű IoT-megoldás.
+title: Az Azure Security Center az IoT-megoldás előzetes konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja az Azure Security Center használata az IoT teljes körű IoT-megoldás.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2a24db1124ecd9c2437eafee54d856120a77e97f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0fc67f77e907bd0bc939bf95b34ed4daaab29a2d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576445"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756787"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Gyors útmutató: Az IoT-megoldás konfigurálása
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk bemutatja, hogyan kezdeti konfigurálása az ASC használva az IoT biztonsági megoldásokat magyarázattal szolgál. 
 
-## <a name="asc-for-iot"></a>ASC for IoT
+## <a name="azure-security-center-asc-for-iot"></a>Az Azure Security Center (ASC) az IoT
 
 ASC az IoT Azure-alapú IoT-megoldások átfogó teljes körű biztonsági biztosít.
 

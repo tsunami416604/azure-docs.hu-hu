@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845603"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757185"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
@@ -33,18 +33,38 @@ Minden további végpontok: `{EndpointName}-{AccountName}-{DatacenterAbbreviatio
 
 ## <a name="types"></a>Típusok  
 
-Kettő **folyamatos átviteli végponton** típusok: **Standard szintű** és **prémium**. A skálázási egységek száma határozza meg a típus (`scaleUnits`) lefoglalni a streamvégpontra. 
+Kétféle **streamvégponttípus** létezik: **Standard** és **Prémium**. A skálázási egységek száma határozza meg a típus (`scaleUnits`) lefoglalni a streamvégpontra. 
 
-A táblázat ismerteti:  
+A táblázat a típusokat írja le:  
 
 |Typo|Skálázási egységek|Leírás|
 |--------|--------|--------|  
-|**Standard szintű Streamvégpont** (ajánlott)|0|A **Standard** írja be a lehetőség ajánlott gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre. A **Standard** típus automatikusan méretezi a kimenő sávszélesség. <br/>Rendkívül nagy követelmények rendelkező ügyfelek számára a Media Services kínál **prémium** streamvégpontot választanak, amely használható a horizontális felskálázási kapacitása a legnagyobb internet célközönségek számára. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
-|**Prémium szintű Streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. Használatakor a **prémium** típusa, a minden engedélyezett egység további sávszélesség-kapacitást az alkalmazás biztosít. |
+|**Standard streamvégpont** (ajánlott)|0|Az alapértelmezett streamvégpont egy **Standard** írja be, de a prémium szintű típusa módosítható.<br/> Standard típus gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre a javasolt megoldás. A **Standard** típus automatikusan skálázza a kimenő sávszélességet. Az átviteli sebesség az ilyen típusú Streamvégpont legfeljebb 600 MB/s. A CDN gyorsítótárazza videó töredék ne használja a folyamatos átviteli végponton sávszélességet.<br/>A rendkívül nagy követelményeket támasztó ügyfelek számára a Media Services **Prémium** streamvégpontokat biztosít, amelyekkel a kapacitás még a legnagyobb internetes közönségekre is felskálázható. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
+|**Prémium streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
+ 
+## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
+
+### <a name="features"></a>Szolgáltatások
+
+Szolgáltatás|Standard|Prémium
+---|---|---
+Ingyenes az első 15 nap során| Igen |Nem
+Teljesítmény |Legfeljebb 600 MB/s, amikor az Azure CDN nincs használatban. CDN bevonásával.|200 MB / s folyamatos átviteli egységek (SU). CDN bevonásával.
+SLA | 99.9|99,9 (200 Mbps per SU).
+Tartalomkézbesítési hálózat (CDN)|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.
+Az elszámolás| Napi|Napi
+Dinamikus titkosítás|Igen|Igen
+Dinamikus csomagolás|Igen|Igen
+Méretezés|Automatikus felskálázással a célként megadott átviteli sebességet.|A további streamelési egységek
+IP-szűrés/G20/egyéni állomás <sup>1</sup>|Igen|Igen
+Progresszív letöltés|Igen|Igen
+Javasolt felhasználás |Javasolt a folyamatos átviteli forgatókönyvek túlnyomó többsége.|Professzionális használata.<br/>Ha úgy gondolja, előfordulhat, hogy Standard túli igényeinek. Lépjen kapcsolatba velünk (amsstreaming@microsoft.com) Ha egy egyidejű célközönség mérete nagyobb, mint 50 000 megtekintők.
+
+<sup>1</sup> csak közvetlenül a folyamatos átviteli végponton használni, ha a CDN nincs engedélyezve a végponton.
 
 ## <a name="working-with-cdn"></a>A CDN használata
 
-A legtöbb esetben rendelkeznie kell a CDN engedélyezve van. Azonban ha meg vannak várhatóan kisebb, mint 500 megtekintők maximális párhuzamossági majd ajánlott CDN letiltása, mivel az egyidejűségi CDN méretezhető ajánlott.
+A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban egyidőben 500 nézőnél kevesebb várható, akkor ajánlott letiltani a CDN-t, mert a CDN a legjobban az egyidejűséghez skálázható.
 
 > [!NOTE]
 > A folyamatos átviteli végponton `hostname` és a streamelési URL-cím ugyanaz marad, engedélyezi a CDN-e.
@@ -70,7 +90,7 @@ Ez a szakasz tájékoztatást nyújt a egyes a folyamatos átviteli végponton t
     Ha ez a hiba, az Adatközpont nem támogatja. Próbálkozzon egy másik adatközpontba.
 - `cdnProfile` – Amikor `cdnEnabled` értéke igaz, akkor is átadhat `cdnProfile` értékeket. `cdnProfile` van a CDN-profil nevét, ahol a CDN-végponti pont létrejön. Adjon meg egy meglévő cdnProfile, vagy egy új használja. Ha az érték NULL, és `cdnEnabled` , true, az alapértelmezett érték "AzureMediaStreamingPlatformCdnProfile" szolgál. Ha a megadott `cdnProfile` már létezik, a végpont annak alapján jön létre. Ha a profil nem létezik, új profil automatikusan jön létre.
 - `cdnProvider` -Ha a CDN engedélyezve van, akkor is átadhat `cdnProvider` értékeket. `cdnProvider` azt szabályozza, melyik-szolgáltatót fogja használni. Jelenleg három értékek támogatottak: "StandardVerizon", "PremiumVerizon" and "StandardAkamai". Ha a nem érték van megadva, és `cdnEnabled` értéke true, "StandardVerizon" használatos (Ez az alapértelmezett érték).
-- `crossSiteAccessPolicies` -Itt adhatja meg a webhelyek közötti hozzáférési házirendek a különböző ügyfelek részére. További információkért lásd: [tartományok közötti házirend fájl meghatározásának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [így a szolgáltatás elérhető Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).
+- `crossSiteAccessPolicies` -Itt adhatja meg a webhelyek közötti hozzáférési házirendek a különböző ügyfelek részére. További információkért lásd: [tartományok közötti házirend fájl meghatározásának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [így a szolgáltatás elérhető Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).<br/>A beállítások csak a Smooth Streaming vonatkoznak.
 - `customHostNames` – Egy folyamatos átviteli végponton, amely egyéni gazdagépnévvel irányított forgalom fogadására konfigurálásához használt.  Ez a tulajdonság érvényes, a Standard és prémium szintű Streamelési végpontok és a segítségével állítható be, amikor `cdnEnabled`: False (hamis).
     
     A tartománynév tulajdonjogát a Media Services jóvá kell hagynia. A Media Services ellenőrzi a tartománynak a nevét tulajdonjogát azzal, hogy egy `CName` rekordot, amely a Media Services-fiók azonosítója a tartományban használt hozzáadandó összetevőjeként. Tegyük fel, a "sports.contoso.com", amely egyéni gazdagépnévvel a folyamatos átviteli végponton, egy rekord használható `<accountId>.contoso.com` konfigurálni kell, hogy a Media Services-ellenőrzési állomásnevek egyikére mutatnak. Az ellenőrzési állomásnév verifydns tevődik össze. \<mediaservices – dns-zóna >. 

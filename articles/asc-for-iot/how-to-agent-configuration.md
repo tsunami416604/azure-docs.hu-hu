@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja egy IoT-ügynök előzetes ASC |} A Microsoft Docs
-description: Megtudhatja, hogyan használható az ügynökök konfigurálására az ASC az IoT.
+title: Az Azure Security Center konfigurálása az IoT-ügynök előzetes verzió |} A Microsoft Docs
+description: Megtudhatja, hogyan használható az ügynökök konfigurálására az Azure Security Center az IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 27b548459bd1fee3c6596cce624b00d052e608fe
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649373"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757380"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk ismerteti az ASC IoT biztonsági ügynök, hogyan módosíthatja őket konfigurálása ASC IoT biztonsági ügynökök esetében.
+Ez a cikk ismerteti az Azure Security Center (ASC) IoT biztonsági ügynök, hogyan módosíthatja őket konfigurálása ASC IoT biztonsági ügynökök esetében.
 
 > [!div class="checklist"]
 > * Biztonsági ügynökök konfigurálása

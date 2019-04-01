@@ -1,6 +1,6 @@
 ---
-title: ASC előzetes IoT-ügynök telepítése Windows |} A Microsoft Docs
-description: Ismerje meg az ASC telepítéséről a IoT-ügynök 32 bites vagy 64 bites Windows-eszközökön.
+title: Az Azure Security Center telepítése Windows IoT ügynök előzetes verzió |} A Microsoft Docs
+description: Ismerje meg az Azure Security Center telepítése IoT ügynök 32 bites vagy 64 bites Windows-eszközökön.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c3293746fcc52570e708fd4bfab446981d49c24
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7e3cb1f44711a8eedb248320db8bce5dfd0eaf0c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621830"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754592"
 ---
-# <a name="deploy-an-asc-for-iot-c-based-security-agent-for-windows"></a>Az IoT-ASC üzembe C#-security-ügynök a Windows-alapú
+# <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Üzembe helyezése az Azure Security Center az IoT C#-security-ügynök a Windows-alapú
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az útmutató azt ismerteti, hogyan telepítheti az ASC IoT C#-alapú biztonsági Windows-ügynököt.
+Az útmutató bemutatja, hogyan telepítheti az Azure Security Center (ASC) IoT C#-alapú biztonsági Windows-ügynököt.
 
 Ebből az útmutatóból a következőket tanulhatja meg: 
 > [!div class="checklist"]

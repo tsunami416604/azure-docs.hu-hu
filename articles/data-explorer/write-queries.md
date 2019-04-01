@@ -3,17 +3,17 @@ title: Az Azure Data Explorer lekérdezéseket írni
 description: Ebben az útmutatóban megismerheti, hogyan hajthat végre alapszintű és speciális lekérdezéseket az Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8afb829f806ab55a069ded9cb7198f66368e8720
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961520"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758693"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Az Azure Data Explorer lekérdezéseket írni
 
@@ -26,7 +26,7 @@ A lekérdezések a cikkben szereplő kétféleképpen futtathatja:
 - Az Azure Data Explorer *súgófürtben* , hogy azt állította be, ezzel elősegítve a tanulást.
     [Jelentkezzen be a fürt](https://dataexplorer.azure.com/clusters/help/databases/samples) , amely tagja az Azure Active directory szervezeti e-mail fiókkal.
 
-- Egy saját fürtöt, amely tartalmazza a StormEvents mintaadatok. További információkért lásd: [a rövid útmutató: Azure Data Explorer fürt és -adatbázis létrehozása](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
+- Egy saját fürtöt, amely tartalmazza a StormEvents mintaadatok. További információkért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -72,7 +72,7 @@ Lekérdezések futtatása a saját fürtön:
 
 ### <a name="count"></a>count
 
-[**száma**](https://docs.microsoft.com/azure/kusto/query/countoperator): sorok számát adja meg a táblázatban.
+[**száma**](https://docs.microsoft.com/azure/kusto/query/countoperator): A táblázatban a sorok számát adja vissza.
 
 A következő lekérdezést a StormEvents táblában adja vissza a sorok száma.
 
@@ -84,7 +84,7 @@ StormEvents | count
 
 ### <a name="take"></a>hajtsa végre a megfelelő
 
-[**igénybe**](https://docs.microsoft.com/azure/kusto/query/takeoperator): a megadott számú sornyi adatot adja vissza.
+[**igénybe**](https://docs.microsoft.com/azure/kusto/query/takeoperator): A megadott számú sornyi adatot adja vissza.
 
 A következő lekérdezést a StormEvents tábla öt sort adja vissza. A kulcsszó *korlát* aliasneve *igénybe vehet.*
 
@@ -99,7 +99,7 @@ StormEvents | take 5
 
 ### <a name="project"></a>Projekt
 
-[**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): oszlopok kiválasztása.
+[**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): Oszlopok kijelölése.
 
 A következő lekérdezés az oszlopok egy adott készletét adja vissza.
 
@@ -113,7 +113,7 @@ StormEvents
 
 ### <a name="where"></a>ahol
 
-[**ahol**](https://docs.microsoft.com/azure/kusto/query/whereoperator): azon részhalmaza, amely a predikátum megfelelő sorokat a tábla szűrése.
+[**ahol**](https://docs.microsoft.com/azure/kusto/query/whereoperator): A predikátum megfelelő sorokat részhalmazát tábla szűrése.
 
 A következő lekérdezés szűri az adatokat `EventType` és `State`.
 
@@ -128,7 +128,7 @@ StormEvents
 
 ### <a name="sort"></a>Rendezés
 
-[**Rendezés**](https://docs.microsoft.com/azure/kusto/query/sortoperator): a bemeneti tábla sorainak egy vagy több oszlop sorrendben történő rendezéséhez.
+[**Rendezés**](https://docs.microsoft.com/azure/kusto/query/sortoperator): A bemeneti tábla sorainak rendezése sorrendben be egy vagy több oszlop szerint.
 
 A következő lekérdezés rendezi az adatokat csökkenő sorrend szerint `DamageProperty`.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>felső
 
-[**felső**](https://docs.microsoft.com/azure/kusto/query/topoperator): az első függvény *N* rekordok a megadott oszlopok alapján rendezi.
+[**felső**](https://docs.microsoft.com/azure/kusto/query/topoperator): Visszaadja az első *N* rekordok a megadott oszlopok alapján rendezi.
 
 A következő lekérdezés ugyanazokat az eredményeket, fent egy kisebb operátorral adja vissza.
 
@@ -162,7 +162,7 @@ StormEvents
 
 ### <a name="extend"></a>Kiterjesztése
 
-[**kiterjesztheti**](https://docs.microsoft.com/azure/kusto/query/extendoperator): számítási erőforrások származtatott oszlopokat.
+[**kiterjesztheti**](https://docs.microsoft.com/azure/kusto/query/extendoperator): Számítási erőforrások származtatott oszlopokat.
 
 A következő lekérdezés egy olyan új oszlop szerint számítástechnika minden sor egy értéket hoz létre.
 
@@ -180,7 +180,7 @@ Kifejezések tartalmazhatnak a szokásos operátorok (+, -, *, /, %), és nincs 
 
 ### <a name="summarize"></a>Összegzés
 
-[**Összegzés**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): összefoglalja az sorcsoportra.
+[**Összegzés**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator): Összesíti a sorcsoportra.
 
 A következő lekérdezés visszaadja az események száma `State`.
 
@@ -213,7 +213,7 @@ Eredménye egy **összefoglalója** műveletet tartalmaz:
 
 ### <a name="render"></a>renderelési
 
-[**leképezési**](https://docs.microsoft.com/azure/kusto/query/renderoperator): eredmények, a grafikus kimeneti megjelenítve.
+[**leképezési**](https://docs.microsoft.com/azure/kusto/query/renderoperator): Ez a beállítás eredmények egy grafikus kimenetként.
 
 A következő lekérdezést egy oszlopdiagramot jelenít meg.
 
@@ -269,9 +269,9 @@ StormEvents
 
 Ez a szakasz ismerteti a legfontosabb skaláris operátorok némelyike.
 
-### <a name="bin"></a>Bin()
+### <a name="bin"></a>bin()
 
-[**Bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): értékeket az egész számra kerekít egy adott doboz méretét többszöröse.
+[**Bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction): Értékek az egész számra kerekít egy adott doboz méretét többszöröse.
 
 A következő lekérdezést a szám egy nap gyűjtőbe mérettel számítja ki.
 
@@ -283,9 +283,9 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-### <a name="case"></a>Case()
+### <a name="case"></a>case()
 
-[**Case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): predikátumok listája kiértékeli, és visszaadja az első eredmény kifejezés, amelynek predikátum teljesül, vagy az utolsó **más** kifejezés. Ez az operátor használatával kategorizálását, vagy a csoport adatokat:
+[**Case()**](https://docs.microsoft.com/azure/kusto/query/casefunction): Predikátumok listája kiértékeli, és visszaadja az első eredmény kifejezés, amelynek predikátum teljesül, vagy az utolsó **más** kifejezés. Ez az operátor használatával kategorizálását, vagy a csoport adatokat:
 
 A következő lekérdezés visszaadja az egy olyan új oszlop `deaths_bucket` és a halála száma alapján csoportosítja.
 
@@ -304,7 +304,7 @@ StormEvents
 
 ### <a name="extract"></a>extract()
 
-[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): egyezés reguláris kifejezést olvas be egy szöveges karakterlánc.
+[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction): Egyezés reguláris kifejezést olvas be egy szöveges karakterlánc.
 
 A következő lekérdezést a nyomkövetési kigyűjti a meghatározott attribútumértékek.
 
@@ -320,7 +320,7 @@ Ez a lekérdezés használ egy **teszik** utasítás, amely lekötné a nevét (
 
 ### <a name="parsejson"></a>parse_json()
 
-[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): egy karakterlánc egy JSON-értékként értelmezi, és dinamikusként értékét adja vissza. A felső szintű a **extractjson()** függvényt, amikor szüksége van egy összetett JSON-objektum egynél több elem kibontásához.
+[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction): Egy karakterláncot egy JSON-értékként értelmezi, és dinamikusként értékét adja vissza. A felső szintű a **extractjson()** függvényt, amikor szüksége van egy összetett JSON-objektum egynél több elem kibontásához.
 
 A következő lekérdezést a JSON-elemek kiolvassa a tömböt.
 
@@ -356,9 +356,9 @@ MyData
 | project Trace.value, Trace.counter, Trace.min, Trace.max, Trace.stdDev
 ```
 
-### <a name="ago"></a>Ago()
+### <a name="ago"></a>ago()
 
-[**Ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): a megadott időtartam a jelenlegi UTC idő a időpontból.
+[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction): A megadott időtartam a jelenlegi UTC idő a időpontból.
 
 A következő lekérdezés számára az elmúlt 12 órában adatokat ad vissza.
 
@@ -374,7 +374,7 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 
 ### <a name="startofweek"></a>startofweek()
 
-[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): a hét, a dátumot, ha meg van adva egy eltolás megjelenítjük tartalmazó kezdetét adja vissza.
+[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction): A hét, a dátumot, ha meg van adva egy eltolás megjelenítjük tartalmazó kezdetét adja vissza.
 
 A következő lekérdezést a hét különböző eltolású kezdetét adja vissza.
 
@@ -387,9 +387,9 @@ range offset from -1 to 1 step 1
 
 Ez a lekérdezés használ a **tartomány** operátor szerinti szűrése, amely értékeket tartalmazó egyoszlopos táblázatot hoz létre. Lásd még: [ **startofday()**](https://docs.microsoft.com/azure/kusto/query/startofdayfunction), [ **startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction), [ **startofyear()** ](https://docs.microsoft.com/azure/kusto/query/startofyearfunction)), [ **startofmonth()**](https://docs.microsoft.com/azure/kusto/query/startofmonthfunction), [ **endofday()**](https://docs.microsoft.com/azure/kusto/query/endofdayfunction), [ **endofweek()**  ](https://docs.microsoft.com/azure/kusto/query/endofweekfunction), [ **endofmonth()**](https://docs.microsoft.com/azure/kusto/query/endofmonthfunction), és [ **endofyear()**](https://docs.microsoft.com/azure/kusto/query/endofyearfunction).
 
-### <a name="between"></a>Between()
+### <a name="between"></a>between()
 
-[**Between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): megegyezik a bemenet, amely a határokat is beleértve tartományon belül van.
+[**between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator): Megegyezik a bemenet, amely a határokat is beleértve tartományon belül van.
 
 A következő lekérdezés az adatok egy adott dátumtartomány szerint szűrik.
 
@@ -417,7 +417,7 @@ Kusto rendelkezik, ez a cikk többi szakasza tárgyalja, amelyek sok táblázato
 
 ### <a name="parse"></a>elemzése
 
-[**elemezni**](https://docs.microsoft.com/azure/kusto/query/parseoperator): egy karakterlánc-kifejezés kiértékeli, és elemzi az értékét egy vagy több számított oszlopokat. Elemezni három módja van: egyszerű (alapértelmezett), a következő reguláris kifejezésre, és könnyített.
+[**elemezni**](https://docs.microsoft.com/azure/kusto/query/parseoperator): Egy karakterlánc-kifejezés kiértékeli, és elemzi az értékét egy vagy több számított oszlopokat. Elemezni három módja van: egyszerű (alapértelmezett), a következő reguláris kifejezésre, és könnyített.
 
 A következő lekérdezést a nyomkövetési elemzi, és kinyeri a megfelelő, egyszerű elemzése az alapértelmezett értékeket. A kifejezés (néven StringConstant) rendszeres karakterlánc-érték és az egyezés szigorú: kiterjesztett oszlopok egyeznie kell a szükséges típusokat.
 
@@ -508,11 +508,11 @@ További információkért tekintse át a teljes listáját [sorozat funkciók](
 
 Megismerte, egyszerű összesítés, mint **száma** és **összefoglalója**, ez a cikk elején. Ez a szakasz bemutatja a Speciális beállítások.
 
-### <a name="top-nested"></a>felső – beágyazott
+### <a name="top-nested"></a>top-nested
 
-[**felső – beágyazott**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): hierarchikus eredmények létrehozása; felső, ahol minden szintje a Lehatolás előző szintű értékek alapján.
+[**felső – beágyazott**](https://docs.microsoft.com/azure/kusto/query/topnestedoperator): Hierarchikus eredmények létrehozása; felső, ahol minden szintje a Lehatolás előző szintű értékek alapján.
 
-Ez az operátor az irányítópult vizualizációs forgatókönyvek esetén, vagy ha szükséges, az alábbihoz hasonló kérdések megválaszolása: "keresse meg a felső N értékek K1 (bizonyos összesítési használatával); mindegyikük számára keresse meg, Mik azok a top-M értékek K2 (használatával egy másik összesítő); ..."
+Ez az operátor az irányítópult vizualizációs forgatókönyvek esetén, vagy ha a következőhöz hasonló kérdések megválaszolása szükséges: "A felső N értékek K1 (bizonyos összesítési használatával); keresése mindegyikük számára keresse meg, Mik azok a top-M értékek K2 (használatával egy másik összesítő); ..."
 
 A következő lekérdezést a hierarchikus táblázatot ad vissza `State` a legfelső szinten követ `Sources`.
 
@@ -527,7 +527,7 @@ top-nested 1 of EndLocation by sum(BeginLat)
 
 ### <a name="pivot-plugin"></a>Pivot() beépülő modul
 
-[**Pivot() beépülő modul**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): az egyik oszlopának egyedi értékeket engedélyezésével a bemenetként megadott tábla több oszlopba a kimeneti tábla egy tábla forog. Az operátor elvégzi az aggregációt. Ha szüksége van rájuk minden fennmaradó oszlop értékeit a végeredmény.
+[**Pivot() beépülő modul**](https://docs.microsoft.com/azure/kusto/query/pivotplugin): Egy tábla elforgatása az egyik oszlopának egyedi értékeket kapcsolja a bemeneti tábla a kimeneti tábla több oszlopba. Az operátor elvégzi az aggregációt. Ha szüksége van rájuk minden fennmaradó oszlop értékeit a végeredmény.
 
 A következő lekérdezés olyan szűrőt, és pivots a sorokat oszlopokra.
 
@@ -543,7 +543,7 @@ StormEvents
 
 ### <a name="dcount"></a>DCount()
 
-[**DCount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): egy kifejezés egyedi értékek számának becslése a csoporthoz adja vissza. Használat [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) számát az összes értéket.
+[**DCount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Egy kifejezés egyedi értékek számának becslése a csoporthoz adja vissza. Használat [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) számát az összes értéket.
 
 A következő lekérdezés megszámlálja a különböző `Source` által `State`.
 
@@ -556,7 +556,7 @@ StormEvents
 
 ### <a name="dcountif"></a>dcountif()
 
-[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): TRUE adja vissza a sort, amelynek a predikátum kiértékeli a kifejezést a különböző értékek számának becslése.
+[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction): A kifejezés, amelynek a predikátum kiértékeli a sorok esetében eltérő értékek számának becslése igaz értéket adja vissza.
 
 A következő lekérdezés megszámlálja a különböző értékeket `Source` ahol `DamageProperty < 5000`.
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): kiszámítja a **dcount** HyperLogLog eredményekből (által generált [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   vagy [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Kiszámítja a **dcount** HyperLogLog eredményekből (által generált [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) vagy [**hll_merge** ](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 A következő lekérdezést a HLL algoritmust használja a count létrehozásához.
 
@@ -585,7 +585,7 @@ StormEvents
 
 ### <a name="argmax"></a>arg_max()
 
-[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): egy sor megkeresi a lehető legnagyobbra növeli a kifejezés, és a egy másik kifejezés értékét adja vissza csoportban (vagy * az egész sort vissza).
+[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction): Egy sor megkeresi a lehető legnagyobbra növeli a kifejezés, és a egy másik kifejezés értékét adja vissza csoportban (vagy * az egész sort vissza).
 
 A következő lekérdezés az idő az elmúlt elárasztó jelentés az egyes állapotokban adja vissza.
 
@@ -600,7 +600,7 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): a csoport, amely egy kifejezés egyedi értékek tömbje dinamikus (JSON) adja vissza.
+[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction): A csoport, amely egy kifejezés egyedi értékek tömbje dinamikus (JSON) adja vissza.
 
 Az alábbi lekérdezés minden esetben amikor áramlik egyes által jelentett, és létrehoz egy tömböt a készletből az eltérő értékeket ad vissza.
 
@@ -615,7 +615,7 @@ StormEvents
 
 ### <a name="mvexpand"></a>mvexpand
 
-[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): kibontása egy dinamikus típusmegadású oszlop több értéket próbaidőszakában úgy, hogy a gyűjteményben szereplő összes értékhez beolvas egy külön sort. Egy kibontott sorban az összes többi oszlop ismétlődik. Fontos makelist ellentéte.
+[**mvexpand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator): A dinamikus típusmegadású oszlop több értéket próbaidőszakában kibővíti az, hogy a gyűjteményben szereplő összes értékhez beolvas egy külön sort. Egy kibontott sorban az összes többi oszlop ismétlődik. Fontos makelist ellentéte.
 
 A következő lekérdezést hoz létre egy csoportot, és oldalméretről bemutatása mintaadatok állít elő a **mvexpand** képességeket.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): ad vissza a megadott becsült [**legközelebbi rang PERCENTILIS**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) a lakosság kifejezés által meghatározott. Pontossága attól függ, hogy a régióban a PERCENTILIS sokaságát sűrűsége. Csak abban a környezetben, az összesítés belül használható [**összefoglalója**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Visszaadja a megadott becsült [**legközelebbi rang PERCENTILIS**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) a lakosság kifejezés által meghatározott. Pontossága attól függ, hogy a régióban a PERCENTILIS sokaságát sűrűsége. Csak abban a környezetben, az összesítés belül használható [**összefoglalója**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 A következő lekérdezést. percentilisei storm időtartamának számítja ki.
 
@@ -665,7 +665,7 @@ Ez a szakasz ismertet, amelyek lehetővé teszik, hogy az összetett lekérdezé
 
 ### <a name="let"></a>lehetővé teszik
 
-[**lehetővé teszik**](https://docs.microsoft.com/azure/kusto/query/letstatement): javítja a modularitás és újbóli felhasználáshoz. A **teszik** utasítás lehetővé teszi, hogy egy meglehetősen összetett kifejezést felosztása több részből, minden egyes nevét kötve, és a compose együtt a részeket. A **teszik** utasítás is használható, felhasználó által definiált függvények és -nézetek (táblák, amelyek eredményei egy új táblát kinéznie keresztül expressions) létrehozásához. Kifejezések kötelezőnek egy **teszik** utasítás táblázatos típusa, vagy a felhasználó által definiált függvény (lambdas) skaláris típusú is lehet.
+[**lehetővé teszik**](https://docs.microsoft.com/azure/kusto/query/letstatement): Javítja a modularitás és újbóli felhasználáshoz. A **teszik** utasítás lehetővé teszi, hogy egy meglehetősen összetett kifejezést felosztása több részből, minden egyes nevét kötve, és a compose együtt a részeket. A **teszik** utasítás is használható, felhasználó által definiált függvények és -nézetek (táblák, amelyek eredményei egy új táblát kinéznie keresztül expressions) létrehozásához. Kifejezések kötelezőnek egy **teszik** utasítás táblázatos típusa, vagy a felhasználó által definiált függvény (lambdas) skaláris típusú is lehet.
 
 Az alábbi példa létrehoz egy táblázatos típusú változót és annak egy későbbi kifejezésben.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>csatlakozás
 
-[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): az új tábla kialakításához egyező értékek, az egyes táblákból a megadott oszlopoknak alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
+[**Csatlakozás**](https://docs.microsoft.com/azure/kusto/query/joinoperator): Az új tábla kialakításához, a megadott oszlopoknak az egyes táblákból egyező értékei alapján két tábla sorainak egyesítése. Kusto széles skáláját illesztési típust támogat: **fullouter**, **belső**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Az alábbi példa két tábla belső illesztést csatlakozik.
 
@@ -715,7 +715,7 @@ X
 
 ### <a name="serialize"></a>szerializálása
 
-[**szerializálható**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): Szerializálja a sorhalmaz, így használhatja a szerializált adatok, például átadhatók függvényt visszaadó **row_number()**.
+[**szerializálható**](https://docs.microsoft.com/azure/kusto/query/serializeoperator): A sorhalmaz, így használhatja a szerializált adatok, például átadhatók függvényt visszaadó szerializálja **row_number()**.
 
 A következő lekérdezés sikeresen létrejön, mert a szerializált adatok.
 
@@ -741,7 +741,7 @@ StormEvents
 
 ### <a name="cross-database-and-cross-cluster-queries"></a>Adatbázisközi és a fürt közötti lekérdezéseket.
 
-[Adatbázisközi és a fürt közötti lekérdezések](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): úgy lekérdezheti, ha egy adatbázis ugyanazon a fürtön, hivatkozó `database("MyDatabase").MyTable`. Úgy lekérdezheti, ha egy adatbázis egy távoli fürtön rá, `cluster("MyCluster").database("MyDatabase").MyTable`.
+[Adatbázisközi és a fürt közötti lekérdezések](https://docs.microsoft.com/azure/kusto/query/cross-cluster-or-database-queries): Úgy lekérdezheti, ha egy adatbázis ugyanazon a fürtön, hivatkozó `database("MyDatabase").MyTable`. Úgy lekérdezheti, ha egy adatbázis egy távoli fürtön rá, `cluster("MyCluster").database("MyDatabase").MyTable`.
 
 A következő lekérdezés az egyik fürtről nevezik, és lekéri az adatokat `MyCluster` fürt. A lekérdezés futtatására használja a saját fürt neve és az adatbázis nevét.
 
@@ -757,7 +757,7 @@ Ez a szakasz tartalmazza az elemeket, és a lekérdezések, amelyek bemutatják,
 
 ### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics beépülő modul
 
-[**activity_counts_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): hasznos tevékenységi metrikák (értékek teljes száma, eltérők darabszáma értékek, új értékeket darabszáma és összesített eltérők darabszáma) számítja ki. Metrikák kiszámítása minden egyes időtartomány, majd képest, és összesítve, és az összes korábbi időablakokat.
+[**activity_counts_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin): Kiszámítja a hasznos tevékenységi metrikák (értékek teljes száma, eltérők darabszáma értékek, új értékeket darabszáma és összesített eltérők darabszáma). Metrikák kiszámítása minden egyes időtartomány, majd képest, és összesítve, és az összes korábbi időablakokat.
 
 A következő lekérdezés elemzi a felhasználói bevezetésére szerint kiszámításának napi tevékenységek számát.
 
@@ -791,7 +791,7 @@ window)
 
 ### <a name="activityengagement-plugin"></a>activity_engagement beépülő modul
 
-[**activity_engagement beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): tevékenység engagement arány keresztül egy idővonalon csúszóablakban azonosító oszlop alapján számítja ki. **activity_engagement beépülő modul** aktív felhasználók Naponta WAU és (napi, heti és havi aktív felhasználók) MAU kiszámításához használható.
+[**activity_engagement beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin): Tevékenység engagement arány keresztül egy idővonalon csúszóablakban azonosító oszlop alapján számítja ki. **activity_engagement beépülő modul** aktív felhasználók Naponta WAU és (napi, heti és havi aktív felhasználók) MAU kiszámításához használható.
 
 A következő lekérdezés olyan alkalmazást, naponta, hetente, az alkalmazás használatával egy 7 napos mozgó időablak az egyedi felhasználók teljes képest egyedi felhasználók teljes aránya adja vissza.
 
@@ -817,7 +817,7 @@ range _day from _start to _end step 1d
 
 ### <a name="activitymetrics-plugin"></a>activity_metrics beépülő modul
 
-[**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma), és az előző időszak ablak az aktuális időszak ablak alapján számítja ki.
+[**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin): Hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma), és az előző időszak ablak az aktuális időszak ablak alapján számítja ki.
 
 A következő lekérdezést egy adott adatkészlet és a megőrzési díjaival számítja ki.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>new_activity_metrics beépülő modul
 
-[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): kiszámítja az új felhasználói kohorsz a következő hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma). Ez a beépülő modul koncepciójuk hasonló [**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), azonban az új felhasználók összpontosít.
+[**new_activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): Hasznos tevékenységi metrikák (értékek eltérők száma, új értékeket, megtartási aránya és lemorzsolódási rátához darabszáma) kiszámítja az új felhasználók kohorsz. Ez a beépülő modul koncepciójuk hasonló [**activity_metrics beépülő modul**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), azonban az új felhasználók összpontosít.
 
 A következő lekérdezést egy megőrzési és adatváltozás aránya egy over-hét hét ablak kiszámítja az új felhasználók kohorsz (az első héten a érkező felhasználók).
 
@@ -864,7 +864,7 @@ range Day from _start to _end step 1d
 
 ### <a name="sessioncount-plugin"></a>session_count beépülő modul
 
-[**session_count beépülő modul**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): számítja ki az azonosító oszlop alapján keresztül ütemterv munkamenetek száma.
+[**session_count beépülő modul**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin): Kiszámítja az azonosító oszlop alapján keresztül ütemterv munkamenetek száma.
 
 A következő lekérdezés visszaadja a munkamenetek száma. A munkamenet aktív, ha a felhasználói azonosító megjelenik legalább egyszer egy 100-időszeletek időkeretét közben a munkamenet meg visszaírt ablak 41 időszeletek számít.
 
@@ -884,7 +884,7 @@ _data
 
 ### <a name="funnelsequence-plugin"></a>funnel_sequence beépülő modul
 
-[**funnel_sequence beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): számítja ki a felhasználók, akik állapotok sorozatát vett darabszáma; vezettek vagy követte a sorozat előző és tovább állapotok elosztását mutatja.
+[**funnel_sequence beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin): Kiszámítja a felhasználók, akik állapotok; egy feladatütemezés végrehajtása darabszáma előző és a következő állapotok vezettek, vagy a feladatütemezés követte elosztását mutatja.
 
 A következő lekérdezés jeleníti meg, milyen esemény előtt és után tornádó eseményeit a 2007 történik.
 
@@ -900,7 +900,7 @@ StormEvents
 
 ### <a name="funnelsequencecompletion-plugin"></a>funnel_sequence_completion beépülő modul
 
-[**funnel_sequence_completion beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): számítja ki a tölcsér, befejezett feladatütemezési lépések belül különböző időszakokra.
+[**funnel_sequence_completion beépülő modul**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): Kiszámítja a tölcsér befejezett feladatütemezési lépések belül különböző időszakokra.
 
 A következő lekérdezés ellenőrzi a feladatütemezés, a befejezési tölcsér: `Hail -> Tornado -> Thunderstorm -> Wind` az egy órás, négy óra és a egy nap "teljes" időtartama (`[1h, 4h, 1d]`).
 

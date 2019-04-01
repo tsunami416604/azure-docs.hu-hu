@@ -1,6 +1,6 @@
 ---
-title: ASC megismerheti az IoT biztonsági ikermodulokkal előzetes verzió |} A Microsoft Docs
-description: Ismerje meg a biztonsági ikermodulokkal és azok hogyan használhatók az ASC IOT fogalmát.
+title: Megismerheti az Azure Security Center az IoT biztonsági modul twins előzetes verzió |} A Microsoft Docs
+description: Ismerje meg a biztonsági ikermodulokkal és azok hogyan használhatók az Azure Security Centerben az IoT fogalmát.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d766b17c9d49792d2e8192a952e8e6e559a8acd3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 56bc93973bd2c080b13b97f1344cc165f742e757
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579376"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758406"
 ---
 # <a name="security-module"></a>Biztonsági modul
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk bemutatja, hogyan használja az IOT ASC ikereszközök és a modulok. 
+Ez a cikk bemutatja, hogyan használja az Azure Security Center (ASC) az IoT ikereszközök és a modulok. 
 
 ## <a name="device-twins"></a>Ikereszközök
 

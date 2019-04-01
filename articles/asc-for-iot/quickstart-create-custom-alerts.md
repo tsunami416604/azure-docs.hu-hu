@@ -1,6 +1,6 @@
 ---
-title: Egyéni riasztások létrehozása az ASC az IoT-előzetes verzió |} A Microsoft Docs
-description: Hozzon létre, és rendelje hozzá egyéni riasztások az ASC az IoT.
+title: Azure Security Center egyéni riasztások létrehozása az IoT-előzetes verzió |} A Microsoft Docs
+description: Hozzon létre, és rendelje hozzá az Azure Security Center egyéni eszköz riasztásainak az IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: fa1825d6f6f6ea5e6c026791aa70dd1b37bdad90
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 40bec01b402d7a597a480a738840cba8f388d88b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574737"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755136"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: Egyéni riasztások létrehozása
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Egyéni biztonsági csoportok és a riasztások révén kihasználhatja a teljes körű biztonsági információkat és a kategorikus eszköz Tudásbázis annak biztosítására, a nagyobb biztonság az IoT-megoldás között. 
@@ -33,7 +33,7 @@ Egyéni biztonsági csoportok és a riasztások révén kihasználhatja a teljes
 
 Akkor tudja, hogy a legjobb IoT-eszközeit.
 
-Azok a vásárlóknak, akik reklámkattintásokat várt eszköz viselkedésük IOT ASC lehetővé teszi, hogy az eszköz viselkedésének szabályzatba ismertetése fordítása, és bármilyen eltérés riasztás várt, normál működés.
+Ügyfelek esetében, akik reklámkattintásokat várt eszköz viselkedésük az Azure Security Center (ASC) az IoT lehetővé teszi, hogy az eszköz viselkedésének szabályzatba ismertetése fordítása, és bármilyen eltérés riasztás várt, normál működés.
 
 ## <a name="security-groups"></a>Biztonsági csoportok
 

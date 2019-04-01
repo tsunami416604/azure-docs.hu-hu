@@ -1,5 +1,5 @@
 ---
-title: Élő stream továbbítása helyszíni kódolókkal az Azure Portal használatával | Microsoft Docs
+title: Élő stream továbbítása helyszíni kódolókkal az Azure portal használatával |} A Microsoft Docs
 description: Ez az ismertető végigkalauzolja egy olyan csatorna létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva.
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 48906a12cd113ef613151bb802e757f218bce425
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258701"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758499"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Élő stream továbbítása helyszíni kódolókkal az Azure Portal használatával
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő Stream továbbítása helyszíni kódolókkal az Azure portal használatával
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -45,29 +45,31 @@ Kifejezetten ajánljuk, hogy olvassa el a következő cikkeket:
 * [Live streaming with on-premises encoders that create multi-bitrate streams](media-services-live-streaming-with-onprem-encoders.md) (Élő stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal)
 
 ## <a id="scenario"></a>Az élő adatfolyamok egy gyakori alkalmazási helyzete
+
 A következő lépések ismertetik, hogy milyen lépésekkel lehet olyan streamelő alkalmazásokat létrehozni, amelyek átmenő közvetítésre vannak konfigurálva. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet átmenő csatornát és élő eseményeket.
 
->[!NOTE]
->Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
+> [!NOTE]
+> Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
     
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tájékoztatást az [Azure Media Services RTMP Support and Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824) (Az Azure Media Services RTMP-támogatása és az élő kódolók) című cikk nyújt.
+1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A telepítő ötleteket, tekintse meg [egyszerű és hordozható esemény videó fogaskerék beállítása]( https://link.medium.com/KNTtiN6IeT).
+1. Indítson el és konfiguráljon egy élő helyszíni kódolót, amely többszörös sávszélességű RTMP- vagy fragmentált MP4-streamet állít elő. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)<br/>Emellett tekintse meg ezt a blogot: [Élő streamelés az éles üzemre OBS](https://link.medium.com/ttuwHpaJeT).
    
-    Ezt a lépést a csatorna létrehozása után is el lehet végezni.
-2. Hozzon létre és indítson el egy átmenő csatornát.
-3. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
+    Ezt a lépést a csatorna létrehozása után is elvégezheti.
+1. Hozzon létre és indítson el egy átmenő csatornát.
+1. Kérje le a Channel ingest URL (Csatorna betöltési URL-címe) értékét. 
    
     Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
-4. Kérje le a csatorna előnézeti URL-címét. 
+1. Kérje le a csatorna előnézeti URL-címét. 
    
     Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
-5. Hozzon létre egy élő eseményt/programot. 
+1. Hozzon létre egy élő eseményt/programot. 
    
     Az Azure portál használata esetén az élő esemény létrehozása egy objektumot is létrehoz. 
 
-6. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
-7. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
-8. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
-9. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
+1. Amikor készen áll a streamelésre és az archiválásra, indítsa el az eseményt/programot.
+1. Ha kívánja, a kódolólónak küldött jelzéssel hirdetést is elindíthat. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
+1. Amikor le kívánja állítani az esemény streamelését és archiválását, állítsa le az eseményt/programot.
+1. Törölje az eseményt/programot (és ha kívánja, törölje az objektumot).     
 
 > [!IMPORTANT]
 > Az [élő stream többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal történő továbbítását](media-services-live-streaming-with-onprem-encoders.md) ismertető cikkből tájékozódhat a helyszíni kódolókkal és átmenő csatornákkal történő élő streamelés fogalmairól és fontos szempontjairól.

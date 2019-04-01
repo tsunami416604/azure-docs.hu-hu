@@ -1,6 +1,6 @@
 ---
-title: A biztonsági üzenetek küldése az ASC-hez az IoT-előzetes verzió |} A Microsoft Docs
-description: Megtudhatja, hogyan küldhet az ASC használata az IoT biztonsági üzeneteket.
+title: Az Azure Security Center a biztonsági üzenetek küldése az IoT-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogyan küldhet az Azure Security Center használata az IoT biztonsági üzeneteket.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650155"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754789"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetküldés SDK
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az útmutató ismerteti az IoT-szolgáltatásfunkciók ASC, ha úgy dönt, hogy összegyűjti és elküldi az eszköz biztonsági üzenetek IoT-ügynök az ASC használata nélkül, és ehhez ismerteti.  
+Ez az útmutató ismerteti az Azure Security Center (ASC) az IoT-szolgáltatásfunkciók, ha úgy dönt, hogy összegyűjti és elküldi az eszköz biztonsági üzenetek IoT-ügynök az ASC használata nélkül, és ennek módját ismerteti.  
 
 Ebből az útmutatóból a következőket tanulhatja meg: 
 > [!div class="checklist"]

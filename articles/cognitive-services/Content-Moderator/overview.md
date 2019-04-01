@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7a6424921b869428d1dbeffadd68e173a32d8821
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455246"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758128"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -41,24 +41,23 @@ A Content Moderator szolgáltatás számos webszolgáltatás API-t tartalmaz, am
 
 A Content Moderator szolgáltatás az alábbi alkalmazási helyzetekhez tartalmaz API-kat.
 
-| Műveletek | Leírás |
+| API-csoport | Leírás |
 | ------ | ----------- |
-|[**Szövegmoderálás**](text-moderation-api.md)| Sértő tartalmat, szexuálisan explicit vagy szexuális utalásokat tartalmazó, profanitást és személyazonosításra alkalmas adatokat (IIP) tartalmazó szövegeket keres.|
+|[**Szövegmoderálás**](text-moderation-api.md)| Szöveg sértő vagy durva tartalom, nyíltan explicit vagy kétértelmű tartalmat, vulgáris, és a személyes adatok ellenőrzése.|
 |[**Egyéni kifejezéslista**](try-terms-list-api.md)| A beépített kifejezések mellett egyéni kifejezéslisták alapján is keres a szövegekben. Az egyéni listákkal a saját tartalomházirendjének megfelelően tilthatja le vagy engedélyezheti a tartalmakat.|  
 |[**Képmoderálás**](image-moderation-api.md)| Kiszűri a felnőtteknek szóló és kényes tartalmakat ábrázoló képeket, észleli a képeken található szövegeket az optikai karakterfelismerés (OCR) segítségével, valamint arcokat ismer fel.|
 |[**Egyéni képlisták**](try-image-list-api.md)| Egyéni képlista alapján szűri a képeket. Egyéni képlistákkal szűrheti ki az olyan gyakran ismétlődő tartalmakat, amelyeket nem szeretne ismét besorolni.|
 |[**Videomoderálás**](video-moderation-api.md)| Felnőtteknek szóló és kényes tartalmakat keres a videókban, és az ilyen tartalmakhoz időjelölőket ad vissza.|
-|[**Felülvizsgálatok**](try-review-api-job.md)| A [Feladatok](try-review-api-job.md), [Felülvizsgálatok](try-review-api-review.md) és [Munkafolyamat](try-review-api-workflow.md) műveletek segítségével hozhatók létre és automatizálhatók az emberi beavatkozást igénylő munkafolyamatok az emberi felülvizsgálati eszközzel. A munkafolyamat API még nem érhető el a .NET SDK-n keresztül.|
+|[**API-k áttekintése**](try-review-api-job.md)| A [Feladatok](try-review-api-job.md), [Felülvizsgálatok](try-review-api-review.md) és [Munkafolyamat](try-review-api-workflow.md) műveletek segítségével hozhatók létre és automatizálhatók az emberi beavatkozást igénylő munkafolyamatok az emberi felülvizsgálati eszközzel. A munkafolyamat API még nem érhető el a .NET SDK-ban.|
 
-### <a name="human-review-tool"></a>Emberi felülvizsgálati eszköz
+### <a name="review-tool"></a>Felülvizsgálati eszköz
 
-A Content Moderator szolgáltatás webalapú [emberi felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) is tartalmaz. 
+A Content Moderator szolgáltatást is tartalmaz a webalapú [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md), tartalmat tároló, amely áttekinti az emberi moderátorok feldolgozni. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között. A felülvizsgálati eszköz is biztosít egy felhasználóbarát előtér-Content Moderator erőforrások különböző.
 
 ![A Content Moderator emberi felülvizsgálati eszköz kezdőlapja](images/homepage.PNG)
 
-A felülvizsgálati API-k segítségével állíthatja be a szövegek, képek és videótartalmak csapat általi felülvizsgálatát a megadott szűrők alapján. Ezt követően az emberi moderátorok hozhatják meg a végső moderátori döntéseket. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között.
-
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
+
 Az összes a Cognitive Services, a Content Moderator szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések

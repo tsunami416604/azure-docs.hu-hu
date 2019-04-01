@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199834"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758297"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -162,9 +162,13 @@ Az Azure Portalon egy virtuális Géphez való csatlakozáshoz meg az Azure elle
 
   ![igény szerinti kérése](./media/security-center-just-in-time/jit-prompt.png)
 
-- Ha rendelkezik egy igény szerinti szabályzat konfigurálva a virtuális gépen, kattinthat **hozzáférés kérése** ahhoz, hogy rendelkezik hozzáféréssel a állítsa be a virtuális gép JIT szabályzatának megfelelően.
+- Ha rendelkezik egy igény szerinti szabályzat konfigurálva a virtuális gépen, kattinthat **hozzáférés kérése** ahhoz, hogy rendelkezik hozzáféréssel a állítsa be a virtuális gép JIT szabályzatának megfelelően. A hozzáférést igényelnek a következő alapértelmezett paraméterek:
+    - **forrás IP-cím**: "Bármely" (*) (nem módosítható)
+    - **időtartomány**: (nem módosítható) 3 óra
+    - **portszám** RDP 3389-es port: Windows / Linux-22-es port (módosíthatja a port számát, a **csatlakozhat a virtuális gép** párbeszédpanelen.)
 
-  ![igény szerinti hozzáférés kéréséhez](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![igény szerinti hozzáférés kéréséhez](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>A naplózási JIT hozzáférési tevékenység
 

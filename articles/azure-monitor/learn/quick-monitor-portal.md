@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/11/2018
+ms.date: 03/29/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 37fad0769753f462859809ff8600f5b15c7eaa1f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 13fce896c4d83f628bdb7e12e696e32e343fb689
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437509"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754942"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -61,21 +61,21 @@ Az Application Insights a futtatás helyétől függetlenül telemetriai adatoka
 
 Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás különböző részleteinek megtekintéséhez.
 
-1. A Megoldáskezelőben kattintson a jobb gombbal **Az Application Insights kapcsolódó szolgáltatásai** mappára, majd kattintson az **Application Insights portál megnyitása** parancsra.  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
+1. Bontsa ki a **csatlakoztatott szolgáltatás** mappa (felhőbeli és plug ikon) a Megoldáskezelőben kattintson a jobb gombbal a **Application Insights** mappába, és kattintson **Application Insights portál megnyitása** .  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
 
-    ![Alkalmazástérkép](media/quick-monitor-portal/overview-001.png)
+    ![Alkalmazástérkép](media/quick-monitor-portal/4overview.png)
 
 2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez.  Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
-    ![Alkalmazástérkép](media/quick-monitor-portal/application-map-001.png)
+    ![Alkalmazástérkép](media/quick-monitor-portal/5appmap.png)
 
-3. Kattintson az **Alkalmazáselemzés** ikonra, majd az ![Alkalmazástérképre](media/quick-monitor-portal/app-analytics-icon.png) az alkalmazás egyik összetevőjén.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez.  Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg.  A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson a a **Alkalmazáselemzés** ikon ![Alkalmazástérkép](media/quick-monitor-portal/app-analytics-icon.png) **megtekintés az Analyticsben** egy alkalmazás-összetevőket. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez.  Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
-    ![Elemzés](media/quick-monitor-portal/analytics.png)
+    ![Elemzés](media/quick-monitor-portal/6viewanalytics.png)
 
-4. Lépjen vissza az **Áttekintés** lapra, és kattintson az **Élő stream** elemre.  Ezzel élő statisztikát jeleníthet meg az alkalmazásról futás közben.  Ez a bejövő kérések számával, az adott kérések időtartamával, valamint az esetleges hibákkal kapcsolatos adatokat tartalmaz.  Emellett a kritikus teljesítménymutatókat is figyelemmel kísérheti, például a processzor- és memóriahasználatot.
+4. Kattintson a **élő metrikák Stream** vizsgálja meg a bal oldali alatt. Ezzel élő statisztikát jeleníthet meg az alkalmazásról futás közben. Ez a bejövő kérések számával, az adott kérések időtartamával, valamint az esetleges hibákkal kapcsolatos adatokat tartalmaz. Emellett a kritikus teljesítménymutatókat is figyelemmel kísérheti, például a processzor- és memóriahasználatot.
 
-    ![Élő stream](media/quick-monitor-portal/live-stream.png)
+    ![Élő stream](media/quick-monitor-portal/7livemetrics.png)
 
     Ha készen áll az alkalmazás Azure-on történő üzemeltetésére, most már közzéteheti. Kövesse az [ASP.NET-webalkalmazás létrehozását ismertető rövid útmutató](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) lépéseit.
 
@@ -107,7 +107,7 @@ További információt a [nyílt forráskódú JavaScript SDK](https://github.co
 * Külső részletes videó [konfigurálása az Application Insights .NET-alkalmazás Előzmények](https://www.youtube.com/watch?v=blnGAVgMAfA).
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban engedélyezte, hogy az Azure Application Insights monitorozza az alkalmazását.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.
+Ez a rövid útmutatóban engedélyezte az alkalmazás figyelése az Azure Application Insights.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.
 
 > [!div class="nextstepaction"]
 > [Azure Application Insights-oktatóanyagok](tutorial-runtime-exceptions.md)

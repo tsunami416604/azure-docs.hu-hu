@@ -3,17 +3,17 @@ title: Csatlakozás az Azure adatkezelő Azure databricksből Python használat�
 description: Ez a témakör bemutatja, hogyan érheti el adatait az Azure Data Explorer két hitelesítési módszerek egyikének használatával egy Python-kódtár az Azure Databricks használatával.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 1101a89fd4ddb0e020d0bac237e6119b137fa978
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017497"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756926"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Csatlakozás az Azure adatkezelő Azure databricksből Python használatával
 

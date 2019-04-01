@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445483"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756810"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 
@@ -38,10 +38,10 @@ A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monito
 * Application Insights-adatok elérése és adatok megtekintése az AI-Analytics.
 * Keressen rá a Log Analytics-munkaterület adatok többek között a munkaterület használati adatait.
 * A Log Analytics felügyeleti csoportok megtekintése.
-* A Log Analytics keresési séma lekérése.
-* A Log Analytics intelligenciacsomagok listázása.
-* Kérje le, és hajtsa végre a Log Analytics-beli mentett keresések.
-* A Naplóelemzési tárkonfiguráció lekéréséhez.
+* Lekérése a Log Analytics-munkaterület keresési sémáját.
+* Listázza a Log Analytics-munkaterületet a felügyeleti csomagokat.
+* Kérje le, és hajtsa végre a mentett keresések Log Analytics-munkaterületet.
+* A Log Analytics-munkaterület tárolási konfiguráció beolvasása.
 
 > [!NOTE]
 > Ez a szerepkör nem olvasási hozzáférést biztosít egy eseményközpontba, folyamatos vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd alább](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
@@ -57,9 +57,9 @@ A figyelés közreműködői szerepkörrel mások is láthatják az összes moni
 * Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Hozza létre az Application Insights-webtesztek és összetevőket.
 * A Log Analytics-munkaterület megosztott kulcsainak listázása.
-* Engedélyezi vagy letiltja a Log Analytics intelligenciacsomagok.
-* Hozzon létre, és törölje, és hajtsa végre a Log Analytics-beli mentett keresések.
-* Hozzon létre, és a Naplóelemzési tárkonfiguráció törlése.
+* Engedélyezi vagy letiltja a Log Analytics-munkaterületet a felügyeleti csomagokat.
+* Hozzon létre, és törölje, és hajtsa végre a mentett keresések Log Analytics-munkaterületet.
+* Hozzon létre, és a Log Analytics-munkaterület tárolási konfiguráció törlése.
 
 \*felhasználói külön is engedéllyel kell listkeys műveletének a cél erőforráson (tárolási fiók- vagy event hub-névtér) egy naplóprofil vagy diagnosztikai beállítás.
 

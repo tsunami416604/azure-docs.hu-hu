@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7160b7c9cdb82d378870edb1750c9d9016aa2d18
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: b0329c8c0bfa56e5ae36c5f4223edca91e6510a0
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58006853"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755606"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-cli"></a>Az egyéni átalakítási kódolása a parancssori felület használatával
+# <a name="how-to-encode-with-a-custom-transform---cli"></a>Az egyéni átalakítási – parancssori felület kódolása
 
 Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) a rövid útmutató. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
 

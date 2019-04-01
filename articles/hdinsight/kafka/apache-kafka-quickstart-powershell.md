@@ -1,20 +1,19 @@
 ---
-title: Az Apache Kafka használatának első lépései – Rövid Azure HDInsight-útmutató
+title: Állítsa be az Apache Kafka on HDInsight használata az Azure PowerShell – rövid útmutató
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure PowerShell használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 42384d3ef025640e302ef8173a25965580784319
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 1bad28a80c388cfd8ddabb77c3c6b15743711617
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361200"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757802"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 

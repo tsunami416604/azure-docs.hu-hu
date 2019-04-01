@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy biztonsági ikermodulja az ASC IoT-előzetes verzió |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy IoT az ikermodul használatra ASC ASC az IoT.
+title: Hozzon létre egy Azure Security Center biztonsági ikermodulja az IoT-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy Azure Security Center IoT ikermodul használatra az ASC az IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd085333f0ddc8a9d49637a2d7156b34c6e5cc72
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 93b6aa6fe133953025cd504e0486a51c4a3d5e04
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579427"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758363"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: Hozzon létre egy azureiotsecurity ikermodul
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a rövid magyarázatot bemutatja, hogyan hozhat létre egyéni _azureiotsecurity_ új eszközöket, vagy a batch az ikermodulokkal ikermodulokkal az összes eszköz hozzon létre egy IoT hubot.  
 
@@ -32,7 +32,7 @@ Ez a rövid magyarázatot bemutatja, hogyan hozhat létre egyéni _azureiotsecur
 
 IoT-megoldások az Azure-ban fejlesztett ikereszközök Eszközkezelés és a folyamatok automatizálásával kulcsfontosságú szerepet játszanak. 
 
-Az IoT ASC kínál szolgáltatás teljesen integrálható a meglévő IoT device-kezelési platform, az, hogy az eszköz biztonsági állapotát kezelése lehetővé teszi az eszközök vezérlési meglévő képességeit használja gyártmány és.
+Az Azure Security Center (ASC) az IoT magas teljes integráció a meglévő IoT Eszközkezelési platformok, így kezelheti, az eszköz biztonsági állapotát gyártmány és használja az eszközök vezérlési meglévő képességeit.
 Használja az IoT Hub valósítja meg IoT-integráció az ASC ikereszköz mechanizmust.  
 
 Lásd: [az IoT Hub ikermodulokkal](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) tudhat meg többet az Azure IoT Hub ikermodulokkal általános fogalma. 

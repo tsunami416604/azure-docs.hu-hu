@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5fe66634d4f95ba84d13a3d355f28afbedf0f7f0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58012648"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755486"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-rest"></a>Az egyéni átalakítási kódolása a REST használatával
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Az egyéni átalakítási – REST kódolása
 
 Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-tutorial-with-rest.md#create-a-transform) oktatóanyag. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
 

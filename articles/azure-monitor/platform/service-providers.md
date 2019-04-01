@@ -1,6 +1,6 @@
 ---
-title: Log Analytics a szolgáltatók számára |} A Microsoft Docs
-description: A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és az üzemeltetési szolgáltatók kiszolgálók kezelése és figyelése az ügyfél helyszíni vagy felhőalapú infrastruktúrában.
+title: A szolgáltatók számára az Azure Monitor |} A Microsoft Docs
+description: Az Azure Monitor segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és az üzemeltetési szolgáltatók kiszolgálók kezelése és figyelése az ügyfél helyszíni vagy felhőalapú infrastruktúrában.
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264772"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756569"
 ---
-# <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
-A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
+# <a name="azure-monitor-for-service-providers"></a>A szolgáltatók számára az Azure Monitor
+Log Analytics-munkaterületek az Azure Monitor segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 
 
 A nagyobb cégeknek is megoszthatja számos Hasonlóságok szolgáltatók, különösen akkor, ha van egy központi informatikai csoportját, amelyek kezeléséért felelős informatikai számos különböző üzleti egységek számára. Az egyszerűség kedvéért a jelen dokumentum kifejezést használja *szolgáltató* , de ugyanazokat a funkciókat is vállalatok és más ügyfelek számára érhető el.
 
-A partnerek és szolgáltatók, akik részei, a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, a Log Analytics az elérhető az Azure-szolgáltatások egyik [Azure CSP-előfizetésekben](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
+A partnerek és szolgáltatók, akik részei, a [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) program, a Log Analytics az Azure Monitor az elérhető az Azure-szolgáltatások egyik [Azure CSP-előfizetésekben](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
 ## <a name="architectures-for-service-providers"></a>A szolgáltatók számára architektúrák
 
@@ -70,11 +70,11 @@ Ez az architektúra a hátrányai:
 
 A harmadik architektúra vegyesen a két lehetőség között. A naplók esetén az egyes vásárlók helyi első elosztott architektúrája alapján, de néhány mechanizmus segítségével hozhat létre egy központi tárházban a naplók. A naplók egy része egy központi helyre, jelentéskészítési és elemzési kéri le. Ez a rész kis számú adattípusok és a napi statisztika például a tevékenységek összegzésének lehet.
 
-A központi hely megvalósításához a Log Analytics két lehetőség van:
+Egy központi helyen naplók megvalósításához két lehetőség van:
 
 1. Központi munkaterület: A szolgáltató hozzon létre egy munkaterületet a bérlőben, és a egy parancsfájlt, amelyik a használni a [Query API](https://dev.loganalytics.io/) együtt a [adatok gyűjtési API](../../azure-monitor/platform/data-collector-api.md) vinnie az adatokat a különböző munkaterületekhez erre a központi helyre. Egy másik lehetőség, a parancsfájl nem [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. A Power BI egy központi helyet: Ha a különböző munkaterületekhez rájuk a Log Analytics integrációjával adatok exportálása Power bi-ban működhet a központi helyet és [Power BI](../../azure-monitor/platform/powerbi.md). 
+2. A Power BI egy központi helyet: Ha a különböző munkaterületekhez segítségével az integráció a Log Analytics-munkaterület közötti adatok exportálása Power bi-ban működhet a központi helyet és [Power BI](../../azure-monitor/platform/powerbi.md). 
 
 
 ## <a name="next-steps"></a>További lépések

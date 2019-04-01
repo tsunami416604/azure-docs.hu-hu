@@ -1,6 +1,6 @@
 ---
-title: Útmutató telepítésére és üzembe helyezésére az ASC-ügynök Linux C IoT ügynök előzetes verzió |} A Microsoft Docs
-description: Ismerje meg az ASC IoT-ügynök telepítése 32 és 64 bites Linux rendszeren.
+title: Útmutató telepítésére és üzembe helyezésére az Azure Security Center ügynök Linux C IoT ügynök előzetes verzió |} A Microsoft Docs
+description: Útmutató az Azure Security Center az IoT-ügynök telepítése 32 és 64 bites Linux rendszeren.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
-ms.openlocfilehash: 2b18a09e5b79e7b3d3ea837e937397ac92491f9f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 147813ae096114b4dfc1a20d2e0a70639aa82445
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619849"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754441"
 ---
-# <a name="deploy-asc-for-iot-c-based-security-agent-for-linux"></a>ASC biztonsági IoT C-alapú Linux-ügynök telepítése
+# <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Az Azure Security Center biztonsági IoT C-alapú Linux-ügynök telepítése
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez az útmutató ismerteti, hogyan telepítésére és üzembe helyezésére az ASC a IoT C-alapú biztonsági ügynök Linux rendszeren.
+Ez az útmutató azt ismerteti, telepítése és üzembe helyezése az Azure Security Center (ASC) a IoT C-alapú biztonsági ügynök Linux rendszeren.
 
 Ebből az útmutatóból a következőket tanulhatja meg: 
 > [!div class="checklist"]

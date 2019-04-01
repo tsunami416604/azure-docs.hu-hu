@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339516"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757658"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -105,10 +105,10 @@ A következő kulturális környezetek egyéni tokenizer verziójával rendelkez
 |német<br>`de-de`|1.0.1|A tárolóhelyek halmazra tokenizes a szavakat.<br> Ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) egy, az egyes marad. Így `krankenwagen` egyetlen entitás van megjelölve. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Jogkivonatokat létrehozó verziók közötti migrálás
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
-Az első lehetősége, hogy módosítsa a jogkivonatokat létrehozó verzióját az alkalmazás fájljában, majd importálja a verziót. Ez a művelet módosítja, hogy megcímkézzen tokenekre vannak, de lehetővé teszi, hogy az ugyanazon alkalmazás azonosítóját. 
-
-Tokenizer JSON 1.0.0. Figyelje meg, hogy a tulajdonság értéke `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -157,7 +157,7 @@ Tokenizer JSON 1.0.0. Figyelje meg, hogy a tulajdonság értéke `tokenizerVersi
 }
 ```
 
-JSON tokenizer 1.0.1-es verziója. Figyelje meg, hogy a tulajdonság értéke `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -205,5 +205,8 @@ JSON tokenizer 1.0.1-es verziója. Figyelje meg, hogy a tulajdonság értéke `t
     "settings": []
 }
 ```
+-->
 
-A második lehetősége, hogy [importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file), egy verzió helyett. Ez a művelet azt jelenti, az új alkalmazás egy másik alkalmazás Azonosítóval rendelkezik, de a fájlban megadott jogkivonatokat létrehozó verzióját használja. 
+A jogkivonatok az alkalmazás szintjén történik. A rendszer nem támogatja, a verzió-szintű a jogkivonatok. 
+
+[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file), egy verzió helyett. Ez a művelet azt jelenti, az új alkalmazás egy másik alkalmazás Azonosítóval rendelkezik, de a fájlban megadott jogkivonatokat létrehozó verzióját használja. 

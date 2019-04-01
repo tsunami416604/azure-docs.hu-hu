@@ -1,6 +1,6 @@
 ---
-title: ASC tudnivalók az IoT biztonsági modul az IoT Edge-hez |} A Microsoft Docs
-description: Ismerje meg, architektúráját és funkcióit az ASC IoT biztonsági modulhoz az IoT Edge-hez.
+title: Az Azure IoT biztonsági modulhoz az IoT Edge-hez a Security Center megismerése |} A Microsoft Docs
+description: Ismerje meg, architektúráját és funkcióit az Azure Security Center IoT biztonsági modulhoz az IoT Edge-hez.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 68117370e21c7b667bde5447cef510a4e7c77df0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 11eadc70f6da20fdc9b837dfad45705278dd2d27
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580763"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756701"
 ---
 # <a name="azure-iot-edge-security-module"></a>Az Azure IoT Edge biztonsági modul
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem ajánlott éles worklo§1ads. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Az Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) kezeléséhez, és végezze el a peremhálózaton üzleti munkafolyamatok hatékony funkciókat biztosít.
 A kulcsfontosságú jellemzője, mely az IoT Edge IoT-környezetek győződjön meg arról, hogy különösen vonzó rosszindulatú.
 
-Az IoT biztonsági modul ASC átfogó biztonsági megoldást kínál az IoT Edge eszközök.
+Az Azure Security Center (ASC) IoT biztonsági modul egy átfogó biztonsági megoldást kínál az IoT Edge eszközök.
 IoT-modul ASC, összesíti az adatokat gyűjt és elemez nyers biztonsági az operációs rendszer és a rendszer a végrehajtható biztonsági ajánlásokat és riasztások.
 
 Hasonlóan az ASC-hez készült IoT-eszközök IoT-biztonsági ügynökök az IoT Edge-modul az ASC nagymértékben testre szabhatók az ikermodul keresztül.

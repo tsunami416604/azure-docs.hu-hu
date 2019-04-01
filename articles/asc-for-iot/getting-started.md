@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés az Azure Security Center (ASC) használatával for IoT-előzetes verzió |} A Microsoft Docs
-description: Ismerkedjen meg az alapvető munkafolyamatát, ASC IoT-szolgáltatások és a szolgáltatás ismertetése.
+description: Ismerkedés az IoT-szolgáltatások és a szolgáltatás az Azure Security Center az alapvető munkafolyamat ismertetése.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 23b15b92c844af85f2e1279e531c38ac7d517423
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648316"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755133"
 ---
-# <a name="get-started-with-azure-security-center-asc-for-iot"></a>Az IoT első lépései az Azure Security Center (ASC) 
+# <a name="get-started-with-azure-security-center-for-iot"></a>IoT az Azure Security Center használatának első lépései 
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk az ASC a különböző építőelemeit, magyarázattal szolgál abban az IoT-szolgáltatás, és azt ismerteti, hogyan kezdheti el az [engedélyezni a szolgáltatást](quickstart-onboard-iot-hub.md). 
+Ez a cikk az Azure Security Center (ASC) különböző építőelemeket magyarázattal szolgál abban az IoT-szolgáltatás, és azt ismerteti, hogyan kezdheti el az [engedélyezni a szolgáltatást](quickstart-onboard-iot-hub.md). 
 
 Az IoT ASC zökkenőmentesen integrálható az IoT hubot, hogy adja meg a biztonsági elemzés az IoT hub konfigurációs, eszköz identitás- és hub-eszköz kommunikációs minták.
 Fokozott biztonsági képességei az IoT ASC biztosít az IoT-eszközökről származó biztonsági adatok gyűjtését az ügynök-alapú.

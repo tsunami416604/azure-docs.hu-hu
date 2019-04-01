@@ -1,6 +1,6 @@
 ---
-title: Biztonsági riasztás útmutatója IoT villámnézethez ASC |} A Microsoft Docs
-description: Ismerje meg a biztonsági riasztások és az IoT-szolgáltatások és a szolgáltatás az ASC-javasolt javítás.
+title: Biztonsági riasztás útmutató az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg a biztonsági riasztások és az IoT-szolgáltatások és a szolgáltatás az Azure Security Center használata javasolt javítás.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579444"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755109"
 ---
-# <a name="asc-for-iot-security-alerts"></a>Az IoT biztonsági riasztásokhoz ASC
+# <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center az IoT biztonsági riasztások
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az IoT ASC folyamatosan elemzi az IoT-megoldás használatával figyelmeztet a rosszindulatú tevékenység fejlett elemzés és veszélyészlelés céljából intelligencia használatával.
+Az Azure Security Center (ASC) az IoT folyamatosan elemzi az IoT-megoldás használatával figyelmeztet a rosszindulatú tevékenység fejlett elemzés és veszélyészlelés céljából intelligencia használatával.
 Emellett egyéni értesítések, a várt eszközök működésének ismerete alapján is létrehozhat.
 Riasztás azt jelzi, hogy comprise, funkcionál, és kell vizsgálni és javítja.
 

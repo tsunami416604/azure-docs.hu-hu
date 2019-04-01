@@ -2,17 +2,17 @@
 title: Fejlesztői ajánlott eljárások – erőforrás-kezelés az Azure Kubernetes-szolgáltatások (AKS)
 description: Az alkalmazás fejlesztői ajánlott eljárások az erőforrás-kezelés az Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: b45c5abb66d927f247f62692f12bd9207958a3e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: zarhoads
+ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181282"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757245"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői az Azure Kubernetes Service (AKS)-erőforrások kezeléséhez
 

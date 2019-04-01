@@ -1,6 +1,6 @@
 ---
-title: Válassza ki, és üzembe helyezése egy IoT-ügynök előzetes ASC |} A Microsoft Docs
-description: Ismerje meg, hogyan készül ki, és üzembe helyezése ASC IoT biztonsági ügynökök az IoT-eszközökön.
+title: Válassza ki, és üzembe helyezése az Azure Security Center IoT ügynök előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogyan készül ki, és üzembe helyezése az Azure Security Center IoT biztonsági ügynökök az IoT-eszközökön.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 208f7cdbc9d610713d73c5af1e02de5faf11474c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3a7c3b1b08ab4f0fecd854b969ac18bf9a73ccf
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580793"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755292"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Válassza ki, és a egy IoT-eszközök a biztonsági ügynök telepítése
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az IoT ASC referenciaarchitektúrák adatainak figyelésére és gyűjtésére IoT-eszközökről származó biztonsági ügynökök biztosít.
+Az Azure Security Center (ASC) az IoT biztonsági ügynökök, amelyek figyelése és IoT-eszközök adatainak összegyűjtése referenciaarchitektúrák biztosít.
 Lásd: [biztonsági ügynök referenciaarchitektúra](security-agent-architecture.md) további.
 
 Ügynökök nyílt forráskódú projektként lettek kifejlesztve, és két változatban érhetők el: <br> [C](https://aka.ms/iot-security-github-c), és [ C# ](https://aka.ms/iot-security-github-cs).

@@ -1,6 +1,6 @@
 ---
-title: Az ASC az IoT Edge-modul üzembe helyezése |} A Microsoft Docs
-description: Megtudhatja, hogyan ASC IoT biztonsági IoT Edge-ügynök telepítése.
+title: IoT Edge-modul üzembe helyezése az Azure Security Center |} A Microsoft Docs
+description: További tudnivalók az Azure Security Center az IoT Edge-ben az IoT biztonsági ügynök telepítése.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 87094b265a0c30c0349d64e4b956224525c04f74
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 2a201fe649d52ad9604c7ac6675b26d60e7f2dd1
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580493"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754762"
 ---
 # <a name="deploy-security-module-on-your-iot-edge-device"></a>Az IoT Edge-eszközön a biztonsági modul üzembe helyezése
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az IoT ASC **azureiotsecurity** modul átfogó biztonsági megoldást kínál az IoT Edge-eszköz.
+Az Azure Security Center (ASC) az IoT **azureiotsecurity** modul átfogó biztonsági megoldást kínál az IoT Edge-eszköz.
 Biztonsági modult, összesíti az adatokat gyűjt és elemez nyers biztonsági az operációs rendszer és a tároló rendszerből végrehajtható biztonsági ajánlásokat és riasztások.
 További tudnivalókért lásd: [az IoT Edge biztonsági modul](security-edge-architecture.md).
 

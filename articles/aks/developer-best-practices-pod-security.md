@@ -2,17 +2,17 @@
 title: Ajánlott eljárások Developer - Pod biztonság az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg, hogyan védheti meg az Azure Kubernetes Service (AKS) podok fejlesztői ajánlott eljárásai
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: c2c8522e796fa43f08bf8ad2d61e70a8205d77b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: zarhoads
+ms.openlocfilehash: 1c2c5cbee91ddaee5f1f6af8ec17c48326f68e84
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183526"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755058"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) pod biztonsági védelmének bevált gyakorlata
 

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983378"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757965"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Ügynökállapot megoldás az Azure-ban
-Az Azure-ban az Agent Health megoldás segít átlátni, az összes jelentő ügynökök közül közvetlenül a Log Analytics-munkaterületet, vagy a System Center Operations Manager felügyeleti csoport csatlakozik Azure Monitor, amelyek nem válaszol, a üzemeltetési elküldése adatok.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Ügynökállapot megoldás az Azure monitorban
+Az Azure-ban az Agent Health megoldás segít átlátni, közvetlenül az Azure monitorban Log Analytics-munkaterületnek jelentő ügynökök közül, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva az Azure Monitor, melyek nem válaszol, és működési adatokat küldjön.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
 ## <a name="prerequisites"></a>Előfeltételek
 A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) a Log Analytics-munkaterületre jelentő vagy a jelentéskészítés egy [Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md) integrálva van a munkaterület.
@@ -62,7 +62,7 @@ Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányító
 | Eloszlás operációsrendszer-típusok szerint | A környezetben található Windows- és Linux-ügynökök számának eloszlása.|
 | Eloszlás ügynökverzió szerint | A környezetben telepített különböző ügynökverziók eloszlása és mennyisége.|
 | Eloszlás ügynökkategória szerint | A szívverés eseményeket küldő különböző ügynökök kategóriáinak eloszlása: közvetlen ügynökök, OpsMgr-ügynökök és az OpsMgr felügyeleti kiszolgáló.|
-| Eloszlás felügyeleti csoport szerint | A környezetben található különböző SCOM-felügyeleticsoportok eloszlása.|
+| Eloszlás felügyeleti csoport szerint | A partíció a különböző Operations Manager felügyeleti csoportok a környezetben.|
 | Az ügynökök földrajzi helye | A különböző országok eloszlása, ahol ügynökök találhatók, és az egyes országokban telepített ügynökök teljes mennyisége.|
 | Telepített átjárók száma | A Log Analytics-átjáró telepítésével rendelkező kiszolgálók számát, és ezek a kiszolgálók listáját.|
 
@@ -117,4 +117,4 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [az Azure monitorban riasztásokat](../platform/alerts-overview.md) Log Analytics-riasztások létrehozásával kapcsolatos részletekért. 
+* Ismerje meg [az Azure monitorban riasztásokat](../platform/alerts-overview.md) naplólekérdezések-riasztások létrehozásával kapcsolatos részletekért. 

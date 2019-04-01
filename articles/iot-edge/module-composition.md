@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan egy manifest nasazení kijelenti, mely modulok 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099970"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758090"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Ismerje meg, hogyan helyezhet üzembe modulokat, és ezekkel létesíthetnek útvonalat IoT Edge-ben
 
@@ -58,14 +58,14 @@ A csak az IoT Edge-futtatókörnyezet (edgeAgent és edgeHub) tartalmazó manife
                 // includes the routing information between modules, and to IoT Hub
             }
         },
-        "{module1}": {  // optional
+        "module1": {  // optional
             "properties.desired": {
-                // desired properties of {module1}
+                // desired properties of module1
             }
         },
-        "{module2}": {  // optional
+        "module2": {  // optional
             "properties.desired": {
-                // desired properties of {module2}
+                // desired properties of module2
             }
         },
         ...
@@ -75,9 +75,9 @@ A csak az IoT Edge-futtatókörnyezet (edgeAgent és edgeHub) tartalmazó manife
 
 ## <a name="configure-modules"></a>Modulok konfigurálása
 
-Adja meg, hogyan az IoT Edge-futtatókörnyezet telepíti a központi telepítésben a modulokat. Az IoT Edge-ügynök nem a futásidejű összetevő, amely kezeli a telepítés, a frissítések és az IoT Edge-eszköz vonatkozó állapotjelentéseket. Ezért a $edgeAgent ikermodul igényel a konfigurációs és felügyeleti információk összes modult. Ez az információ az Edge agent magát a konfigurációs paramétereket tartalmazza. 
+Adja meg, hogyan az IoT Edge-futtatókörnyezet telepíti a központi telepítésben a modulokat. Az IoT Edge-ügynök nem a futásidejű összetevő, amely kezeli a telepítés, a frissítések és az IoT Edge-eszköz vonatkozó állapotjelentéseket. Ezért a $edgeAgent ikermodul igényel a konfigurációs és felügyeleti információk összes modult. Ez az információ magát az IoT Edge-ügynök konfigurációs paramétereket tartalmaz. 
 
-Vagy bele kell foglalni tulajdonságok teljes listáját lásd: [az Edge agentet és az Edge hub tulajdonságainak](module-edgeagent-edgehub.md).
+Vagy bele kell foglalni tulajdonságok teljes listáját lásd: [az IoT Edge-ügynök és az IoT Edge hub tulajdonságainak](module-edgeagent-edgehub.md).
 
 Ez a struktúra hajtsa végre a $edgeAgent tulajdonságai:
 
@@ -101,10 +101,10 @@ Ez a struktúra hajtsa végre a $edgeAgent tulajdonságai:
             }
         },
         "modules": {
-            "{module1}": { // optional
+            "module1": { // optional
                 // configuration and management details
             },
-            "{module2}": { // optional
+            "module2": { // optional
                 // configuration and management details
             }
         }
@@ -122,8 +122,8 @@ Az IoT Edge hubot modulok, az IoT Hub és bármely levéleszközök közötti ko
 "$edgeHub": {
     "properties.desired": {
         "routes": {
-            "{route1}": "FROM <source> WHERE <condition> INTO <sink>",
-            "{route2}": "FROM <source> WHERE <condition> INTO <sink>"
+            "route1": "FROM <source> WHERE <condition> INTO <sink>",
+            "route2": "FROM <source> WHERE <condition> INTO <sink>"
         },
     }
 }
@@ -144,9 +144,9 @@ A source tulajdonság a következő értékek egyike lehet:
 | `/twinChangeNotifications` | Minden modul vagy a levél eszközről érkező ikereszköz módosítása (jelentett Tulajdonságok) |
 | `/messages/*` | Bármely eszközről a felhőbe által küldött üzenet modul vagy a levél eszköz át néhány vagy nincs kimenet |
 | `/messages/modules/*` | Bármely eszköz-felhő által küldött üzenet egy modul át néhány vagy nincs kimenet |
-| `/messages/modules/{moduleId}/*` | Bármilyen eszközről a felhőbe által küldött üzenet egy adott modul át néhány vagy nincs kimenet |
-| `/messages/modules/{moduleId}/outputs/*` | Bármilyen eszközről a felhőbe által küldött üzenet egy adott modul néhány kimenetet keresztül |
-| `/messages/modules/{moduleId}/outputs/{output}` | Bármely eszköz-felhő által küldött üzenet egy adott kimeneti keresztül ugyan adott modulok |
+| `/messages/modules/<moduleId>/*` | Bármilyen eszközről a felhőbe által küldött üzenet egy adott modul át néhány vagy nincs kimenet |
+| `/messages/modules/<moduleId>/outputs/*` | Bármilyen eszközről a felhőbe által küldött üzenet egy adott modul néhány kimenetet keresztül |
+| `/messages/modules/<moduleId>/outputs/<output>` | Bármely eszköz-felhő által küldött üzenet egy adott kimeneti keresztül ugyan adott modulok |
 
 ### <a name="condition"></a>Állapot
 A feltétel nem kötelező útvonal határozza meg. Ha azt szeretné, a fogadó üzenetek átadása a forrás, csak hagyja ki a **ahol** záradék teljes egészében. Vagy használhatja a [IoT Hub lekérdezési nyelv](../iot-hub/iot-hub-devguide-routing-query-syntax.md) szűrése az egyes üzenetek vagy üzenettípust, amely megfelel a feltételnek. IoT Edge-útvonalakat nem támogatják a szűrési üzenetek ikereszköz – címkék és tulajdonságok alapján. 
@@ -175,11 +175,11 @@ A fogadó tulajdonság a következő értékek egyike lehet:
 | Sink (Fogadó) | Leírás |
 | ---- | ----------- |
 | `$upstream` | Az üzenet elküldéséhez az IoT hubhoz |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Az üzenet küldése egy adott modul egy meghatározott bevitel |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Az üzenet küldése egy adott modul egy meghatározott bevitel |
 
-IoT Edge: legalább egyszeri garanciákat nyújt. Az Edge hub tárolja az üzeneteket, helyileg abban az esetben egy útvonalat a fogadó nem lehet kézbesíteni az üzenetet. Például ha az Edge hub nem tud csatlakozni az IoT Hub, vagy a célként megadott modul nem áll fenn kapcsolat.
+IoT Edge: legalább egyszeri garanciákat nyújt. Helyileg abban az esetben egy útvonalat a fogadó nem lehet kézbesíteni az üzenetet az IoT Edge hubot tárolja az üzeneteket. Például ha az IoT Edge hub nem tud csatlakozni az IoT Hub, vagy a célként megadott modul nem áll fenn kapcsolat.
 
-Edge hub az üzeneteket, legfeljebb a megadott ideig tárolja a `storeAndForwardConfiguration.timeToLiveSecs` tulajdonságát a [Edge hubot kívánt tulajdonságok](module-edgeagent-edgehub.md).
+IoT Edge hub az üzeneteket, legfeljebb a megadott ideig tárolja a `storeAndForwardConfiguration.timeToLiveSecs` tulajdonságát a [IoT Edge hubot kívánt tulajdonságok](module-edgeagent-edgehub.md).
 
 ## <a name="define-or-update-desired-properties"></a>Adja meg, vagy az eszköz kívánt tulajdonságainak frissítése 
 
@@ -207,7 +207,7 @@ Az alábbi példa bemutatja, milyen nézhet ki egy érvényes telepítési jegyz
             "registryCredentials": {
               "ContosoRegistry": {
                 "username": "myacr",
-                "password": "{password}",
+                "password": "<password>",
                 "address": "myacr.azurecr.io"
               }
             }
@@ -273,6 +273,6 @@ Az alábbi példa bemutatja, milyen nézhet ki egy érvényes telepítési jegyz
 
 ## <a name="next-steps"></a>További lépések
 
-* Vagy $edgeAgent és $edgeHub szereplő tulajdonságok teljes listáját lásd: [az Edge agentet és az Edge hub tulajdonságainak](module-edgeagent-edgehub.md).
+* Vagy $edgeAgent és $edgeHub szereplő tulajdonságok teljes listáját lásd: [az IoT Edge-ügynök és az IoT Edge hub tulajdonságainak](module-edgeagent-edgehub.md).
 
 * Most, hogy megismerte, hogyan IoT Edge-modulok használata esetén [megismerhesse a követelményeket és az eszközök IoT Edge-modulok](module-development.md).

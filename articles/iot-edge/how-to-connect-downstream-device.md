@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445925"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757136"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Egy alárendelt eszköz csatlakoztatása az Azure IoT Edge-átjáró
 
@@ -43,7 +43,7 @@ Ebben a cikkben található lépések elvégzése előtt rendelkeznie kell két 
     Jelenleg csak a szimmetrikus kulcsot az alsóbb rétegbeli eszközök csatlakozhatnak az IoT Edge-átjárókon keresztül. X.509-hitelesítésszolgáltatók és önaláírt X.509-tanúsítványok jelenleg nem támogatottak.
     
 > [!NOTE]
-> Ezeket az utasításokat a tanúsítványok létrehozásához használja az "átjáró neve" kell lennie a neve megegyezik használt állomásnév az IoT Edge config.yaml fájlban és a kapcsolati karakterláncban az alsóbb rétegbeli eszköz GatewayHostName. A "gateway neve" kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel. Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie. Ha tűzfal a kettő között, a megfelelő portot kell lennie nyitva.
+> A cikk ezt használja az "átjáró neve" kell lennie, az állomásnév az IoT Edge config.yaml fájlban használt nevet. Az átjáró nevét kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel. Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie. Ha tűzfal a kettő között, a megfelelő portot kell lennie nyitva.
 
 ## <a name="prepare-a-downstream-device"></a>Alsóbb rétegbeli eszközök előkészítése
 
@@ -197,6 +197,14 @@ Ez egy mintául szolgáló parancs melyik tesztek mindent, állítsa be megfelel
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+## <a name="troubleshoot-the-gateway-connection"></a>Az átjáró-kapcsolat hibaelhárítása
+
+Amennyiben a levél eszköz az átjáróeszköz nem állandó hálózati kapcsolat, próbálja meg az alábbi lépéseket a feloldásához. 
+
+1. Az, hogy az átjáró neve hozzáfűzi a kapcsolati karakterlánc-ugyanaz, mint az állomásnév az átjáró eszköz IoT Edge config.yaml fájlban?
+2. Az átjáró neve feloldható egy IP-címre van? DNS-sel vagy az levél eszközön gazdafájlbejegyzéssel hozzáadásával intenmittent kapcsolatok oldható meg.
+3. Kommunikációs portok nyitva a tűzfalon a rendszer? Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie.
 
 ## <a name="next-steps"></a>További lépések
 

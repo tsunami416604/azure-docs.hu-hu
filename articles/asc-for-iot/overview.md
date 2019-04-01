@@ -1,6 +1,6 @@
 ---
-title: Mi az IoT-előzetes verzió az ASC |} A Microsoft Docs
-description: További információk az ASC IoT-szolgáltatások és a szolgáltatás.
+title: Mi az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
+description: További információk az Azure Security Center IoT-szolgáltatások és a szolgáltatás.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 46107797acad52e3df82d341750c52f99c81d63e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578815"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757597"
 ---
-# <a name="introducing-asc-for-iot"></a>ASC IoT bemutatása
+# <a name="introducing-azure-security-center-for-iot"></a>Az IoT Azure Security Center bemutatása
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="secure-your-azure-iot-solution"></a>Az Azure IoT-megoldás biztonságos 
@@ -35,7 +35,7 @@ Biztonsági felügyelet egységesítése és a hibrid felhőbeli számítási fe
 
 Az IOT-gyorsan alkalmazásán át a világ realitásainak. Észlelésétől insights lehetővé teszi az a csatlakoztatott eszközök és a háttér-rendszerek most alakíthatja át nagy teljesítményű alkalmazások és szolgáltatások segítségével a szervezet üzleti és a működési szintje páratlan elérése információkat teljesítmény. Azonban, amint az új eszközök milliárdjait csatlakozik az internethez, és akár napi és a cégek; integrálva Győződjön meg arról, hogy azok biztonsági stratégiák elég gyorsan ezen új támadási felületek fedik fejlődnek kell a biztonsági üzemeltetési csapatokra. Mint bármely más rendszer biztonságossá tétele az IoT-megoldás minden egyes fázisában védelméről a megvalósítás van szüksége. 
 
-ASC az IoT egyszerűbbé teszi a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságát és a vezérlő, adaptív fenyegetések megelőzése, és intelligens fenyegetésészlelés és a válaszok számítási feladatok futtatása az Edge-ben, a helyszínen, az Azure-ban, és más felhőkben. 
+Az Azure Security Center (ASC) az IoT egyszerűbbé teszi a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságát és a vezérlő, adaptív fenyegetések megelőzése, és intelligens fenyegetésészlelés és a válaszok számítási feladatok futtatása az Edge-ben, a helyszínen, az Azure-ban, és a más felhőkben. 
 
 ![ASC az IoT-architektúra](./media/architecture/asc-for-iot-architecture.png)
 

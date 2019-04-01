@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 03/20/2019
 ms.author: sajagtap
-ms.openlocfilehash: bd281191deb1a82d4b1b5247a011d9867f0c9bc4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879292"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757233"
 ---
-# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom kép tartalmakat elemezhetC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Gyors útmutató: A nemkívánatos tartalmat a képeket elemezhetC#
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulja, hogyan szűrheti ki a felnőtteknek szóló és kényes tartalmakat, hogyan kereshet kinyerhető szöveget, és hogyan ismerheti fel az emberi arcokat az esetlegesen kifogásolható tartalom moderálása céljából.
 

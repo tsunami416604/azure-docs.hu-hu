@@ -1,6 +1,6 @@
 ---
-title: Szűrése, rendezése, az Azure Media Services entitások – Azure lapozás |} A Microsoft Docs
-description: Ez a cikk ismerteti a szűrése, rendezése, az Azure Media Services entitások lapozást.
+title: Fejlesztés a v3 API-k – Azure |} A Microsoft Docs
+description: Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,16 +12,38 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4c6e3281bd2b37b60c8d165c6c3152e970a5ce32
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9a02030cb2b785b027bb78bad5ef636dff9dd8f3
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745096"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758538"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
+# <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
-## <a name="overview"></a>Áttekintés
+Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
+
+## <a name="naming-conventions"></a>Elnevezési konvenciók
+
+Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Átalakítások) az Azure Resource Manager elnevezési korlátozásai vonatkoznak. Az Azure Resource Manager szolgáltatásnak megfelelően az erőforrásnevek mindig egyediek. Így bármilyen egyedi azonosító sztringet (pl. GUID-ok) használhat erőforrásnévként. 
+
+A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">", "%", "&", ': ','&#92;','?', '/', "*", "+",".", szimpla idézőjel vagy bármely egyéb vezérlőkarakter. Minden egyéb karakter engedélyezett. Az erőforrásnév maximális hossza 260 karakter. 
+
+Azure Resource Manager elnevezésével kapcsolatos további információkért lásd: [Elnevezési követelményeknek](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+
+## <a name="v3-api-design-principles"></a>V3 API-tervezési alapelvek
+
+A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. A v3 API-k nem adnak vissza titkos kulcsokat vagy hitelesítő adatokat a **lekérési** vagy **listázási** művelet során. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. Egy különálló műveleti metódust kell meghívnia a titkos kulcsok vagy hitelesítő adatok lekéréséhez. A különálló műveletekkel különböző RBAC biztonsági engedélyeket állíthat be, ha esetleg valamely API mégis lekér/megjelenít titkos kulcsokat, míg más API-k nem. A hozzáférés RBAC használatával való kezeléséről további információt a [hozzáférés RBAC használatával való kezeléséről](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) szóló szakaszban talál.
+
+Példa erre:
+
+* Nem visszaadni a StreamingLocator Get ContentKey értékeket.
+* A szoftverkorlátozó kulcsok nem visszaadni a ContentKeyPolicy Get.
+* a lekérdezési karakterlánc részét URL-címe (távolítsa el az aláírást) feladatok HTTP bemeneti URL-címek nem visszaadása.
+
+Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-policy-dotnet-howto.md) példa.
+
+## <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
 
 A Media Services Media Services v3 entitások támogatja a következő OData-lekérdezés beállításai: 
 
@@ -41,7 +63,7 @@ Operátor leírása:
 
 A dátum/idő típusú entitások tulajdonságainak mindig UTC formátumban vannak.
 
-## <a name="page-results"></a>Eredmények lap
+### <a name="page-results"></a>Eredmények lap
 
 A lekérdezési válasz számos elemet tartalmaz, ha a szolgáltatás visszaadja egy "\@odata.nextLink" tulajdonságát a következő lapra az eredmények lekérése. Ez használható a lapozza végig a teljes eredményhalmaz. Az oldal méretét nem lehet konfigurálni. Az oldalméret, entitás típusa szerint változó olvassa el a részleteket az egyes szakaszokban.
 
@@ -50,9 +72,9 @@ Entitások létrehozása vagy a gyűjtemény átlapozva közben, ha a módosít�
 > [!TIP]
 > A gyűjtemény enumerálása, és nem függ egy adott oldal méretét a következő hivatkozás mindig használjon.
 
-## <a name="assets"></a>Objektumok
+### <a name="assets"></a>Objektumok
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat bemutatja, hogyan a szűrés és rendezés beállítások alkalmazhatók a [eszköz](https://docs.microsoft.com/rest/api/media/assets) tulajdonságai: 
 
@@ -77,11 +99,11 @@ var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:0
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-### <a name="pagination"></a>Tördelés 
+#### <a name="pagination"></a>Tördelés 
 
 Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 1000.
 
-#### <a name="c-example"></a>C#-példa
+##### <a name="c-example"></a>C#-példa
 
 Az alábbi C#-példa bemutatja a fiókban lévő összes eszköz számba.
 
@@ -95,7 +117,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-#### <a name="rest-example"></a>Példa REST
+##### <a name="rest-example"></a>Példa REST
 
 Tekintse meg a következő példát, amelyben a rendszer használja-e a $skiptoken. Győződjön meg arról, hogy cserélje le *amstestaccount* a fiók nevét és a set-a *api-version* érték a legújabb verzióra.
 
@@ -137,9 +159,9 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 REST kapcsolatos további példákért lásd [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/list)
 
-## <a name="content-key-policies"></a>Tartalomkulcsszabályok
+### <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies) tulajdonságai: 
 
@@ -154,7 +176,7 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [Tart
 |properties.policyId|eq, ne||
 |type|||
 
-### <a name="pagination"></a>Tördelés
+#### <a name="pagination"></a>Tördelés
 
 Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
 
@@ -172,9 +194,9 @@ while (currentPage.NextPageLink != null)
 
 További példák: [tartalom kulcs házirendjei – lista](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 
-## <a name="jobs"></a>Feladatok
+### <a name="jobs"></a>Feladatok
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [feladatok](https://docs.microsoft.com/rest/api/media/jobs) tulajdonságai: 
 
@@ -186,7 +208,7 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [fela
 | properties.lastModified | gt, lt, -le, a ge | Növekvő vagy csökkenő sorrendben| 
 
 
-### <a name="pagination"></a>Tördelés
+#### <a name="pagination"></a>Tördelés
 
 A Media Services v3 feladatok tördelés használata támogatott.
 
@@ -220,9 +242,9 @@ while (!exit);
 
 További példák: [feladatok – lista](https://docs.microsoft.com/rest/api/media/jobs/list)
 
-## <a name="streaming-locators"></a>Streamelési lokátor
+### <a name="streaming-locators"></a>Streamelési lokátor
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a StreamingLocator tulajdonságai: 
 
@@ -241,7 +263,7 @@ Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállítások
 |properties.streamingPolicyName |||
 |type   |||
 
-### <a name="pagination"></a>Tördelés
+#### <a name="pagination"></a>Tördelés
 
 Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
 
@@ -259,9 +281,9 @@ while (currentPage.NextPageLink != null)
 
 További példák: [Streamelési Lokátorok - lista](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 
-## <a name="streaming-policies"></a>Streamelési szabályok
+### <a name="streaming-policies"></a>Streamelési szabályok
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat a StreamingPolicy tulajdonságai: 
 
@@ -277,7 +299,7 @@ Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállítások
 |properties.noEncryption|||
 |type|||
 
-### <a name="pagination"></a>Tördelés
+#### <a name="pagination"></a>Tördelés
 
 Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 10.
 
@@ -296,9 +318,9 @@ while (currentPage.NextPageLink != null)
 További példák: [Streamelési házirendek – lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 
 
-## <a name="transform"></a>Átalakítás
+### <a name="transform"></a>Átalakítás
 
-### <a name="filteringordering"></a>Szűrés és rendezés
+#### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [alakítja át az](https://docs.microsoft.com/rest/api/media/transforms) tulajdonságai: 
 

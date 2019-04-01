@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4049211acd760f74fbb4a725f878e5c51acbe7dd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2b5fb5c44cbb2e0d766c49ed6b715484c22f62e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875942"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756741"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK-minták
 
@@ -31,7 +31,7 @@ A következő felsorolás a .NET-hez készült Azure Content Moderator SDK haszn
 > A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
-- **Szövegmoderálás**: [Szöveg cenzúrázása és a személyes azonosításra alkalmas adatokat (PII) képernyőn](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Lásd a [rövid útmutatót](text-moderation-quickstart-dotnet.md).
+- **Szövegmoderálás**: [Szöveg cenzúrázása és a személyes adatok képernyőn](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Lásd a [rövid útmutatót](text-moderation-quickstart-dotnet.md).
 - **Egyéni kifejezések**: [Az egyéni kifejezéslisták mérsékelt](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Lásd a [rövid útmutatót](term-lists-quickstart-dotnet.md).
 
 > [!NOTE]

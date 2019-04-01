@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075066"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758111"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
 Ez a cikk azt ismerteti, hogyan lehet beágyazni Video Indexer-vezérlőket az alkalmazásokba. Video Indexer az alkalmazásba való beágyazásával kétféle típusú widgetek támogatja: **A cognitive Insights** és **Player**. 
-
-> [!NOTE]
-> 1. verzióját 2018. február 1., kezdve a **Cognitive Insights** widget elavulttá válik. A beágyazási URL-cím verzió alapértelmezés szerint `version=2`.
 
 2-es verzióval kezdődően a widget alap URL-cím tartalmazza a fiókrégió. Például hoz létre egy fiókot az USA nyugati régiójában: `https://wus2.videoindexer.ai/embed/insights/...`.
 
@@ -34,7 +31,6 @@ A **Kognitív elemzési vezérlő** az összes vizuális elemzést tartalmazza, 
 |Name (Név)|Meghatározás|Leírás|
 |---|---|---|
 |widgets|Vesszővel elválasztott sztringek|Lehetővé teszi annak szabályozását, mely elemzéseket szeretné megjeleníteni. <br/>Példa: a `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` csak a személyekre és márkákra vonatkozó felhasználói felületi elemzéseket jeleníti meg.<br/>Elérhető lehetőségek: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Nem támogatott a version=2 paraméterű URL-címek esetében<br/><br/>**Megjegyzés:** A **widgetek** param URL-cím nem támogatott, ha **verzió = 2** szolgál. |
-|version|A **Kognitív elemzési** vezérlő verziói|A legújabb elemzéseit widget frissítések lekéréséhez adja hozzá a `?version=2` param a beágyazási URL-cím lekérdezése. Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> A régebbi verzió beszerzéséhez egyszerűen távolítsa el a `version=2` paramétert az URL-címből.
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 

@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/29/2019
 ms.author: babanisa
-ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 2d56a7cda88f96a6728dc1c3e4af8e9ad0bf946f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472806"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755517"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -41,7 +41,9 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 
    Verzió 2018-05-01-preview verziótól kezdődően Event Grid egy manuális érvényesítésre kézfogás támogatja. Ha egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview egy esemény-előfizetést hoz létre, vagy később, az Event Grid küld egy `validationUrl` az előfizetés érvényesítése esemény részén található adatok a tulajdonság. A kézfogás elvégzéséhez, keresse meg az eseményadatokat, és manuálisan az URL egy GET kérelmet küldeni. Is használhatja, vagy a REST-ügyféllel, vagy a böngészőjében.
 
-   A megadott URL-cím a 5 percig érvényes. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
+   A megadott URL-cím a 5 percig érvényes. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 5 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
+
+    A hitelesítési mechanizmust is szükséges a webhook-végpontot a 200-as HTTP-állapotkódot adja vissza, így az tudni fogja, hogy a bejegyzés az érvényesítési esemény előtt elhelyezheti a manuális érvényesítési módban elfogadták-e. Más szóval ha a végpont 200 adja vissza, de nem adott vissza vissza érvényesítési választ programozott módon, a mód továbbítjuk a manuális érvényesítési módban. Ha egy GET érvényesítési URL-jének 5 percen belül, az érvényesítési kézfogás számít sikeres legyen.
 
 ### <a name="validation-details"></a>Az érvényesítés részletei
 

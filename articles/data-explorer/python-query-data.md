@@ -3,17 +3,17 @@ title: 'Gyors útmutató: Adatok lekérdezése az Azure Data Explorer Python-kó
 description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan kérdezhet le adatokat az Azure Data Explorerből a Python használatával.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: f3a8dd001f4d1d930c700847f0725e00b7c29ecf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 60e51ba42bddd97c8663a035a29b2ff4880acd8c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715117"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758611"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>Gyors útmutató: Adatok lekérdezése az Azure Data Explorer Python-kódtár használatával
 
@@ -98,4 +98,4 @@ Meg kell jelennie a StormEvents táblában szereplő első tíz eredménynek.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+> [Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)

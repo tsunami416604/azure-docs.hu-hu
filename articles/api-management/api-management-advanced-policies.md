@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d3bc50e1578704de029d53c0b1eaa21e74182cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401919"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756629"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
 
@@ -253,7 +253,7 @@ Ez a művelet-szintű szabályzat nem továbbítja a kérelmeket a háttérszolg
 
 | Attribútum                               | Leírás                                                                                                      | Szükséges | Alapértelmezett     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="integer"                       | Az időkorlát másodpercben a háttérszolgáltatás hívása előtt sikertelen lesz. Minimális értéke 0 másodpercet. Maximális érték: 240 másodperc.| Nem       | 240 másodperc |
+| timeout="integer"                       | Mennyi ideig kell várni az időtúllépési hiba előtt a háttérszolgáltatás által visszaadott HTTP-válaszfejlécek másodpercek alatt jelenik meg. Minimális értéke 0 másodpercet. Több mint 240 másodperc nem lehet figyelembe venni, mint az alapul szolgáló hálózati infrastruktúrát értékek tétlen kapcsolatok dobhatja el ezt az időpontot követően. | Nem       | None |
 | follow-redirects="true &#124; false"    | Itt adhatja meg, hogy a háttérszolgáltatásból átirányítja az átjáró követ vagy vissza a hívónak.      | Nem       | false       |
 | kéréstörzs puffer = "true &#124; false" | Ha értéke "true" kérelem pufferelve van-e, és fogja használni a [újra](api-management-advanced-policies.md#Retry). | Nem       | false       |
 

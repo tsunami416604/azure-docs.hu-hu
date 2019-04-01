@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864298"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757762"
 ---
 # <a name="learn-text-moderation-concepts"></a>Ismerje meg a szöveg moderálása fogalmak
 
@@ -26,7 +26,7 @@ A szolgáltatás válasza az alábbi információkat tartalmazza:
 
 - Káromkodás: kifejezés alapú egyezéseit profán feltételek különböző nyelvű beépített listája
 - : Besorolási három kategóriába sorolhatók gépi támogatású besorolás
-- Személyes azonosításra alkalmas adatok (PII)
+- Személyes adatok
 - Automatikusan kijavíthatók szöveg
 - Eredeti szöveg
 - Nyelv
@@ -75,7 +75,7 @@ A következő kivonatot a JSON-kivonat látható egy példa a kimenetre:
 - `Score` 0 és 1 között van. Minél nagyobb a pontszám, annál nagyobb a modell becslése, hogy a kategóriához lehet alkalmazni. Ez a szolgáltatás manuálisan kódolt kimenetek helyett egy statisztikai modellt használ. Azt javasoljuk, hogy a saját határozza meg, hogyan az egyes kategóriák az igényeinek megfelelően igazítja a tartalmat a teszteléshez.
 - `ReviewRecommended` IGAZ vagy hamis attól függően, a belső pontszám küszöbértékek. Ügyfelek fel kell mérnie, hogy e használja ezt az értéket, vagy hozza meg, a tartalom házirendek alapján egyedi küszöbértékeket.
 
-## <a name="personally-identifiable-information-pii"></a>Személyes azonosításra alkalmas adatok (PII)
+## <a name="personal-data"></a>Személyes adatok
 
 A személyazonosításra alkalmas adatok funkció észleli a potenciális jelenléte ezt az információt:
 

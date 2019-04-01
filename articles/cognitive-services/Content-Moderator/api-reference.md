@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: a6bd92a675885cb343b07ef981c38571af0a931c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862462"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756063"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API-referencia
 
@@ -31,7 +31,7 @@ A következő Content Moderator API-k segítségével a jóváhagyás utáni mun
 | Leírás | Leírások |
 | -------------------- |-------------|
 | **Képmoderálási API**<br /><br />Kiszűrhető, és észleli a potenciális felnőtt és szexuális tartalom címkék, megbízhatósági pontszámokat és egyéb kinyert információkat. <br /><br />Ezen információk használatával közzététele, elvetése, vagy tekintse át a tartalmat a jóváhagyás utáni munkafolyamat. <br /><br />| [Moderálási API-referencia a kép](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c "kép moderálási API-referencia")   |
-| **Szövegmoderálási API**<br /><br />Szöveges tartalom vizsgálata. Visszaadja a vulgáris feltételeket és a személyes azonosításra alkalmas adatokat (PII). <br /><br />Ezen információk használatával közzététele, elvetése, vagy tekintse át a tartalmat a jóváhagyás utáni munkafolyamat.<br /><br /> | [Szöveg moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "szöveg moderálási API-referencia")   |
+| **Szövegmoderálási API**<br /><br />Szöveges tartalom vizsgálata. Visszaadja a vulgáris feltételeket és a személyes adatok. <br /><br />Ezen információk használatával közzététele, elvetése, vagy tekintse át a tartalmat a jóváhagyás utáni munkafolyamat.<br /><br /> | [Szöveg moderálási API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f "szöveg moderálási API-referencia")   |
 | **Videomoderálási API**<br /><br />Videók vizsgálata, valamint észlelheti a potenciális felnőtt és szexuális tartalom. <br /><br />Ezen információk használatával közzététele, elvetése, vagy tekintse át a tartalmat a jóváhagyás utáni munkafolyamat.<br /><br /> | [Áttekintő videó moderálási API](video-moderation-api.md "videó moderálási API – áttekintés")   |
 | **Lista felügyeleti API**<br /><br />Létrehozhat és kezelhet, képek és szöveg kizárási és belefoglalási egyedi listákkal. Ha engedélyezve van, a **kép – megfelelő** és **szöveg – a képernyő** operations tegye, hogy a beküldött tartalmat összeveti az egyedi listákkal intelligens megfelelő. <br /><br />A hatékonyság kihagyhatja a machine learning-alapú moderálás lépés.<br /><br /> | [Felügyeleti API-referencia listában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "lista felügyeleti API-referencia")   |
 

@@ -1,21 +1,21 @@
 ---
-title: Duplikált adatok kezelése
+title: A duplikált adatok kezelése
 description: Ez a témakör bemutatja, különböző módjait a duplikált adatok kezelése
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: f417ba7d0fcd6f9d6b5bd6cd43cf1730af2ca53c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028485"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756362"
 ---
-# <a name="deal-with-duplicate-data"></a>Duplikált adatok kezelése
+# <a name="deal-with-duplicate-data"></a>A duplikált adatok kezelése
 
 A felhőbe történő adatküldés eszközök kezelése az adatok a helyi gyorsítótárat. Az adatok méretétől függően a helyi gyorsítótár sikerült tárolja az adatokat napokat vagy akár hónapok. Küldje el újra a gyorsítótárazott adatok, és az analitikai adatbázis okozhat az adatdeduplikáció nem megfelelően működő eszközökre az analitikai adatbázisok védelme érdekében szeretné. Ez a témakör ismerteti az ajánlott eljárások az ilyen típusú forgatókönyvek duplikált adatok kezelésének alapelveit.
 

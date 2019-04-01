@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cecfd0fafd17e9c463e0c0a74f1e30290a53d82f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813891"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758209"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások a Postman konfigurálása
 
@@ -89,6 +89,13 @@ Mielőtt elkezdené az AMS v3 erőforrások kezelésére szolgáló, és állít
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="see-also"></a>Lásd még
+
+- [Fájlok feltöltése Media Services-fiók – REST](upload-files-rest-how-to.md)
+- [Szűrők létrehozása a Media Services – REST](filters-dynamic-manifest-rest-howto.md)
+- [Azure Resource Manager-alapú REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
+
 ## <a name="next-steps"></a>További lépések
 
-[REST-tel fájlok Stream](stream-files-tutorial-with-rest.md).  
+- [REST-tel fájlok Stream](stream-files-tutorial-with-rest.md).  
+- [Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

@@ -1,6 +1,6 @@
 ---
-title: Az IoT device vizsgálat útmutató előzetes ASC |} A Microsoft Docs
-description: Ennek módjáról útmutató ismerteti, hogyan ASC IOT segítségével egy gyanús IoT-eszközzel a Log Analytics.
+title: Azure Security Center az IoT device vizsgálat útmutató előzetes verzió |} A Microsoft Docs
+description: Ennek módjáról útmutató ismerteti, hogyan segítségével egy gyanús IoT-eszközzel a Log Analytics az Azure Security Center az IoT.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 032315d1b618b9716e23c8433c6ec1bf64b7e77d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6097954e09d5fd62c45f59b009d974d277bafc57
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580538"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755240"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Vizsgálja meg a gyanús IoT-eszköz
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az IoT a szolgáltatás értesítéseinek és bizonyíték ASC egyértelmű jelzések szolgáltatni IoT-eszközök gyanús bevonása a gyanús tevékenységek, vagy ha jelzések léteznek, hogy egy eszköz biztonsága sérül. 
+Azure Security Center (ASC) az IoT a szolgáltatás értesítéseinek és bizonyíték egyértelmű jelzések szolgáltatni IoT-eszközök gyanús bevonása a gyanús tevékenységek, vagy ha jelzések léteznek, hogy egy eszköz biztonsága sérül. 
 
 Ebben az útmutatóban használja az határozza meg az esetleges kockázatokat a szervezet számára, annak eldöntése, hogyan javíthatja és hasonló támadások megelőzése, a jövőben miként segítik a vizsgálat javaslatokat.  
 

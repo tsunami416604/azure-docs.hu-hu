@@ -1,6 +1,6 @@
 ---
-title: Gyakran ismételt kérdések az ASC for IoT-előzetes verzió |} A Microsoft Docs
-description: Keresse meg a válaszokat a leggyakoribb kapcsolatos gyakori kérdések az ASC IoT-szolgáltatások és a szolgáltatás.
+title: Gyakran ismételt kérdések az Azure Security Center for IoT-előzetes verzió |} A Microsoft Docs
+description: Keresse meg a válaszokat a leggyakoribb kapcsolatos gyakori kérdések az Azure Security Center IoT-szolgáltatások és a szolgáltatás.
 services: ASCforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: dab30a03ff73664fde4e5377794d3ae00625af93
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575147"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755324"
 ---
-# <a name="asc-for-iot-frequently-asked-questions"></a>Az IoT ASC – gyakori kérdések  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Az Azure Security Center az IoT – gyakori kérdések  
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk az IoT ASC kapcsolatos gyakori kérdések és válaszok listáját tartalmazza. 
+Ez a cikk gyakori kérdéseket és válaszokat kapcsolatban az Azure Security Center (ASC) listáját az IoT. 
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Nem Azure-támogatást nyújt IoT-biztonság?
 

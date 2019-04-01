@@ -4,7 +4,7 @@ description: Hogyan felvértezni a szolgáltatások szabályos és végbemenjen 
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051914"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667208"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
 A testability alkalmazási helyzetek, az Azure Service Fabric lehetővé teszi a fejlesztőknek, nem kell többé vesződnie a sérült egyes hibák foglalkoznia. Vannak helyzetek, azonban, ahol explicit kihagyásos ügyfél számítási feladatok és a hibák akkor lehet szükség. Ügyfél számítási feladatok és hibák kihagyásos biztosítja, hogy a szolgáltatás ténylegesen működik valamilyen művelet során hiba történik. Adja meg a szabályozás, amely testability biztosít, ilyenek lehetnek a számítási feladatok végrehajtásának pontos időpontokban. A hibák, az alkalmazás különböző állapoton indukciós megkeresheti a hibák és minőségének javítására.
@@ -27,12 +27,12 @@ A testability alkalmazási helyzetek, az Azure Service Fabric lehetővé teszi a
 ## <a name="sample-custom-scenario"></a>Egyéni mintaforgatókönyv
 Ez a vizsgálat jeleníti meg az olyan forgatókönyvekben, amelyek az üzleti számítási feladat interleaves [szabályos és végbemenjen hibák](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). A hibák lehet elérni, a középső szolgáltatási műveletek vagy számítási a legjobb eredmények elérése érdekében.
 
-Egy szolgáltatás, amely négy számítási feladatok példán keresztül mutatja be: A, B, C és D. egyes megfelel a munkafolyamatok és a számítási, tárolási vagy vegyesen lehet. Az egyszerűség kedvéért azt fogja absztrakt ki a számítási feladatok ebben a példában. Az ebben a példában végrehajtott különböző hibák a következők:
+Vegyük végig egy szolgáltatás, amely négy számítási feladatokat egy példát: A, B, C és a d Minden egyes munkafolyamatok megfelel, és lehet, számítási, tárolási vagy vegyesen. Az egyszerűség kedvéért azt fogja absztrakt ki a számítási feladatok ebben a példában. Az ebben a példában végrehajtott különböző hibák a következők:
 
 * RestartNode: Végbemenjen tartalék szimulálva egy gép újraindítása.
 * RestartDeployedCodePackage: Végbemenjen hiba szimulálása a szolgáltatás gazdagép-folyamat leáll.
 * RemoveReplica: Sikeres-e hiba szimulálása a replika eltávolítását.
-* A MovePrimary: Sikeres-e hiba szimulálása a replika helyezi a Service Fabric terheléselosztó által kiváltott.
+* A MovePrimary: Sikeres-e hiba szimulálása a replika áthelyezését váltja ki, a Service Fabric terheléselosztó.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

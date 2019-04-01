@@ -1,6 +1,6 @@
 ---
-title: Az IoT biztonsági ügynök architektúra előzetes ASC ismertetése |} A Microsoft Docs
-description: Ismerje meg, az ügynökök az IoT-szolgáltatást az ASC használt biztonsági ügynök architektúra.
+title: Understanding Azure Security Center az IoT biztonsági ügynök architektúra előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, az ügynökök az Azure Security Center az IoT-szolgáltatáshoz használt biztonsági házirendügynök-architektúra.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81054e95b9f712262fe5fa46453749b54a7ac24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 83ac2fd1d322dc3fb3c04cdf44d560c392320f91
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651397"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754180"
 ---
 # <a name="security-agent-reference-architecture"></a>Biztonsági ügynök a referencia-architektúra
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-ASC IOT referenciaarchitektúra naplózni, feldolgozásához, összesített és küldése az IoT hubon keresztül a biztonsági adatok biztonsági ügynökök biztosít.
+Az Azure Security Center (ASC) az IoT referenciaarchitektúra biztosít a naplózása, feldolgozása, összesített és küldése az IoT hubon keresztül a biztonsági adatok biztonsági ügynökök.
 
 Biztonsági ügynökök tervezték, hogy korlátozott IoT-környezetben működik, és nagymértékben testre szabhatók, adja meg a erőforrásokért képest értékek szempontjából.
 

@@ -1,6 +1,6 @@
 ---
-title: ASC megismerheti az IoT biztonsági javaslatok előzetes verzió |} A Microsoft Docs
-description: Ismerje meg a biztonsági javaslatok és a használatuk az ASC IOT fogalmát.
+title: Az IoT biztonsági javaslatok megtekintése az Azure Security Center megismerése |} A Microsoft Docs
+description: Ismerje meg a biztonsági javaslatok és azok hogyan használhatók az Azure Security Centerben az IoT fogalmát.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 9204bf864ca915baaf6d107ef3586bcd02ed9fef
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576197"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754821"
 ---
 # <a name="security-recommendations"></a>Biztonsági javaslatok
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az IoT ASC megvizsgálja az Azure-erőforrások és az IoT-eszközök, és biztosítja a biztonsági javaslatok a támadási felület csökkentése érdekében. Biztonsági javaslatok gyakorlatban is használható, és a célja, hogy a megfelelő ajánlott biztonsági eljárások az ügyfelek támogatási.
+Az Azure Security Center (ASC) az IoT megvizsgálja az Azure-erőforrások és az IoT-eszközök, és biztosítja a biztonsági javaslatok a támadási felület csökkentése érdekében. Biztonsági javaslatok gyakorlatban is használható, és a célja, hogy a megfelelő ajánlott biztonsági eljárások az ügyfelek támogatási.
 
 Ebben a cikkben található javaslatok, amely akkor aktiválódik a az IoT Hub és/vagy IoT-eszközök listáját.
 

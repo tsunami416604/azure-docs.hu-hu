@@ -3,16 +3,16 @@ title: Oktatóanyag – Azure Kubernetes Service (AKS) a jenkins-szel való üze
 description: Állítsa be a Jenkins folyamatos integrációs (CI) a GitHub és a folyamatos készregyártás (CD) az Azure Kubernetes Service (AKS)
 services: container-service
 ms.service: container-service
-author: iainfoulds
-ms.author: iainfou
+author: zr-msft
+ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 470ba6df76741dd5c9e9eed055cd7848d341082f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188453"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756078"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról, az Azure Kubernetes Service (AKS) a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -227,15 +227,15 @@ Kattintson a **OK** és térjen vissza a Jenkins portálon.
 A Jenkins portálra a kezdőlapon, válassza ki a **új elem** a bal oldalon:
 
 1. Adja meg *azure-vote* feladat neveként. Válasszon **Freestyle project**, majd **OK**
-1. A **General** (Általános) szakaszban válassza ki a **GitHub project** (GitHub-projekt) lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/\<your-github-account\>/azure-voting-app-redis*
-1. A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/\<your-github-account\>/azure-voting-app-redis.git*
+1. Alatt a **általános** szakaszban jelölje be **GitHub-projekt** , és adja meg az elágaztatott adattár URL-CÍMÉT, például *https:\//github.com/\<– github-fiók\>/azure-voting-app-redis*
+1. Alatt a **Source code management** szakaszban jelölje be **Git**, adja meg az elágaztatott *.git* URL-CÍMÉT, például *https:\//github.com/\<a github-fiók\>/azure-voting-app-redis.git*
 
 1. Alatt a **hozhat létre eseményindítókat** szakaszban jelölje be **GitHub hook trigger for GITscm lekérdezés**
 1. Alatt **környezetet hozhat létre**válassza **titkos szövegek vagy fájlok használata**
 1. Alatt **kötések**, jelölje be **Hozzáadás** > **felhasználónév és jelszó (elválasztva)**
-    - Adja meg `ACR_ID` számára a **felhasználónév-változó**, és `ACR_PASSWORD` számára a **Jelszóváltozó**
+   - Adja meg `ACR_ID` számára a **felhasználónév-változó**, és `ACR_PASSWORD` számára a **Jelszóváltozó**
 
-    ![A Jenkins-kötések](media/aks-jenkins/bindings.png)
+     ![A Jenkins-kötések](media/aks-jenkins/bindings.png)
 
 1. Hozzáadhat egy **összeállítása lépés** típusú **hajtsa végre a rendszerhéj** és használja a következő szöveget. Ez a szkript összeállít egy új tárolórendszerképet, majd leküldi azt az ACR-beállításjegyzékbe.
 

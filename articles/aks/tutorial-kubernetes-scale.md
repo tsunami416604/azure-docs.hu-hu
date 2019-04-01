@@ -2,18 +2,18 @@
 title: Azure-on futó Kubernetes oktatóanyag – Alkalmazások skálázása
 description: Ebben az Azure Kubernetes Service-hez (AKS-hez) tartozó oktatóanyagban megismerheti, hogyan skálázhat csomópontokat és podokat a Kubernetesben, és hogyan valósíthatja meg a podok horizontális felskálázását.
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 8d07c87a1849a25738c433b7a4c2753b51661947
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 884797d7a81418b7a57659df9f5075b82205aa9c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722719"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757726"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)
 

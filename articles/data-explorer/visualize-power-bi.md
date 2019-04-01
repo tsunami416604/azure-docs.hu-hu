@@ -1,23 +1,23 @@
 ---
-title: Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
+title: 'Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése'
 description: Ebben az oktatóanyagban megtanulhatja, hogyan csatlakoztathatja az Azure Data Explorert a Power BI-hoz, és hogyan jelenítheti meg az adatait.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f253911c1830e606dd47b64aaea1f17cb3478cd5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854101"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757743"
 ---
-# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
+# <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket. Ebben az oktatóanyagban először elsajátíthatja a vizualizációk az Azure Data Explorerben történő renderelését. Ezután csatlakoztathatja az Azure Data Explorert a Power BI-hoz, létrehozhat egy jelentést mintaadatok alapján, majd közzéteheti a jelentést a Power BI szolgáltatásban.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket. Ebben az oktatóanyagban először elsajátíthatja a vizualizációk az Azure Data Explorerben történő renderelését. Ezután csatlakoztathatja az Azure Data Explorert a Power BI-hoz, létrehozhat egy jelentést mintaadatok alapján, majd közzéteheti a jelentést a Power BI szolgáltatásban.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. Ha nem regisztrált a Power BI Próra, a kezdés előtt [regisztráljon az ingyenes próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web).
 

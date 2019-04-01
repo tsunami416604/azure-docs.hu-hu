@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 0d4689e35cd308478ae0c0154761534dd834f146
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 34a967640ec039727e8947e865eeff1f5fef4649
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482334"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758584"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése a Service Fabric
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Docker-tárolók előre összeállított rendszerképeit egy Service Fabric-alkalmazásban. Ha elkészült, rendelkezni fog egy futó Windows Server 2016 Nano Server- és IIS-tárolóval. Ez a rövid útmutató a Windows-tárolók üzembe helyezését mutatja be. A Linux-tárolók üzembe helyezését lásd [ebben a rövid útmutatóban](service-fabric-quickstart-containers-linux.md).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe a Docker-tárolók előre összeállított rendszerképeit egy Service Fabric-alkalmazásban. Ha a elkészült, rendelkezni fog egy futó Windows Server Core 2016-kiszolgáló és az IIS-tárolóval. Ez a rövid útmutató a Windows-tárolók üzembe helyezését mutatja be. A Linux-tárolók üzembe helyezését lásd [ebben a rövid útmutatóban](service-fabric-quickstart-containers-linux.md).
 
 ![Az IIS alapértelmezett webhelye][iis-default]
 
@@ -54,7 +54,7 @@ Válassza a **Service Fabric application** (Service Fabric-alkalmazás) lehetős
 
 A **Hosted Containers and Applications** (Üzemeltetett tárolók és alkalmazások) sablonokból válassza a **Container** (Tároló) elemet.
 
-A **Rendszerkép neve** mezőbe írja be a „microsoft/iis:nanoserver” karaktersort, amely a [Windows Server Nano Server- és IIS-alaprendszerképet](https://hub.docker.com/r/microsoft/iis/) jelöli.
+A **Lemezképnév**, adja meg a "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016", a [Windows Server Core-kiszolgáló és az IIS-alaprendszerképet](https://hub.docker.com/r/microsoft-windows-servercore-iis).
 
 Konfigurálja úgy a tárolóport–gazdagépport leképezést, hogy a szolgáltatáshoz a 80-as porton beérkező kérések a tárolón a 80-as portra legyenek leképezve.  Állítsa a **Tárolóport** beállítást 80, a **Gazdaport** beállítást pedig szintén 80 értékre.  
 
@@ -74,14 +74,14 @@ A Microsoft különböző rendszerképeket tesz közzé a Windows Server külön
     <ContainerHostPolicies CodePackageRef="Code"> 
       <ImageOverrides> 
         ...
-          <Image Name="microsoft/iis:nanoserverDefault" /> 
-          <Image Name= "microsoft/iis:nanoserver" Os="14393" /> 
-          <Image Name="microsoft/iis:windowsservercore-1709" Os="16299" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1803" /> 
+          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" Os="14393" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1709" Os="16299" /> 
       </ImageOverrides> 
     </ContainerHostPolicies> 
 ```
 
-A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `microsoft/iis:nanoserver`.
+A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016`.
 
 A a *ApplicationManifest.xml* fájl, módosítsa **PasswordEncrypted** való **hamis**. A nyilvános tárolórendszerképet a Docker hubon, az, hogy kapcsolja ki a titkosítás, mert üres jelszóval titkosított hoz létre egy összeállítási hiba van a fiókkal és jelszóval üresek.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 039ef05f7c0cbb9809a51efc3deef978e2970cf4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1913cf8d5fa367cc97dfac0a1ecfdf1edf06e298
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224566"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758657"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön
 
@@ -128,7 +128,7 @@ A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati
 Ha az Azure IoT Edge Ubuntu virtuális gép használ, az Előfeltételek leírtak szerint, majd az eszköz már telepítve van az IoT Edge-futtatókörnyezet. Csak az eszköz konfigurálásához az eszköz kapcsolati karakterlánccal, amely az előző szakaszban lekért kell. Ehhez távolról csatlakozhat a virtuális géphez nélkül. Futtassa a következő parancsot, és cserélje le **{device_connection_string}** saját karakterlánccal.
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
 IoT Edge futtatásakor a helyi számítógépre vagy egy ARM32 eszközön, az eszközön az IoT Edge-futtatókörnyezet és előfeltételei telepíteni szeretné. Kövesse a [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) vagy [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md), majd térjen vissza ehhez a rövid.

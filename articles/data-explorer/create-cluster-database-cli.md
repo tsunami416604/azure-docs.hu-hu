@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan hozhat létre Azure Data Explorer fürt és ada
 services: data-explorer
 author: radennis
 ms.author: radennis
-ms.reviewer: orspod
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 3/25/2019
-ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 852eb32611f526c6fae4898d2bc85cac0859498f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418652"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758426"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 
@@ -25,7 +25,7 @@ ms.locfileid: "58418652"
 > * [Python](create-cluster-database-python.md)
 >
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürt és a egy adatbázist az Azure parancssori felület használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürt és a egy adatbázist az Azure parancssori felület használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

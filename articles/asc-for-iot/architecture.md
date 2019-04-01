@@ -1,6 +1,6 @@
 ---
-title: Az IoT-megoldásarchitektúra előzetes ASC ismertetése |} A Microsoft Docs
-description: Ismerje meg a folyamatot, az IoT-szolgáltatás az ASC információt.
+title: Tudnivalók az Azure Security Center az IoT-megoldásarchitektúra előzetes verzió |} A Microsoft Docs
+description: Ismerje meg az Azure Security Center az IoT-szolgáltatás az adatok áramlása látható.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d70be919fa829401b4a415db626a3cee0713753b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541902"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754986"
 ---
-# <a name="asc-for-iot-architecture"></a>ASC az IoT-architektúra
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center az IoT-architektúra
 
-Ez a cikk ismerteti az Azure Security Center az IoT-megoldás működési rendszer architektúrájával. 
+Ez a cikk ismerteti a működési rendszer-architektúra, az Azure Security Center (ASC) az IoT-megoldás. 
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="asc-for-iot-components"></a>ASC IoT-összetevők

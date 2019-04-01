@@ -1,21 +1,21 @@
 ---
-title: 'Gyors útmutató: SQL-lekérdezést használja a Power bi-ban adatok megjelenítése'
+title: 'Gyors útmutató: Adatok megjelenítése Power BI-ban egy SQL-lekérdezés használatával'
 description: 'Ebben a rövid útmutató az adatok a Power bi-ban az a három lehetőség közül: egy Azure Data Explorer-fürtöt egy SQL-lekérdezést.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977284"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756344"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Az Azure Data Explorer-összekötő használata a Power bi az adatok megjelenítése
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket.
 
@@ -51,7 +51,7 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
 
     **Beállítás** | **Érték** | **Mező leírása**
     |---|---|---|
-    | Kiszolgáló | *help.kusto.Windows.NET* | A súgófürtben URL-CÍMÉT (nélkül *https://*). Egyéb fürtök esetében az URL-cím szerepel az űrlap  *\<ClusterName\>.\< Régió\>. kusto.windows.net*. |
+    | Kiszolgáló | *help.kusto.windows.net* | A súgófürtben URL-CÍMÉT (nélkül *https://*). Egyéb fürtök esetében az URL-cím szerepel az űrlap  *\<ClusterName\>.\< Régió\>. kusto.windows.net*. |
     | Adatbázis | *Példák* | A minta a fürtön futó adatbázis, amelyhez csatlakozik. |
     | Adatkapcsolati mód | *Importálás* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. Mindkét módszerhez ezzel az összekötővel. |
     | Parancs időkorlátja | Hagyja üresen | Mennyi ideig a lekérdezés előtt fut, egy időtúllépési hibát jelez. |
@@ -69,7 +69,7 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
 
     ![Bejelentkezés](media/power-bi-sql-query/sign-in.png)
 
-1. Az a **help.kusto.windows.net: minták** képernyőn válassza ki **terhelés**.
+1. Az a **help.kusto.windows.net: A minták** képernyőn válassza ki **terhelés**.
 
     ![Adatok betöltése](media/power-bi-sql-query/load-data.png)
 
@@ -86,4 +86,4 @@ Ha már nincs szüksége a létrehozott jelentés ebben a rövid, törölje a Po
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Power BI-ban az importált lekérdezéssel adatok megjelenítése](power-bi-connector.md)
+> [Rövid útmutató: Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-connector.md)

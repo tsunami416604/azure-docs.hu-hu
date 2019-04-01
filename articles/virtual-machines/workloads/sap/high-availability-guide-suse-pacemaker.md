@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487364"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755720"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -84,7 +84,7 @@ Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek**.
 
 Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek** a fürtök, az SAP-rendszerek által használt iSCSI-lemezek létrehozásához. A következő példában több fürt SBD eszközök jönnek létre. Ez bemutatja, hogyan szeretné használni egy iSCSI-tárolókiszolgáló több fürthöz. Az operációsrendszer-lemez a SBD eszközök kerülnek. Győződjön meg arról, hogy rendelkezik-e elegendő lemezterület.
 
-**az NFS** azonosítja az NFS-fürt **ascsnw1** azonosítja az ASCS fürt **NW1**, **dbnw1** azonosítja az adatbázis fürtben **NW1**, **nfs-0** és **nfs-1** NFS fürtcsomópont a gazdanevek vannak **nw1-xscs-0** és  **nw1-xscs-1** , a gazdanevek vannak a **NW1** ASCS fürt csomópontjai, és **nw1-db-0** és **nw1-db-1** az adatbázis a gazdanevek vannak fürtcsomópontok. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
+**` nfs`** az NFS-fürt azonosítására használt **ascsnw1** azonosítja az ASCS fürt **NW1**, **dbnw1** azonosítja az adatbázis fürt **NW1** , **nfs-0** és **nfs-1** NFS fürtcsomópont a gazdanevek vannak **nw1-xscs-0** és **nw1-xscs-1**, a gazdanevek vannak a **NW1** ASCS fürt csomópontjai, és **nw1-db-0** és **nw1-db-1** a gazdanevek, az adatbázis-fürtcsomópontok vannak. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   A softdog konfigurációs fájl létrehozása
+   Hozzon létre a ` softdog` konfigurációs fájl
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -346,6 +346,18 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    # Change/set the following settings
    vm.dirty_bytes = 629145600
    vm.dirty_background_bytes = 314572800
+   </code></pre>
+
+1. **[A]**  Konfigurálása azure-felhő-netconfig magas rendelkezésre ÁLLÁS-fürthöz
+
+   Módosítsa a konfigurációs fájlt a hálózati adapter, megakadályozza, hogy a felhő hálózati beépülő modul a virtuális IP-cím (támasztja kell szabályozhatja a virtuális IP-cím-hozzárendelés) eltávolítása az alább látható módon. További információ: [SUSE KB-os 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+
+   <pre><code># Edit the configuration file
+   sudo vi /etc/sysconfig/network/ifcfg-eth0 
+   
+   # Change CLOUD_NETCONFIG_MANAGE
+   # CLOUD_NETCONFIG_MANAGE="yes"
+   CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
 1. **[1]**  Ssh hozzáférés engedélyezése

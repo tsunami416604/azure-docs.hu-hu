@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837235"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754562"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>Az egyéni átalakítási kódolása a .NET-keretrendszerrel
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Az egyéni átalakítási – .NET kódolása
 
 Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-tutorial-with-api.md) oktatóanyag. Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek is létrehozható.
 

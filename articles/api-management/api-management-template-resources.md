@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c52565403c7fbc80eacbf65428863db07d634030
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897282"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757585"
 ---
 # <a name="azure-api-management-template-resources"></a>Az Azure API Management-sablon erőforrásainak
 Az Azure API Management biztosít a következő típusú erőforrásokat használja, a fejlesztői portál sablonjainak.  
@@ -45,6 +45,29 @@ Az Azure API Management biztosít a következő típusú erőforrásokat haszná
   
 ```  
   
+A következő honosítási beállítások támogatottak:
+
+| Területi beállítás    | Nyelv               |
+|-----------|------------------------|
+| „hu”      | "Angol"              |
+| "cs"      | "Čeština"              |
+| "de"      | "Deutsch"              |
+| "es"      | "Español"              |
+| "fr"      | "Franciaország"             |
+| "hu"      | "Magyar"               |
+| ""      | "Italiano"             |
+| "ja-JP"   | "日本語"                |
+| "ko"      | "한국어"                |
+| "nl"      | "Nederlands"           |
+| "pl."      | "Polski"               |
+| "pt-br"   | "Portugál (Brazília)"   |
+| "pt-pt"   | "Portugál (Portugália)" |
+| "ru"      | "Русский"              |
+| "sv"      | "Svenska"              |
+| "tr"      | "Türkçe"               |
+| "zh-hans" | "中文(简体)"           |
+| "zh-hant" | "中文(繁體)"           |
+
  Tekintse meg a következő táblákat használható a fejlesztői portál sablonjainak erőforrásait. A tábla neve a karakterlánc-erőforrásokat, az adott tábla előtagot használja.  
   
 -   [ApisStrings](#ApisStrings)  

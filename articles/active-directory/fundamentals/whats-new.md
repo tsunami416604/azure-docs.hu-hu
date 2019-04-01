@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b56ad57255f07c93c1bf5f981db07ad4ba57806d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5077f09cba3548b03045011a7b8f16844156de55
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665661"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757645"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -147,7 +147,7 @@ További információ az új **Auditnaplók** lapon találhat [naplózott tevék
 **Szolgáltatás kategóriája:** Feltételes hozzáférés  
 **A termék szolgáltatás:** Identitásbiztonság és -védelem
 
-Megakadályozza, hogy a rendszergazdák véletlenül zárolás maguk ki saját bérlők helytelenül konfigurált feltételes hozzáférési házirendek érdekében létrehoztuk az Azure portal új figyelmeztetések és a frissített útmutatást. Az új útmutató kapcsolatos további információkért lásd: [függőségei Mik az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
+Megakadályozza, hogy a rendszergazdák véletlenül zárolás maguk ki saját bérlők helytelenül konfigurált feltételes hozzáférési házirendek érdekében létrehoztuk az Azure portal új figyelmeztetések és a frissített útmutatást. Az új útmutató kapcsolatos további információkért lásd: [függőségei Mik az Azure Active Directory feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
 ---
 

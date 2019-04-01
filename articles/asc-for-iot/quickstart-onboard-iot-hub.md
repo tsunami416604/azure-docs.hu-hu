@@ -1,6 +1,6 @@
 ---
-title: IoT-szolgáltatás IoT Hub előzetes verzióban érhető el az ASC engedélyezése |} A Microsoft Docs
-description: Ismerje meg az IoT hub IoT-szolgáltatást az ASC engedélyezése.
+title: IoT-szolgáltatás IoT Hub előzetes verzióban érhető el az Azure Security Center |} A Microsoft Docs
+description: Ismerje meg, hogyan engedélyezhető az Azure Security Center az IoT hub IoT-szolgáltatás.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: cea7517a99358d41a8ba60a78b4e2bfdbdeaf0e8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: cb89bb4316b1cd62b3b42a6a0fa05a9fa4513e54
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576224"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754320"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk az ASC az IoT hub IoT-előzetes szolgáltatás engedélyezése a magyarázattal szolgál.  
+Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás engedélyezése a magyarázattal szolgál.  
 
 > [!NOTE]
-> ASC IOT jelenleg csak a standard szintű és a magasabb szintű IoT-központok támogatja.
->ASC az IoT hub egyetlen megoldás is. Ha több van szüksége, több megoldás szükség. 
+> Az Azure Security Center az IoT jelenleg csak a standard szintű és a magasabb szintű IoT-központok támogatja.
+> Az Azure Security Center az IoT hub egyetlen megoldás is. Ha több van szüksége, több megoldás szükség. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezéséhez szükséges előfeltételek
 

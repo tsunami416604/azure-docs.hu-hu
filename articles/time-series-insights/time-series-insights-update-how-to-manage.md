@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094854"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758184"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Üzembe helyezése és kezelése az Azure Time Series Insights előzetes verziója
 
@@ -33,7 +33,7 @@ Amikor üzembe helyezi az Azure Time Series Insights – előzetes környezet, h
 Ismerje meg, [a környezet tervezésével](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Egy v2 fiókot használja, ha nem engedélyezi a tárfiókot fogja használni, a ritka elérésű vagy archív tulajdonságait.
+> Az előzetes verzióra, ellenőrizze, hogy használja az Azure Storage általános célú v1 (GPv1-) fiókkal.  A GPv2 és újabb verziók fogja támogatni a közeljövőben.  
 
 Szükség esetén az egyes Azure Time Series Insights – előzetes környezetekben is társíthat eseményforrás. További információkért olvassa el [adja hozzá a hub eseményforrást](./time-series-insights-how-to-add-an-event-source-eventhub.md) és [egy IoT hub-forrás hozzáadása](./time-series-insights-how-to-add-an-event-source-iothub.md). E lépés során egy időbélyeg ID tulajdonsága és a egy egyedi felhasználói csoport biztosítanak. Ez biztosítja, hogy a környezet férhet hozzá a megfelelő események.
 

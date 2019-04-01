@@ -1,6 +1,6 @@
 ---
-title: ASC megismerheti az IoT-költségek előzetes verzió |} A Microsoft Docs
-description: További információ az IoT, és hogyan vezérelheti őket az ASC kapcsolódó költségeket.
+title: Megismerheti az Azure Security Center az IoT előzetes költségek |} A Microsoft Docs
+description: További információ az Azure Security Center IoT, és hogyan szabályozhatja a költségeket.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e694bb1a121b172fe67fbde0bd956700a75dfe12
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e2822b0f2f665220f215b85800081fa2fa7943f9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580658"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758042"
 ---
-# <a name="pricing-and-associated-costs"></a>Díjszabás és a kapcsolódó költségek
+# <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk ismerteti az ASC IOT díjszabási modell, foglalja össze az összes kapcsolódó költségek, és azt ismerteti, hogyan kezelheti azokat.
+Ez a cikk ismerteti az Azure Security Center (ASC) IoT díjszabási modell, foglalja össze az összes kapcsolódó költségek, és azt ismerteti, hogyan kezelheti azokat.
 
 ## <a name="pricing"></a>Díjszabás
 

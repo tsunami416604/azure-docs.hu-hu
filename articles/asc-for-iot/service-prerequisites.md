@@ -1,6 +1,6 @@
 ---
-title: Az IoT-Előfeltételek előzetes ASC |} A Microsoft Docs
-description: Minden, a részletek szükséges készült IoT-szolgáltatás Előfeltételek ASC használatának első lépései.
+title: Azure Security Center az IoT-Előfeltételek előzetes verzió |} A Microsoft Docs
+description: Minden, a részletek szükséges készült IoT-szolgáltatás Előfeltételek az Azure Security Center használatának első lépései.
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574744"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755093"
 ---
-# <a name="asc-for-iot-prerequisites"></a>Az IoT-Előfeltételek ASC
+# <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center az IoT-Előfeltételek
 
 > [!IMPORTANT]
-> Az IoT ASC jelenleg nyilvános előzetes verzióban érhető el.
+> Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem javasolt éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk az ASC IoT service, a kezdéshez szükséges és alapvető fogalmait bővebben tájékozódhat a szolgáltatás különböző építőelemei magyarázatot. 
+Ez a cikk a különböző építőelemeket, az Azure Security Center (ASC) IoT service, a kezdéshez szükséges és alapvető fogalmait bővebben tájékozódhat a szolgáltatás magyarázattal szolgál. 
 
 ## <a name="minimum-requirements"></a>Minimális követelmények
 

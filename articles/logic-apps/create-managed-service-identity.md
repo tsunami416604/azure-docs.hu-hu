@@ -8,19 +8,21 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 01/22/2019
-ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.date: 03/29/2019
+ms.openlocfilehash: c5fabf37ecc97f8edea437f1628949e45aefde77
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337581"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755706"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
 
 A többi Azure Active Directory (Azure AD) bérlő erőforrásaihoz, és a személyazonosság hitelesítéséhez bejelentkezés nélkül, használja a logikai alkalmazás egy [identitás](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén a Felügyeltszolgáltatás-identitást vagy MSI), nem pedig hitelesítő adatok vagy titkos kulcsok. Az Azure felügyeli ezt az identitást, és segít biztosítani a hitelesítő adatait, mert nincs vagy titkos kulcsok elforgatása. Ez a cikk bemutatja, hogyan állíthat be, és a logikai alkalmazás alapértelmezett felügyelt identitás használatára. Felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
+> A logikai alkalmazás használhatja a felügyelt identitásokból csak a felügyelt identitást támogató összekötőkkel. Jelenleg csak a HTTP-összekötő a felügyelt identitásokból támogatja.
+>
 > Akkor is jelenleg legfeljebb 10 logikai alkalmazások munkafolyamataiba, a rendszer által hozzárendelt felügyelt minden egyes Azure-előfizetésben azonosítók.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -148,7 +150,7 @@ Hozzáférés biztosítása a logikai alkalmazás alapértelmezett felügyelt id
 
 Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt identitás és hozzáférés az erőforráshoz rendelt azt szeretné, hogy az identitáshoz tartozó, mostantól használhatja az identitás a hitelesítéshez. Használhatja például egy HTTP-művelet, így a logikai alkalmazás HTTP-kérelem küldése vagy adott erőforrásra irányuló hívás is. 
 
-1. A logikai alkalmazást, adja hozzá a **HTTP** művelet. 
+1. A logikai alkalmazást, adja hozzá a **HTTP** művelet.
 
 1. Adja meg a szükséges adatokat, hogy a művelet, például a kérés **metódus** és **URI** a hívni kívánt erőforrás helye.
 
@@ -158,7 +160,7 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
 
-1. Válassza a HTTP-művelet **speciális beállítások megjelenítése**. 
+1. Válassza a HTTP-művelet **speciális beállítások megjelenítése**.
 
 1. Az a **hitelesítési** listáról válassza ki **felügyelt identitás**. Miután kiválasztotta a hitelesítés a **célközönség** tulajdonság jelenik meg, amelyen az erőforrás-Azonosítójának alapértelmezett értéke:
 
@@ -176,7 +178,7 @@ Miután beállította a logikai alkalmazás egy rendszer által hozzárendelt id
 
 ## <a name="remove-managed-identity"></a>Távolítsa el a felügyelt identitás
 
-A rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás letiltásához lépésekkel a hasonló hogyan állíthatja be az identitást, az Azure portal, az Azure Resource Manager központi telepítési sablonok vagy az Azure PowerShell használatával. 
+A rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás letiltásához lépésekkel a hasonló hogyan állíthatja be az identitást, az Azure portal, az Azure Resource Manager központi telepítési sablonok vagy az Azure PowerShell használatával.
 
 A logikai alkalmazás törlése, ha az Azure automatikusan eltávolítja a logikai alkalmazás alapértelmezett identitás az Azure ad-ből.
 
@@ -194,7 +196,7 @@ Távolítsa el a rendszer által hozzárendelt felügyelt identitás a logikai a
 
 ### <a name="deployment-template"></a>Központi telepítési sablon
 
-Ha felügyelt identitás a logikai alkalmazás alapértelmezett üzembe helyezés Azure Resource Manager-sablonnal létrehozott, állítsa be a `"identity"` elem `"type"` tulajdonságot `"None"`. Ez a művelet is törli a résztvevő-azonosító az Azure ad-ből. 
+Ha felügyelt identitás a logikai alkalmazás alapértelmezett üzembe helyezés Azure Resource Manager-sablonnal létrehozott, állítsa be a `"identity"` elem `"type"` tulajdonságot `"None"`. Ez a művelet is törli a résztvevő-azonosító az Azure ad-ből.
 
 ```json
 "identity": {

@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312242"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756530"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom szöveges tartalmakat elemezhetC# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Gyors útmutató: A nem kívánt tartalom szöveges tartalmakat elemezhetC#
 
 Ez a cikk ahhoz biztosít információt és kódmintákat, hogy megismerkedhessen a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) használatával. Megtanulhatja, hogyan végezhet szűrést kifejezések alapján, és hogyan osztályozhatja a szöveges tartalmakat az esetlegesen kifogásolható tartalmak moderálása céljából.
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Adja hozzá az alábbi kódot a **Main** metódushoz. A **ScreenText** metódus a legfontosabb művelet. Ennek a metódusnak a paraméterei adják meg, melyik tartalommoderálási művelet megy végbe. Ebben a példában a metódus a következőkre van konfigurálva:
 - Potenciális profanitás észlelése a szövegben.
 - A szöveg normalizálása és a gépelési hibák automatikus javítása.
-- A személyazonosításra alkalmas adatok (IIP), például USA-beli és egyesült királyságbeli telefonszámok, e-mail-címek, USA-beli postacímek észlelése.
+- Észleli a személyes adatok, például az USA és az Egyesült Királyság telefonszámok, e-mail-címeket, és USA levelezési címe.
 - Gépi tanuláson alapuló modellek használata a szöveg három kategóriába való besorolásához.
 
 Ha többet szeretne megtudni arról, mire szolgálnak ezek a műveletek, kattintson a [További lépések](#next-steps) szakaszban található hivatkozásra.

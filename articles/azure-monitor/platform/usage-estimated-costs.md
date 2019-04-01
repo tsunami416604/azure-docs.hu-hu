@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480542"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754245"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>Használat és becsült költségek figyelése
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Figyelési használat és becsült költségek az Azure monitorban
 
 > [!NOTE]
 > Ez a cikk ismerteti a használat és becsült költségek megtekintése eltérő díjszabási modelleket a több Azure figyelési szolgáltatások között.  További kapcsolódó információt a következő cikkekben talál.
-> - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](../../azure-monitor/platform/manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
+> - [Költségek kezelése a Log Analytics és az adatmennyiség szabályozásával](manage-cost-storage.md) azt ismerteti, hogyan tarthatja a költségeket az Adatmegőrzés időtartama módosításával.
 > - [Adathasználat elemzése a Log Analytics](../../azure-monitor/platform/data-usage.md) azt ismerteti, hogyan elemezheti, és riasztást küldjön az adathasználatot.
 > - [Az Application Insights árak és adatmennyiségek kezelése](../../azure-monitor/app/pricing.md) adathasználat elemzése az Application Insights a ismerteti.
 
@@ -184,7 +184,7 @@ Ha az előző parancsfájlt, amely rendelkezik majd Újrafuttatja ``-Action list
 Ha több előfizetéssel rendelkezik, hogy migrálni szeretne a ugyanazt bérlőhöz üzemelnek, amely létrehozhatja a saját variant megtalálhatja az alábbi parancsfájlok használatával:
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
@@ -204,7 +204,7 @@ Invoke-AzResourceAction `
 }
 ```
 
-Lehet, hogy a parancsfájl finomított további hozzon létre egy parancsfájlt, amely három tömbök állít elő. Egy tömb áll, amely az összes előfizetés-azonosító a rendelkező ```isGrandFatherableSubscription``` igaz értékre van állítva, és optedInDate jelenleg nem rendelkezik értékkel. Olyan előfizetéseket, jelenleg az új díjszabási modellben a második tömbje. És a egy harmadik tömb csak az előfizetés azonosítókat a bérlő nem jogosultak az új díjszabási modell használatával:
+Lehet, hogy a parancsfájl finomított további hozzon létre egy parancsfájlt, amely három tömbök állít elő. Egy tömb összes előfizetés azonosítókat, amelyek állnak ```isGrandFatherableSubscription``` igaz értékre van állítva, és optedInDate jelenleg nem rendelkezik értékkel. Olyan előfizetéseket, jelenleg az új díjszabási modellben a második tömbje. És a egy harmadik tömb kitölti a rendszer csak az előfizetés azonosítókat a bérlőben, amely nem jogosultak az új díjszabási modell:
 
 ```powershell
 [System.Collections.ArrayList]$Eligible= @{}
