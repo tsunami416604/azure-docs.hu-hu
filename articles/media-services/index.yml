@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: abfcece2d71e456a39284ddb4cfa106bce31fb53
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519714"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670217"
 documentType: LandingData
 title: Az Azure Media Services dokumentációja
 metadata:
@@ -30,22 +30,27 @@ sections:
     columns: 2
     items:
     - href: /azure/media-services/latest/
-      html: <p>Ismerje meg, hogyan kódolhatja, streamelheti igény szerint, közvetítheti élőben és elemezheti videóit a Media Services v3 használatával.</p>
+      html: <p>Tartalmak kódolása, csomagolása és védelme, videók streamelése igény szerint, videók élő közvetítése, illetve elemzése a Media Services 3-as verziójával.</p>
       image:
         src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure Media Services v3
     - href: /azure/media-services/video-indexer/
-      html: <p>Ismerje meg, hogyan nyerhet ki megállapításokat video- és hangfájljaiból a Video Indexerrel.</p>
+      html: <p>Megállapítások kinyerése videó- és hangfájlokból a Video Indexerrel.</p>
       image:
         src: media/index/AMSIcons-media_analytics.svg
       title: Video Indexer
     - href: /azure/media-services/previous/
-      html: <p>A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. Próbálja ki a Media Services v3-as verzióját.</p>
+      html: <p>A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. </p>
       image:
-        src: media/index/AMSIcons-media_servicesV2.svg
+        src: 
       title: Azure Media Services v2 (örökölt)
     - href: /azure/cdn/
-      html: <p>Ismerje meg, hogyan használható a CDN statikus objektumok gyorsítótárazására és nem gyorsítótárazható dinamikus tartalmak gyorsítására.</p>
+      html: <p>Statikus objektumok gyorsítótárazása és nem gyorsítótárazható dinamikus tartalmak gyorsítása a CDN használatával.</p>
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: Tartalomkézbesítési hálózat (CDN)
+    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
+      html: <p>A Microsoft Azure Media Servicesből származó médiatartalmakat számos különféle böngészőben és eszközön lejátszhatja.</p>
+      image:
+        src: 
+      title: Azure Media Player
