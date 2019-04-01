@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: eff7f88ec6cbf8064df42fa3b22d61bb44baa451
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339584"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669776"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -316,3 +316,12 @@ configurations:
     build:
       dockerfile: Dockerfile.develop
 ```
+
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba történt "nem sikerült belső watch: ENOSPC megtekintése" Hibakeresés a Node.js-alkalmazás csatlakoztatása
+
+### <a name="reason"></a>Ok
+
+A pod a hibakeresőt a csatlakoztatni kívánt Node.js-alkalmazással futó a csomópont processzorhasználata túllépte a *fs.inotify.max_user_watches* értéket. Bizonyos esetekben [az alapértelmezett érték *fs.inotify.max_user_watches* esetleg túl kicsi, kezelni a hibakeresést közvetlenül egy pod](https://github.com/Azure/AKS/issues/772).
+
+### <a name="try"></a>Kipróbálás
+A probléma ideiglenes megoldás az, hogy az értékét növelje *fs.inotify.max_user_watches* a fürt minden csomópontján és a csomópont újraindításához, a módosítások érvénybe léptetéséhez.
