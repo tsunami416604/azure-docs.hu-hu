@@ -128,29 +128,64 @@ items:
       href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
     - name: Gyakori kérdések a távoli monitorozásról
       href: iot-accelerators-faq-rm-v2.md
-- name: Csatlakoztatott gyár
+- name: Ipari IoT
   items:
   - name: Áttekintés
-    href: iot-accelerators-connected-factory-features.md
     items:
-    - name: Architektúra
-      href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Mi az az Ipari IoT?
+      href: overview-iot-industrial.md
+    - name: OPC-iker
+      items:
+      - name: Mi az az OPC-iker?
+        href: overview-opc-twin.md
+      - name: OPC-ikerarchitektúra
+        href: overview-opc-twin-architecture.md
+    - name: OPC-tároló
+      items:
+      - name: Mi az az OPC-tároló?
+        href: overview-opc-vault.md
+    - name: Csatlakoztatott gyár
+      items:
+      - name: Csatlakoztatott gyár – Áttekintés
+        href: iot-accelerators-connected-factory-features.md
+      - name: Csatlakoztatott gyár – Architektúra
+        href: iot-accelerators-connected-factory-sample-walkthrough.md
   - name: Gyors útmutatók
     items:
     - name: Csatlakoztatottgyár-megoldás kipróbálása
       href: quickstart-connected-factory-deploy.md
   - name: Útmutatók
     items:
-    - name: Az irányítópult használata
-      href: iot-accelerators-connected-factory-dashboard.md
-    - name: Átjáró üzembe helyezése
-      href: iot-accelerators-connected-factory-gateway-deployment.md
-    - name: Az OPC-közzétevő használata
-      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-    - name: A megoldásgyorsító konfigurálása
-      href: iot-accelerators-connected-factory-configure.md
-    - name: A megoldásgyorsító testreszabása
-      href: iot-accelerators-connected-factory-customize.md
+    - name: Csatlakoztatott gyár
+      items:
+      - name: Az irányítópult használata
+        href: iot-accelerators-connected-factory-dashboard.md
+      - name: Átjáró üzembe helyezése
+        href: iot-accelerators-connected-factory-gateway-deployment.md
+      - name: Az OPC-közzétevő használata
+        href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
+      - name: A megoldásgyorsító konfigurálása
+        href: iot-accelerators-connected-factory-configure.md
+      - name: A megoldásgyorsító testreszabása
+        href: iot-accelerators-connected-factory-customize.md
+    - name: OPC-iker
+      items:
+      - name: OPC-ikerszolgáltatások üzembe helyezése
+        href: howto-opc-twin-deploy-existing.md
+      - name: OPC-ikermodul üzembe helyezése IoT Edge-en
+        href: howto-opc-twin-deploy-modules.md
+      - name: Csak OPC-ikerfüggőségek központi telepítése
+        href: howto-opc-twin-deploy-dependencies.md
+    - name: OPC-tároló
+      items:
+      - name: OPC-tároló hozzáadása meglévő projekthez
+        items:
+        - name: Az OPC-ügyfél és az OPC PLC kommunikációjának biztonságossá tétele
+          href: howto-opc-vault-deploy-existing-client-plc-communication.md
+        - name: Az OPC UA-ügyfél és az OPC UA-kiszolgálóalkalmazás biztonságossá tétele
+          href: howto-opc-vault-deploy-existing-client-server-communication.md
+      - name: OPC-tároló létrehozása az alapoktól
+        href: howto-opc-vault-deploy-scratch.md
   - name: További források
     items:
     - name: GitHub-adattár
@@ -257,9 +292,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Távoli monitorozás V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 5b2067facd27e94735aba63bb1c54c15e1511c64
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 02c728f7acef1bcc1436d87dd0c0d9509db8ec97
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342037"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757203"
