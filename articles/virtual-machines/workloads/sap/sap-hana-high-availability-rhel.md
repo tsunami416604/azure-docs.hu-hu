@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: b67a65bad06560a09d2ead88bd20f0568f749bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1be3c411a208a2a9da1a4f6a319fdf37cc8aa2dd
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082177"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669044"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
 
@@ -108,7 +108,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     * **Adatbázistípus**: Válassza ki **HANA**.
     * **SAP-rendszer mérete**: Adja meg az SAP, amelyet az új rendszerre, adja meg. Ha nem biztos a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
     * **Rendszer rendelkezésre állását**: Válassza ki **magas rendelkezésre ÁLLÁSÚ**.
-    * **Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs**: Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
+    * **Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs**: Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a gépre.
     * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában tűnik **/subscriptions/\<előfizetés-azonosító > /resourceGroups/\<erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve > /subnets/ \<alhálózat neve >**. Hagyja üresen, ha szeretne egy új virtuális hálózat létrehozása
 
 ### <a name="manual-deployment"></a>Manuális telepítés
@@ -185,7 +185,7 @@ Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olva
 
 > [!IMPORTANT]
 > Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
-> SAP-jegyzetnek [2382421](https://launchpad.support.sap.com/#/notes/2382421) ellentmondásos utasítás beküldte net.ipv4.tcp_timestamps állítsa 1-re is tartalmaz. Az Azure virtuális gépek Azure-terheléselosztó mögött elhelyezni, a paraméter értéke **net.ipv4.tcp_timestamps** való **0**.
+> Lásd még az SAP Megjegyzés [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>Az SAP HANA telepítése
 
@@ -342,7 +342,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[A]**  Tűzfal konfigurálása
 
-   Hozzon létre az Azure terheléselosztó mintavételi portot a tűzfalszabályt.
+   Hozzon létre az Azure load balancer mintavételi portot a tűzfalszabályt.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
@@ -382,14 +382,14 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
    Az SAP HANA 2.0 vagy MDC használja, ha létrehozza az adatbázist, az SAP NetWeaver rendszernek. Cserélje le **NW1** az SAP-rendszer a biztonsági azonosítójával.
 
-   Jelentkezzen be \<hanasid > adm, és hajtsa végre a következő parancsot:
+   Végrehajtási típus < hanasid\>adm a következő parancsot:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]**  Rendszer replikáció konfigurálása első csomópontjára:
 
-   Jelentkezzen be \<hanasid > adm és az adatbázisok biztonsági mentése:
+   Mint az adatbázisok biztonsági < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -409,7 +409,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **a(z) [2]**  Rendszer replikáció konfigurálása a második csomópont:
     
-   A második csomópontot, a rendszer replikáció regisztrálja. Jelentkezzen be \<hanasid > adm, és futtassa a következő parancsot:
+   A második csomópontot, a rendszer replikáció regisztrálja. Futtassa a következő parancsot, < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -457,7 +457,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[1]**  Hozza létre a szükséges felhasználókat.
 
-   Jelentkezzen be rendszergazdaként, és futtassa a következő parancsot. Cserélje le a félkövérrel szedett karakterláncok (HANA rendszer-azonosító **HN1** példányok száma és **03**) értékeket az SAP HANA telepítése:
+   Futtassa a következő parancsot a legfelső szintű. Cserélje le a félkövérrel szedett karakterláncok (HANA rendszer-azonosító **HN1** példányok száma és **03**) értékeket az SAP HANA telepítése:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -467,7 +467,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[A]**  Hozza létre a keystore bejegyzést.
 
-   Jelentkezzen be rendszergazdaként, és a következő paranccsal hozzon létre egy új keystore:
+   Futtassa a következő parancsot a legfelső szintű, hozzon létre egy új keystore:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -475,7 +475,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[1]**  Biztonsági másolatot az adatbázisról.
 
-   Jelentkezzen be rendszergazdaként, és az adatbázisok biztonsági mentése:
+   Adatbázisok biztonsági mentése a legfelső szintű:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -488,7 +488,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **[1]**  Rendszer replikáció konfigurálása első csomópontjára.
 
-   Jelentkezzen be \<hanasid > adm és az elsődleges hely létrehozásához:
+   Az elsődleges hely létrehozása < hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -496,7 +496,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 1. **a(z) [2]**  Rendszer replikáció konfigurálása a másodlagos csomópont.
 
-   Jelentkezzen be \<hanasid > adm és regisztrálja a másodlagos helyet:
+   Regisztrálja a másodlagos helyet, < hanasid\>adm:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
