@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/26/2019
+ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446333"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801929"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
@@ -37,17 +37,15 @@ HDInsight fürt számos különböző, amelyek ideálisak az adott munkaterhelé
 
 Használja az alábbi táblázat a Hive használata a HDInsight különböző módjainak felderítéséhez:
 
-| **Ezzel a módszerrel** Ha azt szeretné... | ... **interaktív** lekérdezések | ...**kötegelt** feldolgozása | .. során ez **fürt operációs rendszerének** | ...from ez **ügyfél operációs rendszer** |
+| **Ezzel a módszerrel** Ha azt szeretné... | ... **interaktív** lekérdezések | ...**kötegelt** feldolgozása | ...from ez **ügyfél operációs rendszer** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux, Unix, Mac OS X vagy Windows |
-| [HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux vagy Windows |Windows |
-| [Hive-nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |Bármely (böngésző alapú) |
-| [A beeline-ügyfél](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X vagy Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux vagy Windows |Linux, Unix, Mac OS X vagy Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux vagy Windows |Windows |
+| [HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X vagy Windows |
+| [HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Hive-nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Bármely (böngésző alapú) |
+| [A beeline-ügyfél](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X vagy Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X vagy Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
-> [!IMPORTANT]
-> \* Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="hiveql-language-reference"></a>HiveQL nyelvi referencia
 
@@ -119,7 +117,6 @@ A HDInsight Hive előre betöltött tartalmaz egy belső tábla nevű `hivesampl
 A következő hiveql-projekt oszlopok az alakzatot a `/example/data/sample.log` fájlt:
 
 ```hiveql
-set hive.execution.engine=tez;
 DROP TABLE log4jLogs;
 CREATE EXTERNAL TABLE log4jLogs (
     t1 string,
@@ -138,10 +135,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Az előző példában a hiveql hajtsa végre a következő műveleteket:
 
-* `set hive.execution.engine=tez;`: A végrehajtó motor Apache Tez használatára állítja be. Tez használatával biztosíthatja, hogy a lekérdezési teljesítmény növekedését. További információ a Tez: a [használata Apache Tez jobb teljesítmény](#usetez) szakaszban.
-
-    > [!NOTE]  
-    > A jelen nyilatkozat csak akkor szükséges, ha egy Windows-alapú HDInsight-fürt használatával. Tez Linux-alapú HDInsight esetében az alapértelmezett végrehajtóprogramja.
 
 * `DROP TABLE`: Ha a tábla már létezik, törölje azt.
 
@@ -163,7 +156,6 @@ Az előző példában a hiveql hajtsa végre a következő műveleteket:
 Hozhat létre egy **belső** helyett külső táblát, a következő hiveql-lel:
 
 ```hiveql
-set hive.execution.engine=tez;
 CREATE TABLE IF NOT EXISTS errorLogs (
     t1 string,
     t2 string,
@@ -193,16 +185,7 @@ Ezek az utasítások hajtsa végre a következő műveleteket:
 
 ### <a id="usetez"></a>Apache Tez
 
-[Az Apache Tez](https://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Linux-alapú HDInsight-fürtök esetén alapértelmezés szerint engedélyezve van a tezben futtatja.
-
-> [!NOTE]  
-> Tez jelenleg alapértelmezés szerint le van Windows-alapú HDInsight-fürtök esetén, és engedélyezni kell. Tez kihasználásához, a következő értéket kell beállítani, egy Hive-lekérdezés:
->
-> `set hive.execution.engine=tez;`
->
-> Tez az alapértelmezett szolgáltatás a Linux-alapú HDInsight-fürtök.
-
-A [Apache Hive Tez tervezési dokumentumok](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) megvalósítási és hangolási konfiguráció részleteit tartalmazza.
+[Az Apache Tez](https://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Alapértelmezés szerint engedélyezve van a tezben futtatja.  A [Apache Hive Tez tervezési dokumentumok](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) megvalósítási és hangolási konfiguráció részleteit tartalmazza.
 
 ### <a name="low-latency-analytical-processing-llap"></a>Közel valós idejű analitikus feldolgozás (LLAP)
 
