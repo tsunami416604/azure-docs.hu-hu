@@ -1,6 +1,6 @@
 ---
 title: Tervminták indexe
-description: Azure Blueprints-minták indexe
+description: Az Azure Blueprintsszel való üzembe helyezéshez való megfelelőségi és standard környezeti minták indexe
 services: blueprints
 author: DCtheGeek
 manager: carmonm

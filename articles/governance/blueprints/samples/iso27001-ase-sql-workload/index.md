@@ -1,5 +1,5 @@
 ---
-title: Minta – ISO 27001 App Service Environment/SQL Database-számításifeladat terve – Áttekintés
+title: Minta – ISO 27001 ASE/SQL-számításifeladat terve – áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
 services: blueprints
 author: DCtheGeek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 Azure Blueprints App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
 Az ISO 27001 Azure Blueprints App Service Environment/SQL Database-számításifeladat tervmintája kiegészítő infrastruktúrát biztosít az [ISO 27001 Megosztott szolgáltatások](../iso27001-shared/index.md) tervmintához.
 E terv segítségével az ügyfelek olyan felhőalapú architektúrákat helyezhetnek üzembe, amelyek akkreditációs vagy megfelelőségi követelményekkel rendelkező alkalmazási helyzetekre kínálnak megoldást.
@@ -23,7 +23,7 @@ Két ISO 27001 tervminta áll rendelkezésre: ez a minta és az [ISO 27001 Megos
 
 Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintája szolgáltatásalapú webes környezetként helyezi üzembe a platformot. Ez a környezet több, ISO 27001 szabványoknak megfelelő webalkalmazás, webes API és SQL Database-példány üzemeltetésére alkalmas. Ez a tervminta az [ISO 27001 Megosztott szolgáltatások](../iso27001-shared/index.md) tervmintával van függőségi viszonyban.
 
-![Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának kialakítása](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![Az ISO 27001 ASE/SQL-számításifeladat tervmintájának kialakítása](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész számításifeladat-infrastruktúrát biztosít. A környezet összetevői:
 

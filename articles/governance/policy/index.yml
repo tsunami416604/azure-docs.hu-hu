@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e389eb01faff93c0e45c66cded41e94ac3730715
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226028"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804649"
 documentType: LandingData
-title: Az Azure Policy dokumentációja
+title: Az Azure Policy szolgáltatás dokumentációja
 metadata:
   title: Az Azure Policy dokumentációja – oktatóanyagok és API-referencia
   description: Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és az azokra gyakorolt hatást kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek.

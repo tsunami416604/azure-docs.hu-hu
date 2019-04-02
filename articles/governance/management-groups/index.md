@@ -18,7 +18,7 @@ Alkalmazhat például olyan szabályzatokat egy felügyeleti csoportra, amelyek 
 
 A felügyeleti csoportok és előfizetések rugalmas szerkezetének létrehozásával hierarchiába rendezheti erőforrásait az egységes szabályzat- és hozzáféréskezeléshez. Az alábbi ábrán egy példa látható szabályozási hierarchia létrehozására felügyeleti csoportok használatával.
 
-![fa](./media/tree.png)
+![Példa egy felügyeleti csoport hierarchiafájára](./media/tree.png)
 
 Hozzon létre egy hierarchiát, amelyre alkalmazhat egy szabályzatot, például a virtuális gépek helyének az USA nyugati régiójára való korlátozására a „Production” csoporton. Ezt a szabályzatot a felügyeleti csoport alá tartozó mindkét EA-előfizetés örökli, és az előfizetések alá tartozó összes virtuális gépre érvényes lesz. Ezt a biztonsági szabályzatot az erőforrás vagy az előfizetés tulajdonosa nem módosíthatja, ez pedig hatékonyabb kontrollt biztosít.
 
